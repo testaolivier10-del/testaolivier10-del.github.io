@@ -1,0 +1,19 @@
+/* Shared "health vibe" design tokens — kept in sync with nremt-practice's
+   assets/theme.css so the hub and its linked apps read as one brand. */
+
+:root{
+  --navy:#16332E;
+  --navy2:#1F4A42;
+  --paper:#F6FBF9;
+  --white:#FFFFFF;
+  --accent:#2C9C8B;
+  --accent-2:#E8776A;
+  --line:#DCEAE6;
+  --ink:#17231F;
+  --muted:#5B7A72;
+  --good:#2F9E5B;
+  --bad:#D1594A;
+  --warn:#C08A2E;
+  --font-ui:'Nunito','Segoe UI',system-ui,sans-serif;
+  --radius:16px;
+}
