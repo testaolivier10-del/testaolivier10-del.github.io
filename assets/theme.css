@@ -16,4 +16,37 @@
   --warn:#C08A2E;
   --font-ui:'Nunito','Segoe UI',system-ui,sans-serif;
   --radius:16px;
+  --radius-sm:10px;
+  --on-accent:#FFFFFF;
+  --tint-accent:#E9F2EF;
+  --shadow-card:0 1px 2px rgba(22,51,46,0.05), 0 6px 16px -8px rgba(22,51,46,0.10);
+  --shadow-pop:0 4px 10px rgba(22,51,46,0.08), 0 16px 32px -12px rgba(22,51,46,0.18);
 }
+
+/* Dark theme — toggled via [data-theme="dark"] on <html>, mirrors
+   nremt-practice's palette so the two sites feel like one product. */
+:root[data-theme="dark"]{
+  --navy:#0E1B18;
+  --navy2:#16332E;
+  --paper:#0F1715;
+  --white:#182422;
+  --accent:#3FBBA6;
+  --accent-2:#E8776A;
+  --line:#2A3A36;
+  --ink:#E7F1EE;
+  --muted:#93A6A0;
+  --good:#4FBE79;
+  --bad:#E4776A;
+  --warn:#D9A54B;
+  --tint-accent:rgba(63,187,166,0.16);
+  --shadow-card:0 1px 2px rgba(0,0,0,0.16), 0 6px 16px -8px rgba(0,0,0,0.30);
+  --shadow-pop:0 4px 10px rgba(0,0,0,0.24), 0 16px 32px -12px rgba(0,0,0,0.40);
+}
+
+.theme-toggle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:999px;border:1px solid var(--line);
+  background:var(--white);color:var(--ink);cursor:pointer;font-size:15px;line-height:1;flex-shrink:0;
+  transition:border-color .15s ease,color .15s ease;
+}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent);}

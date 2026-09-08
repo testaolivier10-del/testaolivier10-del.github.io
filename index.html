@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#16332E">
 <title>Health Sciences Study Hub — Free Exam Prep Tools</title>
 <meta name="description" content="Free practice tools for health science certification exams. Start with NREMT-EMT prep — more subjects coming soon.">
 <meta property="og:title" content="Health Sciences Study Hub — Free Exam Prep Tools">
@@ -18,9 +20,19 @@
     background:var(--paper);color:var(--ink);
     font-family:'Charter','Georgia',serif;line-height:1.6;
   }
-  .wrap{max-width:880px;margin:0 auto;padding:64px 22px 90px;}
+  .wrap{max-width:880px;margin:0 auto;padding:32px 22px 90px;}
 
-  .hero{max-width:60ch;margin:0 0 48px;}
+  .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:56px;}
+  .brand{
+    display:inline-flex;align-items:center;gap:8px;font-family:var(--font-ui);
+    font-weight:800;font-size:14px;color:var(--ink);text-decoration:none;letter-spacing:-0.01em;
+  }
+  .brand-mark{
+    display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    border-radius:8px;background:var(--accent);color:var(--on-accent);font-size:14px;line-height:1;
+  }
+
+  .hero{max-width:60ch;margin:0 0 28px;}
   .eyebrow{
     font-family:var(--font-ui);font-weight:800;font-size:12px;letter-spacing:0.08em;
     text-transform:uppercase;color:var(--accent);margin:0 0 12px;
@@ -29,43 +41,75 @@
     font-size:clamp(28px,5vw,40px);font-weight:600;letter-spacing:-0.01em;
     margin:0 0 14px;
   }
-  .lede{color:var(--muted);font-size:16.5px;margin:0;}
+  .lede{color:var(--muted);font-size:16.5px;max-width:56ch;margin:0;}
+
+  .fact-row{
+    display:flex;flex-wrap:wrap;gap:8px 22px;margin:28px 0 56px;
+    font-family:var(--font-ui);font-size:13px;color:var(--muted);
+  }
+  .fact-row span{display:inline-flex;align-items:center;gap:7px;}
+  .fact-row .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;}
 
   .section-label{
     font-family:var(--font-ui);font-weight:700;font-size:13px;color:var(--muted);
     text-transform:uppercase;letter-spacing:0.06em;margin:0 0 16px;
   }
 
-  .subjects-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;
-  }
-  .subject-card{
+  .featured-card{
+    display:flex;flex-direction:column;gap:16px;text-decoration:none;color:inherit;
     background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
-    padding:26px 24px;display:flex;flex-direction:column;gap:14px;
-    text-decoration:none;color:inherit;transition:border-color .15s,transform .12s;
+    box-shadow:var(--shadow-card);padding:30px 28px;margin-bottom:36px;
+    transition:border-color .15s ease,transform .15s ease,box-shadow .15s ease;
   }
-  a.subject-card:hover{border-color:var(--accent);transform:translateY(-2px);}
-  .subject-icon{
-    width:44px;height:44px;border-radius:12px;background:var(--accent);color:var(--white);
-    display:flex;align-items:center;justify-content:center;font-size:20px;font-family:var(--font-ui);
+  .featured-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-pop);}
+  .featured-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;}
+  .featured-icon{
+    width:48px;height:48px;border-radius:12px;background:var(--accent);color:var(--on-accent);
+    display:flex;align-items:center;justify-content:center;font-size:22px;font-family:var(--font-ui);flex-shrink:0;
   }
-  .subject-card.soon .subject-icon{background:var(--line);color:var(--muted);}
-  .subject-name{font-family:var(--font-ui);font-weight:800;font-size:17px;margin:0;}
-  .subject-desc{font-size:14.5px;color:var(--muted);margin:0;flex:1;}
-  .subject-status{
+  .status-badge{
     font-family:var(--font-ui);font-weight:700;font-size:11.5px;letter-spacing:0.05em;text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:6px;color:var(--good);flex-shrink:0;padding-top:4px;
+  }
+  .status-badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor;}
+  .featured-name{font-family:var(--font-ui);font-weight:800;font-size:19px;margin:0;}
+  .featured-desc{font-size:15px;color:var(--muted);margin:6px 0 0;max-width:60ch;}
+  .featured-tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .featured-tags span{
+    font-family:var(--font-ui);font-size:11.5px;color:var(--muted);background:var(--paper);
+    border:1px solid var(--line);border-radius:20px;padding:4px 11px;
+  }
+  .featured-cta{
+    font-family:var(--font-ui);font-weight:700;font-size:13.5px;color:var(--accent);
     display:inline-flex;align-items:center;gap:6px;
   }
-  .subject-status.live{color:var(--good);}
-  .subject-status.soon{color:var(--muted);}
-  .subject-status .dot{width:7px;height:7px;border-radius:50%;background:currentColor;}
-  .subject-card.soon{opacity:0.7;cursor:default;}
+  .featured-card:hover .featured-cta{gap:9px;}
 
-  footer{margin-top:72px;font-size:12.5px;color:#9AA19C;max-width:60ch;font-family:var(--font-ui);}
+  .roadmap{border-top:1px solid var(--line);padding-top:28px;}
+  .roadmap-row{
+    display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+    padding:14px 2px;border-bottom:1px solid var(--line);
+  }
+  .roadmap-row:last-child{border-bottom:none;}
+  .roadmap-name{font-family:var(--font-ui);font-weight:700;font-size:14.5px;color:var(--ink);}
+  .roadmap-desc{font-size:13.5px;color:var(--muted);margin:3px 0 0;}
+  .roadmap-status{
+    font-family:var(--font-ui);font-weight:600;font-size:11.5px;letter-spacing:0.04em;text-transform:uppercase;
+    color:var(--muted);white-space:nowrap;flex-shrink:0;
+  }
+
+  footer{margin-top:72px;font-size:12.5px;color:var(--muted);max-width:60ch;font-family:var(--font-ui);}
 </style>
 </head>
 <body>
 <div class="wrap">
+
+  <div class="top-row">
+    <a class="brand" href="https://testaolivier10-del.github.io/">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
 
   <div class="hero">
     <p class="eyebrow">Study Hub</p>
@@ -73,32 +117,57 @@
     <p class="lede">Real question banks, interactive study tools, and honest practice conditions — no account, no paywall. Pick a subject below to get started.</p>
   </div>
 
+  <div class="fact-row">
+    <span><span class="dot"></span>920+ practice questions</span>
+    <span><span class="dot"></span>No account required</span>
+    <span><span class="dot"></span>Progress stays on your device</span>
+  </div>
+
   <p class="section-label">Subjects</p>
-  <div class="subjects-grid">
 
-    <a class="subject-card" href="https://testaolivier10-del.github.io/nremt-practice/">
-      <div class="subject-icon">+</div>
-      <div>
-        <p class="subject-name">NREMT-EMT Prep</p>
-        <p class="subject-desc">A 920-question practice bank with timed exams, domain drills, flashcards, an interactive 3D body map, an auscultation sound trainer, and branching clinical scenarios.</p>
-      </div>
-      <span class="subject-status live"><span class="dot"></span>Live</span>
-    </a>
-
-    <div class="subject-card soon">
-      <div class="subject-icon">◇</div>
-      <div>
-        <p class="subject-name">Organic Chemistry</p>
-        <p class="subject-desc">Reaction mechanisms, practice problems, and study tools for orgo prep — in the works.</p>
-      </div>
-      <span class="subject-status soon"><span class="dot"></span>Coming soon</span>
+  <a class="featured-card" href="https://testaolivier10-del.github.io/nremt-practice/">
+    <div class="featured-top">
+      <div class="featured-icon" aria-hidden="true">+</div>
+      <span class="status-badge"><span class="dot"></span>Live</span>
     </div>
+    <div>
+      <p class="featured-name">NREMT-EMT Prep</p>
+      <p class="featured-desc">A 920-question practice bank with timed exams, domain drills, flashcards, an interactive 3D body map, an auscultation sound trainer, and branching clinical scenarios.</p>
+    </div>
+    <div class="featured-tags">
+      <span>Timed exams</span>
+      <span>Domain drills</span>
+      <span>Flashcards</span>
+      <span>3D body map</span>
+      <span>Sound trainer</span>
+    </div>
+    <span class="featured-cta">Start practicing &rarr;</span>
+  </a>
 
+  <div class="roadmap">
+    <p class="section-label">Coming next</p>
+    <div class="roadmap-row">
+      <div>
+        <p class="roadmap-name">Organic Chemistry</p>
+        <p class="roadmap-desc">Reaction mechanisms and practice problems for orgo prep.</p>
+      </div>
+      <span class="roadmap-status">In progress</span>
+    </div>
   </div>
 
   <footer>
     <p>All practice progress and quiz data are stored only in your browser and aren't sent anywhere.</p>
   </footer>
 </div>
+<script>
+  var THEME_KEY = 'nremt_theme';
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem(THEME_KEY, isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
 </body>
 </html>
