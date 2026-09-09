@@ -2,12 +2,6 @@
    highlights the current page/section. Keeps every page in sync from one
    file instead of each page hand-copying its own nav markup. */
 (function(){
-  // The account-wide Study Hub landing page (a separate repo/site) that
-  // lists this app as one of several products. Kept as its own link
-  // (rather than repurposing the brand logo for it) now that this app has
-  // a real homepage of its own to link to.
-  var HUB_URL = 'https://testaolivier10-del.github.io/';
-
   var NAV_ITEMS = [
     { href: 'practice.html', label: 'Practice' },
     { href: 'study-plan.html', label: 'Study Plan' },
@@ -128,7 +122,6 @@
     mount.innerHTML =
       '<div class="site-header__inner">' +
         '<span class="site-header__brand-row">' +
-          '<a class="hub-back" href="' + HUB_URL + '" title="Back to Study Hub">&larr; Study Hub</a>' +
           '<a class="site-header__brand" href="index.html">' +
             '<span class="brand-mark" aria-hidden="true">+</span> LevlPrep' +
           '</a>' +
