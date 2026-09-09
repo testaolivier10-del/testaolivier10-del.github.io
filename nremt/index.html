@@ -25,14 +25,14 @@
 </script>
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Baloo+2:wght@600;700;800&display=swap">
 <style>
   .home-list-row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line-soft);font-size:15px;}
   .home-list-row:last-child{border-bottom:0;}
   .home-list-row .num{font:12.5px var(--font-mono);color:var(--muted);}
-  .domain-item{padding:12px 0;border-bottom:1px solid var(--line-soft);}
-  .domain-item .name{font-size:18px;}
-  .domain-item .desc{font-size:13.5px;color:var(--muted);text-wrap:pretty;}
+  .domain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;}
+  .trust-chip{display:flex;align-items:center;gap:12px;}
+  .trust-chip .ic{width:36px;height:36px;border-radius:10px;background:var(--tint-good);color:var(--good);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
 </style>
 </head>
 <body>
@@ -41,12 +41,19 @@
 
 <div class="xshell">
 
-  <div class="hero">
+  <div class="hero rise-in">
+    <img class="mascot-slot" src="assets/mascot.svg" alt="" aria-hidden="true">
     <div class="split">
       <div>
         <div class="eyebrow">NREMT‑EMT · Cognitive exam</div>
         <h1>A complete study companion, in one browser tab.</h1>
         <p class="lede">Forty chapters of written notes, a six‑domain question bank, mnemonics, protocol flow diagrams and scenario simulations. Free to use, no account, and everything you do stays on your own device.</p>
+        <div class="stat-row" style="margin:26px 0 28px">
+          <div class="stat-pill"><span class="num">920</span><span class="label">Practice questions</span></div>
+          <div class="stat-pill"><span class="num">40</span><span class="label">Chapters of notes</span></div>
+          <div class="stat-pill"><span class="num"><span class="accent">6</span></span><span class="label">Exam domains</span></div>
+        </div>
+        <a href="practice.html" class="btn-dark">Begin a practice exam →</a>
       </div>
       <div class="split-divider">
         <div class="split-label">What's inside</div>
@@ -56,29 +63,26 @@
         <div class="home-list-row"><span>Protocol flow diagrams</span><span class="num">04</span></div>
         <div class="home-list-row"><span>Body map &amp; lung sounds</span><span class="num">05</span></div>
         <div class="home-list-row" style="border-bottom:0"><span>Scenario simulator</span><span class="num">06</span></div>
-        <a href="practice.html" class="btn-dark" style="margin-top:22px">Begin a practice exam</a>
       </div>
     </div>
   </div>
 
   <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">The six domains</div>
-      <div class="xcontent" style="grid-column:span 2;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0 clamp(24px,4vw,40px)">
-        <div class="domain-item"><div class="name">Assessment</div><div class="desc">Scene size-up, primary and secondary survey, vitals</div></div>
-        <div class="domain-item"><div class="name">Airway &amp; Respiratory</div><div class="desc">Adjuncts, ventilation, oxygenation, obstruction</div></div>
-        <div class="domain-item"><div class="name">Cardiac &amp; Medical</div><div class="desc">Arrest, chest pain, diabetic and neurologic emergencies</div></div>
-        <div class="domain-item"><div class="name">Trauma</div><div class="desc">Bleeding, shock, head, spine and chest injury</div></div>
-        <div class="domain-item"><div class="name">OB/Peds &amp; Special Populations</div><div class="desc">Delivery, neonates, paediatric and geriatric care</div></div>
-        <div class="domain-item" style="border-bottom:0"><div class="name">EMS Operations</div><div class="desc">Safety, MCI, extrication, documentation</div></div>
-      </div>
+    <div class="eyebrow">The six domains</div>
+    <div class="domain-grid">
+      <div class="domain-card" style="--card-tint:var(--tint-accent);--card-ink:var(--accent)"><span class="icon-chip">🩺</span><div><div class="name">Assessment</div><div class="desc">Scene size-up, primary and secondary survey, vitals</div></div></div>
+      <div class="domain-card" style="--card-tint:var(--tint-good);--card-ink:var(--good)"><span class="icon-chip">🫁</span><div><div class="name">Airway &amp; Respiratory</div><div class="desc">Adjuncts, ventilation, oxygenation, obstruction</div></div></div>
+      <div class="domain-card" style="--card-tint:var(--tint-bad);--card-ink:var(--bad)"><span class="icon-chip">❤️</span><div><div class="name">Cardiac &amp; Medical</div><div class="desc">Arrest, chest pain, diabetic and neurologic emergencies</div></div></div>
+      <div class="domain-card" style="--card-tint:var(--tint-gold);--card-ink:var(--gold)"><span class="icon-chip">🩹</span><div><div class="name">Trauma</div><div class="desc">Bleeding, shock, head, spine and chest injury</div></div></div>
+      <div class="domain-card" style="--card-tint:var(--tint-warn);--card-ink:var(--warn)"><span class="icon-chip">👶</span><div><div class="name">OB/Peds &amp; Special Populations</div><div class="desc">Delivery, neonates, paediatric and geriatric care</div></div></div>
+      <div class="domain-card" style="--card-tint:var(--tint-accent);--card-ink:var(--navy2)"><span class="icon-chip">🚑</span><div><div class="name">EMS Operations</div><div class="desc">Safety, MCI, extrication, documentation</div></div></div>
     </div>
   </div>
 
   <div class="xsection">
-    <div class="xgrid" style="align-items:center">
+    <div class="xgrid" style="align-items:center;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
       <div>
-        <h2 style="font:400 clamp(24px,3.4vw,30px) var(--font-serif);letter-spacing:-.02em;margin:0 0 12px;line-height:1.15;padding-top:0;border-top:0">Learn the anatomy by pointing at it.</h2>
+        <h2 style="font:700 clamp(24px,3.4vw,30px) var(--font-display);letter-spacing:-.01em;margin:0 0 12px;line-height:1.15;padding-top:0;border-top:0">Learn the anatomy by pointing at it.</h2>
         <p style="color:var(--muted);font-size:16px;margin:0 0 18px;max-width:46ch;text-wrap:pretty">An interactive body map, a lung and heart sound trainer, and eight branching scenarios that ask you to run a call from dispatch to handover.</p>
         <a href="body-map.html" class="link-underline">Open the body map</a>
       </div>
@@ -88,10 +92,10 @@
 
   <div class="xsection">
     <div class="trust-row">
-      <div style="display:flex;gap:36px;flex-wrap:wrap">
-        <div><div class="trust-item-title">Free, no account</div><div class="trust-item-sub">Nothing to sign up for.</div></div>
-        <div><div class="trust-item-title">Works offline</div><div class="trust-item-sub">Install it and study anywhere.</div></div>
-        <div><div class="trust-item-title">Private by default</div><div class="trust-item-sub">Progress stays in your browser.</div></div>
+      <div style="display:flex;gap:32px;flex-wrap:wrap">
+        <div class="trust-chip"><span class="ic">✓</span><div><div class="trust-item-title">Free, no account</div><div class="trust-item-sub">Nothing to sign up for.</div></div></div>
+        <div class="trust-chip"><span class="ic">⇩</span><div><div class="trust-item-title">Works offline</div><div class="trust-item-sub">Install it and study anywhere.</div></div></div>
+        <div class="trust-chip"><span class="ic">🔒</span><div><div class="trust-item-title">Private by default</div><div class="trust-item-sub">Progress stays in your browser.</div></div></div>
       </div>
       <p class="trust-note">Independent study aid. Not affiliated with or endorsed by the National Registry of Emergency Medical Technicians.</p>
     </div>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Pulse, the LevlPrep mascot">
+  <defs>
+    <linearGradient id="pulseBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3FBBA6"/>
+      <stop offset="1" stop-color="#1F4A42"/>
+    </linearGradient>
+  </defs>
+  <!-- body -->
+  <circle cx="60" cy="64" r="42" fill="url(#pulseBody)"/>
+  <!-- ears / rig-light nubs -->
+  <circle cx="30" cy="34" r="8" fill="#2C9C8B"/>
+  <circle cx="90" cy="34" r="8" fill="#2C9C8B"/>
+  <!-- face plate -->
+  <ellipse cx="60" cy="68" rx="30" ry="26" fill="#FBFAF7"/>
+  <!-- eyes -->
+  <circle cx="49" cy="64" r="5" fill="#16332E"/>
+  <circle cx="71" cy="64" r="5" fill="#16332E"/>
+  <circle cx="50.6" cy="62.2" r="1.6" fill="#FBFAF7"/>
+  <circle cx="72.6" cy="62.2" r="1.6" fill="#FBFAF7"/>
+  <!-- smile -->
+  <path d="M50 76c3.5 4 16.5 4 20 0" stroke="#16332E" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <!-- cheeks -->
+  <circle cx="42" cy="72" r="3.4" fill="#E8776A" opacity=".55"/>
+  <circle cx="78" cy="72" r="3.4" fill="#E8776A" opacity=".55"/>
+  <!-- stethoscope -->
+  <path d="M38 92c0 10 8 16 22 16s22-6 22-16" stroke="#16332E" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <circle cx="38" cy="90" r="4" fill="#16332E"/>
+  <circle cx="82" cy="90" r="4" fill="#16332E"/>
+  <circle cx="60" cy="108" r="6" fill="#E8776A"/>
+  <!-- heartbeat chest badge -->
+  <path d="M22 60h9l4-9 5 16 4-11 3 4h9" stroke="#E8776A" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".85" transform="translate(20 -12) scale(.7)"/>
+</svg>
