@@ -131,8 +131,8 @@ const SCENARIOS = [
     startNode: "s1_start",
     nodes: {
       s1_start: {
-        vitals: "HR 118 · BP 108/70 · RR 22",
-        text: "You arrive to find a 28-year-old man lying next to a motorcycle, alert and shouting in pain. His right thigh has an open wound with blood visibly spurting in time with his pulse. Bystanders are standing around, unsure what to do.",
+        vitals: "HR 118 · BP 108/70 · RR 22 · SpO2 97%",
+        text: "Dispatch sent you for a motorcycle down on a gravel shoulder. You arrive to find a 28-year-old man lying next to the bike, helmet still on, alert and shouting in pain. His right thigh has an open wound with blood visibly spurting in time with his pulse, soaking through his riding jeans. A bystander says the bike went down at an estimated 35-40 mph when it hit loose gravel on a curve, and that he was thrown a short distance but never lost consciousness. He denies neck or back pain and is moving all four limbs, though he's fixated entirely on his leg. His wife, reached by phone, mentions he takes a beta-blocker for a heart rhythm issue and had \"a beer at lunch\" a few hours ago. A second bystander has looped a belt loosely around his upper thigh, but blood is still visibly spurting through it and no one is holding it in place.",
         choices: [
           { text: "Apply firm direct pressure to the wound immediately", next: "s1_pressure_good" },
           { text: "Ask him what happened and check for other injuries first", next: "s1_delayed", consequence: "You spend a moment gathering the story while the bleeding continues unchecked. By the time you look back down, a visibly larger pool of blood has formed and he looks paler." },
@@ -220,8 +220,8 @@ const SCENARIOS = [
     startNode: "s2_start",
     nodes: {
       s2_start: {
-        vitals: "HR 96 · BP 138/88 · SpO2 98% · Pain 8/10",
-        text: "A 58-year-old woman flagged down a store employee, saying she has crushing chest pain that started 20 minutes ago while shopping. She's sitting on a bench, pale and sweaty, holding her chest.",
+        vitals: "HR 96 · BP 138/88 · RR 18 · SpO2 98% · Pain 8/10",
+        text: "A 58-year-old woman flagged down a store employee, saying she has crushing chest pain that started 20 minutes ago while pushing a full shopping cart. She's sitting on a bench, pale and sweaty, holding her chest, and describes the pain as radiating into her left arm and jaw. She mentions she twisted awkwardly reaching for a top shelf item right before the pain started, and also that she's been under a lot of work stress this week — both offered unprompted, neither actually explaining crushing, radiating chest pain of this character. She has a history of high cholesterol and type 2 diabetes, takes metformin, and has her own prescribed nitroglycerin in her purse that she hasn't taken yet. She denies any known drug allergies. Her husband, standing nearby, keeps insisting she \"just needs to sit and catch her breath\" and that they don't need an ambulance.",
         choices: [
           { text: "Have her stay seated, apply oxygen only if she's hypoxic or in distress, and begin your assessment", next: "s2_history_good" },
           { text: "Immediately place her on a nonrebreather at 15 LPM regardless of her oxygen level", next: "s2_over_o2", consequence: "Her SpO2 was already 98% on room air. High-flow oxygen isn't harmless by default in this situation — current guidance targets oxygen to actual need, not routine high-flow for every chest pain call." },
@@ -307,7 +307,8 @@ const SCENARIOS = [
     startNode: "s3_start",
     nodes: {
       s3_start: {
-        text: "A frantic father runs up carrying his 2-year-old daughter, who is coughing forcefully but can still make sound. She was eating grapes moments ago.",
+        vitals: "HR 138 · RR 32 (coughing) · SpO2 99%",
+        text: "A frantic father runs up carrying his 2-year-old daughter, who is coughing forcefully but can still make sound between coughs. She was eating grapes moments ago at a birthday party. The father mentions she had a runny nose and a mild cough yesterday that he assumed was \"just a cold,\" and that she's due for a check-up next week — neither detail changes what's happening in front of you right now. Her lips and face are pink, she's making eye contact and reaching for her father, and she does not appear to be in any respiratory distress between coughing fits.",
         choices: [
           { text: "Encourage her to keep coughing and stay calm, watching closely", next: "s3_watch_good" },
           { text: "Immediately perform abdominal thrusts since she's choking", next: "s3_intervene_early", consequence: "She still has a strong, effective cough and can move air — her airway isn't fully blocked. Jumping straight to abdominal thrusts on a child who can still cough forcefully can actually push the object deeper." },
@@ -373,7 +374,8 @@ const SCENARIOS = [
     startNode: "s4_start",
     nodes: {
       s4_start: {
-        text: "You're called to a home for \"a person not acting right.\" You find a 45-year-old man sitting on the kitchen floor, awake but confused, sweaty, and shaky. His wife says he's diabetic and hasn't eaten since this morning.",
+        vitals: "HR 118 · BP 128/82 · RR 20 · SpO2 97%",
+        text: "You're called to a home for \"a person not acting right.\" You find a 45-year-old man sitting on the kitchen floor, awake but confused, sweaty, and visibly shaky, gripping the counter as if trying to stand. His wife says he's a type 1 diabetic, took his usual insulin dose this morning, then went for a longer run than usual and hasn't eaten since. She also mentions he complained of a mild headache and seemed \"a little off\" at breakfast yesterday, and that he had a glass of wine with dinner last night — details she offers anxiously but that don't explain his sudden confusion right now. A glucometer and insulin pen sit on the counter nearby, and he wears a medical alert bracelet for diabetes on his wrist, easy to miss under his shirt sleeve at a glance. He can follow simple one-step commands but seems to be struggling to find words.",
         choices: [
           { text: "Check his blood glucose if your protocol allows, while assessing his airway and ability to swallow", next: "s4_glucose_good" },
           { text: "Assume he's intoxicated based on his confused, unsteady presentation", next: "s4_assume_bad", consequence: "Confusion, sweating, and unsteadiness can look identical to intoxication — but his wife just told you he's diabetic and hasn't eaten. Anchoring on \"probably drunk\" nearly costs you a time-sensitive hypoglycemic emergency." },
@@ -461,8 +463,8 @@ const SCENARIOS = [
     startNode: "s5_start",
     nodes: {
       s5_start: {
-        vitals: "HR 110 · BP 122/78 · SpO2 96%",
-        text: "A 16-year-old boy at a backyard party says he thinks he ate something with peanuts in it about ten minutes ago. He has hives spreading across his arms and chest and says his throat \"feels tight.\" He has a prescribed epinephrine auto-injector in his pocket but hasn't used it yet.",
+        vitals: "HR 110 · BP 122/78 · RR 22 · SpO2 96%",
+        text: "A 16-year-old boy at a backyard party says he thinks he ate something with peanuts in it about ten minutes ago. He has hives spreading across his arms and chest and says his throat \"feels tight,\" and his voice sounds slightly different than a moment ago. He has a known peanut allergy and a prescribed epinephrine auto-injector in his pocket but hasn't used it yet, saying he \"wanted to wait and see\" since his past reactions were usually just hives that went away on their own. He also mentions he's been fighting off a cold this week and took an antihistamine for seasonal allergies this morning — details that don't change what's happening to him right now. A friend nearby is filming on his phone instead of helping.",
         choices: [
           { text: "Assess his airway and breathing while asking about known allergies and prior reactions", next: "s5_assess_good" },
           { text: "Have him lie down and wait to see if the hives get worse before doing anything", next: "s5_wait_bad", consequence: "Waiting to \"see if it gets worse\" on a patient already reporting throat tightness after a known allergen exposure burns time you don't have — this can progress to full airway swelling within minutes." },
@@ -545,7 +547,7 @@ const SCENARIOS = [
     startNode: "s6_start",
     nodes: {
       s6_start: {
-        text: "You arrive to find a 52-year-old man collapsed on the gym floor. A bystander is standing over him, unsure what to do. He is unresponsive.",
+        text: "You arrive to find a 52-year-old man collapsed on the gym floor near a treadmill, which is still running. A bystander is standing over him, unsure what to do, saying he \"just went down mid-run without any warning\" and that he saw him gripping his chest a moment before he collapsed. Another gym member mentions the man has been \"training hard for a marathon\" for months and looked totally fine an hour ago — details that describe his routine but don't change what's in front of you right now. He is unresponsive, and the bystander isn't sure if he's breathing.",
         choices: [
           { text: "Check for responsiveness and breathing at the same time you check for a pulse, and call for the AED immediately", next: "s6_check_good" },
           { text: "Spend a full minute checking his medical history with bystanders before touching him", next: "s6_delay_bad", consequence: "Every second without compressions or defibrillation in cardiac arrest lowers his odds of survival. History can be gathered later — it is never the first priority in an unresponsive, possibly pulseless patient." },
@@ -628,8 +630,8 @@ const SCENARIOS = [
     startNode: "s7_start",
     nodes: {
       s7_start: {
-        vitals: "HR 88 · BP 168/94 · SpO2 97%",
-        text: "A 74-year-old woman was found by a neighbor wandering her yard in her nightgown, speech slurred, right arm hanging at her side. Her family isn't home and no one can immediately say when she was last seen normal.",
+        vitals: "HR 88 · BP 168/94 · RR 18 · SpO2 97%",
+        text: "A 74-year-old woman was found by a neighbor wandering her yard in her nightgown, speech slurred, right arm hanging at her side. The neighbor says she has a history of high blood pressure and atrial fibrillation, and mentions she \"seemed a little tired and forgetful\" at a family dinner two nights ago — a vague detail that doesn't establish anything about right now. Her family isn't home and no one can immediately say when she was last seen normal, though the neighbor recalls seeing her gardening earlier. There's an empty pill organizer on her porch table, and a phone in the grass a few feet away as if dropped.",
         choices: [
           { text: "Perform a rapid stroke screen (face, arm, speech) and get an exact last-known-well time from any available source", next: "s7_fast_good" },
           { text: "Assume she's just disoriented from age and focus on getting her comfortable before assessing further", next: "s7_assume_bad", consequence: "Slurred speech and one-sided arm weakness are classic stroke signs, not just \"disorientation.\" Dismissing them as normal aging costs precious time in a condition where time directly determines treatment options and outcome." },
@@ -697,7 +699,7 @@ const SCENARIOS = [
     nodes: {
       s8_start: {
         vitals: "HR 58 · RR 4 · SpO2 82%",
-        text: "Bystanders flag you down to a 30-year-old man slumped behind a convenience store, needle nearby, breathing about four times a minute and barely responsive to a sternal rub. His lips have a bluish tint.",
+        text: "Bystanders flag you down to a 30-year-old man slumped behind a convenience store, needle nearby, breathing about four times a minute and barely responsive to a sternal rub. His lips have a bluish tint, and his pupils are noticeably pinpoint. A bystander says he was \"talking normally and seemed fine\" about fifteen minutes ago before wandering back here, and mentions there's an empty beer can near him as well — a detail that doesn't change what his current breathing rate and color are telling you right now. There's no medical alert jewelry, and no one can say what exactly was in the needle nearby, only that it's there.",
         choices: [
           { text: "Open his airway and begin assisting ventilations with a bag-valve mask while preparing naloxone", next: "s8_bvm_good" },
           { text: "Administer naloxone immediately and wait to see if he starts breathing better on his own", next: "s8_naloxone_only", consequence: "He is barely breathing right now — four breaths a minute with an SpO2 of 82% is not survivable for long. Naloxone takes a couple of minutes to take effect at best; a patient this hypoxic needs ventilatory support started immediately, not after a delay waiting on a drug to work." },
