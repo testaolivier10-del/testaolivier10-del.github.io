@@ -10,6 +10,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NREMT-EMT Study Notes — Chapter by Chapter</title>
 <meta name="description" content="Full narrative study notes for NREMT-EMT prep, organized by course chapter, growing over time.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/study-notes.html">
+<meta property="og:title" content="NREMT-EMT Study Notes — Chapter by Chapter">
+<meta property="og:description" content="Full narrative study notes for NREMT-EMT prep, organized by course chapter, growing over time.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://testaolivier10-del.github.io/study-notes.html">
 <meta property="og:site_name" content="LevlPrep">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -3872,9 +3877,9 @@ function renderNotes(filterText){
 
 function renderRail(){
   const list = document.getElementById('railList');
-  const topBtn = `<button type="button" class="rail-btn rail-top" data-target="top" title="Back to top">&uarr;</button>`;
+  const topBtn = `<button type="button" class="rail-btn rail-top" data-target="top" title="Back to top" aria-label="Back to top">&uarr;</button>`;
   const chapterBtns = CHAPTERS.map(ch =>
-    `<button type="button" class="rail-btn" data-chapter="${ch.num}" title="Chapter ${ch.num}: ${ch.title}">${ch.num}</button>`
+    `<button type="button" class="rail-btn" data-chapter="${ch.num}" title="Chapter ${ch.num}: ${ch.title}" aria-label="Chapter ${ch.num}: ${ch.title}">${ch.num}</button>`
   ).join('');
   list.innerHTML = topBtn + chapterBtns;
 

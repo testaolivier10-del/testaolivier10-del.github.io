@@ -11,6 +11,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Auscultation Sound Trainer — LevlPrep</title>
 <meta name="description" content="Listen to real recorded lung sounds — wheezes, crackles, stridor — and train your ear to tell them apart. Click to play, guess which one it is, get instant feedback.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/sound-trainer.html">
+<meta property="og:title" content="Auscultation Sound Trainer — LevlPrep">
+<meta property="og:description" content="Listen to real recorded lung sounds — wheezes, crackles, stridor — and train your ear to tell them apart. Click to play, guess which one it is, get instant feedback.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://testaolivier10-del.github.io/sound-trainer.html">
 <meta property="og:site_name" content="LevlPrep">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -309,7 +314,7 @@ function renderQuizRound(){
 
   box.innerHTML = `
     <div class="quiz-progress">Round ${quizState.current + 1} of ${quizState.rounds.length}<span class="quiz-score">Score: ${quizState.score}/${quizState.current}</span></div>
-    <button type="button" class="big-play-btn" id="quizPlayBtn">&#9658;</button>
+    <button type="button" class="big-play-btn" id="quizPlayBtn" aria-label="Play sound clip">&#9658;</button>
     <div class="quiz-hint">Click to play the clip (click again to stop), then pick what you hear</div>
     <div class="quiz-choices" id="quizChoices">
       ${SOUNDS.map(s => `<button type="button" class="choice-btn" data-choice="${s.id}">${s.label}</button>`).join('')}

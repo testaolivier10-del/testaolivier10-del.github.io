@@ -105,8 +105,8 @@ h2{font-family:var(--font-ui);font-size:17px;font-weight:800;letter-spacing:-0.0
 .btn-outline:hover{background:var(--hover-tint);}
 .link-underline{font:800 14px var(--font-ui);color:var(--ink);background:none;border:0;border-bottom:2px solid var(--accent);padding:0 0 2px;cursor:pointer;text-decoration:none;display:inline-block;}
 .link-underline:hover{color:var(--accent);}
-.screenshot-slot{min-height:200px;border:1px solid var(--line);border-radius:6px;background-image:repeating-linear-gradient(135deg,var(--hover-tint) 0 8px,var(--paper) 8px 16px);display:flex;align-items:flex-end;padding:12px;}
-.screenshot-slot span{font:11px var(--font-mono);color:var(--muted);background:var(--paper);padding:3px 6px;border-radius:3px;}
+.tool-visual{min-height:150px;border-radius:var(--radius-sm);background:var(--hover-tint);display:flex;align-items:center;justify-content:center;color:var(--accent);}
+.tool-visual svg{width:44px;height:44px;}
 
 .kv-row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line-soft);font-size:15px;}
 .kv-row:last-child{border-bottom:0;}
