@@ -30,9 +30,62 @@
   .home-list-row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line-soft);font-size:15px;}
   .home-list-row:last-child{border-bottom:0;}
   .home-list-row .num{font:12.5px var(--font-mono);color:var(--muted);}
-  .domain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;}
   .trust-chip{display:flex;align-items:center;gap:12px;}
   .trust-chip .ic{width:36px;height:36px;border-radius:10px;background:var(--tint-good);color:var(--good);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+
+  /* ---- Hero "your progress" card: replaces the static stat-row for a
+     returning visitor who already has XP/streak/domain data (see the script
+     at the bottom of the page). Hidden by default so a first-time visitor
+     just sees the plain stat-row instead of an empty "Level 1, 0%" panel. ---- */
+  .progress-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px 24px 18px;box-shadow:var(--shadow-card);margin:26px 0 28px;max-width:440px;}
+  .progress-card[hidden]{display:none;}
+  .progress-card__top{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+  .pg-level-badge{width:48px;height:48px;border-radius:50%;background:var(--tint-accent);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font:800 14px var(--font-ui);color:var(--accent);flex-shrink:0;}
+  .pg-level-text{flex:1;min-width:0;}
+  .pg-level-text b{display:block;font:800 15px var(--font-ui);color:var(--ink);}
+  .pg-level-text span{font-size:12px;color:var(--muted);font-weight:600;}
+  .pg-streak{display:inline-flex;align-items:center;gap:5px;font:800 15px var(--font-ui);color:var(--gold);background:var(--tint-gold);padding:6px 12px;border-radius:999px;flex-shrink:0;}
+  .pg-streak svg{width:15px;height:15px;}
+  .pg-xp-track{height:10px;border-radius:999px;background:var(--line-soft);overflow:hidden;margin-bottom:6px;}
+  .pg-xp-fill{height:100%;border-radius:999px;background:var(--accent);width:0%;transition:width .6s cubic-bezier(.16,1,.3,1);}
+  .pg-xp-label{font:700 11px var(--font-mono);color:var(--muted);}
+
+  /* ---- Skill path: the six domains as a connected path of nodes instead of
+     a flat grid, echoing the level/streak system rather than just listing
+     content. Reuses the same icon/color pairing as before per domain. ---- */
+  .skill-path{position:relative;max-width:480px;margin:36px auto 0;}
+  .skill-path::before{
+    content:'';position:absolute;left:50%;top:32px;bottom:32px;width:3px;
+    background:repeating-linear-gradient(to bottom, var(--line) 0 8px, transparent 8px 18px);
+    transform:translateX(-50%);
+  }
+  .path-node{position:relative;display:flex;align-items:center;gap:14px;margin-bottom:28px;text-decoration:none;color:inherit;}
+  .path-node:last-child{margin-bottom:0;}
+  .path-node.right{flex-direction:row-reverse;transform:translateX(76px);}
+  .path-node.left{transform:translateX(-76px);}
+  .path-node.center{justify-content:center;}
+  .path-node .node-circle{
+    width:64px;height:64px;border-radius:50%;background:var(--card-tint,var(--tint-accent));
+    display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;position:relative;
+    box-shadow:0 3px 0 var(--line);transition:transform .1s ease, box-shadow .1s ease;
+  }
+  .path-node:hover .node-circle{transform:translateY(2px);box-shadow:0 1px 0 var(--line);}
+  .path-node .node-pct{
+    position:absolute;bottom:-4px;right:-4px;background:var(--navy);color:#fff;
+    font:800 10px var(--font-mono);padding:2px 6px;border-radius:999px;
+  }
+  .path-node .node-pct[hidden]{display:none;}
+  .path-node .node-text{
+    background:var(--white);border:1px solid var(--line);border-radius:12px;
+    padding:8px 14px;max-width:190px;box-shadow:0 2px 0 var(--line);
+  }
+  .path-node .node-text{display:flex;flex-direction:column;}
+  .path-node .node-text .n{font:800 14px var(--font-ui);color:var(--ink);}
+  .path-node .node-text .d{font-size:12px;color:var(--muted);margin-top:2px;line-height:1.4;}
+  @media (max-width:640px){
+    .path-node.left, .path-node.right{transform:none;flex-direction:row;}
+    .skill-path::before{left:32px;}
+  }
 </style>
 </head>
 <body>
@@ -48,10 +101,19 @@
         <div class="eyebrow">NREMT‑EMT · Cognitive exam</div>
         <h1>A complete study companion, in one browser tab.</h1>
         <p class="lede">Forty chapters of written notes, a six‑domain question bank, mnemonics, protocol flow diagrams and scenario simulations. Free to use, no account, and everything you do stays on your own device.</p>
-        <div class="stat-row" style="margin:26px 0 28px">
+        <div class="stat-row" id="heroStaticStats" style="margin:26px 0 28px">
           <div class="stat-pill"><span class="num">920</span><span class="label">Practice questions</span></div>
           <div class="stat-pill"><span class="num">40</span><span class="label">Chapters of notes</span></div>
           <div class="stat-pill"><span class="num"><span class="accent">6</span></span><span class="label">Exam domains</span></div>
+        </div>
+        <div class="progress-card" id="heroProgressCard" hidden>
+          <div class="progress-card__top">
+            <div class="pg-level-badge" id="pgLevel">L1</div>
+            <div class="pg-level-text"><b id="pgTitle">First Responder</b><span>Level <span id="pgLevelNum">1</span></span></div>
+            <span class="pg-streak" id="pgStreakWrap" hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c1.5 1 2 3 2 4.5A5.5 5.5 0 0111.5 21 6 6 0 016 15c0-5 4-6 4-9 0-1.5-.5-2.5-1-3.5C10.5 2 11 2 12 2z" fill="currentColor"/></svg><span id="pgStreak">0</span></span>
+          </div>
+          <div class="pg-xp-track"><div class="pg-xp-fill" id="pgXpFill"></div></div>
+          <div class="pg-xp-label" id="pgXpLabel">0 / 100 XP to Level 2</div>
         </div>
         <a href="practice.html" class="btn-dark">Begin a practice exam →</a>
       </div>
@@ -69,13 +131,32 @@
 
   <div class="xsection">
     <div class="eyebrow">The six domains</div>
-    <div class="domain-grid">
-      <div class="domain-card" style="--card-tint:var(--tint-accent);--card-ink:var(--accent)"><span class="icon-chip">🩺</span><div><div class="name">Assessment</div><div class="desc">Scene size-up, primary and secondary survey, vitals</div></div></div>
-      <div class="domain-card" style="--card-tint:var(--tint-good);--card-ink:var(--good)"><span class="icon-chip">🫁</span><div><div class="name">Airway &amp; Respiratory</div><div class="desc">Adjuncts, ventilation, oxygenation, obstruction</div></div></div>
-      <div class="domain-card" style="--card-tint:var(--tint-bad);--card-ink:var(--bad)"><span class="icon-chip">❤️</span><div><div class="name">Cardiac &amp; Medical</div><div class="desc">Arrest, chest pain, diabetic and neurologic emergencies</div></div></div>
-      <div class="domain-card" style="--card-tint:var(--tint-gold);--card-ink:var(--gold)"><span class="icon-chip">🩹</span><div><div class="name">Trauma</div><div class="desc">Bleeding, shock, head, spine and chest injury</div></div></div>
-      <div class="domain-card" style="--card-tint:var(--tint-warn);--card-ink:var(--warn)"><span class="icon-chip">👶</span><div><div class="name">OB/Peds &amp; Special Populations</div><div class="desc">Delivery, neonates, paediatric and geriatric care</div></div></div>
-      <div class="domain-card" style="--card-tint:var(--tint-accent);--card-ink:var(--navy2)"><span class="icon-chip">🚑</span><div><div class="name">EMS Operations</div><div class="desc">Safety, MCI, extrication, documentation</div></div></div>
+    <p class="lede" style="margin:0 0 8px;font-size:15px;max-width:48ch">Clear one to build confidence on the next &mdash; tap any domain to jump straight into a focused drill.</p>
+    <div class="skill-path">
+      <a href="practice.html?domain=Assessment" class="path-node left" data-domain="Assessment" style="--card-tint:var(--tint-accent)">
+        <span class="node-circle">🩺<span class="node-pct" hidden></span></span>
+        <span class="node-text"><span class="n">Assessment</span><span class="d">Scene size-up, primary and secondary survey, vitals</span></span>
+      </a>
+      <a href="practice.html?domain=Airway%20%26%20Respiratory" class="path-node right" data-domain="Airway &amp; Respiratory" style="--card-tint:var(--tint-good)">
+        <span class="node-circle">🫁<span class="node-pct" hidden></span></span>
+        <span class="node-text"><span class="n">Airway &amp; Respiratory</span><span class="d">Adjuncts, ventilation, oxygenation, obstruction</span></span>
+      </a>
+      <a href="practice.html?domain=Cardiac%20%26%20Medical" class="path-node left" data-domain="Cardiac &amp; Medical" style="--card-tint:var(--tint-bad)">
+        <span class="node-circle">❤️<span class="node-pct" hidden></span></span>
+        <span class="node-text"><span class="n">Cardiac &amp; Medical</span><span class="d">Arrest, chest pain, diabetic and neurologic emergencies</span></span>
+      </a>
+      <a href="practice.html?domain=Trauma" class="path-node right" data-domain="Trauma" style="--card-tint:var(--tint-gold)">
+        <span class="node-circle">🩹<span class="node-pct" hidden></span></span>
+        <span class="node-text"><span class="n">Trauma</span><span class="d">Bleeding, shock, head, spine and chest injury</span></span>
+      </a>
+      <a href="practice.html?domain=OB%2FPeds%20%26%20Special%20Populations" class="path-node left" data-domain="OB/Peds &amp; Special Populations" style="--card-tint:var(--tint-warn)">
+        <span class="node-circle">👶<span class="node-pct" hidden></span></span>
+        <span class="node-text"><span class="n">OB/Peds &amp; Special Populations</span><span class="d">Delivery, neonates, paediatric and geriatric care</span></span>
+      </a>
+      <a href="practice.html?domain=EMS%20Operations" class="path-node center" data-domain="EMS Operations" style="--card-tint:var(--tint-accent)">
+        <span class="node-circle">🚑<span class="node-pct" hidden></span></span>
+        <span class="node-text"><span class="n">EMS Operations</span><span class="d">Safety, MCI, extrication, documentation</span></span>
+      </a>
     </div>
   </div>
 
@@ -103,5 +184,62 @@
 
 </div>
 <script src="assets/nav.js" defer></script>
+<script defer>
+(function(){
+  // Swaps the static "920 questions / 40 chapters / 6 domains" stat row for a
+  // real "your progress" card once someone actually has progress to show —
+  // reads the same nremt_xp / nremt_streak / nremt_domain_stats_all keys
+  // practice.html and nav.js already own, so this is read-only here.
+  function loadJSON(key){
+    try{ var raw = localStorage.getItem(key); return raw ? JSON.parse(raw) : null; }catch(e){ return null; }
+  }
+
+  function renderHomeProgress(){
+    if(!window.LevlXP) return;
+    var xpState = window.LevlXP.loadXp();
+    var domainStats = loadJSON('nremt_domain_stats_all') || {};
+    var streak = loadJSON('nremt_streak');
+    var hasProgress = xpState.total > 0 || Object.keys(domainStats).length > 0;
+    if(!hasProgress) return; // first-time visitor: leave the static stat-row showing
+
+    var level = window.LevlXP.levelForXp(xpState.total);
+    var prevXp = window.LevlXP.xpForLevel(level);
+    var nextXp = window.LevlXP.xpForLevel(level + 1);
+    var into = xpState.total - prevXp;
+    var span = Math.max(1, nextXp - prevXp);
+
+    document.getElementById('pgLevel').textContent = 'L' + level;
+    document.getElementById('pgLevelNum').textContent = level;
+    document.getElementById('pgTitle').textContent = window.LevlXP.titleForLevel(level);
+    document.getElementById('pgXpFill').style.width = Math.min(100, Math.round(into / span * 100)) + '%';
+    document.getElementById('pgXpLabel').textContent = into + ' / ' + span + ' XP to Level ' + (level + 1);
+
+    if(streak && streak.currentStreak > 0){
+      document.getElementById('pgStreak').textContent = streak.currentStreak;
+      document.getElementById('pgStreakWrap').hidden = false;
+    }
+
+    document.getElementById('heroStaticStats').hidden = true;
+    document.getElementById('heroProgressCard').hidden = false;
+
+    Object.keys(domainStats).forEach(function(d){
+      var s = domainStats[d];
+      if(!s || !s.total) return;
+      var node = document.querySelector('.path-node[data-domain="' + d.replace(/"/g, '\\"') + '"]');
+      var pctEl = node && node.querySelector('.node-pct');
+      if(pctEl){
+        pctEl.textContent = Math.round(s.correct / s.total * 100) + '%';
+        pctEl.hidden = false;
+      }
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', renderHomeProgress);
+  } else {
+    renderHomeProgress();
+  }
+})();
+</script>
 </body>
 </html>

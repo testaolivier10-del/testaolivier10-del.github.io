@@ -5,6 +5,8 @@
 :root{
   --navy:#16332E;      /* deep teal-black — headers, buttons, strong text */
   --navy2:#1F4A42;      /* secondary teal — hover/pressed states */
+  --navy-press:#0E2620; /* bottom-edge shadow under navy buttons, for the pressed-button effect */
+  --accent-press:#1F7A6C; /* bottom-edge shadow under accent-colored buttons */
   --paper:#FBFAF7;      /* page background — warm editorial paper */
   --white:#FFFFFF;
   --accent:#2C9C8B;      /* primary teal-mint accent */
@@ -32,8 +34,8 @@
   --overlay-bg:rgba(255,255,255,0.88); /* translucent panel over the 3D canvas/viewer */
   --radius-sm:8px;
   --radius-lg:16px;
-  --shadow-card:0 1px 2px rgba(22,51,46,0.05), 0 6px 16px -8px rgba(22,51,46,0.10);
-  --shadow-pop:0 4px 10px rgba(22,51,46,0.08), 0 16px 32px -12px rgba(22,51,46,0.18);
+  --shadow-card:0 3px 0 var(--line);
+  --shadow-pop:0 3px 0 var(--line), 0 14px 28px -16px rgba(22,51,46,0.22);
   --header-bg:rgba(251,250,247,0.92); /* translucent .paper, for the blurred sticky nav */
   --site-header-h:64px; /* fallback; nav.js measures the real rendered height and overrides this */
 }
@@ -62,9 +64,11 @@
   --tint-warn:rgba(217,165,75,0.20);
   --tint-gold:rgba(240,168,60,0.18);
   --overlay-bg:rgba(24,36,34,0.88);
-  --shadow-card:0 1px 2px rgba(0,0,0,0.16), 0 6px 16px -8px rgba(0,0,0,0.30);
-  --shadow-pop:0 4px 10px rgba(0,0,0,0.24), 0 16px 32px -12px rgba(0,0,0,0.40);
+  --shadow-card:0 3px 0 var(--line);
+  --shadow-pop:0 3px 0 var(--line), 0 14px 28px -16px rgba(0,0,0,0.4);
   --header-bg:rgba(15,23,21,0.92);
+  --navy-press:#081210;
+  --accent-press:#2E8D80;
 }
 
 /* ---- Shared base layer: reset + page shell + typography, loaded once
@@ -188,13 +192,21 @@ h2{font-family:var(--font-ui);font-size:17px;font-weight:800;letter-spacing:-0.0
 .xmeta{font:12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
 .btn-dark{
   font:800 14.5px var(--font-ui);color:var(--on-accent);
-  background:linear-gradient(135deg,var(--accent),var(--navy2));
-  padding:13px 24px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;display:inline-block;
-  box-shadow:0 4px 14px -4px rgba(44,156,139,0.5);
+  background:var(--navy);
+  padding:13px 24px;border-radius:var(--radius-sm);border:0;cursor:pointer;text-decoration:none;display:inline-block;
+  box-shadow:0 4px 0 var(--navy-press);
+  transition:transform .08s ease, box-shadow .08s ease, background-color .15s ease;
 }
-.btn-dark:hover{transform:translateY(-1px);box-shadow:0 6px 18px -4px rgba(44,156,139,0.6);color:var(--on-accent);}
-.btn-outline{font:800 14px var(--font-ui);color:var(--ink);background:var(--white);border:1px solid var(--ink);padding:12px 22px;border-radius:999px;cursor:pointer;text-decoration:none;display:inline-block;}
+.btn-dark:hover{background:var(--navy2);color:var(--on-accent);}
+.btn-dark:active{transform:translateY(4px);box-shadow:0 0 0 var(--navy-press);}
+.btn-outline{
+  font:800 14px var(--font-ui);color:var(--ink);background:var(--white);border:1px solid var(--line);
+  padding:12px 22px;border-radius:var(--radius-sm);cursor:pointer;text-decoration:none;display:inline-block;
+  box-shadow:0 3px 0 var(--line);
+  transition:transform .08s ease, box-shadow .08s ease, background-color .15s ease;
+}
 .btn-outline:hover{background:var(--hover-tint);}
+.btn-outline:active{transform:translateY(3px);box-shadow:0 0 0 var(--line);}
 .link-underline{font:800 14px var(--font-ui);color:var(--ink);background:none;border:0;border-bottom:2px solid var(--accent);padding:0 0 2px;cursor:pointer;text-decoration:none;display:inline-block;}
 .link-underline:hover{color:var(--accent);}
 .tool-visual{min-height:150px;border-radius:var(--radius-sm);background:var(--hover-tint);display:flex;align-items:center;justify-content:center;color:var(--accent);}
@@ -263,6 +275,26 @@ button:active{transform:scale(0.98);}
   flex-shrink:0;
 }
 .theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ---- Streak chip (injected by nav.js into the header, next to the level badge).
+   Read-only display of the same nremt_streak object practice.html writes to;
+   hidden entirely at zero so a new visitor doesn't see a sad "0". ---- */
+.streak-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  height:32px;
+  padding:0 11px;
+  border-radius:999px;
+  background:var(--tint-gold);
+  color:var(--gold);
+  font-family:var(--font-ui);
+  font-weight:800;
+  font-size:13px;
+  flex-shrink:0;
+}
+.streak-chip svg{width:14px;height:14px;flex-shrink:0;}
+.streak-chip[hidden]{display:none;}
 
 /* ---- Level badge (injected by nav.js into the header, next to the theme toggle) ---- */
 .level-badge{

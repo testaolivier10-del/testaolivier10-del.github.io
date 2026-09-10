@@ -86,6 +86,7 @@
     }
     saveXp(state);
     renderLevelBadge();
+    renderStreakChip();
     return state;
   }
   function renderLevelBadge(){
@@ -102,9 +103,34 @@
 
   window.LevlXP = {
     loadXp: loadXp, awardXp: awardXp, xpForLevel: xpForLevel, levelForXp: levelForXp,
-    titleForLevel: titleForLevel, renderLevelBadge: renderLevelBadge,
+    titleForLevel: titleForLevel, renderLevelBadge: renderLevelBadge, renderStreakChip: renderStreakChip,
     DOMAIN_TIER_THRESHOLDS: DOMAIN_TIER_THRESHOLDS,
   };
+
+  // ---- Streak chip: reads the same streak object practice.html already
+  // maintains (nremt_streak). Header-only display, so it's read-only here —
+  // practice.html owns writing to it. Hidden entirely at zero so a brand-new
+  // visitor doesn't see a sad "0" next to their level badge. ----
+  var STREAK_KEY = 'nremt_streak';
+  function currentStreakCount(){
+    try{
+      var raw = localStorage.getItem(STREAK_KEY);
+      var s = raw ? JSON.parse(raw) : null;
+      return (s && s.currentStreak) || 0;
+    }catch(e){ return 0; }
+  }
+  function renderStreakChip(){
+    var el = document.getElementById('streakChip');
+    if(!el) return;
+    var n = currentStreakCount();
+    if(n > 0){
+      el.hidden = false;
+      el.querySelector('.streak-chip-num').textContent = n;
+      el.title = n + '-day study streak';
+    } else {
+      el.hidden = true;
+    }
+  }
 
   function escapeHtml(s){
     return String(s).replace(/[&<>"']/g, function(c){
@@ -133,6 +159,7 @@
           '</a>' +
         '</span>' +
         '<nav class="site-header__groups" aria-label="Site sections">' + itemsHtml +
+          '<span class="streak-chip" id="streakChip" hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c1.5 1 2 3 2 4.5A5.5 5.5 0 0111.5 21 6 6 0 016 15c0-5 4-6 4-9 0-1.5-.5-2.5-1-3.5C10.5 2 11 2 12 2z" fill="currentColor"/></svg><span class="streak-chip-num">0</span></span>' +
           '<a href="dashboard.html' + (cur === 'dashboard.html' ? '#levelSection' : '') + '" class="level-badge" id="levelBadge" title="Your level">Lvl 1</a>' +
           '<span id="accountSlot"></span>' +
           '<button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>' +
@@ -143,6 +170,7 @@
     if(fallback) fallback.remove();
 
     renderLevelBadge();
+    renderStreakChip();
     renderAccountUI();
 
     var toggle = document.getElementById('themeToggle');
