@@ -4,7 +4,7 @@ Source for the [Study Hub](https://testaolivier10-del.github.io/) site, home to:
 
 **[LevlPrep](https://testaolivier10-del.github.io/nremt/)** — a free NREMT-EMT exam prep app: a 978-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
 
-**[Organic Chemistry](https://testaolivier10-del.github.io/ochem/)** (beta) — a mastery/learning product, not exam prep: a full 14-module Organic Chemistry I curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. Two lessons are live (Formal Charge, SN2); the rest of the curriculum shows as "coming soon" until built. A Mastery dashboard scores performance per module from real question attempts, not just completion.
+**[Organic Chemistry](https://testaolivier10-del.github.io/ochem/)** (beta) — a mastery/learning product, not exam prep: a full 14-module Organic Chemistry I curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. Four lessons are live (Formal Charge, SN1, SN2, E2); the rest of the curriculum shows as "coming soon" until built. A Mastery dashboard scores performance per module from real question attempts, not just completion, and flags concept dependencies: struggling on E2 surfaces a "possible gap detected" callout pointing at its declared prerequisites, whether or not those prerequisite lessons exist yet.
 
 ## Stack
 
@@ -36,15 +36,24 @@ ochem/                 The Organic Chemistry app (beta)
   index.html             Product home
   learn.html             Full 14-module curriculum browser, rendered from assets/curriculum.js
   practice.html, review.html, tools.html   Honest "coming soon" states — no fake functionality
-  mastery.html           Mastery dashboard (overall %, per-module bars, weakest/next-up)
+  mastery.html           Mastery dashboard (overall %, per-module bars, weakest/next-up,
+                         and a concept-dependency callout — see curriculum.js below)
   mechanisms/sn2.html    Interactive SN2 lesson (Module 6): click-through nucleophile/
                          electrophile identification, arrow-pushing, product prediction
+  mechanisms/sn1.html    Interactive SN1 lesson (Module 6): ionization, the planar
+                         carbocation, attack-from-either-face, racemization
+  mechanisms/e2.html     Interactive E2 lesson (Module 6): all three concerted arrows,
+                         Zaitsev vs. Hofmann regiochemistry from base bulk
   lessons/formal-charge.html   Module 1 lesson using the full 7-part lesson design:
                          Explain -> Visualize -> Interact -> Guided -> Independent ->
                          Explanation -> Challenge
   assets/
-    curriculum.js          Single source of truth for modules/topics/lesson hrefs, plus
-                            localStorage-backed mastery scoring (ochem_progress)
+    curriculum.js          Single source of truth for modules/topics/lesson hrefs, a
+                            topic's declared `dependsOn` prerequisites, and
+                            localStorage-backed mastery scoring (ochem_progress) — including
+                            strugglingPrerequisites(), which flags a topic once its score
+                            drops under 60% across 5+ attempts and names the prerequisite
+                            topics to review, whether or not those have lessons yet
     ochem-nav.js           Injects the Learn/Practice/Review/Tools/Mastery sub-nav
     ochem.css              Shared sub-nav, module/topic list, and mastery-bar styles
     learn-page.js, mastery-page.js   Dynamic list rendering for those two pages, kept in

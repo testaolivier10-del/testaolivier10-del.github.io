@@ -58,3 +58,16 @@ a.topic-row:hover{background:var(--hover-tint);}
 }
 .empty-panel h2{margin:0 0 8px;font-size:19px;}
 .empty-panel p{margin:0 auto;max-width:48ch;color:var(--muted);font-weight:600;font-size:14.5px;}
+
+.dep-alert{
+  background:var(--tint-amber);border:var(--bw) solid var(--amber);border-radius:var(--radius-lg);
+  padding:18px 20px;margin-bottom:18px;
+}
+.dep-alert .k{font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--amber-press);margin-bottom:6px;}
+.dep-alert .msg{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:10px;}
+.dep-alert .prereqs{display:flex;flex-wrap:wrap;gap:8px;}
+.dep-alert .prereqs a, .dep-alert .prereqs span{
+  font:800 12.5px var(--font-ui);padding:6px 12px;border-radius:var(--radius-pill);
+  text-decoration:none;color:var(--ink);background:var(--white);border:1px solid var(--line);
+}
+.dep-alert .prereqs a{color:var(--accent-press);border-color:var(--accent);}
