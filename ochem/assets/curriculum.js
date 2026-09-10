@@ -25,12 +25,12 @@
       { id: 'bond-polarity', title: 'Bond polarity', href: 'lessons/bond-polarity.html' }
     ]},
     { id: 'electron-movement', title: 'Organic Structure & Electron Movement', topics: [
-      { id: 'resonance', title: 'Resonance', href: null },
-      { id: 'curved-arrows', title: 'Curved arrows', href: null },
-      { id: 'nucleophiles', title: 'Nucleophiles', href: null },
-      { id: 'electrophiles', title: 'Electrophiles', href: null },
-      { id: 'leaving-groups', title: 'Leaving groups', href: null },
-      { id: 'electron-rich-poor', title: 'Electron-rich vs. electron-poor atoms', href: null }
+      { id: 'resonance', title: 'Resonance', href: 'lessons/resonance.html' },
+      { id: 'curved-arrows', title: 'Curved arrows', href: 'lessons/curved-arrows.html', dependsOn: ['resonance'] },
+      { id: 'nucleophiles', title: 'Nucleophiles', href: 'lessons/nucleophiles.html', dependsOn: ['electronegativity'] },
+      { id: 'electrophiles', title: 'Electrophiles', href: 'lessons/electrophiles.html', dependsOn: ['electronegativity'] },
+      { id: 'leaving-groups', title: 'Leaving groups', href: 'lessons/leaving-groups.html', dependsOn: ['electrophiles'] },
+      { id: 'electron-rich-poor', title: 'Electron-rich vs. electron-poor atoms', href: 'lessons/electron-rich-poor.html', dependsOn: ['nucleophiles', 'electrophiles'] }
     ]},
     { id: 'acids-bases', title: 'Acids & Bases', topics: [
       { id: 'bronsted', title: 'Brønsted acids/bases', href: null },

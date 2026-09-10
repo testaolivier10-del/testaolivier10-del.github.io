@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electron-Rich vs. Electron-Poor Atoms | Organic Chemistry</title>
+<meta name="description" content="Tie electronegativity, polarity, nucleophiles, and electrophiles together into one lens for predicting reactivity anywhere in a molecule.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/electron-rich-poor.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 2 &middot; Organic Structure &amp; Electron Movement</div>
+    <h1 style="margin-bottom:4px;">Electron-rich vs. electron-poor atoms.</h1>
+    <p class="lede" style="margin-top:0;">One lens that ties everything in this module together.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 6</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'electron-rich-poor',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'It all comes down to where the electron density is.',
+        bodyHtml: '<p class="step-body">An <b>electron-rich</b> atom has extra electron density available — a lone pair, a negative charge, or a π bond — and tends to act as a <b>nucleophile</b>. An <b>electron-poor</b> atom has a deficit of electron density — a positive charge, a partial positive from a nearby electronegative atom, or an empty orbital — and tends to act as an <b>electrophile</b>.</p><p class="step-body" style="margin-bottom:0;">This is the same idea as electronegativity and bond polarity from Module 1, just applied to predict how a molecule will react.</p>'
+      },
+      {
+        render: function(api){
+          var scenes = [
+            {
+              label: 'CH₃–Cl', correctIsRich: false, prompt: 'Click the electron-poor atom.',
+              html: '<div class="scene"><svg viewBox="0 0 200 90"><text x="20" y="55" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="16">CH₃</text><line x1="66" y1="45" x2="120" y2="45" stroke="var(--line)" stroke-width="2.5"/><g class="atom" data-key="c"><circle cx="60" cy="45" r="16" fill="transparent" stroke="none"/></g><g class="atom" data-key="cl"><circle cx="150" cy="45" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="150" y="51" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">Cl</text></g></svg></div>',
+              key: 'c', wrongKey: 'cl',
+              feedback: 'Correct — chlorine\'s electronegativity pulls density away from carbon, leaving carbon δ+ and electron-poor.'
+            },
+            {
+              label: ':NH₃', correctIsRich: true, prompt: 'Click the electron-rich atom.',
+              html: '<div class="scene"><svg viewBox="0 0 160 100"><g class="atom" data-key="n"><circle cx="80" cy="55" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="80" y="61" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="15">N</text></g><circle cx="65" cy="30" r="2.5" fill="var(--muted)"/><circle cx="72" cy="24" r="2.5" fill="var(--muted)"/><line x1="80" y1="73" x2="50" y2="90" stroke="var(--line)" stroke-width="2.2"/><line x1="80" y1="73" x2="110" y2="90" stroke="var(--line)" stroke-width="2.2"/><line x1="80" y1="55" x2="80" y2="15" stroke="var(--line)" stroke-width="0"/><g class="atom" data-key="h"><circle cx="40" cy="96" r="10" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="40" y="100" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="10">H</text></g></svg></div>',
+              key: 'n', wrongKey: 'h',
+              feedback: 'Correct — the lone pair on nitrogen is exactly what makes ammonia a nucleophile.'
+            }
+          ];
+          var idx = 0;
+          function paint(){
+            var s = scenes[idx];
+            api.card.innerHTML =
+              '<div class="step-eyebrow">Interact &middot; ' + (idx+1) + ' / ' + scenes.length + '</div>' +
+              '<h2 class="step-title">' + s.label + ' — ' + s.prompt + '</h2>' +
+              s.html +
+              api.feedbackHtml('fb') +
+              api.nextButtonHtml(idx < scenes.length-1 ? 'Next' : 'Continue', false);
+            var fb = api.card.querySelector('#fb');
+            var next = api.card.querySelector('#nextBtn');
+            var answered = false;
+            api.card.querySelectorAll('.atom').forEach(function(g){
+              g.style.cursor = 'pointer';
+              g.addEventListener('click', function(){
+                if(answered) return;
+                var key = g.getAttribute('data-key');
+                if(key !== s.key && key !== s.wrongKey) return;
+                answered = true;
+                var isCorrect = key === s.key;
+                if(isCorrect){
+                  api.record(true);
+                  api.showFeedback(fb, true, s.feedback);
+                  next.disabled = false;
+                } else {
+                  api.record(false);
+                  api.showFeedback(fb, false, 'Not that one — think about which atom has the extra electron density here.');
+                  answered = false;
+                }
+              });
+            });
+            next.addEventListener('click', function(){
+              idx++;
+              if(idx < scenes.length) paint();
+              else api.advance();
+            });
+          }
+          paint();
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'An electron-rich atom is most likely to act as a(n)...',
+        options: ['Nucleophile', 'Electrophile', 'Leaving group'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — extra electron density is exactly what a nucleophile donates.',
+        wrongFeedback: 'Electrophiles are electron-poor, the opposite of what\'s being described here.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'In H₂C=CH–CHO (an α,β-unsaturated aldehyde), resonance and induction from the carbonyl make the β-carbon (the far end of the double bond)...',
+        options: ['Electron-poor (electrophilic)', 'Electron-rich (nucleophilic)', 'Completely unaffected by the carbonyl'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — the carbonyl pulls electron density through the π system all the way to the β-carbon, making it electrophilic. This is exactly why nucleophiles can attack there (conjugate addition), which you\'ll see again in Module 11.',
+        wrongFeedback: 'Trace the resonance: the carbonyl oxygen pulling electrons pulls density from the whole conjugated system, including the far carbon.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'One lens for predicting reactivity anywhere.',
+        bodyHtml: '<div class="explain-box">Electronegativity, polarity, resonance, nucleophiles, and electrophiles are really all the same underlying idea: <b>where is the electron density, and where isn\'t it?</b> Whenever you meet a new molecule, ask that question first — it tells you where a reaction will start.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'In CH₃–CH₂–O–CH₂–CH₂–Cl, which atom is most electron-poor?',
+        options: ['The carbon attached to Cl', 'The ether oxygen', 'A methyl carbon far from both Cl and O'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — chlorine\'s electronegativity pulls density directly off the carbon it\'s attached to, making that carbon the most electron-poor atom in the molecule (and the one a nucleophile would attack).'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

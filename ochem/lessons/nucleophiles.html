@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nucleophiles — Electron Movement | Organic Chemistry</title>
+<meta name="description" content="Learn what makes a species a nucleophile, how to spot one, and what makes one nucleophile stronger than another.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/nucleophiles.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 2 &middot; Organic Structure &amp; Electron Movement</div>
+    <h1 style="margin-bottom:4px;">Nucleophiles.</h1>
+    <p class="lede" style="margin-top:0;">Electron-rich species looking for somewhere positive to attack.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 6</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'nucleophiles',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: '"Nucleus-loving" — an electron pair looking for a positive partner.',
+        bodyHtml: '<p class="step-body">A <b>nucleophile</b> is any species with an available electron pair — a lone pair, a negative charge, or a π bond — that it can donate to form a new bond. Nucleophiles are drawn toward electron-poor (electrophilic) centers.</p><p class="step-body" style="margin-bottom:0;">Common nucleophiles: anions like OH⁻, CN⁻, and RS⁻; neutral molecules with lone pairs like H₂O and NH₃; and π bonds like alkenes.</p>'
+      },
+      {
+        render: function(api){
+          var pairs = [
+            { a: 'OH⁻', b: 'BF₃', correct: 'a', why: 'OH⁻ carries a full negative charge and lone pairs to donate; BF₃ has an empty orbital on boron and is actually an electrophile.' },
+            { a: 'H₂O', b: 'CH₄', correct: 'a', why: 'Water has lone pairs on oxygen it can donate; methane has no lone pairs and no charge — nothing to offer.' },
+            { a: 'NH₃', b: 'CO₂', correct: 'a', why: 'Ammonia\'s lone pair on nitrogen makes it a nucleophile; CO₂\'s carbon is electron-poor (electrophilic), pulled on by two oxygens.' }
+          ];
+          var idx = 0;
+          function paint(){
+            var p = pairs[idx];
+            api.card.innerHTML =
+              '<div class="step-eyebrow">Interact &middot; ' + (idx+1) + ' / ' + pairs.length + '</div>' +
+              '<h2 class="step-title">Click the nucleophile.</h2>' +
+              '<div class="choice-row">' +
+                '<button class="choice-btn" data-v="a" style="text-align:center;font:900 18px var(--font-mono);">' + p.a + '</button>' +
+                '<button class="choice-btn" data-v="b" style="text-align:center;font:900 18px var(--font-mono);">' + p.b + '</button>' +
+              '</div>' +
+              api.feedbackHtml('fb') +
+              api.nextButtonHtml(idx < pairs.length-1 ? 'Next pair' : 'Continue', false);
+            var fb = api.card.querySelector('#fb');
+            var next = api.card.querySelector('#nextBtn');
+            var answered = false;
+            api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+              btn.addEventListener('click', function(){
+                if(answered) return;
+                answered = true;
+                var v = btn.getAttribute('data-v');
+                var isCorrect = v === p.correct;
+                api.card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+                btn.classList.add(isCorrect ? 'correct' : 'wrong');
+                api.record(isCorrect);
+                api.showFeedback(fb, isCorrect, p.why);
+                next.disabled = false;
+              });
+            });
+            next.addEventListener('click', function(){
+              idx++;
+              if(idx < pairs.length) paint();
+              else api.advance();
+            });
+          }
+          paint();
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Which factor makes a species a STRONGER nucleophile, all else being equal?',
+        options: ['More negative charge / higher electron density', 'Higher electronegativity of the donating atom', 'A larger positive formal charge'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — more available electron density means a more eager, stronger nucleophile.',
+        wrongFeedback: 'A more electronegative atom actually holds onto its electrons more tightly, which makes it a weaker (not stronger) nucleophile.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'In a polar protic solvent (like water or methanol), which is the better nucleophile: I⁻ or F⁻?',
+        options: ['I⁻ — larger and more polarizable, and not tightly held by hydrogen bonding', 'F⁻ — more electronegative, so it\'s more reactive', 'They\'re equally good nucleophiles'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. In protic solvents, small, highly charged anions like F⁻ get "caged" by hydrogen bonds, which blunts their nucleophilicity. Large, polarizable I⁻ isn\'t held back the same way.',
+        wrongFeedback: 'Think about solvation: protic solvents hydrogen-bond tightly to small, charge-dense anions like F⁻, holding them back from reacting.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Every mechanism starts with finding the nucleophile.',
+        bodyHtml: '<div class="explain-box">Nucleophilicity is the driving force behind substitution (SN1/SN2) and addition reactions. Before you can draw a single curved arrow in a mechanism, you need to identify <b>which species is the nucleophile</b> — that\'s where the arrow\'s tail is going to start.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Which is the stronger nucleophile: CH₃O⁻ or CH₃OH?',
+        options: ['CH₃O⁻ — the negative charge means more available electron density', 'CH₃OH — neutral species are always more reactive', 'They\'re equally nucleophilic'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — deprotonating an alcohol to its alkoxide (CH₃O⁻) makes it a substantially stronger nucleophile by giving it a full negative charge to donate.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>
