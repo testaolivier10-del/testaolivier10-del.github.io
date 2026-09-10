@@ -18,6 +18,7 @@
 <meta property="og:site_name" content="Study Hub">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="assets/ochem.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
@@ -62,6 +63,7 @@
     <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
   </div>
 </div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
 
 <div class="xshell">
 
@@ -72,8 +74,8 @@
         <h1>Actually understand organic chemistry.</h1>
         <p class="lede">Not another video course. Perform the mechanism yourself — identify the nucleophile, draw the electron-pushing arrow, predict the product — and get told exactly why when you're wrong.</p>
         <div class="hero-ctas">
-          <a href="mechanisms/sn2.html" class="btn-press">Try the SN2 mechanism</a>
-          <a href="#how" class="link-quiet">See how it works</a>
+          <a href="learn.html" class="btn-press">Open the curriculum</a>
+          <a href="mechanisms/sn2.html" class="link-quiet">Try the SN2 mechanism &rarr;</a>
         </div>
       </div>
       <div class="mech-preview">
@@ -109,29 +111,24 @@
 
   <div class="xsection">
     <div class="xgrid">
-      <div class="xlabel">Mechanisms</div>
+      <div class="xlabel">Start here</div>
       <div class="xcontent narrow">
         <div class="topic-grid">
-          <a class="topic-card" href="mechanisms/sn2.html">
-            <div class="n">SN2 Reactions</div>
-            <div class="d">Backside attack, one step, inversion.</div>
+          <a class="topic-card" href="lessons/formal-charge.html">
+            <div class="n">Formal Charge</div>
+            <div class="d">Module 1 &middot; Foundations. Count bonds and lone pairs on real structures.</div>
             <div class="status">Start &rarr;</div>
           </a>
-          <div class="topic-card locked">
-            <div class="n">SN1 Reactions</div>
-            <div class="d">Carbocation intermediate, two steps.</div>
-            <div class="status">Coming next</div>
-          </div>
-          <div class="topic-card locked">
-            <div class="n">E1 / E2 Elimination</div>
-            <div class="d">Anti-periplanar geometry, Zaitsev's rule.</div>
-            <div class="status">Coming next</div>
-          </div>
-          <div class="topic-card locked">
-            <div class="n">Acids &amp; Bases</div>
-            <div class="d">Curved-arrow proton transfer.</div>
-            <div class="status">Coming next</div>
-          </div>
+          <a class="topic-card" href="mechanisms/sn2.html">
+            <div class="n">SN2 Reactions</div>
+            <div class="d">Module 6 &middot; Backside attack, one step, inversion.</div>
+            <div class="status">Start &rarr;</div>
+          </a>
+          <a class="topic-card" href="learn.html">
+            <div class="n">Full curriculum</div>
+            <div class="d">All 14 modules, foundations through spectroscopy.</div>
+            <div class="status">Browse &rarr;</div>
+          </a>
         </div>
       </div>
     </div>
@@ -144,6 +141,11 @@
   </div>
 
 </div>
+<script>
+  window.OCHEM_SECTION = 'home';
+  window.OCHEM_BASE = '';
+</script>
+<script src="assets/ochem-nav.js"></script>
 <script>
   var toggle = document.getElementById('themeToggle');
   toggle.addEventListener('click', function(){

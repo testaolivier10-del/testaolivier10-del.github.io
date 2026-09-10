@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formal Charge — Foundations | Organic Chemistry</title>
+<meta name="description" content="Learn formal charge by counting bonds and lone pairs on real Lewis structures, from ammonium through the counterintuitive case of perchlorate.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/formal-charge.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+  .lesson-shell{max-width:760px;margin:0 auto;}
+  .progress-bar{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+  .progress-bar .track{flex:1;height:10px;border-radius:999px;background:var(--track);overflow:hidden;}
+  .progress-bar .fill{height:100%;background:var(--accent);border-radius:999px;transition:width .25s ease;}
+  .progress-bar .label{font:900 12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
+
+  .lesson-card{
+    background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+    padding:clamp(20px,4vw,32px);box-shadow:var(--lift-lg);
+  }
+  .step-eyebrow{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+  .step-title{font:900 clamp(19px,3vw,24px) var(--font-ui);margin:0 0 10px;color:var(--ink);}
+  .step-body{font-size:15px;font-weight:600;color:var(--ink);line-height:1.6;margin:0 0 18px;}
+  .step-body b{color:var(--ink);}
+  .formula{
+    font:900 17px var(--font-mono);background:var(--tint-accent);color:var(--accent-press);
+    border-radius:var(--radius);padding:14px 18px;margin:0 0 18px;text-align:center;
+  }
+
+  .scene{background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);padding:20px 10px;margin-bottom:18px;user-select:none;}
+  .scene svg{width:100%;height:auto;display:block;max-width:340px;margin:0 auto;}
+  .bond-hit{cursor:pointer;stroke:transparent;stroke-width:14;}
+  .bond-line{transition:stroke .1s ease,stroke-width .1s ease;}
+  .bond-line.counted{stroke:var(--accent);stroke-width:3.5;}
+  .atom-label{font-family:'IBM Plex Mono',monospace;font-weight:700;pointer-events:none;}
+  .lp-dot{fill:var(--muted);}
+
+  .count-hint{font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;}
+
+  .choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
+  .choice-btn{
+    flex:1 1 90px;text-align:center;background:var(--white);border:var(--bw) solid var(--line);
+    border-radius:var(--radius);padding:14px 10px;font:900 15px var(--font-mono);color:var(--ink);
+    cursor:pointer;box-shadow:var(--lift-sm);transition:border-color .1s ease,transform .06s ease;
+  }
+  .choice-btn:hover{border-color:var(--accent);}
+  .choice-btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--line);}
+  .choice-btn.correct{border-color:var(--good);background:var(--tint-good);}
+  .choice-btn.wrong{border-color:var(--bad);background:var(--tint-bad);}
+  .choice-btn:disabled{cursor:default;}
+
+  .feedback{border-radius:var(--radius);padding:14px 16px;font-size:14.5px;font-weight:700;line-height:1.55;margin-bottom:16px;display:none;}
+  .feedback.show{display:block;}
+  .feedback.good{background:var(--tint-good);color:var(--good-press);}
+  .feedback.bad{background:var(--tint-bad);color:var(--bad-press);}
+
+  .mini-progress{display:flex;gap:6px;margin-bottom:16px;}
+  .mini-progress span{flex:1;height:5px;border-radius:999px;background:var(--track);}
+  .mini-progress span.done{background:var(--accent);}
+
+  .actions{display:flex;justify-content:flex-end;gap:10px;}
+  .btn-press:disabled{opacity:.45;cursor:default;}
+  .explain-box{background:var(--tint-accent);border-radius:var(--radius);padding:16px 18px;font-size:14.5px;font-weight:600;line-height:1.6;margin-bottom:18px;color:var(--ink);}
+  .explain-box b{color:var(--accent-press);}
+</style>
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 1 &middot; Foundations</div>
+    <h1 style="margin-bottom:4px;">Formal charge.</h1>
+    <p class="lede" style="margin-top:0;">Count bonds and lone pairs on a real structure — don't just memorize the formula.</p>
+  </div>
+
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 6</div>
+  </div>
+
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script>
+(function(){
+  var TOPIC_ID = 'formal-charge';
+  var step = 0; // 0 explain, 1 visualize+interact (NH4+), 2 guided (OH-), 3 independent (H3O+), 4 why-it-matters, 5 challenge (ClO4-)
+  var TOTAL = 5;
+  var card = document.getElementById('card');
+  var progFill = document.getElementById('progFill');
+  var progLabel = document.getElementById('progLabel');
+
+  function record(correct){ window.OchemCurriculum.recordAttempt(TOPIC_ID, correct); }
+  function updateProgress(){
+    progFill.style.width = Math.round((step/TOTAL)*100) + '%';
+    progLabel.textContent = 'Step ' + (step+1) + ' / ' + (TOTAL+1);
+  }
+  function feedbackHtml(id){ return '<div class="feedback" id="' + id + '"></div>'; }
+  function showFeedback(el, good, text){ el.className = 'feedback show ' + (good?'good':'bad'); el.textContent = text; }
+  function nextButton(label, enabled){ return '<div class="actions"><button class="btn-press" id="nextBtn"' + (enabled?'':' disabled') + '>' + label + '</button></div>'; }
+
+  function render(){
+    updateProgress();
+    if(step===0) renderExplain();
+    else if(step===1) renderInteractNH4();
+    else if(step===2) renderGuidedOH();
+    else if(step===3) renderIndependentH3O();
+    else if(step===4) renderWhyItMatters();
+    else renderChallenge();
+  }
+
+  // ---- Step 0: Explain ----
+  function renderExplain(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Explain</div>' +
+      '<h2 class="step-title">Not every atom in a Lewis structure is neutral.</h2>' +
+      '<p class="step-body">An atom’s <b>formal charge</b> compares the electrons it "owns" in a structure to the electrons it would have on its own as a neutral atom. It’s how you spot which Lewis structure is realistic, and which atom in a molecule is actually charged.</p>' +
+      '<div class="formula">FC = (valence electrons) − (lone-pair electrons) − (number of bonds)</div>' +
+      '<p class="step-body" style="margin-bottom:0;">Every bond — single, double, or triple — counts as <b>one bond</b> here, because you’re counting how many bonds surround the atom, not how many electrons are in them.</p>' +
+      nextButton('Continue', true);
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step=1; render(); });
+  }
+
+  // ---- Step 1: Visualize + Interact — NH4+ ----
+  function renderInteractNH4(){
+    var countedBonds = 0;
+    card.innerHTML =
+      '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+      '<h2 class="step-title">Click every bond around nitrogen.</h2>' +
+      '<p class="step-body">This is the ammonium ion, NH₄⁺. Nitrogen has 5 valence electrons. Click each bond line to count them.</p>' +
+      '<div class="scene"><svg viewBox="0 0 220 200">' +
+        '<text x="100" y="8" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="12" fill="var(--muted)">NH₄⁺</text>' +
+        '<g class="bond" data-b="1"><line class="bond-hit" x1="100" y1="100" x2="100" y2="40"/><line class="bond-line" x1="100" y1="100" x2="100" y2="40" stroke="var(--line)" stroke-width="2.5"/></g>' +
+        '<g class="bond" data-b="2"><line class="bond-hit" x1="100" y1="100" x2="160" y2="100"/><line class="bond-line" x1="100" y1="100" x2="160" y2="100" stroke="var(--line)" stroke-width="2.5"/></g>' +
+        '<g class="bond" data-b="3"><line class="bond-hit" x1="100" y1="100" x2="100" y2="160"/><line class="bond-line" x1="100" y1="100" x2="100" y2="160" stroke="var(--line)" stroke-width="2.5"/></g>' +
+        '<g class="bond" data-b="4"><line class="bond-hit" x1="100" y1="100" x2="40" y2="100"/><line class="bond-line" x1="100" y1="100" x2="40" y2="100" stroke="var(--line)" stroke-width="2.5"/></g>' +
+        '<circle cx="100" cy="100" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="100" y="106" text-anchor="middle" font-size="16">N</text>' +
+        '<circle cx="100" cy="30" r="13" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="100" y="35" text-anchor="middle" font-size="13">H</text>' +
+        '<circle cx="170" cy="100" r="13" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="170" y="105" text-anchor="middle" font-size="13">H</text>' +
+        '<circle cx="100" cy="170" r="13" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="100" y="175" text-anchor="middle" font-size="13">H</text>' +
+        '<circle cx="30" cy="100" r="13" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="30" y="105" text-anchor="middle" font-size="13">H</text>' +
+      '</svg></div>' +
+      '<div class="count-hint" id="countHint">Bonds counted: 0 / 4</div>' +
+      feedbackHtml('fb') +
+      nextButton('Continue', false);
+
+    var hint = card.querySelector('#countHint');
+    var fb = card.querySelector('#fb');
+    var next = card.querySelector('#nextBtn');
+    var counted = {};
+
+    card.querySelectorAll('.bond').forEach(function(g){
+      g.style.cursor = 'pointer';
+      g.addEventListener('click', function(){
+        var b = g.getAttribute('data-b');
+        if(counted[b]) return;
+        counted[b] = true;
+        g.querySelector('.bond-line').classList.add('counted');
+        countedBonds++;
+        hint.textContent = 'Bonds counted: ' + countedBonds + ' / 4';
+        if(countedBonds === 4){
+          showFeedback(fb, true, 'Right — 4 bonds, and there are no lone pairs left on nitrogen to count. Formal charge = 5 − 0 − 4 = +1, which matches the ion’s overall +1 charge.');
+          next.disabled = false;
+        }
+      });
+    });
+    next.addEventListener('click', function(){ step=2; render(); });
+  }
+
+  // ---- Step 2: Guided practice — OH-, walked through sub-questions ----
+  var guidedQs = [
+    { q: 'How many valence electrons does oxygen have?', opts: ['4','5','6','7'], correct: '6' },
+    { q: 'In OH⁻, how many bonds does oxygen have?', opts: ['0','1','2'], correct: '1' },
+    { q: 'How many nonbonding (lone-pair) electrons does oxygen have here?', opts: ['2','4','6'], correct: '6' }
+  ];
+  function renderGuidedOH(){
+    var gi = 0;
+    function renderSub(){
+      var item = guidedQs[gi];
+      card.innerHTML =
+        '<div class="step-eyebrow">Guided Practice</div>' +
+        '<h2 class="step-title">Now you try it: hydroxide, OH⁻.</h2>' +
+        '<div class="mini-progress">' + guidedQs.map(function(_,i){ return '<span class="' + (i<gi?'done':'') + '"></span>'; }).join('') + '</div>' +
+        '<div class="scene"><svg viewBox="0 0 160 120" style="max-width:180px;">' +
+          '<line x1="80" y1="60" x2="130" y2="60" stroke="var(--line)" stroke-width="2.5"/>' +
+          '<circle cx="80" cy="60" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="80" y="66" text-anchor="middle" font-size="15">O</text>' +
+          '<circle cx="55" cy="35" r="2.5" class="lp-dot"/><circle cx="60" cy="30" r="2.5" class="lp-dot"/>' +
+          '<circle cx="55" cy="85" r="2.5" class="lp-dot"/><circle cx="60" cy="90" r="2.5" class="lp-dot"/>' +
+          '<circle cx="45" cy="55" r="2.5" class="lp-dot"/><circle cx="45" cy="65" r="2.5" class="lp-dot"/>' +
+          '<circle cx="140" cy="60" r="13" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="140" y="65" text-anchor="middle" font-size="13">H</text>' +
+        '</svg></div>' +
+        '<p class="step-body">' + item.q + '</p>' +
+        '<div class="choice-row">' + item.opts.map(function(o){ return '<button class="choice-btn" data-v="' + o + '">' + o + '</button>'; }).join('') + '</div>' +
+        feedbackHtml('fb') +
+        nextButton(gi < guidedQs.length-1 ? 'Continue' : 'Compute the formal charge', false);
+
+      var fb = card.querySelector('#fb');
+      var next = card.querySelector('#nextBtn');
+      card.querySelectorAll('.choice-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var v = btn.getAttribute('data-v');
+          var isCorrect = v === item.correct;
+          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add(isCorrect ? 'correct' : 'wrong');
+          record(isCorrect);
+          if(isCorrect){
+            showFeedback(fb, true, 'Correct.');
+            next.disabled = false;
+          } else {
+            showFeedback(fb, false, 'Not quite — look at the structure again.');
+            card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
+          }
+        });
+      });
+      next.addEventListener('click', function(){
+        gi++;
+        if(gi < guidedQs.length) renderSub();
+        else renderReveal();
+      });
+    }
+    function renderReveal(){
+      card.innerHTML =
+        '<div class="step-eyebrow">Guided Practice</div>' +
+        '<h2 class="step-title">Put it together.</h2>' +
+        '<div class="formula">FC = 6 − 6 − 1 = −1</div>' +
+        '<p class="step-body">Oxygen carries the whole −1 charge in hydroxide — which makes sense, since it’s the only atom in the ion.</p>' +
+        nextButton('Continue', true);
+      card.querySelector('#nextBtn').addEventListener('click', function(){ step=3; render(); });
+    }
+    renderSub();
+  }
+
+  // ---- Step 3: Independent practice — H3O+, no scaffolding ----
+  function renderIndependentH3O(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Independent Practice</div>' +
+      '<h2 class="step-title">Your turn, no scaffolding: H₃O⁺.</h2>' +
+      '<div class="scene"><svg viewBox="0 0 200 160" style="max-width:220px;">' +
+        '<line x1="100" y1="90" x2="100" y2="40" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="100" y1="90" x2="150" y2="110" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="100" y1="90" x2="50" y2="110" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<circle cx="80" cy="60" r="2.5" class="lp-dot"/><circle cx="72" cy="65" r="2.5" class="lp-dot"/>' +
+        '<circle cx="100" cy="90" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="100" y="96" text-anchor="middle" font-size="15">O</text>' +
+        '<circle cx="100" cy="30" r="13" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="100" y="35" text-anchor="middle" font-size="13">H</text>' +
+        '<circle cx="160" cy="118" r="13" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="160" y="123" text-anchor="middle" font-size="13">H</text>' +
+        '<circle cx="40" cy="118" r="13" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="40" y="123" text-anchor="middle" font-size="13">H</text>' +
+      '</svg></div>' +
+      '<p class="step-body">What is the formal charge on oxygen?</p>' +
+      '<div class="choice-row">' + ['−1','0','+1','+2'].map(function(o){ return '<button class="choice-btn" data-v="' + o + '">' + o + '</button>'; }).join('') + '</div>' +
+      feedbackHtml('fb') +
+      nextButton('Continue', false);
+
+    var fb = card.querySelector('#fb');
+    var next = card.querySelector('#nextBtn');
+    card.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var v = btn.getAttribute('data-v');
+        var isCorrect = v === '+1';
+        card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+        btn.classList.add(isCorrect ? 'correct' : 'wrong');
+        record(isCorrect);
+        if(isCorrect){
+          showFeedback(fb, true, 'Correct — 6 valence electrons − 2 lone-pair electrons − 3 bonds = +1. That +1 is exactly the ion’s overall charge.');
+          next.disabled = false;
+        } else {
+          showFeedback(fb, false, 'Count again: oxygen has 6 valence electrons, 1 lone pair (2 electrons), and 3 bonds.');
+          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
+        }
+      });
+    });
+    next.addEventListener('click', function(){ step=4; render(); });
+  }
+
+  // ---- Step 4: Why it matters ----
+  function renderWhyItMatters(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Why it matters</div>' +
+      '<h2 class="step-title">Formal charge tells you which structure is realistic.</h2>' +
+      '<div class="explain-box">When a molecule or ion could be drawn several valid ways, the <b>best</b> Lewis structure is usually the one where formal charges are smallest and negative charge sits on the most electronegative atom. You’ll use this constantly — to pick the right resonance structure, to spot the electrophilic atom in a molecule, and to explain why a mechanism attacks where it does.</div>' +
+      nextButton('One more — a harder case', true);
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step=5; render(); });
+  }
+
+  // ---- Step 5: Challenge — ClO4- ----
+  function renderChallenge(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Challenge</div>' +
+      '<h2 class="step-title">Perchlorate, ClO₄⁻: what’s the formal charge on chlorine?</h2>' +
+      '<p class="step-body">Chlorine has 7 valence electrons. In this structure it forms 4 single bonds to oxygen and has no lone pairs left.</p>' +
+      '<div class="choice-row">' + ['−1','0','+1','+3'].map(function(o){ return '<button class="choice-btn" data-v="' + o + '">' + o + '</button>'; }).join('') + '</div>' +
+      feedbackHtml('fb') +
+      '<div id="doneBox"></div>';
+
+    var fb = card.querySelector('#fb');
+    card.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var v = btn.getAttribute('data-v');
+        var isCorrect = v === '+3';
+        card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+        btn.classList.add(isCorrect ? 'correct' : 'wrong');
+        record(isCorrect);
+        if(isCorrect){
+          showFeedback(fb, true, 'Correct, and yes, it looks strange: 7 − 0 − 4 = +3 on chlorine, even though the whole ion is −1. That’s exactly why formal charge matters — it’s telling you this isn’t the most realistic structure, and a chemist would look for one that spreads that charge out better.');
+          card.querySelector('#doneBox').innerHTML = '<div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press">Back to Learn</a></div>';
+        } else {
+          showFeedback(fb, false, '7 − 0 − 4 — work through it once more.');
+          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
+        }
+      });
+    });
+  }
+
+  render();
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

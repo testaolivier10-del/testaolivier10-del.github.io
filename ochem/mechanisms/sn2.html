@@ -12,6 +12,7 @@
 <meta name="description" content="Perform the SN2 mechanism yourself: identify the nucleophile and electrophile, draw the electron-pushing arrows, predict the product, then try a new molecule.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/mechanisms/sn2.html">
 <link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
@@ -81,6 +82,7 @@
     <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
   </div>
 </div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -165,6 +167,14 @@
   }
   function saveProgress(){
     try{ localStorage.setItem('ochem_sn2_progress', JSON.stringify(score)); }catch(e){}
+    // Also mirror into the shared curriculum progress store (same {correct,
+    // attempts} shape) so Learn/Mastery see this lesson without duplicating
+    // every score.attempts++/score.correct++ call site above with a second call.
+    try{
+      var p = JSON.parse(localStorage.getItem('ochem_progress') || '{}');
+      p.sn2 = { correct: score.correct, attempts: score.attempts };
+      localStorage.setItem('ochem_progress', JSON.stringify(p));
+    }catch(e){}
   }
   score = loadProgress();
 
@@ -473,5 +483,10 @@
   render();
 })();
 </script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
 </body>
 </html>
