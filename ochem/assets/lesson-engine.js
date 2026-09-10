@@ -16,7 +16,16 @@
    Every mcq/final/custom step that grades an answer calls
    OchemCurriculum.recordAttempt itself (via the `record` helper), same as
    the earlier hand-written lessons — this file doesn't guess correctness
-   for custom steps, only for declarative 'mcq'/'final' ones. */
+   for custom steps, only for declarative 'mcq'/'final' ones.
+
+   Notes mode: the interactive step flow is great for a first pass, but bad
+   for "wait, what did this lesson actually say about X" — getting back to
+   an explanation means re-clicking through MCQs you already answered. If a
+   lesson supplies `opts.notesHtml`, this engine also renders a read-only,
+   non-gated recap of the whole lesson (every explanation, restated
+   findings from the hands-on steps, and the why-it-matters/challenge
+   takeaways) whenever the page is opened with `?notes=1`. A small toggle
+   link is injected either way so both views are always one click apart. */
 (function(){
   function start(opts){
     var topicId = opts.topicId;
@@ -27,6 +36,23 @@
     var doneHref = opts.doneHref || '../learn.html';
     var TOTAL = steps.length - 1;
     var step = 0;
+
+    var shell = card.parentNode;
+    var progressBarEl = shell.querySelector('.progress-bar');
+    var notesMode = /(^|[?&])notes=1(&|$)/.test(location.search);
+    var toggleBar = document.createElement('div');
+    toggleBar.className = 'lesson-mode-toggle';
+    shell.insertBefore(toggleBar, progressBarEl || card);
+
+    if(notesMode && opts.notesHtml){
+      if(progressBarEl) progressBarEl.style.display = 'none';
+      toggleBar.innerHTML = '<a href="' + location.pathname + '" class="link-quiet">&larr; Back to the interactive lesson</a>';
+      card.innerHTML = '<div class="notes-view">' + opts.notesHtml + '</div><div class="actions" style="margin-top:8px;"><a href="' + doneHref + '" class="btn-press alt">Back to Learn</a></div>';
+      return;
+    }
+    if(opts.notesHtml){
+      toggleBar.innerHTML = '<a href="' + location.pathname + '?notes=1" class="link-quiet">&#128221; View lesson notes</a>';
+    }
 
     function record(correct){ window.OchemCurriculum.recordAttempt(topicId, correct); }
     function updateProgress(){

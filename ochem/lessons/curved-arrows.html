@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curved Arrows — Electron Movement | Organic Chemistry</title>
+<meta name="description" content="Learn to read and draw curved arrows: the tail is where the electron pair starts, the head is where it ends up — the notation behind every mechanism.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/curved-arrows.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 2 &middot; Organic Structure &amp; Electron Movement</div>
+    <h1 style="margin-bottom:4px;">Curved arrows.</h1>
+    <p class="lede" style="margin-top:0;">The notation you'll use to draw every mechanism from here on.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 6</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'curved-arrows',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>The two rules</h3><p class="step-body">A curved arrow represents <b>two electrons</b> moving together. The <b>tail</b> starts wherever those electrons currently are — a lone pair, or an existing bond. The <b>head</b> points to wherever they end up — a new bond, or a new lone pair. The tail can never start on a bare atom or a positive charge, because there\'s nothing there to give away — it must start on an actual pair of electrons.</p>' +
+      '<h3>Worked example: ammonia + H⁺</h3><p class="step-body">Tail on nitrogen\'s lone pair (the electron source), head on H⁺ (where the new N–H bond forms). Order matters: the arrow always starts at the electrons and points to where they\'re going, never the reverse.</p>' +
+      '<h3>Spotting invalid arrows</h3><p class="step-body">An arrow drawn starting from a positive charge is always wrong — a positively charged atom is electron-<b>deficient</b>, so it can only ever be a destination (a head), never a source (a tail).</p>' +
+      '<div class="notes-fact">Every SN1, SN2, E1, E2, addition, and carbonyl mechanism for the rest of the course is built from these same two rules: tail on the electrons, head on the destination.</div>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A curved arrow always tracks an electron pair.',
+        bodyHtml: '<p class="step-body">A full curved arrow represents <b>two electrons</b> moving together. The <b>tail</b> starts at wherever those electrons currently are — a lone pair, or an existing bond. The <b>head</b> points to wherever they end up — a new bond, or a new lone pair.</p><p class="step-body" style="margin-bottom:0;">The tail can never start on a bare atom or a positive charge, because there\'s nothing there to give away. It has to start on an actual pair of electrons.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Ammonia grabs a proton. Click the tail, then the head.</h2>' +
+            '<p class="step-body">First click the lone pair on nitrogen (the <b>tail</b> — where the electrons start). Then click the H⁺ (the <b>head</b> — where they end up).</p>' +
+            '<div class="scene"><svg viewBox="0 0 260 130">' +
+              '<circle cx="90" cy="70" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="90" y="76" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="15">N</text>' +
+              '<line x1="90" y1="52" x2="90" y2="20" stroke="var(--line)" stroke-width="2.2"/><circle cx="90" cy="14" r="11" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="90" y="18" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">H</text>' +
+              '<line x1="105" y1="82" x2="130" y2="100" stroke="var(--line)" stroke-width="2.2"/><circle cx="140" cy="108" r="11" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="140" y="112" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">H</text>' +
+              '<line x1="75" y1="82" x2="50" y2="100" stroke="var(--line)" stroke-width="2.2"/><circle cx="40" cy="108" r="11" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="40" y="112" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">H</text>' +
+              '<g class="atom" data-key="tail"><circle cx="65" cy="48" r="3" fill="var(--muted)"/><circle cx="72" cy="42" r="3" fill="var(--muted)"/><circle cx="60" cy="52" r="14" fill="transparent"/></g>' +
+              '<g class="atom" data-key="head"><circle cx="220" cy="70" r="14" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="220" y="75" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">H</text><text x="234" y="58" font-family="IBM Plex Mono" font-weight="700" font-size="12" fill="var(--coral)">⁺</text></g>' +
+            '</svg></div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Click the lone pair (tail) first.</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var hint = api.card.querySelector('#hint');
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var gotTail = false, gotHead = false;
+          var tailEl = api.card.querySelector('[data-key="tail"]');
+          var headEl = api.card.querySelector('[data-key="head"]');
+          tailEl.addEventListener('click', function(){
+            if(gotTail || gotHead) return;
+            gotTail = true;
+            tailEl.classList.add('chosen');
+            hint.textContent = 'Tail placed on the lone pair. Now click H⁺ for the head.';
+          });
+          headEl.addEventListener('click', function(){
+            if(!gotTail || gotHead) return;
+            gotHead = true;
+            headEl.classList.add('chosen');
+            hint.textContent = 'Arrow drawn: lone pair → H⁺.';
+            api.showFeedback(fb, true, 'Exactly right — tail on the lone pair (the electron source), head on H⁺ (where the new N–H bond forms). Order matters: the arrow always starts at the electrons.');
+            next.disabled = false;
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'A curved arrow\'s tail must start from...',
+        options: ['A lone pair or a bond — a real source of electrons', 'Any atom in the molecule, electrons or not', 'A positive charge, since that\'s what needs electrons'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — no electrons there, no valid tail there.',
+        wrongFeedback: 'Ask yourself: are there actually electrons sitting at that spot? If not, the tail can\'t start there.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'You see an arrow drawn starting from a positive charge and pointing into a nearby bond. What\'s wrong with it?',
+        options: ['Positive charges have no electrons to give — the tail can never start there', 'The head should point away from the bond instead', 'Nothing — this is a normal, valid arrow'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. A positively charged atom is electron-deficient — it\'s a destination for arrows (a head), never a source (a tail).',
+        wrongFeedback: 'Think about what a positive charge actually means: a deficiency of electrons, not a supply of them.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'This is the language of every mechanism from here forward.',
+        bodyHtml: '<div class="explain-box">Every SN1, SN2, E1, E2, addition, and carbonyl mechanism you\'ll draw for the rest of the course is built from these same two rules: <b>tail on the electrons, head on the destination</b>. Get comfortable with it now and every later mechanism gets easier, not harder.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A carbanion (CH₃⁻) attacks a carbonyl carbon (C=O). Where should the arrow\'s tail start?',
+        options: ['On the carbanion\'s lone pair', 'On the carbonyl oxygen', 'On the carbonyl carbon'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — the carbanion\'s lone pair is the electron source attacking the electrophilic carbonyl carbon. (A second arrow, from the C=O π bond to oxygen, completes the mechanism — you\'ll draw full sequences like this in Module 9.)'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

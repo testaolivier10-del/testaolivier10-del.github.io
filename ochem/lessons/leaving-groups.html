@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaving Groups — Electron Movement | Organic Chemistry</title>
+<meta name="description" content="Learn what makes a good leaving group, why weak bases leave more easily, and how leaving group ability controls substitution and elimination.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/leaving-groups.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 2 &middot; Organic Structure &amp; Electron Movement</div>
+    <h1 style="margin-bottom:4px;">Leaving groups.</h1>
+    <p class="lede" style="margin-top:0;">Whoever leaves has to be able to handle the electrons they take with them.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 6</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'leaving-groups',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>What makes a good one</h3><p class="step-body">When a leaving group departs, it takes a bonding pair of electrons with it. A <b>good</b> leaving group is one that\'s <b>stable on its own</b> once it has those electrons — a <b>weak base</b> (the conjugate base of a strong acid). Poor leaving groups (OH⁻, NH₂⁻, CH₃⁻) are strong bases that don\'t want the negative charge and resist leaving, which is why alcohols usually need activation (protonation, or conversion to a tosylate) before substitution/elimination can happen.</p>' +
+      '<h3>Ranking the halides</h3><p class="step-body">Among F⁻, Cl⁻, Br⁻, I⁻, <b>I⁻</b> is the best leaving group — the weakest base of the four (largest, most polarizable, most stable as an anion). Cl⁻ beats OH⁻ as a leaving group because Cl⁻ is the conjugate base of a strong acid (HCl) and is very stable on its own, while OH⁻ is the conjugate base of water (a much weaker acid), making OH⁻ a much stronger, more reluctant base.</p>' +
+      '<div class="notes-fact">Tosylate (OTs⁻) is an excellent leaving group because its negative charge is delocalized (resonance-stabilized) across the sulfonate group, making it a very weak base — exactly why chemists convert poor leaving groups like OH⁻ into tosylates before a substitution. SN1, SN2, E1, and E2 all require a leaving group to depart at some point — no leaving group, no reaction.</div>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A good leaving group is a weak base.',
+        bodyHtml: '<p class="step-body">When a leaving group departs, it takes a bonding pair of electrons with it. A <b>good</b> leaving group is one that\'s <b>stable on its own</b> once it has those electrons — in other words, a <b>weak base</b> (the conjugate base of a strong acid).</p><p class="step-body" style="margin-bottom:0;">Poor leaving groups — OH⁻, NH₂⁻, CH₃⁻ — are strong bases that don\'t want the negative charge and resist leaving at all, which is why alcohols usually need to be activated (protonated, or converted to a tosylate) before a substitution or elimination can happen.</p>'
+      },
+      {
+        render: function(api){
+          var halides = [
+            { key: 'f', label: 'F⁻' },
+            { key: 'cl', label: 'Cl⁻' },
+            { key: 'br', label: 'Br⁻' },
+            { key: 'i', label: 'I⁻' }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the best leaving group among the halides.</h2>' +
+            '<p class="step-body">All four are decent leaving groups compared to OH⁻, but they\'re not equal to each other.</p>' +
+            '<div class="choice-row">' + halides.map(function(h){
+              return '<button class="choice-btn" data-v="' + h.key + '" style="text-align:center;font:900 18px var(--font-mono);">' + h.label + '</button>';
+            }).join('') + '</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var answered = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(answered) return;
+              answered = true;
+              var isCorrect = btn.getAttribute('data-v') === 'i';
+              api.card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+              btn.classList.add(isCorrect ? 'correct' : 'wrong');
+              api.record(isCorrect);
+              api.showFeedback(fb, isCorrect, 'I⁻ is the best leaving group of the halides. It\'s the weakest base of the four (largest, most polarizable, and the anion is the most stable), even though it\'s also the weakest conjugate base you\'d normally expect to trade off against nucleophilicity.');
+              next.disabled = false;
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'A good leaving group is generally...',
+        options: ['A weak base — stable on its own once it leaves', 'A strong base — it needs to hold the electrons tightly', 'A strong nucleophile'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — stability after leaving is the whole story.',
+        wrongFeedback: 'A strong base doesn\'t want extra negative charge — it fights leaving rather than accepting it.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'Which is the better leaving group: Cl⁻ or OH⁻?',
+        options: ['Cl⁻ — a much weaker base and a more stable anion on its own', 'OH⁻ — it\'s smaller and lighter', 'They\'re about equal'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. Cl⁻ is the conjugate base of a strong acid (HCl) and is very stable as an anion; OH⁻ is the conjugate base of water, a much weaker acid, so OH⁻ is a much stronger (and more reluctant) base.',
+        wrongFeedback: 'Compare their conjugate acids: HCl is a strong acid, water is not. The weaker the conjugate acid, the stronger (and worse-leaving) the base.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'No leaving group, no reaction.',
+        bodyHtml: '<div class="explain-box">SN1, SN2, E1, and E2 all require a leaving group to depart at some point in the mechanism. If the leaving group is poor (like OH⁻ on an unactivated alcohol), the reaction simply won\'t proceed — no matter how good the nucleophile or base is. You\'ll see this constantly once you get to Module 6.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Tosylate (OTs⁻) is an excellent leaving group because its negative charge is...',
+        options: ['Delocalized (resonance-stabilized) across the sulfonate group, making it a very weak base', 'Localized entirely on one oxygen, making it easy to find', 'Nonexistent — tosylate is a neutral leaving group'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — spreading the charge out over multiple resonance structures (the same idea from the Resonance lesson) makes tosylate very stable and a very weak base, which is exactly why chemists convert poor leaving groups like OH⁻ into tosylates before a substitution.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

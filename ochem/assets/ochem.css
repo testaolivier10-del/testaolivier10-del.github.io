@@ -28,6 +28,13 @@
 .module-card__mastery{font:900 13px var(--font-mono);color:var(--muted);white-space:nowrap;}
 .module-card__mastery.scored{color:var(--accent);}
 .topic-list{margin-top:12px;display:flex;flex-direction:column;gap:2px;}
+.topic-row-wrap{display:flex;align-items:center;gap:4px;}
+.topic-row-wrap .topic-row{flex:1;min-width:0;}
+.topic-notes-link{
+  flex-shrink:0;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  text-decoration:none;font-size:14px;color:var(--muted);
+}
+.topic-notes-link:hover{background:var(--hover-tint);color:var(--accent);}
 .topic-row{
   display:flex;align-items:center;justify-content:space-between;gap:12px;
   padding:10px 12px;border-radius:10px;text-decoration:none;color:inherit;
@@ -136,3 +143,18 @@ a.topic-row:hover{background:var(--hover-tint);}
 .btn-press:disabled{opacity:.45;cursor:default;}
 .explain-box{background:var(--tint-accent);border-radius:var(--radius);padding:16px 18px;font-size:14.5px;font-weight:600;line-height:1.6;margin-bottom:18px;color:var(--ink);}
 .explain-box b{color:var(--accent-press);}
+
+/* Lesson notes mode — see lesson-engine.js. A read-only, non-gated recap of
+   an entire lesson, reachable via ?notes=1 without re-running the
+   interactive steps. */
+.lesson-mode-toggle{display:flex;justify-content:flex-end;margin-bottom:10px;}
+.lesson-mode-toggle a{font:800 13px var(--font-ui);}
+.notes-view{padding-bottom:4px;}
+.notes-view h3{font:900 15.5px var(--font-ui);color:var(--accent-press);margin:22px 0 8px;}
+.notes-view h3:first-child{margin-top:0;}
+.notes-view .step-body{margin-bottom:14px;}
+.notes-view .scene{margin-bottom:14px;}
+.notes-view .notes-fact{
+  background:var(--tint-good);border-radius:var(--radius);padding:12px 16px;
+  font-size:14px;font-weight:700;color:var(--good-press);margin-bottom:14px;line-height:1.55;
+}

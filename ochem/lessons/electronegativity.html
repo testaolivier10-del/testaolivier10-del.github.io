@@ -13,6 +13,7 @@
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/electronegativity.html">
 <link rel="stylesheet" href="../../assets/theme.css">
 <link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
@@ -48,6 +49,7 @@
   window.OCHEM_BASE = '../';
 </script>
 <script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -56,6 +58,9 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>What it is</h3><p class="step-body"><b>Electronegativity</b> measures how strongly an atom pulls on the electrons in a bond. It increases <b>up and to the right</b> on the periodic table (excluding noble gases) — fluorine is the most electronegative element there is. In any bond between two different atoms, the shared electrons sit closer to whichever atom is more electronegative.</p>' +
+      '<h3>Worked comparisons</h3><p class="step-body">O vs. H: oxygen is more electronegative. C vs. H: carbon is more electronegative (though only slightly — this is why C–H bonds are treated as close to nonpolar). C vs. Cl: chlorine is more electronegative. Fluorine is the single most electronegative element on the table, full stop.</p>' +
+      '<div class="notes-fact">This is where "electron-poor" and "electron-rich" come from. An electronegativity difference makes a bond polar — and it\'s what makes the carbon in C–Br electron-poor enough for a nucleophile to attack, the exact idea behind SN1/SN2. C–F is more polar than C–Br because fluorine\'s electronegativity gap with carbon is bigger.</div>',
     steps: [
       {
         type: 'explain',

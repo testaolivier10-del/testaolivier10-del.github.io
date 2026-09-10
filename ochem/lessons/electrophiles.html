@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electrophiles — Electron Movement | Organic Chemistry</title>
+<meta name="description" content="Learn what makes a species electrophilic, how to spot the electrophilic atom in a molecule, and why the carbonyl carbon is the classic example.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/electrophiles.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 2 &middot; Organic Structure &amp; Electron Movement</div>
+    <h1 style="margin-bottom:4px;">Electrophiles.</h1>
+    <p class="lede" style="margin-top:0;">Electron-poor atoms waiting to be attacked.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 6</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  function carbonylSvg(){
+    return '<div class="scene"><svg viewBox="0 0 240 130">' +
+      '<text x="20" y="65" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="16" fill="var(--ink)">CH₃</text>' +
+      '<line x1="68" y1="60" x2="105" y2="60" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<g class="atom" data-key="carbon"><circle cx="122" cy="60" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="122" y="66" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="14">C</text></g>' +
+      '<line x1="126" y1="45" x2="150" y2="18" stroke="var(--line)" stroke-width="2.2"/><line x1="132" y1="52" x2="156" y2="25" stroke="var(--line)" stroke-width="2.2"/>' +
+      '<g class="atom" data-key="oxygen"><circle cx="168" cy="12" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="168" y="17" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">O</text></g>' +
+      '<line x1="140" y1="72" x2="170" y2="95" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<text x="192" y="105" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="16" fill="var(--ink)">CH₃</text>' +
+    '</svg></div>';
+  }
+
+  window.OchemLessonEngine.start({
+    topicId: 'electrophiles',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>What it is</h3><p class="step-body">An <b>electrophile</b> ("electron-loving," but really electron-<b>poor</b>) carries a full or partial positive charge, or has an empty orbital, and seeks electrons from a nucleophile. It\'s the flip side of a nucleophile — one attacks, the other gets attacked.</p>' +
+      '<h3>Worked example: a carbonyl</h3><p class="step-body">In a ketone (C=O), oxygen\'s pull leaves the carbonyl carbon partially positive (δ+) — that\'s the electrophilic atom, not the oxygen. The polarization comes from the electronegativity difference in the C=O bond, not any formal charge (a neutral carbonyl carbon\'s formal charge is 0).</p>' +
+      '<h3>More examples</h3><p class="step-body">In CH₃–Br, the carbon is electrophilic (bromine pulls electron density away from it), not bromine itself, even though bromine is the one that eventually leaves. BF₃ has an empty p-orbital on boron, making it a strong electrophile (a place for electrons to go) — this is the same idea behind Lewis acids.</p>' +
+      '<div class="notes-fact">Once you\'ve found the nucleophile and electrophile in a reaction, you already know where the new bond forms — the nucleophile\'s electrons attack the electrophile\'s electron-poor atom.</div>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: '"Electron-loving" — but really, electron-poor.',
+        bodyHtml: '<p class="step-body">An <b>electrophile</b> is a species that is electron-<b>poor</b> — it carries a full or partial positive charge, or has an empty orbital — and seeks electrons from a nucleophile. It\'s the flip side of a nucleophile: one attacks, the other gets attacked.</p><p class="step-body" style="margin-bottom:0;">The classic example is a carbonyl carbon (C=O): the oxygen pulls electron density away from carbon, leaving it electron-poor.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the electrophilic atom in this ketone.</h2>' +
+            carbonylSvg() +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var answered = false;
+          api.card.querySelectorAll('.atom').forEach(function(g){
+            g.addEventListener('click', function(){
+              if(answered) return;
+              answered = true;
+              var isCorrect = g.getAttribute('data-key') === 'carbon';
+              g.classList.add('chosen');
+              api.record(isCorrect);
+              if(isCorrect){
+                api.showFeedback(fb, true, 'Correct — oxygen\'s pull leaves the carbon partially positive (δ+), which is exactly what a nucleophile targets.');
+              } else {
+                api.showFeedback(fb, false, 'Oxygen is the one pulling electron density away — it ends up electron-rich, not electron-poor. Try the carbon.');
+                answered = false;
+                return;
+              }
+              next.disabled = false;
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Why is the carbonyl carbon electrophilic?',
+        options: ['Oxygen pulls electron density away, leaving the carbon partially positive', 'Carbon is naturally electron-poor no matter what it\'s bonded to', 'The carbonyl carbon carries a full +1 formal charge'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — it\'s the electronegativity difference in the C=O bond, not some inherent property of carbon.',
+        wrongFeedback: 'Formal charge on a neutral carbonyl carbon is actually 0 — it\'s the bond polarization (δ+/δ−), not a formal charge, that makes it electrophilic.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'In CH₃–Br, which atom is more electrophilic: the carbon or the bromine?',
+        options: ['The carbon — bromine pulls electron density away from it', 'The bromine — it\'s the one that eventually leaves', 'Neither — the bond is nonpolar'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — bromine\'s higher electronegativity leaves the carbon δ+, which is exactly where a nucleophile will attack.',
+        wrongFeedback: 'Being the leaving group doesn\'t make bromine electrophilic — compare electronegativities instead.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Finding the electrophile tells you exactly where the attack happens.',
+        bodyHtml: '<div class="explain-box">Once you\'ve found the nucleophile and the electrophile in a reaction, you already know where the new bond forms — the nucleophile\'s electrons attack the electrophile\'s electron-poor atom. That\'s the setup for essentially every mechanism in this course.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'BF₃ has an empty p-orbital on boron. Is BF₃ a nucleophile or an electrophile?',
+        options: ['Electrophile — it can accept an electron pair into that empty orbital', 'Nucleophile — it has lone pairs on the fluorines', 'Neither — BF₃ is unreactive'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. An empty orbital is a place for electrons to go, which makes boron here a strong electrophile — this is the same idea behind Lewis acids, coming up in Module 3.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

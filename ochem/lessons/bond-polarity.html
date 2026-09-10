@@ -13,6 +13,7 @@
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/bond-polarity.html">
 <link rel="stylesheet" href="../../assets/theme.css">
 <link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
@@ -48,6 +49,7 @@
   window.OCHEM_BASE = '../';
 </script>
 <script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -56,6 +58,10 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>Bond dipoles</h3><p class="step-body">A bond is polar when its two atoms have different electronegativities — the shared electrons sit closer to one side, creating a small <b>dipole</b> that points toward the more electronegative atom. In C–O, the dipole points toward oxygen.</p>' +
+      '<h3>Molecular polarity depends on geometry too</h3><p class="step-body">A whole molecule\'s polarity depends on both bond polarity <b>and</b> shape — if the individual bond dipoles point in directions that cancel out by symmetry (like vectors of equal size pointing opposite ways), the molecule can be nonpolar even with polar bonds.</p>' +
+      '<h3>Worked examples</h3><p class="step-body">CO₂ (linear, two C=O dipoles pointing in exactly opposite directions): the dipoles cancel — <b>nonpolar</b> overall. Water (bent, two O–H dipoles): the bent shape means the dipoles add up instead of canceling — <b>polar</b> overall. CCl₄ (tetrahedral, four identical polar C–Cl bonds): the symmetric arrangement makes all four dipoles cancel — <b>nonpolar</b>, even though every individual bond is polar.</p>' +
+      '<div class="notes-fact">"Like dissolves like": polar water mixes with polar substances but not nonpolar ones like CO₂ or oil. This is the entire basis of solubility rules you\'ll use constantly once alcohols and ethers show up later in the course.</div>',
     steps: [
       {
         type: 'explain',

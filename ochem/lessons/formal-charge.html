@@ -13,6 +13,7 @@
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/formal-charge.html">
 <link rel="stylesheet" href="../../assets/theme.css">
 <link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
@@ -106,6 +107,7 @@
   window.OCHEM_BASE = '../';
 </script>
 <script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
 <script>
 (function(){
   var TOPIC_ID = 'formal-charge';
@@ -123,6 +125,15 @@
   function feedbackHtml(id){ return '<div class="feedback" id="' + id + '"></div>'; }
   function showFeedback(el, good, text){ el.className = 'feedback show ' + (good?'good':'bad'); el.textContent = text; }
   function nextButton(label, enabled){ return '<div class="actions"><button class="btn-press" id="nextBtn"' + (enabled?'':' disabled') + '>' + label + '</button></div>'; }
+
+  var NOTES_HTML = '<h3>The formula</h3><p class="step-body">An atom\'s <b>formal charge</b> compares the electrons it "owns" in a structure to the electrons it would have on its own as a neutral atom.</p><div class="formula">FC = (valence electrons) − (lone-pair electrons) − (number of bonds)</div><p class="step-body">Every bond — single, double, or triple — counts as <b>one</b> bond here, since you\'re counting how many bonds surround the atom, not how many electrons are in them.</p>' +
+    '<h3>Worked examples</h3><p class="step-body"><b>NH₄⁺</b>: nitrogen has 4 bonds, 0 lone pairs left. FC = 5 − 0 − 4 = <b>+1</b>, matching the ion\'s overall charge.</p><p class="step-body"><b>OH⁻</b>: oxygen has 6 valence electrons, 1 bond, and 3 lone pairs (6 nonbonding electrons). FC = 6 − 6 − 1 = <b>−1</b>.</p><p class="step-body"><b>H₃O⁺</b>: oxygen has 6 valence electrons, 3 bonds, 1 lone pair (2 electrons). FC = 6 − 2 − 3 = <b>+1</b>, matching the ion\'s charge.</p>' +
+    '<h3>Why it matters</h3><p class="step-body">When a molecule or ion could be drawn several valid ways, the <b>best</b> Lewis structure is usually the one where formal charges are smallest and negative charge sits on the most electronegative atom. You\'ll use this to pick the right resonance structure, spot the electrophilic atom in a molecule, and explain why a mechanism attacks where it does.</p>' +
+    '<div class="notes-fact">Perchlorate, ClO₄⁻: chlorine has 7 valence electrons, 4 single bonds, 0 lone pairs. FC = 7 − 0 − 4 = <b>+3</b> on chlorine, even though the whole ion is −1 overall. That\'s exactly why formal charge matters — it flags this as an unrealistic structure, and a chemist would look for one that spreads the charge out better.</div>';
+
+  function renderNotes(){
+    card.innerHTML = '<div class="notes-view">' + NOTES_HTML + '</div><div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press alt">Back to Learn</a></div>';
+  }
 
   function render(){
     updateProgress();
@@ -335,7 +346,22 @@
     });
   }
 
-  render();
+  (function(){
+    var shell = card.parentNode;
+    var progressBarEl = shell.querySelector('.progress-bar');
+    var notesMode = /(^|[?&])notes=1(&|$)/.test(location.search);
+    var toggleBar = document.createElement('div');
+    toggleBar.className = 'lesson-mode-toggle';
+    shell.insertBefore(toggleBar, progressBarEl || card);
+    if(notesMode){
+      if(progressBarEl) progressBarEl.style.display = 'none';
+      toggleBar.innerHTML = '<a href="' + location.pathname + '" class="link-quiet">&larr; Back to the interactive lesson</a>';
+      renderNotes();
+      return;
+    }
+    toggleBar.innerHTML = '<a href="' + location.pathname + '?notes=1" class="link-quiet">&#128221; View lesson notes</a>';
+    render();
+  })();
 })();
 </script>
 <script>

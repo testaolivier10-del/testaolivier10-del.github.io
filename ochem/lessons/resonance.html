@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resonance — Electron Movement | Organic Chemistry</title>
+<meta name="description" content="Learn why some molecules need more than one Lewis structure, how resonance structures relate to the real hybrid, and how to spot the major contributor.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/resonance.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 2 &middot; Organic Structure &amp; Electron Movement</div>
+    <h1 style="margin-bottom:4px;">Resonance.</h1>
+    <p class="lede" style="margin-top:0;">One Lewis structure often isn't enough to describe the real molecule.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 6</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  function acetateSvg(highlightLeft, highlightRight){
+    return '<div class="scene"><svg viewBox="0 0 260 120">' +
+      '<text x="20" y="65" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="16" fill="var(--ink)">CH₃</text>' +
+      '<line x1="70" y1="60" x2="110" y2="60" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<circle cx="130" cy="60" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="130" y="66" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="14">C</text>' +
+      '<line x1="145" y1="48" x2="175" y2="25" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<g class="atom" data-key="o1"><circle cx="190" cy="18" r="16" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="190" y="23" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">O</text></g>' +
+      '<line x1="145" y1="72" x2="175" y2="95" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<g class="atom" data-key="o2"><circle cx="190" cy="102" r="16" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="190" y="107" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">O</text></g>' +
+    '</svg></div>';
+  }
+
+  window.OchemLessonEngine.start({
+    topicId: 'resonance',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>What resonance is</h3><p class="step-body">Some molecules and ions can\'t be captured by a single Lewis structure. When you can draw two or more valid structures that differ <b>only in where the electrons are</b> — never where the atoms are — those are <b>resonance structures</b>. The real molecule is a single <b>hybrid</b>: a blend of every valid resonance structure, not a molecule flipping back and forth between them.</p>' +
+      '<h3>The requirement: conjugation</h3><p class="step-body">Resonance only works when a lone pair, negative charge, or pi bond sits directly next to another pi bond or an adjacent p orbital, so their p orbitals can line up and overlap. A system connected this way — alternating single/multiple bonds, or a lone pair next to a pi bond — is <b>conjugated</b>. A lone pair with no neighboring pi bond has nowhere to delocalize into — no resonance to draw.</p>' +
+      '<h3>Worked example: acetate</h3><p class="step-body">Acetate (CH₃COO⁻) has two resonance structures, each putting the negative charge on a different one of its two (identical) oxygens. Because the two oxygens are equivalent by symmetry, both structures contribute equally to the hybrid — there\'s no "major" one here. Experimentally, both C–O bonds are the same length, in between a single and double bond.</p>' +
+      '<div class="notes-fact">When resonance structures aren\'t equivalent, the more stable one dominates. Between a structure with negative charge on carbon vs. one with it on oxygen, the oxygen version is the major contributor — a more electronegative atom stabilizes negative charge better. This is why carboxylic acids are far more acidic than alcohols: their anion is resonance-stabilized this way.</div>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The real molecule isn\'t "flipping" between structures.',
+        bodyHtml: '<p class="step-body">Some molecules and ions can\'t be captured by a single Lewis structure. When you can draw two or more valid structures that differ <b>only in where the electrons are</b> — never in where the atoms are — those are <b>resonance structures</b>.</p><p class="step-body">Resonance isn\'t something you can invoke anywhere, though — it only works when a lone pair, a negative charge, or a pi bond sits directly next to (adjacent to) another pi bond or an empty/adjacent p orbital, so their p orbitals can line up and overlap. A system of atoms connected this way — alternating single and multiple bonds, or a lone pair next to a pi bond — is called <b>conjugated</b>. Electrons in a conjugated system are genuinely spread across it; a lone pair on an atom with no neighboring pi bond has nowhere to delocalize into, and there\'s no resonance to draw.</p><p class="step-body" style="margin-bottom:0;">The real molecule is a single <b>hybrid</b>: a blend of all the valid resonance structures, not a molecule bouncing back and forth between them. Curved arrows are what you use to get from one resonance structure to the next — you\'ll practice those in the next lesson.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click both oxygens in the acetate ion.</h2>' +
+            '<p class="step-body">Acetate (CH₃COO⁻) has two resonance structures: one with the negative charge on the top oxygen, one with it on the bottom oxygen. Because both oxygens are identical, both structures are equally valid.</p>' +
+            acetateSvg() +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Oxygens clicked: 0 / 2</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var hint = api.card.querySelector('#hint');
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var clicked = {};
+          var count = 0;
+          api.card.querySelectorAll('.atom').forEach(function(g){
+            g.addEventListener('click', function(){
+              var key = g.getAttribute('data-key');
+              if(clicked[key]) return;
+              clicked[key] = true;
+              count++;
+              g.classList.add('chosen');
+              hint.textContent = 'Oxygens clicked: ' + count + ' / 2';
+              if(count === 2){
+                api.showFeedback(fb, true, 'Right — because the two oxygens are equivalent by symmetry, the real ion has the negative charge (and the extra bond order) spread evenly across both. Experimentally, both C–O bonds in acetate are the same length, in between a single and a double bond.');
+                next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Which of these is required for two structures to be true resonance structures of each other?',
+        options: ['Only the electrons move — no atom changes position', 'Atoms are allowed to shift slightly between the two', 'One structure must be thrown out because the other is more stable'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — resonance structures are the same molecule, same atom positions, different electron placement.',
+        wrongFeedback: 'If an atom moved, you\'d have a different molecule (or isomer), not a resonance structure.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'Between acetate\'s two resonance structures (charge on the top O vs. the bottom O), is one the "major" contributor?',
+        options: ['Yes — one is major and the other barely matters', 'No — they\'re equivalent, so both contribute equally to the hybrid', 'It depends on the solvent'],
+        correctIndex: 1,
+        correctFeedback: 'Correct. When resonance structures are related by symmetry like this, they contribute equally — there\'s no "major" one.',
+        wrongFeedback: 'Look again at the two oxygens — they\'re chemically identical, so neither structure is more stable than the other.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Resonance is why some molecules are far more stable — or acidic — than you\'d expect.',
+        bodyHtml: '<div class="explain-box">Spreading a charge out over resonance structures <b>stabilizes</b> it. That\'s the real reason carboxylic acids are so much more acidic than alcohols: the anion left behind after deprotonation is resonance-stabilized like the acetate you just saw. It\'s also why aromatic rings are unusually stable, and why enolates (coming up in Module 11) are useful nucleophiles. You\'ll use this idea constantly.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Two valid resonance structures place a negative charge on different atoms: one on carbon, one on oxygen. Which is the major contributor?',
+        options: ['The one with the negative charge on carbon', 'The one with the negative charge on oxygen', 'They contribute equally either way'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — a more electronegative atom stabilizes negative charge better, so the structure with the charge on oxygen contributes more to the real hybrid. When resonance structures aren\'t equivalent, the more stable one dominates.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>
