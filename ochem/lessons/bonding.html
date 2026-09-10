@@ -58,6 +58,10 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>Sigma bonds</h3><p class="step-body">A <b>sigma (σ) bond</b> forms from head-on orbital overlap, directly on the axis between the two nuclei. Every single bond is a sigma bond. Because the overlap is symmetric all the way around that axis, the atoms can freely rotate around it without disturbing anything.</p>' +
+      '<h3>Pi bonds</h3><p class="step-body">A <b>pi (π) bond</b> comes from the unhybridized p orbitals left over after hybridization (sp² carbon has 1 leftover p; sp has 2). These stick out above/below or side-to-side rather than along the bond axis, and two neighboring ones overlap <b>sideways</b>. That sideways overlap only works while the two p orbitals stay parallel — twisting one atom rotates its p orbital out of alignment and breaks the overlap. That\'s why a pi bond <b>blocks rotation</b> while a sigma bond doesn\'t.</p>' +
+      '<div class="formula">single bond = 1σ &nbsp;&middot;&nbsp; double bond = 1σ + 1π &nbsp;&middot;&nbsp; triple bond = 1σ + 2π</div>' +
+      '<div class="notes-fact">Restricted rotation around a double bond\'s pi bond is the entire reason cis/trans (E/Z) isomers exist — groups on either side of the double bond stay fixed relative to each other. More on this in the Stereochemistry module.</div>',
     steps: [
       {
         type: 'explain',

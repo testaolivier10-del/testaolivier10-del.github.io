@@ -70,6 +70,10 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>What resonance is</h3><p class="step-body">Some molecules and ions can\'t be captured by a single Lewis structure. When you can draw two or more valid structures that differ <b>only in where the electrons are</b> — never where the atoms are — those are <b>resonance structures</b>. The real molecule is a single <b>hybrid</b>: a blend of every valid resonance structure, not a molecule flipping back and forth between them.</p>' +
+      '<h3>The requirement: conjugation</h3><p class="step-body">Resonance only works when a lone pair, negative charge, or pi bond sits directly next to another pi bond or an adjacent p orbital, so their p orbitals can line up and overlap. A system connected this way — alternating single/multiple bonds, or a lone pair next to a pi bond — is <b>conjugated</b>. A lone pair with no neighboring pi bond has nowhere to delocalize into — no resonance to draw.</p>' +
+      '<h3>Worked example: acetate</h3><p class="step-body">Acetate (CH₃COO⁻) has two resonance structures, each putting the negative charge on a different one of its two (identical) oxygens. Because the two oxygens are equivalent by symmetry, both structures contribute equally to the hybrid — there\'s no "major" one here. Experimentally, both C–O bonds are the same length, in between a single and double bond.</p>' +
+      '<div class="notes-fact">When resonance structures aren\'t equivalent, the more stable one dominates. Between a structure with negative charge on carbon vs. one with it on oxygen, the oxygen version is the major contributor — a more electronegative atom stabilizes negative charge better. This is why carboxylic acids are far more acidic than alcohols: their anion is resonance-stabilized this way.</div>',
     steps: [
       {
         type: 'explain',

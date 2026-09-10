@@ -58,6 +58,10 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>The two rules</h3><p class="step-body">A curved arrow represents <b>two electrons</b> moving together. The <b>tail</b> starts wherever those electrons currently are — a lone pair, or an existing bond. The <b>head</b> points to wherever they end up — a new bond, or a new lone pair. The tail can never start on a bare atom or a positive charge, because there\'s nothing there to give away — it must start on an actual pair of electrons.</p>' +
+      '<h3>Worked example: ammonia + H⁺</h3><p class="step-body">Tail on nitrogen\'s lone pair (the electron source), head on H⁺ (where the new N–H bond forms). Order matters: the arrow always starts at the electrons and points to where they\'re going, never the reverse.</p>' +
+      '<h3>Spotting invalid arrows</h3><p class="step-body">An arrow drawn starting from a positive charge is always wrong — a positively charged atom is electron-<b>deficient</b>, so it can only ever be a destination (a head), never a source (a tail).</p>' +
+      '<div class="notes-fact">Every SN1, SN2, E1, E2, addition, and carbonyl mechanism for the rest of the course is built from these same two rules: tail on the electrons, head on the destination.</div>',
     steps: [
       {
         type: 'explain',
