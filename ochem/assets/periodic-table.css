@@ -1,0 +1,99 @@
+/* Floating periodic-table reference, available on every Ochem page.
+   Category colors are hardcoded (not theme tokens) since they need 11
+   distinct, recognizable hues regardless of light/dark mode — same
+   reasoning as the badge/tag colors elsewhere on the site. */
+
+.pt-fab{
+  position:fixed;right:20px;bottom:20px;z-index:60;
+  width:52px;height:52px;border-radius:50%;
+  background:var(--navy);color:var(--on-accent);border:none;
+  font-size:24px;line-height:1;cursor:pointer;box-shadow:var(--shadow-pop);
+  display:flex;align-items:center;justify-content:center;
+}
+.pt-fab:hover{background:var(--navy2);}
+.pt-fab:active{transform:translateY(3px);box-shadow:0 2px 0 var(--line);}
+
+.pt-overlay{
+  display:none;position:fixed;inset:0;z-index:80;
+  background:rgba(10,16,14,0.55);
+  padding:clamp(10px,3vw,32px);
+  align-items:center;justify-content:center;
+}
+.pt-overlay.open{display:flex;}
+
+.pt-modal{
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-pop);max-width:1040px;width:100%;max-height:92vh;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.pt-modal__head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:18px 20px 12px;}
+.pt-modal__title{font:900 18px var(--font-ui);color:var(--ink);}
+.pt-modal__sub{font-size:13px;font-weight:700;color:var(--muted);margin-top:2px;}
+.pt-close{
+  flex-shrink:0;width:34px;height:34px;border-radius:50%;border:var(--bw) solid var(--line);
+  background:var(--white);color:var(--ink);font-size:20px;line-height:1;cursor:pointer;
+}
+.pt-close:hover{border-color:var(--accent);color:var(--accent);}
+
+.pt-body{display:flex;gap:16px;padding:0 20px 12px;overflow:hidden;flex:1;min-height:0;}
+.pt-scroll{overflow:auto;flex:1;min-width:0;padding-bottom:8px;}
+.pt-grid{
+  display:grid;grid-template-columns:repeat(18,minmax(40px,1fr));grid-auto-rows:minmax(40px,auto);
+  gap:3px;min-width:760px;padding-top:6px;
+}
+.pt-cell{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border-radius:8px;border:1.5px solid transparent;cursor:pointer;padding:2px 0;
+  font-family:var(--font-mono);color:var(--ink);
+}
+.pt-cell:hover{border-color:var(--ink);}
+.pt-cell.chosen{border-color:var(--ink);box-shadow:0 0 0 2px var(--accent) inset;}
+.pt-z{font-size:8px;font-weight:700;opacity:.7;}
+.pt-sym{font-size:13px;font-weight:700;line-height:1.1;}
+.pt-en{font-size:8px;font-weight:600;opacity:.75;}
+.pt-refcell{
+  display:flex;align-items:center;justify-content:center;font:700 10px var(--font-mono);
+  color:var(--muted);border:1.5px dashed var(--line);border-radius:8px;
+}
+
+.pt-detail{
+  flex:0 0 240px;border-left:var(--bw) solid var(--line);padding-left:16px;overflow:auto;
+}
+.pt-detail-empty{font-size:13.5px;font-weight:700;color:var(--muted);padding-top:8px;}
+.pt-detail-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.pt-detail-sym{
+  width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font:900 22px var(--font-mono);flex-shrink:0;
+}
+.pt-detail-name{font:900 16px var(--font-ui);color:var(--ink);}
+.pt-detail-sub{font-size:12px;font-weight:700;color:var(--muted);margin-top:2px;}
+.pt-detail-row{margin-bottom:12px;}
+.pt-detail-row .k{display:block;font:900 10.5px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.pt-detail-row .v{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.5;}
+
+.pt-legend{
+  display:flex;flex-wrap:wrap;gap:8px 16px;padding:12px 20px;border-top:1px solid var(--line-soft);
+  font-size:11.5px;font-weight:700;color:var(--muted);
+}
+.pt-legend__item{display:flex;align-items:center;gap:6px;}
+.pt-swatch{width:11px;height:11px;border-radius:3px;display:inline-block;}
+
+/* Category colors — used for .pt-cell backgrounds, .pt-detail-sym fills,
+   and .pt-swatch legend dots. */
+.cat-alkali{background:#FBEAE6;color:#B4442F;}
+.cat-alkaline-earth{background:#FBF3E1;color:#95661C;}
+.cat-transition{background:#EAF0FB;color:#33559A;}
+.cat-post-transition{background:#EFEAF9;color:#5D3FA0;}
+.cat-metalloid{background:#E7F5EF;color:#1E7A56;}
+.cat-nonmetal{background:#E9F2EF;color:#1F7A6C;}
+.cat-halogen{background:#FBEDEA;color:#B4552F;}
+.cat-noble-gas{background:#F1EEF9;color:#6A4FA0;}
+.cat-lanthanide{background:#FBEAF3;color:#A83E77;}
+.cat-actinide{background:#F7E9F5;color:#8C3B87;}
+.cat-unknown{background:#EFEFEF;color:#6B6B6B;}
+
+@media(max-width:720px){
+  .pt-body{flex-direction:column;overflow:auto;}
+  .pt-detail{flex:none;border-left:none;border-top:var(--bw) solid var(--line);padding-left:0;padding-top:12px;}
+  .pt-fab{width:46px;height:46px;font-size:20px;right:14px;bottom:14px;}
+}
