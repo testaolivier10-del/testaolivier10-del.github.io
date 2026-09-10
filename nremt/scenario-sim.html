@@ -19,7 +19,8 @@
 <meta property="og:site_name" content="LevlPrep">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Baloo+2:wght@600;700;800&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 <style>
   body{line-height:1.65;}
   .lede{color:var(--muted);font-size:15.5px;max-width:60ch;margin:0 0 28px;}
@@ -27,90 +28,92 @@
   .picker-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   @media (max-width:560px){.picker-grid{grid-template-columns:1fr;}}
   .scenario-card{
-    background:var(--white);border:1px solid var(--line);border-radius:10px;padding:18px;
-    cursor:pointer;transition:border-color .15s,transform .1s;text-align:left;font-family:inherit;
+    background:var(--white);border:2px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--lift);
+    cursor:pointer;transition:border-color .12s,transform .08s,box-shadow .08s;text-align:left;font-family:var(--font-ui);
   }
-  .scenario-card:hover{border-color:var(--accent);transform:translateY(-1px);}
+  .scenario-card:hover{border-color:var(--accent);transform:translateY(1px);box-shadow:var(--lift-sm);}
+  .scenario-card:active{transform:translateY(4px);box-shadow:0 0 0 var(--line);}
   .scenario-domain{
-    font-family:'SFMono-Regular',monospace;font-size:10.5px;color:var(--accent);
+    font-family:var(--font-mono);font-size:10.5px;color:var(--accent);
     text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;
   }
-  .scenario-card h3{font-size:16.5px;font-weight:600;margin:0 0 8px;color:var(--ink);}
-  .scenario-card p{font-size:13.5px;color:var(--muted);margin:0;}
+  .scenario-card h3{font-size:16px;font-weight:900;margin:0 0 8px;color:var(--ink);padding-top:0;border-top:0;}
+  .scenario-card p{font-size:13px;font-weight:600;color:var(--muted);margin:0;}
 
   .sim-box{
-    background:var(--white);border:1px solid var(--line);border-radius:10px;padding:26px 24px;
-    display:none;
+    background:var(--white);border:2px solid var(--line);border-radius:var(--radius-lg);padding:26px 24px;
+    box-shadow:var(--lift-lg);display:none;
   }
   .sim-box.active{display:block;}
   .sim-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
   .sim-domain{
-    font-family:'SFMono-Regular',monospace;font-size:11px;color:var(--accent);
+    font-family:var(--font-mono);font-size:11px;color:var(--accent);
     text-transform:uppercase;letter-spacing:0.05em;
   }
-  .back-link{font-size:12.5px;color:var(--muted);text-decoration:none;cursor:pointer;background:none;border:none;font-family:inherit;padding:0;}
+  .back-link{font:800 12.5px var(--font-ui);color:var(--muted);text-decoration:none;cursor:pointer;background:none;border:none;padding:0;}
   .back-link:hover{color:var(--accent);}
 
   .vitals-bar{
-    font-family:'SFMono-Regular',monospace;font-size:12px;color:var(--ink);
-    background:rgba(22,51,46,0.06);border-radius:8px;padding:8px 12px;margin-bottom:16px;display:inline-block;
+    font-family:var(--font-mono);font-size:12px;color:var(--ink);
+    background:var(--tint-accent);border-radius:10px;padding:9px 13px;margin-bottom:16px;display:inline-block;font-weight:700;
   }
-  .node-text{font-size:15.5px;margin:0 0 22px;}
+  .node-text{font-size:15.5px;font-weight:700;margin:0 0 22px;}
 
   .consequence-banner{
-    border-left:3px solid var(--warn);background:rgba(184,134,58,0.1);border-radius:8px;
-    padding:12px 14px;margin-bottom:20px;font-size:14px;
+    border:2px solid var(--amber);background:var(--tint-amber);border-radius:14px;box-shadow:0 3px 0 var(--amber-press);
+    padding:13px 15px;margin-bottom:20px;font-size:14px;font-weight:700;
   }
-  .consequence-banner strong{color:var(--warn);display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;font-family:'SFMono-Regular',monospace;}
+  .consequence-banner strong{color:var(--warn);display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;font-family:var(--font-mono);}
 
   .choice-list{display:flex;flex-direction:column;gap:9px;}
   .choice-option{
-    text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-card);
-    padding:13px 16px;font-family:inherit;font-size:14.5px;color:var(--ink);cursor:pointer;
-    transition:border-color .12s,background .12s;
+    text-align:left;background:var(--white);border:2px solid var(--line);border-radius:16px;box-shadow:var(--lift);
+    padding:15px 18px;font-family:var(--font-ui);font-size:14.5px;font-weight:800;color:var(--ink);cursor:pointer;
+    transition:border-color .12s,background .12s,transform .08s,box-shadow .08s;
   }
-  .choice-option:hover{border-color:var(--accent);background:var(--white);}
+  .choice-option:hover{border-color:var(--accent);transform:translateY(1px);box-shadow:var(--lift-sm);}
+  .choice-option:active{transform:translateY(4px);box-shadow:0 0 0 var(--line);}
 
   .ending-badge{
-    display:inline-block;font-family:'SFMono-Regular',monospace;font-size:11px;text-transform:uppercase;
-    letter-spacing:0.05em;padding:4px 11px;border-radius:20px;margin-bottom:14px;
+    display:inline-block;font:900 11px var(--font-ui);text-transform:uppercase;
+    letter-spacing:0.05em;padding:6px 13px;border-radius:var(--radius-pill);margin-bottom:14px;
   }
-  .ending-badge.good{background:rgba(46,125,79,0.14);color:var(--good);}
-  .ending-badge.neutral{background:rgba(184,134,58,0.14);color:var(--warn);}
-  .ending-badge.bad{background:rgba(178,58,58,0.12);color:var(--bad);}
+  .ending-badge.good{background:var(--tint-good);color:var(--good);}
+  .ending-badge.neutral{background:var(--tint-amber);color:var(--amber);}
+  .ending-badge.bad{background:var(--tint-bad);color:var(--bad);}
 
   .sim-actions{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;}
   .btn-primary{
-    background:var(--navy);color:var(--on-accent);border:none;border-radius:var(--radius);padding:11px 20px;
-    font-family:inherit;font-size:14px;cursor:pointer;
+    background:var(--navy);color:var(--on-accent);border:none;border-radius:var(--radius);padding:13px 24px;
+    font:900 14px var(--font-ui);cursor:pointer;box-shadow:0 5px 0 var(--navy-press);
+    transition:transform .08s ease,box-shadow .08s ease;
   }
-  .btn-primary:hover{background:var(--navy2);}
+  .btn-primary:active{transform:translateY(5px);box-shadow:0 0 0 var(--navy-press);}
   .btn-secondary{
-    background:var(--white);color:var(--ink);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-card);padding:11px 20px;
-    font-family:inherit;font-size:14px;cursor:pointer;
+    background:var(--white);color:var(--ink);border:2px solid var(--line);border-radius:var(--radius);box-shadow:var(--lift);padding:12px 22px;
+    font:900 14px var(--font-ui);cursor:pointer;transition:transform .08s ease,box-shadow .08s ease,border-color .12s;
   }
   .btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
+  .btn-secondary:active{transform:translateY(4px);box-shadow:0 0 0 var(--line);}
 
-  .path-log{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);}
+  .path-log{margin-top:24px;padding-top:18px;border-top:2px solid var(--line);}
   .path-log-title{
-    font-family:'SFMono-Regular',monospace;font-size:10.5px;color:var(--muted);
-    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;
+    font:900 10.5px var(--font-ui);color:var(--muted);
+    text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;
   }
-  .path-log ol{margin:0;padding-left:18px;font-size:12.5px;color:var(--muted);}
+  .path-log ol{margin:0;padding-left:18px;font-size:12.5px;font-weight:600;color:var(--muted);}
   .path-log li{margin-bottom:4px;}
 
-  footer{margin-top:44px;font-size:12px;color:#9AA19C;max-width:60ch;}
+  footer{margin-top:44px;font-size:12px;color:var(--muted);max-width:60ch;}
 </style>
 </head>
 <body>
   <div id="site-header"></div>
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="practice.html">Practice</a> · <a href="study-plan.html">Study Plan</a> · <a href="study-notes.html">Notes</a> · <a href="mnemonics.html">Mnemonics</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
-<div class="tool-shell">
-  <div class="tool-hero">
-    <div class="eyebrow">Tools</div>
-    <h1>Clinical Scenario Simulator</h1>
-    <p class="lede">Multiple choice tests recall. This tests sequencing and judgment — closer to how the real exam's scenario logic actually works. Every choice here leads somewhere real, not just a right/wrong buzzer. Choose carefully; a delay or a skipped step shows up later in the scenario, exactly like it would on an actual call.</p>
-  </div>
+<div class="wrap">
+  <div class="eyebrow">Tools</div>
+  <h1>Clinical Scenario Simulator</h1>
+  <p class="lede">Multiple choice tests recall. This tests sequencing and judgment — closer to how the real exam's scenario logic actually works. Every choice here leads somewhere real, not just a right/wrong buzzer. Choose carefully; a delay or a skipped step shows up later in the scenario, exactly like it would on an actual call.</p>
 
   <div id="pickerScreen">
     <div class="picker-grid" id="pickerGrid"></div>
@@ -133,8 +136,8 @@ const SCENARIOS = [
     startNode: "s1_start",
     nodes: {
       s1_start: {
-        vitals: "HR 118 · BP 108/70 · RR 22 · SpO2 97%",
-        text: "Dispatch sent you for a motorcycle down on a gravel shoulder. You arrive to find a 28-year-old man lying next to the bike, helmet still on, alert and shouting in pain. His right thigh has an open wound with blood visibly spurting in time with his pulse, soaking through his riding jeans. A bystander says the bike went down at an estimated 35-40 mph when it hit loose gravel on a curve, and that he was thrown a short distance but never lost consciousness. He denies neck or back pain and is moving all four limbs, though he's fixated entirely on his leg. His wife, reached by phone, mentions he takes a beta-blocker for a heart rhythm issue and had \"a beer at lunch\" a few hours ago. A second bystander has looped a belt loosely around his upper thigh, but blood is still visibly spurting through it and no one is holding it in place.",
+        vitals: "HR 118 · BP 108/70 · RR 22",
+        text: "You arrive to find a 28-year-old man lying next to a motorcycle, alert and shouting in pain. His right thigh has an open wound with blood visibly spurting in time with his pulse. Bystanders are standing around, unsure what to do.",
         choices: [
           { text: "Apply firm direct pressure to the wound immediately", next: "s1_pressure_good" },
           { text: "Ask him what happened and check for other injuries first", next: "s1_delayed", consequence: "You spend a moment gathering the story while the bleeding continues unchecked. By the time you look back down, a visibly larger pool of blood has formed and he looks paler." },
@@ -222,8 +225,8 @@ const SCENARIOS = [
     startNode: "s2_start",
     nodes: {
       s2_start: {
-        vitals: "HR 96 · BP 138/88 · RR 18 · SpO2 98% · Pain 8/10",
-        text: "A 58-year-old woman flagged down a store employee, saying she has crushing chest pain that started 20 minutes ago while pushing a full shopping cart. She's sitting on a bench, pale and sweaty, holding her chest, and describes the pain as radiating into her left arm and jaw. She mentions she twisted awkwardly reaching for a top shelf item right before the pain started, and also that she's been under a lot of work stress this week — both offered unprompted, neither actually explaining crushing, radiating chest pain of this character. She has a history of high cholesterol and type 2 diabetes, takes metformin, and has her own prescribed nitroglycerin in her purse that she hasn't taken yet. She denies any known drug allergies. Her husband, standing nearby, keeps insisting she \"just needs to sit and catch her breath\" and that they don't need an ambulance.",
+        vitals: "HR 96 · BP 138/88 · SpO2 98% · Pain 8/10",
+        text: "A 58-year-old woman flagged down a store employee, saying she has crushing chest pain that started 20 minutes ago while shopping. She's sitting on a bench, pale and sweaty, holding her chest.",
         choices: [
           { text: "Have her stay seated, apply oxygen only if she's hypoxic or in distress, and begin your assessment", next: "s2_history_good" },
           { text: "Immediately place her on a nonrebreather at 15 LPM regardless of her oxygen level", next: "s2_over_o2", consequence: "Her SpO2 was already 98% on room air. High-flow oxygen isn't harmless by default in this situation — current guidance targets oxygen to actual need, not routine high-flow for every chest pain call." },
@@ -309,8 +312,7 @@ const SCENARIOS = [
     startNode: "s3_start",
     nodes: {
       s3_start: {
-        vitals: "HR 138 · RR 32 (coughing) · SpO2 99%",
-        text: "A frantic father runs up carrying his 2-year-old daughter, who is coughing forcefully but can still make sound between coughs. She was eating grapes moments ago at a birthday party. The father mentions she had a runny nose and a mild cough yesterday that he assumed was \"just a cold,\" and that she's due for a check-up next week — neither detail changes what's happening in front of you right now. Her lips and face are pink, she's making eye contact and reaching for her father, and she does not appear to be in any respiratory distress between coughing fits.",
+        text: "A frantic father runs up carrying his 2-year-old daughter, who is coughing forcefully but can still make sound. She was eating grapes moments ago.",
         choices: [
           { text: "Encourage her to keep coughing and stay calm, watching closely", next: "s3_watch_good" },
           { text: "Immediately perform abdominal thrusts since she's choking", next: "s3_intervene_early", consequence: "She still has a strong, effective cough and can move air — her airway isn't fully blocked. Jumping straight to abdominal thrusts on a child who can still cough forcefully can actually push the object deeper." },
@@ -376,8 +378,7 @@ const SCENARIOS = [
     startNode: "s4_start",
     nodes: {
       s4_start: {
-        vitals: "HR 118 · BP 128/82 · RR 20 · SpO2 97%",
-        text: "You're called to a home for \"a person not acting right.\" You find a 45-year-old man sitting on the kitchen floor, awake but confused, sweaty, and visibly shaky, gripping the counter as if trying to stand. His wife says he's a type 1 diabetic, took his usual insulin dose this morning, then went for a longer run than usual and hasn't eaten since. She also mentions he complained of a mild headache and seemed \"a little off\" at breakfast yesterday, and that he had a glass of wine with dinner last night — details she offers anxiously but that don't explain his sudden confusion right now. A glucometer and insulin pen sit on the counter nearby, and he wears a medical alert bracelet for diabetes on his wrist, easy to miss under his shirt sleeve at a glance. He can follow simple one-step commands but seems to be struggling to find words.",
+        text: "You're called to a home for \"a person not acting right.\" You find a 45-year-old man sitting on the kitchen floor, awake but confused, sweaty, and shaky. His wife says he's diabetic and hasn't eaten since this morning.",
         choices: [
           { text: "Check his blood glucose if your protocol allows, while assessing his airway and ability to swallow", next: "s4_glucose_good" },
           { text: "Assume he's intoxicated based on his confused, unsteady presentation", next: "s4_assume_bad", consequence: "Confusion, sweating, and unsteadiness can look identical to intoxication — but his wife just told you he's diabetic and hasn't eaten. Anchoring on \"probably drunk\" nearly costs you a time-sensitive hypoglycemic emergency." },
@@ -465,8 +466,8 @@ const SCENARIOS = [
     startNode: "s5_start",
     nodes: {
       s5_start: {
-        vitals: "HR 110 · BP 122/78 · RR 22 · SpO2 96%",
-        text: "A 16-year-old boy at a backyard party says he thinks he ate something with peanuts in it about ten minutes ago. He has hives spreading across his arms and chest and says his throat \"feels tight,\" and his voice sounds slightly different than a moment ago. He has a known peanut allergy and a prescribed epinephrine auto-injector in his pocket but hasn't used it yet, saying he \"wanted to wait and see\" since his past reactions were usually just hives that went away on their own. He also mentions he's been fighting off a cold this week and took an antihistamine for seasonal allergies this morning — details that don't change what's happening to him right now. A friend nearby is filming on his phone instead of helping.",
+        vitals: "HR 110 · BP 122/78 · SpO2 96%",
+        text: "A 16-year-old boy at a backyard party says he thinks he ate something with peanuts in it about ten minutes ago. He has hives spreading across his arms and chest and says his throat \"feels tight.\" He has a prescribed epinephrine auto-injector in his pocket but hasn't used it yet.",
         choices: [
           { text: "Assess his airway and breathing while asking about known allergies and prior reactions", next: "s5_assess_good" },
           { text: "Have him lie down and wait to see if the hives get worse before doing anything", next: "s5_wait_bad", consequence: "Waiting to \"see if it gets worse\" on a patient already reporting throat tightness after a known allergen exposure burns time you don't have — this can progress to full airway swelling within minutes." },
@@ -549,7 +550,7 @@ const SCENARIOS = [
     startNode: "s6_start",
     nodes: {
       s6_start: {
-        text: "You arrive to find a 52-year-old man collapsed on the gym floor near a treadmill, which is still running. A bystander is standing over him, unsure what to do, saying he \"just went down mid-run without any warning\" and that he saw him gripping his chest a moment before he collapsed. Another gym member mentions the man has been \"training hard for a marathon\" for months and looked totally fine an hour ago — details that describe his routine but don't change what's in front of you right now. He is unresponsive, and the bystander isn't sure if he's breathing.",
+        text: "You arrive to find a 52-year-old man collapsed on the gym floor. A bystander is standing over him, unsure what to do. He is unresponsive.",
         choices: [
           { text: "Check for responsiveness and breathing at the same time you check for a pulse, and call for the AED immediately", next: "s6_check_good" },
           { text: "Spend a full minute checking his medical history with bystanders before touching him", next: "s6_delay_bad", consequence: "Every second without compressions or defibrillation in cardiac arrest lowers his odds of survival. History can be gathered later — it is never the first priority in an unresponsive, possibly pulseless patient." },
@@ -632,8 +633,8 @@ const SCENARIOS = [
     startNode: "s7_start",
     nodes: {
       s7_start: {
-        vitals: "HR 88 · BP 168/94 · RR 18 · SpO2 97%",
-        text: "A 74-year-old woman was found by a neighbor wandering her yard in her nightgown, speech slurred, right arm hanging at her side. The neighbor says she has a history of high blood pressure and atrial fibrillation, and mentions she \"seemed a little tired and forgetful\" at a family dinner two nights ago — a vague detail that doesn't establish anything about right now. Her family isn't home and no one can immediately say when she was last seen normal, though the neighbor recalls seeing her gardening earlier. There's an empty pill organizer on her porch table, and a phone in the grass a few feet away as if dropped.",
+        vitals: "HR 88 · BP 168/94 · SpO2 97%",
+        text: "A 74-year-old woman was found by a neighbor wandering her yard in her nightgown, speech slurred, right arm hanging at her side. Her family isn't home and no one can immediately say when she was last seen normal.",
         choices: [
           { text: "Perform a rapid stroke screen (face, arm, speech) and get an exact last-known-well time from any available source", next: "s7_fast_good" },
           { text: "Assume she's just disoriented from age and focus on getting her comfortable before assessing further", next: "s7_assume_bad", consequence: "Slurred speech and one-sided arm weakness are classic stroke signs, not just \"disorientation.\" Dismissing them as normal aging costs precious time in a condition where time directly determines treatment options and outcome." },
@@ -701,7 +702,7 @@ const SCENARIOS = [
     nodes: {
       s8_start: {
         vitals: "HR 58 · RR 4 · SpO2 82%",
-        text: "Bystanders flag you down to a 30-year-old man slumped behind a convenience store, needle nearby, breathing about four times a minute and barely responsive to a sternal rub. His lips have a bluish tint, and his pupils are noticeably pinpoint. A bystander says he was \"talking normally and seemed fine\" about fifteen minutes ago before wandering back here, and mentions there's an empty beer can near him as well — a detail that doesn't change what his current breathing rate and color are telling you right now. There's no medical alert jewelry, and no one can say what exactly was in the needle nearby, only that it's there.",
+        text: "Bystanders flag you down to a 30-year-old man slumped behind a convenience store, needle nearby, breathing about four times a minute and barely responsive to a sternal rub. His lips have a bluish tint.",
         choices: [
           { text: "Open his airway and begin assisting ventilations with a bag-valve mask while preparing naloxone", next: "s8_bvm_good" },
           { text: "Administer naloxone immediately and wait to see if he starts breathing better on his own", next: "s8_naloxone_only", consequence: "He is barely breathing right now — four breaths a minute with an SpO2 of 82% is not survivable for long. Naloxone takes a couple of minutes to take effect at best; a patient this hypoxic needs ventilatory support started immediately, not after a delay waiting on a drug to work." },

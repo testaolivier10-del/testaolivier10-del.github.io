@@ -25,44 +25,59 @@
 </script>
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 <style>
-  .fact-row{display:flex;flex-wrap:wrap;gap:8px 22px;margin:20px 0 0;font:13px var(--font-ui);color:var(--muted);}
+  /* Hub-only components. The shared system in assets/theme.css — the same file
+     the NREMT app loads — carries the palette, typography, cards and buttons. */
+  .fact-row{display:flex;flex-wrap:wrap;gap:8px 22px;margin:22px 0 0;font:800 13px var(--font-ui);color:var(--muted);}
   .fact-row span{display:inline-flex;align-items:center;gap:7px;}
-  .fact-row .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+  .fact-row .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;}
 
+  /* The subject tile is already a raised card, so the section wrapper must not
+     add a second one around it. */
+  .xgrid:has(> .xlabel) > .xcontent:has(> .featured-card){
+    background:none;border:0;padding:0;box-shadow:none;
+  }
   .featured-card{
     display:flex;flex-direction:column;gap:16px;text-decoration:none;color:inherit;
-    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
-    box-shadow:var(--shadow-card);padding:28px 26px;
-    transition:border-color .15s ease,transform .15s ease,box-shadow .15s ease;
+    background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+    box-shadow:var(--lift-lg);padding:28px 26px;
+    transition:border-color .12s ease,transform .08s ease,box-shadow .08s ease;
   }
-  .featured-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-pop);}
+  .featured-card:hover{border-color:var(--accent);transform:translateY(2px);box-shadow:var(--lift-sm);}
+  .featured-card:active{transform:translateY(5px);box-shadow:0 0 0 var(--line);}
   .featured-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;}
   .featured-icon{
-    width:44px;height:44px;border-radius:10px;background:var(--accent);color:var(--on-accent);
-    display:flex;align-items:center;justify-content:center;font-size:20px;font-family:var(--font-ui);flex-shrink:0;
+    width:48px;height:48px;border-radius:14px;background:var(--navy);color:var(--on-accent);
+    display:flex;align-items:center;justify-content:center;font:900 22px var(--font-ui);
+    box-shadow:0 4px 0 var(--navy-press);flex-shrink:0;
   }
   .status-badge{
-    font:700 11.5px var(--font-ui);letter-spacing:0.05em;text-transform:uppercase;
-    display:inline-flex;align-items:center;gap:6px;color:var(--good);flex-shrink:0;padding-top:4px;
+    font:900 11.5px var(--font-ui);letter-spacing:0.05em;text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:6px;color:var(--good);background:var(--tint-good);
+    border-radius:var(--radius-pill);padding:6px 12px;flex-shrink:0;
   }
   .status-badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor;}
-  .featured-name{font:800 19px var(--font-ui);margin:0;color:var(--ink);}
-  .featured-desc{font-size:15px;color:var(--muted);margin:6px 0 0;max-width:60ch;text-wrap:pretty;}
+  .featured-name{font:900 21px var(--font-ui);margin:0;color:var(--ink);letter-spacing:-0.02em;}
+  .featured-desc{font-size:14.5px;font-weight:600;color:var(--muted);margin:6px 0 0;max-width:60ch;text-wrap:pretty;}
   .featured-tags{display:flex;flex-wrap:wrap;gap:8px;}
   .featured-tags span{
-    font:600 12px var(--font-ui);color:var(--muted);background:var(--paper);
-    border:1px solid var(--line);border-radius:20px;padding:5px 12px;
+    font:800 12px var(--font-ui);color:var(--ink);background:var(--paper);
+    border:var(--bw) solid var(--line);border-radius:var(--radius-pill);padding:6px 13px;
   }
-  .featured-cta{font:700 13.5px var(--font-ui);color:var(--accent);display:inline-flex;align-items:center;gap:6px;}
-  .featured-card:hover .featured-cta{gap:9px;}
+  .featured-cta{font:900 14px var(--font-ui);color:var(--accent);display:inline-flex;align-items:center;gap:6px;}
+  .featured-card:hover .featured-cta{gap:10px;}
 
   .roadmap-row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line-soft);}
   .roadmap-row:last-child{border-bottom:0;}
-  .roadmap-name{font-size:18px;}
-  .roadmap-desc{font-size:14.5px;color:var(--muted);margin-top:2px;text-wrap:pretty;}
-  .roadmap-status{font:700 11.5px var(--font-mono);letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);white-space:nowrap;flex-shrink:0;}
+  .roadmap-name{font-size:17px;font-weight:900;margin:0;}
+  .roadmap-desc{font-size:14px;font-weight:600;color:var(--muted);margin-top:3px;text-wrap:pretty;}
+  .roadmap-status{
+    font:900 11px var(--font-ui);letter-spacing:0.05em;text-transform:uppercase;
+    color:var(--amber);background:var(--tint-amber);border-radius:var(--radius-pill);
+    padding:5px 12px;white-space:nowrap;flex-shrink:0;
+  }
 </style>
 </head>
 <body>

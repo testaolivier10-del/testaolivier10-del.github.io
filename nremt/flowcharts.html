@@ -18,30 +18,29 @@
 <meta property="og:site_name" content="LevlPrep">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Baloo+2:wght@600;700;800&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 <style>
-  .diagram-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-card);padding:20px;margin-bottom:16px;}
+  .diagram-card{background:var(--white);border:2px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--lift);padding:22px;margin-bottom:18px;}
   .flow-box{
-    background:var(--paper);border:1.5px solid var(--navy);border-radius:10px;padding:10px 14px;
-    font-size:13.5px;text-align:center;
+    background:var(--paper);border:2px solid var(--navy);border-radius:12px;padding:11px 14px;
+    font-size:13.5px;font-weight:800;text-align:center;
   }
   .flow-box.decision{border-color:var(--accent);background:var(--tint-accent);}
-  .flow-box.action{font-weight:600;}
+  .flow-box.action{font-weight:900;}
   .flow-arrow{text-align:center;font-size:16px;color:var(--muted);margin:2px 0;}
   .flow-branch{display:flex;gap:10px;margin:2px 0;}
   .flow-branch > div{flex:1;}
-  .branch-label{font-size:11px;color:var(--muted);text-align:center;margin-bottom:2px;font-family:'SFMono-Regular',monospace;}
+  .branch-label{font:700 11px var(--font-mono);color:var(--muted);text-align:center;margin-bottom:3px;}
 </style>
 </head>
 <body>
   <div id="site-header"></div>
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="practice.html">Practice</a> · <a href="study-plan.html">Study Plan</a> · <a href="study-notes.html">Notes</a> · <a href="mnemonics.html">Mnemonics</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
-<div class="tool-shell">
-  <div class="tool-hero">
-    <div class="eyebrow">Tools</div>
-    <h1>Protocol Flow Diagrams</h1>
-    <p class="lede">Visual walkthroughs of a few core decision sequences, for a different way to review than reading text.</p>
-  </div>
+<div class="wrap">
+  <div class="eyebrow">Tools</div>
+  <h1>Protocol Flow Diagrams</h1>
+  <p class="lede">Visual walkthroughs of a few core decision sequences, for a different way to review than reading text.</p>
 
   <div class="warning">
     <b>These show general, widely-taught sequences — not a scored skill sheet.</b> Specific protocols can vary by local medical direction. Verify anything protocol-specific against your own course materials.

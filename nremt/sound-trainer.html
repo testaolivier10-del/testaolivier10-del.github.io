@@ -19,7 +19,8 @@
 <meta property="og:site_name" content="LevlPrep">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Baloo+2:wght@600;700;800&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 <style>
   body{line-height:1.65;}
   .lede{color:var(--muted);font-size:15.5px;max-width:60ch;margin:0 0 20px;}
@@ -37,7 +38,7 @@
   .sound-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
   @media (max-width:520px){.sound-grid{grid-template-columns:1fr;}}
   .sound-card{
-    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-card);padding:16px;
+    background:var(--white);border:2px solid var(--line);border-radius:var(--radius);box-shadow:var(--lift);padding:16px;
   }
   .sound-card h3{font-size:15.5px;font-weight:600;margin:0 0 6px;color:var(--ink);}
   .sound-card p{font-size:13.5px;color:var(--muted);margin:0 0 12px;}
@@ -54,7 +55,7 @@
   .play-btn .icon{font-size:12px;}
   .link-out-btn{
     display:inline-flex;align-items:center;gap:6px;background:var(--white);color:var(--ink);
-    border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-size:13px;font-family:inherit;
+    border:2px solid var(--line);border-radius:20px;padding:8px 16px;font-size:13px;font-family:inherit;
     text-decoration:none;transition:border-color .15s,color .15s;
   }
   .link-out-btn:hover{border-color:var(--accent);color:var(--accent);}
@@ -65,11 +66,11 @@
   .credit-line a{color:#9AA19C;}
 
   .quiz-box{
-    background:var(--white);border:1px solid var(--line);border-radius:10px;padding:26px 24px;
+    background:var(--white);border:2px solid var(--line);border-radius:10px;padding:26px 24px;
     text-align:center;
   }
   .quiz-progress{
-    font-family:'SFMono-Regular',monospace;font-size:11px;color:var(--muted);
+    font-family:var(--font-mono);font-size:11px;color:var(--muted);
     text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px;
   }
   .quiz-score{float:right;}
@@ -85,7 +86,7 @@
   .quiz-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:440px;margin:0 auto;}
   @media (max-width:480px){.quiz-choices{grid-template-columns:1fr;}}
   .choice-btn{
-    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-card);padding:12px 10px;
+    background:var(--paper);border:2px solid var(--line);border-radius:var(--radius);box-shadow:var(--lift);padding:12px 10px;
     font-family:inherit;font-size:14.5px;color:var(--ink);cursor:pointer;transition:all .12s;
   }
   .choice-btn:hover:not(:disabled){border-color:var(--accent);}
@@ -124,12 +125,10 @@
 <body>
   <div id="site-header"></div>
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="practice.html">Practice</a> · <a href="study-plan.html">Study Plan</a> · <a href="study-notes.html">Notes</a> · <a href="mnemonics.html">Mnemonics</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
-<div class="tool-shell">
-  <div class="tool-hero">
-    <div class="eyebrow">Tools</div>
-    <h1>Auscultation Sound Trainer</h1>
-    <p class="lede">Text can tell you a wheeze is "high-pitched and musical" and a crackle is "discrete and popping" — but that distinction only really locks in once you've actually heard both. Listen to real recorded breath sounds below, then test your ear in quiz mode.</p>
-  </div>
+<div class="wrap">
+  <div class="eyebrow">Tools</div>
+  <h1>Auscultation Sound Trainer</h1>
+  <p class="lede">Text can tell you a wheeze is "high-pitched and musical" and a crackle is "discrete and popping" — but that distinction only really locks in once you've actually heard both. Listen to real recorded breath sounds below, then test your ear in quiz mode.</p>
 
   <div class="notice">
     <strong>A note on these recordings:</strong> the wheeze, crackles, and stridor clips are real auscultation recordings sourced from Wikimedia Commons (each individually credited and licensed CC BY-SA). The rhonchi and normal breath sound clips are also playable directly here, with a link to the Hawaii COPD Coalition's lung sounds page if you'd like to hear more from the original source.
@@ -316,7 +315,7 @@ function renderQuizRound(){
 
   box.innerHTML = `
     <div class="quiz-progress">Round ${quizState.current + 1} of ${quizState.rounds.length}<span class="quiz-score">Score: ${quizState.score}/${quizState.current}</span></div>
-    <button type="button" class="big-play-btn" id="quizPlayBtn" aria-label="Play sound clip">&#9658;</button>
+    <button type="button" class="big-play-btn" id="quizPlayBtn">&#9658;</button>
     <div class="quiz-hint">Click to play the clip (click again to stop), then pick what you hear</div>
     <div class="quiz-choices" id="quizChoices">
       ${SOUNDS.map(s => `<button type="button" class="choice-btn" data-choice="${s.id}">${s.label}</button>`).join('')}

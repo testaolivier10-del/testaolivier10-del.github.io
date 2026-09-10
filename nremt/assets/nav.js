@@ -2,9 +2,10 @@
    highlights the current page/section. Keeps every page in sync from one
    file instead of each page hand-copying its own nav markup. */
 (function(){
-  // The site-wide hub (this app's parent directory) that lists this app as
-  // one of several subjects. Kept as its own link — rather than repurposing
-  // the brand logo for it — so the brand always points at this app's home.
+  // The account-wide Study Hub landing page (a separate repo/site) that
+  // lists this app as one of several products. Kept as its own link
+  // (rather than repurposing the brand logo for it) now that this app has
+  // a real homepage of its own to link to.
   var HUB_URL = '/';
 
   var NAV_ITEMS = [
@@ -86,7 +87,6 @@
     }
     saveXp(state);
     renderLevelBadge();
-    renderStreakChip();
     return state;
   }
   function renderLevelBadge(){
@@ -97,45 +97,54 @@
     var next = xpForLevel(level + 1);
     var prev = xpForLevel(level);
     var into = state.total - prev, span = Math.max(1, next - prev);
-    el.textContent = 'Lvl ' + level;
+    el.textContent = 'L' + level;
     el.title = titleForLevel(level) + ' — ' + state.total + ' XP (' + into + '/' + span + ' to Lvl ' + (level + 1) + ')';
   }
 
   window.LevlXP = {
     loadXp: loadXp, awardXp: awardXp, xpForLevel: xpForLevel, levelForXp: levelForXp,
-    titleForLevel: titleForLevel, renderLevelBadge: renderLevelBadge, renderStreakChip: renderStreakChip,
+    titleForLevel: titleForLevel, renderLevelBadge: renderLevelBadge,
+    renderNavStreak: function(){ renderNavStreak(); },
     DOMAIN_TIER_THRESHOLDS: DOMAIN_TIER_THRESHOLDS,
   };
-
-  // ---- Streak chip: reads the same streak object practice.html already
-  // maintains (nremt_streak). Header-only display, so it's read-only here —
-  // practice.html owns writing to it. Hidden entirely at zero so a brand-new
-  // visitor doesn't see a sad "0" next to their level badge. ----
-  var STREAK_KEY = 'nremt_streak';
-  function currentStreakCount(){
-    try{
-      var raw = localStorage.getItem(STREAK_KEY);
-      var s = raw ? JSON.parse(raw) : null;
-      return (s && s.currentStreak) || 0;
-    }catch(e){ return 0; }
-  }
-  function renderStreakChip(){
-    var el = document.getElementById('streakChip');
-    if(!el) return;
-    var n = currentStreakCount();
-    if(n > 0){
-      el.hidden = false;
-      el.querySelector('.streak-chip-num').textContent = n;
-      el.title = n + '-day study streak';
-    } else {
-      el.hidden = true;
-    }
-  }
 
   function escapeHtml(s){
     return String(s).replace(/[&<>"']/g, function(c){
       return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
     });
+  }
+
+  // ---- Header streak chip. Reads the same nremt_streak record practice.html
+  // writes, and applies the same "broken unless active today or yesterday"
+  // rule the dashboard uses, so the two never disagree. Stays hidden at 0. ----
+  var FLAME_SVG =
+    '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+      '<path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c1.5 1 2 3 2 4.5A5.5 5.5 0 0111.5 21 6 6 0 016 15c0-5 4-6 4-9 0-1.5-.5-2.5-1-3.5C10.5 2 11 2 12 2z" fill="currentColor"/>' +
+    '</svg>';
+
+  function streakDayKey(offset){
+    var d = new Date();
+    if(offset) d.setDate(d.getDate() + offset);
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+
+  function currentStreak(){
+    var s;
+    try{ s = JSON.parse(localStorage.getItem('nremt_streak') || 'null'); }catch(e){ return 0; }
+    if(!s || !s.currentStreak) return 0;
+    var today = streakDayKey(0), yesterday = streakDayKey(-1);
+    var broken = s.lastActiveDate !== null && s.lastActiveDate !== today && s.lastActiveDate !== yesterday;
+    return broken ? 0 : s.currentStreak;
+  }
+
+  function renderNavStreak(){
+    var el = document.getElementById('navStreak');
+    if(!el) return;
+    var n = currentStreak();
+    el.hidden = n < 1;
+    var count = document.getElementById('navStreakCount');
+    if(count) count.textContent = n;
+    el.title = n + '-day study streak';
   }
 
   function renderHeader(){
@@ -153,24 +162,25 @@
     mount.innerHTML =
       '<div class="site-header__inner">' +
         '<span class="site-header__brand-row">' +
-          '<a class="hub-back" href="' + HUB_URL + '" title="Back to Study Hub">&larr; Study Hub</a>' +
+          '<a class="hub-back" href="' + HUB_URL + '" title="Back to Study Hub" aria-label="Back to Study Hub">&larr;</a>' +
           '<a class="site-header__brand" href="index.html">' +
             '<span class="brand-mark" aria-hidden="true">+</span> LevlPrep' +
           '</a>' +
         '</span>' +
-        '<nav class="site-header__groups" aria-label="Site sections">' + itemsHtml +
-          '<span class="streak-chip" id="streakChip" hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c1.5 1 2 3 2 4.5A5.5 5.5 0 0111.5 21 6 6 0 016 15c0-5 4-6 4-9 0-1.5-.5-2.5-1-3.5C10.5 2 11 2 12 2z" fill="currentColor"/></svg><span class="streak-chip-num">0</span></span>' +
-          '<a href="dashboard.html' + (cur === 'dashboard.html' ? '#levelSection' : '') + '" class="level-badge" id="levelBadge" title="Your level">Lvl 1</a>' +
+        '<nav class="site-header__groups" aria-label="Site sections">' + itemsHtml + '</nav>' +
+        '<div class="nav-right">' +
+          '<a href="dashboard.html" class="nav-streak" id="navStreak" title="Daily streak" hidden>' + FLAME_SVG + '<span id="navStreakCount">0</span></a>' +
+          '<a href="dashboard.html' + (cur === 'dashboard.html' ? '#levelSection' : '') + '" class="level-badge" id="levelBadge" title="Your level">L1</a>' +
           '<span id="accountSlot"></span>' +
-          '<button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>' +
-        '</nav>' +
+          '<button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">\u25D1</button>' +
+        '</div>' +
       '</div>';
 
     var fallback = document.querySelector('.site-nav-fallback');
     if(fallback) fallback.remove();
 
     renderLevelBadge();
-    renderStreakChip();
+    renderNavStreak();
     renderAccountUI();
 
     var toggle = document.getElementById('themeToggle');
