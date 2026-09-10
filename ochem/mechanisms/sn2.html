@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SN2 Reactions — Interactive Mechanism | Organic Chemistry</title>
+<meta name="description" content="Perform the SN2 mechanism yourself: identify the nucleophile and electrophile, draw the electron-pushing arrows, predict the product, then try a new molecule.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/mechanisms/sn2.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+  .lesson-shell{max-width:760px;margin:0 auto;}
+  .progress-bar{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+  .progress-bar .track{flex:1;height:10px;border-radius:999px;background:var(--track);overflow:hidden;}
+  .progress-bar .fill{height:100%;background:var(--accent);border-radius:999px;transition:width .25s ease;}
+  .progress-bar .label{font:900 12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
+
+  .lesson-card{
+    background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+    padding:clamp(20px,4vw,32px);box-shadow:var(--lift-lg);
+  }
+  .step-eyebrow{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+  .step-title{font:900 clamp(19px,3vw,24px) var(--font-ui);margin:0 0 10px;color:var(--ink);}
+  .step-body{font-size:15px;font-weight:600;color:var(--ink);line-height:1.6;margin:0 0 18px;}
+  .step-body b{color:var(--ink);}
+
+  .scene{
+    background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
+    padding:20px 10px;margin-bottom:18px;user-select:none;
+  }
+  .scene svg{width:100%;height:auto;display:block;}
+  .atom{cursor:pointer;}
+  .atom circle{transition:stroke .1s ease,stroke-width .1s ease;}
+  .atom:hover circle{stroke:var(--accent);stroke-width:3;}
+  .atom.chosen circle{stroke:var(--accent);stroke-width:3.5;fill:var(--tint-accent);}
+  .atom text{font-family:'IBM Plex Mono',monospace;font-weight:700;pointer-events:none;}
+  .atom .lonepair{pointer-events:none;}
+  .hint-arrow{stroke:var(--muted);stroke-dasharray:4 4;opacity:.5;}
+
+  .choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
+  .choice-btn{
+    flex:1 1 200px;text-align:left;background:var(--white);border:var(--bw) solid var(--line);
+    border-radius:var(--radius);padding:14px 16px;font:800 14.5px var(--font-ui);color:var(--ink);
+    cursor:pointer;box-shadow:var(--lift-sm);transition:border-color .1s ease,transform .06s ease;
+  }
+  .choice-btn:hover{border-color:var(--accent);}
+  .choice-btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--line);}
+  .choice-btn.correct{border-color:var(--good);background:var(--tint-good);}
+  .choice-btn.wrong{border-color:var(--bad);background:var(--tint-bad);}
+  .choice-btn:disabled{cursor:default;}
+
+  .feedback{
+    border-radius:var(--radius);padding:14px 16px;font-size:14.5px;font-weight:700;line-height:1.55;margin-bottom:16px;
+    display:none;
+  }
+  .feedback.show{display:block;}
+  .feedback.good{background:var(--tint-good);color:var(--good-press);}
+  .feedback.bad{background:var(--tint-bad);color:var(--bad-press);}
+
+  .actions{display:flex;justify-content:flex-end;gap:10px;}
+  .btn-press:disabled{opacity:.45;cursor:default;}
+
+  .explain-box{background:var(--tint-accent);border-radius:var(--radius);padding:16px 18px;font-size:14.5px;font-weight:600;line-height:1.6;margin-bottom:18px;color:var(--ink);}
+  .explain-box b{color:var(--accent-press);}
+</style>
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">SN2 Reactions</div>
+    <h1 style="margin-bottom:4px;">Perform the mechanism.</h1>
+    <p class="lede" style="margin-top:0;">Don't just watch it happen — click the nucleophile, draw the arrow, predict the product.</p>
+  </div>
+
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script>
+(function(){
+  // ---- Two worked molecules. Atom coordinates are hand-placed for a clean
+  // small diagram; roles drive which atoms are clickable at each step. ----
+  var MOLECULES = [
+    {
+      name: 'Hydroxide + bromomethane',
+      nucleophileLabel: 'HO⁻',
+      substrateLabel: 'CH₃Br',
+      atoms: {
+        nucAtom:  { x: 60,  y: 70, r: 16, label: 'O', charge: '⁻' },
+        nucH:     { x: 30,  y: 45, r: 11, label: 'H' },
+        carbon:   { x: 170, y: 70, r: 16, label: 'C' },
+        h1:       { x: 170, y: 28, r: 11, label: 'H' },
+        h2:       { x: 140, y: 100,r: 11, label: 'H' },
+        h3:       { x: 200, y: 100,r: 11, label: 'H' },
+        lg:       { x: 260, y: 70, r: 16, label: 'Br' }
+      },
+      bonds: [['nucAtom','nucH'],['carbon','h1'],['carbon','h2'],['carbon','h3'],['carbon','lg']],
+      correctNucSpecies: 0, // index into [nucleophileLabel, substrateLabel]
+      nucAtomKey: 'nucAtom',
+      electroKey: 'carbon',
+      lgKey: 'lg',
+      product: 'CH₃OH + Br⁻',
+      distractors: ['CH₃Br + OH⁻ (unreacted)', 'HOCH₂Br + H⁻', 'CH₄ + OBr⁻'],
+      why: 'The hydroxide’s lone pair attacks the carbon from the <b>opposite side</b> of the C–Br bond (backside attack). As the new C–O bond forms, the C–Br bond breaks and bromide leaves — both happen in one step, so the carbon’s configuration inverts (like an umbrella flipping in the wind).'
+    },
+    {
+      name: 'Cyanide + chloromethane',
+      nucleophileLabel: 'NC⁻',
+      substrateLabel: 'CH₃Cl',
+      atoms: {
+        nucAtom:  { x: 60,  y: 70, r: 16, label: 'C' },
+        nucH:     { x: 30,  y: 45, r: 13, label: 'N' },
+        carbon:   { x: 170, y: 70, r: 16, label: 'C' },
+        h1:       { x: 170, y: 28, r: 11, label: 'H' },
+        h2:       { x: 140, y: 100,r: 11, label: 'H' },
+        h3:       { x: 200, y: 100,r: 11, label: 'H' },
+        lg:       { x: 260, y: 70, r: 16, label: 'Cl' }
+      },
+      bonds: [['nucAtom','nucH'],['carbon','h1'],['carbon','h2'],['carbon','h3'],['carbon','lg']],
+      correctNucSpecies: 0,
+      nucAtomKey: 'nucAtom',
+      electroKey: 'carbon',
+      lgKey: 'lg',
+      product: 'CH₃CN + Cl⁻',
+      distractors: ['CH₃Cl + CN⁻ (unreacted)', 'ClCH₂CN + H⁻', 'CH₄ + NCCl'],
+      why: 'Cyanide’s carbon lone pair attacks from the <b>opposite side</b> of the C–Cl bond. The C–CN bond forms exactly as the C–Cl bond breaks and chloride leaves — one concerted step, with inversion at the carbon.'
+    }
+  ];
+
+  var molIndex = 0;
+  var mol = MOLECULES[0];
+  var step = 0; // 0..6, 7 = complete-and-restart
+  var TOTAL_STEPS = 7;
+  var score = { correct: 0, attempts: 0 };
+  var picked = {}; // per-step chosen atom keys
+
+  var card = document.getElementById('card');
+  var progFill = document.getElementById('progFill');
+  var progLabel = document.getElementById('progLabel');
+
+  function loadProgress(){
+    try{ var raw = localStorage.getItem('ochem_sn2_progress'); return raw ? JSON.parse(raw) : { correct:0, attempts:0 }; }
+    catch(e){ return { correct:0, attempts:0 }; }
+  }
+  function saveProgress(){
+    try{ localStorage.setItem('ochem_sn2_progress', JSON.stringify(score)); }catch(e){}
+  }
+  score = loadProgress();
+
+  function updateProgress(){
+    var pct = Math.round((Math.min(step, TOTAL_STEPS) / TOTAL_STEPS) * 100);
+    progFill.style.width = pct + '%';
+    progLabel.textContent = 'Step ' + (Math.min(step, TOTAL_STEPS) + 1) + ' / ' + (TOTAL_STEPS + 1);
+  }
+
+  function atomEl(key, a, extraClass){
+    return '<g class="atom ' + (extraClass||'') + '" data-key="' + key + '">' +
+      '<circle cx="' + a.x + '" cy="' + a.y + '" r="' + a.r + '" fill="var(--white)" stroke="var(--line)" stroke-width="2"/>' +
+      '<text x="' + a.x + '" y="' + (a.y + 5) + '" text-anchor="middle" font-size="' + (a.r > 13 ? 15 : 12) + '">' + a.label + (a.charge||'') + '</text>' +
+    '</g>';
+  }
+
+  function bondLines(){
+    return mol.bonds.map(function(pair){
+      var a = mol.atoms[pair[0]], b = mol.atoms[pair[1]];
+      return '<line x1="' + a.x + '" y1="' + a.y + '" x2="' + b.x + '" y2="' + b.y + '" stroke="var(--line)" stroke-width="2.5"/>';
+    }).join('');
+  }
+
+  function sceneSvg(extraContent, clickableKeys){
+    var atoms = Object.keys(mol.atoms).map(function(k){
+      var cls = (picked.chosen === k) ? 'chosen' : '';
+      return atomEl(k, mol.atoms[k], cls);
+    }).join('');
+    return '<div class="scene"><svg viewBox="0 0 300 140">' +
+      bondLines() + atoms + (extraContent||'') +
+      '</svg></div>';
+  }
+
+  function attachAtomClicks(clickableKeys, onClick){
+    card.querySelectorAll('.atom').forEach(function(el){
+      var key = el.getAttribute('data-key');
+      if(clickableKeys.indexOf(key) === -1){ el.style.cursor = 'default'; el.style.opacity = .5; return; }
+      el.addEventListener('click', function(){ onClick(key); });
+    });
+  }
+
+  function render(){
+    updateProgress();
+    picked = {};
+    if(step === 0) renderIntro();
+    else if(step === 1) renderIdentifyNuc();
+    else if(step === 2) renderIdentifyElectrophile();
+    else if(step === 3) renderDrawArrowNuc();
+    else if(step === 4) renderDrawArrowLg();
+    else if(step === 5) renderPredictProduct();
+    else if(step === 6) renderExplain();
+    else renderDone();
+  }
+
+  function feedbackHtml(id){ return '<div class="feedback" id="' + id + '"></div>'; }
+
+  function showFeedback(el, good, text){
+    el.className = 'feedback show ' + (good ? 'good' : 'bad');
+    el.textContent = text;
+  }
+
+  function nextButton(label, enabled){
+    return '<div class="actions"><button class="btn-press" id="nextBtn"' + (enabled ? '' : ' disabled') + '>' + label + '</button></div>';
+  }
+
+  // ---- Step 0: intro ----
+  function renderIntro(){
+    card.innerHTML =
+      '<div class="step-eyebrow">' + mol.name + '</div>' +
+      '<h2 class="step-title">Nucleophile meets electrophile.</h2>' +
+      '<p class="step-body">A <b>nucleophile</b> ("nucleus-loving") is electron-rich — it has a lone pair or negative charge it wants to donate. An <b>electrophile</b> ("electron-loving") is electron-poor and can accept that pair. In an SN2 reaction, the nucleophile attacks an electrophilic carbon and kicks out a <b>leaving group</b> in a single step.</p>' +
+      sceneSvg() +
+      '<p class="step-body" style="margin-bottom:0;">Below: <b>' + mol.nucleophileLabel + '</b> and <b>' + mol.substrateLabel + '</b>. You’ll identify each part yourself.</p>' +
+      nextButton('Continue', true);
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step = 1; render(); });
+  }
+
+  // ---- Step 1: which species is the nucleophile ----
+  function renderIdentifyNuc(){
+    var options = [mol.nucleophileLabel, mol.substrateLabel];
+    card.innerHTML =
+      '<div class="step-eyebrow">Step 1 · Identify</div>' +
+      '<h2 class="step-title">Which species is the nucleophile?</h2>' +
+      '<p class="step-body">One of these has a lone pair and a negative charge to give away. The other is neutral and will accept it.</p>' +
+      '<div class="choice-row">' +
+        options.map(function(o,i){ return '<button class="choice-btn" data-i="' + i + '">' + o + '</button>'; }).join('') +
+      '</div>' +
+      feedbackHtml('fb') +
+      nextButton('Continue', false);
+
+    var fb = card.querySelector('#fb');
+    var next = card.querySelector('#nextBtn');
+    card.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var i = parseInt(btn.getAttribute('data-i'), 10);
+        var isCorrect = i === mol.correctNucSpecies;
+        card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+        btn.classList.add(isCorrect ? 'correct' : 'wrong');
+        score.attempts++;
+        if(isCorrect){
+          score.correct++;
+          showFeedback(fb, true, 'Correct — ' + mol.nucleophileLabel + ' carries a lone pair and a negative charge, making it electron-rich.');
+          next.disabled = false;
+        } else {
+          showFeedback(fb, false, 'Not quite. Look for the negative charge and the lone pair — that’s the electron source.');
+          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
+        }
+        saveProgress();
+      });
+    });
+    next.addEventListener('click', function(){ step = 2; render(); });
+  }
+
+  // ---- Step 2: click the electrophilic carbon ----
+  function renderIdentifyElectrophile(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Step 2 · Identify</div>' +
+      '<h2 class="step-title">Click the electrophilic carbon.</h2>' +
+      '<p class="step-body">The leaving group pulls electron density toward itself, leaving the carbon it’s attached to short on electrons — that’s the atom the nucleophile will attack.</p>' +
+      sceneSvg() +
+      feedbackHtml('fb') +
+      nextButton('Continue', false);
+
+    var clickable = [mol.electroKey, mol.nucAtomKey, mol.lgKey];
+    var fb = card.querySelector('#fb');
+    var next = card.querySelector('#nextBtn');
+    var answered = false;
+    attachAtomClicks(clickable, function(key){
+      if(answered && key !== mol.electroKey) return;
+      var isCorrect = key === mol.electroKey;
+      if(!answered){ score.attempts++; }
+      if(isCorrect){
+        if(!answered) score.correct++;
+        answered = true;
+        card.querySelector('[data-key="' + key + '"]').classList.add('chosen');
+        showFeedback(fb, true, 'Correct — the leaving group makes this carbon electrophilic.');
+        next.disabled = false;
+      } else {
+        showFeedback(fb, false, 'That atom isn’t short on electrons. Find the carbon attached to the leaving group.');
+      }
+      saveProgress();
+    });
+    next.addEventListener('click', function(){ step = 3; render(); });
+  }
+
+  // ---- Step 3: draw the nucleophile's attacking arrow ----
+  var arrow1From = null;
+  function renderDrawArrowNuc(){
+    arrow1From = null;
+    card.innerHTML =
+      '<div class="step-eyebrow">Step 3 · Draw the arrow</div>' +
+      '<h2 class="step-title">Push the electrons: click the lone pair, then the carbon.</h2>' +
+      '<p class="step-body">A curved arrow starts at a source of electrons and points at the atom that receives them. Click the nucleophile’s atom first, then the electrophilic carbon.</p>' +
+      sceneSvg() +
+      feedbackHtml('fb') +
+      nextButton('Continue', false);
+
+    var fb = card.querySelector('#fb');
+    var next = card.querySelector('#nextBtn');
+    var done = false;
+    attachAtomClicks([mol.nucAtomKey, mol.electroKey], function(key){
+      if(done) return;
+      if(arrow1From === null){
+        if(key !== mol.nucAtomKey){
+          score.attempts++;
+          showFeedback(fb, false, 'Electron arrows start at a source of electrons — start from the nucleophile’s lone pair.');
+          saveProgress();
+          return;
+        }
+        arrow1From = key;
+        card.querySelector('[data-key="' + key + '"]').classList.add('chosen');
+        showFeedback(fb, true, 'Good start. Now click the carbon it attacks.');
+      } else {
+        score.attempts++;
+        if(key === mol.electroKey){
+          score.correct++;
+          done = true;
+          var a = mol.atoms[arrow1From], b = mol.atoms[mol.electroKey];
+          var mx = (a.x+b.x)/2, my = Math.min(a.y,b.y) - 28;
+          var arrowSvg = '<path d="M ' + a.x + ' ' + (a.y-14) + ' Q ' + mx + ' ' + my + ' ' + (b.x-14) + ' ' + (b.y-14) + '" stroke="var(--accent)" stroke-width="2.5" fill="none" marker-end="url(#ah1)"/>' +
+            '<defs><marker id="ah1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--accent)"/></marker></defs>';
+          card.querySelector('.scene svg').insertAdjacentHTML('beforeend', arrowSvg);
+          showFeedback(fb, true, 'Correct — the lone pair attacks the electrophilic carbon.');
+          next.disabled = false;
+        } else {
+          showFeedback(fb, false, 'The arrowhead should land on the electrophilic carbon, not there.');
+        }
+        saveProgress();
+      }
+    });
+    next.addEventListener('click', function(){ step = 4; render(); });
+  }
+
+  // ---- Step 4: draw the leaving group's departing arrow ----
+  var arrow2From = null;
+  function renderDrawArrowLg(){
+    arrow2From = null;
+    card.innerHTML =
+      '<div class="step-eyebrow">Step 4 · Draw the arrow</div>' +
+      '<h2 class="step-title">As the new bond forms, the old one breaks.</h2>' +
+      '<p class="step-body">Click the bond between the carbon and the leaving group (click the carbon), then click the leaving group itself, to show those electrons leaving with it.</p>' +
+      sceneSvg() +
+      feedbackHtml('fb') +
+      nextButton('See the product', false);
+
+    var fb = card.querySelector('#fb');
+    var next = card.querySelector('#nextBtn');
+    var done = false;
+    attachAtomClicks([mol.electroKey, mol.lgKey], function(key){
+      if(done) return;
+      if(arrow2From === null){
+        if(key !== mol.electroKey){
+          score.attempts++;
+          showFeedback(fb, false, 'Start this arrow at the C–leaving-group bond — click the carbon first.');
+          saveProgress();
+          return;
+        }
+        arrow2From = key;
+        card.querySelector('[data-key="' + key + '"]').classList.add('chosen');
+        showFeedback(fb, true, 'Now click the leaving group to send the bonding electrons with it.');
+      } else {
+        score.attempts++;
+        if(key === mol.lgKey){
+          score.correct++;
+          done = true;
+          var a = mol.atoms[mol.electroKey], b = mol.atoms[mol.lgKey];
+          var mx = (a.x+b.x)/2, my = Math.min(a.y,b.y) - 28;
+          var arrowSvg = '<path d="M ' + a.x + ' ' + (a.y-14) + ' Q ' + mx + ' ' + my + ' ' + (b.x-14) + ' ' + (b.y-14) + '" stroke="var(--coral)" stroke-width="2.5" fill="none" marker-end="url(#ah2)"/>' +
+            '<defs><marker id="ah2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--coral)"/></marker></defs>';
+          card.querySelector('.scene svg').insertAdjacentHTML('beforeend', arrowSvg);
+          showFeedback(fb, true, 'Correct — the C–leaving-group bond breaks heterolytically, and the leaving group keeps both electrons.');
+          next.disabled = false;
+        } else {
+          showFeedback(fb, false, 'The electrons need to end up on the leaving group, not there.');
+        }
+        saveProgress();
+      }
+    });
+    next.addEventListener('click', function(){ step = 5; render(); });
+  }
+
+  // ---- Step 5: predict the product ----
+  function renderPredictProduct(){
+    var options = [mol.product].concat(mol.distractors);
+    // Deterministic shuffle so it doesn't jump around on re-render.
+    var order = [1,0,2,3].filter(function(i){ return i < options.length; });
+    var shuffled = order.map(function(i){ return options[i]; });
+    card.innerHTML =
+      '<div class="step-eyebrow">Step 5 · Predict</div>' +
+      '<h2 class="step-title">What’s the product?</h2>' +
+      '<p class="step-body">Both arrows have fired. What comes out the other side?</p>' +
+      '<div class="choice-row">' +
+        shuffled.map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
+      '</div>' +
+      feedbackHtml('fb') +
+      nextButton('Continue', false);
+
+    var fb = card.querySelector('#fb');
+    var next = card.querySelector('#nextBtn');
+    card.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var v = btn.getAttribute('data-v');
+        var isCorrect = v === mol.product;
+        card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+        btn.classList.add(isCorrect ? 'correct' : 'wrong');
+        score.attempts++;
+        if(isCorrect){
+          score.correct++;
+          showFeedback(fb, true, 'Correct — ' + mol.product + '.');
+          next.disabled = false;
+        } else {
+          showFeedback(fb, false, 'Not quite — trace the two arrows again: one bond forms, one breaks.');
+          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
+        }
+        saveProgress();
+      });
+    });
+    next.addEventListener('click', function(){ step = 6; render(); });
+  }
+
+  // ---- Step 6: explain why ----
+  function renderExplain(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Step 6 · Why it works</div>' +
+      '<h2 class="step-title">Why does this happen in one step?</h2>' +
+      '<div class="explain-box">' + mol.why + '</div>' +
+      nextButton('Try a new molecule', true);
+    card.querySelector('#nextBtn').addEventListener('click', function(){
+      molIndex = (molIndex + 1) % MOLECULES.length;
+      mol = MOLECULES[molIndex];
+      step = 0;
+      render();
+    });
+  }
+
+  function renderDone(){ renderIntro(); }
+
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
