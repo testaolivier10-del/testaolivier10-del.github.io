@@ -1,8 +1,10 @@
 # testaolivier10-del.github.io
 
-Source for the [Study Hub](https://testaolivier10-del.github.io/) site, currently home to one live product:
+Source for the [Study Hub](https://testaolivier10-del.github.io/) site, home to:
 
 **[LevlPrep](https://testaolivier10-del.github.io/nremt/)** — a free NREMT-EMT exam prep app: a 978-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
+
+**[Organic Chemistry](https://testaolivier10-del.github.io/ochem/)** (beta) — an interactive mechanism course, not a video course: students identify the nucleophile and electrophile, draw the curved electron-pushing arrows themselves, predict the product, and get told exactly why an answer is wrong. Starts with SN2; SN1, E1/E2, and acid-base mechanisms are next.
 
 ## Stack
 
@@ -30,8 +32,14 @@ nremt/                 The LevlPrep app
     nav.js                 Shared header/nav, XP/level logic, and optional account sync
     vendor/three/          Vendored three.js (module build + loaders/controls actually used)
     body3d.glb              Compressed 3D anatomy model (meshopt)
+ochem/                 The Organic Chemistry app (beta)
+  index.html             App home, links to each mechanism lesson
+  mechanisms/sn2.html    Interactive SN2 lesson (click-through nucleophile/electrophile
+                         identification, arrow-pushing, product prediction, explanation)
 scripts/check-site.mjs   CI: broken-link + JSON-validity checks (see below)
 ```
+
+`ochem/` reuses the root `assets/theme.css` design system but has its own lightweight page header (it doesn't use `nremt/assets/nav.js`, which is wired specifically to the NREMT XP/streak data). Lesson progress is stored client-side in `localStorage` (`ochem_sn2_progress`); there's no account sync yet.
 
 ## Data & accounts
 

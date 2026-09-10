@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organic Chemistry — Learn Mechanisms by Doing Them</title>
+<meta name="description" content="An interactive organic chemistry course: perform reaction mechanisms yourself — pick the nucleophile, draw the arrow, predict the product — with instant feedback, instead of just watching a video.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/">
+<meta property="og:title" content="Organic Chemistry — Learn Mechanisms by Doing Them">
+<meta property="og:description" content="An interactive organic chemistry course: perform reaction mechanisms yourself, with instant feedback.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://testaolivier10-del.github.io/ochem/">
+<meta property="og:site_name" content="Study Hub">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../assets/theme.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+  .home-hero{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(32px,5vw,52px);align-items:center;}
+  .mech-preview{
+    background:var(--white);border:var(--bw) solid var(--line);border-radius:22px;
+    padding:26px;box-shadow:0 6px 0 var(--line);
+  }
+  .mech-preview .k{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+  .mech-preview svg{width:100%;height:auto;margin:14px 0;}
+  .topic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
+  .topic-card{
+    background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+    padding:18px 20px;box-shadow:var(--lift-sm);text-decoration:none;color:inherit;
+    display:flex;flex-direction:column;gap:6px;transition:border-color .12s ease,transform .08s ease;
+  }
+  .topic-card:not(.locked):hover{border-color:var(--accent);transform:translateY(2px);}
+  .topic-card.locked{opacity:.55;cursor:default;}
+  .topic-card .n{font:900 15.5px var(--font-ui);}
+  .topic-card .d{font-size:13px;color:var(--muted);font-weight:700;}
+  .topic-card .status{font:900 10.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--accent);}
+  .topic-card.locked .status{color:var(--muted);}
+  .steps-row{display:flex;flex-wrap:wrap;gap:14px;counter-reset:step;}
+  .step-item{flex:1 1 150px;background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--lift-sm);}
+  .step-item .num{
+    counter-increment:step;width:26px;height:26px;border-radius:50%;background:var(--tint-accent);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;font:900 13px var(--font-mono);margin-bottom:8px;
+  }
+  .step-item .num::before{content:counter(step);}
+  .step-item .t{font-weight:900;font-size:14px;}
+  @media(max-width:900px){ .home-hero{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+
+<div class="xshell">
+
+  <div class="hero">
+    <div class="home-hero">
+      <div>
+        <div class="eyebrow">Organic Chemistry &middot; Beta</div>
+        <h1>Actually understand organic chemistry.</h1>
+        <p class="lede">Not another video course. Perform the mechanism yourself — identify the nucleophile, draw the electron-pushing arrow, predict the product — and get told exactly why when you're wrong.</p>
+        <div class="hero-ctas">
+          <a href="mechanisms/sn2.html" class="btn-press">Try the SN2 mechanism</a>
+          <a href="#how" class="link-quiet">See how it works</a>
+        </div>
+      </div>
+      <div class="mech-preview">
+        <div class="k">A mechanism you perform</div>
+        <svg viewBox="0 0 320 140" aria-hidden="true">
+          <text x="30" y="75" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="20" fill="var(--ink)">HO</text>
+          <text x="22" y="60" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="14" fill="var(--coral)">⁻</text>
+          <path d="M62 68 C 100 40, 130 45, 158 60" stroke="var(--accent)" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)"/>
+          <defs><marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--accent)"/></marker></defs>
+          <text x="160" y="75" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="20" fill="var(--ink)">CH₃</text>
+          <text x="205" y="75" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="20" fill="var(--ink)">Br</text>
+          <text x="228" y="60" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="14" fill="var(--coral)">⁻</text>
+          <text x="160" y="115" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="11" fill="var(--muted)">click the atoms — draw the arrow yourself</text>
+        </svg>
+        <p style="font-size:13px;color:var(--muted);font-weight:700;margin:0;">The homepage example from the SN2 lesson — you'll click through this exact reaction.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="xsection" id="how">
+    <div class="section-head">
+      <h2>Learn → interact → practice → master</h2>
+      <p class="section-lede">Every mechanism follows the same loop, so once you know it, you can move fast.</p>
+    </div>
+    <div class="steps-row">
+      <div class="step-item"><div class="num"></div><div class="t">Learn the concept</div></div>
+      <div class="step-item"><div class="num"></div><div class="t">Identify the players</div></div>
+      <div class="step-item"><div class="num"></div><div class="t">Draw the arrow yourself</div></div>
+      <div class="step-item"><div class="num"></div><div class="t">Predict the product</div></div>
+      <div class="step-item"><div class="num"></div><div class="t">Get told exactly why</div></div>
+    </div>
+  </div>
+
+  <div class="xsection">
+    <div class="xgrid">
+      <div class="xlabel">Mechanisms</div>
+      <div class="xcontent narrow">
+        <div class="topic-grid">
+          <a class="topic-card" href="mechanisms/sn2.html">
+            <div class="n">SN2 Reactions</div>
+            <div class="d">Backside attack, one step, inversion.</div>
+            <div class="status">Start &rarr;</div>
+          </a>
+          <div class="topic-card locked">
+            <div class="n">SN1 Reactions</div>
+            <div class="d">Carbocation intermediate, two steps.</div>
+            <div class="status">Coming next</div>
+          </div>
+          <div class="topic-card locked">
+            <div class="n">E1 / E2 Elimination</div>
+            <div class="d">Anti-periplanar geometry, Zaitsev's rule.</div>
+            <div class="status">Coming next</div>
+          </div>
+          <div class="topic-card locked">
+            <div class="n">Acids &amp; Bases</div>
+            <div class="d">Curved-arrow proton transfer.</div>
+            <div class="status">Coming next</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="xsection">
+    <footer style="margin-top:0">
+      <p>Free while in beta. Progress is stored on your device — no account required.</p>
+    </footer>
+  </div>
+
+</div>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>
