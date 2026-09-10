@@ -312,7 +312,7 @@
         btn.classList.add(isCorrect ? 'correct' : 'wrong');
         record(isCorrect);
         if(isCorrect){
-          showFeedback(fb, true, 'Correct — more alkyl groups around the cationic carbon donate electron density and stabilize the positive charge, so tertiary substrates ionize fastest. This is exactly the opposite of SN2, which prefers unhindered, primary carbons.');
+          showFeedback(fb, true, 'Correct — more alkyl groups around the cationic carbon donate electron density into the empty p orbital (a stabilizing effect called <b>hyperconjugation</b>) and stabilize the positive charge, so tertiary substrates ionize fastest. This is exactly the opposite of SN2, which prefers unhindered, primary carbons.');
           card.querySelector('#doneBox').innerHTML = '<div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press">Back to Learn</a></div>';
         } else {
           showFeedback(fb, false, 'Think about which cation is more stable — more alkyl groups around the positive carbon, or fewer?');
@@ -322,7 +322,28 @@
     });
   }
 
-  render();
+  var NOTES_HTML = '<h3>The key difference from SN2</h3><p class="step-body">In SN2, the nucleophile attacks and kicks out the leaving group in one step. In <b>SN1</b>, the leaving group departs <b>first, on its own</b> — before any nucleophile is involved. That first step (ionization) is slow and rate-determining, leaving behind a <b>carbocation</b>: flat, sp² hybridized, and missing an electron pair.</p>' +
+    '<h3>Why the cation is flat — and why that matters</h3><p class="step-body">The carbocation carbon is sp² and trigonal planar, with an empty p orbital sticking out equally on <b>both sides</b> of that plane. Nothing blocks either face, so a nucleophile (e.g. water) attacks the front and back at roughly equal rates.</p><div class="notes-fact">If the original carbon was a stereocenter, attack from both faces gives a <b>racemic mixture</b> (both enantiomers, roughly 50/50) — unlike SN2\'s clean, single inversion. This loss of stereochemical information is a direct, testable signature of SN1.</div>' +
+    '<h3>What controls the rate: carbocation stability</h3><p class="step-body">Since ionization (forming the cation) is the slow, rate-determining step, anything that stabilizes the carbocation speeds up SN1. More alkyl groups around the positively charged carbon donate electron density into its empty p orbital — a stabilizing effect called <b>hyperconjugation</b> — so <b>tertiary</b> substrates ionize fastest, secondary slower, and primary essentially not at all via SN1. This is the opposite preference from SN2, which favors unhindered primary carbons because a crowded carbon blocks backside attack.</p>' +
+    '<h3>Worked example</h3><p class="step-body"><i>tert</i>-Butyl bromide, (CH₃)₃C–Br, ionizes to the tertiary (CH₃)₃C⁺ cation plus Br⁻, then water attacks either face to eventually give the alcohol.</p>';
+
+  var notesMode = /(^|[?&])notes=1(&|$)/.test(location.search);
+  (function(){
+    var shell = card.parentNode;
+    var progressBarEl = shell.querySelector('.progress-bar');
+    var toggleBar = document.createElement('div');
+    toggleBar.className = 'lesson-mode-toggle';
+    shell.insertBefore(toggleBar, progressBarEl || card);
+    if(notesMode){
+      if(progressBarEl) progressBarEl.style.display = 'none';
+      toggleBar.innerHTML = '<a href="' + location.pathname + '" class="link-quiet">&larr; Back to the interactive lesson</a>';
+      card.innerHTML = '<div class="notes-view">' + NOTES_HTML + '</div><div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press alt">Back to Learn</a></div>';
+      return;
+    }
+    toggleBar.innerHTML = '<a href="' + location.pathname + '?notes=1" class="link-quiet">&#128221; View lesson notes</a>';
+  })();
+
+  if(!notesMode) render();
 })();
 </script>
 <script>

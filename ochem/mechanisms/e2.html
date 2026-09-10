@@ -368,7 +368,28 @@
     });
   }
 
-  render();
+  var NOTES_HTML = '<h3>Three arrows, one step</h3><p class="step-body">E2 is concerted, like SN2 — but instead of two arrows, it takes <b>three</b>, all firing at the same instant: (1) a base removes a hydrogen on the carbon <i>next to</i> the leaving group (the <b>beta</b> carbon) — tail on the base\'s lone pair, head on that beta-hydrogen; (2) the C–H bond\'s electrons become a new π bond between the beta and alpha carbons — tail on the beta carbon, head on the alpha carbon; (3) the C–leaving-group bond breaks, and the leaving group departs with both electrons — tail on the alpha carbon, head on the leaving group.</p>' +
+    '<h3>Why geometry matters: anti-periplanar</h3><p class="step-body">This only works when the beta-hydrogen being removed and the leaving group are lined up <b>anti-periplanar</b> — on opposite sides, 180° apart. That specific alignment lets the electrons flow smoothly from the breaking C–H bond into the new π bond as the leaving group departs; any other angle doesn\'t line the orbitals up correctly. This is exactly why E2 depends so heavily on conformation (which dihedral angles are accessible) — a lesson still to come.</p>' +
+    '<div class="notes-fact">Worked example: ethoxide (a base) removes a beta-hydrogen from a bromoalkane while the C–Br bond breaks, forming but-2-ene + ethanol + bromide, all in one concerted step.</div>' +
+    '<h3>Zaitsev vs. Hofmann: which hydrogen leaves</h3><p class="step-body">When a carbon has more than one available beta-hydrogen, the choice of which one gets removed decides the product. A <b>small</b> base (like ethoxide or hydroxide) can reach a crowded, more-substituted hydrogen, giving the <b>more substituted</b> alkene — the <b>Zaitsev</b> (major) product, generally the more stable alkene. A <b>bulky</b> base (like <i>tert</i>-butoxide) can\'t easily reach a crowded hydrogen, so it grabs a more accessible, less hindered one instead, favoring the <b>less substituted</b> "Hofmann" alkene.</p>';
+
+  var notesMode = /(^|[?&])notes=1(&|$)/.test(location.search);
+  (function(){
+    var shell = card.parentNode;
+    var progressBarEl = shell.querySelector('.progress-bar');
+    var toggleBar = document.createElement('div');
+    toggleBar.className = 'lesson-mode-toggle';
+    shell.insertBefore(toggleBar, progressBarEl || card);
+    if(notesMode){
+      if(progressBarEl) progressBarEl.style.display = 'none';
+      toggleBar.innerHTML = '<a href="' + location.pathname + '" class="link-quiet">&larr; Back to the interactive lesson</a>';
+      card.innerHTML = '<div class="notes-view">' + NOTES_HTML + '</div><div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press alt">Back to Learn</a></div>';
+      return;
+    }
+    toggleBar.innerHTML = '<a href="' + location.pathname + '?notes=1" class="link-quiet">&#128221; View lesson notes</a>';
+  })();
+
+  if(!notesMode) render();
 })();
 </script>
 <script>
