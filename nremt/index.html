@@ -33,12 +33,12 @@
   .trust-chip{display:flex;align-items:center;gap:12px;}
   .trust-chip .ic{width:36px;height:36px;border-radius:10px;background:var(--tint-good);color:var(--good);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
 
-  /* ---- Hero "your progress" card: replaces the static stat-row for a
-     returning visitor who already has XP/streak/domain data (see the script
-     at the bottom of the page). Hidden by default so a first-time visitor
-     just sees the plain stat-row instead of an empty "Level 1, 0%" panel. ---- */
-  .progress-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px 24px 18px;box-shadow:var(--shadow-card);margin:26px 0 28px;max-width:440px;}
-  .progress-card[hidden]{display:none;}
+  /* ---- Hero "your progress" card: always shown, populated with real
+     nremt_xp / nremt_streak / nremt_domain_stats_all data (see the script at
+     the bottom of the page) and sane defaults for a first-time visitor
+     (Level 1, 0 XP, streak hidden, a placeholder line instead of fake 0%
+     domain bars). ---- */
+  .progress-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px 24px 20px;box-shadow:var(--shadow-card);margin-bottom:20px;}
   .progress-card__top{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
   .pg-level-badge{width:48px;height:48px;border-radius:50%;background:var(--tint-accent);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font:800 14px var(--font-ui);color:var(--accent);flex-shrink:0;}
   .pg-level-text{flex:1;min-width:0;}
@@ -48,12 +48,40 @@
   .pg-streak svg{width:15px;height:15px;}
   .pg-xp-track{height:10px;border-radius:999px;background:var(--line-soft);overflow:hidden;margin-bottom:6px;}
   .pg-xp-fill{height:100%;border-radius:999px;background:var(--accent);width:0%;transition:width .6s cubic-bezier(.16,1,.3,1);}
-  .pg-xp-label{font:700 11px var(--font-mono);color:var(--muted);}
+  .pg-xp-label{font:700 11px var(--font-mono);color:var(--muted);margin-bottom:14px;}
+  .pg-domains{border-top:1px solid var(--line-soft);padding-top:12px;}
+  .pg-domain-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:5px 0;font-size:12.5px;font-weight:700;}
+  .pg-domain-row .bar{flex:1;height:6px;border-radius:999px;background:var(--line-soft);overflow:hidden;}
+  .pg-domain-row .bar i{display:block;height:100%;border-radius:999px;background:var(--dc,var(--accent));}
+  .pg-domain-row .pct{font:700 11.5px var(--font-mono);color:var(--muted);width:32px;text-align:right;flex-shrink:0;}
+  .pg-empty-note{font-size:12.5px;color:var(--muted);line-height:1.5;}
+
+  /* ---- Side rail next to the skill path: real weak-domain / continue
+     pointers when there's data, an encouraging default when there isn't. ---- */
+  .path-rail{display:flex;flex-direction:column;gap:14px;}
+  .tip-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow-card);}
+  .tip-card .k{font:800 11px var(--font-ui);color:var(--accent);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;}
+  .tip-card .v{font:800 15px var(--font-ui);margin-bottom:4px;}
+  .tip-card .s{font-size:12.5px;color:var(--muted);line-height:1.5;}
+
+  /* ---- Sample question: shows a real item from the bank so the page
+     demonstrates the product instead of just describing it. ---- */
+  .sample-row{display:grid;grid-template-columns:0.85fr 1.15fr;gap:40px;align-items:center;}
+  .qcard{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow-card);}
+  .qcard .qtag{display:inline-block;font:800 11px var(--font-ui);color:var(--accent-2);background:var(--tint-bad);padding:5px 12px;border-radius:999px;margin-bottom:14px;}
+  .qcard .qtext{font-weight:700;font-size:15.5px;margin-bottom:16px;line-height:1.5;}
+  .qopt{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;padding:11px 14px;border-radius:var(--radius-sm);border:1px solid var(--line);margin-bottom:8px;}
+  .qopt.correct{border-color:var(--accent);background:var(--tint-accent);}
+  .qopt .letter{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--muted);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;}
+  .qopt.correct .letter{background:var(--accent);border-color:var(--accent);color:#fff;}
+  @media (max-width:820px){ .sample-row{grid-template-columns:1fr;} }
 
   /* ---- Skill path: the six domains as a connected path of nodes instead of
      a flat grid, echoing the level/streak system rather than just listing
      content. Reuses the same icon/color pairing as before per domain. ---- */
-  .skill-path{position:relative;max-width:480px;margin:36px auto 0;}
+  .path-row{display:grid;grid-template-columns:1.15fr 0.85fr;gap:40px;align-items:start;margin-top:36px;}
+  .skill-path{position:relative;max-width:460px;margin:0 auto;}
+  @media (max-width:900px){ .path-row{grid-template-columns:1fr;} }
   .skill-path::before{
     content:'';position:absolute;left:50%;top:32px;bottom:32px;width:3px;
     background:repeating-linear-gradient(to bottom, var(--line) 0 8px, transparent 8px 18px);
@@ -99,14 +127,15 @@
     <div class="split">
       <div>
         <div class="eyebrow">NREMT‑EMT · Cognitive exam</div>
-        <h1>A complete study companion, in one browser tab.</h1>
-        <p class="lede">Forty chapters of written notes, a six‑domain question bank, mnemonics, protocol flow diagrams and scenario simulations. Free to use, no account, and everything you do stays on your own device.</p>
-        <div class="stat-row" id="heroStaticStats" style="margin:26px 0 28px">
-          <div class="stat-pill"><span class="num">920</span><span class="label">Practice questions</span></div>
-          <div class="stat-pill"><span class="num">40</span><span class="label">Chapters of notes</span></div>
-          <div class="stat-pill"><span class="num"><span class="accent">6</span></span><span class="label">Exam domains</span></div>
+        <h1>Level up before the real exam does.</h1>
+        <p class="lede">978 practice questions, six domains, forty chapters of notes, and scenario sims that run start to finish. Free, offline, no account.</p>
+        <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:24px">
+          <a href="practice.html" class="btn-dark">Begin a practice exam →</a>
+          <a href="#sample" class="link-underline">See a sample question</a>
         </div>
-        <div class="progress-card" id="heroProgressCard" hidden>
+      </div>
+      <div class="split-divider" style="border-left:0;padding-left:0">
+        <div class="progress-card" id="heroProgressCard">
           <div class="progress-card__top">
             <div class="pg-level-badge" id="pgLevel">L1</div>
             <div class="pg-level-text"><b id="pgTitle">First Responder</b><span>Level <span id="pgLevelNum">1</span></span></div>
@@ -114,10 +143,10 @@
           </div>
           <div class="pg-xp-track"><div class="pg-xp-fill" id="pgXpFill"></div></div>
           <div class="pg-xp-label" id="pgXpLabel">0 / 100 XP to Level 2</div>
+          <div class="pg-domains" id="pgDomains">
+            <div class="pg-empty-note" id="pgEmptyNote">Answer a few questions and your domain accuracy will show up right here.</div>
+          </div>
         </div>
-        <a href="practice.html" class="btn-dark">Begin a practice exam →</a>
-      </div>
-      <div class="split-divider">
         <div class="split-label">What's inside</div>
         <div class="home-list-row"><span>Practice exams &amp; drills</span><span class="num">01</span></div>
         <div class="home-list-row"><span>Study notes</span><span class="num">02</span></div>
@@ -132,31 +161,58 @@
   <div class="xsection">
     <div class="eyebrow">The six domains</div>
     <p class="lede" style="margin:0 0 8px;font-size:15px;max-width:48ch">Clear one to build confidence on the next &mdash; tap any domain to jump straight into a focused drill.</p>
-    <div class="skill-path">
-      <a href="practice.html?domain=Assessment" class="path-node left" data-domain="Assessment" style="--card-tint:var(--tint-accent)">
-        <span class="node-circle">🩺<span class="node-pct" hidden></span></span>
-        <span class="node-text"><span class="n">Assessment</span><span class="d">Scene size-up, primary and secondary survey, vitals</span></span>
-      </a>
-      <a href="practice.html?domain=Airway%20%26%20Respiratory" class="path-node right" data-domain="Airway &amp; Respiratory" style="--card-tint:var(--tint-good)">
-        <span class="node-circle">🫁<span class="node-pct" hidden></span></span>
-        <span class="node-text"><span class="n">Airway &amp; Respiratory</span><span class="d">Adjuncts, ventilation, oxygenation, obstruction</span></span>
-      </a>
-      <a href="practice.html?domain=Cardiac%20%26%20Medical" class="path-node left" data-domain="Cardiac &amp; Medical" style="--card-tint:var(--tint-bad)">
-        <span class="node-circle">❤️<span class="node-pct" hidden></span></span>
-        <span class="node-text"><span class="n">Cardiac &amp; Medical</span><span class="d">Arrest, chest pain, diabetic and neurologic emergencies</span></span>
-      </a>
-      <a href="practice.html?domain=Trauma" class="path-node right" data-domain="Trauma" style="--card-tint:var(--tint-gold)">
-        <span class="node-circle">🩹<span class="node-pct" hidden></span></span>
-        <span class="node-text"><span class="n">Trauma</span><span class="d">Bleeding, shock, head, spine and chest injury</span></span>
-      </a>
-      <a href="practice.html?domain=OB%2FPeds%20%26%20Special%20Populations" class="path-node left" data-domain="OB/Peds &amp; Special Populations" style="--card-tint:var(--tint-warn)">
-        <span class="node-circle">👶<span class="node-pct" hidden></span></span>
-        <span class="node-text"><span class="n">OB/Peds &amp; Special Populations</span><span class="d">Delivery, neonates, paediatric and geriatric care</span></span>
-      </a>
-      <a href="practice.html?domain=EMS%20Operations" class="path-node center" data-domain="EMS Operations" style="--card-tint:var(--tint-accent)">
-        <span class="node-circle">🚑<span class="node-pct" hidden></span></span>
-        <span class="node-text"><span class="n">EMS Operations</span><span class="d">Safety, MCI, extrication, documentation</span></span>
-      </a>
+    <div class="path-row">
+      <div class="skill-path">
+        <a href="practice.html?domain=Assessment" class="path-node left" data-domain="Assessment" style="--card-tint:var(--tint-accent)">
+          <span class="node-circle">🩺<span class="node-pct" hidden></span></span>
+          <span class="node-text"><span class="n">Assessment</span><span class="d">Scene size-up, primary and secondary survey, vitals</span></span>
+        </a>
+        <a href="practice.html?domain=Airway%20%26%20Respiratory" class="path-node right" data-domain="Airway &amp; Respiratory" style="--card-tint:var(--tint-good)">
+          <span class="node-circle">🫁<span class="node-pct" hidden></span></span>
+          <span class="node-text"><span class="n">Airway &amp; Respiratory</span><span class="d">Adjuncts, ventilation, oxygenation, obstruction</span></span>
+        </a>
+        <a href="practice.html?domain=Cardiac%20%26%20Medical" class="path-node left" data-domain="Cardiac &amp; Medical" style="--card-tint:var(--tint-bad)">
+          <span class="node-circle">❤️<span class="node-pct" hidden></span></span>
+          <span class="node-text"><span class="n">Cardiac &amp; Medical</span><span class="d">Arrest, chest pain, diabetic and neurologic emergencies</span></span>
+        </a>
+        <a href="practice.html?domain=Trauma" class="path-node right" data-domain="Trauma" style="--card-tint:var(--tint-gold)">
+          <span class="node-circle">🩹<span class="node-pct" hidden></span></span>
+          <span class="node-text"><span class="n">Trauma</span><span class="d">Bleeding, shock, head, spine and chest injury</span></span>
+        </a>
+        <a href="practice.html?domain=OB%2FPeds%20%26%20Special%20Populations" class="path-node left" data-domain="OB/Peds &amp; Special Populations" style="--card-tint:var(--tint-warn)">
+          <span class="node-circle">👶<span class="node-pct" hidden></span></span>
+          <span class="node-text"><span class="n">OB/Peds &amp; Special Populations</span><span class="d">Delivery, neonates, paediatric and geriatric care</span></span>
+        </a>
+        <a href="practice.html?domain=EMS%20Operations" class="path-node center" data-domain="EMS Operations" style="--card-tint:var(--tint-accent)">
+          <span class="node-circle">🚑<span class="node-pct" hidden></span></span>
+          <span class="node-text"><span class="n">EMS Operations</span><span class="d">Safety, MCI, extrication, documentation</span></span>
+        </a>
+      </div>
+      <div class="path-rail" id="pathRail">
+        <div class="tip-card">
+          <div class="k">Get started</div>
+          <div class="v">Pick any domain above</div>
+          <div class="s">A focused 20-question drill on that domain starts immediately &mdash; no setup needed.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="xsection" id="sample">
+    <div class="sample-row">
+      <div>
+        <div class="eyebrow">Try one</div>
+        <h2 style="margin:0 0 10px;padding-top:0;border-top:0">Real exam formatting.</h2>
+        <p style="color:var(--muted);font-size:15px;margin:0;max-width:40ch">Pulled straight from the practice bank &mdash; single-best-answer, select-N and sequencing items, just like the real cognitive exam.</p>
+      </div>
+      <div class="qcard">
+        <span class="qtag">Assessment · Medium</span>
+        <div class="qtext">You arrive on scene, BSI precautions are taken, and the scene is confirmed safe. What is the correct next step in the primary assessment?</div>
+        <div class="qopt"><span class="letter">A</span> Auscultate lung sounds bilaterally</div>
+        <div class="qopt correct"><span class="letter">B</span> Form a general impression of the patient</div>
+        <div class="qopt"><span class="letter">C</span> Obtain a full set of vital signs</div>
+        <div class="qopt"><span class="letter">D</span> Ask about the patient's current medications</div>
+      </div>
     </div>
   </div>
 
@@ -186,10 +242,18 @@
 <script src="assets/nav.js" defer></script>
 <script defer>
 (function(){
-  // Swaps the static "920 questions / 40 chapters / 6 domains" stat row for a
-  // real "your progress" card once someone actually has progress to show —
-  // reads the same nremt_xp / nremt_streak / nremt_domain_stats_all keys
-  // practice.html and nav.js already own, so this is read-only here.
+  // Populates the hero's "your progress" card and the skill-path side rail
+  // from the same nremt_xp / nremt_streak / nremt_domain_stats_all keys
+  // practice.html and nav.js already own (read-only here). Falls back to
+  // encouraging defaults for a first-time visitor with no data yet, rather
+  // than a separate static/dynamic component swap.
+  var DOMAIN_COLORS = {
+    'Assessment': '#2C9C8B', 'Airway & Respiratory': '#4FBE79',
+    'Cardiac & Medical': '#D1594A', 'Trauma': '#F0A83C',
+    'OB/Peds & Special Populations': '#D9A54B', 'EMS Operations': '#2C9C8B'
+  };
+  var RAIL_ORDER = ['Assessment', 'Airway & Respiratory', 'Cardiac & Medical', 'Trauma', 'OB/Peds & Special Populations', 'EMS Operations'];
+
   function loadJSON(key){
     try{ var raw = localStorage.getItem(key); return raw ? JSON.parse(raw) : null; }catch(e){ return null; }
   }
@@ -199,8 +263,6 @@
     var xpState = window.LevlXP.loadXp();
     var domainStats = loadJSON('nremt_domain_stats_all') || {};
     var streak = loadJSON('nremt_streak');
-    var hasProgress = xpState.total > 0 || Object.keys(domainStats).length > 0;
-    if(!hasProgress) return; // first-time visitor: leave the static stat-row showing
 
     var level = window.LevlXP.levelForXp(xpState.total);
     var prevXp = window.LevlXP.xpForLevel(level);
@@ -219,8 +281,18 @@
       document.getElementById('pgStreakWrap').hidden = false;
     }
 
-    document.getElementById('heroStaticStats').hidden = true;
-    document.getElementById('heroProgressCard').hidden = false;
+    var withData = RAIL_ORDER
+      .filter(function(d){ return domainStats[d] && domainStats[d].total > 0; })
+      .map(function(d){ return { domain: d, pct: Math.round(domainStats[d].correct / domainStats[d].total * 100) }; });
+
+    if(withData.length){
+      var domainsEl = document.getElementById('pgDomains');
+      domainsEl.innerHTML = withData.slice(0, 4).map(function(row){
+        return '<div class="pg-domain-row"><span>' + row.domain + '</span>' +
+          '<span class="bar"><i style="width:' + row.pct + '%;--dc:' + (DOMAIN_COLORS[row.domain] || '#2C9C8B') + '"></i></span>' +
+          '<span class="pct">' + row.pct + '%</span></div>';
+      }).join('');
+    }
 
     Object.keys(domainStats).forEach(function(d){
       var s = domainStats[d];
@@ -232,6 +304,15 @@
         pctEl.hidden = false;
       }
     });
+
+    if(withData.length){
+      var weakest = withData.reduce(function(a, b){ return b.pct < a.pct ? b : a; });
+      var rail = document.getElementById('pathRail');
+      rail.innerHTML =
+        '<div class="tip-card"><div class="k">Weakest domain</div><div class="v">' + weakest.domain + ' &middot; ' + weakest.pct + '%</div>' +
+        '<div class="s">A focused drill here is the fastest way to raise your overall readiness.</div>' +
+        '<div style="margin-top:14px"><a href="practice.html?domain=' + encodeURIComponent(weakest.domain) + '" class="btn-dark" style="padding:11px 18px;font-size:13.5px">Start a drill →</a></div></div>';
+    }
   }
 
   if(document.readyState === 'loading'){
