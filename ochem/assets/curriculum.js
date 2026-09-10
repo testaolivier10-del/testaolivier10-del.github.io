@@ -57,7 +57,7 @@
     ]},
     { id: 'substitution-elimination', title: 'Substitution & Elimination', topics: [
       { id: 'sn2', title: 'SN2', href: 'mechanisms/sn2.html' },
-      { id: 'sn1', title: 'SN1', href: null },
+      { id: 'sn1', title: 'SN1', href: 'mechanisms/sn1.html' },
       { id: 'e1', title: 'E1', href: null },
       { id: 'e2', title: 'E2', href: null },
       { id: 'substrate-effects', title: 'Substrate & solvent effects', href: null }
