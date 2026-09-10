@@ -7,6 +7,7 @@
 <link rel="apple-touch-icon" href="assets/icon.svg">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Search — LevlPrep</title>
 <meta name="description" content="Search across the study notes, glossary, mnemonics, flowcharts, and skills guide on this site.">
@@ -16,6 +17,10 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://testaolivier10-del.github.io/nremt/search.html">
 <meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://testaolivier10-del.github.io/nremt/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -98,17 +103,33 @@
     return chunks;
   }
 
-  async function buildIndex(){
-    const results = await Promise.allSettled(PAGES.map(async page => {
-      const res = await fetch(page.file);
-      const html = await res.text();
-      const doc = new DOMParser().parseFromString(html, 'text/html');
-      doc.querySelectorAll('script,style').forEach(n => n.remove());
-      return extractChunks(doc, page);
+  // The practice question bank now lives in its own JSON file (see practice.html),
+  // rather than being buried in that page's inline script — which is what makes
+  // indexing it here possible at all.
+  async function fetchQuestionChunks(){
+    const res = await fetch('assets/questions.json');
+    const questions = await res.json();
+    return questions.map(q => ({
+      page: 'Practice Questions',
+      file: 'practice.html',
+      heading: q.domain + (q.topic ? ' — ' + q.topic : ''),
+      text: q.q + ' ' + (q.explain || ''),
     }));
+  }
+
+  async function buildIndex(){
+    const results = await Promise.allSettled(
+      PAGES.map(async page => {
+        const res = await fetch(page.file);
+        const html = await res.text();
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        doc.querySelectorAll('script,style').forEach(n => n.remove());
+        return extractChunks(doc, page);
+      }).concat([fetchQuestionChunks()])
+    );
     results.forEach(r => { if(r.status === 'fulfilled') INDEX = INDEX.concat(r.value); });
     statusEl.textContent = INDEX.length
-      ? `Indexed ${INDEX.length} sections across ${PAGES.length} pages. Type to search.`
+      ? `Indexed ${INDEX.length} sections across ${PAGES.length} pages plus the practice question bank. Type to search.`
       : 'Could not build a search index right now — try again after the page finishes loading.';
     if(searchBox.value.trim()) runSearch(searchBox.value.trim());
   }
@@ -149,7 +170,9 @@
       return;
     }
     resultsEl.innerHTML = scored.map(c => {
-      const href = c.file + '#:~:text=' + encodeURIComponent(q);
+      // Practice questions render inside an SPA (fetched from JSON at runtime), so a
+      // text fragment has nothing static to match against — link to the page plain.
+      const href = c.file === 'practice.html' ? c.file : c.file + '#:~:text=' + encodeURIComponent(q);
       return `
         <a class="result" href="${href}">
           <div class="result-page">${escapeHtml(c.page)}</div>

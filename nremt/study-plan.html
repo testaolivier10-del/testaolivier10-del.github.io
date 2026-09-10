@@ -7,6 +7,7 @@
 <link rel="apple-touch-icon" href="assets/icon.svg">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Study Plan — LevlPrep</title>
 <meta name="description" content="A suggested study path and pacing planner for NREMT-EMT exam prep.">
@@ -16,6 +17,10 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://testaolivier10-del.github.io/nremt/study-plan.html">
 <meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://testaolivier10-del.github.io/nremt/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,6 +48,19 @@
   .domain-row .pct{font:700 12.5px var(--font-mono);color:var(--muted);width:96px;text-align:right;flex-shrink:0;}
   .empty-note{font-size:14.5px;font-weight:700;color:var(--muted);}
 
+  .plan-export-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
+  .plan-export-row button{
+    font:800 13.5px var(--font-ui);padding:10px 16px;border-radius:var(--radius-pill);
+    border:2px solid var(--line);background:var(--white);color:var(--ink);cursor:pointer;
+  }
+  .plan-export-row button:hover{border-color:var(--accent);}
+
+  @media print{
+    #site-header, .xlabel, .hero .lede, .planner-row, .plan-export-row,
+    #progressBox, .xsection:has(#progressBox), footer{ display:none !important; }
+    .xshell{ max-width:none; padding:0; }
+    .plan-output{ display:block !important; margin-top:0; border-top:0; }
+  }
 </style>
 </head>
 <body>
@@ -160,6 +178,76 @@
       .slice(0, limit || 2);
   }
 
+  // Builds one task per remaining day (used for the .ics export) using the same
+  // tiering logic as the prose plan above, so the calendar matches what's on screen
+  // instead of being a second, independently-maintained schedule.
+  function buildDayTasks(days, weakDomains){
+    const tasks = [];
+    const domains = weakDomains.length > 0
+      ? weakDomains.concat(DOMAINS.filter(d => !weakDomains.includes(d)))
+      : DOMAINS.slice();
+    for(let d = 1; d <= days; d++){
+      const remaining = days - d; // days after this one
+      let title;
+      if(days <= 3){
+        title = remaining === 0
+          ? 'Full timed exam + missed-question review'
+          : `Domain drill (${domains[(d-1) % domains.length]}) + missed-question review`;
+      } else if(days <= 10){
+        if(d === 1) title = 'Mnemonics review + one domain drill';
+        else if(remaining === 0) title = 'Light review only — mnemonics & skill sheets, no new exams';
+        else if(remaining <= 3) title = 'Full timed exam or missed-question review';
+        else title = `Domain drill: ${domains[(d-2) % domains.length]}`;
+      } else {
+        if(remaining === 0) title = 'Light review only — ease off, no new full exams';
+        else if(remaining < 7) title = 'Full timed exam or missed-question review';
+        else if(d % 7 === 0) title = 'Full timed exam (weekly pacing check)';
+        else title = `Domain drill: ${domains[(d-1) % domains.length]}`;
+      }
+      const date = new Date();
+      date.setDate(date.getDate() + d);
+      tasks.push({ date, title });
+    }
+    return tasks;
+  }
+
+  function icsDate(d){
+    return d.getFullYear() + String(d.getMonth()+1).padStart(2,'0') + String(d.getDate()).padStart(2,'0');
+  }
+
+  function buildIcs(tasks){
+    const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//LevlPrep//Study Plan//EN'];
+    tasks.forEach((t, i) => {
+      const start = icsDate(t.date);
+      const end = new Date(t.date); end.setDate(end.getDate() + 1);
+      lines.push(
+        'BEGIN:VEVENT',
+        'UID:levlprep-studyplan-' + start + '-' + i + '@testaolivier10-del.github.io',
+        'DTSTAMP:' + icsDate(new Date()) + 'T000000Z',
+        'DTSTART;VALUE=DATE:' + start,
+        'DTEND;VALUE=DATE:' + icsDate(end),
+        'SUMMARY:LevlPrep — ' + t.title.replace(/[,;]/g, ' '),
+        'END:VEVENT'
+      );
+    });
+    lines.push('END:VCALENDAR');
+    return lines.join('\r\n');
+  }
+
+  function downloadIcs(days, weakDomains){
+    const tasks = buildDayTasks(days, weakDomains);
+    const ics = buildIcs(tasks);
+    const blob = new Blob([ics], { type: 'text/calendar' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'levlprep-study-plan.ics';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
   document.getElementById('planBtn').addEventListener('click', () => {
     const days = parseInt(document.getElementById('daysInput').value, 10);
     const output = document.getElementById('planOutput');
@@ -206,8 +294,21 @@
         </div>
       `;
     }
+    html += `
+      <div class="plan-export-row">
+        <button type="button" id="exportIcsBtn">Add to calendar (.ics)</button>
+        <button type="button" id="exportPdfBtn">Print / Save as PDF</button>
+      </div>
+    `;
     output.innerHTML = html;
     output.classList.add('show');
+
+    document.getElementById('exportIcsBtn').addEventListener('click', () => {
+      downloadIcs(days, weak.map(r => r.domain));
+    });
+    document.getElementById('exportPdfBtn').addEventListener('click', () => {
+      window.print();
+    });
   });
 </script>
 <script src="assets/nav.js" defer></script>

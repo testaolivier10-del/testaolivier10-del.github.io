@@ -253,12 +253,20 @@
   var syncTimer = null;
   var RELOAD_ONCE_KEY = 'nremt_sync_reloaded';
 
+  // Pinned to an exact version (rather than the floating "@2") with a
+  // matching SRI hash: a jsdelivr compromise or MITM'd response can't run
+  // arbitrary code here — the browser refuses to execute anything that
+  // doesn't hash-match, and accounts just stay unavailable for that load.
+  var SUPABASE_SDK_VERSION = '2.116.0';
+  var SUPABASE_SDK_INTEGRITY = 'sha384-iLddHTLokph6Omwoyid4XKxHaWa6w41BnoEj0q5oOrzmYPpHIKt1wyjReA7s//pP';
   function loadSupabaseSdk(cb){
     if(window.supabase && window.supabase.createClient){ cb(); return; }
     var s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+    s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@' + SUPABASE_SDK_VERSION + '/dist/umd/supabase.js';
+    s.integrity = SUPABASE_SDK_INTEGRITY;
+    s.crossOrigin = 'anonymous';
     s.onload = cb;
-    s.onerror = function(){ /* offline or blocked — accounts just stay unavailable this load */ };
+    s.onerror = function(){ /* offline, blocked, or integrity mismatch — accounts just stay unavailable this load */ };
     document.head.appendChild(s);
   }
   function getClient(){
@@ -471,10 +479,23 @@
     }
   }
 
+  // ---- Analytics: a single, privacy-respecting aggregate counter ----
+  // No IP, user id, cookie, or session identifier is ever recorded — this only
+  // increments a per-page, per-day view count (via the track_pageview RPC, which
+  // is the only way to write to page_views; the table itself has no RLS policies,
+  // so nothing can read or write it directly). Enough to see which pages get used
+  // without tracking any individual visitor.
+  function trackPageview(){
+    var client = getClient();
+    if(!client) return;
+    client.rpc('track_pageview', { p_path: location.pathname }).then(function(){}, function(){});
+  }
+
   function initAccounts(){
     loadSupabaseSdk(function(){
       var client = getClient();
       if(!client) return;
+      trackPageview();
       client.auth.onAuthStateChange(handleAuthChange);
       client.auth.getSession().then(function(res){
         var session = res.data && res.data.session;
