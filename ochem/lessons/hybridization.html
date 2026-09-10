@@ -62,10 +62,10 @@
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'Count groups, not just atoms.',
-        bodyHtml: '<p class="step-body">An atom’s hybridization depends on its number of <b>electron groups</b> — sigma bonds plus lone pairs. A double or triple bond still counts as <b>one</b> group (it goes to one neighboring atom).</p>' +
-          '<div class="formula">4 groups = sp³ &nbsp;&middot;&nbsp; 3 groups = sp² &nbsp;&middot;&nbsp; 2 groups = sp</div>' +
-          '<p class="step-body" style="margin-bottom:0;">More groups means more orbitals had to mix to make room for them all.</p>'
+        title: 'First, solve the paradox from last lesson.',
+        bodyHtml: '<p class="step-body">Ground-state carbon is 1s² 2s² 2p² — only <b>2</b> unpaired electrons, which would predict only 2 bonds. But carbon almost always forms <b>4</b>. Here\'s the resolution: it takes a small amount of energy to <b>promote</b> one of the paired 2s electrons up into the empty third 2p orbital. That gives 2s¹ 2p³ — <b>4</b> unpaired electrons, one in each of 4 orbitals. That energy cost is easily paid back by getting to form 2 extra bonds, so it happens essentially every time carbon bonds.</p><p class="step-body">Now carbon has 4 orbitals to bond with — but they\'re not identical (one s-shaped, three dumbbell-shaped p\'s), which would make 4 unequal, oddly-angled bonds. Instead, the atom <b>mixes</b> (hybridizes) those 4 orbitals together mathematically into <b>4 new orbitals</b> that are all identical to each other and point as far apart as possible (109.5°, toward the corners of a tetrahedron). These new orbitals are called <b>sp³</b> — "s-p-three" for the one s and three p orbitals that went into them.</p><p class="step-body">The same idea scales down: mixing 1 s orbital with only <b>2</b> of the p orbitals gives <b>3</b> equivalent <b>sp²</b> orbitals (flat, 120° apart), leaving <b>1</b> p orbital completely unmixed. Mixing 1 s with just <b>1</b> p gives <b>2</b> equivalent <b>sp</b> orbitals (180° apart, a straight line), leaving <b>2</b> p orbitals unmixed. Those leftover, unhybridized p orbitals are exactly what forms <b>pi bonds</b> — you\'ll meet those by name in the very next lesson. A double bond needs one leftover p orbital (sp² carbon); a triple bond needs two (sp carbon).</p>' +
+          '<div class="formula">4 groups = sp³ (0 leftover p) &nbsp;&middot;&nbsp; 3 groups = sp² (1 leftover p) &nbsp;&middot;&nbsp; 2 groups = sp (2 leftover p)</div>' +
+          '<p class="step-body" style="margin-bottom:0;">You don\'t have to work out the promotion-and-mixing every time — in practice, there\'s a shortcut: just count an atom\'s <b>electron groups</b> (sigma bonds plus lone pairs; a double or triple bond still counts as <b>one</b> group, since it goes to one neighboring atom) and the hybridization falls right out of the table above.</p>'
       },
       {
         render: function(api){
