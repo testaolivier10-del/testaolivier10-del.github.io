@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hybridization — Foundations | Organic Chemistry</title>
+<meta name="description" content="Count electron groups to determine sp3, sp2, and sp hybridization — the skill behind every geometry prediction later in the course.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/hybridization.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 1 &middot; Foundations</div>
+    <h1 style="margin-bottom:4px;">Hybridization.</h1>
+    <p class="lede" style="margin-top:0;">Count the groups around an atom, and its hybridization falls right out.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 6</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'hybridization',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Count groups, not just atoms.',
+        bodyHtml: '<p class="step-body">An atom’s hybridization depends on its number of <b>electron groups</b> — sigma bonds plus lone pairs. A double or triple bond still counts as <b>one</b> group (it goes to one neighboring atom).</p>' +
+          '<div class="formula">4 groups = sp³ &nbsp;&middot;&nbsp; 3 groups = sp² &nbsp;&middot;&nbsp; 2 groups = sp</div>' +
+          '<p class="step-body" style="margin-bottom:0;">More groups means more orbitals had to mix to make room for them all.</p>'
+      },
+      {
+        render: function(api){
+          var clicked = {}, count = 0, done = false;
+          var bonds = [[130,90,80,60],[130,90,180,60],[130,90,80,120],[130,90,180,120]];
+          function scene(){
+            return '<div class="scene"><svg viewBox="0 0 260 160">' +
+              bonds.map(function(b,i){
+                var isChosen = clicked[i];
+                return '<g class="atom' + (isChosen?' chosen':'') + '" data-key="b' + i + '">' +
+                  '<line x1="' + b[0] + '" y1="' + b[1] + '" x2="' + b[2] + '" y2="' + b[3] + '" stroke="' + (isChosen?'var(--accent)':'var(--line)') + '" stroke-width="' + (isChosen?3.5:2.5) + '"/>' +
+                  '<circle cx="' + b[2] + '" cy="' + b[3] + '" r="14" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="' + b[2] + '" y="' + (b[3]+4) + '" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11" pointer-events="none">H</text>' +
+                '</g>';
+              }).join('') +
+              '<circle cx="130" cy="90" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="130" y="96" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="14" pointer-events="none">C</text>' +
+            '</svg></div>';
+          }
+          function paint(){
+            api.card.innerHTML =
+              '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+              '<h2 class="step-title">Count carbon’s electron groups in methane, CH₄.</h2>' +
+              '<p class="step-body">Click each bond around the central carbon.</p>' +
+              scene() +
+              '<p class="step-body" style="text-align:center;font-family:var(--font-mono);font-weight:900;color:var(--accent);">Groups counted: ' + count + ' / 4</p>' +
+              api.feedbackHtml('fb') +
+              api.nextButtonHtml('Continue', done);
+            api.card.querySelectorAll('.atom').forEach(function(g){
+              g.addEventListener('click', function(){
+                if(done) return;
+                var idx = parseInt(g.getAttribute('data-key').slice(1), 10);
+                if(clicked[idx]) return;
+                clicked[idx] = true;
+                count++;
+                if(count === 4){
+                  done = true;
+                  api.record(true);
+                  paint();
+                  api.showFeedback(api.card.querySelector('#fb'), true, 'Correct — 4 sigma bonds, 0 lone pairs, 4 groups. That’s sp³.');
+                } else {
+                  paint();
+                }
+              });
+            });
+            api.card.querySelector('#nextBtn').addEventListener('click', api.advance);
+          }
+          paint();
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Formaldehyde’s carbon has 3 sigma-bond groups (2 to H, 1 to O — the double bond still counts once) and no lone pairs. Hybridization?',
+        options: ['sp³', 'sp²', 'sp'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — 3 groups means sp², and a trigonal planar shape.',
+        wrongFeedback: 'Count the groups again: how many neighboring atoms/lone pairs does this carbon have?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'The carbon in CO₂ has 2 groups — a double bond to each oxygen. Hybridization?',
+        options: ['sp³', 'sp²', 'sp'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — only 2 groups means sp, and a linear shape.',
+        wrongFeedback: 'Each double bond to oxygen is still just one group.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Hybridization predicts shape.',
+        bodyHtml: '<div class="explain-box">sp³ is tetrahedral, sp² is trigonal planar, sp is linear — that’s the whole idea behind molecular geometry, a few lessons from now. It also predicts bond strength and length: more s-character (sp &gt; sp² &gt; sp³) means shorter, stronger bonds.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Nitrogen in ammonia (NH₃) has 3 bonds to H plus 1 lone pair — 4 groups total. What’s its hybridization?',
+        options: ['sp³ — lone pairs count as groups too', 'sp² — only bonds count', 'sp — nitrogen is always sp'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — lone pairs take up orbital space just like bonds do. Ammonia’s nitrogen is sp³, even though the visible shape (ignoring the lone pair) looks pyramidal, not tetrahedral.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

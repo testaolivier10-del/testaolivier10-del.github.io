@@ -71,3 +71,68 @@ a.topic-row:hover{background:var(--hover-tint);}
   text-decoration:none;color:var(--ink);background:var(--white);border:1px solid var(--line);
 }
 .dep-alert .prereqs a{color:var(--accent-press);border-color:var(--accent);}
+
+/* ==========================================================================
+   Lesson pages (used by every mechanisms/*.html and lessons/*.html file).
+   The first four lessons (Formal Charge, SN1, SN2, E2) each pasted this
+   block inline before this file existed; lessons authored after it just
+   link ochem.css instead of repeating it.
+   ========================================================================== */
+.lesson-shell{max-width:760px;margin:0 auto;}
+.progress-bar{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+.progress-bar .track{flex:1;height:10px;border-radius:999px;background:var(--track);overflow:hidden;}
+.progress-bar .fill{height:100%;background:var(--accent);border-radius:999px;transition:width .25s ease;}
+.progress-bar .label{font:900 12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
+
+.lesson-card{
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  padding:clamp(20px,4vw,32px);box-shadow:var(--lift-lg);
+}
+.step-eyebrow{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.step-title{font:900 clamp(19px,3vw,24px) var(--font-ui);margin:0 0 10px;color:var(--ink);}
+.step-body{font-size:15px;font-weight:600;color:var(--ink);line-height:1.6;margin:0 0 18px;}
+.step-body b{color:var(--ink);}
+.formula{
+  font:900 17px var(--font-mono);background:var(--tint-accent);color:var(--accent-press);
+  border-radius:var(--radius);padding:14px 18px;margin:0 0 18px;text-align:center;
+}
+
+.prereq-note{
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--tint-accent);
+  border-radius:var(--radius);padding:10px 14px;margin:0 0 18px;font:800 12.5px var(--font-ui);color:var(--accent-press);
+}
+
+.scene{background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);padding:20px 10px;margin-bottom:18px;user-select:none;}
+.scene svg{width:100%;height:auto;display:block;max-width:380px;margin:0 auto;}
+.atom{cursor:pointer;}
+.atom circle{transition:stroke .1s ease,stroke-width .1s ease;}
+.atom:hover circle{stroke:var(--accent);stroke-width:3;}
+.atom.chosen circle{stroke:var(--accent);stroke-width:3.5;fill:var(--tint-accent);}
+.atom text{font-family:'IBM Plex Mono',monospace;font-weight:700;pointer-events:none;}
+.lp-dot{fill:var(--muted);}
+
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
+.choice-btn{
+  flex:1 1 200px;text-align:left;background:var(--white);border:var(--bw) solid var(--line);
+  border-radius:var(--radius);padding:14px 16px;font:800 14.5px var(--font-ui);color:var(--ink);
+  cursor:pointer;box-shadow:var(--lift-sm);transition:border-color .1s ease,transform .06s ease;
+}
+.choice-btn:hover{border-color:var(--accent);}
+.choice-btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--line);}
+.choice-btn.correct{border-color:var(--good);background:var(--tint-good);}
+.choice-btn.wrong{border-color:var(--bad);background:var(--tint-bad);}
+.choice-btn:disabled{cursor:default;}
+
+.feedback{border-radius:var(--radius);padding:14px 16px;font-size:14.5px;font-weight:700;line-height:1.55;margin-bottom:16px;display:none;}
+.feedback.show{display:block;}
+.feedback.good{background:var(--tint-good);color:var(--good-press);}
+.feedback.bad{background:var(--tint-bad);color:var(--bad-press);}
+
+.mini-progress{display:flex;gap:6px;margin-bottom:16px;}
+.mini-progress span{flex:1;height:5px;border-radius:999px;background:var(--track);}
+.mini-progress span.done{background:var(--accent);}
+
+.actions{display:flex;justify-content:flex-end;gap:10px;}
+.btn-press:disabled{opacity:.45;cursor:default;}
+.explain-box{background:var(--tint-accent);border-radius:var(--radius);padding:16px 18px;font-size:14.5px;font-weight:600;line-height:1.6;margin-bottom:18px;color:var(--ink);}
+.explain-box b{color:var(--accent-press);}

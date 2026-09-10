@@ -4,7 +4,7 @@ Source for the [Study Hub](https://testaolivier10-del.github.io/) site, home to:
 
 **[LevlPrep](https://testaolivier10-del.github.io/nremt/)** — a free NREMT-EMT exam prep app: a 978-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
 
-**[Organic Chemistry](https://testaolivier10-del.github.io/ochem/)** (beta) — a mastery/learning product, not exam prep: a full 14-module Organic Chemistry I curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. Four lessons are live (Formal Charge, SN1, SN2, E2); the rest of the curriculum shows as "coming soon" until built. A Mastery dashboard scores performance per module from real question attempts, not just completion, and flags concept dependencies: struggling on E2 surfaces a "possible gap detected" callout pointing at its declared prerequisites, whether or not those prerequisite lessons exist yet.
+**[Organic Chemistry](https://testaolivier10-del.github.io/ochem/)** (beta) — a mastery/learning product, not exam prep: a full 14-module Organic Chemistry I curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. **Module 1 (Foundations) is fully built** — atomic structure, orbitals, hybridization, bonding, electronegativity, formal charge, Lewis structures, molecular geometry, bond polarity — plus SN1/SN2/E2 in Module 6; the rest of the curriculum shows as "coming soon" until built. A Mastery dashboard scores performance per module from real question attempts, not just completion, and flags concept dependencies: struggling on E2 surfaces a "possible gap detected" callout pointing at its declared prerequisites, whether or not those prerequisite lessons exist yet.
 
 ## Stack
 
@@ -44,8 +44,11 @@ ochem/                 The Organic Chemistry app (beta)
                          carbocation, attack-from-either-face, racemization
   mechanisms/e2.html     Interactive E2 lesson (Module 6): all three concerted arrows,
                          Zaitsev vs. Hofmann regiochemistry from base bulk
-  lessons/formal-charge.html   Module 1 lesson using the full 7-part lesson design:
-                         Explain -> Visualize -> Interact -> Guided -> Independent ->
+  lessons/               All 9 Module 1 (Foundations) lessons: atomic-structure,
+                         orbitals, hybridization, bonding, electronegativity,
+                         formal-charge, lewis-structures, molecular-geometry,
+                         bond-polarity — each the full 7-part design: Explain ->
+                         Visualize -> Interact -> Guided -> Independent ->
                          Explanation -> Challenge
   assets/
     curriculum.js          Single source of truth for modules/topics/lesson hrefs, a
@@ -54,8 +57,18 @@ ochem/                 The Organic Chemistry app (beta)
                             strugglingPrerequisites(), which flags a topic once its score
                             drops under 60% across 5+ attempts and names the prerequisite
                             topics to review, whether or not those have lessons yet
+    lesson-engine.js       Shared step-machine (progress bar, feedback, choice buttons,
+                            retry-until-correct) that every lesson after E2 is built on —
+                            a lesson supplies a small array of step configs (mostly
+                            declarative 'explain'/'mcq'/'final', plus a `render` function
+                            for its one genuinely hands-on interactive step) instead of
+                            hand-rolling the plumbing; Formal Charge/SN1/SN2/E2 predate it
+                            and still carry their own copy inline
     ochem-nav.js           Injects the Learn/Practice/Review/Tools/Mastery sub-nav
-    ochem.css              Shared sub-nav, module/topic list, and mastery-bar styles
+    ochem.css              Shared sub-nav, module/topic list, mastery-bar, and lesson-page
+                            styles (progress bar, choice buttons, feedback boxes, etc. —
+                            lessons built after E2 rely on this instead of pasting the
+                            same <style> block inline)
     learn-page.js, mastery-page.js   Dynamic list rendering for those two pages, kept in
                             their own files (not inline) so the CI link-checker below
                             doesn't misread generated `href="' + x + '"` text as a broken link
