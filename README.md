@@ -4,7 +4,7 @@ Source for the [Study Hub](https://testaolivier10-del.github.io/) site, home to:
 
 **[LevlPrep](https://testaolivier10-del.github.io/nremt/)** — a free NREMT-EMT exam prep app: a 978-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
 
-**[Organic Chemistry](https://testaolivier10-del.github.io/ochem/)** (beta) — an interactive mechanism course, not a video course: students identify the nucleophile and electrophile, draw the curved electron-pushing arrows themselves, predict the product, and get told exactly why an answer is wrong. Starts with SN2; SN1, E1/E2, and acid-base mechanisms are next.
+**[Organic Chemistry](https://testaolivier10-del.github.io/ochem/)** (beta) — a mastery/learning product, not exam prep: a full 14-module Organic Chemistry I curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. Two lessons are live (Formal Charge, SN2); the rest of the curriculum shows as "coming soon" until built. A Mastery dashboard scores performance per module from real question attempts, not just completion.
 
 ## Stack
 
@@ -33,13 +33,27 @@ nremt/                 The LevlPrep app
     vendor/three/          Vendored three.js (module build + loaders/controls actually used)
     body3d.glb              Compressed 3D anatomy model (meshopt)
 ochem/                 The Organic Chemistry app (beta)
-  index.html             App home, links to each mechanism lesson
-  mechanisms/sn2.html    Interactive SN2 lesson (click-through nucleophile/electrophile
-                         identification, arrow-pushing, product prediction, explanation)
+  index.html             Product home
+  learn.html             Full 14-module curriculum browser, rendered from assets/curriculum.js
+  practice.html, review.html, tools.html   Honest "coming soon" states — no fake functionality
+  mastery.html           Mastery dashboard (overall %, per-module bars, weakest/next-up)
+  mechanisms/sn2.html    Interactive SN2 lesson (Module 6): click-through nucleophile/
+                         electrophile identification, arrow-pushing, product prediction
+  lessons/formal-charge.html   Module 1 lesson using the full 7-part lesson design:
+                         Explain -> Visualize -> Interact -> Guided -> Independent ->
+                         Explanation -> Challenge
+  assets/
+    curriculum.js          Single source of truth for modules/topics/lesson hrefs, plus
+                            localStorage-backed mastery scoring (ochem_progress)
+    ochem-nav.js           Injects the Learn/Practice/Review/Tools/Mastery sub-nav
+    ochem.css              Shared sub-nav, module/topic list, and mastery-bar styles
+    learn-page.js, mastery-page.js   Dynamic list rendering for those two pages, kept in
+                            their own files (not inline) so the CI link-checker below
+                            doesn't misread generated `href="' + x + '"` text as a broken link
 scripts/check-site.mjs   CI: broken-link + JSON-validity checks (see below)
 ```
 
-`ochem/` reuses the root `assets/theme.css` design system but has its own lightweight page header (it doesn't use `nremt/assets/nav.js`, which is wired specifically to the NREMT XP/streak data). Lesson progress is stored client-side in `localStorage` (`ochem_sn2_progress`); there's no account sync yet.
+`ochem/` reuses the root `assets/theme.css` design system but has its own lightweight page header and sub-nav (it doesn't use `nremt/assets/nav.js`, which is wired specifically to the NREMT XP/streak data). Lesson progress across all Ochem lessons is stored client-side in a single `localStorage` key, `ochem_progress` (per-topic `{correct, attempts}`, read by `curriculum.js`'s mastery functions); there's no account sync yet.
 
 ## Data & accounts
 

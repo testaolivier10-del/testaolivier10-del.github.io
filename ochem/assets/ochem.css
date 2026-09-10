@@ -1,0 +1,60 @@
+/* Shared styling for Ochem pages beyond the root theme.css: the sub-nav bar,
+   module/topic list (Learn), and mastery bars (Mastery). Lesson-specific
+   layout (like the SN2 mechanism scene) stays inline in its own page, same
+   as the rest of the site's convention — this file is only for pieces used
+   on 3+ pages. */
+
+.ochem-subnav{
+  position:sticky;top:var(--site-header-h,64px);z-index:20;
+  background:var(--white);border-bottom:var(--bw) solid var(--line);
+}
+.ochem-subnav__inner{
+  max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,56px);
+  display:flex;gap:clamp(14px,3vw,28px);overflow-x:auto;
+}
+.ochem-subnav a{
+  display:inline-block;padding:14px 2px;font:800 14px var(--font-ui);color:var(--muted);
+  text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap;
+}
+.ochem-subnav a:hover{color:var(--ink);}
+.ochem-subnav a.active{color:var(--accent);border-bottom-color:var(--accent);}
+
+.module-card{
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  padding:20px 22px;box-shadow:var(--lift-sm);margin-bottom:16px;
+}
+.module-card__head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:4px;}
+.module-card__title{font:900 17px var(--font-ui);margin:0;}
+.module-card__mastery{font:900 13px var(--font-mono);color:var(--muted);white-space:nowrap;}
+.module-card__mastery.scored{color:var(--accent);}
+.topic-list{margin-top:12px;display:flex;flex-direction:column;gap:2px;}
+.topic-row{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px 12px;border-radius:10px;text-decoration:none;color:inherit;
+}
+a.topic-row:hover{background:var(--hover-tint);}
+.topic-row .name{font-size:14px;font-weight:700;}
+.topic-row.locked .name{color:var(--muted);}
+.topic-row .badge{
+  font:900 10.5px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;
+  padding:4px 10px;border-radius:var(--radius-pill);flex-shrink:0;
+}
+.topic-row .badge.ready{color:var(--accent);background:var(--tint-accent);}
+.topic-row .badge.soon{color:var(--muted);background:var(--track);}
+.topic-row .badge.score{color:var(--good-press);background:var(--tint-good);}
+
+.mstat-row{display:flex;align-items:center;gap:14px;padding:11px 0;border-bottom:1px solid var(--line-soft);}
+.mstat-row:last-child{border-bottom:0;}
+.mstat-row .name{flex:0 0 200px;font-size:14px;font-weight:800;}
+.mstat-row .track{flex:1;height:9px;border-radius:999px;background:var(--track);overflow:hidden;}
+.mstat-row .fill{height:100%;border-radius:999px;background:var(--accent);}
+.mstat-row .pct{flex:0 0 48px;text-align:right;font:900 13px var(--font-mono);color:var(--muted);}
+.mstat-row.empty .name{color:var(--muted);font-weight:700;}
+.mstat-row.empty .pct{color:var(--line);}
+
+.empty-panel{
+  background:var(--white);border:var(--bw) dashed var(--line);border-radius:var(--radius-lg);
+  padding:32px 28px;text-align:center;
+}
+.empty-panel h2{margin:0 0 8px;font-size:19px;}
+.empty-panel p{margin:0 auto;max-width:48ch;color:var(--muted);font-weight:600;font-size:14.5px;}
