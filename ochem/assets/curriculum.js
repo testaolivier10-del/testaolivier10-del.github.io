@@ -59,7 +59,7 @@
       { id: 'sn2', title: 'SN2', href: 'mechanisms/sn2.html' },
       { id: 'sn1', title: 'SN1', href: 'mechanisms/sn1.html' },
       { id: 'e1', title: 'E1', href: null },
-      { id: 'e2', title: 'E2', href: null },
+      { id: 'e2', title: 'E2', href: 'mechanisms/e2.html', dependsOn: ['conformational-analysis', 'leaving-groups', 'bronsted'] },
       { id: 'substrate-effects', title: 'Substrate & solvent effects', href: null }
     ]},
     { id: 'alkenes-alkynes', title: 'Alkenes & Alkynes', topics: [
@@ -148,11 +148,46 @@
     return Math.round(scored.reduce(function(a,b){ return a+b; }, 0) / scored.length);
   }
 
+  function findTopic(topicId){
+    for(var i=0;i<MODULES.length;i++){
+      for(var j=0;j<MODULES[i].topics.length;j++){
+        if(MODULES[i].topics[j].id === topicId) return MODULES[i].topics[j];
+      }
+    }
+    return null;
+  }
+
+  // The concept-dependency check from the spec: "you're struggling with E2,
+  // so review conformational analysis first" — rather than just serving more
+  // E2 questions. A topic only counts as "struggling" once there's enough
+  // signal (5+ attempts) to mean something, not one unlucky first try.
+  // Prerequisite topics are surfaced whether or not their own lesson exists
+  // yet — the recommendation is honest either way ("review this" vs
+  // "this hasn't been built yet"), rather than hiding the dependency.
+  var STRUGGLING_THRESHOLD = 60;
+  var MIN_ATTEMPTS_TO_JUDGE = 5;
+  function strugglingPrerequisites(topicId){
+    var topic = findTopic(topicId);
+    if(!topic || !topic.dependsOn || !topic.dependsOn.length) return null;
+    var p = readProgress();
+    var t = p[topicId];
+    if(!t || t.attempts < MIN_ATTEMPTS_TO_JUDGE) return null;
+    var score = Math.round((t.correct / t.attempts) * 100);
+    if(score >= STRUGGLING_THRESHOLD) return null;
+    return {
+      topic: topic,
+      score: score,
+      prerequisites: topic.dependsOn.map(findTopic).filter(Boolean)
+    };
+  }
+
   window.OchemCurriculum = {
     MODULES: MODULES,
     recordAttempt: recordAttempt,
     topicMastery: topicMastery,
     moduleMastery: moduleMastery,
-    overallMastery: overallMastery
+    overallMastery: overallMastery,
+    findTopic: findTopic,
+    strugglingPrerequisites: strugglingPrerequisites
   };
 })();

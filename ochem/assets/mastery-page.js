@@ -14,6 +14,29 @@
         : 'Based on ' + Object.keys(JSON.parse(localStorage.getItem('ochem_progress') || '{}')).length + ' concept(s) attempted so far.') +
     '</div>';
 
+  // Concept dependencies: if a topic with known prerequisites is being
+  // struggled with (5+ attempts, under 60%), recommend reviewing those
+  // instead of just serving more questions on the same topic.
+  var alerts = [];
+  C.MODULES.forEach(function(m){
+    m.topics.forEach(function(t){
+      var s = C.strugglingPrerequisites(t.id);
+      if(s) alerts.push(s);
+    });
+  });
+  document.getElementById('dependencyAlerts').innerHTML = alerts.map(function(s){
+    var chips = s.prerequisites.map(function(p){
+      return p.href
+        ? '<a href="' + p.href + '">' + p.title + '</a>'
+        : '<span>' + p.title + ' (not built yet)</span>';
+    }).join('');
+    return '<div class="dep-alert">' +
+      '<div class="k">Possible gap detected</div>' +
+      '<div class="msg">You’re at ' + s.score + '% on ' + s.topic.title + '. That often means a gap further back — try reviewing these first:</div>' +
+      '<div class="prereqs">' + chips + '</div>' +
+    '</div>';
+  }).join('');
+
   // Weakest scored module + one not-yet-started module, so there's always
   // something concrete to do next even before much has been attempted.
   var scoredModules = C.MODULES
