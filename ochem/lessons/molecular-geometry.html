@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Molecular Geometry — Foundations | Organic Chemistry</title>
+<meta name="description" content="Use VSEPR to predict molecular shape from electron groups, including the lone-pair cases that trip everyone up.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/molecular-geometry.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 1 &middot; Foundations</div>
+    <h1 style="margin-bottom:4px;">Molecular geometry.</h1>
+    <p class="lede" style="margin-top:0;">Electron groups spread out to get as far apart as possible. That's the entire idea behind VSEPR.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 6</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  function molSvg(bondsN, lonePairsN){
+    var total = bondsN + lonePairsN;
+    var angleStep = 360/total;
+    var cx=130, cy=70, r=55;
+    var parts = '';
+    for(var i=0;i<total;i++){
+      var a = (angleStep*i - 90) * Math.PI/180;
+      var x = cx + r*Math.cos(a), y = cy + r*Math.sin(a);
+      if(i < bondsN){
+        parts += '<line x1="' + cx + '" y1="' + cy + '" x2="' + x + '" y2="' + y + '" stroke="var(--line)" stroke-width="2.5"/>';
+        parts += '<circle cx="' + x + '" cy="' + y + '" r="13" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="' + x + '" y="' + (y+4) + '" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11" pointer-events="none">X</text>';
+      } else {
+        parts += '<circle cx="' + x + '" cy="' + y + '" r="4" fill="var(--muted)"/><circle cx="' + (x+7) + '" cy="' + y + '" r="4" fill="var(--muted)"/>';
+      }
+    }
+    return '<div class="scene"><svg viewBox="0 0 260 140">' +
+      '<circle cx="' + cx + '" cy="' + cy + '" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="' + cx + '" y="' + (cy+5) + '" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13" pointer-events="none">A</text>' +
+      parts +
+    '</svg></div>';
+  }
+  window.OchemLessonEngine.start({
+    topicId: 'molecular-geometry',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Groups repel, so they spread out.',
+        bodyHtml: '<p class="step-body">VSEPR (valence shell electron pair repulsion) says electron groups — bonds <b>and</b> lone pairs — push each other as far apart as possible. The <b>name</b> of the shape only counts the atoms, though — lone pairs are invisible in the name, even though they’re still there pushing.</p>' +
+          '<div class="formula">4 groups → tetrahedral base &nbsp;&middot;&nbsp; 3 → trigonal planar &nbsp;&middot;&nbsp; 2 → linear</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 1 · Identify',
+        title: 'Methane, CH₄: 4 bonds, 0 lone pairs. What shape?',
+        diagramHtml: molSvg(4,0),
+        options: ['Tetrahedral', 'Trigonal pyramidal', 'Bent', 'Linear'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — 4 groups, all bonds, no lone pairs to hide: a clean tetrahedron.',
+        wrongFeedback: 'With no lone pairs, the shape matches the electron-group arrangement exactly.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Ammonia, NH₃: 3 bonds + 1 lone pair (4 groups). What shape?',
+        diagramHtml: molSvg(3,1),
+        options: ['Tetrahedral', 'Trigonal pyramidal', 'Bent', 'Linear'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — 4 groups total, but with one lone pair hidden from the name, the 3 visible bonds form a trigonal pyramid.',
+        wrongFeedback: 'The lone pair still takes up space and pushes the 3 N–H bonds into a pyramid — it just doesn’t appear in the shape’s name.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'Water, H₂O: 2 bonds + 2 lone pairs (4 groups). What shape?',
+        diagramHtml: molSvg(2,2),
+        options: ['Tetrahedral', 'Trigonal pyramidal', 'Bent', 'Linear'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — with 2 of the 4 groups being invisible lone pairs, the 2 O–H bonds form a bent shape, not a straight line.',
+        wrongFeedback: 'Two of water’s four groups are lone pairs. What does that do to the two remaining bonds?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Lone pairs push harder than bonds.',
+        bodyHtml: '<div class="explain-box">A lone pair, not shared between two nuclei, spreads out more than a bond does — which is why NH₃’s H–N–H angle (107°) and H₂O’s H–O–H angle (104.5°) are both a bit less than the ideal 109.5° of a perfect tetrahedron.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A molecule has 2 electron groups and no lone pairs (like CO₂ or BeF₂). What shape is it?',
+        diagramHtml: molSvg(2,0),
+        options: ['Bent', 'Trigonal planar', 'Linear'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — with only 2 groups and nothing hidden, they spread as far apart as possible: 180° apart, linear.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

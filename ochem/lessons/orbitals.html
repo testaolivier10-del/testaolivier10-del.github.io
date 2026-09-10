@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orbitals — Foundations | Organic Chemistry</title>
+<meta name="description" content="Fill orbitals in the correct order and learn why unpaired electrons matter for bonding.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/orbitals.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>.orb-box{cursor:pointer;}.orb-box rect{transition:stroke .1s ease;}.orb-box:hover rect{stroke:var(--accent);stroke-width:3;}.orb-box.chosen rect{stroke:var(--accent);stroke-width:3;fill:var(--tint-accent);}</style>
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 1 &middot; Foundations</div>
+    <h1 style="margin-bottom:4px;">Orbitals.</h1>
+    <p class="lede" style="margin-top:0;">Electrons don't fill randomly — there's a strict order, and it explains a lot of what comes next.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 6</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'orbitals',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Orbitals fill low-energy first.',
+        bodyHtml: '<p class="step-body">An <b>orbital</b> is a region where an electron is likely to be found; each one holds at most <b>2</b> electrons. <b>s</b> orbitals are spherical, <b>p</b> orbitals are dumbbell-shaped and come in sets of three. Electrons fill the lowest-energy orbitals first: 1s, then 2s, then the three 2p orbitals — the <b>Aufbau principle</b>.</p><p class="step-body" style="margin-bottom:0;">When orbitals are equal in energy (like the three 2p’s), electrons spread out across them singly before pairing up — <b>Hund’s rule</b>.</p>'
+      },
+      {
+        render: function(api){
+          var order = ['1s','2s','2px','2py','2pz'];
+          var filled = 0, done = false;
+          function boxSvg(){
+            var w = 50, gap = 10, startX = 25;
+            return '<div class="scene"><svg viewBox="0 0 300 110">' +
+              order.map(function(label, i){
+                var x = startX + i*(w+gap);
+                var isChosen = i < filled;
+                return '<g class="orb-box' + (isChosen?' chosen':'') + '" data-key="o' + i + '">' +
+                  '<rect x="' + x + '" y="20" width="' + w + '" height="50" rx="8" fill="' + (isChosen?'var(--tint-accent)':'var(--white)') + '" stroke="var(--line)" stroke-width="2"/>' +
+                  '<text x="' + (x+w/2) + '" y="90" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12" pointer-events="none">' + label + '</text>' +
+                  (isChosen ? '<text x="' + (x+w/2) + '" y="50" text-anchor="middle" font-size="16" pointer-events="none">↑</text>' : '') +
+                '</g>';
+              }).join('') +
+            '</svg></div>';
+          }
+          function paint(){
+            api.card.innerHTML =
+              '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+              '<h2 class="step-title">Fill carbon’s orbitals in order.</h2>' +
+              '<p class="step-body">Carbon has 6 electrons: 2 in 1s, 2 in 2s, and 2 spread across the three 2p orbitals. Click the boxes left to right, in filling order.</p>' +
+              boxSvg() +
+              api.feedbackHtml('fb') +
+              api.nextButtonHtml('Continue', done);
+            var fb = api.card.querySelector('#fb');
+            api.card.querySelectorAll('.orb-box').forEach(function(g){
+              g.addEventListener('click', function(){
+                if(done) return;
+                var idx = parseInt(g.getAttribute('data-key').slice(1), 10);
+                if(idx !== filled){ api.showFeedback(fb, false, 'Fill left to right — lower-energy orbitals fill first.'); return; }
+                filled++;
+                if(filled === 5){
+                  done = true;
+                  api.record(true);
+                  paint();
+                  api.showFeedback(api.card.querySelector('#fb'), true, 'Correct — 1s and 2s each got a full pair, and the three 2p orbitals each got one electron first (Hund’s rule) before any pairing.');
+                } else {
+                  paint();
+                }
+              });
+            });
+            api.card.querySelector('#nextBtn').addEventListener('click', api.advance);
+          }
+          paint();
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'How many electrons fit in a single orbital?',
+        options: ['1', '2', '3'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — at most 2 electrons per orbital, and they must have opposite spins.',
+        wrongFeedback: 'Think about the Pauli exclusion principle.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'Which orbital fills first: 2s or 2p?',
+        options: ['2s', '2p'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — 2s is lower energy and fills before any 2p orbital.',
+        wrongFeedback: 'Lower-energy orbitals fill first — which one is lower, 2s or 2p?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Orbitals combine to make bonds.',
+        bodyHtml: '<div class="explain-box">When atoms bond, their orbitals mix into new shapes called <b>hybrid orbitals</b> — that’s the very next lesson. Everything about a molecule’s 3D shape starts here.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Carbon’s configuration is 1s² 2s² 2p². By Hund’s rule, how many unpaired electrons does it have?',
+        options: ['0', '1', '2', '4'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — the two 2p electrons each occupy their own orbital rather than pairing up, leaving 2 unpaired. That’s exactly why carbon can form 4 bonds once it hybridizes.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

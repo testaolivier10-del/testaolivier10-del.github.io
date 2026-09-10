@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lewis Structures — Foundations | Organic Chemistry</title>
+<meta name="description" content="Build a real Lewis structure by completing octets with double bonds, and use formal charge to judge which structure is best.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/lewis-structures.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 1 &middot; Foundations</div>
+    <h1 style="margin-bottom:4px;">Lewis structures.</h1>
+    <p class="lede" style="margin-top:0;">Give every atom a full octet, then use formal charge to pick the best structure.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 6</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'lewis-structures',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A recipe, not guesswork.',
+        bodyHtml: '<p class="step-body">To draw a Lewis structure: count total valence electrons, connect atoms with single bonds, give outer atoms full octets with lone pairs, then put any leftovers on the central atom. If the central atom is still short an octet, turn a lone pair on a neighbor into a <b>double bond</b>.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">When more than one structure seems possible, <b>formal charge</b> (from the last lesson) tells you which one is realistic — minimizing formal charges usually wins.</p>'
+      },
+      {
+        render: function(api){
+          var doubled = { left: false, right: false }, done = false;
+          function scene(){
+            function bond(key, x1, y1, x2, y2){
+              var isDouble = doubled[key];
+              var offset = isDouble ? 4 : 0;
+              var lines = '<line x1="' + x1 + '" y1="' + (y1-offset) + '" x2="' + x2 + '" y2="' + (y2-offset) + '" stroke="' + (isDouble?'var(--accent)':'var(--line)') + '" stroke-width="2.5"/>';
+              if(isDouble) lines += '<line x1="' + x1 + '" y1="' + (y1+offset) + '" x2="' + x2 + '" y2="' + (y2+offset) + '" stroke="var(--accent)" stroke-width="2.5"/>';
+              return '<g class="atom' + (isDouble?' chosen':'') + '" data-key="' + key + '">' + lines + '</g>';
+            }
+            return '<div class="scene"><svg viewBox="0 0 260 100">' +
+              bond('left', 90, 50, 130, 50) +
+              bond('right', 170, 50, 130, 50) +
+              '<circle cx="70" cy="50" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="70" y="56" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13" pointer-events="none">O</text>' +
+              '<circle cx="130" cy="50" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="130" y="56" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13" pointer-events="none">C</text>' +
+              '<circle cx="190" cy="50" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="190" y="56" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13" pointer-events="none">O</text>' +
+            '</svg></div>';
+          }
+          function paint(){
+            var count = (doubled.left?1:0) + (doubled.right?1:0);
+            api.card.innerHTML =
+              '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+              '<h2 class="step-title">Complete CO₂’s octets.</h2>' +
+              '<p class="step-body">Both bonds start as single bonds — that leaves carbon two electrons short of an octet on each side. Click each bond to upgrade it to a double bond until carbon has a full octet.</p>' +
+              scene() +
+              api.feedbackHtml('fb') +
+              api.nextButtonHtml('Continue', done);
+            var fb = api.card.querySelector('#fb');
+            api.card.querySelectorAll('.atom').forEach(function(g){
+              g.addEventListener('click', function(){
+                if(done) return;
+                var key = g.getAttribute('data-key');
+                if(doubled[key]) return;
+                doubled[key] = true;
+                if(doubled.left && doubled.right){
+                  done = true;
+                  api.record(true);
+                  paint();
+                  api.showFeedback(api.card.querySelector('#fb'), true, 'Correct — with two double bonds, carbon has 4 bonds (an octet) and every atom’s formal charge is 0. That’s the realistic structure.');
+                } else {
+                  paint();
+                }
+              });
+            });
+            api.card.querySelector('#nextBtn').addEventListener('click', api.advance);
+          }
+          paint();
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'How many total valence electrons does CO₂ have (C: 4, each O: 6)?',
+        options: ['14', '16', '18'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — 4 + 6 + 6 = 16.',
+        wrongFeedback: 'Add: carbon’s 4, plus 6 for each of the two oxygens.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'Which is the better structure for CO₂: two C=O double bonds (all formal charges 0), or one single and one triple bond with charges of −1 and +1?',
+        options: ['Two double bonds — formal charges all zero', 'One single, one triple — nonzero charges'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — minimizing formal charge is the tiebreaker, and all-zero beats a structure with separated charges.',
+        wrongFeedback: 'Which structure keeps formal charges closest to zero?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'This is the tool you’ll use for the rest of the course.',
+        bodyHtml: '<div class="explain-box">Every mechanism you’ll draw — SN1, SN2, E2, and everything after — starts from a correct Lewis structure. Getting the octets and formal charges right up front is what lets you correctly spot the nucleophile, the electrophile, and the leaving group later.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Formaldehyde’s carbon is bonded to 2 H atoms (single bonds) and 1 O. To complete carbon’s octet with only 3 sigma bonds, what has to happen?',
+        options: ['A C=O double bond must form', 'A lone pair goes on carbon instead', 'Nothing — 3 bonds is already an octet'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — 3 single bonds only give carbon 6 electrons around it. A double bond to oxygen adds the 2 more it needs for a full octet.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

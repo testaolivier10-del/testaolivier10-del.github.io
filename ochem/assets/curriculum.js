@@ -14,15 +14,15 @@
 (function(){
   var MODULES = [
     { id: 'foundations', title: 'Foundations', topics: [
-      { id: 'atomic-structure', title: 'Atomic structure', href: null },
-      { id: 'orbitals', title: 'Orbitals', href: null },
-      { id: 'hybridization', title: 'Hybridization', href: null },
-      { id: 'bonding', title: 'Bonding', href: null },
-      { id: 'electronegativity', title: 'Electronegativity', href: null },
+      { id: 'atomic-structure', title: 'Atomic structure', href: 'lessons/atomic-structure.html' },
+      { id: 'orbitals', title: 'Orbitals', href: 'lessons/orbitals.html' },
+      { id: 'hybridization', title: 'Hybridization', href: 'lessons/hybridization.html' },
+      { id: 'bonding', title: 'Bonding', href: 'lessons/bonding.html' },
+      { id: 'electronegativity', title: 'Electronegativity', href: 'lessons/electronegativity.html' },
       { id: 'formal-charge', title: 'Formal charge', href: 'lessons/formal-charge.html' },
-      { id: 'lewis-structures', title: 'Lewis structures', href: null },
-      { id: 'molecular-geometry', title: 'Molecular geometry', href: null },
-      { id: 'bond-polarity', title: 'Bond polarity', href: null }
+      { id: 'lewis-structures', title: 'Lewis structures', href: 'lessons/lewis-structures.html' },
+      { id: 'molecular-geometry', title: 'Molecular geometry', href: 'lessons/molecular-geometry.html' },
+      { id: 'bond-polarity', title: 'Bond polarity', href: 'lessons/bond-polarity.html' }
     ]},
     { id: 'electron-movement', title: 'Organic Structure & Electron Movement', topics: [
       { id: 'resonance', title: 'Resonance', href: null },
