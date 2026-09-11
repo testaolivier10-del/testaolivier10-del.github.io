@@ -111,8 +111,8 @@
 <script>
 (function(){
   var TOPIC_ID = 'formal-charge';
-  var step = 0; // 0 explain, 1 visualize+interact (NH4+), 2 guided (OH-), 3 independent (H3O+), 4 why-it-matters, 5 challenge (ClO4-)
-  var TOTAL = 5;
+  var step = 0; // 0 explain, 1 visualize+interact (NH4+), 2 guided (OH-), 3 independent (H3O+), 4 why-it-matters, 5 checksum rule, 6 challenge (ClO4-)
+  var TOTAL = 6;
   var card = document.getElementById('card');
   var progFill = document.getElementById('progFill');
   var progLabel = document.getElementById('progLabel');
@@ -129,7 +129,8 @@
   var NOTES_HTML = '<h3>The formula</h3><p class="step-body">An atom\'s <b>formal charge</b> compares the electrons it "owns" in a structure to the electrons it would have on its own as a neutral atom.</p><div class="formula">FC = (valence electrons) − (lone-pair electrons) − (number of bonds)</div><p class="step-body">Every bond — single, double, or triple — counts as <b>one</b> bond here, since you\'re counting how many bonds surround the atom, not how many electrons are in them.</p>' +
     '<h3>Worked examples</h3><p class="step-body"><b>NH₄⁺</b>: nitrogen has 4 bonds, 0 lone pairs left. FC = 5 − 0 − 4 = <b>+1</b>, matching the ion\'s overall charge.</p><p class="step-body"><b>OH⁻</b>: oxygen has 6 valence electrons, 1 bond, and 3 lone pairs (6 nonbonding electrons). FC = 6 − 6 − 1 = <b>−1</b>.</p><p class="step-body"><b>H₃O⁺</b>: oxygen has 6 valence electrons, 3 bonds, 1 lone pair (2 electrons). FC = 6 − 2 − 3 = <b>+1</b>, matching the ion\'s charge.</p>' +
     '<h3>Why it matters</h3><p class="step-body">When a molecule or ion could be drawn several valid ways, the <b>best</b> Lewis structure is usually the one where formal charges are smallest and negative charge sits on the most electronegative atom. You\'ll use this to pick the right resonance structure, spot the electrophilic atom in a molecule, and explain why a mechanism attacks where it does.</p>' +
-    '<div class="notes-fact">Perchlorate, ClO₄⁻: chlorine has 7 valence electrons, 4 single bonds, 0 lone pairs. FC = 7 − 0 − 4 = <b>+3</b> on chlorine, even though the whole ion is −1 overall. That\'s exactly why formal charge matters — it flags this as an unrealistic structure, and a chemist would look for one that spreads the charge out better.</div>';
+    '<div class="notes-fact">Perchlorate, ClO₄⁻: chlorine has 7 valence electrons, 4 single bonds, 0 lone pairs. FC = 7 − 0 − 4 = <b>+3</b> on chlorine, even though the whole ion is −1 overall. That\'s exactly why formal charge matters — it flags this as an unrealistic structure, and a chemist would look for one that spreads the charge out better.</div>' +
+    '<h3>The built-in check</h3><p class="step-body">The sum of every atom\'s formal charge in a structure must equal the molecule or ion\'s overall charge — for a neutral molecule, that sum must be exactly 0. If your total doesn\'t match, recheck your bond and lone-pair counts.</p>';
 
   function renderNotes(){
     card.innerHTML = '<div class="notes-view">' + NOTES_HTML + '</div><div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press alt">Back to Learn</a></div>';
@@ -142,6 +143,7 @@
     else if(step===2) renderGuidedOH();
     else if(step===3) renderIndependentH3O();
     else if(step===4) renderWhyItMatters();
+    else if(step===5) renderChecksum();
     else renderChallenge();
   }
 
@@ -313,11 +315,23 @@
       '<div class="step-eyebrow">Why it matters</div>' +
       '<h2 class="step-title">Formal charge tells you which structure is realistic.</h2>' +
       '<div class="explain-box">When a molecule or ion could be drawn several valid ways, the <b>best</b> Lewis structure is usually the one where formal charges are smallest and negative charge sits on the most electronegative atom. You’ll use this constantly — to pick the right resonance structure, to spot the electrophilic atom in a molecule, and to explain why a mechanism attacks where it does.</div>' +
-      nextButton('One more — a harder case', true);
+      nextButton('Continue', true);
     card.querySelector('#nextBtn').addEventListener('click', function(){ step=5; render(); });
   }
 
-  // ---- Step 5: Challenge — ClO4- ----
+  // ---- Step 5: A useful check — formal charges must sum to the overall charge ----
+  function renderChecksum(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Explain</div>' +
+      '<h2 class="step-title">A built-in check: the formal charges have to add up.</h2>' +
+      '<p class="step-body">For any structure, the sum of every atom\'s formal charge must equal the overall charge on the molecule or ion. If it doesn\'t, you\'ve made an arithmetic mistake somewhere — go back and recount.</p>' +
+      '<p class="step-body">Check it against the three ions you just did: in NH₄⁺, only nitrogen carries a nonzero formal charge (+1), and every hydrogen is 0 — sum = +1, matching the ion. In OH⁻, oxygen is −1 and hydrogen is 0 — sum = −1, matching. In H₃O⁺, oxygen is +1 and every hydrogen is 0 — sum = +1, matching.</p>' +
+      '<p class="step-body" style="margin-bottom:0;">For a neutral molecule, this means the formal charges must sum to exactly <b>0</b> — so if you calculate a nonzero total for something you believe is neutral, recheck your bond and lone-pair counts before moving on.</p>' +
+      nextButton('One more — a harder case', true);
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step=6; render(); });
+  }
+
+  // ---- Step 6: Challenge — ClO4- ----
   function renderChallenge(){
     card.innerHTML =
       '<div class="step-eyebrow">Challenge</div>' +

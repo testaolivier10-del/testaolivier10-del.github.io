@@ -38,7 +38,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 6</div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -61,7 +61,8 @@
     notesHtml: '<h3>One lens for everything</h3><p class="step-body">An <b>electron-rich</b> atom has extra electron density (a lone pair, negative charge, or π bond) and acts as a <b>nucleophile</b>. An <b>electron-poor</b> atom has a deficit (a positive charge, a partial positive from a nearby electronegative atom, or an empty orbital) and acts as an <b>electrophile</b>. This is the same idea as electronegativity and bond polarity, applied to predict reactivity.</p>' +
       '<h3>Worked examples</h3><p class="step-body">CH₃–Cl: chlorine\'s electronegativity pulls density away from carbon, leaving carbon electron-poor. :NH₃: nitrogen\'s lone pair makes it electron-rich, exactly why ammonia is a nucleophile.</p>' +
       '<h3>Resonance can reach further than you\'d expect</h3><p class="step-body">In H₂C=CH–CHO (an α,β-unsaturated aldehyde), the carbonyl pulls electron density through the whole conjugated π system, making even the far (β) carbon electron-poor and electrophilic — nucleophiles can attack there too (conjugate addition, more in Module 11).</p>' +
-      '<div class="notes-fact">Whenever you meet a new molecule, ask "where is the electron density, and where isn\'t it?" first — it tells you where a reaction will start. In CH₃–CH₂–O–CH₂–CH₂–Cl, the carbon attached to Cl is the most electron-poor atom (and the one a nucleophile would attack) because chlorine pulls density directly off it.</div>',
+      '<div class="notes-fact">Whenever you meet a new molecule, ask "where is the electron density, and where isn\'t it?" first — it tells you where a reaction will start. In CH₃–CH₂–O–CH₂–CH₂–Cl, the carbon attached to Cl is the most electron-poor atom (and the one a nucleophile would attack) because chlorine pulls density directly off it.</div>' +
+      '<h3>Induction vs. resonance</h3><p class="step-body"><b>Induction</b>: through sigma bonds, driven by electronegativity, no curved arrows, weakens quickly with distance. <b>Resonance</b>: through overlapping p orbitals in a conjugated system, drawn with curved arrows, barely weakens across the conjugated path — this is how a carbonyl reaches all the way to a β-carbon.</p>',
     steps: [
       {
         type: 'explain',
@@ -133,6 +134,12 @@
         correctIndex: 0,
         correctFeedback: 'Correct — extra electron density is exactly what a nucleophile donates.',
         wrongFeedback: 'Electrophiles are electron-poor, the opposite of what\'s being described here.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Two different ways electron density moves: induction and resonance.',
+        bodyHtml: '<p class="step-body"><b>Induction</b> is electron density shifting through <b>sigma bonds</b>, driven by electronegativity — it\'s a direct pull with no delocalization or curved arrows involved, and it weakens quickly with distance (each additional sigma bond passed through cuts the effect down further). This is the C–Cl example: chlorine\'s pull is felt strongest on the carbon it\'s bonded to, weaker one bond further away, and negligible two or three bonds away.</p><p class="step-body" style="margin-bottom:0;"><b>Resonance</b> (also called conjugation) is electron density moving through overlapping <b>p orbitals</b> — an actual delocalization you can draw with curved arrows through a conjugated system, and it doesn\'t fade with distance the same way; it can reach all the way across a conjugated system with very little loss, which is exactly how the carbonyl in the next question reaches all the way to the β-carbon.</p>'
       },
       {
         type: 'mcq',

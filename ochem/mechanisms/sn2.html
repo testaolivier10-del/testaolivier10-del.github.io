@@ -153,8 +153,8 @@
 
   var molIndex = 0;
   var mol = MOLECULES[0];
-  var step = 0; // 0..6, 7 = complete-and-restart
-  var TOTAL_STEPS = 7;
+  var step = 0; // 0..7, 8 = complete-and-restart
+  var TOTAL_STEPS = 8;
   var score = { correct: 0, attempts: 0 };
   var picked = {}; // per-step chosen atom keys
 
@@ -221,7 +221,8 @@
     '<h3>Finding the electrophilic carbon</h3><p class="step-body">The leaving group (like Br or Cl) pulls electron density toward itself, leaving the carbon it\'s attached to short on electrons — that carbon is the electrophile, and it\'s where the nucleophile attacks.</p>' +
     '<h3>The two arrows</h3><p class="step-body">Arrow 1: tail on the nucleophile\'s lone pair, head on the electrophilic carbon — the new bond forming. Arrow 2: tail on the C–leaving-group bond (starting at the carbon), head on the leaving group — the old bond breaking, with the leaving group keeping both electrons (a <b>heterolytic</b> bond break). Both arrows fire together, in one concerted step — that\'s the "2" in SN2 (bimolecular: rate depends on both nucleophile and substrate).</p>' +
     '<div class="notes-fact">Backside attack: the nucleophile attacks from the side of the carbon exactly <b>opposite</b> the leaving group, since that\'s the only approach that doesn\'t collide with it. As the new bond forms on one side and the old one breaks on the other, the carbon\'s three other substituents flip through it — like an umbrella turning inside out in the wind. This inversion of configuration is a direct, testable signature of SN2, and it\'s why SN2 at a stereocenter always inverts R to S (or vice versa) — more on that in Stereochemistry.</div>' +
-    '<h3>Worked examples on this page</h3><p class="step-body">HO⁻ + CH₃Br → CH₃OH + Br⁻. NC⁻ (cyanide) + CH₃Cl → CH₃CN + Cl⁻. In both, the nucleophile\'s lone pair attacks from the back side of the C–halogen bond, the halogen leaves with the bonding electrons, and the carbon inverts.</p>';
+    '<h3>Worked examples on this page</h3><p class="step-body">HO⁻ + CH₃Br → CH₃OH + Br⁻. NC⁻ (cyanide) + CH₃Cl → CH₃CN + Cl⁻. In both, the nucleophile\'s lone pair attacks from the back side of the C–halogen bond, the halogen leaves with the bonding electrons, and the carbon inverts.</p>' +
+    '<h3>Rate law and solvent effects</h3><p class="step-body">SN2 is bimolecular: rate = k[Nu][substrate] (both concentrations matter, unlike SN1). Favored by <b>polar aprotic</b> solvents (acetone, DMSO, DMF) — these leave the nucleophile\'s lone pair "naked" and reactive. <b>Polar protic</b> solvents (water, alcohols) hydrogen-bond to and cage the nucleophile, slowing SN2 — the same caging effect from the Nucleophiles lesson.</p>';
 
   var notesMode = /(^|[?&])notes=1(&|$)/.test(location.search);
   (function(){
@@ -248,7 +249,8 @@
     else if(step === 3) renderDrawArrowNuc();
     else if(step === 4) renderDrawArrowLg();
     else if(step === 5) renderPredictProduct();
-    else if(step === 6) renderExplain();
+    else if(step === 6) renderSolventEffects();
+    else if(step === 7) renderExplain();
     else renderDone();
   }
 
@@ -478,10 +480,21 @@
     next.addEventListener('click', function(){ step = 6; render(); });
   }
 
-  // ---- Step 6: explain why ----
+  // ---- Step 6: what "2" means, and solvent effects ----
+  function renderSolventEffects(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Step 6 · Explain</div>' +
+      '<h2 class="step-title">What the "2" in SN2 actually means.</h2>' +
+      '<p class="step-body">SN2 is <b>bimolecular</b>: both the nucleophile and the substrate are involved in the single, rate-determining step, so the rate law is <b>rate = k[Nu][substrate]</b> — double either concentration and the rate doubles. (Contrast this with SN1, where ionization alone is rate-determining and the nucleophile doesn\'t appear in the rate law at all.)</p>' +
+      '<p class="step-body" style="margin-bottom:0;"><b>Solvent choice matters too.</b> SN2 is favored by <b>polar aprotic</b> solvents (acetone, DMSO, DMF) — these solvate the positive counter-ion well but leave the nucleophile\'s lone pair mostly "naked" and highly reactive, since aprotic solvents have no O–H or N–H to hydrogen-bond with it. <b>Polar protic</b> solvents (water, alcohols) hydrogen-bond directly to the nucleophile and cage it, slowing SN2 down — which is exactly the same caging effect that made small anions like F⁻ weaker nucleophiles, from the Nucleophiles lesson.</p>' +
+      nextButton('Continue', true);
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step = 7; render(); });
+  }
+
+  // ---- Step 7: explain why ----
   function renderExplain(){
     card.innerHTML =
-      '<div class="step-eyebrow">Step 6 · Why it works</div>' +
+      '<div class="step-eyebrow">Step 7 · Why it works</div>' +
       '<h2 class="step-title">Why does this happen in one step?</h2>' +
       '<div class="explain-box">' + mol.why + '</div>' +
       nextButton('Try a new molecule', true);

@@ -109,7 +109,7 @@
 (function(){
   var TOPIC_ID = 'sn1';
   var step = 0; // 0 explain, 1 ionize (draw arrow), 2 visualize cation, 3 attack a face, 4 predict, 5 explain+challenge
-  var TOTAL = 5;
+  var TOTAL = 6;
   var card = document.getElementById('card');
   var progFill = document.getElementById('progFill');
   var progLabel = document.getElementById('progLabel');
@@ -130,6 +130,7 @@
     else if(step===2) renderVisualizeCation();
     else if(step===3) renderAttackFace();
     else if(step===4) renderPredict();
+    else if(step===5) renderSolventEffects();
     else renderChallenge();
   }
 
@@ -291,7 +292,18 @@
     next.addEventListener('click', function(){ step=5; render(); });
   }
 
-  // ---- Step 5: Why it matters + Challenge ----
+  // ---- Step 5: rate law and solvent effects ----
+  function renderSolventEffects(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Explain</div>' +
+      '<h2 class="step-title">What the "1" in SN1 actually means.</h2>' +
+      '<p class="step-body">SN1 is <b>unimolecular</b>: only the substrate is involved in the slow, rate-determining step (ionization) — the nucleophile shows up later, in a fast step that doesn\'t affect the overall rate. That gives the rate law <b>rate = k[substrate]</b> — the nucleophile\'s concentration doesn\'t appear at all, unlike SN2\'s rate = k[Nu][substrate].</p>' +
+      '<p class="step-body" style="margin-bottom:0;"><b>Solvent effects run opposite to SN2.</b> SN1 is favored by <b>polar protic</b> solvents (water, alcohols) — they stabilize both the developing carbocation and the departing leaving-group anion through hydrogen bonding and solvation, lowering the energy of the rate-determining ionization step. This is the reverse of SN2, which is slowed by protic solvents because they cage the nucleophile instead.</p>' +
+      nextButton('Continue', true);
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step=6; render(); });
+  }
+
+  // ---- Step 6: Why it matters + Challenge ----
   function renderChallenge(){
     card.innerHTML =
       '<div class="step-eyebrow">Why it matters &middot; Challenge</div>' +
@@ -325,7 +337,8 @@
   var NOTES_HTML = '<h3>The key difference from SN2</h3><p class="step-body">In SN2, the nucleophile attacks and kicks out the leaving group in one step. In <b>SN1</b>, the leaving group departs <b>first, on its own</b> — before any nucleophile is involved. That first step (ionization) is slow and rate-determining, leaving behind a <b>carbocation</b>: flat, sp² hybridized, and missing an electron pair.</p>' +
     '<h3>Why the cation is flat — and why that matters</h3><p class="step-body">The carbocation carbon is sp² and trigonal planar, with an empty p orbital sticking out equally on <b>both sides</b> of that plane. Nothing blocks either face, so a nucleophile (e.g. water) attacks the front and back at roughly equal rates.</p><div class="notes-fact">If the original carbon was a stereocenter, attack from both faces gives a <b>racemic mixture</b> (both enantiomers, roughly 50/50) — unlike SN2\'s clean, single inversion. This loss of stereochemical information is a direct, testable signature of SN1.</div>' +
     '<h3>What controls the rate: carbocation stability</h3><p class="step-body">Since ionization (forming the cation) is the slow, rate-determining step, anything that stabilizes the carbocation speeds up SN1. More alkyl groups around the positively charged carbon donate electron density into its empty p orbital — a stabilizing effect called <b>hyperconjugation</b> — so <b>tertiary</b> substrates ionize fastest, secondary slower, and primary essentially not at all via SN1. This is the opposite preference from SN2, which favors unhindered primary carbons because a crowded carbon blocks backside attack.</p>' +
-    '<h3>Worked example</h3><p class="step-body"><i>tert</i>-Butyl bromide, (CH₃)₃C–Br, ionizes to the tertiary (CH₃)₃C⁺ cation plus Br⁻, then water attacks either face to eventually give the alcohol.</p>';
+    '<h3>Worked example</h3><p class="step-body"><i>tert</i>-Butyl bromide, (CH₃)₃C–Br, ionizes to the tertiary (CH₃)₃C⁺ cation plus Br⁻, then water attacks either face to eventually give the alcohol.</p>' +
+    '<h3>Rate law and solvent effects</h3><p class="step-body">SN1 is unimolecular: rate = k[substrate] (nucleophile concentration doesn\'t appear — contrast with SN2\'s rate = k[Nu][substrate]). Favored by <b>polar protic</b> solvents (water, alcohols), which stabilize the developing carbocation and departing anion via solvation — the opposite preference from SN2.</p>';
 
   var notesMode = /(^|[?&])notes=1(&|$)/.test(location.search);
   (function(){

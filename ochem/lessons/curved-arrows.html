@@ -38,7 +38,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 6</div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -61,7 +61,8 @@
     notesHtml: '<h3>The two rules</h3><p class="step-body">A curved arrow represents <b>two electrons</b> moving together. The <b>tail</b> starts wherever those electrons currently are — a lone pair, or an existing bond. The <b>head</b> points to wherever they end up — a new bond, or a new lone pair. The tail can never start on a bare atom or a positive charge, because there\'s nothing there to give away — it must start on an actual pair of electrons.</p>' +
       '<h3>Worked example: ammonia + H⁺</h3><p class="step-body">Tail on nitrogen\'s lone pair (the electron source), head on H⁺ (where the new N–H bond forms). Order matters: the arrow always starts at the electrons and points to where they\'re going, never the reverse.</p>' +
       '<h3>Spotting invalid arrows</h3><p class="step-body">An arrow drawn starting from a positive charge is always wrong — a positively charged atom is electron-<b>deficient</b>, so it can only ever be a destination (a head), never a source (a tail).</p>' +
-      '<div class="notes-fact">Every SN1, SN2, E1, E2, addition, and carbonyl mechanism for the rest of the course is built from these same two rules: tail on the electrons, head on the destination.</div>',
+      '<div class="notes-fact">Every SN1, SN2, E1, E2, addition, and carbonyl mechanism for the rest of the course is built from these same two rules: tail on the electrons, head on the destination.</div>' +
+      '<h3>Fishhook arrows</h3><p class="step-body">A full curved arrow (double-barbed head) moves 2 electrons — that\'s everything in this course. A <b>fishhook</b> arrow (single-barbed head) moves just 1 electron, used for radical mechanisms. Just recognize the visual difference; you won\'t need to draw these for SN1/SN2/E1/E2.</p>',
     steps: [
       {
         type: 'explain',
@@ -99,7 +100,8 @@
             hint.textContent = 'Tail placed on the lone pair. Now click H⁺ for the head.';
           });
           headEl.addEventListener('click', function(){
-            if(!gotTail || gotHead) return;
+            if(gotHead) return;
+            if(!gotTail){ api.showFeedback(fb, false, 'Start at the electron source, not the destination — click the lone pair first.'); return; }
             gotHead = true;
             headEl.classList.add('chosen');
             hint.textContent = 'Arrow drawn: lone pair → H⁺.';
@@ -126,6 +128,12 @@
         correctIndex: 0,
         correctFeedback: 'Correct. A positively charged atom is electron-deficient — it\'s a destination for arrows (a head), never a source (a tail).',
         wrongFeedback: 'Think about what a positive charge actually means: a deficiency of electrons, not a supply of them.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A different arrow for a different situation: fishhooks.',
+        bodyHtml: '<p class="step-body">Everything so far has been a full curved arrow moving <b>two electrons</b> at once — that covers essentially every mechanism in this course, since almost all organic reactions move electrons in pairs. But some reactions (radical mechanisms — not covered in depth until later, if at all in an intro course) move electrons <b>one at a time</b>. Those use a <b>fishhook arrow</b>: a curved arrow with only a single barb on the head instead of two, representing <b>one</b> electron moving instead of a pair.</p><p class="step-body" style="margin-bottom:0;">You won\'t need to draw fishhook arrows for SN1, SN2, E1, E2, or any of the mechanisms coming up — just recognize the visual difference (full double-barbed head = 2 electrons; single-barbed head = 1 electron) if you see one in a textbook or another source.</p>'
       },
       {
         type: 'explain',

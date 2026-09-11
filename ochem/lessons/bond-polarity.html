@@ -38,7 +38,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 6</div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -61,7 +61,8 @@
     notesHtml: '<h3>Bond dipoles</h3><p class="step-body">A bond is polar when its two atoms have different electronegativities — the shared electrons sit closer to one side, creating a small <b>dipole</b> that points toward the more electronegative atom. In C–O, the dipole points toward oxygen.</p>' +
       '<h3>Molecular polarity depends on geometry too</h3><p class="step-body">A whole molecule\'s polarity depends on both bond polarity <b>and</b> shape — if the individual bond dipoles point in directions that cancel out by symmetry (like vectors of equal size pointing opposite ways), the molecule can be nonpolar even with polar bonds.</p>' +
       '<h3>Worked examples</h3><p class="step-body">CO₂ (linear, two C=O dipoles pointing in exactly opposite directions): the dipoles cancel — <b>nonpolar</b> overall. Water (bent, two O–H dipoles): the bent shape means the dipoles add up instead of canceling — <b>polar</b> overall. CCl₄ (tetrahedral, four identical polar C–Cl bonds): the symmetric arrangement makes all four dipoles cancel — <b>nonpolar</b>, even though every individual bond is polar.</p>' +
-      '<div class="notes-fact">"Like dissolves like": polar water mixes with polar substances but not nonpolar ones like CO₂ or oil. This is the entire basis of solubility rules you\'ll use constantly once alcohols and ethers show up later in the course.</div>',
+      '<div class="notes-fact">"Like dissolves like": polar water mixes with polar substances but not nonpolar ones like CO₂ or oil. This is the entire basis of solubility rules you\'ll use constantly once alcohols and ethers show up later in the course.</div>' +
+      '<h3>Dipole moment: a measurable quantity</h3><p class="step-body">Polarity is measured as the <b>dipole moment</b> (μ), in <b>debyes (D)</b>. Water: μ ≈ 1.85 D (bent shape, dipoles add). CO₂: μ = 0 D exactly (linear, dipoles cancel). It\'s the vector sum of every bond dipole, combining electronegativity difference (Electronegativity) with molecular shape (Molecular Geometry).</p>',
     steps: [
       {
         type: 'explain',
@@ -77,8 +78,8 @@
               '<line x1="90" y1="50" x2="130" y2="50" stroke="var(--line)" stroke-width="2.5"/>' +
               '<circle cx="70" cy="50" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="70" y="56" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13" pointer-events="none">C</text>' +
               '<circle cx="150" cy="50" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="150" y="56" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13" pointer-events="none">O</text>' +
-              '<g class="atom" data-key="toC"><path d="M 105 30 L 90 30" stroke="var(--muted)" stroke-width="2" marker-end="url(#ah3)"/><rect x="80" y="18" width="35" height="16" fill="transparent"/></g>' +
-              '<g class="atom" data-key="toO"><path d="M 105 30 L 120 30" stroke="var(--muted)" stroke-width="2" marker-end="url(#ah4)"/><rect x="95" y="18" width="35" height="16" fill="transparent"/></g>' +
+              '<g class="atom" data-key="toC"><path d="M 105 30 L 90 30" stroke="var(--muted)" stroke-width="2" marker-end="url(#ah3)"/><rect x="78" y="18" width="25" height="16" fill="transparent"/></g>' +
+              '<g class="atom" data-key="toO"><path d="M 105 30 L 120 30" stroke="var(--muted)" stroke-width="2" marker-end="url(#ah4)"/><rect x="107" y="18" width="25" height="16" fill="transparent"/></g>' +
               '<defs><marker id="ah3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--muted)"/></marker>' +
               '<marker id="ah4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--muted)"/></marker></defs>' +
             '</svg></div>';
@@ -130,6 +131,12 @@
         correctIndex: 0,
         correctFeedback: 'Correct — unlike CO₂’s straight line, water’s bent shape means the two dipoles add up instead of canceling, giving water a real net dipole.',
         wrongFeedback: 'Water isn’t linear like CO₂ — does that change whether the dipoles cancel?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Polarity is actually measurable: the dipole moment.',
+        bodyHtml: '<p class="step-body">A bond or molecule\'s dipole isn\'t just a qualitative arrow — it\'s a real, measurable vector quantity called the <b>dipole moment</b> (symbol μ), measured in <b>debyes (D)</b>. Bigger electronegativity difference and longer bond distance both increase it. Water, with its bent shape and two O–H dipoles adding together, has μ ≈ 1.85 D. CO₂, despite having two individually polar C=O bonds, measures μ = 0 D exactly, because the two bond dipoles are equal-magnitude vectors pointing in exactly opposite directions and cancel completely.</p><p class="step-body" style="margin-bottom:0;">Recall from Electronegativity: a bond\'s polarity as a rule of thumb follows its ΔEN — under 0.5 is essentially nonpolar, 0.5–1.7 is polar covalent. A molecule\'s overall dipole moment is what you get after adding up every individual bond dipole as a vector, accounting for the geometry from Molecular Geometry.</p>'
       },
       {
         type: 'explain',

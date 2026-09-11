@@ -38,7 +38,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 6</div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -61,7 +61,8 @@
     notesHtml: '<h3>What it is</h3><p class="step-body">A <b>nucleophile</b> ("nucleus-loving") is any species with an available electron pair — a lone pair, a negative charge, or a π bond — that it can donate to form a new bond. Nucleophiles are drawn toward electron-poor (electrophilic) centers. Common ones: anions (OH⁻, CN⁻, RS⁻), neutral molecules with lone pairs (H₂O, NH₃), and π bonds (alkenes).</p>' +
       '<h3>What makes one stronger</h3><p class="step-body">More available electron density (like a full negative charge) means a stronger nucleophile. A more electronegative atom actually holds its electrons more tightly, making it a <b>weaker</b> nucleophile, not stronger — counterintuitive, but electronegativity and nucleophilicity pull in opposite directions.</p>' +
       '<h3>Solvent matters too</h3><p class="step-body">In polar protic solvents (water, methanol), small, highly charged anions like F⁻ get "caged" by hydrogen bonds, blunting their nucleophilicity. Large, polarizable anions like I⁻ aren\'t held back the same way — so I⁻ beats F⁻ as a nucleophile in these solvents, even though F⁻ is more electronegative.</p>' +
-      '<div class="notes-fact">Every mechanism starts with finding the nucleophile — it\'s where the arrow\'s tail will start. Deprotonating CH₃OH to CH₃O⁻ makes it a substantially stronger nucleophile by giving it a full negative charge to donate.</div>',
+      '<div class="notes-fact">Every mechanism starts with finding the nucleophile — it\'s where the arrow\'s tail will start. Deprotonating CH₃OH to CH₃O⁻ makes it a substantially stronger nucleophile by giving it a full negative charge to donate.</div>' +
+      '<h3>Nucleophilicity ≠ basicity</h3><p class="step-body">Basicity is thermodynamic (equilibrium proton affinity, exact once you cover pKa); nucleophilicity is kinetic (speed of attack on carbon). They usually track together, but steric hindrance splits them: tert-butoxide is a <b>stronger base</b> than hydroxide but a <b>much weaker nucleophile</b>, since its bulky methyl groups block it from a crowded carbon. This is exactly why bulky bases get used deliberately in E2 (Module 6).</p>',
     steps: [
       {
         type: 'explain',
@@ -130,6 +131,12 @@
         correctIndex: 0,
         correctFeedback: 'Correct. In protic solvents, small, highly charged anions like F⁻ get "caged" by hydrogen bonds, which blunts their nucleophilicity. Large, polarizable I⁻ isn\'t held back the same way.',
         wrongFeedback: 'Think about solvation: protic solvents hydrogen-bond tightly to small, charge-dense anions like F⁻, holding them back from reacting.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Nucleophilicity and basicity are related, but not the same thing.',
+        bodyHtml: '<p class="step-body">Both describe an electron pair looking to bond, but they\'re measured differently. <b>Basicity</b> is thermodynamic — it\'s about how strongly a species holds onto an added proton at equilibrium (this becomes exact once you cover pKa in Module 3). <b>Nucleophilicity</b> is kinetic — it\'s about how <b>fast</b> a species attacks an electrophilic carbon. Usually these track together (a stronger base is usually a stronger nucleophile), but they can split apart.</p><p class="step-body" style="margin-bottom:0;">The classic split: <b>steric hindrance</b>. <i>tert</i>-Butoxide ((CH₃)₃CO⁻) is actually a <b>stronger base</b> than hydroxide (OH⁻) — its conjugate acid, <i>tert</i>-butanol, is a weaker acid than water. But tert-butoxide is a much <b>weaker nucleophile</b>, because its three bulky methyl groups physically block it from getting close enough to a crowded carbon to attack. A bulky, strong base that\'s a poor nucleophile like this often gets used deliberately in E2 reactions (Module 6) specifically because it can\'t compete as a nucleophile.</p>'
       },
       {
         type: 'explain',

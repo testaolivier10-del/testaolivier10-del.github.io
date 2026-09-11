@@ -38,7 +38,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 6</div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -60,7 +60,8 @@
     progLabel: document.getElementById('progLabel'),
     notesHtml: '<h3>What makes a good one</h3><p class="step-body">When a leaving group departs, it takes a bonding pair of electrons with it. A <b>good</b> leaving group is one that\'s <b>stable on its own</b> once it has those electrons — a <b>weak base</b> (the conjugate base of a strong acid). Poor leaving groups (OH⁻, NH₂⁻, CH₃⁻) are strong bases that don\'t want the negative charge and resist leaving, which is why alcohols usually need activation (protonation, or conversion to a tosylate) before substitution/elimination can happen.</p>' +
       '<h3>Ranking the halides</h3><p class="step-body">Among F⁻, Cl⁻, Br⁻, I⁻, <b>I⁻</b> is the best leaving group — the weakest base of the four (largest, most polarizable, most stable as an anion). Cl⁻ beats OH⁻ as a leaving group because Cl⁻ is the conjugate base of a strong acid (HCl) and is very stable on its own, while OH⁻ is the conjugate base of water (a much weaker acid), making OH⁻ a much stronger, more reluctant base.</p>' +
-      '<div class="notes-fact">Tosylate (OTs⁻) is an excellent leaving group because its negative charge is delocalized (resonance-stabilized) across the sulfonate group, making it a very weak base — exactly why chemists convert poor leaving groups like OH⁻ into tosylates before a substitution. SN1, SN2, E1, and E2 all require a leaving group to depart at some point — no leaving group, no reaction.</div>',
+      '<div class="notes-fact">Tosylate (OTs⁻) is an excellent leaving group because its negative charge is delocalized (resonance-stabilized) across the sulfonate group, making it a very weak base — exactly why chemists convert poor leaving groups like OH⁻ into tosylates before a substitution. SN1, SN2, E1, and E2 all require a leaving group to depart at some point — no leaving group, no reaction.</div>' +
+      '<h3>Quantifying it: pKaH</h3><p class="step-body">Lower pKa of the leaving group\'s conjugate acid (pKaH) = weaker base = better leaving group. HI ≈ −10, HBr ≈ −9, HCl ≈ −7 (all strong acids → I⁻/Br⁻/Cl⁻ are weak bases, good leaving groups, in that ranked order). Water ≈ 15.7 (weak acid → OH⁻ is a strong base, poor leaving group). Full pKa framework comes in Module 3.</p>',
     steps: [
       {
         type: 'explain',
@@ -120,6 +121,12 @@
         correctIndex: 0,
         correctFeedback: 'Correct. Cl⁻ is the conjugate base of a strong acid (HCl) and is very stable as an anion; OH⁻ is the conjugate base of water, a much weaker acid, so OH⁻ is a much stronger (and more reluctant) base.',
         wrongFeedback: 'Compare their conjugate acids: HCl is a strong acid, water is not. The weaker the conjugate acid, the stronger (and worse-leaving) the base.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'You can put an actual number on "weak base": pKaH.',
+        bodyHtml: '<p class="step-body">"Weak base" isn\'t just a qualitative label — you can rank leaving groups precisely using the pKa of the leaving group\'s <b>conjugate acid</b> (sometimes written pKaH, for "pKa of the protonated/H form"). <b>Lower pKaH means a weaker base, means a better leaving group</b> — you\'ll get the full pKa framework in Module 3, but the numbers already make the trend concrete: HI (pKa ≈ −10), HBr (≈ −9), HCl (≈ −7) are all strong acids, so I⁻, Br⁻, Cl⁻ are all weak bases and good leaving groups, in exactly that order (I⁻ best, from the lowest pKaH). Water (pKa ≈ 15.7) is a much weaker acid, so OH⁻ is a much stronger base and a poor leaving group — matching everything you just saw.</p><p class="step-body" style="margin-bottom:0;">This single number — the pKa of what\'s left behind after the leaving group grabs a proton — is the actual quantitative tool chemists use to rank leaving group ability, not just "does it feel like a strong or weak base."</p>'
       },
       {
         type: 'explain',
