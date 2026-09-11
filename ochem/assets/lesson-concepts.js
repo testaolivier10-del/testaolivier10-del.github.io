@@ -350,11 +350,11 @@
       1:['pka-scale'], 2:['pka-scale'], 3:['pka-scale'],
       6:['pka-scale','conjugate-pairs'] } },
 
-    'resonance': { n:7, steps:{
-      2:['resonance-delocalization'],
-      3:['resonance-validity'],
-      4:['resonance-delocalization','resonance-validity'],
-      6:['resonance-validity','resonance-delocalization'] } },
+    'resonance': { n:10, steps:{
+      3:['resonance-delocalization'],
+      4:['resonance-validity'],
+      5:['resonance-delocalization','resonance-validity'],
+      9:['resonance-validity','resonance-delocalization'] } },
 
     'ring-flips': { n:7, steps:{
       1:['ring-flip-mechanics'], 2:['ring-flip-mechanics'],
