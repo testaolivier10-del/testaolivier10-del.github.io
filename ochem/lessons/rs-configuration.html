@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R/S Configuration — Stereochemistry | Organic Chemistry</title>
+<meta name="description" content="Learn the CIP priority rules and the full step-by-step algorithm for assigning R or S configuration to a stereocenter.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/rs-configuration.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 5 &middot; Stereochemistry</div>
+    <h1 style="margin-bottom:4px;">R/S configuration.</h1>
+    <p class="lede" style="margin-top:0;">A precise, unambiguous name for each stereocenter's spatial arrangement.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'rs-configuration',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>The four-step algorithm</h3><p class="step-body"><b>1.</b> Rank the four groups on the stereocenter by <b>CIP priority</b> (below). <b>2.</b> Orient the molecule so the <b>lowest</b>-priority group (usually the last-place group, often H) points directly away from you, into the page. <b>3.</b> Trace a path from priority 1 → 2 → 3 among the remaining three groups. <b>4.</b> If that path goes <b>clockwise</b>, the center is <b>R</b> (Latin <i>rectus</i>, "right"); if <b>counterclockwise</b>, it\'s <b>S</b> (<i>sinister</i>, "left").</p>' +
+      '<h3>CIP priority rules</h3><p class="step-body">Compare the atoms directly attached to the stereocenter first: <b>higher atomic number wins</b> (this is why the periodic table matters here — you\'re literally reading off atomic number). If two attached atoms tie (e.g., both carbon), look at what <i>those</i> atoms are attached to, and compare the sets of atoms one step further out — highest-priority atom in that next set wins the tie. Keep moving outward, atom by atom, until a difference appears.</p>' +
+      '<div class="notes-fact">A double or triple bond is treated as if it were duplicated into two or three single bonds to a phantom copy of the same atom. A C=O oxygen is therefore counted as if the carbon were bonded to two separate oxygens for priority purposes — this is why a carbonyl carbon almost always ranks very high in CIP priority comparisons.</div>' +
+      '<h3>The "lowest priority away from you" flip trick</h3><p class="step-body">If you can\'t physically rotate the molecule so the lowest-priority group points away (common when working from a flat drawing), trace the 1→2→3 path as drawn anyway, then <b>flip your answer</b> (R becomes S, S becomes R) — because you were viewing it from the wrong side. This flip-the-answer trick is a completely reliable shortcut and saves you from needing to redraw the whole structure.</p>' +
+      '<h3>Worked example: bromochlorofluoromethane, CHFClBr</h3><p class="step-body">Attached atoms: Br, Cl, F, H. By atomic number: Br (35) > Cl (17) > F (9) > H (1) — so priority order is Br(1) > Cl(2) > F(3) > H(4), no ties to break. Point H away from you and trace Br → Cl → F: if that\'s clockwise, the center is R; if counterclockwise, S.</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'R/S is a precise name for what "stereocenter" leaves ambiguous.',
+        bodyHtml: '<p class="step-body">Saying a carbon "is a stereocenter" tells you it has four different groups, but not which of its two possible arrangements you\'re looking at. <b>R/S configuration</b> is the precise, universal naming system that removes that ambiguity — every stereocenter gets labeled either <b>R</b> or <b>S</b>.</p><p class="step-body" style="margin-bottom:0;">The process has four steps: (1) rank the four attached groups by priority, (2) orient the lowest-priority group away from you, (3) trace a path from priority 1 to 2 to 3 among the rest, and (4) read off clockwise (R) or counterclockwise (S). Step 1 — ranking priority — is where almost all the real work happens, so that\'s where we\'ll spend the most time.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Priority comes from atomic number — compare outward until you find a difference.',
+        bodyHtml: '<p class="step-body">The <b>CIP priority rules</b> (Cahn-Ingold-Prelog) start simple: look at the atom directly attached to the stereocenter for each of the four groups, and rank by <b>atomic number</b> — higher atomic number gets higher priority. Br beats Cl beats F beats H, for instance, because that\'s their order on the periodic table.</p><p class="step-body" style="margin-bottom:0;">If two attached atoms are tied (both carbon, for example, as in comparing a CH₃ group to a CH₂OH group — both start with carbon), don\'t give up: look at what each of those tied atoms is itself attached to, and compare those next-level atom sets. CH₂OH\'s carbon is attached to O, H, H; CH₃\'s carbon is attached to H, H, H. Since O beats H, CH₂OH outranks CH₃. Keep moving outward from the stereocenter, one bond at a time, until you find the first point of difference.</p>'
+      },
+      {
+        render: function(api){
+          var groups = [
+            { key: 'br', label: 'Br', z: 35 },
+            { key: 'cl', label: 'Cl', z: 17 },
+            { key: 'f', label: 'F', z: 9 },
+            { key: 'h', label: 'H', z: 1 }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the four groups on CHFClBr in priority order, highest first.</h2>' +
+            '<p class="step-body">This stereocenter is bonded to Br, Cl, F, and H. Click them in order from highest CIP priority to lowest.</p>' +
+            '<div class="choice-row">' + groups.map(function(g){
+              return '<button class="choice-btn" data-v="' + g.key + '" style="text-align:center;font:900 20px var(--font-mono);">' + g.label + '</button>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Order so far: (none yet)</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var order = [];
+          var mistake = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(btn.disabled) return;
+              var key = btn.getAttribute('data-v');
+              var g = groups.filter(function(x){ return x.key === key; })[0];
+              var expectedNext = groups.slice().sort(function(a,b){ return b.z - a.z; })[order.length];
+              btn.disabled = true;
+              order.push(g.label);
+              if(g.key !== expectedNext.key){ mistake = true; btn.classList.add('wrong'); }
+              else { btn.classList.add('correct'); }
+              hint.textContent = 'Order so far: ' + order.join(' > ');
+              if(order.length === 4){
+                api.record(!mistake);
+                api.showFeedback(fb, !mistake, mistake ? 'Not quite the right order — the correct priority is Br > Cl > F > H, ranked purely by atomic number (35, 17, 9, 1).' : 'Exactly right — Br (Z=35) > Cl (Z=17) > F (Z=9) > H (Z=1). No ties to break here, so atomic number alone decides the whole ranking.');
+                next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'Comparing a CH₂Cl group to a CH₃ group attached to the same stereocenter — which has higher priority?',
+        options: ['CH₂Cl — once carbon ties with carbon, you compare what each carbon is attached to, and Cl outranks H', 'CH₃ — fewer atoms means simpler, so it wins', 'They\'re tied — both start with carbon'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — after the tie at carbon, CH₂Cl\'s carbon is attached to Cl, H, H while CH₃\'s is attached to H, H, H. Cl beats H, so CH₂Cl wins.',
+        wrongFeedback: 'The comparison doesn\'t stop at a tie — since both groups start with carbon, you look one bond further out. CH₂Cl has a chlorine there; CH₃ only has hydrogens.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'How is a C=O double bond treated for CIP priority purposes?',
+        options: ['As if the carbon were bonded to two separate oxygens (a duplicated phantom atom)', 'Exactly like a single C–O bond, with no special treatment', 'Double bonds are ignored entirely in CIP analysis'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — CIP rules treat each multiple bond as a duplicate single bond to a phantom copy of the atom on the other end, which is why carbonyl carbons rank so highly.',
+        wrongFeedback: 'A double bond gets special treatment — it counts as if duplicated into two single bonds to phantom atoms, which usually boosts that group\'s priority significantly compared to a plain single bond.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Working from a flat drawing? Trace it anyway, then flip your answer.',
+        bodyHtml: '<p class="step-body">The official rule requires the lowest-priority group pointing directly away from you. But most drawings you\'ll work from (wedge-dash structures, Fischer projections) don\'t conveniently show that. The reliable shortcut: trace the 1→2→3 priority path exactly as drawn, get an apparent clockwise/counterclockwise answer, and then <b>flip it</b> (R↔S) if the lowest-priority group was actually pointing <i>toward</i> you instead of away.</p><p class="step-body" style="margin-bottom:0;">This works because looking at a stereocenter from the wrong side reverses the apparent direction of rotation — exactly the same way a clock viewed from behind appears to run counterclockwise. Flipping the final answer corrects for the reversed viewpoint without needing to mentally rotate the whole 3D structure.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'R/S is the label every downstream stereochemistry problem is built on.',
+        bodyHtml: '<div class="explain-box">Naming a compound fully (like (R)-2-bromobutane) or predicting a reaction\'s stereochemical outcome (SN2\'s inversion, described as "R becomes S" for a specific case) both require confidently assigning R/S labels first. This is also how the E2 mechanism\'s stereospecificity gets described precisely, and it\'s the labeling system behind the (R,R)/(S,S)/meso analysis you just saw for tartaric acid.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'At a stereocenter, tracing priority 1→2→3 (with the lowest priority correctly pointing away from you) goes counterclockwise. What is the configuration?',
+        options: ['S — counterclockwise is sinister, Latin for "left"', 'R — counterclockwise always means R', 'You need more information to tell'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — counterclockwise (with lowest priority correctly oriented away from the viewer) is S. Clockwise would be R.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

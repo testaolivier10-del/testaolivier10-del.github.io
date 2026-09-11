@@ -47,20 +47,20 @@
       { id: 'conformational-analysis', title: 'Conformational analysis', href: 'lessons/conformational-analysis.html', dependsOn: ['ring-flips'] }
     ]},
     { id: 'stereochemistry', title: 'Stereochemistry', topics: [
-      { id: 'chirality', title: 'Chirality', href: null },
-      { id: 'stereocenters', title: 'Stereocenters', href: null },
-      { id: 'enantiomers', title: 'Enantiomers', href: null },
-      { id: 'diastereomers', title: 'Diastereomers', href: null },
-      { id: 'meso', title: 'Meso compounds', href: null },
-      { id: 'rs-configuration', title: 'R/S configuration', href: null },
-      { id: 'fischer', title: 'Fischer projections', href: null }
+      { id: 'chirality', title: 'Chirality', href: 'lessons/chirality.html' },
+      { id: 'stereocenters', title: 'Stereocenters', href: 'lessons/stereocenters.html', dependsOn: ['chirality'] },
+      { id: 'enantiomers', title: 'Enantiomers', href: 'lessons/enantiomers.html', dependsOn: ['stereocenters'] },
+      { id: 'diastereomers', title: 'Diastereomers', href: 'lessons/diastereomers.html', dependsOn: ['enantiomers'] },
+      { id: 'meso', title: 'Meso compounds', href: 'lessons/meso.html', dependsOn: ['diastereomers'] },
+      { id: 'rs-configuration', title: 'R/S configuration', href: 'lessons/rs-configuration.html', dependsOn: ['stereocenters', 'electronegativity'] },
+      { id: 'fischer', title: 'Fischer projections', href: 'lessons/fischer.html', dependsOn: ['rs-configuration'] }
     ]},
     { id: 'substitution-elimination', title: 'Substitution & Elimination', topics: [
       { id: 'sn2', title: 'SN2', href: 'mechanisms/sn2.html' },
       { id: 'sn1', title: 'SN1', href: 'mechanisms/sn1.html' },
-      { id: 'e1', title: 'E1', href: null },
+      { id: 'e1', title: 'E1', href: 'mechanisms/e1.html', dependsOn: ['sn1'] },
       { id: 'e2', title: 'E2', href: 'mechanisms/e2.html', dependsOn: ['conformational-analysis', 'leaving-groups', 'bronsted'] },
-      { id: 'substrate-effects', title: 'Substrate & solvent effects', href: null }
+      { id: 'substrate-effects', title: 'Substrate & solvent effects', href: 'lessons/substrate-effects.html', dependsOn: ['sn2', 'sn1', 'e1', 'e2'] }
     ]},
     { id: 'alkenes-alkynes', title: 'Alkenes & Alkynes', topics: [
       { id: 'alkene-structure', title: 'Alkene structure', href: null },

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E1 Reactions — Interactive Mechanism | Organic Chemistry</title>
+<meta name="description" content="Perform the E1 mechanism yourself: ionize the substrate, visualize the shared carbocation intermediate with SN1, remove a beta-hydrogen, and see why E1 follows Zaitsev's rule.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/mechanisms/e1.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+  .lesson-shell{max-width:760px;margin:0 auto;}
+  .progress-bar{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+  .progress-bar .track{flex:1;height:10px;border-radius:999px;background:var(--track);overflow:hidden;}
+  .progress-bar .fill{height:100%;background:var(--accent);border-radius:999px;transition:width .25s ease;}
+  .progress-bar .label{font:900 12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
+
+  .lesson-card{
+    background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+    padding:clamp(20px,4vw,32px);box-shadow:var(--lift-lg);
+  }
+  .step-eyebrow{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+  .step-title{font:900 clamp(19px,3vw,24px) var(--font-ui);margin:0 0 10px;color:var(--ink);}
+  .step-body{font-size:15px;font-weight:600;color:var(--ink);line-height:1.6;margin:0 0 18px;}
+  .step-body b{color:var(--ink);}
+
+  .scene{background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);padding:20px 10px;margin-bottom:18px;user-select:none;}
+  .scene svg{width:100%;height:auto;display:block;max-width:360px;margin:0 auto;}
+  .atom{cursor:pointer;}
+  .atom circle{transition:stroke .1s ease,stroke-width .1s ease;}
+  .atom:hover circle{stroke:var(--accent);stroke-width:3;}
+  .atom.chosen circle{stroke:var(--accent);stroke-width:3.5;fill:var(--tint-accent);}
+  .atom text{font-family:'IBM Plex Mono',monospace;font-weight:700;pointer-events:none;}
+
+  .choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
+  .choice-btn{
+    flex:1 1 200px;text-align:left;background:var(--white);border:var(--bw) solid var(--line);
+    border-radius:var(--radius);padding:14px 16px;font:800 14.5px var(--font-ui);color:var(--ink);
+    cursor:pointer;box-shadow:var(--lift-sm);transition:border-color .1s ease,transform .06s ease;
+  }
+  .choice-btn:hover{border-color:var(--accent);}
+  .choice-btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--line);}
+  .choice-btn.correct{border-color:var(--good);background:var(--tint-good);}
+  .choice-btn.wrong{border-color:var(--bad);background:var(--tint-bad);}
+  .choice-btn:disabled{cursor:default;}
+
+  .feedback{border-radius:var(--radius);padding:14px 16px;font-size:14.5px;font-weight:700;line-height:1.55;margin-bottom:16px;display:none;}
+  .feedback.show{display:block;}
+  .feedback.good{background:var(--tint-good);color:var(--good-press);}
+  .feedback.bad{background:var(--tint-bad);color:var(--bad-press);}
+
+  .actions{display:flex;justify-content:flex-end;gap:10px;}
+  .btn-press:disabled{opacity:.45;cursor:default;}
+  .explain-box{background:var(--tint-accent);border-radius:var(--radius);padding:16px 18px;font-size:14.5px;font-weight:600;line-height:1.6;margin-bottom:18px;color:var(--ink);}
+  .explain-box b{color:var(--accent-press);}
+</style>
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 6 &middot; Substitution &amp; Elimination</div>
+    <h1 style="margin-bottom:4px;">E1: the same cation, a different fate.</h1>
+    <p class="lede" style="margin-top:0;">Same ionization step as SN1 — but this time, a base pulls off a hydrogen instead of a nucleophile attacking carbon.</p>
+  </div>
+
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 6</div>
+  </div>
+
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script>
+(function(){
+  var TOPIC_ID = 'e1';
+  var step = 0; // 0 explain, 1 ionize, 2 visualize cation, 3 remove beta-H, 4 predict (Zaitsev), 5 rate/competition, 6 challenge
+  var TOTAL = 6;
+  var card = document.getElementById('card');
+  var progFill = document.getElementById('progFill');
+  var progLabel = document.getElementById('progLabel');
+
+  function record(correct){ window.OchemCurriculum.recordAttempt(TOPIC_ID, correct); }
+  function updateProgress(){
+    progFill.style.width = Math.round((step/TOTAL)*100) + '%';
+    progLabel.textContent = 'Step ' + (step+1) + ' / ' + (TOTAL+1);
+  }
+  function feedbackHtml(id){ return '<div class="feedback" id="' + id + '"></div>'; }
+  function showFeedback(el, good, text){ el.className = 'feedback show ' + (good?'good':'bad'); el.textContent = text; }
+  function nextButton(label, enabled){ return '<div class="actions"><button class="btn-press" id="nextBtn"' + (enabled?'':' disabled') + '>' + label + '</button></div>'; }
+
+  function render(){
+    updateProgress();
+    if(step===0) renderExplain();
+    else if(step===1) renderIonize();
+    else if(step===2) renderVisualizeCation();
+    else if(step===3) renderRemoveBetaH();
+    else if(step===4) renderZaitsev();
+    else if(step===5) renderRateCompetition();
+    else renderChallenge();
+  }
+
+  // ---- Step 0: Explain ----
+  function renderExplain(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Explain</div>' +
+      '<h2 class="step-title">E1 starts exactly like SN1.</h2>' +
+      '<p class="step-body">Just like SN1, <b>E1</b> begins with the leaving group departing <b>on its own</b>, before anything else gets involved. That slow, rate-determining ionization step leaves behind the same kind of intermediate: a flat, sp² <b>carbocation</b>.</p>' +
+      '<p class="step-body" style="margin-bottom:0;">What happens next is where E1 and SN1 diverge: instead of a nucleophile attacking the cationic carbon, a weak base grabs a hydrogen from a <b>neighboring (beta) carbon</b>, and the electrons from that C–H bond flow in to form a new pi bond. We\'ll ionize 2-bromo-2-methylbutane, (CH₃)₂CBr–CH₂CH₃, and watch this play out.</p>' +
+      nextButton('Continue', true);
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step=1; render(); });
+  }
+
+  // ---- Step 1: Ionize ----
+  function renderIonize(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Step 1 · Ionize</div>' +
+      '<h2 class="step-title">Push the C–Br bond\'s electrons onto bromine.</h2>' +
+      '<p class="step-body">Click the central carbon, then click bromine, to show the bond breaking heterolytically — bromine leaves with both electrons, exactly like the first step of SN1.</p>' +
+      '<div class="scene"><svg viewBox="0 0 260 200">' +
+        '<line x1="120" y1="100" x2="120" y2="40" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="120" y1="100" x2="70" y2="130" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="120" y1="100" x2="185" y2="120" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="120" y1="100" x2="190" y2="70" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<circle cx="120" cy="100" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="120" y="106" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="15">C</text>' +
+        '<circle cx="120" cy="30" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="120" y="35" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">CH₃</text>' +
+        '<circle cx="55" cy="138" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="55" y="143" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">CH₃</text>' +
+        '<circle cx="200" cy="128" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="200" y="133" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">CH₂CH₃</text>' +
+        '<g class="atom" data-key="carbon"><circle cx="120" cy="100" r="17" fill="transparent" stroke="none"/></g>' +
+        '<g class="atom" data-key="br"><circle cx="210" cy="58" r="16" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="210" y="63" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="14">Br</text></g>' +
+      '</svg></div>' +
+      feedbackHtml('fb') +
+      nextButton('See the intermediate', false);
+
+    var fb = card.querySelector('#fb');
+    var next = card.querySelector('#nextBtn');
+    var from = null, done = false;
+    card.querySelectorAll('.atom').forEach(function(g){
+      g.addEventListener('click', function(){
+        if(done) return;
+        var key = g.getAttribute('data-key');
+        if(from === null){
+          if(key !== 'carbon'){
+            showFeedback(fb, false, 'Start at the bond that\'s breaking — click the central carbon first.');
+            return;
+          }
+          from = key;
+          showFeedback(fb, true, 'Good. Now click bromine to send the electrons with it.');
+        } else {
+          var isCorrect = key === 'br';
+          record(isCorrect);
+          if(isCorrect){
+            done = true;
+            g.querySelector('circle').setAttribute('stroke', 'var(--coral)');
+            g.querySelector('circle').setAttribute('stroke-width', '3.5');
+            var arrowSvg = '<path d="M 128 90 Q 165 60 198 65" stroke="var(--coral)" stroke-width="2.5" fill="none" marker-end="url(#ahI)"/>' +
+              '<defs><marker id="ahI" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--coral)"/></marker></defs>';
+            card.querySelector('.scene svg').insertAdjacentHTML('beforeend', arrowSvg);
+            showFeedback(fb, true, 'Correct — bromide leaves on its own, taking the bonding electrons with it. This is exactly the same ionization step SN1 uses.');
+            next.disabled = false;
+          } else {
+            showFeedback(fb, false, 'The electrons need to land on bromine.');
+          }
+        }
+      });
+    });
+    next.addEventListener('click', function(){ step=2; render(); });
+  }
+
+  // ---- Step 2: Visualize the planar carbocation ----
+  function renderVisualizeCation(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Visualize</div>' +
+      '<h2 class="step-title">A tertiary carbocation, with beta-hydrogens on two different sides.</h2>' +
+      '<p class="step-body">The cationic carbon is sp² and trigonal planar, just like in SN1. But now look one bond further out: the carbons directly attached to it — the <b>beta carbons</b> — each carry hydrogens of their own. This cation has beta-hydrogens on <b>two different kinds</b> of neighboring carbon: a methyl group, and a CH₂ of the ethyl group.</p>' +
+      '<div class="scene"><svg viewBox="0 0 260 160">' +
+        '<line x1="130" y1="90" x2="130" y2="30" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="130" y1="90" x2="75" y2="122" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="130" y1="90" x2="195" y2="112" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<circle cx="130" cy="90" r="17" fill="var(--white)" stroke="var(--coral)" stroke-width="2.5"/><text x="130" y="96" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="15">C</text>' +
+        '<text x="150" y="80" font-family="Nunito" font-weight="900" font-size="14" fill="var(--coral)">+</text>' +
+        '<circle cx="130" cy="20" r="16" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="130" y="25" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">CH₃(β)</text>' +
+        '<circle cx="60" cy="130" r="16" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="60" y="135" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">CH₃(β)</text>' +
+        '<circle cx="210" cy="120" r="20" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="210" y="118" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="10">CH₂(β)</text><text x="210" y="130" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">–CH₃</text>' +
+      '</svg></div>' +
+      nextButton('Continue', true);
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step=3; render(); });
+  }
+
+  // ---- Step 3: Remove a beta-hydrogen ----
+  function renderRemoveBetaH(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Interact</div>' +
+      '<h2 class="step-title">Click a beta carbon to have a base remove one of its hydrogens.</h2>' +
+      '<p class="step-body">When a base removes a beta-hydrogen, its bonding electrons swing in to form a new pi bond between the alpha and beta carbons — that\'s the alkene double bond forming. Try clicking the CH₂ (ethyl) side.</p>' +
+      '<div class="scene"><svg viewBox="0 0 260 160">' +
+        '<line x1="130" y1="90" x2="130" y2="30" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="130" y1="90" x2="75" y2="122" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="130" y1="90" x2="195" y2="112" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<circle cx="130" cy="90" r="17" fill="var(--white)" stroke="var(--coral)" stroke-width="2.5"/><text x="130" y="96" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="15">C</text>' +
+        '<text x="150" y="80" font-family="Nunito" font-weight="900" font-size="14" fill="var(--coral)">+</text>' +
+        '<g class="atom" data-key="methyl1"><circle cx="130" cy="20" r="16" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="130" y="25" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">CH₃(β)</text></g>' +
+        '<g class="atom" data-key="methyl2"><circle cx="60" cy="130" r="16" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="60" y="135" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">CH₃(β)</text></g>' +
+        '<g class="atom" data-key="ethylCH2"><circle cx="210" cy="120" r="20" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="210" y="118" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="10">CH₂(β)</text><text x="210" y="130" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">–CH₃</text></g>' +
+      '</svg></div>' +
+      feedbackHtml('fb') +
+      nextButton('Continue', false);
+
+    var fb = card.querySelector('#fb');
+    var next = card.querySelector('#nextBtn');
+    var chosen = false;
+    card.querySelectorAll('.atom').forEach(function(g){
+      g.addEventListener('click', function(){
+        if(chosen) return;
+        chosen = true;
+        g.classList.add('chosen');
+        var key = g.getAttribute('data-key');
+        record(true);
+        if(key === 'ethylCH2'){
+          showFeedback(fb, true, 'Removing a hydrogen from the CH₂ gives 2-methyl-2-butene — a trisubstituted alkene (three carbon groups on the double bond).');
+        } else {
+          showFeedback(fb, true, 'Removing a hydrogen from this CH₃ gives 2-methyl-1-butene — a disubstituted alkene (only two carbon groups on the double bond).');
+        }
+        next.disabled = false;
+      });
+    });
+    next.addEventListener('click', function(){ step=4; render(); });
+  }
+
+  // ---- Step 4: Zaitsev's rule ----
+  function renderZaitsev(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Predict</div>' +
+      '<h2 class="step-title">Two different alkenes are possible. Which one dominates?</h2>' +
+      '<p class="step-body">Removing a hydrogen from the ethyl CH₂ gives 2-methyl-2-butene (trisubstituted). Removing one from either methyl group gives 2-methyl-1-butene (disubstituted).</p>' +
+      '<div class="choice-row">' +
+        ['The more substituted alkene (2-methyl-2-butene) — it\'s the major product', 'The less substituted alkene (2-methyl-1-butene) — it\'s the major product', 'Both form in exactly equal amounts, always'].map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
+      '</div>' +
+      feedbackHtml('fb') +
+      nextButton('Continue', false);
+
+    var fb = card.querySelector('#fb');
+    var next = card.querySelector('#nextBtn');
+    card.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var isCorrect = btn.getAttribute('data-v').indexOf('The more substituted') === 0;
+        card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+        btn.classList.add(isCorrect ? 'correct' : 'wrong');
+        record(isCorrect);
+        if(isCorrect){
+          showFeedback(fb, true, 'Correct — this is <b>Zaitsev\'s rule</b>: the more substituted (more stable) alkene is the major product. More substituted double bonds are lower in energy for the same hyperconjugation reason more substituted carbocations are more stable.');
+          next.disabled = false;
+        } else {
+          showFeedback(fb, false, 'Compare the stability of the two possible alkenes — more alkyl substitution on a double bond makes it more stable, the same logic as carbocation stability.');
+          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
+        }
+      });
+    });
+    next.addEventListener('click', function(){ step=5; render(); });
+  }
+
+  // ---- Step 5: rate law and competition with SN1 ----
+  function renderRateCompetition(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Explain</div>' +
+      '<h2 class="step-title">E1 and SN1 are constant competitors, not separate reactions.</h2>' +
+      '<p class="step-body">Like SN1, E1 is <b>unimolecular</b>: only the substrate is involved in the slow, rate-determining ionization step, giving the rate law <b>rate = k[substrate]</b> — the base/nucleophile\'s concentration doesn\'t appear.</p>' +
+      '<p class="step-body" style="margin-bottom:0;">Because E1 and SN1 share the exact same carbocation intermediate, they happen under the <b>same conditions</b> — a weak nucleophile/base and a polar protic solvent — and almost always occur <b>together</b>, as a mixture of substitution and elimination products, rather than one to the complete exclusion of the other. Which one wins more of the time depends on factors like temperature (higher temperature favors elimination, since E1 has a greater entropy increase from forming two smaller product molecules from one) and steric bulk around the cation (more crowding favors elimination, since a nucleophile has a harder time approaching a crowded carbon than a base has removing a peripheral hydrogen).</p>' +
+      nextButton('Continue', true);
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step=6; render(); });
+  }
+
+  // ---- Step 6: Why it matters + Challenge ----
+  function renderChallenge(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Why it matters &middot; Challenge</div>' +
+      '<h2 class="step-title">Same substrate, same conditions — SN1 and E1 both start the same way.</h2>' +
+      '<div class="explain-box">Whenever you see a substrate that ionizes easily (tertiary, or stabilized by resonance) reacting with a weak, poor nucleophile/base in a polar protic solvent, expect a <b>mixture</b> of SN1 and E1 products — not a single clean answer. This is exactly why substrate and solvent effects (next lesson) matter so much for predicting real outcomes.</div>' +
+      '<p class="step-body">A tertiary alkyl bromide is heated in ethanol (a weak nucleophile and weak base, polar protic solvent). What should you expect?</p>' +
+      '<div class="choice-row">' +
+        ['A mixture of SN1 substitution and E1 elimination products, with elimination favored by the heat', 'Only SN2 substitution, cleanly', 'No reaction occurs at all'].map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
+      '</div>' +
+      feedbackHtml('fb') +
+      '<div id="doneBox"></div>';
+
+    var fb = card.querySelector('#fb');
+    card.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var isCorrect = btn.getAttribute('data-v').indexOf('A mixture') === 0;
+        card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+        btn.classList.add(isCorrect ? 'correct' : 'wrong');
+        record(isCorrect);
+        if(isCorrect){
+          showFeedback(fb, true, 'Correct — a tertiary substrate ionizes easily, ethanol is a weak nucleophile/base and polar protic (favoring the ionization pathway for both SN1 and E1), and heat specifically favors E1 over SN1. Expect a real mixture of an ether/alcohol (from SN1) and the Zaitsev alkene (from E1), not one single clean product.');
+          card.querySelector('#doneBox').innerHTML = '<div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press">Back to Learn</a></div>';
+        } else {
+          showFeedback(fb, false, 'A tertiary carbon can\'t do SN2 (too crowded), but it ionizes readily — think about which unimolecular pathways become available once that carbocation forms.');
+          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
+        }
+      });
+    });
+  }
+
+  var NOTES_HTML = '<h3>E1 starts exactly like SN1</h3><p class="step-body">E1 begins with the same rate-determining ionization step as SN1: the leaving group departs on its own, forming a flat, sp² <b>carbocation</b>. What happens next is different — instead of a nucleophile attacking the cationic carbon (SN1), a weak base removes a hydrogen from a <b>beta carbon</b> (one bond away from the cation), and the C–H bond\'s electrons flow in to form a new pi bond.</p>' +
+    '<h3>Zaitsev\'s rule</h3><p class="step-body">When more than one beta-hydrogen is available, removing different ones gives different alkenes. <b>Zaitsev\'s rule</b>: the <b>more substituted</b> (more stable) alkene is the major product, for the same hyperconjugation reasons that make more substituted carbocations more stable. Example: ionizing 2-bromo-2-methylbutane gives a cation with two kinds of beta-hydrogen available — removing one from the ethyl CH₂ gives the trisubstituted 2-methyl-2-butene (major), while removing one from a methyl gives the disubstituted 2-methyl-1-butene (minor).</p>' +
+    '<div class="notes-fact">This is the unimolecular, non-stereospecific counterpart to E2\'s anti-periplanar, bimolecular mechanism (Module 4/6). E1 doesn\'t require any specific geometry between the leaving group and the beta-hydrogen, because the leaving group is already long gone by the time the hydrogen is removed.</div>' +
+    '<h3>Rate law and the SN1 connection</h3><p class="step-body">E1 is unimolecular: rate = k[substrate] (the base\'s concentration doesn\'t appear). Because E1 shares SN1\'s exact carbocation intermediate, the two pathways happen under identical conditions (weak nucleophile/base, polar protic solvent, substrate that ionizes easily) and almost always compete, producing a <b>mixture</b> of substitution and elimination products. Higher temperature favors E1 over SN1 (elimination has a greater increase in entropy, forming two molecules from one), and more steric crowding around the cation also favors elimination.</p>';
+
+  var notesMode = /(^|[?&])notes=1(&|$)/.test(location.search);
+  (function(){
+    var shell = card.parentNode;
+    var progressBarEl = shell.querySelector('.progress-bar');
+    var toggleBar = document.createElement('div');
+    toggleBar.className = 'lesson-mode-toggle';
+    shell.insertBefore(toggleBar, progressBarEl || card);
+    if(notesMode){
+      if(progressBarEl) progressBarEl.style.display = 'none';
+      toggleBar.innerHTML = '<a href="' + location.pathname + '" class="link-quiet">&larr; Back to the interactive lesson</a>';
+      card.innerHTML = '<div class="notes-view">' + NOTES_HTML + '</div><div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press alt">Back to Learn</a></div>';
+      return;
+    }
+    toggleBar.innerHTML = '<a href="' + location.pathname + '?notes=1" class="link-quiet">&#128221; View lesson notes</a>';
+  })();
+
+  if(!notesMode) render();
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chirality — Stereochemistry | Organic Chemistry</title>
+<meta name="description" content="Learn what chirality means, the plane-of-symmetry test for telling chiral and achiral molecules apart, and why your hands are the classic example.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/chirality.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 5 &middot; Stereochemistry</div>
+    <h1 style="margin-bottom:4px;">Chirality.</h1>
+    <p class="lede" style="margin-top:0;">Your left and right hands are mirror images that can never be superimposed. Some molecules work exactly the same way.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'chirality',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>The definition</h3><p class="step-body">A molecule (or any object) is <b>chiral</b> if it is <b>not superimposable on its mirror image</b> — you can\'t rotate or slide one onto the other so every atom lines up. If an object <i>can</i> be superimposed on its mirror image, it\'s <b>achiral</b>.</p>' +
+      '<h3>Hands: the classic example</h3><p class="step-body">Your left and right hands are mirror images of each other, but you can\'t rotate your left hand in space to make it look exactly like your right hand (try it — the thumb always ends up on the wrong side). This is exactly what "chiral" means, and it\'s where the word comes from (Greek <i>cheir</i>, "hand"). A plain coffee mug, by contrast, is achiral — its mirror image is identical to the original, just rotated.</p>' +
+      '<div class="notes-fact">"Chiral" describes the whole molecule\'s three-dimensional shape, not any single atom by itself. The next lesson introduces <b>stereocenters</b>, the specific atoms that most commonly cause a molecule to be chiral — but chirality itself is a property of the whole structure.</div>' +
+      '<h3>The plane-of-symmetry shortcut</h3><p class="step-body">A fast, reliable test: if a molecule has an internal <b>plane of symmetry</b> (an imaginary flat plane that divides it into two mirror-image halves), it is achiral. If no such plane exists anywhere in the molecule, it\'s chiral. This is a shortcut for the superimposability test, and it usually matches your intuition once you\'ve practiced it a few times.</p>' +
+      '<h3>Why this matters biologically</h3><p class="step-body">Almost all of biology is built from chiral molecules — amino acids, sugars, DNA\'s helix. A chiral biological receptor can tell two mirror-image molecules apart, which is why one enantiomer of a drug can be therapeutic while its mirror image is inactive or even harmful (thalidomide is the most famous historical example). You\'ll see exactly how enantiomers differ in their biological interactions in an upcoming lesson.</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Chiral means "not superimposable on its own mirror image."',
+        bodyHtml: '<p class="step-body">Hold your two hands up, palms facing each other. They\'re mirror images of one another. Now try to rotate your left hand in space so that it looks exactly like your right hand, thumb and all. You can\'t — no matter how you rotate it, the thumb ends up on the wrong side.</p><p class="step-body" style="margin-bottom:0;">That\'s the entire definition of <b>chirality</b>: an object (or molecule) is <b>chiral</b> if it cannot be superimposed on its mirror image. If it <i>can</i> be superimposed — meaning the mirror image is really just the same object, rotated — it\'s <b>achiral</b>. This is exactly where the word comes from: Greek <i>cheir</i>, meaning "hand."</p>'
+      },
+      {
+        render: function(api){
+          var objs = [
+            { key: 'mug', label: 'A plain coffee mug (no logo)', achiral: true },
+            { key: 'shoe', label: 'A left shoe', achiral: false },
+            { key: 'ball', label: 'A perfectly round ball', achiral: true },
+            { key: 'screw', label: 'A screw (helical threads)', achiral: false }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click every object below that is chiral.</h2>' +
+            '<p class="step-body">Ask yourself: does this object\'s mirror image look identical to the original (just rotated), or genuinely different?</p>' +
+            '<div class="choice-row">' + objs.map(function(o){
+              return '<button class="choice-btn" data-v="' + o.key + '">' + o.label + '</button>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Chiral objects found: 0 / 2</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var found = 0, mistake = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(btn.disabled) return;
+              var o = objs.filter(function(x){ return x.key === btn.getAttribute('data-v'); })[0];
+              btn.disabled = true;
+              if(!o.achiral){
+                btn.classList.add('correct');
+                found++;
+                hint.textContent = 'Chiral objects found: ' + found + ' / 2';
+              } else {
+                btn.classList.add('wrong');
+                mistake = true;
+              }
+              if(found === 2){
+                api.record(!mistake);
+                api.showFeedback(fb, !mistake, mistake ? 'You found both chiral objects (the shoe and the screw), but also picked something achiral — a mug and a ball both have mirror images identical to the original, just rotated.' : 'Exactly right. A left shoe\'s mirror image is a right shoe — genuinely different, not just rotated. A screw\'s helical threads make its mirror image spiral the opposite way — also genuinely different. The mug and the ball both have mirror images identical to themselves.');
+                next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'An achiral object is one whose mirror image is...',
+        options: ['Superimposable on the original — really the same object, just rotated', 'Always identical in color to the original', 'Impossible to create'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — "achiral" means the mirror image and the original can be rotated to match up perfectly.',
+        wrongFeedback: 'Chirality has nothing to do with color — it\'s entirely about whether the mirror image can be rotated to match the original exactly.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'A quick way to check whether a molecule is achiral is to look for...',
+        options: ['An internal plane of symmetry that divides it into mirror-image halves', 'An even number of carbon atoms', 'A double bond anywhere in the structure'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. If a molecule has an internal mirror plane, it\'s achiral — no plane of symmetry anywhere means it\'s chiral.',
+        wrongFeedback: 'Carbon count and double bonds don\'t determine chirality by themselves — the plane-of-symmetry test is the reliable shortcut.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Chirality is a property of the whole molecule\'s shape.',
+        bodyHtml: '<p class="step-body">It\'s tempting to think chirality lives at one specific atom, but that\'s not quite right — chirality describes the three-dimensional shape of the <b>entire molecule</b>. The next lesson introduces <b>stereocenters</b>: specific atoms (almost always carbons with four different groups attached) that are the most common cause of a molecule being chiral. But it\'s the overall molecular shape — whether the whole thing has an internal mirror plane or not — that ultimately determines chirality, and as you\'ll see in the Meso Compounds lesson, a molecule can even contain stereocenters and still be achiral overall.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Chirality is why one drug enantiomer can heal and its mirror image can harm.',
+        bodyHtml: '<div class="explain-box">Nearly everything biological — amino acids, sugars, enzymes, receptors — is chiral. A chiral receptor can tell two mirror-image molecules apart the same way your hand can tell a left glove from a right one, even though both gloves are chemically identical otherwise. This is why one enantiomer of a drug can be therapeutic while its mirror image does nothing, or in rare tragic cases (thalidomide, historically), causes serious harm. You\'ll examine exactly how enantiomers differ, and why, in the next two lessons.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A molecule has an internal plane of symmetry splitting it into two identical mirror-image halves. Is it chiral?',
+        options: ['No — a plane of symmetry means the molecule is superimposable on its own mirror image (achiral)', 'Yes — any molecule with two identical halves is automatically chiral', 'It depends on the number of carbon atoms'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — an internal plane of symmetry is the fast, reliable signal that a molecule is achiral: it can be superimposed on its own mirror image.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>
