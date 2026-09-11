@@ -65,6 +65,78 @@
     }
   ];
 
+  /* ---- Building a torsion nobody typed in -------------------------------
+
+     The twelve presets declare their six node energies directly, and where a
+     textbook prints the number that is the honest thing to do. But a student
+     who wants to see what happens with a tert-butyl on one carbon and a
+     chlorine on the other is not served by a list, so the same six numbers can
+     be computed from the substituents instead.
+
+     Two terms, and both are pinned to values a course actually prints.
+
+       eclipsing   e(a) + e(b) + 0.277·A(a)·A(b), with e(X) = 0.5 + 0.235·A(X)
+       gauche      0.31·A(a)·A(b)
+
+     Those constants are not decoration: they are what makes the formula
+     reproduce butane exactly — 1.0 for H/H eclipsing, 1.4 for H/CH3, 2.6 for
+     CH3/CH3, 0.9 for a CH3/CH3 gauche, and therefore 4.6, 0.9, 3.8, 0 around
+     the curve. Everything involving a hydrogen falls out at zero for gauche,
+     which is right: two groups 60° apart only cost anything if both of them
+     are big.
+
+     Beyond methyl the numbers are extrapolated from A-values rather than
+     measured, and the tool says so on screen. An A-value measures how much a
+     group dislikes being crowded, which is the same instinct the eclipsing
+     term is trying to capture — but "same instinct" is not "same
+     measurement", and pretending otherwise would be inventing data. */
+  function aOf(key){ return (SUBS[key] && SUBS[key].a) || 0; }
+
+  function eclipseCost(x, y){
+    var ax = aOf(x), ay = aOf(y);
+    return (0.5 + 0.235 * ax) + (0.5 + 0.235 * ay) + 0.277 * ax * ay;
+  }
+  function gaucheCost(x, y){
+    return 0.31 * aOf(x) * aOf(y);
+  }
+
+  /* front[i] sits at theta + i·120; back[j] sits at j·120. At an eclipsed
+     angle each front group is on top of exactly one back group; at a staggered
+     one each is 60° from two of them and 180° from the third. */
+  function computeEnergies(front, back){
+    var out = [];
+    for(var n=0; n<6; n++){
+      var theta = n * 60;
+      var total = 0;
+      for(var i=0;i<3;i++){
+        for(var j=0;j<3;j++){
+          var d = Math.abs(((theta + i*120) - (j*120)) % 360);
+          if(d > 180) d = 360 - d;
+          if(d < 1)        total += eclipseCost(front[i], back[j]);
+          else if(d < 61)  total += gaucheCost(front[i], back[j]);
+          // 180° apart is anti and costs nothing.
+        }
+      }
+      out.push(total);
+    }
+    var min = Math.min.apply(null, out);
+    // Energies are reported relative to the best conformation, which is the
+    // only thing a torsional curve can honestly claim to know.
+    return out.map(function(v){ return Math.round((v - min) * 100) / 100; });
+  }
+
+  function customTorsion(front, back){
+    return {
+      id:'custom', name:'Your own', formula:'',
+      front: front.slice(), back: back.slice(),
+      energies: computeEnergies(front, back),
+      custom: true,
+      note:'Built from the groups you chose. The eclipsing and gauche costs are computed from A-values, ' +
+           'calibrated so that ethane and butane come out at their textbook numbers — anything bigger than a methyl is ' +
+           'an extrapolation rather than a measurement.'
+    };
+  }
+
   var tor = TORSIONALS[0];
   var theta = 60;
 
@@ -117,14 +189,33 @@
       return {
         name: 'Eclipsed',
         detail: bothBig
-          ? 'A ' + tor.front[0] + ' group eclipsing a hydrogen, twice, plus one H/H. Bad, but about a kcal better than having the two big groups eclipse each other.'
+          ? 'A ' + tor.front[0] + ' group eclipsing a hydrogen, twice, plus one H/H. Bad, but ' +
+            (function(){
+              var min = Math.min.apply(null, tor.energies);
+              var here = tor.energies[Math.round(nearest / 60) % 6] - min;
+              var worst = Math.max.apply(null, tor.energies) - min;
+              var d = worst - here;
+              return d < 0.05 ? 'no better than' : d.toFixed(1) + ' kcal/mol better than';
+            })() +
+            ' having the two big groups eclipse each other.'
           : 'Bonds lined up front to back. A maximum, but not the highest one.'
       };
     }
     return {
       name: bothBig ? 'Gauche' : 'Staggered',
       detail: bothBig
-        ? 'Staggered, so nothing is eclipsed — but the two ' + tor.front[0] + ' groups are only 60° apart and their electron clouds are close enough to push. That steric cost, about 0.9 kcal/mol, is what separates gauche from anti.'
+        /* The gauche penalty was written as "about 0.9 kcal/mol", which is
+           butane's number and butane's alone. Read it off the curve instead:
+           with two tert-butyls it is nearer 2.6, and quoting butane there
+           would be telling someone the wrong thing about the molecule they are
+           looking at. */
+        ? 'Staggered, so nothing is eclipsed — but the two ' + tor.front[0] + ' groups are only 60° apart and their electron clouds are close enough to push. That steric cost, ' +
+          (function(){
+            var min = Math.min.apply(null, tor.energies);
+            var here = tor.energies[Math.round(nearest / 60) % 6] - min;
+            return here < 0.05 ? 'small as it is here,' : 'about ' + here.toFixed(1) + ' kcal/mol,';
+          })() +
+          ' is what separates gauche from anti.'
         : 'Staggered and unstrained.'
     };
   }
@@ -204,6 +295,7 @@
   }
 
   function renderNewman(){
+    syncState();
     var d = describeTorsion(theta);
     var e = energyAt(theta);
     var min = Math.min.apply(null, tor.energies);
@@ -223,7 +315,16 @@
       '<div class="tnote ' + (e - min < 0.05 ? 'tnote--good' : (e - min > 2 ? 'tnote--bad' : 'tnote--warn')) + '">' +
         '<span class="tnote__k">' + esc(d.name) + '</span>' + esc(d.detail) +
       '</div>' +
-      '<p class="tmuted" style="margin:0;">' + esc(tor.note) + '</p>';
+      '<p class="tmuted" style="margin:0;">' + esc(tor.note) + '</p>' +
+      /* The six values the curve passes through are the ones a textbook
+         prints; everything between them is a cosine through those points.
+         That was said in a source comment and nowhere a reader would see it,
+         which left the in-between numbers looking as precise as the six that
+         are real. */
+      '<p class="tmuted" style="margin:10px 0 0;font-size:11.5px;">' +
+        'The curve is pinned at the three eclipsed maxima and three staggered minima and interpolated smoothly ' +
+        'between them. Those six points are the real numbers; a reading at 37° is the shape of the curve, not a measurement.' +
+      '</p>';
   }
 
   /* ====================================================================== */
@@ -340,22 +441,65 @@
     return { total: total, terms: terms, axial: axialSubs };
   }
 
+  function syncState(){
+    if(!window.OchemToolState) return;
+    var m = document.getElementById('cfMode').querySelector('.on');
+    var mode = m ? m.getAttribute('data-mode') : 'newman';
+    window.OchemToolState.write({
+      tab: mode === 'newman' ? null : mode,
+      tor: (mode === 'newman' && tor && !tor.custom) ? tor.id : null,
+      f: (mode === 'newman' && tor && tor.custom) ? custFront.join('.') : null,
+      b: (mode === 'newman' && tor && tor.custom) ? custBack.join('.') : null,
+      deg: mode === 'newman' ? Math.round(theta) : null,
+      // Six slots as key:face, so a whole substitution pattern fits in a link.
+      ring: mode === 'chair'
+        ? ring.map(function(e){ return e ? e[0] + ':' + e[1] : ''; }).join(',').replace(/,+$/, '')
+        : null
+    });
+  }
+
   function renderChair(){
+    syncState();
     var here = buildChair(flipped);
     var other = buildChair(!flipped);
     var eHere = chairEnergy(here), eOther = chairEnergy(other);
 
     var fit = 52;
-    document.getElementById('cfChairStage').innerHTML =
-      '<svg viewBox="0 0 320 280" role="img" aria-label="Cyclohexane chair">' +
-      M3.render(here, { cx:160, cy:140, scale:fit, dist:11, rx:crx, ry:cry, labels:true, lonePairs:false }) +
-      '</svg>';
+
+    /* Both chairs, drawn. The tool used to show one and report the other as a
+       number, which quietly makes the flip an abstraction again — the whole
+       claim being made is that these are two different shapes of the same
+       molecule, and one picture plus one number does not show that. */
+    function stage(id, chair, label){
+      document.getElementById(id).innerHTML =
+        '<svg viewBox="0 0 320 280" role="img" aria-label="' + label + '">' +
+        M3.render(chair, { cx:160, cy:140, scale:fit, rx:crx, ry:cry, labels:true, lonePairs:false }) +
+        '</svg>';
+    }
+    stage('cfChairStage',  here,  'Cyclohexane chair, the one being detailed');
+    stage('cfChairStageB', other, 'Cyclohexane chair, after a ring flip');
 
     // Which chair wins, and by how much.
-    var lower = Math.min(eHere.total, eOther.total);
     var gap = Math.abs(eHere.total - eOther.total);
     var K = Math.exp(gap / RT);
     var pct = K / (1 + K) * 100;
+
+    /* The population split under each drawing, because that is the number the
+       question actually asks for and reading it off a single "at equilibrium"
+       figure means working out which chair it refers to. */
+    var hereWins = eHere.total <= eOther.total;
+    var pctHere = gap < 0.005 ? 50 : (hereWins ? pct : 100 - pct);
+    function cap(id, kcal, share, wins, tag){
+      document.getElementById(id).innerHTML =
+        '<div class="cf-pair__share' + (wins && gap >= 0.005 ? ' is-win' : '') + '">' +
+          share.toFixed(gap > 2 ? 2 : (gap < 0.005 ? 0 : 1)) + '%</div>' +
+        '<div class="cf-pair__kcal">' + kcal.toFixed(2) + ' kcal/mol</div>' +
+        '<div class="cf-pair__tag">' + tag + '</div>';
+    }
+    cap('cfCapA', eHere.total,  pctHere,       hereWins,  'detailed below');
+    cap('cfCapB', eOther.total, 100 - pctHere, !hereWins, 'after a flip');
+    document.getElementById('cfPairA').classList.toggle('is-win', hereWins && gap >= 0.005);
+    document.getElementById('cfPairB').classList.toggle('is-win', !hereWins && gap >= 0.005);
 
     var html = '<div class="tstat">' +
       '<div><div class="k">This chair</div><div class="v">' + eHere.total.toFixed(2) + ' <small>kcal/mol</small></div></div>' +
@@ -469,8 +613,14 @@
     '</div>' +
 
     '<div id="cfNewman">' +
-      '<div class="tpanel"><div class="tpanel__head">Pick a bond to rotate</div>' +
-        '<div class="tchips" id="cfTorPicker"></div></div>' +
+      '<div class="tpanel">' +
+        '<div class="tpanel__head">' +
+          '<span>Pick a bond to rotate</span>' +
+          '<button type="button" class="tchip tchip--ghost" id="cfTorBuildToggle">Build your own &rarr;</button>' +
+        '</div>' +
+        '<div class="tchips" id="cfTorPicker"></div>' +
+        '<div id="cfTorBuild" hidden></div>' +
+      '</div>' +
       '<div class="tsplit">' +
         '<div class="tpanel">' +
           '<div class="tpanel__head"><span>Looking down the bond</span><span class="tmuted" id="cfAngleOut"></span></div>' +
@@ -490,7 +640,7 @@
         '<div class="tpanel">' +
           '<div class="tpanel__head">Energy against angle</div>' +
           '<div class="cf-curve" id="cfCurve"></div>' +
-          '<div id="cfReadout" style="margin-top:12px;"></div>' +
+          '<div aria-live="polite" id="cfReadout" style="margin-top:12px;"></div>' +
         '</div>' +
       '</div>' +
     '</div>' +
@@ -500,18 +650,27 @@
         '<div class="tchips" id="cfPresets"></div></div>' +
       '<div class="tsplit">' +
         '<div class="tpanel">' +
-          '<div class="tpanel__head"><span>Drag to turn it</span><span class="tmuted">chair ' +
-            '<span id="cfWhich">A</span></span></div>' +
-          '<div class="v3-stage" id="cfChairStage"></div>' +
+          '<div class="tpanel__head"><span>Both chairs, side by side</span>' +
+            '<span class="tmuted">drag either one</span></div>' +
+          '<div class="cf-pair">' +
+            '<div class="cf-pair__one" id="cfPairA">' +
+              '<div class="v3-stage" id="cfChairStage"></div>' +
+              '<div class="cf-pair__cap" id="cfCapA"></div>' +
+            '</div>' +
+            '<div class="cf-pair__one" id="cfPairB">' +
+              '<div class="v3-stage" id="cfChairStageB"></div>' +
+              '<div class="cf-pair__cap" id="cfCapB"></div>' +
+            '</div>' +
+          '</div>' +
           '<div class="trow" style="margin-top:12px;">' +
-            '<button type="button" class="btn-press" id="cfFlip">Flip the ring</button>' +
+            '<button type="button" class="btn-press" id="cfFlip">Swap which one is detailed</button>' +
             '<button type="button" class="tchip" id="cfClear">Clear all</button>' +
           '</div>' +
           '<div id="cfRing" class="cf-ring"></div>' +
         '</div>' +
         '<div class="tpanel">' +
           '<div class="tpanel__head">What it costs</div>' +
-          '<div id="cfChairReadout"></div>' +
+          '<div aria-live="polite" id="cfChairReadout"></div>' +
         '</div>' +
       '</div>' +
     '</div>';
@@ -555,6 +714,60 @@
     });
   });
 
+  /* ---- Building your own torsion ----------------------------------------
+
+     Three groups on the front carbon and three on the back, which is the whole
+     of a Newman projection. The curve is recomputed as you change them, so the
+     question "what would happen if both of these were tert-butyl" has an
+     answer you can watch appear rather than one you have to be told. */
+  var custFront = ['Me','H','H'], custBack = ['Me','H','H'];
+
+  function renderTorBuild(){
+    var keys = Object.keys(SUBS);
+    function sel(side, i, cur){
+      return '<select class="tselect" data-side="' + side + '" data-i="' + i + '">' +
+        keys.map(function(k){
+          return '<option value="' + k + '"' + (k === cur ? ' selected' : '') + '>' +
+            esc(SUBS[k].label) + (SUBS[k].a ? ' (A ' + SUBS[k].a.toFixed(2) + ')' : '') + '</option>';
+        }).join('') + '</select>';
+    }
+    document.getElementById('cfTorBuild').innerHTML =
+      '<div class="cf-torbuild">' +
+        '<div><div class="cf-torbuild__k">Front carbon</div>' +
+          [0,1,2].map(function(i){ return sel('f', i, custFront[i]); }).join('') + '</div>' +
+        '<div><div class="cf-torbuild__k">Back carbon</div>' +
+          [0,1,2].map(function(i){ return sel('b', i, custBack[i]); }).join('') + '</div>' +
+      '</div>' +
+      '<p class="tmuted" style="margin:10px 0 0;">Ethane and butane come back at their textbook numbers. ' +
+      'Past methyl the eclipsing and gauche costs are extrapolated from A-values rather than measured — ' +
+      'the shape of the curve is right, the exact heights are an estimate.</p>';
+
+    document.getElementById('cfTorBuild').querySelectorAll('select').forEach(function(el){
+      el.addEventListener('change', function(){
+        var i = parseInt(el.getAttribute('data-i'), 10);
+        if(el.getAttribute('data-side') === 'f') custFront[i] = el.value;
+        else custBack[i] = el.value;
+        tor = customTorsion(custFront, custBack);
+        document.getElementById('cfTorPicker').querySelectorAll('.tchip').forEach(function(x){ x.classList.remove('on'); });
+        renderNewman();
+      });
+    });
+  }
+
+  document.getElementById('cfTorBuildToggle').addEventListener('click', function(){
+    var box = document.getElementById('cfTorBuild');
+    var open = box.hidden;
+    box.hidden = !open;
+    this.classList.toggle('on', open);
+    this.textContent = open ? 'Hide the builder' : 'Build your own →';
+    if(open){
+      renderTorBuild();
+      tor = customTorsion(custFront, custBack);
+      document.getElementById('cfTorPicker').querySelectorAll('.tchip').forEach(function(x){ x.classList.remove('on'); });
+      renderNewman();
+    }
+  });
+
   // --- chair wiring
   document.getElementById('cfPresets').innerHTML = PRESETS.map(function(p){
     return '<button type="button" class="tchip" data-id="' + esc(p.id) + '">' + esc(p.label) + '</button>';
@@ -574,7 +787,6 @@
 
   document.getElementById('cfFlip').addEventListener('click', function(){
     flipped = !flipped;
-    document.getElementById('cfWhich').textContent = flipped ? 'B' : 'A';
     renderChair();
   });
   document.getElementById('cfClear').addEventListener('click', function(){
@@ -583,25 +795,83 @@
     renderChair();
   });
 
-  // Dragging the chair, same gesture as the 3D viewer.
-  var chairStage = document.getElementById('cfChairStage');
+  /* Dragging either chair, same gesture as the 3D viewer. Both share one
+     orientation on purpose: comparing two shapes means comparing them from
+     the same angle, and letting them drift apart would make the flip look
+     like a rotation. */
   var dragging = false, lx = 0, ly = 0;
-  chairStage.addEventListener('pointerdown', function(e){
-    dragging = true; lx = e.clientX; ly = e.clientY;
-    chairStage.setPointerCapture(e.pointerId);
-    chairStage.classList.add('is-dragging');
-  });
-  chairStage.addEventListener('pointermove', function(e){
-    if(!dragging) return;
-    cry += (e.clientX - lx) * 0.011;
-    crx = Math.max(-1.45, Math.min(1.45, crx + (e.clientY - ly) * 0.011));
-    lx = e.clientX; ly = e.clientY;
-    renderChair();
-  });
-  ['pointerup','pointercancel'].forEach(function(ev){
-    chairStage.addEventListener(ev, function(){ dragging = false; chairStage.classList.remove('is-dragging'); });
+
+  ['cfChairStage', 'cfChairStageB'].forEach(function(id){
+    var stage = document.getElementById(id);
+    if(!stage) return;
+    stage.setAttribute('tabindex', '0');
+
+    stage.addEventListener('pointerdown', function(e){
+      dragging = true; lx = e.clientX; ly = e.clientY;
+      stage.setPointerCapture(e.pointerId);
+      stage.classList.add('is-dragging');
+    });
+    stage.addEventListener('pointermove', function(e){
+      if(!dragging) return;
+      cry += (e.clientX - lx) * 0.011;
+      crx = Math.max(-1.45, Math.min(1.45, crx + (e.clientY - ly) * 0.011));
+      lx = e.clientX; ly = e.clientY;
+      renderChair();
+    });
+    ['pointerup','pointercancel'].forEach(function(ev){
+      stage.addEventListener(ev, function(){
+        dragging = false;
+        stage.classList.remove('is-dragging');
+      });
+    });
+    // A chair you can only inspect with a mouse is a chair half the point of
+    // which is unavailable.
+    stage.addEventListener('keydown', function(e){
+      var step = 0.14;
+      if(e.key === 'ArrowLeft')       cry -= step;
+      else if(e.key === 'ArrowRight') cry += step;
+      else if(e.key === 'ArrowUp')    crx = Math.max(-1.45, crx - step);
+      else if(e.key === 'ArrowDown')  crx = Math.min(1.45, crx + step);
+      else return;
+      e.preventDefault();
+      renderChair();
+    });
   });
 
+  /* ---- Restoring a link --------------------------------------------------- */
+  if(window.OchemToolState){
+    var q = window.OchemToolState.read();
+    if(q.ring){
+      q.ring.split(',').forEach(function(slot, i){
+        if(i > 5 || !slot) return;
+        var bits = slot.split(':');
+        if(SUBS[bits[0]]) ring[i] = [bits[0], bits[1] === 'down' ? 'down' : 'up'];
+      });
+    }
+    if(q.f && q.b){
+      custFront = q.f.split('.').slice(0, 3);
+      custBack = q.b.split('.').slice(0, 3);
+      if(custFront.every(function(k){ return SUBS[k]; }) && custBack.every(function(k){ return SUBS[k]; })){
+        document.getElementById('cfTorBuildToggle').click();
+      }
+    } else if(q.tor){
+      TORSIONALS.forEach(function(t){ if(t.id === q.tor) tor = t; });
+      document.getElementById('cfTorPicker').querySelectorAll('.tchip').forEach(function(x){
+        x.classList.toggle('on', x.getAttribute('data-id') === q.tor);
+      });
+    }
+    if(q.deg){
+      theta = Math.max(0, Math.min(360, parseInt(q.deg, 10) || 60));
+      var slider = document.getElementById('cfAngle');
+      if(slider) slider.value = theta;
+    }
+    if(q.tab === 'chair'){
+      var cb = document.getElementById('cfMode').querySelector('[data-mode="chair"]');
+      if(cb) cb.click();
+    }
+  }
+
   renderNewman();
+  renderRingControls();
   renderChair();
 })();

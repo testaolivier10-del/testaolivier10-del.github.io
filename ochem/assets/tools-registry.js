@@ -6,9 +6,15 @@
    goes stale — the failure mode this replaces is a hub that quietly stops
    listing a tool that exists.
 
-   `topic` names the curriculum topic the tool belongs to, in curriculum.js's
-   vocabulary, so a tool can point back at the lesson that teaches it rather
-   than floating free of the course. */
+   `topic` lists the curriculum topics a tool belongs to, in curriculum.js's
+   vocabulary, so a tool can point back at the lessons that teach it rather
+   than floating free of the course.
+
+   Two of these used to be ids that do not exist — 'conformations' and
+   'sn1-sn2' were never topics, they were what the topics felt like they ought
+   to be called — which nothing noticed because nothing read the field. Checked
+   against curriculum.js now, and an array, because a tool that covers SN1 and
+   SN2 and E1 and E2 was never going to fit in one. */
 (function(){
 
   /* Line marks rather than emoji: they inherit currentColor, so they work in
@@ -46,63 +52,63 @@
       name: 'Arrow Pusher',
       icon: ICONS.arrow,
       tagline: 'Draw a mechanism and watch what it makes.',
-      blurb: 'Push electrons on any molecule and the structure changes to match — bonds break, charges appear, fragments separate. Nothing is graded, but nothing is faked either: an arrow that would put ten electrons on a carbon gets told so.',
+      blurb: 'Push electrons on any molecule — one of twenty, or one you drew — and the structure changes to match. Commit a step and carry on from its product, because mechanisms are three and four steps long. Nothing is graded and nothing is faked: an arrow that would put ten electrons on a carbon is told so, and one that merely makes a primary carbocation is told that too.',
       teaches: 'Curved arrows, formal charge, octets',
-      topic: 'sn2'
+      topic: ['curved-arrows', 'sn2', 'formal-charge']
     },
     {
       slug: 'resonance',
       name: 'Resonance Explorer',
       icon: ICONS.resonance,
       tagline: 'Find every valid resonance form, and rank them.',
-      blurb: 'Move a lone pair or a pi bond and the tool checks whether what you drew is a genuine resonance structure or a different molecule. It knows how many forms exist, so you can hunt for the ones you missed — then see which contributes most and why.',
+      blurb: 'Move a lone pair or a pi bond and the tool checks whether what you drew is a genuine resonance structure or a different molecule. It works out how many forms exist rather than looking them up, so it does it for any species you build — and a second mode puts two side by side and asks which is more stabilized.',
       teaches: 'Delocalization, contributor weighting',
-      topic: 'resonance'
+      topic: ['resonance', 'conjugate']
     },
     {
       slug: 'viewer-3d',
       name: '3D Molecule Viewer',
       icon: ICONS.cube,
       tagline: 'Rotate it until the shape stops being abstract.',
-      blurb: 'Real VSEPR geometry you can turn with a drag. Bond angles on demand, lone pairs you can show or hide, and a running readout of steric number and shape — because "trigonal pyramidal" means very little until you have looked down at one.',
+      blurb: 'Type a formula, or draw a structure, and watch the flat drawing fold into the shape it really has. Lit, shaded and shadowed, with space-filling and wireframe modes, angles measured off the coordinates on screen, and a readout of steric number and shape — because "trigonal pyramidal" means very little until you have looked down at one.',
       teaches: 'VSEPR, hybridization, stereochemistry',
-      topic: 'molecular-geometry'
+      topic: ['molecular-geometry', 'hybridization', 'bonding']
     },
     {
       slug: 'conformations',
       name: 'Conformation Lab',
       icon: ICONS.chair,
       tagline: 'Turn the bond. Watch the energy.',
-      blurb: 'Rotate a Newman projection through 360° against a live energy curve, or put substituents on a cyclohexane and flip the chair to see which one wins. Strain stops being a table of numbers when the number moves as you turn the bond.',
+      blurb: 'Rotate a Newman projection through 360° against a live energy curve — built from the groups you choose, not a fixed list — or substitute a cyclohexane and see both chairs at once with the population split under each. Strain stops being a table of numbers when the number moves as you turn the bond.',
       teaches: 'Torsional strain, A-values, chair flips',
-      topic: 'conformations'
+      topic: ['conformational-analysis', 'newman', 'ring-flips']
     },
     {
       slug: 'reaction-predictor',
       name: 'Reaction Predictor',
       icon: ICONS.flask,
       tagline: 'SN1, SN2, E1 or E2 — and why, factor by factor.',
-      blurb: 'Pick a substrate, a reagent and a solvent, commit to a prediction, then see the decision broken into the four things that actually decide it. The point is not the answer; it is which factor overruled which.',
+      blurb: 'Pick a substrate — or draw one — add a reagent and a solvent, commit to a prediction, then see the decision broken into the four things that actually decide it, plus how lopsided the resulting mixture is. The point is not the answer; it is which factor overruled which.',
       teaches: 'Substitution vs. elimination',
-      topic: 'sn1-sn2'
+      topic: ['sn1', 'sn2', 'e1', 'e2']
     },
     {
       slug: 'acid-base',
       name: 'Acid/Base Comparator',
       icon: ICONS.scale,
       tagline: 'Two structures. Which proton comes off first?',
-      blurb: 'Put any two acids side by side, call it, and get the comparison broken down the way you are supposed to reason about it — atom, resonance, induction, orbital — with both conjugate bases drawn so you can see where the charge went.',
+      blurb: 'Put two acids side by side, rank four at once, or take a single molecule and work out which of its protons comes off first. Every verdict comes from the measured pKa and every explanation from atom, resonance, induction and orbital in that order — and the tool says so plainly on the occasions those two disagree.',
       teaches: 'pKa, conjugate base stability',
-      topic: 'acidity-factors'
+      topic: ['acidity-factors', 'pka', 'conjugate']
     },
     {
       slug: 'spectroscopy',
       name: 'Spectroscopy Lab',
       icon: ICONS.wave,
       tagline: 'Read the peaks, name the compound.',
-      blurb: 'An IR spectrum whose regions explain themselves, a ¹H NMR predictor that shows you why each signal splits the way it does, and a puzzle mode that hands you a spectrum and makes you work backwards to the structure.',
+      blurb: 'An IR spectrum whose regions explain themselves, a ¹H NMR predictor that will take any structure you draw and show why each signal splits the way it does, and a puzzle mode that hands you a spectrum and makes you work back to the structure — by drawing it, if you want the harder version.',
       teaches: 'IR, ¹H NMR, degrees of unsaturation',
-      topic: 'spectroscopy'
+      topic: ['ir', 'h-nmr', 'mass-spec']
     }
   ];
 

@@ -98,6 +98,68 @@
     return out.slice(0, count);
   }
 
+  /* Trigonal planar and linear completions, so a builder can place an sp²
+     or sp centre without the tetrahedral construction quietly bending a
+     carbonyl. `ref` is an optional plane normal: without it, a chain grown
+     one atom at a time picks an arbitrary perpendicular at every step and
+     comes out as a spiral instead of the flat zig-zag it should be. */
+  function completeTrigonal(existing, count, ref){
+    var out = [];
+    var n = ref ? norm(ref) : v(0, 0, 1);
+
+    if(existing.length === 0){
+      var seed = norm(cross(n, Math.abs(n.x) < 0.9 ? v(1,0,0) : v(0,1,0)));
+      for(var i=0;i<count;i++) out.push(norm(rotateAbout(seed, n, i * 2*Math.PI/3)));
+      return out;
+    }
+
+    if(existing.length === 1){
+      var e = norm(existing[0]);
+      // Keep the new directions in the plane the caller asked for, unless the
+      // existing bond already defines one that contradicts it.
+      var axis = Math.abs(dot(e, n)) > 0.95 ? perpendicular(e) : norm(cross(e, n));
+      /* 60° off the REVERSE of the existing bond, which puts each new
+         direction 120° from it — the same off-by-a-reversal that the
+         tetrahedral case warns about, and just as easy to get wrong: 30° here
+         looks plausible and gives a 150° carbonyl. */
+      out.push(norm(rotateAbout(mul(e, -1), axis,  Math.PI/3)));
+      if(count > 1) out.push(norm(rotateAbout(mul(e, -1), axis, -Math.PI/3)));
+      return out.slice(0, count);
+    }
+
+    var s = existing.reduce(function(acc, x){ return add(acc, norm(x)); }, v(0,0,0));
+    out.push(norm(mul(s, -1)));
+    return out.slice(0, count);
+  }
+
+  function completeLinear(existing, count){
+    if(existing.length === 0) return [v(1,0,0), v(-1,0,0)].slice(0, count);
+    return [norm(mul(existing[0], -1))].slice(0, count);
+  }
+
+  /* One entry point over the three, chosen by steric number — which is what a
+     caller walking a structure actually knows. */
+  function completeGeometry(existing, count, steric, ref){
+    if(steric <= 2) return completeLinear(existing, count);
+    if(steric === 3) return completeTrigonal(existing, count, ref);
+    return completeTetrahedral(existing, count);
+  }
+
+  /* Covalent radii in ångström. A bond length is the sum of the two, pulled in
+     for higher orders — close enough that a built molecule measures right when
+     the viewer reports its angles, and far cheaper than a length table with an
+     entry per pair. */
+  var COVALENT = {
+    H:0.31, B:0.84, C:0.76, N:0.71, O:0.66, F:0.57, Si:1.11, P:1.07,
+    S:1.05, Cl:1.02, Br:1.20, I:1.39, Li:1.28, Na:1.66, Mg:1.41
+  };
+  function bondLength(elA, elB, order){
+    var r = (COVALENT[elA] || 0.77) + (COVALENT[elB] || 0.77);
+    if(order === 2) return r - 0.12;
+    if(order === 3) return r - 0.22;
+    return r;
+  }
+
   /* Ring of n atoms in a plane, or puckered when `pucker` is given — the
      chair is just a hexagon with alternating z. */
   function ringPoints(n, radius, pucker){
@@ -170,9 +232,16 @@
       /* An sp² centre's third substituent is in the plane of the other two,
          not tilted out of it: a benzene hydrogen generated tetrahedrally
          would stick out of the ring. */
-      var dirs = f.planar
-        ? [norm(mul(existing.reduce(function(acc, e){ return add(acc, norm(e)); }, v(0,0,0)), -1))]
-        : completeTetrahedral(existing, need);
+      /* `geom` is the centre's electron-group count, and when a caller knows
+         it the hydrogens follow the same geometry as the heavy atoms. Without
+         it every fill was tetrahedral, which is right for most of a library
+         typed by hand and wrong for every sp² and sp centre a builder makes —
+         ethene came out with 109.5° hydrogens on a 120° carbon. */
+      var dirs = f.geom
+        ? completeGeometry(existing, need, f.geom)
+        : (f.planar
+            ? [norm(mul(existing.reduce(function(acc, e){ return add(acc, norm(e)); }, v(0,0,0)), -1))]
+            : completeTetrahedral(existing, need));
 
       for(var i=0;i<(f.h || 0);i++){
         atoms.push({ el:'H', pos: add(centre.pos, mul(dirs[i], f.len || 1.09)), lp:0, label:'H' });
@@ -258,10 +327,72 @@
 
   /* ---- Rendering ---------------------------------------------------------
 
-     Rotate, project, sort back to front, emit. Atoms nearer the camera are
-     drawn larger and last; bonds are split at the midpoint so each half takes
-     its own atom's colour, which is what makes a C–O bond legible without a
-     legend. */
+     The projection was always real — a rotation matrix, a perspective divide
+     and a depth sort. What it lacked was any reason for the eye to believe
+     it. A flat-filled circle is a disc no matter how correctly it has been
+     projected, and size alone is the weakest depth cue there is.
+
+     So three things do the persuading now, none of them touching the maths.
+     Every sphere is lit: a radial gradient with the highlight up and to the
+     left, which is the difference between a disc and a ball. Everything fades
+     with distance — toward the page rather than toward a colour, so it works
+     in both themes without knowing which one is on. And a soft ellipse sits
+     under the molecule, because an object with a shadow is standing on
+     something and an object without one is floating in a diagram.
+
+     Three modes, because the same molecule answers different questions.
+     Ball-and-stick is the reading view. Space-filling draws atoms at van der
+     Waals radius, which is the only honest way to show why a tert-butyl group
+     blocks an approach — the sticks version makes every substituent look like
+     it has room. Wireframe strips it back to bonds when the spheres are in
+     the way of seeing the skeleton. */
+
+  /* Van der Waals radii in ångström, for space-filling. These are the real
+     ones; STYLE.r above is a drawing radius chosen to keep hydrogens visible,
+     and using it here would defeat the entire point of the mode. */
+  var VDW = {
+    H:1.10, C:1.70, N:1.55, O:1.52, F:1.47, Cl:1.75, Br:1.85,
+    I:1.98, S:1.80, P:1.80, B:1.92, Li:1.82, Na:2.27, Mg:1.73, Si:2.10
+  };
+  function vdwOf(el){ return VDW[el] || 1.70; }
+
+  /* Lighten (amt > 0) or darken (amt < 0) a #rrggbb toward white or black.
+     Used to build the two ends of each sphere's gradient from its one colour,
+     so adding an element to STYLE needs no second and third colour by hand. */
+  function shift(hex, amt){
+    var h = String(hex).replace('#','');
+    if(h.length === 3) h = h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
+    var n = parseInt(h, 16);
+    var r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+    function mix(c){
+      return Math.round(amt > 0 ? c + (255 - c) * amt : c * (1 + amt));
+    }
+    return '#' + [mix(r), mix(g), mix(b)].map(function(c){
+      return ('0' + Math.max(0, Math.min(255, c)).toString(16)).slice(-2);
+    }).join('');
+  }
+
+  /* One gradient per colour, named after the colour, so two viewers on the
+     same page collide on identical definitions rather than on different ones
+     — which is a no-op instead of a bug. */
+  function gradIdFor(color){ return 'm3dg-' + String(color).replace(/[^0-9a-zA-Z]/g, ''); }
+
+  function defsFor(mol){
+    var seen = {}, out = '';
+    mol.atoms.forEach(function(a){
+      var c = styleFor(a).color;
+      if(seen[c]) return;
+      seen[c] = 1;
+      out +=
+        '<radialGradient id="' + gradIdFor(c) + '" cx="34%" cy="28%" r="74%">' +
+          '<stop offset="0%" stop-color="' + shift(c, 0.52) + '"/>' +
+          '<stop offset="48%" stop-color="' + c + '"/>' +
+          '<stop offset="100%" stop-color="' + shift(c, -0.42) + '"/>' +
+        '</radialGradient>';
+    });
+    return '<defs>' + out + '</defs>';
+  }
+
   function project(p, rx, ry, opt){
     // Y first (turntable), then X (tilt) — the pair a drag maps onto.
     var c1 = Math.cos(ry), s1 = Math.sin(ry);
@@ -276,45 +407,100 @@
 
   function render(mol, opt){
     opt = opt || {};
+    var mode = opt.mode || 'ball';
     var o = {
       cx: opt.cx === undefined ? 160 : opt.cx,
       cy: opt.cy === undefined ? 150 : opt.cy,
       scale: opt.scale || 52,
-      dist: opt.dist || 9,
+      /* Was 9, which is very nearly an orthographic camera: turning the
+         molecule changed the outline but never the sense of near and far.
+         6.2 is close enough for the front of a ring to grow visibly as it
+         comes round, and still far enough not to bend a benzene. */
+      dist: opt.dist || 6.2,
       rx: opt.rx || 0, ry: opt.ry || 0
     };
 
     var pts = mol.atoms.map(function(a){ return project(a.pos, o.rx, o.ry, o); });
     var items = [];
 
-    mol.bonds.forEach(function(b){
-      var pa = pts[b.a], pb = pts[b.b];
-      var sa = styleFor(mol.atoms[b.a]), sb = styleFor(mol.atoms[b.b]);
-      var mid = { x:(pa.x+pb.x)/2, y:(pa.y+pb.y)/2 };
-      var z = (pa.z + pb.z) / 2;
-      var w = 7 * ((pa.k + pb.k) / 2);
+    /* Depth is mapped across whatever range this molecule actually occupies,
+       not a fixed one: water would otherwise use a sliver of the fade and
+       come out uniformly flat. */
+    var zmin = Infinity, zmax = -Infinity;
+    pts.forEach(function(p){
+      if(p.z < zmin) zmin = p.z;
+      if(p.z > zmax) zmax = p.z;
+    });
+    var zspan = (zmax - zmin) || 1;
+    /* Space-filling spheres overlap almost completely, and at the fade the
+       other modes use the back atoms show THROUGH the front ones — which reads
+       as glass rather than as distance, and glass is not a fact about the
+       molecule. So space-filling does not fade at all: it gets its depth from
+       occlusion, which is the strongest cue there is — a sphere in front of
+       another sphere simply hides it — plus the perspective growth and the
+       shading. Fading would only let the hidden atoms show through again. */
+    var floor = mode === 'space' ? 1 : 0.58;
+    function fade(z){
+      var t = (z - zmin) / zspan;            // 0 at the back, 1 at the front
+      return (floor + (1 - floor) * t).toFixed(3);
+    }
 
-      // Offsets for a double or triple bond, perpendicular in screen space.
-      var dx = pb.x - pa.x, dy = pb.y - pa.y;
-      var l = Math.sqrt(dx*dx + dy*dy) || 1;
-      var nx = -dy/l * w * 0.62, ny = dx/l * w * 0.62;
-      var offs = b.order === 2 ? [-0.5, 0.5] : (b.order === 3 ? [-1, 0, 1] : [0]);
-      var sw = b.order > 1 ? w * 0.58 : w;
+    /* The shadow goes down first, under everything. It is drawn in screen
+       space from the molecule's own projected width rather than as a real
+       cast shadow — nobody is lighting this scene, and the job is only to say
+       "this object is sitting somewhere", which an ellipse does. */
+    if(opt.shadow !== false){
+      var minX = Infinity, maxX = -Infinity, maxY = -Infinity;
+      pts.forEach(function(p, i){
+        var rr = (mode === 'space' ? vdwOf(mol.atoms[i].el) * 0.5 : styleFor(mol.atoms[i]).r) * o.scale * p.k;
+        if(p.x - rr < minX) minX = p.x - rr;
+        if(p.x + rr > maxX) maxX = p.x + rr;
+        if(p.y + rr > maxY) maxY = p.y + rr;
+      });
+      var w = Math.max(18, (maxX - minX) * 0.42);
+      items.push({ z: -Infinity, svg:
+        '<ellipse cx="' + ((minX + maxX) / 2).toFixed(1) + '" cy="' + (maxY + 16).toFixed(1) +
+        '" rx="' + w.toFixed(1) + '" ry="' + (w * 0.17).toFixed(1) + '" ' +
+        'fill="var(--ink)" opacity="0.10"/>'
+      });
+    }
 
-      offs.forEach(function(f){
-        var ox = nx*f, oy = ny*f;
-        items.push({ z: z, svg:
-          '<line x1="' + (pa.x+ox).toFixed(1) + '" y1="' + (pa.y+oy).toFixed(1) +
-          '" x2="' + (mid.x+ox).toFixed(1) + '" y2="' + (mid.y+oy).toFixed(1) +
-          '" stroke="' + sa.color + '" stroke-width="' + sw.toFixed(1) + '" stroke-linecap="round"/>' +
-          '<line x1="' + (mid.x+ox).toFixed(1) + '" y1="' + (mid.y+oy).toFixed(1) +
-          '" x2="' + (pb.x+ox).toFixed(1) + '" y2="' + (pb.y+oy).toFixed(1) +
-          '" stroke="' + sb.color + '" stroke-width="' + sw.toFixed(1) + '" stroke-linecap="round"/>'
+    /* Space-filling hides the sticks: at van der Waals radius the spheres
+       are already touching, and a bond drawn through them would only be
+       visible where the surface it is meant to connect has a gap. */
+    if(mode !== 'space'){
+      mol.bonds.forEach(function(b){
+        var pa = pts[b.a], pb = pts[b.b];
+        var sa = styleFor(mol.atoms[b.a]), sb = styleFor(mol.atoms[b.b]);
+        var mid = { x:(pa.x+pb.x)/2, y:(pa.y+pb.y)/2 };
+        var z = (pa.z + pb.z) / 2;
+        var w = (mode === 'wire' ? 3.4 : 7) * ((pa.k + pb.k) / 2);
+
+        // Offsets for a double or triple bond, perpendicular in screen space.
+        var dx = pb.x - pa.x, dy = pb.y - pa.y;
+        var l = Math.sqrt(dx*dx + dy*dy) || 1;
+        var nx = -dy/l * w * 0.62, ny = dx/l * w * 0.62;
+        var offs = b.order === 2 ? [-0.5, 0.5] : (b.order === 3 ? [-1, 0, 1] : [0]);
+        var sw = b.order > 1 ? w * 0.58 : w;
+        var op = fade(z);
+
+        offs.forEach(function(f){
+          var ox = nx*f, oy = ny*f;
+          items.push({ z: z, svg:
+            '<g opacity="' + op + '">' +
+            '<line x1="' + (pa.x+ox).toFixed(1) + '" y1="' + (pa.y+oy).toFixed(1) +
+            '" x2="' + (mid.x+ox).toFixed(1) + '" y2="' + (mid.y+oy).toFixed(1) +
+            '" stroke="' + sa.color + '" stroke-width="' + sw.toFixed(1) + '" stroke-linecap="round"/>' +
+            '<line x1="' + (mid.x+ox).toFixed(1) + '" y1="' + (mid.y+oy).toFixed(1) +
+            '" x2="' + (pb.x+ox).toFixed(1) + '" y2="' + (pb.y+oy).toFixed(1) +
+            '" stroke="' + sb.color + '" stroke-width="' + sw.toFixed(1) + '" stroke-linecap="round"/>' +
+            '</g>'
+          });
         });
       });
-    });
+    }
 
-    if(opt.lonePairs){
+    if(opt.lonePairs && mode !== 'space'){
       mol.atoms.forEach(function(a, i){
         (a.lpDirs || []).forEach(function(d){
           var base = add(a.pos, mul(norm(d), styleFor(a).r + 0.42));
@@ -325,8 +511,10 @@
           var l = Math.sqrt(vx*vx + vy*vy) || 1;
           var ox = -vy/l * 4.2 * p.k, oy = vx/l * 4.2 * p.k;
           items.push({ z: p.z, svg:
+            '<g opacity="' + fade(p.z) + '">' +
             '<circle cx="' + (p.x+ox).toFixed(1) + '" cy="' + (p.y+oy).toFixed(1) + '" r="' + (2.4*p.k).toFixed(1) + '" fill="var(--muted)"/>' +
-            '<circle cx="' + (p.x-ox).toFixed(1) + '" cy="' + (p.y-oy).toFixed(1) + '" r="' + (2.4*p.k).toFixed(1) + '" fill="var(--muted)"/>'
+            '<circle cx="' + (p.x-ox).toFixed(1) + '" cy="' + (p.y-oy).toFixed(1) + '" r="' + (2.4*p.k).toFixed(1) + '" fill="var(--muted)"/>' +
+            '</g>'
           });
         });
       });
@@ -334,13 +522,23 @@
 
     mol.atoms.forEach(function(a, i){
       var p = pts[i], s = styleFor(a);
-      var r = s.r * o.scale * p.k * 0.86;
       var selected = opt.selected === i;
-      var fontSize = Math.max(8, r * 0.92);
+
+      /* Wireframe keeps a small node so an atom is still a click target and
+         still carries its letter; it just stops pretending to have volume. */
+      var r = mode === 'space'
+        ? vdwOf(a.el) * o.scale * p.k * 0.50
+        : (mode === 'wire' ? Math.max(5, s.r * o.scale * p.k * 0.38)
+                           : s.r * o.scale * p.k * 0.86);
+
+      var fontSize = Math.max(8, r * (mode === 'space' ? 0.55 : 0.92));
+      var fill = (mode === 'wire' && !opt.flat) ? s.color : 'url(#' + gradIdFor(s.color) + ')';
+
       items.push({ z: p.z, svg:
-        '<g class="m3d-atom' + (selected ? ' is-selected' : '') + '" data-atom="' + i + '" tabindex="0" role="button" aria-label="' + a.el + '">' +
-          '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="' + r.toFixed(1) + '" fill="' + s.color + '"' +
-            (selected ? ' stroke="var(--accent)" stroke-width="3.5"' : ' stroke="rgba(0,0,0,.18)" stroke-width="1"') + '/>' +
+        '<g class="m3d-atom' + (selected ? ' is-selected' : '') + '" data-atom="' + i + '" tabindex="0" role="button" ' +
+          'aria-label="' + a.el + '" opacity="' + fade(p.z) + '">' +
+          '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="' + r.toFixed(1) + '" fill="' + fill + '"' +
+            (selected ? ' stroke="var(--accent)" stroke-width="3.5"' : ' stroke="' + shift(s.color, -0.45) + '" stroke-width="1"') + '/>' +
           (opt.labels && r > 7
             ? '<text x="' + p.x.toFixed(1) + '" y="' + (p.y + fontSize*0.35).toFixed(1) + '" text-anchor="middle" ' +
               'font-size="' + fontSize.toFixed(1) + '" font-weight="800" fill="' + s.ink + '" pointer-events="none">' + a.label + '</text>'
@@ -350,7 +548,7 @@
     });
 
     items.sort(function(x, y){ return x.z - y.z; });
-    return items.map(function(it){ return it.svg; }).join('');
+    return defsFor(mol) + items.map(function(it){ return it.svg; }).join('');
   }
 
   window.OchemMol3D = {
@@ -358,8 +556,12 @@
     angleBetween: angleBetween,
     ringPoints: ringPoints,
     completeTetrahedral: completeTetrahedral,
+    completeTrigonal: completeTrigonal,
+    completeGeometry: completeGeometry,
+    bondLength: bondLength,
     styleOf: styleOf,
     styleFor: styleFor,
+    vdwOf: vdwOf,
     build: build,
     analyse: analyse,
     render: render,

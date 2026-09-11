@@ -89,6 +89,86 @@
      electronegativity decides; down a column size does, and size wins when
      the two conflict — which is why H₂S beats H₂O. The number is a rank, not
      a measurement: bigger means better at holding the charge. */
+  /* ---- Molecules with more than one acidic hydrogen -----------------------
+
+     Every comparison above is between two molecules. The question a problem
+     set actually asks is about one: "circle the most acidic proton". That is a
+     different skill — you are not ranking compounds, you are ranking sites
+     inside a single structure, and the factors have to be applied to each site
+     in turn rather than to the molecule as a whole.
+
+     Values marked `approx` are the ones a table gives as a range rather than a
+     number; they are shown with a tilde, because an alpha C–H quoted to two
+     decimals would be a precision nobody has. */
+  var MULTI = [
+    {
+      id:'glycine', name:'Glycine (protonated)', formula:'⁺H₃N–CH₂–COOH',
+      note:'The classic amino acid question, and the one people get backwards by reasoning about the nitrogen first. Both sites are charged; the question is which one gives up a proton more readily.',
+      sites:[
+        { label:'COOH', pKa:2.35, why:'A carboxylic acid. Losing this proton gives a carboxylate with the charge split evenly over two oxygens — and it also neutralizes nothing, because the nitrogen stays positive.' },
+        { label:'⁺NH₃', pKa:9.78, why:'An ammonium. Losing this proton gives a neutral amine, with no resonance help at all — nitrogen simply holds the lone pair. Nearly eight pKa units harder than the acid group.' }
+      ]
+    },
+    {
+      id:'salicylic', name:'Salicylic acid', formula:'2-HO–C₆H₄–COOH',
+      note:'Both an acid and a phenol on the same ring. One of them is ten orders of magnitude more acidic than the other, and it is not close.',
+      sites:[
+        { label:'COOH', pKa:2.97, why:'The carboxylic acid, made stronger than benzoic acid’s by the neighbouring OH, which hydrogen-bonds to the carboxylate and holds the charge in place.' },
+        { label:'phenol OH', pKa:13.6, why:'The phenol, made much WEAKER than ordinary phenol by the same hydrogen bond — that OH is busy donating to the carboxylate, and taking its proton means breaking that.' }
+      ]
+    },
+    {
+      id:'hydroxybenzoic', name:'4-hydroxybenzoic acid', formula:'HO–C₆H₄–COOH',
+      note:'The same two groups as salicylic acid, moved to opposite ends of the ring so they cannot reach each other. Watch what happens to both numbers.',
+      sites:[
+        { label:'COOH', pKa:4.58, why:'An ordinary benzoic acid, very slightly weakened by the electron-donating OH across the ring.' },
+        { label:'phenol OH', pKa:9.46, why:'An ordinary phenol, strengthened a little by the carboxylic acid pulling from the far side. With no hydrogen bond between them, both groups behave almost normally.' }
+      ]
+    },
+    {
+      id:'cysteine', name:'Cysteine (protonated)', formula:'⁺H₃N–CH(CH₂SH)–COOH',
+      note:'Three sites, and the middle one is the interesting one — a thiol sitting between a carboxylic acid and an ammonium.',
+      sites:[
+        { label:'COOH', pKa:1.92, why:'The carboxylic acid, and the first to go as always.' },
+        { label:'SH', pKa:8.37, why:'The thiol. Sulfur is less electronegative than oxygen and still far more acidic than any alcohol, because the anion is large and the charge is spread thinly over it.' },
+        { label:'⁺NH₃', pKa:10.70, why:'The ammonium, last. Nothing stabilizes the neutral amine that results.' }
+      ]
+    },
+    {
+      id:'malonic', name:'Malonic acid', formula:'HOOC–CH₂–COOH',
+      note:'Two identical carboxylic acids and the α C–H between them. Identical groups, very different numbers — because taking the first proton changes the molecule the second one has to leave.',
+      sites:[
+        { label:'first COOH', pKa:2.83, why:'Stronger than acetic acid: the second carboxyl group pulls inductively on the carboxylate being formed.' },
+        { label:'second COOH', pKa:5.69, why:'Weaker than acetic acid. The molecule already carries a negative charge, and pulling a second proton off means putting two like charges close together.' },
+        { label:'α C–H', pKa:13, approx:true, why:'The carbon between them. Delocalized onto two carbonyls at once, which is what makes a malonate carbon acid usable — but still ten orders of magnitude behind the acids themselves.' }
+      ]
+    },
+    {
+      id:'acetoacetate', name:'Ethyl acetoacetate', formula:'CH₃CO–CH₂–CO₂Et',
+      note:'No O–H anywhere. Both candidates are carbon acids, which is the point: the question is not "which atom" but "which carbon".',
+      sites:[
+        { label:'central CH₂', pKa:10.7, why:'Between a ketone and an ester. The carbanion is delocalized onto two carbonyl oxygens, which is worth roughly ten pKa units over a simple ketone — and puts it in reach of ordinary bases.' },
+        { label:'terminal CH₃', pKa:20, approx:true, why:'On the far side of the ketone. It has one carbonyl to delocalize onto instead of two, which is a simple ketone alpha proton and nothing more.' }
+      ]
+    },
+    {
+      id:'pentanedione2', name:'2,4-pentanedione', formula:'CH₃CO–CH₂–COCH₃',
+      note:'Two ketones rather than a ketone and an ester, and it shows.',
+      sites:[
+        { label:'central CH₂', pKa:8.9, why:'Between two ketones. More acidic than phenol — a carbon acid you can deprotonate with hydroxide, which is a sentence most students do not believe the first time.' },
+        { label:'terminal CH₃', pKa:20, approx:true, why:'An ordinary ketone alpha position with one carbonyl to work with.' }
+      ]
+    },
+    {
+      id:'aceticmulti', name:'Acetic acid', formula:'CH₃–COOH',
+      note:'The one nobody thinks of as having two sites. It does, and the gap between them is about twenty orders of magnitude.',
+      sites:[
+        { label:'O–H', pKa:4.76, why:'The carboxylic acid proton. Charge split between two equivalent oxygens.' },
+        { label:'α C–H', pKa:24, approx:true, why:'The methyl. It is next to a carbonyl, so it is not hopeless — but that carbonyl is already busy being half of a carboxylate, and a carbon acid next to an acid group is nothing like one next to a ketone.' }
+      ]
+    }
+  ];
+
   var ATOM_RANK = { C:0, N:1, O:2, F:3, S:4, Cl:5, Br:6, I:7 };
   var ATOM_WHY = {
     C:'carbon', N:'nitrogen', O:'oxygen', F:'fluorine', S:'sulfur', Cl:'chlorine', Br:'bromine', I:'iodine'
@@ -218,6 +298,7 @@
         '<div class="tseg" id="abMode">' +
           '<button type="button" data-mode="pair" class="on">Compare two</button>' +
           '<button type="button" data-mode="rank">Rank four</button>' +
+          '<button type="button" data-mode="site">Which proton?</button>' +
         '</div>' +
         '<span class="tmuted" id="abScore"></span>' +
       '</div>' +
@@ -235,7 +316,7 @@
       '<div class="tpanel">' +
         '<div class="tpanel__head">Which loses its proton more easily?</div>' +
         '<div class="tchips" id="abGuess"></div>' +
-        '<div id="abVerdict" style="margin-top:14px;"></div>' +
+        '<div aria-live="polite" id="abVerdict" style="margin-top:14px;"></div>' +
       '</div>' +
       '<div class="tpanel">' +
         '<div class="tpanel__head">Atom, resonance, induction, orbital</div>' +
@@ -249,7 +330,19 @@
           '<button type="button" class="tchip" id="abNewRank">New set</button></div>' +
         '<div class="tchips" id="abRankPool"></div>' +
         '<div class="ab-order" id="abRankOrder"></div>' +
-        '<div id="abRankVerdict"></div>' +
+        '<div aria-live="polite" id="abRankVerdict"></div>' +
+      '</div>' +
+    '</div>' +
+
+    '<div id="abSite" hidden>' +
+      '<div class="tpanel">' +
+        '<div class="tpanel__head"><span>One molecule, several acidic hydrogens</span>' +
+          '<select class="tselect" id="abSiteSel"></select></div>' +
+        '<div class="ab-site__formula" id="abSiteFormula"></div>' +
+        '<p class="tmuted" id="abSiteNote"></p>' +
+        '<div class="tpanel__head" style="margin-top:8px;">Which one comes off first?</div>' +
+        '<div class="tchips" id="abSiteGuess"></div>' +
+        '<div aria-live="polite" id="abSiteVerdict" style="margin-top:14px;"></div>' +
       '</div>' +
     '</div>';
 
@@ -278,7 +371,9 @@
       document.getElementById('abMode').querySelectorAll('button').forEach(function(x){ x.classList.toggle('on', x === b); });
       document.getElementById('abPair').hidden = m !== 'pair';
       document.getElementById('abRank').hidden = m !== 'rank';
+      document.getElementById('abSite').hidden = m !== 'site';
       if(m === 'rank' && !rankPool.length) newRank();
+      if(m === 'site') renderSite();
     });
   });
 
@@ -287,7 +382,20 @@
     renderPair();
   }
 
+  function sync(){
+    if(!window.OchemToolState) return;
+    var m = document.getElementById('abMode').querySelector('.on');
+    var mode = m ? m.getAttribute('data-mode') : 'pair';
+    window.OchemToolState.write({
+      mode: mode === 'pair' ? null : mode,
+      a: mode === 'pair' ? left.id : null,
+      b: mode === 'pair' ? right.id : null,
+      m: mode === 'site' ? siteMol.id : null
+    });
+  }
+
   function renderPair(){
+    sync();
     document.getElementById('abScore').textContent = score.total ? score.right + ' of ' + score.total + ' right' : '';
 
     document.getElementById('abCards').innerHTML = [left, right].map(function(a){
@@ -455,4 +563,116 @@
   document.getElementById('abNewRank').addEventListener('click', newRank);
 
   renderPair();
+  /* ---- Which proton comes off first --------------------------------------
+
+     Not a comparison between molecules: a comparison between positions inside
+     one. Everything above still applies — atom, resonance, induction — but it
+     is applied to each site in turn, which is a harder thing to do and the
+     thing the question on the page actually asks for.
+
+     The gaps are the teaching. Glycine's two sites are seven pKa units apart
+     and students routinely pick the nitrogen; salicylic acid's are ten apart
+     and the reason is a hydrogen bond that makes one group stronger and the
+     other much weaker at the same time. */
+  var siteMol = MULTI[0], siteGuess = null;
+
+  function siteText(st){
+    return (st.approx ? '~' : '') + st.pKa;
+  }
+
+  /* A pKa gap is a power of ten, and "3 × 10^7" printed with a caret is the
+     kind of typography that makes a number look like debug output. The rest of
+     the site already uses real superscripts. */
+  var SUP = { '0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹' };
+  function factorWords(d){
+    var n = Math.round(d);
+    if(n <= 3) return 'about ' + Math.round(Math.pow(10, d)).toLocaleString() + ' times';
+    return 'about 10' + String(n).split('').map(function(c){ return SUP[c] || c; }).join('') + ' times';
+  }
+
+  function renderSite(){
+    var sel = document.getElementById('abSiteSel');
+    sel.innerHTML = MULTI.map(function(m){
+      return '<option value="' + esc(m.id) + '"' + (m.id === siteMol.id ? ' selected' : '') + '>' + esc(m.name) + '</option>';
+    }).join('');
+    sel.onchange = function(){
+      MULTI.forEach(function(m){ if(m.id === sel.value) siteMol = m; });
+      siteGuess = null;
+      renderSite();
+    };
+
+    sync();
+    document.getElementById('abSiteFormula').textContent = siteMol.formula;
+    document.getElementById('abSiteNote').textContent = siteMol.note;
+
+    document.getElementById('abSiteGuess').innerHTML = siteMol.sites.map(function(st, i){
+      return '<button type="button" class="tchip' + (siteGuess === i ? ' on' : '') + '" data-i="' + i + '"' +
+        (siteGuess !== null ? ' disabled' : '') + '>' + esc(st.label) + '</button>';
+    }).join('');
+    document.getElementById('abSiteGuess').querySelectorAll('.tchip').forEach(function(b){
+      b.addEventListener('click', function(){
+        if(siteGuess !== null) return;
+        siteGuess = parseInt(b.getAttribute('data-i'), 10);
+        renderSite();
+      });
+    });
+
+    var v = document.getElementById('abSiteVerdict');
+    if(siteGuess === null){
+      v.innerHTML = '<div class="tempty">Pick the site you think loses its proton first. ' +
+        'The measured numbers stay hidden until you have.</div>';
+      return;
+    }
+
+    var order = siteMol.sites.map(function(st, i){ return { st:st, i:i }; })
+      .sort(function(a, b){ return a.st.pKa - b.st.pKa; });
+    var right = order[0].i === siteGuess;
+
+    v.innerHTML =
+      '<div class="tnote ' + (right ? 'tnote--good' : 'tnote--bad') + '">' +
+        '<span class="tnote__k">' + (right ? 'Right' : 'Not that one') + '</span>' +
+        esc(order[0].st.label) + ' goes first, at pK' + 'a ' + esc(siteText(order[0].st)) + '. ' +
+        (right ? '' : 'You picked ' + esc(siteMol.sites[siteGuess].label) + ', which comes off at ' +
+          esc(siteText(siteMol.sites[siteGuess])) + ' — ' +
+          Math.abs(siteMol.sites[siteGuess].pKa - order[0].st.pKa).toFixed(1) +
+          ' pKa units later — ' +
+          factorWords(Math.abs(siteMol.sites[siteGuess].pKa - order[0].st.pKa)) +
+          ' harder to remove.') +
+      '</div>' +
+      '<div class="ab-order">' +
+        order.map(function(o, rank){
+          return '<div class="ab-slot' + (rank === 0 ? ' ab-slot--ok' : '') + '">' +
+            '<span class="ab-slot__n">' + (rank + 1) + '</span>' +
+            '<span>' + esc(o.st.label) + '</span>' +
+            '<span class="ab-slot__pka">pKa ' + esc(siteText(o.st)) + '</span>' +
+          '</div>' +
+          '<p class="tmuted" style="margin:2px 0 8px 36px;font-size:12.5px;">' + esc(o.st.why) + '</p>';
+        }).join('') +
+      '</div>' +
+      (siteMol.sites.some(function(st){ return st.approx; })
+        ? '<p class="tmuted" style="margin-top:6px;font-size:11.5px;">A tilde means the table gives a range rather than a number — ' +
+          'alpha C–H values in particular are quoted differently by different sources, and two decimal places there would be a precision nobody has.</p>'
+        : '') +
+      '<button type="button" class="tchip" id="abSiteAgain" style="margin-top:12px;">Try another</button>';
+
+    var again = document.getElementById('abSiteAgain');
+    if(again) again.addEventListener('click', function(){
+      siteMol = MULTI[Math.floor(Math.random() * MULTI.length)];
+      siteGuess = null;
+      renderSite();
+    });
+  }
+
+  if(window.OchemToolState){
+    var q = window.OchemToolState.read();
+    if(q.a) left = byId(q.a);
+    if(q.b) right = byId(q.b);
+    if(q.m) MULTI.forEach(function(x){ if(x.id === q.m) siteMol = x; });
+    if(q.a || q.b){ elLeft.value = left.id; elRight.value = right.id; renderPair(); }
+    if(q.mode === 'rank' || q.mode === 'site'){
+      var mb = document.getElementById('abMode').querySelector('[data-mode="' + q.mode + '"]');
+      if(mb) mb.click();
+    }
+  }
+
 })();

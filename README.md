@@ -2,7 +2,7 @@
 
 Source for the [Study Hub](https://testaolivier10-del.github.io/) site, home to:
 
-**[LevlPrep](https://testaolivier10-del.github.io/nremt/)** — a free NREMT-EMT exam prep app: a 978-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
+**[LevlPrep](https://testaolivier10-del.github.io/nremt/)** — a free NREMT-EMT exam prep app: a 2,078-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
 
 **[Organic Chemistry](https://testaolivier10-del.github.io/ochem/)** (beta) — a mastery/learning product, not exam prep: a full 14-module Organic Chemistry I curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. **Module 1 (Foundations) is fully built** — atomic structure, orbitals, hybridization, bonding, electronegativity, formal charge, Lewis structures, molecular geometry, bond polarity — plus SN1/SN2/E2 in Module 6; the rest of the curriculum shows as "coming soon" until built. A Mastery dashboard scores performance per module from real question attempts, not just completion, and flags concept dependencies: struggling on E2 surfaces a "possible gap detected" callout pointing at its declared prerequisites, whether or not those prerequisite lessons exist yet. Alongside the course there are **seven interactive tools** (`ochem/tools.html`) — an arrow pusher that shows you the product your mechanism makes, a resonance explorer, a 3D viewer, a conformation lab, a reaction predictor, an acid/base comparator and a spectroscopy lab — see [Tools](#tools).
 
@@ -27,7 +27,7 @@ nremt/                 The LevlPrep app
   scenario-sim.html       Branching clinical scenarios
   search.html             Client-side search across notes + the question bank
   assets/
-    questions.json        The 978-question bank (fetched by practice.html and search.html)
+    questions.json        The 2,078-question bank (fetched by practice.html and search.html)
     theme.css             Shared design system (light/dark, "Guided Path" visual style)
     nav.js                 Shared header/nav, XP/level logic, and optional account sync
     vendor/three/          Vendored three.js (module build + loaders/controls actually used)

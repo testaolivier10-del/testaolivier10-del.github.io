@@ -269,6 +269,18 @@
     var out = Object.keys(counts).sort(hillOrder).map(function(el){
       return el + (counts[el] > 1 ? sub(counts[el]) : '');
     }).join('');
+
+    /* Hill ordering is a real convention and it is what the rest of this
+       returns — but it writes ammonia as H₃N and phosphine as H₃P, which is
+       correct, unfamiliar, and sits next to a canvas labelling the same atom
+       NH₃. A student reading both concludes one of them is broken.
+
+       So the handful of simple hydrides that everyone writes element-first get
+       written that way. Only exact neutral matches: HO⁻ stays HO⁻, because
+       that is a different species and Hill has no quarrel with it. */
+    var CONVENTIONAL = { 'H₃N':'NH₃', 'H₃P':'PH₃', 'H₃As':'AsH₃', 'H₄Si':'SiH₄' };
+    if(!charge && CONVENTIONAL[out]) out = CONVENTIONAL[out];
+
     return out + (charge ? chargeGlyph(charge) : '');
   }
 

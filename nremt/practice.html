@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LevlPrep — NREMT-EMT Practice Exam & Study Tools</title>
-<meta name="description" content="Free NREMT-EMT prep: a 978-question bank with 4 difficulty levels (including Expert), select-N and sequencing item types, timed 100-question exams, domain drills, flashcards, mnemonics, and a missed-question review queue.">
+<meta name="description" content="Free NREMT-EMT prep: a 2,078-question bank with 4 difficulty levels (including Expert), select-N and sequencing item types, timed 100-question exams, domain drills, flashcards, mnemonics, and a missed-question review queue.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:title" content="LevlPrep — NREMT-EMT Practice Exam & Study Tools">
-<meta property="og:description" content="A 978-question bank with 4 difficulty levels, select-N and sequencing item types, timed exams, domain drills, flashcards, and a missed-question review queue — free, no account needed.">
+<meta property="og:description" content="A 2,078-question bank with 4 difficulty levels, select-N and sequencing item types, timed exams, domain drills, flashcards, and a missed-question review queue — free, no account needed.">
 <meta property="og:url" content="https://testaolivier10-del.github.io/nremt/practice.html">
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="assets/theme.css">
@@ -411,7 +411,7 @@
     <div class="eyebrow">Practice</div>
     <div id="streakWidget"></div>
     <h1>NREMT-EMT Practice Exam — 100 Questions</h1>
-    <p class="lede">A full-length practice exam matching the scale of the real NREMT-EMT cognitive exam. Each attempt randomly draws 100 questions from a 978-question pool — in the same domain proportions every time — so retaking it isn't just re-memorizing the same set. Includes a live 2-hour timer, pace tracker, difficulty filtering (up through an Expert tier), select-N-of-M and sequencing items alongside standard multiple choice, and a review queue for questions you've missed.</p>
+    <p class="lede">A full-length practice exam matching the scale of the real NREMT-EMT cognitive exam. Each attempt randomly draws 100 questions from a 2,078-question pool — in the same domain proportions every time — so retaking it isn't just re-memorizing the same set. Includes a live 2-hour timer, pace tracker, difficulty filtering (up through an Expert tier), select-N-of-M and sequencing items alongside standard multiple choice, and a review queue for questions you've missed.</p>
 
     <div class="domain-list">
       <span>Assessment</span>
@@ -424,7 +424,7 @@
 
     <div class="exam-facts">
       <div class="row"><span>Questions per attempt</span><span>100 (randomized)</span></div>
-      <div class="row"><span>Total question pool</span><span>978</span></div>
+      <div class="row"><span>Total question pool</span><span>2,078</span></div>
       <div class="row"><span>Time limit</span><span>2:00:00</span></div>
       <div class="row"><span>Target pace</span><span>~72 sec/question</span></div>
     </div>
@@ -590,7 +590,7 @@
 </div>
 
 <script>
-// The 978-question bank lives in its own JSON file (assets/questions.json) rather than
+// The 2,078-question bank lives in its own JSON file (assets/questions.json) rather than
 // inline here, so it's a separately cacheable download and something search.html can
 // fetch and index too. Loaded synchronously (deliberately, via XHR rather than fetch)
 // because every function below assumes QUESTIONS is already populated by the time it
@@ -615,29 +615,33 @@ const QUESTIONS = (function(){
 // instead of the one shown when they answered.
 const OPTION_ORDER_KEY = 'nremt_option_order';
 (function shuffleQuestionOptions(){
+  // A saved order array shorter than the bank means questions were APPENDED since the
+  // user last loaded the page. Keep the saved orders for questions 0..savedLen-1 (so a
+  // half-finished exam still grades against the letters it displayed) and shuffle only
+  // the newly added ones.
   let orders = null;
   try{
     const raw = localStorage.getItem(OPTION_ORDER_KEY);
     if(raw){
       const parsed = JSON.parse(raw);
-      if(Array.isArray(parsed) && parsed.length === QUESTIONS.length) orders = parsed;
+      if(Array.isArray(parsed) && parsed.length <= QUESTIONS.length) orders = parsed;
     }
   }catch(e){}
 
-  const isFresh = !orders;
-  if(isFresh) orders = QUESTIONS.map(q => q.options.map((_, i) => i));
+  let changed = !orders;
+  if(!orders) orders = [];
 
   QUESTIONS.forEach((q, qi) => {
     let order = orders[qi];
-    if(!Array.isArray(order) || order.length !== q.options.length){
+    const needsShuffle = !Array.isArray(order) || order.length !== q.options.length;
+    if(needsShuffle){
       order = q.options.map((_, i) => i);
-      orders[qi] = order;
-    }
-    if(isFresh){
       for (let i = order.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [order[i], order[j]] = [order[j], order[i]];
       }
+      orders[qi] = order;
+      changed = true;
     }
     if(q.type === 'multi' || q.type === 'order'){
       const oldCorrect = q.correct;
@@ -650,7 +654,7 @@ const OPTION_ORDER_KEY = 'nremt_option_order';
     }
   });
 
-  if(isFresh){
+  if(changed){
     try{ localStorage.setItem(OPTION_ORDER_KEY, JSON.stringify(orders)); }catch(e){}
   }
 })();
