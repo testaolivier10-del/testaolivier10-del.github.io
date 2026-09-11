@@ -100,6 +100,9 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
 <script>
 (function(){
   // ---- Two worked molecules. Atom coordinates are hand-placed for a clean
@@ -166,7 +169,33 @@
     try{ var raw = localStorage.getItem('ochem_sn2_progress'); return raw ? JSON.parse(raw) : { correct:0, attempts:0 }; }
     catch(e){ return { correct:0, attempts:0 }; }
   }
+  // This page predates the lesson engine and scores inline at eight separate
+  // call sites. Rather than edit all eight, mirror into the concept model off
+  // the score delta: saveProgress() runs after every one of them, so an
+  // attempts++ since the last save is exactly one answered question. Keyed by
+  // step, so the shared recorder's first-attempt rule handles retries.
+  /* Which concept each step of the walkthrough tests. Authored rather than
+     inferred: inference reads the whole rendered card, which here is dense
+     with every SN2 term at once, so it credited one concept for all seven
+     steps. */
+  var STEP_CONCEPTS = {
+    1: ['nucleophile-recognition'],                         // identify the nucleophile
+    2: ['electrophile-recognition'],                        // identify the electrophilic carbon
+    3: ['curved-arrow-direction', 'backside-attack'],       // nucleophile's arrow in
+    4: ['curved-arrow-direction', 'leaving-group-ability'], // leaving group's arrow out
+    5: ['stereochemical-outcome', 'backside-attack'],       // inversion at the carbon
+    6: ['solvent-effects', 'basicity-vs-nucleophilicity'],  // polar aprotic favours SN2
+    7: ['mechanism-selection', 'steric-hindrance']          // why SN2 and not SN1
+  };
+  var M = window.OchemMastery;
+  var conceptRec = M ? M.lessonRecorder('sn2') : null;
+  var lastScore = { correct: 0, attempts: 0 };
+
   function saveProgress(){
+    if(conceptRec && score.attempts > lastScore.attempts){
+      conceptRec(score.correct > lastScore.correct, step, { concepts: STEP_CONCEPTS[step] });
+    }
+    lastScore = { correct: score.correct, attempts: score.attempts };
     try{ localStorage.setItem('ochem_sn2_progress', JSON.stringify(score)); }catch(e){}
     // Also mirror into the shared curriculum progress store (same {correct,
     // attempts} shape) so Learn/Mastery see this lesson without duplicating
@@ -178,6 +207,7 @@
     }catch(e){}
   }
   score = loadProgress();
+  lastScore = { correct: score.correct, attempts: score.attempts };
 
   function updateProgress(){
     var pct = Math.round((Math.min(step, TOTAL_STEPS) / TOTAL_STEPS) * 100);
@@ -251,7 +281,7 @@
     else if(step === 5) renderPredictProduct();
     else if(step === 6) renderSolventEffects();
     else if(step === 7) renderExplain();
-    else renderDone();
+    else { if(M) M.noteLesson('sn2'); renderDone(); }
   }
 
   function feedbackHtml(id){ return '<div class="feedback" id="' + id + '"></div>'; }

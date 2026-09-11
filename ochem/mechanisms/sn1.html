@@ -99,6 +99,9 @@
 </div>
 
 <script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
 <script>
   window.OCHEM_SECTION = 'learn';
   window.OCHEM_BASE = '../';
@@ -116,7 +119,27 @@
   var progFill = document.getElementById('progFill');
   var progLabel = document.getElementById('progLabel');
 
-  function record(correct){ window.OchemCurriculum.recordAttempt(TOPIC_ID, correct); }
+  // Mirrors into the concept model too, so this mechanism counts toward the
+  // same mastery Practice and Review read. Shared recorder, not a local copy:
+  // the tier/share/first-attempt rules must not drift from the lesson engine.
+  /* Which concept each step of this mechanism actually tests. Authored
+     rather than inferred: inference over the step's rendered text reads the
+     whole card, which on a mechanism page is dense with every term at once,
+     and it reliably picked one concept for the entire walkthrough. */
+  var STEP_CONCEPTS = {
+    1: ['leaving-group-ability', 'curved-arrow-direction'],   // ionize: push C-Br electrons onto Br
+    2: ['carbocation-stability'],                             // visualize the planar cation
+    3: ['stereochemical-outcome', 'nucleophile-recognition'], // attack either face
+    4: ['stereochemical-outcome', 'carbocation-stability'],   // predict racemization
+    5: ['solvent-effects', 'mechanism-selection'],            // protic solvent assists ionization
+    6: ['mechanism-selection', 'carbocation-stability']       // challenge
+  };
+  var M = window.OchemMastery;
+  var conceptRec = M ? M.lessonRecorder(TOPIC_ID) : null;
+  function record(correct){
+    window.OchemCurriculum.recordAttempt(TOPIC_ID, correct);
+    if(conceptRec) conceptRec(correct, step, { concepts: STEP_CONCEPTS[step] });
+  }
   function updateProgress(){
     progFill.style.width = Math.round((step/TOTAL)*100) + '%';
     progLabel.textContent = 'Step ' + (step+1) + ' / ' + (TOTAL+1);
@@ -329,6 +352,7 @@
         if(isCorrect){
           showFeedback(fb, true, 'Correct — more alkyl groups around the cationic carbon donate electron density into the empty p orbital (a stabilizing effect called <b>hyperconjugation</b>) and stabilize the positive charge, so tertiary substrates ionize fastest. This is exactly the opposite of SN2, which prefers unhindered, primary carbons.');
           window.OchemCurriculum.completeLessonRun(TOPIC_ID);
+          if(M) M.noteLesson(TOPIC_ID);
           card.querySelector('#doneBox').innerHTML = '<div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press">Back to Learn</a></div>';
         } else {
           showFeedback(fb, false, 'Think about which cation is more stable — more alkyl groups around the positive carbon, or fewer?');

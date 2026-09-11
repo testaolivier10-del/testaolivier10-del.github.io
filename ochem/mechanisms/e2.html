@@ -101,6 +101,9 @@
 </div>
 
 <script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
 <script>
   window.OCHEM_SECTION = 'learn';
   window.OCHEM_BASE = '../';
@@ -118,7 +121,27 @@
   var progFill = document.getElementById('progFill');
   var progLabel = document.getElementById('progLabel');
 
-  function record(correct){ window.OchemCurriculum.recordAttempt(TOPIC_ID, correct); }
+  // Mirrors into the concept model too, so this mechanism counts toward the
+  // same mastery Practice and Review read. Shared recorder, not a local copy:
+  // the tier/share/first-attempt rules must not drift from the lesson engine.
+  /* Which concept each step of this mechanism actually tests. Authored
+     rather than inferred: inference over the step's rendered text reads the
+     whole card, which on a mechanism page is dense with every term at once,
+     and it reliably picked one concept for the entire walkthrough. */
+  var STEP_CONCEPTS = {
+    1: ['curved-arrow-direction', 'basicity-vs-nucleophilicity'], // base takes the beta H
+    2: ['curved-arrow-direction', 'anti-periplanar-geometry'],    // C-H electrons become the pi bond
+    3: ['leaving-group-ability', 'curved-arrow-direction'],       // leaving group departs
+    4: ['zaitsev-hofmann', 'anti-periplanar-geometry'],           // predict the alkene
+    5: ['rate-law-kinetics', 'mechanism-selection'],              // second-order rate law
+    6: ['mechanism-selection', 'zaitsev-hofmann']                 // challenge
+  };
+  var M = window.OchemMastery;
+  var conceptRec = M ? M.lessonRecorder(TOPIC_ID) : null;
+  function record(correct){
+    window.OchemCurriculum.recordAttempt(TOPIC_ID, correct);
+    if(conceptRec) conceptRec(correct, step, { concepts: STEP_CONCEPTS[step] });
+  }
   function updateProgress(){
     progFill.style.width = Math.round((step/TOTAL)*100) + '%';
     progLabel.textContent = 'Step ' + (step+1) + ' / ' + (TOTAL+1);
@@ -375,6 +398,7 @@
         if(isCorrect){
           showFeedback(fb, true, 'Correct — a bulky base like tert-butoxide has trouble reaching a crowded hydrogen, so it preferentially removes a more accessible one, favoring the less substituted alkene.');
           window.OchemCurriculum.completeLessonRun(TOPIC_ID);
+          if(M) M.noteLesson(TOPIC_ID);
           card.querySelector('#doneBox').innerHTML = '<div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press">Back to Learn</a></div>';
         } else {
           showFeedback(fb, false, 'Think about which base would struggle to reach a crowded, more substituted hydrogen.');

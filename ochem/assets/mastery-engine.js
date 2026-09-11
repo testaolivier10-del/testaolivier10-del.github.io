@@ -164,6 +164,7 @@
       attempts: st.n, correct: st.c, streak: st.streak, lapses: st.lapses,
       accuracy: st.n ? st.c / st.n : null,
       seen: st.seen, due: st.due, interval: st.ivl,
+      lesson: st.lesson || 0,
       band: bandFor(s),
       tiers: st.tiers || {},
       dueIn: st.due ? Math.round((st.due - now()) / DAY) : null,
@@ -437,11 +438,170 @@
   }
 
   function isLeech(p){
-    return p.attempts > 0 && (p.attempts - p.correct) >= LEECH_WRONG &&
-           p.strength !== null && p.strength < LEECH_STRENGTH;
+    if(!(p.attempts > 0 && (p.attempts - p.correct) >= LEECH_WRONG)) return false;
+    if(p.strength === null || p.strength >= LEECH_STRENGTH) return false;
+    // Bench lifted. The leech rule's whole demand is "go re-read the lesson";
+    // if that happened after the last attempt, the demand is met and the
+    // concept goes back in the queue to be re-tested. Leaving it benched
+    // would mean the site set homework and then ignored that it was done.
+    if(p.lesson && p.lesson >= (p.seen || 0)) return false;
+    return true;
   }
   function leeches(){
     return allProfiles().filter(isLeech).sort(function(a, b){ return a.strength - b.strength; });
+  }
+
+  /* One implementation of "a lesson step was answered", shared by the lesson
+     engine and the four hand-written mechanism pages. Those pages predate the
+     engine and each own their step loop, so without this they would each need
+     their own copy of the tier, the share, and the first-attempt rule — and
+     the copies would drift, which is exactly how the site ended up with two
+     disagreeing progress stores in the first place.
+
+     Returns a recorder. Call it once per answer with a stable step key:
+       rec(correct, stepIndex, { concept:'backside-attack' })
+       rec(correct, stepIndex, { text: cfg.title })   // infer from step text
+       rec(correct, stepIndex)                        // topic's primary concept
+     Repeat calls for the same key are ignored, because lesson questions let
+     you retry until you get it: counting every attempt logs one guess as both
+     a miss and a hit, counting the last scores everybody perfect. The first
+     answer is the only honest sample. */
+  function lessonRecorder(topicId){
+    var graded = {};
+    return function(correct, stepKey, opts){
+      var key = String(stepKey === undefined ? 'x' : stepKey);
+      if(graded[key]) return null;
+      graded[key] = true;
+      opts = opts || {};
+      var CN = window.OchemConcepts;
+
+      /* A step can name several concepts, because real lesson questions do
+         combine them — "why does OR leave instead of NH2" is leaving-group
+         ability first and the tetrahedral intermediate second. Credit splits
+         rather than claiming full evidence for each, same rule the question
+         engine uses for multi-concept questions. */
+      var ids = [];
+      if(opts.concepts && opts.concepts.length){
+        ids = opts.concepts.filter(function(c){ return CN.get(c); });
+      } else if(opts.concept && CN.get(opts.concept)){
+        ids = [opts.concept];
+      }
+      if(!ids.length && opts.text){
+        var inferred = CN.inferConcept(String(opts.text).replace(/<[^>]*>/g, ' '), topicId);
+        if(inferred) ids = [inferred];
+      }
+      if(!ids.length) ids = [CN.defaultConceptFor(topicId)];
+
+      /* Tier 1 and half share on the primary. The explanation is on screen
+         directly above the question, so this is real evidence but weaker
+         than answering the same idea cold in Practice — it must not carry a
+         concept to "mastered" on its own. */
+      var out = null;
+      ids.forEach(function(id, i){
+        var r = record(id, correct, { tier: 1, share: i === 0 ? 0.5 : 0.25 });
+        if(i === 0) out = r;
+      });
+      return out;
+    };
+  }
+
+  /* ---- lessons as evidence -------------------------------------------
+
+     A finished lesson is not proof of mastery. Clicking Continue through an
+     explanation is nothing like answering cold, so reading a lesson never
+     moves `s` — only answered questions do that.
+
+     What it does do is lift the leech bench. The leech rule exists to say
+     "stop drilling this, go read it"; if the student actually goes and
+     reads it, the bench has done its job and the concept has to be allowed
+     back into the queue to be re-tested. Without this the site hands out
+     homework and then ignores that it was done. */
+  function noteLesson(topicId){
+    var ids = window.OchemConcepts.byTopic(topicId);
+    if(!ids || !ids.length) return 0;
+    var d = read(), t = now();
+    ids.forEach(function(id){
+      d.concepts[id] = d.concepts[id] || blankConcept();
+      d.concepts[id].lesson = t;
+    });
+    write(d);
+    return ids.length;
+  }
+
+  function lessonReadAt(conceptId){
+    var st = stateOf(read(), conceptId);
+    return (st && st.lesson) || 0;
+  }
+
+  /* ---- topic rollup ---------------------------------------------------
+
+     Learn and Mastery think in topics; everything else thinks in concepts.
+     This is the bridge. Attempts-weighted rather than a flat mean: a topic
+     where one concept has been drilled twenty times and four have been seen
+     once should read mostly as the drilled one, not as an average that four
+     thin samples can swing. `coverage` is how much of the topic has been
+     touched at all, which is what separates "60% on this topic" from "60%
+     on the one sixth of this topic you have actually tried". */
+  function topicStrength(topicId){
+    var ids = window.OchemConcepts.byTopic(topicId);
+    if(!ids || !ids.length) return { strength:null, attempts:0, touched:0, total:0, coverage:0 };
+    var d = read(), num = 0, den = 0, touched = 0, attempts = 0;
+    ids.forEach(function(id){
+      var st = stateOf(d, id);
+      if(!st || !st.n) return;
+      touched++; attempts += st.n;
+      var w = Math.min(st.n, 8);               // cap so one over-drilled concept can't own the topic
+      num += clamp(decayed(st), 0, 1) * w;
+      den += w;
+    });
+    return {
+      strength: den ? num / den : null,
+      attempts: attempts,
+      touched: touched,
+      total: ids.length,
+      coverage: ids.length ? touched / ids.length : 0
+    };
+  }
+
+  // Same rollup, one level up: every topic in a curriculum module.
+  function topicsStrength(topicIds){
+    var num = 0, den = 0, touched = 0, total = 0, attempts = 0;
+    (topicIds || []).forEach(function(t){
+      var r = topicStrength(t);
+      total += r.total; touched += r.touched; attempts += r.attempts;
+      if(r.strength !== null){ var w = Math.min(r.attempts, 24); num += r.strength * w; den += w; }
+    });
+    return {
+      strength: den ? num / den : null,
+      attempts: attempts, touched: touched, total: total,
+      coverage: total ? touched / total : 0
+    };
+  }
+
+  // Concept families (from concepts.js) as a breakdown for the Mastery page.
+  function familyRollup(){
+    var d = read();
+    var out = {};
+    window.OchemConcepts.ALL.forEach(function(c){
+      var f = out[c.family] || (out[c.family] = { family:c.family, num:0, den:0, touched:0, total:0, attempts:0 });
+      f.total++;
+      var st = stateOf(d, c.id);
+      if(st && st.n){
+        f.touched++; f.attempts += st.n;
+        var w = Math.min(st.n, 8);
+        f.num += clamp(decayed(st), 0, 1) * w;
+        f.den += w;
+      }
+    });
+    return Object.keys(out).map(function(k){
+      var f = out[k];
+      return {
+        family: f.family,
+        strength: f.den ? f.num / f.den : null,
+        touched: f.touched, total: f.total, attempts: f.attempts,
+        coverage: f.total ? f.touched / f.total : 0
+      };
+    });
   }
 
   function reset(){
@@ -477,6 +637,12 @@
     overall: overall,
     counts: counts,
     bandFor: bandFor,
+    lessonRecorder: lessonRecorder,
+    noteLesson: noteLesson,
+    lessonReadAt: lessonReadAt,
+    topicStrength: topicStrength,
+    topicsStrength: topicsStrength,
+    familyRollup: familyRollup,
     reset: reset
   };
 })();

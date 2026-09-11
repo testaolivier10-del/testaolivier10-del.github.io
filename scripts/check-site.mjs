@@ -79,6 +79,36 @@ if (existsSync(sitemapPath)) {
   }
 }
 
+// ---- 4. the lesson-concept map still lines up with the lessons ----
+// assets/lesson-concepts.js credits concepts by step INDEX. If a lesson gains
+// or loses a step, every index below it shifts and the map would quietly
+// credit the wrong concept. The engine already falls back to inference when
+// the step count disagrees, so this never ships bad data — but a silent
+// fallback also means nobody notices the map has rotted, hence the check.
+{
+  const lcPath = join(ROOT, 'ochem/assets/lesson-concepts.js');
+  const lessonDir = join(ROOT, 'ochem/lessons');
+  if (existsSync(lcPath) && existsSync(lessonDir)) {
+    const src = readFileSync(lcPath, 'utf8');
+    // Each entry looks like:  'topic-id': { n:8, steps:{ ... } }
+    const entries = [...src.matchAll(/'([a-z0-9-]+)':\s*\{\s*n:\s*(\d+)/g)]
+      .map(m => ({ topic: m[1], n: Number(m[2]) }));
+    if (!entries.length) fail('ochem/assets/lesson-concepts.js: no lesson entries parsed');
+    for (const { topic, n } of entries) {
+      const lesson = join(lessonDir, topic + '.html');
+      if (!existsSync(lesson)) { fail(`lesson-concepts.js: no lesson file for "${topic}"`); continue; }
+      // Count the step objects the lesson hands the engine. Steps are the
+      // top-level entries of the steps array, each starting `{ type:` or
+      // `{ render:` at a consistent indent.
+      const body = readFileSync(lesson, 'utf8');
+      const steps = (body.match(/\{\s*(?:type|render)\s*:/g) || []).length;
+      if (steps !== n) {
+        fail(`lesson-concepts.js: "${topic}" authored against ${n} steps but the lesson now has ${steps} — re-check the step indices, then update n.`);
+      }
+    }
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);

@@ -67,7 +67,39 @@
       });
     }
 
-    function record(correct){ window.OchemCurriculum.recordAttempt(topicId, correct); }
+    /* Lesson answers feed the same concept model Practice and Review use.
+       Before this, lessons wrote only to OchemCurriculum (a per-topic lesson
+       score) and the concept engine never heard about them — so nailing a
+       lesson moved nothing in Practice, and the leech rule could send a
+       student to a lesson, watch them do it, and leave the concept benched.
+       The tier/share/first-attempt rules live in the mastery engine so the
+       hand-written mechanism pages can share them verbatim. */
+    var M = window.OchemMastery;
+    var rec = M ? M.lessonRecorder(topicId) : null;
+
+    /* Which concepts a step is testing, best source first:
+         1. the lesson-concepts map, authored per step (assets/lesson-concepts.js)
+         2. a `concept` on the step config itself
+         3. keyword inference over the step's own text
+         4. the topic's primary concept
+       Inference alone was not good enough to rely on: measured across all 57
+       engine-driven lessons it collapsed 34 of them onto a single concept,
+       averaging 1.5 distinct concepts recorded against 4.25 available per
+       topic. A lesson that teaches seven ideas and records one is barely
+       better than not recording at all, hence the authored map. */
+    var LC = window.OchemLessonConcepts;
+    var mapped = LC ? LC.forTopic(topicId, steps.length) : null;
+
+    function record(correct, conceptId){
+      window.OchemCurriculum.recordAttempt(topicId, correct);
+      if(!rec) return;
+      var cfg = steps[step] || {};
+      rec(correct, step, {
+        concepts: (!conceptId && mapped) ? mapped[step] : null,
+        concept: conceptId || cfg.concept,
+        text: [cfg.title, cfg.prompt, cfg.bodyHtml].filter(Boolean).join(' ')
+      });
+    }
     function updateProgress(){
       progFill.style.width = Math.round((step/TOTAL)*100) + '%';
       progLabel.textContent = 'Step ' + (step+1) + ' / ' + (TOTAL+1);
@@ -117,6 +149,7 @@
             showFeedback(fb, true, cfg.correctFeedback || 'Correct.');
             if(isFinal){
               window.OchemCurriculum.completeLessonRun(topicId);
+              if(M) M.noteLesson(topicId);
               card.querySelector('#doneBox').innerHTML = doneBoxHtml();
             }
             else next.disabled = false;

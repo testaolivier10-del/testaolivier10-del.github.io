@@ -102,6 +102,9 @@
 </div>
 
 <script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
 <script>
   window.OCHEM_SECTION = 'learn';
   window.OCHEM_BASE = '../';
@@ -117,7 +120,24 @@
   var progFill = document.getElementById('progFill');
   var progLabel = document.getElementById('progLabel');
 
-  function record(correct){ window.OchemCurriculum.recordAttempt(TOPIC_ID, correct); }
+  // This lesson predates the shared lesson engine and owns its own step loop,
+  // so its concept mapping lives here rather than in lesson-concepts.js (that
+  // file's CI guard counts step objects, which this page doesn't have). Every
+  // graded step here is formal-charge arithmetic; step 5's checksum rule also
+  // leans on reading the Lewis structure.
+  var STEP_CONCEPTS = {
+    1: ['formal-charge-calc'],
+    2: ['formal-charge-calc'],
+    3: ['formal-charge-calc'],
+    5: ['formal-charge-calc', 'lewis-structures-drawing'],
+    6: ['formal-charge-calc', 'lewis-structures-drawing']
+  };
+  var M = window.OchemMastery;
+  var conceptRec = M ? M.lessonRecorder(TOPIC_ID) : null;
+  function record(correct){
+    window.OchemCurriculum.recordAttempt(TOPIC_ID, correct);
+    if(conceptRec) conceptRec(correct, step, { concepts: STEP_CONCEPTS[step] });
+  }
   function updateProgress(){
     progFill.style.width = Math.round((step/TOTAL)*100) + '%';
     progLabel.textContent = 'Step ' + (step+1) + ' / ' + (TOTAL+1);
@@ -144,7 +164,11 @@
     else if(step===3) renderIndependentH3O();
     else if(step===4) renderWhyItMatters();
     else if(step===5) renderChecksum();
-    else renderChallenge();
+    // Reaching the challenge step means the lesson has been worked through.
+    // This page has no completeLessonRun call of its own, but the concept
+    // model still needs the "they went and read it" signal — that is what
+    // releases a benched (leech) concept back into the review queue.
+    else { if(M) M.noteLesson(TOPIC_ID); renderChallenge(); }
   }
 
   // ---- Step 0: Explain ----

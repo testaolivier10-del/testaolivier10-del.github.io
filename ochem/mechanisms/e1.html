@@ -92,6 +92,9 @@
 </div>
 
 <script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
 <script>
   window.OCHEM_SECTION = 'learn';
   window.OCHEM_BASE = '../';
@@ -109,7 +112,27 @@
   var progFill = document.getElementById('progFill');
   var progLabel = document.getElementById('progLabel');
 
-  function record(correct){ window.OchemCurriculum.recordAttempt(TOPIC_ID, correct); }
+  // Mirrors into the concept model too, so this mechanism counts toward the
+  // same mastery Practice and Review read. Shared recorder, not a local copy:
+  // the tier/share/first-attempt rules must not drift from the lesson engine.
+  /* Which concept each step of this mechanism actually tests. Authored
+     rather than inferred: inference over the step's rendered text reads the
+     whole card, which on a mechanism page is dense with every term at once,
+     and it reliably picked one concept for the entire walkthrough. */
+  var STEP_CONCEPTS = {
+    1: ['leaving-group-ability', 'curved-arrow-direction'],   // ionize
+    2: ['carbocation-stability'],                             // visualize the cation
+    3: ['curved-arrow-direction', 'zaitsev-hofmann'],         // remove a beta hydrogen
+    4: ['zaitsev-hofmann'],                                   // which alkene dominates
+    5: ['rate-law-kinetics', 'mechanism-selection'],          // E1 vs SN1 competition
+    6: ['mechanism-selection', 'zaitsev-hofmann']             // challenge
+  };
+  var M = window.OchemMastery;
+  var conceptRec = M ? M.lessonRecorder(TOPIC_ID) : null;
+  function record(correct){
+    window.OchemCurriculum.recordAttempt(TOPIC_ID, correct);
+    if(conceptRec) conceptRec(correct, step, { concepts: STEP_CONCEPTS[step] });
+  }
   function updateProgress(){
     progFill.style.width = Math.round((step/TOTAL)*100) + '%';
     progLabel.textContent = 'Step ' + (step+1) + ' / ' + (TOTAL+1);
@@ -323,6 +346,7 @@
         if(isCorrect){
           showFeedback(fb, true, 'Correct — a tertiary substrate ionizes easily, ethanol is a weak nucleophile/base and polar protic (favoring the ionization pathway for both SN1 and E1), and heat specifically favors E1 over SN1. Expect a real mixture of an ether/alcohol (from SN1) and the Zaitsev alkene (from E1), not one single clean product.');
           window.OchemCurriculum.completeLessonRun(TOPIC_ID);
+          if(M) M.noteLesson(TOPIC_ID);
           card.querySelector('#doneBox').innerHTML = '<div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press">Back to Learn</a></div>';
         } else {
           showFeedback(fb, false, 'A tertiary carbon can\'t do SN2 (too crowded), but it ionizes readily — think about which unimolecular pathways become available once that carbocation forms.');
