@@ -8,9 +8,11 @@
    nothing to have mastered, not 0%).
 
    Progress is read from localStorage under 'ochem_progress': a plain object
-   keyed by topic id -> { correct, attempts } accumulated by each lesson via
-   OchemCurriculum.recordAttempt(topicId, isCorrect). Lessons own recording;
-   this file only owns the shape of the curriculum and reading it back. */
+   keyed by topic id -> { step, correct, attempts, completed, bestScore }.
+   See the comment above beginLessonRun below for exactly what each field
+   means and how mastery (bestScore) only ever moves up. Lessons own calling
+   recordAttempt/completeLessonRun/saveStep as they go; this file only owns
+   the shape of the curriculum and reading/writing that state. */
 (function(){
   var MODULES = [
     { id: 'foundations', title: 'Foundations', topics: [
@@ -113,24 +115,30 @@
     try{ localStorage.setItem('ochem_progress', JSON.stringify(p)); }catch(e){}
   }
 
-  /* Progress is tracked per topic as one "run": { step, correct, attempts,
-     completed }. correct/attempts describe the CURRENT run only, not a
-     lifetime total — so topicMastery always reflects how you did the last
-     time you actually finished the lesson, and redoing it starts that score
-     over instead of blending forever with old attempts.
+  /* Progress is tracked per topic as { step, correct, attempts, completed,
+     bestScore }. step/correct/attempts/completed describe the CURRENT run
+     (reset each time a fresh attempt begins); bestScore is a separate,
+     permanent high-water mark — the best score you've ever gotten on a
+     COMPLETED run of this lesson. topicMastery reports bestScore, never the
+     live in-progress tally, so: (1) mastery only counts once you've actually
+     finished the lesson at least once ("make sure you know the topics", not
+     just opened them), and (2) redoing a lesson can only push that number up
+     — a worse retry never erases a better earlier score, and once it hits
+     100 it just stays there.
 
      beginLessonRun is called once, when a lesson page loads, before its
      first step renders:
        - no saved run, or the saved run was already completed -> this is a
          fresh attempt (opening a finished lesson again is a deliberate
-         redo). Wipe the run and start at step 0.
+         redo, e.g. to try to improve). Reset step/correct/attempts/completed
+         to start a clean run, but carry bestScore forward untouched.
        - a saved, unfinished run exists -> the learner left partway through;
          resume at their saved step with that run's tally intact. */
   function beginLessonRun(topicId, totalSteps){
     var p = readProgress();
     var t = p[topicId];
     if(!t || t.completed){
-      p[topicId] = { step: 0, correct: 0, attempts: 0, completed: false };
+      p[topicId] = { step: 0, correct: 0, attempts: 0, completed: false, bestScore: t ? t.bestScore : undefined };
       writeProgress(p);
       return { step: 0, resumed: false };
     }
@@ -148,8 +156,8 @@
     writeProgress(p);
   }
 
-  // Every lesson calls this on each answered question so mastery reflects
-  // performance on the current run, not just whether the lesson was opened.
+  // Every lesson calls this on each answered question so the current run's
+  // tally builds up as you go.
   function recordAttempt(topicId, isCorrect){
     var p = readProgress();
     var t = p[topicId] || { step: 0, correct: 0, attempts: 0, completed: false };
@@ -160,28 +168,35 @@
   }
 
   // Marks the current run finished once the final challenge is answered
-  // correctly — the score at that point is what topicMastery reports until
-  // the learner starts a fresh run by reopening the (now-completed) lesson.
+  // correctly, and folds this run's score into bestScore (only if it's
+  // higher than whatever was already there) — the number topicMastery
+  // reports from here on, until a later run beats it.
   function completeLessonRun(topicId){
     var p = readProgress();
     var t = p[topicId] || { step: 0, correct: 0, attempts: 0, completed: false };
+    var thisRunScore = t.attempts > 0 ? Math.round((t.correct / t.attempts) * 100) : 0;
+    t.bestScore = (typeof t.bestScore === 'number') ? Math.max(t.bestScore, thisRunScore) : thisRunScore;
     t.completed = true;
     p[topicId] = t;
     writeProgress(p);
   }
 
-  // Explicit "start over" — used by the resume banner's opt-out link.
+  // Explicit "start over" — used by the resume banner's opt-out link. Only
+  // resets the in-progress run; your best completed score is untouched.
   function resetRun(topicId){
     var p = readProgress();
-    p[topicId] = { step: 0, correct: 0, attempts: 0, completed: false };
+    var t = p[topicId];
+    p[topicId] = { step: 0, correct: 0, attempts: 0, completed: false, bestScore: t ? t.bestScore : undefined };
     writeProgress(p);
   }
 
+  // The score shown anywhere in the app: your best-ever completed-run
+  // score for this topic, or null if you've never actually finished it.
   function topicMastery(topicId){
     var p = readProgress();
     var t = p[topicId];
-    if(!t || t.attempts < 1) return null; // not started
-    return Math.round((t.correct / t.attempts) * 100);
+    if(!t || typeof t.bestScore !== 'number') return null; // never completed
+    return t.bestScore;
   }
 
   // A module's mastery only counts topics that have a lesson AND have been
