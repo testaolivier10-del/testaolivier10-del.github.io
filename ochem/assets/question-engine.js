@@ -290,6 +290,87 @@
     return candidates[0];
   }
 
+  /* ---- spaced review -------------------------------------------------
+
+     Review is a different product from practice and this is where that
+     difference is implemented, not in the UI.
+
+     Practice asks "what would teach the most right now" and never runs out.
+     Review asks "what is closest to being forgotten", takes a capped batch
+     of it, and ends. The queue is finite by construction: only concepts you
+     have already met, only ones that are due, ordered by how overdue, minus
+     leeches, capped at whatever is left of today's budget. */
+
+  function reviewQueue(){
+    build();
+    var leechIds = M().leeches().map(function(p){ return p.id; });
+    // Due, already-met concepts, most overdue first. Weakness is deliberately
+    // NOT part of this ordering — that is practice's question.
+    var due = M().due().filter(function(p){
+      return leechIds.indexOf(p.id) === -1 && (BY_CONCEPT[p.id] || []).length > 0;
+    });
+    var budget = M().reviewsRemainingToday();
+    return {
+      today: due.slice(0, budget),
+      dueTotal: due.length,
+      deferred: Math.max(0, due.length - budget),
+      budget: budget,
+      capReached: budget === 0 && due.length > 0,
+      leeches: M().leeches().filter(function(p){ return (BY_CONCEPT[p.id] || []).length > 0; })
+    };
+  }
+
+  /* Pick the question to review a concept with. Two rules that adaptive
+     selection does not have:
+
+     1. Hold the difficulty. `tier` comes from the highest tier the student
+        has actually answered correctly on this concept (mastery.reachedTier),
+        and questions above it are excluded. Review checks retention; it does
+        not promote.
+     2. Move it somewhere else. A concept is worth spacing because it should
+        transfer, so a question from a DIFFERENT topic than where it was last
+        seen is strongly preferred — resonance coming back inside an acidity
+        problem, not the same card again. */
+  function reviewQuestion(conceptId, tier, excludeIds, avoidTopics){
+    build();
+    var seen = readSeen();
+    var avoid = avoidTopics || [];
+    var candidates = (BY_CONCEPT[conceptId] || []).filter(function(q){
+      return excludeIds.indexOf(q.id) === -1 && (q.tier || 2) <= tier;
+    });
+    if(!candidates.length){
+      /* Nothing at or below the reached tier — possible when every question
+         tagged with this concept is a harder one. Fall back to the LOWEST
+         tier that exists and only that tier: taking "the easiest few" would
+         quietly let a challenge question into a review session, which is
+         exactly the promotion Review is supposed not to do. */
+      var rest = (BY_CONCEPT[conceptId] || []).filter(function(q){
+        return excludeIds.indexOf(q.id) === -1;
+      });
+      if(!rest.length) return null;
+      var lowest = rest.reduce(function(m, q){ return Math.min(m, q.tier || 2); }, 9);
+      candidates = rest.filter(function(q){ return (q.tier || 2) === lowest; });
+    }
+    if(!candidates.length) return null;
+
+    var scored = candidates.map(function(q){
+      var s = 1;
+      if((q.tier || 2) === tier) s *= 1.6;                 // hold the difficulty
+      if(avoid.indexOf(q.topic) === -1) s *= 1.8;          // somewhere else
+      if(isInteractive(q)) s *= 1.4;
+      if(q.diag) s *= 1.2;
+      var at = seen[q.id];
+      if(at){
+        var d = (Date.now() - at) / DAY;
+        s *= d < 1 ? 0.2 : d < 5 ? 0.6 : d < 14 ? 0.9 : 1.1;
+      } else {
+        s *= 1.3;
+      }
+      return { q: q, s: s };
+    });
+    return sampleTop(scored, 6);
+  }
+
   /* ---- plans ---------------------------------------------------------- */
 
   function planLabel(plan){
@@ -297,7 +378,6 @@
       case 'adaptive': return 'Adaptive practice';
       case 'weak':     return 'Targeted: ' + (plan.conceptTitle || 'your weak spots');
       case 'mistakes': return 'Review your mistakes';
-      case 'due':      return 'Spaced review';
       case 'topic':    return 'Topic drill';
       case 'quick':    return 'Quick session';
       case 'mixed':    return 'Mixed practice';
@@ -338,9 +418,6 @@
         break;
       case 'mistakes':
         plan.qids = M().mistakes({ limit: 40 }).map(function(m){ return m.qid; });
-        break;
-      case 'due':
-        plan.concepts = M().due(12).map(function(p){ return p.id; });
         break;
       case 'topic':
         plan.topic = opts.topic;
@@ -405,6 +482,29 @@
       });
     }
 
+    /* A leech — something missed four or more times and still under 45% — is
+       not a drilling problem. Recommending eight more questions on it, while
+       Review has deliberately pulled it out of the queue for the same reason,
+       would have the two pages contradicting each other. Send them to the
+       lesson instead. */
+    var leech = M().leeches()[0];
+    if(leech){
+      var lessonTopic = C().lessonTopicFor(leech.id);
+      out.push({
+        key: 'leech',
+        // phrase() not title(): "Meso compounds is not sticking" reads wrong,
+        // and singular/plural concept titles make agreement unfixable.
+        headline: 'You keep missing ' + C().phrase(leech.id),
+        detail: 'You have missed this ' + (leech.attempts - leech.correct) + ' times out of ' +
+          leech.attempts + '. Another question would just be the next wrong answer — this one needs the ' +
+          'lesson again, not more drilling. It is out of your review queue until you go back to it.',
+        cta: lessonTopic ? 'Re-read ' + lessonTopic.title : 'See your mastery map',
+        href: lessonTopic ? lessonTopic.href : 'mastery.html'
+      });
+    }
+
+    // Weakest concept that is still worth drilling (leeches excluded above).
+    weak = weak.filter(function(p){ return !M().isLeech(p); });
     if(weak.length){
       var w = weak[0];
       var prereqs = M().weakPrerequisites(w.id);
@@ -439,12 +539,18 @@
     }
 
     if(dueList.length >= 3){
+      // Points at Review rather than starting a session here. Review's queue
+      // is finite, capped per day and ordered by overdueness — different
+      // rules from an adaptive session, and it owns them.
+      var batch = Math.min(M().reviewsRemainingToday(), dueList.length);
       out.push({
         key: 'due',
         headline: dueList.length + ' concept' + (dueList.length === 1 ? '' : 's') + ' due for review',
-        detail: 'Spaced repetition: these came up earlier and are scheduled to resurface now — inside new problems, not as the same card again.',
-        cta: 'Review ' + Math.min(10, dueList.length) + ' now',
-        plan: makePlan('due', { count: Math.min(10, dueList.length) })
+        detail: batch
+          ? 'Spaced repetition: these came up earlier and are scheduled to resurface now — inside new problems, not as the same card again. Review takes ' + batch + ' of them and stops.'
+          : 'You have already done today\'s review batch. These are queued for tomorrow.',
+        cta: batch ? 'Go to Review' : 'See the queue',
+        href: 'review.html'
       });
     }
 
@@ -462,15 +568,19 @@
     // nothing specific is wrong — a student who is up to date and has missed
     // nothing — adaptive practice IS the recommendation, and saying so beats
     // an empty panel.
-    var hasSession = out.some(function(r){ return ['diagnostic','weak','due','mistakes'].indexOf(r.key) !== -1; });
-    if(!hasSession){
-      var tierNote = overall
-        ? 'Nothing is overdue and you have no outstanding mistakes, so the engine will keep pushing your difficulty up where you\'re solid and fill gaps where you\'re thin.'
-        : 'The engine picks each question from your mastery profile as you go.';
+    /* There must always be something actionable at the top of the page. A due
+       queue counts even though it hands off to Review — it is a concrete next
+       step, and when one exists it should lead, because clearing the daily
+       queue comes before open-ended practice. Only when nothing at all is
+       pending does adaptive practice become the headline. */
+    var hasAction = out.some(function(r){ return r.plan || r.key === 'due' || r.key === 'leech'; });
+    if(!hasAction){
       out.unshift({
         key: 'adaptive',
         headline: overall ? 'You\'re on top of your review queue' : 'Adaptive practice',
-        detail: tierNote,
+        detail: overall
+          ? 'Nothing is due and you have no outstanding mistakes, so the engine will keep pushing your difficulty up where you\'re solid and fill gaps where you\'re thin.'
+          : 'The engine picks each question from your mastery profile as you go.',
         cta: 'Practice 10 questions',
         plan: makePlan('adaptive', { count: 10 })
       });
@@ -521,6 +631,8 @@
     availableCount: availableCount,
     recommendations: recommendations,
     topicsWithQuestions: topicsWithQuestions,
+    reviewQueue: reviewQueue,
+    reviewQuestion: reviewQuestion,
     primaryConcept: primaryConcept,
     isInteractive: isInteractive,
     markSeen: markSeen,

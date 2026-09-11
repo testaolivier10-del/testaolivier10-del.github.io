@@ -1,0 +1,429 @@
+/* Ochem session runner — the shared question-asking loop.
+
+   Practice and Review both put questions on screen, grade them, diagnose a
+   miss, teach the concept behind it, and offer a follow-up check. That whole
+   loop lives here once. The two pages differ in what they ask NEXT and when
+   they stop, not in how a question behaves, so those are the parts they hand
+   in as callbacks:
+
+     next(state)      -> the next question, or null to end the session
+     progress(state)  -> { pct, label } for the progress bar
+     checkFor(d, q)   -> a remediation question after a miss, or null
+     onFinish(state)  -> the page takes over and renders its own ending
+
+   Keeping one implementation matters more than it looks. The runner is what
+   writes to the mastery engine (via the diagnostic engine) on every answer;
+   a second copy on the Review page would quietly drift — a missed
+   markSeen(), a different share weight — and the two pages would disagree
+   about what the student knows.
+
+   Everything below the callbacks is the same for both: the per-kind
+   renderers (click an atom, push an arrow, rank a list, multiple choice),
+   the diagnostic feedback panel, and the mastery-delta chips.
+
+   Usage:
+     var run = OchemSessionRunner({ els: {...}, next: fn, ... });
+     run.start({ title: 'Adaptive practice' });
+*/
+(function(){
+  var CO = window.OchemConcepts;
+  var M  = window.OchemMastery;
+  var D  = window.OchemDiagnostics;
+  var E  = window.OchemQuestionEngine;
+  var Mo = window.OchemMolecules;
+
+  function esc(s){
+    return String(s == null ? '' : s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function pct(x){ return Math.round((x || 0) * 100); }
+  function plural(n, word){ return n + ' ' + word + (n === 1 ? '' : 's'); }
+  function shuffled(arr){
+    var a = arr.slice();
+    for(var i=a.length-1;i>0;i--){ var j = Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
+    return a;
+  }
+
+  function OchemSessionRunner(config){
+    var els = config.els;
+    var cardEl = els.card;
+    var S = null;
+
+    function tierChipHtml(tier){
+      var t = M.TIERS[tier] || M.TIERS[2];
+      var pips = '';
+      for(var i=1;i<=4;i++) pips += '<span class="pip' + (i <= tier ? ' on' : '') + '"></span>';
+      return '<span class="tier-pips" title="' + esc(t.blurb) + '">' + pips + '</span>' +
+             '<span class="tier-label">' + esc(t.label) + '</span>';
+    }
+
+    /* ---- per-kind rendering --------------------------------------------
+       Each renderer returns { html, attach(submit) }. `submit(response)` is
+       called with the kind-specific response object the diagnostic engine
+       expects. Renderers never grade anything themselves. */
+
+    function renderMcq(q){
+      var opts = q.options || [];
+      return {
+        html: '<div class="choice-row">' + opts.map(function(o, i){
+          return '<button class="choice-btn" data-i="' + i + '">' + esc(o) + '</button>';
+        }).join('') + '</div>',
+        attach: function(submit){
+          cardEl.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              submit({ choice: parseInt(btn.getAttribute('data-i'), 10) });
+            });
+          });
+        },
+        lock: function(response, correct){
+          cardEl.querySelectorAll('.choice-btn').forEach(function(b, i){
+            b.disabled = true;
+            if(i === q.answer) b.classList.add('correct');
+            else if(i === response.choice) b.classList.add('wrong');
+          });
+        }
+      };
+    }
+
+    function renderClickAtom(q){
+      return {
+        html: '<div class="click-hint">Click an atom on the molecule.</div>' +
+              Mo.svg(q.molecule, { clickable: 'all' }),
+        attach: function(submit){
+          cardEl.querySelectorAll('.atom').forEach(function(el){
+            function go(){ submit({ key: el.getAttribute('data-key') }); }
+            el.addEventListener('click', go);
+            el.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(); } });
+          });
+        },
+        lock: function(response, correct){
+          var ok = D.acceptedKeys(q);
+          cardEl.querySelector('.scene').classList.add('scene--locked');
+          cardEl.querySelectorAll('.atom').forEach(function(el){
+            var k = el.getAttribute('data-key');
+            el.classList.add('atom--static');
+            if(ok.indexOf(k) !== -1) el.classList.add('atom--correct');
+            else if(k === response.key) el.classList.add('atom--wrong');
+          });
+        }
+      };
+    }
+
+    function renderMultiClick(q){
+      var picked = [];
+      return {
+        html: '<div class="click-hint">Click every atom that applies, then check your answer.</div>' +
+              Mo.svg(q.molecule, { clickable: 'all' }) +
+              '<div class="multi-note" id="multiNote">Nothing selected yet.</div>' +
+              '<div class="actions" style="justify-content:flex-start;"><button class="btn-press" id="checkBtn" disabled>Check answer</button></div>',
+        attach: function(submit){
+          var note = cardEl.querySelector('#multiNote');
+          var check = cardEl.querySelector('#checkBtn');
+          cardEl.querySelectorAll('.atom').forEach(function(el){
+            function toggle(){
+              var k = el.getAttribute('data-key');
+              var at = picked.indexOf(k);
+              if(at === -1){ picked.push(k); el.classList.add('chosen'); }
+              else { picked.splice(at, 1); el.classList.remove('chosen'); }
+              note.textContent = picked.length ? plural(picked.length, 'position') + ' selected.' : 'Nothing selected yet.';
+              check.disabled = !picked.length;
+            }
+            el.addEventListener('click', toggle);
+            el.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); } });
+          });
+          check.addEventListener('click', function(){ submit({ keys: picked.slice() }); });
+        },
+        lock: function(response, correct){
+          var ok = D.acceptedKeys(q);
+          cardEl.querySelector('#checkBtn').remove();
+          cardEl.querySelector('.scene').classList.add('scene--locked');
+          cardEl.querySelectorAll('.atom').forEach(function(el){
+            var k = el.getAttribute('data-key');
+            el.classList.remove('chosen');
+            el.classList.add('atom--static');
+            if(ok.indexOf(k) !== -1) el.classList.add('atom--correct');
+            else if((response.keys || []).indexOf(k) !== -1) el.classList.add('atom--wrong');
+          });
+        }
+      };
+    }
+
+    function renderArrow(q){
+      var from = null;
+      return {
+        html: '<div class="click-hint">Click where the arrow starts, then where it ends.</div>' +
+              Mo.svg(q.molecule, { clickable: 'all' }) +
+              '<div class="multi-note" id="arrowNote">Start at a source of electrons.</div>',
+        attach: function(submit){
+          var note = cardEl.querySelector('#arrowNote');
+          cardEl.querySelectorAll('.atom').forEach(function(el){
+            function go(){
+              var k = el.getAttribute('data-key');
+              if(from === null){
+                from = k;
+                el.classList.add('chosen');
+                note.textContent = 'Tail on ' + Mo.labelFor(q.molecule, k) + '. Now click where those electrons go.';
+              } else if(k !== from){
+                submit({ from: from, to: k });
+              }
+            }
+            el.addEventListener('click', go);
+            el.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(); } });
+          });
+        },
+        lock: function(response, correct){
+          // Redraw the scene showing the student's arrow in red when wrong and
+          // the correct one in green alongside it, so the mistake is visible
+          // rather than described.
+          var arrows = [];
+          if(!correct) arrows.push({ from: response.from, to: response.to, color: 'var(--bad)' });
+          arrows.push({ from: q.answer.from, to: q.answer.to, color: correct ? 'var(--good)' : 'var(--accent)' });
+          var scene = cardEl.querySelector('.scene');
+          scene.outerHTML = Mo.svg(q.molecule, { clickable: [], arrows: arrows });
+          cardEl.querySelector('.scene').classList.add('scene--locked');
+          var note = cardEl.querySelector('#arrowNote');
+          if(note) note.remove();
+        }
+      };
+    }
+
+    function renderOrder(q){
+      // Start from a shuffled arrangement that isn't already the answer.
+      var order = shuffled(q.items.map(function(_, i){ return i; }));
+      var tries = 0;
+      while(order.join() === q.answer.join() && tries++ < 8) order = shuffled(order);
+
+      function listHtml(state){
+        return order.map(function(itemIdx, pos){
+          var cls = '';
+          if(state) cls = itemIdx === q.answer[pos] ? ' class="ok"' : ' class="no"';
+          return '<li' + cls + ' data-pos="' + pos + '">' +
+            '<span class="rank">' + (pos + 1) + '</span>' +
+            '<span class="txt">' + esc(q.items[itemIdx]) + '</span>' +
+            (state ? '' : '<span class="mv">' +
+              '<button type="button" data-mv="up" data-pos="' + pos + '" aria-label="Move up"' + (pos === 0 ? ' disabled' : '') + '>&#9650;</button>' +
+              '<button type="button" data-mv="down" data-pos="' + pos + '" aria-label="Move down"' + (pos === order.length - 1 ? ' disabled' : '') + '>&#9660;</button>' +
+            '</span>') +
+          '</li>';
+        }).join('');
+      }
+
+      function rewire(submit){
+        cardEl.querySelector('#orderList').innerHTML = listHtml(false);
+        cardEl.querySelectorAll('[data-mv]').forEach(function(b){
+          b.addEventListener('click', function(){
+            var pos = parseInt(b.getAttribute('data-pos'), 10);
+            var to = b.getAttribute('data-mv') === 'up' ? pos - 1 : pos + 1;
+            if(to < 0 || to >= order.length) return;
+            var tmp = order[pos]; order[pos] = order[to]; order[to] = tmp;
+            rewire(submit);
+          });
+        });
+      }
+
+      return {
+        html: '<ul class="order-list" id="orderList"></ul>' +
+              '<div class="actions" style="justify-content:flex-start;"><button class="btn-press" id="checkBtn">Check answer</button></div>',
+        attach: function(submit){
+          rewire(submit);
+          cardEl.querySelector('#checkBtn').addEventListener('click', function(){ submit({ order: order.slice() }); });
+        },
+        lock: function(){
+          cardEl.querySelector('#checkBtn').remove();
+          cardEl.querySelector('#orderList').innerHTML = listHtml(true);
+          // Then show the correct ordering underneath, spelled out.
+          cardEl.querySelector('#orderList').insertAdjacentHTML('afterend',
+            '<div class="multi-note">Correct order: ' +
+            esc(q.answer.map(function(i){ return q.items[i]; }).join('  ›  ')) + '</div>');
+        }
+      };
+    }
+
+    function rendererFor(q){
+      switch(q.kind){
+        case 'click-atom':  return renderClickAtom(q);
+        case 'multi-click': return renderMultiClick(q);
+        case 'arrow':       return renderArrow(q);
+        case 'order':       return renderOrder(q);
+        default:            return renderMcq(q);
+      }
+    }
+
+    var KIND_LABEL = {
+      'click-atom':'Identify on the molecule', 'multi-click':'Identify all that apply',
+      'arrow':'Push the arrow', 'order':'Rank these',
+      'predict':'Predict the product', 'mechanism':'Choose the mechanism',
+      'mcq':'', 'tf':'True or false'
+    };
+
+
+    function updateProgress(){
+      var p = config.progress(S);
+      if(els.progFill) els.progFill.style.width = Math.max(0, Math.min(100, p.pct)) + '%';
+      if(els.progLabel) els.progLabel.textContent = S.isCheck ? 'Check — apply the fix' : p.label;
+    }
+
+    function renderQuestion(q){
+      S.current = q;
+      updateProgress();
+      E.markSeen(q.id);
+
+      // A check question usually lives under a different topic and has its own
+      // primary concept. Labelling it with that would hide the fact that this
+      // is the same idea coming back, which is the entire point of the check.
+      var conceptId = (S.isCheck && S.checkConcept) ? S.checkConcept : E.primaryConcept(q);
+      var concept = CO.get(conceptId);
+      var kindLabel = KIND_LABEL[q.kind] || '';
+
+      var head = '<div class="step-eyebrow">' +
+        (S.isCheck ? 'Check &middot; ' : '') +
+        esc(E.topicTitle(q.topic)) + (concept ? ' &middot; ' + esc(concept.title) : '') +
+        '</div>' +
+        '<div class="q-meta">' + tierChipHtml(q.tier || 2) +
+          (kindLabel ? '<span class="tier-label">&middot; ' + esc(kindLabel) + '</span>' : '') +
+        '</div>' +
+        '<h2 class="step-title">' + esc(q.prompt || q.q) + '</h2>' +
+        (q.sub ? '<p class="q-sub">' + esc(q.sub) + '</p>' : '') +
+        (q.reaction ? '<div class="formula">' + esc(q.reaction) + '</div>' : '');
+
+      var r = rendererFor(q);
+      cardEl.innerHTML = head + r.html + '<div id="afterAnswer"></div>';
+
+      var answered = false;
+      r.attach(function(response){
+        if(answered) return;
+        answered = true;
+        handleAnswer(q, response, r);
+      });
+    }
+
+    function handleAnswer(q, response, renderer){
+      var d = D.applyResult(q, response);
+      renderer.lock(response, d.correct);
+
+      S.asked++;
+      if(!S.isCheck) S.index++;
+      if(d.correct) S.correct++;
+      var cid = E.primaryConcept(q);
+      S.conceptsTouched[cid] = true;
+      if(d.conceptId) S.conceptsTouched[d.conceptId] = true;
+      S.askedIds.push(q.id);
+      S.recentTopics.unshift(q.topic); S.recentTopics = S.recentTopics.slice(0, 4);
+      S.recentConcepts.unshift(cid);   S.recentConcepts = S.recentConcepts.slice(0, 4);
+      S.recentKinds.unshift(q.kind);   S.recentKinds = S.recentKinds.slice(0, 4);
+
+      if(config.onAnswer) config.onAnswer(q, d, S);
+
+      // Queue the "now apply the correction" question. Only after a real miss,
+      // and never after a check question — otherwise a bad run turns into an
+      // infinite corridor of remediation.
+      var check = null;
+      if(!d.correct && !S.isCheck && config.checkFor){
+        check = config.checkFor(d, q, S);
+        S.pendingCheck = check;
+        S.checkConcept = check ? d.conceptId : null;
+      }
+
+      document.getElementById('afterAnswer').innerHTML = feedbackHtml(q, d, check);
+      var btn = cardEl.querySelector('#nextBtn');
+      if(btn) btn.addEventListener('click', advance);
+    }
+
+    function feedbackHtml(q, d, check){
+      var html = '';
+
+      if(d.correct){
+        html += '<div class="diag good"><div class="k">Correct</div>' +
+          '<p class="msg">' + esc(d.why) + '</p></div>';
+      } else {
+        html += '<div class="diag"><div class="k">' +
+          (d.precise ? 'Here is what went wrong' : 'Not quite') + '</div>' +
+          (d.whatYouDid ? '<div class="did">' + esc(d.whatYouDid) + '</div>' : '') +
+          '<p class="msg">' + esc(d.diagnosis) + '</p>' +
+          (d.why ? '<p class="msg">' + esc(d.why) + '</p>' : '') +
+        '</div>';
+
+        // The micro-lesson on the concept the mistake revealed, plus a route to
+        // the full lesson if they want more than three sentences.
+        if(d.concept){
+          html += '<div class="teach-box">' +
+            '<div class="k">The concept behind it</div>' +
+            '<h3>' + esc(d.concept.title) + '</h3>' +
+            '<p>' + esc(d.teach) + '</p>';
+          var links = [];
+          if(d.lessonTopic) links.push('<a href="' + d.lessonTopic.href + '">Full lesson: ' + esc(d.lessonTopic.title) + '</a>');
+          if(d.lessonTopic) links.push('<a href="' + d.lessonTopic.href + '?notes=1">Just the notes</a>');
+          if(links.length) html += '<div class="links">' + links.join('') + '</div>';
+          if(d.prereqs && d.prereqs.length){
+            html += '<div class="prereq-warn"><b>Worth checking first:</b> this builds on ' +
+              esc(d.prereqs.map(function(p){ return CO.phrase(p.id); }).join(' and ')) +
+              ', and you\'re at ' + pct(d.prereqs[0].strength) + '% there. Drilling this concept will keep stalling until that is solid.</div>';
+          }
+          html += '</div>';
+        }
+      }
+
+      // What this answer did to the mastery profile — the engine's reasoning,
+      // shown rather than hidden.
+      if(d.moved && d.moved.length){
+        html += '<div class="delta-row">' + d.moved.map(function(m){
+          var c = CO.get(m.id);
+          var up = m.before === null || m.after >= m.before;
+          var arrow = m.before === null
+            ? '→ ' + pct(m.after) + '% (first look)'
+            : pct(m.before) + '% → ' + pct(m.after) + '%';
+          return '<span class="delta-chip ' + (up ? 'up' : 'down') + '">' +
+            esc(c ? c.title : m.id) + ' ' + esc(arrow) + '</span>';
+        }).join('') + '</div>';
+      }
+
+      var label = check ? 'Try a similar one'
+                : (config.nextLabel ? config.nextLabel(S) : 'Next question');
+      html += '<div class="actions"><button class="btn-press" id="nextBtn">' + esc(label) + '</button></div>';
+      return html;
+    }
+
+    function advance(){
+      // A queued remediation check jumps the line — the whole point is that it
+      // arrives immediately after the teaching, while the correction is fresh.
+      if(S.pendingCheck){
+        var cq = S.pendingCheck;
+        S.pendingCheck = null;
+        S.isCheck = true;
+        renderQuestion(cq);
+        return;
+      }
+      S.isCheck = false;
+      S.checkConcept = null;
+      var q = config.next(S);
+      if(!q){ finish(); return; }
+      renderQuestion(q);
+    }
+
+    function finish(){ config.onFinish(S); }
+
+    function start(opts){
+      opts = opts || {};
+      S = {
+        index: 0,            // main questions answered (checks don't count)
+        correct: 0,
+        asked: 0,            // including remediation checks
+        askedIds: [],
+        recentTopics: [], recentConcepts: [], recentKinds: [],
+        conceptsTouched: {},
+        pendingCheck: null,  // a remediation question queued after a miss
+        checkConcept: null,  // the concept that check is re-testing
+        current: null,
+        isCheck: false,
+        meta: opts.meta || {}
+      };
+      if(els.modeLabel) els.modeLabel.textContent = opts.title || '';
+      advance();
+      return S;
+    }
+
+    return { start: start, state: function(){ return S; }, finish: finish };
+  }
+
+  window.OchemSessionRunner = OchemSessionRunner;
+})();

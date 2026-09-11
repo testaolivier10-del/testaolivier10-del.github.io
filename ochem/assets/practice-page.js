@@ -127,8 +127,11 @@
       desc:'The engine picks every question from your mastery profile as you go.', count:10 },
     { mode:'mistakes', title:'Review your mistakes',
       desc:'Only questions you got wrong and have not fixed since.', count:10 },
-    { mode:'due', title:'Spaced review',
-      desc:'Concepts scheduled to come back today, inside fresh problems.', count:10 },
+    // Spaced review is the Review page's job, not a mode here: it is a
+    // finite, capped, daily queue rather than an open-ended session, and two
+    // implementations of it would drift apart.
+    { mode:'review', title:'Spaced review', href:'review.html',
+      desc:'Your due queue, on the Review page. Finite — it drains to zero.' },
     { mode:'topic', title:'Pick a topic',
       desc:'Drill one topic on its own, at a difficulty you choose.' },
     { mode:'quick', title:'Quick 5',
@@ -141,12 +144,11 @@
     return '<div class="mode-grid">' + MODES.map(function(m, i){
       var disabled = '';
       if(m.mode === 'mistakes' && !M.mistakes({ limit: 1 }).length) disabled = ' disabled';
-      if(m.mode === 'due' && !M.due(1).length) disabled = ' disabled';
-      return '<button type="button" class="mode-card" data-mode="' + i + '"' + disabled + '>' +
-        (m.pill ? '<span class="pill">' + m.pill + '</span>' : '') +
+      var inner = (m.pill ? '<span class="pill">' + m.pill + '</span>' : '') +
         '<span class="t">' + esc(m.title) + '</span>' +
-        '<span class="d">' + esc(m.desc) + '</span>' +
-      '</button>';
+        '<span class="d">' + esc(m.desc) + '</span>';
+      if(m.href) return '<a class="mode-card" href="' + m.href + '">' + inner + '</a>';
+      return '<button type="button" class="mode-card" data-mode="' + i + '"' + disabled + '>' + inner + '</button>';
     }).join('') + '</div>' +
     '<div class="drill-panel" id="drillPanel" hidden>' +
       '<div class="practice-field"><label for="topicFilter">Topic</label><select id="topicFilter"></select></div>' +
@@ -265,7 +267,31 @@
      SESSION
      ===================================================================== */
 
-  var S = null;
+  /* The question loop itself lives in session-runner.js, shared with the
+     Review page. Practice supplies the two things that are its own: which
+     question comes next (the adaptive engine, filtered by the plan) and when
+     to stop (a fixed session length). */
+  var currentPlan = null;
+  var runner = window.OchemSessionRunner({
+    els: { card: cardEl, progFill: progFill, progLabel: progLabel, modeLabel: modeLabel },
+    next: function(S){
+      if(S.index >= S.meta.count) return null;
+      return E.next(currentPlan, S);
+    },
+    progress: function(S){
+      return {
+        pct: Math.round((Math.min(S.index, S.meta.count) / S.meta.count) * 100),
+        label: 'Question ' + Math.min(S.index + 1, S.meta.count) + ' / ' + S.meta.count
+      };
+    },
+    checkFor: function(d, q, S){
+      return E.checkQuestion(d.conceptId, q.tier || 2, S.askedIds, q.kind);
+    },
+    nextLabel: function(S){
+      return S.isCheck ? 'Continue' : (S.index >= S.meta.count ? 'Finish session' : 'Next question');
+    },
+    onFinish: renderSummary
+  });
 
   function startSession(plan){
     var available = E.availableCount(plan);
@@ -273,398 +299,30 @@
       alert('There are no questions available for that right now.');
       return;
     }
-    S = {
-      plan: plan,
-      count: Math.min(plan.count || 10, available),
-      index: 0,              // how many main questions have been answered
-      correct: 0,
-      asked: 0,              // including remediation checks
-      askedIds: [],
-      recentTopics: [], recentConcepts: [], recentKinds: [],
-      conceptsTouched: {},
-      pendingCheck: null,    // a remediation question queued after a miss
-      checkConcept: null,    // the concept that check is re-testing
-      fixed: 0,              // previously-missed questions redeemed this session
-      current: null,
-      isCheck: false
-    };
-    modeLabel.textContent = plan.label || 'Practice';
+    currentPlan = plan;
     show('session');
-    advance();
-  }
-
-  function advance(){
-    // A queued remediation check jumps the line — the whole point is that it
-    // arrives immediately after the teaching, while the correction is fresh.
-    if(S.pendingCheck){
-      var cq = S.pendingCheck;
-      S.pendingCheck = null;
-      S.isCheck = true;
-      renderQuestion(cq);
-      return;
-    }
-    if(S.index >= S.count){ renderSummary(); return; }
-    var q = E.next(S.plan, S);
-    if(!q){ renderSummary(); return; }
-    S.isCheck = false;
-    S.checkConcept = null;
-    renderQuestion(q);
-  }
-
-  function updateProgress(){
-    var done = Math.min(S.index, S.count);
-    progFill.style.width = Math.round((done / S.count) * 100) + '%';
-    progLabel.textContent = S.isCheck
-      ? 'Check — apply the fix'
-      : 'Question ' + Math.min(S.index + 1, S.count) + ' / ' + S.count;
-  }
-
-  function tierChipHtml(tier){
-    var t = M.TIERS[tier] || M.TIERS[2];
-    var pips = '';
-    for(var i=1;i<=4;i++) pips += '<span class="pip' + (i <= tier ? ' on' : '') + '"></span>';
-    return '<span class="tier-pips" title="' + esc(t.blurb) + '">' + pips + '</span>' +
-           '<span class="tier-label">' + esc(t.label) + '</span>';
-  }
-
-  /* ---- per-kind rendering --------------------------------------------
-     Each renderer returns { html, attach(submit) }. `submit(response)` is
-     called with the kind-specific response object the diagnostic engine
-     expects. Renderers never grade anything themselves. */
-
-  function renderMcq(q){
-    var opts = q.options || [];
-    return {
-      html: '<div class="choice-row">' + opts.map(function(o, i){
-        return '<button class="choice-btn" data-i="' + i + '">' + esc(o) + '</button>';
-      }).join('') + '</div>',
-      attach: function(submit){
-        cardEl.querySelectorAll('.choice-btn').forEach(function(btn){
-          btn.addEventListener('click', function(){
-            submit({ choice: parseInt(btn.getAttribute('data-i'), 10) });
-          });
-        });
-      },
-      lock: function(response, correct){
-        cardEl.querySelectorAll('.choice-btn').forEach(function(b, i){
-          b.disabled = true;
-          if(i === q.answer) b.classList.add('correct');
-          else if(i === response.choice) b.classList.add('wrong');
-        });
-      }
-    };
-  }
-
-  function renderClickAtom(q){
-    return {
-      html: '<div class="click-hint">Click an atom on the molecule.</div>' +
-            Mo.svg(q.molecule, { clickable: 'all' }),
-      attach: function(submit){
-        cardEl.querySelectorAll('.atom').forEach(function(el){
-          function go(){ submit({ key: el.getAttribute('data-key') }); }
-          el.addEventListener('click', go);
-          el.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(); } });
-        });
-      },
-      lock: function(response, correct){
-        var ok = D.acceptedKeys(q);
-        cardEl.querySelector('.scene').classList.add('scene--locked');
-        cardEl.querySelectorAll('.atom').forEach(function(el){
-          var k = el.getAttribute('data-key');
-          el.classList.add('atom--static');
-          if(ok.indexOf(k) !== -1) el.classList.add('atom--correct');
-          else if(k === response.key) el.classList.add('atom--wrong');
-        });
-      }
-    };
-  }
-
-  function renderMultiClick(q){
-    var picked = [];
-    return {
-      html: '<div class="click-hint">Click every atom that applies, then check your answer.</div>' +
-            Mo.svg(q.molecule, { clickable: 'all' }) +
-            '<div class="multi-note" id="multiNote">Nothing selected yet.</div>' +
-            '<div class="actions" style="justify-content:flex-start;"><button class="btn-press" id="checkBtn" disabled>Check answer</button></div>',
-      attach: function(submit){
-        var note = cardEl.querySelector('#multiNote');
-        var check = cardEl.querySelector('#checkBtn');
-        cardEl.querySelectorAll('.atom').forEach(function(el){
-          function toggle(){
-            var k = el.getAttribute('data-key');
-            var at = picked.indexOf(k);
-            if(at === -1){ picked.push(k); el.classList.add('chosen'); }
-            else { picked.splice(at, 1); el.classList.remove('chosen'); }
-            note.textContent = picked.length ? plural(picked.length, 'position') + ' selected.' : 'Nothing selected yet.';
-            check.disabled = !picked.length;
-          }
-          el.addEventListener('click', toggle);
-          el.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); } });
-        });
-        check.addEventListener('click', function(){ submit({ keys: picked.slice() }); });
-      },
-      lock: function(response, correct){
-        var ok = D.acceptedKeys(q);
-        cardEl.querySelector('#checkBtn').remove();
-        cardEl.querySelector('.scene').classList.add('scene--locked');
-        cardEl.querySelectorAll('.atom').forEach(function(el){
-          var k = el.getAttribute('data-key');
-          el.classList.remove('chosen');
-          el.classList.add('atom--static');
-          if(ok.indexOf(k) !== -1) el.classList.add('atom--correct');
-          else if((response.keys || []).indexOf(k) !== -1) el.classList.add('atom--wrong');
-        });
-      }
-    };
-  }
-
-  function renderArrow(q){
-    var from = null;
-    return {
-      html: '<div class="click-hint">Click where the arrow starts, then where it ends.</div>' +
-            Mo.svg(q.molecule, { clickable: 'all' }) +
-            '<div class="multi-note" id="arrowNote">Start at a source of electrons.</div>',
-      attach: function(submit){
-        var note = cardEl.querySelector('#arrowNote');
-        cardEl.querySelectorAll('.atom').forEach(function(el){
-          function go(){
-            var k = el.getAttribute('data-key');
-            if(from === null){
-              from = k;
-              el.classList.add('chosen');
-              note.textContent = 'Tail on ' + Mo.labelFor(q.molecule, k) + '. Now click where those electrons go.';
-            } else if(k !== from){
-              submit({ from: from, to: k });
-            }
-          }
-          el.addEventListener('click', go);
-          el.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(); } });
-        });
-      },
-      lock: function(response, correct){
-        // Redraw the scene showing the student's arrow in red when wrong and
-        // the correct one in green alongside it, so the mistake is visible
-        // rather than described.
-        var arrows = [];
-        if(!correct) arrows.push({ from: response.from, to: response.to, color: 'var(--bad)' });
-        arrows.push({ from: q.answer.from, to: q.answer.to, color: correct ? 'var(--good)' : 'var(--accent)' });
-        var scene = cardEl.querySelector('.scene');
-        scene.outerHTML = Mo.svg(q.molecule, { clickable: [], arrows: arrows });
-        cardEl.querySelector('.scene').classList.add('scene--locked');
-        var note = cardEl.querySelector('#arrowNote');
-        if(note) note.remove();
-      }
-    };
-  }
-
-  function renderOrder(q){
-    // Start from a shuffled arrangement that isn't already the answer.
-    var order = shuffled(q.items.map(function(_, i){ return i; }));
-    var tries = 0;
-    while(order.join() === q.answer.join() && tries++ < 8) order = shuffled(order);
-
-    function listHtml(state){
-      return order.map(function(itemIdx, pos){
-        var cls = '';
-        if(state) cls = itemIdx === q.answer[pos] ? ' class="ok"' : ' class="no"';
-        return '<li' + cls + ' data-pos="' + pos + '">' +
-          '<span class="rank">' + (pos + 1) + '</span>' +
-          '<span class="txt">' + esc(q.items[itemIdx]) + '</span>' +
-          (state ? '' : '<span class="mv">' +
-            '<button type="button" data-mv="up" data-pos="' + pos + '" aria-label="Move up"' + (pos === 0 ? ' disabled' : '') + '>&#9650;</button>' +
-            '<button type="button" data-mv="down" data-pos="' + pos + '" aria-label="Move down"' + (pos === order.length - 1 ? ' disabled' : '') + '>&#9660;</button>' +
-          '</span>') +
-        '</li>';
-      }).join('');
-    }
-
-    function rewire(submit){
-      cardEl.querySelector('#orderList').innerHTML = listHtml(false);
-      cardEl.querySelectorAll('[data-mv]').forEach(function(b){
-        b.addEventListener('click', function(){
-          var pos = parseInt(b.getAttribute('data-pos'), 10);
-          var to = b.getAttribute('data-mv') === 'up' ? pos - 1 : pos + 1;
-          if(to < 0 || to >= order.length) return;
-          var tmp = order[pos]; order[pos] = order[to]; order[to] = tmp;
-          rewire(submit);
-        });
-      });
-    }
-
-    return {
-      html: '<ul class="order-list" id="orderList"></ul>' +
-            '<div class="actions" style="justify-content:flex-start;"><button class="btn-press" id="checkBtn">Check answer</button></div>',
-      attach: function(submit){
-        rewire(submit);
-        cardEl.querySelector('#checkBtn').addEventListener('click', function(){ submit({ order: order.slice() }); });
-      },
-      lock: function(){
-        cardEl.querySelector('#checkBtn').remove();
-        cardEl.querySelector('#orderList').innerHTML = listHtml(true);
-        // Then show the correct ordering underneath, spelled out.
-        cardEl.querySelector('#orderList').insertAdjacentHTML('afterend',
-          '<div class="multi-note">Correct order: ' +
-          esc(q.answer.map(function(i){ return q.items[i]; }).join('  ›  ')) + '</div>');
-      }
-    };
-  }
-
-  function rendererFor(q){
-    switch(q.kind){
-      case 'click-atom':  return renderClickAtom(q);
-      case 'multi-click': return renderMultiClick(q);
-      case 'arrow':       return renderArrow(q);
-      case 'order':       return renderOrder(q);
-      default:            return renderMcq(q);
-    }
-  }
-
-  var KIND_LABEL = {
-    'click-atom':'Identify on the molecule', 'multi-click':'Identify all that apply',
-    'arrow':'Push the arrow', 'order':'Rank these',
-    'predict':'Predict the product', 'mechanism':'Choose the mechanism',
-    'mcq':'', 'tf':'True or false'
-  };
-
-  function renderQuestion(q){
-    S.current = q;
-    updateProgress();
-    E.markSeen(q.id);
-
-    var conceptId = (S.isCheck && S.checkConcept) ? S.checkConcept : E.primaryConcept(q);
-    var concept = CO.get(conceptId);
-    var kindLabel = KIND_LABEL[q.kind] || '';
-
-    var head = '<div class="step-eyebrow">' +
-      (S.isCheck ? 'Check &middot; ' : '') +
-      esc(E.topicTitle(q.topic)) + (concept ? ' &middot; ' + esc(concept.title) : '') +
-      '</div>' +
-      '<div class="q-meta">' + tierChipHtml(q.tier || 2) +
-        (kindLabel ? '<span class="tier-label">&middot; ' + esc(kindLabel) + '</span>' : '') +
-      '</div>' +
-      '<h2 class="step-title">' + esc(q.prompt || q.q) + '</h2>' +
-      (q.sub ? '<p class="q-sub">' + esc(q.sub) + '</p>' : '') +
-      (q.reaction ? '<div class="formula">' + esc(q.reaction) + '</div>' : '');
-
-    var r = rendererFor(q);
-    cardEl.innerHTML = head + r.html + '<div id="afterAnswer"></div>';
-
-    var answered = false;
-    r.attach(function(response){
-      if(answered) return;
-      answered = true;
-      handleAnswer(q, response, r);
+    runner.start({
+      title: plan.label || 'Practice',
+      meta: { count: Math.min(plan.count || 10, available) }
     });
   }
 
-  function handleAnswer(q, response, renderer){
-    var d = D.applyResult(q, response);
-    renderer.lock(response, d.correct);
-
-    S.asked++;
-    if(!S.isCheck) S.index++;
-    if(d.correct) S.correct++;
-    var cid = E.primaryConcept(q);
-    S.conceptsTouched[cid] = true;
-    if(d.conceptId) S.conceptsTouched[d.conceptId] = true;
-    S.askedIds.push(q.id);
-    S.recentTopics.unshift(q.topic); S.recentTopics = S.recentTopics.slice(0, 4);
-    S.recentConcepts.unshift(cid);   S.recentConcepts = S.recentConcepts.slice(0, 4);
-    S.recentKinds.unshift(q.kind);   S.recentKinds = S.recentKinds.slice(0, 4);
-
-    // Queue the "now apply the correction" question. Only after a real miss,
-    // and never after a check question — otherwise a bad run turns into an
-    // infinite corridor of remediation.
-    var check = null;
-    if(!d.correct && !S.isCheck){
-      check = E.checkQuestion(d.conceptId, q.tier || 2, S.askedIds, q.kind);
-      S.pendingCheck = check;
-      // Remember what the check is FOR. A check question often lives under a
-      // different topic and has its own primary concept — labelling it with
-      // that would hide the fact that this is the same idea coming back.
-      S.checkConcept = check ? d.conceptId : null;
-    }
-
-    document.getElementById('afterAnswer').innerHTML = feedbackHtml(q, d, check);
-    wireFeedback();
-  }
-
-  function feedbackHtml(q, d, check){
-    var html = '';
-
-    if(d.correct){
-      html += '<div class="diag good"><div class="k">Correct</div>' +
-        '<p class="msg">' + esc(d.why) + '</p></div>';
-    } else {
-      html += '<div class="diag"><div class="k">' +
-        (d.precise ? 'Here is what went wrong' : 'Not quite') + '</div>' +
-        (d.whatYouDid ? '<div class="did">' + esc(d.whatYouDid) + '</div>' : '') +
-        '<p class="msg">' + esc(d.diagnosis) + '</p>' +
-        (d.why ? '<p class="msg">' + esc(d.why) + '</p>' : '') +
-      '</div>';
-
-      // The micro-lesson on the concept the mistake revealed, plus a route to
-      // the full lesson if they want more than three sentences.
-      if(d.concept){
-        html += '<div class="teach-box">' +
-          '<div class="k">The concept behind it</div>' +
-          '<h3>' + esc(d.concept.title) + '</h3>' +
-          '<p>' + esc(d.teach) + '</p>';
-        var links = [];
-        if(d.lessonTopic) links.push('<a href="' + d.lessonTopic.href + '">Full lesson: ' + esc(d.lessonTopic.title) + '</a>');
-        if(d.lessonTopic) links.push('<a href="' + d.lessonTopic.href + '?notes=1">Just the notes</a>');
-        if(links.length) html += '<div class="links">' + links.join('') + '</div>';
-        if(d.prereqs && d.prereqs.length){
-          html += '<div class="prereq-warn"><b>Worth checking first:</b> this builds on ' +
-            esc(d.prereqs.map(function(p){ return CO.phrase(p.id); }).join(' and ')) +
-            ', and you\'re at ' + pct(d.prereqs[0].strength) + '% there. Drilling this concept will keep stalling until that is solid.</div>';
-        }
-        html += '</div>';
-      }
-    }
-
-    // What this answer did to the mastery profile — the engine's reasoning,
-    // shown rather than hidden.
-    if(d.moved && d.moved.length){
-      html += '<div class="delta-row">' + d.moved.map(function(m){
-        var c = CO.get(m.id);
-        var up = m.before === null || m.after >= m.before;
-        var arrow = m.before === null
-          ? '→ ' + pct(m.after) + '% (first look)'
-          : pct(m.before) + '% → ' + pct(m.after) + '%';
-        return '<span class="delta-chip ' + (up ? 'up' : 'down') + '">' +
-          esc(c ? c.title : m.id) + ' ' + esc(arrow) + '</span>';
-      }).join('') + '</div>';
-    }
-
-    var lastMain = !S.isCheck && S.index >= S.count;
-    var label = check ? 'Try a similar one'
-              : (S.isCheck ? 'Continue' : (lastMain ? 'Finish session' : 'Next question'));
-    html += '<div class="actions"><button class="btn-press" id="nextBtn">' + label + '</button></div>';
-    return html;
-  }
-
-  function wireFeedback(){
-    var btn = cardEl.querySelector('#nextBtn');
-    if(btn) btn.addEventListener('click', advance);
-  }
-
   quitBtn.addEventListener('click', function(){
-    if(!S) { renderHome(); return; }
-    if(S.asked === 0){ renderHome(); return; }
-    renderSummary();
+    var S = runner.state();
+    if(!S || S.asked === 0){ renderHome(); return; }
+    renderSummary(S);
   });
 
   /* =====================================================================
      SUMMARY
      ===================================================================== */
 
-  function renderSummary(){
+  function renderSummary(S){
     var asked = S.asked;
     var score = asked ? Math.round((S.correct / asked) * 100) : 0;
 
     M.recordSession({
-      mode: S.plan.mode, asked: asked, correct: S.correct,
+      mode: currentPlan ? currentPlan.mode : 'adaptive', asked: asked, correct: S.correct,
       concepts: Object.keys(S.conceptsTouched)
     });
 
@@ -749,7 +407,11 @@
     if(params.topic && C.findTopic(params.topic)){
       return E.makePlan('topic', { topic: params.topic, count: count });
     }
-    if(params.mode && ['adaptive','mistakes','due','quick','mixed'].indexOf(params.mode) !== -1){
+    // ?mode=due used to run a spaced-review session here; Review owns that
+    // now, so an old bookmark is sent there rather than quietly doing
+    // something subtly different.
+    if(params.mode === 'due'){ location.replace('review.html'); return null; }
+    if(params.mode && ['adaptive','mistakes','quick','mixed'].indexOf(params.mode) !== -1){
       return E.makePlan(params.mode, { count: count });
     }
     return null;

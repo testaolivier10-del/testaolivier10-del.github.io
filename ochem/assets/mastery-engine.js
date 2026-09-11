@@ -94,7 +94,7 @@
   function now(){ return Date.now(); }
   function clamp(x, lo, hi){ return x < lo ? lo : (x > hi ? hi : x); }
 
-  function blank(){ return { v:1, concepts:{}, mistakes:[], sessions:[], updated: now() }; }
+  function blank(){ return { v:1, concepts:{}, mistakes:[], sessions:[], reviews:{}, updated: now() }; }
 
   function read(){
     try{
@@ -105,6 +105,7 @@
       d.concepts = d.concepts || {};
       d.mistakes = d.mistakes || [];
       d.sessions = d.sessions || [];
+      d.reviews = d.reviews || {};
       return d;
     }catch(e){ return blank(); }
   }
@@ -382,6 +383,67 @@
     return n;
   }
 
+  /* ---- spaced review: daily workload, difficulty ceiling, leeches -----
+
+     These three exist because a review queue behaves differently from
+     practice, and each rule is there to stop a specific failure mode.
+
+     DAILY_REVIEW_CAP — come back after two weeks away and the honest queue
+     is eighty concepts. Showing that number is how people quit. The cap is
+     counted per calendar day (not per session), so opening Review twice in
+     an evening doesn't hand out forty questions.
+
+     reachedTier — practice pushes you up a difficulty tier once a concept
+     is solid. Review must not: it is checking that something still holds,
+     not advancing you. So a review question is served at the highest tier
+     you have actually answered correctly, and no higher.
+
+     leeches — a concept you have failed five times does not need a sixth
+     question, it needs the lesson again. Anki calls these leeches and
+     suspends them; here they are pulled out of the queue and surfaced
+     separately with a link, so the queue stays clearable instead of
+     accumulating a permanent core of things you always get wrong. */
+  var DAILY_REVIEW_CAP = 20;
+  var LEECH_WRONG = 4;
+  var LEECH_STRENGTH = 0.45;
+
+  function dayKey(ts){ return new Date(ts || now()).toISOString().slice(0, 10); }
+
+  // Called once per answered review question, so the cap is a real daily
+  // budget rather than a per-session one.
+  function noteReview(){
+    var d = read();
+    var k = dayKey();
+    d.reviews[k] = (d.reviews[k] || 0) + 1;
+    // Keep a fortnight; older days are only noise.
+    Object.keys(d.reviews).forEach(function(day){
+      if((now() - new Date(day + 'T00:00:00Z').getTime()) > 14 * DAY) delete d.reviews[day];
+    });
+    write(d);
+  }
+  function reviewsToday(){ return read().reviews[dayKey()] || 0; }
+  function reviewsRemainingToday(){ return Math.max(0, DAILY_REVIEW_CAP - reviewsToday()); }
+
+  // Highest tier this concept has ever been answered correctly at. Review
+  // holds here; it never promotes.
+  function reachedTier(conceptId){
+    var st = stateOf(read(), conceptId);
+    if(!st || !st.tiers) return 1;
+    var best = 1;
+    Object.keys(st.tiers).forEach(function(t){
+      if(st.tiers[t].c > 0) best = Math.max(best, parseInt(t, 10));
+    });
+    return best;
+  }
+
+  function isLeech(p){
+    return p.attempts > 0 && (p.attempts - p.correct) >= LEECH_WRONG &&
+           p.strength !== null && p.strength < LEECH_STRENGTH;
+  }
+  function leeches(){
+    return allProfiles().filter(isLeech).sort(function(a, b){ return a.strength - b.strength; });
+  }
+
   function reset(){
     try{ localStorage.removeItem(KEY); }catch(e){}
   }
@@ -405,6 +467,13 @@
     strongest: strongest,
     due: due,
     weakPrerequisites: weakPrerequisites,
+    DAILY_REVIEW_CAP: DAILY_REVIEW_CAP,
+    noteReview: noteReview,
+    reviewsToday: reviewsToday,
+    reviewsRemainingToday: reviewsRemainingToday,
+    reachedTier: reachedTier,
+    isLeech: isLeech,
+    leeches: leeches,
     overall: overall,
     counts: counts,
     bandFor: bandFor,
