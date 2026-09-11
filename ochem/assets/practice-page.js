@@ -20,7 +20,16 @@
    mastery -> higher weight, so weaker or untouched topics are oversampled)
    combined with this page's own practice accuracy for that topic, so a
    session naturally leans toward what needs the most work while still
-   mixing in everything else. */
+   mixing in everything else.
+
+   Each question also carries a difficulty ('easy'|'medium'|'hard') and a
+   type ('mcq'|'tf' — tf options are always exactly ["True","False"], which
+   the existing choice-row rendering already handles since it just maps
+   over however many options a question has). The difficulty filter narrows
+   the question pool before topic weighting runs, and topics with zero
+   questions at the selected difficulty are excluded from that session
+   entirely rather than left as an empty bucket the weighted pick could land
+   on. */
 (function(){
   var C = window.OchemCurriculum;
   var BANK = window.OchemPracticeBank;
@@ -78,14 +87,23 @@
     return pool[pool.length - 1];
   }
 
-  function buildSession(topicFilter, count){
-    var pool = topicFilter ? [topicFilter] : ALL_TOPIC_IDS.slice();
+  function questionsFor(topicId, difficultyFilter){
+    var bank = BANK[topicId];
+    return difficultyFilter ? bank.filter(function(q){ return q.difficulty === difficultyFilter; }) : bank;
+  }
+
+  function buildSession(topicFilter, difficultyFilter, count){
+    var basePool = topicFilter ? [topicFilter] : ALL_TOPIC_IDS.slice();
+    // Drop topics that have zero questions at the chosen difficulty so the
+    // weighted pick never lands on an empty bucket.
+    var pool = basePool.filter(function(id){ return questionsFor(id, difficultyFilter).length > 0; });
+    if(!pool.length) return [];
     var questions = [];
     var recentTopic = null, recentQ = null;
     for(var i=0;i<count;i++){
       var candidates = pool.length > 1 ? pool.filter(function(id){ return id !== recentTopic; }) : pool;
       var topicId = weightedPick(candidates.length ? candidates : pool);
-      var bank = BANK[topicId];
+      var bank = questionsFor(topicId, difficultyFilter);
       var qCandidates = bank.length > 1 ? bank.filter(function(q){ return q !== recentQ; }) : bank;
       var q = qCandidates[Math.floor(Math.random() * qCandidates.length)];
       questions.push({ topicId: topicId, question: q });
@@ -100,6 +118,7 @@
   var sessionEl = document.getElementById('practiceSession');
   var summaryEl = document.getElementById('practiceSummary');
   var topicSelect = document.getElementById('topicFilter');
+  var difficultySelect = document.getElementById('difficultyFilter');
   var lengthSelect = document.getElementById('sessionLength');
   var startBtn = document.getElementById('startPracticeBtn');
   var progFill = document.getElementById('practiceProgFill');
@@ -131,8 +150,9 @@
     progFill.style.width = Math.round((idx/session.length)*100) + '%';
     progLabel.textContent = 'Question ' + (idx+1) + ' / ' + session.length;
 
+    var diffLabel = q.difficulty ? q.difficulty.charAt(0).toUpperCase() + q.difficulty.slice(1) : '';
     card.innerHTML =
-      '<div class="step-eyebrow">' + topicTitle(item.topicId) + '</div>' +
+      '<div class="step-eyebrow">' + topicTitle(item.topicId) + (diffLabel ? ' · ' + diffLabel : '') + '</div>' +
       '<h2 class="step-title">' + q.q + '</h2>' +
       '<div class="choice-row">' + q.options.map(function(o,i){
         return '<button class="choice-btn" data-i="' + i + '">' + o + '</button>';
@@ -198,12 +218,13 @@
 
   startBtn.addEventListener('click', function(){
     var topicFilter = topicSelect.value || null;
+    var difficultyFilter = difficultySelect.value || null;
     var count = parseInt(lengthSelect.value, 10) || 10;
-    if(topicFilter && BANK[topicFilter] && BANK[topicFilter].length < 3){
-      // a single topic's bank is small; don't ask for more unique questions
-      // than exist, repeats are fine but keep the UI honest about it.
+    session = buildSession(topicFilter, difficultyFilter, count);
+    if(!session.length){
+      alert('No questions match that combination of topic and difficulty yet.');
+      return;
     }
-    session = buildSession(topicFilter, count);
     idx = 0; sessionCorrect = 0; sessionByTopic = {};
     setupEl.hidden = true;
     summaryEl.hidden = true;

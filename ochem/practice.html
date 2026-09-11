@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Practice — Organic Chemistry</title>
-<meta name="description" content="Adaptive Organic Chemistry practice questions, mixed across every module and weighted toward the topics you're weakest on.">
+<meta name="description" content="Adaptive Organic Chemistry practice questions, mixed across every module and weighted toward the topics you're weakest on — filterable by topic and difficulty.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/practice.html">
 <link rel="stylesheet" href="../assets/theme.css">
 <link rel="stylesheet" href="assets/ochem.css">
@@ -55,6 +55,15 @@
       <div class="practice-field">
         <label for="topicFilter">Topic</label>
         <select id="topicFilter"></select>
+      </div>
+      <div class="practice-field">
+        <label for="difficultyFilter">Difficulty</label>
+        <select id="difficultyFilter">
+          <option value="">Any difficulty</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
       </div>
       <div class="practice-field">
         <label for="sessionLength">Session length</label>
