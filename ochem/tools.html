@@ -18,6 +18,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 <style>
+  .section-head{
+    font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
+    color:var(--muted);margin:26px 0 10px;
+  }
   .tools-shell{max-width:820px;margin:0 auto;}
   .tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;}
   .tool-card{
@@ -51,23 +55,21 @@
   <div class="hero" style="padding-bottom:0;">
     <div class="eyebrow">Organic Chemistry I</div>
     <h1 style="margin-bottom:4px;">Interactive tools.</h1>
-    <p class="lede" style="margin-top:0;">Right now the mechanism-drawing interaction lives inside the SN2 lesson itself. As it matures, it'll become a standalone tool you can pull up for any reaction — same with the rest below.</p>
+    <p class="lede" style="margin-top:0;">Somewhere to push electrons with nothing riding on it. Pick a molecule, draw the arrows, see what you get — nothing here is graded or recorded. When you want the same thing with a right answer attached, that's <a href="practice.html">Practice</a>.</p>
   </div>
   <div class="xsection" style="padding-top:0;">
+    <div class="tool-pick" id="toolPick"></div>
+    <div class="tool-stage" id="toolStage"></div>
+
+    <div class="section-head">Still to come</div>
     <div class="tool-grid">
-      <div class="tool-card live">
-        <div class="n">Mechanism Builder</div>
-        <div class="d">Click atoms to push electrons and build a mechanism step by step.</div>
-        <span class="badge">In the SN2 lesson</span>
-      </div>
-      <div class="tool-card"><div class="n">Molecular Structure Viewer</div><div class="d">Inspect a molecule's structure and properties.</div><span class="badge">Planned</span></div>
-      <div class="tool-card"><div class="n">Molecule Builder</div><div class="d">Construct or modify molecules atom by atom.</div><span class="badge">Planned</span></div>
       <div class="tool-card"><div class="n">3D Molecule Viewer</div><div class="d">Rotate a molecule to see geometry and stereochemistry.</div><span class="badge">Planned</span></div>
-      <div class="tool-card"><div class="n">Resonance Explorer</div><div class="d">Move electrons to generate valid resonance structures.</div><span class="badge">Planned</span></div>
+      <div class="tool-card"><div class="n">Resonance Explorer</div><div class="d">Move electrons to generate valid resonance structures, with the invalid ones called out.</div><span class="badge">Planned</span></div>
       <div class="tool-card"><div class="n">Conformation Viewer</div><div class="d">Manipulate Newman projections and cyclohexane chairs.</div><span class="badge">Planned</span></div>
       <div class="tool-card"><div class="n">Reaction Predictor</div><div class="d">Given reactants and reagents, predict the product.</div><span class="badge">Planned</span></div>
       <div class="tool-card"><div class="n">Acid/Base Comparator</div><div class="d">Compare two structures and rank relative acidity.</div><span class="badge">Planned</span></div>
       <div class="tool-card"><div class="n">Spectroscopy Tools</div><div class="d">Interactive IR/NMR peak interpretation.</div><span class="badge">Planned</span></div>
+    </div>
     </div>
   </div>
 </div>
@@ -76,8 +78,11 @@
   window.OCHEM_SECTION = 'tools';
   window.OCHEM_BASE = '';
 </script>
+<script src="assets/molecules.js"></script>
+<script src="assets/molecule-editor.js"></script>
 <script src="assets/ochem-nav.js"></script>
 <script src="assets/periodic-table.js"></script>
+<script src="assets/tools-page.js"></script>
 <script>
   var toggle = document.getElementById('themeToggle');
   toggle.addEventListener('click', function(){

@@ -31,6 +31,7 @@
   var D  = window.OchemDiagnostics;
   var E  = window.OchemQuestionEngine;
   var Mo = window.OchemMolecules;
+  var Ed = window.OchemMoleculeEditor;
 
   function esc(s){
     return String(s == null ? '' : s)
@@ -187,6 +188,69 @@
       };
     }
 
+    /* The only question kind where the student PRODUCES the answer instead of
+       recognizing it. Everything else on this page — click the atom, pick the
+       arrow, rank these — narrows a set someone else wrote down. Here there is
+       a blank molecule and they have to know what to draw, which is the thing
+       an exam actually asks for.
+
+       The editor is the same component Tools mounts ungraded; only the Submit
+       button and the grading are added here. */
+    function renderDraw(q){
+      var editor = null;
+      var need = ((q.answer && q.answer.arrows) || []).length;
+      return {
+        html: '<div class="click-hint">' +
+                (q.drawHint || ('Draw the ' + (need === 1 ? 'arrow' : need + ' arrows') +
+                 ' for this step. Click an electron source, then where the electrons go.')) +
+              '</div>' +
+              '<div id="drawHost"></div>' +
+              '<div class="actions" style="justify-content:flex-start;">' +
+                '<button class="btn-press" id="drawSubmit" disabled>Submit arrows</button>' +
+              '</div>',
+        attach: function(submit){
+          var host = cardEl.querySelector('#drawHost');
+          var btn = cardEl.querySelector('#drawSubmit');
+          editor = Ed.mount(host, {
+            molecule: q.molecule,
+            maxArrows: Math.max(need, 1) + 1,   // room to draw one too many, which is itself a diagnosis
+            onChange: function(state){
+              btn.disabled = !state.arrows.length;
+              btn.textContent = state.arrows.length === need
+                ? 'Submit arrows'
+                : 'Submit ' + state.arrows.length + ' of ' + need;
+            }
+          });
+          btn.addEventListener('click', function(){
+            if(!editor) return;
+            var st = editor.state();
+            if(!st.arrows.length) return;
+            submit({ arrows: st.arrows });
+          });
+        },
+        lock: function(response, correct){
+          var btn = cardEl.querySelector('#drawSubmit');
+          if(btn) btn.remove();
+          if(!editor) return;
+          /* Show the student's own arrows marked right and wrong rather than
+             wiping them for a model answer — the point is to see which of the
+             arrows THEY drew was the bad one. */
+          var mol = Mo.get(q.molecule);
+          var exp = (q.answer && q.answer.arrows) || [];
+          var good = [], bad = [];
+          response.arrows.forEach(function(a, i){
+            var hit = exp.some(function(e){ return Ed.matches(mol, [a], [e]); });
+            (hit ? good : bad).push(i);
+          });
+          var missing = exp.length - good.length;
+          editor.markResult(good, bad, correct ? '' :
+            (missing > 0 && !bad.length)
+              ? 'Right as far as it goes — ' + missing + ' more ' + (missing === 1 ? 'arrow is' : 'arrows are') + ' needed.'
+              : '');
+        }
+      };
+    }
+
     function renderOrder(q){
       // Start from a shuffled arrangement that isn't already the answer.
       var order = shuffled(q.items.map(function(_, i){ return i; }));
@@ -244,6 +308,7 @@
         case 'click-atom':  return renderClickAtom(q);
         case 'multi-click': return renderMultiClick(q);
         case 'arrow':       return renderArrow(q);
+        case 'draw':        return renderDraw(q);
         case 'order':       return renderOrder(q);
         default:            return renderMcq(q);
       }
@@ -251,7 +316,7 @@
 
     var KIND_LABEL = {
       'click-atom':'Identify on the molecule', 'multi-click':'Identify all that apply',
-      'arrow':'Push the arrow', 'order':'Rank these',
+      'arrow':'Push the arrow', 'draw':'Draw the mechanism', 'order':'Rank these',
       'predict':'Predict the product', 'mechanism':'Choose the mechanism',
       'mcq':'', 'tf':'True or false'
     };

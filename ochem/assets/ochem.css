@@ -384,3 +384,52 @@ a.topic-row:hover{background:var(--hover-tint);}
   .concept-row .track{flex-basis:56px;}
   .overall-card .big{font-size:32px;}
 }
+
+/* ---- Molecule editor (assets/molecule-editor.js) ---------------------
+   The clickable bond overlay is deliberately fat and invisible: a 2.5px
+   bond stroke is not a click target on a phone. It sits under the atoms in
+   paint order so an atom always wins where the two overlap. */
+.obond{
+  stroke:transparent;stroke-width:16;cursor:pointer;fill:none;
+  stroke-linecap:round;
+}
+.obond:hover{stroke:var(--tint-accent);}
+.obond.chosen{stroke:var(--tint-accent);}
+.obond:focus{outline:none;stroke:var(--tint-accent);}
+
+.med-bar{
+  display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap;
+}
+.med-count{
+  font:800 12px var(--font-mono);color:var(--muted);margin-right:auto;
+}
+.med-btn{
+  border:1px solid var(--line);background:var(--white);border-radius:var(--radius-pill);
+  padding:6px 14px;font:800 12px var(--font-ui);color:var(--accent-press);cursor:pointer;
+}
+.med-btn:hover:not(:disabled){border-color:var(--accent);background:var(--tint-accent);}
+.med-btn:disabled{opacity:.4;cursor:default;}
+.med-status{
+  margin-top:8px;font:700 13px var(--font-ui);color:var(--amber-press);
+}
+
+/* Tools sandbox */
+.tool-stage{
+  border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--white);
+  padding:18px;margin-bottom:14px;
+}
+.tool-pick{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.tool-pick button{
+  border:1px solid var(--line);background:var(--white);border-radius:var(--radius-pill);
+  padding:6px 13px;font:800 12px var(--font-ui);color:var(--ink);cursor:pointer;
+}
+.tool-pick button:hover{border-color:var(--accent);}
+.tool-pick button.on{background:var(--accent);color:var(--white);border-color:var(--accent);}
+.tool-note{
+  margin-top:12px;font-size:13.5px;font-weight:650;line-height:1.6;color:var(--muted);
+}
+@media (max-width:520px){
+  .med-count{width:100%;margin-bottom:2px;}
+}
+.oarrow{cursor:pointer;}
+.oarrow:hover .oarrow-line{stroke-width:3.5;}

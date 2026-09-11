@@ -24,6 +24,7 @@
 (function(){
   var C = function(){ return window.OchemConcepts; };
   var Mo = function(){ return window.OchemMolecules; };
+  var Ed = function(){ return window.OchemMoleculeEditor; };
 
   function arrEq(a, b){
     if(a.length !== b.length) return false;
@@ -58,6 +59,12 @@
         return sameSet(response.keys || [], acceptedKeys(q));
       case 'arrow':
         return response.from === q.answer.from && response.to === q.answer.to;
+      case 'draw':
+        /* The student produced the mechanism rather than picking it, so
+           correctness is set equality over the arrows: order does not matter
+           (a mechanism's arrows are simultaneous), direction does, and an
+           extra arrow is a different mechanism, not a near miss. */
+        return Ed() ? Ed().matches(Mo().get(q.molecule), response.arrows || [], q.answer.arrows || []) : false;
       case 'order':
         return arrEq(response.order || [], q.answer);
       default: // mcq, tf, predict, mechanism
@@ -76,6 +83,19 @@
         var extra = (response.keys || []).filter(function(k){ return ok.indexOf(k) === -1; });
         return extra.length ? extra[0] : null;
       case 'arrow': return response.from + '>' + response.to;
+      case 'draw':
+        /* Blame the first arrow that is not in the expected set. A drawn
+           mechanism usually has one wrong arrow among right ones, and that
+           single arrow is what the misconception is about — "you sent the
+           carbonyl's electrons to carbon" is a specific, teachable error. */
+        var exp = (q.answer && q.answer.arrows) || [];
+        var mol = Mo().get(q.molecule);
+        var bad = (response.arrows || []).filter(function(a){
+          return !exp.some(function(e){ return Ed() && Ed().matches(mol, [a], [e]); });
+        });
+        if(bad.length) return bad[0].from + '>' + bad[0].to;
+        // Nothing wrong drawn, so the miss is something missing.
+        return (response.arrows || []).length < exp.length ? 'missing' : 'any';
       case 'order': return 'any';
       default: return String(response.choice);
     }
@@ -99,6 +119,15 @@
       case 'arrow':
         return 'You drew the arrow from ' + Mo().labelFor(q.molecule, response.from) +
                ' to ' + Mo().labelFor(q.molecule, response.to) + '.';
+      case 'draw':
+        var drawn = response.arrows || [];
+        if(!drawn.length) return 'You did not draw any arrows.';
+        var need = ((q.answer && q.answer.arrows) || []).length;
+        var lead = drawn.map(function(a){
+          return Ed().labelOf(Mo().get(q.molecule), a.from) + ' \u2192 ' + Ed().labelOf(Mo().get(q.molecule), a.to);
+        }).join(', ');
+        return 'You drew ' + drawn.length + (drawn.length === 1 ? ' arrow' : ' arrows') +
+               ' (' + lead + ')' + (need && drawn.length !== need ? '; this step needs ' + need + '.' : '.');
       case 'order':
         return 'Your ordering was not quite right.';
       default:

@@ -835,7 +835,128 @@
       0:{ concept:'anti-periplanar-geometry', msg:'The base has to approach the anti-periplanar hydrogen wherever it happens to be — the geometric constraint is in the substrate, not in how the base comes in.' },
       2:{ concept:'zaitsev-hofmann', msg:'Trans is usually more stable, but E2 is stereoSPECIFIC — the product geometry is dictated by the starting diastereomer, and the cis alkene really does form when that is what the geometry demands.' },
       3:{ concept:'anti-periplanar-geometry', msg:'E2 has no carbocation at all — it is concerted. Planar carbocations are what DESTROY stereochemical information, in E1 and SN1.' }
-    } }
+    } },
+
+
+    /* ---- draw-the-mechanism ------------------------------------------
+       The only kind where the student produces the answer instead of picking
+       it. `answer.arrows` is a set: order does not matter, direction does,
+       and an extra arrow is a wrong mechanism rather than a near miss.
+       Endpoints are atom keys, or "bond:a-b" for the very common case where
+       the electrons come out of a bond. `diag` is keyed by "from>to" of the
+       first arrow that is not in the expected set, plus "missing" when the
+       arrows drawn were all right but too few. */
+
+    { id:'sn2-draw-both', kind:'draw', tier:3, topic:'sn2',
+      concepts:['curved-arrow-direction','backside-attack','leaving-group-ability'],
+      prompt:'Draw the complete SN2 mechanism for hydroxide attacking bromoethane.',
+      molecule:'sn2-bromoethane',
+      drawHint:'Two arrows, both happening at once. One brings electrons in; one takes them out.',
+      answer:{ arrows:[ {from:'nucO', to:'c1'}, {from:'bond:c1-br', to:'br'} ] },
+      why:'Hydroxide’s lone pair attacks the carbon from the side opposite bromine, and at the same instant the C–Br bonding electrons leave with bromide. One concerted step — no intermediate, which is why the carbon inverts.',
+      diag:{
+        'c1>nucO':{ concept:'curved-arrow-direction', msg:'That arrow runs backwards. Arrows follow the electrons, and the electrons live on hydroxide — it is the electron-rich species. They move toward the carbon, never away from it.' },
+        'c1>br':{ concept:'curved-arrow-direction', msg:'Close, but the tail is on the wrong thing. The electrons that leave with bromide are the C–Br BONDING electrons, so the tail belongs on the bond itself, not on the carbon.' },
+        'br>c1':{ concept:'leaving-group-ability', msg:'Bromine is not donating electrons to the carbon here — it is leaving, and it takes the bonding pair with it. The arrow points from the bond out to bromine.' },
+        'nucO>br':{ concept:'nucleophile-recognition', msg:'Hydroxide attacks the electron-poor carbon, not bromine. Bromine is already electron-rich — two electron-rich species repel.' },
+        'missing':{ concept:'curved-arrow-direction', msg:'SN2 is concerted: the bond forming and the bond breaking are drawn together. An attack arrow with no departure arrow leaves carbon with five bonds.' }
+      } },
+
+    { id:'sn1-draw-ionize', kind:'draw', tier:2, topic:'sn1',
+      concepts:['curved-arrow-direction','leaving-group-ability','carbocation-stability'],
+      prompt:'Draw the first step of the SN1: ionize 2-bromopropane.',
+      molecule:'sn1-secondary',
+      drawHint:'One arrow. Nothing attacks yet — that is what makes this SN1 and not SN2.',
+      answer:{ arrows:[ {from:'bond:c1-br', to:'br'} ] },
+      why:'The C–Br bond breaks heterolytically on its own: bromide leaves with both electrons, and what stays behind is a planar secondary carbocation. This slow step is rate-determining, which is why the nucleophile’s concentration does not appear in the rate law.',
+      diag:{
+        'c1>br':{ concept:'curved-arrow-direction', msg:'The tail has to sit on the electrons that actually move, and those are the C–Br bonding electrons — so start on the bond, not on the carbon. A carbon with four bonds has no lone pair to give.' },
+        'br>c1':{ concept:'leaving-group-ability', msg:'Backwards. Bromide leaves carrying the electron pair away from carbon; it does not push electrons into it.' },
+        'h>c1':{ concept:'carbocation-stability', msg:'No hydride is shifting here. The first step of an SN1 is simply the leaving group departing — rearrangement is a separate step and only happens when it produces a more stable cation.' }
+      } },
+
+    { id:'e2-draw-concerted', kind:'draw', tier:4, topic:'e2',
+      concepts:['curved-arrow-direction','anti-periplanar-geometry','leaving-group-ability'],
+      prompt:'A strong base has just removed the beta hydrogen shown. Draw the two remaining arrows that complete the E2.',
+      molecule:'e2-butane',
+      drawHint:'Where do the C–H electrons go, and what happens to the C–Br bond?',
+      answer:{ arrows:[ {from:'bond:c2-hb', to:'bond:c2-c3'}, {from:'bond:c3-br', to:'br'} ] },
+      why:'The C–H electrons drop down to become the new pi bond between the alpha and beta carbons, and that same motion pushes bromide off the alpha carbon. All of it is one concerted step, which is why the H and the Br must be anti-periplanar — the orbitals have to line up.',
+      diag:{
+        'bond:c2-hb>c2':{ concept:'curved-arrow-direction', msg:'The C–H electrons do not just collapse onto the beta carbon — that would make a carbanion. They become the pi BOND between the two carbons, so the arrowhead points at the C–C bond.' },
+        'bond:c2-hb>c3':{ concept:'curved-arrow-direction', msg:'Nearly. The new pi bond forms between the beta and alpha carbons, so point the arrow at the bond between them rather than at the alpha carbon itself.' },
+        'c3>br':{ concept:'curved-arrow-direction', msg:'The tail belongs on the C–Br bond — those are the electrons leaving with bromide. Carbon has no lone pair to donate.' },
+        'bond:c2-hc>bond:c2-c3':{ concept:'anti-periplanar-geometry', msg:'That hydrogen is on the wrong carbon for this elimination. E2 needs the H and the leaving group on ADJACENT carbons and anti-periplanar — 180° apart, not merely nearby.' },
+        'missing':{ concept:'curved-arrow-direction', msg:'E2 is concerted. If the leaving group does not go in the same step, you have drawn a carbanion intermediate — that is E1cb, a different mechanism.' }
+      } },
+
+    { id:'carbonyl-draw-addition', kind:'draw', tier:2, topic:'nucleophilic-addition',
+      concepts:['curved-arrow-direction','carbonyl-electrophilicity','tetrahedral-intermediate'],
+      prompt:'A hydride is about to attack acetone’s carbonyl carbon. Draw what the C=O pi bond must do.',
+      molecule:'acetone',
+      drawHint:'One arrow. Carbon can only have four bonds — something has to give.',
+      answer:{ arrows:[ {from:'bond:c-o', to:'o'} ] },
+      why:'Carbon cannot accept a fifth bond, so as the nucleophile comes in the C=O pi electrons go up onto oxygen. Oxygen can carry that negative charge comfortably; carbon could not. What is left is the tetrahedral alkoxide intermediate.',
+      diag:{
+        'bond:c-o>c':{ concept:'electron-rich-poor', msg:'Backwards. Pushing the pi electrons onto the carbonyl carbon would put a negative charge on carbon while a nucleophile is also arriving there. Oxygen is the electronegative atom — it takes the charge.' },
+        'o>c':{ concept:'carbonyl-electrophilicity', msg:'Oxygen is not the nucleophile in this step. It is the carbon that is electron-poor and under attack; oxygen is where the displaced electrons go.' },
+        'bond:c-ca>c':{ concept:'curved-arrow-direction', msg:'The C–C bond is not involved. It is the pi bond of the C=O that breaks, because that is the only bond at this carbon holding electrons that have somewhere better to be.' }
+      } },
+
+    { id:'markovnikov-draw', kind:'draw', tier:3, topic:'markovnikov',
+      concepts:['curved-arrow-direction','alkene-pi-nucleophile','markovnikov-regiochem'],
+      prompt:'Propene reacts with HBr. Draw the two arrows for the first step.',
+      molecule:'propene-hbr',
+      drawHint:'The alkene is the electron-rich species here. What does it attack, and what must break?',
+      answer:{ arrows:[ {from:'bond:c1-c2', to:'hbrH'}, {from:'bond:hbrH-hbrBr', to:'hbrBr'} ] },
+      why:'The pi bond is the nucleophile — it reaches out and grabs the proton of H–Br, and the H–Br bond breaks so bromide leaves with the electrons. Which carbon keeps the hydrogen decides everything: the proton adds so the positive charge lands on the more substituted carbon, where it is more stable.',
+      diag:{
+        'bond:c1-c2>hbrBr':{ concept:'electrophile-recognition', msg:'The alkene attacks the hydrogen, not the bromine. In H–Br the hydrogen is the δ+ end — bromine is the electronegative one, already electron-rich.' },
+        'hbrH>bond:c1-c2':{ concept:'curved-arrow-direction', msg:'That arrow runs the wrong way. The electrons are in the pi bond, so the pi bond is the tail; a hydrogen with one bond has no pair to donate.' },
+        'hbrBr>bond:c1-c2':{ concept:'alkene-pi-nucleophile', msg:'Bromide is not attacking the alkene — two electron-rich species repel. The alkene is the nucleophile and goes after the proton first; bromide only arrives after the carbocation forms.' },
+        'missing':{ concept:'curved-arrow-direction', msg:'Grabbing the proton without breaking H–Br would leave hydrogen with two bonds. Every bond you make at an atom that is already full needs a matching bond broken.' }
+      } },
+
+    { id:'acyl-draw-collapse', kind:'draw', tier:4, topic:'acyl-substitution',
+      concepts:['tetrahedral-intermediate','leaving-group-ability','curved-arrow-direction'],
+      prompt:'A tetrahedral intermediate has formed from methyl acetate. Draw the two arrows that collapse it and expel the leaving group.',
+      molecule:'methyl-acetate',
+      drawHint:'This is the step that makes it substitution instead of addition.',
+      answer:{ arrows:[ {from:'o1', to:'bond:c-o1'}, {from:'bond:c-o2', to:'o2'} ] },
+      why:'The alkoxide oxygen pushes its lone pair back down to reform the C=O, and that forces something off the carbon — the OR group leaves as an alkoxide. This is exactly what a ketone cannot do: a ketone’s substituents are carbons, which will not leave as carbanions, so its tetrahedral intermediate just gets protonated instead.',
+      diag:{
+        'o1>c':{ concept:'curved-arrow-direction', msg:'The lone pair reforms the C=O pi BOND, so the arrowhead points at the C–O bond, not at the carbon. Pointing it at carbon would mean forming a second sigma bond to an atom that already has four.' },
+        'bond:c-ca>ca':{ concept:'leaving-group-ability', msg:'The methyl group does not leave. It would have to go as a carbanion, and carbanions are terrible leaving groups — that is the whole reason ketones add rather than substitute.' },
+        'c>o2':{ concept:'curved-arrow-direction', msg:'The tail belongs on the C–O bond that is breaking, not on the carbon. Carbon has no lone pair here to donate.' },
+        'missing':{ concept:'tetrahedral-intermediate', msg:'Reforming the C=O without expelling a leaving group would give carbon five bonds. The collapse and the departure are one step — that pairing is what turns addition into substitution.' }
+      } },
+
+    { id:'epoxide-draw-open', kind:'draw', tier:3, topic:'epoxides',
+      concepts:['curved-arrow-direction','epoxide-opening-regiochem','backside-attack'],
+      prompt:'Under basic conditions a strong nucleophile attacks the less hindered carbon of propylene oxide. Draw the arrow showing the ring open.',
+      molecule:'propylene-oxide',
+      drawHint:'One arrow. The ring oxygen is a leaving group that cannot actually leave.',
+      answer:{ arrows:[ {from:'bond:o-c1', to:'o'} ] },
+      why:'An epoxide oxygen is a poor leaving group on paper — an alkoxide — but ring strain makes up the difference. As the nucleophile attacks C1 from the back, the C1–O bond breaks and the electrons go to oxygen, which stays tethered to the molecule as an alkoxide.',
+      diag:{
+        'bond:o-c2>o':{ concept:'epoxide-opening-regiochem', msg:'Wrong carbon. Under BASIC conditions this is a plain SN2, so sterics decide and the nucleophile hits the less substituted carbon. Attack at the more substituted carbon is the acidic-conditions answer.' },
+        'o>c1':{ concept:'curved-arrow-direction', msg:'Backwards. Oxygen is receiving the electrons from the breaking C–O bond, not donating a lone pair into the carbon — it is already bonded to it.' },
+        'bond:c1-c2>c1':{ concept:'curved-arrow-direction', msg:'The C–C bond of the ring does not break. Breaking a C–O bond relieves the strain and puts the charge on oxygen, which can hold it; breaking C–C would leave a carbanion.' }
+      } },
+
+    { id:'acid-draw-deprotonate', kind:'draw', tier:1, topic:'carboxylic-acids',
+      concepts:['curved-arrow-direction','bronsted-identification','acidity-factors'],
+      prompt:'A base removes the acidic proton from acetic acid. Draw the arrow for the O–H bond breaking.',
+      molecule:'acetic-acid',
+      drawHint:'One arrow. When a proton is taken, where do its bonding electrons end up?',
+      answer:{ arrows:[ {from:'bond:o2-h', to:'o2'} ] },
+      why:'A proton leaves as H⁺ — bare, with no electrons — so the O–H bonding pair stays behind on oxygen. That is what makes a carboxylate, and the charge then spreads over both oxygens, which is why this proton is so much more acidic than an alcohol’s.',
+      diag:{
+        'o2>bond:o2-h':{ concept:'curved-arrow-direction', msg:'Backwards. The bond is breaking, not forming: the electrons move OUT of the O–H bond and onto oxygen.' },
+        'bond:o2-h>h':{ concept:'bronsted-identification', msg:'The electrons do not go with the hydrogen. A Brønsted acid donates a proton — just the nucleus — and the bonding pair is left behind on the atom it was attached to.' },
+        'bond:ca-ha>ca':{ concept:'acidity-factors', msg:'That is an alpha C–H, around pKa 20 here and far less acidic. The O–H is the acidic one because its conjugate base is stabilized by resonance across two oxygens.' },
+        'bond:c-o1>o1':{ concept:'acidity-factors', msg:'The C=O pi bond is not what breaks when an acid is deprotonated. Look for the proton that leaves — the O–H — and break the bond holding it.' }
+      } },
 
   ];
 

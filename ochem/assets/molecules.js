@@ -378,6 +378,49 @@
     return out;
   }
 
+  /* Where an arrow can start or end. Atoms by key, and bonds by "bond:a-b"
+     — because half of arrow-pushing starts at a BOND, not an atom: the
+     C-Br electrons leaving with bromide, the pi bond attacking an
+     electrophile. Without a bond anchor a student can only ever draw the
+     lone-pair half of a mechanism. Bond keys are order-insensitive, so
+     "bond:c1-br" and "bond:br-c1" resolve to the same midpoint. */
+  function anchor(mol, key){
+    if(!key) return null;
+    if(mol.atoms[key]) return mol.atoms[key];
+    var m = /^bond:(.+?)-(.+)$/.exec(key);
+    if(!m) return null;
+    var a = mol.atoms[m[1]], b = mol.atoms[m[2]];
+    if(!a || !b) return null;
+    // Slightly larger than it looks: the arrow tail is offset by r, and
+    // starting it right at the midpoint buries the tail in the bond stroke.
+    return { x:(a.x + b.x)/2, y:(a.y + b.y)/2, r:13, isBond:true };
+  }
+
+  function bondKey(b){ return 'bond:' + b.a + '-' + b.b; }
+
+  // Matches a bond key against a bond regardless of which end is named first.
+  function sameBond(key, b){
+    var m = /^bond:(.+?)-(.+)$/.exec(key || '');
+    if(!m) return false;
+    return (m[1] === b.a && m[2] === b.b) || (m[1] === b.b && m[2] === b.a);
+  }
+
+  /* Invisible fat line over each bond so it can be clicked. Drawn after the
+     bond strokes but before the atoms, so an atom always wins a click where
+     the two overlap. */
+  function bondHit(mol, b, opts){
+    var a = mol.atoms[b.a], c = mol.atoms[b.b];
+    if(!a || !c) return '';
+    var key = bondKey(b);
+    var on = opts.clickableBonds === 'all' ||
+             (opts.clickableBonds && opts.clickableBonds.some(function(k){ return sameBond(k, b); }));
+    if(!on) return '';
+    var cls = 'obond';
+    if(opts.chosen && opts.chosen.some(function(k){ return sameBond(k, b); })) cls += ' chosen';
+    return '<line class="' + cls + '" data-key="' + esc(key) + '" tabindex="0" role="button"' +
+      ' x1="' + a.x + '" y1="' + a.y + '" x2="' + c.x + '" y2="' + c.y + '"/>';
+  }
+
   function atomGroup(key, a, opts){
     var cls = 'atom';
     var clickable = opts.clickable === 'all' || (opts.clickable && opts.clickable.indexOf(key) !== -1);
@@ -399,7 +442,7 @@
   // A curved arrow between two atoms, in the same visual language as the
   // mechanism pages: tail at the electron source, head at the destination.
   function arrowPath(mol, arrow, i){
-    var a = mol.atoms[arrow.from], b = mol.atoms[arrow.to];
+    var a = anchor(mol, arrow.from), b = anchor(mol, arrow.to);
     if(!a || !b) return '';
     var color = arrow.color || 'var(--accent)';
     var id = 'omol-ah' + i;
@@ -426,15 +469,27 @@
     }
     var st = rot(ux, uy, phi);                       // leave the source sideways
     var en = rot(-ux, -uy, -phi);                    // enter the target sideways
-    var bow = arrow.bow === undefined ? Math.max(14, Math.min(34, len * 0.33)) : arrow.bow;
+    /* Short hops (a bond to the atom at its own end, a lone pair to its
+       neighbour) need a proportionally bigger bow or the arc degenerates
+       into a hook tucked under the atom it points at. */
+    var bow = arrow.bow === undefined ? Math.max(len < 55 ? 19 : 14, Math.min(34, len * 0.33)) : arrow.bow;
     var x1 = a.x + st[0]*(a.r + 3), y1 = a.y + st[1]*(a.r + 3);
     var x2 = b.x + en[0]*(b.r + 5), y2 = b.y + en[1]*(b.r + 5);
     var mx = (x1 + x2)/2 + nx*bow, my = (y1 + y2)/2 + ny*bow;
-    return '<defs><marker id="' + id + '" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">' +
+    var d = 'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) + ' Q ' + mx.toFixed(1) + ' ' + my.toFixed(1) +
+            ' ' + x2.toFixed(1) + ' ' + y2.toFixed(1);
+    /* The visible arrow rides inside a group with a fat transparent twin. A
+       2.5px curved stroke is not something you can reliably tap, and in the
+       editor an arrow is a click target — you click one to erase it. The
+       twin is stroke-only hit area; the group carries the index so the
+       editor knows which arrow was hit without counting DOM order. */
+    return '<g class="oarrow" data-arrow="' + i + '">' +
+           '<defs><marker id="' + id + '" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">' +
              '<path d="M0,0 L6,3 L0,6 Z" fill="' + color + '"/></marker></defs>' +
-           '<path d="M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) + ' Q ' + mx.toFixed(1) + ' ' + my.toFixed(1) +
-             ' ' + x2.toFixed(1) + ' ' + y2.toFixed(1) + '" ' +
-             'stroke="' + color + '" stroke-width="2.5" fill="none" marker-end="url(#' + id + ')"/>';
+           '<path class="oarrow-hit" d="' + d + '" stroke="transparent" stroke-width="18" fill="none"/>' +
+           '<path class="oarrow-line" d="' + d + '" ' +
+             'stroke="' + color + '" stroke-width="2.5" fill="none" marker-end="url(#' + id + ')"/>' +
+           '</g>';
   }
 
   /* Render a molecule to an SVG string wrapped in .scene.
@@ -443,13 +498,15 @@
        opts.highlight  [keys]           attention ring (used by feedback)
        opts.correct    [keys]           marked green after the answer
        opts.wrong      [keys]           marked red after the answer
-       opts.arrows     [{from,to,color,bow}]
+       opts.arrows     [{from,to,color,bow}] — from/to are atom keys or "bond:a-b"
+       opts.clickableBonds 'all' | [bond keys]  which bonds respond to clicks
        opts.caption    override the molecule's own caption ('' to hide) */
   function svg(molOrId, opts){
     var mol = typeof molOrId === 'string' ? M[molOrId] : molOrId;
     if(!mol) return '';
     opts = opts || {};
     var body = mol.bonds.map(function(b){ return bondPath(mol, b); }).join('') +
+      mol.bonds.map(function(b){ return bondHit(mol, b, opts); }).join('') +
       Object.keys(mol.atoms).map(function(k){ return atomGroup(k, mol.atoms[k], opts); }).join('') +
       (opts.arrows || []).map(function(ar, i){ return arrowPath(mol, ar, i); }).join('');
     var caption = opts.caption === undefined ? mol.caption : opts.caption;
@@ -475,6 +532,9 @@
     ALL: M,
     get: function(id){ return M[id] || null; },
     svg: svg,
+    anchor: anchor,
+    bondKey: bondKey,
+    sameBond: sameBond,
     keysWithRole: keysWithRole,
     rolesOf: rolesOf,
     noteFor: noteFor,
