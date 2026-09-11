@@ -38,11 +38,12 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 10</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -54,9 +55,42 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/stereo-drill.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
+  /* Two wedge-dash assignments, deliberately paired: the first has the
+     lowest-priority group on the hashed bond (read the rotation straight
+     off), the second has it on the wedge (the answer flips). Doing only
+     the first teaches the shortcut "trace the arrow"; the second is what
+     makes the flip mean something. Both drills derive their own answer
+     from the drawn geometry — see stereo-drill.js. */
+  var DRILL_NO_FLIP = {
+    alt: 'Butan-2-ol drawn with OH up, ethyl lower left, methyl lower right and H on a hashed bond pointing down and away',
+    intro: 'This is butan-2-ol. The stereocenter is the dot in the middle; the four groups around it are what you have to rank.',
+    caption: 'Butan-2-ol. The hashed bond to H recedes behind the page.',
+    priorityWhy: 'O beats C outright, so OH is first. Then the two carbons tie, and you go one bond further out: the ethyl carbon carries C,H,H while the methyl carbon carries only H,H,H — so ethyl outranks methyl. H is last.',
+    closing: 'This is the easy orientation. The next one is not.',
+    subs: [
+      { label: 'OH', priority: 1, angle: 90, depth: 'plane' },
+      { label: 'CH₂CH₃', priority: 2, angle: 205, depth: 'plane' },
+      { label: 'CH₃', priority: 3, angle: 335, depth: 'plane' },
+      { label: 'H', priority: 4, angle: 270, depth: 'dash' }
+    ]
+  };
+  var DRILL_FLIP = {
+    alt: 'Glyceraldehyde drawn with OH up, CHO lower left, CH2OH lower right and H on a bold wedge pointing down and toward the viewer',
+    intro: 'Glyceraldehyde — and note carefully how the bond to H is drawn this time.',
+    caption: 'Glyceraldehyde. The bold wedge to H widens toward you, out of the page.',
+    priorityWhy: 'OH is first again. For the tie between the two carbons: the CHO carbon carries O, a duplicated phantom O for the double bond, and H — so (O,O,H) — while the CH₂OH carbon carries only (O,H,H). The second oxygen is what puts CHO ahead of CH₂OH.',
+    closing: 'If you answered this the same way you answered the last one, this is exactly the mark you would have lost on an exam.',
+    subs: [
+      { label: 'OH', priority: 1, angle: 90, depth: 'plane' },
+      { label: 'CHO', priority: 2, angle: 205, depth: 'plane' },
+      { label: 'CH₂OH', priority: 3, angle: 335, depth: 'plane' },
+      { label: 'H', priority: 4, angle: 270, depth: 'wedge' }
+    ]
+  };
   window.OchemLessonEngine.start({
     topicId: 'rs-configuration',
     card: document.getElementById('card'),
@@ -66,7 +100,10 @@
       '<h3>CIP priority rules</h3><p class="step-body">Compare the atoms directly attached to the stereocenter first: <b>higher atomic number wins</b> (this is why the periodic table matters here — you\'re literally reading off atomic number). If two attached atoms tie (e.g., both carbon), look at what <i>those</i> atoms are attached to, and compare the sets of atoms one step further out — highest-priority atom in that next set wins the tie. Keep moving outward, atom by atom, until a difference appears.</p>' +
       '<div class="notes-fact">A double or triple bond is treated as if it were duplicated into two or three single bonds to a phantom copy of the same atom. A C=O oxygen is therefore counted as if the carbon were bonded to two separate oxygens for priority purposes — this is why a carbonyl carbon almost always ranks very high in CIP priority comparisons.</div>' +
       '<h3>The "lowest priority away from you" flip trick</h3><p class="step-body">If you can\'t physically rotate the molecule so the lowest-priority group points away (common when working from a flat drawing), trace the 1→2→3 path as drawn anyway, then <b>flip your answer</b> (R becomes S, S becomes R) — because you were viewing it from the wrong side. This flip-the-answer trick is a completely reliable shortcut and saves you from needing to redraw the whole structure.</p>' +
-      '<h3>Worked example: bromochlorofluoromethane, CHFClBr</h3><p class="step-body">Attached atoms: Br, Cl, F, H. By atomic number: Br (35) > Cl (17) > F (9) > H (1) — so priority order is Br(1) > Cl(2) > F(3) > H(4), no ties to break. Point H away from you and trace Br → Cl → F: if that\'s clockwise, the center is R; if counterclockwise, S.</p>',
+      '<h3>Worked example: bromochlorofluoromethane, CHFClBr</h3><p class="step-body">Attached atoms: Br, Cl, F, H. By atomic number: Br (35) > Cl (17) > F (9) > H (1) — so priority order is Br(1) > Cl(2) > F(3) > H(4), no ties to break. Point H away from you and trace Br → Cl → F: if that\'s clockwise, the center is R; if counterclockwise, S.</p>' +
+      '<h3>Worked example: butan-2-ol, H on a hashed bond</h3><p class="step-body">Priorities: OH first (O beats C outright). The two carbons tie, so go one bond out — the ethyl carbon carries (C,H,H), the methyl carbon only (H,H,H) — so CH₂CH₃ is second, CH₃ third, H last. In the lesson\'s drawing, OH sits at the top, CH₂CH₃ lower left, CH₃ lower right, and H on a hashed bond pointing down and away. Tracing OH → CH₂CH₃ → CH₃ runs <b>counterclockwise</b>, and because H already points away there is no flip: that center is <b>S</b>.</p>' +
+      '<h3>Worked example: glyceraldehyde, H on a wedge</h3><p class="step-body">Priorities: OH first; then the carbon tie breaks in favour of CHO, because its carbon carries (O,O,H) once the double bond is duplicated into a phantom oxygen, against CH₂OH\'s (O,H,H); H is last. Drawn with OH at the top, CHO lower left, CH₂OH lower right, the 1 → 2 → 3 path again runs <b>counterclockwise</b> — but here H is on a <b>bold wedge</b>, pointing at you, so you are reading the center from the wrong side and the answer flips to <b>R</b>.</p>' +
+      '<div class="notes-fact">Those two examples trace the same direction on the page and have opposite configurations. The only difference is which bond the H sits on. This is the single most common way to lose marks on a stereochemistry question: reading the rotation correctly and then forgetting to check which way the lowest-priority group points.</div>',
     steps: [
       {
         type: 'explain',
@@ -147,6 +184,16 @@
         eyebrow: 'Explain',
         title: 'Working from a flat drawing? Trace it anyway, then flip your answer.',
         bodyHtml: '<p class="step-body">The official rule requires the lowest-priority group pointing directly away from you. But most drawings you\'ll work from (wedge-dash structures, Fischer projections) don\'t conveniently show that. The reliable shortcut: trace the 1→2→3 priority path exactly as drawn, get an apparent clockwise/counterclockwise answer, and then <b>flip it</b> (R↔S) if the lowest-priority group was actually pointing <i>toward</i> you instead of away.</p><p class="step-body" style="margin-bottom:0;">This works because looking at a stereocenter from the wrong side reverses the apparent direction of rotation — exactly the same way a clock viewed from behind appears to run counterclockwise. Flipping the final answer corrects for the reversed viewpoint without needing to mentally rotate the whole 3D structure.</p>'
+      },
+      {
+        // Assignment #1: lowest priority on the hashed bond, no flip.
+        render: function(api){ window.OchemStereoDrill.mount(api, DRILL_NO_FLIP); }
+      },
+      {
+        // Assignment #2: same three stages, lowest priority on the wedge.
+        // This is the one that separates understanding the rule from
+        // having memorised "clockwise means R".
+        render: function(api){ window.OchemStereoDrill.mount(api, DRILL_FLIP); }
       },
       {
         type: 'explain',

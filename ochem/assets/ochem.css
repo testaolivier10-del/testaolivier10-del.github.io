@@ -488,3 +488,18 @@ a.topic-row:hover{background:var(--hover-tint);}
 }
 .oarrow{cursor:pointer;}
 .oarrow:hover .oarrow-line{stroke-width:3.5;}
+
+/* ---- Stereochemistry drill (assets/stereo-drill.js) -------------------
+   Wedge-dash R/S assignment. The drawing itself is plain SVG inside the
+   shared .scene box; these rules only cover the priority numbers the
+   drill stamps above each group as the student ranks them, and the
+   running "order so far" readout the ranking stages share. */
+.sd-caption{
+  font:700 12.5px var(--font-ui);color:var(--muted);text-align:center;
+  margin-top:10px;padding:0 8px;line-height:1.5;
+}
+.sd-label text{font-family:'IBM Plex Mono',monospace;}
+.count-hint{
+  font:900 13px var(--font-mono);color:var(--accent);
+  text-align:center;margin-bottom:16px;
+}

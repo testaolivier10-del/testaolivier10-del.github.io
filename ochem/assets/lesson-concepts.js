@@ -361,11 +361,18 @@
       3:['ring-flip-mechanics'],
       6:['ring-flip-mechanics','chair-axial-equatorial'] } },
 
-    'rs-configuration': { n:8, steps:{
-      2:['rs-assignment'],
+    /* Steps 6 and 7 are the two wedge-dash assignment drills, each of
+       which grades three times (rank, toward/away, R or S) — so this
+       topic now records far more evidence per run than the four
+       questions it used to, and all of it against the two concepts the
+       topic is actually about. */
+    'rs-configuration': { n:10, steps:{
+      2:['cip-priority'],
       3:['cip-priority'],
       4:['cip-priority'],
-      7:['rs-assignment','cip-priority'] } },
+      6:['rs-assignment','cip-priority'],
+      7:['rs-assignment','cip-priority'],
+      9:['rs-assignment','cip-priority'] } },
 
     'stereocenters': { n:7, steps:{
       1:['stereocenter-identification'], 2:['stereocenter-identification'],
