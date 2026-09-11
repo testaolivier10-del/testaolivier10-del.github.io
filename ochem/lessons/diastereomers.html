@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diastereomers — Stereochemistry | Organic Chemistry</title>
+<meta name="description" content="Learn what diastereomers are, how they differ from enantiomers, and why — unlike enantiomers — they have genuinely different physical properties.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/diastereomers.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 5 &middot; Stereochemistry</div>
+    <h1 style="margin-bottom:4px;">Diastereomers.</h1>
+    <p class="lede" style="margin-top:0;">Stereoisomers that aren't mirror images — and that changes everything about their properties.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'diastereomers',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>The definition</h3><p class="step-body"><b>Diastereomers</b> are stereoisomers that are <b>not</b> mirror images of each other. This only becomes possible once a molecule has <b>two or more</b> stereocenters: with two stereocenters, there are up to 2² = 4 stereoisomers total, forming two enantiomeric pairs — and any molecule from one pair compared to any molecule from the other pair is a diastereomer relationship.</p>' +
+      '<h3>Same vs. different configuration, stereocenter by stereocenter</h3><p class="step-body">For a molecule with stereocenters labeled 1 and 2: flipping <b>both</b> stereocenters gives the enantiomer (the full mirror image). Flipping <b>only one</b> of the two (but not the other) gives a diastereomer — same configuration at one center, opposite at the other. In general, for n stereocenters, flipping all n gives the enantiomer; flipping any smaller, non-empty subset gives a diastereomer.</p>' +
+      '<div class="notes-fact">A useful shorthand: enantiomers are related by inverting <b>every</b> stereocenter; diastereomers are related by inverting <b>some, but not all</b>, stereocenters.</div>' +
+      '<h3>Why diastereomers have different physical properties</h3><p class="step-body">Unlike enantiomers, diastereomers are <b>not</b> mirror images of each other, so there\'s no symmetry reason for them to share physical properties. Diastereomers genuinely have different melting points, boiling points, densities, solubilities, and polarities — because they are, in every meaningful sense, different compounds, not mirror-image copies of the same one. This makes them separable by ordinary techniques like distillation, recrystallization, or column chromatography — unlike enantiomers, which require a chiral technique to separate.</p>' +
+      '<h3>Worked example: cis/trans as a special case of diastereomers</h3><p class="step-body">Cis and trans isomers of a disubstituted ring or alkene are actually a specific, common example of diastereomers — they are stereoisomers, not mirror images of each other, and (consistent with the diastereomer pattern) they have measurably different physical properties. cis-2-butene and trans-2-butene, for instance, have different boiling points (3.7°C vs. 0.9°C) and different dipole moments.</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Diastereomers need at least two stereocenters to exist.',
+        bodyHtml: '<p class="step-body">With only one stereocenter, a molecule has exactly two stereoisomers — a pair of enantiomers, mirror images of each other. Once a molecule has <b>two or more</b> stereocenters, a new relationship becomes possible: <b>diastereomers</b> — stereoisomers that are <i>not</i> mirror images of each other.</p><p class="step-body" style="margin-bottom:0;">The rule that distinguishes the two relationships: inverting <b>every</b> stereocenter in a molecule gives its <b>enantiomer</b> (the complete mirror image). Inverting <b>some, but not all</b>, of the stereocenters gives a <b>diastereomer</b> — same configuration at some centers, opposite at others.</p>'
+      },
+      {
+        render: function(api){
+          var options = [
+            { key: 'both', label: 'Flip both stereocenter 1 and stereocenter 2', correct: 'enantiomer' },
+            { key: 'one', label: 'Flip only stereocenter 1, leave stereocenter 2 unchanged', correct: 'diastereomer' },
+            { key: 'neither', label: 'Flip neither — leave the molecule unchanged', correct: 'same' }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">A molecule has two stereocenters. Click the operation that produces a diastereomer.</h2>' +
+            '<p class="step-body">Think about how many stereocenters you\'re inverting relative to the total.</p>' +
+            '<div class="choice-row">' + options.map(function(o){
+              return '<button class="choice-btn" data-v="' + o.key + '">' + o.label + '</button>';
+            }).join('') + '</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var answered = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(answered) return;
+              answered = true;
+              var o = options.filter(function(x){ return x.key === btn.getAttribute('data-v'); })[0];
+              var isCorrect = o.correct === 'diastereomer';
+              api.card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+              btn.classList.add(isCorrect ? 'correct' : 'wrong');
+              api.record(isCorrect);
+              api.showFeedback(fb, isCorrect, 'Right — inverting only one of the two stereocenters (not both) gives a diastereomer. Inverting both would give the full enantiomer, and inverting neither gives back the identical starting molecule.');
+              next.disabled = false;
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'A molecule with 3 stereocenters is compared to a version with only stereocenter #2 inverted. What\'s the relationship?',
+        options: ['Diastereomer — one of three centers is inverted, not all three', 'Enantiomer — any inversion counts as the mirror image', 'They are the same molecule'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. Only a full inversion of every stereocenter produces the enantiomer — inverting any smaller subset (here, just one of three) produces a diastereomer.',
+        wrongFeedback: 'The enantiomer requires inverting every single stereocenter — inverting just one out of three is a partial inversion, which defines a diastereomer instead.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'Why do diastereomers have different melting points, unlike enantiomers?',
+        options: ['They aren\'t mirror images of each other, so there\'s no symmetry reason for their properties to match', 'They have different molecular formulas', 'Diastereomers actually do have identical melting points — this is a common myth'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. Enantiomers share properties specifically because mirror symmetry preserves them; diastereomers lack that mirror relationship, so they behave as genuinely different compounds.',
+        wrongFeedback: 'Diastereomers share the same molecular formula (same atoms, same connectivity) — what differs is their 3D arrangement, and because they aren\'t mirror images, that different arrangement translates into different physical properties.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Cis/trans isomers are diastereomers wearing a familiar name.',
+        bodyHtml: '<p class="step-body">You may already be familiar with cis and trans isomers of alkenes or disubstituted rings from earlier chemistry courses. These are actually a specific, common example of the diastereomer relationship: cis and trans isomers are stereoisomers of each other, and they are not mirror images. Consistent with the general rule, they have measurably different physical properties — cis-2-butene boils at 3.7°C, while trans-2-butene boils at 0.9°C, and the two have noticeably different dipole moments as well (cis has a net dipole; trans, being more symmetric, has little to none).</p><p class="step-body" style="margin-bottom:0;">Recognizing this connection means you don\'t need to learn "cis/trans" and "diastereomers" as two separate topics — cis/trans is diastereomerism applied to a double bond or ring, rather than to two independent sp³ stereocenters.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Diastereomers are separable by ordinary lab techniques — enantiomers aren\'t.',
+        bodyHtml: '<div class="explain-box">Because diastereomers have genuinely different physical properties, chemists can separate a mixture of diastereomers using standard techniques — distillation (different boiling points), recrystallization (different solubilities), or column chromatography (different polarities). Separating a mixture of enantiomers, by contrast, requires a chiral resolving agent or a chiral chromatography column, since ordinary techniques can\'t distinguish molecules with identical physical properties. This distinction matters directly in pharmaceutical manufacturing, where isolating a single active enantiomer is often far more difficult and expensive than isolating a single diastereomer.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A chemist has a mixture of two diastereomers and needs to separate them. Which technique is most appropriate?',
+        options: ['Ordinary recrystallization or chromatography — their different physical properties make separation straightforward', 'A specialized chiral resolving agent — required for any stereoisomer separation', 'Separation is impossible without breaking bonds'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — since diastereomers have genuinely different physical properties (unlike enantiomers), they can be separated with standard, non-chiral laboratory techniques.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

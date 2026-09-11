@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enantiomers — Stereochemistry | Organic Chemistry</title>
+<meta name="description" content="Learn what enantiomers are, why they share nearly all physical properties except optical rotation, and how they interact differently with a chiral environment.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/enantiomers.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 5 &middot; Stereochemistry</div>
+    <h1 style="margin-bottom:4px;">Enantiomers.</h1>
+    <p class="lede" style="margin-top:0;">Non-superimposable mirror images — identical in almost every way except one.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'enantiomers',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>The definition</h3><p class="step-body"><b>Enantiomers</b> are a pair of stereoisomers that are non-superimposable mirror images of each other — exactly the chirality relationship from the first lesson, now applied to a specific pair of molecules. A single stereocenter has exactly two possible configurations, and a molecule with one stereocenter and its mirror image are enantiomers of each other.</p>' +
+      '<h3>Identical physical properties — with one exception</h3><p class="step-body">Enantiomers have identical melting points, boiling points, density, solubility, and reactivity with achiral reagents — every ordinary physical measurement gives the same answer for both. The one exception: they rotate <b>plane-polarized light</b> in opposite directions by the same magnitude. This property is called <b>optical activity</b>, and it\'s historically how enantiomers were first discovered and told apart, long before anyone understood molecular structure.</p>' +
+      '<div class="notes-fact">A molecule that rotates polarized light clockwise (viewed facing the oncoming beam) is labeled (+) or <i>d</i> (dextrorotatory); one that rotates it counterclockwise is (−) or <i>l</i> (levorotatory). This (+)/(−) label describes an experimentally measured direction of rotation and has no fixed relationship to the R/S configuration label you\'ll learn in a later lesson — you cannot predict (+) or (−) just by looking at a structure.</div>' +
+      '<h3>Specific rotation: a quantitative measurement</h3><p class="step-body">The exact amount of rotation is reported as <b>specific rotation</b>, [α], measured in a polarimeter and normalized for concentration and path length: [α] = α / (l × c), where α is the observed rotation in degrees, l is the path length in decimeters, and c is concentration in g/mL. Pure (+)-enantiomer and pure (−)-enantiomer of the same compound have specific rotations that are exact opposites (equal magnitude, opposite sign).</p>' +
+      '<h3>Why they behave differently in biology</h3><p class="step-body">Even though enantiomers are identical in an achiral environment, they can behave completely differently in a <b>chiral environment</b> — like the active site of an enzyme, which is itself chiral. Only one enantiomer may fit properly, the same way only one of your hands fits comfortably into a right-handed glove. This is the molecular basis for why drug enantiomers can have dramatically different biological effects, even though they\'d be indistinguishable by melting point or boiling point.</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Enantiomers are the chirality relationship, applied to a specific pair.',
+        bodyHtml: '<p class="step-body"><b>Enantiomers</b> are a pair of molecules that are non-superimposable mirror images of each other — this is exactly the definition of chirality from the first lesson, now describing the relationship between two specific molecules rather than a property of one molecule alone. A stereocenter has exactly two possible spatial arrangements; a molecule built with one arrangement and the same molecule built with the other are enantiomers.</p><p class="step-body" style="margin-bottom:0;">Every physical property you\'d normally use to characterize a compound — melting point, boiling point, density, solubility — is <b>identical</b> between a pair of enantiomers. This might seem surprising, but it follows directly from the fact that they\'re built from exactly the same atoms with exactly the same bonds, just arranged as mirror images.</p>'
+      },
+      {
+        render: function(api){
+          var props = [
+            { key: 'mp', label: 'Melting point', same: true },
+            { key: 'bp', label: 'Boiling point', same: true },
+            { key: 'rotation', label: 'Direction of rotating polarized light', same: false },
+            { key: 'density', label: 'Density', same: true }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the one property below where a pair of enantiomers actually differ.</h2>' +
+            '<p class="step-body">Three of these four properties are identical between enantiomers. One is not.</p>' +
+            '<div class="choice-row">' + props.map(function(p){
+              return '<button class="choice-btn" data-v="' + p.key + '">' + p.label + '</button>';
+            }).join('') + '</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var answered = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(answered) return;
+              answered = true;
+              var isCorrect = btn.getAttribute('data-v') === 'rotation';
+              api.card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+              btn.classList.add(isCorrect ? 'correct' : 'wrong');
+              api.record(isCorrect);
+              api.showFeedback(fb, isCorrect, 'Right — enantiomers rotate plane-polarized light in exactly opposite directions (by the same magnitude), while melting point, boiling point, and density are all identical between them.');
+              next.disabled = false;
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'A compound labeled (+) rotates polarized light...',
+        options: ['Clockwise (dextrorotatory)', 'Counterclockwise (levorotatory)', 'It doesn\'t rotate light at all'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — (+) or d- means clockwise rotation, viewed facing the oncoming light beam.',
+        wrongFeedback: '(+) specifically denotes clockwise rotation — counterclockwise would be labeled (−) or l-.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'Can you predict whether a molecule is (+) or (−) just by looking at its structure?',
+        options: ['No — (+)/(−) is an experimentally measured property with no fixed relationship to structure alone', 'Yes — R is always (+) and S is always (−)', 'Yes — molecules with more carbons are always (+)'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. The direction of optical rotation must be measured in a polarimeter — it has no simple, predictable relationship to the R/S configuration label.',
+        wrongFeedback: 'This is a common misconception — R/S configuration (a structural label) and (+)/(−) rotation (an experimentally measured property) are not linked by any general rule.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Specific rotation puts an exact number on optical activity.',
+        bodyHtml: '<p class="step-body">The precise amount a compound rotates polarized light is reported as <b>specific rotation</b>, symbol [α], measured with an instrument called a polarimeter: [α] = α / (l × c), where α is the observed rotation in degrees, l is the sample path length in decimeters, and c is the concentration in g/mL. Normalizing by path length and concentration lets chemists compare rotation values measured under different experimental conditions.</p><p class="step-body" style="margin-bottom:0;">A pure sample of one enantiomer and a pure sample of the other enantiomer of the same compound always have specific rotations that are exact opposites — same magnitude, opposite sign. A 50:50 mixture of both enantiomers (called a <b>racemic mixture</b>, which you saw form in the SN1 mechanism lesson) shows zero net rotation, because the two equal-and-opposite contributions exactly cancel.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'A chiral environment can tell enantiomers apart, even when nothing else can.',
+        bodyHtml: '<div class="explain-box">Enzymes, receptors, and most of the molecular machinery of biology are chiral. Just like your right hand fits a right-handed glove but not a left one, a chiral enzyme active site may bind one enantiomer of a drug tightly while barely interacting with its mirror image — even though the two enantiomers are indistinguishable by every ordinary physical measurement. This is why a drug\'s enantiomers can differ dramatically in potency, side effects, or even toxicity.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A racemic mixture (50:50 of both enantiomers) is placed in a polarimeter. What rotation do you expect to observe?',
+        options: ['Zero — the equal and opposite rotations from each enantiomer cancel out', 'Double the rotation of either pure enantiomer', 'The same rotation as the (+) enantiomer alone'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — since the two enantiomers rotate light by equal magnitude in opposite directions, a 50:50 mixture shows a net rotation of exactly zero. This is why a racemic mixture is sometimes labeled (±).'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>
