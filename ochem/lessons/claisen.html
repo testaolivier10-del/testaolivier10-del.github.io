@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claisen Reactions — Enolate Chemistry | Organic Chemistry</title>
+<meta name="description" content="Learn how the Claisen condensation combines enolate chemistry with nucleophilic acyl substitution to build beta-ketoesters, and why the product's acidic proton drives the equilibrium.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/claisen.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 11 &middot; Enolate Chemistry</div>
+    <h1 style="margin-bottom:4px;">Claisen reactions.</h1>
+    <p class="lede" style="margin-top:0;">Same enolate nucleophile as the aldol reaction, but the electrophile is an ester — combine enolate chemistry with acyl substitution and you build a beta-ketoester.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'claisen',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>The Claisen condensation: enolate meets ester</h3><p class="step-body">The Claisen condensation reacts an ester\'s enolate (formed exactly as in the Alpha Hydrogens lesson, just on an ester\'s alpha carbon instead of a ketone\'s) with a <b>second ester molecule</b> as the electrophile. Because the electrophile is an ester (not a ketone or aldehyde), the enolate\'s attack on its carbonyl carbon proceeds by <b>nucleophilic acyl substitution</b> (the addition-elimination mechanism from the Acyl Substitution lesson), not simple addition — the alkoxy group leaves, regenerating a carbonyl, exactly as in ordinary ester chemistry.</p>' +
+      '<h3>Step by step</h3><p class="step-body">(1) Base (typically the ester\'s own conjugate-base alkoxide, like NaOEt for an ethyl ester) removes an alpha hydrogen, forming the ester enolate. (2) That enolate\'s carbon attacks a second ester molecule\'s carbonyl carbon, forming a tetrahedral intermediate. (3) The intermediate collapses, expelling the alkoxide leaving group (RO⁻) and reforming a carbonyl — exactly the acyl-substitution pattern, just with a carbon nucleophile in place of the amine or water seen previously. The product is a <b>beta-ketoester</b>: one carbonyl retained as a ketone, the other retained as an ester, separated by the new C–C bond, two carbons apart from each other — structurally the ester-chemistry parallel to the aldol reaction\'s beta-hydroxy carbonyl.</p>' +
+      '<div class="notes-fact">The alkoxide byproduct (RO⁻) released in step 3 is the exact same base used to form the enolate in step 1 (e.g., NaOEt released from an ethyl ester regenerates NaOEt) — the reaction is, in that sense, catalytic in base, at least until the final equilibrium-driving step below.</div>' +
+      '<h3>Why the Claisen condensation is driven to completion: a second, more acidic deprotonation</h3><p class="step-body">Unlike a simple ketone alpha-hydrogen (pKa ≈ 20), the beta-ketoester product has an alpha hydrogen flanked by <b>two</b> carbonyls at once (the ketone and the ester), and its resulting enolate is doubly resonance-stabilized — delocalized into both carbonyls rather than just one. This pushes the pKa down to around 11, acidic enough that the mild alkoxide base used in the reaction (conjugate acid an alcohol, pKa ≈16) can deprotonate it essentially completely. That final, irreversible deprotonation removes the beta-ketoester product from the equilibrium entirely, pulling the whole multi-step, otherwise-reversible sequence forward to completion. A final aqueous acid workup then simply reprotonates this stable anion to reveal the neutral beta-ketoester product.</p>' +
+      '<h3>Crossed and intramolecular Claisen (Dieckmann) reactions</h3><p class="step-body">Just like the aldol reaction, a crossed Claisen between two different esters needs the same kind of selectivity strategy (one ester with no alpha hydrogens, or careful stoichiometric control) to avoid a statistical mixture. When both ester groups are part of the <b>same molecule</b> (a diester), an intramolecular Claisen — called a <b>Dieckmann condensation</b> — can form a ring instead, and is especially favorable when the resulting ring size is five or six members (the same favorable ring sizes seen in the Cyclohexanes lesson\'s strain-energy trend).</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Same enolate nucleophile, but now the electrophile is an ester.',
+        bodyHtml: '<p class="step-body">The Claisen condensation starts identically to the aldol reaction: base removes an alpha hydrogen, forming a resonance-stabilized enolate. The difference is what that enolate attacks — instead of a ketone or aldehyde undergoing simple addition, it attacks a <b>second ester molecule</b>, whose carbonyl carbon reacts by nucleophilic acyl substitution instead (the addition-elimination mechanism from the Acyl Substitution lesson).</p><p class="step-body" style="margin-bottom:0;">That means the tetrahedral intermediate here doesn\'t just get protonated — it collapses, expelling the ester\'s alkoxy group (RO⁻) and reforming a carbonyl. The product retains both original carbonyls (one as a ketone, one as an ester), now connected by a brand-new C–C bond: a <b>beta-ketoester</b>.</p>'
+      },
+      {
+        render: function(api){
+          var stages = [
+            { key: 'deprot', label: 'Alkoxide base removes an ester alpha hydrogen, forming the ester enolate' },
+            { key: 'attack', label: 'The enolate\'s carbon attacks a second ester\'s carbonyl carbon' },
+            { key: 'collapse', label: 'The tetrahedral intermediate collapses, expelling RO⁻ and reforming a carbonyl' },
+            { key: 'deprot2', label: 'The doubly-stabilized beta-ketoester product is deprotonated, driving the reaction to completion' }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the four stages of the Claisen condensation in order.</h2>' +
+            '<div class="choice-row" style="flex-direction:column;">' + stages.map(function(s){
+              return '<button class="choice-btn" data-v="' + s.key + '">' + s.label + '</button>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Correct clicks: 0 / 4</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var order = ['deprot', 'attack', 'collapse', 'deprot2'];
+          var idx = 0, mistake = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(btn.disabled) return;
+              var key = btn.getAttribute('data-v');
+              if(key === order[idx]){
+                btn.disabled = true;
+                btn.classList.add('correct');
+                idx++;
+                hint.textContent = 'Correct clicks: ' + idx + ' / 4';
+                if(idx === 4){
+                  api.record(!mistake);
+                  api.showFeedback(fb, !mistake, mistake ? 'You got there, but out of order at first. Deprotonate, attack, collapse (acyl substitution), then the final acidic deprotonation that pulls the whole equilibrium forward.' : 'Exactly right — this four-stage sequence combines enolate formation with acyl substitution, finished off by the driving-force deprotonation that makes the Claisen condensation go to completion.');
+                  next.disabled = false;
+                }
+              } else {
+                mistake = true;
+                btn.classList.add('wrong');
+                setTimeout(function(){ btn.classList.remove('wrong'); }, 500);
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Why does the enolate\'s attack on a second ester molecule proceed by substitution rather than simple addition?',
+        options: ['The ester carbonyl carbon has a leaving group (RO⁻) attached, so the tetrahedral intermediate collapses and expels it, exactly as in the Acyl Substitution lesson', 'Esters cannot undergo nucleophilic addition at all', 'The enolate is too weak a nucleophile to form a stable intermediate'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — this is the same addition-elimination logic from the Acyl Substitution lesson, just with a carbon nucleophile (the enolate) instead of an amine or water.',
+        wrongFeedback: 'The determining factor is the leaving group attached to the ester carbonyl carbon — its presence is exactly what turns this into a substitution rather than a permanent addition.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A doubly-acidic proton is the driving force that pulls the whole reaction to completion.',
+        bodyHtml: '<p class="step-body">Every step up through the tetrahedral-intermediate collapse is, on its own, an equilibrium — reversible in both directions, just like ordinary ester chemistry. What makes the Claisen condensation actually go to completion is what happens next: the beta-ketoester product has an alpha hydrogen flanked by <b>two</b> carbonyls (the ketone and the ester) at once, so its enolate is doubly resonance-stabilized, delocalizing into both carbonyl systems rather than just one.</p><p class="step-body" style="margin-bottom:0;">That extra stabilization drops the pKa to around 11 — acidic enough that the mild alkoxide base already present (pKa of its conjugate acid, an alcohol, ≈16) deprotonates it essentially completely. Once deprotonated, the anionic product can\'t reverse back through any of the earlier equilibrium steps, so it accumulates — pulling the entire sequence forward. A final aqueous acid workup simply protonates this stable anion to reveal the neutral product.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'Why is the beta-ketoester\'s alpha hydrogen (pKa ≈ 11) so much more acidic than an ordinary ketone\'s alpha hydrogen (pKa ≈ 20)?',
+        options: ['Its enolate is stabilized by resonance into two carbonyls simultaneously, instead of just one', 'Esters are inherently more acidic than ketones at every position', 'The extra oxygen simply adds mass, which increases acidity'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — doubling the number of carbonyls the enolate can delocalize into roughly doubles the resonance stabilization, which is exactly why this proton is so much more acidic.',
+        wrongFeedback: 'It isn\'t a general property of esters or simply about mass — it\'s specifically about how many carbonyls the resulting enolate can delocalize its negative charge into.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Intramolecular Claisen (Dieckmann) reactions build rings.',
+        bodyHtml: '<div class="explain-box">When both ester groups belong to the same molecule (a diester), the same mechanism can close a ring instead of joining two separate molecules — called a Dieckmann condensation. Just as the Cyclohexanes lesson showed that five- and six-membered rings are the least strained and most readily formed, Dieckmann condensations that produce five- or six-membered rings proceed far more readily than those that would form a very small or very large ring — ring-size preferences aren\'t unique to cyclohexane chemistry; they show up again here, in a completely different reaction context.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 6 · Independent Practice',
+        title: 'A crossed Claisen condensation is attempted between two different esters, both bearing alpha hydrogens, with no special precautions taken. What outcome is most likely?',
+        options: ['A statistical mixture of multiple beta-ketoester products, since either ester could form the enolate and either could act as the electrophile', 'A single, perfectly clean product every time', 'No reaction occurs, since crossed Claisen reactions are impossible'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — exactly like the crossed aldol reaction, having two components both capable of forming an enolate (and both able to act as electrophile) leads to an unselective mixture unless a control strategy (no alpha hydrogens on one partner, or careful base/temperature control) is used.',
+        wrongFeedback: 'Crossed Claisen reactions do occur, but without a selectivity strategy they give a mixture of products, not one single clean outcome.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Ethyl acetate is treated with NaOEt (sodium ethoxide), then the reaction is worked up with aqueous acid. Predict the general class of product.',
+        options: ['A beta-ketoester — ethyl acetoacetate, formed by Claisen condensation of ethyl acetate\'s enolate with a second ethyl acetate molecule', 'A simple alcohol from ester reduction', 'The starting ester, unreacted, since NaOEt is too weak a base to deprotonate it'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — this is the classic Claisen condensation of ethyl acetate with itself, giving ethyl acetoacetate: NaOEt is exactly matched to this ester\'s conjugate base, letting the reaction proceed and driving to completion via the doubly-acidic beta-ketoester deprotonation.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

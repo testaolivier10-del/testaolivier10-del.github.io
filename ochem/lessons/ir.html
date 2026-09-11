@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IR Spectroscopy — Spectroscopy | Organic Chemistry</title>
+<meta name="description" content="Learn how infrared spectroscopy detects bond vibrations, why bond strength and atom mass set the absorption frequency, and how to read a spectrum for functional groups.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/ir.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 14 &middot; Spectroscopy</div>
+    <h1 style="margin-bottom:4px;">IR spectroscopy.</h1>
+    <p class="lede" style="margin-top:0;">Bonds vibrate at specific frequencies set by their strength and the mass of the atoms involved — infrared light lets you listen in and identify functional groups directly.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'ir',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>What IR actually measures: bond vibration frequency</h3><p class="step-body">Every covalent bond behaves approximately like a tiny spring connecting two masses, constantly stretching and compressing at a specific natural frequency. Infrared light has just the right amount of energy to excite these vibrations, and a molecule absorbs IR light specifically at the frequencies matching its bonds\' natural vibration frequencies. An IR spectrum plots the amount of light absorbed (or transmitted) versus frequency (measured as <b>wavenumber</b>, in cm⁻¹) — a direct map of exactly which bonds are present and how they\'re vibrating.</p>' +
+      '<h3>Two variables set the frequency: bond strength and atom mass</h3><p class="step-body">Following the same physics as a real spring (Hooke\'s law), a <b>stronger bond</b> vibrates at a <b>higher</b> frequency (a stiffer spring oscillates faster), and <b>lighter atoms</b> vibrate at a <b>higher</b> frequency (less mass to move, for the same restoring force). This is why a C≡C triple bond (stronger, from the Alkynes lesson) absorbs at higher wavenumber (~2150 cm⁻¹) than a C=C double bond (~1650 cm⁻¹), which in turn absorbs higher than a C–C single bond (~1000 cm⁻¹) — and why an O–H or N–H stretch (very light hydrogen) shows up at very high wavenumber (~3200-3550 cm⁻¹) compared to a C–H stretch on a heavier framework nearby.</p>' +
+      '<div class="notes-fact">This bond-strength relationship means IR spectroscopy is a direct, physical confirmation of the same bond-order and hybridization ideas from Modules 1, 4, and 7 — a C≡C really is a stronger bond than a C=C, and the IR spectrum proves it quantitatively.</div>' +
+      '<h3>Key diagnostic absorptions worth recognizing on sight</h3><p class="step-body">O–H (alcohol): broad, strong, ~3200-3550 cm⁻¹ (the breadth comes from hydrogen bonding creating a range of slightly different O–H environments). N–H (amine/amide): sharper and weaker than O–H, ~3300-3500 cm⁻¹. <b>C=O (carbonyl)</b>: strong, sharp, ~1650-1750 cm⁻¹ — one of the most useful and reliable signals in the whole spectrum, since almost nothing else absorbs as strongly in that exact range. The precise carbonyl position further distinguishes carbonyl type: ester ~1735 cm⁻¹, ketone/aldehyde ~1715 cm⁻¹, carboxylic acid ~1710 cm⁻¹ (broadened by its own O–H, which also shows a very broad ~2500-3300 cm⁻¹ absorption), amide lower still (~1650-1690 cm⁻¹, since nitrogen\'s resonance donation into the carbonyl — Amine Structure lesson — weakens the C=O bond itself, precisely predicting a lower vibration frequency, exactly as the bond-strength rule requires).</p>' +
+      '<h3>The fingerprint region</h3><p class="step-body">Below about 1500 cm⁻¹, the spectrum becomes a dense, hard-to-interpret tangle of overlapping single-bond stretches and bending vibrations — the <b>fingerprint region</b>. While too complex to assign bond-by-bond, this region is unique to each specific compound (like an actual fingerprint), so it\'s extremely useful for confirming an exact match against a known reference spectrum, even when it can\'t be interpreted from first principles alone.</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A bond is like a tiny spring — and IR light matches its natural vibration frequency.',
+        bodyHtml: '<p class="step-body">Every covalent bond constantly stretches and compresses at a characteristic natural frequency, exactly like a spring connecting two masses. Infrared light happens to carry just the right amount of energy to excite these vibrations, so a molecule selectively absorbs IR light at the specific frequencies that match its bonds\' natural vibrations — everything else passes through largely unabsorbed.</p><p class="step-body" style="margin-bottom:0;">An IR spectrum is simply a plot of how much light gets absorbed at each frequency (measured in wavenumber, cm⁻¹). Because different bonds and functional groups vibrate at reliably different, characteristic frequencies, reading an IR spectrum is fundamentally about matching absorption peaks to known bond types.</p>'
+      },
+      {
+        render: function(api){
+          var items = [
+            { key: 'ccc', label: 'C≡C triple bond', v: 'high' },
+            { key: 'cc', label: 'C=C double bond', v: 'mid' },
+            { key: 'csingle', label: 'C–C single bond', v: 'low' }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Rank these three carbon-carbon bonds from highest to lowest IR absorption frequency.</h2>' +
+            '<p class="step-body">Stronger bonds vibrate faster — higher frequency, higher wavenumber.</p>' +
+            '<div class="choice-row" style="flex-direction:column;">' + items.map(function(s){
+              return '<button class="choice-btn" data-v="' + s.key + '">' + s.label + '</button>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Correct clicks: 0 / 3</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var order = ['ccc', 'cc', 'csingle'];
+          var idx = 0, mistake = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(btn.disabled) return;
+              var key = btn.getAttribute('data-v');
+              if(key === order[idx]){
+                btn.disabled = true;
+                btn.classList.add('correct');
+                idx++;
+                hint.textContent = 'Correct clicks: ' + idx + ' / 3';
+                if(idx === 3){
+                  api.record(!mistake);
+                  api.showFeedback(fb, !mistake, mistake ? 'You got there, but out of order at first. More bonds between the same two atoms means a stronger, stiffer bond, and a stiffer spring vibrates faster (higher wavenumber).' : 'Exactly right — C≡C (~2150 cm⁻¹) > C=C (~1650 cm⁻¹) > C–C (~1000 cm⁻¹), tracking bond order and bond strength directly.');
+                  next.disabled = false;
+                }
+              } else {
+                mistake = true;
+                btn.classList.add('wrong');
+                setTimeout(function(){ btn.classList.remove('wrong'); }, 500);
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Why does an O–H stretch appear at such a high wavenumber (~3200-3550 cm⁻¹) compared to most C–C or C–O stretches?',
+        options: ['Hydrogen is a very light atom, and lighter atoms vibrate at higher frequency for a given bond strength', 'Oxygen-hydrogen bonds are actually the weakest bonds in organic molecules', 'High wavenumber values only occur in inorganic compounds'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — atom mass is the other half of the Hooke\'s law relationship, and hydrogen\'s low mass pushes any X–H stretch to unusually high wavenumber.',
+        wrongFeedback: 'O–H is actually a fairly strong bond — the high wavenumber here comes specifically from hydrogen\'s very low mass, not bond weakness.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The carbonyl stretch is the single most useful signal in an IR spectrum.',
+        bodyHtml: '<p class="step-body">A C=O bond gives a strong, sharp absorption in a narrow, reliable window (roughly 1650-1750 cm⁻¹) where very little else absorbs — making it one of the most diagnostic peaks you can look for. Even better, the exact position within that window distinguishes which type of carbonyl you\'re looking at: esters absorb highest (~1735 cm⁻¹), ketones and aldehydes in the middle (~1715 cm⁻¹), and amides lowest (~1650-1690 cm⁻¹).</p><p class="step-body" style="margin-bottom:0;">This ordering is a direct, physical confirmation of the resonance-donation trend from the Esters &amp; Amides and Amine Structure lessons: an amide nitrogen is the strongest resonance donor into the carbonyl, weakening the C=O bond the most (more single-bond character, more like a genuinely single C–O–N-conjugated system) — and a weaker bond, by the bond-strength rule you just learned, vibrates at lower frequency.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'Why does an amide\'s C=O stretch appear at a lower wavenumber than an ester\'s C=O stretch?',
+        options: ['Nitrogen\'s stronger resonance donation into the carbonyl (from the Amine Structure lesson) weakens the C=O bond more than oxygen\'s donation does, and a weaker bond vibrates at lower frequency', 'Amides simply contain more atoms than esters', 'Nitrogen is heavier than oxygen, lowering the frequency'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — this ties directly back to the resonance-donation strength ranking from Module 10 and 12: more donation into the carbonyl means a weaker C=O and thus a lower IR stretching frequency.',
+        wrongFeedback: 'Nitrogen is actually lighter than oxygen, and atom count isn\'t the relevant factor here — the key is how much each heteroatom\'s resonance donation weakens the C=O bond itself.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'The fingerprint region: too complex to interpret, but unique to every compound.',
+        bodyHtml: '<div class="explain-box">Below about 1500 cm⁻¹, the spectrum is dense with overlapping single-bond stretches and bending vibrations that are essentially impossible to assign individually. Rather than being a weakness, this complexity is exactly what makes the fingerprint region so useful in practice: it\'s different enough from compound to compound that matching an unknown sample\'s fingerprint region against a reference library spectrum is one of the most reliable ways to confirm an exact structural match, even when the specific peaks can\'t be individually explained.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 6 · Independent Practice',
+        title: 'An unknown compound\'s IR spectrum shows a strong, sharp peak at 1715 cm⁻¹ and no broad absorption anywhere between 2500-3300 cm⁻¹ or 3200-3550 cm⁻¹. What functional group is most consistent with this data?',
+        options: ['A ketone or aldehyde (carbonyl present, but no O–H of a carboxylic acid or alcohol)', 'A carboxylic acid', 'An alcohol'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — the sharp 1715 cm⁻¹ peak matches a ketone/aldehyde carbonyl, and the absence of any O–H absorption rules out both alcohols and carboxylic acids.',
+        wrongFeedback: 'A carboxylic acid or alcohol would show a broad O–H absorption in addition to (or instead of) this sharp carbonyl peak — the absence of that broad signal is the key piece of evidence here.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Two unknown compounds both show a strong C=O stretch. Compound A\'s carbonyl appears at 1735 cm⁻¹; Compound B\'s appears at 1680 cm⁻¹. Which is more likely to be the amide, and why?',
+        options: ['Compound B — its lower wavenumber suggests a weaker C=O bond, consistent with nitrogen\'s strong resonance donation into the carbonyl in an amide', 'Compound A — higher wavenumber always means more nitrogen character', 'Wavenumber position cannot distinguish amides from esters at all'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — the lower the carbonyl stretching frequency, the weaker the C=O bond, and the more resonance donation from an adjacent heteroatom is likely responsible — exactly the amide signature.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>
