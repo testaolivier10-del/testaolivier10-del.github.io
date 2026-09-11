@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alkynes — Alkenes &amp; Alkynes | Organic Chemistry</title>
+<meta name="description" content="Learn alkyne structure and linear geometry, why terminal alkyne C-H bonds are unusually acidic, and how alkynes undergo addition and hydration reactions.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/alkynes.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 7 &middot; Alkenes &amp; Alkynes</div>
+    <h1 style="margin-bottom:4px;">Alkynes.</h1>
+    <p class="lede" style="margin-top:0;">Two pi bonds instead of one — a linear geometry, and a C–H bond acidic enough to deprotonate with the right base.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'alkynes',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>sp hybridization and linear geometry</h3><p class="step-body">Each carbon of a C≡C triple bond is <b>sp hybridized</b> (from the Hybridization lesson): two sp orbitals, 180° apart, form sigma bonds, and two unhybridized p orbitals (perpendicular to each other and to the sp axis) form <b>two separate pi bonds</b>. A triple bond is therefore one sigma bond plus two pi bonds. The 180° sp geometry makes every alkyne carbon and its two attached atoms perfectly <b>linear</b>.</p>' +
+      '<h3>Terminal alkyne C–H: unusually acidic</h3><p class="step-body">A terminal alkyne\'s C–H (pKa ≈ 25) is dramatically more acidic than an alkene C–H (pKa ≈ 44) or alkane C–H (pKa ≈ 50) — this is the Orbital factor from the ARIO acidity framework (Acidity Factors lesson). The conjugate base\'s lone pair sits in an <b>sp orbital</b>, which has 50% s-character — far more than an sp² (33% s) or sp³ (25% s) carbanion. Because s orbitals hold electron density closer to the nucleus, more s-character means a more stable (lower-energy) anion, hence a more acidic C–H.</p>' +
+      '<div class="notes-fact">pKa 25 is well within reach of strong, non-nucleophilic-enough bases like NaNH₂ (sodium amide, conjugate acid NH₃ pKa ≈ 38) or NaH. It is NOT acidic enough for hydroxide (conjugate acid water, pKa ≈ 15.7) to deprotonate to any useful extent — the equilibrium would sit almost entirely on the starting-material side.</p>' +
+      '<h3>Making acetylide anions and using them as nucleophiles</h3><p class="step-body">Deprotonating a terminal alkyne with NaNH₂ produces an <b>acetylide anion</b> — a strong, small, reactive carbanion nucleophile. Acetylides do exactly what any strong nucleophile does from Module 6: they perform SN2 attacks on unhindered alkyl halides, forming a new C–C bond and extending the carbon skeleton. This is one of organic chemistry\'s few reliable ways to build a new carbon-carbon bond from scratch.</p>' +
+      '<h3>Addition reactions: partial vs. complete</h3><p class="step-body">Because an alkyne has two pi bonds, it can add electrophiles or H₂ once (giving an alkene) or twice (giving an alkane). H₂ with a Lindlar catalyst (a poisoned, less active Pd catalyst) stops cleanly at the alkene stage and delivers <b>syn</b> addition, giving the <b>cis</b> alkene. H₂ with a normal Pd or Pt catalyst goes all the way to the alkane. Acid-catalyzed hydration (H₃O⁺/Hg²⁺ catalyst) adds water Markovnikov-style to give an unstable <b>enol</b>, which immediately tautomerizes to the more stable ketone (or aldehyde for a terminal alkyne) — the same enol/keto relationship that becomes central in Module 11 (Enolate Chemistry).</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A triple bond is one sigma bond plus two pi bonds — and it forces a straight line.',
+        bodyHtml: '<p class="step-body">Alkyne carbons are <b>sp hybridized</b>: each forms two sigma bonds using sp orbitals oriented exactly 180° apart, with two leftover, perpendicular p orbitals forming <b>two pi bonds</b> at once (compare: sp² alkene carbons have one leftover p orbital and one pi bond). A C≡C triple bond is therefore one sigma bond plus two pi bonds — more bonding electron density packed into the same two atoms than any other common carbon-carbon bond.</p><p class="step-body" style="margin-bottom:0;">The 180° angle between the two sp orbitals means the triple-bond carbon and both atoms attached to it are forced into a perfectly straight line. This is why terminal and internal alkynes are drawn (and are) linear at the triple bond, unlike the bent, trigonal-planar geometry around an alkene.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the correct approximate bond angle at each type of carbon.</h2>' +
+            '<p class="step-body">Match sp, sp², and sp³ carbons to their characteristic bond angle.</p>' +
+            '<div class="choice-row" style="flex-direction:column;">' +
+              '<div style="display:flex;gap:10px;align-items:center;margin-bottom:8px;"><span style="font:800 13px var(--font-mono);width:130px;">sp (alkyne)</span>' +
+                '<button class="choice-btn opt" data-g="sp" data-v="180">180°</button><button class="choice-btn opt" data-g="sp" data-v="120">120°</button><button class="choice-btn opt" data-g="sp" data-v="109">109.5°</button></div>' +
+              '<div style="display:flex;gap:10px;align-items:center;margin-bottom:8px;"><span style="font:800 13px var(--font-mono);width:130px;">sp² (alkene)</span>' +
+                '<button class="choice-btn opt" data-g="sp2" data-v="180">180°</button><button class="choice-btn opt" data-g="sp2" data-v="120">120°</button><button class="choice-btn opt" data-g="sp2" data-v="109">109.5°</button></div>' +
+              '<div style="display:flex;gap:10px;align-items:center;"><span style="font:800 13px var(--font-mono);width:130px;">sp³ (alkane)</span>' +
+                '<button class="choice-btn opt" data-g="sp3" data-v="180">180°</button><button class="choice-btn opt" data-g="sp3" data-v="120">120°</button><button class="choice-btn opt" data-g="sp3" data-v="109">109.5°</button></div>' +
+            '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin:10px 0 16px;">Correct: 0 / 3</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var answers = { sp: '180', sp2: '120', sp3: '109' };
+          var correctCount = 0, mistake = false, groupsDone = {};
+          api.card.querySelectorAll('.opt').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var g = btn.getAttribute('data-g');
+              if(groupsDone[g]) return;
+              groupsDone[g] = true;
+              api.card.querySelectorAll('.opt[data-g="' + g + '"]').forEach(function(b){ b.disabled = true; });
+              var isCorrect = btn.getAttribute('data-v') === answers[g];
+              btn.classList.add(isCorrect ? 'correct' : 'wrong');
+              if(isCorrect) correctCount++; else mistake = true;
+              hint.textContent = 'Correct: ' + correctCount + ' / 3';
+              if(Object.keys(groupsDone).length === 3){
+                api.record(!mistake);
+                api.showFeedback(fb, !mistake, mistake ? 'Close — the pattern is sp=180° (linear), sp²=120° (trigonal planar), sp³=109.5° (tetrahedral). More pi bonds means fewer sigma-bond directions to space out, and a wider angle between them.' : 'Exactly right — sp (alkyne, linear, 180°), sp² (alkene, trigonal planar, 120°), sp³ (alkane, tetrahedral, 109.5°). Fewer sigma bonds around a carbon means they can spread out wider.');
+                next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Why is a terminal alkyne C–H (pKa ≈ 25) so much more acidic than an alkane C–H (pKa ≈ 50)?',
+        options: ['The conjugate base\'s lone pair sits in an sp orbital (50% s-character), which is far more stabilizing than an sp³ carbanion (25% s-character)', 'Triple bonds are simply weaker than single bonds', 'Alkynes have more hydrogen atoms overall'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — this is the Orbital factor from the ARIO framework: more s-character holds the anion\'s electron density closer to the nucleus, stabilizing the conjugate base and raising acidity.',
+        wrongFeedback: 'It comes down to orbital hybridization of the resulting carbanion, not bond strength or hydrogen count — recall the Orbital factor from the ARIO acidity framework.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'Which base could realistically deprotonate a terminal alkyne (pKa ≈ 25) to a useful extent?',
+        options: ['NaNH₂ (conjugate acid NH₃, pKa ≈ 38)', 'NaOH (conjugate acid H₂O, pKa ≈ 15.7)', 'Neither — terminal alkynes cannot be deprotonated'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — the equilibrium favors the side with the weaker acid (higher pKa). NH₃ (pKa 38) is a far weaker acid than the alkyne (pKa 25), so amide strongly favors deprotonation. Water (pKa 15.7) is already a stronger acid than the alkyne, so hydroxide can\'t deprotonate it usefully.',
+        wrongFeedback: 'Apply the pKa comparison rule from the pKa lesson: the equilibrium favors the side with the weaker acid (higher pKa). Compare 25 (alkyne) against each base\'s conjugate acid.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Acetylide anions: alkynes\' one reliable path to a new C–C bond.',
+        bodyHtml: '<p class="step-body">Once deprotonated by a strong enough base like NaNH₂, a terminal alkyne becomes an <b>acetylide anion</b> — a small, localized, highly reactive carbanion. Acetylides act as excellent nucleophiles in SN2 reactions (Module 6): attacking an unhindered primary alkyl halide displaces the leaving group and forges a brand-new carbon-carbon bond, extending the carbon skeleton by however many carbons the alkyl halide contributed.</p><p class="step-body" style="margin-bottom:0;">This sequence — deprotonate, then SN2 with an alkyl halide — is one of the few dependable ways early in the course to actually build a longer carbon chain from two smaller pieces, rather than just transforming a functional group already in place.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Two pi bonds mean addition can stop halfway, or go all the way.',
+        bodyHtml: '<p class="step-body">An alkyne\'s two pi bonds mean it can accept an electrophilic addition (H₂, X₂, HX) once, landing on an alkene, or twice, landing on a fully saturated alkane. Which one happens depends entirely on the reagent: H₂ with a normal Pd or Pt catalyst reduces all the way to the alkane, but H₂ with a specially poisoned <b>Lindlar catalyst</b> stops cleanly at the alkene and delivers <b>syn</b> (same-face) addition — producing the <b>cis</b> alkene specifically.</p><p class="step-body" style="margin-bottom:0;">Acid-catalyzed hydration (H₃O⁺, Hg²⁺ catalyst) adds water Markovnikov-style across one pi bond, but the immediate product — an <b>enol</b> (a carbon-carbon double bond with an OH on one of the two carbons) — is unstable and rapidly rearranges (tautomerizes) into a ketone (or an aldehyde, for a terminal alkyne). You\'ll see this same enol-to-carbonyl tautomerization become a central mechanism in Enolate Chemistry (Module 11).</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 6 · Check Understanding',
+        title: 'You need to convert an internal alkyne into a cis alkene, stopping cleanly before full reduction to the alkane. What should you use?',
+        options: ['H₂ with a Lindlar catalyst', 'H₂ with a normal Pd/C catalyst', 'NaNH₂'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — Lindlar\'s poisoned, less active catalyst is specifically chosen to stop the reduction at the alkene stage and deliver syn (cis) addition.',
+        wrongFeedback: 'A normal Pd/C catalyst won\'t stop at the alkene — it reduces all the way to the alkane. NaNH₂ is a base for deprotonation, not a reducing agent.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A terminal alkyne is treated with H₃O⁺/Hg²⁺ (acid-catalyzed hydration). What is the final, isolated product?',
+        options: ['A ketone (the unstable enol intermediate tautomerizes to the more stable carbonyl)', 'The enol itself, isolated as the final stable product', 'A carboxylic acid'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — Markovnikov addition of water gives an enol first, but enols are unstable and rapidly tautomerize to the corresponding ketone, which is what you actually isolate.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

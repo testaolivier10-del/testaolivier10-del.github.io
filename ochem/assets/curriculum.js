@@ -63,15 +63,15 @@
       { id: 'substrate-effects', title: 'Substrate & solvent effects', href: 'lessons/substrate-effects.html', dependsOn: ['sn2', 'sn1', 'e1', 'e2'] }
     ]},
     { id: 'alkenes-alkynes', title: 'Alkenes & Alkynes', topics: [
-      { id: 'alkene-structure', title: 'Alkene structure', href: null },
-      { id: 'addition-reactions', title: 'Addition reactions', href: null },
-      { id: 'markovnikov', title: 'Markovnikov / anti-Markovnikov', href: null },
-      { id: 'alkynes', title: 'Alkynes', href: null }
+      { id: 'alkene-structure', title: 'Alkene structure', href: 'lessons/alkene-structure.html', dependsOn: ['hybridization'] },
+      { id: 'addition-reactions', title: 'Addition reactions', href: 'lessons/addition-reactions.html', dependsOn: ['alkene-structure', 'nucleophiles', 'electrophiles'] },
+      { id: 'markovnikov', title: 'Markovnikov / anti-Markovnikov', href: 'lessons/markovnikov.html', dependsOn: ['addition-reactions', 'sn1'] },
+      { id: 'alkynes', title: 'Alkynes', href: 'lessons/alkynes.html', dependsOn: ['alkene-structure', 'acidity-factors', 'sn2'] }
     ]},
     { id: 'alcohols-ethers', title: 'Alcohols, Ethers & Related Chemistry', topics: [
-      { id: 'alcohol-reactions', title: 'Alcohol reactions', href: null },
-      { id: 'ether-chemistry', title: 'Ether chemistry', href: null },
-      { id: 'epoxides', title: 'Epoxides', href: null }
+      { id: 'alcohol-reactions', title: 'Alcohol reactions', href: 'lessons/alcohol-reactions.html', dependsOn: ['leaving-groups', 'e1'] },
+      { id: 'ether-chemistry', title: 'Ether chemistry', href: 'lessons/ether-chemistry.html', dependsOn: ['sn2', 'alcohol-reactions'] },
+      { id: 'epoxides', title: 'Epoxides', href: 'lessons/epoxides.html', dependsOn: ['ether-chemistry', 'cyclohexanes', 'substrate-effects'] }
     ]},
     { id: 'carbonyl-chemistry', title: 'Carbonyl Chemistry', topics: [
       { id: 'aldehydes-ketones', title: 'Aldehydes & ketones', href: null },
