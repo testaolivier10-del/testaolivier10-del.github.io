@@ -33,18 +33,18 @@
       { id: 'electron-rich-poor', title: 'Electron-rich vs. electron-poor atoms', href: 'lessons/electron-rich-poor.html', dependsOn: ['nucleophiles', 'electrophiles'] }
     ]},
     { id: 'acids-bases', title: 'Acids & Bases', topics: [
-      { id: 'bronsted', title: 'Brønsted acids/bases', href: null },
-      { id: 'lewis-acids', title: 'Lewis acids/bases', href: null },
-      { id: 'pka', title: 'pKa', href: null },
-      { id: 'conjugate', title: 'Conjugate acids/bases', href: null },
-      { id: 'acidity-factors', title: 'Factors affecting acidity', href: null }
+      { id: 'bronsted', title: 'Brønsted acids/bases', href: 'lessons/bronsted.html' },
+      { id: 'lewis-acids', title: 'Lewis acids/bases', href: 'lessons/lewis-acids.html', dependsOn: ['nucleophiles', 'electrophiles'] },
+      { id: 'pka', title: 'pKa', href: 'lessons/pka.html', dependsOn: ['bronsted'] },
+      { id: 'conjugate', title: 'Conjugate acids/bases', href: 'lessons/conjugate.html', dependsOn: ['pka'] },
+      { id: 'acidity-factors', title: 'Factors affecting acidity', href: 'lessons/acidity-factors.html', dependsOn: ['pka', 'resonance', 'electronegativity', 'hybridization'] }
     ]},
     { id: 'alkanes-conformations', title: 'Alkanes & Conformations', topics: [
-      { id: 'newman', title: 'Newman projections', href: null },
-      { id: 'cyclohexanes', title: 'Cyclohexanes', href: null },
-      { id: 'axial-equatorial', title: 'Axial/equatorial', href: null },
-      { id: 'ring-flips', title: 'Ring flips', href: null },
-      { id: 'conformational-analysis', title: 'Conformational analysis', href: null }
+      { id: 'newman', title: 'Newman projections', href: 'lessons/newman.html' },
+      { id: 'cyclohexanes', title: 'Cyclohexanes', href: 'lessons/cyclohexanes.html', dependsOn: ['newman'] },
+      { id: 'axial-equatorial', title: 'Axial/equatorial', href: 'lessons/axial-equatorial.html', dependsOn: ['cyclohexanes'] },
+      { id: 'ring-flips', title: 'Ring flips', href: 'lessons/ring-flips.html', dependsOn: ['axial-equatorial'] },
+      { id: 'conformational-analysis', title: 'Conformational analysis', href: 'lessons/conformational-analysis.html', dependsOn: ['ring-flips'] }
     ]},
     { id: 'stereochemistry', title: 'Stereochemistry', topics: [
       { id: 'chirality', title: 'Chirality', href: null },

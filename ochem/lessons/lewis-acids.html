@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lewis Acids &amp; Bases — Acids &amp; Bases | Organic Chemistry</title>
+<meta name="description" content="Learn the Lewis definition of acids and bases as electron pair acceptors and donors, and how it connects to nucleophiles and electrophiles.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/lewis-acids.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 3 &middot; Acids &amp; Bases</div>
+    <h1 style="margin-bottom:4px;">Lewis acids &amp; bases.</h1>
+    <p class="lede" style="margin-top:0;">A broader definition — one that doesn't need a proton at all.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  function bf3nh3Svg(){
+    return '<div class="scene"><svg viewBox="0 0 300 110">' +
+      '<g class="atom" data-key="lewisacid"><circle cx="70" cy="55" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="70" y="60" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">BF₃</text></g>' +
+      '<text x="112" y="60" font-family="Nunito" font-weight="800" font-size="16" fill="var(--muted)">+</text>' +
+      '<g class="atom" data-key="lewisbase"><circle cx="155" cy="55" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="155" y="52" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">N</text><text x="155" y="66" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">H₃</text></g>' +
+      '<text x="192" y="60" font-family="Nunito" font-weight="900" font-size="18" fill="var(--accent)">&#8594;</text>' +
+      '<circle cx="250" cy="55" r="26" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="250" y="52" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">F₃B–NH₃</text><text x="250" y="66" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="9">(new bond)</text>' +
+    '</svg></div>';
+  }
+
+  window.OchemLessonEngine.start({
+    topicId: 'lewis-acids',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>The Lewis definition</h3><p class="step-body">A <b>Lewis acid</b> is an electron pair acceptor. A <b>Lewis base</b> is an electron pair donor. This is broader than Brønsted-Lowry: every Brønsted base is also a Lewis base (it donates its lone pair to a proton), but Lewis acids don\'t need a proton at all — BF₃, AlCl₃, ZnCl₂, and carbocations are all Lewis acids because they have an empty (or accessible) orbital that can accept an electron pair.</p>' +
+      '<h3>Worked example: BF₃ + NH₃</h3><p class="step-body">Boron in BF₃ has only 6 valence electrons around it (an incomplete octet, from the Lewis Structures lesson\'s exceptions) — it\'s electron-deficient and has an empty p orbital. NH₃\'s nitrogen lone pair donates into that empty orbital, forming a new covalent bond (a dative or coordinate bond) without breaking any existing bond. NH₃ is the Lewis base; BF₃ is the Lewis acid.</p>' +
+      '<div class="notes-fact">This is exactly the nucleophile/electrophile language from Module 2, applied to acid-base chemistry: a <b>Lewis base is a nucleophile</b>, and a <b>Lewis acid is an electrophile</b>. Every nucleophilic attack you\'ll draw all semester — SN2, carbonyl addition, enolate alkylation — is technically a Lewis acid-base reaction.</div>' +
+      '<h3>Why this matters for mechanisms</h3><p class="step-body">Carbocations (Module 6) are Lewis acids — empty p orbital, ready to accept a pair of electrons from a nucleophile. Metal catalysts like AlCl₃ (Friedel-Crafts, Module 13) are Lewis acids that activate an otherwise-unreactive electrophile by accepting electron density from it. The Lewis framework is what lets "acid-base chemistry" describe reactions that never involve a proton.</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Forget protons: a Lewis acid just needs an empty orbital.',
+        bodyHtml: '<p class="step-body">The Brønsted-Lowry definition is about protons. The <b>Lewis</b> definition is broader and more general: a <b>Lewis acid</b> is an electron pair <b>acceptor</b>, and a <b>Lewis base</b> is an electron pair <b>donor</b>.</p><p class="step-body" style="margin-bottom:0;">Every Brønsted base is automatically a Lewis base too — it donates a lone pair to a proton. But Lewis acids don\'t need a proton at all. BF₃, AlCl₃, ZnCl₂, and carbocations are all Lewis acids: none of them can donate a proton, but all of them have an empty (or easily accessible) orbital that can accept an incoming electron pair.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the Lewis acid, then the Lewis base.</h2>' +
+            '<p class="step-body">BF₃ has only 6 electrons around boron — an incomplete octet with an empty p orbital. NH₃ has a lone pair on nitrogen it isn\'t using in a bond.</p>' +
+            bf3nh3Svg() +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var got = { lewisacid: false, lewisbase: false };
+          function checkDone(){
+            if(got.lewisacid && got.lewisbase){
+              api.showFeedback(fb, true, 'Right — BF₃ is the Lewis acid (empty orbital, accepts the electron pair) and NH₃ is the Lewis base (lone pair, donates it). The nitrogen lone pair forms a brand-new bond to boron without breaking any existing bond.');
+              next.disabled = false;
+            }
+          }
+          api.card.querySelectorAll('.atom').forEach(function(g){
+            g.addEventListener('click', function(){
+              var key = g.getAttribute('data-key');
+              if(got[key]) return;
+              got[key] = true;
+              g.classList.add('chosen');
+              if(key === 'lewisacid'){ api.record(true); }
+              checkDone();
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Which of these can be a Lewis acid even though it has no proton to donate?',
+        options: ['A carbocation, since it has an empty p orbital', 'Water, since it has lone pairs', 'Ammonia, since it has a lone pair'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — a carbocation\'s empty p orbital can accept an electron pair, making it a Lewis acid with no proton in sight.',
+        wrongFeedback: 'Water and ammonia both have lone pairs to donate, which makes them electron pair donors — Lewis bases, not Lewis acids.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'In Module 2 terms, a Lewis base is the same thing as a...',
+        options: ['nucleophile', 'electrophile', 'leaving group'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. Both are electron pair donors — "Lewis base" and "nucleophile" describe the same electron-rich role, just in different vocabularies.',
+        wrongFeedback: 'An electrophile accepts electrons (that\'s the Lewis acid role) — a Lewis base donates them, which is the nucleophile role.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Lewis acid-base language covers almost every mechanism arrow you\'ll draw.',
+        bodyHtml: '<p class="step-body">Once you accept that a Lewis base = nucleophile and a Lewis acid = electrophile, an enormous amount of organic chemistry collapses into one idea: <b>a filled orbital (lone pair or pi bond) attacks an empty or accessible orbital.</b> SN2 substitution, carbonyl addition, enolate alkylation, and Friedel-Crafts acylation are all, underneath the specific mechanism name, Lewis acid-base reactions.</p><p class="step-body" style="margin-bottom:0;">This is also why some Lewis acids (AlCl₃, BF₃, ZnCl₂) show up as <b>catalysts</b> rather than reactants: they accept electron density from an electrophile that\'s too weak to react on its own, making it a stronger, more reactive electrophile. You\'ll see AlCl₃ do exactly this in Friedel-Crafts reactions (Module 13).</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Not every acid you\'ll meet this semester has a proton.',
+        bodyHtml: '<div class="explain-box">If you only think in Brønsted terms, species like BF₃, carbocations, and metal catalysts won\'t make sense as "acids." The Lewis definition is the one that actually covers everything you\'ll encounter — keep both definitions, but default to Lewis thinking (electron pair acceptor/donor) whenever a reaction doesn\'t obviously involve a proton changing hands.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'AlCl₃ is added to a reaction as a catalyst. What role is it playing?',
+        options: ['Lewis acid — it accepts electron density to activate an electrophile', 'Lewis base — it donates a lone pair', 'Brønsted acid — it donates a proton'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — aluminum in AlCl₃ has an incomplete octet and an empty orbital, just like boron in BF₃, making it a Lewis acid that activates electrophiles it\'s bound to.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

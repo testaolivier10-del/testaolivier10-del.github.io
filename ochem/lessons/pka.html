@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pKa — Acids &amp; Bases | Organic Chemistry</title>
+<meta name="description" content="Learn what pKa actually measures, how to read a pKa table, and how to use pKa values to predict which side an acid-base equilibrium favors.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/pka.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 3 &middot; Acids &amp; Bases</div>
+    <h1 style="margin-bottom:4px;">pKa.</h1>
+    <p class="lede" style="margin-top:0;">One number that tells you exactly how strong an acid is — and which way a reaction will go.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'pka',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>Ka and pKa</h3><p class="step-body">For an acid HA dissociating in solution, HA ⇌ H⁺ + A⁻, the equilibrium constant is <b>Ka = [H⁺][A⁻] / [HA]</b>. A larger Ka means the equilibrium sits further toward the dissociated (ionized) side — a stronger acid. Because Ka values span many orders of magnitude, chemists use <b>pKa = −log₁₀(Ka)</b> instead, the same trick used for pH. This means <b>lower pKa = stronger acid</b> — the negative sign flips the direction.</p>' +
+      '<h3>A pKa table worth memorizing the shape of</h3><p class="step-body">HCl ≈ −7 (essentially fully dissociated in water), H₃O⁺ ≈ −1.7, HF ≈ 3.2, acetic acid (CH₃COOH) ≈ 4.76, phenol (aromatic OH) ≈ 10, water ≈ 15.7, ethanol (and most alcohols) ≈ 16, terminal alkyne C–H ≈ 25, ammonia (N–H) ≈ 38, alkane C–H ≈ 50. Each step down this list is a weaker acid — and a correspondingly stronger conjugate base.</p>' +
+      '<div class="notes-fact">Every 1 unit of pKa is a 10-fold change in acid strength, because of the logarithm. Acetic acid (pKa 4.76) is roughly 10¹¹ times more acidic than ethanol (pKa 16) — an almost unimaginable difference that a bare number easily hides.</div>' +
+      '<h3>Predicting which side an equilibrium favors</h3><p class="step-body">In a proton transfer, the equilibrium favors the side with the <b>weaker acid</b> — equivalently, the side where the acid has the <b>higher pKa</b>. Compare the pKa of the acid on the left to the pKa of the acid that would form on the right (the conjugate acid of the base); the reaction favors whichever side has the acid with the higher pKa, because that\'s the more stable, lower-energy species.</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Ka measures how much an acid actually falls apart.',
+        bodyHtml: '<p class="step-body">For an acid HA dissociating in solution, HA ⇌ H⁺ + A⁻, chemists define an equilibrium constant <b>Ka = [H⁺][A⁻] / [HA]</b>. A large Ka means the equilibrium sits far toward the ionized (dissociated) side — most of the acid has given up its proton — which is exactly what "strong acid" means.</p><p class="step-body" style="margin-bottom:0;">Ka values for real acids range from around 10⁷ (very strong) down to 10⁻⁵⁰ (essentially non-acidic), which is an awkward range of numbers to work with directly. So chemists take <b>pKa = −log₁₀(Ka)</b> instead — the same logarithm trick used to turn [H⁺] into pH. Because of the negative sign, this flips the direction: <b>a lower pKa means a stronger acid.</b></p>'
+      },
+      {
+        render: function(api){
+          var acids = [
+            { key: 'hcl', label: 'HCl', pka: '−7' },
+            { key: 'acetic', label: 'CH₃COOH', pka: '4.76' },
+            { key: 'water', label: 'H₂O', pka: '15.7' },
+            { key: 'ethane', label: 'CH₃CH₃', pka: '50' }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the strongest acid of these four.</h2>' +
+            '<p class="step-body">Each button shows the substance and its approximate pKa.</p>' +
+            '<div class="choice-row">' + acids.map(function(a){
+              return '<button class="choice-btn" data-v="' + a.key + '" style="text-align:center;font:900 15px var(--font-mono);">' + a.label + '<br><span style="font-weight:700;font-size:11px;color:var(--muted);">pKa ' + a.pka + '</span></button>';
+            }).join('') + '</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var answered = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(answered) return;
+              answered = true;
+              var isCorrect = btn.getAttribute('data-v') === 'hcl';
+              api.card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+              btn.classList.add(isCorrect ? 'correct' : 'wrong');
+              api.record(isCorrect);
+              api.showFeedback(fb, isCorrect, 'HCl has by far the lowest pKa (≈ −7) of the four, making it the strongest acid — it\'s essentially 100% dissociated in water. Ethane\'s C–H at pKa 50 is barely acidic at all — that gap of 57 pKa units is a factor of roughly 10⁵⁷ in acid strength.');
+              next.disabled = false;
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'A lower pKa means...',
+        options: ['A stronger acid', 'A weaker acid', 'A stronger base'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — the negative sign in pKa = −log(Ka) flips the direction, so lower pKa always means stronger acid.',
+        wrongFeedback: 'Remember the negative sign: pKa = −log(Ka). A bigger Ka (stronger acid) produces a smaller (or more negative) pKa.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'Acetic acid (pKa 4.76) compared to phenol (pKa 10) is...',
+        options: ['A much stronger acid — over 5 pKa units lower', 'A much weaker acid', 'About equally acidic'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. Every 1 pKa unit is a 10x change in acid strength, so a gap of about 5.24 units means acetic acid is roughly 10⁵ times more acidic than phenol.',
+        wrongFeedback: 'Compare the numbers directly: lower pKa = stronger acid, and acetic acid\'s pKa (4.76) is much lower than phenol\'s (10).'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Using pKa to predict which side of a reaction wins.',
+        bodyHtml: '<p class="step-body">Recall from the Brønsted lesson: a proton transfer favors the side with the <b>weaker acid</b>. Now you can make that precise — it favors the side where the acid has the <b>higher pKa</b>.</p><p class="step-body" style="margin-bottom:0;">Example: acetic acid (pKa 4.76) reacts with hydroxide (OH⁻) to form acetate and water (pKa of water ≈ 15.7). Comparing the two acids in the equation — acetic acid (4.76) on the left, water (15.7) on the right — the equilibrium overwhelmingly favors the right side, because water is the much weaker acid (higher pKa). This single comparison is how you\'ll predict the outcome of every acid-base step you draw from here on.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'pKa is the backbone of the rest of this module — and much of the course.',
+        bodyHtml: '<div class="explain-box">Everything in Acidity Factors (next lesson), leaving-group ability (Module 2), nucleophile vs. base strength, and enolate chemistry (Module 11) ultimately traces back to comparing pKa values. Get comfortable with the shape of the pKa scale now — carboxylic acids around 5, alcohols around 16, alkynes around 25, amines around 38, alkanes around 50 — and huge amounts of later material becomes pattern-matching instead of memorization.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'An amine (pKaH of its conjugate acid ≈ 38 for the N–H) is deprotonated by hydroxide (conjugate acid water, pKa 15.7). Which side does this equilibrium favor?',
+        options: ['The left side (the amine and hydroxide) — water is the much stronger acid here', 'The right side — the products are more stable', 'It\'s a 50/50 equilibrium'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — comparing the two acids, water (pKa 15.7) is far more acidic than the amine\'s conjugate acid (pKa ≈ 38), so the equilibrium favors the side with the weaker acid: the reactants. Hydroxide is actually too weak a base to deprotonate a typical amine to any significant extent.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conformational Analysis — Alkanes &amp; Conformations | Organic Chemistry</title>
+<meta name="description" content="Learn how to predict the dominant chair conformation of a substituted cyclohexane using A-values, and why conformational analysis matters for reactions like E2 elimination.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/conformational-analysis.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 4 &middot; Alkanes &amp; Conformations</div>
+    <h1 style="margin-bottom:4px;">Conformational analysis.</h1>
+    <p class="lede" style="margin-top:0;">Putting A-values and ring flips together to predict which chair actually dominates.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'conformational-analysis',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>The one-substituent rule</h3><p class="step-body">For a monosubstituted cyclohexane, the dominant (major) conformation is always the chair with the substituent <b>equatorial</b> — because equatorial avoids the 1,3-diaxial clashes that axial experiences. The size of the preference is exactly the substituent\'s A-value. Methylcyclohexane (A-value 1.7 kcal/mol) is about 95% equatorial-methyl at room temperature; tert-butylcyclohexane (A-value ~4.7-5+ kcal/mol) is over 99.9% equatorial.</p>' +
+      '<h3>Multiple substituents: add the A-values (roughly)</h3><p class="step-body">With two or more substituents, compare the two chairs by adding up which substituents are axial vs. equatorial in each, and pick whichever chair has less total "axial penalty." For example, in a disubstituted ring, if one chair puts a large group axial and a small group equatorial, and the other chair does the reverse, the chair with the larger group equatorial is strongly favored — its A-value dominates the comparison.</p>' +
+      '<div class="notes-fact">This same equatorial-preference logic explains disaccharide and steroid conformations in biochemistry — the same chair-flip, A-value framework you just learned for simple cyclohexanes governs which shape glucose (a cyclohexane-like ring) actually adopts.</div>' +
+      '<h3>Why this connects directly to E2 elimination</h3><p class="step-body">E2 elimination (Module 6) has a strict geometric requirement: the leaving group and the hydrogen being removed must be <b>anti-periplanar</b> — 180° apart, which on a cyclohexane ring means both must be <b>axial</b> (axial-axial is the only 180° relationship on a chair; equatorial groups are never anti-periplanar to each other). This means an E2 reaction on a cyclohexane ring can only happen through whichever of the two interconverting chairs happens to have the leaving group axial — even if that chair is the minority, higher-energy conformation. Conformational analysis is literally how you predict which product forms.</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'One substituent: always draw the equatorial chair as dominant.',
+        bodyHtml: '<p class="step-body">Now that you know both A-values (how strongly a group prefers equatorial) and ring flips (how a molecule accesses both chairs), you can predict which conformation actually dominates a real sample.</p><p class="step-body" style="margin-bottom:0;">For a monosubstituted cyclohexane, the rule is simple: the dominant chair is whichever one puts the substituent <b>equatorial</b>. The size of that preference is exactly the substituent\'s A-value — methylcyclohexane (A-value 1.7 kcal/mol) sits at roughly 95:5 equatorial:axial, while tert-butylcyclohexane (A-value ~4.7-5+ kcal/mol) is essentially locked equatorial, over 99.9% of the time.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">tert-Butylcyclohexane can ring-flip into two chairs. Which one dominates?</h2>' +
+            '<p class="step-body">tert-Butyl has an A-value of about 4.7-5+ kcal/mol — one of the largest of any common substituent.</p>' +
+            '<div class="choice-row">' +
+            '<button class="choice-btn" data-v="eq" style="text-align:center;">Chair with tert-butyl equatorial</button>' +
+            '<button class="choice-btn" data-v="ax" style="text-align:center;">Chair with tert-butyl axial</button>' +
+            '</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var answered = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(answered) return;
+              answered = true;
+              var isCorrect = btn.getAttribute('data-v') === 'eq';
+              api.card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+              btn.classList.add(isCorrect ? 'correct' : 'wrong');
+              api.record(isCorrect);
+              api.showFeedback(fb, isCorrect, 'Right — with such a large A-value, tert-butylcyclohexane exists in the equatorial chair over 99.9% of the time. The axial chair is so disfavored it\'s essentially never observed.');
+              next.disabled = false;
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Why does the equatorial position dominate for a bulky substituent?',
+        options: ['It avoids the 1,3-diaxial steric clashes that the axial position would create', 'Equatorial bonds are covalently stronger', 'The molecule can\'t physically reach the axial position'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — it\'s purely a steric/energy preference, not a bonding or accessibility issue. The molecule can and does sample the axial chair briefly; it just spends far less time there.',
+        wrongFeedback: 'Both bonds are ordinary sigma bonds of equal strength, and the molecule can reach either chair — the equatorial preference is about avoiding steric strain, not bond strength or reachability.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'With two substituents on a ring, how do you predict the dominant chair?',
+        options: ['Compare total axial "penalty" (roughly, sum of A-values) in each chair and pick the lower one', 'Only the first-numbered substituent matters', 'Two substituents always cancel out to a 50/50 mixture'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. Add up which substituents would be axial in each of the two possible chairs, and the chair with less total axial strain (lower summed A-value penalty) dominates.',
+        wrongFeedback: 'Every substituent contributes its own A-value penalty when axial — you need to compare both chairs\' total penalty, not just look at one substituent.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'E2 elimination needs anti-periplanar geometry — and on a ring, that means axial-axial.',
+        bodyHtml: '<p class="step-body">E2 elimination requires the leaving group and the beta-hydrogen being removed to be <b>anti-periplanar</b>: 180° apart, viewed as a Newman projection down the C–C bond between them. On an open chain this is easy to achieve by simple bond rotation, but on a cyclohexane ring, the geometry is fixed by the chair — and the only pair of substituents on adjacent ring carbons that are ever 180° apart is <b>axial-axial</b>. Equatorial substituents are never anti-periplanar to anything.</p><p class="step-body" style="margin-bottom:0;">This means an E2 reaction on a cyclohexane ring can only proceed through whichever chair conformation happens to have the leaving group axial — even if that\'s the minority conformation the molecule barely visits. If the leaving group can never become axial (for example, if it\'s attached to a ring locked by a huge A-value substituent elsewhere), E2 simply can\'t happen on that ring at all, no matter how good the leaving group or how strong the base.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'This is the exact dependency the course structure already assumes.',
+        bodyHtml: '<div class="explain-box">The E2 mechanism lesson (Module 6) builds directly on everything in this module: chair conformations, axial/equatorial positions, ring flips, and now the anti-periplanar requirement. Predicting the product of an E2 reaction on a cyclohexane substrate is a direct application of conformational analysis, not a separate topic — you\'re finding which ring-flipped conformation makes the reaction geometrically possible, then reading off which hydrogen gets removed.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A cyclohexane has a leaving group that is equatorial in its dominant chair conformation. Can E2 elimination proceed directly from that dominant conformation?',
+        options: ['No — the leaving group must be axial for anti-periplanar geometry, so the molecule must first ring-flip to its minority conformation', 'Yes — equatorial leaving groups are always anti-periplanar to an adjacent hydrogen', 'No — E2 is impossible on any cyclohexane ring'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — since only axial-axial pairs are anti-periplanar on a chair, the molecule has to ring-flip into the conformation where the leaving group is axial before E2 can occur, even though that may be the higher-energy, minority chair.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

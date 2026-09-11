@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newman Projections — Alkanes &amp; Conformations | Organic Chemistry</title>
+<meta name="description" content="Learn how to draw and read Newman projections, the difference between staggered and eclipsed conformations, and the real energy costs behind butane's conformers.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/newman.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 4 &middot; Alkanes &amp; Conformations</div>
+    <h1 style="margin-bottom:4px;">Newman projections.</h1>
+    <p class="lede" style="margin-top:0;">A way of looking straight down a bond so rotation becomes visible.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  function newmanSvg(kind){
+    var cx = 150, cy = 60, rFront = 46, rBack = 30;
+    function frontLine(angle){
+      var rad = angle * Math.PI / 180;
+      var x2 = cx + rFront * Math.sin(rad), y2 = cy - rFront * Math.cos(rad);
+      return '<line x1="' + cx + '" y1="' + cy + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="var(--ink)" stroke-width="3"/>';
+    }
+    function backLine(angle){
+      var rad = angle * Math.PI / 180;
+      var x1 = cx + rBack * Math.sin(rad), y1 = cy - rBack * Math.cos(rad);
+      var x2 = cx + rFront * Math.sin(rad), y2 = cy - rFront * Math.cos(rad);
+      return '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="var(--muted)" stroke-width="3"/>';
+    }
+    var frontAngles = [0, 120, 240];
+    var backAngles = kind === 'staggered' ? [60, 180, 300] : [0, 120, 240];
+    var svg = '<div class="scene"><svg viewBox="0 0 300 120">';
+    backAngles.forEach(function(a){ svg += backLine(a); });
+    frontAngles.forEach(function(a){ svg += frontLine(a); });
+    svg += '<circle cx="' + cx + '" cy="' + cy + '" r="' + rBack + '" fill="none" stroke="var(--line)" stroke-width="2.5"/>';
+    svg += '<circle cx="' + cx + '" cy="' + cy + '" r="4" fill="var(--ink)"/>';
+    svg += '</svg></div>';
+    return svg;
+  }
+
+  window.OchemLessonEngine.start({
+    topicId: 'newman',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>How to draw one</h3><p class="step-body">A <b>Newman projection</b> is a view straight down a specific C–C bond. The <b>front</b> carbon is drawn as a dot with three lines radiating out at 120° (its three other substituents). The <b>back</b> carbon is drawn as a circle, with three lines starting at the circle\'s edge (its three other substituents) — the bond connecting front and back carbons is the dot/circle itself, pointing straight at you, so it isn\'t drawn as a line.</p>' +
+      '<h3>Staggered vs. eclipsed</h3><p class="step-body">The angle between a front substituent and the nearest back substituent is the <b>dihedral (torsion) angle</b>. In the <b>staggered</b> conformation, front and back substituents are offset by 60° — as far apart as possible. In the <b>eclipsed</b> conformation, they line up directly (0° apart), overlapping in the drawing.</p>' +
+      '<div class="notes-fact">Eclipsed conformations are higher in energy than staggered ones — this is <b>torsional strain</b>, caused by repulsion between the electron clouds of eclipsing bonds. For ethane, rotating from staggered to eclipsed costs about 2.9 kcal/mol (roughly 1 kcal/mol per eclipsing H–H interaction, and there are three). This small barrier is why ethane\'s C–C bond rotates extremely fast at room temperature — staggered and eclipsed aren\'t different, isolable molecules, just different snapshots along one continuous rotation.</div>' +
+      '<h3>Butane: four named conformations</h3><p class="step-body">For butane (CH₃CH₂CH₂CH₃), look down the central C2–C3 bond with a methyl group front and back. As you rotate through 360°, you pass through: <b>anti</b> (methyls 180° apart, staggered, lowest energy, defined as 0 kcal/mol), <b>gauche</b> (methyls 60° apart, staggered, but the two methyls are close enough to clash sterically, costing about +0.9 kcal/mol), <b>eclipsed</b> (methyl eclipsing a hydrogen, about +3.6 kcal/mol), and <b>totally eclipsed / syn</b> (the two methyls directly eclipsing each other, the highest point, about +4.5 to +6 kcal/mol). There are two energetically-equal gauche conformations and two equal (methyl-H) eclipsed conformations by symmetry.</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A Newman projection is what you see looking straight down a bond.',
+        bodyHtml: '<p class="step-body">Take any C–C single bond and imagine looking directly along it, front atom right in front of your eye, back atom hidden behind it. A <b>Newman projection</b> draws exactly that view: the <b>front</b> carbon becomes a dot with three lines radiating out at 120° to its other three substituents, and the <b>back</b> carbon becomes a circle, with three lines starting from the circle\'s edge for its own three substituents.</p><p class="step-body" style="margin-bottom:0;">The bond you\'re sighting down (front carbon to back carbon) isn\'t drawn as a line at all — it\'s pointing straight at you, represented by the dot-and-circle themselves. Newman projections exist specifically to make rotation around that one bond easy to see and compare.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the staggered conformation of ethane.</h2>' +
+            '<p class="step-body">One of these has front and back lines offset by 60°; the other has them lined up directly on top of each other.</p>' +
+            '<div class="choice-row" style="justify-content:center;">' +
+            '<button class="choice-btn" data-v="a" style="padding:6px;">' + newmanSvg('staggered') + '<div style="text-align:center;font-weight:800;">A</div></button>' +
+            '<button class="choice-btn" data-v="b" style="padding:6px;">' + newmanSvg('eclipsed') + '<div style="text-align:center;font-weight:800;">B</div></button>' +
+            '</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var answered = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(answered) return;
+              answered = true;
+              var isCorrect = btn.getAttribute('data-v') === 'a';
+              api.card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+              btn.classList.add(isCorrect ? 'correct' : 'wrong');
+              api.record(isCorrect);
+              api.showFeedback(fb, isCorrect, 'A is staggered — the back (gray) lines sit exactly between the front (black) lines, 60° away from each. B is eclipsed, with each back line hidden directly behind a front line.');
+              next.disabled = false;
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Which conformation of ethane is lower in energy?',
+        options: ['Staggered — substituents are as far apart as possible', 'Eclipsed — substituents reinforce each other', 'They\'re exactly equal in energy'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — staggered minimizes torsional strain from eclipsing bond electron clouds, making it the lower-energy, preferred conformation.',
+        wrongFeedback: 'Eclipsing bonds means their electron clouds repel each other (torsional strain) — that\'s higher energy, not lower.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'Ethane\'s staggered-to-eclipsed rotational barrier (~2.9 kcal/mol) is small enough that at room temperature...',
+        options: ['The C–C bond rotates extremely fast — staggered and eclipsed are not isolable, separate molecules', 'The molecule is permanently locked in the staggered form', 'Rotation requires breaking the C–C bond'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. A barrier this small is crossed constantly by ordinary thermal motion — conformations are different snapshots of one continuously rotating molecule, not different compounds.',
+        wrongFeedback: 'A 2.9 kcal/mol barrier is very low — thermal energy at room temperature easily crosses it billions of times per second. No bond breaking is involved in rotation around a single bond.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Butane has four named conformations with real, different energies.',
+        bodyHtml: '<p class="step-body">Sight down butane\'s central C2–C3 bond, with a methyl group front and a methyl group back. Rotating through a full 360° turn passes through four named points: <b>anti</b> (methyls 180° apart, staggered — the global minimum, defined as 0 kcal/mol), <b>gauche</b> (methyls 60° apart, still staggered, but close enough to clash sterically — about +0.9 kcal/mol), a methyl-eclipsing-hydrogen <b>eclipsed</b> conformation (about +3.6 kcal/mol), and <b>totally eclipsed</b> (the two methyls directly on top of each other — the highest-energy point along the whole rotation, roughly +4.5 to +6 kcal/mol).</p><p class="step-body" style="margin-bottom:0;">Notice that gauche is higher energy than anti even though both are staggered — torsional strain isn\'t the only factor. The two methyl groups in gauche are close enough in space to experience <b>steric strain</b> (van der Waals repulsion from their electron clouds bumping into each other), the same effect you\'ll see determine chair conformation preferences in the next few lessons.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Molecules spend most of their time in low-energy conformations.',
+        bodyHtml: '<div class="explain-box">A real sample of butane isn\'t evenly split across all four conformations — because energy differences translate directly into population differences (via a Boltzmann distribution), butane spends the overwhelming majority of its time in the anti conformation, with a smaller but real population in the two gauche conformations, and almost none in either eclipsed form. This same anti-preference, extended to a ring, is exactly why cyclohexane chairs prefer to put bulky groups equatorial rather than axial — coming up in the next few lessons.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Of butane\'s four named conformations, which is the global energy minimum?',
+        options: ['Anti — methyls 180° apart, staggered, no steric clash', 'Gauche — methyls 60° apart', 'Totally eclipsed — methyls directly overlapping'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — anti has both the torsional-strain advantage of being staggered and no steric clash between the two bulky methyl groups, making it the single lowest-energy conformation of butane.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>
