@@ -36,8 +36,16 @@
 
   root.innerHTML =
     '<div class="tpanel">' +
-      '<div class="tpanel__head">Pick a molecule</div>' +
+      '<div class="tpanel__head">' +
+        '<span>Where the molecule comes from</span>' +
+        '<div class="tseg" id="v3Src">' +
+          '<button type="button" data-src="lib" class="on">Ready-made</button>' +
+          '<button type="button" data-src="build">Build your own</button>' +
+        '</div>' +
+      '</div>' +
       '<div id="v3Picker"></div>' +
+      '<div id="v3Builder" hidden></div>' +
+      '<div id="v3BuildMsg"></div>' +
     '</div>' +
     '<div class="tsplit tsplit--wide">' +
       '<div class="tpanel">' +
@@ -85,6 +93,8 @@
   var elName   = document.getElementById('v3Name');
   var elNote   = document.getElementById('v3Note');
   var elAnal   = document.getElementById('v3Analysis');
+  var elBuild  = document.getElementById('v3Builder');
+  var elBMsg   = document.getElementById('v3BuildMsg');
 
   /* ---- Picker ----------------------------------------------------------- */
 
@@ -300,6 +310,73 @@
     } else if(spinHandle){
       cancelAnimationFrame(spinHandle);
     }
+  });
+
+  /* ---- Build your own ---------------------------------------------------
+
+     The fifteen molecules in the library are the fifteen somebody thought of.
+     This is the half that matters: type the thing you are actually stuck on,
+     or draw it, and watch it stand up.
+
+     Folding happens on every edit rather than behind a "render" button,
+     because the point being made is that the flat drawing and the object in
+     space are the same molecule — and a button in between turns that into two
+     separate things you did. A structure that cannot exist simply does not
+     fold, and says why. */
+  var builderApi = null;
+
+  function showBuildMsg(kind, text){
+    elBMsg.innerHTML = text
+      ? '<div class="tnote tnote--' + kind + '" style="margin-top:12px;">' + esc(text) + '</div>'
+      : '';
+  }
+
+  function openBuilder(){
+    if(builderApi) return;
+    if(!window.OchemBuilderUI){
+      showBuildMsg('bad', 'The builder did not load on this page.');
+      return;
+    }
+    builderApi = window.OchemBuilderUI.mount(elBuild, {
+      onChange: function(st, report){
+        if(report.empty){ showBuildMsg('', ''); return; }
+        if(!report.ok){
+          showBuildMsg('bad', 'Fix what is flagged below and it will fold up — a structure that cannot exist has no shape to show.');
+          return;
+        }
+        var r = window.OchemBuilder.to3D(st);
+        if(r.error){ showBuildMsg('warn', r.error); return; }
+        r.mol.name = st.name || 'Your molecule';
+        showBuildMsg('good', r.mol.approximate
+          ? 'Folded. This has more than one ring, so the second ring is grown outward rather than closed exactly — angles inside the first ring are right, the rest is approximate.'
+          : 'Folded. Drag it, and click any atom for its geometry.');
+        selected = 0;
+        mol = r.mol;
+        fit = fitScale(mol);
+        elName.textContent = r.mol.name + ' · ' + (r.mol.formula || '');
+        /* Built molecules carry idealized VSEPR angles — they are generated
+           from the shape, not measured off a real structure — so the readout's
+           "measured vs ideal" column will always agree. Saying so beats
+           letting someone conclude that water really is 109.5. */
+        elNote.textContent = 'Built from your drawing, so the angles are the ideal ones for each shape. ' +
+          'The ready-made molecules carry real compressions — ammonia at 107°, water at 104.5°.';
+        nudgeIdle();
+        draw();
+      }
+    });
+  }
+
+  document.getElementById('v3Src').querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var src = b.getAttribute('data-src');
+      document.getElementById('v3Src').querySelectorAll('button').forEach(function(x){
+        x.classList.toggle('on', x === b);
+      });
+      elPicker.hidden = (src !== 'lib');
+      elBuild.hidden  = (src !== 'build');
+      if(src === 'build'){ openBuilder(); }
+      else { showBuildMsg('', ''); }
+    });
   });
 
   /* ---- The readout ------------------------------------------------------ */

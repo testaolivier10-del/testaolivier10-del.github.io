@@ -170,6 +170,87 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .tfrag--charged{border-color:var(--accent);background:var(--tint-accent);color:var(--accent);}
 .tplus{font:900 15px var(--font-mono);color:var(--muted);}
 
+/* ---- The molecule builder ------------------------------------------------
+
+   Shared by every tool that will take a structure the student made up, so it
+   lives here rather than in any one tool's page styles. The canvas keeps the
+   same 320x170 coordinate space as molecules.js, which is what lets a library
+   structure and a hand-drawn one be the same kind of object. */
+
+.mb{display:flex;flex-direction:column;gap:14px;}
+.mb__label{
+  display:block;font:900 10px var(--font-ui);letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:6px;
+}
+.mb__typerow{display:flex;gap:8px;align-items:stretch;}
+.mb__input{
+  flex:1;min-width:0;padding:10px 13px;border:var(--bw) solid var(--line);
+  border-radius:var(--radius-sm);background:var(--white);color:var(--ink);
+  font:700 14.5px var(--font-mono);
+}
+.mb__input:focus{outline:none;border-color:var(--accent);}
+.mb__build{flex:none;white-space:nowrap;}
+.mb__quick,.mb__found{
+  display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px;
+  font-size:12px;font-weight:700;
+}
+.tchip--mini{padding:4px 9px;font-size:11.5px;}
+
+.mb__canvaswrap{position:relative;width:100%;max-width:560px;}
+.mb__canvas{
+  width:100%;height:auto;display:block;cursor:crosshair;
+  border:var(--bw) solid var(--line);border-radius:var(--radius);
+  background:var(--white);touch-action:manipulation;
+}
+.mb__bg{fill:transparent;}
+.mb__blank{font:700 12px var(--font-ui);fill:var(--muted);}
+.mb__hint{
+  margin-top:7px;min-height:16px;font:700 12px var(--font-ui);color:var(--muted);
+}
+
+.mb__bondline{stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;}
+.mb__bondhit{stroke:transparent;stroke-width:14;cursor:pointer;}
+.mb__bond:hover .mb__bondline{stroke:var(--accent);}
+.mb__bond:focus{outline:none;}
+.mb__bond:focus .mb__bondline{stroke:var(--accent);stroke-width:3.4;}
+
+.mb__atom{cursor:pointer;}
+.mb__atomdisc{fill:var(--white);stroke:var(--ink);stroke-width:1.6;}
+.mb__atomtext{font:900 13px var(--font-mono);fill:var(--ink);pointer-events:none;}
+.mb__charge{font:900 11px var(--font-mono);fill:var(--accent);pointer-events:none;}
+.mb__lp{fill:var(--muted);pointer-events:none;}
+.mb__atom:hover .mb__atomdisc{stroke:var(--accent);}
+.mb__atom.is-sel .mb__atomdisc{stroke:var(--accent);stroke-width:3.2;fill:var(--tint-accent);}
+.mb__atom.is-bad .mb__atomdisc{stroke:var(--bad);stroke-width:3;fill:var(--tint-bad);}
+.mb__atom.is-warn .mb__atomdisc{stroke:var(--warn);stroke-width:2.6;fill:var(--tint-warn);}
+.mb__atom:focus{outline:none;}
+.mb__atom:focus .mb__atomdisc{stroke:var(--accent);stroke-width:3.2;}
+
+.mb__tools{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;}
+.mb__pal{display:flex;flex-wrap:wrap;gap:5px;}
+.mb__el{
+  min-width:34px;padding:6px 8px;border:var(--bw) solid var(--line);
+  border-radius:var(--radius-sm);background:var(--white);color:var(--ink);
+  font:900 13px var(--font-mono);cursor:pointer;
+}
+.mb__el:hover{border-color:var(--accent);}
+.mb__el.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
+.mb__acts{display:flex;flex-wrap:wrap;gap:6px;}
+.mb__stat{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;}
+.mb__stat > div{
+  flex:1 1 110px;padding:9px 12px;border:var(--bw) solid var(--line-soft);
+  border-radius:var(--radius-sm);background:var(--paper);
+}
+.mb__stat .k{font:900 10px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+.mb__stat .v{font:900 17px var(--font-mono);color:var(--ink);margin-top:3px;}
+.mb__stat .v.win{color:var(--good);}
+.mb__stat .v.lose{color:var(--bad);}
+
+@media(max-width:640px){
+  .mb__typerow{flex-direction:column;}
+  .mb__stat > div{flex:1 1 44%;}
+}
+
 /* ---- Footer link back into the course ---------------------------------- */
 
 .tool-foot{

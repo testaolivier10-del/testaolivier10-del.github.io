@@ -541,32 +541,115 @@
       order.push(first);
     }
 
-    var zig = 0;
+    /* Each new neighbour is fanned around the direction the chain is already
+       travelling, rather than stacked in the next column. The first version
+       offset them by a fixed +34/-34 and gave tert-butyl bromide four
+       substituents in three places — two of them exactly on top of each other,
+       which looked like the parser had lost a bond. */
+    var parent = {};
+    var zig = 1;
+    var STEP_R = 46;
+
     for(var i=0;i<order.length;i++){
       var k = order[i];
       var base = st.atoms[k];
-      var nbs = C.neighbors(st, k).filter(function(n){ return !placed[n]; });
-      nbs.forEach(function(nb, idx){
-        var out;
-        if(st.ring && placed[k] && st.ring.indexOf(k) >= 0){
-          // Substituents point out of the ring, away from its centre.
-          var dx = base.x - 160, dy = base.y - 85;
-          var l = Math.sqrt(dx*dx + dy*dy) || 1;
-          out = { x: base.x + dx/l * STEP, y: base.y + dy/l * STEP };
+      var open = C.neighbors(st, k).filter(function(n){ return !placed[n]; });
+      if(!open.length) continue;
+
+      var inAng;
+      if(st.ring && st.ring.indexOf(k) >= 0){
+        // Out of the ring, away from its centre.
+        inAng = Math.atan2(base.y - 85, base.x - 160);
+      } else if(parent[k]){
+        var pp = st.atoms[parent[k]];
+        inAng = Math.atan2(base.y - pp.y, base.x - pp.x);
+      } else {
+        inAng = 0;
+      }
+
+      var n = open.length;
+      var SPREAD = 70 * Math.PI / 180;
+      open.forEach(function(nb, idx){
+        var ang;
+        if(n === 1 && !(st.ring && st.ring.indexOf(k) >= 0)){
+          // A plain chain zig-zags rather than running straight, because a
+          // 180° bond angle is a drawing nobody would accept on paper.
+          zig = -zig;
+          ang = inAng + zig * 30 * Math.PI / 180;
         } else {
-          zig++;
-          var up = zig % 2 === 0;
-          var spread = idx === 0 ? 0 : (idx % 2 ? 1 : -1) * 34;
-          out = { x: base.x + STEP, y: base.y + (up ? -24 : 24) + spread };
+          ang = inAng + (idx - (n - 1) / 2) * SPREAD;
         }
-        st.atoms[nb].x = Math.max(26, Math.min(294, Math.round(out.x)));
-        st.atoms[nb].y = Math.max(24, Math.min(158, Math.round(out.y)));
+        st.atoms[nb].x = Math.round(base.x + STEP_R * Math.cos(ang));
+        st.atoms[nb].y = Math.round(base.y + STEP_R * Math.sin(ang));
+        parent[nb] = k;
         placed[nb] = true;
         order.push(nb);
       });
     }
 
+    spreadOut(st);
+    centre(st);
     st.viewBox = '0 0 320 170';
+    return st;
+  }
+
+  /* A last pass that pushes apart anything that still landed on top of
+     something else. The fan above keeps siblings apart, but two branches that
+     grew from different atoms can still meet, and two circles sharing a centre
+     is the one drawing a student cannot read at all. */
+  function spreadOut(st){
+    var keys = Object.keys(st.atoms);
+    for(var pass=0; pass<24; pass++){
+      var moved = false;
+      for(var i=0;i<keys.length;i++){
+        for(var j=i+1;j<keys.length;j++){
+          var a = st.atoms[keys[i]], b = st.atoms[keys[j]];
+          var dx = b.x - a.x, dy = b.y - a.y;
+          var d = Math.sqrt(dx*dx + dy*dy);
+          var want = a.r + b.r + 8;
+          if(d >= want) continue;
+          if(d < 0.01){ dx = 1; dy = 0; d = 1; }     // exactly coincident
+          var push = (want - d) / 2;
+          var ux = dx/d, uy = dy/d;
+          a.x -= ux * push; a.y -= uy * push;
+          b.x += ux * push; b.y += uy * push;
+          moved = true;
+        }
+      }
+      if(!moved) break;
+    }
+    keys.forEach(function(k){
+      st.atoms[k].x = Math.round(st.atoms[k].x);
+      st.atoms[k].y = Math.round(st.atoms[k].y);
+    });
+    return st;
+  }
+
+  /* Whatever the walk produced, sit it in the middle of the frame — and shrink
+     it if it grew past the edges. Without this a four-carbon chain starts at
+     the left margin and a branch off the end lands half outside the canvas,
+     which reads as a bug in the molecule rather than in the layout. */
+  function centre(st){
+    var keys = Object.keys(st.atoms);
+    if(!keys.length) return st;
+
+    var minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+    keys.forEach(function(k){
+      var a = st.atoms[k], pad = a.r + 10;   // room for charges and lone pairs
+      minX = Math.min(minX, a.x - pad); maxX = Math.max(maxX, a.x + pad);
+      minY = Math.min(minY, a.y - pad); maxY = Math.max(maxY, a.y + pad);
+    });
+
+    var w = maxX - minX, h = maxY - minY;
+    var k2 = Math.min(1, Math.min(320 / w, 170 / h));
+    var cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
+
+    keys.forEach(function(k){
+      var a = st.atoms[k];
+      a.x = Math.round(160 + (a.x - cx) * k2);
+      a.y = Math.round(85  + (a.y - cy) * k2);
+      if(k2 < 1) a.r = Math.max(11, Math.round(a.r * k2));
+    });
     return st;
   }
 
@@ -772,6 +855,8 @@
     check: check,
     parse: parse,
     layout: layout,
+    centre: centre,
+    spreadOut: spreadOut,
     to3D: to3D,
     search: search,
     fromLibrary: fromLibrary,
