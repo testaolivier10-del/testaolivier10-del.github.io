@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
-<style>.orb-box{cursor:pointer;}.orb-box rect{transition:stroke .1s ease;}.orb-box:hover rect{stroke:var(--accent);stroke-width:3;}.orb-box.chosen rect{stroke:var(--accent);stroke-width:3;fill:var(--tint-accent);}</style>
+<style>.orb-box{cursor:pointer;}.orb-box rect{transition:stroke .1s ease;}.orb-box:hover rect{stroke:var(--accent);stroke-width:3;}.orb-box.chosen rect{stroke:var(--accent);stroke-width:3;fill:var(--tint-accent);}.orb-box.target rect{animation:orb-pulse 1.1s ease-in-out infinite;}@keyframes orb-pulse{0%,100%{stroke-opacity:1;}50%{stroke-opacity:.45;}}</style>
 </head>
 <body>
 <div id="site-header">
@@ -107,7 +107,7 @@
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
     notesHtml: '<h3>What an orbital is, and the four shapes</h3><p class="step-body">An <b>orbital</b> is a region of space where an electron is likely to be found; each one holds at most <b>2</b> electrons, and those two must have opposite spins (the <b>Pauli exclusion principle</b> — no two electrons in the same atom can be in the exact same state).</p><p class="step-body">There are four orbital shapes you\'ll hear about: <b>s</b> orbitals are spherical (1 per shell, starting at n=1). <b>p</b> orbitals are dumbbell-shaped, with two lobes on opposite sides of the nucleus and a node (zero probability) at the center (3 per shell, starting at n=2, pointing along the x, y, and z axes). <b>d</b> orbitals are mostly four-lobed, cloverleaf-shaped (5 per shell, starting at n=3). <b>f</b> orbitals are even more complex, multi-lobed shapes (7 per shell, starting at n=4). Each added shape lets a shell hold more electrons: s alone = 2, s+p = 8, s+p+d = 18, s+p+d+f = 32.</p>' +
-      '<h3>This is why the periodic table has that stair-step shape</h3><p class="step-body">The periodic table\'s block shape directly reflects which orbital type was filled last for each element. The two leftmost columns (groups 1-2) are the <b>s-block</b>. The six columns on the right (groups 13-18) are the <b>p-block</b> — this is where essentially every element in organic chemistry lives: C, N, O, F, S, P, Cl, Br, I. The 10 columns in the middle (groups 3-12, the transition metals) are the <b>d-block</b>. The two rows pulled out at the bottom (lanthanides and actinides) are the <b>f-block</b>.</p><div class="notes-fact">Because sulfur and phosphorus (period 3, p-block) have empty 3d orbitals available in their valence shell, they can sometimes hold more than 8 electrons around them — an "expanded octet," seen in molecules like SF₆ or sulfoxides/sulfones. Carbon, nitrogen, oxygen, and fluorine (period 2) have no d orbitals available at all in their valence shell, so they can never exceed an octet. You can look up any element\'s block by opening the periodic table tool (the ⚛ button) — its color-coded categories line up with these blocks.</div>' +
+      '<h3>This is why the periodic table has that stair-step shape</h3><p class="step-body">The periodic table\'s block shape directly reflects which orbital type was filled last for each element. The two leftmost columns (groups 1-2) are the <b>s-block</b>. The six columns on the right (groups 13-18) are the <b>p-block</b> — this is where essentially every element in organic chemistry lives: C, N, O, F, S, P, Cl, Br, I. The 10 columns in the middle (groups 3-12, the transition metals) are the <b>d-block</b>. The two rows pulled out at the bottom (lanthanides and actinides) are the <b>f-block</b>.</p><div class="notes-fact">Sulfur, phosphorus, and other period 3+ elements can sometimes hold more than 8 electrons around them — an "expanded octet," seen in molecules like SF₆. Older textbooks explain this by pointing to empty 3d orbitals mixing in, but modern computational studies show those 3d orbitals are too high in energy and too diffuse to meaningfully participate in bonding — the real story is that period 3+ atoms are simply large enough to fit more neighbors around them, and the resulting bonds carry enough ionic character that the central atom doesn\'t need to supply a full covalent octet\'s worth of shared electrons to each one. Either way, carbon, nitrogen, oxygen, and fluorine (period 2, too small for either effect) can never do this. You can look up any element\'s block by opening the periodic table tool (the ⚛ button) — its color-coded categories line up with these blocks.</div>' +
       '<h3>Orbitals are the detailed picture of shells</h3><p class="step-body">The K shell from Atomic Structure <b>is</b> the single 1s orbital (2 electrons max, matching the K shell\'s max of 2). The L shell <b>is</b> the 2s orbital plus the three 2p orbitals: 1+3 = 4 orbitals, 8 electrons max — exactly the L shell\'s max of 8.</p>' +
       '<h3>Why the fill order is what it is</h3><p class="step-body">Electrons fill the lowest-energy orbitals first (the <b>Aufbau principle</b>). Within one shell, energy increases s &lt; p &lt; d &lt; f. Why? An electron\'s energy depends on how strongly the nucleus pulls on it, and that depends on how much of the nucleus\'s pull is "screened out" by other electrons in the way — called <b>shielding</b>. An s orbital\'s shape lets its electron spend more time very close to the nucleus than a p or d electron of the same shell does (called <b>penetration</b>), so it feels less shielding, feels a stronger pull, and sits at lower energy.</p><p class="step-body">This effect is strong enough that it eventually overtakes the shell number itself: by the time you reach period 4, the 4s orbital ends up <b>lower</b> energy than 3d, even though 4 &gt; 3 — which is exactly why potassium and calcium fill 4s before any element starts filling 3d, and why the d-block starts at row 4 of the periodic table instead of row 3. When orbitals are exactly equal in energy (like the three 2p\'s, or the five 3d\'s), electrons spread out across them singly before any pairing up — <b>Hund\'s rule</b>, which minimizes electron-electron repulsion.</p><p class="step-body">Carbon (6 electrons): 1s² 2s² 2p² — 2 electrons pair up in 1s, 2 pair up in 2s, and the last 2 go into separate 2p orbitals, unpaired.</p>' +
       '<div class="notes-fact">The paradox: carbon\'s 1s² 2s² 2p² has only 2 unpaired electrons, which predicts just 2 bonds — but carbon almost always forms 4. Something has to happen before bonding to resolve this. That\'s the entire subject of the next lesson, Hybridization.</div>',
@@ -123,7 +123,7 @@
         eyebrow: 'Explain',
         title: 'This is why the periodic table is shaped the way it is.',
         bodyHtml: '<p class="step-body">Each block of the periodic table is named for the type of orbital being filled last, for elements in that block.</p>' + periodicBlocksSvg() +
-          '<p class="step-body">Groups 1-2 are the <b>s-block</b>. Groups 13-18 are the <b>p-block</b> — this is where almost everything in organic chemistry lives: C, N, O, F, S, P, Cl, Br, I are all p-block elements. The 10 middle columns (the transition metals) are the <b>d-block</b>. The two rows pulled out at the bottom (lanthanides, actinides) are the <b>f-block</b>.</p><p class="step-body" style="margin-bottom:0;">One concrete payoff: sulfur and phosphorus (period 3, p-block) have empty 3d orbitals available, so they can sometimes exceed an octet (like in SF₆). Carbon, nitrogen, oxygen, and fluorine (period 2) have no d orbitals in their valence shell at all, so they can never do this. You can explore this yourself with the periodic table tool (the ⚛ button in the corner) — its color categories line up with these same blocks.</p>'
+          '<p class="step-body">Groups 1-2 are the <b>s-block</b>. Groups 13-18 are the <b>p-block</b> — this is where almost everything in organic chemistry lives: C, N, O, F, S, P, Cl, Br, I are all p-block elements. The 10 middle columns (the transition metals) are the <b>d-block</b>. The two rows pulled out at the bottom (lanthanides, actinides) are the <b>f-block</b>.</p><p class="step-body" style="margin-bottom:0;">One concrete payoff: sulfur, phosphorus, and other period 3+ elements can sometimes hold more than 8 electrons around them (like in SF₆) — something carbon, nitrogen, oxygen, and fluorine (period 2) never do. The traditional explanation — empty 3d orbitals mixing in — doesn\'t actually hold up under modern computational study; those 3d orbitals are too high in energy and too diffuse to contribute meaningfully. The better explanation combines atomic size (period 3+ atoms are big enough to physically fit more neighbors) and bond polarity (the extra bonds carry enough ionic character that the central atom isn\'t really sharing a full covalent octet\'s worth of electrons with each one). You can explore this yourself with the periodic table tool (the ⚛ button in the corner) — its color categories line up with these same blocks.</p>'
       },
       {
         type: 'explain',
@@ -133,18 +133,33 @@
       },
       {
         render: function(api){
-          var order = ['1s','2s','2px','2py','2pz'];
-          var filled = 0, done = false;
+          var boxes = ['1s','2s','2px','2py','2pz'];
+          // Each entry is one electron, in the order it's actually added for
+          // carbon (1s² 2s² 2p²): pair up 1s, pair up 2s, then place one
+          // electron each in two of the three (degenerate) 2p orbitals per
+          // Hund's rule. 2pz is never reached — carbon only has 2 electrons
+          // to spread across three empty, equal-energy 2p orbitals.
+          var slots = [0, 0, 1, 1, 2, 3];
+          var counts = [0, 0, 0, 0, 0];
+          var next = 0, done = false;
+
           function boxSvg(){
-            var w = 50, gap = 10, startX = 25;
-            return '<div class="scene"><svg viewBox="0 0 300 110">' +
-              order.map(function(label, i){
+            var w = 54, gap = 10, startX = 20;
+            var svgW = startX*2 + boxes.length*w + (boxes.length-1)*gap;
+            return '<div class="scene"><svg viewBox="0 0 ' + svgW + ' 120">' +
+              boxes.map(function(label, i){
                 var x = startX + i*(w+gap);
-                var isChosen = i < filled;
-                return '<g class="orb-box' + (isChosen?' chosen':'') + '" data-key="o' + i + '">' +
-                  '<rect x="' + x + '" y="20" width="' + w + '" height="50" rx="8" fill="' + (isChosen?'var(--tint-accent)':'var(--white)') + '" stroke="var(--line)" stroke-width="2"/>' +
+                var n = counts[i];
+                var isTarget = !done && slots[next] === i;
+                var cls = 'orb-box' + (n>0?' chosen':'') + (isTarget?' target':'');
+                var arrows = '';
+                if(n >= 1) arrows += '<text x="' + (x+w/2-9) + '" y="55" text-anchor="middle" font-size="18" pointer-events="none">↑</text>';
+                if(n >= 2) arrows += '<text x="' + (x+w/2+9) + '" y="55" text-anchor="middle" font-size="18" pointer-events="none">↓</text>';
+                return '<g class="' + cls + '" data-key="o' + i + '">' +
+                  (isTarget ? '<text x="' + (x+w/2) + '" y="14" text-anchor="middle" font-size="10" font-weight="800" fill="var(--accent)" pointer-events="none">CLICK</text>' : '') +
+                  '<rect x="' + x + '" y="20" width="' + w + '" height="50" rx="8" fill="' + (n>0?'var(--tint-accent)':'var(--white)') + '" stroke="' + (isTarget?'var(--accent)':'var(--line)') + '" stroke-width="' + (isTarget?'3':'2') + '"/>' +
+                  arrows +
                   '<text x="' + (x+w/2) + '" y="90" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12" pointer-events="none">' + label + '</text>' +
-                  (isChosen ? '<text x="' + (x+w/2) + '" y="50" text-anchor="middle" font-size="16" pointer-events="none">↑</text>' : '') +
                 '</g>';
               }).join('') +
             '</svg></div>';
@@ -153,7 +168,7 @@
             api.card.innerHTML =
               '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
               '<h2 class="step-title">Fill carbon’s orbitals in order.</h2>' +
-              '<p class="step-body">Carbon has 6 electrons: 2 in 1s, 2 in 2s, and 2 spread across the three 2p orbitals. Click the boxes left to right, in filling order.</p>' +
+              '<p class="step-body">Carbon has 6 electrons: 2 pair up in 1s, 2 pair up in 2s, then the last 2 spread out singly across the three (equal-energy) 2p orbitals — Hund’s rule. Click the highlighted orbital each time to add its next electron; an orbital always gets its second (paired, opposite-spin) electron before the next orbital starts filling.</p>' +
               boxSvg() +
               api.feedbackHtml('fb') +
               api.nextButtonHtml('Continue', done);
@@ -162,13 +177,18 @@
               g.addEventListener('click', function(){
                 if(done) return;
                 var idx = parseInt(g.getAttribute('data-key').slice(1), 10);
-                if(idx !== filled){ api.showFeedback(fb, false, 'Fill left to right — lower-energy orbitals fill first.'); return; }
-                filled++;
-                if(filled === 5){
+                var targetIdx = slots[next];
+                if(idx !== targetIdx){
+                  api.showFeedback(fb, false, 'Not yet — fill lower-energy orbitals first, and pair up each orbital (2 electrons, opposite spins) before moving to the next one.');
+                  return;
+                }
+                counts[idx]++;
+                next++;
+                if(next === slots.length){
                   done = true;
                   api.record(true);
                   paint();
-                  api.showFeedback(api.card.querySelector('#fb'), true, 'Correct — 1s and 2s each got a full pair, and the three 2p orbitals each got one electron first (Hund’s rule) before any pairing.');
+                  api.showFeedback(api.card.querySelector('#fb'), true, 'Correct — 1s and 2s each filled with a paired ↑↓, and carbon’s last 2 electrons went one each into 2px and 2py (Hund’s rule), leaving 2pz completely empty. That’s exactly 1s² 2s² 2p².');
                 } else {
                   paint();
                 }
