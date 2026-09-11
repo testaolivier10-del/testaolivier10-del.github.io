@@ -38,8 +38,16 @@
         // The notes link jumps straight to the read-only recap (?notes=1)
         // so returning to "what did this lesson say again" never requires
         // re-running the interactive steps.
+        /* Some topics have a hands-on mechanism walkthrough alongside the
+           lesson — same topic, same concepts, but you draw the arrows
+           yourself instead of reading about them. Worth its own entry point
+           rather than being buried at the end of the lesson. */
+        var mech = t.mechanism
+          ? '<a class="topic-mech-link" href="' + t.mechanism + '" title="Draw this mechanism">&#9883;</a>'
+          : '';
         return '<div class="topic-row-wrap">' +
           '<a class="topic-row" href="' + t.href + '"><span class="name">' + t.title + '</span>' + badge + '</a>' +
+          mech +
           '<a class="topic-notes-link" href="' + t.href + '?notes=1" title="View lesson notes">&#128221;</a>' +
         '</div>';
       }

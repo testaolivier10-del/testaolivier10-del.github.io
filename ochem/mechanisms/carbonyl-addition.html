@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nucleophilic Addition — Interactive Mechanism | Organic Chemistry</title>
+<meta name="description" content="Perform nucleophilic addition to a carbonyl yourself: attack the electrophilic carbon, push the pi bond onto oxygen, and see why the tetrahedral intermediate is where carbonyl chemistry divides.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/mechanisms/carbonyl-addition.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+  .lesson-shell{max-width:760px;margin:0 auto;}
+</style>
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 9 &middot; Carbonyls</div>
+    <h1 style="margin-bottom:4px;">Addition: carbon cannot take five bonds.</h1>
+    <p class="lede" style="margin-top:0;">Every carbonyl reaction in the course starts with the same two arrows. What happens next is what separates a ketone from an ester.</p>
+  </div>
+
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel"></div>
+  </div>
+
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/molecule-editor.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+  window.OCHEM_MECHANISM = {
+  "topicId": "nucleophilic-addition",
+  "steps": [
+    {
+      "type": "explain",
+      "eyebrow": "Setup",
+      "title": "Why the carbonyl carbon is the target.",
+      "bodyHtml": "<p class=\"step-body\">Oxygen is far more electronegative than carbon and pulls the C=O electrons toward itself. The carbon is left <b>δ+</b> — and unlike an alkyl halide, it does not need a leaving group to be attacked, because it has a pi bond that can absorb the incoming electrons.</p>",
+      "molecule": "acetone"
+    },
+    {
+      "type": "draw",
+      "eyebrow": "Step 1 · Addition",
+      "title": "A hydride is attacking this carbon. Show what the C=O must do.",
+      "bodyHtml": "<p class=\"step-body\">One arrow. Carbon is about to gain a bond and it already has four.</p>",
+      "molecule": "acetone",
+      "concepts": [
+        "carbonyl-electrophilicity",
+        "curved-arrow-direction",
+        "tetrahedral-intermediate"
+      ],
+      "arrows": [
+        {
+          "from": "bond:c-o",
+          "to": "o"
+        }
+      ],
+      "why": "The pi electrons go up onto oxygen, which carries the resulting negative charge comfortably. What you have made is the tetrahedral intermediate — an alkoxide.",
+      "wrong": {
+        "bond:c-o>c": "Backwards. Pushing the pi electrons onto carbon would pile negative charge onto the atom a nucleophile is already attacking. Oxygen is the electronegative one; it takes the charge.",
+        "o>bond:c-o": "That arrow forms a bond rather than breaking one. At this stage the C=O is being broken to make room, not reinforced.",
+        "o>c": "Oxygen is not attacking the carbon — it is already bonded to it. It is the recipient of the displaced pi electrons."
+      },
+      "nextLabel": "What have we made?"
+    },
+    {
+      "type": "mcq",
+      "eyebrow": "Step 2 · The fork",
+      "title": "The tetrahedral intermediate has formed. What happens next?",
+      "bodyHtml": "<p class=\"step-body\">This is the single most important fork in carbonyl chemistry, and the answer depends entirely on what else is attached to that carbon.</p>",
+      "options": [
+        "It depends: with no leaving group attached it is simply protonated, giving addition; with one attached it collapses and expels it, giving substitution",
+        "It always collapses back to a C=O, so the reaction reverses",
+        "It always gets protonated, so carbonyls always give alcohols"
+      ],
+      "correctIndex": 0,
+      "concepts": [
+        "tetrahedral-intermediate",
+        "acyl-reactivity-order"
+      ],
+      "why": "A ketone's substituents are carbons, which would have to leave as carbanions — impossibly strong bases — so the intermediate just picks up a proton and you get an alcohol. An ester has an OR group, which leaves happily, so the intermediate collapses and you get substitution instead.",
+      "wrong": {
+        "1": "Collapsing requires something able to leave. With only carbons and hydrogens attached, there is nothing that can go.",
+        "2": "That is true for aldehydes and ketones, but not for esters, amides or acid chlorides — those have a leaving group and take the other branch."
+      },
+      "nextLabel": "Try a comparison"
+    },
+    {
+      "type": "mcq",
+      "eyebrow": "Step 3 · Reactivity",
+      "title": "Formaldehyde hydrates with Keq ≈ 1000; acetone with Keq ≈ 0.0014. Why the million-fold gap?",
+      "bodyHtml": "<p class=\"step-body\">Same reaction, same nucleophile, wildly different position of equilibrium.</p>",
+      "options": [
+        "Acetone's two methyls both crowd the carbon and donate electron density into it, making it less electrophilic than formaldehyde's bare CH₂",
+        "Formaldehyde is a stronger acid",
+        "Acetone's carbonyl is not really a carbonyl"
+      ],
+      "correctIndex": 0,
+      "concepts": [
+        "carbonyl-electrophilicity",
+        "steric-hindrance"
+      ],
+      "why": "Alkyl groups do two things at once, and both point the same way: they get in the way of the incoming nucleophile, and they push electron density toward the carbon, partly satisfying the charge that made it attractive. Formaldehyde has neither.",
+      "wrong": {
+        "1": "Acidity is not what is being compared — this is about how readily a nucleophile adds to the carbon.",
+        "2": "Acetone's C=O is an ordinary carbonyl. The difference is what is attached to it, not what it is."
+      },
+      "nextLabel": "Last one"
+    },
+    {
+      "type": "final",
+      "eyebrow": "Challenge",
+      "title": "Benzaldehyde is treated with LiAlH₄, then aqueous acid. Separately, a fresh sample is treated with CH₃MgBr, then the same workup. What class of alcohol forms in each?",
+      "bodyHtml": "<p class=\"step-body\">Both reagents deliver a nucleophile to the same carbon. Count what each one brings.</p>",
+      "options": [
+        "LiAlH₄ gives a primary alcohol; the Grignard gives a secondary alcohol",
+        "Both give secondary alcohols",
+        "LiAlH₄ gives a secondary alcohol; the Grignard gives a tertiary one"
+      ],
+      "correctIndex": 0,
+      "concepts": [
+        "tetrahedral-intermediate",
+        "nucleophile-recognition"
+      ],
+      "why": "Hydride adds an H, so the carbon ends up with one carbon substituent (the ring) and the rest hydrogens — a primary alcohol. The Grignard adds a CH₃, a new carbon–carbon bond, so that carbon now carries two carbon substituents: secondary. Counting the carbons on the carbinol carbon is the whole trick.",
+      "wrong": {
+        "1": "Hydride brings no carbon with it, so it cannot raise the substitution class the way a Grignard does.",
+        "2": "Start from benzaldehyde: the carbonyl carbon has one carbon substituent already. Adding H gives one; adding CH₃ gives two."
+      }
+    }
+  ]
+};
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/mechanism-page.js"></script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

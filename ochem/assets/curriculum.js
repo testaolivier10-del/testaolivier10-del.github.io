@@ -66,7 +66,7 @@
     ]},
     { id: 'alkenes-alkynes', title: 'Alkenes & Alkynes', topics: [
       { id: 'alkene-structure', title: 'Alkene structure', href: 'lessons/alkene-structure.html', dependsOn: ['hybridization'] },
-      { id: 'addition-reactions', title: 'Addition reactions', href: 'lessons/addition-reactions.html', dependsOn: ['alkene-structure', 'nucleophiles', 'electrophiles'] },
+      { id: 'addition-reactions', title: 'Addition reactions', href: 'lessons/addition-reactions.html', mechanism: 'mechanisms/addition.html', dependsOn: ['alkene-structure', 'nucleophiles', 'electrophiles'] },
       { id: 'markovnikov', title: 'Markovnikov / anti-Markovnikov', href: 'lessons/markovnikov.html', dependsOn: ['addition-reactions', 'sn1'] },
       { id: 'alkynes', title: 'Alkynes', href: 'lessons/alkynes.html', dependsOn: ['alkene-structure', 'acidity-factors', 'sn2'] }
     ]},
@@ -77,18 +77,18 @@
     ]},
     { id: 'carbonyl-chemistry', title: 'Carbonyl Chemistry', topics: [
       { id: 'aldehydes-ketones', title: 'Aldehydes & ketones', href: 'lessons/aldehydes-ketones.html', dependsOn: ['hybridization', 'electrophiles'] },
-      { id: 'nucleophilic-addition', title: 'Nucleophilic addition', href: 'lessons/nucleophilic-addition.html', dependsOn: ['aldehydes-ketones', 'nucleophiles'] },
+      { id: 'nucleophilic-addition', title: 'Nucleophilic addition', href: 'lessons/nucleophilic-addition.html', mechanism: 'mechanisms/carbonyl-addition.html', dependsOn: ['aldehydes-ketones', 'nucleophiles'] },
       { id: 'acetals', title: 'Acetals & hemiacetals', href: 'lessons/acetals.html', dependsOn: ['nucleophilic-addition', 'alcohol-reactions', 'resonance'] }
     ]},
     { id: 'carboxylic-acids', title: 'Carboxylic Acids & Derivatives', topics: [
       { id: 'carboxylic-acids', title: 'Carboxylic acids', href: 'lessons/carboxylic-acids.html', dependsOn: ['resonance', 'pka', 'acidity-factors'] },
       { id: 'esters-amides', title: 'Esters & amides', href: 'lessons/esters-amides.html', dependsOn: ['carboxylic-acids', 'leaving-groups'] },
-      { id: 'acyl-substitution', title: 'Nucleophilic acyl substitution', href: 'lessons/acyl-substitution.html', dependsOn: ['esters-amides', 'nucleophilic-addition'] }
+      { id: 'acyl-substitution', title: 'Nucleophilic acyl substitution', href: 'lessons/acyl-substitution.html', mechanism: 'mechanisms/acyl-substitution.html', dependsOn: ['esters-amides', 'nucleophilic-addition'] }
     ]},
     { id: 'enolate-chemistry', title: 'Enolate Chemistry', topics: [
       { id: 'alpha-hydrogens', title: 'Alpha hydrogens & enolates', href: 'lessons/alpha-hydrogens.html', dependsOn: ['aldehydes-ketones', 'acidity-factors', 'alkynes'] },
-      { id: 'aldol', title: 'Aldol reactions', href: 'lessons/aldol.html', dependsOn: ['alpha-hydrogens', 'nucleophilic-addition'] },
-      { id: 'claisen', title: 'Claisen reactions', href: 'lessons/claisen.html', dependsOn: ['aldol', 'acyl-substitution'] }
+      { id: 'aldol', title: 'Aldol reactions', href: 'lessons/aldol.html', mechanism: 'mechanisms/aldol.html', dependsOn: ['alpha-hydrogens', 'nucleophilic-addition'] },
+      { id: 'claisen', title: 'Claisen reactions', href: 'lessons/claisen.html', mechanism: 'mechanisms/claisen.html', dependsOn: ['aldol', 'acyl-substitution'] }
     ]},
     { id: 'amines', title: 'Amines', topics: [
       { id: 'amine-structure', title: 'Structure & basicity', href: 'lessons/amine-structure.html', dependsOn: ['bronsted', 'lewis-acids', 'esters-amides'] },
@@ -96,7 +96,7 @@
     ]},
     { id: 'aromatic-chemistry', title: 'Aromatic Chemistry', topics: [
       { id: 'aromaticity', title: 'Aromaticity', href: 'lessons/aromaticity.html', dependsOn: ['resonance', 'hybridization'] },
-      { id: 'eas', title: 'Electrophilic aromatic substitution', href: 'lessons/eas.html', dependsOn: ['aromaticity', 'addition-reactions', 'markovnikov'] },
+      { id: 'eas', title: 'Electrophilic aromatic substitution', href: 'lessons/eas.html', mechanism: 'mechanisms/eas.html', dependsOn: ['aromaticity', 'addition-reactions', 'markovnikov'] },
       { id: 'directing-effects', title: 'Ortho/meta/para directing effects', href: 'lessons/directing-effects.html', dependsOn: ['eas', 'esters-amides'] }
     ]},
     { id: 'spectroscopy', title: 'Spectroscopy', topics: [

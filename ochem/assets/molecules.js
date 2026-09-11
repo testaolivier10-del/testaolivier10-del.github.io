@@ -780,8 +780,16 @@
        neighbour) need a proportionally bigger bow or the arc degenerates
        into a hook tucked under the atom it points at. */
     var bow = arrow.bow === undefined ? Math.max(len < 55 ? 19 : 14, Math.min(34, len * 0.33)) : arrow.bow;
-    var x1 = a.x + st[0]*(a.r + 3), y1 = a.y + st[1]*(a.r + 3);
-    var x2 = b.x + en[0]*(b.r + 5), y2 = b.y + en[1]*(b.r + 5);
+    /* Clear each anchor, but never by so much that there is no arc left. Bond
+       anchors sit at bond midpoints, and two adjacent bonds' midpoints can be
+       only ~40px apart — with a fixed r+3 offset at each end that consumes the
+       whole path and leaves a bare arrowhead floating in space. Capping the
+       offset at a fraction of the length keeps a visible arc on short hops
+       while leaving long ones exactly as they were. */
+    var offA = Math.min(a.r + 3, len * 0.3);
+    var offB = Math.min(b.r + 5, len * 0.3);
+    var x1 = a.x + st[0]*offA, y1 = a.y + st[1]*offA;
+    var x2 = b.x + en[0]*offB, y2 = b.y + en[1]*offB;
     var mx = (x1 + x2)/2 + nx*bow, my = (y1 + y2)/2 + ny*bow;
     var d = 'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) + ' Q ' + mx.toFixed(1) + ' ' + my.toFixed(1) +
             ' ' + x2.toFixed(1) + ' ' + y2.toFixed(1);
