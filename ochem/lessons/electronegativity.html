@@ -38,7 +38,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 6</div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -60,13 +60,20 @@
     progLabel: document.getElementById('progLabel'),
     notesHtml: '<h3>What it is</h3><p class="step-body"><b>Electronegativity</b> measures how strongly an atom pulls on the electrons in a bond. It increases <b>up and to the right</b> on the periodic table (excluding noble gases) — fluorine is the most electronegative element there is. In any bond between two different atoms, the shared electrons sit closer to whichever atom is more electronegative.</p>' +
       '<h3>Worked comparisons</h3><p class="step-body">O vs. H: oxygen is more electronegative. C vs. H: carbon is more electronegative (though only slightly — this is why C–H bonds are treated as close to nonpolar). C vs. Cl: chlorine is more electronegative. Fluorine is the single most electronegative element on the table, full stop.</p>' +
-      '<div class="notes-fact">This is where "electron-poor" and "electron-rich" come from. An electronegativity difference makes a bond polar — and it\'s what makes the carbon in C–Br electron-poor enough for a nucleophile to attack, the exact idea behind SN1/SN2. C–F is more polar than C–Br because fluorine\'s electronegativity gap with carbon is bigger.</div>',
+      '<div class="notes-fact">This is where "electron-poor" and "electron-rich" come from. An electronegativity difference makes a bond polar — and it\'s what makes the carbon in C–Br electron-poor enough for a nucleophile to attack, the exact idea behind SN1/SN2. C–F is more polar than C–Br because fluorine\'s electronegativity gap with carbon is bigger.</div>' +
+      '<h3>The Pauling scale and polarity thresholds</h3><p class="step-body">Key values: F 3.98, O 3.44, N 3.04, Cl 3.16, Br 2.96, C 2.55, I 2.66, H 2.20 (look up any element in the periodic table tool). Rule of thumb for the difference (ΔEN): &lt;0.5 nonpolar covalent (C–H = 0.35); 0.5–1.7 polar covalent (C–O = 0.89, C–Cl = 0.61); &gt;1.7 ionic (Na–Cl = 2.23). Nearly every organic bond falls in the covalent range.</p>',
     steps: [
       {
         type: 'explain',
         eyebrow: 'Explain',
         title: 'A tug-of-war over shared electrons.',
         bodyHtml: '<p class="step-body"><b>Electronegativity</b> measures how strongly an atom pulls on the electrons in a bond. It increases as you go <b>up and to the right</b> on the periodic table (excluding noble gases) — fluorine is the most electronegative element there is.</p><p class="step-body" style="margin-bottom:0;">In any bond between two different atoms, the shared electrons sit closer to whichever one is more electronegative.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'It\'s not just "which one wins" — it\'s an actual number.',
+        bodyHtml: '<p class="step-body">Electronegativity is measured on the <b>Pauling scale</b> (named for Linus Pauling, who defined it from bond energies). A few values you\'ll use constantly: F 3.98, O 3.44, N 3.04, Cl 3.16, Br 2.96, C 2.55, I 2.66, H 2.20. You can look up any element\'s value in the periodic table tool (the ⚛ button) — it shows the number for every element, not just these.</p><p class="step-body">The actual <b>difference</b> (ΔEN) between two bonded atoms tells you what kind of bond you have, as a rough rule of thumb: ΔEN &lt; 0.5 is essentially <b>nonpolar covalent</b> (electrons shared close to evenly, like C–H at 2.55−2.20 = 0.35); 0.5–1.7 is <b>polar covalent</b> (unevenly shared, like C–O at 3.44−2.55 = 0.89, or C–Cl at 3.16−2.55 = 0.61); above 1.7 is usually considered <b>ionic</b> (electrons essentially transferred rather than shared, like Na–Cl at 3.16−0.93 = 2.23). Almost every bond in organic chemistry falls in the covalent range — true ionic bonds are rare within an organic molecule itself, though ionic species like carboxylate salts exist.</p>'
       },
       {
         render: function(api){
@@ -117,7 +124,7 @@
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 2 · Guided Practice',
+        eyebrow: 'Step 3 · Guided Practice',
         title: 'Which is more electronegative: fluorine or carbon?',
         options: ['Fluorine', 'Carbon'],
         correctIndex: 0,
@@ -126,7 +133,7 @@
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 3 · Independent Practice',
+        eyebrow: 'Step 4 · Independent Practice',
         title: 'In a C–Cl bond, which atom pulls electron density toward itself?',
         options: ['Carbon', 'Chlorine'],
         correctIndex: 1,
