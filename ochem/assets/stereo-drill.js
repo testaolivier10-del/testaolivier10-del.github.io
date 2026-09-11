@@ -75,12 +75,16 @@
      crowded, and the bond whose depth the student has to read is the one
      that must be unmistakable — so it gets the extra room, the same way a
      textbook draws it. */
-  function radiusFor(s){
+  function radiusFor(s, problem){
+    // A Fischer cross is drawn with four equal arms — the whole point of
+    // the notation is that it looks flat and symmetric, with depth carried
+    // by convention rather than by how the bond is drawn.
+    if(problem && problem.layout === 'fischer') return R;
     return R * (s && (s.depth === 'wedge' || s.depth === 'dash') ? 1.32 : 1);
   }
-  function pos(s){
+  function pos(s, problem){
     var a = (typeof s === 'number' ? s : s.angle) * Math.PI / 180;
-    var r = typeof s === 'number' ? R : radiusFor(s);
+    var r = typeof s === 'number' ? R : radiusFor(s, problem);
     return { x: CX + r * Math.cos(a), y: CY - r * Math.sin(a) };
   }
 
@@ -91,7 +95,25 @@
        depth     'plane' | 'wedge' (toward viewer) | 'dash' (away)
      Exactly one substituent must be the lowest priority, and it must sit
      on the wedge or the dash — which is how these are drawn in practice,
-     and what makes the toward/away question meaningful. */
+     and what makes the toward/away question meaningful.
+
+     A problem may instead set layout:'fischer', in which case the four
+     substituents sit on a cross at 0/90/180/270 and depth is implied by
+     the projection's own convention rather than drawn: HORIZONTAL bonds
+     come toward the viewer, VERTICAL bonds go away. Same three stages,
+     same derivation — a Fischer projection is just a different notation
+     for which bond points where, and the rule students are taught for it
+     ("horizontal toward you") is exactly the toward/away question the
+     drill already asks. */
+  function isFischer(problem){ return problem.layout === 'fischer'; }
+
+  function depthOf(problem, s){
+    if(!isFischer(problem)) return s.depth;
+    var a = ((s.angle % 360) + 360) % 360;
+    var horizontal = (a > 45 && a < 135) || (a > 225 && a < 315) ? false : true;
+    return horizontal ? 'wedge' : 'dash';
+  }
+
   function solve(problem){
     var subs = problem.subs;
     var lowest = subs.filter(function(s){ return s.priority === 4; })[0];
@@ -102,16 +124,21 @@
     // Clockwise with the lowest priority pointing away is R. If it points
     // toward the viewer you are reading the centre from the wrong side, so
     // the apparent sense is backwards and the answer flips.
-    var towardViewer = lowest.depth === 'wedge';
+    var towardViewer = depthOf(problem, lowest) === 'wedge';
     var config = (cw !== towardViewer) ? 'R' : 'S';
     return { clockwise: cw, towardViewer: towardViewer, config: config, lowest: lowest };
   }
 
-  function bondSvg(s){
-    var e = bondEnd(s, pos(s));
+  function bondSvg(s, problem){
+    var e = bondEnd(s, pos(s, problem));
     var a = s.angle * Math.PI / 180;
     // Unit normal to the bond, for the wedge's base and the hash rungs.
     var nx = -Math.sin(a), ny = -Math.cos(a);
+    // Fischer bonds are all plain lines; see radiusFor.
+    if(problem && problem.layout === 'fischer'){
+      return '<line x1="' + CX + '" y1="' + CY + '" x2="' + e.x + '" y2="' + e.y +
+             '" stroke="var(--ink)" stroke-width="2.6" stroke-linecap="round"></line>';
+    }
 
     if(s.depth === 'wedge'){
       /* Solid wedge: narrow at the stereocentre, widening toward the group
@@ -144,22 +171,30 @@
   function drawing(problem, opts){
     opts = opts || {};
     var marks = opts.marks || {};
-    var body = problem.subs.map(bondSvg).join('');
+    var body = problem.subs.map(function(s){ return bondSvg(s, problem); }).join('');
     body += problem.subs.map(function(s){
-      var p = pos(s);
+      var p = pos(s, problem);
       var mark = marks[s.label];
       var w = labelWidth(s.label);
       /* The priority badge goes on whichever side of the label points away
-         from the stereocentre, so it never lands on top of a bond. */
-      var outward = Math.sin(s.angle * Math.PI / 180) >= 0 ? -1 : 1;
-      var badgeY = p.y + outward * (LH / 2 + 11);
+         from the stereocentre, so it never lands on top of a bond. On a
+         Fischer cross the left and right arms are horizontal, so their
+         badges go beside the label rather than above or below it, where
+         they would collide with the vertical arm's own label. */
+      var sinA = Math.sin(s.angle * Math.PI / 180);
+      var sideways = problem.layout === 'fischer' && Math.abs(sinA) < 0.3;
+      var outward = sinA >= 0 ? -1 : 1;
+      var badgeY = sideways ? p.y + 5 : p.y + outward * (LH / 2 + 11);
+      var badgeX = sideways
+        ? p.x + (Math.cos(s.angle * Math.PI / 180) >= 0 ? 1 : -1) * (w / 2 + 11)
+        : p.x;
       return '<g class="sd-label">' +
         '<rect x="' + (p.x - w / 2) + '" y="' + (p.y - LH / 2) + '" width="' + w +
           '" height="' + LH + '" rx="9" fill="var(--paper)" ' +
           'stroke="var(--line)" stroke-width="2"></rect>' +
         '<text x="' + p.x + '" y="' + (p.y + 5) + '" text-anchor="middle" ' +
           'font-size="13.5" font-weight="800" fill="var(--ink)">' + s.label + '</text>' +
-        (mark ? '<text x="' + p.x + '" y="' + badgeY + '" text-anchor="middle" ' +
+        (mark ? '<text x="' + badgeX + '" y="' + badgeY + '" text-anchor="middle" ' +
           'font-size="12" font-weight="900" fill="var(--accent)">' + mark + '</text>' : '') +
         '</g>';
     }).join('');
@@ -175,6 +210,7 @@
      / showFeedback / nextButtonHtml). */
   function mount(api, problem){
     var sol = solve(problem);
+    var fischer = isFischer(problem);
     var stage = 0;
     var marks = {};
     var missed = false;
@@ -238,7 +274,9 @@
     function orientStage(){
       shell('Step 2 of 3',
         'Which way does the lowest-priority group (' + sol.lowest.label + ') point?',
-        '<p class="step-body">Look at how its bond is drawn. A solid wedge widens toward you, out of the page; a hashed bond recedes behind the page.</p>' +
+        '<p class="step-body">' + (fischer
+          ? 'Nothing here is drawn as a wedge — a Fischer projection carries depth by convention instead. <b>Horizontal bonds come toward you; vertical bonds go away from you.</b> So the answer depends only on which arm of the cross this group sits on.'
+          : 'Look at how its bond is drawn. A solid wedge widens toward you, out of the page; a hashed bond recedes behind the page.') + '</p>' +
         buttons([
           { v: 'away', label: 'Away from you, behind the page' },
           { v: 'toward', label: 'Toward you, out of the page' }
@@ -255,8 +293,14 @@
           if(!ok) missed = true;
           api.record(ok);
           api.showFeedback(fb, ok, sol.towardViewer
-            ? (sol.lowest.label + ' is on the bold wedge, so it points at you. That is the awkward case: you are looking at this centre from the wrong side, so whatever rotation you read off has to be flipped at the end.')
-            : (sol.lowest.label + ' is on the hashed bond, so it points away from you — exactly the orientation the rule wants. Whatever rotation you read off is the answer directly, with no flip.'));
+            ? (sol.lowest.label + (fischer
+                ? ' is on a horizontal arm, and horizontal means toward you in a Fischer projection.'
+                : ' is on the bold wedge, so it points at you.') +
+               ' That is the awkward case: you are looking at this centre from the wrong side, so whatever rotation you read off has to be flipped at the end.')
+            : (sol.lowest.label + (fischer
+                ? ' is on a vertical arm, and vertical means away from you in a Fischer projection.'
+                : ' is on the hashed bond, so it points away from you.') +
+               ' That is exactly the orientation the rule wants, so whatever rotation you read off is the answer directly, with no flip.'));
           next.disabled = false;
         });
       });

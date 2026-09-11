@@ -256,11 +256,16 @@
       3:['backside-attack'],
       6:['backside-attack'] } },
 
-    'fischer': { n:7, steps:{
+    /* Step 5 is the R/S-from-a-Fischer-projection drill, which grades
+       three times — reading the projection is a different skill from
+       assigning a configuration from one, and only the first was
+       practised here before. */
+    'fischer': { n:8, steps:{
       1:['fischer-reading'],
       2:['fischer-reading'],
       3:['fischer-reading','enantiomer-vs-diastereomer'],
-      6:['fischer-reading','enantiomer-vs-diastereomer'] } },
+      5:['fischer-reading','rs-assignment','cip-priority'],
+      7:['fischer-reading','enantiomer-vs-diastereomer'] } },
 
     'h-nmr': { n:8, steps:{
       1:['nmr-splitting-integration'],
