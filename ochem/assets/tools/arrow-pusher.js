@@ -502,5 +502,17 @@
       'Hydrogens are hidden unless one of them is charged.</p>';
   }
 
-  select(ALL[0]);
+  /* A tool that ends "and that is an E2" should be able to hand you straight
+     to the place you draw one. The Reaction Predictor links here with the
+     mechanism it just predicted, and this is the other end of that. */
+  function fromUrl(){
+    try{
+      var want = new URLSearchParams(window.location.search).get('start');
+      if(!want) return null;
+      for(var i=0;i<ALL.length;i++) if(ALL[i].id === want) return ALL[i];
+    }catch(e){}
+    return null;
+  }
+
+  select(fromUrl() || ALL[0]);
 })();

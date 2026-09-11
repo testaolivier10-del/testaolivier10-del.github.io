@@ -253,7 +253,19 @@
     var isSub = out.major === 'SN1' || out.major === 'SN2';
     var isElim = out.major === 'E1' || out.major === 'E2';
 
-    if(isSub){
+    if(sub.generic){
+      /* A substrate the student drew. The class is read off the structure and
+         every factor argument above holds, but the tool will not write a
+         product formula for it: generating one means naming a rearrangement
+         that may or may not happen and a regiochemistry it has not checked,
+         and a confidently wrong product is the one thing worse than no
+         product. The reasoning is the part that was worth having anyway. */
+      out.product = null;
+      out.productNote = 'The mechanism above is what this substrate does. The product is not written out because this ' +
+        'one was drawn rather than chosen: getting from a structure to a named product means committing to where a ' +
+        'carbocation ends up and which beta hydrogen leaves, and a confidently wrong product would be worse than none. ' +
+        'Work it out from the mechanism — that is the exercise.';
+    } else if(isSub){
       out.product = r.x ? sub.sub.replace('{X}', r.x) : null;
       if(!out.product){
         out.product = '—';
@@ -274,6 +286,137 @@
     return out;
   }
 
+  /* ---- What comes out of the flask ---------------------------------------
+
+     "SN2, with some E2" is the answer a course gives and it is half an answer:
+     the thing worth knowing is whether "some" means a tenth or nearly half,
+     because that is the difference between a clean reaction and a separation
+     problem. The tool already knows which factors are pushing and how hard —
+     it prints them as four rows — so it can say how lopsided the result is.
+
+     What it must not do is imply it has measured anything. These are bands,
+     rounded to the nearest five and labelled as an indication of how one-sided
+     the competition is. A real yield depends on concentration, the precise
+     solvent, how long it was left and who ran it. */
+  function mixture(s, out){
+    var isSub  = function(m){ return m === 'SN1' || m === 'SN2'; };
+    var isElim = function(m){ return m === 'E1'  || m === 'E2';  };
+
+    if(!out.minor || !out.major || out.major === 'No reaction'){
+      return out.major && out.major !== 'No reaction'
+        ? [{ path: out.major, pct: 100 }]
+        : null;
+    }
+
+    var lead = 65;                       // two live pathways, no thumb on either
+    var why = [];
+
+    if(s.heat){
+      if(isElim(out.major)){ lead += 12; why.push('heat widens the elimination’s lead'); }
+      else if(isElim(out.minor)){ lead -= 12; why.push('heat pulls the elimination share up'); }
+    }
+    if(s.solvent.id === 'aprotic'){
+      if(out.major === 'SN2'){ lead += 8; why.push('the aprotic solvent sharpens the nucleophile'); }
+      else if(out.minor === 'SN2'){ lead -= 8; why.push('the aprotic solvent pushes the SN2 share up'); }
+    }
+    if(s.rgt.bulky && isElim(out.major)){
+      lead += 10; why.push('the bulk of the base makes the carbon harder still to reach');
+    }
+    // Two paths off one carbocation are never as lopsided as a bimolecular choice.
+    if(out.major === 'SN1' || out.major === 'E1'){ lead -= 8; why.push('both paths run through the same carbocation, so neither gets far ahead'); }
+
+    lead = Math.max(55, Math.min(90, lead));
+    lead = Math.round(lead / 5) * 5;
+
+    return [
+      { path: out.major, pct: lead },
+      { path: out.minor, pct: 100 - lead },
+      { why: why }
+    ];
+  }
+
+  /* Which page in the Arrow Pusher teaches the mechanism just predicted. A
+     verdict that ends "and that is E2" and then leaves you on the same screen
+     has stopped one step short of the thing worth doing next. */
+  var MECH_LINK = {
+    SN2: { id:'sn2-bromoethane', label:'Draw the SN2' },
+    SN1: { id:'sn1-secondary',   label:'Draw the ionization' },
+    E2:  { id:'e2-butane',       label:'Draw the E2' },
+    E1:  { id:'sn1-secondary',   label:'Draw the first step of the E1' }
+  };
+
+  /* ---- Reading a substrate off a drawing ---------------------------------
+
+     The four factors are a decision procedure over a substrate CLASS, not over
+     a stored molecule, so the only thing keeping it to nine substrates was
+     that nothing else offered one. Classifying a drawn structure is three
+     questions: where is the leaving group, how many carbons are on the carbon
+     holding it, and is there a hydrogen on any neighbour. */
+  var HALIDES = { F:1, Cl:1, Br:1, I:1 };
+
+  function classifySubstrate(st){
+    var C = window.OchemChem;
+    if(!C) return { error:'The chemistry engine is not loaded on this page.' };
+
+    var site = null, lg = null;
+    Object.keys(st.atoms).forEach(function(k){
+      var a = st.atoms[k];
+      if(!a.el || !HALIDES[a.el]) return;
+      C.neighbors(st, k).forEach(function(n){
+        if(st.atoms[n] && st.atoms[n].el === 'C' && !site){ site = n; lg = k; }
+      });
+    });
+    if(!site){
+      return { error:'No leaving group. Put a halogen — F, Cl, Br or I — on a carbon, and the substitution/elimination question has something to be about.' };
+    }
+
+    var carbons = C.neighbors(st, site).filter(function(n){
+      return st.atoms[n] && st.atoms[n].el === 'C';
+    });
+
+    function hCount(k){
+      var a = st.atoms[k];
+      return a.hFixed !== undefined ? a.hFixed : (a.hImplicit || 0);
+    }
+    function isAromaticCarbon(k){
+      if(!st.atoms[k] || st.atoms[k].el !== 'C') return false;
+      return C.bondsAt(st, k).some(function(b){ return b.order === 2; }) &&
+             !!window.OchemBuilder && !!window.OchemBuilder.findRing(st, [k]);
+    }
+
+    var betaH = carbons.some(function(n){ return hCount(n) > 0; });
+    var benzylic = carbons.some(isAromaticCarbon);
+
+    var cls;
+    if(carbons.length === 0) cls = 'methyl';
+    else if(carbons.length === 1) {
+      // Neopentyl: primary by the count, unreachable in practice.
+      var nb = carbons[0];
+      var crowded = C.neighbors(st, nb).filter(function(n){
+        return st.atoms[n] && st.atoms[n].el === 'C' && n !== site;
+      }).length >= 3;
+      cls = benzylic ? 'benzylic' : (crowded ? '1-hindered' : '1');
+    }
+    else if(carbons.length === 2) cls = '2';
+    else cls = '3';
+
+    if(cls === '1-hindered' && betaH) cls = '1';
+
+    return {
+      id:'custom', name: st.name || 'Your substrate', cls: cls,
+      formula: C.formula(st), generic: true,
+      sub: null,
+      zaitsev: betaH ? 'alkene' : null,
+      hofmann: betaH ? 'alkene' : null,
+      note: 'Read off the structure you drew: the carbon holding the ' + st.atoms[lg].el +
+            ' has ' + carbons.length + ' carbon' + (carbons.length === 1 ? '' : 's') + ' on it, which makes it ' +
+            ({ methyl:'a methyl carbon', '1':'primary', '1-hindered':'primary but hindered',
+               '2':'secondary', '3':'tertiary', benzylic:'benzylic' })[cls] + '. ' +
+            (betaH ? 'There are beta hydrogens, so elimination is on the table.'
+                   : 'There is no hydrogen on any neighbouring carbon, so elimination cannot happen here at all.')
+    };
+  }
+
   /* ---- Rendering -------------------------------------------------------- */
 
   root.innerHTML =
@@ -291,6 +434,11 @@
         '</div>' +
       '</div>' +
       '<div class="rp-equation" id="rpEq"></div>' +
+      '<div class="trow" style="margin-top:12px;">' +
+        '<button type="button" class="tchip tchip--ghost" id="rpBuildToggle">Draw your own substrate &rarr;</button>' +
+      '</div>' +
+      '<div id="rpBuilder" hidden></div>' +
+      '<div id="rpBuildMsg"></div>' +
     '</div>' +
     '<div class="tsplit tsplit--wide">' +
       '<div class="tpanel">' +
@@ -308,6 +456,41 @@
         '<div id="rpFactors"></div>' +
       '</div>' +
     '</div>';
+
+  /* ---- Draw your own substrate ------------------------------------------- */
+  var rpBuilderApi = null;
+
+  document.getElementById('rpBuildToggle').addEventListener('click', function(){
+    var box = document.getElementById('rpBuilder');
+    var msg = document.getElementById('rpBuildMsg');
+    var open = box.hidden;
+    box.hidden = !open;
+    this.classList.toggle('on', open);
+    this.textContent = open ? 'Hide the builder' : 'Draw your own substrate →';
+    if(open && !rpBuilderApi && window.OchemBuilderUI){
+      rpBuilderApi = window.OchemBuilderUI.mount(box, {
+        onChange: function(st, rep){
+          if(rep.empty){ msg.innerHTML = ''; return; }
+          if(!rep.ok){
+            msg.innerHTML = '<div class="tnote tnote--bad" style="margin-top:12px;">Fix what is flagged below first.</div>';
+            return;
+          }
+          var sub = classifySubstrate(st);
+          if(sub.error){
+            msg.innerHTML = '<div class="tnote tnote--warn" style="margin-top:12px;">' +
+              '<span class="tnote__k">Not a substrate yet</span>' + esc(sub.error) + '</div>';
+            return;
+          }
+          msg.innerHTML = '<div class="tnote tnote--good" style="margin-top:12px;">' +
+            '<span class="tnote__k">Loaded</span>' + esc(sub.note) + '</div>';
+          state.sub = sub;
+          state.guess = null;
+          state.revealed = false;
+          render();
+        }
+      });
+    }
+  });
 
   var elSub = document.getElementById('rpSub');
   var elRgt = document.getElementById('rpRgt');
@@ -412,10 +595,20 @@
       '<span class="tnote__k">' + (right ? 'Correct — ' + esc(p.major) : 'Not quite — it is ' + esc(p.major) + ', not ' + esc(state.guess)) + '</span>' +
       esc(p.verdict) + '</div>';
 
-    if(p.minor){
-      html += '<div class="tnote tnote--warn"><span class="tnote__k">Also happening</span>' +
-        'Some ' + esc(p.minor) + ' alongside it. These are competitions, not switches — the question is which product dominates, ' +
-        'and a real flask gives you both.</div>';
+    var mix = mixture(state, p);
+    if(mix && mix.length > 1){
+      var why = mix[2] && mix[2].why && mix[2].why.length ? mix[2].why.join(', and ') : null;
+      html += '<div class="tnote tnote--warn"><span class="tnote__k">Roughly what you get</span>' +
+        '<div class="rp-mix">' +
+          mix.slice(0, 2).map(function(m, i){
+            return '<div class="rp-mix__bar' + (i === 0 ? ' is-major' : '') + '" style="flex:' + m.pct + ';">' +
+              '<span>' + esc(m.path) + '</span><b>' + m.pct + '%</b></div>';
+          }).join('') +
+        '</div>' +
+        'These are competitions, not switches: a real flask gives you both, and the useful question is how lopsided. ' +
+        (why ? 'Here ' + esc(why) + '. ' : '') +
+        'Treat the split as a band rather than a yield — the actual numbers move with concentration, the exact solvent and how long it was left.' +
+      '</div>';
     }
 
     if(p.product && p.product !== '—'){
@@ -428,7 +621,14 @@
       html += '<div class="tnote"><span class="tnote__k">Product</span>' + esc(p.productNote) + '</div>';
     }
 
-    html += '<button type="button" class="tchip" id="rpNext">Try another combination</button>';
+    var link = MECH_LINK[p.major];
+    html += '<div class="trow" style="margin-top:4px;">' +
+      '<button type="button" class="tchip" id="rpNext">Try another combination</button>' +
+      (link
+        ? '<a class="tchip tchip--ghost" href="arrow-pusher.html?start=' + encodeURIComponent(link.id) + '">' +
+          esc(link.label) + ' &rarr;</a>'
+        : '') +
+    '</div>';
     elV.innerHTML = html;
     document.getElementById('rpNext').addEventListener('click', shuffle);
   }
