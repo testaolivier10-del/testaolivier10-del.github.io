@@ -79,7 +79,7 @@
     notesHtml: '<h3>The Brønsted-Lowry definition</h3><p class="step-body">A <b>Brønsted-Lowry acid</b> is a proton (H⁺) donor. A <b>Brønsted-Lowry base</b> is a proton acceptor. Every acid-base reaction is fundamentally a <b>proton transfer</b> from the acid to the base — nothing more mysterious than that. This definition is broader than the older Arrhenius definition (acid = produces H⁺ in water, base = produces OH⁻ in water), which only works in aqueous solution; Brønsted-Lowry works in any solvent, or no solvent at all, which is essential since most organic reactions don\'t happen in water.</p>' +
       '<h3>Worked example: HCl + NH₃</h3><p class="step-body">HCl donates its proton to the lone pair on nitrogen in NH₃. HCl is the acid (proton donor); NH₃ is the base (proton acceptor, using its lone pair). The products are NH₄⁺ (ammonium) and Cl⁻ (chloride).</p>' +
       '<div class="notes-fact">Curved arrows describe this exactly like Module 2 taught: one arrow from nitrogen\'s lone pair to the H, and one arrow from the H–Cl bond to Cl. The base\'s lone pair is always the nucleophile here, and the acidic proton is always the electrophile — Brønsted acid-base chemistry is just a specific, extremely common case of the nucleophile/electrophile framework from Module 2.</div>' +
-      '<h3>Which side does the equilibrium favor?</h3><p class="step-body">Every proton transfer is technically an equilibrium (shown with two arrows, &#8652;), even when it looks like it goes to completion. The reaction favors the side with the <b>weaker acid and weaker base</b> — because that\'s the lower-energy, more stable side. You\'ll quantify "weaker acid" precisely with pKa in the next lesson.</p>',
+      '<h3>Which side does the equilibrium favor?</h3><p class="step-body">Every proton transfer is technically an <b>equilibrium</b>: both directions keep happening, and what you see is the balance they settle into rather than a one-way trip — that\'s what the double arrow &#8652; means — even when it looks like it goes to completion. The reaction favors the side with the <b>weaker acid and weaker base</b> — because that\'s the lower-energy, more stable side. You\'ll quantify "weaker acid" precisely with pKa in the next lesson.</p>',
     steps: [
       {
         type: 'explain',
@@ -131,7 +131,7 @@
         type: 'mcq',
         eyebrow: 'Step 3 · Independent Practice',
         title: 'NH₄⁺ is called the ___ of NH₃.',
-        options: ['conjugate acid', 'conjugate base', 'Lewis acid'],
+        options: ['conjugate acid', 'conjugate base', 'neither — they are unrelated species'],
         correctIndex: 0,
         correctFeedback: 'Correct. NH₃ gained a proton to become NH₄⁺ — a base that has just accepted a proton becomes its conjugate acid.',
         wrongFeedback: 'NH₃ gained a proton, it didn\'t lose one — gaining a proton makes something a conjugate acid, not a conjugate base.'
@@ -140,13 +140,13 @@
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Every proton transfer is an equilibrium — it has a favored side.',
-        bodyHtml: '<p class="step-body">Even when a reaction looks like it goes to completion, a proton transfer is technically an equilibrium, and equilibria favor the more stable, lower-energy side. For an acid-base reaction, that\'s the side with the <b>weaker acid and weaker base</b>.</p><p class="step-body" style="margin-bottom:0;">HCl + NH₃ → NH₄⁺ + Cl⁻ overwhelmingly favors the right side, because HCl is an extremely strong acid and NH₃ is a fairly strong base, while NH₄⁺ is a much weaker acid and Cl⁻ is a much weaker base. You\'ll make this precise with actual numbers (pKa) in the next lesson — for now, the qualitative rule is: <b>the stronger acid and stronger base end up as reactants; the weaker acid and weaker base end up as products.</b></p>'
+        bodyHtml: '<p class="step-body">Even when a reaction looks like it goes to completion, a proton transfer is really an <b>equilibrium</b>: both directions keep happening, and what you see is the balance they settle into rather than a one-way trip, and the balance settles toward the more stable, lower-energy side. For an acid-base reaction, that\'s the side with the <b>weaker acid and weaker base</b>.</p><p class="step-body" style="margin-bottom:0;">HCl + NH₃ → NH₄⁺ + Cl⁻ overwhelmingly favors the right side, because HCl is an extremely strong acid and NH₃ is a fairly strong base, while NH₄⁺ is a much weaker acid and Cl⁻ is a much weaker base. You\'ll make this precise with actual numbers (pKa) in the next lesson — for now, the qualitative rule is: <b>the stronger acid and stronger base end up as reactants; the weaker acid and weaker base end up as products.</b></p>'
       },
       {
         type: 'explain',
         eyebrow: 'Why it matters',
         title: 'Acid-base steps show up inside almost every mechanism you\'ll draw.',
-        bodyHtml: '<div class="explain-box">Long before you get to substitution, elimination, or carbonyl chemistry, you\'ll draw proton transfers as setup steps — protonating an alcohol\'s oxygen before it can leave as water in an SN1 reaction, or deprotonating an alpha carbon before an aldol reaction (Module 11). Recognizing "this step is just an acid-base reaction" instantly tells you which curved arrows to draw: base lone pair to H, H–X bond to X.</div>'
+        bodyHtml: '<div class="explain-box">Long before you get to substitution, elimination, or carbonyl chemistry, you\'ll draw proton transfers as setup steps. Handing a proton <i>to</i> an atom is called <b>protonating</b> it; taking one <i>off</i> is <b>deprotonating</b> it, and both words are everywhere from here on. A typical setup step: an alcohol\'s OH won\'t break away on its own, but protonate that oxygen first and it can leave as ordinary water instead. Recognizing "this step is just an acid-base reaction" instantly tells you which curved arrows to draw: base lone pair to H, H–X bond to X.</div>'
       },
       {
         type: 'final',
