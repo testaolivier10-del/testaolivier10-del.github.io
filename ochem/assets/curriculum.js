@@ -74,34 +74,34 @@
       { id: 'epoxides', title: 'Epoxides', href: 'lessons/epoxides.html', dependsOn: ['ether-chemistry', 'cyclohexanes', 'substrate-effects'] }
     ]},
     { id: 'carbonyl-chemistry', title: 'Carbonyl Chemistry', topics: [
-      { id: 'aldehydes-ketones', title: 'Aldehydes & ketones', href: null },
-      { id: 'nucleophilic-addition', title: 'Nucleophilic addition', href: null },
-      { id: 'acetals', title: 'Acetals & hemiacetals', href: null }
+      { id: 'aldehydes-ketones', title: 'Aldehydes & ketones', href: 'lessons/aldehydes-ketones.html', dependsOn: ['hybridization', 'electrophiles'] },
+      { id: 'nucleophilic-addition', title: 'Nucleophilic addition', href: 'lessons/nucleophilic-addition.html', dependsOn: ['aldehydes-ketones', 'nucleophiles'] },
+      { id: 'acetals', title: 'Acetals & hemiacetals', href: 'lessons/acetals.html', dependsOn: ['nucleophilic-addition', 'alcohol-reactions', 'resonance'] }
     ]},
     { id: 'carboxylic-acids', title: 'Carboxylic Acids & Derivatives', topics: [
-      { id: 'carboxylic-acids', title: 'Carboxylic acids', href: null },
-      { id: 'esters-amides', title: 'Esters & amides', href: null },
-      { id: 'acyl-substitution', title: 'Nucleophilic acyl substitution', href: null }
+      { id: 'carboxylic-acids', title: 'Carboxylic acids', href: 'lessons/carboxylic-acids.html', dependsOn: ['resonance', 'pka', 'acidity-factors'] },
+      { id: 'esters-amides', title: 'Esters & amides', href: 'lessons/esters-amides.html', dependsOn: ['carboxylic-acids', 'leaving-groups'] },
+      { id: 'acyl-substitution', title: 'Nucleophilic acyl substitution', href: 'lessons/acyl-substitution.html', dependsOn: ['esters-amides', 'nucleophilic-addition'] }
     ]},
     { id: 'enolate-chemistry', title: 'Enolate Chemistry', topics: [
-      { id: 'alpha-hydrogens', title: 'Alpha hydrogens & enolates', href: null },
-      { id: 'aldol', title: 'Aldol reactions', href: null },
-      { id: 'claisen', title: 'Claisen reactions', href: null }
+      { id: 'alpha-hydrogens', title: 'Alpha hydrogens & enolates', href: 'lessons/alpha-hydrogens.html', dependsOn: ['aldehydes-ketones', 'acidity-factors', 'alkynes'] },
+      { id: 'aldol', title: 'Aldol reactions', href: 'lessons/aldol.html', dependsOn: ['alpha-hydrogens', 'nucleophilic-addition'] },
+      { id: 'claisen', title: 'Claisen reactions', href: 'lessons/claisen.html', dependsOn: ['aldol', 'acyl-substitution'] }
     ]},
     { id: 'amines', title: 'Amines', topics: [
-      { id: 'amine-structure', title: 'Structure & basicity', href: null },
-      { id: 'amine-reactions', title: 'Reactions', href: null }
+      { id: 'amine-structure', title: 'Structure & basicity', href: 'lessons/amine-structure.html', dependsOn: ['bronsted', 'lewis-acids', 'esters-amides'] },
+      { id: 'amine-reactions', title: 'Reactions', href: 'lessons/amine-reactions.html', dependsOn: ['amine-structure', 'sn2', 'nucleophilic-addition', 'acyl-substitution'] }
     ]},
     { id: 'aromatic-chemistry', title: 'Aromatic Chemistry', topics: [
-      { id: 'aromaticity', title: 'Aromaticity', href: null },
-      { id: 'eas', title: 'Electrophilic aromatic substitution', href: null },
-      { id: 'directing-effects', title: 'Ortho/meta/para directing effects', href: null }
+      { id: 'aromaticity', title: 'Aromaticity', href: 'lessons/aromaticity.html', dependsOn: ['resonance', 'hybridization'] },
+      { id: 'eas', title: 'Electrophilic aromatic substitution', href: 'lessons/eas.html', dependsOn: ['aromaticity', 'addition-reactions', 'markovnikov'] },
+      { id: 'directing-effects', title: 'Ortho/meta/para directing effects', href: 'lessons/directing-effects.html', dependsOn: ['eas', 'esters-amides'] }
     ]},
     { id: 'spectroscopy', title: 'Spectroscopy', topics: [
-      { id: 'ir', title: 'IR', href: null },
-      { id: 'h-nmr', title: '¹H NMR', href: null },
-      { id: 'c-nmr', title: '¹³C NMR', href: null },
-      { id: 'mass-spec', title: 'Mass spectrometry', href: null }
+      { id: 'ir', title: 'IR', href: 'lessons/ir.html', dependsOn: ['bonding', 'hybridization'] },
+      { id: 'h-nmr', title: '¹H NMR', href: 'lessons/h-nmr.html', dependsOn: ['electronegativity', 'aromaticity'] },
+      { id: 'c-nmr', title: '¹³C NMR', href: 'lessons/c-nmr.html', dependsOn: ['h-nmr'] },
+      { id: 'mass-spec', title: 'Mass spectrometry', href: 'lessons/mass-spec.html', dependsOn: ['sn1', 'markovnikov', 'eas'] }
     ]}
   ];
 

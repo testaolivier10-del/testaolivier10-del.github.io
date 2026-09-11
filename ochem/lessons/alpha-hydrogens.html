@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpha Hydrogens &amp; Enolates — Enolate Chemistry | Organic Chemistry</title>
+<meta name="description" content="Learn why alpha hydrogens next to a carbonyl are unusually acidic, how enolate resonance stabilization works, and the difference between the enol and enolate tautomers.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/alpha-hydrogens.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 11 &middot; Enolate Chemistry</div>
+    <h1 style="margin-bottom:4px;">Alpha hydrogens &amp; enolates.</h1>
+    <p class="lede" style="margin-top:0;">A hydrogen next to a carbonyl is dramatically more acidic than any ordinary C–H — resonance into the carbonyl is why, and it turns that carbon into a nucleophile.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'alpha-hydrogens',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>The alpha carbon and its unusually acidic hydrogens</h3><p class="step-body">The carbon directly attached to a carbonyl carbon is called the <b>alpha carbon</b>, and any hydrogens on it are <b>alpha hydrogens</b>. A ketone\'s alpha C–H has a pKa around 20 — dramatically more acidic than a plain alkane C–H (pKa ≈ 50), and even more acidic than a terminal alkyne C–H (pKa ≈ 25, the previous record-holder from the Alkynes lesson, which owed its acidity to orbital hybridization instead).</p>' +
+      '<h3>Why: resonance delocalization into the carbonyl</h3><p class="step-body">Removing an alpha hydrogen leaves a carbanion immediately adjacent to a carbonyl — and that carbanion\'s lone pair can delocalize directly into the carbonyl pi system by resonance, exactly the Resonance factor from the ARIO acidity framework (Acidity Factors lesson). The resulting anion, called an <b>enolate</b>, has two resonance contributors: one with the negative charge on carbon (an sp³ carbanion form) and one with the negative charge on the more electronegative oxygen (a C=C–O⁻ form) — the second form dominates and is the more accurate representation of where the electron density actually sits.</p>' +
+      '<div class="notes-fact">This is the single largest acidifying effect you\'ve seen in the whole course — a plain isolated carbanion (from deprotonating an ordinary alkane C–H) is so unstable it\'s essentially never formed with common bases, but placing that same carbanion next to a carbonyl (an enolate) drops the pKa by roughly 30 units, a factor of about 10³⁰ in acidity.</div>' +
+      '<h3>The enol tautomer: same anion\'s conjugate acid, different site of protonation</h3><p class="step-body">Because the enolate\'s negative charge is delocalized over both carbon and oxygen, it can be reprotonated at either site. Protonating at carbon regenerates the original ketone; protonating at oxygen instead gives the <b>enol</b> tautomer — a C=C bearing an OH, structurally identical to the unstable intermediate you already met in alkyne hydration (Alkynes lesson). Enol and keto forms are <b>tautomers</b>: constitutional isomers that interconvert rapidly via this same enolate (or via direct proton transfer under acid catalysis), not resonance structures of each other — tautomers have their atoms in genuinely different places, unlike resonance forms of the same molecule.</p>' +
+      '<h3>Keto-enol equilibrium heavily favors the keto form</h3><p class="step-body">For a simple ketone like acetone, the keto form dominates the equilibrium by roughly 10⁶:1 — the C=O bond (with its strong pi bond and resonance stabilization) is simply more stable than the corresponding C=C–OH. This is why you always draw and isolate the keto form as "the" structure, even though a small, catalytically-accessible enol population is exactly what makes alpha-carbon chemistry (the rest of this module) possible at all.</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The alpha carbon: right next to the carbonyl, and dramatically more acidic there.',
+        bodyHtml: '<p class="step-body">The carbon bonded directly to a carbonyl carbon is the <b>alpha carbon</b>; hydrogens on it are <b>alpha hydrogens</b>. Removing one with a strong enough base gives a carbanion sitting immediately next to the carbonyl — and that carbanion isn\'t stuck being a plain, high-energy carbanion. Its lone pair can delocalize into the adjacent carbonyl pi system by resonance, spreading the negative charge onto the far more electronegative oxygen instead of leaving it localized on carbon.</p><p class="step-body" style="margin-bottom:0;">This resonance-stabilized anion is called an <b>enolate</b>, and the effect is enormous: a ketone\'s alpha C–H (pKa ≈ 20) is roughly 10³⁰ times more acidic than an ordinary alkane C–H (pKa ≈ 50) with no adjacent carbonyl to delocalize into.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Acetone\'s enolate: click the atom that carries most of the negative charge in the dominant resonance form.</h2>' +
+            '<div style="display:flex;justify-content:center;padding:20px 0;">' +
+            '<svg width="260" height="140" viewBox="0 0 260 140">' +
+              '<line x1="60" y1="100" x2="120" y2="70" stroke="var(--ink)" stroke-width="2"/>' +
+              '<line x1="120" y1="70" x2="120" y2="25" stroke="var(--ink)" stroke-width="2"/>' +
+              '<line x1="120" y1="70" x2="180" y2="100" stroke="var(--ink)" stroke-width="2"/>' +
+              '<line x1="180" y1="100" x2="230" y2="70" stroke="var(--ink)" stroke-width="2"/>' +
+              '<circle cx="120" cy="70" r="13" fill="var(--card-bg)" stroke="var(--border)" stroke-width="2"/>' +
+              '<text x="120" y="75" text-anchor="middle" font-size="11" font-weight="800" fill="var(--ink)">C</text>' +
+              '<circle class="atom" data-v="o" cx="120" cy="15" r="16" fill="var(--card-bg)" stroke="var(--accent)" stroke-width="2" style="cursor:pointer;"/>' +
+              '<text x="120" y="20" text-anchor="middle" font-size="13" font-weight="800" fill="var(--ink)" style="pointer-events:none;">O</text>' +
+              '<circle class="atom" data-v="cAlpha" cx="180" cy="100" r="14" fill="var(--card-bg)" stroke="var(--accent)" stroke-width="2" style="cursor:pointer;"/>' +
+              '<text x="180" y="105" text-anchor="middle" font-size="11" font-weight="800" fill="var(--ink)" style="pointer-events:none;">Cα</text>' +
+            '</svg></div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var answered = false;
+          api.card.querySelectorAll('.atom').forEach(function(el){
+            el.addEventListener('click', function(){
+              if(answered) return;
+              answered = true;
+              var isCorrect = el.getAttribute('data-v') === 'o';
+              el.setAttribute('stroke', isCorrect ? '#2e9e5b' : '#c0392b');
+              api.record(isCorrect);
+              api.showFeedback(fb, isCorrect, 'Correct — the dominant resonance form places the negative charge on oxygen (the more electronegative atom), not on the alpha carbon. The carbon-centered form is a real but minor contributor.');
+              next.disabled = false;
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Why is an alpha C–H (pKa ≈ 20) so much more acidic than a plain alkane C–H (pKa ≈ 50)?',
+        options: ['The resulting carbanion is resonance-stabilized as an enolate, delocalizing the negative charge onto the adjacent carbonyl oxygen', 'Alpha carbons simply have fewer hydrogens attached', 'Carbonyls make every nearby bond weaker'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — this is the Resonance factor from the ARIO framework producing the largest acidifying effect you\'ve seen in the course.',
+        wrongFeedback: 'Hydrogen count and bond strength aren\'t the deciding factors — it\'s specifically about resonance stabilization of the resulting anion (the enolate).'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Enol and keto are tautomers — not resonance structures.',
+        bodyHtml: '<p class="step-body">Because the enolate\'s negative charge is shared between carbon and oxygen, protonating it can happen at either site. Protonating the carbon regenerates the ordinary ketone (or aldehyde). Protonating the oxygen instead gives the <b>enol</b> — a C=C bearing an OH group, structurally identical to the fleeting intermediate from acid-catalyzed alkyne hydration (Alkynes lesson).</p><p class="step-body" style="margin-bottom:0;">Enol and keto forms are <b>tautomers</b>: real, distinct constitutional isomers (their atoms are bonded differently — the double bond and the mobile proton are in different places) that rapidly interconvert through the enolate (or via direct proton transfer under acid catalysis). This is fundamentally different from resonance structures, which describe the same molecule\'s electron distribution without moving any atoms.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'What is the key structural difference between resonance structures and tautomers?',
+        options: ['Resonance structures describe the same molecule (only electrons move); tautomers are genuinely different constitutional isomers (atoms, including a proton, actually move)', 'They are two names for exactly the same phenomenon', 'Tautomers only exist for aromatic molecules'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — this distinction matters throughout this module: keto and enol forms are two real, isolable-in-principle molecules interconverting, not two drawings of one unchanging molecule.',
+        wrongFeedback: 'These are genuinely different concepts — resonance is about electron delocalization within one fixed set of atomic positions, while tautomers involve an actual atom (a proton) moving to a different location.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The keto form wins the equilibrium by a huge margin — but the enol still matters.',
+        bodyHtml: '<div class="explain-box">For acetone, the keto-enol equilibrium favors the keto form by roughly 10⁶:1 — the strong, resonance-supported C=O bond is simply lower in energy than the corresponding C=C–OH. This is why you always draw and isolate "the" structure as the keto form. But that small, ever-present, dynamically-interconverting enol population (and the resonance-stabilized enolate that connects the two forms) is exactly the reactive species that makes every reaction in the rest of this module — aldol and Claisen chemistry — possible. Alpha-carbon reactivity essentially never proceeds through the keto form directly; it always goes through the enol or enolate.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 6 · Independent Practice',
+        title: 'A ketone is treated with a strong base like LDA (lithium diisopropylamide, a very strong, bulky, non-nucleophilic base). What is the most likely first thing to happen?',
+        options: ['LDA deprotonates the acidic alpha hydrogen, forming the resonance-stabilized enolate', 'LDA attacks the carbonyl carbon as a nucleophile, forming a tetrahedral intermediate', 'Nothing happens — ketones don\'t react with strong bases'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — LDA is specifically chosen in synthesis because its bulk prevents it from acting as a nucleophile toward the carbonyl carbon, so it reliably removes the much more accessible, much more acidic alpha proton instead.',
+        wrongFeedback: 'LDA is deliberately designed to be too sterically hindered to attack the carbonyl carbon as a nucleophile — its role is almost always as a base, removing the acidic alpha hydrogen.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Comparing a ketone\'s alpha C–H (pKa ≈ 20) to a carboxylic acid\'s O–H (pKa ≈ 4-5) — both are stabilized by resonance into an adjacent oxygen system. Why is the carboxylic acid so much more acidic despite both effects being "resonance stabilization"?',
+        options: ['The carboxylate\'s negative charge is delocalized over two equivalent, highly electronegative oxygens; the enolate\'s charge is shared between one oxygen and one (less electronegative) carbon', 'The acidities are actually identical once you account for resonance', 'Carboxylic acids simply have more total atoms'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — both anions benefit from resonance delocalization, but carboxylate spreads charge over two electronegative oxygens equally, while the enolate\'s second resonance contributor still puts real electron density on a less electronegative carbon — a meaningfully smaller stabilization, which is exactly why the acidity gap is so large (about 15 pKa units, or roughly 10¹⁵).'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

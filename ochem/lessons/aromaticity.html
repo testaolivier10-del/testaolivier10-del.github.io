@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aromaticity — Aromatic Chemistry | Organic Chemistry</title>
+<meta name="description" content="Learn Huckel's rule for aromaticity, why benzene's resonance stabilization is so dramatic, and how to tell aromatic, antiaromatic, and nonaromatic rings apart.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/aromaticity.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 13 &middot; Aromatic Chemistry</div>
+    <h1 style="margin-bottom:4px;">Aromaticity.</h1>
+    <p class="lede" style="margin-top:0;">Four simple structural rules separate a molecule with extraordinary, unique stability from an ordinary alkene — or from something actively destabilized.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'aromaticity',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>The four requirements for aromaticity</h3><p class="step-body">A ring is <b>aromatic</b> if it satisfies all four: (1) <b>cyclic</b> — a closed ring; (2) <b>fully conjugated</b> — every ring atom has a p orbital available (typically meaning every ring atom is sp² or sp hybridized, so the pi system runs unbroken around the entire ring, matching the p-orbital continuity you saw matters for resonance, Resonance lesson); (3) <b>planar</b> — the ring must be flat enough for all those p orbitals to actually align and overlap; (4) <b>obeys Hückel\'s rule</b> — the ring contains exactly 4n+2 pi electrons (2, 6, 10, 14...) for some integer n.</p>' +
+      '<h3>Why 4n+2: molecular orbital reasoning</h3><p class="step-body">When p orbitals combine around a ring, the resulting pi molecular orbitals arrange in energy levels with a single lowest orbital followed by degenerate (equal-energy) pairs. Filling this pattern completely (a full lowest orbital, plus completely filled pairs above it, no half-filled orbitals) requires exactly 4n+2 electrons — 2 electrons in the lowest orbital plus 4 electrons per completely-filled degenerate pair. This clean-shell filling pattern is what gives aromatic systems their exceptional extra stability, called <b>resonance energy</b> (or aromatic stabilization energy) — for benzene, experimentally measured (via heats of hydrogenation, the same technique from the Alkene Structure lesson) at roughly 36 kcal/mol above what a hypothetical non-aromatic "cyclohexatriene" would have.</p>' +
+      '<div class="notes-fact">Benzene\'s real structure isn\'t three localized double bonds alternating with three single bonds — it\'s six completely equivalent C–C bonds (each 1.39 Å, exactly between a typical single and double bond length), a direct physical signature of full resonance delocalization around the entire ring, not just between two adjacent positions as in the acetate examples from the Resonance lesson.</div>' +
+      '<h3>Antiaromatic: same requirements, wrong electron count — and actively destabilized</h3><p class="step-body">A ring that\'s cyclic, fully conjugated, and planar, but has exactly 4n pi electrons (4, 8, 12...) is <b>antiaromatic</b> — the molecular orbital filling pattern leaves two electrons unpaired in a degenerate pair of orbitals (an unstable, high-energy, biradical-like arrangement, by Hund\'s rule). Antiaromatic compounds are so destabilized that many real molecules that would be antiaromatic if perfectly planar (like cyclooctatetraene) instead pucker out of planarity specifically to avoid full conjugation and escape antiaromatic destabilization — sacrificing planarity is worth it to dodge the far worse fate of antiaromaticity.</p>' +
+      '<h3>Nonaromatic: simply missing a requirement</h3><p class="step-body">A ring failing any of the first three requirements (not cyclic, not fully conjugated — for example an sp³ carbon breaking the ring\'s conjugation — or not planar) is simply <b>nonaromatic</b>: neither specially stabilized nor specially destabilized, behaving like an ordinary alkene or diene system (Module 7 addition chemistry applies normally). 1,3-cyclohexadiene, for instance, is nonaromatic because its two sp³ CH₂ carbons break the ring\'s conjugation, even though the two C=C double bonds it does have are perfectly ordinary alkenes.</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Four requirements, all at once: cyclic, conjugated, planar, and 4n+2.',
+        bodyHtml: '<p class="step-body">A molecule is <b>aromatic</b> only if it satisfies all four structural requirements simultaneously: it must be a closed <b>ring</b> (cyclic); every ring atom must contribute a p orbital to an unbroken pi system (fully <b>conjugated</b> — an sp³ carbon anywhere in the ring breaks this); the ring must be <b>planar</b> enough for all those p orbitals to actually line up and overlap; and the ring must contain exactly <b>4n+2</b> pi electrons for some whole number n (that is: 2, 6, 10, 14, and so on).</p><p class="step-body" style="margin-bottom:0;">Benzene is the textbook example: a six-membered ring, fully conjugated (all six carbons sp²), planar, with 6 pi electrons (n=1, so 4(1)+2=6). Meeting all four conditions at once produces a molecule with dramatically more stability than its Lewis structure alone would suggest.</p>'
+      },
+      {
+        render: function(api){
+          var items = [
+            { key: 'benzene', label: 'Benzene: cyclic, 6 sp² carbons, planar, 6 pi electrons', v: 'aromatic' },
+            { key: 'cot', label: 'Planar cyclooctatetraene: cyclic, 8 sp² carbons, planar, 8 pi electrons', v: 'antiaromatic' },
+            { key: 'cyclohexadiene', label: '1,3-cyclohexadiene: cyclic, but 2 of 6 carbons are sp³ (breaking conjugation)', v: 'nonaromatic' },
+            { key: 'cyclopentadienyl', label: 'Cyclopentadienyl anion: cyclic, 5 sp² carbons, planar, 6 pi electrons', v: 'aromatic' }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Classify each ring: aromatic, antiaromatic, or nonaromatic.</h2>' +
+            '<div class="choice-row" style="flex-direction:column;">' + items.map(function(it, i){
+              return '<div style="margin-bottom:10px;"><div style="font:700 13px var(--font-ui);margin-bottom:6px;">' + it.label + '</div>' +
+                '<div style="display:flex;gap:8px;">' +
+                  '<button class="choice-btn opt" data-g="g' + i + '" data-v="aromatic">Aromatic</button>' +
+                  '<button class="choice-btn opt" data-g="g' + i + '" data-v="antiaromatic">Antiaromatic</button>' +
+                  '<button class="choice-btn opt" data-g="g' + i + '" data-v="nonaromatic">Nonaromatic</button>' +
+                '</div></div>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin:10px 0 16px;">Correct: 0 / 4</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var correctCount = 0, mistake = false, groupsDone = {};
+          api.card.querySelectorAll('.opt').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var g = btn.getAttribute('data-g');
+              if(groupsDone[g]) return;
+              groupsDone[g] = true;
+              var gi = parseInt(g.replace('g',''), 10);
+              api.card.querySelectorAll('.opt[data-g="' + g + '"]').forEach(function(b){ b.disabled = true; });
+              var isCorrect = btn.getAttribute('data-v') === items[gi].v;
+              btn.classList.add(isCorrect ? 'correct' : 'wrong');
+              if(isCorrect) correctCount++; else mistake = true;
+              hint.textContent = 'Correct: ' + correctCount + ' / 4';
+              if(Object.keys(groupsDone).length === 4){
+                api.record(!mistake);
+                api.showFeedback(fb, !mistake, mistake ? 'Close — remember: 4n+2 pi electrons in a cyclic, conjugated, planar ring is aromatic; 4n electrons under the same conditions is antiaromatic; breaking any of cyclic/conjugated/planar makes it simply nonaromatic.' : 'Exactly right — this covers all three categories: benzene and the cyclopentadienyl anion are both aromatic (6 pi electrons each, satisfying 4n+2 with n=1), planar cyclooctatetraene would be antiaromatic (8 pi electrons, 4n with n=2), and 1,3-cyclohexadiene is simply nonaromatic since its ring isn\'t fully conjugated.');
+                next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Why does the cyclopentadienyl anion (5 carbons, 6 pi electrons after gaining a negative charge) count as aromatic, even though it isn\'t a 6-membered ring like benzene?',
+        options: ['Hückel\'s rule only cares about the pi electron count (4n+2) and the other three structural requirements — ring size itself isn\'t part of the rule', 'It isn\'t actually aromatic — only 6-membered rings can be aromatic', 'Any ring with an odd number of carbons is automatically aromatic'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — aromaticity is defined by electron count and structure (cyclic, conjugated, planar, 4n+2), not by any specific ring size; 5-, 6-, and 7-membered aromatic rings all exist.',
+        wrongFeedback: 'Ring size and parity aren\'t what Hückel\'s rule tests — what matters is the pi electron count (4n+2) together with the cyclic/conjugated/planar requirements.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Benzene\'s real structure: six identical bonds, not alternating double and single.',
+        bodyHtml: '<p class="step-body">If benzene\'s pi electrons were genuinely localized into three separate C=C double bonds alternating with three C–C single bonds (as one Kekulé structure suggests), you\'d expect to measure two distinct bond lengths around the ring. Instead, X-ray measurements show all six C–C bonds are exactly equal, at 1.39 Å — precisely between a typical single bond (~1.54 Å) and double bond (~1.34 Å).</p><p class="step-body" style="margin-bottom:0;">This is the same resonance-delocalization signature from the Resonance lesson, just extended around an entire six-membered ring instead of between two adjacent atoms. The true structure is a genuine average — a resonance hybrid — of the two equivalent Kekulé structures, and this complete delocalization is precisely what heats of hydrogenation quantify as benzene\'s roughly 36 kcal/mol of extra stability (resonance/aromatic stabilization energy) compared to a hypothetical non-delocalized "cyclohexatriene."</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'What direct physical evidence supports benzene\'s fully delocalized structure rather than three localized alternating double bonds?',
+        options: ['All six C–C bond lengths are experimentally identical (1.39 Å), rather than showing two distinct short/long bond lengths', 'Benzene is colorless', 'Benzene has a lower molecular weight than expected'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — uniform bond lengths around the ring is exactly the observable signature of complete pi-electron delocalization, not localized alternating double bonds.',
+        wrongFeedback: 'Color and molecular weight aren\'t the relevant evidence here — bond-length measurement is the direct structural test for delocalization.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Antiaromaticity: same shape requirements, but actively destabilizing.',
+        bodyHtml: '<p class="step-body">A ring that is cyclic, fully conjugated, and planar, but has exactly 4n pi electrons (4, 8, 12...) instead of 4n+2, is <b>antiaromatic</b>. The molecular-orbital filling pattern for a ring always has one lowest orbital followed by degenerate pairs; with a 4n electron count, one of those degenerate pairs ends up only half-filled (two electrons, two equal-energy orbitals to put them in), an unstable, high-energy, radical-like arrangement.</p><p class="step-body" style="margin-bottom:0;">This destabilization is severe enough that real molecules often distort out of planarity specifically to escape it — cyclooctatetraene (which would be antiaromatic with 8 pi electrons if perfectly flat) instead adopts a non-planar, "tub" shape, sacrificing full conjugation and planarity (two of the four aromaticity requirements) rather than pay the antiaromatic destabilization penalty.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 6 · Independent Practice',
+        title: 'Why does cyclooctatetraene adopt a non-planar "tub" shape instead of staying flat?',
+        options: ['Staying planar with 8 pi electrons (a 4n count) would make it antiaromatic and severely destabilized, so puckering out of planarity avoids that penalty', 'Carbon rings larger than six atoms are physically incapable of being planar', 'It has too few hydrogens to stay flat'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — this is a direct, real-world consequence of how severe antiaromatic destabilization actually is: the molecule "chooses" to break planarity/conjugation rather than exist as an antiaromatic system.',
+        wrongFeedback: 'Ring size alone doesn\'t prevent planarity — larger aromatic rings do exist and stay planar. The specific reason here is avoiding antiaromatic destabilization.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Cyclopropenyl cation (a 3-membered ring, all three carbons sp², 2 pi electrons total) — is it aromatic, antiaromatic, or nonaromatic?',
+        options: ['Aromatic — cyclic, fully conjugated, planar, and 2 pi electrons satisfies 4n+2 with n=0', 'Antiaromatic — any ring smaller than benzene is automatically antiaromatic', 'Nonaromatic — three-membered rings can never be aromatic'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — n=0 is a perfectly valid integer in 4n+2 (giving exactly 2), so this small, unusual-looking ring genuinely satisfies Hückel\'s rule and is aromatic, despite its small size and positive charge.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

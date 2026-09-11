@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amine Structure &amp; Basicity — Amines | Organic Chemistry</title>
+<meta name="description" content="Learn why amines are the most common organic bases, how resonance donation into a ring or carbonyl can dramatically reduce basicity, and the amine basicity ranking.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/amine-structure.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 12 &middot; Amines</div>
+    <h1 style="margin-bottom:4px;">Amine structure &amp; basicity.</h1>
+    <p class="lede" style="margin-top:0;">A nitrogen lone pair makes every amine a base — but whether that lone pair is actually available to grab a proton depends entirely on where else it's needed.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'amine-structure',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>Nitrogen\'s lone pair: the basis of amine basicity</h3><p class="step-body">An amine nitrogen is sp³ hybridized with a lone pair available to accept a proton — the textbook Brønsted-Lowry base (Bronsted lesson) and Lewis base (Lewis Acids lesson) at once. A typical alkyl amine\'s conjugate acid (the ammonium ion, R-NH₃⁺) has a pKa around 10-11, making amines the most common, most reliably basic functional group in organic chemistry — far more basic than water (conjugate-acid pKa ≈ −1.7) or an alcohol (conjugate-acid pKa even lower).</p>' +
+      '<h3>Alkyl substitution: a small, complicated effect</h3><p class="step-body">You might expect more alkyl groups (more electron donation by induction, the same effect that stabilizes carbocations) to make an amine progressively more basic — and in the gas phase, that\'s exactly what happens. In water, though, solvation effects compete: a more substituted ammonium ion has fewer N–H bonds available to hydrogen-bond with water and stabilize the positive charge, partially offsetting the inductive effect. The net result in aqueous solution is a much smaller, less predictable spread between methyl-, dimethyl-, and trimethylamine than induction alone would suggest — a good reminder that solvent effects can compete with, and even reverse, gas-phase intuition.</p>' +
+      '<div class="notes-fact">Despite this complication, every simple alkyl amine (primary, secondary, or tertiary) still clusters in the same general pKaH range (roughly 9-11) — the differences between them are minor compared to the dramatic effect covered next.</div>' +
+      '<h3>Resonance donation: the dramatic basicity killer</h3><p class="step-body">Compare aniline (a phenyl amine, lone pair conjugated with the aromatic ring — previewed further in Module 13) to a plain alkylamine: aniline\'s conjugate acid has a pKa around 4.6, roughly a million times less basic than cyclohexylamine (pKaH ≈ 10.7). The nitrogen lone pair in aniline is delocalized into the aromatic ring by resonance — exactly the Resonance factor from the ARIO framework — making it far less available to accept a proton. An amide nitrogen (Esters &amp; Amides lesson) is an even more extreme case: its lone pair is so heavily delocalized into the adjacent carbonyl that amides are barely basic at all (conjugate-acid pKa around −1, essentially non-basic under ordinary conditions) — this is also exactly why an amide nitrogen is such a poor nucleophile and leaving group, as already established in Module 10.</p>' +
+      '<h3>The basicity ranking that results</h3><p class="step-body">Putting these effects together gives a clear ranking: alkylamine (most basic, pKaH ≈ 10-11) > ammonia (pKaH ≈ 9.2, no alkyl donation) > aniline-type arylamine (pKaH ≈ 4.6, resonance into a ring) > amide (least basic, pKaH ≈ −1, resonance into a carbonyl). Whenever you need to rank the basicity of two nitrogen-containing compounds, the first and most powerful question to ask is: <b>is the lone pair delocalized by resonance into something else, and if so, into what?</b></p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A nitrogen lone pair makes amines the most reliable organic base.',
+        bodyHtml: '<p class="step-body">An amine nitrogen is sp³ hybridized, with three bonds and one lone pair pointing away from them — a lone pair that\'s available to grab a proton, making every simple amine both a Brønsted-Lowry base (Bronsted lesson) and a Lewis base (Lewis Acids lesson). A typical alkylamine\'s conjugate acid (an ammonium ion, R–NH₃⁺) has a pKa around 10-11 — meaning the neutral amine itself is a genuinely strong base, readily protonated by almost anything more acidic than water.</p><p class="step-body" style="margin-bottom:0;">This makes amines the single most dependable basic (and nucleophilic) functional group across the whole course — but as this lesson shows, that lone pair\'s availability can be dramatically reduced depending on what else, structurally, it\'s needed for.</p>'
+      },
+      {
+        render: function(api){
+          var items = [
+            { key: 'alkyl', label: 'Cyclohexylamine (alkylamine), pKaH ≈ 10.7', rank: 1 },
+            { key: 'ammonia', label: 'Ammonia, pKaH ≈ 9.2', rank: 2 },
+            { key: 'aniline', label: 'Aniline (lone pair conjugated into a ring), pKaH ≈ 4.6', rank: 3 },
+            { key: 'amide', label: 'Acetamide (lone pair conjugated into a carbonyl), pKaH ≈ −1', rank: 4 }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click these four nitrogen bases from most basic to least basic.</h2>' +
+            '<div class="choice-row" style="flex-direction:column;">' + items.map(function(s){
+              return '<button class="choice-btn" data-v="' + s.key + '">' + s.label + '</button>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Correct clicks: 0 / 4</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var order = ['alkyl', 'ammonia', 'aniline', 'amide'];
+          var idx = 0, mistake = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(btn.disabled) return;
+              var key = btn.getAttribute('data-v');
+              if(key === order[idx]){
+                btn.disabled = true;
+                btn.classList.add('correct');
+                idx++;
+                hint.textContent = 'Correct clicks: ' + idx + ' / 4';
+                if(idx === 4){
+                  api.record(!mistake);
+                  api.showFeedback(fb, !mistake, mistake ? 'You got there, but out of order at first. The pattern: the more the lone pair is tied up in resonance elsewhere, the less basic the nitrogen.' : 'Exactly right — alkylamine > ammonia > arylamine > amide, tracking exactly how available the nitrogen lone pair is to accept a proton.');
+                  next.disabled = false;
+                }
+              } else {
+                mistake = true;
+                btn.classList.add('wrong');
+                setTimeout(function(){ btn.classList.remove('wrong'); }, 500);
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Why is aniline (pKaH ≈ 4.6) roughly a million times less basic than cyclohexylamine (pKaH ≈ 10.7)?',
+        options: ['Aniline\'s nitrogen lone pair is delocalized into the aromatic ring by resonance, making it far less available to accept a proton', 'Aniline\'s nitrogen is a different element than cyclohexylamine\'s', 'Aromatic rings always make every attached group less reactive, with no specific mechanism'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — this is the Resonance factor from the ARIO framework, applied to basicity instead of acidity: a delocalized lone pair is a less available lone pair.',
+        wrongFeedback: 'Both nitrogens are the same element — the difference is entirely about how available the lone pair is, and resonance delocalization into the ring is what ties it up in aniline.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Amides take resonance delocalization to the extreme — barely basic at all.',
+        bodyHtml: '<p class="step-body">Recall from the Esters &amp; Amides lesson that an amide nitrogen is an exceptionally strong resonance donor into the adjacent carbonyl — the best donor of any carboxylic acid derivative, which is exactly why amides sit at the bottom of the acyl-substitution reactivity ladder. That same heavy delocalization, viewed from the basicity angle, means the amide nitrogen\'s lone pair is mostly tied up conjugating with the carbonyl rather than sitting free to accept a proton.</p><p class="step-body" style="margin-bottom:0;">The result: an amide\'s conjugate acid has a pKa around −1 — meaning the neutral amide is barely basic at all under ordinary aqueous conditions, and definitely not comparable to an ordinary alkylamine\'s clearly basic character. (If protonation does occur under strongly acidic conditions, it actually happens on the carbonyl oxygen, not nitrogen — a detail that itself confirms how little basic character is left on nitrogen.)</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'Why is an amide such a poor nucleophile and such a poor base at the same time?',
+        options: ['Both properties trace back to the same cause — the nitrogen lone pair is heavily delocalized by resonance into the carbonyl, leaving little electron density available for either role', 'Nucleophilicity and basicity are unrelated properties with no common cause here', 'Amide nitrogen simply has no lone pair at all'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — nucleophilicity and basicity both fundamentally depend on lone-pair availability, so anything (like resonance delocalization) that reduces one tends to reduce the other as well.',
+        wrongFeedback: 'These two properties are closely related here — both come down to how available the nitrogen lone pair actually is, and resonance into the carbonyl reduces that availability for both roles at once.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Alkyl substitution\'s effect on basicity is real but small — and solvent matters.',
+        bodyHtml: '<p class="step-body">More alkyl groups on nitrogen donate more electron density by induction (the same effect behind carbocation and alkene stability trends), which in the gas phase makes a more substituted amine measurably more basic. But basicity is normally measured in water, and water solvates (hydrogen-bonds with and stabilizes) a protonated ammonium ion through its N–H bonds — a more substituted ammonium ion has fewer N–H bonds left to do this.</p><p class="step-body" style="margin-bottom:0;">These two effects (inductive donation favoring more substitution, solvation favoring less) partially cancel, so in aqueous solution primary, secondary, and tertiary alkylamines all cluster in a fairly narrow pKaH range (roughly 9-11) instead of showing a large, clean trend — a useful reminder that a real reaction environment (solvent) can complicate a purely electronic prediction.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 6 · Independent Practice',
+        title: 'Pyridine (an aromatic ring with a nitrogen whose lone pair sits in an sp² orbital not conjugated into the ring) has pKaH ≈ 5.2 — much more basic than aniline (pKaH ≈ 4.6) despite pyridine also being aromatic. What does this suggest?',
+        options: ['Being part of an aromatic system doesn\'t automatically kill basicity — what matters specifically is whether the lone pair itself is delocalized into the ring or held in a separate, non-conjugated orbital', 'The pKaH values must be measurement errors, since all aromatic amines should behave identically', 'Pyridine isn\'t really aromatic'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — pyridine\'s nitrogen lone pair sits in an sp² orbital in the ring plane, not conjugated with the aromatic pi system, so it remains available to accept a proton, unlike aniline\'s lone pair which is directly part of the conjugated system.',
+        wrongFeedback: 'Pyridine is genuinely aromatic — the key distinction is exactly where its nitrogen lone pair sits (not conjugated into the ring), which is different from aniline\'s conjugated lone pair.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Rank these three nitrogen compounds from most to least basic: (1) an ordinary alkylamine, (2) an amide, (3) aniline.',
+        options: ['Alkylamine > aniline > amide', 'Amide > aniline > alkylamine', 'Aniline > alkylamine > amide'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — this ranking follows directly from how tied up each lone pair is: fully available (alkylamine), partially delocalized into an aromatic ring (aniline), and almost fully delocalized into a carbonyl (amide).'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

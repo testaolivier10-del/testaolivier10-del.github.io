@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electrophilic Aromatic Substitution — Aromatic Chemistry | Organic Chemistry</title>
+<meta name="description" content="Learn why benzene undergoes substitution instead of addition, the arenium ion intermediate mechanism, and the major EAS reactions: halogenation, nitration, sulfonation, and Friedel-Crafts.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/eas.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 13 &middot; Aromatic Chemistry</div>
+    <h1 style="margin-bottom:4px;">Electrophilic aromatic substitution.</h1>
+    <p class="lede" style="margin-top:0;">Benzene reacts with electrophiles too — but giving up aromaticity, even briefly, is so costly that substitution wins over addition every time.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'eas',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>Why substitution, not addition</h3><p class="step-body">Benzene\'s pi electrons can attack an electrophile exactly like an alkene\'s (Module 7 addition reactions) — but the resulting carbocation, called an <b>arenium ion</b> (or Wheland intermediate), has broken the ring\'s full conjugation at one carbon (now sp³), destroying the ~36 kcal/mol of aromatic stabilization energy (Aromaticity lesson). Rather than let a nucleophile trap that carbocation (which would give a non-aromatic addition product, permanently losing that stabilization), the ring instead loses a proton from the same carbon that the electrophile attacked, restoring full conjugation and regenerating the aromatic ring. Net result: a hydrogen has been replaced by the electrophile — <b>substitution</b>, not addition — because reforming the enormously stable aromatic ring is thermodynamically overwhelming.</p>' +
+      '<h3>The arenium ion is resonance-stabilized (but still not aromatic)</h3><p class="step-body">The positive charge in the arenium ion delocalizes over three ring carbons via resonance (ortho and para to the point of attack relative to the sp³ carbon) — real stabilization, but nowhere close to full aromatic stabilization, since the ring\'s continuous conjugation is still broken at the sp³ carbon. This partial stabilization is exactly why EAS reactions still require a genuinely reactive electrophile (usually generated with help from a Lewis acid catalyst) rather than proceeding as readily as, say, SN1 solvolysis.</p>' +
+      '<div class="notes-fact">Because deprotonation (loss of H⁺ to restore aromaticity) is thermodynamically so favorable, the arenium ion formation step — the electrophile actually attacking the ring — is essentially always the slow, rate-determining step of any EAS reaction.</div>' +
+      '<h3>The major EAS reactions and how each electrophile is generated</h3><p class="step-body"><b>Halogenation</b> (Br₂ or Cl₂ with a Lewis acid catalyst like FeBr₃ or AlCl₃): the Lewis acid polarizes the X–X bond, generating a strong enough electrophile (X⁺, effectively) to attack the ring. <b>Nitration</b> (HNO₃/H₂SO₄): sulfuric acid protonates nitric acid, which then loses water to form the nitronium ion (NO₂⁺), a potent electrophile. <b>Sulfonation</b> (SO₃/H₂SO₄): SO₃ itself is directly electrophilic at sulfur, no further activation needed. <b>Friedel-Crafts alkylation</b> (RCl/AlCl₃): the Lewis acid helps ionize the alkyl halide to a carbocation (or a strongly polarized complex), which attacks the ring exactly like the carbocation electrophiles from Module 7. <b>Friedel-Crafts acylation</b> (RCOCl/AlCl₃): the Lewis acid similarly helps generate a resonance-stabilized acylium ion (RCO⁺), which attacks the ring to install a ketone directly onto it.</p>' +
+      '<h3>A key limitation: Friedel-Crafts alkylation carbocations can rearrange</h3><p class="step-body">Because Friedel-Crafts alkylation proceeds through a genuine carbocation intermediate, it inherits the exact same rearrangement risk from SN1/E1 chemistry (Module 6) — a less stable carbocation can shift (via hydride or alkyl shift) to a more stable one before ever attacking the ring, giving an unexpected substitution pattern. Friedel-Crafts acylation avoids this entirely: the acylium ion is already resonance-stabilized by the adjacent oxygen (similar to the oxocarbenium ion from the Acetals lesson) and has no driving force to rearrange, which is why acylation is often used deliberately as a workaround when a clean, unrearranged alkyl substituent pattern is needed (the resulting ketone can then be reduced back to a simple alkyl group in a separate step).</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Aromatic stability is so valuable that the ring gives up a proton to keep it.',
+        bodyHtml: '<p class="step-body">An electrophile can attack benzene\'s pi system exactly the way it attacks an alkene\'s in Module 7 — forming a new sigma bond and a carbocation. But here, that carbocation (called an <b>arenium ion</b>) has one ring carbon forced to sp³, breaking the ring\'s continuous conjugation and destroying essentially all of benzene\'s roughly 36 kcal/mol of aromatic stabilization.</p><p class="step-body" style="margin-bottom:0;">If a nucleophile simply captured that carbocation (ordinary addition, as in Module 7), the aromaticity would be permanently lost. Instead, the ring loses a proton from that same sp³ carbon, regenerating the fully conjugated, aromatic ring. The electrophile has effectively taken the place of a hydrogen — a <b>substitution</b>, driven entirely by how much energy is recovered by restoring aromaticity.</p>'
+      },
+      {
+        render: function(api){
+          var stages = [
+            { key: 'attack', label: 'The ring\'s pi system attacks the electrophile, forming a new sigma bond' },
+            { key: 'arenium', label: 'An arenium ion forms — one ring carbon is now sp³, aromaticity is broken' },
+            { key: 'deprotonate', label: 'A proton is lost from that same carbon, restoring full conjugation' },
+            { key: 'aromatic', label: 'The aromatic ring is regenerated, now bearing the electrophile in place of H' }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the four stages of electrophilic aromatic substitution in order.</h2>' +
+            '<div class="choice-row" style="flex-direction:column;">' + stages.map(function(s){
+              return '<button class="choice-btn" data-v="' + s.key + '">' + s.label + '</button>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Correct clicks: 0 / 4</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var order = ['attack', 'arenium', 'deprotonate', 'aromatic'];
+          var idx = 0, mistake = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(btn.disabled) return;
+              var key = btn.getAttribute('data-v');
+              if(key === order[idx]){
+                btn.disabled = true;
+                btn.classList.add('correct');
+                idx++;
+                hint.textContent = 'Correct clicks: ' + idx + ' / 4';
+                if(idx === 4){
+                  api.record(!mistake);
+                  api.showFeedback(fb, !mistake, mistake ? 'You got there, but out of order at first. Attack, form the arenium ion, deprotonate, and restore aromaticity — in exactly that order.' : 'Exactly right — this is the complete electrophilic aromatic substitution mechanism, and it applies to every reaction in this lesson.');
+                  next.disabled = false;
+                }
+              } else {
+                mistake = true;
+                btn.classList.add('wrong');
+                setTimeout(function(){ btn.classList.remove('wrong'); }, 500);
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Why does benzene undergo substitution with electrophiles instead of the addition reactions typical of a plain alkene?',
+        options: ['Trapping the carbocation intermediate with a nucleophile (addition) would permanently destroy the ring\'s large aromatic stabilization energy, while losing a proton (substitution) restores it', 'Benzene\'s pi electrons are simply unreactive toward electrophiles', 'Substitution and addition are actually the same reaction for aromatic rings'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — the thermodynamic pull to restore aromaticity, rather than any difference in the initial electrophilic attack, is what makes substitution the outcome.',
+        wrongFeedback: 'Benzene\'s pi system is reactive toward strong enough electrophiles — the key distinction is what happens after the initial attack, not whether attack occurs at all.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Four ways to generate a strong enough electrophile for EAS.',
+        bodyHtml: '<p class="step-body">Because forming the arenium ion is the hard, rate-determining step, most EAS reactions need real help generating a genuinely reactive electrophile. <b>Halogenation</b> uses a Lewis acid (FeBr₃, AlCl₃) to polarize Br₂ or Cl₂ into an effective X⁺. <b>Nitration</b> uses H₂SO₄ to convert HNO₃ into the potent nitronium ion, NO₂⁺. <b>Sulfonation</b> needs no activation at all — SO₃ is already a strong electrophile at sulfur.</p><p class="step-body" style="margin-bottom:0;"><b>Friedel-Crafts alkylation</b> uses a Lewis acid to help an alkyl halide ionize to a carbocation (exactly the SN1 ionization step from Module 6, just attacking a ring instead of being captured by a simple nucleophile); <b>Friedel-Crafts acylation</b> similarly generates a resonance-stabilized acylium ion (RCO⁺) from an acid chloride, which attacks the ring to directly install a ketone.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'What role does the Lewis acid catalyst (like AlCl₃) play in Friedel-Crafts alkylation?',
+        options: ['It helps the alkyl halide ionize to a genuine electrophile (a carbocation), similar to how SN1 ionization is helped along in Module 6', 'It deprotonates the arenium ion at the end of the mechanism', 'It makes the aromatic ring itself more nucleophilic'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — the Lewis acid\'s job is specifically to generate a strong enough electrophile from the alkyl halide before it ever reaches the ring.',
+        wrongFeedback: 'The Lewis acid\'s role is upstream of ring attack, on generating the electrophile — deprotonation at the end happens via a base (often the counterion), not the Lewis acid catalyst itself.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Friedel-Crafts alkylation can rearrange; acylation cannot.',
+        bodyHtml: '<div class="explain-box">Because Friedel-Crafts alkylation goes through a genuine, free carbocation, it inherits the exact same rearrangement risk you saw in SN1/E1 chemistry (Module 6): a less stable carbocation can shift to a more stable one before ever reaching the ring, scrambling the intended substitution pattern. Friedel-Crafts acylation sidesteps this completely — its acylium ion (RCO⁺) is already resonance-stabilized by the adjacent oxygen lone pair (the same kind of stabilization you saw for the oxocarbenium ion in the Acetals lesson), with no driving force to rearrange. This is exactly why synthetic chemists often deliberately choose acylation over alkylation, even when an alkyl group is the real target — installing a ketone with clean regiochemistry, then reducing it back to a simple alkyl group afterward, avoids the rearrangement risk entirely.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 6 · Independent Practice',
+        title: 'Why doesn\'t the Friedel-Crafts acylation electrophile (acylium ion, RCO⁺) rearrange the way a Friedel-Crafts alkylation carbocation can?',
+        options: ['The acylium ion is already resonance-stabilized by the adjacent oxygen lone pair, removing the driving force to rearrange to a different structure', 'Acylium ions are too small to rearrange', 'Rearrangement is impossible for any cation involving oxygen'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — resonance stabilization from the adjacent oxygen already gives the acylium ion a low-energy structure, so there\'s no thermodynamic incentive for it to shift to something else.',
+        wrongFeedback: 'Size isn\'t the relevant factor, and oxygen-containing cations can rearrange in other contexts — here it\'s specifically the resonance stabilization already present in the acylium ion that removes any incentive to rearrange.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A chemist wants to attach an unbranched propyl group (not the branched isopropyl group) to benzene. Direct Friedel-Crafts alkylation with 1-chloropropane risks forming a rearranged, branched product via a more stable secondary carbocation. What alternative strategy avoids this problem?',
+        options: ['Friedel-Crafts acylation with propanoyl chloride (forming a stable, non-rearranging acylium ion), followed by a separate reduction of the resulting ketone to the unbranched alkyl group', 'Simply run the alkylation at a much higher temperature', 'There is no way to avoid this rearrangement'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — this acylation-then-reduction strategy is precisely why Friedel-Crafts acylation is often preferred: it sidesteps the carbocation rearrangement risk entirely by using an acylium ion that has no incentive to rearrange in the first place.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

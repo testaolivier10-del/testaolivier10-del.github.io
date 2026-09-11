@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¹³C NMR — Spectroscopy | Organic Chemistry</title>
+<meta name="description" content="Learn why carbon NMR is simpler than proton NMR (one peak per unique carbon, no splitting), how chemical shift maps carbon type, and how DEPT reveals attached hydrogen count.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/c-nmr.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 14 &middot; Spectroscopy</div>
+    <h1 style="margin-bottom:4px;">¹³C NMR.</h1>
+    <p class="lede" style="margin-top:0;">One peak per unique carbon, no splitting to untangle — a cleaner, simpler map of the carbon skeleton than ¹H NMR gives for hydrogens.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'c-nmr',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>Why ¹³C NMR is structurally simpler than ¹H NMR</h3><p class="step-body">Carbon NMR detects the same underlying phenomenon as proton NMR (nuclear resonance in a magnetic field, shielded/deshielded by local electron density), but with two major practical differences. First, only the rare ¹³C isotope (about 1.1% of all carbon) is NMR-active, so ¹³C signals are inherently weak and typically require more sample or longer acquisition — this doesn\'t change the interpretation, just the practical difficulty of collecting the spectrum. Second, and more importantly for interpretation, ¹³C-to-¹³C splitting essentially never appears (the odds of two ¹³C atoms sitting adjacent in the same molecule are far too low, at roughly 1.1% × 1.1%), and ¹³C-to-¹H splitting is deliberately removed by an instrumental technique (proton decoupling). The result: a standard ¹³C spectrum shows exactly <b>one clean, unsplit peak per unique carbon environment</b> — far simpler to read at a glance than a ¹H spectrum\'s overlapping multiplets.</p>' +
+      '<h3>Chemical shift ranges for carbon, by type</h3><p class="step-body">The same deshielding logic from ¹H NMR carries over, just recalibrated to carbon\'s much wider overall shift range (0-220 ppm, versus roughly 0-13 ppm for protons). Alkyl (sp³) carbons: 0-50 ppm. Carbon attached to O or N (sp³, still single-bonded): 50-90 ppm. Alkene or aromatic (sp²) carbons: 100-150 ppm. Nitrile or alkyne (sp) carbons: 65-90 ppm (an interesting exception to naive shift-vs-hybridization intuition, driven by additional shielding effects specific to the linear, cylindrically symmetric pi system). <b>Carbonyl carbons stand distinctly apart from everything else, far downfield at 160-220 ppm</b> — a carbonyl carbon\'s significant partial positive character (Aldehydes &amp; Ketones lesson) leaves it strongly deshielded, and this region is essentially unambiguous: a peak there means a carbonyl, full stop, with esters/acids around 165-185 ppm and ketones/aldehydes around 190-220 ppm.</p>' +
+      '<div class="notes-fact">Because the carbonyl region (160-220 ppm) is so cleanly separated from every other carbon type, a quick glance at whether a ¹³C spectrum has any peaks in that range is often the single fastest yes/no test for "does this molecule contain a carbonyl at all?"</div>' +
+      '<h3>Counting unique carbons: molecular symmetry directly determines peak count</h3><p class="step-body">Just as chemically equivalent hydrogens produce one shared ¹H signal, chemically equivalent carbons (related by molecular symmetry) produce one shared ¹³C signal. A highly symmetric molecule shows fewer peaks than its total carbon count would suggest — para-xylene (1,4-dimethylbenzene), for example, has 8 total carbons but only 3 unique ¹³C environments (the two equivalent methyl carbons, and two pairs of equivalent ring carbons related by the molecule\'s mirror symmetry), directly reflecting its high symmetry.</p>' +
+      '<h3>DEPT: recovering the hydrogen-count information that decoupling threw away</h3><p class="step-body">Removing all ¹H splitting (via decoupling) makes the spectrum easy to read but discards useful information: how many hydrogens are attached to each carbon. A specialized pulse sequence called <b>DEPT</b> (Distortionless Enhancement by Polarization Transfer) recovers this without reintroducing splitting: it manipulates peak phase (up or down) and intensity based on whether a carbon is a CH₃, CH₂, or CH, and can identify quaternary carbons (no attached H) by their absence from the DEPT spectrum altogether (they still show up in the ordinary decoupled spectrum, just not in DEPT) — giving a hydrogen count per carbon without ever bringing back a single split multiplet.</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Decoupling removes splitting entirely — one clean peak per unique carbon.',
+        bodyHtml: '<p class="step-body">A standard ¹³C NMR spectrum is deliberately run with proton decoupling, an instrumental technique that removes all ¹³C-to-¹H splitting. Combined with the fact that ¹³C-to-¹³C splitting is essentially never observed (only about 1.1% of carbon atoms are the NMR-active ¹³C isotope, so two of them sitting adjacent in the same molecule is very rare), the practical result is dramatically simpler than a ¹H spectrum: <b>exactly one clean, unsplit peak for every chemically unique carbon environment</b>.</p><p class="step-body" style="margin-bottom:0;">This trade-off does throw away some information (how many hydrogens sit on each carbon — recovered separately via DEPT, later in this lesson), but it makes a ¹³C spectrum vastly easier to read at a glance: count the peaks, and you\'re counting unique carbon environments directly.</p>'
+      },
+      {
+        render: function(api){
+          var items = [
+            { key: 'alkyl', label: 'A plain sp³ alkyl carbon (e.g., in an alkane)', v: 'low' },
+            { key: 'aromatic', label: 'An aromatic (sp²) ring carbon', v: 'mid' },
+            { key: 'ketone', label: 'A ketone carbonyl carbon', v: 'high' }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Rank these three carbons from lowest to highest ¹³C chemical shift.</h2>' +
+            '<div class="choice-row" style="flex-direction:column;">' + items.map(function(s){
+              return '<button class="choice-btn" data-v="' + s.key + '">' + s.label + '</button>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Correct clicks: 0 / 3</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var order = ['alkyl', 'aromatic', 'ketone'];
+          var idx = 0, mistake = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(btn.disabled) return;
+              var key = btn.getAttribute('data-v');
+              if(key === order[idx]){
+                btn.disabled = true;
+                btn.classList.add('correct');
+                idx++;
+                hint.textContent = 'Correct clicks: ' + idx + ' / 3';
+                if(idx === 3){
+                  api.record(!mistake);
+                  api.showFeedback(fb, !mistake, mistake ? 'You got there, but out of order at first. Alkyl carbons sit farthest upfield (0-50 ppm), aromatic/alkene carbons in the middle (100-150 ppm), and carbonyls stand distinctly apart, far downfield (160-220 ppm).' : 'Exactly right — and the carbonyl region is so distinct from everything else that spotting a peak there is often the fastest way to confirm a carbonyl is present at all.');
+                  next.disabled = false;
+                }
+              } else {
+                mistake = true;
+                btn.classList.add('wrong');
+                setTimeout(function(){ btn.classList.remove('wrong'); }, 500);
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'A ¹³C spectrum shows a peak at 205 ppm. What does this most strongly suggest?',
+        options: ['The molecule contains a ketone or aldehyde carbonyl', 'The molecule is purely aliphatic with no functional groups', 'This peak must be an artifact, since carbon shifts never exceed 150 ppm'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — the 160-220 ppm region is essentially unambiguous for a carbonyl, and 205 ppm specifically fits right in the ketone/aldehyde range (190-220 ppm).',
+        wrongFeedback: 'Carbon chemical shifts do extend well past 150 ppm — carbonyl carbons routinely appear at 160-220 ppm, and 205 ppm is a classic ketone/aldehyde signal.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Molecular symmetry directly determines how many ¹³C peaks you see.',
+        bodyHtml: '<p class="step-body">Just as chemically equivalent hydrogens merge into one ¹H NMR signal, chemically equivalent carbons — related by a molecule\'s own symmetry — merge into one ¹³C signal too. This means the number of peaks in a ¹³C spectrum is a direct readout of how many <i>unique</i> carbon environments a molecule has, not simply its total carbon count.</p><p class="step-body" style="margin-bottom:0;">Para-xylene (1,4-dimethylbenzene) is the classic illustration: it has 8 total carbon atoms, but its mirror symmetry makes many of them equivalent to each other — the two methyl carbons are equivalent to each other, and the six ring carbons collapse into just two equivalent pairs plus... (working through the symmetry carefully) a total of only <b>3 unique ¹³C signals</b> for the whole molecule. Counting peaks, not atoms, is exactly what a real spectrum measures.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'Why does a highly symmetric molecule like para-xylene show fewer ¹³C peaks than its total carbon count?',
+        options: ['Carbons related by the molecule\'s symmetry are chemically equivalent and produce a single shared signal, just like equivalent hydrogens in ¹H NMR', 'Symmetric molecules are invisible to ¹³C NMR', 'NMR can only detect a maximum of 3 carbons per molecule'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — this is the exact same equivalence principle from ¹H NMR integration, just applied to carbon peak count instead of proton integration values.',
+        wrongFeedback: 'Symmetric molecules are perfectly visible to NMR — the reduced peak count comes specifically from chemically equivalent carbons overlapping into shared signals.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'DEPT recovers hydrogen-count information without bringing back splitting.',
+        bodyHtml: '<div class="explain-box">Ordinary decoupled ¹³C NMR is easy to read but throws away information about how many hydrogens sit on each carbon. A specialized technique called DEPT (Distortionless Enhancement by Polarization Transfer) recovers exactly that information without reintroducing any splitting: it manipulates peak direction and intensity so that CH₃, CH₂, and CH carbons are each clearly distinguishable, and quaternary carbons (no attached hydrogen at all) are identified by simply not appearing in the DEPT spectrum, even though they still show up normally in the standard decoupled spectrum. Combining a standard ¹³C spectrum (peak count and chemical shift) with a DEPT spectrum (hydrogen count per carbon) gives a remarkably complete picture of the carbon skeleton before ¹H NMR data is even considered.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A compound\'s standard ¹³C spectrum shows 5 peaks, but its DEPT spectrum shows only 4 (one peak from the standard spectrum is simply missing in DEPT). What does this tell you about the carbon corresponding to that missing peak?',
+        options: ['It is a quaternary carbon (no hydrogens attached), since DEPT specifically excludes carbons with no attached H', 'It must be a CH₃ carbon, the most common type DEPT excludes', 'The spectrometer made an error, since DEPT should always show every peak from the standard spectrum'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — a peak present in the standard decoupled spectrum but absent from DEPT is the classic signature of a quaternary (no-hydrogen) carbon.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>
