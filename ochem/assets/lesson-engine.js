@@ -35,7 +35,8 @@
     var progLabel = opts.progLabel;
     var doneHref = opts.doneHref || '../learn.html';
     var TOTAL = steps.length - 1;
-    var step = 0;
+    var begin = window.OchemCurriculum.beginLessonRun(topicId, steps.length);
+    var step = begin.step;
 
     var shell = card.parentNode;
     var progressBarEl = shell.querySelector('.progress-bar');
@@ -54,10 +55,23 @@
       toggleBar.innerHTML = '<a href="' + location.pathname + '?notes=1" class="link-quiet">&#128221; View lesson notes</a>';
     }
 
+    if(begin.resumed){
+      var resumeNote = document.createElement('div');
+      resumeNote.className = 'lesson-resume-note';
+      resumeNote.innerHTML = 'Resumed from where you left off (step ' + (step+1) + ' of ' + steps.length + '). <a href="#" class="link-quiet" id="lessonStartOverLink">Start over instead</a>';
+      shell.insertBefore(resumeNote, progressBarEl || card);
+      resumeNote.querySelector('#lessonStartOverLink').addEventListener('click', function(e){
+        e.preventDefault();
+        window.OchemCurriculum.resetRun(topicId);
+        location.reload();
+      });
+    }
+
     function record(correct){ window.OchemCurriculum.recordAttempt(topicId, correct); }
     function updateProgress(){
       progFill.style.width = Math.round((step/TOTAL)*100) + '%';
       progLabel.textContent = 'Step ' + (step+1) + ' / ' + (TOTAL+1);
+      window.OchemCurriculum.saveStep(topicId, step);
     }
     function feedbackHtml(id){ return '<div class="feedback" id="' + id + '"></div>'; }
     function showFeedback(el, good, text){ el.className = 'feedback show ' + (good?'good':'bad'); el.textContent = text; }
@@ -101,7 +115,10 @@
           record(isCorrect);
           if(isCorrect){
             showFeedback(fb, true, cfg.correctFeedback || 'Correct.');
-            if(isFinal) card.querySelector('#doneBox').innerHTML = doneBoxHtml();
+            if(isFinal){
+              window.OchemCurriculum.completeLessonRun(topicId);
+              card.querySelector('#doneBox').innerHTML = doneBoxHtml();
+            }
             else next.disabled = false;
           } else {
             showFeedback(fb, false, cfg.wrongFeedback || 'Not quite — try again.');

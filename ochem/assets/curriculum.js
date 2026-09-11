@@ -113,14 +113,67 @@
     try{ localStorage.setItem('ochem_progress', JSON.stringify(p)); }catch(e){}
   }
 
+  /* Progress is tracked per topic as one "run": { step, correct, attempts,
+     completed }. correct/attempts describe the CURRENT run only, not a
+     lifetime total — so topicMastery always reflects how you did the last
+     time you actually finished the lesson, and redoing it starts that score
+     over instead of blending forever with old attempts.
+
+     beginLessonRun is called once, when a lesson page loads, before its
+     first step renders:
+       - no saved run, or the saved run was already completed -> this is a
+         fresh attempt (opening a finished lesson again is a deliberate
+         redo). Wipe the run and start at step 0.
+       - a saved, unfinished run exists -> the learner left partway through;
+         resume at their saved step with that run's tally intact. */
+  function beginLessonRun(topicId, totalSteps){
+    var p = readProgress();
+    var t = p[topicId];
+    if(!t || t.completed){
+      p[topicId] = { step: 0, correct: 0, attempts: 0, completed: false };
+      writeProgress(p);
+      return { step: 0, resumed: false };
+    }
+    var step = Math.max(0, Math.min(t.step || 0, Math.max(0, totalSteps - 1)));
+    return { step: step, resumed: step > 0 };
+  }
+
+  // Called whenever the engine renders a step, so an exit mid-lesson can
+  // resume at the right place next time instead of restarting at step 1.
+  function saveStep(topicId, step){
+    var p = readProgress();
+    var t = p[topicId] || { step: 0, correct: 0, attempts: 0, completed: false };
+    t.step = step;
+    p[topicId] = t;
+    writeProgress(p);
+  }
+
   // Every lesson calls this on each answered question so mastery reflects
-  // performance across attempts, not just whether the lesson was opened.
+  // performance on the current run, not just whether the lesson was opened.
   function recordAttempt(topicId, isCorrect){
     var p = readProgress();
-    var t = p[topicId] || { correct: 0, attempts: 0 };
+    var t = p[topicId] || { step: 0, correct: 0, attempts: 0, completed: false };
     t.attempts++;
     if(isCorrect) t.correct++;
     p[topicId] = t;
+    writeProgress(p);
+  }
+
+  // Marks the current run finished once the final challenge is answered
+  // correctly — the score at that point is what topicMastery reports until
+  // the learner starts a fresh run by reopening the (now-completed) lesson.
+  function completeLessonRun(topicId){
+    var p = readProgress();
+    var t = p[topicId] || { step: 0, correct: 0, attempts: 0, completed: false };
+    t.completed = true;
+    p[topicId] = t;
+    writeProgress(p);
+  }
+
+  // Explicit "start over" — used by the resume banner's opt-out link.
+  function resetRun(topicId){
+    var p = readProgress();
+    p[topicId] = { step: 0, correct: 0, attempts: 0, completed: false };
     writeProgress(p);
   }
 
@@ -183,7 +236,11 @@
 
   window.OchemCurriculum = {
     MODULES: MODULES,
+    beginLessonRun: beginLessonRun,
+    saveStep: saveStep,
     recordAttempt: recordAttempt,
+    completeLessonRun: completeLessonRun,
+    resetRun: resetRun,
     topicMastery: topicMastery,
     moduleMastery: moduleMastery,
     overallMastery: overallMastery,
