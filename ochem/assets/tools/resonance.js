@@ -78,7 +78,7 @@
       '<div class="tpanel">' +
         '<div class="tpanel__head"><span>Move the electrons</span><span id="resName" class="tmuted"></span></div>' +
         '<div id="resEditor"></div>' +
-        '<div id="resVerdict"></div>' +
+        '<div aria-live="polite" id="resVerdict"></div>' +
       '</div>' +
       '<div class="tpanel">' +
         '<div class="tpanel__head"><span>Progress</span><span id="resCount" class="tmuted"></span></div>' +
@@ -132,6 +132,16 @@
      it does not look anything up — so a species the student drew is worth
      exactly as much to it as one of the eleven on the list. */
   function begin(st, name){
+    if(window.OchemToolState){
+      var m = document.getElementById('resMode');
+      var on = m && m.querySelector('.on');
+      window.OchemToolState.write({
+        mode: on && on.getAttribute('data-mode') === 'compare' ? 'compare' : null,
+        sp: current && !st.builtHere ? current.id : null,
+        a: cmpLeft ? cmpLeft.id : null,
+        b: cmpRight ? cmpRight.id : null
+      });
+    }
     found = {};
     arrows = [];
     elName.textContent = name || '';
@@ -552,6 +562,15 @@
       '</div>';
   }
 
+  function syncCompare(){
+    if(!window.OchemToolState) return;
+    window.OchemToolState.write({
+      mode:'compare',
+      a: cmpLeft ? cmpLeft.id : null,
+      b: cmpRight ? cmpRight.id : null
+    });
+  }
+
   function setSide(which, id){
     var sp = SPECIES.filter(function(x){ return x.id === id; })[0];
     if(!sp) return;
@@ -559,6 +578,7 @@
     var entry = { id: sp.id, label: sp.label, st: C.fromMolecule(mol) };
     if(which === 'a') cmpLeft = entry; else cmpRight = entry;
     cmpGuess = null;
+    syncCompare();
     renderCompare();
   }
 
@@ -583,5 +603,17 @@
     });
   });
 
-  select(SPECIES[0]);
+  if(window.OchemToolState){
+    var q = window.OchemToolState.read();
+    var sp = SPECIES.filter(function(x){ return x.id === q.sp; })[0];
+    select(sp || SPECIES[0]);
+    if(q.mode === 'compare'){
+      var mb = document.getElementById('resMode').querySelector('[data-mode="compare"]');
+      if(mb) mb.click();
+      if(q.a) setSide('a', q.a);
+      if(q.b) setSide('b', q.b);
+    }
+  } else {
+    select(SPECIES[0]);
+  }
 })();

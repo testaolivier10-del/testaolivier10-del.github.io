@@ -30,12 +30,21 @@
       '<h1>' + esc(tool.name) + '</h1>' +
     '</div>' +
     '<p class="tool-lede">' + esc(tool.blurb) + '</p>' +
+    '<div class="tool-share" id="tool-share"></div>' +
     '<nav class="tool-switch" aria-label="Other tools">' +
       T.ALL.map(function(t){
         return '<a href="' + esc(t.slug) + '.html"' + (t.slug === slug ? ' class="on" aria-current="page"' : '') +
                '>' + esc(t.name) + '</a>';
       }).join('') +
     '</nav>';
+
+  /* Every tool can be linked to in the state you left it in, so the control
+     is part of the shared chrome rather than something each tool remembers to
+     add. Tools that keep nothing in the URL still get a working link to
+     themselves, which is the honest floor. */
+  if(window.OchemToolState){
+    window.OchemToolState.mountShare(document.getElementById('tool-share'));
+  }
 
   /* The tool is not the end of the road: each one has a lesson behind it, and
      a student who has just watched an octet blow up is exactly the person who

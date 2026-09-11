@@ -326,6 +326,16 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
   .mb__stat > div{flex:1 1 44%;}
 }
 
+/* ---- Share this setup ---------------------------------------------------- */
+
+.tool-share{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:14px 0 2px;}
+.tool-share__said{font:700 12px var(--font-ui);color:var(--good);}
+.tool-share__url{
+  flex:1;min-width:200px;padding:6px 10px;border:var(--bw) solid var(--line);
+  border-radius:var(--radius-sm);background:var(--white);color:var(--ink);
+  font:600 11.5px var(--font-mono);
+}
+
 /* ---- Footer link back into the course ---------------------------------- */
 
 .tool-foot{

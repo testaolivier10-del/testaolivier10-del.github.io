@@ -115,7 +115,7 @@
       '<div>' +
         '<div class="tpanel">' +
           '<div class="tpanel__head">What that produces</div>' +
-          '<div id="apResult"></div>' +
+          '<div aria-live="polite" id="apResult"></div>' +
         '</div>' +
         '<div class="tpanel tpanel--flat">' +
           '<div class="tpanel__head">' +
@@ -183,6 +183,14 @@
      committed. Everything that used to live inside select() is here, so a
      built molecule is not a second-class citizen with its own code path. */
   function begin(st, name){
+    if(window.OchemToolState){
+      var typed = document.getElementById('mbText');
+      var built = elBuilder && !elBuilder.hidden && typed && typed.value ? typed.value : null;
+      window.OchemToolState.write({
+        start: built ? null : (current && current.id),
+        build: built
+      });
+    }
     history = [];
     origin = C.clone(st);
     startStep(st, name);
@@ -372,10 +380,31 @@
           '<span class="tnote__k">Legal, but</span>' + esc(n) + '</div>';
       });
 
+      /* The product exists as a structure and nowhere else — nobody could type
+         it into the viewer, which is precisely why the handover has to carry
+         the structure rather than a name. The biggest fragment goes, since
+         that is the molecule anyone means by "the product". */
+      var link = '';
+      if(window.OchemBuilder){
+        var biggest = frags.slice().sort(function(x, y){ return y.length - x.length; })[0];
+        if(biggest && biggest.length > 1){
+          var only = C.clone(after);
+          Object.keys(only.atoms).forEach(function(k){
+            if(biggest.indexOf(k) < 0) delete only.atoms[k];
+          });
+          only.bonds = only.bonds.filter(function(b){
+            return only.atoms[b.a] && only.atoms[b.b] && b.order > 0;
+          });
+          link = '<a class="tchip tchip--ghost" href="viewer-3d.html?st=' +
+                 encodeURIComponent(window.OchemBuilder.encode(only)) + '">See it in 3D &rarr;</a>';
+        }
+      }
+
       html += '<div class="trow" style="margin-top:14px;">' +
         '<button type="button" class="btn-press" id="apCommit">Use this as the next step &rarr;</button>' +
-        '<span class="tmuted" style="font-size:12.5px;">Mechanisms are three and four steps long. Commit this one and keep going.</span>' +
-      '</div>';
+        link +
+      '</div>' +
+      '<p class="tmuted" style="margin:8px 0 0;font-size:12.5px;">Mechanisms are three and four steps long. Commit this one and keep going.</p>';
     }
 
     elResult.innerHTML = html;
@@ -514,5 +543,18 @@
     return null;
   }
 
-  select(fromUrl() || ALL[0]);
+  var fromLink = fromUrl();
+  select(fromLink || ALL[0]);
+
+  // A link can also carry a molecule somebody typed rather than one on the list.
+  if(window.OchemToolState){
+    var built = window.OchemToolState.read().build;
+    if(built){
+      var srcBtn = document.getElementById('apSrc').querySelector('[data-src="build"]');
+      if(srcBtn){
+        srcBtn.click();
+        if(builderApi) builderApi.build(built);
+      }
+    }
+  }
 })();

@@ -425,7 +425,7 @@
           '</div>' +
           '<div id="spDrawMsg" style="margin-top:12px;" aria-live="polite"></div>' +
         '</div>' +
-        '<div id="spPuzzleVerdict" style="margin-top:14px;"></div>' +
+        '<div aria-live="polite" id="spPuzzleVerdict" style="margin-top:14px;"></div>' +
       '</div>' +
     '</div>' +
 
@@ -472,7 +472,18 @@
     });
   });
 
+  function syncState(){
+    if(!window.OchemToolState) return;
+    var m = document.getElementById('spMode').querySelector('.on');
+    var mode = m ? m.getAttribute('data-mode') : 'predict';
+    window.OchemToolState.write({
+      mode: mode === 'predict' ? null : mode,
+      c: (mode === 'predict' && compound && !compound.predicted) ? compound.id : null
+    });
+  }
+
   function renderPredict(){
+    syncState();
     document.getElementById('spPicker').querySelectorAll('.tchip').forEach(function(b){
       b.classList.toggle('on', b.getAttribute('data-id') === compound.id);
     });
@@ -902,5 +913,15 @@
   });
 
   document.getElementById('spCheckDraw').addEventListener('click', checkDrawn);
+
+  if(window.OchemToolState){
+    var q = window.OchemToolState.read();
+    var hit = COMPOUNDS.filter(function(c){ return c.id === q.c; })[0];
+    if(hit){ compound = hit; hlIR = null; hlNMR = null; renderPredict(); }
+    if(q.mode === 'puzzle' || q.mode === 'ref'){
+      var mb = document.getElementById('spMode').querySelector('[data-mode="' + q.mode + '"]');
+      if(mb) mb.click();
+    }
+  }
 
 })();

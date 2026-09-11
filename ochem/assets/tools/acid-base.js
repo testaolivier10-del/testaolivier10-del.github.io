@@ -316,7 +316,7 @@
       '<div class="tpanel">' +
         '<div class="tpanel__head">Which loses its proton more easily?</div>' +
         '<div class="tchips" id="abGuess"></div>' +
-        '<div id="abVerdict" style="margin-top:14px;"></div>' +
+        '<div aria-live="polite" id="abVerdict" style="margin-top:14px;"></div>' +
       '</div>' +
       '<div class="tpanel">' +
         '<div class="tpanel__head">Atom, resonance, induction, orbital</div>' +
@@ -330,7 +330,7 @@
           '<button type="button" class="tchip" id="abNewRank">New set</button></div>' +
         '<div class="tchips" id="abRankPool"></div>' +
         '<div class="ab-order" id="abRankOrder"></div>' +
-        '<div id="abRankVerdict"></div>' +
+        '<div aria-live="polite" id="abRankVerdict"></div>' +
       '</div>' +
     '</div>' +
 
@@ -342,7 +342,7 @@
         '<p class="tmuted" id="abSiteNote"></p>' +
         '<div class="tpanel__head" style="margin-top:8px;">Which one comes off first?</div>' +
         '<div class="tchips" id="abSiteGuess"></div>' +
-        '<div id="abSiteVerdict" style="margin-top:14px;"></div>' +
+        '<div aria-live="polite" id="abSiteVerdict" style="margin-top:14px;"></div>' +
       '</div>' +
     '</div>';
 
@@ -382,7 +382,20 @@
     renderPair();
   }
 
+  function sync(){
+    if(!window.OchemToolState) return;
+    var m = document.getElementById('abMode').querySelector('.on');
+    var mode = m ? m.getAttribute('data-mode') : 'pair';
+    window.OchemToolState.write({
+      mode: mode === 'pair' ? null : mode,
+      a: mode === 'pair' ? left.id : null,
+      b: mode === 'pair' ? right.id : null,
+      m: mode === 'site' ? siteMol.id : null
+    });
+  }
+
   function renderPair(){
+    sync();
     document.getElementById('abScore').textContent = score.total ? score.right + ' of ' + score.total + ' right' : '';
 
     document.getElementById('abCards').innerHTML = [left, right].map(function(a){
@@ -588,6 +601,7 @@
       renderSite();
     };
 
+    sync();
     document.getElementById('abSiteFormula').textContent = siteMol.formula;
     document.getElementById('abSiteNote').textContent = siteMol.note;
 
@@ -647,6 +661,18 @@
       siteGuess = null;
       renderSite();
     });
+  }
+
+  if(window.OchemToolState){
+    var q = window.OchemToolState.read();
+    if(q.a) left = byId(q.a);
+    if(q.b) right = byId(q.b);
+    if(q.m) MULTI.forEach(function(x){ if(x.id === q.m) siteMol = x; });
+    if(q.a || q.b){ elLeft.value = left.id; elRight.value = right.id; renderPair(); }
+    if(q.mode === 'rank' || q.mode === 'site'){
+      var mb = document.getElementById('abMode').querySelector('[data-mode="' + q.mode + '"]');
+      if(mb) mb.click();
+    }
   }
 
 })();

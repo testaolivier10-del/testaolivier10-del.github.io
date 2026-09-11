@@ -295,6 +295,7 @@
   }
 
   function renderNewman(){
+    syncState();
     var d = describeTorsion(theta);
     var e = energyAt(theta);
     var min = Math.min.apply(null, tor.energies);
@@ -440,7 +441,25 @@
     return { total: total, terms: terms, axial: axialSubs };
   }
 
+  function syncState(){
+    if(!window.OchemToolState) return;
+    var m = document.getElementById('cfMode').querySelector('.on');
+    var mode = m ? m.getAttribute('data-mode') : 'newman';
+    window.OchemToolState.write({
+      tab: mode === 'newman' ? null : mode,
+      tor: (mode === 'newman' && tor && !tor.custom) ? tor.id : null,
+      f: (mode === 'newman' && tor && tor.custom) ? custFront.join('.') : null,
+      b: (mode === 'newman' && tor && tor.custom) ? custBack.join('.') : null,
+      deg: mode === 'newman' ? Math.round(theta) : null,
+      // Six slots as key:face, so a whole substitution pattern fits in a link.
+      ring: mode === 'chair'
+        ? ring.map(function(e){ return e ? e[0] + ':' + e[1] : ''; }).join(',').replace(/,+$/, '')
+        : null
+    });
+  }
+
   function renderChair(){
+    syncState();
     var here = buildChair(flipped);
     var other = buildChair(!flipped);
     var eHere = chairEnergy(here), eOther = chairEnergy(other);
@@ -621,7 +640,7 @@
         '<div class="tpanel">' +
           '<div class="tpanel__head">Energy against angle</div>' +
           '<div class="cf-curve" id="cfCurve"></div>' +
-          '<div id="cfReadout" style="margin-top:12px;"></div>' +
+          '<div aria-live="polite" id="cfReadout" style="margin-top:12px;"></div>' +
         '</div>' +
       '</div>' +
     '</div>' +
@@ -651,7 +670,7 @@
         '</div>' +
         '<div class="tpanel">' +
           '<div class="tpanel__head">What it costs</div>' +
-          '<div id="cfChairReadout"></div>' +
+          '<div aria-live="polite" id="cfChairReadout"></div>' +
         '</div>' +
       '</div>' +
     '</div>';
@@ -819,6 +838,40 @@
     });
   });
 
+  /* ---- Restoring a link --------------------------------------------------- */
+  if(window.OchemToolState){
+    var q = window.OchemToolState.read();
+    if(q.ring){
+      q.ring.split(',').forEach(function(slot, i){
+        if(i > 5 || !slot) return;
+        var bits = slot.split(':');
+        if(SUBS[bits[0]]) ring[i] = [bits[0], bits[1] === 'down' ? 'down' : 'up'];
+      });
+    }
+    if(q.f && q.b){
+      custFront = q.f.split('.').slice(0, 3);
+      custBack = q.b.split('.').slice(0, 3);
+      if(custFront.every(function(k){ return SUBS[k]; }) && custBack.every(function(k){ return SUBS[k]; })){
+        document.getElementById('cfTorBuildToggle').click();
+      }
+    } else if(q.tor){
+      TORSIONALS.forEach(function(t){ if(t.id === q.tor) tor = t; });
+      document.getElementById('cfTorPicker').querySelectorAll('.tchip').forEach(function(x){
+        x.classList.toggle('on', x.getAttribute('data-id') === q.tor);
+      });
+    }
+    if(q.deg){
+      theta = Math.max(0, Math.min(360, parseInt(q.deg, 10) || 60));
+      var slider = document.getElementById('cfAngle');
+      if(slider) slider.value = theta;
+    }
+    if(q.tab === 'chair'){
+      var cb = document.getElementById('cfMode').querySelector('[data-mode="chair"]');
+      if(cb) cb.click();
+    }
+  }
+
   renderNewman();
+  renderRingControls();
   renderChair();
 })();

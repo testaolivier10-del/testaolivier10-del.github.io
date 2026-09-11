@@ -449,7 +449,7 @@
             return '<button type="button" class="tchip" data-guess="' + g + '">' + g + '</button>';
           }).join('') +
         '</div>' +
-        '<div id="rpVerdict" style="margin-top:14px;"></div>' +
+        '<div aria-live="polite" id="rpVerdict" style="margin-top:14px;"></div>' +
       '</div>' +
       '<div class="tpanel">' +
         '<div class="tpanel__head">How the four factors voted</div>' +
@@ -548,8 +548,21 @@
     render();
   }
 
+  /* A setup in the address bar. "Try this one" is a sentence an instructor
+     should be able to finish with a link rather than four instructions. */
+  function sync(){
+    if(!window.OchemToolState) return;
+    window.OchemToolState.write({
+      sub: state.sub.generic ? null : state.sub.id,
+      rgt: state.rgt.id,
+      solv: state.solvent.id,
+      heat: state.heat ? 1 : null
+    });
+  }
+
   function render(){
     var p = predict(state);
+    sync();
 
     document.getElementById('rpScore').textContent =
       state.score.total ? state.score.right + ' of ' + state.score.total + ' right' : '';
@@ -650,4 +663,20 @@
   }
 
   render();
+  if(window.OchemToolState){
+    var q = window.OchemToolState.read();
+    var qs = find(SUBSTRATES, q.sub), qr = find(REAGENTS, q.rgt), qv = find(SOLVENTS, q.solv);
+    if(qs) state.sub = qs;
+    if(qr) state.rgt = qr;
+    if(qv) state.solvent = qv;
+    state.heat = q.heat === '1';
+    if(qs || qr || qv || state.heat){
+      elSub.value = state.sub.id; elRgt.value = state.rgt.id; elSolv.value = state.solvent.id;
+      document.getElementById('rpHeat').querySelectorAll('button').forEach(function(x){
+        x.classList.toggle('on', (x.getAttribute('data-heat') === '1') === state.heat);
+      });
+      render();
+    }
+  }
+
 })();

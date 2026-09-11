@@ -82,7 +82,7 @@
             '<span>What this atom is doing</span>' +
             '<span class="tmuted" id="v3Hint">click an atom</span>' +
           '</div>' +
-          '<div id="v3Analysis"></div>' +
+          '<div aria-live="polite" id="v3Analysis"></div>' +
         '</div>' +
       '</div>' +
     '</div>';
@@ -113,6 +113,7 @@
   function select(m){
     if(!m) return;
     nudgeIdle();
+    sync({ mol: m.id });
     mol = m;
     selected = m.focus;
     elPicker.querySelectorAll('.tchip').forEach(function(b){
@@ -224,9 +225,11 @@
     b.addEventListener('click', function(){
       var view = VIEWS[b.getAttribute('data-view')];
       rx = view.rx; ry = view.ry;
+      nudgeIdle();
       document.getElementById('v3Views').querySelectorAll('button').forEach(function(x){
         x.classList.toggle('on', x === b);
       });
+      sync();
       draw();
     });
   });
@@ -245,6 +248,7 @@
       document.getElementById('v3Modes').querySelectorAll('button').forEach(function(x){
         x.classList.toggle('on', x === b);
       });
+      sync();
       // Lone pairs have nowhere to sit on a space-filling model: the surface
       // they would hang off is the surface. The checkbox stays where the
       // student left it and comes back with the other modes.
@@ -347,6 +351,13 @@
         var r = window.OchemBuilder.to3D(st);
         if(r.error){ showBuildMsg('warn', r.error); return; }
         r.mol.name = st.name || 'Your molecule';
+        var typed = document.getElementById('mbText');
+        /* A typed formula travels as text because it is readable; anything
+           drawn travels encoded, because it has no text form. */
+        var asText = typed && typed.value ? typed.value : null;
+        sync(asText
+          ? { build: asText, st: null, mol: null }
+          : { build: null, st: window.OchemBuilder.encode(st), mol: null });
         showBuildMsg('good', r.mol.approximate
           ? 'Folded. This has more than one ring, so the second ring is grown outward rather than closed exactly — angles inside the first ring are right, the rest is approximate.'
           : 'Folded. Drag it, and click any atom for its geometry.');
@@ -453,5 +464,55 @@
     return out;
   }
 
-  select(LIB.ALL[0]);
+  /* ---- Shareable setup ---------------------------------------------------
+
+     A link that reopens the molecule, the display mode and the viewpoint.
+     "Look at the lone pair from directly above" is a thing an instructor says,
+     and before this there was no way to say it in a link. */
+  function sync(extra){
+    if(!window.OchemToolState) return;
+    var cur = window.OchemToolState.read();
+    var next = {
+      mol: cur.mol, build: cur.build, st: cur.st,
+      mode: opts.mode === 'ball' ? null : opts.mode,
+      rx: rx.toFixed(2), ry: ry.toFixed(2)
+    };
+    Object.keys(extra || {}).forEach(function(k){ next[k] = extra[k]; });
+    if(next.build) next.mol = null;
+    window.OchemToolState.write(next);
+  }
+
+  function restore(){
+    if(!window.OchemToolState) return false;
+    var q = window.OchemToolState.read();
+    if(q.rx) rx = parseFloat(q.rx);
+    if(q.ry) ry = parseFloat(q.ry);
+    if(q.mode && ['ball','space','wire'].indexOf(q.mode) >= 0){
+      opts.mode = q.mode;
+      var mb = document.getElementById('v3Modes').querySelector('[data-mode="' + q.mode + '"]');
+      if(mb){
+        document.getElementById('v3Modes').querySelectorAll('button').forEach(function(x){ x.classList.toggle('on', x === mb); });
+      }
+    }
+    if(q.st && window.OchemBuilder){
+      /* A structure sent from another tool — the product of a mechanism, say,
+         which has no formula anyone would type. */
+      var handed = window.OchemBuilder.decode(q.st);
+      if(handed){
+        var src0 = document.getElementById('v3Src').querySelector('[data-src="build"]');
+        if(src0) src0.click();
+        if(builderApi){ builderApi.load(handed); return true; }
+      }
+    }
+    if(q.build){
+      var src = document.getElementById('v3Src').querySelector('[data-src="build"]');
+      if(src) src.click();
+      if(builderApi){ builderApi.build(q.build); }
+      return true;
+    }
+    if(q.mol && LIB.get(q.mol)){ select(LIB.get(q.mol)); return true; }
+    return false;
+  }
+
+  if(!restore()) select(LIB.ALL[0]);
 })();
