@@ -66,11 +66,22 @@
        called with the kind-specific response object the diagnostic engine
        expects. Renderers never grade anything themselves. */
 
+    /* Options are shuffled per sitting (shuffle-options.js) rather than
+       served in the order they were authored. Both banks were written
+       answer-first — 53% of the legacy bank had its answer in slot A — and
+       a position habit is something a student learns instead of the
+       chemistry. Everything downstream stays keyed by the AUTHOR's index:
+       `submit` reports it, so the diagnostic engine's per-wrong-answer
+       `diag` map needs no translation, and `lock` maps back the other way
+       to colour the right button. */
     function renderMcq(q){
       var opts = q.options || [];
+      var shuf = window.OchemShuffle
+        ? window.OchemShuffle.apply(opts, q.id)
+        : { options: opts, toOriginal: opts.map(function(_, i){ return i; }) };
       return {
-        html: '<div class="choice-row">' + opts.map(function(o, i){
-          return '<button class="choice-btn" data-i="' + i + '">' + esc(o) + '</button>';
+        html: '<div class="choice-row">' + shuf.options.map(function(o, i){
+          return '<button class="choice-btn" data-i="' + shuf.toOriginal[i] + '">' + esc(o) + '</button>';
         }).join('') + '</div>',
         attach: function(submit){
           cardEl.querySelectorAll('.choice-btn').forEach(function(btn){
@@ -81,9 +92,10 @@
         },
         lock: function(response, correct){
           cardEl.querySelectorAll('.choice-btn').forEach(function(b, i){
+            var orig = shuf.toOriginal[i];
             b.disabled = true;
-            if(i === q.answer) b.classList.add('correct');
-            else if(i === response.choice) b.classList.add('wrong');
+            if(orig === q.answer) b.classList.add('correct');
+            else if(orig === response.choice) b.classList.add('wrong');
           });
         }
       };

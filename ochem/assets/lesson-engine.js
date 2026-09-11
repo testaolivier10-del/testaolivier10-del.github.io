@@ -142,12 +142,21 @@
     function renderDeclarative(cfg){
       var isExplain = cfg.type === 'explain';
       var isFinal = cfg.type === 'final';
+      /* Options are shuffled per sitting rather than rendered in authored
+         order — see shuffle-options.js. Without it, 178 of the 193 check
+         questions in these lessons were answerable by clicking the first
+         button, and the concept model banked that as learning. `data-i` stays
+         the AUTHOR's index so the correctness test below is unchanged. */
+      var shuf = (!isExplain && window.OchemShuffle)
+        ? window.OchemShuffle.apply(cfg.options, topicId + ':' + step)
+        : { options: isExplain ? [] : cfg.options, toOriginal: null };
       card.innerHTML = head(cfg) +
         (cfg.bodyHtml || '') +
         (cfg.diagramHtml || '') +
         (isExplain ? '' :
-          '<div class="choice-row">' + cfg.options.map(function(o,i){
-            return '<button class="choice-btn" data-i="' + i + '">' + o + '</button>';
+          '<div class="choice-row">' + shuf.options.map(function(o,i){
+            var orig = shuf.toOriginal ? shuf.toOriginal[i] : i;
+            return '<button class="choice-btn" data-i="' + orig + '">' + o + '</button>';
           }).join('') + '</div>' + feedbackHtml('fb')
         ) +
         (isExplain ? nextButtonHtml(cfg.nextLabel || 'Continue', true) : (isFinal ? '<div id="doneBox"></div>' : nextButtonHtml(cfg.nextLabel || 'Continue', false)));

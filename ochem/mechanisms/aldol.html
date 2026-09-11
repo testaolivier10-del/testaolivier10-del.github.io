@@ -48,6 +48,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -126,19 +127,19 @@
       "title": "Why is the product always a BETA-hydroxy carbonyl, never alpha or gamma?",
       "bodyHtml": "<p class=\"step-body\">Count the carbons between the new OH and the carbonyl that survived.</p>",
       "options": [
-        "The nucleophilic carbon is the alpha carbon of one molecule and it bonds to the carbonyl carbon of the other, which puts the new OH exactly two carbons from the surviving C=O",
         "It is simply the most stable arrangement, and the reaction rearranges to reach it",
-        "It varies with the base used"
+        "It varies with the base used",
+        "The nucleophilic carbon is the alpha carbon of one molecule and it bonds to the carbonyl carbon of the other, which puts the new OH exactly two carbons from the surviving C=O"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "concepts": [
         "aldol-connectivity",
         "enolate-formation"
       ],
       "why": "The connectivity is forced by the mechanism, not chosen. Alpha carbon to carbonyl carbon is the only bond that gets made, so the spacing is fixed. Recognizing a beta-hydroxy carbonyl (or an enone) in a product is the clue that an aldol built it — and it tells you where to cut when you work backwards.",
       "wrong": {
-        "1": "Nothing rearranges. The pattern comes straight from which two atoms form the bond.",
-        "2": "The base affects how much enolate forms and how fast, but not which carbons end up joined."
+        "0": "Nothing rearranges. The pattern comes straight from which two atoms form the bond.",
+        "1": "The base affects how much enolate forms and how fast, but not which carbons end up joined."
       },
       "nextLabel": "Last one"
     },

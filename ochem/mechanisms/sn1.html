@@ -98,6 +98,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -346,7 +347,7 @@
       '<div class="explain-box">Because the rate-determining step is ionization, anything that stabilizes the carbocation speeds up SN1 — which is why SN1 favors substrates where the leaving group sits on a carbon with lots of alkyl substituents around it.</div>' +
       '<p class="step-body">Which substrate ionizes faster via SN1: one where the leaving group is on a <b>tertiary</b> carbon, or one where it’s on a <b>primary</b> carbon?</p>' +
       '<div class="choice-row">' +
-        ['Tertiary — more stable carbocation', 'Primary — less crowded', 'They ionize at the same rate'].map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
+        window.OchemShuffle.list(['Tertiary — more stable carbocation', 'Primary — less crowded', 'They ionize at the same rate'], 'sn1:challenge').map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
       '</div>' +
       feedbackHtml('fb') +
       '<div id="doneBox"></div>';

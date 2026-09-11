@@ -91,6 +91,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -296,7 +297,7 @@
       '<h2 class="step-title">Two different alkenes are possible. Which one dominates?</h2>' +
       '<p class="step-body">Removing a hydrogen from the ethyl CH₂ gives 2-methyl-2-butene (trisubstituted). Removing one from either methyl group gives 2-methyl-1-butene (disubstituted).</p>' +
       '<div class="choice-row">' +
-        ['The more substituted alkene (2-methyl-2-butene) — it\'s the major product', 'The less substituted alkene (2-methyl-1-butene) — it\'s the major product', 'Both form in exactly equal amounts, always'].map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
+        window.OchemShuffle.list(['The more substituted alkene (2-methyl-2-butene) — it\'s the major product', 'The less substituted alkene (2-methyl-1-butene) — it\'s the major product', 'Both form in exactly equal amounts, always'], 'e1:zaitsev').map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
       '</div>' +
       feedbackHtml('fb') +
       nextButton('Continue', false);
@@ -340,7 +341,7 @@
       '<div class="explain-box">Whenever you see a substrate that ionizes easily (tertiary, or stabilized by resonance) reacting with a weak, poor nucleophile/base in a polar protic solvent, expect a <b>mixture</b> of SN1 and E1 products — not a single clean answer. This is exactly why substrate and solvent effects (next lesson) matter so much for predicting real outcomes.</div>' +
       '<p class="step-body">A tertiary alkyl bromide is heated in ethanol (a weak nucleophile and weak base, polar protic solvent). What should you expect?</p>' +
       '<div class="choice-row">' +
-        ['A mixture of SN1 substitution and E1 elimination products, with elimination favored by the heat', 'Only SN2 substitution, cleanly', 'No reaction occurs at all'].map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
+        window.OchemShuffle.list(['A mixture of SN1 substitution and E1 elimination products, with elimination favored by the heat', 'Only SN2 substitution, cleanly', 'No reaction occurs at all'], 'e1:challenge').map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
       '</div>' +
       feedbackHtml('fb') +
       '<div id="doneBox"></div>';

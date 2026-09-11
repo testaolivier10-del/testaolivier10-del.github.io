@@ -48,6 +48,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -148,18 +149,18 @@
       "title": "Can you convert an amide into an acid chloride by treating it with HCl?",
       "bodyHtml": "<p class=\"step-body\">Think about which direction the ladder runs.</p>",
       "options": [
-        "No — conversions run down the ladder, from more reactive to less. Going the other way needs a separate activating reagent, not simply the other product",
         "Yes — chloride is a better nucleophile than the amine, so it displaces it",
+        "No — conversions run down the ladder, from more reactive to less. Going the other way needs a separate activating reagent, not simply the other product",
         "Yes, but only with heat"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "concepts": [
         "acyl-reactivity-order",
         "leaving-group-ability"
       ],
       "why": "Acid chloride to amide is downhill and easy; amide to acid chloride is uphill and does not simply happen. To climb the ladder you go via the carboxylic acid and activate it with something like SOCl₂, which drives the reaction by expelling gases rather than by reaching equilibrium.",
       "wrong": {
-        "1": "Nucleophile strength is not the obstacle — the problem is that the leaving group would have to be an amide anion, which is an extremely strong base and will not leave.",
+        "0": "Nucleophile strength is not the obstacle — the problem is that the leaving group would have to be an amide anion, which is an extremely strong base and will not leave.",
         "2": "Heat does not reverse a thermodynamically unfavourable substitution here. The amide is the stable end of the ladder."
       }
     }

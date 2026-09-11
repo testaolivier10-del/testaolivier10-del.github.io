@@ -100,6 +100,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/concepts.js"></script>
 <script src="../assets/mastery-engine.js"></script>
@@ -323,13 +324,18 @@
 
   // ---- Step 1: which species is the nucleophile ----
   function renderIdentifyNuc(){
-    var options = [mol.nucleophileLabel, mol.substrateLabel];
+    /* The nucleophile was always the first button, which is answerable
+       without looking at either species. Shuffled per sitting; data-i keeps
+       carrying the index into the unshuffled pair, so the mol.correctNucSpecies
+       test below is untouched. */
+    var shuf = window.OchemShuffle.apply([mol.nucleophileLabel, mol.substrateLabel], 'sn2:identify-nuc');
+    var options = shuf.options;
     card.innerHTML =
       '<div class="step-eyebrow">Step 1 · Identify</div>' +
       '<h2 class="step-title">Which species is the nucleophile?</h2>' +
       '<p class="step-body">One of these has a lone pair and a negative charge to give away. The other is neutral and will accept it.</p>' +
       '<div class="choice-row">' +
-        options.map(function(o,i){ return '<button class="choice-btn" data-i="' + i + '">' + o + '</button>'; }).join('') +
+        options.map(function(o,i){ return '<button class="choice-btn" data-i="' + shuf.toOriginal[i] + '">' + o + '</button>'; }).join('') +
       '</div>' +
       feedbackHtml('fb') +
       nextButton('Continue', false);
@@ -488,9 +494,11 @@
   // ---- Step 5: predict the product ----
   function renderPredictProduct(){
     var options = [mol.product].concat(mol.distractors);
-    // Deterministic shuffle so it doesn't jump around on re-render.
-    var order = [1,0,2,3].filter(function(i){ return i < options.length; });
-    var shuffled = order.map(function(i){ return options[i]; });
+    /* Was a fixed [1,0,2,3] rotation — stable, but the same stable answer
+       slot for everyone who ever loads the page. Shuffled per sitting
+       instead; still deterministic within a sitting so stepping back does
+       not shuffle it under you. */
+    var shuffled = window.OchemShuffle.list(options, 'sn2:predict-product');
     card.innerHTML =
       '<div class="step-eyebrow">Step 5 · Predict</div>' +
       '<h2 class="step-title">What’s the product?</h2>' +

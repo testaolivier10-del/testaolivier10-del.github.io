@@ -48,6 +48,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -120,18 +121,18 @@
       "title": "The ring now carries an OCH₃ group. A second electrophile arrives. Where does it attack?",
       "bodyHtml": "<p class=\"step-body\">Think about the arenium ion each option would produce, and where the positive charge sits in it.</p>",
       "options": [
-        "Ortho and para — only those put the positive charge on the carbon bearing the OCH₃, where its lone pair can stabilize it",
         "Meta — the group pushes the electrophile as far away as possible",
+        "Ortho and para — only those put the positive charge on the carbon bearing the OCH₃, where its lone pair can stabilize it",
         "All positions equally — the substituent is too small to matter"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "concepts": [
         "directing-effects",
         "resonance-delocalization"
       ],
       "why": "Draw the three arenium ions. Attack ortho or para puts positive charge directly on the substituted carbon in one of the resonance forms, and the methoxy lone pair can donate into it — an extra, very stabilizing resonance structure. Meta attack never produces that form, so it gets no help.",
       "wrong": {
-        "1": "Distance is not the mechanism. Donors direct ortho/para; it is the WITHDRAWING groups that end up meta, and even then by elimination rather than preference.",
+        "0": "Distance is not the mechanism. Donors direct ortho/para; it is the WITHDRAWING groups that end up meta, and even then by elimination rather than preference.",
         "2": "Directing effects are strong — often better than 95% selectivity. A methoxy group also makes the ring react far faster than benzene itself."
       },
       "nextLabel": "Last one"
@@ -142,19 +143,19 @@
       "title": "You want a straight propyl group on benzene. Friedel-Crafts with 1-chloropropane gives mostly the branched isopropyl product. Why, and what should you do instead?",
       "bodyHtml": "<p class=\"step-body\">The electrophile in a Friedel-Crafts alkylation is a carbocation.</p>",
       "options": [
-        "The primary cation rearranges to the more stable secondary one before the ring attacks — so acylate instead, then reduce the ketone",
         "The ring attacks the wrong end of the chloropropane — use a bromide instead",
-        "Nothing is wrong; branched is the expected product of any Friedel-Crafts"
+        "Nothing is wrong; branched is the expected product of any Friedel-Crafts",
+        "The primary cation rearranges to the more stable secondary one before the ring attacks — so acylate instead, then reduce the ketone"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "concepts": [
         "eas-mechanism",
         "carbocation-rearrangement"
       ],
       "why": "Friedel-Crafts alkylation makes a free carbocation, and free carbocations rearrange to whatever is more stable. Acylation avoids it entirely: the acylium ion is resonance-stabilized by the adjacent oxygen, so it has no reason to rearrange. Acylate, then reduce the ketone to the CH₂ you wanted. It also sidesteps polyalkylation, since the ketone deactivates the ring.",
       "wrong": {
-        "1": "Changing the halide does not help — the rearrangement happens after ionization, in the cation, and is independent of which halide left.",
-        "2": "It is a genuine limitation of the method, and the reason acylation-then-reduction is the standard workaround."
+        "0": "Changing the halide does not help — the rearrangement happens after ionization, in the cation, and is independent of which halide left.",
+        "1": "It is a genuine limitation of the method, and the reason acylation-then-reduction is the standard workaround."
       }
     }
   ]

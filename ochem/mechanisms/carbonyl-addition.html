@@ -48,6 +48,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -98,18 +99,18 @@
       "title": "The tetrahedral intermediate has formed. What happens next?",
       "bodyHtml": "<p class=\"step-body\">This is the single most important fork in carbonyl chemistry, and the answer depends entirely on what else is attached to that carbon.</p>",
       "options": [
-        "It depends: with no leaving group attached it is simply protonated, giving addition; with one attached it collapses and expels it, giving substitution",
         "It always collapses back to a C=O, so the reaction reverses",
+        "It depends: with no leaving group attached it is simply protonated, giving addition; with one attached it collapses and expels it, giving substitution",
         "It always gets protonated, so carbonyls always give alcohols"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "concepts": [
         "tetrahedral-intermediate",
         "acyl-reactivity-order"
       ],
       "why": "A ketone's substituents are carbons, which would have to leave as carbanions — impossibly strong bases — so the intermediate just picks up a proton and you get an alcohol. An ester has an OR group, which leaves happily, so the intermediate collapses and you get substitution instead.",
       "wrong": {
-        "1": "Collapsing requires something able to leave. With only carbons and hydrogens attached, there is nothing that can go.",
+        "0": "Collapsing requires something able to leave. With only carbons and hydrogens attached, there is nothing that can go.",
         "2": "That is true for aldehydes and ketones, but not for esters, amides or acid chlorides — those have a leaving group and take the other branch."
       },
       "nextLabel": "Try a comparison"
@@ -120,19 +121,19 @@
       "title": "Formaldehyde hydrates with Keq ≈ 1000; acetone with Keq ≈ 0.0014. Why the million-fold gap?",
       "bodyHtml": "<p class=\"step-body\">Same reaction, same nucleophile, wildly different position of equilibrium.</p>",
       "options": [
-        "Acetone's two methyls both crowd the carbon and donate electron density into it, making it less electrophilic than formaldehyde's bare CH₂",
         "Formaldehyde is a stronger acid",
-        "Acetone's carbonyl is not really a carbonyl"
+        "Acetone's carbonyl is not really a carbonyl",
+        "Acetone's two methyls both crowd the carbon and donate electron density into it, making it less electrophilic than formaldehyde's bare CH₂"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "concepts": [
         "carbonyl-electrophilicity",
         "steric-hindrance"
       ],
       "why": "Alkyl groups do two things at once, and both point the same way: they get in the way of the incoming nucleophile, and they push electron density toward the carbon, partly satisfying the charge that made it attractive. Formaldehyde has neither.",
       "wrong": {
-        "1": "Acidity is not what is being compared — this is about how readily a nucleophile adds to the carbon.",
-        "2": "Acetone's C=O is an ordinary carbonyl. The difference is what is attached to it, not what it is."
+        "0": "Acidity is not what is being compared — this is about how readily a nucleophile adds to the carbon.",
+        "1": "Acetone's C=O is an ordinary carbonyl. The difference is what is attached to it, not what it is."
       },
       "nextLabel": "Last one"
     },
