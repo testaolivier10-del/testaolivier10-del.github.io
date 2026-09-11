@@ -254,7 +254,13 @@
     'nitrobenzene':   { n:6, aromatic:true, subs:{0:'NO2'} },
     'benzoic acid':   { n:6, aromatic:true, subs:{0:'COOH'} },
     'cyclohexanol':   { n:6, subs:{0:'OH'} },
-    'cyclohexanone':  { n:6, ketone:0 }
+    'cyclohexanone':  { n:6, ketone:0 },
+    'benzaldehyde':   { n:6, aromatic:true, subs:{0:'CHO'} },
+    'p-xylene':       { n:6, aromatic:true, subs:{0:'CH3', 3:'CH3'} },
+    'o-xylene':       { n:6, aromatic:true, subs:{0:'CH3', 1:'CH3'} },
+    'styrene':        { n:6, aromatic:true, subs:{0:'CH=CH2'} },
+    'anisole':        { n:6, aromatic:true, subs:{0:'OCH3'} },
+    'acetophenone':   { n:6, aromatic:true, subs:{0:'COCH3'} }
   };
 
   /* ---- Tokenizer ---------------------------------------------------------

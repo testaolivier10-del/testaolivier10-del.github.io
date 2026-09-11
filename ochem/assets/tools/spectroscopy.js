@@ -68,7 +68,7 @@
      drawn as real lines rather than a label. */
   var COMPOUNDS = [
     {
-      id:'ethanol', name:'Ethanol', formula:'C₂H₆O', structure:'CH₃CH₂OH',
+      id:'ethanol', name:'Ethanol', formula:'C₂H₆O', structure:'CH₃CH₂OH', build:'CH3CH2OH',
       ir:[
         { cm:3350, w:180, d:55, label:'O–H stretch', note:'Broad and strong. The breadth is hydrogen bonding: every molecule is in a slightly different environment, so the band is a blur of slightly different frequencies.' },
         { cm:2970, w:40,  d:38, label:'sp³ C–H',     note:'Below 3000, so every carbon here is saturated.' },
@@ -82,7 +82,7 @@
       tell:'A broad O–H trough with no carbonyl anywhere. The 3.7 quartet fixes which carbon carries the oxygen.'
     },
     {
-      id:'acetone', name:'Acetone', formula:'C₃H₆O', structure:'CH₃COCH₃',
+      id:'acetone', name:'Acetone', formula:'C₃H₆O', structure:'CH₃COCH₃', build:'CH3COCH3',
       ir:[
         { cm:2960, w:40, d:30, label:'sp³ C–H', note:'Saturated carbons only.' },
         { cm:1715, w:22, d:78, label:'C=O stretch', note:'Strong, sharp, and at the textbook position for a simple ketone. Nothing above 3000 and no O–H, so this is a ketone rather than an acid or an aldehyde.' }
@@ -93,7 +93,7 @@
       tell:'One NMR signal and a carbonyl at 1715. The symmetry is the whole clue.'
     },
     {
-      id:'acetic', name:'Acetic acid', formula:'C₂H₄O₂', structure:'CH₃COOH',
+      id:'acetic', name:'Acetic acid', formula:'C₂H₄O₂', structure:'CH₃COOH', build:'CH3COOH',
       ir:[
         { cm:3000, w:420, d:48, label:'O–H (acid)', note:'The enormous trough from about 2500 to 3300, wider than anything else in spectroscopy. A carboxylic acid dimerizes through two hydrogen bonds at once, and this is what that looks like.' },
         { cm:1710, w:24, d:80, label:'C=O stretch', note:'Sitting inside the shoulder of the O–H trough, which is itself a recognizable signature.' }
@@ -105,7 +105,7 @@
       tell:'A proton past 11 ppm, and an O–H trough that swallows the C–H region.'
     },
     {
-      id:'etac', name:'Ethyl acetate', formula:'C₄H₈O₂', structure:'CH₃COOCH₂CH₃',
+      id:'etac', name:'Ethyl acetate', formula:'C₄H₈O₂', structure:'CH₃COOCH₂CH₃', build:'CH3COOCH2CH3',
       ir:[
         { cm:2980, w:40, d:30, label:'sp³ C–H', note:'Saturated.' },
         { cm:1740, w:22, d:80, label:'ester C=O', note:'Notice it is higher than acetone’s 1715. That 25 cm⁻¹ is how you separate an ester from a ketone.' },
@@ -119,7 +119,7 @@
       tell:'Carbonyl at 1740 rather than 1715, no O–H at all, and a 3:3:2 pattern with a quartet past 4 ppm.'
     },
     {
-      id:'toluene', name:'Toluene', formula:'C₇H₈', structure:'C₆H₅CH₃',
+      id:'toluene', name:'Toluene', formula:'C₇H₈', structure:'C₆H₅CH₃', build:'toluene',
       ir:[
         { cm:3030, w:30, d:28, label:'sp² C–H', note:'Above 3000 — there are unsaturated carbons here.' },
         { cm:2920, w:35, d:30, label:'sp³ C–H', note:'And below 3000 too, so there are saturated ones as well. Both sides of the 3000 line means both kinds of carbon.' },
@@ -134,7 +134,7 @@
       tell:'C–H on both sides of 3000, a 5:3 integration, and the 730/695 pair.'
     },
     {
-      id:'benzaldehyde', name:'Benzaldehyde', formula:'C₇H₆O', structure:'C₆H₅CHO',
+      id:'benzaldehyde', name:'Benzaldehyde', formula:'C₇H₆O', structure:'C₆H₅CHO', build:'benzaldehyde',
       ir:[
         { cm:3060, w:28, d:24, label:'sp² C–H', note:'Aromatic.' },
         { cm:2820, w:24, d:22, label:'aldehyde C–H', note:'Small and easy to miss, and the reason you can call this an aldehyde rather than a ketone from the IR alone.' },
@@ -149,7 +149,7 @@
       tell:'A singlet at 10 ppm plus two weak IR bands near 2800. Either one alone would do it.'
     },
     {
-      id:'ether', name:'Diethyl ether', formula:'C₄H₁₀O', structure:'CH₃CH₂OCH₂CH₃',
+      id:'ether', name:'Diethyl ether', formula:'C₄H₁₀O', structure:'CH₃CH₂OCH₂CH₃', build:'CH3CH2OCH2CH3',
       ir:[
         { cm:2970, w:42, d:36, label:'sp³ C–H', note:'Saturated.' },
         { cm:1120, w:40, d:62, label:'C–O stretch', note:'Strong. There is an oxygen in this molecule, and with no O–H and no C=O anywhere, an ether is what is left.' }
@@ -161,7 +161,7 @@
       tell:'An oxygen with no O–H and no carbonyl, and a 6:4 two-signal spectrum. Symmetry again.'
     },
     {
-      id:'ethylamine', name:'Ethylamine', formula:'C₂H₇N', structure:'CH₃CH₂NH₂',
+      id:'ethylamine', name:'Ethylamine', formula:'C₂H₇N', structure:'CH₃CH₂NH₂', build:'CH3CH2NH2',
       ir:[
         { cm:3370, w:60, d:34, label:'N–H (antisym)', note:'The first of two. A primary amine gives a pair of bands here.' },
         { cm:3290, w:60, d:30, label:'N–H (sym)', note:'The second. Count them: two means primary, one means secondary, none means tertiary.' },
@@ -175,7 +175,7 @@
       tell:'Two N–H bands rather than one broad O–H, and a CH₂ at 2.7 rather than 3.7.'
     },
     {
-      id:'hexyne', name:'1-hexyne', formula:'C₆H₁₀', structure:'HC≡C(CH₂)₃CH₃',
+      id:'hexyne', name:'1-hexyne', formula:'C₆H₁₀', structure:'HC≡C(CH₂)₃CH₃', build:'HC#CCH2CH2CH2CH3',
       ir:[
         { cm:3300, w:18, d:48, label:'≡C–H stretch', note:'Sharp and narrow, right where a broad O–H would be. The shape is the difference — an alcohol here is a wide valley, this is a spike.' },
         { cm:2930, w:40, d:38, label:'sp³ C–H', note:'The chain.' },
@@ -190,7 +190,7 @@
       tell:'A sharp spike at 3300 with a weak partner at 2120. The sharpness is what rules out an alcohol.'
     },
     {
-      id:'pxylene', name:'p-xylene', formula:'C₈H₁₀', structure:'CH₃–C₆H₄–CH₃',
+      id:'pxylene', name:'p-xylene', formula:'C₈H₁₀', structure:'CH₃–C₆H₄–CH₃', build:'p-xylene',
       ir:[
         { cm:3020, w:28, d:24, label:'sp² C–H', note:'Aromatic.' },
         { cm:2920, w:35, d:30, label:'sp³ C–H', note:'The two methyls.' },
@@ -372,8 +372,16 @@
     '</div>' +
 
     '<div id="spPredict">' +
-      '<div class="tpanel"><div class="tpanel__head">Pick a compound</div>' +
-        '<div class="tchips" id="spPicker"></div></div>' +
+      '<div class="tpanel">' +
+        '<div class="tpanel__head">' +
+          '<span>Pick a compound</span>' +
+          '<button type="button" class="tchip tchip--ghost" id="spBuildToggle">Predict your own &rarr;</button>' +
+        '</div>' +
+        '<div class="tchips" id="spPicker"></div>' +
+        '<div id="spBuilder" hidden></div>' +
+        '<div id="spBuildMsg"></div>' +
+      '</div>' +
+      '<div id="spPredicted"></div>' +
       '<div class="tpanel">' +
         '<div class="tpanel__head"><span>Infrared</span><span class="tmuted" id="spName"></span></div>' +
         '<div class="sp-chart" id="spIR"></div>' +
@@ -397,8 +405,26 @@
         '<div id="spPuzzleData"></div>' +
       '</div>' +
       '<div class="tpanel">' +
-        '<div class="tpanel__head">Which compound is it?</div>' +
-        '<div class="tchips" id="spOptions"></div>' +
+        '<div class="tpanel__head">' +
+          '<span>What is it?</span>' +
+          '<div class="tseg" id="spAnsMode">' +
+            '<button type="button" data-ans="pick" class="on">Choose from four</button>' +
+            '<button type="button" data-ans="draw">Draw it</button>' +
+          '</div>' +
+        '</div>' +
+        '<div id="spPickWrap">' +
+          '<div class="tchips" id="spOptions"></div>' +
+        '</div>' +
+        '<div id="spDrawWrap" hidden>' +
+          '<p class="tmuted" style="margin-top:0;">Four candidates turn an interpretation into a process of elimination — ' +
+          'you can get there by ruling out three structures without ever reading the spectrum forwards. Draw what you ' +
+          'think it is instead, and the answer is checked as a structure rather than as a choice.</p>' +
+          '<div id="spAnswerBuilder"></div>' +
+          '<div class="trow" style="margin-top:12px;">' +
+            '<button type="button" class="btn-press" id="spCheckDraw">Check my structure</button>' +
+          '</div>' +
+          '<div id="spDrawMsg" style="margin-top:12px;" aria-live="polite"></div>' +
+        '</div>' +
         '<div id="spPuzzleVerdict" style="margin-top:14px;"></div>' +
       '</div>' +
     '</div>' +
@@ -450,7 +476,20 @@
     document.getElementById('spPicker').querySelectorAll('.tchip').forEach(function(b){
       b.classList.toggle('on', b.getAttribute('data-id') === compound.id);
     });
-    document.getElementById('spName').textContent = compound.structure + ' · ' + compound.formula;
+    document.getElementById('spName').textContent =
+      (compound.structure ? compound.structure + ' · ' : '') + compound.formula;
+
+    var warn = document.getElementById('spPredicted');
+    if(warn){
+      warn.innerHTML = compound.predicted
+        ? '<div class="tnote tnote--warn"><span class="tnote__k">Predicted, not measured</span>' +
+          'The IR bands are a lookup over the functional groups in what you drew, and at this level that is genuinely how an IR is read — ' +
+          'those positions are as trustworthy as the tabulated ones. The NMR shifts are an additive estimate: a base value for each ' +
+          'CH₃, CH₂ or CH plus a contribution for everything attached to it or next to it. That is the model the course teaches and it ' +
+          'lands within a few tenths of a ppm for ordinary compounds — but it is not a calculation, and it will be wrong about anything ' +
+          'unusual. Checked against the ten tabulated compounds here, it reproduces every one.</div>'
+        : '';
+    }
 
     document.getElementById('spIR').innerHTML = irSpectrum(compound, hlIR);
     document.getElementById('spIR').querySelectorAll('.sp-peak').forEach(function(g){
@@ -645,6 +684,9 @@
     options.sort(function(){ return Math.random() - 0.5; });
     puzzle = { answer: answer, options: options };
     puzzleGuess = null;
+    var dm = document.getElementById('spDrawMsg');
+    if(dm) dm.innerHTML = '';
+    if(ansBuilderApi) ansBuilderApi.clear();
     renderPuzzle();
   }
 
@@ -726,4 +768,139 @@
 
   renderPredict();
   renderRef();
+  /* ---- Predict your own --------------------------------------------------
+
+     Ten compounds is ten compounds. spectra-predict.js works the same two
+     spectra out from connectivity, which turns this half of the tool from a
+     gallery into something you can point at the compound in front of you.
+
+     The drawn spectrum and the peak table come from the same numbers whether
+     those numbers were typed by hand or predicted, so the picture and the
+     assignments still cannot drift apart — the only thing that changes is how
+     confident the numbers are, and the panel says so out loud. */
+  var spBuilderApi = null;
+
+  document.getElementById('spBuildToggle').addEventListener('click', function(){
+    var box = document.getElementById('spBuilder');
+    var msg = document.getElementById('spBuildMsg');
+    var open = box.hidden;
+    box.hidden = !open;
+    this.classList.toggle('on', open);
+    this.textContent = open ? 'Hide the builder' : 'Predict your own →';
+    if(open && !spBuilderApi && window.OchemBuilderUI && window.OchemSpectra){
+      spBuilderApi = window.OchemBuilderUI.mount(box, {
+        onChange: function(st, rep){
+          if(rep.empty){ msg.innerHTML = ''; return; }
+          if(!rep.ok){
+            msg.innerHTML = '<div class="tnote tnote--bad" style="margin-top:12px;">Fix what is flagged below first.</div>';
+            return;
+          }
+          var p = window.OchemSpectra.predict(st, st.name || '');
+          if(!p.nmr.length && !p.ir.length){
+            msg.innerHTML = '<div class="tnote tnote--warn" style="margin-top:12px;">Nothing to predict from that yet.</div>';
+            return;
+          }
+          msg.innerHTML = '<div class="tnote tnote--good" style="margin-top:12px;">' +
+            '<span class="tnote__k">Predicted</span>' + p.ir.length + ' IR band' + (p.ir.length === 1 ? '' : 's') +
+            ' and ' + p.nmr.length + ' NMR signal' + (p.nmr.length === 1 ? '' : 's') + '. Both spectra are below.</div>';
+          document.getElementById('spPicker').querySelectorAll('.tchip').forEach(function(b){ b.classList.remove('on'); });
+          compound = p;
+          hlIR = null; hlNMR = null;
+          renderPredict();
+        }
+      });
+    }
+  });
+
+  /* ---- Drawing the answer ------------------------------------------------
+
+     Four candidates make interpretation optional. You can reach the right one
+     by ruling out three structures — "this one has no oxygen, this one would
+     have a singlet" — without ever reading the spectrum forwards, which is the
+     direction the exam asks for and the harder direction to learn.
+
+     So the alternative is to draw it. Checking is a canonical-labelling
+     comparison against the answer's own structure, which means a correct
+     answer drawn a different way round, from a different atom, with the chain
+     going the other direction, still counts. What it cannot do is give partial
+     credit, so a near miss says what is wrong with it — right formula, wrong
+     connectivity — rather than only "no". */
+  var ansBuilderApi = null;
+
+  function normalizeStructure(t){
+    var SUBS = { '₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9' };
+    return String(t).replace(/[₀-₉]/g, function(c){ return SUBS[c] || c; })
+                    .replace(/[–—]/g, '').replace(/≡/g, '#');
+  }
+
+  function answerStructure(c){
+    if(!window.OchemBuilder) return null;
+    var r = window.OchemBuilder.parse(c.build || normalizeStructure(c.structure));
+    return r.error ? null : r.st;
+  }
+
+  function checkDrawn(){
+    var msg = document.getElementById('spDrawMsg');
+    if(!ansBuilderApi || !puzzle || !window.OchemSpectra){ return; }
+
+    var st = ansBuilderApi.structure();
+    var rep = ansBuilderApi.report();
+    if(!rep || rep.empty){
+      msg.innerHTML = '<div class="tnote">Draw something first.</div>';
+      return;
+    }
+    if(!rep.ok){
+      msg.innerHTML = '<div class="tnote tnote--bad"><span class="tnote__k">Not a legal structure</span>' +
+        'Whatever the spectrum says, this one cannot exist — fix what is flagged on the canvas first.</div>';
+      return;
+    }
+
+    var want = answerStructure(puzzle.answer);
+    if(!want){
+      msg.innerHTML = '<div class="tnote tnote--warn">This unknown cannot be checked as a drawing. Use the four candidates.</div>';
+      return;
+    }
+
+    var S = window.OchemSpectra;
+    var right = S.canonical(st) === S.canonical(want);
+    var sameFormula = rep.formula === puzzle.answer.formula;
+
+    if(!puzzleGuess){
+      puzzleGuess = right ? puzzle.answer.id : 'drawn';
+      score.total++;
+      if(right) score.right++;
+    }
+
+    msg.innerHTML = right
+      ? '<div class="tnote tnote--good"><span class="tnote__k">That is it</span>' +
+        esc(puzzle.answer.name) + '. Checked as a structure, not as a string — drawn from a different atom or with the chain ' +
+        'the other way round, it still matches.</div>'
+      : (sameFormula
+        ? '<div class="tnote tnote--bad"><span class="tnote__k">Right formula, wrong molecule</span>' +
+          'You have ' + esc(rep.formula) + ', which is the formula the data gives — so the degrees of unsaturation and the atom ' +
+          'count are right and it is the connectivity that is off. That is what the NMR is for: go back to the integrations and ' +
+          'the splitting and ask which carbon has to be next to which.</div>'
+        : '<div class="tnote tnote--bad"><span class="tnote__k">Not that one</span>' +
+          'You drew ' + esc(rep.formula) + '; the unknown is ' + esc(puzzle.answer.formula) + '. Start from the molecular formula ' +
+          'and the degrees of unsaturation — those two fix what you are building before any peak is read.</div>');
+
+    renderPuzzle();
+  }
+
+  document.getElementById('spAnsMode').querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var m = b.getAttribute('data-ans');
+      document.getElementById('spAnsMode').querySelectorAll('button').forEach(function(x){
+        x.classList.toggle('on', x === b);
+      });
+      document.getElementById('spPickWrap').hidden = m !== 'pick';
+      document.getElementById('spDrawWrap').hidden = m !== 'draw';
+      if(m === 'draw' && !ansBuilderApi && window.OchemBuilderUI){
+        ansBuilderApi = window.OchemBuilderUI.mount(document.getElementById('spAnswerBuilder'), {});
+      }
+    });
+  });
+
+  document.getElementById('spCheckDraw').addEventListener('click', checkDrawn);
+
 })();
