@@ -4,7 +4,7 @@ Source for the [Study Hub](https://testaolivier10-del.github.io/) site, home to:
 
 **[LevlPrep](https://testaolivier10-del.github.io/nremt/)** — a free NREMT-EMT exam prep app: a 978-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
 
-**[Organic Chemistry](https://testaolivier10-del.github.io/ochem/)** (beta) — a mastery/learning product, not exam prep: a full 14-module Organic Chemistry I curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. **Module 1 (Foundations) is fully built** — atomic structure, orbitals, hybridization, bonding, electronegativity, formal charge, Lewis structures, molecular geometry, bond polarity — plus SN1/SN2/E2 in Module 6; the rest of the curriculum shows as "coming soon" until built. A Mastery dashboard scores performance per module from real question attempts, not just completion, and flags concept dependencies: struggling on E2 surfaces a "possible gap detected" callout pointing at its declared prerequisites, whether or not those prerequisite lessons exist yet.
+**[Organic Chemistry](https://testaolivier10-del.github.io/ochem/)** (beta) — a mastery/learning product, not exam prep: a full 14-module Organic Chemistry I curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. **Module 1 (Foundations) is fully built** — atomic structure, orbitals, hybridization, bonding, electronegativity, formal charge, Lewis structures, molecular geometry, bond polarity — plus SN1/SN2/E2 in Module 6; the rest of the curriculum shows as "coming soon" until built. A Mastery dashboard scores performance per module from real question attempts, not just completion, and flags concept dependencies: struggling on E2 surfaces a "possible gap detected" callout pointing at its declared prerequisites, whether or not those prerequisite lessons exist yet. Alongside the course there are **seven interactive tools** (`ochem/tools.html`) — an arrow pusher that shows you the product your mechanism makes, a resonance explorer, a 3D viewer, a conformation lab, a reaction predictor, an acid/base comparator and a spectroscopy lab — see [Tools](#tools).
 
 ## Stack
 
@@ -35,7 +35,12 @@ nremt/                 The LevlPrep app
 ochem/                 The Organic Chemistry app (beta)
   index.html             Product home
   learn.html             Full 14-module curriculum browser, rendered from assets/curriculum.js
-  practice.html, review.html, tools.html   Honest "coming soon" states — no fake functionality
+  practice.html, review.html   Honest "coming soon" states — no fake functionality
+  tools.html             Hub for the seven interactive tools, rendered from
+                            assets/tools-registry.js
+  tools/                 One page per tool: arrow-pusher, resonance, viewer-3d,
+                            conformations, reaction-predictor, acid-base,
+                            spectroscopy — see "Tools" below
   mastery.html           Mastery dashboard (overall %, per-module bars, weakest/next-up,
                          and a concept-dependency callout — see curriculum.js below)
   mechanisms/sn2.html    Interactive SN2 lesson (Module 6): click-through nucleophile/
@@ -87,10 +92,46 @@ ochem/                 The Organic Chemistry app (beta)
     learn-page.js, mastery-page.js   Dynamic list rendering for those two pages, kept in
                             their own files (not inline) so the CI link-checker below
                             doesn't misread generated `href="' + x + '"` text as a broken link
+    chem-core.js           Molecules as STRUCTURES rather than pictures: elements, lone
+                            pairs, numeric charges, implicit hydrogens, formal charge,
+                            octet checks — and apply(), which takes a set of curved arrows
+                            and returns the structure they actually produce. Arrows are
+                            applied simultaneously, not in sequence, because an SN2's
+                            nucleophile arrow alone would blow carbon's octet and only the
+                            leaving group's arrow in the same step saves it
+    resonance-engine.js    Enumerates the resonance forms of a species instead of storing
+                            them, and filters to the contributors a marker would accept
+    mol3d.js               A small SVG 3D engine (rotate, project, depth-sort) plus the
+                            VSEPR construction that generates the geometries, so reported
+                            bond angles are measured off the coordinates being drawn
+    mol3d-library.js       The molecules the 3D viewer offers
+    tool-molecules.js      Extra structures the tools need that no question references
+    tools-registry.js      The single list of tools — the hub, every tool's switcher, and
+                            the sitemap entries all come from it
+    tool-shell.js          Shared chrome for a tool page
+    tools/                 One script per tool
 scripts/check-site.mjs   CI: broken-link + JSON-validity checks (see below)
 ```
 
 `ochem/` reuses the root `assets/theme.css` design system but has its own lightweight page header and sub-nav (it doesn't use `nremt/assets/nav.js`, which is wired specifically to the NREMT XP/streak data). Lesson progress across all Ochem lessons is stored client-side in a single `localStorage` key, `ochem_progress` (per-topic `{correct, attempts}`, read by `curriculum.js`'s mastery functions); there's no account sync yet.
+
+## Tools
+
+`ochem/tools.html` is a hub; each tool is its own page under `ochem/tools/`.
+They are deliberately ungraded and record nothing, but nothing in them is
+faked either — every verdict is computed, and where the computation and the
+measured data disagree the tool says so rather than reporting whichever
+answer makes the rules look tidy.
+
+| Tool | What it does |
+| --- | --- |
+| **Arrow Pusher** | Draw curved arrows on a molecule and the product appears beside them — bonds broken, formal charges recalculated, fragments separated. Legality is valence rules, not an answer key, so an arrow that would put ten electrons on a carbon is caught on a structure nobody anticipated. |
+| **Resonance Explorer** | Checks whether what you drew is a resonance form or a different compound (the skeleton is the test students fail), knows how many forms exist because it enumerates them, and ranks contributors. |
+| **3D Molecule Viewer** | Drag-to-rotate VSEPR geometry with measured bond angles — ammonia reports 107°, water 104.5°, and the lone-pair compression is visible rather than asserted. |
+| **Conformation Lab** | Newman projections against a live energy curve, and a 3D cyclohexane whose axial/equatorial assignments are derived from the geometry, so a ring flip re-derives all six at once. |
+| **Reaction Predictor** | Commit to SN1/SN2/E1/E2 before the answer appears, then see the four factors and which one overruled which. Includes Zaitsev vs. Hofmann. |
+| **Acid/Base Comparator** | Two acids by atom, resonance, induction and orbital, with measured pKa as the ground truth and an explicit note when the structural rules cannot separate them. |
+| **Spectroscopy Lab** | IR and ¹H NMR drawn from real wavenumbers and couplings (so picture and peak table cannot drift apart), plus a reference chart and a work-backwards puzzle mode. |
 
 ## Data & accounts
 

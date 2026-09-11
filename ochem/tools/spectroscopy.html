@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spectroscopy Lab — Organic Chemistry Tools</title>
+<meta name="description" content="Interactive IR and proton NMR: every peak explained, spectra drawn from the real wavenumbers and couplings, plus a puzzle mode that hands you the data and asks for the structure.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/tools/spectroscopy.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/tools.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+.sp-chart{
+    background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
+    padding:10px 6px;margin-bottom:14px;overflow-x:auto;
+  }
+  .sp-chart svg{width:100%;height:auto;display:block;min-width:460px;}
+  .sp-axis{font:700 9.5px var(--font-mono);fill:var(--muted);}
+  .sp-int{font:800 10px var(--font-mono);fill:var(--muted);}
+  .sp-peak,.sp-sig{cursor:pointer;}
+  .sp-peak:focus,.sp-sig:focus{outline:none;}
+  .sp-peak:focus circle{stroke-width:3.5;}
+  .sp-sig.is-on .sp-int,.sp-sig:focus .sp-int{fill:var(--accent);}
+  .sp-row-on td{background:var(--tint-accent);}
+  .sp-bands{position:relative;margin-bottom:4px;}
+  /* The bar is positioned honestly by wavenumber; the label is allowed to
+     spill out to the right of it, because several of these regions are only
+     a few percent of the axis wide and clipping the text to fit made the
+     chart unreadable. Rows are packed in JS so two labels never collide. */
+  .sp-band{
+    position:absolute;height:22px;background:none;border:0;padding:0;cursor:pointer;
+  }
+  .sp-band__bar{
+    position:absolute;inset:0;border:var(--bw) solid var(--line);background:var(--white);
+    border-radius:var(--radius-sm);
+  }
+  .sp-band__label{
+    position:absolute;left:0;top:0;height:22px;display:flex;align-items:center;
+    padding:0 6px;font:800 10px var(--font-ui);color:var(--muted);white-space:nowrap;
+  }
+  .sp-band:hover .sp-band__bar{border-color:var(--accent);}
+  .sp-band.on .sp-band__bar{background:var(--accent);border-color:var(--accent);}
+  .sp-band.on .sp-band__label{color:var(--ink);}
+  .sp-band--variable .sp-band__bar{border-style:dashed;}
+  .sp-scale{position:relative;height:18px;border-top:var(--bw) solid var(--line);}
+  .sp-scale span{
+    position:absolute;top:3px;transform:translateX(-50%);
+    font:700 10px var(--font-mono);color:var(--muted);
+  }
+  .sp-opt--right{background:var(--good)!important;border-color:var(--good)!important;color:var(--on-accent)!important;opacity:1!important;}
+  .sp-opt--wrong{background:var(--bad)!important;border-color:var(--bad)!important;color:var(--on-accent)!important;opacity:1!important;}
+</style>
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell">
+  <div class="tool-top" id="tool-top"></div>
+  <div id="spRoot"></div>
+
+  <div id="tool-foot"></div>
+</div>
+
+<script>
+  window.OCHEM_SECTION = 'tools';
+  window.OCHEM_BASE = '../';
+  window.OCHEM_TOOL = 'spectroscopy';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/tools-registry.js"></script>
+<script src="../assets/tool-shell.js"></script>
+<script src="../assets/tools/spectroscopy.js"></script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>
