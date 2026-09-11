@@ -130,6 +130,12 @@
   };
   function styleOf(el){ return STYLE[el] || { color:'#8A9691', r:0.44, ink:'#FFFFFF' }; }
 
+  /* An atom may carry its own style, which is how a condensed group drawn as
+     one sphere — a methyl, a tert-butyl — gets a size that reflects how much
+     room it actually takes up, instead of every substituent rendering as an
+     identically sized carbon. */
+  function styleFor(atom){ return atom.style || styleOf(atom.el); }
+
   /* ---- Molecule construction -------------------------------------------- */
 
   /* A molecule is {name, formula, atoms:[{el,pos,lp}], bonds:[{a,b,order}],
@@ -283,7 +289,7 @@
 
     mol.bonds.forEach(function(b){
       var pa = pts[b.a], pb = pts[b.b];
-      var sa = styleOf(mol.atoms[b.a].el), sb = styleOf(mol.atoms[b.b].el);
+      var sa = styleFor(mol.atoms[b.a]), sb = styleFor(mol.atoms[b.b]);
       var mid = { x:(pa.x+pb.x)/2, y:(pa.y+pb.y)/2 };
       var z = (pa.z + pb.z) / 2;
       var w = 7 * ((pa.k + pb.k) / 2);
@@ -311,7 +317,7 @@
     if(opt.lonePairs){
       mol.atoms.forEach(function(a, i){
         (a.lpDirs || []).forEach(function(d){
-          var base = add(a.pos, mul(norm(d), styleOf(a.el).r + 0.42));
+          var base = add(a.pos, mul(norm(d), styleFor(a).r + 0.42));
           var p = project(base, o.rx, o.ry, o);
           // Two dots, offset perpendicular to the view-space direction.
           var pc = pts[i];
@@ -327,7 +333,7 @@
     }
 
     mol.atoms.forEach(function(a, i){
-      var p = pts[i], s = styleOf(a.el);
+      var p = pts[i], s = styleFor(a);
       var r = s.r * o.scale * p.k * 0.86;
       var selected = opt.selected === i;
       var fontSize = Math.max(8, r * 0.92);
@@ -353,6 +359,7 @@
     ringPoints: ringPoints,
     completeTetrahedral: completeTetrahedral,
     styleOf: styleOf,
+    styleFor: styleFor,
     build: build,
     analyse: analyse,
     render: render,
