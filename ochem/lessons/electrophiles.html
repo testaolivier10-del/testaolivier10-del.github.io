@@ -64,15 +64,19 @@
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
+  /* Acetone, drawn so every bond actually meets the atom it belongs to:
+     bond endpoints are the carbon/oxygen circle edges along the bond
+     direction, and the C=O second line is a parallel offset of the first. */
   function carbonylSvg(){
-    return '<div class="scene"><svg viewBox="0 0 240 130">' +
-      '<text x="20" y="65" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="16" fill="var(--ink)">CH₃</text>' +
-      '<line x1="68" y1="60" x2="105" y2="60" stroke="var(--line)" stroke-width="2.5"/>' +
-      '<g class="atom" data-key="carbon"><circle cx="122" cy="60" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="122" y="66" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="14">C</text></g>' +
-      '<line x1="126" y1="45" x2="150" y2="18" stroke="var(--line)" stroke-width="2.2"/><line x1="132" y1="52" x2="156" y2="25" stroke="var(--line)" stroke-width="2.2"/>' +
-      '<g class="atom" data-key="oxygen"><circle cx="168" cy="12" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="168" y="17" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">O</text></g>' +
-      '<line x1="140" y1="72" x2="170" y2="95" stroke="var(--line)" stroke-width="2.5"/>' +
-      '<text x="192" y="105" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="16" fill="var(--ink)">CH₃</text>' +
+    return '<div class="scene"><svg viewBox="0 0 260 140" role="img" aria-label="Acetone: a carbonyl carbon double bonded to oxygen and single bonded to two methyl groups">' +
+      '<text x="76" y="76" text-anchor="end" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="16" fill="var(--ink)">CH\u2083</text>' +
+      '<line x1="82" y1="70" x2="102" y2="70" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<line x1="136.6" y1="64.3" x2="175.5" y2="37.2" stroke="var(--line)" stroke-width="2.2"/>' +
+      '<line x1="133.0" y1="59.1" x2="171.9" y2="32.0" stroke="var(--line)" stroke-width="2.2"/>' +
+      '<line x1="132.7" y1="84.7" x2="158" y2="108" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<text x="164" y="115" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="16" fill="var(--ink)">CH\u2083</text>' +
+      '<g class="atom" data-key="oxygen"><circle cx="186" cy="26" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="186" y="31" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">O</text></g>' +
+      '<g class="atom" data-key="carbon"><circle cx="120" cy="70" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="120" y="76" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="14">C</text></g>' +
     '</svg></div>';
   }
 
