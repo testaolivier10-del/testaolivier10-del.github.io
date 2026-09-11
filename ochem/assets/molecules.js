@@ -626,6 +626,46 @@
     caption: 'An amide — the nitrogen lone pair is tied up in resonance.'
   };
 
+  /* ---- Two the lessons needed and the library did not have ------------
+     Every lesson from Module 8 onward was written without a single
+     structure on the page, and most of them could be fixed by pointing at
+     a molecule already defined above. These two could not: the alkynes
+     lesson had nothing with a triple bond in it, and the meso lesson
+     talked about tartaric acid throughout while showing nothing. */
+
+  M['propyne'] = {
+    name: 'Propyne', formula: 'CH₃C≡CH',
+    // The methyl is drawn condensed rather than as a bare C, because the
+    // point of the picture is the contrast between its hydrogens (pKa ~50)
+    // and the one on the far right (pKa ~25).
+    viewBox: '0 0 320 132',
+    atoms: {
+      ch3: { x:54,  y:66, r:19, label:'CH₃', role:'alkyl', note:'An ordinary sp³ carbon. Its hydrogens sit around pKa 50 — nothing remotely acidic.' },
+      c1:  { x:136, y:66, r:17, label:'C', role:'sp-carbon', note:'sp hybridized: two electron groups, 180° apart, so this end of the molecule is straight.' },
+      c2:  { x:218, y:66, r:17, label:'C', role:'sp-carbon', note:'The other end of the triple bond — also sp hybridized, also linear.' },
+      h:   { x:288, y:66, r:12, label:'H', role:'acidic-h', note:'The terminal alkyne C–H, pKa ≈ 25. The anion left behind sits in an sp orbital with 50% s character, held close to the nucleus — which is the whole reason this C–H is 25 orders of magnitude more acidic than the methyl hydrogens at the other end of the same molecule.' }
+    },
+    bonds: [{a:'ch3',b:'c1'},{a:'c1',b:'c2',order:3},{a:'c2',b:'h'}],
+    caption: 'Linear at both sp carbons. Only the terminal C–H is acidic — and only because of the s character in the orbital that has to hold the anion.'
+  };
+
+  M['meso-tartaric-acid'] = {
+    name: 'meso-tartaric acid', formula: 'HO₂C–CH(OH)–CH(OH)–CO₂H', viewBox: '0 0 320 210',
+    atoms: {
+      a1: { x:44,  y:52, r:15, label:'CO₂H' },
+      c1: { x:122, y:78, r:17, label:'C', role:'stereocenter', note:'Stereocenter one: four different groups — OH, H, CO₂H and the rest of the chain.' },
+      o1: { x:122, y:20, r:16, label:'OH', lp:2 },
+      h1: { x:60,  y:110,r:11, label:'H' },
+      c2: { x:198, y:132,r:17, label:'C', role:'stereocenter', note:'Stereocenter two — and the mirror image of the first. That internal mirror is what makes the whole molecule achiral despite having two stereocenters.' },
+      o2: { x:198, y:190,r:16, label:'OH', lp:2 },
+      h2: { x:260, y:100,r:11, label:'H' },
+      a2: { x:276, y:158,r:15, label:'CO₂H' }
+    },
+    bonds: [{a:'a1',b:'c1'},{a:'c1',b:'o1'},{a:'c1',b:'h1'},{a:'c1',b:'c2'},
+            {a:'c2',b:'o2'},{a:'c2',b:'h2'},{a:'c2',b:'a2'}],
+    caption: 'Two stereocenters, (R) and (S) — and a mirror plane running between them. Superimposable on its own reflection, so it is achiral, and optically inactive.'
+  };
+
   /* ---- Renderer -------------------------------------------------------- */
 
   function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }

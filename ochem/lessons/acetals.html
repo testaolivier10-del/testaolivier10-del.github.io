@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Why acetals matter: protecting groups</h3><p class="step-body">A carbonyl is reactive toward nucleophiles (Nucleophilic Addition lesson), strong reducing agents (LiAlH₄), Grignards, and many other reagents you\'ll want to use elsewhere in a molecule during a multi-step synthesis. Converting it to an acetal temporarily removes that reactivity entirely — acetals are stable to base, to nucleophiles, and to reducing agents, reacting only under aqueous acid. This lets a chemist "protect" a carbonyl, perform unrelated chemistry elsewhere in the molecule, and then "deprotect" (hydrolyze the acetal back to the carbonyl) with dilute aqueous acid once that other chemistry is done — an essential practical strategy anywhere a molecule has more than one reactive functional group.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('acetone-hemiacetal', { caption: 'One OH and one OR on the same carbon. Add a second alcohol under acid and the OH leaves as water — that is the step that turns a hemiacetal into a full acetal.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'A hemiacetal is one alcohol addition away from a carbonyl.',

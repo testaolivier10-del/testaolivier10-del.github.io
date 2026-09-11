@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Crossed aldol reactions and why they need control</h3><p class="step-body">Mixing two different carbonyl compounds, each with its own alpha hydrogens, in principle allows four different aldol products (each compound\'s enolate could attack either compound\'s carbonyl) — an unselective mess in the general case. Selectivity is achieved either by using one component with no alpha hydrogens at all (so it can only act as the electrophile, never form its own enolate — a classic strategy using aromatic aldehydes, previewed further in Module 13), or by using a strong, bulky base like LDA at low temperature to fully and irreversibly convert only one component to its enolate before the second component is even added.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('acetone', { caption: 'Acetone. The alpha hydrogens are the ones on the methyl carbons flanking the C=O, at about pKa 20 — and they are the reason this molecule can be made to attack a second copy of itself.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'An enolate attacking a second carbonyl builds a new carbon-carbon bond.',

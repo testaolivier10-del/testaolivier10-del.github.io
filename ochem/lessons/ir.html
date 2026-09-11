@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>The fingerprint region</h3><p class="step-body">Below about 1500 cm⁻¹, the spectrum becomes a dense, hard-to-interpret tangle of overlapping single-bond stretches and bending vibrations — the <b>fingerprint region</b>. While too complex to assign bond-by-bond, this region is unique to each specific compound (like an actual fingerprint), so it\'s extremely useful for confirming an exact match against a known reference spectrum, even when it can\'t be interpreted from first principles alone.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('acetic-acid', { caption: 'Acetic acid shows the two most recognisable bands at once: a broad O–H stretch above 3000 cm⁻¹ and a sharp, strong C=O near 1710 cm⁻¹.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'A bond is like a tiny spring — and IR light matches its natural vibration frequency.',

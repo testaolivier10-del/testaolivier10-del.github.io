@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Fischer esterification: acid catalysis makes the reverse direction work too</h3><p class="step-body">Making an ester directly from a carboxylic acid and an alcohol (Fischer esterification) needs acid catalysis specifically because a carboxylic acid\'s own leaving group, OH⁻, is a poor one on its own (Module 8\'s central lesson). Protonating the tetrahedral intermediate\'s leaving oxygen first converts OH⁻ into neutral water — a much better leaving group — letting the substitution proceed despite starting from one of the least reactive positions on the ladder in the "wrong" direction. This is the same protonation-as-activation strategy you\'ve now seen in alcohol chemistry, ether cleavage, and hemiacetal/acetal formation.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('acetyl-chloride', { caption: 'The top of the reactivity ladder. Chlorine barely donates into the carbonyl, so the carbon stays very electrophilic, and chloride leaves easily once the tetrahedral intermediate collapses.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Substitution at a carbonyl is really addition, then elimination.',

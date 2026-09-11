@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -69,6 +70,7 @@
       '<h3>Why the chair works</h3><p class="step-body">In a chair, every C–C–C bond angle is close to 111° (nearly ideal tetrahedral geometry — almost no angle strain), and every pair of adjacent C–H bonds around the ring is staggered relative to its neighbor (sighting down any ring C–C bond gives a perfectly staggered Newman projection — zero torsional strain). No small or flat ring can simultaneously satisfy both conditions; cyclohexane\'s six-membered, non-planar geometry is exactly what\'s needed to hit both targets at once.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('chair-bromocyclohexane'),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Three separate kinds of strain add up in a ring.',

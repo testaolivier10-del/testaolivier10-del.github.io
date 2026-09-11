@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Addition reactions: partial vs. complete</h3><p class="step-body">Because an alkyne has two pi bonds, it can add electrophiles or H₂ once (giving an alkene) or twice (giving an alkane). H₂ with a Lindlar catalyst (a poisoned, less active Pd catalyst) stops cleanly at the alkene stage and delivers <b>syn</b> addition, giving the <b>cis</b> alkene. H₂ with a normal Pd or Pt catalyst goes all the way to the alkane. Acid-catalyzed hydration (H₃O⁺/Hg²⁺ catalyst) adds water Markovnikov-style to give an unstable <b>enol</b>, which immediately tautomerizes to the more stable ketone (or aldehyde for a terminal alkyne) — the same enol/keto relationship that becomes central in Module 11 (Enolate Chemistry).</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('propyne'),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'A triple bond is one sigma bond plus two pi bonds — and it forces a straight line.',

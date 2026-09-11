@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Quick reference table</h3><p class="step-body">Methyl/primary + strong Nu → SN2. Methyl/primary + strong bulky base → E2 (rare but possible with very bulky bases on primary substrates with beta-branching). Secondary + strong small Nu/base, aprotic → SN2/E2 mix (favors substitution if unhindered, elimination if branched or heated). Secondary or tertiary + weak Nu/base, protic solvent → SN1/E1 mixture. Tertiary + strong base → E2 exclusively (SN2 impossible).</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('sn2-tertiary', { caption: 'A tertiary substrate. Look at how enclosed the C–Br carbon is: there is no room for a nucleophile to reach it from the far side, which is why this cannot go by SN2 at all.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Every substitution/elimination problem is really three questions in sequence.',

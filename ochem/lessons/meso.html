@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Relationship between the three tartaric acid stereoisomers</h3><p class="step-body">(R,R)- and (S,S)-tartaric acid are enantiomers of each other. Meso-tartaric acid is a <b>diastereomer</b> of both (R,R) and (S,S) — it\'s a stereoisomer, but not their mirror image (its own mirror image is itself). Meso-tartaric acid also has a different melting point from the (R,R)/(S,S) pair, exactly as you\'d expect for a diastereomer relationship.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('meso-tartaric-acid'),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'A molecule can have stereocenters and still be achiral.',

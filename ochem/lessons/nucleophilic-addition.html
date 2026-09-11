@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Imine and enamine formation with amines</h3><p class="step-body">A primary amine (R–NH₂) adds to a carbonyl exactly like any other nucleophile, forming a tetrahedral intermediate — but this one has a proton on nitrogen and a hydroxyl on carbon, both of which can be lost as water in a subsequent elimination step, forming a C=N double bond: an <b>imine</b>. A secondary amine (R₂NH) can\'t form a stable imine (no N–H left to lose after the second dehydration step) and instead forms an <b>enamine</b> (a C=C conjugated with nitrogen\'s lone pair) via a slightly different elimination pathway. This addition-then-elimination pattern — building a tetrahedral intermediate, then kicking out water to reform a pi bond — is the direct mechanistic bridge into Module 12 (Amines) and reappears throughout Module 11 (Enolate Chemistry).</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('acetaldehyde', { caption: 'The carbonyl carbon is electron-poor because oxygen pulls the pi electrons toward itself. A nucleophile attacks there, and the pi electrons go up onto the oxygen.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Every nucleophilic addition follows the same two-step pattern.',

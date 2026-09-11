@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<p class="step-body">Everything else strongly electron-withdrawing (NO₂, C=O-containing groups like CHO/COOH/COR, CN, SO₃H) is both deactivating and <b>meta-directing</b>: these groups either withdraw electron density purely inductively (with no lone pair or pi system oriented to donate back into the ring), or — worse — carry their own adjacent positive/partial-positive character (like a carbonyl carbon) that would be directly destabilized by having ring positive charge concentrated next to it in the ortho/para resonance forms. Attack at the meta position avoids ever putting positive charge on the substituted carbon itself, making meta attack the "least bad" (least destabilized) option available.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('para-xylene', { caption: 'The para product that gives ortho/para direction half its name. A methyl group donates into the ring, and the electrophile ends up where the arenium cation can put its positive charge on the substituted carbon.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Everything comes down to which resonance form of the arenium ion is least unstable.',

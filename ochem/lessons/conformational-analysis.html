@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -69,6 +70,7 @@
       '<h3>Why this connects directly to E2 elimination</h3><p class="step-body">E2 elimination (Module 6) has a strict geometric requirement: the leaving group and the hydrogen being removed must be <b>anti-periplanar</b> — 180° apart, which on a cyclohexane ring means both must be <b>axial</b> (axial-axial is the only 180° relationship on a chair; equatorial groups are never anti-periplanar to each other). This means an E2 reaction on a cyclohexane ring can only happen through whichever of the two interconverting chairs happens to have the leaving group axial — even if that chair is the minority, higher-energy conformation. Conformational analysis is literally how you predict which product forms.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('newman-butane-anti'),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'One substituent: always draw the equatorial chair as dominant.',

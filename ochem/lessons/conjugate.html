@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -69,6 +70,7 @@
       '<h3>Reading a pKa table both directions</h3><p class="step-body">A pKa table tells you two things at once: reading down the acid pKa, acids get weaker; reading down the corresponding conjugate bases, bases get <b>stronger</b>. This is why the strongest bases used in organic chemistry (LDA, NaNH₂, NaH) are all conjugate bases of extremely weak acids (amines, pKa ≈ 38; H₂, pKa ≈ 36) — a weak-enough acid guarantees an aggressively strong conjugate base.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('acetate-ion', { caption: 'Acetate: what is left after acetic acid gives up its proton. An acid and its conjugate base differ by exactly one H⁺, and nothing else.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Conjugate pairs differ by exactly one proton.',

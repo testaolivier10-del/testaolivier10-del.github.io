@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Acid-catalyzed hydration</h3><p class="step-body">Water adds across the double bond using H₃O⁺ (or H₂SO₄/H₂O) as catalyst: the pi bond attacks a proton from H₃O⁺, forming a carbocation (Markovnikov selectivity again); water then attacks the carbocation as the nucleophile; a final deprotonation (by another water molecule) regenerates the catalyst and gives the neutral alcohol. This is the classic bridge to Module 8 — it\'s the most direct lab synthesis of an alcohol from an alkene, and its carbocation intermediate means it shares hydrohalogenation\'s rearrangement risk.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('propene-hbr', { caption: 'The pi bond is the nucleophile here, not the electrophile — it attacks H–Br, and which carbon keeps the hydrogen decides the product.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Electrophilic addition: the alkene attacks first.',

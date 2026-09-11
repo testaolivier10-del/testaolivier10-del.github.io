@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Crossed and intramolecular Claisen (Dieckmann) reactions</h3><p class="step-body">Just like the aldol reaction, a crossed Claisen between two different esters needs the same kind of selectivity strategy (one ester with no alpha hydrogens, or careful stoichiometric control) to avoid a statistical mixture. When both ester groups are part of the <b>same molecule</b> (a diester), an intramolecular Claisen — called a <b>Dieckmann condensation</b> — can form a ring instead, and is especially favorable when the resulting ring size is five or six members (the same favorable ring sizes seen in the Cyclohexanes lesson\'s strain-energy trend).</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('methyl-acetate', { caption: 'Methyl acetate. Two of these condense in a Claisen — one supplies the enolate, the other supplies the carbonyl — and the methoxide that leaves at the end is what makes this a substitution rather than an aldol.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Same enolate nucleophile, but now the electrophile is an ester.',

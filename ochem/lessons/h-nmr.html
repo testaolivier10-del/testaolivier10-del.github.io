@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Putting it together: a worked example</h3><p class="step-body">Ethanol\'s spectrum: the CH₃ (3H, integration 3) appears as a triplet (split by the adjacent CH₂\'s 2 hydrogens, n+1=3) around 1.2 ppm; the CH₂ (2H, integration 2) appears as a quartet (split by the adjacent CH₃\'s 3 hydrogens, n+1=4) around 3.6 ppm (deshielded by the nearby oxygen); the OH (1H, integration 1) appears as a broad singlet (typically not cleanly split, due to fast proton exchange) further downfield still, around 2-5 ppm depending on conditions. All three pieces of evidence — shift, integration, and splitting pattern — agree with and reinforce the same structural assignment.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('ethanol', { caption: 'Three chemically distinct hydrogen environments, so three signals: the CH₃ triplet, the CH₂ quartet, and the OH singlet.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Chemical shift: electronegative neighbors deshield a hydrogen and push its signal downfield.',

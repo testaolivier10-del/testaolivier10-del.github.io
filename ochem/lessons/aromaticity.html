@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Nonaromatic: simply missing a requirement</h3><p class="step-body">A ring failing any of the first three requirements (not cyclic, not fully conjugated — for example an sp³ carbon breaking the ring\'s conjugation — or not planar) is simply <b>nonaromatic</b>: neither specially stabilized nor specially destabilized, behaving like an ordinary alkene or diene system (Module 7 addition chemistry applies normally). 1,3-cyclohexadiene, for instance, is nonaromatic because its two sp³ CH₂ carbons break the ring\'s conjugation, even though the two C=C double bonds it does have are perfectly ordinary alkenes.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('benzene', { caption: 'Six sp² carbons, six p orbitals, six electrons in one continuous ring — the 4n+2 count that makes benzene aromatic rather than merely conjugated.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Four requirements, all at once: cyclic, conjugated, planar, and 4n+2.',

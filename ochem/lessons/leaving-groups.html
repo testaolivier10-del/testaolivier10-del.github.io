@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -69,6 +70,7 @@
       '<h3>Quantifying it: pKaH</h3><p class="step-body">Lower pKa of the leaving group\'s conjugate acid (pKaH) = weaker base = better leaving group. HI ≈ −10, HBr ≈ −9, HCl ≈ −7 (all strong acids → I⁻/Br⁻/Cl⁻ are weak bases, good leaving groups, in that ranked order). Water ≈ 15.7 (weak acid → OH⁻ is a strong base, poor leaving group). Full pKa framework comes in Module 3.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('sn2-bromoethane', { caption: 'Bromide is a good leaving group because it is a weak base — it is stable holding the electron pair it walks away with.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'A good leaving group is a weak base.',

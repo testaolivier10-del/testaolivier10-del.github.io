@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>A key limitation: Friedel-Crafts alkylation carbocations can rearrange</h3><p class="step-body">Because Friedel-Crafts alkylation proceeds through a genuine carbocation intermediate, it inherits the exact same rearrangement risk from SN1/E1 chemistry (Module 6) — a less stable carbocation can shift (via hydride or alkyl shift) to a more stable one before ever attacking the ring, giving an unexpected substitution pattern. Friedel-Crafts acylation avoids this entirely: the acylium ion is already resonance-stabilized by the adjacent oxygen (similar to the oxocarbenium ion from the Acetals lesson) and has no driving force to rearrange, which is why acylation is often used deliberately as a workaround when a clean, unrearranged alkyl substituent pattern is needed (the resulting ketone can then be reduced back to a simple alkyl group in a separate step).</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('benzene', { caption: 'Benzene will not do the addition an ordinary alkene does — the aromatic ring is worth too much to give up. It substitutes instead, and gets its aromaticity back at the end.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Aromatic stability is so valuable that the ring gives up a proton to keep it.',

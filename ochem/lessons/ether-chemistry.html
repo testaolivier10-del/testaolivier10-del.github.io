@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Epoxides: the reactive exception</h3><p class="step-body">Ordinary ethers are nearly inert, but a three-membered cyclic ether — an <b>epoxide</b> — is a dramatic exception, reactive enough to merit its own lesson next: the same ring strain that destabilizes small cycloalkanes (Cyclohexanes lesson) applies here too, and that strain is released by ring-opening, making epoxides far more reactive than any acyclic ether.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('methyl-propyl-ether'),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'No O–H, no easy leaving group: ethers are built to be unreactive.',

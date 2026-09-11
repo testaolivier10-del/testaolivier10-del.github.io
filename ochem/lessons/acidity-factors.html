@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Orbital hybridization</h3><p class="step-body">Comparing C–H acidity: terminal alkyne C–H (sp, pKa ≈ 25) &gt; alkene C–H (sp², pKa ≈ 44) &gt; alkane C–H (sp³, pKa ≈ 50). More s-character means the orbital holding the lone pair (in the conjugate base) is closer to the nucleus and lower in energy, stabilizing the negative charge. This is purely an orbital effect — none of the other three factors differ between these three C–H bonds.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('acetate-ion', { caption: 'Acetic acid’s conjugate base. The charge is not parked on one oxygen — resonance spreads it over both equally, and that delocalisation is most of why acetic acid is eleven pKa units stronger than ethanol.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Four questions, in order: Atom, Resonance, Induction, Orbital.',

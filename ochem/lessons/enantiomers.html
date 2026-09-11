@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Why they behave differently in biology</h3><p class="step-body">Even though enantiomers are identical in an achiral environment, they can behave completely differently in a <b>chiral environment</b> — like the active site of an enzyme, which is itself chiral. Only one enantiomer may fit properly, the same way only one of your hands fits comfortably into a right-handed glove. This is the molecular basis for why drug enantiomers can have dramatically different biological effects, even though they\'d be indistinguishable by melting point or boiling point.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('bromochlorofluoromethane', { caption: 'One stereocenter, so exactly two forms exist: this one and its non-superimposable mirror image. Same bonds, same energies, opposite handedness.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Enantiomers are the chirality relationship, applied to a specific pair.',

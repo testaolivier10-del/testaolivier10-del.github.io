@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Oxidation: a ladder, not a single step</h3><p class="step-body">Oxidation state increases by removing C–H bonds and/or adding C–O bonds. A <b>primary alcohol</b> (1°) oxidizes first to an <b>aldehyde</b>, then further to a <b>carboxylic acid</b> — strong oxidants (Na₂Cr₂O₇, KMnO₄, or the Jones reagent CrO₃/H₂SO₄) push all the way to the acid, while a milder, selective oxidant (PCC, pyridinium chlorochromate) stops cleanly at the aldehyde. A <b>secondary alcohol</b> (2°) oxidizes once, to a <b>ketone</b>, and cannot go further (no C–H left on that carbon to remove). A <b>tertiary alcohol</b> (3°) has no H on the carbinol carbon at all, so it <b>cannot be oxidized</b> under these conditions.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('ethanol', { caption: 'Ethanol. As drawn, OH is a terrible leaving group — hydroxide is far too strong a base to leave. Every substitution reaction of an alcohol begins by fixing that, usually by protonating the oxygen first.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Hydroxide is a bad leaving group — so alcohols need activation first.',

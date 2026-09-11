@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>DEPT: recovering the hydrogen-count information that decoupling threw away</h3><p class="step-body">Removing all ¹H splitting (via decoupling) makes the spectrum easy to read but discards useful information: how many hydrogens are attached to each carbon. A specialized pulse sequence called <b>DEPT</b> (Distortionless Enhancement by Polarization Transfer) recovers this without reintroducing splitting: it manipulates peak phase (up or down) and intensity based on whether a carbon is a CH₃, CH₂, or CH, and can identify quaternary carbons (no attached H) by their absence from the DEPT spectrum altogether (they still show up in the ordinary decoupled spectrum, just not in DEPT) — giving a hydrogen count per carbon without ever bringing back a single split multiplet.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('para-xylene'),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Decoupling removes splitting entirely — one clean peak per unique carbon.',

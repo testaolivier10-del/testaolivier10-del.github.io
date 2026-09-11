@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Diazonium salts and the Sandmeyer-type substitutions (a brief preview)</h3><p class="step-body">Primary aromatic amines react with nitrous acid (HNO₂) to form <b>diazonium salts</b> (ArN₂⁺) — an excellent leaving group (N₂ gas) that opens the door to substituting a wide range of other groups (halides, CN, OH) onto the aromatic ring in place of the original amine, a family of reactions collectively called Sandmeyer reactions. This is a direct preview of how amine chemistry connects into Module 13 (Aromatic Chemistry): the amine group here is really acting as a synthetic placeholder, installed and later swapped out for whatever the target molecule actually needs at that ring position.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('ethylamine', { caption: 'Ethylamine. The nitrogen lone pair does all the work: it is what attacks an alkyl halide, what adds to a carbonyl, and what gets acylated.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Direct SN2 alkylation of an amine is hard to stop at one step.',

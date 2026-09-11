@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Nucleophilicity ≠ basicity</h3><p class="step-body">Basicity is thermodynamic (equilibrium proton affinity, exact once you cover pKa); nucleophilicity is kinetic (speed of attack on carbon). They usually track together, but steric hindrance splits them: tert-butoxide is a <b>stronger base</b> than hydroxide but a <b>much weaker nucleophile</b>, since its bulky methyl groups block it from a crowded carbon. This is exactly why bulky bases get used deliberately in E2 (Module 6).</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('acetate-ion', { caption: 'A nucleophile is something with electrons to give. Acetate has both a negative charge and lone pairs — but the same resonance that stabilises it also makes it a fairly weak one.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: '"Nucleus-loving" — an electron pair looking for a positive partner.',

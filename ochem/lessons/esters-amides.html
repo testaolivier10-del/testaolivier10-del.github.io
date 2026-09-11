@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Amides: the least reactive, and biology\'s backbone</h3><p class="step-body">Amides (RCONR\'₂) are so unreactive that they require harsh conditions (strong acid or base, with heat) to hydrolyze at all. This stability is exactly why amides are the linkage that holds proteins together (the peptide bond is simply an amide) — a bond that needs to survive ordinary biological conditions but still be selectively breakable by dedicated enzymes (proteases). LiAlH₄ can still reduce amides, but distinctively to an <b>amine</b> rather than an alcohol, since the nitrogen stays attached through the reduction.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('methyl-acetate', { caption: 'An ester: a carbonyl with an OR group that can leave. Swap that oxygen for nitrogen and you get an amide, which is far less reactive for two reasons at once.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'One core structure, four leaving groups, one reactivity ladder.',

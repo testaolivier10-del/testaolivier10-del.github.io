@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -69,6 +70,7 @@
       '<h3>Radical HBr addition: anti-Markovnikov by a totally different route</h3><p class="step-body">In the presence of peroxides (ROOR), HBr addition switches from the ionic (carbocation) mechanism to a <b>radical chain mechanism</b>: a bromine radical (not H⁺) adds first, to whichever carbon gives the <b>more stable radical</b> (3° &gt; 2° &gt; 1°, the same substitution-stability trend but for radicals instead of cations) — which is the less substituted carbon. This flips the regiochemistry: Br ends up on the less substituted carbon, H on the more substituted one — the reverse of normal (ionic) HBr addition. This "peroxide effect" applies specifically to HBr; HCl and HI do not undergo an efficient radical chain and still add via the normal, Markovnikov, ionic pathway.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('propene-hbr', { caption: 'An unsymmetrical alkene. The proton adds to the carbon with more hydrogens, because that puts the positive charge on the carbon better able to carry it.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Markovnikov\'s rule is just carbocation stability, restated.',

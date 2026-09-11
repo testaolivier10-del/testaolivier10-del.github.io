@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Same substrate, opposite regiochemistry — this is not a new rule</h3><p class="step-body">This acid/base regiochemistry switch is the exact same underlying logic you\'ve now seen three times: SN1-like character (carbocation stabilization matters, attack favors the more substituted carbon) versus pure SN2 character (sterics dominate, attack favors the less hindered carbon) — precisely the substrate/mechanism framework from the Substrate &amp; Solvent Effects lesson, just applied to a strained ring instead of an open-chain leaving group.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('propylene-oxide'),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'A three-membered ring is under enormous strain — and that strain drives the chemistry.',

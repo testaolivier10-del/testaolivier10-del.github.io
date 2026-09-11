@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>Why this matters biologically</h3><p class="step-body">Almost all of biology is built from chiral molecules — amino acids, sugars, DNA\'s helix. A chiral biological receptor can tell two mirror-image molecules apart, which is why one enantiomer of a drug can be therapeutic while its mirror image is inactive or even harmful (thalidomide is the most famous historical example). You\'ll see exactly how enantiomers differ in their biological interactions in an upcoming lesson.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('bromochlorofluoromethane', { caption: 'Four different groups on one carbon. Its mirror image cannot be rotated onto it, which is the whole definition of chiral.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Chiral means "not superimposable on its own mirror image."',

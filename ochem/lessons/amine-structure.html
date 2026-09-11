@@ -55,6 +55,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -70,6 +71,7 @@
       '<h3>The basicity ranking that results</h3><p class="step-body">Putting these effects together gives a clear ranking: alkylamine (most basic, pKaH ≈ 10-11) > ammonia (pKaH ≈ 9.2, no alkyl donation) > aniline-type arylamine (pKaH ≈ 4.6, resonance into a ring) > amide (least basic, pKaH ≈ −1, resonance into a carbonyl). Whenever you need to rank the basicity of two nitrogen-containing compounds, the first and most powerful question to ask is: <b>is the lone pair delocalized by resonance into something else, and if so, into what?</b></p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('ethylamine', { caption: 'Ethylamine. That available nitrogen lone pair is exactly what makes an amine basic — and exactly what an amide gives away to resonance.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'A nitrogen lone pair makes amines the most reliable organic base.',
