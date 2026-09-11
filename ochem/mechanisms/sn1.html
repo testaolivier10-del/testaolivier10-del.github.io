@@ -108,8 +108,10 @@
 <script>
 (function(){
   var TOPIC_ID = 'sn1';
-  var step = 0; // 0 explain, 1 ionize (draw arrow), 2 visualize cation, 3 attack a face, 4 predict, 5 explain+challenge
+  // 0 explain, 1 ionize (draw arrow), 2 visualize cation, 3 attack a face, 4 predict, 5 explain+challenge
   var TOTAL = 6;
+  var begin = window.OchemCurriculum.beginLessonRun(TOPIC_ID, TOTAL+1);
+  var step = begin.step;
   var card = document.getElementById('card');
   var progFill = document.getElementById('progFill');
   var progLabel = document.getElementById('progLabel');
@@ -118,6 +120,7 @@
   function updateProgress(){
     progFill.style.width = Math.round((step/TOTAL)*100) + '%';
     progLabel.textContent = 'Step ' + (step+1) + ' / ' + (TOTAL+1);
+    window.OchemCurriculum.saveStep(TOPIC_ID, step);
   }
   function feedbackHtml(id){ return '<div class="feedback" id="' + id + '"></div>'; }
   function showFeedback(el, good, text){ el.className = 'feedback show ' + (good?'good':'bad'); el.textContent = text; }
@@ -325,6 +328,7 @@
         record(isCorrect);
         if(isCorrect){
           showFeedback(fb, true, 'Correct — more alkyl groups around the cationic carbon donate electron density into the empty p orbital (a stabilizing effect called <b>hyperconjugation</b>) and stabilize the positive charge, so tertiary substrates ionize fastest. This is exactly the opposite of SN2, which prefers unhindered, primary carbons.');
+          window.OchemCurriculum.completeLessonRun(TOPIC_ID);
           card.querySelector('#doneBox').innerHTML = '<div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press">Back to Learn</a></div>';
         } else {
           showFeedback(fb, false, 'Think about which cation is more stable — more alkyl groups around the positive carbon, or fewer?');
@@ -354,6 +358,17 @@
       return;
     }
     toggleBar.innerHTML = '<a href="' + location.pathname + '?notes=1" class="link-quiet">&#128221; View lesson notes</a>';
+    if(begin.resumed){
+      var resumeNote = document.createElement('div');
+      resumeNote.className = 'lesson-resume-note';
+      resumeNote.innerHTML = 'Resumed from where you left off (step ' + (step+1) + ' of ' + (TOTAL+1) + '). <a href="#" class="link-quiet" id="lessonStartOverLink">Start over instead</a>';
+      shell.insertBefore(resumeNote, progressBarEl || card);
+      resumeNote.querySelector('#lessonStartOverLink').addEventListener('click', function(e){
+        e.preventDefault();
+        window.OchemCurriculum.resetRun(TOPIC_ID);
+        location.reload();
+      });
+    }
   })();
 
   if(!notesMode) render();

@@ -77,17 +77,25 @@
       },
       {
         render: function(api){
-          var pairs = [['O','H','o'], ['C','H','c'], ['C','Cl','cl']];
+          // Explicit correct side per pair (Pauling values: O 3.44, C 2.55,
+          // H 2.20, Cl 3.16) — never inferred from left/right position.
+          var pairs = [
+            { left: 'O', right: 'H', correct: 'left' },
+            { left: 'C', right: 'H', correct: 'left' },
+            { left: 'C', right: 'Cl', correct: 'right' }
+          ];
           var idx = 0, correctSoFar = 0;
           function scene(pair){
             return '<div class="scene"><svg viewBox="0 0 220 100">' +
               '<line x1="90" y1="50" x2="130" y2="50" stroke="var(--line)" stroke-width="2.5"/>' +
-              '<g class="atom" data-key="left"><circle cx="70" cy="50" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="70" y="56" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="14" pointer-events="none">' + pair[0] + '</text></g>' +
-              '<g class="atom" data-key="right"><circle cx="150" cy="50" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="150" y="56" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="14" pointer-events="none">' + pair[1] + '</text></g>' +
+              '<g class="atom" data-key="left"><circle cx="70" cy="50" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="70" y="56" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="14" pointer-events="none">' + pair.left + '</text></g>' +
+              '<g class="atom" data-key="right"><circle cx="150" cy="50" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="150" y="56" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="14" pointer-events="none">' + pair.right + '</text></g>' +
             '</svg></div>';
           }
           function paint(){
             var pair = pairs[idx];
+            var correctSymbol = pair[pair.correct];
+            var wrongSymbol = pair.correct === 'left' ? pair.right : pair.left;
             api.card.innerHTML =
               '<div class="step-eyebrow">Interact &middot; ' + (idx+1) + ' / ' + pairs.length + '</div>' +
               '<h2 class="step-title">Click the more electronegative atom.</h2>' +
@@ -101,14 +109,13 @@
               g.addEventListener('click', function(){
                 if(answeredThis) return;
                 answeredThis = true;
-                // Right atom is always the more electronegative one in each pair above.
-                var isCorrect = g.getAttribute('data-key') === 'right';
+                var isCorrect = g.getAttribute('data-key') === pair.correct;
                 api.record(isCorrect);
                 if(isCorrect){
                   correctSoFar++;
-                  api.showFeedback(fb, true, pair[1] + ' is more electronegative than ' + pair[0] + '.');
+                  api.showFeedback(fb, true, correctSymbol + ' is more electronegative than ' + wrongSymbol + '.');
                 } else {
-                  api.showFeedback(fb, false, 'Actually ' + pair[1] + ' pulls harder here — it’s further up/right on the periodic table.');
+                  api.showFeedback(fb, false, 'Actually ' + correctSymbol + ' pulls harder here — check its position on the periodic table (or look it up with the ⚛ tool).');
                 }
                 next.disabled = false;
               });
