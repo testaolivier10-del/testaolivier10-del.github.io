@@ -85,6 +85,48 @@ if (existsSync(sitemapPath)) {
 // credit the wrong concept. The engine already falls back to inference when
 // the step count disagrees, so this never ships bad data — but a silent
 // fallback also means nobody notices the map has rotted, hence the check.
+/* Count the top-level entries of a lesson's `steps: [ ... ]` array.
+
+   This used to be `body.match(/\{\s*(?:type|render)\s*:/g).length`, which
+   silently assumed every step object opens with `type:` or `render:` as
+   its very first property. That is not a rule the engine enforces, and it
+   stopped holding the moment steps grew a `diagramHtml` ahead of `type:`
+   or a comment ahead of `render:` — at which point the checker reported
+   every one of those lessons as having one step fewer than it has, which
+   reads like the concept map drifting when nothing of the sort happened.
+
+   So scan for real: find the steps array, then walk it tracking nesting,
+   strings and comments, and count the braces that open at depth 1. */
+function countSteps(body) {
+  const start = body.indexOf('steps: [');
+  if (start < 0) return null;
+  let i = body.indexOf('[', start);
+  let depth = 0, count = 0;
+  let quote = null, esc = false, line = false, block = false;
+
+  for (; i < body.length; i++) {
+    const c = body[i], next = body[i + 1];
+
+    if (line) { if (c === '\n') line = false; continue; }
+    if (block) { if (c === '*' && next === '/') { block = false; i++; } continue; }
+    if (quote) {
+      if (esc) esc = false;
+      else if (c === '\\') esc = true;
+      else if (c === quote) quote = null;
+      continue;
+    }
+    if (c === '/' && next === '/') { line = true; i++; continue; }
+    if (c === '/' && next === '*') { block = true; i++; continue; }
+    if (c === '"' || c === "'" || c === '`') { quote = c; continue; }
+
+    if (c === '[') { depth++; continue; }
+    if (c === ']') { depth--; if (depth === 0) return count; continue; }
+    if (c === '{') { if (depth === 1) count++; depth++; continue; }
+    if (c === '}') { depth--; continue; }
+  }
+  return null; // unbalanced; caller reports it
+}
+
 {
   const lcPath = join(ROOT, 'ochem/assets/lesson-concepts.js');
   const lessonDir = join(ROOT, 'ochem/lessons');
@@ -97,11 +139,13 @@ if (existsSync(sitemapPath)) {
     for (const { topic, n } of entries) {
       const lesson = join(lessonDir, topic + '.html');
       if (!existsSync(lesson)) { fail(`lesson-concepts.js: no lesson file for "${topic}"`); continue; }
-      // Count the step objects the lesson hands the engine. Steps are the
-      // top-level entries of the steps array, each starting `{ type:` or
-      // `{ render:` at a consistent indent.
+      // Count the step objects the lesson hands the engine.
       const body = readFileSync(lesson, 'utf8');
-      const steps = (body.match(/\{\s*(?:type|render)\s*:/g) || []).length;
+      const steps = countSteps(body);
+      if (steps === null) {
+        fail(`lesson-concepts.js: could not find the steps array in ${topic}.html`);
+        continue;
+      }
       if (steps !== n) {
         fail(`lesson-concepts.js: "${topic}" authored against ${n} steps but the lesson now has ${steps} — re-check the step indices, then update n.`);
       }

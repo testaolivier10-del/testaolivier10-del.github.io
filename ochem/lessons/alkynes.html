@@ -38,7 +38,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -56,6 +56,8 @@
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
 <script src="../assets/molecules.js"></script>
+<script src="../assets/molecule-editor.js"></script>
+<script src="../assets/arrow-step.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -157,6 +159,29 @@
         correctIndex: 2,
         correctFeedback: 'Correct — Lindlar\'s poisoned, less active catalyst is specifically chosen to stop the reduction at the alkene stage and deliver syn (cis) addition.',
         wrongFeedback: 'A normal Pd/C catalyst won\'t stop at the alkene — it reduces all the way to the alkane. NaNH₂ is a base for deprotonation, not a reducing agent.'
+      },
+      {
+        /* Acetylide formation. The lesson explains the pKa 25 figure at
+           length; this makes the student draw the step that figure is
+           about. */
+        render: function(api){
+          window.OchemArrowStep.mount(api, {
+            eyebrow: 'Draw it',
+            title: 'Sodium amide removes the terminal alkyne proton. Draw the arrow.',
+            bodyHtml: '<p class="step-body">One arrow. Only one hydrogen in this molecule is acidic enough for amide to take — and once it is gone, the electrons left behind are the acetylide nucleophile.</p>',
+            molecule: 'propyne',
+            concepts: ['alkyne-acidity', 'curved-arrow-direction'],
+            arrows: [{ from: 'bond:c2-h', to: 'c2' }],
+            hint: 'Click the bond to the acidic hydrogen, then click where its electrons stay behind.',
+            why: 'The C\u2013H bonding pair is left on the sp carbon, giving an acetylide anion. That anion is stable enough to form because an sp orbital is 50% s character and holds the pair close to the nucleus — the whole reason this C\u2013H is pKa 25 while the methyl hydrogens at the other end of the same molecule are around 50.',
+            wrong: {
+              'bond:ch3-c1>ch3': 'That is a C\u2013C bond, not a C\u2013H, and amide is removing a proton here. Find the hydrogen.',
+              'bond:c2-h>h': 'The electrons stay behind rather than leaving with the hydrogen — a proton departs bare. If they left with it you would have made a hydride, not an acetylide.',
+              'c2>bond:c2-h': 'Backwards. That arrow forms the bond you are being asked to break.',
+              'bond:c1-c2>c1': 'The triple bond is not what breaks. Deprotonation touches only the C\u2013H; the triple bond is what makes that C\u2013H acidic in the first place.'
+            }
+          });
+        }
       },
       {
         type: 'final',
