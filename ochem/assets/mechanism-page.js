@@ -177,7 +177,7 @@
           ? '<b>Correct.</b> ' + cfg.why
           : '<b>' + ((cfg.wrong && cfg.wrong[i]) || 'Not quite.') + '</b> ' + cfg.why;
         if(isFinal){
-          if(M) M.noteLesson(CFG.topicId);
+          if(M) M.noteLesson(CFG.topicId, 'mechanism');
           if(CU && CU.completeLessonRun) CU.completeLessonRun(CFG.topicId);
           card.querySelector('#afterBox').innerHTML = doneBox();
         } else {

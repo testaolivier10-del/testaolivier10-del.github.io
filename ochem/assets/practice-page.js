@@ -393,7 +393,11 @@
     var comingBack = touched.filter(function(p){ return p.interval > 0; })
       .sort(function(a, b){ return a.due - b.due; });
 
-    var html = '<div class="overall-card" style="margin-bottom:6px;">' +
+    // What the session just earned, rendered by the game layer so Practice
+    // and Review report it identically.
+    var xpHtml = window.OchemXP ? window.OchemXP.summaryHtml() : '';
+
+    var html = xpHtml + '<div class="overall-card" style="margin-bottom:6px;">' +
         '<div><div class="k">Session score</div><div class="big">' + score + '%</div></div>' +
         '<div style="max-width:320px;font-size:13.5px;font-weight:700;opacity:.85;line-height:1.55;">' +
           esc(S.correct + ' of ' + asked + ' correct, across ' + plural(touched.length, 'concept') + '.') +

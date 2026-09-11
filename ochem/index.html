@@ -6,7 +6,7 @@
 <link rel="apple-touch-icon" href="../assets/icon.svg">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Organic Chemistry — Learn Mechanisms by Doing Them</title>
 <meta name="description" content="An interactive organic chemistry course: perform reaction mechanisms yourself — pick the nucleophile, draw the arrow, predict the product — with instant feedback, instead of just watching a video.">
@@ -18,6 +18,12 @@
 <meta property="og:site_name" content="Study Hub">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="../assets/theme.css">
+<!-- Shared across every subject on Study Hub: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../assets/account.js"></script>
+<script src="../assets/hub-progress.js"></script>
+<script src="assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="assets/ochem.css">
 <link rel="stylesheet" href="assets/periodic-table.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,6 +73,8 @@
 <div id="ochem-subnav" class="ochem-subnav"></div>
 
 <div class="xshell">
+
+  <div class="xsection" id="gameHome" style="padding-bottom:0;" hidden></div>
 
   <div class="hero">
     <div class="home-hero">
@@ -142,7 +150,7 @@
 
   <div class="xsection">
     <footer style="margin-top:0">
-      <p>Free while in beta. Progress is stored on your device — no account required.</p>
+      <p>Free while in beta. Progress is stored on your device — no account required. Signing in (optional) syncs it, and your level and streak are shared with every other subject on Study Hub.</p>
     </footer>
   </div>
 
@@ -151,8 +159,14 @@
   window.OCHEM_SECTION = 'home';
   window.OCHEM_BASE = '';
 </script>
+<!-- The home strip reports the real due-queue size, so it needs the same
+     concept model Practice and Review run on. -->
+<script src="assets/curriculum.js"></script>
+<script src="assets/concepts.js"></script>
+<script src="assets/mastery-engine.js"></script>
 <script src="assets/ochem-nav.js"></script>
 <script src="assets/periodic-table.js"></script>
+<script src="assets/game-panel.js"></script>
 <script>
   var toggle = document.getElementById('themeToggle');
   toggle.addEventListener('click', function(){

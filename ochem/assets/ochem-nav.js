@@ -19,6 +19,23 @@
     { key: 'mastery', label: 'Mastery', href: base + 'mastery.html' }
   ];
 
+  // Study Hub chrome: the level badge, the site-wide streak chip and the
+  // account button. Ochem's 81 pages each carry a hand-written header, so
+  // rather than editing every one of them the shared module injects the chips
+  // into whatever header is present. 'ochem' selects this course's rank names
+  // (Lewis Apprentice → Ochem Legend) for the same shared level number.
+  if(window.HubProgress) window.HubProgress.mount('ochem', { href: base + 'mastery.html' });
+
+  // Offline support: the same root-scoped worker the NREMT app registers.
+  // Ochem pages aren't precached, but the worker caches every page, script and
+  // stylesheet it successfully fetches, so a lesson you have opened once stays
+  // available offline.
+  if('serviceWorker' in navigator){
+    window.addEventListener('load', function(){
+      navigator.serviceWorker.register('/sw.js').catch(function(){ /* best-effort */ });
+    });
+  }
+
   var mount = document.getElementById('ochem-subnav');
   if(!mount) return;
 

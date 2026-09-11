@@ -23,6 +23,11 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/theme.css">
+<!-- Shared across every subject on Study Hub: one login, one level, one
+     streak. Loaded blocking and ahead of the page's own inline scripts
+     because those read window.HubProgress while the page parses. -->
+<script src="../assets/account.js"></script>
+<script src="../assets/hub-progress.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
@@ -193,11 +198,24 @@
     if(offset) d.setDate(d.getDate()+offset);
     return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
   }
-  function streakDisplay(){
+  // The streak is site-wide now (assets/hub-progress.js): a day spent on any
+  // Study Hub subject keeps it alive. hubStreak() is the single source the
+  // stat card, the calendar and the badges all read, with the old NREMT-only
+  // record as a fallback if the shared module didn't load.
+  function hubStreak(){
+    if(window.HubProgress) return window.HubProgress.streak();
     const today = dayKey(0), yesterday = dayKey(-1);
     const broken = streak.lastActiveDate !== null && streak.lastActiveDate !== today && streak.lastActiveDate !== yesterday;
-    return broken ? 0 : (streak.currentStreak || 0);
+    const counts = streak.dailyCounts || {};
+    return {
+      current: broken ? 0 : (streak.currentStreak || 0),
+      longest: streak.longestStreak || 0,
+      todayCount: counts[today] || 0,
+      goal: streak.dailyGoal || 20,
+      days: Object.keys(counts).reduce((a, k) => (a[k] = { nremt: counts[k] }, a), {}),
+    };
   }
+  function streakDisplay(){ return hubStreak().current; }
 
   // ---- Stat cards ----
   const totalAttempts = history.length;
@@ -234,8 +252,14 @@
 
   // ---- Streak calendar: the last 14 days, marked from dailyCounts ----
   (function renderCalendar(){
-    const counts = streak.dailyCounts || {};
-    const goal = streak.dailyGoal || 20;
+    const st = hubStreak();
+    // Per-day totals across every subject, so a day of ochem fills the square.
+    const counts = Object.keys(st.days || {}).reduce((acc, k) => {
+      const day = st.days[k] || {};
+      acc[k] = Object.keys(day).reduce((n, subj) => n + (day[subj] || 0), 0);
+      return acc;
+    }, {});
+    const goal = st.goal;
     const todayKey = dayKey(0);
     const DOW = ['S','M','T','W','T','F','S'];
     let html = '', studiedDays = 0;
@@ -246,7 +270,7 @@
       const done = (counts[k] || 0) > 0;
       if(done) studiedDays++;
       const cls = 'cal-day' + (done ? ' done' : '') + (k === todayKey ? ' today' : '');
-      html += `<div class="${cls}" title="${k}${done ? ' — ' + counts[k] + ' questions' : ''}">${DOW[d.getDay()]}</div>`;
+      html += `<div class="${cls}" title="${k}${done ? ' — ' + counts[k] + ' questions studied' : ''}">${DOW[d.getDay()]}</div>`;
     }
     document.getElementById('calGrid').innerHTML = html;
     const cur = streakDisplay();
@@ -261,11 +285,12 @@
     // Same quadratic curve nav.js uses; read here so this block doesn't depend
     // on the Level & XP section further down.
     function badgeLevel(){
+      if(window.HubProgress) return window.HubProgress.level();
       const total = (readJSON('nremt_xp', {total:0}).total) || 0;
       let n = 1; while(100 * n * n <= total) n++;
       return n;
     }
-    const longest = streak.longestStreak || 0;
+    const longest = hubStreak().longest;
     const best = history.length ? Math.max(...history.map(h2 => Math.round(h2.score/h2.total*100))) : 0;
     const defs = [
       { icon: '🎖️', label: '7-day streak',  earned: longest >= 7 },
@@ -310,48 +335,53 @@
     }).join('');
   })();
 
-  // ---- Level & XP (mirrors the header badge nav.js renders on every page) ----
-  const XP_KEY = 'nremt_xp';
-  const LEVEL_TITLES = [
-    { min: 1, title: 'First Responder' },
-    { min: 3, title: 'EMT Trainee' },
-    { min: 6, title: 'EMT Candidate' },
-    { min: 10, title: 'Field Ready' },
-    { min: 15, title: 'Rig Veteran' },
-    { min: 20, title: 'Code 3 Pro' },
-    { min: 30, title: 'NREMT Legend' },
-  ];
+  // ---- Level & XP ----
+  // The level is shared across every Study Hub subject (assets/hub-progress.js),
+  // so ochem work shows up here as part of the same rank — but the rank NAME
+  // stays EMS-flavored, and the split below shows how much of the total this
+  // app accounts for.
   const DOMAIN_TIER_LABELS = ['', 'Proficient', 'Advanced', 'Mastered'];
-  const xpState = readJSON(XP_KEY, { total: 0, domainTiers: {} });
-  function xpForLevel(n){ return 100 * (n - 1) * (n - 1); }
-  function levelForXp(xp){ let n = 1; while(xpForLevel(n + 1) <= xp) n++; return n; }
-  function titleForLevel(level){
-    let t = LEVEL_TITLES[0].title;
-    LEVEL_TITLES.forEach(l => { if(level >= l.min) t = l.title; });
-    return t;
+  const SUBJECT_LABELS = { nremt: 'NREMT', ochem: 'Organic Chemistry' };
+
+  function levelInfo(){
+    if(window.HubProgress) return window.HubProgress.levelInfo('nremt');
+    const total = (readJSON('nremt_xp', {total:0}).total) || 0;
+    const f = n => 100 * (n - 1) * (n - 1);
+    let lv = 1; while(f(lv + 1) <= total) lv++;
+    return { level: lv, title: 'First Responder', total: total,
+             into: total - f(lv), span: Math.max(1, f(lv + 1) - f(lv)), subjects: { nremt: total } };
+  }
+  function domainTiers(){
+    if(window.HubProgress) return window.HubProgress.badges('nremt').domainTiers || {};
+    return readJSON('nremt_xp', { domainTiers: {} }).domainTiers || {};
   }
 
   const levelBox = document.getElementById('levelBox');
-  const lvl = levelForXp(xpState.total);
-  const prevXp = xpForLevel(lvl), nextXp = xpForLevel(lvl + 1);
-  const into = xpState.total - prevXp, span = Math.max(1, nextXp - prevXp);
-  const fillPct = Math.round(into / span * 100);
-  const badgeChips = Object.entries(xpState.domainTiers || {})
+  const info = levelInfo();
+  const fillPct = Math.round(info.into / info.span * 100);
+  const badgeChips = Object.entries(domainTiers())
     .filter(([, tier]) => tier > 0)
     .map(([d, tier]) => `<span class="lvl-badge-chip">${d} · ${DOMAIN_TIER_LABELS[Math.min(tier, 3)]}</span>`)
     .join('');
+  // Only worth showing once a second subject has actually contributed.
+  const subjectEntries = Object.entries(info.subjects || {}).filter(([, n]) => n > 0);
+  const splitLine = subjectEntries.length > 1
+    ? `<div class="lvl-sub" style="margin-top:6px;">${subjectEntries
+        .map(([k, n]) => `${SUBJECT_LABELS[k] || k} ${n} XP`).join(' · ')}</div>`
+    : '';
   levelBox.innerHTML = `
     <div class="level-card">
       <span class="r-tag">Level &amp; XP</span>
       <div class="lvl-head">
-        <span class="lvl-ring">L${lvl}</span>
+        <span class="lvl-ring">L${info.level}</span>
         <span>
-          <span class="lvl-title">${titleForLevel(lvl)}</span>
-          <span class="lvl-titlesub">${xpState.total} XP total</span>
+          <span class="lvl-title">${info.title}</span>
+          <span class="lvl-titlesub">${info.total} XP total</span>
         </span>
       </div>
       <div class="lvl-track"><div class="lvl-fill" style="width:${fillPct}%"></div></div>
-      <div class="lvl-sub">${into} / ${span} XP to Level ${lvl + 1}</div>
+      <div class="lvl-sub">${info.into} / ${info.span} XP to Level ${info.level + 1}</div>
+      ${splitLine}
       ${badgeChips ? `<div class="lvl-badges">${badgeChips}</div>` : `<div class="lvl-sub" style="margin-top:14px;padding-top:14px;border-top:2px solid rgba(255,255,255,0.15);">Answer 20+ questions in a domain and hit 70% accuracy to earn your first domain badge.</div>`}
     </div>
   `;

@@ -272,6 +272,10 @@
     if(!conceptId || !window.OchemConcepts.get(conceptId)) return null;
     opts = opts || {};
     var tier = clamp(opts.tier || 2, 1, 4);
+    // The game layer (ochem-xp.js) weights XP by the same tier this update
+    // does, so a reward can never outrun the evidence. Optional: the engine
+    // works identically with no XP layer loaded.
+    if(window.OchemXP) window.OchemXP.onAnswer(conceptId, correct, tier);
     var share = opts.share === undefined ? 1 : clamp(opts.share, 0.15, 1);
 
     var d = read();
@@ -360,6 +364,7 @@
   }
 
   function recordSession(summary){
+    if(window.OchemXP) window.OchemXP.onSession(summary);
     var d = read();
     d.sessions.unshift({
       ts: now(), mode: summary.mode, asked: summary.asked, correct: summary.correct,
@@ -516,7 +521,8 @@
      reads it, the bench has done its job and the concept has to be allowed
      back into the queue to be re-tested. Without this the site hands out
      homework and then ignores that it was done. */
-  function noteLesson(topicId){
+  function noteLesson(topicId, kind){
+    if(window.OchemXP) window.OchemXP.onTopicComplete(topicId, kind || 'lesson');
     var ids = window.OchemConcepts.byTopic(topicId);
     if(!ids || !ids.length) return 0;
     var d = read(), t = now();

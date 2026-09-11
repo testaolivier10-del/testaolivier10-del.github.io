@@ -160,7 +160,11 @@
       .sort(function(a, b){ return a.due - b.due; })[0];
     var stillDue = E.reviewQueue();
 
-    var html = '<div class="rec-card">' +
+    // What the session just earned, rendered by the game layer so Practice
+    // and Review report it identically.
+    var xpHtml = window.OchemXP ? window.OchemXP.summaryHtml() : '';
+
+    var html = xpHtml + '<div class="rec-card">' +
       '<div class="k">' + (cleared ? 'Queue cleared' : 'Session ended') + '</div>' +
       '<h2>' + esc(cleared
         ? (S.correct === S.asked ? 'Cleared, and you got everything right.' : 'That\'s today\'s queue done.')

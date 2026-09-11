@@ -14,7 +14,11 @@ Plain HTML/CSS/vanilla JS — no framework, no bundler, no build step. Hosted on
 
 ```
 index.html            Study Hub landing page (lists available subjects)
-assets/                Shared hub-level styling/icons
+assets/                Shared across every subject
+  theme.css            Design system (also loaded by nremt/ and ochem/)
+  account.js           One login for the whole site: Supabase auth + namespaced
+                         cross-device sync (see Data & accounts)
+  hub-progress.js      One shared level and one shared streak; per-subject XP
 nremt/                 The LevlPrep app
   index.html           App home
   practice.html        Question bank UI (fetches assets/questions.json at runtime)
@@ -29,7 +33,8 @@ nremt/                 The LevlPrep app
   assets/
     questions.json        The 2,078-question bank (fetched by practice.html and search.html)
     theme.css             Shared design system (light/dark, "Guided Path" visual style)
-    nav.js                 Shared header/nav, XP/level logic, and optional account sync
+    nav.js                 Shared header/nav; NREMT-flavored shim over the site-wide
+                             level/streak engine in /assets/hub-progress.js
     vendor/three/          Vendored three.js (module build + loaders/controls actually used)
     body3d.glb              Compressed 3D anatomy model (meshopt)
 ochem/                 The Organic Chemistry app (beta)
@@ -113,7 +118,20 @@ ochem/                 The Organic Chemistry app (beta)
 scripts/check-site.mjs   CI: broken-link + JSON-validity checks (see below)
 ```
 
-`ochem/` reuses the root `assets/theme.css` design system but has its own lightweight page header and sub-nav (it doesn't use `nremt/assets/nav.js`, which is wired specifically to the NREMT XP/streak data). Lesson progress across all Ochem lessons is stored client-side in a single `localStorage` key, `ochem_progress` (per-topic `{correct, attempts}`, read by `curriculum.js`'s mastery functions); there's no account sync yet.
+`ochem/` reuses the root `assets/theme.css` design system but has its own lightweight page header and sub-nav (it doesn't use `nremt/assets/nav.js`, which builds the NREMT app's own nav). It does share the site-wide account, level and streak: every ochem page loads `/assets/account.js` and `/assets/hub-progress.js`, and `ochem/assets/ochem-nav.js` injects the level badge, streak chip and account button into the page's header.
+
+Lesson progress is stored in `ochem_progress` (per-topic `{correct, attempts}`, read by `curriculum.js`); the concept model lives in `ochem_mastery_v1` (see `ochem/assets/mastery-engine.js`); and the game layer's own state — concept badges, daily Rounds, achievements — lives in `ochem_game_v1` (`ochem/assets/ochem-xp.js`). All three sync with an account.
+
+### Game layer (`ochem/assets/ochem-xp.js`)
+
+Every reward is tied to something the mastery engine already believes, so none of it can be farmed:
+
+- **Tier-weighted XP.** A correct answer pays 6/10/15/22 XP by the question's difficulty tier — the same ordering the strength update uses. Wrong answers pay nothing; only the flat completion bonus is unconditional.
+- **Concept badges** (Solid / Strong / Mastered) are gated on the engine's *decayed strength* estimate plus a minimum attempt count, not on accuracy — so a badge means "you still know this", not "you once had a good run". They are never revoked, since losing one would punish taking a week off.
+- **Daily Rounds** is a quest built from the engine's real due queue, so the daily goal is by construction the highest-value work available.
+- **Review debt** replaces a punishing streak: overdue concepts accumulate visibly and clear when reviewed. Missing a day costs nothing.
+
+`ochem/assets/game-panel.js` renders all of it at the top of `ochem/mastery.html`, plus a compact resume strip on `ochem/index.html`.
 
 ## Tools
 
@@ -135,9 +153,29 @@ answer makes the rules look tidy.
 
 ## Data & accounts
 
-All progress (seen/missed questions, streaks, XP, mastery, domain stats) is stored in the browser's `localStorage` — no account is required to use any feature.
+All progress (seen/missed questions, streaks, XP, mastery, domain stats) is stored in the browser's `localStorage` — no account is required to use any feature, in any subject.
 
-Signing in is optional and layers **cross-device sync** on top of that same local data, via Supabase (`nremt/assets/nav.js`). The Supabase key committed in that file is a *publishable* anon key — safe to expose, since access is enforced entirely by Postgres row-level security (each user can read/write only their own `user_progress` row).
+Signing in is optional and layers **cross-device sync** on top of that same local data, via Supabase (`assets/account.js`). The Supabase key committed in that file is a *publishable* anon key — safe to expose, since access is enforced entirely by Postgres row-level security (each user can read/write only their own `user_progress` row).
+
+**One login covers the whole site.** The Supabase session lives in `localStorage` on this origin, which `/`, `/nremt/` and `/ochem/` all share, so signing in anywhere signs you in everywhere. `assets/account.js` is loaded by every page in every subject.
+
+### Namespaced sync
+
+`user_progress.data` is shaped as:
+
+```json
+{ "v": 2, "ns": { "hub": {...}, "nremt": {...}, "ochem": {...} } }
+```
+
+Each subject calls `StudyHubAccount.registerNamespace(name, keys)` with the `localStorage` keys it owns. A push reads the current row, merges in **only** the namespaces the current page registered, and writes the result back. This is what stops an ochem page's sync from wiping NREMT progress — the previous shape was a flat bag of `nremt_*` keys upserted wholesale, which could not survive a second subject. Rows written before this (no `v`) are read as if they were the `nremt` namespace, which is what they were, and rewritten on the next push.
+
+### Shared level and streak (`assets/hub-progress.js`)
+
+- **The level is shared.** One number, earned from every subject, stored in `hub_xp_v1` along with the per-subject XP split.
+- **The streak is shared.** Studying *any* subject keeps it alive — `hub_activity_v1` records per-day, per-subject counts and the streak is derived from them rather than stored as a counter (a stored counter has to be corrected on read anyway, and deriving it means two subjects can't race each other into double-counting).
+- **Rank names are local.** Level 7 is "Rig Veteran" on NREMT, "Mechanism Marshal" on ochem, and "Veteran" on the hub page. Same rank, each subject keeps its own voice.
+
+Both keys are migrated once per device from the old NREMT-only records (`nremt_xp`, `nremt_streak`), so no existing user loses a level or a streak.
 
 ## Analytics
 

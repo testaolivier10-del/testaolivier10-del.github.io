@@ -29,6 +29,9 @@
 }
 </script>
 <link rel="stylesheet" href="assets/theme.css">
+<!-- One login, one level, one streak across every subject. -->
+<script src="assets/account.js"></script>
+<script src="assets/hub-progress.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
@@ -74,6 +77,27 @@
   .featured-cta{font:900 14px var(--font-ui);color:var(--accent);display:inline-flex;align-items:center;gap:6px;}
   .featured-card:hover .featured-cta{gap:10px;}
 
+  /* Your-progress card. Only rendered once there is progress to show, so a
+     first-time visitor sees the subjects immediately instead of an empty
+     scoreboard. */
+  .hub-progress-card{
+    background:var(--navy);color:var(--on-accent);border-radius:var(--radius-lg);
+    padding:22px 24px;box-shadow:var(--lift-lg);
+  }
+  .hub-progress-top{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+  .hub-level-ring{
+    width:52px;height:52px;border-radius:50%;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    font:900 17px var(--font-ui);background:rgba(255,255,255,0.14);
+    border:2px solid rgba(255,255,255,0.28);
+  }
+  .hub-level-title{font:900 19px var(--font-ui);margin:0;letter-spacing:-0.01em;}
+  .hub-level-sub{font:700 13px var(--font-ui);margin:3px 0 0;opacity:.78;}
+  .hub-track{height:9px;border-radius:var(--radius-pill);background:rgba(255,255,255,0.16);overflow:hidden;}
+  .hub-fill{height:100%;background:var(--on-accent);border-radius:var(--radius-pill);}
+  .hub-split{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-top:14px;border-top:2px solid rgba(255,255,255,0.15);}
+  .hub-split span{font:900 11.5px var(--font-ui);padding:5px 11px;border-radius:var(--radius-pill);background:rgba(244,210,140,0.16);color:#F4D28C;}
+
   .roadmap-row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line-soft);}
   .roadmap-row:last-child{border-bottom:0;}
   .roadmap-name{font-size:17px;font-weight:900;margin:0;}
@@ -107,6 +131,8 @@
       <span><span class="dot"></span>Optional sign-in syncs progress across devices</span>
     </div>
   </div>
+
+  <div class="xsection" id="hubProgress" hidden></div>
 
   <div class="xsection">
     <div class="xgrid">
@@ -158,6 +184,41 @@
 
 </div>
 <script>
+  // Renders the level badge, the shared streak chip and the account button
+  // into the header above. 'hub' selects the neutral rank names — the same
+  // level reads "Rig Veteran" on NREMT and "Mechanism Marshal" on ochem.
+  if(window.HubProgress) window.HubProgress.mount('hub');
+
+  // ---- Your progress, once there is any ----
+  (function renderProgress(){
+    var box = document.getElementById('hubProgress');
+    if(!box || !window.HubProgress) return;
+    var info = window.HubProgress.levelInfo('hub');
+    var streak = window.HubProgress.streak();
+    var subjects = Object.keys(info.subjects || {}).filter(function(k){ return info.subjects[k] > 0; });
+    if(!info.total && !streak.current) return;   // nothing to show a first-time visitor
+
+    var LABELS = { nremt: 'NREMT-EMT', ochem: 'Organic Chemistry' };
+    var pct = Math.round(info.into / info.span * 100);
+    box.innerHTML =
+      '<div class="hub-progress-card">' +
+        '<div class="hub-progress-top">' +
+          '<span class="hub-level-ring">L' + info.level + '</span>' +
+          '<div>' +
+            '<p class="hub-level-title">' + info.title + '</p>' +
+            '<p class="hub-level-sub">' + info.total + ' XP total' +
+              (streak.current ? ' &middot; ' + streak.current + '-day streak' : '') + '</p>' +
+          '</div>' +
+        '</div>' +
+        '<div class="hub-track"><div class="hub-fill" style="width:' + pct + '%"></div></div>' +
+        '<p class="hub-level-sub">' + info.into + ' / ' + info.span + ' XP to Level ' + (info.level + 1) + '</p>' +
+        (subjects.length ? '<div class="hub-split">' + subjects.map(function(k){
+          return '<span>' + (LABELS[k] || k) + ' &middot; ' + info.subjects[k] + ' XP</span>';
+        }).join('') + '</div>' : '') +
+      '</div>';
+    box.hidden = false;
+  })();
+
   var THEME_KEY = 'nremt_theme';
   var toggle = document.getElementById('themeToggle');
   toggle.addEventListener('click', function(){
