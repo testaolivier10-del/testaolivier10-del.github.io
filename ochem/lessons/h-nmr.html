@@ -123,8 +123,8 @@
         type: 'mcq',
         eyebrow: 'Step 2 · Guided Practice',
         title: 'A molecule\'s ¹H NMR spectrum shows two signals with integration values in a 3:2 ratio. What does this tell you?',
-        options: ['The two signals come from hydrogen environments in a 3:2 ratio (e.g., 3 hydrogens of one type for every 2 of another)', 'The molecule contains exactly 3 and 2 total hydrogens', 'One signal is three times stronger in chemical shift than the other'],
-        correctIndex: 0,
+        options: ['The molecule contains exactly 3 and 2 total hydrogens', 'One signal is three times stronger in chemical shift than the other', 'The two signals come from hydrogen environments in a 3:2 ratio (e.g., 3 hydrogens of one type for every 2 of another)'],
+        correctIndex: 2,
         correctFeedback: 'Correct — integration gives relative, not absolute, hydrogen counts; the actual numbers could be 3 and 2, or 6 and 4, or any multiple preserving that ratio.',
         wrongFeedback: 'Integration values are relative to each other, not absolute counts, and they have nothing to do with chemical shift (position) — they measure signal area (proportional to hydrogen count).'
       },
@@ -153,8 +153,8 @@
         type: 'mcq',
         eyebrow: 'Step 6 · Independent Practice',
         title: 'A compound\'s ¹H NMR shows a 2H signal at 2.3 ppm as a triplet, and a 3H signal at 1.0 ppm as a triplet. What does the fact that BOTH signals are triplets suggest about their relationship?',
-        options: ['They are likely NOT directly coupled to each other in a simple CH₃–CH₂ pattern (since coupled partners would typically show n+1 patterns matching each other\'s hydrogen counts, like a quartet paired with a triplet), so another explanation (like a symmetric CH₂ neighbor) should be considered', 'They must be identical environments', 'Triplet-triplet pairings are impossible under any circumstances'],
-        correctIndex: 0,
+        options: ['They must be identical environments', 'They are likely NOT directly coupled to each other in a simple CH₃–CH₂ pattern (since coupled partners would typically show n+1 patterns matching each other\'s hydrogen counts, like a quartet paired with a triplet), so another explanation (like a symmetric CH₂ neighbor) should be considered', 'Triplet-triplet pairings are impossible under any circumstances'],
+        correctIndex: 1,
         correctFeedback: 'Correct — a classic ethyl group (CH₃CH₂–) pairs a triplet (CH₃, split by 2 neighbors) with a quartet (CH₂, split by 3 neighbors), not two triplets, so this pattern hints at a different structural arrangement (each proton set is actually next to 2 equivalent neighboring hydrogens instead).',
         wrongFeedback: 'Two different signals appearing as two different triplets are neither identical nor impossible — but it does rule out the simplest ethyl-group (CH₃–CH₂–) interpretation, since that specific pattern would pair a triplet with a quartet, not two triplets.'
       },
@@ -162,8 +162,8 @@
         type: 'final',
         eyebrow: 'Challenge',
         title: 'A compound shows exactly one ¹H NMR signal: a single, unsplit peak (singlet) at 7.3 ppm, integrating for 5H relative to no other signal in the spectrum. What structure is most consistent with this data?',
-        options: ['A monosubstituted benzene ring where all 5 remaining aromatic hydrogens happen to be equivalent (or nearly so) and appear together, downfield due to ring current, with no non-equivalent neighboring hydrogens to split them', 'A simple, isolated CH₅ group', 'This data is impossible to produce from any real molecule'],
-        correctIndex: 0,
+        options: ['A simple, isolated CH₅ group', 'This data is impossible to produce from any real molecule', 'A monosubstituted benzene ring where all 5 remaining aromatic hydrogens happen to be equivalent (or nearly so) and appear together, downfield due to ring current, with no non-equivalent neighboring hydrogens to split them'],
+        correctIndex: 2,
         correctFeedback: 'Correct — a monosubstituted phenyl group (like in toluene\'s aromatic ring) often shows its 5 aromatic hydrogens clustered together around 7.3 ppm; since they\'re not coupled to any non-equivalent hydrogens outside that aromatic system, the signal doesn\'t split further.'
       }
     ]
