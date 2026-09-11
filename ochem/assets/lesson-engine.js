@@ -45,15 +45,15 @@
     toggleBar.className = 'lesson-mode-toggle';
     shell.insertBefore(toggleBar, progressBarEl || card);
 
+    var backLinkHtml = '<a href="' + doneHref + '" class="link-quiet lesson-back-link">&larr; Back to Learn</a>';
+
     if(notesMode && opts.notesHtml){
       if(progressBarEl) progressBarEl.style.display = 'none';
-      toggleBar.innerHTML = '<a href="' + location.pathname + '" class="link-quiet">&larr; Back to the interactive lesson</a>';
+      toggleBar.innerHTML = backLinkHtml + '<a href="' + location.pathname + '" class="link-quiet">&larr; Back to the interactive lesson</a>';
       card.innerHTML = '<div class="notes-view">' + opts.notesHtml + '</div><div class="actions" style="margin-top:8px;"><a href="' + doneHref + '" class="btn-press alt">Back to Learn</a></div>';
       return;
     }
-    if(opts.notesHtml){
-      toggleBar.innerHTML = '<a href="' + location.pathname + '?notes=1" class="link-quiet">&#128221; View lesson notes</a>';
-    }
+    toggleBar.innerHTML = backLinkHtml + (opts.notesHtml ? '<a href="' + location.pathname + '?notes=1" class="link-quiet">&#128221; View lesson notes</a>' : '');
 
     if(begin.resumed){
       var resumeNote = document.createElement('div');
