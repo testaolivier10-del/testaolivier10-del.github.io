@@ -346,11 +346,11 @@
     shell.insertBefore(toggleBar, progressBarEl || card);
     if(notesMode){
       if(progressBarEl) progressBarEl.style.display = 'none';
-      toggleBar.innerHTML = '<a href="' + location.pathname + '" class="link-quiet">&larr; Back to the interactive lesson</a>';
+      toggleBar.innerHTML = '<a href="../learn.html" class="link-quiet lesson-back-link">&larr; Back to Learn</a><a href="' + location.pathname + '" class="link-quiet">&larr; Back to the interactive lesson</a>';
       card.innerHTML = '<div class="notes-view">' + NOTES_HTML + '</div><div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press alt">Back to Learn</a></div>';
       return;
     }
-    toggleBar.innerHTML = '<a href="' + location.pathname + '?notes=1" class="link-quiet">&#128221; View lesson notes</a>';
+    toggleBar.innerHTML = '<a href="../learn.html" class="link-quiet lesson-back-link">&larr; Back to Learn</a><a href="' + location.pathname + '?notes=1" class="link-quiet">&#128221; View lesson notes</a>';
     if(begin.resumed){
       var resumeNote = document.createElement('div');
       resumeNote.className = 'lesson-resume-note';
