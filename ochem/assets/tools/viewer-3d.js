@@ -23,8 +23,10 @@
   var zoom = 1;
   var fit = 52;                      // scale that makes this molecule fill the frame
   var selected = mol.focus;
-  var opts = { labels:true, lonePairs:true, spin:false };
+  var opts = { labels:true, lonePairs:true, spin:false, mode:'ball' };
   var spinHandle = null;
+  var rockHandle = null;
+  var idleSince = Date.now();
 
   function esc(s){
     return String(s).replace(/[&<>"]/g, function(c){
@@ -42,6 +44,13 @@
         '<div class="tpanel__head"><span>Drag to turn it</span><span id="v3Name" class="tmuted"></span></div>' +
         '<div class="v3-stage" id="v3Stage">' +
           '<svg id="v3Svg" viewBox="0 0 320 300" role="img" aria-label="3D molecule"></svg>' +
+        '</div>' +
+        '<div class="trow" style="margin-top:12px;">' +
+          '<div class="tseg" id="v3Modes">' +
+            '<button type="button" data-mode="ball" class="on">Ball &amp; stick</button>' +
+            '<button type="button" data-mode="space">Space-filling</button>' +
+            '<button type="button" data-mode="wire">Wireframe</button>' +
+          '</div>' +
         '</div>' +
         '<div class="trow" style="margin-top:12px;">' +
           '<div class="tseg" id="v3Views">' +
@@ -93,6 +102,7 @@
 
   function select(m){
     if(!m) return;
+    nudgeIdle();
     mol = m;
     selected = m.focus;
     elPicker.querySelectorAll('.tchip').forEach(function(b){
@@ -122,8 +132,8 @@
 
   function draw(){
     svg.innerHTML = M3.render(mol, {
-      cx:160, cy:150, scale:fit * zoom, dist:9,
-      rx:rx, ry:ry,
+      cx:160, cy:150, scale:fit * zoom,
+      rx:rx, ry:ry, mode:opts.mode,
       labels:opts.labels, lonePairs:opts.lonePairs,
       selected:selected
     });
@@ -210,6 +220,62 @@
       draw();
     });
   });
+
+  /* ---- Display mode -----------------------------------------------------
+
+     Same coordinates, three questions. Ball-and-stick reads the connectivity.
+     Space-filling draws every atom at its real van der Waals radius, which is
+     the only view in which "this carbon is too crowded to attack" is
+     something you can see rather than something you are told — in sticks, a
+     tert-butyl group and a hydrogen look equally out of the way. Wireframe
+     drops the volume when the spheres are what is hiding the skeleton. */
+  document.getElementById('v3Modes').querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click', function(){
+      opts.mode = b.getAttribute('data-mode');
+      document.getElementById('v3Modes').querySelectorAll('button').forEach(function(x){
+        x.classList.toggle('on', x === b);
+      });
+      // Lone pairs have nowhere to sit on a space-filling model: the surface
+      // they would hang off is the surface. The checkbox stays where the
+      // student left it and comes back with the other modes.
+      document.getElementById('v3Lp').disabled = (opts.mode === 'space');
+      draw();
+    });
+  });
+
+  /* ---- Idle rock --------------------------------------------------------
+
+     Motion is the strongest depth cue there is, and a still molecule on load
+     reads as a diagram no matter how it is shaded. So after a couple of
+     seconds of nothing, the viewer turns a few degrees back and forth — just
+     enough to say "this is an object, drag me" without becoming the spinning
+     thing that makes a page impossible to read. Any interaction stops it, and
+     it never fights the Spin button or a drag. */
+  var rockBase = null, rockT = 0;
+
+  function nudgeIdle(){
+    idleSince = Date.now();
+    rockBase = null;
+  }
+
+  function rockTick(){
+    rockHandle = requestAnimationFrame(rockTick);
+    if(opts.spin || dragging) { rockBase = null; return; }
+    if(Date.now() - idleSince < 2600) return;
+    if(rockBase === null){ rockBase = ry; rockT = 0; }
+    rockT += 0.012;
+    ry = rockBase + Math.sin(rockT) * 0.17;
+    draw();
+  }
+
+  // Respect a reader who has asked the OS for less motion.
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  if(!(calm && calm.matches)) rockHandle = requestAnimationFrame(rockTick);
+
+  ['pointerdown','wheel','keydown'].forEach(function(ev){
+    stage.addEventListener(ev, nudgeIdle);
+  });
+  root.addEventListener('click', nudgeIdle);
 
   document.getElementById('v3Labels').addEventListener('change', function(e){
     opts.labels = e.target.checked; draw();
