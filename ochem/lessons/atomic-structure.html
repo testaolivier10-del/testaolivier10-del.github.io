@@ -38,7 +38,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 6</div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -87,16 +87,31 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>The basics</h3><p class="step-body">Protons and neutrons sit in the nucleus and don\'t move. Electrons fill shells around it: the inner (K) shell holds up to <b>2</b>, the next (L) shell up to <b>8</b>. A neutral atom has exactly as many electrons as protons — its atomic number.</p><p class="step-body">The electrons in the <b>outermost</b> shell — the <b>valence electrons</b> — are the only ones that participate in bonding.</p>' +
+    notesHtml: '<h3>The three particles</h3><p class="step-body">An atom is built from three particles. <b>Protons</b>: positive charge, sit in the nucleus, mass ≈ 1 atomic mass unit (amu). <b>Neutrons</b>: no charge, also in the nucleus, mass ≈ 1 amu. <b>Electrons</b>: negative charge, occupy the space around the nucleus, mass ≈ 1/1800 amu (negligible compared to protons/neutrons). The number of protons is an element\'s <b>atomic number</b> (Z) and is what defines which element it is — change the proton count and you have a different element entirely.</p>' +
+      '<h3>Isotopes and mass number</h3><p class="step-body">An element\'s neutron count can vary. Atoms of the same element with different neutron counts are <b>isotopes</b>. <b>Mass number</b> (A) = protons + neutrons, written as a superscript (e.g. carbon-12, ¹²C, has 6 protons + 6 neutrons; carbon-13, ¹³C, has 6 protons + 7 neutrons). Isotopes matter later in the course: ¹H and ¹³C are exactly what NMR spectroscopy detects, and mass spectrometry (Module 14) literally measures mass number to help determine a molecule\'s formula.</p>' +
+      '<h3>Shells and valence electrons</h3><p class="step-body">Electrons fill shells around the nucleus: the inner (K) shell holds up to <b>2</b>, the next (L) shell up to <b>8</b>. A neutral atom has exactly as many electrons as protons. The electrons in the <b>outermost</b> shell — the <b>valence electrons</b> — are the only ones that participate in bonding.</p>' +
       '<h3>Building nitrogen (Z=7)</h3><p class="step-body">Nitrogen has 7 protons, so a neutral atom has 7 electrons: 2 fill the K shell first, leaving 5 for the L shell. Those 5 L-shell electrons are nitrogen\'s valence electrons.</p>' +
       '<h3>Why valence electrons matter: the octet rule</h3><p class="step-body">Atoms are most stable when their outer shell is completely full — 8 electrons for almost everything you\'ll meet (2 for hydrogen, since its only shell is the K shell). An atom with a nearly-empty or nearly-full outer shell is unstable and will gain, lose, or <b>share</b> electrons with other atoms to reach a full octet. Sharing electrons between two atoms so both count them toward their own octet is exactly what a <b>covalent bond</b> is.</p>' +
-      '<div class="notes-fact">Sodium (Z=11): configuration 2, 8, 1 — just 1 valence electron, far from a full shell, so it readily gives that electron up. That single fact predicts most of sodium\'s reactivity.</div>',
+      '<h3>Ions: what "cation" and "carbocation" actually mean</h3><p class="step-body">An atom that <b>loses</b> an electron becomes positively charged overall — a <b>cation</b>. An atom that <b>gains</b> an electron becomes negatively charged overall — an <b>anion</b>. This vocabulary reappears constantly: a <b>carbocation</b> (Module 6, SN1/E1) is a carbon that\'s lost enough electron density to carry a positive charge; a <b>carbanion</b> is a carbon-centered anion. Same root idea as sodium losing an electron here, just applied to carbon later.</p>' +
+      '<div class="notes-fact">Sodium (Z=11): configuration 2, 8, 1 — just 1 valence electron, far from a full shell, so it readily gives that electron up (becoming Na⁺, a cation). That single fact predicts most of sodium\'s reactivity.</div>',
     steps: [
       {
         type: 'explain',
         eyebrow: 'Explain',
+        title: 'Three particles, three roles.',
+        bodyHtml: '<p class="step-body">An atom is built from three particles. <b>Protons</b>: positive charge, sit in the nucleus, mass ≈ 1 atomic mass unit (amu). <b>Neutrons</b>: no charge, also in the nucleus, mass ≈ 1 amu. <b>Electrons</b>: negative charge, occupy the space around the nucleus, mass ≈ 1/1800 amu — light enough to treat as negligible next to protons and neutrons.</p><p class="step-body" style="margin-bottom:0;">The number of protons is an element\'s <b>atomic number</b> (Z), and it\'s what defines the element — change the proton count and you have a different element, full stop.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Same element, different mass: isotopes.',
+        bodyHtml: '<p class="step-body">An element\'s neutron count isn\'t fixed. Atoms of the same element (same number of protons) with different neutron counts are called <b>isotopes</b>. <b>Mass number</b> (A) = protons + neutrons, written as a superscript before the symbol: carbon-12 (¹²C) has 6 protons + 6 neutrons; carbon-13 (¹³C) has 6 protons + 7 neutrons — same element, different mass.</p><p class="step-body" style="margin-bottom:0;">This isn\'t just trivia for this course: ¹H and ¹³C are exactly the isotopes that <b>NMR spectroscopy</b> detects (Module 14), and <b>mass spectrometry</b> works by directly measuring mass number to help figure out a molecule\'s formula.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
         title: 'An atom is mostly empty space around a few electrons that matter.',
-        bodyHtml: '<p class="step-body">Protons and neutrons sit in the nucleus and don’t move. Electrons fill shells around it: the inner (K) shell holds up to <b>2</b>, the next (L) shell up to <b>8</b>. A neutral atom has exactly as many electrons as protons — its atomic number.</p><p class="step-body" style="margin-bottom:0;">The electrons in the <b>outermost</b> shell — the <b>valence electrons</b> — are the only ones that participate in bonding. Everything else in this course is really about those few electrons.</p>'
+        bodyHtml: '<p class="step-body">Electrons fill shells around the nucleus: the inner (K) shell holds up to <b>2</b>, the next (L) shell up to <b>8</b>. A neutral atom has exactly as many electrons as protons — its atomic number.</p><p class="step-body" style="margin-bottom:0;">The electrons in the <b>outermost</b> shell — the <b>valence electrons</b> — are the only ones that participate in bonding. Everything else in this course is really about those few electrons.</p>'
       },
       {
         render: function(api){
@@ -144,7 +159,7 @@
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 2 · Guided Practice',
+        eyebrow: 'Step 4 · Guided Practice',
         title: 'How many valence electrons does nitrogen have?',
         bodyHtml: '<p class="step-body">Based on what you just built.</p>',
         options: ['3', '5', '7', '2'],
@@ -154,7 +169,7 @@
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 3 · Independent Practice',
+        eyebrow: 'Step 5 · Independent Practice',
         title: 'A neutral atom has atomic number 8 (oxygen). How many total electrons does it have?',
         options: ['6', '8', '10'],
         correctIndex: 1,
@@ -166,6 +181,12 @@
         eyebrow: 'Why it matters',
         title: 'Atoms "want" a full outer shell — that\'s the octet rule.',
         bodyHtml: '<div class="explain-box">Here\'s the actual reason valence electrons matter: atoms are most stable (lowest energy) when their outermost shell is completely full. For almost every atom you\'ll meet in this course, a full outer shell means <b>8</b> electrons in it — the <b>octet rule</b>. (Hydrogen is the one common exception: its outer shell is the K shell, which is full at just <b>2</b>.)</div><p class="step-body">An atom with a nearly-empty or nearly-full outer shell is unstable and reactive — it will gain, lose, or <b>share</b> electrons with other atoms to reach that full octet. Sharing electrons between two atoms so both effectively count them toward their own octet is exactly what a <b>covalent bond</b> is. That\'s the connection: valence electrons matter because getting to 8 of them is the whole reason atoms bond to each other at all.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Ions: what "cation" and "carbocation" actually mean.',
+        bodyHtml: '<p class="step-body">Instead of sharing electrons, an atom can fully gain or lose them. Lose an electron and you\'re left with one more proton than electrons — an overall positive charge, called a <b>cation</b>. Gain an electron and you have one more electron than protons — an overall negative charge, called an <b>anion</b>.</p><p class="step-body" style="margin-bottom:0;">This vocabulary comes back constantly: a <b>carbocation</b> (Module 6, in SN1 and E1) is just a carbon atom that\'s lost enough electron density to carry a positive charge, and a <b>carbanion</b> is a carbon-centered anion. Same idea as sodium losing an electron to become Na⁺ — just applied to carbon later on.</p>'
       },
       {
         type: 'final',
