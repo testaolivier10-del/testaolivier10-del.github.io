@@ -82,6 +82,7 @@
           '<div class="mb__acts">' +
             '<button type="button" class="tchip" id="mbMinus" title="Make the selected atom more negative">−</button>' +
             '<button type="button" class="tchip" id="mbPlus" title="Make the selected atom more positive">+</button>' +
+            '<button type="button" class="tchip" id="mbRetype" title="Change the selected atom to the element picked on the left (R)">Change element</button>' +
             '<button type="button" class="tchip" id="mbDel" title="Delete the selected atom (Delete)">Delete atom</button>' +
             '<button type="button" class="tchip" id="mbUndo" title="Undo (Ctrl+Z)">Undo</button>' +
             '<button type="button" class="tchip tchip--ghost" id="mbClear">Clear</button>' +
@@ -96,6 +97,35 @@
     var found  = container.querySelector('#mbFound');
     var status = container.querySelector('#mbStatus');
     var hint   = container.querySelector('#mbHint');
+
+    /* Where the hydrogens go in the label is not a typography quirk, and the
+       rule is not "halogens are different". It is whether the atom is a
+       SUBSTITUENT or a MOLECULE.
+
+       Hanging off something else, the element leads: CH₃, NH₂, OH, SH. That is
+       how a condensed structure is written and it is what makes a chain
+       readable left to right.
+
+       Standing alone it is a compound, and compounds have conventional
+       formulas that do not all put the element first: H₂O, not OH₂; HCl, not
+       ClH. A first pass here moved the H only for halogens, which fixed the
+       chlorine and left a lone oxygen reading OH₂ — a formula for water that
+       nobody has ever written.
+
+       So the standalone cases are a table of what those molecules are
+       actually called, and anything not in it falls back to element-first,
+       which is correct for every ion a builder produces: OH⁻, NH₄⁺, CH₃⁺. */
+    var STANDALONE = {
+      'C4':'CH₄', 'N3':'NH₃', 'O2':'H₂O', 'S2':'H₂S', 'P3':'PH₃', 'B3':'BH₃',
+      'F1':'HF',  'Cl1':'HCl','Br1':'HBr','I1':'HI',  'Si4':'SiH₄'
+    };
+
+    function atomLabel(key, el, h){
+      if(!h) return el;
+      var alone = !C.bondsAt(st, key).length;
+      if(alone && STANDALONE[el + h]) return STANDALONE[el + h];
+      return el + 'H' + (h > 1 ? C.sub(h) : '');
+    }
 
     /* ---- Drawing --------------------------------------------------------
 
@@ -136,9 +166,7 @@
         var bad = report && report.problems.some(function(p){ return p.at === k && p.level === 'error'; });
         var warn = report && report.problems.some(function(p){ return p.at === k && p.level === 'warn'; });
         var h = a.hImplicit || 0;
-        // Real subscripts, because CH3 written flat is what a student is told
-        // not to do and the tool should not be the thing doing it.
-        var label = a.el + (h ? 'H' + (h > 1 ? C.sub(h) : '') : '');
+        var label = atomLabel(k, a.el, h);
         var q = a.charge || 0;
 
         out += '<g class="mb__atom' + (k === selected ? ' is-sel' : '') +
@@ -164,6 +192,9 @@
       if(!keys.length){
         out += '<text class="mb__blank" x="160" y="88" text-anchor="middle">Click anywhere to place your first atom</text>';
       }
+      // Clicking a bond cycles 1 → 2 → 3 → 1; that is the only way to change
+      // one, now that clicking a bonded neighbour means "select it".
+
 
       svg.innerHTML = out;
       bindCanvas();
@@ -216,15 +247,6 @@
       if(selected === k) selected = null;
     }
 
-    function toggleBond(a, b){
-      var existing = C.findBond(st, a, b);
-      if(!existing){ st.bonds.push({ a:a, b:b, order:1 }); return; }
-      existing.order = existing.order >= 3 ? 0 : existing.order + 1;
-      if(existing.order === 0){
-        st.bonds = st.bonds.filter(function(x){ return x !== existing; });
-      }
-    }
-
     /* ---- Canvas events --------------------------------------------------- */
 
     function svgPoint(e){
@@ -238,6 +260,21 @@
     function bindCanvas(){
       svg.querySelectorAll('.mb__atom').forEach(function(g){
         var k = g.getAttribute('data-atom');
+        /* Clicking an atom means one of two things and the difference is
+           whether a bond is already there.
+
+           Nothing selected, or this one selected: select or deselect it.
+           A different atom with no bond between them: bond them, and move the
+           selection along so a chain can be drawn as a run of clicks.
+           A different atom that is ALREADY bonded: just select it.
+
+           That last case used to cycle the bond order instead, which made two
+           things impossible at once. There was no way to select a different
+           atom without first pressing Escape — no mouse path at all, and
+           nothing to tap on a phone — and reaching for a neighbour to work on
+           it silently turned the single bond between them into a double. Bond
+           order has its own target: the bond itself, which is a click target
+           already. */
         function hit(e){
           e.stopPropagation();
           if(selected === null || selected === k){
@@ -245,7 +282,12 @@
             draw(); renderStatus();
             return;
           }
-          edit(function(){ toggleBond(selected, k); });
+          if(C.findBond(st, selected, k)){
+            selected = k;
+            draw(); renderStatus();
+            return;
+          }
+          edit(function(){ st.bonds.push({ a:selected, b:k, order:1 }); });
           selected = k;
           draw();
         }
@@ -280,6 +322,8 @@
         selected = k;
       });
     });
+    // A double-click on the canvas would otherwise place two atoms.
+    svg.addEventListener('dblclick', function(e){ e.preventDefault(); });
 
     /* ---- Status ----------------------------------------------------------
 
@@ -329,9 +373,21 @@
       }
 
       status.innerHTML = head + body;
-      hint.textContent = selected
-        ? (st.atoms[selected] ? st.atoms[selected].el + ' selected — click another atom to bond, or the canvas to grow the chain' : '')
-        : 'Click an atom to select it';
+      /* The hint is where someone looks when the canvas did something they did
+         not ask for — and placing a lone chlorine and getting HCl is exactly
+         that moment. It is correct (an unbonded neutral chlorine IS hydrogen
+         chloride) and it is startling, so the hint says so at the point of
+         confusion rather than leaving it to a paragraph further down. */
+      var sel = selected && st.atoms[selected];
+      hint.textContent = !sel
+        ? 'Click an atom to select it'
+        : (sel.hImplicit
+            ? sel.el + ' selected, shown with the ' +
+              (sel.hImplicit === 1 ? 'hydrogen' : sel.hImplicit + ' hydrogens') +
+              ' it wants — bond it to something and ' +
+              (sel.hImplicit === 1 ? 'that hydrogen makes way' : 'they make way') + '.'
+            : sel.el + ' selected — click an unbonded atom to join them, the canvas to grow the chain, ' +
+              'or a bond line to make it double or triple.');
     }
 
     /* ---- Text entry ------------------------------------------------------ */
@@ -393,20 +449,34 @@
 
     /* ---- Palette and actions --------------------------------------------- */
 
+    /* Picking an element says what you are about to PLACE. It used to also
+       retype whatever was selected, on the theory that the click could only
+       have meant that — and it is wrong often enough to be a trap: place a
+       chlorine, reach for carbon to build the chain it hangs off, and the
+       chlorine you just placed silently becomes a carbon. What should have
+       been CH₃Cl comes out as ethane, with nothing on screen saying a thing
+       was destroyed.
+
+       Retyping is now its own control. Double-click was the first attempt and
+       it collided: the two clicks reach the atom's own handler first, so
+       double-clicking a bonded atom cycled its bond order to a double bond on
+       the way past — retyping a chlorine to oxygen quietly produced
+       formaldehyde. A button cannot collide with anything, is reachable from
+       the keyboard, and says what it does. */
     function setEl(next){
       el = next;
       container.querySelectorAll('.mb__el').forEach(function(b){
         b.classList.toggle('on', b.getAttribute('data-el') === el);
       });
-      // With an atom selected, picking an element retypes it rather than
-      // waiting for the next placement — which is what the click means.
-      if(selected && st.atoms[selected]){
-        edit(function(){
-          st.atoms[selected].el = el;
-          st.atoms[selected].label = el;
-          st.atoms[selected].r = el === 'H' ? 12 : 18;
-        });
-      }
+    }
+
+    function retype(k){
+      if(!st.atoms[k]) return;
+      edit(function(){
+        st.atoms[k].el = el;
+        st.atoms[k].label = el;
+        st.atoms[k].r = el === 'H' ? 12 : 18;
+      });
     }
 
     container.querySelectorAll('.mb__el').forEach(function(b){
@@ -423,6 +493,9 @@
     }
     container.querySelector('#mbMinus').addEventListener('click', function(){ bumpCharge(-1); });
     container.querySelector('#mbPlus').addEventListener('click', function(){ bumpCharge(1); });
+    container.querySelector('#mbRetype').addEventListener('click', function(){
+      if(selected) retype(selected);
+    });
     container.querySelector('#mbDel').addEventListener('click', function(){
       if(!selected) return;
       var k = selected;
@@ -453,6 +526,7 @@
         if(selected){ e.preventDefault(); var k = selected; edit(function(){ removeAtom(k); }); }
         return;
       }
+      if((e.key === 'r' || e.key === 'R') && selected){ e.preventDefault(); retype(selected); return; }
       if(e.key === '+' || e.key === '='){ e.preventDefault(); bumpCharge(1); return; }
       if(e.key === '-' || e.key === '_'){ e.preventDefault(); bumpCharge(-1); return; }
       var hit = PALETTE.filter(function(p){ return p.key === e.key.toLowerCase(); })[0];
