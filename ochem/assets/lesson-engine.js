@@ -18,6 +18,14 @@
    the earlier hand-written lessons — this file doesn't guess correctness
    for custom steps, only for declarative 'mcq'/'final' ones.
 
+   Going back: every step keeps a Back control above the card once you are
+   past the first one, because Continue is a reflex and re-reading the step
+   you clicked through should not mean quitting to Learn and re-entering the
+   lesson. Stepping back re-renders that step live rather than replaying a
+   snapshot — these steps are short and re-answering one is harmless — but a
+   step that has already been graded never records a second attempt, so
+   walking back and forth cannot inflate (or deflate) a lesson score.
+
    Notes mode: the interactive step flow is great for a first pass, but bad
    for "wait, what did this lesson actually say about X" — getting back to
    an explanation means re-clicking through MCQs you already answered. If a
@@ -90,7 +98,15 @@
     var LC = window.OchemLessonConcepts;
     var mapped = LC ? LC.forTopic(topicId, steps.length) : null;
 
+    /* Steps the student has already moved past. Answering a question again
+       after stepping back is fine as a way to re-read it, but it is not new
+       evidence, so it must not reach the curriculum or the mastery engine a
+       second time. Retries WITHIN a step still record exactly as before —
+       the gate only closes once the step has been left. */
+    var passed = {};
+
     function record(correct, conceptId){
+      if(passed[step]) return;
       window.OchemCurriculum.recordAttempt(topicId, correct);
       if(!rec) return;
       var cfg = steps[step] || {};
@@ -110,7 +126,18 @@
     function nextButtonHtml(label, enabled){ return '<div class="actions"><button class="btn-press" id="nextBtn"' + (enabled?'':' disabled') + '>' + label + '</button></div>'; }
     function doneBoxHtml(){ return '<div class="actions" style="margin-top:8px;"><a href="' + doneHref + '" class="btn-press">Back to Learn</a></div>'; }
 
-    function advance(){ step++; render(); }
+    function advance(){ passed[step] = true; step++; render(); }
+    function goBack(){ if(step > 0){ step--; render(); } }
+
+    /* One nav row, owned by the engine and re-rendered every step, so a
+       lesson's custom (hands-on) steps get the Back control for free without
+       each of them having to draw one. */
+    var stepNav = document.createElement('div');
+    stepNav.className = 'lesson-step-nav';
+    stepNav.innerHTML = '<button type="button" id="lessonBackBtn">&larr; Previous step</button>';
+    shell.insertBefore(stepNav, card);
+    stepNav.querySelector('#lessonBackBtn').addEventListener('click', goBack);
+    function updateStepNav(){ stepNav.hidden = step === 0; }
 
     function head(cfg){
       return (cfg.eyebrow ? '<div class="step-eyebrow">' + cfg.eyebrow + '</div>' : '') +
@@ -164,6 +191,7 @@
 
     function render(){
       updateProgress();
+      updateStepNav();
       var cfg = steps[step];
       if(typeof cfg.render === 'function'){
         cfg.render({

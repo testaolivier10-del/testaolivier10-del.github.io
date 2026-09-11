@@ -35,6 +35,7 @@
   var D  = window.OchemDiagnostics;
   var E  = window.OchemQuestionEngine;
   var Mo = window.OchemMolecules;
+  var F  = window.OchemFlags;
 
   var homeEl    = document.getElementById('practiceHome');
   var sessionEl = document.getElementById('practiceSession');
@@ -63,6 +64,11 @@
     if(heroEl) heroEl.hidden = view !== 'home';
     window.scrollTo({ top: 0, behavior: 'auto' });
   }
+
+  /* Flagged questions, resolved to real question objects (flags.js drops any
+     id the bank no longer has). Guarded so the page still works if flags.js
+     is missing. */
+  function flaggedQuestions(){ return F ? F.questions() : []; }
 
   function shuffled(arr){
     var a = arr.slice();
@@ -127,6 +133,11 @@
       desc:'The engine picks every question from your mastery profile as you go.', count:10 },
     { mode:'mistakes', title:'Review your mistakes',
       desc:'Only questions you got wrong and have not fixed since.', count:10 },
+    // Flags are the student's own judgement rather than the engine's, which
+    // is exactly why the mode exists: "I got this right and could not tell
+    // you why" is invisible to every other signal on this page.
+    { mode:'flagged', title:'Flagged questions',
+      desc:'The ones you marked to come back to — right or wrong.' },
     // Spaced review is the Review page's job, not a mode here: it is a
     // finite, capped, daily queue rather than an open-ended session, and two
     // implementations of it would drift apart.
@@ -143,8 +154,17 @@
   function modeGridHtml(){
     return '<div class="mode-grid">' + MODES.map(function(m, i){
       var disabled = '';
+      var pill = m.pill;
       if(m.mode === 'mistakes' && !M.mistakes({ limit: 1 }).length) disabled = ' disabled';
-      var inner = (m.pill ? '<span class="pill">' + m.pill + '</span>' : '') +
+      var countPill = false;
+      if(m.mode === 'flagged'){
+        var n = flaggedQuestions().length;
+        if(!n) disabled = ' disabled';
+        else { pill = String(n); countPill = true; }
+      }
+      // A one- or two-digit pill needs far less room reserved beside the
+      // title than the word "Default" does.
+      var inner = (pill ? '<span class="pill' + (countPill ? ' pill--count' : '') + '">' + esc(pill) + '</span>' : '') +
         '<span class="t">' + esc(m.title) + '</span>' +
         '<span class="d">' + esc(m.desc) + '</span>';
       if(m.href) return '<a class="mode-card" href="' + m.href + '">' + inner + '</a>';
@@ -200,6 +220,28 @@
         '<div class="module-card">' + conceptRowsHtml(strong) + '</div>';
     }
 
+    var flagged = flaggedQuestions();
+    if(flagged.length){
+      html += '<div class="section-head">Flagged to come back to</div>' +
+        '<div class="module-card">' + flagged.slice(0, 8).map(function(q){
+          return '<div class="flag-row">' +
+            '<span class="name">' + esc(q.prompt || q.q) +
+              '<small>' + esc(E.topicTitle(q.topic)) + ' · ' +
+              esc((M.TIERS[q.tier || 2] || M.TIERS[2]).label) + '</small></span>' +
+            '<button type="button" class="unflag" data-unflag="' + esc(q.id) + '">Unflag</button>' +
+          '</div>';
+        }).join('') +
+        (flagged.length > 8
+          ? '<div class="flag-row"><span class="name" style="color:var(--muted);font-weight:700;">' +
+            esc('+ ' + (flagged.length - 8) + ' more flagged') + '</span></div>'
+          : '') +
+        '</div>' +
+        '<div class="actions" style="justify-content:flex-start;margin-top:12px;">' +
+          '<button class="btn-press alt sm" id="startFlagged">Practice ' +
+          esc(plural(flagged.length, 'flagged question')) + '</button>' +
+        '</div>';
+    }
+
     html += '<div class="section-head">Other ways to practice</div>' + modeGridHtml();
 
     html += '<p style="margin-top:18px;font:700 12.5px var(--font-ui);color:var(--muted);line-height:1.6;">' +
@@ -225,6 +267,23 @@
       });
     });
 
+    var startFlagged = homeEl.querySelector('#startFlagged');
+    if(startFlagged) startFlagged.addEventListener('click', function(){
+      startSession(E.makePlan('flagged', {}));
+    });
+
+    /* Unflagging re-renders the whole home view rather than just removing the
+       row: the count on the Flagged mode card and the section heading both
+       have to follow, and a stale "4" next to three rows is worse than a
+       repaint. */
+    homeEl.querySelectorAll('[data-unflag]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if(!F) return;
+        F.remove(btn.getAttribute('data-unflag'));
+        renderHome();
+      });
+    });
+
     var drillPanel = homeEl.querySelector('#drillPanel');
     homeEl.querySelectorAll('[data-mode]').forEach(function(btn){
       btn.addEventListener('click', function(){
@@ -234,6 +293,7 @@
           if(!drillPanel.hidden) drillPanel.scrollIntoView({ behavior:'smooth', block:'nearest' });
           return;
         }
+        if(m.mode === 'flagged' && !flaggedQuestions().length) return;
         startSession(E.makePlan(m.mode, { count: m.count }));
       });
     });
@@ -356,6 +416,19 @@
       '</div></div>';
     }
 
+    /* Flags set during this session are the most likely thing the student
+       wants next, and unlike everything else on this screen they are not
+       something the engine would ever suggest on its own. */
+    var flaggedNow = flaggedQuestions().filter(function(q){ return S.askedIds.indexOf(q.id) !== -1; });
+    if(flaggedNow.length){
+      html += '<div class="summary-section"><h3>Flagged in this session</h3><div class="next-up">' +
+        esc(plural(flaggedNow.length, 'question') + ' from this session ' +
+          (flaggedNow.length === 1 ? 'is' : 'are') + ' flagged, out of ' +
+          plural(flaggedQuestions().length, 'flagged question') + ' in total. ') +
+        'They stay flagged until you clear them yourself — <a href="practice.html?mode=flagged">work through them</a>.' +
+      '</div></div>';
+    }
+
     var recs = E.recommendations();
     var lead = recs.filter(function(r){ return r.plan; })[0];
     if(lead){
@@ -411,6 +484,12 @@
     // now, so an old bookmark is sent there rather than quietly doing
     // something subtly different.
     if(params.mode === 'due'){ location.replace('review.html'); return null; }
+    // ?mode=flagged is how Review and the summary route here; an empty flag
+    // list falls through to the home view like any other empty mode.
+    if(params.mode === 'flagged'){
+      var fq = flaggedQuestions();
+      return fq.length ? E.makePlan('flagged', { count: count }) : null;
+    }
     if(params.mode && ['adaptive','mistakes','quick','mixed'].indexOf(params.mode) !== -1){
       return E.makePlan(params.mode, { count: count });
     }

@@ -63,7 +63,18 @@ ochem/                 The Organic Chemistry app (beta)
                             declarative 'explain'/'mcq'/'final', plus a `render` function
                             for its one genuinely hands-on interactive step) instead of
                             hand-rolling the plumbing; Formal Charge/SN1/SN2/E2 predate it
-                            and still carry their own copy inline
+                            and still carry their own copy inline. Every step past the
+                            first gets a "Previous step" control; re-answering a step you
+                            stepped back to never records a second attempt
+    session-runner.js      The shared question loop behind Practice and Review: renders
+                            each question kind, grades, diagnoses, teaches, and keeps a
+                            session history so any answered card can be replayed read-only
+                            via its Back control (nothing is re-graded on a replay)
+    flags.js               Flagged questions (localStorage `ochem_flagged_v1`) — a manual
+                            bookmark the student sets and clears by hand, including on
+                            questions they got right. Surfaces as the "Flagged questions"
+                            practice mode and a list on the Practice home; never added or
+                            cleared by the engine
     ochem-nav.js           Injects the Learn/Practice/Review/Tools/Mastery sub-nav
     ochem.css              Shared sub-nav, module/topic list, mastery-bar, and lesson-page
                             styles (progress bar, choice buttons, feedback boxes, etc. —

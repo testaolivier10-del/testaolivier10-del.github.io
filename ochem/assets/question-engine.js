@@ -64,6 +64,7 @@
   var POOL = null;          // array of normalized questions
   var BY_CONCEPT = null;    // conceptId -> [questions]
   var BY_TOPIC = null;
+  var BY_ID = null;         // questionId -> question
 
   // Legacy difficulty strings predate the four-tier ladder. easy/medium/hard
   // map onto foundational/intermediate/advanced; nothing in the legacy bank
@@ -123,13 +124,19 @@
 
     BY_CONCEPT = {};
     BY_TOPIC = {};
+    BY_ID = {};
     POOL.forEach(function(q){
       (q.concepts || []).forEach(function(c){ (BY_CONCEPT[c] = BY_CONCEPT[c] || []).push(q); });
       (BY_TOPIC[q.topic] = BY_TOPIC[q.topic] || []).push(q);
+      BY_ID[q.id] = q;
     });
   }
 
   function all(){ build(); return POOL; }
+  /* One question by id. Flags store ids, not questions, so anything that
+     wants to show a flagged question's prompt has to come back through
+     here. */
+  function byId(id){ build(); return BY_ID[id] || null; }
   function primaryConcept(q){ return (q.concepts && q.concepts[0]) || C().defaultConceptFor(q.topic); }
   function isInteractive(q){ return q.kind !== 'mcq' && q.kind !== 'tf'; }
 
@@ -417,6 +424,7 @@
       case 'adaptive': return 'Adaptive practice';
       case 'weak':     return 'Targeted: ' + (plan.conceptTitle || 'your weak spots');
       case 'mistakes': return 'Review your mistakes';
+      case 'flagged':  return 'Flagged questions';
       case 'topic':    return 'Topic drill';
       case 'quick':    return 'Quick session';
       case 'mixed':    return 'Mixed practice';
@@ -457,6 +465,14 @@
         break;
       case 'mistakes':
         plan.qids = M().mistakes({ limit: 40 }).map(function(m){ return m.qid; });
+        break;
+      /* Flags are a bookmark the student set by hand, so this mode serves
+         exactly what they flagged and nothing near it — no prerequisites
+         pulled in, no adaptive substitution. The session is as long as the
+         flag list unless a shorter count is asked for. */
+      case 'flagged':
+        plan.qids = opts.qids || (window.OchemFlags ? window.OchemFlags.list() : []);
+        plan.count = opts.count || Math.max(1, plan.qids.length);
         break;
       case 'topic':
         plan.topic = opts.topic;
@@ -664,6 +680,7 @@
 
   window.OchemQuestionEngine = {
     all: all,
+    byId: byId,
     next: next,
     checkQuestion: checkQuestion,
     makePlan: makePlan,

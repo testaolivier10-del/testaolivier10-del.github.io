@@ -285,6 +285,19 @@
       }
     }
 
+    /* Flags are practice's feature, not review's — but the queue is where
+       people notice they are carrying a backlog of them, so the pointer
+       belongs here. Never an auto-queue: a flag is cleared by the student,
+       not by getting the question right. */
+    var flagged = window.OchemFlags ? window.OchemFlags.questions() : [];
+    if(flagged.length){
+      html += '<div style="font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;">Flagged by you</div>' +
+        '<div class="next-up">' +
+        esc(plural(flagged.length, 'question') + ' you flagged to come back to, right or wrong. ') +
+        'They stay until you unflag them. <a href="practice.html?mode=flagged">Work through them</a>.' +
+      '</div>';
+    }
+
     var mistakes = M.mistakes({ limit: 50 });
     if(mistakes.length){
       html += '<div style="font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;">Still unresolved</div>' +

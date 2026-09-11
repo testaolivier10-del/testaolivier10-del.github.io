@@ -250,6 +250,7 @@ a.topic-row:hover{background:var(--hover-tint);}
 .mode-card .t{font:900 14.5px var(--font-ui);display:block;margin-bottom:4px;}
 /* Leave room for the absolutely-positioned "Default" pill. */
 .mode-card .pill + .t{padding-right:66px;}
+.mode-card .pill--count + .t{padding-right:26px;}
 .mode-card .d{font:600 12.5px var(--font-ui);color:var(--muted);line-height:1.5;display:block;}
 .mode-card .pill{
   position:absolute;top:12px;right:12px;font:900 9.5px var(--font-ui);letter-spacing:.05em;
@@ -304,6 +305,52 @@ a.topic-row:hover{background:var(--hover-tint);}
 .tier-label{font:900 10.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
 
 .q-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+/* The flag sits at the end of the meta row and pushes itself to the right, so
+   it reads as chrome on the card rather than one of the answer controls. */
+.flag-btn{
+  margin-left:auto;display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+  border:1px solid var(--line);background:var(--white);border-radius:var(--radius-pill);
+  padding:5px 12px;font:800 11.5px var(--font-ui);color:var(--muted);
+  transition:border-color .1s ease,color .1s ease,background .1s ease;
+}
+.flag-btn:hover{border-color:var(--accent);color:var(--accent-press);background:var(--tint-accent);}
+.flag-btn.active{border-color:var(--amber);background:var(--tint-amber);color:var(--amber-press);}
+.flag-btn.active svg{fill:currentColor;}
+
+/* Back / forward through answered cards. */
+.q-nav{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.q-nav--replay{justify-content:space-between;}
+.q-nav__btn{
+  background:none;border:0;padding:4px 0;cursor:pointer;
+  font:800 12.5px var(--font-ui);color:var(--muted);
+}
+.q-nav__btn:hover{color:var(--ink);text-decoration:underline;}
+.q-nav__btn:disabled{opacity:.4;cursor:default;text-decoration:none;}
+.q-nav__label{font:900 10.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+.replay-note{
+  margin-top:14px;padding:10px 14px;border-radius:var(--radius);background:var(--paper);
+  border:1px dashed var(--line);font:700 12.5px var(--font-ui);color:var(--muted);
+}
+
+/* Flagged-question list on the Practice home. */
+.flag-row{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--line-soft);}
+.flag-row:last-child{border-bottom:0;}
+.flag-row .name{flex:1 1 auto;min-width:0;font-size:13.5px;font-weight:800;line-height:1.45;}
+.flag-row .name small{display:block;font:700 11.5px var(--font-ui);color:var(--muted);margin-top:2px;}
+.flag-row .unflag{
+  flex-shrink:0;border:1px solid var(--line);background:var(--white);border-radius:var(--radius-pill);
+  padding:5px 12px;font:800 11.5px var(--font-ui);color:var(--muted);cursor:pointer;
+}
+.flag-row .unflag:hover{border-color:var(--bad);color:var(--bad);}
+
+/* Step-level back control inside a lesson. */
+.lesson-step-nav{display:flex;margin-bottom:10px;}
+.lesson-step-nav[hidden]{display:none;}
+.lesson-step-nav button{
+  background:none;border:0;padding:4px 0;cursor:pointer;
+  font:800 12.5px var(--font-ui);color:var(--muted);
+}
+.lesson-step-nav button:hover{color:var(--ink);text-decoration:underline;}
 .q-sub{font-size:14px;font-weight:600;color:var(--muted);line-height:1.55;margin:0 0 16px;}
 
 /* ---- interactive answer widgets ---- */
