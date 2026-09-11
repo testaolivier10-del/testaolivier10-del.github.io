@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alcohol Reactions — Alcohols, Ethers &amp; Related Chemistry | Organic Chemistry</title>
+<meta name="description" content="Learn why alcohols need activation before they can act as leaving groups, how tosylation and protonation solve that, and the oxidation ladder from alcohol to acid.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/alcohol-reactions.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 8 &middot; Alcohols, Ethers &amp; Related Chemistry</div>
+    <h1 style="margin-bottom:4px;">Alcohol reactions.</h1>
+    <p class="lede" style="margin-top:0;">OH is a terrible leaving group on its own — everything in this lesson is about how alcohols get around that.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'alcohol-reactions',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>Why OH can\'t just leave</h3><p class="step-body">From the Leaving Groups lesson: a good leaving group is the conjugate base of a strong acid — stable once it takes the electrons and leaves. Hydroxide (OH⁻) is the conjugate base of water (pKa ≈ 15.7), a very weak acid, which makes OH⁻ a strong, unstable base and a <b>terrible leaving group</b>. An alcohol cannot undergo SN1, SN2, E1, or E2 directly at the C–O bond until OH is converted into something that leaves more easily.</p>' +
+      '<h3>Two ways to activate the leaving group</h3><p class="step-body"><b>Protonation</b>: under acidic conditions (H₂SO₄, HBr, etc.), the alcohol\'s oxygen is protonated first, turning OH into OH₂⁺ — now the leaving group is neutral water, the conjugate base of H₃O⁺ (pKa ≈ −1.7), an excellent leaving group. This is how alcohols undergo SN1/E1 (via protonation, ionization to a carbocation, then substitution or elimination — often via acid-catalyzed dehydration for E1) or SN2 (as in the classic ROH + HX → RX reaction for primary alcohols). <b>Sulfonate ester formation</b>: reacting the alcohol with tosyl chloride (TsCl) or mesyl chloride (MsCl) converts OH into a tosylate (OTs) or mesylate (OMs) — outstanding leaving groups (conjugate bases of very strong sulfonic acids) — without ever touching the C–O bond\'s stereochemistry, so a stereocenter\'s configuration is fully preserved through the tosylation step itself (any inversion happens later, in the substitution).</p>' +
+      '<div class="notes-fact">Tosylation is the go-to method when you need to convert an alcohol to a leaving group under mild, non-acidic conditions — especially useful when the rest of the molecule can\'t tolerate strong acid, or when you specifically want a clean SN2 inversion at a known stereocenter.</div>' +
+      '<h3>Dehydration: E1 (usually) elimination of water</h3><p class="step-body">Under strong acid and heat (H₂SO₄, H₃PO₄), a protonated alcohol ionizes to a carbocation and then loses a beta-hydrogen — an E1 mechanism, following Zaitsev\'s rule (from the E1 lesson) to give the more substituted alkene as the major product, and subject to the same carbocation rearrangement risk. This is the reverse reaction of acid-catalyzed hydration from the previous module.</p>' +
+      '<h3>Oxidation: a ladder, not a single step</h3><p class="step-body">Oxidation state increases by removing C–H bonds and/or adding C–O bonds. A <b>primary alcohol</b> (1°) oxidizes first to an <b>aldehyde</b>, then further to a <b>carboxylic acid</b> — strong oxidants (Na₂Cr₂O₇, KMnO₄, or the Jones reagent CrO₃/H₂SO₄) push all the way to the acid, while a milder, selective oxidant (PCC, pyridinium chlorochromate) stops cleanly at the aldehyde. A <b>secondary alcohol</b> (2°) oxidizes once, to a <b>ketone</b>, and cannot go further (no C–H left on that carbon to remove). A <b>tertiary alcohol</b> (3°) has no H on the carbinol carbon at all, so it <b>cannot be oxidized</b> under these conditions.</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Hydroxide is a bad leaving group — so alcohols need activation first.',
+        bodyHtml: '<p class="step-body">Recall the leaving-group rule from Module 2: a good leaving group is the conjugate base of a <b>strong</b> acid. OH⁻ is the conjugate base of water, and water (pKa ≈ 15.7) is a weak acid — which makes hydroxide a strong, reactive base and a poor leaving group. Left alone, an alcohol\'s C–O bond simply will not break the way a C–Br bond does in the SN2/SN1/E1/E2 mechanisms from Module 6.</p><p class="step-body" style="margin-bottom:0;">That doesn\'t mean alcohols are unreactive — it means every useful alcohol reaction begins with converting OH into a much better leaving group first, by one of two routes: protonation, or conversion to a sulfonate ester.</p>'
+      },
+      {
+        render: function(api){
+          var options = [
+            { key: 'oh2', label: 'OH₂⁺ (protonated water)', good: true },
+            { key: 'ots', label: 'OTs (tosylate)', good: true },
+            { key: 'oh', label: 'OH⁻ (hydroxide, unmodified)', good: false },
+            { key: 'nh2', label: 'NH₂⁻ (amide ion)', good: false }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the two groups below that are good leaving groups.</h2>' +
+            '<p class="step-body">A good leaving group is the conjugate base of a strong acid — stable once it takes the electrons and departs.</p>' +
+            '<div class="choice-row">' + options.map(function(o){
+              return '<button class="choice-btn" data-v="' + o.key + '">' + o.label + '</button>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Good leaving groups found: 0 / 2</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var found = 0, mistake = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(btn.disabled) return;
+              var o = options.filter(function(x){ return x.key === btn.getAttribute('data-v'); })[0];
+              btn.disabled = true;
+              if(o.good){
+                btn.classList.add('correct');
+                found++;
+                hint.textContent = 'Good leaving groups found: ' + found + ' / 2';
+              } else {
+                btn.classList.add('wrong');
+                mistake = true;
+              }
+              if(found === 2){
+                api.record(!mistake);
+                api.showFeedback(fb, !mistake, mistake ? 'You found both real leaving groups, but also picked something that isn\'t one — OH⁻ and NH₂⁻ are both strong bases (conjugate bases of weak acids), which makes them poor leaving groups.' : 'Exactly right — OH₂⁺ (conjugate base of H₃O⁺, pKa ≈ −1.7) and OTs (conjugate base of a strong sulfonic acid) are both excellent leaving groups. Plain OH⁻ and NH₂⁻ are strong bases, not good leaving groups.');
+                next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Protonating an alcohol\'s OH under acidic conditions converts it into a good leaving group because...',
+        options: ['It becomes neutral water, the conjugate base of H₃O⁺ (pKa ≈ −1.7), an excellent leaving group', 'Protonation makes the C–O bond physically longer', 'Acid always makes any bond easier to break'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — OH₂⁺ leaves as neutral water, and water is the conjugate base of the very strong acid H₃O⁺, making it an excellent leaving group.',
+        wrongFeedback: 'It\'s specifically about what leaves and what its conjugate-acid relationship is — protonation turns OH into OH₂⁺, whose departure product (water) is the conjugate base of a strong acid.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Tosylation: a mild alternative that preserves stereochemistry.',
+        bodyHtml: '<p class="step-body">Reacting an alcohol with tosyl chloride (TsCl, or mesyl chloride MsCl) swaps the O–H hydrogen for a sulfonate group, forming a <b>tosylate (OTs)</b> or mesylate (OMs). This reaction only touches the O–H bond, never the C–O bond, so whatever stereochemistry existed at the carbinol carbon is completely preserved through this step — any inversion of configuration happens later, during the actual substitution reaction at that carbon.</p><p class="step-body" style="margin-bottom:0;">OTs and OMs are excellent leaving groups (conjugate bases of strong sulfonic acids, similar in leaving-group ability to a halide), and because tosylation runs under mild, non-acidic, non-carbocation-forming conditions, it\'s the standard way to set up a clean, predictable SN2 reaction (with full inversion, as in the SN2 lesson) at a known stereocenter.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'Why is tosylation often preferred over simple protonation/acid conditions when a stereocenter is involved?',
+        options: ['Tosylation only modifies the O–H bond (preserving the stereocenter\'s configuration going in), setting up a clean, predictable SN2 at that carbon', 'Tosylate is a worse leaving group, which slows the reaction down for safety', 'Acidic conditions always racemize every molecule they touch'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — tosylation doesn\'t touch the C–O bond, so it doesn\'t disturb the stereocenter itself, letting you cleanly control the subsequent substitution step.',
+        wrongFeedback: 'Tosylate is actually an excellent leaving group, not a worse one — the real advantage is that tosylation leaves the stereocenter\'s starting configuration completely undisturbed.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Oxidation is a ladder — and where you stop depends on the alcohol\'s class.',
+        bodyHtml: '<p class="step-body">Oxidizing an alcohol removes a C–H bond from the carbinol carbon (the carbon bearing OH) and forms a C=O. A <b>primary alcohol</b> has two C–H bonds available there, so it can climb two rungs: first to an <b>aldehyde</b>, then further to a <b>carboxylic acid</b>. A milder, selective reagent like PCC stops cleanly at the aldehyde; a strong oxidant (Jones reagent CrO₃/H₂SO₄, KMnO₄, Na₂Cr₂O₇) pushes all the way to the acid.</p><p class="step-body" style="margin-bottom:0;">A <b>secondary alcohol</b> has only one C–H at the carbinol carbon, so it can climb exactly one rung — to a <b>ketone</b> — and stops there; a ketone has no further C–H at that carbon to remove. A <b>tertiary alcohol</b> has zero C–H bonds at the carbinol carbon (all three other bonds go to carbon), so it simply <b>cannot be oxidized</b> by these reagents at all.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 6 · Check Understanding',
+        title: 'A tertiary alcohol is treated with Jones reagent (CrO₃/H₂SO₄). What happens?',
+        options: ['Nothing — there\'s no C–H bond on the carbinol carbon to remove', 'It oxidizes cleanly to a ketone', 'It oxidizes all the way to a carboxylic acid'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — with all three other substituents on the carbinol carbon being carbon groups, there\'s no hydrogen left to remove, so no oxidation can occur there.',
+        wrongFeedback: 'Oxidation of an alcohol at that carbon requires removing a C–H bond from the carbinol carbon — a tertiary alcohol simply doesn\'t have one to give up.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A secondary alcohol is treated with PCC. What product forms, and can it be oxidized further by more PCC?',
+        options: ['A ketone forms, and it cannot be oxidized further — there\'s no remaining C–H at that carbon', 'A carboxylic acid forms directly', 'An aldehyde forms, which further oxidizes to a carboxylic acid'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — a secondary alcohol has exactly one C–H at the carbinol carbon, so it oxidizes once to a ketone and stops there permanently; ketones have no further C–H to remove.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>
