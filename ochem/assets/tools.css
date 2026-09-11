@@ -170,6 +170,10 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .tfrag--charged{border-color:var(--accent);background:var(--tint-accent);color:var(--accent);}
 .tplus{font:900 15px var(--font-mono);color:var(--muted);}
 
+/* A panel the verdict has picked out. Used by the resonance comparison and
+   anywhere else two options are put side by side and one of them wins. */
+.tpanel--win{border-color:var(--good);background:var(--tint-good);}
+
 /* ---- The mechanism strip (Arrow Pusher) ---------------------------------
 
    One chip per committed step, each one a way back into it. A mechanism that
