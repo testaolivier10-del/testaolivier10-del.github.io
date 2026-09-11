@@ -170,6 +170,35 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .tfrag--charged{border-color:var(--accent);background:var(--tint-accent);color:var(--accent);}
 .tplus{font:900 15px var(--font-mono);color:var(--muted);}
 
+/* ---- Both chairs at once (Conformation Lab) ------------------------------ */
+
+.cf-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.cf-pair__one{
+  border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
+  padding:8px;background:var(--paper);
+}
+.cf-pair__one.is-win{border-color:var(--good);background:var(--tint-good);}
+.cf-pair__cap{text-align:center;padding:6px 2px 2px;}
+.cf-pair__share{font:900 21px var(--font-mono);color:var(--muted);line-height:1.1;}
+.cf-pair__share.is-win{color:var(--good);}
+.cf-pair__kcal{font:800 12px var(--font-mono);color:var(--ink);margin-top:2px;}
+.cf-pair__tag{
+  font:900 9.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);margin-top:3px;
+}
+
+.cf-torbuild{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px;}
+.cf-torbuild__k{
+  font:900 10px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:6px;
+}
+.cf-torbuild select{width:100%;margin-bottom:6px;}
+
+@media(max-width:640px){
+  .cf-pair{grid-template-columns:1fr;}
+  .cf-torbuild{grid-template-columns:1fr;}
+}
+
 /* A panel the verdict has picked out. Used by the resonance comparison and
    anywhere else two options are put side by side and one of them wins. */
 .tpanel--win{border-color:var(--good);background:var(--tint-good);}
