@@ -36,7 +36,11 @@ for (const file of htmlFiles) {
   let m;
   while ((m = REF_RE.exec(content))) {
     let ref = m[1];
-    if (ref.includes('${')) continue; // built at runtime in a template literal, not a literal path
+    // Not a literal path: built at runtime inside an inline <script>, either
+    // in a template literal (`${...}`) or by concatenation ("' + x + '").
+    // Several lesson pages build href="' + location.pathname + '" that way.
+    if (ref.includes('${')) continue;
+    if (/['"`]\s*\+|\+\s*['"`]/.test(ref)) continue;
     if (/^(https?:)?\/\//.test(ref) || ref.startsWith('mailto:') || ref.startsWith('tel:') || ref.startsWith('data:') || ref.startsWith('#')) continue;
     ref = ref.split('#')[0].split('?')[0];
     if (!ref) continue;

@@ -160,3 +160,227 @@ a.topic-row:hover{background:var(--hover-tint);}
   background:var(--tint-good);border-radius:var(--radius);padding:12px 16px;
   font-size:14px;font-weight:700;color:var(--good-press);margin-bottom:14px;line-height:1.55;
 }
+
+/* ==========================================================================
+   Practice (practice.html + practice-page.js)
+
+   The adaptive practice page: a recommendation dashboard, the interactive
+   question types (click an atom, push an arrow, rank a list), and the
+   diagnostic feedback panel that replaces a bare "Incorrect".
+
+   Lives here rather than inline in practice.html because the molecule/atom
+   rules extend the .scene/.atom block above, which the mechanism lessons
+   already use — keeping them adjacent means the two stay visually identical.
+   ========================================================================== */
+
+/* ---- molecules rendered by molecules.js ---- */
+.omol svg{max-width:420px;}
+.omol-caption{
+  margin-top:10px;text-align:center;font:700 12.5px var(--font-ui);color:var(--muted);
+  line-height:1.5;padding:0 8px;
+}
+.atom--static{cursor:default;}
+.atom--static:hover circle{stroke:var(--line);stroke-width:2;}
+.atom--highlight circle{stroke:var(--amber);stroke-width:3.5;fill:var(--tint-amber);}
+.atom--correct circle{stroke:var(--good);stroke-width:3.5;fill:var(--tint-good);}
+.atom--wrong circle{stroke:var(--bad);stroke-width:3.5;fill:var(--tint-bad);}
+.atom:focus{outline:none;}
+.atom:focus-visible circle{stroke:var(--accent);stroke-width:3.5;}
+.scene--locked .atom{cursor:default;}
+
+/* ---- recommendation dashboard ---- */
+.rec-card{
+  background:var(--white);border:var(--bw) solid var(--accent);border-radius:var(--radius-lg);
+  padding:clamp(20px,4vw,26px);box-shadow:var(--lift-lg);margin-bottom:16px;
+}
+.rec-card .k{
+  font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:8px;
+}
+.rec-card h2{font:900 clamp(18px,3vw,22px) var(--font-ui);margin:0 0 8px;line-height:1.25;}
+.rec-card p{margin:0 0 16px;font-size:14.5px;font-weight:600;line-height:1.6;color:var(--ink);}
+.rec-card .actions{justify-content:flex-start;flex-wrap:wrap;}
+
+.rec-alt{display:flex;flex-direction:column;gap:8px;margin-bottom:22px;}
+.rec-alt button{
+  display:flex;align-items:center;gap:12px;width:100%;text-align:left;cursor:pointer;
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius);
+  padding:13px 16px;font:inherit;color:inherit;box-shadow:var(--lift-sm);
+  transition:border-color .1s ease,transform .06s ease;
+}
+.rec-alt button:hover{border-color:var(--accent);}
+.rec-alt button:active{transform:translateY(2px);box-shadow:0 0 0 var(--line);}
+.rec-alt .t{font:800 14px var(--font-ui);flex:1;min-width:0;}
+.rec-alt .d{display:block;font:600 12.5px var(--font-ui);color:var(--muted);margin-top:2px;line-height:1.45;}
+.rec-alt .go{font:900 18px var(--font-mono);color:var(--accent);flex-shrink:0;}
+
+/* ---- mastery snapshot strip ---- */
+.snapshot{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:2px;
+  background:var(--line);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  overflow:hidden;margin-bottom:22px;
+}
+.snapshot .cell{background:var(--white);padding:14px 16px;}
+.snapshot .cell .k{font:900 10.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+.snapshot .cell .v{font:900 22px var(--font-mono);color:var(--ink);margin-top:2px;line-height:1.1;}
+.snapshot .cell .v.accent{color:var(--accent);}
+.snapshot .cell .v.warn{color:var(--amber-press);}
+.snapshot .cell .s{font:700 11.5px var(--font-ui);color:var(--muted);margin-top:2px;}
+
+/* ---- mode grid ---- */
+.mode-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:10px;}
+.mode-card{
+  position:relative;text-align:left;cursor:pointer;background:var(--white);
+  border:var(--bw) solid var(--line);border-radius:var(--radius);padding:16px 18px;
+  font:inherit;color:inherit;box-shadow:var(--lift-sm);
+  transition:border-color .1s ease,transform .06s ease;
+}
+.mode-card:hover{border-color:var(--accent);}
+.mode-card:active{transform:translateY(2px);box-shadow:0 0 0 var(--line);}
+.mode-card:disabled{opacity:.5;cursor:default;}
+.mode-card:disabled:hover{border-color:var(--line);}
+.mode-card .t{font:900 14.5px var(--font-ui);display:block;margin-bottom:4px;}
+/* Leave room for the absolutely-positioned "Default" pill. */
+.mode-card .pill + .t{padding-right:66px;}
+.mode-card .d{font:600 12.5px var(--font-ui);color:var(--muted);line-height:1.5;display:block;}
+.mode-card .pill{
+  position:absolute;top:12px;right:12px;font:900 9.5px var(--font-ui);letter-spacing:.05em;
+  text-transform:uppercase;color:var(--accent);background:var(--tint-accent);
+  padding:3px 8px;border-radius:var(--radius-pill);
+}
+
+.drill-panel{
+  background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
+  padding:18px 20px;margin-top:12px;
+}
+.drill-panel .practice-field{margin-bottom:14px;}
+.drill-panel label{display:block;font:900 11px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.drill-panel select{
+  width:100%;padding:11px 14px;border:var(--bw) solid var(--line);border-radius:var(--radius);
+  font:700 14px var(--font-ui);color:var(--ink);background:var(--white);
+}
+
+/* ---- concept mastery rows ---- */
+.concept-row{
+  display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line-soft);
+}
+.concept-row:last-child{border-bottom:0;}
+.concept-row .name{flex:1 1 auto;min-width:0;font-size:13.5px;font-weight:800;}
+.concept-row .name small{display:block;font:700 11.5px var(--font-ui);color:var(--muted);margin-top:1px;}
+.concept-row .track{flex:0 0 84px;height:8px;border-radius:999px;background:var(--track);overflow:hidden;}
+.concept-row .fill{height:100%;border-radius:999px;background:var(--accent);}
+.concept-row .fill.low{background:var(--bad);}
+.concept-row .fill.mid{background:var(--amber);}
+.concept-row .fill.high{background:var(--good);}
+.concept-row .pct{flex:0 0 40px;text-align:right;font:900 12.5px var(--font-mono);color:var(--muted);}
+.concept-row .drill{
+  flex-shrink:0;border:1px solid var(--line);background:var(--white);border-radius:var(--radius-pill);
+  padding:5px 12px;font:800 11.5px var(--font-ui);color:var(--accent-press);cursor:pointer;
+}
+.concept-row .drill:hover{border-color:var(--accent);background:var(--tint-accent);}
+
+/* ---- in-session chrome ---- */
+/* The hero is hidden during a session and the summary, so these views need
+   their own top breathing room under the sticky sub-nav. */
+.practice-view{padding-top:26px;}
+.session-head{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;
+}
+.session-head .mode{font:900 12px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:var(--accent);}
+.session-head .quit{font:800 13px var(--font-ui);color:var(--muted);background:none;border:0;cursor:pointer;padding:4px;}
+.session-head .quit:hover{color:var(--ink);text-decoration:underline;}
+
+.tier-pips{display:flex;gap:5px;align-items:center;}
+.tier-pips .pip{width:7px;height:7px;border-radius:2px;background:var(--track);}
+.tier-pips .pip.on{background:var(--accent);}
+.tier-label{font:900 10.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+
+.q-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+.q-sub{font-size:14px;font-weight:600;color:var(--muted);line-height:1.55;margin:0 0 16px;}
+
+/* ---- interactive answer widgets ---- */
+.click-hint{
+  display:flex;align-items:center;gap:8px;background:var(--tint-accent);border-radius:var(--radius);
+  padding:10px 14px;font:800 12.5px var(--font-ui);color:var(--accent-press);margin-bottom:14px;
+}
+.order-list{list-style:none;padding:0;margin:0 0 18px;display:flex;flex-direction:column;gap:8px;}
+.order-list li{
+  display:flex;align-items:center;gap:12px;background:var(--white);
+  border:var(--bw) solid var(--line);border-radius:var(--radius);padding:11px 14px;box-shadow:var(--lift-sm);
+}
+.order-list .rank{
+  flex-shrink:0;width:26px;height:26px;border-radius:8px;background:var(--tint-accent);
+  color:var(--accent-press);font:900 13px var(--font-mono);display:flex;align-items:center;justify-content:center;
+}
+.order-list .txt{flex:1;font:800 14px var(--font-ui);min-width:0;}
+.order-list .mv{display:flex;gap:4px;flex-shrink:0;}
+.order-list .mv button{
+  width:28px;height:28px;border:1px solid var(--line);background:var(--white);border-radius:8px;
+  cursor:pointer;font:900 12px var(--font-mono);color:var(--ink);line-height:1;
+}
+.order-list .mv button:hover:not(:disabled){border-color:var(--accent);color:var(--accent);}
+.order-list .mv button:disabled{opacity:.3;cursor:default;}
+.order-list li.ok{border-color:var(--good);background:var(--tint-good);}
+.order-list li.no{border-color:var(--bad);background:var(--tint-bad);}
+
+.multi-note{font:800 12.5px var(--font-ui);color:var(--muted);margin-bottom:12px;}
+
+/* ---- diagnostic feedback ---- */
+.diag{
+  border:var(--bw) solid var(--bad);background:var(--tint-bad);border-radius:var(--radius-lg);
+  padding:18px 20px;margin-bottom:16px;
+}
+.diag.good{border-color:var(--good);background:var(--tint-good);}
+.diag .k{font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--bad-press);margin-bottom:6px;}
+.diag.good .k{color:var(--good-press);}
+.diag .did{font:800 14px var(--font-ui);color:var(--ink);margin-bottom:8px;}
+.diag .msg{font-size:14.5px;font-weight:600;line-height:1.6;color:var(--ink);margin:0;}
+.diag .msg + .msg{margin-top:10px;}
+
+.teach-box{
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius);
+  padding:16px 18px;margin-bottom:16px;box-shadow:var(--lift-sm);
+}
+.teach-box .k{
+  font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:6px;
+}
+.teach-box h3{font:900 15.5px var(--font-ui);margin:0 0 8px;color:var(--ink);}
+.teach-box p{margin:0;font-size:14.5px;font-weight:600;line-height:1.6;color:var(--ink);}
+.teach-box .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.teach-box .links a{font:800 12.5px var(--font-ui);}
+
+.prereq-warn{
+  background:var(--tint-amber);border-radius:var(--radius);padding:12px 16px;margin-top:12px;
+  font:700 13px var(--font-ui);color:var(--ink);line-height:1.55;
+}
+.prereq-warn b{color:var(--amber-press);}
+
+.delta-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.delta-chip{
+  font:800 12px var(--font-ui);padding:5px 11px;border-radius:var(--radius-pill);
+  background:var(--track);color:var(--muted);white-space:nowrap;
+}
+.delta-chip.up{background:var(--tint-good);color:var(--good-press);}
+.delta-chip.down{background:var(--tint-bad);color:var(--bad-press);}
+
+/* ---- summary ---- */
+.overall-card{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  padding:22px 24px;box-shadow:var(--lift-sm);
+}
+.overall-card .k{font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+.overall-card .big{font:900 40px var(--font-mono);color:var(--accent);line-height:1.05;}
+.summary-section{margin-top:22px;}
+.summary-section h3{font:900 15px var(--font-ui);margin:0 0 10px;color:var(--ink);}
+.next-up{
+  background:var(--tint-accent);border-radius:var(--radius);padding:14px 18px;
+  font-size:14px;font-weight:700;line-height:1.6;color:var(--ink);
+}
+.next-up b{color:var(--accent-press);}
+
+@media (max-width:520px){
+  .concept-row .track{flex-basis:56px;}
+  .overall-card .big{font-size:32px;}
+}

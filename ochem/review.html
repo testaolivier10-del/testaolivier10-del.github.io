@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Review — Organic Chemistry</title>
-<meta name="description" content="Spaced repetition across everything you've learned in Organic Chemistry — coming soon.">
+<meta name="description" content="Your spaced repetition queue for Organic Chemistry: the concepts scheduled to resurface today, and when everything else comes back.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/review.html">
 <link rel="stylesheet" href="../assets/theme.css">
 <link rel="stylesheet" href="assets/ochem.css">
@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
-<style>.stub-shell{max-width:640px;margin:0 auto;}</style>
+<style>.stub-shell{max-width:680px;margin:0 auto;}</style>
 </head>
 <body>
 <div id="site-header">
@@ -38,20 +38,20 @@
     <p class="lede" style="margin-top:0;">Concepts you've already learned resurface over time — a direct question today, an acidity question that quietly needs resonance next week, a novel application after that. The goal is retention and transfer, not a one-time pass.</p>
   </div>
   <div class="xsection" style="padding-top:0;">
-    <div class="empty-panel">
-      <h2>Coming once there's more to review</h2>
-      <p>Spaced review only makes sense once you've built up a history of answered questions across a few lessons. Keep working through Learn and this fills in behind you.</p>
-      <div style="margin-top:18px"><a href="learn.html" class="btn-press alt sm">Go to Learn</a></div>
-    </div>
+    <div id="reviewBody"></div>
   </div>
 </div>
 
+<script src="assets/curriculum.js"></script>
+<script src="assets/concepts.js"></script>
+<script src="assets/mastery-engine.js"></script>
 <script>
   window.OCHEM_SECTION = 'review';
   window.OCHEM_BASE = '';
 </script>
 <script src="assets/ochem-nav.js"></script>
 <script src="assets/periodic-table.js"></script>
+<script src="assets/review-page.js"></script>
 <script>
   var toggle = document.getElementById('themeToggle');
   toggle.addEventListener('click', function(){
