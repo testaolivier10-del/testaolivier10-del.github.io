@@ -120,7 +120,7 @@
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Four orbital shapes, each holding at most 2 electrons.',
-        bodyHtml: '<p class="step-body">An <b>orbital</b> is a region of space where an electron is likely to be found. Each orbital holds at most <b>2</b> electrons, and those two must have opposite spins — the <b>Pauli exclusion principle</b>: no two electrons in the same atom can be in the exact same state.</p><p class="step-body" style="margin-bottom:0;">There are four shapes. <b>s</b> orbitals are spherical (1 per shell, starting at n=1). <b>p</b> orbitals are dumbbell-shaped, two lobes with a node at the center (3 per shell, starting at n=2). <b>d</b> orbitals are mostly four-lobed, cloverleaf-shaped (5 per shell, starting at n=3). <b>f</b> orbitals (starting at n=4) are even more complex multi-lobed shapes — you won\'t need to picture those in detail for this course.</p>' + orbitalShapeSvg()
+        bodyHtml: '<p class="step-body">An <b>orbital</b> is a region of space where an electron is likely to be found. Each orbital holds at most <b>2</b> electrons, and those two must have opposite spins — the <b>Pauli exclusion principle</b>: no two electrons in the same atom can be in the exact same state.</p><p class="step-body" style="margin-bottom:0;">There are four shapes. <b>s</b> orbitals are spherical (1 per shell, starting at n=1). <b>p</b> orbitals are dumbbell-shaped, two lobes with a <b>node</b> at the center — a node being a spot where the chance of finding the electron is exactly zero (3 per shell, starting at n=2). <b>d</b> orbitals are mostly four-lobed, cloverleaf-shaped (5 per shell, starting at n=3). <b>f</b> orbitals (starting at n=4) are even more complex multi-lobed shapes — you won\'t need to picture those in detail for this course.</p>' + orbitalShapeSvg()
       },
       {
         type: 'explain',
@@ -233,7 +233,7 @@
         title: 'Carbon’s configuration is 1s² 2s² 2p². By Hund’s rule, how many unpaired electrons does it have?',
         options: ['0', '1', '2', '4'],
         correctIndex: 2,
-        correctFeedback: 'Correct — 2 unpaired electrons. Carbon\'s 2p² puts its two electrons in two of the three degenerate 2p orbitals, and Hund\'s rule keeps them unpaired rather than sharing one orbital. Carbon still typically forms 4 bonds despite this — the next lesson, Hybridization, explains how.'
+        correctFeedback: 'Correct — 2 unpaired electrons. Carbon\'s 2p² puts its two electrons in two of the three 2p orbitals, which are <b>degenerate</b> — chemists\' word for having identical energy — and Hund\'s rule keeps them unpaired rather than sharing one orbital. Carbon still typically forms 4 bonds despite this — the next lesson, Hybridization, explains how.'
       }
     ]
   });

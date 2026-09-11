@@ -139,8 +139,8 @@
         title: 'How is a C=O double bond treated for CIP priority purposes?',
         options: ['As if the carbon were bonded to two separate oxygens (a duplicated phantom atom)', 'Exactly like a single C–O bond, with no special treatment', 'Double bonds are ignored entirely in CIP analysis'],
         correctIndex: 0,
-        correctFeedback: 'Correct — CIP rules treat each multiple bond as a duplicate single bond to a phantom copy of the atom on the other end, which is why carbonyl carbons rank so highly.',
-        wrongFeedback: 'A double bond gets special treatment — it counts as if duplicated into two single bonds to phantom atoms, which usually boosts that group\'s priority significantly compared to a plain single bond.'
+        correctFeedback: 'Correct. The reason for the convention: a double bond really does mean that carbon is sharing two pairs of electrons with that oxygen, so for a system that ranks by what an atom is attached to, the oxygen ought to count twice. Writing in a duplicate "phantom" oxygen is just a way of doing that bookkeeping on paper — which is why carbonyl carbons rank so highly.',
+        wrongFeedback: 'A double bond gets special treatment, and for a sensible reason: the carbon is sharing two electron pairs with that atom, so CIP counts it twice — written as a duplicate "phantom" copy. That usually boosts the group\'s priority well above a plain single bond.'
       },
       {
         type: 'explain',
