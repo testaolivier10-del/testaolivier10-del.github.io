@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Practice — Organic Chemistry</title>
-<meta name="description" content="Adaptive Organic Chemistry practice, tagged by module, topic, and difficulty — coming soon.">
+<meta name="description" content="Adaptive Organic Chemistry practice questions, mixed across every module and weighted toward the topics you're weakest on.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/practice.html">
 <link rel="stylesheet" href="../assets/theme.css">
 <link rel="stylesheet" href="assets/ochem.css">
@@ -17,7 +17,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
-<style>.stub-shell{max-width:640px;margin:0 auto;}</style>
+<style>
+  .practice-shell{max-width:720px;margin:0 auto;}
+  .practice-setup-card{
+    background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+    padding:clamp(20px,4vw,28px);box-shadow:var(--lift-sm);
+  }
+  .practice-field{margin-bottom:16px;}
+  .practice-field label{display:block;font:900 11.5px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+  .practice-field select{
+    width:100%;padding:11px 14px;border:var(--bw) solid var(--line);border-radius:var(--radius);
+    font:700 14px var(--font-ui);color:var(--ink);background:var(--white);
+  }
+</style>
 </head>
 <body>
 <div id="site-header">
@@ -31,27 +43,53 @@
 </div>
 <div id="ochem-subnav" class="ochem-subnav"></div>
 
-<div class="xshell stub-shell">
+<div class="xshell practice-shell">
   <div class="hero" style="padding-bottom:0;">
     <div class="eyebrow">Organic Chemistry I</div>
     <h1 style="margin-bottom:4px;">Practice.</h1>
-    <p class="lede" style="margin-top:0;">Adaptive questions pulled from every module you've unlocked, tagged by topic, skill, and difficulty — not just multiple choice, but product prediction, mechanism completion, and ranking.</p>
+    <p class="lede" style="margin-top:0;">Mixed-review questions across every topic you've learned, weighted toward whatever you're weakest on — or pick one topic to drill it on its own.</p>
   </div>
+
   <div class="xsection" style="padding-top:0;">
-    <div class="empty-panel">
-      <h2>Coming once more lessons ship</h2>
-      <p>Practice needs a real question bank behind it, tagged to real lessons — building it ahead of the content would just be a form with nothing to grade. In the meantime, each lesson's own guided and independent practice steps are live.</p>
-      <div style="margin-top:18px"><a href="learn.html" class="btn-press alt sm">Go to Learn</a></div>
+    <div class="practice-setup-card" id="practiceSetup">
+      <div class="practice-field">
+        <label for="topicFilter">Topic</label>
+        <select id="topicFilter"></select>
+      </div>
+      <div class="practice-field">
+        <label for="sessionLength">Session length</label>
+        <select id="sessionLength">
+          <option value="5">5 questions</option>
+          <option value="10" selected>10 questions</option>
+          <option value="20">20 questions</option>
+        </select>
+      </div>
+      <div class="actions" style="justify-content:flex-start;">
+        <button class="btn-press" id="startPracticeBtn">Start practice</button>
+      </div>
     </div>
+
+    <div id="practiceSession" hidden>
+      <div class="progress-bar">
+        <div class="track"><div class="fill" id="practiceProgFill" style="width:0%"></div></div>
+        <div class="label" id="practiceProgLabel">Question 1 / 10</div>
+      </div>
+      <div class="lesson-card" id="practiceCard"></div>
+    </div>
+
+    <div id="practiceSummary" hidden></div>
   </div>
 </div>
 
+<script src="assets/curriculum.js"></script>
+<script src="assets/practice-bank.js"></script>
 <script>
   window.OCHEM_SECTION = 'practice';
   window.OCHEM_BASE = '';
 </script>
 <script src="assets/ochem-nav.js"></script>
 <script src="assets/periodic-table.js"></script>
+<script src="assets/practice-page.js"></script>
 <script>
   var toggle = document.getElementById('themeToggle');
   toggle.addEventListener('click', function(){
