@@ -288,6 +288,14 @@
       return d;
     }
 
+    /* Tag the evidence with the topic it was collected under. Concepts are
+       shared across topics on purpose; the topic tally is what keeps Learn
+       from showing a score for a lesson the student has never opened just
+       because its concepts came up elsewhere. Recall questions bail out
+       above, so they never count here — same reason they write no concept
+       evidence. */
+    M.noteTopicAttempt(q.topic, d.correct);
+
     push(primary, 1);
     secondary.forEach(function(id){ if(id !== primary) push(id, 0.45); });
     // The diagnosed concept, when the diagnosis pointed somewhere else.

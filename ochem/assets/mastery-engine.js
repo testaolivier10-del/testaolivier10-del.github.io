@@ -94,7 +94,7 @@
   function now(){ return Date.now(); }
   function clamp(x, lo, hi){ return x < lo ? lo : (x > hi ? hi : x); }
 
-  function blank(){ return { v:1, concepts:{}, mistakes:[], sessions:[], reviews:{}, updated: now() }; }
+  function blank(){ return { v:1, concepts:{}, mistakes:[], sessions:[], reviews:{}, topics:{}, updated: now() }; }
 
   function read(){
     try{
@@ -106,6 +106,11 @@
       d.mistakes = d.mistakes || [];
       d.sessions = d.sessions || [];
       d.reviews = d.reviews || {};
+      /* `topics` arrived after the concept store shipped, so a returning
+         student has concept evidence but no record of where it came from.
+         Rebuild what can be known (lessons opened, questions missed) once,
+         then persist it so the guess is never made twice. */
+      if(!d.topics){ d.topics = migrateTopics(d); try{ localStorage.setItem(KEY, JSON.stringify(d)); }catch(e2){} }
       return d;
     }catch(e){ return blank(); }
   }
@@ -133,6 +138,65 @@
 
   function stateOf(d, conceptId){
     return d.concepts[conceptId] || null;
+  }
+
+  /* ---- topic attribution ---------------------------------------------
+
+     Concepts are deliberately shared between topics — steric hindrance is
+     SN2 evidence and E2 evidence and nucleophilic-addition evidence, and
+     that overlap is what makes the recommender work. But it means a topic
+     rollup over shared concepts reports a score for topics the student has
+     never opened: drill SN2 and amine reactions lights up at 37%, because
+     the concepts amine reactions happens to share have been answered
+     somewhere else entirely.
+
+     A percentage the student cannot account for reads as a bug, and it is
+     one: "how well do you know this" and "how well do you know the ideas
+     this borrows" are different claims. So evidence is tagged with the
+     topic it was actually collected under, and a topic badge only shows a
+     number once that topic itself has been answered. Cross-topic evidence
+     still flows into the concept model — it just no longer invents a score
+     for a lesson nobody has touched. */
+  function topicRecord(d, topicId){ return (d.topics && d.topics[topicId]) || null; }
+
+  // One answered question (or graded lesson step) attributed to a topic.
+  function noteTopicAttempt(topicId, correct){
+    if(!topicId) return;
+    var d = read();
+    var t = d.topics[topicId] || { n:0, c:0, seen:0 };
+    t.n++;
+    if(correct) t.c++;
+    t.seen = now();
+    d.topics[topicId] = t;
+    write(d);
+  }
+
+  /* Best-effort reconstruction for stores written before topics were
+     tracked. Two honest signals survive: a lesson run in the curriculum
+     store (that topic was opened and worked through) and a logged mistake
+     (which carries its own topicId). Anything else stays untouched — it is
+     better to show "Start" on a topic someone has drilled than a number on
+     one they have never seen. */
+  function migrateTopics(d){
+    var out = {};
+    try{
+      var raw = localStorage.getItem('ochem_progress');
+      var prog = raw ? JSON.parse(raw) : null;
+      if(prog && typeof prog === 'object'){
+        Object.keys(prog).forEach(function(topicId){
+          var t = prog[topicId];
+          if(!t) return;
+          var n = t.attempts || (t.completed ? 1 : 0);
+          if(n > 0) out[topicId] = { n:n, c:t.correct || 0, seen:0, legacy:true };
+        });
+      }
+    }catch(e){}
+    (d.mistakes || []).forEach(function(m){
+      if(!m || !m.topicId) return;
+      var t = out[m.topicId] || (out[m.topicId] = { n:0, c:0, seen:0, legacy:true });
+      t.n++;
+    });
+    return out;
   }
 
   /* ---- public reads ------------------------------------------------- */
@@ -477,6 +541,7 @@
       var key = String(stepKey === undefined ? 'x' : stepKey);
       if(graded[key]) return null;
       graded[key] = true;
+      noteTopicAttempt(topicId, correct);
       opts = opts || {};
       var CN = window.OchemConcepts;
 
@@ -550,8 +615,13 @@
      on the one sixth of this topic you have actually tried". */
   function topicStrength(topicId){
     var ids = window.OchemConcepts.byTopic(topicId);
-    if(!ids || !ids.length) return { strength:null, attempts:0, touched:0, total:0, coverage:0 };
-    var d = read(), num = 0, den = 0, touched = 0, attempts = 0;
+    if(!ids || !ids.length) return { strength:null, attempts:0, touched:0, total:0, coverage:0, own:0 };
+    var d = read();
+    /* No evidence collected under this topic means no score for it, however
+       much its shared concepts have been answered elsewhere. */
+    var own = topicRecord(d, topicId);
+    if(!own || !own.n) return { strength:null, attempts:0, touched:0, total:ids.length, coverage:0, own:0 };
+    var num = 0, den = 0, touched = 0, attempts = 0;
     ids.forEach(function(id){
       var st = stateOf(d, id);
       if(!st || !st.n) return;
@@ -565,7 +635,8 @@
       attempts: attempts,
       touched: touched,
       total: ids.length,
-      coverage: ids.length ? touched / ids.length : 0
+      coverage: ids.length ? touched / ids.length : 0,
+      own: own.n
     };
   }
 
@@ -646,6 +717,7 @@
     lessonRecorder: lessonRecorder,
     noteLesson: noteLesson,
     lessonReadAt: lessonReadAt,
+    noteTopicAttempt: noteTopicAttempt,
     topicStrength: topicStrength,
     topicsStrength: topicsStrength,
     familyRollup: familyRollup,
