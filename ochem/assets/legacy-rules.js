@@ -634,3 +634,82 @@
       m:'Fluoride is the worst halide leaving group, not the best: HF has a pKa around 3, so fluoride is a comparatively strong base. Leaving-group ability improves down the group — I > Br > Cl >> F.' }
   ]);
 })();
+
+/* ---- Module 1: structure and bonding ---------------------------------- */
+(function(){
+  var L = window.OchemLegacyDiagnosis;
+
+  L.define('formal-charge', [
+    { o:/total electrons in the molecule|atomic number|molar mass|lone pairs? ?(×|x) ?2/i, c:'formal-charge-calc',
+      m:'Formal charge is per-ATOM bookkeeping, not a property of the whole molecule. Start from that atom\u2019s own group valence count and compare it with what the drawing gives it.' },
+    { o:/\(valence electrons\) \+ \(nonbonding|bonding electrons\) − \(nonbonding|\(bonding electrons\) −/i, c:'formal-charge-calc',
+      m:'The formula is valence \u2212 nonbonding \u2212 bonds. Note that bonds count ONE each, not two: you are counting the sticks, not the electrons in them, because the other electron of each pair belongs to the neighbour.' },
+    { o:/most total bonds|least symmetry|most lone pairs overall/i, c:'formal-charge-calc',
+      m:'The best structure is the one with formal charges CLOSEST TO ZERO, and where any remaining negative charge sits on the most electronegative atom. Bond count and symmetry are not the criteria.' },
+    { o:/least electronegative atom available|a hydrogen atom|whichever atom is in the cent/i, q:/negative (charge|formal)|charge (sit|reside|go)/i, c:'formal-charge-calc',
+      m:'Negative charge prefers the MOST electronegative atom \u2014 that is the one best able to hold extra electron density. Hydrogen, with one bond and one electron, essentially never carries formal charge in these structures.' },
+    { o:/must always be zero|can never have a positive|can never carry formal charge|cannot be determined/i, c:'formal-charge-calc',
+      m:'Formal charges are common and legitimate \u2014 a nitrogen with four bonds is +1, an oxygen with three bonds is +1. What matters is that they sum to the overall charge on the species.' },
+    { o:/decreases by (1|2)|stays exactly the same/i, q:/lone pair|gains? a bond|forms? a bond/i, c:'formal-charge-calc',
+      m:'Work it through the formula. Turning a lone pair into a bond removes two nonbonding electrons and adds one bond, so the arithmetic moves the formal charge UP by one.' }
+  ]);
+
+  L.define('lewis-structures', [
+    { o:/add lone pairs to satisfy|calculate formal charges|draw all the lone pairs first|assign formal charges to every/i, q:/first step|begin|start/i, c:'lewis-structures-drawing',
+      m:'Those come later. The first step is always counting the total valence electrons you have to place \u2014 everything after that is spending a budget you have not worked out yet.' },
+    { o:/most electronegative atom|always carbon|listed first|alphabetical|smallest atom/i, q:/central atom/i, c:'lewis-structures-drawing',
+      m:'The central atom is the LEAST electronegative one (hydrogen excepted, which only ever forms one bond). It is the atom most willing to share with several neighbours at once.' },
+    { o:/leave it short|octets are optional|remove an atom|add a random electron|erase the bonds|remove electrons from the structure/i, c:'lewis-structures-drawing',
+      m:'When you run short of electrons you make a MULTIPLE BOND \u2014 share a lone pair from a neighbour so both atoms count it. You never leave a second-row atom short or invent electrons.' },
+    { o:/a single dot|a square around|an arrow pointing away|an empty box|a curved arrow/i, q:/bond.*represent|represent.*bond|shown as|drawn as/i, c:'lewis-structures-drawing',
+      m:'A shared pair \u2014 a bond \u2014 is drawn as a line between the two atoms. Dots are reserved for nonbonding (lone pair) electrons.' },
+    { o:/constantly changes its actual|alternate, equally wrong guesses|cannot form double bonds/i, c:'resonance-delocalization',
+      m:'Resonance structures are not alternatives the molecule flips between, and they are not guesses. The real molecule is a single unchanging hybrid of all of them at once \u2014 which is why the bond lengths come out intermediate.' },
+    { o:/exactly 8, regardless|twice the number of atoms|atomic number of the central/i, q:/total valence|how many.*valence/i, c:'valence-electrons',
+      m:'Add up each atom\u2019s own valence count from its group number, then adjust for overall charge \u2014 add one electron per negative charge, subtract one per positive. It is a sum over the actual atoms present.' },
+    { o:/^(carbon|nitrogen|oxygen|fluorine)$/i, q:/expanded octet|more than 8|exceed/i, c:'lewis-structures-drawing',
+      m:'Second-row atoms cannot expand their octet \u2014 they have only 2s and 2p orbitals, which hold eight electrons and no more. Expanded octets start in the third row, with sulfur and phosphorus.' }
+  ]);
+
+  L.define('electronegativity', [
+    { o:/^\s*carbon\s*$/i, q:/more electronegative|which.*pulls|partial negative/i, c:'electronegativity-trend',
+      m:'Carbon sits at 2.55 and is one of the LESS electronegative atoms in most organic bonds. Nitrogen, oxygen and the halogens all outpull it \u2014 which is exactly what makes those bonds polar.' },
+    { o:/bigger|larger|heavier|more atoms|greater (size|radius)/i, q:/more polar|most polar/i, c:'electronegativity-trend',
+      m:'Polarity comes from the DIFFERENCE in electronegativity across the bond, not from atomic size. Going down a group the atoms get bigger but less electronegative, so the bond to carbon gets LESS polar.' },
+    { o:/purely ionic|completely ionic|fully ionic/i, c:'bond-polarity-dipoles',
+      m:'Bonding is a continuum. Two identical atoms share equally (nonpolar covalent), a moderate difference gives polar covalent, and a large one gives something ionic in character \u2014 but there is no sharp line between them.' }
+  ]);
+
+  L.define('bond-polarity', [
+    { o:/^\s*carbon\s*$/i, q:/partial negative|δ−/i, c:'bond-polarity-dipoles',
+      m:'The \u03b4\u2212 end is the MORE electronegative atom \u2014 the one winning the tug of war. Against oxygen, nitrogen or a halogen, carbon is the \u03b4+ end.' },
+    { o:/^\s*(oxygen|chlorine|fluorine|nitrogen)\s*$/i, q:/partial positive|δ\+/i, c:'bond-polarity-dipoles',
+      m:'That is the electronegative atom, so it is the \u03b4\u2212 end. The \u03b4+ end is its partner \u2014 the atom having density pulled away from it.' },
+    { o:/^\s*hydrogen\s*$/i, q:/partial negative|δ−/i, c:'bond-polarity-dipoles',
+      m:'Hydrogen is \u03b4\u2212 only when bonded to something LESS electronegative than itself \u2014 a metal, as in a Grignard or a hydride reagent. Against carbon, oxygen or nitrogen it is the \u03b4+ end.' },
+    { o:/any polar bond makes|yes.*polar bond/i, c:'bond-polarity-dipoles',
+      m:'Bond dipoles are vectors, so they can cancel. CO\u2082 and CCl\u2084 both have strongly polar bonds and no net dipole at all, because their symmetry points the individual dipoles in opposing directions.' },
+    { o:/must be classified as either|purely covalent or purely ionic/i, c:'bond-polarity-dipoles',
+      m:'That is a false dichotomy. Almost every real bond sits somewhere between the two extremes, and polar covalent is the normal case in organic chemistry.' }
+  ]);
+
+  L.define('molecular-geometry', [
+    { o:/trigonal planar/i, q:/lone pair|ammonia|NH3|water|H2O/i, c:'molecular-geometry-vsepr',
+      m:'You are counting only the bonds. Lone pairs are electron groups too: ammonia has four groups, so it is tetrahedral in ELECTRON geometry and trigonal pyramidal in the shape you can see.' },
+    { o:/tetrahedral/i, q:/water|H2O|two lone pairs|bent/i, c:'molecular-geometry-vsepr',
+      m:'Tetrahedral is the ELECTRON geometry \u2014 four groups around the oxygen. Molecular shape names only the positions you can see, and with two of the four taken by lone pairs that shape is bent.' },
+    { o:/linear/i, q:/lone pair|two bonds.*two lone|water/i, c:'molecular-geometry-vsepr',
+      m:'Two bonds only give linear when there are no lone pairs, as in CO\u2082. Add lone pairs on the central atom and they push the bonds together into a bent shape.' }
+  ]);
+
+  L.define('orbitals', [
+    { o:/spherical/i, q:/\bp orbital|dumbbell|two lobes/i, c:'valence-electrons',
+      m:'Spherical is the s orbital. A p orbital has two lobes with a node at the nucleus, which is exactly why it can overlap sideways to make a pi bond.' },
+    { o:/dumbbell|two lobes/i, q:/\bs orbital|spherical/i, c:'valence-electrons',
+      m:'That describes a p orbital. An s orbital is spherical at every energy level \u2014 just larger further out.' },
+    { o:/fixed.*path|definite path|planet|circular orbit|solid physical/i, c:'valence-electrons',
+      m:'Orbitals are probability distributions, not tracks. The Bohr picture of electrons circling like planets was abandoned a century ago; an orbital is the region where an electron is likely to be found.' },
+    { o:/^\s*(1|3|4)\s*$/i, q:/how many electrons can a single orbital|maximum.*single orbital/i, c:'valence-electrons',
+      m:'Two \u2014 and only two, because the Pauli exclusion principle requires their spins to be opposite and there are only two spin states available.' }
+  ]);
+})();
