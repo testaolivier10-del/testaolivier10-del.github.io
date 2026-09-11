@@ -72,7 +72,18 @@
   var TIER_FROM_DIFFICULTY = { easy: 1, medium: 2, hard: 3 };
 
   function normalizeLegacy(topicId, raw, index){
-    var concept = C().inferConcept(raw.q, topicId) || C().defaultConceptFor(topicId);
+    /* Concept attribution comes from the authored rules first and keyword
+       inference only as a fallback. This is not just about feedback wording:
+       this concept is what the engine indexes the question under, so it
+       decides which drills serve it and which review queue it lands in.
+       Inference alone got the topic default 39% of the time, which meant a
+       third of the bank was filed under whatever that topic's headline
+       concept happened to be. Rules cover 95% of it. */
+    var LG = window.OchemLegacyDiagnosis;
+    var recall = LG ? LG.isRecall(topicId, raw.q) : false;
+    var concept = (LG && LG.conceptFor(topicId, raw.q)) ||
+                  C().inferConcept(raw.q, topicId) ||
+                  C().defaultConceptFor(topicId);
     return {
       id: 'lb:' + topicId + ':' + index,
       kind: raw.type === 'tf' ? 'tf' : 'mcq',
@@ -83,7 +94,12 @@
       options: raw.options,
       answer: raw.correct,
       why: raw.why,
-      source: 'legacy'
+      source: 'legacy',
+      legacy: true,
+      /* Vocabulary and trivia. Still worth asking — knowing that saponification
+         is base-promoted ester hydrolysis is useful — but it is not evidence
+         about any concept, so nothing is recorded for it. */
+      recall: recall
     };
   }
 

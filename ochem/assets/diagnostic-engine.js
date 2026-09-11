@@ -25,6 +25,7 @@
   var C = function(){ return window.OchemConcepts; };
   var Mo = function(){ return window.OchemMolecules; };
   var Ed = function(){ return window.OchemMoleculeEditor; };
+  var LG = function(){ return window.OchemLegacyDiagnosis; };
 
   function arrEq(a, b){
     if(a.length !== b.length) return false;
@@ -182,14 +183,45 @@
     var key = diagKey(q, response);
     var authored = key !== null && q.diag ? (q.diag[key] || q.diag.any) : null;
 
+    var chosenText = (q.options && response.choice !== undefined) ? String(q.options[response.choice]) : '';
+
     if(authored){
       out.precise = true;
       out.conceptId = authored.concept;
       out.diagnosis = authored.msg;
+    } else if(LG() && q.legacy){
+      /* Legacy bank. The rules in legacy-rules.js do two separate jobs here.
+         The concept attribution is the important one — it is what the mastery
+         engine records, and rules fix it for 95% of the bank where keyword
+         inference got it right only 61% of the time. The message is a bonus
+         on top, and only some wrong answers carry enough information to earn
+         one: "False" and "sp³" say nothing on their own. */
+      var d = LG().forOption(q.topic, q.prompt || '', chosenText);
+      var recall = LG().isRecall(q.topic, q.prompt || '');
+      if(d){
+        out.conceptId = d.concept;
+        out.diagnosis = d.msg || '';
+        out.precise = !!d.precise;
+        out.soft = !!d.soft;
+      }
+      if(!out.conceptId){
+        out.conceptId = C().inferConcept(q.prompt || '', q.topic) ||
+                        C().inferConcept(chosenText, q.topic) || primary;
+      }
+      /* Recall questions — IUPAC suffixes, "nylon is which polymer", trivia —
+         are not about any concept in the graph. Recording one would have the
+         review scheduler drilling mechanisms to fix a vocabulary gap, so this
+         flag tells applyResult to write no concept evidence at all. */
+      out.recall = recall;
+      if(!out.diagnosis){
+        var rc = C().get(out.conceptId);
+        out.diagnosis = rc
+          ? 'This question turns on ' + rc.title.toLowerCase() + ' — that is the idea to check.'
+          : '';
+      }
     } else {
       // No authored diagnosis. Infer from what the question is testing, then
       // from what they picked, then fall back to the topic's main concept.
-      var chosenText = (q.options && response.choice !== undefined) ? q.options[response.choice] : '';
       out.conceptId =
         C().inferConcept(q.prompt || q.q || '', q.topic) ||
         C().inferConcept(chosenText, q.topic) ||
@@ -238,6 +270,22 @@
       var before = M.profile(conceptId).strength;
       var after = M.record(conceptId, d.correct, { tier: tier, share: share });
       if(after) moved.push({ id: conceptId, before: before, after: after.strength, band: after.band });
+    }
+
+    /* A recall question is vocabulary, not a concept. Writing mastery for it
+       would put "weak at acyl reactivity" on the record because someone did
+       not know nylon is a polyamide — and Review would then schedule
+       mechanism drills to fix a naming gap. The mistake is still logged so
+       the question can come back; only the concept evidence is withheld. */
+    if(q.recall || d.recall){
+      if(d.correct) M.clearMistake(q.id);
+      else M.recordMistake({
+        qid: q.id, topicId: q.topic, conceptId: null, tier: tier,
+        prompt: q.prompt || q.q || '', chose: d.whatYouDid
+      });
+      d.moved = [];
+      d.recall = true;
+      return d;
     }
 
     push(primary, 1);
