@@ -30,6 +30,11 @@
 <meta property="og:url" content="https://testaolivier10-del.github.io/nremt/practice.html">
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="assets/theme.css">
+<!-- Shared across every subject on Study Hub: one login, one level, one
+     streak. Loaded blocking and ahead of the page's own inline scripts
+     because those read window.HubProgress while the page parses. -->
+<script src="../assets/account.js"></script>
+<script src="../assets/hub-progress.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
@@ -1219,6 +1224,12 @@ function saveStreak(s){ localStorage.setItem(STREAK_KEY, JSON.stringify(s)); }
 // fires that day.
 function recordStudyActivity(n){
   if(!n) return;
+  // The streak itself is site-wide now (assets/hub-progress.js): a day of
+  // ochem keeps this flame alive too, and the once-per-day XP bonus is
+  // awarded there so two subjects can't both claim it. The local
+  // nremt_streak record is still updated because the reminder settings and
+  // the NREMT-only history live on it.
+  if(window.LevlXP) window.LevlXP.recordActivity(n);
   const s = loadStreak();
   const today = dayKey(0);
   if(s.lastActiveDate !== today){
@@ -1226,9 +1237,6 @@ function recordStudyActivity(n){
     s.currentStreak = (s.lastActiveDate === yesterday) ? s.currentStreak + 1 : 1;
     s.lastActiveDate = today;
     s.longestStreak = Math.max(s.longestStreak, s.currentStreak);
-    // First activity of a new calendar day — award streak XP once per day, no
-    // matter how many more questions/cards get studied today.
-    if(window.LevlXP) window.LevlXP.awardXp(15);
   }
   s.dailyCounts[today] = (s.dailyCounts[today] || 0) + n;
   const keys = Object.keys(s.dailyCounts).sort();
@@ -1242,6 +1250,17 @@ function recordStudyActivity(n){
 // this derives what should be SHOWN right now without mutating storage (storage
 // only updates the next time the user actually does something).
 function streakStatus(){
+  // Reads the shared record so the number here, the header chip, the
+  // dashboard and the ochem course can never disagree. Falls back to the
+  // local one if hub-progress.js hasn't loaded (offline, blocked CDN).
+  const hp = window.HubProgress;
+  if(hp){
+    const st = hp.streak();
+    return {
+      display: st.current, longest: st.longest, todayCount: st.todayCount,
+      goal: st.goal, metToday: st.metToday,
+    };
+  }
   const s = loadStreak();
   const today = dayKey(0), yesterday = dayKey(-1);
   const broken = s.lastActiveDate !== null && s.lastActiveDate !== today && s.lastActiveDate !== yesterday;
@@ -1300,13 +1319,14 @@ function maybeShowStudyReminder(){
   if(!s.remindersEnabled) return;
   if(typeof Notification === 'undefined' || Notification.permission !== 'granted') return;
   const today = dayKey(0);
-  const todayCount = s.dailyCounts[today] || 0;
-  if(todayCount >= s.dailyGoal) return;
+  const st = streakStatus();
+  const todayCount = st.todayCount;
+  if(todayCount >= st.goal) return;
   if(new Date().getHours() < s.reminderHour) return;
   if(s.lastNotifiedDate === today) return;
   try {
     new Notification('Keep your streak going!', {
-      body: `You're at ${todayCount}/${s.dailyGoal} questions today — a quick session keeps it alive.`,
+      body: `You're at ${todayCount}/${st.goal} questions today — a quick session keeps it alive.`,
     });
   } catch(e) { /* some browsers restrict Notification outside a user gesture — ignore */ }
   s.lastNotifiedDate = today;
@@ -1349,7 +1369,7 @@ function renderStreakWidget(){
         <div class="streak-settings-row">
           <label for="dailyGoalSelect">Daily goal</label>
           <select id="dailyGoalSelect">
-            ${[10,20,30,50].map(g => `<option value="${g}" ${s.dailyGoal===g?'selected':''}>${g} questions/day</option>`).join('')}
+            ${[10,20,30,50].map(g => `<option value="${g}" ${st.goal===g?'selected':''}>${g} questions/day</option>`).join('')}
           </select>
         </div>
         <div class="streak-settings-row">
@@ -1366,8 +1386,10 @@ function renderStreakWidget(){
     panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
   });
   document.getElementById('dailyGoalSelect').addEventListener('change', (e) => {
+    const goal = parseInt(e.target.value, 10);
+    if(window.HubProgress) window.HubProgress.setGoal(goal);
     const st2 = loadStreak();
-    st2.dailyGoal = parseInt(e.target.value, 10);
+    st2.dailyGoal = goal;
     saveStreak(st2);
     renderStreakWidget();
     document.getElementById('streakSettings').style.display = 'block';

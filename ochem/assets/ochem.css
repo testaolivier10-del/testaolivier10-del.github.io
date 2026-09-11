@@ -488,3 +488,100 @@ a.topic-row:hover{background:var(--hover-tint);}
 }
 .oarrow{cursor:pointer;}
 .oarrow:hover .oarrow-line{stroke-width:3.5;}
+
+/* ---------------------------------------------------------------------
+   Progression panel (mastery.html, rendered by assets/game-panel.js).
+   Reuses the shared .badge/.badge-grid styles from the site theme for the
+   achievement row; everything below is the level card, the two quest cards
+   and the concept-tier bars.
+   --------------------------------------------------------------------- */
+.game-level{
+  background:var(--navy);color:var(--on-accent);border-radius:var(--radius-lg);
+  padding:22px 24px;box-shadow:var(--lift-lg);margin-bottom:16px;
+}
+.game-level-top{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.game-ring{
+  width:52px;height:52px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font:900 17px var(--font-ui);background:rgba(255,255,255,0.14);
+  border:2px solid rgba(255,255,255,0.28);
+}
+.game-level-title{font:900 19px var(--font-ui);margin:0;letter-spacing:-0.01em;}
+.game-level-sub{font:700 13px var(--font-ui);margin:3px 0 0;opacity:.78;}
+.game-level .game-track{background:rgba(255,255,255,0.16);}
+.game-level .game-fill{background:var(--on-accent);}
+.game-level .game-note{color:inherit;opacity:.68;}
+
+.game-track{height:9px;border-radius:var(--radius-pill);background:var(--paper);overflow:hidden;border:var(--bw) solid var(--line);}
+.game-track.sm{height:7px;}
+.game-fill{height:100%;background:var(--accent);border-radius:var(--radius-pill);}
+
+.game-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+@media (max-width:720px){ .game-grid{grid-template-columns:1fr;} }
+
+.game-card{
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  padding:20px 22px;box-shadow:var(--lift-sm);height:100%;
+}
+.game-card.done{border-color:var(--good);}
+.game-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;}
+.game-card-title{font:900 16px var(--font-ui);letter-spacing:-0.01em;}
+.game-pill{
+  font:900 11.5px var(--font-ui);letter-spacing:0.04em;text-transform:uppercase;
+  padding:5px 11px;border-radius:var(--radius-pill);background:var(--paper);
+  border:var(--bw) solid var(--line);white-space:nowrap;
+}
+.game-card.done .game-pill{background:var(--tint-good);color:var(--good);border-color:transparent;}
+.game-card-body{font-size:13.5px;font-weight:600;color:var(--muted);margin:10px 0 0;line-height:1.55;text-wrap:pretty;}
+.game-note{font:700 12.5px var(--font-ui);color:var(--muted);margin:8px 0 0;}
+.game-big{font:900 34px var(--font-ui);margin:4px 0 0;letter-spacing:-0.03em;}
+.game-cta{display:inline-block;margin-top:14px;font:900 13.5px var(--font-ui);color:var(--accent);text-decoration:none;}
+.game-cta:hover{text-decoration:underline;}
+
+/* The debt meter is informational, never alarming: even "heavy" is amber, not
+   an error state, because a backlog is a thing to work through. */
+.game-card.debt-clear .game-pill{background:var(--tint-good);color:var(--good);border-color:transparent;}
+.game-card.debt-clear .game-big{color:var(--good);}
+.game-card.debt-building .game-pill,
+.game-card.debt-heavy .game-pill{background:var(--tint-amber);color:var(--amber);border-color:transparent;}
+.game-card.debt-heavy .game-big{color:var(--amber);}
+
+.tier-row{display:grid;grid-template-columns:92px 1fr 72px;align-items:center;gap:12px;margin-top:10px;}
+.tier-name{font:900 12.5px var(--font-ui);}
+.tier-solid{color:var(--muted);}
+.tier-strong{color:var(--accent);}
+.tier-mastered{color:var(--good);}
+.tier-count{font:800 12.5px var(--font-mono,var(--font-ui));color:var(--muted);text-align:right;}
+
+/* The reward strip at the top of a finished session's summary
+   (assets/ochem-xp.js builds it; Practice and Review both render it). */
+.xp-strip{
+  background:var(--navy);color:var(--on-accent);border-radius:var(--radius-lg);
+  padding:18px 22px;box-shadow:var(--lift-sm);margin-bottom:14px;
+}
+.xp-total{font:900 30px var(--font-ui);letter-spacing:-0.03em;line-height:1.1;}
+.xp-lines{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:8px;}
+.xp-line{font:800 12.5px var(--font-ui);opacity:.82;}
+.xp-line em{font-style:normal;font-weight:700;opacity:.8;}
+.xp-badges,.xp-quest{font:700 13px var(--font-ui);margin:10px 0 0;opacity:.85;}
+.xp-badges b{color:#F4D28C;}
+.xp-level{
+  display:inline-block;margin-top:12px;font:900 11.5px var(--font-ui);
+  letter-spacing:0.04em;text-transform:uppercase;
+  background:rgba(244,210,140,0.16);color:#F4D28C;
+  padding:5px 12px;border-radius:var(--radius-pill);
+}
+
+/* Resume strip on the course home page (assets/game-panel.js). */
+.home-strip{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  padding:16px 20px;box-shadow:var(--lift-sm);
+}
+.home-strip-main{flex:1 1 220px;min-width:0;}
+.home-strip-title{font:900 16px var(--font-ui);margin:0;}
+.home-strip-sub{font:700 13px var(--font-ui);color:var(--muted);margin:3px 0 0;}
+.game-ring.sm{
+  width:44px;height:44px;font-size:15px;background:var(--navy);color:var(--on-accent);
+  border-color:transparent;
+}
