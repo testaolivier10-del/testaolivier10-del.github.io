@@ -98,6 +98,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
 <script src="../assets/mastery-engine.js"></script>
@@ -137,6 +138,9 @@
   var M = window.OchemMastery;
   var conceptRec = M ? M.lessonRecorder(TOPIC_ID) : null;
   function record(correct){
+    /* A step reached by going back is a re-read, not new evidence — see
+       step-back.js. */
+    if(SB && SB.isReplay()) return;
     window.OchemCurriculum.recordAttempt(TOPIC_ID, correct);
     if(conceptRec) conceptRec(correct, step, { concepts: STEP_CONCEPTS[step] });
   }
@@ -149,8 +153,13 @@
   function showFeedback(el, good, text){ el.className = 'feedback show ' + (good?'good':'bad'); el.textContent = text; }
   function nextButton(label, enabled){ return '<div class="actions"><button class="btn-press" id="nextBtn"' + (enabled?'':' disabled') + '>' + label + '</button></div>'; }
 
+  var SB = window.OchemStepBack;
+  function goBack(){ if(step > 0){ step--; render(); } }
+  if(SB) SB.mount(card, goBack);
+
   function render(){
     updateProgress();
+    if(SB) SB.sync(step);
     if(step===0) renderExplain();
     else if(step===1) renderIonize();
     else if(step===2) renderVisualizeCation();

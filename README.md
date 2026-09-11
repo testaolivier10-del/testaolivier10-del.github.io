@@ -63,9 +63,13 @@ ochem/                 The Organic Chemistry app (beta)
                             declarative 'explain'/'mcq'/'final', plus a `render` function
                             for its one genuinely hands-on interactive step) instead of
                             hand-rolling the plumbing; Formal Charge/SN1/SN2/E2 predate it
-                            and still carry their own copy inline. Every step past the
-                            first gets a "Previous step" control; re-answering a step you
-                            stepped back to never records a second attempt
+                            and still carry their own copy inline
+    step-back.js           The "Previous step" control every step page shares — the
+                            engine lessons, the config-driven mechanism walkthroughs and
+                            the five hand-rolled pages — plus the rule that keeps going
+                            back safe: a step you have already left never records a
+                            second attempt, so walking back and forth can't move a score
+                            (retries within a step are unaffected)
     session-runner.js      The shared question loop behind Practice and Review: renders
                             each question kind, grades, diagnoses, teaches, and keeps a
                             session history so any answered card can be replayed read-only

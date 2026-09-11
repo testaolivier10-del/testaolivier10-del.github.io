@@ -21,10 +21,12 @@
    Going back: every step keeps a Back control above the card once you are
    past the first one, because Continue is a reflex and re-reading the step
    you clicked through should not mean quitting to Learn and re-entering the
-   lesson. Stepping back re-renders that step live rather than replaying a
-   snapshot — these steps are short and re-answering one is harmless — but a
-   step that has already been graded never records a second attempt, so
-   walking back and forth cannot inflate (or deflate) a lesson score.
+   lesson. The control and the don't-grade-it-twice rule come from
+   step-back.js, shared with the mechanism pages and the hand-rolled lessons
+   so all three behave identically. Stepping back re-renders that step live
+   rather than replaying a snapshot — these steps are short and re-answering
+   one is harmless — but a step already moved past never records a second
+   attempt, so walking back and forth cannot inflate (or deflate) a score.
 
    Notes mode: the interactive step flow is great for a first pass, but bad
    for "wait, what did this lesson actually say about X" — getting back to
@@ -98,15 +100,13 @@
     var LC = window.OchemLessonConcepts;
     var mapped = LC ? LC.forTopic(topicId, steps.length) : null;
 
-    /* Steps the student has already moved past. Answering a question again
-       after stepping back is fine as a way to re-read it, but it is not new
-       evidence, so it must not reach the curriculum or the mastery engine a
-       second time. Retries WITHIN a step still record exactly as before —
-       the gate only closes once the step has been left. */
-    var passed = {};
+    var SB = window.OchemStepBack;
 
     function record(correct, conceptId){
-      if(passed[step]) return;
+      /* Re-answering a step reached by going back is a re-read, not new
+         evidence, so it never reaches the curriculum or the mastery engine
+         a second time. Retries within a step are unaffected. */
+      if(SB && SB.isReplay()) return;
       window.OchemCurriculum.recordAttempt(topicId, correct);
       if(!rec) return;
       var cfg = steps[step] || {};
@@ -126,18 +126,12 @@
     function nextButtonHtml(label, enabled){ return '<div class="actions"><button class="btn-press" id="nextBtn"' + (enabled?'':' disabled') + '>' + label + '</button></div>'; }
     function doneBoxHtml(){ return '<div class="actions" style="margin-top:8px;"><a href="' + doneHref + '" class="btn-press">Back to Learn</a></div>'; }
 
-    function advance(){ passed[step] = true; step++; render(); }
+    function advance(){ step++; render(); }
     function goBack(){ if(step > 0){ step--; render(); } }
 
-    /* One nav row, owned by the engine and re-rendered every step, so a
-       lesson's custom (hands-on) steps get the Back control for free without
-       each of them having to draw one. */
-    var stepNav = document.createElement('div');
-    stepNav.className = 'lesson-step-nav';
-    stepNav.innerHTML = '<button type="button" id="lessonBackBtn">&larr; Previous step</button>';
-    shell.insertBefore(stepNav, card);
-    stepNav.querySelector('#lessonBackBtn').addEventListener('click', goBack);
-    function updateStepNav(){ stepNav.hidden = step === 0; }
+    /* Mounted by the engine, so a lesson's custom (hands-on) steps get the
+       Back control for free without each of them drawing one. */
+    if(SB) SB.mount(card, goBack);
 
     function head(cfg){
       return (cfg.eyebrow ? '<div class="step-eyebrow">' + cfg.eyebrow + '</div>' : '') +
@@ -191,7 +185,7 @@
 
     function render(){
       updateProgress();
-      updateStepNav();
+      if(SB) SB.sync(step);
       var cfg = steps[step];
       if(typeof cfg.render === 'function'){
         cfg.render({

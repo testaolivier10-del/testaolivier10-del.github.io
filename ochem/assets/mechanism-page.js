@@ -41,7 +41,12 @@
     });
   }
 
+  var SB = window.OchemStepBack;
+
   function record(correct, cfg){
+    /* Answering a step again after stepping back is a re-read, not new
+       evidence — see step-back.js. */
+    if(SB && SB.isReplay()) return;
     if(CU) CU.recordAttempt(CFG.topicId, correct);
     if(rec) rec(correct, step, { concepts: cfg.concepts });
   }
@@ -68,6 +73,8 @@
     '</div>';
   }
   function advance(){ step++; render(); }
+  function goBack(){ if(step > 0){ step--; render(); } }
+  if(SB) SB.mount(card, goBack);
 
   function renderExplain(cfg){
     card.innerHTML = head(cfg) +
@@ -175,6 +182,7 @@
 
   function render(){
     updateProgress();
+    if(SB) SB.sync(step);
     var cfg = steps[step];
     if(cfg.type === 'explain') return renderExplain(cfg);
     if(cfg.type === 'draw') return renderDraw(cfg);
