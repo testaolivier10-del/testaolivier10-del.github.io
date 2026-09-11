@@ -76,7 +76,7 @@
     progLabel: document.getElementById('progLabel'),
     notesHtml: '<h3>What it is</h3><p class="step-body">An <b>electrophile</b> ("electron-loving," but really electron-<b>poor</b>) carries a full or partial positive charge, or has an empty orbital, and seeks electrons from a nucleophile. It\'s the flip side of a nucleophile — one attacks, the other gets attacked.</p>' +
       '<h3>Worked example: a carbonyl</h3><p class="step-body">In a ketone (C=O), oxygen\'s pull leaves the carbonyl carbon partially positive (δ+) — that\'s the electrophilic atom, not the oxygen. The polarization comes from the electronegativity difference in the C=O bond, not any formal charge (a neutral carbonyl carbon\'s formal charge is 0).</p>' +
-      '<h3>More examples</h3><p class="step-body">In CH₃–Br, the carbon is electrophilic (bromine pulls electron density away from it), not bromine itself, even though bromine is the one that eventually leaves. BF₃ has an empty p-orbital on boron, making it a strong electrophile (a place for electrons to go) — this is the same idea behind Lewis acids.</p>' +
+      '<h3>More examples</h3><p class="step-body">In CH₃–Br, the carbon is electrophilic (bromine pulls electron density away from it), not bromine itself, even though bromine is the one that eventually leaves. BF₃ has an empty p-orbital on boron, making it a strong electrophile: a literal empty space for electrons to go. Module 3 returns to this exact idea under the name <i>Lewis acid</i>.</p>' +
       '<div class="notes-fact">Once you\'ve found the nucleophile and electrophile in a reaction, you already know where the new bond forms — the nucleophile\'s electrons attack the electrophile\'s electron-poor atom.</div>' +
       '<h3>Three more electrophile types</h3><p class="step-body"><b>Carbocations</b> (Module 6): a full positive charge and empty p orbital — among the strongest electrophiles. <b>H⁺</b>: the simplest electrophile, no electrons at all, grabs the nearest lone pair (acid-base chemistry, Module 3). <b>Induced-dipole electrophiles</b>: even nonpolar Br₂ becomes electrophilic as it approaches an alkene\'s π bond, which repels Br₂\'s electrons and induces a temporary δ+ on the near bromine (Module 7, halogenation).</p>',
     steps: [
@@ -84,7 +84,7 @@
         type: 'explain',
         eyebrow: 'Explain',
         title: '"Electron-loving" — but really, electron-poor.',
-        bodyHtml: '<p class="step-body">An <b>electrophile</b> is a species that is electron-<b>poor</b> — it carries a full or partial positive charge, or has an empty orbital — and seeks electrons from a nucleophile. It\'s the flip side of a nucleophile: one attacks, the other gets attacked.</p><p class="step-body" style="margin-bottom:0;">The classic example is a carbonyl carbon (C=O): the oxygen pulls electron density away from carbon, leaving it electron-poor.</p>'
+        bodyHtml: '<p class="step-body">An <b>electrophile</b> is a species that is electron-<b>poor</b> — it carries a full or partial positive charge, or has an empty orbital — and seeks electrons from a nucleophile. It\'s the flip side of a nucleophile: one attacks, the other gets attacked.</p><p class="step-body" style="margin-bottom:0;">The classic example is a <b>carbonyl</b> carbon — the standard name for a carbon double-bonded to an oxygen, C=O. Oxygen pulls electron density away from that carbon, leaving it electron-poor.</p>'
       },
       {
         render: function(api){
@@ -131,7 +131,7 @@
         options: ['The carbon — bromine pulls electron density away from it', 'The bromine — it\'s the one that eventually leaves', 'Neither — the bond is nonpolar'],
         correctIndex: 0,
         correctFeedback: 'Correct — bromine\'s higher electronegativity leaves the carbon δ+, which is exactly where a nucleophile will attack.',
-        wrongFeedback: 'Being the leaving group doesn\'t make bromine electrophilic — compare electronegativities instead.'
+        wrongFeedback: 'Bromine is the piece that eventually breaks off — but being the part that departs is not what makes an atom electrophilic. Compare electronegativities instead: bromine is the one pulling electrons, so it is the carbon that ends up short.'
       },
       {
         type: 'explain',
@@ -151,7 +151,7 @@
         title: 'BF₃ has an empty p-orbital on boron. Is BF₃ a nucleophile or an electrophile?',
         options: ['Electrophile — it can accept an electron pair into that empty orbital', 'Nucleophile — it has lone pairs on the fluorines', 'Neither — BF₃ is unreactive'],
         correctIndex: 0,
-        correctFeedback: 'Correct. An empty orbital is a place for electrons to go, which makes boron here a strong electrophile — this is the same idea behind Lewis acids, coming up in Module 3.'
+        correctFeedback: 'Correct. An empty orbital is a place for electrons to go, which makes boron here a strong electrophile. Module 3 gives this same idea another name, Lewis acid, but it is the same empty space doing the work.'
       }
     ]
   });
