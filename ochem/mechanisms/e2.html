@@ -111,7 +111,7 @@
 (function(){
   var TOPIC_ID = 'e2';
   var step = 0; // 0 explain, 1 arrow1 (base->H), 2 arrow2 (C-H->pi), 3 arrow3 (C-LG->LG), 4 predict, 5 challenge
-  var TOTAL = 5;
+  var TOTAL = 6;
   var card = document.getElementById('card');
   var progFill = document.getElementById('progFill');
   var progLabel = document.getElementById('progLabel');
@@ -163,6 +163,7 @@
     else if(step===2) renderArrow2();
     else if(step===3) renderArrow3();
     else if(step===4) renderPredict();
+    else if(step===5) renderRateLaw();
     else renderChallenge();
   }
 
@@ -337,7 +338,18 @@
     next.addEventListener('click', function(){ step=5; render(); });
   }
 
-  // ---- Step 5: Why it matters + Challenge ----
+  // ---- Step 5: rate law, and a preview of E1 ----
+  function renderRateLaw(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Explain</div>' +
+      '<h2 class="step-title">What the "2" in E2 means — and a preview of E1.</h2>' +
+      '<p class="step-body">E2 is <b>bimolecular</b>: the base and the substrate both take part in the single concerted step, giving the rate law <b>rate = k[base][substrate]</b>. This is the exact same shape as SN2\'s rate law — makes sense, since both are single-step, concerted mechanisms driven by a nucleophile/base attacking a substrate.</p>' +
+      '<p class="step-body" style="margin-bottom:0;">Just like SN1 is the unimolecular substitution (ionize first, then react), there\'s an unimolecular elimination too: <b>E1</b>. It shares SN1\'s first step exactly — the leaving group departs on its own to form a carbocation — and then, instead of a nucleophile attacking the cation (SN1\'s path), a base simply removes a beta-hydrogen to form the double bond. E1\'s rate law is rate = k[substrate], with no base concentration in it, same shape as SN1. You\'ll get the full E1 lesson soon, but recognizing this SN1/E1 vs. SN2/E2 pairing — one-step-concerted vs. ionize-first — is the single most useful organizing idea for this whole module.</p>' +
+      nextButton('Continue', true);
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step=6; render(); });
+  }
+
+  // ---- Step 6: Why it matters + Challenge ----
   function renderChallenge(){
     card.innerHTML =
       '<div class="step-eyebrow">Why it matters &middot; Challenge</div>' +
@@ -371,7 +383,8 @@
   var NOTES_HTML = '<h3>Three arrows, one step</h3><p class="step-body">E2 is concerted, like SN2 — but instead of two arrows, it takes <b>three</b>, all firing at the same instant: (1) a base removes a hydrogen on the carbon <i>next to</i> the leaving group (the <b>beta</b> carbon) — tail on the base\'s lone pair, head on that beta-hydrogen; (2) the C–H bond\'s electrons become a new π bond between the beta and alpha carbons — tail on the beta carbon, head on the alpha carbon; (3) the C–leaving-group bond breaks, and the leaving group departs with both electrons — tail on the alpha carbon, head on the leaving group.</p>' +
     '<h3>Why geometry matters: anti-periplanar</h3><p class="step-body">This only works when the beta-hydrogen being removed and the leaving group are lined up <b>anti-periplanar</b> — on opposite sides, 180° apart. That specific alignment lets the electrons flow smoothly from the breaking C–H bond into the new π bond as the leaving group departs; any other angle doesn\'t line the orbitals up correctly. This is exactly why E2 depends so heavily on conformation (which dihedral angles are accessible) — a lesson still to come.</p>' +
     '<div class="notes-fact">Worked example: ethoxide (a base) removes a beta-hydrogen from a bromoalkane while the C–Br bond breaks, forming but-2-ene + ethanol + bromide, all in one concerted step.</div>' +
-    '<h3>Zaitsev vs. Hofmann: which hydrogen leaves</h3><p class="step-body">When a carbon has more than one available beta-hydrogen, the choice of which one gets removed decides the product. A <b>small</b> base (like ethoxide or hydroxide) can reach a crowded, more-substituted hydrogen, giving the <b>more substituted</b> alkene — the <b>Zaitsev</b> (major) product, generally the more stable alkene. A <b>bulky</b> base (like <i>tert</i>-butoxide) can\'t easily reach a crowded hydrogen, so it grabs a more accessible, less hindered one instead, favoring the <b>less substituted</b> "Hofmann" alkene.</p>';
+    '<h3>Zaitsev vs. Hofmann: which hydrogen leaves</h3><p class="step-body">When a carbon has more than one available beta-hydrogen, the choice of which one gets removed decides the product. A <b>small</b> base (like ethoxide or hydroxide) can reach a crowded, more-substituted hydrogen, giving the <b>more substituted</b> alkene — the <b>Zaitsev</b> (major) product, generally the more stable alkene. A <b>bulky</b> base (like <i>tert</i>-butoxide) can\'t easily reach a crowded hydrogen, so it grabs a more accessible, less hindered one instead, favoring the <b>less substituted</b> "Hofmann" alkene.</p>' +
+    '<h3>Rate law, and E1 as the elimination analog of SN1</h3><p class="step-body">E2 is bimolecular: rate = k[base][substrate] (same shape as SN2). <b>E1</b> is the unimolecular elimination — it shares SN1\'s ionize-first step (leaving group departs to form a carbocation), then a base removes a beta-hydrogen to form the alkene, giving rate = k[substrate] with no base concentration (same shape as SN1). SN1/E1 (ionize first) vs. SN2/E2 (concerted) is the key organizing pair for this whole module.</p>';
 
   var notesMode = /(^|[?&])notes=1(&|$)/.test(location.search);
   (function(){
