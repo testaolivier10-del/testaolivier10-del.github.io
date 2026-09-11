@@ -256,7 +256,30 @@
       if(!topics.length) topics = Object.keys(byTopic);
       var t = topics[Math.floor(Math.random() * topics.length)];
       var bucket = byTopic[t];
-      return bucket[Math.floor(Math.random() * bucket.length)];
+
+      /* Topic choice stays random — that spread is what "mixed" means. But
+         the pick WITHIN a topic is weighted, because the pool is about 96%
+         legacy multiple choice: drawing uniformly served 40 questions in a
+         row without a single one you could click, which is the exact
+         complaint this bank exists to answer. Turning the adaptivity down
+         should relax which CONCEPT gets asked about, not flatten every
+         question back into four sentences to choose between. */
+      var seenNow = readSeen();
+      var weights = bucket.map(function(q){
+        var w = 1;
+        if(isInteractive(q)) w *= 9;                       // ~4% of the pool, so this is what makes them visible
+        else if(q.diag) w *= 2.5;                          // authored diagnosis, even as an mcq
+        if(q.kind === session.recentKinds[0]) w *= 0.6;    // don't repeat the format back to back
+        if(seenNow[q.id]) w *= 0.7;
+        return w;
+      });
+      var total = weights.reduce(function(a, b){ return a + b; }, 0);
+      var roll = Math.random() * total;
+      for(var i = 0; i < bucket.length; i++){
+        roll -= weights[i];
+        if(roll <= 0) return bucket[i];
+      }
+      return bucket[bucket.length - 1];
     }
 
     var ctx = makeContext(session);

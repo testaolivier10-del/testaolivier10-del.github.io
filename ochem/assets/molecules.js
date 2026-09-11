@@ -41,6 +41,311 @@
 
   var M = {};
 
+  /* ---- Foundations: shapes, bonding, geometry -------------------------
+     Module 1 had no interactive questions at all, because there was nothing
+     to point at — every molecule in this file was a reaction substrate. These
+     are the small ones a first-week question actually asks about. */
+
+  M['water'] = {
+    name: 'Water', formula: 'H₂O',
+    atoms: {
+      o:  { x:160, y:96, r:18, label:'O', lp:2, role:'nucleophile', note:'Two bonding pairs and two lone pairs — four electron groups, which is why the shape is bent rather than linear.' },
+      h1: { x:100, y:56, r:12, label:'H', note:'A bonding pair, not a lone pair. Bonding pairs are shared; lone pairs sit on one atom.' },
+      h2: { x:220, y:56, r:12, label:'H', note:'A bonding pair, not a lone pair.' }
+    },
+    bonds: [{a:'o',b:'h1'},{a:'o',b:'h2'}],
+    caption: 'Bent, about 104.5° — the two lone pairs push the hydrogens together.'
+  };
+
+  M['ammonia'] = {
+    name: 'Ammonia', formula: 'NH₃',
+    atoms: {
+      n:  { x:160, y:100,r:18, label:'N', lp:1, role:'nucleophile', note:'One lone pair on nitrogen — the electron pair that makes ammonia both a base and a nucleophile.' },
+      h1: { x:96,  y:64, r:12, label:'H' },
+      h2: { x:160, y:150,r:12, label:'H' },
+      h3: { x:224, y:64, r:12, label:'H' }
+    },
+    bonds: [{a:'n',b:'h1'},{a:'n',b:'h2'},{a:'n',b:'h3'}],
+    caption: 'Four electron groups, three of them bonds — trigonal pyramidal.'
+  };
+
+  M['methane'] = {
+    name: 'Methane', formula: 'CH₄',
+    atoms: {
+      c:  { x:160, y:88, r:18, label:'C', note:'Four bonding groups and no lone pairs — the textbook tetrahedral carbon.' },
+      h1: { x:160, y:30, r:12, label:'H' },
+      h2: { x:98,  y:124,r:12, label:'H' },
+      h3: { x:222, y:124,r:12, label:'H' },
+      h4: { x:160, y:146,r:12, label:'H' }
+    },
+    bonds: [{a:'c',b:'h1'},{a:'c',b:'h2'},{a:'c',b:'h3',style:'wedge'},{a:'c',b:'h4',style:'dash'}],
+    caption: 'Tetrahedral, 109.5°. The wedge comes toward you; the dash goes back.'
+  };
+
+  M['carbon-dioxide'] = {
+    name: 'Carbon dioxide', formula: 'CO₂',
+    atoms: {
+      o1: { x:64,  y:86, r:17, label:'O', lp:2, role:'electron-rich', note:'The electronegative end of a polar C=O bond — δ−.' },
+      c:  { x:160, y:86, r:17, label:'C', role:'electrophile', note:'Two electron groups, no lone pairs. Both oxygens pull on it, but the pulls point in exactly opposite directions.' },
+      o2: { x:256, y:86, r:17, label:'O', lp:2, role:'electron-rich', note:'The other δ− end, pointing the opposite way.' }
+    },
+    bonds: [{a:'c',b:'o1',order:2},{a:'c',b:'o2',order:2}],
+    caption: 'Two polar bonds, zero net dipole — the shape cancels them.'
+  };
+
+  M['formaldehyde'] = {
+    name: 'Formaldehyde', formula: 'H₂C=O',
+    atoms: {
+      o:  { x:160, y:34, r:17, label:'O', lp:2, role:'carbonyl-o', note:'Where the pi electrons go when a nucleophile attacks the carbon.' },
+      c:  { x:160, y:96, r:17, label:'C', role:'electrophile', note:'Three electron groups (the double bond counts once) and no lone pairs — sp², trigonal planar, and strongly δ+.' },
+      h1: { x:98,  y:132,r:12, label:'H' },
+      h2: { x:222, y:132,r:12, label:'H' }
+    },
+    bonds: [{a:'c',b:'o',order:2},{a:'c',b:'h1'},{a:'c',b:'h2'}],
+    caption: 'The simplest carbonyl: no alkyl groups to shield the carbon at all.'
+  };
+
+  M['hydrogen-cyanide'] = {
+    name: 'Hydrogen cyanide', formula: 'HCN',
+    atoms: {
+      h: { x:56,  y:86, r:12, label:'H' },
+      c: { x:150, y:86, r:17, label:'C', role:'electrophile', note:'Two electron groups — sp hybridized and linear.' },
+      n: { x:254, y:86, r:17, label:'N', lp:1, role:'nucleophile', note:'The lone pair sits in an sp orbital, held close and tightly — which is exactly why cyanide is a good nucleophile but a weak base.' }
+    },
+    bonds: [{a:'h',b:'c'},{a:'c',b:'n',order:3}],
+    caption: 'Linear. A triple bond still counts as one electron group.'
+  };
+
+  /* ---- Stereochemistry ------------------------------------------------ */
+
+  M['bromochlorofluoromethane'] = {
+    name: 'Bromochlorofluoromethane', formula: 'CHFClBr',
+    atoms: {
+      c:  { x:160, y:90, r:18, label:'C', role:'stereocenter', note:'Four different groups — H, F, Cl and Br — so this carbon is a stereocenter.' },
+      br: { x:160, y:28, r:17, label:'Br', lp:3, role:'priority-1', note:'Highest atomic number of the four, so CIP priority 1.' },
+      cl: { x:88,  y:124,r:16, label:'Cl', lp:3, role:'priority-2', note:'Priority 2 — heavier than fluorine, lighter than bromine.' },
+      f:  { x:232, y:124,r:15, label:'F', lp:3, role:'priority-3', note:'Priority 3. Electronegative, but CIP ranks by atomic number, not electronegativity.' },
+      h:  { x:160, y:148,r:12, label:'H', role:'priority-4', note:'Lowest priority — the one that must point away from you before you read the rotation.' }
+    },
+    bonds: [{a:'c',b:'br'},{a:'c',b:'cl'},{a:'c',b:'f',style:'wedge'},{a:'c',b:'h',style:'dash'}],
+    caption: 'Four different groups on one carbon. Priorities by atomic number: Br > Cl > F > H.'
+  };
+
+  M['butan-2-ol'] = {
+    name: 'Butan-2-ol', formula: 'CH₃CH(OH)CH₂CH₃',
+    atoms: {
+      c2: { x:160, y:92, r:18, label:'C', role:'stereocenter', note:'Bonded to OH, H, methyl and ethyl — four genuinely different groups, so it is a stereocenter.' },
+      o:  { x:160, y:32, r:16, label:'O', lp:2, role:'priority-1', note:'Oxygen outranks both carbons and the hydrogen — CIP priority 1.' },
+      ho: { x:214, y:14, r:11, label:'H' },
+      h:  { x:160, y:146,r:12, label:'H', role:'priority-4', note:'Lowest priority, and the one that has to point away before you read R or S.' },
+      c1: { x:92,  y:124,r:15, label:'C', role:'less-substituted', note:'The methyl carbon: attached to (H, H, H).' },
+      c3: { x:228, y:124,r:15, label:'C', role:'more-substituted', note:'The ethyl carbon: attached to (C, H, H) — outranks methyl at the first point of difference.' },
+      c4: { x:282, y:88, r:14, label:'C' }
+    },
+    bonds: [{a:'c2',b:'o'},{a:'o',b:'ho'},{a:'c2',b:'h',style:'dash'},{a:'c2',b:'c1'},{a:'c2',b:'c3'},{a:'c3',b:'c4'}],
+    caption: 'One stereocenter. Ethyl beats methyl only when you look one atom further out.'
+  };
+
+  M['propane-2-ol-achiral'] = {
+    name: '2-propanol (for contrast)', formula: '(CH₃)₂CHOH',
+    atoms: {
+      c2: { x:160, y:92, r:18, label:'C', role:'not-stereocenter', note:'NOT a stereocenter: two of its four groups are identical methyls, so swapping them changes nothing.' },
+      o:  { x:160, y:32, r:16, label:'O', lp:2 },
+      ho: { x:214, y:14, r:11, label:'H' },
+      h:  { x:160, y:146,r:12, label:'H' },
+      c1: { x:92,  y:124,r:15, label:'C', role:'duplicate', note:'One of two identical methyl groups — the reason this carbon is not a stereocenter.' },
+      c3: { x:228, y:124,r:15, label:'C', role:'duplicate', note:'The other identical methyl.' }
+    },
+    bonds: [{a:'c2',b:'o'},{a:'o',b:'ho'},{a:'c2',b:'h'},{a:'c2',b:'c1'},{a:'c2',b:'c3'}],
+    caption: 'Looks like butan-2-ol at a glance. Two identical methyls make it achiral.'
+  };
+
+  M['fischer-glyceraldehyde'] = {
+    name: 'Glyceraldehyde (Fischer projection)', formula: 'OHC–CH(OH)–CH₂OH',
+    atoms: {
+      top: { x:160, y:26, r:17, label:'CHO', role:'vertical', note:'Vertical bonds in a Fischer projection point AWAY from you, behind the page.' },
+      c:   { x:160, y:88, r:14, label:'C', role:'stereocenter', note:'The stereocenter sits where the lines cross — it is not usually drawn as a letter.' },
+      left:{ x:74,  y:88, r:15, label:'H', role:'horizontal', note:'Horizontal bonds come TOWARD you, out of the page. That is what makes a single swap an inversion.' },
+      right:{x:250, y:88, r:16, label:'OH', role:'horizontal', note:'Also toward you. On the right at the bottom-most stereocenter, this is the D configuration by convention.' },
+      bot: { x:160, y:150,r:20, label:'CH₂OH', role:'vertical', note:'Vertical, so pointing away from you.' }
+    },
+    bonds: [{a:'c',b:'top'},{a:'c',b:'bot'},{a:'c',b:'left'},{a:'c',b:'right'}],
+    caption: 'A Fischer projection: horizontal toward you, vertical away from you.'
+  };
+
+  /* ---- Conformations -------------------------------------------------- */
+
+  /* A real Newman projection, which a plain atom/bond list cannot express:
+     the defining feature is that the BACK carbon is a circle and the front
+     carbon is the point where three bonds meet. Without the circle this is
+     just a six-bonded carbon, which is exactly the wrong mental model. The
+     back bonds are drawn as decor from the circle's edge, since they do not
+     connect to any atom in the list. */
+  M['newman-butane-anti'] = (function(){
+    var cx = 160, cy = 98, R = 46;
+    function at(ang, d){
+      var a = ang * Math.PI/180;
+      return { x: Math.round(cx + d*Math.cos(a)), y: Math.round(cy + d*Math.sin(a)) };
+    }
+    var edge = [90, 210, -30].map(function(ang){ return at(ang, R); });
+    var back = [90, 210, -30].map(function(ang){ return at(ang, 74); });
+    var decor = '<circle cx="' + cx + '" cy="' + cy + '" r="' + R + '" fill="none" stroke="var(--line)" stroke-width="2.5"/>' +
+      edge.map(function(e, i){
+        return '<line x1="' + e.x + '" y1="' + e.y + '" x2="' + back[i].x + '" y2="' + back[i].y +
+               '" stroke="var(--line)" stroke-width="2.5"/>';
+      }).join('');
+    var f = [-90, 150, 30].map(function(ang){ return at(ang, 62); });
+    return {
+      name: 'Butane, anti conformation (Newman)', formula: 'CH₃CH₂CH₂CH₃',
+      viewBox: '0 0 320 196', decor: decor,
+      atoms: {
+        fc:  { x:cx, y:cy, r:7, label:'', role:'front-carbon', note:'The front carbon sits where the three front bonds meet — it is drawn as a point, not a circle.' },
+        fme: { x:f[0].x, y:f[0].y, r:17, label:'CH₃', role:'front-methyl', note:'The front methyl. Measure the dihedral angle from here round to the back methyl.' },
+        fh1: { x:f[1].x, y:f[1].y, r:12, label:'H', role:'front-h' },
+        fh2: { x:f[2].x, y:f[2].y, r:12, label:'H', role:'front-h' },
+        bme: { x:back[0].x, y:back[0].y, r:17, label:'CH₃', role:'back-methyl', note:'The back methyl, 180° round from the front one. That 180° is what "anti" means.' },
+        bh1: { x:back[1].x, y:back[1].y, r:12, label:'H', role:'back-h', note:'A back hydrogen. Back bonds start at the circle’s edge, front bonds at its centre.' },
+        bh2: { x:back[2].x, y:back[2].y, r:12, label:'H', role:'back-h' }
+      },
+      bonds: [{a:'fc',b:'fme'},{a:'fc',b:'fh1'},{a:'fc',b:'fh2'}],
+      caption: 'Staggered with the methyls 180° apart — butane’s lowest-energy conformation.'
+    };
+  })();
+
+  M['chair-dimethylcyclohexane'] = {
+    name: 'trans-1,2-dimethylcyclohexane (chair)', formula: 'C₈H₁₆', viewBox: '0 0 320 180',
+    atoms: {
+      r1: { x:60,  y:104,r:13, label:'C' },
+      r2: { x:112, y:130,r:13, label:'C' },
+      r3: { x:176, y:118,r:13, label:'C' },
+      r4: { x:228, y:80, r:13, label:'C' },
+      r5: { x:176, y:54, r:13, label:'C' },
+      r6: { x:112, y:66, r:13, label:'C' },
+      me6:{ x:112, y:18, r:17, label:'CH₃', role:'axial-substituent', note:'Axial methyl — pointing straight up into two 1,3-diaxial clashes. This is the costly position.' },
+      me5:{ x:228, y:28, r:17, label:'CH₃', role:'equatorial-substituent', note:'Equatorial methyl — pointing out around the ring’s edge, clear of everything.' },
+      hax1:{x:60,  y:56, r:11, label:'H', role:'syn-axial-h', note:'One of the axial hydrogens the axial methyl is crashing into, three carbons away on the same face.' },
+      hax3:{x:176, y:164,r:11, label:'H', role:'axial-h' }
+    },
+    bonds: [{a:'r1',b:'r2'},{a:'r2',b:'r3'},{a:'r3',b:'r4'},{a:'r4',b:'r5'},{a:'r5',b:'r6'},{a:'r6',b:'r1'},
+            {a:'r6',b:'me6'},{a:'r5',b:'me5'},{a:'r1',b:'hax1',style:'faint'},{a:'r3',b:'hax3',style:'faint'}],
+    caption: 'One methyl axial, one equatorial. A ring flip swaps both.'
+  };
+
+  /* ---- Acids, bases and conjugates ------------------------------------ */
+
+  M['acetate-ion'] = {
+    name: 'Acetate ion', formula: 'CH₃CO₂⁻',
+    atoms: {
+      o1: { x:214, y:36, r:17, label:'O', lp:2, role:'resonance-o', note:'One of two equivalent oxygens. The charge is shared between them, not parked on either.' },
+      c:  { x:160, y:86, r:17, label:'C', role:'carboxyl-c' },
+      o2: { x:214, y:136,r:17, label:'O', charge:'⁻', lp:3, role:'resonance-o', note:'The other equivalent oxygen. Draw the second resonance form and this one carries the double bond instead.' },
+      ca: { x:92,  y:86, r:16, label:'C', role:'alpha-carbon' },
+      h1: { x:52,  y:44, r:11, label:'H', role:'alpha-h', note:'An alpha C–H, pKa around 20 here — far less acidic than the O–H was.' },
+      h2: { x:52,  y:128,r:11, label:'H', role:'alpha-h' }
+    },
+    bonds: [{a:'c',b:'o1',order:2},{a:'c',b:'o2'},{a:'c',b:'ca'},{a:'ca',b:'h1'},{a:'ca',b:'h2'}],
+    caption: 'The conjugate base of acetic acid. Two equivalent oxygens share one negative charge.'
+  };
+
+  M['ammonium'] = {
+    name: 'Ammonium ion', formula: 'NH₄⁺',
+    atoms: {
+      n:  { x:160, y:90, r:18, label:'N', charge:'⁺', role:'conjugate-acid', note:'No lone pair left — it was used to grab the fourth proton. That is why ammonium cannot act as a base.' },
+      h1: { x:160, y:30, r:12, label:'H' },
+      h2: { x:96,  y:124,r:12, label:'H' },
+      h3: { x:224, y:124,r:12, label:'H' },
+      h4: { x:160, y:150,r:12, label:'H', role:'acidic-h', note:'Losing any one of these four gives back ammonia — ammonium is the conjugate ACID of NH₃.' }
+    },
+    bonds: [{a:'n',b:'h1'},{a:'n',b:'h2'},{a:'n',b:'h3'},{a:'n',b:'h4'}],
+    caption: 'Ammonia after it accepted a proton. Four bonds, no lone pair, +1 charge.'
+  };
+
+  /* ---- Ethers, acetals, amines ---------------------------------------- */
+
+  M['methyl-propyl-ether'] = {
+    name: 'Methyl propyl ether', formula: 'CH₃OCH₂CH₂CH₃', viewBox: '0 0 320 190',
+    atoms: {
+      o:  { x:160, y:56, r:17, label:'O', lp:2, role:'ether-o', note:'An ether oxygen. Unreactive until it is protonated — then it becomes a leaving group.' },
+      cm: { x:88,  y:96, r:16, label:'C', role:'less-hindered', note:'The methyl carbon: nothing but hydrogens around it, so the easiest possible backside attack.' },
+      hm1:{ x:44,  y:58, r:11, label:'H' },
+      c1: { x:232, y:96, r:16, label:'C', role:'more-hindered', note:'A primary carbon, but it carries a whole propyl chain — more crowded than a methyl.' },
+      c2: { x:272, y:140,r:15, label:'C' },
+      c3: { x:224, y:166,r:14, label:'C' }
+    },
+    bonds: [{a:'o',b:'cm'},{a:'o',b:'c1'},{a:'cm',b:'hm1'},{a:'c1',b:'c2'},{a:'c2',b:'c3'}],
+    caption: 'An unsymmetrical ether. Cleaving it with HI is a question about which carbon is easier to reach.'
+  };
+
+  M['dimethyl-acetal'] = {
+    name: 'Acetone dimethyl acetal', formula: '(CH₃)₂C(OCH₃)₂',
+    atoms: {
+      c:  { x:160, y:92, r:18, label:'C', role:'acetal-c', note:'The acetal carbon: TWO OR groups on one carbon. That is the pattern to recognize.' },
+      o1: { x:100, y:44, r:16, label:'O', lp:2, role:'acetal-o', note:'One of the two ether-type oxygens. One of these leaves (after protonation) to give the oxocarbenium.' },
+      o2: { x:220, y:44, r:16, label:'O', lp:2, role:'acetal-o', note:'The other. In a HEMIacetal one of these two would be an OH instead.' },
+      m1: { x:56,  y:92, r:15, label:'C' },
+      m2: { x:264, y:92, r:15, label:'C' },
+      ca: { x:112, y:146,r:15, label:'C', role:'alkyl' },
+      cb: { x:208, y:146,r:15, label:'C', role:'alkyl' }
+    },
+    bonds: [{a:'c',b:'o1'},{a:'c',b:'o2'},{a:'o1',b:'m1'},{a:'o2',b:'m2'},{a:'c',b:'ca'},{a:'c',b:'cb'}],
+    caption: 'Two OR groups on one carbon: an acetal. Stable to base, hydrolyzed by aqueous acid.'
+  };
+
+  M['acetone-hemiacetal'] = {
+    name: 'Hemiacetal', formula: '(CH₃)₂C(OH)OCH₃',
+    atoms: {
+      c:  { x:160, y:92, r:18, label:'C', role:'hemiacetal-c', note:'A hemiacetal carbon: one OH and one OR. Halfway there — hence "hemi".' },
+      o1: { x:100, y:44, r:16, label:'O', lp:2, role:'hydroxyl-o', note:'The OH oxygen. This is the half that still has to be replaced to reach a full acetal.' },
+      h1: { x:52,  y:20, r:11, label:'H' },
+      o2: { x:220, y:44, r:16, label:'O', lp:2, role:'alkoxy-o', note:'The OR oxygen, already installed from the first equivalent of alcohol.' },
+      m2: { x:268, y:20, r:15, label:'C' },
+      ca: { x:112, y:146,r:15, label:'C' },
+      cb: { x:208, y:146,r:15, label:'C' }
+    },
+    bonds: [{a:'c',b:'o1'},{a:'o1',b:'h1'},{a:'c',b:'o2'},{a:'o2',b:'m2'},{a:'c',b:'ca'},{a:'c',b:'cb'}],
+    caption: 'One OH and one OR on the same carbon — a hemiacetal, the intermediate on the way to an acetal.'
+  };
+
+  /* ---- Spectroscopy --------------------------------------------------- */
+
+  M['para-xylene'] = (function(){
+    // Rotated so the two substituents sit left and right: the page is much
+    // wider than it is tall, and stacked methyls collided with the ring.
+    var pts = ring(158, 86, 50, 6, 0);
+    var atoms = {};
+    var names = ['c1','c2','c3','c4','c5','c6'];
+    pts.forEach(function(p, i){
+      atoms[names[i]] = { x:p.x, y:p.y, r:13, label:'C' };
+    });
+    atoms.c1.role = 'substituted'; atoms.c1.note = 'A substituted ring carbon. Its partner across the ring is identical by symmetry, so the two share one signal.';
+    atoms.c4.role = 'substituted'; atoms.c4.note = 'The other substituted carbon — chemically identical to the first.';
+    atoms.c2.role = 'ring-ch'; atoms.c2.note = 'One of four equivalent aromatic CH carbons. All four give a single peak.';
+    atoms.c3.role = 'ring-ch'; atoms.c5.role = 'ring-ch'; atoms.c6.role = 'ring-ch';
+    atoms.me1 = { x:268, y:86, r:18, label:'CH₃', role:'methyl', note:'One of two equivalent methyls — they share a single signal.' };
+    atoms.me4 = { x:48,  y:86, r:18, label:'CH₃', role:'methyl', note:'The other methyl, equivalent to the first by the molecule’s symmetry.' };
+    return { name:'para-Xylene', formula:'C₆H₄(CH₃)₂', atoms: atoms,
+      bonds: [{a:'c1',b:'c2',order:2},{a:'c2',b:'c3'},{a:'c3',b:'c4',order:2},
+              {a:'c4',b:'c5'},{a:'c5',b:'c6',order:2},{a:'c6',b:'c1'},
+              {a:'c1',b:'me1'},{a:'c4',b:'me4'}],
+      caption: 'Eight carbons, but symmetry collapses them into only three ¹³C signals.' };
+  })();
+
+  M['ethanol'] = {
+    name: 'Ethanol', formula: 'CH₃CH₂OH', viewBox: '0 0 320 190',
+    atoms: {
+      o:  { x:246, y:52, r:17, label:'O', lp:2, role:'hydroxyl-o' },
+      ho: { x:290, y:100,r:12, label:'H', role:'oh-h', note:'The O–H proton. It exchanges, so it is usually a broad singlet that does not split anything.' },
+      c2: { x:176, y:96, r:17, label:'C', role:'ch2', note:'The CH₂: next to oxygen, so its hydrogens sit downfield, and split by the three CH₃ hydrogens into a quartet.' },
+      h21:{ x:176, y:148,r:11, label:'H' },
+      h22:{ x:136, y:56, r:11, label:'H' },
+      c1: { x:98,  y:130,r:17, label:'C', role:'ch3', note:'The CH₃: three equivalent hydrogens, split by the two CH₂ hydrogens into a triplet.' },
+      h11:{ x:44,  y:108,r:11, label:'H' },
+      h12:{ x:70,  y:168,r:11, label:'H' }
+    },
+    bonds: [{a:'o',b:'ho'},{a:'o',b:'c2'},{a:'c2',b:'h21'},{a:'c2',b:'h22'},{a:'c2',b:'c1'},{a:'c1',b:'h11'},{a:'c1',b:'h12'}],
+    caption: 'Three hydrogen environments: CH₃, CH₂ and OH.'
+  };
+
   /* ---- Substitution / elimination substrates ------------------------- */
 
   M['sn2-bromoethane'] = {
@@ -233,7 +538,9 @@
   /* ---- Aromatics ------------------------------------------------------ */
 
   (function(){
-    var pts = ring(150, 96, 52, 6, -90);
+    // Ring centre sits low enough that the substituent circle above c1
+    // (48px up, r17) stays inside the box.
+    var pts = ring(150, 118, 52, 6, -90);
     var keys = ['c1','c2','c3','c4','c5','c6'];
     function aromatic(id, name, formula, subLabel, subRole, subNote, roleMap){
       var atoms = {};
@@ -243,7 +550,7 @@
       });
       atoms.sub = { x: pts[0].x, y: pts[0].y - 48, r: 17, label: subLabel, lp: 1, role: subRole, note: subNote };
       M[id] = {
-        name: name, formula: formula,
+        name: name, formula: formula, viewBox: '0 0 320 186',
         atoms: atoms,
         bonds: [
           {a:'c1',b:'c2',order:2},{a:'c2',b:'c3'},{a:'c3',b:'c4',order:2},
@@ -307,7 +614,7 @@
   };
 
   M['acetamide'] = {
-    name: 'Acetamide', formula: 'CH₃CONH₂',
+    name: 'Acetamide', formula: 'CH₃CONH₂', viewBox: '0 0 320 180',
     atoms: {
       o:  { x:130, y:32, r:16, label:'O', lp:2, role:'carbonyl-o' },
       c:  { x:130, y:90, r:17, label:'C', role:'electrophile' },
@@ -505,7 +812,8 @@
     var mol = typeof molOrId === 'string' ? M[molOrId] : molOrId;
     if(!mol) return '';
     opts = opts || {};
-    var body = mol.bonds.map(function(b){ return bondPath(mol, b); }).join('') +
+    var body = (mol.decor || '') +
+      mol.bonds.map(function(b){ return bondPath(mol, b); }).join('') +
       mol.bonds.map(function(b){ return bondHit(mol, b, opts); }).join('') +
       Object.keys(mol.atoms).map(function(k){ return atomGroup(k, mol.atoms[k], opts); }).join('') +
       (opts.arrows || []).map(function(ar, i){ return arrowPath(mol, ar, i); }).join('');

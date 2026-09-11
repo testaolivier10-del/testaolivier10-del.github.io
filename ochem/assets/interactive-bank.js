@@ -838,6 +838,459 @@
     } },
 
 
+    /* ---- Module 1: structure, bonding, geometry -----------------------
+       These topics had no interactive question at all, because until now
+       every molecule in the library was a reaction substrate — there was
+       nothing to point at for "how many valence electrons" or "what shape is
+       this". The small molecules added to molecules.js are what these ask
+       about. */
+
+    { id:'atomic-lonepair-click', kind:'click-atom', tier:1, topic:'atomic-structure',
+      concepts:['valence-electrons'],
+      prompt:'Click the atom that still has a lone pair.',
+      molecule:'ammonia',
+      answer:{ role:'nucleophile' },
+      why:'Nitrogen has five valence electrons. Three go into bonds with hydrogen, and the remaining two stay together as a lone pair — which is the whole reason ammonia acts as a base and a nucleophile.',
+      diag:{
+        h1:{ concept:'valence-electrons', msg:'Hydrogen has exactly one valence electron and uses it in its single bond. It has nothing left over — hydrogen never carries a lone pair.' },
+        h2:{ concept:'valence-electrons', msg:'Hydrogen has one valence electron, spent on its one bond. Look for the atom with more valence electrons than bonds.' },
+        h3:{ concept:'valence-electrons', msg:'Hydrogen has one valence electron and one bond. The lone pair is on the atom that had electrons left after bonding.' }
+      } },
+
+    { id:'valence-count-order', kind:'order', tier:1, topic:'atomic-structure',
+      concepts:['valence-electrons'],
+      prompt:'Rank these atoms by number of valence electrons, most first.',
+      items:['Fluorine', 'Oxygen', 'Nitrogen', 'Carbon'],
+      answer:[0,1,2,3],
+      why:'Across a row, the group number gives the count: carbon 4, nitrogen 5, oxygen 6, fluorine 7. That count is what fixes how many bonds each one forms — 4, 3, 2 and 1 respectively.',
+      diag:{ any:{ concept:'valence-electrons', msg:'Read them off the periodic table row, left to right: each step right adds one valence electron. Carbon 4, nitrogen 5, oxygen 6, fluorine 7 — so this ranking runs right-to-left across the row.' } } },
+
+    { id:'orbital-fill-order', kind:'order', tier:1, topic:'orbitals',
+      concepts:['valence-electrons'],
+      prompt:'Put these orbitals in the order they fill.',
+      items:['1s', '2s', '2p', '3s'],
+      answer:[0,1,2,3],
+      why:'Lowest energy first. The 1s is closest to the nucleus and fills before anything else; within a shell, s fills before p because an s orbital penetrates closer to the nucleus.',
+      diag:{ any:{ concept:'valence-electrons', msg:'Fill from lowest energy up: work through shell by shell, and inside each shell s comes before p. Nothing in the second shell fills until the first is complete.' } } },
+
+    { id:'bonding-pi-atoms', kind:'multi-click', tier:1, topic:'bonding',
+      concepts:['lewis-structures-drawing','valence-electrons'],
+      prompt:'Click both atoms joined by the pi bond.',
+      molecule:'formaldehyde',
+      sub:'A double bond is one sigma plus one pi. Click the two atoms sharing that pi bond.',
+      answer:{ keys:['c','o'] },
+      why:'The C=O double bond is one sigma bond (end-on overlap, the one you can rotate about on a single bond) plus one pi bond (side-on overlap of the leftover p orbitals). The C–H bonds are single: sigma only.',
+      diag:{
+        h1:{ concept:'lewis-structures-drawing', msg:'That C–H bond is a single bond — one sigma, no pi. Pi bonds only exist as the second and third bonds of a double or triple bond.' },
+        h2:{ concept:'lewis-structures-drawing', msg:'A single bond is a sigma bond on its own. Look for the double bond in the structure.' }
+      } },
+
+    { id:'bond-order-strength', kind:'order', tier:2, topic:'bonding',
+      concepts:['lewis-structures-drawing'],
+      prompt:'Rank these carbon–carbon bonds from shortest to longest.',
+      items:['C≡C (triple)', 'C=C (double)', 'C–C (single)'],
+      answer:[0,1,2],
+      why:'More shared electron pairs pull the nuclei closer together, so bond length falls as bond order rises — and bond strength rises with it. A triple bond is both the shortest and the strongest of the three.',
+      diag:{ any:{ concept:'lewis-structures-drawing', msg:'Count the bonds between the carbons. Each extra pair of shared electrons pulls the two nuclei closer, so more bonds means shorter — and stronger.' } } },
+
+    { id:'lewis-no-lonepair', kind:'click-atom', tier:1, topic:'lewis-structures',
+      concepts:['lewis-structures-drawing','formal-charge-calc'],
+      prompt:'Click the atom that has used up all its valence electrons in bonds.',
+      molecule:'ammonium',
+      answer:{ role:'conjugate-acid' },
+      why:'Nitrogen brought five valence electrons. Making four bonds uses four of them, and it shares the fifth — which is why the formal charge works out to +1 and there is no lone pair left to donate.',
+      diag:{
+        h1:{ concept:'valence-electrons', msg:'Hydrogen only ever has one valence electron and one bond, in every structure — it is not the interesting atom here. Look at the central atom.' },
+        h4:{ concept:'valence-electrons', msg:'Every hydrogen here is the same: one electron, one bond. The atom whose electron count actually changed is the nitrogen.' }
+      } },
+
+    { id:'lewis-formal-charge-o', kind:'click-atom', tier:2, topic:'lewis-structures',
+      concepts:['formal-charge-calc','lewis-structures-drawing'],
+      prompt:'Click the oxygen carrying a formal charge of −1.',
+      molecule:'acetate-ion',
+      answer:{ keys:['o2'] },
+      why:'Formal charge = valence − lone-pair electrons − bonds. The single-bonded oxygen is 6 − 6 − 1 = −1. The double-bonded one is 6 − 4 − 2 = 0. In the real ion the charge is shared between them, but in THIS drawn resonance form it sits on the singly-bonded oxygen.',
+      diag:{
+        o1:{ concept:'formal-charge-calc', msg:'Run the arithmetic on that one: 6 valence − 4 lone-pair electrons − 2 bonds = 0. It is the oxygen with three lone pairs and only one bond that comes out negative.' },
+        c:{ concept:'formal-charge-calc', msg:'That carbon has four bonds and no lone pairs: 4 − 0 − 4 = 0. Neutral. Carbon with four bonds is almost always formal-charge zero.' },
+        ca:{ concept:'formal-charge-calc', msg:'A carbon with four bonds and no lone pairs is neutral. Look at the oxygens — they are where the electron count differs between the two.' }
+      } },
+
+    { id:'geometry-bent-center', kind:'click-atom', tier:1, topic:'molecular-geometry',
+      concepts:['molecular-geometry-vsepr','lewis-structures-drawing'],
+      prompt:'Click the atom whose lone pairs are responsible for this molecule being bent.',
+      molecule:'water',
+      answer:{ role:'nucleophile' },
+      why:'Oxygen has four electron groups — two bonds and two lone pairs — so the electron geometry is tetrahedral. You only see the atoms, and with two of the four positions occupied by invisible lone pairs, the shape you observe is bent.',
+      diag:{
+        h1:{ concept:'molecular-geometry-vsepr', msg:'Hydrogen has one bond and no lone pairs, so it has no shape of its own to contribute. Molecular shape is set by the electron groups on the CENTRAL atom.' },
+        h2:{ concept:'molecular-geometry-vsepr', msg:'Shape comes from the central atom’s electron groups. A terminal hydrogen cannot bend anything.' }
+      } },
+
+    { id:'geometry-angle-order', kind:'order', tier:2, topic:'molecular-geometry',
+      concepts:['molecular-geometry-vsepr'],
+      prompt:'Rank these by bond angle, largest first.',
+      items:['CH₄ (methane)', 'NH₃ (ammonia)', 'H₂O (water)'],
+      answer:[0,1,2],
+      why:'All three have four electron groups, so all three start from the tetrahedral 109.5°. Lone pairs spread out more than bonding pairs, so each lone pair squeezes the remaining angles down: methane 109.5°, ammonia about 107°, water about 104.5°.',
+      diag:{ any:{ concept:'molecular-geometry-vsepr', msg:'Count lone pairs on the central atom: methane 0, ammonia 1, water 2. A lone pair takes more room than a bond, so every lone pair you add pushes the bond angle down from 109.5°.' } } },
+
+    /* ---- Module 2: electron flow --------------------------------------- */
+
+    { id:'arrow-tail-source', kind:'click-atom', tier:1, topic:'curved-arrows',
+      concepts:['curved-arrow-direction'],
+      prompt:'Click the atom an arrow tail could legitimately start from.',
+      molecule:'acetone',
+      answer:{ role:'carbonyl-o' },
+      why:'Arrow tails need electrons to move. The carbonyl oxygen has lone pairs, so it can donate; everything else here is either a carbon with four bonds and no lone pairs, or a hydrogen with one.',
+      diag:{
+        c:{ concept:'curved-arrow-direction', msg:'That carbon already has four bonds and no lone pair, so it has no electrons free to push. It is a place arrows point TO, not from.' },
+        ca:{ concept:'curved-arrow-direction', msg:'A carbon with four single bonds has nothing spare to donate. Tails start at lone pairs, pi bonds, or a sigma bond that is breaking.' },
+        ha:{ concept:'curved-arrow-direction', msg:'Hydrogen has one bonding pair and no lone pair. A C–H BOND can be an arrow source when it breaks, but the hydrogen atom by itself is not.' }
+      } },
+
+    { id:'resonance-draw-acetate', kind:'draw', tier:2, topic:'curved-arrows',
+      concepts:['curved-arrow-direction','resonance-delocalization','resonance-validity'],
+      prompt:'Draw the two arrows that convert this resonance form of acetate into its equivalent partner.',
+      molecule:'acetate-ion',
+      drawHint:'Only electrons move in resonance — never atoms. Two arrows: one makes a bond, one breaks one.',
+      answer:{ arrows:[ {from:'o2', to:'bond:c-o2'}, {from:'bond:c-o1', to:'o1'} ] },
+      why:'The negatively charged oxygen pushes a lone pair up to make a second bond to carbon, and to keep carbon at four bonds the existing C=O pi bond drops onto the other oxygen. The result is the mirror image of what you started with — which is exactly why the two oxygens are equivalent and the charge is really spread over both.',
+      diag:{
+        'o2>c':{ concept:'curved-arrow-direction', msg:'The lone pair forms a pi BOND to carbon, so point the arrow at the C–O bond, not at the carbon itself. An arrowhead on carbon would mean a fifth sigma bond.' },
+        'bond:c-o1>c':{ concept:'curved-arrow-direction', msg:'Backwards. The pi electrons move away from carbon and onto the electronegative oxygen, which can hold the charge.' },
+        'o1>bond:c-o1':{ concept:'resonance-validity', msg:'That oxygen is already double-bonded to carbon. Adding another bond there would give carbon five — it is the oxygen with the negative charge that donates.' },
+        missing:{ concept:'resonance-validity', msg:'One arrow on its own leaves carbon with five bonds. In resonance the arrows come in balanced pairs: every bond made at a full atom needs a bond broken.' }
+      } },
+
+    { id:'electrophile-formaldehyde', kind:'click-atom', tier:1, topic:'electrophiles',
+      concepts:['electrophile-recognition','electronegativity-trend'],
+      prompt:'Click the electrophilic atom.',
+      molecule:'formaldehyde',
+      answer:{ role:'electrophile' },
+      why:'Oxygen is far more electronegative than carbon and pulls the C=O electrons toward itself, leaving the carbon electron-poor. That δ+ carbon is what every nucleophile in carbonyl chemistry attacks.',
+      diag:{
+        o:{ concept:'electron-rich-poor', msg:'Oxygen is the atom PULLING electron density, so it is the electron-rich, δ− end. An electrophile is electron-poor — look at the atom oxygen is taking density from.' },
+        h1:{ concept:'electrophile-recognition', msg:'A C–H bond is barely polar; hydrogen here is not meaningfully electron-poor. The strongly polarized bond is the one to oxygen.' },
+        h2:{ concept:'electrophile-recognition', msg:'Hydrogen on carbon is close enough to nonpolar to ignore. The polarity that matters is across the C=O.' }
+      } },
+
+    { id:'electrophile-co2', kind:'click-atom', tier:2, topic:'electrophiles',
+      concepts:['electrophile-recognition','bond-polarity-dipoles'],
+      prompt:'CO₂ has no net dipole. Click the atom that is nevertheless electrophilic.',
+      molecule:'carbon-dioxide',
+      answer:{ role:'electrophile' },
+      why:'A zero net dipole says the bond dipoles cancel by symmetry — it says nothing about individual atoms. Both oxygens pull density off the same carbon, so that carbon is strongly δ+ and genuinely electrophilic. This is how Grignards add to CO₂ to make carboxylic acids.',
+      diag:{
+        o1:{ concept:'electron-rich-poor', msg:'That is the end electron density is flowing toward — δ−, electron-rich. Electrophiles are electron-POOR.' },
+        o2:{ concept:'electron-rich-poor', msg:'Both oxygens are the δ− ends. The atom they are both pulling from is the electron-poor one.' }
+      } },
+
+    { id:'rich-poor-formaldehyde', kind:'click-atom', tier:1, topic:'electron-rich-poor',
+      concepts:['electron-rich-poor','electronegativity-trend'],
+      prompt:'Click the most electron-RICH atom.',
+      molecule:'formaldehyde',
+      answer:{ role:'carbonyl-o' },
+      why:'Oxygen is the most electronegative atom present, it carries two lone pairs, and it is pulling the C=O electrons toward itself. Every one of those points the same way: this is where the electron density is.',
+      diag:{
+        c:{ concept:'electron-rich-poor', msg:'That carbon is the opposite — oxygen is pulling density away from it, leaving it δ+. It is the electron-POOR atom here.' },
+        h1:{ concept:'electronegativity-trend', msg:'Hydrogen is not electron-rich; it has one electron and no lone pairs. Electron-rich means lone pairs, negative charge, or pi bonds.' },
+        h2:{ concept:'electronegativity-trend', msg:'Hydrogen brings a single electron to a single bond. Look for lone pairs.' }
+      } },
+
+    { id:'rich-poor-hcn', kind:'click-atom', tier:2, topic:'electron-rich-poor',
+      concepts:['electron-rich-poor','nucleophile-recognition'],
+      prompt:'Click the atom that makes cyanide a good nucleophile.',
+      molecule:'hydrogen-cyanide',
+      answer:{ role:'nucleophile' },
+      why:'The nitrogen lone pair is the electron source. It sits in an sp orbital held close to the nucleus, which makes cyanide an excellent nucleophile but only a moderate base — a distinction that lets it attack carbon without just deprotonating the substrate.',
+      diag:{
+        c:{ concept:'nucleophile-recognition', msg:'That carbon has no lone pair of its own in HCN — all four of its electrons are in bonds. The donatable pair is on nitrogen.' },
+        h:{ concept:'nucleophile-recognition', msg:'Hydrogen has one electron, spent on its bond. Nucleophilicity comes from an available PAIR.' }
+      } },
+
+    /* ---- Module 3: acids and bases ------------------------------------- */
+
+    { id:'bronsted-acidic-h', kind:'click-atom', tier:1, topic:'bronsted',
+      concepts:['bronsted-identification','acidity-factors'],
+      prompt:'Click the proton a Brønsted base would remove first.',
+      molecule:'acetic-acid',
+      answer:{ role:'acidic-h' },
+      why:'The O–H proton, pKa around 4.76. It leaves easily because what stays behind — a carboxylate — spreads its negative charge over two equivalent oxygens. The alpha C–H is around pKa 20 and does not compete.',
+      diag:{
+        ha:{ concept:'acidity-factors', msg:'That is an alpha C–H, roughly pKa 20 here — fifteen orders of magnitude less acidic than the O–H. Acidity is about how stable the conjugate base is, and a carbanion is far less stable than a carboxylate.' }
+      } },
+
+    { id:'bronsted-conjugate-acid', kind:'click-atom', tier:1, topic:'conjugate',
+      concepts:['conjugate-pairs','bronsted-identification'],
+      prompt:'This is the conjugate acid of ammonia. Click the hydrogen whose loss gives ammonia back.',
+      molecule:'ammonium',
+      answer:{ role:'acidic-h' },
+      why:'All four N–H hydrogens are equivalent, so losing any one of them regenerates NH₃ — the marked one is simply the one being asked about. A conjugate pair differs by exactly one proton, and that is the entire relationship between NH₄⁺ and NH₃.',
+      diag:{
+        n:{ concept:'conjugate-pairs', msg:'The nitrogen stays put. Going from a conjugate acid to its conjugate base means losing a PROTON — one hydrogen nucleus — not the central atom.' }
+      } },
+
+    { id:'conjugate-strength-order', kind:'order', tier:2, topic:'conjugate',
+      concepts:['conjugate-pairs','pka-scale'],
+      prompt:'Rank these conjugate bases from strongest to weakest.',
+      items:['NH₂⁻ (from NH₃, pKa 38)', 'HO⁻ (from H₂O, pKa 15.7)', 'CH₃CO₂⁻ (from acetic acid, pKa 4.76)', 'Cl⁻ (from HCl, pKa −7)'],
+      answer:[0,1,2,3],
+      why:'Conjugate base strength runs exactly opposite to acid strength: the weaker the acid, the stronger its conjugate base. NH₃ is the weakest acid of the four (highest pKa), so amide is the strongest base; HCl is the strongest acid, so chloride is a spectator.',
+      diag:{ any:{ concept:'conjugate-pairs', msg:'Read the pKa of the CONJUGATE ACID and invert it. Highest pKa acid gives the strongest base. It is a strict inverse — there is no separate base scale to memorize.' } } },
+
+    { id:'pka-strength-order', kind:'order', tier:2, topic:'pka',
+      concepts:['pka-scale','acidity-factors'],
+      prompt:'Rank these by acid strength, strongest first.',
+      items:['HCl (pKa −7)', 'Acetic acid (pKa 4.76)', 'Water (pKa 15.7)', 'Ethane (pKa ~50)'],
+      answer:[0,1,2,3],
+      why:'pKa is a log scale and it runs backwards: lower pKa means a stronger acid. Each unit is a factor of ten, so acetic acid is not "a bit" stronger than water — it is about eleven orders of magnitude stronger.',
+      diag:{ any:{ concept:'pka-scale', msg:'Lower pKa means stronger acid, so this ranking runs from the most negative number upward. The sign catches people out: −7 is a much stronger acid than +4.76.' } } },
+
+    /* ---- Conformations -------------------------------------------------- */
+
+    { id:'newman-back-methyl', kind:'click-atom', tier:1, topic:'conformational-analysis',
+      concepts:['newman-reading','torsional-strain'],
+      prompt:'Click the group attached to the BACK carbon.',
+      molecule:'newman-butane-anti',
+      answer:{ role:'back-methyl' },
+      why:'In a Newman projection the front carbon is the point where three bonds meet, and the back carbon is the circle. Bonds that start at the circle’s edge belong to the back carbon; bonds that reach the centre belong to the front one.',
+      diag:{
+        fme:{ concept:'newman-reading', msg:'That methyl’s bond runs all the way to the centre of the circle, which means it is on the FRONT carbon. Back-carbon bonds stop at the circle’s edge.' },
+        fh1:{ concept:'newman-reading', msg:'Front carbon — its bond reaches the centre point. The back carbon’s three bonds radiate from the rim.' },
+        fc:{ concept:'newman-reading', msg:'That is the front carbon itself, not a group attached to the back one. The back carbon is drawn as the circle.' }
+      } },
+
+    { id:'newman-anti-partner', kind:'click-atom', tier:2, topic:'newman',
+      concepts:['newman-reading','torsional-strain'],
+      prompt:'Click the group that sits 180° from the front methyl.',
+      molecule:'newman-butane-anti',
+      answer:{ role:'back-methyl' },
+      why:'The two methyls are directly opposite — a dihedral angle of 180°, which is what "anti" means. That is butane’s lowest-energy conformation, because the two bulkiest groups are as far from each other as rotation allows.',
+      diag:{
+        bh1:{ concept:'newman-reading', msg:'That hydrogen is 60° round from the front methyl, not 180°. Read the angle around the circle: directly opposite means straight across.' },
+        bh2:{ concept:'newman-reading', msg:'That one is also 60° away. The group 180° from the front methyl points in exactly the opposite direction.' },
+        fh1:{ concept:'newman-reading', msg:'That is a front-carbon hydrogen. The dihedral angle is measured between a FRONT group and a BACK group.' }
+      } },
+
+    { id:'chair-axial-methyl', kind:'click-atom', tier:1, topic:'cyclohexanes',
+      concepts:['chair-axial-equatorial','steric-hindrance'],
+      prompt:'Click the methyl group in the axial position.',
+      molecule:'chair-dimethylcyclohexane',
+      answer:{ role:'axial-substituent' },
+      why:'Axial bonds point straight up or straight down, parallel to the ring’s axis. Equatorial bonds splay outward around the ring’s waist. The axial one is the expensive position, because it crowds the two other axial groups on the same face.',
+      diag:{
+        me5:{ concept:'chair-axial-equatorial', msg:'That methyl points outward, roughly along the ring’s waist — that is equatorial. Axial bonds run vertically, parallel to the axis through the middle of the ring.' },
+        hax1:{ concept:'chair-axial-equatorial', msg:'That IS axial, but it is a hydrogen, not a methyl — it is one of the groups the axial methyl is crashing into.' }
+      } },
+
+    { id:'chair-diaxial-clash', kind:'click-atom', tier:3, topic:'conformational-analysis',
+      concepts:['chair-axial-equatorial','steric-hindrance','ring-flip-mechanics'],
+      prompt:'Click the hydrogen that the axial methyl is clashing with.',
+      molecule:'chair-dimethylcyclohexane',
+      answer:{ role:'syn-axial-h' },
+      why:'A 1,3-diaxial interaction: the axial methyl and the axial hydrogens three carbons away on the SAME face point at each other. That crowding is the entire reason bulky groups prefer equatorial, and it is what an A-value measures.',
+      diag:{
+        hax3:{ concept:'chair-axial-equatorial', msg:'Check which face that one is on. A diaxial clash needs both groups pointing the same way — both up or both down. That hydrogen points down, away from the methyl.' },
+        me5:{ concept:'steric-hindrance', msg:'That methyl is equatorial and out of the way. The clash is between the AXIAL methyl and axial hydrogens on the same face.' }
+      } },
+
+    /* ---- Stereochemistry ------------------------------------------------ */
+
+    { id:'chirality-find-stereocenter', kind:'click-atom', tier:1, topic:'chirality',
+      concepts:['stereocenter-identification','chirality-recognition'],
+      prompt:'Click the stereocenter.',
+      molecule:'bromochlorofluoromethane',
+      answer:{ role:'stereocenter' },
+      why:'A stereocenter is a carbon with four DIFFERENT groups. Here they are H, F, Cl and Br — all different, so swapping any two gives a molecule you cannot superimpose on the original.',
+      diag:{
+        br:{ concept:'stereocenter-identification', msg:'Bromine has only one bond, so there is nothing around it to arrange. A stereocenter needs FOUR different groups on one atom — look at the carbon.' },
+        cl:{ concept:'stereocenter-identification', msg:'A terminal atom with a single bond cannot be a stereocenter. The stereocenter is the atom the four different groups are attached TO.' },
+        h:{ concept:'stereocenter-identification', msg:'That hydrogen is one of the four groups, not the centre they are arranged around.' }
+      } },
+
+    { id:'chirality-why-not', kind:'multi-click', tier:2, topic:'chirality',
+      concepts:['stereocenter-identification','chirality-recognition'],
+      prompt:'This carbon is NOT a stereocenter. Click the two groups that are the reason.',
+      molecule:'propane-2-ol-achiral',
+      sub:'It has four groups, an OH, and looks much like butan-2-ol. Something still disqualifies it.',
+      answer:{ keys:['c1','c3'] },
+      why:'Two of the four groups are identical methyls. Swapping them changes nothing, so the mirror image is superimposable and there is no stereocenter — four groups is not enough, they have to be four DIFFERENT groups.',
+      diag:{
+        o:{ concept:'stereocenter-identification', msg:'The OH is unique here, so it is not the problem — it is one of the groups that would have counted. Look for two groups that are the same as each other.' },
+        h:{ concept:'stereocenter-identification', msg:'The hydrogen is also unique. The disqualifying pair is two groups identical to one another.' },
+        c2:{ concept:'stereocenter-identification', msg:'That is the candidate carbon itself, not one of its groups. The question is about what is attached to it.' }
+      } },
+
+    { id:'cip-highest-priority', kind:'click-atom', tier:1, topic:'enantiomers',
+      concepts:['cip-priority','rs-assignment'],
+      prompt:'Click the group with the highest CIP priority.',
+      molecule:'bromochlorofluoromethane',
+      answer:{ role:'priority-1' },
+      why:'CIP priority is decided by atomic number at the first point of difference, and nothing else. Br (35) beats Cl (17) beats F (9) beats H (1). Electronegativity does not come into it — fluorine is the most electronegative here and still ranks third.',
+      diag:{
+        f:{ concept:'cip-priority', msg:'Fluorine is the most ELECTRONEGATIVE, but CIP ranks by ATOMIC NUMBER. Fluorine is 9; chlorine is 17 and bromine is 35, so both outrank it.' },
+        cl:{ concept:'cip-priority', msg:'Chlorine is priority 2. Compare atomic numbers: bromine is 35, chlorine only 17.' },
+        h:{ concept:'cip-priority', msg:'Hydrogen is atomic number 1 — the LOWEST priority, and the one you point away from you before reading the rotation.' }
+      } },
+
+    { id:'cip-ethyl-vs-methyl', kind:'click-atom', tier:3, topic:'rs-configuration',
+      concepts:['cip-priority'],
+      prompt:'Both of these are carbon. Click the one with the higher CIP priority.',
+      molecule:'butan-2-ol',
+      answer:{ role:'more-substituted' },
+      why:'They tie at the first atom — both carbon — so you go one step further out and compare what each is attached to. The ethyl carbon has (C, H, H); the methyl has (H, H, H). C beats H at the first point of difference, so ethyl wins.',
+      diag:{
+        c1:{ concept:'cip-priority', msg:'That is the methyl: its substituent set is (H, H, H). The other carbon carries (C, H, H), and carbon beats hydrogen at the first point of difference.' },
+        o:{ concept:'cip-priority', msg:'Oxygen does outrank both of them — but the question is which of the two CARBONS wins. That tie is broken one atom further out.' },
+        h:{ concept:'cip-priority', msg:'That hydrogen is the lowest priority of all four. The comparison asked about is between the two carbon substituents.' }
+      } },
+
+    { id:'fischer-toward-viewer', kind:'multi-click', tier:1, topic:'fischer',
+      concepts:['fischer-reading'],
+      prompt:'Click both groups that point TOWARD you.',
+      molecule:'fischer-glyceraldehyde',
+      sub:'A Fischer projection is a 3D molecule flattened by a strict convention.',
+      answer:{ keys:['left','right'] },
+      why:'Horizontal bonds come toward the viewer; vertical bonds go away. That convention is the whole reason a single swap of two groups inverts the configuration — you are swapping a front group with a front group across a fixed centre.',
+      diag:{
+        top:{ concept:'fischer-reading', msg:'Vertical bonds point AWAY from you, behind the page. Only the horizontal ones come forward.' },
+        bot:{ concept:'fischer-reading', msg:'That is vertical, so it points away from you. Remember it as a bow tie: the horizontal arms come at you.' },
+        c:{ concept:'fischer-reading', msg:'That is the stereocenter at the crossing point, not one of the four groups.' }
+      } },
+
+    { id:'fischer-swap-effect', kind:'mcq', tier:2, topic:'fischer',
+      concepts:['fischer-reading','enantiomer-vs-diastereomer'],
+      prompt:'You swap two groups in a Fischer projection exactly once. What have you produced?',
+      options:['The enantiomer', 'The same molecule, redrawn', 'A diastereomer', 'A constitutional isomer'],
+      answer:0,
+      why:'One swap inverts the stereocenter, giving the mirror image. Two swaps return you to the original. This is why an odd number of swaps means enantiomer and an even number means the same compound — a rule worth more than re-deriving it every time.',
+      diag:{
+        1:{ concept:'fischer-reading', msg:'That is what an even number of swaps gives you. A single swap genuinely inverts the centre — the safe legal moves are 180° rotation in the plane, or holding one group fixed and rotating the other three.' },
+        2:{ concept:'enantiomer-vs-diastereomer', msg:'A diastereomer needs more than one stereocenter, with some inverted and some not. With a single stereocenter inverted, the only possible relationship is enantiomer.' },
+        3:{ concept:'fischer-reading', msg:'Nothing about connectivity changed — the same atoms are bonded to the same atoms. Constitutional isomers differ in what is attached to what.' }
+      } },
+
+    /* ---- Substitution / elimination, alcohols, ethers -------------------- */
+
+    { id:'e1-zaitsev-h', kind:'click-atom', tier:3, topic:'e1',
+      concepts:['zaitsev-hofmann','carbocation-stability'],
+      prompt:'The carbocation has formed. Click the hydrogen whose removal gives the Zaitsev product.',
+      molecule:'e2-butane',
+      answer:{ keys:['hb'] },
+      why:'Zaitsev: take the proton that yields the MORE substituted alkene, because more substituted alkenes are more stable. Removing the hydrogen from the carbon that also carries a chain gives a disubstituted alkene; taking one from the terminal methyl gives a monosubstituted one.',
+      diag:{
+        hc:{ concept:'zaitsev-hofmann', msg:'That gives the less substituted alkene — the Hofmann product. It is the major one only with a bulky base like tert-butoxide, and E1 has no base bulky enough to care.' },
+        ha:{ concept:'zaitsev-hofmann', msg:'That hydrogen is on the carbon that HELD the leaving group, not on a neighbouring carbon. Elimination needs a beta hydrogen — one carbon over.' },
+        br:{ concept:'carbocation-stability', msg:'Bromide already left; that is what formed the carbocation. This step is about which proton goes next.' }
+      } },
+
+    { id:'alcohol-activate-o', kind:'click-atom', tier:1, topic:'alcohol-reactions',
+      concepts:['alcohol-activation','leaving-group-ability'],
+      prompt:'Click the atom that must be protonated before this alcohol can react.',
+      molecule:'isopropanol',
+      answer:{ role:'nucleophile' },
+      why:'Hydroxide is a terrible leaving group — it is a strong base, conjugate of water at pKa 15.7. Protonate the oxygen first and the group that leaves is neutral water instead, conjugate base of H₃O⁺ at pKa −1.7, which is excellent.',
+      diag:{
+        c:{ concept:'alcohol-activation', msg:'The carbon is where substitution happens, but it is not what gets protonated. Acid goes to the most basic site — the lone pairs on oxygen.' },
+        h:{ concept:'alcohol-activation', msg:'That is a C–H, which acid does nothing with. The basic site is the oxygen with its lone pairs.' }
+      } },
+
+    { id:'ether-hi-cleavage', kind:'click-atom', tier:2, topic:'ether-chemistry',
+      concepts:['backside-attack','alcohol-activation'],
+      prompt:'This ether is refluxed with concentrated HI. Click the carbon iodide attacks.',
+      molecule:'methyl-propyl-ether',
+      answer:{ role:'less-hindered' },
+      why:'The oxygen is protonated first, turning it into a real leaving group, and then iodide runs an SN2. SN2 is decided by crowding at the carbon, and a methyl is the least hindered carbon there is — so the C–O bond to the methyl is the one that breaks.',
+      diag:{
+        c1:{ concept:'steric-hindrance', msg:'That carbon carries a whole propyl chain. Both are primary, but SN2 is decided by how crowded the backside approach is, and a methyl beats any longer chain.' },
+        o:{ concept:'backside-attack', msg:'The oxygen is what gets protonated and then leaves — it is not the atom under nucleophilic attack. Iodide attacks a CARBON.' },
+        c2:{ concept:'backside-attack', msg:'That carbon is not attached to the oxygen at all, so breaking a bond there would not cleave the ether.' }
+      } },
+
+    { id:'ether-find-oxygen', kind:'click-atom', tier:1, topic:'ether-chemistry',
+      concepts:['alcohol-activation','nucleophile-recognition'],
+      prompt:'Click the ether oxygen.',
+      molecule:'methyl-propyl-ether',
+      answer:{ role:'ether-o' },
+      why:'An ether is an oxygen with a carbon on each side and no hydrogen of its own. That is what makes ethers so unreactive: no acidic proton, and no leaving group until the oxygen is protonated.',
+      diag:{
+        cm:{ concept:'nucleophile-recognition', msg:'That is one of the two carbons attached to the oxygen. The ether oxygen is the atom BETWEEN them.' },
+        c1:{ concept:'nucleophile-recognition', msg:'That is the other attached carbon. Look for the atom with two carbons on it and lone pairs.' }
+      } },
+
+    /* ---- Carbonyl derivatives, amines, spectroscopy ---------------------- */
+
+    { id:'acetal-find-carbon', kind:'click-atom', tier:1, topic:'acetals',
+      concepts:['acetal-formation'],
+      prompt:'Click the acetal carbon.',
+      molecule:'dimethyl-acetal',
+      answer:{ role:'acetal-c' },
+      why:'The pattern to recognize is one carbon carrying TWO OR groups. That is an acetal — stable to base and to nucleophiles like hydride and Grignards, which is exactly why it works as a protecting group for a ketone.',
+      diag:{
+        o1:{ concept:'acetal-formation', msg:'That is one of the two oxygens, not the carbon holding them. The acetal carbon is the one both oxygens attach to.' },
+        m1:{ concept:'acetal-formation', msg:'That is the methyl on the far side of an oxygen. Look for the single carbon with two oxygens on it.' },
+        ca:{ concept:'acetal-formation', msg:'That is one of the original alkyl groups from the ketone. The acetal carbon is the one that used to be the carbonyl carbon — the one now bonded to two oxygens.' }
+      } },
+
+    { id:'hemiacetal-oh', kind:'click-atom', tier:2, topic:'acetals',
+      concepts:['acetal-formation','tetrahedral-intermediate'],
+      prompt:'This is a hemiacetal. Click the oxygen that still has to be replaced to reach a full acetal.',
+      molecule:'acetone-hemiacetal',
+      answer:{ role:'hydroxyl-o' },
+      why:'"Hemi" means half: one OR is installed, the other position is still an OH. A second equivalent of alcohol, under acid, replaces that OH via the oxocarbenium and gives the acetal.',
+      diag:{
+        o2:{ concept:'acetal-formation', msg:'That one is already an OR — the half that is done. The remaining OH is the half still to be converted.' },
+        c:{ concept:'acetal-formation', msg:'That is the hemiacetal carbon itself. The question asks which of its two oxygens is the unfinished one.' }
+      } },
+
+    { id:'amine-nucleophilic-n', kind:'click-atom', tier:1, topic:'amine-reactions',
+      concepts:['nucleophile-recognition','amine-basicity'],
+      prompt:'Click the atom that makes this amine nucleophilic.',
+      molecule:'ethylamine',
+      answer:{ role:'nucleophile' },
+      why:'The nitrogen lone pair. It is freely available here — nothing is pulling it away — which is why simple amines are both good nucleophiles and reasonable bases, and why alkylating them tends to run away to over-alkylation.',
+      diag:{
+        c1:{ concept:'nucleophile-recognition', msg:'A carbon with four single bonds has no pair to donate. Nucleophilicity comes from an available lone pair or a pi bond.' },
+        c2:{ concept:'nucleophile-recognition', msg:'That carbon is fully bonded with nothing spare. Look for the atom drawn with lone-pair dots.' }
+      } },
+
+    { id:'amide-unavailable-lonepair', kind:'click-atom', tier:2, topic:'amine-reactions',
+      concepts:['amine-basicity','resonance-delocalization'],
+      prompt:'Click the lone pair that is NOT available to act as a base.',
+      molecule:'acetamide',
+      answer:{ role:'conjugated-lone-pair' },
+      why:'An amide nitrogen’s lone pair is delocalized into the C=O by resonance, so it is not sitting there waiting to grab a proton. That single fact explains why amides are essentially non-basic, why the C–N bond has partial double-bond character, and why amides are the least reactive acid derivative.',
+      diag:{
+        o:{ concept:'amine-basicity', msg:'The carbonyl oxygen’s lone pairs are genuinely there — it is weakly basic and does get protonated under strong acid. The lone pair that has been taken out of circulation is on the other heteroatom.' },
+        c:{ concept:'amine-basicity', msg:'That carbon has no lone pair at all. The question is about a lone pair that exists but is unavailable.' }
+      } },
+
+    { id:'cnmr-methyl-peak', kind:'click-atom', tier:1, topic:'c-nmr',
+      concepts:['nmr-shift-shielding'],
+      prompt:'Click a carbon responsible for the peak at 21 ppm.',
+      molecule:'para-xylene',
+      answer:{ role:'methyl' },
+      why:'21 ppm is deep in the aliphatic region — an sp³ carbon with nothing electronegative on it. Aromatic ring carbons sit far downfield, around 125–140 ppm, because the ring current and the sp² hybridization both deshield them.',
+      diag:{
+        c1:{ concept:'nmr-shift-shielding', msg:'That is an aromatic ring carbon. Ring carbons appear around 125–140 ppm, not at 21 — the aliphatic peak has to be one of the methyls.' },
+        c2:{ concept:'nmr-shift-shielding', msg:'Aromatic CH carbons show up near 128 ppm. 21 ppm is a shielded sp³ carbon with no electronegative neighbours.' },
+        c4:{ concept:'nmr-shift-shielding', msg:'Also a ring carbon, far downfield. Look for the saturated carbons.' }
+      } },
+
+    { id:'cnmr-symmetry-count', kind:'mcq', tier:3, topic:'c-nmr',
+      concepts:['nmr-shift-shielding','nmr-splitting-integration'],
+      prompt:'para-Xylene has eight carbons. How many ¹³C signals does it show?',
+      options:['3', '8', '4', '6'],
+      answer:0,
+      molecule:'para-xylene',
+      why:'Symmetry collapses them. The two methyls are equivalent (one signal), the two substituted ring carbons are equivalent (one signal), and all four aromatic CH carbons are equivalent (one signal). Three environments, three peaks.',
+      diag:{
+        1:{ concept:'nmr-shift-shielding', msg:'That would be true only if every carbon sat in a different environment. Carbons related by the molecule’s symmetry are chemically identical and share a single signal — counting atoms is not counting peaks.' },
+        2:{ concept:'nmr-shift-shielding', msg:'Close, but check the four aromatic CH carbons: in the para pattern all four are equivalent, so they give one peak rather than two.' },
+        3:{ concept:'nmr-shift-shielding', msg:'You are counting some equivalent carbons separately. Look for the mirror planes — para substitution makes both halves of the ring identical.' }
+      } },
+
     /* ---- draw-the-mechanism ------------------------------------------
        The only kind where the student produces the answer instead of picking
        it. `answer.arrows` is a set: order does not matter, direction does,
