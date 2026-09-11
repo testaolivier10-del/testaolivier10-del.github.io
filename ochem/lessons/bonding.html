@@ -38,7 +38,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 6</div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -61,7 +61,8 @@
     notesHtml: '<h3>Sigma bonds</h3><p class="step-body">A <b>sigma (σ) bond</b> forms from head-on orbital overlap, directly on the axis between the two nuclei. Every single bond is a sigma bond. Because the overlap is symmetric all the way around that axis, the atoms can freely rotate around it without disturbing anything.</p>' +
       '<h3>Pi bonds</h3><p class="step-body">A <b>pi (π) bond</b> comes from the unhybridized p orbitals left over after hybridization (sp² carbon has 1 leftover p; sp has 2). These stick out above/below or side-to-side rather than along the bond axis, and two neighboring ones overlap <b>sideways</b>. That sideways overlap only works while the two p orbitals stay parallel — twisting one atom rotates its p orbital out of alignment and breaks the overlap. That\'s why a pi bond <b>blocks rotation</b> while a sigma bond doesn\'t.</p>' +
       '<div class="formula">single bond = 1σ &nbsp;&middot;&nbsp; double bond = 1σ + 1π &nbsp;&middot;&nbsp; triple bond = 1σ + 2π</div>' +
-      '<div class="notes-fact">Restricted rotation around a double bond\'s pi bond is the entire reason cis/trans (E/Z) isomers exist — groups on either side of the double bond stay fixed relative to each other. More on this in the Stereochemistry module.</div>',
+      '<div class="notes-fact">Restricted rotation around a double bond\'s pi bond is the entire reason cis/trans (E/Z) isomers exist — groups on either side of the double bond stay fixed relative to each other. More on this in the Stereochemistry module.</div>' +
+      '<h3>Bond length and strength</h3><p class="step-body">More bonds between the same two atoms means shorter and stronger. C–C: ~154 pm, ~347 kJ/mol. C=C: ~134 pm, ~614 kJ/mol. C≡C: ~120 pm, ~839 kJ/mol. The jump from 1→2 bonds roughly doubles the energy; the second pi bond (2→3) adds less, since sideways p-orbital overlap is inherently weaker than the sigma bond\'s head-on overlap.</p>',
     steps: [
       {
         type: 'explain',
@@ -135,6 +136,12 @@
         eyebrow: 'Why it matters',
         title: 'Restricted rotation is why cis/trans exists.',
         bodyHtml: '<div class="explain-box">Because a pi bond locks the two carbons of a double bond flat and unrotatable, groups on either side stay fixed relative to each other — that’s the entire reason cis/trans (E/Z) isomers exist. You’ll see this again in the Stereochemistry module.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'More bonds between the same two atoms means shorter and stronger.',
+        bodyHtml: '<p class="step-body">Adding pi bonds pulls the two nuclei closer together and takes more energy to break, since there are more overlapping orbitals holding them together. For a carbon-carbon bond: a single bond (C–C, sp³–sp³) is about 154 pm long and 347 kJ/mol to break; a double bond (C=C, sp²–sp²) is about 134 pm and 614 kJ/mol; a triple bond (C≡C, sp–sp) is about 120 pm and 839 kJ/mol.</p><p class="step-body" style="margin-bottom:0;">Notice the bond doesn\'t simply double or triple in strength — going from 1 to 2 bonds roughly doubles the energy, but the pi bond added going from a double to a triple bond is weaker than the first one, since sideways p-orbital overlap is inherently less effective than the sigma bond\'s head-on overlap.</p>'
       },
       {
         type: 'final',
