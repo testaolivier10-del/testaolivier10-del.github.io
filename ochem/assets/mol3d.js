@@ -432,9 +432,17 @@
       if(p.z > zmax) zmax = p.z;
     });
     var zspan = (zmax - zmin) || 1;
+    /* Space-filling spheres overlap almost completely, and at the fade the
+       other modes use the back atoms show THROUGH the front ones — which reads
+       as glass rather than as distance, and glass is not a fact about the
+       molecule. So space-filling does not fade at all: it gets its depth from
+       occlusion, which is the strongest cue there is — a sphere in front of
+       another sphere simply hides it — plus the perspective growth and the
+       shading. Fading would only let the hidden atoms show through again. */
+    var floor = mode === 'space' ? 1 : 0.58;
     function fade(z){
       var t = (z - zmin) / zspan;            // 0 at the back, 1 at the front
-      return (0.58 + 0.42 * t).toFixed(3);   // never invisible, always ranked
+      return (floor + (1 - floor) * t).toFixed(3);
     }
 
     /* The shadow goes down first, under everything. It is drawn in screen
