@@ -117,11 +117,13 @@
                 var isK = key.charAt(0) === 'k';
                 var idx = parseInt(key.slice(1), 10);
                 if(isK){
-                  if(idx !== kFilled){ return; }
+                  if(idx < kFilled){ return; }
+                  if(idx !== kFilled){ api.showFeedback(fb, false, 'Fill slots in order, left to right.'); return; }
                   kFilled++;
                 } else {
                   if(kFilled < 2){ api.showFeedback(fb, false, 'Fill the K shell (2 electrons) before adding to the L shell.'); return; }
-                  if(idx !== lFilled){ return; }
+                  if(idx < lFilled){ return; }
+                  if(idx !== lFilled){ api.showFeedback(fb, false, 'Fill slots in order, left to right.'); return; }
                   lFilled++;
                 }
                 var total = kFilled + lFilled;

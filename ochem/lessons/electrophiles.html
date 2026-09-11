@@ -95,18 +95,16 @@
           api.card.querySelectorAll('.atom').forEach(function(g){
             g.addEventListener('click', function(){
               if(answered) return;
-              answered = true;
               var isCorrect = g.getAttribute('data-key') === 'carbon';
-              g.classList.add('chosen');
               api.record(isCorrect);
               if(isCorrect){
+                answered = true;
+                g.classList.add('chosen');
                 api.showFeedback(fb, true, 'Correct — oxygen\'s pull leaves the carbon partially positive (δ+), which is exactly what a nucleophile targets.');
+                next.disabled = false;
               } else {
                 api.showFeedback(fb, false, 'Oxygen is the one pulling electron density away — it ends up electron-rich, not electron-poor. Try the carbon.');
-                answered = false;
-                return;
               }
-              next.disabled = false;
             });
           });
           next.addEventListener('click', api.advance);

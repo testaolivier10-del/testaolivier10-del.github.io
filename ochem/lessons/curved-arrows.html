@@ -99,7 +99,8 @@
             hint.textContent = 'Tail placed on the lone pair. Now click H⁺ for the head.';
           });
           headEl.addEventListener('click', function(){
-            if(!gotTail || gotHead) return;
+            if(gotHead) return;
+            if(!gotTail){ api.showFeedback(fb, false, 'Start at the electron source, not the destination — click the lone pair first.'); return; }
             gotHead = true;
             headEl.classList.add('chosen');
             hint.textContent = 'Arrow drawn: lone pair → H⁺.';
