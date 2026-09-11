@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arrow Pusher — Organic Chemistry Tools</title>
+<meta name="description" content="Draw curved arrows on a molecule and watch the product form: bonds break, formal charges recalculate, fragments separate. Octet and valence violations are caught as you draw.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/tools/arrow-pusher.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/tools.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+.ap-group{margin-bottom:14px;}
+  .ap-group:last-child{margin-bottom:0;}
+  .ap-group__label{
+    font:900 10.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:7px;
+  }
+  .ap-hint{
+    margin-top:12px;border-top:1px solid var(--line-soft);padding-top:12px;
+  }
+  .ap-hint summary{
+    font:900 12px var(--font-ui);color:var(--accent);cursor:pointer;list-style:none;
+  }
+  .ap-hint summary::-webkit-details-marker{display:none;}
+  .ap-hint summary::before{content:'? ';font-family:var(--font-mono);}
+  .ap-hint[open] summary{margin-bottom:8px;}
+</style>
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell">
+  <div class="tool-top" id="tool-top"></div>
+  <div id="apRoot"></div>
+
+  <div id="tool-foot"></div>
+</div>
+
+<script>
+  window.OCHEM_SECTION = 'tools';
+  window.OCHEM_BASE = '../';
+  window.OCHEM_TOOL = 'arrow-pusher';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/tools-registry.js"></script>
+<script src="../assets/tool-shell.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/molecule-editor.js"></script>
+<script src="../assets/chem-core.js"></script>
+<script src="../assets/tools/arrow-pusher.js"></script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>
