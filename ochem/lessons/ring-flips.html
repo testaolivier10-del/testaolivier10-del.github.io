@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ring Flips — Alkanes &amp; Conformations | Organic Chemistry</title>
+<meta name="description" content="Learn how a cyclohexane chair flip converts every axial position to equatorial and back, and why the process is fast at room temperature.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/ring-flips.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 4 &middot; Alkanes &amp; Conformations</div>
+    <h1 style="margin-bottom:4px;">Ring flips.</h1>
+    <p class="lede" style="margin-top:0;">No bonds break — every axial substituent just becomes equatorial, and vice versa.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  function chairPair(){
+    return '<div class="scene"><svg viewBox="0 0 320 150">' +
+      '<polyline points="20,90 80,60 150,90 210,60 280,90 220,110 150,90" fill="none" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<line x1="80" y1="60" x2="80" y2="20" stroke="var(--muted)" stroke-width="2.5"/>' +
+      '<g class="atom" data-key="before"><circle cx="80" cy="14" r="10" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="80" y="18" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">CH₃</text></g>' +
+      '<text x="150" y="10" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="12" fill="var(--muted)">axial here</text>' +
+    '</svg></div>';
+  }
+  function chairFlipped(){
+    return '<div class="scene"><svg viewBox="0 0 320 150">' +
+      '<polyline points="20,60 80,90 150,60 210,90 280,60 220,40 150,60" fill="none" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<line x1="80" y1="90" x2="50" y2="105" stroke="var(--muted)" stroke-width="2.5"/>' +
+      '<g class="atom" data-key="after"><circle cx="38" cy="110" r="10" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="38" y="114" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">CH₃</text></g>' +
+      '<text x="150" y="130" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="12" fill="var(--muted)">equatorial now</text>' +
+    '</svg></div>';
+  }
+
+  window.OchemLessonEngine.start({
+    topicId: 'ring-flips',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>What a ring flip does</h3><p class="step-body">A <b>chair flip</b> (or ring flip) converts one chair conformation into the other, alternate chair — every position that was axial becomes equatorial, and every position that was equatorial becomes axial. No bonds break; the ring simply flexes through a sequence of higher-energy shapes and settles into the other chair.</p>' +
+      '<h3>The pathway</h3><p class="step-body">Going from one chair to the other passes through a <b>half-chair</b> (a high-energy transition state), then briefly through a <b>twist-boat</b> and/or <b>boat</b> conformation (higher-energy but real, if fleeting, local shapes — the boat has its own eclipsing and steric problems, including a "flagpole" 1,4-interaction), then another half-chair, arriving at the second chair.</p>' +
+      '<div class="notes-fact">The energy barrier for a full ring flip (chair → half-chair → boat/twist-boat → half-chair → chair) is about 10-11 kcal/mol for cyclohexane itself — small enough that ring flipping happens rapidly at room temperature (thousands of times per second), but large enough that it\'s a real, measurable barrier, unlike the much smaller ~2.9 kcal/mol barrier for simple bond rotation in ethane.</p>' +
+      '<h3>Why substituent identity isn\'t fixed</h3><p class="step-body">Because the ring flips constantly, a substituent isn\'t permanently "the axial group" or "the equatorial group" — its identity depends on which of the two interconverting chairs you\'re looking at. What <i>is</i> fixed is the overall equilibrium: the molecule spends more time in whichever chair puts its bulkiest substituent(s) equatorial, exactly as A-values predict.</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Flipping the chair swaps every axial position for equatorial.',
+        bodyHtml: '<p class="step-body">A cyclohexane ring doesn\'t sit frozen in one chair shape. It constantly interconverts between two chair conformations through a process called a <b>ring flip</b> (or chair flip) — no bonds break during this process, the ring simply flexes.</p><p class="step-body" style="margin-bottom:0;">The key result: every position that was <b>axial</b> in one chair becomes <b>equatorial</b> in the other, and every equatorial position becomes axial. A substituent doesn\'t change which carbon it\'s attached to — only whether that carbon\'s bond to it happens to point axially or equatorially in the current chair.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click "Flip the ring" and see what happens to the methyl group.</h2>' +
+            '<p class="step-body">This chair has a methyl group axial. Flip it and watch where that same methyl group ends up.</p>' +
+            '<div id="chairHost">' + chairPair() + '</div>' +
+            '<div class="choice-row" style="justify-content:center;"><button class="choice-btn" id="flipBtn" style="font-weight:800;">Flip the ring</button></div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var flipBtn = api.card.querySelector('#flipBtn');
+          var host = api.card.querySelector('#chairHost');
+          flipBtn.addEventListener('click', function(){
+            host.innerHTML = chairFlipped();
+            flipBtn.disabled = true;
+            api.record(true);
+            api.showFeedback(fb, true, 'The same methyl group, on the same carbon, is now equatorial. Nothing about the molecule\'s connectivity changed — only the three-dimensional shape of the ring did.');
+            next.disabled = false;
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'During a ring flip, what happens to the covalent bonds in the ring?',
+        options: ['None of them break — the ring just flexes into a different shape', 'Every C–C bond in the ring breaks and reforms', 'Only the bond to the substituent breaks'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — a ring flip is purely a conformational change (rotation around single bonds throughout the ring), not a chemical reaction. No bonds break.',
+        wrongFeedback: 'A ring flip is a conformational change, not a chemical reaction — no bonds break or form anywhere in the molecule.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'The pathway between the two chairs passes through which intermediate shape(s)?',
+        options: ['Half-chair, then boat/twist-boat, then half-chair again', 'Directly from one chair to the other with no intermediate', 'A flat, planar hexagon'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. The ring passes through higher-energy half-chair and boat/twist-boat shapes on its way between the two stable chairs.',
+        wrongFeedback: 'The interconversion isn\'t direct — it passes through real, if short-lived and higher-energy, half-chair and boat/twist-boat shapes.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The barrier is small enough to cross constantly, but not zero.',
+        bodyHtml: '<p class="step-body">The energy barrier for a full ring flip is about 10-11 kcal/mol for unsubstituted cyclohexane. That\'s noticeably larger than the ~2.9 kcal/mol barrier for simple rotation around a single ethane C–C bond, but still small enough that, at room temperature, a given cyclohexane molecule flips between its two chairs thousands of times per second.</p><p class="step-body" style="margin-bottom:0;">This means you can never isolate "the axial conformer" and "the equatorial conformer" of a monosubstituted cyclohexane as two separate bottles of chemical — they\'re the same molecule, constantly interconverting. What you observe experimentally is always a time-averaged mixture, weighted by A-values, of both chairs.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Reactions can only happen in the chair that has the right geometry.',
+        bodyHtml: '<div class="explain-box">Since the molecule constantly ring-flips, it can always sample whichever chair a reaction needs — as long as that chair is accessible (not blocked by an enormous A-value substituent locking the ring one way). This becomes essential in the next lesson and in E2 elimination (Module 6, which already depends on this material): E2 requires the leaving group to be axial, so a molecule reacts through whichever of its two interconverting chairs happens to have that leaving group in the axial position.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A cyclohexane ring has a bulky substituent in the axial position in one chair. After a ring flip, that substituent is now...',
+        options: ['Equatorial, on the exact same carbon', 'Still axial, but on a different carbon', 'Removed from the molecule entirely'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — a ring flip swaps every axial position for equatorial (and vice versa) on the same set of carbons. The substituent never moves to a different carbon and is never removed; only its axial/equatorial orientation changes.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>

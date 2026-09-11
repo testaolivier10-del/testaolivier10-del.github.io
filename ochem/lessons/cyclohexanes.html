@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyclohexanes — Alkanes &amp; Conformations | Organic Chemistry</title>
+<meta name="description" content="Learn the three types of ring strain, why cyclohexane is special, and why the chair conformation eliminates nearly all of that strain.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/cyclohexanes.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+    </a>
+    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+<div id="ochem-subnav" class="ochem-subnav"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 4 &middot; Alkanes &amp; Conformations</div>
+    <h1 style="margin-bottom:4px;">Cyclohexanes.</h1>
+    <p class="lede" style="margin-top:0;">Why cyclohexane, almost alone among small rings, can be essentially strain-free.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/curriculum.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'cyclohexanes',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    notesHtml: '<h3>Three kinds of ring strain</h3><p class="step-body"><b>Angle strain</b> is the energy cost of forcing bond angles away from their ideal (tetrahedral, ~109.5° for sp³ carbon). <b>Torsional strain</b> is the cost of eclipsing bonds around the ring, exactly like the eclipsed conformations from the Newman Projections lesson. <b>Steric strain</b> is the cost of non-bonded atoms bumping into each other in space (van der Waals repulsion) — you\'ll see this precisely as 1,3-diaxial interactions in the next lesson.</p>' +
+      '<h3>Small rings pay these costs differently</h3><p class="step-body">Cyclopropane (a flat triangle, forced to 60° angles) has enormous angle strain plus torsional strain from being completely flat and eclipsed — total ring strain ≈ 27.5 kcal/mol. Cyclobutane (~26.3 kcal/mol) and cyclopentane (~6.2 kcal/mol) pucker slightly out of plane to relieve some torsional strain at the cost of a little angle strain, but still can\'t escape either type entirely.</p>' +
+      '<div class="notes-fact">Cyclohexane\'s total ring strain is essentially zero — not because it lacks the same geometric challenges, but because it isn\'t flat. A puckered, three-dimensional shape called the <b>chair conformation</b> lets cyclohexane satisfy both angle and torsional strain requirements at once.</div>' +
+      '<h3>Why the chair works</h3><p class="step-body">In a chair, every C–C–C bond angle is close to 111° (nearly ideal tetrahedral geometry — almost no angle strain), and every pair of adjacent C–H bonds around the ring is staggered relative to its neighbor (sighting down any ring C–C bond gives a perfectly staggered Newman projection — zero torsional strain). No small or flat ring can simultaneously satisfy both conditions; cyclohexane\'s six-membered, non-planar geometry is exactly what\'s needed to hit both targets at once.</p>',
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Three separate kinds of strain add up in a ring.',
+        bodyHtml: '<p class="step-body">Rings can be destabilized by three distinct, additive effects. <b>Angle strain</b> is the cost of forcing bond angles away from their ideal geometry — for an sp³ carbon, that ideal is the tetrahedral 109.5°. <b>Torsional strain</b> is the cost of eclipsing bonds, the same effect from the Newman Projections lesson, now applied around a ring instead of a single rotating bond. <b>Steric strain</b> is the cost of non-bonded atoms simply being too close together in space.</p><p class="step-body" style="margin-bottom:0;">A flat, planar ring is forced into specific bond angles by its geometry and has every adjacent C–H bond eclipsing its neighbor — so small, flat rings tend to accumulate both angle strain and torsional strain at once.</p>'
+      },
+      {
+        render: function(api){
+          var rings = [
+            { key: 'cp3', label: 'Cyclopropane', strain: '27.5' },
+            { key: 'cp4', label: 'Cyclobutane', strain: '26.3' },
+            { key: 'cp5', label: 'Cyclopentane', strain: '6.2' },
+            { key: 'cp6', label: 'Cyclohexane', strain: '~0' }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the most strained of these four rings.</h2>' +
+            '<p class="step-body">Each button shows the ring and its approximate total ring strain in kcal/mol.</p>' +
+            '<div class="choice-row">' + rings.map(function(r){
+              return '<button class="choice-btn" data-v="' + r.key + '" style="text-align:center;font:900 14px var(--font-mono);">' + r.label + '<br><span style="font-weight:700;font-size:11px;color:var(--muted);">' + r.strain + ' kcal/mol</span></button>';
+            }).join('') + '</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var answered = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(answered) return;
+              answered = true;
+              var isCorrect = btn.getAttribute('data-v') === 'cp3';
+              api.card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+              btn.classList.add(isCorrect ? 'correct' : 'wrong');
+              api.record(isCorrect);
+              api.showFeedback(fb, isCorrect, 'Cyclopropane is the most strained — its 60° bond angles are wildly forced away from the ideal 109.5°, and being completely flat means every C–H bond is eclipsed. Cyclohexane, by contrast, has essentially zero ring strain.');
+              next.disabled = false;
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Torsional strain in a ring comes from...',
+        options: ['Eclipsing bonds around the ring, the same effect seen in Newman projections', 'Bond angles being forced away from 109.5°', 'Atoms simply being too heavy'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — torsional strain is specifically about eclipsing interactions between bonds, distinct from angle strain.',
+        wrongFeedback: 'That description is angle strain, a separate effect. Torsional strain is about eclipsing bonds, not bond angles.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'Cyclohexane has almost zero total ring strain because...',
+        options: ['Its chair conformation achieves near-ideal bond angles and fully staggered C–H bonds simultaneously', 'It has no C–H bonds to eclipse', 'Six-membered rings are simply immune to strain by definition'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. The three-dimensional chair shape is the key — it isn\'t that cyclohexane can\'t experience angle or torsional strain, it\'s that its preferred conformation avoids both at once.',
+        wrongFeedback: 'Cyclohexane has C–H bonds just like any other ring — the difference is its chair conformation, which lets it avoid both angle and torsional strain simultaneously.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The chair hits two targets that a flat ring can\'t hit together.',
+        bodyHtml: '<p class="step-body">In the chair conformation, every C–C–C bond angle is close to 111° — nearly the ideal tetrahedral angle, so angle strain is almost eliminated. At the same time, if you sight down any C–C bond around the ring as a Newman projection, every adjacent pair of C–H bonds is staggered, not eclipsed — so torsional strain is eliminated too.</p><p class="step-body" style="margin-bottom:0;">A flat, planar hexagon can\'t do this: it would have 120° bond angles (a little angle strain, since 109.5° is ideal) and every adjacent C–H would eclipse its neighbor (full torsional strain). The chair\'s three-dimensional puckering is precisely what breaks that flat-ring trade-off.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Cyclohexane rings are everywhere, and the chair is the shape you\'ll always draw.',
+        bodyHtml: '<div class="explain-box">Cyclohexane rings appear constantly in organic and biological molecules — steroids, sugars, many drugs. Because the chair is so strongly preferred over the flat or boat forms, essentially every substituted cyclohexane problem you\'ll solve this semester (and every ring-containing reaction requiring specific geometry, like anti-periplanar E2 elimination) is really a question about chair conformations. The next three lessons build directly on this chair shape.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Why can\'t a flat (planar) cyclohexane avoid strain the way the chair does?',
+        options: ['A flat ring would have 120° bond angles and fully eclipsed C–H bonds — angle strain and torsional strain both', 'A flat ring has no bond angles at all', 'Flat rings are actually lower in energy than chairs'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — a planar hexagon forces 120° angles (some angle strain, since 109.5° is ideal for sp³ carbon) and eclipses every adjacent C–H bond (torsional strain). The chair\'s puckered geometry avoids both problems at once, which is exactly why it\'s so strongly preferred.'
+      }
+    ]
+  });
+})();
+</script>
+<script>
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>
