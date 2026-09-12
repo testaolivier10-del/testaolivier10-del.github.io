@@ -78,13 +78,16 @@ to searching its own notes — but the assistant would be quiet for other
 students until 00:00 UTC. Deploying via the CLI adds the limiter (12
 requests/minute per IP).
 
-## Swapping the model## Swapping the model
+## Models
 
-`MODEL` at the top of `src/index.js`. Any Workers AI text model works;
-`@cf/meta/llama-3.1-8b-instruct` is the default because it's fast and inside
-the free allowance. A larger model gives better prose but uses more of the
-daily budget.
+`MODELS` at the top of `src/index.js` is tried in order until one answers.
+All three are free-plan models as of the 2026-07-28 catalog change; reorder
+them to change quality-vs-cost, since the first that responds is the one used.
 
-If you'd rather use the Claude API (much better answers, but **paid** per
-request), keep the same request/response shape — `{question, context, history}`
-in, `{answer}` out — and the site needs no changes at all.
+Do not trust the docs for whether a model still exists. This shipped on
+`@cf/meta/llama-3.1-8b-instruct` — still listed on the models pages, deprecated
+on the platform since 2026-05-30 — and every request failed with error 5028.
+The chain exists so one retirement can no longer take the assistant down.
+
+If the Cloudflare dashboard's model catalog disagrees with these ids, the
+catalog is right.

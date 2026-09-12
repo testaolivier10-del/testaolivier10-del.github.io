@@ -14,7 +14,17 @@
  * Deploy: see ../README.md
  */
 
-const MODEL = '@cf/meta/llama-3.1-8b-instruct';
+// Tried in order until one answers. A single hard-coded model is a time bomb:
+// this shipped on @cf/meta/llama-3.1-8b-instruct, which the docs still list but
+// the platform had deprecated months earlier, and the assistant fell back to
+// quoting notes for every question with nothing on the page saying why.
+// A deprecated model fails immediately and costs no inference, so the chain is
+// only ever walked when something is genuinely wrong.
+const MODELS = [
+  '@cf/zai-org/glm-4.7-flash',
+  '@cf/google/gemma-4-26b-a4b-it',
+  '@cf/nvidia/nemotron-3-120b-a12b',
+];
 
 // Only these origins may call the Worker. Without this, anyone could point
 // their own site at your endpoint and spend your daily allowance.
@@ -144,15 +154,22 @@ export default {
         : `The course material has no passage covering this question.\n\n---\nStudent's question: ${question}\n\nAnswer from general knowledge, and open by making clear this is not covered in their course material. Keep it brief and do not invent course-specific details.`,
     });
 
-    try {
-      const result = await env.AI.run(MODEL, { messages, max_tokens: 400, temperature: 0.2 });
-      const answer = String(result?.response || '').trim();
-      if (!answer) return json({ error: 'Empty response' }, 502, origin);
-      return json({ answer }, 200, origin);
-    } catch (err) {
-      // Out of free allowance, model unavailable, anything else: tell the
-      // client to fall back rather than pretending to have answered.
-      return json({ error: 'Model unavailable', detail: String(err).slice(0, 200) }, 502, origin);
+    let lastError = null;
+    for (const model of MODELS) {
+      try {
+        const result = await env.AI.run(model, { messages, max_tokens: 400, temperature: 0.2 });
+        const answer = String(result?.response || '').trim();
+        if (answer) return json({ answer, model }, 200, origin);
+        lastError = 'empty response from ' + model;
+      } catch (err) {
+        lastError = String(err);
+        // Out of allowance is not a model problem — every model will refuse,
+        // so stop rather than burning the remaining names on the same 429.
+        if (/\b(3036|429)\b/.test(lastError)) break;
+      }
     }
+    // Every model failed: say so plainly and let the client fall back to the
+    // course's own material rather than pretend to have answered.
+    return json({ error: 'Model unavailable', detail: String(lastError).slice(0, 200) }, 502, origin);
   },
 };
