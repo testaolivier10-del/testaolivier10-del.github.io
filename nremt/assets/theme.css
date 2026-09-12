@@ -23,8 +23,15 @@
   --navy2:#1F4A42;       /* secondary teal — hover states */
   --paper:#FBFAF7;       /* page background — warm paper */
   --white:#FFFFFF;       /* card surface */
-  --accent:#2C9C8B;      /* primary teal-mint */
-  --accent-press:#1F7A6C;
+  /* Deep teal. This used to be the mint #2C9C8B, which measured 3.37:1 on white
+     — under the 4.5:1 AA needs for body text — and the accent carries real text
+     all over this site: eyebrow labels, links, section heads, and white-on-fill
+     buttons. #106D60 keeps the hue and clears AA at 6.2:1 on white, 5.4:1 on
+     --tint-accent. --accent-bright is the old mint, kept for the places where
+     the colour is decoration rather than text: bar fills, rules, dots. */
+  --accent:#106D60;      /* primary teal — safe for text and for fills */
+  --accent-press:#0B4F46;
+  --accent-bright:#2C9C8B;
   --amber:#C9973A;       /* streaks, "in progress" */
   --amber-press:#A67A28;
   --coral:#E8776A;       /* warm highlight, difficulty tags */
@@ -40,7 +47,14 @@
   /* Text */
   --ink:#16241F;
   --muted:#5F7770;
-  --on-accent:#FFFFFF;   /* text on a solid navy/accent fill — white in both themes */
+  --on-accent:#FFFFFF;   /* text on a solid navy/bad fill — white in both themes */
+  /* Text on a solid --accent fill, which is NOT the same thing: dark mode lifts
+     the accent to a bright mint that white text cannot sit on (2.37:1). Kept
+     separate so the navy buttons above aren't dragged along with it. */
+  --on-accent-fill:#FFFFFF;
+  /* Secondary text on the dark navy panels that appear in BOTH themes — the
+     light theme's --muted is a dark grey and vanishes on them. */
+  --muted-on-dark:#A8BDB6;
 
   /* Status */
   --good:#2F9E5B;
@@ -48,6 +62,16 @@
   --bad:#D1594A;
   --bad-press:#A84135;
   --warn:#C9973A;
+
+  /* Text colours for a pill sitting on the matching pale tint below. The fill
+     colours themselves are tuned for solid shapes and all measured under 3:1
+     against their own tint (the coral tag was 2.48:1), so a tag that is mostly
+     small bold text needs its own, darker value. */
+  --coral-text:#A8452A;
+  --amber-text:#7E5B0E;
+  --good-text:#1F6E3E;
+  --bad-text:#A83B2C;
+  --accent-text:#106D60;
 
   /* Pale tints — badge and answer-state backgrounds */
   --tint-accent:#E9F2EF;
@@ -95,6 +119,9 @@
   --white:#182420;
   --accent:#3FBBA6;
   --accent-press:#2E8D80;
+  --accent-bright:#3FBBA6;
+  --on-accent-fill:#0C1F1A;  /* 6.9:1 on the mint; white would be 2.37:1 */
+  --muted-on-dark:#A8BDB6;
   --amber:#D9A54B;
   --amber-press:#A67A28;
   --coral:#E8776A;
@@ -114,6 +141,12 @@
   --bad:#E4776A;
   --bad-press:#A84135;
   --warn:#D9A54B;
+
+  --coral-text:#F0A093;
+  --amber-text:#E5BC72;
+  --good-text:#6FD094;
+  --bad-text:#F0938A;
+  --accent-text:#5FC7B3;
 
   --tint-accent:rgba(63,187,166,0.16);
   --tint-amber:rgba(217,165,75,0.18);
@@ -188,8 +221,8 @@ strong,b{font-weight:900;}
 .btn-press:active,.btn-dark:active,.start-btn:active,.auth-modal-submit:active{
   transform:translateY(5px);box-shadow:0 0 0 var(--navy-press);
 }
-.btn-press.alt,.btn-accent{background:var(--accent);box-shadow:0 5px 0 var(--accent-press);}
-.btn-press.alt:hover,.btn-accent:hover{background:var(--accent);}
+.btn-press.alt,.btn-accent{background:var(--accent);color:var(--on-accent-fill);box-shadow:0 5px 0 var(--accent-press);}
+.btn-press.alt:hover,.btn-accent:hover{background:var(--accent);color:var(--on-accent-fill);}
 .btn-press.alt:active,.btn-accent:active{box-shadow:0 0 0 var(--accent-press);}
 .btn-press.coral{background:var(--coral);box-shadow:0 5px 0 var(--coral-press);}
 .btn-press.coral:active{box-shadow:0 0 0 var(--coral-press);}
@@ -245,10 +278,10 @@ strong,b{font-weight:900;}
   padding:8px 16px;display:inline-block;
 }
 .tag{font:900 11.5px var(--font-ui);padding:6px 13px;border-radius:var(--radius-pill);display:inline-block;}
-.tag.domain{color:var(--coral);background:var(--tint-coral);}
-.tag.diff{color:var(--amber);background:var(--tint-amber);}
-.tag.good{color:var(--good);background:var(--tint-good);}
-.tag.accent{color:var(--accent);background:var(--tint-accent);}
+.tag.domain{color:var(--coral-text);background:var(--tint-coral);}
+.tag.diff{color:var(--amber-text);background:var(--tint-amber);}
+.tag.good{color:var(--good-text);background:var(--tint-good);}
+.tag.accent{color:var(--accent-text);background:var(--tint-accent);}
 
 /* ---- Progress track ---- */
 .track{height:12px;border-radius:var(--radius-pill);background:var(--track);overflow:hidden;}
@@ -378,7 +411,7 @@ strong,b{font-weight:900;}
 
 /* XP bar + label. */
 .xp-track{height:16px;border-radius:var(--radius-pill);background:var(--track);overflow:hidden;margin-bottom:8px;}
-.xp-fill{height:100%;border-radius:var(--radius-pill);background:var(--accent);transition:width .4s ease;}
+.xp-fill{height:100%;border-radius:var(--radius-pill);background:var(--accent-bright);transition:width .4s ease;}
 .xp-label{font:700 11.5px var(--font-mono);color:var(--muted);}
 
 /* A domain row with an inline bar — used in the hero card and dashboard. */
@@ -421,9 +454,9 @@ strong,b{font-weight:900;}
 .qopt.selected{border-color:var(--navy);box-shadow:0 4px 0 var(--navy-press);}
 .qopt.selected .letter{background:var(--navy);border-color:var(--navy);color:var(--on-accent);}
 .qopt.correct{border-color:var(--accent);background:var(--tint-accent);box-shadow:0 4px 0 var(--accent-press);}
-.qopt.correct .letter{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
-.qopt.incorrect{border-color:var(--bad);background:var(--tint-bad);box-shadow:0 4px 0 var(--bad-press);}
-.qopt.incorrect .letter{background:var(--bad);border-color:var(--bad);color:var(--on-accent);}
+.qopt.correct .letter{background:var(--accent);border-color:var(--accent);color:var(--on-accent-fill);}
+.qopt.incorrect{border-color:var(--bad-text);background:var(--tint-bad);box-shadow:0 4px 0 var(--bad-press);}
+.qopt.incorrect .letter{background:var(--bad);border-color:var(--bad-text);color:var(--on-accent);}
 .qopt:disabled{cursor:default;}
 .qopt:disabled:hover{transform:none;box-shadow:var(--lift);}
 
@@ -444,7 +477,7 @@ strong,b{font-weight:900;}
   aspect-ratio:1;border-radius:8px;background:var(--track);display:flex;
   align-items:center;justify-content:center;font:800 10px var(--font-mono);color:var(--muted);
 }
-.cal-day.done{background:var(--accent);color:var(--on-accent);}
+.cal-day.done{background:var(--accent);color:var(--on-accent-fill);}
 .cal-day.today{outline:2px solid var(--navy);outline-offset:1px;}
 
 /* Skill path — zigzagging domain nodes joined by a dashed spine. */
@@ -554,7 +587,7 @@ strong,b{font-weight:900;}
   border:2px solid var(--accent);background:var(--tint-accent);color:var(--accent);
   font:900 11.5px var(--font-ui);text-decoration:none;flex-shrink:0;
 }
-.level-badge:hover{background:var(--accent);color:var(--on-accent);}
+.level-badge:hover{background:var(--accent);color:var(--on-accent-fill);}
 
 .theme-toggle{
   display:inline-flex;align-items:center;justify-content:center;
@@ -572,6 +605,10 @@ strong,b{font-weight:900;}
 }
 .account-btn:hover{border-color:var(--accent);color:var(--accent);}
 
+footer .privacy-link{margin-top:10px;}
+footer .privacy-link a{color:var(--muted);text-decoration:underline;text-underline-offset:2px;}
+footer .privacy-link a:hover{color:var(--ink);}
+
 .site-nav-fallback{font-size:13px;font-weight:700;color:var(--muted);margin-bottom:24px;font-family:var(--font-ui);}
 .site-nav-fallback a{color:var(--accent);text-decoration:none;}
 .site-nav-fallback a:hover{text-decoration:underline;}
@@ -584,7 +621,19 @@ strong,b{font-weight:900;}
 }
 @media (max-width:640px){
   .site-header__brand-row{flex:1 1 auto;}
-  .site-header__groups{gap:2px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  /* The pill row scrolls sideways here. The scrollbar is hidden, so without the
+     mask below it ended flush at the screen edge and the last three sections
+     (Glossary, Tools, Dashboard) were simply invisible — nothing on screen said
+     there was more to the right. The fade lifts as soon as the row is scrolled
+     to its end, so it never lingers over a row with nothing left to reveal. */
+  .site-header__groups{
+    gap:2px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+    scroll-snap-type:x proximity;
+    -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 34px),transparent 100%);
+    mask-image:linear-gradient(to right,#000 calc(100% - 34px),transparent 100%);
+  }
+  .site-header__groups.at-end{-webkit-mask-image:none;mask-image:none;}
+  .site-header__groups .nav-link{scroll-snap-align:start;}
   .site-header__groups::-webkit-scrollbar{display:none;}
   .hub-back{display:none;}
 }
@@ -604,7 +653,7 @@ footer{
   margin-top:48px;font-size:12.5px;color:var(--muted);max-width:60ch;
 }
 
-::selection{background:var(--accent);color:var(--on-accent);}
+::selection{background:var(--accent);color:var(--on-accent-fill);}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px;}
 html{scrollbar-color:var(--muted) transparent;}
 ::-webkit-scrollbar{width:10px;height:10px;}
@@ -642,8 +691,8 @@ html{scrollbar-color:var(--muted) transparent;}
 }
 .auth-modal input:focus{outline:none;border-color:var(--accent);}
 .auth-modal-msg{font-size:12.5px;font-weight:700;min-height:1.4em;}
-.auth-modal-msg.error{color:var(--bad);}
-.auth-modal-msg.success{color:var(--good);}
+.auth-modal-msg.error{color:var(--bad-text);}
+.auth-modal-msg.success{color:var(--good-text);}
 .auth-modal-submit{margin-top:4px;width:100%;padding:13px;font-size:14.5px;}
 .auth-modal-toggle{margin:16px 0 0;font-size:12.5px;font-weight:700;color:var(--muted);text-align:center;}
 .auth-modal-toggle button{

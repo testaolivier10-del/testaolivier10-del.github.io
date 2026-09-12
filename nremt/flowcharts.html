@@ -49,7 +49,13 @@
   .flow-box.action{font-weight:900;}
   .flow-arrow{text-align:center;font-size:16px;color:var(--muted);margin:2px 0;}
   .flow-branch{display:flex;gap:10px;margin:2px 0;}
-  .flow-branch > div{flex:1;}
+  /* min-width:0 overrides the flex default of min-width:auto, which refuses to
+     shrink a column below its longest word — "anaphylaxis" alone pushed the
+     page 40px wide on a 390px screen. Below 520px the two branches stack. */
+  .flow-branch > div{flex:1;min-width:0;}
+  @media (max-width:520px){
+    .flow-branch{flex-direction:column;gap:6px;}
+  }
   .branch-label{font:700 11px var(--font-mono);color:var(--muted);text-align:center;margin-bottom:3px;}
 </style>
 </head>
@@ -335,7 +341,8 @@
 
   <footer>
     <p>These diagrams summarize widely-taught, general EMS decision sequences for study purposes. They are simplified for visual review and are not a substitute for your course's specific protocols, skill sheets, or local medical direction.</p>
-  </footer>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a></p>
+    </footer>
 </div>
 <script src="assets/nav.js" defer></script>
 </body>

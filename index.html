@@ -38,14 +38,22 @@
 <style>
   /* Hub-only components. The shared system in assets/theme.css — the same file
      the NREMT app loads — carries the palette, typography, cards and buttons. */
+  .hero .lede{max-width:62ch;}
   .fact-row{display:flex;flex-wrap:wrap;gap:8px 22px;margin:22px 0 0;font:800 13px var(--font-ui);color:var(--muted);}
   .fact-row span{display:inline-flex;align-items:center;gap:7px;}
   .fact-row .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;}
 
   /* The subject tile is already a raised card, so the section wrapper must not
      add a second one around it. */
-  .xgrid:has(> .xlabel) > .xcontent:has(> .featured-card){
+  .xgrid:has(> .xlabel) > .xcontent:has(.featured-card){
     background:none;border:0;padding:0;box-shadow:none;
+  }
+  /* Two subjects, side by side once there's room for them. Stacked, they left
+     the right half of a desktop page empty while the hero, the cards and the
+     section rules each stopped at a different width. */
+  .subject-grid{display:grid;gap:20px;grid-template-columns:1fr;}
+  @media (min-width:860px){
+    .subject-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   }
   .featured-card{
     display:flex;flex-direction:column;gap:16px;text-decoration:none;color:inherit;
@@ -63,7 +71,7 @@
   }
   .status-badge{
     font:900 11.5px var(--font-ui);letter-spacing:0.05em;text-transform:uppercase;
-    display:inline-flex;align-items:center;gap:6px;color:var(--good);background:var(--tint-good);
+    display:inline-flex;align-items:center;gap:6px;color:var(--good-text);background:var(--tint-good);
     border-radius:var(--radius-pill);padding:6px 12px;flex-shrink:0;
   }
   .status-badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor;}
@@ -126,7 +134,7 @@
     <h1>Free practice tools for certification exams.</h1>
     <p class="lede">Real question banks, interactive practice, and courses that teach you to actually reason through hard subjects — no account, no paywall. Pick a subject below to get started.</p>
     <div class="fact-row">
-      <span><span class="dot"></span>920+ practice questions</span>
+      <span><span class="dot"></span>2,084 practice questions</span>
       <span><span class="dot"></span>No account required</span>
       <span><span class="dot"></span>Optional sign-in syncs progress across devices</span>
     </div>
@@ -137,7 +145,8 @@
   <div class="xsection">
     <div class="xgrid">
       <div class="xlabel">Subjects</div>
-      <div class="xcontent narrow">
+      <div class="xcontent">
+        <div class="subject-grid">
         <a class="featured-card" href="nremt/">
           <div class="featured-top">
             <div class="featured-icon" aria-hidden="true">+</div>
@@ -145,7 +154,7 @@
           </div>
           <div>
             <p class="featured-name">NREMT-EMT Prep</p>
-            <p class="featured-desc">A 920-question practice bank with timed exams, domain drills, flashcards, an interactive 3D body map, an auscultation sound trainer, and branching clinical scenarios.</p>
+            <p class="featured-desc">A 2,084-question bank across six exam domains, with timed 100-question exams, domain drills, flashcards, forty chapters of notes, an interactive 3D body map, an auscultation sound trainer and branching clinical scenarios.</p>
           </div>
           <div class="featured-tags">
             <span>Timed exams</span>
@@ -163,15 +172,17 @@
           </div>
           <div>
             <p class="featured-name">Organic Chemistry</p>
-            <p class="featured-desc">An interactive mechanism course: identify the nucleophile, draw the electron-pushing arrows yourself, predict the product, and get told exactly why.</p>
+            <p class="featured-desc">A full Organic Chemistry I course built to be worked, not read: 58 lessons and 10 mechanism walkthroughs where you identify the nucleophile, push the arrows yourself and predict the product — plus seven tools that compute their answers instead of looking them up.</p>
           </div>
           <div class="featured-tags">
-            <span>Interactive mechanisms</span>
-            <span>SN2</span>
-            <span>Instant feedback</span>
+            <span>58 lessons</span>
+            <span>10 mechanisms</span>
+            <span>7 tools</span>
+            <span>Mastery tracking</span>
           </div>
           <span class="featured-cta">Start learning &rarr;</span>
         </a>
+        </div>
       </div>
     </div>
   </div>
@@ -179,6 +190,7 @@
   <div class="xsection">
     <footer style="margin-top:0">
       <p>Practice progress and quiz data are stored on your device. Signing in (optional) additionally syncs it to your account so it follows you to a new device.</p>
+      <p class="privacy-link"><a href="privacy.html">Privacy</a></p>
     </footer>
   </div>
 

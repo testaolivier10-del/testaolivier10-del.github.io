@@ -127,6 +127,35 @@
     if(window.HubProgress) window.HubProgress.mount('nremt', { href: 'dashboard.html' });
     if(window.StudyHubAccount) window.StudyHubAccount.renderAccountUI();
 
+    // The pill row scrolls sideways on a phone with its scrollbar hidden, so
+    // theme.css fades its right edge to say so. Drop the fade once there's
+    // nothing left to scroll to, otherwise the last pill stays half-dimmed.
+    var groups = document.querySelector('.site-header__groups');
+    if(groups){
+      var syncEnd = function(){
+        var atEnd = groups.scrollLeft + groups.clientWidth >= groups.scrollWidth - 2;
+        groups.classList.toggle('at-end', atEnd);
+      };
+      groups.addEventListener('scroll', syncEnd, { passive: true });
+      window.addEventListener('resize', syncEnd);
+      // Re-measure once layout has actually settled. Called synchronously here
+      // the row can still measure as un-scrollable — the stylesheet or the web
+      // font may not have applied yet — which wrongly marks it "at end" and
+      // drops the fade for good, since nothing scrolls it afterwards.
+      syncEnd();
+      requestAnimationFrame(syncEnd);
+      window.addEventListener('load', syncEnd);
+      if(window.ResizeObserver) new ResizeObserver(syncEnd).observe(groups);
+      if(document.fonts && document.fonts.ready) document.fonts.ready.then(syncEnd);
+      // Open on the page you're actually on, so the current section is never
+      // the one parked off-screen.
+      var active = groups.querySelector('.nav-link.active');
+      if(active && active.offsetLeft + active.offsetWidth > groups.clientWidth){
+        groups.scrollLeft = active.offsetLeft - 12;
+        syncEnd();
+      }
+    }
+
     var toggle = document.getElementById('themeToggle');
     if(toggle) toggle.addEventListener('click', function(){
       var isDark = document.documentElement.getAttribute('data-theme') === 'dark';

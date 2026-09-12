@@ -106,7 +106,7 @@
     padding:0;
   }
   .rail-btn:hover{border-color:var(--accent);color:var(--accent);}
-  .rail-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700;}
+  .rail-btn.active{background:var(--accent);border-color:var(--accent);color:var(--on-accent-fill);font-weight:700;}
   .rail-btn.rail-top{font-size:13px;border-color:var(--accent);color:var(--accent);color:var(--ink);margin-bottom:4px;padding-bottom:2px;}
 
   .chapter{margin-bottom:48px;scroll-margin-top:calc(var(--site-header-h) + 16px);padding-top:32px;border-top:1px solid var(--line);}
@@ -139,6 +139,11 @@
   .topic li > ul, .topic li > ol{margin-top:5px;margin-bottom:0;}
   .topic strong{color:var(--ink);}
   .table-wrap{overflow-x:auto;margin:0 0 10px;border:2px solid var(--line);border-radius:4px;}
+  /* Browsers don't offer a break opportunity at "/", so a run like
+     chemical/biological/radiological/explosive stays one 42-character word and
+     overflows its list item — which scrolled the whole page sideways on a phone.
+     Applied to the prose containers rather than the one bullet that hit it. */
+  .topic li,.topic p,.topic td,.topic th,.chapter li,.chapter p{overflow-wrap:anywhere;}
   .topic table{width:100%;border-collapse:collapse;font-size:13px;background:var(--white);}
   .topic table:last-child{margin-bottom:0;}
   .topic th, .topic td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
@@ -160,7 +165,7 @@
 
   .search-hit mark{background:rgba(193,80,46,0.22);color:inherit;border-radius:2px;padding:0 1px;}
 
-  footer{margin-top:44px;font-size:12px;color:#9AA19C;max-width:60ch;}
+  footer{margin-top:44px;font-size:12px;color:var(--muted);max-width:60ch;}
 </style>
 </head>
 <body>
@@ -198,6 +203,7 @@
   <div class="xsection">
     <footer style="margin-top:0">
       <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor — always verify specifics (exact figures, current protocols, legal definitions in your state) against your own course materials.</p>
+      <p class="privacy-link"><a href="../privacy.html">Privacy</a></p>
     </footer>
   </div>
 
