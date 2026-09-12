@@ -6,9 +6,8 @@
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/icon.svg">
 <meta name="theme-color" content="#16332E">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7204592276443890" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://www.googletagservices.com https://www.google.com https://www.gstatic.com https://*.googlesyndication.com https://*.doubleclick.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.googlesyndication.com https://*.doubleclick.net https://www.google.com; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.googlesyndication.com https://*.doubleclick.net; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com; media-src 'self' https://commons.wikimedia.org https://upload.wikimedia.org; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self' data: https://commons.wikimedia.org https://upload.wikimedia.org; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Auscultation Sound Trainer — LevlPrep</title>
 <meta name="description" content="Listen to real recorded lung sounds — wheezes, crackles, stridor — and train your ear to tell them apart. Click to play, guess which one it is, get instant feedback.">
@@ -80,9 +79,9 @@
   .link-out-btn:hover{border-color:var(--accent);color:var(--accent);}
   .sound-card.unavailable{opacity:0.5;}
   .sound-card.unavailable .play-btn{background:var(--line);color:var(--muted);}
-  .audio-error{font-size:12px;color:var(--bad);margin-top:8px;display:none;}
-  .credit-line{font-size:10.5px;color:#9AA19C;margin-top:10px;}
-  .credit-line a{color:#9AA19C;}
+  .audio-error{font-size:12px;color:var(--bad-text);margin-top:8px;display:none;}
+  .credit-line{font-size:10.5px;color:var(--muted);margin-top:10px;}
+  .credit-line a{color:var(--muted);}
 
   .quiz-box{
     background:var(--white);border:2px solid var(--line);border-radius:10px;padding:26px 24px;
@@ -94,7 +93,7 @@
   }
   .quiz-score{float:right;}
   .big-play-btn{
-    width:88px;height:88px;border-radius:50%;border:none;background:var(--accent);color:var(--on-accent);
+    width:88px;height:88px;border-radius:50%;border:none;background:var(--accent);color:var(--on-accent-fill);
     font-size:30px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
     box-shadow:0 4px 14px rgba(193,80,46,0.35);transition:transform .12s,background .15s;margin-bottom:10px;
   }
@@ -110,14 +109,14 @@
   }
   .choice-btn:hover:not(:disabled){border-color:var(--accent);}
   .choice-btn:disabled{cursor:default;}
-  .choice-btn.correct{background:rgba(46,125,79,0.12);border-color:var(--good);color:var(--good);font-weight:600;}
-  .choice-btn.incorrect{background:rgba(178,58,58,0.1);border-color:var(--bad);color:var(--bad);}
+  .choice-btn.correct{background:rgba(46,125,79,0.12);border-color:var(--good-text);color:var(--good-text);font-weight:600;}
+  .choice-btn.incorrect{background:rgba(178,58,58,0.1);border-color:var(--bad-text);color:var(--bad-text);}
 
   .feedback{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);text-align:left;display:none;}
   .feedback.visible{display:block;}
   .feedback-verdict{font-weight:600;font-size:15.5px;margin-bottom:8px;}
-  .feedback-verdict.correct{color:var(--good);}
-  .feedback-verdict.incorrect{color:var(--bad);}
+  .feedback-verdict.correct{color:var(--good-text);}
+  .feedback-verdict.incorrect{color:var(--bad-text);}
   .feedback p{font-size:14px;color:var(--ink);margin:0 0 16px;}
   .next-btn{
     background:var(--navy);color:var(--on-accent);border:none;border-radius:var(--radius);padding:11px 22px;
@@ -127,7 +126,7 @@
 
   .quiz-start{text-align:center;padding:30px 20px;}
   .start-btn{
-    background:var(--accent);color:var(--on-accent);border:none;border-radius:var(--radius);padding:13px 26px;
+    background:var(--accent);color:var(--on-accent-fill);border:none;border-radius:var(--radius);padding:13px 26px;
     font-family:inherit;font-size:15px;cursor:pointer;margin-top:14px;
   }
   .start-btn:hover{background:#21806F;}
@@ -138,7 +137,7 @@
   .results-breakdown .row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line);}
   .results-breakdown .row:last-child{border-bottom:none;}
 
-  footer{margin-top:44px;font-size:12px;color:#9AA19C;max-width:60ch;}
+  footer{margin-top:44px;font-size:12px;color:var(--muted);max-width:60ch;}
 </style>
 </head>
 <body>
@@ -167,7 +166,8 @@
 
   <footer>
     <p>Audio credits: the wheeze, crackles, and stridor recordings are sourced from Wikimedia Commons contributors under CC BY-SA 3.0 — individual credits are shown next to each clip above. The rhonchi and normal breath sound recordings come via the <a href="https://hawaiicopd.org/lung-sounds/" target="_blank" rel="noopener">Hawaii COPD Coalition's lung sounds page</a>, linked next to each clip. This trainer is a supplementary study aid; it is not a substitute for hands-on stethoscope practice with an instructor.</p>
-  </footer>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a></p>
+    </footer>
 </div>
 
 <audio id="player" preload="none"></audio>
@@ -242,7 +242,7 @@ function renderListenSection(){
         }
         ${s.linkOut ? `<a class="link-out-btn" href="${s.linkOut}" target="_blank" rel="noopener">${s.linkLabel} &#8599;</a>` : ''}
       </div>
-      ${s.available ? `<div class="audio-error" id="err-${s.id}">Couldn't load this clip — check your connection and try again.</div>` : ''}
+      ${s.available ? `<div class="audio-error" id="err-${s.id}">This clip wouldn't play. If you're offline, the three streamed clips need a connection; otherwise try again.</div>` : ''}
       ${s.creditUrl ? `<div class="credit-line">Recording via <a href="${s.creditUrl}" target="_blank" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</div>` : ''}
       ${s.linkOut ? `<div class="credit-line">Recording via <a href="${s.linkOut}" target="_blank" rel="noopener">Hawaii COPD Coalition</a></div>` : ''}
     </div>

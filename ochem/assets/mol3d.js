@@ -372,19 +372,22 @@
     }).join('');
   }
 
-  /* One gradient per colour, named after the colour, so two viewers on the
-     same page collide on identical definitions rather than on different ones
-     — which is a no-op instead of a bug. */
-  function gradIdFor(color){ return 'm3dg-' + String(color).replace(/[^0-9a-zA-Z]/g, ''); }
+  /* One gradient per colour per viewer. Naming them after the colour alone made
+     two viewers on one page emit the same id twice: harmless in practice, since
+     the colliding definitions are identical, but still invalid HTML and a hit in
+     every accessibility audit. The instance counter keeps them distinct. */
+  var gradSeq = 0;
+  function gradScope(){ return 'g' + (++gradSeq); }
+  function gradIdFor(color, scope){ return 'm3dg-' + scope + '-' + String(color).replace(/[^0-9a-zA-Z]/g, ''); }
 
-  function defsFor(mol){
+  function defsFor(mol, scope){
     var seen = {}, out = '';
     mol.atoms.forEach(function(a){
       var c = styleFor(a).color;
       if(seen[c]) return;
       seen[c] = 1;
       out +=
-        '<radialGradient id="' + gradIdFor(c) + '" cx="34%" cy="28%" r="74%">' +
+        '<radialGradient id="' + gradIdFor(c, scope) + '" cx="34%" cy="28%" r="74%">' +
           '<stop offset="0%" stop-color="' + shift(c, 0.52) + '"/>' +
           '<stop offset="48%" stop-color="' + c + '"/>' +
           '<stop offset="100%" stop-color="' + shift(c, -0.42) + '"/>' +
@@ -407,6 +410,9 @@
 
   function render(mol, opt){
     opt = opt || {};
+    // One gradient namespace per render, so two viewers on a page never emit
+    // the same id twice.
+    var scope = gradScope();
     var mode = opt.mode || 'ball';
     var o = {
       cx: opt.cx === undefined ? 160 : opt.cx,
@@ -532,7 +538,7 @@
                            : s.r * o.scale * p.k * 0.86);
 
       var fontSize = Math.max(8, r * (mode === 'space' ? 0.55 : 0.92));
-      var fill = (mode === 'wire' && !opt.flat) ? s.color : 'url(#' + gradIdFor(s.color) + ')';
+      var fill = (mode === 'wire' && !opt.flat) ? s.color : 'url(#' + gradIdFor(s.color, scope) + ')';
 
       items.push({ z: p.z, svg:
         '<g class="m3d-atom' + (selected ? ' is-selected' : '') + '" data-atom="' + i + '" tabindex="0" role="button" ' +
@@ -548,7 +554,7 @@
     });
 
     items.sort(function(x, y){ return x.z - y.z; });
-    return defsFor(mol) + items.map(function(it){ return it.svg; }).join('');
+    return defsFor(mol, scope) + items.map(function(it){ return it.svg; }).join('');
   }
 
   window.OchemMol3D = {

@@ -6,9 +6,8 @@
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/icon.svg">
 <meta name="theme-color" content="#16332E">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7204592276443890" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://www.googletagservices.com https://www.google.com https://www.gstatic.com https://*.googlesyndication.com https://*.doubleclick.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.googlesyndication.com https://*.doubleclick.net https://www.google.com; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.googlesyndication.com https://*.doubleclick.net; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Clinical Scenario Simulator — LevlPrep</title>
 <meta name="description" content="Branching patient-care scenarios where every choice leads to a real consequence, not just right or wrong. Practice sequencing and judgment, not just recall.">
@@ -97,9 +96,9 @@
     display:inline-block;font:900 11px var(--font-ui);text-transform:uppercase;
     letter-spacing:0.05em;padding:6px 13px;border-radius:var(--radius-pill);margin-bottom:14px;
   }
-  .ending-badge.good{background:var(--tint-good);color:var(--good);}
+  .ending-badge.good{background:var(--tint-good);color:var(--good-text);}
   .ending-badge.neutral{background:var(--tint-amber);color:var(--amber);}
-  .ending-badge.bad{background:var(--tint-bad);color:var(--bad);}
+  .ending-badge.bad{background:var(--tint-bad);color:var(--bad-text);}
 
   .sim-actions{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;}
   .btn-primary{
@@ -142,7 +141,8 @@
 
   <footer>
     <p>These scenarios are simplified teaching cases meant to build a feel for sequencing and consequence, not exhaustive protocol simulations. Always follow your own program's protocols and medical direction.</p>
-  </footer>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a></p>
+    </footer>
 </div>
 
 <script>

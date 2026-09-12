@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LevlPrep — NREMT-EMT Practice Exam & Study Tools</title>
-<meta name="description" content="Free NREMT-EMT prep: a 2,078-question bank with 4 difficulty levels (including Expert), select-N and sequencing item types, timed 100-question exams, domain drills, flashcards, mnemonics, and a missed-question review queue.">
+<meta name="description" content="Free NREMT-EMT prep: a 2,084-question bank with 4 difficulty levels (including Expert), select-N and sequencing item types, timed 100-question exams, domain drills, flashcards, mnemonics, and a missed-question review queue.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:title" content="LevlPrep — NREMT-EMT Practice Exam & Study Tools">
-<meta property="og:description" content="A 2,078-question bank with 4 difficulty levels, select-N and sequencing item types, timed exams, domain drills, flashcards, and a missed-question review queue — free, no account needed.">
+<meta property="og:description" content="A 2,084-question bank with 4 difficulty levels, select-N and sequencing item types, timed exams, domain drills, flashcards, and a missed-question review queue — free, no account needed.">
 <meta property="og:url" content="https://testaolivier10-del.github.io/nremt/practice.html">
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="assets/theme.css">
@@ -39,6 +39,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 <style>
+  /* Shown only when assets/questions.json can't be loaded — see the QUESTIONS
+     loader at the end of this file. */
+  .bank-error{
+    display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;
+    margin:0 0 18px;padding:14px 16px;
+    border:var(--bw) solid var(--bad);border-radius:var(--radius);
+    background:var(--tint-bad);color:var(--ink);
+    font:700 14px var(--font-ui);line-height:1.5;
+  }
+  .bank-error strong{font-weight:900;}
+  .bank-error span{flex:1 1 320px;min-width:0;font-weight:600;}
+  .bank-error button{
+    font:800 13px var(--font-ui);padding:7px 14px;cursor:pointer;
+    border:var(--bw) solid var(--navy);border-radius:var(--radius);
+    background:var(--navy);color:var(--on-accent);
+  }
+  html.bank-unavailable [disabled]{opacity:.45;pointer-events:none;}
+
   /* Practice-page components, built on the shared system in assets/theme.css.
      The reset, page shell, typography and button/card primitives live there;
      this file only styles what is specific to the exam runner. */
@@ -77,7 +95,7 @@
   .review-btn{width:100%;margin-top:12px;display:flex;justify-content:center;align-items:center;gap:9px;font-size:15px;padding:14px;}
   .review-btn:disabled{opacity:0.4;cursor:not-allowed;color:var(--muted);border-color:var(--line);transform:none;box-shadow:var(--lift);}
   .review-btn .count{
-    background:var(--accent);color:var(--on-accent);font:700 12px var(--font-mono);
+    background:var(--accent);color:var(--on-accent-fill);font:700 12px var(--font-mono);
     padding:3px 9px;border-radius:var(--radius-pill);
   }
   .difficulty-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
@@ -144,10 +162,10 @@
   }
   .timer-row{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-weight:700;font-size:13px;}
   .timer-row .time-remaining{font-size:20px;font-weight:700;color:var(--ink);}
-  .timer-row .time-remaining.warn{color:var(--bad);}
+  .timer-row .time-remaining.warn{color:var(--bad-text);}
   .pace-line{font-size:11.5px;font-weight:700;color:var(--muted);margin-top:4px;font-family:var(--font-mono);}
-  .pace-line.ahead{color:var(--good);}
-  .pace-line.behind{color:var(--bad);}
+  .pace-line.ahead{color:var(--good-text);}
+  .pace-line.behind{color:var(--bad-text);}
   .practice-banner{
     position:sticky;top:var(--site-header-h);background:var(--paper);
     padding:14px 22px 12px;margin:-36px -22px 20px;
@@ -161,7 +179,7 @@
     background:none;border:none;padding:0;cursor:pointer;
     font:700 12.5px var(--font-mono);color:var(--muted);
   }
-  .exit-link:hover{color:var(--bad);}
+  .exit-link:hover{color:var(--bad-text);}
   .submit-top-btn{
     padding:10px 18px;border-radius:12px;font:900 13px var(--font-ui);cursor:pointer;
     border:none;color:var(--on-accent);flex-shrink:0;box-shadow:0 3px 0 var(--navy-press);
@@ -198,7 +216,7 @@
     display:inline-block;font:900 11px var(--font-ui);
     padding:6px 12px;border-radius:var(--radius-pill);margin-left:6px;text-transform:none;letter-spacing:0;
   }
-  .diff-badge.easy{background:var(--tint-good);color:var(--good);}
+  .diff-badge.easy{background:var(--tint-good);color:var(--good-text);}
   .diff-badge.medium{background:var(--tint-accent);color:var(--accent);}
   .diff-badge.hard{background:var(--tint-amber);color:var(--amber);}
   .diff-badge.expert{background:var(--navy);color:var(--on-accent);}
@@ -215,7 +233,7 @@
   }
   .flag-btn:hover{border-color:var(--accent);color:var(--accent);}
   .flag-btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--line);}
-  .flag-btn.active{background:var(--tint-bad);border-color:var(--bad);color:var(--bad);font-weight:900;box-shadow:0 3px 0 var(--bad-press);}
+  .flag-btn.active{background:var(--tint-bad);border-color:var(--bad-text);color:var(--bad-text);font-weight:900;box-shadow:0 3px 0 var(--bad-press);}
 
   .q-prompt{font-size:19px;font-weight:800;margin-bottom:24px;line-height:1.5;}
 
@@ -290,7 +308,7 @@
     display:flex;flex-direction:column;justify-content:center;
   }
   .fc-front{font-size:18px;font-weight:800;line-height:1.5;}
-  .fc-back .answer{font-size:17px;font-weight:900;color:var(--good);margin-bottom:12px;}
+  .fc-back .answer{font-size:17px;font-weight:900;color:var(--good-text);margin-bottom:12px;}
   .fc-back .explain{font-size:14.5px;font-weight:600;color:var(--muted);line-height:1.6;}
   .fc-hint{text-align:center;font:700 11.5px var(--font-mono);color:var(--muted);margin-top:16px;}
 
@@ -339,7 +357,7 @@
     padding:7px 14px;border-radius:var(--radius-pill);border:var(--bw) solid var(--accent);
     background:var(--tint-accent);color:var(--accent);font:900 12px var(--font-ui);cursor:pointer;white-space:nowrap;
   }
-  .weak-domain-row button:hover{background:var(--accent);color:var(--on-accent);}
+  .weak-domain-row button:hover{background:var(--accent);color:var(--on-accent-fill);}
 
   .review-item{
     background:var(--white);border:var(--bw) solid var(--line);border-radius:16px;
@@ -352,11 +370,11 @@
     border-radius:var(--radius-pill);font:800 11px var(--font-ui);color:var(--muted);cursor:pointer;white-space:nowrap;
   }
   .review-item .r-flag-btn:hover{border-color:var(--accent);color:var(--accent);}
-  .review-item .r-flag-btn.active{background:var(--tint-bad);border-color:var(--bad);color:var(--bad);font-weight:900;}
+  .review-item .r-flag-btn.active{background:var(--tint-bad);border-color:var(--bad-text);color:var(--bad-text);font-weight:900;}
   .review-item .r-q{font-size:16px;font-weight:800;margin-bottom:12px;}
   .review-item .r-answer{font-size:14px;font-weight:800;padding:10px 12px;border-radius:10px;margin-bottom:6px;}
-  .r-answer.correct{background:var(--tint-good);color:var(--good);}
-  .r-answer.incorrect{background:var(--tint-bad);color:var(--bad);}
+  .r-answer.correct{background:var(--tint-good);color:var(--good-text);}
+  .r-answer.incorrect{background:var(--tint-bad);color:var(--bad-text);}
   .r-explain{font-size:14px;font-weight:600;color:var(--muted);margin-top:10px;padding-top:10px;border-top:1px solid var(--line-soft);}
 
   .retry-btn{
@@ -373,7 +391,7 @@
   }
   .filter-row button.active{background:var(--navy);color:var(--on-accent);border-color:var(--navy);}
   .cleared-note{
-    background:var(--tint-good);color:var(--good);border:var(--bw) solid var(--good);
+    background:var(--tint-good);color:var(--good-text);border:var(--bw) solid var(--good);
     padding:14px 16px;border-radius:14px;font-size:14px;font-weight:800;margin-bottom:20px;
   }
 
@@ -390,7 +408,7 @@
   .streak-gear{display:inline-flex;background:none;border:none;cursor:pointer;color:var(--muted);padding:6px;border-radius:10px;}
   .streak-gear:hover{color:var(--ink);background:var(--hover-tint);}
   .streak-goal-row{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:800;color:var(--muted);margin-bottom:7px;flex-wrap:wrap;gap:4px;}
-  .streak-done{color:var(--good);font-weight:900;}
+  .streak-done{color:var(--good-text);font-weight:900;}
   .streak-warn{color:var(--accent);font-weight:900;}
   .streak-track{background:var(--track);border-radius:var(--radius-pill);height:10px;overflow:hidden;}
   .streak-fill{background:var(--accent);height:100%;border-radius:var(--radius-pill);transition:width .3s ease;}
@@ -416,7 +434,7 @@
     <div class="eyebrow">Practice</div>
     <div id="streakWidget"></div>
     <h1>NREMT-EMT Practice Exam — 100 Questions</h1>
-    <p class="lede">A full-length practice exam matching the scale of the real NREMT-EMT cognitive exam. Each attempt randomly draws 100 questions from a 2,078-question pool — in the same domain proportions every time — so retaking it isn't just re-memorizing the same set. Includes a live 2-hour timer, pace tracker, difficulty filtering (up through an Expert tier), select-N-of-M and sequencing items alongside standard multiple choice, and a review queue for questions you've missed.</p>
+    <p class="lede">A full-length practice exam matching the scale of the real NREMT-EMT cognitive exam. Each attempt randomly draws 100 questions from a 2,084-question pool — in the same domain proportions every time — so retaking it isn't just re-memorizing the same set. Includes a live 2-hour timer, pace tracker, difficulty filtering (up through an Expert tier), select-N-of-M and sequencing items alongside standard multiple choice, and a review queue for questions you've missed.</p>
 
     <div class="domain-list">
       <span>Assessment</span>
@@ -429,7 +447,7 @@
 
     <div class="exam-facts">
       <div class="row"><span>Questions per attempt</span><span>100 (randomized)</span></div>
-      <div class="row"><span>Total question pool</span><span>2,078</span></div>
+      <div class="row"><span>Total question pool</span><span id="poolCount">2,084</span></div>
       <div class="row"><span>Time limit</span><span>2:00:00</span></div>
       <div class="row"><span>Target pace</span><span>~72 sec/question</span></div>
     </div>
@@ -591,26 +609,74 @@
 
   <footer>
     <p>These are original practice questions written to reflect standard EMT-B knowledge and the NREMT cognitive exam's blueprint domains. This is unofficial, independently created study material — not affiliated with, endorsed by, or sourced verbatim from the National Registry of EMTs or any specific publisher. The real NREMT-EMT exam is computer-adaptive (70–120 questions, up to 2 hours); this fixed 100-question-per-attempt, randomly-drawn timed format is designed to build stamina and pacing with some variation between attempts, not to replicate the adaptive algorithm. This tool supplements, and does not replace, your official course materials and instructor guidance. Your score, timing, and missed-question history are stored only in your own browser and aren't sent anywhere.</p>
-  </footer>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a></p>
+    </footer>
 </div>
 
 <script>
-// The 2,078-question bank lives in its own JSON file (assets/questions.json) rather than
-// inline here, so it's a separately cacheable download and something search.html can
-// fetch and index too. Loaded synchronously (deliberately, via XHR rather than fetch)
-// because every function below assumes QUESTIONS is already populated by the time it
-// runs — this script tag sits at the end of the document, after all visible markup,
-// so the page itself has already painted by the time this blocks.
-const QUESTIONS = (function(){
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'assets/questions.json', false);
-  xhr.send(null);
-  return JSON.parse(xhr.responseText);
+// Everything below runs inside one async IIFE so the question bank can be
+// awaited before any of it executes — every function here assumes QUESTIONS is
+// already populated by the time it runs.
+//
+// It used to be a SYNCHRONOUS XMLHttpRequest instead, which looked equivalent
+// and was not: Chromium does not route sync XHR through the service worker, so
+// the bank was fetched straight off the network even when a perfectly good copy
+// was sitting in the cache. Offline, that meant a precached 2.3 MB bank the page
+// could not reach, and every practice mode silently dead. It also blocked the
+// main thread on a 2.3 MB download and parse. fetch() has neither problem.
+(async function(){
+
+// The bank lives in its own JSON file (assets/questions.json) rather than inline
+// here, so it's a separately cacheable download and something search.html can
+// fetch and index too.
+//
+// If it can't be loaded, every mode on this page is dead, so say so out loud
+// instead of throwing and leaving the start buttons looking live but inert.
+const QUESTIONS = await (async function(){
+  try{
+    const res = await fetch('assets/questions.json');
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    const parsed = await res.json();
+    if(!Array.isArray(parsed) || !parsed.length) throw new Error('empty bank');
+    return parsed;
+  }catch(e){
+    document.documentElement.classList.add('bank-unavailable');
+    var banner = document.createElement('div');
+    banner.className = 'bank-error';
+    banner.setAttribute('role', 'alert');
+    banner.innerHTML =
+      '<strong>The question bank didn\'t load.</strong>' +
+      '<span>Practice, drills and flashcards need it, so they\'re switched off on this ' +
+      'page until it does. If you\'re offline, reconnect once and it will be stored for ' +
+      'next time; if you\'re online, reload the page.</span>' +
+      '<button type="button" onclick="location.reload()">Reload</button>';
+    var host = document.querySelector('.xshell') || document.body;
+    host.insertBefore(banner, host.firstChild);
+    return [];
+  }
 })();
 
-// The question bank's authored answer order is heavily skewed toward B (and never D) —
-// shuffle each question's options (and remap its correct index to match) so the correct
-// letter is randomly distributed instead of clustering on one letter.
+// The one place the pool size is shown as a live figure rather than prose, so
+// it can't drift from the file the way the marketing copy twice has.
+if(QUESTIONS.length){
+  const poolEl = document.getElementById('poolCount');
+  if(poolEl) poolEl.textContent = QUESTIONS.length.toLocaleString();
+}
+
+// Nothing below runs without questions. Bail out rather than letting every
+// mode throw its own way.
+if(!QUESTIONS.length){
+  document.querySelectorAll('.start-btn, .domain-btn, .review-btn').forEach(function(el){
+    el.setAttribute('disabled', 'disabled');
+    el.setAttribute('aria-disabled', 'true');
+  });
+}
+
+// Belt-and-braces against a keyed-position tell. The stored bank is kept
+// position-balanced by scripts/check-site.mjs, which fails the build if any one
+// index holds more than 40% of the keys — but this page shuffles each question's
+// options (remapping its correct index to match) anyway, so the letter a learner
+// sees is theirs alone and no ordering in the file can leak an answer here.
 //
 // The chosen order is persisted per-browser (not re-rolled every page load): saved quiz
 // progress (EXAM_STATE_KEY, below) stores each answer as an option INDEX, not option text.
@@ -665,7 +731,7 @@ const OPTION_ORDER_KEY = 'nremt_option_order';
 })();
 
 const flagIcon = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M4 22V4a1 1 0 0 1 1-1h13.5a1 1 0 0 1 .9 1.5l-2.4 4.8a1 1 0 0 0 0 .9l2.4 4.8a1 1 0 0 1-.9 1.5H5"/></svg>';
-let mode = 'full'; // 'full', 'review', 'flagged', 'domain', 'adaptive', or 'flashcard'
+let mode = 'full'; // 'full', 'review', 'flagged', 'spaced', 'domain', 'adaptive', 'single', or 'flashcard'
 let selectedDomain = null;
 let activeIndices = []; // maps position-in-quiz -> index into QUESTIONS
 let current = 0;
@@ -1505,6 +1571,22 @@ setInterval(maybeShowStudyReminder, 15*60*1000);
   startDomainQuiz(domain, 20);
 })();
 
+// Lets a search result (practice.html?q=N) open the single question it found,
+// untimed and on its own. Without this the dominant result type in the whole
+// search index could only drop the reader on the exam start screen with no way
+// back to the question they had just found. Same precedence rule as ?domain=
+// above: an exam in progress wins over a fresh auto-launch.
+(function(){
+  const raw = new URLSearchParams(location.search).get('q');
+  if(raw === null || loadExamState()) return;
+  const i = Number(raw);
+  if(!Number.isInteger(i) || i < 0 || i >= QUESTIONS.length) return;
+  mode = 'single';
+  activeIndices = [i];
+  history.replaceState(null, '', location.pathname);
+  beginQuiz(false);
+})();
+
 function formatDuration(ms){
   const totalSec = Math.floor(ms/1000);
   const h = Math.floor(totalSec/3600);
@@ -1812,6 +1894,8 @@ function beginQuiz(withTimer, resumeState){
       banner.textContent = 'Adaptive Practice — untimed, retargets after every question';
     } else if(mode === 'spaced'){
       banner.textContent = 'Spaced review — untimed, oldest/weakest items first';
+    } else if(mode === 'single'){
+      banner.textContent = 'One question from search — answer it, or head back to the start';
     } else {
       banner.textContent = `Domain drill: ${QUESTIONS[activeIndices[0]] ? QUESTIONS[activeIndices[0]].domain : ''} — untimed practice mode`;
     }
@@ -1843,11 +1927,21 @@ function updateTimer(){
   remEl.textContent = formatDuration(remaining);
   if(remaining < 10*60*1000) remEl.classList.add('warn');
 
-  const questionsSeen = Math.max(current+1, 1);
-  const avgPace = elapsed / questionsSeen;
+  // Pace is answered questions over elapsed time. It used to divide by the
+  // question you had REACHED, which meant clicking Next without answering made
+  // your pace look great, and which declared you "ahead of pace" one second in
+  // with nothing answered at all. Below the first answer there is no pace to
+  // report, so report none.
+  const answered = answers.filter(a => a !== null).length;
+  const targetSec = Math.round(TARGET_PACE_MS/1000);
+  if(answered === 0){
+    paceEl.textContent = `Target pace: ${targetSec}s per question`;
+    paceEl.className = 'pace-line';
+    return;
+  }
+  const avgPace = elapsed / answered;
   const paceDiff = TARGET_PACE_MS - avgPace;
   const paceSec = Math.round(avgPace/1000);
-  const targetSec = Math.round(TARGET_PACE_MS/1000);
 
   if(paceDiff >= 0){
     paceEl.textContent = `Pace: ${paceSec}s/question avg (target ${targetSec}s) — ahead of pace`;
@@ -2183,6 +2277,8 @@ function backToStart(){
 }
 document.getElementById('retryBtn').addEventListener('click', backToStart);
 document.getElementById('retryBtnTop').addEventListener('click', backToStart);
+
+})();
 </script>
 <script src="assets/nav.js" defer></script>
 </body>

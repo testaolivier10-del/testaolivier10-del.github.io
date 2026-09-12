@@ -134,8 +134,8 @@ a.topic-row:hover{background:var(--hover-tint);}
 }
 .choice-btn:hover{border-color:var(--accent);}
 .choice-btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--line);}
-.choice-btn.correct{border-color:var(--good);background:var(--tint-good);}
-.choice-btn.wrong{border-color:var(--bad);background:var(--tint-bad);}
+.choice-btn.correct{border-color:var(--good-text);background:var(--tint-good);}
+.choice-btn.wrong{border-color:var(--bad-text);background:var(--tint-bad);}
 .choice-btn:disabled{cursor:default;}
 
 .feedback{border-radius:var(--radius);padding:14px 16px;font-size:14.5px;font-weight:700;line-height:1.55;margin-bottom:16px;display:none;}
@@ -152,6 +152,23 @@ a.topic-row:hover{background:var(--hover-tint);}
 .explain-box{background:var(--tint-accent);border-radius:var(--radius);padding:16px 18px;font-size:14.5px;font-weight:600;line-height:1.6;margin-bottom:18px;color:var(--ink);}
 .explain-box b{color:var(--accent-press);}
 
+/* Plain-English primer for a term a lesson leans on before the module that
+   owns it. Module 2 (leaving groups, nucleophiles) needs acid/base/pKa
+   vocabulary that Module 3 teaches, so the words get defined inline the
+   first time a lesson uses them rather than assumed. */
+.term-primer{
+  background:var(--paper);border:var(--bw) solid var(--line-soft);border-left:4px solid var(--accent);
+  border-radius:var(--radius);padding:14px 16px;margin:0 0 18px;
+  font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.6;
+}
+.term-primer-head{
+  display:block;font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:6px;
+}
+.term-primer p{margin:0 0 8px;}
+.term-primer p:last-child{margin-bottom:0;}
+.term-primer b{color:var(--ink);}
+
 /* Lesson notes mode — see lesson-engine.js. A read-only, non-gated recap of
    an entire lesson, reachable via ?notes=1 without re-running the
    interactive steps. */
@@ -164,6 +181,7 @@ a.topic-row:hover{background:var(--hover-tint);}
 .notes-view h3:first-child{margin-top:0;}
 .notes-view .step-body{margin-bottom:14px;}
 .notes-view .scene{margin-bottom:14px;}
+.notes-view .term-primer{margin-bottom:14px;}
 .notes-view .notes-fact{
   background:var(--tint-good);border-radius:var(--radius);padding:12px 16px;
   font-size:14px;font-weight:700;color:var(--good-press);margin-bottom:14px;line-height:1.55;
@@ -341,7 +359,7 @@ a.topic-row:hover{background:var(--hover-tint);}
   flex-shrink:0;border:1px solid var(--line);background:var(--white);border-radius:var(--radius-pill);
   padding:5px 12px;font:800 11.5px var(--font-ui);color:var(--muted);cursor:pointer;
 }
-.flag-row .unflag:hover{border-color:var(--bad);color:var(--bad);}
+.flag-row .unflag:hover{border-color:var(--bad-text);color:var(--bad-text);}
 
 /* Step-level back control inside a lesson. */
 .lesson-step-nav{display:flex;margin-bottom:10px;}
@@ -375,8 +393,8 @@ a.topic-row:hover{background:var(--hover-tint);}
 }
 .order-list .mv button:hover:not(:disabled){border-color:var(--accent);color:var(--accent);}
 .order-list .mv button:disabled{opacity:.3;cursor:default;}
-.order-list li.ok{border-color:var(--good);background:var(--tint-good);}
-.order-list li.no{border-color:var(--bad);background:var(--tint-bad);}
+.order-list li.ok{border-color:var(--good-text);background:var(--tint-good);}
+.order-list li.no{border-color:var(--bad-text);background:var(--tint-bad);}
 
 .multi-note{font:800 12.5px var(--font-ui);color:var(--muted);margin-bottom:12px;}
 
@@ -385,7 +403,7 @@ a.topic-row:hover{background:var(--hover-tint);}
   border:var(--bw) solid var(--bad);background:var(--tint-bad);border-radius:var(--radius-lg);
   padding:18px 20px;margin-bottom:16px;
 }
-.diag.good{border-color:var(--good);background:var(--tint-good);}
+.diag.good{border-color:var(--good-text);background:var(--tint-good);}
 .diag .k{font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--bad-press);margin-bottom:6px;}
 .diag.good .k{color:var(--good-press);}
 .diag .did{font:800 14px var(--font-ui);color:var(--ink);margin-bottom:8px;}
@@ -425,7 +443,7 @@ a.topic-row:hover{background:var(--hover-tint);}
   background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
   padding:22px 24px;box-shadow:var(--lift-sm);
 }
-.overall-card .k{font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+.overall-card .k{font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted-on-dark);}
 .overall-card .big{font:900 40px var(--font-mono);color:var(--accent);line-height:1.05;}
 .summary-section{margin-top:22px;}
 .summary-section h3{font:900 15px var(--font-ui);margin:0 0 10px;color:var(--ink);}
@@ -523,7 +541,7 @@ a.topic-row:hover{background:var(--hover-tint);}
   background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
   padding:20px 22px;box-shadow:var(--lift-sm);height:100%;
 }
-.game-card.done{border-color:var(--good);}
+.game-card.done{border-color:var(--good-text);}
 .game-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;}
 .game-card-title{font:900 16px var(--font-ui);letter-spacing:-0.01em;}
 .game-pill{
@@ -531,7 +549,7 @@ a.topic-row:hover{background:var(--hover-tint);}
   padding:5px 11px;border-radius:var(--radius-pill);background:var(--paper);
   border:var(--bw) solid var(--line);white-space:nowrap;
 }
-.game-card.done .game-pill{background:var(--tint-good);color:var(--good);border-color:transparent;}
+.game-card.done .game-pill{background:var(--tint-good);color:var(--good-text);border-color:transparent;}
 .game-card-body{font-size:13.5px;font-weight:600;color:var(--muted);margin:10px 0 0;line-height:1.55;text-wrap:pretty;}
 .game-note{font:700 12.5px var(--font-ui);color:var(--muted);margin:8px 0 0;}
 .game-big{font:900 34px var(--font-ui);margin:4px 0 0;letter-spacing:-0.03em;}
@@ -540,8 +558,8 @@ a.topic-row:hover{background:var(--hover-tint);}
 
 /* The debt meter is informational, never alarming: even "heavy" is amber, not
    an error state, because a backlog is a thing to work through. */
-.game-card.debt-clear .game-pill{background:var(--tint-good);color:var(--good);border-color:transparent;}
-.game-card.debt-clear .game-big{color:var(--good);}
+.game-card.debt-clear .game-pill{background:var(--tint-good);color:var(--good-text);border-color:transparent;}
+.game-card.debt-clear .game-big{color:var(--good-text);}
 .game-card.debt-building .game-pill,
 .game-card.debt-heavy .game-pill{background:var(--tint-amber);color:var(--amber);border-color:transparent;}
 .game-card.debt-heavy .game-big{color:var(--amber);}
@@ -550,7 +568,7 @@ a.topic-row:hover{background:var(--hover-tint);}
 .tier-name{font:900 12.5px var(--font-ui);}
 .tier-solid{color:var(--muted);}
 .tier-strong{color:var(--accent);}
-.tier-mastered{color:var(--good);}
+.tier-mastered{color:var(--good-text);}
 .tier-count{font:800 12.5px var(--font-mono,var(--font-ui));color:var(--muted);text-align:right;}
 
 /* The reward strip at the top of a finished session's summary

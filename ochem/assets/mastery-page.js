@@ -50,9 +50,14 @@
      the three concepts you have tried is not 90% of organic chemistry, and
      a single percentage invites exactly that reading. Coverage sits next to
      it so the number is always qualified by how much of the map it covers. */
+  // With nothing attempted there is no number to show, and the em dash that used
+  // to stand in for one rendered as a 40px teal bar — it read as a progress
+  // meter that had failed to draw, not as "no data yet". Drop the number slot
+  // entirely in that state and let the sentence beside it carry the card.
   set('overallCard',
-    '<div><div class="k">Concept mastery</div><div class="big">' +
-      (overall.value === null ? '—' : pct(overall.value) + '%') + '</div></div>' +
+    '<div><div class="k">Concept mastery</div>' +
+      (overall.value === null ? '' : '<div class="big">' + pct(overall.value) + '%</div>') +
+    '</div>' +
     '<div style="max-width:320px;font-size:13.5px;font-weight:700;opacity:.85;">' +
       (overall.value === null
         ? 'Answer questions in any lesson, or start a Practice session, and your concept mastery starts building here.'

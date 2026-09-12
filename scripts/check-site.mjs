@@ -5,7 +5,7 @@
 //   2. Every JSON file (questions.json, manifest.json, etc.) actually parses.
 //   3. Every URL listed in sitemap.xml maps to a file that exists on disk.
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
-import { join, dirname, extname, relative } from 'node:path';
+import { join, dirname, extname, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
@@ -149,6 +149,109 @@ function countSteps(body) {
       if (steps !== n) {
         fail(`lesson-concepts.js: "${topic}" authored against ${n} steps but the lesson now has ${steps} — re-check the step indices, then update n.`);
       }
+    }
+  }
+}
+
+// ---- 5. Question bank: no positional or length tell in the keyed answer ----
+// Both are ways a bank can teach pattern-matching instead of medicine. The
+// first is fatal and mechanical: at one point every one of the 1,000 newest
+// multiple-choice items keyed to option A, so anything rendering the file
+// without practice.html's runtime shuffle leaked every answer. The second is
+// softer but the shuffle cannot help with it — reordering options doesn't
+// change which one is longest.
+const bankPath = join(ROOT, 'nremt', 'assets', 'questions.json');
+let bank = null;
+if (existsSync(bankPath)) {
+  try { bank = JSON.parse(readFileSync(bankPath, 'utf8')); } catch { /* section 2 reports it */ }
+  if (Array.isArray(bank)) {
+    const mc = bank.filter(q => !q.type || q.type === 'mc');
+
+    // (a) keyed position spread
+    const pos = {};
+    for (const q of mc) pos[q.correct] = (pos[q.correct] || 0) + 1;
+    const POSITION_CEILING = 0.4;
+    for (const [idx, n] of Object.entries(pos)) {
+      const share = n / mc.length;
+      if (share > POSITION_CEILING) {
+        fail(`questions.json: ${(share * 100).toFixed(0)}% of multiple-choice answers key to option index ${idx} ` +
+             `(${n}/${mc.length}) — over the ${POSITION_CEILING * 100}% ceiling. Permute the stored options.`);
+      }
+    }
+
+    // (b) "the longest option is the answer". Chance is ~25%; the bank sits well
+    // above that because keys in the newest 1,000 items run about 10% longer
+    // than their distractors on average. The worst outliers have been trimmed;
+    // the rest is an editorial pass over several hundred items. This ceiling is
+    // a ratchet: lower it as that work lands, never raise it to let a
+    // regression through.
+    const LENGTH_TELL_CEILING = 0.55;
+    let longestIsKey = 0;
+    for (const q of mc) {
+      const lens = q.options.map(o => String(o).length);
+      if (lens.indexOf(Math.max(...lens)) === q.correct) longestIsKey++;
+    }
+    const tell = longestIsKey / mc.length;
+    if (tell > LENGTH_TELL_CEILING) {
+      fail(`questions.json: the longest option is the answer in ${(tell * 100).toFixed(0)}% of items ` +
+           `(${longestIsKey}/${mc.length}), over the ${LENGTH_TELL_CEILING * 100}% ceiling. ` +
+           `Trim over-long keys or pad thin distractors — chance is ~25%.`);
+    }
+
+    // (c) select-N keys must not all be the same set
+    const multi = bank.filter(q => q.type === 'multi');
+    if (multi.length > 10) {
+      const sets = {};
+      for (const q of multi) { const k = JSON.stringify(q.correct); sets[k] = (sets[k] || 0) + 1; }
+      const [topSet, topN] = Object.entries(sets).sort((a, b) => b[1] - a[1])[0];
+      if (topN / multi.length > POSITION_CEILING) {
+        fail(`questions.json: ${topN}/${multi.length} select-N items key to the same set ${topSet}. Permute the stored options.`);
+      }
+    }
+  }
+}
+
+// ---- 6. Every advertised question count matches the bank ----
+// The homepage advertised "920 practice questions" long after the bank passed
+// two thousand. The figure appears in nine places — page copy, meta
+// descriptions, Open Graph tags — so it drifts quietly. This makes it loud.
+if (Array.isArray(bank)) {
+  const expected = bank.length.toLocaleString('en-US');
+  const COUNT_RE = /\b(\d{1,3}(?:,\d{3})+|\d{3,5})(?=[- ](?:practice )?questions?\b|-question\b)/g;
+  for (const file of [...htmlFiles, join(ROOT, 'README.md')]) {
+    if (!existsSync(file)) continue;
+    const body = readFileSync(file, 'utf8');
+    for (const m of body.matchAll(COUNT_RE)) {
+      const n = m[1];
+      // Session lengths (a 100-question exam, a 20-question drill) and badge
+      // thresholds ("500 questions" answered) are not claims about the pool.
+      // 900 sits above every one of those and below any real pool figure — the
+      // stale "920 practice questions" on the homepage is still caught.
+      if (Number(n.replace(/,/g, '')) < 900) continue;
+      if (n !== expected) {
+        fail(`${relative(ROOT, file)}: advertises "${n} questions" but the bank holds ${expected}.`);
+      }
+    }
+  }
+}
+
+// ---- 7. Every page is in the sitemap ----
+// Fifty lesson pages once shipped with no path in from a search engine because
+// sitemap.xml was maintained by hand. This walk already knows every HTML file.
+const sitemapForCoverage = join(ROOT, 'sitemap.xml');
+if (existsSync(sitemapForCoverage)) {
+  const listed = new Set(
+    [...readFileSync(sitemapForCoverage, 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)]
+      .map(m => new URL(m[1]).pathname)
+  );
+  for (const file of htmlFiles) {
+    const body = readFileSync(file, 'utf8');
+    // Redirect stubs, and Google's site-verification file, are not pages.
+    if (/http-equiv="refresh"/.test(body)) continue;
+    if (/^google[0-9a-f]+\.html$/.test(relative(ROOT, file))) continue;
+    const path = '/' + relative(ROOT, file).split(sep).join('/');
+    if (!listed.has(path) && !listed.has(path.replace(/index\.html$/, ''))) {
+      fail(`sitemap.xml: no entry for ${path} — run scripts/build-sitemap.mjs`);
     }
   }
 }

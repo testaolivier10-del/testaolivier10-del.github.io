@@ -18,7 +18,7 @@
 // The cached copy is only served as a fallback when the network fails.
 // Bump CACHE_NAME whenever this file changes, so old cached entries are
 // dropped instead of lingering forever.
-const CACHE_NAME = 'studyhub-v6';
+const CACHE_NAME = 'studyhub-v7';
 const PRECACHE_URLS = [
   'index.html',
   'assets/theme.css',
@@ -45,10 +45,25 @@ const PRECACHE_URLS = [
   'nremt/assets/icon.svg',
 ];
 
+// The question bank is 2.3 MB — an order of magnitude more than everything
+// above put together — so it is NOT in PRECACHE_URLS: blocking install on it
+// would stall the first visit on a slow connection. It is still essential
+// offline (practice.html and search.html are both useless without it), so it
+// is warmed separately, after install has already resolved.
+const DEFERRED_URLS = [
+  'nremt/assets/questions.json',
+];
+
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(PRECACHE_URLS))
+      .then(cache => {
+        // Warm the deferred entries in the background — install resolves as
+        // soon as the core shell is cached, and a failure here (offline mid
+        // install, say) must not fail the installation.
+        cache.addAll(DEFERRED_URLS).catch(() => {});
+        return cache.addAll(PRECACHE_URLS);
+      })
       .then(() => self.skipWaiting())
   );
 });

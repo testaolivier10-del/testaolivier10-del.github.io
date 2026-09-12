@@ -2,13 +2,13 @@
 
 Source for the [Study Hub](https://testaolivier10-del.github.io/) site, home to:
 
-**[LevlPrep](https://testaolivier10-del.github.io/nremt/)** — a free NREMT-EMT exam prep app: a 2,078-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
+**[LevlPrep](https://testaolivier10-del.github.io/nremt/)** — a free NREMT-EMT exam prep app: a 2,084-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
 
-**[Organic Chemistry](https://testaolivier10-del.github.io/ochem/)** (beta) — a mastery/learning product, not exam prep: a full 14-module Organic Chemistry I curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. **Module 1 (Foundations) is fully built** — atomic structure, orbitals, hybridization, bonding, electronegativity, formal charge, Lewis structures, molecular geometry, bond polarity — plus SN1/SN2/E2 in Module 6; the rest of the curriculum shows as "coming soon" until built. A Mastery dashboard scores performance per module from real question attempts, not just completion, and flags concept dependencies: struggling on E2 surfaces a "possible gap detected" callout pointing at its declared prerequisites, whether or not those prerequisite lessons exist yet. Alongside the course there are **seven interactive tools** (`ochem/tools.html`) — an arrow pusher that shows you the product your mechanism makes, a resonance explorer, a 3D viewer, a conformation lab, a reaction predictor, an acid/base comparator and a spectroscopy lab — see [Tools](#tools).
+**[Organic Chemistry](https://testaolivier10-del.github.io/ochem/)** (beta) — a mastery/learning product, not exam prep: a full 14-module Organic Chemistry I curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. **58 lessons and 10 mechanism walkthroughs are built**, covering Foundations through carbonyl and aromatic chemistry; `curriculum.js` is the single source of truth for what exists, and anything it doesn't link yet shows as "coming soon". A Mastery dashboard scores performance per module from real question attempts, not just completion, and flags concept dependencies: struggling on E2 surfaces a "possible gap detected" callout pointing at its declared prerequisites, whether or not those prerequisite lessons exist yet. Alongside the course there are **seven interactive tools** (`ochem/tools.html`) — an arrow pusher that shows you the product your mechanism makes, a resonance explorer, a 3D viewer, a conformation lab, a reaction predictor, an acid/base comparator and a spectroscopy lab — see [Tools](#tools).
 
 ## Stack
 
-Plain HTML/CSS/vanilla JS — no framework, no bundler, no build step. Hosted on GitHub Pages. A service worker (`nremt/sw.js`) gives the app offline support (PWA, installable via `nremt/manifest.json`).
+Plain HTML/CSS/vanilla JS — no framework, no bundler, no build step. Hosted on GitHub Pages. A service worker at the site root (`sw.js`) gives the app offline support (PWA, installable via `nremt/manifest.json`). It sits at the root rather than under `nremt/` so its scope covers the shared `/assets/` modules every subject loads.
 
 ## Structure
 
@@ -31,7 +31,7 @@ nremt/                 The LevlPrep app
   scenario-sim.html       Branching clinical scenarios
   search.html             Client-side search across notes + the question bank
   assets/
-    questions.json        The 2,078-question bank (fetched by practice.html and search.html)
+    questions.json        The 2,084-question bank (fetched by practice.html and search.html)
     theme.css             Shared design system (light/dark, "Guided Path" visual style)
     nav.js                 Shared header/nav; NREMT-flavored shim over the site-wide
                              level/streak engine in /assets/hub-progress.js
@@ -40,7 +40,8 @@ nremt/                 The LevlPrep app
 ochem/                 The Organic Chemistry app (beta)
   index.html             Product home
   learn.html             Full 14-module curriculum browser, rendered from assets/curriculum.js
-  practice.html, review.html   Honest "coming soon" states — no fake functionality
+  practice.html, review.html   Question practice and the review queue, both
+                            driven by assets/session-runner.js
   tools.html             Hub for the seven interactive tools, rendered from
                             assets/tools-registry.js
   tools/                 One page per tool: arrow-pusher, resonance, viewer-3d,
@@ -48,18 +49,20 @@ ochem/                 The Organic Chemistry app (beta)
                             spectroscopy — see "Tools" below
   mastery.html           Mastery dashboard (overall %, per-module bars, weakest/next-up,
                          and a concept-dependency callout — see curriculum.js below)
-  mechanisms/sn2.html    Interactive SN2 lesson (Module 6): click-through nucleophile/
-                         electrophile identification, arrow-pushing, product prediction
-  mechanisms/sn1.html    Interactive SN1 lesson (Module 6): ionization, the planar
-                         carbocation, attack-from-either-face, racemization
-  mechanisms/e2.html     Interactive E2 lesson (Module 6): all three concerted arrows,
-                         Zaitsev vs. Hofmann regiochemistry from base bulk
-  lessons/               All 9 Module 1 (Foundations) lessons: atomic-structure,
-                         orbitals, hybridization, bonding, electronegativity,
-                         formal-charge, lewis-structures, molecular-geometry,
-                         bond-polarity — each the full 7-part design: Explain ->
-                         Visualize -> Interact -> Guided -> Independent ->
-                         Explanation -> Challenge
+  mechanisms/            10 interactive mechanism walkthroughs — sn1, sn2, e1, e2,
+                         addition, eas, carbonyl-addition, acyl-substitution,
+                         aldol, claisen. Each is click-through: identify the
+                         nucleophile and electrophile, push the arrows yourself,
+                         predict the product
+  lessons/               58 lesson pages, from Module 1 (Foundations —
+                         atomic-structure, orbitals, hybridization, bonding,
+                         electronegativity, formal-charge, lewis-structures,
+                         molecular-geometry, bond-polarity) through
+                         stereochemistry, conformational analysis, substitution
+                         and elimination, addition, spectroscopy, aromatics and
+                         carbonyl chemistry — each the full 7-part design:
+                         Explain -> Visualize -> Interact -> Guided ->
+                         Independent -> Explanation -> Challenge
   assets/
     curriculum.js          Single source of truth for modules/topics/lesson hrefs, a
                             topic's declared `dependsOn` prerequisites, and
@@ -177,6 +180,10 @@ Each subject calls `StudyHubAccount.registerNamespace(name, keys)` with the `loc
 
 Both keys are migrated once per device from the old NREMT-only records (`nremt_xp`, `nremt_streak`), so no existing user loses a level or a streak.
 
+## Privacy
+
+`privacy.html` is the site's privacy policy, linked from every page footer. The short version: no ads, no trackers, no cookies; progress lives in `localStorage`; the only thing that leaves the browser unprompted is the anonymous page counter described below.
+
 ## Analytics
 
 Every page reports a pageview to a `track_pageview(path)` Postgres RPC in the same Supabase project. No IP address, cookie, user id, or session identifier is ever recorded — the RPC only increments a `(path, day)` counter in a `page_views` table. That table has row-level security enabled with **no policies at all**, so it can't be read or written directly by anyone (including the publishable anon key); the RPC (`security definer`) is the only way to touch it.
@@ -199,7 +206,14 @@ then open `http://localhost:8000/`.
 
 ## CI
 
-`.github/workflows/checks.yml` runs `scripts/check-site.mjs` on every push/PR: it walks every HTML file for broken local `href`/`src` references, validates every JSON file parses, and confirms every URL in `sitemap.xml` maps to a real file. It has no network dependency and needs no build step, so it runs in seconds.
+`.github/workflows/checks.yml` runs `scripts/check-site.mjs` on every push/PR. It has no network dependency and needs no build step, so it runs in seconds. It checks:
+
+1. Every local `href`/`src` in every HTML file points at a file that exists.
+2. Every JSON file parses.
+3. Each Ochem lesson has the number of steps `lesson-concepts.js` was authored against.
+4. Every URL in `sitemap.xml` maps to a real file — **and** every real page is in `sitemap.xml`. Fifty Ochem lesson pages once shipped with no path in from a search engine because the sitemap was hand-maintained; run `node scripts/build-sitemap.mjs` to regenerate it after adding a page.
+5. The question bank carries no answer tell: no keyed option position holds more than 40% of items, no select-N key set dominates, and the "longest option is the answer" rate stays under its ceiling. The ceiling is a ratchet — lower it as the bank improves, never raise it.
+6. Every advertised question count in markup, meta tags and this README matches the bank. The homepage went on advertising a figure from an early build long after the bank had more than doubled.
 
 ## Updating the question bank
 
