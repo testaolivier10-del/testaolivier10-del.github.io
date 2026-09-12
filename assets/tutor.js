@@ -659,6 +659,41 @@
     return { html: html, sources: cited, domain: matchDomain(q) };
   }
 
+  // Answers are cached per browser. The daily model allowance is one pool
+  // shared by every student, and a class asked the same handful of questions
+  // will spend it re-deriving identical answers. A repeat now costs nothing
+  // and returns instantly. Keyed by course too, since "what is resonance"
+  // should not answer an EMT with organic chemistry.
+  var ANSWER_CACHE_KEY = 'levlprep_ai_cache_v1';
+  var ANSWER_CACHE_MAX = 60;
+  var ANSWER_CACHE_TTL = 30 * 24 * 60 * 60 * 1000;
+
+  function cacheKey(q){
+    return courseKey() + '|' + q.toLowerCase().replace(/\s+/g, ' ').replace(/[^\w\s]/g, '').trim();
+  }
+  function readCache(q){
+    try {
+      var store = JSON.parse(localStorage.getItem(ANSWER_CACHE_KEY) || '{}');
+      var hit = store[cacheKey(q)];
+      if(hit && Date.now() - hit.t < ANSWER_CACHE_TTL) return hit.a;
+    } catch(e){}
+    return null;
+  }
+  function writeCache(q, answer){
+    try {
+      var store = JSON.parse(localStorage.getItem(ANSWER_CACHE_KEY) || '{}');
+      store[cacheKey(q)] = { a: answer, t: Date.now() };
+      var keys = Object.keys(store);
+      if(keys.length > ANSWER_CACHE_MAX){
+        // Drop the oldest rather than clearing, so a heavy user keeps their
+        // recent answers instead of starting from nothing every so often.
+        keys.sort(function(a, b){ return store[a].t - store[b].t; });
+        keys.slice(0, keys.length - ANSWER_CACHE_MAX).forEach(function(k){ delete store[k]; });
+      }
+      localStorage.setItem(ANSWER_CACHE_KEY, JSON.stringify(store));
+    } catch(e){}
+  }
+
   // --------------------------------------------------------------- LLM layer
   // The endpoint gets the question and the passages we retrieved, and is asked
   // to answer from those passages only. Anything other than a clean response
@@ -990,7 +1025,14 @@
       // labelled differently so nobody mistakes a general answer for course
       // material.
       if(endpoint){
+        var cached = readCache(q);
+        if(cached){
+          finish(renderModelText(cached), local.sources, local.domain,
+            'Written by an AI from this course’s material — check anything clinical against your protocols.');
+          return;
+        }
         askEndpoint(endpoint, q, hits, self.history).then(function(answer){
+          writeCache(q, answer);
           finish(renderModelText(answer), local.sources, local.domain, hits.length
             ? 'Written by an AI from this course’s material — check anything clinical against your protocols.'
             : 'Not covered in this course’s material, so this is the AI answering generally — treat it as a starting point, not a source.');
