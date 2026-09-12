@@ -1,9 +1,61 @@
+<p class="step-body">Mass spectrometry supplies the one piece of information the other three techniques cannot: the molecular formula. And it supplies a second, less obvious thing — a map of a molecule's weak points, since how a molecule breaks apart is governed by the same cation stability arguments you have been using since Module 6.</p>
+
 <h3>Ionization and the molecular ion</h3>
-<p class="step-body">A mass spectrometer bombards a vaporized sample with high-energy electrons, knocking out one electron from a molecule to form a radical cation, M⁺• (called the <b>molecular ion</b>). This ion's mass-to-charge ratio (m/z, effectively its molecular weight, since it carries a single positive charge) appears as the highest-mass peak in the spectrum (barring rare, low-intensity isotope peaks) — giving you the molecule's exact molecular weight directly, something neither IR nor routine NMR provides on its own.</p>
-<h3>Fragmentation: the molecular ion breaks apart in predictable ways</h3>
-<p class="step-body">The molecular ion carries substantial excess energy from ionization and often fragments into smaller pieces before ever reaching the detector — a neutral fragment is lost (undetected) and a smaller cation is detected at a correspondingly lower m/z. Fragmentation isn't random: bonds break preferentially at points that produce a more stable resulting cation, exactly the same stability logic from every carbocation-forming reaction across the course (SN1, E1, Friedel-Crafts alkylation).</p>
-<div class="notes-fact">A mass spectrum is really a map of a molecule's weak points — the bonds most prone to fragmenting are the ones that produce the most stable cation or that break next to a resonance- or hyperconjugation-stabilizing group, so reading a fragmentation pattern is fundamentally an exercise in the same stability reasoning used everywhere else in this course.</div>
-<h3>Alpha cleavage: fragmentation next to a heteroatom or carbonyl</h3>
-<p class="step-body">A bond adjacent to (alpha to) an oxygen, nitrogen, or carbonyl breaks preferentially, because the resulting cation is resonance-stabilized by the adjacent lone pair — directly analogous to the oxocarbenium ion (Acetals lesson) or the acylium ion (EAS lesson). For a ketone like 2-butanone (CH₃COCH₂CH₃), alpha cleavage can lose either a methyl radical (giving a resonance-stabilized acylium-like fragment at m/z = M−15) or an ethyl radical (giving the other acylium-like fragment at m/z = M−29) — and the more substituted, more stable resulting cation dominates, exactly the same "which cation forms preferentially" logic from Markovnikov addition.</p>
+<p class="step-body">A mass spectrometer vaporizes the sample and bombards it with high-energy electrons, knocking one electron out of a molecule to form a radical cation, M⁺• — the <b>molecular ion</b>. Because it carries a single positive charge, its mass-to-charge ratio (m/z) is effectively its molecular weight.</p>
+<p class="step-body">The molecular ion appears as the highest-mass significant peak, and it gives you the molecular weight directly, which neither IR nor routine NMR provides. The tallest peak in the spectrum, whatever its mass, is the <b>base peak</b>, set to 100% and used to scale everything else; it is often a fragment rather than the molecular ion.</p>
+
+<h3>Two quick reads before anything else</h3>
+<p class="step-body"><b>The nitrogen rule.</b> A molecule with an odd molecular weight contains an odd number of nitrogens. An even molecular weight means zero or an even number. This follows from nitrogen's being the only common organic element with an odd valence and an even mass, and it is a free piece of information from a single number.</p>
+<p class="step-body"><b>The M+1 peak.</b> A small peak one mass unit above the molecular ion comes from molecules containing one ¹³C. Since ¹³C is 1.1% abundant, the M+1 peak's height relative to M is roughly 1.1% per carbon — so a compound with ten carbons shows an M+1 at about 11% of M. That counts the carbons.</p>
+
+<h3>Fragmentation</h3>
+<p class="step-body">The molecular ion carries substantial excess energy from ionization and frequently breaks apart before reaching the detector. A neutral fragment is lost — and, being neutral, is never detected — while a smaller cation is detected at correspondingly lower m/z.</p>
+<p class="step-body">Fragmentation is not random. Bonds break preferentially where the resulting cation is more stable, which is exactly the reasoning from SN1, E1, Markovnikov addition and Friedel–Crafts alkylation.</p>
+
+<div class="notes-fact">A mass spectrum is a map of a molecule's weak points. The bonds most prone to breaking are the ones that yield the most stable cation, or that sit next to a resonance- or hyperconjugation-stabilizing group. Reading a fragmentation pattern is not a separate skill — it is the same stability reasoning used everywhere else in this course, applied to a different question.</div>
+
+<h3>Alpha cleavage</h3>
+<p class="step-body">A bond adjacent to — alpha to — an oxygen, nitrogen or carbonyl breaks preferentially, because the resulting cation is stabilized by the heteroatom's lone pair. That is the oxocarbenium ion from Module 9 and the acylium ion from Module 13, arriving again in a mass spectrometer.</p>
+<p class="step-body">For 2-butanone, alpha cleavage can lose a methyl radical (giving a fragment at M − 15) or an ethyl radical (M − 29), and the more stable resulting cation dominates. For an alcohol or ether, alpha cleavage gives an oxocarbenium ion that is often the base peak.</p>
+
+<h3>Common losses worth recognizing</h3>
+<div class="notes-table-wrap">
+<table class="notes-table">
+<tr><th>Loss</th><th>Mass</th><th>Suggests</th></tr>
+<tr><td>CH₃</td><td>15</td><td>methyl branch</td></tr>
+<tr><td>H₂O</td><td>18</td><td>alcohol</td></tr>
+<tr><td>C₂H₅</td><td>29</td><td>ethyl group</td></tr>
+<tr><td>CHO</td><td>29</td><td>aldehyde</td></tr>
+<tr><td>Cl</td><td>35</td><td>chloride</td></tr>
+<tr><td>C₃H₇</td><td>43</td><td>propyl</td></tr>
+<tr><td>CH₃CO</td><td>43</td><td>methyl ketone</td></tr>
+<tr><td>Br</td><td>79</td><td>bromide</td></tr>
+</table>
+</div>
+<p class="step-body">Two fragment masses are worth knowing by sight. <b>m/z 91</b> is the tropylium ion, a remarkably stable aromatic seven-membered cation formed from any benzyl group, and its presence is near-proof of a benzylic CH₂ in the molecule. <b>m/z 77</b> is the phenyl cation, indicating a benzene ring attached directly to something.</p>
+
 <h3>Isotope patterns: chlorine and bromine leave a fingerprint</h3>
-<p class="step-body">Most elements in organic molecules (C, H, N, O) have one overwhelmingly dominant isotope, so their molecular ion peak has only a small, easily-overlooked M+1 peak (from natural ¹³C abundance, useful mainly for confirming carbon count). Chlorine and bromine are dramatically different: chlorine is roughly 3:1 (³⁵Cl:³⁷Cl) and bromine is roughly 1:1 (⁷⁹Br:⁸¹Br) between their two major isotopes, both of which differ by 2 mass units. This produces an unmistakable, easily recognized <b>M and M+2 peak pair</b> in a roughly 3:1 ratio (chlorine) or roughly 1:1 ratio (bromine) — a direct, unambiguous signature that lets you identify the presence (and count) of chlorine or bromine atoms from the spectrum alone, without needing any other spectroscopic technique.</p>
+<p class="step-body">Most elements in organic molecules have one overwhelmingly dominant isotope. Chlorine and bromine do not, and the difference is immediately visible.</p>
+<p class="step-body">Chlorine is about 3:1 between ³⁵Cl and ³⁷Cl; bromine is about 1:1 between ⁷⁹Br and ⁸¹Br. Both pairs differ by two mass units, producing an unmistakable <b>M and M+2 pair</b> — roughly 3:1 for one chlorine, roughly 1:1 for one bromine. Two chlorines give a 9:6:1 pattern across M, M+2 and M+4.</p>
+<p class="step-body">This identifies the presence and count of halogens from the spectrum alone, without any other technique. Iodine, by contrast, is monoisotopic and shows no such pattern — its signature is a large loss of 127.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — an unknown at m/z 108/110</span>
+<p><b>Two peaks of nearly equal height, two mass units apart:</b> one bromine. So the rest of the molecule is 108 − 79 = 29 mass units.</p>
+<p><b>Even molecular weight:</b> no nitrogen (or an even number).</p>
+<p>29 could be C₂H₅ or CHO. A strong fragment at m/z 29 with no IR carbonyl points to ethyl.</p>
+<p>Structure: CH₃CH₂Br, bromoethane. Molecular weight 108, and the isotope pattern did most of the work.</p>
+</div>
+
+<div class="notes-pitfall"><b>The molecular ion is not always visible.</b> Some molecules — highly branched alkanes, alcohols — fragment so readily that M⁺• never reaches the detector, and the highest peak you see is a fragment. Do not assume the highest-mass peak is the molecular weight without checking that it is consistent with the rest of your data. Softer ionization methods such as chemical ionization or electrospray exist precisely to preserve the molecular ion for fragile molecules.</div>
+
+<h3>High-resolution mass spectrometry</h3>
+<p class="step-body">An ordinary spectrometer reports integer masses, and many formulas share one: C₃H₈O, C₂H₄O₂ and C₂H₈N₂ are all 60. A high-resolution instrument measures to four decimal places, and because atomic masses are not exact integers (¹H is 1.00783, ¹²C is 12.0000 exactly by definition, ¹⁴N is 14.0031, ¹⁶O is 15.9949), those three formulas come out as 60.0575, 60.0211 and 60.0687.</p>
+<p class="step-body">That resolves the molecular formula unambiguously from a single measurement — which is why an HRMS value is reported for every new compound in the chemical literature.</p>
+
+<h3>The end of the course, and what it was for</h3>
+<p class="step-body">This is the last section, and it is a good place to say what the four techniques together accomplish. Given an unknown sample, you can determine its molecular formula, identify its functional groups, count its distinct carbon and hydrogen environments, and map which of those sit next to which — and from that, deduce a structure. Everything in the preceding thirteen chapters is what lets you interpret that evidence: knowing what structures are possible, what they do, and why.</p>
+<p class="step-body">That is the actual work of organic chemistry. Not memorizing reactions, but reasoning from structure to behavior and from evidence back to structure.</p>
+
+<h3>What carries forward</h3>
+<p class="step-body">Structure determination is how every new compound is characterized, in research and in industry. And the reasoning habit this chapter formalizes — gather independent lines of evidence, check that they agree, and let the agreement be the proof — is the one worth taking with you regardless of where the chemistry goes next.</p>

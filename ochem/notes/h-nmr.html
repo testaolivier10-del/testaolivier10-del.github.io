@@ -1,20 +1,59 @@
-<h3>Chemical shift: where a signal appears, and what deshields it</h3>
-<p class="step-body">A hydrogen nucleus in a strong external magnetic field resonates at a frequency that depends on the local electron density surrounding it — electrons shield the nucleus from the external field. An electronegative neighbor (like an adjacent O, N, or halogen, or an adjacent carbonyl carbon) pulls electron density away, <b>deshielding</b> the hydrogen and pushing its signal further downfield (to a higher <b>chemical shift</b>, reported in parts per million, ppm, referenced against a standard). Typical ranges worth recognizing, from upfield to downfield:</p>
-<ul class="step-body">
-<li>alkyl C–H, far from anything electronegative — 0.9-1.5 ppm</li>
-<li>C–H next to a carbonyl (alpha hydrogens, Alpha Hydrogens lesson) — 2.0-2.5 ppm</li>
-<li>C–H next to O or a halogen — 3.3-4.5 ppm</li>
-<li>vinyl (alkene) C–H — 4.5-6.5 ppm</li>
-<li>aromatic ring C–H — 6.5-8.5 ppm</li>
-<li>aldehyde C–H — 9-10 ppm</li>
-<li>carboxylic acid O–H — 10-13 ppm</li>
-</ul>
-<p class="step-body">Two of those deserve a note. Aromatic C–H sits unusually far downfield because the ring's pi electrons circulate in the magnetic field and generate a small field of their own, reinforcing the deshielding — an effect called <b>ring current</b>, specific to aromatic rings. And a carboxylic acid O–H is the most deshielded proton on the list, which is the same acidity you worked out in Module 10, showing up here as a chemical shift.</p>
-<h3>Integration: how many hydrogens produce each signal</h3>
-<p class="step-body">The area under each signal (its integration) is directly proportional to the number of chemically equivalent hydrogens producing it. Comparing the relative integration values across all the signals in a spectrum (as ratios, since only relative — not absolute — hydrogen counts can be read off directly) tells you the ratio of each type of hydrogen environment present in the molecule.</p>
-<div class="notes-fact">Chemically equivalent hydrogens (like the three hydrogens of a freely-rotating CH₃ group) always show up as a single signal — free rotation exchanges their average local environment fast enough that NMR simply cannot tell them apart. Diastereotopic hydrogens (like each half of a CH₂ group next to a stereocenter, connecting back to the Stereocenters lesson) can appear as genuinely different signals, though this refinement is worth knowing exists even if it's not the everyday case.</div>
-<h3>Spin-spin splitting: the n+1 rule reveals neighboring hydrogens</h3>
-<p class="step-body">A hydrogen's signal is split into multiple peaks by the influence of non-equivalent hydrogens on <b>adjacent</b> carbons (through three bonds, typically) — each unique combination of nearby spin states shifts the observed frequency slightly. The result follows the <b>n+1 rule</b>: a hydrogen with n equivalent neighboring hydrogens is split into n+1 peaks, with relative intensities following the binomial (Pascal's triangle) pattern — a singlet (no neighbors), a doublet (1 neighbor), a triplet (2 neighbors, e.g., a CH₂ flanked by a CH₃), a quartet (3 neighbors, e.g., a CH₃ flanked by a CH₂), and so on. The spacing between split peaks (the <b>coupling constant</b>, J, in Hz) reflects the strength of that neighboring interaction and is identical for both coupling partners — a useful cross-check for correctly pairing up which signals are talking to each other.</p>
-<h3>Putting it together: a worked example</h3>
-<p class="step-body">Ethanol's spectrum, signal by signal. The <b>CH₃</b> integrates for 3H and appears as a triplet near 1.2 ppm — a triplet because the adjacent CH₂ has 2 hydrogens, and n+1 = 3. The <b>CH₂</b> integrates for 2H and appears as a quartet near 3.6 ppm — a quartet because the adjacent CH₃ has 3 hydrogens, and n+1 = 4, and shifted downfield by the nearby oxygen. The <b>OH</b> integrates for 1H and appears as a broad singlet somewhere around 2-5 ppm depending on conditions, not cleanly split because the proton exchanges too fast.</p>
-<p class="step-body">All three pieces of evidence — shift, integration, and splitting — point at the same structure. That mutual agreement is what makes an assignment convincing.</p>
+<p class="step-body">Proton NMR is the single most informative technique in organic chemistry. Where IR identifies functional groups, ¹H NMR maps the carbon skeleton — how many distinct hydrogen environments there are, how many hydrogens are in each, and which environments sit next to which. Read together, those three pieces of information usually determine a structure outright.</p>
+
+<h3>What NMR measures</h3>
+<p class="step-body">A hydrogen nucleus is a tiny magnet. Placed in a strong external field it can align with or against that field, and the energy gap between those two states depends on the field the nucleus actually experiences — which is the external field minus whatever its surrounding electrons shield it from. Radio waves at the matching frequency flip the nucleus, and that absorption is the signal.</p>
+<p class="step-body">The whole technique hangs on that shielding, because electron density around a nucleus varies with chemical environment. More electron density means more shielding, a smaller effective field, and a signal further <b>upfield</b>. Less means <b>deshielding</b>, and a signal further downfield.</p>
+
+<h3>Chemical shift: where a signal appears</h3>
+<p class="step-body">Position is reported as <b>chemical shift</b> in parts per million, referenced against tetramethylsilane at 0. Using ppm rather than frequency makes the numbers independent of the instrument's field strength, so a shift measured on a 300 MHz machine matches one from a 600 MHz machine.</p>
+<p class="step-body">Electronegative neighbours deshield. So does an adjacent carbonyl, an adjacent pi system, and — most dramatically — an aromatic ring.</p>
+<div class="notes-table-wrap">
+<table class="notes-table">
+<tr><th>Environment</th><th>ppm</th></tr>
+<tr><td>alkyl C–H</td><td>0.9–1.5</td></tr>
+<tr><td>C–H next to C=C or aryl</td><td>1.6–2.5</td></tr>
+<tr><td>C–H alpha to a carbonyl</td><td>2.0–2.5</td></tr>
+<tr><td>C–H next to N</td><td>2.3–3.0</td></tr>
+<tr><td>C–H next to O or halogen</td><td>3.3–4.5</td></tr>
+<tr><td>vinyl C–H</td><td>4.5–6.5</td></tr>
+<tr><td>aromatic C–H</td><td>6.5–8.5</td></tr>
+<tr><td>aldehyde C–H</td><td>9–10</td></tr>
+<tr><td>carboxylic acid O–H</td><td>10–13</td></tr>
+</table>
+</div>
+<p class="step-body">Two entries deserve a note. Aromatic C–H sits unusually far downfield because the ring's pi electrons circulate in the applied field and generate a small field of their own that reinforces the deshielding on the outside of the ring — the <b>ring current</b> effect, which is specific to aromatic rings and is itself a test for aromaticity. And a carboxylic acid O–H is the most deshielded proton on the list, which is the same acidity you worked out in Module 10 showing up as a chemical shift.</p>
+
+<h3>Integration: how many hydrogens</h3>
+<p class="step-body">The area under a signal is proportional to the number of equivalent hydrogens producing it. Only <i>relative</i> areas are meaningful, so integration gives you ratios — 3:2:1 — which you then scale against the molecular formula to get absolute counts.</p>
+
+<div class="notes-fact">Chemically equivalent hydrogens give one signal. The three hydrogens of a freely rotating methyl group are exchanged by that rotation faster than NMR can resolve, so they always appear together. Symmetry does the same job: the four aromatic hydrogens of <i>p</i>-xylene appear as a single peak. This means a symmetric molecule gives a much simpler spectrum than its hydrogen count suggests — which is information, not a loss.</div>
+
+<h3>Splitting: which environments are adjacent</h3>
+<p class="step-body">A hydrogen's signal is split by non-equivalent hydrogens on <b>adjacent</b> carbons, because each neighbour's spin adds or subtracts a little from the local field. The result is the <b>n + 1 rule</b>: a hydrogen with <i>n</i> equivalent neighbours appears as n + 1 peaks, with relative intensities following Pascal's triangle.</p>
+<p class="step-body">No neighbours gives a singlet; one gives a doublet at 1:1; two give a triplet at 1:2:1; three give a quartet at 1:3:3:1. The spacing between the peaks of a multiplet is the <b>coupling constant</b> J, measured in Hz, and it is identical for both partners in a coupled pair — which is how you confirm that two multiplets are talking to each other rather than coincidentally similar.</p>
+<p class="step-body">J values carry their own structural information. In an alkene, <i>trans</i> coupling runs 12–18 Hz and <i>cis</i> coupling 6–12, which distinguishes E from Z directly. On an aromatic ring, ortho coupling is 7–10 Hz and meta coupling 2–3, which locates substituents.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — ethanol, signal by signal</span>
+<p><b>1.2 ppm, 3H, triplet.</b> Three hydrogens means a methyl; a triplet means two neighbours; 1.2 ppm means nothing electronegative nearby. The CH₃.</p>
+<p><b>3.6 ppm, 2H, quartet.</b> Two hydrogens, three neighbours, and shifted well downfield by the adjacent oxygen. The CH₂.</p>
+<p><b>2–5 ppm, 1H, broad singlet.</b> The OH — a singlet despite having neighbours, because it exchanges with other OH protons faster than coupling can register, and broad and variable in position for the same reason.</p>
+<p>Three independent lines of evidence — shift, integration, splitting — all pointing at the same structure. That mutual agreement is what makes an assignment convincing.</p>
+</div>
+
+<div class="notes-pitfall"><b>O–H and N–H protons usually do not follow the n + 1 rule.</b> They exchange rapidly with each other and with traces of water, which averages away the coupling and leaves a broad singlet at an unpredictable shift. If a spectrum has one broad, un-split, oddly placed peak, suspect an exchangeable proton — and confirm it by adding D₂O, which swaps it for deuterium and makes the peak vanish entirely.</div>
+
+<h3>Working a spectrum</h3>
+<p class="step-body">A reliable order of operations. <b>Count the signals</b> — that is the number of distinct hydrogen environments, and a small number relative to the formula means symmetry. <b>Read the integrations</b> as a ratio and scale to the formula. <b>Use the shifts</b> to say what each environment is attached to. <b>Use the splitting</b> to work out what is adjacent to what. Then <b>assemble</b> the fragments into a structure consistent with the molecular formula and the degrees of unsaturation.</p>
+<p class="step-body">Certain patterns become recognizable with practice: a 3H triplet with a 2H quartet is an ethyl group; a 6H doublet with a 1H septet is an isopropyl; a 9H singlet is <i>tert</i>-butyl; and two 2H doublets in the aromatic region is a <i>para</i>-disubstituted ring.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — C₄H₈O₂ from three signals</span>
+<p><b>Data:</b> 1.3 ppm (3H, t), 2.0 ppm (3H, s), 4.1 ppm (2H, q). IR shows a strong peak at 1735.</p>
+<p>DoU = (8 + 2 − 8)/2 = 1, and the 1735 IR band says that one degree is an ester carbonyl.</p>
+<p>The triplet/quartet pair is an ethyl group, and the quartet at 4.1 puts that CH₂ on an oxygen — so it is OCH₂CH₃. The 3H singlet at 2.0 is a methyl with no neighbours, at a shift typical of alpha to a carbonyl.</p>
+<p>Assemble: CH₃–CO–O–CH₂CH₃, ethyl acetate. Every piece of data accounted for.</p>
+</div>
+
+<h3>What carries forward</h3>
+<p class="step-body">¹H NMR is the centrepiece of every structure-determination problem, and it works best alongside the others: IR for functional groups, mass spectrometry for the formula, ¹³C for the carbon count. The next section covers the carbon experiment, which is simpler to read and answers a different question.</p>

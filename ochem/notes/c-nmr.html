@@ -1,10 +1,61 @@
-<h3>Why ¹³C NMR is structurally simpler than ¹H NMR</h3>
-<p class="step-body">Carbon NMR detects the same underlying phenomenon as proton NMR (nuclear resonance in a magnetic field, shielded/deshielded by local electron density), but with two major practical differences. First, only the rare ¹³C isotope (about 1.1% of all carbon) is NMR-active, so ¹³C signals are inherently weak and typically require more sample or longer acquisition — this doesn't change the interpretation, just the practical difficulty of collecting the spectrum. Second, and more importantly for interpretation, ¹³C-to-¹³C splitting essentially never appears (the odds of two ¹³C atoms sitting adjacent in the same molecule are far too low, at roughly 1.1% × 1.1%), and ¹³C-to-¹H splitting is deliberately removed by an instrumental technique (proton decoupling). The result: a standard ¹³C spectrum shows exactly <b>one clean, unsplit peak per unique carbon environment</b> — far simpler to read at a glance than a ¹H spectrum's overlapping multiplets.</p>
-<h3>Chemical shift ranges for carbon, by type</h3>
-<p class="step-body">The same deshielding logic from ¹H NMR carries over, just recalibrated to carbon's much wider overall shift range (0-220 ppm, versus roughly 0-13 ppm for protons). Alkyl (sp³) carbons: 0-50 ppm. Carbon attached to O or N (sp³, still single-bonded): 50-90 ppm. Alkene or aromatic (sp²) carbons: 100-150 ppm. Nitrile or alkyne (sp) carbons: 65-90 ppm (an interesting exception to naive shift-vs-hybridization intuition, driven by additional shielding effects specific to the linear, cylindrically symmetric pi system). <b>Carbonyl carbons stand distinctly apart from everything else, far downfield at 160-220 ppm</b> — a carbonyl carbon's significant partial positive character (Aldehydes &amp; Ketones lesson) leaves it strongly deshielded, and this region is essentially unambiguous: a peak there means a carbonyl, full stop, with esters/acids around 165-185 ppm and ketones/aldehydes around 190-220 ppm.</p>
-<div class="notes-fact">Because the carbonyl region (160-220 ppm) is so cleanly separated from every other carbon type, a quick glance at whether a ¹³C spectrum has any peaks in that range is often the single fastest yes/no test for "does this molecule contain a carbonyl at all?"</div>
-<h3>Counting unique carbons: molecular symmetry directly determines peak count</h3>
-<p class="step-body">Just as chemically equivalent hydrogens produce one shared ¹H signal, chemically equivalent carbons (related by molecular symmetry) produce one shared ¹³C signal. A highly symmetric molecule shows fewer peaks than its total carbon count would suggest — para-xylene (1,4-dimethylbenzene), for example, has 8 total carbons but only 3 unique ¹³C environments (the two equivalent methyl carbons; the two ring carbons bearing them; and the four remaining ring C–H carbons, all equivalent to each other), directly reflecting its high symmetry.</p>
-<h3>DEPT: recovering the hydrogen-count information that decoupling threw away</h3>
-<p class="step-body">Removing all ¹H splitting (via decoupling) makes the spectrum easy to read but discards useful information: how many hydrogens are attached to each carbon. A specialized pulse sequence called <b>DEPT</b> (Distortionless Enhancement by Polarization Transfer) recovers this without reintroducing any splitting. It works by flipping peaks up or down, and changing their intensity, according to how many hydrogens sit on each carbon — so CH₃, CH₂, and CH carbons each get a distinguishable signature.</p>
-<p class="step-body">Quaternary carbons (no attached H at all) are identified a different way: they simply do not appear in the DEPT spectrum. They still show up normally in the ordinary decoupled spectrum, so a peak present in one and absent in the other is a quaternary carbon. Net result: a hydrogen count for every carbon, with no split multiplets to untangle.</p>
+<p class="step-body">Carbon NMR answers a question proton NMR cannot: how many distinct carbon environments does this molecule have? It is easier to read than a ¹H spectrum, because in its standard form every signal is a single clean peak — and that simplicity is precisely what makes it complementary rather than redundant.</p>
+
+<h3>Why ¹³C is structurally simpler</h3>
+<p class="step-body">Carbon NMR detects the same phenomenon as proton NMR — nuclear resonance in a magnetic field, modulated by local electron density — with two practical differences.</p>
+<p class="step-body"><b>Only ¹³C is NMR-active</b>, and it is just 1.1% of natural carbon (¹²C has no nuclear spin). So the signals are inherently weak and need more sample or longer acquisition. This affects how hard the spectrum is to collect, not how it is interpreted.</p>
+<p class="step-body"><b>The spectrum is not split.</b> ¹³C-to-¹³C coupling essentially never appears, since the chance of two ¹³C atoms sitting adjacent is about 1.1% × 1.1%, roughly one molecule in ten thousand. And ¹³C-to-¹H coupling is deliberately removed by <b>proton decoupling</b>, an instrumental technique. The result is exactly <b>one clean, unsplit peak per unique carbon environment</b>.</p>
+
+<div class="notes-pitfall"><b>Peak heights in a standard ¹³C spectrum are not proportional to carbon count.</b> The decoupling introduces intensity distortions, and carbons with no attached hydrogens relax slowly and appear weak. So ¹³C tells you <i>how many</i> environments there are but not how many carbons are in each. That is the price of the clean peaks, and it is why ¹³C is read for count and ¹H for quantity.</div>
+
+<h3>Chemical shift ranges</h3>
+<p class="step-body">The same deshielding logic applies, recalibrated to carbon's much wider range of roughly 0–220 ppm against the proton's 0–13.</p>
+<div class="notes-table-wrap">
+<table class="notes-table">
+<tr><th>Carbon type</th><th>ppm</th></tr>
+<tr><td>alkyl (sp³)</td><td>0–50</td></tr>
+<tr><td>C next to N</td><td>30–65</td></tr>
+<tr><td>alkyne (sp)</td><td>65–90</td></tr>
+<tr><td>C next to O</td><td>50–90</td></tr>
+<tr><td>alkene (sp²)</td><td>100–150</td></tr>
+<tr><td>aromatic</td><td>110–160</td></tr>
+<tr><td>nitrile</td><td>115–125</td></tr>
+<tr><td>ester / acid / amide C=O</td><td>165–185</td></tr>
+<tr><td>ketone / aldehyde C=O</td><td>190–220</td></tr>
+</table>
+</div>
+<p class="step-body">Alkyne carbons at 65–90 are an apparent exception to the usual hybridization-versus-shift intuition, sitting upfield of alkene carbons despite more s-character. The linear, cylindrically symmetric pi system produces an additional shielding effect that outweighs the expected trend.</p>
+
+<div class="notes-fact">The carbonyl region, 160–220 ppm, is cleanly separated from everything else, and a peak there means a carbonyl with essentially no ambiguity. A quick glance at whether a ¹³C spectrum has any peak above 160 is the fastest yes/no test for a carbonyl available — and where in that range it falls distinguishes a ketone or aldehyde (190–220) from an ester, acid or amide (165–185), matching the same electronic ordering as the IR frequencies.</div>
+
+<h3>Counting unique carbons: symmetry made visible</h3>
+<p class="step-body">Equivalent carbons, related by molecular symmetry, give one shared signal. So the number of peaks directly measures how symmetric a molecule is, and comparing the peak count with the molecular formula is often the single most decisive piece of structural evidence available.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — three isomers of C₈H₁₀</span>
+<p><i>o</i>-Xylene, <i>m</i>-xylene and <i>p</i>-xylene all have 8 carbons and nearly identical ¹H spectra. ¹³C separates them instantly.</p>
+<p><b><i>p</i>-Xylene:</b> 3 peaks. The two methyls are equivalent, the two substituted ring carbons are equivalent, and all four remaining ring CH carbons are equivalent.</p>
+<p><b><i>o</i>-Xylene:</b> 4 peaks. A mirror plane makes the two methyls and two pairs of ring carbons equivalent, leaving four environments.</p>
+<p><b><i>m</i>-Xylene:</b> 5 peaks. Lower symmetry again — the carbon between the two methyls is its own unique environment.</p>
+<p>Peak counting alone identifies which isomer you have.</p>
+</div>
+
+<h3>DEPT: recovering the hydrogen counts</h3>
+<p class="step-body">Decoupling makes the spectrum readable but throws away useful information: how many hydrogens sit on each carbon. <b>DEPT</b> — Distortionless Enhancement by Polarization Transfer — recovers it without reintroducing any splitting.</p>
+<p class="step-body">The standard experiment, DEPT-135, flips peaks up or down according to hydrogen count: CH and CH₃ carbons point <b>up</b>, CH₂ carbons point <b>down</b>, and quaternary carbons — with no attached hydrogen — do not appear at all.</p>
+<p class="step-body">Quaternary carbons are therefore identified by difference: present in the ordinary decoupled spectrum, absent from DEPT. And running a second experiment, DEPT-90, separates CH from CH₃, since only CH appears there. Between the two you get a complete hydrogen count for every carbon, with no multiplets to untangle.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — combining everything on C₄H₈O</span>
+<p><b>DoU:</b> (8 + 2 − 8)/2 = 1. <b>IR:</b> strong at 1715, no O–H. So a ketone, and that accounts for the one degree of unsaturation.</p>
+<p><b>¹³C:</b> four peaks — 8, 29, 37 and 209 ppm. Four environments for four carbons means no symmetry at all.</p>
+<p><b>DEPT:</b> 209 absent (quaternary — the carbonyl, as expected); 37 points down (a CH₂); 8 and 29 point up and appear in DEPT-135 but not DEPT-90, so both are CH₃.</p>
+<p>Assemble: a carbonyl, a CH₂ and two CH₃ groups, all inequivalent. That is CH₃–CO–CH₂–CH₃, butan-2-one. Note that acetone would have given only two ¹³C peaks, because its two methyls are equivalent — the peak count ruled it out immediately.</p>
+</div>
+
+<h3>How the four techniques fit together</h3>
+<p class="step-body">Each answers a different question, and a structure problem hands you several because no one of them is sufficient.</p>
+<p class="step-body"><b>Mass spec</b> gives the molecular weight and formula, and therefore the degrees of unsaturation. <b>IR</b> names the functional groups. <b>¹³C</b> counts the carbon environments and reveals symmetry. <b>¹H</b> maps the skeleton through shift, integration and coupling.</p>
+<p class="step-body">Work them in that order — formula, groups, symmetry, connectivity — and structure determination becomes a systematic procedure rather than a puzzle.</p>
+
+<h3>What carries forward</h3>
+<p class="step-body">¹³C is how you check a proposed structure quickly: count the environments your structure predicts, compare with the spectrum, and a mismatch means the structure is wrong. Combined with DEPT it fixes the hydrogen count on every carbon. The last section of the course supplies the molecular formula that all of this hangs on.</p>
