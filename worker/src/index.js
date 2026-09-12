@@ -73,6 +73,38 @@ function systemPrompt(course){
   return SHARED_RULES + (COURSE_RULES[course] || COURSE_RULES.nremt);
 }
 
+// Workers AI models do not agree on where the text goes: some return
+// {response}, some nest it under result, some use the OpenAI shape, and some
+// return the content as an array of parts. Reading only `response` made a
+// working model look like a broken one — the call succeeded and the answer was
+// thrown away as "Empty response".
+function extractText(result) {
+  if (!result) return '';
+  if (typeof result === 'string') return result.trim();
+
+  const candidates = [
+    result.response,
+    result.result?.response,
+    result.output_text,
+    result.choices?.[0]?.message?.content,
+    result.choices?.[0]?.text,
+    result.message?.content,
+    result.text,
+  ];
+
+  for (const candidate of candidates) {
+    if (typeof candidate === 'string' && candidate.trim()) return candidate.trim();
+    if (Array.isArray(candidate)) {
+      const joined = candidate
+        .map((part) => (typeof part === 'string' ? part : part?.text || part?.content || ''))
+        .join('')
+        .trim();
+      if (joined) return joined;
+    }
+  }
+  return '';
+}
+
 function corsHeaders(origin) {
   const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
   return {
@@ -157,10 +189,13 @@ export default {
     let lastError = null;
     for (const model of MODELS) {
       try {
-        const result = await env.AI.run(model, { messages, max_tokens: 400, temperature: 0.2 });
-        const answer = String(result?.response || '').trim();
+        const result = await env.AI.run(model, { messages, max_tokens: 500, temperature: 0.2 });
+        const answer = extractText(result);
         if (answer) return json({ answer, model }, 200, origin);
-        lastError = 'empty response from ' + model;
+        // Name the keys that did come back, so an unfamiliar response shape is
+        // a five-second fix instead of another round of guessing.
+        const shape = result && typeof result === 'object' ? Object.keys(result).join(',') : typeof result;
+        lastError = `${model} returned no text (fields: ${shape})`;
       } catch (err) {
         lastError = String(err);
         // Out of allowance is not a model problem — every model will refuse,
