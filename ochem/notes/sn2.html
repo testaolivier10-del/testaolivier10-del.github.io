@@ -1,11 +1,48 @@
+<p class="step-body">SN2 is the first real mechanism of the course, and it is worth learning thoroughly, because everything about it is characteristic: a rate law you can measure, a stereochemical outcome you can predict, and a steric dependence that explains itself. Almost every later mechanism is described by comparison with this one.</p>
+
 <h3>The setup</h3>
-<p class="step-body">A <b>nucleophile</b> (electron-rich — a lone pair or negative charge to donate) attacks an <b>electrophile</b> (electron-poor — has an atom that can accept that pair). In SN2, the nucleophile attacks an electrophilic carbon and kicks out a <b>leaving group</b>, all in a single step.</p>
-<h3>Finding the electrophilic carbon</h3>
-<p class="step-body">The leaving group (like Br or Cl) pulls electron density toward itself, leaving the carbon it's attached to short on electrons — that carbon is the electrophile, and it's where the nucleophile attacks.</p>
+<p class="step-body">A <b>nucleophile</b> attacks an electrophilic carbon and displaces a <b>leaving group</b>, all in a single concerted step. Nothing is formed before anything is broken; the two happen together, in one motion, through one transition state.</p>
+<p class="step-body">Finding the electrophilic carbon is the first move: the leaving group pulls electron density toward itself, leaving the carbon it is attached to short of electrons. That carbon is the target.</p>
+
 <h3>The two arrows</h3>
-<p class="step-body">Arrow 1: tail on the nucleophile's lone pair, head on the electrophilic carbon — the new bond forming. Arrow 2: tail on the C–leaving-group bond (starting at the carbon), head on the leaving group — the old bond breaking, with the leaving group keeping both electrons (a <b>heterolytic</b> bond break). Both arrows fire together, in one concerted step — that's the "2" in SN2 (bimolecular: rate depends on both nucleophile and substrate).</p>
-<div class="notes-fact">Backside attack: the nucleophile attacks from the side of the carbon exactly <b>opposite</b> the leaving group, since that's the only approach that doesn't collide with it. As the new bond forms on one side and the old one breaks on the other, the carbon's three other substituents flip through it — like an umbrella turning inside out in the wind. This inversion of configuration is a direct, testable signature of SN2, and it's why SN2 at a stereocenter always inverts R to S (or vice versa), using the R/S labels from Module 5.</div>
-<h3>Worked examples on this page</h3>
-<p class="step-body">HO⁻ + CH₃Br → CH₃OH + Br⁻. NC⁻ (cyanide) + CH₃Cl → CH₃CN + Cl⁻. In both, the nucleophile's lone pair attacks from the back side of the C–halogen bond, the halogen leaves with the bonding electrons, and the carbon inverts.</p>
-<h3>Rate law and solvent effects</h3>
-<p class="step-body">SN2 is bimolecular: rate = k[Nu][substrate] (both concentrations matter, unlike SN1). Favored by <b>polar aprotic</b> solvents (acetone, DMSO, DMF) — these leave the nucleophile's lone pair "naked" and reactive. <b>Polar protic</b> solvents (water, alcohols) hydrogen-bond to and cage the nucleophile, slowing SN2 — the same caging effect from the Nucleophiles lesson.</p>
+<p class="step-body"><b>Arrow 1:</b> tail on the nucleophile's lone pair, head on the electrophilic carbon — the new bond forming. <b>Arrow 2:</b> tail on the C–leaving-group bond, head onto the leaving group — the old bond breaking, with the leaving group taking both electrons (a <b>heterolytic</b> cleavage).</p>
+<p class="step-body">Both arrows fire together. That simultaneity is not a stylistic choice; it is the mechanism's defining claim, and it is what the "2" refers to — bimolecular, because two species are involved in the single rate-determining step.</p>
+<p class="step-body">In the transition state the carbon is momentarily bonded to five things: three fully, and two partially — a partial bond forming to the nucleophile and a partial bond breaking to the leaving group. It is sp²-hybridized at that instant, with the three spectator groups arranged in a plane and the nucleophile and leaving group on the axis perpendicular to it. This is a transition state, not an intermediate: it sits at an energy maximum and has no lifetime.</p>
+
+<div class="notes-fact">Backside attack: the nucleophile attacks from the side of the carbon exactly <b>opposite</b> the leaving group, 180° away, because that is the only approach that does not run into the leaving group's electron cloud. Orbital theory says the same thing more precisely — the nucleophile must donate into the C–LG antibonding (σ*) orbital, and that orbital's large lobe points directly away from the leaving group. As the new bond forms on one side and the old one breaks on the other, the three spectator groups sweep through the plane like an umbrella turning inside out in the wind.</div>
+
+<h3>Inversion of configuration</h3>
+<p class="step-body">The umbrella flip has a consequence you can test. If the carbon under attack is a stereocenter, SN2 <b>always inverts</b> its configuration — a clean, complete, one-for-one inversion known as <b>Walden inversion</b>. Every molecule inverts; there is no partial racemization, because there is no intermediate to lose stereochemical information.</p>
+<p class="step-body">One caution: inversion of the three-dimensional arrangement does not automatically mean the R/S letter changes. The descriptor depends on CIP priorities, and if the incoming nucleophile has a different priority rank from the departed leaving group, the label can stay the same while the geometry has genuinely inverted. Reason about the geometry first and assign the descriptor afterwards.</p>
+
+<div class="notes-example">
+<span class="k">Worked examples</span>
+<p><b>HO⁻ + CH₃Br → CH₃OH + Br⁻.</b> Hydroxide attacks the backside, bromide leaves with the bonding pair, methanol results. Methyl has no stereocenter, so there is nothing to invert — but the rate is the fastest of any substrate class.</p>
+<p><b>⁻CN + CH₃Cl → CH₃CN + Cl⁻.</b> Same mechanism, and synthetically valuable: it forms a carbon–carbon bond and installs a nitrile, which can later be hydrolyzed to a carboxylic acid or reduced to an amine.</p>
+<p><b>(S)-2-bromobutane + ⁻SH.</b> Backside attack inverts the center, giving the (R) thiol as a single enantiomer. One reaction, one product, no mixture — this is what makes SN2 so useful for stereochemical control.</p>
+</div>
+
+<h3>Steric effects: the dominant variable</h3>
+<p class="step-body">Backside attack requires the nucleophile to physically reach the carbon from behind, so substituents on that carbon slow the reaction down — steeply.</p>
+<div class="notes-table-wrap">
+<table class="notes-table">
+<tr><th>Substrate</th><th>Relative rate</th></tr>
+<tr><td>CH₃Br</td><td>~30</td></tr>
+<tr><td>CH₃CH₂Br (1°)</td><td>1</td></tr>
+<tr><td>(CH₃)₂CHBr (2°)</td><td>0.03</td></tr>
+<tr><td>(CH₃)₃CBr (3°)</td><td>~0 (no reaction)</td></tr>
+</table>
+</div>
+<p class="step-body">Six orders of magnitude from methyl to tertiary. A tertiary carbon simply has no accessible backside, and SN2 does not occur there at all — not slowly, but not at all. Branching one carbon further out matters too: neopentyl bromide, (CH₃)₃C–CH₂Br, is formally primary but reacts about 10⁵ times slower than ethyl bromide, because the adjacent quaternary carbon blocks the approach.</p>
+
+<h3>Rate law and solvent</h3>
+<p class="step-body">SN2 is bimolecular: <b>rate = k[Nu][substrate]</b>. Both concentrations appear, because both species are present in the single rate-determining step. Doubling either doubles the rate, and this is directly measurable — it is the experimental evidence that the mechanism is concerted.</p>
+<p class="step-body"><b>Polar aprotic</b> solvents (acetone, DMSO, DMF, acetonitrile) strongly favour SN2: they solvate the cation but leave the nucleophile's lone pair effectively naked and highly reactive. <b>Polar protic</b> solvents (water, alcohols) hydrogen-bond to the nucleophile and cage it, and that shell must be stripped away before attack — which can cost several orders of magnitude in rate. This is the caging effect from the Nucleophiles section of Module 2, and it is why the same reaction can run in minutes in DMSO and in days in methanol.</p>
+
+<div class="notes-pitfall"><b>SN2 never happens at a tertiary carbon, and never at an sp² carbon.</b> The tertiary case is steric. The sp² case — vinyl and aryl halides — is both steric and electronic: the backside of that carbon is blocked by the pi system, the C–X bond is shorter and stronger, and the carbon is less electrophilic. Proposing an SN2 on chlorobenzene is a mechanism error, not a slow reaction.</div>
+
+<h3>The four variables, summarized</h3>
+<p class="step-body">SN2 is favoured by: an <b>unhindered substrate</b> (methyl &gt; 1° &gt; 2°, never 3°); a <b>strong nucleophile</b>, usually anionic; a <b>good leaving group</b> (I⁻ &gt; Br⁻ &gt; Cl⁻ ≫ F⁻, or a sulfonate); and a <b>polar aprotic solvent</b>. Every one of those four appears again in the decision framework at the end of this chapter, and SN2 is the mechanism that wants each of them in its strongest form.</p>
+
+<h3>What carries forward</h3>
+<p class="step-body">SN2 is the template for concerted mechanisms generally, and its inversion is the basis of stereochemical planning in synthesis. It competes directly with E2 for the same substrates and reagents, which is the central judgement of this chapter. And backside attack into a σ* orbital reappears throughout the course — in epoxide opening, in halonium opening, and anywhere a three-membered ring is attacked in Module 8.</p>

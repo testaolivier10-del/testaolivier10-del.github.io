@@ -1,9 +1,55 @@
+<p class="step-body">You now have four mechanisms that compete for the same substrates. This section is the decision procedure: given a substrate, a reagent and a solvent, work out which of SN1, SN2, E1 and E2 you actually get. It is the most practically tested skill in the course, and it is reliable if you take the checks in order.</p>
+
 <h3>Step 1: substrate class rules mechanisms in or out</h3>
-<p class="step-body"><b>Methyl and primary</b> substrates: SN2 only (too little steric bulk to matter, and can't form a stable primary carbocation for SN1/E1). <b>Tertiary</b> substrates: SN2 is blocked entirely (too crowded for backside attack) — only SN1/E1 are possible, since a tertiary carbocation is easily accessible. <b>Secondary</b> substrates are the genuinely ambiguous case: sterically possible for SN2, but also capable of forming a (moderately stable) secondary carbocation for SN1/E1 — the decision comes down to the nucleophile/base and solvent.</p>
-<h3>Step 2: nucleophile/base strength decides bimolecular vs. unimolecular</h3>
-<p class="step-body">A <b>strong</b> nucleophile/base (like OH⁻, OR⁻, CN⁻) forces a bimolecular pathway (SN2 or E2) whenever sterically possible — it doesn't wait around for a slow ionization. A <b>weak</b> nucleophile/base (like H₂O, ROH) can't force a bimolecular reaction efficiently, so the reaction proceeds unimolecularly (SN1/E1) whenever the substrate can ionize at all.</p>
-<div class="notes-fact">Steric bulk in the base (like tert-butoxide) pushes secondary and tertiary substrates toward elimination over substitution, even when the base is technically strong — a bulky base has trouble threading into a crowded carbon for SN2, but can still reach an exposed, peripheral beta-hydrogen for E2.</div>
-<h3>Step 3: solvent tips substitution vs. elimination, and reinforces the mechanism</h3>
-<p class="step-body">The split that matters is whether the solvent has an O–H or N–H bond to hydrogen-bond with (protic) or not (aprotic) — see the Nucleophiles lesson, Module 2. <b>Polar aprotic solvents</b> (DMSO, acetone, DMF) have no such bond, so they leave a strong nucleophile/base unsolvated and highly reactive, reinforcing SN2/E2. <b>Polar protic solvents</b> (water, alcohols) solvate and stabilize cations and anions through hydrogen bonding, reinforcing SN1/E1, and also stabilizing a strong nucleophile enough to weaken it into behaving more like a base (favoring E2 over SN2 in borderline cases). <b>Heat</b> favors elimination over substitution across the board (E1 over SN1, E2 over SN2) because elimination has a more favorable entropy change, forming two smaller molecules from one.</p>
-<h3>Quick reference table</h3>
-<p class="step-body">Methyl/primary + strong Nu → SN2. Methyl/primary + strong bulky base → E2 (rare but possible with very bulky bases on primary substrates with beta-branching). Secondary + strong small Nu/base, aprotic → SN2/E2 mix (favors substitution if unhindered, elimination if branched or heated). Secondary or tertiary + weak Nu/base, protic solvent → SN1/E1 mixture. Tertiary + strong base → E2 exclusively (SN2 impossible).</p>
+<p class="step-body">This first check eliminates more possibilities than any other, so do it first.</p>
+<p class="step-body"><b>Methyl and primary.</b> SN2 only. There is too little steric bulk to block backside attack, and a primary carbocation is too unstable to form, which rules out both SN1 and E1. The one exception is a strong <i>bulky</i> base, which can force E2 even on a primary substrate.</p>
+<p class="step-body"><b>Tertiary.</b> SN2 is impossible — the backside is completely blocked. What remains is SN1 and E1 with weak reagents, or E2 with a strong base.</p>
+<p class="step-body"><b>Secondary.</b> The genuinely ambiguous case, where all four are possible in principle and the reagent and solvent decide. Most exam questions live here.</p>
+<p class="step-body">Two special classes override the general rule. <b>Allylic and benzylic</b> substrates are fast by every pathway — their cations are resonance-stabilized, and their SN2 transition states are also stabilized by the adjacent pi system. <b>Vinyl and aryl</b> halides do none of these reactions at all: SN2 is blocked by the sp² geometry, and vinyl and aryl cations are prohibitively unstable.</p>
+
+<h3>Step 2: the reagent decides bimolecular versus unimolecular</h3>
+<p class="step-body">A <b>strong</b> nucleophile or base — hydroxide, alkoxide, cyanide, azide, thiolate, acetylide, amide — forces a bimolecular pathway, SN2 or E2, whenever the substrate permits it. It does not wait around for a slow ionization.</p>
+<p class="step-body">A <b>weak</b> nucleophile or base — water, alcohols, carboxylic acids — cannot force a bimolecular reaction at a useful rate, so the reaction proceeds unimolecularly through whatever cation the substrate can form. Weak reagent plus ionizable substrate means SN1 and E1 together.</p>
+<p class="step-body">Having settled bimolecular versus unimolecular, decide substitution versus elimination by asking whether the reagent is better as a <b>nucleophile</b> or as a <b>base</b>.</p>
+<div class="notes-table-wrap">
+<table class="notes-table">
+<tr><th>Reagent type</th><th>Examples</th><th>Drives</th></tr>
+<tr><td>Strong Nu, weak base</td><td>I⁻, RS⁻, N₃⁻, ⁻CN</td><td>SN2</td></tr>
+<tr><td>Strong Nu and base</td><td>HO⁻, CH₃O⁻, EtO⁻</td><td>SN2 + E2</td></tr>
+<tr><td>Strong bulky base</td><td>t-BuO⁻, LDA, DBU</td><td>E2</td></tr>
+<tr><td>Weak Nu and base</td><td>H₂O, ROH</td><td>SN1 + E1</td></tr>
+</table>
+</div>
+
+<div class="notes-fact">A bulky base such as <i>tert</i>-butoxide pushes secondary and tertiary substrates toward elimination even though it is technically a strong reagent: it cannot thread into a crowded carbon for SN2, but it can still reach an exposed peripheral beta hydrogen for E2. This is the clearest practical demonstration that nucleophilicity and basicity are different properties — the same molecule is excellent at one and poor at the other.</div>
+
+<h3>Step 3: solvent and temperature reinforce the call</h3>
+<p class="step-body">The split that matters is protic versus aprotic — whether the solvent has an O–H or N–H available for hydrogen bonding.</p>
+<p class="step-body"><b>Polar aprotic</b> solvents (DMSO, DMF, acetone, acetonitrile) leave a strong nucleophile unsolvated and highly reactive, reinforcing SN2 and E2. <b>Polar protic</b> solvents (water, alcohols, acetic acid) stabilize both the developing cation and the departing anion, reinforcing SN1 and E1; they also cage a strong nucleophile enough to blunt it, which in borderline cases tips SN2 toward E2.</p>
+<p class="step-body"><b>Heat</b> favours elimination across the board — E1 over SN1, E2 over SN2 — because elimination forms two molecules from one and therefore gains entropy, and the TΔS contribution to ΔG grows with temperature. "Heat" or "reflux" in a set of conditions is a deliberate signal that elimination is intended.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — running the framework three times</span>
+<p><b>1-Bromobutane + NaCN in DMSO.</b> Step 1: primary, so SN2 only. Step 2: cyanide is a strong nucleophile and a weak base, which confirms SN2. Step 3: polar aprotic reinforces it. Product: pentanenitrile, clean SN2.</p>
+<p><b>2-Bromobutane + NaOEt in ethanol, heated.</b> Step 1: secondary, all four possible. Step 2: ethoxide is strong, so bimolecular — and it is a strong base as well as a nucleophile, so SN2 and E2 compete. Step 3: heat tips it to E2. Product: mainly but-2-ene, the Zaitsev alkene.</p>
+<p><b>2-Bromo-2-methylpropane in aqueous ethanol, warm.</b> Step 1: tertiary, so SN2 is out. Step 2: water and ethanol are weak, so unimolecular — SN1 and E1. Step 3: protic solvent reinforces it, warmth adds some elimination. Products: a mixture of <i>tert</i>-butanol, <i>tert</i>-butyl ethyl ether and isobutylene.</p>
+</div>
+
+<h3>Quick reference</h3>
+<div class="notes-table-wrap">
+<table class="notes-table">
+<tr><th>Substrate</th><th>Strong Nu, weak base</th><th>Strong base</th><th>Bulky base</th><th>Weak Nu/base</th></tr>
+<tr><td>methyl</td><td>SN2</td><td>SN2</td><td>SN2 (slow)</td><td>no reaction</td></tr>
+<tr><td>1°</td><td>SN2</td><td>SN2 &gt; E2</td><td>E2</td><td>no reaction</td></tr>
+<tr><td>2°</td><td>SN2</td><td>E2 &gt; SN2</td><td>E2</td><td>SN1 + E1</td></tr>
+<tr><td>3°</td><td>SN1 (slow)</td><td>E2</td><td>E2</td><td>SN1 + E1</td></tr>
+</table>
+</div>
+
+<div class="notes-pitfall"><b>Do not skip to the reagent.</b> The single most common error is reading "strong base" and answering E2 without first checking whether the substrate can do it, or reading "tertiary" and answering SN1 without noticing that the reagent is sodium ethoxide. Substrate first, reagent second, solvent third — every time, in that order.</div>
+
+<h3>Reading the evidence backwards</h3>
+<p class="step-body">Exam questions often run the other way: here is what happened, which mechanism was it? The diagnostics are clean. A rate that depends on the nucleophile means bimolecular; a rate that does not means unimolecular. Clean inversion at a stereocenter means SN2; racemization means SN1. A rearranged carbon skeleton means a carbocation, so SN1 or E1. A product whose alkene geometry traces to the starting diastereomer means E2. These are the observations the mechanisms were deduced from in the first place.</p>
+
+<h3>What carries forward</h3>
+<p class="step-body">This four-way framework is the model for every later competition in the course: 1,2- versus 1,4-addition in Module 11, substitution versus addition on aromatic rings in Module 13, and which carbonyl derivative reacts fastest in Module 10. The habit of asking "what does the substrate allow, what does the reagent want, what does the solvent reward" transfers directly.</p>
