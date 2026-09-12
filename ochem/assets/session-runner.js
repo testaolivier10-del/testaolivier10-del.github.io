@@ -515,6 +515,7 @@
     function handleAnswer(q, response, renderer, conceptId){
       var d = D.applyResult(q, response);
       renderer.lock(response, d.correct);
+      if(window.LevlSound) window.LevlSound.answer(d.correct);
 
       S.asked++;
       if(!S.isCheck) S.index++;

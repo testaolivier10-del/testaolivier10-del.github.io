@@ -12,7 +12,8 @@
      Row 1 (#site-header)  global chrome, identical everywhere:
                            back arrow -> hub, the LevlPrep wordmark, the
                            current course's name, and on the right the streak
-                           chip, level badge, account button and theme toggle.
+                           chip, level badge, account button, the mute switch
+                           for the correct-answer chime and the theme toggle.
      Row 2 (.course-nav)   the current course's section tabs.
 
    A page only needs an empty <div id="site-header"></div>; row 2 is injected
@@ -40,6 +41,35 @@
     '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
       '<path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c1.5 1 2 3 2 4.5A5.5 5.5 0 0111.5 21 6 6 0 016 15c0-5 4-6 4-9 0-1.5-.5-2.5-1-3.5C10.5 2 11 2 12 2z" fill="currentColor"/>' +
     '</svg>';
+
+  /* Two speaker glyphs for the correct-answer chime's mute switch: waves on when
+     it's on, a slash when it's muted. */
+  var SPEAKER_ON =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+      'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<path d="M11 5 6 9H3v6h3l5 4V5z" fill="currentColor" stroke="none"/>' +
+      '<path d="M15.5 8.5a5 5 0 010 7"/><path d="M18.5 5.5a9 9 0 010 13"/>' +
+    '</svg>';
+  var SPEAKER_OFF =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+      'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<path d="M11 5 6 9H3v6h3l5 4V5z" fill="currentColor" stroke="none"/>' +
+      '<path d="M16 9.5l5 5"/><path d="M21 9.5l-5 5"/>' +
+    '</svg>';
+
+  /* Keeps the button's icon, tooltip and aria-pressed in step with the stored
+     preference. Called on render and again on every change, including changes
+     that did not come from this button. */
+  function syncSoundButton(btn){
+    if(!btn || !window.LevlSound) return;
+    var on = window.LevlSound.isEnabled();
+    btn.innerHTML = on ? SPEAKER_ON : SPEAKER_OFF;
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    var label = on ? 'Turn answer sounds off' : 'Turn answer sounds on';
+    btn.setAttribute('aria-label', label);
+    btn.title = label;
+    btn.classList.toggle('is-muted', !on);
+  }
 
   function setTheme(mode){
     if(mode === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
@@ -131,6 +161,9 @@
           '<a href="' + cfg.progressHref + '" class="nav-streak" id="navStreak" title="Daily streak" hidden>' + FLAME_SVG + '<span id="navStreakCount">0</span></a>' +
           '<a href="' + cfg.progressHref + '" class="level-badge" id="levelBadge" title="Your level">L1</a>' +
           '<span id="accountSlot"></span>' +
+          (window.LevlSound
+            ? '<button type="button" class="theme-toggle sound-toggle" id="soundToggle"></button>'
+            : '') +
           '<button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>' +
         '</div>' +
       '</div>';
@@ -156,6 +189,13 @@
     if(window.StudyHubAccount) window.StudyHubAccount.renderAccountUI();
 
     wireOverflowFade(nav.querySelector('.course-nav__inner'));
+
+    var sound = document.getElementById('soundToggle');
+    if(sound && window.LevlSound){
+      syncSoundButton(sound);
+      window.LevlSound.onChange(function(){ syncSoundButton(sound); });
+      sound.addEventListener('click', function(){ window.LevlSound.toggle(); });
+    }
 
     var toggle = document.getElementById('themeToggle');
     if(toggle) toggle.addEventListener('click', function(){

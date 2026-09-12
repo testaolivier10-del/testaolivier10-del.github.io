@@ -18,7 +18,8 @@ assets/                Shared across every course
   theme.css            Design system (also loaded by nremt/ and ochem/)
   site-chrome.js       The two-row site header every course renders: row 1 is global
                          (back arrow, LevlPrep wordmark, course name, streak, level,
-                         account, theme), row 2 is that course's section tabs
+                         account, mute, theme), row 2 is that course's section tabs
+  chime.js             The correct-answer sound, shared by both courses
   account.js           One login for the whole site: Supabase auth + namespaced
                          cross-device sync (see Data & accounts)
   hub-progress.js      One shared level and one shared streak; per-subject XP
@@ -132,6 +133,31 @@ scripts/check-site.mjs   CI: broken-link + JSON-validity checks (see below)
 ```
 
 Both courses render the identical header from `assets/site-chrome.js`, so a page only needs an empty `<div id="site-header"></div>`; each course's nav module (`nremt/assets/nav.js`, `ochem/assets/ochem-nav.js`) supplies nothing but its course name and tab list. They also share the site-wide account, level and streak: every page loads `/assets/account.js` and `/assets/hub-progress.js`.
+
+### Answer sounds (`assets/chime.js`)
+
+Getting one right makes a sound. `window.LevlSound.answer(isCorrect)` is called
+from every place in either course that reveals a verdict the moment you answer —
+`ochem/assets/lesson-engine.js` (which every lesson and drill widget routes its
+feedback through), `ochem/assets/session-runner.js` (practice, review and the
+diagnostic), `ochem/assets/mechanism-page.js` plus the four mechanism pages with
+their own inline engines, and `nremt/sound-trainer.html`. It takes the verdict
+either way: a miss is silent but still has to be reported, because the chime's
+pitch climbs with a run of right answers and a miss is what drops it back down.
+
+`window.LevlSound.flourish(ratio)` is the longer version, for the moment a
+score appears — the end of an ochem practice or review session, the sound-trainer
+results, and the NREMT practice exam.
+
+That exam is the one page with no per-answer chime, deliberately: it withholds
+right/wrong until you submit, the way the real NREMT does, so a sound on
+selection would hand you the answer. It gets the flourish on the score reveal
+instead.
+
+Everything is synthesized with oscillators rather than played from a file, so
+there is nothing to download and nothing for the service worker to precache. The
+speaker button in the header mutes it, remembered in `localStorage` under
+`levl_sound`.
 
 ### Textbook (`ochem/learn.html`)
 

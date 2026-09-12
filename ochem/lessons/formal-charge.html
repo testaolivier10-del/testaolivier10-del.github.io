@@ -17,6 +17,7 @@
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
 <script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
@@ -146,7 +147,14 @@
     progLabel.textContent = 'Step ' + (step+1) + ' / ' + (TOTAL+1);
   }
   function feedbackHtml(id){ return '<div class="feedback" id="' + id + '"></div>'; }
-  function showFeedback(el, good, text){ el.className = 'feedback show ' + (good?'good':'bad'); el.textContent = text; }
+  /* Every verdict this page shows goes through here, so it is also where the
+     reward chime is sounded. The wrong case is reported too, to reset the
+     rising run the chime walks up on a streak. See /assets/chime.js. */
+  function showFeedback(el, good, text){
+    el.className = 'feedback show ' + (good?'good':'bad');
+    el.textContent = text;
+    if(window.LevlSound) window.LevlSound.answer(good);
+  }
   function nextButton(label, enabled){ return '<div class="actions"><button class="btn-press" id="nextBtn"' + (enabled?'':' disabled') + '>' + label + '</button></div>'; }
 
 

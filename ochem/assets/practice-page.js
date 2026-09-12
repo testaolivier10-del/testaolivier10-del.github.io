@@ -386,6 +386,10 @@
       concepts: Object.keys(S.conceptsTouched)
     });
 
+    // The score landing gets the longer version of the answer chime, pitched to
+    // how the run actually went.
+    if(window.LevlSound) window.LevlSound.flourish(asked ? S.correct / asked : 0);
+
     var touched = Object.keys(S.conceptsTouched).map(M.profile)
       .filter(function(p){ return p.attempts > 0; })
       .sort(function(a, b){ return a.strength - b.strength; });

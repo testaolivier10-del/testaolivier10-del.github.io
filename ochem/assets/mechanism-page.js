@@ -51,6 +51,17 @@
     if(rec) rec(correct, step, { concepts: cfg.concepts });
   }
 
+  /* Revealing a verdict and sounding it are one action, so they go through one
+     function — otherwise the arrow step and the choice step drift apart. Unlike
+     record() this fires on a stepped-back replay too: the chime tracks what the
+     page just told you, not what the mastery model chose to bank. The wrong case
+     is reported as well, to reset the chime's rising run. */
+  function reveal(fb, ok, html){
+    fb.className = 'feedback show ' + (ok ? 'good' : 'bad');
+    fb.innerHTML = html;
+    if(window.LevlSound) window.LevlSound.answer(ok);
+  }
+
   function updateProgress(){
     var pct = Math.round((step / (steps.length - 1)) * 100);
     progFill.style.width = Math.max(0, Math.min(100, pct)) + '%';
@@ -136,10 +147,9 @@
         note = 'Right as far as it goes — ' + (need - good.length) +
                ' more ' + (need - good.length === 1 ? 'arrow is' : 'arrows are') + ' needed.';
       }
-      fb.className = 'feedback show ' + (correct ? 'good' : 'bad');
-      fb.innerHTML = correct
+      reveal(fb, correct, correct
         ? '<b>That is it.</b> ' + cfg.why
-        : (note ? '<b>' + note + '</b> ' : '') + cfg.why;
+        : (note ? '<b>' + note + '</b> ' : '') + cfg.why);
       card.querySelector('#afterBox').innerHTML = nextBtn(cfg.nextLabel, true);
       card.querySelector('#nextBtn').addEventListener('click', advance);
     });
@@ -172,10 +182,9 @@
         record(ok, cfg);
         card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
         btn.classList.add(ok ? 'correct' : 'wrong');
-        fb.className = 'feedback show ' + (ok ? 'good' : 'bad');
-        fb.innerHTML = ok
+        reveal(fb, ok, ok
           ? '<b>Correct.</b> ' + cfg.why
-          : '<b>' + ((cfg.wrong && cfg.wrong[i]) || 'Not quite.') + '</b> ' + cfg.why;
+          : '<b>' + ((cfg.wrong && cfg.wrong[i]) || 'Not quite.') + '</b> ' + cfg.why);
         if(isFinal){
           if(M) M.noteLesson(CFG.topicId, 'mechanism');
           if(CU && CU.completeLessonRun) CU.completeLessonRun(CFG.topicId);

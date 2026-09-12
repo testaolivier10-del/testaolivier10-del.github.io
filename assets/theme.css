@@ -597,6 +597,13 @@ strong,b{font-weight:900;}
 }
 .theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
 
+/* The mute switch for the correct-answer chime. Same 34px circle as the theme
+   toggle, but carrying an SVG rather than a glyph, so the icon needs sizing and
+   the muted state needs to read as off at a glance. */
+.sound-toggle svg{width:17px;height:17px;display:block;}
+.sound-toggle.is-muted{color:var(--muted);border-color:var(--line);}
+.sound-toggle.is-muted:hover{color:var(--ink);}
+
 .account-btn{
   display:inline-flex;align-items:center;height:34px;padding:0 15px;
   border-radius:var(--radius-pill);border:2px solid var(--line);background:var(--white);

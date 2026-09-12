@@ -152,6 +152,9 @@
       concepts: Object.keys(S.conceptsTouched)
     });
 
+    // Same closing flourish Practice ends on, pitched to how the run went.
+    if(window.LevlSound) window.LevlSound.flourish(S.asked ? S.correct / S.asked : 0);
+
     var cleared = queue.length === 0;
     var touched = Object.keys(S.conceptsTouched).map(M.profile)
       .filter(function(p){ return p.attempts > 0; });

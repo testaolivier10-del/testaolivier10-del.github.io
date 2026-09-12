@@ -35,6 +35,7 @@
      because those read window.HubProgress while the page parses. -->
 <script src="../assets/account.js"></script>
 <script src="../assets/hub-progress.js"></script>
+<script src="../assets/chime.js"></script>
 <script src="../assets/site-chrome.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2175,6 +2176,12 @@ function showResults(){
   recordDomainStatsAll(domainStats);
   if(mode !== 'adaptive') recordStudyActivity(activeIndices.length);
   awardQuizXp(domainStats, score);
+
+  /* The one page on the site with no per-answer chime: this quiz withholds
+     right/wrong until you submit, the way the real exam does, so a sound on
+     selection would hand you the answer. The reward lands here instead, on the
+     score reveal, pitched to how the attempt went. */
+  if(window.LevlSound) window.LevlSound.flourish(score / activeIndices.length);
 
   document.getElementById('scoreBig').textContent = `${score}/${activeIndices.length}`;
   document.getElementById('scoreSub').textContent = `${Math.round(score/activeIndices.length*100)}% correct — completed in ${formatDuration(elapsed)}`;

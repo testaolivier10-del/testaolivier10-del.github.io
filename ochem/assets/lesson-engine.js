@@ -122,7 +122,15 @@
       window.OchemCurriculum.saveStep(topicId, step);
     }
     function feedbackHtml(id){ return '<div class="feedback" id="' + id + '"></div>'; }
-    function showFeedback(el, good, text){ el.className = 'feedback show ' + (good?'good':'bad'); el.textContent = text; }
+    /* Every lesson check and every hand-built drill widget reports its verdict
+       through here, which makes it the one place the reward chime has to be
+       wired for the whole lessons half of the course. The wrong case is passed
+       on too, so the chime's rising run resets on a miss. */
+    function showFeedback(el, good, text){
+      el.className = 'feedback show ' + (good?'good':'bad');
+      el.textContent = text;
+      if(window.LevlSound) window.LevlSound.answer(good);
+    }
     function nextButtonHtml(label, enabled){ return '<div class="actions"><button class="btn-press" id="nextBtn"' + (enabled?'':' disabled') + '>' + label + '</button></div>'; }
     function doneBoxHtml(){ return '<div class="actions" style="margin-top:8px;"><a href="' + notesHref + '" class="btn-press">Back to the textbook</a></div>'; }
 
