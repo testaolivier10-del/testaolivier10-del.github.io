@@ -20,6 +20,13 @@ assets/                Shared across every course
                          (back arrow, LevlPrep wordmark, course name, streak, level,
                          account, mute, theme), row 2 is that course's section tabs
   chime.js             The correct-answer sound, shared by both courses
+  tutor.js             The study assistant behind the mascot in the corner of every
+                         page. Indexes the current course's own material in the browser
+                         (NREMT's reference pages, or ochem's 62 note fragments listed by
+                         curriculum.js) and answers by quoting the passage that covers the
+                         question. Optionally posts the question plus those passages to an
+                         AI endpoint for a written answer; see worker/. site-chrome.js
+                         mounts it, so no page loads it directly
   account.js           One login for the whole site: Supabase auth + namespaced
                          cross-device sync (see Data & accounts)
   hub-progress.js      One shared level and one shared streak; per-subject XP
@@ -132,6 +139,9 @@ ochem/                 The Organic Chemistry course (beta)
                             the sitemap entries all come from it
     tool-shell.js          Shared chrome for a tool page
     tools/                 One script per tool
+worker/                Optional AI backend for the study assistant — a Cloudflare
+                         Worker on the Workers AI free allowance. The site works without
+                         it; see worker/README.md
 scripts/check-site.mjs   CI: broken-link + JSON-validity checks (see below)
 ```
 
@@ -226,6 +236,39 @@ Each subject calls `StudyHubAccount.registerNamespace(name, keys)` with the `loc
 - **Rank names are local.** Level 7 is "Rig Veteran" on NREMT, "Mechanism Marshal" on ochem, and "Veteran" on the hub page. Same rank, each subject keeps its own voice.
 
 Both keys are migrated once per device from the old NREMT-only records (`nremt_xp`, `nremt_streak`), so no existing user loses a level or a streak.
+
+## Study assistant (`assets/tutor.js`)
+
+A mascot sits in the corner of every page in both courses. It is mounted from
+`assets/site-chrome.js` rather than page by page, so all ~157 pages get it,
+including ochem's lessons, mechanisms and tools, and any page added later.
+
+It works in two layers, and the first one is always on:
+
+1. **Retrieval, in the browser.** On first open it indexes the current course's
+   own material — NREMT's reference pages, or ochem's note fragments, whose ids
+   come from `ochem/assets/curriculum.js` so a new topic is indexed without
+   touching the tutor. Ranking is BM25 with three adjustments the material
+   needed: a word and its expansions count as one concept (so "OPA" and
+   "oropharyngeal" reinforce rather than compete); a passage missing the
+   question's rarest content word is pushed down; and question-shaping words
+   ("indicated", "difference", "explain") are dropped from queries only, since
+   the rarest-word rule would otherwise read a qualifier as the subject.
+   Answers quote the matching passage and link back to it. Nothing leaves the
+   browser and it works offline.
+
+2. **An optional AI layer.** If an endpoint is saved under the assistant's gear
+   icon, the question and the retrieved passages are posted there and a model
+   writes the answer. It is grounded but not muzzled: it may rephrase,
+   analogize and connect topics, and it is told never to invent EMT protocol
+   specifics, doses or numeric criteria. Questions the course doesn't cover are
+   still answered, labelled as coming from outside the material. Any failure —
+   quota, outage, no endpoint — falls back to layer 1, so the feature degrades
+   instead of breaking.
+
+The page CSP allows `https://*.workers.dev` under `connect-src` so a deployed
+Worker can actually be reached; without that the browser blocks the call
+silently.
 
 ## Privacy
 

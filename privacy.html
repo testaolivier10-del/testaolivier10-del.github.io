@@ -6,7 +6,7 @@
 <link rel="apple-touch-icon" href="assets/icon.svg">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy — LevlPrep</title>
 <meta name="description" content="What LevlPrep stores, what leaves your browser, and what it doesn't. No ads, no trackers, no cookies — just one anonymous page counter and an optional account.">
@@ -77,11 +77,17 @@
           <li>No selling or sharing of personal information, under CCPA or otherwise.</li>
         </ul>
 
+        <h2>The study assistant</h2>
+        <p>The robot in the corner of every page answers by searching this site's own notes inside your browser. In that mode nothing is sent anywhere, and it works with no connection at all.</p>
+        <p>If AI answers are switched on, one thing does leave your browser: your question, plus the passages from this site that matched it, are sent to our assistant endpoint so an AI model can write the reply. Nothing identifying you goes with it — no account, no page counter, no id of any kind — and the conversation is not stored: it lives in the page until you close the tab. You can turn AI answers off at any time from the gear icon in the assistant, which returns it to searching your browser only.</p>
+        <p>Answers are study material, not medical or professional advice. For anything clinical, your protocols and medical direction are the authority.</p>
+
         <h2>Third parties your browser does contact</h2>
         <ul>
           <li><strong>Google Fonts</strong> serves the two typefaces. Google receives the request, including your IP address, as it would for any hosted file.</li>
           <li><strong>jsDelivr</strong> serves the Supabase client library, and only on pages where signing in is possible.</li>
           <li><strong>Wikimedia Commons</strong> serves three lung-sound recordings, and only if you press play on one in the sound trainer.</li>
+          <li><strong>Cloudflare</strong> runs the study assistant's AI model, and only if AI answers are switched on and you ask it something. It receives the question and the matching passages, as described above.</li>
           <li><strong>GitHub Pages</strong> hosts the site and, like any web host, sees the requests for it.</li>
         </ul>
 
