@@ -385,6 +385,12 @@
   // Ochem's own synced keys. 'hub' (level + streak) is registered separately
   // by hub-progress.js, so signing in carries both.
   if(window.StudyHubAccount){
-    window.StudyHubAccount.registerNamespace('ochem', ['ochem_progress', 'ochem_mastery_v1', KEY]);
+    window.StudyHubAccount.registerNamespace('ochem', [
+      'ochem_progress', 'ochem_mastery_v1', KEY,
+      // Which textbook sections you've read. Coverage, not competence — it
+      // never feeds mastery — but it's the kind of thing that's maddening to
+      // lose when you pick the course up on another device.
+      'ochem_textbook_read',
+    ]);
   }
 })();

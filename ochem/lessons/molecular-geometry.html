@@ -12,11 +12,12 @@
 <meta name="description" content="Use VSEPR to predict molecular shape from electron groups, including the lone-pair cases that trip everyone up.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/molecular-geometry.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -89,11 +81,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>The idea</h3><p class="step-body"><b>VSEPR</b> (valence shell electron pair repulsion) says electron groups — bonds <b>and</b> lone pairs — push each other as far apart as possible, since electrons repel each other. This is the same electron-group count from Hybridization, answering a different question: hybridization tells you which orbitals the central atom uses (sp³/sp²/sp), and VSEPR tells you the actual 3D shape those orbitals settle into.</p><p class="step-body">The catch: the <b>name</b> of the shape only counts atoms, not lone pairs — lone pairs are invisible in the name even though they\'re still there, pushing.</p>' +
-      '<div class="formula">4 groups (sp³) → tetrahedral base &nbsp;&middot;&nbsp; 3 (sp²) → trigonal planar &nbsp;&middot;&nbsp; 2 (sp) → linear</div>' +
-      '<h3>Worked examples</h3><p class="step-body">Methane (4 bonds, 0 lone pairs): all 4 groups are visible atoms → <b>tetrahedral</b>. Ammonia (3 bonds + 1 lone pair, 4 groups total): the lone pair is invisible in the name, so the 3 visible N–H bonds form a <b>trigonal pyramidal</b> shape. Water (2 bonds + 2 lone pairs): only the 2 O–H bonds are visible → <b>bent</b>. CO₂/BeF₂ (2 groups, 0 lone pairs): spread 180° apart → <b>linear</b>.</p>' +
-      '<div class="notes-fact">A lone pair, not shared between two nuclei, spreads out more than a bond does — pushing bonds closer together than the ideal angle. That\'s why NH₃\'s H–N–H angle is 107° and H₂O\'s H–O–H angle is 104.5°, both less than a perfect tetrahedron\'s 109.5°.</div>' +
-      '<h3>Beyond 4 groups</h3><p class="step-body">5 groups, 0 lone pairs → <b>trigonal bipyramidal</b> (3 equatorial + 2 axial, e.g. PCl₅). 6 groups, 0 lone pairs → <b>octahedral</b> (4 equatorial + 2 axial, e.g. SF₆). Rare in day-to-day organic molecules, but good to recognize for S/P compounds. (The Hybridization lesson\'s note applies here too: these shapes are real and well-confirmed experimentally, but the old "sp³d/sp³d²" explanation for why period 3+ atoms can do this has been superseded by atomic-size and ionic-character arguments, not genuine d-orbital mixing.)</p>',
     steps: [
       {
         type: 'explain',
@@ -156,15 +143,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

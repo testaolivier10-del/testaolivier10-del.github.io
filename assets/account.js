@@ -1,4 +1,4 @@
-/* Study Hub accounts — one login for the whole site.
+/* LevlPrep accounts — one login for the whole site.
 
    This used to live inside nremt/assets/nav.js, which meant only NREMT pages
    knew whether you were signed in. The Supabase session was never actually
@@ -205,7 +205,7 @@
       '<div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">' +
         '<button type="button" class="auth-modal-close" id="authModalClose" aria-label="Close">&times;</button>' +
         '<h2 id="authModalTitle">Sign in</h2>' +
-        '<p class="auth-modal-sub">One account for every subject on Study Hub. Sign in to sync your level, streak, and progress across devices. Everything still works without an account.</p>' +
+        '<p class="auth-modal-sub">One account for every subject on LevlPrep. Sign in to sync your level, streak, and progress across devices. Everything still works without an account.</p>' +
         '<form id="authForm">' +
           '<label>Email<input type="email" id="authEmail" required autocomplete="email"></label>' +
           '<label>Password<input type="password" id="authPassword" required autocomplete="current-password" minlength="6"></label>' +

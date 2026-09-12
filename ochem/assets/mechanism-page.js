@@ -69,7 +69,7 @@
   function doneBox(){
     return '<div class="actions" style="margin-top:8px;flex-wrap:wrap;">' +
       '<a href="../practice.html?topic=' + esc(CFG.topicId) + '" class="btn-press">Practise this</a>' +
-      '<a href="../learn.html" class="btn-press alt">Back to Learn</a>' +
+      '<a href="../learn.html" class="btn-press alt">Back to the textbook</a>' +
     '</div>';
   }
   function advance(){ step++; render(); }

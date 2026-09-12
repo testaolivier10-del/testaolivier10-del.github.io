@@ -12,11 +12,12 @@
 <meta name="description" content="Learn the acid-catalyzed mechanism for hemiacetal and acetal formation via a resonance-stabilized oxocarbenium ion, and why acetals make ideal protecting groups.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/acetals.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -70,11 +62,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>Step one: hemiacetal formation</h3><p class="step-body">Under acid catalysis, the carbonyl oxygen is protonated first, making the carbonyl carbon an even stronger electrophile (the same activation strategy as protonating an alcohol\'s OH, Module 8). An alcohol then attacks as the nucleophile — ordinary nucleophilic addition, exactly as in the previous lesson — forming a tetrahedral intermediate that, after losing the proton from oxygen, is called a <b>hemiacetal</b>: a carbon bonded to both an OH and an OR group.</p>' +
-      '<h3>Step two: loss of water forms an oxocarbenium ion</h3><p class="step-body">Under continued acid catalysis, the hemiacetal\'s OH is protonated and leaves as water (exactly like alcohol dehydration, Module 8) — but the resulting carbocation is special: it\'s directly stabilized by resonance donation from the adjacent oxygen\'s lone pair, forming an <b>oxocarbenium ion</b> (a resonance hybrid between a carbocation and an oxygen-stabilized C=O⁺ form). This resonance stabilization — the same delocalization-beats-a-localized-charge idea from the Resonance lesson, Module 2 — is why this normally-unfavorable ionization proceeds readily under mild acid catalysis.</p>' +
-      '<div class="notes-fact">The oxocarbenium ion is dramatically more stable than an ordinary alkyl carbocation because the adjacent oxygen lone pair can fully delocalize into the empty p orbital — the positive charge is really shared between carbon and oxygen, not localized on carbon alone.</div>' +
-      '<h3>Step three: a second alcohol completes the acetal</h3><p class="step-body">A second equivalent of alcohol then attacks the oxocarbenium ion (nucleophilic addition to this cation, not to a neutral carbonyl), and losing the final proton gives the <b>acetal</b>: a carbon bonded to two OR groups (no OH remaining). Every step in this sequence is reversible — running the whole process in reverse (acetal + water + acid catalyst) regenerates the original carbonyl plus two equivalents of alcohol.</p>' +
-      '<h3>Why acetals matter: protecting groups</h3><p class="step-body">A carbonyl is reactive toward nucleophiles (Nucleophilic Addition lesson), strong reducing agents (LiAlH₄), Grignards, and many other reagents you\'ll want to use elsewhere in a molecule during a multi-step synthesis. Converting it to an acetal temporarily removes that reactivity entirely — acetals are stable to base, to nucleophiles, and to reducing agents, reacting only under aqueous acid. This lets a chemist "protect" a carbonyl, perform unrelated chemistry elsewhere in the molecule, and then "deprotect" (hydrolyze the acetal back to the carbonyl) with dilute aqueous acid once that other chemistry is done — an essential practical strategy anywhere a molecule has more than one reactive functional group.</p>',
     steps: [
       {
         diagramHtml: window.OchemMolecules.svg('acetone-hemiacetal', { caption: 'One OH and one OR on the same carbon. Add a second alcohol under acid and the OH leaves as water — that is the step that turns a hemiacetal into a full acetal.' }),
@@ -179,15 +166,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

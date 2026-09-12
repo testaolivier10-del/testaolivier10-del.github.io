@@ -1,62 +1,15 @@
-/* Shared styling for Ochem pages beyond the root theme.css: the sub-nav bar,
-   module/topic list (Learn), and mastery bars (Mastery). Lesson-specific
+/* Shared styling for Ochem pages beyond the root theme.css: the textbook
+   (Learn) and the mastery bars (Mastery). The header and course tab row are
+   not here — those are site-wide chrome shared with NREMT, styled in
+   assets/theme.css and rendered by assets/site-chrome.js. Lesson-specific
    layout (like the SN2 mechanism scene) stays inline in its own page, same
    as the rest of the site's convention — this file is only for pieces used
    on 3+ pages. */
-
-.ochem-subnav{
-  position:sticky;top:var(--site-header-h,64px);z-index:20;
-  background:var(--white);border-bottom:var(--bw) solid var(--line);
-}
-.ochem-subnav__inner{
-  max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,56px);
-  display:flex;gap:clamp(14px,3vw,28px);overflow-x:auto;
-}
-.ochem-subnav a{
-  display:inline-block;padding:14px 2px;font:800 14px var(--font-ui);color:var(--muted);
-  text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap;
-}
-.ochem-subnav a:hover{color:var(--ink);}
-.ochem-subnav a.active{color:var(--accent);border-bottom-color:var(--accent);}
 
 .module-card{
   background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
   padding:20px 22px;box-shadow:var(--lift-sm);margin-bottom:16px;
 }
-.module-card__head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:4px;}
-.module-card__title{font:900 17px var(--font-ui);margin:0;}
-.module-card__mastery{font:900 13px var(--font-mono);color:var(--muted);white-space:nowrap;}
-.module-card__mastery.scored{color:var(--accent);}
-.topic-list{margin-top:12px;display:flex;flex-direction:column;gap:2px;}
-.topic-row-wrap{display:flex;align-items:center;gap:4px;}
-.topic-row-wrap .topic-row{flex:1;min-width:0;}
-.topic-notes-link{
-  flex-shrink:0;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;
-  text-decoration:none;font-size:14px;color:var(--muted);
-}
-.topic-notes-link:hover{background:var(--hover-tint);color:var(--accent);}
-
-/* Same shape as the notes link, one slot to its left: the hands-on
-   walkthrough for topics that have one. */
-.topic-mech-link{
-  flex-shrink:0;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;
-  text-decoration:none;font-size:15px;color:var(--muted);
-}
-.topic-mech-link:hover{background:var(--hover-tint);color:var(--accent);}
-.topic-row{
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:10px 12px;border-radius:10px;text-decoration:none;color:inherit;
-}
-a.topic-row:hover{background:var(--hover-tint);}
-.topic-row .name{font-size:14px;font-weight:700;}
-.topic-row.locked .name{color:var(--muted);}
-.topic-row .badge{
-  font:900 10.5px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;
-  padding:4px 10px;border-radius:var(--radius-pill);flex-shrink:0;
-}
-.topic-row .badge.ready{color:var(--accent);background:var(--tint-accent);}
-.topic-row .badge.soon{color:var(--muted);background:var(--track);}
-.topic-row .badge.score{color:var(--good-press);background:var(--tint-good);}
 
 .mstat-row{display:flex;align-items:center;gap:14px;padding:11px 0;border-bottom:1px solid var(--line-soft);}
 .mstat-row:last-child{border-bottom:0;}
@@ -617,4 +570,132 @@ a.topic-row:hover{background:var(--hover-tint);}
 .count-hint{
   font:900 13px var(--font-mono);color:var(--accent);
   text-align:center;margin-bottom:16px;
+}
+
+/* ==========================================================================
+   Textbook (learn.html) — a contents rail beside one chapter at a time.
+   ========================================================================== */
+.tb-shell{
+  max-width:1180px;margin:0 auto;padding:0 clamp(18px,3.5vw,48px);
+  display:grid;grid-template-columns:274px minmax(0,1fr);gap:clamp(24px,4vw,54px);
+  align-items:start;
+}
+
+/* --- contents rail --- */
+.tb-rail{
+  position:sticky;top:calc(var(--site-header-h,112px) + 18px);
+  max-height:calc(100vh - var(--site-header-h,112px) - 36px);
+  display:flex;flex-direction:column;gap:14px;padding:22px 0 26px;
+}
+.tb-rail-title{font:900 12px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0;}
+.tb-progress-row{display:flex;justify-content:space-between;font:800 12.5px var(--font-ui);color:var(--muted);margin-bottom:6px;}
+.tb-progress-track{height:6px;border-radius:99px;background:var(--line);overflow:hidden;}
+.tb-progress-fill{height:100%;background:var(--accent);border-radius:99px;transition:width .25s ease;}
+.tb-filter{
+  width:100%;box-sizing:border-box;padding:9px 12px;border-radius:10px;
+  border:var(--bw) solid var(--line);background:var(--white);color:var(--ink);
+  font:700 13px var(--font-ui);
+}
+.tb-filter:focus{outline:none;border-color:var(--accent);}
+.tb-contents{overflow-y:auto;flex:1;min-height:0;margin-right:-8px;padding-right:8px;}
+.tb-toc-empty{font:700 13px var(--font-ui);color:var(--muted);}
+
+.tb-toc-mod + .tb-toc-mod{margin-top:2px;}
+.tb-toc-modhead{
+  width:100%;display:flex;align-items:center;gap:9px;
+  background:none;border:0;padding:8px 6px;border-radius:8px;cursor:pointer;
+  font:800 13px var(--font-ui);color:var(--ink);text-align:left;
+}
+.tb-toc-modhead:hover{background:var(--hover-tint);}
+.tb-toc-num{
+  flex-shrink:0;width:20px;height:20px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--tint-accent);color:var(--accent);font:900 11px var(--font-mono);
+}
+.tb-toc-modtitle{flex:1;min-width:0;}
+.tb-toc-count{flex-shrink:0;font:800 11px var(--font-mono);color:var(--muted);}
+.tb-toc-count.complete{color:var(--accent);}
+.tb-toc-topics{display:none;padding:0 0 6px 29px;}
+.tb-toc-mod.open .tb-toc-topics{display:block;}
+.tb-toc-topic{
+  display:flex;align-items:center;gap:7px;padding:5px 6px;border-radius:7px;
+  font:700 12.5px var(--font-ui);color:var(--muted);text-decoration:none;
+}
+.tb-toc-topic:hover{background:var(--hover-tint);color:var(--ink);}
+.tb-toc-topic.current{color:var(--accent);background:var(--tint-accent);}
+.tb-toc-tick{
+  flex-shrink:0;width:13px;height:13px;border-radius:50%;
+  border:2px solid var(--line);
+}
+.tb-toc-topic.read .tb-toc-tick{background:var(--accent);border-color:var(--accent);}
+.tb-toc-topic.read .tb-toc-tick::after{
+  content:"";display:block;width:4px;height:7px;margin:0 auto;
+  border:solid var(--on-accent-fill);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px);
+}
+
+/* --- the chapter --- */
+.tb-main{padding:26px 0 60px;min-width:0;max-width:74ch;}
+.tb-chapter-head{border-bottom:var(--bw) solid var(--line);padding-bottom:18px;margin-bottom:8px;}
+.tb-chapter-eyebrow{font:900 11.5px var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 6px;}
+.tb-chapter-title{font:900 clamp(27px,4vw,36px) var(--font-ui);letter-spacing:-.02em;margin:0 0 8px;}
+.tb-chapter-meta{font:700 13px var(--font-ui);color:var(--muted);margin:0;}
+
+.tb-section{padding:30px 0 10px;border-bottom:var(--bw) solid var(--line);scroll-margin-top:calc(var(--site-header-h,112px) + 14px);}
+.tb-section:last-of-type{border-bottom:0;}
+.tb-section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px;}
+.tb-section-title{font:900 clamp(19px,2.4vw,23px) var(--font-ui);letter-spacing:-.01em;margin:0;}
+.tb-section-meta{display:flex;align-items:center;gap:9px;flex-shrink:0;}
+.tb-mastery{font:900 11.5px var(--font-mono);color:var(--accent);background:var(--tint-accent);padding:5px 9px;border-radius:var(--radius-pill);white-space:nowrap;}
+.tb-mastery.none{color:var(--muted);background:var(--hover-tint);}
+.tb-readtoggle{
+  display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+  border:2px solid var(--line);background:var(--white);color:var(--muted);
+  padding:4px 11px 4px 8px;border-radius:var(--radius-pill);
+  font:800 11.5px var(--font-ui);white-space:nowrap;
+}
+.tb-readtoggle:hover{border-color:var(--accent);color:var(--accent);}
+.tb-readtoggle.done{border-color:var(--accent);background:var(--tint-accent);color:var(--accent);}
+.tb-tick{width:13px;height:13px;border-radius:50%;border:2px solid currentColor;flex-shrink:0;}
+.tb-readtoggle.done .tb-tick{background:var(--accent);border-color:var(--accent);}
+.tb-readtoggle.done .tb-tick::after{
+  content:"";display:block;width:4px;height:7px;margin:0 auto;
+  border:solid var(--on-accent-fill);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px);
+}
+.tb-notes .step-body{font-size:15.5px;line-height:1.68;}
+.tb-loading{font:700 13px var(--font-ui);color:var(--muted);margin:0;}
+.tb-notes-error{color:var(--danger,#b3261e);}
+.tb-actions{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 4px;}
+.tb-soon{font:700 13px var(--font-ui);color:var(--muted);margin:6px 0 4px;}
+.tb-section-end{height:1px;}
+
+.tb-chapter-nav{display:flex;justify-content:space-between;gap:18px;margin-top:38px;}
+.tb-chapter-link{
+  display:flex;flex-direction:column;gap:4px;max-width:46%;
+  padding:14px 18px;border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  background:var(--white);text-decoration:none;
+}
+.tb-chapter-link:hover{border-color:var(--accent);}
+.tb-chapter-link.next{text-align:right;margin-left:auto;}
+.tb-chapter-link span{font:800 11.5px var(--font-ui);color:var(--muted);}
+.tb-chapter-link b{font:900 14.5px var(--font-ui);color:var(--ink);}
+
+/* --- contents as a drawer once the rail no longer fits beside the text --- */
+.tb-toc-btn{display:none;}
+@media (max-width:900px){
+  .tb-shell{grid-template-columns:minmax(0,1fr);gap:0;}
+  .tb-toc-btn{
+    display:inline-flex;align-items:center;gap:8px;margin:18px 0 0;
+    padding:9px 15px;border-radius:var(--radius-pill);cursor:pointer;
+    border:2px solid var(--line);background:var(--white);color:var(--ink);
+    font:800 13px var(--font-ui);
+  }
+  .tb-toc-btn:hover{border-color:var(--accent);color:var(--accent);}
+  .tb-rail{
+    display:none;position:static;max-height:none;padding:14px 0 0;
+    border-bottom:var(--bw) solid var(--line);
+  }
+  body.tb-toc-open .tb-rail{display:flex;}
+  .tb-contents{max-height:58vh;}
+  .tb-main{padding-top:16px;}
+  .tb-chapter-link{max-width:48%;}
 }

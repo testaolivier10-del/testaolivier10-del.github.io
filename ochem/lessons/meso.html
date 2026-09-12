@@ -12,11 +12,12 @@
 <meta name="description" content="Learn how a molecule with stereocenters can still be achiral overall — the meso compound exception to the 2^n stereoisomer rule, with tartaric acid as the classic example.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/meso.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -70,11 +62,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>The exception to 2ⁿ</h3><p class="step-body">Recall the 2ⁿ rule from the Stereocenters lesson: n stereocenters give a <i>maximum</i> of 2ⁿ stereoisomers. A <b>meso compound</b> is the reason that number is a maximum, not a guarantee: it\'s a molecule that has stereocenters, yet is <b>achiral overall</b> because it has an internal plane of symmetry, so two of its "expected" stereoisomers turn out to be the exact same achiral molecule.</p>' +
-      '<h3>Worked example: tartaric acid</h3><p class="step-body">Tartaric acid, HOOC–CH(OH)–CH(OH)–COOH, has two stereocenters, so the 2ⁿ rule predicts up to 4 stereoisomers. Two of them — (R,R) and (S,S) — are genuine, non-superimposable mirror images of each other: a real enantiomeric pair, both chiral. But the third combination, (R,S), turns out to have an internal mirror plane cutting the molecule in half, making the top stereocenter\'s local environment the exact mirror of the bottom one. This (R,S) form is superimposable on its own mirror image (which would be (S,R) — but that\'s the same molecule, just flipped end-to-end) — so it is achiral, a <b>meso compound</b>. The real count for tartaric acid is 3 stereoisomers, not 4: (R,R), (S,S), and meso.</p>' +
-      '<div class="notes-fact">The signature setup for a meso compound: a molecule that is symmetric end-to-end (the same sequence of groups reading from either end), with stereocenters arranged so that one "cancels out" the other\'s contribution to the overall shape.</div>' +
-      '<h3>How to test for meso</h3><p class="step-body">Draw the molecule out (a Fischer projection, covered next lesson, makes this easiest) and look for an internal mirror plane splitting it into two identical mirror-image halves. If you find one, the molecule is meso — despite having stereocenters, it is achiral, has no enantiomer of its own, and does not rotate polarized light (its specific rotation is exactly zero, since it\'s achiral).</p>' +
-      '<h3>Relationship between the three tartaric acid stereoisomers</h3><p class="step-body">(R,R)- and (S,S)-tartaric acid are enantiomers of each other. Meso-tartaric acid is a <b>diastereomer</b> of both (R,R) and (S,S) — it\'s a stereoisomer, but not their mirror image (its own mirror image is itself). Meso-tartaric acid also has a different melting point from the (R,R)/(S,S) pair, exactly as you\'d expect for a diastereomer relationship.</p>',
     steps: [
       {
         diagramHtml: window.OchemMolecules.svg('meso-tartaric-acid'),
@@ -155,15 +142,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

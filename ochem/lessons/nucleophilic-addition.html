@@ -12,11 +12,12 @@
 <meta name="description" content="Learn the universal tetrahedral-intermediate mechanism for nucleophilic addition to carbonyls, and see it applied to hydride reduction, Grignard addition, and imine formation.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/nucleophilic-addition.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -70,11 +62,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>The universal mechanism</h3><p class="step-body">Every nucleophilic addition to a carbonyl follows the same two-step skeleton.</p><p class="step-body"><b>Step 1:</b> the nucleophile attacks the electrophilic carbonyl carbon, and the pi electrons are pushed entirely onto oxygen. That leaves a tetrahedral alkoxide intermediate — the carbon has gone from sp² trigonal planar to sp³ tetrahedral, a real geometric change you can draw with a curved arrow (Curved Arrows lesson).</p><p class="step-body"><b>Step 2:</b> that alkoxide is protonated — by water, by an acid workup, or by any other proton source around — giving a neutral alcohol.</p><p class="step-body">One branch is worth flagging now. If the nucleophile itself carries a leaving group, step 2 can go differently: instead of simply picking up a proton, the tetrahedral intermediate collapses back down and reforms a C=O. That is the whole difference between addition and substitution, and it is what the next lesson (hemiacetals and acetals) and Module 10 (acyl substitution) are built on.</p>' +
-      '<h3>Hydride reduction: NaBH₄ and LiAlH₄</h3><p class="step-body">Both reagents deliver a hydride ion (H⁻) as the nucleophile, attacking the carbonyl carbon and reducing it to an alcohol. <b>NaBH₄</b> is milder and more selective — it reduces aldehydes and ketones but leaves carboxylic acid derivatives (esters, amides) alone. <b>LiAlH₄</b> is a much stronger, less selective hydride source that reduces essentially everything with a carbonyl, including esters, amides, and even carboxylic acids, all the way to alcohols (or amines, from amides).</p>' +
-      '<div class="notes-fact">Reducing a ketone gives a secondary alcohol; reducing an aldehyde gives a primary alcohol — the exact reverse of the alcohol oxidation ladder from Module 8, run backward.</div>' +
-      '<h3>Grignard and organolithium addition: building new C–C bonds</h3><p class="step-body">Grignard reagents (RMgX, made from an alkyl halide and Mg metal) and organolithiums (RLi) are powerful carbon nucleophiles — the carbon itself, bearing a full negative-charge character, attacks the carbonyl carbon directly. This forms a brand-new <b>carbon-carbon bond</b>, a rare and valuable outcome (alongside the acetylide SN2 chemistry from the Alkynes lesson). Addition to formaldehyde gives a primary alcohol; to any other aldehyde, a secondary alcohol; to a ketone, a tertiary alcohol — the alcohol\'s substitution class is set directly by how many carbon groups were already on the carbonyl carbon before addition.</p>' +
-      '<h3>Imine and enamine formation with amines</h3><p class="step-body">A primary amine (R–NH₂) adds to a carbonyl exactly like any other nucleophile, forming a tetrahedral intermediate — but this one has a proton on nitrogen and a hydroxyl on carbon, both of which can be lost as water in a subsequent elimination step, forming a C=N double bond: an <b>imine</b>. A secondary amine (R₂NH) can\'t form a stable imine (no N–H left to lose after the second dehydration step) and instead forms an <b>enamine</b> (a C=C conjugated with nitrogen\'s lone pair) via a slightly different elimination pathway. This addition-then-elimination pattern — building a tetrahedral intermediate, then kicking out water to reform a pi bond — is the direct mechanistic bridge into Module 12 (Amines) and reappears throughout Module 11 (Enolate Chemistry).</p>',
     steps: [
       {
         diagramHtml: window.OchemMolecules.svg('acetaldehyde', { caption: 'The carbonyl carbon is electron-poor because oxygen pulls the pi electrons toward itself. A nucleophile attacks there, and the pi electrons go up onto the oxygen.' }),
@@ -178,15 +165,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

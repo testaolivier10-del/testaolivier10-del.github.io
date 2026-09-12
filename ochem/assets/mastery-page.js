@@ -141,7 +141,7 @@
     });
     recCards.push(nextUnlocked
       ? '<div class="rec-card"><div class="k">Start here</div><div class="v"><a href="' + nextUnlocked.href + '">' + esc(nextUnlocked.title) + ' &rarr;</a></div></div>'
-      : '<div class="rec-card"><div class="k">Get started</div><div class="v"><a href="learn.html">Open the curriculum &rarr;</a></div></div>');
+      : '<div class="rec-card"><div class="k">Get started</div><div class="v"><a href="learn.html">Open the textbook &rarr;</a></div></div>');
   }
   set('recRow', recCards.join(''));
 

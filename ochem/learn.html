@@ -8,45 +8,39 @@
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Learn — Organic Chemistry Curriculum</title>
-<meta name="description" content="The full Organic Chemistry I curriculum: 14 modules from foundations through spectroscopy, each broken into focused, interactive lessons.">
+<title>Learn — The Organic Chemistry Textbook</title>
+<meta name="description" content="The whole Organic Chemistry I course as one textbook: 14 chapters from foundations through spectroscopy, 62 sections, each linked to its interactive lesson.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/learn.html">
 <link rel="stylesheet" href="../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../assets/account.js"></script>
 <script src="../assets/hub-progress.js"></script>
+<script src="../assets/site-chrome.js"></script>
 <script src="assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="assets/ochem.css">
-<link rel="stylesheet" href="assets/periodic-table.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
-<style>
-  .learn-shell{max-width:820px;margin:0 auto;}
-</style>
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
-<div class="xshell learn-shell">
-  <div class="hero" style="padding-bottom:0;">
-    <div class="eyebrow">Organic Chemistry I</div>
-    <h1 style="margin-bottom:4px;">The full curriculum.</h1>
-    <p class="lede" style="margin-top:0;">Fourteen modules, foundations through spectroscopy. Each concept builds on the one before it — lessons unlock as they're built.</p>
-  </div>
+<div class="tb-shell">
+  <button type="button" class="tb-toc-btn" id="tbContentsToggle" aria-controls="tbContents">&#9776; Contents</button>
 
-  <div class="xsection" style="padding-top:0;" id="moduleList"></div>
+  <aside class="tb-rail">
+    <p class="tb-rail-title">Contents</p>
+    <div id="tbProgress"></div>
+    <label class="sr-only" for="tbFilter">Find a section</label>
+    <input type="search" class="tb-filter" id="tbFilter" placeholder="Find a section&hellip;" autocomplete="off">
+    <nav id="tbContents" aria-label="Textbook contents"></nav>
+  </aside>
+
+  <main class="tb-main" id="tbMain">
+    <noscript><p class="step-body">The textbook needs JavaScript to load its chapters.</p></noscript>
+  </main>
 </div>
 
 <script src="assets/curriculum.js"></script>
@@ -57,16 +51,6 @@
   window.OCHEM_BASE = '';
 </script>
 <script src="assets/ochem-nav.js"></script>
-<script src="assets/periodic-table.js"></script>
-<script src="assets/learn-page.js"></script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
-</script>
+<script src="assets/textbook.js"></script>
 </body>
 </html>

@@ -12,11 +12,12 @@
 <meta name="description" content="Learn what enantiomers are, why they share nearly all physical properties except optical rotation, and how they interact differently with a chiral environment.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/enantiomers.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -70,11 +62,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>The definition</h3><p class="step-body"><b>Enantiomers</b> are a pair of stereoisomers that are non-superimposable mirror images of each other — exactly the chirality relationship from the first lesson, now applied to a specific pair of molecules. A single stereocenter has exactly two possible configurations, and a molecule with one stereocenter and its mirror image are enantiomers of each other.</p>' +
-      '<h3>Identical physical properties — with one exception</h3><p class="step-body">Enantiomers have identical melting points, boiling points, density, solubility, and reactivity with achiral reagents — every ordinary physical measurement gives the same answer for both. The one exception: they rotate <b>plane-polarized light</b> in opposite directions by the same magnitude. This property is called <b>optical activity</b>, and it\'s historically how enantiomers were first discovered and told apart, long before anyone understood molecular structure.</p>' +
-      '<div class="notes-fact">A molecule that rotates polarized light clockwise (viewed facing the oncoming beam) is labeled (+) or <i>d</i> (dextrorotatory); one that rotates it counterclockwise is (−) or <i>l</i> (levorotatory). This (+)/(−) label describes an experimentally measured direction of rotation and has no fixed relationship to the R/S configuration label you\'ll learn in a later lesson — you cannot predict (+) or (−) just by looking at a structure.</div>' +
-      '<h3>Specific rotation: a quantitative measurement</h3><p class="step-body">The exact amount of rotation is reported as <b>specific rotation</b>, [α], measured in a polarimeter and normalized for concentration and path length: [α] = α / (l × c), where α is the observed rotation in degrees, l is the path length in decimeters, and c is concentration in g/mL. Pure (+)-enantiomer and pure (−)-enantiomer of the same compound have specific rotations that are exact opposites (equal magnitude, opposite sign).</p>' +
-      '<h3>Why they behave differently in biology</h3><p class="step-body">Even though enantiomers are identical in an achiral environment, they can behave completely differently in a <b>chiral environment</b> — like the active site of an enzyme, which is itself chiral. Only one enantiomer may fit properly, the same way only one of your hands fits comfortably into a right-handed glove. This is the molecular basis for why drug enantiomers can have dramatically different biological effects, even though they\'d be indistinguishable by melting point or boiling point.</p>',
     steps: [
       {
         diagramHtml: window.OchemMolecules.svg('bromochlorofluoromethane', { caption: 'One stereocenter, so exactly two forms exist: this one and its non-superimposable mirror image. Same bonds, same energies, opposite handedness.' }),
@@ -159,15 +146,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

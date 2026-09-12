@@ -12,11 +12,12 @@
 <meta name="description" content="Learn the drawing convention behind Fischer projections, how to convert them to and from wedge-dash structures, and why they're the standard tool for carbohydrate stereochemistry.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/fischer.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -103,11 +95,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>The drawing convention</h3><p class="step-body">A <b>Fischer projection</b> draws a stereocenter as a simple cross: a horizontal line and a vertical line crossing at the carbon (the carbon itself is usually left off, implied at the intersection). The convention that makes this work in 3D: <b>horizontal</b> lines represent bonds pointing <b>toward the viewer</b> (out of the page, like a wedge), and <b>vertical</b> lines represent bonds pointing <b>away from the viewer</b> (into the page, like a dash).</p>' +
-      '<h3>Why this convention exists</h3><p class="step-body">This convention comes from drawing the molecule\'s carbon backbone in a specific curved, "C-shape" orientation — vertical bonds naturally point back and away, horizontal bonds naturally point forward. Chemists (originally Emil Fischer, working out carbohydrate structures) adopted this as a fast shorthand instead of drawing full 3D wedge-dash structures every time.</p>' +
-      '<div class="notes-fact">Because the vertical bonds point away from you by convention, a Fischer projection\'s vertical-chain carbon (usually the highest-priority chain direction, like toward the CHO group in a sugar) is already oriented correctly for the R/S "lowest priority away from you" rule — as long as the lowest-priority group happens to be on a vertical position. If the lowest-priority group is on a horizontal position instead, use the flip-the-answer trick from the R/S lesson.</div>' +
-      '<h3>Rules for manipulating a Fischer projection safely</h3><p class="step-body">Two operations preserve the actual stereochemistry (don\'t change what molecule you\'re looking at): <b>(1)</b> rotating the entire projection 180° in the plane of the page, and <b>(2)</b> holding one group fixed and rotating the other three amongst themselves. One operation that <b>breaks</b> it (silently converts the molecule into its enantiomer): swapping any two groups a single time, or rotating the whole projection 90°. Swapping two groups twice, however, gets you back to the original — an even number of swaps preserves the molecule, an odd number inverts it.</p>' +
-      '<h3>Why Fischer projections are still used today</h3><p class="step-body">Fischer projections remain the standard way to draw sugars (carbohydrates) specifically because sugars often have many stereocenters in a single chain (glucose has four), and the vertical stacked-cross format makes comparing multiple stereocenters at a glance far easier than drawing repeated wedge-dash structures. You\'ll see this format used constantly if you continue into biochemistry.</p>',
     steps: [
       {
         type: 'explain',
@@ -201,15 +188,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

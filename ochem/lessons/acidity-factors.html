@@ -12,11 +12,12 @@
 <meta name="description" content="Learn the ARIO framework — Atom, Resonance, Induction, Orbital — for predicting and explaining relative acidity, with real periodic trends and pKa examples.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/acidity-factors.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -72,11 +64,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>The ARIO framework</h3><p class="step-body">When comparing the acidity of two H atoms, walk through four questions in order: <b>A</b>tom (what atom holds the negative charge in the conjugate base — bigger and more electronegative is more stable), <b>R</b>esonance (can the negative charge delocalize?), <b>I</b>nduction (are electronegative atoms nearby pulling electron density away inductively?), <b>O</b>rbital (what hybridization is the atom holding the charge — more s-character is more stable). Atom effects are usually the biggest, so check that first; the others break ties.</p>' +
-      '<h3>Atom effects: two trends, two different reasons</h3><p class="step-body"><b>Across a period</b> (left to right), acidity increases with electronegativity: C–H (pKa ≈ 50) &lt; N–H (≈ 38) &lt; O–H (≈ 16) &lt; F–H (≈ 3.2). More electronegative atoms hold negative charge more comfortably.</p><p class="step-body"><b>Down a group</b>, acidity increases even though electronegativity decreases: H–F (pKa 3.2) &lt; H–Cl (≈ −7) &lt; H–Br (≈ −9) &lt; H–I (≈ −10). Size wins here — a larger atom spreads the negative charge over a bigger volume (more polarizable electron cloud), which stabilizes it more than the electronegativity difference costs. This trend often surprises students because it runs opposite to the periodic table\'s electronegativity arrow.</p>' +
-      '<div class="notes-fact">Rule of thumb: down a group, size dominates and acidity increases with atom size; across a period, electronegativity dominates and acidity increases with electronegativity. Different rows on the periodic table, different reasons.</div>' +
-      '<h3>Resonance and induction</h3><p class="step-body">Carboxylic acids (pKa ≈ 4.76) are far more acidic than alcohols (pKa ≈ 16) mainly because of <b>resonance</b>: the carboxylate anion delocalizes its negative charge over two equivalent oxygens (exactly like the acetate example from the Resonance lesson), while an alkoxide keeps its full negative charge on one oxygen. <b>Induction</b> is a separate, additive effect: chloroacetic acid (ClCH₂COOH, pKa ≈ 2.87) is more acidic than acetic acid (pKa 4.76) because the electronegative chlorine pulls electron density away from the carboxylate through the sigma bonds, stabilizing the negative charge further — and this effect fades quickly with distance (an extra carbon between the Cl and the COOH sharply reduces the effect).</p>' +
-      '<h3>Orbital hybridization</h3><p class="step-body">Comparing C–H acidity: terminal alkyne C–H (sp, pKa ≈ 25) &gt; alkene C–H (sp², pKa ≈ 44) &gt; alkane C–H (sp³, pKa ≈ 50). More s-character means the orbital holding the lone pair (in the conjugate base) is closer to the nucleus and lower in energy, stabilizing the negative charge. This is purely an orbital effect — none of the other three factors differ between these three C–H bonds.</p>',
     steps: [
       {
         diagramHtml: window.OchemMolecules.svg('acetate-ion', { caption: 'Acetic acid’s conjugate base. The charge is not parked on one oxygen — resonance spreads it over both equally, and that delocalisation is most of why acetic acid is eleven pKa units stronger than ethanol.' }),
@@ -188,15 +175,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

@@ -12,11 +12,12 @@
 <meta name="description" content="Learn why benzene undergoes substitution instead of addition, the arenium ion intermediate mechanism, and the major EAS reactions: halogenation, nitration, sulfonation, and Friedel-Crafts.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/eas.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -70,11 +62,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>Why substitution, not addition</h3><p class="step-body">Benzene\'s pi electrons can attack an electrophile exactly like an alkene\'s (Module 7 addition reactions) — but the resulting carbocation, called an <b>arenium ion</b> (or Wheland intermediate), has broken the ring\'s full conjugation at one carbon (now sp³), destroying the ~36 kcal/mol of aromatic stabilization energy (Aromaticity lesson). Rather than let a nucleophile trap that carbocation (which would give a non-aromatic addition product, permanently losing that stabilization), the ring instead loses a proton from the same carbon that the electrophile attacked, restoring full conjugation and regenerating the aromatic ring. Net result: a hydrogen has been replaced by the electrophile — <b>substitution</b>, not addition — because reforming the enormously stable aromatic ring is thermodynamically overwhelming.</p>' +
-      '<h3>The arenium ion is resonance-stabilized (but still not aromatic)</h3><p class="step-body">The positive charge in the arenium ion delocalizes over three ring carbons via resonance (ortho and para to the point of attack relative to the sp³ carbon) — real stabilization, but nowhere close to full aromatic stabilization, since the ring\'s continuous conjugation is still broken at the sp³ carbon. This partial stabilization is exactly why EAS reactions still require a genuinely reactive electrophile (usually generated with help from a Lewis acid catalyst) rather than proceeding as readily as, say, SN1 solvolysis.</p>' +
-      '<div class="notes-fact">Because deprotonation (loss of H⁺ to restore aromaticity) is thermodynamically so favorable, the arenium ion formation step — the electrophile actually attacking the ring — is essentially always the slow, rate-determining step of any EAS reaction.</div>' +
-      '<h3>The major EAS reactions and how each electrophile is generated</h3><p class="step-body"><b>Halogenation</b> (Br₂ or Cl₂ with a Lewis acid catalyst like FeBr₃ or AlCl₃): the Lewis acid polarizes the X–X bond, generating a strong enough electrophile (X⁺, effectively) to attack the ring. <b>Nitration</b> (HNO₃/H₂SO₄): sulfuric acid protonates nitric acid, which then loses water to form the nitronium ion (NO₂⁺), a potent electrophile. <b>Sulfonation</b> (SO₃/H₂SO₄): SO₃ itself is directly electrophilic at sulfur, no further activation needed. <b>Friedel-Crafts alkylation</b> (RCl/AlCl₃): the Lewis acid helps ionize the alkyl halide to a carbocation (or a strongly polarized complex), which attacks the ring exactly like the carbocation electrophiles from Module 7. <b>Friedel-Crafts acylation</b> (RCOCl/AlCl₃): the Lewis acid similarly helps generate a resonance-stabilized acylium ion (RCO⁺), which attacks the ring to install a ketone directly onto it.</p>' +
-      '<h3>A key limitation: Friedel-Crafts alkylation carbocations can rearrange</h3><p class="step-body">Because Friedel-Crafts alkylation proceeds through a genuine carbocation intermediate, it inherits the exact same rearrangement risk from SN1/E1 chemistry (Module 6) — a less stable carbocation can shift (via hydride or alkyl shift) to a more stable one before ever attacking the ring, giving an unexpected substitution pattern. Friedel-Crafts acylation avoids this entirely: the acylium ion is already resonance-stabilized by the adjacent oxygen (similar to the oxocarbenium ion from the Acetals lesson) and has no driving force to rearrange, which is why acylation is often used deliberately as a workaround when a clean, unrearranged alkyl substituent pattern is needed (the resulting ketone can then be reduced back to a simple alkyl group in a separate step).</p>',
     steps: [
       {
         diagramHtml: window.OchemMolecules.svg('benzene', { caption: 'Benzene will not do the addition an ordinary alkene does — the aromatic ring is worth too much to give up. It substitutes instead, and gets its aromaticity back at the end.' }),
@@ -179,15 +166,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

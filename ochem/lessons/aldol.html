@@ -12,11 +12,12 @@
 <meta name="description" content="Learn how an enolate attacks a second carbonyl to form a new C-C bond in the aldol reaction, and how heat drives dehydration to an enone.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/aldol.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -70,11 +62,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>The enolate as a carbon nucleophile</h3><p class="step-body">The carbon-centered resonance contributor of an enolate (Alpha Hydrogens lesson) means the alpha carbon itself carries real nucleophilic character, even though most of the negative charge sits formally on oxygen. Given a second carbonyl to attack, the enolate\'s alpha carbon behaves exactly like any other carbon nucleophile from this course (an acetylide, Alkynes lesson, or a Grignard, Nucleophilic Addition lesson) — it attacks the electrophilic carbonyl carbon of a second molecule, forming a new C–C bond.</p>' +
-      '<h3>The aldol reaction, step by step</h3><p class="step-body">(1) Base removes an alpha hydrogen from one carbonyl molecule, forming its enolate. (2) That enolate\'s alpha carbon attacks the carbonyl carbon of a <b>second</b> carbonyl molecule (which can be a second molecule of the same compound, or a different one), exactly as in ordinary nucleophilic addition (pi electrons move to oxygen, forming a tetrahedral alkoxide). (3) The alkoxide is protonated, giving the final product: a <b>beta-hydroxy carbonyl</b> — a molecule with a new OH group sitting exactly two carbons away from the (unreacted) carbonyl that\'s left over from the original enolate-forming molecule.</p>' +
-      '<div class="notes-fact">The name "aldol" itself literally describes the product: ALD(ehyde) + (alcoh)OL — a molecule containing both a carbonyl and a hydroxyl. The same reaction with ketone starting materials is still called an aldol reaction even though no aldehyde may be present in a mixed case.</div>' +
-      '<h3>Aldol condensation: heat pushes further, to an enone</h3><p class="step-body">The beta-hydroxy carbonyl aldol product has its own alpha hydrogen sitting between the new OH and the carbonyl — a setup that\'s primed for an E1cb-style elimination (an alpha deprotonation followed by loss of the beta-hydroxyl as a leaving group, conjugating the new C=C directly with the carbonyl). Under heat (or with continued acid/base catalysis and time), this dehydration proceeds spontaneously, because the product — an <b>enone</b> (a carbonyl conjugated with a C=C, i.e. an alpha,beta-unsaturated carbonyl) — is resonance-stabilized and thermodynamically more stable than the isolated aldol product. This overall two-stage sequence (aldol addition, then dehydration) is called an <b>aldol condensation</b>.</p>' +
-      '<h3>Crossed aldol reactions and why they need control</h3><p class="step-body">Mixing two different carbonyl compounds, each with its own alpha hydrogens, in principle allows four different aldol products (each compound\'s enolate could attack either compound\'s carbonyl) — an unselective mess in the general case. Selectivity is achieved either by using one component with no alpha hydrogens at all (so it can only act as the electrophile, never form its own enolate — a classic strategy using aromatic aldehydes, previewed further in Module 13), or by using a strong, bulky base like LDA at low temperature to fully and irreversibly convert only one component to its enolate before the second component is even added.</p>',
     steps: [
       {
         diagramHtml: window.OchemMolecules.svg('acetone', { caption: 'Acetone. The alpha hydrogens are the ones on the methyl carbons flanking the C=O, at about pKa 20 — and they are the reason this molecule can be made to attack a second copy of itself.' }),
@@ -179,15 +166,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

@@ -12,11 +12,12 @@
 <meta name="description" content="Learn why the C=C double bond is planar and rigid, what a pi bond actually is, degrees of unsaturation, and why more-substituted alkenes are more stable.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/alkene-structure.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -69,11 +61,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>sp² carbons and the pi bond</h3><p class="step-body">Each carbon of a C=C double bond is <b>sp² hybridized</b> (from the Hybridization lesson): three sp² orbitals form sigma bonds arranged in a trigonal planar shape (120° apart), and one unhybridized p orbital is left over on each carbon, oriented perpendicular to that plane. Those two p orbitals overlap <b>side-by-side</b> above and below the sigma-bond plane, forming a <b>pi (π) bond</b> — a second, weaker bond in addition to the sigma bond joining the two carbons.</p>' +
-      '<h3>Why the double bond is flat and rigid</h3><p class="step-body">A sigma bond can rotate freely (the orbital overlap is a symmetric cylinder around the bond axis, from the Newman projections lesson). A pi bond cannot: rotating one carbon 90° relative to the other would break the side-by-side p-orbital overlap entirely. This is why every atom directly attached to a C=C is locked in the <b>same plane</b>, and why cis/trans (or E/Z) isomers of alkenes are stable, isolable, different compounds rather than freely interconverting conformers.</p>' +
-      '<div class="notes-fact">Rotating a C=C double bond costs roughly 65 kcal/mol — the strength of the pi bond itself — compared to essentially 0 for a C–C single bond. That is why alkene geometry is configurational (a structural identity) rather than conformational (a freely-changing shape).</div>' +
-      '<h3>Degrees of unsaturation</h3><p class="step-body">Each ring or pi bond in a molecule removes exactly 2 hydrogens compared to the fully saturated formula CₙH₂ₙ₊₂. This lets you calculate <b>degrees of unsaturation</b> (DoU) directly from a molecular formula: DoU = (2C + 2 + N − H) / 2 (halogens count like H). A molecule with formula C₄H₈ has DoU = (8+2−8)/2 = 1 — exactly one ring or one pi bond, consistent with it being an alkene (or a cycloalkane).</p>' +
-      '<h3>Alkene stability: more substituted is more stable</h3><p class="step-body">Heats of hydrogenation (the energy released converting an alkene fully to an alkane with H₂) measure alkene stability directly: 1-butene (monosubstituted) releases about 30.3 kcal/mol, cis-2-butene (disubstituted) about 28.6, trans-2-butene (disubstituted) about 27.6, and 2-methyl-2-butene (trisubstituted) about 26.9. Less heat released means the alkene started out lower in energy — more stable. The trend: <b>more alkyl substitution on the double bond = more stable alkene</b>, and <b>trans is generally more stable than cis</b> (less steric strain between substituents on the same side).</p>',
     steps: [
       {
         type: 'explain',
@@ -167,15 +154,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

@@ -12,11 +12,12 @@
 <meta name="description" content="Learn how mass spectrometry ionizes and fragments a molecule, how alpha cleavage predicts fragmentation, and how isotope patterns reveal chlorine and bromine.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/mass-spec.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -69,11 +61,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>Ionization and the molecular ion</h3><p class="step-body">A mass spectrometer bombards a vaporized sample with high-energy electrons, knocking out one electron from a molecule to form a radical cation, M⁺• (called the <b>molecular ion</b>). This ion\'s mass-to-charge ratio (m/z, effectively its molecular weight, since it carries a single positive charge) appears as the highest-mass peak in the spectrum (barring rare, low-intensity isotope peaks) — giving you the molecule\'s exact molecular weight directly, something neither IR nor routine NMR provides on its own.</p>' +
-      '<h3>Fragmentation: the molecular ion breaks apart in predictable ways</h3><p class="step-body">The molecular ion carries substantial excess energy from ionization and often fragments into smaller pieces before ever reaching the detector — a neutral fragment is lost (undetected) and a smaller cation is detected at a correspondingly lower m/z. Fragmentation isn\'t random: bonds break preferentially at points that produce a more stable resulting cation, exactly the same stability logic from every carbocation-forming reaction across the course (SN1, E1, Friedel-Crafts alkylation).</p>' +
-      '<div class="notes-fact">A mass spectrum is really a map of a molecule\'s weak points — the bonds most prone to fragmenting are the ones that produce the most stable cation or that break next to a resonance- or hyperconjugation-stabilizing group, so reading a fragmentation pattern is fundamentally an exercise in the same stability reasoning used everywhere else in this course.</div>' +
-      '<h3>Alpha cleavage: fragmentation next to a heteroatom or carbonyl</h3><p class="step-body">A bond adjacent to (alpha to) an oxygen, nitrogen, or carbonyl breaks preferentially, because the resulting cation is resonance-stabilized by the adjacent lone pair — directly analogous to the oxocarbenium ion (Acetals lesson) or the acylium ion (EAS lesson). For a ketone like 2-butanone (CH₃COCH₂CH₃), alpha cleavage can lose either a methyl radical (giving a resonance-stabilized acylium-like fragment at m/z = M−15) or an ethyl radical (giving the other acylium-like fragment at m/z = M−29) — and the more substituted, more stable resulting cation dominates, exactly the same "which cation forms preferentially" logic from Markovnikov addition.</p>' +
-      '<h3>Isotope patterns: chlorine and bromine leave a fingerprint</h3><p class="step-body">Most elements in organic molecules (C, H, N, O) have one overwhelmingly dominant isotope, so their molecular ion peak has only a small, easily-overlooked M+1 peak (from natural ¹³C abundance, useful mainly for confirming carbon count). Chlorine and bromine are dramatically different: chlorine is roughly 3:1 (³⁵Cl:³⁷Cl) and bromine is roughly 1:1 (⁷⁹Br:⁸¹Br) between their two major isotopes, both of which differ by 2 mass units. This produces an unmistakable, easily recognized <b>M and M+2 peak pair</b> in a roughly 3:1 ratio (chlorine) or roughly 1:1 ratio (bromine) — a direct, unambiguous signature that lets you identify the presence (and count) of chlorine or bromine atoms from the spectrum alone, without needing any other spectroscopic technique.</p>',
     steps: [
       {
         type: 'explain',
@@ -164,15 +151,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

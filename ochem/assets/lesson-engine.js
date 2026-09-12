@@ -28,14 +28,13 @@
    one is harmless — but a step already moved past never records a second
    attempt, so walking back and forth cannot inflate (or deflate) a score.
 
-   Notes mode: the interactive step flow is great for a first pass, but bad
-   for "wait, what did this lesson actually say about X" — getting back to
-   an explanation means re-clicking through MCQs you already answered. If a
-   lesson supplies `opts.notesHtml`, this engine also renders a read-only,
-   non-gated recap of the whole lesson (every explanation, restated
-   findings from the hands-on steps, and the why-it-matters/challenge
-   takeaways) whenever the page is opened with `?notes=1`. A small toggle
-   link is injected either way so both views are always one click apart. */
+   Notes: the written explanation for a topic no longer lives in the lesson.
+   Every lesson used to carry its own `notesHtml` recap, reachable only by
+   reopening that lesson with ?notes=1 — which meant the course's prose was
+   scattered across 57 pages and unreadable as a body of text. It now lives in
+   the textbook (learn.html), one fragment per topic under ochem/notes/. This
+   engine just links there, and honors the old ?notes=1 URLs by redirecting to
+   the matching section so existing bookmarks still land somewhere right. */
 (function(){
   function start(opts){
     var topicId = opts.topicId;
@@ -50,20 +49,21 @@
 
     var shell = card.parentNode;
     var progressBarEl = shell.querySelector('.progress-bar');
-    var notesMode = /(^|[?&])notes=1(&|$)/.test(location.search);
+    var notesHref = doneHref + '#' + topicId;
+
+    // Old ?notes=1 links (bookmarks, and the ones Review still hands out)
+    // now resolve to this topic's section of the textbook.
+    if(/(^|[?&])notes=1(&|$)/.test(location.search)){
+      location.replace(notesHref);
+      return;
+    }
+
     var toggleBar = document.createElement('div');
     toggleBar.className = 'lesson-mode-toggle';
     shell.insertBefore(toggleBar, progressBarEl || card);
-
-    var backLinkHtml = '<a href="' + doneHref + '" class="link-quiet lesson-back-link">&larr; Back to Learn</a>';
-
-    if(notesMode && opts.notesHtml){
-      if(progressBarEl) progressBarEl.style.display = 'none';
-      toggleBar.innerHTML = backLinkHtml + '<a href="' + location.pathname + '" class="link-quiet">&larr; Back to the interactive lesson</a>';
-      card.innerHTML = '<div class="notes-view">' + opts.notesHtml + '</div><div class="actions" style="margin-top:8px;"><a href="' + doneHref + '" class="btn-press alt">Back to Learn</a></div>';
-      return;
-    }
-    toggleBar.innerHTML = backLinkHtml + (opts.notesHtml ? '<a href="' + location.pathname + '?notes=1" class="link-quiet">&#128221; View lesson notes</a>' : '');
+    toggleBar.innerHTML =
+      '<a href="' + doneHref + '" class="link-quiet lesson-back-link">&larr; Back to the textbook</a>' +
+      '<a href="' + notesHref + '" class="link-quiet">&#128221; Read this section</a>';
 
     if(begin.resumed){
       var resumeNote = document.createElement('div');
@@ -124,7 +124,7 @@
     function feedbackHtml(id){ return '<div class="feedback" id="' + id + '"></div>'; }
     function showFeedback(el, good, text){ el.className = 'feedback show ' + (good?'good':'bad'); el.textContent = text; }
     function nextButtonHtml(label, enabled){ return '<div class="actions"><button class="btn-press" id="nextBtn"' + (enabled?'':' disabled') + '>' + label + '</button></div>'; }
-    function doneBoxHtml(){ return '<div class="actions" style="margin-top:8px;"><a href="' + doneHref + '" class="btn-press">Back to Learn</a></div>'; }
+    function doneBoxHtml(){ return '<div class="actions" style="margin-top:8px;"><a href="' + notesHref + '" class="btn-press">Back to the textbook</a></div>'; }
 
     function advance(){ step++; render(); }
     function goBack(){ if(step > 0){ step--; render(); } }

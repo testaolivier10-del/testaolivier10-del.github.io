@@ -12,11 +12,12 @@
 <meta name="description" content="Put SN2, SN1, E2, and E1 together into one decision framework based on substrate class, nucleophile/base strength, and solvent.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/substrate-effects.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -70,11 +62,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>Step 1: substrate class rules mechanisms in or out</h3><p class="step-body"><b>Methyl and primary</b> substrates: SN2 only (too little steric bulk to matter, and can\'t form a stable primary carbocation for SN1/E1). <b>Tertiary</b> substrates: SN2 is blocked entirely (too crowded for backside attack) — only SN1/E1 are possible, since a tertiary carbocation is easily accessible. <b>Secondary</b> substrates are the genuinely ambiguous case: sterically possible for SN2, but also capable of forming a (moderately stable) secondary carbocation for SN1/E1 — the decision comes down to the nucleophile/base and solvent.</p>' +
-      '<h3>Step 2: nucleophile/base strength decides bimolecular vs. unimolecular</h3><p class="step-body">A <b>strong</b> nucleophile/base (like OH⁻, OR⁻, CN⁻) forces a bimolecular pathway (SN2 or E2) whenever sterically possible — it doesn\'t wait around for a slow ionization. A <b>weak</b> nucleophile/base (like H₂O, ROH) can\'t force a bimolecular reaction efficiently, so the reaction proceeds unimolecularly (SN1/E1) whenever the substrate can ionize at all.</p>' +
-      '<div class="notes-fact">Steric bulk in the base (like tert-butoxide) pushes secondary and tertiary substrates toward elimination over substitution, even when the base is technically strong — a bulky base has trouble threading into a crowded carbon for SN2, but can still reach an exposed, peripheral beta-hydrogen for E2.</div>' +
-      '<h3>Step 3: solvent tips substitution vs. elimination, and reinforces the mechanism</h3><p class="step-body">The split that matters is whether the solvent has an O–H or N–H bond to hydrogen-bond with (protic) or not (aprotic) — see the Nucleophiles lesson, Module 2. <b>Polar aprotic solvents</b> (DMSO, acetone, DMF) have no such bond, so they leave a strong nucleophile/base unsolvated and highly reactive, reinforcing SN2/E2. <b>Polar protic solvents</b> (water, alcohols) solvate and stabilize cations and anions through hydrogen bonding, reinforcing SN1/E1, and also stabilizing a strong nucleophile enough to weaken it into behaving more like a base (favoring E2 over SN2 in borderline cases). <b>Heat</b> favors elimination over substitution across the board (E1 over SN1, E2 over SN2) because elimination has a more favorable entropy change, forming two smaller molecules from one.</p>' +
-      '<h3>Quick reference table</h3><p class="step-body">Methyl/primary + strong Nu → SN2. Methyl/primary + strong bulky base → E2 (rare but possible with very bulky bases on primary substrates with beta-branching). Secondary + strong small Nu/base, aprotic → SN2/E2 mix (favors substitution if unhindered, elimination if branched or heated). Secondary or tertiary + weak Nu/base, protic solvent → SN1/E1 mixture. Tertiary + strong base → E2 exclusively (SN2 impossible).</p>',
     steps: [
       {
         diagramHtml: window.OchemMolecules.svg('sn2-tertiary', { caption: 'A tertiary substrate. Look at how enclosed the C–Br carbon is: there is no room for a nucleophile to reach it from the far side, which is why this cannot go by SN2 at all.' }),
@@ -164,15 +151,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

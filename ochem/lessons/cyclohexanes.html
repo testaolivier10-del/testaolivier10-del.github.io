@@ -12,11 +12,12 @@
 <meta name="description" content="Learn the three types of ring strain, why cyclohexane is special, and why the chair conformation eliminates nearly all of that strain.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/cyclohexanes.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -70,10 +62,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>Three kinds of ring strain</h3><p class="step-body"><b>Angle strain</b> is the energy cost of forcing bond angles away from their ideal (tetrahedral, ~109.5° for sp³ carbon). <b>Torsional strain</b> is the cost of eclipsing bonds around the ring, exactly like the eclipsed conformations from the Newman Projections lesson. <b>Steric strain</b> is the cost of non-bonded atoms bumping into each other in space (van der Waals repulsion) — you\'ll see this precisely as 1,3-diaxial interactions in the next lesson.</p>' +
-      '<h3>Small rings pay these costs differently</h3><p class="step-body">Cyclopropane (a flat triangle, forced to 60° angles) has enormous angle strain plus torsional strain from being completely flat and eclipsed — total ring strain ≈ 27.5 kcal/mol. Cyclobutane (~26.3 kcal/mol) and cyclopentane (~6.2 kcal/mol) pucker slightly out of plane to relieve some torsional strain at the cost of a little angle strain, but still can\'t escape either type entirely.</p>' +
-      '<div class="notes-fact">Cyclohexane\'s total ring strain is essentially zero — not because it lacks the same geometric challenges, but because it isn\'t flat. A puckered, three-dimensional shape called the <b>chair conformation</b> lets cyclohexane satisfy both angle and torsional strain requirements at once.</div>' +
-      '<h3>Why the chair works</h3><p class="step-body">In a chair, every C–C–C bond angle is close to 111° (nearly ideal tetrahedral geometry — almost no angle strain), and every pair of adjacent C–H bonds around the ring is staggered relative to its neighbor (sighting down any ring C–C bond gives a perfectly staggered Newman projection — zero torsional strain). No small or flat ring can simultaneously satisfy both conditions; cyclohexane\'s six-membered, non-planar geometry is exactly what\'s needed to hit both targets at once.</p>',
     steps: [
       {
         diagramHtml: window.OchemMolecules.svg('chair-bromocyclohexane'),
@@ -158,15 +146,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

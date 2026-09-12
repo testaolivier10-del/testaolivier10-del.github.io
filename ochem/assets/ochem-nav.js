@@ -1,17 +1,22 @@
-/* Ochem sub-nav — one small bar under the shared site header, injected into
-   #ochem-subnav so every page (home, learn, practice, review, tools,
-   mastery, and every lesson at any folder depth) stays in sync without
-   hand-copying the same five links everywhere.
+/* Organic Chemistry course nav: declares this course's tabs, then hands the
+   rest to the shared site chrome (assets/site-chrome.js), which draws the
+   identical two-row header every LevlPrep course uses.
+
+   This file used to render only a five-link strip under a header each of
+   ochem's 81 pages hand-wrote for itself — which is why ochem had no way back
+   to the hub and NREMT did. Those hand-written headers are gone; every page
+   now carries an empty <div id="site-header"></div> and this file fills it.
 
    Each page sets window.OCHEM_SECTION ('home'|'learn'|'practice'|'review'|
    'tools'|'mastery') and window.OCHEM_BASE (the relative path back to the
    ochem/ root, e.g. '' at ochem/, '../' from ochem/lessons/) before this
-   script runs, since link targets and the active-state check both depend
-   on where the current page lives. */
+   script runs, since link targets and the active-state check both depend on
+   where the current page lives. */
 (function(){
   var base = window.OCHEM_BASE || '';
   var section = window.OCHEM_SECTION || '';
   var ITEMS = [
+    { key: 'home', label: 'Home', href: base + 'index.html' },
     { key: 'learn', label: 'Learn', href: base + 'learn.html' },
     { key: 'practice', label: 'Practice', href: base + 'practice.html' },
     { key: 'review', label: 'Review', href: base + 'review.html' },
@@ -19,30 +24,18 @@
     { key: 'mastery', label: 'Mastery', href: base + 'mastery.html' }
   ];
 
-  // Study Hub chrome: the level badge, the site-wide streak chip and the
-  // account button. Ochem's 81 pages each carry a hand-written header, so
-  // rather than editing every one of them the shared module injects the chips
-  // into whatever header is present. 'ochem' selects this course's rank names
-  // (Lewis Apprentice → Ochem Legend) for the same shared level number.
-  if(window.HubProgress) window.HubProgress.mount('ochem', { href: base + 'mastery.html' });
-
-  // Offline support: the same root-scoped worker the NREMT app registers.
-  // Ochem pages aren't precached, but the worker caches every page, script and
-  // stylesheet it successfully fetches, so a lesson you have opened once stays
-  // available offline.
-  if('serviceWorker' in navigator){
-    window.addEventListener('load', function(){
-      navigator.serviceWorker.register('/sw.js').catch(function(){ /* best-effort */ });
+  if(window.LevlChrome){
+    window.LevlChrome.registerServiceWorker();
+    // 'ochem' selects this course's rank names (Lewis Apprentice → Ochem
+    // Legend) for the same shared level number.
+    window.LevlChrome.render({
+      subject: 'ochem',
+      course: 'Organic Chemistry',
+      courseHref: base + 'index.html',
+      progressHref: base + 'mastery.html',
+      items: ITEMS.map(function(it){
+        return { href: it.href, label: it.label, active: it.key === section };
+      })
     });
   }
-
-  var mount = document.getElementById('ochem-subnav');
-  if(!mount) return;
-
-  mount.innerHTML = '<div class="ochem-subnav__inner">' +
-    ITEMS.map(function(it){
-      var active = it.key === section;
-      return '<a href="' + it.href + '"' + (active ? ' class="active" aria-current="page"' : '') + '>' + it.label + '</a>';
-    }).join('') +
-  '</div>';
 })();

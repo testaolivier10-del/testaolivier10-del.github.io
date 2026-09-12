@@ -12,11 +12,12 @@
 <meta name="description" content="Learn why carbonyl carbons undergo substitution, not just addition, via a tetrahedral intermediate that collapses by kicking out a leaving group.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/acyl-substitution.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -70,11 +62,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>Addition, then elimination — "addition-elimination"</h3><p class="step-body">Nucleophilic acyl substitution begins exactly like the nucleophilic addition from Module 9: a nucleophile attacks the carbonyl carbon, and the pi electrons move to oxygen, forming a tetrahedral alkoxide intermediate. But this substrate has a leaving group (X) already attached — so instead of simply protonating the alkoxide as the final step (as a ketone or aldehyde would), the electrons flow right back down from oxygen to reform the C=O pi bond, and <b>X leaves</b>, restoring a neutral, trigonal-planar carbonyl with the nucleophile now in place of X.</p>' +
-      '<h3>Why acyl substitution happens instead of simple addition</h3><p class="step-body">A ketone\'s tetrahedral alkoxide intermediate has no good leaving group attached (the two carbon substituents can\'t leave as carbanions), so it just gets protonated and stays as an alcohol — permanent addition. A carboxylic acid derivative\'s tetrahedral intermediate has a leaving group (Cl⁻, RCOO⁻, RO⁻, or, reluctantly, R₂N⁻) that can depart to reform a stable carbonyl — kicking that group out and regenerating the more stable, resonance-supported C=O is thermodynamically favorable, so substitution (not simple addition) is the outcome.</p>' +
-      '<div class="notes-fact">The Esters &amp; Amides reactivity ladder is really a leaving-group-ability ranking in disguise: a better leaving group in the tetrahedral intermediate collapses back to product faster, which is exactly why acid chlorides (best leaving group, Cl⁻) react fastest and amides (worst leaving group, R₂N⁻) react slowest.</div>' +
-      '<h3>Worked example: converting an ester to an amide</h3><p class="step-body">An amine (nucleophile) attacks an ester\'s carbonyl carbon, forming a tetrahedral intermediate bearing both the incoming amine nitrogen and the original OR group. Comparing leaving-group ability, RO⁻ (conjugate base of an alcohol, pKa ≈16) is a much better leaving group than R₂N⁻ (conjugate base of an amine, pKa ≈ 38) would be, so the alkoxide leaves preferentially, regenerating the carbonyl — now as an amide. This is a direct, practical example of "down the reactivity ladder" conversion from the previous lesson.</p>' +
-      '<h3>Fischer esterification: acid catalysis makes the reverse direction work too</h3><p class="step-body">Making an ester directly from a carboxylic acid and an alcohol (Fischer esterification) needs acid catalysis specifically because a carboxylic acid\'s own leaving group, OH⁻, is a poor one on its own (Module 8\'s central lesson). Protonating the tetrahedral intermediate\'s leaving oxygen first converts OH⁻ into neutral water — a much better leaving group — letting the substitution proceed despite starting from one of the least reactive positions on the ladder in the "wrong" direction. This is the same protonation-as-activation strategy you\'ve now seen in alcohol chemistry, ether cleavage, and hemiacetal/acetal formation.</p>',
     steps: [
       {
         diagramHtml: window.OchemMolecules.svg('acetyl-chloride', { caption: 'The top of the reactivity ladder. Chlorine barely donates into the carbonyl, so the carbon stays very electrophilic, and chloride leaves easily once the tetrahedral intermediate collapses.' }),
@@ -178,15 +165,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

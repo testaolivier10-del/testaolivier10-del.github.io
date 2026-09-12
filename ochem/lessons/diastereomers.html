@@ -12,11 +12,12 @@
 <meta name="description" content="Learn what diastereomers are, how they differ from enantiomers, and why — unlike enantiomers — they have genuinely different physical properties.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/diastereomers.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -70,11 +62,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>The definition</h3><p class="step-body"><b>Diastereomers</b> are stereoisomers that are <b>not</b> mirror images of each other. This only becomes possible once a molecule has <b>two or more</b> stereocenters: with two stereocenters, there are up to 2² = 4 stereoisomers total, forming two enantiomeric pairs — and any molecule from one pair compared to any molecule from the other pair is a diastereomer relationship.</p>' +
-      '<h3>Same vs. different configuration, stereocenter by stereocenter</h3><p class="step-body">For a molecule with stereocenters labeled 1 and 2: flipping <b>both</b> stereocenters gives the enantiomer (the full mirror image). Flipping <b>only one</b> of the two (but not the other) gives a diastereomer — same configuration at one center, opposite at the other. In general, for n stereocenters, flipping all n gives the enantiomer; flipping any smaller, non-empty subset gives a diastereomer.</p>' +
-      '<div class="notes-fact">A useful shorthand: enantiomers are related by inverting <b>every</b> stereocenter; diastereomers are related by inverting <b>some, but not all</b>, stereocenters.</div>' +
-      '<h3>Why diastereomers have different physical properties</h3><p class="step-body">Unlike enantiomers, diastereomers are <b>not</b> mirror images of each other, so there\'s no symmetry reason for them to share physical properties. Diastereomers genuinely have different melting points, boiling points, densities, solubilities, and polarities — because they are, in every meaningful sense, different compounds, not mirror-image copies of the same one. This makes them separable by ordinary techniques like distillation, recrystallization, or column chromatography — unlike enantiomers, which require a chiral technique to separate.</p>' +
-      '<h3>Worked example: cis/trans as a special case of diastereomers</h3><p class="step-body">Cis and trans isomers of a disubstituted ring or alkene are actually a specific, common example of diastereomers — they are stereoisomers, not mirror images of each other, and (consistent with the diastereomer pattern) they have measurably different physical properties. cis-2-butene and trans-2-butene, for instance, have different boiling points (3.7°C vs. 0.9°C) and different dipole moments.</p>',
     steps: [
       {
         diagramHtml: window.OchemMolecules.svg('chair-dimethylcyclohexane', { caption: 'Two stereocenters, and this is the trans isomer. The cis isomer differs at exactly one of them — same connectivity, not mirror images: diastereomers.' }),
@@ -159,15 +146,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

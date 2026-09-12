@@ -575,7 +575,10 @@
             '<p>' + esc(d.teach) + '</p>';
           var links = [];
           if(d.lessonTopic) links.push('<a href="' + d.lessonTopic.href + '">Full lesson: ' + esc(d.lessonTopic.title) + '</a>');
-          if(d.lessonTopic) links.push('<a href="' + d.lessonTopic.href + '?notes=1">Just the notes</a>');
+          // The written version of the same topic, in the textbook. (Both
+          // hosts of this runner — practice.html and review.html — sit at the
+          // ochem root, so learn.html is a sibling.)
+          if(d.lessonTopic) links.push('<a href="learn.html#' + d.lessonTopic.id + '">Read the section</a>');
           if(links.length) html += '<div class="links">' + links.join('') + '</div>';
           if(d.prereqs && d.prereqs.length){
             html += '<div class="prereq-warn"><b>Worth checking first:</b> this builds on ' +

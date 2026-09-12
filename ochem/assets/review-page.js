@@ -223,7 +223,7 @@
           '<p>This queue fills itself in as you practice. Every concept you answer a question on gets a review date, which pushes further out each time you get it right and resets the moment you get it wrong. Nothing new ever appears here — only things you have already met.</p>' +
           '<div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">' +
             '<a href="practice.html" class="btn-press sm">Start practicing</a>' +
-            '<a href="learn.html" class="btn-press alt sm">Go to Learn</a>' +
+            '<a href="learn.html" class="btn-press alt sm">Open the textbook</a>' +
           '</div>' +
         '</div>';
       show('home');

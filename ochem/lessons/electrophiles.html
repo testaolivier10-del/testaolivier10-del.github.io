@@ -12,11 +12,12 @@
 <meta name="description" content="Learn what makes a species electrophilic, how to spot the electrophilic atom in a molecule, and why the carbonyl carbon is the classic example.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/electrophiles.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -85,11 +77,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>What it is</h3><p class="step-body">An <b>electrophile</b> ("electron-loving," but really electron-<b>poor</b>) carries a full or partial positive charge, or has an empty orbital, and seeks electrons from a nucleophile. It\'s the flip side of a nucleophile — one attacks, the other gets attacked.</p>' +
-      '<h3>Worked example: a carbonyl</h3><p class="step-body">In a ketone (C=O), oxygen\'s pull leaves the carbonyl carbon partially positive (δ+) — that\'s the electrophilic atom, not the oxygen. The polarization comes from the electronegativity difference in the C=O bond, not any formal charge (a neutral carbonyl carbon\'s formal charge is 0).</p>' +
-      '<h3>More examples</h3><p class="step-body">In CH₃–Br, the carbon is electrophilic (bromine pulls electron density away from it), not bromine itself, even though bromine is the one that eventually leaves. BF₃ has an empty p-orbital on boron, making it a strong electrophile (a place for electrons to go) — this is the same idea behind <b>Lewis acids</b>, which is simply the acid/base word for an electron-pair <i>acceptor</i> (Module 3).</p>' +
-      '<div class="notes-fact">Once you\'ve found the nucleophile and electrophile in a reaction, you already know where the new bond forms — the nucleophile\'s electrons attack the electrophile\'s electron-poor atom.</div>' +
-      '<h3>Three more electrophile types</h3><p class="step-body"><b>Carbocations</b> (Module 6): a full positive charge and empty p orbital — among the strongest electrophiles. <b>H⁺</b>: the simplest electrophile, no electrons at all, grabs the nearest lone pair (acid-base chemistry, Module 3). <b>Induced-dipole electrophiles</b>: even nonpolar Br₂ becomes electrophilic as it approaches an alkene\'s π bond, which repels Br₂\'s electrons and induces a temporary δ+ on the near bromine (Module 7, halogenation).</p>',
     steps: [
       {
         type: 'explain',
@@ -167,15 +154,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

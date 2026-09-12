@@ -12,11 +12,12 @@
 <meta name="description" content="See amines act as nucleophiles in SN2 alkylation, in acylation to form amides, and in imine formation, and learn why direct SN2 alkylation of amines is messy in practice.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/amine-reactions.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -70,11 +62,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>SN2 alkylation: a messy way to build amines</h3><p class="step-body">A free amine can attack an alkyl halide directly in an SN2 reaction (Module 6), forming a new C–N bond. The problem: the product is now a <b>more substituted</b> amine, which is still nucleophilic and basic (Amine Structure lesson) — it can simply react with a second equivalent of alkyl halide, and a third, all the way to a quaternary ammonium salt. Direct SN2 alkylation of ammonia or a primary amine is therefore hard to stop cleanly at one step, typically producing a statistical mixture of mono-, di-, tri-, and fully quaternized products — a genuine practical limitation, not just a theoretical curiosity.</p>' +
-      '<h3>Acylation: the clean, controlled alternative</h3><p class="step-body">Reacting an amine with an acid chloride or anhydride (nucleophilic acyl substitution, Module 10) instead forms an <b>amide</b> — and critically, that amide nitrogen\'s lone pair is now delocalized by resonance into the new carbonyl (Amine Structure lesson), making it far less nucleophilic and far less basic. The reaction self-terminates: once the amine becomes an amide, it can\'t easily react with a second equivalent of acylating agent the way a free amine could with an alkyl halide. This makes acylation the reliable, controllable way to selectively cap or protect an amine, in sharp contrast to messy direct alkylation.</p>' +
-      '<div class="notes-fact">This self-termination is exactly the resonance-quenches-nucleophilicity logic from the Amine Structure lesson, now put to practical synthetic use rather than just explaining a basicity trend.</div>' +
-      '<h3>Reductive amination: building a specific, controlled alkylamine</h3><p class="step-body">Combining amine chemistry with carbonyl chemistry solves the SN2-alkylation selectivity problem entirely: an amine condenses with an aldehyde or ketone to form an imine (Nucleophilic Addition lesson), and that imine is then reduced (NaBH₃CN or H₂/catalyst) to the corresponding alkylamine. Because this route builds the new C–N bond through a controlled two-step addition-then-reduction sequence rather than a runaway SN2 chain reaction, it\'s the standard, reliable method for making a specific secondary or tertiary amine without over-alkylating.</p>' +
-      '<h3>Diazonium salts and the Sandmeyer-type substitutions (a brief preview)</h3><p class="step-body">Primary aromatic amines react with nitrous acid (HNO₂) to form <b>diazonium salts</b> (ArN₂⁺) — an excellent leaving group (N₂ gas) that opens the door to substituting a wide range of other groups (halides, CN, OH) onto the aromatic ring in place of the original amine, a family of reactions collectively called Sandmeyer reactions. This is a direct preview of how amine chemistry connects into Module 13 (Aromatic Chemistry): the amine group here is really acting as a synthetic placeholder, installed and later swapped out for whatever the target molecule actually needs at that ring position.</p>',
     steps: [
       {
         diagramHtml: window.OchemMolecules.svg('ethylamine', { caption: 'Ethylamine. The nitrogen lone pair does all the work: it is what attacks an alkyl halide, what adds to a carbonyl, and what gets acylated.' }),
@@ -181,15 +168,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

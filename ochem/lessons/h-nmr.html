@@ -12,11 +12,12 @@
 <meta name="description" content="Learn how chemical shift, integration, and spin-spin splitting in ¹H NMR together reveal a molecule's hydrogen environments, their relative counts, and their neighbors.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/h-nmr.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -70,11 +62,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>Chemical shift: where a signal appears, and what deshields it</h3><p class="step-body">A hydrogen nucleus in a strong external magnetic field resonates at a frequency that depends on the local electron density surrounding it — electrons shield the nucleus from the external field. An electronegative neighbor (like an adjacent O, N, or halogen, or an adjacent carbonyl carbon) pulls electron density away, <b>deshielding</b> the hydrogen and pushing its signal further downfield (to a higher <b>chemical shift</b>, reported in parts per million, ppm, referenced against a standard). Typical ranges worth recognizing, from upfield to downfield:</p><ul class="step-body"><li>alkyl C–H, far from anything electronegative — 0.9-1.5 ppm</li><li>C–H next to a carbonyl (alpha hydrogens, Alpha Hydrogens lesson) — 2.0-2.5 ppm</li><li>C–H next to O or a halogen — 3.3-4.5 ppm</li><li>vinyl (alkene) C–H — 4.5-6.5 ppm</li><li>aromatic ring C–H — 6.5-8.5 ppm</li><li>aldehyde C–H — 9-10 ppm</li><li>carboxylic acid O–H — 10-13 ppm</li></ul><p class="step-body">Two of those deserve a note. Aromatic C–H sits unusually far downfield because the ring\'s pi electrons circulate in the magnetic field and generate a small field of their own, reinforcing the deshielding — an effect called <b>ring current</b>, specific to aromatic rings. And a carboxylic acid O–H is the most deshielded proton on the list, which is the same acidity you worked out in Module 10, showing up here as a chemical shift.</p>' +
-      '<h3>Integration: how many hydrogens produce each signal</h3><p class="step-body">The area under each signal (its integration) is directly proportional to the number of chemically equivalent hydrogens producing it. Comparing the relative integration values across all the signals in a spectrum (as ratios, since only relative — not absolute — hydrogen counts can be read off directly) tells you the ratio of each type of hydrogen environment present in the molecule.</p>' +
-      '<div class="notes-fact">Chemically equivalent hydrogens (like the three hydrogens of a freely-rotating CH₃ group) always show up as a single signal — free rotation exchanges their average local environment fast enough that NMR simply cannot tell them apart. Diastereotopic hydrogens (like each half of a CH₂ group next to a stereocenter, connecting back to the Stereocenters lesson) can appear as genuinely different signals, though this refinement is worth knowing exists even if it\'s not the everyday case.</div>' +
-      '<h3>Spin-spin splitting: the n+1 rule reveals neighboring hydrogens</h3><p class="step-body">A hydrogen\'s signal is split into multiple peaks by the influence of non-equivalent hydrogens on <b>adjacent</b> carbons (through three bonds, typically) — each unique combination of nearby spin states shifts the observed frequency slightly. The result follows the <b>n+1 rule</b>: a hydrogen with n equivalent neighboring hydrogens is split into n+1 peaks, with relative intensities following the binomial (Pascal\'s triangle) pattern — a singlet (no neighbors), a doublet (1 neighbor), a triplet (2 neighbors, e.g., a CH₂ flanked by a CH₃), a quartet (3 neighbors, e.g., a CH₃ flanked by a CH₂), and so on. The spacing between split peaks (the <b>coupling constant</b>, J, in Hz) reflects the strength of that neighboring interaction and is identical for both coupling partners — a useful cross-check for correctly pairing up which signals are talking to each other.</p>' +
-      '<h3>Putting it together: a worked example</h3><p class="step-body">Ethanol\'s spectrum, signal by signal. The <b>CH₃</b> integrates for 3H and appears as a triplet near 1.2 ppm — a triplet because the adjacent CH₂ has 2 hydrogens, and n+1 = 3. The <b>CH₂</b> integrates for 2H and appears as a quartet near 3.6 ppm — a quartet because the adjacent CH₃ has 3 hydrogens, and n+1 = 4, and shifted downfield by the nearby oxygen. The <b>OH</b> integrates for 1H and appears as a broad singlet somewhere around 2-5 ppm depending on conditions, not cleanly split because the proton exchanges too fast.</p><p class="step-body">All three pieces of evidence — shift, integration, and splitting — point at the same structure. That mutual agreement is what makes an assignment convincing.</p>',
     steps: [
       {
         diagramHtml: window.OchemMolecules.svg('ethanol', { caption: 'Three chemically distinct hydrogen environments, so three signals: the CH₃ triplet, the CH₂ quartet, and the OH singlet.' }),
@@ -178,15 +165,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

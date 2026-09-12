@@ -12,11 +12,12 @@
 <meta name="description" content="Learn how to draw and read Newman projections, the difference between staggered and eclipsed conformations, and the real energy costs behind butane's conformers.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/newman.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -93,10 +85,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>How to draw one</h3><p class="step-body">A <b>Newman projection</b> is a view straight down a specific C–C bond. The <b>front</b> carbon is drawn as a dot with three lines radiating out at 120° (its three other substituents). The <b>back</b> carbon is drawn as a circle, with three lines starting at the circle\'s edge (its three other substituents) — the bond connecting front and back carbons is the dot/circle itself, pointing straight at you, so it isn\'t drawn as a line.</p>' +
-      '<h3>Staggered vs. eclipsed</h3><p class="step-body">The angle between a front substituent and the nearest back substituent is the <b>dihedral (torsion) angle</b>. In the <b>staggered</b> conformation, front and back substituents are offset by 60° — as far apart as possible. In the <b>eclipsed</b> conformation, they line up directly (0° apart), overlapping in the drawing.</p>' +
-      '<div class="notes-fact">Eclipsed conformations are higher in energy than staggered ones — this is <b>torsional strain</b>, caused by repulsion between the electron clouds of eclipsing bonds. For ethane, rotating from staggered to eclipsed costs about 2.9 kcal/mol (roughly 1 kcal/mol per eclipsing H–H interaction, and there are three). This small barrier is why ethane\'s C–C bond rotates extremely fast at room temperature — staggered and eclipsed aren\'t different, isolable molecules, just different snapshots along one continuous rotation.</div>' +
-      '<h3>Butane: four named conformations</h3><p class="step-body">For butane (CH₃CH₂CH₂CH₃), look down the central C2–C3 bond with a methyl group front and back. As you rotate through 360°, you pass through: <b>anti</b> (methyls 180° apart, staggered, lowest energy, defined as 0 kcal/mol), <b>gauche</b> (methyls 60° apart, staggered, but the two methyls are close enough to clash sterically, costing about +0.9 kcal/mol), <b>eclipsed</b> (methyl eclipsing a hydrogen, about +3.6 kcal/mol), and <b>totally eclipsed / syn</b> (the two methyls directly eclipsing each other, the highest point, about +4.5 to +6 kcal/mol). There are two energetically-equal gauche conformations and two equal (methyl-H) eclipsed conformations by symmetry.</p>',
     steps: [
       {
         type: 'explain',
@@ -175,15 +163,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

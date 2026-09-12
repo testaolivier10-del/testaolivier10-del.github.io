@@ -12,11 +12,12 @@
 <meta name="description" content="Learn formal charge by counting bonds and lone pairs on real Lewis structures, from ammonium through the counterintuitive case of perchlorate.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/formal-charge.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -81,16 +82,7 @@
 </style>
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -157,15 +149,6 @@
   function showFeedback(el, good, text){ el.className = 'feedback show ' + (good?'good':'bad'); el.textContent = text; }
   function nextButton(label, enabled){ return '<div class="actions"><button class="btn-press" id="nextBtn"' + (enabled?'':' disabled') + '>' + label + '</button></div>'; }
 
-  var NOTES_HTML = '<h3>The formula</h3><p class="step-body">An atom\'s <b>formal charge</b> compares the electrons it "owns" in a structure to the electrons it would have on its own as a neutral atom.</p><div class="formula">FC = (valence electrons) − (lone-pair electrons) − (number of bonds)</div><p class="step-body">Every bond — single, double, or triple — counts as <b>one</b> bond here, since you\'re counting how many bonds surround the atom, not how many electrons are in them.</p>' +
-    '<h3>Worked examples</h3><p class="step-body"><b>NH₄⁺</b>: nitrogen has 4 bonds, 0 lone pairs left. FC = 5 − 0 − 4 = <b>+1</b>, matching the ion\'s overall charge.</p><p class="step-body"><b>OH⁻</b>: oxygen has 6 valence electrons, 1 bond, and 3 lone pairs (6 nonbonding electrons). FC = 6 − 6 − 1 = <b>−1</b>.</p><p class="step-body"><b>H₃O⁺</b>: oxygen has 6 valence electrons, 3 bonds, 1 lone pair (2 electrons). FC = 6 − 2 − 3 = <b>+1</b>, matching the ion\'s charge.</p>' +
-    '<h3>Why it matters</h3><p class="step-body">When a molecule or ion could be drawn several valid ways, the <b>best</b> Lewis structure is usually the one where formal charges are smallest and negative charge sits on the most electronegative atom. You\'ll use this to pick the right resonance structure, spot the electrophilic atom in a molecule, and explain why a mechanism attacks where it does.</p>' +
-    '<div class="notes-fact">Perchlorate, ClO₄⁻: chlorine has 7 valence electrons, 4 single bonds, 0 lone pairs. FC = 7 − 0 − 4 = <b>+3</b> on chlorine, even though the whole ion is −1 overall. That\'s exactly why formal charge matters — it flags this as an unrealistic structure, and a chemist would look for one that spreads the charge out better.</div>' +
-    '<h3>The built-in check</h3><p class="step-body">The sum of every atom\'s formal charge in a structure must equal the molecule or ion\'s overall charge — for a neutral molecule, that sum must be exactly 0. If your total doesn\'t match, recheck your bond and lone-pair counts.</p>';
-
-  function renderNotes(){
-    card.innerHTML = '<div class="notes-view">' + NOTES_HTML + '</div><div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press alt">Back to Learn</a></div>';
-  }
 
   var SB = window.OchemStepBack;
   function goBack(){ if(step > 0){ step--; render(); } }
@@ -391,7 +374,7 @@
         record(isCorrect);
         if(isCorrect){
           showFeedback(fb, true, 'Correct, and yes, it looks strange: 7 − 0 − 4 = +3 on chlorine, even though the whole ion is −1. That’s exactly why formal charge matters — it’s telling you this isn’t the most realistic structure, and a chemist would look for one that spreads that charge out better.');
-          card.querySelector('#doneBox').innerHTML = '<div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press">Back to Learn</a></div>';
+          card.querySelector('#doneBox').innerHTML = '<div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press">Back to the textbook</a></div>';
         } else {
           showFeedback(fb, false, '7 − 0 − 4 — work through it once more.');
           card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
@@ -403,29 +386,16 @@
   (function(){
     var shell = card.parentNode;
     var progressBarEl = shell.querySelector('.progress-bar');
-    var notesMode = /(^|[?&])notes=1(&|$)/.test(location.search);
+    var NOTES_HREF = '../learn.html#formal-charge';
+    // Old ?notes=1 links now resolve to this topic's section of the textbook.
+    if(/(^|[?&])notes=1(&|$)/.test(location.search)){ location.replace(NOTES_HREF); return; }
     var toggleBar = document.createElement('div');
     toggleBar.className = 'lesson-mode-toggle';
     shell.insertBefore(toggleBar, progressBarEl || card);
-    if(notesMode){
-      if(progressBarEl) progressBarEl.style.display = 'none';
-      toggleBar.innerHTML = '<a href="' + location.pathname + '" class="link-quiet">&larr; Back to the interactive lesson</a>';
-      renderNotes();
-      return;
-    }
-    toggleBar.innerHTML = '<a href="' + location.pathname + '?notes=1" class="link-quiet">&#128221; View lesson notes</a>';
+    toggleBar.innerHTML = '<a href="../learn.html" class="link-quiet lesson-back-link">&larr; Back to the textbook</a><a href="' + NOTES_HREF + '" class="link-quiet">&#128221; Read this section</a>';
     render();
   })();
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

@@ -12,11 +12,12 @@
 <meta name="description" content="Learn how conjugate acid-base pairs relate to each other, why a stronger acid always has a weaker conjugate base, and how this ties to leaving groups.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/conjugate.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -70,10 +62,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>What "conjugate" means</h3><p class="step-body">A <b>conjugate acid-base pair</b> is two species that differ by exactly one proton (H⁺). Lose a proton from an acid, and what\'s left is its <b>conjugate base</b>. Gain a proton on a base, and what you get is its <b>conjugate acid</b>. HCl and Cl⁻ are a conjugate pair; NH₃ and NH₄⁺ are a conjugate pair; water can be either the acid (losing a proton to become OH⁻) or the base (gaining one to become H₃O⁺) — water is <b>amphoteric</b>, meaning it can act as either.</p>' +
-      '<h3>The inverse relationship</h3><p class="step-body"><b>The stronger an acid is, the weaker its conjugate base is — and vice versa.</b> This isn\'t a coincidence: an acid is "strong" precisely because it readily gives up its proton, which means what\'s left behind (the conjugate base) must be comfortable holding the negative charge (or lone pair) without wanting a proton back. HCl (pKa −7, very strong acid) has Cl⁻ as its conjugate base — an extremely weak, stable base. Water (pKa 15.7, weak acid) has OH⁻ as its conjugate base — a comparatively strong, reactive base.</p>' +
-      '<div class="notes-fact">This is the exact same idea as leaving-group ability from Module 2: a good leaving group is a weak base, which is the conjugate base of a strong acid. "Conjugate base of a strong acid" and "good leaving group" are two names for the same thing.</div>' +
-      '<h3>Reading a pKa table both directions</h3><p class="step-body">A pKa table tells you two things at once: reading down the acid pKa, acids get weaker; reading down the corresponding conjugate bases, bases get <b>stronger</b>. This is why the strongest bases used in organic chemistry (LDA, NaNH₂, NaH) are all conjugate bases of extremely weak acids (amines, pKa ≈ 38; H₂, pKa ≈ 36) — a weak-enough acid guarantees an aggressively strong conjugate base.</p>',
     steps: [
       {
         diagramHtml: window.OchemMolecules.svg('acetate-ion', { caption: 'Acetate: what is left after acetic acid gives up its proton. An acid and its conjugate base differ by exactly one H⁺, and nothing else.' }),
@@ -169,15 +157,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

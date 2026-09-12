@@ -12,11 +12,12 @@
 <meta name="description" content="Learn why carbon NMR is simpler than proton NMR (one peak per unique carbon, no splitting), how chemical shift maps carbon type, and how DEPT reveals attached hydrogen count.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/c-nmr.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -70,11 +62,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>Why ¹³C NMR is structurally simpler than ¹H NMR</h3><p class="step-body">Carbon NMR detects the same underlying phenomenon as proton NMR (nuclear resonance in a magnetic field, shielded/deshielded by local electron density), but with two major practical differences. First, only the rare ¹³C isotope (about 1.1% of all carbon) is NMR-active, so ¹³C signals are inherently weak and typically require more sample or longer acquisition — this doesn\'t change the interpretation, just the practical difficulty of collecting the spectrum. Second, and more importantly for interpretation, ¹³C-to-¹³C splitting essentially never appears (the odds of two ¹³C atoms sitting adjacent in the same molecule are far too low, at roughly 1.1% × 1.1%), and ¹³C-to-¹H splitting is deliberately removed by an instrumental technique (proton decoupling). The result: a standard ¹³C spectrum shows exactly <b>one clean, unsplit peak per unique carbon environment</b> — far simpler to read at a glance than a ¹H spectrum\'s overlapping multiplets.</p>' +
-      '<h3>Chemical shift ranges for carbon, by type</h3><p class="step-body">The same deshielding logic from ¹H NMR carries over, just recalibrated to carbon\'s much wider overall shift range (0-220 ppm, versus roughly 0-13 ppm for protons). Alkyl (sp³) carbons: 0-50 ppm. Carbon attached to O or N (sp³, still single-bonded): 50-90 ppm. Alkene or aromatic (sp²) carbons: 100-150 ppm. Nitrile or alkyne (sp) carbons: 65-90 ppm (an interesting exception to naive shift-vs-hybridization intuition, driven by additional shielding effects specific to the linear, cylindrically symmetric pi system). <b>Carbonyl carbons stand distinctly apart from everything else, far downfield at 160-220 ppm</b> — a carbonyl carbon\'s significant partial positive character (Aldehydes &amp; Ketones lesson) leaves it strongly deshielded, and this region is essentially unambiguous: a peak there means a carbonyl, full stop, with esters/acids around 165-185 ppm and ketones/aldehydes around 190-220 ppm.</p>' +
-      '<div class="notes-fact">Because the carbonyl region (160-220 ppm) is so cleanly separated from every other carbon type, a quick glance at whether a ¹³C spectrum has any peaks in that range is often the single fastest yes/no test for "does this molecule contain a carbonyl at all?"</div>' +
-      '<h3>Counting unique carbons: molecular symmetry directly determines peak count</h3><p class="step-body">Just as chemically equivalent hydrogens produce one shared ¹H signal, chemically equivalent carbons (related by molecular symmetry) produce one shared ¹³C signal. A highly symmetric molecule shows fewer peaks than its total carbon count would suggest — para-xylene (1,4-dimethylbenzene), for example, has 8 total carbons but only 3 unique ¹³C environments (the two equivalent methyl carbons; the two ring carbons bearing them; and the four remaining ring C–H carbons, all equivalent to each other), directly reflecting its high symmetry.</p>' +
-      '<h3>DEPT: recovering the hydrogen-count information that decoupling threw away</h3><p class="step-body">Removing all ¹H splitting (via decoupling) makes the spectrum easy to read but discards useful information: how many hydrogens are attached to each carbon. A specialized pulse sequence called <b>DEPT</b> (Distortionless Enhancement by Polarization Transfer) recovers this without reintroducing any splitting. It works by flipping peaks up or down, and changing their intensity, according to how many hydrogens sit on each carbon — so CH₃, CH₂, and CH carbons each get a distinguishable signature.</p><p class="step-body">Quaternary carbons (no attached H at all) are identified a different way: they simply do not appear in the DEPT spectrum. They still show up normally in the ordinary decoupled spectrum, so a peak present in one and absent in the other is a quaternary carbon. Net result: a hydrogen count for every carbon, with no split multiplets to untangle.</p>',
     steps: [
       {
         diagramHtml: window.OchemMolecules.svg('para-xylene'),
@@ -169,15 +156,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

@@ -23,11 +23,12 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of the page's own inline scripts
      because those read window.HubProgress while the page parses. -->
 <script src="../assets/account.js"></script>
 <script src="../assets/hub-progress.js"></script>
+<script src="../assets/site-chrome.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
@@ -200,7 +201,7 @@
     return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
   }
   // The streak is site-wide now (assets/hub-progress.js): a day spent on any
-  // Study Hub subject keeps it alive. hubStreak() is the single source the
+  // LevlPrep subject keeps it alive. hubStreak() is the single source the
   // stat card, the calendar and the badges all read, with the old NREMT-only
   // record as a fallback if the shared module didn't load.
   function hubStreak(){
@@ -337,7 +338,7 @@
   })();
 
   // ---- Level & XP ----
-  // The level is shared across every Study Hub subject (assets/hub-progress.js),
+  // The level is shared across every LevlPrep subject (assets/hub-progress.js),
   // so ochem work shows up here as part of the same rank — but the rank NAME
   // stays EMS-flavored, and the split below shows how much of the total this
   // app accounts for.

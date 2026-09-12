@@ -15,14 +15,15 @@
 <meta property="og:description" content="An interactive organic chemistry course: perform reaction mechanisms yourself, with instant feedback.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://testaolivier10-del.github.io/ochem/">
-<meta property="og:site_name" content="Study Hub">
+<meta property="og:site_name" content="LevlPrep">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../assets/account.js"></script>
 <script src="../assets/hub-progress.js"></script>
+<script src="../assets/site-chrome.js"></script>
 <script src="assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="assets/ochem.css">
 <link rel="stylesheet" href="assets/periodic-table.css">
@@ -61,16 +62,7 @@
 </style>
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell">
 
@@ -83,7 +75,7 @@
         <h1>Actually understand organic chemistry.</h1>
         <p class="lede">Not another video course. Perform the mechanism yourself — identify the nucleophile, draw the electron-pushing arrow, predict the product — and get told exactly why when you're wrong.</p>
         <div class="hero-ctas">
-          <a href="learn.html" class="btn-press">Open the curriculum</a>
+          <a href="learn.html" class="btn-press">Open the textbook</a>
           <a href="mechanisms/sn2.html" class="link-quiet">Try the SN2 mechanism &rarr;</a>
         </div>
       </div>
@@ -150,7 +142,7 @@
 
   <div class="xsection">
     <footer style="margin-top:0">
-      <p>Free while in beta. Progress is stored on your device — no account required. Signing in (optional) syncs it, and your level and streak are shared with every other subject on Study Hub.</p>
+      <p>Free while in beta. Progress is stored on your device — no account required. Signing in (optional) syncs it, and your level and streak are shared with every other subject on LevlPrep.</p>
       <p class="privacy-link"><a href="../privacy.html">Privacy</a></p>
     </footer>
   </div>
@@ -168,14 +160,5 @@
 <script src="assets/ochem-nav.js"></script>
 <script src="assets/periodic-table.js"></script>
 <script src="assets/game-panel.js"></script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
-</script>
 </body>
 </html>

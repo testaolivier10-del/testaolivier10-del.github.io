@@ -12,11 +12,12 @@
 <meta name="description" content="Learn the Brønsted-Lowry definition of acids and bases as proton donors and acceptors, and how to identify conjugate pairs in a proton-transfer reaction.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/bronsted.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -86,10 +78,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>The Brønsted-Lowry definition</h3><p class="step-body">A <b>Brønsted-Lowry acid</b> is a proton (H⁺) donor. A <b>Brønsted-Lowry base</b> is a proton acceptor. Every acid-base reaction is fundamentally a <b>proton transfer</b> from the acid to the base — nothing more mysterious than that. This definition is broader than the older Arrhenius definition (acid = produces H⁺ in water, base = produces OH⁻ in water), which only works in aqueous solution; Brønsted-Lowry works in any solvent, or no solvent at all, which is essential since most organic reactions don\'t happen in water.</p>' +
-      '<h3>Worked example: HCl + NH₃</h3><p class="step-body">HCl donates its proton to the lone pair on nitrogen in NH₃. HCl is the acid (proton donor); NH₃ is the base (proton acceptor, using its lone pair). The products are NH₄⁺ (ammonium) and Cl⁻ (chloride).</p>' +
-      '<div class="notes-fact">Curved arrows describe this exactly like Module 2 taught: one arrow from nitrogen\'s lone pair to the H, and one arrow from the H–Cl bond to Cl. The base\'s lone pair is always the nucleophile here, and the acidic proton is always the electrophile — Brønsted acid-base chemistry is just a specific, extremely common case of the nucleophile/electrophile framework from Module 2.</div>' +
-      '<h3>Which side does the equilibrium favor?</h3><p class="step-body">Every proton transfer is technically an equilibrium (shown with two arrows, &#8652;), even when it looks like it goes to completion. The reaction favors the side with the <b>weaker acid and weaker base</b> — because that\'s the lower-energy, more stable side. You\'ll quantify "weaker acid" precisely with pKa in the next lesson.</p>',
     steps: [
       {
         type: 'explain',
@@ -191,15 +179,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

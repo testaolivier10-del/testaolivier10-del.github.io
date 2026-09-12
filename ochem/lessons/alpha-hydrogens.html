@@ -12,11 +12,12 @@
 <meta name="description" content="Learn why alpha hydrogens next to a carbonyl are unusually acidic, how enolate resonance stabilization works, and the difference between the enol and enolate tautomers.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/alpha-hydrogens.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -69,11 +61,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>The alpha carbon and its unusually acidic hydrogens</h3><p class="step-body">The carbon directly attached to a carbonyl carbon is called the <b>alpha carbon</b>, and any hydrogens on it are <b>alpha hydrogens</b>. A ketone\'s alpha C–H has a pKa around 20 — dramatically more acidic than a plain alkane C–H (pKa ≈ 50), and even more acidic than a terminal alkyne C–H (pKa ≈ 25, the previous record-holder from the Alkynes lesson, which owed its acidity to orbital hybridization instead).</p>' +
-      '<h3>Why: resonance delocalization into the carbonyl</h3><p class="step-body">Removing an alpha hydrogen leaves a carbanion immediately adjacent to a carbonyl — and that carbanion\'s lone pair can delocalize directly into the carbonyl pi system by resonance, exactly the Resonance factor from the ARIO acidity framework (Acidity Factors lesson). The resulting anion, called an <b>enolate</b>, has two resonance contributors: one with the negative charge on carbon (an sp³ carbanion form) and one with the negative charge on the more electronegative oxygen (a C=C–O⁻ form) — the second form dominates and is the more accurate representation of where the electron density actually sits.</p>' +
-      '<div class="notes-fact">This is the single largest acidifying effect you\'ve seen in the whole course — a plain isolated carbanion (from deprotonating an ordinary alkane C–H) is so unstable it\'s essentially never formed with common bases, but placing that same carbanion next to a carbonyl (an enolate) drops the pKa by roughly 30 units, a factor of about 10³⁰ in acidity.</div>' +
-      '<h3>The enol tautomer: same anion\'s conjugate acid, different site of protonation</h3><p class="step-body">Because the enolate\'s negative charge is delocalized over both carbon and oxygen, it can be reprotonated at either site. Protonating at carbon regenerates the original ketone; protonating at oxygen instead gives the <b>enol</b> tautomer — a C=C bearing an OH, structurally identical to the unstable intermediate you already met in alkyne hydration (Alkynes lesson). Enol and keto forms are <b>tautomers</b>: constitutional isomers that interconvert rapidly via this same enolate (or via direct proton transfer under acid catalysis), not resonance structures of each other — tautomers have their atoms in genuinely different places, unlike resonance forms of the same molecule.</p>' +
-      '<h3>Keto-enol equilibrium heavily favors the keto form</h3><p class="step-body">For a simple ketone like acetone, the keto form dominates the equilibrium by roughly 10⁶:1 — the C=O bond (with its strong pi bond and resonance stabilization) is simply more stable than the corresponding C=C–OH. This is why you always draw and isolate the keto form as "the" structure, even though a small, catalytically-accessible enol population is exactly what makes alpha-carbon chemistry (the rest of this module) possible at all.</p>',
     steps: [
       {
         type: 'explain',
@@ -168,15 +155,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

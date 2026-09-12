@@ -12,11 +12,12 @@
 <meta name="description" content="Perform the E1 mechanism yourself: ionize the substrate, visualize the shared carbocation intermediate with SN1, remove a beta-hydrogen, and see why E1 follows Zaitsev's rule.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/mechanisms/e1.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -71,16 +72,7 @@
 </style>
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -363,7 +355,7 @@
           showFeedback(fb, true, 'Correct — a tertiary substrate ionizes easily, ethanol is a weak nucleophile/base and polar protic (favoring the ionization pathway for both SN1 and E1), and heat specifically favors E1 over SN1. Expect a real mixture of an ether/alcohol (from SN1) and the Zaitsev alkene (from E1), not one single clean product.');
           window.OchemCurriculum.completeLessonRun(TOPIC_ID);
           if(M) M.noteLesson(TOPIC_ID);
-          card.querySelector('#doneBox').innerHTML = '<div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press">Back to Learn</a></div>';
+          card.querySelector('#doneBox').innerHTML = '<div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press">Back to the textbook</a></div>';
         } else {
           showFeedback(fb, false, 'A tertiary carbon can\'t do SN2 (too crowded), but it ionizes readily — think about which unimolecular pathways become available once that carbocation forms.');
           card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
@@ -372,25 +364,18 @@
     });
   }
 
-  var NOTES_HTML = '<h3>E1 starts exactly like SN1</h3><p class="step-body">E1 begins with the same rate-determining ionization step as SN1: the leaving group departs on its own, forming a flat, sp² <b>carbocation</b>. What happens next is different — instead of a nucleophile attacking the cationic carbon (SN1), a weak base removes a hydrogen from a <b>beta carbon</b> (one bond away from the cation), and the C–H bond\'s electrons flow in to form a new pi bond.</p>' +
-    '<h3>Zaitsev\'s rule</h3><p class="step-body">When more than one beta-hydrogen is available, removing different ones gives different alkenes. <b>Zaitsev\'s rule</b>: the <b>more substituted</b> (more stable) alkene is the major product, for the same hyperconjugation reasons that make more substituted carbocations more stable. Example: ionizing 2-bromo-2-methylbutane gives a cation with two kinds of beta-hydrogen available — removing one from the ethyl CH₂ gives the trisubstituted 2-methyl-2-butene (major), while removing one from a methyl gives the disubstituted 2-methyl-1-butene (minor).</p>' +
-    '<div class="notes-fact">This is the unimolecular, non-stereospecific counterpart to E2\'s anti-periplanar, bimolecular mechanism (Module 4/6). E1 doesn\'t require any specific geometry between the leaving group and the beta-hydrogen, because the leaving group is already long gone by the time the hydrogen is removed.</div>' +
-    '<h3>Rate law and the SN1 connection</h3><p class="step-body">E1 is unimolecular: rate = k[substrate] (the base\'s concentration doesn\'t appear). Because E1 shares SN1\'s exact carbocation intermediate, the two pathways happen under identical conditions (weak nucleophile/base, polar protic solvent, substrate that ionizes easily) and almost always compete, producing a <b>mixture</b> of substitution and elimination products. Higher temperature favors E1 over SN1 (elimination has a greater increase in entropy, forming two molecules from one), and more steric crowding around the cation also favors elimination.</p>';
 
   var notesMode = /(^|[?&])notes=1(&|$)/.test(location.search);
+  var NOTES_HREF = '../learn.html#e1';
   (function(){
     var shell = card.parentNode;
     var progressBarEl = shell.querySelector('.progress-bar');
     var toggleBar = document.createElement('div');
     toggleBar.className = 'lesson-mode-toggle';
     shell.insertBefore(toggleBar, progressBarEl || card);
-    if(notesMode){
-      if(progressBarEl) progressBarEl.style.display = 'none';
-      toggleBar.innerHTML = '<a href="../learn.html" class="link-quiet lesson-back-link">&larr; Back to Learn</a><a href="' + location.pathname + '" class="link-quiet">&larr; Back to the interactive lesson</a>';
-      card.innerHTML = '<div class="notes-view">' + NOTES_HTML + '</div><div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press alt">Back to Learn</a></div>';
-      return;
-    }
-    toggleBar.innerHTML = '<a href="../learn.html" class="link-quiet lesson-back-link">&larr; Back to Learn</a><a href="' + location.pathname + '?notes=1" class="link-quiet">&#128221; View lesson notes</a>';
+    // Old ?notes=1 links now resolve to this topic's section of the textbook.
+    if(notesMode){ location.replace(NOTES_HREF); return; }
+    toggleBar.innerHTML = '<a href="../learn.html" class="link-quiet lesson-back-link">&larr; Back to the textbook</a><a href="' + NOTES_HREF + '" class="link-quiet">&#128221; Read this section</a>';
     if(begin.resumed){
       var resumeNote = document.createElement('div');
       resumeNote.className = 'lesson-resume-note';
@@ -406,15 +391,6 @@
 
   if(!notesMode) render();
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

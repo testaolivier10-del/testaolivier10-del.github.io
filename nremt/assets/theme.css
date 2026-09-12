@@ -103,7 +103,9 @@
 
   --overlay-bg:rgba(255,255,255,0.92);
   --header-bg:var(--paper);
-  --site-header-h:64px;  /* fallback; nav.js measures the real height */
+  --site-header-h:112px; /* fallback for both chrome rows; site-chrome.js
+                            measures the real heights (see --chrome-row1-h) */
+  --chrome-row1-h:60px;
 }
 
 /* Dark theme — toggled via [data-theme="dark"] on <html> by nav.js. */
@@ -522,7 +524,9 @@ strong,b{font-weight:900;}
 .tip-card .s{font-size:13px;color:var(--muted);font-weight:600;line-height:1.5;}
 
 /* ==========================================================================
-   6. Site header (markup injected by nav.js)
+   6. Site chrome — two rows, injected by assets/site-chrome.js
+      Row 1 (#site-header): global, identical on every course.
+      Row 2 (.course-nav):  the current course's section tabs.
    ========================================================================== */
 #site-header{
   position:sticky;top:0;z-index:30;
@@ -531,11 +535,11 @@ strong,b{font-weight:900;}
 }
 .site-header__inner{
   max-width:1180px;margin:0 auto;
-  padding:12px clamp(18px,3.5vw,48px);
+  padding:11px clamp(18px,3.5vw,48px);
   display:flex;flex-wrap:wrap;align-items:center;
   gap:8px 14px;font-family:var(--font-ui);
 }
-.site-header__brand-row{display:inline-flex;align-items:center;gap:10px;flex-shrink:0;}
+.site-header__brand-row{display:inline-flex;align-items:center;gap:10px;min-width:0;}
 .hub-back{
   display:inline-flex;align-items:center;justify-content:center;
   width:32px;height:32px;border-radius:50%;
@@ -549,6 +553,7 @@ strong,b{font-weight:900;}
   display:inline-flex;align-items:center;gap:10px;
   font-weight:900;font-size:17px;color:var(--ink);text-decoration:none;
   letter-spacing:-0.01em;background:none;border:0;padding:0;cursor:pointer;
+  flex-shrink:0;
 }
 .site-header__brand .brand-mark{
   display:inline-flex;align-items:center;justify-content:center;
@@ -557,22 +562,22 @@ strong,b{font-weight:900;}
   font-size:17px;font-weight:900;line-height:1;
   box-shadow:0 3px 0 var(--navy-press);flex-shrink:0;
 }
-.site-header__groups{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 2px;flex:1 1 auto;min-width:0;}
-
-/* Nav links are pills, not underlined tabs. */
-.nav-link{
-  font:800 13px var(--font-ui);color:var(--muted);background:none;border:0;
-  padding:9px 10px;border-radius:10px;cursor:pointer;white-space:nowrap;
-  text-decoration:none;display:inline-block;
+/* The course name sits beside the wordmark behind a hairline, so every page
+   says which course you're in without the course competing with the site. */
+.site-header__course{
+  position:relative;padding-left:13px;
+  font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;
 }
-.nav-link:hover{background:var(--tint-accent);color:var(--ink);}
-.nav-link.active{background:var(--tint-accent);color:var(--accent);}
-.nav-link .rule{display:none;} /* the old underline indicator — pills replace it */
+.site-header__course::before{
+  content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:2px;height:17px;border-radius:2px;background:var(--line);
+}
+.site-header__course:hover{color:var(--ink);}
 
 .nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0;margin-left:auto;}
 
-/* Header streak chip (injected by nav.js). Hidden at 0 so a new user
-   doesn't see an empty flame. */
+/* Header streak chip. Hidden at 0 so a new user doesn't see an empty flame. */
 .nav-streak{
   display:inline-flex;align-items:center;gap:6px;font-weight:900;font-size:13.5px;
   color:var(--amber);background:var(--tint-amber);padding:6px 11px;border-radius:var(--radius-pill);
@@ -605,37 +610,63 @@ strong,b{font-weight:900;}
 }
 .account-btn:hover{border-color:var(--accent);color:var(--accent);}
 
+/* Row 2 — section tabs for the course you're in. Underlined tabs rather than
+   pills: they read as "where am I in this course", which is exactly what a
+   second-tier bar is for, and they stay legible at seven-plus items where a
+   pill row starts to look like a toolbar. */
+.course-nav{
+  position:sticky;top:var(--chrome-row1-h,60px);z-index:20;
+  background:var(--white);border-bottom:var(--bw) solid var(--line);
+}
+.course-nav__inner{
+  max-width:1180px;margin:0 auto;padding:0 clamp(18px,3.5vw,48px);
+  display:flex;gap:clamp(14px,3vw,28px);
+  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.course-nav__inner::-webkit-scrollbar{display:none;}
+.course-nav__link{
+  display:inline-block;padding:13px 2px;
+  font:800 14px var(--font-ui);color:var(--muted);
+  text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap;
+}
+.course-nav__link:hover{color:var(--ink);}
+.course-nav__link.active{color:var(--accent);border-bottom-color:var(--accent);}
+
 footer .privacy-link{margin-top:10px;}
 footer .privacy-link a{color:var(--muted);text-decoration:underline;text-underline-offset:2px;}
 footer .privacy-link a:hover{color:var(--ink);}
+
+/* Visible to a screen reader, not on screen — for a label whose control is
+   already self-evident sighted (a search box with a placeholder). */
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
 
 .site-nav-fallback{font-size:13px;font-weight:700;color:var(--muted);margin-bottom:24px;font-family:var(--font-ui);}
 .site-nav-fallback a{color:var(--accent);text-decoration:none;}
 .site-nav-fallback a:hover{text-decoration:underline;}
 
-/* Below this width the seven nav pills no longer fit beside the brand and the
-   controls, so give them their own centered row rather than letting flex-wrap
-   strand the controls under the brand. */
-@media (max-width:1160px){
-  .site-header__groups{order:3;flex-basis:100%;justify-content:flex-start;}
-}
 @media (max-width:640px){
   .site-header__brand-row{flex:1 1 auto;}
-  /* The pill row scrolls sideways here. The scrollbar is hidden, so without the
-     mask below it ended flush at the screen edge and the last three sections
-     (Glossary, Tools, Dashboard) were simply invisible — nothing on screen said
-     there was more to the right. The fade lifts as soon as the row is scrolled
-     to its end, so it never lingers over a row with nothing left to reveal. */
-  .site-header__groups{
-    gap:2px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  /* The tab row scrolls sideways here. The scrollbar is hidden, so without the
+     mask it ends flush at the screen edge and the last sections are simply
+     invisible — nothing on screen says there is more to the right. The fade
+     lifts as soon as the row is scrolled to its end, so it never lingers over
+     a row with nothing left to reveal. */
+  .course-nav__inner{
+    /* Snap points sit at each tab's left edge, so without scroll-padding the
+       row snaps the first tab flush against the screen edge and eats the
+       gutter. */
     scroll-snap-type:x proximity;
+    scroll-padding-inline-start:clamp(18px,3.5vw,48px);
     -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 34px),transparent 100%);
     mask-image:linear-gradient(to right,#000 calc(100% - 34px),transparent 100%);
   }
-  .site-header__groups.at-end{-webkit-mask-image:none;mask-image:none;}
-  .site-header__groups .nav-link{scroll-snap-align:start;}
-  .site-header__groups::-webkit-scrollbar{display:none;}
-  .hub-back{display:none;}
+  .course-nav__inner.at-end{-webkit-mask-image:none;mask-image:none;}
+  .course-nav__link{scroll-snap-align:start;}
+  .hub-back{display:none;} /* the wordmark goes to the hub too, and 360px of
+                              width is better spent on the course name */
 }
 
 /* ==========================================================================
@@ -702,7 +733,7 @@ html{scrollbar-color:var(--muted) transparent;}
 .auth-modal-toggle button:hover{text-decoration:underline;}
 
 @media print{
-  #site-header,.site-nav-fallback,.theme-toggle,button,
+  #site-header,.course-nav,.site-nav-fallback,.theme-toggle,button,
   .start-btn,.review-btn,.domain-btn,.planner-row button,
   #searchBox,.print-btn,.auth-modal-overlay{display:none !important;}
   body{background:#fff !important;color:#000 !important;}

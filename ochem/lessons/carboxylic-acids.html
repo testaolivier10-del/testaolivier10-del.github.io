@@ -12,11 +12,12 @@
 <meta name="description" content="Learn why the carboxylic acid O-H is so acidic thanks to resonance-stabilized carboxylate, and how the carboxylic acid carbon differs electronically from a ketone.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/carboxylic-acids.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -69,11 +61,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>Structure: a carbonyl carbon with an OH attached</h3><p class="step-body">A carboxylic acid (RCOOH) combines two functional groups on one carbon: a carbonyl (C=O, from the Aldehydes &amp; Ketones lesson) and a hydroxyl (OH, from Module 8). The carbonyl oxygen\'s lone pairs and the OH oxygen\'s lone pairs both interact with the carbonyl carbon\'s system, and — critically — the OH oxygen\'s lone pair can donate into the carbonyl pi system by resonance while the molecule is still neutral, giving the C–OH bond partial double-bond character even in the starting acid.</p>' +
-      '<h3>Why the O–H is so acidic: resonance in the conjugate base</h3><p class="step-body">Deprotonating the O–H gives a <b>carboxylate</b> ion, RCOO⁻ — and this anion has two equivalent resonance structures, with the negative charge delocalized equally over both oxygens (a resonance-stabilized system exactly like the acetate example from the Resonance lesson). This delocalization dramatically lowers the anion\'s energy, which is why carboxylic acids (pKa ≈ 4-5) are roughly 10¹¹ times more acidic than alcohols (pKa ≈ 16), even though both are just an O–H bond on a carbon skeleton.</p>' +
-      '<div class="notes-fact">This is the Resonance factor from the ARIO acidity framework (Acidity Factors lesson), now doing almost all of the work by itself — no induction or orbital-hybridization argument is even needed to explain most of the roughly 11-unit pKa gap between an alcohol and a carboxylic acid.</div>' +
-      '<h3>Substituent effects still apply on top of resonance</h3><p class="step-body">Electron-withdrawing groups near the carboxylic acid further stabilize the carboxylate by induction (the Induction factor from ARIO), exactly as seen with chloroacetic acid (pKa 2.87) versus plain acetic acid (pKa 4.76) in the Acidity Factors lesson. The closer and more electronegative the withdrawing group, the bigger the acidifying effect — this is the same inductive trend, just revisited on a resonance-stabilized scaffold instead of a simple alkyl one.</p>' +
-      '<h3>The carbonyl carbon: less electrophilic than a ketone, for the same resonance reason</h3><p class="step-body">The very same OH lone-pair donation that stabilizes the carboxylate also donates electron density into the neutral acid\'s carbonyl carbon, partially canceling its electrophilic character (similar to how an ester or amide oxygen/nitrogen donates into their own carbonyls — previewed in the next lesson). This is why carboxylic acids, esters, and amides are all noticeably less reactive toward direct nucleophilic addition than a simple aldehyde or ketone, and instead tend to react by a substitution pathway (Acyl Substitution lesson) that lets the resonance-donating group leave.</p>',
     steps: [
       {
         type: 'explain',
@@ -173,15 +160,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-/* Study Hub progression — one level and one streak across every subject.
+/* LevlPrep progression — one level and one streak across every subject.
 
    The model the site now uses:
 
@@ -49,7 +49,7 @@
   }
 
   // Rank names by subject. Index is a minimum level; the last one you qualify
-  // for wins. 'hub' is the neutral set the Study Hub landing page uses.
+  // for wins. 'hub' is the neutral set the LevlPrep landing page uses.
   var TITLES = {
     hub: [
       { min: 1,  title: 'Student' },
@@ -58,7 +58,7 @@
       { min: 10, title: 'Scholar' },
       { min: 15, title: 'Veteran' },
       { min: 20, title: 'Master' },
-      { min: 30, title: 'Study Hub Legend' },
+      { min: 30, title: 'LevlPrep Legend' },
     ],
     nremt: [
       { min: 1,  title: 'First Responder' },

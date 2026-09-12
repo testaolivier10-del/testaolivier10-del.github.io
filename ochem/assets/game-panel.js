@@ -34,7 +34,7 @@
     // course earned all of it.
     var elsewhere = info.total - mine;
     var note = elsewhere > 0
-      ? '<p class="game-note">' + mine + ' XP earned here, ' + elsewhere + ' XP elsewhere on Study Hub — one level across every subject.</p>'
+      ? '<p class="game-note">' + mine + ' XP earned here, ' + elsewhere + ' XP elsewhere on LevlPrep — one level across every subject.</p>'
       : '';
     set('gameLevel',
       '<div class="game-level">' +

@@ -58,7 +58,7 @@
       'that is what Practice is for.</p>' +
       '<div class="trow">' +
         '<a class="btn-press" href="../practice.html">Go to Practice</a>' +
-        '<a class="link-quiet" href="../learn.html">Browse the curriculum &rarr;</a>' +
+        '<a class="link-quiet" href="../learn.html">Browse the textbook &rarr;</a>' +
       '</div>';
   }
 })();

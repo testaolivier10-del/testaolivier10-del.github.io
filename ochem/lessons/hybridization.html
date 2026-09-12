@@ -12,11 +12,12 @@
 <meta name="description" content="Count electron groups to determine sp3, sp2, and sp hybridization — the skill behind every geometry prediction later in the course.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/hybridization.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -69,12 +61,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>Resolving the carbon paradox</h3><p class="step-body">Ground-state carbon (1s² 2s² 2p²) has only 2 unpaired electrons. It takes a small amount of energy to <b>promote</b> one paired 2s electron up into the empty third 2p orbital, giving 2s¹ 2p³ — <b>4</b> unpaired electrons, one per orbital. That energy cost is paid back by forming 2 extra bonds, so it happens essentially every time carbon bonds.</p>' +
-      '<h3>What "hybridizing" actually means</h3><p class="step-body">Carbon now has 4 orbitals to bond with, but they\'re not identical (1 s-shaped, 3 dumbbell p\'s) — that would make lopsided, unequal bonds. Instead the atom mathematically <b>mixes</b> them into 4 new, identical orbitals pointing as far apart as possible (109.5°, toward a tetrahedron\'s corners): <b>sp³</b> orbitals (1 s + 3 p).</p><p class="step-body">The same scales down: 1 s + 2 p mixed together gives 3 equivalent <b>sp²</b> orbitals (120° apart, flat) with <b>1 p orbital left over, unmixed</b>. 1 s + 1 p gives 2 equivalent <b>sp</b> orbitals (180°, linear) with <b>2 p orbitals left over</b>. Those leftover, unhybridized p orbitals are what go on to form pi bonds (next lesson) — a double bond needs 1 leftover p (sp² carbon), a triple bond needs 2 (sp carbon).</p>' +
-      '<div class="formula">4 groups = sp³ (0 leftover p) &nbsp;&middot;&nbsp; 3 groups = sp² (1 leftover p) &nbsp;&middot;&nbsp; 2 groups = sp (2 leftover p)</div>' +
-      '<h3>The shortcut</h3><p class="step-body">You don\'t redo the promotion-and-mixing every time — just count an atom\'s <b>electron groups</b> (sigma bonds + lone pairs; a double/triple bond still counts as <b>one</b> group since it goes to one neighbor) and hybridization follows from the table above. Example: methane\'s carbon has 4 sigma bonds, 0 lone pairs → 4 groups → sp³. CO₂\'s carbon has 2 double bonds → 2 groups → sp. Ammonia\'s nitrogen has 3 bonds + 1 lone pair → 4 groups → sp³ (lone pairs count as groups too).</p>' +
-      '<div class="notes-fact">More s-character means shorter, stronger bonds: sp &gt; sp² &gt; sp³.</div>' +
-      '<h3>Beyond 4 groups</h3><p class="step-body">Carbon, nitrogen, and oxygen never exceed 4 groups — period 2 is simply too small. Period 3+ elements like sulfur and phosphorus sometimes do go further: 5 groups gives the trigonal bipyramidal shape seen in PCl₅, and 6 groups gives the octahedral shape seen in SF₆. Textbooks have long labeled these "sp³d" and "sp³d²" hybridization, as if empty d orbitals mixed in the same way p orbitals do for sp³. Modern computational studies show that is not what happens — real d-orbital involvement here is minimal. The geometry is better explained by two things that have nothing to do with d orbitals: the central atom is simply larger, so there is room for extra neighbors; and the extra bonds carry real ionic character, so the central atom is not truly sharing a full covalent octet\'s worth of electrons with each one. Either way, the resulting shapes and the "S/P can exceed an octet, C/N/O never can" rule both still hold.</p>',
     steps: [
       {
         type: 'explain',
@@ -178,15 +164,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

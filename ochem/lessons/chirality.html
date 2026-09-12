@@ -12,11 +12,12 @@
 <meta name="description" content="Learn what chirality means, the plane-of-symmetry test for telling chiral and achiral molecules apart, and why your hands are the classic example.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/chirality.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -70,11 +62,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>The definition</h3><p class="step-body">A molecule (or any object) is <b>chiral</b> if it is <b>not superimposable on its mirror image</b> — you can\'t rotate or slide one onto the other so every atom lines up. If an object <i>can</i> be superimposed on its mirror image, it\'s <b>achiral</b>.</p>' +
-      '<h3>Hands: the classic example</h3><p class="step-body">Your left and right hands are mirror images of each other, but you can\'t rotate your left hand in space to make it look exactly like your right hand (try it — the thumb always ends up on the wrong side). This is exactly what "chiral" means, and it\'s where the word comes from (Greek <i>cheir</i>, "hand"). A plain coffee mug, by contrast, is achiral — its mirror image is identical to the original, just rotated.</p>' +
-      '<div class="notes-fact">"Chiral" describes the whole molecule\'s three-dimensional shape, not any single atom by itself. The next lesson introduces <b>stereocenters</b>, the specific atoms that most commonly cause a molecule to be chiral — but chirality itself is a property of the whole structure.</div>' +
-      '<h3>The plane-of-symmetry shortcut</h3><p class="step-body">A fast, reliable test: if a molecule has an internal <b>plane of symmetry</b> (an imaginary flat plane that divides it into two mirror-image halves), it is achiral. If no such plane exists anywhere in the molecule, it\'s chiral. This is a shortcut for the superimposability test, and it usually matches your intuition once you\'ve practiced it a few times.</p>' +
-      '<h3>Why this matters biologically</h3><p class="step-body">Almost all of biology is built from chiral molecules — amino acids, sugars, DNA\'s helix. A chiral biological receptor can tell two mirror-image molecules apart, which is why one enantiomer of a drug can be therapeutic while its mirror image is inactive or even harmful (thalidomide is the most famous historical example). You\'ll see exactly how enantiomers differ in their biological interactions in an upcoming lesson.</p>',
     steps: [
       {
         diagramHtml: window.OchemMolecules.svg('bromochlorofluoromethane', { caption: 'Four different groups on one carbon. Its mirror image cannot be rotated onto it, which is the whole definition of chiral.' }),
@@ -169,15 +156,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

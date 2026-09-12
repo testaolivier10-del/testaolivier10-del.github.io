@@ -12,11 +12,12 @@
 <meta name="description" content="Learn to identify axial and equatorial positions on a cyclohexane chair, and how 1,3-diaxial interactions and A-values predict which position a substituent prefers.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/axial-equatorial.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -86,10 +78,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>Two positions per carbon</h3><p class="step-body">Every carbon in a cyclohexane chair has two substituent positions: <b>axial</b> (pointing straight up or down, parallel to the ring\'s central axis) and <b>equatorial</b> (pointing outward, roughly along the "equator" of the ring). Around the ring, axial positions alternate up-down-up-down-up-down, and each carbon\'s equatorial position points slightly up or down to balance it.</p>' +
-      '<h3>1,3-diaxial interactions</h3><p class="step-body">Two axial substituents on the same face of the ring, three carbons apart (positions 1 and 3, or 1 and 5 — same thing by symmetry), point toward each other and can clash sterically. This steric clash is called a <b>1,3-diaxial interaction</b>, and it\'s the direct ring version of the gauche-butane steric strain from the Newman Projections lesson.</p>' +
-      '<div class="notes-fact">Equatorial substituents point outward and away from the ring, so they almost never experience 1,3-diaxial clashes. This is why bulkier groups strongly prefer the equatorial position.</div>' +
-      '<h3>A-values: quantifying the preference</h3><p class="step-body">The <b>A-value</b> of a substituent is the energy (in kcal/mol) that group prefers equatorial over axial. Methyl has an A-value of about 1.7 kcal/mol (translating to roughly a 95:5 equatorial:axial ratio at room temperature). tert-Butyl has an A-value of about 4.7–5+ kcal/mol — so large that a tert-butyl-substituted cyclohexane is essentially locked with that group equatorial, over 99.9% of the time.</p>',
     steps: [
       {
         type: 'explain',
@@ -178,15 +166,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

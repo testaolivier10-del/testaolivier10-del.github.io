@@ -12,11 +12,12 @@
 <meta name="description" content="Tell sigma bonds from pi bonds and see why that distinction explains restricted rotation and cis/trans isomers.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/bonding.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -69,11 +61,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>Sigma bonds</h3><p class="step-body">A <b>sigma (σ) bond</b> forms from head-on orbital overlap, directly on the axis between the two nuclei. Every single bond is a sigma bond. Because the overlap is symmetric all the way around that axis, the atoms can freely rotate around it without disturbing anything.</p>' +
-      '<h3>Pi bonds</h3><p class="step-body">A <b>pi (π) bond</b> comes from the unhybridized p orbitals left over after hybridization (sp² carbon has 1 leftover p; sp has 2). These stick out above/below or side-to-side rather than along the bond axis, and two neighboring ones overlap <b>sideways</b>. That sideways overlap only works while the two p orbitals stay parallel — twisting one atom rotates its p orbital out of alignment and breaks the overlap. That\'s why a pi bond <b>blocks rotation</b> while a sigma bond doesn\'t.</p>' +
-      '<div class="formula">single bond = 1σ &nbsp;&middot;&nbsp; double bond = 1σ + 1π &nbsp;&middot;&nbsp; triple bond = 1σ + 2π</div>' +
-      '<div class="notes-fact">Restricted rotation around a double bond\'s pi bond is the entire reason cis/trans (E/Z) isomers exist — groups on either side of the double bond stay fixed relative to each other. More on this in the Stereochemistry module.</div>' +
-      '<h3>Bond length and strength</h3><p class="step-body">More bonds between the same two atoms means shorter and stronger. C–C: ~154 pm, ~347 kJ/mol (~83 kcal/mol). C=C: ~134 pm, ~614 kJ/mol (~147 kcal/mol). C≡C: ~120 pm, ~839 kJ/mol (~200 kcal/mol). Both units are in common use; 1 kcal = 4.184 kJ. The rest of this course quotes energies in kcal/mol. The jump from 1→2 bonds roughly doubles the energy; the second pi bond (2→3) adds less, since sideways p-orbital overlap is inherently weaker than the sigma bond\'s head-on overlap.</p>',
     steps: [
       {
         type: 'explain',
@@ -165,15 +152,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

@@ -12,11 +12,12 @@
 <meta name="description" content="Learn why some molecules need more than one Lewis structure, how resonance structures relate to the real hybrid, and how to spot the major contributor.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/resonance.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -81,11 +73,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>What resonance is</h3><p class="step-body">Some molecules and ions can\'t be captured by a single Lewis structure. When you can draw two or more valid structures that differ <b>only in where the electrons are</b> — never where the atoms are — those are <b>resonance structures</b>. The real molecule is a single <b>hybrid</b>: a blend of every valid resonance structure, not a molecule flipping back and forth between them.</p>' +
-      '<h3>The requirement: conjugation</h3><p class="step-body">Resonance only works when a lone pair, negative charge, or pi bond sits directly next to another pi bond or an adjacent p orbital, so their p orbitals can line up and overlap. A system connected this way — alternating single/multiple bonds, or a lone pair next to a pi bond — is <b>conjugated</b>. A lone pair with no neighboring pi bond has nowhere to delocalize into — no resonance to draw.</p>' +
-      '<h3>Worked example: acetate</h3><p class="step-body">Acetate (CH₃COO⁻) has two resonance structures, each putting the negative charge on a different one of its two (identical) oxygens. Because the two oxygens are equivalent by symmetry, both structures contribute equally to the hybrid — there\'s no "major" one here. Experimentally, both C–O bonds are the same length, in between a single and double bond.</p>' +
-      '<div class="notes-fact">When resonance structures aren\'t equivalent, the more stable one dominates. Between a structure with negative charge on carbon vs. one with it on oxygen, the oxygen version is the major contributor — a more electronegative atom stabilizes negative charge better. This is why carboxylic acids are far more acidic than alcohols: their anion is resonance-stabilized this way.</div>' +
-      '<h3>Ranking contributors: the actual rules</h3><p class="step-body">When structures aren\'t equivalent, rank them with these criteria, roughly in order of importance:</p><ul class="step-body" style="margin-top:0;"><li><b>Complete octets win.</b> A structure where every atom (that can) has a full octet is more stable than one that leaves an atom electron-deficient.</li><li><b>Fewer and smaller formal charges win.</b> A structure with formal charges of 0 beats one with +1/−1, which beats one with +2/−2.</li><li><b>Negative charge belongs on the more electronegative atom</b> (and positive charge on the less electronegative one) — this is the acetate-vs-carbon comparison above.</li><li><b>Like charges shouldn\'t sit on adjacent atoms.</b> Two negative (or two positive) formal charges next to each other is highly destabilizing.</li><li><b>More bonds (less charge separation) generally wins</b> when everything else is close, since more bonds means more shared, stabilized electron density.</li></ul><p class="step-body">None of these structures is "wrong" to draw — every valid one contributes something to the hybrid. These rules only tell you which one contributes <i>more</i>.</p>',
     steps: [
       {
         type: 'explain',
@@ -174,15 +161,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

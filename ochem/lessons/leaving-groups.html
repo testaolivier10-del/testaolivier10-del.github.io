@@ -12,11 +12,12 @@
 <meta name="description" content="Learn what makes a good leaving group, why weak bases leave more easily, and how leaving group ability controls substitution and elimination.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/leaving-groups.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -70,10 +62,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>The acid/base words, in one line each</h3><div class="term-primer"><p>An <b>acid</b> gives away an H⁺; a <b>base</b> takes one with a lone pair. <b>Strong</b>/<b>weak</b> = how eagerly. Whatever is left after an acid loses its H⁺ is its <b>conjugate base</b> (HCl → Cl⁻, H₂O → OH⁻), and the two see-saw: strong acid ⇒ weak (stable, content) conjugate base; weak acid ⇒ strong (grabby) conjugate base. <b>pKa</b> puts a number on it — lower pKa = stronger acid. Module 3 builds all of this properly.</p></div><h3>Substitution and elimination, in one line each</h3><div class="term-primer"><p><b>Substitution</b> swaps one group on a carbon for another — something new attaches, the old group departs. <b>Elimination</b> strips a group off one carbon and an H off the neighbouring carbon, and the leftover electrons become a C=C double bond. Both need a group to break off carbon carrying the bonding electrons, which is why leaving groups gate them. Module 6 covers both in full.</p></div><h3>Why spreading charge out matters</h3><div class="term-primer"><p>The one idea under the whole lesson. A negative charge is a pile of electrons, and like charges repel — so a charge crammed into a small space is crowded, and that repulsion is stored energy. <b>High energy = unstable.</b> Give the charge more room (a bigger atom, or several atoms sharing it — <b>delocalization</b>) and the repulsion eases: lower energy, more stable, more willing to exist alone, better leaving group. Why I⁻ beats Cl⁻, why tosylate is excellent, and why HO⁻ is hopeless are all this one principle applied to different structures.</p></div><h3>What makes a good one</h3><p class="step-body">When a leaving group departs, it takes a bonding pair of electrons with it. A <b>good</b> leaving group is one that\'s <b>stable on its own</b> once it has those electrons — a <b>weak base</b> (the conjugate base of a strong acid). Poor leaving groups (OH⁻, NH₂⁻, CH₃⁻) are strong bases that don\'t want the negative charge and resist leaving, because the charge stays concentrated on a small atom (O, N) or on one that isn\'t electronegative at all (C) — unlike I⁻, which dilutes it across a big, polarizable atom.</p><h3>Activating an alcohol</h3><p class="step-body">Because HO⁻ won\'t leave, an alcohol has to be <b>activated</b> — the OH converted into a better leaving group before the reaction is run. <b>Protonate it</b> with strong acid (R–OH → R–OH₂⁺) so the leaving group is neutral water, whose conjugate acid H₃O⁺ has pKa ≈ −1.7 instead of 15.7. Or <b>tosylate it</b> with TsCl (R–OH → R–OTs), giving the resonance-stabilized TsO⁻ — mild, neutral, and it leaves any stereocenter on that carbon untouched because the C–O bond is never broken. A mechanism that kicks out HO⁻ is wrong.</p>' +
-      '<h3>Ranking the halides</h3><p class="step-body">Among F⁻, Cl⁻, Br⁻, I⁻, <b>I⁻</b> is the best leaving group — the weakest base of the four (largest, most polarizable, most stable as an anion). Cl⁻ beats OH⁻ as a leaving group because Cl⁻ is the conjugate base of a strong acid (HCl) and is very stable on its own, while OH⁻ is the conjugate base of water (a much weaker acid), making OH⁻ a much stronger, more reluctant base.</p>' +
-      '<div class="notes-fact">Tosylate (OTs⁻) is an excellent leaving group because its negative charge is delocalized (resonance-stabilized) across the sulfonate group, making it a very weak base — exactly why chemists convert poor leaving groups like OH⁻ into tosylates before a substitution.</div><h3>Reading the names SN1, SN2, E1, E2</h3><div class="term-primer"><p>The letter is the reaction: <b>S</b> = substitution, <b>E</b> = elimination, and the <b>N</b> in S<sub>N</sub> means <i>nucleophilic</i> (the incoming group is an electron-rich attacker). The number is how many species take part in the slowest, rate-setting step: <b>1</b> = the molecule ionizes alone first and the leaving group departs unassisted, then the nucleophile or base comes in; <b>2</b> = the leaving group departs at the same moment the nucleophile or base attacks, in one motion. All four need a leaving group to depart at some point — no leaving group, no reaction. Module 6 covers each.</p></div>' +
-      '<h3>Quantifying it: pKaH</h3><p class="step-body">Lower pKa of the leaving group\'s conjugate acid (pKaH) = weaker base = better leaving group. HI ≈ −10, HBr ≈ −9, HCl ≈ −7 (all strong acids → I⁻/Br⁻/Cl⁻ are weak bases, good leaving groups, in that ranked order). Water ≈ 15.7 (weak acid → OH⁻ is a strong base, poor leaving group). Full pKa framework comes in Module 3.</p>',
     steps: [
       {
         diagramHtml: window.OchemMolecules.svg('sn2-bromoethane', { caption: 'Bromide is a good leaving group because it is a weak base — it is stable holding the electron pair it walks away with.' }),
@@ -168,15 +156,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>

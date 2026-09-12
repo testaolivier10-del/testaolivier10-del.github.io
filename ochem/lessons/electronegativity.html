@@ -12,11 +12,12 @@
 <meta name="description" content="Learn the periodic trend behind electronegativity and use it to find which atom in a bond pulls harder on the shared electrons.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/electronegativity.html">
 <link rel="stylesheet" href="../../assets/theme.css">
-<!-- Shared across every subject on Study Hub: one login, one level, one
+<!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Loaded blocking and ahead of this page's own scripts because
      they read window.HubProgress as the page parses. -->
 <script src="../../assets/account.js"></script>
 <script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/site-chrome.js"></script>
 <script src="../assets/ochem-xp.js"></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
@@ -25,16 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 </head>
 <body>
-<div id="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="../../index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
-    </a>
-    <a href="../index.html" style="font:800 14px var(--font-ui);color:var(--muted);text-decoration:none;">Organic Chemistry</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
-  </div>
-</div>
-<div id="ochem-subnav" class="ochem-subnav"></div>
+<div id="site-header"></div>
 
 <div class="xshell lesson-shell">
   <div class="hero" style="padding-bottom:0;">
@@ -69,10 +61,6 @@
     card: document.getElementById('card'),
     progFill: document.getElementById('progFill'),
     progLabel: document.getElementById('progLabel'),
-    notesHtml: '<h3>What it is</h3><p class="step-body"><b>Electronegativity</b> measures how strongly an atom pulls on the electrons in a bond. It increases <b>up and to the right</b> on the periodic table (excluding noble gases) — fluorine is the most electronegative element there is. In any bond between two different atoms, the shared electrons sit closer to whichever atom is more electronegative.</p>' +
-      '<h3>Worked comparisons</h3><p class="step-body">O vs. H: oxygen is more electronegative. C vs. H: carbon is more electronegative (though only slightly — this is why C–H bonds are treated as close to nonpolar). C vs. Cl: chlorine is more electronegative. Fluorine is the single most electronegative element on the table, full stop.</p>' +
-      '<div class="notes-fact">This is where "electron-poor" and "electron-rich" come from. An electronegativity difference makes a bond polar — and it\'s what makes the carbon in C–Br electron-poor enough for a nucleophile to attack, the exact idea behind SN1/SN2. C–F is more polar than C–Br because fluorine\'s electronegativity gap with carbon is bigger.</div>' +
-      '<h3>The Pauling scale and polarity thresholds</h3><p class="step-body">Key values: F 3.98, O 3.44, N 3.04, Cl 3.16, Br 2.96, C 2.55, I 2.66, H 2.20 (look up any element in the periodic table tool). Rule of thumb for the difference (ΔEN): &lt;0.5 nonpolar covalent (C–H = 0.35); 0.5–1.7 polar covalent (C–O = 0.89, C–Cl = 0.61); &gt;1.7 ionic (Na–Cl = 2.23). Nearly every organic bond falls in the covalent range.</p>',
     steps: [
       {
         type: 'explain',
@@ -175,15 +163,6 @@
     ]
   });
 })();
-</script>
-<script>
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 </script>
 </body>
 </html>
