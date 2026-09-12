@@ -1,0 +1,265 @@
+/* Ochem curriculum — a single source of truth for modules/topics/lessons so
+   Learn, Mastery, and the sub-nav all read the same structure instead of
+   each page hand-listing modules and drifting out of sync.
+
+   A topic's `href` is null until its lesson actually exists — Learn renders
+   those as locked "coming soon" cards instead of dead links, and Mastery
+   excludes them from the mastery calculation entirely (no content yet means
+   nothing to have mastered, not 0%).
+
+   Progress is read from localStorage under 'ochem_progress': a plain object
+   keyed by topic id -> { step, correct, attempts, completed, bestScore }.
+   See the comment above beginLessonRun below for exactly what each field
+   means and how mastery (bestScore) only ever moves up. Lessons own calling
+   recordAttempt/completeLessonRun/saveStep as they go; this file only owns
+   the shape of the curriculum and reading/writing that state. */
+(function(){
+  var MODULES = [
+    { id: 'foundations', title: 'Foundations', topics: [
+      { id: 'atomic-structure', title: 'Atomic structure', href: 'lessons/atomic-structure.html' },
+      { id: 'orbitals', title: 'Orbitals', href: 'lessons/orbitals.html' },
+      { id: 'hybridization', title: 'Hybridization', href: 'lessons/hybridization.html' },
+      { id: 'bonding', title: 'Bonding', href: 'lessons/bonding.html' },
+      { id: 'electronegativity', title: 'Electronegativity', href: 'lessons/electronegativity.html' },
+      { id: 'formal-charge', title: 'Formal charge', href: 'lessons/formal-charge.html' },
+      { id: 'lewis-structures', title: 'Lewis structures', href: 'lessons/lewis-structures.html' },
+      { id: 'molecular-geometry', title: 'Molecular geometry', href: 'lessons/molecular-geometry.html' },
+      { id: 'bond-polarity', title: 'Bond polarity', href: 'lessons/bond-polarity.html' }
+    ]},
+    { id: 'electron-movement', title: 'Organic Structure & Electron Movement', topics: [
+      { id: 'resonance', title: 'Resonance', href: 'lessons/resonance.html' },
+      { id: 'curved-arrows', title: 'Curved arrows', href: 'lessons/curved-arrows.html', dependsOn: ['resonance'] },
+      { id: 'nucleophiles', title: 'Nucleophiles', href: 'lessons/nucleophiles.html', dependsOn: ['electronegativity'] },
+      { id: 'electrophiles', title: 'Electrophiles', href: 'lessons/electrophiles.html', dependsOn: ['electronegativity'] },
+      { id: 'leaving-groups', title: 'Leaving groups', href: 'lessons/leaving-groups.html', dependsOn: ['electrophiles'] },
+      { id: 'electron-rich-poor', title: 'Electron-rich vs. electron-poor atoms', href: 'lessons/electron-rich-poor.html', dependsOn: ['nucleophiles', 'electrophiles'] }
+    ]},
+    { id: 'acids-bases', title: 'Acids & Bases', topics: [
+      { id: 'bronsted', title: 'Brønsted acids/bases', href: 'lessons/bronsted.html' },
+      { id: 'lewis-acids', title: 'Lewis acids/bases', href: 'lessons/lewis-acids.html', dependsOn: ['nucleophiles', 'electrophiles'] },
+      { id: 'pka', title: 'pKa', href: 'lessons/pka.html', dependsOn: ['bronsted'] },
+      { id: 'conjugate', title: 'Conjugate acids/bases', href: 'lessons/conjugate.html', dependsOn: ['pka'] },
+      { id: 'acidity-factors', title: 'Factors affecting acidity', href: 'lessons/acidity-factors.html', dependsOn: ['pka', 'resonance', 'electronegativity', 'hybridization'] }
+    ]},
+    { id: 'alkanes-conformations', title: 'Alkanes & Conformations', topics: [
+      { id: 'newman', title: 'Newman projections', href: 'lessons/newman.html' },
+      { id: 'cyclohexanes', title: 'Cyclohexanes', href: 'lessons/cyclohexanes.html', dependsOn: ['newman'] },
+      { id: 'axial-equatorial', title: 'Axial/equatorial', href: 'lessons/axial-equatorial.html', dependsOn: ['cyclohexanes'] },
+      { id: 'ring-flips', title: 'Ring flips', href: 'lessons/ring-flips.html', dependsOn: ['axial-equatorial'] },
+      { id: 'conformational-analysis', title: 'Conformational analysis', href: 'lessons/conformational-analysis.html', dependsOn: ['ring-flips'] }
+    ]},
+    { id: 'stereochemistry', title: 'Stereochemistry', topics: [
+      { id: 'chirality', title: 'Chirality', href: 'lessons/chirality.html' },
+      { id: 'stereocenters', title: 'Stereocenters', href: 'lessons/stereocenters.html', dependsOn: ['chirality'] },
+      { id: 'enantiomers', title: 'Enantiomers', href: 'lessons/enantiomers.html', dependsOn: ['stereocenters'] },
+      { id: 'diastereomers', title: 'Diastereomers', href: 'lessons/diastereomers.html', dependsOn: ['enantiomers'] },
+      { id: 'meso', title: 'Meso compounds', href: 'lessons/meso.html', dependsOn: ['diastereomers'] },
+      { id: 'rs-configuration', title: 'R/S configuration', href: 'lessons/rs-configuration.html', dependsOn: ['stereocenters', 'electronegativity'] },
+      { id: 'fischer', title: 'Fischer projections', href: 'lessons/fischer.html', dependsOn: ['rs-configuration'] }
+    ]},
+    { id: 'substitution-elimination', title: 'Substitution & Elimination', topics: [
+      { id: 'sn2', title: 'SN2', href: 'mechanisms/sn2.html' },
+      { id: 'sn1', title: 'SN1', href: 'mechanisms/sn1.html' },
+      { id: 'e1', title: 'E1', href: 'mechanisms/e1.html', dependsOn: ['sn1'] },
+      { id: 'e2', title: 'E2', href: 'mechanisms/e2.html', dependsOn: ['conformational-analysis', 'leaving-groups', 'bronsted'] },
+      { id: 'substrate-effects', title: 'Substrate & solvent effects', href: 'lessons/substrate-effects.html', dependsOn: ['sn2', 'sn1', 'e1', 'e2'] }
+    ]},
+    { id: 'alkenes-alkynes', title: 'Alkenes & Alkynes', topics: [
+      { id: 'alkene-structure', title: 'Alkene structure', href: 'lessons/alkene-structure.html', dependsOn: ['hybridization'] },
+      { id: 'addition-reactions', title: 'Addition reactions', href: 'lessons/addition-reactions.html', mechanism: 'mechanisms/addition.html', dependsOn: ['alkene-structure', 'nucleophiles', 'electrophiles'] },
+      { id: 'markovnikov', title: 'Markovnikov / anti-Markovnikov', href: 'lessons/markovnikov.html', dependsOn: ['addition-reactions', 'sn1'] },
+      { id: 'alkynes', title: 'Alkynes', href: 'lessons/alkynes.html', dependsOn: ['alkene-structure', 'acidity-factors', 'sn2'] }
+    ]},
+    { id: 'alcohols-ethers', title: 'Alcohols, Ethers & Related Chemistry', topics: [
+      { id: 'alcohol-reactions', title: 'Alcohol reactions', href: 'lessons/alcohol-reactions.html', dependsOn: ['leaving-groups', 'e1'] },
+      { id: 'ether-chemistry', title: 'Ether chemistry', href: 'lessons/ether-chemistry.html', dependsOn: ['sn2', 'alcohol-reactions'] },
+      { id: 'epoxides', title: 'Epoxides', href: 'lessons/epoxides.html', dependsOn: ['ether-chemistry', 'cyclohexanes', 'substrate-effects'] }
+    ]},
+    { id: 'carbonyl-chemistry', title: 'Carbonyl Chemistry', topics: [
+      { id: 'aldehydes-ketones', title: 'Aldehydes & ketones', href: 'lessons/aldehydes-ketones.html', dependsOn: ['hybridization', 'electrophiles'] },
+      { id: 'nucleophilic-addition', title: 'Nucleophilic addition', href: 'lessons/nucleophilic-addition.html', mechanism: 'mechanisms/carbonyl-addition.html', dependsOn: ['aldehydes-ketones', 'nucleophiles'] },
+      { id: 'acetals', title: 'Acetals & hemiacetals', href: 'lessons/acetals.html', dependsOn: ['nucleophilic-addition', 'alcohol-reactions', 'resonance'] }
+    ]},
+    { id: 'carboxylic-acids', title: 'Carboxylic Acids & Derivatives', topics: [
+      { id: 'carboxylic-acids', title: 'Carboxylic acids', href: 'lessons/carboxylic-acids.html', dependsOn: ['resonance', 'pka', 'acidity-factors'] },
+      { id: 'esters-amides', title: 'Esters & amides', href: 'lessons/esters-amides.html', dependsOn: ['carboxylic-acids', 'leaving-groups'] },
+      { id: 'acyl-substitution', title: 'Nucleophilic acyl substitution', href: 'lessons/acyl-substitution.html', mechanism: 'mechanisms/acyl-substitution.html', dependsOn: ['esters-amides', 'nucleophilic-addition'] }
+    ]},
+    { id: 'enolate-chemistry', title: 'Enolate Chemistry', topics: [
+      { id: 'alpha-hydrogens', title: 'Alpha hydrogens & enolates', href: 'lessons/alpha-hydrogens.html', dependsOn: ['aldehydes-ketones', 'acidity-factors', 'alkynes'] },
+      { id: 'aldol', title: 'Aldol reactions', href: 'lessons/aldol.html', mechanism: 'mechanisms/aldol.html', dependsOn: ['alpha-hydrogens', 'nucleophilic-addition'] },
+      { id: 'claisen', title: 'Claisen reactions', href: 'lessons/claisen.html', mechanism: 'mechanisms/claisen.html', dependsOn: ['aldol', 'acyl-substitution'] }
+    ]},
+    { id: 'amines', title: 'Amines', topics: [
+      { id: 'amine-structure', title: 'Structure & basicity', href: 'lessons/amine-structure.html', dependsOn: ['bronsted', 'lewis-acids', 'esters-amides'] },
+      { id: 'amine-reactions', title: 'Reactions', href: 'lessons/amine-reactions.html', dependsOn: ['amine-structure', 'sn2', 'nucleophilic-addition', 'acyl-substitution'] }
+    ]},
+    { id: 'aromatic-chemistry', title: 'Aromatic Chemistry', topics: [
+      { id: 'aromaticity', title: 'Aromaticity', href: 'lessons/aromaticity.html', dependsOn: ['resonance', 'hybridization'] },
+      { id: 'eas', title: 'Electrophilic aromatic substitution', href: 'lessons/eas.html', mechanism: 'mechanisms/eas.html', dependsOn: ['aromaticity', 'addition-reactions', 'markovnikov'] },
+      { id: 'directing-effects', title: 'Ortho/meta/para directing effects', href: 'lessons/directing-effects.html', dependsOn: ['eas', 'esters-amides'] }
+    ]},
+    { id: 'spectroscopy', title: 'Spectroscopy', topics: [
+      { id: 'ir', title: 'IR', href: 'lessons/ir.html', dependsOn: ['bonding', 'hybridization'] },
+      { id: 'h-nmr', title: '¹H NMR', href: 'lessons/h-nmr.html', dependsOn: ['electronegativity', 'aromaticity'] },
+      { id: 'c-nmr', title: '¹³C NMR', href: 'lessons/c-nmr.html', dependsOn: ['h-nmr'] },
+      { id: 'mass-spec', title: 'Mass spectrometry', href: 'lessons/mass-spec.html', dependsOn: ['sn1', 'markovnikov', 'eas'] }
+    ]}
+  ];
+
+  function readProgress(){
+    try{ var raw = localStorage.getItem('ochem_progress'); return raw ? JSON.parse(raw) : {}; }
+    catch(e){ return {}; }
+  }
+  function writeProgress(p){
+    try{ localStorage.setItem('ochem_progress', JSON.stringify(p)); }catch(e){}
+  }
+
+  /* Progress is tracked per topic as { step, correct, attempts, completed,
+     bestScore }. step/correct/attempts/completed describe the CURRENT run
+     (reset each time a fresh attempt begins); bestScore is a separate,
+     permanent high-water mark — the best score you've ever gotten on a
+     COMPLETED run of this lesson. topicMastery reports bestScore, never the
+     live in-progress tally, so: (1) mastery only counts once you've actually
+     finished the lesson at least once ("make sure you know the topics", not
+     just opened them), and (2) redoing a lesson can only push that number up
+     — a worse retry never erases a better earlier score, and once it hits
+     100 it just stays there.
+
+     beginLessonRun is called once, when a lesson page loads, before its
+     first step renders:
+       - no saved run, or the saved run was already completed -> this is a
+         fresh attempt (opening a finished lesson again is a deliberate
+         redo, e.g. to try to improve). Reset step/correct/attempts/completed
+         to start a clean run, but carry bestScore forward untouched.
+       - a saved, unfinished run exists -> the learner left partway through;
+         resume at their saved step with that run's tally intact. */
+  function beginLessonRun(topicId, totalSteps){
+    var p = readProgress();
+    var t = p[topicId];
+    if(!t || t.completed){
+      p[topicId] = { step: 0, correct: 0, attempts: 0, completed: false, bestScore: t ? t.bestScore : undefined };
+      writeProgress(p);
+      return { step: 0, resumed: false };
+    }
+    var step = Math.max(0, Math.min(t.step || 0, Math.max(0, totalSteps - 1)));
+    return { step: step, resumed: step > 0 };
+  }
+
+  // Called whenever the engine renders a step, so an exit mid-lesson can
+  // resume at the right place next time instead of restarting at step 1.
+  function saveStep(topicId, step){
+    var p = readProgress();
+    var t = p[topicId] || { step: 0, correct: 0, attempts: 0, completed: false };
+    t.step = step;
+    p[topicId] = t;
+    writeProgress(p);
+  }
+
+  // Every lesson calls this on each answered question so the current run's
+  // tally builds up as you go.
+  function recordAttempt(topicId, isCorrect){
+    var p = readProgress();
+    var t = p[topicId] || { step: 0, correct: 0, attempts: 0, completed: false };
+    t.attempts++;
+    if(isCorrect) t.correct++;
+    p[topicId] = t;
+    writeProgress(p);
+  }
+
+  // Marks the current run finished once the final challenge is answered
+  // correctly, and folds this run's score into bestScore (only if it's
+  // higher than whatever was already there) — the number topicMastery
+  // reports from here on, until a later run beats it.
+  function completeLessonRun(topicId){
+    var p = readProgress();
+    var t = p[topicId] || { step: 0, correct: 0, attempts: 0, completed: false };
+    var thisRunScore = t.attempts > 0 ? Math.round((t.correct / t.attempts) * 100) : 0;
+    t.bestScore = (typeof t.bestScore === 'number') ? Math.max(t.bestScore, thisRunScore) : thisRunScore;
+    t.completed = true;
+    p[topicId] = t;
+    writeProgress(p);
+  }
+
+  // Explicit "start over" — used by the resume banner's opt-out link. Only
+  // resets the in-progress run; your best completed score is untouched.
+  function resetRun(topicId){
+    var p = readProgress();
+    var t = p[topicId];
+    p[topicId] = { step: 0, correct: 0, attempts: 0, completed: false, bestScore: t ? t.bestScore : undefined };
+    writeProgress(p);
+  }
+
+  // The score shown anywhere in the app: your best-ever completed-run
+  // score for this topic, or null if you've never actually finished it.
+  function topicMastery(topicId){
+    var p = readProgress();
+    var t = p[topicId];
+    if(!t || typeof t.bestScore !== 'number') return null; // never completed
+    return t.bestScore;
+  }
+
+  // A module's mastery only counts topics that have a lesson AND have been
+  // attempted — modules with no shipped lessons yet report null, not 0%.
+  function moduleMastery(mod){
+    var scored = mod.topics
+      .filter(function(t){ return t.href; })
+      .map(function(t){ return topicMastery(t.id); })
+      .filter(function(m){ return m !== null; });
+    if(!scored.length) return null;
+    return Math.round(scored.reduce(function(a,b){ return a+b; }, 0) / scored.length);
+  }
+
+  function overallMastery(){
+    var scored = MODULES.map(moduleMastery).filter(function(m){ return m !== null; });
+    if(!scored.length) return null;
+    return Math.round(scored.reduce(function(a,b){ return a+b; }, 0) / scored.length);
+  }
+
+  function findTopic(topicId){
+    for(var i=0;i<MODULES.length;i++){
+      for(var j=0;j<MODULES[i].topics.length;j++){
+        if(MODULES[i].topics[j].id === topicId) return MODULES[i].topics[j];
+      }
+    }
+    return null;
+  }
+
+  // The concept-dependency check from the spec: "you're struggling with E2,
+  // so review conformational analysis first" — rather than just serving more
+  // E2 questions. A topic only counts as "struggling" once there's enough
+  // signal (5+ attempts) to mean something, not one unlucky first try.
+  // Prerequisite topics are surfaced whether or not their own lesson exists
+  // yet — the recommendation is honest either way ("review this" vs
+  // "this hasn't been built yet"), rather than hiding the dependency.
+  var STRUGGLING_THRESHOLD = 60;
+  var MIN_ATTEMPTS_TO_JUDGE = 5;
+  function strugglingPrerequisites(topicId){
+    var topic = findTopic(topicId);
+    if(!topic || !topic.dependsOn || !topic.dependsOn.length) return null;
+    var p = readProgress();
+    var t = p[topicId];
+    if(!t || t.attempts < MIN_ATTEMPTS_TO_JUDGE) return null;
+    var score = Math.round((t.correct / t.attempts) * 100);
+    if(score >= STRUGGLING_THRESHOLD) return null;
+    return {
+      topic: topic,
+      score: score,
+      prerequisites: topic.dependsOn.map(findTopic).filter(Boolean)
+    };
+  }
+
+  window.OchemCurriculum = {
+    MODULES: MODULES,
+    beginLessonRun: beginLessonRun,
+    saveStep: saveStep,
+    recordAttempt: recordAttempt,
+    completeLessonRun: completeLessonRun,
+    resetRun: resetRun,
+    topicMastery: topicMastery,
+    moduleMastery: moduleMastery,
+    overallMastery: overallMastery,
+    findTopic: findTopic,
+    strugglingPrerequisites: strugglingPrerequisites
+  };
+})();

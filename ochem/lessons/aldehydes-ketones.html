@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aldehydes &amp; Ketones — Carbonyl Chemistry | Organic Chemistry</title>
+<meta name="description" content="Learn why the C=O carbonyl carbon is such a strong electrophile, why aldehydes are more reactive than ketones, and how hydration equilibria prove it quantitatively.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/aldehydes-ketones.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 9 &middot; Carbonyl Chemistry</div>
+    <h1 style="margin-bottom:4px;">Aldehydes &amp; ketones.</h1>
+    <p class="lede" style="margin-top:0;">The C=O carbonyl is the single most important functional group in the rest of this course — everything from here on is built on how nucleophiles attack it.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'aldehydes-ketones',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A carbonyl is a heavily polarized, alkene-like pi bond.',
+        bodyHtml: '<p class="step-body">Structurally, a carbonyl carbon looks just like an alkene carbon: sp² hybridized, trigonal planar, with a sigma bond and a pi bond to oxygen. But oxygen is much more electronegative than carbon, so unlike a C=C, this pi bond is heavily <b>polarized</b> — the shared electron density sits much closer to oxygen.</p><p class="step-body" style="margin-bottom:0;">You can draw this with two resonance structures (from the Resonance lesson): the ordinary neutral C=O structure, and a second, real contributor with a full positive formal charge on carbon and a full negative charge plus an extra lone pair on oxygen. Both structures matter — the true carbonyl is somewhere between them, with carbon carrying substantial positive character.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the atom of a carbonyl (C=O) that carries the partial positive charge — the electrophilic site.</h2>' +
+            '<div style="display:flex;justify-content:center;padding:20px 0;">' +
+            '<svg width="220" height="140" viewBox="0 0 220 140">' +
+              '<line x1="60" y1="100" x2="110" y2="70" stroke="var(--ink)" stroke-width="2"/>' +
+              '<line x1="160" y1="100" x2="110" y2="70" stroke="var(--ink)" stroke-width="2"/>' +
+              '<line x1="110" y1="70" x2="110" y2="25" stroke="var(--ink)" stroke-width="3"/>' +
+              '<line x1="118" y1="70" x2="118" y2="25" stroke="var(--ink)" stroke-width="3"/>' +
+              '<circle class="atom" data-v="c" cx="110" cy="70" r="16" fill="var(--card-bg)" stroke="var(--accent)" stroke-width="2" style="cursor:pointer;"/>' +
+              '<text x="110" y="75" text-anchor="middle" font-size="13" font-weight="800" fill="var(--ink)" style="pointer-events:none;">C</text>' +
+              '<circle class="atom" data-v="o" cx="114" cy="15" r="16" fill="var(--card-bg)" stroke="var(--border)" stroke-width="2" style="cursor:pointer;"/>' +
+              '<text x="114" y="20" text-anchor="middle" font-size="13" font-weight="800" fill="var(--ink)" style="pointer-events:none;">O</text>' +
+            '</svg></div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var answered = false;
+          api.card.querySelectorAll('.atom').forEach(function(el){
+            el.addEventListener('click', function(){
+              if(answered) return;
+              answered = true;
+              var isCorrect = el.getAttribute('data-v') === 'c';
+              el.setAttribute('stroke', isCorrect ? '#2e9e5b' : '#c0392b');
+              api.record(isCorrect);
+              api.showFeedback(fb, isCorrect, 'Correct — oxygen pulls electron density toward itself, leaving carbon partially positive (δ+) and electrophilic. Oxygen ends up partially negative (δ−) and is the nucleophilic/basic site instead.');
+              next.disabled = false;
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Why is the carbonyl carbon a good electrophile?',
+        options: ['Oxygen\'s higher electronegativity pulls electron density away, leaving carbon partially (and resonance-supported, significantly) positive', 'Carbon is naturally more electronegative than oxygen', 'The carbonyl carbon has an extra proton attached'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — the electronegativity difference across the polarized pi bond is the entire source of the carbonyl carbon\'s electrophilicity.',
+        wrongFeedback: 'Oxygen is more electronegative than carbon, not the other way around — that\'s exactly what polarizes the C=O and makes carbon electron-poor.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Aldehydes are more reactive than ketones — sterics and electronics agree.',
+        bodyHtml: '<p class="step-body">An aldehyde\'s carbonyl carbon carries one alkyl (or aryl) group and one hydrogen; a ketone\'s carries two alkyl (or aryl) groups. Two separate effects both make the aldehyde the more reactive, more electrophilic carbonyl. <b>Sterically</b>, a nucleophile has an easier time approaching a carbon flanked by one small H than one flanked by two bulkier groups — the same steric logic that slows SN2 at hindered carbons.</p><p class="step-body" style="margin-bottom:0;"><b>Electronically</b>, alkyl groups are weak electron donors (via hyperconjugation and induction — the same effect that stabilizes carbocations and more-substituted alkenes). Donated electron density partially cancels the carbonyl carbon\'s positive character. A ketone has two donating groups doing this; an aldehyde has only one. Less cancellation means more positive character left on the aldehyde carbon — a stronger electrophile.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'Formaldehyde (H₂C=O) reacts with water to form a hydrate with Keq ≈ 1000; acetone ((CH₃)₂C=O) does the same with Keq ≈ 0.0014. What explains this million-fold difference?',
+        options: ['Formaldehyde is simply a smaller molecule with less mass', 'Formaldehyde has no alkyl groups to sterically block or electronically donate into the carbonyl, leaving it far more electrophilic than acetone\'s doubly-substituted carbonyl', 'Acetone reacts with water so slowly that equilibrium is never reached'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — zero alkyl groups means zero steric blocking and zero electron donation canceling the positive charge, which is exactly why formaldehyde\'s carbonyl carbon is so much more electrophilic.',
+        wrongFeedback: 'This is an equilibrium constant (Keq), not a rate — and the explanation is about substitution at the carbonyl carbon (sterics and electron donation), not simple molecular size.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The hydration equilibrium is a direct, quantitative electrophilicity meter.',
+        bodyHtml: '<div class="explain-box">Formaldehyde (no alkyl groups): Keq ≈ 1000 — almost entirely hydrate. Acetaldehyde (one alkyl group): Keq ≈ 1.4 — roughly a 50/50 split. Acetone (two alkyl groups): Keq ≈ 0.0014 — almost entirely the ketone, with essentially no hydrate present. Each additional alkyl group knocks the equilibrium constant down by roughly three orders of magnitude, giving you real numbers behind "aldehydes are more reactive than ketones" instead of just a rule to memorize.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 6 · Independent Practice',
+        title: 'Ranked from most to least electrophilic at the carbonyl carbon, which order is correct?',
+        options: ['Acetone > acetaldehyde > formaldehyde', 'All three are equally electrophilic', 'Formaldehyde > acetaldehyde > acetone'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — fewer alkyl substituents on the carbonyl carbon means less steric blocking and less electron donation, both of which increase electrophilicity.',
+        wrongFeedback: 'More alkyl substitution means less electrophilicity, not more — formaldehyde (zero alkyl groups) sits at the most-reactive end.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A chemist compares cyclohexanone (a ketone) and benzaldehyde (an aldehyde) as electrophiles toward the same nucleophile. Which is predicted to react faster, and why?',
+        options: ['Benzaldehyde — one substituent instead of two means less steric hindrance and less electron donation into the carbonyl carbon', 'Cyclohexanone — rings are always more reactive than open chains', 'They react at identical rates since both are six-membered-ring-containing carbonyls'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — the aldehyde/ketone distinction (one substituent vs. two at the carbonyl carbon) is what matters here, not ring size — benzaldehyde\'s carbonyl carbon is less hindered and less electronically shielded.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

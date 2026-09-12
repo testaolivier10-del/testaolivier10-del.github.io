@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Axial &amp; Equatorial — Alkanes &amp; Conformations | Organic Chemistry</title>
+<meta name="description" content="Learn to identify axial and equatorial positions on a cyclohexane chair, and how 1,3-diaxial interactions and A-values predict which position a substituent prefers.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/axial-equatorial.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 4 &middot; Alkanes &amp; Conformations</div>
+    <h1 style="margin-bottom:4px;">Axial &amp; equatorial.</h1>
+    <p class="lede" style="margin-top:0;">Every carbon on the chair has two very different kinds of positions available.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  function chairSvg(){
+    return '<div class="scene"><svg viewBox="0 0 320 150">' +
+      '<polyline points="20,90 80,60 150,90 210,60 280,90 220,110 150,90" fill="none" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<polyline points="20,90 80,60" fill="none" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<line x1="80" y1="60" x2="80" y2="20" stroke="var(--muted)" stroke-width="2.5"/>' +
+      '<g class="atom" data-key="ax1"><circle cx="80" cy="14" r="9" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="80" y="18" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">ax</text></g>' +
+      '<line x1="80" y1="60" x2="50" y2="75" stroke="var(--muted)" stroke-width="2.5" stroke-dasharray="0"/>' +
+      '<g class="atom" data-key="eq1"><circle cx="38" cy="80" r="9" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="38" y="84" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">eq</text></g>' +
+      '<line x1="210" y1="60" x2="210" y2="20" stroke="var(--muted)" stroke-width="2.5"/>' +
+      '<g class="atom" data-key="ax2"><circle cx="210" cy="14" r="9" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="210" y="18" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">ax</text></g>' +
+      '<line x1="150" y1="90" x2="150" y2="130" stroke="var(--muted)" stroke-width="2.5"/>' +
+      '<g class="atom" data-key="ax3"><circle cx="150" cy="136" r="9" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="150" y="140" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">ax</text></g>' +
+      '<line x1="280" y1="90" x2="305" y2="78" stroke="var(--muted)" stroke-width="2.5"/>' +
+      '<g class="atom" data-key="eq2"><circle cx="312" cy="74" r="9" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="312" y="78" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">eq</text></g>' +
+    '</svg></div>';
+  }
+
+  window.OchemLessonEngine.start({
+    topicId: 'axial-equatorial',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Axial points up and down; equatorial points outward.',
+        bodyHtml: '<p class="step-body">Every carbon on a cyclohexane chair carries two substituent positions. <b>Axial</b> substituents point straight up or straight down, roughly parallel to an imaginary axis running through the center of the ring. <b>Equatorial</b> substituents point outward, roughly in the plane of the ring itself (like the equator of a globe).</p><p class="step-body" style="margin-bottom:0;">Going around the ring, axial positions alternate: up on carbon 1, down on carbon 2, up on carbon 3, and so on. Every single carbon has exactly one axial and one equatorial position, never two of the same kind.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click both of the equatorial (eq) positions on this chair.</h2>' +
+            '<p class="step-body">The chair below has each position labeled — three axial (ax), two equatorial (eq). Click only the ones marked "eq."</p>' +
+            chairSvg() +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Equatorial found: 0 / 2</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var found = 0;
+          var mistake = false;
+          api.card.querySelectorAll('.atom').forEach(function(g){
+            g.addEventListener('click', function(){
+              if(g.classList.contains('chosen')) return;
+              var key = g.getAttribute('data-key');
+              g.classList.add('chosen');
+              if(key.indexOf('eq') === 0){
+                found++;
+                hint.textContent = 'Equatorial found: ' + found + ' / 2';
+              } else {
+                mistake = true;
+                api.showFeedback(fb, false, 'That one\'s labeled "ax" — axial positions point straight up or down. Keep looking for the two "eq" labels.');
+              }
+              if(found === 2 && !mistake){
+                api.record(true);
+                api.showFeedback(fb, true, 'Right — the two equatorial positions point outward from the ring, while the four axial positions point straight up or down.');
+                next.disabled = false;
+              } else if(found === 2 && mistake){
+                api.record(false);
+                next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'A 1,3-diaxial interaction is...',
+        options: ['A bond that forms between carbons 1 and 3', 'An attraction between two equatorial substituents', 'Steric clash between two axial substituents on the same face, three carbons apart'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — axial substituents at 1 and 3 (or equivalently 1 and 5) point toward each other on the same face and can bump into each other sterically.',
+        wrongFeedback: 'No new bond forms — this is a through-space steric clash between two axial groups pointing toward each other, not a bonding interaction.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'A large A-value (like tert-butyl\'s ~4.7-5+ kcal/mol) means a substituent...',
+        options: ['Strongly prefers the equatorial position, avoiding 1,3-diaxial clashes', 'Strongly prefers the axial position', 'Has no positional preference at all'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. A-value is defined as the equatorial preference in kcal/mol — a bigger substituent has more to lose from 1,3-diaxial clashes, so it prefers equatorial even more strongly.',
+        wrongFeedback: 'A-value specifically measures how much a group prefers equatorial over axial — a larger number means a stronger equatorial preference, not axial.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Real numbers: methyl vs. tert-butyl.',
+        bodyHtml: '<p class="step-body">Methylcyclohexane has an A-value of about 1.7 kcal/mol for the methyl group. An energy preference translates into an actual population split — the bigger the gap, the more lopsided the mixture — and for 1.7 kcal/mol at room temperature the split works out to roughly 95:5, equatorial-methyl to axial-methyl. (The equation behind that conversion is ΔG = −RT ln K; you will not need to run it in this course, only to know that a couple of kcal/mol is already enough to make one conformation dominate.) Methylcyclohexane is mostly, but not exclusively, in the equatorial form.</p><p class="step-body" style="margin-bottom:0;">tert-Butylcyclohexane has an A-value of roughly 4.7–5+ kcal/mol — so much larger that the axial form is present in only a few parts per thousand. In practice, chemists treat a tert-butyl group as permanently locking the ring into whichever chair puts it equatorial, which is a genuinely useful trick for controlling the outcome of reactions elsewhere on the ring.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Axial vs. equatorial identity isn\'t fixed — it depends which chair you\'re in.',
+        bodyHtml: '<div class="explain-box">A substituent that\'s axial in one chair conformation becomes equatorial in the other — you\'ll see exactly how in the next lesson on ring flips. A-values only tell you which chair the molecule prefers overall; they don\'t mean a given atom is permanently "the axial one." Keeping this straight is essential for predicting reactivity, since some reactions (like E2 elimination) specifically require a leaving group to be axial.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Why do bulky substituents like tert-butyl strongly prefer the equatorial position?',
+        options: ['Equatorial bonds are chemically stronger than axial bonds', 'Equatorial substituents point outward and avoid 1,3-diaxial steric clashes that axial substituents experience', 'Axial positions don\'t exist for large substituents'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — the equatorial position keeps a bulky group pointing away from the ring, avoiding the steric clashes with other axial substituents that would occur at the axial position.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<p class="step-body">A chair has twelve hydrogens, and they are not all equivalent. Six point roughly up and down along the ring's axis; six point outward around its rim. Which position a substituent occupies changes its energy, its reactivity, and in Module 6 whether a reaction can happen at all. This section is about reading those positions off a drawing and putting numbers on the preference.</p>
+
+<h3>Two positions per carbon</h3>
+<p class="step-body">Every carbon in a cyclohexane chair carries two substituent positions. <b>Axial</b> bonds point straight up or straight down, parallel to the imaginary axis running through the middle of the ring. <b>Equatorial</b> bonds point outward, roughly along the ring's "equator," angled slightly up or down.</p>
+<p class="step-body">Around the ring, the axial positions alternate strictly: up, down, up, down, up, down. Each carbon's equatorial bond points the opposite way from its axial one — a carbon with an axial-up bond has an equatorial bond angled slightly down, and vice versa. Getting this alternation right is the whole skill, and the reliable rule when drawing is that axial bonds are <b>always vertical</b> and alternate direction as you go round, while equatorial bonds are <b>always parallel to a ring bond two positions away</b>.</p>
+
+<div class="notes-pitfall"><b>"Up" and "axial" are not the same thing.</b> A substituent that points up may be axial or equatorial depending on which carbon it is on. Up/down describes which face of the ring the group is on, and it is a fixed property of the molecule — it cannot change without breaking bonds. Axial/equatorial describes the conformation, and it changes every time the ring flips. Cis and trans relationships are up/down statements and survive a ring flip; axial and equatorial do not.</div>
+
+<h3>1,3-diaxial interactions</h3>
+<p class="step-body">Take an axial substituent on carbon 1 pointing up. The axial positions on carbons 3 and 5 also point up, and all three converge on the same face of the ring, close enough to bump into each other. That steric clash is a <b>1,3-diaxial interaction</b>.</p>
+<p class="step-body">It is the ring's version of the gauche-butane strain from the Newman section — the same van der Waals repulsion between groups held about 60° apart, differing only in that a ring holds them there permanently rather than letting them rotate away. An axial group experiences two such interactions, one with each of the two axial hydrogens on the same face.</p>
+<p class="step-body">An equatorial substituent points outward, away from the ring and away from everything else, and has essentially no 1,3-diaxial partners. This is why bulky groups so strongly prefer equatorial.</p>
+
+<h3>A-values: putting a number on it</h3>
+<p class="step-body">The <b>A-value</b> of a substituent is how much energy, in kcal/mol, that group gains by sitting equatorial rather than axial. It is measured, tabulated, and directly convertible into an equilibrium ratio.</p>
+<div class="notes-table-wrap">
+<table class="notes-table">
+<tr><th>Group</th><th>A-value</th><th>% equatorial at 25 °C</th></tr>
+<tr><td>–F</td><td>0.25</td><td>60</td></tr>
+<tr><td>–CN</td><td>0.2</td><td>58</td></tr>
+<tr><td>–Cl, –Br</td><td>0.4–0.5</td><td>~68</td></tr>
+<tr><td>–OH</td><td>0.9</td><td>82</td></tr>
+<tr><td>–CH₃</td><td>1.7</td><td>95</td></tr>
+<tr><td>–CH₂CH₃</td><td>1.8</td><td>95</td></tr>
+<tr><td>–CH(CH₃)₂</td><td>2.2</td><td>98</td></tr>
+<tr><td>–C(CH₃)₃</td><td>~4.9</td><td>&gt;99.9</td></tr>
+<tr><td>–C₆H₅</td><td>2.8</td><td>99</td></tr>
+</table>
+</div>
+<p class="step-body">Two things in that table repay attention. First, A-value tracks <b>width</b> rather than mass: iodine is far heavier than fluorine but its A-value is similar, because it is a smooth sphere that sits a long way from the ring on a long bond, while a methyl group's three hydrogens stick out sideways. Second, the jump from isopropyl (2.2) to <i>tert</i>-butyl (4.9) is enormous, because <i>tert</i>-butyl has no C–H bond pointing at the ring to rotate out of the way — it must present a methyl group whatever it does.</p>
+
+<div class="notes-fact">A <i>tert</i>-butyl group is so overwhelmingly equatorial — over 99.9% — that chemists use it deliberately as a <b>conformational anchor</b>. Put a <i>tert</i>-butyl on a ring and you have effectively locked the ring into one chair, which lets you study the reactivity of a single, known conformation instead of an averaging mixture. Much of what is known about axial versus equatorial reactivity was measured this way.</div>
+
+<div class="notes-example">
+<span class="k">Worked example — turning an A-value into a ratio</span>
+<p>Methylcyclohexane has an A-value of 1.7 kcal/mol. Using ΔG = −RT ln K at 298 K, where RT ≈ 0.59 kcal/mol:</p>
+<p>K = e^(1.7/0.59) ≈ 18, so the equilibrium is about 18:1 in favour of equatorial — roughly 95:5.</p>
+<p>Now <i>tert</i>-butyl at 4.9 kcal/mol: K = e^(4.9/0.59) ≈ 4000, or better than 99.97% equatorial. Tripling the energy difference multiplies the ratio by more than two hundred, because the relationship is exponential.</p>
+</div>
+
+<h3>When axial wins anyway</h3>
+<p class="step-body">The equatorial preference is strong but not absolute, and the exceptions are instructive. A <i>trans</i>-1,2-disubstituted ring can only put both groups equatorial in one of its two chairs — but a <i>cis</i>-1,2 ring cannot put both equatorial in either, so one group is axial no matter what, and the molecule simply picks whichever chair axialises the smaller one.</p>
+<p class="step-body">More interestingly, some substituents genuinely prefer axial for electronic reasons. In sugars, an electronegative substituent at the position next to the ring oxygen often prefers axial — the <b>anomeric effect</b> — because an oxygen lone pair can donate into the C–X sigma* orbital only when that bond is axial. It is a real effect worth several kcal/mol, and it is why glucose's anomers are not distributed the way sterics alone would predict.</p>
+
+<h3>What carries forward</h3>
+<p class="step-body">Axial and equatorial are the vocabulary for everything that follows. The next section covers what happens when the ring flips and the two swap. The section after that puts A-values to work on rings with several substituents. And the axial requirement for E2 elimination — which the chapter ends on — is the single most striking demonstration that conformation controls reactivity, not just shape.</p>

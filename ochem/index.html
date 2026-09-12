@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organic Chemistry — Learn Mechanisms by Doing Them</title>
+<meta name="description" content="An interactive organic chemistry course: perform reaction mechanisms yourself — pick the nucleophile, draw the arrow, predict the product — with instant feedback, instead of just watching a video.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/">
+<meta property="og:title" content="Organic Chemistry — Learn Mechanisms by Doing Them">
+<meta property="og:description" content="An interactive organic chemistry course: perform reaction mechanisms yourself, with instant feedback.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://testaolivier10-del.github.io/ochem/">
+<meta property="og:site_name" content="LevlPrep">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../assets/account.js"></script>
+<script src="../assets/hub-progress.js"></script>
+<script src="../assets/chime.js"></script>
+<script src="../assets/site-chrome.js"></script>
+<script src="assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="assets/ochem.css">
+<link rel="stylesheet" href="assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+  /* Homepage-only layout. Everything visual — cards, buttons, level ring,
+     XP bar, mastery rows, the dark feature panel — comes from the shared
+     system in ../assets/theme.css, so this page matches the NREMT course
+     component for component. */
+  .home-hero{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(32px,5vw,52px);align-items:center;}
+
+  /* Hero progress card — level ring, XP bar, and the four modules you've
+     finished the most lessons in. */
+  .progress-card{
+    background:var(--white);border:var(--bw) solid var(--line);border-radius:22px;
+    padding:26px 26px 22px;box-shadow:0 6px 0 var(--line);
+  }
+  .progress-card__top{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+  .level-chip{display:flex;align-items:center;gap:12px;flex:1;min-width:0;}
+  .level-chip .t b{display:block;font-weight:900;font-size:16px;}
+  .level-chip .t span{font-size:12.5px;color:var(--muted);font-weight:700;}
+
+  /* "What now" row: the lesson you left, the review queue, the weak
+     prerequisite. Each card is rewritten by ochem-home.js when there's real
+     progress to report; the authored markup is the first-visit state. */
+  .now-row{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:18px;}
+  .now-card{
+    background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+    padding:22px 24px;box-shadow:var(--lift-lg);
+  }
+  .now-card.due{border-color:var(--amber);box-shadow:0 5px 0 var(--tint-amber);}
+  .now-card .k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+  .now-card h3{margin:0 0 6px;font-size:19px;}
+  .now-card p{margin:0 0 16px;font-size:13.5px;font-weight:700;color:var(--muted);}
+  .now-card p:last-child{margin-bottom:0;}
+
+  /* The curriculum as three tiers of topic chips. Fourteen modules and 62
+     topics don't fit a six-node path, and every topic stays one click away. */
+  .tier-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;}
+  .tier{
+    background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+    padding:22px;box-shadow:var(--lift-lg);display:flex;flex-direction:column;gap:12px;
+  }
+  .tier .th{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+  .tier .th b{font-size:16.5px;font-weight:900;}
+  .tier .th .pct{font:700 13px var(--font-mono);color:var(--accent);}
+  .tier .meta{font-size:12.5px;font-weight:800;color:var(--muted);}
+  .tier .chips{display:flex;flex-wrap:wrap;gap:7px;}
+  .tier .chips a{
+    font:800 12px var(--font-ui);text-decoration:none;color:var(--ink);background:var(--paper);
+    border:var(--bw) solid var(--line);border-radius:var(--radius-pill);padding:6px 12px;
+    transition:border-color .12s ease,color .12s ease;
+  }
+  .tier .chips a:hover{border-color:var(--accent);color:var(--accent);}
+  .tier .chips a.done{background:var(--tint-accent);border-color:var(--accent);color:var(--accent-text);}
+  .tier .chips a.open{background:var(--tint-amber);border-color:var(--amber);color:var(--amber-text);}
+  .tier .chips a.more{color:var(--muted);background:transparent;border-style:dashed;}
+
+  /* Dark feature panel for the seven interactive tools. */
+  .feature-card{
+    background:var(--navy);border-radius:22px;padding:36px clamp(20px,4vw,44px);
+    display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;color:#fff;
+  }
+  .feature-card .icon-circle{
+    width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.10);
+    display:flex;align-items:center;justify-content:center;margin:0 auto;
+  }
+  .feature-card h2{font-weight:900;font-size:clamp(22px,2.8vw,28px);margin:0 0 12px;color:#fff;}
+  .feature-card p{color:var(--muted-on-dark);font-size:15px;font-weight:600;margin:0 0 20px;max-width:40ch;}
+  .tool-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;}
+  .tool-chips a{
+    font:800 12px var(--font-ui);color:#fff;text-decoration:none;
+    background:rgba(255,255,255,.14);border-radius:var(--radius-pill);padding:6px 12px;
+  }
+  .tool-chips a:hover{background:rgba(255,255,255,.26);color:#fff;}
+
+  /* Sample mechanism step. */
+  .sample-row{display:grid;grid-template-columns:0.85fr 1.15fr;gap:clamp(28px,4vw,48px);align-items:center;}
+  .sample-list{display:flex;flex-direction:column;gap:14px;}
+  .sample-list .row{
+    display:flex;align-items:center;gap:12px;font-weight:800;font-size:14.5px;
+    padding:12px 16px;background:var(--white);border:var(--bw) solid var(--line);border-radius:14px;
+  }
+  .sample-list .row .n{
+    width:26px;height:26px;border-radius:8px;background:var(--tint-accent);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;font:900 12px var(--font-mono);flex-shrink:0;
+  }
+  .mechcard{background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--lift-lg);}
+  .mechcard .qtext{font-weight:800;font-size:16px;margin:14px 0 18px;line-height:1.5;}
+  .mechcard .qopt{font-size:14.5px;padding:13px 16px;box-shadow:var(--lift-sm);}
+
+  @media(max-width:1000px){ .now-row{grid-template-columns:1fr;} }
+  @media(max-width:900px){
+    .home-hero,.feature-card,.sample-row{grid-template-columns:1fr;}
+    .feature-card{text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<noscript><div class="site-nav-fallback" style="max-width:1180px;margin:0 auto;padding:14px clamp(18px,3.5vw,48px)"><a href="index.html">Home</a> &middot; <a href="learn.html">Learn</a> &middot; <a href="practice.html">Practice</a> &middot; <a href="review.html">Review</a> &middot; <a href="mastery.html">Mastery</a> &middot; <a href="tools.html">Tools</a></div></noscript>
+
+<div class="xshell">
+
+  <div class="hero">
+    <div class="home-hero">
+      <div>
+        <div class="eyebrow">Organic Chemistry &middot; Beta</div>
+        <h1>Push the arrows yourself.</h1>
+        <p class="lede">Fourteen modules, 62 topics and ten mechanisms you perform step by step &mdash; pick the nucleophile, draw the arrow, predict the product, and get told exactly why when you're wrong.</p>
+        <div class="hero-ctas">
+          <a href="learn.html" class="btn-press">Open the textbook</a>
+          <a href="mechanisms/sn2.html" class="link-quiet">Perform the SN2 mechanism &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Live progress card — the same component the NREMT course opens with,
+           reading this course's own module mastery. Rendered from localStorage
+           by assets/ochem-home.js; this markup is the signed-out / brand-new
+           state, and stands on its own with JS off. -->
+      <div class="progress-card">
+        <div class="progress-card__top">
+          <div class="level-chip">
+            <div class="level-ring" id="heroLevelRing">L1</div>
+            <div class="t">
+              <b id="heroLevelTitle">Lewis Apprentice</b>
+              <span id="heroLevelSub">Level 1 &middot; 0 XP</span>
+            </div>
+          </div>
+          <div class="streak-chip" id="heroStreak" hidden>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c1.5 1 2 3 2 4.5A5.5 5.5 0 0111.5 21 6 6 0 016 15c0-5 4-6 4-9 0-1.5-.5-2.5-1-3.5C10.5 2 11 2 12 2z" fill="currentColor"/></svg>
+            <span id="heroStreakCount">0</span>
+          </div>
+        </div>
+
+        <div class="xp-track"><div class="xp-fill" id="heroXpFill" style="width:0%"></div></div>
+        <div class="xp-label" id="heroXpLabel">0 / 100 XP to Level 2</div>
+
+        <div id="heroModules" style="margin-top:14px">
+          <div class="mini-domain-row" style="border-top:1px solid var(--line-soft);color:var(--muted);font-weight:700;font-size:12.5px;display:block;padding-top:12px">
+            Finish a lesson and your module readings appear here.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- What to do right now. Each card is the first-visit state until
+       ochem-home.js has real progress to put in it. -->
+  <div class="xsection">
+    <div class="now-row">
+      <div class="now-card" id="homeResume">
+        <div class="k">Start here</div>
+        <h3>Atomic structure</h3>
+        <p>Module 1 &middot; Foundations. Nine topics of groundwork before the first mechanism &mdash; every arrow later on cashes in something from here.</p>
+        <a href="lessons/atomic-structure.html" class="btn-press">Start the first lesson</a>
+      </div>
+      <div class="now-card" id="homeReview">
+        <div class="k">Review queue</div>
+        <h3>Nothing due yet</h3>
+        <p>Finish a lesson and its concepts join a queue scheduled by how shaky each one was &mdash; not by when you studied it.</p>
+      </div>
+      <div class="now-card" id="homeNext">
+        <div class="k">Daily Rounds</div>
+        <h3>A short set each day</h3>
+        <p>Drawn from whatever you're closest to forgetting, so a ten-minute day still does the work that matters.</p>
+        <a href="practice.html" class="link-quiet">See practice &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- The curriculum. Tier membership is authored here (data-modules), so the
+       page says what it groups; ochem-home.js only fills in the readings. -->
+  <div class="xsection">
+    <div class="section-head">
+      <h2>Fourteen modules, in the order they build</h2>
+      <p class="section-lede">Each one leans on the last. Foundations pays for everything downstream &mdash; but if your exam is on Friday, start where the exam is.</p>
+    </div>
+
+    <div class="tier-grid" style="margin-top:28px">
+      <div class="tier" data-modules="1-3">
+        <div class="th"><b>Foundations</b><span class="pct" style="color:var(--muted)">Not started</span></div>
+        <div class="meta">Modules 1&ndash;3 &middot; 20 topics</div>
+        <div class="track thin"><i style="width:0%"></i></div>
+        <div class="chips">
+          <a href="lessons/atomic-structure.html" data-topic="atomic-structure">Atomic structure</a>
+          <a href="lessons/hybridization.html" data-topic="hybridization">Hybridization</a>
+          <a href="lessons/formal-charge.html" data-topic="formal-charge">Formal charge</a>
+          <a href="lessons/lewis-structures.html" data-topic="lewis-structures">Lewis structures</a>
+          <a href="lessons/resonance.html" data-topic="resonance">Resonance</a>
+          <a href="lessons/curved-arrows.html" data-topic="curved-arrows">Curved arrows</a>
+          <a href="lessons/nucleophiles.html" data-topic="nucleophiles">Nucleophiles</a>
+          <a href="lessons/leaving-groups.html" data-topic="leaving-groups">Leaving groups</a>
+          <a href="lessons/pka.html" data-topic="pka">pKa</a>
+          <a href="learn.html" class="more">+11 more</a>
+        </div>
+      </div>
+
+      <div class="tier" data-modules="4-13">
+        <div class="th"><b>Reactions &amp; mechanisms</b><span class="pct" style="color:var(--muted)">Not started</span></div>
+        <div class="meta">Modules 4&ndash;13 &middot; 38 topics &middot; 10 mechanisms</div>
+        <div class="track thin"><i style="width:0%"></i></div>
+        <div class="chips">
+          <a href="mechanisms/sn2.html" data-topic="sn2">SN2</a>
+          <a href="mechanisms/sn1.html" data-topic="sn1">SN1</a>
+          <a href="mechanisms/e1.html" data-topic="e1">E1</a>
+          <a href="mechanisms/e2.html" data-topic="e2">E2</a>
+          <a href="lessons/conformational-analysis.html" data-topic="conformational-analysis">Conformational analysis</a>
+          <a href="lessons/rs-configuration.html" data-topic="rs-configuration">R/S configuration</a>
+          <a href="lessons/addition-reactions.html" data-topic="addition-reactions">Addition reactions</a>
+          <a href="lessons/nucleophilic-addition.html" data-topic="nucleophilic-addition">Nucleophilic addition</a>
+          <a href="lessons/aldol.html" data-topic="aldol">Aldol reactions</a>
+          <a href="lessons/eas.html" data-topic="eas">Aromatic substitution</a>
+          <a href="learn.html" class="more">+28 more</a>
+        </div>
+      </div>
+
+      <div class="tier" data-modules="14-14">
+        <div class="th"><b>Analysis &amp; spectroscopy</b><span class="pct" style="color:var(--muted)">Not started</span></div>
+        <div class="meta">Module 14 &middot; 4 topics</div>
+        <div class="track thin"><i style="width:0%"></i></div>
+        <div class="chips">
+          <a href="lessons/ir.html" data-topic="ir">IR</a>
+          <a href="lessons/h-nmr.html" data-topic="h-nmr">&#185;H NMR</a>
+          <a href="lessons/c-nmr.html" data-topic="c-nmr">&#185;&#179;C NMR</a>
+          <a href="lessons/mass-spec.html" data-topic="mass-spec">Mass spectrometry</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="xsection">
+    <div class="feature-card">
+      <div class="icon-circle">
+        <svg width="110" height="110" viewBox="0 0 110 110" fill="none" aria-hidden="true">
+          <circle cx="55" cy="22" r="9" stroke="#fff" stroke-opacity=".9" stroke-width="3"/>
+          <circle cx="24" cy="66" r="9" stroke="#fff" stroke-opacity=".9" stroke-width="3"/>
+          <circle cx="86" cy="66" r="9" stroke="#fff" stroke-opacity=".9" stroke-width="3"/>
+          <circle cx="55" cy="92" r="7" stroke="#fff" stroke-opacity=".55" stroke-width="3"/>
+          <path d="M48 29L31 59M62 29l17 30M33 70l15 17m29-17L62 87" stroke="#fff" stroke-opacity=".9" stroke-width="3"/>
+        </svg>
+      </div>
+      <div>
+        <h2>Seven tools that do the chemistry, not a lookup.</h2>
+        <p>Push electrons on a molecule you drew and watch the structure change. Rotate a Newman projection against a live energy curve. Draw a structure and get its predicted &#185;H NMR, splitting explained.</p>
+        <div class="tool-chips">
+          <a href="tools/arrow-pusher.html">Arrow Pusher</a>
+          <a href="tools/resonance.html">Resonance Explorer</a>
+          <a href="tools/viewer-3d.html">3D Viewer</a>
+          <a href="tools/conformations.html">Conformation Lab</a>
+          <a href="tools/reaction-predictor.html">Reaction Predictor</a>
+          <a href="tools/acid-base.html">Acid/Base Comparator</a>
+          <a href="tools/spectroscopy.html">Spectroscopy Lab</a>
+        </div>
+        <a href="tools/arrow-pusher.html" class="btn-press alt">Open the arrow pusher</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="xsection" id="sample">
+    <div class="sample-row">
+      <div>
+        <h2 style="margin-top:0">Try a step.</h2>
+        <p class="section-lede" style="margin:0 0 24px;text-align:left">Mechanisms are graded one step at a time, and every topic carries thirty practice questions of its own.</p>
+        <div class="sample-list">
+          <div class="row"><span class="n">1</span> Identify the nucleophile and electrophile</div>
+          <div class="row"><span class="n">2</span> Draw the electron-pushing arrow</div>
+          <div class="row"><span class="n">3</span> Predict the product and stereochemistry</div>
+        </div>
+      </div>
+      <div class="mechcard">
+        <span class="tag domain">SN2</span> <span class="tag diff">Arrow step</span>
+        <div class="qtext">Hydroxide attacks bromomethane. Where does the arrow start, and where does it end?</div>
+        <div class="qopt"><span class="letter">A</span> From the C&ndash;Br bond to the bromine</div>
+        <div class="qopt correct"><span class="letter">B</span> From the hydroxide lone pair to the carbon</div>
+        <div class="qopt"><span class="letter">C</span> From the carbon to the hydroxide oxygen</div>
+        <div class="qopt" style="margin-bottom:0"><span class="letter">D</span> From the bromine lone pair to the carbon</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="xsection">
+    <div class="trust-row">
+      <div class="trust-pill">Free while in beta</div>
+      <div class="trust-pill">Progress saved on your device</div>
+      <div class="trust-pill">No account required</div>
+    </div>
+    <p class="disclaimer">Independent study aid. Progress is stored on your device; signing in is optional and syncs it, and your level and streak are shared with every other subject on LevlPrep. <a href="../privacy.html">Privacy</a></p>
+  </div>
+
+</div>
+<script>
+  window.OCHEM_SECTION = 'home';
+  window.OCHEM_BASE = '';
+</script>
+<!-- The hero card and the three "what now" cards report real progress, so the
+     home page needs the same concept model Practice and Review run on. -->
+<script src="assets/curriculum.js"></script>
+<script src="assets/lesson-concepts.js"></script>
+<script src="assets/concepts.js"></script>
+<script src="assets/mastery-engine.js"></script>
+<script src="assets/ochem-home.js"></script>
+<script src="assets/ochem-nav.js"></script>
+<script src="assets/periodic-table.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esters &amp; Amides — Carboxylic Acids &amp; Derivatives | Organic Chemistry</title>
+<meta name="description" content="Learn the full carboxylic acid derivative reactivity ladder — acid chloride, anhydride, ester, amide — and why leaving-group ability sets the order.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/esters-amides.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 10 &middot; Carboxylic Acids &amp; Derivatives</div>
+    <h1 style="margin-bottom:4px;">Esters &amp; amides.</h1>
+    <p class="lede" style="margin-top:0;">Four carboxylic acid derivatives, one reactivity ladder — and it's entirely set by how good a leaving group each one carries.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'esters-amides',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        diagramHtml: window.OchemMolecules.svg('methyl-acetate', { caption: 'An ester: a carbonyl with an OR group that can leave. Swap that oxygen for nitrogen and you get an amide, which is far less reactive for two reasons at once.' }),
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'One core structure, four leaving groups, one reactivity ladder.',
+        bodyHtml: '<p class="step-body">Acid chlorides, anhydrides, esters, and amides are all built the same way: a carbonyl carbon attached to a heteroatom-containing group that can act as a leaving group, plus a carbon chain. What differs between them is only which atom that leaving group departs on (Cl, OOCR\', OR\', or NR\'₂) — and, just as importantly, how strongly that same atom\'s lone pair donates into the carbonyl pi system by resonance while it\'s still attached (exactly like the OH oxygen\'s resonance donation in the previous lesson).</p><p class="step-body" style="margin-bottom:0;">Both of these properties — leaving-group ability and resonance-donating strength — turn out to move in the same direction across the whole series, and together they set a single, memorable reactivity order: <b>acid chloride > anhydride > ester > amide</b>.</p>'
+      },
+      {
+        render: function(api){
+          var items = [
+            { key: 'cl', label: 'Acid chloride (RCOCl)' },
+            { key: 'anh', label: 'Anhydride (RCOOOCR\')' },
+            { key: 'est', label: 'Ester (RCOOR\')' },
+            { key: 'amide', label: 'Amide (RCONR\'₂)' }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click these four carboxylic acid derivatives from most to least reactive.</h2>' +
+            '<div class="choice-row" style="flex-direction:column;">' + items.map(function(s){
+              return '<button class="choice-btn" data-v="' + s.key + '">' + s.label + '</button>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Correct clicks: 0 / 4</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var order = ['cl', 'anh', 'est', 'amide'];
+          var idx = 0, mistake = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(btn.disabled) return;
+              var key = btn.getAttribute('data-v');
+              if(key === order[idx]){
+                btn.disabled = true;
+                btn.classList.add('correct');
+                idx++;
+                hint.textContent = 'Correct clicks: ' + idx + ' / 4';
+                if(idx === 4){
+                  api.record(!mistake);
+                  api.showFeedback(fb, !mistake, mistake ? 'You got there, but out of order at first. Remember: worse leaving group and better resonance donor both track together, from chloride (most reactive) down to amide (least reactive).' : 'Exactly right — acid chloride > anhydride > ester > amide, in both leaving-group ability and reactivity.');
+                  next.disabled = false;
+                }
+              } else {
+                mistake = true;
+                btn.classList.add('wrong');
+                setTimeout(function(){ btn.classList.remove('wrong'); }, 500);
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Why is an amide the least reactive carboxylic acid derivative?',
+        options: ['Amides simply contain more atoms than the other derivatives', 'Nitrogen is the best resonance donor of the group (holding its lone pair loosest) and NR₂⁻ is the worst leaving group (conjugate base of a very weak acid)', 'Nitrogen is more electronegative than oxygen or chlorine'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — both the resonance-donation strength and the poor leaving-group ability point the same direction, making amides the least reactive by a wide margin.',
+        wrongFeedback: 'It isn\'t about atom count or electronegativity ranking (nitrogen is actually less electronegative than oxygen) — it\'s about how well nitrogen donates by resonance and how poor a leaving group it makes.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Esters: made reversibly, hydrolyzed irreversibly under base.',
+        bodyHtml: '<p class="step-body">Esters commonly form via Fischer esterification: a carboxylic acid plus an alcohol under acid catalysis, an equilibrium process (driven forward by using excess alcohol or removing water). Because it\'s an equilibrium, the exact same acidic conditions can also hydrolyze an ester back to the acid and alcohol.</p><p class="step-body" style="margin-bottom:0;">Under basic conditions, though, ester hydrolysis (called <b>saponification</b>, historically how soap was made from fats) is <b>irreversible</b>: hydroxide attacks the carbonyl, the alkoxide leaves, and the resulting carboxylic acid is instantly deprotonated by the departing alkoxide (a much stronger base) to form a stable, resonance-delocalized carboxylate — an anion that has no driving force to reverse the reaction.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'Why is base-catalyzed ester hydrolysis (saponification) irreversible, unlike acid-catalyzed hydrolysis?',
+        options: ['Hydroxide is simply a much stronger nucleophile than water', 'Base-catalyzed reactions are always irreversible by definition', 'The carboxylic acid product is immediately deprotonated to a resonance-stabilized carboxylate, removing the driving force to reverse'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — once the product carboxylate forms (resonance-stabilized, much lower energy), there\'s no accessible pathway back to the neutral ester under basic conditions.',
+        wrongFeedback: 'Hydroxide\'s nucleophilicity matters for the reaction\'s rate, but the irreversibility specifically comes from the stable, resonance-delocalized carboxylate product trapping the reaction.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Amides: unreactive by design — and that\'s exactly why biology relies on them.',
+        bodyHtml: '<p class="step-body">An amide\'s resistance to hydrolysis under ordinary conditions (it takes strong acid or base and significant heat to break one down) is precisely why the amide bond — called a <b>peptide bond</b> when it links amino acids — is the backbone linkage of every protein. A bond that held proteins together needs to survive the mild aqueous conditions inside a cell for as long as the protein is needed, while still being selectively breakable when the cell actually wants to degrade it (via dedicated enzymes, proteases, that dramatically lower the activation energy for just that one amide bond).</p><p class="step-body" style="margin-bottom:0;">LiAlH₄ can still reduce an amide despite its low reactivity (LiAlH₄ is strong enough to reduce nearly everything with a carbonyl, as noted in the Nucleophilic Addition lesson) — but distinctively, the product is an <b>amine</b>, not an alcohol, because the nitrogen never leaves during the reduction.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 6 · Independent Practice',
+        title: 'Why does LiAlH₄ reduction of an amide give an amine instead of an alcohol?',
+        options: ['The nitrogen stays attached to carbon throughout the reduction — it never acts as a leaving group in this reaction', 'LiAlH₄ cannot actually reduce amides at all', 'Amines and alcohols are actually the same functional group'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — unlike ester reduction (where the alkoxide leaves as the carbonyl is reduced away, ultimately giving an alcohol), amide reduction keeps nitrogen bonded the whole way through, ending at an amine.',
+        wrongFeedback: 'LiAlH₄ is strong enough to reduce amides — the key detail is what stays attached (nitrogen) throughout that reduction, giving a distinctively different product class than ester reduction.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A chemist wants to convert an acid chloride into an amide in one step. Based on the reactivity ladder, will this reaction proceed readily, and in which direction is conversion generally easy?',
+        options: ['No — you can never convert one carboxylic acid derivative into another', 'Yes, readily — reacting an acid chloride with an amine goes from a more reactive derivative down to a less reactive one, which is generally favorable', 'Yes, but only by first converting the acid chloride into an amide and back again'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — converting down the reactivity ladder (more reactive to less reactive) is generally straightforward, which is exactly why acid chlorides are often made deliberately as reactive intermediates for building esters and amides.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

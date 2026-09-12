@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Epoxides — Alcohols, Ethers &amp; Related Chemistry | Organic Chemistry</title>
+<meta name="description" content="Learn why ring strain makes epoxides the one reactive ether, and how acid-catalyzed vs. base-catalyzed ring opening attack opposite carbons with opposite stereochemistry.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/epoxides.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 8 &middot; Alcohols, Ethers &amp; Related Chemistry</div>
+    <h1 style="margin-bottom:4px;">Epoxides.</h1>
+    <p class="lede" style="margin-top:0;">A three-membered ring under enormous strain — the one ether that reacts eagerly, and whose opening mechanism flips entirely depending on acid or base.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/molecule-editor.js"></script>
+<script src="../assets/arrow-step.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'epoxides',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        diagramHtml: window.OchemMolecules.svg('propylene-oxide'),
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A three-membered ring is under enormous strain — and that strain drives the chemistry.',
+        bodyHtml: '<p class="step-body">An epoxide packs two carbons and an oxygen into a three-membered ring, forcing every bond angle down to roughly 60° — nowhere near the ~109.5° that sp³ atoms actually prefer. This is the same angle strain that makes cyclopropane the least stable common cycloalkane (27.5 kcal/mol of ring strain, from the Cyclohexanes lesson); an epoxide carries a comparable strain penalty.</p><p class="step-body" style="margin-bottom:0;">Because opening the ring relieves all of that strain at once, epoxides react far more readily with nucleophiles than any ordinary, strain-free ether — this single structural fact is the reason epoxides get their own lesson instead of being lumped in with the unreactive ethers from the previous lesson.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">2,2-dimethyloxirane + NaOCH₃ (base-catalyzed): click the carbon the methoxide attacks.</h2>' +
+            '<p class="step-body">The epoxide ring has one carbon attached to two methyl groups (more substituted) and one CH₂ carbon (less substituted). Base-catalyzed opening is a direct SN2 attack.</p>' +
+            '<div style="display:flex;justify-content:center;padding:16px 0;gap:40px;">' +
+              '<div class="atom" data-v="c1" style="cursor:pointer;padding:14px 18px;border:2px solid var(--border);border-radius:12px;text-align:center;font:800 14px var(--font-mono);">C1 (CH₂)<br><span style="font-size:11px;color:var(--muted);font-weight:600;">less hindered</span></div>' +
+              '<div class="atom" data-v="c2" style="cursor:pointer;padding:14px 18px;border:2px solid var(--border);border-radius:12px;text-align:center;font:800 14px var(--font-mono);">C2 (C(CH₃)₂)<br><span style="font-size:11px;color:var(--muted);font-weight:600;">more hindered</span></div>' +
+            '</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var answered = false;
+          api.card.querySelectorAll('.atom').forEach(function(el){
+            el.addEventListener('click', function(){
+              if(answered) return;
+              answered = true;
+              var isCorrect = el.getAttribute('data-v') === 'c1';
+              el.classList.add('chosen');
+              el.style.borderColor = isCorrect ? '#2e9e5b' : '#c0392b';
+              api.record(isCorrect);
+              api.showFeedback(fb, isCorrect, 'Base-catalyzed opening is pure SN2 — methoxide performs a backside attack on the less hindered carbon (C1, the CH₂), exactly like any other SN2 nucleophile avoiding a crowded, more substituted carbon.');
+              next.disabled = false;
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Under basic/neutral conditions, an epoxide is opened by attack at...',
+        options: ['The less hindered (less substituted) carbon — pure SN2 sterics', 'The more substituted carbon', 'Either carbon at exactly equal rates'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — with a strong nucleophile and no acid catalysis, the mechanism is textbook SN2, so sterics decide, favoring the less hindered carbon.',
+        wrongFeedback: 'Under basic conditions the mechanism is pure SN2, so it follows the same steric preference as any SN2 reaction: attack the less hindered carbon.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Acid flips the target carbon — carbocation character takes over.',
+        bodyHtml: '<p class="step-body">Under acidic conditions, the epoxide oxygen gets protonated first. This does two things at once: it makes the ring oxygen an even better leaving group (exactly as protonating an alcohol\'s OH did in the previous lesson), and it lets significant positive charge build up on the more substituted carbon in the transition state, because that carbon can better stabilize the developing positive character (the same 3° &gt; 2° &gt; 1° stability trend from carbocation chemistry).</p><p class="step-body" style="margin-bottom:0;">Because of that transition-state positive character, the nucleophile (often the solvent itself, water or an alcohol) now attacks the <b>more substituted</b> carbon instead — the opposite regiochemistry from the base-catalyzed case, even though both mechanisms remain backside (anti) at the carbon being attacked.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'Why does protonating the epoxide oxygen shift nucleophilic attack to the more substituted carbon?',
+        options: ['Protonation physically blocks the less hindered carbon', 'Protonation lets positive charge build up in the transition state, and the more substituted carbon stabilizes that charge better', 'Acid always reverses every reaction\'s regiochemistry by definition'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — this is the same carbocation-stability logic (3° > 2° > 1°) from Markovnikov addition and SN1, just applied to a partially-formed positive charge in an epoxide-opening transition state.',
+        wrongFeedback: 'There\'s no physical blocking involved — it\'s about which carbon can better stabilize developing positive charge in the transition state once the leaving group is protonated.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'The same 2,2-dimethyloxirane is instead treated with dilute H₂SO₄/H₂O. Which carbon does water attack?',
+        options: ['C1, the less hindered CH₂ carbon', 'Both carbons equally, since water is a weak nucleophile', 'C2, the more substituted C(CH₃)₂ carbon'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — under acidic conditions, attack shifts to the more substituted carbon, the opposite of what you saw with methoxide under basic conditions on the exact same starting epoxide.',
+        wrongFeedback: 'Acid-catalyzed opening reverses the regiochemistry compared to base — attack now favors the carbon that better stabilizes positive charge, which is the more substituted one.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'One substrate, two completely different outcomes — pure mechanism, no new rules.',
+        bodyHtml: '<div class="explain-box">The acid/base regiochemistry switch you just worked through for epoxides is not a new fact to memorize — it\'s the exact same acid-vs-base, cation-character-vs-sterics logic from the Substrate &amp; Solvent Effects lesson, just applied to a strained ring instead of an open-chain leaving group. Recognizing "is this attack SN2-like (sterics decide) or SN1-like (stability decides)?" is a question you can now ask of almost any substitution reaction in the entire course, epoxides included.</div>'
+      },
+      {
+        /* Ring opening under basic conditions. The lesson explains that
+           base attacks the less hindered carbon; this is that step. */
+        render: function(api){
+          window.OchemArrowStep.mount(api, {
+            eyebrow: 'Draw it',
+            title: 'A nucleophile has attacked the less hindered carbon. Draw what the ring does.',
+            bodyHtml: '<p class="step-body">One arrow. The carbon under attack cannot keep five bonds, and the strained ring is waiting for an excuse to open.</p>',
+            molecule: 'propylene-oxide',
+            concepts: ['epoxide-opening-regiochem', 'curved-arrow-direction'],
+            arrows: [{ from: 'bond:o-c1', to: 'o' }],
+            hint: 'Click the C\u2013O bond at the carbon being attacked, then click where those electrons go.',
+            why: 'The C\u2013O bond to the attacked carbon breaks, and its electrons go to oxygen as an alkoxide — relieving about 27 kcal/mol of ring strain in the process. That strain is why an epoxide reacts at all where an ordinary ether does not.',
+            wrong: {
+              'bond:o-c2>o': 'That is the C\u2013O bond at the MORE substituted carbon. Under basic conditions the nucleophile attacks the less hindered carbon, so that is the bond that breaks. The other carbon is where acidic conditions send it.',
+              'bond:o-c1>c1': 'Backwards — that would put a negative charge on carbon and leave oxygen with a positive one. The electronegative atom takes the pair.',
+              'bond:c1-c2>c1': 'The C\u2013C bond is not part of the ring opening. Only a C\u2013O bond breaks; the carbon skeleton stays intact.'
+            }
+          });
+        }
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: '2-methyl-2,3-epoxybutane (an epoxide with one carbon bearing two methyls, the other bearing one methyl) is opened with (1) NaSCH₃ (strong nucleophile, basic conditions) and separately with (2) dilute HCl/H₂O. At which carbon does the nucleophile attack in each case?',
+        options: ['(1) the less substituted carbon (SN2 sterics); (2) the more substituted carbon (cation-stabilized transition state)', '(1) and (2) both attack the more substituted carbon', '(1) and (2) both attack the less substituted carbon'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — this is the acid/base regiochemistry switch in action: the strong nucleophile under basic conditions goes SN2 (less hindered carbon), while acid-catalyzed opening shifts attack to the more substituted, more cation-stabilized carbon.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

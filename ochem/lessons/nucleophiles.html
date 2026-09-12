@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nucleophiles — Electron Movement | Organic Chemistry</title>
+<meta name="description" content="Learn what makes a species a nucleophile, how to spot one, and what makes one nucleophile stronger than another.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/nucleophiles.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 2 &middot; Organic Structure &amp; Electron Movement</div>
+    <h1 style="margin-bottom:4px;">Nucleophiles.</h1>
+    <p class="lede" style="margin-top:0;">Electron-rich species looking for somewhere positive to attack.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'nucleophiles',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        diagramHtml: window.OchemMolecules.svg('acetate-ion', { caption: 'A nucleophile is something with electrons to give. Acetate has both a negative charge and lone pairs — but the same resonance that stabilises it also makes it a fairly weak one.' }),
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: '"Nucleus-loving" — an electron pair looking for a positive partner.',
+        bodyHtml: '<p class="step-body">A <b>nucleophile</b> is any species with an available electron pair — a lone pair, a negative charge, or a π bond — that it can donate to form a new bond. Nucleophiles are drawn toward electron-poor (electrophilic) centers.</p><p class="step-body" style="margin-bottom:0;">Common nucleophiles: anions like OH⁻, CN⁻, and RS⁻; neutral molecules with lone pairs like H₂O and NH₃; and π bonds like alkenes.</p>'
+      },
+      {
+        render: function(api){
+          var pairs = [
+            { a: 'OH⁻', b: 'BF₃', correct: 'a', why: 'OH⁻ carries a full negative charge and lone pairs to donate; BF₃ has an empty orbital on boron and is actually an electrophile.' },
+            { a: 'H₂O', b: 'CH₄', correct: 'a', why: 'Water has lone pairs on oxygen it can donate; methane has no lone pairs and no charge — nothing to offer.' },
+            { a: 'NH₃', b: 'CO₂', correct: 'a', why: 'Ammonia\'s lone pair on nitrogen makes it a nucleophile; CO₂\'s carbon is electron-poor (electrophilic), pulled on by two oxygens.' }
+          ];
+          var idx = 0;
+          function paint(){
+            var p = pairs[idx];
+            api.card.innerHTML =
+              '<div class="step-eyebrow">Interact &middot; ' + (idx+1) + ' / ' + pairs.length + '</div>' +
+              '<h2 class="step-title">Click the nucleophile.</h2>' +
+              '<div class="choice-row">' +
+                '<button class="choice-btn" data-v="a" style="text-align:center;font:900 18px var(--font-mono);">' + p.a + '</button>' +
+                '<button class="choice-btn" data-v="b" style="text-align:center;font:900 18px var(--font-mono);">' + p.b + '</button>' +
+              '</div>' +
+              api.feedbackHtml('fb') +
+              api.nextButtonHtml(idx < pairs.length-1 ? 'Next pair' : 'Continue', false);
+            var fb = api.card.querySelector('#fb');
+            var next = api.card.querySelector('#nextBtn');
+            var answered = false;
+            api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+              btn.addEventListener('click', function(){
+                if(answered) return;
+                answered = true;
+                var v = btn.getAttribute('data-v');
+                var isCorrect = v === p.correct;
+                api.card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+                btn.classList.add(isCorrect ? 'correct' : 'wrong');
+                api.record(isCorrect);
+                api.showFeedback(fb, isCorrect, p.why);
+                next.disabled = false;
+              });
+            });
+            next.addEventListener('click', function(){
+              idx++;
+              if(idx < pairs.length) paint();
+              else api.advance();
+            });
+          }
+          paint();
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Which factor makes a species a STRONGER nucleophile, all else being equal?',
+        options: ['More negative charge / higher electron density', 'Higher electronegativity of the donating atom', 'A larger positive formal charge'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — more available electron density means a more eager, stronger nucleophile.',
+        wrongFeedback: 'A more electronegative atom actually holds onto its electrons more tightly, which makes it a weaker (not stronger) nucleophile.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Two words the next question needs: protic, and polarizable.',
+        bodyHtml: '<p class="step-body">A <b>protic</b> solvent has an O–H or N–H bond, so it has a hydrogen it can share out in a hydrogen bond — water, methanol, ethanol. An <b>aprotic</b> solvent has no such bond, so it cannot — acetone, DMSO, DMF. Both kinds can be very polar. The only thing the word tells you is whether there is an O–H or N–H available for hydrogen bonding.</p>' +
+          '<p class="step-body"><b>Polarizable</b> describes how easily an atom\'s electron cloud gets pushed out of shape. Iodine is a big atom holding its outermost electrons loosely and far from the nucleus, so that cloud distorts easily. Fluorine is small and holds its electrons tightly in close, so its cloud barely budges. Big and loose means polarizable; small and tight means not.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">Put them together. A protic solvent surrounds a small, charge-dense anion like F⁻ with a tight cage of hydrogen bonds, and the anion has to fight its way out before it can attack anything. A big polarizable anion like I⁻ spreads its charge over so much volume that no single hydrogen bond gets much of a grip — and its loose outer cloud can start reaching toward an electrophile early. So in water or methanol, I⁻ is the better nucleophile, even though F⁻ is the more electronegative atom.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'In a polar protic solvent (like water or methanol), which is the better nucleophile: I⁻ or F⁻?',
+        options: ['F⁻ — more electronegative, so it\'s more reactive', 'I⁻ — larger and more polarizable, and not tightly held by hydrogen bonding', 'They\'re equally good nucleophiles'],
+        correctIndex: 1,
+        correctFeedback: 'Correct. In protic solvents, small, highly charged anions like F⁻ get "caged" by hydrogen bonds, which blunts their nucleophilicity. Large, polarizable I⁻ isn\'t held back the same way.',
+        wrongFeedback: 'Think about solvation: protic solvents hydrogen-bond tightly to small, charge-dense anions like F⁻, holding them back from reacting.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Nucleophilicity and basicity are related, but not the same thing.',
+        bodyHtml: '<div class="term-primer"><span class="term-primer-head">First: base, conjugate acid, pKa</span><p>A <b>base</b> is anything that grabs an H⁺ (a bare proton) with a lone pair of electrons; <b>basicity</b> is how strongly it does that. Add an H⁺ back to a base and you get its <b>conjugate acid</b> (OH⁻ → H₂O). <b>pKa</b> is the number that ranks acids — <b>lower pKa = stronger acid = lets its proton go more easily</b> — and the see-saw between them is: the weaker the conjugate acid, the stronger the base. Module 3 builds all of this properly; these one-liners are enough for the comparison below.</p></div><p class="step-body">Both describe an electron pair looking to bond, but they\'re measured differently. <b>Basicity</b> is thermodynamic — it\'s about how strongly a species holds onto an added proton at equilibrium (this becomes exact once you cover pKa in Module 3). <b>Nucleophilicity</b> is kinetic — it\'s about how <b>fast</b> a species attacks an electrophilic carbon. Usually these track together (a stronger base is usually a stronger nucleophile), but they can split apart.</p><p class="step-body" style="margin-bottom:0;">The classic split: <b>steric hindrance</b>. <i>tert</i>-Butoxide ((CH₃)₃CO⁻) is actually a <b>stronger base</b> than hydroxide (OH⁻) — its conjugate acid, <i>tert</i>-butanol, is a weaker acid than water. But tert-butoxide is a much <b>weaker nucleophile</b>, because its three bulky methyl groups physically block it from getting close enough to a crowded carbon to attack. A bulky, strong base that\'s a poor nucleophile like this often gets used deliberately in E2 reactions (Module 6) specifically because it can\'t compete as a nucleophile.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Every mechanism starts with finding the nucleophile.',
+        bodyHtml: '<div class="explain-box">Nucleophilicity is the driving force behind substitution (SN1/SN2) and addition reactions. Before you can draw a single curved arrow in a mechanism, you need to identify <b>which species is the nucleophile</b> — that\'s where the arrow\'s tail is going to start.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Which is the stronger nucleophile: CH₃O⁻ or CH₃OH?',
+        options: ['CH₃OH — neutral species are always more reactive', 'They\'re equally nucleophilic', 'CH₃O⁻ — the negative charge means more available electron density'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — deprotonating an alcohol (pulling the H⁺ off its O–H) to its alkoxide (CH₃O⁻) makes it a substantially stronger nucleophile by giving it a full negative charge to donate.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

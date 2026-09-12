@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acid/Base Comparator — Organic Chemistry Tools</title>
+<meta name="description" content="Compare any two acids by atom, resonance, induction and orbital, with measured pKa values, conjugate bases, and an honest note when the structural rules and the measurement disagree.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/tools/acid-base.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/tools.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+.ab-vs{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:end;}
+  .ab-vs .tfield{margin-bottom:0;}
+  .ab-vs__mid{font:900 13px var(--font-ui);color:var(--muted);padding-bottom:10px;}
+  .ab-cards{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;margin-top:18px;}
+  .ab-cards__vs{display:flex;align-items:center;font:900 13px var(--font-ui);color:var(--muted);}
+  .ab-card{
+    background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);padding:14px 16px;
+  }
+  .ab-card--win{border-color:var(--good);background:var(--tint-good);}
+  .ab-card__name{font:900 14.5px var(--font-ui);}
+  .ab-card__formula{font:800 16px var(--font-mono);color:var(--accent);margin:4px 0 10px;}
+  .ab-card__row{
+    display:flex;justify-content:space-between;gap:10px;font-size:12.5px;font-weight:700;
+    color:var(--muted);padding:4px 0;border-top:1px solid var(--line-soft);
+  }
+  .ab-card__row b{color:var(--ink);font-family:var(--font-mono);}
+  .ab-order{display:flex;flex-direction:column;gap:8px;margin:16px 0;}
+  .ab-slot{
+    display:flex;align-items:center;gap:12px;padding:10px 14px;font-weight:800;font-size:13.5px;
+    background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
+  }
+  .ab-slot--ok{border-color:var(--good);background:var(--tint-good);}
+  .ab-slot--no{border-color:var(--bad);background:var(--tint-bad);}
+  .ab-slot__n{
+    width:24px;height:24px;border-radius:50%;background:var(--track);color:var(--muted);
+    display:flex;align-items:center;justify-content:center;font:900 12px var(--font-mono);flex:none;
+  }
+  .ab-slot__pka{margin-left:auto;font-family:var(--font-mono);color:var(--muted);}
+  .ab-site__formula{
+    font:900 22px var(--font-mono);color:var(--accent);margin:10px 0 6px;
+    word-break:break-word;
+  }
+  @media(max-width:760px){
+    .ab-vs,.ab-cards{grid-template-columns:1fr;}
+    .ab-vs__mid,.ab-cards__vs{justify-content:center;padding:0;}
+  }
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell">
+  <div class="tool-top" id="tool-top"></div>
+  <div id="abRoot"></div>
+
+  <div id="tool-foot"></div>
+</div>
+
+<script>
+  window.OCHEM_SECTION = 'tools';
+  window.OCHEM_BASE = '../';
+  window.OCHEM_TOOL = 'acid-base';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/tools-registry.js"></script>
+<script src="../assets/tool-state.js"></script>
+<script src="../assets/tool-shell.js"></script>
+<script src="../assets/tools/acid-base.js"></script>
+</body>
+</html>

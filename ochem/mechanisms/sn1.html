@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SN1 Reactions — Interactive Mechanism | Organic Chemistry</title>
+<meta name="description" content="Perform the SN1 mechanism yourself: ionize the substrate, visualize the planar carbocation, attack from either face, and see why SN1 gives a racemic mixture instead of clean inversion.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/mechanisms/sn1.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+  .lesson-shell{max-width:760px;margin:0 auto;}
+  .progress-bar{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+  .progress-bar .track{flex:1;height:10px;border-radius:999px;background:var(--track);overflow:hidden;}
+  .progress-bar .fill{height:100%;background:var(--accent);border-radius:999px;transition:width .25s ease;}
+  .progress-bar .label{font:900 12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
+
+  .lesson-card{
+    background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+    padding:clamp(20px,4vw,32px);box-shadow:var(--lift-lg);
+  }
+  .step-eyebrow{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+  .step-title{font:900 clamp(19px,3vw,24px) var(--font-ui);margin:0 0 10px;color:var(--ink);}
+  .step-body{font-size:15px;font-weight:600;color:var(--ink);line-height:1.6;margin:0 0 18px;}
+  .step-body b{color:var(--ink);}
+
+  .scene{background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);padding:20px 10px;margin-bottom:18px;user-select:none;}
+  .scene svg{width:100%;height:auto;display:block;max-width:340px;margin:0 auto;}
+  .atom{cursor:pointer;}
+  .atom circle{transition:stroke .1s ease,stroke-width .1s ease;}
+  .atom:hover circle{stroke:var(--accent);stroke-width:3;}
+  .atom.chosen circle{stroke:var(--accent);stroke-width:3.5;fill:var(--tint-accent);}
+  .atom text{font-family:'IBM Plex Mono',monospace;font-weight:700;pointer-events:none;}
+
+  .face-btn{
+    cursor:pointer;transition:transform .08s ease;
+  }
+  .face-btn:hover .face-circle{stroke:var(--accent);stroke-width:3;}
+  .face-btn.chosen .face-circle{stroke:var(--accent);stroke-width:3.5;fill:var(--tint-accent);}
+  .face-btn text{font-family:Nunito;font-weight:800;pointer-events:none;}
+
+  .choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
+  .choice-btn{
+    flex:1 1 200px;text-align:left;background:var(--white);border:var(--bw) solid var(--line);
+    border-radius:var(--radius);padding:14px 16px;font:800 14.5px var(--font-ui);color:var(--ink);
+    cursor:pointer;box-shadow:var(--lift-sm);transition:border-color .1s ease,transform .06s ease;
+  }
+  .choice-btn:hover{border-color:var(--accent);}
+  .choice-btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--line);}
+  .choice-btn.correct{border-color:var(--good);background:var(--tint-good);}
+  .choice-btn.wrong{border-color:var(--bad);background:var(--tint-bad);}
+  .choice-btn:disabled{cursor:default;}
+
+  .feedback{border-radius:var(--radius);padding:14px 16px;font-size:14.5px;font-weight:700;line-height:1.55;margin-bottom:16px;display:none;}
+  .feedback.show{display:block;}
+  .feedback.good{background:var(--tint-good);color:var(--good-press);}
+  .feedback.bad{background:var(--tint-bad);color:var(--bad-press);}
+
+  .actions{display:flex;justify-content:flex-end;gap:10px;}
+  .btn-press:disabled{opacity:.45;cursor:default;}
+  .explain-box{background:var(--tint-accent);border-radius:var(--radius);padding:16px 18px;font-size:14.5px;font-weight:600;line-height:1.6;margin-bottom:18px;color:var(--ink);}
+  .explain-box b{color:var(--accent-press);}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 6 &middot; Substitution &amp; Elimination</div>
+    <h1 style="margin-bottom:4px;">SN1: two steps, not one.</h1>
+    <p class="lede" style="margin-top:0;">The leaving group leaves on its own first. What happens next explains why SN1 behaves so differently from SN2.</p>
+  </div>
+
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 6</div>
+  </div>
+
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script>
+(function(){
+  var TOPIC_ID = 'sn1';
+  // 0 explain, 1 ionize (draw arrow), 2 visualize cation, 3 attack a face, 4 predict, 5 explain+challenge
+  var TOTAL = 6;
+  var begin = window.OchemCurriculum.beginLessonRun(TOPIC_ID, TOTAL+1);
+  var step = begin.step;
+  var card = document.getElementById('card');
+  var progFill = document.getElementById('progFill');
+  var progLabel = document.getElementById('progLabel');
+
+  // Mirrors into the concept model too, so this mechanism counts toward the
+  // same mastery Practice and Review read. Shared recorder, not a local copy:
+  // the tier/share/first-attempt rules must not drift from the lesson engine.
+  /* Which concept each step of this mechanism actually tests. Authored
+     rather than inferred: inference over the step's rendered text reads the
+     whole card, which on a mechanism page is dense with every term at once,
+     and it reliably picked one concept for the entire walkthrough. */
+  var STEP_CONCEPTS = {
+    1: ['leaving-group-ability', 'curved-arrow-direction'],   // ionize: push C-Br electrons onto Br
+    2: ['carbocation-stability'],                             // visualize the planar cation
+    3: ['stereochemical-outcome', 'nucleophile-recognition'], // attack either face
+    4: ['stereochemical-outcome', 'carbocation-stability'],   // predict racemization
+    5: ['solvent-effects', 'mechanism-selection'],            // protic solvent assists ionization
+    6: ['mechanism-selection', 'carbocation-stability']       // challenge
+  };
+  var M = window.OchemMastery;
+  var conceptRec = M ? M.lessonRecorder(TOPIC_ID) : null;
+  function record(correct){
+    /* A step reached by going back is a re-read, not new evidence — see
+       step-back.js. */
+    if(SB && SB.isReplay()) return;
+    window.OchemCurriculum.recordAttempt(TOPIC_ID, correct);
+    if(conceptRec) conceptRec(correct, step, { concepts: STEP_CONCEPTS[step] });
+  }
+  function updateProgress(){
+    progFill.style.width = Math.round((step/TOTAL)*100) + '%';
+    progLabel.textContent = 'Step ' + (step+1) + ' / ' + (TOTAL+1);
+    window.OchemCurriculum.saveStep(TOPIC_ID, step);
+  }
+  function feedbackHtml(id){ return '<div class="feedback" id="' + id + '"></div>'; }
+  /* Every verdict this page shows goes through here, so it is also where the
+     reward chime is sounded. The wrong case is reported too, to reset the
+     rising run the chime walks up on a streak. See /assets/chime.js. */
+  function showFeedback(el, good, text){
+    el.className = 'feedback show ' + (good?'good':'bad');
+    el.textContent = text;
+    if(window.LevlSound) window.LevlSound.answer(good);
+  }
+  function nextButton(label, enabled){ return '<div class="actions"><button class="btn-press" id="nextBtn"' + (enabled?'':' disabled') + '>' + label + '</button></div>'; }
+
+  var SB = window.OchemStepBack;
+  function goBack(){ if(step > 0){ step--; render(); } }
+  if(SB) SB.mount(card, goBack);
+
+  function render(){
+    updateProgress();
+    if(SB) SB.sync(step);
+    if(step===0) renderExplain();
+    else if(step===1) renderIonize();
+    else if(step===2) renderVisualizeCation();
+    else if(step===3) renderAttackFace();
+    else if(step===4) renderPredict();
+    else if(step===5) renderSolventEffects();
+    else renderChallenge();
+  }
+
+  // ---- Step 0: Explain ----
+  function renderExplain(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Explain</div>' +
+      '<h2 class="step-title">The nucleophile isn’t even involved yet.</h2>' +
+      '<p class="step-body">In SN2, the nucleophile attacks and kicks out the leaving group in one step. In <b>SN1</b>, the leaving group departs <b>first, on its own</b>, before any nucleophile gets involved. That first step — ionization — is slow and rate-determining. What’s left behind is a <b>carbocation</b>: flat, planar, and missing an electron pair.</p>' +
+      '<p class="step-body" style="margin-bottom:0;">We’ll ionize <i>tert</i>-butyl bromide, (CH₃)₃C–Br, and see what that planar intermediate means for the product.</p>' +
+      nextButton('Continue', true);
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step=1; render(); });
+  }
+
+  // ---- Step 1: Ionize — draw the departure arrow ----
+  function renderIonize(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Step 1 · Ionize</div>' +
+      '<h2 class="step-title">Push the C–Br bond’s electrons onto bromine.</h2>' +
+      '<p class="step-body">Click the central carbon, then click bromine, to show the bond breaking heterolytically — bromine leaves with both electrons.</p>' +
+      '<div class="scene"><svg viewBox="0 0 240 200">' +
+        '<line x1="110" y1="100" x2="110" y2="40" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="110" y1="100" x2="160" y2="130" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="110" y1="100" x2="60" y2="130" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="110" y1="100" x2="180" y2="70" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<circle cx="110" cy="100" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="110" y="106" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="15">C</text>' +
+        '<circle cx="110" cy="30" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="110" y="35" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">CH₃</text>' +
+        '<circle cx="170" cy="138" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="170" y="143" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">CH₃</text>' +
+        '<circle cx="50" cy="138" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="50" y="143" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">CH₃</text>' +
+        '<g class="atom" data-key="carbon"><circle cx="110" cy="100" r="17" fill="transparent" stroke="none"/></g>' +
+        '<g class="atom" data-key="br"><circle cx="200" cy="58" r="16" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="200" y="63" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="14">Br</text></g>' +
+      '</svg></div>' +
+      feedbackHtml('fb') +
+      nextButton('See the intermediate', false);
+
+    var fb = card.querySelector('#fb');
+    var next = card.querySelector('#nextBtn');
+    var from = null, done = false;
+    card.querySelectorAll('.atom').forEach(function(g){
+      g.addEventListener('click', function(){
+        if(done) return;
+        var key = g.getAttribute('data-key');
+        if(from === null){
+          if(key !== 'carbon'){
+            showFeedback(fb, false, 'Start at the bond that’s breaking — click the central carbon first.');
+            return;
+          }
+          from = key;
+          showFeedback(fb, true, 'Good. Now click bromine to send the electrons with it.');
+        } else {
+          var isCorrect = key === 'br';
+          record(isCorrect);
+          if(isCorrect){
+            done = true;
+            g.querySelector('circle').setAttribute('stroke', 'var(--coral)');
+            g.querySelector('circle').setAttribute('stroke-width', '3.5');
+            var arrowSvg = '<path d="M 118 90 Q 155 60 188 62" stroke="var(--coral)" stroke-width="2.5" fill="none" marker-end="url(#ahI)"/>' +
+              '<defs><marker id="ahI" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--coral)"/></marker></defs>';
+            card.querySelector('.scene svg').insertAdjacentHTML('beforeend', arrowSvg);
+            showFeedback(fb, true, 'Correct — bromide leaves on its own, taking the bonding electrons with it. No nucleophile needed for this step.');
+            next.disabled = false;
+          } else {
+            showFeedback(fb, false, 'The electrons need to land on bromine.');
+          }
+        }
+      });
+    });
+    next.addEventListener('click', function(){ step=2; render(); });
+  }
+
+  // ---- Step 2: Visualize the planar carbocation ----
+  function renderVisualizeCation(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Visualize</div>' +
+      '<h2 class="step-title">What’s left is flat.</h2>' +
+      '<p class="step-body">The carbocation carbon is <b>sp²</b> and trigonal planar, with an empty p orbital sticking out equally on <b>both sides</b> of that plane. There’s nothing blocking either face — a nucleophile can approach from the top or the bottom just as easily.</p>' +
+      '<div class="scene"><svg viewBox="0 0 240 160">' +
+        '<line x1="120" y1="90" x2="120" y2="30" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="120" y1="90" x2="175" y2="122" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="120" y1="90" x2="65" y2="122" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="120" y1="55" x2="120" y2="10" stroke="var(--muted)" stroke-width="2" stroke-dasharray="3 3"/>' +
+        '<circle cx="120" cy="90" r="17" fill="var(--white)" stroke="var(--coral)" stroke-width="2.5"/><text x="120" y="96" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="15">C</text>' +
+        '<text x="140" y="80" font-family="Nunito" font-weight="900" font-size="14" fill="var(--coral)">+</text>' +
+        '<circle cx="120" cy="20" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="120" y="25" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">CH₃</text>' +
+        '<circle cx="185" cy="130" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="185" y="135" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">CH₃</text>' +
+        '<circle cx="55" cy="130" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="55" y="135" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">CH₃</text>' +
+        '<text x="130" y="15" font-family="Nunito" font-weight="800" font-size="10" fill="var(--muted)">empty p orbital</text>' +
+      '</svg></div>' +
+      nextButton('Continue', true);
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step=3; render(); });
+  }
+
+  // ---- Step 3: Attack from either face ----
+  function renderAttackFace(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Interact</div>' +
+      '<h2 class="step-title">Pick a face for water to attack from.</h2>' +
+      '<p class="step-body">Click "Front" or "Back" — there’s no wrong answer here. That’s the point.</p>' +
+      '<div class="scene"><svg viewBox="0 0 240 160">' +
+        '<line x1="120" y1="90" x2="120" y2="30" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="120" y1="90" x2="175" y2="122" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="120" y1="90" x2="65" y2="122" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<circle cx="120" cy="90" r="17" fill="var(--white)" stroke="var(--coral)" stroke-width="2.5"/><text x="120" y="96" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="15">C</text>' +
+        '<text x="140" y="80" font-family="Nunito" font-weight="900" font-size="14" fill="var(--coral)">+</text>' +
+        '<circle cx="120" cy="20" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="120" y="25" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">CH₃</text>' +
+        '<circle cx="185" cy="130" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="185" y="135" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">CH₃</text>' +
+        '<circle cx="55" cy="130" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="55" y="135" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">CH₃</text>' +
+        '<g class="face-btn" data-face="front"><circle class="face-circle" cx="120" cy="52" r="15" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="120" y="57" text-anchor="middle" font-size="11">Front</text></g>' +
+        '<g class="face-btn" data-face="back"><circle class="face-circle" cx="120" cy="128" r="15" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="120" y="133" text-anchor="middle" font-size="11">Back</text></g>' +
+      '</svg></div>' +
+      feedbackHtml('fb') +
+      nextButton('Continue', false);
+
+    var fb = card.querySelector('#fb');
+    var next = card.querySelector('#nextBtn');
+    var chosen = false;
+    card.querySelectorAll('.face-btn').forEach(function(g){
+      g.addEventListener('click', function(){
+        if(chosen) return;
+        chosen = true;
+        g.classList.add('chosen');
+        record(true);
+        showFeedback(fb, true, 'Either face works — the carbocation is flat, so water attacks the front and the back about equally. That’s what produces a mix of both possible products.');
+        next.disabled = false;
+      });
+    });
+    next.addEventListener('click', function(){ step=4; render(); });
+  }
+
+  // ---- Step 4: Predict the outcome ----
+  function renderPredict(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Predict</div>' +
+      '<h2 class="step-title">If the starting carbon was a stereocenter, what do you get?</h2>' +
+      '<p class="step-body">Water attacks the flat carbocation from both faces at roughly equal rates.</p>' +
+      '<div class="choice-row">' +
+        ['A single enantiomer (inversion)', 'A single enantiomer (retention)', 'A racemic mixture of both enantiomers', 'No reaction occurs'].map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
+      '</div>' +
+      feedbackHtml('fb') +
+      nextButton('Continue', false);
+
+    var fb = card.querySelector('#fb');
+    var next = card.querySelector('#nextBtn');
+    card.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var isCorrect = btn.getAttribute('data-v') === 'A racemic mixture of both enantiomers';
+        card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+        btn.classList.add(isCorrect ? 'correct' : 'wrong');
+        record(isCorrect);
+        if(isCorrect){
+          showFeedback(fb, true, 'Correct — unlike SN2’s clean inversion, SN1 racemizes: roughly 50/50 attack on each face of the planar cation.');
+          next.disabled = false;
+        } else {
+          showFeedback(fb, false, 'Think about what "attacks both faces equally" means for the product mixture.');
+          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
+        }
+      });
+    });
+    next.addEventListener('click', function(){ step=5; render(); });
+  }
+
+  // ---- Step 5: rate law and solvent effects ----
+  function renderSolventEffects(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Explain</div>' +
+      '<h2 class="step-title">What the "1" in SN1 actually means.</h2>' +
+      '<p class="step-body">SN1 is <b>unimolecular</b>: only the substrate is involved in the slow, rate-determining step (ionization) — the nucleophile shows up later, in a fast step that doesn\'t affect the overall rate. That gives the rate law <b>rate = k[substrate]</b> — the nucleophile\'s concentration doesn\'t appear at all, unlike SN2\'s rate = k[Nu][substrate].</p>' +
+      '<p class="step-body" style="margin-bottom:0;"><b>Solvent effects run opposite to SN2.</b> SN1 is favored by <b>polar protic</b> solvents (water, alcohols) — they stabilize both the developing carbocation and the departing leaving-group anion through hydrogen bonding and solvation, lowering the energy of the rate-determining ionization step. This is the reverse of SN2, which is slowed by protic solvents because they cage the nucleophile instead.</p>' +
+      nextButton('Continue', true);
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step=6; render(); });
+  }
+
+  // ---- Step 6: Why it matters + Challenge ----
+  function renderChallenge(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Why it matters &middot; Challenge</div>' +
+      '<h2 class="step-title">SN1 lives or dies on carbocation stability.</h2>' +
+      '<div class="explain-box">Because the rate-determining step is ionization, anything that stabilizes the carbocation speeds up SN1 — which is why SN1 favors substrates where the leaving group sits on a carbon with lots of alkyl substituents around it.</div>' +
+      '<p class="step-body">Which substrate ionizes faster via SN1: one where the leaving group is on a <b>tertiary</b> carbon, or one where it’s on a <b>primary</b> carbon?</p>' +
+      '<div class="choice-row">' +
+        window.OchemShuffle.list(['Tertiary — more stable carbocation', 'Primary — less crowded', 'They ionize at the same rate'], 'sn1:challenge').map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
+      '</div>' +
+      feedbackHtml('fb') +
+      '<div id="doneBox"></div>';
+
+    var fb = card.querySelector('#fb');
+    card.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var isCorrect = btn.getAttribute('data-v').indexOf('Tertiary') === 0;
+        card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+        btn.classList.add(isCorrect ? 'correct' : 'wrong');
+        record(isCorrect);
+        if(isCorrect){
+          showFeedback(fb, true, 'Correct — more alkyl groups around the cationic carbon donate electron density into the empty p orbital and stabilize the positive charge, so tertiary substrates ionize fastest. The name for that donation is <b>hyperconjugation</b>: a C–H bond on a neighboring alkyl group lines up with the empty p orbital and lets its electron pair spill partway in, spreading the positive charge out. More alkyl groups, more C–H bonds able to do it, more stable cation. This is exactly the opposite of SN2, which prefers unhindered, primary carbons.');
+          window.OchemCurriculum.completeLessonRun(TOPIC_ID);
+          if(M) M.noteLesson(TOPIC_ID);
+          card.querySelector('#doneBox').innerHTML = '<div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press">Back to the textbook</a></div>';
+        } else {
+          showFeedback(fb, false, 'Think about which cation is more stable — more alkyl groups around the positive carbon, or fewer?');
+          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
+        }
+      });
+    });
+  }
+
+
+  var notesMode = /(^|[?&])notes=1(&|$)/.test(location.search);
+  var NOTES_HREF = '../learn.html#sn1';
+  (function(){
+    var shell = card.parentNode;
+    var progressBarEl = shell.querySelector('.progress-bar');
+    var toggleBar = document.createElement('div');
+    toggleBar.className = 'lesson-mode-toggle';
+    shell.insertBefore(toggleBar, progressBarEl || card);
+    // Old ?notes=1 links now resolve to this topic's section of the textbook.
+    if(notesMode){ location.replace(NOTES_HREF); return; }
+    toggleBar.innerHTML = '<a href="../learn.html" class="link-quiet lesson-back-link">&larr; Back to the textbook</a><a href="' + NOTES_HREF + '" class="link-quiet">&#128221; Read this section</a>';
+    if(begin.resumed){
+      var resumeNote = document.createElement('div');
+      resumeNote.className = 'lesson-resume-note';
+      resumeNote.innerHTML = 'Resumed from where you left off (step ' + (step+1) + ' of ' + (TOTAL+1) + '). <a href="#" class="link-quiet" id="lessonStartOverLink">Start over instead</a>';
+      shell.insertBefore(resumeNote, progressBarEl || card);
+      resumeNote.querySelector('#lessonStartOverLink').addEventListener('click', function(e){
+        e.preventDefault();
+        window.OchemCurriculum.resetRun(TOPIC_ID);
+        location.reload();
+      });
+    }
+  })();
+
+  if(!notesMode) render();
+})();
+</script>
+</body>
+</html>

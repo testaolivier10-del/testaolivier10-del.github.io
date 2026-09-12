@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bonding — Foundations | Organic Chemistry</title>
+<meta name="description" content="Tell sigma bonds from pi bonds and see why that distinction explains restricted rotation and cis/trans isomers.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/bonding.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 1 &middot; Foundations</div>
+    <h1 style="margin-bottom:4px;">Bonding.</h1>
+    <p class="lede" style="margin-top:0;">Not all bonds are the same — and the difference explains why some parts of a molecule can rotate and others can't.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'bonding',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Sigma bonds hold; pi bonds lock.',
+        bodyHtml: '<p class="step-body">A <b>sigma (σ) bond</b> forms from head-on orbital overlap, directly on the axis between the two nuclei. Every connection between two atoms has exactly one of these: a single bond is a lone sigma, and a double or triple bond is a sigma plus one or two pi bonds. Because the orbital overlap is symmetric all the way around that axis, the atoms can freely rotate around it without disturbing the overlap.</p><p class="step-body">A <b>pi (π) bond</b> is different: it comes from the unhybridized p orbitals left over after hybridization (the sp² carbon from the last lesson has 1 leftover p orbital; sp has 2). Those leftover p orbitals stick out above and below (or side-to-side) rather than along the bond axis, and two neighboring ones overlap <b>sideways</b> to form the pi bond. That sideways overlap only works while the two p orbitals stay parallel — twisting one atom relative to the other would rotate its p orbital out of alignment and break the overlap entirely. That\'s why a pi bond <b>blocks rotation</b>, while a sigma bond doesn\'t.</p>' +
+          '<div class="formula">single bond = 1σ &nbsp;&middot;&nbsp; double bond = 1σ + 1π &nbsp;&middot;&nbsp; triple bond = 1σ + 2π</div>'
+      },
+      {
+        render: function(api){
+          var answered = false;
+          function scene(){
+            return '<div class="scene"><svg viewBox="0 0 260 120">' +
+              '<circle cx="90" cy="60" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="90" y="66" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="14" pointer-events="none">C</text>' +
+              '<circle cx="170" cy="60" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="170" y="66" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="14" pointer-events="none">C</text>' +
+              '<g class="atom" data-key="sigma"><line x1="107" y1="60" x2="153" y2="60" stroke="var(--line)" stroke-width="3"/></g>' +
+              '<g class="atom" data-key="pi"><line x1="107" y1="46" x2="153" y2="46" stroke="var(--line)" stroke-width="3"/></g>' +
+            '</svg></div>';
+          }
+          function paint(){
+            api.card.innerHTML =
+              '<div class="step-eyebrow">Interact</div>' +
+              '<h2 class="step-title">This is a C=C double bond. Click the line that blocks rotation.</h2>' +
+              '<p class="step-body">One line is the sigma bond (head-on, between the nuclei). The other is the pi bond (off to the side).</p>' +
+              scene() +
+              api.feedbackHtml('fb') +
+              api.nextButtonHtml('Continue', false);
+            var fb = api.card.querySelector('#fb');
+            var next = api.card.querySelector('#nextBtn');
+            api.card.querySelectorAll('.atom').forEach(function(g){
+              g.addEventListener('click', function(){
+                if(answered) return;
+                var isCorrect = g.getAttribute('data-key') === 'pi';
+                api.record(isCorrect);
+                if(isCorrect){
+                  answered = true;
+                  g.querySelector('line').setAttribute('stroke', 'var(--accent)');
+                  g.querySelector('line').setAttribute('stroke-width', '3.5');
+                  api.showFeedback(fb, true, 'Correct — the off-axis pi bond is the one whose side-by-side overlap breaks if you try to twist the molecule.');
+                  next.disabled = false;
+                } else {
+                  api.showFeedback(fb, false, 'That’s the sigma bond, directly between the two nuclei — rotating around it doesn’t break any overlap.');
+                }
+              });
+            });
+            next.addEventListener('click', api.advance);
+          }
+          paint();
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'How many total bonds (σ + π) does a triple bond like N≡N have?',
+        options: ['1', '2', '3'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — 1 sigma bond plus 2 pi bonds.',
+        wrongFeedback: 'A triple bond is 1 sigma bond plus how many pi bonds?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'Which bond type allows free rotation around it?',
+        options: ['Sigma', 'Pi'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — sigma bonds are symmetric around the bond axis, so rotating around them doesn’t disturb the overlap.',
+        wrongFeedback: 'Think about which overlap breaks when you twist.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Restricted rotation is why cis/trans exists.',
+        bodyHtml: '<div class="explain-box">Because a pi bond locks the two carbons of a double bond flat and unrotatable, groups on either side stay fixed relative to each other — that’s the entire reason cis/trans (E/Z) isomers exist. You’ll see this again in the Stereochemistry module.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'More bonds between the same two atoms means shorter and stronger.',
+        bodyHtml: '<p class="step-body">Adding pi bonds pulls the two nuclei closer together and takes more energy to break, since there are more overlapping orbitals holding them together. For a carbon-carbon bond: a single bond (C–C, sp³–sp³) is about 154 pm long and takes 347 kJ/mol to break; a double bond (C=C, sp²–sp²) is about 134 pm and 614 kJ/mol; a triple bond (C≡C, sp–sp) is about 120 pm and 839 kJ/mol.</p><p class="step-body">A note on units, since this is the first place in the course real energies show up. Bond strengths are traditionally quoted in kJ/mol, but almost every other energy you will meet here — ring strain, rotational barriers, A-values, aromatic stabilization — is quoted in kcal/mol. The two are interchangeable: <b>1 kcal = 4.184 kJ</b>, so 347 kJ/mol is about 83 kcal/mol. When you see a number, check which unit it carries before comparing it to another.</p><p class="step-body" style="margin-bottom:0;">Notice the bond doesn\'t simply double or triple in strength — going from 1 to 2 bonds roughly doubles the energy, but the pi bond added going from a double to a triple bond is weaker than the first one, since sideways p-orbital overlap is inherently less effective than the sigma bond\'s head-on overlap.</p>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A molecule has one triple bond and one double bond. How many pi bonds total?',
+        options: ['1', '3', '2'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — 2 pi bonds from the triple bond, plus 1 from the double bond, for 3 total.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

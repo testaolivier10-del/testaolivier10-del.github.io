@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conformation Lab — Organic Chemistry Tools</title>
+<meta name="description" content="Rotate a Newman projection through 360 degrees against a live energy curve, or put substituents on a cyclohexane and flip the chair to see which conformer wins and by how much.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/tools/conformations.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/tools.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+.cf-stage{
+    background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
+    padding:8px;margin-bottom:14px;user-select:none;
+  }
+  .cf-stage svg{width:100%;height:auto;display:block;max-width:340px;margin:0 auto;}
+  .nm-lab{font:800 13px var(--font-ui);fill:var(--ink);}
+  .nm-lab--back{fill:var(--muted);}
+  .cf-curve{background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);padding:8px;}
+  .cf-curve svg{width:100%;height:auto;display:block;}
+  .cf-axis{font:700 9.5px var(--font-mono);fill:var(--muted);}
+  .v3-stage{
+    background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
+    touch-action:none;cursor:grab;user-select:none;
+  }
+  .v3-stage.is-dragging{cursor:grabbing;}
+  .v3-stage svg{width:100%;height:auto;display:block;max-width:420px;margin:0 auto;}
+  .cf-ring{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:10px;
+    margin-top:16px;padding-top:16px;border-top:1px solid var(--line-soft);
+  }
+  .cf-slot{display:flex;flex-direction:column;gap:5px;}
+  .cf-slot > label{font:900 10.5px var(--font-ui);letter-spacing:.05em;color:var(--muted);}
+  .cf-slot .tselect{font-size:12px;padding:6px 8px;}
+  .cf-face{align-self:start;}
+  .cf-face button{padding:4px 12px;font-size:11px;}
+  .cf-face button:disabled{opacity:.4;cursor:default;}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell">
+  <div class="tool-top" id="tool-top"></div>
+  <div id="cfRoot"></div>
+
+  <div id="tool-foot"></div>
+</div>
+
+<script>
+  window.OCHEM_SECTION = 'tools';
+  window.OCHEM_BASE = '../';
+  window.OCHEM_TOOL = 'conformations';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/tools-registry.js"></script>
+<script src="../assets/tool-state.js"></script>
+<script src="../assets/tool-shell.js"></script>
+<script src="../assets/mol3d.js"></script>
+<script src="../assets/tools/conformations.js"></script>
+</body>
+</html>

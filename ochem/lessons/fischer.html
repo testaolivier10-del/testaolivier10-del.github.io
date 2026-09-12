@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fischer Projections — Stereochemistry | Organic Chemistry</title>
+<meta name="description" content="Learn the drawing convention behind Fischer projections, how to convert them to and from wedge-dash structures, and why they're the standard tool for carbohydrate stereochemistry.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/fischer.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 5 &middot; Stereochemistry</div>
+    <h1 style="margin-bottom:4px;">Fischer projections.</h1>
+    <p class="lede" style="margin-top:0;">A flat cross-drawing that secretly encodes full 3D stereochemistry — if you know the rule.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/stereo-drill.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  function fischerSvg(){
+    return '<div class="scene"><svg viewBox="0 0 220 220">' +
+      '<line x1="110" y1="30" x2="110" y2="190" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<line x1="30" y1="110" x2="190" y2="110" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<circle cx="110" cy="110" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="110" y="115" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">C</text>' +
+      '<g class="atom" data-key="top"><circle cx="110" cy="22" r="16" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="110" y="27" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">CHO</text></g>' +
+      '<g class="atom" data-key="bottom"><circle cx="110" cy="198" r="16" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="110" y="203" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="10">CH₂OH</text></g>' +
+      '<g class="atom" data-key="left"><circle cx="22" cy="110" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="22" y="115" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">H</text></g>' +
+      '<g class="atom" data-key="right"><circle cx="198" cy="110" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="198" y="115" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="10">OH</text></g>' +
+    '</svg></div>';
+  }
+
+  /* The same glyceraldehyde the lesson already draws above, now as a
+     graded assignment rather than a picture. Its lowest-priority group
+     (H) is on a horizontal arm, which by the projection's own convention
+     points at the viewer — so the answer flips, and reading the rotation
+     straight off gives the wrong configuration. That is the mistake this
+     lesson describes in prose and never made the student make. */
+  var FISCHER_DRILL = {
+    layout: 'fischer',
+    alt: 'Glyceraldehyde as a Fischer projection: CHO at the top, CH2OH at the bottom, H on the left, OH on the right',
+    intro: 'The same projection from the start of the lesson. Now assign it.',
+    caption: 'A Fischer projection. Nothing is drawn as a wedge — the notation carries depth by convention instead.',
+    priorityWhy: 'OH first, since O beats C. The two carbons then tie, and CHO wins one bond out: duplicating its double bond gives it (O,O,H) against CH₂OH\'s (O,H,H). H is last.',
+    closing: 'This is why the notes warn about horizontal positions: the vertical chain is already oriented the way the rule wants, but a lowest-priority group on a horizontal arm is pointing straight at you.',
+    subs: [
+      { label: 'OH', priority: 1, angle: 0 },
+      { label: 'CHO', priority: 2, angle: 90 },
+      { label: 'CH₂OH', priority: 3, angle: 270 },
+      { label: 'H', priority: 4, angle: 180 }
+    ]
+  };
+
+  window.OchemLessonEngine.start({
+    topicId: 'fischer',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Horizontal means toward you; vertical means away.',
+        bodyHtml: '<p class="step-body">A <b>Fischer projection</b> draws a stereocenter as a simple cross — a vertical line and a horizontal line intersecting where the carbon sits (the carbon symbol itself is usually omitted). The convention that gives this flat cross real 3D meaning: <b>horizontal</b> bonds point <b>toward the viewer</b> (like a wedge, coming out of the page), and <b>vertical</b> bonds point <b>away from the viewer</b> (like a dash, going into the page).</p><p class="step-body" style="margin-bottom:0;">This isn\'t an arbitrary rule — it comes from the specific curved backbone orientation the original structure is drawn in before flattening it into the cross shape. You don\'t need to derive it each time; just remember horizontal = toward you, vertical = away.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the two groups on this Fischer projection that point toward you.</h2>' +
+            '<p class="step-body">This is glyceraldehyde: CHO on top, CH₂OH on bottom, H and OH on the sides.</p>' +
+            fischerSvg() +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Found: 0 / 2</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var found = 0, mistake = false;
+          api.card.querySelectorAll('.atom').forEach(function(g){
+            g.addEventListener('click', function(){
+              if(g.classList.contains('chosen')) return;
+              g.classList.add('chosen');
+              var key = g.getAttribute('data-key');
+              if(key === 'left' || key === 'right'){
+                found++;
+                hint.textContent = 'Found: ' + found + ' / 2';
+              } else {
+                mistake = true;
+                api.showFeedback(fb, false, 'That one is on the vertical line, which points away from you, not toward you. Keep looking at the horizontal (left/right) positions.');
+              }
+              if(found === 2){
+                api.record(!mistake);
+                if(!mistake) api.showFeedback(fb, true, 'Right — H and OH sit on the horizontal line, so both point toward you. CHO and CH₂OH sit on the vertical line, pointing away.');
+                next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'In a Fischer projection, which bonds point away from the viewer?',
+        options: ['Horizontal bonds', 'Neither — all bonds are in the plane of the page', 'Vertical bonds'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — vertical lines represent bonds going into the page, away from you; horizontal lines come toward you.',
+        wrongFeedback: 'It\'s the opposite — horizontal bonds point toward the viewer; vertical bonds point away.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'Which manipulation of a Fischer projection secretly converts it into its enantiomer?',
+        options: ['Swapping any two groups a single time', 'Rotating the whole projection 180° in the plane of the page', 'Holding one group fixed and rotating the other three'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — a single swap of two groups inverts the actual stereochemistry, silently turning the molecule into its enantiomer. A 180° in-plane rotation, or rotating three groups around a fixed one, both preserve the original molecule.',
+        wrongFeedback: 'A single swap is the dangerous operation — it inverts stereochemistry. In-plane 180° rotation and rotating three groups around a fixed one are both safe and preserve the molecule.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'An even number of swaps always gets you back to the original.',
+        bodyHtml: '<p class="step-body">Since one swap of two groups inverts a Fischer projection\'s stereochemistry, it follows that <b>two</b> swaps restore it — the second swap undoes the inversion from the first. More generally: an <b>odd</b> number of single swaps inverts the molecule into its enantiomer, and an <b>even</b> number of swaps returns you to the original stereochemistry, no matter which specific groups you swapped each time.</p><p class="step-body" style="margin-bottom:0;">This is a genuinely useful trick when you\'re handed an unfamiliar-looking Fischer projection and need to check whether it matches a known structure — count the swaps needed to convert one into the other, and the parity (odd/even) tells you immediately whether they\'re the same compound or enantiomers.</p>'
+      },
+      {
+        /* Reading a Fischer projection and assigning R/S from one are
+           different skills, and only the first was practised here. The
+           second is the one that appears on exams, and the "horizontal
+           toward you" convention it depends on is exactly what makes
+           students get it backwards. Same drill as the R/S lesson, in
+           Fischer notation. */
+        render: function(api){ window.OchemStereoDrill.mount(api, FISCHER_DRILL); }
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'This is the format sugars are almost always drawn in.',
+        bodyHtml: '<div class="explain-box">Glucose has four stereocenters in a single chain. Drawing all four as full 3D wedge-dash structures is cumbersome and hard to compare at a glance — stacking them as a single vertical Fischer projection, with each stereocenter\'s horizontal groups showing left/right at each level, is dramatically easier to read and compare. This is exactly why Fischer projections, despite being a flattened 2D shorthand, remain the standard notation for carbohydrate stereochemistry in biochemistry.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'You need to compare two Fischer projections and determine if they represent the same molecule or enantiomers. You find it takes exactly 3 single-group swaps to convert one into the other. What\'s the relationship?',
+        options: ['The same molecule — any number of swaps eventually returns the original', 'Enantiomers — an odd number of swaps inverts the stereochemistry', 'Diastereomers — 3 swaps always means partial inversion'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — 3 is odd, and each individual swap inverts the configuration, so an odd total number of swaps leaves the molecule as the enantiomer of where it started.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

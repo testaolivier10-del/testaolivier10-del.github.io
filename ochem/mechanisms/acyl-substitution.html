@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nucleophilic Acyl Substitution — Interactive Mechanism | Organic Chemistry</title>
+<meta name="description" content="Perform nucleophilic acyl substitution yourself: form the tetrahedral intermediate, collapse it to expel the leaving group, and see why the reactivity ladder runs from acid chloride down to amide.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/mechanisms/acyl-substitution.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+  .lesson-shell{max-width:760px;margin:0 auto;}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 9 &middot; Carbonyls</div>
+    <h1 style="margin-bottom:4px;">Substitution, by way of addition.</h1>
+    <p class="lede" style="margin-top:0;">Carboxylic acid derivatives do not substitute the way an alkyl halide does. They add first, then eliminate — and which one leaves decides everything.</p>
+  </div>
+
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel"></div>
+  </div>
+
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/molecule-editor.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+  window.OCHEM_MECHANISM = {
+  "topicId": "acyl-substitution",
+  "steps": [
+    {
+      "type": "explain",
+      "eyebrow": "Setup",
+      "title": "No backside attack here.",
+      "bodyHtml": "<p class=\"step-body\">An SN2 replaces a leaving group in one concerted motion. A carbonyl cannot do that — there is no room behind an sp² carbon and no need, because the pi bond gives the incoming electrons somewhere to go.</p><p class=\"step-body\">So the sequence is <b>addition first, elimination second</b>. Methyl acetate, with a nucleophile on the way in.</p>",
+      "molecule": "methyl-acetate"
+    },
+    {
+      "type": "draw",
+      "eyebrow": "Step 1 · Add",
+      "title": "A nucleophile attacks the carbonyl carbon. Show what the C=O does.",
+      "bodyHtml": "<p class=\"step-body\">One arrow — the same first move as any carbonyl reaction.</p>",
+      "molecule": "methyl-acetate",
+      "concepts": [
+        "carbonyl-electrophilicity",
+        "tetrahedral-intermediate"
+      ],
+      "arrows": [
+        {
+          "from": "bond:c-o1",
+          "to": "o1"
+        }
+      ],
+      "why": "The pi bond goes up onto the carbonyl oxygen and the carbon becomes tetrahedral. So far this is identical to what happens with a ketone.",
+      "wrong": {
+        "bond:c-o1>c": "Backwards — the electronegative oxygen takes the electrons, not the carbon that is already being attacked.",
+        "bond:c-o2>o2": "Too early. The alkoxy group does leave, but not until the intermediate has formed and collapses in the next step; both cannot happen at once at an sp² carbon.",
+        "o1>bond:c-o1": "That is the collapse, which comes later. Right now the C=O is being broken open to accept the nucleophile."
+      },
+      "nextLabel": "Now collapse it"
+    },
+    {
+      "type": "draw",
+      "eyebrow": "Step 2 · Eliminate",
+      "title": "Collapse the intermediate and push out the leaving group.",
+      "bodyHtml": "<p class=\"step-body\">Two arrows. This is the step a ketone cannot do, and it is what turns addition into substitution.</p>",
+      "molecule": "methyl-acetate",
+      "concepts": [
+        "tetrahedral-intermediate",
+        "leaving-group-ability",
+        "curved-arrow-direction"
+      ],
+      "arrows": [
+        {
+          "from": "o1",
+          "to": "bond:c-o1"
+        },
+        {
+          "from": "bond:c-o2",
+          "to": "o2"
+        }
+      ],
+      "why": "The alkoxide oxygen pushes its lone pair back down to reform the C=O, and that forces the OR group off the carbon. A ketone's substituents are carbons, which will not leave as carbanions — which is exactly why ketones add and esters substitute.",
+      "wrong": {
+        "o1>c": "The lone pair reforms the C=O pi BOND, so aim the arrow at the C–O bond rather than at the carbon — the carbon already has four bonds.",
+        "bond:c-ca>ca": "The methyl group would have to leave as a carbanion, and carbanions are among the worst leaving groups there are. The alkoxy group is the one that goes.",
+        "c>o2": "The tail belongs on the C–O bond that is breaking. Carbon has no lone pair here to donate."
+      },
+      "nextLabel": "Why the ladder exists"
+    },
+    {
+      "type": "mcq",
+      "eyebrow": "Step 3 · The ladder",
+      "title": "Why is an amide the least reactive derivative and an acid chloride the most?",
+      "bodyHtml": "<p class=\"step-body\">Both halves of the mechanism you just drew point the same way.</p>",
+      "options": [
+        "Nitrogen donates its lone pair strongly into the carbonyl (less electrophilic) and NR₂⁻ is a terrible leaving group; chlorine barely donates and Cl⁻ leaves easily",
+        "Amides have more atoms, so they react more slowly",
+        "Acid chlorides are more acidic, which speeds everything up"
+      ],
+      "correctIndex": 0,
+      "concepts": [
+        "acyl-reactivity-order",
+        "leaving-group-ability"
+      ],
+      "why": "The same two factors set the whole ladder. Resonance donation into the carbonyl decides how electrophilic the carbon is; leaving-group ability decides how easily the intermediate collapses. Nitrogen is the best donor and the worst leaving group, so amides lose on both counts.",
+      "wrong": {
+        "1": "Size has nothing to do with it — the ranking follows electronic effects, and it is consistent across derivatives of wildly different sizes.",
+        "2": "Acidity is not the axis here. What matters is how electron-poor the carbonyl carbon is and how good the leaving group is."
+      },
+      "nextLabel": "Last one"
+    },
+    {
+      "type": "final",
+      "eyebrow": "Challenge",
+      "title": "Can you convert an amide into an acid chloride by treating it with HCl?",
+      "bodyHtml": "<p class=\"step-body\">Think about which direction the ladder runs.</p>",
+      "options": [
+        "Yes — chloride is a better nucleophile than the amine, so it displaces it",
+        "No — conversions run down the ladder, from more reactive to less. Going the other way needs a separate activating reagent, not simply the other product",
+        "Yes, but only with heat"
+      ],
+      "correctIndex": 1,
+      "concepts": [
+        "acyl-reactivity-order",
+        "leaving-group-ability"
+      ],
+      "why": "Acid chloride to amide is downhill and easy; amide to acid chloride is uphill and does not simply happen. To climb the ladder you go via the carboxylic acid and activate it with something like SOCl₂, which drives the reaction by expelling gases rather than by reaching equilibrium.",
+      "wrong": {
+        "0": "Nucleophile strength is not the obstacle — the problem is that the leaving group would have to be an amide anion, which is an extremely strong base and will not leave.",
+        "2": "Heat does not reverse a thermodynamically unfavourable substitution here. The amide is the stable end of the ladder."
+      }
+    }
+  ]
+};
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/mechanism-page.js"></script>
+</body>
+</html>

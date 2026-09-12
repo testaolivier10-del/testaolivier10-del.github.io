@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acetals &amp; Hemiacetals — Carbonyl Chemistry | Organic Chemistry</title>
+<meta name="description" content="Learn the acid-catalyzed mechanism for hemiacetal and acetal formation via a resonance-stabilized oxocarbenium ion, and why acetals make ideal protecting groups.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/acetals.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 9 &middot; Carbonyl Chemistry</div>
+    <h1 style="margin-bottom:4px;">Acetals &amp; hemiacetals.</h1>
+    <p class="lede" style="margin-top:0;">Two additions of an alcohol, one resonance-stabilized cation in between — and a way to make a carbonyl temporarily disappear.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'acetals',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        diagramHtml: window.OchemMolecules.svg('acetone-hemiacetal', { caption: 'One OH and one OR on the same carbon. Add a second alcohol under acid and the OH leaves as water — that is the step that turns a hemiacetal into a full acetal.' }),
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A hemiacetal is one alcohol addition away from a carbonyl.',
+        bodyHtml: '<p class="step-body">Under acid catalysis, a carbonyl\'s oxygen is protonated first — this pumps up the carbonyl carbon\'s electrophilicity even further (the same protonation-as-activation strategy from alcohol and ether chemistry, Module 8). An alcohol then attacks as the nucleophile in an ordinary nucleophilic addition (previous lesson), forming a tetrahedral intermediate.</p><p class="step-body" style="margin-bottom:0;">Once that intermediate loses its extra proton, you have a <b>hemiacetal</b>: a single carbon bonded to both an <b>OH</b> and an <b>OR</b> group. "Hemi" (half) signals that this is only halfway to the fully substituted product — one more alcohol addition still needs to happen.</p>'
+      },
+      {
+        render: function(api){
+          var stages = [
+            { key: 'protonate', label: 'Carbonyl oxygen is protonated by acid' },
+            { key: 'attack1', label: 'First alcohol attacks the carbon, forming a hemiacetal' },
+            { key: 'oxo', label: 'The hemiacetal OH leaves as water, forming a resonance-stabilized oxocarbenium ion' },
+            { key: 'attack2', label: 'A second alcohol attacks the oxocarbenium ion, forming the acetal' }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the four stages of acetal formation in the correct order.</h2>' +
+            '<div class="choice-row" style="flex-direction:column;">' + stages.map(function(s){
+              return '<button class="choice-btn" data-v="' + s.key + '">' + s.label + '</button>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Correct clicks: 0 / 4</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var order = ['protonate', 'attack1', 'oxo', 'attack2'];
+          var idx = 0, mistake = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(btn.disabled) return;
+              var key = btn.getAttribute('data-v');
+              if(key === order[idx]){
+                btn.disabled = true;
+                btn.classList.add('correct');
+                idx++;
+                hint.textContent = 'Correct clicks: ' + idx + ' / 4';
+                if(idx === 4){
+                  api.record(!mistake);
+                  api.showFeedback(fb, !mistake, mistake ? 'You got there, but out of order at first. Protonate, first addition (hemiacetal), ionize to the oxocarbenium ion, then a second addition (acetal).' : 'Exactly right — this four-stage sequence, run twice through essentially the same nucleophilic-addition idea, is the complete acetal-formation mechanism.');
+                  next.disabled = false;
+                }
+              } else {
+                mistake = true;
+                btn.classList.add('wrong');
+                setTimeout(function(){ btn.classList.remove('wrong'); }, 500);
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'A hemiacetal carbon is bonded to which two oxygen-containing groups?',
+        options: ['One OH and one OR group', 'Two OR groups', 'Two OH groups'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — "hemi" (half) reflects that only one of the two alcohol additions has happened so far.',
+        wrongFeedback: 'Two OR groups describes the full acetal; two OH groups describes the hydrate from the Aldehydes & Ketones lesson. A hemiacetal has one of each.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The oxocarbenium ion is a carbocation stabilized by an adjacent oxygen lone pair.',
+        bodyHtml: '<p class="step-body">Losing water from the protonated hemiacetal would ordinarily just give a plain, high-energy alkyl carbocation. But here, the oxygen still attached to that carbon has a lone pair perfectly positioned to donate into the empty p orbital — exactly the kind of resonance donation from the Resonance lesson. The result, called an <b>oxocarbenium ion</b>, is a genuine resonance hybrid: part carbocation, part C=O⁺ with the positive charge shared onto oxygen.</p><p class="step-body" style="margin-bottom:0;">This resonance stabilization is dramatic — it\'s the reason this ionization step, which would otherwise be highly unfavorable for a simple alkyl system, proceeds smoothly under mild acid catalysis. It is the same "adjacent lone pair stabilizes a cation" logic you will meet again in Module 13, where it explains why a Friedel-Crafts acylium ion never rearranges.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'Why is the oxocarbenium ion so much more stable than an ordinary alkyl carbocation?',
+        options: ['Oxygen is negatively charged, which automatically stabilizes anything nearby', 'The adjacent oxygen\'s lone pair donates into the empty p orbital by resonance, delocalizing the positive charge onto oxygen', 'It isn\'t more stable — it just forms faster'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — resonance donation from the adjacent oxygen lone pair spreads the positive charge over two atoms instead of concentrating it on carbon alone.',
+        wrongFeedback: 'The oxygen here is neutral (not negatively charged) — the stabilization comes specifically from resonance donation of its lone pair into the cation\'s empty p orbital.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Acetals are protecting groups — a reversible way to "turn off" a reactive carbonyl.',
+        bodyHtml: '<div class="explain-box">A carbonyl reacts with nucleophiles, Grignards, and strong reducing agents — exactly the reagents a chemist often needs to use elsewhere in a complex molecule during a multi-step synthesis. Converting the carbonyl to an acetal removes that reactivity almost completely: acetals are stable to base, to nucleophiles, and to reducing agents, and only react under aqueous acid. A chemist can protect a carbonyl as its acetal, run other reactions safely elsewhere in the molecule, then simply add dilute aqueous acid at the end to hydrolyze the acetal straight back to the original carbonyl — every step in acetal formation being reversible is exactly what makes this "protect, then deprotect" strategy work.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 6 · Independent Practice',
+        title: 'An acetal-protected ketone is treated with LiAlH₄, a strong reducing agent, then with dilute aqueous acid. What happens?',
+        options: ['LiAlH₄ reduces the acetal directly to an alcohol', 'The acetal is destroyed immediately on contact with any reducing agent', 'LiAlH₄ leaves the acetal untouched; the aqueous acid step afterward hydrolyzes it back to the original ketone, unreduced'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — this is exactly the protecting-group strategy in action: the acetal shields the carbonyl from LiAlH₄, and only the final aqueous acid step reveals the (unreduced) ketone again.',
+        wrongFeedback: 'The entire point of an acetal protecting group is that it resists reducing agents like LiAlH₄ — it only reacts back to the carbonyl under aqueous acid.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A synthesis requires reducing an ester elsewhere in a molecule with LiAlH₄ without touching a ketone also present. What strategy should the chemist use?',
+        options: ['Protect the ketone as an acetal first, run the LiAlH₄ reduction, then hydrolyze the acetal back to the ketone with aqueous acid', 'Use NaBH₄ instead, since it never reduces ketones', 'There is no way to selectively reduce only the ester in the presence of a ketone'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — acetal protection is exactly this kind of selective-reactivity problem: shield the more reactive carbonyl (the ketone) with an acetal, do the reduction that would otherwise also touch it, then deprotect afterward. (NaBH₄ would actually reduce the ketone, not spare it.)'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

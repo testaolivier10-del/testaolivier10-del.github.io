@@ -1,0 +1,46 @@
+<p class="step-body">Wedge-and-dash drawings are precise but slow, and they become unreadable for a molecule with four or five stereocenters in a row — which is exactly what a sugar is. The Fischer projection is a compressed notation that trades generality for speed, and it remains the standard way to draw carbohydrates more than a century after Emil Fischer devised it.</p>
+
+<h3>The drawing convention</h3>
+<p class="step-body">A <b>Fischer projection</b> draws each stereocenter as a simple cross: a horizontal line and a vertical line meeting at the carbon, with the carbon itself usually left implicit at the intersection.</p>
+<p class="step-body">The convention that gives it three-dimensional meaning is fixed and must be memorized: <b>horizontal lines point toward the viewer</b>, out of the page, as if drawn on wedges. <b>Vertical lines point away from the viewer</b>, into the page, as if on dashes. Every Fischer projection means this, always.</p>
+<p class="step-body">For a chain, the stereocenters are stacked vertically and the main carbon chain runs down the page, conventionally with the most oxidized carbon — an aldehyde, say — at the top.</p>
+
+<h3>Why this convention exists</h3>
+<p class="step-body">It follows from drawing the carbon backbone in a specific curled orientation, bowed away from the viewer like the inside of a barrel. Hold a model that way and the chain bonds naturally point backwards while the substituents on each carbon point forwards. Fischer adopted the flattened version as shorthand while working out the structures of the sugars — an achievement that won him the 1902 Nobel Prize, made using nothing but chemical reactions and this notation.</p>
+
+<div class="notes-pitfall"><b>A Fischer projection is not a normal skeletal drawing.</b> If you read the crosses as ordinary flat bonds, every stereochemical conclusion you draw from them will be wrong — and wrong in a systematic way, giving you the enantiomer. The horizontal-toward, vertical-away rule is not a convention you can choose to ignore; it is what makes the drawing mean anything.</div>
+
+<h3>Manipulating a Fischer projection safely</h3>
+<p class="step-body">Two operations preserve the molecule:</p>
+<ul class="step-body" style="margin-top:0;">
+<li><b>Rotating the whole projection 180°</b> in the plane of the page.</li>
+<li><b>Holding one group fixed and rotating the other three</b> among themselves.</li>
+</ul>
+<p class="step-body">Two operations silently convert the molecule into its enantiomer:</p>
+<ul class="step-body" style="margin-top:0;">
+<li><b>Swapping any two groups</b> once.</li>
+<li><b>Rotating the whole projection 90°</b> — this exchanges the horizontal and vertical axes, which exchanges toward and away.</li>
+</ul>
+<p class="step-body">Swaps compose predictably: an even number of swaps returns the original molecule, an odd number gives the enantiomer. That fact is useful in its own right, because it lets you rearrange a projection into a convenient form by making two swaps and knowing you have not changed anything.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — assigning R/S in a Fischer projection</span>
+<p>Take (R)-glyceraldehyde drawn Fischer-style: CHO at top, CH₂OH at bottom, OH on the right, H on the left.</p>
+<p>Priorities from the previous section: OH (1), CHO (2), CH₂OH (3), H (4).</p>
+<p>Here H is on a <b>horizontal</b> bond, which by the convention points toward you — the wrong orientation for reading directly. So trace 1 → 2 → 3 as drawn: OH (right) → CHO (top) → CH₂OH (bottom) runs counterclockwise, which would read as S. Then flip, because priority 4 points at you: the answer is <b>R</b>. ✓</p>
+<p>Had the hydrogen been on a vertical bond, it would already point away and no flip would be needed.</p>
+</div>
+
+<div class="notes-fact">A useful shortcut for sugars: in the standard orientation, the lowest-priority group is nearly always the hydrogen, and it nearly always sits on a horizontal bond. So for a Fischer projection drawn conventionally, <b>trace the 1 → 2 → 3 path and flip your answer</b> almost every time. Check where the H actually is rather than assuming — but knowing the usual case makes the work fast.</div>
+
+<h3>D and L</h3>
+<p class="step-body">Fischer projections are where the D/L system lives. For a sugar, look at the stereocenter <b>furthest from the carbonyl</b> — the bottom one in the standard orientation. If its OH is on the <b>right</b>, the sugar is <b>D</b>; on the <b>left</b>, it is <b>L</b>. For an amino acid, look at the alpha carbon — the one carrying both the NH₂ and the COOH: NH₂ on the left is L, on the right is D.</p>
+<p class="step-body">Almost all naturally occurring sugars are D and almost all proteinogenic amino acids are L, which is one of the more striking facts about life on Earth — the homochirality of biology has no settled explanation.</p>
+<p class="step-body">D/L is a purely <b>relational</b> label: it says which stereoisomer of glyceraldehyde a compound's configuration can be traced back to. It carries no information about optical rotation and does not map reliably onto R/S. D-glucose is (2R,3S,4R,5R), a mixture of descriptors; the single D refers only to C5.</p>
+
+<h3>Why Fischer projections are still used</h3>
+<p class="step-body">Because they make many stereocenters comparable at a glance. Glucose has four stereocenters in a chain, and drawing it in wedge-dash form takes real effort to read. In a Fischer projection the four OH groups form a pattern — right, left, right, right for D-glucose — that you can match against another sugar in a second. Distinguishing glucose from mannose, galactose or allose becomes pattern recognition rather than analysis.</p>
+<p class="step-body">If you continue into biochemistry you will see this notation constantly, and the ability to read it is assumed.</p>
+
+<h3>What carries forward</h3>
+<p class="step-body">Fischer projections are the standard for carbohydrate chemistry and appear throughout biochemistry. They are also, as the meso section noted, the fastest way to spot an internal mirror plane — a meso compound in a Fischer projection has an obvious horizontal line of symmetry, which is much harder to see in a wedge-dash drawing. This chapter's closing lesson is that stereochemical notation is a set of tools, each good for a particular job: wedges for mechanisms, chairs for rings, Fischer projections for chains of stereocenters.</p>

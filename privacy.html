@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy — LevlPrep</title>
+<meta name="description" content="What LevlPrep stores, what leaves your browser, and what it doesn't. No ads, no trackers, no cookies — just one anonymous page counter and an optional account.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/privacy.html">
+<meta property="og:title" content="Privacy — LevlPrep">
+<meta property="og:description" content="What LevlPrep stores, what leaves your browser, and what it doesn't.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://testaolivier10-del.github.io/privacy.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+  .privacy h2{font-size:19px;margin:30px 0 8px;}
+  .privacy h2:first-of-type{margin-top:6px;}
+  .privacy p,.privacy li{font-size:15.5px;font-weight:600;color:var(--muted);line-height:1.65;max-width:66ch;}
+  .privacy li{margin-bottom:7px;}
+  .privacy strong{color:var(--ink);font-weight:800;}
+  .privacy ul{padding-left:20px;margin:8px 0 0;}
+  .privacy .updated{font:700 12px var(--font-mono);color:var(--muted);letter-spacing:.04em;}
+</style>
+</head>
+<body>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> LevlPrep
+    </a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">&#9681;</button>
+  </div>
+</div>
+
+<div class="xshell">
+  <div class="hero">
+    <div class="eyebrow">Privacy</div>
+    <h1>What leaves your browser.</h1>
+    <p class="lede">Short version: almost nothing. There are no ads, no trackers and no cookies on this site. Everything you do here is stored on your own device unless you choose to sign in.</p>
+    <p class="updated">Last updated 11 September 2026</p>
+  </div>
+
+  <div class="xsection">
+    <div class="xgrid">
+      <div class="xlabel">Details</div>
+      <div class="xcontent narrow privacy">
+
+        <h2>Your progress stays on your device</h2>
+        <p>Answers, scores, streaks, XP, mastery, flagged questions, your study plan and your light/dark preference are all written to your browser's <strong>localStorage</strong>. That is a store only this site can read, it never travels with a request, and clearing your browser data erases it. No account is needed to use any feature on this site.</p>
+
+        <h2>One anonymous counter</h2>
+        <p>Each page load increments a counter so we can see which pages get used. It records <strong>the page path and the date, and nothing else</strong> — no IP address, no cookie, no user id, no session id, no device fingerprint, no referrer. There is no way to tell two visits apart, or to tell whether a visit was yours.</p>
+        <p>It works by calling a single database function that can only do one thing: add one to a <code>(path, day)</code> total. The table behind it is locked so that nothing — including this website — can read it back or write to it any other way.</p>
+
+        <h2>Signing in is optional</h2>
+        <p>If you create an account, the same progress described above is also copied to a row in our database so it follows you to another device. In that case we store:</p>
+        <ul>
+          <li>Your <strong>email address</strong>, used to sign you in and nothing else.</li>
+          <li>Your <strong>progress data</strong> — the same values already on your device.</li>
+        </ul>
+        <p>We do not email you, and the data is never sold, shared or used for advertising. Accounts and storage are handled by <strong>Supabase</strong>, acting as our processor; each account can read and write only its own row, enforced by the database rather than by the app. To delete your account and its data, email the address below and it will be removed.</p>
+
+        <h2>What this site does not do</h2>
+        <ul>
+          <li>No advertising, and no advertising or analytics SDKs of any kind.</li>
+          <li>No cookies. (localStorage is not a cookie and is never transmitted.)</li>
+          <li>No third-party trackers, pixels, session recorders or A/B tools.</li>
+          <li>No selling or sharing of personal information, under CCPA or otherwise.</li>
+        </ul>
+
+        <h2>Third parties your browser does contact</h2>
+        <ul>
+          <li><strong>Google Fonts</strong> serves the two typefaces. Google receives the request, including your IP address, as it would for any hosted file.</li>
+          <li><strong>jsDelivr</strong> serves the Supabase client library, and only on pages where signing in is possible.</li>
+          <li><strong>Wikimedia Commons</strong> serves three lung-sound recordings, and only if you press play on one in the sound trainer.</li>
+          <li><strong>GitHub Pages</strong> hosts the site and, like any web host, sees the requests for it.</li>
+        </ul>
+
+        <h2>Your rights</h2>
+        <p>Because there is no identifier attached to the page counter, there is nothing there to look up, correct or delete. For an account, you can export or delete everything by emailing the address below; if you are in the UK, EU or California, the access, correction, deletion and portability rights you have under GDPR or CCPA apply to that account data.</p>
+
+        <h2>Children</h2>
+        <p>This site is built for people studying for professional certification and university courses. It isn't directed at children under 13, and we don't knowingly collect anything from them.</p>
+
+        <h2>Changes, and how to reach us</h2>
+        <p>If this policy changes in a way that affects what is collected, the date above will change with it. Questions, or a deletion request: <a href="mailto:testaolivier10@gmail.com">testaolivier10@gmail.com</a>.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/account.js"></script>
+<script>
+  (function(){
+    var t = document.getElementById('themeToggle');
+    if(!t) return;
+    t.addEventListener('click', function(){
+      var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      try{ localStorage.setItem('nremt_theme', dark ? 'light' : 'dark'); }catch(e){}
+      if(dark) document.documentElement.removeAttribute('data-theme');
+      else document.documentElement.setAttribute('data-theme','dark');
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<p class="step-body">Ethers are the functional group defined by what it does not do. They have no acidic proton, no good leaving group, and nothing electrophilic enough to attack — which makes them almost inert, and therefore invaluable as solvents. Understanding why they are unreactive is a good test of whether the last two modules have stuck.</p>
+
+<h3>Why ethers are so unreactive</h3>
+<p class="step-body">An ether, R–O–R′, has no O–H bond, so there is no acidic proton for a base to remove. And the group attached to carbon is an alkoxide, RO⁻ — the conjugate base of an alcohol at pKa 16, which makes it a strong base and just as poor a leaving group as hydroxide. So an ether has nothing to give a base and nothing to give a nucleophile.</p>
+<p class="step-body">The result is a functional group inert to bases, nucleophiles, reducing agents and mild oxidants. That inertness is precisely why diethyl ether and THF are the default solvents for reactions involving ferociously reactive species — Grignard reagents and LiAlH₄ among them — that would attack almost any other functional group present.</p>
+<p class="step-body">(Both of those are reagents you meet properly in Module 9. A <b>Grignard</b>, RMgX, is a carbon nucleophile made from an alkyl halide and magnesium; <b>LiAlH₄</b> is a powerful source of hydride, H⁻. All that matters here is that they are violently reactive and need a solvent that will not react back.)</p>
+
+<div class="notes-fact">Ethers do more than sit there passively. The oxygen's lone pairs coordinate to the magnesium of a Grignard reagent, and that coordination is what keeps it in solution and reactive — THF, with a less hindered oxygen and greater basicity, coordinates better than diethyl ether, which is why it is preferred for difficult Grignard formations. The "inert" solvent is quietly doing chemistry.</div>
+
+<h3>Williamson ether synthesis</h3>
+<p class="step-body">The standard route to an ether. Deprotonate an alcohol with a strong base — NaH is common, and its byproduct, hydrogen gas, simply bubbles away — to give an alkoxide, then let that alkoxide do an SN2 attack on a primary or methyl alkyl halide or tosylate.</p>
+<p class="step-body">Because the key step is a plain SN2, everything you know about SN2 applies. It works best with an unhindered electrophile; a secondary electrophile gives poor yields, and a tertiary one gives no ether at all — the alkoxide acts as a base instead, and E2 takes over.</p>
+
+<div class="notes-pitfall"><b>Choose the right disconnection.</b> To make <i>tert</i>-butyl methyl ether, you have a choice: methoxide plus <i>tert</i>-butyl bromide, or <i>tert</i>-butoxide plus methyl iodide. The first fails completely — tertiary substrate, strong base, E2. The second works cleanly, because the methyl halide is an ideal SN2 electrophile and the bulk sits harmlessly on the nucleophile. <b>Always put the bulk on the alkoxide and the simplicity on the halide.</b> This is a standard exam question and a standard real-world consideration.</div>
+
+<div class="notes-example">
+<span class="k">Worked example — planning an unsymmetrical ether</span>
+<p>Target: cyclohexyl ethyl ether.</p>
+<p><b>Route A:</b> cyclohexanol → cyclohexoxide (NaH), then ethyl bromide. The electrophile is primary. ✓</p>
+<p><b>Route B:</b> ethanol → ethoxide (NaH), then cyclohexyl bromide. The electrophile is secondary and cyclic, so E2 competes badly and you get mostly cyclohexene. ✗</p>
+<p>Same target, same two fragments, and only one order works.</p>
+</div>
+
+<h3>Alkoxymercuration and other routes</h3>
+<p class="step-body">Where a Williamson would fail, adding an alcohol across an alkene does the job. <b>Alkoxymercuration–demercuration</b> — Hg(OAc)₂ in an alcohol, then NaBH₄ — adds the alkoxy group with Markovnikov selectivity through a bridged mercurinium ion, which means no rearrangement and no SN2 restriction. It is the reliable way to install an ether at a tertiary carbon.</p>
+
+<h3>Ether cleavage: only strong acid gets through</h3>
+<p class="step-body">Ethers resist bases and mild reagents, but hot concentrated HI or HBr will cleave the C–O bond, and the reason is the same activation trick as with alcohols. The ether oxygen is protonated first, which converts a hopeless leaving group (RO⁻) into a good one (a neutral alcohol, whose conjugate acid ROH₂⁺ has pKa about −2).</p>
+<p class="step-body">Then a halide attacks — iodide and bromide are excellent nucleophiles and weak bases, exactly right for the job. Which mechanism depends on the carbon, as always: primary carbons go SN2 with inversion, tertiary carbons go SN1 through a cation, and secondary carbons do some of each.</p>
+<p class="step-body">With excess HI the initially formed alcohol is itself converted to a second alkyl halide, so an ether ends up as two alkyl halides. HCl does not work well — chloride is too poor a nucleophile for the SN2 case.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — where does the iodide go?</span>
+<p><i>tert</i>-Butyl methyl ether plus excess HI.</p>
+<p>Protonate the oxygen. Now there are two carbons to attack: a methyl and a tertiary. The tertiary one ionizes readily to a stable cation, so the ether cleaves there — giving <i>tert</i>-butyl iodide and methanol. Excess HI then converts the methanol to methyl iodide by SN2.</p>
+<p>The tertiary carbon won because it supports the cation, not because it was more accessible — it is in fact far less accessible. Ask which mechanism operates before asking which carbon is attacked.</p>
+</div>
+
+<h3>Epoxides: the reactive exception</h3>
+<p class="step-body">Everything above describes ordinary, acyclic ethers. A three-membered cyclic ether — an <b>epoxide</b> — behaves entirely differently, and the next section is devoted to it. The same ring strain that destabilizes cyclopropane applies here, and releasing that strain by ring-opening turns the least reactive functional group in the chapter into one of the most useful.</p>
+
+<h3>A safety note worth knowing</h3>
+<p class="step-body">Ethers left standing in air slowly form explosive <b>peroxides</b> at the carbon next to oxygen, by a radical mechanism. This is why ether bottles carry dates, why old ether should never be distilled to dryness, and why THF is usually sold with an inhibitor. It is the one genuinely dangerous property of an otherwise placid functional group.</p>
+
+<h3>What carries forward</h3>
+<p class="step-body">The Williamson synthesis is a standard move in synthesis problems and an excellent test of SN2 judgement. Ether protection — installing an ether to keep an alcohol out of the way and removing it later — is a routine strategy in multi-step routes. And the protonation trick that allows ether cleavage is the same one that allows every reaction of alcohols, which is worth noticing as a general principle: a bad leaving group can usually be fixed with acid.</p>

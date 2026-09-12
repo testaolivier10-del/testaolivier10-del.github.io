@@ -1,0 +1,41 @@
+<p class="step-body">"Shells" are a useful lie. They get the electron counts right — 2, then 8 — but they suggest electrons orbit the nucleus on neat circular tracks, and that picture cannot explain why methane is tetrahedral, why a double bond refuses to rotate, or why benzene is flat. Replacing shells with <b>orbitals</b> fixes all three, and the fix is the foundation for the rest of the course.</p>
+
+<h3>What an orbital is, and the four shapes</h3>
+<p class="step-body">An <b>orbital</b> is a region of space where an electron is likely to be found. Not a path — a probability cloud. Each orbital holds at most <b>2</b> electrons, and those two must have opposite spins; this is the <b>Pauli exclusion principle</b>, which says no two electrons in an atom can occupy the exact same state.</p>
+<p class="step-body">There are four orbital shapes you will hear about.</p>
+<ul class="step-body">
+<li><b>s</b> orbitals are spherical. There is 1 per shell, starting at n = 1.</li>
+<li><b>p</b> orbitals are dumbbell-shaped — two lobes on opposite sides of the nucleus, with a <b>node</b> (a surface of zero probability) passing through the center. There are 3 per shell, starting at n = 2, pointing along the x, y and z axes.</li>
+<li><b>d</b> orbitals are mostly four-lobed cloverleaf shapes. 5 per shell, starting at n = 3.</li>
+<li><b>f</b> orbitals are more elaborate multi-lobed shapes. 7 per shell, starting at n = 4.</li>
+</ul>
+<p class="step-body">Each added shape lets a shell hold more electrons, at 2 per orbital: s alone gives 2; s + p gives 8; s + p + d gives 18; s + p + d + f gives 32. Those are exactly the row lengths of the periodic table, which is not a coincidence.</p>
+
+<h3>Orbitals are the detailed picture of shells</h3>
+<p class="step-body">The two pictures line up exactly. The K shell <b>is</b> the single 1s orbital — 2 electrons maximum, matching the K shell's maximum of 2. The L shell <b>is</b> the 2s orbital plus the three 2p orbitals: four orbitals, 8 electrons maximum, exactly the L shell's capacity. Nothing about the counting from the previous section changes. What changes is that you now know the <i>shape</i> of the space those electrons occupy, and shape is what determines molecular geometry.</p>
+<p class="step-body">The two lobes of a p orbital are usually drawn one shaded and one unshaded. That shading represents the <b>phase</b> of the wavefunction, a plus or minus sign rather than a charge. It is easy to ignore for now and impossible to ignore later: whether two overlapping orbitals have matching or opposing phase is what decides whether their interaction is bonding or antibonding, and it is the whole basis of the aromaticity rules in Module 13.</p>
+
+<h3>Why the fill order is what it is</h3>
+<p class="step-body">Electrons fill the lowest-energy orbitals first — the <b>Aufbau principle</b>, from the German for "building up." Within a shell, energy increases in the order s &lt; p &lt; d &lt; f. The reason is worth understanding rather than memorizing.</p>
+<p class="step-body">An electron's energy depends on how strongly the nucleus pulls on it, and that pull is partly cancelled by the other electrons in the way — an effect called <b>shielding</b>. An s orbital's spherical shape lets its electron spend more time very close to the nucleus than a p or d electron in the same shell can (this is called <b>penetration</b>). More penetration means less shielding, which means a stronger effective nuclear pull, which means lower energy. That is the whole argument.</p>
+<p class="step-body">The effect is strong enough that it eventually beats the shell number outright. By period 4, the 4s orbital sits <b>lower</b> in energy than 3d despite the larger shell number — which is why potassium and calcium fill 4s before any element begins filling 3d, and therefore why the d-block starts in row 4 of the periodic table rather than row 3.</p>
+<p class="step-body">One more rule completes the picture. When several orbitals are exactly equal in energy — the three 2p orbitals, say, or the five 3d — electrons spread out one to an orbital before any of them pair up. This is <b>Hund's rule</b>, and the reason is simple electrostatics: two electrons in the same orbital are forced close together and repel each other, so nature avoids that as long as an empty orbital of equal energy is available.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — writing carbon's configuration</span>
+<p>Carbon has 6 electrons. Fill lowest first: 1s takes 2, 2s takes 2, leaving 2 electrons for the three 2p orbitals. By Hund's rule those last two go into <i>separate</i> p orbitals rather than pairing in one.</p>
+<p>Result: <b>1s² 2s² 2p²</b>, with two unpaired electrons in two different 2p orbitals and the third 2p orbital empty.</p>
+<p>Oxygen (8 electrons) goes one step further: 1s² 2s² 2p⁴ — the first three p electrons occupy the three orbitals singly, and only the fourth is forced to pair up. That leaves two unpaired electrons, which is why oxygen forms two bonds, and two paired ones, which are the lone pairs.</p>
+</div>
+
+<h3>Why the periodic table has that stair-step shape</h3>
+<p class="step-body">The table's block structure is a direct readout of which orbital type was filled last. The two leftmost columns (groups 1–2) are the <b>s-block</b>. The six columns on the right (groups 13–18) are the <b>p-block</b>, and this is where essentially every element in organic chemistry lives: C, N, O, F, S, P, Cl, Br, I. The ten columns in the middle (groups 3–12, the transition metals) are the <b>d-block</b>. The two rows pulled out beneath the table — lanthanides and actinides — are the <b>f-block</b>.</p>
+<p class="step-body">Reading the table this way turns it from a chart to be memorized into a map that can be derived. An element's position tells you its valence configuration, which tells you its bonding behavior.</p>
+
+<div class="notes-fact">One immediate payoff: sulfur, phosphorus and the other period 3+ elements can hold more than 8 electrons around them — an "expanded octet," as in SF₆ — while carbon, nitrogen, oxygen and fluorine never can. The short reason is that period 2 atoms are simply too small to fit more than four neighbors; the fuller reason gets settled in Lewis Structures and Hybridization. You can look up any element's block with the periodic table tool (the ⚛ button); its color-coded categories line up with these blocks.</div>
+
+<div class="notes-pitfall"><b>Common slip:</b> writing 3d before 4s because 3 comes before 4. The energy order, not the shell number, sets the filling order, and around period 4 those two disagree. Potassium is [Ar] 4s¹, not [Ar] 3d¹.</div>
+
+<h3>The problem this leaves behind</h3>
+<p class="step-body">Carbon's ground-state configuration, 1s² 2s² 2p², has only <b>two</b> unpaired electrons. Taken at face value, that predicts carbon should form two bonds — and give something like CH₂. But carbon forms four bonds in essentially every stable organic compound you will ever draw, and methane is CH₄ with four identical bonds at identical angles.</p>
+<p class="step-body">Something must happen to carbon's orbitals before it bonds. Resolving that contradiction is the entire subject of the next section, Hybridization, and the resolution is the single most useful idea in structural organic chemistry.</p>

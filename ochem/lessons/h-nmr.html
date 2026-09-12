@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¹H NMR — Spectroscopy | Organic Chemistry</title>
+<meta name="description" content="Learn how chemical shift, integration, and spin-spin splitting in ¹H NMR together reveal a molecule's hydrogen environments, their relative counts, and their neighbors.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/h-nmr.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 14 &middot; Spectroscopy</div>
+    <h1 style="margin-bottom:4px;">¹H NMR.</h1>
+    <p class="lede" style="margin-top:0;">Three independent pieces of information — where a signal appears, how big it is, and how it's split — combine to map out a molecule's hydrogens one by one.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'h-nmr',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        diagramHtml: window.OchemMolecules.svg('ethanol', { caption: 'Three chemically distinct hydrogen environments, so three signals: the CH₃ triplet, the CH₂ quartet, and the OH singlet.' }),
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Chemical shift: electronegative neighbors deshield a hydrogen and push its signal downfield.',
+        bodyHtml: '<p class="step-body">A hydrogen nucleus resonates at a frequency that depends on how much its surrounding electrons shield it from an external magnetic field. An electronegative atom nearby (O, N, a halogen, or an adjacent carbonyl) pulls electron density away from that hydrogen, <b>deshielding</b> it — and a more deshielded hydrogen resonates further "downfield," at a higher chemical shift value (measured in ppm).</p><p class="step-body" style="margin-bottom:0;">This gives you a direct diagnostic tool: alkyl C–H far from anything electronegative sits around 0.9-1.5 ppm; C–H next to O or a halogen shifts to 3.3-4.5 ppm; an aldehyde C–H (extremely deshielded by the adjacent carbonyl) appears way downfield at 9-10 ppm. Chemical shift alone tells you a lot about what\'s structurally nearby a given hydrogen.</p>'
+      },
+      {
+        render: function(api){
+          var items = [
+            { key: 'alkyl', label: 'CH₃ in an alkane (no nearby electronegative atoms)', v: 'low' },
+            { key: 'ether', label: 'CH₂ directly attached to an ether oxygen', v: 'mid' },
+            { key: 'aromatic', label: 'Aromatic ring C–H', v: 'high' }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Rank these three hydrogen environments from lowest to highest chemical shift.</h2>' +
+            '<div class="choice-row" style="flex-direction:column;">' + items.map(function(s){
+              return '<button class="choice-btn" data-v="' + s.key + '">' + s.label + '</button>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Correct clicks: 0 / 3</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var order = ['alkyl', 'ether', 'aromatic'];
+          var idx = 0, mistake = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(btn.disabled) return;
+              var key = btn.getAttribute('data-v');
+              if(key === order[idx]){
+                btn.disabled = true;
+                btn.classList.add('correct');
+                idx++;
+                hint.textContent = 'Correct clicks: ' + idx + ' / 3';
+                if(idx === 3){
+                  api.record(!mistake);
+                  api.showFeedback(fb, !mistake, mistake ? 'You got there, but out of order at first. More deshielding (electronegative neighbors, or aromatic ring current) pushes a signal further downfield to higher ppm.' : 'Exactly right — plain alkyl (~1 ppm) < next to an ether oxygen (~3.5 ppm) < aromatic ring, uniquely deshielded further by ring current (~7 ppm).');
+                  next.disabled = false;
+                }
+              } else {
+                mistake = true;
+                btn.classList.add('wrong');
+                setTimeout(function(){ btn.classList.remove('wrong'); }, 500);
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'A molecule\'s ¹H NMR spectrum shows two signals with integration values in a 3:2 ratio. What does this tell you?',
+        options: ['The molecule contains exactly 3 and 2 total hydrogens', 'One signal is three times stronger in chemical shift than the other', 'The two signals come from hydrogen environments in a 3:2 ratio (e.g., 3 hydrogens of one type for every 2 of another)'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — integration gives relative, not absolute, hydrogen counts; the actual numbers could be 3 and 2, or 6 and 4, or any multiple preserving that ratio.',
+        wrongFeedback: 'Integration values are relative to each other, not absolute counts, and they have nothing to do with chemical shift (position) — they measure signal area (proportional to hydrogen count).'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The n+1 rule: splitting reveals how many neighboring hydrogens are nearby.',
+        bodyHtml: '<p class="step-body">A hydrogen\'s signal doesn\'t just appear as one clean peak — it\'s split into multiple sub-peaks by neighboring, non-equivalent hydrogens (typically on the adjacent carbon). The rule is simple: a hydrogen with <b>n</b> equivalent neighboring hydrogens is split into <b>n+1</b> peaks. No neighbors gives a singlet; one neighbor gives a doublet; two neighbors give a triplet; three neighbors give a quartet — and the relative heights of the split peaks follow a predictable (Pascal\'s triangle) pattern.</p><p class="step-body" style="margin-bottom:0;">The spacing between the split peaks, called the coupling constant (J, in Hz), is identical for both hydrogens involved in the coupling — a genuinely useful cross-check: if two signals\' splitting patterns share the same J value, that\'s strong evidence they\'re coupled to each other (i.e., they sit on adjacent carbons).</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'In ethanol (CH₃CH₂OH), the CH₂ signal appears as a quartet. How many hydrogens are on the carbon adjacent to it?',
+        options: ['3 — the n+1 rule means 3 neighboring hydrogens produce 3+1=4 peaks (a quartet)', '4 — the number of peaks equals the number of neighboring hydrogens directly', '2 — a quartet always means exactly 2 neighbors'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — reversing the n+1 rule (a quartet has 4 peaks, so n+1=4, meaning n=3) correctly identifies the adjacent CH₃ group\'s three hydrogens as the source of the splitting.',
+        wrongFeedback: 'Remember the rule is n+1, not n — a quartet (4 peaks) comes from n=3 neighboring hydrogens, not 4 or 2.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Shift, integration, and splitting together triangulate a molecule\'s full structure.',
+        bodyHtml: '<div class="explain-box">No single piece of ¹H NMR data is usually enough on its own, but combined, they\'re remarkably powerful: chemical shift tells you what\'s electronically nearby a given hydrogen, integration tells you how many hydrogens produce each signal, and splitting tells you how many hydrogens sit on the adjacent carbon. Ethanol\'s spectrum is the classic worked example: a 3H triplet near 1.2 ppm (the CH₃, split by an adjacent CH₂), a 2H quartet near 3.6 ppm (the CH₂, split by an adjacent CH₃, and shifted downfield by the nearby oxygen), and a 1H broad singlet elsewhere (the exchangeable OH). All three signals cross-confirm the same structure.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 6 · Independent Practice',
+        title: 'A compound\'s ¹H NMR shows a 2H signal at 2.3 ppm as a triplet, and a 3H signal at 1.0 ppm as a triplet. What does the fact that BOTH signals are triplets suggest about their relationship?',
+        options: ['They must be identical environments', 'They are likely NOT directly coupled to each other in a simple CH₃–CH₂ pattern (since coupled partners would typically show n+1 patterns matching each other\'s hydrogen counts, like a quartet paired with a triplet), so another explanation (like a symmetric CH₂ neighbor) should be considered', 'Triplet-triplet pairings are impossible under any circumstances'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — a classic ethyl group (CH₃CH₂–) pairs a triplet (CH₃, split by 2 neighbors) with a quartet (CH₂, split by 3 neighbors), not two triplets, so this pattern hints at a different structural arrangement (each proton set is actually next to 2 equivalent neighboring hydrogens instead).',
+        wrongFeedback: 'Two different signals appearing as two different triplets are neither identical nor impossible — but it does rule out the simplest ethyl-group (CH₃–CH₂–) interpretation, since that specific pattern would pair a triplet with a quartet, not two triplets.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A compound shows exactly one ¹H NMR signal: a single, unsplit peak (singlet) at 7.3 ppm, integrating for 5H relative to no other signal in the spectrum. What structure is most consistent with this data?',
+        options: ['A simple, isolated CH₅ group', 'This data is impossible to produce from any real molecule', 'A monosubstituted benzene ring where all 5 remaining aromatic hydrogens happen to be equivalent (or nearly so) and appear together, downfield due to ring current, with no non-equivalent neighboring hydrogens to split them'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — a monosubstituted phenyl group (like in toluene\'s aromatic ring) often shows its 5 aromatic hydrogens clustered together around 7.3 ppm; since they\'re not coupled to any non-equivalent hydrogens outside that aromatic system, the signal doesn\'t split further.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

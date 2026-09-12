@@ -1,0 +1,770 @@
+/* Shared styling for Ochem pages beyond the root theme.css: the textbook
+   (Learn) and the mastery bars (Mastery). The header and course tab row are
+   not here — those are site-wide chrome shared with NREMT, styled in
+   assets/theme.css and rendered by assets/site-chrome.js. Lesson-specific
+   layout (like the SN2 mechanism scene) stays inline in its own page, same
+   as the rest of the site's convention — this file is only for pieces used
+   on 3+ pages. */
+
+.module-card{
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  padding:20px 22px;box-shadow:var(--lift-sm);margin-bottom:16px;
+}
+
+.mstat-row{display:flex;align-items:center;gap:14px;padding:11px 0;border-bottom:1px solid var(--line-soft);}
+.mstat-row:last-child{border-bottom:0;}
+.mstat-row .name{flex:0 0 200px;font-size:14px;font-weight:800;}
+.mstat-row .track{flex:1;height:9px;border-radius:999px;background:var(--track);overflow:hidden;}
+.mstat-row .fill{height:100%;border-radius:999px;background:var(--accent);}
+.mstat-row .pct{flex:0 0 48px;text-align:right;font:900 13px var(--font-mono);color:var(--muted);}
+.mstat-row.empty .name{color:var(--muted);font-weight:700;}
+.mstat-row.empty .pct{color:var(--line);}
+
+.empty-panel{
+  background:var(--white);border:var(--bw) dashed var(--line);border-radius:var(--radius-lg);
+  padding:32px 28px;text-align:center;
+}
+.empty-panel h2{margin:0 0 8px;font-size:19px;}
+.empty-panel p{margin:0 auto;max-width:48ch;color:var(--muted);font-weight:600;font-size:14.5px;}
+
+.dep-alert{
+  background:var(--tint-amber);border:var(--bw) solid var(--amber);border-radius:var(--radius-lg);
+  padding:18px 20px;margin-bottom:18px;
+}
+.dep-alert .k{font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--amber-press);margin-bottom:6px;}
+.dep-alert .msg{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:10px;}
+.dep-alert .prereqs{display:flex;flex-wrap:wrap;gap:8px;}
+.dep-alert .prereqs a, .dep-alert .prereqs span{
+  font:800 12.5px var(--font-ui);padding:6px 12px;border-radius:var(--radius-pill);
+  text-decoration:none;color:var(--ink);background:var(--white);border:1px solid var(--line);
+}
+.dep-alert .prereqs a{color:var(--accent-press);border-color:var(--accent);}
+
+/* ==========================================================================
+   Lesson pages (used by every mechanisms/*.html and lessons/*.html file).
+   The first four lessons (Formal Charge, SN1, SN2, E2) each pasted this
+   block inline before this file existed; lessons authored after it just
+   link ochem.css instead of repeating it.
+   ========================================================================== */
+.lesson-shell{max-width:760px;margin:0 auto;}
+.progress-bar{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+.progress-bar .track{flex:1;height:10px;border-radius:999px;background:var(--track);overflow:hidden;}
+.progress-bar .fill{height:100%;background:var(--accent);border-radius:999px;transition:width .25s ease;}
+.progress-bar .label{font:900 12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
+
+.lesson-card{
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  padding:clamp(20px,4vw,32px);box-shadow:var(--lift-lg);
+}
+.step-eyebrow{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.step-title{font:900 clamp(19px,3vw,24px) var(--font-ui);margin:0 0 10px;color:var(--ink);}
+.step-body{font-size:15px;font-weight:600;color:var(--ink);line-height:1.6;margin:0 0 18px;}
+.step-body b{color:var(--ink);}
+.formula{
+  font:900 17px var(--font-mono);background:var(--tint-accent);color:var(--accent-press);
+  border-radius:var(--radius);padding:14px 18px;margin:0 0 18px;text-align:center;
+}
+
+.prereq-note{
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--tint-accent);
+  border-radius:var(--radius);padding:10px 14px;margin:0 0 18px;font:800 12.5px var(--font-ui);color:var(--accent-press);
+}
+
+.scene{background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);padding:20px 10px;margin-bottom:18px;user-select:none;}
+.scene svg{width:100%;height:auto;display:block;max-width:380px;margin:0 auto;}
+.atom{cursor:pointer;}
+.atom circle{transition:stroke .1s ease,stroke-width .1s ease;}
+.atom:hover circle{stroke:var(--accent);stroke-width:3;}
+.atom.chosen circle{stroke:var(--accent);stroke-width:3.5;fill:var(--tint-accent);}
+.atom text{font-family:'IBM Plex Mono',monospace;font-weight:700;pointer-events:none;}
+.lp-dot{fill:var(--muted);}
+
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
+.choice-btn{
+  flex:1 1 200px;text-align:left;background:var(--white);border:var(--bw) solid var(--line);
+  border-radius:var(--radius);padding:14px 16px;font:800 14.5px var(--font-ui);color:var(--ink);
+  cursor:pointer;box-shadow:var(--lift-sm);transition:border-color .1s ease,transform .06s ease;
+}
+.choice-btn:hover{border-color:var(--accent);}
+.choice-btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--line);}
+.choice-btn.correct{border-color:var(--good-text);background:var(--tint-good);}
+.choice-btn.wrong{border-color:var(--bad-text);background:var(--tint-bad);}
+.choice-btn:disabled{cursor:default;}
+
+.feedback{border-radius:var(--radius);padding:14px 16px;font-size:14.5px;font-weight:700;line-height:1.55;margin-bottom:16px;display:none;}
+.feedback.show{display:block;}
+.feedback.good{background:var(--tint-good);color:var(--good-press);}
+.feedback.bad{background:var(--tint-bad);color:var(--bad-press);}
+
+.mini-progress{display:flex;gap:6px;margin-bottom:16px;}
+.mini-progress span{flex:1;height:5px;border-radius:999px;background:var(--track);}
+.mini-progress span.done{background:var(--accent);}
+
+.actions{display:flex;justify-content:flex-end;gap:10px;}
+.btn-press:disabled{opacity:.45;cursor:default;}
+.explain-box{background:var(--tint-accent);border-radius:var(--radius);padding:16px 18px;font-size:14.5px;font-weight:600;line-height:1.6;margin-bottom:18px;color:var(--ink);}
+.explain-box b{color:var(--accent-press);}
+
+/* Plain-English primer for a term a lesson leans on before the module that
+   owns it. Module 2 (leaving groups, nucleophiles) needs acid/base/pKa
+   vocabulary that Module 3 teaches, so the words get defined inline the
+   first time a lesson uses them rather than assumed. */
+.term-primer{
+  background:var(--paper);border:var(--bw) solid var(--line-soft);border-left:4px solid var(--accent);
+  border-radius:var(--radius);padding:14px 16px;margin:0 0 18px;
+  font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.6;
+}
+.term-primer-head{
+  display:block;font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:6px;
+}
+.term-primer p{margin:0 0 8px;}
+.term-primer p:last-child{margin-bottom:0;}
+.term-primer b{color:var(--ink);}
+
+/* Lesson notes mode — see lesson-engine.js. A read-only, non-gated recap of
+   an entire lesson, reachable via ?notes=1 without re-running the
+   interactive steps. */
+.lesson-mode-toggle{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 16px;margin-bottom:10px;}
+.lesson-mode-toggle a{font:800 13px var(--font-ui);}
+.lesson-resume-note{background:var(--tint-accent);border-radius:var(--radius);padding:10px 16px;font:700 13.5px var(--font-ui);color:var(--ink);margin-bottom:10px;line-height:1.5;}
+.lesson-resume-note a{font-weight:800;margin-left:4px;white-space:nowrap;}
+.notes-view{padding-bottom:4px;}
+.notes-view h3{font:900 15.5px var(--font-ui);color:var(--accent-press);margin:22px 0 8px;}
+.notes-view h3:first-child{margin-top:0;}
+.notes-view .step-body{margin-bottom:14px;}
+.notes-view .scene{margin-bottom:14px;}
+.notes-view .term-primer{margin-bottom:14px;}
+.notes-view .notes-fact{
+  background:var(--tint-good);border-radius:var(--radius);padding:12px 16px;
+  font-size:14px;font-weight:700;color:var(--good-press);margin-bottom:14px;line-height:1.55;
+}
+
+/* Blocks the textbook sections are written against. Three kinds of aside,
+   each visually distinct so a reader can tell at a glance whether they're
+   looking at a worked example, a warning, or a definition — and one table
+   for the handful of topics (pKa ladders, IR bands, NMR shifts) that are
+   genuinely reference data rather than prose. */
+.notes-view h4{font:900 13.5px var(--font-ui);color:var(--ink);margin:16px 0 6px;}
+.notes-example{
+  border-left:3px solid var(--accent);background:var(--paper);
+  border-radius:0 var(--radius) var(--radius) 0;padding:13px 16px;margin-bottom:14px;
+}
+.notes-example .k{
+  font:900 10.5px var(--font-ui);letter-spacing:.11em;text-transform:uppercase;
+  color:var(--accent);display:block;margin-bottom:6px;
+}
+.notes-example p{font-size:14.5px;font-weight:600;line-height:1.6;margin:0 0 9px;}
+.notes-example p:last-child{margin-bottom:0;}
+.notes-pitfall{
+  background:var(--tint-amber);border-radius:var(--radius);padding:12px 16px;
+  font-size:14px;font-weight:700;color:var(--amber-press);margin-bottom:14px;line-height:1.55;
+}
+.notes-pitfall b{color:inherit;}
+.notes-table{width:100%;border-collapse:collapse;margin-bottom:16px;font-family:var(--font-ui);}
+.notes-table th,.notes-table td{
+  text-align:left;padding:7px 10px;border-bottom:1px solid var(--line-soft);
+  font-size:13.5px;font-weight:700;
+}
+.notes-table th{font-weight:900;color:var(--muted);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;}
+.notes-table td:first-child{font-family:var(--font-mono);font-weight:700;}
+.notes-table-wrap{overflow-x:auto;margin-bottom:16px;}
+.notes-table-wrap .notes-table{margin-bottom:0;}
+
+/* ==========================================================================
+   Practice (practice.html + practice-page.js)
+
+   The adaptive practice page: a recommendation dashboard, the interactive
+   question types (click an atom, push an arrow, rank a list), and the
+   diagnostic feedback panel that replaces a bare "Incorrect".
+
+   Lives here rather than inline in practice.html because the molecule/atom
+   rules extend the .scene/.atom block above, which the mechanism lessons
+   already use — keeping them adjacent means the two stay visually identical.
+   ========================================================================== */
+
+/* ---- molecules rendered by molecules.js ---- */
+.omol svg{max-width:420px;}
+.omol-caption{
+  margin-top:10px;text-align:center;font:700 12.5px var(--font-ui);color:var(--muted);
+  line-height:1.5;padding:0 8px;
+}
+.atom--static{cursor:default;}
+.atom--static:hover circle{stroke:var(--line);stroke-width:2;}
+.atom--highlight circle{stroke:var(--amber);stroke-width:3.5;fill:var(--tint-amber);}
+.atom--correct circle{stroke:var(--good);stroke-width:3.5;fill:var(--tint-good);}
+.atom--wrong circle{stroke:var(--bad);stroke-width:3.5;fill:var(--tint-bad);}
+.atom:focus{outline:none;}
+.atom:focus-visible circle{stroke:var(--accent);stroke-width:3.5;}
+.scene--locked .atom{cursor:default;}
+
+/* ---- recommendation dashboard ---- */
+.rec-card{
+  background:var(--white);border:var(--bw) solid var(--accent);border-radius:var(--radius-lg);
+  padding:clamp(20px,4vw,26px);box-shadow:var(--lift-lg);margin-bottom:16px;
+}
+.rec-card .k{
+  font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:8px;
+}
+.rec-card h2{font:900 clamp(18px,3vw,22px) var(--font-ui);margin:0 0 8px;line-height:1.25;}
+.rec-card p{margin:0 0 16px;font-size:14.5px;font-weight:600;line-height:1.6;color:var(--ink);}
+.rec-card .actions{justify-content:flex-start;flex-wrap:wrap;}
+
+.rec-alt{display:flex;flex-direction:column;gap:8px;margin-bottom:22px;}
+.rec-alt button{
+  display:flex;align-items:center;gap:12px;width:100%;text-align:left;cursor:pointer;
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius);
+  padding:13px 16px;font:inherit;color:inherit;box-shadow:var(--lift-sm);
+  transition:border-color .1s ease,transform .06s ease;
+}
+.rec-alt button:hover{border-color:var(--accent);}
+.rec-alt button:active{transform:translateY(2px);box-shadow:0 0 0 var(--line);}
+.rec-alt .t{font:800 14px var(--font-ui);flex:1;min-width:0;}
+.rec-alt .d{display:block;font:600 12.5px var(--font-ui);color:var(--muted);margin-top:2px;line-height:1.45;}
+.rec-alt .go{font:900 18px var(--font-mono);color:var(--accent);flex-shrink:0;}
+
+/* ---- mastery snapshot strip ---- */
+.snapshot{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:2px;
+  background:var(--line);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  overflow:hidden;margin-bottom:22px;
+}
+.snapshot .cell{background:var(--white);padding:14px 16px;}
+.snapshot .cell .k{font:900 10.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+.snapshot .cell .v{font:900 22px var(--font-mono);color:var(--ink);margin-top:2px;line-height:1.1;}
+.snapshot .cell .v.accent{color:var(--accent);}
+.snapshot .cell .v.warn{color:var(--amber-press);}
+.snapshot .cell .s{font:700 11.5px var(--font-ui);color:var(--muted);margin-top:2px;}
+
+/* ---- mode grid ---- */
+.mode-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:10px;}
+.mode-card{
+  position:relative;text-align:left;cursor:pointer;background:var(--white);
+  border:var(--bw) solid var(--line);border-radius:var(--radius);padding:16px 18px;
+  font:inherit;color:inherit;box-shadow:var(--lift-sm);
+  transition:border-color .1s ease,transform .06s ease;
+}
+.mode-card:hover{border-color:var(--accent);}
+.mode-card:active{transform:translateY(2px);box-shadow:0 0 0 var(--line);}
+.mode-card:disabled{opacity:.5;cursor:default;}
+.mode-card:disabled:hover{border-color:var(--line);}
+.mode-card .t{font:900 14.5px var(--font-ui);display:block;margin-bottom:4px;}
+/* Leave room for the absolutely-positioned "Default" pill. */
+.mode-card .pill + .t{padding-right:66px;}
+.mode-card .pill--count + .t{padding-right:26px;}
+.mode-card .d{font:600 12.5px var(--font-ui);color:var(--muted);line-height:1.5;display:block;}
+.mode-card .pill{
+  position:absolute;top:12px;right:12px;font:900 9.5px var(--font-ui);letter-spacing:.05em;
+  text-transform:uppercase;color:var(--accent);background:var(--tint-accent);
+  padding:3px 8px;border-radius:var(--radius-pill);
+}
+
+.drill-panel{
+  background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
+  padding:18px 20px;margin-top:12px;
+}
+.drill-panel .practice-field{margin-bottom:14px;}
+.drill-panel label{display:block;font:900 11px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.drill-panel select{
+  width:100%;padding:11px 14px;border:var(--bw) solid var(--line);border-radius:var(--radius);
+  font:700 14px var(--font-ui);color:var(--ink);background:var(--white);
+}
+
+/* ---- concept mastery rows ---- */
+.concept-row{
+  display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line-soft);
+}
+.concept-row:last-child{border-bottom:0;}
+.concept-row .name{flex:1 1 auto;min-width:0;font-size:13.5px;font-weight:800;}
+.concept-row .name small{display:block;font:700 11.5px var(--font-ui);color:var(--muted);margin-top:1px;}
+.concept-row .track{flex:0 0 84px;height:8px;border-radius:999px;background:var(--track);overflow:hidden;}
+.concept-row .fill{height:100%;border-radius:999px;background:var(--accent);}
+.concept-row .fill.low{background:var(--bad);}
+.concept-row .fill.mid{background:var(--amber);}
+.concept-row .fill.high{background:var(--good);}
+.concept-row .pct{flex:0 0 40px;text-align:right;font:900 12.5px var(--font-mono);color:var(--muted);}
+.concept-row .drill{
+  flex-shrink:0;border:1px solid var(--line);background:var(--white);border-radius:var(--radius-pill);
+  padding:5px 12px;font:800 11.5px var(--font-ui);color:var(--accent-press);cursor:pointer;
+}
+.concept-row .drill:hover{border-color:var(--accent);background:var(--tint-accent);}
+
+/* ---- in-session chrome ---- */
+/* The hero is hidden during a session and the summary, so these views need
+   their own top breathing room under the sticky sub-nav. */
+.practice-view{padding-top:26px;}
+.session-head{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;
+}
+.session-head .mode{font:900 12px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:var(--accent);}
+.session-head .quit{font:800 13px var(--font-ui);color:var(--muted);background:none;border:0;cursor:pointer;padding:4px;}
+.session-head .quit:hover{color:var(--ink);text-decoration:underline;}
+
+.tier-pips{display:flex;gap:5px;align-items:center;}
+.tier-pips .pip{width:7px;height:7px;border-radius:2px;background:var(--track);}
+.tier-pips .pip.on{background:var(--accent);}
+.tier-label{font:900 10.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+
+.q-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+/* The flag sits at the end of the meta row and pushes itself to the right, so
+   it reads as chrome on the card rather than one of the answer controls. */
+.flag-btn{
+  margin-left:auto;display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+  border:1px solid var(--line);background:var(--white);border-radius:var(--radius-pill);
+  padding:5px 12px;font:800 11.5px var(--font-ui);color:var(--muted);
+  transition:border-color .1s ease,color .1s ease,background .1s ease;
+}
+.flag-btn:hover{border-color:var(--accent);color:var(--accent-press);background:var(--tint-accent);}
+.flag-btn.active{border-color:var(--amber);background:var(--tint-amber);color:var(--amber-press);}
+.flag-btn.active svg{fill:currentColor;}
+
+/* Back / forward through answered cards. */
+.q-nav{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.q-nav--replay{justify-content:space-between;}
+.q-nav__btn{
+  background:none;border:0;padding:4px 0;cursor:pointer;
+  font:800 12.5px var(--font-ui);color:var(--muted);
+}
+.q-nav__btn:hover{color:var(--ink);text-decoration:underline;}
+.q-nav__btn:disabled{opacity:.4;cursor:default;text-decoration:none;}
+.q-nav__label{font:900 10.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+.replay-note{
+  margin-top:14px;padding:10px 14px;border-radius:var(--radius);background:var(--paper);
+  border:1px dashed var(--line);font:700 12.5px var(--font-ui);color:var(--muted);
+}
+
+/* Flagged-question list on the Practice home. */
+.flag-row{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--line-soft);}
+.flag-row:last-child{border-bottom:0;}
+.flag-row .name{flex:1 1 auto;min-width:0;font-size:13.5px;font-weight:800;line-height:1.45;}
+.flag-row .name small{display:block;font:700 11.5px var(--font-ui);color:var(--muted);margin-top:2px;}
+.flag-row .unflag{
+  flex-shrink:0;border:1px solid var(--line);background:var(--white);border-radius:var(--radius-pill);
+  padding:5px 12px;font:800 11.5px var(--font-ui);color:var(--muted);cursor:pointer;
+}
+.flag-row .unflag:hover{border-color:var(--bad-text);color:var(--bad-text);}
+
+/* Step-level back control inside a lesson. */
+.lesson-step-nav{display:flex;margin-bottom:10px;}
+.lesson-step-nav[hidden]{display:none;}
+.lesson-step-nav button{
+  background:none;border:0;padding:4px 0;cursor:pointer;
+  font:800 12.5px var(--font-ui);color:var(--muted);
+}
+.lesson-step-nav button:hover{color:var(--ink);text-decoration:underline;}
+.q-sub{font-size:14px;font-weight:600;color:var(--muted);line-height:1.55;margin:0 0 16px;}
+
+/* ---- interactive answer widgets ---- */
+.click-hint{
+  display:flex;align-items:center;gap:8px;background:var(--tint-accent);border-radius:var(--radius);
+  padding:10px 14px;font:800 12.5px var(--font-ui);color:var(--accent-press);margin-bottom:14px;
+}
+.order-list{list-style:none;padding:0;margin:0 0 18px;display:flex;flex-direction:column;gap:8px;}
+.order-list li{
+  display:flex;align-items:center;gap:12px;background:var(--white);
+  border:var(--bw) solid var(--line);border-radius:var(--radius);padding:11px 14px;box-shadow:var(--lift-sm);
+}
+.order-list .rank{
+  flex-shrink:0;width:26px;height:26px;border-radius:8px;background:var(--tint-accent);
+  color:var(--accent-press);font:900 13px var(--font-mono);display:flex;align-items:center;justify-content:center;
+}
+.order-list .txt{flex:1;font:800 14px var(--font-ui);min-width:0;}
+.order-list .mv{display:flex;gap:4px;flex-shrink:0;}
+.order-list .mv button{
+  width:28px;height:28px;border:1px solid var(--line);background:var(--white);border-radius:8px;
+  cursor:pointer;font:900 12px var(--font-mono);color:var(--ink);line-height:1;
+}
+.order-list .mv button:hover:not(:disabled){border-color:var(--accent);color:var(--accent);}
+.order-list .mv button:disabled{opacity:.3;cursor:default;}
+.order-list li.ok{border-color:var(--good-text);background:var(--tint-good);}
+.order-list li.no{border-color:var(--bad-text);background:var(--tint-bad);}
+
+.multi-note{font:800 12.5px var(--font-ui);color:var(--muted);margin-bottom:12px;}
+
+/* ---- diagnostic feedback ---- */
+.diag{
+  border:var(--bw) solid var(--bad);background:var(--tint-bad);border-radius:var(--radius-lg);
+  padding:18px 20px;margin-bottom:16px;
+}
+.diag.good{border-color:var(--good-text);background:var(--tint-good);}
+.diag .k{font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--bad-press);margin-bottom:6px;}
+.diag.good .k{color:var(--good-press);}
+.diag .did{font:800 14px var(--font-ui);color:var(--ink);margin-bottom:8px;}
+.diag .msg{font-size:14.5px;font-weight:600;line-height:1.6;color:var(--ink);margin:0;}
+.diag .msg + .msg{margin-top:10px;}
+
+.teach-box{
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius);
+  padding:16px 18px;margin-bottom:16px;box-shadow:var(--lift-sm);
+}
+.teach-box .k{
+  font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:6px;
+}
+.teach-box h3{font:900 15.5px var(--font-ui);margin:0 0 8px;color:var(--ink);}
+.teach-box p{margin:0;font-size:14.5px;font-weight:600;line-height:1.6;color:var(--ink);}
+.teach-box .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.teach-box .links a{font:800 12.5px var(--font-ui);}
+
+.prereq-warn{
+  background:var(--tint-amber);border-radius:var(--radius);padding:12px 16px;margin-top:12px;
+  font:700 13px var(--font-ui);color:var(--ink);line-height:1.55;
+}
+.prereq-warn b{color:var(--amber-press);}
+
+.delta-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.delta-chip{
+  font:800 12px var(--font-ui);padding:5px 11px;border-radius:var(--radius-pill);
+  background:var(--track);color:var(--muted);white-space:nowrap;
+}
+.delta-chip.up{background:var(--tint-good);color:var(--good-press);}
+.delta-chip.down{background:var(--tint-bad);color:var(--bad-press);}
+
+/* ---- summary ---- */
+.overall-card{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  padding:22px 24px;box-shadow:var(--lift-sm);
+}
+.overall-card .k{font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted-on-dark);}
+.overall-card .big{font:900 40px var(--font-mono);color:var(--accent);line-height:1.05;}
+.summary-section{margin-top:22px;}
+.summary-section h3{font:900 15px var(--font-ui);margin:0 0 10px;color:var(--ink);}
+.next-up{
+  background:var(--tint-accent);border-radius:var(--radius);padding:14px 18px;
+  font-size:14px;font-weight:700;line-height:1.6;color:var(--ink);
+}
+.next-up b{color:var(--accent-press);}
+
+@media (max-width:520px){
+  .concept-row .track{flex-basis:56px;}
+  .overall-card .big{font-size:32px;}
+}
+
+/* ---- Molecule editor (assets/molecule-editor.js) ---------------------
+   The clickable bond overlay is deliberately fat and invisible: a 2.5px
+   bond stroke is not a click target on a phone. It sits under the atoms in
+   paint order so an atom always wins where the two overlap. */
+.obond{
+  stroke:transparent;stroke-width:16;cursor:pointer;fill:none;
+  stroke-linecap:round;
+}
+.obond:hover{stroke:var(--tint-accent);}
+.obond.chosen{stroke:var(--tint-accent);}
+.obond:focus{outline:none;stroke:var(--tint-accent);}
+
+.med-bar{
+  display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap;
+}
+.med-count{
+  font:800 12px var(--font-mono);color:var(--muted);margin-right:auto;
+}
+.med-btn{
+  border:1px solid var(--line);background:var(--white);border-radius:var(--radius-pill);
+  padding:6px 14px;font:800 12px var(--font-ui);color:var(--accent-press);cursor:pointer;
+}
+.med-btn:hover:not(:disabled){border-color:var(--accent);background:var(--tint-accent);}
+.med-btn:disabled{opacity:.4;cursor:default;}
+.med-status{
+  margin-top:8px;font:700 13px var(--font-ui);color:var(--amber-press);
+}
+
+/* Tools sandbox */
+.tool-stage{
+  border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--white);
+  padding:18px;margin-bottom:14px;
+}
+.tool-pick{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.tool-pick button{
+  border:1px solid var(--line);background:var(--white);border-radius:var(--radius-pill);
+  padding:6px 13px;font:800 12px var(--font-ui);color:var(--ink);cursor:pointer;
+}
+.tool-pick button:hover{border-color:var(--accent);}
+.tool-pick button.on{background:var(--accent);color:var(--white);border-color:var(--accent);}
+.tool-note{
+  margin-top:12px;font-size:13.5px;font-weight:650;line-height:1.6;color:var(--muted);
+}
+@media (max-width:520px){
+  .med-count{width:100%;margin-bottom:2px;}
+}
+.oarrow{cursor:pointer;}
+.oarrow:hover .oarrow-line{stroke-width:3.5;}
+
+/* ---------------------------------------------------------------------
+   Progression panel (mastery.html, rendered by assets/game-panel.js).
+   Reuses the shared .badge/.badge-grid styles from the site theme for the
+   achievement row; everything below is the level card, the two quest cards
+   and the concept-tier bars.
+   --------------------------------------------------------------------- */
+.game-level{
+  background:var(--navy);color:var(--on-accent);border-radius:var(--radius-lg);
+  padding:22px 24px;box-shadow:var(--lift-lg);margin-bottom:16px;
+}
+.game-level-top{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.game-ring{
+  width:52px;height:52px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font:900 17px var(--font-ui);background:rgba(255,255,255,0.14);
+  border:2px solid rgba(255,255,255,0.28);
+}
+.game-level-title{font:900 19px var(--font-ui);margin:0;letter-spacing:-0.01em;}
+.game-level-sub{font:700 13px var(--font-ui);margin:3px 0 0;opacity:.78;}
+.game-level .game-track{background:rgba(255,255,255,0.16);}
+.game-level .game-fill{background:var(--on-accent);}
+.game-level .game-note{color:inherit;opacity:.68;}
+
+.game-track{height:9px;border-radius:var(--radius-pill);background:var(--paper);overflow:hidden;border:var(--bw) solid var(--line);}
+.game-track.sm{height:7px;}
+.game-fill{height:100%;background:var(--accent);border-radius:var(--radius-pill);}
+
+.game-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+@media (max-width:720px){ .game-grid{grid-template-columns:1fr;} }
+
+.game-card{
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  padding:20px 22px;box-shadow:var(--lift-sm);height:100%;
+}
+.game-card.done{border-color:var(--good-text);}
+.game-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;}
+.game-card-title{font:900 16px var(--font-ui);letter-spacing:-0.01em;}
+.game-pill{
+  font:900 11.5px var(--font-ui);letter-spacing:0.04em;text-transform:uppercase;
+  padding:5px 11px;border-radius:var(--radius-pill);background:var(--paper);
+  border:var(--bw) solid var(--line);white-space:nowrap;
+}
+.game-card.done .game-pill{background:var(--tint-good);color:var(--good-text);border-color:transparent;}
+.game-card-body{font-size:13.5px;font-weight:600;color:var(--muted);margin:10px 0 0;line-height:1.55;text-wrap:pretty;}
+.game-note{font:700 12.5px var(--font-ui);color:var(--muted);margin:8px 0 0;}
+.game-big{font:900 34px var(--font-ui);margin:4px 0 0;letter-spacing:-0.03em;}
+.game-cta{display:inline-block;margin-top:14px;font:900 13.5px var(--font-ui);color:var(--accent);text-decoration:none;}
+.game-cta:hover{text-decoration:underline;}
+
+/* The debt meter is informational, never alarming: even "heavy" is amber, not
+   an error state, because a backlog is a thing to work through. */
+.game-card.debt-clear .game-pill{background:var(--tint-good);color:var(--good-text);border-color:transparent;}
+.game-card.debt-clear .game-big{color:var(--good-text);}
+.game-card.debt-building .game-pill,
+.game-card.debt-heavy .game-pill{background:var(--tint-amber);color:var(--amber);border-color:transparent;}
+.game-card.debt-heavy .game-big{color:var(--amber);}
+
+.tier-row{display:grid;grid-template-columns:92px 1fr 72px;align-items:center;gap:12px;margin-top:10px;}
+.tier-name{font:900 12.5px var(--font-ui);}
+.tier-solid{color:var(--muted);}
+.tier-strong{color:var(--accent);}
+.tier-mastered{color:var(--good-text);}
+.tier-count{font:800 12.5px var(--font-mono,var(--font-ui));color:var(--muted);text-align:right;}
+
+/* The reward strip at the top of a finished session's summary
+   (assets/ochem-xp.js builds it; Practice and Review both render it). */
+.xp-strip{
+  background:var(--navy);color:var(--on-accent);border-radius:var(--radius-lg);
+  padding:18px 22px;box-shadow:var(--lift-sm);margin-bottom:14px;
+}
+.xp-total{font:900 30px var(--font-ui);letter-spacing:-0.03em;line-height:1.1;}
+.xp-lines{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:8px;}
+.xp-line{font:800 12.5px var(--font-ui);opacity:.82;}
+.xp-line em{font-style:normal;font-weight:700;opacity:.8;}
+.xp-badges,.xp-quest{font:700 13px var(--font-ui);margin:10px 0 0;opacity:.85;}
+.xp-badges b{color:#F4D28C;}
+.xp-level{
+  display:inline-block;margin-top:12px;font:900 11.5px var(--font-ui);
+  letter-spacing:0.04em;text-transform:uppercase;
+  background:rgba(244,210,140,0.16);color:#F4D28C;
+  padding:5px 12px;border-radius:var(--radius-pill);
+}
+
+/* ---- Stereochemistry drill (assets/stereo-drill.js) -------------------
+   Wedge-dash R/S assignment. The drawing itself is plain SVG inside the
+   shared .scene box; these rules only cover the priority numbers the
+   drill stamps above each group as the student ranks them, and the
+   running "order so far" readout the ranking stages share. */
+.sd-caption{
+  font:700 12.5px var(--font-ui);color:var(--muted);text-align:center;
+  margin-top:10px;padding:0 8px;line-height:1.5;
+}
+.sd-label text{font-family:'IBM Plex Mono',monospace;}
+.count-hint{
+  font:900 13px var(--font-mono);color:var(--accent);
+  text-align:center;margin-bottom:16px;
+}
+
+/* ==========================================================================
+   Textbook (learn.html) — a contents rail beside one chapter at a time.
+   ========================================================================== */
+.tb-shell{
+  max-width:1180px;margin:0 auto;padding:0 clamp(18px,3.5vw,48px);
+  display:grid;grid-template-columns:274px minmax(0,1fr);gap:clamp(24px,4vw,54px);
+  align-items:start;
+}
+
+/* --- contents rail --- */
+.tb-rail{
+  position:sticky;top:calc(var(--site-header-h,112px) + 18px);
+  max-height:calc(100vh - var(--site-header-h,112px) - 36px);
+  display:flex;flex-direction:column;gap:14px;padding:22px 0 26px;
+}
+.tb-rail>:not(.tb-contents){flex:0 0 auto;}
+.tb-rail-title{font:900 12px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0;}
+.tb-progress-row{display:flex;justify-content:space-between;font:800 12.5px var(--font-ui);color:var(--muted);margin-bottom:6px;}
+.tb-progress-track{height:6px;border-radius:99px;background:var(--line);overflow:hidden;}
+.tb-progress-fill{height:100%;background:var(--accent);border-radius:99px;transition:width .25s ease;}
+.tb-filter{
+  width:100%;box-sizing:border-box;padding:9px 12px;border-radius:10px;
+  border:var(--bw) solid var(--line);background:var(--white);color:var(--ink);
+  font:700 13px var(--font-ui);
+}
+.tb-filter:focus{outline:none;border-color:var(--accent);}
+.tb-filter-hint{font:700 11px var(--font-ui);color:var(--muted);margin:-8px 0 0;line-height:1.4;}
+.tb-contents{overflow-y:auto;overscroll-behavior:contain;flex:1 1 auto;min-height:0;margin-right:-8px;padding-right:8px;-webkit-overflow-scrolling:touch;}
+.tb-toc-empty{font:700 13px var(--font-ui);color:var(--muted);}
+
+.tb-toc-mod + .tb-toc-mod{margin-top:2px;}
+.tb-toc-modhead{
+  width:100%;display:flex;align-items:center;gap:9px;
+  background:none;border:0;padding:8px 6px;border-radius:8px;cursor:pointer;
+  font:800 13px var(--font-ui);color:var(--ink);text-align:left;
+}
+.tb-toc-modhead:hover{background:var(--hover-tint);}
+.tb-toc-num{
+  flex-shrink:0;width:20px;height:20px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--tint-accent);color:var(--accent);font:900 11px var(--font-mono);
+}
+.tb-toc-modtitle{flex:1;min-width:0;}
+.tb-toc-count{flex-shrink:0;font:800 11px var(--font-mono);color:var(--muted);}
+.tb-toc-count.complete{color:var(--accent);}
+.tb-toc-topics{display:none;padding:0 0 6px 29px;}
+.tb-toc-mod.open .tb-toc-topics{display:block;}
+.tb-toc-topic{
+  display:flex;align-items:center;gap:7px;padding:5px 6px;border-radius:7px;
+  font:700 12.5px var(--font-ui);color:var(--muted);text-decoration:none;
+}
+.tb-toc-topic:hover{background:var(--hover-tint);color:var(--ink);}
+.tb-toc-topic.current{color:var(--accent);background:var(--tint-accent);}
+.tb-toc-tick{
+  flex-shrink:0;width:13px;height:13px;border-radius:50%;
+  border:2px solid var(--line);
+}
+.tb-toc-topic.read .tb-toc-tick{background:var(--accent);border-color:var(--accent);}
+.tb-toc-topic.read .tb-toc-tick::after{
+  content:"";display:block;width:4px;height:7px;margin:0 auto;
+  border:solid var(--on-accent-fill);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px);
+}
+
+/* --- search results, in place of the chapter --- */
+.tb-results{padding:26px 0 60px;}
+.tb-results-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  border-bottom:var(--bw) solid var(--line);padding-bottom:14px;margin-bottom:6px;
+}
+.tb-results-count{font:800 14px var(--font-ui);color:var(--muted);margin:0;}
+.tb-results-count b{color:var(--ink);}
+.tb-results-close{
+  border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;
+  padding:5px 13px;border-radius:var(--radius-pill);font:800 12px var(--font-ui);white-space:nowrap;
+}
+.tb-results-close:hover{border-color:var(--accent);color:var(--accent);}
+.tb-results-status{font:700 13.5px var(--font-ui);color:var(--muted);margin:16px 0 0;}
+
+.tb-result{padding:18px 0 14px;border-bottom:var(--bw) solid var(--line);}
+.tb-result-head{
+  display:flex;flex-direction:column;gap:2px;width:100%;text-align:left;
+  background:none;border:0;padding:0 0 8px;cursor:pointer;
+}
+.tb-result-chapter{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+.tb-result-title{font:900 18px var(--font-ui);color:var(--ink);letter-spacing:-.01em;}
+.tb-result-head:hover .tb-result-title{color:var(--accent);}
+.tb-result-hit{
+  display:flex;flex-direction:column;gap:3px;width:100%;text-align:left;cursor:pointer;
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:12px;
+  padding:11px 14px;margin-top:8px;
+}
+.tb-result-hit:hover{border-color:var(--accent);background:var(--hover-tint);}
+.tb-result-heading{font:900 11.5px var(--font-ui);color:var(--muted);}
+.tb-result-snippet{font:600 14px/1.6 var(--font-ui);color:var(--ink);}
+.tb-result-snippet mark,.tb-hit-mark{
+  background:var(--tint-accent);color:var(--accent-text);
+  border-radius:4px;padding:0 2px;font-weight:900;
+}
+
+/* The passage a result pointed at, flashed once on arrival so the eye finds it
+   without the reader having to re-scan the section for their own words. */
+.tb-hit{
+  border-radius:10px;
+  animation:tb-hit-flash 2.6s ease-out 1;
+}
+@keyframes tb-hit-flash{
+  0%,55%{box-shadow:0 0 0 8px var(--tint-accent);background:var(--tint-accent);}
+  100%{box-shadow:0 0 0 8px transparent;background:transparent;}
+}
+@media (prefers-reduced-motion:reduce){
+  .tb-hit{animation:none;background:var(--tint-accent);box-shadow:0 0 0 8px var(--tint-accent);}
+}
+
+/* --- the chapter --- */
+.tb-main{padding:26px 0 60px;min-width:0;max-width:74ch;}
+.tb-chapter-head{border-bottom:var(--bw) solid var(--line);padding-bottom:18px;margin-bottom:8px;}
+.tb-chapter-eyebrow{font:900 11.5px var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 6px;}
+.tb-chapter-title{font:900 clamp(27px,4vw,36px) var(--font-ui);letter-spacing:-.02em;margin:0 0 8px;}
+.tb-chapter-meta{font:700 13px var(--font-ui);color:var(--muted);margin:0;}
+
+.tb-section{padding:30px 0 10px;border-bottom:var(--bw) solid var(--line);scroll-margin-top:calc(var(--site-header-h,112px) + 14px);}
+.tb-section:last-of-type{border-bottom:0;}
+.tb-section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px;}
+.tb-section-title{font:900 clamp(19px,2.4vw,23px) var(--font-ui);letter-spacing:-.01em;margin:0;}
+.tb-section-meta{display:flex;align-items:center;gap:9px;flex-shrink:0;}
+.tb-mastery{font:900 11.5px var(--font-mono);color:var(--accent);background:var(--tint-accent);padding:5px 9px;border-radius:var(--radius-pill);white-space:nowrap;}
+.tb-mastery.none{color:var(--muted);background:var(--hover-tint);}
+.tb-readtoggle{
+  display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+  border:2px solid var(--line);background:var(--white);color:var(--muted);
+  padding:4px 11px 4px 8px;border-radius:var(--radius-pill);
+  font:800 11.5px var(--font-ui);white-space:nowrap;
+}
+.tb-readtoggle:hover{border-color:var(--accent);color:var(--accent);}
+.tb-readtoggle.done{border-color:var(--accent);background:var(--tint-accent);color:var(--accent);}
+.tb-tick{width:13px;height:13px;border-radius:50%;border:2px solid currentColor;flex-shrink:0;}
+.tb-readtoggle.done .tb-tick{background:var(--accent);border-color:var(--accent);}
+.tb-readtoggle.done .tb-tick::after{
+  content:"";display:block;width:4px;height:7px;margin:0 auto;
+  border:solid var(--on-accent-fill);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px);
+}
+.tb-notes .step-body{font-size:15.5px;line-height:1.68;}
+.tb-loading{font:700 13px var(--font-ui);color:var(--muted);margin:0;}
+.tb-notes-error{color:var(--danger,#b3261e);}
+.tb-actions{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 4px;}
+.tb-soon{font:700 13px var(--font-ui);color:var(--muted);margin:6px 0 4px;}
+.tb-section-end{height:1px;}
+
+.tb-chapter-nav{display:flex;justify-content:space-between;gap:18px;margin-top:38px;}
+.tb-chapter-link{
+  display:flex;flex-direction:column;gap:4px;max-width:46%;
+  padding:14px 18px;border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  background:var(--white);text-decoration:none;
+}
+.tb-chapter-link:hover{border-color:var(--accent);}
+.tb-chapter-link.next{text-align:right;margin-left:auto;}
+.tb-chapter-link span{font:800 11.5px var(--font-ui);color:var(--muted);}
+.tb-chapter-link b{font:900 14.5px var(--font-ui);color:var(--ink);}
+
+/* --- contents as a drawer once the rail no longer fits beside the text --- */
+.tb-toc-btn{display:none;}
+@media (max-width:900px){
+  .tb-shell{grid-template-columns:minmax(0,1fr);gap:0;}
+  .tb-toc-btn{
+    display:inline-flex;align-items:center;gap:8px;margin:18px 0 0;
+    padding:9px 15px;border-radius:var(--radius-pill);cursor:pointer;
+    border:2px solid var(--line);background:var(--white);color:var(--ink);
+    font:800 13px var(--font-ui);
+  }
+  .tb-toc-btn:hover{border-color:var(--accent);color:var(--accent);}
+  .tb-rail{
+    display:none;position:static;max-height:none;padding:14px 0 0;
+    border-bottom:var(--bw) solid var(--line);
+  }
+  body.tb-toc-open .tb-rail{display:flex;}
+  .tb-contents{max-height:58vh;}
+  .tb-main{padding-top:16px;}
+  .tb-chapter-link{max-width:48%;}
+}

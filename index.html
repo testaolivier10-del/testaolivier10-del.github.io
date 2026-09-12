@@ -2,164 +2,235 @@
 <html lang="en">
 <head>
 <script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon.svg">
 <meta name="theme-color" content="#16332E">
-<title>Health Sciences Study Hub — Free Exam Prep Tools</title>
-<meta name="description" content="Free practice tools for health science certification exams. Start with NREMT-EMT prep — more subjects coming soon.">
-<meta property="og:title" content="Health Sciences Study Hub — Free Exam Prep Tools">
-<meta property="og:description" content="Free practice tools for health science certification exams. Start with NREMT-EMT prep — more subjects coming soon.">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LevlPrep — Free Exam Prep Tools</title>
+<meta name="description" content="Free practice tools for certification exams and interactive courses for hard subjects. NREMT-EMT prep and an interactive Organic Chemistry course — more subjects coming soon.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/">
+<meta property="og:title" content="LevlPrep — Free Exam Prep Tools">
+<meta property="og:description" content="Free practice tools for certification exams and interactive courses for hard subjects.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://testaolivier10-del.github.io/">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://testaolivier10-del.github.io/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "LevlPrep",
+  "url": "https://testaolivier10-del.github.io/"
+}
+</script>
 <link rel="stylesheet" href="assets/theme.css">
+<!-- One login, one level, one streak across every subject. -->
+<script src="assets/account.js"></script>
+<script src="assets/hub-progress.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 <style>
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{
-    background:var(--paper);color:var(--ink);
-    font-family:'Charter','Georgia',serif;line-height:1.6;
-  }
-  .wrap{max-width:880px;margin:0 auto;padding:32px 22px 90px;}
-
-  .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:56px;}
-  .brand{
-    display:inline-flex;align-items:center;gap:8px;font-family:var(--font-ui);
-    font-weight:800;font-size:14px;color:var(--ink);text-decoration:none;letter-spacing:-0.01em;
-  }
-  .brand-mark{
-    display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
-    border-radius:8px;background:var(--accent);color:var(--on-accent);font-size:14px;line-height:1;
-  }
-
-  .hero{max-width:60ch;margin:0 0 28px;}
-  .eyebrow{
-    font-family:var(--font-ui);font-weight:800;font-size:12px;letter-spacing:0.08em;
-    text-transform:uppercase;color:var(--accent);margin:0 0 12px;
-  }
-  h1{
-    font-size:clamp(28px,5vw,40px);font-weight:600;letter-spacing:-0.01em;
-    margin:0 0 14px;
-  }
-  .lede{color:var(--muted);font-size:16.5px;max-width:56ch;margin:0;}
-
-  .fact-row{
-    display:flex;flex-wrap:wrap;gap:8px 22px;margin:28px 0 56px;
-    font-family:var(--font-ui);font-size:13px;color:var(--muted);
-  }
+  /* Hub-only components. The shared system in assets/theme.css — the same file
+     the NREMT app loads — carries the palette, typography, cards and buttons. */
+  .hero .lede{max-width:62ch;}
+  .fact-row{display:flex;flex-wrap:wrap;gap:8px 22px;margin:22px 0 0;font:800 13px var(--font-ui);color:var(--muted);}
   .fact-row span{display:inline-flex;align-items:center;gap:7px;}
-  .fact-row .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+  .fact-row .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;}
 
-  .section-label{
-    font-family:var(--font-ui);font-weight:700;font-size:13px;color:var(--muted);
-    text-transform:uppercase;letter-spacing:0.06em;margin:0 0 16px;
+  /* The subject tile is already a raised card, so the section wrapper must not
+     add a second one around it. */
+  .xgrid:has(> .xlabel) > .xcontent:has(.featured-card){
+    background:none;border:0;padding:0;box-shadow:none;
   }
-
+  /* Two subjects, side by side once there's room for them. Stacked, they left
+     the right half of a desktop page empty while the hero, the cards and the
+     section rules each stopped at a different width. */
+  .subject-grid{display:grid;gap:20px;grid-template-columns:1fr;}
+  @media (min-width:860px){
+    .subject-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  }
   .featured-card{
     display:flex;flex-direction:column;gap:16px;text-decoration:none;color:inherit;
-    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
-    box-shadow:var(--shadow-card);padding:30px 28px;margin-bottom:36px;
-    transition:border-color .15s ease,transform .15s ease,box-shadow .15s ease;
+    background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+    box-shadow:var(--lift-lg);padding:28px 26px;
+    transition:border-color .12s ease,transform .08s ease,box-shadow .08s ease;
   }
-  .featured-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-pop);}
+  .featured-card:hover{border-color:var(--accent);transform:translateY(2px);box-shadow:var(--lift-sm);}
+  .featured-card:active{transform:translateY(5px);box-shadow:0 0 0 var(--line);}
   .featured-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;}
   .featured-icon{
-    width:48px;height:48px;border-radius:12px;background:var(--accent);color:var(--on-accent);
-    display:flex;align-items:center;justify-content:center;font-size:22px;font-family:var(--font-ui);flex-shrink:0;
+    width:48px;height:48px;border-radius:14px;background:var(--navy);color:var(--on-accent);
+    display:flex;align-items:center;justify-content:center;font:900 22px var(--font-ui);
+    box-shadow:0 4px 0 var(--navy-press);flex-shrink:0;
   }
   .status-badge{
-    font-family:var(--font-ui);font-weight:700;font-size:11.5px;letter-spacing:0.05em;text-transform:uppercase;
-    display:inline-flex;align-items:center;gap:6px;color:var(--good);flex-shrink:0;padding-top:4px;
+    font:900 11.5px var(--font-ui);letter-spacing:0.05em;text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:6px;color:var(--good-text);background:var(--tint-good);
+    border-radius:var(--radius-pill);padding:6px 12px;flex-shrink:0;
   }
   .status-badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor;}
-  .featured-name{font-family:var(--font-ui);font-weight:800;font-size:19px;margin:0;}
-  .featured-desc{font-size:15px;color:var(--muted);margin:6px 0 0;max-width:60ch;}
+  .featured-name{font:900 21px var(--font-ui);margin:0;color:var(--ink);letter-spacing:-0.02em;}
+  .featured-desc{font-size:14.5px;font-weight:600;color:var(--muted);margin:6px 0 0;max-width:60ch;text-wrap:pretty;}
   .featured-tags{display:flex;flex-wrap:wrap;gap:8px;}
   .featured-tags span{
-    font-family:var(--font-ui);font-size:11.5px;color:var(--muted);background:var(--paper);
-    border:1px solid var(--line);border-radius:20px;padding:4px 11px;
+    font:800 12px var(--font-ui);color:var(--ink);background:var(--paper);
+    border:var(--bw) solid var(--line);border-radius:var(--radius-pill);padding:6px 13px;
   }
-  .featured-cta{
-    font-family:var(--font-ui);font-weight:700;font-size:13.5px;color:var(--accent);
-    display:inline-flex;align-items:center;gap:6px;
-  }
-  .featured-card:hover .featured-cta{gap:9px;}
+  .featured-cta{font:900 14px var(--font-ui);color:var(--accent);display:inline-flex;align-items:center;gap:6px;}
+  .featured-card:hover .featured-cta{gap:10px;}
 
-  .roadmap{border-top:1px solid var(--line);padding-top:28px;}
-  .roadmap-row{
-    display:flex;align-items:baseline;justify-content:space-between;gap:16px;
-    padding:14px 2px;border-bottom:1px solid var(--line);
+  /* Your-progress card. Only rendered once there is progress to show, so a
+     first-time visitor sees the subjects immediately instead of an empty
+     scoreboard. */
+  .hub-progress-card{
+    background:var(--navy);color:var(--on-accent);border-radius:var(--radius-lg);
+    padding:22px 24px;box-shadow:var(--lift-lg);
   }
-  .roadmap-row:last-child{border-bottom:none;}
-  .roadmap-name{font-family:var(--font-ui);font-weight:700;font-size:14.5px;color:var(--ink);}
-  .roadmap-desc{font-size:13.5px;color:var(--muted);margin:3px 0 0;}
+  .hub-progress-top{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+  .hub-level-ring{
+    width:52px;height:52px;border-radius:50%;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    font:900 17px var(--font-ui);background:rgba(255,255,255,0.14);
+    border:2px solid rgba(255,255,255,0.28);
+  }
+  .hub-level-title{font:900 19px var(--font-ui);margin:0;letter-spacing:-0.01em;}
+  .hub-level-sub{font:700 13px var(--font-ui);margin:3px 0 0;opacity:.78;}
+  .hub-track{height:9px;border-radius:var(--radius-pill);background:rgba(255,255,255,0.16);overflow:hidden;}
+  .hub-fill{height:100%;background:var(--on-accent);border-radius:var(--radius-pill);}
+  .hub-split{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-top:14px;border-top:2px solid rgba(255,255,255,0.15);}
+  .hub-split span{font:900 11.5px var(--font-ui);padding:5px 11px;border-radius:var(--radius-pill);background:rgba(244,210,140,0.16);color:#F4D28C;}
+
+  .roadmap-row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line-soft);}
+  .roadmap-row:last-child{border-bottom:0;}
+  .roadmap-name{font-size:17px;font-weight:900;margin:0;}
+  .roadmap-desc{font-size:14px;font-weight:600;color:var(--muted);margin-top:3px;text-wrap:pretty;}
   .roadmap-status{
-    font-family:var(--font-ui);font-weight:600;font-size:11.5px;letter-spacing:0.04em;text-transform:uppercase;
-    color:var(--muted);white-space:nowrap;flex-shrink:0;
+    font:900 11px var(--font-ui);letter-spacing:0.05em;text-transform:uppercase;
+    color:var(--amber);background:var(--tint-amber);border-radius:var(--radius-pill);
+    padding:5px 12px;white-space:nowrap;flex-shrink:0;
   }
-
-  footer{margin-top:72px;font-size:12.5px;color:var(--muted);max-width:60ch;font-family:var(--font-ui);}
 </style>
 </head>
 <body>
-<div class="wrap">
-
-  <div class="top-row">
-    <a class="brand" href="https://testaolivier10-del.github.io/">
-      <span class="brand-mark" aria-hidden="true">+</span> Study Hub
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> LevlPrep
     </a>
     <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
   </div>
+</div>
+
+<div class="xshell">
 
   <div class="hero">
-    <p class="eyebrow">Study Hub</p>
-    <h1>Free practice tools for health science certification exams.</h1>
-    <p class="lede">Real question banks, interactive study tools, and honest practice conditions — no account, no paywall. Pick a subject below to get started.</p>
+    <div class="eyebrow">LevlPrep</div>
+    <h1>Free practice tools for certification exams.</h1>
+    <p class="lede">Real question banks, interactive practice, and courses that teach you to actually reason through hard subjects — no account, no paywall. Pick a subject below to get started.</p>
+    <div class="fact-row">
+      <span><span class="dot"></span>2,084 practice questions</span>
+      <span><span class="dot"></span>No account required</span>
+      <span><span class="dot"></span>Optional sign-in syncs progress across devices</span>
+    </div>
   </div>
 
-  <div class="fact-row">
-    <span><span class="dot"></span>920+ practice questions</span>
-    <span><span class="dot"></span>No account required</span>
-    <span><span class="dot"></span>Progress stays on your device</span>
-  </div>
+  <div class="xsection" id="hubProgress" hidden></div>
 
-  <p class="section-label">Subjects</p>
-
-  <a class="featured-card" href="https://testaolivier10-del.github.io/nremt-practice/">
-    <div class="featured-top">
-      <div class="featured-icon" aria-hidden="true">+</div>
-      <span class="status-badge"><span class="dot"></span>Live</span>
-    </div>
-    <div>
-      <p class="featured-name">NREMT-EMT Prep</p>
-      <p class="featured-desc">A 920-question practice bank with timed exams, domain drills, flashcards, an interactive 3D body map, an auscultation sound trainer, and branching clinical scenarios.</p>
-    </div>
-    <div class="featured-tags">
-      <span>Timed exams</span>
-      <span>Domain drills</span>
-      <span>Flashcards</span>
-      <span>3D body map</span>
-      <span>Sound trainer</span>
-    </div>
-    <span class="featured-cta">Start practicing &rarr;</span>
-  </a>
-
-  <div class="roadmap">
-    <p class="section-label">Coming next</p>
-    <div class="roadmap-row">
-      <div>
-        <p class="roadmap-name">Organic Chemistry</p>
-        <p class="roadmap-desc">Reaction mechanisms and practice problems for orgo prep.</p>
+  <div class="xsection">
+    <div class="xgrid">
+      <div class="xlabel">Subjects</div>
+      <div class="xcontent">
+        <div class="subject-grid">
+        <a class="featured-card" href="nremt/">
+          <div class="featured-top">
+            <div class="featured-icon" aria-hidden="true">+</div>
+            <span class="status-badge"><span class="dot"></span>Live</span>
+          </div>
+          <div>
+            <p class="featured-name">NREMT-EMT Prep</p>
+            <p class="featured-desc">A 2,084-question bank across six exam domains, with timed 100-question exams, domain drills, flashcards, forty chapters of notes, an interactive 3D body map, an auscultation sound trainer and branching clinical scenarios.</p>
+          </div>
+          <div class="featured-tags">
+            <span>Timed exams</span>
+            <span>Domain drills</span>
+            <span>Flashcards</span>
+            <span>3D body map</span>
+            <span>Sound trainer</span>
+          </div>
+          <span class="featured-cta">Start practicing &rarr;</span>
+        </a>
+        <a class="featured-card" href="ochem/">
+          <div class="featured-top">
+            <div class="featured-icon" aria-hidden="true">+</div>
+            <span class="status-badge"><span class="dot"></span>Beta</span>
+          </div>
+          <div>
+            <p class="featured-name">Organic Chemistry</p>
+            <p class="featured-desc">A full Organic Chemistry I course built to be worked, not read: 58 lessons and 10 mechanism walkthroughs where you identify the nucleophile, push the arrows yourself and predict the product — plus seven tools that compute their answers instead of looking them up.</p>
+          </div>
+          <div class="featured-tags">
+            <span>58 lessons</span>
+            <span>10 mechanisms</span>
+            <span>7 tools</span>
+            <span>Mastery tracking</span>
+          </div>
+          <span class="featured-cta">Start learning &rarr;</span>
+        </a>
+        </div>
       </div>
-      <span class="roadmap-status">In progress</span>
     </div>
   </div>
 
-  <footer>
-    <p>All practice progress and quiz data are stored only in your browser and aren't sent anywhere.</p>
-  </footer>
+  <div class="xsection">
+    <footer style="margin-top:0">
+      <p>Practice progress and quiz data are stored on your device. Signing in (optional) additionally syncs it to your account so it follows you to a new device.</p>
+      <p class="privacy-link"><a href="privacy.html">Privacy</a></p>
+    </footer>
+  </div>
+
 </div>
 <script>
+  // Renders the level badge, the shared streak chip and the account button
+  // into the header above. 'hub' selects the neutral rank names — the same
+  // level reads "Rig Veteran" on NREMT and "Mechanism Marshal" on ochem.
+  if(window.HubProgress) window.HubProgress.mount('hub');
+
+  // ---- Your progress, once there is any ----
+  (function renderProgress(){
+    var box = document.getElementById('hubProgress');
+    if(!box || !window.HubProgress) return;
+    var info = window.HubProgress.levelInfo('hub');
+    var streak = window.HubProgress.streak();
+    var subjects = Object.keys(info.subjects || {}).filter(function(k){ return info.subjects[k] > 0; });
+    if(!info.total && !streak.current) return;   // nothing to show a first-time visitor
+
+    var LABELS = { nremt: 'NREMT-EMT', ochem: 'Organic Chemistry' };
+    var pct = Math.round(info.into / info.span * 100);
+    box.innerHTML =
+      '<div class="hub-progress-card">' +
+        '<div class="hub-progress-top">' +
+          '<span class="hub-level-ring">L' + info.level + '</span>' +
+          '<div>' +
+            '<p class="hub-level-title">' + info.title + '</p>' +
+            '<p class="hub-level-sub">' + info.total + ' XP total' +
+              (streak.current ? ' &middot; ' + streak.current + '-day streak' : '') + '</p>' +
+          '</div>' +
+        '</div>' +
+        '<div class="hub-track"><div class="hub-fill" style="width:' + pct + '%"></div></div>' +
+        '<p class="hub-level-sub">' + info.into + ' / ' + info.span + ' XP to Level ' + (info.level + 1) + '</p>' +
+        (subjects.length ? '<div class="hub-split">' + subjects.map(function(k){
+          return '<span>' + (LABELS[k] || k) + ' &middot; ' + info.subjects[k] + ' XP</span>';
+        }).join('') + '</div>' : '') +
+      '</div>';
+    box.hidden = false;
+  })();
+
   var THEME_KEY = 'nremt_theme';
   var toggle = document.getElementById('themeToggle');
   toggle.addEventListener('click', function(){

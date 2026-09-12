@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nucleophilic Addition — Carbonyl Chemistry | Organic Chemistry</title>
+<meta name="description" content="Learn the universal tetrahedral-intermediate mechanism for nucleophilic addition to carbonyls, and see it applied to hydride reduction, Grignard addition, and imine formation.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/nucleophilic-addition.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 9 &middot; Carbonyl Chemistry</div>
+    <h1 style="margin-bottom:4px;">Nucleophilic addition.</h1>
+    <p class="lede" style="margin-top:0;">One mechanism — nucleophile attacks, pi electrons move to oxygen, tetrahedral intermediate forms — explains reduction, Grignard chemistry, and imine formation all at once.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'nucleophilic-addition',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        diagramHtml: window.OchemMolecules.svg('acetaldehyde', { caption: 'The carbonyl carbon is electron-poor because oxygen pulls the pi electrons toward itself. A nucleophile attacks there, and the pi electrons go up onto the oxygen.' }),
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Every nucleophilic addition follows the same two-step pattern.',
+        bodyHtml: '<p class="step-body">Step one: a nucleophile attacks the carbonyl carbon. As the new bond forms, the carbonyl pi electrons can\'t stay on carbon (carbon can\'t exceed four bonds) — they get pushed entirely onto oxygen. The carbon\'s geometry flips from sp² (trigonal planar) to sp³ (tetrahedral), and you\'re left with a <b>tetrahedral alkoxide intermediate</b>: an sp³ carbon bearing the new nucleophile, the original substituents, and an oxygen with a full negative charge.</p><p class="step-body" style="margin-bottom:0;">Step two: that alkoxide is a strong base and gets protonated (by water, or during an acidic workup step) to give a neutral alcohol. This exact two-step shape — attack, then protonate — underlies every reaction in this lesson; only the identity of the nucleophile changes.</p>'
+      },
+      {
+        render: function(api){
+          var stages = [
+            { key: 'attack', label: 'Nucleophile attacks the carbonyl carbon; pi electrons move to oxygen' },
+            { key: 'tet', label: 'Tetrahedral alkoxide intermediate forms (sp³ carbon, negative oxygen)' },
+            { key: 'proton', label: 'Alkoxide is protonated, giving the neutral alcohol product' }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the three stages of nucleophilic addition in the correct order.</h2>' +
+            '<div class="choice-row" style="flex-direction:column;">' + stages.map(function(s){
+              return '<button class="choice-btn" data-v="' + s.key + '">' + s.label + '</button>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Correct clicks: 0 / 3</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var order = ['attack', 'tet', 'proton'];
+          var idx = 0, mistake = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(btn.disabled) return;
+              var key = btn.getAttribute('data-v');
+              if(key === order[idx]){
+                btn.disabled = true;
+                btn.classList.add('correct');
+                idx++;
+                hint.textContent = 'Correct clicks: ' + idx + ' / 3';
+                if(idx === 3){
+                  api.record(!mistake);
+                  api.showFeedback(fb, !mistake, mistake ? 'You got there, but out of order at first. The sequence is always: attack, form the tetrahedral intermediate, then protonate.' : 'Exactly right — this three-part order is the backbone of every nucleophilic addition in this lesson.');
+                  next.disabled = false;
+                }
+              } else {
+                mistake = true;
+                btn.classList.add('wrong');
+                setTimeout(function(){ btn.classList.remove('wrong'); }, 500);
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Which reagent reduces esters and amides in addition to aldehydes/ketones, while NaBH₄ leaves them untouched?',
+        options: ['LiAlH₄ — a much stronger, less selective hydride source', 'NaBH₄ is actually the stronger reagent', 'Neither reagent can reduce esters or amides'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — LiAlH₄\'s greater reactivity lets it reduce carboxylic acid derivatives all the way to alcohols (or amines), where NaBH₄ stops at aldehydes and ketones.',
+        wrongFeedback: 'LiAlH₄ is the stronger, more reactive hydride source of the two — NaBH₄ is milder and more selective.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Grignard and organolithium reagents build new carbon-carbon bonds.',
+        bodyHtml: '<p class="step-body">A Grignard reagent (RMgX) or organolithium (RLi) delivers a carbanion-like carbon nucleophile that attacks a carbonyl carbon directly, forming a genuinely new C–C bond — one of the relatively few dependable ways in this course to extend a carbon skeleton (alongside acetylide SN2 chemistry from the Alkynes lesson). The alkoxide intermediate is then protonated (typically in a separate aqueous acid workup step, since Grignards are far too basic/reactive to tolerate water in the reaction itself) to reveal the alcohol.</p><p class="step-body" style="margin-bottom:0;">The alcohol\'s class depends entirely on the starting carbonyl: adding a Grignard to formaldehyde (H₂C=O, zero substituents) gives a <b>primary</b> alcohol; to any other aldehyde (one substituent), a <b>secondary</b> alcohol; to a ketone (two substituents), a <b>tertiary</b> alcohol.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'A Grignard reagent, CH₃MgBr, is added to cyclohexanone (a ketone), followed by aqueous acid workup. What class of alcohol results?',
+        options: ['Primary', 'Tertiary — the carbonyl carbon already had two carbon substituents (from the ring) before the Grignard added a third', 'Secondary'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — a ketone\'s carbonyl carbon starts with two carbon groups attached; adding the Grignard\'s carbon as a third substituent makes it a tertiary alcohol.',
+        wrongFeedback: 'Count substituents on the carbonyl carbon after the new C–C bond forms: a ketone already has two carbon groups, plus the new one from the Grignard, makes three total — tertiary.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Amines add, then eliminate water — forming imines or enamines.',
+        bodyHtml: '<p class="step-body">A primary amine (RNH₂) attacks a carbonyl exactly like any other nucleophile, forming the same tetrahedral intermediate — but this one carries an N–H and an O–H that can undergo a subsequent acid-catalyzed dehydration (loss of water), reforming a pi bond as a C=N: an <b>imine</b>. This addition-then-elimination shape (build a tetrahedral intermediate, then kick out water to remake a pi bond) is a pattern you\'ll see again constantly, including in Enolate Chemistry (Module 11).</p><p class="step-body" style="margin-bottom:0;">A secondary amine (R₂NH) has no second N–H left after the first proton is used up, so it can\'t form a stable C=N the same way. Instead, the elimination step removes a proton from an adjacent carbon instead of from nitrogen, forming a C=C conjugated with the nitrogen lone pair — an <b>enamine</b>. Both products are common protecting groups and reactive intermediates you\'ll meet directly in Module 12 (Amines).</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 6 · Independent Practice',
+        title: 'Why does a secondary amine form an enamine instead of an imine when it reacts with a ketone?',
+        options: ['Secondary amines are too weak to be nucleophiles at all', 'Enamines and imines are actually the same functional group', 'After the first proton on nitrogen is used, there\'s no second N–H left to lose in forming a C=N, so elimination instead removes a proton from an adjacent carbon'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — the tetrahedral intermediate from a secondary amine simply doesn\'t have a second N–H available, so the dehydration step routes through an adjacent C–H instead, producing a C=C rather than a C=N.',
+        wrongFeedback: 'Secondary amines are perfectly good nucleophiles — the issue is what\'s structurally available in the tetrahedral intermediate to lose during the subsequent dehydration step.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Benzaldehyde is treated first with LiAlH₄, then with aqueous acid workup. Separately, a fresh sample of benzaldehyde is treated with CH₃MgBr, then the same workup. What class of alcohol forms in each case?',
+        options: ['LiAlH₄ gives a primary alcohol (H⁻ adds no new carbon); the Grignard gives a secondary alcohol (a new C–C bond adds a second carbon substituent)', 'Both give the same secondary alcohol', 'LiAlH₄ gives a secondary alcohol; the Grignard gives a primary alcohol'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — hydride adds no carbon, so an aldehyde (one substituent already) plus H⁻ gives a primary alcohol; a Grignard\'s carbon nucleophile adds a second substituent, giving a secondary alcohol from the same aldehyde starting material.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

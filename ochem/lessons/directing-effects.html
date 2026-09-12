@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ortho/Meta/Para Directing Effects — Aromatic Chemistry | Organic Chemistry</title>
+<meta name="description" content="Learn why existing ring substituents direct incoming electrophiles ortho/para or meta, and how the same substituent's resonance donation and inductive withdrawal control both rate and regiochemistry.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/directing-effects.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 13 &middot; Aromatic Chemistry</div>
+    <h1 style="margin-bottom:4px;">Ortho/meta/para directing effects.</h1>
+    <p class="lede" style="margin-top:0;">A substituent already on the ring doesn't just sit there — it decides where the next electrophile goes, and whether the ring reacts faster or slower than benzene itself.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'directing-effects',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        diagramHtml: window.OchemMolecules.svg('para-xylene', { caption: 'The para product that gives ortho/para direction half its name. A methyl group donates into the ring, and the electrophile ends up where the arenium cation can put its positive charge on the substituted carbon.' }),
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Everything comes down to which resonance form of the arenium ion is least unstable.',
+        bodyHtml: '<p class="step-body">An arenium ion\'s positive charge always delocalizes over the carbons ortho and para to the position the electrophile actually attacked (from the EAS lesson). If the ring already carries a substituent, that substituent sits right on top of one of those resonance forms whenever the electrophile attacks ortho or para to it — meaning the substituent can directly help or hurt that specific resonance structure\'s stability.</p><p class="step-body" style="margin-bottom:0;">Attack meta to the substituent, by contrast, never puts positive charge on the substituted carbon in any resonance form — the substituent is a bystander rather than a direct participant. Which outcome (ortho/para vs. meta) is preferred always comes down to this one question: does having positive charge land on (or next to) the substituted carbon help or hurt?</p>'
+      },
+      {
+        render: function(api){
+          var items = [
+            { key: 'oh', label: '–OH (hydroxyl, lone pair adjacent to ring)', v: 'op-act' },
+            { key: 'ch3', label: '–CH₃ (methyl, alkyl group)', v: 'op-act' },
+            { key: 'cl', label: '–Cl (halogen)', v: 'op-deact' },
+            { key: 'no2', label: '–NO₂ (nitro)', v: 'meta-deact' }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">For each substituent, click its directing effect and rate effect.</h2>' +
+            '<div class="choice-row" style="flex-direction:column;">' + items.map(function(it, i){
+              return '<div style="margin-bottom:10px;"><div style="font:700 13px var(--font-ui);margin-bottom:6px;">' + it.label + '</div>' +
+                '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
+                  '<button class="choice-btn opt" data-g="g' + i + '" data-v="op-act">Ortho/para, activating</button>' +
+                  '<button class="choice-btn opt" data-g="g' + i + '" data-v="op-deact">Ortho/para, deactivating</button>' +
+                  '<button class="choice-btn opt" data-g="g' + i + '" data-v="meta-deact">Meta, deactivating</button>' +
+                '</div></div>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin:10px 0 16px;">Correct: 0 / 4</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var correctCount = 0, mistake = false, groupsDone = {};
+          api.card.querySelectorAll('.opt').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var g = btn.getAttribute('data-g');
+              if(groupsDone[g]) return;
+              groupsDone[g] = true;
+              var gi = parseInt(g.replace('g',''), 10);
+              api.card.querySelectorAll('.opt[data-g="' + g + '"]').forEach(function(b){ b.disabled = true; });
+              var isCorrect = btn.getAttribute('data-v') === items[gi].v;
+              btn.classList.add(isCorrect ? 'correct' : 'wrong');
+              if(isCorrect) correctCount++; else mistake = true;
+              hint.textContent = 'Correct: ' + correctCount + ' / 4';
+              if(Object.keys(groupsDone).length === 4){
+                api.record(!mistake);
+                api.showFeedback(fb, !mistake, mistake ? 'Close — remember: OH and alkyl groups are ortho/para activators; halogens are the unusual ortho/para deactivators (resonance donation directs, induction deactivates); everything else strongly electron-withdrawing (like NO₂) is meta-directing and deactivating.' : 'Exactly right — this covers all three categories you\'ll see on the ring: strong donors (ortho/para, activating), halogens (ortho/para, but deactivating — a genuine exception), and strong withdrawers (meta, deactivating).');
+                next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Why do OH and NH₂ groups direct incoming electrophiles to the ortho and para positions?',
+        options: ['They physically block the meta position sterically', 'Their lone pair can donate into the ring by resonance only in the resonance forms where positive charge sits on the substituted carbon, which happens only for ortho/para attack', 'They react only at their own oxygen or nitrogen atom, never on the ring'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — resonance donation specifically stabilizes the ortho/para arenium ion resonance forms, which is exactly why those positions are favored.',
+        wrongFeedback: 'The effect isn\'t steric blocking — it\'s about which arenium ion resonance forms get extra stabilization from the substituent\'s lone pair.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Halogens are the exception that proves the rule: induction and resonance can disagree.',
+        bodyHtml: '<p class="step-body">A halogen substituent is strongly electronegative, so it inductively withdraws electron density from the ring through the sigma bond — an effect that lowers the ring\'s overall electron density and slows EAS relative to benzene (deactivating). At the same time, a halogen still has lone pairs that can donate into the ring by resonance, exactly like OH or NH₂ — just less effectively, since halogen lone pairs sit in larger orbitals (3p for Cl, for instance) that overlap poorly with carbon\'s smaller 2p orbital, similar to the poor overlap that makes chlorine such a weak resonance donor in acid chlorides (Esters &amp; Amides lesson).</p><p class="step-body" style="margin-bottom:0;">The result is a genuine split: induction (through the sigma framework) dominates the <b>rate</b> question, making halogens deactivating overall, while resonance donation (through the pi system) still dominates the <b>regiochemistry</b> question, still directing ortho/para. Halogens are the one substituent class where these two effects point in different directions for rate versus position.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'Why is chlorobenzene less reactive than benzene toward EAS, even though chlorine still directs ortho/para?',
+        options: ['Chlorine actually makes the ring more reactive, not less', 'Directing ortho/para always means a substituent is activating', 'Chlorine\'s strong inductive electron withdrawal lowers the ring\'s overall electron density, slowing the reaction, even though its resonance donation still favors ortho/para positions specifically'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — this is exactly the induction-versus-resonance split unique to halogens: two competing effects, each winning a different question (rate vs. position).',
+        wrongFeedback: 'Directing ortho/para and being activating are two separate questions — halogens are the specific exception where a substituent directs ortho/para while still being deactivating overall.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Meta directors avoid ever putting positive charge next to an already-electron-poor carbon.',
+        bodyHtml: '<div class="explain-box">A group like NO₂, CHO, COOH, or CN has no lone pair oriented to donate into the ring (or, for a carbonyl-containing group, actively carries its own partial positive character on the atom attached to the ring). Attacking ortho or para would put the arenium ion\'s positive charge directly on, or immediately next to, that already electron-poor carbon — a severely destabilized resonance form (two adjacent positive centers, directly analogous to the adjacent-charge instability the Resonance lesson\'s contributor-ranking rules flagged as unfavorable). Meta attack is simply the option that avoids ever creating that specific destabilized resonance form, making it the "least bad" pathway even though the overall reaction is still slower than benzene\'s (deactivating, since these groups withdraw electron density inductively too).</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 6 · Independent Practice',
+        title: 'Why does a nitro group (–NO₂) direct meta rather than ortho/para?',
+        options: ['Ortho/para attack would place positive charge on or adjacent to the already electron-poor, substituted carbon — a severely destabilized resonance form that meta attack avoids', 'Nitro groups are simply too large to allow attack nearby', 'Meta-directing groups are always more electronegative than ortho/para directors'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — the meta position is favored specifically because it is the only position that avoids the worst-case resonance form (adjacent positive charges).',
+        wrongFeedback: 'Size isn\'t the deciding factor here — it\'s about which arenium ion resonance structures are least destabilized by the nitro group\'s electron-withdrawing character.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Anisole (methoxybenzene, OCH₃ substituent) is treated with Br₂/FeBr₃. Predict the major product\'s substitution pattern and whether the reaction is faster or slower than plain benzene bromination.',
+        options: ['Meta-bromoanisole forms, and the reaction is slower than benzene', 'Ortho/para-bromoanisole forms preferentially, and the reaction is faster than benzene — OCH₃ is a strong resonance donor, both directing and activating', 'The methoxy group has no effect on rate or position at all'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — an alkoxy group\'s oxygen lone pair is an excellent resonance donor into the ring, making it both an ortho/para director and a strong activator, exactly like OH and NH₂.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

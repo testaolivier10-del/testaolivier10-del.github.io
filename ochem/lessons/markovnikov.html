@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markovnikov / Anti-Markovnikov — Alkenes &amp; Alkynes | Organic Chemistry</title>
+<meta name="description" content="Learn why Markovnikov's rule works (carbocation stability), and how hydroboration-oxidation and radical HBr addition flip the regiochemistry.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/markovnikov.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 7 &middot; Alkenes &amp; Alkynes</div>
+    <h1 style="margin-bottom:4px;">Markovnikov / anti-Markovnikov.</h1>
+    <p class="lede" style="margin-top:0;">Which carbon gets the new bond isn't a memorized rule — it's a direct consequence of carbocation stability.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'markovnikov',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        diagramHtml: window.OchemMolecules.svg('propene-hbr', { caption: 'An unsymmetrical alkene. The proton adds to the carbon with more hydrogens, because that puts the positive charge on the carbon better able to carry it.' }),
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Markovnikov\'s rule is just carbocation stability, restated.',
+        bodyHtml: '<p class="step-body">You\'ve probably heard Markovnikov\'s rule as "the hydrogen adds to the carbon that already has more hydrogens." That\'s true, but it\'s a symptom, not the cause. The real driver: when the pi bond attacks an electrophile like H⁺, the carbocation forms wherever it\'s <b>most stable</b> — and carbocation stability follows 3° &gt; 2° &gt; 1° &gt; methyl (more alkyl groups donate electron density into the empty p orbital via hyperconjugation and induction).</p><p class="step-body" style="margin-bottom:0;">If the proton attaches to the carbon with more H\'s (fewer substituents), the positive charge is forced onto the <i>other</i> carbon — the one with more alkyl substituents already, giving the more stable cation. That\'s the whole rule: protonate the less-substituted carbon, so the cation (and the eventual new nucleophile bond) lands on the more-substituted one.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">2-methylpropene + HBr: click the carbon where the carbocation forms.</h2>' +
+            '<p class="step-body">(CH₃)₂C=CH₂ reacting with H⁺. One double-bond carbon is attached to two methyl groups; the other is attached to two hydrogens.</p>' +
+            '<div style="display:flex;justify-content:center;padding:16px 0;gap:40px;">' +
+              '<div class="atom" data-v="c1" style="cursor:pointer;padding:14px 18px;border:2px solid var(--border);border-radius:12px;text-align:center;font:800 14px var(--font-mono);">C1<br><span style="font-size:11px;color:var(--muted);font-weight:600;">attached to 2 CH₃ groups</span></div>' +
+              '<div class="atom" data-v="c2" style="cursor:pointer;padding:14px 18px;border:2px solid var(--border);border-radius:12px;text-align:center;font:800 14px var(--font-mono);">C2<br><span style="font-size:11px;color:var(--muted);font-weight:600;">attached to 2 H atoms</span></div>' +
+            '</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var answered = false;
+          api.card.querySelectorAll('.atom').forEach(function(el){
+            el.addEventListener('click', function(){
+              if(answered) return;
+              answered = true;
+              var isCorrect = el.getAttribute('data-v') === 'c1';
+              el.classList.add('chosen');
+              el.style.borderColor = isCorrect ? '#2e9e5b' : '#c0392b';
+              api.record(isCorrect);
+              api.showFeedback(fb, isCorrect, 'C1, attached to two methyl groups, becomes a tertiary carbocation if H⁺ protonates C2 instead — the far more stable outcome. So H⁺ adds to C2 (the carbon with more H\'s already), leaving the cation — and eventually Br — on C1.');
+              next.disabled = false;
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Markovnikov addition of HBr to an alkene puts the Br atom on...',
+        options: ['The less substituted carbon', 'The more substituted carbon (which held the more stable carbocation)', 'Whichever carbon is closer to the end of the chain'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — the nucleophile (Br⁻) attacks wherever the carbocation is, and the carbocation forms at the more substituted, more stable position.',
+        wrongFeedback: 'Chain position doesn\'t matter — what matters is which carbon ends up holding the cation, and that\'s always the more substituted one.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Hydroboration-oxidation: no cation, so the opposite regiochemistry — and no rearrangement.',
+        bodyHtml: '<p class="step-body">BH₃ reacts with an alkene in one concerted step — boron and hydrogen add to the two double-bond carbons <b>simultaneously</b>, from the same face (syn addition), with no carbocation ever forming. Since there\'s no cation to stabilize, sterics decide regiochemistry instead: the bulky boron ends up bonding to the <b>less hindered (less substituted)</b> carbon, simply because that\'s the more accessible position.</p><p class="step-body" style="margin-bottom:0;">A follow-up oxidation (H₂O₂, NaOH) swaps that C–B bond for a C–OH bond, keeping the same position and stereochemistry. Net effect: OH ends up on the <b>less substituted carbon</b> — the reverse of acid-catalyzed hydration\'s Markovnikov selectivity, which is why this sequence is the go-to method whenever the anti-Markovnikov alcohol is the target.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'Why doesn\'t hydroboration-oxidation ever show carbocation rearrangement products?',
+        options: ['Boron is too big to rearrange', 'It only works on symmetric alkenes', 'Its mechanism is concerted — boron and hydrogen add simultaneously, so no carbocation intermediate ever forms'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — rearrangement requires an actual carbocation intermediate to shift; hydroboration never generates one.',
+        wrongFeedback: 'Boron\'s size affects which carbon it bonds to (sterics), but the reason there\'s no rearrangement is that the mechanism is concerted, with no discrete cation ever forming.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Radical HBr addition (the "peroxide effect") flips the regiochemistry a second way.',
+        bodyHtml: '<p class="step-body">Add peroxides (ROOR) to the reaction mixture, and HBr addition (specifically HBr — not HCl or HI) switches to a completely different, radical chain mechanism. A bromine radical, not a proton, adds first — and it adds to whichever carbon produces the <b>more stable radical</b> (3° &gt; 2° &gt; 1°, the same substitution trend as cations, just for radicals). That means Br• attacks the <b>less substituted</b> carbon, placing the resulting radical (and eventually H, delivered second) on the more substituted carbon.</p><p class="step-body" style="margin-bottom:0;">Net effect: Br ends up on the less substituted carbon — anti-Markovnikov, but via an entirely different mechanism (radical, not the boron sterics of hydroboration). This "peroxide effect" is specific to HBr; it does not occur efficiently with HCl or HI.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Three reagents, three mechanisms, three predictable outcomes — memorize the logic, not the exceptions.',
+        bodyHtml: '<div class="explain-box">Acid-catalyzed addition (Markovnikov, carbocation-driven), hydroboration-oxidation (anti-Markovnikov, steric/concerted), and peroxide-mediated HBr addition (anti-Markovnikov, radical-driven) look like three rules to memorize, but they\'re really one question asked three times: "what intermediate forms, and what\'s most stable/accessible for it?" Apply that question to any new reagent and you can predict regiochemistry without memorizing a fourth rule.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: '1-methylcyclohexene is treated with (1) BH₃ then H₂O₂/NaOH, and separately with (2) HBr in the presence of peroxides. Where does the new substituent (OH in case 1, Br in case 2) end up in both cases?',
+        options: ['On the less substituted carbon in both cases — hydroboration by sterics, radical HBr by radical stability, both landing anti-Markovnikov', 'On the more substituted carbon in both cases', 'It depends on temperature, not mechanism'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — despite completely different mechanisms (concerted syn addition vs. radical chain), both reagent systems place the new group on the less substituted carbon, giving the anti-Markovnikov product either way.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

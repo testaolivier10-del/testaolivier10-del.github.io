@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn — The Organic Chemistry Textbook</title>
+<meta name="description" content="The whole Organic Chemistry I course as one textbook: 14 chapters from foundations through spectroscopy, 62 sections, each linked to its interactive lesson.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/learn.html">
+<link rel="stylesheet" href="../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../assets/account.js"></script>
+<script src="../assets/hub-progress.js"></script>
+<script src="../assets/chime.js"></script>
+<script src="../assets/site-chrome.js"></script>
+<script src="assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="assets/ochem.css">
+<link rel="stylesheet" href="assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="tb-shell">
+  <button type="button" class="tb-toc-btn" id="tbContentsToggle" aria-controls="tbContents">&#9776; Contents</button>
+
+  <aside class="tb-rail">
+    <p class="tb-rail-title">Contents</p>
+    <div id="tbProgress"></div>
+    <label class="sr-only" for="tbFilter">Search the textbook</label>
+    <input type="search" class="tb-filter" id="tbFilter" placeholder="Search the textbook&hellip;" autocomplete="off"
+           aria-describedby="tbFilterHint">
+    <p class="tb-filter-hint" id="tbFilterHint">Searches every word, not just section names.</p>
+    <nav class="tb-contents" id="tbContents" aria-label="Textbook contents"></nav>
+  </aside>
+
+  <main class="tb-main" id="tbMain">
+    <div class="tb-results" id="tbResults" role="region" aria-label="Search results" hidden></div>
+    <div id="tbChapter">
+      <noscript><p class="step-body">The textbook needs JavaScript to load its chapters.</p></noscript>
+    </div>
+  </main>
+</div>
+
+<script src="assets/curriculum.js"></script>
+<script src="assets/concepts.js"></script>
+<script src="assets/mastery-engine.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '';
+</script>
+<script src="assets/ochem-nav.js"></script>
+<script src="assets/periodic-table.js"></script>
+<script src="assets/textbook-search.js"></script>
+<script src="assets/textbook.js"></script>
+</body>
+</html>

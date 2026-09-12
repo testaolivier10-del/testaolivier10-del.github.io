@@ -1,0 +1,43 @@
+<p class="step-body">This is the reaction the carbonyl group exists for. A nucleophile attacks the electrophilic carbon, the pi electrons move onto oxygen, and a tetrahedral intermediate results. Everything else in the next three chapters is a variation on those two steps — which makes this the highest-leverage mechanism in the second half of the course.</p>
+
+<h3>The universal mechanism</h3>
+<p class="step-body"><b>Step 1:</b> the nucleophile attacks the carbonyl carbon, and the pi electrons are pushed entirely onto oxygen. Two arrows: nucleophile to carbon, and the C=O pi bond up onto the oxygen. The carbon goes from sp² trigonal planar to sp³ tetrahedral, and the oxygen becomes an alkoxide. The result is the <b>tetrahedral intermediate</b> — the central species of all carbonyl chemistry.</p>
+<p class="step-body"><b>Step 2:</b> that alkoxide is protonated — by water, by acidic workup, or by whatever proton source is around — giving a neutral alcohol.</p>
+<p class="step-body">Under acidic conditions the order reverses: the carbonyl oxygen is protonated <i>first</i>, which makes the carbon far more electrophilic, and then a weaker nucleophile can attack. Same tetrahedral intermediate, reached from the other direction. Recognizing that acid activates the electrophile while base activates the nucleophile is worth more than memorizing either sequence.</p>
+
+<div class="notes-fact">One branch is worth flagging now. If the carbonyl carbon carries a <b>leaving group</b>, the tetrahedral intermediate has a second option: instead of picking up a proton, it can collapse, expelling that leaving group and reforming the C=O. That single fork — protonate or collapse — is the entire difference between <b>addition</b> (this chapter) and <b>substitution</b> (Module 10). Aldehydes and ketones have no leaving group, so they can only add.</div>
+
+<h3>Hydride reduction: NaBH₄ and LiAlH₄</h3>
+<p class="step-body">Both deliver hydride, H⁻, as the nucleophile, converting the carbonyl to an alcohol. They differ enormously in strength, and choosing between them is a standard exam question.</p>
+<p class="step-body"><b>NaBH₄</b> is mild and selective. It reduces aldehydes and ketones and leaves esters, amides and carboxylic acids alone. It is mild enough to use in methanol or even water.</p>
+<p class="step-body"><b>LiAlH₄</b> is far stronger and much less selective, reducing essentially every carbonyl — esters and carboxylic acids to primary alcohols, amides to amines, nitriles to amines. It reacts violently with water and must be used in dry ether or THF, with a separate aqueous workup afterwards.</p>
+<p class="step-body">So when a molecule contains both a ketone and an ester and you want only the ketone reduced, the answer is NaBH₄. When you want everything reduced, it is LiAlH₄.</p>
+
+<div class="notes-fact">Reducing a ketone gives a secondary alcohol; reducing an aldehyde gives a primary alcohol. This is exactly the oxidation ladder from Module 8 run backwards, and recognizing the pair — oxidize up, reduce down — turns two lists of reagents into one idea.</div>
+
+<h3>Grignard and organolithium addition: building carbon skeletons</h3>
+<p class="step-body">A <b>Grignard reagent</b>, RMgX, is made by stirring an alkyl halide with magnesium metal in dry ether. The C–Mg bond is so polarized that the carbon behaves as a carbanion — a powerful carbon nucleophile. Organolithiums, RLi, are similar and more reactive still.</p>
+<p class="step-body">These attack a carbonyl carbon directly, forming a <b>new carbon–carbon bond</b>. That is the point: alongside acetylide alkylation from Module 7 and the enolate chemistry of Module 11, this is one of the few reliable ways to make carbon skeletons bigger.</p>
+<p class="step-body">Which alcohol you get is set by what was on the carbonyl carbon to begin with: formaldehyde gives a primary alcohol, any other aldehyde gives a secondary, and a ketone gives a tertiary. An ester gives a tertiary alcohol with <i>two</i> new R groups, because the first addition expels the alkoxide and the resulting ketone is attacked again.</p>
+
+<div class="notes-pitfall"><b>Grignard reagents are destroyed by acidic protons.</b> A Grignard is the conjugate base of an alkane (pKa 50), so it will deprotonate anything even faintly acidic — water, alcohols, carboxylic acids, terminal alkynes, amines — in preference to attacking a carbonyl. A molecule containing a free OH cannot be treated with a Grignard until that OH is protected. This is why Grignard reactions demand scrupulously dry glassware, and it is the most common reason a proposed synthesis using one fails.</div>
+
+<div class="notes-example">
+<span class="k">Worked example — retrosynthesis from an alcohol</span>
+<p>Target: 2-phenylbutan-2-ol, a tertiary alcohol with a phenyl, an ethyl, a methyl and an OH on one carbon.</p>
+<p>A tertiary alcohol means a Grignard plus a ketone. Break any one of the three C–C bonds at the carbinol carbon and you get a valid route.</p>
+<p><b>Route A:</b> PhMgBr + butan-2-one. <b>Route B:</b> EtMgBr + acetophenone. <b>Route C:</b> CH₃MgBr + propiophenone.</p>
+<p>All three work, which is the useful lesson: reading a target alcohol backwards to a Grignard and a carbonyl usually offers several disconnections, and you pick whichever starting materials you can actually get.</p>
+</div>
+
+<h3>Imines and enamines: addition then elimination</h3>
+<p class="step-body">A <b>primary amine</b> adds to a carbonyl like any other nucleophile, giving a tetrahedral intermediate — but this one has an OH on carbon and an H on nitrogen. Under mild acid the OH is protonated and leaves as water, and the nitrogen lone pair pushes in to form a C=N double bond: an <b>imine</b>.</p>
+<p class="step-body">A <b>secondary amine</b> starts the same way but has no second N–H to lose after dehydration. Instead a proton is removed from the alpha carbon, giving a C=C conjugated with the nitrogen lone pair: an <b>enamine</b>.</p>
+<p class="step-body">Both reactions are acid-catalyzed with an optimum near pH 4–5, which is a nice illustration of competing requirements: too little acid and the OH will not leave; too much and the amine is fully protonated and is no longer nucleophilic at all. The reaction needs enough acid to activate and little enough to leave the nucleophile free.</p>
+<p class="step-body">This addition-then-elimination pattern — build a tetrahedral intermediate, then expel water to reform a pi bond — is the mechanistic bridge into Module 12, and it reappears throughout Module 11. Imines are also biologically central: they are how enzymes tether substrates to lysine residues, and how vision works, since retinal is bound to opsin as an imine.</p>
+
+<h3>Other additions worth knowing</h3>
+<p class="step-body"><b>Cyanide</b> adds to give a cyanohydrin, which is useful because the nitrile can then be hydrolyzed to a carboxylic acid or reduced to an amine — a one-carbon extension with a handle on the end. <b>Water</b> adds reversibly to give the <i>gem</i>-diol discussed in the previous section. And the <b>Wittig reaction</b>, using a phosphorus ylide, adds and then eliminates to give an alkene, converting a C=O directly into a C=C with complete control over where the double bond ends up — which is why it is one of the most-used reactions in synthesis.</p>
+
+<h3>What carries forward</h3>
+<p class="step-body">The tetrahedral intermediate is the hinge of Modules 9, 10 and 11. Whether it protonates or collapses is the single question that distinguishes addition from substitution. Grignard and hydride chemistry are the backbone of synthesis problems. And the acid/base activation contrast established here — acid activates the electrophile, base activates the nucleophile — applies to every carbonyl mechanism ahead.</p>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conjugate Acids &amp; Bases — Acids &amp; Bases | Organic Chemistry</title>
+<meta name="description" content="Learn how conjugate acid-base pairs relate to each other, why a stronger acid always has a weaker conjugate base, and how this ties to leaving groups.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/conjugate.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 3 &middot; Acids &amp; Bases</div>
+    <h1 style="margin-bottom:4px;">Conjugate acids &amp; bases.</h1>
+    <p class="lede" style="margin-top:0;">Strong and weak always trade off — a stronger acid always leaves behind a weaker base.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'conjugate',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        diagramHtml: window.OchemMolecules.svg('acetate-ion', { caption: 'Acetate: what is left after acetic acid gives up its proton. An acid and its conjugate base differ by exactly one H⁺, and nothing else.' }),
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Conjugate pairs differ by exactly one proton.',
+        bodyHtml: '<p class="step-body">A <b>conjugate acid-base pair</b> is two species related by the gain or loss of a single proton (H⁺). If an acid loses its proton, what remains is its <b>conjugate base</b>. If a base gains a proton, what it becomes is its <b>conjugate acid</b>.</p><p class="step-body" style="margin-bottom:0;">HCl and Cl⁻ are a conjugate pair. NH₃ and NH₄⁺ are a conjugate pair. Water is special — it can lose a proton to become OH⁻ (acting as an acid) or gain one to become H₃O⁺ (acting as a base). A species that can do both is called <b>amphoteric</b>.</p>'
+      },
+      {
+        render: function(api){
+          var pairs = [
+            { key: 'a', acid: 'HCl', base: 'Cl⁻', correct: true },
+            { key: 'b', acid: 'H₂O', base: 'OH⁻', correct: true },
+            { key: 'c', acid: 'NH₄⁺', base: 'NH₃', correct: true },
+            { key: 'd', acid: 'CH₃COOH', base: 'CH₃NH₂', correct: false }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click every pair below that is a true conjugate acid-base pair.</h2>' +
+            '<p class="step-body">Three of these four pairs differ by exactly one proton. One doesn\'t belong.</p>' +
+            '<div class="choice-row">' + pairs.map(function(p){
+              return '<button class="choice-btn" data-v="' + p.key + '" style="text-align:center;font:900 15px var(--font-mono);">' + p.acid + ' / ' + p.base + '</button>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Correct pairs found: 0 / 3</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var found = 0;
+          var wrongPicked = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(btn.disabled) return;
+              var p = pairs.filter(function(x){ return x.key === btn.getAttribute('data-v'); })[0];
+              btn.disabled = true;
+              if(p.correct){
+                btn.classList.add('correct');
+                found++;
+                hint.textContent = 'Correct pairs found: ' + found + ' / 3';
+              } else {
+                btn.classList.add('wrong');
+                wrongPicked = true;
+              }
+              api.record(p.correct && !wrongPicked);
+              if(found === 3){
+                api.showFeedback(fb, !wrongPicked, wrongPicked ? 'You found all three real pairs, but also picked the odd one out — CH₃COOH and CH₃NH₂ differ by more than one proton and aren\'t a conjugate pair at all.' : 'Exactly right — HCl/Cl⁻, H₂O/OH⁻, and NH₄⁺/NH₃ each differ by exactly one proton. CH₃COOH and CH₃NH₂ are unrelated molecules, not a conjugate pair.');
+                next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'The stronger an acid is, the ___ its conjugate base is.',
+        options: ['stronger', 'weaker', 'there\'s no relationship'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — strength is inversely related across a conjugate pair. A strong acid gives up its proton easily, leaving a conjugate base that\'s stable and doesn\'t want it back.',
+        wrongFeedback: 'Think about HCl (very strong acid) and Cl⁻ (very weak base) — as one gets stronger, its partner gets weaker.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'Which pKa relationship would you expect for a strong base like NaNH₂ (amide ion, NH₂⁻)?',
+        options: ['Its conjugate acid has a very low pKa (≈ −7)', 'Conjugate acid strength doesn\'t matter for judging base strength', 'Its conjugate acid (NH₃) has a very high pKa (≈ 38)'],
+        correctIndex: 2,
+        correctFeedback: 'Correct. NH₂⁻ is such a strong base precisely because its conjugate acid, NH₃, is an extremely weak acid (pKa ≈ 38) — the weaker the conjugate acid, the stronger the base.',
+        wrongFeedback: 'A strong base needs a weak conjugate acid — a low pKa conjugate acid (like pKa −7) would mean a very weak, unreactive conjugate base instead.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'This is the same idea as leaving-group ability, restated.',
+        bodyHtml: '<p class="step-body">Go back to the Leaving Groups lesson from Module 2: a good leaving group is a weak base — specifically, the conjugate base of a strong acid. You now have the vocabulary to see exactly why: I⁻, Br⁻, and Cl⁻ are all conjugate bases of strong acids (HI, HBr, HCl, all with very negative pKa), which is precisely what makes them stable, weakly basic, and willing to leave.</p><p class="step-body" style="margin-bottom:0;">Reading a pKa table therefore does double duty: it ranks acid strength going one way, and it ranks conjugate base strength (and leaving-group ability) going the other.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'The strongest bases in this course are conjugate bases of the weakest acids.',
+        bodyHtml: '<div class="explain-box">LDA (lithium diisopropylamide), NaNH₂ (sodium amide), and NaH (sodium hydride) are among the strongest bases you\'ll use in organic synthesis. Each is the conjugate base of an extremely weak acid: an amine (pKa ≈ 38), ammonia (pKa ≈ 38), and H₂ (pKa ≈ 36) respectively. You\'ll reach for these specifically in Module 11 to deprotonate weakly acidic alpha C–H bonds (pKa ≈ 20-25) — only a strong-enough base, meaning the conjugate base of a weak-enough acid, can pull off that proton.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'HF has pKa 3.2. Compared to Cl⁻ (conjugate base of HCl, pKa −7), F⁻ is a...',
+        options: ['Stronger base — HF is a weaker acid than HCl, so F⁻ holds on to charge more readily', 'Weaker base', 'Identical base — halides are always the same strength'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — HF (pKa 3.2) is a much weaker acid than HCl (pKa −7), so its conjugate base F⁻ is a correspondingly stronger, more reactive base than Cl⁻. This is also why F⁻ is a much worse leaving group than Cl⁻.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

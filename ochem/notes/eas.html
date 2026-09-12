@@ -1,0 +1,48 @@
+<p class="step-body">Benzene's pi electrons are nucleophilic, just like an alkene's — but the outcome of attacking an electrophile is completely different. An alkene adds; benzene substitutes. Understanding why is a single energetic argument, and once you have it, the entire mechanism of every reaction in this section follows.</p>
+
+<h3>Why substitution, not addition</h3>
+<p class="step-body">Benzene's pi electrons attack an electrophile exactly as an alkene's would, giving a carbocation. But this cation — the <b>arenium ion</b>, or Wheland intermediate — has an sp³ carbon in the ring, which breaks the continuous conjugation and destroys the roughly 36 kcal/mol of aromatic stabilization.</p>
+<p class="step-body">At that point there are two options. A nucleophile could trap the cation, giving an addition product that is permanently non-aromatic. Or the ring could lose a proton from the same carbon the electrophile attacked, restoring full conjugation and regenerating the aromatic ring.</p>
+<p class="step-body">The second wins overwhelmingly, because recovering 36 kcal/mol of aromatic stabilization is worth far more than the new C–Nu bond would be. Net result: a hydrogen has been replaced by the electrophile. <b>Substitution</b>, not addition — and it is thermodynamics, not the mechanism's first step, that decides it.</p>
+
+<h3>The arenium ion</h3>
+<p class="step-body">The positive charge in the arenium ion is delocalized over three ring carbons, the ones ortho and para to the sp³ carbon. That is real stabilization, and it is why the reaction proceeds at all — but it is nowhere near full aromatic stabilization, since conjugation is still broken.</p>
+<p class="step-body">Which is why every electrophilic aromatic substitution needs a genuinely powerful electrophile, usually manufactured on the spot with a Lewis acid. Benzene is a far weaker nucleophile than an alkene; bromine alone adds to an alkene instantly and does nothing to benzene at all.</p>
+
+<div class="notes-fact">Because restoring aromaticity is so favourable, deprotonation is fast and the first step — the electrophile attacking the ring — is essentially always rate-determining. That single fact is what makes the directing-effects analysis in the next section work: anything that stabilizes the arenium ion stabilizes the transition state leading to it, and therefore speeds the reaction up.</div>
+
+<h3>The five reactions, and how each electrophile is made</h3>
+<div class="notes-table-wrap">
+<table class="notes-table">
+<tr><th>Reaction</th><th>Reagents</th><th>Electrophile</th><th>Installs</th></tr>
+<tr><td>halogenation</td><td>Br₂ / FeBr₃</td><td>Br⁺ (effectively)</td><td>–Br</td></tr>
+<tr><td>nitration</td><td>HNO₃ / H₂SO₄</td><td>NO₂⁺</td><td>–NO₂</td></tr>
+<tr><td>sulfonation</td><td>SO₃ / H₂SO₄</td><td>SO₃</td><td>–SO₃H</td></tr>
+<tr><td>FC alkylation</td><td>RCl / AlCl₃</td><td>R⁺</td><td>–R</td></tr>
+<tr><td>FC acylation</td><td>RCOCl / AlCl₃</td><td>RCO⁺</td><td>–COR</td></tr>
+</table>
+</div>
+<p class="step-body"><b>Halogenation.</b> The Lewis acid coordinates to one bromine and polarizes the Br–Br bond enough that the ring can attack. Fluorine is too reactive to control and iodine too unreactive, so this is a chlorine and bromine reaction in practice.</p>
+<p class="step-body"><b>Nitration.</b> Sulfuric acid protonates nitric acid, which loses water to give the <b>nitronium ion</b>, NO₂⁺ — linear, potent, and one of the most useful electrophiles in aromatic chemistry, because the nitro group it installs can later be reduced to an amine and then converted to almost anything via diazonium chemistry.</p>
+<p class="step-body"><b>Sulfonation.</b> SO₃ is directly electrophilic at sulfur, no activation needed. Uniquely among these, sulfonation is <b>reversible</b> — hot dilute aqueous acid removes the sulfonic acid group — which makes it usable as a temporary blocking group for a position you want to keep free.</p>
+<p class="step-body"><b>Friedel–Crafts alkylation</b> and <b>acylation</b> both use a Lewis acid to generate a carbon electrophile, and both form a carbon–carbon bond to the ring. They are treated together below because one of them has serious problems and the other does not.</p>
+
+<h3>The limitations of Friedel–Crafts alkylation</h3>
+<p class="step-body">Alkylation looks like the more direct way to put an alkyl group on a ring, and in practice it is the less useful of the pair, for three reasons.</p>
+<p class="step-body"><b>Rearrangement.</b> It proceeds through a genuine carbocation, so it inherits the hydride and alkyl shifts of Module 6. Reacting benzene with 1-chloropropane and AlCl₃ gives mostly isopropylbenzene, not propylbenzene — the primary cation rearranges before it ever reaches the ring.</p>
+<p class="step-body"><b>Polyalkylation.</b> The alkyl group installed is an activator, so the product is <i>more</i> reactive than the starting material and is attacked again. Mixtures result.</p>
+<p class="step-body"><b>It fails on deactivated rings.</b> A ring bearing a nitro group, or a free amine (which the Lewis acid simply complexes), will not undergo Friedel–Crafts at all.</p>
+
+<div class="notes-fact">Acylation solves the first two problems outright. The <b>acylium ion</b>, RCO⁺, is resonance-stabilized by the adjacent oxygen — the same stabilization as the oxocarbenium ion from Module 9 — so it has no driving force to rearrange. And the ketone it installs is a <i>deactivator</i>, so the product is less reactive than the starting material and polyacylation does not happen. The standard workaround for making an unrearranged alkylbenzene is therefore: acylate, then reduce the ketone to a CH₂ with a Clemmensen or Wolff–Kishner reduction. Two steps, and it works where one step does not.</div>
+
+<div class="notes-example">
+<span class="k">Worked example — making propylbenzene</span>
+<p><b>The naive route:</b> benzene + 1-chloropropane / AlCl₃. Gives mostly isopropylbenzene, because the primary cation rearranges. ✗</p>
+<p><b>The working route:</b> benzene + propanoyl chloride / AlCl₃ gives propiophenone, with no rearrangement possible and no polysubstitution. Then Zn(Hg)/HCl (Clemmensen) reduces the ketone to CH₂, giving propylbenzene. ✓</p>
+<p>This is a standard exam question and a standard real synthesis, and the reasoning behind it is entirely about the stability of the electrophile.</p>
+</div>
+
+<div class="notes-pitfall"><b>Order of operations matters enormously in aromatic synthesis.</b> Because each substituent changes both the rate and the position of the next one, installing the same two groups in the opposite order gives a different product. Planning a disubstituted benzene means deciding not just which reactions to run but in which sequence — which is what the next section gives you the tools for.</div>
+
+<h3>What carries forward</h3>
+<p class="step-body">The arenium ion is the intermediate whose stability the next section analyses to predict where substitution happens. The rate-determining first step is what makes that analysis valid. And the reactions tabulated here, combined with the diazonium chemistry of Module 12, are the toolkit for building substituted aromatic compounds — which is most of medicinal chemistry.</p>

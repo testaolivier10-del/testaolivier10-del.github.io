@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nucleophilic Acyl Substitution — Carboxylic Acids &amp; Derivatives | Organic Chemistry</title>
+<meta name="description" content="Learn why carbonyl carbons undergo substitution, not just addition, via a tetrahedral intermediate that collapses by kicking out a leaving group.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/acyl-substitution.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 10 &middot; Carboxylic Acids &amp; Derivatives</div>
+    <h1 style="margin-bottom:4px;">Nucleophilic acyl substitution.</h1>
+    <p class="lede" style="margin-top:0;">Add a nucleophile, kick out a leaving group — a carbonyl with an available leaving group reacts by substitution, not addition.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'acyl-substitution',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        diagramHtml: window.OchemMolecules.svg('acetyl-chloride', { caption: 'The top of the reactivity ladder. Chlorine barely donates into the carbonyl, so the carbon stays very electrophilic, and chloride leaves easily once the tetrahedral intermediate collapses.' }),
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Substitution at a carbonyl is really addition, then elimination.',
+        bodyHtml: '<p class="step-body">Start exactly like ordinary nucleophilic addition (Module 9): a nucleophile attacks the carbonyl carbon, pi electrons shift onto oxygen, and a tetrahedral alkoxide intermediate forms. If this carbon also carries a leaving group X (as every carboxylic acid derivative does), the story doesn\'t stop there.</p><p class="step-body" style="margin-bottom:0;">Instead of simply being protonated, the alkoxide\'s electrons flow back down to reform the C=O pi bond, pushing X off the molecule entirely as it leaves with the bonding electrons. Net result: the nucleophile has replaced X — a genuine <b>substitution</b>, even though the mechanism runs through the exact same tetrahedral intermediate as addition.</p>'
+      },
+      {
+        render: function(api){
+          var stages = [
+            { key: 'attack', label: 'Nucleophile attacks the carbonyl carbon' },
+            { key: 'tet', label: 'Tetrahedral intermediate forms (carbon now bonded to Nu, X, and O⁻)' },
+            { key: 'collapse', label: 'Electrons flow back from O⁻ to reform C=O, pushing X out as the leaving group' }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the three stages of nucleophilic acyl substitution in order.</h2>' +
+            '<div class="choice-row" style="flex-direction:column;">' + stages.map(function(s){
+              return '<button class="choice-btn" data-v="' + s.key + '">' + s.label + '</button>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Correct clicks: 0 / 3</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var order = ['attack', 'tet', 'collapse'];
+          var idx = 0, mistake = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(btn.disabled) return;
+              var key = btn.getAttribute('data-v');
+              if(key === order[idx]){
+                btn.disabled = true;
+                btn.classList.add('correct');
+                idx++;
+                hint.textContent = 'Correct clicks: ' + idx + ' / 3';
+                if(idx === 3){
+                  api.record(!mistake);
+                  api.showFeedback(fb, !mistake, mistake ? 'You got there, but out of order at first. Attack, then tetrahedral intermediate, then collapse with the leaving group departing.' : 'Exactly right — addition, then elimination. This is the mechanistic signature of every carboxylic acid derivative reaction in this module.');
+                  next.disabled = false;
+                }
+              } else {
+                mistake = true;
+                btn.classList.add('wrong');
+                setTimeout(function(){ btn.classList.remove('wrong'); }, 500);
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Why does a ketone\'s tetrahedral intermediate not collapse the same way an ester\'s does?',
+        options: ['Ketones don\'t form tetrahedral intermediates at all', 'A ketone\'s two carbon substituents have no way to leave as carbanions, so the intermediate is simply protonated instead, giving permanent addition', 'Ketones react too slowly for any intermediate to form'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — the presence (or absence) of a genuine leaving group attached to the carbonyl carbon is exactly what separates substitution (carboxylic acid derivatives) from simple addition (aldehydes/ketones).',
+        wrongFeedback: 'Ketones do form the same tetrahedral intermediate — the difference is that neither carbon substituent can leave as a leaving group, so the intermediate just gets protonated instead of collapsing.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Worked example: turning an ester into an amide.',
+        bodyHtml: '<p class="step-body">An amine attacks an ester\'s carbonyl carbon, forming a tetrahedral intermediate now bearing three things on that carbon: the new nitrogen nucleophile, the original OR group, and the negatively charged oxygen. Two groups could in principle leave from here — but comparing their conjugate acids (RO⁻\'s conjugate acid, an alcohol, pKa ≈16, versus R₂N⁻\'s conjugate acid, an amine, pKa ≈ 38) tells you exactly which one actually will.</p><p class="step-body" style="margin-bottom:0;">The weaker base (better leaving group) departs — that\'s RO⁻, not R₂N⁻ — so the alkoxide leaves and the amine stays attached, and the carbonyl reforms as an <b>amide</b>. This single leaving-group comparison, straight out of the pKa lesson, is all you need to predict which group survives in any acyl substitution.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'In the tetrahedral intermediate formed when an amine attacks an ester, why does the OR group leave instead of the incoming amine nitrogen?',
+        options: ['The amine nitrogen is physically too big to leave', 'Nitrogen never leaves in any reaction', 'RO⁻ is the weaker base (better leaving group) of the two, since its conjugate acid (an alcohol, pKa ≈16) is a stronger acid than an amine (pKa ≈ 38)'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — this is a direct application of the leaving-group/pKa comparison rule: the group whose conjugate acid is the stronger acid (lower pKa) is the better leaving group.',
+        wrongFeedback: 'Size isn\'t the deciding factor — compare the pKa values of the two groups\' conjugate acids to see which is the better (weaker-base) leaving group.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Fischer esterification: acid catalysis rescues a reaction that starts from a bad leaving group.',
+        bodyHtml: '<p class="step-body">Making an ester directly from a carboxylic acid and an alcohol looks, at first glance, like it should go badly: the tetrahedral intermediate would need to expel OH⁻ (from the original acid), and OH⁻ is a poor leaving group, exactly as established back in Module 8. Acid catalysis solves this the same way it solved alcohol activation and ether cleavage: <b>protonate the leaving oxygen first</b>. Once protonated, the leaving group becomes neutral water — the conjugate base of H₃O⁺ — a vastly better leaving group.</p><p class="step-body" style="margin-bottom:0;">This whole sequence is reversible in both directions under acid catalysis (ester formation and ester hydrolysis are the same equilibrium run forward or backward), which is why Fischer esterification typically needs excess alcohol or continuous water removal to push the equilibrium toward the ester product.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 6 · Independent Practice',
+        title: 'Why is acid catalysis specifically needed for Fischer esterification, when acid chlorides react with alcohols readily without any acid catalyst?',
+        options: ['An acid chloride\'s leaving group (Cl⁻) is already excellent without help; a carboxylic acid\'s leaving group (OH⁻) needs to be protonated first to become a good leaving group (water)', 'Fischer esterification doesn\'t actually require acid catalysis', 'Alcohols are unreactive nucleophiles unless acid-activated'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — it all comes down to the leaving group\'s baseline quality: Cl⁻ needs no help, while OH⁻ needs to be converted to water by protonation before the reaction can proceed efficiently.',
+        wrongFeedback: 'Alcohols are perfectly good nucleophiles on their own — the catalysis requirement is specifically about activating the leaving group of the carboxylic acid, not the incoming nucleophile.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'An acid chloride is treated with water (no other catalyst). Predict what happens, and compare it to treating an amide with plain water under the same mild conditions.',
+        options: ['Both hydrolyze at the same rate, since both are carboxylic acid derivatives', 'The acid chloride hydrolyzes rapidly on its own (Cl⁻ is an excellent leaving group with no help needed); the amide does essentially nothing without strong acid/base and heat, since R₂N⁻ is such a poor leaving group', 'Neither reacts with plain water under any conditions'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — this is the reactivity ladder in direct action: acid chlorides are so reactive they hydrolyze almost immediately in moist air, while amides need genuinely harsh conditions because their leaving group is so poor.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

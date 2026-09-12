@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electrophilic Addition — Interactive Mechanism | Organic Chemistry</title>
+<meta name="description" content="Perform electrophilic addition to an alkene yourself: push the pi bond at the proton, form the carbocation, and see why Markovnikov orientation falls out of carbocation stability rather than a rule to memorize.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/mechanisms/addition.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+  .lesson-shell{max-width:760px;margin:0 auto;}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 7 &middot; Alkenes</div>
+    <h1 style="margin-bottom:4px;">Addition: the alkene attacks first.</h1>
+    <p class="lede" style="margin-top:0;">An alkene is electron-rich. Everything about this mechanism follows from taking that seriously — including which carbon ends up with the halogen.</p>
+  </div>
+
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel"></div>
+  </div>
+
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/molecule-editor.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+  window.OCHEM_MECHANISM = {
+  "topicId": "addition-reactions",
+  "steps": [
+    {
+      "type": "explain",
+      "eyebrow": "Setup",
+      "title": "The pi bond is the nucleophile.",
+      "bodyHtml": "<p class=\"step-body\">In substitution and elimination the alkyl halide was the electrophile and something else attacked it. Here it is the other way round: the <b>alkene</b> is the electron-rich species, and it goes looking for something to attack.</p><p class=\"step-body\">Propene and H–Br. The pi bond sits above and below the C=C, loosely held and available; H–Br is polarized with hydrogen at the δ+ end.</p>",
+      "molecule": "propene-hbr"
+    },
+    {
+      "type": "draw",
+      "eyebrow": "Step 1 · Attack",
+      "title": "Push the pi bond at the proton.",
+      "bodyHtml": "<p class=\"step-body\">Two arrows. The alkene attacks, and because hydrogen cannot take a fifth bond, something has to break at the same moment.</p>",
+      "molecule": "propene-hbr",
+      "concepts": [
+        "alkene-pi-nucleophile",
+        "curved-arrow-direction"
+      ],
+      "arrows": [
+        {
+          "from": "bond:c1-c2",
+          "to": "hbrH"
+        },
+        {
+          "from": "bond:hbrH-hbrBr",
+          "to": "hbrBr"
+        }
+      ],
+      "why": "The pi electrons become a new C–H sigma bond, and the H–Br bond breaks so bromide leaves with the pair. What is left behind is a carbocation on the carbon that did NOT get the hydrogen.",
+      "wrong": {
+        "bond:c1-c2>hbrBr": "You attacked the bromine. In H–Br the bromine is the electronegative end — it is already electron-rich, and two electron-rich species repel. The δ+ hydrogen is the electrophile here.",
+        "hbrH>bond:c1-c2": "That arrow runs backwards. The electrons live in the pi bond, so the pi bond is the tail; a hydrogen with one bond has no pair to give away.",
+        "hbrBr>bond:c1-c2": "Bromide is not the attacker. It only arrives after the carbocation forms — at this stage it is still attached to the hydrogen, and it leaves rather than attacks."
+      },
+      "nextLabel": "Where did the charge land?"
+    },
+    {
+      "type": "mcq",
+      "eyebrow": "Step 2 · The intermediate",
+      "title": "Which carbocation actually forms?",
+      "bodyHtml": "<p class=\"step-body\">The proton could in principle have gone to either alkene carbon, giving two different carbocations. Only one of them matters.</p>",
+      "options": [
+        "The primary cation — the proton adds to the middle carbon, leaving the charge on the terminal CH₂",
+        "Both form in equal amounts, since both are possible",
+        "The secondary cation — the proton adds to the terminal CH₂, leaving the charge on the middle carbon"
+      ],
+      "correctIndex": 2,
+      "concepts": [
+        "carbocation-stability",
+        "markovnikov-regiochem"
+      ],
+      "why": "Secondary beats primary by a wide margin — two alkyl groups donate electron density into the empty p orbital instead of one. The transition state leading to it is lower, so that is the path taken.",
+      "wrong": {
+        "0": "That would put the positive charge on a primary carbon, which is far less stable. The two alkyl groups on the middle carbon are exactly what stabilize the charge there.",
+        "1": "They are not equally accessible. The difference between a secondary and a primary carbocation is worth several kcal/mol, which is more than enough to make one pathway dominate completely."
+      },
+      "nextLabel": "Finish the mechanism"
+    },
+    {
+      "type": "explain",
+      "eyebrow": "Step 3 · Capture",
+      "title": "Bromide comes back in.",
+      "bodyHtml": "<p class=\"step-body\">The carbocation is planar and desperately electron-poor. Bromide — which left in step 1 and is sitting right there — attacks it, and the reaction is over.</p><p class=\"step-body\">So the bromine ends up on the <b>more substituted</b> carbon. That is Markovnikov's rule, and notice that we never needed the rule: it fell out of asking which carbocation was more stable.</p>"
+    },
+    {
+      "type": "mcq",
+      "eyebrow": "Step 4 · Stereochemistry",
+      "title": "The starting alkene was flat. What about the product?",
+      "bodyHtml": "<p class=\"step-body\">Suppose the carbocation carbon ends up bonded to four different groups.</p>",
+      "options": [
+        "A racemic mixture — the planar cation can be attacked from either face",
+        "A single enantiomer — bromide returns to the face it left from",
+        "A single enantiomer — the alkene's geometry is preserved"
+      ],
+      "correctIndex": 0,
+      "concepts": [
+        "stereochemical-outcome",
+        "carbocation-stability"
+      ],
+      "why": "The carbocation is sp² and planar, so bromide can approach from above or below at essentially equal rates. Any stereochemical information the alkene carried is destroyed the moment the cation forms.",
+      "wrong": {
+        "1": "Bromide is a free ion in solution by then — it has no memory of which side it came from, and nothing holds it to that face.",
+        "2": "The alkene's geometry is lost when the pi bond is consumed. Preserved geometry is the signature of a CONCERTED addition, like bromination through a bridged bromonium ion."
+      },
+      "nextLabel": "One more"
+    },
+    {
+      "type": "final",
+      "eyebrow": "Challenge",
+      "title": "HBr is added to 3-methyl-1-butene. The major product has the bromine on C2 — but a significant amount has it on C3 instead. Why?",
+      "bodyHtml": "<p class=\"step-body\">No hints. Think about what the first-formed cation could do before bromide reaches it.</p>",
+      "options": [
+        "Bromide attacks C3 directly because it is less hindered",
+        "The secondary cation at C2 undergoes a hydride shift to the neighbouring tertiary position, and bromide captures whichever cation it meets",
+        "The reaction switched to an anti-Markovnikov radical pathway partway through"
+      ],
+      "correctIndex": 1,
+      "concepts": [
+        "carbocation-rearrangement",
+        "carbocation-stability"
+      ],
+      "why": "A hydride on the adjacent carbon migrates with its bonding pair, converting the secondary cation into a more stable tertiary one. Rearrangement is the classic tell that a mechanism goes through a free carbocation — it is impossible in a concerted reaction, which is exactly why hydroboration never shows it.",
+      "wrong": {
+        "0": "Sterics do not override carbocation stability here, and in any case bromide attacks the carbon carrying the positive charge — it does not get to choose.",
+        "2": "Radical (anti-Markovnikov) addition needs peroxides present, and it would put the bromine on the LESS substituted carbon, not on a more substituted one."
+      }
+    }
+  ]
+};
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/mechanism-page.js"></script>
+</body>
+</html>

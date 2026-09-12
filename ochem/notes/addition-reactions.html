@@ -1,0 +1,48 @@
+<p class="step-body">An addition reaction converts a pi bond into two new sigma bonds. It is thermodynamically favourable almost every time — you trade roughly 65 kcal/mol of pi bond for two sigma bonds worth substantially more — so the interesting questions are not whether addition happens but <b>where</b> each group ends up (regiochemistry) and <b>from which face</b> it arrives (stereochemistry).</p>
+
+<h3>The alkene is the nucleophile now</h3>
+<p class="step-body">This is a genuine role reversal from Module 6. There, carbon was the electrophile and something else attacked it. Here the pi bond's exposed electron density, sitting above and below the sigma framework and loosely held, makes the alkene itself the <b>nucleophile</b> — it attacks an electrophile rather than waiting to be attacked.</p>
+<p class="step-body">The general pattern is <b>electrophilic addition</b>, and it has a consistent shape: the pi bond attacks an electrophile, generating a positively charged intermediate, which a nucleophile then captures. What changes from reaction to reaction is the nature of that intermediate, and that is what controls the stereochemistry.</p>
+
+<h3>Hydrohalogenation (HX addition)</h3>
+<p class="step-body">With HBr: the pi bond attacks the hydrogen of H–Br — tail on the pi bond, head on H — while the H–Br bond breaks heterolytically, both electrons going to bromine. This gives a carbocation on one alkene carbon and a free bromide ion. Bromide then attacks the cation, forming the C–Br bond.</p>
+<p class="step-body">Which carbon becomes the cation is not arbitrary: it is whichever gives the more stable carbocation, which is the more substituted one. That is Markovnikov selectivity, and the next section takes it up properly.</p>
+<p class="step-body">Because the carbocation is flat, bromide can attack either face, so a new stereocenter formed this way is racemic. Reactivity follows HI &gt; HBr &gt; HCl, tracking the acid strengths.</p>
+
+<div class="notes-fact">The carbocation intermediate here is the same species as in SN1 and E1 — which means it can <b>rearrange</b> by hydride or alkyl shift if a more stable cation is reachable. Adding HCl to 3-methyl-1-butene gives mainly 2-chloro-2-methylbutane, because the initial secondary cation shifts a hydride to become tertiary before chloride arrives. Every time you draw a carbocation, check for the shift.</div>
+
+<h3>Halogenation: no carbocation, no rearrangement</h3>
+<p class="step-body">With Br₂ or Cl₂ the mechanism differs in a way that changes everything downstream. The pi bond attacks one bromine of Br–Br, but instead of releasing a free carbocation the departing bromide bridges back onto both carbons, forming a three-membered <b>bromonium ion</b>. That cyclic, positively charged intermediate shields one entire face of the molecule.</p>
+<p class="step-body">A separate bromide then attacks a carbon of the bromonium ion from the opposite face, backside, exactly as in SN2 — and the ring opens. Because the second attack is forced to the far face, the two bromines end up on <b>opposite</b> faces: <b>anti addition</b>, every time.</p>
+<p class="step-body">This is a genuinely testable prediction rather than a preference. Adding Br₂ to <i>cis</i>-2-butene gives the meso dibromide; adding it to <i>trans</i>-2-butene gives the racemic (R,R)/(S,S) pair. Same reagent, same mechanism, different alkene geometry, different products — which is exactly what "stereospecific" means.</p>
+<p class="step-body">Running the reaction in water instead of an inert solvent gives a useful variation: water, present in vast excess, opens the bromonium ion instead of bromide, producing a <b>halohydrin</b> with OH and Br anti to each other. Water attacks the more substituted carbon, because that carbon carries more of the positive charge in the unsymmetrical bridged ion.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — proving the bromonium ion exists</span>
+<p>If bromination went through a free carbocation, the two bromines could end up syn or anti in roughly equal measure, since a flat cation can be attacked from either face.</p>
+<p>What is observed is exclusively anti addition, with no syn product at all. A free cation cannot explain that; a bridged ion that blocks one face completely can.</p>
+<p>The halohydrin result confirms it from another angle: a free cation would let water attack either carbon at random, but water goes specifically to the more substituted one — which means the bridged ion is unsymmetrical, with more positive charge on the carbon better able to bear it.</p>
+</div>
+
+<h3>Acid-catalyzed hydration</h3>
+<p class="step-body">Water adds across the double bond with catalytic acid. The pi bond attacks a proton from H₃O⁺, giving a carbocation with Markovnikov selectivity; water attacks the cation as the nucleophile; and a final deprotonation by another water molecule regenerates the catalyst and gives the neutral alcohol.</p>
+<p class="step-body">Three steps, one catalyst, consumed and regenerated. This is the most direct route from an alkene to an alcohol and the bridge into Module 8 — and because it goes through a carbocation, it carries the same rearrangement risk as hydrohalogenation. When you need the Markovnikov alcohol <i>without</i> that risk, oxymercuration–demercuration does the same job through a bridged mercurinium ion that cannot rearrange.</p>
+<p class="step-body">It is worth noticing that hydration is the exact reverse of the E1 dehydration from Module 6, sharing every intermediate. Which direction the reaction runs is controlled by conditions: dilute acid and excess water give the alcohol, while concentrated acid and heat with the alkene distilled off give the alkene. Le Châtelier's principle, applied deliberately.</p>
+
+<div class="notes-pitfall"><b>Match the mechanism to the stereochemistry.</b> A reaction that goes through a free carbocation cannot give a single diastereomer, because the flat cation is attacked from both faces. A reaction that gives clean anti or clean syn addition must be going through something else — a bridged ion, or a concerted step. When a question tells you the stereochemical outcome, it has told you what the intermediate was.</div>
+
+<h3>The additions worth tabulating</h3>
+<div class="notes-table-wrap">
+<table class="notes-table">
+<tr><th>Reagent</th><th>Adds</th><th>Regio</th><th>Stereo</th></tr>
+<tr><td>HX</td><td>H, X</td><td>Markovnikov</td><td>none (racemic)</td></tr>
+<tr><td>X₂</td><td>X, X</td><td>—</td><td>anti</td></tr>
+<tr><td>X₂ / H₂O</td><td>OH, X</td><td>OH to more subst.</td><td>anti</td></tr>
+<tr><td>H₃O⁺</td><td>H, OH</td><td>Markovnikov</td><td>none</td></tr>
+<tr><td>BH₃ then H₂O₂/HO⁻</td><td>H, OH</td><td>anti-Markovnikov</td><td>syn</td></tr>
+<tr><td>H₂ / Pd</td><td>H, H</td><td>—</td><td>syn</td></tr>
+</table>
+</div>
+
+<h3>What carries forward</h3>
+<p class="step-body">Electrophilic addition is the reactivity pattern of every pi system in the course. Aromatic rings undergo the same first step in Module 13 and then, uniquely, eliminate rather than add — a difference that is the whole point of aromaticity. Bridged-ion opening reappears with epoxides in Module 8. And the alkene-to-alcohol conversions here are the standard entry into the functional group chemistry of the next four chapters.</p>

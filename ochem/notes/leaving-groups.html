@@ -1,0 +1,57 @@
+<p class="step-body">A nucleophile can be perfect and an electrophile can be beautifully polarized, and if nothing is willing to leave, no reaction happens. The leaving group is the third member of the set, and it is the one that most often decides whether a proposed reaction actually works. It is also the single most common reason a student's proposed mechanism is wrong: something departed that had no business departing.</p>
+
+<h3>Why spreading charge out matters</h3>
+<div class="term-primer">
+<p>This is the one idea underneath the whole section. A negative charge is a concentration of electrons, and like charges repel — so a charge crammed into a small space is crowded, and that repulsion is stored energy. <b>High energy means unstable.</b> Give the charge more room, whether by putting it on a bigger atom or by spreading it over several atoms (<b>delocalization</b>), and the repulsion eases: lower energy, more stable, more willing to exist on its own, better leaving group. Why I⁻ beats Cl⁻, why tosylate is excellent, and why HO⁻ is hopeless are all this one principle applied to three different structures.</p>
+</div>
+
+<h3>What makes a good one</h3>
+<p class="step-body">When a leaving group departs, it takes the bonding pair with it, so it leaves as an anion (or as a neutral molecule, if it was positively charged to begin with). A <b>good</b> leaving group is therefore one that is <b>stable on its own</b> once holding that pair — which is the same thing as saying it is a <b>weak base</b>, which is the same thing as saying it is the conjugate base of a <b>strong acid</b>.</p>
+<p class="step-body">Those three statements are equivalent, and being able to move freely between them is most of the skill. Poor leaving groups — HO⁻, ⁻NH₂, ⁻CH₃ — are strong bases that do not want the negative charge, because it stays concentrated on a small atom or, worse, on one that is not electronegative at all.</p>
+
+<h3>Quantifying it: pKaH</h3>
+<p class="step-body">The cleanest way to rank leaving groups is by the pKa of their <b>conjugate acid</b> — the neutral species you get by handing the proton back to the leaving group — written pKaH. Lower pKaH means a weaker base, which means a better leaving group. The full pKa framework arrives in Module 3; this table is the practical summary.</p>
+<div class="notes-table-wrap">
+<table class="notes-table">
+<tr><th>Leaving group</th><th>Conjugate acid</th><th>pKaH</th><th>Verdict</th></tr>
+<tr><td>N₂</td><td>HN₂⁺</td><td>very low</td><td>Superb</td></tr>
+<tr><td>TsO⁻</td><td>TsOH</td><td>−2.8</td><td>Excellent</td></tr>
+<tr><td>I⁻</td><td>HI</td><td>−10</td><td>Excellent</td></tr>
+<tr><td>Br⁻</td><td>HBr</td><td>−9</td><td>Very good</td></tr>
+<tr><td>Cl⁻</td><td>HCl</td><td>−7</td><td>Good</td></tr>
+<tr><td>H₂O</td><td>H₃O⁺</td><td>−1.7</td><td>Good</td></tr>
+<tr><td>F⁻</td><td>HF</td><td>3.2</td><td>Poor</td></tr>
+<tr><td>HO⁻</td><td>H₂O</td><td>15.7</td><td>Terrible</td></tr>
+<tr><td>⁻NH₂</td><td>NH₃</td><td>38</td><td>Never</td></tr>
+<tr><td>⁻CH₃</td><td>CH₄</td><td>50</td><td>Never</td></tr>
+</table>
+</div>
+
+<h3>Ranking the halides</h3>
+<p class="step-body">Among the halides the order is <b>I⁻ &gt; Br⁻ &gt; Cl⁻ &gt; F⁻</b>. Iodide is the largest and most polarizable, so it disperses the charge over the biggest volume and is the weakest base of the four. Two reinforcing effects push the same way: the C–I bond is also the weakest and longest of the four, so it is easiest to break.</p>
+<p class="step-body">Fluoride is a genuinely poor leaving group despite fluorine being the most electronegative element, which catches people out. Electronegativity would suggest fluorine is happy to take the electrons — but fluoride is small and charge-dense, the C–F bond is the strongest carbon–halogen bond at roughly 116 kcal/mol, and HF is a weak acid, meaning F⁻ is a reasonably strong base. Alkyl fluorides are essentially inert to substitution, which is exactly why fluorine is used in pharmaceuticals to block metabolism at a particular position.</p>
+
+<div class="notes-pitfall"><b>A mechanism that kicks out HO⁻ is wrong.</b> Hydroxide is the conjugate base of water, a weak acid, so hydroxide is a strong base and will not leave carbon on its own. Nor will ⁻NH₂ or ⁻CH₃. If your proposed arrow pushes a hydroxide off a carbon, the step does not happen — go back and find the activation step you skipped.</div>
+
+<h3>Activating an alcohol</h3>
+<p class="step-body">Alcohols are everywhere in synthesis and HO⁻ never leaves, so converting an OH into something that will leave is one of the most-used operations in organic chemistry. There are three standard routes.</p>
+<p class="step-body"><b>Protonate it.</b> Treat the alcohol with strong acid and the OH becomes OH₂⁺; the leaving group is now neutral water, whose conjugate acid H₃O⁺ has a pKa of −1.7 instead of 15.7. Seventeen pKa units of improvement from one proton. The catch is that everything else in the molecule also experiences strong acid, which is not always survivable.</p>
+<p class="step-body"><b>Tosylate it.</b> Treating the alcohol with TsCl and pyridine converts R–OH to R–OTs. Tosylate's charge is delocalized across three oxygens of the sulfonate group, making it a very weak base and an excellent leaving group. Two advantages over protonation: the conditions are mild and neutral, and because the C–O bond is never broken during the tosylation, <b>any stereocenter on that carbon is left untouched</b>. You install the leaving group with retention, then do your substitution with whatever stereochemistry the mechanism dictates. Mesylate (MsO⁻) and triflate (TfO⁻) are the same idea, triflate being the most reactive of the three by a wide margin.</p>
+<p class="step-body"><b>Convert it to a halide</b>, using SOCl₂ or PBr₃. This swaps the OH for Cl or Br in one step under mild conditions, giving a good leaving group without ever exposing the molecule to strong acid.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — why the tosylate route is chosen</span>
+<p>Suppose you have (S)-butan-2-ol and want (R)-2-butanethiol by SN2 with ⁻SH.</p>
+<p>Protonating with HBr would work, but carbocation formation competes at a secondary center, and any SN1 pathway racemizes the stereocenter — you would get a mixture.</p>
+<p>Tosylate instead: TsCl and pyridine give (S)-butan-2-yl tosylate with the stereocenter untouched, because the C–O bond never breaks. Then ⁻SH does a clean SN2 with backside attack, inverting the center exactly once, and you get (R) product cleanly. The leaving group was chosen for stereochemical control, not just for reactivity.</p>
+</div>
+
+<div class="notes-fact">The best leaving group in common use is N₂, from a diazonium salt. Nitrogen gas is so stable, so unreactive and so entropically favoured on leaving that the reaction is essentially irreversible — which is what makes diazonium chemistry such a powerful tool for installing substituents on aromatic rings in Module 13.</div>
+
+<h3>Reading the names SN1, SN2, E1, E2</h3>
+<div class="term-primer">
+<p>The letter is the reaction type: <b>S</b> for substitution, <b>E</b> for elimination, with the <b>N</b> in S<sub>N</sub> meaning <i>nucleophilic</i> — the incoming group is an electron-rich attacker. The number is how many species take part in the slowest, rate-determining step: <b>1</b> means the molecule ionizes on its own first, with the leaving group departing unassisted, and the nucleophile or base arrives afterwards; <b>2</b> means the leaving group departs at the same instant the nucleophile or base attacks, in one concerted motion. All four require a leaving group to depart at some point — no leaving group, no reaction. Module 6 covers each in full.</p>
+</div>
+
+<h3>What carries forward</h3>
+<p class="step-body">Leaving-group quality is one of the four variables (along with substrate, nucleophile and solvent) that decide which of SN1, SN2, E1 and E2 you get in Module 6. Alcohol activation is a recurring move throughout Modules 8 and 12. And in Module 10, the entire reactivity ordering of the carboxylic acid derivatives — acid chloride &gt; anhydride &gt; ester &gt; amide — turns out to be a leaving-group ranking in disguise.</p>

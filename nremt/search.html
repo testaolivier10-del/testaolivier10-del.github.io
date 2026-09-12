@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search — LevlPrep</title>
+<meta name="description" content="Search across the study notes, glossary, mnemonics, flowcharts, and skills guide on this site.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Search",
+  "url": "https://testaolivier10-del.github.io/nremt/search.html",
+  "isPartOf": {"@type": "WebSite", "name": "LevlPrep", "url": "https://testaolivier10-del.github.io/nremt/"}
+}
+</script>
+<link rel="canonical" href="https://testaolivier10-del.github.io/nremt/search.html">
+<meta property="og:title" content="Search — LevlPrep">
+<meta property="og:description" content="Search across the study notes, glossary, mnemonics, flowcharts, and skills guide on this site.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://testaolivier10-del.github.io/nremt/search.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://testaolivier10-del.github.io/nremt/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of the page's own inline scripts
+     because those read window.HubProgress while the page parses. -->
+<script src="../assets/account.js"></script>
+<script src="../assets/hub-progress.js"></script>
+<script src="../assets/chime.js"></script>
+<script src="../assets/site-chrome.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+
+  #searchBox{
+    width:100%;padding:14px 16px;border:2px solid var(--line);border-radius:var(--radius);
+    font-family:var(--font-ui);font-weight:700;font-size:15.5px;background:var(--white);color:var(--ink);margin-bottom:6px;
+  }
+  #searchBox:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  .search-status{font:700 12.5px var(--font-mono);color:var(--muted);margin-bottom:20px;}
+
+  .result{
+    display:block;background:var(--white);border:2px solid var(--line);border-radius:16px;box-shadow:var(--lift-sm);
+    padding:16px 18px;margin-bottom:12px;text-decoration:none;color:inherit;
+    transition:transform .08s ease, box-shadow .08s ease, border-color .12s ease;
+  }
+  .result:hover{border-color:var(--accent);transform:translateY(1px);box-shadow:0 2px 0 var(--line);}
+  .result-page{
+    font-family:var(--font-ui);font-weight:800;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:4px;
+  }
+  .result-heading{font-weight:900;font-size:15px;margin-bottom:4px;}
+  .result-snippet{font-size:13.5px;font-weight:600;color:var(--muted);}
+  .result-snippet mark{background:#FDE9A0;color:inherit;border-radius:2px;}
+  :root[data-theme="dark"] .result-snippet mark{background:#6b5a1f;}
+  .empty-note{font-size:14px;font-weight:700;color:var(--muted);}
+
+</style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="practice.html">Practice</a> · <a href="study-plan.html">Study Plan</a> · <a href="study-notes.html">Notes</a> · <a href="mnemonics.html">Mnemonics</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
+<div class="wrap">
+  <div class="eyebrow">Tools</div>
+  <h1>Search</h1>
+  <p class="lede">Search across study notes, the glossary, mnemonics, flow diagrams, scenarios, and the skills guide.</p>
+
+  <input type="search" id="searchBox" placeholder="Search this site… (e.g. &quot;OPQRST&quot;, &quot;tension pneumothorax&quot;)" autocomplete="off">
+  <div class="search-status" id="searchStatus">Building search index…</div>
+  <div id="results"></div>
+
+  <footer>
+    <p>Search runs entirely in your browser against this site's own pages — nothing is sent anywhere.</p>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a></p>
+    </footer>
+</div>
+
+<script>
+  const PAGES = [
+    { file: 'study-notes.html', title: 'Study Notes' },
+    { file: 'glossary.html', title: 'Glossary' },
+    { file: 'mnemonics.html', title: 'Mnemonics' },
+    { file: 'flowcharts.html', title: 'Flow Diagrams' },
+    { file: 'skillsheets.html', title: 'Skills Guide' },
+    { file: 'scenario-sim.html', title: 'Scenarios' },
+    { file: 'study-plan.html', title: 'Study Plan' },
+  ];
+
+  let INDEX = [];
+  const statusEl = document.getElementById('searchStatus');
+  const resultsEl = document.getElementById('results');
+  const searchBox = document.getElementById('searchBox');
+
+  function extractChunks(doc, page){
+    const chunks = [];
+    let heading = page.title;
+    const nodes = doc.body.querySelectorAll('h1,h2,h3,h4,p,li,dt,dd,td,summary');
+    nodes.forEach(el => {
+      const tag = el.tagName.toLowerCase();
+      const text = (el.textContent || '').replace(/\s+/g, ' ').trim();
+      if(!text) return;
+      if(/^h[1-4]$/.test(tag)){
+        heading = text;
+        return;
+      }
+      if(text.length < 12) return;
+      chunks.push({ page: page.title, file: page.file, heading, text });
+    });
+    return chunks;
+  }
+
+  // The practice question bank now lives in its own JSON file (see practice.html),
+  // rather than being buried in that page's inline script — which is what makes
+  // indexing it here possible at all.
+  async function fetchQuestionChunks(){
+    const res = await fetch('assets/questions.json');
+    const questions = await res.json();
+    return questions.map((q, i) => ({
+      page: 'Practice Questions',
+      // Deep link straight to the one question, which practice.html opens on its
+      // own in review mode. Without the index a question result could only land
+      // the reader on the exam start screen with no way back to what they found.
+      file: 'practice.html?q=' + i,
+      heading: q.domain + (q.topic ? ' — ' + q.topic : ''),
+      text: q.q + ' ' + (q.explain || ''),
+      isQuestion: true,
+    }));
+  }
+
+  async function buildIndex(){
+    const results = await Promise.allSettled(
+      PAGES.map(async page => {
+        const res = await fetch(page.file);
+        const html = await res.text();
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        doc.querySelectorAll('script,style').forEach(n => n.remove());
+        return extractChunks(doc, page);
+      }).concat([fetchQuestionChunks()])
+    );
+    let pagesIndexed = 0, questionsIndexed = 0;
+    results.forEach((r, i) => {
+      if(r.status !== 'fulfilled') return;
+      INDEX = INDEX.concat(r.value);
+      // The question bank is the last entry in the settled list (see the concat
+      // above). Count what actually resolved rather than asserting it did —
+      // offline, the bank is the one source that can drop out on its own.
+      if(i < PAGES.length) pagesIndexed++;
+      else questionsIndexed = r.value.length;
+    });
+    statusEl.textContent = !INDEX.length
+      ? 'Could not build a search index right now — try again after the page finishes loading.'
+      : questionsIndexed
+        ? `Indexed ${pagesIndexed} pages and ${questionsIndexed.toLocaleString()} practice questions. Type to search.`
+        : `Indexed ${pagesIndexed} pages. The practice question bank isn't available right now — reconnect once and it'll be included next time.`;
+    if(searchBox.value.trim()) runSearch(searchBox.value.trim());
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  const escapeRe = s => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const tokenize = q => q.toLowerCase().split(/\s+/).filter(Boolean);
+
+  // Highlight AFTER escaping, matching against the escaped text — marking the raw
+  // string first and escaping afterwards would eat its own <mark> tags, and
+  // marking raw text with a raw pattern misses any term containing & < > ' or ".
+  function highlight(text, terms){
+    const first = terms
+      .map(t => text.toLowerCase().indexOf(t))
+      .filter(i => i !== -1)
+      .sort((a, b) => a - b)[0];
+    const start = first === undefined ? 0 : Math.max(0, first - 60);
+    const end = Math.min(text.length, start + 220);
+    let snippet = escapeHtml(text.slice(start, end));
+    if(start > 0) snippet = '… ' + snippet;
+    if(end < text.length) snippet = snippet + ' …';
+    for(const t of terms){
+      snippet = snippet.replace(new RegExp('(' + escapeRe(escapeHtml(t)) + ')', 'ig'), '<mark>$1</mark>');
+    }
+    return snippet;
+  }
+
+  // Every term has to appear somewhere in the chunk (AND, not OR), which is what
+  // makes a natural phrase like "chest pain nitroglycerin" work — matching the
+  // whole query as one literal substring returned nothing for anything but an
+  // exact quotation. A chunk scores higher when terms land in its heading, and
+  // higher again when the whole phrase appears intact.
+  function runSearch(q){
+    if(!q){ resultsEl.innerHTML = ''; return; }
+    const terms = tokenize(q);
+    if(!terms.length){ resultsEl.innerHTML = ''; return; }
+    const phrase = q.toLowerCase().trim();
+
+    const scored = INDEX
+      .map(c => {
+        const h = c.heading.toLowerCase(), t = c.text.toLowerCase();
+        let score = 0;
+        for(const term of terms){
+          const inH = h.includes(term), inT = t.includes(term);
+          if(!inH && !inT) return null;
+          score += (inH ? 2 : 0) + (inT ? 1 : 0);
+        }
+        if(terms.length > 1 && (h.includes(phrase) || t.includes(phrase))) score += 4;
+        return { ...c, score };
+      })
+      .filter(Boolean)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 40);
+
+    if(scored.length === 0){
+      resultsEl.innerHTML = `<p class="empty-note">No results for "${escapeHtml(q)}".</p>`;
+      return;
+    }
+    resultsEl.innerHTML = scored.map(c => {
+      // Question results carry their own ?q= deep link already; page results get a
+      // text fragment so the browser scrolls to the match. A fragment is built from
+      // the longest term rather than the whole query, which rarely appears verbatim.
+      const longest = terms.slice().sort((a, b) => b.length - a.length)[0];
+      const href = c.isQuestion ? c.file : c.file + '#:~:text=' + encodeURIComponent(longest);
+      return `
+        <a class="result" href="${href}">
+          <div class="result-page">${escapeHtml(c.page)}</div>
+          <div class="result-heading">${escapeHtml(c.heading)}</div>
+          <div class="result-snippet">${highlight(c.text, terms)}</div>
+        </a>
+      `;
+    }).join('');
+  }
+
+  let debounceTimer;
+  searchBox.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => runSearch(searchBox.value.trim()), 120);
+  });
+
+  const params = new URLSearchParams(location.search);
+  if(params.get('q')) searchBox.value = params.get('q');
+
+  buildIndex();
+</script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

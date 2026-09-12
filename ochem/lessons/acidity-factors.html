@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Factors Affecting Acidity — Acids &amp; Bases | Organic Chemistry</title>
+<meta name="description" content="Learn the ARIO framework — Atom, Resonance, Induction, Orbital — for predicting and explaining relative acidity, with real periodic trends and pKa examples.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/acidity-factors.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 3 &middot; Acids &amp; Bases</div>
+    <h1 style="margin-bottom:4px;">Factors affecting acidity.</h1>
+    <p class="lede" style="margin-top:0;">Four questions that predict relative acid strength almost every time: Atom, Resonance, Induction, Orbital.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/molecule-editor.js"></script>
+<script src="../assets/arrow-step.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'acidity-factors',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        diagramHtml: window.OchemMolecules.svg('acetate-ion', { caption: 'Acetic acid’s conjugate base. The charge is not parked on one oxygen — resonance spreads it over both equally, and that delocalisation is most of why acetic acid is eleven pKa units stronger than ethanol.' }),
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Four questions, in order: Atom, Resonance, Induction, Orbital.',
+        bodyHtml: '<p class="step-body">Comparing the acidity of two molecules always comes down to comparing the stability of their <b>conjugate bases</b> — the more stable the conjugate base, the more acidic the starting acid. Four factors determine that stability, usually checked in this order of importance:</p><ul class="step-body" style="margin-top:0;"><li><b>Atom</b> — what atom is holding the negative charge? Bigger and more electronegative atoms stabilize it better.</li><li><b>Resonance</b> — can the charge delocalize over multiple atoms?</li><li><b>Induction</b> — are nearby electronegative atoms pulling electron density away through sigma bonds?</li><li><b>Orbital</b> — what hybridization holds the charge? More s-character is more stable.</li></ul><p class="step-body" style="margin-bottom:0;">This is often abbreviated <b>ARIO</b>. Atom effects tend to be the largest, so check that first — but all four are real, independent, additive effects, and you\'ll need all four to explain acidity differences precisely.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Atom effects run in two different directions for two different reasons.',
+        bodyHtml: '<p class="step-body"><b>Across a period</b> (same row, increasing electronegativity left to right): C–H (pKa ≈ 50) &lt; N–H (≈ 38) &lt; O–H (≈ 16) &lt; F–H (≈ 3.2). Acidity tracks electronegativity directly — a more electronegative atom is simply more comfortable holding extra negative charge.</p><p class="step-body" style="margin-bottom:0;"><b>Down a group</b> (same column, decreasing electronegativity top to bottom): H–F (pKa 3.2) &lt; H–Cl (≈ −7) &lt; H–Br (≈ −9) &lt; H–I (≈ −10) — acidity <i>increases</i> even though electronegativity is <i>decreasing</i>. Size wins this trend: a larger atom (iodine) spreads its negative charge over a much bigger, more polarizable electron cloud, which stabilizes the anion more than the lost electronegativity costs. These are genuinely different physical effects competing along different directions of the periodic table — memorizing just "more electronegative = more acidic" will get the group trend backwards.</p>'
+      },
+      {
+        render: function(api){
+          var pairs = [
+            { key: 'acetic', label: 'CH₃COOH', pka: '4.76', better: true },
+            { key: 'chloroacetic', label: 'ClCH₂COOH', pka: '2.87', better: false }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the more acidic of these two carboxylic acids.</h2>' +
+            '<p class="step-body">One has an extra chlorine attached to the carbon next to the COOH group.</p>' +
+            '<div class="choice-row">' + pairs.map(function(p){
+              return '<button class="choice-btn" data-v="' + p.key + '" style="text-align:center;font:900 15px var(--font-mono);">' + p.label + '<br><span style="font-weight:700;font-size:11px;color:var(--muted);">pKa ' + p.pka + '</span></button>';
+            }).join('') + '</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var answered = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(answered) return;
+              answered = true;
+              var isCorrect = btn.getAttribute('data-v') === 'chloroacetic';
+              api.card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+              btn.classList.add(isCorrect ? 'correct' : 'wrong');
+              api.record(isCorrect);
+              api.showFeedback(fb, isCorrect, 'Chloroacetic acid (pKa 2.87) is more acidic than acetic acid (pKa 4.76) — this is a pure induction effect. The electronegative chlorine pulls electron density away from the carboxylate anion through the sigma bond framework, stabilizing the negative charge and making the acid stronger.');
+              next.disabled = false;
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Guided Practice',
+        title: 'H–I is a stronger acid than H–F, even though fluorine is more electronegative. Why?',
+        options: ['Fluorine forms stronger bonds to hydrogen, which has nothing to do with acidity', 'Iodine is much larger, spreading the negative charge over a more polarizable cloud', 'This trend is actually backwards — H–F is the stronger acid'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — down a group, atom size dominates over electronegativity, so acidity increases even as electronegativity decreases.',
+        wrongFeedback: 'This is the down-a-group atom trend: size beats electronegativity, so the larger halide (I⁻) stabilizes negative charge better despite being less electronegative.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Independent Practice',
+        title: 'Carboxylic acids are far more acidic than alcohols mainly because of...',
+        options: ['Atom effects — the oxygens are somehow different elements', 'Orbital effects — different hybridization at oxygen', 'Resonance — the carboxylate spreads its charge over two equivalent oxygens'],
+        correctIndex: 2,
+        correctFeedback: 'Correct. The carboxylate anion is resonance-stabilized across two equivalent C–O bonds (like acetate), while an alkoxide keeps the full negative charge on a single oxygen.',
+        wrongFeedback: 'Both O–H bonds involve the same element (oxygen) with the same hybridization — the difference is that the carboxylate can delocalize its charge by resonance and an alkoxide can\'t.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Orbital effects: more s-character makes a lone pair more comfortable.',
+        bodyHtml: '<p class="step-body">Comparing three C–H bonds with different hybridization: a terminal alkyne C–H (sp, pKa ≈ 25) is far more acidic than an alkene C–H (sp², pKa ≈ 44), which is more acidic than an alkane C–H (sp³, pKa ≈ 50).</p><p class="step-body" style="margin-bottom:0;">Recall from the Hybridization lesson that an sp orbital has 50% s-character, versus 33% for sp² and 25% for sp³. s orbitals hold electron density closer to the nucleus than p orbitals, so a lone pair in an orbital with more s-character is lower in energy and more stable. None of atom, resonance, or induction differ between these three C–H bonds — this 25-unit pKa spread is purely an orbital effect.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'ARIO is the tool you\'ll reach for constantly for the rest of the course.',
+        bodyHtml: '<div class="explain-box">Alpha-hydrogen acidity in Module 11 (enolates, pKa ≈ 20 because the resulting enolate is resonance-stabilized), amine vs. amide basicity in Module 12 (an amide\'s lone pair is tied up in resonance, making it a much weaker base than an amine\'s), and phenol vs. alcohol acidity (aromatic ring resonance-stabilizes the phenoxide) are all direct applications of this same four-factor checklist. Whenever you\'re asked "which is more acidic" or "which is the stronger base," run through Atom, Resonance, Induction, Orbital in that order.</div>'
+      },
+      {
+        /* Ethanol versus acetic acid is the comparison the whole lesson
+           turns on. Drawing the alkoxide makes the contrast concrete:
+           same arrow, nothing to delocalise into afterwards. */
+        render: function(api){
+          window.OchemArrowStep.mount(api, {
+            eyebrow: 'Draw it',
+            title: 'Draw the deprotonation of ethanol.',
+            bodyHtml: '<p class="step-body">One arrow, exactly as for a carboxylic acid. Then compare what you are left with — that comparison is what the pKa gap measures.</p>',
+            molecule: 'ethanol',
+            concepts: ['acidity-factors', 'pka-scale'],
+            arrows: [{ from: 'bond:o-ho', to: 'o' }],
+            hint: 'Click the O\u2013H bond, then click where its electrons stay.',
+            why: 'You get an ethoxide: a negative charge sitting on one oxygen with nowhere to go. Do the identical arrow on acetic acid and the charge lands on a carboxylate, spread over two equivalent oxygens by resonance. Same arrow, same atom, eleven pKa units apart — and the only difference is what stabilises the anion afterwards.',
+            wrong: {
+              'bond:o-ho>ho': 'The pair stays behind rather than leaving with the proton. A proton departs bare; that is what makes the conjugate base anionic.',
+              'o>bond:o-ho': 'Backwards — that forms the O\u2013H bond instead of breaking it.',
+              'bond:o-c2>o': 'That is the C\u2013O bond. Breaking it would fragment the molecule rather than deprotonate it; acidity is about losing the hydrogen.',
+              'bond:c2-h21>c2': 'A C\u2013H on carbon, around pKa 50 — effectively not acidic. The O\u2013H is the one that comes off, because oxygen can carry the charge and carbon cannot.'
+            }
+          });
+        }
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Phenol (pKa ≈ 10) is more acidic than a typical alcohol like ethanol (pKa ≈ 16). What\'s the main reason?',
+        options: ['Resonance — phenol\'s conjugate base delocalizes its charge into the aromatic ring', 'Atom — phenol\'s oxygen is a different, more electronegative element', 'Orbital — phenol\'s O–H bond has different hybridization at oxygen'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — the phenoxide anion can delocalize its negative charge into the aromatic ring through resonance (you\'ll see the full picture in Module 13), stabilizing it far more than a simple alkoxide, which has nowhere to spread its charge.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

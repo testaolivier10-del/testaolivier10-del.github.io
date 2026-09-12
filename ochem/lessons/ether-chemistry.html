@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ether Chemistry — Alcohols, Ethers &amp; Related Chemistry | Organic Chemistry</title>
+<meta name="description" content="Learn why ethers are so unreactive compared to alcohols, how the Williamson ether synthesis makes them, and how strong acid can cleave an ether apart.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/ether-chemistry.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 8 &middot; Alcohols, Ethers &amp; Related Chemistry</div>
+    <h1 style="margin-bottom:4px;">Ether chemistry.</h1>
+    <p class="lede" style="margin-top:0;">No O–H bond, no acidic proton, no easy leaving group — ethers are chemically boring by design, which is exactly why they're useful.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'ether-chemistry',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        diagramHtml: window.OchemMolecules.svg('methyl-propyl-ether'),
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'No O–H, no easy leaving group: ethers are built to be unreactive.',
+        bodyHtml: '<p class="step-body">An ether has the general structure R–O–R\'. Compare it to an alcohol: there\'s no O–H bond, so there\'s no acidic proton to remove the way you could deprotonate an alcohol or a terminal alkyne. And under neutral or basic conditions, the only way to break a C–O bond would require RO⁻ to leave as a leaving group — but RO⁻ is a strong base (the conjugate base of a weak acid, an alcohol, pKa ≈ 16), exactly as poor a leaving group as the plain OH⁻ from the previous lesson.</p><p class="step-body" style="margin-bottom:0;">The result: ethers simply sit there, chemically speaking, under almost any condition that doesn\'t involve strong acid. That "boring" stability is a feature, not a bug — it\'s exactly why diethyl ether and THF are the standard solvents for reactions using extremely reactive reagents (Grignards, LiAlH₄) that would tear apart nearly any other functional group.</p>'
+      },
+      {
+        render: function(api){
+          var scenarios = [
+            { key: 'grignard', label: 'Running a Grignard reagent reaction', ether: true },
+            { key: 'acidic', label: 'Refluxing with concentrated HI', ether: false },
+            { key: 'base', label: 'Adding NaOH to the flask', ether: true },
+            { key: 'nucleophile', label: 'Adding a strong nucleophile like CN⁻', ether: true }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click every condition below where an ordinary ether would survive completely untouched.</h2>' +
+            '<p class="step-body">Three of these four conditions leave an ether unreacted. One will actually cleave it.</p>' +
+            '<div class="choice-row">' + scenarios.map(function(s){
+              return '<button class="choice-btn" data-v="' + s.key + '">' + s.label + '</button>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Safe conditions found: 0 / 3</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var found = 0, mistake = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(btn.disabled) return;
+              var s = scenarios.filter(function(x){ return x.key === btn.getAttribute('data-v'); })[0];
+              btn.disabled = true;
+              if(s.ether){
+                btn.classList.add('correct');
+                found++;
+                hint.textContent = 'Safe conditions found: ' + found + ' / 3';
+              } else {
+                btn.classList.add('wrong');
+                mistake = true;
+              }
+              if(found === 3){
+                api.record(!mistake);
+                api.showFeedback(fb, !mistake, mistake ? 'You found the three safe conditions, but also flagged concentrated HI as safe — hot, concentrated strong acid is exactly the one thing that does cleave an ether.' : 'Exactly right — Grignard chemistry, base, and strong nucleophiles all leave an ordinary ether completely untouched. Only hot, concentrated strong acid (HI/HBr) can cleave the C–O bond, by protonating the oxygen first.');
+                next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'The Williamson ether synthesis builds an ether by...',
+        options: ['Directly reacting two alcohols with no other reagents', 'Oxidizing an alkane', 'Deprotonating an alcohol to form an alkoxide, then letting it perform an SN2 attack on an alkyl halide'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — an alkoxide (RO⁻) is a strong, effective nucleophile that displaces a leaving group from an alkyl halide via SN2, forming the new C–O bond.',
+        wrongFeedback: 'Two alcohols won\'t react directly with each other — you need to first deprotonate one to an alkoxide, which can then act as a nucleophile in an SN2 reaction.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'The Williamson synthesis works best with which kind of electrophile?',
+        options: ['An unhindered primary (or methyl) alkyl halide, favoring clean SN2', 'A bulky tertiary alkyl halide', 'It doesn\'t matter — any electrophile works equally well'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — since alkoxide is a strong base as well as a nucleophile, a hindered secondary or tertiary electrophile invites E2 elimination instead of SN2 substitution.',
+        wrongFeedback: 'Recall the SN2-vs-E2 competition from Module 6: alkoxide is a strong base, so a bulky substrate favors elimination over the desired substitution.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Only strong acid can pry an ether apart.',
+        bodyHtml: '<p class="step-body">Concentrated HI or HBr, especially with heat, is one of the very few things that will cleave an ordinary ether. The mechanism starts exactly like acid-catalyzed alcohol chemistry: the ether oxygen is protonated first, which converts the terrible leaving group RO⁻ into a much better one: a neutral alcohol, ROH. Apply the leaving-group rule from Module 2 and you can see why that helps — ROH is the conjugate base of ROH₂⁺ (pKa ≈ −2, a strong acid), while RO⁻ is the conjugate base of ROH itself (pKa ≈ 16, a weak acid). Protonation turned a strong base into a weak one.</p><p class="step-body" style="margin-bottom:0;">Once protonated, a halide ion (I⁻ or Br⁻ — an excellent, weakly basic, highly nucleophilic species) attacks one of the two carbons attached to oxygen. At a primary carbon this runs by SN2 (backside attack); at a secondary or tertiary carbon, it runs by SN1 through a carbocation. The C–O bond breaks, giving an alcohol (or, with excess HX, a second equivalent of alkyl halide) plus the first alkyl halide.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Ether inertness is the whole reason it\'s the go-to reaction solvent.',
+        bodyHtml: '<div class="explain-box">Grignard reagents (RMgX — carbon nucleophiles made from an alkyl halide and magnesium metal) and hydride reducing agents like LiAlH₄ (a source of H⁻) are the two reagents you will meet in Module 9 for building C–C bonds and for reduction. Both are so reactive that they would immediately destroy an alcohol\'s O–H bond, react with water, or attack almost any other polar functional group. Because ethers have no acidic proton and no accessible leaving group under normal conditions, they can dissolve these reagents and host the reaction without getting involved themselves — a direct, practical payoff of the unreactivity you just learned the mechanistic reason for.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'An unsymmetrical ether, CH₃–O–CH₂CH₂CH₃ (methyl propyl ether), is refluxed with excess concentrated HI. Which bond breaks, and by what mechanism?',
+        options: ['The C–O bond to the propyl group breaks by SN1', 'The C–O bond to the methyl group breaks by SN2 (methyl is the least hindered, most accessible carbon for backside attack)', 'Neither bond breaks — ethers never react with acid'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — with a primary/methyl carbon available, iodide performs a clean SN2 backside attack on the least hindered carbon (methyl), which is faster than going through the propyl group.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

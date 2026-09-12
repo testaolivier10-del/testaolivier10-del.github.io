@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atomic Structure — Foundations | Organic Chemistry</title>
+<meta name="description" content="Build a neutral atom shell by shell and learn why valence electrons — not the whole atom — are what organic chemistry cares about.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/atomic-structure.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 1 &middot; Foundations</div>
+    <h1 style="margin-bottom:4px;">Atomic structure.</h1>
+    <p class="lede" style="margin-top:0;">Everything in this course comes down to a handful of outermost electrons. Let's find them.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  function shellSvg(kFilled, lFilled){
+    var cx = 150, cy = 95, kRadius = 42, lRadius = 75;
+    var kSlots = [200, 340].map(function(a){
+      var rad = a * Math.PI/180;
+      return [cx + kRadius*Math.cos(rad), cy + kRadius*Math.sin(rad)];
+    });
+    var lAngles = [90,135,180,225,270,315,0,45];
+    var lSlots = lAngles.map(function(a){
+      var rad = a * Math.PI/180;
+      return [cx + lRadius*Math.cos(rad), cy + lRadius*Math.sin(rad)];
+    });
+    function slot(pos, i, filled, key){
+      var isFilled = i < filled;
+      return '<g class="atom' + (isFilled ? ' chosen' : '') + '" data-key="' + key + i + '">' +
+        '<circle cx="' + pos[0] + '" cy="' + pos[1] + '" r="10" fill="' + (isFilled ? 'var(--tint-accent)' : 'var(--white)') + '" stroke="var(--line)" stroke-width="2"/>' +
+        (isFilled ? '<text x="' + pos[0] + '" y="' + (pos[1]+4) + '" text-anchor="middle" font-size="10" fill="var(--accent-press)">e⁻</text>' : '') +
+      '</g>';
+    }
+    return '<div class="scene"><svg viewBox="0 0 300 205">' +
+      '<circle cx="150" cy="95" r="18" fill="none" stroke="var(--line-soft)" stroke-width="1.5" stroke-dasharray="2 3"/>' +
+      '<circle cx="150" cy="95" r="' + kRadius + '" fill="none" stroke="var(--line-soft)" stroke-width="1.5" stroke-dasharray="2 3"/>' +
+      '<circle cx="150" cy="95" r="' + lRadius + '" fill="none" stroke="var(--line-soft)" stroke-width="1.5" stroke-dasharray="2 3"/>' +
+      '<circle cx="150" cy="95" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="150" y="100" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">N</text>' +
+      kSlots.map(function(p,i){ return slot(p, i, kFilled, 'k'); }).join('') +
+      lSlots.map(function(p,i){ return slot(p, i, lFilled, 'l'); }).join('') +
+      '<text x="150" y="197" text-anchor="middle" pointer-events="none" font-family="Nunito" font-weight="800" font-size="11" fill="var(--muted)">click empty slots to add electrons — fill the inner shell first</text>' +
+    '</svg></div>';
+  }
+
+  window.OchemLessonEngine.start({
+    topicId: 'atomic-structure',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Three particles, three roles.',
+        bodyHtml: '<p class="step-body">An atom is built from three particles. <b>Protons</b>: positive charge, sit in the nucleus, mass ≈ 1 atomic mass unit (amu). <b>Neutrons</b>: no charge, also in the nucleus, mass ≈ 1 amu. <b>Electrons</b>: negative charge, occupy the space around the nucleus, mass ≈ 1/1800 amu — light enough to treat as negligible next to protons and neutrons.</p><p class="step-body" style="margin-bottom:0;">The number of protons is an element\'s <b>atomic number</b> (Z), and it\'s what defines the element — change the proton count and you have a different element, full stop.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Same element, different mass: isotopes.',
+        bodyHtml: '<p class="step-body">An element\'s neutron count isn\'t fixed. Atoms of the same element (same number of protons) with different neutron counts are called <b>isotopes</b>. <b>Mass number</b> (A) = protons + neutrons, written as a superscript before the symbol: carbon-12 (¹²C) has 6 protons + 6 neutrons; carbon-13 (¹³C) has 6 protons + 7 neutrons — same element, different mass.</p><p class="step-body" style="margin-bottom:0;">This isn\'t just trivia for this course: ¹H and ¹³C are exactly the isotopes that <b>NMR spectroscopy</b> detects (Module 14), and <b>mass spectrometry</b> works by directly measuring mass number to help figure out a molecule\'s formula.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'An atom is mostly empty space around a few electrons that matter.',
+        bodyHtml: '<p class="step-body">Electrons fill shells around the nucleus: the inner (K) shell holds up to <b>2</b>, the next (L) shell up to <b>8</b>. A neutral atom has exactly as many electrons as protons — its atomic number.</p><p class="step-body" style="margin-bottom:0;">The electrons in the <b>outermost</b> shell — the <b>valence electrons</b> — are the only ones that participate in bonding. Everything else in this course is really about those few electrons.</p>'
+      },
+      {
+        render: function(api){
+          var kFilled = 0, lFilled = 0, done = false;
+          function paint(){
+            api.card.innerHTML =
+              '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+              '<h2 class="step-title">Build a neutral nitrogen atom (atomic number 7).</h2>' +
+              '<p class="step-body">Nitrogen has 7 protons, so a neutral atom has 7 electrons. Click slots to add them — the K shell (2 slots) fills before the L shell.</p>' +
+              shellSvg(kFilled, lFilled) +
+              api.feedbackHtml('fb') +
+              api.nextButtonHtml('Continue', done);
+            var fb = api.card.querySelector('#fb');
+            api.card.querySelectorAll('.atom').forEach(function(g){
+              g.addEventListener('click', function(){
+                if(done) return;
+                var key = g.getAttribute('data-key');
+                var isK = key.charAt(0) === 'k';
+                var idx = parseInt(key.slice(1), 10);
+                if(isK){
+                  if(idx < kFilled){ return; }
+                  if(idx !== kFilled){ api.showFeedback(fb, false, 'Fill slots in order, left to right.'); return; }
+                  kFilled++;
+                } else {
+                  if(kFilled < 2){ api.showFeedback(fb, false, 'Fill the K shell (2 electrons) before adding to the L shell.'); return; }
+                  if(idx < lFilled){ return; }
+                  if(idx !== lFilled){ api.showFeedback(fb, false, 'Fill slots in order, left to right.'); return; }
+                  lFilled++;
+                }
+                var total = kFilled + lFilled;
+                if(total === 7){
+                  done = true;
+                  api.record(true);
+                  paint();
+                  api.showFeedback(api.card.querySelector('#fb'), true, 'Correct — 2 core electrons in the K shell, 5 valence electrons in the L shell.');
+                } else {
+                  paint();
+                }
+              });
+            });
+            api.card.querySelector('#nextBtn').addEventListener('click', api.advance);
+          }
+          paint();
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'How many valence electrons does nitrogen have?',
+        bodyHtml: '<p class="step-body">Based on what you just built.</p>',
+        options: ['3', '7', '5', '2'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — 2 in the K shell, 5 in the L shell, and it’s the 5 in the outer shell that count as valence electrons.',
+        wrongFeedback: 'Count only the outermost shell’s electrons — not the core ones.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'A neutral atom has atomic number 8 (oxygen). How many total electrons does it have?',
+        options: ['8', '6', '10'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — neutral means electrons = protons = atomic number.',
+        wrongFeedback: 'A neutral atom always has electrons equal to its atomic number.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Atoms "want" a full outer shell — that\'s the octet rule.',
+        bodyHtml: '<div class="explain-box">Here\'s the actual reason valence electrons matter: atoms are most stable (lowest energy) when their outermost shell is completely full. For almost every atom you\'ll meet in this course, a full outer shell means <b>8</b> electrons in it — the <b>octet rule</b>. (Hydrogen is the one common exception: its outer shell is the K shell, which is full at just <b>2</b>.)</div><p class="step-body">An atom with a nearly-empty or nearly-full outer shell is unstable and reactive — it will gain, lose, or <b>share</b> electrons with other atoms to reach that full octet. Sharing electrons between two atoms so both effectively count them toward their own octet is exactly what a <b>covalent bond</b> is. That\'s the connection: valence electrons matter because getting to 8 of them is the whole reason atoms bond to each other at all.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Ions: what "cation" and "carbocation" actually mean.',
+        bodyHtml: '<p class="step-body">Instead of sharing electrons, an atom can fully gain or lose them. Lose an electron and you\'re left with one more proton than electrons — an overall positive charge, called a <b>cation</b>. Gain an electron and you have one more electron than protons — an overall negative charge, called an <b>anion</b>.</p><p class="step-body" style="margin-bottom:0;">This vocabulary comes back constantly: a <b>carbocation</b> (Module 6, in SN1 and E1) is just a carbon atom that\'s lost enough electron density to carry a positive charge, and a <b>carbanion</b> is a carbon-centered anion. Same idea as sodium losing an electron to become Na⁺ — just applied to carbon later on.</p>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A neutral atom has 11 protons (sodium: 2, 8, 1). How many valence electrons does it have, and what does that predict?',
+        options: [
+          '8 valence electrons — stable and unreactive',
+          '1 valence electron — very reactive, tends to lose it',
+          '11 valence electrons — highly stable'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct — an atom with just 1 valence electron, far from a full shell, readily gives it up. That single fact predicts most of sodium’s chemistry.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

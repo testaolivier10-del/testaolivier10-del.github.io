@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brønsted Acids &amp; Bases — Acids &amp; Bases | Organic Chemistry</title>
+<meta name="description" content="Learn the Brønsted-Lowry definition of acids and bases as proton donors and acceptors, and how to identify conjugate pairs in a proton-transfer reaction.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/bronsted.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 3 &middot; Acids &amp; Bases</div>
+    <h1 style="margin-bottom:4px;">Brønsted acids &amp; bases.</h1>
+    <p class="lede" style="margin-top:0;">Every acid-base reaction you'll draw this semester is a proton moving from one place to another.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/molecule-editor.js"></script>
+<script src="../assets/arrow-step.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  function protonTransferSvg(){
+    return '<div class="scene"><svg viewBox="0 0 300 110">' +
+      '<text x="10" y="60" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="15" fill="var(--ink)">H</text>' +
+      '<line x1="20" y1="55" x2="45" y2="55" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<g class="atom" data-key="acid"><circle cx="62" cy="55" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="62" y="61" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">Cl</text></g>' +
+      '<text x="105" y="60" font-family="Nunito" font-weight="800" font-size="16" fill="var(--muted)">+</text>' +
+      '<g class="atom" data-key="base"><circle cx="150" cy="55" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="150" y="52" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">N</text><text x="150" y="66" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">H₃</text></g>' +
+      '<text x="185" y="60" font-family="Nunito" font-weight="900" font-size="18" fill="var(--accent)">&#8594;</text>' +
+      '<circle cx="230" cy="55" r="18" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="230" y="52" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">NH₄</text><text x="230" y="65" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="10">+</text>' +
+      '<text x="262" y="60" font-family="Nunito" font-weight="800" font-size="16" fill="var(--muted)">+</text>' +
+      '<text x="278" y="60" font-family="IBM Plex Mono" font-weight="700" font-size="14" fill="var(--ink)">Cl⁻</text>' +
+    '</svg></div>';
+  }
+
+  window.OchemLessonEngine.start({
+    topicId: 'bronsted',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Acids give up a proton. Bases take one.',
+        bodyHtml: '<p class="step-body">A <b>Brønsted-Lowry acid</b> is a proton (H⁺) donor. A <b>Brønsted-Lowry base</b> is a proton acceptor. Every acid-base reaction — no matter how complicated the molecule looks — is fundamentally a single proton moving from the acid to the base.</p><p class="step-body" style="margin-bottom:0;">This is broader than the Arrhenius definition you may have seen in general chemistry (acid = produces H⁺ in water, base = produces OH⁻ in water), which only works when water is the solvent. Brønsted-Lowry works in any solvent — or no solvent at all — which matters constantly in organic chemistry, where reactions routinely happen in ether, dichloromethane, or neat (no solvent).</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the acid, then click the base.</h2>' +
+            '<p class="step-body">HCl reacts with NH₃ to form NH₄⁺ and Cl⁻. One of these two starting materials donates a proton; the other accepts it.</p>' +
+            protonTransferSvg() +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var got = { acid: false, base: false };
+          function checkDone(){
+            if(got.acid && got.base){
+              api.showFeedback(fb, true, 'Right — HCl is the acid (it donates its proton to nitrogen\'s lone pair) and NH₃ is the base (it accepts that proton). The products, NH₄⁺ and Cl⁻, are their conjugate base and conjugate acid.');
+              next.disabled = false;
+            }
+          }
+          api.card.querySelectorAll('.atom').forEach(function(g){
+            g.addEventListener('click', function(){
+              var key = g.getAttribute('data-key');
+              if(got[key]) return;
+              got[key] = true;
+              g.classList.add('chosen');
+              if(key === 'acid'){ api.record(true); }
+              checkDone();
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'In HCl + NH₃ → NH₄⁺ + Cl⁻, which species is the Brønsted-Lowry acid?',
+        options: ['NH₃ — it has a lone pair', 'Cl⁻ — it ends up negatively charged', 'HCl — it donates a proton'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — HCl gives up its proton, which is the definition of a Brønsted-Lowry acid.',
+        wrongFeedback: 'Ask which species loses a hydrogen (as H⁺) going from left to right — that one is the acid.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'NH₄⁺ is called the ___ of NH₃.',
+        options: ['conjugate acid', 'conjugate base', 'Lewis acid'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. NH₃ gained a proton to become NH₄⁺ — a base that has just accepted a proton becomes its conjugate acid.',
+        wrongFeedback: 'NH₃ gained a proton, it didn\'t lose one — gaining a proton makes something a conjugate acid, not a conjugate base.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Every proton transfer is an equilibrium — it has a favored side.',
+        bodyHtml: '<p class="step-body">Even when a reaction looks like it goes to completion, a proton transfer is technically an equilibrium, and equilibria favor the more stable, lower-energy side. For an acid-base reaction, that\'s the side with the <b>weaker acid and weaker base</b>.</p><p class="step-body" style="margin-bottom:0;">HCl + NH₃ → NH₄⁺ + Cl⁻ overwhelmingly favors the right side, because HCl is an extremely strong acid and NH₃ is a fairly strong base, while NH₄⁺ is a much weaker acid and Cl⁻ is a much weaker base. You\'ll make this precise with actual numbers (pKa) in the next lesson — for now, the qualitative rule is: <b>the stronger acid and stronger base end up as reactants; the weaker acid and weaker base end up as products.</b></p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Acid-base steps show up inside almost every mechanism you\'ll draw.',
+        bodyHtml: '<div class="explain-box">Long before you get to substitution, elimination, or carbonyl chemistry, you\'ll draw proton transfers as setup steps — protonating an alcohol\'s oxygen before it can leave as water in an SN1 reaction, or deprotonating an alpha carbon before an aldol reaction (Module 11). Recognizing "this step is just an acid-base reaction" instantly tells you which curved arrows to draw: base lone pair to H, H–X bond to X.</div>'
+      },
+      {
+        /* Deprotonation, drawn rather than described. The thing students
+           get wrong is where the electrons go when the proton leaves. */
+        render: function(api){
+          window.OchemArrowStep.mount(api, {
+            eyebrow: 'Draw it',
+            title: 'A base removes the acidic proton from acetic acid. Draw the arrow.',
+            bodyHtml: '<p class="step-body">One arrow, and the question it answers is: when a proton leaves, what happens to the pair of electrons that was holding it on?</p>',
+            molecule: 'acetic-acid',
+            concepts: ['bronsted-identification', 'curved-arrow-direction'],
+            arrows: [{ from: 'bond:o2-h', to: 'o2' }],
+            hint: 'Find the acidic hydrogen, click the bond holding it, then click where its electrons stay.',
+            why: 'A proton leaves bare — as H\u207a, with no electrons — so the O\u2013H bonding pair is left behind on the oxygen. That is what makes the conjugate base negative, and it is the entire content of a Br\u00f8nsted acid-base step.',
+            wrong: {
+              'bond:o2-h>h': 'The electrons do not leave with the hydrogen. A Br\u00f8nsted acid donates a proton — the nucleus alone — and the bonding pair stays behind, which is why the conjugate base ends up with a negative charge.',
+              'o2>bond:o2-h': 'Backwards: that arrow forms the O\u2013H bond rather than breaking it. Here the bond is breaking.',
+              'bond:ca-ha>ca': 'That is an alpha C\u2013H, far above pKa 20 and not the acidic proton. The O\u2013H is the acidic one, because the anion left behind is spread over two oxygens by resonance.',
+              'bond:c-o1>o1': 'The C=O pi bond is not what breaks when an acid is deprotonated. Look for the bond to the departing proton.'
+            }
+          });
+        }
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Water reacts with HBr: H₂O + HBr → H₃O⁺ + Br⁻. Which statement is correct?',
+        options: ['Water is the acid; HBr is the base', 'Water is the base (proton acceptor); HBr is the acid (proton donor)', 'Both are acids, since both contain hydrogen'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — water\'s lone pair accepts the proton from HBr, making water the base and HBr the acid here. (Water can also act as an acid in other reactions — it\'s amphoteric — but not in this one.)'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

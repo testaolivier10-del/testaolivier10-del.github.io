@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Addition Reactions — Alkenes &amp; Alkynes | Organic Chemistry</title>
+<meta name="description" content="Learn the general electrophilic addition mechanism for alkenes: hydrohalogenation, halogenation and its anti stereochemistry, and acid-catalyzed hydration.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/addition-reactions.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 7 &middot; Alkenes &amp; Alkynes</div>
+    <h1 style="margin-bottom:4px;">Addition reactions.</h1>
+    <p class="lede" style="margin-top:0;">The exposed pi bond makes alkenes electron-rich targets — electrophiles add across the double bond instead of substituting or eliminating.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'addition-reactions',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        diagramHtml: window.OchemMolecules.svg('propene-hbr', { caption: 'The pi bond is the nucleophile here, not the electrophile — it attacks H–Br, and which carbon keeps the hydrogen decides the product.' }),
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Electrophilic addition: the alkene attacks first.',
+        bodyHtml: '<p class="step-body">Every reaction in this lesson follows the same three-part skeleton, called <b>electrophilic addition</b>: (1) the alkene\'s pi bond, acting as the nucleophile, attacks an electrophile; (2) this generates a carbocation (or a related bridged cation) at the other alkene carbon; (3) a nucleophile then captures that cation, forming the second new bond. The name describes it from the electrophile\'s point of view — an electrophile is "added" across what used to be the double bond.</p><p class="step-body" style="margin-bottom:0;">This is a genuine reversal of the role alkenes play compared to everything in Module 6: there, the substrate was the electrophile being attacked by a nucleophile. Here, the alkene\'s exposed pi electrons make it the electron-rich nucleophile instead.</p>'
+      },
+      {
+        render: function(api){
+          var steps = [
+            { key: 'attack', label: 'Step 1: pi bond attacks H of H–Br', done: false },
+            { key: 'cation', label: 'Step 2: carbocation forms, Br⁻ released', done: false },
+            { key: 'capture', label: 'Step 3: Br⁻ attacks the carbocation', done: false }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the three mechanism stages of HBr addition in the correct order.</h2>' +
+            '<p class="step-body">Every electrophilic addition follows this same three-part sequence.</p>' +
+            '<div class="choice-row" style="flex-direction:column;">' + steps.map(function(s){
+              return '<button class="choice-btn" data-v="' + s.key + '">' + s.label + '</button>';
+            }).join('') + '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Correct clicks: 0 / 3</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var hint = api.card.querySelector('#hint');
+          var next = api.card.querySelector('#nextBtn');
+          var order = ['attack', 'cation', 'capture'];
+          var idx = 0, mistake = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(btn.disabled) return;
+              var key = btn.getAttribute('data-v');
+              if(key === order[idx]){
+                btn.disabled = true;
+                btn.classList.add('correct');
+                idx++;
+                hint.textContent = 'Correct clicks: ' + idx + ' / 3';
+                if(idx === 3){
+                  api.record(!mistake);
+                  api.showFeedback(fb, !mistake, mistake ? 'You got there, but out of order at first. The sequence always runs: nucleophilic attack by the pi bond, then cation formation, then nucleophilic capture.' : 'Exactly right — attack, then cation, then capture. This three-step pattern is the backbone of every electrophilic addition in this lesson.');
+                  next.disabled = false;
+                }
+              } else {
+                mistake = true;
+                btn.classList.add('wrong');
+                setTimeout(function(){ btn.classList.remove('wrong'); }, 500);
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'In hydrohalogenation (HX addition), what does the alkene\'s pi bond attack first?',
+        options: ['The halogen of H–X', 'Nothing — the halide ion attacks first', 'The hydrogen of H–X'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — the pi bond attacks the electrophilic H, breaking the H–X bond heterolytically and forming a carbocation while releasing X⁻.',
+        wrongFeedback: 'The hydrogen is the electrophilic end of H–X (it\'s the atom that can accept the pi bond\'s electrons and leave as part of a departing X⁻).'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Halogenation (X₂) skips the free carbocation — and that changes the stereochemistry.',
+        bodyHtml: '<p class="step-body">Adding Br₂ or Cl₂ looks similar at first (pi bond attacks one halogen of X–X, the X–X bond breaks, X⁻ leaves) but the departing halide doesn\'t fully leave — it swings around and bridges back to both alkene carbons, forming a three-membered ring called a <b>halonium ion</b> (bromonium with Br₂). This bridged ion physically blocks one entire face of the molecule.</p><p class="step-body" style="margin-bottom:0;">A second halide ion is then forced to attack from the open, opposite face — a backside attack much like SN2\'s inversion. The result: the two halogens always end up added to <b>opposite faces</b> of the original double bond (<b>anti addition</b>), a directly observable, predictable stereochemical outcome that hydrohalogenation\'s free (non-bridged) carbocation doesn\'t guarantee.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Check Understanding',
+        title: 'Why does Br₂ addition give anti (opposite-face) stereochemistry, while HBr addition doesn\'t reliably?',
+        options: ['Br₂ forms a bridged bromonium ion that blocks one face, forcing backside attack; HBr forms a free (unbridged) carbocation attackable from either face', 'Br₂ reacts faster, giving it no time to rotate', 'HBr is a stronger acid than Br₂'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — the bridging bromonium ion is the entire reason halogenation is stereospecifically anti, unlike hydrohalogenation\'s open carbocation.',
+        wrongFeedback: 'Reaction speed and relative acid strength aren\'t the deciding factors here — it comes down to whether the intermediate is a bridged ion (blocking one face) or a free, planar carbocation (open to attack from either face).'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Acid-catalyzed hydration adds water — and shares hydrohalogenation\'s carbocation risk.',
+        bodyHtml: '<p class="step-body">Treating an alkene with aqueous acid (H₃O⁺, typically from dilute H₂SO₄) adds water across the double bond in three steps: the pi bond attacks a proton to form a carbocation (exactly like hydrohalogenation, and subject to the same Markovnikov selectivity you\'ll formalize next lesson); water attacks the carbocation as the nucleophile; a final proton transfer to another water molecule removes the extra positive charge and regenerates the H₃O⁺ catalyst.</p><p class="step-body" style="margin-bottom:0;">Because this pathway runs through a free carbocation — the same reactive, rearrangement-prone species from SN1/E1 — it carries the same risk of hydride or alkyl shifts to a more stable carbocation before water ever attacks, sometimes giving an alcohol at an unexpected carbon.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'This mechanism skeleton reappears constantly in Module 8 and beyond.',
+        bodyHtml: '<div class="explain-box">Acid-catalyzed hydration is your first direct synthetic route from an alkene to an alcohol — the literal bridge into Module 8. And the "electrophile adds, cation forms, nucleophile captures" skeleton you just practiced ordering will reappear nearly unchanged for epoxide-opening reactions and even parts of carbonyl chemistry. Recognizing this three-part shape is worth more than memorizing any single reagent.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'An alkene is treated with Br₂. A chemist isolates the product and finds the two bromines were added to exactly opposite faces of the original double bond, with no exceptions. What does this tell you about the mechanism?',
+        options: ['It went through a free, planar carbocation, same as HBr addition', 'It went through a bridged halonium ion that blocked one face, forcing anti addition', 'Br₂ additions are always random and this result is a coincidence'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — perfectly consistent anti addition, with no exceptions, is the signature of a bridged intermediate blocking one face. A free carbocation (as in HBr addition) would allow attack from both faces and a mix of products.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

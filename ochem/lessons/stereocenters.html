@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stereocenters — Stereochemistry | Organic Chemistry</title>
+<meta name="description" content="Learn to identify stereocenters — carbons with four different groups attached — and how the number of stereocenters relates to the number of possible stereoisomers.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/stereocenters.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 5 &middot; Stereochemistry</div>
+    <h1 style="margin-bottom:4px;">Stereocenters.</h1>
+    <p class="lede" style="margin-top:0;">The specific atoms most responsible for making a molecule chiral — and how to spot them fast.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  function stereocenterSvg(){
+    return '<div class="scene"><svg viewBox="0 0 260 160">' +
+      '<line x1="130" y1="90" x2="130" y2="30" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<line x1="130" y1="90" x2="75" y2="122" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<line x1="130" y1="90" x2="195" y2="112" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<line x1="130" y1="90" x2="130" y2="140" stroke="var(--muted)" stroke-width="2" stroke-dasharray="3 3"/>' +
+      '<g class="atom" data-key="c"><circle cx="130" cy="90" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="130" y="96" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="15">C</text></g>' +
+      '<circle cx="130" cy="20" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="130" y="25" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">OH</text>' +
+      '<circle cx="60" cy="132" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="60" y="137" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="10">CH₃</text>' +
+      '<circle cx="205" cy="120" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="205" y="125" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">CH₂CH₃</text>' +
+      '<circle cx="130" cy="148" r="12" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="130" y="152" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="10">H</text>' +
+    '</svg></div>';
+  }
+
+  window.OchemLessonEngine.start({
+    topicId: 'stereocenters',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A stereocenter is a carbon with four different groups.',
+        bodyHtml: '<p class="step-body">The most common cause of chirality in organic molecules is a <b>stereocenter</b>: an sp³ carbon bonded to <b>four different groups</b>. Because every substituent is distinct, that carbon has a genuine "handedness" — swap any two groups and you get a different three-dimensional arrangement (a different stereoisomer), not the same molecule redrawn.</p><p class="step-body" style="margin-bottom:0;">If even two of the four groups are identical, the carbon is <i>not</i> a stereocenter — with a repeated group, swapping two substituents just gives back the same molecule.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the carbon\'s four attached groups. Are they all different?</h2>' +
+            '<p class="step-body">This carbon (from 2-butanol) is bonded to OH, H, CH₃, and CH₂CH₃. Click each group to confirm they\'re all distinct.</p>' +
+            stereocenterSvg() +
+            '<p class="step-body" style="font-size:12.5px;color:var(--muted);">(This step has no wrong answer — click Continue once you\'ve looked it over.)</p>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', true);
+          api.card.querySelector('#nextBtn').addEventListener('click', function(){ api.record(true); api.advance(); });
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Which carbon in 2-propanol, CH₃–CH(OH)–CH₃, is a stereocenter?',
+        options: ['The central carbon — it has an OH group', 'None — the central carbon has two identical CH₃ groups', 'Both terminal CH₃ carbons'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — with two identical CH₃ groups attached, the central carbon only has three distinct substituents (OH, H, and CH₃ counted once), not four. 2-propanol is achiral.',
+        wrongFeedback: 'Look closely at the two groups on either side of the central carbon — they\'re both CH₃, which means they\'re identical, not different.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'A molecule has 3 stereocenters. What is the maximum number of possible stereoisomers?',
+        options: ['3² = 9', '3 × 2 = 6', '2³ = 8'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — each stereocenter independently doubles the possibilities, giving 2ⁿ total, so 2³ = 8 for three stereocenters.',
+        wrongFeedback: 'Each stereocenter contributes a factor of 2 (one of two possible configurations), so the total is 2 raised to the number of stereocenters, not multiplied by it.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Two quick ways to rule a carbon out.',
+        bodyHtml: '<p class="step-body">Scanning a large molecule for stereocenters gets faster once you know what instantly rules a carbon <i>out</i>: <b>(1)</b> any carbon attached to two identical groups (two H atoms, two CH₃ groups, etc.) can\'t be a stereocenter — you need four distinct substituents, and a repeat means at most three. <b>(2)</b> any carbon that isn\'t sp³ (a carbon in a double bond, or with only three total substituents) doesn\'t have four groups to compare at all.</p><p class="step-body" style="margin-bottom:0;">Ring carbons can absolutely still be stereocenters — you just have to trace both directions around the ring as if they were two different substituents, and compare what you find with what\'s attached outside the ring.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Finding every stereocenter is the first step in nearly every stereochemistry problem.',
+        bodyHtml: '<div class="explain-box">Before you can name a molecule\'s configuration (R/S, coming up in a later lesson), draw its enantiomer, or figure out if it\'s meso, you first have to correctly locate every stereocenter in the structure. Missing one, or incorrectly flagging a non-stereocenter, cascades into every subsequent step being wrong — this is worth practicing until it\'s fast and automatic.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A carbon is bonded to: H, OH, CH₂CH₃, and CH₂CH₂CH₃ (propyl). Is this carbon a stereocenter?',
+        options: ['Yes — all four groups (H, OH, ethyl, propyl) are genuinely different', 'No — ethyl and propyl are both just "alkyl groups," so they count as identical', 'It depends on the solvent'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — even though ethyl (CH₂CH₃) and propyl (CH₂CH₂CH₃) are both simple alkyl chains, they are chemically distinct groups (different chain lengths), so this carbon has four genuinely different substituents and is a stereocenter. "Similar-looking" is not the same as "identical."'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

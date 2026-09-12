@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meso Compounds — Stereochemistry | Organic Chemistry</title>
+<meta name="description" content="Learn how a molecule with stereocenters can still be achiral overall — the meso compound exception to the 2^n stereoisomer rule, with tartaric acid as the classic example.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/meso.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 5 &middot; Stereochemistry</div>
+    <h1 style="margin-bottom:4px;">Meso compounds.</h1>
+    <p class="lede" style="margin-top:0;">A molecule can have stereocenters and still be achiral — internal symmetry can cancel chirality out.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'meso',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        diagramHtml: window.OchemMolecules.svg('meso-tartaric-acid'),
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A molecule can have stereocenters and still be achiral.',
+        bodyHtml: '<p class="step-body">The 2ⁿ rule from the Stereocenters lesson is a <i>maximum</i>, not a guarantee — and <b>meso compounds</b> are exactly why. A meso compound has real stereocenters, but the molecule as a whole is still <b>achiral</b>, because it contains an internal plane of symmetry that makes it superimposable on its own mirror image.</p><p class="step-body" style="margin-bottom:0;">This can only happen in molecules with a specific kind of internal symmetry — typically, a molecule that reads the same sequence of groups from either end, with stereocenters positioned so that one half exactly mirrors the other.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Tartaric acid has 2 stereocenters. Click how many distinct stereoisomers actually exist.</h2>' +
+            '<p class="step-body">HOOC–CH(OH)–CH(OH)–COOH. The 2ⁿ rule would predict a maximum of 4 — but one pairing turns out to have an internal mirror plane.</p>' +
+            '<div class="choice-row">' +
+            '<button class="choice-btn" data-v="4">4 — the full 2ⁿ maximum</button>' +
+            '<button class="choice-btn" data-v="3">3 — one combination collapses into a meso (achiral) compound</button>' +
+            '<button class="choice-btn" data-v="2">2 — only the enantiomers exist</button>' +
+            '</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var answered = false;
+          api.card.querySelectorAll('.choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(answered) return;
+              answered = true;
+              var isCorrect = btn.getAttribute('data-v') === '3';
+              api.card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+              btn.classList.add(isCorrect ? 'correct' : 'wrong');
+              api.record(isCorrect);
+              api.showFeedback(fb, isCorrect, 'Right — tartaric acid has only 3 real stereoisomers: (R,R) and (S,S) form a genuine enantiomeric pair, but the (R,S) combination has an internal mirror plane and is achiral (meso) — it doesn\'t have a separate mirror-image partner of its own.');
+              next.disabled = false;
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Why is meso-tartaric acid achiral, despite having two stereocenters?',
+        options: ['It doesn\'t actually have any stereocenters', 'Achiral molecules can never have this many oxygens', 'It has an internal plane of symmetry, making it superimposable on its own mirror image'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — the internal mirror plane is the whole story. Having stereocenters doesn\'t automatically make a molecule chiral if there\'s enough internal symmetry to cancel it out.',
+        wrongFeedback: 'Meso-tartaric acid genuinely does have two stereocenters — what makes it achiral is the internal mirror plane, not an absence of stereocenters.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'What is the relationship between meso-tartaric acid and (R,R)-tartaric acid?',
+        options: ['Diastereomers — they\'re stereoisomers, but not mirror images', 'Enantiomers — they\'re non-superimposable mirror images', 'They are the same compound'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. Meso-tartaric acid is a diastereomer of both (R,R) and (S,S) — a stereoisomer, but not their mirror image (its own mirror image is itself).',
+        wrongFeedback: 'Enantiomers must be non-superimposable mirror images — meso-tartaric acid is its own mirror image (achiral), so it can\'t be the enantiomer of anything. It\'s a diastereomer of (R,R) instead.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The practical test: look for an internal mirror plane.',
+        bodyHtml: '<p class="step-body">To check whether a molecule with multiple stereocenters is meso, draw it out fully (a Fischer projection, which you\'ll learn next lesson, is the traditional tool for exactly this) and look for an internal plane of symmetry cutting it into two identical, mirror-image halves. If one exists, the molecule is meso: achiral overall, with no separate enantiomer, and a measured specific rotation of exactly zero.</p><p class="step-body" style="margin-bottom:0;">This test only becomes relevant for molecules with a symmetric backbone — the same sequence of groups whether you read the structure from the left end or the right end. A molecule without that underlying symmetry (like most molecules with 2+ different, unrelated stereocenters) simply can\'t be meso; there\'s no internal mirror plane to find.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Meso compounds are a genuine trap on stereoisomer-counting problems.',
+        bodyHtml: '<div class="explain-box">Whenever you\'re asked to count the total number of stereoisomers for a molecule, always check for a symmetric backbone before trusting the raw 2ⁿ number. Missing a meso possibility is one of the most common stereochemistry mistakes — you\'ll get a real number that\'s too high by counting a meso compound as two separate stereoisomers instead of one achiral molecule that happens to satisfy two of your labels at once.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A symmetric molecule has 2 stereocenters, and its (R,S) combination has an internal mirror plane. What is the (R,S) form\'s specific rotation, [α]?',
+        options: ['The same as (R,R)', 'Exactly zero — it\'s achiral (meso) and doesn\'t rotate polarized light', 'The opposite sign of (S,S)'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — an achiral molecule, meso compounds included, always shows zero optical rotation. Only chiral molecules (like the genuine (R,R)/(S,S) enantiomeric pair) rotate polarized light at all.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

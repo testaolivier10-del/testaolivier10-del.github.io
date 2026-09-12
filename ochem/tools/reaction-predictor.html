@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reaction Predictor — Organic Chemistry Tools</title>
+<meta name="description" content="Pick a substrate, reagent, solvent and temperature, commit to SN1, SN2, E1 or E2, then see the decision broken into the four factors that actually decide it — including Zaitsev versus Hofmann.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/tools/reaction-predictor.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/tools.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+.rp-setup{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
+  .rp-setup .tfield{margin-bottom:0;}
+  .rp-equation{
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;
+    margin-top:18px;padding:16px 12px;background:var(--paper);
+    border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
+  }
+  .rp-term{font:900 16px var(--font-mono);color:var(--ink);}
+  .rp-term--product{color:var(--accent);}
+  .rp-op{font:900 16px var(--font-mono);color:var(--muted);}
+  .rp-arrow{display:flex;flex-direction:column;align-items:center;min-width:110px;}
+  .rp-over,.rp-under{font:800 10.5px var(--font-ui);color:var(--muted);}
+  .rp-line{font:900 20px var(--font-mono);color:var(--ink);line-height:1;}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell">
+  <div class="tool-top" id="tool-top"></div>
+  <div id="rpRoot"></div>
+
+  <div id="tool-foot"></div>
+</div>
+
+<script>
+  window.OCHEM_SECTION = 'tools';
+  window.OCHEM_BASE = '../';
+  window.OCHEM_TOOL = 'reaction-predictor';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/tools-registry.js"></script>
+<script src="../assets/tool-state.js"></script>
+<script src="../assets/tool-shell.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/chem-core.js"></script>
+<script src="../assets/mol3d.js"></script>
+<script src="../assets/mol-builder.js"></script>
+<script src="../assets/builder-ui.js"></script>
+<script src="../assets/tools/reaction-predictor.js"></script>
+</body>
+</html>

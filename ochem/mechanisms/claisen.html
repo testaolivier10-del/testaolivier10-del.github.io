@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Claisen Condensation — Interactive Mechanism | Organic Chemistry</title>
+<meta name="description" content="Perform the Claisen condensation yourself: form the ester enolate, attack a second ester, collapse the tetrahedral intermediate, and see why the beta-ketoester product is what drives the whole reaction.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/mechanisms/claisen.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+  .lesson-shell{max-width:760px;margin:0 auto;}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 10 &middot; Enolates</div>
+    <h1 style="margin-bottom:4px;">Claisen: the aldol’s substitution cousin.</h1>
+    <p class="lede" style="margin-top:0;">Same opening move as an aldol. The difference is that an ester has a leaving group — so the tetrahedral intermediate collapses instead of stopping.</p>
+  </div>
+
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel"></div>
+  </div>
+
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/molecule-editor.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+  window.OCHEM_MECHANISM = {
+  "topicId": "claisen",
+  "steps": [
+    {
+      "type": "explain",
+      "eyebrow": "Setup",
+      "title": "One difference from the aldol.",
+      "bodyHtml": "<p class=\"step-body\">An aldol attacks a ketone or aldehyde, where the tetrahedral intermediate has nothing to expel and simply gets protonated. An ester carries an <b>OR group</b>, so the intermediate can collapse — and addition becomes substitution.</p><p class=\"step-body\">Methyl acetate, with ethoxide about to remove an alpha hydrogen.</p>",
+      "molecule": "methyl-acetate"
+    },
+    {
+      "type": "draw",
+      "eyebrow": "Step 1 · Enolate",
+      "title": "Base removes an alpha hydrogen. Show where the electrons go.",
+      "bodyHtml": "<p class=\"step-body\">Two arrows — exactly the enolate formation you drew in the aldol.</p>",
+      "molecule": "methyl-acetate",
+      "concepts": [
+        "alpha-acidity",
+        "enolate-formation"
+      ],
+      "arrows": [
+        {
+          "from": "bond:ca-h1",
+          "to": "bond:c-ca"
+        },
+        {
+          "from": "bond:c-o1",
+          "to": "o1"
+        }
+      ],
+      "hint": "The C–H electrons become a pi bond toward the carbonyl carbon, and the C=O gives way onto oxygen.",
+      "why": "The ester enolate. An ester's alpha hydrogen is less acidic than a ketone's — around pKa 25 rather than 20, because the carbonyl is already partly satisfied by the alkoxy oxygen's donation — which is why Claisen conditions need an alkoxide base rather than hydroxide.",
+      "wrong": {
+        "bond:ca-h1>ca": "A bare carbanion is far too unstable. The electrons continue into a pi bond toward the carbonyl, which is what the resonance stabilization actually is.",
+        "bond:c-o1>c": "Backwards — the pi electrons go to the electronegative oxygen."
+      },
+      "nextLabel": "Attack the second ester"
+    },
+    {
+      "type": "draw",
+      "eyebrow": "Step 2 · Add, then eliminate",
+      "title": "The enolate attacks a second ester. Draw the addition and the collapse.",
+      "bodyHtml": "<p class=\"step-body\">Three arrows on the molecule being attacked: the C=O opens, then reforms and pushes out the leaving group.</p>",
+      "molecule": "methyl-acetate",
+      "concepts": [
+        "tetrahedral-intermediate",
+        "claisen-connectivity",
+        "leaving-group-ability"
+      ],
+      "arrows": [
+        {
+          "from": "bond:c-o1",
+          "to": "o1"
+        },
+        {
+          "from": "o1",
+          "to": "bond:c-o1"
+        },
+        {
+          "from": "bond:c-o2",
+          "to": "o2"
+        }
+      ],
+      "hint": "Open the C=O, bring it back down, and send the alkoxy group away with its electrons.",
+      "why": "Addition then elimination — the same two-part move as any acyl substitution. The alkoxide leaves, and what you have made is a beta-ketoester: a ketone and an ester two carbons apart.",
+      "wrong": {
+        "bond:c-ca>ca": "The alkyl group would have to leave as a carbanion. The alkoxy group is the leaving group here.",
+        "o1>c": "Reforming the C=O means aiming at the C–O bond. Pointing at the carbon would give it five bonds.",
+        "c>o2": "The tail belongs on the C–O bond that breaks — carbon has no lone pair to donate."
+      },
+      "nextLabel": "What drives it?"
+    },
+    {
+      "type": "mcq",
+      "eyebrow": "Step 3 · The driving force",
+      "title": "Each step so far is reversible. What makes the Claisen go to completion?",
+      "bodyHtml": "<p class=\"step-body\">Look at the product you just made and ask what the base does to it.</p>",
+      "options": [
+        "The alkoxide leaving group escapes as a gas",
+        "The beta-ketoester's alpha hydrogen sits between two carbonyls at about pKa 11, so the base deprotonates it irreversibly and pulls the equilibrium across",
+        "The product precipitates out of solution"
+      ],
+      "correctIndex": 1,
+      "concepts": [
+        "claisen-connectivity",
+        "alpha-acidity"
+      ],
+      "why": "That doubly-stabilized enolate is the thermodynamic sink. It is also why a full equivalent of base is needed rather than a catalytic amount, and why an acidic workup is required at the end to protonate the product back.",
+      "wrong": {
+        "0": "Alkoxides stay in solution — nothing escapes. Compare this with SOCl₂ reactions, where gases genuinely do drive things forward.",
+        "2": "Solubility is not the driver. The reaction is pulled by an acid–base step, not by a phase change."
+      },
+      "nextLabel": "Last one"
+    },
+    {
+      "type": "final",
+      "eyebrow": "Challenge",
+      "title": "An ester with only ONE alpha hydrogen fails to give a Claisen product in decent yield. Why?",
+      "bodyHtml": "<p class=\"step-body\">Follow the driving force you just identified through to that case.</p>",
+      "options": [
+        "One alpha hydrogen is not acidic enough to be removed at all",
+        "The product is too crowded to form",
+        "After the condensation there is no alpha hydrogen left between the two carbonyls, so the deprotonation that drives the reaction cannot happen and everything stays reversible"
+      ],
+      "correctIndex": 2,
+      "concepts": [
+        "claisen-connectivity",
+        "alpha-acidity"
+      ],
+      "why": "The single alpha hydrogen is used up making the enolate, so the beta-ketoester product has none left in that position. Without the final irreversible deprotonation there is nothing to pull the equilibrium over, and the reaction sits back at starting material.",
+      "wrong": {
+        "0": "One alpha hydrogen is just as acidic as any other — the enolate forms fine. The problem appears later, at the driving-force step.",
+        "1": "Sterics are not the obstacle. The mechanism runs; it simply does not stay run without the final deprotonation."
+      }
+    }
+  ]
+};
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/mechanism-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alkene Structure — Alkenes &amp; Alkynes | Organic Chemistry</title>
+<meta name="description" content="Learn why the C=C double bond is planar and rigid, what a pi bond actually is, degrees of unsaturation, and why more-substituted alkenes are more stable.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/alkene-structure.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 7 &middot; Alkenes &amp; Alkynes</div>
+    <h1 style="margin-bottom:4px;">Alkene structure.</h1>
+    <p class="lede" style="margin-top:0;">A C=C double bond isn't just "one more bond" than a single bond — it's a fundamentally different, flatter, more reactive kind of connection.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'alkene-structure',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A C=C double bond is one sigma bond plus one pi bond.',
+        bodyHtml: '<p class="step-body">Each carbon in a C=C is <b>sp² hybridized</b>: it forms three sigma bonds using sp² orbitals arranged 120° apart in a flat plane, and has one leftover, unhybridized <b>p orbital</b> standing perpendicular to that plane. The sigma bond between the two carbons forms from head-on overlap of sp² orbitals, exactly like any single bond.</p><p class="step-body" style="margin-bottom:0;">The second bond — the one that makes it a double bond — comes from the two leftover p orbitals overlapping <b>side-by-side</b>, above and below the plane of the atoms. This sideways overlap is called a <b>pi (π) bond</b>. A double bond is therefore one sigma bond plus one pi bond stacked on top of each other; a triple bond (coming up in the Alkynes lesson) adds a second pi bond.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the region of the ethylene diagram that represents the pi bond.</h2>' +
+            '<p class="step-body">The sigma-bond framework (C–H and C–C sigma bonds) is drawn as solid lines. The pi bond is the side-by-side p-orbital overlap above and below the plane.</p>' +
+            '<div style="display:flex;justify-content:center;padding:20px 0;">' +
+            '<svg width="320" height="180" viewBox="0 0 320 180">' +
+              '<line x1="120" y1="90" x2="200" y2="90" stroke="var(--ink)" stroke-width="3"/>' +
+              '<line x1="120" y1="90" x2="70" y2="55" stroke="var(--ink)" stroke-width="2"/>' +
+              '<line x1="120" y1="90" x2="70" y2="125" stroke="var(--ink)" stroke-width="2"/>' +
+              '<line x1="200" y1="90" x2="250" y2="55" stroke="var(--ink)" stroke-width="2"/>' +
+              '<line x1="200" y1="90" x2="250" y2="125" stroke="var(--ink)" stroke-width="2"/>' +
+              '<circle cx="120" cy="90" r="5" fill="var(--ink)"/><circle cx="200" cy="90" r="5" fill="var(--ink)"/>' +
+              '<g id="piLobe" class="atom" data-v="pi" style="cursor:pointer;">' +
+                '<ellipse cx="160" cy="55" rx="65" ry="18" fill="var(--accent)" opacity="0.35" stroke="var(--accent)" stroke-width="2"/>' +
+                '<ellipse cx="160" cy="125" rx="65" ry="18" fill="var(--accent)" opacity="0.35" stroke="var(--accent)" stroke-width="2"/>' +
+              '</g>' +
+              '<text x="160" y="95" text-anchor="middle" font-size="11" fill="var(--muted)" font-family="monospace">sigma</text>' +
+            '</svg></div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var answered = false;
+          api.card.querySelector('#piLobe').addEventListener('click', function(){
+            if(answered) return;
+            answered = true;
+            this.style.opacity = '1';
+            api.record(true);
+            api.showFeedback(fb, true, 'That\'s it — the two shaded lobes above and below the sigma-bond plane are the side-by-side overlap of the leftover p orbitals: the pi bond. Everything else drawn (the solid lines) is the sigma framework.');
+            next.disabled = false;
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Why can\'t a C=C double bond rotate freely the way a C–C single bond can?',
+        options: ['Double bonds are simply shorter and have no room to rotate', 'Carbon atoms physically block each other from rotating', 'Rotating would break the side-by-side p-orbital overlap that makes up the pi bond'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — the pi bond only exists because the two p orbitals are aligned and overlapping; twisting one carbon relative to the other destroys that overlap, so rotation would mean breaking a bond.',
+        wrongFeedback: 'It\'s about orbital overlap, not physical size or steric blocking — twisting the double bond would break the pi-bond overlap.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'A molecule with formula C₅H₈ has how many degrees of unsaturation?',
+        options: ['2 — DoU = (2·5 + 2 − 8)/2 = 2', '1', '4'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. DoU = (2C+2−H)/2 = (10+2−8)/2 = 2 — this molecule has two rings and/or pi bonds total (for example, one ring plus one double bond, or two double bonds).',
+        wrongFeedback: 'Use DoU = (2C + 2 − H) / 2 with C = 5 and H = 8: (10 + 2 − 8)/2 = 2.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'More substituted alkenes are more stable — heats of hydrogenation prove it.',
+        bodyHtml: '<p class="step-body">Adding H₂ across a C=C (hydrogenation) converts any alkene to the same alkane and releases heat. Measuring exactly how much heat is released lets you rank alkene stability directly: <b>less heat released means the starting alkene was already lower in energy</b> (more stable).</p><p class="step-body" style="margin-bottom:0;">Real data for the four butene isomers: 1-butene (monosubstituted C=C) releases ≈30.3 kcal/mol; cis-2-butene (disubstituted) ≈28.6; trans-2-butene (disubstituted) ≈27.6; 2-methyl-2-butene (trisubstituted) ≈26.9. The pattern is consistent: <b>each additional alkyl group on the double bond stabilizes it</b> (alkyl groups donate electron density into the pi system via hyperconjugation), and for a given substitution pattern, <b>trans is more stable than cis</b> because the bulky groups aren\'t crowded on the same side.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Check Understanding',
+        title: 'Which alkene below is predicted to be the most stable?',
+        options: ['1-butene (monosubstituted)', '2-methyl-2-butene (trisubstituted)', 'They\'re all equally stable — they\'re isomers with the same formula'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — more alkyl substitution on the C=C means more stability, and 2-methyl-2-butene has three alkyl groups directly on its double-bond carbons versus one for 1-butene.',
+        wrongFeedback: 'Being isomers (same formula) doesn\'t mean equal energy — degree of substitution on the double bond is what determines relative alkene stability.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Substitution and geometry set up everything in the next two lessons.',
+        bodyHtml: '<div class="explain-box">The pi bond\'s electron density sitting exposed above and below the sigma framework is exactly what makes alkenes attractive to electrophiles — that\'s the entire basis for the addition reactions in the next lesson. And the stability ranking you just learned (more substituted = more stable) is the same logic behind Markovnikov\'s rule: the reaction pathway that funnels through the more stable, more substituted carbocation intermediate is the one that wins.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A chemist reports that isomer A releases 30.1 kcal/mol on hydrogenation and isomer B releases 27.2 kcal/mol, both converting to the same alkane. Which one was more stable before hydrogenation?',
+        options: ['Isomer A — it released more heat, meaning it started higher in energy but that makes it more stable', 'They must be equally stable since they form the same product', 'Isomer B — it released less heat, meaning it started at lower energy'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — less heat released means the starting material was already closer in energy to the common product, i.e. it was lower in energy (more stable) to begin with.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

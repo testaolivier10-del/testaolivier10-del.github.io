@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electrophiles — Electron Movement | Organic Chemistry</title>
+<meta name="description" content="Learn what makes a species electrophilic, how to spot the electrophilic atom in a molecule, and why the carbonyl carbon is the classic example.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/electrophiles.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 2 &middot; Organic Structure &amp; Electron Movement</div>
+    <h1 style="margin-bottom:4px;">Electrophiles.</h1>
+    <p class="lede" style="margin-top:0;">Electron-poor atoms waiting to be attacked.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 7</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  /* Acetone, drawn so every bond actually meets the atom it belongs to:
+     bond endpoints are the carbon/oxygen circle edges along the bond
+     direction, and the C=O second line is a parallel offset of the first. */
+  function carbonylSvg(){
+    return '<div class="scene"><svg viewBox="0 0 260 140" role="img" aria-label="Acetone: a carbonyl carbon double bonded to oxygen and single bonded to two methyl groups">' +
+      '<text x="76" y="76" text-anchor="end" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="16" fill="var(--ink)">CH\u2083</text>' +
+      '<line x1="82" y1="70" x2="102" y2="70" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<line x1="136.6" y1="64.3" x2="175.5" y2="37.2" stroke="var(--line)" stroke-width="2.2"/>' +
+      '<line x1="133.0" y1="59.1" x2="171.9" y2="32.0" stroke="var(--line)" stroke-width="2.2"/>' +
+      '<line x1="132.7" y1="84.7" x2="158" y2="108" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<text x="164" y="115" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="16" fill="var(--ink)">CH\u2083</text>' +
+      '<g class="atom" data-key="oxygen"><circle cx="186" cy="26" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="186" y="31" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">O</text></g>' +
+      '<g class="atom" data-key="carbon"><circle cx="120" cy="70" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="120" y="76" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="14">C</text></g>' +
+    '</svg></div>';
+  }
+
+  window.OchemLessonEngine.start({
+    topicId: 'electrophiles',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: '"Electron-loving" — but really, electron-poor.',
+        bodyHtml: '<p class="step-body">An <b>electrophile</b> is a species that is electron-<b>poor</b> — it carries a full or partial positive charge, or has an empty orbital — and seeks electrons from a nucleophile. It\'s the flip side of a nucleophile: one attacks, the other gets attacked.</p><p class="step-body" style="margin-bottom:0;">The classic example is a carbonyl carbon (C=O): the oxygen pulls electron density away from carbon, leaving it electron-poor.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the electrophilic atom in this ketone.</h2>' +
+            carbonylSvg() +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var answered = false;
+          api.card.querySelectorAll('.atom').forEach(function(g){
+            g.addEventListener('click', function(){
+              if(answered) return;
+              var isCorrect = g.getAttribute('data-key') === 'carbon';
+              api.record(isCorrect);
+              if(isCorrect){
+                answered = true;
+                g.classList.add('chosen');
+                api.showFeedback(fb, true, 'Correct — oxygen\'s pull leaves the carbon partially positive (δ+), which is exactly what a nucleophile targets.');
+                next.disabled = false;
+              } else {
+                api.showFeedback(fb, false, 'Oxygen is the one pulling electron density away — it ends up electron-rich, not electron-poor. Try the carbon.');
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Why is the carbonyl carbon electrophilic?',
+        options: ['Oxygen pulls electron density away, leaving the carbon partially positive', 'Carbon is naturally electron-poor no matter what it\'s bonded to', 'The carbonyl carbon carries a full +1 formal charge'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — it\'s the electronegativity difference in the C=O bond, not some inherent property of carbon.',
+        wrongFeedback: 'Formal charge on a neutral carbonyl carbon is actually 0 — it\'s the bond polarization (δ+/δ−), not a formal charge, that makes it electrophilic.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'In CH₃–Br, which atom is more electrophilic: the carbon or the bromine?',
+        options: ['The bromine — it\'s the one that eventually leaves', 'The carbon — bromine pulls electron density away from it', 'Neither — the bond is nonpolar'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — bromine\'s higher electronegativity leaves the carbon δ+, which is exactly where a nucleophile will attack.',
+        wrongFeedback: 'Being the leaving group doesn\'t make bromine electrophilic — compare electronegativities instead.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Three more electrophile types you\'ll meet constantly.',
+        bodyHtml: '<p class="step-body">Bond polarization isn\'t the only way to become electrophilic. <b>Carbocations</b> (a carbon that\'s already fully lost an electron pair, like the intermediate in SN1, Module 6) are among the strongest electrophiles you\'ll see — an actual full positive charge and an empty p orbital, not just a partial one.</p><p class="step-body"><b>A bare proton, H⁺</b>, is the simplest electrophile of all: no electrons whatsoever, so it grabs the nearest available lone pair (this is exactly acid-base chemistry, coming up in Module 3).</p><p class="step-body" style="margin-bottom:0;"><b>Induced-dipole electrophiles</b>: even a nonpolar molecule like Br₂ can act as an electrophile. As it approaches an electron-rich alkene π bond, the alkene\'s electron density repels Br₂\'s own electrons, temporarily inducing a partial positive charge on the near bromine — polarizing an otherwise nonpolar molecule on the spot. You\'ll draw this exact mechanism in Module 7 (halogenation of alkenes).</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Finding the electrophile tells you exactly where the attack happens.',
+        bodyHtml: '<div class="explain-box">Once you\'ve found the nucleophile and the electrophile in a reaction, you already know where the new bond forms — the nucleophile\'s electrons attack the electrophile\'s electron-poor atom. That\'s the setup for essentially every mechanism in this course.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'BF₃ has an empty p-orbital on boron. Is BF₃ a nucleophile or an electrophile?',
+        options: ['Nucleophile — it has lone pairs on the fluorines', 'Neither — BF₃ is unreactive', 'Electrophile — it can accept an electron pair into that empty orbital'],
+        correctIndex: 2,
+        correctFeedback: 'Correct. An empty orbital is a place for electrons to go, which makes boron here a strong electrophile — this is the same idea behind Lewis acids — a Lewis acid is just an electron-pair acceptor, the acid/base name for exactly what an electrophile does. That vocabulary comes up in Module 3.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>

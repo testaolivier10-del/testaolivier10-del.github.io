@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orbitals — Foundations | Organic Chemistry</title>
+<meta name="description" content="Fill orbitals in the correct order and learn why unpaired electrons matter for bonding.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/ochem/lessons/orbitals.html">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Loaded blocking and ahead of this page's own scripts because
+     they read window.HubProgress as the page parses. -->
+<script src="../../assets/account.js"></script>
+<script src="../../assets/hub-progress.js"></script>
+<script src="../../assets/chime.js"></script>
+<script src="../../assets/site-chrome.js"></script>
+<script src="../assets/ochem-xp.js"></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>.orb-box{cursor:pointer;}.orb-box rect{transition:stroke .1s ease;}.orb-box:hover rect{stroke:var(--accent);stroke-width:3;}.orb-box.chosen rect{stroke:var(--accent);stroke-width:3;fill:var(--tint-accent);}.orb-box.target rect{animation:orb-pulse 1.1s ease-in-out infinite;}@keyframes orb-pulse{0%,100%{stroke-opacity:1;}50%{stroke-opacity:.45;}}</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero" style="padding-bottom:0;">
+    <div class="eyebrow">Module 1 &middot; Foundations</div>
+    <h1 style="margin-bottom:4px;">Orbitals.</h1>
+    <p class="lede" style="margin-top:0;">Electrons don't fill randomly — there's a strict order, and it explains a lot of what comes next.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<script src="../assets/shuffle-options.js"></script>
+<script src="../assets/step-back.js"></script>
+<script src="../assets/curriculum.js"></script>
+<script src="../assets/concepts.js"></script>
+<script src="../assets/mastery-engine.js"></script>
+<script src="../assets/lesson-concepts.js"></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js"></script>
+<script src="../assets/periodic-table.js"></script>
+<script src="../assets/lesson-engine.js"></script>
+<script>
+(function(){
+  function orbitalShapeSvg(){
+    return '<div class="scene"><svg viewBox="0 0 320 110">' +
+      '<text x="40" y="14" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="12" fill="var(--muted)">s</text>' +
+      '<circle cx="40" cy="60" r="30" fill="var(--tint-accent)" stroke="var(--accent)" stroke-width="2"/><circle cx="40" cy="60" r="3" fill="var(--ink)"/>' +
+      '<text x="130" y="14" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="12" fill="var(--muted)">p (one of three)</text>' +
+      '<ellipse cx="130" cy="35" rx="16" ry="22" fill="var(--tint-accent)" stroke="var(--accent)" stroke-width="2"/>' +
+      '<ellipse cx="130" cy="85" rx="16" ry="22" fill="var(--tint-accent)" stroke="var(--accent)" stroke-width="2"/>' +
+      '<circle cx="130" cy="60" r="3" fill="var(--ink)"/>' +
+      '<text x="230" y="14" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="12" fill="var(--muted)">d (one of five)</text>' +
+      '<ellipse cx="230" cy="60" rx="26" ry="9" transform="rotate(45 230 60)" fill="var(--tint-accent)" stroke="var(--accent)" stroke-width="2"/>' +
+      '<ellipse cx="230" cy="60" rx="26" ry="9" transform="rotate(-45 230 60)" fill="var(--tint-accent)" stroke="var(--accent)" stroke-width="2"/>' +
+      '<circle cx="230" cy="60" r="3" fill="var(--ink)"/>' +
+    '</svg></div>';
+  }
+  function periodicBlocksSvg(){
+    function cell(col,row,fillVar,label){
+      var w=22,h=22,x=10+col*w,y=10+row*h;
+      return '<rect x="'+x+'" y="'+y+'" width="'+(w-2)+'" height="'+(h-2)+'" rx="3" fill="'+fillVar+'"/>' +
+        (label ? '<text x="'+(x+(w-2)/2)+'" y="'+(y+(h-2)/2+4)+'" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9" fill="var(--ink)">'+label+'</text>' : '');
+    }
+    var s='var(--tint-accent)', p='var(--tint-good)', d='var(--tint-amber)', f='var(--tint-coral)';
+    var html = '<div class="scene"><svg viewBox="0 0 420 140">';
+    // period 1: H (s-block) ... He (p-block, though its shell is full at s2 - conventionally drawn in the far p-block column)
+    html += cell(0,0,s,'H') + cell(17,0,p,'He');
+    // period 2: Li,Be (s) ... B..Ne (p)
+    html += cell(0,1,s,'Li') + cell(1,1,s,'Be');
+    ['B','C','N','O','F','Ne'].forEach(function(sym,i){ html += cell(12+i,1,p,sym); });
+    // period 3: Na,Mg (s) ... Al..Ar (p)
+    html += cell(0,2,s,'Na') + cell(1,2,s,'Mg');
+    ['Al','Si','P','S','Cl','Ar'].forEach(function(sym,i){ html += cell(12+i,2,p,sym); });
+    // period 4: K,Ca (s), d-block (Sc..Zn), Ga..Kr (p)
+    html += cell(0,3,s,'K') + cell(1,3,s,'Ca');
+    for(var c=0;c<10;c++) html += cell(2+c,3,d,'');
+    ['Ga','Ge','As','Se','Br','Kr'].forEach(function(sym,i){ html += cell(12+i,3,p,sym); });
+    // f-block row, shown separately below
+    for(var f2=0;f2<14;f2++) html += cell(3+f2,5,f,'');
+    html += '<text x="10" y="132" font-family="Nunito" font-weight="800" font-size="10" fill="var(--muted)">s-block</text>';
+    html += '<rect x="55" y="122" width="12" height="12" rx="2" fill="'+s+'"/>';
+    html += '<text x="90" y="132" font-family="Nunito" font-weight="800" font-size="10" fill="var(--muted)">p-block</text>';
+    html += '<rect x="135" y="122" width="12" height="12" rx="2" fill="'+p+'"/>';
+    html += '<text x="170" y="132" font-family="Nunito" font-weight="800" font-size="10" fill="var(--muted)">d-block</text>';
+    html += '<rect x="215" y="122" width="12" height="12" rx="2" fill="'+d+'"/>';
+    html += '<text x="250" y="132" font-family="Nunito" font-weight="800" font-size="10" fill="var(--muted)">f-block</text>';
+    html += '<rect x="295" y="122" width="12" height="12" rx="2" fill="'+f+'"/>';
+    html += '</svg></div>';
+    return html;
+  }
+  window.OchemLessonEngine.start({
+    topicId: 'orbitals',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Four orbital shapes, each holding at most 2 electrons.',
+        bodyHtml: '<p class="step-body">An <b>orbital</b> is a region of space where an electron is likely to be found. Each orbital holds at most <b>2</b> electrons, and those two must have opposite spins — the <b>Pauli exclusion principle</b>: no two electrons in the same atom can be in the exact same state.</p><p class="step-body" style="margin-bottom:0;">There are four shapes. <b>s</b> orbitals are spherical (1 per shell, starting at n=1). <b>p</b> orbitals are dumbbell-shaped, two lobes with a node at the center (3 per shell, starting at n=2). <b>d</b> orbitals are mostly four-lobed, cloverleaf-shaped (5 per shell, starting at n=3). <b>f</b> orbitals (starting at n=4) are even more complex multi-lobed shapes — you won\'t need to picture those in detail for this course.</p>' + orbitalShapeSvg()
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'This is why the periodic table is shaped the way it is.',
+        bodyHtml: '<p class="step-body">Each block of the periodic table is named for the type of orbital being filled last, for elements in that block.</p>' + periodicBlocksSvg() +
+          '<p class="step-body">Groups 1-2 are the <b>s-block</b>. Groups 13-18 are the <b>p-block</b> — this is where almost everything in organic chemistry lives: C, N, O, F, S, P, Cl, Br, I are all p-block elements. The 10 middle columns (the transition metals) are the <b>d-block</b>. The two rows pulled out at the bottom (lanthanides, actinides) are the <b>f-block</b>.</p><p class="step-body" style="margin-bottom:0;">One concrete payoff: sulfur, phosphorus, and the other period 3+ elements can sometimes hold more than 8 electrons around them (like in SF₆) — something carbon, nitrogen, oxygen, and fluorine never do. You will meet that rule properly, and the reason behind it, in the Lewis Structures and Hybridization lessons. For now, explore the blocks yourself with the periodic table tool (the ⚛ button in the corner) — its color categories line up with these same blocks.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Why the fill order is 1s, 2s, 2p — and not just an arbitrary rule.',
+        bodyHtml: '<p class="step-body">Electrons fill the lowest-energy orbitals first — the <b>Aufbau principle</b>. Within a shell, energy goes s &lt; p &lt; d &lt; f. The reason: an electron\'s energy depends on how strongly it feels the nucleus\'s pull, and other electrons in the way "screen out" some of that pull — <b>shielding</b>. An s orbital\'s shape lets its electron spend more time very close to the nucleus than a p electron of the same shell does (<b>penetration</b>), so it feels less shielding, feels a stronger pull from the nucleus, and therefore sits at lower energy.</p><p class="step-body">This effect is strong enough to flip the order between shells: by period 4, <b>4s ends up lower energy than 3d</b>, even though 4 &gt; 3 — exactly why potassium and calcium fill 4s before any 3d electrons appear, and why the d-block starts at row 4, not row 3.</p><p class="step-body" style="margin-bottom:0;">When orbitals are exactly equal in energy (the three 2p\'s), electrons spread out singly across them before any pairing up — <b>Hund\'s rule</b>, since two electrons crowded into one orbital repel each other more than two electrons in separate, equal-energy orbitals.</p>'
+      },
+      {
+        render: function(api){
+          var boxes = ['1s','2s','2px','2py','2pz'];
+          // Each entry is one electron, in the order it's actually added for
+          // carbon (1s² 2s² 2p²): pair up 1s, pair up 2s, then place one
+          // electron each in two of the three (degenerate) 2p orbitals per
+          // Hund's rule. 2pz is never reached — carbon only has 2 electrons
+          // to spread across three empty, equal-energy 2p orbitals.
+          var slots = [0, 0, 1, 1, 2, 3];
+          var counts = [0, 0, 0, 0, 0];
+          var next = 0, done = false;
+
+          function boxSvg(){
+            var w = 54, gap = 10, startX = 20;
+            var svgW = startX*2 + boxes.length*w + (boxes.length-1)*gap;
+            return '<div class="scene"><svg viewBox="0 0 ' + svgW + ' 120">' +
+              boxes.map(function(label, i){
+                var x = startX + i*(w+gap);
+                var n = counts[i];
+                var isTarget = !done && slots[next] === i;
+                var cls = 'orb-box' + (n>0?' chosen':'') + (isTarget?' target':'');
+                var arrows = '';
+                if(n >= 1) arrows += '<text x="' + (x+w/2-9) + '" y="55" text-anchor="middle" font-size="18" pointer-events="none">↑</text>';
+                if(n >= 2) arrows += '<text x="' + (x+w/2+9) + '" y="55" text-anchor="middle" font-size="18" pointer-events="none">↓</text>';
+                return '<g class="' + cls + '" data-key="o' + i + '">' +
+                  (isTarget ? '<text x="' + (x+w/2) + '" y="14" text-anchor="middle" font-size="10" font-weight="800" fill="var(--accent)" pointer-events="none">CLICK</text>' : '') +
+                  '<rect x="' + x + '" y="20" width="' + w + '" height="50" rx="8" fill="' + (n>0?'var(--tint-accent)':'var(--white)') + '" stroke="' + (isTarget?'var(--accent)':'var(--line)') + '" stroke-width="' + (isTarget?'3':'2') + '"/>' +
+                  arrows +
+                  '<text x="' + (x+w/2) + '" y="90" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12" pointer-events="none">' + label + '</text>' +
+                '</g>';
+              }).join('') +
+            '</svg></div>';
+          }
+          function paint(){
+            api.card.innerHTML =
+              '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+              '<h2 class="step-title">Fill carbon’s orbitals in order.</h2>' +
+              '<p class="step-body">Carbon has 6 electrons: 2 pair up in 1s, 2 pair up in 2s, then the last 2 spread out singly across the three (equal-energy) 2p orbitals — Hund’s rule. Click the highlighted orbital each time to add its next electron; an orbital always gets its second (paired, opposite-spin) electron before the next orbital starts filling.</p>' +
+              boxSvg() +
+              api.feedbackHtml('fb') +
+              api.nextButtonHtml('Continue', done);
+            var fb = api.card.querySelector('#fb');
+            api.card.querySelectorAll('.orb-box').forEach(function(g){
+              g.addEventListener('click', function(){
+                if(done) return;
+                var idx = parseInt(g.getAttribute('data-key').slice(1), 10);
+                var targetIdx = slots[next];
+                if(idx !== targetIdx){
+                  api.showFeedback(fb, false, 'Not yet — fill lower-energy orbitals first, and pair up each orbital (2 electrons, opposite spins) before moving to the next one.');
+                  return;
+                }
+                counts[idx]++;
+                next++;
+                if(next === slots.length){
+                  done = true;
+                  api.record(true);
+                  paint();
+                  api.showFeedback(api.card.querySelector('#fb'), true, 'Correct — 1s and 2s each filled with a paired ↑↓, and carbon’s last 2 electrons went one each into 2px and 2py (Hund’s rule), leaving 2pz completely empty. That’s exactly 1s² 2s² 2p².');
+                } else {
+                  paint();
+                }
+              });
+            });
+            api.card.querySelector('#nextBtn').addEventListener('click', api.advance);
+          }
+          paint();
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Guided Practice',
+        title: 'How many electrons fit in a single orbital?',
+        options: ['1', '2', '3'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — at most 2 electrons per orbital, and they must have opposite spins.',
+        wrongFeedback: 'Think about the Pauli exclusion principle.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 6 · Independent Practice',
+        title: 'Which orbital fills first: 2s or 2p?',
+        options: ['2p', '2s'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — 2s is lower energy and fills before any 2p orbital.',
+        wrongFeedback: 'Lower-energy orbitals fill first — which one is lower, 2s or 2p?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Orbitals combine to make bonds.',
+        bodyHtml: '<div class="explain-box">When atoms bond, their orbitals mix into new shapes called <b>hybrid orbitals</b> — that’s the very next lesson. Everything about a molecule’s 3D shape starts here.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Carbon’s configuration is 1s² 2s² 2p². By Hund’s rule, how many unpaired electrons does it have?',
+        options: ['0', '1', '2', '4'],
+        correctIndex: 2,
+        correctFeedback: 'Correct — 2 unpaired electrons. Carbon\'s 2p² puts its two electrons in two of the three degenerate 2p orbitals, and Hund\'s rule keeps them unpaired rather than sharing one orbital. Carbon still typically forms 4 bonds despite this — the next lesson, Hybridization, explains how.'
+      }
+    ]
+  });
+})();
+</script>
+</body>
+</html>
