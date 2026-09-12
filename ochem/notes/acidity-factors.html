@@ -1,10 +1,61 @@
+<p class="step-body">The pKa table is a list of results. This section is the explanation behind it. Given any two hydrogens, you should be able to say which is more acidic and why, without looking anything up — and the reasoning is always the same: <b>the more stable the conjugate base, the stronger the acid</b>. Everything below is a way of asking how stable that anion is.</p>
+
 <h3>The ARIO framework</h3>
-<p class="step-body">When comparing the acidity of two H atoms, walk through four questions in order: <b>A</b>tom (what atom holds the negative charge in the conjugate base — bigger and more electronegative is more stable), <b>R</b>esonance (can the negative charge delocalize?), <b>I</b>nduction (are electronegative atoms nearby pulling electron density away inductively?), <b>O</b>rbital (what hybridization is the atom holding the charge — more s-character is more stable). Atom effects are usually the biggest, so check that first; the others break ties.</p>
-<h3>Atom effects: two trends, two different reasons</h3>
-<p class="step-body"><b>Across a period</b> (left to right), acidity increases with electronegativity: C–H (pKa ≈ 50) &lt; N–H (≈ 38) &lt; O–H (≈ 16) &lt; F–H (≈ 3.2). More electronegative atoms hold negative charge more comfortably.</p>
-<p class="step-body"><b>Down a group</b>, acidity increases even though electronegativity decreases: H–F (pKa 3.2) &lt; H–Cl (≈ −7) &lt; H–Br (≈ −9) &lt; H–I (≈ −10). Size wins here — a larger atom spreads the negative charge over a bigger volume (more polarizable electron cloud), which stabilizes it more than the electronegativity difference costs. This trend often surprises students because it runs opposite to the periodic table's electronegativity arrow.</p>
-<div class="notes-fact">Rule of thumb: down a group, size dominates and acidity increases with atom size; across a period, electronegativity dominates and acidity increases with electronegativity. Different rows on the periodic table, different reasons.</div>
-<h3>Resonance and induction</h3>
-<p class="step-body">Carboxylic acids (pKa ≈ 4.76) are far more acidic than alcohols (pKa ≈ 16) mainly because of <b>resonance</b>: the carboxylate anion delocalizes its negative charge over two equivalent oxygens (exactly like the acetate example from the Resonance lesson), while an alkoxide keeps its full negative charge on one oxygen. <b>Induction</b> is a separate, additive effect: chloroacetic acid (ClCH₂COOH, pKa ≈ 2.87) is more acidic than acetic acid (pKa 4.76) because the electronegative chlorine pulls electron density away from the carboxylate through the sigma bonds, stabilizing the negative charge further — and this effect fades quickly with distance (an extra carbon between the Cl and the COOH sharply reduces the effect).</p>
-<h3>Orbital hybridization</h3>
-<p class="step-body">Comparing C–H acidity: terminal alkyne C–H (sp, pKa ≈ 25) &gt; alkene C–H (sp², pKa ≈ 44) &gt; alkane C–H (sp³, pKa ≈ 50). More s-character means the orbital holding the lone pair (in the conjugate base) is closer to the nucleus and lower in energy, stabilizing the negative charge. This is purely an orbital effect — none of the other three factors differ between these three C–H bonds.</p>
+<p class="step-body">Four structural factors determine anion stability. Check them in this order, because they are roughly in order of size, and the first one that differs usually settles the question.</p>
+<ul class="step-body" style="margin-top:0;">
+<li><b>A — Atom.</b> Which atom carries the negative charge in the conjugate base?</li>
+<li><b>R — Resonance.</b> Can the charge be delocalized over more than one atom?</li>
+<li><b>I — Induction.</b> Are there electronegative atoms nearby pulling density away through sigma bonds?</li>
+<li><b>O — Orbital.</b> What is the hybridization of the atom holding the charge?</li>
+</ul>
+<p class="step-body">Atom effects are usually the largest and resonance is usually next; induction and orbital effects most often break ties. But the order is a heuristic, not a law — a strongly resonance-stabilized carbanion can beat an unstabilized alkoxide, and the point of naming all four is that you can tell which are in play.</p>
+
+<h3>A — Atom: two trends, two different reasons</h3>
+<p class="step-body"><b>Across a period</b>, acidity increases with electronegativity: C–H (pKa ≈ 50) &lt; N–H (≈ 38) &lt; O–H (≈ 16) &lt; H–F (3.2). Twenty-two orders of magnitude from nitrogen to oxygen alone. A more electronegative atom is more willing to hold a negative charge, so its anion is more stable and its acid is stronger.</p>
+<p class="step-body"><b>Down a group</b>, acidity increases even though electronegativity <i>decreases</i>: H–F (3.2) &lt; H–Cl (−7) &lt; H–Br (−9) &lt; H–I (−10). Here size wins. A larger atom spreads the charge over a much bigger, more polarizable electron cloud, and that dilution stabilizes the anion far more than the loss of electronegativity costs. The weakening C–H or H–X bond down the group pushes the same direction.</p>
+
+<div class="notes-fact">The rule of thumb: <b>across a period, electronegativity dominates; down a group, size dominates.</b> Both trends increase acidity, but for opposite-sounding reasons, which is why this pair of trends is the most reliably confusing thing in Module 3. The same size argument explains why thiols (pKa ≈ 10) are roughly a million times more acidic than alcohols (pKa ≈ 16), despite sulfur being less electronegative than oxygen.</div>
+
+<h3>R — Resonance</h3>
+<p class="step-body">Delocalizing a negative charge over several atoms is powerfully stabilizing, and resonance is the biggest single lever in the table after the choice of atom.</p>
+<p class="step-body">Compare ethanol (pKa 16) with acetic acid (pKa 4.76). Both give up an O–H proton, and in both cases the charge lands on oxygen — so factor A is identical. The difference is entirely in what happens next: acetate spreads its charge equally over two equivalent oxygens, while ethoxide must keep all of it on one. Eleven pKa units, a hundred billion-fold, from delocalization alone.</p>
+<p class="step-body">Phenol (pKa 10) sits between them, and the reason is instructive. Phenoxide delocalizes its charge into the aromatic ring — but onto carbon atoms, which hold negative charge much less comfortably than oxygen does. Real stabilization, but less of it than acetate gets. Six units more acidic than an alcohol, five units less acidic than a carboxylic acid.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — why a 1,3-diketone is as acidic as phenol</span>
+<p>A ketone's alpha C–H has a pKa around 20 — already remarkable for a C–H, because the resulting enolate delocalizes onto the carbonyl oxygen.</p>
+<p>Put a second carbonyl on the other side, as in pentane-2,4-dione, and the alpha hydrogen between them drops to pKa 9. The anion now delocalizes onto <i>two</i> oxygens rather than one.</p>
+<p>That is roughly as acidic as phenol, and more acidic than ammonium — from a hydrogen on carbon. This is why 1,3-dicarbonyls are the workhorse nucleophiles of Module 11: an ordinary base like ethoxide deprotonates them completely.</p>
+</div>
+
+<h3>I — Induction</h3>
+<p class="step-body">An electronegative atom pulls electron density through the sigma framework, helping to spread out a nearby negative charge. The effect is real, additive, and short-ranged.</p>
+<div class="notes-table-wrap">
+<table class="notes-table">
+<tr><th>Acid</th><th>pKa</th><th>Effect</th></tr>
+<tr><td>CH₃COOH</td><td>4.76</td><td>baseline</td></tr>
+<tr><td>ClCH₂COOH</td><td>2.86</td><td>one Cl, adjacent</td></tr>
+<tr><td>Cl₂CHCOOH</td><td>1.29</td><td>two Cl</td></tr>
+<tr><td>Cl₃CCOOH</td><td>0.65</td><td>three Cl</td></tr>
+<tr><td>FCH₂COOH</td><td>2.59</td><td>F beats Cl</td></tr>
+<tr><td>ClCH₂CH₂CH₂COOH</td><td>4.52</td><td>Cl three carbons away</td></tr>
+</table>
+</div>
+<p class="step-body">Two lessons from that table. Induction is cumulative — each chlorine adds roughly another 1.5 pKa units — and it <b>dies off sharply with distance</b>. Move the chlorine three carbons from the acid group and almost nothing is left of the effect. That distance dependence is the fingerprint that distinguishes induction from resonance, which propagates along a conjugated system with little loss.</p>
+
+<h3>O — Orbital</h3>
+<p class="step-body">Compare the acidity of three carbon–hydrogen bonds where nothing differs but hybridization: terminal alkyne C–H (sp, pKa ≈ 25), alkene C–H (sp², ≈ 44), alkane C–H (sp³, ≈ 50).</p>
+<p class="step-body">More s-character means the orbital holding the lone pair in the conjugate base is closer to the nucleus and lower in energy, which stabilizes the negative charge. An sp orbital is 50% s; an sp³ orbital is 25%. Twenty-five orders of magnitude of acidity difference from nothing but the mixing ratio of the orbitals.</p>
+<p class="step-body">The same effect explains why protonated pyridine (pKaH 5.2) is far more acidic than a protonated alkylamine (pKaH ≈ 10): pyridine's lone pair sits in an sp² orbital and is held more tightly, making it a weaker base.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — running the framework</span>
+<p>Which is more acidic: ethanol or ethanethiol?</p>
+<p><b>A:</b> the charge lands on O in one case and S in the other — same group, so size dominates. Sulfur is bigger and more polarizable, so ethanethiol should be the stronger acid. <b>R:</b> no resonance in either. <b>I:</b> no electronegative substituents in either. <b>O:</b> both sp³.</p>
+<p>Only factor A differs, and it points to the thiol. Measured: ethanol 16, ethanethiol 10.6 — the thiol is about 250,000 times more acidic. The framework got it right, and it took one step.</p>
+</div>
+
+<div class="notes-pitfall"><b>Always compare the conjugate bases, not the acids.</b> The question "which is more acidic" is answered by asking "which anion is more stable," so draw both anions before reasoning. Students who try to reason directly about the acids get tangled; those who draw the two conjugate bases side by side usually see the answer immediately.</div>
+
+<h3>What carries forward</h3>
+<p class="step-body">These four factors are the general theory of anion stability, and anion stability is what sets leaving-group ability, nucleophile strength, enolate formation and carbanion chemistry. You will apply them directly to carboxylic acids (Module 10), to alpha hydrogens (Module 11), to amine basicity (Module 12), and to the substituent effects that control aromatic substitution (Module 13). Very little in the second half of the course is new physics; most of it is this section applied to a new structure.</p>

@@ -1,7 +1,65 @@
+<p class="step-body">pKa is the single most useful number in organic chemistry. It tells you whether a base is strong enough to remove a given proton, which direction a proton transfer runs, how good a leaving group something is, and how stable an anion is. Almost every "will this reaction work?" question in the first half of the course can be answered by comparing two pKa values.</p>
+
 <h3>Ka and pKa</h3>
-<p class="step-body">For an acid HA dissociating in solution, HA ⇌ H⁺ + A⁻, the equilibrium constant is <b>Ka = [H⁺][A⁻] / [HA]</b>. A larger Ka means the equilibrium sits further toward the dissociated (ionized) side — a stronger acid. Because Ka values span many orders of magnitude, chemists use <b>pKa = −log₁₀(Ka)</b> instead, the same trick used for pH. This means <b>lower pKa = stronger acid</b> — the negative sign flips the direction.</p>
-<h3>A pKa table worth memorizing the shape of</h3>
-<p class="step-body">HCl ≈ −7 (essentially fully dissociated in water), H₃O⁺ ≈ −1.7, HF ≈ 3.2, acetic acid (CH₃COOH) ≈ 4.76, phenol (aromatic OH) ≈ 10, water ≈ 15.7, ethanol (and most alcohols) ≈ 16, terminal alkyne C–H ≈ 25, ammonia (N–H) ≈ 38, alkane C–H ≈ 50. Each step down this list is a weaker acid — and a correspondingly stronger conjugate base.</p>
-<div class="notes-fact">Every 1 unit of pKa is a 10-fold change in acid strength, because of the logarithm. Acetic acid (pKa 4.76) is roughly 10¹¹ times more acidic than ethanol (pKa 16) — an almost unimaginable difference that a bare number easily hides.</div>
+<p class="step-body">For an acid HA dissociating in solution, HA ⇌ H⁺ + A⁻, the equilibrium constant is</p>
+<div class="formula">Ka = [H⁺][A⁻] / [HA]</div>
+<p class="step-body">A larger Ka means the equilibrium sits further toward the dissociated side — a stronger acid. Because Ka values for real acids span something like sixty orders of magnitude, chemists take the negative logarithm instead, exactly as they do to turn [H⁺] into pH:</p>
+<div class="formula">pKa = −log₁₀(Ka)</div>
+<p class="step-body">The negative sign flips the direction, and this is the source of endless confusion, so state it plainly and often: <b>lower pKa means stronger acid</b>. A pKa of −7 is a very strong acid. A pKa of 50 is not an acid in any practical sense.</p>
+
+<div class="notes-fact">Because pKa is logarithmic, every 1 unit is a <b>tenfold</b> change in acid strength. Acetic acid (pKa 4.76) is roughly 10¹¹ times more acidic than ethanol (pKa 16) — a hundred billion to one, from a gap that looks like eleven small steps on a table. When comparing two acids, always convert the gap into orders of magnitude before deciding whether it is "a big difference."</div>
+
+<h3>The table worth memorizing the shape of</h3>
+<p class="step-body">You do not need exact values. You need the ordering and rough magnitudes, so that you can look at any two species and know which way a proton moves.</p>
+<div class="notes-table-wrap">
+<table class="notes-table">
+<tr><th>Acid</th><th>pKa</th><th>Conjugate base</th></tr>
+<tr><td>HI</td><td>−10</td><td>I⁻</td></tr>
+<tr><td>HCl</td><td>−7</td><td>Cl⁻</td></tr>
+<tr><td>H₃O⁺</td><td>−1.7</td><td>H₂O</td></tr>
+<tr><td>HF</td><td>3.2</td><td>F⁻</td></tr>
+<tr><td>CH₃COOH</td><td>4.76</td><td>CH₃COO⁻</td></tr>
+<tr><td>H₂CO₃ / HCO₃⁻</td><td>6.4 / 10.3</td><td>bicarbonate / carbonate</td></tr>
+<tr><td>NH₄⁺</td><td>9.2</td><td>NH₃</td></tr>
+<tr><td>phenol</td><td>10</td><td>phenoxide</td></tr>
+<tr><td>1,3-diketone α-H</td><td>9</td><td>stabilized enolate</td></tr>
+<tr><td>water</td><td>15.7</td><td>HO⁻</td></tr>
+<tr><td>ethanol</td><td>16</td><td>EtO⁻</td></tr>
+<tr><td>ketone α-H</td><td>19–20</td><td>enolate</td></tr>
+<tr><td>terminal alkyne C–H</td><td>25</td><td>acetylide</td></tr>
+<tr><td>NH₃</td><td>38</td><td>⁻NH₂</td></tr>
+<tr><td>alkene C–H</td><td>44</td><td>vinyl anion</td></tr>
+<tr><td>alkane C–H</td><td>50</td><td>alkyl anion</td></tr>
+</table>
+</div>
+<p class="step-body">A handful of anchors is enough to reconstruct the rest: carboxylic acid ≈ 5, ammonium ≈ 9, phenol ≈ 10, water ≈ 16, alcohol ≈ 16, ketone alpha-H ≈ 20, alkyne ≈ 25, amine N–H ≈ 38, alkane ≈ 50. Almost everything you meet sits near one of those.</p>
+
 <h3>Predicting which side an equilibrium favors</h3>
-<p class="step-body">In a proton transfer, the equilibrium favors the side with the <b>weaker acid</b> — equivalently, the side where the acid has the <b>higher pKa</b>. Compare the pKa of the acid on the left to the pKa of the acid that would form on the right (the conjugate acid of the base); the reaction favors whichever side has the acid with the higher pKa, because that's the more stable, lower-energy species.</p>
+<p class="step-body">In any proton transfer, the equilibrium favors the side with the <b>weaker acid</b> — equivalently, the side whose acid has the <b>higher pKa</b>. The procedure is mechanical: identify the acid on the left, identify the acid that would be formed on the right (the conjugate acid of the base), compare their pKa values, and the side with the higher pKa wins.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — can hydroxide deprotonate a terminal alkyne?</span>
+<p>Left-hand acid: the alkyne C–H, pKa ≈ 25. Right-hand acid: water, formed when hydroxide takes the proton, pKa 15.7.</p>
+<p>Water is the stronger acid (lower pKa), so the equilibrium favors the <b>left</b> — the side with the weaker acid. The gap is about 9 units, so the equilibrium lies roughly 10⁹ to one against the product. Hydroxide will not do this.</p>
+<p>Now try sodium amide, NaNH₂. Right-hand acid: ammonia, pKa 38. The alkyne at 25 is the stronger acid, so the equilibrium favors the right by about 10¹³. This works, and it is exactly why NaNH₂ is the reagent specified for generating acetylides in Module 7.</p>
+</div>
+
+<div class="notes-example">
+<span class="k">Worked example — separating a carboxylic acid from a phenol</span>
+<p>Both dissolve in NaOH, so that does not separate them. Use sodium bicarbonate instead: the relevant acid on the right is carbonic acid, pKa 6.4.</p>
+<p>The carboxylic acid (pKa 4.76) is the stronger acid, so it is deprotonated and dissolves into the aqueous layer as its carboxylate salt. The phenol (pKa 10) is the weaker acid, is not deprotonated, and stays in the organic layer.</p>
+<p>This is a real laboratory separation, and it rests on nothing but two pKa comparisons.</p>
+</div>
+
+<div class="notes-pitfall"><b>Compare acids, not bases.</b> The most common mistake is to reason about which base is stronger and get tangled in the double negative. Convert everything to acids and compare pKa values directly — it is the same question, asked in a form where the number points the right way.</div>
+
+<h3>The base's own pKa is its conjugate acid's</h3>
+<p class="step-body">Bases do not have pKa values of their own; they inherit one from their conjugate acid, sometimes written pKaH. A base can remove a proton whose pKa is lower than its own pKaH. Hydroxide (pKaH 15.7) can deprotonate anything below about 15.7 and nothing much above it. Amide ion (pKaH 38) can deprotonate almost everything organic. LDA (pKaH ≈ 36) is chosen precisely because it is strong enough for ketone alpha-hydrogens at pKa 20 while being too bulky to attack the carbonyl itself.</p>
+<p class="step-body">Once you see this, choosing a base stops being memorization. You look up what you need to deprotonate, and you pick a base whose pKaH is comfortably higher.</p>
+
+<h3>Two cautions on the numbers</h3>
+<p class="step-body"><b>pKa is solvent-dependent.</b> The values in every table are measured in water (or extrapolated to it), and they shift in other solvents — sometimes by many units. The relative ordering usually survives, which is what you rely on, but absolute values in DMSO can differ substantially from the aqueous ones.</p>
+<p class="step-body"><b>Strong acids are all levelled in water.</b> HCl, HBr, HI and H₂SO₄ are all completely dissociated in aqueous solution, so water cannot distinguish between them — the strongest acid that can exist in water is H₃O⁺. Their quoted pKa values come from measurements in other solvents. The same levelling applies at the other end: the strongest base that survives in water is hydroxide, which is why reagents like NaNH₂ and LDA must be used in aprotic solvents.</p>
+
+<h3>What carries forward</h3>
+<p class="step-body">pKa reasoning runs through the whole course. It ranks leaving groups (Module 2 and Module 6), it decides whether a base will do the job in every elimination and enolate reaction, it explains the relative reactivity of carboxylic acid derivatives in Module 10, it governs which nitrogen gets protonated in Module 12, and it is the framework behind every extraction you will run in the lab. The next two sections unpack where the numbers come from.</p>
