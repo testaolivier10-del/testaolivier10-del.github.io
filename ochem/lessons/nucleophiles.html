@@ -49,6 +49,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -75,6 +77,7 @@
       '<h3>Nucleophilicity ≠ basicity</h3><p class="step-body">Basicity is thermodynamic (equilibrium proton affinity, exact once you cover pKa); nucleophilicity is kinetic (speed of attack on carbon). They usually track together, but steric hindrance splits them: tert-butoxide is a <b>stronger base</b> than hydroxide but a <b>much weaker nucleophile</b>, since its bulky methyl groups block it from a crowded carbon. This is exactly why bulky bases get used deliberately in E2 (Module 6).</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('acetate-ion', { caption: 'A nucleophile is something with electrons to give. Acetate has both a negative charge and lone pairs — but the same resonance that stabilises it also makes it a fairly weak one.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: '"Nucleus-loving" — an electron pair looking for a positive partner.',
@@ -137,8 +140,8 @@
         type: 'mcq',
         eyebrow: 'Step 3 · Independent Practice',
         title: 'In a polar protic solvent (like water or methanol), which is the better nucleophile: I⁻ or F⁻?',
-        options: ['I⁻ — larger and more polarizable, and not tightly held by hydrogen bonding', 'F⁻ — more electronegative, so it\'s more reactive', 'They\'re equally good nucleophiles'],
-        correctIndex: 0,
+        options: ['F⁻ — more electronegative, so it\'s more reactive', 'I⁻ — larger and more polarizable, and not tightly held by hydrogen bonding', 'They\'re equally good nucleophiles'],
+        correctIndex: 1,
         correctFeedback: 'Correct. In protic solvents, small, highly charged anions like F⁻ get "caged" by hydrogen bonds, which blunts their nucleophilicity. Large, polarizable I⁻ isn\'t held back the same way.',
         wrongFeedback: 'Think about solvation: protic solvents hydrogen-bond tightly to small, charge-dense anions like F⁻, holding them back from reacting.'
       },
@@ -158,8 +161,8 @@
         type: 'final',
         eyebrow: 'Challenge',
         title: 'Which is the stronger nucleophile: CH₃O⁻ or CH₃OH?',
-        options: ['CH₃O⁻ — the negative charge means more available electron density', 'CH₃OH — neutral species are always more reactive', 'They\'re equally nucleophilic'],
-        correctIndex: 0,
+        options: ['CH₃OH — neutral species are always more reactive', 'They\'re equally nucleophilic', 'CH₃O⁻ — the negative charge means more available electron density'],
+        correctIndex: 2,
         correctFeedback: 'Correct — deprotonating an alcohol to its alkoxide (CH₃O⁻) makes it a substantially stronger nucleophile by giving it a full negative charge to donate.'
       }
     ]

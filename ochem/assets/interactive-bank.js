@@ -1411,6 +1411,506 @@
         'bond:c-o1>o1':{ concept:'acidity-factors', msg:'The C=O pi bond is not what breaks when an acid is deprotonated. Look for the proton that leaves — the O–H — and break the bond holding it.' }
       } },
 
+  /* ---- Second pass: depth for the topics that only had one -------------
+     28 of the 62 topics carried a single interactive question, and only 9
+     of the original 123 were tier 4, so the adaptive engine had almost
+     nothing to reach for outside substitution and elimination and fell
+     back on the legacy prose bank. These fill the thinnest topics and
+     weight toward tiers 3 and 4 — the questions that ask the student to
+     combine two ideas rather than recognise one.
+
+     Every wrong answer here is diagnosed, same contract as above: a miss
+     names the misconception it reveals, not just the topic it sat in. */
+
+  // ---- Foundations ----------------------------------------------------
+
+  { id:'fc-nitrogen-charge', kind:'mcq', tier:3, topic:'formal-charge', concepts:['formal-charge-calc','valence-electrons'],
+    prompt:'A nitrogen atom has four single bonds and no lone pairs. What is its formal charge?',
+    options:['+1','0','−1','+2'],
+    answer:0,
+    why:'Formal charge is valence electrons minus (lone-pair electrons + half the bonding electrons): 5 − (0 + 4) = +1. Four bonds on nitrogen always means +1, which is why ammonium is a cation.',
+    diag:{
+      1:{ concept:'formal-charge-calc', msg:'Neutral nitrogen wants three bonds and one lone pair. Four bonds and no lone pair means it is one electron short of its five valence electrons, so it carries a charge.' },
+      2:{ concept:'formal-charge-calc', msg:'Check the sign. Extra BONDS on nitrogen make it positive; an extra lone pair with only two bonds would make it negative.' },
+      3:{ concept:'valence-electrons', msg:'Nitrogen has five valence electrons, not six. Run the arithmetic: 5 − (0 lone-pair electrons + 4 half-bonds) = +1.' }
+    } },
+
+  { id:'fc-click-charged-atom', kind:'click-atom', tier:2, topic:'formal-charge', concepts:['formal-charge-calc'],
+    prompt:'In the resonance form drawn here, click the atom carrying the formal negative charge.',
+    molecule:'acetate-ion',
+    sub:'Count bonds and lone pairs on each oxygen. The two oxygens are equivalent overall — but in any single drawn form, only one of them holds the charge.',
+    answer:{ keys:['o2'] },
+    why:'In this form that oxygen has one single bond and three lone pairs: 6 − (6 + 1) = −1. The doubly bonded oxygen has two bonds and two lone pairs, which comes out neutral. Draw the other resonance form and the two swap roles, which is exactly what "the charge is shared" means.',
+    diag:{
+      o1:{ concept:'formal-charge-calc', msg:'That oxygen is double bonded: 6 − (4 lone-pair electrons + 2 half-bonds) = 0. Neutral. Look for the singly bonded one.' },
+      c:{ concept:'formal-charge-calc', msg:'That carbon has four bonds and no lone pairs: 4 − (0 + 4) = 0. Carbon with four bonds is always neutral.' },
+      ca:{ concept:'formal-charge-calc', msg:'An ordinary CH₃ carbon — four bonds, no charge. The charge in a carboxylate is on oxygen.' }
+    } },
+
+  { id:'hybrid-order-sbond', kind:'order', tier:3, topic:'hybridization', concepts:['hybridization-assignment','alkyne-acidity'],
+    prompt:'Rank these carbons by s character in their hybrid orbitals, highest first.',
+    items:['sp carbon in an alkyne','sp² carbon in an alkene','sp³ carbon in an alkane'],
+    answer:[0,1,2],
+    why:'sp is 50% s, sp² is 33%, sp³ is 25%. More s character holds electrons closer to the nucleus, which is why an alkyne C–H (pKa 25) is so much more acidic than an alkane C–H (pKa 50).',
+    diag:{ any:{ concept:'hybridization-assignment', msg:'Count the orbitals being mixed: sp uses one s and one p (so s is half of it), sp² one s and two p, sp³ one s and three p. Fewer p orbitals in the mix means more s character.' } } },
+
+  { id:'hybrid-amide-nitrogen', kind:'mcq', tier:4, topic:'hybridization', concepts:['hybridization-assignment','resonance-delocalization'],
+    prompt:'An amide nitrogen has three sigma bonds and a lone pair. Why is it sp² rather than sp³?',
+    options:[
+      'Because the lone pair is delocalized into the carbonyl, and it has to sit in a p orbital to overlap with the pi system',
+      'Because nitrogen can never be sp³',
+      'Because it has only three sigma bonds',
+      'Because the amide is aromatic'
+    ],
+    answer:0,
+    why:'Counting electron groups alone would predict sp³. But that lone pair is conjugated into the C=O, and conjugation requires a p orbital parallel to the pi system — so the nitrogen flattens to sp² to allow the overlap. This is also why amides are planar and barely basic.',
+    diag:{
+      1:{ concept:'hybridization-assignment', msg:'Nitrogen is sp³ in ordinary amines — ammonia and ethylamine both are. What is different here is that the lone pair has somewhere better to be.' },
+      2:{ concept:'hybridization-assignment', msg:'Three sigma bonds plus a lone pair is four electron groups, which is exactly the count that predicts sp³. The naive count is wrong here, and resonance is why.' },
+      3:{ concept:'huckel-aromaticity', msg:'An amide is conjugated, not aromatic — there is no ring and no 4n+2 count. Conjugation alone is enough to demand a p orbital.' }
+    } },
+
+  { id:'orbital-node-count', kind:'mcq', tier:3, topic:'orbitals', concepts:['hybridization-assignment'],
+    prompt:'How many nodal planes pass through the nucleus in a single 2p orbital?',
+    options:['One','Zero','Two','Three'],
+    answer:0,
+    why:'A p orbital has two lobes with opposite phase, separated by one nodal plane through the nucleus. That node is why the two lobes can overlap constructively with a neighbour to make a pi bond, or destructively to make an antibonding one.',
+    diag:{
+      1:{ concept:'hybridization-assignment', msg:'Zero nodal planes through the nucleus describes an s orbital, which is spherical and has no phase change. A p orbital has two lobes, so something separates them.' },
+      2:{ concept:'hybridization-assignment', msg:'Two nodal planes through the nucleus is a d orbital. A p orbital has a single pair of lobes along one axis.' },
+      3:{ concept:'hybridization-assignment', msg:'Count the lobes: two, along one axis. Two lobes of opposite phase need exactly one plane between them.' }
+    } },
+
+  { id:'bondpol-click-partial-neg', kind:'click-atom', tier:2, topic:'bond-polarity', concepts:['bond-polarity-dipoles','electronegativity-trend'],
+    prompt:'Click the atom at the δ− end of the most polar bond.', molecule:'acetaldehyde',
+    sub:'Compare the electronegativity difference across each bond.',
+    answer:{ role:'carbonyl-o' },
+    why:'C=O is the most polar bond here: oxygen is far more electronegative than carbon, so the pi electrons sit closer to oxygen and it carries the δ−. Every C–H bond in the molecule is much less polar than that.',
+    diag:{
+      c:{ concept:'bond-polarity-dipoles', msg:'That is the δ+ end, not δ−. Oxygen pulls density away from this carbon, which is exactly what makes it electrophilic.' },
+      ca:{ concept:'electronegativity-trend', msg:'An ordinary alkyl carbon with only hydrogens on it. C–H bonds are barely polar — the electronegativity difference is small.' }
+    } },
+
+  { id:'electroneg-order-mixed', kind:'order', tier:3, topic:'electronegativity', concepts:['electronegativity-trend'],
+    prompt:'Rank by electronegativity, highest first.',
+    items:['O','N','C','Li'],
+    answer:[0,1,2,3],
+    why:'Electronegativity rises left to right across a period: Li < C < N < O. This single ordering is behind bond polarity, acidity trends, and which atom in a bond ends up δ−.',
+    diag:{ any:{ concept:'electronegativity-trend', msg:'Read across the period left to right — electronegativity increases in that direction, and all four of these are in the second row. Lithium is at the far left and is the least electronegative by a wide margin.' } } },
+
+  // ---- Acids and bases ------------------------------------------------
+
+  { id:'pka-order-mixed-acids', kind:'order', tier:3, topic:'pka', concepts:['pka-scale','acidity-factors'],
+    prompt:'Rank these by acidity, strongest acid first.',
+    items:['CH₃COOH (pKa 4.8)','CH₃OH (pKa 16)','HC≡CH (pKa 25)','CH₃CH₃ (pKa 50)'],
+    answer:[0,1,2,3],
+    why:'Lower pKa is the stronger acid, and these span 45 units — a factor of 10⁴⁵. The order tracks how well each conjugate base holds the charge: resonance-stabilized carboxylate, then alkoxide on electronegative oxygen, then an sp carbanion, then an sp³ carbanion with nothing helping it at all.',
+    diag:{ any:{ concept:'pka-scale', msg:'Lower pKa means stronger acid — the negative sign in pKa = −log(Ka) flips the direction. Put the smallest number first.' } } },
+
+  { id:'pka-equilibrium-side', kind:'mcq', tier:4, topic:'pka', concepts:['pka-scale','conjugate-pairs'],
+    prompt:'Ethoxide (conjugate acid pKa 16) is mixed with a terminal alkyne (pKa 25). Where does the equilibrium sit?',
+    options:[
+      'On the left — the alkyne is the weaker acid, so ethoxide cannot deprotonate it to any useful extent',
+      'On the right — ethoxide is a strong base, so it deprotonates anything',
+      'Exactly balanced, since both are weak acids',
+      'On the right, because alkynes are unusually acidic'
+    ],
+    answer:0,
+    why:'Compare the two acids: ethanol at 16 and the alkyne at 25. The equilibrium favours the side with the WEAKER acid — the higher pKa — which is the alkyne side, the reactants. To deprotonate a terminal alkyne you need a base whose conjugate acid is weaker still, which is why NaNH₂ (ammonia, pKa 38) is the reagent people actually use.',
+    diag:{
+      1:{ concept:'pka-scale', msg:'"Strong base" is not absolute — it is relative to what you are trying to deprotonate. Ethoxide is strong next to water and far too weak next to an alkyne, nine pKa units away.' },
+      2:{ concept:'conjugate-pairs', msg:'A nine-unit pKa gap is a factor of 10⁹, which is not close to balanced. Equal amounts would need comparable pKa values.' },
+      3:{ concept:'alkyne-acidity', msg:'An alkyne C–H is remarkably acidic for a C–H — 25 versus 50 for an alkane — but that is still far less acidic than an alcohol at 16. Unusual for carbon is not the same as strong.' }
+    } },
+
+  { id:'bronsted-click-basic-site', kind:'click-atom', tier:3, topic:'bronsted', concepts:['bronsted-identification','amine-basicity'],
+    prompt:'Click the atom that gets protonated first when acid is added.', molecule:'ethylamine',
+    sub:'Which atom here is most willing to share a lone pair with H⁺?',
+    answer:{ role:'nucleophile' },
+    why:'The nitrogen lone pair is available and nitrogen is less electronegative than oxygen, so it holds its lone pair loosely — amines are the most basic neutral group in ordinary organic chemistry.',
+    diag:{
+      c1:{ concept:'bronsted-identification', msg:'Carbon has no lone pair to offer a proton. A Brønsted base needs an available electron pair.' },
+      c2:{ concept:'bronsted-identification', msg:'An ordinary alkyl carbon — nothing available to bond to H⁺. Look for lone pairs.' }
+    } },
+
+  { id:'lewis-acid-identify', kind:'mcq', tier:3, topic:'lewis-acids', concepts:['lewis-acid-base','electrophile-recognition'],
+    prompt:'Why is BF₃ a Lewis acid but not a Brønsted acid?',
+    options:[
+      'It accepts an electron pair into an empty p orbital, but it has no proton to donate',
+      'It donates an electron pair rather than accepting one',
+      'It is a Brønsted acid as well, since fluorine is electronegative',
+      'It only acts as an acid in water'
+    ],
+    answer:0,
+    why:'Boron in BF₃ has only six valence electrons and an empty p orbital, so it accepts a pair — the Lewis definition. There is no hydrogen on it at all, so it cannot donate a proton and the Brønsted definition simply does not apply.',
+    diag:{
+      1:{ concept:'lewis-acid-base', msg:'That describes a Lewis BASE. BF₃ is electron-poor at boron, which is why it accepts.' },
+      2:{ concept:'bronsted-identification', msg:'Electronegative fluorines make boron more electron-poor, which strengthens it as a Lewis acid. A Brønsted acid needs a hydrogen to give away, and BF₃ has none.' },
+      3:{ concept:'lewis-acid-base', msg:'Water is not required. BF₃ accepts an electron pair from whatever donor is present — an ether, an amine, an alkene — and is most often used in non-aqueous solvent precisely because water would quench it.' }
+    } },
+
+  // ---- Conformations --------------------------------------------------
+
+  { id:'axeq-click-axial', kind:'click-atom', tier:2, topic:'axial-equatorial', concepts:['chair-axial-equatorial'],
+    prompt:'Click the bromine and confirm whether it is axial.', molecule:'chair-bromocyclohexane',
+    sub:'An axial bond runs parallel to the ring axis — straight up or straight down.',
+    answer:{ keys:['br'] },
+    why:'Bromine here is axial: its bond points straight up, parallel to the ring axis, rather than out around the ring equator. Axial substituents on a ring suffer 1,3-diaxial strain, which is why a large group prefers to flip to equatorial.',
+    diag:{ any:{ concept:'chair-axial-equatorial', msg:'Axial bonds alternate up, down, up, down around the ring and run parallel to the axis through its middle. Equatorial bonds splay outward at a shallow angle. Look for the one drawn vertically.' } } },
+
+  { id:'ringflip-what-changes', kind:'mcq', tier:4, topic:'ring-flips', concepts:['ring-flip-mechanics','chair-axial-equatorial'],
+    prompt:'A ring flip converts a chair into the other chair. What does it change, and what does it not?',
+    options:[
+      'Every axial group becomes equatorial and vice versa, but up stays up and down stays down',
+      'Every group swaps between up and down, but axial stays axial',
+      'Both the axial/equatorial assignment and the up/down assignment invert',
+      'Nothing changes except the energy'
+    ],
+    answer:0,
+    why:'A flip inverts axial and equatorial for every position, while leaving each substituent on the same face of the ring — a group pointing up is still pointing up afterwards. That is why a ring flip cannot convert cis into trans: it is a conformational change, not a stereochemical one.',
+    diag:{
+      1:{ concept:'ring-flip-mechanics', msg:'Backwards. The axial/equatorial assignment is what inverts; which face a group sits on is fixed by the bonds and cannot change without breaking one.' },
+      2:{ concept:'ring-flip-mechanics', msg:'If up/down inverted too, a ring flip would turn cis-1,2-dimethylcyclohexane into the trans isomer — a different compound. Conformational changes cannot do that.' },
+      3:{ concept:'ring-flip-mechanics', msg:'The energy usually does change, because bulky groups prefer equatorial — but only because the axial/equatorial assignments swapped. Something has to change for the energy to.' }
+    } },
+
+  { id:'cyclohexane-strain-source', kind:'mcq', tier:3, topic:'cyclohexanes', concepts:['torsional-strain','chair-axial-equatorial'],
+    prompt:'Why is the chair conformation of cyclohexane essentially strain-free?',
+    options:[
+      'Its bond angles are near 109.5° and every C–H is staggered with its neighbours',
+      'Because the ring is planar, so all the angles are equal',
+      'Because the ring is small enough that strain does not apply',
+      'Because all twelve hydrogens are equatorial'
+    ],
+    answer:0,
+    why:'The chair achieves both things at once: angles close to the tetrahedral ideal, so no angle strain, and fully staggered bonds all the way round, so no torsional strain. A planar hexagon would force 120° angles and eclipse every C–H pair.',
+    diag:{
+      1:{ concept:'torsional-strain', msg:'The chair is deliberately NOT planar. A flat ring would have 120° angles and every neighbouring C–H eclipsed — that is the high-energy arrangement the pucker avoids.' },
+      2:{ concept:'torsional-strain', msg:'Ring size matters a great deal: cyclopropane and cyclobutane are badly strained. Six carbons is special because it can pucker into a shape with no strain at all.' },
+      3:{ concept:'chair-axial-equatorial', msg:'Six are axial and six equatorial, alternating around the ring. That is a feature of the chair, but it is not why it is strain-free.' }
+    } },
+
+  // ---- Stereochemistry ------------------------------------------------
+
+  { id:'stereocenter-count-tartaric', kind:'mcq', tier:3, topic:'stereocenters', concepts:['stereocenter-identification','meso-detection'],
+    prompt:'Tartaric acid has two stereocenters. How many distinct stereoisomers actually exist?',
+    options:['Three','Four','Two','Eight'],
+    answer:0,
+    why:'2ⁿ gives four as a maximum, but two of those four are the same compound: the (R,S) and (S,R) forms are superimposable because of the internal mirror plane. So there are three — (R,R), (S,S), and the single meso form.',
+    diag:{
+      1:{ concept:'meso-detection', msg:'2ⁿ = 4 is the ceiling, not a guarantee. Check for an internal mirror plane — tartaric acid has one, which collapses two of the four into a single meso compound.' },
+      2:{ concept:'stereocenter-identification', msg:'Two is too few. (R,R) and (S,S) are a genuine enantiomeric pair, and the meso form is a third, distinct compound that is not identical to either.' },
+      3:{ concept:'stereocenter-identification', msg:'2ⁿ with n = 2 gives 4, not 8. Then check whether symmetry reduces it further.' }
+    } },
+
+  { id:'stereocenter-click-tartaric', kind:'multi-click', tier:3, topic:'stereocenters', concepts:['stereocenter-identification'],
+    prompt:'Click every stereocenter.', molecule:'meso-tartaric-acid',
+    sub:'A stereocenter is a carbon with four different groups on it. Click all that qualify.',
+    answer:{ keys:['c1','c2'] },
+    why:'Both middle carbons carry an OH, an H, a CO₂H and the rest of the chain — four different groups each. The two CO₂H carbons are not stereocenters: each has a double bond and only three attached groups.',
+    diag:{
+      a1:{ concept:'stereocenter-identification', msg:'A carboxyl carbon cannot be a stereocenter — it is sp² with only three groups attached, and one of them is doubled. A stereocenter needs four different groups on one sp³ carbon.' },
+      a2:{ concept:'stereocenter-identification', msg:'Same on this end: sp², three groups, no possibility of handedness.' },
+      o1:{ concept:'stereocenter-identification', msg:'Stereocenters are carbons in this course. Oxygen with two bonds and two lone pairs has no four different groups to arrange.' }
+    } },
+
+  { id:'enantiomer-property-diff', kind:'mcq', tier:4, topic:'enantiomers', concepts:['enantiomer-vs-diastereomer','chirality-recognition'],
+    prompt:'Two enantiomers are placed in separate flasks. Which measurement distinguishes them?',
+    options:[
+      'The direction they rotate plane-polarized light',
+      'Their melting points',
+      'Their ¹H NMR spectra in ordinary solvent',
+      'Their boiling points'
+    ],
+    answer:0,
+    why:'Enantiomers are identical in every scalar physical property — same melting point, same boiling point, same NMR in an achiral solvent — because those depend on energies, and mirror images have identical energies. Only a chiral probe tells them apart, and plane-polarized light is the classic one: equal magnitude of rotation, opposite sign.',
+    diag:{
+      1:{ concept:'enantiomer-vs-diastereomer', msg:'Identical, to as many decimal places as you can measure. Different melting points are how you distinguish DIASTEREOMERS, which are genuinely different compounds.' },
+      2:{ concept:'enantiomer-vs-diastereomer', msg:'Identical in an ordinary achiral solvent — every corresponding nucleus is in a mirror-image environment, and NMR cannot see handedness. A chiral shift reagent changes that, which is exactly why one is needed.' },
+      3:{ concept:'enantiomer-vs-diastereomer', msg:'Also identical. Every property that does not itself have a handedness comes out the same for a pair of mirror images.' }
+    } },
+
+  { id:'diastereomer-vs-enantiomer-call', kind:'mcq', tier:4, topic:'diastereomers', concepts:['enantiomer-vs-diastereomer'],
+    prompt:'Two compounds have the same connectivity and two stereocenters each. They differ at exactly one stereocenter. What are they?',
+    options:[
+      'Diastereomers — inverting only some stereocenters cannot give a mirror image',
+      'Enantiomers, since they differ in stereochemistry',
+      'The same compound',
+      'Constitutional isomers'
+    ],
+    answer:0,
+    why:'Enantiomers must be mirror images, which requires EVERY stereocenter to invert. Change one of two and you get a stereoisomer that is not a mirror image — a diastereomer, with genuinely different physical properties.',
+    diag:{
+      1:{ concept:'enantiomer-vs-diastereomer', msg:'Differing in stereochemistry is necessary but not sufficient. Enantiomers need all stereocenters inverted; here only one is.' },
+      2:{ concept:'enantiomer-vs-diastereomer', msg:'Inverting a stereocenter gives a different compound, not the same one. Two swaps at the same centre would return the original — one does not.' },
+      3:{ concept:'enantiomer-vs-diastereomer', msg:'Constitutional isomers differ in which atoms are bonded to which. The premise here fixes the connectivity as identical, so the difference has to be spatial.' }
+    } },
+
+  { id:'meso-optical-activity', kind:'mcq', tier:3, topic:'meso', concepts:['meso-detection','chirality-recognition'],
+    prompt:'A meso compound has two stereocenters. Is it optically active?',
+    options:[
+      'No — the internal mirror plane makes the whole molecule achiral',
+      'Yes — any molecule with a stereocenter is optically active',
+      'Yes, but only half as much as a single enantiomer',
+      'Only in a chiral solvent'
+    ],
+    answer:0,
+    why:'Optical activity requires the molecule as a whole to be chiral, and a meso compound is not: one half is the mirror image of the other, so the molecule is superimposable on its own reflection. The two centres rotate light in opposite senses and cancel internally.',
+    diag:{
+      1:{ concept:'meso-detection', msg:'Having a stereocenter is not enough — the whole molecule has to be chiral. Meso compounds are the standard counterexample, which is the entire reason the term exists.' },
+      2:{ concept:'meso-detection', msg:'The cancellation is exact, not partial: the two halves are perfect mirror images, so the rotations are equal and opposite and sum to zero.' },
+      3:{ concept:'chirality-recognition', msg:'A chiral solvent can distinguish enantiomers, but a meso compound has no handedness to detect in the first place — it is its own mirror image.' }
+    } },
+
+  // ---- Elimination ----------------------------------------------------
+
+  { id:'e1-rate-dependence', kind:'mcq', tier:3, topic:'e1', concepts:['rate-law-kinetics','carbocation-stability'],
+    prompt:'Doubling the concentration of base in an E1 reaction has what effect on the rate?',
+    options:[
+      'Essentially none — the slow step is ionization, which does not involve the base',
+      'It doubles the rate',
+      'It quadruples the rate',
+      'It halves the rate'
+    ],
+    answer:0,
+    why:'E1 is two steps and the first — losing the leaving group to form a carbocation — is rate determining. The base only appears in the fast second step, so it does not show up in the rate law. That first-order behaviour is exactly how E1 is distinguished from E2 experimentally.',
+    diag:{
+      1:{ concept:'rate-law-kinetics', msg:'That is E2, which is bimolecular: base and substrate come together in one concerted step, so both appear in the rate law. E1 breaks the bond first, on its own.' },
+      2:{ concept:'rate-law-kinetics', msg:'Quadrupling would need second order in base alone, which no common mechanism gives.' },
+      3:{ concept:'rate-law-kinetics', msg:'Adding more of a reagent does not slow a reaction down. The point here is that the base is absent from the slow step entirely.' }
+    } },
+
+  { id:'e1-vs-e2-substrate', kind:'mechanism', tier:4, topic:'e1', concepts:['mechanism-selection','substrate-class','basicity-vs-nucleophilicity'],
+    prompt:'Which mechanism dominates?', reaction:'(CH₃)₃C–Br,  heated in  CH₃CH₂OH  (no added base)',
+    options:['E1','E2','SN2','No reaction'],
+    answer:0,
+    why:'Tertiary substrate, so ionization is easy; no strong base present, so the concerted E2 pathway has nothing to remove the proton in the same step; heat favours elimination over substitution. Ethanol is a weak nucleophile and a weak base — a solvent, not a reagent — so this ionizes first and then loses a proton: E1, alongside some SN1.',
+    diag:{
+      1:{ concept:'basicity-vs-nucleophilicity', msg:'E2 needs a strong base present to pull the proton off in the same step as the C–Br bond breaks. Ethanol is not one — it is the solvent, and a very weak base.' },
+      2:{ concept:'substrate-class', msg:'A tertiary carbon has no accessible backside: three methyl groups sit across the trajectory, so SN2 is essentially impossible regardless of nucleophile.' },
+      3:{ concept:'carbocation-stability', msg:'Something definitely happens — a tertiary carbocation is stable enough to form on heating in a polar protic solvent. That is the whole basis of SN1 and E1.' }
+    } },
+
+  // ---- Alkenes and alkynes --------------------------------------------
+
+  { id:'alkene-cistrans-stability', kind:'mcq', tier:3, topic:'alkene-structure', concepts:['alkene-pi-nucleophile','steric-hindrance'],
+    prompt:'Why is trans-2-butene more stable than cis-2-butene?',
+    options:[
+      'The two methyl groups are on opposite sides, so they do not crowd each other',
+      'The trans isomer has a stronger pi bond',
+      'The trans isomer is conjugated',
+      'The cis isomer is not a real compound'
+    ],
+    answer:0,
+    why:'Both have the same bonds and the same substitution pattern, so the difference is purely steric: cis puts both methyls on the same face, close enough to strain against each other. Trans separates them, and is lower in energy by about 1 kcal/mol.',
+    diag:{
+      1:{ concept:'alkene-pi-nucleophile', msg:'The pi bond is the same in both — same orbitals, same overlap. What differs is how close the substituents are forced to sit.' },
+      2:{ concept:'resonance-delocalization', msg:'Neither is conjugated: there is only one pi bond and no adjacent p orbital to conjugate with.' },
+      3:{ concept:'alkene-pi-nucleophile', msg:'Both are perfectly real, isolable compounds. Rotation about a double bond is blocked, which is exactly why they do not interconvert at room temperature.' }
+    } },
+
+  { id:'alkyne-terminal-vs-internal', kind:'mcq', tier:3, topic:'alkynes', concepts:['alkyne-acidity','hybridization-assignment'],
+    prompt:'Why can a terminal alkyne be deprotonated by NaNH₂ while an internal alkyne cannot?',
+    options:[
+      'Only a terminal alkyne has a hydrogen on an sp carbon',
+      'Internal alkynes have no acidic hydrogens anywhere',
+      'Internal alkynes are less conjugated',
+      'NaNH₂ is too weak a base for either'
+    ],
+    answer:0,
+    why:'The acidity comes from the orbital holding the resulting anion: an sp orbital, 50% s character, holds the charge close to the nucleus. Only a terminal alkyne has an H attached directly to an sp carbon — an internal alkyne has alkyl groups on both ends, and their sp³ C–H bonds sit around pKa 50.',
+    diag:{
+      1:{ concept:'alkyne-acidity', msg:'Internal alkynes do have hydrogens — on the alkyl groups at each end. They are just sp³ C–H bonds at about pKa 50, far beyond what amide can take.' },
+      2:{ concept:'alkyne-acidity', msg:'Conjugation is not what is doing the work. The acidity is about hybridization: s character in the orbital holding the lone pair.' },
+      3:{ concept:'pka-scale', msg:'Amide is plenty strong for a terminal alkyne — ammonia is pKa 38 against the alkyne\'s 25, a thirteen-unit gap in the right direction. It is the internal case that has no suitable proton.' }
+    } },
+
+  { id:'addition-electrophile-first', kind:'mcq', tier:3, topic:'addition-reactions', concepts:['alkene-pi-nucleophile','curved-arrow-direction'],
+    prompt:'In the addition of HBr to an alkene, which bond forms first?',
+    options:[
+      'C–H, because the pi electrons attack the proton',
+      'C–Br, because bromine is the electrophile',
+      'Both at the same time, in one concerted step',
+      'Neither — the alkene loses a proton first'
+    ],
+    answer:0,
+    why:'The alkene is the nucleophile: its pi electrons reach out and attack the electrophilic proton of H–Br, forming a C–H bond and leaving a carbocation on the other carbon. Bromide then adds to that cation in a second step, which is why the two groups can end up anti or syn and why rearrangement is possible in between.',
+    diag:{
+      1:{ concept:'electrophile-recognition', msg:'Bromine ends up as bromide, the leaving group — it is the electron-rich end of H–Br, not the electrophile. The proton is the electrophilic part.' },
+      2:{ concept:'carbocation-stability', msg:'If it were concerted there would be no carbocation, and then Markovnikov selectivity and carbocation rearrangements would have no explanation. The stepwise cation is what accounts for both.' },
+      3:{ concept:'alkene-pi-nucleophile', msg:'An alkene has no acidic proton to lose and is electron-rich, not electron-poor. It attacks; it does not get deprotonated.' }
+    } },
+
+  // ---- Alcohols, ethers, epoxides -------------------------------------
+
+  { id:'alcohol-activation-why', kind:'mcq', tier:3, topic:'alcohol-reactions', concepts:['alcohol-activation','leaving-group-ability'],
+    prompt:'Why must an alcohol be activated before it will undergo substitution?',
+    options:[
+      'Hydroxide is far too strong a base to leave on its own',
+      'Because alcohols are not nucleophilic',
+      'Because the C–O bond is too short',
+      'Because oxygen has lone pairs'
+    ],
+    answer:0,
+    why:'Leaving-group ability tracks weak basicity, and hydroxide (conjugate acid pKa 16) is a strong base — it will not walk away with the electron pair. Protonating the oxygen first turns the leaving group into water (conjugate acid pKa −1.7), which leaves readily. Converting the OH to a tosylate accomplishes the same thing.',
+    diag:{
+      1:{ concept:'nucleophile-recognition', msg:'Alcohols are perfectly good nucleophiles through their oxygen lone pairs. The problem is the other role — the OH is a terrible leaving group.' },
+      2:{ concept:'leaving-group-ability', msg:'Bond length is not the issue. What matters is how stable the departing group is once it holds the electron pair, and hydroxide is not stable enough to want to.' },
+      3:{ concept:'leaving-group-ability', msg:'Those lone pairs are what make the oxygen protonatable, which is the fix rather than the problem.' }
+    } },
+
+  { id:'epoxide-regio-two-ways', kind:'mcq', tier:4, topic:'epoxides', concepts:['epoxide-opening-regiochem','carbocation-stability','backside-attack'],
+    prompt:'An unsymmetrical epoxide opens at the MORE substituted carbon under acid and the LESS substituted carbon under base. Why the switch?',
+    options:[
+      'Acid protonates the oxygen first, so the ring opens with cation-like character at the carbon best able to hold charge; base has no such help, so sterics decide',
+      'Acid and base attack different atoms of the epoxide',
+      'The epoxide rearranges before opening under acid',
+      'Base opens it at the oxygen instead of a carbon'
+    ],
+    answer:0,
+    why:'Two different rate-limiting situations. Protonation makes the C–O bonds much easier to break, so the transition state develops positive charge on carbon and the more substituted carbon stabilizes it better. Without protonation the nucleophile has to force the strained ring open itself, and then the only thing that matters is which carbon it can reach — the less hindered one.',
+    diag:{
+      1:{ concept:'epoxide-opening-regiochem', msg:'Both attack a carbon. What changes is which carbon, and why — charge stabilization under acid, steric access under base.' },
+      2:{ concept:'carbocation-rearrangement', msg:'No rearrangement is needed. The regiochemistry follows from where positive charge builds up in the transition state, and a full free carbocation never forms.' },
+      3:{ concept:'epoxide-opening-regiochem', msg:'Attacking the oxygen would not open the ring — the ring opens by breaking a C–O bond, so the nucleophile has to arrive at a carbon.' }
+    } },
+
+  // ---- Carbonyl and derivatives ---------------------------------------
+
+  { id:'esters-amides-why-amide-slow', kind:'mcq', tier:4, topic:'esters-amides', concepts:['acyl-reactivity-order','resonance-delocalization'],
+    prompt:'An amide is much less reactive than an ester toward nucleophilic acyl substitution. Give both reasons.',
+    options:[
+      'Nitrogen donates into the carbonyl more strongly, so the carbon is less electrophilic — and NR₂⁻ is a far worse leaving group than RO⁻',
+      'Amides are larger, so nucleophiles cannot reach the carbonyl',
+      'Amides have no carbonyl carbon to attack',
+      'Nitrogen is more electronegative than oxygen, so it withdraws more strongly'
+    ],
+    answer:0,
+    why:'Both halves of the mechanism point the same way. Nitrogen is the better lone-pair donor, so resonance donation leaves the amide carbonyl less electron-poor and harder to attack; and once the tetrahedral intermediate forms, it has to expel an amide anion, which is a very strong base and will not leave. Being worse at both steps is why amides sit at the bottom of the ladder.',
+    diag:{
+      1:{ concept:'acyl-reactivity-order', msg:'Size is not the axis — the reactivity order holds across derivatives of wildly different bulk. It is electronic: donation into the carbonyl, and leaving-group ability.' },
+      2:{ concept:'carbonyl-electrophilicity', msg:'An amide certainly has a carbonyl carbon; it is simply less electrophilic than an ester\'s because nitrogen feeds electron density into it.' },
+      3:{ concept:'electronegativity-trend', msg:'Nitrogen is LESS electronegative than oxygen, which is exactly why it is the better donor. Being a better donor is what deactivates the carbonyl here.' }
+    } },
+
+  { id:'aldol-which-carbon-attacks', kind:'mcq', tier:4, topic:'aldol', concepts:['aldol-connectivity','enolate-formation','resonance-delocalization'],
+    prompt:'An enolate carries most of its negative charge on oxygen, yet it attacks through carbon. Why?',
+    options:[
+      'Carbon is the softer, more polarizable site and forms the stronger bond to the carbonyl carbon — the reaction at carbon is the productive, irreversible one',
+      'Oxygen has no lone pairs left to attack with',
+      'The charge is actually entirely on carbon',
+      'Oxygen is too electronegative to have any nucleophilic character'
+    ],
+    answer:0,
+    why:'Both sites are nucleophilic and oxygen usually reacts first — but attack through oxygen gives a weak, readily reversed C–O linkage, while attack through carbon forms a strong new C–C bond and leads on to a stable beta-hydroxy carbonyl. Over time the reaction funnels through the productive carbon pathway, which is why the aldol makes carbon skeletons.',
+    diag:{
+      1:{ concept:'enolate-formation', msg:'Oxygen has plenty of lone pairs and does attack — reversibly. The carbon pathway wins because its product is the one that survives.' },
+      2:{ concept:'resonance-delocalization', msg:'The charge sits mostly on oxygen, which is the more electronegative end and better able to hold it. The point is that where the charge sits is not the same question as where the molecule reacts.' },
+      3:{ concept:'nucleophile-recognition', msg:'Electronegative atoms bearing a negative charge are still nucleophilic — alkoxides and hydroxide are good nucleophiles. Oxygen\'s problem here is the bond it makes, not its ability to attack.' }
+    } },
+
+  { id:'claisen-vs-aldol-difference', kind:'mcq', tier:4, topic:'claisen', concepts:['claisen-connectivity','aldol-connectivity','acyl-reactivity-order'],
+    prompt:'The aldol and the Claisen both start by making an enolate that attacks a second carbonyl. What makes the outcomes different?',
+    options:[
+      'An ester has a leaving group, so its tetrahedral intermediate collapses and expels alkoxide — giving a beta-keto ester rather than a beta-hydroxy carbonyl',
+      'The Claisen does not go through a tetrahedral intermediate',
+      'The Claisen forms no new carbon–carbon bond',
+      'The aldol requires acid and the Claisen requires base'
+    ],
+    answer:0,
+    why:'The two mechanisms are identical up to the tetrahedral intermediate. An aldehyde or ketone has nothing good to expel, so the alkoxide is just protonated and you keep the new C–OH. An ester has an OR group, so the intermediate collapses back to a carbonyl and kicks out alkoxide — a substitution rather than an addition, and the product is a beta-keto ester.',
+    diag:{
+      1:{ concept:'tetrahedral-intermediate', msg:'It does — that is the shared step. The difference is what happens to that intermediate: collapse and expel, versus simply pick up a proton.' },
+      2:{ concept:'claisen-connectivity', msg:'Both make a new C–C bond; that is the point of enolate chemistry. What differs is what leaves afterwards.' },
+      3:{ concept:'enolate-formation', msg:'Both are base-promoted. The Claisen specifically uses an alkoxide matching the ester\'s own OR group, so that any transesterification is invisible.' }
+    } },
+
+  { id:'amine-basicity-order', kind:'order', tier:4, topic:'amine-structure', concepts:['amine-basicity','resonance-delocalization'],
+    prompt:'Rank these nitrogen compounds by basicity, most basic first.',
+    items:['CH₃CH₂NH₂ (an alkylamine)','NH₃ (ammonia)','C₆H₅NH₂ (aniline)','CH₃CONH₂ (an amide)'],
+    answer:[0,1,2,3],
+    why:'Basicity tracks how available the lone pair is. An alkyl group donates and pushes electron density onto nitrogen, so ethylamine beats ammonia. Aniline\'s lone pair is partly delocalized into the ring, and an amide\'s is fully conjugated into the carbonyl — an amide is essentially not basic at nitrogen at all.',
+    diag:{ any:{ concept:'amine-basicity', msg:'Ask one question of each: how available is that lone pair? Alkyl donation makes it more available; conjugation into a ring or a carbonyl takes it away, and a carbonyl takes far more than a ring does.' } } },
+
+  // ---- Aromatics ------------------------------------------------------
+
+  { id:'aromaticity-four-tests', kind:'mcq', tier:4, topic:'aromaticity', concepts:['huckel-aromaticity'],
+    prompt:'Cyclooctatetraene has eight carbons, alternating double bonds and a full ring of p orbitals. Why is it not aromatic?',
+    options:[
+      'Eight pi electrons is 4n, not 4n+2, and the ring puckers into a tub shape rather than staying planar',
+      'It has too many carbons to be aromatic',
+      'It has no p orbitals',
+      'It is aromatic — it satisfies every requirement'
+    ],
+    answer:0,
+    why:'It fails Hückel\'s count: 8 electrons is 4n with n = 2, which would be antiaromatic and destabilizing if the ring stayed flat. So it does not stay flat — it puckers into a tub, breaking the conjugation and behaving like an ordinary set of isolated alkenes instead. Escaping antiaromaticity by giving up planarity is the normal outcome.',
+    diag:{
+      1:{ concept:'huckel-aromaticity', msg:'Ring size itself is not a limit — [18]annulene with 18 pi electrons is aromatic, because 18 = 4(4)+2. It is the electron COUNT that has to come out right.' },
+      2:{ concept:'huckel-aromaticity', msg:'Every sp² carbon in it has a p orbital. Having them is necessary but not sufficient: they also have to be coplanar and number 4n+2.' },
+      3:{ concept:'huckel-aromaticity', msg:'Run the count: 4 double bonds is 8 pi electrons, and 8 is 4n rather than 4n+2. Continuous conjugation alone does not make a ring aromatic.' }
+    } },
+
+  { id:'eas-why-substitute', kind:'mcq', tier:3, topic:'eas', concepts:['eas-mechanism','huckel-aromaticity'],
+    prompt:'An alkene adds Br₂ across its double bond. Benzene instead substitutes one hydrogen. Why?',
+    options:[
+      'Addition would permanently destroy the aromatic system; substitution restores it in the second step',
+      'Benzene has no pi electrons to attack with',
+      'Benzene reacts faster than an alkene, so it takes the shorter path',
+      'Bromine is not electrophilic enough to add to benzene'
+    ],
+    answer:0,
+    why:'Both start the same way — pi electrons attack the electrophile, giving a cation. For an alkene, a nucleophile then adds and the reaction is over. For benzene, adding a nucleophile would leave a permanently non-aromatic ring, costing the whole aromatic stabilization; losing a proton from the sp³ carbon instead brings the aromatic ring back, so that is the path taken.',
+    diag:{
+      1:{ concept:'eas-mechanism', msg:'Benzene has six pi electrons and does attack the electrophile — that is step one of EAS. The question is what happens after.' },
+      2:{ concept:'eas-mechanism', msg:'Benzene is markedly LESS reactive than an alkene, because attacking costs it aromaticity temporarily. It usually needs a catalyst to generate a stronger electrophile.' },
+      3:{ concept:'eas-mechanism', msg:'Br₂ alone is indeed too weak for benzene — that is why FeBr₃ is added. But even with a strong enough electrophile, the outcome is still substitution rather than addition, and aromaticity is the reason.' }
+    } },
+
+  { id:'eas-nitro-click', kind:'multi-click', tier:3, topic:'directing-effects', concepts:['directing-effects','resonance-delocalization'],
+    prompt:'Click both ring positions where a second electrophile will attack.', molecule:'nitrobenzene',
+    sub:'The nitro group withdraws strongly. Where is the arenium ion least destabilized?',
+    answer:{ keys:['c3','c5'] },
+    why:'A nitro group withdraws by resonance and induction, so every arenium ion is destabilized — but ortho and para attack put the positive charge directly next to the nitro group\'s own positive nitrogen, which is worst of all. Meta attack never does, so meta is the least bad option and the reaction goes there.',
+    diag:{
+      c2:{ concept:'directing-effects', msg:'Ortho. Draw the arenium resonance structures: one of them puts the positive charge on the carbon bearing the nitro group, adjacent to a positively polarized nitrogen. That is the arrangement a withdrawing group makes worst.' },
+      c4:{ concept:'directing-effects', msg:'Para has the same problem as ortho — one resonance structure puts the charge next to the nitro group. Only meta avoids it.' },
+      c6:{ concept:'directing-effects', msg:'Ortho on the other side, and the same objection. Meta direction is not the nitro group choosing meta; it is ortho and para being ruled out.' }
+    } },
+
+  // ---- Spectroscopy ---------------------------------------------------
+
+  { id:'ir-distinguish-pair', kind:'mcq', tier:4, topic:'ir', concepts:['ir-functional-groups'],
+    prompt:'One IR spectrum shows a strong band at 1715 cm⁻¹ and no broad absorption near 3300. The other shows both. Which pair does this distinguish?',
+    options:[
+      'A ketone from a carboxylic acid',
+      'An alkane from an alkene',
+      'An ester from an ether',
+      'A primary from a secondary amine'
+    ],
+    answer:0,
+    why:'The 1715 band is a C=O, present in both. The broad 2500–3300 absorption is the O–H of a carboxylic acid, hydrogen bonded and therefore very broad. A ketone has the carbonyl and no O–H; an acid has both. That is exactly the comparison IR is best at.',
+    diag:{
+      1:{ concept:'ir-functional-groups', msg:'Neither an alkane nor an alkene has a carbonyl, so neither would show a strong band at 1715. An alkene C=C appears near 1650 and is much weaker.' },
+      2:{ concept:'ir-functional-groups', msg:'An ether has no C=O at all, so it would show nothing at 1715. The pair here both have a carbonyl and differ in whether an O–H is present.' },
+      3:{ concept:'ir-functional-groups', msg:'Amine N–H stretches do appear around 3300, but neither amine has a carbonyl at 1715 — and the count of N–H bands, not a carbonyl, is what separates primary from secondary.' }
+    } },
+
+  { id:'ms-mplus2-pattern', kind:'mcq', tier:4, topic:'mass-spec', concepts:['ms-fragmentation'],
+    prompt:'A mass spectrum shows M and M+2 peaks of nearly equal height. What does that indicate?',
+    options:[
+      'A bromine atom, whose two isotopes are almost equally abundant',
+      'A chlorine atom',
+      'A nitrogen atom',
+      'Two separate compounds in the sample'
+    ],
+    answer:0,
+    why:'Bromine is about 51% ⁷⁹Br and 49% ⁸¹Br, so any bromine-containing fragment appears as two peaks two mass units apart and roughly equal in height. Chlorine also gives an M+2, but its isotopes are 75:25, so the pattern is 3:1 rather than 1:1 — the ratio is what tells them apart.',
+    diag:{
+      1:{ concept:'ms-fragmentation', msg:'Chlorine does give an M+2 peak, but at about a third the height of M, because ³⁵Cl is three times as abundant as ³⁷Cl. Equal heights point to bromine.' },
+      2:{ concept:'ms-fragmentation', msg:'Nitrogen shows up as an ODD molecular ion mass for an odd number of nitrogens — the nitrogen rule. It does not produce a significant M+2.' },
+      3:{ concept:'ms-fragmentation', msg:'A single pure compound produces this pattern routinely whenever it contains bromine. Isotopes, not impurities.' }
+    } },
+
   ];
 
   // ---- index helpers ----

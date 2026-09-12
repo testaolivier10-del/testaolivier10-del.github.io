@@ -147,10 +147,18 @@
 
   function renderChoice(cfg){
     var isFinal = cfg.type === 'final';
+    /* Shuffled per sitting (shuffle-options.js): every one of these steps
+       was authored with its answer first. `data-i` keeps the author's index
+       so the correctness test and the cfg.wrong lookup below both still
+       address the option the author wrote, wherever it is now shown. */
+    var shuf = window.OchemShuffle
+      ? window.OchemShuffle.apply(cfg.options, CFG.topicId + ':' + step)
+      : { options: cfg.options, toOriginal: null };
     card.innerHTML = head(cfg) +
       (cfg.molecule ? Mo.svg(cfg.molecule, { clickable: [], caption: cfg.caption }) : '') +
-      '<div class="choice-row">' + cfg.options.map(function(o, i){
-        return '<button class="choice-btn" data-i="' + i + '">' + o + '</button>';
+      '<div class="choice-row">' + shuf.options.map(function(o, i){
+        var orig = shuf.toOriginal ? shuf.toOriginal[i] : i;
+        return '<button class="choice-btn" data-i="' + orig + '">' + o + '</button>';
       }).join('') + '</div>' +
       '<div class="feedback" id="fb"></div>' +
       (isFinal ? '<div id="afterBox"></div>' : nextBtn(cfg.nextLabel, false));

@@ -49,6 +49,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -75,6 +77,7 @@
       '<h3>Why they behave differently in biology</h3><p class="step-body">Even though enantiomers are identical in an achiral environment, they can behave completely differently in a <b>chiral environment</b> — like the active site of an enzyme, which is itself chiral. Only one enantiomer may fit properly, the same way only one of your hands fits comfortably into a right-handed glove. This is the molecular basis for why drug enantiomers can have dramatically different biological effects, even though they\'d be indistinguishable by melting point or boiling point.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('bromochlorofluoromethane', { caption: 'One stereocenter, so exactly two forms exist: this one and its non-superimposable mirror image. Same bonds, same energies, opposite handedness.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Enantiomers are the chirality relationship, applied to a specific pair.',
@@ -128,8 +131,8 @@
         type: 'mcq',
         eyebrow: 'Step 3 · Independent Practice',
         title: 'Can you predict whether a molecule is (+) or (−) just by looking at its structure?',
-        options: ['No — (+)/(−) is an experimentally measured property with no fixed relationship to structure alone', 'Yes — R is always (+) and S is always (−)', 'Yes — molecules with more carbons are always (+)'],
-        correctIndex: 0,
+        options: ['Yes — R is always (+) and S is always (−)', 'No — (+)/(−) is an experimentally measured property with no fixed relationship to structure alone', 'Yes — molecules with more carbons are always (+)'],
+        correctIndex: 1,
         correctFeedback: 'Correct. The direction of optical rotation must be measured in a polarimeter — it has no simple, predictable relationship to the R/S configuration label.',
         wrongFeedback: 'This is a common misconception — R/S configuration (a structural label) and (+)/(−) rotation (an experimentally measured property) are not linked by any general rule.'
       },
@@ -149,8 +152,8 @@
         type: 'final',
         eyebrow: 'Challenge',
         title: 'A racemic mixture (50:50 of both enantiomers) is placed in a polarimeter. What rotation do you expect to observe?',
-        options: ['Zero — the equal and opposite rotations from each enantiomer cancel out', 'Double the rotation of either pure enantiomer', 'The same rotation as the (+) enantiomer alone'],
-        correctIndex: 0,
+        options: ['Double the rotation of either pure enantiomer', 'The same rotation as the (+) enantiomer alone', 'Zero — the equal and opposite rotations from each enantiomer cancel out'],
+        correctIndex: 2,
         correctFeedback: 'Correct — since the two enantiomers rotate light by equal magnitude in opposite directions, a 50:50 mixture shows a net rotation of exactly zero. This is why a racemic mixture is sometimes labeled (±).'
       }
     ]

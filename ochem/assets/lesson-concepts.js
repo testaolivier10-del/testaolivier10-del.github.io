@@ -32,11 +32,12 @@
       6:['acetal-formation'],
       7:['acetal-formation','carbonyl-electrophilicity'] } },
 
-    'acidity-factors': { n:8, steps:{
+    'acidity-factors': { n:9, steps:{
       2:['acidity-factors'],
       3:['acidity-factors','electronegativity-trend'],
       4:['resonance-delocalization','acidity-factors'],
-      7:['resonance-delocalization','acidity-factors'] } },
+      7:['acidity-factors','pka-scale'],
+      8:['resonance-delocalization','acidity-factors'] } },
 
     'acyl-substitution': { n:8, steps:{
       1:['tetrahedral-intermediate'],
@@ -79,12 +80,13 @@
       5:['alkene-pi-nucleophile'],
       7:['alkene-pi-nucleophile'] } },
 
-    'alkynes': { n:8, steps:{
+    'alkynes': { n:9, steps:{
       1:['alkyne-acidity'],
       2:['alkyne-acidity','hybridization-assignment'],
       3:['alkyne-acidity','acidity-factors'],
       6:['addition-stereochem'],
-      7:['markovnikov-regiochem'] } },
+      7:['alkyne-acidity','curved-arrow-direction'],
+      8:['markovnikov-regiochem'] } },
 
     'alpha-hydrogens': { n:8, steps:{
       1:['alpha-acidity'],
@@ -136,11 +138,12 @@
       3:['lewis-structures-drawing'],
       6:['lewis-structures-drawing','valence-electrons'] } },
 
-    'bronsted': { n:7, steps:{
+    'bronsted': { n:8, steps:{
       1:['bronsted-identification'],
       2:['bronsted-identification'],
       3:['conjugate-pairs'],
-      6:['bronsted-identification','conjugate-pairs'] } },
+      6:['bronsted-identification','curved-arrow-direction'],
+      7:['bronsted-identification','conjugate-pairs'] } },
 
     'c-nmr': { n:7, steps:{
       1:['nmr-shift-shielding'],
@@ -180,11 +183,12 @@
       3:['conjugate-pairs','pka-scale'],
       6:['conjugate-pairs','pka-scale'] } },
 
-    'curved-arrows': { n:7, steps:{
+    'curved-arrows': { n:8, steps:{
       1:['curved-arrow-direction'],
       2:['curved-arrow-direction','resonance-validity'],
       3:['curved-arrow-direction','formal-charge-calc'],
-      6:['curved-arrow-direction','resonance-validity'] } },
+      6:['curved-arrow-direction','carbonyl-electrophilicity'],
+      7:['curved-arrow-direction','resonance-validity'] } },
 
     'cyclohexanes': { n:7, steps:{
       1:['chair-axial-equatorial'],
@@ -236,12 +240,13 @@
       3:['enantiomer-vs-diastereomer','rs-assignment'],
       6:['enantiomer-vs-diastereomer'] } },
 
-    'epoxides': { n:8, steps:{
+    'epoxides': { n:9, steps:{
       1:['epoxide-opening-regiochem'],
       2:['epoxide-opening-regiochem','backside-attack'],
       4:['epoxide-opening-regiochem'],
       5:['epoxide-opening-regiochem'],
-      7:['epoxide-opening-regiochem','backside-attack'] } },
+      7:['epoxide-opening-regiochem','curved-arrow-direction'],
+      8:['epoxide-opening-regiochem','backside-attack'] } },
 
     'esters-amides': { n:8, steps:{
       1:['acyl-reactivity-order'],
@@ -256,11 +261,16 @@
       3:['backside-attack'],
       6:['backside-attack'] } },
 
-    'fischer': { n:7, steps:{
+    /* Step 5 is the R/S-from-a-Fischer-projection drill, which grades
+       three times — reading the projection is a different skill from
+       assigning a configuration from one, and only the first was
+       practised here before. */
+    'fischer': { n:8, steps:{
       1:['fischer-reading'],
       2:['fischer-reading'],
       3:['fischer-reading','enantiomer-vs-diastereomer'],
-      6:['fischer-reading','enantiomer-vs-diastereomer'] } },
+      5:['fischer-reading','rs-assignment','cip-priority'],
+      7:['fischer-reading','enantiomer-vs-diastereomer'] } },
 
     'h-nmr': { n:8, steps:{
       1:['nmr-splitting-integration'],
@@ -361,11 +371,18 @@
       3:['ring-flip-mechanics'],
       6:['ring-flip-mechanics','chair-axial-equatorial'] } },
 
-    'rs-configuration': { n:8, steps:{
-      2:['rs-assignment'],
+    /* Steps 6 and 7 are the two wedge-dash assignment drills, each of
+       which grades three times (rank, toward/away, R or S) — so this
+       topic now records far more evidence per run than the four
+       questions it used to, and all of it against the two concepts the
+       topic is actually about. */
+    'rs-configuration': { n:10, steps:{
+      2:['cip-priority'],
       3:['cip-priority'],
       4:['cip-priority'],
-      7:['rs-assignment','cip-priority'] } },
+      6:['rs-assignment','cip-priority'],
+      7:['rs-assignment','cip-priority'],
+      9:['rs-assignment','cip-priority'] } },
 
     'stereocenters': { n:7, steps:{
       1:['stereocenter-identification'], 2:['stereocenter-identification'],

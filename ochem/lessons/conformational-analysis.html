@@ -49,6 +49,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -74,6 +76,7 @@
       '<h3>Why this connects directly to E2 elimination</h3><p class="step-body">E2 elimination (Module 6) has a strict geometric requirement: the leaving group and the hydrogen being removed must be <b>anti-periplanar</b> — 180° apart, which on a cyclohexane ring means both must be <b>axial</b> (axial-axial is the only 180° relationship on a chair; equatorial groups are never anti-periplanar to each other). This means an E2 reaction on a cyclohexane ring can only happen through whichever of the two interconverting chairs happens to have the leaving group axial — even if that chair is the minority, higher-energy conformation. Conformational analysis is literally how you predict which product forms.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('newman-butane-anti'),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'One substituent: always draw the equatorial chair as dominant.',
@@ -113,8 +116,8 @@
         type: 'mcq',
         eyebrow: 'Step 2 · Guided Practice',
         title: 'Why does the equatorial position dominate for a bulky substituent?',
-        options: ['It avoids the 1,3-diaxial steric clashes that the axial position would create', 'Equatorial bonds are covalently stronger', 'The molecule can\'t physically reach the axial position'],
-        correctIndex: 0,
+        options: ['Equatorial bonds are covalently stronger', 'It avoids the 1,3-diaxial steric clashes that the axial position would create', 'The molecule can\'t physically reach the axial position'],
+        correctIndex: 1,
         correctFeedback: 'Correct — it\'s purely a steric/energy preference, not a bonding or accessibility issue. The molecule can and does sample the axial chair briefly; it just spends far less time there.',
         wrongFeedback: 'Both bonds are ordinary sigma bonds of equal strength, and the molecule can reach either chair — the equatorial preference is about avoiding steric strain, not bond strength or reachability.'
       },
@@ -122,8 +125,8 @@
         type: 'mcq',
         eyebrow: 'Step 3 · Independent Practice',
         title: 'With two substituents on a ring, how do you predict the dominant chair?',
-        options: ['Compare total axial "penalty" (roughly, sum of A-values) in each chair and pick the lower one', 'Only the first-numbered substituent matters', 'Two substituents always cancel out to a 50/50 mixture'],
-        correctIndex: 0,
+        options: ['Only the first-numbered substituent matters', 'Two substituents always cancel out to a 50/50 mixture', 'Compare total axial "penalty" (roughly, sum of A-values) in each chair and pick the lower one'],
+        correctIndex: 2,
         correctFeedback: 'Correct. Add up which substituents would be axial in each of the two possible chairs, and the chair with less total axial strain (lower summed A-value penalty) dominates.',
         wrongFeedback: 'Every substituent contributes its own A-value penalty when axial — you need to compare both chairs\' total penalty, not just look at one substituent.'
       },

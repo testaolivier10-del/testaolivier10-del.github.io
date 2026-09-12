@@ -49,6 +49,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -74,6 +76,7 @@
       '<h3>Quantifying it: pKaH</h3><p class="step-body">Lower pKa of the leaving group\'s conjugate acid (pKaH) = weaker base = better leaving group. HI ≈ −10, HBr ≈ −9, HCl ≈ −7 (all strong acids → I⁻/Br⁻/Cl⁻ are weak bases, good leaving groups, in that ranked order). Water ≈ 15.7 (weak acid → OH⁻ is a strong base, poor leaving group). Full pKa framework comes in Module 3.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('sn2-bromoethane', { caption: 'Bromide is a good leaving group because it is a weak base — it is stable holding the electron pair it walks away with.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'A good leaving group is a weak base.',
@@ -118,8 +121,8 @@
         type: 'mcq',
         eyebrow: 'Step 2 · Guided Practice',
         title: 'A good leaving group is generally...',
-        options: ['A weak base — stable on its own once it leaves', 'A strong base — it needs to hold the electrons tightly', 'A strong nucleophile'],
-        correctIndex: 0,
+        options: ['A strong base — it needs to hold the electrons tightly', 'A weak base — stable on its own once it leaves', 'A strong nucleophile'],
+        correctIndex: 1,
         correctFeedback: 'Correct — stability after leaving is the whole story.',
         wrongFeedback: 'A strong base doesn\'t want extra negative charge — it fights leaving rather than accepting it.'
       },
@@ -127,8 +130,8 @@
         type: 'mcq',
         eyebrow: 'Step 3 · Independent Practice',
         title: 'Which is the better leaving group: Cl⁻ or OH⁻?',
-        options: ['Cl⁻ — a much weaker base and a more stable anion on its own', 'OH⁻ — it\'s smaller and lighter', 'They\'re about equal'],
-        correctIndex: 0,
+        options: ['OH⁻ — it\'s smaller and lighter', 'They\'re about equal', 'Cl⁻ — a much weaker base and a more stable anion on its own'],
+        correctIndex: 2,
         correctFeedback: 'Correct. Cl⁻ is the conjugate base of a strong acid (HCl) and is very stable as an anion; OH⁻ is the conjugate base of water, a much weaker acid, so OH⁻ is a much stronger (and more reluctant) base.',
         wrongFeedback: 'Compare their conjugate acids: HCl is a strong acid, water is not. The weaker the conjugate acid, the stronger (and worse-leaving) the base.'
       },

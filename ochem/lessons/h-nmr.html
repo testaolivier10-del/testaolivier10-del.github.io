@@ -49,6 +49,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -75,6 +77,7 @@
       '<h3>Putting it together: a worked example</h3><p class="step-body">Ethanol\'s spectrum: the CH₃ (3H, integration 3) appears as a triplet (split by the adjacent CH₂\'s 2 hydrogens, n+1=3) around 1.2 ppm; the CH₂ (2H, integration 2) appears as a quartet (split by the adjacent CH₃\'s 3 hydrogens, n+1=4) around 3.6 ppm (deshielded by the nearby oxygen); the OH (1H, integration 1) appears as a broad singlet (typically not cleanly split, due to fast proton exchange) further downfield still, around 2-5 ppm depending on conditions. All three pieces of evidence — shift, integration, and splitting pattern — agree with and reinforce the same structural assignment.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('ethanol', { caption: 'Three chemically distinct hydrogen environments, so three signals: the CH₃ triplet, the CH₂ quartet, and the OH singlet.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Chemical shift: electronegative neighbors deshield a hydrogen and push its signal downfield.',
@@ -129,8 +132,8 @@
         type: 'mcq',
         eyebrow: 'Step 2 · Guided Practice',
         title: 'A molecule\'s ¹H NMR spectrum shows two signals with integration values in a 3:2 ratio. What does this tell you?',
-        options: ['The two signals come from hydrogen environments in a 3:2 ratio (e.g., 3 hydrogens of one type for every 2 of another)', 'The molecule contains exactly 3 and 2 total hydrogens', 'One signal is three times stronger in chemical shift than the other'],
-        correctIndex: 0,
+        options: ['The molecule contains exactly 3 and 2 total hydrogens', 'One signal is three times stronger in chemical shift than the other', 'The two signals come from hydrogen environments in a 3:2 ratio (e.g., 3 hydrogens of one type for every 2 of another)'],
+        correctIndex: 2,
         correctFeedback: 'Correct — integration gives relative, not absolute, hydrogen counts; the actual numbers could be 3 and 2, or 6 and 4, or any multiple preserving that ratio.',
         wrongFeedback: 'Integration values are relative to each other, not absolute counts, and they have nothing to do with chemical shift (position) — they measure signal area (proportional to hydrogen count).'
       },
@@ -159,8 +162,8 @@
         type: 'mcq',
         eyebrow: 'Step 6 · Independent Practice',
         title: 'A compound\'s ¹H NMR shows a 2H signal at 2.3 ppm as a triplet, and a 3H signal at 1.0 ppm as a triplet. What does the fact that BOTH signals are triplets suggest about their relationship?',
-        options: ['They are likely NOT directly coupled to each other in a simple CH₃–CH₂ pattern (since coupled partners would typically show n+1 patterns matching each other\'s hydrogen counts, like a quartet paired with a triplet), so another explanation (like a symmetric CH₂ neighbor) should be considered', 'They must be identical environments', 'Triplet-triplet pairings are impossible under any circumstances'],
-        correctIndex: 0,
+        options: ['They must be identical environments', 'They are likely NOT directly coupled to each other in a simple CH₃–CH₂ pattern (since coupled partners would typically show n+1 patterns matching each other\'s hydrogen counts, like a quartet paired with a triplet), so another explanation (like a symmetric CH₂ neighbor) should be considered', 'Triplet-triplet pairings are impossible under any circumstances'],
+        correctIndex: 1,
         correctFeedback: 'Correct — a classic ethyl group (CH₃CH₂–) pairs a triplet (CH₃, split by 2 neighbors) with a quartet (CH₂, split by 3 neighbors), not two triplets, so this pattern hints at a different structural arrangement (each proton set is actually next to 2 equivalent neighboring hydrogens instead).',
         wrongFeedback: 'Two different signals appearing as two different triplets are neither identical nor impossible — but it does rule out the simplest ethyl-group (CH₃–CH₂–) interpretation, since that specific pattern would pair a triplet with a quartet, not two triplets.'
       },
@@ -168,8 +171,8 @@
         type: 'final',
         eyebrow: 'Challenge',
         title: 'A compound shows exactly one ¹H NMR signal: a single, unsplit peak (singlet) at 7.3 ppm, integrating for 5H relative to no other signal in the spectrum. What structure is most consistent with this data?',
-        options: ['A monosubstituted benzene ring where all 5 remaining aromatic hydrogens happen to be equivalent (or nearly so) and appear together, downfield due to ring current, with no non-equivalent neighboring hydrogens to split them', 'A simple, isolated CH₅ group', 'This data is impossible to produce from any real molecule'],
-        correctIndex: 0,
+        options: ['A simple, isolated CH₅ group', 'This data is impossible to produce from any real molecule', 'A monosubstituted benzene ring where all 5 remaining aromatic hydrogens happen to be equivalent (or nearly so) and appear together, downfield due to ring current, with no non-equivalent neighboring hydrogens to split them'],
+        correctIndex: 2,
         correctFeedback: 'Correct — a monosubstituted phenyl group (like in toluene\'s aromatic ring) often shows its 5 aromatic hydrogens clustered together around 7.3 ppm; since they\'re not coupled to any non-equivalent hydrogens outside that aromatic system, the signal doesn\'t split further.'
       }
     ]

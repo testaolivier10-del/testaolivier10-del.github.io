@@ -49,6 +49,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -74,6 +76,7 @@
       '<h3>Predicting which side an equilibrium favors</h3><p class="step-body">In a proton transfer, the equilibrium favors the side with the <b>weaker acid</b> — equivalently, the side where the acid has the <b>higher pKa</b>. Compare the pKa of the acid on the left to the pKa of the acid that would form on the right (the conjugate acid of the base); the reaction favors whichever side has the acid with the higher pKa, because that\'s the more stable, lower-energy species.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('acetic-acid', { caption: 'Acetic acid, pKa 4.76. Two oxygens, but only the O–H proton is acidic — the alpha C–H sits far above pKa 20.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Ka measures how much an acid actually falls apart.',
@@ -118,8 +121,8 @@
         type: 'mcq',
         eyebrow: 'Step 2 · Guided Practice',
         title: 'A lower pKa means...',
-        options: ['A stronger acid', 'A weaker acid', 'A stronger base'],
-        correctIndex: 0,
+        options: ['A weaker acid', 'A stronger acid', 'A stronger base'],
+        correctIndex: 1,
         correctFeedback: 'Correct — the negative sign in pKa = −log(Ka) flips the direction, so lower pKa always means stronger acid.',
         wrongFeedback: 'Remember the negative sign: pKa = −log(Ka). A bigger Ka (stronger acid) produces a smaller (or more negative) pKa.'
       },
@@ -127,8 +130,8 @@
         type: 'mcq',
         eyebrow: 'Step 3 · Independent Practice',
         title: 'Acetic acid (pKa 4.76) compared to phenol (pKa 10) is...',
-        options: ['A much stronger acid — over 5 pKa units lower', 'A much weaker acid', 'About equally acidic'],
-        correctIndex: 0,
+        options: ['A much weaker acid', 'About equally acidic', 'A much stronger acid — over 5 pKa units lower'],
+        correctIndex: 2,
         correctFeedback: 'Correct. Every 1 pKa unit is a 10x change in acid strength, so a gap of about 5.24 units means acetic acid is roughly 10⁵ times more acidic than phenol.',
         wrongFeedback: 'Compare the numbers directly: lower pKa = stronger acid, and acetic acid\'s pKa (4.76) is much lower than phenol\'s (10).'
       },

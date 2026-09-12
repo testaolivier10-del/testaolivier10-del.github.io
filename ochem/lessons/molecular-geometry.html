@@ -49,6 +49,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -106,8 +107,8 @@
         eyebrow: 'Identify',
         title: 'Methane, CH₄: 4 bonds, 0 lone pairs. What shape?',
         diagramHtml: molSvg(4,0),
-        options: ['Tetrahedral', 'Trigonal pyramidal', 'Bent', 'Linear'],
-        correctIndex: 0,
+        options: ['Trigonal pyramidal', 'Bent', 'Tetrahedral', 'Linear'],
+        correctIndex: 2,
         correctFeedback: 'Correct — 4 groups, all bonds, no lone pairs to hide: a clean tetrahedron.',
         wrongFeedback: 'With no lone pairs, the shape matches the electron-group arrangement exactly.'
       },
@@ -116,8 +117,8 @@
         eyebrow: 'Step 2 · Guided Practice',
         title: 'Ammonia, NH₃: 3 bonds + 1 lone pair (4 groups). What shape?',
         diagramHtml: molSvg(3,1),
-        options: ['Tetrahedral', 'Trigonal pyramidal', 'Bent', 'Linear'],
-        correctIndex: 1,
+        options: ['Tetrahedral', 'Bent', 'Linear', 'Trigonal pyramidal'],
+        correctIndex: 3,
         correctFeedback: 'Correct — 4 groups total, but with one lone pair hidden from the name, the 3 visible bonds form a trigonal pyramid.',
         wrongFeedback: 'The lone pair still takes up space and pushes the 3 N–H bonds into a pyramid — it just doesn’t appear in the shape’s name.'
       },
@@ -126,8 +127,8 @@
         eyebrow: 'Step 3 · Independent Practice',
         title: 'Water, H₂O: 2 bonds + 2 lone pairs (4 groups). What shape?',
         diagramHtml: molSvg(2,2),
-        options: ['Tetrahedral', 'Trigonal pyramidal', 'Bent', 'Linear'],
-        correctIndex: 2,
+        options: ['Bent', 'Tetrahedral', 'Trigonal pyramidal', 'Linear'],
+        correctIndex: 0,
         correctFeedback: 'Correct — with 2 of the 4 groups being invisible lone pairs, the 2 O–H bonds form a bent shape, not a straight line.',
         wrongFeedback: 'Two of water’s four groups are lone pairs. What does that do to the two remaining bonds?'
       },

@@ -49,6 +49,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -117,8 +118,8 @@
         type: 'mcq',
         eyebrow: 'Step 2 · Guided Practice',
         title: 'Why does alpha cleavage happen preferentially next to a carbonyl or heteroatom, rather than at a random C–C bond?',
-        options: ['The resulting cation is resonance-stabilized by the adjacent lone pair, exactly like the oxocarbenium and acylium ions from earlier modules', 'Bonds adjacent to a carbonyl are physically weaker in the neutral molecule', 'Alpha cleavage is actually completely random and just happens to look patterned'],
-        correctIndex: 0,
+        options: ['Bonds adjacent to a carbonyl are physically weaker in the neutral molecule', 'The resulting cation is resonance-stabilized by the adjacent lone pair, exactly like the oxocarbenium and acylium ions from earlier modules', 'Alpha cleavage is actually completely random and just happens to look patterned'],
+        correctIndex: 1,
         correctFeedback: 'Correct — this is the same "which cation is more stable" reasoning from Modules 9, 10, and 13, now applied to predicting mass spectral fragmentation instead of a solution-phase reaction outcome.',
         wrongFeedback: 'The relevant stability difference is in the resulting cation after fragmentation, not the strength of the neutral bond before ionization.'
       },
@@ -132,8 +133,8 @@
         type: 'mcq',
         eyebrow: 'Step 4 · Check Understanding',
         title: 'A mass spectrum shows a molecular ion peak at m/z 78 and a second peak of roughly equal height at m/z 80. What does this suggest?',
-        options: ['The molecule contains one bromine atom (roughly 1:1 M/M+2 ratio is the bromine isotope signature)', 'The molecule contains one chlorine atom', 'This is simply measurement noise with no structural meaning'],
-        correctIndex: 0,
+        options: ['The molecule contains one chlorine atom', 'This is simply measurement noise with no structural meaning', 'The molecule contains one bromine atom (roughly 1:1 M/M+2 ratio is the bromine isotope signature)'],
+        correctIndex: 2,
         correctFeedback: 'Correct — a roughly 1:1 ratio between M and M+2 is the diagnostic signature of bromine; chlorine would instead show a roughly 3:1 ratio.',
         wrongFeedback: 'The ratio is the key diagnostic detail here: roughly 1:1 signals bromine, while chlorine would show a distinctly different roughly 3:1 ratio.'
       },
@@ -156,8 +157,8 @@
         type: 'final',
         eyebrow: 'Challenge',
         title: 'An unknown compound shows a molecular ion at m/z 122, and its mass spectrum lacks any M+2 peak of significant intensity. Separately, its IR spectrum shows a strong sharp peak at 1715 cm⁻¹ and no O–H absorption. What can you conclude?',
-        options: ['The molecular weight is 122, no chlorine or bromine is present, and a ketone or aldehyde carbonyl is present (with no alcohol or carboxylic acid O–H)', 'The compound must contain both chlorine and a carboxylic acid', 'Mass spectrometry and IR data cannot be combined to draw any conclusion'],
-        correctIndex: 0,
+        options: ['The compound must contain both chlorine and a carboxylic acid', 'The molecular weight is 122, no chlorine or bromine is present, and a ketone or aldehyde carbonyl is present (with no alcohol or carboxylic acid O–H)', 'Mass spectrometry and IR data cannot be combined to draw any conclusion'],
+        correctIndex: 1,
         correctFeedback: 'Correct — this is exactly how the different spectroscopic techniques complement each other: MS gives molecular weight and halogen presence/absence, while IR confirms the specific functional group (here, a ketone/aldehyde, given the absence of any O–H signal).'
       }
     ]

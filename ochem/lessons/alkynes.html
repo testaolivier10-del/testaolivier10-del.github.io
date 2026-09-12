@@ -44,11 +44,12 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,9 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/molecule-editor.js"></script>
+<script src="../assets/arrow-step.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -75,6 +79,7 @@
       '<h3>Addition reactions: partial vs. complete</h3><p class="step-body">Because an alkyne has two pi bonds, it can add electrophiles or H₂ once (giving an alkene) or twice (giving an alkane). H₂ with a Lindlar catalyst (a poisoned, less active Pd catalyst) stops cleanly at the alkene stage and delivers <b>syn</b> addition, giving the <b>cis</b> alkene. H₂ with a normal Pd or Pt catalyst goes all the way to the alkane. Acid-catalyzed hydration (H₃O⁺/Hg²⁺ catalyst) adds water Markovnikov-style to give an unstable <b>enol</b>, which immediately tautomerizes to the more stable ketone (or aldehyde for a terminal alkyne) — the same enol/keto relationship that becomes central in Module 11 (Enolate Chemistry).</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('propyne'),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'A triple bond is one sigma bond plus two pi bonds — and it forces a straight line.',
@@ -135,8 +140,8 @@
         type: 'mcq',
         eyebrow: 'Step 3 · Independent Practice',
         title: 'Which base could realistically deprotonate a terminal alkyne (pKa ≈ 25) to a useful extent?',
-        options: ['NaNH₂ (conjugate acid NH₃, pKa ≈ 38)', 'NaOH (conjugate acid H₂O, pKa ≈ 15.7)', 'Neither — terminal alkynes cannot be deprotonated'],
-        correctIndex: 0,
+        options: ['NaOH (conjugate acid H₂O, pKa ≈ 15.7)', 'NaNH₂ (conjugate acid NH₃, pKa ≈ 38)', 'Neither — terminal alkynes cannot be deprotonated'],
+        correctIndex: 1,
         correctFeedback: 'Correct — the equilibrium favors the side with the weaker acid (higher pKa). NH₃ (pKa 38) is a far weaker acid than the alkyne (pKa 25), so amide strongly favors deprotonation. Water (pKa 15.7) is already a stronger acid than the alkyne, so hydroxide can\'t deprotonate it usefully.',
         wrongFeedback: 'Apply the pKa comparison rule from the pKa lesson: the equilibrium favors the side with the weaker acid (higher pKa). Compare 25 (alkyne) against each base\'s conjugate acid.'
       },
@@ -156,10 +161,33 @@
         type: 'mcq',
         eyebrow: 'Step 6 · Check Understanding',
         title: 'You need to convert an internal alkyne into a cis alkene, stopping cleanly before full reduction to the alkane. What should you use?',
-        options: ['H₂ with a Lindlar catalyst', 'H₂ with a normal Pd/C catalyst', 'NaNH₂'],
-        correctIndex: 0,
+        options: ['H₂ with a normal Pd/C catalyst', 'NaNH₂', 'H₂ with a Lindlar catalyst'],
+        correctIndex: 2,
         correctFeedback: 'Correct — Lindlar\'s poisoned, less active catalyst is specifically chosen to stop the reduction at the alkene stage and deliver syn (cis) addition.',
         wrongFeedback: 'A normal Pd/C catalyst won\'t stop at the alkene — it reduces all the way to the alkane. NaNH₂ is a base for deprotonation, not a reducing agent.'
+      },
+      {
+        /* Acetylide formation. The lesson explains the pKa 25 figure at
+           length; this makes the student draw the step that figure is
+           about. */
+        render: function(api){
+          window.OchemArrowStep.mount(api, {
+            eyebrow: 'Draw it',
+            title: 'Sodium amide removes the terminal alkyne proton. Draw the arrow.',
+            bodyHtml: '<p class="step-body">One arrow. Only one hydrogen in this molecule is acidic enough for amide to take — and once it is gone, the electrons left behind are the acetylide nucleophile.</p>',
+            molecule: 'propyne',
+            concepts: ['alkyne-acidity', 'curved-arrow-direction'],
+            arrows: [{ from: 'bond:c2-h', to: 'c2' }],
+            hint: 'Click the bond to the acidic hydrogen, then click where its electrons stay behind.',
+            why: 'The C\u2013H bonding pair is left on the sp carbon, giving an acetylide anion. That anion is stable enough to form because an sp orbital is 50% s character and holds the pair close to the nucleus — the whole reason this C\u2013H is pKa 25 while the methyl hydrogens at the other end of the same molecule are around 50.',
+            wrong: {
+              'bond:ch3-c1>ch3': 'That is a C\u2013C bond, not a C\u2013H, and amide is removing a proton here. Find the hydrogen.',
+              'bond:c2-h>h': 'The electrons stay behind rather than leaving with the hydrogen — a proton departs bare. If they left with it you would have made a hydride, not an acetylide.',
+              'c2>bond:c2-h': 'Backwards. That arrow forms the bond you are being asked to break.',
+              'bond:c1-c2>c1': 'The triple bond is not what breaks. Deprotonation touches only the C\u2013H; the triple bond is what makes that C\u2013H acidic in the first place.'
+            }
+          });
+        }
       },
       {
         type: 'final',

@@ -44,11 +44,12 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,9 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/molecule-editor.js"></script>
+<script src="../assets/arrow-step.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -75,6 +79,7 @@
       '<h3>Orbital hybridization</h3><p class="step-body">Comparing C–H acidity: terminal alkyne C–H (sp, pKa ≈ 25) &gt; alkene C–H (sp², pKa ≈ 44) &gt; alkane C–H (sp³, pKa ≈ 50). More s-character means the orbital holding the lone pair (in the conjugate base) is closer to the nucleus and lower in energy, stabilizing the negative charge. This is purely an orbital effect — none of the other three factors differ between these three C–H bonds.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('acetate-ion', { caption: 'Acetic acid’s conjugate base. The charge is not parked on one oxygen — resonance spreads it over both equally, and that delocalisation is most of why acetic acid is eleven pKa units stronger than ethanol.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Four questions, in order: Atom, Resonance, Induction, Orbital.',
@@ -123,8 +128,8 @@
         type: 'mcq',
         eyebrow: 'Step 3 · Guided Practice',
         title: 'H–I is a stronger acid than H–F, even though fluorine is more electronegative. Why?',
-        options: ['Iodine is much larger, spreading the negative charge over a more polarizable cloud', 'Fluorine forms stronger bonds to hydrogen, which has nothing to do with acidity', 'This trend is actually backwards — H–F is the stronger acid'],
-        correctIndex: 0,
+        options: ['Fluorine forms stronger bonds to hydrogen, which has nothing to do with acidity', 'Iodine is much larger, spreading the negative charge over a more polarizable cloud', 'This trend is actually backwards — H–F is the stronger acid'],
+        correctIndex: 1,
         correctFeedback: 'Correct — down a group, atom size dominates over electronegativity, so acidity increases even as electronegativity decreases.',
         wrongFeedback: 'This is the down-a-group atom trend: size beats electronegativity, so the larger halide (I⁻) stabilizes negative charge better despite being less electronegative.'
       },
@@ -132,8 +137,8 @@
         type: 'mcq',
         eyebrow: 'Step 4 · Independent Practice',
         title: 'Carboxylic acids are far more acidic than alcohols mainly because of...',
-        options: ['Resonance — the carboxylate spreads its charge over two equivalent oxygens', 'Atom effects — the oxygens are somehow different elements', 'Orbital effects — different hybridization at oxygen'],
-        correctIndex: 0,
+        options: ['Atom effects — the oxygens are somehow different elements', 'Orbital effects — different hybridization at oxygen', 'Resonance — the carboxylate spreads its charge over two equivalent oxygens'],
+        correctIndex: 2,
         correctFeedback: 'Correct. The carboxylate anion is resonance-stabilized across two equivalent C–O bonds (like acetate), while an alkoxide keeps the full negative charge on a single oxygen.',
         wrongFeedback: 'Both O–H bonds involve the same element (oxygen) with the same hybridization — the difference is that the carboxylate can delocalize its charge by resonance and an alkoxide can\'t.'
       },
@@ -148,6 +153,29 @@
         eyebrow: 'Why it matters',
         title: 'ARIO is the tool you\'ll reach for constantly for the rest of the course.',
         bodyHtml: '<div class="explain-box">Alpha-hydrogen acidity in Module 11 (enolates, pKa ≈ 20 because the resulting enolate is resonance-stabilized), amine vs. amide basicity in Module 12 (an amide\'s lone pair is tied up in resonance, making it a much weaker base than an amine\'s), and phenol vs. alcohol acidity (aromatic ring resonance-stabilizes the phenoxide) are all direct applications of this same four-factor checklist. Whenever you\'re asked "which is more acidic" or "which is the stronger base," run through Atom, Resonance, Induction, Orbital in that order.</div>'
+      },
+      {
+        /* Ethanol versus acetic acid is the comparison the whole lesson
+           turns on. Drawing the alkoxide makes the contrast concrete:
+           same arrow, nothing to delocalise into afterwards. */
+        render: function(api){
+          window.OchemArrowStep.mount(api, {
+            eyebrow: 'Draw it',
+            title: 'Draw the deprotonation of ethanol.',
+            bodyHtml: '<p class="step-body">One arrow, exactly as for a carboxylic acid. Then compare what you are left with — that comparison is what the pKa gap measures.</p>',
+            molecule: 'ethanol',
+            concepts: ['acidity-factors', 'pka-scale'],
+            arrows: [{ from: 'bond:o-ho', to: 'o' }],
+            hint: 'Click the O\u2013H bond, then click where its electrons stay.',
+            why: 'You get an ethoxide: a negative charge sitting on one oxygen with nowhere to go. Do the identical arrow on acetic acid and the charge lands on a carboxylate, spread over two equivalent oxygens by resonance. Same arrow, same atom, eleven pKa units apart — and the only difference is what stabilises the anion afterwards.',
+            wrong: {
+              'bond:o-ho>ho': 'The pair stays behind rather than leaving with the proton. A proton departs bare; that is what makes the conjugate base anionic.',
+              'o>bond:o-ho': 'Backwards — that forms the O\u2013H bond instead of breaking it.',
+              'bond:o-c2>o': 'That is the C\u2013O bond. Breaking it would fragment the molecule rather than deprotonate it; acidity is about losing the hydrogen.',
+              'bond:c2-h21>c2': 'A C\u2013H on carbon, around pKa 50 — effectively not acidic. The O\u2013H is the one that comes off, because oxygen can carry the charge and carbon cannot.'
+            }
+          });
+        }
       },
       {
         type: 'final',

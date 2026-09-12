@@ -49,6 +49,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -75,6 +77,7 @@
       '<h3>Worked example: cis/trans as a special case of diastereomers</h3><p class="step-body">Cis and trans isomers of a disubstituted ring or alkene are actually a specific, common example of diastereomers — they are stereoisomers, not mirror images of each other, and (consistent with the diastereomer pattern) they have measurably different physical properties. cis-2-butene and trans-2-butene, for instance, have different boiling points (3.7°C vs. 0.9°C) and different dipole moments.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('chair-dimethylcyclohexane', { caption: 'Two stereocenters, and this is the trans isomer. The cis isomer differs at exactly one of them — same connectivity, not mirror images: diastereomers.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Diastereomers need at least two stereocenters to exist.',
@@ -119,8 +122,8 @@
         type: 'mcq',
         eyebrow: 'Step 2 · Guided Practice',
         title: 'A molecule with 3 stereocenters is compared to a version with only stereocenter #2 inverted. What\'s the relationship?',
-        options: ['Diastereomer — one of three centers is inverted, not all three', 'Enantiomer — any inversion counts as the mirror image', 'They are the same molecule'],
-        correctIndex: 0,
+        options: ['Enantiomer — any inversion counts as the mirror image', 'Diastereomer — one of three centers is inverted, not all three', 'They are the same molecule'],
+        correctIndex: 1,
         correctFeedback: 'Correct. Only a full inversion of every stereocenter produces the enantiomer — inverting any smaller subset (here, just one of three) produces a diastereomer.',
         wrongFeedback: 'The enantiomer requires inverting every single stereocenter — inverting just one out of three is a partial inversion, which defines a diastereomer instead.'
       },
@@ -128,8 +131,8 @@
         type: 'mcq',
         eyebrow: 'Step 3 · Independent Practice',
         title: 'Why do diastereomers have different melting points, unlike enantiomers?',
-        options: ['They aren\'t mirror images of each other, so there\'s no symmetry reason for their properties to match', 'They have different molecular formulas', 'Diastereomers actually do have identical melting points — this is a common myth'],
-        correctIndex: 0,
+        options: ['They have different molecular formulas', 'Diastereomers actually do have identical melting points — this is a common myth', 'They aren\'t mirror images of each other, so there\'s no symmetry reason for their properties to match'],
+        correctIndex: 2,
         correctFeedback: 'Correct. Enantiomers share properties specifically because mirror symmetry preserves them; diastereomers lack that mirror relationship, so they behave as genuinely different compounds.',
         wrongFeedback: 'Diastereomers share the same molecular formula (same atoms, same connectivity) — what differs is their 3D arrangement, and because they aren\'t mirror images, that different arrangement translates into different physical properties.'
       },

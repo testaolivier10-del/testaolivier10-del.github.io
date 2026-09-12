@@ -49,6 +49,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -75,6 +77,7 @@
       '<h3>Why acetals matter: protecting groups</h3><p class="step-body">A carbonyl is reactive toward nucleophiles (Nucleophilic Addition lesson), strong reducing agents (LiAlH₄), Grignards, and many other reagents you\'ll want to use elsewhere in a molecule during a multi-step synthesis. Converting it to an acetal temporarily removes that reactivity entirely — acetals are stable to base, to nucleophiles, and to reducing agents, reacting only under aqueous acid. This lets a chemist "protect" a carbonyl, perform unrelated chemistry elsewhere in the molecule, and then "deprotect" (hydrolyze the acetal back to the carbonyl) with dilute aqueous acid once that other chemistry is done — an essential practical strategy anywhere a molecule has more than one reactive functional group.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('acetone-hemiacetal', { caption: 'One OH and one OR on the same carbon. Add a second alcohol under acid and the OH leaves as water — that is the step that turns a hemiacetal into a full acetal.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'A hemiacetal is one alcohol addition away from a carbonyl.',
@@ -145,8 +148,8 @@
         type: 'mcq',
         eyebrow: 'Step 4 · Check Understanding',
         title: 'Why is the oxocarbenium ion so much more stable than an ordinary alkyl carbocation?',
-        options: ['The adjacent oxygen\'s lone pair donates into the empty p orbital by resonance, delocalizing the positive charge onto oxygen', 'Oxygen is negatively charged, which automatically stabilizes anything nearby', 'It isn\'t more stable — it just forms faster'],
-        correctIndex: 0,
+        options: ['Oxygen is negatively charged, which automatically stabilizes anything nearby', 'The adjacent oxygen\'s lone pair donates into the empty p orbital by resonance, delocalizing the positive charge onto oxygen', 'It isn\'t more stable — it just forms faster'],
+        correctIndex: 1,
         correctFeedback: 'Correct — resonance donation from the adjacent oxygen lone pair spreads the positive charge over two atoms instead of concentrating it on carbon alone.',
         wrongFeedback: 'The oxygen here is neutral (not negatively charged) — the stabilization comes specifically from resonance donation of its lone pair into the cation\'s empty p orbital.'
       },
@@ -160,8 +163,8 @@
         type: 'mcq',
         eyebrow: 'Step 6 · Independent Practice',
         title: 'An acetal-protected ketone is treated with LiAlH₄, a strong reducing agent, then with dilute aqueous acid. What happens?',
-        options: ['LiAlH₄ leaves the acetal untouched; the aqueous acid step afterward hydrolyzes it back to the original ketone, unreduced', 'LiAlH₄ reduces the acetal directly to an alcohol', 'The acetal is destroyed immediately on contact with any reducing agent'],
-        correctIndex: 0,
+        options: ['LiAlH₄ reduces the acetal directly to an alcohol', 'The acetal is destroyed immediately on contact with any reducing agent', 'LiAlH₄ leaves the acetal untouched; the aqueous acid step afterward hydrolyzes it back to the original ketone, unreduced'],
+        correctIndex: 2,
         correctFeedback: 'Correct — this is exactly the protecting-group strategy in action: the acetal shields the carbonyl from LiAlH₄, and only the final aqueous acid step reveals the (unreduced) ketone again.',
         wrongFeedback: 'The entire point of an acetal protecting group is that it resists reducing agents like LiAlH₄ — it only reacts back to the carbonyl under aqueous acid.'
       },

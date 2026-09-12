@@ -49,6 +49,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -75,6 +77,7 @@
       '<h3>Oxidation: a ladder, not a single step</h3><p class="step-body">Oxidation state increases by removing C–H bonds and/or adding C–O bonds. A <b>primary alcohol</b> (1°) oxidizes first to an <b>aldehyde</b>, then further to a <b>carboxylic acid</b> — strong oxidants (Na₂Cr₂O₇, KMnO₄, or the Jones reagent CrO₃/H₂SO₄) push all the way to the acid, while a milder, selective oxidant (PCC, pyridinium chlorochromate) stops cleanly at the aldehyde. A <b>secondary alcohol</b> (2°) oxidizes once, to a <b>ketone</b>, and cannot go further (no C–H left on that carbon to remove). A <b>tertiary alcohol</b> (3°) has no H on the carbinol carbon at all, so it <b>cannot be oxidized</b> under these conditions.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('ethanol', { caption: 'Ethanol. As drawn, OH is a terrible leaving group — hydroxide is far too strong a base to leave. Every substitution reaction of an alcohol begins by fixing that, usually by protonating the oxygen first.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Hydroxide is a bad leaving group — so alcohols need activation first.',
@@ -129,8 +132,8 @@
         type: 'mcq',
         eyebrow: 'Step 2 · Guided Practice',
         title: 'Protonating an alcohol\'s OH under acidic conditions converts it into a good leaving group because...',
-        options: ['It becomes neutral water, the conjugate base of H₃O⁺ (pKa ≈ −1.7), an excellent leaving group', 'Protonation makes the C–O bond physically longer', 'Acid always makes any bond easier to break'],
-        correctIndex: 0,
+        options: ['Protonation makes the C–O bond physically longer', 'Acid always makes any bond easier to break', 'It becomes neutral water, the conjugate base of H₃O⁺ (pKa ≈ −1.7), an excellent leaving group'],
+        correctIndex: 2,
         correctFeedback: 'Correct — OH₂⁺ leaves as neutral water, and water is the conjugate base of the very strong acid H₃O⁺, making it an excellent leaving group.',
         wrongFeedback: 'It\'s specifically about what leaves and what its conjugate-acid relationship is — protonation turns OH into OH₂⁺, whose departure product (water) is the conjugate base of a strong acid.'
       },
@@ -159,8 +162,8 @@
         type: 'mcq',
         eyebrow: 'Step 6 · Check Understanding',
         title: 'A tertiary alcohol is treated with Jones reagent (CrO₃/H₂SO₄). What happens?',
-        options: ['Nothing — there\'s no C–H bond on the carbinol carbon to remove', 'It oxidizes cleanly to a ketone', 'It oxidizes all the way to a carboxylic acid'],
-        correctIndex: 0,
+        options: ['It oxidizes cleanly to a ketone', 'Nothing — there\'s no C–H bond on the carbinol carbon to remove', 'It oxidizes all the way to a carboxylic acid'],
+        correctIndex: 1,
         correctFeedback: 'Correct — with all three other substituents on the carbinol carbon being carbon groups, there\'s no hydrogen left to remove, so no oxidation can occur there.',
         wrongFeedback: 'Oxidation of an alcohol at that carbon requires removing a C–H bond from the carbinol carbon — a tertiary alcohol simply doesn\'t have one to give up.'
       },
@@ -168,8 +171,8 @@
         type: 'final',
         eyebrow: 'Challenge',
         title: 'A secondary alcohol is treated with PCC. What product forms, and can it be oxidized further by more PCC?',
-        options: ['A ketone forms, and it cannot be oxidized further — there\'s no remaining C–H at that carbon', 'A carboxylic acid forms directly', 'An aldehyde forms, which further oxidizes to a carboxylic acid'],
-        correctIndex: 0,
+        options: ['A carboxylic acid forms directly', 'An aldehyde forms, which further oxidizes to a carboxylic acid', 'A ketone forms, and it cannot be oxidized further — there\'s no remaining C–H at that carbon'],
+        correctIndex: 2,
         correctFeedback: 'Correct — a secondary alcohol has exactly one C–H at the carbinol carbon, so it oxidizes once to a ketone and stops there permanently; ketones have no further C–H to remove.'
       }
     ]

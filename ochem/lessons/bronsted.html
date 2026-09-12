@@ -44,11 +44,12 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 7</div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,9 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/molecule-editor.js"></script>
+<script src="../assets/arrow-step.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -128,8 +132,8 @@
         type: 'mcq',
         eyebrow: 'Step 2 · Guided Practice',
         title: 'In HCl + NH₃ → NH₄⁺ + Cl⁻, which species is the Brønsted-Lowry acid?',
-        options: ['HCl — it donates a proton', 'NH₃ — it has a lone pair', 'Cl⁻ — it ends up negatively charged'],
-        correctIndex: 0,
+        options: ['NH₃ — it has a lone pair', 'Cl⁻ — it ends up negatively charged', 'HCl — it donates a proton'],
+        correctIndex: 2,
         correctFeedback: 'Correct — HCl gives up its proton, which is the definition of a Brønsted-Lowry acid.',
         wrongFeedback: 'Ask which species loses a hydrogen (as H⁺) going from left to right — that one is the acid.'
       },
@@ -155,11 +159,33 @@
         bodyHtml: '<div class="explain-box">Long before you get to substitution, elimination, or carbonyl chemistry, you\'ll draw proton transfers as setup steps — protonating an alcohol\'s oxygen before it can leave as water in an SN1 reaction, or deprotonating an alpha carbon before an aldol reaction (Module 11). Recognizing "this step is just an acid-base reaction" instantly tells you which curved arrows to draw: base lone pair to H, H–X bond to X.</div>'
       },
       {
+        /* Deprotonation, drawn rather than described. The thing students
+           get wrong is where the electrons go when the proton leaves. */
+        render: function(api){
+          window.OchemArrowStep.mount(api, {
+            eyebrow: 'Draw it',
+            title: 'A base removes the acidic proton from acetic acid. Draw the arrow.',
+            bodyHtml: '<p class="step-body">One arrow, and the question it answers is: when a proton leaves, what happens to the pair of electrons that was holding it on?</p>',
+            molecule: 'acetic-acid',
+            concepts: ['bronsted-identification', 'curved-arrow-direction'],
+            arrows: [{ from: 'bond:o2-h', to: 'o2' }],
+            hint: 'Find the acidic hydrogen, click the bond holding it, then click where its electrons stay.',
+            why: 'A proton leaves bare — as H\u207a, with no electrons — so the O\u2013H bonding pair is left behind on the oxygen. That is what makes the conjugate base negative, and it is the entire content of a Br\u00f8nsted acid-base step.',
+            wrong: {
+              'bond:o2-h>h': 'The electrons do not leave with the hydrogen. A Br\u00f8nsted acid donates a proton — the nucleus alone — and the bonding pair stays behind, which is why the conjugate base ends up with a negative charge.',
+              'o2>bond:o2-h': 'Backwards: that arrow forms the O\u2013H bond rather than breaking it. Here the bond is breaking.',
+              'bond:ca-ha>ca': 'That is an alpha C\u2013H, far above pKa 20 and not the acidic proton. The O\u2013H is the acidic one, because the anion left behind is spread over two oxygens by resonance.',
+              'bond:c-o1>o1': 'The C=O pi bond is not what breaks when an acid is deprotonated. Look for the bond to the departing proton.'
+            }
+          });
+        }
+      },
+      {
         type: 'final',
         eyebrow: 'Challenge',
         title: 'Water reacts with HBr: H₂O + HBr → H₃O⁺ + Br⁻. Which statement is correct?',
-        options: ['Water is the base (proton acceptor); HBr is the acid (proton donor)', 'Water is the acid; HBr is the base', 'Both are acids, since both contain hydrogen'],
-        correctIndex: 0,
+        options: ['Water is the acid; HBr is the base', 'Water is the base (proton acceptor); HBr is the acid (proton donor)', 'Both are acids, since both contain hydrogen'],
+        correctIndex: 1,
         correctFeedback: 'Correct — water\'s lone pair accepts the proton from HBr, making water the base and HBr the acid here. (Water can also act as an acid in other reactions — it\'s amphoteric — but not in this one.)'
       }
     ]

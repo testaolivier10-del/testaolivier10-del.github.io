@@ -44,11 +44,12 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 7</div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,9 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
+<script src="../assets/molecule-editor.js"></script>
+<script src="../assets/arrow-step.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -125,8 +129,8 @@
         type: 'mcq',
         eyebrow: 'Step 2 · Guided Practice',
         title: 'A curved arrow\'s tail must start from...',
-        options: ['A lone pair or a bond — a real source of electrons', 'Any atom in the molecule, electrons or not', 'A positive charge, since that\'s what needs electrons'],
-        correctIndex: 0,
+        options: ['Any atom in the molecule, electrons or not', 'A lone pair or a bond — a real source of electrons', 'A positive charge, since that\'s what needs electrons'],
+        correctIndex: 1,
         correctFeedback: 'Correct — no electrons there, no valid tail there.',
         wrongFeedback: 'Ask yourself: are there actually electrons sitting at that spot? If not, the tail can\'t start there.'
       },
@@ -134,8 +138,8 @@
         type: 'mcq',
         eyebrow: 'Step 3 · Independent Practice',
         title: 'You see an arrow drawn starting from a positive charge and pointing into a nearby bond. What\'s wrong with it?',
-        options: ['Positive charges have no electrons to give — the tail can never start there', 'The head should point away from the bond instead', 'Nothing — this is a normal, valid arrow'],
-        correctIndex: 0,
+        options: ['The head should point away from the bond instead', 'Nothing — this is a normal, valid arrow', 'Positive charges have no electrons to give — the tail can never start there'],
+        correctIndex: 2,
         correctFeedback: 'Correct. A positively charged atom is electron-deficient — it\'s a destination for arrows (a head), never a source (a tail).',
         wrongFeedback: 'Think about what a positive charge actually means: a deficiency of electrons, not a supply of them.'
       },
@@ -150,6 +154,28 @@
         eyebrow: 'Why it matters',
         title: 'This is the language of every mechanism from here forward.',
         bodyHtml: '<div class="explain-box">Every SN1, SN2, E1, E2, addition, and carbonyl mechanism you\'ll draw for the rest of the course is built from these same two rules: <b>tail on the electrons, head on the destination</b>. Get comfortable with it now and every later mechanism gets easier, not harder.</div>'
+      },
+      {
+        /* The single most common arrow in the whole course: a carbonyl pi
+           bond collapsing onto its oxygen. Worth drawing once rather than
+           only reading about, in the lesson that is about drawing arrows. */
+        render: function(api){
+          window.OchemArrowStep.mount(api, {
+            eyebrow: 'Draw it',
+            title: 'A nucleophile is about to attack this carbonyl carbon. Draw what the C=O does.',
+            bodyHtml: '<p class="step-body">One arrow. The carbon cannot hold five bonds, so something has to give way — and the electrons have somewhere much better to go.</p>',
+            molecule: 'acetone',
+            concepts: ['curved-arrow-direction', 'carbonyl-electrophilicity'],
+            arrows: [{ from: 'bond:c-o', to: 'o' }],
+            hint: 'Click the C=O bond, then click where those pi electrons end up.',
+            why: 'The pi electrons move off the bond and onto oxygen, which is electronegative and perfectly happy to carry the negative charge as an alkoxide. That frees the carbon to accept a bond from the incoming nucleophile while staying at four bonds throughout.',
+            wrong: {
+              'bond:c-o>c': 'Backwards. Pushing the pi electrons onto carbon would give it five bonds and put a negative charge on the atom least able to hold one. They go to the electronegative atom.',
+              'o>bond:c-o': 'That is the resonance direction, not the reaction direction — it would make a triple bond to oxygen. Here the pi bond is breaking, so the electrons move out of it.',
+              'o>c': 'Oxygen already has a bond to that carbon. An arrow from a lone pair to the atom itself would mean a second sigma bond, which is not what a pi bond becoming a lone pair looks like.'
+            }
+          });
+        }
       },
       {
         type: 'final',

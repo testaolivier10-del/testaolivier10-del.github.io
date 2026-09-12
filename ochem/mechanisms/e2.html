@@ -106,6 +106,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -354,7 +355,7 @@
       '<h2 class="step-title">What forms?</h2>' +
       '<p class="step-body">All three arrows have fired.</p>' +
       '<div class="choice-row">' +
-        ['An alkene (but-2-ene)', 'A new alcohol', 'A carbocation intermediate', 'No reaction'].map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
+        window.OchemShuffle.list(['An alkene (but-2-ene)', 'A new alcohol', 'A carbocation intermediate', 'No reaction'], 'e2:product').map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
       '</div>' +
       feedbackHtml('fb') +
       nextButton('Continue', false);
@@ -398,7 +399,7 @@
       '<div class="explain-box">This carbon had a choice of beta-hydrogens to remove, and removing this one gave the <b>more substituted</b> alkene — the <b>Zaitsev</b> (major) product, favored with small bases like ethoxide. A bulky base can’t easily reach a crowded hydrogen, so it grabs a less hindered one instead.</div>' +
       '<p class="step-body">Which base would favor the <b>less</b> substituted "Hofmann" alkene instead?</p>' +
       '<div class="choice-row">' +
-        ['A bulky base, like tert-butoxide', 'A small base, like hydroxide', 'It doesn’t depend on the base'].map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
+        window.OchemShuffle.list(['A bulky base, like tert-butoxide', 'A small base, like hydroxide', 'It doesn’t depend on the base'], 'e2:base').map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
       '</div>' +
       feedbackHtml('fb') +
       '<div id="doneBox"></div>';

@@ -49,6 +49,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -75,6 +77,7 @@
       '<h3>The fingerprint region</h3><p class="step-body">Below about 1500 cm⁻¹, the spectrum becomes a dense, hard-to-interpret tangle of overlapping single-bond stretches and bending vibrations — the <b>fingerprint region</b>. While too complex to assign bond-by-bond, this region is unique to each specific compound (like an actual fingerprint), so it\'s extremely useful for confirming an exact match against a known reference spectrum, even when it can\'t be interpreted from first principles alone.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('acetic-acid', { caption: 'Acetic acid shows the two most recognisable bands at once: a broad O–H stretch above 3000 cm⁻¹ and a sharp, strong C=O near 1710 cm⁻¹.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'A bond is like a tiny spring — and IR light matches its natural vibration frequency.',
@@ -145,8 +148,8 @@
         type: 'mcq',
         eyebrow: 'Step 4 · Check Understanding',
         title: 'Why does an amide\'s C=O stretch appear at a lower wavenumber than an ester\'s C=O stretch?',
-        options: ['Nitrogen\'s stronger resonance donation into the carbonyl (from the Amine Structure lesson) weakens the C=O bond more than oxygen\'s donation does, and a weaker bond vibrates at lower frequency', 'Amides simply contain more atoms than esters', 'Nitrogen is heavier than oxygen, lowering the frequency'],
-        correctIndex: 0,
+        options: ['Amides simply contain more atoms than esters', 'Nitrogen\'s stronger resonance donation into the carbonyl (from the Amine Structure lesson) weakens the C=O bond more than oxygen\'s donation does, and a weaker bond vibrates at lower frequency', 'Nitrogen is heavier than oxygen, lowering the frequency'],
+        correctIndex: 1,
         correctFeedback: 'Correct — this ties directly back to the resonance-donation strength ranking from Module 10 and 12: more donation into the carbonyl means a weaker C=O and thus a lower IR stretching frequency.',
         wrongFeedback: 'Nitrogen is actually lighter than oxygen, and atom count isn\'t the relevant factor here — the key is how much each heteroatom\'s resonance donation weakens the C=O bond itself.'
       },
@@ -160,8 +163,8 @@
         type: 'mcq',
         eyebrow: 'Step 6 · Independent Practice',
         title: 'An unknown compound\'s IR spectrum shows a strong, sharp peak at 1715 cm⁻¹ and no broad absorption anywhere between 2500-3300 cm⁻¹ or 3200-3550 cm⁻¹. What functional group is most consistent with this data?',
-        options: ['A ketone or aldehyde (carbonyl present, but no O–H of a carboxylic acid or alcohol)', 'A carboxylic acid', 'An alcohol'],
-        correctIndex: 0,
+        options: ['A carboxylic acid', 'An alcohol', 'A ketone or aldehyde (carbonyl present, but no O–H of a carboxylic acid or alcohol)'],
+        correctIndex: 2,
         correctFeedback: 'Correct — the sharp 1715 cm⁻¹ peak matches a ketone/aldehyde carbonyl, and the absence of any O–H absorption rules out both alcohols and carboxylic acids.',
         wrongFeedback: 'A carboxylic acid or alcohol would show a broad O–H absorption in addition to (or instead of) this sharp carbonyl peak — the absence of that broad signal is the key piece of evidence here.'
       },

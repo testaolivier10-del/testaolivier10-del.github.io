@@ -54,6 +54,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -141,18 +142,18 @@
       "title": "Each step so far is reversible. What makes the Claisen go to completion?",
       "bodyHtml": "<p class=\"step-body\">Look at the product you just made and ask what the base does to it.</p>",
       "options": [
-        "The beta-ketoester's alpha hydrogen sits between two carbonyls at about pKa 11, so the base deprotonates it irreversibly and pulls the equilibrium across",
         "The alkoxide leaving group escapes as a gas",
+        "The beta-ketoester's alpha hydrogen sits between two carbonyls at about pKa 11, so the base deprotonates it irreversibly and pulls the equilibrium across",
         "The product precipitates out of solution"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "concepts": [
         "claisen-connectivity",
         "alpha-acidity"
       ],
       "why": "That doubly-stabilized enolate is the thermodynamic sink. It is also why a full equivalent of base is needed rather than a catalytic amount, and why an acidic workup is required at the end to protonate the product back.",
       "wrong": {
-        "1": "Alkoxides stay in solution — nothing escapes. Compare this with SOCl₂ reactions, where gases genuinely do drive things forward.",
+        "0": "Alkoxides stay in solution — nothing escapes. Compare this with SOCl₂ reactions, where gases genuinely do drive things forward.",
         "2": "Solubility is not the driver. The reaction is pulled by an acid–base step, not by a phase change."
       },
       "nextLabel": "Last one"
@@ -163,19 +164,19 @@
       "title": "An ester with only ONE alpha hydrogen fails to give a Claisen product in decent yield. Why?",
       "bodyHtml": "<p class=\"step-body\">Follow the driving force you just identified through to that case.</p>",
       "options": [
-        "After the condensation there is no alpha hydrogen left between the two carbonyls, so the deprotonation that drives the reaction cannot happen and everything stays reversible",
         "One alpha hydrogen is not acidic enough to be removed at all",
-        "The product is too crowded to form"
+        "The product is too crowded to form",
+        "After the condensation there is no alpha hydrogen left between the two carbonyls, so the deprotonation that drives the reaction cannot happen and everything stays reversible"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "concepts": [
         "claisen-connectivity",
         "alpha-acidity"
       ],
       "why": "The single alpha hydrogen is used up making the enolate, so the beta-ketoester product has none left in that position. Without the final irreversible deprotonation there is nothing to pull the equilibrium over, and the reaction sits back at starting material.",
       "wrong": {
-        "1": "One alpha hydrogen is just as acidic as any other — the enolate forms fine. The problem appears later, at the driving-force step.",
-        "2": "Sterics are not the obstacle. The mechanism runs; it simply does not stay run without the final deprotonation."
+        "0": "One alpha hydrogen is just as acidic as any other — the enolate forms fine. The problem appears later, at the driving-force step.",
+        "1": "Sterics are not the obstacle. The mechanism runs; it simply does not stay run without the final deprotonation."
       }
     }
   ]

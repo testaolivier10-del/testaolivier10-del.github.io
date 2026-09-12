@@ -44,11 +44,12 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 7</div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/stereo-drill.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -74,6 +76,27 @@
       '<g class="atom" data-key="right"><circle cx="198" cy="110" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="198" y="115" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="10">OH</text></g>' +
     '</svg></div>';
   }
+
+  /* The same glyceraldehyde the lesson already draws above, now as a
+     graded assignment rather than a picture. Its lowest-priority group
+     (H) is on a horizontal arm, which by the projection's own convention
+     points at the viewer — so the answer flips, and reading the rotation
+     straight off gives the wrong configuration. That is the mistake this
+     lesson describes in prose and never made the student make. */
+  var FISCHER_DRILL = {
+    layout: 'fischer',
+    alt: 'Glyceraldehyde as a Fischer projection: CHO at the top, CH2OH at the bottom, H on the left, OH on the right',
+    intro: 'The same projection from the start of the lesson. Now assign it.',
+    caption: 'A Fischer projection. Nothing is drawn as a wedge — the notation carries depth by convention instead.',
+    priorityWhy: 'OH first, since O beats C. The two carbons then tie, and CHO wins one bond out: duplicating its double bond gives it (O,O,H) against CH₂OH\'s (O,H,H). H is last.',
+    closing: 'This is why the notes warn about horizontal positions: the vertical chain is already oriented the way the rule wants, but a lowest-priority group on a horizontal arm is pointing straight at you.',
+    subs: [
+      { label: 'OH', priority: 1, angle: 0 },
+      { label: 'CHO', priority: 2, angle: 90 },
+      { label: 'CH₂OH', priority: 3, angle: 270 },
+      { label: 'H', priority: 4, angle: 180 }
+    ]
+  };
 
   window.OchemLessonEngine.start({
     topicId: 'fischer',
@@ -132,8 +155,8 @@
         type: 'mcq',
         eyebrow: 'Step 2 · Guided Practice',
         title: 'In a Fischer projection, which bonds point away from the viewer?',
-        options: ['Vertical bonds', 'Horizontal bonds', 'Neither — all bonds are in the plane of the page'],
-        correctIndex: 0,
+        options: ['Horizontal bonds', 'Neither — all bonds are in the plane of the page', 'Vertical bonds'],
+        correctIndex: 2,
         correctFeedback: 'Correct — vertical lines represent bonds going into the page, away from you; horizontal lines come toward you.',
         wrongFeedback: 'It\'s the opposite — horizontal bonds point toward the viewer; vertical bonds point away.'
       },
@@ -153,6 +176,15 @@
         bodyHtml: '<p class="step-body">Since one swap of two groups inverts a Fischer projection\'s stereochemistry, it follows that <b>two</b> swaps restore it — the second swap undoes the inversion from the first. More generally: an <b>odd</b> number of single swaps inverts the molecule into its enantiomer, and an <b>even</b> number of swaps returns you to the original stereochemistry, no matter which specific groups you swapped each time.</p><p class="step-body" style="margin-bottom:0;">This is a genuinely useful trick when you\'re handed an unfamiliar-looking Fischer projection and need to check whether it matches a known structure — count the swaps needed to convert one into the other, and the parity (odd/even) tells you immediately whether they\'re the same compound or enantiomers.</p>'
       },
       {
+        /* Reading a Fischer projection and assigning R/S from one are
+           different skills, and only the first was practised here. The
+           second is the one that appears on exams, and the "horizontal
+           toward you" convention it depends on is exactly what makes
+           students get it backwards. Same drill as the R/S lesson, in
+           Fischer notation. */
+        render: function(api){ window.OchemStereoDrill.mount(api, FISCHER_DRILL); }
+      },
+      {
         type: 'explain',
         eyebrow: 'Why it matters',
         title: 'This is the format sugars are almost always drawn in.',
@@ -162,8 +194,8 @@
         type: 'final',
         eyebrow: 'Challenge',
         title: 'You need to compare two Fischer projections and determine if they represent the same molecule or enantiomers. You find it takes exactly 3 single-group swaps to convert one into the other. What\'s the relationship?',
-        options: ['Enantiomers — an odd number of swaps inverts the stereochemistry', 'The same molecule — any number of swaps eventually returns the original', 'Diastereomers — 3 swaps always means partial inversion'],
-        correctIndex: 0,
+        options: ['The same molecule — any number of swaps eventually returns the original', 'Enantiomers — an odd number of swaps inverts the stereochemistry', 'Diastereomers — 3 swaps always means partial inversion'],
+        correctIndex: 1,
         correctFeedback: 'Correct — 3 is odd, and each individual swap inverts the configuration, so an odd total number of swaps leaves the molecule as the enantiomer of where it started.'
       }
     ]

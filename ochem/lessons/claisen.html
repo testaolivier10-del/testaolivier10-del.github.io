@@ -49,6 +49,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -75,6 +77,7 @@
       '<h3>Crossed and intramolecular Claisen (Dieckmann) reactions</h3><p class="step-body">Just like the aldol reaction, a crossed Claisen between two different esters needs the same kind of selectivity strategy (one ester with no alpha hydrogens, or careful stoichiometric control) to avoid a statistical mixture. When both ester groups are part of the <b>same molecule</b> (a diester), an intramolecular Claisen — called a <b>Dieckmann condensation</b> — can form a ring instead, and is especially favorable when the resulting ring size is five or six members (the same favorable ring sizes seen in the Cyclohexanes lesson\'s strain-energy trend).</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('methyl-acetate', { caption: 'Methyl acetate. Two of these condense in a Claisen — one supplies the enolate, the other supplies the carbonyl — and the methoxide that leaves at the end is what makes this a substitution rather than an aldol.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Same enolate nucleophile, but now the electrophile is an ester.',
@@ -145,8 +148,8 @@
         type: 'mcq',
         eyebrow: 'Step 4 · Check Understanding',
         title: 'Why is the beta-ketoester\'s alpha hydrogen (pKa ≈ 11) so much more acidic than an ordinary ketone\'s alpha hydrogen (pKa ≈ 20)?',
-        options: ['Its enolate is stabilized by resonance into two carbonyls simultaneously, instead of just one', 'Esters are inherently more acidic than ketones at every position', 'The extra oxygen simply adds mass, which increases acidity'],
-        correctIndex: 0,
+        options: ['Esters are inherently more acidic than ketones at every position', 'Its enolate is stabilized by resonance into two carbonyls simultaneously, instead of just one', 'The extra oxygen simply adds mass, which increases acidity'],
+        correctIndex: 1,
         correctFeedback: 'Correct — doubling the number of carbonyls the enolate can delocalize into roughly doubles the resonance stabilization, which is exactly why this proton is so much more acidic.',
         wrongFeedback: 'It isn\'t a general property of esters or simply about mass — it\'s specifically about how many carbonyls the resulting enolate can delocalize its negative charge into.'
       },
@@ -160,8 +163,8 @@
         type: 'mcq',
         eyebrow: 'Step 6 · Independent Practice',
         title: 'A crossed Claisen condensation is attempted between two different esters, both bearing alpha hydrogens, with no special precautions taken. What outcome is most likely?',
-        options: ['A statistical mixture of multiple beta-ketoester products, since either ester could form the enolate and either could act as the electrophile', 'A single, perfectly clean product every time', 'No reaction occurs, since crossed Claisen reactions are impossible'],
-        correctIndex: 0,
+        options: ['A single, perfectly clean product every time', 'No reaction occurs, since crossed Claisen reactions are impossible', 'A statistical mixture of multiple beta-ketoester products, since either ester could form the enolate and either could act as the electrophile'],
+        correctIndex: 2,
         correctFeedback: 'Correct — exactly like the crossed aldol reaction, having two components both capable of forming an enolate (and both able to act as electrophile) leads to an unselective mixture unless a control strategy (no alpha hydrogens on one partner, or careful base/temperature control) is used.',
         wrongFeedback: 'Crossed Claisen reactions do occur, but without a selectivity strategy they give a mixture of products, not one single clean outcome.'
       },

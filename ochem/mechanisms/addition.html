@@ -54,6 +54,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -107,19 +108,19 @@
       "title": "Which carbocation actually forms?",
       "bodyHtml": "<p class=\"step-body\">The proton could in principle have gone to either alkene carbon, giving two different carbocations. Only one of them matters.</p>",
       "options": [
-        "The secondary cation — the proton adds to the terminal CH₂, leaving the charge on the middle carbon",
         "The primary cation — the proton adds to the middle carbon, leaving the charge on the terminal CH₂",
-        "Both form in equal amounts, since both are possible"
+        "Both form in equal amounts, since both are possible",
+        "The secondary cation — the proton adds to the terminal CH₂, leaving the charge on the middle carbon"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "concepts": [
         "carbocation-stability",
         "markovnikov-regiochem"
       ],
       "why": "Secondary beats primary by a wide margin — two alkyl groups donate electron density into the empty p orbital instead of one. The transition state leading to it is lower, so that is the path taken.",
       "wrong": {
-        "1": "That would put the positive charge on a primary carbon, which is far less stable. The two alkyl groups on the middle carbon are exactly what stabilize the charge there.",
-        "2": "They are not equally accessible. The difference between a secondary and a primary carbocation is worth tens of kJ/mol, which is more than enough to make one pathway dominate completely."
+        "0": "That would put the positive charge on a primary carbon, which is far less stable. The two alkyl groups on the middle carbon are exactly what stabilize the charge there.",
+        "1": "They are not equally accessible. The difference between a secondary and a primary carbocation is worth tens of kJ/mol, which is more than enough to make one pathway dominate completely."
       },
       "nextLabel": "Finish the mechanism"
     },
@@ -157,18 +158,18 @@
       "title": "HBr is added to 3-methyl-1-butene. The major product has the bromine on C2 — but a significant amount has it on C3 instead. Why?",
       "bodyHtml": "<p class=\"step-body\">No hints. Think about what the first-formed cation could do before bromide reaches it.</p>",
       "options": [
-        "The secondary cation at C2 undergoes a hydride shift to the neighbouring tertiary position, and bromide captures whichever cation it meets",
         "Bromide attacks C3 directly because it is less hindered",
+        "The secondary cation at C2 undergoes a hydride shift to the neighbouring tertiary position, and bromide captures whichever cation it meets",
         "The reaction switched to an anti-Markovnikov radical pathway partway through"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "concepts": [
         "carbocation-rearrangement",
         "carbocation-stability"
       ],
       "why": "A hydride on the adjacent carbon migrates with its bonding pair, converting the secondary cation into a more stable tertiary one. Rearrangement is the classic tell that a mechanism goes through a free carbocation — it is impossible in a concerted reaction, which is exactly why hydroboration never shows it.",
       "wrong": {
-        "1": "Sterics do not override carbocation stability here, and in any case bromide attacks the carbon carrying the positive charge — it does not get to choose.",
+        "0": "Sterics do not override carbocation stability here, and in any case bromide attacks the carbon carrying the positive charge — it does not get to choose.",
         "2": "Radical (anti-Markovnikov) addition needs peroxides present, and it would put the bromine on the LESS substituted carbon, not on a more substituted one."
       }
     }

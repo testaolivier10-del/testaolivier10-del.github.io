@@ -49,6 +49,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -75,6 +77,7 @@
       '<h3>Acid-catalyzed hydration</h3><p class="step-body">Water adds across the double bond using H₃O⁺ (or H₂SO₄/H₂O) as catalyst: the pi bond attacks a proton from H₃O⁺, forming a carbocation (Markovnikov selectivity again); water then attacks the carbocation as the nucleophile; a final deprotonation (by another water molecule) regenerates the catalyst and gives the neutral alcohol. This is the classic bridge to Module 8 — it\'s the most direct lab synthesis of an alcohol from an alkene, and its carbocation intermediate means it shares hydrohalogenation\'s rearrangement risk.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('propene-hbr', { caption: 'The pi bond is the nucleophile here, not the electrophile — it attacks H–Br, and which carbon keeps the hydrogen decides the product.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Electrophilic addition: the alkene attacks first.',
@@ -130,8 +133,8 @@
         type: 'mcq',
         eyebrow: 'Step 2 · Guided Practice',
         title: 'In hydrohalogenation (HX addition), what does the alkene\'s pi bond attack first?',
-        options: ['The hydrogen of H–X', 'The halogen of H–X', 'Nothing — the halide ion attacks first'],
-        correctIndex: 0,
+        options: ['The halogen of H–X', 'Nothing — the halide ion attacks first', 'The hydrogen of H–X'],
+        correctIndex: 2,
         correctFeedback: 'Correct — the pi bond attacks the electrophilic H, breaking the H–X bond heterolytically and forming a carbocation while releasing X⁻.',
         wrongFeedback: 'The hydrogen is the electrophilic end of H–X (it\'s the atom that can accept the pi bond\'s electrons and leave as part of a departing X⁻).'
       },
@@ -166,8 +169,8 @@
         type: 'final',
         eyebrow: 'Challenge',
         title: 'An alkene is treated with Br₂. A chemist isolates the product and finds the two bromines were added to exactly opposite faces of the original double bond, with no exceptions. What does this tell you about the mechanism?',
-        options: ['It went through a bridged halonium ion that blocked one face, forcing anti addition', 'It went through a free, planar carbocation, same as HBr addition', 'Br₂ additions are always random and this result is a coincidence'],
-        correctIndex: 0,
+        options: ['It went through a free, planar carbocation, same as HBr addition', 'It went through a bridged halonium ion that blocked one face, forcing anti addition', 'Br₂ additions are always random and this result is a coincidence'],
+        correctIndex: 1,
         correctFeedback: 'Correct — perfectly consistent anti addition, with no exceptions, is the signature of a bridged intermediate blocking one face. A free carbocation (as in HBr addition) would allow attack from both faces and a mix of products.'
       }
     ]

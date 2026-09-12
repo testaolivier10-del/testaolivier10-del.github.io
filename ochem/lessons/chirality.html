@@ -49,6 +49,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -75,6 +77,7 @@
       '<h3>Why this matters biologically</h3><p class="step-body">Almost all of biology is built from chiral molecules — amino acids, sugars, DNA\'s helix. A chiral biological receptor can tell two mirror-image molecules apart, which is why one enantiomer of a drug can be therapeutic while its mirror image is inactive or even harmful (thalidomide is the most famous historical example). You\'ll see exactly how enantiomers differ in their biological interactions in an upcoming lesson.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('bromochlorofluoromethane', { caption: 'Four different groups on one carbon. Its mirror image cannot be rotated onto it, which is the whole definition of chiral.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Chiral means "not superimposable on its own mirror image."',
@@ -138,8 +141,8 @@
         type: 'mcq',
         eyebrow: 'Step 3 · Independent Practice',
         title: 'A quick way to check whether a molecule is achiral is to look for...',
-        options: ['An internal plane of symmetry that divides it into mirror-image halves', 'An even number of carbon atoms', 'A double bond anywhere in the structure'],
-        correctIndex: 0,
+        options: ['An even number of carbon atoms', 'An internal plane of symmetry that divides it into mirror-image halves', 'A double bond anywhere in the structure'],
+        correctIndex: 1,
         correctFeedback: 'Correct. If a molecule has an internal mirror plane, it\'s achiral — no plane of symmetry anywhere means it\'s chiral.',
         wrongFeedback: 'Carbon count and double bonds don\'t determine chirality by themselves — the plane-of-symmetry test is the reliable shortcut.'
       },
@@ -159,8 +162,8 @@
         type: 'final',
         eyebrow: 'Challenge',
         title: 'A molecule has an internal plane of symmetry splitting it into two identical mirror-image halves. Is it chiral?',
-        options: ['No — a plane of symmetry means the molecule is superimposable on its own mirror image (achiral)', 'Yes — any molecule with two identical halves is automatically chiral', 'It depends on the number of carbon atoms'],
-        correctIndex: 0,
+        options: ['Yes — any molecule with two identical halves is automatically chiral', 'It depends on the number of carbon atoms', 'No — a plane of symmetry means the molecule is superimposable on its own mirror image (achiral)'],
+        correctIndex: 2,
         correctFeedback: 'Correct — an internal plane of symmetry is the fast, reliable signal that a molecule is achiral: it can be superimposed on its own mirror image.'
       }
     ]

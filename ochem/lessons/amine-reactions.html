@@ -49,6 +49,7 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<script src="../assets/shuffle-options.js"></script>
 <script src="../assets/step-back.js"></script>
 <script src="../assets/curriculum.js"></script>
 <script src="../assets/concepts.js"></script>
@@ -60,6 +61,7 @@
 </script>
 <script src="../assets/ochem-nav.js"></script>
 <script src="../assets/periodic-table.js"></script>
+<script src="../assets/molecules.js"></script>
 <script src="../assets/lesson-engine.js"></script>
 <script>
 (function(){
@@ -75,6 +77,7 @@
       '<h3>Diazonium salts and the Sandmeyer-type substitutions (a brief preview)</h3><p class="step-body">Primary aromatic amines react with nitrous acid (HNO₂) to form <b>diazonium salts</b> (ArN₂⁺) — an excellent leaving group (N₂ gas) that opens the door to substituting a wide range of other groups (halides, CN, OH) onto the aromatic ring in place of the original amine, a family of reactions collectively called Sandmeyer reactions. This is a direct preview of how amine chemistry connects into Module 13 (Aromatic Chemistry): the amine group here is really acting as a synthetic placeholder, installed and later swapped out for whatever the target molecule actually needs at that ring position.</p>',
     steps: [
       {
+        diagramHtml: window.OchemMolecules.svg('ethylamine', { caption: 'Ethylamine. The nitrogen lone pair does all the work: it is what attacks an alkyl halide, what adds to a carbonyl, and what gets acylated.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Direct SN2 alkylation of an amine is hard to stop at one step.',
@@ -132,8 +135,8 @@
         type: 'mcq',
         eyebrow: 'Step 2 · Guided Practice',
         title: 'Why does acylation (with an acid chloride) avoid the over-reaction problem that plagues direct SN2 alkylation of amines?',
-        options: ['The amide product\'s nitrogen lone pair is delocalized by resonance into the new carbonyl, making it far less nucleophilic toward a second equivalent of acylating agent', 'Acid chlorides are simply too unreactive to react with amines at all', 'Amides spontaneously decompose back to amines, resetting the reaction'],
-        correctIndex: 0,
+        options: ['Acid chlorides are simply too unreactive to react with amines at all', 'Amides spontaneously decompose back to amines, resetting the reaction', 'The amide product\'s nitrogen lone pair is delocalized by resonance into the new carbonyl, making it far less nucleophilic toward a second equivalent of acylating agent'],
+        correctIndex: 2,
         correctFeedback: 'Correct — this is the Amine Structure lesson\'s basicity-killing resonance effect, now doing double duty: it also kills nucleophilicity, self-terminating the reaction after one acylation.',
         wrongFeedback: 'Acid chlorides are actually highly reactive toward amines — the self-termination comes from what happens to the nitrogen\'s lone pair in the amide product, not from unreactivity of the acylating agent.'
       },
@@ -162,8 +165,8 @@
         type: 'mcq',
         eyebrow: 'Step 6 · Independent Practice',
         title: 'What makes a diazonium salt (ArN₂⁺) such a useful synthetic intermediate?',
-        options: ['N₂ gas is an outstanding leaving group, allowing many other substituents to be installed on the ring in its place', 'Diazonium salts are completely unreactive and stable indefinitely', 'They convert aromatic rings into aliphatic rings'],
-        correctIndex: 0,
+        options: ['Diazonium salts are completely unreactive and stable indefinitely', 'N₂ gas is an outstanding leaving group, allowing many other substituents to be installed on the ring in its place', 'They convert aromatic rings into aliphatic rings'],
+        correctIndex: 1,
         correctFeedback: 'Correct — an exceptionally good, gaseous leaving group is exactly what opens the door to substituting in halides, CN, OH, and other groups at that ring position.',
         wrongFeedback: 'Diazonium salts are actually quite reactive (often used promptly after formation) — their usefulness comes specifically from how good a leaving group N₂ makes.'
       },
@@ -171,8 +174,8 @@
         type: 'final',
         eyebrow: 'Challenge',
         title: 'A chemist wants to convert a primary amine into a specific, single secondary amine (not a mixture) using an aldehyde. Which strategy should they use?',
-        options: ['Reductive amination — condense the amine with the aldehyde to form an imine, then reduce it with NaBH₃CN or H₂/catalyst', 'Direct SN2 alkylation with the aldehyde', 'Treat the amine with excess aldehyde and hope for the best'],
-        correctIndex: 0,
+        options: ['Direct SN2 alkylation with the aldehyde', 'Treat the amine with excess aldehyde and hope for the best', 'Reductive amination — condense the amine with the aldehyde to form an imine, then reduce it with NaBH₃CN or H₂/catalyst'],
+        correctIndex: 2,
         correctFeedback: 'Correct — reductive amination is precisely the controlled method designed to build a specific alkylamine without the over-substitution problem that plagues direct alkylation (and aldehydes aren\'t even alkylating agents for SN2 in the first place).'
       }
     ]
