@@ -574,20 +574,6 @@
   padding:5px 12px;border-radius:var(--radius-pill);
 }
 
-/* Resume strip on the course home page (assets/game-panel.js). */
-.home-strip{
-  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
-  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
-  padding:16px 20px;box-shadow:var(--lift-sm);
-}
-.home-strip-main{flex:1 1 220px;min-width:0;}
-.home-strip-title{font:900 16px var(--font-ui);margin:0;}
-.home-strip-sub{font:700 13px var(--font-ui);color:var(--muted);margin:3px 0 0;}
-.game-ring.sm{
-  width:44px;height:44px;font-size:15px;background:var(--navy);color:var(--on-accent);
-  border-color:transparent;
-}
-
 /* ---- Stereochemistry drill (assets/stereo-drill.js) -------------------
    Wedge-dash R/S assignment. The drawing itself is plain SVG inside the
    shared .scene box; these rules only cover the priority numbers the

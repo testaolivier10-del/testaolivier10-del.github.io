@@ -138,40 +138,9 @@
     }).join(''));
   }
 
-  /* ---- compact strip for the course home page ---------------------------
-     Only rendered once there is something to resume, so a first-time visitor
-     meets the pitch rather than an empty scoreboard. */
-  function renderHome(){
-    var el = document.getElementById('gameHome');
-    if(!el) return;
-    var info = HP.levelInfo('ochem');
-    var mine = info.subjects.ochem || 0;
-    var debt = XP.reviewDebt();
-    var q = XP.quest();
-    if(!mine && !debt.count) return;
-
-    var done = Math.min(q.done, q.target);
-    var next = debt.count
-      ? { href: base + 'review.html', label: 'Review ' + plural(debt.count, 'due concept') + ' \u2192' }
-      : { href: base + 'practice.html', label: 'Practice something new \u2192' };
-
-    el.innerHTML =
-      '<div class="home-strip">' +
-        '<span class="game-ring sm">L' + info.level + '</span>' +
-        '<div class="home-strip-main">' +
-          '<p class="home-strip-title">' + esc(info.title) + '</p>' +
-          '<p class="home-strip-sub">' + mine + ' XP here &middot; Daily Rounds ' + done + '/' + q.target +
-            (debt.count ? ' &middot; ' + plural(debt.count, 'concept') + ' due' : ' &middot; nothing overdue') + '</p>' +
-        '</div>' +
-        '<a class="btn-press" href="' + next.href + '">' + next.label + '</a>' +
-      '</div>';
-    el.hidden = false;
-  }
-
   renderLevel();
   renderRounds();
   renderDebt();
   renderConceptBadges();
   renderAchievements();
-  renderHome();
 })();
