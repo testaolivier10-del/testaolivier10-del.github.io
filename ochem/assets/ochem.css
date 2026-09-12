@@ -629,6 +629,7 @@
   font:700 13px var(--font-ui);
 }
 .tb-filter:focus{outline:none;border-color:var(--accent);}
+.tb-filter-hint{font:700 11px var(--font-ui);color:var(--muted);margin:-8px 0 0;line-height:1.4;}
 .tb-contents{overflow-y:auto;overscroll-behavior:contain;flex:1 1 auto;min-height:0;margin-right:-8px;padding-right:8px;-webkit-overflow-scrolling:touch;}
 .tb-toc-empty{font:700 13px var(--font-ui);color:var(--muted);}
 
@@ -663,6 +664,56 @@
 .tb-toc-topic.read .tb-toc-tick::after{
   content:"";display:block;width:4px;height:7px;margin:0 auto;
   border:solid var(--on-accent-fill);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px);
+}
+
+/* --- search results, in place of the chapter --- */
+.tb-results{padding:26px 0 60px;}
+.tb-results-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  border-bottom:var(--bw) solid var(--line);padding-bottom:14px;margin-bottom:6px;
+}
+.tb-results-count{font:800 14px var(--font-ui);color:var(--muted);margin:0;}
+.tb-results-count b{color:var(--ink);}
+.tb-results-close{
+  border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;
+  padding:5px 13px;border-radius:var(--radius-pill);font:800 12px var(--font-ui);white-space:nowrap;
+}
+.tb-results-close:hover{border-color:var(--accent);color:var(--accent);}
+.tb-results-status{font:700 13.5px var(--font-ui);color:var(--muted);margin:16px 0 0;}
+
+.tb-result{padding:18px 0 14px;border-bottom:var(--bw) solid var(--line);}
+.tb-result-head{
+  display:flex;flex-direction:column;gap:2px;width:100%;text-align:left;
+  background:none;border:0;padding:0 0 8px;cursor:pointer;
+}
+.tb-result-chapter{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+.tb-result-title{font:900 18px var(--font-ui);color:var(--ink);letter-spacing:-.01em;}
+.tb-result-head:hover .tb-result-title{color:var(--accent);}
+.tb-result-hit{
+  display:flex;flex-direction:column;gap:3px;width:100%;text-align:left;cursor:pointer;
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:12px;
+  padding:11px 14px;margin-top:8px;
+}
+.tb-result-hit:hover{border-color:var(--accent);background:var(--hover-tint);}
+.tb-result-heading{font:900 11.5px var(--font-ui);color:var(--muted);}
+.tb-result-snippet{font:600 14px/1.6 var(--font-ui);color:var(--ink);}
+.tb-result-snippet mark,.tb-hit-mark{
+  background:var(--tint-accent);color:var(--accent-text);
+  border-radius:4px;padding:0 2px;font-weight:900;
+}
+
+/* The passage a result pointed at, flashed once on arrival so the eye finds it
+   without the reader having to re-scan the section for their own words. */
+.tb-hit{
+  border-radius:10px;
+  animation:tb-hit-flash 2.6s ease-out 1;
+}
+@keyframes tb-hit-flash{
+  0%,55%{box-shadow:0 0 0 8px var(--tint-accent);background:var(--tint-accent);}
+  100%{box-shadow:0 0 0 8px transparent;background:transparent;}
+}
+@media (prefers-reduced-motion:reduce){
+  .tb-hit{animation:none;background:var(--tint-accent);box-shadow:0 0 0 8px var(--tint-accent);}
 }
 
 /* --- the chapter --- */

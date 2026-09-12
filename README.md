@@ -103,7 +103,10 @@ ochem/                 The Organic Chemistry course (beta)
                             cleared by the engine
     ochem-nav.js           This course's tab list; hands the header to site-chrome.js
     textbook.js            learn.html: contents rail, chapter routing, lazy note loading,
-                            and read-tracking (see Textbook)
+                            full-text search UI, and read-tracking (see Textbook)
+    textbook-search.js     The book's search index: splits each note fragment into
+                            blocks, ranks them against a query, and returns the
+                            passages to jump to
     ochem.css              Shared textbook, mastery-bar, and lesson-page
                             styles (progress bar, choice buttons, feedback boxes, etc. —
                             lessons built after E2 rely on this instead of pasting the
@@ -162,6 +165,8 @@ speaker button in the header mutes it, remembered in `localStorage` under
 ### Textbook (`ochem/learn.html`)
 
 Learn is the course's written half. Every topic's prose is one HTML fragment under `ochem/notes/<topic>.html` — one per curriculum topic, 62 in all, ~63,000 words — and `ochem/assets/textbook.js` renders a contents rail (14 chapters, searchable, with per-chapter read counts) beside one chapter at a time, fetching that chapter's notes on open so the book costs a chapter rather than all 62 topics.
+
+The rail's box searches the prose, not just the 62 section names. `ochem/assets/textbook-search.js` indexes each note fragment as it is fetched — the index is built from the same cache the chapters read from, so there is no separate corpus to keep in sync, and the first query fetches whatever has not been read yet. A query lists the matching passages with the words highlighted; picking one opens that chapter and scrolls to the exact paragraph, still highlighted. Every query term has to appear in a section for it to match, and ordinary question words ("what is a nucleophile") are dropped so a typed question searches for the idea.
 
 The interactive lessons are unchanged and each section links out to its own. Reading is tracked separately from mastery in `ochem_textbook_read`, set by reaching the end of a section or by hand, worth 5 XP the first time, and never mixed into the mastery number — which still comes only from answering questions. Old per-lesson `?notes=1` URLs redirect to the matching section.
 

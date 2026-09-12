@@ -15,6 +15,12 @@
    the course; the book links out to each topic's lesson from the section that
    explains it, and their mastery scores are what the badges here report.
 
+   The rail's box searches the prose, not just the 62 section names: the notes
+   are indexed as they are fetched (see textbook-search.js), a query lists the
+   passages that match, and picking one opens that chapter and scrolls to the
+   exact paragraph with the words lit up. Looking something up no longer
+   requires knowing which section it lives in.
+
    Two kinds of progress, deliberately kept apart:
      mastery  — how the concept model rates you, rolled up per topic and per
                 module. Earned by answering, never by reading.
@@ -25,6 +31,7 @@
 (function(){
   var C = window.OchemCurriculum;
   var M = window.OchemMastery;
+  var S = window.OchemTextbookSearch;
   if(!C) return;
 
   var READ_KEY = 'ochem_textbook_read';
@@ -33,13 +40,19 @@
 
   var contentsEl = document.getElementById('tbContents');
   var mainEl = document.getElementById('tbMain');
+  var chapterEl = document.getElementById('tbChapter');
+  var resultsEl = document.getElementById('tbResults');
   var progressEl = document.getElementById('tbProgress');
   var filterEl = document.getElementById('tbFilter');
   var toggleEl = document.getElementById('tbContentsToggle');
 
   var ALL_TOPICS = [];
+  var TOPIC_META = {};
   C.MODULES.forEach(function(mod, i){
-    mod.topics.forEach(function(t){ ALL_TOPICS.push({ topic: t, mod: mod, modIndex: i }); });
+    mod.topics.forEach(function(t){
+      ALL_TOPICS.push({ topic: t, mod: mod, modIndex: i });
+      TOPIC_META[t.id] = { title: t.title, moduleId: mod.id, moduleTitle: mod.title, moduleIndex: i };
+    });
   });
 
   // ---- read state -------------------------------------------------------
@@ -113,13 +126,19 @@
   }
 
   // ---- contents ---------------------------------------------------------
-  function renderContents(activeIndex, filter){
+  /* `matched`, when given, is the set of topic ids whose *prose* matched the
+     current query. Without it the rail can only match titles, which is what
+     makes a content-only search look like it found nothing over here while the
+     results panel lists a dozen passages. */
+  function renderContents(activeIndex, filter, matched){
     var q = (filter || '').trim().toLowerCase();
     var read = readRead();
 
     var html = C.MODULES.map(function(mod, i){
       var topics = mod.topics.filter(function(t){
-        return !q || t.title.toLowerCase().indexOf(q) !== -1 || mod.title.toLowerCase().indexOf(q) !== -1;
+        if(!q) return true;
+        if(matched && matched[t.id]) return true;
+        return t.title.toLowerCase().indexOf(q) !== -1 || mod.title.toLowerCase().indexOf(q) !== -1;
       });
       if(!topics.length) return '';
       var doneCount = mod.topics.filter(function(t){ return read[t.id]; }).length;
@@ -141,7 +160,7 @@
       '</div>';
     }).join('');
 
-    contentsEl.innerHTML = html || '<p class="tb-toc-empty">No topic matches that.</p>';
+    contentsEl.innerHTML = html || '<p class="tb-toc-empty">Nothing in the book matches that.</p>';
 
     contentsEl.querySelectorAll('.tb-toc-modhead').forEach(function(btn){
       btn.addEventListener('click', function(){
@@ -152,7 +171,12 @@
       });
     });
     contentsEl.querySelectorAll('.tb-toc-topic').forEach(function(a){
-      a.addEventListener('click', function(){ closeContentsOnMobile(); });
+      a.addEventListener('click', function(){
+        // Picking a section from the contents is done searching: show the
+        // chapter, but keep the query in the box so the list is one click back.
+        hideResults();
+        closeContentsOnMobile();
+      });
     });
   }
 
@@ -173,6 +197,12 @@
       .then(function(r){
         if(!r.ok) throw new Error('HTTP ' + r.status);
         return r.text();
+      })
+      .then(function(html){
+        // Whatever a section is fetched for — reading it or searching it — it
+        // gets indexed once, here, so the two never fetch the same notes twice.
+        if(S) S.add(id, TOPIC_META[id] || { title: id, moduleTitle: '', moduleId: '', moduleIndex: 0 }, html);
+        return html;
       })
       .catch(function(){
         // Cached fetches fail offline for a section never opened before. Say
@@ -223,7 +253,7 @@
     var prev = C.MODULES[index - 1];
     var next = C.MODULES[index + 1];
 
-    mainEl.innerHTML =
+    chapterEl.innerHTML =
       '<header class="tb-chapter-head">' +
         '<p class="tb-chapter-eyebrow">Chapter ' + (index + 1) + ' of ' + C.MODULES.length + '</p>' +
         '<h1 class="tb-chapter-title">' + escapeHtml(mod.title) + '</h1>' +
@@ -243,6 +273,7 @@
         var slot = mainEl.querySelector('[data-notes="' + t.id + '"]');
         if(slot) slot.innerHTML = html;
         observeEnds();
+        applyPendingHit();
       });
     });
 
@@ -344,6 +375,206 @@
     });
   }
 
+
+  // ---- searching the prose ---------------------------------------------
+  /* The whole book is 62 small fragments, so the index is built by fetching
+     them — no second copy of the text to ship or keep current. It is built
+     once, on the first real query, and chapters already read are free because
+     they are already in the notes cache. */
+  var MIN_QUERY = 2;
+  var indexPromise = null;
+  var indexReady = false;
+  var searchTimer = null;
+  var activeQuery = '';
+  var lastMatched = null;
+  var pendingHit = null;
+
+  function ensureIndex(onProgress){
+    if(indexPromise) return indexPromise;
+    var ids = ALL_TOPICS.map(function(e){ return e.topic.id; });
+    var next = 0, done = 0;
+    function lane(){
+      if(next >= ids.length) return Promise.resolve();
+      var id = ids[next++];
+      return loadNotes(id).then(function(){
+        done++;
+        if(onProgress) onProgress(done, ids.length);
+        return lane();
+      });
+    }
+    var lanes = [];
+    for(var k = 0; k < 6; k++) lanes.push(lane());
+    indexPromise = Promise.all(lanes).then(function(){
+      // A section that failed to fetch (offline, say) is simply missing from
+      // the index; let the next query try it again rather than searching a
+      // permanently short book.
+      if(S && S.count() >= ids.length) indexReady = true;
+      else indexPromise = null;
+    });
+    return indexPromise;
+  }
+
+  function showResults(){
+    resultsEl.hidden = false;
+    chapterEl.hidden = true;
+  }
+  function hideResults(){
+    resultsEl.hidden = true;
+    chapterEl.hidden = false;
+  }
+  function closeSearch(){
+    clearTimeout(searchTimer);
+    activeQuery = '';
+    lastMatched = null;
+    hideResults();
+    resultsEl.innerHTML = '';
+  }
+
+  function runSearch(q){
+    if(!S){ return; }
+    activeQuery = q;
+    showResults();
+    if(indexReady){
+      renderResults(q);
+      return;
+    }
+    resultsEl.innerHTML = '<p class="tb-results-status" id="tbIndexStatus">Reading the whole book so it can be searched&hellip;</p>';
+    ensureIndex(function(done, total){
+      var el = document.getElementById('tbIndexStatus');
+      if(el) el.textContent = 'Reading the whole book so it can be searched… ' + Math.round((done / total) * 100) + '%';
+    }).then(function(){
+      if(activeQuery === q) renderResults(q);
+    });
+  }
+
+  function resultHitHtml(topicId, hit){
+    return '<button type="button" class="tb-result-hit" data-topic="' + topicId + '" data-block="' + hit.blockIndex + '">' +
+      (hit.heading ? '<span class="tb-result-heading">' + S.escapeHtml(hit.heading) + '</span>' : '') +
+      '<span class="tb-result-snippet">' + hit.snippet + '</span>' +
+    '</button>';
+  }
+
+  function renderResults(q){
+    var results = S.search(q, { limit: 24 });
+    // What was actually searched for, which is not always what was typed:
+    // "what is a nucleophile" searches for "nucleophile", and saying so beats
+    // a count that claims 33 sections mention the whole sentence.
+    var shownQuery = S.escapeHtml(S.terms(q).join(' ') || q);
+
+    lastMatched = {};
+    results.forEach(function(r){ lastMatched[r.topicId] = true; });
+    renderContents(currentIndex, q, lastMatched);
+
+    if(!results.length){
+      resultsEl.innerHTML =
+        '<div class="tb-results-head">' +
+          '<p class="tb-results-count">Nothing in the book matches <b>' + shownQuery + '</b></p>' +
+          '<button type="button" class="tb-results-close" id="tbResultsClose">Back to the chapter</button>' +
+        '</div>' +
+        '<p class="tb-results-status">Try a single word — the search wants every word you type to appear in the same section.</p>';
+    } else {
+      resultsEl.innerHTML =
+        '<div class="tb-results-head">' +
+          '<p class="tb-results-count">' + (results.total > results.length
+              ? results.total + ' sections mention <b>' + shownQuery + '</b> &middot; closest ' + results.length
+              : results.length + ' section' + (results.length === 1 ? '' : 's') + ' mention <b>' + shownQuery + '</b>') +
+          '</p>' +
+          '<button type="button" class="tb-results-close" id="tbResultsClose">Back to the chapter</button>' +
+        '</div>' +
+        results.map(function(r){
+          return '<article class="tb-result">' +
+            '<button type="button" class="tb-result-head" data-topic="' + r.topicId + '" data-block="-1">' +
+              '<span class="tb-result-chapter">Chapter ' + (r.moduleIndex + 1) + ' &middot; ' + S.escapeHtml(r.moduleTitle) + '</span>' +
+              '<span class="tb-result-title">' + S.escapeHtml(r.title) + '</span>' +
+            '</button>' +
+            r.hits.map(function(h){ return resultHitHtml(r.topicId, h); }).join('') +
+          '</article>';
+        }).join('');
+    }
+
+    var close = document.getElementById('tbResultsClose');
+    if(close) close.addEventListener('click', function(){
+      filterEl.value = '';
+      closeSearch();
+      renderContents(currentIndex, '');
+      filterEl.focus();
+    });
+    resultsEl.querySelectorAll('[data-topic]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        goToHit(btn.getAttribute('data-topic'), parseInt(btn.getAttribute('data-block'), 10));
+      });
+    });
+  }
+
+  /* Open the section a result came from and put the reader on the passage
+     itself. The chapter may still be fetching its notes, so the jump is left
+     pending and applied by whichever comes last — this call or the fragment
+     landing in the page. */
+  function goToHit(topicId, blockIndex){
+    pendingHit = { topic: topicId, block: isNaN(blockIndex) ? -1 : blockIndex, terms: S.terms(activeQuery) };
+    hideResults();
+    closeContentsOnMobile();
+    var target = '#' + topicId;
+    // Either way the jump is finished by route(), which scrolls to the section
+    // first and then hands off to applyPendingHit for the exact paragraph.
+    if(location.hash === target) route();
+    else location.hash = target;
+  }
+
+  function clearHits(){
+    mainEl.querySelectorAll('.tb-hit').forEach(function(el){ el.classList.remove('tb-hit'); });
+    mainEl.querySelectorAll('mark.tb-hit-mark').forEach(function(m){
+      var parent = m.parentNode;
+      if(!parent) return;
+      parent.replaceChild(document.createTextNode(m.textContent), m);
+      parent.normalize();
+    });
+  }
+
+  function markTerms(root, ts){
+    if(!ts || !ts.length) return;
+    var nodes = [], walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+    var n;
+    while((n = walker.nextNode())) nodes.push(n);
+    nodes.forEach(function(node){
+      var text = node.nodeValue;
+      var rs = S.ranges(text, ts);
+      if(!rs.length || !node.parentNode) return;
+      var frag = document.createDocumentFragment(), at = 0;
+      rs.forEach(function(r){
+        if(r[0] > at) frag.appendChild(document.createTextNode(text.slice(at, r[0])));
+        var m = document.createElement('mark');
+        m.className = 'tb-hit-mark';
+        m.textContent = text.slice(r[0], r[1]);
+        frag.appendChild(m);
+        at = r[1];
+      });
+      if(at < text.length) frag.appendChild(document.createTextNode(text.slice(at)));
+      node.parentNode.replaceChild(frag, node);
+    });
+  }
+
+  function applyPendingHit(){
+    if(!pendingHit) return;
+    var slot = mainEl.querySelector('[data-notes="' + pendingHit.topic + '"]');
+    if(!slot || slot.querySelector('.tb-loading')) return; // notes still in flight
+    var hit = pendingHit;
+    pendingHit = null;
+    clearHits();
+    var el = hit.block >= 0 ? slot.children[hit.block] : null;
+    if(!el){
+      var sec = document.getElementById(hit.topic);
+      if(sec) sec.scrollIntoView({ block: 'start' });
+      return;
+    }
+    markTerms(el, hit.terms);
+    el.classList.add('tb-hit');
+    el.scrollIntoView({ block: 'center' });
+    // The flash says "here"; the highlighted words stay so the passage is
+    // still readable as an answer once the flash has gone.
+    setTimeout(function(){ el.classList.remove('tb-hit'); }, 2600);
+  }
+
   // ---- routing ----------------------------------------------------------
   var currentIndex = -1;
   function route(){
@@ -351,7 +582,7 @@
     if(r.index !== currentIndex){
       currentIndex = r.index;
       renderChapter(currentIndex);
-      renderContents(currentIndex, filterEl ? filterEl.value : '');
+      renderContents(currentIndex, filterEl ? filterEl.value : '', lastMatched);
     }
     if(r.topic){
       var el = document.getElementById(r.topic);
@@ -362,12 +593,41 @@
     contentsEl.querySelectorAll('.tb-toc-topic').forEach(function(a){
       a.classList.toggle('current', a.getAttribute('data-topic') === r.topic);
     });
+    applyPendingHit();
   }
 
   window.addEventListener('hashchange', route);
   if(filterEl){
     filterEl.addEventListener('input', function(){
-      renderContents(currentIndex, filterEl.value);
+      var q = filterEl.value.trim();
+      clearTimeout(searchTimer);
+      if(q.length < MIN_QUERY){
+        closeSearch();
+        renderContents(currentIndex, filterEl.value);
+        return;
+      }
+      // Titles still filter on every keystroke; the prose search waits for a
+      // pause so a long query isn't run once per letter.
+      renderContents(currentIndex, filterEl.value, lastMatched);
+      searchTimer = setTimeout(function(){ runSearch(q); }, 180);
+    });
+    filterEl.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        filterEl.value = '';
+        closeSearch();
+        renderContents(currentIndex, '');
+      } else if(e.key === 'Enter'){
+        e.preventDefault();
+        clearTimeout(searchTimer);
+        var q = filterEl.value.trim();
+        if(q.length >= MIN_QUERY){
+          runSearch(q);
+          // On a phone the contents are a drawer sitting over the results, so
+          // committing a search has to get it out of the way.
+          closeContentsOnMobile();
+          resultsEl.scrollIntoView({ block: 'start' });
+        }
+      }
     });
   }
 

@@ -35,13 +35,18 @@
   <aside class="tb-rail">
     <p class="tb-rail-title">Contents</p>
     <div id="tbProgress"></div>
-    <label class="sr-only" for="tbFilter">Find a section</label>
-    <input type="search" class="tb-filter" id="tbFilter" placeholder="Find a section&hellip;" autocomplete="off">
+    <label class="sr-only" for="tbFilter">Search the textbook</label>
+    <input type="search" class="tb-filter" id="tbFilter" placeholder="Search the textbook&hellip;" autocomplete="off"
+           aria-describedby="tbFilterHint">
+    <p class="tb-filter-hint" id="tbFilterHint">Searches every word, not just section names.</p>
     <nav class="tb-contents" id="tbContents" aria-label="Textbook contents"></nav>
   </aside>
 
   <main class="tb-main" id="tbMain">
-    <noscript><p class="step-body">The textbook needs JavaScript to load its chapters.</p></noscript>
+    <div class="tb-results" id="tbResults" role="region" aria-label="Search results" hidden></div>
+    <div id="tbChapter">
+      <noscript><p class="step-body">The textbook needs JavaScript to load its chapters.</p></noscript>
+    </div>
   </main>
 </div>
 
@@ -54,6 +59,7 @@
 </script>
 <script src="assets/ochem-nav.js"></script>
 <script src="assets/periodic-table.js"></script>
+<script src="assets/textbook-search.js"></script>
 <script src="assets/textbook.js"></script>
 </body>
 </html>
