@@ -1,9 +1,41 @@
+<p class="step-body">Adding an alcohol to a carbonyl twice gives an acetal — a carbon with two OR groups and no carbonyl left. On its own that might be a curiosity. What makes it one of the most practically important reactions in the course is that the whole sequence is reversible, which turns it into a way to switch a carbonyl off and back on again at will.</p>
+
 <h3>Step one: hemiacetal formation</h3>
-<p class="step-body">Under acid catalysis, the carbonyl oxygen is protonated first, making the carbonyl carbon an even stronger electrophile (the same activation strategy as protonating an alcohol's OH, Module 8). An alcohol then attacks as the nucleophile — ordinary nucleophilic addition, exactly as in the previous lesson — forming a tetrahedral intermediate that, after losing the proton from oxygen, is called a <b>hemiacetal</b>: a carbon bonded to both an OH and an OR group.</p>
-<h3>Step two: loss of water forms an oxocarbenium ion</h3>
-<p class="step-body">Under continued acid catalysis, the hemiacetal's OH is protonated and leaves as water (exactly like alcohol dehydration, Module 8) — but the resulting carbocation is special: it's directly stabilized by resonance donation from the adjacent oxygen's lone pair, forming an <b>oxocarbenium ion</b> (a resonance hybrid between a carbocation and an oxygen-stabilized C=O⁺ form). This resonance stabilization — the same delocalization-beats-a-localized-charge idea from the Resonance lesson, Module 2 — is why this normally-unfavorable ionization proceeds readily under mild acid catalysis.</p>
-<div class="notes-fact">The oxocarbenium ion is dramatically more stable than an ordinary alkyl carbocation because the adjacent oxygen lone pair can fully delocalize into the empty p orbital — the positive charge is really shared between carbon and oxygen, not localized on carbon alone.</div>
+<p class="step-body">Under acid catalysis the carbonyl oxygen is protonated first, making the carbon a much stronger electrophile — the same activation strategy as protonating an alcohol's OH in Module 8. An alcohol then attacks as the nucleophile in ordinary nucleophilic addition, and losing a proton from the newly attached oxygen gives a <b>hemiacetal</b>: one carbon bearing both an OH and an OR.</p>
+<p class="step-body">Hemiacetals from simple aldehydes and ketones are usually too unstable to isolate; the equilibrium sits back toward the carbonyl. There is one enormously important exception, taken up below.</p>
+
+<h3>Step two: loss of water gives an oxocarbenium ion</h3>
+<p class="step-body">With acid still present, the hemiacetal's OH is protonated and leaves as water. Ordinarily that would be a poor idea — it generates a carbocation — but this cation is special: the adjacent oxygen's lone pair donates directly into the empty p orbital, giving a resonance-stabilized <b>oxocarbenium ion</b> in which the positive charge is genuinely shared between carbon and oxygen.</p>
+
+<div class="notes-fact">An oxocarbenium ion is dramatically more stable than an ordinary alkyl carbocation, because the oxygen lone pair delocalizes fully into the empty orbital and every atom ends up with a complete octet. This is the delocalization-beats-localization principle from Module 2, and it is what allows an ionization that would otherwise be prohibitive to proceed under mild acid catalysis.</div>
+
 <h3>Step three: a second alcohol completes the acetal</h3>
-<p class="step-body">A second equivalent of alcohol then attacks the oxocarbenium ion (nucleophilic addition to this cation, not to a neutral carbonyl), and losing the final proton gives the <b>acetal</b>: a carbon bonded to two OR groups (no OH remaining). Every step in this sequence is reversible — running the whole process in reverse (acetal + water + acid catalyst) regenerates the original carbonyl plus two equivalents of alcohol.</p>
-<h3>Why acetals matter: protecting groups</h3>
-<p class="step-body">A carbonyl is reactive toward nucleophiles (Nucleophilic Addition lesson), strong reducing agents (LiAlH₄), Grignards, and many other reagents you'll want to use elsewhere in a molecule during a multi-step synthesis. Converting it to an acetal temporarily removes that reactivity entirely — acetals are stable to base, to nucleophiles, and to reducing agents, reacting only under aqueous acid. This lets a chemist "protect" a carbonyl, perform unrelated chemistry elsewhere in the molecule, and then "deprotect" (hydrolyze the acetal back to the carbonyl) with dilute aqueous acid once that other chemistry is done — an essential practical strategy anywhere a molecule has more than one reactive functional group.</p>
+<p class="step-body">A second equivalent of alcohol attacks the oxocarbenium ion, and losing the final proton gives the <b>acetal</b>: a carbon bonded to two OR groups, with no OH remaining and no carbonyl.</p>
+<p class="step-body">Every step is reversible. Running the sequence backwards — acetal, water, acid catalyst — regenerates the original carbonyl and two equivalents of alcohol. Nothing about the mechanism distinguishes the forward direction from the reverse; only the conditions do.</p>
+
+<h3>Driving it either way</h3>
+<p class="step-body">Because the whole thing is an equilibrium, you control the direction with Le Châtelier rather than with different reagents. To <b>form</b> the acetal, use excess alcohol and remove the water as it is produced — a Dean–Stark trap, or molecular sieves. To <b>hydrolyze</b> it back, use excess water with dilute aqueous acid.</p>
+<p class="step-body">In practice a diol such as ethylene glycol is usually used instead of two separate alcohol molecules. The resulting cyclic acetal forms faster and hydrolyzes more slowly, because forming the second C–O bond is intramolecular and entropically cheap. A carbonyl protected as its 1,3-dioxolane is the standard version of this operation.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — using a protecting group</span>
+<p>You have a molecule with both a ketone and an ester, and you want to reduce only the ester to a primary alcohol. LiAlH₄ would reduce both; NaBH₄ would reduce only the ketone, which is the wrong one.</p>
+<p><b>Protect:</b> ethylene glycol with catalytic TsOH, water removed. The ketone becomes a cyclic acetal; the ester is untouched.</p>
+<p><b>React:</b> LiAlH₄, then workup. The ester is reduced to a primary alcohol. The acetal is completely inert to hydride.</p>
+<p><b>Deprotect:</b> dilute aqueous H₃O⁺. The acetal hydrolyzes back to the ketone.</p>
+<p>Net result: the ester reduced, the ketone recovered untouched. Three steps to achieve one transformation that no single reagent could.</p>
+</div>
+
+<h3>Why acetals work as protecting groups</h3>
+<p class="step-body">An acetal is stable to base, to nucleophiles, to Grignard reagents, to hydride reducing agents, and to oxidizing agents. It reacts only under <b>aqueous acid</b> — and even then, reversibly.</p>
+<p class="step-body">The reason is structural. There is no carbonyl to attack, no acidic proton to remove, and no leaving group that a base or nucleophile could displace — an acetal carbon's two OR groups are as poor as leaving groups as any alkoxide. It takes protonation to make one of them leave, and protonation requires acid. An acetal is essentially an ether, with all of an ether's inertness, plus a built-in mechanism for coming apart when you want it to.</p>
+<p class="step-body">A good protecting group needs three things: it installs in high yield, it survives the chemistry you intend to do, and it comes off under conditions the rest of the molecule tolerates. Acetals satisfy all three for carbonyls, which is why they are the default choice.</p>
+
+<div class="notes-pitfall"><b>Check that the deprotection conditions are survivable.</b> Acetal removal needs aqueous acid, so it cannot be used to protect a carbonyl in a molecule that has something else acid-sensitive — a <i>tert</i>-butyl ether, or a tertiary alcohol liable to dehydrate. Protecting-group choice is always a question about the whole molecule, not just the group being protected.</div>
+
+<h3>The exception that runs your metabolism</h3>
+<p class="step-body">Hemiacetals are usually too unstable to isolate, with one vast exception: when the alcohol and the carbonyl are in the same molecule and can form a five- or six-membered ring, the intramolecular reaction is so favourable that the cyclic hemiacetal dominates.</p>
+<p class="step-body">That is what a sugar is. Glucose in solution exists over 99% as its six-membered cyclic hemiacetal, not as the open-chain aldehyde. The new stereocenter created at the former carbonyl carbon is the <b>anomeric</b> center, and its two configurations — α and β — are the anomers from Module 5. Linking two sugars through an acetal linkage at that center gives a disaccharide, and linking thousands gives starch or cellulose. The difference between the two is which anomer was used.</p>
+
+<h3>What carries forward</h3>
+<p class="step-body">Protecting-group strategy is essential to any multi-step synthesis and appears throughout the rest of the course. The oxocarbenium ion reappears wherever an oxygen stabilizes an adjacent positive charge. And the cyclic hemiacetal is the structural basis of all of carbohydrate chemistry, which is where this material leads if you continue into biochemistry.</p>
