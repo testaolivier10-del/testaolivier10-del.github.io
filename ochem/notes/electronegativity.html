@@ -1,7 +1,51 @@
+<p class="step-body">If you had to reduce organic reactivity to a single question, it would be: <i>where are the electrons unevenly distributed?</i> Electronegativity is the answer to that question. Every polar bond, every partial charge, every arrow you will draw from a nucleophile to an electrophile traces back to one atom pulling harder on a shared pair than its partner does.</p>
+
 <h3>What it is</h3>
-<p class="step-body"><b>Electronegativity</b> measures how strongly an atom pulls on the electrons in a bond. It increases <b>up and to the right</b> on the periodic table (excluding noble gases) — fluorine is the most electronegative element there is. In any bond between two different atoms, the shared electrons sit closer to whichever atom is more electronegative.</p>
-<h3>Worked comparisons</h3>
-<p class="step-body">O vs. H: oxygen is more electronegative. C vs. H: carbon is more electronegative (though only slightly — this is why C–H bonds are treated as close to nonpolar). C vs. Cl: chlorine is more electronegative. Fluorine is the single most electronegative element on the table, full stop.</p>
-<div class="notes-fact">This is where "electron-poor" and "electron-rich" come from. An electronegativity difference makes a bond polar — and it's what makes the carbon in C–Br electron-poor enough for a nucleophile to attack, the exact idea behind SN1/SN2. C–F is more polar than C–Br because fluorine's electronegativity gap with carbon is bigger.</div>
-<h3>The Pauling scale and polarity thresholds</h3>
-<p class="step-body">Key values: F 3.98, O 3.44, N 3.04, Cl 3.16, Br 2.96, C 2.55, I 2.66, H 2.20 (look up any element in the periodic table tool). Rule of thumb for the difference (ΔEN): &lt;0.5 nonpolar covalent (C–H = 0.35); 0.5–1.7 polar covalent (C–O = 0.89, C–Cl = 0.61); &gt;1.7 ionic (Na–Cl = 2.23). Nearly every organic bond falls in the covalent range.</p>
+<p class="step-body"><b>Electronegativity</b> measures how strongly an atom pulls on the electrons in a bond it is part of. It is a property of an atom <i>in a bond</i>, not of an isolated atom — which distinguishes it from related quantities like ionization energy or electron affinity that describe atoms on their own.</p>
+<p class="step-body">On the periodic table it increases <b>up and to the right</b>, excluding the noble gases. Fluorine, top right of the reactive elements, is the most electronegative element there is. Two trends combine to produce this. Moving <b>right</b> across a period adds protons to the nucleus without adding a new shell, so the nuclear pull on the valence electrons strengthens. Moving <b>up</b> a group puts the valence electrons in a smaller shell, closer to the nucleus and less shielded by inner electrons, so the pull is felt more strongly.</p>
+<p class="step-body">In any bond between two different atoms, the shared electrons sit closer to whichever atom is more electronegative. That atom takes on a partial negative charge, written δ−; its partner takes a partial positive charge, δ+. These are partial charges, not full ones — no electron has actually been transferred, it is just spending more of its time at one end.</p>
+
+<h3>The Pauling scale, and the values worth knowing</h3>
+<div class="notes-table-wrap">
+<table class="notes-table">
+<tr><th>Element</th><th>EN</th><th>Element</th><th>EN</th></tr>
+<tr><td>F</td><td>3.98</td><td>C</td><td>2.55</td></tr>
+<tr><td>O</td><td>3.44</td><td>S</td><td>2.58</td></tr>
+<tr><td>Cl</td><td>3.16</td><td>I</td><td>2.66</td></tr>
+<tr><td>N</td><td>3.04</td><td>H</td><td>2.20</td></tr>
+<tr><td>Br</td><td>2.96</td><td>Li</td><td>0.98</td></tr>
+</table>
+</div>
+<p class="step-body">You do not need to memorize the numbers, but you do need the ordering <b>F &gt; O &gt; Cl &gt; N &gt; Br &gt; I ≈ S ≈ C &gt; H</b> as a reflex, because you will use it to decide where charge sits in every structure you draw. You can look up any element in the periodic table tool.</p>
+<p class="step-body">Two entries in that list regularly surprise people. <b>Nitrogen and chlorine are nearly tied</b> (3.04 vs 3.16), so chlorine actually edges out nitrogen. And <b>carbon and hydrogen are close</b> (2.55 vs 2.20), which is why C–H bonds are treated as essentially nonpolar throughout the course — a convenient simplification that holds up well in practice.</p>
+
+<h3>How big a difference makes a bond polar</h3>
+<p class="step-body">The useful quantity is the difference in electronegativity between the two bonded atoms, ΔEN.</p>
+<div class="notes-table-wrap">
+<table class="notes-table">
+<tr><th>ΔEN</th><th>Bond type</th><th>Example</th></tr>
+<tr><td>&lt; 0.5</td><td>Nonpolar covalent</td><td>C–H (0.35)</td></tr>
+<tr><td>0.5 – 1.7</td><td>Polar covalent</td><td>C–Cl (0.61), C–O (0.89)</td></tr>
+<tr><td>&gt; 1.7</td><td>Largely ionic</td><td>Na–Cl (2.23)</td></tr>
+</table>
+</div>
+<p class="step-body">The boundaries are conventions, not physical laws — polarity is a continuum, and a bond at ΔEN = 1.6 is not categorically different from one at 1.8. Nearly every bond in organic chemistry falls in the polar covalent band, which is the interesting middle ground: polar enough to have a reactive end, covalent enough to stay a molecule.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — reading a molecule for polarity</span>
+<p>Take chloromethane, CH₃Cl. Compare each bond: C–H has ΔEN = 0.35, effectively nonpolar. C–Cl has ΔEN = 0.61, polar, with chlorine δ− and carbon δ+.</p>
+<p>So there is exactly one meaningfully polar bond, and it leaves the carbon electron-poor. That carbon is the site a nucleophile will attack, and chloromethane is a textbook SN2 substrate. You have predicted the reactive site of the molecule from a table of numbers, before knowing a single mechanism.</p>
+</div>
+
+<div class="notes-fact">This is where the phrases "electron-poor" and "electron-rich" come from, and they are the vocabulary the rest of the course is written in. An electronegativity difference makes a bond polar, and a polar bond makes the carbon in C–Br electron-poor enough for a nucleophile to attack — which is the entire premise of SN1 and SN2 in Module 6.</div>
+
+<h3>Two traps</h3>
+<div class="notes-pitfall"><b>Polar bonds do not guarantee a polar molecule.</b> Carbon dioxide has two strongly polar C=O bonds, and a dipole moment of exactly zero — the molecule is linear, so the two bond dipoles point in opposite directions and cancel. Carbon tetrachloride does the same thing in three dimensions. Bond polarity is a property of a bond; molecular polarity is the vector sum, and geometry decides it. This is taken up properly in the Bond Polarity section.</div>
+<div class="notes-pitfall"><b>More polar does not mean more reactive.</b> The C–F bond is the most polar carbon–halogen bond, which by the reasoning above should make fluoromethane the best SN2 substrate. It is in fact the worst by a wide margin. Polarity tells you where a molecule can be attacked; whether the reaction actually proceeds also depends on how willingly the leaving group departs, and fluoride is a terrible leaving group. Holding both ideas at once is what the Leaving Groups section in Module 2 is for.</div>
+
+<h3>The other way electronegativity shows up: induction</h3>
+<p class="step-body">An electronegative atom does not only polarize the bond it is in. It pulls electron density through the sigma framework from further away, weakening with each bond it has to travel through. This is the <b>inductive effect</b>, and it is cumulative.</p>
+<p class="step-body">The classic demonstration is acid strength. Acetic acid (CH₃COOH) has a pKa of 4.76. Replace one methyl hydrogen with chlorine and chloroacetic acid drops to 2.86 — over eighty times more acidic — because the chlorine pulls electron density away from the carboxylate and helps stabilize its negative charge. Add two chlorines and it falls to 1.29; three, and trichloroacetic acid is at 0.65, a stronger acid than phosphoric acid. Move the chlorine further from the acid group and the effect fades quickly: 4-chlorobutanoic acid is barely more acidic than butanoic acid itself. Induction works through bonds and dies off over distance, which is the fingerprint that distinguishes it from resonance.</p>
+
+<h3>What carries forward</h3>
+<p class="step-body">Electronegativity is the first cause behind an unreasonable amount of this course. It sets formal charge placement in the next two sections; it defines nucleophiles and electrophiles in Module 2; it drives acidity in Module 3 and is one of the four factors in the Acidity Factors section; it determines the priority order for R/S assignment in Module 5; and it is what makes carbonyl carbons electrophilic in Modules 9 through 11. When a later explanation bottoms out in "because oxygen is electronegative," this is the section it is pointing back at.</p>

@@ -1,8 +1,43 @@
+<p class="step-body">Two atoms share electrons. That is a covalent bond. But <i>how</i> their orbitals overlap turns out to matter enormously — it decides whether the two atoms can rotate freely, whether the bond is strong or weak, and whether the electrons in it are locked in place or available to attack something. Sorting bonds into sigma and pi is the distinction that makes the rest of the course work.</p>
+
 <h3>Sigma bonds</h3>
-<p class="step-body">A <b>sigma (σ) bond</b> forms from head-on orbital overlap, directly on the axis between the two nuclei. Every single bond is a sigma bond. Because the overlap is symmetric all the way around that axis, the atoms can freely rotate around it without disturbing anything.</p>
+<p class="step-body">A <b>sigma (σ) bond</b> forms from head-on orbital overlap directly along the axis joining the two nuclei. Every single bond is a sigma bond, and in a multiple bond, exactly one of the bonds is a sigma bond.</p>
+<p class="step-body">Because head-on overlap is symmetric all the way around the internuclear axis, spinning one atom relative to the other changes nothing about the overlap. This is why <b>rotation around a single bond is free</b> — the basis of conformational analysis in Module 4, where the question is not whether a molecule can rotate but which of its freely accessible rotational arrangements it prefers.</p>
+<p class="step-body">Head-on overlap is also efficient overlap: the orbitals meet where the electron density is highest on both. Sigma bonds are therefore strong, and their electrons are held tightly between the nuclei where they are hard to get at. A sigma bond is not, under normal conditions, a source of nucleophilic electrons.</p>
+
 <h3>Pi bonds</h3>
-<p class="step-body">A <b>pi (π) bond</b> comes from the unhybridized p orbitals left over after hybridization (sp² carbon has 1 leftover p; sp has 2). These stick out above/below or side-to-side rather than along the bond axis, and two neighboring ones overlap <b>sideways</b>. That sideways overlap only works while the two p orbitals stay parallel — twisting one atom rotates its p orbital out of alignment and breaks the overlap. That's why a pi bond <b>blocks rotation</b> while a sigma bond doesn't.</p>
+<p class="step-body">A <b>pi (π) bond</b> is built from the unhybridized p orbitals left over after hybridization — one leftover p on an sp² atom, two on an sp atom. These p orbitals stand perpendicular to the plane of the sigma framework, and two neighboring ones overlap <b>sideways</b>, above and below the internuclear axis.</p>
+<p class="step-body">Two consequences follow immediately, and both are load-bearing.</p>
+<p class="step-body"><b>Pi bonds block rotation.</b> Sideways overlap only works while the two p orbitals stay parallel. Twisting one atom rotates its p orbital out of alignment and destroys the overlap, which costs roughly 65 kcal/mol for a C=C — far more than thermal energy at room temperature can supply. So the two ends of a double bond are locked relative to each other.</p>
+<p class="step-body"><b>Pi electrons are exposed.</b> Sideways overlap is less efficient than head-on overlap, so the electrons sit further from the nuclei, in clouds above and below the molecular plane rather than buried between the atoms. They are more loosely held and more available — which is exactly why alkenes are nucleophiles, why they attack electrophiles in Module 7, and why the pi system of benzene is the reactive part of an aromatic ring.</p>
+
 <div class="formula">single bond = 1σ &nbsp;&middot;&nbsp; double bond = 1σ + 1π &nbsp;&middot;&nbsp; triple bond = 1σ + 2π</div>
-<div class="notes-fact">Restricted rotation around a double bond's pi bond is the entire reason cis/trans (E/Z) isomers exist — groups on either side of the double bond stay fixed relative to each other. More on this in the Stereochemistry module.</div>
+
+<div class="notes-example">
+<span class="k">Worked example — counting sigma and pi in acetonitrile, CH₃C≡N</span>
+<p>Three C–H bonds: 3 σ. One C–C bond: 1 σ. The C≡N triple bond: 1 σ + 2 π.</p>
+<p>Total: <b>5 σ and 2 π</b>. The methyl carbon is sp³ (4 groups); the nitrile carbon is sp (2 groups — the methyl and the nitrogen); the nitrogen is sp (1 group to carbon plus 1 lone pair). The C–C≡N unit is therefore linear, and nitrogen's lone pair sits in an sp orbital pointing away along that axis, which is why nitriles coordinate metals end-on.</p>
+</div>
+
+<div class="notes-pitfall"><b>Common slip:</b> assuming a triple bond is "three of the same thing." It is one strong sigma bond plus two weaker pi bonds. That is why the first bond to break in an addition reaction is always a pi bond, never the sigma bond — the pi bonds are both weaker and more accessible.</div>
+
 <h3>Bond length and strength</h3>
-<p class="step-body">More bonds between the same two atoms means shorter and stronger. C–C: ~154 pm, ~347 kJ/mol (~83 kcal/mol). C=C: ~134 pm, ~614 kJ/mol (~147 kcal/mol). C≡C: ~120 pm, ~839 kJ/mol (~200 kcal/mol). Both units are in common use; 1 kcal = 4.184 kJ. The rest of this course quotes energies in kcal/mol. The jump from 1→2 bonds roughly doubles the energy; the second pi bond (2→3) adds less, since sideways p-orbital overlap is inherently weaker than the sigma bond's head-on overlap.</p>
+<p class="step-body">More bonds between the same two atoms pull them closer together and hold them more firmly.</p>
+<div class="notes-table-wrap">
+<table class="notes-table">
+<tr><th>Bond</th><th>Length</th><th>Strength</th><th>Made of</th></tr>
+<tr><td>C–C</td><td>~154 pm</td><td>~83 kcal/mol</td><td>1σ</td></tr>
+<tr><td>C=C</td><td>~134 pm</td><td>~147 kcal/mol</td><td>1σ + 1π</td></tr>
+<tr><td>C≡C</td><td>~120 pm</td><td>~200 kcal/mol</td><td>1σ + 2π</td></tr>
+</table>
+</div>
+<p class="step-body">Read the increments rather than the totals. Going from one bond to two adds about 64 kcal/mol — that is the strength of the first pi bond. Going from two to three adds only about 53 — the second pi bond is weaker still, because by the time the atoms are that close the geometry is crowded and the overlap less favorable. Throughout, each pi bond is worth substantially less than the sigma bond it accompanies, which is exactly what you would expect from sideways versus head-on overlap.</p>
+<p class="step-body">Energies here are quoted in kcal/mol, as the rest of this course does; you will also see kJ/mol in other sources, where 1 kcal = 4.184 kJ.</p>
+
+<div class="notes-fact">Restricted rotation around a pi bond is the entire reason cis/trans (E/Z) isomers exist. Because the two ends of a C=C cannot rotate past each other, the groups on either side stay fixed in their relative positions, and two compounds with identical connectivity end up as genuinely different substances with different melting points, different dipole moments and different biology. This is the subject of the Alkene Structure section in Module 7, and it is why the double bond in retinal can act as a light-triggered switch in your eye.</div>
+
+<h3>Bond strength is not the same as reactivity</h3>
+<p class="step-body">A triple bond is the strongest carbon–carbon bond in the table, and alkynes are among the more reactive functional groups in the course. That is not a contradiction. Total bond strength measures what it would cost to pull the two atoms entirely apart; reactivity is about what it costs to break the <i>weakest accessible</i> component and what you get in return. Breaking one pi bond of an alkyne costs relatively little and gains a new sigma bond, which is a good trade. Keep the two ideas separate and a lot of apparent paradoxes in Modules 7 and 13 dissolve.</p>
+
+<h3>What carries forward</h3>
+<p class="step-body">Three habits start here. Count sigma and pi correctly, because hybridization depends on the sigma-plus-lone-pair count and not the total. Remember that pi electrons are the accessible ones — every mechanism in Modules 7, 9 and 13 begins with a pi bond attacking something or being attacked. And remember that pi bonds lock geometry, which is the door into stereochemistry.</p>
