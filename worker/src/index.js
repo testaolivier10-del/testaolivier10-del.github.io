@@ -24,9 +24,6 @@ const ALLOWED_ORIGINS = [
   'http://127.0.0.1:8000',
 ];
 
-// The model is allowed to rephrase and organize the supplied passages. It is
-// not allowed to add clinical facts of its own — on an exam-prep site, a
-// confident invention is worse than "that isn't covered here".
 // The model may teach — rephrase, analogize, connect topics — but it may not
 // invent the facts it teaches from. The passages are the floor, not the
 // ceiling: it can go beyond them to explain, and must say so when it does.
