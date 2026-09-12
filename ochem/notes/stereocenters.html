@@ -1,7 +1,38 @@
+<p class="step-body">Chirality is a property of a whole molecule, but in practice it usually traces to specific atoms. Finding those atoms quickly and reliably is the first practical skill of stereochemistry, and it is also the step where careless answers start: a carbon that looks like a stereocenter often is not, and one that is easy to overlook often is.</p>
+
 <h3>The definition</h3>
-<p class="step-body">A <b>stereocenter</b> (also called a chirality center or stereogenic center) is most commonly an sp³ carbon bonded to <b>four different groups</b>. Because all four groups are different, swapping any two of them creates a different stereoisomer — this is exactly what generates chirality at that carbon.</p>
-<h3>Worked example</h3>
-<p class="step-body">2-butanol, CH₃–CH(OH)–CH₂CH₃: the second carbon is bonded to OH, H, CH₃, and CH₂CH₃ — four genuinely different groups, so it's a stereocenter. Compare to 2-propanol, CH₃–CH(OH)–CH₃: the central carbon is bonded to OH, H, and two identical CH₃ groups — only three different groups, so it is <b>not</b> a stereocenter, and 2-propanol is achiral.</p>
-<div class="notes-fact">A quick way to rule a carbon out fast: if it's attached to two identical groups (like two CH₃, or two H), it cannot be a stereocenter — you need four distinct groups, not three or two duplicated. Also watch for carbons with a double bond or in a ring with only 3 total attachments — those aren't sp³ centers with four groups and are never stereocenters this way (though ring carbons can still be stereocenters if they carry four different substituents through the ring and off it).</div>
-<h3>Counting stereoisomers: the 2ⁿ rule (a starting estimate)</h3>
-<p class="step-body">For a molecule with <i>n</i> stereocenters, the maximum possible number of stereoisomers is <b>2ⁿ</b> — each stereocenter can independently be one of two configurations. A molecule with 2 stereocenters has up to 4 possible stereoisomers; with 3 stereocenters, up to 8. This is a <i>maximum</i>, not always the actual count — the Meso Compounds lesson shows an important exception where internal symmetry reduces the real number below 2ⁿ.</p>
+<p class="step-body">A <b>stereocenter</b> — also called a chirality center or stereogenic center — is most commonly an sp³ carbon bonded to <b>four different groups</b>. Because all four are different, swapping any two produces a genuinely different stereoisomer rather than the same molecule turned around.</p>
+<p class="step-body">"Different" means different as whole groups, all the way out, not just different first atoms. That distinction is what makes the counting slightly subtle.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — two similar-looking alcohols</span>
+<p><b>2-Butanol</b>, CH₃–CH(OH)–CH₂CH₃. The second carbon carries OH, H, CH₃ and CH₂CH₃ — four genuinely different groups. It is a stereocenter, and 2-butanol is chiral.</p>
+<p><b>2-Propanol</b>, CH₃–CH(OH)–CH₃. The central carbon carries OH, H, and <i>two identical</i> methyl groups. Only three different groups, so it is not a stereocenter, and 2-propanol is achiral.</p>
+<p>One carbon apart, and a completely different stereochemical story.</p>
+</div>
+
+<h3>How to find them fast</h3>
+<p class="step-body">A workable procedure. First, ignore every carbon that cannot qualify: anything with a double or triple bond, any CH₃ (three identical hydrogens), and any CH₂ in a chain (two identical hydrogens). That usually eliminates most of the molecule in one pass.</p>
+<p class="step-body">Then, for each surviving carbon, trace outward along each of its four branches until you find a difference. If all four branches differ somewhere, it is a stereocenter.</p>
+
+<div class="notes-pitfall"><b>Ring carbons need the walk-both-ways test.</b> A carbon in a ring has two of its bonds going into the ring, and those two paths are different groups only if the ring is different in the two directions. In 3-methylcyclohexan-1-ol, C1 carries OH, H, and two ring paths — going one way you meet the methyl-bearing carbon after two carbons, going the other way after three. Different, so C1 is a stereocenter. In 4-methylcyclohexan-1-ol, the two ring paths are identical by symmetry, so C1 is not. Walking both ways around the ring is the only reliable test.</div>
+
+<div class="notes-pitfall"><b>Nitrogen usually does not count.</b> An amine nitrogen with three different groups plus a lone pair looks like a stereocenter, and geometrically it is — but it inverts its configuration through a planar transition state several million times per second at room temperature, so the two forms cannot be separated and the molecule behaves as achiral. Quaternary ammonium salts, which have four groups and no lone pair, cannot invert and <i>are</i> genuine stereocenters.</div>
+
+<h3>Counting stereoisomers: the 2ⁿ rule</h3>
+<p class="step-body">For a molecule with <i>n</i> stereocenters, the <b>maximum</b> number of stereoisomers is 2ⁿ, since each center can independently take either of two configurations. Two stereocenters give up to 4 stereoisomers; three give up to 8; four give up to 16.</p>
+<p class="step-body">The word maximum is doing real work. Internal symmetry can make two of the arrangements identical, reducing the real count below 2ⁿ — that is what a meso compound is, and it gets its own section shortly. Tartaric acid has two stereocenters and therefore up to four stereoisomers, but only three exist: a pair of enantiomers and one meso form.</p>
+<p class="step-body">The other direction matters too: with several stereocenters, most of the 2ⁿ stereoisomers are not mirror images of each other. Of the four stereoisomers of a two-center compound, each has exactly one enantiomer and two diastereomers. Sorting out those relationships is what the next two sections are for.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — counting in a real molecule</span>
+<p>Cholesterol has 8 stereocenters, so 2⁸ = 256 possible stereoisomers. Exactly one of them is the compound your body makes and uses.</p>
+<p>Glucose has 4 stereocenters in its open-chain form, giving 16 aldohexoses — all 16 are real, named sugars, and only D-glucose is the one central to metabolism.</p>
+<p>This is why stereochemistry matters commercially as much as intellectually: synthesizing a target with 8 stereocenters means hitting one arrangement out of 256.</p>
+</div>
+
+<h3>Stereocenters that are not carbon</h3>
+<p class="step-body">Any tetrahedral atom with four different groups can be a stereocenter. Phosphorus in a phosphine oxide, sulfur in a sulfoxide (where the lone pair counts as the fourth group and inversion is slow enough to matter), and quaternary nitrogen all qualify. Sulfoxide stereochemistry is the basis of esomeprazole, the single-enantiomer form of a widely prescribed drug.</p>
+
+<h3>What carries forward</h3>
+<p class="step-body">Locating stereocenters is the prerequisite for assigning R/S configuration, for classifying stereoisomer relationships, and for tracking what a reaction does to stereochemistry. From Module 6 onward, a standard part of predicting a product is asking what happened at each stereocenter — inverted, retained, destroyed, or newly created — and you cannot answer that without first knowing where they are.</p>

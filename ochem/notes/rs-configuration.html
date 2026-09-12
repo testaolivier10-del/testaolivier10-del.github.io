@@ -1,14 +1,54 @@
+<p class="step-body">Calling two mirror images "the left-handed one" and "the right-handed one" is fine in conversation and useless on paper. The Cahn–Ingold–Prelog system assigns each stereocenter an unambiguous label, R or S, derived entirely from the structure — no measurement, no context, no ambiguity. It is the most mechanical skill in the chapter and the one most worth drilling until it is automatic.</p>
+
 <h3>The four-step algorithm</h3>
-<p class="step-body"><b>1.</b> Rank the four groups on the stereocenter by <b>CIP priority</b> (below). <b>2.</b> Orient the molecule so the <b>lowest</b>-priority group (usually the last-place group, often H) points directly away from you, into the page. <b>3.</b> Trace a path from priority 1 → 2 → 3 among the remaining three groups. <b>4.</b> If that path goes <b>clockwise</b>, the center is <b>R</b> (Latin <i>rectus</i>, "right"); if <b>counterclockwise</b>, it's <b>S</b> (<i>sinister</i>, "left").</p>
+<ol class="step-body">
+<li><b>Rank</b> the four groups on the stereocenter by CIP priority, 1 (highest) through 4 (lowest).</li>
+<li><b>Orient</b> the molecule so the lowest-priority group — priority 4, usually hydrogen — points directly away from you, into the page.</li>
+<li><b>Trace</b> the path 1 → 2 → 3 among the remaining three groups.</li>
+<li><b>Read it off.</b> Clockwise is <b>R</b> (Latin <i>rectus</i>, right); counterclockwise is <b>S</b> (<i>sinister</i>, left).</li>
+</ol>
+
 <h3>CIP priority rules</h3>
-<p class="step-body">Compare the atoms directly attached to the stereocenter first: <b>higher atomic number wins</b> (this is why the periodic table matters here — you're literally reading off atomic number). If two attached atoms tie (e.g., both carbon), look at what <i>those</i> atoms are attached to, and compare the sets of atoms one step further out — highest-priority atom in that next set wins the tie. Keep moving outward, atom by atom, until a difference appears.</p>
-<div class="notes-fact">A double or triple bond is treated as if it were duplicated into two or three single bonds to a phantom copy of the same atom. A C=O oxygen is therefore counted as if the carbon were bonded to two separate oxygens for priority purposes — this is why a carbonyl carbon almost always ranks very high in CIP priority comparisons.</div>
-<h3>The "lowest priority away from you" flip trick</h3>
-<p class="step-body">If you can't physically rotate the molecule so the lowest-priority group points away (common when working from a flat drawing), trace the 1→2→3 path as drawn anyway, then <b>flip your answer</b> (R becomes S, S becomes R) — because you were viewing it from the wrong side. This flip-the-answer trick is a completely reliable shortcut and saves you from needing to redraw the whole structure.</p>
-<h3>Worked example: bromochlorofluoromethane, CHFClBr</h3>
-<p class="step-body">Attached atoms: Br, Cl, F, H. By atomic number: Br (35) > Cl (17) > F (9) > H (1) — so priority order is Br(1) > Cl(2) > F(3) > H(4), no ties to break. Point H away from you and trace Br → Cl → F: if that's clockwise, the center is R; if counterclockwise, S.</p>
-<h3>Worked example: butan-2-ol, H on a hashed bond</h3>
-<p class="step-body">Priorities: OH first (O beats C outright). The two carbons tie, so go one bond out — the ethyl carbon carries (C,H,H), the methyl carbon only (H,H,H) — so CH₂CH₃ is second, CH₃ third, H last. In the lesson's drawing, OH sits at the top, CH₂CH₃ lower left, CH₃ lower right, and H on a hashed bond pointing down and away. Tracing OH → CH₂CH₃ → CH₃ runs <b>counterclockwise</b>, and because H already points away there is no flip: that center is <b>S</b>.</p>
-<h3>Worked example: glyceraldehyde, H on a wedge</h3>
-<p class="step-body">Priorities: OH first; then the carbon tie breaks in favour of CHO, because its carbon carries (O,O,H) once the double bond is duplicated into a phantom oxygen, against CH₂OH's (O,H,H); H is last. Drawn with OH at the top, CHO lower left, CH₂OH lower right, the 1 → 2 → 3 path again runs <b>counterclockwise</b> — but here H is on a <b>bold wedge</b>, pointing at you, so you are reading the center from the wrong side and the answer flips to <b>R</b>.</p>
-<div class="notes-fact">Those two examples trace the same direction on the page and have opposite configurations. The only difference is which bond the H sits on. This is the single most common way to lose marks on a stereochemistry question: reading the rotation correctly and then forgetting to check which way the lowest-priority group points.</div>
+<p class="step-body"><b>Rule 1: compare the atoms directly attached, highest atomic number wins.</b> Bromine beats chlorine beats sulfur beats oxygen beats nitrogen beats carbon beats hydrogen. This settles most comparisons immediately, and note that it is atomic <i>number</i>, not electronegativity or mass — iodine outranks fluorine.</p>
+<p class="step-body"><b>Rule 2: on a tie, move one atom outward.</b> If two attached atoms are the same element, look at the three atoms bonded to each of them, write each set in descending order, and compare them term by term. The first point of difference decides. A carbon carrying (O,H,H) beats one carrying (C,C,H), because oxygen beats carbon at the first term — and note that a single high-ranking atom outranks two lower ones. Keep moving outward, sphere by sphere, until a difference appears.</p>
+<p class="step-body"><b>Rule 3: duplicate multiple bonds.</b> A double bond is treated as two single bonds to duplicate phantom atoms, and a triple bond as three.</p>
+
+<div class="notes-fact">The duplication rule is what makes carbonyl carbons rank so high. An aldehyde carbon, C=O plus H, is counted as bonded to (O, O, H) — the real oxygen plus a phantom duplicate. That beats CH₂OH's (O, H, H) at the second term, which is exactly the comparison that sets glyceraldehyde's configuration. Similarly, a carboxylic acid carbon counts as (O, O, O), outranking almost anything else made of carbon.</div>
+
+<h3>The flip trick</h3>
+<p class="step-body">Step 2 asks you to orient the molecule with priority 4 pointing away, which is easy with a model and awkward from a flat drawing. The shortcut: trace the 1 → 2 → 3 path exactly as drawn, then <b>flip your answer</b> if the lowest-priority group is pointing toward you.</p>
+<p class="step-body">The reason it works is simply that you were reading the center from the opposite side, and a mirror-image viewpoint reverses the apparent sense of rotation. It is completely reliable, and it saves redrawing.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — CHFClBr, no ties</span>
+<p>Attached atoms: Br (35), Cl (17), F (9), H (1). Atomic number alone settles it: Br (1) &gt; Cl (2) &gt; F (3) &gt; H (4).</p>
+<p>Point H away and trace Br → Cl → F. Clockwise gives R, counterclockwise gives S. No tie-breaking, no duplication, no flip needed if H is already on a dashed bond.</p>
+</div>
+
+<div class="notes-example">
+<span class="k">Worked example — butan-2-ol, H on a dashed bond</span>
+<p>Groups: OH, CH₂CH₃, CH₃, H. Oxygen beats carbon, so OH is priority 1. H is priority 4.</p>
+<p>The two carbons tie at the first sphere, so move out: the ethyl carbon carries (C,H,H); the methyl carbon carries (H,H,H). Carbon beats hydrogen at the first term, so CH₂CH₃ is 2 and CH₃ is 3.</p>
+<p>Drawn with OH at the top, CH₂CH₃ lower left, CH₃ lower right and H on a dashed bond pointing away: tracing OH → CH₂CH₃ → CH₃ runs <b>counterclockwise</b>. H already points away, so no flip. The center is <b>S</b>.</p>
+</div>
+
+<div class="notes-example">
+<span class="k">Worked example — glyceraldehyde, H on a wedge</span>
+<p>Groups: OH, CHO, CH₂OH, H. OH is 1 and H is 4 as before.</p>
+<p>The tie between CHO and CH₂OH breaks on duplication: CHO counts as (O,O,H) against CH₂OH's (O,H,H). They tie at the first term and CHO wins at the second. So CHO is 2, CH₂OH is 3.</p>
+<p>Drawn with OH at the top, CHO lower left and CH₂OH lower right, the 1 → 2 → 3 path again runs <b>counterclockwise</b> — but here H is on a <b>bold wedge</b>, pointing at you. Flip the answer: the center is <b>R</b>.</p>
+</div>
+
+<div class="notes-fact">Those last two examples trace the same direction on the page and have <i>opposite</i> configurations. The only difference is which bond the hydrogen sits on. This is the single most common way to lose marks in stereochemistry: reading the rotation correctly and forgetting to check where priority 4 points.</div>
+
+<div class="notes-pitfall"><b>Compare sets term by term, never by adding them up.</b> A branch carrying (O,H,H) beats one carrying (C,C,C), because the comparison starts with the highest member of each set and oxygen beats carbon there. Summing atomic numbers — 8+1+1 = 10 against 6+6+6 = 18 — gives the wrong answer. Order each set from high to low, then compare first to first.</div>
+
+<h3>R/S is not (+)/(−), and R/S is not D/L</h3>
+<p class="step-body">Three labelling systems coexist and they answer different questions. <b>R/S</b> is assigned from structure by the CIP rules. <b>(+)/(−)</b> records a measured direction of optical rotation and cannot be predicted from a drawing. <b>D/L</b> is an older relational system, still standard for sugars and amino acids, that compares a compound's configuration to glyceraldehyde.</p>
+<p class="step-body">There is no general correspondence among them. (S)-glyceraldehyde is levorotatory; (S)-alanine is dextrorotatory. L-amino acids are mostly (S), but L-cysteine is (R) — not because its geometry differs, but because sulfur outranks the carboxyl carbon and changes the priority order. When a problem gives you one label, it has not given you the others.</p>
+
+<h3>Naming whole molecules</h3>
+<p class="step-body">With several stereocenters, each gets its own descriptor prefixed by its locant: (2R,3S)-3-bromobutan-2-ol. The enantiomer of that compound is (2S,3R); anything else with the same connectivity is a diastereomer. Once you can assign descriptors reliably, the relationship questions from the previous two sections become pure bookkeeping.</p>
+
+<h3>What carries forward</h3>
+<p class="step-body">R/S notation is how every stereochemical result in the rest of the course is reported. It is how you will state that SN2 proceeds with inversion, that SN1 gives racemization, that an addition is syn or anti. And the CIP priority rules reappear unchanged as the basis of E/Z notation for alkene geometry in Module 7 — the ranking system is the same, applied to a different question.</p>

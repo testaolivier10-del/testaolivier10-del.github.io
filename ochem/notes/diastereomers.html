@@ -1,9 +1,39 @@
+<p class="step-body">Once a molecule has more than one stereocenter, mirror images stop being the only relationship available. Two stereoisomers can differ at some centers and agree at others, and such a pair is not a mirror image of anything — which means, unlike enantiomers, they are genuinely different compounds with genuinely different properties.</p>
+
 <h3>The definition</h3>
-<p class="step-body"><b>Diastereomers</b> are stereoisomers that are <b>not</b> mirror images of each other. This only becomes possible once a molecule has <b>two or more</b> stereocenters: with two stereocenters, there are up to 2² = 4 stereoisomers total, forming two enantiomeric pairs — and any molecule from one pair compared to any molecule from the other pair is a diastereomer relationship.</p>
-<h3>Same vs. different configuration, stereocenter by stereocenter</h3>
-<p class="step-body">For a molecule with stereocenters labeled 1 and 2: flipping <b>both</b> stereocenters gives the enantiomer (the full mirror image). Flipping <b>only one</b> of the two (but not the other) gives a diastereomer — same configuration at one center, opposite at the other. In general, for n stereocenters, flipping all n gives the enantiomer; flipping any smaller, non-empty subset gives a diastereomer.</p>
-<div class="notes-fact">A useful shorthand: enantiomers are related by inverting <b>every</b> stereocenter; diastereomers are related by inverting <b>some, but not all</b>, stereocenters.</div>
+<p class="step-body"><b>Diastereomers</b> are stereoisomers that are <b>not</b> mirror images of each other. This becomes possible as soon as a molecule has two or more stereocenters. With two stereocenters there are up to 2² = 4 stereoisomers, forming two enantiomeric pairs — and any member of one pair compared to any member of the other is a diastereomeric relationship.</p>
+
+<h3>Same versus different, center by center</h3>
+<p class="step-body">For a molecule with stereocenters labelled 1 and 2, inverting <b>both</b> gives the enantiomer — the complete mirror image. Inverting <b>only one</b> gives a diastereomer: same configuration at one center, opposite at the other.</p>
+<p class="step-body">The general rule: for <i>n</i> stereocenters, inverting all <i>n</i> gives the enantiomer; inverting any smaller non-empty subset gives a diastereomer.</p>
+
+<div class="notes-fact">The shorthand worth memorizing: <b>enantiomers invert every stereocenter; diastereomers invert some but not all.</b> This turns relationship questions into arithmetic. Given (2R,3S) and (2R,3R), only center 3 differs — some but not all — so they are diastereomers. Given (2R,3S) and (2S,3R), both differ, so they are enantiomers.</div>
+
+<div class="notes-example">
+<span class="k">Worked example — the four stereoisomers of 3-bromobutan-2-ol</span>
+<p>Two stereocenters, so four stereoisomers: (2R,3R), (2S,3S), (2R,3S) and (2S,3R).</p>
+<p>(2R,3R) and (2S,3S) are enantiomers — both centers inverted. (2R,3S) and (2S,3R) are also enantiomers of each other, for the same reason.</p>
+<p>Every cross-pair relationship — (2R,3R) with (2R,3S), or (2S,3S) with (2R,3S), and so on — is diastereomeric, because only one center differs.</p>
+<p>Four compounds, two enantiomeric pairs, four diastereomeric relationships. Every molecule has exactly one enantiomer and two diastereomers.</p>
+</div>
+
 <h3>Why diastereomers have different physical properties</h3>
-<p class="step-body">Unlike enantiomers, diastereomers are <b>not</b> mirror images of each other, so there's no symmetry reason for them to share physical properties. Diastereomers genuinely have different melting points, boiling points, densities, solubilities, and polarities — because they are, in every meaningful sense, different compounds, not mirror-image copies of the same one. This makes them separable by ordinary techniques like distillation, recrystallization, or column chromatography — unlike enantiomers, which require a chiral technique to separate.</p>
-<h3>Worked example: cis/trans as a special case of diastereomers</h3>
-<p class="step-body">Cis and trans isomers of a disubstituted ring or alkene are actually a specific, common example of diastereomers — they are stereoisomers, not mirror images of each other, and (consistent with the diastereomer pattern) they have measurably different physical properties. cis-2-butene and trans-2-butene, for instance, have different boiling points (3.7°C vs. 0.9°C) and different dipole moments.</p>
+<p class="step-body">Enantiomers share physical properties because they are mirror images: every internal distance and angle is identical, so their energies must be identical. Diastereomers have no such symmetry relationship. The distance from the bromine to the hydroxyl is simply not the same in (2R,3R) as in (2R,3S), so the molecules have different shapes, different dipole moments, different packing in a crystal, and different energies.</p>
+<p class="step-body">The consequence is entirely practical. Diastereomers have different melting points, boiling points, densities, solubilities, polarities, NMR spectra and reactivities — which means they can be separated by ordinary means: distillation, recrystallization, or standard column chromatography. Enantiomers cannot. This difference in separability is why resolution works by temporarily converting an enantiomeric relationship into a diastereomeric one, as the previous section described.</p>
+
+<div class="notes-pitfall"><b>"Diastereomer" is a relationship, not a category of molecule.</b> No compound is "a diastereomer" on its own — it is a diastereomer <i>of</i> some other specific stereoisomer. The same molecule is simultaneously the enantiomer of one stereoisomer and the diastereomer of two others. Questions asking for "the relationship between A and B" are asking about a pair, and answering with a property of one molecule misses the question.</div>
+
+<h3>Cis/trans isomers are diastereomers</h3>
+<p class="step-body">Cis and trans isomers of a disubstituted ring or alkene are a special case of the diastereomer relationship, and recognizing this unifies two ideas that are often taught separately. They are stereoisomers, they are not mirror images, and — exactly as the diastereomer pattern predicts — they have measurably different physical properties.</p>
+<p class="step-body">cis-2-Butene boils at 3.7 °C and has a dipole moment of 0.33 D; trans-2-butene boils at 0.9 °C and has a dipole moment of zero, because its two methyl dipoles cancel by symmetry. The trans isomer is also about 1 kcal/mol more stable, since its methyl groups are further apart. Two compounds, same formula, same connectivity, different everything else.</p>
+<p class="step-body">The same logic covers the cyclohexanes of Module 4: <i>cis</i>- and <i>trans</i>-1,2-dimethylcyclohexane are diastereomers, which is why they have different energies (about 1.7 kcal/mol apart) and can be separated.</p>
+
+<h3>Epimers and anomers</h3>
+<p class="step-body">Two specialized names are worth knowing because they dominate carbohydrate chemistry. <b>Epimers</b> are diastereomers that differ at exactly one stereocenter — glucose and galactose differ only at C4, and glucose and mannose only at C2. <b>Anomers</b> are epimers that differ specifically at the new stereocenter created when a sugar closes into a ring; α- and β-glucose are anomers, and the difference between them is the difference between starch and cellulose.</p>
+
+<h3>Why this matters for reactions</h3>
+<p class="step-body">Because diastereomers have different energies, a reaction that could produce two diastereomers does not produce them in equal amounts. This is <b>diastereoselectivity</b>, and it is the basis of essentially all stereocontrol in synthesis. By contrast, a reaction producing two enantiomers from achiral starting materials <i>must</i> produce them equally, because there is no energy difference to exploit.</p>
+<p class="step-body">You will meet this repeatedly: anti addition of bromine to an alkene gives one diastereomer and not the other; hydroboration gives syn addition and therefore a specific diastereomer; carbonyl additions to a molecule that already has a stereocenter favour one face.</p>
+
+<h3>What carries forward</h3>
+<p class="step-body">The enantiomer/diastereomer distinction is the taxonomy that all stereochemical outcomes are reported in. The next section covers the important special case where internal symmetry makes one of the expected stereoisomers achiral, and the two after that give you the notation to name and draw all of them unambiguously.</p>
