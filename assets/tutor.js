@@ -841,6 +841,30 @@
   // Short follow-ups ("what about kids?", "why?") carry no searchable terms of
   // their own — fold in the previous question so retrieval still has something
   // to work with.
+  // Phrases that say HOW to answer, not WHAT about. They have to come out
+  // before retrieval: "explain shock like I'm five" put the word "five" in the
+  // query, "five" is rarer in the notes than "shock", and the rarest-word rule
+  // duly decided the question was about the Five Rights of medication
+  // administration. The model still receives the question verbatim, so it
+  // still knows to keep the answer simple.
+  var STYLE_PHRASES = [
+    /\blike i\s*'?m\s+(five|5|ten|10|a\s+child|a\s+kid|new|dumb|stupid)\b/gi,
+    /\bexplain\s+(it\s+)?like\s+i\s*'?m\s+\d+\b/gi,
+    /\beli\s*5\b/gi,
+    /\bin\s+(simple|plain|basic)\s+(terms|english|words|language)\b/gi,
+    /\bfor\s+dummies\b/gi,
+    /\blike\s+a\s+(child|kid|beginner|five\s*year\s*old|5\s*year\s*old)\b/gi,
+    /\bin\s+your\s+own\s+words\b/gi,
+    /\bdumb(ed)?\s+down\b/gi
+  ];
+  function stripStyle(q){
+    var out = q;
+    STYLE_PHRASES.forEach(function(re){ out = out.replace(re, ' '); });
+    out = out.replace(/\s+/g, ' ').trim();
+    // If stripping left nothing to search for, the phrasing was the question.
+    return out || q;
+  }
+
   // Which turns are follow-ups that need the previous question folded in.
   // Length alone can't tell: "explain resonance" and "E1 vs E2" are short but
   // complete, and gluing the last question onto them answered the wrong topic
@@ -865,7 +889,7 @@
     var thinking = this.bubble('bot', '<span class="lp-dots"><span></span><span></span><span></span></span>');
 
     ensureIndex().then(function(){
-      var hits = search(self.expand(q), 6);
+      var hits = search(stripStyle(self.expand(q)), 6);
       var endpoint = readEndpoint();
       var local = answerLocally(q, hits);
 
