@@ -866,7 +866,12 @@
     /\bdumb(ed)?\s+down\b/gi
   ];
   function stripStyle(q){
-    var out = q;
+    // Normalize curly punctuation first. The suggested question on the
+    // greeting chip is "Explain shock like I’m five" with a typographic
+    // apostrophe, and a pattern written with a straight one silently missed
+    // it — so the phrase this exists to strip was the one case it skipped,
+    // and the model was handed passages about the Five Rights.
+    var out = q.replace(/[\u2018\u2019\u02BC]/g, "'").replace(/[\u201C\u201D]/g, '"');
     STYLE_PHRASES.forEach(function(re){ out = out.replace(re, ' '); });
     out = out.replace(/\s+/g, ' ').trim();
     // If stripping left nothing to search for, the phrasing was the question.
