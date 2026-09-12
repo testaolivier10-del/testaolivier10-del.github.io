@@ -180,11 +180,27 @@
     });
     return out;
   }
+  // Set this to a deployed Worker URL (see worker/README.md) and every visitor
+  // gets AI answers with nothing to configure. Left empty, the assistant stays
+  // in local-search mode unless someone sets an endpoint by hand in settings.
+  var DEFAULT_ENDPOINT = '';
+
   function readEndpoint(){
-    try { return (localStorage.getItem(ENDPOINT_KEY) || '').trim(); } catch(e){ return ''; }
+    try {
+      var saved = (localStorage.getItem(ENDPOINT_KEY) || '').trim();
+      if(saved) return saved === OFF ? '' : saved;
+    } catch(e){}
+    return DEFAULT_ENDPOINT;
   }
+  // "Turn off" has to be storable, or clearing the key would just fall back to
+  // the built-in default and the switch would appear to do nothing.
+  var OFF = 'off';
   function writeEndpoint(v){
-    try { v ? localStorage.setItem(ENDPOINT_KEY, v) : localStorage.removeItem(ENDPOINT_KEY); } catch(e){}
+    try {
+      if(v) localStorage.setItem(ENDPOINT_KEY, v);
+      else if(DEFAULT_ENDPOINT) localStorage.setItem(ENDPOINT_KEY, OFF);
+      else localStorage.removeItem(ENDPOINT_KEY);
+    } catch(e){}
   }
 
   // ------------------------------------------------------------------- index
