@@ -205,6 +205,29 @@
     syncHeights();
     requestAnimationFrame(syncHeights);
     if(document.fonts && document.fonts.ready) document.fonts.ready.then(syncHeights);
+
+    mountTutor(cfg);
+  }
+
+  /* The study assistant. Mounted here rather than per page because every page
+     in both courses already renders this header — one hook covers all of them,
+     including ochem's 140-odd lesson, mechanism and tool pages, and any page
+     added later gets it for free. The tutor reads the course off
+     window.LEVLPREP_COURSE to pick which material to index. */
+  function mountTutor(cfg){
+    if(window.__levlTutorMounted) return;
+    window.__levlTutorMounted = true;
+    // cfg.subject is the course's own identifier — the same one it uses to
+    // namespace sync and pick its rank names — so the tutor keys off that
+    // rather than guessing from a URL.
+    window.LEVLPREP_COURSE = {
+      key: cfg.subject === 'ochem' ? 'ochem' : 'nremt',
+      name: cfg.course || 'LevlPrep'
+    };
+    var el = document.createElement('script');
+    el.src = '/assets/tutor.js';
+    el.defer = true;
+    document.head.appendChild(el);
   }
 
   /* Offline support: one root-scoped worker for the whole site, so its scope
