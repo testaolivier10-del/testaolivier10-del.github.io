@@ -339,11 +339,11 @@
       3:['torsional-strain','newman-reading'],
       6:['newman-reading','torsional-strain'] } },
 
-    'nucleophiles': { n:7, steps:{
+    'nucleophiles': { n:8, steps:{
       1:['nucleophile-recognition'],
       2:['nucleophile-recognition','electron-rich-poor'],
-      3:['solvent-effects','basicity-vs-nucleophilicity'],
-      6:['nucleophile-recognition','electron-rich-poor'] } },
+      4:['solvent-effects','basicity-vs-nucleophilicity'],
+      7:['nucleophile-recognition','electron-rich-poor'] } },
 
     'nucleophilic-addition': { n:8, steps:{
       1:['carbonyl-electrophilicity'],
