@@ -1,7 +1,49 @@
+<p class="step-body">This section is where the chapter's parts come together into a working procedure: given a substituted cyclohexane, decide which chair it prefers and by how much — and then use that to predict what the molecule will do. The last part is the important one. Conformational analysis is not a descriptive exercise; it is how you predict which product a reaction gives.</p>
+
 <h3>The one-substituent rule</h3>
-<p class="step-body">For a monosubstituted cyclohexane, the dominant (major) conformation is always the chair with the substituent <b>equatorial</b> — because equatorial avoids the 1,3-diaxial clashes that axial experiences. The size of the preference is exactly the substituent's A-value. Methylcyclohexane (A-value 1.7 kcal/mol) is about 95% equatorial-methyl at room temperature; tert-butylcyclohexane (A-value ~4.7-5+ kcal/mol) is over 99.9% equatorial.</p>
-<h3>Multiple substituents: add the A-values (roughly)</h3>
-<p class="step-body">With two or more substituents, compare the two chairs by adding up which substituents are axial vs. equatorial in each, and pick whichever chair has less total "axial penalty." For example, in a disubstituted ring, if one chair puts a large group axial and a small group equatorial, and the other chair does the reverse, the chair with the larger group equatorial is strongly favored — its A-value dominates the comparison.</p>
-<div class="notes-fact">This same equatorial-preference logic explains disaccharide and steroid conformations in biochemistry — the same chair-flip, A-value framework you just learned for simple cyclohexanes governs which shape glucose (a cyclohexane-like ring) actually adopts.</div>
+<p class="step-body">For a monosubstituted cyclohexane the answer is always the same: the major conformation is the chair with the substituent <b>equatorial</b>, because equatorial avoids the 1,3-diaxial clashes that axial cannot. The size of the preference is exactly the substituent's A-value.</p>
+<p class="step-body">Methylcyclohexane (A = 1.7) is about 95% equatorial-methyl at room temperature. <i>tert</i>-Butylcyclohexane (A ≈ 4.9) is over 99.9%. There is no case where a lone substituent prefers axial on steric grounds.</p>
+
+<h3>Multiple substituents: add the axial penalties</h3>
+<p class="step-body">With two or more substituents the procedure is mechanical. Draw both chairs. For each, note which substituents are axial. Add up the A-values of the axial ones — that is that chair's penalty. The chair with the smaller total wins, and the difference between the totals is the preference.</p>
+<p class="step-body">Adding A-values is an approximation; it ignores direct interactions between two substituents that happen to be near each other, and it slightly overcounts when both axial groups are on the same face. For the comparisons you will be asked to make it is reliable, and when it is close the answer usually is close.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — trans-1,2-dimethylcyclohexane</span>
+<p>Trans on adjacent carbons means one methyl up and one down, which puts them both axial in one chair and both equatorial in the other.</p>
+<p>Chair A: both equatorial. Axial penalty 0. Chair B: both axial. Penalty 1.7 + 1.7 = 3.4 kcal/mol.</p>
+<p>Chair A wins by 3.4 kcal/mol, which is better than 99:1. The trans isomer is essentially locked in the diequatorial chair.</p>
+</div>
+
+<div class="notes-example">
+<span class="k">Worked example — cis-1,2-dimethylcyclohexane</span>
+<p>Cis on adjacent carbons means both methyls on the same face, which forces one axial and one equatorial in <i>either</i> chair.</p>
+<p>Chair A: methyl 1 axial, methyl 2 equatorial. Penalty 1.7. Chair B: the reverse. Penalty 1.7.</p>
+<p>The two chairs are equal in energy and equally populated. Neither is preferred, and the molecule is permanently carrying 1.7 kcal/mol of axial strain it cannot escape.</p>
+<p>That is why the cis isomer is measurably less stable than the trans isomer of the same compound — about 1.7 kcal/mol less. Two compounds with identical formulas and identical connectivity, differing only in the face a methyl group sits on, with different heats of combustion.</p>
+</div>
+
+<div class="notes-example">
+<span class="k">Worked example — when the groups are different sizes</span>
+<p><i>cis</i>-1-<i>tert</i>-butyl-4-methylcyclohexane. Cis on carbons 1 and 4 means one group axial and one equatorial in either chair.</p>
+<p>Chair A: <i>tert</i>-butyl axial (4.9), methyl equatorial. Penalty 4.9. Chair B: methyl axial (1.7), <i>tert</i>-butyl equatorial. Penalty 1.7.</p>
+<p>Chair B wins by 3.2 kcal/mol. The bulkier group takes equatorial and the smaller one absorbs the axial cost — which is the general rule whenever you cannot have everything equatorial.</p>
+</div>
+
+<div class="notes-pitfall"><b>Work out cis/trans before you draw anything.</b> Whether two substituents can both be equatorial is fixed by their cis/trans relationship and their positions on the ring, and getting that wrong invalidates everything downstream. The pattern: on <b>1,2</b> and <b>1,4</b> rings, <i>trans</i> allows both equatorial; on <b>1,3</b> rings, <i>cis</i> allows both equatorial. It flips because the axial directions alternate around the ring.</div>
+
+<div class="notes-fact">This same reasoning governs the shapes of sugars and steroids. Glucose adopts the chair that places every one of its bulky hydroxyl and hydroxymethyl groups equatorial — it is the only common hexose that can manage it, which is a large part of why glucose is the sugar life settled on. The chair-flip and A-value framework you have just learned for methylcyclohexane is exactly the framework used to analyze a steroid nucleus.</div>
+
 <h3>Why this connects directly to E2 elimination</h3>
-<p class="step-body">E2 elimination (Module 6) has a strict geometric requirement: the leaving group and the hydrogen being removed must be <b>anti-periplanar</b> — 180° apart, which on a cyclohexane ring means both must be <b>axial</b> (axial-axial is the only 180° relationship on a chair; equatorial groups are never anti-periplanar to each other). This means an E2 reaction on a cyclohexane ring can only happen through whichever of the two interconverting chairs happens to have the leaving group axial — even if that chair is the minority, higher-energy conformation. Conformational analysis is literally how you predict which product forms.</p>
+<p class="step-body">E2 elimination (Module 6) carries a strict geometric requirement: the leaving group and the hydrogen being removed must be <b>anti-periplanar</b>, 180° apart. On a cyclohexane ring, the only way to achieve 180° between substituents on adjacent carbons is for both to be <b>axial</b> — one axial-up and one axial-down. Two equatorial groups are never anti-periplanar to each other, and neither is an axial/equatorial pair.</p>
+<p class="step-body">So an E2 reaction on a ring can only proceed through whichever chair places the leaving group axial, <i>even if that chair is the minority conformation</i>. The molecule flips into it, reacts, and is replenished by the equilibrium. Conformational analysis is literally how you predict which product forms — and sometimes whether any product forms at all.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — the classic menthyl chloride comparison</span>
+<p>Neomenthyl chloride eliminates with ethoxide rapidly, giving mostly the more substituted (Zaitsev) alkene. Menthyl chloride, its diastereomer, eliminates roughly 200 times more slowly and gives only the <i>less</i> substituted alkene.</p>
+<p>The reason is entirely conformational. In neomenthyl chloride, the favoured chair already has the chlorine axial, with axial hydrogens available on both neighbouring carbons — fast, and free to give the Zaitsev product.</p>
+<p>In menthyl chloride, the favoured chair has all three substituents equatorial, including the chlorine. To eliminate at all, the ring must flip into a strained triaxial chair, which is why it is slow. And in that chair only one neighbouring carbon has an axial hydrogen — the one that gives the less substituted alkene. Geometry overrides the usual product preference completely.</p>
+</div>
+
+<h3>What carries forward</h3>
+<p class="step-body">Conformational reasoning reappears wherever geometry gates a reaction: the anti-periplanar requirement of E2, the backside approach of SN2, the trans-diaxial opening of halonium ions and epoxides in Modules 7 and 8, and the stereochemistry of ring reactions generally. More broadly, this chapter establishes a habit worth carrying: when a reaction's outcome seems arbitrary, check whether the molecule can physically adopt the geometry the mechanism requires.</p>

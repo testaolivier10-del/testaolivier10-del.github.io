@@ -1,7 +1,45 @@
-<h3>How to draw one</h3>
-<p class="step-body">A <b>Newman projection</b> is a view straight down a specific C–C bond. The <b>front</b> carbon is drawn as a dot with three lines radiating out at 120° (its three other substituents). The <b>back</b> carbon is drawn as a circle, with three lines starting at the circle's edge (its three other substituents) — the bond connecting front and back carbons is the dot/circle itself, pointing straight at you, so it isn't drawn as a line.</p>
-<h3>Staggered vs. eclipsed</h3>
-<p class="step-body">The angle between a front substituent and the nearest back substituent is the <b>dihedral (torsion) angle</b>. In the <b>staggered</b> conformation, front and back substituents are offset by 60° — as far apart as possible. In the <b>eclipsed</b> conformation, they line up directly (0° apart), overlapping in the drawing.</p>
-<div class="notes-fact">Eclipsed conformations are higher in energy than staggered ones — this is <b>torsional strain</b>, caused by repulsion between the electron clouds of eclipsing bonds. For ethane, rotating from staggered to eclipsed costs about 2.9 kcal/mol (roughly 1 kcal/mol per eclipsing H–H interaction, and there are three). This small barrier is why ethane's C–C bond rotates extremely fast at room temperature — staggered and eclipsed aren't different, isolable molecules, just different snapshots along one continuous rotation.</div>
+<p class="step-body">Single bonds rotate freely — that was established in Module 1, when sigma bonds turned out to be cylindrically symmetric. But "freely" does not mean "without preference." As a molecule rotates about a C–C bond it passes through arrangements of noticeably different energy, and it spends most of its time in the low ones. This chapter is about which arrangements those are, and it starts with the drawing that makes them visible.</p>
+
+<h3>What a conformation is</h3>
+<p class="step-body">A <b>conformation</b> is a spatial arrangement of a molecule reachable from another by rotation about single bonds alone, with no bonds broken. Different conformations of one molecule are not different compounds; they interconvert millions of times per second at room temperature and cannot be separated in a bottle.</p>
+<p class="step-body">This distinguishes conformations from the isomers of Module 5, which require bond breaking to interconvert and genuinely are different substances. Keeping the distinction sharp saves a lot of confusion later.</p>
+
+<h3>How to draw a Newman projection</h3>
+<p class="step-body">A <b>Newman projection</b> is a view straight down one specific C–C bond, chosen because it is the rotation you care about. The <b>front</b> carbon is a dot with three lines radiating outward at 120°, showing its other three substituents. The <b>back</b> carbon is a circle, with three lines starting at the circle's edge. The bond joining front and back points directly at your eye, so it is not drawn at all — the dot and the circle are its two ends.</p>
+<p class="step-body">Practical advice: identify the bond you are looking down before you draw anything, and label the front and back atoms on the original structure. Most Newman errors are not drawing errors but bookkeeping errors — a substituent placed on the wrong carbon.</p>
+
+<h3>Staggered versus eclipsed</h3>
+<p class="step-body">The angle between a front substituent and the nearest back substituent is the <b>dihedral</b> or <b>torsion</b> angle. In a <b>staggered</b> conformation, front and back substituents are offset by 60°, as far apart as they can get. In an <b>eclipsed</b> conformation they line up at 0°, overlapping in the drawing (conventionally drawn slightly offset so both are visible).</p>
+
+<div class="notes-fact">Eclipsed conformations are higher in energy than staggered ones. This is <b>torsional strain</b>, and while it is often described as electron-cloud repulsion between eclipsing bonds, the better modern explanation is hyperconjugation: in the staggered arrangement, each filled C–H sigma orbital aligns with an empty C–H sigma* orbital on the neighbouring carbon, and that stabilizing overlap is lost when the bonds eclipse. For ethane the barrier is about 2.9 kcal/mol — roughly 1 kcal per eclipsing H–H pair, and there are three.</div>
+
+<p class="step-body">Put 2.9 kcal/mol in perspective: it is small enough that ethane rotates about a million times a second at room temperature, so staggered and eclipsed ethane are not isolable substances but snapshots along one continuous motion. It is nonetheless large enough to be measured, and large enough that at any instant the great majority of molecules are near a staggered arrangement.</p>
+
 <h3>Butane: four named conformations</h3>
-<p class="step-body">For butane (CH₃CH₂CH₂CH₃), look down the central C2–C3 bond with a methyl group front and back. As you rotate through 360°, you pass through: <b>anti</b> (methyls 180° apart, staggered, lowest energy, defined as 0 kcal/mol), <b>gauche</b> (methyls 60° apart, staggered, but the two methyls are close enough to clash sterically, costing about +0.9 kcal/mol), <b>eclipsed</b> (methyl eclipsing a hydrogen, about +3.6 kcal/mol), and <b>totally eclipsed / syn</b> (the two methyls directly eclipsing each other, the highest point, about +4.5 to +6 kcal/mol). There are two energetically-equal gauche conformations and two equal (methyl-H) eclipsed conformations by symmetry.</p>
+<p class="step-body">Ethane is symmetric enough that all three staggered forms are identical. Butane is where conformational analysis gets interesting. Look down the central C2–C3 bond, with a methyl group on the front carbon and another on the back. Rotating through a full 360° passes through four distinguishable arrangements.</p>
+<div class="notes-table-wrap">
+<table class="notes-table">
+<tr><th>Conformation</th><th>Dihedral</th><th>Type</th><th>Energy</th></tr>
+<tr><td>anti</td><td>180°</td><td>staggered</td><td>0 (reference)</td></tr>
+<tr><td>gauche</td><td>60°</td><td>staggered</td><td>+0.9</td></tr>
+<tr><td>eclipsed (Me/H)</td><td>120°</td><td>eclipsed</td><td>+3.6</td></tr>
+<tr><td>syn (Me/Me)</td><td>0°</td><td>eclipsed</td><td>+4.5 to 6</td></tr>
+</table>
+</div>
+<p class="step-body">By symmetry there are two equivalent gauche conformations and two equivalent methyl/hydrogen eclipsed ones. The <b>anti</b> conformation is the global minimum, and butane spends roughly 70% of its time there at room temperature, with most of the rest in the two gauche forms.</p>
+<p class="step-body">The gauche penalty of 0.9 kcal/mol is worth remembering by name. It is <b>steric strain</b>, not torsional strain: the two methyl groups are staggered, so there is no eclipsing problem, but at 60° they are close enough to bump into each other. Steric strain and torsional strain are separate effects with separate causes, and the gauche conformation is the cleanest place to see one without the other.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — reading an energy diagram</span>
+<p>Plot butane's energy against dihedral angle and you get a curve with three minima and three maxima over 360°.</p>
+<p>The minima are at 60° (gauche), 180° (anti) and 300° (the other gauche). The maxima are at 0° (syn, the highest), 120° and 240° (methyl/hydrogen eclipsed).</p>
+<p>The difference between the highest maximum and the lowest minimum — about 5 kcal/mol — is the rotational barrier. Small enough to be crossed constantly at room temperature; large enough that the anti form is genuinely preferred.</p>
+</div>
+
+<div class="notes-pitfall"><b>Gauche is staggered.</b> The gauche conformation is a local energy minimum, not a maximum, and it is a perfectly normal shape for a molecule to adopt — about a quarter of butane molecules are gauche at any moment. People often assume "gauche is bad" and confuse it with an eclipsed arrangement. It costs 0.9 kcal/mol relative to anti, which is real but modest.</div>
+
+<h3>Why this is worth the trouble</h3>
+<p class="step-body">Conformational preferences might look like a detail, but they determine reaction outcomes. E2 elimination requires the leaving group and the departing hydrogen to be anti-periplanar — a specific dihedral angle — so a molecule can only eliminate through conformations that make that geometry available. Enzymes bind particular conformations of their substrates. And in the next few sections, the entire behavior of cyclohexane rings follows from applying exactly this staggered-versus-eclipsed reasoning to a closed loop.</p>
+
+<h3>What carries forward</h3>
+<p class="step-body">Torsional strain and steric strain, introduced here in their simplest setting, are two of the three contributions to ring strain in the next section. The gauche interaction reappears on a cyclohexane ring as the 1,3-diaxial interaction, which is the same clash in a different geometry. And anti-periplanar — the name for butane's most comfortable arrangement — turns out to be the geometric requirement for E2 in Module 6.</p>
