@@ -15,7 +15,10 @@ Plain HTML/CSS/vanilla JS — no framework, no bundler, no build step. Hosted on
 ```
 index.html            LevlPrep landing page (lists available courses)
 assets/                Shared across every course
-  theme.css            Design system (also loaded by nremt/ and ochem/)
+  theme.css            The one design system, loaded by every page on the site
+                         (light/dark, "Guided Path" visual style). There is deliberately
+                         no per-course copy: the two copies that used to exist drifted
+                         apart and cost the NREMT course its mute-button styling
   site-chrome.js       The two-row site header every course renders: row 1 is global
                          (back arrow, LevlPrep wordmark, course name, streak, level,
                          account, mute, theme), row 2 is that course's section tabs
@@ -43,7 +46,6 @@ nremt/                 The NREMT-EMT Prep course
   search.html             Client-side search across notes + the question bank
   assets/
     questions.json        The 2,084-question bank (fetched by practice.html and search.html)
-    theme.css             Shared design system (light/dark, "Guided Path" visual style)
     nav.js                 This course's tab list and sync namespace; hands the header
                              itself to /assets/site-chrome.js. Also the NREMT-flavored
                              shim over the site-wide level/streak engine in
