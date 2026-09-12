@@ -5,7 +5,7 @@
                           rank a series, predict a product, choose a
                           mechanism. Every wrong answer carries an authored
                           diagnosis. Preferred whenever one fits.
-     practice-bank.js     ~1900 multiple-choice/true-false questions, 30 per
+     practice-bank.json   ~1900 multiple-choice/true-false questions, 30 per
                           topic. Breadth and volume. Normalized here into the
                           same shape and concept-tagged by keyword inference
                           (see concepts.js) so they participate in adaptive
@@ -130,6 +130,21 @@
       (BY_TOPIC[q.topic] = BY_TOPIC[q.topic] || []).push(q);
       BY_ID[q.id] = q;
     });
+  }
+
+  /* Drop the built pool so the next call rebuilds it.
+
+     The legacy bank arrives over the network now (assets/bank-loader.js), so
+     it is possible for something to call build() before it lands. That would
+     cache a pool holding only the interactive questions — and because build()
+     short-circuits on a non-null POOL, it would stay that way for the life of
+     the page. The loader calls this once the bank is in, which makes the
+     ordering irrelevant instead of something every caller has to get right. */
+  function invalidate(){
+    POOL = null;
+    BY_CONCEPT = null;
+    BY_TOPIC = null;
+    BY_ID = null;
   }
 
   function all(){ build(); return POOL; }
@@ -693,6 +708,7 @@
     isInteractive: isInteractive,
     markSeen: markSeen,
     topicTitle: topicTitle,
-    stats: stats
+    stats: stats,
+    invalidate: invalidate
   };
 })();

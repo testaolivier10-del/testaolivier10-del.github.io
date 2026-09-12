@@ -11,13 +11,12 @@
    stem for context, the explanation — under short keys, so the assistant can
    load it as a second tier without pulling the answer key along with it.
  
-   Ochem's bank is the same idea in a different wrapper: practice-bank.js is a
-   1MB script, keyed by topic id, whose `why` field explains each answer. Same
+   Ochem's bank is the same idea in a different wrapper: practice-bank.json is
+   a 1MB object keyed by topic id, whose `why` field explains each answer. Same
    treatment, so both courses have the same depth to draw on.
 
    Regenerate after editing either bank:  node scripts/build-tutor-bank.mjs */
 import { readFileSync, writeFileSync } from 'node:fs';
-import vm from 'node:vm';
 
 const SRC = 'nremt/assets/questions.json';
 const OUT = 'nremt/assets/tutor-bank.json';
@@ -48,17 +47,15 @@ const bytes = readFileSync(OUT).byteLength;
 console.log(`${entries.length} entries -> ${OUT} (${(bytes / 1024).toFixed(0)} KB, from ${(readFileSync(SRC).byteLength / 1024).toFixed(0)} KB)`);
 
 // ---------------------------------------------------------------- ochem
-// practice-bank.js is a script, not data, so it is run in a throwaway context
-// with a window to attach itself to — parsing a megabyte of object literal
-// with a regex would break the first time someone writes a brace in prose.
-const OCHEM_SRC = 'ochem/assets/practice-bank.js';
+// The ochem bank used to be a script that assigned window.OchemPracticeBank,
+// which this had to run in a throwaway VM context to read. It ships as plain
+// JSON now (the browser fetches it rather than parsing a megabyte of
+// JavaScript), so it just parses.
+const OCHEM_SRC = 'ochem/assets/practice-bank.json';
 const OCHEM_OUT = 'ochem/assets/tutor-bank.json';
 const CURRICULUM = 'ochem/assets/curriculum.js';
 
-const sandbox = { window: {} };
-vm.createContext(sandbox);
-vm.runInContext(readFileSync(OCHEM_SRC, 'utf8'), sandbox);
-const bank = sandbox.window.OchemPracticeBank || {};
+const bank = JSON.parse(readFileSync(OCHEM_SRC, 'utf8'));
 
 // Topic ids are slugs; curriculum.js holds the human titles.
 const titles = {};

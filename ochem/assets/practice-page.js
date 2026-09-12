@@ -504,7 +504,13 @@
     return null;
   }
 
-  var deepLink = planFromQuery();
-  if(deepLink && E.availableCount(deepLink)) startSession(deepLink);
-  else renderHome();
+  /* The first view either branch renders reports counts drawn from the whole
+     question pool, so both wait for the legacy bank to arrive rather than
+     rendering a number that would change under the user a moment later. See
+     assets/bank-loader.js. */
+  window.OchemPracticeBankReady.then(function(){
+    var deepLink = planFromQuery();
+    if(deepLink && E.availableCount(deepLink)) startSession(deepLink);
+    else renderHome();
+  });
 })();

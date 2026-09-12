@@ -101,6 +101,15 @@ ochem/                 The Organic Chemistry course (beta)
                             back safe: a step you have already left never records a
                             second attempt, so walking back and forth can't move a score
                             (retries within a step are unaffected)
+    practice-bank.json     1,860 multiple-choice/true-false questions, 30 per topic
+                            across the 62 shipped topics, keyed by topic id. Plain
+                            JSON rather than a script so Practice and Review can
+                            render their setup screens while the megabyte is still
+                            arriving; assets/bank-loader.js fetches it and the two
+                            page bootstraps await it
+    bank-loader.js         Fetches practice-bank.json, exposes the promise both page
+                            bootstraps wait on, and invalidates any pool the question
+                            engine built before the bank landed
     session-runner.js      The shared question loop behind Practice and Review: renders
                             each question kind, grades, diagnoses, teaches, and keeps a
                             session history so any answered card can be replayed read-only

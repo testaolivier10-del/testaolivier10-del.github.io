@@ -326,5 +326,6 @@
     runner.finish();
   });
 
-  render();
+  // Waits on the question bank for the same reason practice-page.js does.
+  window.OchemPracticeBankReady.then(render);
 })();

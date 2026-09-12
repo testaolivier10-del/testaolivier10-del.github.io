@@ -1,7 +1,7 @@
 /* Ochem interactive question bank.
 
    This is the bank the adaptive engine prefers. It is small compared to
-   practice-bank.js (~1900 legacy multiple-choice questions), but every
+   practice-bank.json (~1900 legacy multiple-choice questions), but every
    question here does two things the legacy bank cannot:
 
    1. It asks in a form other than "pick a sentence". Click the nucleophile
