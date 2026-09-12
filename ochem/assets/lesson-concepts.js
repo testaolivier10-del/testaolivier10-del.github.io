@@ -292,11 +292,11 @@
       6:['ir-functional-groups'],
       7:['ir-functional-groups'] } },
 
-    'leaving-groups': { n:7, steps:{
-      1:['leaving-group-ability'],
-      2:['leaving-group-ability','pka-scale'],
+    'leaving-groups': { n:8, steps:{
+      2:['leaving-group-ability'],
       3:['leaving-group-ability','pka-scale'],
-      6:['leaving-group-ability'] } },
+      4:['leaving-group-ability','pka-scale'],
+      7:['leaving-group-ability'] } },
 
     'lewis-acids': { n:7, steps:{
       1:['lewis-acid-base'], 2:['lewis-acid-base'],
