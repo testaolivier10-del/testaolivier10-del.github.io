@@ -620,7 +620,15 @@
       body: JSON.stringify({ question: q, context: context, history: (history || []).slice(-4), course: courseKey() }),
       signal: ctrl ? ctrl.signal : undefined
     }).then(function(r){
-      if(!r.ok) throw new Error('HTTP ' + r.status);
+      if(!r.ok){
+        // The endpoint explains itself in the body — rate limited, model
+        // unavailable, origin refused. Losing that and reporting a bare status
+        // code is what made this undiagnosable from the page.
+        return r.json().catch(function(){ return null; }).then(function(body){
+          var why = body && (body.detail || body.error);
+          throw new Error(why ? String(why).slice(0, 140) : 'HTTP ' + r.status);
+        });
+      }
       return r.json();
     }).then(function(data){
       clearTimeout(timer);
@@ -913,9 +921,15 @@
           finish(renderModelText(answer), local.sources, local.domain, hits.length
             ? 'Written by an AI from this course’s material — check anything clinical against your protocols.'
             : 'Not covered in this course’s material, so this is the AI answering generally — treat it as a starting point, not a source.');
-        }).catch(function(){
+        }).catch(function(err){
+          var why = (err && err.message) ? err.message : 'no response';
+          // A blocked request never reaches the endpoint, and "Failed to fetch"
+          // means nothing to a reader — name the two causes that produce it.
+          if(/failed to fetch|networkerror|load failed/i.test(why)){
+            why = 'could not be reached — offline, or the connection was blocked';
+          }
           finish(local.html, local.sources, local.domain,
-            'The AI didn’t respond, so this is the course’s own material instead.');
+            'The AI didn’t answer (' + esc(why) + '), so this is the course’s own material instead.');
         });
       } else {
         finish(local.html, local.sources, local.domain, null);
