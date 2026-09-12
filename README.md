@@ -1,8 +1,8 @@
 # testaolivier10-del.github.io
 
-Source for the [Study Hub](https://testaolivier10-del.github.io/) site, home to:
+Source for [LevlPrep](https://testaolivier10-del.github.io/), home to two courses:
 
-**[LevlPrep](https://testaolivier10-del.github.io/nremt/)** — a free NREMT-EMT exam prep app: a 2,084-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
+**[NREMT-EMT Prep](https://testaolivier10-del.github.io/nremt/)** — a free NREMT-EMT exam prep app: a 2,084-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
 
 **[Organic Chemistry](https://testaolivier10-del.github.io/ochem/)** (beta) — a mastery/learning product, not exam prep: a full 14-module Organic Chemistry I curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. **58 lessons and 10 mechanism walkthroughs are built**, covering Foundations through carbonyl and aromatic chemistry; `curriculum.js` is the single source of truth for what exists, and anything it doesn't link yet shows as "coming soon". A Mastery dashboard scores performance per module from real question attempts, not just completion, and flags concept dependencies: struggling on E2 surfaces a "possible gap detected" callout pointing at its declared prerequisites, whether or not those prerequisite lessons exist yet. Alongside the course there are **seven interactive tools** (`ochem/tools.html`) — an arrow pusher that shows you the product your mechanism makes, a resonance explorer, a 3D viewer, a conformation lab, a reaction predictor, an acid/base comparator and a spectroscopy lab — see [Tools](#tools).
 
@@ -13,13 +13,16 @@ Plain HTML/CSS/vanilla JS — no framework, no bundler, no build step. Hosted on
 ## Structure
 
 ```
-index.html            Study Hub landing page (lists available subjects)
-assets/                Shared across every subject
+index.html            LevlPrep landing page (lists available courses)
+assets/                Shared across every course
   theme.css            Design system (also loaded by nremt/ and ochem/)
+  site-chrome.js       The two-row site header every course renders: row 1 is global
+                         (back arrow, LevlPrep wordmark, course name, streak, level,
+                         account, theme), row 2 is that course's section tabs
   account.js           One login for the whole site: Supabase auth + namespaced
                          cross-device sync (see Data & accounts)
   hub-progress.js      One shared level and one shared streak; per-subject XP
-nremt/                 The LevlPrep app
+nremt/                 The NREMT-EMT Prep course
   index.html           App home
   practice.html        Question bank UI (fetches assets/questions.json at runtime)
   dashboard.html        XP, streaks, domain accuracy, readiness score
@@ -33,13 +36,18 @@ nremt/                 The LevlPrep app
   assets/
     questions.json        The 2,084-question bank (fetched by practice.html and search.html)
     theme.css             Shared design system (light/dark, "Guided Path" visual style)
-    nav.js                 Shared header/nav; NREMT-flavored shim over the site-wide
-                             level/streak engine in /assets/hub-progress.js
+    nav.js                 This course's tab list and sync namespace; hands the header
+                             itself to /assets/site-chrome.js. Also the NREMT-flavored
+                             shim over the site-wide level/streak engine in
+                             /assets/hub-progress.js
     vendor/three/          Vendored three.js (module build + loaders/controls actually used)
     body3d.glb              Compressed 3D anatomy model (meshopt)
-ochem/                 The Organic Chemistry app (beta)
+ochem/                 The Organic Chemistry course (beta)
   index.html             Product home
-  learn.html             Full 14-module curriculum browser, rendered from assets/curriculum.js
+  learn.html             The textbook: a contents rail beside one chapter at a time,
+                            rendered from assets/curriculum.js + notes/ (see Textbook)
+  notes/                 One HTML fragment per curriculum topic — the written course,
+                            62 sections, fetched on demand by the textbook
   practice.html, review.html   Question practice and the review queue, both
                             driven by assets/session-runner.js
   tools.html             Hub for the seven interactive tools, rendered from
@@ -92,14 +100,16 @@ ochem/                 The Organic Chemistry app (beta)
                             questions they got right. Surfaces as the "Flagged questions"
                             practice mode and a list on the Practice home; never added or
                             cleared by the engine
-    ochem-nav.js           Injects the Learn/Practice/Review/Tools/Mastery sub-nav
-    ochem.css              Shared sub-nav, module/topic list, mastery-bar, and lesson-page
+    ochem-nav.js           This course's tab list; hands the header to site-chrome.js
+    textbook.js            learn.html: contents rail, chapter routing, lazy note loading,
+                            and read-tracking (see Textbook)
+    ochem.css              Shared textbook, mastery-bar, and lesson-page
                             styles (progress bar, choice buttons, feedback boxes, etc. —
                             lessons built after E2 rely on this instead of pasting the
                             same <style> block inline)
-    learn-page.js, mastery-page.js   Dynamic list rendering for those two pages, kept in
-                            their own files (not inline) so the CI link-checker below
-                            doesn't misread generated `href="' + x + '"` text as a broken link
+    mastery-page.js        Dynamic list rendering for that page, kept in its own file
+                            (not inline) so the CI link-checker below doesn't misread
+                            generated `href="' + x + '"` text as a broken link
     chem-core.js           Molecules as STRUCTURES rather than pictures: elements, lone
                             pairs, numeric charges, implicit hydrogens, formal charge,
                             octet checks — and apply(), which takes a set of curved arrows
@@ -121,7 +131,13 @@ ochem/                 The Organic Chemistry app (beta)
 scripts/check-site.mjs   CI: broken-link + JSON-validity checks (see below)
 ```
 
-`ochem/` reuses the root `assets/theme.css` design system but has its own lightweight page header and sub-nav (it doesn't use `nremt/assets/nav.js`, which builds the NREMT app's own nav). It does share the site-wide account, level and streak: every ochem page loads `/assets/account.js` and `/assets/hub-progress.js`, and `ochem/assets/ochem-nav.js` injects the level badge, streak chip and account button into the page's header.
+Both courses render the identical header from `assets/site-chrome.js`, so a page only needs an empty `<div id="site-header"></div>`; each course's nav module (`nremt/assets/nav.js`, `ochem/assets/ochem-nav.js`) supplies nothing but its course name and tab list. They also share the site-wide account, level and streak: every page loads `/assets/account.js` and `/assets/hub-progress.js`.
+
+### Textbook (`ochem/learn.html`)
+
+Learn is the course's written half. Every topic's prose is one HTML fragment under `ochem/notes/<topic>.html` — one per curriculum topic, 62 in all, ~63,000 words — and `ochem/assets/textbook.js` renders a contents rail (14 chapters, searchable, with per-chapter read counts) beside one chapter at a time, fetching that chapter's notes on open so the book costs a chapter rather than all 62 topics.
+
+The interactive lessons are unchanged and each section links out to its own. Reading is tracked separately from mastery in `ochem_textbook_read`, set by reaching the end of a section or by hand, worth 5 XP the first time, and never mixed into the mastery number — which still comes only from answering questions. Old per-lesson `?notes=1` URLs redirect to the matching section.
 
 Lesson progress is stored in `ochem_progress` (per-topic `{correct, attempts}`, read by `curriculum.js`); the concept model lives in `ochem_mastery_v1` (see `ochem/assets/mastery-engine.js`); and the game layer's own state — concept badges, daily Rounds, achievements — lives in `ochem_game_v1` (`ochem/assets/ochem-xp.js`). All three sync with an account.
 

@@ -42,6 +42,10 @@ for (const file of walk(ROOT)) {
   // Redirect stubs are not pages, and neither is Google's verification file.
   if (/http-equiv="refresh"/.test(body)) continue;
   if (/^google[0-9a-f]+\.html$/.test(rel)) continue;
+  // ochem/notes/ holds the textbook's section fragments — bodyless HTML the
+  // textbook fetches into learn.html. They are content, not pages: no <head>,
+  // no title, and nothing to land on.
+  if (rel.startsWith('ochem/notes/')) continue;
   const path = '/' + rel.replace(/index\.html$/, '');
   urls.push({ path, priority: priorityFor(path) });
 }

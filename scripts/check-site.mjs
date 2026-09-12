@@ -249,6 +249,8 @@ if (existsSync(sitemapForCoverage)) {
     // Redirect stubs, and Google's site-verification file, are not pages.
     if (/http-equiv="refresh"/.test(body)) continue;
     if (/^google[0-9a-f]+\.html$/.test(relative(ROOT, file))) continue;
+    // Nor are the textbook's section fragments — see build-sitemap.mjs.
+    if (relative(ROOT, file).split(sep).join('/').startsWith('ochem/notes/')) continue;
     const path = '/' + relative(ROOT, file).split(sep).join('/');
     if (!listed.has(path) && !listed.has(path.replace(/index\.html$/, ''))) {
       fail(`sitemap.xml: no entry for ${path} — run scripts/build-sitemap.mjs`);
