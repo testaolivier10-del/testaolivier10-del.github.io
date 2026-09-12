@@ -153,7 +153,7 @@ function countSteps(body) {
   }
 }
 
-// ---- 4. Question bank: no positional or length tell in the keyed answer ----
+// ---- 5. Question bank: no positional or length tell in the keyed answer ----
 // Both are ways a bank can teach pattern-matching instead of medicine. The
 // first is fatal and mechanical: at one point every one of the 1,000 newest
 // multiple-choice items keyed to option A, so anything rendering the file
@@ -211,7 +211,7 @@ if (existsSync(bankPath)) {
   }
 }
 
-// ---- 4b. Every advertised question count matches the bank ----
+// ---- 6. Every advertised question count matches the bank ----
 // The homepage advertised "920 practice questions" long after the bank passed
 // two thousand. The figure appears in nine places — page copy, meta
 // descriptions, Open Graph tags — so it drifts quietly. This makes it loud.
@@ -235,7 +235,7 @@ if (Array.isArray(bank)) {
   }
 }
 
-// ---- 5. Every page is in the sitemap ----
+// ---- 7. Every page is in the sitemap ----
 // Fifty lesson pages once shipped with no path in from a search engine because
 // sitemap.xml was maintained by hand. This walk already knows every HTML file.
 const sitemapForCoverage = join(ROOT, 'sitemap.xml');

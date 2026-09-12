@@ -210,10 +210,10 @@ then open `http://localhost:8000/`.
 
 1. Every local `href`/`src` in every HTML file points at a file that exists.
 2. Every JSON file parses.
-3. Every URL in `sitemap.xml` maps to a real file — **and** every real page is in `sitemap.xml`. Fifty Ochem lesson pages once shipped with no path in from a search engine because the sitemap was hand-maintained; run `node scripts/build-sitemap.mjs` to regenerate it after adding a page.
-4. The question bank carries no answer tell: no keyed option position holds more than 40% of items, no select-N key set dominates, and the "longest option is the answer" rate stays under its ceiling. The ceiling is a ratchet — lower it as the bank improves, never raise it.
-5. Every advertised question count in markup, meta tags and this README matches the bank. The homepage went on advertising a figure from an early build long after the bank had more than doubled.
-6. Each Ochem lesson has the number of steps `lesson-concepts.js` was authored against.
+3. Each Ochem lesson has the number of steps `lesson-concepts.js` was authored against.
+4. Every URL in `sitemap.xml` maps to a real file — **and** every real page is in `sitemap.xml`. Fifty Ochem lesson pages once shipped with no path in from a search engine because the sitemap was hand-maintained; run `node scripts/build-sitemap.mjs` to regenerate it after adding a page.
+5. The question bank carries no answer tell: no keyed option position holds more than 40% of items, no select-N key set dominates, and the "longest option is the answer" rate stays under its ceiling. The ceiling is a ratchet — lower it as the bank improves, never raise it.
+6. Every advertised question count in markup, meta tags and this README matches the bank. The homepage went on advertising a figure from an early build long after the bank had more than doubled.
 
 ## Updating the question bank
 
