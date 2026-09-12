@@ -183,7 +183,7 @@
   // Set this to a deployed Worker URL (see worker/README.md) and every visitor
   // gets AI answers with nothing to configure. Left empty, the assistant stays
   // in local-search mode unless someone sets an endpoint by hand in settings.
-  var DEFAULT_ENDPOINT = '';
+  var DEFAULT_ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev';
 
   function readEndpoint(){
     try {
