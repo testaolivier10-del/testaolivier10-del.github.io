@@ -158,6 +158,8 @@
   // be credited once for matching either — not penalized for using the word
   // the reader didn't type. Expansions count for less than what was actually
   // typed, since they're a guess at intent.
+  var NUMBER_TERMS = new Set(('one two three four five six seven eight nine ten eleven twelve '
+    + '0 1 2 3 4 5 6 7 8 9 10 11 12 first second third fourth fifth').split(' '));
   var SYN_WEIGHT = 0.6;
   function queryConcepts(q){
     var raw = tokenize(q), concepts = [];
@@ -442,6 +444,47 @@
     return Promise.all(runners).then(function(){ return results; });
   }
 
+  // The question bank's explanations are a second tier, fetched only when the
+  // notes come up short. It is 1.5MB — worth having, not worth making every
+  // reader download to answer something the glossary already covers. Once
+  // fetched it stays in the index for the rest of the session.
+  var BANKS = {
+    nremt: { file: '/nremt/assets/tutor-bank.json', label: 'Question bank',
+             href: function(row){ return '/nremt/practice.html?domain=' + encodeURIComponent(row.d || ''); } },
+    ochem: { file: '/ochem/assets/tutor-bank.json', label: 'Practice explanations',
+             href: function(){ return '/ochem/practice.html'; } }
+  };
+
+  var bankPromise = null;
+  function ensureBank(){
+    var bank = BANKS[courseKey()];
+    if(!bank) return Promise.resolve(false);
+    if(bankPromise) return bankPromise;
+    bankPromise = fetch(bank.file)
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(rows){
+        var added = rows.map(function(row){
+          return {
+            page: bank.label,
+            file: bank.href(row),
+            // No text fragment: the explanation isn't on the practice page as
+            // written, so a fragment link would scroll to nothing.
+            noFragment: true,
+            heading: row.t || 'Question bank',
+            text: (row.q ? row.q + ' — ' : '') + row.e
+          };
+        });
+        // Grow the existing array rather than replacing it. ensureIndex()
+        // resolves once and hands out that array; swapping in a new one left
+        // every earlier caller holding the pre-bank copy.
+        for(var i = 0; i < added.length; i++) INDEX.push(added[i]);
+        buildStats();
+        return true;
+      })
+      .catch(function(){ return false; });
+    return bankPromise;
+  }
+
   function ensureIndex(){
     if(indexPromise) return indexPromise;
     indexPromise = resolvePages().then(function(pages){
@@ -485,8 +528,21 @@
     // The rarest concept is almost always the subject of the question. A
     // passage that misses it gets pushed down — softly, so an odd phrasing
     // still returns the next best thing rather than nothing.
-    var keyIdx = 0;
-    for(var wi = 1; wi < weights.length; wi++){ if(weights[wi] > weights[keyIdx]) keyIdx = wi; }
+    // Numbers are almost never what a question is about — "the five rights",
+    // "three shockable rhythms", "12-lead" all hang off a real subject — but
+    // they are rare enough across the notes to win a rarity contest, and
+    // twice already the rarest word turned out to be the wrong one. Skip them
+    // when something else is available.
+    var keyIdx = -1, numericFallback = -1;
+    for(var wi = 0; wi < weights.length; wi++){
+      var isNumber = concepts[wi].some(function(v){ return NUMBER_TERMS.has(v.term); });
+      if(isNumber){
+        if(numericFallback === -1 || weights[wi] > weights[numericFallback]) numericFallback = wi;
+        continue;
+      }
+      if(keyIdx === -1 || weights[wi] > weights[keyIdx]) keyIdx = wi;
+    }
+    if(keyIdx === -1) keyIdx = numericFallback === -1 ? 0 : numericFallback;
 
     var scored = [];
     for(var i = 0; i < INDEX.length; i++){
@@ -541,6 +597,7 @@
   // Deep-link straight to the sentence using a text fragment, so the reader
   // lands on the passage rather than the top of a 300KB notes page.
   function sourceHref(chunk, q){
+    if(chunk.noFragment) return chunk.file;
     var terms = tokenize(q).filter(function(w){ return !STOP.has(w) && w.length > 2; });
     var target = '';
     var sentences = splitSentences(chunk.text);
@@ -901,8 +958,19 @@
     this.bubble('user', esc(q));
     var thinking = this.bubble('bot', '<span class="lp-dots"><span></span><span></span><span></span></span>');
 
+    var ESCALATE = 4.0;
     ensureIndex().then(function(){
-      var hits = search(stripStyle(self.expand(q)), 6);
+      var query = stripStyle(self.expand(q));
+      var hits = search(query, 6);
+      // A weak best hit means the reference pages don't really cover this.
+      // Before giving up, look through the question bank's explanations.
+      if((!hits.length || hits[0].score < ESCALATE) && BANKS[courseKey()] && !bankPromise){
+        thinking.innerHTML = '<span class="lp-dots"><span></span><span></span><span></span></span>'
+          + '<span class="lp-note" style="margin-left:8px">checking the question bank…</span>';
+        return ensureBank().then(function(){ return search(query, 6); });
+      }
+      return bankPromise ? ensureBank().then(function(){ return search(query, 6); }) : hits;
+    }).then(function(hits){
       var endpoint = readEndpoint();
       var local = answerLocally(q, hits);
 
@@ -999,7 +1067,13 @@
     var met = false;
     try { met = localStorage.getItem(MET_KEY) === '1'; } catch(e){}
     if(!met) setTimeout(function(){ tip.classList.add('show'); }, 1200);
-    btn.addEventListener('mouseenter', function(){ tip.classList.add('show'); });
+    btn.addEventListener('mouseenter', function(){
+      tip.classList.add('show');
+      // Reaching for the button is the earliest honest signal that someone is
+      // about to ask something, so start reading the course's pages now
+      // instead of after they have typed and hit send.
+      ensureIndex();
+    });
     btn.addEventListener('mouseleave', function(){ if(met) tip.classList.remove('show'); });
 
     var host = null, tutor = null;

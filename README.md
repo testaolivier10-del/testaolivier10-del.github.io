@@ -257,6 +257,15 @@ It works in two layers, and the first one is always on:
    Answers quote the matching passage and link back to it. Nothing leaves the
    browser and it works offline.
 
+   When the reference pages answer weakly, a second tier loads: each course's
+   practice explanations, built by `scripts/build-tutor-bank.mjs` into
+   `<course>/assets/tutor-bank.json` (NREMT 2,084 entries, ochem 1,844). That
+   is the largest body of teaching prose either course has — written to explain
+   why an answer is right — and it was invisible to the assistant because it
+   sits inside megabyte question banks alongside answer keys. It is fetched
+   only on a weak hit, so a question the glossary covers never pays for it.
+   Regenerate it after editing either bank.
+
 2. **An optional AI layer.** If an endpoint is saved under the assistant's gear
    icon, the question and the retrieved passages are posted there and a model
    writes the answer. It is grounded but not muzzled: it may rephrase,
