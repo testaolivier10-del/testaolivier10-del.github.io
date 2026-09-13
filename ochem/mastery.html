@@ -39,7 +39,14 @@
     font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
     color:var(--muted);margin:26px 0 10px;
   }
-  .mastery-shell{max-width:760px;margin:0 auto;}
+  /* `.section-head` is centred, which suits the marketing home pages it was
+     built for. On a dashboard it put a centred label above left-aligned cards,
+     so the eye kept switching axis. Left-align it here only. */
+  .xshell .section-head{text-align:left;}
+
+  /* Width is the shell's job now — this page used to cap itself at 760px
+     while Home and Tools ran the full shell, so the course changed width
+     as you moved through it. */
   .overall-card{
     background:var(--navy);color:#fff;border-radius:22px;padding:28px clamp(20px,4vw,34px);
     display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:22px;
@@ -59,7 +66,7 @@
 <body>
 <div id="site-header"></div>
 
-<div class="xshell mastery-shell">
+<div class="xshell narrow">
   <div class="hero" style="padding-bottom:0;">
     <div class="eyebrow">Organic Chemistry I</div>
     <h1 style="margin-bottom:4px;">Mastery, not a readiness score.</h1>
