@@ -69,33 +69,69 @@
 <div class="xshell narrow">
   <div class="hero">
     <div class="eyebrow">Organic Chemistry I</div>
-    <h1 style="margin-bottom:4px;">Mastery, not a readiness score.</h1>
-    <p class="lede" style="margin-top:0;">Built from your performance across every question you've answered in each concept — not just whether you opened the lesson.</p>
+    <h1 style="margin-bottom:4px;">Mastery.</h1>
+    <p class="lede" style="margin-top:0;">Built from every question you've answered, per concept.</p>
   </div>
 
   <div class="xsection" style="padding-top:0;">
     <div id="gameLevel"></div>
-    <div class="game-grid">
+    <div class="game-grid compact">
       <div id="gameRounds"></div>
       <div id="gameDebt"></div>
     </div>
-    <div id="gameConcepts"></div>
-    <div class="section-head">Achievements</div>
-    <div class="badge-grid" id="gameAchievements"></div>
-    <div class="section-head">Where you actually stand</div>
+
     <div class="overall-card" id="overallCard"></div>
-    <div id="masterySnapshot"></div>
     <div id="leechAlerts"></div>
     <div id="dependencyAlerts"></div>
     <div class="rec-row" id="recRow"></div>
-    <div class="section-head" id="weakHead">Weakest concepts</div>
-    <div id="weakConcepts"></div>
-    <div class="section-head" id="familyHead">By concept family</div>
-    <div id="familyStats"></div>
-    <div class="section-head" id="moduleHead">By module</div>
-    <div id="moduleStats"></div>
+
+    <div class="tab-row" role="tablist" id="masteryTabs">
+      <button type="button" role="tab" aria-selected="true" data-tab="modules">By module</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="weak">Weakest concepts</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="families">By family</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="achievements">Achievements</button>
+    </div>
+    <div class="tab-panel" data-panel="modules">
+      <div id="moduleHead" hidden></div>
+      <div id="moduleStats"></div>
+    </div>
+    <div class="tab-panel" data-panel="weak" hidden>
+      <div id="weakHead" hidden></div>
+      <div id="weakConcepts"></div>
+    </div>
+    <div class="tab-panel" data-panel="families" hidden>
+      <div id="familyHead" hidden></div>
+      <div id="familyStats"></div>
+    </div>
+    <div class="tab-panel" data-panel="achievements" hidden>
+      <div id="gameConcepts"></div>
+      <div class="badge-grid" id="gameAchievements"></div>
+    </div>
+    <p class="empty-panel-note" id="tabEmpty" hidden>Nothing here yet. Answer questions in any lesson, or start a Practice session, and this fills in.</p>
   </div>
 </div>
+
+<script>
+  // One page, four views. The tab row swaps which panel is visible; a panel
+  // with nothing rendered into it shows the one-line note instead.
+  (function(){
+    var tabs = document.getElementById('masteryTabs');
+    if(!tabs) return;
+    function show(name){
+      tabs.querySelectorAll('[data-tab]').forEach(function(b){ b.setAttribute('aria-selected', b.dataset.tab === name ? 'true' : 'false'); });
+      var anyContent = false;
+      document.querySelectorAll('.tab-panel').forEach(function(pn){
+        var on = pn.dataset.panel === name;
+        pn.hidden = !on;
+        if(on) anyContent = pn.textContent.trim().length > 0;
+      });
+      var note = document.getElementById('tabEmpty');
+      if(note) note.hidden = anyContent;
+    }
+    tabs.addEventListener('click', function(e){ var b = e.target.closest('[data-tab]'); if(b) show(b.dataset.tab); });
+    window.addEventListener('load', function(){ show('modules'); });
+  })();
+</script>
 
 <script src="assets/curriculum.js"></script>
 <script src="assets/concepts.js"></script>

@@ -99,7 +99,7 @@
     cells.push('<div class="cell"><div class="k">Day streak</div><div class="v">' + streak +
       '</div><div class="s">' + (streak ? 'keep it going' : 'practice today to start one') + '</div></div>');
 
-    return '<div class="snapshot">' + cells.join('') + '</div>';
+    return '<div class="snapshot strip">' + cells.join('') + '</div>';
   }
 
   function recommendationsHtml(recs){

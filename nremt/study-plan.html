@@ -133,12 +133,12 @@
   </div>
 
   <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">Your domain progress</div>
-      <div class="xcontent narrow" id="progressBox">
-        <div class="empty-note">No questions answered yet on this device. Progress here fills in as you practice in any mode on the practice exam page — full exams, domain drills, adaptive practice, or review.</div>
+    <details class="fold-card">
+      <summary>Your domain progress <small>the same readings as the dashboard</small></summary>
+      <div class="fold-body narrow" id="progressBox">
+        <div class="empty-note">No questions answered yet on this device. Progress here fills in as you practice in any mode on the practice exam page.</div>
       </div>
-    </div>
+    </details>
   </div>
 
   <div class="xsection">
@@ -164,6 +164,7 @@
   function renderDomainProgress(){
     const data = loadDomainStatsAll();
     const box = document.getElementById('progressBox');
+    if(!box) return; // the plan page no longer shows domain progress; the dashboard does
     const attempted = DOMAINS.filter(d => data[d] && data[d].total > 0);
     if(attempted.length === 0) return;
 

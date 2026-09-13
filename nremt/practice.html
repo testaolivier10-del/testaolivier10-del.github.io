@@ -441,17 +441,23 @@
 
   /* ---- Daily streak card ---- */
   .streak-card{
-    background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
-    box-shadow:var(--lift);padding:18px 20px;margin-bottom:22px;
+    background:var(--white);border:0;border-radius:var(--radius);
+    box-shadow:var(--lift-sm);padding:12px 18px;margin-bottom:22px;
+    display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 22px;align-items:center;
   }
-  .streak-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+  .streak-card .streak-track{grid-column:1 / -1;height:8px;}
+  .streak-card .streak-best,.streak-card .streak-settings{grid-column:1 / -1;}
+  .streak-top{display:contents;}
+  .streak-top .streak-gear{grid-column:2;justify-self:end;grid-row:1;}
+  .streak-flame-block{grid-row:1;}
+  .streak-goal-row{grid-row:2;grid-column:1 / -1;}
   .streak-flame-block{display:flex;align-items:center;gap:9px;}
   .streak-flame{display:inline-flex;color:var(--amber);}
-  .streak-num{font-size:26px;font-weight:900;color:var(--amber);}
+  .streak-num{font-size:20px;font-weight:900;color:var(--amber);}
   .streak-word{font-size:13px;font-weight:700;color:var(--muted);}
   .streak-gear{display:inline-flex;background:none;border:none;cursor:pointer;color:var(--muted);padding:6px;border-radius:10px;}
   .streak-gear:hover{color:var(--ink);background:var(--hover-tint);}
-  .streak-goal-row{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:800;color:var(--muted);margin-bottom:7px;flex-wrap:wrap;gap:4px;}
+  .streak-goal-row{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:800;color:var(--muted);margin-bottom:2px;flex-wrap:wrap;gap:4px;}
   .streak-done{color:var(--good-text);font-weight:900;}
   .streak-warn{color:var(--accent);font-weight:900;}
   .streak-track{background:var(--track);border-radius:var(--radius-pill);height:10px;overflow:hidden;}
@@ -505,7 +511,7 @@
       <div class="mode-card mode-card--primary">
         <div class="k">Adaptive <span class="adaptive-tag">retargets live</span></div>
         <h2>Adaptive practice</h2>
-        <p>Picks each question from how you’ve done so far — weighted toward the domains and the individual questions you’ve missed, with difficulty nudged up or down as you answer.</p>
+        <details class="fold"><summary>How it works</summary><p>Picks each question from how you’ve done so far — weighted toward the domains and the individual questions you’ve missed, with difficulty nudged up or down as you answer.</p></details>
         <div class="spacer"></div>
         <div class="meta">Re-targets after<br>every question</div>
         <div class="controls">
@@ -522,7 +528,7 @@
       <div class="mode-card">
         <div class="k">Full length</div>
         <h2>Timed exam</h2>
-        <p>100 questions drawn at random from the pool in the real exam’s domain proportions, so a retake isn’t the same set again. Scored by domain when you finish.</p>
+        <details class="fold"><summary>How it works</summary><p>100 questions drawn at random from the pool in the real exam’s domain proportions, so a retake isn’t the same set again. Scored by domain when you finish.</p></details>
         <div class="spacer"></div>
         <div class="meta">100 q · 2:00:00 · ~72 s/q<br>pool of <span id="poolCount">2,084</span></div>
         <div class="controls">
@@ -540,7 +546,7 @@
       <div class="mode-card">
         <div class="k">Short session</div>
         <h2>Drill one domain</h2>
-        <p>A focused set from a single domain — short enough to fit a break, and the quickest way to put a first reading on a domain you haven’t touched.</p>
+        <details class="fold"><summary>How it works</summary><p>A focused set from a single domain — short enough to fit a break, and the quickest way to put a first reading on a domain you haven’t touched.</p></details>
         <div class="spacer"></div>
         <div class="controls">
           <select id="domainSelect" aria-label="Domain">

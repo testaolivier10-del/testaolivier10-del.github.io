@@ -60,26 +60,6 @@
   .station-row .name{font-size:17px;font-weight:900;margin-bottom:3px;text-wrap:pretty;}
   .station-row .watch{font-size:14px;font-weight:600;color:var(--muted);text-wrap:pretty;}
 
-  /* Condensed previews. The Tools page is a launcher: each panel shows what
-     its subpage covers and how much of it, then hands off. It used to print
-     every scenario, every flow diagram and all eight stations with their
-     coaching notes inline — a whole subpage's content on the hub. */
-  .peek-grid{display:grid;gap:20px;grid-template-columns:1fr;}
-  @media (min-width:820px){.peek-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
-  .peek{
-    display:flex;flex-direction:column;background:var(--white);
-    border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
-    padding:20px 22px;box-shadow:var(--lift-lg);
-  }
-  .peek h2{font:900 16px var(--font-ui);margin:0 0 2px;letter-spacing:-0.01em;}
-  .peek .count{font:800 12.5px var(--font-ui);color:var(--muted);margin:0 0 14px;}
-  .peek ul{list-style:none;margin:0 0 16px;padding:0;flex:1;}
-  .peek li{
-    padding:9px 0;border-bottom:1px solid var(--line-soft);
-    font-size:14.5px;font-weight:700;color:var(--ink);text-wrap:pretty;
-  }
-  .peek li:last-child{border-bottom:0;}
-  .peek .link-underline{align-self:flex-start;}
   .tools-note{font-size:13px;font-weight:600;color:var(--muted);margin:22px 0 0;text-wrap:pretty;max-width:80ch;}
 </style>
 </head>
@@ -131,46 +111,7 @@
   </div>
 
   <div class="xsection">
-    <div class="peek-grid">
-
-      <div class="peek">
-        <h2>Scenarios</h2>
-        <p class="count">8 branching calls</p>
-        <ul>
-          <li>Severe Leg Bleeding After a Motorcycle Crash</li>
-          <li>Chest Pain at the Grocery Store</li>
-          <li>The Choking Toddler</li>
-        </ul>
-        <a href="scenario-sim.html" class="link-underline">See all eight &rarr;</a>
-      </div>
-
-      <div class="peek">
-        <h2>Protocol flow diagrams</h2>
-        <p class="count">8 sequences</p>
-        <ul>
-          <li>Primary Assessment Sequence</li>
-          <li>Adult BLS / CPR Sequence</li>
-          <li>Anaphylaxis Recognition &amp; Management</li>
-        </ul>
-        <a href="flowcharts.html" class="link-underline">See all eight &rarr;</a>
-      </div>
-
-      <div class="peek">
-        <h2>Psychomotor stations</h2>
-        <p class="count">8 stations, scored separately</p>
-        <ul>
-          <li>Patient Assessment &mdash; Trauma</li>
-          <li>Cardiac Arrest Management / AED</li>
-          <li>BVM Ventilation of an Apneic Adult</li>
-        </ul>
-        <a href="skillsheets.html" class="link-underline">See all eight &rarr;</a>
-      </div>
-
-    </div>
-    <p class="tools-note">Flow diagrams show general, widely-taught sequences and the station list is general structure only &mdash; neither is a scored skill sheet. Verify against your program&rsquo;s official sheets and current NREMT documents before your exam.</p>
-  </div>
-
-  <div class="xsection">
+    <p class="tools-note" style="margin-top:0">Flow diagrams show general, widely-taught sequences and the station list is general structure only &mdash; neither is a scored skill sheet. Verify against your program&rsquo;s official sheets and current NREMT documents before your exam.</p>
     <footer style="margin-top:0">
       <p>Looking for something specific? Use <a href="search.html">search</a> to look across the question bank and study material at once.</p>
       <p class="privacy-link"><a href="../privacy.html">Privacy</a></p>

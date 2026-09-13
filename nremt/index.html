@@ -107,7 +107,7 @@
         <p class="lede">2,084 practice questions across six domains, forty chapters of notes, and scenario sims that run a call start to finish. Free, offline, no account.</p>
         <div class="hero-ctas">
           <a href="practice.html" class="btn-press">Start practicing</a>
-          <a href="#sample" class="link-quiet">See a sample question</a>
+          <a href="#sample" class="link-quiet" id="sampleLink">See a sample question</a>
         </div>
       </div>
 
@@ -214,10 +214,12 @@
     </div>
   </div>
 
-  <div class="xsection" id="sample">
+  <div class="xsection">
+    <details class="fold-card" id="sample">
+      <summary>See a sample question <small>real exam formatting, from the bank</small></summary>
+      <div class="fold-body">
     <div class="sample-row">
       <div>
-        <h2 style="margin-top:0">Try one.</h2>
         <p class="section-lede" style="margin:0 0 24px;text-align:left">Real exam formatting, pulled straight from the practice bank.</p>
         <div class="sample-list">
           <div class="row"><span class="n">A</span> Single-best-answer</div>
@@ -234,6 +236,8 @@
         <div class="qopt" style="margin-bottom:0"><span class="letter">D</span> Position the patient supine and transport</div>
       </div>
     </div>
+      </div>
+    </details>
   </div>
 
   <div class="xsection">
@@ -328,6 +332,12 @@
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render);
   else render();
 })();
+</script>
+<script>
+  // The hero link opens the folded sample before scrolling to it.
+  document.getElementById('sampleLink').addEventListener('click', function(){
+    var d = document.getElementById('sample'); if(d) d.open = true;
+  });
 </script>
 <script src="assets/nav.js" defer></script>
 </body>
