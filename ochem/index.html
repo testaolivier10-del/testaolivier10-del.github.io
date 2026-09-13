@@ -75,7 +75,9 @@
   }
   .tier .th{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
   .tier .th b{font-size:16.5px;font-weight:900;}
-  .tier .th .pct{font:700 13px var(--font-mono);color:var(--accent);}
+  /* 'Not started' used to wrap onto two lines in the narrower cards,
+     so the three headings sat at three different heights. */
+  .tier .th .pct{font:700 13px var(--font-mono);color:var(--accent);white-space:nowrap;flex-shrink:0;}
   .tier .meta{font-size:12.5px;font-weight:800;color:var(--muted);}
   .tier .chips{display:flex;flex-wrap:wrap;gap:7px;}
   .tier .chips a{
@@ -211,7 +213,7 @@
 
     <div class="tier-grid" style="margin-top:28px">
       <div class="tier" data-modules="1-3">
-        <div class="th"><b>Foundations</b><span class="pct" style="color:var(--muted)">Not started</span></div>
+        <div class="th"><b>Foundations</b><span class="pct" style="color:var(--muted)">0%</span></div>
         <div class="meta">Modules 1&ndash;3 &middot; 20 topics</div>
         <div class="track thin"><i style="width:0%"></i></div>
         <div class="chips">
@@ -229,7 +231,7 @@
       </div>
 
       <div class="tier" data-modules="4-13">
-        <div class="th"><b>Reactions &amp; mechanisms</b><span class="pct" style="color:var(--muted)">Not started</span></div>
+        <div class="th"><b>Reactions &amp; mechanisms</b><span class="pct" style="color:var(--muted)">0%</span></div>
         <div class="meta">Modules 4&ndash;13 &middot; 38 topics &middot; 10 mechanisms</div>
         <div class="track thin"><i style="width:0%"></i></div>
         <div class="chips">
@@ -248,7 +250,7 @@
       </div>
 
       <div class="tier" data-modules="14-14">
-        <div class="th"><b>Analysis &amp; spectroscopy</b><span class="pct" style="color:var(--muted)">Not started</span></div>
+        <div class="th"><b>Analysis &amp; spectroscopy</b><span class="pct" style="color:var(--muted)">0%</span></div>
         <div class="meta">Module 14 &middot; 4 topics</div>
         <div class="track thin"><i style="width:0%"></i></div>
         <div class="chips">

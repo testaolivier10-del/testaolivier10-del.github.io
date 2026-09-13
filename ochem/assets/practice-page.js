@@ -155,12 +155,15 @@
     return '<div class="mode-grid">' + MODES.map(function(m, i){
       var disabled = '';
       var pill = m.pill;
-      if(m.mode === 'mistakes' && !M.mistakes({ limit: 1 }).length) disabled = ' disabled';
+      // An empty queue is omitted rather than rendered dead: "Review your
+      // mistakes" and "Flagged questions" are both empty on a first visit,
+      // so two of the seven tiles were always greyed out on arrival.
+      if(m.mode === 'mistakes' && !M.mistakes({ limit: 1 }).length) return '';
       var countPill = false;
       if(m.mode === 'flagged'){
         var n = flaggedQuestions().length;
-        if(!n) disabled = ' disabled';
-        else { pill = String(n); countPill = true; }
+        if(!n) return '';
+        pill = String(n); countPill = true;
       }
       // A one- or two-digit pill needs far less room reserved beside the
       // title than the word "Default" does.

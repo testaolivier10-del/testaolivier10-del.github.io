@@ -245,6 +245,7 @@
   font:inherit;color:inherit;box-shadow:var(--lift-sm);
   transition:border-color .1s ease,transform .06s ease;
 }
+a.mode-card{text-decoration:none;display:block;}
 .mode-card:hover{border-color:var(--accent);}
 .mode-card:active{transform:translateY(2px);box-shadow:0 0 0 var(--line);}
 .mode-card:disabled{opacity:.5;cursor:default;}
