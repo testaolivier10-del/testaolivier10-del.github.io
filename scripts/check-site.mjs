@@ -179,13 +179,13 @@ if (existsSync(bankPath)) {
       }
     }
 
-    // (b) "the longest option is the answer". Chance is ~25%; the bank sits well
-    // above that because keys in the newest 1,000 items run about 10% longer
-    // than their distractors on average. The worst outliers have been trimmed;
-    // the rest is an editorial pass over several hundred items. This ceiling is
-    // a ratchet: lower it as that work lands, never raise it to let a
-    // regression through.
-    const LENGTH_TELL_CEILING = 0.55;
+    // (b) "the longest option is the answer". Chance is ~25%; the bank sat at
+    // 54% because keys in the newest 1,000 items ran about 10% longer than
+    // their distractors on average. An editorial pass over the 480 items where
+    // the key led by six characters or fewer lengthened one distractor apiece
+    // and brought it to 30%. This ceiling is a ratchet: lower it as more of
+    // that work lands, never raise it to let a regression through.
+    const LENGTH_TELL_CEILING = 0.32;
     let longestIsKey = 0;
     for (const q of mc) {
       const lens = q.options.map(o => String(o).length);
