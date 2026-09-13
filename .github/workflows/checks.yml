@@ -14,3 +14,15 @@ jobs:
         with:
           node-version: 20
       - run: node scripts/check-site.mjs
+
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # The scoring engines: XP, levels, streaks, concept strength, decay and
+      # the spaced-repetition schedule. No dependencies — node:test and a VM
+      # context standing in for a browser (scripts/test/harness.mjs).
+      - run: node --test scripts/test/*.test.mjs

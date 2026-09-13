@@ -154,6 +154,7 @@ worker/                Optional AI backend for the study assistant — a Cloudfl
                          Worker on the Workers AI free allowance. The site works without
                          it; see worker/README.md
 scripts/check-site.mjs   CI: broken-link + JSON-validity checks (see below)
+scripts/test/            CI: unit tests over the scoring engines (see below)
 ```
 
 Both courses render the identical header from `assets/site-chrome.js`, so a page only needs an empty `<div id="site-header"></div>`; each course's nav module (`nremt/assets/nav.js`, `ochem/assets/ochem-nav.js`) supplies nothing but its course name and tab list. They also share the site-wide account, level and streak: every page loads `/assets/account.js` and `/assets/hub-progress.js`.
@@ -324,6 +325,16 @@ then open `http://localhost:8000/`.
 4. Every URL in `sitemap.xml` maps to a real file — **and** every real page is in `sitemap.xml`. Fifty Ochem lesson pages once shipped with no path in from a search engine because the sitemap was hand-maintained; run `node scripts/build-sitemap.mjs` to regenerate it after adding a page.
 5. The question bank carries no answer tell: no keyed option position holds more than 40% of items, no select-N key set dominates, and the "longest option is the answer" rate stays under its ceiling. The ceiling is a ratchet — lower it as the bank improves, never raise it.
 6. Every advertised question count in markup, meta tags and this README matches the bank. The homepage went on advertising a figure from an early build long after the bank had more than doubled.
+
+### Unit tests
+
+A second job runs `node --test scripts/test/*.test.mjs` — 24 tests over the two engines whose failure modes are silent. Everything above checks that the site is *wired* correctly; nothing checked that it *scores* correctly. An interval that doubles too eagerly buries a shaky concept for four months, a decay curve that bites too hard makes yesterday's work look undone, a streak that resets in the wrong timezone eats a 40-day run. None of that throws, and none of it would have been caught by a link checker — the student just gets worse practice and no one finds out.
+
+- `scripts/test/hub-progress.test.mjs` — the level curve (pinned: changing it demotes every existing user), XP accumulation and per-subject split, streak continuation across days, goal tracking, rank titles, day-log pruning.
+- `scripts/test/mastery-engine.test.mjs` — unseen vs. scored-zero, the learning rate settling as evidence accumulates, the same-day guard that stops one good session reaching a six-month interval, the interval cap, the decay floor, due-ness, leech benching and its release on a lesson read, the daily review cap, mistake de-duplication, tier records.
+- `scripts/test/harness.mjs` — loads these browser IIFEs into a VM context with a window, a localStorage and, crucially, a clock the test controls. Both engines are about *time*; none of this is testable against a real `Date.now()` without either sleeping or asserting nothing.
+
+No dependencies and no build step, in keeping with the rest of the stack. Both engines were checked by mutation: 13 deliberate breaks (level curve shifted, same-day guard removed, interval cap removed, decay floor removed, lesson never lifts the bench, and so on) and every one of them fails the suite. A test that passes either way is worse than no test, so re-run that exercise if you add to these.
 
 ## Updating the question bank
 
