@@ -207,36 +207,63 @@
      One row per module, authored in the markup; this fills the reading and
      marks the module you're in — the one holding the lesson you'd resume,
      else the first with an unfinished lesson. */
+  /* ---- the path -------------------------------------------------------
+     Fourteen nodes on a grid, ordered boustrophedon so the eye follows one
+     line down the page, with the connector drawn through their centres and
+     filled up to the module you're in. */
+  var pathEl = document.getElementById('modulePath');
+  var currentModule = null;
+
+  function layoutPath(){
+    if(!pathEl) return;
+    var nodes = Array.prototype.slice.call(pathEl.querySelectorAll('.node'));
+    if(!nodes.length) return;
+    var cols = getComputedStyle(pathEl).gridTemplateColumns.split(' ').length || 1;
+    nodes.forEach(function(node, i){
+      var row = Math.floor(i / cols), pos = i % cols;
+      var col = (row % 2 === 0) ? pos : (cols - 1 - pos);
+      node.style.gridRow = String(row + 1);
+      node.style.gridColumn = String(col + 1);
+    });
+    var box = pathEl.getBoundingClientRect();
+    var pts = nodes.map(function(node){
+      var r = node.querySelector('.ring').getBoundingClientRect();
+      return [Math.round(r.left + r.width / 2 - box.left), Math.round(r.top + r.height / 2 - box.top)];
+    });
+    var d = pts.map(function(pt, i){ return (i ? 'L' : 'M') + pt[0] + ' ' + pt[1]; }).join(' ');
+    var track = pathEl.querySelector('.path-track');
+    var fill = pathEl.querySelector('.path-fill');
+    var upTo = currentModule ? nodes.findIndex(function(n){ return n.getAttribute('data-module') === currentModule; }) : -1;
+    if(track) track.setAttribute('d', d);
+    if(fill) fill.setAttribute('d', upTo > 0 ? pts.slice(0, upTo + 1).map(function(pt, i){ return (i ? 'L' : 'M') + pt[0] + ' ' + pt[1]; }).join(' ') : '');
+  }
+
   function renderModules(){
     var p = readProgress();
     var current = null;
     if(resumedTopicId){ var w = moduleOf(resumedTopicId); if(w) current = w.mod.id; }
     C.MODULES.forEach(function(m){
-      var row = document.querySelector('.mod[data-module="' + m.id + '"]');
-      if(!row) return;
-      // Chips inside the row: teal once finished, amber while a run is open.
-      Array.prototype.forEach.call(row.querySelectorAll('[data-topic]'), function(chip){
-        var r = p[chip.getAttribute('data-topic')];
-        if(!r) return;
-        if(typeof r.bestScore === 'number') chip.classList.add('done');
-        else if(r.step > 0) chip.classList.add('open');
-      });
+      var node = document.querySelector('.node[data-module="' + m.id + '"]');
+      if(!node) return;
       var scores = [];
       var firstOpen = null;
+      var allDone = true;
       m.topics.forEach(function(t){
         if(!t.href) return;
         var s = C.topicMastery(t.id);
         if(s !== null) scores.push(s);
         var r = p[t.id];
-        if(!firstOpen && !(r && r.completed)) firstOpen = t;
+        if(!(r && r.completed)){ allDone = false; if(!firstOpen) firstOpen = t; }
       });
       if(!current && firstOpen && scores.length) current = m.id;
+      var small = node.querySelector('small');
       if(scores.length){
         var avg = Math.round(scores.reduce(function(a, b){ return a + b; }, 0) / scores.length);
-        var fill = row.querySelector('.track > i'); if(fill) fill.style.width = avg + '%';
-        var pct = row.querySelector('.pct'); if(pct) pct.textContent = avg + '%';
+        node.style.setProperty('--p', String(avg));
+        node.classList.add('started');
+        if(small) small.textContent = avg + '% mastered';
       }
-
+      if(allDone && scores.length) node.classList.add('done');
     });
     if(!current){
       // Nothing scored yet: the first module with an unfinished lesson.
@@ -246,9 +273,18 @@
         return open;
       });
     }
+    currentModule = current;
     if(current){
-      var cur = document.querySelector('.mod[data-module="' + current + '"]');
-      if(cur){ cur.open = true; var sm = cur.querySelector('.mod-row'); if(sm) sm.classList.add('current'); }
+      var cur = document.querySelector('.node[data-module="' + current + '"]');
+      if(cur){
+        cur.classList.add('current');
+        var sm = cur.querySelector('small'); if(sm) sm.textContent = 'You are here';
+      }
+    }
+    layoutPath();
+    if(window.ResizeObserver && pathEl && !pathEl._ro){
+      pathEl._ro = new ResizeObserver(function(){ layoutPath(); });
+      pathEl._ro.observe(pathEl);
     }
   }
 

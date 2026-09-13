@@ -18,7 +18,7 @@
 // The cached copy is only served as a fallback when the network fails.
 // Bump CACHE_NAME whenever this file changes, so old cached entries are
 // dropped instead of lingering forever.
-const CACHE_NAME = 'levlprep-v19';
+const CACHE_NAME = 'levlprep-v20';
 const PRECACHE_URLS = [
   'index.html',
   // Shown in place of an uncached page while offline. Precached rather than

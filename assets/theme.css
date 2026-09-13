@@ -942,6 +942,113 @@ html{scrollbar-color:var(--muted) transparent;}
 .strip .cell .k{font:800 12px var(--font-ui);color:var(--muted);}
 
 /* ==========================================================================
+   7c. Textbook shell — a contents rail beside one chapter at a time.
+   Used by ochem/learn.html and nremt/study-notes.html; the chapter body
+   styles stay with each course, the frame and rail are shared.
+   ========================================================================== */
+.tb-shell{
+  max-width:1180px;margin:0 auto;padding:0 clamp(18px,3.5vw,48px);
+  display:grid;grid-template-columns:274px minmax(0,1fr);gap:clamp(24px,4vw,54px);
+  align-items:start;
+}
+
+/* --- contents rail --- */
+.tb-rail{
+  position:sticky;top:calc(var(--site-header-h,112px) + 18px);
+  max-height:calc(100vh - var(--site-header-h,112px) - 36px);
+  display:flex;flex-direction:column;gap:14px;padding:22px 0 26px;
+}
+.tb-rail>:not(.tb-contents){flex:0 0 auto;}
+.tb-rail-title{font:900 12px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0;}
+.tb-progress-row{display:flex;justify-content:space-between;font:800 12.5px var(--font-ui);color:var(--muted);margin-bottom:6px;}
+.tb-progress-track{height:6px;border-radius:99px;background:var(--line);overflow:hidden;}
+.tb-progress-fill{height:100%;background:var(--accent);border-radius:99px;transition:width .25s ease;}
+.tb-filter{
+  width:100%;box-sizing:border-box;padding:9px 12px;border-radius:10px;
+  border:var(--bw) solid var(--line);background:var(--white);color:var(--ink);
+  font:700 13px var(--font-ui);
+}
+.tb-filter:focus{outline:none;border-color:var(--accent);}
+.tb-filter-hint{font:700 11px var(--font-ui);color:var(--muted);margin:-8px 0 0;line-height:1.4;}
+.tb-contents{overflow-y:auto;overscroll-behavior:contain;flex:1 1 auto;min-height:0;margin-right:-8px;padding-right:8px;-webkit-overflow-scrolling:touch;}
+.tb-toc-empty{font:700 13px var(--font-ui);color:var(--muted);}
+
+.tb-toc-mod + .tb-toc-mod{margin-top:2px;}
+.tb-toc-modhead{
+  width:100%;display:flex;align-items:center;gap:9px;
+  background:none;border:0;padding:8px 6px;border-radius:8px;cursor:pointer;
+  font:800 13px var(--font-ui);color:var(--ink);text-align:left;
+}
+.tb-toc-modhead:hover{background:var(--hover-tint);}
+.tb-toc-num{
+  flex-shrink:0;width:20px;height:20px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--tint-accent);color:var(--accent);font:900 11px var(--font-mono);
+}
+.tb-toc-modtitle{flex:1;min-width:0;}
+.tb-toc-count{flex-shrink:0;font:800 11px var(--font-mono);color:var(--muted);}
+.tb-toc-count.complete{color:var(--accent);}
+.tb-toc-topics{display:none;padding:0 0 6px 29px;}
+.tb-toc-mod.open .tb-toc-topics{display:block;}
+.tb-toc-topic{
+  display:flex;align-items:center;gap:7px;padding:5px 6px;border-radius:7px;
+  font:700 12.5px var(--font-ui);color:var(--muted);text-decoration:none;
+}
+.tb-toc-topic:hover{background:var(--hover-tint);color:var(--ink);}
+.tb-toc-topic.current{color:var(--accent);background:var(--tint-accent);}
+.tb-toc-tick{
+  flex-shrink:0;width:13px;height:13px;border-radius:50%;
+  border:2px solid var(--line);
+}
+.tb-toc-topic.read .tb-toc-tick{background:var(--accent);border-color:var(--accent);}
+.tb-toc-topic.read .tb-toc-tick::after{
+  content:"";display:block;width:4px;height:7px;margin:0 auto;
+  border:solid var(--on-accent-fill);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px);
+}
+
+
+/* --- the chapter frame --- */
+.tb-main{padding:26px 0 60px;min-width:0;max-width:74ch;}
+.tb-chapter-head{border-bottom:var(--bw) solid var(--line);padding-bottom:18px;margin-bottom:8px;}
+.tb-chapter-eyebrow{font:900 11.5px var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 6px;}
+.tb-chapter-title{font:900 clamp(27px,4vw,36px) var(--font-ui);letter-spacing:-.02em;margin:0 0 8px;}
+.tb-chapter-meta{font:700 13px var(--font-ui);color:var(--muted);margin:0;}
+
+
+.tb-chapter-nav{display:flex;justify-content:space-between;gap:18px;margin-top:38px;}
+.tb-chapter-link{
+  display:flex;flex-direction:column;gap:4px;max-width:46%;
+  padding:14px 18px;border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  background:var(--white);text-decoration:none;
+}
+.tb-chapter-link:hover{border-color:var(--accent);}
+.tb-chapter-link.next{text-align:right;margin-left:auto;}
+.tb-chapter-link span{font:800 11.5px var(--font-ui);color:var(--muted);}
+.tb-chapter-link b{font:900 14.5px var(--font-ui);color:var(--ink);}
+
+
+/* --- contents as a drawer once the rail no longer fits beside the text --- */
+.tb-toc-btn{display:none;}
+@media (max-width:900px){
+  .tb-shell{grid-template-columns:minmax(0,1fr);gap:0;}
+  .tb-toc-btn{
+    display:inline-flex;align-items:center;gap:8px;margin:18px 0 0;
+    padding:9px 15px;border-radius:var(--radius-pill);cursor:pointer;
+    border:2px solid var(--line);background:var(--white);color:var(--ink);
+    font:800 13px var(--font-ui);
+  }
+  .tb-toc-btn:hover{border-color:var(--accent);color:var(--accent);}
+  .tb-rail{
+    display:none;position:static;max-height:none;padding:14px 0 0;
+    border-bottom:var(--bw) solid var(--line);
+  }
+  body.tb-toc-open .tb-rail{display:flex;}
+  .tb-contents{max-height:58vh;}
+  .tb-main{padding-top:16px;}
+  .tb-chapter-link{max-width:48%;}
+}
+
+/* ==========================================================================
    8. Motion — what assets/motion.js drives, and the page-load rise
    ========================================================================== */
 /* Everything above the fold rises into place on load. Transform only: the

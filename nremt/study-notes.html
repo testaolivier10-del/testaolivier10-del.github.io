@@ -43,92 +43,65 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 <style>
   body{line-height:1.65;}
-  .chapter{border-top-width:2px;}
-  .lede{color:var(--muted);font-size:15.5px;max-width:60ch;margin:0 0 24px;}
 
-  .search-box{
-    width:100%;padding:13px 15px;border:2px solid var(--line);border-radius:var(--radius);
-    font-family:var(--font-ui);font-weight:700;font-size:15px;background:var(--white);color:var(--ink);margin-bottom:18px;
-  }
+  /* Chapter meta row: section count on the left, print on the right. */
+  .tb-chapter-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
   .print-btn{
-    font-family:var(--font-ui);font-weight:900;font-size:13px;color:var(--ink);
-    background:var(--white);border:2px solid var(--line);border-radius:12px;box-shadow:var(--lift-sm);
-    padding:10px 16px;cursor:pointer;margin-bottom:14px;
+    display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+    border:2px solid var(--line);background:var(--white);color:var(--muted);
+    padding:4px 11px 4px 8px;border-radius:var(--radius-pill);
+    font:800 11.5px var(--font-ui);white-space:nowrap;
   }
-  .print-btn:hover{border-color:var(--accent);}
-  .print-btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--line);}
-  .no-results{font-size:14px;color:var(--muted);display:none;margin-bottom:20px;}
+  .print-btn:hover{border-color:var(--accent);color:var(--accent);}
 
-  .toc{
-    column-width:300px;column-gap:clamp(28px,4vw,48px);margin-bottom:0;
+  /* Search results, shown in place of the chapter while a query is typed. */
+  .tb-results-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    border-bottom:var(--bw) solid var(--line);padding-bottom:14px;margin-bottom:6px;
   }
-  .toc-title{display:none;}
-  .toc-chapter{margin-bottom:16px;break-inside:avoid;}
-  .toc-chapter > a{font-weight:900;font-size:15px;color:var(--ink);text-decoration:none;}
-  .toc-chapter > a:hover{color:var(--accent);}
-  .toc-sections{margin:5px 0 0 0;padding:0;list-style:none;}
-  .toc-sections li{margin-bottom:3px;}
-  .toc-sections a{font-size:13px;font-weight:700;color:var(--muted);text-decoration:none;}
-  .toc-sections a:hover{color:var(--accent);text-decoration:underline;}
+  .tb-results-count{font:800 14px var(--font-ui);color:var(--muted);margin:0;}
+  .tb-results-count b{color:var(--ink);}
+  .tb-results-close{
+    border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;
+    padding:5px 13px;border-radius:var(--radius-pill);font:800 12px var(--font-ui);white-space:nowrap;
+  }
+  .tb-results-close:hover{border-color:var(--accent);color:var(--accent);}
+  .tb-results-status{font:700 13.5px var(--font-ui);color:var(--muted);margin:16px 0 0;}
+  .tb-result{padding:18px 0 14px;border-bottom:var(--bw) solid var(--line);}
+  .tb-result-chapter{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+  .tb-result-title{font:900 18px var(--font-ui);color:var(--ink);letter-spacing:-.01em;margin:2px 0 8px;}
+  .tb-result-hit{
+    display:flex;flex-direction:column;gap:3px;width:100%;text-align:left;cursor:pointer;
+    background:var(--white);border:0;border-radius:12px;box-shadow:var(--lift-sm);
+    padding:11px 14px;margin-top:8px;font:inherit;color:inherit;
+  }
+  .tb-result-hit:hover{background:var(--hover-tint);}
+  .tb-result-heading{font:900 11.5px var(--font-ui);color:var(--muted);}
+  .tb-result-snippet{font:600 14px/1.6 var(--font-ui);color:var(--ink);}
+  .tb-result-snippet mark{background:var(--tint-accent);color:var(--accent-text);border-radius:4px;padding:0 2px;font-weight:900;}
 
-  .chapter-rail{position:fixed;z-index:60;}
-  @media (min-width:1150px){
-    .chapter-rail{right:22px;top:50%;transform:translateY(-50%);}
-    .chapter-rail .rail-toggle{display:none;}
-    .chapter-rail .rail-list{
-      display:flex;flex-direction:column;align-items:center;gap:4px;
-      max-height:82vh;overflow-y:auto;padding:10px 6px;
-      background:var(--white);border:2px solid var(--line);border-radius:20px;
-      box-shadow:var(--lift-sm);
-    }
+  /* The passage a result pointed at, flashed once on arrival. */
+  .tb-hit{border-radius:10px;animation:tb-hit-flash 2.6s ease-out 1;}
+  @keyframes tb-hit-flash{
+    0%,55%{box-shadow:0 0 0 8px var(--tint-accent);background:var(--tint-accent);}
+    100%{box-shadow:0 0 0 8px transparent;background:transparent;}
   }
-  @media (max-width:1149.98px){
-    .chapter-rail{right:16px;bottom:16px;}
-    .chapter-rail .rail-toggle{
-      width:48px;height:48px;border-radius:50%;border:2px solid var(--line);
-      background:var(--white);color:var(--ink);font-family:var(--font-mono);
-      font-size:12px;font-weight:700;cursor:pointer;box-shadow:var(--lift-sm);
-      display:flex;align-items:center;justify-content:center;
-    }
-    .chapter-rail .rail-list{
-      display:none;position:absolute;bottom:54px;right:0;
-      flex-direction:column;align-items:center;gap:4px;
-      max-height:56vh;overflow-y:auto;padding:10px 6px;
-      background:var(--white);border:2px solid var(--line);border-radius:16px;
-      box-shadow:var(--lift-sm);
-    }
-    .chapter-rail.open .rail-list{display:flex;}
+  @media (prefers-reduced-motion:reduce){
+    .tb-hit{animation:none;background:var(--tint-accent);box-shadow:0 0 0 8px var(--tint-accent);}
   }
-  .rail-list::-webkit-scrollbar{width:4px;}
-  .rail-list::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px;}
-  .rail-btn{
-    width:27px;height:27px;flex-shrink:0;border-radius:50%;border:2px solid var(--line);
-    background:var(--paper);color:var(--muted);font-family:var(--font-mono);font-size:10px;
-    cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s,color .15s;
-    padding:0;
-  }
-  .rail-btn:hover{border-color:var(--accent);color:var(--accent);}
-  .rail-btn.active{background:var(--accent);border-color:var(--accent);color:var(--on-accent-fill);font-weight:700;}
-  .rail-btn.rail-top{font-size:13px;border-color:var(--accent);color:var(--accent);color:var(--ink);margin-bottom:4px;padding-bottom:2px;}
 
-  .chapter{margin-bottom:48px;scroll-margin-top:calc(var(--site-header-h) + 16px);padding-top:32px;border-top:1px solid var(--line);}
-  .chapter:first-child{padding-top:0;border-top:0;}
-  .chapter-head{
-    font:800 11px var(--font-ui);color:var(--accent);
-    text-transform:uppercase;letter-spacing:0.1em;margin:0 0 4px;
-  }
-  .chapter h2{font:900 clamp(23px,3vw,29px) var(--font-ui);letter-spacing:-.02em;margin:0 0 24px;padding-top:0;border-top:0;scroll-margin-top:calc(var(--site-header-h) + 16px);}
-
-  .section{margin-bottom:36px;scroll-margin-top:calc(var(--site-header-h) + 16px);}
-  .section-intro{padding-bottom:12px;border-bottom:2px solid var(--line);margin-bottom:16px;}
+  /* One chapter's body. */
+  .section{padding:30px 0 10px;border-bottom:var(--bw) solid var(--line);scroll-margin-top:calc(var(--site-header-h,112px) + 14px);}
+  .section:last-of-type{border-bottom:0;}
+  .section-intro{margin-bottom:16px;}
   .section-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
-  .section-head h3{font-size:18px;font-weight:900;margin:0;}
-  /* ---- "Practise this" links out to the tools ---------------------------- */
+  .section-head h2{font:900 clamp(19px,2.4vw,23px) var(--font-ui);letter-spacing:-.01em;margin:0;}
 
+  /* ---- "Practise this" links out to the tools ---------------------------- */
   .chapter-tools{
     display:flex;flex-wrap:wrap;gap:8px;align-items:center;
-    margin:0 0 18px;padding:12px 14px;border-radius:10px;
-    background:var(--tint-accent);border:1px solid var(--line-soft);
+    margin:18px 0 0;padding:12px 14px;border-radius:12px;
+    background:var(--tint-accent);
   }
   .chapter-tools__k{
     font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
@@ -137,9 +110,9 @@
   .chapter-tools a{
     display:inline-flex;align-items:baseline;gap:6px;text-decoration:none;
     font-size:13px;font-weight:700;color:var(--ink);background:var(--white);
-    border:1px solid var(--line);border-radius:16px;padding:6px 13px;
+    border-radius:16px;padding:6px 13px;box-shadow:var(--lift-sm);
   }
-  .chapter-tools a:hover{border-color:var(--accent);color:var(--accent);}
+  .chapter-tools a:hover{color:var(--accent);}
   .chapter-tools a small{font-weight:600;font-size:11.5px;color:var(--muted);}
 
   .domain-tag{
@@ -150,7 +123,7 @@
 
   .topic{margin-bottom:22px;}
   .topic:last-of-type{margin-bottom:0;}
-  .topic h4{font-size:16px;font-weight:600;margin:0 0 8px;color:var(--ink);}
+  .topic h3{font-size:16px;font-weight:800;margin:0 0 8px;color:var(--ink);}
   .topic p{font-size:15px;margin:0 0 10px;}
   .topic p:last-child{margin-bottom:0;}
   .topic ul, .topic ol{font-size:14.5px;margin:0 0 10px;padding-left:20px;}
@@ -159,22 +132,21 @@
   .topic li:last-child{margin-bottom:0;}
   .topic li > ul, .topic li > ol{margin-top:5px;margin-bottom:0;}
   .topic strong{color:var(--ink);}
-  .table-wrap{overflow-x:auto;margin:0 0 10px;border:2px solid var(--line);border-radius:4px;}
+  .table-wrap{overflow-x:auto;margin:0 0 10px;border-radius:10px;box-shadow:var(--lift-sm);}
   /* Browsers don't offer a break opportunity at "/", so a run like
      chemical/biological/radiological/explosive stays one 42-character word and
-     overflows its list item — which scrolled the whole page sideways on a phone.
-     Applied to the prose containers rather than the one bullet that hit it. */
-  .topic li,.topic p,.topic td,.topic th,.chapter li,.chapter p{overflow-wrap:anywhere;}
+     overflows its list item — which scrolled the whole page sideways on a phone. */
+  .topic li,.topic p,.topic td,.topic th{overflow-wrap:anywhere;}
   .topic table{width:100%;border-collapse:collapse;font-size:13px;background:var(--white);}
   .topic table:last-child{margin-bottom:0;}
   .topic th, .topic td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
-  .topic th{background:rgba(18,32,51,0.06);color:var(--ink);font-weight:600;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
+  .topic th{background:var(--hover-tint);color:var(--ink);font-weight:600;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
   .topic tr:last-child td{border-bottom:none;}
   .topic .sub{font-size:11px;color:var(--muted);font-style:italic;margin:-2px 0 8px;}
 
   .takeaways{
-    background:var(--white);border:2px solid var(--line);border-left:3px solid var(--accent);
-    border-radius:4px;padding:16px 18px;margin-top:20px;
+    background:var(--white);border-left:3px solid var(--accent);
+    border-radius:12px;box-shadow:var(--lift-sm);padding:16px 18px;margin-top:20px;
   }
   .takeaways .tk-title{
     font-family:var(--font-mono);font-size:11px;color:var(--accent);
@@ -184,58 +156,45 @@
   .takeaways li{margin-bottom:6px;}
   .takeaways li:last-child{margin-bottom:0;}
 
-  .search-hit mark{background:rgba(193,80,46,0.22);color:inherit;border-radius:2px;padding:0 1px;}
+  .tb-main footer{margin-top:44px;font-size:12px;color:var(--muted);max-width:60ch;}
 
-  footer{margin-top:44px;font-size:12px;color:var(--muted);max-width:60ch;}
+  /* Printing lays every chapter out in order; the script swaps the one-chapter
+     view for the whole book while the dialog is open. */
+  @media print{
+    .tb-shell{display:block;}
+    .tb-rail,.tb-toc-btn,.tb-chapter-nav,.tb-results,.chapter-tools{display:none !important;}
+    .tb-main{max-width:none;}
+    .print-chapter{break-before:page;}
+    .print-chapter:first-child{break-before:auto;}
+  }
 </style>
 </head>
 <body>
   <div id="site-header"></div>
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="practice.html">Practice</a> · <a href="study-plan.html">Study Plan</a> · <a href="study-notes.html">Notes</a> · <a href="mnemonics.html">Mnemonics</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
-<div class="xshell narrow">
+<div class="tb-shell">
+  <button type="button" class="tb-toc-btn" id="tbContentsToggle" aria-controls="tbContents">&#9776; Chapters</button>
 
-  <div class="hero">
-    <div class="eyebrow">Study notes</div>
-    <h1>Forty chapters, in course order.</h1>
-    <p class="lede">Full narrative study notes organized by course chapter — the "why" and context behind the material, meant to complement the quick-reference pages rather than replace them.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:20px">
-      <button type="button" class="print-btn" id="printBtn" onclick="window.print()" style="margin-bottom:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:6px;"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Print / Save as PDF</button>
-      <input type="text" class="search-box" id="searchBox" placeholder="Search notes…" style="flex:1;min-width:220px;max-width:420px;margin-bottom:0">
+  <aside class="tb-rail">
+    <p class="tb-rail-title">Chapters</p>
+    <label class="sr-only" for="tbFilter">Search the notes</label>
+    <input type="search" class="tb-filter" id="tbFilter" placeholder="Search the notes&hellip;" autocomplete="off"
+           aria-describedby="tbFilterHint">
+    <p class="tb-filter-hint" id="tbFilterHint">Searches every word, not just headings.</p>
+    <nav class="tb-contents" id="tbContents" aria-label="Chapters"></nav>
+  </aside>
+
+  <main class="tb-main" id="tbMain">
+    <div class="tb-results" id="tbResults" role="region" aria-label="Search results" hidden></div>
+    <div id="tbChapter">
+      <noscript><p>The notes need JavaScript to load their chapters.</p></noscript>
     </div>
-    <div class="no-results" id="noResults">No notes match your search.</div>
-  </div>
-
-  <div class="xsection" id="tocBox">
-    <div class="xgrid">
-      <div class="xlabel">Chapters</div>
-      <div class="xcontent">
-        <div class="toc" id="tocList"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">Notes</div>
-      <div class="xcontent narrow" id="notesRoot"></div>
-    </div>
-  </div>
-
-  <div class="xsection">
-    <footer style="margin-top:0">
-      <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor — always verify specifics (exact figures, current protocols, legal definitions in your state) against your own course materials.</p>
+    <footer>
+      <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor &mdash; always verify specifics (exact figures, current protocols, local scope of practice) against authoritative sources.</p>
       <p class="privacy-link"><a href="../privacy.html">Privacy</a></p>
     </footer>
-  </div>
-
+  </main>
 </div>
-
-<nav class="chapter-rail" id="chapterRail" aria-label="Jump to chapter">
-  <button type="button" class="rail-toggle" id="railToggle" aria-label="Open chapter navigation">
-    <span id="railToggleLabel">TOP</span>
-  </button>
-  <div class="rail-list" id="railList"></div>
-</nav>
 
 <script>
 // Each chapter holds sections, each section holds topics (a heading + one or
@@ -3837,17 +3796,6 @@ const CHAPTERS = [
   }
 ];
 
-function renderTOC(){
-  const el = document.getElementById('tocList');
-  el.innerHTML = CHAPTERS.map(ch => `
-    <div class="toc-chapter">
-      <a href="#chapter-${ch.num}">Chapter ${ch.num}: ${ch.title}</a>
-      <ul class="toc-sections">
-        ${ch.sections.map(s => `<li><a href="#${s.id}">${s.title}</a></li>`).join('')}
-      </ul>
-    </div>
-  `).join('');
-}
 
 
 /* The tools, offered where the reading makes them relevant.
@@ -3897,139 +3845,275 @@ function toolsForChapter(ch){
 }
 
 
-function renderNotes(filterText){
-  const root = document.getElementById('notesRoot');
-  const noResults = document.getElementById('noResults');
-  const q = (filterText || '').trim().toLowerCase();
+/* One chapter at a time, picked from the rail; a query shows every hit in
+   the book in place of the chapter, and the rail narrows to the chapters
+   that match. Same shape as the ochem textbook. */
+const LAST_KEY = 'nremt_notes_last';
+const contentsEl = document.getElementById('tbContents');
+const chapterEl  = document.getElementById('tbChapter');
+const resultsEl  = document.getElementById('tbResults');
+const filterEl   = document.getElementById('tbFilter');
+const toggleEl   = document.getElementById('tbContentsToggle');
+let currentIndex = 0;
+let activeQuery = '';
+let pendingSection = null;
 
-  const matches = (text) => !q || text.toLowerCase().includes(q);
-  const highlight = (text) => {
-    if (!q) return text;
-    const idx = text.toLowerCase().indexOf(q);
-    if (idx === -1) return text;
-    return text.slice(0, idx) + '<mark>' + text.slice(idx, idx + q.length) + '</mark>' + text.slice(idx + q.length);
-  };
-  const stripTags = (html) => html.replace(/<[^>]*>/g, ' ');
+const stripTags = (html) => String(html || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+const esc = (s) => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const topicText = (t) => t.heading + ' ' + (t.paragraphs ? t.paragraphs.join(' ') : stripTags(t.html));
 
-  let anyVisible = false;
-  const html = CHAPTERS.map(ch => {
-    const sectionsHtml = ch.sections.map(sec => {
-      const secMatches = matches(sec.title);
-      const topicsHtml = sec.topics.map(t => {
-        const bodyText = t.paragraphs ? t.paragraphs.join(' ') : stripTags(t.html || '');
-        const topicText = t.heading + ' ' + bodyText;
-        if (!secMatches && !matches(topicText)) return '';
-        anyVisible = true;
-        const body = t.paragraphs
-          ? t.paragraphs.map(p => `<p>${q ? highlight(p) : p}</p>`).join('')
-          : (t.html || '');
-        return `
-          <div class="topic${q ? ' search-hit' : ''}">
-            <h4>${q ? highlight(t.heading) : t.heading}</h4>
-            ${t.sub ? `<p class="sub">${t.sub}</p>` : ''}
-            ${body}
-          </div>
-        `;
-      }).join('');
-      if (!topicsHtml) return '';
-      const takeawaysHtml = (sec.takeaways && sec.takeaways.length) ? `
-        <div class="takeaways">
-          <div class="tk-title">Key takeaways</div>
-          <ul>${sec.takeaways.map(k => `<li>${k}</li>`).join('')}</ul>
-        </div>
-      ` : '';
-      const domainTagHtml = sec.domain
-        ? `<span class="domain-tag">${sec.domain} domain</span>`
-        : '';
-      const noteHtml = sec.note ? `<p class="section-note">${sec.note}</p>` : '';
-      return `
-        <div class="section" id="${sec.id}">
-          <div class="section-intro">
-            <div class="section-head">
-              <h3>${sec.title}</h3>
-              ${domainTagHtml}
-            </div>
-            ${noteHtml}
-          </div>
-          ${topicsHtml}
-          ${takeawaysHtml}
-        </div>
-      `;
-    }).join('');
-    if (!sectionsHtml) return '';
-    return `
-      <div class="chapter" id="chapter-${ch.num}">
-        <div class="chapter-head">Chapter ${ch.num}</div>
-        <h2>${ch.title}</h2>
-        ${toolsForChapter(ch)}
-        ${sectionsHtml}
-      </div>
-    `;
-  }).join('');
-
-  root.innerHTML = html;
-  noResults.style.display = anyVisible ? 'none' : 'block';
-  document.getElementById('tocBox').style.display = q ? 'none' : 'block';
-  document.getElementById('chapterRail').style.display = q ? 'none' : '';
+function chapterIndexForSection(id){
+  for (let i = 0; i < CHAPTERS.length; i++){
+    if (CHAPTERS[i].sections.some(s => s.id === id)) return i;
+  }
+  return -1;
 }
 
-function renderRail(){
-  const list = document.getElementById('railList');
-  const topBtn = `<button type="button" class="rail-btn rail-top" data-target="top" title="Back to top">&uarr;</button>`;
-  const chapterBtns = CHAPTERS.map(ch =>
-    `<button type="button" class="rail-btn" data-chapter="${ch.num}" title="Chapter ${ch.num}: ${ch.title}">${ch.num}</button>`
-  ).join('');
-  list.innerHTML = topBtn + chapterBtns;
+function routeFromHash(){
+  const h = decodeURIComponent((location.hash || '').slice(1));
+  if (!h) return null;
+  const m = h.match(/^chapter-(\d+)$/);
+  if (m) return { index: Math.max(0, Math.min(CHAPTERS.length - 1, parseInt(m[1], 10) - 1)), section: null };
+  const i = chapterIndexForSection(h);
+  return i === -1 ? null : { index: i, section: h };
+}
 
-  const railEl = document.getElementById('chapterRail');
-  const toggle = document.getElementById('railToggle');
-  const toggleLabel = document.getElementById('railToggleLabel');
+function lastChapter(){
+  try { const v = parseInt(localStorage.getItem(LAST_KEY), 10); if (v >= 0 && v < CHAPTERS.length) return v; } catch(e){}
+  return 0;
+}
+function rememberChapter(i){ try { localStorage.setItem(LAST_KEY, String(i)); } catch(e){} }
 
-  list.addEventListener('click', (e) => {
-    const btn = e.target.closest('.rail-btn');
-    if (!btn) return;
-    if (btn.dataset.target === 'top') {
-      if(window.LevlMotion) window.LevlMotion.scrollToY(0);
-      else window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      const target = document.getElementById('chapter-' + btn.dataset.chapter);
-      if (target){
-        if(window.LevlMotion) window.LevlMotion.scrollIntoView(target, { block: 'start' });
-        else target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-    railEl.classList.remove('open');
-  });
-
-  toggle.addEventListener('click', () => railEl.classList.toggle('open'));
-  document.addEventListener('click', (e) => {
-    if (railEl.classList.contains('open') && !railEl.contains(e.target)) railEl.classList.remove('open');
-  });
-
-  const setActive = (chapterNum) => {
-    list.querySelectorAll('.rail-btn').forEach(b => {
-      b.classList.toggle('active', chapterNum === null ? b.dataset.target === 'top' : b.dataset.chapter === String(chapterNum));
+/* ---- the rail ------------------------------------------------------- */
+function renderContents(activeIndex, q){
+  q = (q || '').trim().toLowerCase();
+  const html = CHAPTERS.map((ch, i) => {
+    const sections = ch.sections.filter(s => {
+      if (!q) return true;
+      if (ch.title.toLowerCase().includes(q) || s.title.toLowerCase().includes(q)) return true;
+      return s.topics.some(t => topicText(t).toLowerCase().includes(q));
     });
-    toggleLabel.textContent = chapterNum === null ? 'TOP' : ('CH ' + chapterNum);
-  };
-  setActive(null);
+    if (!sections.length) return '';
+    const open = q ? true : i === activeIndex;
+    return `<div class="tb-toc-mod${open ? ' open' : ''}" data-index="${i}">
+      <button type="button" class="tb-toc-modhead" aria-expanded="${open}">
+        <span class="tb-toc-num">${ch.num}</span>
+        <span class="tb-toc-modtitle">${esc(ch.title)}</span>
+        <span class="tb-toc-count">${ch.sections.length}</span>
+      </button>
+      <div class="tb-toc-topics">${sections.map(s =>
+        `<a href="#${s.id}" class="tb-toc-topic${i === activeIndex && s.id === pendingSection ? ' current' : ''}" data-section="${s.id}">${esc(s.title)}</a>`
+      ).join('')}</div>
+    </div>`;
+  }).join('');
+  contentsEl.innerHTML = html || '<p class="tb-toc-empty">Nothing in the notes matches that.</p>';
 
-  const observer = new IntersectionObserver((entries) => {
-    const visible = entries.filter(en => en.isIntersecting).map(en => en.target);
-    if (!visible.length) return;
-    visible.sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top);
-    const num = visible[0].id.replace('chapter-', '');
-    setActive(window.scrollY < 80 ? null : num);
-  }, { root: null, rootMargin: '0px 0px -75% 0px', threshold: 0 });
-
-  document.querySelectorAll('.chapter').forEach(c => observer.observe(c));
-  window.addEventListener('scroll', () => { if (window.scrollY < 80) setActive(null); }, { passive: true });
+  contentsEl.querySelectorAll('.tb-toc-modhead').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const group = btn.parentNode;
+      const idx = parseInt(group.dataset.index, 10);
+      const open = !group.classList.contains('open');
+      group.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', String(open));
+      // Opening a chapter in the rail also shows it, so one tap gets you there.
+      if (open && idx !== currentIndex && !activeQuery) location.hash = 'chapter-' + CHAPTERS[idx].num;
+    });
+  });
+  contentsEl.querySelectorAll('.tb-toc-topic').forEach(a => {
+    a.addEventListener('click', () => { hideResults(); closeContentsOnMobile(); });
+  });
 }
 
-document.getElementById('searchBox').addEventListener('input', (e) => renderNotes(e.target.value));
-renderTOC();
-renderNotes('');
-renderRail();
+/* ---- one chapter ---------------------------------------------------- */
+function sectionHtml(sec){
+  const topicsHtml = sec.topics.map(t => {
+    const body = t.paragraphs ? t.paragraphs.map(p => `<p>${p}</p>`).join('') : (t.html || '');
+    return `<div class="topic" data-heading="${esc(t.heading)}">
+      <h3>${t.heading}</h3>
+      ${t.sub ? `<p class="sub">${t.sub}</p>` : ''}
+      ${body}
+    </div>`;
+  }).join('');
+  const takeawaysHtml = (sec.takeaways && sec.takeaways.length) ? `
+    <div class="takeaways">
+      <div class="tk-title">Key takeaways</div>
+      <ul>${sec.takeaways.map(k => `<li>${k}</li>`).join('')}</ul>
+    </div>` : '';
+  return `<section class="section" id="${sec.id}">
+    <div class="section-intro">
+      <div class="section-head">
+        <h2>${sec.title}</h2>
+        ${sec.domain ? `<span class="domain-tag">${sec.domain} domain</span>` : ''}
+      </div>
+      ${sec.note ? `<p class="section-note">${sec.note}</p>` : ''}
+    </div>
+    ${topicsHtml}
+    ${takeawaysHtml}
+  </section>`;
+}
+
+function chapterHtml(index, forPrint){
+  const ch = CHAPTERS[index];
+  const prev = CHAPTERS[index - 1], next = CHAPTERS[index + 1];
+  const count = ch.sections.length;
+  return `<div class="${forPrint ? 'print-chapter' : ''}" id="chapter-${ch.num}">
+    <header class="tb-chapter-head">
+      <p class="tb-chapter-eyebrow">Chapter ${ch.num} of ${CHAPTERS.length}</p>
+      <h1 class="tb-chapter-title">${esc(ch.title)}</h1>
+      <div class="tb-chapter-meta">
+        <span>${count} section${count === 1 ? '' : 's'}</span>
+        ${forPrint ? '' : `<button type="button" class="print-btn" id="printBtn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7"/></svg>Print</button>`}
+      </div>
+      ${toolsForChapter(ch)}
+    </header>
+    ${ch.sections.map(sectionHtml).join('')}
+    ${forPrint ? '' : `<nav class="tb-chapter-nav">
+      ${prev ? `<a class="tb-chapter-link prev" href="#chapter-${prev.num}"><span>&larr; Previous chapter</span><b>${esc(prev.title)}</b></a>` : '<span></span>'}
+      ${next ? `<a class="tb-chapter-link next" href="#chapter-${next.num}"><span>Next chapter &rarr;</span><b>${esc(next.title)}</b></a>` : '<span></span>'}
+    </nav>`}
+  </div>`;
+}
+
+function renderChapter(index){
+  currentIndex = index;
+  rememberChapter(index);
+  chapterEl.innerHTML = chapterHtml(index, false);
+  document.title = 'Ch. ' + CHAPTERS[index].num + ' ' + CHAPTERS[index].title + ' — NREMT-EMT Study Notes | LevlPrep';
+  const pb = document.getElementById('printBtn');
+  if (pb) pb.addEventListener('click', () => window.print());
+}
+
+function scrollToSection(id){
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (window.LevlMotion) window.LevlMotion.scrollIntoView(el, { block: 'start' });
+  else el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const hit = el.querySelector('.tb-hit'); if (hit) hit.classList.remove('tb-hit');
+}
+
+/* ---- searching the prose -------------------------------------------- */
+const MIN_QUERY = 2;
+let searchTimer = null;
+
+function showResults(){ resultsEl.hidden = false; chapterEl.hidden = true; }
+function hideResults(){ resultsEl.hidden = true; chapterEl.hidden = false; }
+function closeSearch(){
+  activeQuery = '';
+  filterEl.value = '';
+  hideResults();
+  renderContents(currentIndex, '');
+}
+
+function snippet(text, q){
+  const lower = text.toLowerCase();
+  const at = lower.indexOf(q);
+  if (at === -1) return '';
+  const start = Math.max(0, at - 70), end = Math.min(text.length, at + q.length + 90);
+  let s = text.slice(start, end);
+  s = esc(s).replace(new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'ig'), m => '<mark>' + m + '</mark>');
+  return (start > 0 ? '…' : '') + s + (end < text.length ? '…' : '');
+}
+
+function renderResults(q){
+  const lq = q.toLowerCase();
+  let total = 0;
+  const blocks = [];
+  CHAPTERS.forEach((ch, ci) => {
+    ch.sections.forEach(sec => {
+      const hits = [];
+      sec.topics.forEach((t, ti) => {
+        const text = topicText(t);
+        if (!text.toLowerCase().includes(lq) && !sec.title.toLowerCase().includes(lq)) return;
+        hits.push({ ti, heading: t.heading, snip: snippet(text, lq) || esc(text.slice(0, 160)) });
+      });
+      if (!hits.length) return;
+      total += hits.length;
+      blocks.push(`<div class="tb-result">
+        <div class="tb-result-chapter">Chapter ${ch.num} · ${esc(ch.title)}</div>
+        <div class="tb-result-title">${esc(sec.title)}</div>
+        ${hits.map(h => `<button type="button" class="tb-result-hit" data-section="${sec.id}" data-topic="${h.ti}">
+          <span class="tb-result-heading">${esc(h.heading)}</span>
+          <span class="tb-result-snippet">${h.snip}</span>
+        </button>`).join('')}
+      </div>`);
+    });
+  });
+  resultsEl.innerHTML = `<div class="tb-results-head">
+      <p class="tb-results-count"><b>${total}</b> ${total === 1 ? 'passage' : 'passages'} for “${esc(q)}”</p>
+      <button type="button" class="tb-results-close" id="tbResultsClose">Back to chapter</button>
+    </div>` + (blocks.join('') || '<p class="tb-results-status">Nothing in the notes matches that.</p>');
+  document.getElementById('tbResultsClose').addEventListener('click', closeSearch);
+  resultsEl.querySelectorAll('.tb-result-hit').forEach(btn => {
+    btn.addEventListener('click', () => goToHit(btn.dataset.section, parseInt(btn.dataset.topic, 10)));
+  });
+  showResults();
+  renderContents(currentIndex, q);
+}
+
+function goToHit(sectionId, topicIndex){
+  hideResults();
+  closeContentsOnMobile();
+  const idx = chapterIndexForSection(sectionId);
+  if (idx !== currentIndex) renderChapter(idx);
+  renderContents(currentIndex, filterEl.value);
+  const sec = document.getElementById(sectionId);
+  const topic = sec ? sec.querySelectorAll('.topic')[topicIndex] : null;
+  const target = topic || sec;
+  if (!target) return;
+  if (topic) topic.classList.add('tb-hit');
+  history.replaceState(null, '', '#' + sectionId);
+  if (window.LevlMotion) window.LevlMotion.scrollIntoView(target, { block: 'center' });
+  else target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+filterEl.addEventListener('input', () => {
+  clearTimeout(searchTimer);
+  const q = filterEl.value.trim();
+  searchTimer = setTimeout(() => {
+    if (q.length < MIN_QUERY){
+      if (activeQuery) closeSearch(); else renderContents(currentIndex, q);
+      return;
+    }
+    activeQuery = q;
+    renderResults(q);
+  }, 120);
+});
+filterEl.addEventListener('keydown', e => { if (e.key === 'Escape') closeSearch(); });
+
+/* ---- drawer on small screens ---------------------------------------- */
+function closeContentsOnMobile(){
+  if (window.matchMedia('(max-width: 900px)').matches) document.body.classList.remove('tb-toc-open');
+}
+toggleEl.addEventListener('click', () => document.body.classList.toggle('tb-toc-open'));
+
+/* ---- routing --------------------------------------------------------- */
+function route(){
+  const r = routeFromHash();
+  const index = r ? r.index : lastChapter();
+  pendingSection = r ? r.section : null;
+  if (activeQuery && !r) return;
+  if (activeQuery) { hideResults(); }
+  if (index !== currentIndex || !chapterEl.firstElementChild || chapterEl.hidden) renderChapter(index);
+  renderContents(index, activeQuery ? filterEl.value : '');
+  if (pendingSection) requestAnimationFrame(() => scrollToSection(pendingSection));
+  else if (r) window.scrollTo({ top: 0 });
+}
+window.addEventListener('hashchange', route);
+currentIndex = -1;
+route();
+
+/* ---- printing the whole book ---------------------------------------- */
+let printedAll = false;
+window.addEventListener('beforeprint', () => {
+  if (activeQuery) return;
+  chapterEl.innerHTML = CHAPTERS.map((_, i) => chapterHtml(i, true)).join('');
+  printedAll = true;
+});
+window.addEventListener('afterprint', () => {
+  if (!printedAll) return;
+  printedAll = false;
+  const i = currentIndex; currentIndex = -1; renderChapter(i);
+});
 </script>
 <script src="assets/nav.js" defer></script>
 </body>
