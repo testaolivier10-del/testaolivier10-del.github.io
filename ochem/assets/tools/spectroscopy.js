@@ -924,4 +924,82 @@
     }
   }
 
+  /* ---- Check yourself ---------------------------------------------------
+     Two directions, because spectroscopy is learned in one and examined in
+     the other. "What absorbs at 1715?" is the reference chart asked backwards;
+     "how many signals does this give?" is the predictor asked backwards. Both
+     read the same tables the spectra are drawn from. */
+  if(window.OchemToolQuiz){
+    window.OchemToolQuiz.mount(document.getElementById('tool-quiz'), {
+      slug: 'spectroscopy',
+      rounds: 6,
+      intro: 'Peaks to structure, and structure to peaks.',
+      make: function(recent){
+        /* IR: name the group from the wavenumber. The band picked is the one
+           whose range contains it, and distractors are other real bands — a
+           made-up wrong answer teaches nothing about where things actually
+           absorb. */
+        if(Math.random() < 0.55){
+          var pool = IR_BANDS.filter(function(b){ return recent.indexOf('ir:' + b.label) < 0; });
+          if(!pool.length) pool = IR_BANDS;
+          var band = pool[Math.floor(Math.random() * pool.length)];
+
+          /* Only ask about a band no other band overlaps at the chosen
+             wavenumber, otherwise the question has two right answers — the
+             carbonyl region is full of these. */
+          var at = Math.round((band.lo + band.hi) / 2);
+          var overlapping = IR_BANDS.filter(function(b){ return b !== band && at >= b.lo && at <= b.hi; });
+          if(overlapping.length) return null;
+
+          var others = IR_BANDS.filter(function(b){ return b !== band; });
+          for(var i = others.length - 1; i > 0; i--){
+            var j = Math.floor(Math.random() * (i + 1));
+            var t = others[i]; others[i] = others[j]; others[j] = t;
+          }
+          var opts = [{ id:band.label, label:esc(band.label), correct:true }];
+          others.slice(0, 3).forEach(function(b){
+            opts.push({ id:b.label, label:esc(b.label), correct:false });
+          });
+
+          return {
+            id: 'ir:' + band.label,
+            prompt: 'An IR spectrum shows a <b>' + esc(band.shape) + '</b> absorption at about <b>' +
+                    at + ' cm⁻¹</b>. What is it?',
+            options: opts,
+            explain: '<b>' + esc(band.label) + '</b>, ' + band.lo + '–' + band.hi + ' cm⁻¹. ' + esc(band.note)
+          };
+        }
+
+        /* Degrees of unsaturation, computed from the formula rather than
+           stored, so it is right for any compound in the list. */
+        var cpool = COMPOUNDS.filter(function(c){ return recent.indexOf('du:' + c.name) < 0; });
+        if(!cpool.length) cpool = COMPOUNDS;
+        var cmp = cpool[Math.floor(Math.random() * cpool.length)];
+        var counts = parseFormula(cmp.formula);
+        if(!counts) return null;
+        var du = degreesOfUnsaturation(counts);
+        // Half-integers mean a radical or a typo; neither belongs in a question.
+        if(du === null || du < 0 || du % 1 !== 0) return null;
+
+        var duOpts = [du];
+        [du + 1, du - 1, du + 2, du + 3].forEach(function(v){
+          if(v >= 0 && duOpts.indexOf(v) < 0 && duOpts.length < 4) duOpts.push(v);
+        });
+
+        return {
+          id: 'du:' + cmp.name,
+          prompt: 'How many <b>degrees of unsaturation</b> does <span class="tformula">' +
+                  esc(cmp.formula) + '</span> have?',
+          options: duOpts.map(function(v){
+            return { id:String(v), label:String(v), correct: v === du };
+          }),
+          explain: '<b>' + du + '</b>. Each degree is one ring or one pi bond — count them from the ' +
+                   'formula before you look at a single peak, because it tells you what to expect: ' +
+                   'four of them almost always means a benzene ring (three C=C and the ring itself), ' +
+                   'and zero means every carbon is saturated and the spectrum will be dull.'
+        };
+      }
+    });
+  }
+
 })();

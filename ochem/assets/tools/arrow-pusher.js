@@ -557,4 +557,99 @@
       }
     }
   }
+  /* ---- Check yourself ---------------------------------------------------
+     The sandbox tells you when an arrow could not have happened. What it
+     cannot tell you is whether you could have SEEN that before drawing it,
+     which is the skill being built — so the quiz asks about electron
+     bookkeeping on a structure, before any arrow is drawn.
+
+     Formal charge and electron count both come from chem-core, the same two
+     functions the sandbox uses to decide that an arrow blew an octet. So the
+     quiz is not a parallel set of facts: it is the checker, asked in
+     advance. */
+  if(window.OchemToolQuiz){
+    /* Only atoms worth asking about: a hydrogen has one bond and no story,
+       and a carbon in the middle of a chain has the same answer every time. */
+    function interesting(st){
+      return Object.keys(st.atoms).filter(function(k){
+        var a = st.atoms[k];
+        if(!a.el || a.el === 'H' || a.group) return false;
+        return a.lp > 0 || C.formalCharge(st, k) !== 0 || a.el !== 'C';
+      });
+    }
+
+    var QUIZ_MOLS = [];
+    ['water','ammonia','acetate-ion','acetic-acid','acetone','formaldehyde','acetaldehyde',
+     'acetamide','methyl-acetate','acetyl-chloride','ethylamine','sn2-bromoethane',
+     'sn1-secondary','propylene-oxide','benzene','ammonium'].forEach(function(id){
+      var m = Mol.get(id);
+      if(!m) return;
+      var st = C.fromMolecule(m);
+      var keys = interesting(st);
+      if(keys.length) QUIZ_MOLS.push({ id:id, name:m.name, formula:m.formula, st:st, keys:keys });
+    });
+
+    if(QUIZ_MOLS.length){
+      window.OchemToolQuiz.mount(document.getElementById('tool-quiz'), {
+        slug: 'arrow-pusher',
+        rounds: 6,
+        intro: 'Formal charge and octets — the bookkeeping that decides whether an arrow is legal.',
+        make: function(recent){
+          var pool = QUIZ_MOLS.filter(function(m){ return recent.indexOf(m.id) < 0; });
+          if(!pool.length) pool = QUIZ_MOLS;
+          var m = pool[Math.floor(Math.random() * pool.length)];
+          var key = m.keys[Math.floor(Math.random() * m.keys.length)];
+          var atom = m.st.atoms[key];
+          var el = atom.el;
+
+          if(Math.random() < 0.5){
+            var fc = C.formalCharge(m.st, key);
+            var fcOpts = [fc];
+            [fc + 1, fc - 1, fc + 2].forEach(function(v){
+              if(fcOpts.indexOf(v) < 0 && fcOpts.length < 4) fcOpts.push(v);
+            });
+            return {
+              id: m.id + ':fc:' + key,
+              prompt: 'In <b>' + esc(m.name) + '</b>' +
+                      (m.formula ? ' (<span class="tformula">' + esc(m.formula) + '</span>)' : '') +
+                      ', the ' + esc(el) + ' has ' + C.totalBonds(m.st, key) + ' bond' +
+                      (C.totalBonds(m.st, key) === 1 ? '' : 's') + ' and ' + atom.lp +
+                      ' lone pair' + (atom.lp === 1 ? '' : 's') + '. What is its <b>formal charge</b>?',
+              options: fcOpts.map(function(v){
+                return { id:String(v), label: v > 0 ? '+' + v : String(v), correct: v === fc };
+              }),
+              explain: '<b>' + (fc > 0 ? '+' + fc : fc) + '</b>. Formal charge is the group number minus ' +
+                       'what the atom is holding: ' + C.info(el).valence + ' valence electrons for ' + el +
+                       ', minus ' + (atom.lp * 2) + ' in lone pairs, minus ' + C.totalBonds(m.st, key) +
+                       ' for its share of the bonds. Every arrow you draw changes one of those two ' +
+                       'numbers, which is why the charges move when the arrows do.'
+            };
+          }
+
+          var ec = C.electronCount(m.st, key);
+          var ecOpts = [ec];
+          [ec + 2, ec - 2, ec + 4].forEach(function(v){
+            if(v >= 0 && ecOpts.indexOf(v) < 0 && ecOpts.length < 4) ecOpts.push(v);
+          });
+          return {
+            id: m.id + ':ec:' + key,
+            prompt: 'How many electrons surround the <b>' + esc(el) + '</b> in <b>' + esc(m.name) +
+                    '</b>, counting both electrons of every bond it makes?',
+            options: ecOpts.map(function(v){
+              return { id:String(v), label:String(v), correct: v === ec };
+            }),
+            explain: '<b>' + ec + '</b> — ' + (atom.lp * 2) + ' from ' + atom.lp + ' lone pair' +
+                     (atom.lp === 1 ? '' : 's') + ' and ' + (C.totalBonds(m.st, key) * 2) +
+                     ' from ' + C.totalBonds(m.st, key) + ' bond' + (C.totalBonds(m.st, key) === 1 ? '' : 's') +
+                     '. ' + (ec > C.octetOf(m.st, key)
+                       ? 'That is past what this atom can hold, which is exactly the state an illegal arrow leaves behind.'
+                       : ec === 8
+                         ? 'A full octet. An arrow pointing another pair at this atom has nowhere to put it — that is the error the sandbox catches.'
+                         : 'Short of an octet, so this atom can still accept a pair. That is what makes it an electrophile.')
+          };
+        }
+      });
+    }
+  }
+
 })();

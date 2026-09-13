@@ -202,8 +202,14 @@
       out.verdict = 'Effectively nothing. This is the trap: counting carbons says primary and therefore SN2, but the neighbouring quaternary carbon blocks the approach, and with no beta hydrogen on it and no possibility of ionizing, there is no second-choice pathway either.';
     } else if(sub.cls === '1'){
       if(r.bulky && strongBase){
-        out.major = 'E2'; out.minor = 'SN2';
-        out.verdict = 'E2. A primary carbon would normally be a straightforward SN2, and this is the one thing that overrules it: the base is strong but too bulky to reach the carbon, so it takes the accessible beta proton instead.';
+        /* A bulky base still gives a little substitution if it is a
+           nucleophile at all — tert-butoxide does. DBU is not: it is an
+           amidine chosen precisely because it will not attack a carbon, and
+           crediting it with minor SN2 taught the opposite of the reason
+           anyone reaches for it. */
+        out.major = 'E2'; out.minor = r.nu >= 1 ? 'SN2' : null;
+        out.verdict = 'E2. A primary carbon would normally be a straightforward SN2, and this is the one thing that overrules it: the base is strong but too bulky to reach the carbon, so it takes the accessible beta proton instead.' +
+          (r.nu >= 1 ? '' : ' ' + r.name + ' is not a nucleophile at all, so there is no substitution competing here — elimination is the only thing on offer.');
       } else if(r.nu >= 2){
         out.major = 'SN2'; out.minor = strongBase ? 'E2' : null;
         out.verdict = 'SN2. Primary substrates are the SN2 home ground — open to attack and unable to ionize.' +
@@ -677,6 +683,70 @@
       });
       render();
     }
+  }
+
+  /* ---- Check yourself ---------------------------------------------------
+     The tool already makes you commit before it reveals, which is most of the
+     way to a quiz. What it cannot do is choose the hard combinations for you:
+     left alone, people set the substrate once and then click through reagents,
+     which drills one row of the table.
+
+     So the quiz picks the combination, and it picks from the whole space —
+     the same predict() that answers the main panel answers this, so there is
+     no second decision procedure to keep in step. Combinations where the
+     engine hedges are thrown back: a question whose honest answer is "it
+     depends, you'd get a mixture" is a fine thing for the sandbox to show and
+     a bad thing to score an answer against. */
+  if(window.OchemToolQuiz){
+    window.OchemToolQuiz.mount(document.getElementById('tool-quiz'), {
+      slug: 'reaction-predictor',
+      rounds: 6,
+      intro: 'Substrate, reagent, solvent, heat — which mechanism wins?',
+      make: function(recent){
+        var pick = null, res = null, tries = 0;
+        while(tries++ < 80){
+          var cand = {
+            sub: SUBSTRATES[Math.floor(Math.random() * SUBSTRATES.length)],
+            rgt: REAGENTS[Math.floor(Math.random() * REAGENTS.length)],
+            solvent: SOLVENTS[Math.floor(Math.random() * SOLVENTS.length)],
+            heat: Math.random() < 0.4,
+            guess: null
+          };
+          var id = cand.sub.id + '/' + cand.rgt.id + '/' + cand.solvent.id + (cand.heat ? '/h' : '');
+          if(recent.indexOf(id) >= 0) continue;
+          var r = predict(cand);
+          /* "No reaction" is a real and useful verdict — bromomethane has no
+             beta hydrogen, water is not going to touch a neopentyl halide —
+             but it is not one of the four options, so those combinations stay
+             in the sandbox where the tool can explain them properly. */
+          if(!r || !r.major || ['SN1','SN2','E1','E2'].indexOf(r.major) < 0) continue;
+          pick = cand; pick._id = id; res = r; break;
+        }
+        if(!pick) return null;
+
+        /* The deciding factor, in the engine's own words, is the thing worth
+           carrying away — "SN2, because the substrate is primary and there is
+           nowhere for a cation to form" teaches something that "SN2" does
+           not. */
+        var reasons = (res.reasons || []).filter(function(x){ return x.leans; });
+        var why = reasons.length
+          ? reasons.map(function(x){ return '<b>' + esc(x.factor) + ':</b> ' + x.text; }).join(' ')
+          : '';
+
+        return {
+          id: pick._id,
+          prompt: '<span class="tformula">' + esc(pick.sub.formula) + '</span> + <b>' +
+                  esc(pick.rgt.name) + '</b>, in ' + esc(pick.solvent.name.toLowerCase()) +
+                  ' solvent' + (pick.heat ? ', heated' : ', at room temperature') +
+                  '. Which mechanism dominates?',
+          options: ['SN1', 'SN2', 'E1', 'E2'].map(function(m){
+            return { id:m, label:m, correct: m === res.major };
+          }),
+          explain: '<b>' + esc(res.major) + '</b>' +
+                   (res.minor ? ', with some ' + esc(res.minor) + ' alongside it' : '') + '. ' + why
+        };
+      }
+    });
   }
 
 })();
