@@ -1,6 +1,6 @@
 // Offline support for LevlPrep. Precaches the core pages/assets so the
 // site works with no connection; everything else (the 3D body-map model,
-// the three.js vendor bundle, the ochem course, Google Fonts) is cached the
+// the three.js vendor bundle, the ochem course, the font files) is cached the
 // first time it's actually requested, so a first visit isn't stuck
 // downloading 15MB+ before it's usable.
 //
@@ -26,6 +26,7 @@ const PRECACHE_URLS = [
   // moment nothing can be fetched.
   'offline.html',
   'assets/theme.css',
+  'assets/fonts/fonts.css',
   'assets/account.js',
   'assets/hub-progress.js',
   'assets/site-chrome.js',
