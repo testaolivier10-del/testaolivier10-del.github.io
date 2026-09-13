@@ -202,6 +202,116 @@
         { ppm:7.05, h:4, mult:'s', label:'4 × Ar–H', note:'All four aromatic hydrogens equivalent, so they appear as a singlet. A mono- or ortho-substituted ring could never give this.' }
       ],
       tell:'Two singlets, 6:4, and a single out-of-plane band near 800. The aromatic singlet is only possible for para.'
+    },
+    {
+      id:'benzoic', name:'Benzoic acid', formula:'C₇H₆O₂', structure:'C₆H₅COOH', build:'C6H5COOH',
+      ir:[
+        { cm:2900, w:420, d:52, label:'O–H (acid)', note:'The widest band in all of IR — a trough running from about 2500 to 3300 that swallows the C–H peaks sitting on top of it. Carboxylic acids dimerize through a pair of hydrogen bonds, and that is what smears it this far.' },
+        { cm:1690, w:26, d:72, label:'C=O stretch', note:'Slightly below a ketone because it is conjugated to the ring — the ring feeds electron density into the carbonyl and softens the bond.' },
+        { cm:1600, w:22, d:30, label:'aromatic C=C', note:'The ring.' }
+      ],
+      nmr:[
+        { ppm:7.48, h:2, mult:'t', j:7, label:'meta H', note:'The two hydrogens furthest from the acid.' },
+        { ppm:7.62, h:1, mult:'t', j:7, label:'para H', note:'One hydrogen, directly opposite the substituent.' },
+        { ppm:8.13, h:2, mult:'d', j:7, label:'ortho H', note:'Pushed furthest downfield: closest to the electron-withdrawing carboxyl.' },
+        { ppm:12.0, h:1, mult:'s', label:'COOH', note:'Around 12 ppm — further downfield than anything else you will meet in an Organic I spectrum. If you see a one-hydrogen singlet past 10, it is almost certainly this.' }
+      ],
+      tell:'An enormous O–H trough from 2500 to 3300 with a carbonyl underneath it, and a 1H singlet at 12 ppm. Nothing else looks like this.'
+    },
+    {
+      id:'acetamide-sp', name:'Acetamide', formula:'C₂H₅NO', structure:'CH₃CONH₂', build:'CH3CONH2',
+      ir:[
+        { cm:3350, w:60, d:44, label:'N–H stretch', note:'TWO bands here, because a primary amide has a symmetric and an antisymmetric N–H stretch. Counting them tells you how substituted the nitrogen is.' },
+        { cm:3180, w:60, d:38, label:'N–H stretch (2nd)', note:'The partner band. A secondary amide would show only one.' },
+        { cm:1660, w:26, d:70, label:'C=O stretch', note:'The LOWEST carbonyl there is — about 55 wavenumbers below a ketone. The nitrogen lone pair delocalizes into the C=O, giving the bond genuine single-bond character.' }
+      ],
+      nmr:[
+        { ppm:2.02, h:3, mult:'s', label:'CH₃', note:'A clean singlet — nothing adjacent to couple to.' },
+        { ppm:6.10, h:2, mult:'s', label:'NH₂', note:'Broad, and it will not couple: the protons exchange. Shake with D₂O and this signal disappears, which is how you confirm it.' }
+      ],
+      tell:'Two N–H bands AND the lowest carbonyl you will see. Both point at the same thing: the nitrogen is donating into the C=O.'
+    },
+    {
+      id:'acetonitrile-sp', name:'Acetonitrile', formula:'C₂H₃N', structure:'CH₃C≡N', build:'CH3CN',
+      ir:[
+        { cm:2950, w:38, d:30, label:'sp³ C–H', note:'The methyl.' },
+        { cm:2250, w:14, d:44, label:'C≡N stretch', note:'Sharp, medium, and almost alone in its region — very little else absorbs between 2200 and 2300. One of the most reliable single peaks in IR.' }
+      ],
+      nmr:[
+        { ppm:1.98, h:3, mult:'s', label:'CH₃', note:'One singlet, and that is the whole spectrum. A formula with a nitrogen, one NMR signal, and a sharp 2250 band leaves very few options.' }
+      ],
+      tell:'A sharp peak at 2250 in an otherwise empty region. Check the formula for nitrogen and you are done.'
+    },
+    {
+      id:'cyclohexanone', name:'Cyclohexanone', formula:'C₆H₁₀O', structure:'(CH₂)₅C=O', build:'O=C1CCCCC1',
+      ir:[
+        { cm:2940, w:44, d:40, label:'sp³ C–H', note:'All below 3000 — every carbon is saturated, so there is no ring here in the aromatic sense.' },
+        { cm:1715, w:24, d:74, label:'C=O stretch', note:'Textbook ketone position. Unconjugated and in a six-membered ring, which is the reference case every other carbonyl is compared against.' }
+      ],
+      nmr:[
+        { ppm:1.72, h:2, mult:'m', label:'C4–H₂', note:'Furthest from the carbonyl.' },
+        { ppm:1.86, h:4, mult:'m', label:'C3,C5–H₂', note:'One bond further out.' },
+        { ppm:2.33, h:4, mult:'t', j:7, label:'C2,C6–H₂ (alpha)', note:'The alpha hydrogens, pulled downfield by the carbonyl next door. These are the ones a base removes.' }
+      ],
+      tell:'A clean 1715 carbonyl and nothing above 3000. Two degrees of unsaturation, and the spectrum spends them for you: one on the C=O, one on a ring that must therefore be saturated. No aromatic ring would fit in two.'
+    },
+    {
+      id:'phenol-sp', name:'Phenol', formula:'C₆H₆O', structure:'C₆H₅OH', build:'C6H5OH',
+      ir:[
+        { cm:3350, w:150, d:52, label:'O–H stretch', note:'Broad, like any hydrogen-bonded alcohol — but nowhere near as wide as a carboxylic acid.' },
+        { cm:3040, w:26, d:26, label:'sp² C–H', note:'Above 3000: there is a ring.' },
+        { cm:1595, w:22, d:34, label:'aromatic C=C', note:'The ring skeleton.' },
+        { cm:1230, w:30, d:48, label:'C–O stretch', note:'Higher than an alcohol’s 1050 because the oxygen is attached to an sp² carbon.' }
+      ],
+      nmr:[
+        { ppm:5.30, h:1, mult:'s', label:'OH', note:'Broad, exchangeable, and its position wanders with concentration — an OH shift is never something to identify a compound by.' },
+        { ppm:6.88, h:3, mult:'m', label:'ortho + para H', note:'Upfield of benzene’s 7.26, because the oxygen donates electron density into the ring and shields these positions. That is the same donation that makes phenol activate toward electrophiles.' },
+        { ppm:7.24, h:2, mult:'t', j:8, label:'meta H', note:'Barely shifted — the donation does not reach the meta positions, which is exactly why substitution goes ortho and para.' }
+      ],
+      tell:'A broad O–H, C–H above 3000, and ring hydrogens that are UPfield of benzene. The upfield shift is the tell: an electron-donating group is on the ring.'
+    },
+    {
+      id:'nitrobenzene-sp', name:'Nitrobenzene', formula:'C₆H₅NO₂', structure:'C₆H₅NO₂', build:'C6H5NO2',
+      ir:[
+        { cm:3080, w:26, d:26, label:'sp² C–H', note:'Above 3000 — aromatic.' },
+        { cm:1520, w:24, d:66, label:'N–O asymmetric', note:'A nitro group gives a strong PAIR of bands, and this is the higher one.' },
+        { cm:1350, w:24, d:60, label:'N–O symmetric', note:'The partner. Two strong bands around 1520 and 1350 together are close to diagnostic for a nitro group.' }
+      ],
+      nmr:[
+        { ppm:7.55, h:2, mult:'t', j:8, label:'meta H', note:'Least affected.' },
+        { ppm:7.70, h:1, mult:'t', j:8, label:'para H', note:'Downfield of benzene.' },
+        { ppm:8.22, h:2, mult:'d', j:8, label:'ortho H', note:'Far downfield at 8.2 — the nitro group pulls hard. Put this next to phenol’s 6.88 and the two spectra show you the difference between a donor and a withdrawer on the same ring.' }
+      ],
+      tell:'Two strong bands near 1520 and 1350, and ring hydrogens pushed DOWNfield past 8. An electron-withdrawing group, and the band pair names it.'
+    },
+    {
+      id:'styrene', name:'Styrene', formula:'C₈H₈', structure:'C₆H₅CH=CH₂', build:'C6H5CH=CH2',
+      ir:[
+        { cm:3060, w:30, d:28, label:'sp² C–H', note:'Both the ring and the vinyl group are above 3000, and there is nothing below it — every carbon in this molecule is sp².' },
+        { cm:1630, w:18, d:24, label:'C=C (vinyl)', note:'The alkene. Weaker than you might expect, because the dipole change is small.' },
+        { cm:1600, w:22, d:32, label:'aromatic C=C', note:'The ring, just below the vinyl band.' }
+      ],
+      nmr:[
+        { ppm:5.25, h:1, mult:'d', j:11, label:'=CH₂ (cis)', note:'The two vinyl hydrogens are NOT equivalent — one is cis to the ring and one is trans, and they couple to the middle hydrogen with very different constants.' },
+        { ppm:5.75, h:1, mult:'d', j:18, label:'=CH₂ (trans)', note:'An 18 Hz coupling. Trans coupling across a double bond is always larger than cis, and that difference is how you assign them.' },
+        { ppm:6.72, h:1, mult:'dd', j:11, label:'=CH–', note:'A doublet of doublets: it couples to both of the others, with two different constants.' },
+        { ppm:7.30, h:5, mult:'m', label:'C₆H₅', note:'A monosubstituted ring — five hydrogens in a lump around 7.3.' }
+      ],
+      tell:'Five degrees of unsaturation, nothing below 3000 in the IR, and three one-hydrogen vinyl signals with a 11 Hz and an 18 Hz coupling. Those two numbers identify cis and trans.'
+    },
+    {
+      id:'isopropanol-sp', name:'Isopropanol', formula:'C₃H₈O', structure:'(CH₃)₂CHOH', build:'CH3CH(OH)CH3',
+      ir:[
+        { cm:3330, w:170, d:54, label:'O–H stretch', note:'Broad and strong. Same band as ethanol — IR will tell you there is an alcohol and will not tell you which one.' },
+        { cm:2970, w:40, d:40, label:'sp³ C–H', note:'Saturated throughout.' },
+        { cm:1130, w:34, d:52, label:'C–O stretch', note:'A secondary alcohol sits a little higher than a primary one, though this is not a distinction to lean on.' }
+      ],
+      nmr:[
+        { ppm:1.18, h:6, mult:'d', j:6, label:'2 × CH₃', note:'SIX hydrogens as one doublet — the two methyls are equivalent, and they are split by the single CH between them. The integral is the clue: 6H is two identical methyls, not one.' },
+        { ppm:2.40, h:1, mult:'s', label:'OH', note:'Broad, exchangeable.' },
+        { ppm:4.01, h:1, mult:'sept', j:6, label:'CH', note:'A septet — seven lines, from the six neighbouring hydrogens. Meeting one is the clearest possible sign of an isopropyl group.' }
+      ],
+      tell:'A 6H doublet and a 1H septet. That pair is an isopropyl group and almost nothing else produces it.'
     }
   ];
 

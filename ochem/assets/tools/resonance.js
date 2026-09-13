@@ -33,7 +33,9 @@
     { id:'carbonate',    label:'Carbonate' },
     { id:'benzene',      label:'Benzene' },
     { id:'phenoxide',    label:'Phenoxide' },
-    { id:'benzyl-cation',label:'Benzyl cation' }
+    { id:'benzyl-cation',label:'Benzyl cation' },
+    { id:'nitrate',      label:'Nitrate' },
+    { id:'ozone',        label:'Ozone' }
   ];
 
   var current = SPECIES[0];

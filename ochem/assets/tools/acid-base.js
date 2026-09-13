@@ -82,7 +82,31 @@
     { id:'malonate',  name:'Diethyl malonate',  formula:'CH₂(CO₂Et)₂',   site:'α C–H', pKa:13.3, atom:'C', res:3, resO:2, carrier:'O', ind:2, hyb:'sp³', cbase:'⁻CH(CO₂Et)₂',
       why:'One carbon between two esters, so the charge is delocalized onto two carbonyls at once.' },
     { id:'pentanedione', name:'2,4-pentanedione', formula:'CH₃COCH₂COCH₃', site:'α C–H', pKa:8.9, atom:'C', res:3, resO:2, carrier:'O', ind:2, hyb:'sp³', cbase:'CH₃COCHCOCH₃⁻',
-      why:'The same trick with two ketones rather than two esters, and more acidic than phenol as a result. A carbon acid you can deprotonate with hydroxide.' }
+      why:'The same trick with two ketones rather than two esters, and more acidic than phenol as a result. A carbon acid you can deprotonate with hydroxide.' },
+    { id:'phenylacetic', name:'Phenylacetic acid', formula:'C₆H₅CH₂COOH', site:'O–H', pKa:4.31, atom:'O', res:2, resO:2, ind:1.1, hyb:'sp³', cbase:'C₆H₅CH₂COO⁻',
+      why:'A carboxylic acid with a benzyl group. The ring is one carbon too far away to conjugate with the carboxylate, so it acts as a mild inductive withdrawer and very little else.' },
+    { id:'cyanoacetic', name:'Cyanoacetic acid', formula:'N≡CCH₂COOH', site:'O–H', pKa:2.47, atom:'O', res:2, resO:2, ind:2.2, hyb:'sp³', cbase:'N≡CCH₂COO⁻',
+      why:'A nitrile is one of the strongest inductive withdrawers there is — worth more than a chlorine at the same distance, without any lone pair being shared.' },
+    { id:'fluoroacetic', name:'Fluoroacetic acid', formula:'FCH₂COOH', site:'O–H', pKa:2.59, atom:'O', res:2, resO:2, ind:2.3, hyb:'sp³', cbase:'FCH₂COO⁻',
+      why:'One fluorine against chloroacetic acid’s one chlorine. Fluorine is more electronegative and pulls slightly harder, and the gap is small because induction is about the dipole rather than the atom’s name.' },
+    { id:'oxalic', name:'Oxalic acid', formula:'HOOC–COOH', site:'O–H', pKa:1.25, atom:'O', res:2, resO:2, ind:3.2, hyb:'sp³', cbase:'HOOC–COO⁻',
+      why:'Two carboxyls bonded directly to each other, so each withdraws from the other. Its first proton comes off harder than trichloroacetic acid’s.' },
+    { id:'benzenesulfonic', name:'Benzenesulfonic acid', formula:'C₆H₅SO₃H', site:'O–H', pKa:-2.8, atom:'O', res:3, resO:3, ind:4, hyb:'sp³', cbase:'C₆H₅SO₃⁻',
+      why:'Three oxygens sharing the charge instead of two, around a sulfur that is happy to be positive. Stronger than any carboxylic acid, and the reason sulfonates make such good leaving groups.' },
+    { id:'phenylammonium', name:'Anilinium ion', formula:'C₆H₅NH₃⁺', site:'N–H', pKa:4.6, atom:'N', res:1, resO:1, ind:1.5, hyb:'sp³', cbase:'C₆H₅NH₂',
+      why:'Its conjugate base is aniline, whose lone pair is delocalized into the ring — so aniline is a poor base, and its conjugate acid is correspondingly strong. Six orders of magnitude more acidic than an ordinary ammonium.' },
+    { id:'ethylammonium', name:'Ethylammonium ion', formula:'CH₃CH₂NH₃⁺', site:'N–H', pKa:10.7, atom:'N', res:1, resO:1, ind:0, hyb:'sp³', cbase:'CH₃CH₂NH₂',
+      why:'An ordinary protonated amine. Put it next to the anilinium ion: same atom, same charge, and six pKa units apart on delocalization alone.' },
+    { id:'cyclopentadiene', name:'Cyclopentadiene', formula:'C₅H₆', site:'C–H', pKa:16, atom:'C', res:5, resO:0, ind:0, hyb:'sp³', cbase:'C₅H₅⁻',
+      why:'A carbanion as acidic as an alcohol, which should look impossible. Losing this proton gives a ring with six pi electrons all the way round — the conjugate base is aromatic, and that is worth about thirty pKa units over an ordinary sp³ C–H.' },
+    { id:'nitromethane-ab', name:'Nitromethane', formula:'CH₃NO₂', site:'α C–H', pKa:10.2, atom:'C', res:3, resO:2, ind:2.5, hyb:'sp³', cbase:'⁻CH₂NO₂',
+      why:'The charge moves off carbon and onto the nitro group’s two oxygens. A C–H as acidic as a thiol, from resonance alone.' },
+    { id:'phenylacetylene', name:'Phenylacetylene', formula:'C₆H₅C≡CH', site:'≡C–H', pKa:23, atom:'C', res:1, resO:0, ind:0, hyb:'sp', cbase:'C₆H₅C≡C⁻',
+      why:'Ethyne with a ring attached. The sp orbital does nearly all the work, and the ring is worth a couple of units on top.' },
+    { id:'tfe', name:'Trifluoroethanol', formula:'CF₃CH₂OH', site:'O–H', pKa:12.4, atom:'O', res:1, resO:1, ind:3.5, hyb:'sp³', cbase:'CF₃CH₂O⁻',
+      why:'Ethanol with three fluorines one carbon away. Nearly four pKa units of pure induction, with no resonance involved at all — the cleanest demonstration of the effect on the list.' },
+    { id:'hydrogen-peroxide', name:'Hydrogen peroxide', formula:'H₂O₂', site:'O–H', pKa:11.6, atom:'O', res:1, resO:1, ind:1.8, hyb:'sp³', cbase:'HOO⁻',
+      why:'Water with a second oxygen attached, and that oxygen pulls. Four orders of magnitude more acidic than water, which is why peroxide anion forms so readily.' }
   ];
 
   /* Atom ranking for the conjugate base's charge carrier. Across a row

@@ -372,6 +372,29 @@
     caption: 'A primary carbocation that behaves like a secondary one, because the ring shares the load.'
   };
 
+  M['nitrate'] = {
+    name: 'Nitrate ion', formula: 'NO₃⁻',
+    atoms: {
+      n:  { x:160, y:96, r:17, label:'N', charge:'⁺', role:'nitro-n', note:'Positive in every form, like the nitrogen of a nitro group — four bonds and no lone pair.' },
+      o1: { x:160, y:36, r:17, label:'O', lp:2, role:'resonance-o', note:'Three equivalent oxygens; each takes the double bond in turn.' },
+      o2: { x:108, y:136,r:17, label:'O', charge:'⁻', lp:3, role:'resonance-o' },
+      o3: { x:212, y:136,r:17, label:'O', charge:'⁻', lp:3, role:'resonance-o' }
+    },
+    bonds: [{a:'n',b:'o1',order:2},{a:'n',b:'o2'},{a:'n',b:'o3'}],
+    caption: 'Carbonate’s shape with a nitrogen in the middle and one less charge. Three equivalent forms.'
+  };
+
+  M['ozone'] = {
+    name: 'Ozone', formula: 'O₃',
+    atoms: {
+      o1: { x:96,  y:126,r:17, label:'O', lp:2, role:'resonance-o', note:'Double-bonded in this form, negative in the other.' },
+      o2: { x:160, y:80, r:17, label:'O', charge:'⁺', lp:1, role:'resonance-o', note:'The middle oxygen is positive in both forms — three bonds and one lone pair.' },
+      o3: { x:224, y:126,r:17, label:'O', charge:'⁻', lp:3, role:'resonance-o', note:'Negative here, double-bonded in the other form.' }
+    },
+    bonds: [{a:'o1',b:'o2',order:2},{a:'o2',b:'o3'}],
+    caption: 'Two forms, and neither is the real molecule — the bonds are measured equal, which is what a resonance hybrid means.'
+  };
+
   M['ammonium'] = {
     name: 'Ammonium ion', formula: 'NH₄⁺',
     atoms: {

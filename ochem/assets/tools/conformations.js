@@ -62,6 +62,36 @@
       front:['Cl','H','H'], back:['Cl','H','H'],
       energies:[5.0, 1.1, 4.0, 0, 4.0, 1.1],
       note:'The same shape of curve as butane with bigger groups. In the gas phase anti wins comfortably; in a polar solvent the gauche form, which has a dipole, closes much of the gap.'
+    },
+    {
+      id:'dibromoethane', name:'1,2-dibromoethane', formula:'C₂H₄Br₂',
+      front:['Br','H','H'], back:['Br','H','H'],
+      energies:[6.0, 1.5, 4.3, 0, 4.3, 1.5],
+      note:'Chlorine’s curve with a heavier halogen: every well is deeper and anti wins by more. This is what the steric story predicts, and it is worth having in mind before you meet the next molecule, which does the opposite.'
+    },
+    {
+      /* The reason this one is in the list. Every rule a student has been
+         given says the big groups go anti — and difluoroethane's gauche form
+         is the more stable one, by about half a kcal. The tool cannot derive
+         this and does not pretend to: the builder further down would get it
+         backwards, which is exactly why the measured numbers are typed in
+         here and the note says what the model is missing. */
+      id:'difluoroethane', name:'1,2-difluoroethane', formula:'C₂H₄F₂',
+      front:['F','H','H'], back:['F','H','H'],
+      energies:[5.2, 0, 3.4, 0.6, 3.4, 0],
+      note:'Look at which minimum is lowest: GAUCHE, not anti — the opposite of butane and of every other molecule on this list. This is the gauche effect. Fluorine is small enough that sterics barely matter, and a stabilizing overlap between a C–H bonding orbital and the C–F antibonding orbital only lines up when the two fluorines are 60° apart. Sterics is not the only thing holding a conformation.'
+    },
+    {
+      id:'ethylene-glycol', name:'Ethylene glycol', formula:'HOCH₂CH₂OH',
+      front:['OH','H','H'], back:['OH','H','H'],
+      energies:[4.4, 0, 3.2, 0.7, 3.2, 0],
+      note:'Gauche again, and for a completely different reason: at 60° the two hydroxyls are close enough to hydrogen bond to each other, and that bond is worth more than the crowding costs. In water the effect largely vanishes, because the solvent will hydrogen bond to both of them instead.'
+    },
+    {
+      id:'methylbutane', name:'2-methylbutane', formula:'(CH₃)₂CHCH₂CH₃',
+      front:['CH₃','CH₃','H'], back:['CH₃','H','H'],
+      energies:[4.9, 0.9, 4.2, 0, 3.7, 0.9],
+      note:'Butane with one extra methyl, and the curve stops being symmetric — the two gauche wells are no longer equivalent, and neither are the three eclipsed peaks. Most real molecules look like this rather than like butane.'
     }
   ];
 
@@ -929,6 +959,50 @@
         var maxE = Math.max.apply(null, e), minE = Math.min.apply(null, e);
         if(maxE - minE < 0.5) return null;
         var maxAt = e.indexOf(maxE) * 60;
+
+        /* WHICH CONFORMER WINS. The question the barrier does not ask, and the
+           only one that catches the two molecules on this list where the
+           answer is not anti. A student who has learned "big groups go
+           opposite each other" as a rule rather than as a tendency gets it
+           wrong here, which is the point of it being asked. */
+        if(Math.random() < 0.45){
+          /* Only ask where there IS a single best conformer. In ethane and
+             propane all three staggered positions are the same conformation
+             at the same energy, so "which is most stable" has three correct
+             answers and marking one of them wrong would be teaching a
+             falsehood. 60° and 300° count as one answer (they are the same
+             gauche conformer mirrored), which is what lets difluoroethane
+             through. */
+          var minima = [];
+          for(var mi = 0; mi < e.length; mi++){
+            if(Math.abs(e[mi] - minE) < 0.01){
+              var conf = mi * 60;
+              if(conf === 300) conf = 60;
+              if(minima.indexOf(conf) < 0) minima.push(conf);
+            }
+          }
+          if(minima.length !== 1) return null;
+
+          var minAt = e.indexOf(minE) * 60;
+          var NAMES = { 0:'Eclipsed, at 0°', 60:'Gauche, at 60°', 120:'Eclipsed, at 120°',
+                        180:'Anti, at 180°', 240:'Eclipsed, at 240°', 300:'Gauche, at 300°' };
+          /* 60° and 300° are the same conformer by symmetry, so offering both
+             would be offering the right answer twice. */
+          var opts60 = [0, 60, 120, 180].map(function(deg2){
+            return { id:String(deg2), label:NAMES[deg2],
+                     correct: deg2 === minAt || (deg2 === 60 && minAt === 300) };
+          });
+          if(!opts60.some(function(o){ return o.correct; })) return null;
+          return {
+            id: 'm:' + tor2.id,
+            prompt: 'Which conformation of <b>' + esc(tor2.name) + '</b>' +
+                    (tor2.formula ? ' (<span class="tformula">' + esc(tor2.formula) + '</span>)' : '') +
+                    ' is the <b>most stable</b>?',
+            options: opts60,
+            explain: '<b>' + NAMES[minAt === 300 ? 60 : minAt] + '</b>, at ' + minE.toFixed(1) +
+                     ' kcal/mol. ' + esc(tor2.note)
+          };
+        }
 
         return {
           id: 't:' + tor2.id,

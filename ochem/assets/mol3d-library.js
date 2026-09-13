@@ -201,6 +201,129 @@
   });
 
   /* Build them all, running any custom atom generator first. */
+  /* ---- The shapes an organic course actually turns on ---------------------
+
+     The original fifteen covered VSEPR well and organic chemistry thinly. These
+     are the centres a student meets in a mechanism and has to reason about in
+     three dimensions — a carbocation they are told is flat, an amide nitrogen
+     they are told is not pyramidal, a ring whose angles cannot be 109.5°. Every
+     one is a claim the viewer can settle by measuring, which is the whole
+     argument for having a viewer. */
+
+  add('Reactive intermediates', {
+    id:'methyl-cation', name:'Methyl cation', formula:'CH₃⁺',
+    note:'Flat, and that is the entire reason SN1 scrambles a stereocentre. Three bonds, no lone pair, an empty p orbital perpendicular to the plane — a nucleophile can arrive at either face with equal ease, so one enantiomer goes in and both come out.',
+    /* Explicit coordinates rather than a planar fill: `planar` resolves to a
+       single direction (it exists for benzene's one ring hydrogen), so asking
+       it for three would place the first and leave the rest undefined. */
+    atoms:[
+      { el:'C', pos:v(0,0,0), charge:1 },
+      { el:'H', pos:v(1.09, 0, 0) },
+      { el:'H', pos:v(1.09*Math.cos(deg(120)), 1.09*Math.sin(deg(120)), 0) },
+      { el:'H', pos:v(1.09*Math.cos(deg(240)), 1.09*Math.sin(deg(240)), 0) }
+    ],
+    bonds:[{a:0,b:1},{a:0,b:2},{a:0,b:3}],
+    focus:0
+  });
+
+  add('Reactive intermediates', {
+    id:'methyl-anion', name:'Methyl anion', formula:'CH₃⁻',
+    note:'The same carbon with a lone pair instead of an empty orbital, and the shape changes completely: four electron groups, so it pyramidalizes. Compare it against the cation above — the difference between flat and pyramidal is one pair of electrons.',
+    atoms:[{ el:'C', pos:v(0,0,0), charge:-1, lpDirs:[v(0,0,1)] }],
+    bonds:[],
+    focus:0,
+    custom: function(){
+      var out = [];
+      for(var i=0;i<3;i++){
+        var a = deg(120*i);
+        out.push({ el:'H', pos:v(1.09*0.9285*Math.cos(a), 1.09*0.9285*Math.sin(a), -1.09*0.3720) });
+      }
+      return out;
+    }
+  });
+
+  add('Reactive intermediates', {
+    id:'hydronium', name:'Hydronium', formula:'H₃O⁺',
+    note:'What "acid" means in water. One lone pair left on the oxygen, so it is pyramidal like ammonia rather than bent like water — protonating oxygen costs it a pair and changes its shape.',
+    atoms:[{ el:'O', pos:v(0,0,0), charge:1, lpDirs:[v(0,0,1)] }],
+    bonds:[],
+    focus:0,
+    custom: function(){
+      var out = [];
+      for(var i=0;i<3;i++){
+        var a = deg(120*i);
+        out.push({ el:'H', pos:v(0.98*0.9285*Math.cos(a), 0.98*0.9285*Math.sin(a), -0.98*0.3720) });
+      }
+      return out;
+    }
+  });
+
+  add('Hybridization', {
+    id:'acetonitrile', name:'Acetonitrile', formula:'CH₃C≡N',
+    note:'Two carbons with nothing in common: one sp³ and tetrahedral, one sp and perfectly straight. The nitrogen lone pair points along the axis, away from the triple bond, which is where it attacks from.',
+    atoms:[
+      { el:'C', pos:v(-1.46,0,0) },
+      { el:'C', pos:v(0,0,0) },
+      { el:'N', pos:v(1.16,0,0), lp:1 }
+    ],
+    bonds:[{a:0,b:1},{a:1,b:2,order:3}],
+    fill:[{ at:0, h:3, len:1.09 }],
+    focus:1
+  });
+
+  add('Hybridization', {
+    id:'dimethyl-ether', name:'Dimethyl ether', formula:'CH₃OCH₃',
+    note:'A bent oxygen with two lone pairs, exactly like water — the two methyls have not changed the geometry, only what is attached. Those two pairs are why an ether dissolves a Grignard and why it can be protonated.',
+    atoms:[
+      { el:'O', pos:v(0,0,0), lpDirs:[v(0,0.82,0.57), v(0,-0.82,0.57)] },
+      { el:'C', pos:v( 1.41*Math.sin(deg(55.5)), 0, -1.41*Math.cos(deg(55.5))) },
+      { el:'C', pos:v(-1.41*Math.sin(deg(55.5)), 0, -1.41*Math.cos(deg(55.5))) }
+    ],
+    bonds:[{a:0,b:1},{a:0,b:2}],
+    fill:[{ at:1, h:3, len:1.09 }, { at:2, h:3, len:1.09 }],
+    focus:0
+  });
+
+  add('Hybridization', {
+    id:'formamide', name:'Formamide (an amide)', formula:'HCONH₂',
+    note:'The nitrogen here is FLAT, not pyramidal — click it and read the angles. Its lone pair is delocalized into the carbonyl, so it sits in a p orbital rather than an sp³ one. That is why amides do not behave like amines, why the C–N bond will not rotate, and why proteins have a backbone with a shape.',
+    atoms:[
+      { el:'C', pos:v(0,0,0) },
+      { el:'O', pos:v(0.66,1.05,0), lp:2 },
+      { el:'N', pos:v(-1.35,0.15,0) },
+      { el:'H', pos:v(0.52,-0.95,0) },
+      /* Placed at exactly ±120° from the N→C direction, so the viewer measures
+         the planar nitrogen this molecule is here to demonstrate rather than
+         something merely close to it. */
+      { el:'H', pos:v(-1.76,1.08,0) },
+      { el:'H', pos:v(-1.95,-0.66,0) }
+    ],
+    bonds:[{a:0,b:1,order:2},{a:0,b:2},{a:0,b:3},{a:2,b:4},{a:2,b:5}],
+    focus:2
+  });
+
+  add('Ring strain', {
+    id:'cyclopropane-3d', name:'Cyclopropane', formula:'C₃H₆',
+    note:'Three carbons in a triangle, so the internal angles are 60° against the 109.5° an sp³ carbon wants. Click a carbon and the readout says so. Every C–H is eclipsed with its neighbour as well, which the ring cannot relieve by twisting — nothing here can move.',
+    atoms: M3.ringPoints(3, 0.87, 0).map(function(p){ return { el:'C', pos:p }; }),
+    bonds:[{a:0,b:1},{a:1,b:2},{a:2,b:0}],
+    fill:[{ at:0, h:2, len:1.09 }, { at:1, h:2, len:1.09 }, { at:2, h:2, len:1.09 }],
+    focus:0
+  });
+
+  add('Ring strain', {
+    id:'cyclohexane-boat-3d', name:'Cyclohexane (boat)', formula:'C₆H₁₂',
+    note:'The conformation the chair is better than. Put it next to the chair and look along the ring: two carbons point the same way at the "prow" and "stern", their hydrogens crowd into each other, and four C–C bonds are eclipsed. About 7 kcal/mol worse, and the ring flip never stops here.',
+    atoms: [
+      { el:'C', pos:v( 1.25, 0.75, 0.00) }, { el:'C', pos:v( 0.00, 1.45, 0.65) },
+      { el:'C', pos:v(-1.25, 0.75, 0.00) }, { el:'C', pos:v(-1.25,-0.75, 0.00) },
+      { el:'C', pos:v( 0.00,-1.45, 0.65) }, { el:'C', pos:v( 1.25,-0.75, 0.00) }
+    ],
+    bonds:[{a:0,b:1},{a:1,b:2},{a:2,b:3},{a:3,b:4},{a:4,b:5},{a:5,b:0}],
+    fill:[0,1,2,3,4,5].map(function(i){ return { at:i, h:2, len:1.09 }; }),
+    focus:1
+  });
+
   var BUILT = LIB.map(function(entry){
     var spec = entry.spec;
     if(spec.custom){
