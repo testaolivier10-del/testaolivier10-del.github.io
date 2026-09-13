@@ -612,7 +612,7 @@
       </div>
       <div class="q-head-row">
         <div class="q-domain" id="qDomain"></div>
-        <button type="button" class="flag-btn" id="flagBtn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M4 22V4a1 1 0 0 1 1-1h13.5a1 1 0 0 1 .9 1.5l-2.4 4.8a1 1 0 0 0 0 .9l2.4 4.8a1 1 0 0 1-.9 1.5H5"/></svg>Flag for review</button>
+        <button type="button" class="flag-btn" id="flagBtn"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M4 22V4a1 1 0 0 1 1-1h13.5a1 1 0 0 1 .9 1.5l-2.4 4.8a1 1 0 0 0 0 .9l2.4 4.8a1 1 0 0 1-.9 1.5H5"/></svg>Flag for review</button>
       </div>
       <div class="q-prompt" id="qPrompt"></div>
       <div class="options" id="qOptions"></div>
@@ -845,7 +845,7 @@ const OPTION_ORDER_KEY = 'nremt_option_order';
   }
 })();
 
-const flagIcon = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M4 22V4a1 1 0 0 1 1-1h13.5a1 1 0 0 1 .9 1.5l-2.4 4.8a1 1 0 0 0 0 .9l2.4 4.8a1 1 0 0 1-.9 1.5H5"/></svg>';
+const flagIcon = '<svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M4 22V4a1 1 0 0 1 1-1h13.5a1 1 0 0 1 .9 1.5l-2.4 4.8a1 1 0 0 0 0 .9l2.4 4.8a1 1 0 0 1-.9 1.5H5"/></svg>';
 let mode = 'full'; // 'full', 'review', 'flagged', 'spaced', 'domain', 'adaptive', 'single', or 'flashcard'
 let selectedDomain = null;
 let activeIndices = []; // maps position-in-quiz -> index into QUESTIONS
@@ -1240,7 +1240,7 @@ function renderProgressChart(){
       ? pts.map((p,i) => (i===0?'M':'L') + p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ')
       : `M${pts[0][0]},${pts[0][1]} L${pts[0][0]+0.01},${pts[0][1]}`;
 
-    const svg = `<svg class="progress-chart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+    const svg = `<svg class="progress-chart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img" aria-label="Score trend across recent attempts">
       <path d="${line}" fill="none" stroke="#2C9C8B" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
       ${pts.map(p => `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="2" fill="#16332E"/>`).join('')}
     </svg>`;

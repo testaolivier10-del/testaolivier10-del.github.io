@@ -97,7 +97,7 @@
   .section-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
   .section-head h2{font:900 clamp(19px,2.4vw,23px) var(--font-ui);letter-spacing:-.01em;margin:0;}
 
-  /* ---- "Practise this" links out to the tools ---------------------------- */
+  /* ---- "Practice this" links out to the tools ---------------------------- */
   .chapter-tools{
     display:flex;flex-wrap:wrap;gap:8px;align-items:center;
     margin:18px 0 0;padding:12px 14px;border-radius:12px;
@@ -3838,7 +3838,7 @@ function toolsForChapter(ch){
   if (!hit) return '';
   return `
     <div class="chapter-tools">
-      <span class="chapter-tools__k">Practise this</span>
+      <span class="chapter-tools__k">Practice this</span>
       ${hit.tools.map(t => `<a href="${t.href}">${t.label} <small>${t.why}</small></a>`).join('')}
     </div>
   `;
