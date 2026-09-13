@@ -19,7 +19,7 @@
    quietly phones home would be the worst of both worlds. */
 (function(){
   // From the Umami dashboard: Settings -> Websites -> the site -> "Website ID".
-  var WEBSITE_ID = '';
+  var WEBSITE_ID = 'cc421df1-3f32-40f1-bd08-d7f6666de3ac';
   var SCRIPT_URL = 'https://cloud.umami.is/script.js';
 
   var enabled = !!WEBSITE_ID;
