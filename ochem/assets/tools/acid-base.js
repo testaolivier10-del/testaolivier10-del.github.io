@@ -675,4 +675,59 @@
     }
   }
 
+  /* ---- Check yourself ---------------------------------------------------
+     The sandbox above hands you the answer the moment you pick two acids,
+     which is right for exploring and useless for finding out whether you
+     could have predicted it. So the quiz asks first.
+
+     Pairs are drawn with a pKa gap of at least 1.5 units, because "which is
+     more acidic" is only a fair question when the answer is not inside the
+     measurement's own uncertainty — and the explanation is analyse()'s, the
+     same reasoning the tool shows in its main panel, so the quiz can never
+     teach a different chemistry from the tool it is attached to. */
+  if(window.OchemToolQuiz){
+    window.OchemToolQuiz.mount(document.getElementById('tool-quiz'), {
+      slug: 'acid-base',
+      rounds: 6,
+      intro: 'Two structures at a time: which proton comes off first?',
+      make: function(recent){
+        var a, b, tries = 0;
+        do {
+          a = ACIDS[Math.floor(Math.random() * ACIDS.length)];
+          b = ACIDS[Math.floor(Math.random() * ACIDS.length)];
+          tries++;
+        } while(tries < 60 && (a === b ||
+                Math.abs(a.pKa - b.pKa) < 1.5 ||
+                recent.indexOf(a.id + '/' + b.id) >= 0));
+
+        var res = analyse(a, b);
+        var truth = res.truth;
+        var other = truth === a ? b : a;
+
+        /* When the structural rules and the measured pKa disagree the tool
+           says so plainly rather than hiding it, and so does this — that
+           disagreement is the most interesting thing either can show you. */
+        var why = res.deciding
+          ? (res.agrees
+              ? '<b>' + esc(res.deciding.factor) + '</b> decides it. ' + res.deciding.text
+              : 'The structural rules point the other way here — ' +
+                esc(res.deciding.factor.toLowerCase()) + ' would pick ' + esc(res.deciding.winner.name) +
+                '. The measured values are what they are, and what the rules leave out is solvation.')
+          : 'None of the four structural factors separates these two; the measured values settle it.';
+
+        return {
+          id: a.id + '/' + b.id,
+          prompt: 'Which is the <b>stronger acid</b>: <span class="tformula">' + esc(a.formula) +
+                  '</span> or <span class="tformula">' + esc(b.formula) + '</span>?',
+          options: [
+            { id:a.id, label:esc(a.name) + ' <span class="tmuted">(' + esc(a.formula) + ')</span>', correct: truth === a },
+            { id:b.id, label:esc(b.name) + ' <span class="tmuted">(' + esc(b.formula) + ')</span>', correct: truth === b }
+          ],
+          explain: '<b>' + esc(truth.name) + '</b>, pKa ' + truth.pKa + ' against ' + other.pKa +
+                   '. ' + why
+        };
+      }
+    });
+  }
+
 })();

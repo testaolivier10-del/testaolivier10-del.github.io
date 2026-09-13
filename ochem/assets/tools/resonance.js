@@ -616,4 +616,60 @@
   } else {
     select(SPECIES[0]);
   }
+  /* ---- Check yourself ---------------------------------------------------
+     The count comes from resonance-engine.js enumerating the species, not
+     from a number typed next to it — which is the same property that lets the
+     tool say "you have found two of five" while you are drawing. So the quiz
+     is asking about a fact the engine derives, and adding a species to the
+     list adds a question with it. */
+  if(window.OchemToolQuiz){
+    window.OchemToolQuiz.mount(document.getElementById('tool-quiz'), {
+      slug: 'resonance',
+      rounds: 6,
+      intro: 'How far the charge really spreads, and which form carries the most weight.',
+      make: function(recent){
+        var pool = SPECIES.filter(function(s){ return recent.indexOf(s.id) < 0; });
+        if(!pool.length) pool = SPECIES;
+        var pick = pool[Math.floor(Math.random() * pool.length)];
+
+        /* contributors(), not enumerate(): enumerate finds every structure the
+           arrows can reach, contributors keeps the ones that actually count as
+           resonance forms — and it is contributors the panel above counts when
+           it says "two of five". A quiz answering a different question from the
+           tool it sits under would be worse than no quiz. */
+        var startMol = Mol.get(pick.id);
+        if(!startMol) return null;
+        var forms = R.contributors(C.fromMolecule(startMol));
+        if(!forms || !forms.length) return null;
+
+        var n = forms.length;
+        var opts = [n];
+        [n + 1, n - 1, n + 2, n * 2].forEach(function(v){
+          if(v >= 1 && opts.indexOf(v) < 0 && opts.length < 4) opts.push(v);
+        });
+
+        return {
+          id: pick.id,
+          prompt: 'How many contributing <b>resonance forms</b> does <b>' + esc(pick.label) +
+                  '</b> have?',
+          options: opts.map(function(v){
+            return { id:String(v), label:String(v), correct: v === n };
+          }),
+          explain: '<b>' + n + '</b>. Counting them is not a memory exercise: every form is one legal ' +
+                   'push of a lone pair or a pi bond away from another, so the count is however many ' +
+                   'distinct structures that operation can reach before it starts repeating itself. ' +
+                   /* Phenoxide and the benzyl cation come out at five here and four in most
+                      textbooks, and the difference is real rather than a bug: a benzene ring
+                      has its own two Kekulé forms, which a book showing "the three
+                      delocalized forms" is quietly holding fixed. Saying so is better than
+                      hiding a form to match the expected number. */
+                   (/benzene|phenoxide|benzyl/.test(pick.id)
+                     ? 'That includes the ring’s own two Kekulé forms — a textbook picture usually holds those fixed and shows you one fewer. '
+                     : '') +
+                   'Draw them in the tool above and it will tell you which ones you have left to find.'
+        };
+      }
+    });
+  }
+
 })();

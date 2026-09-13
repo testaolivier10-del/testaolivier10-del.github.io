@@ -874,4 +874,85 @@
   renderNewman();
   renderRingControls();
   renderChair();
+  /* ---- Check yourself ---------------------------------------------------
+     Two question types, matching the two halves of the tool. The A-value
+     comparison is the chair half asked in words, and the torsional question
+     is the Newman half — both read the same tables the curves are drawn from,
+     so the quiz cannot contradict the graph above it. */
+  if(window.OchemToolQuiz){
+    var SUB_KEYS = Object.keys(SUBS).filter(function(k){ return SUBS[k].a > 0; });
+
+    window.OchemToolQuiz.mount(document.getElementById('tool-quiz'), {
+      slug: 'conformations',
+      rounds: 6,
+      intro: 'Strain, A-values and which conformer you actually have in the flask.',
+      make: function(recent){
+        var kind = Math.random();
+
+        /* A-VALUES. Pairs need a real gap: 0.38 against 0.43 (Br against Cl)
+           is a coin toss dressed up as a question, and the honest answer to
+           it is "they are the same within the measurement". */
+        if(kind < 0.5){
+          var x, y, tries = 0;
+          do {
+            x = SUB_KEYS[Math.floor(Math.random() * SUB_KEYS.length)];
+            y = SUB_KEYS[Math.floor(Math.random() * SUB_KEYS.length)];
+            tries++;
+          } while(tries < 50 && (x === y || Math.abs(SUBS[x].a - SUBS[y].a) < 0.4 ||
+                                 recent.indexOf('a:' + x + y) >= 0));
+          var big = SUBS[x].a > SUBS[y].a ? x : y;
+          var small = big === x ? y : x;
+          return {
+            id: 'a:' + x + y,
+            prompt: 'On a cyclohexane ring, which group pays more to sit <b>axial</b> — ' +
+                    '<span class="tformula">' + esc(SUBS[x].label) + '</span> or ' +
+                    '<span class="tformula">' + esc(SUBS[y].label) + '</span>?',
+            options: [
+              { id:x, label:esc(SUBS[x].label), correct: x === big },
+              { id:y, label:esc(SUBS[y].label), correct: y === big }
+            ],
+            explain: '<b>' + esc(SUBS[big].label) + '</b>, at ' + SUBS[big].a.toFixed(2) +
+                     ' kcal/mol against ' + SUBS[small].a.toFixed(2) + '. ' +
+                     'An A-value is exactly that cost — the penalty for the 1,3-diaxial crowding a group ' +
+                     'meets when it points along the ring axis. It tracks how much room the group needs ' +
+                     'near the ring, which is why tert-butyl (4.90) dwarfs everything: it is the only ' +
+                     'common group big enough to hold a ring in one chair on its own.'
+          };
+        }
+
+        /* TORSIONAL. Asked off the declared energy curve rather than off a
+           remembered number, so a molecule added to TORSIONALS becomes a
+           question for free. */
+        var pool = TORSIONALS.filter(function(t){ return t.id !== 'custom' && t.energies; });
+        var tor2 = pool[Math.floor(Math.random() * pool.length)];
+        var e = tor2.energies;
+        var maxE = Math.max.apply(null, e), minE = Math.min.apply(null, e);
+        if(maxE - minE < 0.5) return null;
+        var maxAt = e.indexOf(maxE) * 60;
+
+        return {
+          id: 't:' + tor2.id,
+          prompt: 'Turning the central bond of <b>' + esc(tor2.name) + '</b>' +
+                  (tor2.formula ? ' (<span class="tformula">' + esc(tor2.formula) + '</span>)' : '') +
+                  ' through 360°, how big is the <b>barrier</b> — the gap between its highest and ' +
+                  'lowest points?',
+          options: (function(){
+            var truth = maxE - minE;
+            var set = [truth];
+            [truth * 2, truth / 2, truth + 2.4].forEach(function(v){
+              if(v > 0.2 && set.every(function(s){ return Math.abs(s - v) > 0.45; })) set.push(v);
+            });
+            return set.slice(0, 4).map(function(v){
+              return { id:String(v.toFixed(1)), label:v.toFixed(1) + ' kcal/mol', correct: v === truth };
+            });
+          })(),
+          explain: '<b>' + (maxE - minE).toFixed(1) + ' kcal/mol</b>, with the maximum at ' + maxAt + '°. ' +
+                   'That is small enough that the bond is still turning millions of times a second at room ' +
+                   'temperature — a conformer is a place the molecule spends more of its time, not a ' +
+                   'compound you could put in a bottle.'
+        };
+      }
+    });
+  }
+
 })();

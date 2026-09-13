@@ -515,4 +515,84 @@
   }
 
   if(!restore()) select(LIB.ALL[0]);
+  /* ---- Check yourself ---------------------------------------------------
+     Every answer here is computed by M3.analyse() from the same coordinates
+     the viewer draws, exactly as the on-screen readout is. Nothing is typed
+     into a question bank, so a quiz answer and the molecule on screen cannot
+     drift apart — and a molecule added to the library becomes a question
+     without anyone writing one. */
+  if(window.OchemToolQuiz){
+    var SHAPE_POOL = [];
+    Object.keys(M3.SHAPES).forEach(function(k){
+      var m = M3.SHAPES[k].m;
+      if(SHAPE_POOL.indexOf(m) < 0) SHAPE_POOL.push(m);
+    });
+
+    window.OchemToolQuiz.mount(document.getElementById('tool-quiz'), {
+      slug: 'viewer-3d',
+      rounds: 6,
+      intro: 'Shape, steric number and hybridization — without the model in front of you.',
+      make: function(recent){
+        /* Only atoms the shape table actually classifies: a ring carbon in
+           benzene is a fine thing to look at and a poor thing to be asked
+           about out of context. */
+        var pool = LIB.ALL.filter(function(m){
+          var a = M3.analyse(m, m.focus === undefined ? 0 : m.focus);
+          return a && a.shape;
+        });
+        if(!pool.length) return null;
+
+        var pick = null, tries = 0;
+        do {
+          pick = pool[Math.floor(Math.random() * pool.length)];
+          tries++;
+        } while(tries < 40 && recent.indexOf(pick.id) >= 0 && pool.length > recent.length);
+
+        var idx = pick.focus === undefined ? 0 : pick.focus;
+        var a = M3.analyse(pick, idx);
+        var askHyb = Math.random() < 0.4;
+
+        if(askHyb){
+          var hybs = ['sp', 'sp²', 'sp³', 'sp³d', 'sp³d²'];
+          return {
+            id: pick.id + ':hyb',
+            options: hybs.map(function(h){ return { id:h, label:h, correct: h === a.shape.hyb }; }),
+            prompt: 'What is the hybridization of the ' + esc(a.el) + ' in <b>' +
+                    esc(pick.name) + '</b>?',
+            explain: '<b>' + a.shape.hyb + '</b>. ' + a.bonds + ' bond' + (a.bonds === 1 ? '' : 's') +
+                     ' plus ' + a.lonePairs + ' lone pair' + (a.lonePairs === 1 ? '' : 's') +
+                     ' makes a steric number of ' + a.steric + ', and the hybridization follows from ' +
+                     'the count of electron groups — not from how many of them happen to be bonds.'
+          };
+        }
+
+        /* Distractors are other real shapes, with the electron geometry
+           included when it differs from the molecular one: "tetrahedral" is
+           the answer students give for ammonia, and it deserves to be on the
+           list so that choosing it is a thing that can be corrected. */
+        var wrong = SHAPE_POOL.filter(function(s){ return s !== a.shape.m; });
+        for(var i = wrong.length - 1; i > 0; i--){
+          var j = Math.floor(Math.random() * (i + 1));
+          var t = wrong[i]; wrong[i] = wrong[j]; wrong[j] = t;
+        }
+        var opts = [{ id:a.shape.m, label:a.shape.m, correct:true }];
+        wrong.slice(0, 3).forEach(function(s){ opts.push({ id:s, label:s, correct:false }); });
+
+        return {
+          id: pick.id + ':shape',
+          prompt: 'What is the <b>molecular shape</b> at the ' + esc(a.el) +
+                  ' of <b>' + esc(pick.name) + '</b>' +
+                  (pick.formula ? ' (<span class="tformula">' + esc(pick.formula) + '</span>)' : '') + '?',
+          options: opts,
+          explain: '<b>' + a.shape.m + '</b>. The electron geometry is ' + a.shape.e.toLowerCase() +
+                   ' — ' + a.steric + ' groups around the ' + a.el + ' — but ' +
+                   (a.lonePairs
+                     ? a.lonePairs + ' of them ' + (a.lonePairs === 1 ? 'is a lone pair, and lone pairs ' : 'are lone pairs, and lone pairs ') +
+                       'are not part of the SHAPE even though they push on it. That is the whole of the difference between the two names.'
+                     : 'with no lone pairs the two names are the same thing.')
+        };
+      }
+    });
+  }
+
 })();

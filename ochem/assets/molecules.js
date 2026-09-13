@@ -247,6 +247,131 @@
     caption: 'The conjugate base of acetic acid. Two equivalent oxygens share one negative charge.'
   };
 
+  /* The delocalized species the Resonance Explorer offers.
+
+     They were listed in that tool's picker from the day it shipped and never
+     existed here, so eight of its eleven buttons resolved to null and threw.
+     Written to the same convention as everything else in this file: explicit
+     lone pairs, because the resonance engine counts them and a missing pair is
+     a form it will not find, and charges as text because that is what the
+     renderer draws. */
+
+  M['formate'] = {
+    name: 'Formate ion', formula: 'HCO₂⁻',
+    atoms: {
+      o1: { x:214, y:40, r:17, label:'O', lp:2, role:'resonance-o', note:'The doubly-bonded oxygen in this form. In the other one it carries the charge.' },
+      c:  { x:160, y:90, r:17, label:'C', role:'carboxyl-c' },
+      o2: { x:214, y:140,r:17, label:'O', charge:'⁻', lp:3, role:'resonance-o', note:'Equivalent to the other oxygen once both forms are drawn.' },
+      h:  { x:100, y:90, r:12, label:'H' }
+    },
+    bonds: [{a:'c',b:'o1',order:2},{a:'c',b:'o2'},{a:'c',b:'h'}],
+    caption: 'Acetate with the methyl group replaced by a hydrogen — the smallest carboxylate there is.'
+  };
+
+  M['carbonate'] = {
+    name: 'Carbonate ion', formula: 'CO₃²⁻',
+    atoms: {
+      c:  { x:160, y:96, r:17, label:'C', role:'carboxyl-c' },
+      o1: { x:160, y:36, r:17, label:'O', lp:2, role:'resonance-o', note:'Three equivalent oxygens, two negative charges between them. Every form puts the double bond on a different one.' },
+      o2: { x:108, y:136,r:17, label:'O', charge:'⁻', lp:3, role:'resonance-o' },
+      o3: { x:212, y:136,r:17, label:'O', charge:'⁻', lp:3, role:'resonance-o' }
+    },
+    bonds: [{a:'c',b:'o1',order:2},{a:'c',b:'o2'},{a:'c',b:'o3'}],
+    caption: 'Three equivalent oxygens sharing two charges. The classic three-form case.'
+  };
+
+  M['allyl-cation'] = {
+    name: 'Allyl cation', formula: 'C₃H₅⁺',
+    atoms: {
+      c1: { x:96,  y:70, r:17, label:'C', role:'alkene-c' },
+      c2: { x:160, y:106,r:17, label:'C', role:'alkene-c' },
+      c3: { x:224, y:70, r:17, label:'C', charge:'⁺', role:'carbocation', note:'The empty p orbital. Push the pi bond over and the positive charge lands on C1 instead — the two ends are equivalent.' },
+      h1: { x:52,  y:42, r:11, label:'H' },
+      h2: { x:70,  y:124,r:11, label:'H' },
+      h3: { x:160, y:160,r:11, label:'H' },
+      h4: { x:250, y:124,r:11, label:'H' },
+      h5: { x:268, y:42, r:11, label:'H' }
+    },
+    bonds: [{a:'c1',b:'c2',order:2},{a:'c2',b:'c3'},{a:'c1',b:'h1'},{a:'c1',b:'h2'},{a:'c2',b:'h3'},{a:'c3',b:'h4'},{a:'c3',b:'h5'}],
+    caption: 'A pi bond next to an empty p orbital. The charge belongs to both ends at once.'
+  };
+
+  M['allyl-anion'] = {
+    name: 'Allyl anion', formula: 'C₃H₅⁻',
+    atoms: {
+      c1: { x:96,  y:70, r:17, label:'C', role:'alkene-c' },
+      c2: { x:160, y:106,r:17, label:'C', role:'alkene-c' },
+      c3: { x:224, y:70, r:17, label:'C', charge:'⁻', lp:1, role:'carbanion', note:'A lone pair next to a pi bond. Push it in and the pi bond out, and the charge moves to the other end.' },
+      h1: { x:52,  y:42, r:11, label:'H' },
+      h2: { x:70,  y:124,r:11, label:'H' },
+      h3: { x:160, y:160,r:11, label:'H' },
+      h4: { x:250, y:124,r:11, label:'H' },
+      h5: { x:268, y:42, r:11, label:'H' }
+    },
+    bonds: [{a:'c1',b:'c2',order:2},{a:'c2',b:'c3'},{a:'c1',b:'h1'},{a:'c1',b:'h2'},{a:'c2',b:'h3'},{a:'c3',b:'h4'},{a:'c3',b:'h5'}],
+    caption: 'The same skeleton as the allyl cation carrying the opposite charge — and it delocalizes just as well.'
+  };
+
+  M['enolate'] = {
+    name: 'Enolate ion', formula: 'CH₂=C(CH₃)O⁻',
+    atoms: {
+      o:  { x:214, y:44, r:17, label:'O', charge:'⁻', lp:3, role:'resonance-o', note:'Oxygen holds the charge in the major form — it is the more electronegative of the two places it can sit.' },
+      c:  { x:160, y:94, r:17, label:'C', role:'carbonyl-c' },
+      ca: { x:96,  y:130,r:17, label:'C', role:'alpha-carbon', note:'Push the C=C in and the C–O out, and the charge lands here. That form contributes less — and it is still the end that reacts.' },
+      me: { x:214, y:144,r:16, label:'C', role:'alkyl' },
+      h1: { x:52,  y:104,r:11, label:'H' },
+      h2: { x:70,  y:170,r:11, label:'H' }
+    },
+    bonds: [{a:'c',b:'o'},{a:'c',b:'ca',order:2},{a:'c',b:'me'},{a:'ca',b:'h1'},{a:'ca',b:'h2'}],
+    caption: 'Deprotonated acetone. The charge is split between carbon and oxygen, unevenly.'
+  };
+
+  M['nitromethane'] = {
+    name: 'Nitromethane', formula: 'CH₃NO₂',
+    atoms: {
+      n:  { x:160, y:92, r:17, label:'N', charge:'⁺', role:'nitro-n', note:'Nitrogen is positive in every form — four bonds and no lone pair. That is not a typo, it is what a nitro group is.' },
+      o1: { x:214, y:44, r:17, label:'O', lp:2, role:'resonance-o' },
+      o2: { x:214, y:140,r:17, label:'O', charge:'⁻', lp:3, role:'resonance-o', note:'The two oxygens are equivalent once both forms are drawn.' },
+      c:  { x:96,  y:92, r:16, label:'C', role:'alkyl' },
+      h1: { x:52,  y:50, r:11, label:'H' },
+      h2: { x:52,  y:134,r:11, label:'H' }
+    },
+    bonds: [{a:'n',b:'o1',order:2},{a:'n',b:'o2'},{a:'n',b:'c'},{a:'c',b:'h1'},{a:'c',b:'h2'}],
+    caption: 'A permanently charge-separated group: positive nitrogen, one negative oxygen, two equivalent forms.'
+  };
+
+  M['phenoxide'] = {
+    name: 'Phenoxide ion', formula: 'C₆H₅O⁻',
+    atoms: {
+      o:  { x:160, y:24, r:17, label:'O', charge:'⁻', lp:3, role:'resonance-o', note:'Push a lone pair into the ring and the charge travels to the ortho and para carbons — three of the six, never the meta ones.' },
+      c1: { x:160, y:74, r:16, label:'C', role:'aromatic-c' },
+      c2: { x:212, y:104,r:16, label:'C', role:'aromatic-c' },
+      c3: { x:212, y:164,r:16, label:'C', role:'aromatic-c' },
+      c4: { x:160, y:194,r:16, label:'C', role:'aromatic-c' },
+      c5: { x:108, y:164,r:16, label:'C', role:'aromatic-c' },
+      c6: { x:108, y:104,r:16, label:'C', role:'aromatic-c' }
+    },
+    bonds: [{a:'o',b:'c1'},{a:'c1',b:'c2',order:2},{a:'c2',b:'c3'},{a:'c3',b:'c4',order:2},
+            {a:'c4',b:'c5'},{a:'c5',b:'c6',order:2},{a:'c6',b:'c1'}],
+    caption: 'The conjugate base of phenol. Delocalization into the ring is why phenol is six orders of magnitude more acidic than an alcohol.'
+  };
+
+  M['benzyl-cation'] = {
+    name: 'Benzyl cation', formula: 'C₇H₇⁺',
+    atoms: {
+      ch2:{ x:160, y:22, r:17, label:'C', charge:'⁺', role:'carbocation', note:'The empty orbital sits next to the ring, so the ring can feed it — the charge ends up on three ring carbons as well as here.' },
+      c1: { x:160, y:74, r:16, label:'C', role:'aromatic-c' },
+      c2: { x:212, y:104,r:16, label:'C', role:'aromatic-c' },
+      c3: { x:212, y:164,r:16, label:'C', role:'aromatic-c' },
+      c4: { x:160, y:194,r:16, label:'C', role:'aromatic-c' },
+      c5: { x:108, y:164,r:16, label:'C', role:'aromatic-c' },
+      c6: { x:108, y:104,r:16, label:'C', role:'aromatic-c' }
+    },
+    bonds: [{a:'ch2',b:'c1'},{a:'c1',b:'c2',order:2},{a:'c2',b:'c3'},{a:'c3',b:'c4',order:2},
+            {a:'c4',b:'c5'},{a:'c5',b:'c6',order:2},{a:'c6',b:'c1'}],
+    caption: 'A primary carbocation that behaves like a secondary one, because the ring shares the load.'
+  };
+
   M['ammonium'] = {
     name: 'Ammonium ion', formula: 'NH₄⁺',
     atoms: {
