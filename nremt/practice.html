@@ -759,7 +759,18 @@ const QUESTIONS = await (async function(){
 //
 // A failure here is not fatal the way a failure above is: every mode still
 // runs, and the only thing missing is the "why" under an answer.
-const EXPLANATIONS_READY = (async function(){
+//
+// Started when a session starts, not when the page opens. This page is also
+// the hub for three modes, and most arrivals read it and pick one; fetching
+// 1.2 MB for every one of those visits paid for explanations nobody had
+// asked for yet. beginQuiz and the flashcard opener kick it off, so it lands
+// long before the first answer, and the two render sites that need it await
+// it. (sw.js still warms the file in the background after install, so a
+// repeat visit reads it from the cache either way.)
+let explanationsPromise = null;
+function loadExplanations(){
+  if(explanationsPromise) return explanationsPromise;
+  explanationsPromise = (async function(){
   if(!QUESTIONS.length) return;
   try{
     const res = await fetch('assets/explanations.json');
@@ -772,7 +783,9 @@ const EXPLANATIONS_READY = (async function(){
   }catch(e){
     /* leaves q.explain undefined; both render sites fall back to '' */
   }
-})();
+  })();
+  return explanationsPromise;
+}
 
 // The one place the pool size is shown as a live figure rather than prose, so
 // it can't drift from the file the way the marketing copy twice has.
@@ -1801,6 +1814,7 @@ document.getElementById('flashcardBtn').addEventListener('click', () => {
   fcIndices = shuffle(pool);
   fcCurrent = 0;
   fcFlipped = false;
+  loadExplanations();
   introScreen.style.display = 'none';
   document.getElementById('flashcardScreen').style.display = 'block';
   window.scrollTo(0, 0);
@@ -1815,7 +1829,7 @@ async function renderFlashcard(){
   // The back of the card is the explanation, so this is one of the two places
   // that has to have it. Awaited before anything is written, rather than
   // rendering the front and patching the back in later.
-  await EXPLANATIONS_READY;
+  await loadExplanations();
   const q = QUESTIONS[fcIndices[fcCurrent]];
   document.getElementById('fcProgressText').textContent = `Card ${fcCurrent+1} of ${fcIndices.length}`;
   document.getElementById('fcDomain').innerHTML = `${q.domain}<span class="diff-badge ${q.diff}">${q.diff}</span>`;
@@ -2028,6 +2042,7 @@ document.getElementById('adaptiveStartBtn').addEventListener('click', () => {
 });
 
 function beginQuiz(withTimer, resumeState){
+  loadExplanations();
   if(resumeState){
     mode = resumeState.mode;
     selectedDomain = resumeState.selectedDomain;
@@ -2439,7 +2454,7 @@ function showResults(){
 async function renderReview(filter){
   // The other one: every row in the results list carries the explanation for
   // the question above it.
-  await EXPLANATIONS_READY;
+  await loadExplanations();
   const reviewEl = document.getElementById('reviewList');
   let items = allReviewData;
   if(filter === 'incorrect') items = allReviewData.filter(d => !d.isCorrect && d.userAns !== null);
