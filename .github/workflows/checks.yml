@@ -15,6 +15,35 @@ jobs:
           node-version: 20
       - run: node scripts/check-site.mjs
 
+  metadata:
+    runs-on: ubuntu-latest
+    steps:
+      # fetch-depth: 0 because build-sitemap.mjs reads each page's last commit
+      # date out of git history; a shallow clone has none.
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # Both of these are generated from the pages themselves, so the failure
+      # they catch is the same one: a page was added and the derived files
+      # were not rebuilt. Neither can drift silently now.
+      - name: Open Graph tags are present on every page
+        run: node scripts/build-og-tags.mjs --check
+      - name: sitemap.xml lists every page
+        run: node scripts/build-sitemap.mjs --check
+      # The two files practice.html actually fetches are generated from
+      # questions.json. Editing a question without rebuilding them would ship
+      # the edit to nobody, silently.
+      - name: the split question bank matches questions.json
+        run: node scripts/build-question-bank.mjs --check
+      # And the assistant's teaching index, generated from the same source.
+      - name: the tutor banks are in step with their sources
+        run: |
+          node scripts/build-tutor-bank.mjs
+          git diff --exit-code -- nremt/assets/tutor-bank.json ochem/assets/tutor-bank.json
+
   unit-tests:
     runs-on: ubuntu-latest
     steps:
