@@ -429,7 +429,7 @@
         (comingBack.length === 1 ? 'is' : 'are') + ' queued for spaced review, the soonest being ') +
         '<b>' + esc(soonest.concept.title.toLowerCase()) + '</b>' +
         esc(soonest.interval <= 1 ? ' tomorrow.' : ' in ' + plural(soonest.interval, 'day') + '.') +
-        ' They come back inside new problems on other topics, not as the same card — that is what makes the idea transfer.' +
+        ' They come back inside new problems, not the same card.' +
       '</div></div>';
     }
 
@@ -442,7 +442,7 @@
         esc(plural(flaggedNow.length, 'question') + ' from this session ' +
           (flaggedNow.length === 1 ? 'is' : 'are') + ' flagged, out of ' +
           plural(flaggedQuestions().length, 'flagged question') + ' in total. ') +
-        'They stay flagged until you clear them yourself — <a href="practice.html?mode=flagged">work through them</a>.' +
+        '<a href="practice.html?mode=flagged">Work through them</a>.' +
       '</div></div>';
     }
 

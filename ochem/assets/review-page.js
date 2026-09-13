@@ -223,7 +223,7 @@
       homeEl.innerHTML =
         '<div class="empty-panel">' +
           '<h2>Nothing scheduled yet</h2>' +
-          '<p>This queue fills itself in as you practice. Every concept you answer a question on gets a review date, which pushes further out each time you get it right and resets the moment you get it wrong. Nothing new ever appears here — only things you have already met.</p>' +
+          '<p>Fills in as you practice. Each right answer pushes a concept further out; a wrong one brings it back.</p>' +
           '<div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">' +
             '<a href="practice.html" class="btn-press sm">Start practicing</a>' +
             '<a href="learn.html" class="btn-press alt sm">Open the textbook</a>' +
@@ -239,9 +239,8 @@
         '<h2>' + esc(plural(q.today.length, 'concept') + ' to clear') + '</h2>' +
         '<p>' + esc(q.deferred
           ? plural(q.dueTotal, 'concept') + ' are actually due, but the daily cap is ' + M.DAILY_REVIEW_CAP +
-            ' — the ' + q.today.length + ' most overdue are in today\'s batch and the other ' + q.deferred +
-            ' lead tomorrow\'s. Clearing a finite queue beats staring at a backlog.'
-          : 'Each one comes back inside a fresh problem on a different topic, not as the same card again — that is what turns a remembered answer into one you can transfer.') +
+            ' — the ' + q.today.length + ' most overdue are today\'s batch; the other ' + q.deferred + ' lead tomorrow\'s.'
+          : 'Each comes back inside a fresh problem, not the same card.') +
         '</p>' +
         '<div class="actions"><button class="btn-press" id="startReview">Review ' +
           plural(q.today.length, 'concept') + '</button></div>' +
@@ -258,13 +257,13 @@
       html += '<div class="rec-card">' +
         '<div class="k">Done for today</div>' +
         '<h2>' + esc('You\'ve cleared today\'s ' + M.DAILY_REVIEW_CAP + '.') + '</h2>' +
-        '<p>' + esc(plural(q.dueTotal, 'concept') + ' are still due, deliberately held back. Spreading them over days is what makes the spacing work — cramming a backlog in one sitting does not.') + '</p>' +
+        '<p>' + esc(plural(q.dueTotal, 'concept') + ' are still due, held back on purpose. Spacing over days is the point.') + '</p>' +
         '<div class="actions"><a class="btn-press alt" href="practice.html">Practice something else</a></div>' +
       '</div>';
     } else {
       html += '<div class="empty-panel" style="margin-bottom:22px;">' +
         '<h2>Nothing due today</h2>' +
-        '<p>You are caught up. Everything you have practiced is scheduled further out — adaptive practice will keep filling the gaps in the meantime.</p>' +
+        '<p>You are caught up. Adaptive practice fills the gaps meanwhile.</p>' +
         '<div style="margin-top:18px"><a href="practice.html" class="btn-press alt sm">Adaptive practice</a></div>' +
       '</div>';
     }
@@ -274,9 +273,9 @@
        lesson instead. Without this the queue accumulates a permanent core of
        things you always get wrong and stops being clearable. */
     if(q.leeches.length){
-      html += '<div style="font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;">Not working — go back to the lesson</div>' +
+      html += '<div style="font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;">Go back to the lesson</div>' +
         '<div class="next-up" style="margin-bottom:12px;">' +
-        esc('These have failed too many times for more drilling to help. They are out of the review queue until you have re-read them — another question would just be a sixth wrong answer.') +
+        esc('Failed too often for drilling to help. Out of the queue until you re-read them.') +
         '</div>' +
         '<div class="module-card">' + conceptRows(q.leeches, function(p){
           return (p.attempts - p.correct) + ' wrong of ' + p.attempts;
