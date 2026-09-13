@@ -501,7 +501,7 @@
     <div class="page-head">
       <div class="eyebrow">NREMT-EMT</div>
       <h1>Practice</h1>
-      <p class="lede">Three ways to work the 2,084-question bank. Every mode mixes select-N-of-M and sequencing items alongside standard multiple choice, matching the exam’s Technology-Enhanced Item formats.</p>
+      <p class="lede">Three ways into the 2,084-question bank, in the exam’s own question formats.</p>
     </div>
 
     <div id="streakWidget"></div>
@@ -519,7 +519,7 @@
       <div class="mode-card mode-card--primary">
         <div class="k">Adaptive <span class="adaptive-tag">retargets live</span></div>
         <h2>Adaptive practice</h2>
-        <p>Picks each question from how you’ve done so far — weighted toward the domains and the individual questions you’ve missed, with difficulty nudged up or down as you answer.</p>
+        <p>Weighted toward the domains and questions you’ve missed.</p>
         <div class="spacer"></div>
         <div class="meta">Re-targets after<br>every question</div>
         <div class="controls">
@@ -536,7 +536,7 @@
       <div class="mode-card">
         <div class="k">Full length</div>
         <h2>Timed exam</h2>
-        <p>100 questions drawn at random from the pool in the real exam’s domain proportions, so a retake isn’t the same set again. Scored by domain when you finish.</p>
+        <p>100 questions in the exam’s domain mix, scored by domain.</p>
         <div class="spacer"></div>
         <div class="meta">100 q · 2:00:00 · ~72 s/q<br>pool of <span id="poolCount">2,084</span></div>
         <div class="controls">
@@ -554,7 +554,7 @@
       <div class="mode-card">
         <div class="k">Short session</div>
         <h2>Drill one domain</h2>
-        <p>A focused set from a single domain — short enough to fit a break, and the quickest way to put a first reading on a domain you haven’t touched.</p>
+        <p>A short set from one domain. Fits a break.</p>
         <div class="spacer"></div>
         <div class="controls">
           <select id="domainSelect" aria-label="Domain">
@@ -687,7 +687,7 @@
   <footer>
     <details class="fine-print">
       <summary>About these questions &amp; how this differs from the real exam</summary>
-      <p>These are original practice questions written to reflect standard EMT-B knowledge and the NREMT cognitive exam's blueprint domains. This is unofficial, independently created study material — not affiliated with, endorsed by, or sourced verbatim from the National Registry of EMTs or any specific publisher. The real NREMT-EMT exam is computer-adaptive (70–120 questions, up to 2 hours); this fixed 100-question-per-attempt, randomly-drawn timed format is designed to build stamina and pacing with some variation between attempts, not to replicate the adaptive algorithm. This tool supplements, and does not replace, your official course materials and instructor guidance. Your score, timing, and missed-question history are stored only in your own browser and aren't sent anywhere.</p>
+      <p>Original, unofficial practice questions written to the NREMT-EMT blueprint; not affiliated with the National Registry. The real exam is computer-adaptive (70–120 questions); this fixed 100-question format trains pacing, not the algorithm. Scores and history stay in your browser.</p>
     </details>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a></p>
     </footer>
@@ -1126,7 +1126,7 @@ function renderReadiness(targetId, opts){
   if(!r.available){
     el.innerHTML = opts.compact
       ? `<div class="readiness-update"><div class="r-sub">Take a full practice exam to unlock your estimated readiness score.</div></div>`
-      : `<div class="readiness-empty">Take a full practice exam to see your estimated readiness score here.</div>`;
+      : `<div class="readiness-empty">Take a full exam to see your readiness score.</div>`;
     return;
   }
   const subParts = [`Recent average ${r.weightedAvg}% across ${r.attempts} full exam${r.attempts===1?'':'s'}`];

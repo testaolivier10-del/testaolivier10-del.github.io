@@ -661,7 +661,7 @@
       out.push({
         key: 'path',
         headline: 'Next in your path: ' + path.topic.title,
-        detail: 'You haven\'t finished this lesson yet. Practice questions on it are available, but the lesson comes first.',
+        detail: 'Finish the lesson first; its questions are waiting.',
         cta: 'Go to the lesson',
         href: path.topic.href,
         plan: makePlan('topic', { topic: path.topic.id, count: 8 })

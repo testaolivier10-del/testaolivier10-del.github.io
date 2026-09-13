@@ -60,9 +60,8 @@
     '</div>' +
     '<div style="max-width:320px;font-size:13.5px;font-weight:700;opacity:.85;">' +
       (overall.value === null
-        ? 'Answer questions in any lesson, or start a Practice session, and your concept mastery starts building here.'
-        : 'Across ' + plural(overall.touched, 'concept') + ' you have actually attempted, out of ' +
-          overall.total + ' in the course. Strength decays over time, so this moves down on its own if you stop practicing.') +
+        ? 'Answer questions in a lesson or a Practice session and this fills in.'
+        : 'Across ' + plural(overall.touched, 'concept') + ' attempted, of ' + overall.total + '. Strength decays if you stop practicing.') +
     '</div>');
 
   /* ---- snapshot ---- */
@@ -113,7 +112,7 @@
     return '<div class="dep-alert">' +
       '<div class="k">Possible gap underneath this</div>' +
       '<div class="msg">You are at ' + pct(g.p.strength) + '% on ' + esc(CN.phrase(g.p.id)) +
-        '. That usually means the gap is further back — these feed into it and are also weak:</div>' +
+        '. The gap is probably further back:</div>' +
       '<div class="prereqs">' + chips + '</div>' +
     '</div>';
   }).join(''));

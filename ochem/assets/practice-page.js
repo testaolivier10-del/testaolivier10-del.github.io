@@ -130,25 +130,25 @@
 
   var MODES = [
     { mode:'adaptive', title:'Adaptive practice', pill:'Default',
-      desc:'The engine picks every question from your mastery profile as you go.', count:10 },
+      desc:'Every question picked from your profile.', count:10 },
     { mode:'mistakes', title:'Review your mistakes',
-      desc:'Only questions you got wrong and have not fixed since.', count:10 },
+      desc:'Wrong, and not fixed since.', count:10 },
     // Flags are the student's own judgement rather than the engine's, which
     // is exactly why the mode exists: "I got this right and could not tell
     // you why" is invisible to every other signal on this page.
     { mode:'flagged', title:'Flagged questions',
-      desc:'The ones you marked to come back to — right or wrong.' },
+      desc:'The ones you marked to revisit.' },
     // Spaced review is the Review page's job, not a mode here: it is a
     // finite, capped, daily queue rather than an open-ended session, and two
     // implementations of it would drift apart.
     { mode:'review', title:'Spaced review', href:'review.html',
-      desc:'Your due queue, on the Review page. Finite — it drains to zero.' },
+      desc:'Your due queue, on the Review page.' },
     { mode:'topic', title:'Pick a topic',
-      desc:'Drill one topic on its own, at a difficulty you choose.' },
+      desc:'One topic, at a difficulty you choose.' },
     { mode:'quick', title:'Quick 5',
-      desc:'Five adaptive questions. Good for a gap between classes.', count:5 },
+      desc:'Five adaptive questions.', count:5 },
     { mode:'mixed', title:'Mixed practice',
-      desc:'An even spread across every topic, with the adaptivity turned down.', count:10 }
+      desc:'An even spread, adaptivity turned down.', count:10 }
   ];
 
   function modeGridHtml(){
@@ -217,8 +217,8 @@
     html += '<div class="section-head">Other ways to practice</div>' + modeGridHtml();
     html += '<p style="margin-top:18px;font:700 12.5px var(--font-ui);color:var(--muted);line-height:1.6;">' +
       esc(stats.total.toLocaleString() + ' questions across ' + stats.topics + ' topics, ' + stats.interactive +
-      ' of them interactive (click an atom, push an arrow, rank a series, predict a product). ') +
-      'Your concept map lives on <a href="mastery.html">Mastery</a>.</p>';
+      ' interactive. ') +
+      'Your concept map is on <a href="mastery.html">Mastery</a>.</p>';
     html += '</div><aside class="practice-side">';
     html += '<div class="section-head">Your numbers</div>' + snapshotHtml();
 
