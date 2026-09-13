@@ -117,7 +117,7 @@
   .mode-card .controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
   .mode-card .controls select{flex:1;min-width:130px;}
   .mode-card--primary{border-color:var(--navy);}
-  .mode-card--primary .start-btn{background:var(--navy);color:var(--on-accent);border-color:var(--navy);box-shadow:0 4px 0 var(--navy-press);}
+  .mode-card--primary .start-btn{background:var(--navy);color:var(--on-accent);border-color:var(--navy);box-shadow:var(--btn-shadow);}
   .start-btn{width:100%;font-size:15px;padding:14px;margin:0;}
 
   /* Review queues appear only once they have something in them. Rendering
@@ -158,7 +158,7 @@
   .adaptive-copy{font-size:12.5px;font-weight:600;color:var(--muted);line-height:1.5;margin:0 0 14px;}
   .adaptive-box .domain-quiz-row{margin-bottom:0;}
   .adaptive-box select{flex:0 0 140px;}
-  .adaptive-box .domain-btn{background:var(--navy);color:var(--on-accent);border-color:var(--navy);box-shadow:0 4px 0 var(--navy-press);}
+  .adaptive-box .domain-btn{background:var(--navy);color:var(--on-accent);border-color:var(--navy);box-shadow:var(--btn-shadow);}
   .adaptive-box .domain-btn:active{box-shadow:0 0 0 var(--navy-press);}
 
   .progress-toggle{
@@ -214,20 +214,20 @@
   .exit-link:hover{color:var(--bad-text);}
   .submit-top-btn{
     padding:10px 18px;border-radius:12px;font:900 13px var(--font-ui);cursor:pointer;
-    border:none;color:var(--on-accent);flex-shrink:0;box-shadow:0 3px 0 var(--navy-press);
+    border:none;color:var(--on-accent);flex-shrink:0;box-shadow:var(--btn-shadow);
   }
   .submit-top-btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--navy-press);}
 
   .resume-exam-card{
     display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
     padding:16px 18px;margin-bottom:16px;border:var(--bw) solid var(--accent);
-    border-radius:16px;background:var(--tint-accent);box-shadow:0 4px 0 var(--accent-press);
+    border-radius:16px;background:var(--tint-accent);box-shadow:var(--lift);
   }
   .resume-exam-text{font-size:13.5px;font-weight:800;color:var(--ink);}
   .resume-exam-actions{display:flex;gap:10px;flex-shrink:0;}
   .resume-exam-actions .primary{
     padding:10px 18px;border-radius:12px;font:900 13.5px var(--font-ui);cursor:pointer;
-    border:none;background:var(--navy);color:var(--on-accent);box-shadow:0 3px 0 var(--navy-press);
+    border:none;background:var(--navy);color:var(--on-accent);box-shadow:var(--btn-shadow);
   }
   .resume-exam-actions .primary:active{transform:translateY(3px);box-shadow:0 0 0 var(--navy-press);}
 
@@ -265,23 +265,23 @@
   }
   .flag-btn:hover{border-color:var(--accent);color:var(--accent);}
   .flag-btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--line);}
-  .flag-btn.active{background:var(--tint-bad);border-color:var(--bad-text);color:var(--bad-text);font-weight:900;box-shadow:0 3px 0 var(--bad-press);}
+  .flag-btn.active{background:var(--tint-bad);border-color:var(--bad-text);color:var(--bad-text);font-weight:900;box-shadow:none;}
 
   .q-prompt{font-size:19px;font-weight:800;margin-bottom:24px;line-height:1.5;}
 
   /* ---- Answer options: the signature chunky rows ---- */
   .options{display:grid;gap:12px;margin-bottom:28px;}
   .option{
-    display:flex;align-items:center;gap:14px;padding:15px 18px;background:var(--white);
-    border:var(--bw) solid var(--line);border-radius:16px;cursor:pointer;
-    font-size:15.5px;font-weight:800;box-shadow:var(--lift);
-    transition:transform .08s ease, box-shadow .08s ease, border-color .12s ease, background-color .12s ease;
+    display:flex;align-items:center;gap:14px;padding:15px 18px;background:var(--surface2);
+    border:0;border-radius:16px;cursor:pointer;
+    font-size:15.5px;font-weight:800;box-shadow:none;
+    transition:transform .15s cubic-bezier(.2,.8,.3,1.3), box-shadow .2s ease, background-color .2s ease;
   }
-  .option:hover{border-color:var(--accent);transform:translateY(1px);box-shadow:var(--lift-sm);}
-  .option.selected{border-color:var(--navy);background:var(--white);box-shadow:0 4px 0 var(--navy-press);}
+  .option:hover{transform:translateX(3px);background:var(--hover-tint);}
+  .option.selected{background:var(--white);box-shadow:inset 0 0 0 2px var(--navy);}
   .option .letter{
     font:900 12px var(--font-ui);color:var(--muted);flex-shrink:0;
-    width:28px;height:28px;border-radius:50%;border:var(--bw) solid var(--muted);background:transparent;
+    width:30px;height:30px;border-radius:50%;border:0;background:var(--white);box-shadow:var(--lift-sm);
     display:flex;align-items:center;justify-content:center;
     transition:background-color .12s ease, border-color .12s ease, color .12s ease;
   }
@@ -315,7 +315,7 @@
     transition:transform .08s ease, box-shadow .08s ease;
   }
   .nav-row button:active:not(:disabled){transform:translateY(4px);box-shadow:0 0 0 var(--line);}
-  .nav-row button.primary{background:var(--navy);color:var(--on-accent);border-color:var(--navy);box-shadow:0 4px 0 var(--navy-press);}
+  .nav-row button.primary{background:var(--navy);color:var(--on-accent);border-color:var(--navy);box-shadow:var(--btn-shadow);}
   .nav-row button.primary:active:not(:disabled){box-shadow:0 0 0 var(--navy-press);}
   .nav-row button:disabled{opacity:0.4;cursor:not-allowed;}
 
@@ -424,7 +424,7 @@
   .retry-btn{
     width:100%;padding:15px;background:var(--navy);color:var(--on-accent);border:none;
     border-radius:var(--radius);font:900 15px var(--font-ui);cursor:pointer;margin-top:10px;
-    box-shadow:0 5px 0 var(--navy-press);transition:transform .08s ease, box-shadow .08s ease;
+    box-shadow:var(--btn-shadow);transition:transform .08s ease, box-shadow .08s ease;
   }
   .retry-btn:active{transform:translateY(5px);box-shadow:0 0 0 var(--navy-press);}
 
@@ -476,10 +476,6 @@
   .fine-print summary:hover{color:var(--accent);}
   .fine-print p{margin-top:12px;}
 
-  .ad-slot{
-    margin-top:36px;padding:18px;border:var(--bw) dashed var(--line);border-radius:14px;
-    text-align:center;font-size:12px;font-weight:700;color:var(--muted);
-  }
 </style>
 </head>
 <body>
@@ -666,7 +662,6 @@
     <button class="retry-btn" id="retryBtn">Back to Start</button>
   </div>
 
-  <div class="ad-slot">Ad space — 300×250 or responsive unit</div>
 
   <footer>
     <details class="fine-print">

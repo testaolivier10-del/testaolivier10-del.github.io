@@ -178,12 +178,24 @@
     }
     writeJSON(XP_KEY, state);
     renderChips();
-    return {
+    var result = {
       total: state.total,
       gained: amount,
       level: levelForXp(state.total),
       leveledUp: levelForXp(state.total) > before,
+      title: titleForLevel(levelForXp(state.total), subject),
     };
+    // assets/motion.js listens: the "+N XP" chip, and the level-up toast and
+    // confetti. Plain DOM events, so nothing here depends on it having loaded.
+    emit('levl:xp', result);
+    if(result.leveledUp) emit('levl:levelup', result);
+    return result;
+  }
+
+  function emit(name, detail){
+    try{
+      document.dispatchEvent(new CustomEvent(name, { detail: detail }));
+    }catch(e){ /* very old browser: no motion, no harm */ }
   }
 
   function xp(){ return loadXp(); }
