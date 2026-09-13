@@ -52,7 +52,7 @@
       name: 'Arrow Pusher',
       icon: ICONS.arrow,
       tagline: 'Draw a mechanism and watch what it makes.',
-      blurb: 'Push electrons on any molecule — one of twenty, or one you drew — and the structure changes to match. Commit a step and carry on from its product, because mechanisms are three and four steps long. Nothing is graded and nothing is faked: an arrow that would put ten electrons on a carbon is told so, and one that merely makes a primary carbocation is told that too.',
+      blurb: 'Push electrons on any molecule, or one you drew, and the structure changes to match.',
       teaches: 'Curved arrows, formal charge, octets',
       topic: ['curved-arrows', 'sn2', 'formal-charge']
     },
@@ -61,7 +61,7 @@
       name: 'Resonance Explorer',
       icon: ICONS.resonance,
       tagline: 'Find every valid resonance form, and rank them.',
-      blurb: 'Move a lone pair or a pi bond and the tool checks whether what you drew is a genuine resonance structure or a different molecule. It works out how many forms exist rather than looking them up, so it does it for any species you build — and a second mode puts two side by side and asks which is more stabilized.',
+      blurb: 'Move a lone pair or a pi bond; the tool checks it and counts every valid form.',
       teaches: 'Delocalization, contributor weighting',
       topic: ['resonance', 'conjugate']
     },
@@ -70,7 +70,7 @@
       name: '3D Molecule Viewer',
       icon: ICONS.cube,
       tagline: 'Rotate it until the shape stops being abstract.',
-      blurb: 'Type a formula, or draw a structure, and watch the flat drawing fold into the shape it really has. Lit, shaded and shadowed, with space-filling and wireframe modes, angles measured off the coordinates on screen, and a readout of steric number and shape — because "trigonal pyramidal" means very little until you have looked down at one.',
+      blurb: 'Type a formula or draw a structure and see its real shape, angles measured.',
       teaches: 'VSEPR, hybridization, stereochemistry',
       topic: ['molecular-geometry', 'hybridization', 'bonding']
     },
@@ -79,7 +79,7 @@
       name: 'Conformation Lab',
       icon: ICONS.chair,
       tagline: 'Turn the bond. Watch the energy.',
-      blurb: 'Rotate a Newman projection through 360° against a live energy curve — built from the groups you choose, not a fixed list — or substitute a cyclohexane and see both chairs at once with the population split under each. Strain stops being a table of numbers when the number moves as you turn the bond.',
+      blurb: 'Rotate a Newman projection against a live energy curve, or compare both cyclohexane chairs.',
       teaches: 'Torsional strain, A-values, chair flips',
       topic: ['conformational-analysis', 'newman', 'ring-flips']
     },
@@ -88,7 +88,7 @@
       name: 'Reaction Predictor',
       icon: ICONS.flask,
       tagline: 'SN1, SN2, E1 or E2 — and why, factor by factor.',
-      blurb: 'Pick a substrate — or draw one — add a reagent and a solvent, commit to a prediction, then see the decision broken into the four things that actually decide it, plus how lopsided the resulting mixture is. The point is not the answer; it is which factor overruled which.',
+      blurb: 'Substrate, reagent, solvent. Commit to a prediction, then see the four factors that decide it.',
       teaches: 'Substitution vs. elimination',
       topic: ['sn1', 'sn2', 'e1', 'e2']
     },
@@ -97,7 +97,7 @@
       name: 'Acid/Base Comparator',
       icon: ICONS.scale,
       tagline: 'Two structures. Which proton comes off first?',
-      blurb: 'Put two acids side by side, rank four at once, or take a single molecule and work out which of its protons comes off first. Every verdict comes from the measured pKa and every explanation from atom, resonance, induction and orbital in that order — and the tool says so plainly on the occasions those two disagree.',
+      blurb: 'Compare acids, rank four at once, or find which proton comes off first, from measured pKa.',
       teaches: 'pKa, conjugate base stability',
       topic: ['acidity-factors', 'pka', 'conjugate']
     },
@@ -106,7 +106,7 @@
       name: 'Spectroscopy Lab',
       icon: ICONS.wave,
       tagline: 'Read the peaks, name the compound.',
-      blurb: 'An IR spectrum whose regions explain themselves, a ¹H NMR predictor that will take any structure you draw and show why each signal splits the way it does, and a puzzle mode that hands you a spectrum and makes you work back to the structure — by drawing it, if you want the harder version.',
+      blurb: 'An IR spectrum that explains its regions, a ¹H NMR predictor for any structure, and a puzzle mode.',
       teaches: 'IR, ¹H NMR, degrees of unsaturation',
       topic: ['ir', 'h-nmr', 'mass-spec']
     }

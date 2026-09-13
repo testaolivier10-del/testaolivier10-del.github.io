@@ -158,7 +158,7 @@
       '<p>' + (debt.worstDays > 0
           ? 'The oldest is ' + plural(debt.worstDays, 'day') + ' past due. '
           : '') +
-        'Scheduled by how shaky each concept was last time, not by when you studied it.</p>' +
+        'Scheduled by how shaky each was, not by date.</p>' +
       '<a href="' + base + 'review.html" class="btn-outline" style="padding:10px 18px">Clear the queue</a>';
     el('homeReview').classList.add('due');
   }

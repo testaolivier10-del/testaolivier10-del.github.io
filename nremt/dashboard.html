@@ -168,7 +168,7 @@
   </div>
 
   <footer>
-    <p>All of this is computed from data stored only in your browser (localStorage) — nothing is sent anywhere. Clearing your browser data will reset it.</p>
+    <p>Computed from data in your browser only. Clearing browser data resets it.</p>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a></p>
     </footer>
 
@@ -430,7 +430,7 @@
   const r = computeReadiness();
   const readinessBox = document.getElementById('readinessBox');
   if(!r.available){
-    readinessBox.innerHTML = `<div class="empty-note">Take a full practice exam on the <a href="practice.html">Practice</a> page to unlock your estimated readiness score.</div>`;
+    readinessBox.innerHTML = `<div class="empty-note">Take a full <a href="practice.html">practice exam</a> to unlock your readiness score.</div>`;
   } else {
     const subParts = [`Recent average ${r.weightedAvg}% across ${r.attempts} full exam${r.attempts===1?'':'s'}`];
     if(r.weakestDomain) subParts.push(`weakest area: ${r.weakestDomain} (${r.weakestPct}%)`);
@@ -450,7 +450,7 @@
   // ---- Score-over-time chart ----
   const historyBox = document.getElementById('historyBox');
   if(history.length === 0){
-    historyBox.innerHTML = `<div class="empty-note">No full exam attempts yet — this fills in after your first one.</div>`;
+    historyBox.innerHTML = `<div class="empty-note">Fills in after your first full exam.</div>`;
   } else {
     const pcts = history.map(h2 => Math.round(h2.score/h2.total*100));
     const avg = Math.round(pcts.reduce((a,b)=>a+b,0)/pcts.length);
@@ -479,7 +479,7 @@
   const domainBox = document.getElementById('domainBox');
   const attemptedDomains = DOMAINS.filter(d => domainStats[d] && domainStats[d].total > 0);
   if(attemptedDomains.length === 0){
-    domainBox.innerHTML = `<div class="empty-note">Answer questions in any mode (exam, drill, adaptive, review) to see domain accuracy here.</div>`;
+    domainBox.innerHTML = `<div class="empty-note">Answer questions in any mode to see domain accuracy.</div>`;
   } else {
     domainBox.innerHTML = DOMAINS.map(d => {
       const st = domainStats[d];
@@ -514,7 +514,7 @@
   });
   const totalTracked = Object.keys(mastery).length;
   if(totalTracked === 0){
-    masteryBox.innerHTML = `<div class="empty-note">No questions tracked yet — mastery fills in as you answer questions in any mode.</div>`;
+    masteryBox.innerHTML = `<div class="empty-note">Fills in as you answer questions.</div>`;
   } else {
     const maxLevel = Math.max(1, ...levels);
     masteryBox.innerHTML = `

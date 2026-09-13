@@ -218,7 +218,7 @@
               '<ul class="tquiz__missed">' +
                 missed.map(function(r){ return '<li>' + r.prompt + '</li>'; }).join('') +
               '</ul>'
-            : '<p class="tquiz__fine">Nothing missed. The tool above is still the more interesting way to spend the next ten minutes.</p>') +
+            : '<p class="tquiz__fine">Nothing missed. Back to the tool.</p>') +
           '<div class="trow">' +
             '<button type="button" class="btn-press" id="tqAgain">Another round</button>' +
             '<button type="button" class="tchip tchip--ghost" id="tqDone">Back to the tool</button>' +

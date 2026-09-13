@@ -471,7 +471,7 @@
           '<p class="tb-results-count">Nothing in the book matches <b>' + shownQuery + '</b></p>' +
           '<button type="button" class="tb-results-close" id="tbResultsClose">Back to the chapter</button>' +
         '</div>' +
-        '<p class="tb-results-status">Try a single word — the search wants every word you type to appear in the same section.</p>';
+        '<p class="tb-results-status">Try a single word; every word must appear in one section.</p>';
     } else {
       resultsEl.innerHTML =
         '<div class="tb-results-head">' +

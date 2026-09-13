@@ -183,11 +183,11 @@
   <div class="page-head">
   <div class="eyebrow">Tools</div>
   <h1>Interactive Patient Body Map</h1>
-  <p class="lede">A real 3D anatomical body model — drag to rotate it, scroll or pinch to zoom, and click anything (bone, organ, or vessel) to see its location, function, common emergencies, assessment findings, and field interventions.</p>
+  <p class="lede">A real 3D model. Drag to rotate, scroll to zoom, click anything to learn what it does and what goes wrong with it.</p>
   </div>
 
   <div class="warning">
-    <b>This is a real, detailed anatomical model</b> (see attribution below), not a to-scale medical rendering. Structure positions are for study purposes — verify exact anatomy against a dedicated reference or your course materials.
+    <b>A real anatomical model, not to scale.</b> Verify exact anatomy against your course materials.
   </div>
 
   <div class="bm-grid">
@@ -229,7 +229,7 @@
            which is the direction the knowledge is actually used in. -->
       <div class="hunt-panel" id="huntPanel" hidden></div>
       <div class="info-panel" id="infoPanel">
-        <p class="info-placeholder">Tap or click any bone, organ, vessel, or pulse point on the 3D model (or a name below) to see what it is, why it matters, and how to handle it in the field.</p>
+        <p class="info-placeholder">Click any part of the model, or a name below.</p>
       </div>
       <h2>Browse by name</h2>
       <div class="landmark-list" id="landmarkList"></div>
@@ -242,7 +242,7 @@
       <div class="rule9-card">
 
     <p>The Rule of Nines is a quick field method for estimating total body surface area (TBSA) affected by a burn in an adult, dividing the body into regions that are each roughly 9% (or a multiple of 9%): head &amp; neck 9%, each arm 9%, the entire front torso 18%, the entire back torso 18%, each leg 18%, and the groin 1%.</p>
-    <p>It's a rough estimate to guide severity communication and transport decisions — not a substitute for burn center evaluation, and pediatric proportions differ (a child's head accounts for a larger share of TBSA).</p>
+    <p>A rough estimate to guide severity and transport. Pediatric proportions differ.</p>
   </div>
     </div>
     <div>
@@ -252,7 +252,7 @@
   </div>
 
   <footer>
-    <p>This module is a study aid, not a substitute for an anatomy/physiology textbook or your course's own protocols and reference materials. Field interventions described here are general EMT-B-level guidance — always follow your local protocols and medical direction, which take precedence over anything shown here.</p>
+    <p>A study aid, not a textbook. Field interventions are general EMT-B guidance; follow your local protocols.</p>
     <p>3D anatomical model built from <a href="https://lifesciencedb.jp/bp3d/" target="_blank" rel="noopener">BodyParts3D</a>, Copyright &copy; 2008 Life Science Integrated Database Center, licensed <a href="https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en" target="_blank" rel="noopener">CC BY-SA 2.1 Japan</a>. 3D rendering powered by <a href="https://threejs.org/" target="_blank" rel="noopener">three.js</a> (MIT license).</p>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a></p>
     </footer>
@@ -321,7 +321,7 @@ let pointerDownPos = null;
 let isDragging = false;
 let flyAnim = null;
 
-const PLACEHOLDER_HTML = '<p class="info-placeholder">Tap or click any bone, organ, vessel, or pulse point on the 3D model (or a name below) to see what it is, why it matters, and how to handle it in the field.</p>';
+const PLACEHOLDER_HTML = '<p class="info-placeholder">Click any part of the model, or a name below.</p>';
 
 function allEntries(){
   // Returns [key, content] for every selectable thing: mesh groups + point landmarks

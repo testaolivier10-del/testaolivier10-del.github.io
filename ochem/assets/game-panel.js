@@ -34,7 +34,7 @@
     // course earned all of it.
     var elsewhere = info.total - mine;
     var note = elsewhere > 0
-      ? '<p class="game-note">' + mine + ' XP earned here, ' + elsewhere + ' XP elsewhere on LevlPrep — one level across every subject.</p>'
+      ? '<p class="game-note">' + mine + ' XP here, ' + elsewhere + ' elsewhere. One level across every subject.</p>'
       : '';
     set('gameLevel',
       '<div class="game-level">' +
@@ -61,8 +61,8 @@
     var pct = Math.round(done / q.target * 100);
     var complete = q.done >= q.target;
     var body = complete
-      ? '<p class="game-card-body">Done for today. Come back tomorrow — the queue refills with whatever is due next.</p>'
-      : '<p class="game-card-body">' + plural(q.target - done, 'question') + ' to go. These are the concepts the review schedule says are due <em>today</em>, so this is the highest-value work available.</p>';
+      ? '<p class="game-card-body">Done for today. Tomorrow refills from what’s due next.</p>'
+      : '<p class="game-card-body">' + plural(q.target - done, 'question') + ' to go, from what’s due today.</p>';
     set('gameRounds',
       '<div class="game-card' + (complete ? ' done' : '') + '">' +
         '<div class="game-card-head">' +
@@ -79,7 +79,7 @@
   /* ---- review debt ------------------------------------------------------ */
 
   var DEBT_COPY = {
-    clear:    { label: 'Clear',    line: 'Nothing is overdue. Everything you have learned is on schedule.' },
+    clear:    { label: 'Clear',    line: 'Nothing overdue.' },
     light:    { label: 'Light',    line: 'A short queue. One sitting clears it.' },
     building: { label: 'Building', line: 'The queue is growing faster than you are clearing it.' },
     heavy:    { label: 'Heavy',    line: 'A lot is overdue. Start with the oldest — those are the ones actually fading.' },
@@ -121,7 +121,7 @@
     set('gameConcepts',
       '<div class="game-card">' +
         '<div class="game-card-head"><span class="game-card-title">Concept badges</span></div>' +
-        '<p class="game-card-body">Earned on the mastery engine’s strength estimate, not on accuracy — so a badge means you still know it, not that you once had a good run. Strength decays, but a badge you earned is never taken back.</p>' +
+        '<p class="game-card-body">Earned on strength, not accuracy. Strength decays; a badge doesn’t.</p>' +
         rows +
       '</div>');
   }
