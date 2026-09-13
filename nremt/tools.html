@@ -59,6 +59,28 @@
   .station-row:last-child{border-bottom:0;}
   .station-row .name{font-size:17px;font-weight:900;margin-bottom:3px;text-wrap:pretty;}
   .station-row .watch{font-size:14px;font-weight:600;color:var(--muted);text-wrap:pretty;}
+
+  /* Condensed previews. The Tools page is a launcher: each panel shows what
+     its subpage covers and how much of it, then hands off. It used to print
+     every scenario, every flow diagram and all eight stations with their
+     coaching notes inline — a whole subpage's content on the hub. */
+  .peek-grid{display:grid;gap:20px;grid-template-columns:1fr;}
+  @media (min-width:820px){.peek-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+  .peek{
+    display:flex;flex-direction:column;background:var(--white);
+    border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+    padding:20px 22px;box-shadow:var(--lift-lg);
+  }
+  .peek h2{font:900 16px var(--font-ui);margin:0 0 2px;letter-spacing:-0.01em;}
+  .peek .count{font:800 12.5px var(--font-ui);color:var(--muted);margin:0 0 14px;}
+  .peek ul{list-style:none;margin:0 0 16px;padding:0;flex:1;}
+  .peek li{
+    padding:9px 0;border-bottom:1px solid var(--line-soft);
+    font-size:14.5px;font-weight:700;color:var(--ink);text-wrap:pretty;
+  }
+  .peek li:last-child{border-bottom:0;}
+  .peek .link-underline{align-self:flex-start;}
+  .tools-note{font-size:13px;font-weight:600;color:var(--muted);margin:22px 0 0;text-wrap:pretty;max-width:80ch;}
 </style>
 </head>
 <body>
@@ -88,63 +110,64 @@
       <a href="scenario-sim.html" class="tool-card" style="text-decoration:none;color:inherit">
         <div class="tool-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="1.8"/><circle cx="6" cy="19" r="1.8"/><circle cx="18" cy="9" r="1.8"/><circle cx="18" cy="19" r="1.8"/><path d="M6 6.8v9.4M6 12c4 0 5-3 5-3M6 15c4 0 6 2 6 2"/></svg></div>
         <div class="name">Scenarios</div>
-        <div class="desc">Run a branching call from dispatch to handover.</div>
+        <div class="desc">Run a branching call from dispatch to handover. Eight of them.</div>
+      </a>
+      <a href="flowcharts.html" class="tool-card" style="text-decoration:none;color:inherit">
+        <div class="tool-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2.8" width="8" height="4.6" rx="1.2"/><rect x="2.5" y="16.6" width="8" height="4.6" rx="1.2"/><rect x="13.5" y="16.6" width="8" height="4.6" rx="1.2"/><path d="M12 7.4v4.2M6.5 16.6v-2.4h11v2.4M6.5 14.2h11"/></svg></div>
+        <div class="name">Flow Diagrams</div>
+        <div class="desc">Eight protocol sequences — assessment, CPR, anaphylaxis, triage.</div>
+      </a>
+      <a href="skillsheets.html" class="tool-card" style="text-decoration:none;color:inherit">
+        <div class="tool-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="2.8" width="15" height="18.4" rx="2"/><path d="M8.2 8.4l1.6 1.6 3-3M8.2 14.4l1.6 1.6 3-3M15.6 8.4h.9M15.6 15.4h.9"/></svg></div>
+        <div class="name">Skill Sheets</div>
+        <div class="desc">The eight psychomotor stations and what fails them.</div>
+      </a>
+      <a href="search.html" class="tool-card" style="text-decoration:none;color:inherit">
+        <div class="tool-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4L21 21"/></svg></div>
+        <div class="name">Search</div>
+        <div class="desc">One box across the question bank, notes, glossary and mnemonics.</div>
       </a>
     </div>
   </div>
 
   <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">Eight scenarios</div>
-      <div class="xcontent narrow">
-        <div class="scenario-row">Severe Leg Bleeding After a Motorcycle Crash</div>
-        <div class="scenario-row">Chest Pain at the Grocery Store</div>
-        <div class="scenario-row">The Choking Toddler</div>
-        <div class="scenario-row">Found Down, Diabetic History</div>
-        <div class="scenario-row">Anaphylaxis at a Backyard Barbecue</div>
-        <div class="scenario-row">Sudden Cardiac Arrest at the Gym</div>
-        <div class="scenario-row">Wandering Elderly Patient with Slurred Speech</div>
-        <div class="scenario-row" style="border-bottom:0">Opioid Overdose Behind a Convenience Store</div>
-        <a href="scenario-sim.html" class="link-underline" style="margin-top:18px">Run a scenario</a>
-      </div>
-    </div>
-  </div>
+    <div class="peek-grid">
 
-  <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">Protocol flow diagrams</div>
-      <div class="xcontent narrow">
-        <div class="flow-row"><span class="name">Primary Assessment Sequence</span><span class="tag">assessment</span></div>
-        <div class="flow-row"><span class="name">Adult BLS / CPR Sequence</span><span class="tag">resuscitation</span></div>
-        <div class="flow-row"><span class="name">Adult Foreign Body Airway Obstruction</span><span class="tag">airway</span></div>
-        <div class="flow-row"><span class="name">Anaphylaxis Recognition &amp; Management</span><span class="tag">medical</span></div>
-        <div class="flow-row"><span class="name">Stroke Assessment &amp; Transport Decision</span><span class="tag">medical</span></div>
-        <div class="flow-row"><span class="name">Shock Recognition &amp; General Management</span><span class="tag">trauma</span></div>
-        <div class="flow-row"><span class="name">Spinal Motion Restriction Decision</span><span class="tag">trauma</span></div>
-        <div class="flow-row" style="border-bottom:0"><span class="name">START Triage</span><span class="tag">operations</span></div>
-        <p style="font-size:14px;color:var(--muted);margin:20px 0 0;text-wrap:pretty">These show general, widely‑taught sequences — not a scored skill sheet. Specific protocols can vary by local medical direction.</p>
-        <a href="flowcharts.html" class="link-underline" style="margin-top:14px">Open the flow diagrams</a>
+      <div class="peek">
+        <h2>Scenarios</h2>
+        <p class="count">8 branching calls</p>
+        <ul>
+          <li>Severe Leg Bleeding After a Motorcycle Crash</li>
+          <li>Chest Pain at the Grocery Store</li>
+          <li>The Choking Toddler</li>
+        </ul>
+        <a href="scenario-sim.html" class="link-underline">See all eight &rarr;</a>
       </div>
-    </div>
-  </div>
 
-  <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">The eight psychomotor stations</div>
-      <div class="xcontent narrow">
-        <p style="margin:0 0 20px;font-size:15.5px;color:var(--muted);text-wrap:pretty">The hands‑on exam is scored separately from the cognitive one, on a point sheet plus a shorter list of automatic‑fail critical criteria.</p>
-        <div class="station-row"><div class="name">Patient Assessment — Trauma</div><div class="watch">Manage a life threat the moment you find it during the secondary exam, rather than finishing the whole exam first.</div></div>
-        <div class="station-row"><div class="name">Patient Assessment — Medical</div><div class="watch">State a field impression and management plan out loud at the end — some sheets score this as a distinct step.</div></div>
-        <div class="station-row"><div class="name">Cardiac Arrest Management / AED</div><div class="watch">Minimise hands-off compression time; long pauses around analysis or pulse checks are frequently a critical failure.</div></div>
-        <div class="station-row"><div class="name">BVM Ventilation of an Apneic Adult</div><div class="watch">Ventilating too fast or with too much volume is commonly a critical failure, not just a lost point.</div></div>
-        <div class="station-row"><div class="name">Oxygen Administration by Non-Rebreather Mask</div><div class="watch">Prime the reservoir bag before applying the mask, and say the flow rate out loud.</div></div>
-        <div class="station-row"><div class="name">Long Bone Immobilization</div><div class="watch">PMS checks before and after splinting are separately scored — don't combine them when verbalising.</div></div>
-        <div class="station-row"><div class="name">Joint Immobilization</div><div class="watch">Splint in the position found unless specifically directed otherwise; don't force an angulated joint straight.</div></div>
-        <div class="station-row" style="border-bottom:0"><div class="name">Bleeding Control / Shock Management</div><div class="watch">Direct pressure first — a tourniquet as the opening move on ordinary external bleeding loses the station.</div></div>
-        <p style="font:12px var(--font-ui);color:var(--muted);margin:26px 0 0;max-width:70ch;text-wrap:pretty">General structure only, not exact scored step order. Verify the sequence against your program's official skill sheets and the current NREMT documents before your exam.</p>
-        <a href="skillsheets.html" class="link-underline" style="margin-top:14px">Open the full skill sheet guide</a>
+      <div class="peek">
+        <h2>Protocol flow diagrams</h2>
+        <p class="count">8 sequences</p>
+        <ul>
+          <li>Primary Assessment Sequence</li>
+          <li>Adult BLS / CPR Sequence</li>
+          <li>Anaphylaxis Recognition &amp; Management</li>
+        </ul>
+        <a href="flowcharts.html" class="link-underline">See all eight &rarr;</a>
       </div>
+
+      <div class="peek">
+        <h2>Psychomotor stations</h2>
+        <p class="count">8 stations, scored separately</p>
+        <ul>
+          <li>Patient Assessment &mdash; Trauma</li>
+          <li>Cardiac Arrest Management / AED</li>
+          <li>BVM Ventilation of an Apneic Adult</li>
+        </ul>
+        <a href="skillsheets.html" class="link-underline">See all eight &rarr;</a>
+      </div>
+
     </div>
+    <p class="tools-note">Flow diagrams show general, widely-taught sequences and the station list is general structure only &mdash; neither is a scored skill sheet. Verify against your program&rsquo;s official sheets and current NREMT documents before your exam.</p>
   </div>
 
   <div class="xsection">

@@ -93,8 +93,38 @@
 
   /* Start / review / domain actions all inherit the pressed button primitives
      from theme.css; these only set width and layout. */
-  .start-btn{width:100%;font-size:16px;padding:16px;}
-  .review-btn{width:100%;margin-top:12px;display:flex;justify-content:center;align-items:center;gap:9px;font-size:15px;padding:14px;}
+  /* Three practice modes, side by side. They used to be a vertical stack of
+     full-width buttons with a mode's settings floating above it, so the page
+     read as one long form instead of a choice between three things. */
+  .mode-grid{display:grid;gap:18px;grid-template-columns:1fr;margin:26px 0 0;}
+  @media (min-width:880px){.mode-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+  .mode-card{
+    display:flex;flex-direction:column;background:var(--white);
+    border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+    padding:22px 22px 20px;box-shadow:var(--lift-lg);
+  }
+  .mode-card .k{
+    font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
+    color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  }
+  .mode-card h2{font:900 19px var(--font-ui);margin:8px 0 6px;letter-spacing:-0.01em;}
+  .mode-card p{font-size:13.5px;font-weight:600;color:var(--muted);line-height:1.55;margin:0 0 16px;text-wrap:pretty;}
+  .mode-card .spacer{flex:1;}
+  .mode-card .meta{
+    font:700 12px var(--font-mono);color:var(--muted);margin:0 0 16px;
+    padding-top:12px;border-top:1px solid var(--line-soft);
+  }
+  .mode-card .controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+  .mode-card .controls select{flex:1;min-width:130px;}
+  .mode-card--primary{border-color:var(--navy);}
+  .mode-card--primary .start-btn{background:var(--navy);color:var(--on-accent);border-color:var(--navy);box-shadow:0 4px 0 var(--navy-press);}
+  .start-btn{width:100%;font-size:15px;padding:14px;margin:0;}
+
+  /* Review queues appear only once they have something in them. Rendering
+     three greyed-out "0" buttons on a first visit made the page look broken. */
+  .review-row{display:grid;gap:12px;grid-template-columns:1fr;margin-top:26px;}
+  @media (min-width:700px){.review-row{grid-template-columns:repeat(3,minmax(0,1fr));}}
+  .review-btn{width:100%;margin:0;display:flex;justify-content:center;align-items:center;gap:9px;font-size:14px;padding:13px;}
   .review-btn:disabled{opacity:0.4;cursor:not-allowed;color:var(--muted);border-color:var(--line);transform:none;box-shadow:var(--lift);}
   .review-btn .count{
     background:var(--accent);color:var(--on-accent-fill);font:700 12px var(--font-mono);
@@ -433,6 +463,19 @@
   .streak-settings-row select{padding:7px 10px;font-size:12.5px;}
   .streak-note{font-size:11.5px;font-weight:600;color:var(--muted);line-height:1.5;margin:0;}
 
+  /* A ten-line legal wall was the last thing on the page and the tallest
+     block on it. Same words, folded until someone wants them. */
+  .fine-print{margin-top:8px;}
+  .fine-print summary{
+    font:800 13px var(--font-ui);color:var(--muted);cursor:pointer;
+    list-style:none;display:inline-flex;align-items:center;gap:7px;
+  }
+  .fine-print summary::-webkit-details-marker{display:none;}
+  .fine-print summary::before{content:'\25B8';font-size:11px;transition:transform .12s ease;}
+  .fine-print[open] summary::before{transform:rotate(90deg);}
+  .fine-print summary:hover{color:var(--accent);}
+  .fine-print p{margin-top:12px;}
+
   .ad-slot{
     margin-top:36px;padding:18px;border:var(--bw) dashed var(--line);border-radius:14px;
     text-align:center;font-size:12px;font-weight:700;color:var(--muted);
@@ -445,29 +488,13 @@
 <div class="wrap">
 
   <div id="introScreen">
-    <div class="eyebrow">Practice</div>
+    <div class="page-head">
+      <div class="eyebrow">NREMT-EMT</div>
+      <h1>Practice</h1>
+      <p class="lede">Three ways to work the 2,084-question bank. Every mode mixes select-N-of-M and sequencing items alongside standard multiple choice, matching the exam’s Technology-Enhanced Item formats.</p>
+    </div>
+
     <div id="streakWidget"></div>
-    <h1>NREMT-EMT Practice Exam — 100 Questions</h1>
-    <p class="lede">A full-length practice exam matching the scale of the real NREMT-EMT cognitive exam. Each attempt randomly draws 100 questions from a 2,084-question pool — in the same domain proportions every time — so retaking it isn't just re-memorizing the same set. Includes a live 2-hour timer, pace tracker, difficulty filtering (up through an Expert tier), select-N-of-M and sequencing items alongside standard multiple choice, and a review queue for questions you've missed.</p>
-
-    <div class="domain-list">
-      <span>Assessment</span>
-      <span>Airway &amp; Respiratory</span>
-      <span>Cardiac &amp; Medical</span>
-      <span>Trauma</span>
-      <span>OB/Pediatrics &amp; Special Populations</span>
-      <span>EMS Operations</span>
-    </div>
-
-    <div class="exam-facts">
-      <div class="row"><span>Questions per attempt</span><span>100 (randomized)</span></div>
-      <div class="row"><span>Total question pool</span><span id="poolCount">2,084</span></div>
-      <div class="row"><span>Time limit</span><span>2:00:00</span></div>
-      <div class="row"><span>Target pace</span><span>~72 sec/question</span></div>
-    </div>
-
-    <div id="readinessCard"></div>
-    <div id="weakDomainsPanel"></div>
 
     <div id="resumeExamCard" class="resume-exam-card" style="display:none;">
       <div class="resume-exam-text" id="resumeExamText"></div>
@@ -477,68 +504,88 @@
       </div>
     </div>
 
-    <div class="difficulty-row">
-      <label for="difficultySelect">Difficulty</label>
-      <select id="difficultySelect">
-        <option value="all">All levels</option>
-        <option value="easy">Easy only</option>
-        <option value="medium">Medium only</option>
-        <option value="hard">Hard only</option>
-        <option value="expert">Expert only</option>
-      </select>
+    <div class="mode-grid">
+
+      <div class="mode-card mode-card--primary">
+        <div class="k">Adaptive <span class="adaptive-tag">retargets live</span></div>
+        <h2>Adaptive practice</h2>
+        <p>Picks each question from how you’ve done so far — weighted toward the domains and the individual questions you’ve missed, with difficulty nudged up or down as you answer.</p>
+        <div class="spacer"></div>
+        <div class="meta">Re-targets after<br>every question</div>
+        <div class="controls">
+          <select id="adaptiveLength" aria-label="Adaptive practice length">
+            <option value="15">15 questions</option>
+            <option value="20" selected>20 questions</option>
+            <option value="30">30 questions</option>
+            <option value="50">50 questions</option>
+          </select>
+        </div>
+        <button class="start-btn" id="adaptiveStartBtn">Start adaptive practice</button>
+      </div>
+
+      <div class="mode-card">
+        <div class="k">Full length</div>
+        <h2>Timed exam</h2>
+        <p>100 questions drawn at random from the pool in the real exam’s domain proportions, so a retake isn’t the same set again. Scored by domain when you finish.</p>
+        <div class="spacer"></div>
+        <div class="meta">100 q · 2:00:00 · ~72 s/q<br>pool of <span id="poolCount">2,084</span></div>
+        <div class="controls">
+          <select id="difficultySelect" aria-label="Difficulty">
+            <option value="all">All levels</option>
+            <option value="easy">Easy only</option>
+            <option value="medium">Medium only</option>
+            <option value="hard">Hard only</option>
+            <option value="expert">Expert only</option>
+          </select>
+        </div>
+        <button class="start-btn" id="startBtn">Start timed exam</button>
+      </div>
+
+      <div class="mode-card">
+        <div class="k">Short session</div>
+        <h2>Drill one domain</h2>
+        <p>A focused set from a single domain — short enough to fit a break, and the quickest way to put a first reading on a domain you haven’t touched.</p>
+        <div class="spacer"></div>
+        <div class="controls">
+          <select id="domainSelect" aria-label="Domain">
+            <option value="all">All Domains</option>
+            <option value="Assessment">Assessment</option>
+            <option value="Airway &amp; Respiratory">Airway &amp; Respiratory</option>
+            <option value="Cardiac &amp; Medical">Cardiac &amp; Medical</option>
+            <option value="Trauma">Trauma</option>
+            <option value="OB/Peds &amp; Special Populations">OB/Peds &amp; Special Populations</option>
+            <option value="EMS Operations">EMS Operations</option>
+          </select>
+          <select id="domainLength" aria-label="Drill length">
+            <option value="10">10 questions</option>
+            <option value="20" selected>20 questions</option>
+            <option value="30">30 questions</option>
+          </select>
+        </div>
+        <button class="start-btn" id="domainStartBtn">Start domain quiz</button>
+        <button class="review-btn" id="flashcardBtn" style="margin-top:10px">Flashcard review</button>
+      </div>
+
     </div>
 
-    <button class="start-btn" id="startBtn">Start Timed Exam</button>
-    <button class="review-btn" id="reviewBtn">
-      <span>Review Missed Questions</span>
-      <span class="count" id="missedCount">0</span>
-    </button>
-    <button class="review-btn" id="flaggedReviewBtn">
-      <span>Review Flagged Questions</span>
-      <span class="count" id="flaggedCount">0</span>
-    </button>
-    <button class="review-btn" id="spacedReviewBtn" title="Questions you've answered before that are due for another look, oldest/weakest first">
-      <span>Due for Review</span>
-      <span class="count" id="spacedCount">0</span>
-    </button>
-
-    <div class="domain-quiz-box adaptive-box">
-      <div class="domain-quiz-title">Adaptive Practice <span class="adaptive-tag">retargets live</span></div>
-      <p class="adaptive-copy">Each question is picked based on your performance so far — weighted toward domains and specific questions you've gotten wrong before, with difficulty nudged up (through an Expert tier) or down as you answer. It re-targets after every question, not just at the start, and mixes in select-N-of-M and sequencing items alongside standard multiple choice, matching the exam's Technology-Enhanced Item formats.</p>
-      <div class="domain-quiz-row">
-        <select id="adaptiveLength">
-          <option value="15">15 questions</option>
-          <option value="20" selected>20 questions</option>
-          <option value="30">30 questions</option>
-          <option value="50">50 questions</option>
-        </select>
-        <button class="domain-btn" id="adaptiveStartBtn">Start Adaptive Practice</button>
-      </div>
+    <div class="review-row" id="reviewRow" hidden>
+      <button class="review-btn" id="reviewBtn">
+        <span>Review missed</span>
+        <span class="count" id="missedCount">0</span>
+      </button>
+      <button class="review-btn" id="flaggedReviewBtn">
+        <span>Review flagged</span>
+        <span class="count" id="flaggedCount">0</span>
+      </button>
+      <button class="review-btn" id="spacedReviewBtn" title="Questions you’ve answered before that are due for another look, oldest/weakest first">
+        <span>Due for review</span>
+        <span class="count" id="spacedCount">0</span>
+      </button>
     </div>
 
-    <div class="domain-quiz-box">
-      <div class="domain-quiz-title">Or drill one domain</div>
-      <div class="domain-quiz-row">
-        <select id="domainSelect">
-          <option value="all">All Domains</option>
-          <option value="Assessment">Assessment</option>
-          <option value="Airway & Respiratory">Airway & Respiratory</option>
-          <option value="Cardiac & Medical">Cardiac & Medical</option>
-          <option value="Trauma">Trauma</option>
-          <option value="OB/Peds & Special Populations">OB/Peds &amp; Special Populations</option>
-          <option value="EMS Operations">EMS Operations</option>
-        </select>
-        <select id="domainLength">
-          <option value="10">10 questions</option>
-          <option value="20" selected>20 questions</option>
-          <option value="30">30 questions</option>
-        </select>
-      </div>
-      <div class="domain-quiz-row">
-        <button class="domain-btn" id="domainStartBtn">Start Domain Quiz</button>
-        <button class="domain-btn" id="flashcardBtn">Flashcard Review</button>
-      </div>
-    </div>
+    <div id="readinessCard"></div>
+    <div id="weakDomainsPanel"></div>
+
     <div class="best-score" id="bestScoreLine"></div>
     <button class="progress-toggle" id="progressToggle" style="display:none;">View progress &darr;</button>
     <div class="progress-panel" id="progressPanel" style="display:none;"></div>
@@ -622,7 +669,10 @@
   <div class="ad-slot">Ad space — 300×250 or responsive unit</div>
 
   <footer>
-    <p>These are original practice questions written to reflect standard EMT-B knowledge and the NREMT cognitive exam's blueprint domains. This is unofficial, independently created study material — not affiliated with, endorsed by, or sourced verbatim from the National Registry of EMTs or any specific publisher. The real NREMT-EMT exam is computer-adaptive (70–120 questions, up to 2 hours); this fixed 100-question-per-attempt, randomly-drawn timed format is designed to build stamina and pacing with some variation between attempts, not to replicate the adaptive algorithm. This tool supplements, and does not replace, your official course materials and instructor guidance. Your score, timing, and missed-question history are stored only in your own browser and aren't sent anywhere.</p>
+    <details class="fine-print">
+      <summary>About these questions &amp; how this differs from the real exam</summary>
+      <p>These are original practice questions written to reflect standard EMT-B knowledge and the NREMT cognitive exam's blueprint domains. This is unofficial, independently created study material — not affiliated with, endorsed by, or sourced verbatim from the National Registry of EMTs or any specific publisher. The real NREMT-EMT exam is computer-adaptive (70–120 questions, up to 2 hours); this fixed 100-question-per-attempt, randomly-drawn timed format is designed to build stamina and pacing with some variation between attempts, not to replicate the adaptive algorithm. This tool supplements, and does not replace, your official course materials and instructor guidance. Your score, timing, and missed-question history are stored only in your own browser and aren't sent anywhere.</p>
+    </details>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a></p>
     </footer>
 </div>
@@ -1597,6 +1647,15 @@ function refreshIntroState(){
   const due = loadDueForReview();
   document.getElementById('spacedCount').textContent = due.length;
   document.getElementById('spacedReviewBtn').disabled = due.length === 0;
+  // An empty queue is hidden, not greyed out: three dead "0" buttons were the
+  // first thing a new visitor saw.
+  var anyQueue = false;
+  ['reviewBtn','flaggedReviewBtn','spacedReviewBtn'].forEach(function(id){
+    var btn = document.getElementById(id);
+    btn.hidden = btn.disabled;
+    if(!btn.disabled) anyQueue = true;
+  });
+  document.getElementById('reviewRow').hidden = !anyQueue;
   renderProgressChart();
   renderReadiness('readinessCard');
   renderWeakDomainsPanel();
