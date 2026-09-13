@@ -230,12 +230,47 @@
       var r = node.querySelector('.ring').getBoundingClientRect();
       return [Math.round(r.left + r.width / 2 - box.left), Math.round(r.top + r.height / 2 - box.top)];
     });
-    var d = pts.map(function(pt, i){ return (i ? 'L' : 'M') + pt[0] + ' ' + pt[1]; }).join(' ');
+    // Rounded corners at each turn: shorten the straight runs by r and
+    // curve through the corner point.
+    function rounded(points){
+      if(points.length < 2) return '';
+      var r = 34;
+      var d = 'M' + points[0][0] + ' ' + points[0][1];
+      for(var i = 1; i < points.length - 1; i++){
+        var p0 = points[i - 1], p1 = points[i], p2 = points[i + 1];
+        var inX = p1[0] - p0[0], inY = p1[1] - p0[1], outX = p2[0] - p1[0], outY = p2[1] - p1[1];
+        var inL = Math.hypot(inX, inY), outL = Math.hypot(outX, outY);
+        var turn = (inX === 0) !== (outX === 0);
+        if(!turn || !inL || !outL){ d += ' L' + p1[0] + ' ' + p1[1]; continue; }
+        var rr = Math.min(r, inL / 2, outL / 2);
+        var a = [p1[0] - inX / inL * rr, p1[1] - inY / inL * rr];
+        var c = [p1[0] + outX / outL * rr, p1[1] + outY / outL * rr];
+        d += ' L' + a[0] + ' ' + a[1] + ' Q' + p1[0] + ' ' + p1[1] + ' ' + c[0] + ' ' + c[1];
+      }
+      var last = points[points.length - 1];
+      return d + ' L' + last[0] + ' ' + last[1];
+    }
     var track = pathEl.querySelector('.path-track');
     var fill = pathEl.querySelector('.path-fill');
     var upTo = currentModule ? nodes.findIndex(function(n){ return n.getAttribute('data-module') === currentModule; }) : -1;
-    if(track) track.setAttribute('d', d);
-    if(fill) fill.setAttribute('d', upTo > 0 ? pts.slice(0, upTo + 1).map(function(pt, i){ return (i ? 'L' : 'M') + pt[0] + ' ' + pt[1]; }).join(' ') : '');
+    if(track) track.setAttribute('d', rounded(pts));
+    if(fill){
+      fill.setAttribute('d', upTo > 0 ? rounded(pts.slice(0, upTo + 1)) : '');
+      var len = upTo > 0 ? fill.getTotalLength() : 0;
+      pathEl.style.setProperty('--len', String(len));
+    }
+    // Ahead of where you are and untouched: locked look.
+    nodes.forEach(function(node, i){
+      node.classList.toggle('locked', upTo >= 0 && i > upTo && !node.classList.contains('started'));
+    });
+    if(fill && len > 0 && !pathEl.classList.contains('drawn')){
+      pathEl.classList.add('drawn');
+      var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(!still && fill.animate){
+        fill.animate([{ strokeDashoffset: len }, { strokeDashoffset: 0 }],
+          { duration: 1400, delay: 250, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'both' });
+      }
+    }
   }
 
   function renderModules(){
