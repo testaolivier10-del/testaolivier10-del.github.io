@@ -703,8 +703,9 @@ strong,b{font-weight:900;}
 
 /* Phone: a bottom tab bar instead of the scrolling row. The first four tabs
    sit in it; the rest fold into "More", which opens a sheet. */
-.bottom-nav{display:none;}
+.bottom-nav,.bottom-sheet,.bottom-scrim{display:none;}
 @media (max-width:640px){
+  .bottom-sheet,.bottom-scrim{display:block;}
   .course-nav{display:none;}
   .bottom-nav{
     position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;
