@@ -43,6 +43,15 @@
      built for. On a dashboard it put a centred label above left-aligned cards,
      so the eye kept switching axis. Left-align it here only. */
   .xshell .section-head{text-align:left;}
+  /* Concept map on the left; level, quests and badges stacked on the right. */
+  .mastery-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 36px;align-items:start;}
+  .mastery-main,.mastery-side{min-width:0;}
+  .mastery-side .game-grid{grid-template-columns:1fr;}
+  .mastery-side .badge-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+  @media (max-width:900px){
+    .mastery-grid{grid-template-columns:1fr;}
+    .mastery-side{margin-top:26px;}
+  }
 
   /* Width is the shell's job now — this page used to cap itself at 760px
      while Home and Tools ran the full shell, so the course changed width
@@ -73,27 +82,31 @@
     <p class="lede" style="margin-top:0;">Built from your performance across every question you've answered in each concept — not just whether you opened the lesson.</p>
   </div>
 
-  <div class="xsection" style="padding-top:0;">
-    <div id="gameLevel"></div>
-    <div class="game-grid">
-      <div id="gameRounds"></div>
-      <div id="gameDebt"></div>
+  <div class="xsection mastery-grid" style="padding-top:0;">
+    <div class="mastery-main">
+      <div class="section-head" style="margin-top:0;">Where you actually stand</div>
+      <div class="overall-card" id="overallCard"></div>
+      <div id="masterySnapshot"></div>
+      <div id="leechAlerts"></div>
+      <div id="dependencyAlerts"></div>
+      <div class="rec-row" id="recRow"></div>
+      <div class="section-head" id="weakHead">Weakest concepts</div>
+      <div id="weakConcepts"></div>
+      <div class="section-head" id="moduleHead">By module</div>
+      <div id="moduleStats"></div>
+      <div class="section-head" id="familyHead">By concept family</div>
+      <div id="familyStats"></div>
     </div>
-    <div id="gameConcepts"></div>
-    <div class="section-head">Achievements</div>
-    <div class="badge-grid" id="gameAchievements"></div>
-    <div class="section-head">Where you actually stand</div>
-    <div class="overall-card" id="overallCard"></div>
-    <div id="masterySnapshot"></div>
-    <div id="leechAlerts"></div>
-    <div id="dependencyAlerts"></div>
-    <div class="rec-row" id="recRow"></div>
-    <div class="section-head" id="weakHead">Weakest concepts</div>
-    <div id="weakConcepts"></div>
-    <div class="section-head" id="familyHead">By concept family</div>
-    <div id="familyStats"></div>
-    <div class="section-head" id="moduleHead">By module</div>
-    <div id="moduleStats"></div>
+    <aside class="mastery-side">
+      <div id="gameLevel"></div>
+      <div class="game-grid">
+        <div id="gameRounds"></div>
+        <div id="gameDebt"></div>
+      </div>
+      <div id="gameConcepts"></div>
+      <div class="section-head">Achievements</div>
+      <div class="badge-grid" id="gameAchievements"></div>
+    </aside>
   </div>
 </div>
 

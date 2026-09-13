@@ -50,6 +50,20 @@
   h2{font-size:19px;font-weight:600;margin:36px 0 12px;}
 
   .controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-bottom:14px;}
+  /* Model on the left, what you clicked on the right, reference cards below. */
+  .bm-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start;}
+  .bm-main{min-width:0;}
+  .bm-side{position:sticky;top:calc(var(--site-header-h,112px) + 16px);min-width:0;}
+  .bm-side h2{margin:18px 0 10px;}
+  .bm-side .landmark-list{max-height:calc(100vh - var(--site-header-h,112px) - 380px);min-height:120px;}
+  .bm-below{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start;}
+  .bm-below h2{margin-top:28px;}
+  .bm-main .hint{margin:10px 0 0;}
+  @media (max-width:900px){
+    .bm-grid,.bm-below{grid-template-columns:1fr;}
+    .bm-side{position:static;}
+    .bm-side .landmark-list{max-height:300px;}
+  }
   .view-btn{
     font-family:inherit;font-size:13.5px;padding:8px 14px;border:2px solid var(--line);
     background:var(--white);color:var(--ink);border-radius:8px;cursor:pointer;
@@ -61,7 +75,6 @@
 
   /* ---- Find it on the model --------------------------------------------- */
 
-  .hunt-bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:16px 0 0;}
   .hunt-toggle{
     font:700 13px inherit;padding:9px 18px;border:2px solid var(--line);border-radius:20px;
     background:var(--white);color:var(--ink);cursor:pointer;
@@ -73,7 +86,7 @@
   .hunt-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
 
   .hunt-panel{
-    margin-top:14px;border:2px solid var(--accent);border-radius:var(--radius);
+    margin-bottom:14px;border:2px solid var(--accent);border-radius:var(--radius);
     background:var(--tint-accent);padding:16px 18px;
   }
   .hunt-k{
@@ -177,59 +190,66 @@
     <b>This is a real, detailed anatomical model</b> (see attribution below), not a to-scale medical rendering. Structure positions are for study purposes — verify exact anatomy against a dedicated reference or your course materials.
   </div>
 
-  <div class="controls">
-    <button class="view-btn reset-btn" id="resetBtn" type="button">Reset View</button>
-    <label class="view-btn" style="display:flex;align-items:center;gap:6px;cursor:pointer;">
-      <input type="checkbox" id="skinCb" checked style="margin:0;"> Show skin
-    </label>
-  </div>
-  <div class="sys-filters" id="sysFilters">
-    <label><input type="checkbox" class="sys-cb" value="resp" checked> Respiratory</label>
-    <label><input type="checkbox" class="sys-cb" value="cardio" checked> Cardiovascular</label>
-    <label><input type="checkbox" class="sys-cb" value="neuro" checked> Neurological</label>
-    <label><input type="checkbox" class="sys-cb" value="msk" checked> Musculoskeletal</label>
-    <label><input type="checkbox" class="sys-cb" value="abd" checked> Abdominal / GI / GU</label>
-    <label><input type="checkbox" class="sys-cb" value="skin" checked> Integumentary</label>
-  </div>
-
-  <div class="hint">DRAG TO ROTATE · SCROLL / PINCH TO ZOOM · RIGHT-DRAG OR TWO-FINGER DRAG TO PAN</div>
-  <div class="diagram-card">
-    <canvas id="viewer3d"></canvas>
-    <div id="viewerLoading"><div class="spinner"></div><div id="viewerLoadingText">Loading 3D model…</div></div>
-    <div class="viewer-hint" id="viewerHint">Click any part to select it</div>
-    <div class="legend">
-      <span><i style="background:#E6D8B8;"></i>Bone (natural ivory tone)</span>
-      <span><i style="background:#8B3A2E;"></i>Organ (realistic anatomical color per structure)</span>
-      <span><i style="background:#C42020;"></i>Artery</span>
-      <span><i style="background:#2A5FA0;"></i>Vein</span>
-      <span><i style="background:#0F5C50;"></i>Selected</span>
+  <div class="bm-grid">
+    <div class="bm-main">
+      <div class="controls">
+        <button class="view-btn reset-btn" id="resetBtn" type="button">Reset View</button>
+        <label class="view-btn" style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+          <input type="checkbox" id="skinCb" checked style="margin:0;"> Show skin
+        </label>
+        <button type="button" class="hunt-toggle" id="huntToggle" aria-pressed="false">Quiz me &mdash; find it on the model</button>
+        <div class="hunt-live" id="huntLive" role="status" aria-live="polite"></div>
+      </div>
+      <div class="sys-filters" id="sysFilters">
+        <label><input type="checkbox" class="sys-cb" value="resp" checked> Respiratory</label>
+        <label><input type="checkbox" class="sys-cb" value="cardio" checked> Cardiovascular</label>
+        <label><input type="checkbox" class="sys-cb" value="neuro" checked> Neurological</label>
+        <label><input type="checkbox" class="sys-cb" value="msk" checked> Musculoskeletal</label>
+        <label><input type="checkbox" class="sys-cb" value="abd" checked> Abdominal / GI / GU</label>
+        <label><input type="checkbox" class="sys-cb" value="skin" checked> Integumentary</label>
+      </div>
+      <div class="diagram-card">
+        <canvas id="viewer3d"></canvas>
+        <div id="viewerLoading"><div class="spinner"></div><div id="viewerLoadingText">Loading 3D model&hellip;</div></div>
+        <div class="viewer-hint" id="viewerHint">Click any part to select it</div>
+        <div class="legend">
+          <span><i style="background:#E6D8B8;"></i>Bone (natural ivory tone)</span>
+          <span><i style="background:#8B3A2E;"></i>Organ (realistic anatomical color per structure)</span>
+          <span><i style="background:#C42020;"></i>Artery</span>
+          <span><i style="background:#2A5FA0;"></i>Vein</span>
+          <span><i style="background:#0F5C50;"></i>Selected</span>
+        </div>
+      </div>
+      <div class="hint">DRAG TO ROTATE &middot; SCROLL / PINCH TO ZOOM &middot; RIGHT-DRAG OR TWO-FINGER DRAG TO PAN</div>
     </div>
+
+    <aside class="bm-side">
+      <!-- A model you can only look at teaches recognition and never recall. The
+           hunt asks for a structure by name and makes you find it on the model,
+           which is the direction the knowledge is actually used in. -->
+      <div class="hunt-panel" id="huntPanel" hidden></div>
+      <div class="info-panel" id="infoPanel">
+        <p class="info-placeholder">Tap or click any bone, organ, vessel, or pulse point on the 3D model (or a name below) to see what it is, why it matters, and how to handle it in the field.</p>
+      </div>
+      <h2>Browse by name</h2>
+      <div class="landmark-list" id="landmarkList"></div>
+    </aside>
   </div>
 
-  <!-- A model you can only look at teaches recognition and never recall. The
-       hunt asks for a structure by name and makes you find it on the model,
-       which is the direction the knowledge is actually used in. -->
-  <div class="hunt-bar">
-    <button type="button" class="hunt-toggle" id="huntToggle" aria-pressed="false">Quiz me — find it on the model</button>
-    <div class="hunt-live" id="huntLive" role="status" aria-live="polite"></div>
-  </div>
-  <div class="hunt-panel" id="huntPanel" hidden></div>
+  <div class="bm-below">
+    <div>
+      <h2>Burn surface area &mdash; Rule of Nines</h2>
+      <div class="rule9-card">
 
-  <div class="info-panel" id="infoPanel">
-    <p class="info-placeholder">Tap or click any bone, organ, vessel, or pulse point on the 3D model (or a name below) to see what it is, why it matters, and how to handle it in the field.</p>
-  </div>
-
-  <h2>Browse by name</h2>
-  <div class="landmark-list" id="landmarkList"></div>
-
-  <h2>Burn surface area — Rule of Nines</h2>
-  <div class="rule9-card">
     <p>The Rule of Nines is a quick field method for estimating total body surface area (TBSA) affected by a burn in an adult, dividing the body into regions that are each roughly 9% (or a multiple of 9%): head &amp; neck 9%, each arm 9%, the entire front torso 18%, the entire back torso 18%, each leg 18%, and the groin 1%.</p>
     <p>It's a rough estimate to guide severity communication and transport decisions — not a substitute for burn center evaluation, and pediatric proportions differ (a child's head accounts for a larger share of TBSA).</p>
   </div>
-
-  <h2>Directional &amp; positional terms</h2>
-  <div class="terms-card" id="termsCard"></div>
+    </div>
+    <div>
+      <h2>Directional &amp; positional terms</h2>
+      <div class="terms-card" id="termsCard"></div>
+    </div>
+  </div>
 
   <footer>
     <p>This module is a study aid, not a substitute for an anatomy/physiology textbook or your course's own protocols and reference materials. Field interventions described here are general EMT-B-level guidance — always follow your local protocols and medical direction, which take precedence over anything shown here.</p>

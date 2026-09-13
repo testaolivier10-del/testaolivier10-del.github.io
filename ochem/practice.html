@@ -43,6 +43,20 @@
     color:var(--muted);margin:26px 0 10px;
   }
   .section-head:first-child{margin-top:0;}
+  .xshell .section-head{text-align:left;}
+  .practice-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 36px;align-items:start;margin-top:24px;}
+  .practice-main,.practice-side{min-width:0;}
+  .practice-side .section-head:first-child{margin-top:0;}
+  .practice-main .mode-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .practice-side .snapshot{grid-template-columns:1fr 1fr;}
+  .practice-side .snapshot .cell .v{font-size:26px;}
+  /* A running session and its summary are one column of reading width. */
+  .practice-view{max-width:820px;margin-left:auto;margin-right:auto;}
+  @media (max-width:900px){
+    .practice-grid{grid-template-columns:1fr;}
+    .practice-side .section-head:first-child{margin-top:26px;}
+    .practice-main .mode-grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
+  }
 </style>
 </head>
 <body>

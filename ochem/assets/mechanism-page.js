@@ -90,6 +90,7 @@
   function advance(){ step++; render(); }
   function goBack(){ if(step > 0){ step--; render(); } }
   if(SB) SB.mount(card, goBack);
+  if(SB && SB.rail) SB.rail({ shell: card.parentNode, steps: steps, onGo: function(i){ step = i; render(); } });
 
   function renderExplain(cfg){
     card.innerHTML = head(cfg) +
@@ -204,6 +205,7 @@
   function render(){
     updateProgress();
     if(SB) SB.sync(step);
+    if(SB && SB.syncRail) SB.syncRail(step);
     var cfg = steps[step];
     if(cfg.type === 'explain') return renderExplain(cfg);
     if(cfg.type === 'draw') return renderDraw(cfg);

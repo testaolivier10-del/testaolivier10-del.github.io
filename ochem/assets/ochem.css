@@ -46,7 +46,49 @@
    block inline before this file existed; lessons authored after it just
    link ochem.css instead of repeating it.
    ========================================================================== */
-.lesson-shell{max-width:760px;margin:0 auto;}
+.lesson-shell{max-width:1180px;margin:0 auto;}
+/* With a rail (every engine-driven lesson and mechanism): a sticky column of
+   where-you-are beside the card. Without one: a single reading column. */
+.lesson-shell:not(:has(.lesson-rail)) > *{max-width:820px;margin-left:auto;margin-right:auto;}
+.lesson-shell:has(.lesson-rail){
+  display:grid;grid-template-columns:250px minmax(0,1fr);gap:0 clamp(24px,4vw,54px);align-items:start;
+}
+.lesson-shell:has(.lesson-rail) > *{grid-column:2;min-width:0;}
+.lesson-shell > .lesson-rail{
+  grid-column:1;grid-row:1 / span 30;position:sticky;top:calc(var(--site-header-h,112px) + 18px);
+  max-height:calc(100vh - var(--site-header-h,112px) - 36px);overflow-y:auto;
+  display:flex;flex-direction:column;gap:14px;padding:22px 0 26px;
+}
+.lesson-rail-k{font:900 12px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0;}
+.lesson-rail .lesson-mode-toggle{flex-direction:column;align-items:flex-start;gap:6px;margin:0;}
+.lesson-rail .progress-bar{margin:0;}
+.lesson-steps{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:2px;}
+.lesson-step button{
+  width:100%;display:flex;align-items:flex-start;gap:10px;background:none;border:0;padding:7px 8px;border-radius:9px;
+  font:800 12.5px/1.35 var(--font-ui);color:var(--muted);text-align:left;cursor:default;
+}
+.lesson-step .t{min-width:0;}
+.lesson-step .n{margin-top:-1px;}
+.lesson-step.done button{cursor:pointer;color:var(--ink);}
+.lesson-step.done button:hover{background:var(--hover-tint);}
+.lesson-step .n{
+  flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:var(--surface2);color:var(--muted);font:900 11px var(--font-mono);
+}
+.lesson-step.done .n{background:var(--accent);color:var(--on-accent-fill);font-size:0;}
+.lesson-step.done .n::after{content:"";width:4px;height:7px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px);}
+.lesson-step.current button{background:var(--tint-accent);color:var(--accent-text);}
+.lesson-step.current .n{background:var(--accent);color:var(--on-accent-fill);}
+.lesson-shell:has(.lesson-rail) .hero{padding-bottom:22px;}
+.lesson-shell:has(.lesson-rail) .lesson-card .step-body,.lesson-shell:has(.lesson-rail) .lesson-card .explain-box{max-width:72ch;}
+@media (max-width:900px){
+  .lesson-shell:has(.lesson-rail){display:block;}
+  .lesson-shell > .lesson-rail{position:static;max-height:none;overflow:visible;padding:0 0 14px;gap:10px;}
+  .lesson-steps{flex-direction:row;flex-wrap:wrap;gap:6px;}
+  .lesson-step button{width:auto;padding:5px 9px 5px 5px;background:var(--white);box-shadow:var(--lift-sm);}
+  .lesson-step .t{display:none;}
+  .lesson-step.current .t{display:inline;}
+}
 .progress-bar{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
 .progress-bar .track{flex:1;height:10px;border-radius:999px;background:var(--track);overflow:hidden;}
 .progress-bar .fill{height:100%;background:var(--accent);border-radius:999px;transition:width .25s ease;}

@@ -156,6 +156,7 @@
     /* Mounted by the engine, so a lesson's custom (hands-on) steps get the
        Back control for free without each of them drawing one. */
     if(SB) SB.mount(card, goBack);
+    if(SB && SB.rail) SB.rail({ shell: shell, steps: steps, onGo: function(i){ step = i; render(); } });
 
     function head(cfg){
       return (cfg.eyebrow ? '<div class="step-eyebrow">' + cfg.eyebrow + '</div>' : '') +
@@ -225,6 +226,7 @@
     function render(){
       updateProgress();
       if(SB) SB.sync(step);
+      if(SB && SB.syncRail) SB.syncRail(step);
       var cfg = steps[step];
       if(typeof cfg.render === 'function'){
         cfg.render({

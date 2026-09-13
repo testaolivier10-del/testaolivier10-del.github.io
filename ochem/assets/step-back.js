@@ -25,6 +25,53 @@
    step are untouched — no step change, so nothing is marked, and the step
    records exactly as it always did. */
 (function(){
+  /* ---- the lesson rail ----------------------------------------------------
+     A sticky column beside the card: where you are in the course, the way
+     back to the textbook, the progress bar, and every step of this lesson
+     with the ones behind you ticked. Built by the engines (lesson-engine.js
+     and mechanism-page.js) right after they know their steps; the shell's
+     CSS lays it out beside the card once it exists. */
+  var railEl = null, railItems = [];
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function buildRail(opts){
+    var shell = opts.shell; if(!shell || railEl) return null;
+    railEl = document.createElement('aside');
+    railEl.className = 'lesson-rail';
+    var eyebrow = shell.querySelector('.hero .eyebrow');
+    var html = '<p class="lesson-rail-k">' + (eyebrow ? esc(eyebrow.textContent) : 'Lesson') + '</p>';
+    html += '<div class="lesson-rail-links"></div>';
+    html += '<div class="lesson-rail-progress"></div>';
+    html += '<ol class="lesson-steps">' + opts.steps.map(function(cfg, i){
+      // The step's own title where it has one; the eyebrow otherwise.
+      var label = (cfg && cfg.title) ? cfg.title : ((cfg && cfg.eyebrow) ? cfg.eyebrow : 'Step ' + (i + 1));
+      label = String(label).replace(/<[^>]*>/g, '').replace(/^step\s*\d+\s*[\u00b7\-\u2013:]\s*/i, '');
+      if(label.length > 64) label = label.slice(0, 61).replace(/\s+\S*$/, '') + '\u2026';
+      return '<li class="lesson-step" data-step="' + i + '"><button type="button"><span class="n">' + (i + 1) + '</span><span class="t">' + esc(label) + '</span></button></li>';
+    }).join('') + '</ol>';
+    railEl.innerHTML = html;
+    shell.insertBefore(railEl, shell.firstElementChild);
+    // The links and the progress bar move in from the page body.
+    var links = shell.querySelector('.lesson-mode-toggle');
+    if(links) railEl.querySelector('.lesson-rail-links').appendChild(links);
+    var prog = shell.querySelector('.progress-bar');
+    if(prog) railEl.querySelector('.lesson-rail-progress').appendChild(prog);
+    railItems = Array.prototype.slice.call(railEl.querySelectorAll('.lesson-step'));
+    railItems.forEach(function(li){
+      li.querySelector('button').addEventListener('click', function(){
+        var i = parseInt(li.getAttribute('data-step'), 10);
+        if(li.classList.contains('done') && opts.onGo) opts.onGo(i);
+      });
+    });
+    return railEl;
+  }
+  function syncRail(step){
+    railItems.forEach(function(li, i){
+      li.classList.toggle('done', i < step);
+      li.classList.toggle('current', i === step);
+      li.querySelector('button').disabled = i > step;
+    });
+  }
+
   var navEl = null;
   var departed = {};   // steps the student has moved away from at least once
   var maxStep = 0;
@@ -58,5 +105,5 @@
   function isReplay(){ return !!departed[current]; }
   function furthest(){ return maxStep; }
 
-  window.OchemStepBack = { mount: mount, sync: sync, isReplay: isReplay, furthest: furthest };
+  window.OchemStepBack = { mount: mount, sync: sync, isReplay: isReplay, furthest: furthest, rail: buildRail, syncRail: syncRail };
 })();

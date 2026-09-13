@@ -63,11 +63,6 @@
      The reset, page shell, typography and button/card primitives live there;
      this file only styles what is specific to the exam runner. */
 
-  /* The shared .wrap measure (760px) is right for prose tool pages, but it
-     leaves large dead margins on an exam page full of grids and stat tiles.
-     Widen just this page. */
-  .wrap{max-width:960px;}
-
   h1{margin:6px 0 16px;max-width:22ch;}
   .lede{max-width:52ch;}
   .backlink{font-size:13px;font-weight:700;color:var(--muted);margin-bottom:18px;display:inline-block;}
@@ -205,7 +200,26 @@
     font:800 13px var(--font-mono);color:var(--accent);
   }
 
-  #quizScreen{display:none;}
+  #quizScreen{display:none;grid-template-columns:minmax(0,1fr) 300px;gap:0 36px;align-items:start;}
+  .quiz-main{min-width:0;max-width:760px;}
+  .quiz-side{position:sticky;top:calc(var(--site-header-h,112px) + 18px);display:flex;flex-direction:column;gap:14px;}
+  .quiz-side #timerBar,.quiz-side .practice-banner{position:static;margin:0;padding:16px 18px;background:var(--white);border-radius:16px;box-shadow:var(--lift);border:0;}
+  .quiz-side .progress-row{margin-bottom:6px;}
+  .quiz-side .progress-track{margin-bottom:0;}
+  .quiz-side .jump-row{max-height:220px;margin:0;}
+  .quiz-side .nav-row{margin-top:6px;}
+  #resultsScreen{display:none;grid-template-columns:340px minmax(0,1fr);gap:0 36px;align-items:start;}
+  #resultsScreen .results-top-row{grid-column:1 / -1;}
+  .results-side{position:sticky;top:calc(var(--site-header-h,112px) + 18px);min-width:0;}
+  .results-main{min-width:0;}
+  .intro-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start;}
+  .intro-row > :only-child,.intro-row > :empty:first-child + *{grid-column:1 / -1;}
+  @media (max-width:900px){
+    #quizScreen,#resultsScreen{grid-template-columns:1fr;}
+    .quiz-side,.results-side{position:static;}
+    .quiz-side{order:-1;}
+    .intro-row{grid-template-columns:1fr;}
+  }
   .exit-row{margin:4px 0 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
   .exit-link{
     background:none;border:none;padding:0;cursor:pointer;
@@ -579,8 +593,10 @@
       </button>
     </div>
 
-    <div id="readinessCard"></div>
-    <div id="weakDomainsPanel"></div>
+    <div class="intro-row">
+      <div id="readinessCard"></div>
+      <div id="weakDomainsPanel"></div>
+    </div>
 
     <div class="best-score" id="bestScoreLine"></div>
     <button class="progress-toggle" id="progressToggle" style="display:none;">View progress &darr;</button>
@@ -588,40 +604,41 @@
   </div>
 
   <div id="quizScreen">
-    <div id="timerBar">
-      <div class="timer-row">
-        <span>Time remaining</span>
-        <span class="time-remaining" id="timeRemaining">2:00:00</span>
+    <div class="quiz-main">
+      <div id="practiceBanner" class="practice-banner"></div>
+      <div class="exit-row">
+        <button id="exitBtn" class="exit-link">&larr; Exit exam</button>
+        <button class="primary submit-top-btn" id="submitBtnTop" style="background:var(--accent);">Submit Now</button>
       </div>
-      <div class="pace-line" id="paceLine">—</div>
+      <div class="q-head-row">
+        <div class="q-domain" id="qDomain"></div>
+        <button type="button" class="flag-btn" id="flagBtn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M4 22V4a1 1 0 0 1 1-1h13.5a1 1 0 0 1 .9 1.5l-2.4 4.8a1 1 0 0 0 0 .9l2.4 4.8a1 1 0 0 1-.9 1.5H5"/></svg>Flag for review</button>
+      </div>
+      <div class="q-prompt" id="qPrompt"></div>
+      <div class="options" id="qOptions"></div>
+      <div class="nav-row" style="margin-bottom:20px;">
+        <button id="prevBtn">Previous</button>
+        <button class="primary" id="nextBtn">Next</button>
+      </div>
     </div>
-    <div id="practiceBanner" class="practice-banner"></div>
-    <div class="exit-row">
-      <button id="exitBtn" class="exit-link">&larr; Exit exam</button>
-      <button class="primary submit-top-btn" id="submitBtnTop" style="background:var(--accent);">Submit Now</button>
-    </div>
-
-    <div class="progress-row">
-      <span id="progressText">Question 1 of 100</span>
-      <span id="answeredText">0 answered</span>
-    </div>
-    <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:1%"></div></div>
-
-    <div class="q-head-row">
-      <div class="q-domain" id="qDomain"></div>
-      <button type="button" class="flag-btn" id="flagBtn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M4 22V4a1 1 0 0 1 1-1h13.5a1 1 0 0 1 .9 1.5l-2.4 4.8a1 1 0 0 0 0 .9l2.4 4.8a1 1 0 0 1-.9 1.5H5"/></svg>Flag for review</button>
-    </div>
-    <div class="q-prompt" id="qPrompt"></div>
-    <div class="options" id="qOptions"></div>
-
-    <div class="nav-row" style="margin-bottom:20px;">
-      <button id="prevBtn">Previous</button>
-      <button class="primary" id="nextBtn">Next</button>
-    </div>
-    <div class="jump-row" id="jumpRow"></div>
-    <div class="nav-row">
-      <button class="primary" id="submitBtn" style="background:var(--accent);">Submit Now</button>
-    </div>
+    <aside class="quiz-side">
+      <div id="timerBar">
+        <div class="timer-row">
+          <span>Time remaining</span>
+          <span class="time-remaining" id="timeRemaining">2:00:00</span>
+        </div>
+        <div class="pace-line" id="paceLine">&mdash;</div>
+      </div>
+      <div class="progress-row">
+        <span id="progressText">Question 1 of 100</span>
+        <span id="answeredText">0 answered</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:1%"></div></div>
+      <div class="jump-row" id="jumpRow"></div>
+      <div class="nav-row">
+        <button class="primary" id="submitBtn" style="background:var(--accent);">Submit Now</button>
+      </div>
+    </aside>
   </div>
 
   <div id="flashcardScreen" style="display:none;">
@@ -646,20 +663,24 @@
 
   <div id="resultsScreen">
     <div class="results-top-row"><button class="retry-btn" id="retryBtnTop">&larr; Back to Start</button></div>
-    <div class="score-card">
-      <div class="big" id="scoreBig">0/100</div>
-      <div class="sub" id="scoreSub">0% correct — completed in 0:00:00</div>
-      <div class="domain-breakdown" id="domainBreakdown"></div>
-      <div id="readinessUpdate"></div>
+    <div class="results-side">
+      <div class="score-card">
+        <div class="big" id="scoreBig">0/100</div>
+        <div class="sub" id="scoreSub">0% correct &mdash; completed in 0:00:00</div>
+        <div class="domain-breakdown" id="domainBreakdown"></div>
+        <div id="readinessUpdate"></div>
+      </div>
+      <div id="clearedNote" class="cleared-note" style="display:none;"></div>
     </div>
-    <div id="clearedNote" class="cleared-note" style="display:none;"></div>
-    <div class="filter-row">
-      <button class="active" data-filter="all">All</button>
-      <button data-filter="incorrect">Incorrect only</button>
-      <button data-filter="unanswered">Unanswered only</button>
+    <div class="results-main">
+      <div class="filter-row">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="incorrect">Incorrect only</button>
+        <button data-filter="unanswered">Unanswered only</button>
+      </div>
+      <div id="reviewList"></div>
+      <button class="retry-btn" id="retryBtn">Back to Start</button>
     </div>
-    <div id="reviewList"></div>
-    <button class="retry-btn" id="retryBtn">Back to Start</button>
   </div>
 
 
@@ -2035,7 +2056,7 @@ function beginQuiz(withTimer, resumeState){
     window.LevlAnalytics.event('exam-start', { mode: mode, questions: totalLen });
   }
   introScreen.style.display = 'none';
-  quizScreen.style.display = 'block';
+  quizScreen.style.display = 'grid';
   window.scrollTo(0, 0);
   document.getElementById('timerBar').style.display = withTimer ? 'block' : 'none';
   const banner = document.getElementById('practiceBanner');
@@ -2297,7 +2318,7 @@ function showResults(){
   quizScreen.style.display = 'none';
   document.getElementById('timerBar').style.display = 'none';
   document.getElementById('practiceBanner').style.display = 'none';
-  resultsScreen.style.display = 'block';
+  resultsScreen.style.display = 'grid';
   window.scrollTo(0, 0);
 
   let score = 0;
