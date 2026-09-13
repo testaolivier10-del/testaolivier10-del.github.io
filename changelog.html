@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What&rsquo;s New — LevlPrep</title>
+<meta name="description" content="A dated log of what has changed on LevlPrep: new lessons, tools, question-bank edits and fixes, newest first.">
+<link rel="canonical" href="https://testaolivier10-del.github.io/changelog.html">
+<meta property="og:title" content="What&rsquo;s New — LevlPrep">
+<meta property="og:description" content="A dated log of what has changed on LevlPrep: new lessons, tools, question-bank edits and fixes, newest first.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://testaolivier10-del.github.io/changelog.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://testaolivier10-del.github.io/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+  .log h2{font-size:19px;margin:30px 0 8px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  .log h2:first-of-type{margin-top:6px;}
+  .log h2 .date{font:700 12px var(--font-mono);color:var(--muted);letter-spacing:.04em;}
+  .log p,.log li{font-size:15.5px;font-weight:600;color:var(--muted);line-height:1.65;max-width:66ch;}
+  .log li{margin-bottom:7px;}
+  .log strong{color:var(--ink);font-weight:800;}
+  .log ul{padding-left:20px;margin:8px 0 0;}
+  .log .tag{display:inline-block;font:800 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:var(--tint-accent);color:var(--accent);margin-right:6px;vertical-align:middle;}
+  .log .tag.ochem{background:var(--ctint,var(--tint-accent));color:var(--cink,var(--accent));}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> LevlPrep
+    </a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">&#9681;</button>
+  </div>
+</div>
+
+<div class="xshell narrow" id="main" data-skip-target tabindex="-1">
+  <div class="hero">
+    <div class="eyebrow">What&rsquo;s new</div>
+    <h1>What changed, and when.</h1>
+    <p class="lede">Newest first. Content changes are listed alongside the site ones, because a corrected question matters more to you than a faster page.</p>
+  </div>
+
+  <div class="xsection">
+    <div class="xgrid">
+      <div class="xlabel">Log</div>
+      <div class="xcontent narrow log">
+
+        <h2>Performance, trust and content pass <span class="date">13 September 2026</span></h2>
+        <ul>
+          <li><span class="tag">NREMT</span><strong>480 questions edited</strong> so the longest option is no longer a tell. The correct answer was the longest option 54% of the time; it is now 30%, and the check that guards it only tightens. Keys and explanations are unchanged. One trauma question (the shock patient asking for water) had the wrong option set attached and now has the right one.</li>
+          <li><span class="tag">NREMT</span>New <a href="nremt/exam-day.html">About the exam</a> page: adaptive format, the two-hour limit, cost, eligibility, retake rules and what to bring.</li>
+          <li><span class="tag">NREMT</span>A <strong>print or save as PDF</strong> button on exam results.</li>
+          <li><span class="tag">Site</span>New <a href="sources.html">Sources</a> page on who makes this and what the material is written against; it and this page are linked from every footer.</li>
+          <li><span class="tag">Site</span>Pages paint much sooner: every script is deferred and the two typefaces are served from this site instead of a third party. Where that host is blocked a page used to sit blank for about fourteen seconds.</li>
+          <li><span class="tag">Site</span>The practice page no longer downloads the 1.2 MB explanation file until you start a session, and a site update no longer makes your device re-download the 3D body model and its viewer.</li>
+          <li><span class="tag">Site</span>Light-mode secondary text now meets the WCAG AA contrast floor, focus rings are back on text inputs, and decorative icons are hidden from screen readers.</li>
+          <li><span class="tag ochem">Ochem</span>Tools, Practice and Mastery now render their content without JavaScript, and the course is described as 62 topics everywhere instead of three different counts.</li>
+        </ul>
+
+        <h2>Layout pass <span class="date">13 September 2026</span></h2>
+        <ul>
+          <li><span class="tag">Site</span>The "Clay" redesign: soft shadows, a course-tinted opener on every page, and progress you can see moving (the XP chip, level-up toast, bars filling on arrival).</li>
+          <li><span class="tag">Site</span>One page width across both courses, and shorter interface copy throughout.</li>
+          <li><span class="tag">NREMT</span>The hub asks what you want to do instead of listing everything; the phone "More" sheet is hidden at desktop widths.</li>
+          <li><span class="tag ochem">Ochem</span>The notes are a textbook with a contents rail; the course reads as a path; Mastery shows its two long lists side by side; practice modes with nothing in them were removed.</li>
+        </ul>
+
+        <h2>Tools, offline, and the checks that keep it honest <span class="date">13 September 2026</span></h2>
+        <ul>
+          <li><span class="tag ochem">Ochem</span>Seven interactive tools with quizzes you have to ask for: arrow pusher, resonance explorer, 3D viewer, conformation lab, reaction predictor, acid/base comparator, spectroscopy lab. A molecule carries between tools, and the arrows say what they are.</li>
+          <li><span class="tag">NREMT</span>Heart sounds in the sound trainer, with an audio path that survives offline. Flow diagrams and skill sheets became drills rather than documents.</li>
+          <li><span class="tag">Site</span>A real page when the URL is wrong or the network is gone; a link preview on every page; the sitemap is generated; a skip link on every page; answer feedback is announced to screen readers; the OS reduce-motion setting is respected site-wide.</li>
+          <li><span class="tag">Site</span>Progress export and restore, and an analytics opt-out, on the privacy page. The question bank ships as two files so a question shows up sooner.</li>
+          <li><span class="tag">Site</span>Tests for the scoring engines and the tool content run on every change.</li>
+        </ul>
+
+        <h2>Study assistant and the ochem textbook <span class="date">12 September 2026</span></h2>
+        <ul>
+          <li><span class="tag">Site</span>A study assistant on every page of both courses. It answers by quoting the course's own material, and can optionally ask an AI model to write from those passages; it says why when it can't answer, and caches answers so a repeated question costs nothing.</li>
+          <li><span class="tag ochem">Ochem</span>Every term's first appearance audited across all 62 sections; the textbook is searchable by its words, not just its section names; the periodic table is carried into the textbook.</li>
+          <li><span class="tag">Site</span>One design system instead of two drifting copies; a chime when an answer is right.</li>
+        </ul>
+
+        <p style="margin-top:26px">Earlier history is in the <a href="https://github.com/testaolivier10-del/testaolivier10-del.github.io/commits/main" rel="noopener">commit log</a>.</p>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="xsection">
+    <footer style="margin-top:0">
+      <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a></p>
+    </footer>
+  </div>
+</div>
+<script src="assets/account.js" defer></script>
+<script src="assets/hub-progress.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  if(window.HubProgress) window.HubProgress.mount('hub');
+  var THEME_KEY = 'nremt_theme';
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem(THEME_KEY, isDark ? 'light' : 'dark'); }catch(e){}
+  });
+});
+</script>
+</body>
+</html>

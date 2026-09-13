@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" href="assets/icon.svg">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NREMT-EMT Study Notes — Chapter by Chapter | LevlPrep</title>
 <meta name="description" content="Full narrative study notes for NREMT-EMT prep, organized by course chapter, growing over time.">
@@ -32,15 +32,14 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/theme.css">
 <!-- Shared across every subject on LevlPrep: one login, one level, one
-     streak. Loaded blocking and ahead of the page's own inline scripts
-     because those read window.HubProgress while the page parses. -->
-<script src="../assets/account.js"></script>
-<script src="../assets/hub-progress.js"></script>
-<script src="../assets/chime.js"></script>
-<script src="../assets/site-chrome.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order, and the
+     page's own inline script waits for DOMContentLoaded. -->
+<script src="../assets/account.js" defer></script>
+<script src="../assets/hub-progress.js" defer></script>
+<script src="../assets/chime.js" defer></script>
+<script src="../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
 <style>
   body{line-height:1.65;}
 
@@ -97,7 +96,7 @@
   .section-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
   .section-head h2{font:900 clamp(19px,2.4vw,23px) var(--font-ui);letter-spacing:-.01em;margin:0;}
 
-  /* ---- "Practise this" links out to the tools ---------------------------- */
+  /* ---- "Practice this" links out to the tools ---------------------------- */
   .chapter-tools{
     display:flex;flex-wrap:wrap;gap:8px;align-items:center;
     margin:18px 0 0;padding:12px 14px;border-radius:12px;
@@ -191,12 +190,16 @@
     </div>
     <footer>
       <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor &mdash; always verify specifics (exact figures, current protocols, local scope of practice) against authoritative sources.</p>
-      <p class="privacy-link"><a href="../privacy.html">Privacy</a></p>
+      <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
     </footer>
   </main>
 </div>
 
 <script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
 // Each chapter holds sections, each section holds topics (a heading + one or
 // more paragraphs) and an optional list of key-takeaway bullets shown at the
 // end of the section. Appending a new chapter/section/topic here is all that's
@@ -3838,7 +3841,7 @@ function toolsForChapter(ch){
   if (!hit) return '';
   return `
     <div class="chapter-tools">
-      <span class="chapter-tools__k">Practise this</span>
+      <span class="chapter-tools__k">Practice this</span>
       ${hit.tools.map(t => `<a href="${t.href}">${t.label} <small>${t.why}</small></a>`).join('')}
     </div>
   `;
@@ -4113,6 +4116,7 @@ window.addEventListener('afterprint', () => {
   if (!printedAll) return;
   printedAll = false;
   const i = currentIndex; currentIndex = -1; renderChapter(i);
+});
 });
 </script>
 <script src="assets/nav.js" defer></script>

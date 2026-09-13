@@ -6,7 +6,7 @@
 <link rel="apple-touch-icon" href="../../assets/icon.svg">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alkynes — Alkenes &amp; Alkynes | Organic Chemistry</title>
 <meta name="description" content="Learn alkyne structure and linear geometry, why terminal alkyne C-H bonds are unusually acidic, and how alkynes undergo addition and hydration reactions.">
@@ -22,18 +22,16 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../../assets/theme.css">
 <!-- Shared across every subject on LevlPrep: one login, one level, one
-     streak. Loaded blocking and ahead of this page's own scripts because
-     they read window.HubProgress as the page parses. -->
-<script src="../../assets/account.js"></script>
-<script src="../../assets/hub-progress.js"></script>
-<script src="../../assets/chime.js"></script>
-<script src="../../assets/site-chrome.js"></script>
-<script src="../assets/ochem-xp.js"></script>
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
 </head>
 <body>
 <div id="site-header"></div>
@@ -51,25 +49,29 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
-<script src="../assets/shuffle-options.js"></script>
-<script src="../assets/step-back.js"></script>
-<script src="../assets/curriculum.js"></script>
-<script src="../assets/concepts.js"></script>
-<script src="../assets/mastery-engine.js"></script>
-<script src="../assets/tools-registry.js"></script>
-<script src="../assets/tool-suggest.js"></script>
-<script src="../assets/lesson-concepts.js"></script>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
 <script>
   window.OCHEM_SECTION = 'learn';
   window.OCHEM_BASE = '../';
 </script>
-<script src="../assets/ochem-nav.js"></script>
-<script src="../assets/periodic-table.js"></script>
-<script src="../assets/molecules.js"></script>
-<script src="../assets/molecule-editor.js"></script>
-<script src="../assets/arrow-step.js"></script>
-<script src="../assets/lesson-engine.js"></script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/molecules.js" defer></script>
+<script src="../assets/molecule-editor.js" defer></script>
+<script src="../assets/arrow-step.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
 <script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
 (function(){
   window.OchemLessonEngine.start({
     topicId: 'alkynes',
@@ -199,6 +201,7 @@
     ]
   });
 })();
+});
 </script>
 </body>
 </html>

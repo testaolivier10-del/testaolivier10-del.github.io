@@ -6,7 +6,7 @@
 <link rel="apple-touch-icon" href="/assets/icon.svg">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Page not found — LevlPrep</title>
 <meta name="robots" content="noindex">
@@ -17,9 +17,7 @@
      an unbounded set of URLs, and pointing them all at one canonical would be
      a lie. -->
 <link rel="stylesheet" href="/assets/theme.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
 <style>
   .nf-path{
     font:600 13px var(--font-mono);
@@ -70,7 +68,7 @@
     </a>
     <a class="card nf-card" href="/ochem/">
       <h2>Organic Chemistry &rarr;</h2>
-      <p>Fifty-eight interactive lessons, mechanisms and reaction tools.</p>
+      <p>Sixty-two interactive topics, ten mechanisms and seven reaction tools.</p>
     </a>
     <a class="card nf-card" href="/nremt/search.html">
       <h2>Search NREMT &rarr;</h2>
@@ -80,6 +78,10 @@
 </main>
 
 <script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
   // Show the address that failed, so the visitor can see the typo rather than
   // guess at it. Escaped through textContent: the path is attacker-controlled
   // in the sense that anyone can craft a link to this site with markup in it.
@@ -108,6 +110,7 @@
     else{ document.documentElement.setAttribute('data-theme', 'dark'); }
     try{ localStorage.setItem(THEME_KEY, isDark ? 'light' : 'dark'); }catch(e){}
   });
+});
 </script>
 </body>
 </html>

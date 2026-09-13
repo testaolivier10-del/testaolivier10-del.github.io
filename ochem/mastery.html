@@ -6,7 +6,7 @@
 <link rel="apple-touch-icon" href="../assets/icon.svg">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mastery — Organic Chemistry</title>
 <meta name="description" content="Your Organic Chemistry mastery by module, based on performance across every question you've answered.">
@@ -22,18 +22,16 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/theme.css">
 <!-- Shared across every subject on LevlPrep: one login, one level, one
-     streak. Loaded blocking and ahead of this page's own scripts because
-     they read window.HubProgress as the page parses. -->
-<script src="../assets/account.js"></script>
-<script src="../assets/hub-progress.js"></script>
-<script src="../assets/chime.js"></script>
-<script src="../assets/site-chrome.js"></script>
-<script src="assets/ochem-xp.js"></script>
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../assets/account.js" defer></script>
+<script src="../assets/hub-progress.js" defer></script>
+<script src="../assets/chime.js" defer></script>
+<script src="../assets/site-chrome.js" defer></script>
+<script src="assets/ochem-xp.js" defer></script>
 <link rel="stylesheet" href="assets/ochem.css">
 <link rel="stylesheet" href="assets/periodic-table.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
 <style>
   .section-head{
     font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
@@ -88,6 +86,7 @@
   <div class="xsection mastery-grid" style="padding-top:0;">
     <div class="mastery-main">
       <div class="section-head" style="margin-top:0;">Where you actually stand</div>
+      <noscript><div class="site-nav-fallback"><p>Mastery is computed in your browser from every question you have answered, so this page has nothing to show without JavaScript. The course itself is in the <a href="learn.html">textbook</a> and the <a href="index.html">lessons</a>.</p></div></noscript>
       <div class="overall-card" id="overallCard"></div>
       <div id="masterySnapshot"></div>
       <div id="leechAlerts"></div>
@@ -122,17 +121,17 @@
   </div>
 </div>
 
-<script src="assets/curriculum.js"></script>
-<script src="assets/concepts.js"></script>
-<script src="assets/mastery-engine.js"></script>
+<script src="assets/curriculum.js" defer></script>
+<script src="assets/concepts.js" defer></script>
+<script src="assets/mastery-engine.js" defer></script>
 <script>
   window.OCHEM_SECTION = 'mastery';
   window.OCHEM_BASE = '';
 </script>
-<script src="assets/ochem-nav.js"></script>
-<script src="assets/periodic-table.js"></script>
-<script src="assets/game-panel.js"></script>
-<script src="assets/tools-registry.js"></script>
-<script src="assets/mastery-page.js"></script>
+<script src="assets/ochem-nav.js" defer></script>
+<script src="assets/periodic-table.js" defer></script>
+<script src="assets/game-panel.js" defer></script>
+<script src="assets/tools-registry.js" defer></script>
+<script src="assets/mastery-page.js" defer></script>
 </body>
 </html>

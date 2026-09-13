@@ -789,7 +789,7 @@
     '.lp-avatar{width:26px;height:26px;flex:none;}',
     '.lp-avatar svg{width:100%;height:100%;border-radius:8px;display:block;}',
     '@media(prefers-reduced-motion:reduce){.lp-bob,.lp-blip{animation:none;}.lp-launch{transition:none;}}',
-    '@media(max-width:640px){.lp-launch{right:14px;bottom:calc(84px + env(safe-area-inset-bottom));width:52px;height:52px;}.lp-tip{display:none;}}',
+    '@media(max-width:640px){.lp-launch{right:10px;bottom:calc(80px + env(safe-area-inset-bottom));width:46px;height:46px;}.lp-tip{display:none;}}',
     '.lp-panel{position:fixed;right:20px;bottom:20px;z-index:901;width:min(408px,calc(100vw - 32px));',
       'height:min(620px,calc(100vh - 40px));display:flex;flex-direction:column;background:var(--paper);',
       'border:var(--bw) solid var(--line);border-radius:20px;box-shadow:0 14px 40px rgba(0,0,0,.22);overflow:hidden;}',

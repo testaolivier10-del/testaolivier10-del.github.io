@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" href="assets/icon.svg">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LevlPrep — NREMT-EMT Practice Exam & Study Tools</title>
 <meta name="description" content="Free NREMT-EMT prep: a 2,084-question bank with 4 difficulty levels (including Expert), select-N and sequencing item types, timed 100-question exams, domain drills, flashcards, mnemonics, and a missed-question review queue.">
@@ -31,15 +31,14 @@
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="../assets/theme.css">
 <!-- Shared across every subject on LevlPrep: one login, one level, one
-     streak. Loaded blocking and ahead of the page's own inline scripts
-     because those read window.HubProgress while the page parses. -->
-<script src="../assets/account.js"></script>
-<script src="../assets/hub-progress.js"></script>
-<script src="../assets/chime.js"></script>
-<script src="../assets/site-chrome.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order, and the
+     page's own inline script waits for DOMContentLoaded. -->
+<script src="../assets/account.js" defer></script>
+<script src="../assets/hub-progress.js" defer></script>
+<script src="../assets/chime.js" defer></script>
+<script src="../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
 <style>
   /* Shown only when assets/questions-core.json can't be loaded — see the QUESTIONS
      loader at the end of this file. */
@@ -356,6 +355,17 @@
   .fc-front{font-size:18px;font-weight:800;line-height:1.5;}
   .fc-back .answer{font-size:17px;font-weight:900;color:var(--good-text);margin-bottom:12px;}
   .fc-back .explain{font-size:14.5px;font-weight:600;color:var(--muted);line-height:1.6;}
+  .results-top-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+  /* Printing the results screen: the score card and the review list, one
+     item per block, nothing that only works on screen. theme.css already
+     hides the chrome, every button and .print-btn. */
+  @media print{
+    #resultsScreen{display:block !important;}
+    #resultsScreen .filter-row,#resultsScreen .r-flag-btn,#resultsScreen .retry-btn{display:none !important;}
+    #resultsScreen .review-item{break-inside:avoid;page-break-inside:avoid;box-shadow:none !important;border-bottom:1px solid #ccc;}
+    #resultsScreen .score-card{box-shadow:none !important;border:1px solid #ccc;}
+    #resultsScreen::before{content:"LevlPrep practice result — " attr(data-printed);display:block;font:700 12px monospace;margin-bottom:12px;}
+  }
   .fc-hint{text-align:center;font:700 11.5px var(--font-mono);color:var(--muted);margin-top:16px;}
 
   /* ---- Results ---- */
@@ -612,7 +622,7 @@
       </div>
       <div class="q-head-row">
         <div class="q-domain" id="qDomain"></div>
-        <button type="button" class="flag-btn" id="flagBtn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M4 22V4a1 1 0 0 1 1-1h13.5a1 1 0 0 1 .9 1.5l-2.4 4.8a1 1 0 0 0 0 .9l2.4 4.8a1 1 0 0 1-.9 1.5H5"/></svg>Flag for review</button>
+        <button type="button" class="flag-btn" id="flagBtn"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M4 22V4a1 1 0 0 1 1-1h13.5a1 1 0 0 1 .9 1.5l-2.4 4.8a1 1 0 0 0 0 .9l2.4 4.8a1 1 0 0 1-.9 1.5H5"/></svg>Flag for review</button>
       </div>
       <div class="q-prompt" id="qPrompt"></div>
       <div class="options" id="qOptions"></div>
@@ -662,7 +672,7 @@
   </div>
 
   <div id="resultsScreen">
-    <div class="results-top-row"><button class="retry-btn" id="retryBtnTop">&larr; Back to Start</button></div>
+    <div class="results-top-row"><button class="retry-btn" id="retryBtnTop">&larr; Back to Start</button><button type="button" class="retry-btn print-btn" id="printResultBtn">Print or save as PDF</button></div>
     <div class="results-side">
       <div class="score-card">
         <div class="big" id="scoreBig">0/100</div>
@@ -689,11 +699,15 @@
       <summary>About these questions &amp; how this differs from the real exam</summary>
       <p>Original, unofficial practice questions written to the NREMT-EMT blueprint; not affiliated with the National Registry. The real exam is computer-adaptive (70–120 questions); this fixed 100-question format trains pacing, not the algorithm. Scores and history stay in your browser.</p>
     </details>
-    <p class="privacy-link"><a href="../privacy.html">Privacy</a></p>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
     </footer>
 </div>
 
 <script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
 // Everything below runs inside one async IIFE so the question bank can be
 // awaited before any of it executes — every function here assumes QUESTIONS is
 // already populated by the time it runs.
@@ -756,7 +770,18 @@ const QUESTIONS = await (async function(){
 //
 // A failure here is not fatal the way a failure above is: every mode still
 // runs, and the only thing missing is the "why" under an answer.
-const EXPLANATIONS_READY = (async function(){
+//
+// Started when a session starts, not when the page opens. This page is also
+// the hub for three modes, and most arrivals read it and pick one; fetching
+// 1.2 MB for every one of those visits paid for explanations nobody had
+// asked for yet. beginQuiz and the flashcard opener kick it off, so it lands
+// long before the first answer, and the two render sites that need it await
+// it. (sw.js still warms the file in the background after install, so a
+// repeat visit reads it from the cache either way.)
+let explanationsPromise = null;
+function loadExplanations(){
+  if(explanationsPromise) return explanationsPromise;
+  explanationsPromise = (async function(){
   if(!QUESTIONS.length) return;
   try{
     const res = await fetch('assets/explanations.json');
@@ -769,7 +794,9 @@ const EXPLANATIONS_READY = (async function(){
   }catch(e){
     /* leaves q.explain undefined; both render sites fall back to '' */
   }
-})();
+  })();
+  return explanationsPromise;
+}
 
 // The one place the pool size is shown as a live figure rather than prose, so
 // it can't drift from the file the way the marketing copy twice has.
@@ -845,7 +872,7 @@ const OPTION_ORDER_KEY = 'nremt_option_order';
   }
 })();
 
-const flagIcon = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M4 22V4a1 1 0 0 1 1-1h13.5a1 1 0 0 1 .9 1.5l-2.4 4.8a1 1 0 0 0 0 .9l2.4 4.8a1 1 0 0 1-.9 1.5H5"/></svg>';
+const flagIcon = '<svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M4 22V4a1 1 0 0 1 1-1h13.5a1 1 0 0 1 .9 1.5l-2.4 4.8a1 1 0 0 0 0 .9l2.4 4.8a1 1 0 0 1-.9 1.5H5"/></svg>';
 let mode = 'full'; // 'full', 'review', 'flagged', 'spaced', 'domain', 'adaptive', 'single', or 'flashcard'
 let selectedDomain = null;
 let activeIndices = []; // maps position-in-quiz -> index into QUESTIONS
@@ -1240,7 +1267,7 @@ function renderProgressChart(){
       ? pts.map((p,i) => (i===0?'M':'L') + p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ')
       : `M${pts[0][0]},${pts[0][1]} L${pts[0][0]+0.01},${pts[0][1]}`;
 
-    const svg = `<svg class="progress-chart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+    const svg = `<svg class="progress-chart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img" aria-label="Score trend across recent attempts">
       <path d="${line}" fill="none" stroke="#2C9C8B" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
       ${pts.map(p => `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="2" fill="#16332E"/>`).join('')}
     </svg>`;
@@ -1798,6 +1825,7 @@ document.getElementById('flashcardBtn').addEventListener('click', () => {
   fcIndices = shuffle(pool);
   fcCurrent = 0;
   fcFlipped = false;
+  loadExplanations();
   introScreen.style.display = 'none';
   document.getElementById('flashcardScreen').style.display = 'block';
   window.scrollTo(0, 0);
@@ -1812,7 +1840,7 @@ async function renderFlashcard(){
   // The back of the card is the explanation, so this is one of the two places
   // that has to have it. Awaited before anything is written, rather than
   // rendering the front and patching the back in later.
-  await EXPLANATIONS_READY;
+  await loadExplanations();
   const q = QUESTIONS[fcIndices[fcCurrent]];
   document.getElementById('fcProgressText').textContent = `Card ${fcCurrent+1} of ${fcIndices.length}`;
   document.getElementById('fcDomain').innerHTML = `${q.domain}<span class="diff-badge ${q.diff}">${q.diff}</span>`;
@@ -2025,6 +2053,7 @@ document.getElementById('adaptiveStartBtn').addEventListener('click', () => {
 });
 
 function beginQuiz(withTimer, resumeState){
+  loadExplanations();
   if(resumeState){
     mode = resumeState.mode;
     selectedDomain = resumeState.selectedDomain;
@@ -2436,7 +2465,7 @@ function showResults(){
 async function renderReview(filter){
   // The other one: every row in the results list carries the explanation for
   // the question above it.
-  await EXPLANATIONS_READY;
+  await loadExplanations();
   const reviewEl = document.getElementById('reviewList');
   let items = allReviewData;
   if(filter === 'incorrect') items = allReviewData.filter(d => !d.isCorrect && d.userAns !== null);
@@ -2482,9 +2511,14 @@ function backToStart(){
   refreshIntroState();
 }
 document.getElementById('retryBtn').addEventListener('click', backToStart);
+document.getElementById('printResultBtn').addEventListener('click', () => {
+  resultsScreen.setAttribute('data-printed', new Date().toLocaleString());
+  window.print();
+});
 document.getElementById('retryBtnTop').addEventListener('click', backToStart);
 
 })();
+});
 </script>
 <script src="assets/nav.js" defer></script>
 </body>

@@ -1,6 +1,6 @@
 // Offline support for LevlPrep. Precaches the core pages/assets so the
 // site works with no connection; everything else (the 3D body-map model,
-// the three.js vendor bundle, the ochem course, Google Fonts) is cached the
+// the three.js vendor bundle, the ochem course, the font files) is cached the
 // first time it's actually requested, so a first visit isn't stuck
 // downloading 15MB+ before it's usable.
 //
@@ -18,7 +18,14 @@
 // The cached copy is only served as a fallback when the network fails.
 // Bump CACHE_NAME whenever this file changes, so old cached entries are
 // dropped instead of lingering forever.
-const CACHE_NAME = 'levlprep-v26';
+//
+// Two caches, not one. Bumping CACHE_NAME used to delete everything, so a
+// one-line CSS change made every device re-download the 3.2 MB body-map
+// model, the 670 KB three.js bundle and the fonts. Those never change with
+// the shell (they are content-addressed by path, and a new model would be a
+// new file), so they live in STATIC_CACHE, which activate leaves alone.
+const CACHE_NAME = 'levlprep-v27';
+const STATIC_CACHE = 'levlprep-static';
 const PRECACHE_URLS = [
   'index.html',
   // Shown in place of an uncached page while offline. Precached rather than
@@ -26,6 +33,7 @@ const PRECACHE_URLS = [
   // moment nothing can be fetched.
   'offline.html',
   'assets/theme.css',
+  'assets/fonts/fonts.css',
   'assets/account.js',
   'assets/hub-progress.js',
   'assets/site-chrome.js',
@@ -46,6 +54,7 @@ const PRECACHE_URLS = [
   'nremt/sound-trainer.html',
   'nremt/study-notes.html',
   'nremt/study-plan.html',
+  'nremt/exam-day.html',
   'nremt/dashboard.html',
   'nremt/tools.html',
   'nremt/search.html',
@@ -91,7 +100,7 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
+      Promise.all(keys.filter(k => k !== CACHE_NAME && k !== STATIC_CACHE).map(k => caches.delete(k)))
     ).then(() => self.clients.claim())
   );
 });
@@ -140,16 +149,24 @@ self.addEventListener('fetch', event => {
 
   // Everything else (3D model, vendor JS, fonts, images): cache-first, since
   // these are large/static and don't need to be re-fetched on every visit.
+  // They go in STATIC_CACHE, which survives a CACHE_NAME bump.
+  //
+  // If the network fails for something not yet cached, fall back to a match
+  // that ignores the query string (a font or model fetched under a cache-
+  // busting suffix is still the same bytes) before giving up, so a partly
+  // warmed cache can still answer.
   event.respondWith(
     caches.match(event.request).then(cached => {
       if(cached) return cached;
       return fetch(event.request).then(response => {
         if(response && response.ok){
           const copy = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+          caches.open(STATIC_CACHE).then(cache => cache.put(event.request, copy));
         }
         return response;
-      });
+      }).catch(() =>
+        caches.match(event.request, { ignoreSearch: true }).then(fallback => fallback || Response.error())
+      );
     })
   );
 });

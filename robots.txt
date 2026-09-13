@@ -8,4 +8,8 @@ Allow: /
 # text with no way out. The lesson pages that use them are in the sitemap.
 Disallow: /ochem/notes/
 
+# The full question bank is the editable source the two runtime files are
+# generated from; nothing on the site fetches it, so there is nothing to index.
+Disallow: /nremt/assets/questions.json
+
 Sitemap: https://testaolivier10-del.github.io/sitemap.xml
