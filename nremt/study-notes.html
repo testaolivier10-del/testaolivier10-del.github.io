@@ -100,6 +100,9 @@
   .book-contents__topics{margin:4px 0 0 44px;font:600 12.5px/1.55 var(--font-ui);color:var(--muted);}
   .book-contents__topics a{color:inherit;text-decoration:none;}
   .book-contents__topics a:hover{color:var(--accent);}
+  .book-contents__flat li{padding:5px 0;border-top:0;}
+  .book-contents__flat a.book-contents__sec{font-weight:700;font-size:14px;}
+  .book-contents__flat a.book-contents__sec b{min-width:18px;}
 
   /* Chapter meta row: length on the left, print on the right. */
   .tb-chapter-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--line);}
@@ -4054,7 +4057,7 @@ const CHAPTER_QUESTIONS = {
   11: { domain:'Assessment', topic:'Scene Size-Up & Safety' },
   12: { domain:'Assessment', topic:'Primary Assessment' },
   13: { match:/pulse ox|SpO2|blood pressure|systolic|diastolic|vital sign|pulse rate|respiratory rate|blood glucose|glucometer|capnograph|pupil/i },
-  14: { domain:'Assessment', topic:'Secondary Assessment & History', match:/SAMPLE|OPQRST|history|chief complaint|palpat|auscultat|inspect|open-ended|closed-ended|critical thinking|differential/i },
+  14: { domain:'Assessment', topic:'Secondary Assessment & History', match:/SAMPLE|OPQRST|history|chief complaint|open-ended|closed-ended|critical thinking|differential|body system|heuristic|anchoring/i },
   15: { domain:'Assessment', topic:'Secondary Assessment & History', match:/rapid trauma|head-to-toe|detailed|DCAP|secondary assessment|cervical collar|unresponsive|responsive medical|trauma patient|focused/i },
   16: { match:/reassess|trending|every 5 minutes|every 15 minutes|ongoing assessment|repeat.*vital/i },
   17: { topic:'Documentation & Handoff' },
@@ -4285,10 +4288,14 @@ function chapterOpenerHtml(ch, forPrint){
       ${ch.intro ? `<p class="book-intro">${esc(ch.intro)}</p>` : ''}
       <nav class="book-contents" aria-label="In this chapter">
         <p class="book-k">In this chapter</p>
-        <ol>${ch.sections.map((s, si) => `<li>
+        ${ch.sections.length === 1
+          /* One section: its heading is the next thing on the page, so the
+             box lists the topics themselves rather than repeating it. */
+          ? `<ol class="book-contents__flat">${ch.sections[0].topics.map((t, ti) => `<li><a class="book-contents__sec" href="#${topicId(ch.sections[0], ti)}"><b>${ti + 1}</b><span>${t.heading}</span></a></li>`).join('')}</ol>`
+          : `<ol>${ch.sections.map((s, si) => `<li>
           <a class="book-contents__sec" href="#${s.id}"><b>${sectionNumber(ch, si)}</b><span>${esc(s.title)}</span></a>
           <p class="book-contents__topics">${s.topics.map((t, ti) => `<a href="#${topicId(s, ti)}">${t.heading}</a>`).join(' · ')}</p>
-        </li>`).join('')}</ol>
+        </li>`).join('')}</ol>`}
       </nav>
       <div class="tb-chapter-meta">
         <span>${meta}</span>
