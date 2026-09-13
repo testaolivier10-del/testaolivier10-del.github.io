@@ -8,13 +8,24 @@ Source for [LevlPrep](https://testaolivier10-del.github.io/), home to two course
 
 ## Stack
 
-Plain HTML/CSS/vanilla JS — no framework, no bundler, no build step. Hosted on GitHub Pages. A service worker at the site root (`sw.js`) gives the app offline support (PWA, installable via `nremt/manifest.json`). It sits at the root rather than under `nremt/` so its scope covers the shared `/assets/` modules every subject loads.
+Plain HTML/CSS/vanilla JS — no framework, no bundler, no build step. Hosted on GitHub Pages. Every external script on every page is `defer`red so a page paints before its JavaScript arrives; deferred scripts still run in document order, so the shared modules in `<head>` run ahead of a page's own, and a page's inline bootstrap waits for `DOMContentLoaded`. The two typefaces are served from `assets/fonts/`, not a third party. A service worker at the site root (`sw.js`) gives the app offline support (PWA, installable via `nremt/manifest.json`). It sits at the root rather than under `nremt/` so its scope covers the shared `/assets/` modules every subject loads.
 
 ## Structure
 
 ```
-index.html            LevlPrep landing page (lists available courses)
+index.html            LevlPrep landing page (lists available courses, and says who
+                         makes this and how the questions are written)
+sources.html          Who makes this, what the material is written against, how
+                         the bank is checked, how to report a mistake
+changelog.html        What's new, dated, newest first. Content edits are listed
+                         alongside site changes
+privacy.html          The privacy policy, and the two controls that go with it
 assets/                Shared across every course
+  fonts/               Nunito and IBM Plex Mono, self-hosted (Latin + Latin
+                         Extended). These came from Google Fonts through a
+                         render-blocking stylesheet on every page, which cost a
+                         third-party round trip before first paint and a blank
+                         page wherever that host is blocked
   theme.css            The one design system, loaded by every page on the site
                          (light/dark, "Clay" visual style: soft shadows, no outlines, a
                          course-tinted panel opening every page). There is deliberately
@@ -48,6 +59,8 @@ nremt/                 The NREMT-EMT Prep course
   practice.html        Question bank UI (fetches assets/questions.json at runtime)
   dashboard.html        XP, streaks, domain accuracy, readiness score
   study-plan.html       Auto-generated study checklist
+  exam-day.html         How the real exam works: adaptive format, the clock, cost,
+                          eligibility, retake rules, what to bring
   study-notes.html, glossary.html, mnemonics.html, flowcharts.html,
   skillsheets.html       Reference content
   body-map.html          Interactive 3D anatomy (three.js + a compressed .glb model)
@@ -55,7 +68,9 @@ nremt/                 The NREMT-EMT Prep course
   scenario-sim.html       Branching clinical scenarios
   search.html             Client-side search across notes + the question bank
   assets/
-    questions.json        The 2,084-question bank (fetched by practice.html and search.html)
+    questions.json        The 2,084-question bank: the file you edit. Nothing fetches
+                            it; questions-core.json and explanations.json are
+                            generated from it (scripts/build-question-bank.mjs)
     nav.js                 This course's tab list and sync namespace; hands the header
                              itself to /assets/site-chrome.js. Also the NREMT-flavored
                              shim over the site-wide level/streak engine in
@@ -350,6 +365,8 @@ then open `http://localhost:8000/`.
 4. Every URL in `sitemap.xml` maps to a real file — **and** every real page is in `sitemap.xml`. Fifty Ochem lesson pages once shipped with no path in from a search engine because the sitemap was hand-maintained; run `node scripts/build-sitemap.mjs` to regenerate it after adding a page.
 5. The question bank carries no answer tell: no keyed option position holds more than 40% of items, no select-N key set dominates, and the "longest option is the answer" rate stays under its ceiling. The ceiling is a ratchet — lower it as the bank improves, never raise it.
 6. Every advertised question count in markup, meta tags and this README matches the bank. The homepage went on advertising a figure from an early build long after the bank had more than doubled.
+7. Every advertised Ochem count matches `curriculum.js`: a digit count of "topics" is the number of topics with an href, "lessons" the number under `lessons/`, "mechanisms" the number of pages under `ochem/mechanisms/`. The course was "58 lessons", "62 topics" and "Fifty-eight interactive lessons" on three pages at once.
+8. The static tool tiles written into `ochem/tools.html` (so a crawler or a reader with scripts off still gets the list) are byte-identical to what `tools-page.js` renders from `tools-registry.js`.
 
 ### Generated files
 

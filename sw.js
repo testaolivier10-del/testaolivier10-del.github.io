@@ -54,6 +54,7 @@ const PRECACHE_URLS = [
   'nremt/sound-trainer.html',
   'nremt/study-notes.html',
   'nremt/study-plan.html',
+  'nremt/exam-day.html',
   'nremt/dashboard.html',
   'nremt/tools.html',
   'nremt/search.html',

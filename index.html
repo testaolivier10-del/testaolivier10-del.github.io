@@ -103,12 +103,13 @@
   .hub-fill{height:100%;background:var(--on-accent);border-radius:var(--radius-pill);}
   .hub-split{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-top:14px;border-top:2px solid rgba(255,255,255,0.15);}
   .hub-split span{font:900 11.5px var(--font-ui);padding:5px 11px;border-radius:var(--radius-pill);background:rgba(244,210,140,0.16);color:#F4D28C;}
-
-  .roadmap-row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line-soft);}
-  .roadmap-row:last-child{border-bottom:0;}
-  .roadmap-name{font-size:17px;font-weight:900;margin:0;}
-  .roadmap-desc{font-size:14px;font-weight:600;color:var(--muted);margin-top:3px;text-wrap:pretty;}
-  .roadmap-status{
+  /* The three trust cards under the subjects: who makes this, how the
+     questions are written, how to report one. */
+  .about-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+  .about-card{background:var(--tint-accent);border-radius:var(--radius);padding:18px 20px;}
+  .about-card .k{font:800 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+  .about-card p{margin:0;font-size:14px;font-weight:600;color:var(--muted);line-height:1.6;text-wrap:pretty;}
+  .about-card a{color:var(--ink);}
     font:900 11px var(--font-ui);letter-spacing:0.05em;text-transform:uppercase;
     color:var(--amber);background:var(--tint-amber);border-radius:var(--radius-pill);
     padding:5px 12px;white-space:nowrap;flex-shrink:0;
@@ -133,12 +134,12 @@
 
   <div class="hero">
     <div class="eyebrow">LevlPrep</div>
-    <h1>Free practice tools for certification exams.</h1>
-    <p class="lede">Question banks, interactive practice and courses that teach reasoning. No account, no paywall.</p>
+    <h1>Free question banks and interactive courses for hard subjects.</h1>
+    <p class="lede">An NREMT-EMT exam bank with explanations on every question, and an Organic Chemistry course where you perform the mechanisms yourself. No account, no ads, no paywall.</p>
     <div class="fact-row">
-      <span><span class="dot"></span>2,084 practice questions</span>
-      <span><span class="dot"></span>No account required</span>
-      <span><span class="dot"></span>Optional sign-in syncs progress across devices</span>
+      <span><span class="dot"></span>2,084 exam questions</span>
+      <span><span class="dot"></span>62 chemistry topics and 7 tools</span>
+      <span><span class="dot"></span>Works offline, no account required</span>
     </div>
   </div>
 
@@ -174,10 +175,10 @@
           </div>
           <div>
             <p class="featured-name">Organic Chemistry</p>
-            <p class="featured-desc">58 lessons and 10 mechanisms you perform yourself, plus seven tools that compute their answers.</p>
+            <p class="featured-desc">62 topics and 10 mechanisms you perform yourself, plus seven tools that compute their answers.</p>
           </div>
           <div class="featured-tags">
-            <span>58 lessons</span>
+            <span>62 topics</span>
             <span>10 mechanisms</span>
             <span>7 tools</span>
             <span>Mastery tracking</span>
@@ -190,9 +191,30 @@
   </div>
 
   <div class="xsection">
+    <div class="xgrid">
+      <div class="xlabel">About</div>
+      <div class="xcontent">
+        <div class="about-row">
+          <div class="about-card">
+            <div class="k">Who makes this</div>
+            <p>An independent project: not a company, not a training program, and not affiliated with or endorsed by the National Registry of Emergency Medical Technicians or any university. Free, with no ads and nothing for sale.</p>
+          </div>
+          <div class="about-card">
+            <div class="k">How the questions are written</div>
+            <p>Every question is original, written to the NREMT-EMT content outline and current national guidelines, with an explanation on each one. Automated checks keep the answer key free of position and length tells. <a href="sources.html">Sources and checks</a>.</p>
+          </div>
+          <div class="about-card">
+            <div class="k">Found a mistake?</div>
+            <p>Every review screen has a report link, and <a href="mailto:testaolivier10@gmail.com">email</a> works for anything else. Changes are listed on <a href="changelog.html">What&rsquo;s new</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="xsection">
     <footer style="margin-top:0">
       <p>Progress is stored on your device. Sign in to sync it across devices.</p>
-      <p class="privacy-link"><a href="privacy.html">Privacy</a></p>
+      <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
     </footer>
   </div>
 

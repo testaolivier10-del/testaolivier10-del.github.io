@@ -263,6 +263,61 @@ if (existsSync(sitemapForCoverage)) {
   }
 }
 
+// ---- 8. Every advertised Ochem count matches the curriculum ----
+// The course was "58 lessons" on the hub, "62 topics" on its own home page
+// and "Fifty-eight interactive lessons" on the 404 page at the same time.
+// All three were true of something, which is how they drifted unnoticed.
+// curriculum.js is the single source of truth: a topic with an href exists,
+// a lesson is one whose href is under lessons/, and a mechanism is a page
+// under ochem/mechanisms/. Any digit count of "topics", "lessons" or
+// "mechanisms" on a page has to match, the way the question count does.
+const curriculumPath = join(ROOT, 'ochem', 'assets', 'curriculum.js');
+if (existsSync(curriculumPath)) {
+  const src = readFileSync(curriculumPath, 'utf8');
+  const hrefs = [...src.matchAll(/href:\s*'([^']+)'/g)].map(m => m[1]);
+  const topics = hrefs.length;
+  const lessons = hrefs.filter(h => h.startsWith('lessons/')).length;
+  const mechanismsDir = join(ROOT, 'ochem', 'mechanisms');
+  const mechanisms = existsSync(mechanismsDir) ? readdirSync(mechanismsDir).filter(f => f.endsWith('.html')).length : 0;
+  const expected = { topics, lessons, mechanisms };
+  const OCHEM_COUNT_RE = /\b(\d{1,3})\s+(?:interactive\s+|chemistry\s+)?(topics|lessons|mechanisms)\b/g;
+  for (const file of htmlFiles) {
+    const rel = relative(ROOT, file).split(sep).join('/');
+    if (rel.startsWith('ochem/notes/')) continue;
+    const body = readFileSync(file, 'utf8');
+    for (const m of body.matchAll(OCHEM_COUNT_RE)) {
+      const n = Number(m[1]);
+      // Small figures are structure, not catalogue claims: "the two topics
+      // below", "three mechanisms in this module".
+      if (n < 20) continue;
+      if (n !== expected[m[2]]) {
+        fail(`${rel}: advertises "${m[1]} ${m[2]}" but curriculum.js has ${expected[m[2]]}.`);
+      }
+    }
+  }
+}
+
+// ---- 9. The static tool tiles on ochem/tools.html match the registry ----
+// tools.html carries the seven tiles as markup so a crawler or a reader
+// with scripts off still gets the list; tools-page.js re-renders the same
+// markup from tools-registry.js on load. If a tool is added to the registry
+// and not the page, the two versions of the page disagree.
+const registryPath = join(ROOT, 'ochem', 'assets', 'tools-registry.js');
+const toolsPagePath = join(ROOT, 'ochem', 'tools.html');
+if (existsSync(registryPath) && existsSync(toolsPagePath)) {
+  const w = {};
+  new Function('window', readFileSync(registryPath, 'utf8'))(w);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const wanted = w.OchemTools.ALL.map(t =>
+    `<a class="tool-tile" href="tools/${esc(t.slug)}.html"><span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true">${t.icon}</svg></span><span class="tool-tile__name">${esc(t.name)}</span><span class="tool-tile__tag">${esc(t.tagline)}</span><span class="tool-tile__blurb">${esc(t.blurb)}</span><span class="tool-tile__foot"><span>${esc(t.teaches)}</span><span class="tool-tile__go">Open &rarr;</span></span></a>`
+  );
+  const page = readFileSync(toolsPagePath, 'utf8');
+  const have = [...page.matchAll(/<a class="tool-tile"[\s\S]*?<\/a>/g)].map(m => m[0]);
+  if (have.length !== wanted.length || have.some((h, i) => h !== wanted[i])) {
+    fail(`ochem/tools.html: the static tool tiles differ from tools-registry.js (${have.length} on the page, ${wanted.length} in the registry). Regenerate them from the registry.`);
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);
