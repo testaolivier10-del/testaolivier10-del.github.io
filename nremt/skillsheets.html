@@ -58,6 +58,84 @@
   .general-tips{background:var(--white);border:2px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--lift);padding:22px;margin-bottom:20px;}
   .general-tips ul{margin:0;padding-left:20px;font-size:14.5px;font-weight:700;}
   .general-tips li{margin-bottom:8px;}
+
+  /* ---- Run a station ----------------------------------------------------- */
+
+  .mode-switch{display:inline-flex;border:2px solid var(--line);border-radius:22px;overflow:hidden;background:var(--white);margin-bottom:22px;}
+  .mode-switch button{font:700 13px inherit;padding:9px 18px;border:0;background:transparent;color:var(--muted);cursor:pointer;}
+  .mode-switch button.on{background:var(--navy);color:var(--on-accent);}
+
+  .run-card{
+    background:var(--white);border:2px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--lift);padding:20px;max-width:660px;
+  }
+  .run-intro{font-size:14px;color:var(--muted);line-height:1.6;margin:0 0 16px;text-wrap:pretty;}
+  .run-pick{display:flex;flex-direction:column;gap:8px;}
+  .run-station{
+    display:flex;justify-content:space-between;align-items:baseline;gap:12px;text-align:left;
+    font:inherit;padding:12px 14px;border:2px solid var(--line);border-radius:8px;
+    background:var(--white);color:var(--ink);cursor:pointer;
+  }
+  .run-station:hover{border-color:var(--accent);}
+  .run-station .n{font-size:14.5px;font-weight:700;text-wrap:pretty;}
+  .run-station .t{font:600 11.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
+
+  .run-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:16px;flex-wrap:wrap;}
+  .run-name{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:5px;text-wrap:pretty;}
+  .run-target{font:600 12px inherit;color:var(--muted);}
+  .run-target input{
+    width:56px;font:600 12px inherit;padding:3px 6px;margin:0 3px;
+    border:2px solid var(--line);border-radius:6px;background:var(--white);color:var(--ink);
+  }
+  /* The default is repeated hearsay, and a student preparing for an exam is
+     owed the difference between that and a fact. */
+  .run-hearsay{font-size:11px;color:var(--muted);margin-top:5px;max-width:42ch;line-height:1.5;}
+  .run-clock{font:700 30px var(--font-mono);color:var(--ink);font-variant-numeric:tabular-nums;}
+  .run-clock.over{color:var(--bad-text);}
+
+  .run-steps{list-style:none;margin:0 0 14px;padding:0;}
+  .run-step{
+    display:flex;align-items:flex-start;gap:10px;padding:11px 12px;margin-bottom:7px;
+    border:2px solid var(--line);border-radius:8px;background:var(--paper);
+  }
+  .run-step label{display:flex;align-items:flex-start;gap:10px;flex:1;cursor:pointer;}
+  .run-step input{margin-top:2px;width:17px;height:17px;accent-color:var(--accent);flex:none;}
+  .run-step__text{font-size:14px;line-height:1.55;color:var(--ink);text-wrap:pretty;}
+  .run-step.is-done{background:var(--tint-good);border-color:var(--good-text);}
+  .run-step.is-done .run-step__text{opacity:.72;}
+  /* Critical items carry a word as well as a colour — the distinction they
+     mark is the one you cannot afford to miss at a glance. */
+  .run-step.is-critical{border-color:var(--warn);background:var(--tint-warn);}
+  .run-step.is-critical.is-done{border-color:var(--good-text);background:var(--tint-good);}
+  .run-flag{
+    font:700 10px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
+    color:var(--bad-text);white-space:nowrap;margin-top:3px;
+  }
+
+  .run-note{font-size:12.5px;color:var(--muted);line-height:1.6;margin:10px 0 0;max-width:62ch;text-wrap:pretty;}
+  .run-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
+  .drill-next{font:700 13px inherit;padding:10px 20px;border:0;border-radius:20px;background:var(--navy);color:var(--on-accent);cursor:pointer;}
+  .run-quit{font:700 13px inherit;padding:10px 20px;border:2px solid var(--line);border-radius:20px;background:var(--white);color:var(--ink);cursor:pointer;}
+
+  .run-result{margin:14px 0;}
+  .run-result__row{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line-soft);font-size:14px;}
+  .run-result__row .k{font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);min-width:118px;}
+  .run-result__row .v{font-weight:700;color:var(--ink);}
+  .run-result__row .v.over{color:var(--bad-text);}
+
+  .run-flagbox{border:2px solid var(--bad-text);background:var(--tint-bad);border-radius:8px;padding:13px 15px;margin:14px 0;font-size:13.5px;}
+  .run-flagbox ul{margin:8px 0 0;padding-left:20px;}
+  .run-flagbox li{margin-bottom:8px;line-height:1.55;text-wrap:pretty;}
+  .run-flagbox small{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-top:3px;line-height:1.5;}
+  .run-okbox{border:2px solid var(--good-text);background:var(--tint-good);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.5px;font-weight:700;color:var(--good-text);}
+
+  /* ---- Print ------------------------------------------------------------- */
+  @media print{
+    .mode-switch,#stationRun,.site-nav-fallback,#site-header,.privacy-link{display:none !important;}
+    .skill-card,.general-tips{break-inside:avoid;page-break-inside:avoid;box-shadow:none;border-color:#999;}
+    h2,h3{break-after:avoid;page-break-after:avoid;}
+    .wrap{max-width:none;padding:0;}
+  }
 </style>
 </head>
 <body>
@@ -112,6 +190,17 @@
 
   <h2>The 8 skill stations</h2>
 
+  <!-- The page states three things — examiners score what you say, critical
+       criteria fail a station on their own, and the clock is enforced — and
+       gave no way to meet any of them. The run reads these same cards. -->
+  <div class="mode-switch" id="stationMode" role="group" aria-label="How to use this page">
+    <button type="button" data-mode="read" class="on" aria-pressed="true">Read the stations</button>
+    <button type="button" data-mode="run" aria-pressed="false">Run one, out loud</button>
+  </div>
+
+  <div id="stationRun" hidden></div>
+
+  <div id="stationCards">
   <div class="skill-card">
     <h3>Patient Assessment — Trauma</h3>
     <div class="structure">Scene size-up → primary survey/resuscitation → history taking → secondary assessment (typically organized head-to-toe by body region) → reassessment.</div>
@@ -173,11 +262,14 @@
     <p style="font-size:14.5px;margin:0 0 10px;">The official NREMT psychomotor skill sheets are published at <a href="https://www.nremt.org" style="color:var(--ink);">nremt.org</a> (search their site for the current EMT psychomotor exam skill sheets, typically hosted under content.nremt.org). Your program's portal or printed materials are the other essential source — when the two differ, ask your instructor which one you're actually tested on.</p>
   </div>
 
+  </div><!-- /stationCards -->
+
   <footer>
     <p>This page reflects general structural patterns across NREMT-EMT psychomotor stations and is not a substitute for your program's official skill sheets. Exact step order, wording, and critical-fail criteria should always be verified against your specific program's materials before your skills exam.</p>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a></p>
     </footer>
 </div>
 <script src="assets/nav.js" defer></script>
+<script src="assets/station-run.js" defer></script>
 </body>
 </html>

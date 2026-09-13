@@ -59,6 +59,75 @@
     .flow-branch{flex-direction:column;gap:6px;}
   }
   .branch-label{font:700 11px var(--font-mono);color:var(--muted);text-align:center;margin-bottom:3px;}
+
+  /* ---- Drill mode ------------------------------------------------------- */
+
+  .mode-switch{display:inline-flex;border:2px solid var(--line);border-radius:22px;overflow:hidden;background:var(--white);margin-bottom:22px;}
+  .mode-switch button{
+    font:700 13px inherit;padding:9px 18px;border:0;background:transparent;color:var(--muted);cursor:pointer;
+  }
+  .mode-switch button.on{background:var(--navy);color:var(--on-accent);}
+
+  .drill-card{
+    background:var(--white);border:2px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--lift);padding:20px;max-width:640px;
+  }
+  .drill-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px;}
+  .drill-proto{font:700 11px var(--font-mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+  .drill-tally{font:700 12px var(--font-mono);color:var(--muted);}
+
+  .drill-context{margin-bottom:16px;}
+  .drill-step{
+    border:2px solid var(--line);border-radius:8px;padding:10px 13px;font-size:14px;
+    background:var(--paper);color:var(--ink);text-wrap:pretty;
+  }
+  .drill-arrow{text-align:center;color:var(--muted);font-size:15px;line-height:1.5;}
+  .drill-branchlabel{
+    text-align:center;font:700 11px var(--font-mono);text-transform:uppercase;
+    letter-spacing:.05em;color:var(--accent);margin-bottom:4px;
+  }
+  /* The gap in the sequence, which is the whole question. Dashed rather than
+     solid so it reads as an absence rather than as another step. */
+  .drill-step--blank{
+    border-style:dashed;border-color:var(--accent);color:var(--accent);
+    text-align:center;font-weight:700;font-size:18px;background:var(--tint-accent);
+  }
+  .drill-step--filled{border-color:var(--good-text);background:var(--tint-good);}
+
+  .drill-lead{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:10px;}
+  .drill-opts{display:flex;flex-direction:column;gap:8px;}
+  .drill-opt{
+    text-align:left;font:600 13.5px inherit;padding:11px 14px;border:2px solid var(--line);
+    border-radius:8px;background:var(--white);color:var(--ink);cursor:pointer;text-wrap:pretty;
+  }
+  .drill-opt:hover:not(:disabled){border-color:var(--accent);}
+  .drill-opt:disabled{cursor:default;}
+  /* Marked with a glyph as well as a colour, so the result does not depend on
+     telling green from red. */
+  .drill-opt.is-right{border-color:var(--good-text);background:var(--tint-good);}
+  .drill-opt.is-right::after{content:" ✓";font-weight:800;color:var(--good-text);}
+  .drill-opt.is-wrong{border-color:var(--bad-text);background:var(--tint-bad);}
+  .drill-opt.is-wrong::after{content:" ✕";font-weight:800;color:var(--bad-text);}
+
+  .drill-after{margin-top:14px;}
+  .drill-verdict{font-size:13.5px;font-weight:700;line-height:1.6;margin-bottom:12px;text-wrap:pretty;}
+  .drill-verdict.ok{color:var(--good-text);}
+  .drill-verdict.no{color:var(--bad-text);}
+  .drill-next{
+    font:700 13px inherit;padding:9px 20px;border:0;border-radius:20px;
+    background:var(--navy);color:var(--on-accent);cursor:pointer;
+  }
+
+  /* ---- Print ------------------------------------------------------------
+     These are reference sheets people want next to them while they revise,
+     and a diagram that breaks across a page is worse than useless. */
+  @media print{
+    .mode-switch,#flowDrill,.site-nav-fallback,#site-header,.privacy-link{display:none !important;}
+    .diagram-card{break-inside:avoid;page-break-inside:avoid;box-shadow:none;border-color:#999;}
+    .flow-box{break-inside:avoid;page-break-inside:avoid;}
+    h2{break-after:avoid;page-break-after:avoid;}
+    .wrap{max-width:none;padding:0;}
+  }
 </style>
 </head>
 <body>
@@ -73,6 +142,17 @@
     <b>These show general, widely-taught sequences — not a scored skill sheet.</b> Specific protocols can vary by local medical direction. Verify anything protocol-specific against your own course materials.
   </div>
 
+  <!-- Reading a sequence and being able to produce it are different skills, and
+       only the first one was on offer here. The drill reads these same diagrams
+       out of the DOM rather than keeping a second copy of them. -->
+  <div class="mode-switch" id="flowMode" role="group" aria-label="How to use this page">
+    <button type="button" data-mode="read" class="on" aria-pressed="true">Read the diagrams</button>
+    <button type="button" data-mode="drill" aria-pressed="false">Drill me on them</button>
+  </div>
+
+  <div id="flowDrill" hidden></div>
+
+  <div id="flowDiagrams">
   <h2>Primary Assessment Sequence</h2>
   <div class="diagram-card">
     <div class="flow-box action">Scene size-up: BSI, scene safety, MOI/NOI, number of patients</div>
@@ -341,11 +421,14 @@
     <div class="flow-box">Poor perfusion or can't follow commands &rarr; Immediate. Otherwise &rarr; Delayed.</div>
   </div>
 
+  </div><!-- /flowDiagrams -->
+
   <footer>
     <p>These diagrams summarize widely-taught, general EMS decision sequences for study purposes. They are simplified for visual review and are not a substitute for your course's specific protocols, skill sheets, or local medical direction.</p>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a></p>
     </footer>
 </div>
 <script src="assets/nav.js" defer></script>
+<script src="assets/flow-drill.js" defer></script>
 </body>
 </html>
