@@ -234,9 +234,9 @@ p{text-wrap:pretty;}
 .lede{color:var(--muted);font-size:16.5px;font-weight:700;max-width:52ch;margin:0 0 26px;}
 strong,b{font-weight:900;}
 
-/* The narrow single-column measure still used by the interactive tool pages
-   (body map, sound trainer, scenario sim) and the long-form notes. */
-.wrap{max-width:760px;margin:0 auto;padding:36px 22px 90px;}
+/* Every page is the width of the header. .wrap is the older shell name used
+   by the NREMT tool pages; it now measures the same as .xshell. */
+.wrap{max-width:1180px;margin:0 auto;padding:36px clamp(18px,3.5vw,48px) 90px;}
 
 /* ==========================================================================
    3. Primitives
@@ -393,7 +393,8 @@ strong,b{font-weight:900;}
    gave mixed pages two competing column widths and two left edges, so the eye
    had to re-anchor on every scroll. */
 .xgrid:has(> .xlabel) > .xcontent.narrow{max-width:none;}
-.xshell.narrow{max-width:880px;}
+/* .xshell.narrow used to be 880px; every shell is one width now. */
+.xshell.narrow{max-width:1180px;}
 
 /* Tool tiles on the Tools page: the whole card is the link. */
 .tool-card{

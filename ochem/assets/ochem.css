@@ -46,7 +46,7 @@
    block inline before this file existed; lessons authored after it just
    link ochem.css instead of repeating it.
    ========================================================================== */
-.lesson-shell{max-width:760px;margin:0 auto;}
+.lesson-shell{max-width:1180px;margin:0 auto;}
 .progress-bar{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
 .progress-bar .track{flex:1;height:10px;border-radius:999px;background:var(--track);overflow:hidden;}
 .progress-bar .fill{height:100%;background:var(--accent);border-radius:999px;transition:width .25s ease;}
