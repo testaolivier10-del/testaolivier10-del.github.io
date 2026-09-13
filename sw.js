@@ -18,9 +18,13 @@
 // The cached copy is only served as a fallback when the network fails.
 // Bump CACHE_NAME whenever this file changes, so old cached entries are
 // dropped instead of lingering forever.
-const CACHE_NAME = 'levlprep-v14';
+const CACHE_NAME = 'levlprep-v16';
 const PRECACHE_URLS = [
   'index.html',
+  // Shown in place of an uncached page while offline. Precached rather than
+  // cached on demand for the obvious reason: it is only ever needed at the
+  // moment nothing can be fetched.
+  'offline.html',
   'assets/theme.css',
   'assets/account.js',
   'assets/hub-progress.js',
@@ -49,13 +53,17 @@ const PRECACHE_URLS = [
   'nremt/assets/icon.svg',
 ];
 
-// The question bank is 2.3 MB — an order of magnitude more than everything
-// above put together — so it is NOT in PRECACHE_URLS: blocking install on it
-// would stall the first visit on a slow connection. It is still essential
-// offline (practice.html and search.html are both useless without it), so it
-// is warmed separately, after install has already resolved.
+// The question bank is 2.3 MB across its two files — an order of magnitude
+// more than everything above put together — so it is NOT in PRECACHE_URLS:
+// blocking install on it would stall the first visit on a slow connection. It
+// is still essential offline (practice.html and search.html are both useless
+// without it), so it is warmed separately, after install has already resolved.
+//
+// Core first. If the connection dies partway through warming these, the half
+// that makes practice work at all is the half already in the cache.
 const DEFERRED_URLS = [
-  'nremt/assets/questions.json',
+  'nremt/assets/questions-core.json',
+  'nremt/assets/explanations.json',
 ];
 
 self.addEventListener('install', event => {
@@ -99,13 +107,23 @@ self.addEventListener('fetch', event => {
         caches.match(event.request).then(cached => {
           if(cached) return cached;
           if(event.request.mode !== 'navigate') return undefined;
-          // Fall back to the home page of whichever product was requested,
-          // then to the hub, rather than always dumping an ochem visitor on
-          // the NREMT app.
-          const home = url.pathname.startsWith('/nremt/') ? '/nremt/index.html'
-                     : url.pathname.startsWith('/ochem/') ? '/ochem/index.html'
-                     : '/index.html';
-          return caches.match(home).then(page => page || caches.match('/index.html'));
+          // This used to quietly serve the home page instead. It worked, in
+          // that something rendered — but from the visitor's side they tapped
+          // "Practice", landed on a home page, and were given no reason. The
+          // failure was invisible, so it read as the app being broken.
+          //
+          // offline.html says what happened, keeps the address bar pointed at
+          // the page they asked for so a reload retries it, and lists what is
+          // actually cached on this device. The old behavior stays as the
+          // fallback's fallback, for a device whose cache predates this
+          // worker and has no copy of offline.html in it.
+          return caches.match('/offline.html').then(page => {
+            if(page) return page;
+            const home = url.pathname.startsWith('/nremt/') ? '/nremt/index.html'
+                       : url.pathname.startsWith('/ochem/') ? '/ochem/index.html'
+                       : '/index.html';
+            return caches.match(home).then(p => p || caches.match('/index.html'));
+          });
         })
       )
     );

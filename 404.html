@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found — LevlPrep</title>
+<meta name="robots" content="noindex">
+<!-- GitHub Pages serves this file for any URL it cannot resolve, at that URL.
+     So every path in here is absolute: a relative one would resolve against
+     whatever folder the visitor mistyped, and the page would arrive unstyled.
+     No canonical and no Open Graph either — this is one file standing in for
+     an unbounded set of URLs, and pointing them all at one canonical would be
+     a lie. -->
+<link rel="stylesheet" href="/assets/theme.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+  .nf-path{
+    font:600 13px var(--font-mono);
+    color:var(--muted);
+    background:var(--track);
+    border:var(--bw) solid var(--line);
+    border-radius:8px;
+    padding:8px 12px;
+    display:inline-block;
+    max-width:100%;
+    overflow-wrap:anywhere;
+    margin:0 0 26px;
+  }
+  .nf-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:0 0 40px;}
+  .nf-card{display:block;text-decoration:none;color:inherit;}
+  .nf-card h2{font-size:17px;margin:0 0 6px;}
+  .nf-card p{margin:0;color:var(--muted);font-size:14px;font-weight:700;}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/">
+      <span class="brand-mark" aria-hidden="true">+</span> LevlPrep
+    </a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+
+<main id="main" class="xshell" data-skip-target tabindex="-1">
+  <div class="hero">
+    <div class="eyebrow">404</div>
+    <h1>That page isn&rsquo;t here.</h1>
+    <p class="lede">The link may be out of date, or the address may have a typo in it. Nothing is broken on your end.</p>
+    <p class="nf-path" id="nfPath" hidden></p>
+    <div class="hero-ctas">
+      <a class="btn-press" href="/">Go to LevlPrep</a>
+      <button type="button" class="link-underline" id="nfBack" hidden>Back to the last page</button>
+    </div>
+  </div>
+
+  <h2 class="section-head">Or pick up where you meant to go</h2>
+  <div class="nf-grid">
+    <a class="card nf-card" href="/nremt/">
+      <h2>NREMT-EMT Prep &rarr;</h2>
+      <p>Practice exams, study notes, scenarios and the 3D body map.</p>
+    </a>
+    <a class="card nf-card" href="/ochem/">
+      <h2>Organic Chemistry &rarr;</h2>
+      <p>Fifty-eight interactive lessons, mechanisms and reaction tools.</p>
+    </a>
+    <a class="card nf-card" href="/nremt/search.html">
+      <h2>Search NREMT &rarr;</h2>
+      <p>Find a question, term or protocol by keyword.</p>
+    </a>
+  </div>
+</main>
+
+<script>
+  // Show the address that failed, so the visitor can see the typo rather than
+  // guess at it. Escaped through textContent: the path is attacker-controlled
+  // in the sense that anyone can craft a link to this site with markup in it.
+  (function(){
+    var el = document.getElementById('nfPath');
+    var path = location.pathname + location.search;
+    if(el && path && path !== '/'){
+      el.textContent = path;
+      el.hidden = false;
+    }
+    // Going back lands nowhere when this page is the first entry in the
+    // session — someone following a dead link from outside the site. So the
+    // offer ships hidden and is only revealed when there is somewhere to go.
+    var back = document.getElementById('nfBack');
+    if(back && history.length > 1){
+      back.hidden = false;
+      back.addEventListener('click', function(){ history.back(); });
+    }
+  })();
+
+  var THEME_KEY = 'nremt_theme';
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem(THEME_KEY, isDark ? 'light' : 'dark'); }catch(e){}
+  });
+</script>
+</body>
+</html>
