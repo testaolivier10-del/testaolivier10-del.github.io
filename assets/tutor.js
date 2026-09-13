@@ -322,7 +322,7 @@
   // Key names that read as a title vs. the body of a passage. Anything else
   // (ids, css classes, config) is ignored.
   var KEY_HEADING = /^(title|heading|term|name|label|question|prompt|mnemonic|step)$/i;
-  var KEY_BODY = /^(def|definition|html|text|body|desc|description|content|detail|details|answer|explanation|rationale|feedback|note|notes|summary|tip|meaning|usedFor|used_for|stands_for|standsFor)$/i;
+  var KEY_BODY = /^(def|definition|html|text|body|desc|description|content|detail|details|answer|explanation|rationale|feedback|note|notes|summary|intro|tip|meaning|usedFor|used_for|stands_for|standsFor)$/i;
   var LITERAL_RE = /(?:"([A-Za-z_$][\w$]*)"|'([A-Za-z_$][\w$]*)'|([A-Za-z_$][\w$]*))\s*:\s*(`(?:[^`\\]|\\[\s\S])*`|"(?:[^"\\\n]|\\[\s\S])*"|'(?:[^'\\\n]|\\[\s\S])*')/g;
 
   function unquote(lit){

@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NREMT-EMT Study Notes — Chapter by Chapter | LevlPrep</title>
-<meta name="description" content="Full narrative study notes for NREMT-EMT prep, organized by course chapter, growing over time.">
+<meta name="description" content="A forty-chapter NREMT-EMT textbook: chapter openers, numbered sections, key terms, review questions from the bank, and the whole book printable.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -22,7 +22,7 @@
 </script>
 <link rel="canonical" href="https://testaolivier10-del.github.io/nremt/study-notes.html">
 <meta property="og:title" content="NREMT-EMT Study Notes — Chapter by Chapter | LevlPrep">
-<meta property="og:description" content="Full narrative study notes for NREMT-EMT prep, organized by course chapter, growing over time.">
+<meta property="og:description" content="A forty-chapter NREMT-EMT textbook: chapter openers, numbered sections, key terms, review questions from the bank, and the whole book printable.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://testaolivier10-del.github.io/nremt/study-notes.html">
 <meta property="og:site_name" content="LevlPrep">
@@ -41,10 +41,68 @@
 <script src="../assets/site-chrome.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <style>
+  /* The reading face. The site's interface is Nunito throughout, and Nunito
+     is served at 600 and up. A textbook page is read for an hour at a time,
+     and a bold sans at that length tires the eye, so this page sets its prose
+     (and only its prose: headings, tables, labels and buttons stay in the
+     site's face) in a serif at regular weight. System faces only, so there is
+     no file to download and nothing to block first paint. */
+  .tb-main{--book-serif:'Charter','Bitstream Charter','Iowan Old Style','Palatino Linotype','Book Antiqua',Georgia,'Times New Roman',serif;}
   body{line-height:1.65;}
 
-  /* Chapter meta row: section count on the left, print on the right. */
-  .tb-chapter-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  /* Running head: the chapter on the left, the section you are in on the
+     right, pinned under the site header the way a book prints them at the top
+     of every page. */
+  .book-running{
+    position:sticky;top:var(--site-header-h,112px);z-index:5;
+    display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+    margin:0 0 6px;padding:9px 0 8px;background:var(--paper);
+    border-bottom:1px solid var(--line);
+    font:800 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+  }
+  .book-running span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .book-running span:last-child{text-align:right;color:var(--ink);}
+  .book-running span:last-child:empty{display:none;}
+  .book-running:not(.on){visibility:hidden;}
+
+  /* ---- chapter opener ---------------------------------------------------- */
+  .book-opener{border-bottom:0;padding-bottom:0;margin-bottom:0;}
+  .book-opener__row{display:flex;align-items:flex-start;gap:16px;margin:4px 0 16px;}
+  .book-num{
+    flex-shrink:0;font:900 clamp(58px,9vw,88px)/.86 var(--font-ui);
+    letter-spacing:-.05em;color:var(--accent);
+  }
+  .book-opener .tb-chapter-title{margin:4px 0 0;}
+  .book-intro{
+    font:400 clamp(17px,2vw,19px)/1.65 var(--book-serif);color:var(--ink);margin:0 0 22px;
+    text-wrap:pretty;
+  }
+  .book-intro::first-letter{
+    float:left;font:900 3.55em/.78 var(--font-ui);color:var(--accent);margin:7px 9px 0 0;
+  }
+  .book-contents{
+    background:var(--white);border-radius:14px;box-shadow:var(--lift-sm);
+    padding:16px 20px 12px;margin:0 0 18px;
+  }
+  .book-k{
+    font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
+    color:var(--accent);margin:0 0 8px;
+  }
+  .book-contents ol{list-style:none;margin:0;padding:0;}
+  .book-contents li{padding:8px 0;border-top:1px solid var(--line);}
+  .book-contents li:first-child{border-top:0;padding-top:0;}
+  .book-contents a.book-contents__sec{
+    display:flex;gap:10px;align-items:baseline;text-decoration:none;
+    font:800 14.5px var(--font-ui);color:var(--ink);
+  }
+  .book-contents a.book-contents__sec:hover{color:var(--accent);}
+  .book-contents a.book-contents__sec b{font:700 12px var(--font-mono);color:var(--accent);min-width:34px;flex-shrink:0;}
+  .book-contents__topics{margin:4px 0 0 44px;font:600 12.5px/1.55 var(--font-ui);color:var(--muted);}
+  .book-contents__topics a{color:inherit;text-decoration:none;}
+  .book-contents__topics a:hover{color:var(--accent);}
+
+  /* Chapter meta row: length on the left, print on the right. */
+  .tb-chapter-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--line);}
   .print-btn{
     display:inline-flex;align-items:center;gap:6px;cursor:pointer;
     border:2px solid var(--line);background:var(--white);color:var(--muted);
@@ -89,17 +147,126 @@
     .tb-hit{animation:none;background:var(--tint-accent);box-shadow:0 0 0 8px var(--tint-accent);}
   }
 
-  /* One chapter's body. */
-  .section{padding:30px 0 10px;border-bottom:var(--bw) solid var(--line);scroll-margin-top:calc(var(--site-header-h,112px) + 14px);}
+  /* ---- a numbered section --------------------------------------------- */
+  .section{padding:34px 0 14px;border-bottom:1px solid var(--line);scroll-margin-top:calc(var(--site-header-h,112px) + 48px);}
   .section:last-of-type{border-bottom:0;}
-  .section-intro{margin-bottom:16px;}
-  .section-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
-  .section-head h2{font:900 clamp(19px,2.4vw,23px) var(--font-ui);letter-spacing:-.01em;margin:0;}
+  .section-intro{margin-bottom:18px;}
+  .section-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
+  .section-num{font:700 14px var(--font-mono);color:var(--accent);letter-spacing:.02em;}
+  .section-head h2{font:900 clamp(21px,2.6vw,25px) var(--font-ui);letter-spacing:-.015em;margin:0;}
+  .domain-tag{
+    font:900 10.5px var(--font-ui);color:var(--accent);
+    background:var(--tint-accent);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;
+  }
+  .section-note{font:400 14px/1.55 var(--book-serif);font-style:italic;color:var(--muted);margin:0;}
 
-  /* ---- "Practice this" links out to the tools ---------------------------- */
+  /* ---- the prose ------------------------------------------------------- */
+  .topic{margin-bottom:26px;scroll-margin-top:calc(var(--site-header-h,112px) + 48px);}
+  .topic:last-of-type{margin-bottom:0;}
+  .topic h3{font:800 16.5px/1.35 var(--font-ui);letter-spacing:-.01em;margin:0 0 8px;color:var(--ink);}
+  .topic p{font:400 16.5px/1.72 var(--book-serif);color:var(--ink);margin:0 0 12px;}
+  /* Consecutive paragraphs indent instead of gapping, the way set type does. */
+  .topic p:not(.sub) + p:not(.sub){text-indent:1.6em;margin-top:-6px;}
+  .topic p:last-child{margin-bottom:0;}
+  .topic ul, .topic ol{font:400 15.5px/1.62 var(--book-serif);color:var(--ink);margin:0 0 12px;padding-left:22px;}
+  .topic ul:last-child, .topic ol:last-child{margin-bottom:0;}
+  .topic li{margin-bottom:6px;}
+  .topic li:last-child{margin-bottom:0;}
+  .topic li > ul, .topic li > ol{margin-top:5px;margin-bottom:0;}
+  .topic strong{font-weight:700;color:var(--ink);}
+  /* A side remark, set as a margin note: smaller, italic, ruled off. */
+  .topic .sub{
+    font:400 14px/1.55 var(--book-serif);font-style:italic;color:var(--muted);
+    margin:-2px 0 12px;padding-left:12px;border-left:2px solid var(--line);
+  }
+  .topic .sub:last-child{margin-bottom:0;}
+
+  /* Tables are numbered per chapter and captioned with the heading they sit
+     under. Numbering is done after render, so the notes data stays unnumbered
+     and a table added or removed renumbers the rest. */
+  .tb-caption{font:700 12.5px/1.4 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .tb-caption b{
+    font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink);margin-right:7px;
+  }
+  .table-wrap{overflow-x:auto;margin:0 0 14px;border-radius:10px;box-shadow:var(--lift-sm);}
+  /* Browsers don't offer a break opportunity at "/", so a run like
+     chemical/biological/radiological/explosive stays one 42-character word and
+     overflows its list item — which scrolled the whole page sideways on a phone. */
+  .topic li,.topic p,.topic td,.topic th{overflow-wrap:anywhere;}
+  .topic table{width:100%;border-collapse:collapse;font:600 13px/1.5 var(--font-ui);background:var(--white);}
+  .topic table:last-child{margin-bottom:0;}
+  .topic th, .topic td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  .topic th{background:var(--hover-tint);color:var(--ink);font-weight:600;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
+  .topic tr:last-child td{border-bottom:none;}
+
+  .takeaways{
+    background:var(--white);border-left:3px solid var(--accent);
+    border-radius:12px;box-shadow:var(--lift-sm);padding:16px 18px;margin-top:22px;
+  }
+  .takeaways .tk-title{
+    font-family:var(--font-mono);font-size:11px;color:var(--accent);
+    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;
+  }
+  .takeaways ul{margin:0;padding-left:18px;font:400 14.5px/1.6 var(--book-serif);color:var(--ink);}
+  .takeaways li{margin-bottom:6px;}
+  .takeaways li:last-child{margin-bottom:0;}
+
+  /* ---- end matter: key terms, review questions, the tools --------------- */
+  .book-end{margin-top:36px;padding-top:24px;border-top:2px solid var(--line);}
+  .book-end__title{
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+    font:900 19px var(--font-ui);letter-spacing:-.01em;color:var(--ink);margin:0 0 10px;
+  }
+  .book-end__title small{font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);}
+  .book-end__lede{font:400 15px/1.6 var(--book-serif);color:var(--muted);margin:0 0 14px;}
+  .book-end > section + section{margin-top:30px;}
+
+  .book-terms dl{margin:0;}
+  .book-terms dl > div{padding:9px 0;border-top:1px solid var(--line);}
+  .book-terms dl > div:first-child{border-top:0;padding-top:0;}
+  .book-terms dt{font:800 14.5px var(--font-ui);color:var(--ink);}
+  .book-terms dt a{color:inherit;text-decoration:none;}
+  .book-terms dt a:hover{color:var(--accent);}
+  .book-terms dd{margin:2px 0 0;font:400 14.5px/1.55 var(--book-serif);color:var(--muted);}
+  .book-terms__all{font:700 12.5px var(--font-ui);margin:12px 0 0;}
+
+  .book-btn{
+    display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:0;
+    background:var(--accent);color:var(--on-accent-fill);padding:9px 16px;
+    border-radius:var(--radius-pill);font:800 13px var(--font-ui);box-shadow:var(--btn-shadow-accent);
+  }
+  .book-btn:hover{background:var(--accent-press);}
+  .book-btn.quiet{background:var(--white);color:var(--ink);box-shadow:var(--lift-sm);}
+  .book-btn.quiet:hover{color:var(--accent);}
+  .book-btn[disabled]{opacity:.6;cursor:progress;}
+  .book-review__status{font:700 13px var(--font-ui);color:var(--muted);margin:10px 0 0;}
+  .book-q{background:var(--white);border-radius:14px;box-shadow:var(--lift-sm);padding:16px 18px;margin:0 0 12px;}
+  .book-q__n{font:700 11px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px;}
+  .book-q__stem{font:400 16px/1.6 var(--book-serif);color:var(--ink);margin:0 0 12px;}
+  .book-q__opts{display:grid;gap:6px;margin:0;padding:0;list-style:none;}
+  .book-q__opt{
+    display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;cursor:pointer;
+    background:var(--paper);border:2px solid transparent;border-radius:10px;padding:9px 12px;
+    font:600 14px/1.5 var(--font-ui);color:var(--ink);
+  }
+  .book-q__opt:hover{border-color:var(--line);}
+  .book-q__opt b{font:700 11.5px var(--font-mono);color:var(--muted);flex-shrink:0;padding-top:2px;}
+  .book-q.answered .book-q__opt{cursor:default;}
+  .book-q.answered .book-q__opt:hover{border-color:transparent;}
+  .book-q__opt.correct{border-color:var(--good);background:var(--tint-good);}
+  .book-q__opt.wrong{border-color:var(--bad);background:var(--tint-bad);}
+  .book-q__why{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font:400 14.5px/1.6 var(--book-serif);color:var(--ink);}
+  .book-q__why b{font:800 13px var(--font-ui);display:block;margin-bottom:3px;}
+  .book-q__why b.good{color:var(--good-text);}
+  .book-q__why b.bad{color:var(--bad-text);}
+  .book-review__foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px;font:700 13.5px var(--font-ui);color:var(--muted);}
+  .book-review__foot .score{color:var(--ink);margin-right:auto;}
+  .book-review__foot a{color:var(--accent);text-decoration:none;font-weight:800;}
+
   .chapter-tools{
     display:flex;flex-wrap:wrap;gap:8px;align-items:center;
-    margin:18px 0 0;padding:12px 14px;border-radius:12px;
+    margin:0;padding:12px 14px;border-radius:12px;
     background:var(--tint-accent);
   }
   .chapter-tools__k{
@@ -114,57 +281,32 @@
   .chapter-tools a:hover{color:var(--accent);}
   .chapter-tools a small{font-weight:600;font-size:11.5px;color:var(--muted);}
 
-  .domain-tag{
-    font:900 10.5px var(--font-ui);color:var(--accent);
-    background:var(--tint-accent);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;
-  }
-  .section-note{font-size:12.5px;font-weight:600;color:var(--muted);font-style:italic;margin:0;}
-
-  .topic{margin-bottom:22px;}
-  .topic:last-of-type{margin-bottom:0;}
-  .topic h3{font-size:16px;font-weight:800;margin:0 0 8px;color:var(--ink);}
-  .topic p{font-size:15px;margin:0 0 10px;}
-  .topic p:last-child{margin-bottom:0;}
-  .topic ul, .topic ol{font-size:14.5px;margin:0 0 10px;padding-left:20px;}
-  .topic ul:last-child, .topic ol:last-child{margin-bottom:0;}
-  .topic li{margin-bottom:5px;}
-  .topic li:last-child{margin-bottom:0;}
-  .topic li > ul, .topic li > ol{margin-top:5px;margin-bottom:0;}
-  .topic strong{color:var(--ink);}
-  .table-wrap{overflow-x:auto;margin:0 0 10px;border-radius:10px;box-shadow:var(--lift-sm);}
-  /* Browsers don't offer a break opportunity at "/", so a run like
-     chemical/biological/radiological/explosive stays one 42-character word and
-     overflows its list item — which scrolled the whole page sideways on a phone. */
-  .topic li,.topic p,.topic td,.topic th{overflow-wrap:anywhere;}
-  .topic table{width:100%;border-collapse:collapse;font-size:13px;background:var(--white);}
-  .topic table:last-child{margin-bottom:0;}
-  .topic th, .topic td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
-  .topic th{background:var(--hover-tint);color:var(--ink);font-weight:600;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
-  .topic tr:last-child td{border-bottom:none;}
-  .topic .sub{font-size:11px;color:var(--muted);font-style:italic;margin:-2px 0 8px;}
-
-  .takeaways{
-    background:var(--white);border-left:3px solid var(--accent);
-    border-radius:12px;box-shadow:var(--lift-sm);padding:16px 18px;margin-top:20px;
-  }
-  .takeaways .tk-title{
-    font-family:var(--font-mono);font-size:11px;color:var(--accent);
-    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;
-  }
-  .takeaways ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--ink);}
-  .takeaways li{margin-bottom:6px;}
-  .takeaways li:last-child{margin-bottom:0;}
-
   .tb-main footer{margin-top:44px;font-size:12px;color:var(--muted);max-width:60ch;}
 
-  /* Printing lays every chapter out in order; the script swaps the one-chapter
-     view for the whole book while the dialog is open. */
+  /* The rail: sections carry their number. */
+  .tb-toc-secnum{flex-shrink:0;font:700 10.5px var(--font-mono);color:var(--accent);min-width:30px;}
+
+  /* Printing lays the whole book out in order — a cover, the contents, then
+     every chapter on a fresh page; the script swaps the one-chapter view for
+     the book while the dialog is open. */
+  .print-cover,.print-toc{display:none;}
   @media print{
     .tb-shell{display:block;}
-    .tb-rail,.tb-toc-btn,.tb-chapter-nav,.tb-results,.chapter-tools{display:none !important;}
-    .tb-main{max-width:none;}
+    .tb-rail,.tb-toc-btn,.tb-chapter-nav,.tb-results,.book-running,.book-review,.chapter-tools,.print-btn{display:none !important;}
+    .tb-main{max-width:none;padding-top:0;}
+    .print-cover{display:block;break-after:page;padding-top:34vh;text-align:center;}
+    .print-cover .print-cover__k{font:800 12px var(--font-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;}
+    .print-cover h1{font:900 44px/1.05 var(--font-ui);letter-spacing:-.02em;margin:0 0 12px;}
+    .print-cover p{font:400 16px/1.5 var(--book-serif);color:var(--muted);margin:0;}
+    .print-toc{display:block;break-after:page;}
+    .print-toc h2{font:900 26px var(--font-ui);margin:0 0 14px;}
+    .print-toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:36px;font:600 13px/1.7 var(--font-ui);}
+    .print-toc li{break-inside:avoid;display:flex;gap:10px;}
+    .print-toc li b{font:700 12px var(--font-mono);color:var(--accent);min-width:22px;}
     .print-chapter{break-before:page;}
-    .print-chapter:first-child{break-before:auto;}
+    .book-num{font-size:64px;}
+    .book-q,.tb-caption,.takeaways,.book-contents{break-inside:avoid;}
+    .topic{break-inside:auto;}
   }
 </style>
 </head>
@@ -209,6 +351,7 @@ const CHAPTERS = [
   {
     num: 1,
     title: "Introduction to EMS",
+    intro: "Emergency medical services grew out of battlefield transport, and for most of its history the ambulance was a vehicle rather than a place where care began. This chapter follows that shift into the modern system: how a 911 call moves from dispatcher to responder to emergency department, what the four provider levels are trained to do, and what the profession expects of an EMT in fitness, judgment and conduct. It closes with the machinery that keeps the system honest: continuing education, the National Registry, medical direction and quality improvement.",
     sections: [
       {
         title: "History — How It Began",
@@ -391,6 +534,7 @@ const CHAPTERS = [
   {
     num: 2,
     title: "Well-Being of the EMT",
+    intro: "An EMT who is exhausted, exposed or hurt cannot take care of anyone else, so this chapter is about protecting the provider first. It covers standard precautions and the personal protective equipment that stands between you and infectious disease, the way stress accumulates over a career and how to manage it, what patients and families go through around death, and how to read a scene for violence, hazardous materials and rescue situations before stepping into it.",
     sections: [
       {
         title: "Well-Being & Standard Precautions",
@@ -549,6 +693,7 @@ const CHAPTERS = [
   {
     num: 3,
     title: "Lifting and Moving Patients",
+    intro: "More EMTs are hurt lifting and moving patients than in any other part of the job, and those injuries are almost always preventable. This chapter sets out the body mechanics that keep a lift safe, the devices that carry a patient and what each is suited to, the difference between an emergency move and one that can wait, and the positions a patient should ride in for different conditions.",
     sections: [
       {
         title: "Patient Lifting & Moving",
@@ -646,6 +791,7 @@ const CHAPTERS = [
   {
     num: 4,
     title: "Medical, Legal, and Ethical Issues",
+    intro: "Every call carries legal weight: the patient's right to consent or refuse, the EMT's duty to act, the limits of scope of practice and the standard of care you will be measured against. This chapter works through consent and refusal, advance directives such as DNR orders and POLST forms, a framework for ethical dilemmas, and the legal concepts of negligence, abandonment, confidentiality and Good Samaritan protection.",
     sections: [
       {
         title: "Scope, Consent & Refusal",
@@ -781,6 +927,7 @@ const CHAPTERS = [
   {
     num: 5,
     title: "Medical Terminology",
+    intro: "Medical terms look forbidding until you see that they are assembled from a small set of roots, prefixes and suffixes, and that the directional vocabulary is a handful of paired opposites. This chapter shows how the words are built, lists the pieces worth memorizing, and establishes the anatomical position, body planes and reference lines that every later description of a patient depends on.",
     sections: [
       {
         title: "Word Building & Anatomical Terms",
@@ -873,6 +1020,7 @@ const CHAPTERS = [
   {
     num: 6,
     title: "Anatomy and Physiology",
+    intro: "Assessment is only as good as your picture of what lies beneath the skin. This chapter surveys the body systems an EMT works with most: the musculoskeletal system that shapes and moves the body, the respiratory system that moves air, the cardiovascular system that moves blood, and the nervous, lymphatic and other systems that regulate the rest.",
     sections: [
       {
         title: "Musculoskeletal, Respiratory & Cardiovascular Systems",
@@ -954,6 +1102,7 @@ const CHAPTERS = [
   {
     num: 7,
     title: "Principles of Pathophysiology",
+    intro: "Pathophysiology is the study of what goes wrong when the body's compensating mechanisms fail. This chapter starts at the cell and its need for oxygen and glucose, builds up through the cardiopulmonary system and the volumes and pressures that keep it working, and arrives at shock, the common endpoint of many emergencies, where the supply of oxygenated blood no longer meets demand.",
     sections: [
       {
         title: "Cellular Metabolism, the Cardiopulmonary System & Shock",
@@ -1072,6 +1221,7 @@ const CHAPTERS = [
   {
     num: 8,
     title: "Life Span Development",
+    intro: "A newborn, a school-age child and an eighty-year-old are physiologically different patients, and their normal vital signs, airway anatomy and psychological needs change with age. This chapter walks through each stage of life, from infancy through late adulthood, and draws out what each means for assessment and care in the field.",
     sections: [
       {
         title: "Development Across Age Groups",
@@ -1148,6 +1298,7 @@ const CHAPTERS = [
   {
     num: 9,
     title: "Airway Management",
+    intro: "No intervention matters if air cannot reach the lungs, which is why the airway comes first in every assessment. This chapter traces the path a breath follows from the nose and mouth to the lungs, explains why one small structure, the epiglottis, accounts for so much airway trouble and why a patient who cannot protect their own airway is treated before almost anything else, and covers positioning during suctioning when spinal precautions pull the other way.",
     sections: [
       {
         title: "Airway Anatomy & Suctioning",
@@ -1189,6 +1340,7 @@ const CHAPTERS = [
   {
     num: 10,
     title: "Ventilation & Oxygen Equipment",
+    intro: "Oxygen is a drug, delivered by equipment that has to match the patient's need and be handled with respect for the pressure it holds. This chapter covers fitting the delivery device to the patient, with the Venturi mask and the COPD patient as the case that proves more oxygen is not always better, and then the regulators, flowmeters, pin-index system and fire hazards that make oxygen equipment safe or dangerous.",
     sections: [
       {
         title: "Oxygen Delivery & Equipment Safety",
@@ -1222,6 +1374,7 @@ const CHAPTERS = [
   {
     num: 11,
     title: "Scene Size-Up",
+    intro: "Scene size-up begins before the ambulance stops and never really ends. This chapter lays out its four components, the danger-zone distances to keep at a collision, the standard precautions to take before patient contact, how the mechanism of injury or the nature of the illness predicts what you will find, and how to decide early whether the patients on scene exceed the resources you have.",
     sections: [
       {
         title: "Scene Safety, Nature of the Call & Resources",
@@ -1299,6 +1452,7 @@ const CHAPTERS = [
   {
     num: 12,
     title: "Primary Assessment",
+    intro: "The primary assessment exists to find and fix whatever will kill the patient in the next few minutes. This chapter sets out its six parts in order: forming a general impression, judging mental status on the AVPU scale, checking airway, breathing and circulation, and deciding transport priority. Everything else in patient assessment waits until this is done.",
     sections: [
       {
         title: "General Impression, Mental Status & ABCs",
@@ -1383,6 +1537,7 @@ const CHAPTERS = [
   {
     num: 13,
     title: "Vital Signs and Monitoring Devices",
+    intro: "Vital signs turn an impression into numbers you can trend over time. This chapter covers the core set of pulse, respirations, skin, pupils and blood pressure, the methods for measuring blood pressure and what a palpable pulse implies about it, and the monitoring devices, pulse oximetry and blood glucose, that add information but never replace what you see in the patient.",
     sections: [
       {
         title: "Pulse, BP, Pulse Oximetry & Glucose",
@@ -1418,6 +1573,7 @@ const CHAPTERS = [
   {
     num: 14,
     title: "Principles of Assessment",
+    intro: "History taking and the physical examination are skills with a structure, and the structure is what keeps you from missing things. This chapter presents the OPQRST and SAMPLE frameworks, the three examination techniques of observing, auscultating and palpating, how to choose a body-system exam from the chief complaint, and the mental shortcuts that speed clinical decisions and the ways they mislead.",
     sections: [
       {
         title: "History Taking & the Physical Exam",
@@ -1507,6 +1663,7 @@ const CHAPTERS = [
   {
     num: 15,
     title: "Secondary Assessment",
+    intro: "Once the primary assessment has found no immediate threat to life, the secondary assessment looks for everything else. Its three components are the same for every patient, but their order changes with the situation. This chapter separates the responsive medical patient from the unresponsive one and the minor trauma patient from the seriously injured, then covers the rapid trauma assessment, the detailed exam and cervical collars.",
     sections: [
       {
         title: "Medical vs. Trauma Patients & Cervical Collars",
@@ -1578,6 +1735,7 @@ const CHAPTERS = [
   {
     num: 16,
     title: "Reassessment",
+    intro: "A patient's condition is a moving target, and reassessment is how you keep watching it. This chapter covers the four components to repeat, how often to repeat them for stable and unstable patients, and how trending vital signs over time reveals a change that any single set would hide.",
     sections: [
       {
         title: "Trending, Intervals & FIRR",
@@ -1623,6 +1781,7 @@ const CHAPTERS = [
   {
     num: 17,
     title: "Communication and Documentation",
+    intro: "What you say on the radio and write in the report follows the patient into the hospital and, sometimes, into court. This chapter covers radio systems and the discipline of a clear medical report, the rules for talking to medical direction, therapeutic communication with patients, and the prehospital care report: what it is for, how to write the narrative, and the legal traps in documentation.",
     sections: [
       {
         title: "Radio Communication",
@@ -1739,6 +1898,7 @@ const CHAPTERS = [
   {
     num: 18,
     title: "General Pharmacology",
+    intro: "An EMT carries a small number of medications and helps patients take a few more, and every one of them has indications, contraindications and a way of going wrong. This chapter goes through each medication and how it works, the Five Rights that guard administration, the routes by which a drug enters the body, and the categories of medication you will find in a patient's home.",
     sections: [
       {
         title: "Medications an EMT Carries or Assists With",
@@ -1855,6 +2015,7 @@ const CHAPTERS = [
   {
     num: 19,
     title: "Respiratory Emergencies",
+    intro: "The first question with any patient who is short of breath is whether their breathing is adequate, because the answer decides whether they need oxygen or need you to breathe for them. This chapter reviews the physiology, the signs that separate adequate from inadequate breathing, assessment and lung sounds, CPAP, the specific conditions from asthma to pulmonary embolism, and the inhalers and nebulizers patients carry.",
     sections: [
       {
         title: "Adequate vs. Inadequate Breathing",
@@ -1975,6 +2136,7 @@ const CHAPTERS = [
   {
     num: 20,
     title: "Cardiac Emergencies",
+    intro: "The heart has almost no oxygen reserve, so a blocked coronary artery starts injuring muscle within minutes. This chapter covers acute coronary syndrome, its signs and its management with aspirin, nitroglycerin and the 12-lead ECG, then the conditions behind it: coronary artery disease and angina, acute myocardial infarction, heart failure with pulmonary edema, and aneurysm.",
     sections: [
       {
         title: "Acute Coronary Syndrome",
@@ -2071,6 +2233,7 @@ const CHAPTERS = [
   {
     num: 21,
     title: "Resuscitation",
+    intro: "Cardiac arrest is the emergency the EMT owns, because high-quality CPR and early defibrillation do more for survival than anything that happens later. This chapter presents the chain of survival, the difference between a mechanical and an electrical cause of arrest, recognition, the four steps of a coordinated resuscitation from first compressions through return of spontaneous circulation, and the special cases of hypothermia, submersion, implanted devices and infants.",
     sections: [
       {
         title: "Cardiac Arrest Pathophysiology & the Chain of Survival",
@@ -2218,6 +2381,7 @@ const CHAPTERS = [
   {
     num: 22,
     title: "Diabetic Emergencies and Altered Mental Status",
+    intro: "Altered mental status has many causes, and diabetes is one of the few an EMT can reverse on scene. This chapter covers the core approach to any patient who is not thinking clearly, the physiology of diabetes and the contrast between hypoglycemia and hyperglycemia, blood glucose measurement and oral glucose, and then the other great causes of altered mentation: seizures, stroke and syncope.",
     sections: [
       {
         title: "Altered Mental Status & Diabetes",
@@ -2310,6 +2474,7 @@ const CHAPTERS = [
   {
     num: 23,
     title: "Allergic Reactions",
+    intro: "An allergic reaction becomes anaphylaxis when it involves the airway or the circulation, and at that point epinephrine is the treatment and time is the enemy. This chapter explains how the reaction happens, how to tell a mild reaction from a life-threatening one, the treatment sequence and the auto-injector, and the special considerations for children and for a second dose.",
     sections: [
       {
         title: "Anaphylaxis & Epinephrine",
@@ -2363,6 +2528,7 @@ const CHAPTERS = [
   {
     num: 24,
     title: "Infectious Diseases and Sepsis",
+    intro: "Infectious disease is both a hazard to the EMT and a category of patient. This chapter covers how diseases spread and a reference to the communicable diseases of concern, with detail on hepatitis, HIV, influenza, tuberculosis and meningitis, and then sepsis: what it is, how the SIRS and qSOFA criteria help recognize it, and how it is managed.",
     sections: [
       {
         title: "Communicable Disease Reference",
@@ -2461,6 +2627,7 @@ const CHAPTERS = [
   {
     num: 25,
     title: "Poisoning and Overdose Emergencies",
+    intro: "A poison is any substance that harms the body, and the route it takes in decides much of the care. This chapter covers the core concepts and activated charcoal, the antidotes an EMT may use, inhaled poisons such as carbon monoxide, absorbed and injected poisons, and then alcohol and the five categories of abused substances, with the signs and care for each.",
     sections: [
       {
         title: "Ingested & Inhaled Poisons",
@@ -2553,6 +2720,7 @@ const CHAPTERS = [
   {
     num: 26,
     title: "Abdominal Emergencies",
+    intro: "Abdominal pain is common, often vague, and occasionally the first sign of a condition that will kill within hours. This chapter distinguishes the types of abdominal pain and what each suggests, surveys the key conditions from appendicitis to a leaking aortic aneurysm, and sets out the assessment sequence, the physical exam and the care, with attention to the older patient whose signs are muted.",
     sections: [
       {
         title: "Abdominal Pain & Its Causes",
@@ -2628,6 +2796,7 @@ const CHAPTERS = [
   {
     num: 27,
     title: "Behavioral and Psychiatric Emergencies and Suicide",
+    intro: "A behavioral emergency is any situation in which a person's behavior is unacceptable or intolerable to themselves or others, and the first job is to rule out the medical conditions that mimic one. This chapter covers assessment and de-escalation, acute psychosis, suicide, and the safety, legal and procedural rules for restraining an aggressive patient, including excited delirium.",
     sections: [
       {
         title: "Assessing Behavioral Emergencies",
@@ -2723,6 +2892,7 @@ const CHAPTERS = [
   {
     num: 28,
     title: "Hematologic and Renal Emergencies",
+    intro: "Blood that will not clot, blood that clots too readily and kidneys that no longer filter each produce emergencies of their own. This chapter covers coagulopathies and anticoagulant medications, anemia and sickle cell disease, and then the renal system: urinary tract infection and kidney stones, renal failure and dialysis, the emergencies particular to end-stage renal disease, and the transplant patient.",
     sections: [
       {
         title: "Blood Disorders & Sickle Cell Disease",
@@ -2802,6 +2972,7 @@ const CHAPTERS = [
   {
     num: 29,
     title: "Bleeding Control",
+    intro: "Uncontrolled external bleeding is one of the most preventable causes of death from trauma, and direct pressure stops most of it. This chapter presents the escalating framework from direct pressure to tourniquet and hemostatic dressing, explains why pressure works, and walks through the procedure step by step.",
     sections: [
       {
         title: "External Bleeding Control — Direct Pressure",
@@ -2847,6 +3018,7 @@ const CHAPTERS = [
   {
     num: 30,
     title: "Soft-Tissue Trauma",
+    intro: "The skin is the body's largest organ and its first line of defense, and soft-tissue injuries range from a bruise to a burn that threatens life. This chapter covers closed and open wounds and their care, including impaled objects and amputations, then burns: classification by depth and extent, burn center criteria, thermal, chemical, electrical and radiation burns, and the principles of dressing and bandaging.",
     sections: [
       {
         title: "Closed & Open Wounds",
@@ -2938,6 +3110,7 @@ const CHAPTERS = [
   {
     num: 31,
     title: "Chest and Abdominal Trauma",
+    intro: "The chest and abdomen hold the organs that keep a patient alive, and injuries to them can be deceptively quiet. This chapter distinguishes blunt from penetrating chest trauma, covers the care of open chest wounds and the injuries within the chest cavity such as pneumothorax, flail chest and cardiac tamponade, and then turns to open and closed abdominal trauma, including evisceration.",
     sections: [
       {
         title: "Chest Trauma",
@@ -3008,6 +3181,7 @@ const CHAPTERS = [
   {
     num: 32,
     title: "Musculoskeletal Trauma",
+    intro: "Fractures are rarely fatal on their own, but the blood they bleed, the damage they do to nerves and vessels, and the pain of moving them all matter. This chapter covers the four types of musculoskeletal injury, compartment syndrome and the six Ps, the principles of splinting, traction splints and pelvic injuries, and the injuries of the knee, lower leg, ankle and foot.",
     sections: [
       {
         title: "Fractures, Splinting & Traction",
@@ -3075,6 +3249,7 @@ const CHAPTERS = [
   {
     num: 33,
     title: "Trauma to the Head, Neck, and Spine",
+    intro: "Injuries to the head, neck and spine carry the greatest risk of permanent disability, and the care given in the first minutes can prevent or cause it. This chapter covers neck wounds, spinal assessment using NEXUS-based criteria to decide when motion restriction is needed, practical tips for the long backboard, and when and how to remove a helmet.",
     sections: [
       {
         title: "Neck Wounds & Spinal Assessment",
@@ -3128,6 +3303,7 @@ const CHAPTERS = [
   {
     num: 34,
     title: "Multisystem Trauma",
+    intro: "A patient with injuries to more than one body system is the trauma patient most likely to die, and the decisions are about time. This chapter separates multiple trauma from multisystem trauma, explains the tension between treating on scene and transporting, presents the field triage criteria used to judge severity and choose a destination, and considers special populations and the pathophysiology of internal injury.",
     sections: [
       {
         title: "Treat vs. Transport & Field Triage",
@@ -3179,6 +3355,7 @@ const CHAPTERS = [
   {
     num: 35,
     title: "Environmental Emergencies",
+    intro: "The environment injures through heat, cold, water, altitude and the animals that live in it. This chapter covers how the body loses heat and the decision points in hypothermia and local cold injury, heat exhaustion and heat stroke, drowning, scuba accidents, water rescue and altitude illness, and the bites and stings of insects, spiders, snakes and marine life.",
     sections: [
       {
         title: "Cold Exposure",
@@ -3301,6 +3478,7 @@ const CHAPTERS = [
   {
     num: 36,
     title: "Obstetric and Gynecologic Emergencies",
+    intro: "Most births need no help at all, and the EMT's job is to recognize the ones that do. This chapter covers the physiologic changes of pregnancy, the three stages of labor and the transport decision, assisting a normal delivery, care and APGAR scoring of the newborn and neonatal resuscitation, and then the complications: abnormal presentations, bleeding, ectopic pregnancy, seizures, trauma and cardiac arrest in pregnancy, and gynecologic emergencies.",
     sections: [
       {
         title: "Pregnancy & Labor",
@@ -3426,6 +3604,7 @@ const CHAPTERS = [
   {
     num: 37,
     title: "Emergencies for Patients with Special Challenges",
+    intro: "Some patients arrive with a disability, a chronic condition or a piece of medical technology that changes how they must be assessed and moved. This chapter covers the general approach to patients with special challenges, including autism, the advanced medical devices you will meet in the home from ventilators to central lines, and the recognition and reporting of abuse, neglect and human trafficking.",
     sections: [
       {
         title: "Disabilities, Devices & Approach",
@@ -3554,6 +3733,7 @@ const CHAPTERS = [
   {
     num: 38,
     title: "EMS Operations",
+    intro: "An ambulance call has five phases, and the work of being ready begins long before the tones drop. This chapter covers ambulance readiness and inspection, receiving and responding to a call, the law and the limits of warning lights and sirens, safety at highway incidents, transferring and transporting the patient, and when and how to use air medical resources.",
     sections: [
       {
         title: "Ambulance Readiness & Response",
@@ -3627,6 +3807,7 @@ const CHAPTERS = [
   {
     num: 39,
     title: "Hazardous Materials, MCIs, and Incident Management",
+    intro: "Some incidents are too large or too dangerous for a single crew, and they demand a system. This chapter covers hazardous materials: the zones, the EMT's role and identifying the substance; then multiple-casualty incidents: disaster plans, the Incident Command System, triage priorities and the START method, and the logistics of staging and transport.",
     sections: [
       {
         title: "Hazardous Materials",
@@ -3715,6 +3896,7 @@ const CHAPTERS = [
   {
     num: 40,
     title: "Highway Safety and Vehicle Extrication",
+    intro: "A highway is one of the most dangerous places an EMT works, and the vehicle itself stays hazardous long after the crash. This chapter covers highway operations and scene positioning, protective equipment and scene hazards including downed electrical wires, vehicle fires and alternative-fuel vehicles, the ten phases of extrication, stabilizing a vehicle, gaining access and disentangling the patient.",
     sections: [
       {
         title: "Highway Operations & Scene Hazards",
@@ -3801,12 +3983,14 @@ const CHAPTERS = [
 
 
 
-/* The tools, offered where the reading makes them relevant.
+/* The tools, offered at the end of the chapter where the reading made them
+   relevant.
 
    Three of the five tools — the sound trainer, the scenarios and the flow
    diagrams — were reachable from the tools page and from nowhere else on the
-   site. Someone reading the airway chapter is exactly the person who should
-   be offered a wheeze to listen to, and had no way to learn one was there.
+   site. Someone who has just read the airway chapter is exactly the person
+   who should be offered a wheeze to listen to, and had no way to learn one
+   was there.
 
    Matched on the chapter title rather than stored per chapter, so the notes
    data stays what it is — notes — and a chapter renamed or added picks this
@@ -3839,12 +4023,131 @@ const CHAPTER_TOOLS = [
 function toolsForChapter(ch){
   const hit = CHAPTER_TOOLS.find(t => t.match.test(ch.title));
   if (!hit) return '';
-  return `
+  return `<section class="book-tools" aria-label="Practice this">
     <div class="chapter-tools">
       <span class="chapter-tools__k">Practice this</span>
       ${hit.tools.map(t => `<a href="${t.href}">${t.label} <small>${t.why}</small></a>`).join('')}
     </div>
-  `;
+  </section>`;
+}
+
+
+/* ---- Review questions: which of the bank's questions belong to a chapter --
+   A textbook chapter ends with questions, and the site has a bank of two
+   thousand. They are tagged by exam domain and topic rather than by chapter,
+   and the tags run wider than a chapter does: one topic, "Medical", is 200
+   questions across six chapters here. So a chapter names a domain and/or
+   topic and, where that is still too wide, a pattern the stem has to match.
+   Single-answer items only: a select-N or sequencing item needs the practice
+   page's interface. A chapter with no honest match (the history of EMS)
+   simply has no questions block, the way it has no tools block. */
+const CHAPTER_QUESTIONS = {
+  2:  { match:/stress|PPE|glove|infect|exposure|N95|grief|dying|hand hygiene|standard precaution|critical incident|burnout/i },
+  3:  { match:/\blift|carry|carrying|stretcher|stair chair|power grip|body mechanic|log ?roll|draw.?sheet|emergency move|urgent move|scoop/i },
+  4:  { domain:'EMS Operations', topic:'Legal & Ethical Issues' },
+  5:  { match:/prefix|suffix|proximal|distal|medial|lateral|supine|prone|anterior|posterior|superior|inferior|Fowler|Trendelenburg|midline|midaxillary|sagittal|transverse|frontal plane/i },
+  6:  { match:/anatom|arter|\bvein|ventricle|atri|alveol|diaphragm|trachea|larynx|skelet|\bbone|musc|nervous system|spinal cord|lymph/i },
+  7:  { match:/shock|perfusion|hypoxi|metabolism|homeostasis|compensat|preload|afterload|cardiac output|stroke volume|minute volume|dead space|tidal|aerobic/i },
+  8:  { domain:'OB/Peds & Special Populations', match:/infant|toddler|preschool|school-age|adolescen|older adult|elderly|aging|develop|neonate|newborn/i },
+  9:  { domain:'Airway & Respiratory', topic:'Airway Management' },
+  10: { domain:'Airway & Respiratory', topic:'Oxygenation & Ventilation' },
+  11: { domain:'Assessment', topic:'Scene Size-Up & Safety' },
+  12: { domain:'Assessment', topic:'Primary Assessment' },
+  13: { match:/pulse ox|SpO2|blood pressure|systolic|diastolic|vital sign|pulse rate|respiratory rate|blood glucose|glucometer|capnograph|pupil/i },
+  14: { domain:'Assessment', topic:'Secondary Assessment & History', match:/SAMPLE|OPQRST|history|chief complaint|palpat|auscultat|inspect|open-ended|closed-ended|critical thinking|differential/i },
+  15: { domain:'Assessment', topic:'Secondary Assessment & History', match:/rapid trauma|head-to-toe|detailed|DCAP|secondary assessment|cervical collar|unresponsive|responsive medical|trauma patient|focused/i },
+  16: { match:/reassess|trending|every 5 minutes|every 15 minutes|ongoing assessment|repeat.*vital/i },
+  17: { topic:'Documentation & Handoff' },
+  18: { match:/aspirin|nitroglycerin|epinephrine|naloxone|oral glucose|activated charcoal|metered-dose|inhaler|nebulizer|medication|\bdose|\broute|five rights|contraindicat|indication/i },
+  19: { domain:'Airway & Respiratory', topic:'Respiratory Emergencies' },
+  20: { domain:'Cardiac & Medical', topic:'Cardiac', match:/chest pain|angina|myocardial|\bACS\b|nitro|aspirin|heart failure|pulmonary edema|aneurysm|coronary|cardiac compromise/i },
+  21: { domain:'Cardiac & Medical', topic:'Cardiac', match:/\bCPR\b|\bAED\b|compression|arrest|ROSC|defibrillat|resuscitat|agonal|chain of survival/i },
+  22: { domain:'Cardiac & Medical', topic:'Medical', match:/glucose|diabet|hypoglyc|hyperglyc|seizure|stroke|syncope|altered mental|insulin|postictal|Cincinnati|\bTIA\b|fainting/i },
+  23: { match:/anaphyla|allerg|epinephrine auto|EpiPen|hives|urticaria|angioedema/i },
+  24: { match:/sepsis|septic|tuberculosis|hepatitis|meningitis|\bHIV\b|influenza|communicable|infectious|MRSA|Lyme|\bSIRS\b|qSOFA/i },
+  25: { domain:'Cardiac & Medical', topic:'Toxicology' },
+  26: { domain:'Cardiac & Medical', topic:'Medical', match:/abdominal|appendic|peritonitis|GI bleed|gastrointestinal|aortic aneurysm|cholecyst|pancreat|ulcer|bowel|hernia|kidney stone|referred pain/i },
+  27: { match:/behavioral|psychiatric|suicid|restrain|excited delirium|de-escalat|psychosis|agitated|hostile|mental health/i },
+  28: { match:/sickle|hemophilia|anticoagulant|blood thinner|warfarin|anemia|dialysis|renal|kidney|fistula|urinary/i },
+  29: { domain:'Trauma', topic:'Bleeding & Shock' },
+  30: { domain:'Trauma', match:/\bburn|wound|lacerat|avuls|amputat|impaled|dressing|bandag|abrasion|contusion|hematoma|rule of nines|degree|bite/i },
+  31: { domain:'Trauma', topic:'Head, Chest & Abdominal Trauma', match:/chest|flail|pneumothorax|sucking|tamponade|abdom|eviscerat|\brib|hemothorax|paradoxical|occlusive/i },
+  32: { domain:'Trauma', topic:'Musculoskeletal & Burns', match:/fracture|splint|traction|sprain|strain|dislocat|compartment|pelvi|femur|joint|\bbone|swathe|sling|extremity/i },
+  33: { domain:'Trauma', match:/spinal|spine|cervical|c-spine|head injur|concussion|skull|brain|helmet|backboard|\bneck|NEXUS|motion restriction|Cushing|herniat|intracranial/i },
+  34: { domain:'Trauma', topic:'Trauma Systems & Special Situations' },
+  35: { match:/hypotherm|frostbite|frostnip|heat stroke|heat exhaustion|heatstroke|drown|submersion|snake|\bbite|sting|scuba|altitude|\bcold\b|hyperthermia|rewarm|lightning/i },
+  36: { domain:'OB/Peds & Special Populations', topic:'Obstetrics' },
+  37: { domain:'OB/Peds & Special Populations', topic:'Geriatrics & Special Populations' },
+  38: { domain:'EMS Operations', match:/ambulance|siren|warning light|due regard|helicopter|landing zone|air medical|dispatch|phases|readiness|inspection|transfer of care|transport|escort/i },
+  39: { domain:'EMS Operations', topic:'Incident Management & Communication', match:/triage|START|MCI|multiple.casualty|incident command|\bICS\b|hazardous|hazmat|hot zone|warm zone|cold zone|decontaminat|placard|\bERG\b|staging|mass casualty|command/i },
+  40: { domain:'EMS Operations', topic:'Scene Safety & Operations', match:/extricat|highway|roadway|vehicle|collision|stabiliz|cribbing|downed|power line|airbag|glass|traffic|flare|reflective|hybrid|battery/i }
+};
+const REVIEW_COUNT = 5;
+
+let bankPromise = null, explanationsPromise = null;
+function loadBank(){
+  if (!bankPromise) bankPromise = fetch('assets/questions-core.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
+  return bankPromise;
+}
+function loadExplanations(){
+  if (!explanationsPromise) explanationsPromise = fetch('assets/explanations.json').then(r => r.ok ? r.json() : []).catch(() => []);
+  return explanationsPromise;
+}
+function questionsForChapter(bank, ch){
+  const rule = CHAPTER_QUESTIONS[ch.num];
+  if (!rule) return [];
+  const out = [];
+  bank.forEach((q, i) => {
+    if (q.type) return;                                   // select-N and sequencing
+    if (rule.domain && q.domain !== rule.domain) return;
+    if (rule.topic && q.topic !== rule.topic) return;
+    if (rule.match && !rule.match.test(q.q)) return;
+    out.push({ q, i });
+  });
+  return out;
+}
+/* A small seeded generator, so the five questions a chapter shows are the
+   same five all day (a reader who comes back after lunch finds the ones they
+   were working on) and a different five tomorrow. "Another five" moves the
+   seed along. */
+function seeded(seed){
+  let s = seed >>> 0;
+  return () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+}
+function pickReview(pool, chNum, round){
+  const day = Math.floor(Date.now() / 86400000);
+  const rnd = seeded(chNum * 7919 + day * 31 + round * 104729);
+  const arr = pool.slice();
+  for (let i = arr.length - 1; i > 0; i--){ const j = Math.floor(rnd() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; }
+  return arr.slice(0, REVIEW_COUNT);
+}
+
+
+/* ---- Key terms: the glossary's entries that appear in this chapter -------
+   The glossary lives as inline data in glossary.html (search and the tutor
+   index it there, so it stays there). This page fetches that file — already
+   cached by the service worker — and reads the entries out of it, the same
+   way the tutor does. A term counts if it appears whole, in any case, with
+   or without a plural s, anywhere in the chapter's text. */
+let glossaryPromise = null;
+function loadGlossary(){
+  if (!glossaryPromise){
+    glossaryPromise = fetch('glossary.html').then(r => r.ok ? r.text() : '').then(html => {
+      const terms = [];
+      const re = /\{\s*term\s*:\s*"((?:[^"\\]|\\.)*)"\s*,\s*def\s*:\s*"((?:[^"\\]|\\.)*)"\s*\}/g;
+      const un = s => s.replace(/\\([\s\S])/g, '$1');
+      let m; while ((m = re.exec(html)) !== null) terms.push({ term: un(m[1]), def: un(m[2]) });
+      return terms;
+    }).catch(() => []);
+  }
+  return glossaryPromise;
+}
+function termsInChapter(terms, ch){
+  const text = chapterText(ch).toLowerCase();
+  return terms.filter(t => {
+    const w = t.term.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return new RegExp('(^|[^a-z])' + w + 's?([^a-z]|$)').test(text);
+  });
 }
 
 
@@ -3859,12 +4162,18 @@ const filterEl   = document.getElementById('tbFilter');
 const toggleEl   = document.getElementById('tbContentsToggle');
 let currentIndex = 0;
 let activeQuery = '';
-let pendingSection = null;
+let pendingSection = null;   // the section the rail marks current
+let pendingTarget = null;    // the element id to scroll to (a section, or a topic within one)
 
 const stripTags = (html) => String(html || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
 const esc = (s) => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const topicText = (t) => t.heading + ' ' + (t.paragraphs ? t.paragraphs.join(' ') : stripTags(t.html));
+const topicId = (sec, i) => sec.id + '--' + (i + 1);
+const sectionNumber = (ch, i) => ch.num + '.' + (i + 1);
 
+function chapterText(ch){
+  return ch.sections.map(s => s.title + ' ' + s.topics.map(topicText).join(' ') + ' ' + (s.takeaways || []).map(stripTags).join(' ')).join(' ');
+}
 function chapterIndexForSection(id){
   for (let i = 0; i < CHAPTERS.length; i++){
     if (CHAPTERS[i].sections.some(s => s.id === id)) return i;
@@ -3876,9 +4185,10 @@ function routeFromHash(){
   const h = decodeURIComponent((location.hash || '').slice(1));
   if (!h) return null;
   const m = h.match(/^chapter-(\d+)$/);
-  if (m) return { index: Math.max(0, Math.min(CHAPTERS.length - 1, parseInt(m[1], 10) - 1)), section: null };
-  const i = chapterIndexForSection(h);
-  return i === -1 ? null : { index: i, section: h };
+  if (m) return { index: Math.max(0, Math.min(CHAPTERS.length - 1, parseInt(m[1], 10) - 1)), section: null, target: null };
+  const base = h.replace(/--\d+$/, '');
+  const i = chapterIndexForSection(base);
+  return i === -1 ? null : { index: i, section: base, target: h };
 }
 
 function lastChapter(){
@@ -3891,7 +4201,7 @@ function rememberChapter(i){ try { localStorage.setItem(LAST_KEY, String(i)); } 
 function renderContents(activeIndex, q){
   q = (q || '').trim().toLowerCase();
   const html = CHAPTERS.map((ch, i) => {
-    const sections = ch.sections.filter(s => {
+    const sections = ch.sections.map((s, si) => ({ s, si })).filter(({ s }) => {
       if (!q) return true;
       if (ch.title.toLowerCase().includes(q) || s.title.toLowerCase().includes(q)) return true;
       return s.topics.some(t => topicText(t).toLowerCase().includes(q));
@@ -3904,8 +4214,8 @@ function renderContents(activeIndex, q){
         <span class="tb-toc-modtitle">${esc(ch.title)}</span>
         <span class="tb-toc-count">${ch.sections.length}</span>
       </button>
-      <div class="tb-toc-topics">${sections.map(s =>
-        `<a href="#${s.id}" class="tb-toc-topic${i === activeIndex && s.id === pendingSection ? ' current' : ''}" data-section="${s.id}">${esc(s.title)}</a>`
+      <div class="tb-toc-topics">${sections.map(({ s, si }) =>
+        `<a href="#${s.id}" class="tb-toc-topic${i === activeIndex && s.id === pendingSection ? ' current' : ''}" data-section="${s.id}"><span class="tb-toc-secnum">${sectionNumber(ch, si)}</span><span>${esc(s.title)}</span></a>`
       ).join('')}</div>
     </div>`;
   }).join('');
@@ -3928,10 +4238,10 @@ function renderContents(activeIndex, q){
 }
 
 /* ---- one chapter ---------------------------------------------------- */
-function sectionHtml(sec){
-  const topicsHtml = sec.topics.map(t => {
+function sectionHtml(sec, si, ch){
+  const topicsHtml = sec.topics.map((t, ti) => {
     const body = t.paragraphs ? t.paragraphs.map(p => `<p>${p}</p>`).join('') : (t.html || '');
-    return `<div class="topic" data-heading="${esc(t.heading)}">
+    return `<div class="topic" id="${topicId(sec, ti)}" data-heading="${esc(t.heading)}">
       <h3>${t.heading}</h3>
       ${t.sub ? `<p class="sub">${t.sub}</p>` : ''}
       ${body}
@@ -3939,12 +4249,13 @@ function sectionHtml(sec){
   }).join('');
   const takeawaysHtml = (sec.takeaways && sec.takeaways.length) ? `
     <div class="takeaways">
-      <div class="tk-title">Key takeaways</div>
+      <div class="tk-title">Key points · ${sectionNumber(ch, si)}</div>
       <ul>${sec.takeaways.map(k => `<li>${k}</li>`).join('')}</ul>
     </div>` : '';
-  return `<section class="section" id="${sec.id}">
+  return `<section class="section" id="${sec.id}" data-num="${sectionNumber(ch, si)}" data-title="${esc(sec.title)}">
     <div class="section-intro">
       <div class="section-head">
+        <span class="section-num">${sectionNumber(ch, si)}</span>
         <h2>${sec.title}</h2>
         ${sec.domain ? `<span class="domain-tag">${sec.domain} domain</span>` : ''}
       </div>
@@ -3955,38 +4266,213 @@ function sectionHtml(sec){
   </section>`;
 }
 
+function chapterOpenerHtml(ch, forPrint){
+  const domains = [...new Set(ch.sections.map(s => s.domain).filter(Boolean))];
+  const topics = ch.sections.reduce((n, s) => n + s.topics.length, 0);
+  const words = chapterText(ch).split(/\s+/).length;
+  const minutes = Math.max(1, Math.round(words / 200));
+  const meta = [
+    `${ch.sections.length} section${ch.sections.length === 1 ? '' : 's'}`,
+    `${topics} topic${topics === 1 ? '' : 's'}`,
+    `about ${minutes} min`
+  ].join(' · ');
+  return `<header class="tb-chapter-head book-opener">
+      <p class="tb-chapter-eyebrow">Chapter ${ch.num} of ${CHAPTERS.length}${domains.length ? ' · ' + esc(domains.join(', ')) + ' domain' : ''}</p>
+      <div class="book-opener__row">
+        <span class="book-num" aria-hidden="true">${ch.num}</span>
+        <h1 class="tb-chapter-title">${esc(ch.title)}</h1>
+      </div>
+      ${ch.intro ? `<p class="book-intro">${esc(ch.intro)}</p>` : ''}
+      <nav class="book-contents" aria-label="In this chapter">
+        <p class="book-k">In this chapter</p>
+        <ol>${ch.sections.map((s, si) => `<li>
+          <a class="book-contents__sec" href="#${s.id}"><b>${sectionNumber(ch, si)}</b><span>${esc(s.title)}</span></a>
+          <p class="book-contents__topics">${s.topics.map((t, ti) => `<a href="#${topicId(s, ti)}">${t.heading}</a>`).join(' · ')}</p>
+        </li>`).join('')}</ol>
+      </nav>
+      <div class="tb-chapter-meta">
+        <span>${meta}</span>
+        ${forPrint ? '' : `<button type="button" class="print-btn" id="printBtn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7"/></svg>Print the book</button>`}
+      </div>
+    </header>`;
+}
+
+function chapterEndHtml(ch){
+  const hasReview = !!CHAPTER_QUESTIONS[ch.num];
+  return `<div class="book-end">
+    <section class="book-terms" id="bookTerms" hidden aria-label="Key terms">
+      <h2 class="book-end__title">Key terms <small>in this chapter</small></h2>
+      <dl id="bookTermsList"></dl>
+      <p class="book-terms__all"><a href="glossary.html">The full glossary &rarr;</a></p>
+    </section>
+    ${hasReview ? `<section class="book-review" id="bookReview" aria-label="Review questions">
+      <h2 class="book-end__title">Check your understanding <small>${REVIEW_COUNT} questions</small></h2>
+      <p class="book-end__lede">Drawn from the question bank for the ground this chapter covers. Answer to see why.</p>
+      <button type="button" class="book-btn" id="bookReviewStart">Show the questions</button>
+      <p class="book-review__status" id="bookReviewStatus" hidden></p>
+      <div id="bookReviewList"></div>
+    </section>` : ''}
+    ${toolsForChapter(ch)}
+  </div>`;
+}
+
 function chapterHtml(index, forPrint){
   const ch = CHAPTERS[index];
   const prev = CHAPTERS[index - 1], next = CHAPTERS[index + 1];
-  const count = ch.sections.length;
-  return `<div class="${forPrint ? 'print-chapter' : ''}" id="chapter-${ch.num}">
-    <header class="tb-chapter-head">
-      <p class="tb-chapter-eyebrow">Chapter ${ch.num} of ${CHAPTERS.length}</p>
-      <h1 class="tb-chapter-title">${esc(ch.title)}</h1>
-      <div class="tb-chapter-meta">
-        <span>${count} section${count === 1 ? '' : 's'}</span>
-        ${forPrint ? '' : `<button type="button" class="print-btn" id="printBtn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7"/></svg>Print</button>`}
-      </div>
-      ${toolsForChapter(ch)}
-    </header>
-    ${ch.sections.map(sectionHtml).join('')}
+  // data-chapter rather than id="chapter-N": the hash a chapter link sets is
+  // #chapter-N, and an element with that id would have the browser scroll to
+  // it on load — under the sticky header, with the opener cut off.
+  return `<div class="${forPrint ? 'print-chapter' : ''}" data-chapter="${ch.num}">
+    ${forPrint ? '' : `<div class="book-running" aria-hidden="true"><span>Chapter ${ch.num} · ${esc(ch.title)}</span><span id="bookRunningSec"></span></div>`}
+    ${chapterOpenerHtml(ch, forPrint)}
+    ${ch.sections.map((s, si) => sectionHtml(s, si, ch)).join('')}
+    ${forPrint ? '' : chapterEndHtml(ch)}
     ${forPrint ? '' : `<nav class="tb-chapter-nav">
-      ${prev ? `<a class="tb-chapter-link prev" href="#chapter-${prev.num}"><span>&larr; Previous chapter</span><b>${esc(prev.title)}</b></a>` : '<span></span>'}
-      ${next ? `<a class="tb-chapter-link next" href="#chapter-${next.num}"><span>Next chapter &rarr;</span><b>${esc(next.title)}</b></a>` : '<span></span>'}
+      ${prev ? `<a class="tb-chapter-link prev" href="#chapter-${prev.num}"><span>&larr; Chapter ${prev.num}</span><b>${esc(prev.title)}</b></a>` : '<span></span>'}
+      ${next ? `<a class="tb-chapter-link next" href="#chapter-${next.num}"><span>Chapter ${next.num} &rarr;</span><b>${esc(next.title)}</b></a>` : '<span></span>'}
     </nav>`}
   </div>`;
 }
 
+/* Tables are numbered in reading order within the chapter and captioned with
+   the heading they sit under, after render, so the notes data stays plain. */
+function numberTables(container, chNum){
+  let k = 0;
+  container.querySelectorAll('.topic table').forEach(table => {
+    k++;
+    const topic = table.closest('.topic');
+    const wrap = table.closest('.table-wrap') || table;
+    const cap = document.createElement('p');
+    cap.className = 'tb-caption';
+    cap.innerHTML = `<b>Table ${chNum}.${k}</b>${esc(topic ? topic.dataset.heading : '')}`;
+    wrap.parentNode.insertBefore(cap, wrap);
+  });
+}
+
+/* ---- the end matter, filled in after the chapter is on screen ---------- */
+function fillKeyTerms(ch){
+  const box = document.getElementById('bookTerms'), list = document.getElementById('bookTermsList');
+  if (!box || !list) return;
+  loadGlossary().then(terms => {
+    if (currentIndex !== CHAPTERS.indexOf(ch) || !document.getElementById('bookTerms')) return;
+    const hits = termsInChapter(terms, ch);
+    if (!hits.length) return;
+    list.innerHTML = hits.map(t => `<div><dt><a href="glossary.html#letter-${esc(t.term[0].toUpperCase())}">${esc(t.term)}</a></dt><dd>${esc(t.def)}</dd></div>`).join('');
+    box.hidden = false;
+  });
+}
+
+function wireReview(ch){
+  const start = document.getElementById('bookReviewStart');
+  const status = document.getElementById('bookReviewStatus');
+  const list = document.getElementById('bookReviewList');
+  if (!start || !list) return;
+  let round = 0;
+  const rule = CHAPTER_QUESTIONS[ch.num] || {};
+  const practiceHref = rule.domain ? 'practice.html?domain=' + encodeURIComponent(rule.domain) : 'practice.html';
+
+  function say(msg){ status.hidden = !msg; status.textContent = msg || ''; }
+
+  function render(pool){
+    const picked = pickReview(pool, ch.num, round);
+    let answered = 0, right = 0;
+    list.innerHTML = picked.map((p, n) => `<div class="book-q" data-index="${p.i}">
+      <p class="book-q__n">Question ${n + 1}</p>
+      <p class="book-q__stem">${esc(p.q.q)}</p>
+      <div class="book-q__opts" role="group" aria-label="Question ${n + 1} options">
+        ${p.q.options.map((o, oi) => `<button type="button" class="book-q__opt" data-opt="${oi}"><b>${String.fromCharCode(65 + oi)}</b><span>${esc(o)}</span></button>`).join('')}
+      </div>
+      <div class="book-q__why" hidden aria-live="polite"></div>
+    </div>`).join('') + `<div class="book-review__foot">
+      <span class="score" id="bookReviewScore">${pool.length} question${pool.length === 1 ? '' : 's'} in the bank for this chapter</span>
+      <button type="button" class="book-btn quiet" id="bookReviewAgain">Another five</button>
+      <a href="${practiceHref}">Practice ${rule.domain ? 'this domain' : 'the bank'} &rarr;</a>
+    </div>`;
+
+    list.querySelectorAll('.book-q').forEach((card, n) => {
+      const p = picked[n];
+      card.querySelectorAll('.book-q__opt').forEach(btn => btn.addEventListener('click', () => {
+        if (card.classList.contains('answered')) return;
+        card.classList.add('answered');
+        const chosen = parseInt(btn.dataset.opt, 10);
+        const ok = chosen === p.q.correct;
+        btn.classList.add(ok ? 'correct' : 'wrong');
+        if (!ok) card.querySelector(`.book-q__opt[data-opt="${p.q.correct}"]`).classList.add('correct');
+        card.querySelectorAll('.book-q__opt').forEach(b => b.setAttribute('aria-disabled', 'true'));
+        answered++; if (ok) right++;
+        const why = card.querySelector('.book-q__why');
+        why.hidden = false;
+        why.innerHTML = `<b class="${ok ? 'good' : 'bad'}">${ok ? 'Correct.' : 'Not quite — ' + String.fromCharCode(65 + p.q.correct) + ' is the answer.'}</b><span>Loading the explanation…</span>`;
+        loadExplanations().then(ex => {
+          const text = ex && ex[p.i];
+          why.querySelector('span').textContent = text || '';
+        });
+        if (answered === picked.length){
+          document.getElementById('bookReviewScore').textContent = `${right} of ${picked.length} right`;
+        }
+      }));
+    });
+    document.getElementById('bookReviewAgain').addEventListener('click', () => {
+      round++;
+      render(pool);
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) list.scrollIntoView();
+      else list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  start.addEventListener('click', () => {
+    start.disabled = true;
+    say('Fetching the question bank…');
+    loadBank().then(bank => {
+      if (!document.body.contains(start)) return;
+      const pool = questionsForChapter(bank, ch);
+      start.hidden = true;
+      if (!pool.length){ say('No single-answer questions in the bank cover this chapter yet.'); return; }
+      say('');
+      render(pool);
+    }).catch(() => {
+      start.disabled = false;
+      say('The question bank could not be fetched. It is on the practice page when you are back online.');
+    });
+  });
+}
+
+/* The running head follows the reader through the chapter. */
+let runningTicking = false;
+function updateRunningHead(){
+  runningTicking = false;
+  const el = document.getElementById('bookRunningSec');
+  if (!el) return;
+  const line = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--site-header-h')) || 112) + 60;
+  let current = null;
+  chapterEl.querySelectorAll('.section').forEach(sec => {
+    if (sec.getBoundingClientRect().top <= line) current = sec;
+  });
+  const label = current ? current.dataset.num + ' · ' + current.dataset.title : '';
+  if (el.textContent !== label) el.textContent = label;
+  el.parentNode.classList.toggle('on', !!current);
+}
+window.addEventListener('scroll', () => {
+  if (runningTicking) return;
+  runningTicking = true;
+  requestAnimationFrame(updateRunningHead);
+}, { passive: true });
+
 function renderChapter(index){
   currentIndex = index;
   rememberChapter(index);
+  const ch = CHAPTERS[index];
   chapterEl.innerHTML = chapterHtml(index, false);
-  document.title = 'Ch. ' + CHAPTERS[index].num + ' ' + CHAPTERS[index].title + ' — NREMT-EMT Study Notes | LevlPrep';
+  numberTables(chapterEl, ch.num);
+  document.title = 'Chapter ' + ch.num + ' · ' + ch.title + ' — NREMT-EMT Study Notes | LevlPrep';
   const pb = document.getElementById('printBtn');
   if (pb) pb.addEventListener('click', () => window.print());
+  fillKeyTerms(ch);
+  wireReview(ch);
+  updateRunningHead();
 }
 
-function scrollToSection(id){
+function scrollToTarget(id){
   const el = document.getElementById(id);
   if (!el) return;
   if (window.LevlMotion) window.LevlMotion.scrollIntoView(el, { block: 'start' });
@@ -4022,7 +4508,7 @@ function renderResults(q){
   let total = 0;
   const blocks = [];
   CHAPTERS.forEach((ch, ci) => {
-    ch.sections.forEach(sec => {
+    ch.sections.forEach((sec, si) => {
       const hits = [];
       sec.topics.forEach((t, ti) => {
         const text = topicText(t);
@@ -4033,7 +4519,7 @@ function renderResults(q){
       total += hits.length;
       blocks.push(`<div class="tb-result">
         <div class="tb-result-chapter">Chapter ${ch.num} · ${esc(ch.title)}</div>
-        <div class="tb-result-title">${esc(sec.title)}</div>
+        <div class="tb-result-title">${sectionNumber(ch, si)} ${esc(sec.title)}</div>
         ${hits.map(h => `<button type="button" class="tb-result-hit" data-section="${sec.id}" data-topic="${h.ti}">
           <span class="tb-result-heading">${esc(h.heading)}</span>
           <span class="tb-result-snippet">${h.snip}</span>
@@ -4094,11 +4580,12 @@ function route(){
   const r = routeFromHash();
   const index = r ? r.index : lastChapter();
   pendingSection = r ? r.section : null;
+  pendingTarget = r ? r.target : null;
   if (activeQuery && !r) return;
   if (activeQuery) { hideResults(); }
   if (index !== currentIndex || !chapterEl.firstElementChild || chapterEl.hidden) renderChapter(index);
   renderContents(index, activeQuery ? filterEl.value : '');
-  if (pendingSection) requestAnimationFrame(() => scrollToSection(pendingSection));
+  if (pendingTarget) requestAnimationFrame(() => scrollToTarget(pendingTarget));
   else if (r) window.scrollTo({ top: 0 });
 }
 window.addEventListener('hashchange', route);
@@ -4109,7 +4596,16 @@ route();
 let printedAll = false;
 window.addEventListener('beforeprint', () => {
   if (activeQuery) return;
-  chapterEl.innerHTML = CHAPTERS.map((_, i) => chapterHtml(i, true)).join('');
+  chapterEl.innerHTML = `<div class="print-cover">
+      <p class="print-cover__k">LevlPrep</p>
+      <h1>NREMT-EMT Study Notes</h1>
+      <p>${CHAPTERS.length} chapters, in course order.</p>
+    </div>
+    <div class="print-toc">
+      <h2>Contents</h2>
+      <ol>${CHAPTERS.map(ch => `<li><b>${ch.num}</b><span>${esc(ch.title)}</span></li>`).join('')}</ol>
+    </div>` + CHAPTERS.map((_, i) => chapterHtml(i, true)).join('');
+  CHAPTERS.forEach(ch => numberTables(chapterEl.querySelector('[data-chapter="' + ch.num + '"]'), ch.num));
   printedAll = true;
 });
 window.addEventListener('afterprint', () => {

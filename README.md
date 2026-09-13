@@ -61,7 +61,9 @@ nremt/                 The NREMT-EMT Prep course
   study-plan.html       Auto-generated study checklist
   exam-day.html         How the real exam works: adaptive format, the clock, cost,
                           eligibility, retake rules, what to bring
-  study-notes.html, glossary.html, mnemonics.html, flowcharts.html,
+  study-notes.html      The course textbook: forty chapters rendered one at a time
+                           from inline data — see "The NREMT textbook" below
+  glossary.html, mnemonics.html, flowcharts.html,
   skillsheets.html       Reference content
   body-map.html          Interactive 3D anatomy (three.js + a compressed .glb model)
   sound-trainer.html      Lung/heart sound identification
@@ -216,6 +218,23 @@ Learn is the course's written half. Every topic's prose is one HTML fragment und
 The rail's box searches the prose, not just the 62 section names. `ochem/assets/textbook-search.js` indexes each note fragment as it is fetched — the index is built from the same cache the chapters read from, so there is no separate corpus to keep in sync, and the first query fetches whatever has not been read yet. A query lists the matching passages with the words highlighted; picking one opens that chapter and scrolls to the exact paragraph, still highlighted. Every query term has to appear in a section for it to match, and ordinary question words ("what is a nucleophile") are dropped so a typed question searches for the idea.
 
 The interactive lessons are unchanged and each section links out to its own. Reading is tracked separately from mastery in `ochem_textbook_read`, set by reaching the end of a section or by hand, worth 5 XP the first time, and never mixed into the mastery number — which still comes only from answering questions. Old per-lesson `?notes=1` URLs redirect to the matching section.
+
+### The NREMT textbook (`nremt/study-notes.html`)
+
+The NREMT notes use the same shell as the ochem book — the shared rail and chapter frame in `theme.css` — with the forty chapters held as inline data (`CHAPTERS`) in the page itself, the way the glossary and mnemonics are, so search and the tutor index them without a fetch. Everything on the page is generated from that data, and a chapter is extended by appending to it.
+
+What makes it read as a textbook rather than a page of notes, and where each piece comes from:
+
+- **Chapter opener.** The chapter number set large, a two-to-four-sentence opening paragraph (`intro` on each chapter) with a drop cap, an "In this chapter" contents box listing the numbered sections with their topic headings as links, and a length line (sections, topics, an estimated reading time at 200 words a minute).
+- **Numbered sections.** `14.1`, `20.2`: the number is the chapter number and the section's position, computed at render, so nothing in the data has to be renumbered when a section is added. The rail, the running head, search results and the key-points box all use the same number.
+- **Running head.** Chapter on the left, the section you are in on the right, pinned under the site header once you scroll past the opener — what a book prints at the top of every page.
+- **Serif prose.** The site's face is Nunito, served at 600 and up; an hour of bold sans tires the eye, so this page sets its prose in a system serif at regular weight (`--book-serif`, scoped to `.tb-main`; headings, tables, labels and buttons stay in Nunito). No font file is downloaded. Consecutive paragraphs indent instead of gapping, and the small italic remarks (`.sub`) are set as margin notes with a rule.
+- **Table captions.** `Table 14.1`, `Table 14.2`, numbered in reading order within the chapter and captioned with the heading they sit under. Done after render (`numberTables`), so the notes data stays plain HTML and a table added or removed renumbers the rest.
+- **Key terms.** At the end of each chapter, the glossary entries whose term appears in the chapter's text, with their definitions. The glossary stays as inline data in `glossary.html` (search and the tutor index it there); the notes page fetches that file — already cached by the service worker — and reads the entries out of it, the way `assets/tutor.js` does.
+- **Check your understanding.** Five single-answer questions from the bank, fetched on demand (the bank is 1.1 MB, so it is not fetched until asked for) and chosen from the questions that belong to the chapter. The bank is tagged by exam domain and topic rather than by chapter, and one topic ("Medical", 200 questions) spans six chapters, so `CHAPTER_QUESTIONS` names a domain and/or topic per chapter and, where that is still too wide, a pattern the stem has to match. The five are stable for the day (seeded on chapter and date) so a reader who comes back finds the ones they were on; "Another five" moves the seed along. Answering reveals the bank's explanation. A chapter with no honest match (the history of EMS) has no block, the way it has no tools block.
+- **Printing** lays out the whole book: a cover, a two-column contents page, then every chapter on a fresh page with its tables numbered; the questions, running head and tool links are left out.
+
+Deep links: `#chapter-14` opens a chapter, `#ch14-principles-assessment` a section, and `#ch14-principles-assessment--3` the third topic in it (the contents box links this way). The chapter container deliberately has no `id="chapter-N"`: with one, the browser scrolls to it on load, under the sticky header.
 
 Lesson progress is stored in `ochem_progress` (per-topic `{correct, attempts}`, read by `curriculum.js`); the concept model lives in `ochem_mastery_v1` (see `ochem/assets/mastery-engine.js`); and the game layer's own state — concept badges, daily Rounds, achievements — lives in `ochem_game_v1` (`ochem/assets/ochem-xp.js`). All three sync with an account.
 
