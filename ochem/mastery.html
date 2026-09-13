@@ -47,9 +47,12 @@
   .mastery-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 36px;align-items:start;}
   .mastery-main,.mastery-side{min-width:0;}
   .mastery-side .game-grid{grid-template-columns:1fr;}
+  .mastery-lists{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px;align-items:start;}
+  .mastery-lists .section-head{margin-top:26px;}
+  .mastery-lists > div:has(> [hidden]){display:none;}
   .mastery-side .badge-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
   @media (max-width:900px){
-    .mastery-grid{grid-template-columns:1fr;}
+    .mastery-grid,.mastery-lists{grid-template-columns:1fr;}
     .mastery-side{margin-top:26px;}
   }
 
@@ -92,10 +95,6 @@
       <div class="rec-row" id="recRow"></div>
       <div class="section-head" id="weakHead">Weakest concepts</div>
       <div id="weakConcepts"></div>
-      <div class="section-head" id="moduleHead">By module</div>
-      <div id="moduleStats"></div>
-      <div class="section-head" id="familyHead">By concept family</div>
-      <div id="familyStats"></div>
     </div>
     <aside class="mastery-side">
       <div id="gameLevel"></div>
@@ -107,6 +106,19 @@
       <div class="section-head">Achievements</div>
       <div class="badge-grid" id="gameAchievements"></div>
     </aside>
+  </div>
+
+  <!-- The two long lists sit side by side under both columns, so neither
+       column runs on alone with empty space beside it. -->
+  <div class="xsection mastery-lists" style="padding-top:0;">
+    <div>
+      <div class="section-head" id="moduleHead">By module</div>
+      <div id="moduleStats"></div>
+    </div>
+    <div>
+      <div class="section-head" id="familyHead">By concept family</div>
+      <div id="familyStats"></div>
+    </div>
   </div>
 </div>
 
