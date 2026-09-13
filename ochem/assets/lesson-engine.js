@@ -197,6 +197,12 @@
             if(isFinal){
               window.OchemCurriculum.completeLessonRun(topicId);
               if(M) M.noteLesson(topicId);
+              // Reaching the final step is what "finished the lesson" means.
+              // One event per lesson run, carrying which lesson, so the answer
+              // to "does anyone get past Module 3" is readable per topic.
+              if(window.LevlAnalytics){
+                window.LevlAnalytics.event('lesson-complete', { topic: topicId });
+              }
               card.querySelector('#doneBox').innerHTML = doneBoxHtml();
             }
             else next.disabled = false;

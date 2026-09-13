@@ -6,7 +6,7 @@
 <link rel="apple-touch-icon" href="assets/icon.svg">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy — LevlPrep</title>
 <meta name="description" content="What LevlPrep stores, what leaves your browser, and what it doesn't. No ads, no trackers, no cookies — just one anonymous page counter and an optional account.">
@@ -46,7 +46,7 @@
     <div class="eyebrow">Privacy</div>
     <h1>What leaves your browser.</h1>
     <p class="lede">Short version: almost nothing. There are no ads, no trackers and no cookies on this site. Everything you do here is stored on your own device unless you choose to sign in.</p>
-    <p class="updated">Last updated 11 September 2026</p>
+    <p class="updated">Last updated 13 September 2026</p>
   </div>
 
   <div class="xsection">
@@ -61,6 +61,19 @@
         <p>Each page load increments a counter so we can see which pages get used. It records <strong>the page path and the date, and nothing else</strong> — no IP address, no cookie, no user id, no session id, no device fingerprint, no referrer. There is no way to tell two visits apart, or to tell whether a visit was yours.</p>
         <p>It works by calling a single database function that can only do one thing: add one to a <code>(path, day)</code> total. The table behind it is locked so that nothing — including this website — can read it back or write to it any other way.</p>
 
+        <h2 id="site-analytics">Site analytics</h2>
+        <p>Alongside that counter we use <strong>Umami</strong>, a privacy-focused analytics service, to understand how the site is actually used — which lessons get opened, and whether people who start an exam finish it. It sets no cookies and does not track you across other websites.</p>
+        <p>It is a third party and it does collect more than our own counter does. On each page view it records:</p>
+        <ul>
+          <li>The <strong>page</strong> you are on and the <strong>referrer</strong> — the page or search that sent you here.</li>
+          <li>Your <strong>browser, operating system, device type and screen size</strong>.</li>
+          <li>Your <strong>country</strong>, worked out from your IP address. The IP address itself is not stored.</li>
+          <li>A <strong>visitor identifier</strong> made by hashing your IP address and browser together with a secret that changes daily. This is what lets it tell one visit from another within a day. It cannot be reversed to find you, and because the secret changes, it cannot link today's visit to tomorrow's.</li>
+        </ul>
+        <p>We also record a small number of <strong>milestones</strong>, so the site can tell whether a feature works rather than just whether it was opened: an exam being started and finished (with the score as a band such as "70-79", never an exact result), a practice session being started and finished, and a lesson being completed. No answer you give and no question you see is ever sent.</p>
+        <p>If your browser sends a <strong>Do Not Track</strong> signal, this is switched off for you entirely and nothing above is collected. Blocking it with an ad blocker or privacy extension works too, and nothing on the site depends on it.</p>
+        <p>None of this is connected to your account, your progress, or the study assistant. Umami acts as our processor and the data is never sold, shared or used for advertising.</p>
+
         <h2>Signing in is optional</h2>
         <p>If you create an account, the same progress described above is also copied to a row in our database so it follows you to another device. In that case we store:</p>
         <ul>
@@ -71,11 +84,13 @@
 
         <h2>What this site does not do</h2>
         <ul>
-          <li>No advertising, and no advertising or analytics SDKs of any kind.</li>
+          <li>No advertising, and no advertising SDKs.</li>
           <li>No cookies. (localStorage is not a cookie and is never transmitted.)</li>
-          <li>No third-party trackers, pixels, session recorders or A/B tools.</li>
+          <li>No pixels, session recorders, heatmaps or A/B tools.</li>
+          <li>No cross-site tracking: nothing here follows you to any other website.</li>
           <li>No selling or sharing of personal information, under CCPA or otherwise.</li>
         </ul>
+        <p>This list used to say "no analytics SDKs of any kind". That is no longer true, and <a href="#site-analytics">Site analytics</a> above says exactly what changed and what it collects.</p>
 
         <h2>The study assistant</h2>
         <p>The robot in the corner of every page answers by searching this site's own notes inside your browser. In that mode nothing is sent anywhere, and it works with no connection at all.</p>
@@ -89,6 +104,7 @@
           <li><strong>jsDelivr</strong> serves the Supabase client library, and only on pages where signing in is possible.</li>
           <li><strong>Wikimedia Commons</strong> serves three lung-sound recordings, and only if you press play on one in the sound trainer.</li>
           <li><strong>Cloudflare</strong> runs the study assistant's AI model, and only if AI answers are switched on and you ask it something. It receives the question and the matching passages, as described above.</li>
+          <li><strong>Umami</strong> receives the analytics described above, on every page.</li>
           <li><strong>GitHub Pages</strong> hosts the site and, like any web host, sees the requests for it.</li>
         </ul>
 

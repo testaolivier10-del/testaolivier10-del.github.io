@@ -643,7 +643,18 @@
       renderQuestion(q);
     }
 
-    function finish(){ config.onFinish(S); }
+    function finish(){
+      // Paired with the session-start event below. `asked` rather than a score,
+      // because a practice session has no pass mark — what is worth knowing is
+      // whether people work through a session or abandon it partway.
+      if(window.LevlAnalytics){
+        window.LevlAnalytics.event('ochem-session-finish', {
+          mode: (S && S.meta && S.meta.mode) || 'practice',
+          answered: (S && S.index) || 0
+        });
+      }
+      config.onFinish(S);
+    }
 
     function start(opts){
       opts = opts || {};
@@ -664,6 +675,9 @@
         meta: opts.meta || {}
       };
       if(els.modeLabel) els.modeLabel.textContent = opts.title || '';
+      if(window.LevlAnalytics){
+        window.LevlAnalytics.event('ochem-session-start', { mode: S.meta.mode || 'practice' });
+      }
       advance();
       return S;
     }

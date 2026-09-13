@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" href="assets/icon.svg">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LevlPrep — NREMT-EMT Practice Exam & Study Tools</title>
 <meta name="description" content="Free NREMT-EMT prep: a 2,084-question bank with 4 difficulty levels (including Expert), select-N and sequencing item types, timed 100-question exams, domain drills, flashcards, mnemonics, and a missed-question review queue.">
@@ -1889,6 +1889,12 @@ function beginQuiz(withTimer, resumeState){
     startTime = Date.now();
   }
   const totalLen = mode === 'adaptive' ? adaptiveState.length : activeIndices.length;
+  // One event per attempt started. A resume is deliberately not counted: it is
+  // the same attempt, and counting it would inflate starts against finishes
+  // and make the completion rate read worse than it is.
+  if(!resumeState && window.LevlAnalytics){
+    window.LevlAnalytics.event('exam-start', { mode: mode, questions: totalLen });
+  }
   introScreen.style.display = 'none';
   quizScreen.style.display = 'block';
   window.scrollTo(0, 0);
@@ -2198,6 +2204,18 @@ function showResults(){
       `Exam complete. You scored ${score} out of ${activeIndices.length}, ` +
       `${Math.round(score/activeIndices.length*100)} percent.`
     );
+  }
+
+  // The other half of the pair. Banded rather than exact: the useful question
+  // is "are people passing", and a bare percentage per attempt is finer-grained
+  // than that needs while saying more about the individual.
+  if(window.LevlAnalytics){
+    const pct = Math.round(score / activeIndices.length * 100);
+    window.LevlAnalytics.event('exam-finish', {
+      mode: mode,
+      questions: activeIndices.length,
+      band: pct >= 80 ? '80-100' : pct >= 70 ? '70-79' : pct >= 60 ? '60-69' : 'under-60'
+    });
   }
 
   document.getElementById('scoreBig').textContent = `${score}/${activeIndices.length}`;

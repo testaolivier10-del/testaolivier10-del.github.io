@@ -208,6 +208,7 @@
 
     mountTutor(cfg);
     mountAnnouncer();
+    mountAnalytics();
   }
 
   /* The study assistant. Mounted here rather than per page because every page
@@ -242,6 +243,22 @@
     var el = document.createElement('script');
     el.src = '/assets/announce.js';
     el.defer = true;
+    document.head.appendChild(el);
+  }
+
+  /* Analytics, mounted here for the same reason as the two above: every page
+     of both courses renders this header, so one hook covers all 173 of them
+     without a script tag per page. assets/analytics.js is inert until a
+     website id is configured in it, so this is a no-op until then. */
+  function mountAnalytics(){
+    if(window.__levlAnalyticsLoaderMounted) return;
+    window.__levlAnalyticsLoaderMounted = true;
+    var el = document.createElement('script');
+    el.src = '/assets/analytics.js';
+    el.defer = true;
+    el.onload = function(){
+      if(window.LevlAnalytics) window.LevlAnalytics.mount();
+    };
     document.head.appendChild(el);
   }
 

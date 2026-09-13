@@ -33,6 +33,10 @@ assets/                Shared across every course
   account.js           One login for the whole site: Supabase auth + namespaced
                          cross-device sync (see Data & accounts)
   hub-progress.js      One shared level and one shared streak; per-subject XP
+  analytics.js         Umami. Inert until WEBSITE_ID is filled in at the top of the
+                         file — no script loaded, no request made, every event() a
+                         no-op — so a half-configured tracker cannot quietly phone
+                         home. site-chrome.js mounts it. See Analytics below
 nremt/                 The NREMT-EMT Prep course
   index.html           App home
   practice.html        Question bank UI (fetches assets/questions.json at runtime)
@@ -335,6 +339,32 @@ A second job runs `node --test scripts/test/*.test.mjs` — 24 tests over the tw
 - `scripts/test/harness.mjs` — loads these browser IIFEs into a VM context with a window, a localStorage and, crucially, a clock the test controls. Both engines are about *time*; none of this is testable against a real `Date.now()` without either sleeping or asserting nothing.
 
 No dependencies and no build step, in keeping with the rest of the stack. Both engines were checked by mutation: 13 deliberate breaks (level curve shifted, same-day guard removed, interval cap removed, decay floor removed, lesson never lifts the bench, and so on) and every one of them fails the suite. A test that passes either way is worse than no test, so re-run that exercise if you add to these.
+
+## Analytics
+
+Two things measure the site, and they are not the same thing.
+
+**The site's own counter** (`assets/account.js`, `trackPageview`) has been there the longest: a `track_pageview` RPC that adds one to a per-path, per-day total in our own Supabase. No IP, no cookie, no id, no referrer — there is genuinely no way to tell two visits apart. It still runs and is unaffected by any of the below.
+
+**Umami** (`assets/analytics.js`) answers what that counter never could: not "was this page opened" but "did the person who opened it finish". It is a third party and collects more — referrer, country, browser, OS, device, and a daily visitor hash so visits can be told apart within a day.
+
+Setup: put the website id from the Umami dashboard into `WEBSITE_ID` at the top of `assets/analytics.js`. That is the only step. Until it is set the file does nothing at all, which is deliberate. `cloud.umami.is` is already in `script-src` and `connect-src` in the CSP on all 97 pages that carry one.
+
+`data-do-not-track="true"` is set, so a browser sending Do Not Track is excluded entirely. Ad blockers block it, as they block every analytics tool including the respectful ones; nothing on the site depends on it, and the site's own counter is unaffected because it goes to our own domain.
+
+Events are **milestones, not actions**, and should stay that way. Umami's free tier counts every event against a monthly total, so tracking each answered question would cost 100 events for one exam instead of 2. The five that exist:
+
+| Event | Where | Carries |
+|---|---|---|
+| `exam-start` | `nremt/practice.html`, `beginQuiz` | mode, question count. A resume is **not** counted — it is the same attempt, and counting it would make the completion rate read worse than it is |
+| `exam-finish` | `nremt/practice.html`, `showResults` | mode, count, score as a band (`70-79`), never an exact result |
+| `ochem-session-start` | `ochem/assets/session-runner.js`, `start` | mode |
+| `ochem-session-finish` | same file, `finish` | mode, questions answered |
+| `lesson-complete` | `ochem/assets/lesson-engine.js`, on the final step | topic id |
+
+No answer a student gives and no question they see is ever sent.
+
+**`privacy.html` is part of this.** It previously promised "no analytics SDKs of any kind" and that claim had to go; the page now names Umami, lists field by field what it collects, and says so where the old claim stood. If what is collected here ever changes — another event, another field — that page changes in the same commit. A privacy policy that lags the code is worse than none.
 
 ## Updating the question bank
 
