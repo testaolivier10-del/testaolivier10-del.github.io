@@ -25,6 +25,7 @@
       '<span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true">' + t.icon + '</svg></span>' +
       '<span class="tool-tile__name">' + esc(t.name) + '</span>' +
       '<span class="tool-tile__tag">' + esc(t.tagline) + '</span>' +
+      '<span class="tool-tile__blurb">' + esc(t.blurb) + '</span>' +
       '<span class="tool-tile__foot">' +
         '<span>' + esc(t.teaches) + '</span>' +
         '<span class="tool-tile__go">Open &rarr;</span>' +

@@ -732,19 +732,3 @@ a.mode-card{text-decoration:none;display:block;}
 .tool-send__link:hover{border-color:var(--accent);}
 .tool-send__link b{font:900 12.5px var(--font-ui);}
 .tool-send__link small{font:700 11px var(--font-ui);color:var(--muted);}
-
-/* Mastery page: Daily Rounds and Review debt as one compact row rather than
-   two full cards. The same markup game-panel.js renders everywhere. */
-.game-grid.compact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:18px;}
-.game-grid.compact .game-card{padding:12px 16px;display:flex;flex-direction:column;gap:6px;}
-.game-grid.compact .game-card-body,.game-grid.compact .game-note,.game-grid.compact .game-big{display:none;}
-.game-grid.compact .game-cta{font-size:12.5px;}
-@media(max-width:640px){.game-grid.compact{grid-template-columns:1fr;}}
-.empty-panel-note{font:700 13.5px var(--font-ui);color:var(--muted);margin:0;}
-
-/* The practice landing's readings on one line, not four boxes. */
-.snapshot.strip{display:flex;flex-wrap:wrap;gap:6px 22px;background:var(--white);border:0;border-radius:var(--radius);box-shadow:var(--lift-sm);padding:12px 18px;margin-bottom:18px;}
-.snapshot.strip .cell{background:none;padding:0;display:flex;align-items:baseline;gap:8px;}
-.snapshot.strip .cell .v{font-size:17px;margin:0;}
-.snapshot.strip .cell .k{order:0;}
-.snapshot.strip .cell .v.warn{color:var(--amber-text);}
