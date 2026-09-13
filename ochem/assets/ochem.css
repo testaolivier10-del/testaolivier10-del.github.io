@@ -782,3 +782,48 @@
   .tb-main{padding-top:16px;}
   .tb-chapter-link{max-width:48%;}
 }
+
+/* ---- "Practise this" links pointing back at a tool ----------------------
+
+   Lives here rather than in tools.css because the block renders at the END of
+   a lesson or a mechanism, and those pages load only ochem.css. In tools.css
+   it was styled on the seven pages that never show it and unstyled on the
+   sixty-eight that do — including the inline 24x24 SVG, which without a rule
+   falls back to the SVG default of 300x150. */
+
+.tool-suggest{
+  border:var(--bw) solid var(--line);border-radius:var(--radius);
+  background:var(--tint-accent);padding:14px 16px;margin:18px 0 0;
+}
+.tool-suggest__k{
+  display:block;font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:7px;
+}
+.tool-suggest__row{display:flex;flex-wrap:wrap;gap:8px;}
+.tool-suggest__link{
+  display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+  font:800 13px var(--font-ui);color:var(--ink);background:var(--white);
+  border:var(--bw) solid var(--line);border-radius:var(--radius-pill);padding:7px 14px;
+}
+.tool-suggest__link:hover{border-color:var(--accent);color:var(--accent);}
+.tool-suggest__link svg{width:16px;height:16px;flex:none;}
+
+/* ---- Carrying a structure to another tool ------------------------------- */
+
+.tool-send{
+  margin-top:14px;padding:13px 15px;border-radius:var(--radius);
+  background:var(--tint-accent);border:var(--bw) solid var(--line-soft);
+}
+.tool-send__k{
+  display:block;font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:8px;
+}
+.tool-send__row{display:flex;flex-wrap:wrap;gap:8px;}
+.tool-send__link{
+  display:inline-flex;flex-direction:column;gap:2px;text-decoration:none;
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-sm);
+  padding:8px 13px;color:var(--ink);
+}
+.tool-send__link:hover{border-color:var(--accent);}
+.tool-send__link b{font:900 12.5px var(--font-ui);}
+.tool-send__link small{font:700 11px var(--font-ui);color:var(--muted);}

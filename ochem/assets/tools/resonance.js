@@ -333,6 +333,10 @@
     this.classList.toggle('on', open);
     this.textContent = open ? 'Hide the builder' : 'Build your own →';
     if(open && !builderApi && window.OchemBuilderUI){
+      if(window.OchemToolHandoff){
+        sendApi = window.OchemToolHandoff.mountSend(
+          document.getElementById('resSend'), function(){ return lastBuilt; });
+      }
       builderApi = window.OchemBuilderUI.mount(elBuilder, {
         onChange: function(st, rep){
           lastBuilt = (rep.empty || !rep.ok) ? null : st;
@@ -616,15 +620,23 @@
     /* A structure sent from another tool. Opening the builder with it is the
        right landing: the student can see what arrived, adjust it, and the
        tool treats it exactly as one they drew here — which it effectively is. */
+    var handedOver = false;
     if(q.build && window.OchemToolHandoff){
       var toggle = document.getElementById('resBuildToggle');
       if(toggle){
         toggle.click();
         if(builderApi) builderApi.build(q.build);
+        handedOver = true;
       }
     }
-    var sp = SPECIES.filter(function(x){ return x.id === q.sp; })[0];
-    select(sp || SPECIES[0]);
+    /* Only fall back to a species from the list when nothing was handed over.
+       Selecting one unconditionally threw away the molecule that had just
+       arrived and left the student looking at acetate, which is the one
+       outcome a handoff must not produce. */
+    if(!handedOver){
+      var sp = SPECIES.filter(function(x){ return x.id === q.sp; })[0];
+      select(sp || SPECIES[0]);
+    }
     if(q.mode === 'compare'){
       var mb = document.getElementById('resMode').querySelector('[data-mode="compare"]');
       if(mb) mb.click();

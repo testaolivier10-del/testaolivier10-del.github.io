@@ -121,8 +121,21 @@
     }
 
     function next(){
-      var q = cfg.make(state.recent.slice());
-      if(!q || state.i >= rounds) return finish();
+      if(state.i >= rounds) return finish();
+
+      /* Declining is normal, not terminal.
+
+         A maker returns null when it cannot build a FAIR question from the
+         draw it happened to make — an IR wavenumber that two bands both claim,
+         a molecule whose staggered conformers are degenerate. Treating the
+         first null as the end of the run meant a six-question quiz routinely
+         stopped on question one with "0 of 0", because the spectroscopy maker
+         declines about a quarter of its draws and the conformations maker two
+         molecules in eight. So: ask again. Only a maker that cannot produce
+         anything at all, over many tries, actually ends the run. */
+      var q = null;
+      for(var tries = 0; tries < 40 && !q; tries++) q = cfg.make(state.recent.slice());
+      if(!q) return finish();
       state.q = q;
       state.answered = false;
       state.recent.push(q.id);

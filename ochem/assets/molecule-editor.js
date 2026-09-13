@@ -140,10 +140,13 @@
       container.querySelectorAll('.med-bar .med-btn').forEach(function(b){
         b.addEventListener('click', function(){
           if(locked) return;
-          if(b.getAttribute('data-act') === 'undo') arrows.pop();
+          var undoing = b.getAttribute('data-act') === 'undo';
+          if(undoing) arrows.pop();
           else arrows = [];
-          pending = null; status = 'Arrow drawn. ' + arrows.length +
-        (arrows.length === 1 ? ' arrow' : ' arrows') + ' so far.';
+          pending = null;
+          status = undoing
+            ? 'Arrow removed. ' + arrows.length + (arrows.length === 1 ? ' arrow' : ' arrows') + ' left.'
+            : 'All arrows cleared.';
           render();
           if(config.onChange) config.onChange(state(), api);
         });
@@ -199,7 +202,11 @@
         pending = null; render(); return;
       }
       arrows.push(next);
-      pending = null; status = '';
+      pending = null;
+      // Announced, because completing an arrow changes the picture and nothing
+      // else tells a screen-reader user that the second pick landed.
+      status = 'Arrow drawn. ' + arrows.length +
+        (arrows.length === 1 ? ' arrow' : ' arrows') + ' so far.';
       render();
       if(config.onChange) config.onChange(state(), api);
     }

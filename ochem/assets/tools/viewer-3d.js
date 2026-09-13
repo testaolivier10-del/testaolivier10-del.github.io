@@ -551,11 +551,16 @@
         });
         if(!pool.length) return null;
 
+        /* `recent` holds full question ids ("water:shape"), so a bare
+           molecule id never matched and every draw was unfiltered. */
+        function seenLately(m){
+          return recent.some(function(r){ return r.indexOf(m.id + ':') === 0; });
+        }
         var pick = null, tries = 0;
         do {
           pick = pool[Math.floor(Math.random() * pool.length)];
           tries++;
-        } while(tries < 40 && recent.indexOf(pick.id) >= 0 && pool.length > recent.length);
+        } while(tries < 40 && seenLately(pick) && pool.length > recent.length);
 
         var idx = pick.focus === undefined ? 0 : pick.focus;
         var a = M3.analyse(pick, idx);

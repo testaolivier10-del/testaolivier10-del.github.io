@@ -609,7 +609,12 @@
         rounds: 6,
         intro: 'Formal charge and octets — the bookkeeping that decides whether an arrow is legal.',
         make: function(recent){
-          var pool = QUIZ_MOLS.filter(function(m){ return recent.indexOf(m.id) < 0; });
+          /* `recent` holds full question ids ("acetone:fc:o"), so testing a
+             bare molecule id against it never matched and the filter did
+             nothing. Compare against the prefix instead. */
+          var pool = QUIZ_MOLS.filter(function(m){
+            return !recent.some(function(r){ return r.indexOf(m.id + ':') === 0; });
+          });
           if(!pool.length) pool = QUIZ_MOLS;
           var m = pool[Math.floor(Math.random() * pool.length)];
           var key = m.keys[Math.floor(Math.random() * m.keys.length)];

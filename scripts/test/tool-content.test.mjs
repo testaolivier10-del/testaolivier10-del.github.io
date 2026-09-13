@@ -606,3 +606,104 @@ test('every script a tool page loads exists and is loaded in a workable order', 
     }
   }
 });
+
+/* ====================================================================== */
+/* Regressions found in review                                             */
+/* ====================================================================== */
+
+test('a quiz run reaches its full length even when makers decline draws', () => {
+  /* Drives the real shell rather than reimplementing its loop, which is the
+     only way this test can see the bug it exists for: a maker returns null
+     when the draw it happened to make would not be a fair question, and the
+     shell used to treat the first null as the end of the run. Spectroscopy
+     declines roughly a quarter of its draws, so a "6 questions" quiz ended on
+     question one with "0 of 0". */
+  const b = browser();
+  const s = b.load('ochem/assets/tool-quiz.js');
+
+  let asked = 0;
+  const el = {
+    _html: '',
+    set innerHTML(v){
+      this._html = v;
+      const m = /(\d+) of (\d+)/.exec(v);
+      if(m) asked = Math.max(asked, parseInt(m[1], 10));
+    },
+    get innerHTML(){ return this._html; },
+    querySelector(){ return fakeEl(); },
+    querySelectorAll(){ return []; },
+  };
+
+  // A maker that declines three draws out of four, like a real one on a bad run.
+  let n = 0;
+  const api = s.OchemToolQuiz.mount(el, {
+    slug: 'acid-base', rounds: 6, intro: 'x',
+    make(){
+      if(Math.random() < 0.75) return null;
+      n++;
+      return { id: 'q' + n, prompt: 'p', explain: 'e',
+               options: [{ id:'a', label:'a', correct:true }, { id:'b', label:'b', correct:false }] };
+    },
+  });
+  api.start();
+  assert.ok(asked >= 1, 'the quiz never rendered a question');
+  assert.equal(asked, 1, 'expected the first question to render');
+  assert.ok(n >= 1, 'the shell gave up before the maker produced anything');
+});
+
+test('a maker told a question was just asked will not ask it again', () => {
+  /* `recent` holds full question ids — "water:shape", "acetone:fc:o" — and two
+     makers were testing a bare molecule id against it. That never matched, so
+     their repeat filter did nothing at all.
+
+     The effect is statistically small (a repeat every forty-odd draws), which
+     is exactly why it needs an exact assertion rather than a tolerance: these
+     two makers exclude the whole molecule when told about it, so a working
+     filter repeats ZERO times and a broken one repeats occasionally. Only the
+     makers that filter by molecule are checked, because the others legitimately
+     do not — conformations draws a fresh torsional curve each time. */
+  const byMolecule = ['viewer-3d', 'arrow-pusher'];
+  for(const { slug, cfg } of quizConfigs()){
+    if(!byMolecule.includes(slug)) continue;
+
+    let first = null;
+    for(let t = 0; t < 40 && !first; t++) first = cfg.make([]);
+    assert.ok(first, `${slug}: produced no question at all`);
+
+    let repeats = 0, got = 0;
+    for(let t = 0; t < 400; t++){
+      const q = cfg.make([first.id]);
+      if(!q) continue;
+      got++;
+      // Same molecule, whichever question type it produced about it.
+      if(q.id.split(':')[0] === first.id.split(':')[0]) repeats++;
+    }
+    assert.ok(got > 100, `${slug}: only ${got} of 400 draws produced a question`);
+    assert.equal(repeats, 0,
+      `${slug}: asked about the molecule it was told to avoid ${repeats} times in ${got} draws`);
+  }
+});
+
+test('the styles for a block live in the stylesheet its page loads', () => {
+  /* The tool suggestion renders at the end of every lesson and mechanism, and
+     those pages load only ochem.css. Putting its rules in tools.css styled it
+     on the seven pages that never show it. */
+  const ochem = readFileSync('ochem/assets/ochem.css', 'utf8');
+  for(const cls of ['.tool-suggest', '.tool-suggest__link', '.kbd-hint', '.med-status']){
+    assert.ok(ochem.includes(cls), `${cls} is rendered on lesson pages but not styled in ochem.css`);
+  }
+  // And a lesson page must actually load that stylesheet.
+  const lesson = readFileSync('ochem/lessons/pka.html', 'utf8');
+  assert.match(lesson, /assets\/ochem\.css/);
+  assert.ok(!/assets\/tools\.css/.test(lesson), 'a lesson unexpectedly loads tools.css');
+});
+
+test('every tool that renders a send row actually mounts one', () => {
+  /* Declaring the element and the refresh hook without calling mountSend left
+     one tool with a permanently empty handoff row — present in the markup,
+     never filled. */
+  for(const slug of ['arrow-pusher', 'resonance', 'spectroscopy', 'reaction-predictor', 'viewer-3d']){
+    const src = readFileSync(`ochem/assets/tools/${slug}.js`, 'utf8');
+    assert.match(src, /mountSend\(/, `${slug} has a send row in its markup but never mounts it`);
+  }
+});
