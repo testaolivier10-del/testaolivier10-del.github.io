@@ -18,7 +18,7 @@
 // The cached copy is only served as a fallback when the network fails.
 // Bump CACHE_NAME whenever this file changes, so old cached entries are
 // dropped instead of lingering forever.
-const CACHE_NAME = 'levlprep-v12';
+const CACHE_NAME = 'levlprep-v13';
 const PRECACHE_URLS = [
   'index.html',
   'assets/theme.css',
@@ -26,6 +26,7 @@ const PRECACHE_URLS = [
   'assets/hub-progress.js',
   'assets/site-chrome.js',
   'assets/tutor.js',
+  'assets/announce.js',
   'assets/chime.js',
   'assets/icon.svg',
   'nremt/index.html',

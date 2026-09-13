@@ -207,6 +207,7 @@
     if(document.fonts && document.fonts.ready) document.fonts.ready.then(syncHeights);
 
     mountTutor(cfg);
+    mountAnnouncer();
   }
 
   /* The study assistant. Mounted here rather than per page because every page
@@ -226,6 +227,20 @@
     };
     var el = document.createElement('script');
     el.src = '/assets/tutor.js';
+    el.defer = true;
+    document.head.appendChild(el);
+  }
+
+  /* The screen-reader announcer, mounted the same way and for the same reason
+     as the tutor: it belongs on every page of every course, so no page should
+     have to remember to ask for it. Loaded async — every caller guards on
+     window.LevlAnnounce, and nothing announces anything until the user has
+     answered something, long after this has landed. */
+  function mountAnnouncer(){
+    if(window.__levlAnnouncerMounted) return;
+    window.__levlAnnouncerMounted = true;
+    var el = document.createElement('script');
+    el.src = '/assets/announce.js';
     el.defer = true;
     document.head.appendChild(el);
   }

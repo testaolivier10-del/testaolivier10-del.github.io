@@ -371,6 +371,12 @@ function submitAnswer(chosenId, round){
   // Reported either way: a miss makes no sound but still resets the rising run
   // the chime walks up on a streak.
   if(window.LevlSound) window.LevlSound.answer(correct);
+  // The panel below is rewritten in place each round, so it announces nothing
+  // by itself. This is also the one quiz on the site a screen reader user
+  // cannot fall back on reading the question for — the question is a sound.
+  if(window.LevlAnnounce){
+    window.LevlAnnounce.answer(correct, `That was ${round.label}. ${round.clinical}`);
+  }
   fb.innerHTML = `
     <div class="feedback-verdict ${correct ? 'correct' : 'incorrect'}">${correct ? 'Correct — that\'s ' + round.label + '.' : 'Not quite — that was ' + round.label + '.'}</div>
     <p>${round.clinical}</p>

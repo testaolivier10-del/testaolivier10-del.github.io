@@ -1685,8 +1685,16 @@ function renderFlashcard(){
 
 document.getElementById('fcCard').addEventListener('click', () => {
   fcFlipped = !fcFlipped;
-  document.getElementById('fcFront').style.display = fcFlipped ? 'none' : 'block';
-  document.getElementById('fcBack').style.display = fcFlipped ? 'block' : 'none';
+  const front = document.getElementById('fcFront');
+  const back  = document.getElementById('fcBack');
+  front.style.display = fcFlipped ? 'none' : 'block';
+  back.style.display  = fcFlipped ? 'block' : 'none';
+  // Flipping swaps which face is display:none, and a screen reader is told
+  // nothing by that — the whole point of the interaction is the side that just
+  // became visible, so read it out.
+  if(window.LevlAnnounce){
+    window.LevlAnnounce.say((fcFlipped ? back : front).textContent);
+  }
 });
 
 document.getElementById('fcPrevBtn').addEventListener('click', () => {
@@ -2182,6 +2190,15 @@ function showResults(){
      selection would hand you the answer. The reward lands here instead, on the
      score reveal, pitched to how the attempt went. */
   if(window.LevlSound) window.LevlSound.flourish(score / activeIndices.length);
+  // Submitting swaps the whole quiz screen for the results screen. The chime
+  // above already says roughly how it went to anyone who can hear it; this is
+  // the same news for anyone who cannot, and the exact figure besides.
+  if(window.LevlAnnounce){
+    window.LevlAnnounce.say(
+      `Exam complete. You scored ${score} out of ${activeIndices.length}, ` +
+      `${Math.round(score/activeIndices.length*100)} percent.`
+    );
+  }
 
   document.getElementById('scoreBig').textContent = `${score}/${activeIndices.length}`;
   document.getElementById('scoreSub').textContent = `${Math.round(score/activeIndices.length*100)}% correct — completed in ${formatDuration(elapsed)}`;

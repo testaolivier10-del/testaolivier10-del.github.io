@@ -824,6 +824,23 @@ function renderNode(consequenceText){
   const node = currentScenario.nodes[currentNodeId];
   const box = document.getElementById('simBox');
 
+  /* Choosing an action replaces this whole panel, which a screen reader is
+     told nothing about — and unlike the quizzes there is no right/wrong chime
+     standing in either. What a choice cost or bought is the whole point of the
+     exercise, so the consequence (or, at the end, how the call went) goes to
+     the live region. The node text itself is not announced: it is long, and it
+     is still there to be read at the user's own pace. */
+  if(window.LevlAnnounce){
+    if(node.ending){
+      const verdict = node.ending === 'good' ? 'Good outcome.'
+                    : node.ending === 'bad'  ? 'Poor outcome.'
+                    : 'Mixed outcome.';
+      window.LevlAnnounce.say(verdict + ' ' + (consequenceText || ''));
+    } else if(consequenceText){
+      window.LevlAnnounce.say('What happened: ' + consequenceText);
+    }
+  }
+
   if (node.ending) {
     box.innerHTML = `
       <div class="sim-header">

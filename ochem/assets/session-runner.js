@@ -549,6 +549,13 @@
       S.liveAnswered = true;
 
       document.getElementById('afterAnswer').innerHTML = feedbackHtml(q, d, check, false);
+      /* The panel above is written into a card the runner replaces between
+         questions, so nothing in it is announced on its own. Send the verdict
+         and the reason to the site's live region — the diagnosis is the part
+         worth hearing on a miss, since it names what actually went wrong. */
+      if(window.LevlAnnounce){
+        window.LevlAnnounce.answer(d.correct, d.correct ? d.why : (d.diagnosis || d.why));
+      }
       var btn = cardEl.querySelector('#nextBtn');
       if(btn) btn.addEventListener('click', advance);
     }

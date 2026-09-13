@@ -125,11 +125,20 @@
     /* Every lesson check and every hand-built drill widget reports its verdict
        through here, which makes it the one place the reward chime has to be
        wired for the whole lessons half of the course. The wrong case is passed
-       on too, so the chime's rising run resets on a miss. */
+       on too, so the chime's rising run resets on a miss.
+
+       It is also the one place the announcement has to be wired: this box is
+       written with textContent into a card the engine replaces between steps,
+       so a screen reader is told nothing by it on its own. Sending the verdict
+       to the site's live region covers all 58 lessons from here. */
     function showFeedback(el, good, text){
       el.className = 'feedback show ' + (good?'good':'bad');
       el.textContent = text;
       if(window.LevlSound) window.LevlSound.answer(good);
+      // The text already opens with its own verdict ("Correct.", "Not quite —
+      // try again."), so it is announced as written rather than prefixed with
+      // a second one.
+      if(window.LevlAnnounce) window.LevlAnnounce.say(text);
     }
     function nextButtonHtml(label, enabled){ return '<div class="actions"><button class="btn-press" id="nextBtn"' + (enabled?'':' disabled') + '>' + label + '</button></div>'; }
     function doneBoxHtml(){ return '<div class="actions" style="margin-top:8px;"><a href="' + notesHref + '" class="btn-press">Back to the textbook</a></div>'; }
