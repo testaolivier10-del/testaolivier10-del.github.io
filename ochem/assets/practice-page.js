@@ -212,7 +212,15 @@
     var strong = M.strongest(3);
     var stats = E.stats();
 
-    var html = recommendationsHtml(recs) + snapshotHtml();
+    // Two columns: starting a session on the left, your profile on the right.
+    var html = '<div class="practice-grid"><div class="practice-main">' + recommendationsHtml(recs);
+    html += '<div class="section-head">Other ways to practice</div>' + modeGridHtml();
+    html += '<p style="margin-top:18px;font:700 12.5px var(--font-ui);color:var(--muted);line-height:1.6;">' +
+      esc(stats.total.toLocaleString() + ' questions across ' + stats.topics + ' topics, ' + stats.interactive +
+      ' of them interactive (click an atom, push an arrow, rank a series, predict a product). ') +
+      'Your concept map lives on <a href="mastery.html">Mastery</a>.</p>';
+    html += '</div><aside class="practice-side">';
+    html += '<div class="section-head">Your numbers</div>' + snapshotHtml();
 
     if(weak.length){
       html += '<div class="section-head">Where you are weakest</div>' +
@@ -245,12 +253,7 @@
         '</div>';
     }
 
-    html += '<div class="section-head">Other ways to practice</div>' + modeGridHtml();
-
-    html += '<p style="margin-top:18px;font:700 12.5px var(--font-ui);color:var(--muted);line-height:1.6;">' +
-      esc(stats.total.toLocaleString() + ' questions across ' + stats.topics + ' topics, ' + stats.interactive +
-      ' of them interactive (click an atom, push an arrow, rank a series, predict a product). ') +
-      'Your concept map lives on <a href="mastery.html">Mastery</a>.</p>';
+    html += '</aside></div>';
 
     homeEl.innerHTML = html;
 
