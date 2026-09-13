@@ -9,14 +9,17 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy — LevlPrep</title>
-<meta name="description" content="What LevlPrep stores, what leaves your browser, and what it doesn't. No ads, no trackers, no cookies — just one anonymous page counter and an optional account.">
+<meta name="description" content="What LevlPrep stores, what leaves your browser, and what it doesn't. No ads, no cookies and no cross-site tracking — cookieless analytics, one anonymous page counter and an optional account.">
 <link rel="canonical" href="https://testaolivier10-del.github.io/privacy.html">
 <meta property="og:title" content="Privacy — LevlPrep">
 <meta property="og:description" content="What LevlPrep stores, what leaves your browser, and what it doesn't.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://testaolivier10-del.github.io/privacy.html">
 <meta property="og:site_name" content="LevlPrep">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://testaolivier10-del.github.io/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,9 +32,29 @@
   .privacy strong{color:var(--ink);font-weight:800;}
   .privacy ul{padding-left:20px;margin:8px 0 0;}
   .privacy .updated{font:700 12px var(--font-mono);color:var(--muted);letter-spacing:.04em;}
+
+  /* The two live controls on this page. Everything else here is a statement
+     about what the site does; these are the buttons that change it. Set on a
+     tinted panel so they read as controls rather than as more prose. */
+  .privacy .controls{
+    background:var(--tint-accent);border:var(--bw) solid var(--line);
+    border-radius:var(--radius);padding:18px 20px;margin:14px 0 6px;max-width:66ch;
+  }
+  .privacy .controls .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+  .privacy .controls p{margin:0 0 12px;}
+  .privacy .controls p:last-child{margin:12px 0 0;}
+  .privacy .note{
+    font:700 14px var(--font-ui);margin:12px 0 0;min-height:1.2em;
+  }
+  .privacy .note.good{color:var(--good-text);}
+  .privacy .note.bad{color:var(--bad-text);}
+  .privacy .controls .file{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
 </style>
 </head>
 <body>
+<!-- Like the hub, this page draws its own header instead of calling
+     LevlChrome.render, so it carries its own skip link too. -->
+<a class="skip-link" href="#main">Skip to content</a>
 <div id="site-header">
   <div class="site-header__inner">
     <a class="site-header__brand" href="index.html">
@@ -41,11 +64,11 @@
   </div>
 </div>
 
-<div class="xshell">
+<div class="xshell" id="main" data-skip-target tabindex="-1">
   <div class="hero">
     <div class="eyebrow">Privacy</div>
     <h1>What leaves your browser.</h1>
-    <p class="lede">Short version: almost nothing. There are no ads, no trackers and no cookies on this site. Everything you do here is stored on your own device unless you choose to sign in.</p>
+    <p class="lede">Short version: almost nothing. There are no ads and no cookies on this site, and nothing here follows you anywhere else on the web. Everything you study is stored on your own device unless you choose to sign in. There is cookieless analytics, and <a href="#site-analytics">Site analytics</a> below lists every field it records.</p>
     <p class="updated">Last updated 13 September 2026</p>
   </div>
 
@@ -56,6 +79,19 @@
 
         <h2>Your progress stays on your device</h2>
         <p>Answers, scores, streaks, XP, mastery, flagged questions, your study plan and your light/dark preference are all written to your browser's <strong>localStorage</strong>. That is a store only this site can read, it never travels with a request, and clearing your browser data erases it. No account is needed to use any feature on this site.</p>
+
+        <h2 id="backup">Keeping a copy of it</h2>
+        <p>That last part cuts both ways. Nothing leaves your device, and nothing survives clearing your browser data, switching browsers, or moving to a new laptop. Signing in syncs your XP and streak; it does not carry every per-question record.</p>
+        <p>So you can take the whole thing with you as a file — everything above, as readable JSON — and put it back on any browser. Your sign-in token is deliberately left out of it: that is a live credential, and a backup should not be a way to hand over an account.</p>
+        <div class="controls">
+          <div class="row">
+            <button type="button" class="btn-press sm" id="bkExport">Download my progress</button>
+            <button type="button" class="btn-press sm alt" id="bkImportBtn">Restore from a file</button>
+            <input type="file" accept="application/json,.json" class="file" id="bkImportFile" aria-label="Choose a LevlPrep backup file">
+          </div>
+          <p class="note" id="bkNote" role="status" aria-live="polite" aria-atomic="true"></p>
+        </div>
+        <p><strong>Restoring replaces</strong> what is on this browser rather than merging into it — two study histories mixed together are not a study history. You will be asked to confirm first.</p>
 
         <h2>One anonymous counter</h2>
         <p>Each page load increments a counter so we can see which pages get used. It records <strong>the page path and the date, and nothing else</strong> — no IP address, no cookie, no user id, no session id, no device fingerprint, no referrer. There is no way to tell two visits apart, or to tell whether a visit was yours.</p>
@@ -73,6 +109,13 @@
         <p>We also record a small number of <strong>milestones</strong>, so the site can tell whether a feature works rather than just whether it was opened: an exam being started and finished (with the score as a band such as "70-79", never an exact result), a practice session being started and finished, and a lesson being completed. No answer you give and no question you see is ever sent.</p>
         <p>If your browser sends a <strong>Do Not Track</strong> signal, this is switched off for you entirely and nothing above is collected. Blocking it with an ad blocker or privacy extension works too, and nothing on the site depends on it.</p>
         <p>None of this is connected to your account, your progress, or the study assistant. Umami acts as our processor and the data is never sold, shared or used for advertising.</p>
+        <p>You can also just switch it off here, for this browser, without installing anything:</p>
+        <div class="controls">
+          <div class="row">
+            <button type="button" class="btn-press sm" id="anToggle" aria-pressed="false">Checking&hellip;</button>
+          </div>
+          <p class="note" id="anNote" role="status" aria-live="polite" aria-atomic="true"></p>
+        </div>
 
         <h2>Signing in is optional</h2>
         <p>If you create an account, the same progress described above is also copied to a row in our database so it follows you to another device. In that case we store:</p>
@@ -123,7 +166,115 @@
 </div>
 
 <script src="assets/account.js"></script>
+<!-- This page draws its own header rather than calling LevlChrome.render, so
+     nothing has mounted analytics.js for it. Loaded here on its own account:
+     the opt-out switch below needs LevlAnalytics to read and write. -->
+<script src="assets/analytics.js"></script>
+<script src="assets/progress-backup.js"></script>
 <script>
+  /* ---- Back up and restore ---- */
+  (function(){
+    var note = document.getElementById('bkNote');
+    var exportBtn = document.getElementById('bkExport');
+    var importBtn = document.getElementById('bkImportBtn');
+    var file = document.getElementById('bkImportFile');
+    if(!note || !exportBtn || !importBtn || !file || !window.LevlBackup) return;
+
+    function say(text, good){
+      note.textContent = text;
+      note.className = 'note ' + (good ? 'good' : 'bad');
+    }
+
+    exportBtn.addEventListener('click', function(){
+      var res = window.LevlBackup.download();
+      if(res.ok) say('Saved ' + res.keys + ' items to ' + window.LevlBackup.filename() + '.', true);
+      else say(res.error, false);
+    });
+
+    // The real file input is off-screen rather than styled, because a file
+    // input cannot be made to look like the rest of the buttons on this site
+    // and every browser draws it differently. The visible button forwards to
+    // it; the input keeps its own label for a screen reader.
+    importBtn.addEventListener('click', function(){ file.click(); });
+
+    file.addEventListener('change', function(){
+      var chosen = file.files && file.files[0];
+      if(!chosen) return;
+      var reader = new FileReader();
+      reader.onerror = function(){ say('That file could not be read.', false); };
+      reader.onload = function(){
+        var parsed = window.LevlBackup.parse(String(reader.result));
+        if(!parsed.ok){ say(parsed.error, false); file.value = ''; return; }
+
+        // Confirmed against what the file actually contains, checked before
+        // anything is written — so the question is about this backup rather
+        // than about backups in general.
+        var when = parsed.exportedAt ? new Date(parsed.exportedAt).toLocaleDateString() : 'an unknown date';
+        var ok = window.confirm(
+          'Restore ' + parsed.kept + ' items saved on ' + when + '?\n\n' +
+          'This replaces the progress currently on this browser. It cannot be undone.'
+        );
+        if(!ok){ say('Nothing was changed.', true); file.value = ''; return; }
+
+        var res = window.LevlBackup.restore(String(reader.result));
+        file.value = '';
+        if(!res.ok){ say(res.error, false); return; }
+        say('Restored ' + res.kept + ' items. Reloading\u2026', true);
+        // Reloaded rather than left as is: account.js, hub-progress.js and
+        // every page script read their state once at load, so the page you
+        // are looking at is still showing the progress that was just
+        // replaced.
+        setTimeout(function(){ location.reload(); }, 900);
+      };
+      reader.readAsText(chosen);
+    });
+  })();
+
+  /* ---- Analytics opt-out ---- */
+  (function(){
+    var btn = document.getElementById('anToggle');
+    var note = document.getElementById('anNote');
+    if(!btn || !note) return;
+
+    if(!window.LevlAnalytics || !window.LevlAnalytics.enabled){
+      // Either analytics is not configured, or something blocked the script
+      // before it defined anything — an ad blocker, most likely. In both
+      // cases there is nothing to opt out of, and a switch that claims
+      // otherwise would be a lie either way.
+      btn.hidden = true;
+      note.textContent = 'Analytics is not running in this browser, so there is nothing to switch off.';
+      note.className = 'note good';
+      return;
+    }
+
+    function sync(){
+      var off = window.LevlAnalytics.optedOut();
+      btn.textContent = off ? 'Turn analytics back on' : 'Turn analytics off on this browser';
+      btn.setAttribute('aria-pressed', off ? 'true' : 'false');
+      note.textContent = off
+        ? 'Analytics is off on this browser. Nothing described above is collected.'
+        : 'Analytics is on. This setting is stored on this browser only, and clearing your browser data resets it.';
+      note.className = 'note ' + (off ? 'good' : '');
+    }
+
+    btn.addEventListener('click', function(){
+      var wasOff = window.LevlAnalytics.optedOut();
+      if(!window.LevlAnalytics.setOptedOut(!wasOff)){
+        note.textContent = 'This browser will not let the site save the setting.';
+        note.className = 'note bad';
+        return;
+      }
+      sync();
+      if(!wasOff){
+        // The Umami script, once in the page, stays in the page. Events stop
+        // immediately; the pageview for this visit has already been sent.
+        note.textContent += ' It takes full effect on your next page load.';
+      }
+    });
+
+    sync();
+  })();
+
   (function(){
     var t = document.getElementById('themeToggle');
     if(!t) return;
