@@ -131,6 +131,29 @@
       '<a href="practice.html?concept=' + esc(weakest.id) + '">' + esc(weakest.concept.title) +
       ' — ' + pct(weakest.strength) + '% &rarr;</a></div></div>');
   }
+  /* A tool for whichever of them you are worst at.
+
+     The other two cards send you to graded practice, which is the right answer
+     for a concept you half-know and the wrong one for a concept you have never
+     had in your hands. The tools cover a minority of topics, so this is silent
+     far more often than not — and it is deliberately ranked last, because a
+     sandbox is a thing to offer, not a thing to assign. */
+  if(window.OchemTools && M.topicsStrength){
+    var worstTool = null;
+    window.OchemTools.ALL.forEach(function(tool){
+      var r = M.topicsStrength([].concat(tool.topic || []));
+      if(r.strength === null) return;                // never attempted: nothing to say
+      if(!worstTool || r.strength < worstTool.strength){
+        worstTool = { tool: tool, strength: r.strength };
+      }
+    });
+    if(worstTool && worstTool.strength < 0.7){
+      recCards.push('<div class="rec-card"><div class="k">Get your hands on it</div><div class="v">' +
+        '<a href="tools/' + esc(worstTool.tool.slug) + '.html">' + esc(worstTool.tool.name) +
+        ' — ' + esc(worstTool.tool.tagline) + '</a></div></div>');
+    }
+  }
+
   if(!recCards.length){
     var nextUnlocked = null;
     C.MODULES.some(function(m){

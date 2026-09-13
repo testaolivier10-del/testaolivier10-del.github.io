@@ -77,11 +77,15 @@
     return '<div class="actions"><button class="btn-press" id="nextBtn"' +
            (enabled ? '' : ' disabled') + '>' + esc(label || 'Continue') + '</button></div>';
   }
+  /* Someone who has just pushed the arrows of SN1 step by step is the exact
+     person the Arrow Pusher was built for, so the sandbox is offered here
+     alongside the graded practice. Empty for topics no tool covers. */
   function doneBox(){
+    var suggest = window.OchemToolSuggest ? window.OchemToolSuggest.html(CFG.topicId, '../') : '';
     return '<div class="actions" style="margin-top:8px;flex-wrap:wrap;">' +
       '<a href="../practice.html?topic=' + esc(CFG.topicId) + '" class="btn-press">Practise this</a>' +
       '<a href="../learn.html" class="btn-press alt">Back to the textbook</a>' +
-    '</div>';
+    '</div>' + suggest;
   }
   function advance(){ step++; render(); }
   function goBack(){ if(step > 0){ step--; render(); } }

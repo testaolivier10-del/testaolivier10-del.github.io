@@ -141,7 +141,14 @@
       if(window.LevlAnnounce) window.LevlAnnounce.say(text);
     }
     function nextButtonHtml(label, enabled){ return '<div class="actions"><button class="btn-press" id="nextBtn"' + (enabled?'':' disabled') + '>' + label + '</button></div>'; }
-    function doneBoxHtml(){ return '<div class="actions" style="margin-top:8px;"><a href="' + notesHref + '" class="btn-press">Back to the textbook</a></div>'; }
+    /* The tool suggestion goes here rather than into each lesson because this
+       is the one place every lesson ends, so a topic that gains a tool later
+       starts offering it without anyone reopening fifty-eight files. Renders
+       nothing for the topics no tool covers, which is most of them. */
+    function doneBoxHtml(){
+      var suggest = window.OchemToolSuggest ? window.OchemToolSuggest.html(topicId, '../') : '';
+      return '<div class="actions" style="margin-top:8px;"><a href="' + notesHref + '" class="btn-press">Back to the textbook</a></div>' + suggest;
+    }
 
     function advance(){ step++; render(); }
     function goBack(){ if(step > 0){ step--; render(); } }
