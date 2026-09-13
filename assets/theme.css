@@ -892,56 +892,6 @@ html{scrollbar-color:var(--muted) transparent;}
 }
 
 /* ==========================================================================
-   7b. Disclosure — the same information, folded until asked for
-   ========================================================================== */
-/* A native <details> styled as a quiet link. The summary is the one line that
-   stays on the page; everything inside is the explanation. */
-.fold{margin:0;}
-.fold > summary{
-  list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
-  font:800 13px var(--font-ui);color:var(--accent-text);padding:4px 0;border-radius:6px;
-}
-.fold > summary::-webkit-details-marker{display:none;}
-.fold > summary::before{
-  content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;
-  transform:rotate(-45deg);transition:transform .15s ease;margin-left:2px;flex-shrink:0;
-}
-.fold[open] > summary::before{transform:rotate(45deg);}
-.fold > summary:hover{color:var(--ink);}
-.fold > *:not(summary){margin-top:10px;}
-.fold p{font-size:14px;font-weight:600;color:var(--muted);line-height:1.55;margin:0;}
-/* A whole section folded: the summary reads as a card row, the body opens
-   beneath it. */
-.fold-card{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--lift);padding:0;}
-.fold-card > summary{
-  list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;
-  padding:18px 22px;font:900 16px var(--font-ui);color:var(--ink);border-radius:var(--radius-lg);
-}
-.fold-card > summary::-webkit-details-marker{display:none;}
-.fold-card > summary small{font:700 13.5px var(--font-ui);color:var(--muted);}
-.fold-card > summary::after{
-  content:"";width:9px;height:9px;border-right:2.5px solid var(--muted);border-bottom:2.5px solid var(--muted);
-  transform:rotate(45deg);transition:transform .15s ease;flex-shrink:0;margin-right:4px;
-}
-.fold-card[open] > summary::after{transform:rotate(-135deg);}
-.fold-card > summary:hover{background:var(--hover-tint);}
-.fold-card > .fold-body{padding:4px 22px 22px;}
-/* Tab row: one page, several views, one visible at a time. */
-.tab-row{display:flex;gap:4px;flex-wrap:wrap;margin:0 0 16px;}
-.tab-row button{
-  font:800 13.5px var(--font-ui);color:var(--muted);background:var(--white);box-shadow:var(--lift-sm);
-  border:0;border-radius:var(--radius-pill);padding:9px 15px;cursor:pointer;transition:background-color .15s,color .15s;
-}
-.tab-row button:hover{color:var(--ink);}
-.tab-row button[aria-selected="true"]{background:var(--ctint);color:var(--cink);box-shadow:none;}
-.tab-panel[hidden]{display:none;}
-/* A thin stat strip: several readings on one line, no boxes. */
-.strip{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:baseline;padding:12px 18px;background:var(--white);border-radius:var(--radius);box-shadow:var(--lift-sm);margin-bottom:18px;}
-.strip .cell{display:flex;align-items:baseline;gap:8px;}
-.strip .cell .v{font:700 17px var(--font-mono);color:var(--ink);}
-.strip .cell .k{font:800 12px var(--font-ui);color:var(--muted);}
-
-/* ==========================================================================
    7c. Textbook shell — a contents rail beside one chapter at a time.
    Used by ochem/learn.html and nremt/study-notes.html; the chapter body
    styles stay with each course, the frame and rail are shared.

@@ -55,7 +55,7 @@
   /* "What now" row: the lesson you left, the review queue, the weak
      prerequisite. Each card is rewritten by ochem-home.js when there's real
      progress to report; the authored markup is the first-visit state. */
-  .now-row{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;}
+  .now-row{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:18px;}
   .now-card{
     background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
     padding:22px 24px;box-shadow:var(--lift-lg);
@@ -119,26 +119,6 @@
     .mod-path .node .ring{transition:none;}
     .mod-path.drawn .node.current .ring{animation:none;}
   }
-  .tool-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px;}
-  .tool-chips a{font:800 12.5px var(--font-ui);color:#fff;text-decoration:none;padding:6px 12px;border-radius:var(--radius-pill);background:rgba(255,255,255,.14);}
-  .tool-chips a:hover{background:rgba(255,255,255,.26);}
-  .mechcard{background:var(--surface2);border-radius:var(--radius-lg);padding:22px;}
-  .mechcard .qopt{background:var(--white);}
-
-  /* 'Not started' used to wrap onto two lines in the narrower cards,
-     so the three headings sat at three different heights. */
-  .tier .th .pct{font:700 13px var(--font-mono);color:var(--accent);white-space:nowrap;flex-shrink:0;}
-  .tier .meta{font-size:12.5px;font-weight:800;color:var(--muted);}
-  .tier .chips{display:flex;flex-wrap:wrap;gap:7px;}
-  .tier .chips a{
-    font:800 12px var(--font-ui);text-decoration:none;color:var(--ink);background:var(--paper);
-    border:var(--bw) solid var(--line);border-radius:var(--radius-pill);padding:6px 12px;
-    transition:border-color .12s ease,color .12s ease;
-  }
-  .tier .chips a:hover{border-color:var(--accent);color:var(--accent);}
-  .tier .chips a.done{background:var(--tint-accent);border-color:var(--accent);color:var(--accent-text);}
-  .tier .chips a.open{background:var(--tint-amber);border-color:var(--amber);color:var(--amber-text);}
-  .tier .chips a.more{color:var(--muted);background:transparent;border-style:dashed;}
 
   /* Dark feature panel for the seven interactive tools. */
   .feature-card{
@@ -151,6 +131,12 @@
   }
   .feature-card h2{font-weight:900;font-size:clamp(22px,2.8vw,28px);margin:0 0 12px;color:#fff;}
   .feature-card p{color:var(--muted-on-dark);font-size:15px;font-weight:600;margin:0 0 20px;max-width:40ch;}
+  .tool-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;}
+  .tool-chips a{
+    font:800 12px var(--font-ui);color:#fff;text-decoration:none;
+    background:rgba(255,255,255,.14);border-radius:var(--radius-pill);padding:6px 12px;
+  }
+  .tool-chips a:hover{background:rgba(255,255,255,.26);color:#fff;}
 
   /* Sample mechanism step. */
   .sample-row{display:grid;grid-template-columns:0.85fr 1.15fr;gap:clamp(28px,4vw,48px);align-items:center;}
@@ -225,21 +211,24 @@
 
   <!-- What to do right now. Each card is the first-visit state until
        ochem-home.js has real progress to put in it. -->
-  <!-- What to do right now: the lesson to continue, and today's work. Both
-       are the first-visit state until ochem-home.js has real progress. -->
   <div class="xsection">
     <div class="now-row">
       <div class="now-card" id="homeResume">
         <div class="k">Start here</div>
         <h3>Atomic structure</h3>
-        <p>Module 1 &middot; Foundations &middot; nine topics.</p>
+        <p>Module 1 &middot; Foundations. Nine topics of groundwork before the first mechanism &mdash; every arrow later on cashes in something from here.</p>
         <a href="lessons/atomic-structure.html" class="btn-press">Start the first lesson</a>
       </div>
-      <div class="now-card" id="homeToday">
-        <div class="k">Today</div>
+      <div class="now-card" id="homeReview">
+        <div class="k">Review queue</div>
         <h3>Nothing due yet</h3>
-        <p>Finish a lesson and a daily set starts drawing from what you learned.</p>
-        <a href="practice.html" class="link-quiet">Open practice &rarr;</a>
+        <p>Finish a lesson and its concepts join a queue scheduled by how shaky each one was &mdash; not by when you studied it.</p>
+      </div>
+      <div class="now-card" id="homeNext">
+        <div class="k">Daily Rounds</div>
+        <h3>A short set each day</h3>
+        <p>Drawn from whatever you're closest to forgetting, so a ten-minute day still does the work that matters.</p>
+        <a href="practice.html" class="link-quiet">See practice &rarr;</a>
       </div>
     </div>
   </div>
@@ -326,7 +315,7 @@
       </div>
       <div>
         <h2>Seven tools that do the chemistry, not a lookup.</h2>
-        <p>Push electrons, rank resonance forms, rotate a Newman projection, predict a spectrum.</p>
+        <p>Push electrons on a molecule you drew and watch the structure change. Rotate a Newman projection against a live energy curve. Draw a structure and get its predicted &#185;H NMR, splitting explained.</p>
         <div class="tool-chips">
           <a href="tools/arrow-pusher.html">Arrow Pusher</a>
           <a href="tools/resonance.html">Resonance Explorer</a>
@@ -336,39 +325,40 @@
           <a href="tools/acid-base.html">Acid/Base Comparator</a>
           <a href="tools/spectroscopy.html">Spectroscopy Lab</a>
         </div>
-        <a href="tools.html" class="btn-press alt">Open the tools</a>
+        <a href="tools/arrow-pusher.html" class="btn-press alt">Open the arrow pusher</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="xsection" id="sample">
+    <div class="sample-row">
+      <div>
+        <h2 style="margin-top:0">Try a step.</h2>
+        <p class="section-lede" style="margin:0 0 24px;text-align:left">Mechanisms are graded one step at a time, and every topic carries thirty practice questions of its own.</p>
+        <div class="sample-list">
+          <div class="row"><span class="n">1</span> Identify the nucleophile and electrophile</div>
+          <div class="row"><span class="n">2</span> Draw the electron-pushing arrow</div>
+          <div class="row"><span class="n">3</span> Predict the product and stereochemistry</div>
+        </div>
+      </div>
+      <div class="mechcard">
+        <span class="tag domain">SN2</span> <span class="tag diff">Arrow step</span>
+        <div class="qtext">Hydroxide attacks bromomethane. Where does the arrow start, and where does it end?</div>
+        <div class="qopt"><span class="letter">A</span> From the C&ndash;Br bond to the bromine</div>
+        <div class="qopt correct"><span class="letter">B</span> From the hydroxide lone pair to the carbon</div>
+        <div class="qopt"><span class="letter">C</span> From the carbon to the hydroxide oxygen</div>
+        <div class="qopt" style="margin-bottom:0"><span class="letter">D</span> From the bromine lone pair to the carbon</div>
       </div>
     </div>
   </div>
 
   <div class="xsection">
-    <details class="fold-card" id="sample">
-      <summary>Try a step <small>SN2, one arrow, graded</small></summary>
-      <div class="fold-body">
-        <div class="sample-row">
-          <div>
-            <p class="section-lede" style="margin:0 0 20px;text-align:left">Mechanisms are graded one step at a time, and every topic carries thirty practice questions of its own.</p>
-            <div class="sample-list">
-              <div class="row"><span class="n">1</span> Identify the nucleophile and electrophile</div>
-              <div class="row"><span class="n">2</span> Draw the electron-pushing arrow</div>
-              <div class="row"><span class="n">3</span> Predict the product and stereochemistry</div>
-            </div>
-          </div>
-          <div class="mechcard">
-            <span class="tag domain">SN2</span> <span class="tag diff">Arrow step</span>
-            <div class="qtext">Hydroxide attacks bromomethane. Where does the arrow start, and where does it end?</div>
-            <div class="qopt"><span class="letter">A</span> From the C&ndash;Br bond to the bromine</div>
-            <div class="qopt correct"><span class="letter">B</span> From the hydroxide lone pair to the carbon</div>
-            <div class="qopt"><span class="letter">C</span> From the carbon to the hydroxide oxygen</div>
-            <div class="qopt" style="margin-bottom:0"><span class="letter">D</span> From the bromine lone pair to the carbon</div>
-          </div>
-        </div>
-      </div>
-    </details>
-  </div>
-
-  <div class="xsection">
-    <p class="disclaimer">Free while in beta. Progress is stored on your device; signing in is optional and syncs it, and your level and streak are shared with every other subject on LevlPrep. <a href="../privacy.html">Privacy</a></p>
+    <div class="trust-row">
+      <div class="trust-pill">Free while in beta</div>
+      <div class="trust-pill">Progress saved on your device</div>
+      <div class="trust-pill">No account required</div>
+    </div>
+    <p class="disclaimer">Independent study aid. Progress is stored on your device; signing in is optional and syncs it, and your level and streak are shared with every other subject on LevlPrep. <a href="../privacy.html">Privacy</a></p>
   </div>
 
 </div>
