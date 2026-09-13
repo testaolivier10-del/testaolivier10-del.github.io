@@ -212,8 +212,15 @@
     var current = null;
     if(resumedTopicId){ var w = moduleOf(resumedTopicId); if(w) current = w.mod.id; }
     C.MODULES.forEach(function(m){
-      var row = document.querySelector('.mod-row[data-module="' + m.id + '"]');
+      var row = document.querySelector('.mod[data-module="' + m.id + '"]');
       if(!row) return;
+      // Chips inside the row: teal once finished, amber while a run is open.
+      Array.prototype.forEach.call(row.querySelectorAll('[data-topic]'), function(chip){
+        var r = p[chip.getAttribute('data-topic')];
+        if(!r) return;
+        if(typeof r.bestScore === 'number') chip.classList.add('done');
+        else if(r.step > 0) chip.classList.add('open');
+      });
       var scores = [];
       var firstOpen = null;
       m.topics.forEach(function(t){
@@ -229,8 +236,7 @@
         var fill = row.querySelector('.track > i'); if(fill) fill.style.width = avg + '%';
         var pct = row.querySelector('.pct'); if(pct) pct.textContent = avg + '%';
       }
-      // Send the row to where you'd continue, not always to the first topic.
-      if(firstOpen && firstOpen.href) row.setAttribute('href', base + firstOpen.href);
+
     });
     if(!current){
       // Nothing scored yet: the first module with an unfinished lesson.
@@ -241,8 +247,8 @@
       });
     }
     if(current){
-      var cur = document.querySelector('.mod-row[data-module="' + current + '"]');
-      if(cur) cur.classList.add('current');
+      var cur = document.querySelector('.mod[data-module="' + current + '"]');
+      if(cur){ cur.open = true; var sm = cur.querySelector('.mod-row'); if(sm) sm.classList.add('current'); }
     }
   }
 

@@ -84,7 +84,24 @@
   .mod-row.current{background:var(--ctint);}
   .mod-row.current .num{color:var(--cink);}
   .mod-row.current .body small::after{content:" · you are here";color:var(--cink);}
-  @media(max-width:640px){ .mod-row{grid-template-columns:28px minmax(0,1fr) 44px;} .mod-row .track{display:none;} }
+  .mod > summary{list-style:none;cursor:pointer;}
+  .mod > summary::-webkit-details-marker{display:none;}
+  .mod + .mod{border-top:1px solid var(--line-soft);}
+  .mod .chips{display:flex;flex-wrap:wrap;gap:7px;padding:2px 14px 16px 66px;}
+  .mod .chips a,.mod .chips span{
+    font:800 12.5px var(--font-ui);padding:6px 12px;border-radius:var(--radius-pill);
+    text-decoration:none;color:var(--ink);background:var(--surface2);
+  }
+  .mod .chips a:hover{background:var(--ctint);color:var(--cink);}
+  .mod .chips a.done{background:var(--tint-accent);color:var(--accent-text);}
+  .mod .chips a.open{background:var(--tint-amber);color:var(--amber-text);}
+  .mod .chips span.soon{color:var(--muted);background:transparent;box-shadow:inset 0 0 0 1.5px var(--line);}
+  .tool-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px;}
+  .tool-chips a{font:800 12.5px var(--font-ui);color:#fff;text-decoration:none;padding:6px 12px;border-radius:var(--radius-pill);background:rgba(255,255,255,.14);}
+  .tool-chips a:hover{background:rgba(255,255,255,.26);}
+  .mechcard{background:var(--surface2);border-radius:var(--radius-lg);padding:22px;}
+  .mechcard .qopt{background:var(--white);}
+  @media(max-width:640px){ .mod-row{grid-template-columns:28px minmax(0,1fr) 44px;} .mod-row .track{display:none;} .mod .chips{padding-left:14px;} }
 
   /* 'Not started' used to wrap onto two lines in the narrower cards,
      so the three headings sat at three different heights. */
@@ -193,13 +210,13 @@
       <div class="now-card" id="homeResume">
         <div class="k">Start here</div>
         <h3>Atomic structure</h3>
-        <p>Module 1 &middot; Foundations. Nine topics of groundwork before the first mechanism &mdash; every arrow later on cashes in something from here.</p>
+        <p>Module 1 &middot; Foundations &middot; nine topics.</p>
         <a href="lessons/atomic-structure.html" class="btn-press">Start the first lesson</a>
       </div>
       <div class="now-card" id="homeToday">
         <div class="k">Today</div>
         <h3>Nothing due yet</h3>
-        <p>Finish a lesson and its concepts join a review queue scheduled by how shaky each one was. A short daily set is drawn from it.</p>
+        <p>Finish a lesson and a daily set starts drawing from what you learned.</p>
         <a href="practice.html" class="link-quiet">Open practice &rarr;</a>
       </div>
     </div>
@@ -210,93 +227,211 @@
   <div class="xsection">
     <div class="section-head">
       <h2>Fourteen modules, in the order they build</h2>
-      <p class="section-lede">Each one leans on the last. Tap a module to open its first lesson; the textbook has every topic.</p>
+      <p class="section-lede">Each one leans on the last. Open a module to see its topics.</p>
     </div>
     <div class="module-list" id="moduleList">
-      <a class="mod-row" data-module="foundations" href="lessons/atomic-structure.html">
-        <span class="num">1</span>
-        <span class="body"><b>Foundations</b><small>9 topics</small></span>
-        <span class="track thin"><i style="width:0%"></i></span>
-        <span class="pct">&mdash;</span>
-      </a>
-      <a class="mod-row" data-module="electron-movement" href="lessons/resonance.html">
-        <span class="num">2</span>
-        <span class="body"><b>Organic Structure &amp; Electron Movement</b><small>6 topics</small></span>
-        <span class="track thin"><i style="width:0%"></i></span>
-        <span class="pct">&mdash;</span>
-      </a>
-      <a class="mod-row" data-module="acids-bases" href="lessons/bronsted.html">
-        <span class="num">3</span>
-        <span class="body"><b>Acids &amp; Bases</b><small>5 topics</small></span>
-        <span class="track thin"><i style="width:0%"></i></span>
-        <span class="pct">&mdash;</span>
-      </a>
-      <a class="mod-row" data-module="alkanes-conformations" href="lessons/newman.html">
-        <span class="num">4</span>
-        <span class="body"><b>Alkanes &amp; Conformations</b><small>5 topics</small></span>
-        <span class="track thin"><i style="width:0%"></i></span>
-        <span class="pct">&mdash;</span>
-      </a>
-      <a class="mod-row" data-module="stereochemistry" href="lessons/chirality.html">
-        <span class="num">5</span>
-        <span class="body"><b>Stereochemistry</b><small>7 topics</small></span>
-        <span class="track thin"><i style="width:0%"></i></span>
-        <span class="pct">&mdash;</span>
-      </a>
-      <a class="mod-row" data-module="substitution-elimination" href="mechanisms/sn2.html">
-        <span class="num">6</span>
-        <span class="body"><b>Substitution &amp; Elimination</b><small>5 topics</small></span>
-        <span class="track thin"><i style="width:0%"></i></span>
-        <span class="pct">&mdash;</span>
-      </a>
-      <a class="mod-row" data-module="alkenes-alkynes" href="lessons/alkene-structure.html">
-        <span class="num">7</span>
-        <span class="body"><b>Alkenes &amp; Alkynes</b><small>4 topics</small></span>
-        <span class="track thin"><i style="width:0%"></i></span>
-        <span class="pct">&mdash;</span>
-      </a>
-      <a class="mod-row" data-module="alcohols-ethers" href="lessons/alcohol-reactions.html">
-        <span class="num">8</span>
-        <span class="body"><b>Alcohols, Ethers &amp; Related Chemistry</b><small>3 topics</small></span>
-        <span class="track thin"><i style="width:0%"></i></span>
-        <span class="pct">&mdash;</span>
-      </a>
-      <a class="mod-row" data-module="carbonyl-chemistry" href="lessons/aldehydes-ketones.html">
-        <span class="num">9</span>
-        <span class="body"><b>Carbonyl Chemistry</b><small>3 topics</small></span>
-        <span class="track thin"><i style="width:0%"></i></span>
-        <span class="pct">&mdash;</span>
-      </a>
-      <a class="mod-row" data-module="carboxylic-acids" href="lessons/carboxylic-acids.html">
-        <span class="num">10</span>
-        <span class="body"><b>Carboxylic Acids &amp; Derivatives</b><small>3 topics</small></span>
-        <span class="track thin"><i style="width:0%"></i></span>
-        <span class="pct">&mdash;</span>
-      </a>
-      <a class="mod-row" data-module="enolate-chemistry" href="lessons/alpha-hydrogens.html">
-        <span class="num">11</span>
-        <span class="body"><b>Enolate Chemistry</b><small>3 topics</small></span>
-        <span class="track thin"><i style="width:0%"></i></span>
-        <span class="pct">&mdash;</span>
-      </a>
-      <a class="mod-row" data-module="amines" href="lessons/amine-structure.html">
-        <span class="num">12</span>
-        <span class="body"><b>Amines</b><small>2 topics</small></span>
-        <span class="track thin"><i style="width:0%"></i></span>
-        <span class="pct">&mdash;</span>
-      </a>
-      <a class="mod-row" data-module="aromatic-chemistry" href="lessons/aromaticity.html">
-        <span class="num">13</span>
-        <span class="body"><b>Aromatic Chemistry</b><small>3 topics</small></span>
-        <span class="track thin"><i style="width:0%"></i></span>
-        <span class="pct">&mdash;</span>
-      </a>
-      <a class="mod-row" data-module="spectroscopy" href="lessons/ir.html">
-        <span class="num">14</span>
-        <span class="body"><b>Spectroscopy</b><small>4 topics</small></span>
-        <span class="track thin"><i style="width:0%"></i></span>
-        <span class="pct">&mdash;</span>
-      </a>
+      <details class="mod" data-module="foundations">
+        <summary class="mod-row">
+          <span class="num">1</span>
+          <span class="body"><b>Foundations</b><small>9 topics</small></span>
+          <span class="track thin"><i style="width:0%"></i></span>
+          <span class="pct">&mdash;</span>
+        </summary>
+        <div class="chips">
+          <a href="lessons/atomic-structure.html" data-topic="atomic-structure">Atomic structure</a>
+          <a href="lessons/orbitals.html" data-topic="orbitals">Orbitals</a>
+          <a href="lessons/hybridization.html" data-topic="hybridization">Hybridization</a>
+          <a href="lessons/bonding.html" data-topic="bonding">Bonding</a>
+          <a href="lessons/electronegativity.html" data-topic="electronegativity">Electronegativity</a>
+          <a href="lessons/formal-charge.html" data-topic="formal-charge">Formal charge</a>
+          <a href="lessons/lewis-structures.html" data-topic="lewis-structures">Lewis structures</a>
+          <a href="lessons/molecular-geometry.html" data-topic="molecular-geometry">Molecular geometry</a>
+          <a href="lessons/bond-polarity.html" data-topic="bond-polarity">Bond polarity</a>
+        </div>
+      </details>
+      <details class="mod" data-module="electron-movement">
+        <summary class="mod-row">
+          <span class="num">2</span>
+          <span class="body"><b>Organic Structure &amp; Electron Movement</b><small>6 topics</small></span>
+          <span class="track thin"><i style="width:0%"></i></span>
+          <span class="pct">&mdash;</span>
+        </summary>
+        <div class="chips">
+          <a href="lessons/resonance.html" data-topic="resonance">Resonance</a>
+          <a href="lessons/curved-arrows.html" data-topic="curved-arrows">Curved arrows</a>
+          <a href="lessons/nucleophiles.html" data-topic="nucleophiles">Nucleophiles</a>
+          <a href="lessons/electrophiles.html" data-topic="electrophiles">Electrophiles</a>
+          <a href="lessons/leaving-groups.html" data-topic="leaving-groups">Leaving groups</a>
+          <a href="lessons/electron-rich-poor.html" data-topic="electron-rich-poor">Electron-rich vs. electron-poor atoms</a>
+        </div>
+      </details>
+      <details class="mod" data-module="acids-bases">
+        <summary class="mod-row">
+          <span class="num">3</span>
+          <span class="body"><b>Acids &amp; Bases</b><small>5 topics</small></span>
+          <span class="track thin"><i style="width:0%"></i></span>
+          <span class="pct">&mdash;</span>
+        </summary>
+        <div class="chips">
+          <a href="lessons/bronsted.html" data-topic="bronsted">Brønsted acids/bases</a>
+          <a href="lessons/lewis-acids.html" data-topic="lewis-acids">Lewis acids/bases</a>
+          <a href="lessons/pka.html" data-topic="pka">pKa</a>
+          <a href="lessons/conjugate.html" data-topic="conjugate">Conjugate acids/bases</a>
+          <a href="lessons/acidity-factors.html" data-topic="acidity-factors">Factors affecting acidity</a>
+        </div>
+      </details>
+      <details class="mod" data-module="alkanes-conformations">
+        <summary class="mod-row">
+          <span class="num">4</span>
+          <span class="body"><b>Alkanes &amp; Conformations</b><small>5 topics</small></span>
+          <span class="track thin"><i style="width:0%"></i></span>
+          <span class="pct">&mdash;</span>
+        </summary>
+        <div class="chips">
+          <a href="lessons/newman.html" data-topic="newman">Newman projections</a>
+          <a href="lessons/cyclohexanes.html" data-topic="cyclohexanes">Cyclohexanes</a>
+          <a href="lessons/axial-equatorial.html" data-topic="axial-equatorial">Axial/equatorial</a>
+          <a href="lessons/ring-flips.html" data-topic="ring-flips">Ring flips</a>
+          <a href="lessons/conformational-analysis.html" data-topic="conformational-analysis">Conformational analysis</a>
+        </div>
+      </details>
+      <details class="mod" data-module="stereochemistry">
+        <summary class="mod-row">
+          <span class="num">5</span>
+          <span class="body"><b>Stereochemistry</b><small>7 topics</small></span>
+          <span class="track thin"><i style="width:0%"></i></span>
+          <span class="pct">&mdash;</span>
+        </summary>
+        <div class="chips">
+          <a href="lessons/chirality.html" data-topic="chirality">Chirality</a>
+          <a href="lessons/stereocenters.html" data-topic="stereocenters">Stereocenters</a>
+          <a href="lessons/enantiomers.html" data-topic="enantiomers">Enantiomers</a>
+          <a href="lessons/diastereomers.html" data-topic="diastereomers">Diastereomers</a>
+          <a href="lessons/meso.html" data-topic="meso">Meso compounds</a>
+          <a href="lessons/rs-configuration.html" data-topic="rs-configuration">R/S configuration</a>
+          <a href="lessons/fischer.html" data-topic="fischer">Fischer projections</a>
+        </div>
+      </details>
+      <details class="mod" data-module="substitution-elimination">
+        <summary class="mod-row">
+          <span class="num">6</span>
+          <span class="body"><b>Substitution &amp; Elimination</b><small>5 topics</small></span>
+          <span class="track thin"><i style="width:0%"></i></span>
+          <span class="pct">&mdash;</span>
+        </summary>
+        <div class="chips">
+          <a href="mechanisms/sn2.html" data-topic="sn2">SN2</a>
+          <a href="mechanisms/sn1.html" data-topic="sn1">SN1</a>
+          <a href="mechanisms/e1.html" data-topic="e1">E1</a>
+          <a href="mechanisms/e2.html" data-topic="e2">E2</a>
+          <a href="lessons/substrate-effects.html" data-topic="substrate-effects">Substrate &amp; solvent effects</a>
+        </div>
+      </details>
+      <details class="mod" data-module="alkenes-alkynes">
+        <summary class="mod-row">
+          <span class="num">7</span>
+          <span class="body"><b>Alkenes &amp; Alkynes</b><small>4 topics</small></span>
+          <span class="track thin"><i style="width:0%"></i></span>
+          <span class="pct">&mdash;</span>
+        </summary>
+        <div class="chips">
+          <a href="lessons/alkene-structure.html" data-topic="alkene-structure">Alkene structure</a>
+          <a href="lessons/addition-reactions.html" data-topic="addition-reactions">Addition reactions</a>
+          <a href="lessons/markovnikov.html" data-topic="markovnikov">Markovnikov / anti-Markovnikov</a>
+          <a href="lessons/alkynes.html" data-topic="alkynes">Alkynes</a>
+        </div>
+      </details>
+      <details class="mod" data-module="alcohols-ethers">
+        <summary class="mod-row">
+          <span class="num">8</span>
+          <span class="body"><b>Alcohols, Ethers &amp; Related Chemistry</b><small>3 topics</small></span>
+          <span class="track thin"><i style="width:0%"></i></span>
+          <span class="pct">&mdash;</span>
+        </summary>
+        <div class="chips">
+          <a href="lessons/alcohol-reactions.html" data-topic="alcohol-reactions">Alcohol reactions</a>
+          <a href="lessons/ether-chemistry.html" data-topic="ether-chemistry">Ether chemistry</a>
+          <a href="lessons/epoxides.html" data-topic="epoxides">Epoxides</a>
+        </div>
+      </details>
+      <details class="mod" data-module="carbonyl-chemistry">
+        <summary class="mod-row">
+          <span class="num">9</span>
+          <span class="body"><b>Carbonyl Chemistry</b><small>3 topics</small></span>
+          <span class="track thin"><i style="width:0%"></i></span>
+          <span class="pct">&mdash;</span>
+        </summary>
+        <div class="chips">
+          <a href="lessons/aldehydes-ketones.html" data-topic="aldehydes-ketones">Aldehydes &amp; ketones</a>
+          <a href="lessons/nucleophilic-addition.html" data-topic="nucleophilic-addition">Nucleophilic addition</a>
+          <a href="lessons/acetals.html" data-topic="acetals">Acetals &amp; hemiacetals</a>
+        </div>
+      </details>
+      <details class="mod" data-module="carboxylic-acids">
+        <summary class="mod-row">
+          <span class="num">10</span>
+          <span class="body"><b>Carboxylic Acids &amp; Derivatives</b><small>3 topics</small></span>
+          <span class="track thin"><i style="width:0%"></i></span>
+          <span class="pct">&mdash;</span>
+        </summary>
+        <div class="chips">
+          <a href="lessons/carboxylic-acids.html" data-topic="carboxylic-acids">Carboxylic acids</a>
+          <a href="lessons/esters-amides.html" data-topic="esters-amides">Esters &amp; amides</a>
+          <a href="lessons/acyl-substitution.html" data-topic="acyl-substitution">Nucleophilic acyl substitution</a>
+        </div>
+      </details>
+      <details class="mod" data-module="enolate-chemistry">
+        <summary class="mod-row">
+          <span class="num">11</span>
+          <span class="body"><b>Enolate Chemistry</b><small>3 topics</small></span>
+          <span class="track thin"><i style="width:0%"></i></span>
+          <span class="pct">&mdash;</span>
+        </summary>
+        <div class="chips">
+          <a href="lessons/alpha-hydrogens.html" data-topic="alpha-hydrogens">Alpha hydrogens &amp; enolates</a>
+          <a href="lessons/aldol.html" data-topic="aldol">Aldol reactions</a>
+          <a href="lessons/claisen.html" data-topic="claisen">Claisen reactions</a>
+        </div>
+      </details>
+      <details class="mod" data-module="amines">
+        <summary class="mod-row">
+          <span class="num">12</span>
+          <span class="body"><b>Amines</b><small>2 topics</small></span>
+          <span class="track thin"><i style="width:0%"></i></span>
+          <span class="pct">&mdash;</span>
+        </summary>
+        <div class="chips">
+          <a href="lessons/amine-structure.html" data-topic="amine-structure">Structure &amp; basicity</a>
+          <a href="lessons/amine-reactions.html" data-topic="amine-reactions">Reactions</a>
+        </div>
+      </details>
+      <details class="mod" data-module="aromatic-chemistry">
+        <summary class="mod-row">
+          <span class="num">13</span>
+          <span class="body"><b>Aromatic Chemistry</b><small>3 topics</small></span>
+          <span class="track thin"><i style="width:0%"></i></span>
+          <span class="pct">&mdash;</span>
+        </summary>
+        <div class="chips">
+          <a href="lessons/aromaticity.html" data-topic="aromaticity">Aromaticity</a>
+          <a href="lessons/eas.html" data-topic="eas">Electrophilic aromatic substitution</a>
+          <a href="lessons/directing-effects.html" data-topic="directing-effects">Ortho/meta/para directing effects</a>
+        </div>
+      </details>
+      <details class="mod" data-module="spectroscopy">
+        <summary class="mod-row">
+          <span class="num">14</span>
+          <span class="body"><b>Spectroscopy</b><small>4 topics</small></span>
+          <span class="track thin"><i style="width:0%"></i></span>
+          <span class="pct">&mdash;</span>
+        </summary>
+        <div class="chips">
+          <a href="lessons/ir.html" data-topic="ir">IR</a>
+          <a href="lessons/h-nmr.html" data-topic="h-nmr">¹H NMR</a>
+          <a href="lessons/c-nmr.html" data-topic="c-nmr">¹³C NMR</a>
+          <a href="lessons/mass-spec.html" data-topic="mass-spec">Mass spectrometry</a>
+        </div>
+      </details>
     </div>
   </div>
 
@@ -313,10 +448,45 @@
       </div>
       <div>
         <h2>Seven tools that do the chemistry, not a lookup.</h2>
-        <p>Push electrons on a molecule you drew and watch the structure change. Rotate a Newman projection against a live energy curve. Draw a structure and get its predicted &#185;H NMR, splitting explained.</p>
+        <p>Push electrons, rank resonance forms, rotate a Newman projection, predict a spectrum.</p>
+        <div class="tool-chips">
+          <a href="tools/arrow-pusher.html">Arrow Pusher</a>
+          <a href="tools/resonance.html">Resonance Explorer</a>
+          <a href="tools/viewer-3d.html">3D Viewer</a>
+          <a href="tools/conformations.html">Conformation Lab</a>
+          <a href="tools/reaction-predictor.html">Reaction Predictor</a>
+          <a href="tools/acid-base.html">Acid/Base Comparator</a>
+          <a href="tools/spectroscopy.html">Spectroscopy Lab</a>
+        </div>
         <a href="tools.html" class="btn-press alt">Open the tools</a>
       </div>
     </div>
+  </div>
+
+  <div class="xsection">
+    <details class="fold-card" id="sample">
+      <summary>Try a step <small>SN2, one arrow, graded</small></summary>
+      <div class="fold-body">
+        <div class="sample-row">
+          <div>
+            <p class="section-lede" style="margin:0 0 20px;text-align:left">Mechanisms are graded one step at a time, and every topic carries thirty practice questions of its own.</p>
+            <div class="sample-list">
+              <div class="row"><span class="n">1</span> Identify the nucleophile and electrophile</div>
+              <div class="row"><span class="n">2</span> Draw the electron-pushing arrow</div>
+              <div class="row"><span class="n">3</span> Predict the product and stereochemistry</div>
+            </div>
+          </div>
+          <div class="mechcard">
+            <span class="tag domain">SN2</span> <span class="tag diff">Arrow step</span>
+            <div class="qtext">Hydroxide attacks bromomethane. Where does the arrow start, and where does it end?</div>
+            <div class="qopt"><span class="letter">A</span> From the C&ndash;Br bond to the bromine</div>
+            <div class="qopt correct"><span class="letter">B</span> From the hydroxide lone pair to the carbon</div>
+            <div class="qopt"><span class="letter">C</span> From the carbon to the hydroxide oxygen</div>
+            <div class="qopt" style="margin-bottom:0"><span class="letter">D</span> From the bromine lone pair to the carbon</div>
+          </div>
+        </div>
+      </div>
+    </details>
   </div>
 
   <div class="xsection">
