@@ -80,7 +80,7 @@
   .node-text{font-size:15.5px;font-weight:700;margin:0 0 22px;}
 
   .consequence-banner{
-    border:2px solid var(--amber);background:var(--tint-amber);border-radius:14px;box-shadow:0 3px 0 var(--amber-press);
+    border:2px solid var(--amber);background:var(--tint-amber);border-radius:14px;box-shadow:none;
     padding:13px 15px;margin-bottom:20px;font-size:14px;font-weight:700;
   }
   .consequence-banner strong{color:var(--warn);display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;font-family:var(--font-mono);}
@@ -105,7 +105,7 @@
   .sim-actions{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;}
   .btn-primary{
     background:var(--navy);color:var(--on-accent);border:none;border-radius:var(--radius);padding:13px 24px;
-    font:900 14px var(--font-ui);cursor:pointer;box-shadow:0 5px 0 var(--navy-press);
+    font:900 14px var(--font-ui);cursor:pointer;box-shadow:var(--btn-shadow);
     transition:transform .08s ease,box-shadow .08s ease;
   }
   .btn-primary:active{transform:translateY(5px);box-shadow:0 0 0 var(--navy-press);}
@@ -150,9 +150,11 @@
   <div id="site-header"></div>
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="practice.html">Practice</a> · <a href="study-plan.html">Study Plan</a> · <a href="study-notes.html">Notes</a> · <a href="mnemonics.html">Mnemonics</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="wrap">
+  <div class="page-head">
   <div class="eyebrow">Tools</div>
   <h1>Clinical Scenario Simulator</h1>
   <p class="lede">Multiple choice tests recall. This tests sequencing and judgment — closer to how the real exam's scenario logic actually works. Every choice here leads somewhere real, not just a right/wrong buzzer. Choose carefully; a delay or a skipped step shows up later in the scenario, exactly like it would on an actual call.</p>
+  </div>
 
   <div id="pickerScreen">
     <div class="picker-grid" id="pickerGrid"></div>

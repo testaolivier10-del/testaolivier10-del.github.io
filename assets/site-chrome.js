@@ -142,9 +142,84 @@
                     page). Passed in because ochem pages live at three folder
                     depths and each needs its own relative path.
        items        [{ href, label, active }] — the row 2 tabs.  */
+  /* Bottom tab bar icons, by the tab's label. A tab without one gets the
+     generic page glyph. */
+  var TAB_ICONS = {
+    'Home':      '<path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6h-6v6H4a1 1 0 01-1-1z"/>',
+    'Practice':  '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+    'Learn':     '<path d="M4 5h6a3 3 0 013 3v12a2 2 0 00-2-2H4zM20 5h-6a3 3 0 00-3 3v12a2 2 0 012-2h7z"/>',
+    'Notes':     '<path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4M8 13h8M8 17h6"/>',
+    'Study Plan':'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+    'Review':    '<path d="M3 12a9 9 0 019-9 9 9 0 017 3.4M21 12a9 9 0 01-9 9 9 9 0 01-7-3.4"/><path d="M21 3v4h-4M3 21v-4h4"/>',
+    'Tools':     '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/>',
+    'Dashboard': '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+    'Mastery':   '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+    'More':      '<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>',
+  };
+  var GENERIC_ICON = '<path d="M5 3h9l5 5v13H5z"/><path d="M14 3v5h5"/>';
+  function tabIcon(label){
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      (TAB_ICONS[label] || GENERIC_ICON) + '</svg>';
+  }
+
+  /* The phone-width tab bar: the first four tabs, then "More" for the rest.
+     A page with four tabs or fewer gets them all and no More. */
+  function renderBottomNav(cfg, mount){
+    var items = cfg.items || [];
+    if(!items.length) return;
+    var old = document.getElementById('levlBottomNav');
+    if(old) old.remove();
+    var oldSheet = document.getElementById('levlBottomSheet');
+    if(oldSheet) oldSheet.remove();
+    var oldScrim = document.getElementById('levlBottomScrim');
+    if(oldScrim) oldScrim.remove();
+
+    var shown = items.length > 5 ? items.slice(0, 4) : items;
+    var rest = items.length > 5 ? items.slice(4) : [];
+    var restActive = rest.some(function(it){ return it.active; });
+
+    var nav = document.createElement('nav');
+    nav.id = 'levlBottomNav';
+    nav.className = 'bottom-nav';
+    nav.setAttribute('aria-label', escapeHtml(cfg.course || 'Sections') + ' sections');
+    nav.innerHTML = shown.map(function(it){
+      return '<a href="' + it.href + '" class="bottom-nav__item' + (it.active ? ' active' : '') + '"' +
+        (it.active ? ' aria-current="page"' : '') + '><span class="i">' + tabIcon(it.label) + '</span><span class="t">' + escapeHtml(it.label) + '</span></a>';
+    }).join('') + (rest.length
+      ? '<button type="button" class="bottom-nav__item' + (restActive ? ' active' : '') + '" id="levlMoreTab" aria-haspopup="true" aria-expanded="false"><span class="i">' + tabIcon('More') + '</span><span class="t">More</span></button>'
+      : '');
+    document.body.appendChild(nav);
+
+    if(!rest.length) return;
+    var scrim = document.createElement('div');
+    scrim.id = 'levlBottomScrim';
+    scrim.className = 'bottom-scrim';
+    var sheet = document.createElement('div');
+    sheet.id = 'levlBottomSheet';
+    sheet.className = 'bottom-sheet';
+    sheet.setAttribute('role', 'dialog');
+    sheet.setAttribute('aria-label', 'More sections');
+    sheet.innerHTML = '<div class="bottom-sheet__grab"></div>' + rest.map(function(it){
+      return '<a href="' + it.href + '"' + (it.active ? ' class="active" aria-current="page"' : '') + '>' + escapeHtml(it.label) + '</a>';
+    }).join('');
+    document.body.appendChild(scrim);
+    document.body.appendChild(sheet);
+    var more = document.getElementById('levlMoreTab');
+    function setOpen(open){
+      sheet.classList.toggle('open', open);
+      scrim.classList.toggle('open', open);
+      more.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    more.addEventListener('click', function(){ setOpen(!sheet.classList.contains('open')); });
+    scrim.addEventListener('click', function(){ setOpen(false); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
+  }
+
   function render(cfg){
     var mount = document.getElementById('site-header');
     if(!mount) return;
+    // The course tint (see --ctint in theme.css) keys off this.
+    document.body.setAttribute('data-course', cfg.subject === 'ochem' ? 'ochem' : 'nremt');
 
     mount.innerHTML =
       '<div class="site-header__inner">' +
@@ -189,6 +264,7 @@
     if(window.StudyHubAccount) window.StudyHubAccount.renderAccountUI();
 
     wireOverflowFade(nav.querySelector('.course-nav__inner'));
+    renderBottomNav(cfg, mount);
 
     var sound = document.getElementById('soundToggle');
     if(sound && window.LevlSound){
@@ -210,6 +286,21 @@
     mountTutor(cfg);
     mountAnnouncer();
     mountAnalytics();
+    mountMotion();
+  }
+
+  /* The XP chip, the level-up toast and the bars filling on arrival. Mounted
+     here for the same reason as the announcer: every page renders this
+     header, so no page has to ask. Loaded async — the progression engine
+     fires plain DOM events, so a page that awards XP before this lands
+     simply misses one chip. */
+  function mountMotion(){
+    if(window.__levlMotionMounted) return;
+    window.__levlMotionMounted = true;
+    var el = document.createElement('script');
+    el.src = '/assets/motion.js';
+    el.defer = true;
+    document.head.appendChild(el);
   }
 
   /* Where "skip to content" should land. A real <main> if the page has one,

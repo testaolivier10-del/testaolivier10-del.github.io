@@ -16,13 +16,19 @@ Plain HTML/CSS/vanilla JS — no framework, no bundler, no build step. Hosted on
 index.html            LevlPrep landing page (lists available courses)
 assets/                Shared across every course
   theme.css            The one design system, loaded by every page on the site
-                         (light/dark, "Guided Path" visual style). There is deliberately
+                         (light/dark, "Clay" visual style: soft shadows, no outlines, a
+                         course-tinted panel opening every page). There is deliberately
                          no per-course copy: the two copies that used to exist drifted
                          apart and cost the NREMT course its mute-button styling
   site-chrome.js       The two-row site header every course renders: row 1 is global
                          (back arrow, LevlPrep wordmark, course name, streak, level,
                          account, mute, theme), row 2 is that course's section tabs
   chime.js             The correct-answer sound, shared by both courses
+  motion.js            The moments that make progress visible: the "+N XP" chip
+                         that flies to the level badge, the level-up toast and
+                         confetti, and progress bars filling from zero on arrival.
+                         Listens for the levl:xp / levl:levelup events
+                         hub-progress.js fires; site-chrome.js mounts it
   tutor.js             The study assistant behind the mascot in the corner of every
                          page. Indexes the current course's own material in the browser
                          (NREMT's reference pages, or ochem's 62 note fragments listed by
