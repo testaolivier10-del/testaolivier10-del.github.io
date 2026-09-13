@@ -145,25 +145,48 @@
       '<a href="' + base + topic.href + '" class="btn-press">Resume lesson</a>';
   }
 
-  /* ---- card 2: the review queue ---------------------------------------- */
-
-  function renderReview(){
+  /* ---- card 2: today ------------------------------------------------
+     One card for the day's work: what is due for review and how far
+     through the daily Rounds you are. These used to be two cards that read
+     the same queue from two angles. A weak prerequisite, when the engine
+     finds one, is the one line worth adding here. */
+  function renderToday(){
     if(!XP) return;
     var debt = XP.reviewDebt();
-    if(!debt.count) return; // leave the authored "nothing due yet" card
+    var q = XP.quest();
+    var done = Math.min(q.done, q.target);
+    var weak = weakestWithPrereqs();
+    if(!debt.count && !done && !weak) return; // leave the authored first-visit card
 
-    el('homeReview').innerHTML =
-      '<div class="k">Due for review</div>' +
-      '<h3>' + plural(debt.count, 'concept') + '</h3>' +
-      '<p>' + (debt.worstDays > 0
-          ? 'The oldest is ' + plural(debt.worstDays, 'day') + ' past due. '
-          : '') +
-        'Scheduled by how shaky each concept was last time, not by when you studied it.</p>' +
-      '<a href="' + base + 'review.html" class="btn-outline" style="padding:10px 18px">Clear the queue</a>';
-    el('homeReview').classList.add('due');
+    var head, sub;
+    if(done >= q.target){
+      head = 'Done for today';
+      sub = 'A fresh set is drawn from your due queue tomorrow.';
+    } else if(debt.count){
+      head = plural(debt.count, 'concept') + ' due';
+      sub = (debt.worstDays > 0 ? 'The oldest is ' + plural(debt.worstDays, 'day') + ' past due. ' : '') +
+            'Today\'s Rounds: ' + done + ' of ' + q.target + ' done.';
+    } else {
+      head = 'Rounds: ' + done + ' of ' + q.target;
+      sub = 'A short set drawn from what you are closest to forgetting.';
+    }
+    var prereqLine = '';
+    if(weak && weak.prerequisites[0]){
+      var pre = weak.prerequisites[0];
+      prereqLine = '<p><b>' + esc(weak.topic.title) + '</b> is at ' + weak.score + '%. It leans on ' +
+        (pre.href ? '<a href="' + base + pre.href + '">' + esc(pre.title).toLowerCase() + '</a>' : esc(pre.title).toLowerCase()) +
+        ' — review that first.</p>';
+    }
+    el('homeToday').innerHTML =
+      '<div class="k">Today</div>' +
+      '<h3>' + head + '</h3>' +
+      '<p>' + sub + '</p>' +
+      '<div class="track thin" style="margin-bottom:14px"><i style="width:' + Math.round(done / q.target * 100) + '%"></i></div>' +
+      prereqLine +
+      '<a href="' + base + (debt.count ? 'review.html' : 'practice.html') + '" class="btn-press alt sm">' +
+        (debt.count ? 'Clear the queue' : 'Start Rounds') + '</a>';
+    if(debt.count) el('homeToday').classList.add('due');
   }
-
-  /* ---- card 3: the weak prerequisite, else today's Rounds --------------- */
 
   // The concept-dependency check the course is built on: "you're struggling
   // with E2, so review conformational analysis first" rather than serving
@@ -172,8 +195,6 @@
     var worst = null;
     C.MODULES.forEach(function(m){
       m.topics.forEach(function(t){
-        // The resume card is already pointing at this one; two cards saying
-        // the same word is worse than one card saying something else.
         if(t.id === resumedTopicId) return;
         var s = C.strugglingPrerequisites(t.id);
         if(s && (!worst || s.score < worst.score)) worst = s;
@@ -182,82 +203,54 @@
     return worst;
   }
 
-  function renderNext(){
-    var weak = weakestWithPrereqs();
-    if(weak){
-      var prereq = weak.prerequisites[0];
-      el('homeNext').innerHTML =
-        '<div class="k">Shore this up first</div>' +
-        '<h3>' + esc(weak.topic.title) + ' is at ' + weak.score + '%</h3>' +
-        '<p>Before more of it: ' +
-          (weak.prerequisites.length > 1
-            ? 'it leans on ' + weak.prerequisites.length + ' earlier topics, starting with '
-            : 'it leans on ') +
-          esc(prereq.title).toLowerCase() + '.</p>' +
-        (prereq.href
-          ? '<a href="' + base + prereq.href + '" class="link-quiet">Review ' + esc(prereq.title).toLowerCase() + ' →</a>'
-          : '<p style="margin:0"><em>That lesson hasn\'t been built yet.</em></p>');
-      return;
-    }
-    if(!XP) return;
-    var q = XP.quest();
-    var done = Math.min(q.done, q.target);
-    el('homeNext').innerHTML =
-      '<div class="k">Daily Rounds</div>' +
-      '<h3>' + done + ' of ' + q.target + '</h3>' +
-      '<p>' + (done >= q.target
-          ? 'Done for today. A fresh set is drawn from your due queue tomorrow.'
-          : 'A short set drawn from what you are closest to forgetting.') + '</p>' +
-      '<div class="track" style="margin-bottom:16px"><i style="width:' +
-        Math.round(done / q.target * 100) + '%"></i></div>' +
-      '<a href="' + base + 'practice.html" class="link-quiet">Practice now →</a>';
-  }
-
-  /* ---- the three tiers -------------------------------------------------- */
-
-  // Tier membership is authored in the markup (data-modules="1-3"), so the
-  // page says what it groups and this only fills in the readings.
-  function renderTiers(){
+  /* ---- the module list ----------------------------------------------
+     One row per module, authored in the markup; this fills the reading and
+     marks the module you're in — the one holding the lesson you'd resume,
+     else the first with an unfinished lesson. */
+  function renderModules(){
     var p = readProgress();
-    Array.prototype.forEach.call(document.querySelectorAll('[data-modules]'), function(tier){
-      var span = tier.getAttribute('data-modules').split('-');
-      var from = parseInt(span[0], 10) - 1;
-      var to = parseInt(span[1] || span[0], 10) - 1;
-      var mods = C.MODULES.slice(from, to + 1);
-
+    var current = null;
+    if(resumedTopicId){ var w = moduleOf(resumedTopicId); if(w) current = w.mod.id; }
+    C.MODULES.forEach(function(m){
+      var row = document.querySelector('.mod-row[data-module="' + m.id + '"]');
+      if(!row) return;
       var scores = [];
-      mods.forEach(function(m){
-        m.topics.forEach(function(t){
-          var s = C.topicMastery(t.id);
-          if(t.href && s !== null) scores.push(s);
-        });
+      var firstOpen = null;
+      m.topics.forEach(function(t){
+        if(!t.href) return;
+        var s = C.topicMastery(t.id);
+        if(s !== null) scores.push(s);
+        var r = p[t.id];
+        if(!firstOpen && !(r && r.completed)) firstOpen = t;
       });
-
-      var pctEl = tier.querySelector('.pct');
-      var fill = tier.querySelector('.track > i');
+      if(!current && firstOpen && scores.length) current = m.id;
       if(scores.length){
         var avg = Math.round(scores.reduce(function(a, b){ return a + b; }, 0) / scores.length);
-        if(pctEl){ pctEl.textContent = avg + '%'; pctEl.removeAttribute('style'); }
-        if(fill) fill.style.width = avg + '%';
+        var fill = row.querySelector('.track > i'); if(fill) fill.style.width = avg + '%';
+        var pct = row.querySelector('.pct'); if(pct) pct.textContent = avg + '%';
       }
-
-      // A chip goes teal once that lesson has been finished at least once,
-      // amber while a run is open — the same two states the tier bar averages.
-      Array.prototype.forEach.call(tier.querySelectorAll('[data-topic]'), function(chip){
-        var r = p[chip.getAttribute('data-topic')];
-        if(!r) return;
-        if(typeof r.bestScore === 'number') chip.classList.add('done');
-        else if(r.step > 0) chip.classList.add('open');
-      });
+      // Send the row to where you'd continue, not always to the first topic.
+      if(firstOpen && firstOpen.href) row.setAttribute('href', base + firstOpen.href);
     });
+    if(!current){
+      // Nothing scored yet: the first module with an unfinished lesson.
+      C.MODULES.some(function(m){
+        var open = m.topics.some(function(t){ var r = p[t.id]; return t.href && !(r && r.completed); });
+        if(open) current = m.id;
+        return open;
+      });
+    }
+    if(current){
+      var cur = document.querySelector('.mod-row[data-module="' + current + '"]');
+      if(cur) cur.classList.add('current');
+    }
   }
 
   function render(){
     try{ renderHero(); }catch(e){}
     try{ renderResume(); }catch(e){}
-    try{ renderReview(); }catch(e){}
-    try{ renderNext(); }catch(e){}
-    try{ renderTiers(); }catch(e){}
+    try{ renderToday(); }catch(e){}
+    try{ renderModules(); }catch(e){}
   }
 
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render);

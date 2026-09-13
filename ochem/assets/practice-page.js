@@ -212,7 +212,7 @@
     var strong = M.strongest(3);
     var stats = E.stats();
 
-    var html = recommendationsHtml(recs) + snapshotHtml();
+    var html = recommendationsHtml(recs);
 
     if(weak.length){
       html += '<div class="section-head">Where you are weakest</div>' +
