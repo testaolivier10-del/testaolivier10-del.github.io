@@ -83,6 +83,8 @@
   var history = [];
   var origin = null;     // the structure step 1 started from, for Start over
   var builderApi = null;
+  var sendApi = null;
+  var lastBuilt = null;
 
   function esc(s){
     return String(s).replace(/[&<>"]/g, function(c){
@@ -102,6 +104,7 @@
       '<div id="apPicker"></div>' +
       '<div id="apBuilder" hidden></div>' +
       '<div id="apBuildMsg"></div>' +
+      '<div id="apSend"></div>' +
     '</div>' +
     '<div class="tsplit tsplit--wide">' +
       '<div>' +
@@ -288,8 +291,17 @@
       elBuildMsg.innerHTML = '<div class="tnote tnote--bad">The builder did not load on this page.</div>';
       return;
     }
+    /* The handoff row lives with the builder, because a structure you drew is
+       the only kind worth carrying somewhere else — the twenty on the list are
+       already one click away in every other tool. */
+    if(window.OchemToolHandoff){
+      sendApi = window.OchemToolHandoff.mountSend(
+        document.getElementById('apSend'), function(){ return lastBuilt; });
+    }
     builderApi = window.OchemBuilderUI.mount(elBuilder, {
       onChange: function(st, report){
+        lastBuilt = report.empty ? null : (report.ok ? st : null);
+        if(sendApi) sendApi.refresh();
         if(report.empty){ elBuildMsg.innerHTML = ''; return; }
         if(!report.ok){
           elBuildMsg.innerHTML = '<div class="tnote tnote--bad" style="margin-top:12px;">' +
@@ -298,6 +310,8 @@
         }
         elBuildMsg.innerHTML = '<div class="tnote tnote--good" style="margin-top:12px;">' +
           '<span class="tnote__k">Ready</span>Push electrons on it below. Nothing here is graded — but an arrow that could not have happened will still be told so.</div>';
+        // The structure is legal, so it is worth somewhere else too.
+        if(sendApi) sendApi.refresh();
         elHintBox.style.display = 'none';
         // A fresh copy each time, so editing the drawing does not reach into a
         // mechanism that is already part-way through.

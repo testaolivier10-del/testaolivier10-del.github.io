@@ -469,6 +469,20 @@
 .med-status{
   margin-top:8px;font:700 13px var(--font-ui);color:var(--amber-press);
 }
+/* Always in the DOM so it can be a live region, so it must take no room when
+   it has nothing to say. */
+.med-status:empty{margin:0;}
+
+/* The editor has always been keyboard-operable — Tab to a target, Enter to
+   pick it. Nobody was told, which made it keyboard-operable in the same sense
+   an unlabelled door is a door. */
+.kbd-hint{
+  font:700 11.5px var(--font-ui);color:var(--muted);margin-top:10px;line-height:1.55;
+}
+.kbd-hint kbd{
+  font:700 10.5px var(--font-mono);background:var(--paper);border:1px solid var(--line);
+  border-bottom-width:2px;border-radius:4px;padding:1px 5px;color:var(--ink);
+}
 
 /* Tools sandbox */
 .tool-stage{

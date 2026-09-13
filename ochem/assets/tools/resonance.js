@@ -73,6 +73,7 @@
       '</div>' +
       '<div id="resBuilder" hidden></div>' +
       '<div id="resBuildMsg"></div>' +
+      '<div id="resSend"></div>' +
     '</div>' +
     '<div id="resCompare" hidden></div>' +
     '<div id="resHunt">' +
@@ -321,6 +322,8 @@
      so the only thing stopping it from working on an arbitrary anion was that
      nothing offered one. */
   var builderApi = null;
+  var sendApi = null;
+  var lastBuilt = null;
   var elBuilder = document.getElementById('resBuilder');
   var elBuildMsg = document.getElementById('resBuildMsg');
 
@@ -332,6 +335,8 @@
     if(open && !builderApi && window.OchemBuilderUI){
       builderApi = window.OchemBuilderUI.mount(elBuilder, {
         onChange: function(st, rep){
+          lastBuilt = (rep.empty || !rep.ok) ? null : st;
+          if(sendApi) sendApi.refresh();
           if(rep.empty){ elBuildMsg.innerHTML = ''; return; }
           if(!rep.ok){
             elBuildMsg.innerHTML = '<div class="tnote tnote--bad" style="margin-top:12px;">' +
@@ -607,6 +612,17 @@
 
   if(window.OchemToolState){
     var q = window.OchemToolState.read();
+
+    /* A structure sent from another tool. Opening the builder with it is the
+       right landing: the student can see what arrived, adjust it, and the
+       tool treats it exactly as one they drew here — which it effectively is. */
+    if(q.build && window.OchemToolHandoff){
+      var toggle = document.getElementById('resBuildToggle');
+      if(toggle){
+        toggle.click();
+        if(builderApi) builderApi.build(q.build);
+      }
+    }
     var sp = SPECIES.filter(function(x){ return x.id === q.sp; })[0];
     select(sp || SPECIES[0]);
     if(q.mode === 'compare'){

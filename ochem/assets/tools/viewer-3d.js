@@ -25,6 +25,8 @@
   var selected = mol.focus;
   var opts = { labels:true, lonePairs:true, spin:false, mode:'ball' };
   var spinHandle = null;
+  var v3SendApi = null;
+  var v3LastBuilt = null;
   var rockHandle = null;
   var idleSince = Date.now();
 
@@ -46,6 +48,7 @@
       '<div id="v3Picker"></div>' +
       '<div id="v3Builder" hidden></div>' +
       '<div id="v3BuildMsg"></div>' +
+      '<div id="v3Send"></div>' +
     '</div>' +
     '<div class="tsplit tsplit--wide">' +
       '<div class="tpanel">' +
@@ -341,8 +344,14 @@
       showBuildMsg('bad', 'The builder did not load on this page.');
       return;
     }
+    if(window.OchemToolHandoff){
+      v3SendApi = window.OchemToolHandoff.mountSend(
+        document.getElementById('v3Send'), function(){ return v3LastBuilt; });
+    }
     builderApi = window.OchemBuilderUI.mount(elBuild, {
       onChange: function(st, report){
+        v3LastBuilt = (report.empty || !report.ok) ? null : st;
+        if(v3SendApi) v3SendApi.refresh();
         if(report.empty){ showBuildMsg('', ''); return; }
         if(!report.ok){
           showBuildMsg('bad', 'Fix what is flagged below and it will fold up — a structure that cannot exist has no shape to show.');

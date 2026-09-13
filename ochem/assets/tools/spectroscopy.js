@@ -490,6 +490,7 @@
         '<div class="tchips" id="spPicker"></div>' +
         '<div id="spBuilder" hidden></div>' +
         '<div id="spBuildMsg"></div>' +
+        '<div id="spSend"></div>' +
       '</div>' +
       '<div id="spPredicted"></div>' +
       '<div class="tpanel">' +
@@ -900,6 +901,8 @@
      assignments still cannot drift apart — the only thing that changes is how
      confident the numbers are, and the panel says so out loud. */
   var spBuilderApi = null;
+  var spSendApi = null;
+  var spLastBuilt = null;
 
   document.getElementById('spBuildToggle').addEventListener('click', function(){
     var box = document.getElementById('spBuilder');
@@ -909,8 +912,14 @@
     this.classList.toggle('on', open);
     this.textContent = open ? 'Hide the builder' : 'Predict your own →';
     if(open && !spBuilderApi && window.OchemBuilderUI && window.OchemSpectra){
+      if(window.OchemToolHandoff){
+        spSendApi = window.OchemToolHandoff.mountSend(
+          document.getElementById('spSend'), function(){ return spLastBuilt; });
+      }
       spBuilderApi = window.OchemBuilderUI.mount(box, {
         onChange: function(st, rep){
+          spLastBuilt = (rep.empty || !rep.ok) ? null : st;
+          if(spSendApi) spSendApi.refresh();
           if(rep.empty){ msg.innerHTML = ''; return; }
           if(!rep.ok){
             msg.innerHTML = '<div class="tnote tnote--bad" style="margin-top:12px;">Fix what is flagged below first.</div>';
@@ -1026,6 +1035,15 @@
 
   if(window.OchemToolState){
     var q = window.OchemToolState.read();
+
+    // A structure handed over from another tool: open the predictor on it.
+    if(q.build && window.OchemToolHandoff){
+      var spToggle = document.getElementById('spBuildToggle');
+      if(spToggle){
+        spToggle.click();
+        if(spBuilderApi) spBuilderApi.build(q.build);
+      }
+    }
     var hit = COMPOUNDS.filter(function(c){ return c.id === q.c; })[0];
     if(hit){ compound = hit; hlIR = null; hlNMR = null; renderPredict(); }
     if(q.mode === 'puzzle' || q.mode === 'ref'){

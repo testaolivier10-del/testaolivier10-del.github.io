@@ -445,6 +445,7 @@
       '</div>' +
       '<div id="rpBuilder" hidden></div>' +
       '<div id="rpBuildMsg"></div>' +
+      '<div id="rpSend"></div>' +
     '</div>' +
     '<div class="tsplit tsplit--wide">' +
       '<div class="tpanel">' +
@@ -465,6 +466,8 @@
 
   /* ---- Draw your own substrate ------------------------------------------- */
   var rpBuilderApi = null;
+  var rpSendApi = null;
+  var rpLastBuilt = null;
 
   document.getElementById('rpBuildToggle').addEventListener('click', function(){
     var box = document.getElementById('rpBuilder');
@@ -474,8 +477,14 @@
     this.classList.toggle('on', open);
     this.textContent = open ? 'Hide the builder' : 'Draw your own substrate →';
     if(open && !rpBuilderApi && window.OchemBuilderUI){
+      if(window.OchemToolHandoff){
+        rpSendApi = window.OchemToolHandoff.mountSend(
+          document.getElementById('rpSend'), function(){ return rpLastBuilt; });
+      }
       rpBuilderApi = window.OchemBuilderUI.mount(box, {
         onChange: function(st, rep){
+          rpLastBuilt = (rep.empty || !rep.ok) ? null : st;
+          if(rpSendApi) rpSendApi.refresh();
           if(rep.empty){ msg.innerHTML = ''; return; }
           if(!rep.ok){
             msg.innerHTML = '<div class="tnote tnote--bad" style="margin-top:12px;">Fix what is flagged below first.</div>';
@@ -671,6 +680,15 @@
   render();
   if(window.OchemToolState){
     var q = window.OchemToolState.read();
+
+    // A substrate drawn in another tool and sent here.
+    if(q.build && window.OchemToolHandoff){
+      var rpToggle = document.getElementById('rpBuildToggle');
+      if(rpToggle){
+        rpToggle.click();
+        if(rpBuilderApi) rpBuilderApi.build(q.build);
+      }
+    }
     var qs = find(SUBSTRATES, q.sub), qr = find(REAGENTS, q.rgt), qv = find(SOLVENTS, q.solv);
     if(qs) state.sub = qs;
     if(qr) state.rgt = qr;

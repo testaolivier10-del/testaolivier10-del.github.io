@@ -111,9 +111,17 @@
         // Toolbar goes away once the answer is graded: live-looking Undo and
         // Clear buttons that silently do nothing are worse than no buttons.
         (showToolbar && !locked ? toolbarHtml() : '') +
-        (status ? '<div class="med-status">' + esc(status) + '</div>' : '') +
+        /* The status line is the only feedback a half-drawn arrow produces, and
+           it is rewritten in place — so without a live region a screen-reader
+           user gets no signal at all that their first click registered. */
+        '<div class="med-status" role="status" aria-live="polite">' +
+          (status ? esc(status) : '') + '</div>' +
         (defaultHint() || config.hint
-          ? '<div class="click-hint">' + esc(config.hint || defaultHint()) + '</div>' : '');
+          ? '<div class="click-hint">' + esc(config.hint || defaultHint()) + '</div>' : '') +
+        // Tab and Enter already work; nobody was told so.
+        '<div class="kbd-hint"><kbd>Tab</kbd> moves between atoms and bonds, ' +
+          '<kbd>Enter</kbd> picks one. An arrow is two picks: where the electrons ' +
+          'start, then where they go.</div>';
 
       if(interactive) bind();
       if(showToolbar && !locked) bindToolbar();
@@ -134,7 +142,8 @@
           if(locked) return;
           if(b.getAttribute('data-act') === 'undo') arrows.pop();
           else arrows = [];
-          pending = null; status = '';
+          pending = null; status = 'Arrow drawn. ' + arrows.length +
+        (arrows.length === 1 ? ' arrow' : ' arrows') + ' so far.';
           render();
           if(config.onChange) config.onChange(state(), api);
         });
@@ -178,7 +187,7 @@
           status = 'Undo an arrow first — this step only needs ' + maxArrows + '.';
           render(); return;
         }
-        pending = key; status = '';
+        pending = key; status = 'Electrons start here. Now pick where they go.';
         render(); return;
       }
       if(sameEndpoint(mol, pending, key)){   // clicked the source again: cancel

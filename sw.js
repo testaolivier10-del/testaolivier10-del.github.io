@@ -18,7 +18,7 @@
 // The cached copy is only served as a fallback when the network fails.
 // Bump CACHE_NAME whenever this file changes, so old cached entries are
 // dropped instead of lingering forever.
-const CACHE_NAME = 'levlprep-v14';
+const CACHE_NAME = 'levlprep-v15';
 const PRECACHE_URLS = [
   'index.html',
   'assets/theme.css',
@@ -47,6 +47,13 @@ const PRECACHE_URLS = [
   'nremt/manifest.json',
   'nremt/assets/nav.js',
   'nremt/assets/icon.svg',
+  // The three tool behaviours. Small, and each one is the difference between a
+  // page that works offline and a page that renders as inert text offline —
+  // flowcharts and skillsheets in particular are now drills rather than
+  // documents, and a drill that will not start is worse than the document was.
+  'nremt/assets/flow-drill.js',
+  'nremt/assets/station-run.js',
+  'nremt/assets/sound-bank.js',
 ];
 
 // The question bank is 2.3 MB — an order of magnitude more than everything

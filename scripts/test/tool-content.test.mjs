@@ -19,7 +19,8 @@
    is easy to add and easy to get quietly wrong. */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
 import vm from 'node:vm';
 
 /* ---- Loading browser modules outside a browser --------------------------
@@ -484,6 +485,124 @@ test('every scenario path leads somewhere, and every fork can be rewound to', ()
 
     for(const id of Object.keys(sc.nodes)){
       assert.ok(reached.has(id), `${sc.id}: node "${id}" is unreachable`);
+    }
+  }
+});
+
+/* ====================================================================== */
+/* Carrying a structure between tools                                      */
+/* ====================================================================== */
+
+test('a structure survives the trip from one tool to another', () => {
+  const b = browser({ OCHEM_TOOL: 'arrow-pusher' });
+  const s = b.load('ochem/assets/molecules.js', 'ochem/assets/chem-core.js',
+                   'ochem/assets/mol-builder.js', 'ochem/assets/tools-registry.js',
+                   'ochem/assets/tool-state.js', 'ochem/assets/tool-handoff.js');
+  const { OchemToolHandoff: H, OchemBuilder: B, OchemChem: C, OchemMolecules: Mol } = s;
+
+  /* The encoding is what a handoff link carries, so a structure that does not
+     survive it arrives at the far tool as a different molecule — silently,
+     because a decoded structure is still a valid structure. */
+  for(const id of ['acetate-ion', 'benzene', 'acetone', 'phenoxide', 'ozone', 'ethanol']){
+    const st = C.fromMolecule(Mol.get(id));
+    const heavy = x => Object.keys(x.atoms).filter(k => x.atoms[k].el && !x.atoms[k].group).length;
+    const back = H.decode(B.encode(st));
+    assert.ok(back, `${id}: its encoding will not decode`);
+    assert.equal(heavy(back), heavy(st), `${id}: atom count changed in transit`);
+  }
+});
+
+test('the handoff offers other tools, never the one you are standing in', () => {
+  const b = browser({ OCHEM_TOOL: 'arrow-pusher' });
+  const s = b.load('ochem/assets/molecules.js', 'ochem/assets/chem-core.js',
+                   'ochem/assets/mol-builder.js', 'ochem/assets/tools-registry.js',
+                   'ochem/assets/tool-state.js', 'ochem/assets/tool-handoff.js');
+  const { OchemToolHandoff: H, OchemChem: C, OchemMolecules: Mol } = s;
+
+  let html = '';
+  const el = { className: '', set innerHTML(v){ html = v; }, get innerHTML(){ return html; } };
+  H.mountSend(el, () => C.fromMolecule(Mol.get('acetone')));
+
+  const links = [...html.matchAll(/href="([^"]+)"/g)].map(m => m[1]);
+  assert.equal(links.length, H.ACCEPTS.length - 1, 'wrong number of destinations');
+  assert.ok(!links.some(l => l.startsWith('arrow-pusher')), 'offers a link back to itself');
+  for(const l of links){
+    const code = decodeURIComponent(l.split('build=')[1] || '');
+    assert.ok(H.decode(code), `a destination link carries an undecodable structure: ${l.slice(0, 40)}`);
+  }
+
+  // Nothing drawn means nothing to send, and an empty row would be clutter.
+  H.mountSend(el, () => null);
+  assert.equal(html, '', 'the send row renders with no structure to send');
+});
+
+test('every destination the handoff offers can actually receive a structure', () => {
+  const s = browser().load('ochem/assets/tools-registry.js', 'ochem/assets/tool-handoff.js');
+  for(const t of s.OchemToolHandoff.ACCEPTS){
+    assert.ok(s.OchemTools.bySlug(t.slug), `handoff offers "${t.slug}", which is not a tool`);
+    const src = readFileSync(`ochem/assets/tools/${t.slug}.js`, 'utf8');
+    // A destination that never reads ?build= is a dead end wearing a link.
+    assert.match(src, /\.build\b/,
+      `${t.slug} is offered as a destination but never reads the structure it is sent`);
+  }
+});
+
+/* ====================================================================== */
+/* Reachability                                                            */
+/* ====================================================================== */
+
+test('every focusable atom and bond has an accessible name', () => {
+  const s = browser().load('ochem/assets/molecules.js');
+  const live = s.OchemMolecules.svg('acetate-ion', { clickable: 'all', clickableBonds: 'all' });
+
+  const focusable = [...live.matchAll(/<(?:g|line)[^>]*tabindex="0"[^>]*>/g)].map(m => m[0]);
+  assert.ok(focusable.length > 5, 'nothing focusable in an interactive structure');
+  for(const t of focusable){
+    assert.match(t, /aria-label="[^"]+"/,
+      `a focusable target announces as "button" and nothing else: ${t.slice(0, 60)}`);
+  }
+
+  /* role="img" makes assistive technology treat the SVG as one picture and
+     stop exposing what is inside — which would hide every control above. */
+  assert.match(live, /role="group"/, 'an interactive structure still claims role="img"');
+  const stat = s.OchemMolecules.svg('acetate-ion', {});
+  assert.match(stat, /role="img"/, 'a static diagram should stay role="img"');
+  assert.equal([...stat.matchAll(/tabindex="0"/g)].length, 0, 'a static diagram has focusable children');
+});
+
+/* ====================================================================== */
+/* Shipping                                                                */
+/* ====================================================================== */
+
+test('the service worker precaches files that exist', () => {
+  const sw = readFileSync('sw.js', 'utf8');
+  const list = sw.slice(sw.indexOf('const PRECACHE_URLS'), sw.indexOf('// The question bank'));
+  const urls = [...list.matchAll(/'([^']+)'/g)].map(m => m[1]).filter(u => u.includes('.'));
+  assert.ok(urls.length > 20, `only ${urls.length} precached URLs`);
+  for(const u of urls){
+    /* A precache entry that 404s fails cache.addAll(), which rejects the whole
+       install — so one stale path silently costs every user the entire offline
+       mode, not just that file. */
+    assert.ok(existsSync(u), `sw.js precaches "${u}", which does not exist`);
+  }
+});
+
+test('every script a tool page loads exists and is loaded in a workable order', () => {
+  for(const page of readdirSync('ochem/tools').filter(f => f.endsWith('.html'))){
+    const html = readFileSync(`ochem/tools/${page}`, 'utf8');
+    const srcs = [...html.matchAll(/<script src="([^"]+)"/g)].map(m => m[1]);
+    for(const src of srcs){
+      if(/^https?:/.test(src)) continue;
+      assert.ok(existsSync(join('ochem/tools', src)), `${page} loads "${src}", which does not exist`);
+    }
+    /* The tool's own file builds its UI on load and calls into these, so a
+       dependency loaded after it is a dependency that is not there yet. */
+    const slug = page.replace('.html', '');
+    const self = srcs.findIndex(x => x.endsWith(`tools/${slug}.js`));
+    assert.ok(self >= 0, `${page} never loads its own tool script`);
+    for(const dep of ['tools-registry.js', 'tool-state.js', 'tool-quiz.js', 'tool-handoff.js']){
+      const at = srcs.findIndex(x => x.endsWith(dep));
+      if(at >= 0) assert.ok(at < self, `${page} loads ${dep} after the tool that uses it`);
     }
   }
 });

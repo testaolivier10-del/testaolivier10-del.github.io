@@ -912,7 +912,14 @@
     if(!on) return '';
     var cls = 'obond';
     if(opts.chosen && opts.chosen.some(function(k){ return sameBond(k, b); })) cls += ' chosen';
+    /* A focusable target with no accessible name announces as "button" and
+       nothing else, which in a molecule of nine of them is unusable. The name
+       says which bond it is, in the terms the tool talks about. */
+    var order = b.order || 1;
+    var label = (order === 3 ? 'Triple' : order === 2 ? 'Double' : 'Single') +
+      ' bond between ' + esc(a.label || '') + ' and ' + esc(c.label || '');
     return '<line class="' + cls + '" data-key="' + esc(key) + '" tabindex="0" role="button"' +
+      ' aria-label="' + label + '"' +
       ' x1="' + a.x + '" y1="' + a.y + '" x2="' + c.x + '" y2="' + c.y + '"/>';
   }
 
@@ -925,7 +932,14 @@
     if(opts.correct && opts.correct.indexOf(key) !== -1) cls += ' atom--correct';
     if(opts.wrong && opts.wrong.indexOf(key) !== -1) cls += ' atom--wrong';
     var fontSize = a.r > 15 ? 14.5 : (a.r > 12 ? 12.5 : 11);
-    return '<g class="' + cls + '" data-key="' + esc(key) + '"' + (clickable ? ' tabindex="0" role="button"' : '') + '>' +
+    /* Element, charge and lone pairs — the three things that decide whether an
+       arrow may start or end here, said out loud for anyone who cannot see the
+       dots. */
+    var name = (a.label || '') +
+      (a.charge ? ', charge ' + (String(a.charge).indexOf('⁻') >= 0 ? 'minus' : 'plus') : '') +
+      (a.lp ? ', ' + a.lp + ' lone pair' + (a.lp === 1 ? '' : 's') : '');
+    return '<g class="' + cls + '" data-key="' + esc(key) + '"' +
+      (clickable ? ' tabindex="0" role="button" aria-label="' + esc(name) + '"' : '') + '>' +
       lonePairDots(a) +
       '<circle cx="' + a.x + '" cy="' + a.y + '" r="' + a.r + '" fill="var(--white)" stroke="var(--line)" stroke-width="2"/>' +
       '<text x="' + a.x + '" y="' + (a.y + fontSize*0.35) + '" text-anchor="middle" font-size="' + fontSize + '">' +
@@ -1014,8 +1028,16 @@
       Object.keys(mol.atoms).map(function(k){ return atomGroup(k, mol.atoms[k], opts); }).join('') +
       (opts.arrows || []).map(function(ar, i){ return arrowPath(mol, ar, i); }).join('');
     var caption = opts.caption === undefined ? mol.caption : opts.caption;
+    /* role="img" makes assistive technology treat the whole SVG as a single
+       picture and stop exposing what is inside it — correct for a diagram, and
+       wrong the moment the diagram contains focusable atoms and bonds, because
+       it hides exactly the controls a keyboard user has just tabbed onto. So
+       the role depends on whether anything in here is interactive. */
+    var interactive = !!(opts.clickable || opts.clickableBonds);
     return '<div class="scene omol">' +
-      '<svg viewBox="' + (mol.viewBox || '0 0 320 170') + '" role="img" aria-label="' + esc(mol.name) + '">' + body + '</svg>' +
+      '<svg viewBox="' + (mol.viewBox || '0 0 320 170') + '"' +
+        (interactive ? ' role="group"' : ' role="img"') +
+        ' aria-label="' + esc(mol.name) + (interactive ? ', interactive structure' : '') + '">' + body + '</svg>' +
       (caption ? '<div class="omol-caption">' + esc(caption) + '</div>' : '') +
     '</div>';
   }
