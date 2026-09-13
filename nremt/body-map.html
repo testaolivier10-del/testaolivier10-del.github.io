@@ -618,6 +618,17 @@ function flyToGroup(groupKey){
 
 function animateCamera(newPos, newTarget, duration){
   if (flyAnim) cancelAnimationFrame(flyAnim.raf);
+  /* Flying the camera across the body is the largest piece of motion on the
+     site and the one most likely to make someone queasy. Under "reduce
+     motion" the view still goes exactly where it was asked to go — it just
+     arrives instead of travelling. */
+  if (window.LevlMotion && window.LevlMotion.reduced()) {
+    camera.position.copy(newPos);
+    controls.target.copy(newTarget);
+    controls.update();
+    flyAnim = null;
+    return;
+  }
   const startPos = camera.position.clone();
   const startTarget = controls.target.clone();
   const t0 = performance.now();

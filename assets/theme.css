@@ -760,3 +760,30 @@ html{scrollbar-color:var(--muted) transparent;}
     grid-column:2;justify-self:start;text-align:left;
   }
 }
+
+/* Honor the OS "reduce motion" setting across the whole site.
+
+   Every page in both courses loads this file, so one block covers all 173 of
+   them — the hover lifts and colour fades here, the flash on a hit target in
+   ochem.css, the spin on the body map's loading indicator, and any transition
+   a page declares in its own inline <style>. Motion that JavaScript drives
+   cannot be reached from CSS; those call sites ask window.LevlMotion.reduced()
+   in site-chrome.js instead.
+
+   Durations are cut to a hair rather than set to zero, which is the usual form
+   of this rule: a transitionend or animationend listener still fires, so
+   nothing that waits on one is left hanging. Animations are also pinned to a
+   single iteration, so anything looping stops instead of flickering.
+
+   The body map's spinner stops under this rule and that is intended — the
+   panel it sits in already says "Loading 3D model…" in words beside it, so
+   the state stays legible without anything moving. */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
+    scroll-behavior:auto !important;
+  }
+  html{scroll-behavior:auto !important;}
+}

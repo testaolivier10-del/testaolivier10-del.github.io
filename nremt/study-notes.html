@@ -3921,10 +3921,14 @@ function renderRail(){
     const btn = e.target.closest('.rail-btn');
     if (!btn) return;
     if (btn.dataset.target === 'top') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if(window.LevlMotion) window.LevlMotion.scrollToY(0);
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       const target = document.getElementById('chapter-' + btn.dataset.chapter);
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (target){
+        if(window.LevlMotion) window.LevlMotion.scrollIntoView(target, { block: 'start' });
+        else target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
     railEl.classList.remove('open');
   });

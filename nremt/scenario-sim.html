@@ -817,7 +817,8 @@ function backToPicker(){
   currentScenario = null;
   document.getElementById('simBox').classList.remove('active');
   document.getElementById('pickerScreen').style.display = 'block';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if(window.LevlMotion) window.LevlMotion.scrollToY(0);
+  else window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function renderNode(consequenceText){
@@ -861,7 +862,8 @@ function renderNode(consequenceText){
     document.getElementById('backBtn').addEventListener('click', backToPicker);
     document.getElementById('retryBtn').addEventListener('click', () => startScenario(currentScenario.id));
     document.getElementById('anotherBtn').addEventListener('click', backToPicker);
-    window.scrollTo({ top: box.offsetTop - 20, behavior: 'smooth' });
+    if(window.LevlMotion) window.LevlMotion.scrollToY(box.offsetTop - 20);
+    else window.scrollTo({ top: box.offsetTop - 20, behavior: 'smooth' });
     return;
   }
 
@@ -886,7 +888,8 @@ function renderNode(consequenceText){
       renderNode(choice.consequence);
     });
   });
-  window.scrollTo({ top: box.offsetTop - 20, behavior: 'smooth' });
+  if(window.LevlMotion) window.LevlMotion.scrollToY(box.offsetTop - 20);
+  else window.scrollTo({ top: box.offsetTop - 20, behavior: 'smooth' });
 }
 
 renderPicker();

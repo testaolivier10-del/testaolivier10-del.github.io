@@ -290,7 +290,10 @@
         var m = MODES[parseInt(btn.getAttribute('data-mode'), 10)];
         if(m.mode === 'topic'){
           drillPanel.hidden = !drillPanel.hidden;
-          if(!drillPanel.hidden) drillPanel.scrollIntoView({ behavior:'smooth', block:'nearest' });
+          if(!drillPanel.hidden){
+            if(window.LevlMotion) window.LevlMotion.scrollIntoView(drillPanel, { block:'nearest' });
+            else drillPanel.scrollIntoView({ behavior:'smooth', block:'nearest' });
+          }
           return;
         }
         if(m.mode === 'flagged' && !flaggedQuestions().length) return;

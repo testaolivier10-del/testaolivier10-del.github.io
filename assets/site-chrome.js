@@ -254,6 +254,43 @@
     });
   }
 
+  /* Whether the viewer has asked their OS to keep motion down.
+
+     The CSS half of this is a blanket rule in theme.css, but a good deal of
+     the site's movement is driven from JavaScript and cannot be reached that
+     way: a smooth scroll asked for by scrollTo, a camera flight on the body
+     map. Those call sites ask here.
+
+     Lives on the chrome because the chrome is the one module every page in
+     both courses already loads blocking, so a page script can call it while
+     it parses without checking whether it has arrived yet. Read live rather
+     than cached: the preference can be toggled in the OS while the page is
+     open, and matchMedia reflects that immediately. */
+  function reducedMotion(){
+    return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }
+
+  /* Scroll to a position, honoring that preference. Every smooth scroll on the
+     site goes through this rather than passing behavior:'smooth' directly. */
+  function scrollToY(top){
+    window.scrollTo(reducedMotion() ? { top: top } : { top: top, behavior: 'smooth' });
+  }
+
+  /* Same, for bringing an element into view. */
+  function scrollIntoView(el, opts){
+    if(!el) return;
+    var o = {};
+    for(var k in (opts || {})) if(Object.prototype.hasOwnProperty.call(opts, k)) o[k] = opts[k];
+    o.behavior = reducedMotion() ? 'auto' : 'smooth';
+    el.scrollIntoView(o);
+  }
+
+  window.LevlMotion = {
+    reduced: reducedMotion,
+    scrollToY: scrollToY,
+    scrollIntoView: scrollIntoView
+  };
+
   window.LevlChrome = {
     render: render,
     setTheme: setTheme,
