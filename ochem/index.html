@@ -22,13 +22,13 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/theme.css">
 <!-- Shared across every subject on LevlPrep: one login, one level, one
-     streak. Loaded blocking and ahead of this page's own scripts because
-     they read window.HubProgress as the page parses. -->
-<script src="../assets/account.js"></script>
-<script src="../assets/hub-progress.js"></script>
-<script src="../assets/chime.js"></script>
-<script src="../assets/site-chrome.js"></script>
-<script src="assets/ochem-xp.js"></script>
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../assets/account.js" defer></script>
+<script src="../assets/hub-progress.js" defer></script>
+<script src="../assets/chime.js" defer></script>
+<script src="../assets/site-chrome.js" defer></script>
+<script src="assets/ochem-xp.js" defer></script>
 <link rel="stylesheet" href="assets/ochem.css">
 <link rel="stylesheet" href="assets/periodic-table.css">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
@@ -366,12 +366,12 @@
 </script>
 <!-- The hero card and the three "what now" cards report real progress, so the
      home page needs the same concept model Practice and Review run on. -->
-<script src="assets/curriculum.js"></script>
-<script src="assets/lesson-concepts.js"></script>
-<script src="assets/concepts.js"></script>
-<script src="assets/mastery-engine.js"></script>
-<script src="assets/ochem-home.js"></script>
-<script src="assets/ochem-nav.js"></script>
-<script src="assets/periodic-table.js"></script>
+<script src="assets/curriculum.js" defer></script>
+<script src="assets/lesson-concepts.js" defer></script>
+<script src="assets/concepts.js" defer></script>
+<script src="assets/mastery-engine.js" defer></script>
+<script src="assets/ochem-home.js" defer></script>
+<script src="assets/ochem-nav.js" defer></script>
+<script src="assets/periodic-table.js" defer></script>
 </body>
 </html>

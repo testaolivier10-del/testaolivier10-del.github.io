@@ -22,13 +22,13 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../../assets/theme.css">
 <!-- Shared across every subject on LevlPrep: one login, one level, one
-     streak. Loaded blocking and ahead of this page's own scripts because
-     they read window.HubProgress as the page parses. -->
-<script src="../../assets/account.js"></script>
-<script src="../../assets/hub-progress.js"></script>
-<script src="../../assets/chime.js"></script>
-<script src="../../assets/site-chrome.js"></script>
-<script src="../assets/ochem-xp.js"></script>
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
@@ -49,23 +49,27 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
-<script src="../assets/shuffle-options.js"></script>
-<script src="../assets/step-back.js"></script>
-<script src="../assets/curriculum.js"></script>
-<script src="../assets/concepts.js"></script>
-<script src="../assets/mastery-engine.js"></script>
-<script src="../assets/tools-registry.js"></script>
-<script src="../assets/tool-suggest.js"></script>
-<script src="../assets/lesson-concepts.js"></script>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
 <script>
   window.OCHEM_SECTION = 'learn';
   window.OCHEM_BASE = '../';
 </script>
-<script src="../assets/ochem-nav.js"></script>
-<script src="../assets/periodic-table.js"></script>
-<script src="../assets/molecules.js"></script>
-<script src="../assets/lesson-engine.js"></script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/molecules.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
 <script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
 (function(){
   window.OchemLessonEngine.start({
     topicId: 'cyclohexanes',
@@ -156,6 +160,7 @@
     ]
   });
 })();
+});
 </script>
 </body>
 </html>

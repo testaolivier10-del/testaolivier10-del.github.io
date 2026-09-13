@@ -163,13 +163,17 @@
   </div>
 </div>
 
-<script src="assets/account.js"></script>
+<script src="assets/account.js" defer></script>
 <!-- This page draws its own header rather than calling LevlChrome.render, so
      nothing has mounted analytics.js for it. Loaded here on its own account:
      the opt-out switch below needs LevlAnalytics to read and write. -->
-<script src="assets/analytics.js"></script>
-<script src="assets/progress-backup.js"></script>
+<script src="assets/analytics.js" defer></script>
+<script src="assets/progress-backup.js" defer></script>
 <script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
   /* ---- Back up and restore ---- */
   (function(){
     var note = document.getElementById('bkNote');
@@ -283,6 +287,7 @@
       else document.documentElement.setAttribute('data-theme','dark');
     });
   })();
+});
 </script>
 </body>
 </html>

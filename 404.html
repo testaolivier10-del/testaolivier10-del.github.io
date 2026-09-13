@@ -78,6 +78,10 @@
 </main>
 
 <script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
   // Show the address that failed, so the visitor can see the typo rather than
   // guess at it. Escaped through textContent: the path is attacker-controlled
   // in the sense that anyone can craft a link to this site with markup in it.
@@ -106,6 +110,7 @@
     else{ document.documentElement.setAttribute('data-theme', 'dark'); }
     try{ localStorage.setItem(THEME_KEY, isDark ? 'light' : 'dark'); }catch(e){}
   });
+});
 </script>
 </body>
 </html>

@@ -32,12 +32,13 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/theme.css">
 <!-- Shared across every subject on LevlPrep: one login, one level, one
-     streak. Loaded blocking and ahead of the page's own inline scripts
-     because those read window.HubProgress while the page parses. -->
-<script src="../assets/account.js"></script>
-<script src="../assets/hub-progress.js"></script>
-<script src="../assets/chime.js"></script>
-<script src="../assets/site-chrome.js"></script>
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order, and the
+     page's own inline script waits for DOMContentLoaded. -->
+<script src="../assets/account.js" defer></script>
+<script src="../assets/hub-progress.js" defer></script>
+<script src="../assets/chime.js" defer></script>
+<script src="../assets/site-chrome.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <style>
 
@@ -149,6 +150,10 @@
 </div>
 
 <script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
   const DOMAINS = ["Assessment","Airway & Respiratory","Cardiac & Medical","Trauma","OB/Peds & Special Populations","EMS Operations"];
 
   // Same cross-mode aggregate the practice-exam page's readiness card, weak-domains
@@ -325,6 +330,7 @@
       window.print();
     });
   });
+});
 </script>
 <script src="assets/nav.js" defer></script>
 </body>

@@ -22,13 +22,13 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/theme.css">
 <!-- Shared across every subject on LevlPrep: one login, one level, one
-     streak. Loaded blocking and ahead of this page's own scripts because
-     they read window.HubProgress as the page parses. -->
-<script src="../assets/account.js"></script>
-<script src="../assets/hub-progress.js"></script>
-<script src="../assets/chime.js"></script>
-<script src="../assets/site-chrome.js"></script>
-<script src="assets/ochem-xp.js"></script>
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../assets/account.js" defer></script>
+<script src="../assets/hub-progress.js" defer></script>
+<script src="../assets/chime.js" defer></script>
+<script src="../assets/site-chrome.js" defer></script>
+<script src="assets/ochem-xp.js" defer></script>
 <link rel="stylesheet" href="assets/ochem.css">
 <link rel="stylesheet" href="assets/periodic-table.css">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
@@ -89,26 +89,26 @@
   </div>
 </div>
 
-<script src="assets/curriculum.js"></script>
-<script src="assets/concepts.js"></script>
-<script src="assets/molecules.js"></script>
-<script src="assets/mastery-engine.js"></script>
-<script src="assets/bank-loader.js"></script>
-<script src="assets/interactive-bank.js"></script>
-<script src="assets/legacy-diagnosis.js"></script>
-<script src="assets/legacy-rules.js"></script>
-<script src="assets/diagnostic-engine.js"></script>
-<script src="assets/shuffle-options.js"></script>
-<script src="assets/question-engine.js"></script>
-<script src="assets/flags.js"></script>
-<script src="assets/molecule-editor.js"></script>
-<script src="assets/session-runner.js"></script>
+<script src="assets/curriculum.js" defer></script>
+<script src="assets/concepts.js" defer></script>
+<script src="assets/molecules.js" defer></script>
+<script src="assets/mastery-engine.js" defer></script>
+<script src="assets/bank-loader.js" defer></script>
+<script src="assets/interactive-bank.js" defer></script>
+<script src="assets/legacy-diagnosis.js" defer></script>
+<script src="assets/legacy-rules.js" defer></script>
+<script src="assets/diagnostic-engine.js" defer></script>
+<script src="assets/shuffle-options.js" defer></script>
+<script src="assets/question-engine.js" defer></script>
+<script src="assets/flags.js" defer></script>
+<script src="assets/molecule-editor.js" defer></script>
+<script src="assets/session-runner.js" defer></script>
 <script>
   window.OCHEM_SECTION = 'practice';
   window.OCHEM_BASE = '';
 </script>
-<script src="assets/ochem-nav.js"></script>
-<script src="assets/periodic-table.js"></script>
-<script src="assets/practice-page.js"></script>
+<script src="assets/ochem-nav.js" defer></script>
+<script src="assets/periodic-table.js" defer></script>
+<script src="assets/practice-page.js" defer></script>
 </body>
 </html>

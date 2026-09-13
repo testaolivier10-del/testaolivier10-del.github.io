@@ -31,12 +31,13 @@
 <meta property="og:url" content="https://testaolivier10-del.github.io/nremt/">
 <link rel="stylesheet" href="../assets/theme.css">
 <!-- Shared across every subject on LevlPrep: one login, one level, one
-     streak. Loaded blocking and ahead of the page's own inline scripts
-     because those read window.HubProgress while the page parses. -->
-<script src="../assets/account.js"></script>
-<script src="../assets/hub-progress.js"></script>
-<script src="../assets/chime.js"></script>
-<script src="../assets/site-chrome.js"></script>
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order, and the
+     page's own inline script waits for DOMContentLoaded. -->
+<script src="../assets/account.js" defer></script>
+<script src="../assets/hub-progress.js" defer></script>
+<script src="../assets/chime.js" defer></script>
+<script src="../assets/site-chrome.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <style>
   /* Homepage-only layout. Everything visual (cards, buttons, path nodes,
@@ -246,6 +247,10 @@
 </div>
 
 <script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
 // ---- Hero progress card. Reads the same localStorage records the dashboard
 // and practice pages write, so the homepage reflects real progress instead of
 // placeholder numbers. Everything degrades to the level-1 empty state. ----
@@ -326,6 +331,7 @@
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render);
   else render();
 })();
+});
 </script>
 <script src="assets/nav.js" defer></script>
 </body>

@@ -32,15 +32,16 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/theme.css">
 <!-- Shared across every subject on LevlPrep: one login, one level, one
-     streak. Loaded blocking and ahead of the page's own inline scripts
-     because those read window.HubProgress while the page parses. -->
-<script src="../assets/account.js"></script>
-<script src="../assets/hub-progress.js"></script>
-<script src="../assets/chime.js"></script>
-<script src="../assets/site-chrome.js"></script>
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order, and the
+     page's own inline script waits for DOMContentLoaded. -->
+<script src="../assets/account.js" defer></script>
+<script src="../assets/hub-progress.js" defer></script>
+<script src="../assets/chime.js" defer></script>
+<script src="../assets/site-chrome.js" defer></script>
 <!-- Resolves a sound to a playable source, and generates the heart sounds.
      Blocking, because the inline script below calls it while rendering. -->
-<script src="assets/sound-bank.js"></script>
+<script src="assets/sound-bank.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <style>
   body{line-height:1.65;}
@@ -209,6 +210,10 @@
 <audio id="player" preload="none"></audio>
 
 <script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
 // Sound categories with available:true have an inline play button. A sound plays
 // from `localSrc` if one is set, otherwise `audioUrl`, otherwise it is generated
 // by sound-bank.js from `synth` — see assets/audio/README.md.
@@ -643,6 +648,7 @@ function wireMissedReview(){
 
 renderListenSection();
 renderQuizRound();
+});
 </script>
 <script src="assets/nav.js" defer></script>
 </body>

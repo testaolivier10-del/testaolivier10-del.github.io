@@ -30,8 +30,8 @@
 </script>
 <link rel="stylesheet" href="assets/theme.css">
 <!-- One login, one level, one streak across every subject. -->
-<script src="assets/account.js"></script>
-<script src="assets/hub-progress.js"></script>
+<script src="assets/account.js" defer></script>
+<script src="assets/hub-progress.js" defer></script>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
   /* Hub-only components. The shared system in assets/theme.css — the same file
@@ -198,6 +198,10 @@
 
 </div>
 <script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
   // Renders the level badge, the shared streak chip and the account button
   // into the header above. 'hub' selects the neutral rank names — the same
   // level reads "Rig Veteran" on NREMT and "Mechanism Marshal" on ochem.
@@ -241,6 +245,7 @@
     else{ document.documentElement.setAttribute('data-theme', 'dark'); }
     try{ localStorage.setItem(THEME_KEY, isDark ? 'light' : 'dark'); }catch(e){}
   });
+});
 </script>
 </body>
 </html>
