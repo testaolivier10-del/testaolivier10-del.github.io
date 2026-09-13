@@ -41,7 +41,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
 <style>
-  /* Shown only when assets/questions.json can't be loaded — see the QUESTIONS
+  /* Shown only when assets/questions-core.json can't be loaded — see the QUESTIONS
      loader at the end of this file. */
   .bank-error{
     display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;
@@ -640,15 +640,23 @@
 // main thread on a 2.3 MB download and parse. fetch() has neither problem.
 (async function(){
 
-// The bank lives in its own JSON file (assets/questions.json) rather than inline
-// here, so it's a separately cacheable download and something search.html can
-// fetch and index too.
+// The bank lives in its own JSON file rather than inline here, so it's a
+// separately cacheable download and something search.html can fetch and index
+// too.
+//
+// questions-core.json, specifically: the stems, options and answer keys, with
+// the explanations stripped out into a second file. The explanations are two
+// thirds of the bank's compressed weight and not one word of them is read
+// until after a question has been answered, so waiting on them meant every
+// visitor waited on 409 KB to see a question they could have been shown
+// already. Both files are generated from questions.json and index-aligned
+// with it — see scripts/build-question-bank.mjs.
 //
 // If it can't be loaded, every mode on this page is dead, so say so out loud
 // instead of throwing and leaving the start buttons looking live but inert.
 const QUESTIONS = await (async function(){
   try{
-    const res = await fetch('assets/questions.json');
+    const res = await fetch('assets/questions-core.json');
     if(!res.ok) throw new Error('HTTP ' + res.status);
     const parsed = await res.json();
     if(!Array.isArray(parsed) || !parsed.length) throw new Error('empty bank');
@@ -667,6 +675,33 @@ const QUESTIONS = await (async function(){
     var host = document.querySelector('.xshell') || document.body;
     host.insertBefore(banner, host.firstChild);
     return [];
+  }
+})();
+
+// The other half of the bank, started now and deliberately not awaited. The
+// earliest it can be wanted is the moment someone answers a question or flips
+// a flashcard, which is many seconds of reading away; by then this has long
+// since landed. The two places that do read it await the promise anyway,
+// because "many seconds" is an assumption about a fast phone on good wifi and
+// not a guarantee.
+//
+// Merged back onto the question objects rather than kept alongside them, so
+// every q.explain on this page goes on meaning what it always meant.
+//
+// A failure here is not fatal the way a failure above is: every mode still
+// runs, and the only thing missing is the "why" under an answer.
+const EXPLANATIONS_READY = (async function(){
+  if(!QUESTIONS.length) return;
+  try{
+    const res = await fetch('assets/explanations.json');
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    const list = await res.json();
+    if(!Array.isArray(list)) throw new Error('not an array');
+    for(let i = 0; i < QUESTIONS.length; i++){
+      if(typeof list[i] === 'string') QUESTIONS[i].explain = list[i];
+    }
+  }catch(e){
+    /* leaves q.explain undefined; both render sites fall back to '' */
   }
 })();
 
@@ -1698,7 +1733,11 @@ let fcIndices = [];
 let fcCurrent = 0;
 let fcFlipped = false;
 
-function renderFlashcard(){
+async function renderFlashcard(){
+  // The back of the card is the explanation, so this is one of the two places
+  // that has to have it. Awaited before anything is written, rather than
+  // rendering the front and patching the back in later.
+  await EXPLANATIONS_READY;
   const q = QUESTIONS[fcIndices[fcCurrent]];
   document.getElementById('fcProgressText').textContent = `Card ${fcCurrent+1} of ${fcIndices.length}`;
   document.getElementById('fcDomain').innerHTML = `${q.domain}<span class="diff-badge ${q.diff}">${q.diff}</span>`;
@@ -1719,7 +1758,7 @@ function renderFlashcard(){
   `;
   document.getElementById('fcBack').innerHTML = `
     <div class="answer">${formatCorrectAnswerText(q, letters)}</div>
-    <div class="explain">${q.explain}</div>
+    <div class="explain">${q.explain || ''}</div>
   `;
 
   fcFlipped = false;
@@ -2319,7 +2358,10 @@ function showResults(){
   renderReview('all');
 }
 
-function renderReview(filter){
+async function renderReview(filter){
+  // The other one: every row in the results list carries the explanation for
+  // the question above it.
+  await EXPLANATIONS_READY;
   const reviewEl = document.getElementById('reviewList');
   let items = allReviewData;
   if(filter === 'incorrect') items = allReviewData.filter(d => !d.isCorrect && d.userAns !== null);
@@ -2337,7 +2379,7 @@ function renderReview(filter){
           Your answer: ${formatUserAnswerText(q, userAns, letters) ?? 'Not answered'} ${isCorrect ? '✓' : '✗'}
         </div>
         ${!isCorrect ? `<div class="r-answer correct">Correct answer: ${formatCorrectAnswerText(q, letters)}</div>` : ''}
-        <div class="r-explain">${q.explain}</div>
+        <div class="r-explain">${q.explain || ''}</div>
       </div>
   `).join('');
   currentReviewFilter = filter;

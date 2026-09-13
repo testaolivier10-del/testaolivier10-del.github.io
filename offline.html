@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offline — LevlPrep</title>
+<meta name="robots" content="noindex">
+<!-- Served by sw.js in place of a page that is not in the cache, at that
+     page's own URL. So, like 404.html: absolute paths only, no canonical.
+     No web font either — a font request cannot succeed here by definition,
+     and waiting on it to time out would delay the one page whose entire job
+     is to appear instantly. -->
+<link rel="stylesheet" href="/assets/theme.css">
+<style>
+  .off-path{
+    font:600 13px var(--font-mono);color:var(--muted);
+    background:var(--track);border:var(--bw) solid var(--line);
+    border-radius:8px;padding:8px 12px;display:inline-block;
+    max-width:100%;overflow-wrap:anywhere;margin:0 0 26px;
+  }
+  .off-list{list-style:none;padding:0;margin:0;display:grid;gap:10px;
+    grid-template-columns:repeat(auto-fill,minmax(230px,1fr));}
+  .off-list a{
+    display:block;padding:13px 16px;border:var(--bw) solid var(--line);
+    border-radius:var(--radius);text-decoration:none;color:var(--ink);
+    font:800 14.5px var(--font-ui);background:var(--white);
+  }
+  .off-list a:hover{border-color:var(--accent);color:var(--accent);}
+  .off-empty{color:var(--muted);font:700 15px var(--font-ui);}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/">
+      <span class="brand-mark" aria-hidden="true">+</span> LevlPrep
+    </a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+  </div>
+</div>
+
+<main id="main" class="xshell" data-skip-target tabindex="-1">
+  <div class="hero">
+    <div class="eyebrow">Offline</div>
+    <h1>You&rsquo;re offline, and this page isn&rsquo;t saved.</h1>
+    <p class="lede">LevlPrep keeps the pages you&rsquo;ve already opened so you can study without a connection. This one hasn&rsquo;t been opened on this device yet, so there&rsquo;s no copy to fall back on.</p>
+    <p class="off-path" id="offPath" hidden></p>
+    <div class="hero-ctas">
+      <button type="button" class="btn-press" id="offRetry">Try again</button>
+    </div>
+  </div>
+
+  <h2 class="section-head">Saved on this device</h2>
+  <p class="section-lede" id="offLede">Checking&hellip;</p>
+  <ul class="off-list" id="offList"></ul>
+</main>
+
+<script>
+(function(){
+  var pathEl = document.getElementById('offPath');
+  var path = location.pathname + location.search;
+  if(pathEl && path && path !== '/'){ pathEl.textContent = path; pathEl.hidden = false; }
+
+  // A plain reload rather than a link: the address bar still holds the page
+  // the visitor actually wanted, so reloading retries that page, and it will
+  // load for real the moment the connection is back.
+  document.getElementById('offRetry').addEventListener('click', function(){
+    location.reload();
+  });
+
+  /* What is actually available offline, read out of the cache rather than
+     guessed at. A hard-coded list would promise pages this device may never
+     have opened — the worker precaches a core set but defers the rest until
+     they are visited, so the true answer differs per device. */
+  var TITLES = {
+    '/': 'LevlPrep home',
+    '/index.html': 'LevlPrep home',
+    '/nremt/': 'NREMT-EMT home',
+    '/nremt/index.html': 'NREMT-EMT home',
+    '/ochem/': 'Organic Chemistry home',
+    '/ochem/index.html': 'Organic Chemistry home'
+  };
+
+  function label(pathname){
+    if(TITLES[pathname]) return TITLES[pathname];
+    var file = pathname.split('/').pop().replace(/\.html$/, '');
+    var name = file.replace(/-/g, ' ').replace(/\b\w/g, function(c){ return c.toUpperCase(); });
+    var area = pathname.indexOf('/nremt/') === 0 ? 'NREMT'
+             : pathname.indexOf('/ochem/') === 0 ? 'Ochem' : '';
+    return area ? area + ' · ' + name : name;
+  }
+
+  var lede = document.getElementById('offLede');
+  var list = document.getElementById('offList');
+
+  if(!('caches' in window)){
+    lede.textContent = 'This browser cannot tell us what is saved. Try the home page.';
+    return;
+  }
+
+  caches.keys()
+    .then(function(names){
+      return Promise.all(names.map(function(n){
+        return caches.open(n).then(function(c){ return c.keys(); });
+      }));
+    })
+    .then(function(groups){
+      var seen = {};
+      var pages = [];
+      groups.forEach(function(reqs){
+        reqs.forEach(function(req){
+          var u;
+          try { u = new URL(req.url); } catch(e){ return; }
+          if(u.origin !== location.origin) return;
+          var p = u.pathname;
+          // Pages only. The cache is mostly scripts, styles, the question
+          // bank and a 3MB model, none of which anyone can navigate to.
+          if(!/\.html$/.test(p) && !/\/$/.test(p)) return;
+          if(/^\/(offline|404)\.html$/.test(p)) return;
+          if(p.indexOf('/ochem/notes/') === 0) return;
+          if(seen[p]) return;
+          seen[p] = 1;
+          pages.push(p);
+        });
+      });
+
+      if(!pages.length){
+        lede.textContent = 'Nothing is saved on this device yet. Once you are back online, the pages you visit are kept for next time.';
+        return;
+      }
+
+      pages.sort(function(a, b){ return label(a).localeCompare(label(b)); });
+      lede.textContent = pages.length + (pages.length === 1 ? ' page is' : ' pages are') + ' available without a connection.';
+      list.innerHTML = '';
+      pages.forEach(function(p){
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = p;
+        a.textContent = label(p);
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+    })
+    .catch(function(){
+      lede.textContent = 'Could not read what is saved on this device. Try the home page.';
+    });
+
+  var THEME_KEY = 'nremt_theme';
+  document.getElementById('themeToggle').addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem(THEME_KEY, isDark ? 'light' : 'dark'); }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>

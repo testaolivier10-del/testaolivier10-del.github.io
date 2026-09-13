@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 
+# ochem/notes/ holds the prose half of each lesson as bare HTML fragments —
+# no <title>, no stylesheet, no navigation — because the lesson page and the
+# study assistant fetch them and inject them into a page that has all three.
+# Indexed on their own they would rank as pages that are a wall of unstyled
+# text with no way out. The lesson pages that use them are in the sitemap.
+Disallow: /ochem/notes/
+
 Sitemap: https://testaolivier10-del.github.io/sitemap.xml

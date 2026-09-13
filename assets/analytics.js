@@ -16,11 +16,39 @@
    WEBSITE_ID is the one thing that has to be filled in. Until it is, this file
    does nothing at all: no script is loaded, no request is made, and every
    event() call is a no-op. That is deliberate — a half-configured tracker that
-   quietly phones home would be the worst of both worlds. */
+   quietly phones home would be the worst of both worlds.
+
+   There is also a per-browser opt-out, offered on privacy.html. It exists for
+   two different people who want the same thing: a visitor who would simply
+   rather not be counted, and whoever runs the site, whose own testing is
+   otherwise indistinguishable from real traffic and quietly inflates every
+   number on the dashboard. Checked before the script tag is created, so
+   opting out means no request to Umami rather than a request that is
+   discarded at the far end. */
 (function(){
   // From the Umami dashboard: Settings -> Websites -> the site -> "Website ID".
   var WEBSITE_ID = 'cc421df1-3f32-40f1-bd08-d7f6666de3ac';
   var SCRIPT_URL = 'https://cloud.umami.is/script.js';
+  var OPT_OUT_KEY = 'levlprep_analytics_opt_out';
+
+  /* Read fresh on every call rather than cached at load: the toggle on
+     privacy.html flips this, and the answer has to change without a reload.
+     A browser that refuses localStorage (Safari in private mode, site data
+     blocked) throws on read — treated as "not opted out", because the
+     visitor has not asked for anything, and the opposite reading would
+     silently disable the toggle for everyone in that state. */
+  function optedOut(){
+    try { return localStorage.getItem(OPT_OUT_KEY) === '1'; }
+    catch(e){ return false; }
+  }
+
+  function setOptedOut(value){
+    try {
+      if(value) localStorage.setItem(OPT_OUT_KEY, '1');
+      else localStorage.removeItem(OPT_OUT_KEY);
+    } catch(e){ return false; }
+    return true;
+  }
 
   var enabled = !!WEBSITE_ID;
 
@@ -33,7 +61,7 @@
      Safe to call whether or not analytics is configured, loaded, or blocked;
      a blocked script leaves window.umami undefined and this simply returns. */
   function event(name, data){
-    if(!enabled) return;
+    if(!enabled || optedOut()) return;
     try {
       if(window.umami && typeof window.umami.track === 'function'){
         if(data) window.umami.track(name, data);
@@ -43,7 +71,7 @@
   }
 
   function mount(){
-    if(!enabled || window.__levlAnalyticsMounted) return;
+    if(!enabled || optedOut() || window.__levlAnalyticsMounted) return;
     window.__levlAnalyticsMounted = true;
     var s = document.createElement('script');
     s.src = SCRIPT_URL;
@@ -56,5 +84,15 @@
     document.head.appendChild(s);
   }
 
-  window.LevlAnalytics = { event: event, mount: mount, enabled: enabled };
+  window.LevlAnalytics = {
+    event: event,
+    mount: mount,
+    enabled: enabled,
+    optedOut: optedOut,
+    /* Takes effect immediately for events, and from the next page load for
+       pageviews: the Umami script, once appended, is in the page for as long
+       as the page is. Opting out mid-visit therefore stops everything except
+       the one pageview already sent, which is the honest promise to make. */
+    setOptedOut: setOptedOut
+  };
 })();

@@ -295,19 +295,34 @@ The page CSP allows `https://*.workers.dev` under `connect-src` so a deployed
 Worker can actually be reached; without that the browser blocks the call
 silently.
 
+## Accessibility
+
+Three things, all mounted from `assets/site-chrome.js` rather than written into pages, for the same reason the header is: one place to fix, and a page added later gets them for free.
+
+- **Skip link.** Tabbing into any page meant tabbing the whole two-row chrome first — back arrow, wordmark, course, streak, level, account, mute, theme, then every section tab — before reaching a word of content, on every page. The link is injected as the first child of `<body>`, parked off-screen with a `transform` (not `display:none`, which is not focusable, so the link could never receive the focus meant to reveal it), and lands on `<main>` if the page has one or the first real element after the tab row otherwise. That element gets `tabindex="-1"`, or the viewport moves while the keyboard stays in the header and the next Tab returns to the first nav tab — the exact loop the link exists to break. The hub, `privacy.html`, `404.html` and `offline.html` draw their own headers and carry their own copy.
+- **Answer announcements** (`assets/announce.js`) — a polite live region that speaks correct/incorrect and the explanation, wired into the one choke point each course's feedback passes through.
+- **Reduced motion** — a blanket CSS rule in `assets/theme.css`, plus `window.LevlMotion` for the movement CSS cannot reach (smooth scrolls, the body map's camera flights).
+
 ## Privacy
 
-`privacy.html` is the site's privacy policy, linked from every page footer. The short version: no ads, no trackers, no cookies; progress lives in `localStorage`; the only thing that leaves the browser unprompted is the anonymous page counter described below.
+`privacy.html` is the site's privacy policy, linked from every page footer. The short version: no ads, no cookies, no cross-site tracking; progress lives in `localStorage`; what leaves the browser unprompted is the anonymous page counter and cookieless analytics, both described below.
 
-## Analytics
+It is also the only page with *controls* on it rather than prose: the analytics opt-out, and progress backup/restore. Both belong to "what this site does with your data", which is what the page is, and both are things you reach for once rather than daily — so they live there instead of taking up room in the header on all 110 pages.
 
-Every page reports a pageview to a `track_pageview(path)` Postgres RPC in the same Supabase project. No IP address, cookie, user id, or session identifier is ever recorded — the RPC only increments a `(path, day)` counter in a `page_views` table. That table has row-level security enabled with **no policies at all**, so it can't be read or written directly by anyone (including the publishable anon key); the RPC (`security definer`) is the only way to touch it.
+Its lede claimed "no ads, no trackers and no cookies" for a while after Umami went in, which was no longer true of the middle third. Fixed. **If what the site collects changes, this page changes in the same commit** — a privacy policy that lags the code is worse than none.
 
-To check traffic, run this in the Supabase SQL editor (or via `mcp__Supabase__execute_sql` if working from an agent session with access to this project):
+## Backing up progress (`assets/progress-backup.js`)
 
-```sql
-select path, day, views from page_views order by day desc, views desc limit 50;
-```
+Every scrap of study state is in `localStorage`: XP, level, streak, concept strength, the spaced-repetition schedule, exam history, flagged and missed questions, lesson position. That is what makes the site work without an account, and it is also the whole risk — `localStorage` is per-browser and per-device, and it is the first thing "clear browsing data" takes. Signing in syncs XP and streak, not every per-question record.
+
+So there is an export to a plain JSON file and an import back, on `privacy.html`. Notes on the design, because each one is a decision that could have gone the other way:
+
+- **An allow-list of keys, not a deny-list** (`hub_`, `nremt_`, `ochem_`, plus a few exact names). A deny-list would silently start exporting whatever a future feature stores. Anything new has to be added on purpose.
+- **The Supabase session token (`sb_*`) is excluded.** It is a live credential; a backup must not be a way to hand over an account.
+- **Values are kept as the raw strings `localStorage` holds.** Half are JSON and half are bare (`'dark'`, `'on'`); parsing would have to guess which, then guess back.
+- **Restore replaces rather than merges**, after a confirm that names the item count and the backup's date. Two study histories mixed together are not a study history.
+- **The same allow-list is applied on the way in.** The file came off a disk and could say anything; importing must not be a way to write arbitrary keys.
+- **The page reloads afterwards**, because every module reads its state once at load.
 
 ## Local development
 
@@ -330,6 +345,19 @@ then open `http://localhost:8000/`.
 5. The question bank carries no answer tell: no keyed option position holds more than 40% of items, no select-N key set dominates, and the "longest option is the answer" rate stays under its ceiling. The ceiling is a ratchet — lower it as the bank improves, never raise it.
 6. Every advertised question count in markup, meta tags and this README matches the bank. The homepage went on advertising a figure from an early build long after the bank had more than doubled.
 
+### Generated files
+
+A third job re-derives everything that is generated from the pages and fails if what is committed disagrees. These all fail the same way otherwise — a page or a question is added, the derived file is not rebuilt, and nothing says so:
+
+| Check | Guards |
+|---|---|
+| `build-og-tags.mjs --check` | every page has a link-preview card |
+| `build-sitemap.mjs --check` | every page is in `sitemap.xml` |
+| `build-question-bank.mjs --check` | the two files `practice.html` fetches match `questions.json` |
+| `build-tutor-bank.mjs` + `git diff --exit-code` | the assistant's teaching index matches both banks |
+
+`build-sitemap.mjs` reads each page's last commit date out of git, so that job checks out with `fetch-depth: 0`. Its `--check` compares the **URL set** rather than the bytes — `<lastmod>` is derived from history, and a byte comparison would fail over something nobody got wrong.
+
 ### Unit tests
 
 A second job runs `node --test scripts/test/*.test.mjs` — 24 tests over the two engines whose failure modes are silent. Everything above checks that the site is *wired* correctly; nothing checked that it *scores* correctly. An interval that doubles too eagerly buries a shaky concept for four months, a decay curve that bites too hard makes yesterday's work look undone, a streak that resets in the wrong timezone eats a 40-day run. None of that throws, and none of it would have been caught by a link checker — the student just gets worse practice and no one finds out.
@@ -346,11 +374,15 @@ Two things measure the site, and they are not the same thing.
 
 **The site's own counter** (`assets/account.js`, `trackPageview`) has been there the longest: a `track_pageview` RPC that adds one to a per-path, per-day total in our own Supabase. No IP, no cookie, no id, no referrer — there is genuinely no way to tell two visits apart. It still runs and is unaffected by any of the below.
 
+The `page_views` table it writes to has row-level security on with **no policies at all**, so nothing reaching it through the API can read or write it — the `security definer` RPC is the only way to touch it, which is what lets `privacy.html` promise the counter cannot be read back. Reading it therefore means the Supabase SQL editor, where the service role bypasses RLS. `scripts/sql/pageviews.sql` holds the queries: totals, top pages, per-day, per-course, which ochem lessons actually get opened, and a full CSV export. **This history predates Umami and Umami will never have it** — Umami knows only about traffic since the day it was installed, so for anything before that this file is the only record.
+
 **Umami** (`assets/analytics.js`) answers what that counter never could: not "was this page opened" but "did the person who opened it finish". It is a third party and collects more — referrer, country, browser, OS, device, and a daily visitor hash so visits can be told apart within a day.
 
 Setup: put the website id from the Umami dashboard into `WEBSITE_ID` at the top of `assets/analytics.js`. That is the only step. Until it is set the file does nothing at all, which is deliberate. `cloud.umami.is` is already in `script-src` and `connect-src` in the CSP on all 97 pages that carry one.
 
 `data-do-not-track="true"` is set, so a browser sending Do Not Track is excluded entirely. Ad blockers block it, as they block every analytics tool including the respectful ones; nothing on the site depends on it, and the site's own counter is unaffected because it goes to our own domain.
+
+There is also a per-browser opt-out, on `privacy.html` under **Site analytics**. It writes `levlprep_analytics_opt_out` to `localStorage`, and `assets/analytics.js` checks it *before* creating the script tag, so opting out means no request to Umami rather than one discarded at the far end. Two people want this for different reasons: a visitor who would rather not be counted, and whoever runs the site, whose own testing is otherwise indistinguishable from real traffic. **Turn it on in your own browser** or every number on the dashboard includes you.
 
 Events are **milestones, not actions**, and should stay that way. Umami's free tier counts every event against a monthly total, so tracking each answered question would cost 100 events for one exam instead of 2. The five that exist:
 
@@ -374,4 +406,39 @@ Questions live in `nremt/assets/questions.json` — a flat JSON array of objects
 {"domain": "Assessment", "diff": "medium", "topic": "Primary Assessment", "q": "...", "options": ["...", "...", "...", "..."], "correct": 1, "explain": "..."}
 ```
 
-Edit that file directly (it's plain JSON, not embedded in any page's markup).
+Edit that file directly (it's plain JSON, not embedded in any page's markup), then rebuild what is derived from it:
+
+```
+node scripts/build-question-bank.mjs   # the two files the browser fetches
+node scripts/build-tutor-bank.mjs      # the assistant's teaching index
+```
+
+### Why the bank ships as two files
+
+`questions.json` is what you edit; it is not what the browser downloads. `practice.html` fetches `questions-core.json` and `explanations.json`, both generated from it and index-aligned with it.
+
+The reason is that the explanations are two thirds of the bank's compressed weight — 409 KB of the 665 — and not one word of them is read until after a question has been answered. Waiting on them meant every visitor waited on all of it to see a question they could have been shown already. Measured on a 1.5 Mbps link with a 4× CPU throttle, on the page that is the site's front door:
+
+| | question on screen |
+|---|---|
+| one file | 4467 ms |
+| split | **2394 ms** |
+
+The explanations are fetched immediately afterwards without blocking anything and land about 270 ms later — long before anyone could have answered. The two places that read them (`renderFlashcard`, `renderReview`) `await` that promise anyway, because "long before" is an assumption about a fast phone and not a guarantee. If the second file fails outright, every mode still works and only the "why" under an answer is missing.
+
+**Index alignment is not cosmetic.** Every saved exam, flagged question, missed question and shuffled option order in a learner's browser is stored as a bare integer index into this bank. Re-ordering or re-keying it would silently re-point all of them at different questions — which is also why the bank was *not* split by domain, the change this replaced: that would have meant rebuilding question identity across six files and every `localStorage` record that refers to one, to speed up domain drills alone.
+
+## Pages that stand in for other pages
+
+Two files are served at URLs that are not their own, so both use absolute asset paths (a relative one would resolve against whatever folder the visitor asked for) and neither carries a canonical or a link-preview card. Both are skipped by `build-og-tags.mjs`, `build-sitemap.mjs` and the sitemap-coverage check in `check-site.mjs`.
+
+- **`404.html`** — GitHub Pages serves it for any URL it cannot resolve. It shows the address that failed, offers a way back into each course, and only offers "back to the last page" when there is a history entry to go back to.
+- **`offline.html`** — `sw.js` serves it for any page that is not in the cache while offline. It used to serve the course home page instead, which rendered something but explained nothing: you tapped Practice, landed on a home page, and read it as the app being broken. This keeps the address bar on the page you asked for (so a reload retries it) and lists what *is* cached on this device, read out of the Cache API rather than hard-coded — the precache is a core set and everything else is cached on visit, so the true answer differs per device.
+
+## Link previews
+
+`scripts/build-og-tags.mjs` writes the Open Graph and Twitter tags into every page, derived from the `<title>`, meta description and canonical each page already carries. Eighty pages had none — every ochem lesson, mechanism and tool — and unfurled as a bare grey URL in a chat, which for a site that spreads by students sharing links is the cheapest reach there is to lose. Hand-writing them would have put the same three facts in two places on every page and guaranteed drift.
+
+The cards themselves are generated too, by `scripts/build-og-images.mjs`, which renders an HTML template in Playwright's Chromium at 1200×630. It is a local tool, not a CI step; the PNGs are committed. They were previously hand-made and both had gone stale without anyone noticing — the site card still said "Study Hub", a name the site had not used in months, and the NREMT card advertised a question count from an early build against a bank that had since more than doubled. (Writing that stale figure out here in full trips check #6 above, which is the check working.) The copy now lives next to the numbers it quotes and the counts are counted off disk.
+
+Run it as `node scripts/build-og-images.mjs` after changing a card's copy. Note that ochem's lesson count is counted from `ochem/lessons/*.html` rather than from `curriculum.js`: that file lists modules and topics under the same shape, so matching it counts the module headings too and the card claims 76 where there are 58.

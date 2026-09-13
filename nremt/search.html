@@ -120,12 +120,25 @@
     return chunks;
   }
 
-  // The practice question bank now lives in its own JSON file (see practice.html),
+  // The practice question bank lives in its own JSON files (see practice.html),
   // rather than being buried in that page's inline script — which is what makes
   // indexing it here possible at all.
+  //
+  // Both halves, and both in parallel: searching questions without their
+  // explanations would lose most of what there is to match on — the
+  // explanations are the longest prose in the bank. practice.html defers the
+  // second file because it can show a question without it; this page cannot
+  // index one without it, so it waits for both. They arrive together rather
+  // than one after the other.
   async function fetchQuestionChunks(){
-    const res = await fetch('assets/questions.json');
-    const questions = await res.json();
+    const [core, explanations] = await Promise.all([
+      fetch('assets/questions-core.json').then(r => r.json()),
+      // An explanation is a nice-to-have here where the question is not, so a
+      // failure on this half degrades to indexing the stems alone rather than
+      // dropping the whole bank out of the index.
+      fetch('assets/explanations.json').then(r => r.json()).catch(() => []),
+    ]);
+    const questions = core.map((q, i) => ({ ...q, explain: explanations[i] || '' }));
     return questions.map((q, i) => ({
       page: 'Practice Questions',
       // Deep link straight to the one question, which practice.html opens on its

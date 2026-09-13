@@ -249,6 +249,11 @@ if (existsSync(sitemapForCoverage)) {
     // Redirect stubs, and Google's site-verification file, are not pages.
     if (/http-equiv="refresh"/.test(body)) continue;
     if (/^google[0-9a-f]+\.html$/.test(relative(ROOT, file))) continue;
+    // Nor 404.html and offline.html: each is served in place of some other
+    // URL — the first by GitHub Pages for anything it cannot resolve, the
+    // second by sw.js for anything it cannot fetch — so neither has an
+    // address of its own to submit.
+    if (/^(404|offline)\.html$/.test(relative(ROOT, file).split(sep).join('/'))) continue;
     // Nor are the textbook's section fragments — see build-sitemap.mjs.
     if (relative(ROOT, file).split(sep).join('/').startsWith('ochem/notes/')) continue;
     const path = '/' + relative(ROOT, file).split(sep).join('/');
