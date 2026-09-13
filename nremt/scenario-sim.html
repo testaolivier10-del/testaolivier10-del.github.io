@@ -122,7 +122,26 @@
     text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;
   }
   .path-log ol{margin:0;padding-left:18px;font-size:12.5px;font-weight:600;color:var(--muted);}
-  .path-log li{margin-bottom:4px;}
+  .path-log li{margin-bottom:14px;}
+  /* The transcript is the debrief, so each decision gets room: what you chose,
+     what it cost, what else was on the table, and a way back to it. */
+  .path-choice{font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.5;text-wrap:pretty;}
+  .path-conseq{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.55;text-wrap:pretty;}
+  .path-alts{margin-top:6px;}
+  .path-alts summary{
+    font-size:12px;font-weight:700;color:var(--accent);cursor:pointer;
+    list-style:none;display:inline-flex;align-items:center;gap:4px;
+  }
+  .path-alts summary::before{content:"▸";font-size:10px;transition:transform .15s;}
+  .path-alts[open] summary::before{transform:rotate(90deg);}
+  .path-alts summary::-webkit-details-marker{display:none;}
+  .path-alts ul{margin:6px 0 0;padding-left:16px;}
+  .path-alts li{margin-bottom:3px;font-size:12.5px;font-weight:600;color:var(--muted);line-height:1.5;}
+  .rewind-btn{
+    margin-top:8px;font:700 12px inherit;padding:6px 13px;border:2px solid var(--line);
+    border-radius:16px;background:var(--white);color:var(--ink);cursor:pointer;
+  }
+  .rewind-btn:hover{border-color:var(--accent);color:var(--accent);}
 
   footer{margin-top:44px;font-size:12px;color:var(--muted);max-width:60ch;}
 </style>
@@ -821,6 +840,28 @@ function backToPicker(){
   else window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+/* Stand at a fork again.
+
+   Restarting was the only way back, which means the price of exploring the
+   other branch of a decision three steps in was replaying the two before it.
+   That is a tax on curiosity in a tool whose entire value is showing you what
+   the other choice would have cost — and the eight scenarios are long enough
+   that people pay it once and then stop.
+
+   Everything after the chosen decision is dropped, because it did not happen
+   any more. */
+function rewindTo(i){
+  const entry = pathLog[i];
+  if(!entry) return;
+  pathLog = pathLog.slice(0, i);
+  currentNodeId = entry.fromNode;
+  renderNode();
+  if(window.LevlAnnounce){
+    window.LevlAnnounce.say('Back at an earlier decision. ' +
+      (pathLog.length ? pathLog.length + ' earlier choices kept.' : 'Back at the start of the call.'));
+  }
+}
+
 function renderNode(consequenceText){
   const node = currentScenario.nodes[currentNodeId];
   const box = document.getElementById('simBox');
@@ -856,12 +897,28 @@ function renderNode(consequenceText){
       </div>
       <div class="path-log">
         <div class="path-log-title">Your path through this call</div>
-        <ol>${pathLog.map(p => `<li>${p}</li>`).join('')}</ol>
+        <ol>
+          ${pathLog.map((p, i) => `
+            <li>
+              <div class="path-choice">${p.text}</div>
+              ${p.consequence ? `<div class="path-conseq">${p.consequence}</div>` : ''}
+              ${p.alternatives.length ? `
+                <details class="path-alts">
+                  <summary>${p.alternatives.length} other option${p.alternatives.length === 1 ? '' : 's'} at this point</summary>
+                  <ul>${p.alternatives.map(a => `<li>${a}</li>`).join('')}</ul>
+                </details>` : ''}
+              ${p.alternatives.length ? `<button type="button" class="rewind-btn" data-rewind="${i}">Go back to this decision</button>` : ''}
+            </li>
+          `).join('')}
+        </ol>
       </div>
     `;
     document.getElementById('backBtn').addEventListener('click', backToPicker);
     document.getElementById('retryBtn').addEventListener('click', () => startScenario(currentScenario.id));
     document.getElementById('anotherBtn').addEventListener('click', backToPicker);
+    box.querySelectorAll('[data-rewind]').forEach(btn => {
+      btn.addEventListener('click', () => rewindTo(parseInt(btn.dataset.rewind, 10)));
+    });
     if(window.LevlMotion) window.LevlMotion.scrollToY(box.offsetTop - 20);
     else window.scrollTo({ top: box.offsetTop - 20, behavior: 'smooth' });
     return;
@@ -882,8 +939,20 @@ function renderNode(consequenceText){
   document.getElementById('backBtn').addEventListener('click', backToPicker);
   box.querySelectorAll('[data-choice]').forEach(btn => {
     btn.addEventListener('click', () => {
-      const choice = node.choices[parseInt(btn.dataset.choice, 10)];
-      pathLog.push(choice.text + (choice.consequence ? ' — ' + choice.consequence : ''));
+      const idx = parseInt(btn.dataset.choice, 10);
+      const choice = node.choices[idx];
+      /* The log records the FORK, not just the decision — which node it was
+         taken from, and what else was on offer. That is what makes going back
+         to a decision possible, and it is the thing the old flat list of
+         strings could not support: you could read that you got it wrong and
+         had no way to stand at that moment again. */
+      pathLog.push({
+        fromNode: currentNodeId,
+        index: idx,
+        text: choice.text,
+        consequence: choice.consequence || '',
+        alternatives: node.choices.filter((c, i) => i !== idx).map(c => c.text)
+      });
       currentNodeId = choice.next;
       renderNode(choice.consequence);
     });

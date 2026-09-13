@@ -332,6 +332,18 @@
   .readiness-card .r-label.tier-mid{background:rgba(232,119,106,0.22);color:#F7B8AC;}
   .readiness-card .r-label.tier-low{background:rgba(209,89,74,0.28);color:#F2A08F;}
   .readiness-card .r-sub{color:#DCEFEA;font-size:13px;font-weight:600;margin-top:10px;line-height:1.5;}
+  /* Something to DO about "your weakest domain is X", which the card named and
+     then left you to act on alone. On the navy ground, so it is lit rather
+     than tinted. */
+  .readiness-card .r-tool{
+    display:block;margin-top:12px;padding:11px 13px;border-radius:12px;
+    background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.18);
+    text-decoration:none;color:#DCEFEA;font-size:12.5px;font-weight:600;
+    line-height:1.5;text-wrap:pretty;
+  }
+  .readiness-card .r-tool:hover{background:rgba(255,255,255,0.16);border-color:rgba(255,255,255,0.32);}
+  .readiness-card .r-tool b{color:var(--on-accent);font-weight:900;}
+
   .readiness-card .r-note{color:#9FB5AE;font-size:11.5px;font-weight:600;margin-top:12px;padding-top:12px;border-top:2px solid rgba(255,255,255,0.15);}
   .readiness-update{margin-top:18px;padding-top:16px;border-top:2px solid rgba(255,255,255,0.15);}
   .readiness-update .r-sub{color:#DCEFEA;font-size:12.5px;font-weight:600;margin-top:6px;line-height:1.5;}
@@ -1047,10 +1059,44 @@ function renderReadiness(targetId, opts){
           <span class="r-label tier-${r.tier}">${r.label}</span>
         </div>
         <div class="r-sub">${subParts.join(' · ')}</div>
+        ${toolForDomain(r.weakestDomain)}
         <div class="r-note">${note}</div>
       </div>
     `;
   }
+}
+
+/* The tool for whatever you are worst at.
+
+   The readiness card names your weakest domain and then offers nothing to do
+   about it except more of the same questions. Three of the tools on this site
+   — the sound trainer, the scenarios, the flow diagrams — were linked from the
+   tools page and nowhere else, and a student whose weakest domain is Airway &
+   Respiratory is the exact person who should be told a wheeze is two clicks
+   away.
+
+   Keyed on the six domains the question bank actually uses. Only on the full
+   card, never the compact mid-exam update, because a suggestion that appears
+   between questions is an interruption. */
+const DOMAIN_TOOL = {
+  'Airway & Respiratory': { href:'sound-trainer.html', label:'Sound Trainer',
+    why:'wheezes, crackles and stridor by ear — the distinction these questions turn on' },
+  'Cardiac & Medical': { href:'sound-trainer.html', label:'Sound Trainer',
+    why:'heart sounds and murmur timing, plus the chest pain scenario' },
+  'Trauma': { href:'scenario-sim.html', label:'Scenarios',
+    why:'run a bleeding or crash call from dispatch to handover' },
+  'Assessment': { href:'flowcharts.html', label:'Flow Diagrams',
+    why:'drill the primary assessment order until it is automatic' },
+  'EMS Operations': { href:'flowcharts.html', label:'Flow Diagrams',
+    why:'START triage, drilled rather than read' },
+  'OB/Peds & Special Populations': { href:'scenario-sim.html', label:'Scenarios',
+    why:'the choking toddler call, start to finish' }
+};
+
+function toolForDomain(domain){
+  const t = DOMAIN_TOOL[domain];
+  if(!t) return '';
+  return `<a class="r-tool" href="${t.href}"><b>${t.label}</b> — ${t.why} &rarr;</a>`;
 }
 function renderProgressChart(){
   const history = loadHistory();
