@@ -643,6 +643,35 @@ footer .privacy-link{margin-top:10px;}
 footer .privacy-link a{color:var(--muted);text-decoration:underline;text-underline-offset:2px;}
 footer .privacy-link a:hover{color:var(--ink);}
 
+/* ---- Skip link ---------------------------------------------------------
+   Tabbing into any page meant tabbing through the whole two-row chrome first
+   — back arrow, wordmark, course, streak, level, account, mute, theme, then
+   every section tab — before reaching a word of content. On every page, every
+   time. This is the escape hatch: parked off the top of the screen until it
+   takes focus, at which point it drops into the corner as the first stop.
+
+   Moved with a transform rather than display:none or visibility:hidden,
+   because a hidden element cannot take focus, and the link would never
+   receive the focus that is supposed to reveal it. */
+.skip-link{
+  position:fixed;top:0;left:0;z-index:100;
+  transform:translateY(-150%);
+  background:var(--accent);color:var(--on-accent);
+  font:900 14px var(--font-ui);
+  padding:13px 22px;border-radius:0 0 var(--radius) 0;
+  text-decoration:none;
+  box-shadow:var(--shadow-pop);
+}
+.skip-link:focus{transform:translateY(0);}
+
+/* The skip target is a plain container, so it is given tabindex="-1" to be
+   focusable at all — otherwise the viewport jumps but the keyboard stays in
+   the header, and the next Tab returns to the first nav tab: the exact loop
+   the link exists to break. The ring a browser draws around a whole page
+   section is noise rather than information, so it is suppressed here and only
+   here; every element that is focusable in its own right keeps its own. */
+[data-skip-target]:focus{outline:none;}
+
 /* Visible to a screen reader, not on screen — for a label whose control is
    already self-evident sighted (a search box with a placeholder). */
 .sr-only{

@@ -206,9 +206,50 @@
     requestAnimationFrame(syncHeights);
     if(document.fonts && document.fonts.ready) document.fonts.ready.then(syncHeights);
 
+    mountSkipLink(nav);
     mountTutor(cfg);
     mountAnnouncer();
     mountAnalytics();
+  }
+
+  /* Where "skip to content" should land. A real <main> if the page has one,
+     otherwise the first real element after the tab row — every page on the
+     site opens its content with a .xshell or .wrap right there. Script,
+     style and the no-JS nav fallback are stepped over: the fallback is
+     removed a few lines above this runs, but not on a page that never had
+     one, and landing the skip link on an empty noscript is landing it
+     nowhere. */
+  function findContentStart(nav){
+    var explicit = document.querySelector('main');
+    if(explicit) return explicit;
+    var el = nav && nav.nextElementSibling;
+    var skip = { NOSCRIPT:1, SCRIPT:1, STYLE:1, TEMPLATE:1, LINK:1 };
+    while(el){
+      if(!skip[el.tagName]) return el;
+      el = el.nextElementSibling;
+    }
+    return null;
+  }
+
+  /* Injected rather than written into all 110 pages, for the same reason the
+     header itself is: one place to fix, and a page added later gets it
+     without anyone remembering to. Inserted as the first child of <body> so
+     it is the first thing the keyboard reaches — anywhere further down and it
+     is behind the chrome it exists to skip. */
+  function mountSkipLink(nav){
+    if(document.getElementById('levlSkipLink')) return;
+    var target = findContentStart(nav);
+    if(!target) return;
+    if(!target.id) target.id = 'levl-main';
+    target.setAttribute('data-skip-target', '');
+    if(!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+
+    var a = document.createElement('a');
+    a.id = 'levlSkipLink';
+    a.className = 'skip-link';
+    a.href = '#' + target.id;
+    a.textContent = 'Skip to content';
+    document.body.insertBefore(a, document.body.firstChild);
   }
 
   /* The study assistant. Mounted here rather than per page because every page

@@ -118,6 +118,10 @@
 </style>
 </head>
 <body>
+<!-- The hub draws its own header rather than calling LevlChrome.render — it
+     has no course to name and no section tabs — so it also carries its own
+     skip link, which the chrome injects for every other page on the site. -->
+<a class="skip-link" href="#main">Skip to content</a>
 <div id="site-header">
   <div class="site-header__inner">
     <a class="site-header__brand" href="index.html">
@@ -127,7 +131,7 @@
   </div>
 </div>
 
-<div class="xshell">
+<div class="xshell" id="main" data-skip-target tabindex="-1">
 
   <div class="hero">
     <div class="eyebrow">LevlPrep</div>
