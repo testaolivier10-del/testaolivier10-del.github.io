@@ -225,6 +225,9 @@ The NREMT notes use the same shell as the ochem book — the shared rail and cha
 
 What makes it read as a textbook rather than a page of notes, and where each piece comes from:
 
+The prose itself is written as a textbook, not as revision notes. That was a second pass over the same material: every chapter's body was rewritten from "term — fragment" bullets and arrow chains into paragraphs, keeping every fact, figure, name and mnemonic. Bullets survive only where a list is the honest form — the ordered steps of a procedure, a set of criteria, named categories, a medication list — and each kept list is introduced by a sentence. Tables were not touched. The rewrite was done against a validator (`scripts/`-external, kept out of the repo) that compared each chapter with its source and failed on a changed heading, section id, takeaway or table, or on any number that went missing; the writing is checked, not trusted.
+
+
 - **Chapter opener.** The chapter number set large, a two-to-four-sentence opening paragraph (`intro` on each chapter) with a drop cap, an "In this chapter" contents box listing the numbered sections with their topic headings as links, and a length line (sections, topics, an estimated reading time at 200 words a minute).
 - **Numbered sections.** `14.1`, `20.2`: the number is the chapter number and the section's position, computed at render, so nothing in the data has to be renumbered when a section is added. The rail, the running head, search results and the key-points box all use the same number.
 - **Running head.** Chapter on the left, the section you are in on the right, pinned under the site header once you scroll past the opener — what a book prints at the top of every page.
