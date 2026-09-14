@@ -285,6 +285,54 @@ Signing in is optional and layers **cross-device sync** on top of that same loca
 
 **One login covers the whole site.** The Supabase session lives in `localStorage` on this origin, which `/`, `/nremt/` and `/ochem/` all share, so signing in anywhere signs you in everywhere. `assets/account.js` is loaded by every page in every subject.
 
+### Ways in, and the way back in
+
+The login is a nuisance charged against work a student has already done, so the
+form is sized accordingly: one screen, the fewest fields that can work, and no
+step that is not load-bearing.
+
+| | |
+|---|---|
+| **Password** | Minimum 8 characters, length-first strength meter, a **Show** toggle. The toggle is why there is no *confirm password* field — a second box exists only to catch a typo you cannot see, and being able to look catches the same typo without doubling the work. Caps Lock is called out, because `Invalid login credentials` with Caps Lock on is the most maddening failure there is and the browser will never mention it. |
+| **Forgot password** | `resetPasswordForEmail` → the link returns to `/`, the SDK fires `PASSWORD_RECOVERY`, and `account.js` opens the *Set a new password* screen wherever you land. There was previously **no way back in at all**: a forgotten password meant a permanently orphaned account with a level and a streak inside it. |
+| **Magic link** | `signInWithOtp` — no password to invent, store or recall. For a site checked on a phone and a laptop this is often the whole ceremony. |
+| **Social** | `OAUTH_PROVIDERS` in `account.js` is empty, so no provider buttons render. See below. |
+| **Resend confirmation** | The *Check your email* screen can send the mail again. A confirmation that lands in spam used to be a dead end. |
+| **Email typos** | `gmial.com` and ~20 neighbours of the six big domains are caught on blur with a one-click fix. Mail to a typo'd address is not bounced — it is delivered nowhere, silently, while the student waits for it. |
+
+Two rules the copy follows. **Errors say what to do next**: Supabase's own
+strings leak its vocabulary (`AuthApiError`, `otp_expired`) and, in the case
+that matters most, are actively unhelpful, so `authMessage()` maps every
+failure reachable from the form to a sentence. **The reset screen never says
+whether the address has an account** — "no account with that email" hands
+anyone holding a list of addresses a free check for which ones study here.
+
+The dialog behaves like one: Escape closes it (except mid-recovery, where the
+token is single-use), Tab is trapped inside it, focus returns to the button
+that opened it, the page behind cannot scroll, and errors are announced via
+`role="alert"`. Inputs are 16px so iOS does not zoom the page on focus.
+
+Signing out goes through a menu rather than a `window.confirm()`, and **pushes
+before it drops the session** — signing out with unsynced work in the browser
+is the one way to actually lose progress here.
+
+`authMessage`, `passwordScore` and `emailTypo` are exported on
+`StudyHubAccount` and tested in `scripts/test/auth-form.test.mjs`.
+
+### Supabase settings these depend on
+
+Magic links, reset mail and the resend all use Supabase's built-in mailer, which
+is **rate-limited to a handful of messages an hour** on the free tier — fine for
+this traffic, but it is the thing to check first if mail stops arriving. Auth →
+URL Configuration must list the site origin under *Redirect URLs* (the reset
+link returns to `/`, everything else to the page you started from).
+
+Adding **Continue with Google** is two steps: enable the provider in
+Authentication → Providers with an OAuth client id and secret, then add
+`{ id: 'google', label: 'Continue with Google' }` to `OAUTH_PROVIDERS` in
+`assets/account.js`. The array is empty by default because a button for a
+provider that is not configured only produces a dead end.
+
 ### Namespaced sync
 
 `user_progress.data` is shaped as:

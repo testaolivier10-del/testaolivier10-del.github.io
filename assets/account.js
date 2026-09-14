@@ -201,13 +201,136 @@
   // the app is swapped out, so visibilitychange alone loses that last write.
   function onPageHide(){ flushSoon(); push(); }
 
-  /* ---- auth UI -------------------------------------------------------- */
+  /* ---- auth UI --------------------------------------------------------
+
+     What a login is for, here: keeping a level and a streak that already
+     exist. Nobody arrives wanting an account, so every step that is not
+     load-bearing is friction charged against work the student has already
+     done. That shapes the whole section — one screen, the fewest fields
+     that can work, a way back in when the password is gone, and errors
+     that say what to do next instead of what the server called it.
+     ------------------------------------------------------------------ */
+
+  // Eight, not six. Six characters is inside the range a commodity GPU
+  // walks through offline, and it is the floor Supabase ships rather than
+  // a considered one. Length is also the only rule here: forced symbols
+  // and digits reliably produce P@ssw0rd1 and a sticky note, which is why
+  // NIST stopped recommending them. The strength meter below advises,
+  // and only length is actually enforced.
+  var MIN_PASSWORD = 8;
+
+  // Social sign-in. Each provider must first be enabled in the Supabase
+  // dashboard (Authentication → Providers) with its OAuth client id and
+  // secret; a button for a provider that is not configured only produces a
+  // dead end, so an unconfigured build lists none and shows the email form
+  // alone. Adding Google is one entry here plus that dashboard step.
+  var OAUTH_PROVIDERS = [];  // e.g. [{ id:'google', label:'Continue with Google' }]
+
+  // Which address signed in last, so the next visit on this browser starts
+  // with the email already filled. Never the password.
+  var LAST_EMAIL_KEY = 'levlprep_last_email';
 
   function escapeHtml(s){
     return String(s).replace(/[&<>"']/g, function(c){
       return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
     });
   }
+
+  /* Backend error text is written for whoever is reading the logs. Supabase's
+     leaks its own vocabulary ("AuthApiError", "otp_expired") and, in the case
+     that matters most, is actively unhelpful: a mistyped password comes back
+     as "Invalid login credentials", which tells a student neither which of
+     the two fields was wrong nor that the fix is a reset link ten pixels
+     away. So every failure reachable from this form gets a sentence naming
+     what happened and what to do next. Anything unrecognised falls through
+     to the original text rather than a shrug, because a real message we have
+     not seen yet still beats "Something went wrong". */
+  function authMessage(error){
+    var raw = String((error && (error.message || error.error_description)) || '');
+    var code = String((error && error.code) || '').toLowerCase();
+    var status = (error && error.status) || 0;
+    var m = raw.toLowerCase();
+    function has(s){ return m.indexOf(s) !== -1; }
+
+    if(status === 429 || code.indexOf('rate_limit') !== -1 || has('rate limit') || has('too many'))
+      return 'Too many tries just now. Wait a minute, then try again.';
+    if(code === 'invalid_credentials' || has('invalid login credentials'))
+      return 'That email and password don’t match an account. Check the password — or reset it below.';
+    if(code === 'email_not_confirmed' || has('email not confirmed'))
+      return 'Confirm your email first. We sent a link when you signed up — check spam too.';
+    if(code === 'user_already_exists' || has('already registered') || has('already been registered'))
+      return 'There’s already an account with that email. Sign in instead, or reset the password.';
+    if(code === 'weak_password' || has('password should be'))
+      return 'That password is too short — use at least ' + MIN_PASSWORD + ' characters.';
+    if(code === 'same_password' || has('should be different'))
+      return 'That’s the password you already have. Pick a different one.';
+    if(code === 'validation_failed' || has('unable to validate email') || has('invalid email'))
+      return 'That email address doesn’t look right.';
+    if(code === 'otp_expired' || has('expired') || has('invalid or has expired'))
+      return 'That link has expired. Request a new one below.';
+    if(has('failed to fetch') || has('networkerror') || has('network request'))
+      return 'Couldn’t reach the server. Check your connection and try again.';
+    return raw || 'Something went wrong. Please try again.';
+  }
+
+  // The handful of passwords that turn up first in every breach corpus, plus
+  // this site's own name — a domain word is the first thing an attacker
+  // guesses and the first thing a student reaches for. Not a filter (the
+  // meter advises, it does not block), just the one case where "12 characters
+  // long" is a lie the bar shouldn't tell.
+  var WEAK_PASSWORDS = ['password','password1','password123','12345678','123456789','1234567890',
+    'qwertyuiop','qwerty123','letmein','iloveyou','admin123','welcome1','levlprep','levlprep1'];
+
+  /* Strength as advice, not as a gate. The scale is length-first because
+     that is what actually costs an attacker time; character variety only
+     moves the bar once the password is already long enough for variety to
+     multiply anything. */
+  function passwordScore(pw){
+    pw = String(pw || '');
+    if(!pw) return { score: 0, label: '', hint: 'At least ' + MIN_PASSWORD + ' characters — length beats symbols.' };
+    if(WEAK_PASSWORDS.indexOf(pw.toLowerCase()) !== -1)
+      return { score: 0, label: 'Too common', hint: 'This one is in every leaked-password list. Pick another.' };
+    if(pw.length < MIN_PASSWORD)
+      return { score: 0, label: 'Too short', hint: (MIN_PASSWORD - pw.length) + ' more character' + (MIN_PASSWORD - pw.length === 1 ? '' : 's') + ' to go.' };
+
+    var variety = 0;
+    if(/[a-z]/.test(pw)) variety++;
+    if(/[A-Z]/.test(pw)) variety++;
+    if(/[0-9]/.test(pw)) variety++;
+    if(/[^A-Za-z0-9]/.test(pw)) variety++;
+
+    var score = 1;
+    if(pw.length >= 10 && variety >= 2) score = 2;
+    if(pw.length >= 12 && variety >= 2) score = 3;
+    if(pw.length >= 14 || (pw.length >= 12 && variety >= 3)) score = 4;
+
+    var labels = ['Too short', 'Weak', 'Okay', 'Good', 'Strong'];
+    var hints = ['', 'Works, but a longer one is much harder to guess.',
+      'Fine. A few more characters would make it strong.', 'Good password.', 'Strong password.'];
+    return { score: score, label: labels[score], hint: hints[score] };
+  }
+
+  // A confirmation email sent to gmial.com is not bounced — it is delivered
+  // nowhere and silently, and the student waits for it. One keystroke away
+  // from the six domains that cover nearly every address is worth catching.
+  var DOMAIN_FIXES = {
+    'gmial.com':'gmail.com','gmai.com':'gmail.com','gmail.co':'gmail.com','gmail.con':'gmail.com',
+    'gmail.cm':'gmail.com','gnail.com':'gmail.com','gmaill.com':'gmail.com','gmail.om':'gmail.com',
+    'yahoo.con':'yahoo.com','yaho.com':'yahoo.com','yahooo.com':'yahoo.com','yahoo.co':'yahoo.com',
+    'hotmai.com':'hotmail.com','hotmial.com':'hotmail.com','hotmail.con':'hotmail.com','hotmail.co':'hotmail.com',
+    'outlok.com':'outlook.com','outloo.com':'outlook.com','outlook.con':'outlook.com',
+    'iclod.com':'icloud.com','icloud.co':'icloud.com','icoud.com':'icloud.com',
+    'protonmai.com':'protonmail.com','protonmail.co':'protonmail.com'
+  };
+  function emailTypo(email){
+    var s = String(email || '').trim();
+    var at = s.lastIndexOf('@');
+    if(at < 1 || at === s.length - 1) return null;
+    var fix = DOMAIN_FIXES[s.slice(at + 1).toLowerCase()];
+    return fix ? s.slice(0, at + 1) + fix : null;
+  }
+
+  /* ---- account button + menu ------------------------------------------ */
 
   // The host page owns where the button goes; this only fills the slot if
   // one exists, so a page with no #accountSlot simply shows no account UI.
@@ -216,23 +339,108 @@
     if(!mount) return;
     if(currentUser){
       var label = currentUser.email ? currentUser.email.split('@')[0] : 'Account';
-      mount.innerHTML = '<button type="button" class="account-btn" id="accountBtn" title="' +
-        escapeHtml(currentUser.email || '') + '">' + escapeHtml(label) + '</button>';
+      mount.innerHTML = '<button type="button" class="account-btn" id="accountBtn" aria-haspopup="menu" ' +
+        'aria-expanded="false" title="' + escapeHtml(currentUser.email || '') + '">' + escapeHtml(label) + '</button>';
     } else {
       mount.innerHTML = '<button type="button" class="account-btn" id="accountBtn">Log in</button>';
     }
     var btn = document.getElementById('accountBtn');
     if(btn) btn.addEventListener('click', function(){
-      if(currentUser) openAccountMenu(); else openAuthModal();
+      if(currentUser) toggleAccountMenu(btn); else openAuthModal('signin');
     });
   }
 
-  function openAccountMenu(){
-    if(confirm('Signed in as ' + currentUser.email + '.\n\nSign out?')){
-      push();
-      var c = getClient();
-      if(c) c.auth.signOut();
+  /* This was a window.confirm(), which is the wrong shape twice over: it
+     asks a yes/no question when the useful answer is usually neither ("is
+     my work actually saved?"), and a native dialog can't say when the last
+     sync was. Signing out with unsynced work in the browser is the one way
+     to lose progress here, so the menu shows the state and pushes before it
+     goes. */
+  function closeAccountMenu(){
+    var m = document.getElementById('accountMenu');
+    if(m && m.parentNode) m.parentNode.removeChild(m);
+    var btn = document.getElementById('accountBtn');
+    if(btn) btn.setAttribute('aria-expanded', 'false');
+    document.removeEventListener('click', onDocClickForMenu, true);
+    document.removeEventListener('keydown', onMenuKeydown, true);
+  }
+  function onDocClickForMenu(e){
+    var m = document.getElementById('accountMenu');
+    var btn = document.getElementById('accountBtn');
+    if(!m) return;
+    if(m.contains(e.target) || (btn && btn.contains(e.target))) return;
+    closeAccountMenu();
+  }
+  function onMenuKeydown(e){
+    if(e.key === 'Escape'){
+      closeAccountMenu();
+      var btn = document.getElementById('accountBtn');
+      if(btn) btn.focus();
     }
+  }
+
+  function toggleAccountMenu(btn){
+    if(document.getElementById('accountMenu')){ closeAccountMenu(); return; }
+    var menu = document.createElement('div');
+    menu.id = 'accountMenu';
+    menu.className = 'account-menu';
+    menu.setAttribute('role', 'menu');
+    menu.innerHTML =
+      '<div class="account-menu__who">' +
+        '<b>' + escapeHtml(currentUser.email || 'Signed in') + '</b>' +
+        '<small id="accountMenuState">Progress syncs automatically.</small>' +
+      '</div>' +
+      '<button type="button" role="menuitem" id="accountSyncBtn">Sync now</button>' +
+      '<button type="button" role="menuitem" id="accountSignOutBtn">Sign out</button>';
+    document.body.appendChild(menu);
+
+    // Anchored to the button rather than fixed to a corner, so it lands under
+    // the account button wherever a page's header happens to put it.
+    var r = btn.getBoundingClientRect();
+    menu.style.top = (r.bottom + window.scrollY + 8) + 'px';
+    menu.style.left = Math.max(8, Math.min(
+      r.right + window.scrollX - menu.offsetWidth,
+      window.scrollX + document.documentElement.clientWidth - menu.offsetWidth - 8
+    )) + 'px';
+
+    btn.setAttribute('aria-expanded', 'true');
+    document.addEventListener('click', onDocClickForMenu, true);
+    document.addEventListener('keydown', onMenuKeydown, true);
+
+    var state = document.getElementById('accountMenuState');
+    document.getElementById('accountSyncBtn').addEventListener('click', function(){
+      state.textContent = 'Syncing…';
+      push().then(function(){ state.textContent = 'Saved to your account just now.'; });
+    });
+    document.getElementById('accountSignOutBtn').addEventListener('click', function(){
+      var b = this;
+      b.disabled = true;
+      state.textContent = 'Saving your progress first…';
+      // Sign out only once the last write is away. Dropping the session
+      // first would strand whatever happened since the last tick in a
+      // browser that is about to look signed-out.
+      push().then(function(){
+        var c = getClient();
+        if(c) c.auth.signOut();
+        closeAccountMenu();
+      });
+    });
+    var first = menu.querySelector('button');
+    if(first) first.focus();
+  }
+
+  /* ---- auth modal ------------------------------------------------------ */
+
+  var authMode = 'signin';       // signin | signup | reset | newpassword
+  var lastFocused = null;        // restored when the modal closes
+  var pendingEmail = '';         // address a confirmation mail just went to
+
+  function msgEl(){ return document.getElementById('authModalMsg'); }
+  function setMsg(text, kind){
+    var el = msgEl();
+    if(!el) return;
+    el.textContent = text || '';
+    el.className = 'auth-modal-msg' + (kind ? ' ' + kind : '');
   }
 
   function ensureAuthModal(){
@@ -240,106 +448,428 @@
     var overlay = document.createElement('div');
     overlay.id = 'authModalOverlay';
     overlay.className = 'auth-modal-overlay';
+
+    var social = OAUTH_PROVIDERS.length
+      ? '<div class="auth-social" id="authSocial">' +
+          OAUTH_PROVIDERS.map(function(p){
+            return '<button type="button" class="auth-social__btn" data-provider="' +
+              escapeHtml(p.id) + '">' + escapeHtml(p.label) + '</button>';
+          }).join('') +
+        '</div><div class="auth-or" id="authOr"><span>or</span></div>'
+      : '';
+
     overlay.innerHTML =
-      '<div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">' +
+      '<div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle" aria-describedby="authModalSub">' +
         '<button type="button" class="auth-modal-close" id="authModalClose" aria-label="Close">&times;</button>' +
         '<h2 id="authModalTitle">Sign in</h2>' +
-        '<p class="auth-modal-sub">One account for every subject on LevlPrep. Sign in to sync your level, streak, and progress across devices. Everything still works without an account.</p>' +
-        '<form id="authForm">' +
-          '<label>Email<input type="email" id="authEmail" required autocomplete="email"></label>' +
-          '<label>Password<input type="password" id="authPassword" required autocomplete="current-password" minlength="6"></label>' +
-          '<label id="authConfirmLabel" hidden>Confirm password<input type="password" id="authConfirmPassword" autocomplete="new-password" minlength="6"></label>' +
-          '<div class="auth-modal-msg" id="authModalMsg"></div>' +
+        '<p class="auth-modal-sub" id="authModalSub"></p>' +
+        social +
+        '<form id="authForm" novalidate>' +
+          '<label id="authEmailLabel">Email' +
+            '<input type="email" id="authEmail" required autocomplete="email" inputmode="email" ' +
+              'autocapitalize="none" autocorrect="off" spellcheck="false" aria-describedby="authEmailHint">' +
+          '</label>' +
+          '<p class="auth-hint" id="authEmailHint" hidden></p>' +
+          '<label id="authPasswordLabel">' +
+            '<span class="auth-label-row">' +
+              '<span id="authPasswordText">Password</span>' +
+              '<button type="button" class="auth-reveal" id="authReveal" aria-pressed="false" tabindex="-1">Show</button>' +
+            '</span>' +
+            '<input type="password" id="authPassword" autocomplete="current-password" aria-describedby="authPwHint">' +
+          '</label>' +
+          '<div class="auth-strength" id="authStrength" hidden>' +
+            '<div class="auth-strength__bar"><i id="authStrengthFill"></i></div>' +
+            '<span class="auth-strength__label" id="authStrengthLabel"></span>' +
+          '</div>' +
+          '<p class="auth-hint" id="authPwHint" hidden></p>' +
+          '<p class="auth-forgot" id="authForgotRow">' +
+            '<button type="button" id="authForgotBtn">Forgot your password?</button>' +
+          '</p>' +
+          // role=alert rather than a plain <p>: a screen reader otherwise
+          // gets no signal at all that the submit it just made failed.
+          '<div class="auth-modal-msg" id="authModalMsg" role="alert" aria-live="polite"></div>' +
           '<button type="submit" class="auth-modal-submit" id="authSubmitBtn">Sign in</button>' +
         '</form>' +
-        '<p class="auth-modal-toggle">' +
+        '<p class="auth-alt" id="authAltRow">' +
+          '<button type="button" id="authMagicBtn">Email me a sign-in link instead</button>' +
+        '</p>' +
+        '<p class="auth-modal-toggle" id="authToggleRow">' +
           '<span id="authToggleText">Don’t have an account?</span> ' +
           '<button type="button" id="authToggleBtn">Create one</button>' +
         '</p>' +
       '</div>';
     document.body.appendChild(overlay);
 
-    var mode = 'signin';
+    var el = {};
+    ['authModalTitle','authModalSub','authForm','authEmail','authEmailLabel','authEmailHint',
+     'authPassword','authPasswordLabel','authPasswordText','authPwHint','authReveal',
+     'authStrength','authStrengthFill','authStrengthLabel','authForgotRow','authForgotBtn',
+     'authSubmitBtn','authAltRow','authMagicBtn','authToggleRow','authToggleText','authToggleBtn',
+     'authModalClose'].forEach(function(id){ el[id] = document.getElementById(id); });
+
+    /* --- mode ---------------------------------------------------------- */
+
+    var COPY = {
+      signin: {
+        title: 'Sign in',
+        sub: 'One account for every subject on LevlPrep. Your level, streak and progress follow you to any device.',
+        submit: 'Sign in',
+        toggleText: 'Don’t have an account?',
+        toggleBtn: 'Create one',
+        password: true, forgot: true, magic: true, strength: false, social: true
+      },
+      signup: {
+        title: 'Create account',
+        sub: 'Free, and only so your progress survives a new phone or a cleared browser. Everything on the site works without one.',
+        submit: 'Create account',
+        toggleText: 'Already have an account?',
+        toggleBtn: 'Sign in instead',
+        password: true, forgot: false, magic: true, strength: true, social: true
+      },
+      reset: {
+        title: 'Reset your password',
+        sub: 'Enter the email you signed up with and we’ll send a link to set a new password.',
+        submit: 'Send reset link',
+        toggleText: 'Remembered it?',
+        toggleBtn: 'Back to sign in',
+        password: false, forgot: false, magic: false, strength: false, social: false
+      },
+      newpassword: {
+        title: 'Set a new password',
+        sub: 'Almost done — choose the password you’ll use from now on.',
+        submit: 'Save new password',
+        toggleText: '', toggleBtn: '',
+        password: true, forgot: false, magic: false, strength: true, social: false
+      }
+    };
+
     function setMode(m){
-      mode = m;
-      var isSignup = m === 'signup';
-      document.getElementById('authModalTitle').textContent = isSignup ? 'Create account' : 'Sign in';
-      document.getElementById('authSubmitBtn').textContent = isSignup ? 'Create account' : 'Sign in';
-      document.getElementById('authToggleText').textContent = isSignup ? 'Already have an account?' : 'Don’t have an account?';
-      document.getElementById('authToggleBtn').textContent = isSignup ? 'Sign in instead' : 'Create one';
-      document.getElementById('authPassword').autocomplete = isSignup ? 'new-password' : 'current-password';
-      var confirmLabel = document.getElementById('authConfirmLabel');
-      var confirmInput = document.getElementById('authConfirmPassword');
-      confirmLabel.hidden = !isSignup;
-      confirmInput.required = isSignup;
-      if(!isSignup) confirmInput.value = '';
-      var msgEl = document.getElementById('authModalMsg');
-      msgEl.textContent = '';
-      msgEl.className = 'auth-modal-msg';
+      authMode = m;
+      var c = COPY[m];
+      el.authModalTitle.textContent = c.title;
+      el.authModalSub.textContent = c.sub;
+      el.authSubmitBtn.textContent = c.submit;
+      el.authSubmitBtn.disabled = false;
+
+      el.authEmailLabel.hidden = (m === 'newpassword');
+      el.authEmail.required = (m !== 'newpassword');
+      el.authPasswordLabel.hidden = !c.password;
+      el.authPassword.required = c.password;
+      el.authPasswordText.textContent = (m === 'newpassword') ? 'New password' : 'Password';
+      el.authPassword.autocomplete = (m === 'signin') ? 'current-password' : 'new-password';
+      el.authForgotRow.hidden = !c.forgot;
+      el.authAltRow.hidden = !c.magic;
+      el.authToggleRow.hidden = !c.toggleBtn;
+      el.authToggleText.textContent = c.toggleText;
+      el.authToggleBtn.textContent = c.toggleBtn;
+      el.authStrength.hidden = true;
+
+      var socialRow = document.getElementById('authSocial');
+      var orRow = document.getElementById('authOr');
+      if(socialRow) socialRow.hidden = !c.social;
+      if(orRow) orRow.hidden = !c.social;
+
+      setHint(el.authEmailHint, '');
+      setHint(el.authPwHint, '');
+      setReveal(false);
+      setMsg('');
+      if(c.strength) renderStrength();
     }
 
-    document.getElementById('authModalClose').addEventListener('click', closeAuthModal);
-    overlay.addEventListener('click', function(e){ if(e.target === overlay) closeAuthModal(); });
-    document.getElementById('authToggleBtn').addEventListener('click', function(){
-      setMode(mode === 'signin' ? 'signup' : 'signin');
+    function setHint(node, html){
+      node.innerHTML = html || '';
+      node.hidden = !html;
+    }
+
+    /* --- password reveal + caps lock ------------------------------------ */
+
+    // A reveal toggle is why this form has no "confirm password" field. The
+    // second field exists only to catch a typo you cannot see; being able to
+    // look at what you typed catches the same typo without doubling the
+    // work, and a forgotten password is now recoverable either way.
+    function setReveal(on){
+      el.authPassword.type = on ? 'text' : 'password';
+      el.authReveal.textContent = on ? 'Hide' : 'Show';
+      el.authReveal.setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+    el.authReveal.addEventListener('click', function(){
+      setReveal(el.authPassword.type === 'password');
+      el.authPassword.focus();
     });
 
-    document.getElementById('authForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      var email = document.getElementById('authEmail').value.trim();
-      var password = document.getElementById('authPassword').value;
-      var msgEl = document.getElementById('authModalMsg');
-      var submitBtn = document.getElementById('authSubmitBtn');
-      var c = getClient();
-      if(!c){
-        msgEl.textContent = 'Accounts are unavailable right now — check your connection and try again.';
-        msgEl.className = 'auth-modal-msg error';
-        return;
-      }
-      if(mode === 'signup'){
-        var confirmPassword = document.getElementById('authConfirmPassword').value;
-        if(password !== confirmPassword){
-          msgEl.textContent = 'Passwords do not match.';
-          msgEl.className = 'auth-modal-msg error';
-          return;
-        }
-      }
-      submitBtn.disabled = true;
-      msgEl.textContent = '';
-      msgEl.className = 'auth-modal-msg';
-      var action = mode === 'signin'
-        ? c.auth.signInWithPassword({ email: email, password: password })
-        : c.auth.signUp({ email: email, password: password, options: { emailRedirectTo: window.location.origin + window.location.pathname } });
-      action.then(function(res){
-        submitBtn.disabled = false;
-        if(res.error){
-          msgEl.textContent = res.error.message;
-          msgEl.className = 'auth-modal-msg error';
-          return;
-        }
-        if(mode === 'signup' && res.data && res.data.user && !res.data.session){
-          msgEl.textContent = 'Check your email to confirm your account, then sign in.';
-          msgEl.className = 'auth-modal-msg success';
-          setMode('signin');
-          return;
-        }
-        closeAuthModal();
-      }).catch(function(){
-        submitBtn.disabled = false;
-        msgEl.textContent = 'Something went wrong. Please try again.';
-        msgEl.className = 'auth-modal-msg error';
+    // "Invalid login credentials" while caps lock is on is the single most
+    // maddening login failure there is, and the browser will never mention it.
+    el.authPassword.addEventListener('keyup', function(e){
+      var on = e.getModifierState && e.getModifierState('CapsLock');
+      if(on) setHint(el.authPwHint, 'Caps Lock is on.');
+      else if(el.authPwHint.textContent === 'Caps Lock is on.') setHint(el.authPwHint, '');
+    });
+
+    /* --- live feedback --------------------------------------------------- */
+
+    function renderStrength(){
+      var res = passwordScore(el.authPassword.value);
+      el.authStrength.hidden = false;
+      el.authStrengthFill.className = 'score-' + res.score;
+      el.authStrengthFill.style.width = (res.score * 25) + '%';
+      el.authStrengthLabel.textContent = res.label;
+      if(el.authPwHint.textContent !== 'Caps Lock is on.') setHint(el.authPwHint, escapeHtml(res.hint));
+    }
+    el.authPassword.addEventListener('input', function(){
+      if(COPY[authMode].strength) renderStrength();
+    });
+
+    // Checked on blur, not on every keystroke: "did you mean gmail.com?"
+    // while someone is still halfway through typing gmail.com is a scold.
+    el.authEmail.addEventListener('blur', function(){
+      var fix = emailTypo(el.authEmail.value);
+      if(!fix){ if(el.authEmailHint.dataset.kind === 'typo') setHint(el.authEmailHint, ''); return; }
+      el.authEmailHint.dataset.kind = 'typo';
+      setHint(el.authEmailHint, 'Did you mean <button type="button" class="auth-hint__fix" id="authTypoFix">' +
+        escapeHtml(fix) + '</button>?');
+      document.getElementById('authTypoFix').addEventListener('click', function(){
+        el.authEmail.value = fix;
+        setHint(el.authEmailHint, '');
+        el.authPassword.focus();
       });
     });
+
+    /* --- navigation ------------------------------------------------------ */
+
+    el.authModalClose.addEventListener('click', closeAuthModal);
+    overlay.addEventListener('click', function(e){
+      // Never dismiss the recovery screen by a stray click: the token in the
+      // URL is single-use, and closing here means asking for a whole new email.
+      if(e.target === overlay && authMode !== 'newpassword') closeAuthModal();
+    });
+    el.authToggleBtn.addEventListener('click', function(){
+      setMode(authMode === 'signin' ? 'signup' : 'signin');
+      el.authEmail.focus();
+    });
+    el.authForgotBtn.addEventListener('click', function(){
+      setMode('reset');
+      el.authEmail.focus();
+    });
+
+    /* --- social ---------------------------------------------------------- */
+
+    Array.prototype.forEach.call(overlay.querySelectorAll('.auth-social__btn'), function(b){
+      b.addEventListener('click', function(){
+        var c = getClient();
+        if(!c) return setMsg('Accounts are unavailable right now — check your connection.', 'error');
+        setMsg('Opening ' + b.textContent + '…');
+        c.auth.signInWithOAuth({
+          provider: b.getAttribute('data-provider'),
+          options: { redirectTo: location.origin + location.pathname }
+        }).then(function(res){
+          if(res && res.error) setMsg(authMessage(res.error), 'error');
+        });
+      });
+    });
+
+    /* --- magic link ------------------------------------------------------ */
+
+    // The password nobody has to remember. Worth offering first-class rather
+    // than as a fallback: for a study site checked on a phone and a laptop,
+    // "send me a link" is the whole ceremony, and a link that arrives beats a
+    // password that has to be invented, stored and recalled.
+    el.authMagicBtn.addEventListener('click', function(){
+      var email = el.authEmail.value.trim();
+      if(!email){ setMsg('Enter your email first, then we’ll send the link.', 'error'); el.authEmail.focus(); return; }
+      var c = getClient();
+      if(!c) return setMsg('Accounts are unavailable right now — check your connection.', 'error');
+      el.authMagicBtn.disabled = true;
+      setMsg('Sending…');
+      c.auth.signInWithOtp({ email: email, options: { emailRedirectTo: location.origin + location.pathname } })
+        .then(function(res){
+          el.authMagicBtn.disabled = false;
+          if(res.error) return setMsg(authMessage(res.error), 'error');
+          rememberEmail(email);
+          setMsg('Link sent to ' + email + '. Open it on this device and you’re in.', 'success');
+        }, function(){
+          el.authMagicBtn.disabled = false;
+          setMsg('Couldn’t send the link. Check your connection and try again.', 'error');
+        });
+    });
+
+    /* --- submit ---------------------------------------------------------- */
+
+    el.authForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var email = el.authEmail.value.trim();
+      var password = el.authPassword.value;
+      var c = getClient();
+      if(!c) return setMsg('Accounts are unavailable right now — check your connection and try again.', 'error');
+
+      if(authMode !== 'newpassword'){
+        if(!email || email.indexOf('@') < 1) { setMsg('Enter the email you use for your account.', 'error'); el.authEmail.focus(); return; }
+      }
+      if(COPY[authMode].password && password.length < MIN_PASSWORD && authMode !== 'signin'){
+        setMsg('Use at least ' + MIN_PASSWORD + ' characters.', 'error');
+        el.authPassword.focus();
+        return;
+      }
+      if(authMode === 'signin' && !password){ setMsg('Enter your password.', 'error'); el.authPassword.focus(); return; }
+
+      el.authSubmitBtn.disabled = true;
+      var restore = el.authSubmitBtn.textContent;
+      el.authSubmitBtn.textContent = { signin:'Signing in…', signup:'Creating…', reset:'Sending…', newpassword:'Saving…' }[authMode];
+      setMsg('');
+
+      function done(){ el.authSubmitBtn.disabled = false; el.authSubmitBtn.textContent = restore; }
+
+      var run;
+      if(authMode === 'signin') run = c.auth.signInWithPassword({ email: email, password: password });
+      else if(authMode === 'signup') run = c.auth.signUp({ email: email, password: password,
+        options: { emailRedirectTo: location.origin + location.pathname } });
+      else if(authMode === 'reset') run = c.auth.resetPasswordForEmail(email, { redirectTo: location.origin + '/' });
+      else run = c.auth.updateUser({ password: password });
+
+      run.then(function(res){
+        done();
+        if(res && res.error) return setMsg(authMessage(res.error), 'error');
+
+        if(authMode === 'reset'){
+          // Deliberately the same sentence whether or not that address has an
+          // account. Saying "no account with that email" hands anyone with a
+          // list of addresses a free check for which ones study here.
+          setMsg('If that email has an account, a reset link is on its way. Check spam too.', 'success');
+          return;
+        }
+        if(authMode === 'newpassword'){
+          setMsg('Password updated. You’re signed in.', 'success');
+          setTimeout(function(){ closeAuthModal(); afterRecovery(); }, 1200);
+          return;
+        }
+        if(authMode === 'signup' && res.data && res.data.user && !res.data.session){
+          pendingEmail = email;
+          rememberEmail(email);
+          // The one place a signup silently dies: the confirmation mail goes
+          // to spam or to a typo'd address and there is no way to ask again.
+          setHint(el.authPwHint, '');
+          setMsg('', '');
+          showConfirmSent(email);
+          return;
+        }
+        rememberEmail(email);
+        closeAuthModal();
+      }, function(){
+        done();
+        setMsg('Something went wrong. Please try again.', 'error');
+      });
+    });
+
+    function showConfirmSent(email){
+      el.authModalTitle.textContent = 'Check your email';
+      el.authModalSub.textContent = 'We sent a confirmation link to ' + email +
+        '. Open it and you’re done — it may take a minute, and it sometimes lands in spam.';
+      el.authForm.hidden = true;
+      el.authAltRow.hidden = true;
+      var socialRow = document.getElementById('authSocial');
+      var orRow = document.getElementById('authOr');
+      if(socialRow) socialRow.hidden = true;
+      if(orRow) orRow.hidden = true;
+      el.authToggleRow.hidden = false;
+      el.authToggleText.textContent = 'Didn’t arrive?';
+      el.authToggleBtn.textContent = 'Send it again';
+      el.authToggleBtn.onclick = function(){
+        var c = getClient();
+        if(!c) return;
+        el.authToggleBtn.disabled = true;
+        c.auth.resend({ type: 'signup', email: email,
+          options: { emailRedirectTo: location.origin + location.pathname } })
+          .then(function(res){
+            el.authToggleBtn.disabled = false;
+            el.authToggleBtn.focus();
+            el.authModalSub.textContent = (res && res.error)
+              ? authMessage(res.error)
+              : 'Sent again to ' + email + '.';
+          }, function(){ el.authToggleBtn.disabled = false; el.authToggleBtn.focus(); });
+      };
+    }
+
+    /* --- keyboard + focus ------------------------------------------------ */
+
+    /* Two things the old modal got wrong for anyone not using a mouse:
+       Escape did nothing, and Tab walked straight out of an "aria-modal"
+       dialog into the page behind it, which is still there and still
+       focusable. Both are table stakes for a dialog.
+
+       Bound on the document rather than on the overlay, because focus can
+       legitimately be outside it for a moment — disabling the button you
+       just pressed (the resend) blurs it to <body>, and an Escape handler
+       that lives on the overlay would go deaf exactly then. */
+    document.addEventListener('keydown', function(e){
+      if(!overlay.classList.contains('open')) return;
+      if(e.key === 'Escape' && authMode !== 'newpassword'){ closeAuthModal(); return; }
+      if(e.key !== 'Tab') return;
+      var focusable = overlay.querySelectorAll(
+        'button:not([disabled]), input:not([disabled]), [href], select, textarea, [tabindex]:not([tabindex="-1"])');
+      var list = Array.prototype.filter.call(focusable, function(n){
+        return n.offsetParent !== null || n === document.activeElement;
+      });
+      if(!list.length) return;
+      var first = list[0], last = list[list.length - 1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    });
+
+    overlay._setMode = setMode;
+    overlay._reset = function(){
+      el.authForm.hidden = false;
+      el.authToggleBtn.onclick = null;
+      el.authPassword.value = '';
+    };
+    setMode('signin');
   }
 
-  function openAuthModal(){
-    ensureAuthModal();
-    document.getElementById('authModalOverlay').classList.add('open');
-    document.getElementById('authEmail').focus();
+  function rememberEmail(email){
+    try { localStorage.setItem(LAST_EMAIL_KEY, email); } catch(e){ /* private mode */ }
   }
+  function lastEmail(){
+    try { return localStorage.getItem(LAST_EMAIL_KEY) || ''; } catch(e){ return ''; }
+  }
+
+  function openAuthModal(mode){
+    ensureAuthModal();
+    var overlay = document.getElementById('authModalOverlay');
+    lastFocused = document.activeElement;
+    overlay._reset();
+    overlay._setMode(mode || 'signin');
+    overlay.classList.add('open');
+    // The page behind a modal must not scroll under it — on iOS especially,
+    // a touch-drag over the backdrop otherwise scrolls the page away.
+    document.documentElement.classList.add('auth-modal-open');
+
+    var email = document.getElementById('authEmail');
+    var pw = document.getElementById('authPassword');
+    if(mode === 'newpassword'){ pw.focus(); return; }
+    // Prefilling the address someone signed in with last time turns the
+    // common case into one field. Password managers still fill both.
+    if(!email.value) email.value = lastEmail();
+    if(email.value) pw.focus(); else email.focus();
+  }
+
   function closeAuthModal(){
     var overlay = document.getElementById('authModalOverlay');
     if(overlay) overlay.classList.remove('open');
+    document.documentElement.classList.remove('auth-modal-open');
+    // Focus has to go back where it came from, or a keyboard user lands at
+    // the top of the document with no idea where they were.
+    if(lastFocused && lastFocused.focus) { try { lastFocused.focus(); } catch(e){} }
+    lastFocused = null;
+  }
+
+  // After a recovery link is used the session is real but no pull has run,
+  // because PASSWORD_RECOVERY is not SIGNED_IN. Do the first sync here.
+  function afterRecovery(){
+    pullOrSeed().then(function(applied){
+      if(applied && !sessionStorage.getItem(RELOAD_ONCE_KEY)){
+        sessionStorage.setItem(RELOAD_ONCE_KEY, '1');
+        location.reload();
+      }
+    });
+    startSyncTimer();
   }
 
   /* ---- lifecycle ------------------------------------------------------ */
@@ -367,8 +897,16 @@
       });
       startSyncTimer();
     }
+    /* The recovery link signs you in and fires this instead of SIGNED_IN, so
+       without a branch here the link "works" and then silently does nothing
+       visible — you are left on the homepage with no password set and no way
+       to know it. Open the set-a-new-password screen the moment it lands. */
+    if(event === 'PASSWORD_RECOVERY'){
+      openAuthModal('newpassword');
+    }
     if(event === 'SIGNED_OUT'){
       stopSyncTimer();
+      closeAccountMenu();
       sessionStorage.removeItem(RELOAD_ONCE_KEY);
     }
   }
@@ -525,7 +1063,10 @@
     document.getElementById('savePromptYes').addEventListener('click', function(){
       if(window.LevlAnalytics) window.LevlAnalytics.event('save-prompt-accepted');
       close(false);
-      openAuthModal();
+      // Straight to "create account": someone answering this prompt has no
+      // account by definition, and landing them on a sign-in form they cannot
+      // complete is one wasted step at exactly the wrong moment.
+      openAuthModal('signup');
     });
     document.getElementById('savePromptNo').addEventListener('click', function(){ close(true); });
 
@@ -562,6 +1103,12 @@
     onAuthChange: function(fn){ authListeners.push(fn); fn(currentUser); },
     openAuthModal: openAuthModal,
     renderAccountUI: renderAccountUI,
+    // Pure helpers behind the form's copy and its live feedback, exported so
+    // the wording and the thresholds can be tested without a browser or a
+    // Supabase round trip.
+    authMessage: authMessage,
+    passwordScore: passwordScore,
+    emailTypo: emailTypo,
     /* Offer to save what is in this browser, if the moment and the timid
        rules above both allow it. Returns whether anything was shown, so a
        caller can tell the difference between "asked" and "held back". */

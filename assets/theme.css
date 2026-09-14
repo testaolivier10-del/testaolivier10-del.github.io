@@ -831,14 +831,22 @@ html{scrollbar-color:var(--muted) transparent;}
 ::-webkit-scrollbar-thumb{background:var(--line);border-radius:8px;}
 ::-webkit-scrollbar-thumb:hover{background:var(--accent);}
 
+/* Auth modal. One column, generous hit targets, and every piece of live
+   feedback (strength, hints, errors) reserving its space so the dialog does
+   not jump under the cursor as you type. */
 .auth-modal-overlay{
   position:fixed;inset:0;background:rgba(14,38,32,0.5);
   display:flex;align-items:center;justify-content:center;padding:20px;z-index:1000;
   opacity:0;pointer-events:none;transition:opacity .15s;
+  overflow-y:auto;
 }
 .auth-modal-overlay.open{opacity:1;pointer-events:auto;}
+/* Set on <html> while the dialog is open, so the page behind cannot scroll
+   out from under it — most noticeable on iOS, where dragging the backdrop
+   otherwise moves the page and not the modal. */
+html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 .auth-modal{
-  position:relative;width:100%;max-width:380px;
+  position:relative;width:100%;max-width:380px;margin:auto;
   background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
   box-shadow:var(--shadow-pop);padding:28px 26px 24px;
   font-family:var(--font-ui);color:var(--ink);
@@ -846,23 +854,78 @@ html{scrollbar-color:var(--muted) transparent;}
 .auth-modal h2{margin:0 0 6px;font-size:21px;font-weight:900;}
 .auth-modal-sub{margin:0 0 18px;font-size:13px;font-weight:600;color:var(--muted);line-height:1.5;}
 .auth-modal-close{
-  position:absolute;top:14px;right:14px;width:28px;height:28px;
+  position:absolute;top:14px;right:14px;width:32px;height:32px;
   border:none;background:transparent;color:var(--muted);cursor:pointer;
   font-size:20px;line-height:1;border-radius:50%;
 }
 .auth-modal-close:hover{background:var(--hover-tint);color:var(--ink);}
 .auth-modal form{display:flex;flex-direction:column;gap:12px;}
+.auth-modal form[hidden]{display:none;}
 .auth-modal label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
 .auth-modal label[hidden]{display:none;}
 .auth-modal input{
-  font-family:inherit;font-size:14.5px;font-weight:700;padding:11px 13px;
+  font-family:inherit;font-size:16px;font-weight:700;padding:12px 13px;
   border:0;border-radius:var(--radius-sm);
   background:var(--surface2);color:var(--ink);
 }
-.auth-modal-msg{font-size:12.5px;font-weight:700;min-height:1.4em;}
+/* 16px, not 14.5: iOS Safari zooms the whole page in on any focused field
+   below 16px, and a login form that lurches sideways on tap reads as broken. */
+
+/* Provider buttons, above the email form because the point of them is not
+   having to fill it in. The row renders only when OAUTH_PROVIDERS is
+   configured in account.js. */
+.auth-social{display:flex;flex-direction:column;gap:9px;margin-bottom:14px;}
+.auth-social[hidden],.auth-or[hidden]{display:none;}
+.auth-social__btn{
+  width:100%;padding:12px;border:2px solid var(--line);background:var(--white);
+  color:var(--ink);font:900 14px var(--font-ui);border-radius:var(--radius-sm);cursor:pointer;
+}
+.auth-social__btn:hover{background:var(--hover-tint);}
+.auth-or{
+  display:flex;align-items:center;gap:10px;margin:0 0 14px;
+  font:900 11px var(--font-ui);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;
+}
+.auth-or::before,.auth-or::after{content:"";flex:1;height:1px;background:var(--line-soft);}
+
+.auth-label-row{display:flex;align-items:baseline;justify-content:space-between;gap:8px;}
+.auth-reveal{
+  border:none;background:transparent;color:var(--accent);font:900 11px var(--font-ui);
+  text-transform:uppercase;letter-spacing:.04em;cursor:pointer;padding:0;
+}
+.auth-reveal:hover{text-decoration:underline;}
+
+.auth-hint{margin:-4px 0 0;font-size:12px;font-weight:700;color:var(--muted);line-height:1.4;}
+.auth-hint[hidden]{display:none;}
+.auth-hint__fix{
+  border:none;background:transparent;color:var(--accent);font:900 12px var(--font-ui);
+  cursor:pointer;padding:0;text-decoration:underline;
+}
+
+.auth-strength{display:flex;align-items:center;gap:9px;margin-top:-4px;}
+.auth-strength[hidden]{display:none;}
+.auth-strength__bar{flex:1;height:5px;border-radius:99px;background:var(--track);overflow:hidden;}
+.auth-strength__bar i{display:block;height:100%;width:0;border-radius:99px;transition:width .18s,background .18s;}
+.auth-strength__bar i.score-0{background:var(--bad);}
+.auth-strength__bar i.score-1{background:var(--bad);}
+.auth-strength__bar i.score-2{background:var(--warn);}
+.auth-strength__bar i.score-3{background:var(--accent);}
+.auth-strength__bar i.score-4{background:var(--good);}
+.auth-strength__label{font:900 11px var(--font-ui);color:var(--muted);min-width:64px;text-align:right;}
+
+.auth-forgot{margin:-2px 0 0;text-align:right;}
+.auth-forgot[hidden],.auth-alt[hidden],.auth-modal-toggle[hidden]{display:none;}
+.auth-forgot button,.auth-alt button{
+  border:none;background:transparent;color:var(--accent);font:900 12.5px var(--font-ui);
+  cursor:pointer;padding:0;
+}
+.auth-forgot button:hover,.auth-alt button:hover{text-decoration:underline;}
+.auth-alt{margin:14px 0 0;text-align:center;}
+
+.auth-modal-msg{font-size:12.5px;font-weight:700;min-height:1.4em;line-height:1.45;}
 .auth-modal-msg.error{color:var(--bad-text);}
 .auth-modal-msg.success{color:var(--good-text);}
 .auth-modal-submit{margin-top:4px;width:100%;padding:13px;font-size:14.5px;}
+.auth-modal-submit[disabled]{opacity:.6;cursor:progress;}
 .auth-modal-toggle{margin:16px 0 0;font-size:12.5px;font-weight:700;color:var(--muted);text-align:center;}
 .auth-modal-toggle button{
   border:none;background:transparent;color:var(--accent);font-family:inherit;
@@ -870,10 +933,32 @@ html{scrollbar-color:var(--muted) transparent;}
 }
 .auth-modal-toggle button:hover{text-decoration:underline;}
 
+/* The signed-in menu. Replaces a window.confirm(), which could not show
+   whether the work in this browser had actually reached the account yet —
+   the one fact worth knowing before signing out. */
+.account-menu{
+  position:absolute;z-index:1001;min-width:214px;
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-pop);padding:6px;font-family:var(--font-ui);
+}
+.account-menu__who{padding:9px 10px 10px;border-bottom:1px solid var(--line-soft);margin-bottom:6px;}
+.account-menu__who b{display:block;font-size:13px;font-weight:900;color:var(--ink);word-break:break-all;}
+.account-menu__who small{display:block;margin-top:3px;font-size:11.5px;font-weight:700;color:var(--muted);line-height:1.35;}
+.account-menu button{
+  display:block;width:100%;text-align:left;padding:9px 10px;border:none;background:transparent;
+  color:var(--ink);font:800 13px var(--font-ui);border-radius:calc(var(--radius) - 8px);cursor:pointer;
+}
+.account-menu button:hover{background:var(--hover-tint);}
+.account-menu button[disabled]{opacity:.55;cursor:default;}
+
+@media (prefers-reduced-motion:reduce){
+  .auth-modal-overlay,.auth-strength__bar i{transition:none;}
+}
+
 @media print{
   #site-header,.course-nav,.site-nav-fallback,.theme-toggle,button,
   .start-btn,.review-btn,.domain-btn,.planner-row button,
-  #searchBox,.print-btn,.auth-modal-overlay{display:none !important;}
+  #searchBox,.print-btn,.auth-modal-overlay,.account-menu{display:none !important;}
   body{background:#fff !important;color:#000 !important;}
   a{color:#000 !important;text-decoration:underline;}
   .wrap,.xshell{max-width:100% !important;padding:0 !important;}
