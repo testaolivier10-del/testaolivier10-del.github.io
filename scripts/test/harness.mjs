@@ -63,7 +63,10 @@ export function createBrowser(){
     getElementById: () => null,
     createElement: () => ({ style: {}, classList: { add(){}, remove(){}, toggle(){} },
                             setAttribute(){}, appendChild(){}, addEventListener(){} }),
-    body: null, head: null,
+    // A head that swallows appendChild: account.js injects the Supabase SDK
+    // <script> on load, and a test has no business fetching it — the element
+    // simply goes nowhere and the sandbox stays offline.
+    body: null, head: { appendChild(){} },
   };
 
   const sandbox = {

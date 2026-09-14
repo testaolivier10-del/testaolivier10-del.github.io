@@ -49,9 +49,11 @@
   var RELOAD_ONCE_KEY = 'hub_sync_reloaded';
 
   var namespaces = {};      // name -> [localStorage keys]
+  var mergers = {};         // localStorage key -> function(localRaw, cloudRaw) -> raw
   var client = null;
   var currentUser = null;
   var syncTimer = null;
+  var soonTimer = null;
   var authListeners = [];
 
   /* ---- namespace registry ------------------------------------------- */
@@ -59,12 +61,19 @@
   // Called by each subject's nav/bootstrap script before the SDK loads.
   // Registering the same namespace twice unions the key lists, so a page that
   // pulls in two modules of the same subject doesn't drop either one's keys.
-  function registerNamespace(name, keys){
+  // `merge`, when given, maps a key to a function(localRaw, cloudRaw) that
+  // reconciles the two copies instead of letting the cloud's win outright.
+  // Anything that is a set of things you have done — sections read, lessons
+  // finished — belongs in there: a union across devices is always the honest
+  // answer, whereas overwriting loses whatever this browser did since its
+  // last push.
+  function registerNamespace(name, keys, merge){
     var existing = namespaces[name] || [];
     (keys || []).forEach(function(k){
       if(existing.indexOf(k) === -1) existing.push(k);
     });
     namespaces[name] = existing;
+    if(merge) Object.keys(merge).forEach(function(k){ mergers[k] = merge[k]; });
   }
 
   function collect(){
@@ -85,7 +94,13 @@
   function applyNamespace(ns, bucket){
     if(!bucket || !namespaces[ns]) return;
     Object.keys(bucket).forEach(function(k){
-      if(namespaces[ns].indexOf(k) !== -1) localStorage.setItem(k, bucket[k]);
+      if(namespaces[ns].indexOf(k) === -1) return;
+      var value = bucket[k];
+      if(mergers[k]){
+        try{ value = mergers[k](localStorage.getItem(k), bucket[k]); }
+        catch(e){ value = bucket[k]; }
+      }
+      if(value !== null && value !== undefined) localStorage.setItem(k, value);
     });
   }
 
@@ -122,6 +137,24 @@
       .then(function(){}, function(){ /* best-effort; the next tick retries */ });
   }
 
+  /* Progress used to reach the cloud only on the 30-second timer or when the
+     page was hidden, and the hidden-page push is two round trips (read the
+     row, then write it) that a closing tab rarely lives long enough to
+     finish. Anything done in the last half minute of a visit could therefore
+     stay on that one browser, and the next device to sign in would pull a row
+     that had never heard of it. Calling this after a change starts the write
+     while the page is still open and has a network. */
+  function syncSoon(){
+    if(!currentUser) return;
+    if(soonTimer) clearTimeout(soonTimer);
+    soonTimer = setTimeout(function(){ soonTimer = null; push(); }, 1500);
+  }
+  function flushSoon(){
+    if(!soonTimer) return;
+    clearTimeout(soonTimer);
+    soonTimer = null;
+  }
+
   // First sign-in on a device: for each namespace, the cloud wins if it has
   // one (the common case — syncing an existing account onto a new device),
   // otherwise this account has never synced that subject, so seed it from
@@ -152,15 +185,21 @@
     stopSyncTimer();
     syncTimer = setInterval(push, SYNC_INTERVAL_MS);
     document.addEventListener('visibilitychange', onVisibilityChange);
+    window.addEventListener('pagehide', onPageHide);
   }
   function stopSyncTimer(){
     if(syncTimer) clearInterval(syncTimer);
     syncTimer = null;
+    flushSoon();
     document.removeEventListener('visibilitychange', onVisibilityChange);
+    window.removeEventListener('pagehide', onPageHide);
   }
   function onVisibilityChange(){
-    if(document.visibilityState === 'hidden') push();
+    if(document.visibilityState === 'hidden'){ flushSoon(); push(); }
   }
+  // Safari on iOS often skips straight to pagehide when a tab is closed or
+  // the app is swapped out, so visibilitychange alone loses that last write.
+  function onPageHide(){ flushSoon(); push(); }
 
   /* ---- auth UI -------------------------------------------------------- */
 
@@ -382,6 +421,10 @@
     registerNamespace: registerNamespace,
     start: start,
     push: push,
+    syncSoon: syncSoon,
+    // The pull's write path, exposed so the merge rules a namespace registers
+    // can be tested without a Supabase round trip.
+    applyNamespace: applyNamespace,
     user: function(){ return currentUser; },
     onAuthChange: function(fn){ authListeners.push(fn); fn(currentUser); },
     openAuthModal: openAuthModal,

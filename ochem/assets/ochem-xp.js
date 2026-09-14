@@ -391,6 +391,27 @@
       // never feeds mastery — but it's the kind of thing that's maddening to
       // lose when you pick the course up on another device.
       'ochem_textbook_read',
-    ]);
+    ], {
+      /* A read map is a set of sections with the date each was first read,
+         so the two copies of it merge rather than compete: reading chapter 3
+         on a phone and chapter 4 on a laptop should leave you having read
+         both. Taking the cloud's copy whole — the default for a synced key —
+         would instead un-read whatever this browser had not yet pushed. */
+      'ochem_textbook_read': function(localRaw, cloudRaw){
+        var mine = {}, theirs = {};
+        try{ mine = JSON.parse(localRaw) || {}; }catch(e){}
+        try{ theirs = JSON.parse(cloudRaw) || {}; }catch(e){ return localRaw; }
+        if(!mine || typeof mine !== 'object') mine = {};
+        if(!theirs || typeof theirs !== 'object') return localRaw;
+        var out = {};
+        Object.keys(theirs).forEach(function(k){ out[k] = theirs[k]; });
+        Object.keys(mine).forEach(function(k){
+          // Keep the earlier of the two dates: it is when the section was
+          // actually first read, whichever device was holding it.
+          if(!out[k] || String(mine[k]) < String(out[k])) out[k] = mine[k];
+        });
+        return JSON.stringify(out);
+      },
+    });
   }
 })();

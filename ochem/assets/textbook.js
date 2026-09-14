@@ -60,17 +60,47 @@
     try{ var raw = localStorage.getItem(READ_KEY); return raw ? JSON.parse(raw) : {}; }
     catch(e){ return {}; }
   }
-  function writeRead(v){ try{ localStorage.setItem(READ_KEY, JSON.stringify(v)); }catch(e){} }
+  /* Writing can genuinely fail — private browsing refuses it outright, and a
+     full quota refuses it just as quietly. The old version swallowed that and
+     the button still turned into "Read", so the book claimed to be keeping
+     track of something it had not stored, and the mark was gone on the next
+     visit with nothing to explain it. So: write, read it back, and report
+     whether it actually stuck. */
+  function writeRead(v){
+    var raw = JSON.stringify(v);
+    try{
+      localStorage.setItem(READ_KEY, raw);
+      return localStorage.getItem(READ_KEY) === raw;
+    }catch(e){ return false; }
+  }
   function isRead(id){ return !!readRead()[id]; }
   function setRead(id, on){
     var r = readRead();
     var was = !!r[id];
     if(on) r[id] = new Date().toISOString(); else delete r[id];
-    writeRead(r);
+    if(!writeRead(r)) return null;   // null: nothing was saved
     // XP is for covering new ground, so it is paid once per section ever —
     // un-marking and re-marking a section can't farm it.
     if(on && !was && window.HubProgress) window.HubProgress.award('ochem', XP_PER_SECTION);
+    // Signed in, this is what gets the section to the other devices without
+    // waiting on the next 30-second tick, which a visit can easily end before.
+    if(window.StudyHubAccount && window.StudyHubAccount.syncSoon) window.StudyHubAccount.syncSoon();
     return !was && on;
+  }
+
+  /* Said once, in place, rather than per section: if the browser will not
+     store anything, every tick on the page is a lie and the reason is the
+     same for all of them. */
+  var warnedNoStorage = false;
+  function warnNoStorage(){
+    if(warnedNoStorage) return;
+    warnedNoStorage = true;
+    var note = document.createElement('p');
+    note.className = 'tb-storage-warning';
+    note.setAttribute('role', 'status');
+    note.textContent = 'This browser is not letting the book save what you have read — ' +
+      'private browsing or a full storage quota will both do that. Marks will disappear when you leave.';
+    if(progressEl && progressEl.parentNode) progressEl.parentNode.insertBefore(note, progressEl.nextSibling);
   }
 
   function lastModule(){
@@ -326,7 +356,7 @@
   }
 
   function markRead(id, on){
-    setRead(id, on);
+    if(setRead(id, on) === null){ warnNoStorage(); return; }
     var btn = mainEl.querySelector('.tb-readtoggle[data-topic="' + id + '"]');
     if(btn){
       btn.classList.toggle('done', on);
