@@ -12,4 +12,4 @@ Disallow: /ochem/notes/
 # generated from; nothing on the site fetches it, so there is nothing to index.
 Disallow: /nremt/assets/questions.json
 
-Sitemap: https://testaolivier10-del.github.io/sitemap.xml
+Sitemap: https://levlprep.com/sitemap.xml
