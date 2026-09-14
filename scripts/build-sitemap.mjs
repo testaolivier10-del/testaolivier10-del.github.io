@@ -25,7 +25,11 @@ const check = process.argv.includes('--check');
 // ownership token, ochem/notes/** are fragments (robots.txt disallows them). The
 // thirteen redirect stubs drop out on the meta-refresh test below — their
 // canonical points at the real page, which is listed on its own.
-const SKIP_DIRS = new Set(['.git', 'node_modules', 'notes']);
+// 'scripts' holds build tooling and files meant to be pasted into a
+// dashboard (SQL, auth email templates) — none of it is a published page, so
+// none of it needs an OG tag or a sitemap entry. check-site.mjs has always
+// skipped it; these two now agree.
+const SKIP_DIRS = new Set(['.git', 'node_modules', 'notes', 'scripts']);
 const SKIP_FILES = /^(404\.html|offline\.html|googleb[0-9a-f]+\.html)$/;
 
 function walk(dir, out = []) {

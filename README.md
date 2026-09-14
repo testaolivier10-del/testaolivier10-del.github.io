@@ -285,6 +285,147 @@ Signing in is optional and layers **cross-device sync** on top of that same loca
 
 **One login covers the whole site.** The Supabase session lives in `localStorage` on this origin, which `/`, `/nremt/` and `/ochem/` all share, so signing in anywhere signs you in everywhere. `assets/account.js` is loaded by every page in every subject.
 
+### Ways in, and the way back in
+
+The login is a nuisance charged against work a student has already done, so the
+form is sized accordingly: one screen, the fewest fields that can work, and no
+step that is not load-bearing.
+
+| | |
+|---|---|
+| **Password** | Minimum 8 characters, length-first strength meter, a **Show** toggle. The toggle is why there is no *confirm password* field — a second box exists only to catch a typo you cannot see, and being able to look catches the same typo without doubling the work. Caps Lock is called out, because `Invalid login credentials` with Caps Lock on is the most maddening failure there is and the browser will never mention it. |
+| **Forgot password** | `resetPasswordForEmail` → the link returns to `/`, the SDK fires `PASSWORD_RECOVERY`, and `account.js` opens the *Set a new password* screen wherever you land. There was previously **no way back in at all**: a forgotten password meant a permanently orphaned account with a level and a streak inside it. |
+| **Magic link** | `signInWithOtp` — no password to invent, store or recall. For a site checked on a phone and a laptop this is often the whole ceremony. |
+| **Social** | Google, Apple and GitHub buttons, rendered from whatever the project reports as enabled — see below. |
+| **Resend confirmation** | The *Check your email* screen can send the mail again. A confirmation that lands in spam used to be a dead end. |
+| **Email typos** | `gmial.com` and ~20 neighbours of the six big domains are caught on blur with a one-click fix. Mail to a typo'd address is not bounced — it is delivered nowhere, silently, while the student waits for it. |
+
+Two rules the copy follows. **Errors say what to do next**: Supabase's own
+strings leak its vocabulary (`AuthApiError`, `otp_expired`) and, in the case
+that matters most, are actively unhelpful, so `authMessage()` maps every
+failure reachable from the form to a sentence. **The reset screen never says
+whether the address has an account** — "no account with that email" hands
+anyone holding a list of addresses a free check for which ones study here.
+
+The dialog behaves like one: Escape closes it (except mid-recovery, where the
+token is single-use), Tab is trapped inside it, focus returns to the button
+that opened it, the page behind cannot scroll, and errors are announced via
+`role="alert"`. Inputs are 16px so iOS does not zoom the page on focus.
+
+Signing out goes through a menu rather than a `window.confirm()`, and **pushes
+before it drops the session** — signing out with unsynced work in the browser
+is the one way to actually lose progress here.
+
+`authMessage`, `passwordScore` and `emailTypo` are exported on
+`StudyHubAccount` and tested in `scripts/test/auth-form.test.mjs`.
+
+### Supabase settings these depend on
+
+Auth → URL Configuration must list the site origin under *Redirect URLs* (the
+reset link returns to `/`, everything else to the page you started from).
+
+**Move off the built-in mailer before relying on any of this.** Email went from
+doing one job (signup confirmation) to four — confirmation, resend, sign-in
+link, password reset — so it is now load-bearing, and Supabase's built-in SMTP
+is explicitly a development convenience: a handful of messages an hour,
+**counted across the whole project rather than per user**. Two students asking
+for a link in the same hour can starve the third, and the failure looks exactly
+like "the email never came". Any real provider (Resend, Postmark, SES) has a
+free tier many times this traffic. Until then `authMessage()` at least tells the
+truth about it — the mail cap gets its own sentence rather than borrowing the
+sign-in cap's "wait a minute and try again", which would be a false promise,
+and it points at the password instead.
+
+**Check the identity-linking setting before enabling a provider.** If someone
+signs up with `sam@gmail.com` and a password and later presses Continue with
+Google, whether those become one account or two depends on Supabase's
+configuration. Two accounts means their streak is in one and their session is
+in the other — and progress is the entire reason accounts exist here.
+
+### Social sign-in is discovered, not hardcoded
+
+The provider row is **not** a list in this repo. `account.js` asks the project
+what is actually enabled — GoTrue publishes it unauthenticated at
+`/auth/v1/settings` — and renders exactly that, cached in `localStorage` for
+12 hours and revalidated every time the dialog opens.
+
+That is deliberate. A hardcoded list has two failure modes and this has
+neither: a button for a provider with no client id behind it is a dead end
+that looks like a bug, and a provider switched on in the dashboard stays
+invisible on the site until someone remembers to edit and redeploy a file.
+**Enabling Google in Supabase turns the button on here, with no commit and no
+deploy** — within 12 hours at the outside, usually on the next page load.
+Switching it off removes it the same way. `PROVIDERS` in `account.js` holds
+only presentation (label, brand mark, order); a provider enabled upstream that
+isn't listed there is ignored rather than rendered blank.
+
+**To turn on Continue with Google** — both steps are outside this repo:
+
+1. **Google Cloud Console** → APIs & Services → Credentials → *Create OAuth
+   client ID* → Web application. Authorised redirect URI is
+   `https://bsfcqrczehbcctwhxmrj.supabase.co/auth/v1/callback`. You will also
+   need an OAuth consent screen; while it is in *Testing* only accounts you
+   list can sign in, so publish it before launch.
+2. **Supabase** → Authentication → Providers → Google → enable, paste the
+   client id and secret.
+
+Apple and GitHub work the same way (Apple needs a paid Apple Developer
+account; GitHub is free and takes about two minutes, which makes it the
+cheapest way to test that this whole path works end to end).
+
+`redirectTo` is the page the student was on, so OAuth returns them where they
+started rather than to the homepage. The origin must be listed under Auth →
+URL Configuration → Redirect URLs.
+
+### Which way in did this browser use?
+
+Offering three routes creates a new way to get stuck, and it is the nastiest
+one in the form: **an account created with Google has no password**, so typing
+one fails identically and forever, and nothing on screen connects that to the
+button two inches above. Supabase does not link a password identity to an
+OAuth one by email, and the API cannot be asked which identities an address
+has without leaking whether the address has an account at all.
+
+So the browser remembers the method it last used (`levlprep_last_method`,
+alongside `levlprep_last_email`; never the password). It buys two things: a
+quiet **Last time** pill on the provider button that was this browser's way
+in, and — when a sign-in fails with `invalid_credentials` *for the same
+address this browser last opened with a provider* — a sentence saying so.
+Both are phrased as reminders about this browser, not claims about the
+account, because that is all the client can honestly know.
+
+That memory is worth little on a **new device**, which is the case accounts
+exist for and the one where "which way did I sign up?" actually bites. Nothing
+client-side can know the answer there, so the fallback is one that does not
+need to: a failed password attempt promotes the sign-in link and rewords it
+("it works either way"). A link is addressed to the account's email, so it
+gets someone in however they originally signed up — Google, password, or a
+link last time. It is the only answer that is right without knowing anything,
+which is why a wrong password is exactly when to stop hiding it at the bottom
+of the dialog.
+
+Signing out clears both keys. The prefilled address is a convenience on your
+own laptop and a small leak on a shared one — a campus machine showing the
+next student the last one's email — and signing out is precisely the signal
+that distinguishes them. Closing the tab is not, which is why this hangs off
+`SIGNED_OUT` rather than `pagehide`.
+
+A provider whose OAuth call fails is dropped from the cache and re-fetched
+immediately, so a provider switched off upstream cannot leave a dead button
+sitting there for the rest of the 12 hours.
+
+### Measuring it
+
+`account.js` raises a small, milestone-level funnel through `LevlAnalytics`:
+`auth-opened`, `auth-provider-chosen`, `auth-link-sent`, `auth-succeeded`,
+`auth-reset-requested`, and `auth-wrong-password` (carrying only *which*
+method this browser remembered, if any). No email address or account
+identifier is ever in a payload, and a whole session costs a handful of events
+rather than one per keystroke — `analytics.js` is explicit that events count
+against a monthly total. `auth-wrong-password` is the one to watch: it is the
+direct measure of whether the multiple-ways-in confusion is real, and how
+often the promoted sign-in link is the thing people needed.
+
 ### Namespaced sync
 
 `user_progress.data` is shaped as:
