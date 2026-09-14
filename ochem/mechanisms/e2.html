@@ -86,6 +86,81 @@
   .explain-box{background:var(--tint-accent);border-radius:var(--radius);padding:16px 18px;font-size:14.5px;font-weight:600;line-height:1.6;margin-bottom:18px;color:var(--ink);}
   .explain-box b{color:var(--accent-press);}
 </style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/mechanisms/e2.html#lesson",
+      "name": "E2",
+      "url": "https://levlprep.com/ochem/mechanisms/e2.html",
+      "description": "Perform the E2 mechanism yourself: push all three arrows in one concerted step, predict the major (Zaitsev) alkene, and see how base bulk controls regiochemistry.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "E2"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      },
+      "competencyRequired": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Conformational analysis",
+          "url": "https://levlprep.com/ochem/lessons/conformational-analysis.html"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Leaving groups",
+          "url": "https://levlprep.com/ochem/lessons/leaving-groups.html"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Brønsted acids/bases",
+          "url": "https://levlprep.com/ochem/lessons/bronsted.html"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Substitution & Elimination",
+          "item": "https://levlprep.com/ochem/learn.html#m-substitution-elimination"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "E2",
+          "item": "https://levlprep.com/ochem/mechanisms/e2.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div id="site-header"></div>
@@ -105,6 +180,10 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/conformational-analysis.html">Conformational analysis</a><a href="../lessons/leaving-groups.html">Leaving groups</a><a href="../lessons/bronsted.html">Brønsted acids/bases</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/substrate-effects.html">Substrate &amp; solvent effects</a></span></div>
+</nav>
 <script src="../assets/shuffle-options.js" defer></script>
 <script src="../assets/step-back.js" defer></script>
 <script src="../assets/curriculum.js" defer></script>

@@ -32,6 +32,71 @@
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/fischer.html#lesson",
+      "name": "Fischer projections",
+      "url": "https://levlprep.com/ochem/lessons/fischer.html",
+      "description": "Learn the drawing convention behind Fischer projections, how to convert them to and from wedge-dash structures, and why they're the standard tool for carbohydrate stereochemistry.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Fischer projections"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      },
+      "competencyRequired": [
+        {
+          "@type": "DefinedTerm",
+          "name": "R/S configuration",
+          "url": "https://levlprep.com/ochem/lessons/rs-configuration.html"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Stereochemistry",
+          "item": "https://levlprep.com/ochem/learn.html#m-stereochemistry"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Fischer projections",
+          "item": "https://levlprep.com/ochem/lessons/fischer.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div id="site-header"></div>
@@ -49,6 +114,9 @@
   <div class="lesson-card" id="card"></div>
 </div>
 
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/rs-configuration.html">R/S configuration</a></span></div>
+</nav>
 <script src="../assets/shuffle-options.js" defer></script>
 <script src="../assets/step-back.js" defer></script>
 <script src="../assets/curriculum.js" defer></script>

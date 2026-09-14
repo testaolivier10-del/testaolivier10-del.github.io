@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon.svg">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Study Organic Chemistry — A Mechanism-First Guide | LevlPrep</title>
+<meta name="description" content="Why organic chemistry feels impossible when you memorize it, and what to do instead: learn the dozen electron-pushing patterns the hundreds of reactions are built from, and practice by working problems rather than rereading them.">
+<link rel="canonical" href="https://levlprep.com/ochem/how-to-study.html">
+<meta property="og:title" content="How to Study Organic Chemistry — A Mechanism-First Guide">
+<meta property="og:description" content="Why organic chemistry feels impossible when you memorize it, and what to do instead: learn the dozen electron-pushing patterns the hundreds of reactions are built from.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levlprep.com/ochem/how-to-study.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../assets/account.js" defer></script>
+<script src="../assets/hub-progress.js" defer></script>
+<script src="../assets/chime.js" defer></script>
+<script src="../assets/site-chrome.js" defer></script>
+<script src="assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="assets/ochem.css">
+<link rel="stylesheet" href="assets/periodic-table.css">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+  /* Long-form prose, matching the NREMT exam page so the two guides read as
+     one pair rather than two designs. */
+  .guide h2{font-size:19px;margin:30px 0 8px;}
+  .guide h2:first-of-type{margin-top:6px;}
+  .guide p,.guide li{font-size:15.5px;font-weight:600;color:var(--muted);line-height:1.65;max-width:66ch;}
+  .guide li{margin-bottom:7px;}
+  .guide strong{color:var(--ink);font-weight:800;}
+  .guide ul,.guide ol{padding-left:20px;margin:8px 0 0;}
+  .fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:6px 0 10px;}
+  .fact-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--lift-sm);padding:16px 18px;}
+  .fact-card .big{font:900 24px var(--font-ui);color:var(--ink);letter-spacing:-0.02em;}
+  .fact-card .sub{font:700 12.5px var(--font-ui);color:var(--muted);margin-top:4px;line-height:1.4;}
+</style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/how-to-study.html#guide",
+      "name": "How to study organic chemistry",
+      "url": "https://levlprep.com/ochem/how-to-study.html",
+      "description": "Why organic chemistry feels impossible when you memorize it, and what to do instead: learn the dozen electron-pushing patterns the hundreds of reactions are built from, and practice by working problems rather than rereading them.",
+      "learningResourceType": "Study guide",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to study organic chemistry",
+          "item": "https://levlprep.com/ochem/how-to-study.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://levlprep.com/ochem/how-to-study.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is organic chemistry really that hard?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is demanding, and its reputation is partly self-fulfilling \u2014 students arrive expecting to fail and study defensively, which means memorizing. The genuine difficulty is that it is cumulative and rewards pattern recognition over recall, which is a different skill from what earlier chemistry courses trained. It is not harder in the sense of requiring more raw ability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I memorize reactions or mechanisms?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mechanisms. Memorizing reactions means holding a hundred-plus separate facts that do not generalize to an unfamiliar problem. Learning mechanisms means holding roughly a dozen patterns that do. Some memorization is unavoidable \u2014 specific reagents, a few named reactions \u2014 but it should sit on top of mechanistic understanding, not replace it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many hours a week does organic chemistry take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Less than most students spend, if the hours are spent on problems rather than rereading. The common failure is not too few hours; it is many hours of passive review that produce familiarity without recall. An hour of working problems from a blank page is worth several of rereading notes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I do if I'm failing organic chemistry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Go backwards before going forwards. Almost every mid-course collapse traces to resonance, acid/base or formal charge not being solid, and no amount of work on the current topic fixes an upstream gap. Find the earliest thing that feels shaky, repair it, then move forward \u2014 and switch from rereading to working problems, which is usually the larger change."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this site cover everything in Organic Chemistry I?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It covers a full first-semester curriculum in 14 modules \u2014 foundations, electron movement, acids and bases, conformations, stereochemistry, substitution and elimination, alkenes and alkynes, alcohols and ethers, carbonyls, carboxylic acids, enolates, amines, aromatics and spectroscopy. It is a study aid, not a replacement for your course or its textbook; your instructor sets what is on your exam."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell">
+  <div class="hero">
+    <div class="eyebrow">Organic Chemistry I</div>
+    <h1 style="margin-bottom:4px;">How to study organic chemistry.</h1>
+    <p class="lede" style="margin-top:0;max-width:66ch;">Most people who struggle with this course are studying hard and studying wrong — memorizing an ever-growing list of reactions instead of the handful of patterns underneath them. Here is what to do instead.</p>
+  </div>
+
+  <div class="xsection" style="padding-top:8px;">
+    <div class="fact-grid">
+      <div class="fact-card"><div class="big">~12</div><div class="sub">electron-pushing patterns behind most of the course</div></div>
+      <div class="fact-card"><div class="big">58</div><div class="sub">lessons here, in prerequisite order</div></div>
+      <div class="fact-card"><div class="big">10</div><div class="sub">mechanisms walked through step by step</div></div>
+      <div class="fact-card"><div class="big">Free</div><div class="sub">no account, no ads, no paywall</div></div>
+    </div>
+  </div>
+
+  <div class="xsection">
+    <div class="xgrid">
+      <div class="xlabel">The problem</div>
+      <div class="xcontent narrow guide">
+
+        <h2>Why it feels impossible</h2>
+        <p>Organic chemistry has a reputation for difficulty that is mostly earned by <strong>one specific mistake</strong>, made by capable students who did well in every prior chemistry course: treating it as a memorization subject.</p>
+        <p>That strategy worked in general chemistry, where you learn a formula and apply it. It collapses here, for two reasons.</p>
+        <p><strong>The list never stops growing.</strong> A first-semester course covers well over a hundred distinct reactions. If each one is a separate fact — these reagents give that product — you are memorizing a hundred-plus unrelated items, and the exam asks about a combination you have not seen.</p>
+        <p><strong>The course is relentlessly cumulative.</strong> Resonance shows up in acidity, in stability of intermediates, in aromatic chemistry, in spectroscopy. If resonance never quite clicked in week three, it does not stay a week-three problem — it quietly makes weeks seven through fifteen harder, and it will not be obvious that is what happened.</p>
+
+        <h2>What is actually going on</h2>
+        <p>Underneath those hundred reactions there are <strong>roughly a dozen things electrons do</strong>. A nucleophile attacks an electrophile. A leaving group leaves. A proton is removed or added. A pi bond opens; a pi bond forms. Almost everything in the course is those moves, in different orders, on different molecules.</p>
+        <p>Once you see a reaction as a sequence of moves rather than a fact to recall, two things change. Reactions you have never encountered become predictable, because you can ask what is electron-rich, what is electron-poor and what can leave. And the volume collapses — you are not holding a hundred facts, you are holding a dozen patterns plus the judgment to know which applies.</p>
+        <p>That judgment is what exams actually test. "Predict the product" is not a recall question. It is asking whether you can look at a structure and see where the electrons want to go.</p>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="xsection">
+    <div class="xgrid">
+      <div class="xlabel">What works</div>
+      <div class="xcontent narrow guide">
+
+        <h2>Push the arrows yourself</h2>
+        <p>Watching someone else draw a mechanism feels like learning and mostly is not. The recognition that comes from watching is much weaker than the recall that comes from producing, and the gap does not show up until the exam, when nobody is drawing it for you.</p>
+        <p>Draw every mechanism by hand, from a blank page, until you can do it without the answer in view. When you get one wrong, the useful question is not "what was the right answer" but <strong>"which arrow did I draw that the electrons would not actually do"</strong>. The <a href="tools/arrow-pusher.html">arrow pusher</a> here is built for exactly that: you push electrons and the structure changes to match, so a wrong arrow produces a visibly wrong molecule instead of a red X.</p>
+
+        <h2>Work problems, don't reread</h2>
+        <p>Rereading notes is the most common study method and among the least effective. It produces familiarity — the text looks known — which the brain readily mistakes for mastery. Retrieval, being asked a question and having to produce an answer, is what actually builds durable recall, and it is uncomfortable in a way that rereading never is. That discomfort is the method working.</p>
+        <p>Practically: close the notes, do problems, and only look back when you are stuck and have already tried.</p>
+
+        <h2>Fix gaps backwards</h2>
+        <p>When something will not click, the cause is usually one or two topics upstream, not the topic in front of you. Struggling with E2 stereochemistry is often a conformational analysis problem. Struggling with acidity is often a resonance problem.</p>
+        <p>Every lesson here names what it builds on, and the <a href="mastery.html">Mastery</a> page flags likely gaps from your actual answers rather than from how much you have clicked through — so when a topic is going badly it points at the prerequisite that is probably responsible.</p>
+
+        <h2>Draw structures constantly</h2>
+        <p>Chemistry happens in three dimensions and exams are printed in two. Students who can convert fluently between a line drawing, a Newman projection, a chair and a real three-dimensional shape find stereochemistry ordinary; students who cannot find it impossible. It is a trainable skill and it is trained by drawing, repeatedly, badly at first.</p>
+
+        <h2>Space it out</h2>
+        <p>Because the course is cumulative, a topic learned in week three needs to still be there in week twelve. Short, frequent review of old material beats a long session before the exam — and it is the difference between a final that feels like a review and one that feels like a new course.</p>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="xsection">
+    <div class="xgrid">
+      <div class="xlabel">A sequence</div>
+      <div class="xcontent narrow guide">
+
+        <h2>If you are starting the course</h2>
+        <ol>
+          <li>Get <strong>Lewis structures, formal charge and resonance</strong> genuinely solid before anything else. Nearly everything downstream leans on them, and they are the cheapest to fix early and the most expensive to fix late.</li>
+          <li>From the first mechanism onward, draw it yourself every time.</li>
+          <li>Keep a running sheet of the electron-pushing moves as you meet them, not a sheet of reactions.</li>
+          <li>Work problems the same week you cover the material, not the week before the exam.</li>
+        </ol>
+
+        <h2>If you are mid-semester and it is going badly</h2>
+        <ol>
+          <li>Stop adding new material for an evening and <strong>go back to resonance and acid/base</strong>. That is where most mid-semester collapses actually originate.</li>
+          <li>Take a topic you think you know and draw its mechanism cold, from blank paper. The gap between what you can recognize and what you can produce is usually the whole problem.</li>
+          <li>Work backwards through prerequisites until something feels genuinely easy, then come forward again.</li>
+        </ol>
+
+        <h2>Before a midterm or final</h2>
+        <ol>
+          <li><strong>Predict products, don't review mechanisms.</strong> Reviewing is recognition; prediction is the exam.</li>
+          <li>Redo the problems you previously got wrong, not the ones you got right. The ones you got right teach you nothing now.</li>
+          <li>For a cumulative final, sample across the whole course rather than reviewing in order — you will find the week-four gap you did not know you had.</li>
+          <li>Sleep. Mechanism recall under time pressure degrades badly when you are tired, and one more hour of review does not compensate.</li>
+        </ol>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="xsection">
+    <div class="xgrid">
+      <div class="xlabel">Common questions</div>
+      <div class="xcontent narrow guide">
+
+        <h2>Is organic chemistry really that hard?</h2>
+        <p>It is demanding, and its reputation is partly self-fulfilling — students arrive expecting to fail and study defensively, which means memorizing. The genuine difficulty is that it is cumulative and rewards pattern recognition over recall, which is a different skill from what earlier chemistry courses trained. It is not harder in the sense of requiring more raw ability.</p>
+
+        <h2>Should I memorize reactions or mechanisms?</h2>
+        <p>Mechanisms. Memorizing reactions means holding a hundred-plus separate facts that do not generalize to an unfamiliar problem. Learning mechanisms means holding roughly a dozen patterns that do. Some memorization is unavoidable — specific reagents, a few named reactions — but it should sit on top of mechanistic understanding, not replace it.</p>
+
+        <h2>How many hours a week does organic chemistry take?</h2>
+        <p>Less than most students spend, if the hours are spent on problems rather than rereading. The common failure is not too few hours; it is many hours of passive review that produce familiarity without recall. An hour of working problems from a blank page is worth several of rereading notes.</p>
+
+        <h2>What should I do if I'm failing organic chemistry?</h2>
+        <p>Go backwards before going forwards. Almost every mid-course collapse traces to resonance, acid/base or formal charge not being solid, and no amount of work on the current topic fixes an upstream gap. Find the earliest thing that feels shaky, repair it, then move forward — and switch from rereading to working problems, which is usually the larger change.</p>
+
+        <h2>Does this site cover everything in Organic Chemistry I?</h2>
+        <p>It covers a full first-semester curriculum in 14 modules — foundations, electron movement, acids and bases, conformations, stereochemistry, substitution and elimination, alkenes and alkynes, alcohols and ethers, carbonyls, carboxylic acids, enolates, amines, aromatics and spectroscopy. It is a study aid, not a replacement for your course or its textbook; your instructor sets what is on your exam.</p>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="xsection">
+    <div class="xgrid">
+      <div class="xlabel">Start</div>
+      <div class="xcontent narrow guide">
+        <p>The course here is built around the approach above: every lesson runs Explain &rarr; Visualize &rarr; Interact &rarr; Practice, and you push the arrows rather than watch them. Start at <a href="learn.html">Learn</a>, or go straight to <a href="practice.html">Practice</a> if you want problems now. The <a href="tools.html">tools</a> are there when a concept needs turning over in your hands.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="xsection">
+    <footer style="margin-top:0">
+      <p>Original, unofficial study material. Independent study aid, not affiliated with any institution or textbook publisher.</p>
+      <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
+    </footer>
+  </div>
+
+</div>
+
+<script>
+  window.OCHEM_SECTION = '';
+  window.OCHEM_BASE = '';
+</script>
+<script src="assets/ochem-nav.js" defer></script>
+<script src="assets/periodic-table.js" defer></script>
+</body>
+</html>
