@@ -653,6 +653,15 @@
           answered: (S && S.index) || 0
         });
       }
+      /* The same high point as a finished NREMT exam: real work just landed,
+         and it is sitting in one browser. StudyHubAccount decides whether to
+         say anything; a session someone bailed out of after two questions is
+         not a moment worth interrupting. */
+      if(window.StudyHubAccount && S && S.index >= 8){
+        setTimeout(function(){
+          window.StudyHubAccount.promptToSave('Session finished \u2014 ' + S.index + ' questions');
+        }, 2600);
+      }
       config.onFinish(S);
     }
 

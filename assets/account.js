@@ -417,6 +417,137 @@
     });
   }
 
+
+  /* ---- "save your progress" prompt ------------------------------------
+
+     Every subject works from localStorage alone, and that is a deliberate
+     promise: no account, nothing to install, start answering. It has one
+     sharp edge. Progress that lives only in a browser dies with it — clear
+     your site data, switch to the phone, reinstall, and a level, a streak
+     and weeks of mastery data are simply gone, with no warning and nothing
+     to recover. The student does not come back to find out; they conclude
+     the site lost their work, which is exactly what happened.
+
+     So there has to be a moment where saving it is offered. Not the door:
+     asking someone to make an account before they have anything worth
+     saving is the thing free study sites are rightly disliked for, and it
+     would trade the promise above for a signup funnel. The right moment is
+     straight after something went well — a level earned, an exam finished —
+     when the progress is real, the student is pleased with it, and "keep
+     this" is an obvious yes rather than a toll.
+
+     The rules are deliberately timid: signed-out only, once a week at most,
+     three times ever, and never again once someone has waved it away twice.
+     A prompt that appears a fourth time is not a reminder, it is nagging,
+     and the answer was no. */
+  var PROMPT_KEY = 'levlprep_save_prompt';
+  var PROMPT_MAX_SHOWN = 3;
+  var PROMPT_MAX_DISMISSED = 2;
+  var PROMPT_COOLDOWN_DAYS = 7;
+
+  function promptState(){
+    try {
+      var raw = JSON.parse(localStorage.getItem(PROMPT_KEY) || 'null');
+      if(raw && typeof raw === 'object') return raw;
+    } catch(e){ /* unreadable: treat as never shown */ }
+    return { shown: 0, dismissed: 0, last: null };
+  }
+
+  function writePromptState(st){
+    try { localStorage.setItem(PROMPT_KEY, JSON.stringify(st)); } catch(e){ /* private mode */ }
+  }
+
+  function promptDayKey(){
+    var d = new Date();
+    return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+  }
+
+  function daysSinceKey(key){
+    if(!key) return Infinity;
+    var p = String(key).split('-');
+    if(p.length !== 3) return Infinity;
+    var then = new Date(+p[0], +p[1] - 1, +p[2]);
+    var now = new Date();
+    now = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    return Math.round((now - then) / 86400000);
+  }
+
+  function mayPrompt(){
+    if(currentUser) return false;               // already saved; nothing to offer
+    if(!getClient()) return false;              // no backend configured on this build
+    if(document.getElementById('savePrompt')) return false;
+    var st = promptState();
+    if(st.shown >= PROMPT_MAX_SHOWN) return false;
+    if(st.dismissed >= PROMPT_MAX_DISMISSED) return false;
+    return daysSinceKey(st.last) >= PROMPT_COOLDOWN_DAYS;
+  }
+
+  /* reason is what just went well, in the student's own terms ("Level 7" or
+     "that exam"), so the prompt is about the thing they just did rather than
+     about us wanting an account. */
+  function promptToSave(reason){
+    if(!mayPrompt()) return false;
+
+    var st = promptState();
+    st.shown += 1;
+    st.last = promptDayKey();
+    writePromptState(st);
+
+    var el = document.createElement('div');
+    el.id = 'savePrompt';
+    el.className = 'save-prompt';
+    el.setAttribute('role', 'status');
+    el.innerHTML =
+      '<div class="save-prompt__text">' +
+        '<b>' + escapeHtml(reason || 'Nice work') + '</b>' +
+        '<small>This is saved in this browser only. Keep it on every device?</small>' +
+      '</div>' +
+      '<div class="save-prompt__actions">' +
+        '<button type="button" class="save-prompt__yes" id="savePromptYes">Save my progress</button>' +
+        '<button type="button" class="save-prompt__no" id="savePromptNo">Not now</button>' +
+      '</div>';
+    document.body.appendChild(el);
+    // Next frame, so the entry transition has a state to move away from.
+    requestAnimationFrame(function(){ el.classList.add('show'); });
+
+    function close(dismissed){
+      if(dismissed){
+        var s2 = promptState();
+        s2.dismissed += 1;
+        writePromptState(s2);
+      }
+      el.classList.remove('show');
+      setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, 350);
+    }
+
+    document.getElementById('savePromptYes').addEventListener('click', function(){
+      if(window.LevlAnalytics) window.LevlAnalytics.event('save-prompt-accepted');
+      close(false);
+      openAuthModal();
+    });
+    document.getElementById('savePromptNo').addEventListener('click', function(){ close(true); });
+
+    // Not a modal: it must never stand between a student and the next
+    // question. Left alone it withdraws on its own, and that is not counted
+    // as a refusal — they may simply have been reading.
+    setTimeout(function(){ if(el.parentNode) close(false); }, 15000);
+
+    if(window.LevlAnalytics) window.LevlAnalytics.event('save-prompt-shown');
+    return true;
+  }
+
+  /* A level-up is the same high point in both courses, and hub-progress.js
+     already announces it site-wide, so this needs no per-course wiring.
+     Delayed past the celebration motion.js runs for the same event: landing
+     a signup ask on top of the confetti would read as billing someone for
+     the fireworks. */
+  document.addEventListener('levl:levelup', function(e){
+    var d = (e && e.detail) || {};
+    setTimeout(function(){
+      promptToSave('Level ' + (d.level || '') + (d.title ? ' \u2014 ' + d.title : ''));
+    }, 5200);
+  });
+
   window.StudyHubAccount = {
     registerNamespace: registerNamespace,
     start: start,
@@ -429,6 +560,10 @@
     onAuthChange: function(fn){ authListeners.push(fn); fn(currentUser); },
     openAuthModal: openAuthModal,
     renderAccountUI: renderAccountUI,
+    /* Offer to save what is in this browser, if the moment and the timid
+       rules above both allow it. Returns whether anything was shown, so a
+       caller can tell the difference between "asked" and "held back". */
+    promptToSave: promptToSave,
   };
 
   // Wait for DOMContentLoaded rather than a zero timer: every subject's

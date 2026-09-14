@@ -2474,6 +2474,17 @@ function showResults(){
     );
   }
 
+  /* A finished exam is the other high point, alongside a level-up, where
+     offering to save this is a favour rather than a toll — the student has
+     just built something they would be annoyed to lose. StudyHubAccount holds
+     the rules about whether to actually show anything; a short attempt is not
+     one of those moments, so it does not ask after a five-question drill. */
+  if(window.StudyHubAccount && activeIndices.length >= 20){
+    setTimeout(function(){
+      window.StudyHubAccount.promptToSave('Exam finished \u2014 ' + score + '/' + activeIndices.length);
+    }, 2600);
+  }
+
   // The other half of the pair. Banded rather than exact: the useful question
   // is "are people passing", and a bare percentage per attempt is finer-grained
   // than that needs while saying more about the individual.
