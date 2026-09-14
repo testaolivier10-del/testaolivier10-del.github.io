@@ -20,14 +20,6 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "LevlPrep",
-  "url": "https://levlprep.com/"
-}
-</script>
 <link rel="stylesheet" href="assets/theme.css">
 <!-- One login, one level, one streak across every subject. -->
 <script src="assets/account.js" defer></script>
@@ -115,6 +107,50 @@
     padding:5px 12px;white-space:nowrap;flex-shrink:0;
   }
 </style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://levlprep.com/#org",
+      "name": "LevlPrep",
+      "url": "https://levlprep.com/",
+      "logo": "https://levlprep.com/assets/icon.svg",
+      "description": "Free exam prep tools and interactive courses. No ads, no paywall, no signup required."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://levlprep.com/#website",
+      "name": "LevlPrep",
+      "url": "https://levlprep.com/",
+      "publisher": {
+        "@id": "https://levlprep.com/#org"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "ItemList",
+      "name": "Courses and exam prep on LevlPrep",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "NREMT-EMT Prep",
+          "url": "https://levlprep.com/nremt/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "url": "https://levlprep.com/ochem/"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <!-- The hub draws its own header rather than calling LevlChrome.render — it

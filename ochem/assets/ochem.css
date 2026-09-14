@@ -893,3 +893,29 @@ a.mode-card{text-decoration:none;display:block;}
 .tool-send__link:hover{border-color:var(--accent);}
 .tool-send__link b{font:900 12.5px var(--font-ui);}
 .tool-send__link small{font:700 11px var(--font-ui);color:var(--muted);}
+
+/* Prerequisite / follow-on links under a lesson. Generated into the page from
+   curriculum.js `dependsOn`, so they are real anchors in the HTML rather than
+   something the lesson engine has to run first — a crawler, and a student who
+   wants the lesson before this one, both find them without JavaScript. */
+.lesson-links{
+  margin:10px auto 40px;display:flex;flex-direction:column;gap:10px;
+}
+.lesson-links-row{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;
+}
+.lesson-links-label{
+  font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);flex:0 0 auto;min-width:74px;
+}
+.lesson-links-list{display:flex;flex-wrap:wrap;gap:6px;}
+.lesson-links-list a{
+  display:inline-block;text-decoration:none;color:var(--ink);
+  background:var(--white);border:var(--bw) solid var(--line);
+  border-radius:var(--radius-sm);padding:6px 11px;
+  font:700 12.5px var(--font-ui);
+}
+.lesson-links-list a:hover{border-color:var(--accent);color:var(--cink);}
+@media (max-width:560px){
+  .lesson-links-label{min-width:0;flex-basis:100%;}
+}
