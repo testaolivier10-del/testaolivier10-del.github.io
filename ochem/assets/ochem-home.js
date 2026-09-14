@@ -159,8 +159,29 @@
           ? 'The oldest is ' + plural(debt.worstDays, 'day') + ' past due. '
           : '') +
         'Scheduled by how shaky each was, not by date.</p>' +
-      '<a href="' + base + 'review.html" class="btn-outline" style="padding:10px 18px">Clear the queue</a>';
+      '<a href="' + base + 'review.html" class="btn-press">Review ' + debt.count + ' now</a>';
     el('homeReview').classList.add('due');
+    demoteLessonCta();
+  }
+
+  /* A half-finished lesson waits patiently; a review queue does not — every
+     day it sits there is a day those concepts keep slipping, which is the
+     whole premise of scheduling them. So when something is genuinely due, the
+     queue is the filled button and the lesson card steps back to an outline
+     one. Two filled buttons side by side is a page making no recommendation
+     at all.
+
+     Done here rather than inside renderResume because that function leaves
+     the authored "start here" card alone for anyone who has not begun a
+     lesson yet — and that card has a filled button too. Reaching for the
+     rendered anchor covers both cases with one rule. */
+  function demoteLessonCta(){
+    var host = el('homeResume');
+    if(!host) return;
+    var cta = host.querySelector('a.btn-press');
+    if(!cta) return;
+    cta.className = 'btn-outline';
+    cta.style.padding = '10px 18px';
   }
 
   /* ---- card 3: the weak prerequisite, else today's Rounds --------------- */

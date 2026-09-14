@@ -147,8 +147,12 @@
         <div class="eyebrow">NREMT&#8209;EMT &middot; Cognitive exam</div>
         <h1>Level up before the real exam does.</h1>
         <p class="lede">2,084 questions, forty chapters of notes and scenarios that run a call start to finish. Free, offline, no account.</p>
+        <!-- The primary button is rewritten below for anyone with work
+             waiting: an attempt to resume, or questions due for review. The
+             markup here is the new-visitor state, and the state anyone sees
+             if the script never runs. -->
         <div class="hero-ctas">
-          <a href="practice.html" class="btn-press">Start practicing</a>
+          <a href="practice.html" class="btn-press" id="heroPrimaryCta">Start practicing</a>
           <a href="#sample" class="link-quiet">See a sample question</a>
         </div>
       </div>
@@ -351,6 +355,8 @@ document.addEventListener('DOMContentLoaded', function(){
     chip.hidden = n < 1;
     document.getElementById('heroStreakCount').textContent = n;
 
+    renderPrimaryCta();
+
     // Domain bars: the four most-answered domains, so the card stays compact.
     var stats = readJSON('nremt_domain_stats_all', {});
     var attempted = DOMAINS
@@ -373,6 +379,58 @@ document.addEventListener('DOMContentLoaded', function(){
         '<span class="pct">' + pct + '%</span>' +
       '</div>';
     }).join('');
+  }
+
+  /* The one thing on this page worth clicking, when there is one.
+
+     Everything a returning student has already built up — a half-finished
+     attempt, a queue of questions their own answers say are slipping — used
+     to be reachable only by opening Practice and noticing a small number on
+     one of three buttons. So the work was done and nobody saw it. This makes
+     the most specific thing waiting for them the primary button on the page.
+
+     Deliberately reads localStorage directly rather than loading the question
+     bank: the bank is by far the largest file on the site and the home page
+     has no other use for it. The cost is that a question retired from the
+     bank could still be counted here, which would make this number at most a
+     little generous; practice.html recomputes against the real bank on
+     arrival, so the session itself is always correct. */
+  function dueForReviewCount(){
+    var mastery = readJSON('nremt_mastery', {});
+    var now = Date.now();
+    var n = 0;
+    Object.keys(mastery).forEach(function(k){
+      var rec = mastery[k];
+      if(!rec || typeof rec.level !== 'number') return;
+      // The decay rule in practice.html: a mastered item drifts back toward
+      // due as it goes unseen. Kept in step with it by hand; the two are one
+      // formula in two places because the home page cannot load the bank.
+      var decay = Math.floor((now - rec.lastSeen) / 86400000 / 4);
+      if(Math.max(0, rec.level - decay) < 5) n++;
+    });
+    return n;
+  }
+
+  function renderPrimaryCta(){
+    var cta = document.getElementById('heroPrimaryCta');
+    if(!cta) return;
+
+    // An attempt left running beats everything: it is the most specific
+    // unfinished thing there is, and abandoning it loses real work.
+    var inProgress = readJSON('nremt_inprogress_exam', null);
+    if(inProgress){
+      cta.textContent = 'Resume your exam';
+      cta.href = 'practice.html';
+      return;
+    }
+
+    var due = dueForReviewCount();
+    if(due > 0){
+      cta.textContent = 'Continue \u2014 ' + due + ' due for review';
+      cta.href = 'practice.html?start=spaced';
+      return;
+    }
+    // Nothing waiting: leave the markup's own new-visitor wording alone.
   }
 
   // nav.js is deferred and defines window.LevlXP; run once it's there.

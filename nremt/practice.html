@@ -1806,6 +1806,31 @@ setInterval(maybeShowStudyReminder, 15*60*1000);
   startDomainQuiz(domain, 20);
 })();
 
+// Lets the course home page send someone straight into the queue it is
+// advertising (practice.html?start=spaced, or ?start=review for the missed
+// questions). The count on the home page is worth nothing if acting on it
+// means landing here and hunting for the button it was talking about. Same
+// precedence rule as ?domain= above: an exam in progress wins.
+(function(){
+  const start = new URLSearchParams(location.search).get('start');
+  if(!start || loadExamState()) return;
+  const queues = {
+    spaced: loadDueForReview,
+    review: loadMissed,
+  };
+  const load = queues[start];
+  if(!load) return;
+  const items = load();
+  history.replaceState(null, '', location.pathname);
+  // An empty queue is not an error — the student may simply have cleared it on
+  // another device since the home page rendered. Leave them on the start
+  // screen, which is where they would have ended up anyway.
+  if(!items.length) return;
+  mode = start;
+  activeIndices = items;
+  beginQuiz(false);
+})();
+
 // Lets a search result (practice.html?q=N) open the single question it found,
 // untimed and on its own. Without this the dominant result type in the whole
 // search index could only drop the reader on the exam start screen with no way
