@@ -282,6 +282,10 @@
     return null;
   }
 
+  function forgetProviders(){
+    try { localStorage.removeItem(PROVIDERS_CACHE_KEY); } catch(e){ /* nothing cached */ }
+  }
+
   function fetchProviders(){
     if(!window.fetch) return Promise.resolve(null);
     return fetch(SUPABASE_URL + '/auth/v1/settings', {
@@ -331,6 +335,13 @@
     var m = raw.toLowerCase();
     function has(s){ return m.indexOf(s) !== -1; }
 
+    /* The mail cap is not the sign-in cap and must not borrow its wording:
+       it is counted per hour and across the whole project rather than per
+       minute and per person, so "wait a minute and try again" would be a
+       straightforwardly false promise to someone who has done nothing wrong
+       and whose only real option is a different way in. */
+    if(code === 'over_email_send_rate_limit' || (code.indexOf('email') !== -1 && code.indexOf('rate') !== -1))
+      return 'We can only send a few emails an hour, and that limit is used up right now. Try again later, or sign in with your password.';
     if(status === 429 || code.indexOf('rate_limit') !== -1 || has('rate limit') || has('too many'))
       return 'Too many tries just now. Wait a minute, then try again.';
     if(code === 'invalid_credentials' || has('invalid login credentials'))
@@ -650,6 +661,7 @@
       setHint(el.authEmailHint, '');
       setHint(el.authPwHint, '');
       setReveal(false);
+      unsuggestMagicLink();
       setMsg('');
       if(c.strength) renderStrength();
     }
@@ -766,11 +778,21 @@
       // Written before leaving the page, not after coming back: the redirect
       // replaces this document, so there is no "after" to run code in.
       rememberMethod(id);
+      authEvent('auth-provider-chosen', { provider: id });
       c.auth.signInWithOAuth({
         provider: id,
         options: { redirectTo: location.origin + location.pathname }
       }).then(function(res){
-        if(res && res.error) setMsg(authMessage(res.error), 'error');
+        if(res && res.error){
+          setMsg(authMessage(res.error), 'error');
+          /* The cached provider list is up to 12 hours old, so the likeliest
+             reason this failed is that the provider was switched off after
+             this browser last looked. Drop the cache and re-ask rather than
+             leaving a button that cannot work sitting there for the rest of
+             the day. */
+          forgetProviders();
+          fetchProviders().then(function(ids){ if(ids) renderProviders(ids); });
+        }
       }, function(){
         setMsg('Could not open ' + (meta ? meta.name : 'that provider') + '. Check your connection and try again.', 'error');
       });
@@ -785,6 +807,15 @@
     // than as a fallback: for a study site checked on a phone and a laptop,
     // "send me a link" is the whole ceremony, and a link that arrives beats a
     // password that has to be invented, stored and recalled.
+    function suggestMagicLink(){
+      el.authAltRow.classList.add('is-suggested');
+      el.authMagicBtn.textContent = 'Not sure? Email me a sign-in link — it works either way';
+    }
+    function unsuggestMagicLink(){
+      el.authAltRow.classList.remove('is-suggested');
+      el.authMagicBtn.textContent = 'Email me a sign-in link instead';
+    }
+
     el.authMagicBtn.addEventListener('click', function(){
       var email = el.authEmail.value.trim();
       if(!email){ setMsg('Enter your email first, then we’ll send the link.', 'error'); el.authEmail.focus(); return; }
@@ -798,6 +829,7 @@
           if(res.error) return setMsg(authMessage(res.error), 'error');
           rememberEmail(email);
           rememberMethod('magiclink');
+          authEvent('auth-link-sent');
           setMsg('Link sent to ' + email + '. Open it on this device and you’re in.', 'success');
         }, function(){
           el.authMagicBtn.disabled = false;
@@ -850,14 +882,25 @@
              — it is the answer often enough to be worth one sentence, and it
              is phrased as a reminder rather than a claim about the account,
              which this code cannot see. */
-          var provider = lastMethod();
-          var meta = PROVIDERS.filter(function(p){ return p.id === provider; })[0];
-          if(authMode === 'signin' && meta && email && email === lastEmail()
-             && (res.error.code === 'invalid_credentials'
-                 || /invalid login credentials/i.test(res.error.message || ''))){
-            setHint(el.authPwHint, 'You used <b>' + escapeHtml(meta.name) +
-              '</b> on this browser last time. An account made that way has no password — ' +
-              'use the ' + escapeHtml(meta.name) + ' button above.');
+          var wrongPassword = res.error.code === 'invalid_credentials'
+            || /invalid login credentials/i.test(res.error.message || '');
+          if(authMode === 'signin' && wrongPassword){
+            var meta = PROVIDERS.filter(function(p){ return p.id === lastMethod(); })[0];
+            if(meta && email && email === lastEmail()){
+              setHint(el.authPwHint, 'You used <b>' + escapeHtml(meta.name) +
+                '</b> on this browser last time. An account made that way has no password — ' +
+                'use the ' + escapeHtml(meta.name) + ' button above.');
+            }
+            /* And the version that works on a device this browser has never
+               seen — which is the whole reason accounts exist here, and the
+               one case the memory above is no help at all in. A sign-in link
+               is addressed to the account's email, so it lets someone in
+               whichever way they originally signed up: Google, password, or
+               a link last time. It is the only answer that is right without
+               knowing anything, so a failed password attempt is exactly when
+               to stop hiding it at the bottom of the dialog. */
+            authEvent('auth-wrong-password', { knownMethod: (meta && meta.id) || 'none' });
+            suggestMagicLink();
           }
           return;
         }
@@ -866,6 +909,7 @@
           // Deliberately the same sentence whether or not that address has an
           // account. Saying "no account with that email" hands anyone with a
           // list of addresses a free check for which ones study here.
+          authEvent('auth-reset-requested');
           setMsg('If that email has an account, a reset link is on its way. Check spam too.', 'success');
           return;
         }
@@ -886,6 +930,7 @@
         }
         rememberEmail(email);
         rememberMethod('password');
+        authEvent('auth-succeeded', { method: authMode === 'signup' ? 'signup' : 'password' });
         closeAuthModal();
       }, function(){
         done();
@@ -969,6 +1014,21 @@
   function lastMethod(){
     try { return localStorage.getItem(LAST_METHOD_KEY) || ''; } catch(e){ return ''; }
   }
+  function forgetLastUser(){
+    try {
+      localStorage.removeItem(LAST_EMAIL_KEY);
+      localStorage.removeItem(LAST_METHOD_KEY);
+    } catch(e){ /* private mode: nothing was stored to begin with */ }
+  }
+
+  /* Milestone-level only. analytics.js is explicit that every event counts
+     against a monthly total, so this records the shape of the funnel — opened,
+     got in, asked for a reset, hit the passwordless dead end — and nothing
+     per-keystroke. No email address or provider identity is ever sent: the
+     method name is the whole payload. */
+  function authEvent(name, data){
+    if(window.LevlAnalytics) window.LevlAnalytics.event(name, data);
+  }
 
   function openAuthModal(mode){
     ensureAuthModal();
@@ -988,6 +1048,7 @@
     lastFocused = document.activeElement;
     overlay._reset();
     overlay._setMode(mode || 'signin');
+    authEvent('auth-opened', { mode: mode || 'signin' });
     overlay.classList.add('open');
     // The page behind a modal must not scroll under it — on iOS especially,
     // a touch-drag over the backdrop otherwise scrolls the page away.
@@ -1060,6 +1121,13 @@
       stopSyncTimer();
       closeAccountMenu();
       sessionStorage.removeItem(RELOAD_ONCE_KEY);
+      /* Forget who was here. The prefilled address is a convenience for one
+         person on their own laptop and a small leak on a shared one — a
+         campus or library machine shows the next student the last one's
+         email — and signing out is exactly the signal that says which of
+         those this is. Closing the tab is not; that is why this hangs off
+         SIGNED_OUT and not off pagehide. */
+      forgetLastUser();
     }
   }
 

@@ -135,3 +135,20 @@ test('half-typed and malformed addresses never produce a suggestion', () => {
     assert.equal(A.emailTypo(v), null, `${JSON.stringify(v)} should not suggest anything`);
   }
 });
+
+/* ---- the mail cap is not the sign-in cap ------------------------------- */
+
+test('a used-up mail allowance does not promise that a minute will fix it', () => {
+  const A = account();
+  const msg = A.authMessage({ code: 'over_email_send_rate_limit', message: 'email rate limit exceeded', status: 429 });
+  // The cap is hourly and project-wide, so "wait a minute" is a false promise
+  // to someone whose only real option is a different way in.
+  assert.doesNotMatch(msg, /minute/);
+  assert.match(msg, /hour/);
+  assert.match(msg, /password/);
+});
+
+test('an ordinary sign-in rate limit still says to wait a minute', () => {
+  const A = account();
+  assert.match(A.authMessage({ status: 429, message: 'Request rate limit reached' }), /Wait a minute/);
+});

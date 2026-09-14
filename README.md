@@ -321,11 +321,26 @@ is the one way to actually lose progress here.
 
 ### Supabase settings these depend on
 
-Magic links, reset mail and the resend all use Supabase's built-in mailer, which
-is **rate-limited to a handful of messages an hour** on the free tier — fine for
-this traffic, but it is the thing to check first if mail stops arriving. Auth →
-URL Configuration must list the site origin under *Redirect URLs* (the reset
-link returns to `/`, everything else to the page you started from).
+Auth → URL Configuration must list the site origin under *Redirect URLs* (the
+reset link returns to `/`, everything else to the page you started from).
+
+**Move off the built-in mailer before relying on any of this.** Email went from
+doing one job (signup confirmation) to four — confirmation, resend, sign-in
+link, password reset — so it is now load-bearing, and Supabase's built-in SMTP
+is explicitly a development convenience: a handful of messages an hour,
+**counted across the whole project rather than per user**. Two students asking
+for a link in the same hour can starve the third, and the failure looks exactly
+like "the email never came". Any real provider (Resend, Postmark, SES) has a
+free tier many times this traffic. Until then `authMessage()` at least tells the
+truth about it — the mail cap gets its own sentence rather than borrowing the
+sign-in cap's "wait a minute and try again", which would be a false promise,
+and it points at the password instead.
+
+**Check the identity-linking setting before enabling a provider.** If someone
+signs up with `sam@gmail.com` and a password and later presses Continue with
+Google, whether those become one account or two depends on Supabase's
+configuration. Two accounts means their streak is in one and their session is
+in the other — and progress is the entire reason accounts exist here.
 
 ### Social sign-in is discovered, not hardcoded
 
@@ -378,6 +393,38 @@ in, and — when a sign-in fails with `invalid_credentials` *for the same
 address this browser last opened with a provider* — a sentence saying so.
 Both are phrased as reminders about this browser, not claims about the
 account, because that is all the client can honestly know.
+
+That memory is worth little on a **new device**, which is the case accounts
+exist for and the one where "which way did I sign up?" actually bites. Nothing
+client-side can know the answer there, so the fallback is one that does not
+need to: a failed password attempt promotes the sign-in link and rewords it
+("it works either way"). A link is addressed to the account's email, so it
+gets someone in however they originally signed up — Google, password, or a
+link last time. It is the only answer that is right without knowing anything,
+which is why a wrong password is exactly when to stop hiding it at the bottom
+of the dialog.
+
+Signing out clears both keys. The prefilled address is a convenience on your
+own laptop and a small leak on a shared one — a campus machine showing the
+next student the last one's email — and signing out is precisely the signal
+that distinguishes them. Closing the tab is not, which is why this hangs off
+`SIGNED_OUT` rather than `pagehide`.
+
+A provider whose OAuth call fails is dropped from the cache and re-fetched
+immediately, so a provider switched off upstream cannot leave a dead button
+sitting there for the rest of the 12 hours.
+
+### Measuring it
+
+`account.js` raises a small, milestone-level funnel through `LevlAnalytics`:
+`auth-opened`, `auth-provider-chosen`, `auth-link-sent`, `auth-succeeded`,
+`auth-reset-requested`, and `auth-wrong-password` (carrying only *which*
+method this browser remembered, if any). No email address or account
+identifier is ever in a payload, and a whole session costs a handful of events
+rather than one per keystroke — `analytics.js` is explicit that events count
+against a monthly total. `auth-wrong-password` is the one to watch: it is the
+direct measure of whether the multiple-ways-in confusion is real, and how
+often the promoted sign-in link is the thing people needed.
 
 ### Namespaced sync
 
