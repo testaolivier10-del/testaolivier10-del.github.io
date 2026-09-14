@@ -146,3 +146,85 @@ test('activity older than the retained window is dropped, not counted', () => {
   assert.ok(days.length < 400, 'the day log is pruned rather than growing forever');
   assert.equal(HP.streak().current, 1);
 });
+
+/* ---- streak freezes -------------------------------------------------------
+
+   The behaviour these guard is the one the whole feature exists for: a student
+   with a real habit misses exactly one day and does not lose the run. The ways
+   it could go wrong are all silent — a freeze that spends itself on page load,
+   one that bridges a gap it was never meant to reach, or one handed out so
+   freely the streak stops meaning anything. */
+
+test('a week of study earns a freeze, and one missed day does not break the run', () => {
+  const { b, HP } = fresh();
+  for(let i = 0; i < 7; i++){ HP.recordActivity('nremt', 5); b.advanceDays(1); }
+  assert.equal(HP.streak().freezes, 1, 'seven days earns exactly one freeze');
+
+  b.advanceDays(1);                   // miss a whole day; now two days on
+  const held = HP.streak();
+  assert.equal(held.current, 7, 'the run reads as alive while a freeze covers the gap');
+  assert.ok(held.freezePending, 'and it says which day is being held open');
+  assert.equal(held.freezes, 1, 'reading the page has not spent anything');
+
+  HP.recordActivity('nremt', 5);      // coming back is what pays for it
+  const after = HP.streak();
+  assert.equal(after.current, 8, 'the run continues through the frozen day');
+  assert.equal(after.freezes, 0, 'and the freeze is now spent');
+});
+
+test('a freeze covers one missed day, never two', () => {
+  const { b, HP } = fresh();
+  for(let i = 0; i < 7; i++){ HP.recordActivity('nremt', 5); b.advanceDays(1); }
+  b.advanceDays(2);                   // two whole days missed
+  assert.equal(HP.streak().current, 0, 'one freeze cannot bridge a two-day gap');
+});
+
+test('a frozen day does not count as a day studied', () => {
+  const { b, HP } = fresh();
+  for(let i = 0; i < 7; i++){ HP.recordActivity('nremt', 5); b.advanceDays(1); }
+  b.advanceDays(1);
+  HP.recordActivity('nremt', 5);
+  // 7 studied + 1 studied today = 8. The bridged day keeps the run alive but
+  // must never inflate it, or the number stops describing work done.
+  assert.equal(HP.streak().current, 8);
+});
+
+test('freezes are earned at most once a week and never stockpiled', () => {
+  const { b, HP } = fresh();
+  for(let i = 0; i < 20; i++){ HP.recordActivity('ochem', 4); b.advanceDays(1); }
+  assert.equal(HP.streak().freezes, 1, 'holding is capped at one, however long the run');
+});
+
+test('a student who has not earned a freeze still loses the streak', () => {
+  const { b, HP } = fresh();
+  for(let i = 0; i < 4; i++){ HP.recordActivity('ochem', 4); b.advanceDays(1); }
+  b.advanceDays(1);
+  assert.equal(HP.streak().current, 0, 'four days is not a week; nothing protects it');
+});
+
+/* ---- the adaptive daily goal --------------------------------------------- */
+
+test('the goal eases off after a bad stretch and comes back on return', () => {
+  const { b, HP } = fresh();
+  HP.recordActivity('nremt', 20);     // default goal of 20, met
+  assert.equal(HP.streak().goal, 20);
+
+  b.advanceDays(3);                   // three days missed
+  const eased = HP.streak();
+  assert.equal(eased.goal, 10, 'half, so coming back is possible rather than hopeless');
+  assert.equal(eased.eased, true);
+  assert.equal(eased.goalBase, 20, 'their real goal is remembered, not overwritten');
+
+  // Study across the next few days and the window of misses clears.
+  for(let i = 0; i < 3; i++){ HP.recordActivity('nremt', 20); b.advanceDays(1); }
+  assert.equal(HP.streak().goal, 20, 'back to their own number, on its own');
+});
+
+test('a goal the student picked by hand is never moved for them', () => {
+  const { b, HP } = fresh();
+  HP.setGoal(50);
+  HP.recordActivity('nremt', 5);
+  b.advanceDays(3);                   // the same bad stretch as above
+  assert.equal(HP.streak().goal, 50, 'they said 50, so it stays 50');
+  assert.equal(HP.streak().eased, false);
+});

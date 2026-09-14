@@ -468,6 +468,9 @@
   .streak-gear{display:inline-flex;background:none;border:none;cursor:pointer;color:var(--muted);padding:6px;border-radius:10px;}
   .streak-gear:hover{color:var(--ink);background:var(--hover-tint);}
   .streak-goal-row{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:800;color:var(--muted);margin-bottom:7px;flex-wrap:wrap;gap:4px;}
+  /* Said quietly on purpose: an eased goal is a hand, not an announcement that
+     you are behind. Dotted underline because it carries an explanation. */
+  .streak-eased{font-weight:700;opacity:.75;border-bottom:1px dotted currentColor;cursor:help;}
   .streak-done{color:var(--good-text);font-weight:900;}
   .streak-warn{color:var(--accent);font-weight:900;}
   .streak-track{background:var(--track);border-radius:var(--radius-pill);height:10px;overflow:hidden;}
@@ -1541,6 +1544,10 @@ function streakStatus(){
     return {
       display: st.current, longest: st.longest, todayCount: st.todayCount,
       goal: st.goal, metToday: st.metToday,
+      // The goal the student actually chose, which is what the settings
+      // control has to show — st.goal may be today's eased-off version of it.
+      goalBase: st.goalBase, eased: st.eased,
+      freezes: st.freezes, freezePending: st.freezePending,
     };
   }
   const s = loadStreak();
@@ -1552,6 +1559,7 @@ function streakStatus(){
     todayCount: s.dailyCounts[today] || 0,
     goal: s.dailyGoal,
     metToday: (s.dailyCounts[today] || 0) >= s.dailyGoal,
+    goalBase: s.dailyGoal, eased: false, freezes: 0, freezePending: null,
   };
 }
 
@@ -1623,7 +1631,8 @@ function renderStreakWidget(){
   const pct = Math.min(100, Math.round(st.todayCount / st.goal * 100));
 
   let nudge;
-  if(st.metToday) nudge = `<span class="streak-done">Today's goal complete ✓</span>`;
+  if(st.freezePending && !st.metToday) nudge = `<span class="streak-warn">A streak freeze is holding yesterday open — study today to keep it</span>`;
+  else if(st.metToday) nudge = `<span class="streak-done">Today's goal complete ✓</span>`;
   else if(st.display > 0) nudge = `<span class="streak-warn">Practice today to keep your streak alive</span>`;
   else nudge = `<span>Answer a few questions today to start a streak</span>`;
 
@@ -1642,7 +1651,7 @@ function renderStreakWidget(){
         <button class="streak-gear" id="streakSettingsToggle" type="button" aria-label="Streak settings"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 13a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V19a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H4a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H10a1.7 1.7 0 0 0 1-1.5V4a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V10a1.7 1.7 0 0 0 1.5 1H20a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg></button>
       </div>
       <div class="streak-goal-row">
-        <span>${st.todayCount}/${st.goal} questions today</span>
+        <span>${st.todayCount}/${st.goal} questions today${st.eased ? ` <span class="streak-eased" title="You missed a few days, so today's goal is lower. It goes back to ${st.goalBase} once you're studying again.">(easier target)</span>` : ''}</span>
         ${nudge}
       </div>
       <div class="streak-track"><div class="streak-fill${st.metToday?' met':''}" style="width:${pct}%"></div></div>
@@ -1651,13 +1660,14 @@ function renderStreakWidget(){
         <div class="streak-settings-row">
           <label for="dailyGoalSelect">Daily goal</label>
           <select id="dailyGoalSelect">
-            ${[10,20,30,50].map(g => `<option value="${g}" ${st.goal===g?'selected':''}>${g} questions/day</option>`).join('')}
+            ${[10,20,30,50].map(g => `<option value="${g}" ${(st.goalBase||st.goal)===g?'selected':''}>${g} questions/day</option>`).join('')}
           </select>
         </div>
         <div class="streak-settings-row">
           <label><input type="checkbox" id="remindersCb" ${s.remindersEnabled?'checked':''}> Remind me in-browser if I haven't hit my goal by</label>
           <select id="reminderHourSelect">${hourOptions}</select>
         </div>
+        <p class="streak-note">${st.freezes ? `You have ${st.freezes} streak freeze in hand — miss a single day and your streak survives it.` : `Study seven days in a row to earn a streak freeze, which covers one missed day.`} Miss several days and your daily goal eases off on its own until you're back.</p>
         <p class="streak-note">Browser reminders only fire while this tab or browser is open — a static site like this can't message you once it's fully closed. Your browser will ask permission the first time you turn this on.</p>
       </div>
     </div>
@@ -2123,6 +2133,10 @@ function beginQuiz(withTimer, resumeState){
   // and make the completion rate read worse than it is.
   if(!resumeState && window.LevlAnalytics){
     window.LevlAnalytics.event('exam-start', { mode: mode, questions: totalLen });
+    // Once per browser, ever: how long this student had to hunt before they
+    // were answering anything. A first session that starts in ten seconds and
+    // one that starts in four minutes are different products.
+    window.LevlAnalytics.once('first-questions', { secs: window.LevlAnalytics.secondsIn(), mode: mode });
   }
   introScreen.style.display = 'none';
   quizScreen.style.display = 'grid';

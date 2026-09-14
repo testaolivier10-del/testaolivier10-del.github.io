@@ -67,7 +67,7 @@
     <div class="eyebrow">Privacy</div>
     <h1>What leaves your browser.</h1>
     <p class="lede">Short version: almost nothing. There are no ads and no cookies on this site, and nothing here follows you anywhere else on the web. Everything you study is stored on your own device unless you choose to sign in. There is cookieless analytics, and <a href="#site-analytics">Site analytics</a> below lists every field it records.</p>
-    <p class="updated">Last updated 13 September 2026</p>
+    <p class="updated">Last updated 14 September 2026</p>
   </div>
 
   <div class="xsection">
@@ -105,6 +105,7 @@
           <li>A <strong>visitor identifier</strong> made by hashing your IP address and browser together with a secret that changes daily. This is what lets it tell one visit from another within a day. It cannot be reversed to find you, and because the secret changes, it cannot link today's visit to tomorrow's.</li>
         </ul>
         <p>We also record a small number of <strong>milestones</strong>, so the site can tell whether a feature works rather than just whether it was opened: an exam being started and finished (with the score as a band such as "70-79", never an exact result), a practice session being started and finished, and a lesson being completed. No answer you give and no question you see is ever sent.</p>
+        <p>One more milestone answers a question the rest cannot: <strong>did studying here stick</strong>. Once a day at most, this browser sends how many separate days it has studied, and how long ago its first visit was — as a band such as "d2-7", not a date. The dates behind that band are kept in this browser's own localStorage (<code>levlprep_visits</code>) and never leave it, because the visitor identifier above is deliberately useless across days. No identifier is created here, nothing is sent that could pick your browser out of a crowd, and clearing your browser data erases the history along with everything else. It is covered by the same off switch as the rest of this section.</p>
         <p>If your browser sends a <strong>Do Not Track</strong> signal, this is switched off for you entirely and nothing above is collected. Blocking it with an ad blocker or privacy extension works too, and nothing on the site depends on it.</p>
         <p>None of this is connected to your account, your progress, or the study assistant. Umami acts as our processor and the data is never sold, shared or used for advertising.</p>
         <p>You can also just switch it off here, for this browser, without installing anything:</p>

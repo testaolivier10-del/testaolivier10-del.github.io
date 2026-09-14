@@ -677,6 +677,9 @@
       if(els.modeLabel) els.modeLabel.textContent = opts.title || '';
       if(window.LevlAnalytics){
         window.LevlAnalytics.event('ochem-session-start', { mode: S.meta.mode || 'practice' });
+        // See the same call in nremt/practice.html: once per browser, how long
+        // before this student was actually working rather than looking around.
+        window.LevlAnalytics.once('first-questions', { secs: window.LevlAnalytics.secondsIn(), mode: S.meta.mode || 'practice' });
       }
       advance();
       return S;

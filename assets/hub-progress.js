@@ -22,7 +22,8 @@
      { v:1, total, subjects: { nremt: n, ochem: n }, badges: { <subject>: {...} } }
 
    localStorage['hub_activity_v1']
-     { v:1, days: { 'YYYY-MM-DD': { nremt: n, ochem: n } }, longest, goal }
+     { v:1, days: { 'YYYY-MM-DD': { nremt: n, ochem: n } }, longest, goal,
+       goalBase, goalAuto, frozen: { 'YYYY-MM-DD': 1 }, freezes, freezeEarned }
 
    The streak is DERIVED from `days` rather than stored as a counter. A stored
    counter has to be corrected on read anyway (it reflects the streak as of the
@@ -37,6 +38,23 @@
   var XP_KEY = 'hub_xp_v1';
   var ACTIVITY_KEY = 'hub_activity_v1';
   var MAX_DAYS = 180;
+
+  /* Streak freezes. The day a student loses a twelve-day streak is very often
+     the last day they open the site at all — the run was the reason to come
+     back, and one bad Tuesday deletes it. A freeze bridges exactly one missed
+     day so that a life event costs a day rather than the habit.
+
+     Earned, not given: a week of real study buys one, and you can hold one at
+     a time. That keeps it a safety net rather than a way to have a streak
+     without studying, which would make the number mean nothing. */
+  var MAX_FREEZES = 1;
+  var FREEZE_EARN_STREAK = 7;   // days of streak before the first one is earned
+  var FREEZE_EARN_EVERY = 7;    // and at most one per this many days after
+
+  var DEFAULT_GOAL = 20;
+  var MIN_GOAL = 5;
+  var EASE_WINDOW = 3;          // look back this many days...
+  var EASE_MISSES = 2;          // ...and ease off after this many were missed
 
   // Cumulative XP needed to REACH level n (n >= 1). Quadratic, so each level
   // takes a little longer than the last. Unchanged from the NREMT curve, so
@@ -133,6 +151,14 @@
     var s = readJSON(ACTIVITY_KEY, null);
     if(s && s.v === 1){
       s.days = s.days || {};
+      // Fields added after v1 shipped. Defaulted on read rather than behind a
+      // version bump, so an existing record keeps its streak and its goal and
+      // simply gains the new behavior on the next page load.
+      s.frozen = s.frozen || {};
+      if(typeof s.freezes !== 'number') s.freezes = 0;
+      if(typeof s.goal !== 'number') s.goal = DEFAULT_GOAL;
+      if(typeof s.goalBase !== 'number') s.goalBase = s.goal;
+      if(typeof s.goalAuto !== 'boolean') s.goalAuto = true;
       return s;
     }
     return migrateActivity();
@@ -146,11 +172,19 @@
         days[d] = { nremt: legacy.dailyCounts[d] };
       });
     }
+    var goal = (legacy && legacy.dailyGoal) || DEFAULT_GOAL;
     var state = {
       v: 1,
       days: days,
       longest: (legacy && legacy.longestStreak) || 0,
-      goal: (legacy && legacy.dailyGoal) || 20,
+      goal: goal,
+      // A goal the student picked is theirs and is never moved for them.
+      // goalBase is what the adaptive goal eases down from and returns to.
+      goalBase: goal,
+      goalAuto: true,
+      frozen: {},
+      freezes: 0,
+      freezeEarned: null,
     };
     writeJSON(ACTIVITY_KEY, state);
     return state;
@@ -241,13 +275,13 @@
     var keys = Object.keys(state.days).sort();
     while(keys.length > MAX_DAYS){ delete state.days[keys.shift()]; }
 
-    writeJSON(ACTIVITY_KEY, state);
+    // Studying is the moment a pending freeze is actually paid for, and the
+    // moment a new one can be earned. Both before the write, so one save.
+    settleFreezes(state);
 
-    var s = streak();
-    if(s.current > state.longest){
-      state.longest = s.current;
-      writeJSON(ACTIVITY_KEY, state);
-    }
+    var s = walkStreak(state);
+    if(s.current > (state.longest || 0)) state.longest = s.current;
+    writeJSON(ACTIVITY_KEY, state);
     // First activity of a new calendar day earns the show-up bonus once, no
     // matter how much more gets studied today or in which subject.
     if(isNewDay) award(subject, 15);
@@ -261,30 +295,147 @@
     return Object.keys(d).reduce(function(a, k){ return a + (d[k] || 0); }, 0);
   }
 
-  // Derived, never stored: walk back from today over days that have activity.
-  // Today not counting yet is fine — the walk starts at yesterday in that case
-  // so an evening-only student doesn't watch the flame vanish at midnight.
-  function streak(){
-    var state = loadActivity();
-    var days = state.days;
+  /* Derived, never stored: walk back from today over days that have activity.
+     Today not counting yet is fine — the walk starts at yesterday in that case
+     so an evening-only student doesn't watch the flame vanish at midnight.
+
+     A missed day can be bridged, once per walk, by a freeze: one already spent
+     on that day, or one the student is holding. A held freeze is only bridged
+     PROVISIONALLY here, never written — reading the page must not silently
+     spend anything. It is committed by recordActivity when they actually come
+     back and study, which is the moment the freeze is for. If they never come
+     back, nothing was spent and there is no streak left to protect anyway. */
+  /* The earliest day this browser has recorded anything. Day keys are
+     'YYYY-MM-DD', so they sort and compare as plain strings.
+
+     Both the walk and the easing rule need this bound. Without it they read
+     the blank space before a student's first session as missed days, which is
+     wrong in two expensive ways: a freeze gets spent bridging a day before the
+     student existed, and a brand-new student is handed the eased-off goal
+     meant for someone recovering from a bad week. */
+  function firstActiveKey(state){
+    var keys = Object.keys(state.days || {});
+    if(!keys.length) return null;
+    return keys.sort()[0];
+  }
+
+  function walkStreak(state){
+    var days = state.days, frozen = state.frozen || {};
+    var held = state.freezes || 0;
+    var firstKey = firstActiveKey(state);
     var cursor = 0;
     if(!dayTotal(days, dayKey(0))) cursor = -1;
-    var n = 0;
-    while(dayTotal(days, dayKey(cursor))){ n++; cursor--; }
-    var todayCount = dayTotal(days, dayKey(0));
+    var n = 0, bridged = null, usedHeld = false;
+    for(;;){
+      var key = dayKey(cursor);
+      if(dayTotal(days, key)){ n++; cursor--; continue; }
+      // A day already paid for stays bridged for as long as the run lasts, and
+      // does not count as a study day — the flame survives, the number does not
+      // grow for a day nobody studied.
+      if(frozen[key]){ cursor--; continue; }
+      // Never bridge past the beginning of this student's history.
+      if(firstKey && key < firstKey) break;
+      // One unpaid gap may be covered, and only if a freeze is in hand.
+      if(!usedHeld && held > 0){
+        usedHeld = true;
+        bridged = key;
+        cursor--;
+        continue;
+      }
+      break;
+    }
+    // A gap bridged into nothing is not a rescue — it is a freeze about to be
+    // spent on a streak that does not exist. Only report one that saved a run.
+    if(n === 0) bridged = null;
+    return { current: n, bridged: bridged };
+  }
+
+  /* The goal the student is actually held to today.
+
+     A fixed 20 is the wrong number for someone who has just missed half a
+     week: they come back, see a bar they have no chance of filling, and the
+     goal stops being a goal. So after a bad stretch it eases off, and it
+     comes straight back to their own number as soon as they are studying
+     again. Pure — no writes, so what the dashboard shows and what counts as
+     met can never drift apart.
+
+     A goal the student picked by hand is never touched. They said what they
+     wanted. */
+  function effectiveGoal(state){
+    var base = state.goalBase || state.goal || DEFAULT_GOAL;
+    if(state.goalAuto === false) return state.goal || base;
+    var firstKey = firstActiveKey(state);
+    if(!firstKey) return base; // nobody has missed anything yet
+    var missed = 0;
+    for(var i = 1; i <= EASE_WINDOW; i++){
+      var key = dayKey(-i);
+      if(key < firstKey) continue; // before they started; not a missed day
+      if(!dayTotal(state.days, key) && !(state.frozen || {})[key]) missed++;
+    }
+    if(missed >= EASE_MISSES) return Math.max(MIN_GOAL, Math.round(base / 2));
+    return base;
+  }
+
+  function streak(){
+    var state = loadActivity();
+    var walk = walkStreak(state);
+    var todayCount = dayTotal(state.days, dayKey(0));
+    var goal = effectiveGoal(state);
     return {
-      current: n,
-      longest: Math.max(state.longest || 0, n),
+      current: walk.current,
+      longest: Math.max(state.longest || 0, walk.current),
       todayCount: todayCount,
-      goal: state.goal || 20,
-      metToday: todayCount >= (state.goal || 20),
-      days: days,
+      goal: goal,
+      // What the student set, or the default — for a settings control, which
+      // should show their choice rather than today's eased-off version of it.
+      goalBase: state.goalBase || state.goal || DEFAULT_GOAL,
+      eased: goal < (state.goalBase || state.goal || DEFAULT_GOAL),
+      metToday: todayCount >= goal,
+      freezes: state.freezes || 0,
+      // Set when a missed day is being held open by a freeze they hold. The UI
+      // can say so; studying today is what actually spends it.
+      freezePending: walk.bridged,
+      days: state.days,
     };
+  }
+
+  /* Spend a held freeze on the gap the walk is bridging, and grant a new one
+     to a student who has kept a week going. Called from recordActivity only,
+     so both only ever happen on a day someone actually studied. */
+  function settleFreezes(state){
+    var walk = walkStreak(state);
+    if(walk.bridged && (state.freezes || 0) > 0){
+      state.frozen[walk.bridged] = 1;
+      state.freezes -= 1;
+      walk = walkStreak(state);
+    }
+    var earnedAgo = state.freezeEarned ? daysSince(state.freezeEarned) : null;
+    if(walk.current >= FREEZE_EARN_STREAK &&
+       (state.freezes || 0) < MAX_FREEZES &&
+       (earnedAgo === null || earnedAgo >= FREEZE_EARN_EVERY)){
+      state.freezes = (state.freezes || 0) + 1;
+      state.freezeEarned = dayKey(0);
+      emit('levl:freeze-earned', { freezes: state.freezes });
+    }
+    // Frozen days older than the window the walk can reach are dead weight.
+    Object.keys(state.frozen).forEach(function(k){
+      if(daysSince(k) > MAX_DAYS) delete state.frozen[k];
+    });
+  }
+
+  function daysSince(key){
+    var p = String(key).split('-');
+    var then = new Date(+p[0], +p[1] - 1, +p[2]);
+    var now = new Date();
+    now = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    return Math.round((now - then) / 86400000);
   }
 
   function setGoal(n){
     var state = loadActivity();
     state.goal = Math.max(1, Math.round(n));
+    state.goalBase = state.goal;
+    state.goalAuto = false; // their number now, not ours
     writeJSON(ACTIVITY_KEY, state);
   }
 
@@ -358,7 +509,12 @@
       chip.hidden = s.current < 1;
       var count = document.getElementById('navStreakCount');
       if(count) count.textContent = s.current;
-      chip.title = s.current + '-day study streak, across every subject';
+      var title = s.current + '-day study streak, across every subject';
+      // Say it on the chip, not just in a settings panel nobody opens: the
+      // whole point of a freeze is knowing you have one before you need it.
+      if(s.freezePending) title += '. Yesterday is being held open by a streak freeze — study today to keep the run.';
+      else if(s.freezes) title += '. ' + s.freezes + ' streak freeze in hand: one missed day will not break it.';
+      chip.title = title;
     }
   }
 
