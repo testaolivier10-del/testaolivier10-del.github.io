@@ -876,11 +876,52 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
    configured in account.js. */
 .auth-social{display:flex;flex-direction:column;gap:9px;margin-bottom:14px;}
 .auth-social[hidden],.auth-or[hidden]{display:none;}
+/* The mark sits at a fixed left inset and the label centres in what's left,
+   so a stack of providers lines up on both its logos and its text — the row
+   reads as one control rather than three unrelated buttons. */
 .auth-social__btn{
-  width:100%;padding:12px;border:2px solid var(--line);background:var(--white);
+  position:relative;display:flex;align-items:center;gap:10px;
+  width:100%;padding:12px 14px;border:2px solid var(--line);background:var(--white);
   color:var(--ink);font:900 14px var(--font-ui);border-radius:var(--radius-sm);cursor:pointer;
+  text-align:left;
 }
 .auth-social__btn:hover{background:var(--hover-tint);}
+.auth-social__btn:active{transform:translateY(1px);}
+.auth-social__mark{display:flex;align-items:center;justify-content:center;width:18px;flex:0 0 18px;}
+.auth-social__mark svg{display:block;}
+/* Left-aligned, not centred. Centring reads better with three identical
+   labels, but the "Last time" pill then collides with the one button that
+   has it (20px at desktop width, 35px at 390px), and every fix for that
+   either slides that label off the shared centre line or wraps it on a
+   narrow phone. Aligned left, the mark and the first letter line up down the
+   whole stack, the pill owns the right edge, and a longer provider name
+   later cannot break the layout. */
+.auth-social__label{flex:1;text-align:left;}
+/* Which button was this browser's last way in. Small, quiet, and on the
+   button itself rather than in prose above it — the point is to be read in
+   the half-second before the tap, not afterwards. */
+/* Taken out of the flow on purpose: in normal flow the pill eats width from
+   the label, and the one button carrying it sits a few pixels off from the
+   others — which is exactly the button the eye is being asked to find. */
+.auth-social__last{
+  position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  font:900 9.5px var(--font-ui);text-transform:uppercase;letter-spacing:.06em;
+  color:var(--accent);background:var(--tint-accent);
+  padding:3px 6px;border-radius:99px;pointer-events:none;
+}
+/* Below 420px the button says "Google" rather than "Continue with Google".
+   That is better on a phone on its own terms, and it is also what stops the
+   longest label running under the "Last time" pill — at 390px the full
+   wording overlaps it by 35px, and every way of shrinking the label to fit
+   instead either wraps it or pulls it out of line with the others. */
+@media (max-width:419px){
+  .auth-social__verb{display:none;}
+}
+/* Dark mode inverts the card, so a white Google button would glare. The
+   marks stay full-colour (their brand guidelines require it); only the
+   surface follows the theme. */
+:root[data-theme="dark"] .auth-social__btn{background:var(--surface2);border-color:var(--line);}
+:root[data-theme="dark"] .auth-social__btn:hover{background:var(--hover-tint);}
 .auth-or{
   display:flex;align-items:center;gap:10px;margin:0 0 14px;
   font:900 11px var(--font-ui);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;

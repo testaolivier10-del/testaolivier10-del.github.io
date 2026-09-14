@@ -296,7 +296,7 @@ step that is not load-bearing.
 | **Password** | Minimum 8 characters, length-first strength meter, a **Show** toggle. The toggle is why there is no *confirm password* field — a second box exists only to catch a typo you cannot see, and being able to look catches the same typo without doubling the work. Caps Lock is called out, because `Invalid login credentials` with Caps Lock on is the most maddening failure there is and the browser will never mention it. |
 | **Forgot password** | `resetPasswordForEmail` → the link returns to `/`, the SDK fires `PASSWORD_RECOVERY`, and `account.js` opens the *Set a new password* screen wherever you land. There was previously **no way back in at all**: a forgotten password meant a permanently orphaned account with a level and a streak inside it. |
 | **Magic link** | `signInWithOtp` — no password to invent, store or recall. For a site checked on a phone and a laptop this is often the whole ceremony. |
-| **Social** | `OAUTH_PROVIDERS` in `account.js` is empty, so no provider buttons render. See below. |
+| **Social** | Google, Apple and GitHub buttons, rendered from whatever the project reports as enabled — see below. |
 | **Resend confirmation** | The *Check your email* screen can send the mail again. A confirmation that lands in spam used to be a dead end. |
 | **Email typos** | `gmial.com` and ~20 neighbours of the six big domains are caught on blur with a one-click fix. Mail to a typo'd address is not bounced — it is delivered nowhere, silently, while the student waits for it. |
 
@@ -327,11 +327,57 @@ this traffic, but it is the thing to check first if mail stops arriving. Auth �
 URL Configuration must list the site origin under *Redirect URLs* (the reset
 link returns to `/`, everything else to the page you started from).
 
-Adding **Continue with Google** is two steps: enable the provider in
-Authentication → Providers with an OAuth client id and secret, then add
-`{ id: 'google', label: 'Continue with Google' }` to `OAUTH_PROVIDERS` in
-`assets/account.js`. The array is empty by default because a button for a
-provider that is not configured only produces a dead end.
+### Social sign-in is discovered, not hardcoded
+
+The provider row is **not** a list in this repo. `account.js` asks the project
+what is actually enabled — GoTrue publishes it unauthenticated at
+`/auth/v1/settings` — and renders exactly that, cached in `localStorage` for
+12 hours and revalidated every time the dialog opens.
+
+That is deliberate. A hardcoded list has two failure modes and this has
+neither: a button for a provider with no client id behind it is a dead end
+that looks like a bug, and a provider switched on in the dashboard stays
+invisible on the site until someone remembers to edit and redeploy a file.
+**Enabling Google in Supabase turns the button on here, with no commit and no
+deploy** — within 12 hours at the outside, usually on the next page load.
+Switching it off removes it the same way. `PROVIDERS` in `account.js` holds
+only presentation (label, brand mark, order); a provider enabled upstream that
+isn't listed there is ignored rather than rendered blank.
+
+**To turn on Continue with Google** — both steps are outside this repo:
+
+1. **Google Cloud Console** → APIs & Services → Credentials → *Create OAuth
+   client ID* → Web application. Authorised redirect URI is
+   `https://bsfcqrczehbcctwhxmrj.supabase.co/auth/v1/callback`. You will also
+   need an OAuth consent screen; while it is in *Testing* only accounts you
+   list can sign in, so publish it before launch.
+2. **Supabase** → Authentication → Providers → Google → enable, paste the
+   client id and secret.
+
+Apple and GitHub work the same way (Apple needs a paid Apple Developer
+account; GitHub is free and takes about two minutes, which makes it the
+cheapest way to test that this whole path works end to end).
+
+`redirectTo` is the page the student was on, so OAuth returns them where they
+started rather than to the homepage. The origin must be listed under Auth →
+URL Configuration → Redirect URLs.
+
+### Which way in did this browser use?
+
+Offering three routes creates a new way to get stuck, and it is the nastiest
+one in the form: **an account created with Google has no password**, so typing
+one fails identically and forever, and nothing on screen connects that to the
+button two inches above. Supabase does not link a password identity to an
+OAuth one by email, and the API cannot be asked which identities an address
+has without leaking whether the address has an account at all.
+
+So the browser remembers the method it last used (`levlprep_last_method`,
+alongside `levlprep_last_email`; never the password). It buys two things: a
+quiet **Last time** pill on the provider button that was this browser's way
+in, and — when a sign-in fails with `invalid_credentials` *for the same
+address this browser last opened with a provider* — a sentence saying so.
+Both are phrased as reminders about this browser, not claims about the
+account, because that is all the client can honestly know.
 
 ### Namespaced sync
 

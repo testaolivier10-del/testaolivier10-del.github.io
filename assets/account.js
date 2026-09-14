@@ -219,16 +219,95 @@
   // and only length is actually enforced.
   var MIN_PASSWORD = 8;
 
-  // Social sign-in. Each provider must first be enabled in the Supabase
-  // dashboard (Authentication → Providers) with its OAuth client id and
-  // secret; a button for a provider that is not configured only produces a
-  // dead end, so an unconfigured build lists none and shows the email form
-  // alone. Adding Google is one entry here plus that dashboard step.
-  var OAUTH_PROVIDERS = [];  // e.g. [{ id:'google', label:'Continue with Google' }]
+  /* ---- social sign-in -------------------------------------------------
 
-  // Which address signed in last, so the next visit on this browser starts
-  // with the email already filled. Never the password.
+     The fastest sign-in is the one with no form in it: two taps on a phone,
+     an address that cannot be typo'd, and no password to invent now or
+     recall in March.
+
+     Which providers exist is NOT hardcoded here. A provider only works once
+     it has an OAuth client id and secret in the Supabase dashboard, and a
+     button for one that doesn't is a dead end that looks like a bug — but a
+     hardcoded list has the matching failure, where the dashboard is switched
+     on and the site keeps hiding the button until someone remembers to edit
+     and redeploy this file. So the row asks the project what is actually
+     enabled (GoTrue publishes it at /auth/v1/settings, unauthenticated) and
+     renders exactly that. Turning Google on in the dashboard turns it on
+     here, with no commit and no deploy.
+
+     PROVIDERS is only presentation: the label and mark to use IF the project
+     reports one enabled, in the order they should appear. A provider enabled
+     upstream that isn't listed here is ignored rather than rendered blank. */
+
+  // Marks are each provider's own; their brand guidelines require the real
+  // logo rather than a lookalike, and all three ship as flat SVG paths.
+  var MARKS = {
+    google:
+      '<svg viewBox="0 0 18 18" width="17" height="17" aria-hidden="true" focusable="false">' +
+      '<path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.92c1.7-1.57 2.68-3.88 2.68-6.62z"/>' +
+      '<path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.26c-.8.54-1.84.86-3.04.86-2.34 0-4.32-1.58-5.03-3.7H.96v2.33A9 9 0 0 0 9 18z"/>' +
+      '<path fill="#FBBC05" d="M3.97 10.72a5.4 5.4 0 0 1 0-3.44V4.95H.96a9 9 0 0 0 0 8.1l3.01-2.33z"/>' +
+      '<path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.44 1.35l2.58-2.59C13.47.9 11.43 0 9 0A9 9 0 0 0 .96 4.95l3.01 2.33C4.68 5.16 6.66 3.58 9 3.58z"/></svg>',
+    apple:
+      '<svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false" fill="currentColor">' +
+      '<path d="M16.37 12.78c.02 2.6 2.28 3.46 2.3 3.47-.02.06-.36 1.24-1.19 2.45-.72 1.05-1.47 2.1-2.64 2.12-1.15.02-1.52-.68-2.84-.68-1.31 0-1.72.66-2.81.7-1.13.05-1.99-1.13-2.72-2.18-1.48-2.15-2.62-6.08-1.09-8.73.76-1.31 2.11-2.15 3.58-2.17 1.11-.02 2.15.75 2.83.75.68 0 1.95-.93 3.28-.79.56.02 2.13.22 3.14 1.7-.08.05-1.87 1.1-1.85 3.27M14.2 4.6c.6-.73 1.01-1.75.9-2.76-.87.03-1.92.58-2.55 1.31-.56.64-1.05 1.68-.92 2.67.97.07 1.96-.49 2.57-1.22"/></svg>',
+    github:
+      '<svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false" fill="currentColor">' +
+      '<path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.26.8-.57v-2c-3.34.72-4.04-1.6-4.04-1.6-.54-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .31.2.68.82.56A12 12 0 0 0 12 .3"/></svg>'
+  };
+
+  // Order is deliberate: Google covers the overwhelming majority of student
+  // addresses, so it goes first whenever it is on.
+  var PROVIDERS = [
+    { id: 'google', name: 'Google' },
+    { id: 'apple',  name: 'Apple' },
+    { id: 'github', name: 'GitHub' }
+  ];
+
+  var PROVIDERS_CACHE_KEY = 'levlprep_auth_providers';
+  var PROVIDERS_CACHE_HOURS = 12;
+  var enabledProviders = null;   // ids the project reports, once known
+
+  /* Cached so the second visit renders the buttons in the same frame as the
+     rest of the dialog. A row of sign-in buttons that pops in a beat late is
+     worse than useless: the student has already started typing, and the
+     layout jumps under their hands. The cache is revalidated in the
+     background every open, so a dashboard change lands within a day at the
+     outside and usually on the next page load. */
+  function cachedProviders(){
+    try {
+      var raw = JSON.parse(localStorage.getItem(PROVIDERS_CACHE_KEY) || 'null');
+      if(raw && raw.at && (Date.now() - raw.at) < PROVIDERS_CACHE_HOURS * 3600000 && raw.ids) return raw.ids;
+    } catch(e){ /* unreadable: treat as unknown */ }
+    return null;
+  }
+
+  function fetchProviders(){
+    if(!window.fetch) return Promise.resolve(null);
+    return fetch(SUPABASE_URL + '/auth/v1/settings', {
+      headers: { apikey: SUPABASE_PUBLISHABLE_KEY }
+    }).then(function(r){ return r.ok ? r.json() : null; }).then(function(j){
+      if(!j || !j.external) return null;
+      var ids = PROVIDERS.filter(function(p){ return j.external[p.id] === true; })
+                         .map(function(p){ return p.id; });
+      try { localStorage.setItem(PROVIDERS_CACHE_KEY, JSON.stringify({ at: Date.now(), ids: ids })); }
+      catch(e){ /* private mode: just re-ask next time */ }
+      return ids;
+    }, function(){ return null; });   // offline: fall back to whatever is cached
+  }
+
+  /* ---- what this browser used last -------------------------------------
+
+     Three ways in means a returning student has to remember which one was
+     theirs, and the failure when they guess wrong is the worst error in the
+     whole form: an account created with Google has no password, so typing
+     one returns "invalid credentials" forever with no hint that the answer
+     is the button above. Remembering the method turns that dead end into a
+     sentence, and lets the button they actually use carry a "last time"
+     mark. The email is remembered for the same reason and never the
+     password. */
   var LAST_EMAIL_KEY = 'levlprep_last_email';
+  var LAST_METHOD_KEY = 'levlprep_last_method';   // 'password' | 'magiclink' | provider id
 
   function escapeHtml(s){
     return String(s).replace(/[&<>"']/g, function(c){
@@ -449,14 +528,10 @@
     overlay.id = 'authModalOverlay';
     overlay.className = 'auth-modal-overlay';
 
-    var social = OAUTH_PROVIDERS.length
-      ? '<div class="auth-social" id="authSocial">' +
-          OAUTH_PROVIDERS.map(function(p){
-            return '<button type="button" class="auth-social__btn" data-provider="' +
-              escapeHtml(p.id) + '">' + escapeHtml(p.label) + '</button>';
-          }).join('') +
-        '</div><div class="auth-or" id="authOr"><span>or</span></div>'
-      : '';
+    // Empty until the project's enabled providers are known — from cache on
+    // the same tick, or from the network a moment later on a first visit.
+    var social = '<div class="auth-social" id="authSocial" hidden></div>' +
+                 '<div class="auth-or" id="authOr" hidden><span>or</span></div>';
 
     overlay.innerHTML =
       '<div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle" aria-describedby="authModalSub">' +
@@ -564,10 +639,13 @@
       el.authToggleBtn.textContent = c.toggleBtn;
       el.authStrength.hidden = true;
 
+      // The row is shown only where it belongs (never on reset or recovery)
+      // AND only if the project actually has a provider to put in it.
+      var hasProviders = !!(enabledProviders && enabledProviders.length);
       var socialRow = document.getElementById('authSocial');
       var orRow = document.getElementById('authOr');
-      if(socialRow) socialRow.hidden = !c.social;
-      if(orRow) orRow.hidden = !c.social;
+      if(socialRow) socialRow.hidden = !(c.social && hasProviders);
+      if(orRow) orRow.hidden = !(c.social && hasProviders);
 
       setHint(el.authEmailHint, '');
       setHint(el.authPwHint, '');
@@ -653,19 +731,53 @@
 
     /* --- social ---------------------------------------------------------- */
 
-    Array.prototype.forEach.call(overlay.querySelectorAll('.auth-social__btn'), function(b){
-      b.addEventListener('click', function(){
-        var c = getClient();
-        if(!c) return setMsg('Accounts are unavailable right now — check your connection.', 'error');
-        setMsg('Opening ' + b.textContent + '…');
-        c.auth.signInWithOAuth({
-          provider: b.getAttribute('data-provider'),
-          options: { redirectTo: location.origin + location.pathname }
-        }).then(function(res){
-          if(res && res.error) setMsg(authMessage(res.error), 'error');
-        });
+    var socialRow = document.getElementById('authSocial');
+    var orRow = document.getElementById('authOr');
+
+    function renderProviders(ids){
+      enabledProviders = ids || [];
+      var list = PROVIDERS.filter(function(p){ return enabledProviders.indexOf(p.id) !== -1; });
+      var last = lastMethod();
+      socialRow.innerHTML = list.map(function(p){
+        return '<button type="button" class="auth-social__btn" data-provider="' + escapeHtml(p.id) + '">' +
+          '<span class="auth-social__mark">' + (MARKS[p.id] || '') + '</span>' +
+          '<span class="auth-social__label"><span class="auth-social__verb">Continue with </span>' +
+            escapeHtml(p.name) + '</span>' +
+          (last === p.id ? '<span class="auth-social__last">Last time</span>' : '') +
+        '</button>';
+      }).join('');
+      // Both the row and its "or" divider hide together when nothing is
+      // enabled, so an email-only project shows a plain form with no seam.
+      var show = list.length > 0 && COPY[authMode].social;
+      socialRow.hidden = !show;
+      orRow.hidden = !show;
+    }
+
+    // Delegated: the buttons are written after this listener exists, and are
+    // rewritten whenever the provider list is revalidated.
+    socialRow.addEventListener('click', function(e){
+      var b = e.target.closest ? e.target.closest('.auth-social__btn') : null;
+      if(!b) return;
+      var id = b.getAttribute('data-provider');
+      var meta = PROVIDERS.filter(function(p){ return p.id === id; })[0];
+      var c = getClient();
+      if(!c) return setMsg('Accounts are unavailable right now — check your connection.', 'error');
+      setMsg('Opening ' + (meta ? meta.name : 'provider') + '…');
+      // Written before leaving the page, not after coming back: the redirect
+      // replaces this document, so there is no "after" to run code in.
+      rememberMethod(id);
+      c.auth.signInWithOAuth({
+        provider: id,
+        options: { redirectTo: location.origin + location.pathname }
+      }).then(function(res){
+        if(res && res.error) setMsg(authMessage(res.error), 'error');
+      }, function(){
+        setMsg('Could not open ' + (meta ? meta.name : 'that provider') + '. Check your connection and try again.', 'error');
       });
     });
+
+    overlay._renderProviders = renderProviders;
+    renderProviders(cachedProviders());
 
     /* --- magic link ------------------------------------------------------ */
 
@@ -685,6 +797,7 @@
           el.authMagicBtn.disabled = false;
           if(res.error) return setMsg(authMessage(res.error), 'error');
           rememberEmail(email);
+          rememberMethod('magiclink');
           setMsg('Link sent to ' + email + '. Open it on this device and you’re in.', 'success');
         }, function(){
           el.authMagicBtn.disabled = false;
@@ -727,7 +840,27 @@
 
       run.then(function(res){
         done();
-        if(res && res.error) return setMsg(authMessage(res.error), 'error');
+        if(res && res.error){
+          setMsg(authMessage(res.error), 'error');
+          /* The worst dead end in a form that offers more than one way in:
+             an account created with Google has no password at all, so every
+             password attempt fails identically and forever, and nothing on
+             screen connects that to the button two inches above. If this
+             browser last got into this same address with a provider, say so
+             — it is the answer often enough to be worth one sentence, and it
+             is phrased as a reminder rather than a claim about the account,
+             which this code cannot see. */
+          var provider = lastMethod();
+          var meta = PROVIDERS.filter(function(p){ return p.id === provider; })[0];
+          if(authMode === 'signin' && meta && email && email === lastEmail()
+             && (res.error.code === 'invalid_credentials'
+                 || /invalid login credentials/i.test(res.error.message || ''))){
+            setHint(el.authPwHint, 'You used <b>' + escapeHtml(meta.name) +
+              '</b> on this browser last time. An account made that way has no password — ' +
+              'use the ' + escapeHtml(meta.name) + ' button above.');
+          }
+          return;
+        }
 
         if(authMode === 'reset'){
           // Deliberately the same sentence whether or not that address has an
@@ -752,6 +885,7 @@
           return;
         }
         rememberEmail(email);
+        rememberMethod('password');
         closeAuthModal();
       }, function(){
         done();
@@ -829,10 +963,28 @@
   function lastEmail(){
     try { return localStorage.getItem(LAST_EMAIL_KEY) || ''; } catch(e){ return ''; }
   }
+  function rememberMethod(m){
+    try { localStorage.setItem(LAST_METHOD_KEY, m); } catch(e){ /* private mode */ }
+  }
+  function lastMethod(){
+    try { return localStorage.getItem(LAST_METHOD_KEY) || ''; } catch(e){ return ''; }
+  }
 
   function openAuthModal(mode){
     ensureAuthModal();
     var overlay = document.getElementById('authModalOverlay');
+
+    /* Ask the project what is enabled, every time the dialog opens. The
+       cached answer is already on screen by now, so this is only ever a
+       correction — it costs nothing visible when nothing changed, and it is
+       what makes enabling Google in the Supabase dashboard enough on its own,
+       with no edit here and no deploy. */
+    fetchProviders().then(function(ids){
+      if(!ids) return;
+      var before = (enabledProviders || []).join(',');
+      if(ids.join(',') !== before) overlay._renderProviders(ids);
+    });
+
     lastFocused = document.activeElement;
     overlay._reset();
     overlay._setMode(mode || 'signin');
