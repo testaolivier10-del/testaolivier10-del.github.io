@@ -1,10 +1,17 @@
 /* Floating periodic-table reference, available on every Ochem page.
    Category colors are hardcoded (not theme tokens) since they need 11
    distinct, recognizable hues regardless of light/dark mode — same
-   reasoning as the badge/tag colors elsewhere on the site. */
+   reasoning as the badge/tag colors elsewhere on the site.
+
+   The bottom offset stacks this button ABOVE the tutor mascot, which
+   site-chrome.js mounts on every page at right:20px/bottom:20px, 58px
+   square, z-index 900 (assets/tutor.js). Sharing that corner hid the
+   periodic table completely: same corner, larger box, far higher
+   z-index. 20 + 58 + 12 = 90 leaves a 12px gap between the two. The
+   phone rule below already clears the mascot's own phone position. */
 
 .pt-fab{
-  position:fixed;right:20px;bottom:20px;z-index:60;
+  position:fixed;right:20px;bottom:90px;z-index:60;
   width:52px;height:52px;border-radius:50%;
   background:var(--navy);color:var(--on-accent);border:none;
   font-size:24px;line-height:1;cursor:pointer;box-shadow:var(--shadow-pop);
