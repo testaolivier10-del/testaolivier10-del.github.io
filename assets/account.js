@@ -475,7 +475,9 @@
   function mayPrompt(){
     if(currentUser) return false;               // already saved; nothing to offer
     if(!getClient()) return false;              // no backend configured on this build
-    if(document.getElementById('savePrompt')) return false;
+    // Only ever one nudge on screen: site-chrome.js may have an install
+    // prompt up, and two stacked boxes asking for things is a shakedown.
+    if(document.querySelector('.levl-prompt')) return false;
     var st = promptState();
     if(st.shown >= PROMPT_MAX_SHOWN) return false;
     if(st.dismissed >= PROMPT_MAX_DISMISSED) return false;
@@ -495,16 +497,16 @@
 
     var el = document.createElement('div');
     el.id = 'savePrompt';
-    el.className = 'save-prompt';
+    el.className = 'levl-prompt';
     el.setAttribute('role', 'status');
     el.innerHTML =
-      '<div class="save-prompt__text">' +
+      '<div class="levl-prompt__text">' +
         '<b>' + escapeHtml(reason || 'Nice work') + '</b>' +
         '<small>This is saved in this browser only. Keep it on every device?</small>' +
       '</div>' +
-      '<div class="save-prompt__actions">' +
-        '<button type="button" class="save-prompt__yes" id="savePromptYes">Save my progress</button>' +
-        '<button type="button" class="save-prompt__no" id="savePromptNo">Not now</button>' +
+      '<div class="levl-prompt__actions">' +
+        '<button type="button" class="levl-prompt__yes" id="savePromptYes">Save my progress</button>' +
+        '<button type="button" class="levl-prompt__no" id="savePromptNo">Not now</button>' +
       '</div>';
     document.body.appendChild(el);
     // Next frame, so the entry transition has a state to move away from.

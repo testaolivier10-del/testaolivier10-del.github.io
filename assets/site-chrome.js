@@ -403,6 +403,171 @@
     });
   }
 
+
+  /* ---- "add to home screen" -------------------------------------------
+
+     An installed copy is a different product from a tab: it keeps its own
+     icon on the home screen, opens without browser chrome, works offline
+     through the worker above, and on iPhone it is the only way the site
+     could ever be allowed to send a notification. People who install come
+     back; people with a bookmark buried in a tab list mostly do not.
+
+     Chrome hands us the moment on a plate via beforeinstallprompt, which is
+     deferred here so the browser's own bar does not appear at whatever
+     instant it feels like. Safari has no such event and no API at all, so
+     iOS gets the two-step instruction instead — worth saying out loud,
+     because "Share, then Add to Home Screen" is not discoverable and is the
+     exact step an iPhone user has to take.
+
+     Never on a first visit. Someone still deciding whether this site is any
+     good does not want a box asking them to install it; that is the pop-up
+     everyone has learned to dismiss without reading, and spending the ask
+     there wastes it. The visit history analytics.js already keeps says
+     whether they have been back. */
+  var INSTALL_KEY = 'levlprep_install_prompt';
+  var INSTALL_MAX_SHOWN = 2;
+  var INSTALL_COOLDOWN_DAYS = 14;
+  var deferredInstall = null;
+
+  function readJSONSafe(key, fallback){
+    try {
+      var raw = JSON.parse(localStorage.getItem(key) || 'null');
+      return (raw && typeof raw === 'object') ? raw : fallback;
+    } catch(e){ return fallback; }
+  }
+
+  function installState(){ return readJSONSafe(INSTALL_KEY, { shown: 0, dismissed: 0, last: null }); }
+
+  function writeInstallState(st){
+    try { localStorage.setItem(INSTALL_KEY, JSON.stringify(st)); } catch(e){ /* private mode */ }
+  }
+
+  function daysSinceDayKey(key){
+    if(!key) return Infinity;
+    var p = String(key).split('-');
+    if(p.length !== 3) return Infinity;
+    var then = new Date(+p[0], +p[1] - 1, +p[2]);
+    var now = new Date();
+    now = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    return Math.round((now - then) / 86400000);
+  }
+
+  function todayKey(){
+    var d = new Date();
+    return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+  }
+
+  function isStandalone(){
+    try {
+      if(window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) return true;
+    } catch(e){ /* older browser */ }
+    return !!window.navigator.standalone; // iOS reports it here and nowhere else
+  }
+
+  function isIosSafari(){
+    var ua = navigator.userAgent || '';
+    var ios = /iPad|iPhone|iPod/.test(ua) ||
+      // iPadOS 13+ reports itself as a Mac; the touch points give it away.
+      (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    if(!ios) return false;
+    // Chrome and Firefox on iOS cannot install anything; only Safari can.
+    return !/CriOS|FxiOS|EdgiOS|OPiOS/.test(ua);
+  }
+
+  function hasBeenBackBefore(){
+    // Written by assets/analytics.js. Absent means either a first visit or a
+    // browser that refuses storage; both are reasons not to ask.
+    var v = readJSONSafe('levlprep_visits', null);
+    return !!(v && (v.days || 0) >= 2);
+  }
+
+  function mayShowInstall(){
+    if(isStandalone()) return false;             // already installed
+    if(document.querySelector('.levl-prompt')) return false;
+    if(!hasBeenBackBefore()) return false;
+    var st = installState();
+    if(st.shown >= INSTALL_MAX_SHOWN) return false;
+    // One "no" is enough here. Installing is a bigger ask than signing in and
+    // a second pitch after a refusal is just badgering.
+    if(st.dismissed >= 1) return false;
+    return daysSinceDayKey(st.last) >= INSTALL_COOLDOWN_DAYS;
+  }
+
+  function showInstallPrompt(){
+    if(!mayShowInstall()) return;
+
+    var st = installState();
+    st.shown += 1;
+    st.last = todayKey();
+    writeInstallState(st);
+
+    var ios = !deferredInstall && isIosSafari();
+    var el = document.createElement('div');
+    el.className = 'levl-prompt';
+    el.id = 'installPrompt';
+    el.setAttribute('role', 'status');
+    el.innerHTML =
+      '<div class="levl-prompt__text">' +
+        '<b>Keep LevlPrep on your home screen</b>' +
+        '<small>' + (ios
+          ? 'Tap Share, then “Add to Home Screen”. It opens full screen and works offline.'
+          : 'Opens full screen, works offline, and keeps your place.') +
+        '</small>' +
+      '</div>' +
+      '<div class="levl-prompt__actions">' +
+        (ios ? '' : '<button type="button" class="levl-prompt__yes" id="installPromptYes">Install</button>') +
+        '<button type="button" class="levl-prompt__no" id="installPromptNo">' + (ios ? 'Got it' : 'Not now') + '</button>' +
+      '</div>';
+    document.body.appendChild(el);
+    requestAnimationFrame(function(){ el.classList.add('show'); });
+
+    function close(dismissed){
+      if(dismissed){
+        var s2 = installState();
+        s2.dismissed += 1;
+        writeInstallState(s2);
+      }
+      el.classList.remove('show');
+      setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, 350);
+    }
+
+    var yes = document.getElementById('installPromptYes');
+    if(yes) yes.addEventListener('click', function(){
+      close(false);
+      if(!deferredInstall) return;
+      var evt = deferredInstall;
+      deferredInstall = null;   // a beforeinstallprompt event is single-use
+      evt.prompt();
+      evt.userChoice.then(function(choice){
+        if(window.LevlAnalytics) window.LevlAnalytics.event('install-prompt-choice', { outcome: choice && choice.outcome });
+      }).catch(function(){ /* dismissed by the browser */ });
+    });
+    document.getElementById('installPromptNo').addEventListener('click', function(){
+      // On iOS this button is an acknowledgement, not a refusal — there is
+      // nothing to accept, so treating it as a "no" would burn the one ask.
+      close(!ios);
+    });
+
+    setTimeout(function(){ if(el.parentNode) close(false); }, 15000);
+    if(window.LevlAnalytics) window.LevlAnalytics.event('install-prompt-shown', { platform: ios ? 'ios' : 'other' });
+  }
+
+  function watchForInstall(){
+    window.addEventListener('beforeinstallprompt', function(e){
+      e.preventDefault();          // ours to time, not the browser's
+      deferredInstall = e;
+      setTimeout(showInstallPrompt, 6000);
+    });
+    window.addEventListener('appinstalled', function(){
+      if(window.LevlAnalytics) window.LevlAnalytics.event('installed');
+      // Nothing left to ask for; make sure a later visit never asks again.
+      writeInstallState({ shown: INSTALL_MAX_SHOWN, dismissed: 1, last: todayKey() });
+    });
+    // Safari fires no event, so the iOS path has to start its own clock. Long
+    // enough that it lands after the page is read rather than during arrival.
+    if(isIosSafari()) setTimeout(showInstallPrompt, 12000);
+  }
+
   /* Whether the viewer has asked their OS to keep motion down.
 
      The CSS half of this is a blanket rule in theme.css, but a good deal of
@@ -439,6 +604,13 @@
     scrollToY: scrollToY,
     scrollIntoView: scrollIntoView
   };
+
+  /* At module scope rather than inside render(): Chrome can fire
+     beforeinstallprompt before a page has called render(), and an event with
+     no listener is simply gone — with it, the only chance to offer the
+     install on our own terms. This file is deferred on every page, so the
+     listener is attached everywhere and costs nothing where it never fires. */
+  watchForInstall();
 
   window.LevlChrome = {
     render: render,
