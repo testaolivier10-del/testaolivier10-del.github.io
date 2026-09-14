@@ -237,16 +237,50 @@
    under about 10 viewBox units gets unreadable on a phone, so don't go there.
    -------------------------------------------------------------------------- */
 .notes-figure{
-  margin:0 0 16px;background:var(--paper);border:var(--bw) solid var(--line-soft);
+  margin:0 0 16px;border:var(--bw) solid var(--line-soft);
   border-radius:var(--radius);padding:16px 14px 12px;
+  /* A diagram scaled down to fit the reading column scales its own labels down
+     with it, and a 9px label at 0.6 is not a label any more. So each figure
+     carries the width it was drawn at (--vb, set on the element) and is never
+     rendered much below it; where that does not fit, the figure scrolls
+     sideways rather than shrinking into illegibility.
+
+     The four backgrounds are the usual scroll-shadow trick: the two `local`
+     gradients sit on the content and slide away as you scroll, uncovering the
+     two `scroll` shadows pinned to the edges. The result is an edge shadow
+     that appears only on the side there is more to see, with no script. */
+  overflow-x:auto;
+  scrollbar-width:thin;
+  background:
+    linear-gradient(to right, var(--paper) 60%, rgba(0,0,0,0)) left center / 36px 100% no-repeat local,
+    linear-gradient(to left,  var(--paper) 60%, rgba(0,0,0,0)) right center / 36px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(20,40,35,.16), rgba(0,0,0,0)) left center / 13px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(20,40,35,.16), rgba(0,0,0,0)) right center / 13px 100% no-repeat scroll,
+    var(--paper);
 }
-.notes-figure svg{width:100%;height:auto;display:block;max-width:420px;margin:0 auto;}
-.notes-figure--wide svg{max-width:560px;}
+:root[data-theme="dark"] .notes-figure{
+  background:
+    linear-gradient(to right, var(--paper) 60%, rgba(0,0,0,0)) left center / 36px 100% no-repeat local,
+    linear-gradient(to left,  var(--paper) 60%, rgba(0,0,0,0)) right center / 36px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(0,0,0,.55), rgba(0,0,0,0)) left center / 13px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,.55), rgba(0,0,0,0)) right center / 13px 100% no-repeat scroll,
+    var(--paper);
+}
+.notes-figure svg{
+  width:100%;height:auto;display:block;margin:0 auto;
+  /* A little shrinking is fine — below about 0.9 the small labels stop being
+     readable, so that is where the scroll takes over instead. */
+  min-width:calc(var(--vb,420) * 0.92px);
+  max-width:calc(var(--vb,420) * 1.3px);
+}
 .notes-figure figcaption{
-  margin:12px auto 0;max-width:560px;text-align:center;
+  margin:12px auto 0;max-width:620px;text-align:center;
   font:700 12.5px var(--font-ui);color:var(--muted);line-height:1.5;
 }
 .notes-figure figcaption b{color:var(--ink);font-weight:900;}
+/* The second half of a caption: the running commentary that used to sit along
+   the bottom of the drawing, where it was too small to read. */
+.notes-figure-note{display:block;margin-top:8px;font-weight:600;}
 
 /* The drawing vocabulary. `fg-` for figure. */
 .notes-figure .fg-bond{stroke:var(--ink);stroke-width:2.2;fill:none;stroke-linecap:round;}
