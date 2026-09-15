@@ -231,6 +231,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/conjugated-systems.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/curved-arrows.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
@@ -242,6 +247,16 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/diastereomers.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/diels-alder.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/diene-addition.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
   </url>
@@ -322,6 +337,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/ir.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/kinetic-thermodynamic.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
   </url>
@@ -447,6 +467,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/substrate-effects.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/uv-vis.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
   </url>
@@ -596,6 +621,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/lessons/conjugated-systems.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/lessons/curved-arrows.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
@@ -607,6 +637,16 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/diastereomers.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/diels-alder.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/diene-addition.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
   </url>
@@ -677,6 +717,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/ir.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/kinetic-thermodynamic.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
   </url>
@@ -792,6 +837,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/substrate-effects.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/uv-vis.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
   </url>

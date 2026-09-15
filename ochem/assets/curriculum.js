@@ -104,6 +104,22 @@
       { id: 'markovnikov', title: 'Markovnikov / anti-Markovnikov', href: 'lessons/markovnikov.html', dependsOn: ['addition-reactions', 'sn1'] },
       { id: 'alkynes', title: 'Alkynes', href: 'lessons/alkynes.html', dependsOn: ['alkene-structure', 'acidity-factors', 'sn2'] }
     ]},
+    /* Conjugation goes directly after Alkenes & Alkynes: it is alkene
+       chemistry with the p orbitals joined up, and it needs resonance from
+       module 2. It also has to precede Aromatic Chemistry, which is the
+       limiting case of the same idea, and Enolate Chemistry, which reuses the
+       kinetic/thermodynamic argument wholesale.
+
+       UV-Vis lives here rather than in Spectroscopy because it measures
+       conjugation specifically, and is close to useless for anything else —
+       it is the experimental half of this chapter, not a fourth instrument. */
+    { id: 'conjugation', title: 'Conjugation & Pericyclic Reactions', topics: [
+      { id: 'conjugated-systems', title: 'Conjugated systems', href: 'lessons/conjugated-systems.html', dependsOn: ['alkene-structure', 'resonance'] },
+      { id: 'diene-addition', title: '1,2- vs 1,4-addition', href: 'lessons/diene-addition.html', dependsOn: ['conjugated-systems', 'markovnikov'] },
+      { id: 'kinetic-thermodynamic', title: 'Kinetic vs thermodynamic control', href: 'lessons/kinetic-thermodynamic.html', dependsOn: ['diene-addition'] },
+      { id: 'diels-alder', title: 'The Diels–Alder reaction', href: 'lessons/diels-alder.html', dependsOn: ['conjugated-systems', 'kinetic-thermodynamic'] },
+      { id: 'uv-vis', title: 'UV-Vis spectroscopy', href: 'lessons/uv-vis.html', dependsOn: ['conjugated-systems'] }
+    ]},
     { id: 'alcohols-ethers', title: 'Alcohols, Ethers & Related Chemistry', topics: [
       { id: 'alcohol-reactions', title: 'Alcohol reactions', href: 'lessons/alcohol-reactions.html', dependsOn: ['leaving-groups', 'e1'] },
       { id: 'ether-chemistry', title: 'Ether chemistry', href: 'lessons/ether-chemistry.html', dependsOn: ['sn2', 'alcohol-reactions'] },

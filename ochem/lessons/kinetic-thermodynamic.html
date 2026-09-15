@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kinetic vs thermodynamic control — Conjugation &amp; Pericyclic Reactions | Organic Chemistry</title>
+<meta name="description" content="Kinetic versus thermodynamic control: barriers against wells, why reversibility is the switch, and where the same argument reappears.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/kinetic-thermodynamic.html">
+<meta property="og:title" content="Kinetic vs thermodynamic control — Conjugation &amp; Pericyclic Reactions | Organic Chemistry">
+<meta property="og:description" content="Kinetic versus thermodynamic control: barriers against wells, why reversibility is the switch, and where the same argument reappears.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/kinetic-thermodynamic.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/kinetic-thermodynamic.html#lesson",
+      "name": "Kinetic vs thermodynamic control",
+      "url": "https://levlprep.com/ochem/lessons/kinetic-thermodynamic.html",
+      "description": "Kinetic versus thermodynamic control: barriers against wells, why reversibility is the switch, and where the same argument reappears.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Kinetic vs thermodynamic control"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Conjugation & Pericyclic Reactions",
+          "item": "https://levlprep.com/ochem/learn.html#m-conjugation"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Kinetic vs thermodynamic control",
+          "item": "https://levlprep.com/ochem/lessons/kinetic-thermodynamic.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 9 &middot; Conjugation &amp; Pericyclic Reactions</div>
+    <h1 style="margin-bottom:4px;">Kinetic vs thermodynamic control.</h1>
+    <p class="lede" style="margin-top:0;">Which product wins depends on whether the reaction can change its mind.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/kinetic-thermodynamic.html">Kinetic vs thermodynamic control &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/diels-alder.html">The Diels–Alder reaction</a><a href="../lessons/alpha-hydrogens.html">Alpha hydrogens &amp; enolates</a><a href="../mechanisms/e2.html">E2</a><a href="../lessons/eas.html">Electrophilic aromatic substitution</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* Four cases; for each the student says which product wins. They are
+     ordered so the reversibility question has to be asked separately from the
+     stability question — a student who only ever answers "the stable one"
+     gets two of the four wrong. */
+  var CASES = [
+    { id:'k1', text:'Two products. <b>A forms faster</b>; <b>B is more stable</b>. Run at &minus;78&nbsp;°C, irreversibly.',
+      opts:['A','B'], right:'A',
+      why:'Irreversible and cold: nothing can climb back out, so the barriers decide and the faster-forming product is what you isolate. B\'s extra stability is irrelevant because nothing will ever visit it.' },
+    { id:'k2', text:'Same two products, same reaction, run <b>warm and reversibly</b>.',
+      opts:['A','B'], right:'B',
+      why:'Reversible and warm: both products keep forming and going back, so the system explores its options and accumulates in the deeper well. Now the stabilities decide.' },
+    { id:'k3', text:'B is more stable, but the step forming it <b>cannot reverse</b> at any temperature.',
+      opts:['A','B'], right:'A',
+      why:'Thermodynamic control requires reversibility. Without a way back, heating for longer does not help — you simply get more of the faster product, faster.' },
+    { id:'k4', text:'HBr + buta-1,3-diene at &minus;80&nbsp;°C. Which dominates?',
+      opts:['1,2-product','1,4-product'], right:'1,2-product',
+      why:'Cold and effectively irreversible, so the rates decide. Bromide attacks C2 faster because the secondary resonance form puts more charge there — about 80:20 in favor of 1,2.' }
+  ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'kinetic-thermodynamic',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Two different questions, two different answers.',
+        bodyHtml: '<p class="step-body">When two products can form from a common intermediate, there are two entirely separate things you might mean by "which one forms":</p>' +
+          '<ul class="step-body">' +
+          '<li>The <b>kinetic product</b> is the one that forms <b>faster</b> — lower transition state, smaller activation energy ΔG‡.</li>' +
+          '<li>The <b>thermodynamic product</b> is the one that is <b>more stable</b> — lower in energy once formed, more negative ΔG.</li>' +
+          '</ul>' +
+          '<div class="explain-box">The distinction is between a <b>barrier</b> and a <b>well</b>. Kinetics is how high the hill is on the way out; thermodynamics is how deep the valley is when you land. Nothing requires the lower hill to lead to the deeper valley — and when it does not, the conditions decide which one you end up in.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Reversibility is the switch.',
+        bodyHtml: '<p class="step-body"><b>If the first step cannot reverse</b>, the reaction is under <b>kinetic control</b>. Whatever forms first is trapped and the ratio simply reflects relative rates. Low temperature enforces this: there is not enough energy to climb back out of either product well.</p>' +
+          '<p class="step-body"><b>If the first step can reverse</b>, the reaction is under <b>thermodynamic control</b>. Both products form and both go back, repeatedly, until the system settles in the lowest well available. The ratio then reflects relative stabilities and has nothing to do with rates.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">So temperature is not changing which product is more stable, and it is not changing which forms faster. It is changing <b>whether the system is allowed to find out</b>.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Which product wins?</h2>' +
+            '<p class="step-body">For each set of conditions, decide which product dominates. Ask the reversibility question before the stability question.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.text + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Which product dominates">' +
+                c.opts.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-opt="' + o + '">' + o + '</button>';
+                }).join('') +
+                '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-opt') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Not that one. Ask the reversibility question first: can the reaction get back out of a product well? If it cannot, stability does not get a vote.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. The habit to build: reversible or not, THEN rates or stabilities.'
+                  : 'All four, first time — including the third, where being more stable buys B nothing because the reaction can never get back to try again.');
+                api.record(!missed);
+                next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'What must be true for a reaction to be under thermodynamic control?',
+        options: ['It must be exothermic','It must be reversible','It must be run below 0 °C','It must have one product'],
+        correctIndex: 1,
+        correctFeedback: 'Correct. The system can only settle into the most stable product if it is able to leave the others. If a question tells you the product forms irreversibly, thermodynamic control is off the table no matter how long you heat it.',
+        wrongFeedback: 'Ask what physically has to happen for a mixture to rearrange itself toward the more stable member after both products have already formed.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'A question specifies LDA at −78 °C. What is that temperature signaling?',
+        options: [
+          'That the reagent decomposes when warm',
+          'That kinetic control is intended — the less hindered, faster-formed product',
+          'That the solvent would freeze otherwise',
+          'That the reaction is extremely slow'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. A bulky base at −78 °C removes the most accessible proton fastest and the result is frozen in place — the kinetic enolate. Warmer, equilibrating conditions give the more substituted, more stable thermodynamic enolate instead. A strikingly low stated temperature is almost always this signal.',
+        wrongFeedback: 'Stated conditions in a question are usually there to tell you which regime you are in. What does an unusually low temperature prevent a reaction from doing?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Where else this appears',
+        title: 'The same switch, in three other places.',
+        bodyHtml: '<ul class="step-body">' +
+          '<li><b>Enolates.</b> A ketone with two different α positions gives the kinetic enolate with a bulky base at −78&nbsp;°C, and the more substituted thermodynamic enolate under warm, equilibrating conditions. Same molecule, same two options, same switch.</li>' +
+          '<li><b>Aromatic sulfonation.</b> It is reversible, which is exactly why a sulfonic acid group can be installed to block a ring position and then removed later. Most electrophilic aromatic substitutions cannot be undone this way.</li>' +
+          '<li><b>Elimination.</b> Zaitsev\'s more substituted alkene is the thermodynamic product; a bulky base giving the less substituted Hofmann product is a kinetic outcome imposed by sterics.</li>' +
+          '</ul>' +
+          '<p class="step-body" style="margin-bottom:0;">The Diels–Alder in the next lesson adds a case worth watching for: its <b>endo</b> product is the <i>kinetic</i> one despite being the more crowded arrangement. "Kinetic" does not mean "less hindered" — it only ever means "gets there faster".</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'Why does warming the buta-1,3-diene/HBr mixture invert the product ratio?',
+        options: [
+          'Heat changes which carbon carries more positive charge',
+          'Bromide can leave again, so the system re-equilibrates into the more stable product',
+          'The 1,2-product decomposes above 0 °C',
+          'A different mechanism operates when warm'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and the mechanism is unchanged throughout. Warming simply supplies enough energy for the C–Br bond to ionize again, regenerating the allylic cation, so both products keep being resampled and the mixture drains into the deeper well — the 1,4-product with its more substituted alkene.',
+        wrongFeedback: 'Nothing about the intermediate or the mechanism changes with temperature. What does change is what the products are able to do once they have formed.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Product A forms four times faster; product B is 12 kJ/mol more stable. You run the reaction cold and irreversibly, then repeat it hot and reversibly. What do you see?',
+        options: [
+          'Mostly A both times — it always forms first',
+          'Mostly B both times — it is the more stable product',
+          'Mostly A cold, mostly B hot',
+          'An even mixture in both cases'
+        ],
+        correctIndex: 2,
+        correctFeedback: 'Correct, and notice that A still forms first in the hot run — it is simply not able to stay. That is the whole content of the idea: "B is more stable, so B is the product" is only true when the reaction can reverse. The trap is treating stability as decisive by default, when it only gets a vote once the system has a way back.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

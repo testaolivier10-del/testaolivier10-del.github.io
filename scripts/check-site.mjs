@@ -357,8 +357,9 @@ const BANKS = [
     // ~32%, the number NREMT reached after its own editorial pass. The same
     // six topics were authored with the reasoning kept in `why` rather than in
     // the keyed option, which took the bank to 60.2%. Ratcheted to match.
-    // Keep lowering it as the older topics get the same pass.
-    lengthCeiling: 0.62,
+    // Keep lowering it as the older topics get the same pass. The conjugation
+    // chapter's 150 questions, written the same way, took it to 56.5%.
+    lengthCeiling: 0.58,
     // 74% of true/false items key to "True". Chance is 50% and the shuffle is
     // pinned, so this is the whole tell — it is not diluted by anything.
     trueFalseCeiling: 0.75,

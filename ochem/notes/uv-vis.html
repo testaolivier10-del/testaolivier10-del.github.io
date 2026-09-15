@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UV-Vis spectroscopy — Conjugation &amp; Pericyclic Reactions | Organic Chemistry</title>
+<meta name="description" content="Every other spectroscopy in this course reports on individual bonds or individual nuclei. UV-Vis reports on something more specific and more useful in this…">
+<link rel="canonical" href="https://levlprep.com/ochem/notes/uv-vis.html">
+<meta property="og:title" content="UV-Vis spectroscopy — Conjugation &amp; Pericyclic Reactions | Organic Chemistry">
+<meta property="og:description" content="Every other spectroscopy in this course reports on individual bonds or individual nuclei. UV-Vis reports on something more specific and more useful in this…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/notes/uv-vis.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+</head>
+<body>
+<div class="wrap notes-page">
+  <nav class="notes-crumb" aria-label="Breadcrumb">
+    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
+    <span>Conjugation &amp; Pericyclic Reactions</span>
+  </nav>
+
+  <header class="notes-head">
+    <p class="notes-eyebrow">Conjugation &amp; Pericyclic Reactions &middot; Section 52 of 73</p>
+    <h1>UV-Vis spectroscopy</h1>
+    <a class="notes-onward-cta" href="../lessons/uv-vis.html">Practice this — interactive lesson</a>
+  </header>
+
+  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+       asides); it is the same class the textbook view uses, so a section looks
+       identical whether it is read here or inside learn.html. -->
+  <article class="notes-body notes-view">
+<!-- notes:start -->
+<p class="step-body">Every other spectroscopy in this course reports on individual bonds or individual nuclei. UV-Vis reports on something more specific and more useful in this chapter: <b>how far a conjugated π system extends</b>. It is the experimental measurement of the thing the rest of this chapter has been reasoning about.</p>
+
+<h3>What the measurement is</h3>
+
+<p class="step-body">Ultraviolet and visible light carry enough energy to promote an electron from an occupied molecular orbital to an empty one. In an organic molecule with a π system, the transition that matters is from the <b>HOMO</b> (highest occupied molecular orbital) to the <b>LUMO</b> (lowest unoccupied one) — a <b>π &rarr; π*</b> transition.</p>
+
+<p class="step-body">A molecule absorbs the wavelength whose photon energy matches that gap. Since energy and wavelength are inversely related, the relationship you actually use is short and worth memorizing in this direction:</p>
+
+<div class="notes-fact"><b>Bigger HOMO–LUMO gap &rarr; higher energy photon needed &rarr; shorter wavelength absorbed.</b><br>Smaller gap &rarr; lower energy &rarr; <b>longer</b> wavelength absorbed.</div>
+
+<h3>More conjugation, smaller gap, longer wavelength</h3>
+
+<p class="step-body">Extending a conjugated system adds more p orbitals to the combination, which produces more molecular orbitals, spread over a similar total energy range. The result is that the highest occupied one rises and the lowest empty one falls, so the gap between them <b>narrows</b> with every double bond added to the conjugation.</p>
+
+<p class="step-body">The numbers make the trend unmistakable, and they are worth knowing as a shape rather than as figures to recall exactly:</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Compound</th><th>Conjugated C=C</th><th>&lambda;<sub>max</sub> (approx.)</th></tr></thead>
+<tbody>
+<tr><td>Ethene</td><td>1</td><td>171 nm</td></tr>
+<tr><td>Buta-1,3-diene</td><td>2</td><td>217 nm</td></tr>
+<tr><td>Hexa-1,3,5-triene</td><td>3</td><td>258 nm</td></tr>
+<tr><td>&beta;-Carotene</td><td>11</td><td>~450 nm</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="step-body">The group responsible for the absorption is called a <b>chromophore</b>. An isolated C=C absorbs below about 200 nm, which is inconveniently far into the ultraviolet for ordinary instruments, so a simple alkene is effectively invisible. Conjugate two and the absorption moves into the accessible range — which is precisely why this technique is a conjugation detector rather than a general-purpose one.</p>
+
+<h3>Why conjugation eventually produces color</h3>
+
+<p class="step-body">Keep extending the system and &lambda;<sub>max</sub> keeps rising until it crosses about 400 nm and enters the visible region. At that point the compound is absorbing visible light, and what your eye sees is <b>the light that was not absorbed</b> — the complementary color.</p>
+
+<p class="step-body">&beta;-Carotene, with eleven conjugated double bonds, absorbs blue light around 450 nm and therefore looks orange. That is the color of carrots, and the same reasoning covers the deep colors of dyes, indicators and the visual pigment retinal. Organic compounds are colorless unless they carry an extensively conjugated system; when you see a strongly colored organic compound, extended conjugation is the first thing to look for.</p>
+
+<div class="notes-fact">Other structural features shift &lambda;<sub>max</sub> in the same direction as extra conjugation — alkyl substituents on the π system, and lone pairs able to conjugate into it, both push it to longer wavelength. The effect is smaller than adding a whole double bond, but it is systematic enough that empirical rules exist to predict &lambda;<sub>max</sub> for substituted dienes and enones.</div>
+
+<h3>Beer–Lambert: how much is absorbed</h3>
+
+<p class="step-body">Wavelength says what the molecule is; the amount of absorption says how much of it is there. The relationship is the <b>Beer–Lambert law</b>:</p>
+
+<p class="step-body"><b>A = &epsilon;cl</b></p>
+
+<ul class="step-body">
+<li><b>A</b> is absorbance, a unitless number read off the instrument.</li>
+<li><b>&epsilon;</b> is the molar absorptivity, a constant for that compound at that wavelength — a measure of how strongly it absorbs. Conjugated systems have large &epsilon;, often 10,000 or more.</li>
+<li><b>c</b> is concentration and <b>l</b> is the path length through the sample, conventionally 1 cm.</li>
+</ul>
+
+<p class="step-body">Because absorbance is directly proportional to concentration, UV-Vis is a quantitative technique in a way NMR and IR usually are not in a teaching lab. It is the standard way to follow the concentration of a colored or conjugated species while a reaction runs.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — reading a spectrum</span>
+<p>Two isomeric dienes, C₆H₁₀. One absorbs at 227 nm, the other below 200 nm. Which is conjugated?</p>
+<p><b>The one at 227 nm.</b> A conjugated diene has the smaller HOMO–LUMO gap and therefore absorbs at the longer wavelength. The isolated diene behaves as two separate alkenes, each absorbing below 200 nm where a simple C=C does.</p>
+<p><b>What the spectrum does not tell you</b> is where the double bonds are, only that they are or are not in conjugation. Pair it with NMR to place them — UV-Vis answers one question, sharply, and says little about anything else.</p>
+</div>
+
+<h3>What carries forward</h3>
+
+<p class="step-body">UV-Vis sits in this chapter rather than with IR and NMR on purpose: it is the direct measurement of conjugation, and it makes the abstract claim of the first section — that a longer π system is a lower-energy, smaller-gap system — into something you can read off an instrument. When you reach the Spectroscopy chapter, the habit to carry in is that each technique answers a different question: IR names functional groups, mass spectrometry gives mass and fragments, NMR builds the carbon skeleton, and UV-Vis reports conjugation.</p>
+<!-- notes:end -->
+  </article>
+
+  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="diels-alder.html"><span>Previous</span>The Diels–Alder reaction</a><a class="notes-prevnext notes-next" href="alcohol-reactions.html"><span>Next</span>Alcohol reactions</a></nav>
+
+  <footer class="notes-foot">
+    <p><a href="../learn.html">&larr; All 73 sections</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
+  </footer>
+</div>
+</body>
+</html>

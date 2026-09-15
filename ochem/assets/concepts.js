@@ -78,6 +78,31 @@
       topics:['naming-substituents','naming-rings-unsaturation'], dependsOn:['locant-rules'],
       hint:'The typography tells you: a hyphenated italic prefix is skipped, one joined to the word is counted.',
       teach:'Substituents are cited alphabetically whatever their numbers. Ignore the multiplying prefixes di-, tri-, tetra- and the italic sec-, tert-; do NOT ignore iso, neo or cyclo. Alphabetical order sets the order of WORDS in the name — it only touches the numbering when both directions give an identical locant set.' },
+    /* ---- Conjugation ---------------------------------------------------
+       Split four ways because these fail independently: recognizing that a
+       system IS conjugated, predicting where a delocalized intermediate gets
+       captured, deciding which of two products conditions select, and the
+       geometric/stereochemical requirements of the cycloaddition. */
+    { id:'conjugation-recognition', title:'Recognizing conjugation', family:'Conjugation',
+      topics:['conjugated-systems','uv-vis','diels-alder','aromaticity','resonance'],
+      dependsOn:['resonance-delocalization'],
+      hint:'Alternating single and double bonds, with every atom in the run sp2 so the p orbitals line up.',
+      teach:'Conjugated means the p orbitals overlap continuously: double bonds alternating with single bonds, or a lone pair, empty p orbital or radical next to a pi bond. Isolated means separated by sp3 carbons; cumulated means sharing a carbon, with the two pi systems perpendicular and unable to interact. Conjugation is worth about 15 kJ/mol, measurable by heats of hydrogenation.' },
+    { id:'allylic-capture', title:'Capturing a delocalized intermediate', family:'Conjugation',
+      topics:['diene-addition','kinetic-thermodynamic','markovnikov','radical-halogenation'],
+      dependsOn:['conjugation-recognition'],
+      hint:'Draw both resonance forms of the intermediate — the nucleophile can arrive at either end.',
+      teach:'An allylic cation has positive charge at BOTH ends of the three-carbon system and none in the middle, so a nucleophile has two places to attack. That is where 1,2- and 1,4-addition products come from. Which resonance form is the better one (more substituted cation) tells you where most of the charge sits, and therefore which product forms faster.' },
+    { id:'kinetic-vs-thermodynamic', title:'Kinetic vs thermodynamic control', family:'Conjugation',
+      topics:['kinetic-thermodynamic','diene-addition','alpha-hydrogens','aldol','e2','eas'],
+      dependsOn:['allylic-capture'],
+      hint:'Ask first whether the reaction can reverse. That decides which comparison matters.',
+      teach:'The kinetic product forms FASTER (lower barrier); the thermodynamic product is more STABLE (deeper well). They need not be the same compound. Reversibility is the switch: irreversible and cold means the rates decide, reversible and warm means the stabilities decide. A stated low temperature such as -78 C is usually a signal that kinetic control is intended.' },
+    { id:'cycloaddition-geometry', title:'Cycloaddition requirements', family:'Conjugation',
+      topics:['diels-alder','conjugated-systems','stereochemical-outcome'],
+      dependsOn:['conjugation-recognition'],
+      hint:'s-cis or nothing — and because it is concerted, the starting geometry survives into the product.',
+      teach:'The diene must react from its s-cis conformation, which is the commonest reason a Diels-Alder fails. The reaction is concerted with no intermediate, so it is stereospecific: cis substituents on the dienophile stay cis in the product, trans stays trans. Electron-rich diene plus electron-poor dienophile is fastest. The endo product is the kinetic one, via secondary orbital interactions.' },
     { id:'skeletal-notation', title:'Reading skeletal structures', family:'Structure & bonding',
       topics:['skeletal-structures','lewis-structures','alkene-structure','cyclohexanes','aromaticity'],
       hint:'Every vertex AND every end of a line is a carbon — the ends are the ones people miss.',

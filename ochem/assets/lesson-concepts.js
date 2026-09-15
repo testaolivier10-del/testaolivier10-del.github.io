@@ -42,6 +42,42 @@
        7 is anti-Markovnikov HBr — the chain logic applied somewhere new. */
     /* The four nomenclature lessons. Graded steps are 2, 3, 4, 6, 7 in each
        (0, 1 and 5 are explain steps and record nothing). */
+    /* The conjugation chapter. Graded steps are 2, 3, 4, 6, 7 in each. */
+    'conjugated-systems': { n:8, steps:{
+      2:['conjugation-recognition'],
+      3:['conjugation-recognition'],
+      4:['conjugation-recognition'],
+      6:['allylic-capture','conjugation-recognition'],
+      7:['conjugation-recognition'] } },
+
+    'diene-addition': { n:8, steps:{
+      2:['allylic-capture'],
+      3:['allylic-capture'],
+      4:['kinetic-vs-thermodynamic','allylic-capture'],
+      6:['kinetic-vs-thermodynamic'],
+      7:['allylic-capture','kinetic-vs-thermodynamic'] } },
+
+    'kinetic-thermodynamic': { n:8, steps:{
+      2:['kinetic-vs-thermodynamic'],
+      3:['kinetic-vs-thermodynamic'],
+      4:['kinetic-vs-thermodynamic'],
+      6:['kinetic-vs-thermodynamic','allylic-capture'],
+      7:['kinetic-vs-thermodynamic'] } },
+
+    'diels-alder': { n:8, steps:{
+      2:['cycloaddition-geometry','conjugation-recognition'],
+      3:['cycloaddition-geometry'],
+      4:['cycloaddition-geometry'],
+      6:['cycloaddition-geometry'],
+      7:['cycloaddition-geometry'] } },
+
+    'uv-vis': { n:8, steps:{
+      2:['conjugation-recognition'],
+      3:['conjugation-recognition'],
+      4:['conjugation-recognition'],
+      6:['conjugation-recognition'],
+      7:['conjugation-recognition'] } },
+
     'naming-parent-chain': { n:8, steps:{
       2:['parent-chain'],
       3:['parent-chain'],

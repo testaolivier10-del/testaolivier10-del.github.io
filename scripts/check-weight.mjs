@@ -157,8 +157,20 @@ const DATA_BUDGETS = [
   // The assistant's teaching index for each course.
   ['nremt/assets/tutor-bank.json', 528],
   ['ochem/assets/tutor-bank.json', 182],
-  // Ochem's question bank, keyed by topic.
-  ['ochem/assets/practice-bank.json', 268],
+  /* Ochem's question bank, keyed by topic. practice.html and review.html both
+     WAIT on this file before their first screen, so every kilobyte here is
+     first-paint latency on those two pages — which is why it is budgeted at
+     all rather than treated as background data.
+
+     268 -> 280 for the conjugation chapter's 150 questions. That is the honest
+     cost of a bigger bank and it is roughly proportional, but the trend is the
+     thing to watch: the chapters still to be written would add around a
+     thousand more questions and push this past 400 KB. Before that happens
+     this bank wants the same treatment questions.json already gets in
+     build-question-bank.mjs — split the explanations out of the core, so the
+     pages only block on what they need to ask the first question. Recorded in
+     TRACKER; raise this budget once more at most before doing it. */
+  ['ochem/assets/practice-bank.json', 280],
 ];
 
 const REF_RE = /(?:href|src)="([^"]+)"/g;

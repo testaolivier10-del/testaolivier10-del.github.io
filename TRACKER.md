@@ -540,7 +540,61 @@ Advertised counts moved with the work: 64→68 topics, 60→64 lessons, 64→68
 sections, 14→15 chapters, 1,860→2,040 questions, across the hub, the ochem
 home, search, learn, the assistant greeting and the README.
 
-#### Units 2–9 — **not started**
+#### Unit 2 — Conjugation & Pericyclic Reactions — **complete**
+
+Five sections, five lessons, 150 questions, inserted as **Chapter 9**, directly
+after Alkenes & Alkynes: it is alkene chemistry with the p orbitals joined up,
+it needs resonance from chapter 2, and it has to precede both Aromatic
+Chemistry (the limiting case of the same idea) and Enolate Chemistry (which
+reuses the kinetic/thermodynamic argument wholesale).
+
+| Section | Covers |
+|---|---|
+| Conjugated systems | Isolated/conjugated/cumulated, delocalization energy, s-cis and s-trans |
+| 1,2- vs 1,4-addition | The allylic cation, two capture sites, the temperature-dependent ratio |
+| Kinetic vs thermodynamic control | Barriers against wells, reversibility as the switch |
+| The Diels–Alder reaction | [4+2], s-cis requirement, stereospecificity, endo rule, retro |
+| UV-Vis spectroscopy | π→π\*, conjugation and λmax, chromophores, Beer–Lambert |
+
+**UV-Vis is filed here rather than in Spectroscopy** because it measures
+conjugation specifically and is close to useless for anything else — it is the
+experimental half of this chapter, not a fourth instrument. The Spectroscopy
+chapter cross-links to it.
+
+**A worked example in the notes was wrong and did not ship.** The 1,2- versus
+1,4-addition section originally used penta-1,3-diene, which looks like an ideal
+example and is not: protonating it at C1 gives a *symmetric* allylic cation
+with a methyl at each end, so capturing at C2 and at C4 give the same compound
+and there is no pair of products to compare. It now uses isoprene, where the
+two products are genuinely different and the C2 cation is tertiary. The near
+miss is called out in both the notes and the lesson, since it is exactly the
+trap a student setting their own practice problem would fall into.
+
+**Four other defects, each caught by a check rather than by reading.** A link
+to `lessons/e2.html` when E2 is a mechanism page; "signalling" and
+"nanometres"; two deliberately parallel sentences in a worked example that the
+repeated-explanation check read as one callout twice (rewritten so the second
+adds the contrast rather than restating the shape of the first); and the phrase
+"Four scenarios" in a source comment, which the scenario-count check read as a
+claim about `scenario-sim.html`.
+
+**The bank tightened again**, from 56.5% on longest-is-key after these 150
+questions were written the same way as the last 180. `lengthCeiling` ratcheted
+0.62 → 0.58.
+
+**The practice bank is on a trajectory worth acting on.** `practice.html` and
+`review.html` both *wait* on `ochem/assets/practice-bank.json` before their
+first screen, so its size is first-paint latency on those pages. It went 268 →
+280 KB gzipped here. The remaining chapters would add roughly a thousand more
+questions and push it past 400 KB. Before that, this bank wants the same split
+`build-question-bank.mjs` already performs on `questions.json` — explanations
+separated from the core, so the pages block only on what they need to ask the
+first question. **Raise that budget once more at most before doing the split.**
+
+**Also still open:** nothing checks that every curriculum topic has practice
+questions. Phase 9.2 shipped two topics with none and nothing noticed.
+
+#### Units 3–9 — **not started**
 
 ### Phase 9.4 — Depth in the existing units — **not started**
 

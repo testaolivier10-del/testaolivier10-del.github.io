@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UV-Vis spectroscopy — Conjugation &amp; Pericyclic Reactions | Organic Chemistry</title>
+<meta name="description" content="UV-Vis: the pi-to-pi-star transition, why more conjugation means longer wavelength, chromophores and color, and the Beer-Lambert law.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/uv-vis.html">
+<meta property="og:title" content="UV-Vis spectroscopy — Conjugation &amp; Pericyclic Reactions | Organic Chemistry">
+<meta property="og:description" content="UV-Vis: the pi-to-pi-star transition, why more conjugation means longer wavelength, chromophores and color, and the Beer-Lambert law.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/uv-vis.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/uv-vis.html#lesson",
+      "name": "UV-Vis spectroscopy",
+      "url": "https://levlprep.com/ochem/lessons/uv-vis.html",
+      "description": "UV-Vis: the pi-to-pi-star transition, why more conjugation means longer wavelength, chromophores and color, and the Beer-Lambert law.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "UV-Vis spectroscopy"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Conjugation & Pericyclic Reactions",
+          "item": "https://levlprep.com/ochem/learn.html#m-conjugation"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "UV-Vis spectroscopy",
+          "item": "https://levlprep.com/ochem/lessons/uv-vis.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 9 &middot; Conjugation &amp; Pericyclic Reactions</div>
+    <h1 style="margin-bottom:4px;">UV-Vis spectroscopy.</h1>
+    <p class="lede" style="margin-top:0;">The experimental measurement of how far a conjugated system runs.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/uv-vis.html">UV-Vis spectroscopy &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/ir.html">IR</a><a href="../lessons/h-nmr.html">¹H NMR</a><a href="../lessons/mass-spec.html">Mass spectrometry</a><a href="../lessons/aromaticity.html">Aromaticity</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* Four compounds, ordered by conjugation length. The student puts them in
+     order of lambda-max, which is the chapter's central claim made
+     quantitative: more conjugation, smaller gap, longer wavelength. */
+  var SERIES = [
+    { id:'s1', name:'Ethene', n:1,  lam:171 },
+    { id:'s2', name:'Buta-1,3-diene', n:2, lam:217 },
+    { id:'s3', name:'Hexa-1,3,5-triene', n:3, lam:258 },
+    { id:'s4', name:'β-Carotene', n:11, lam:450 }
+  ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'uv-vis',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The one thing UV-Vis measures well.',
+        bodyHtml: '<p class="step-body">Every other spectroscopy in this course reports on individual bonds or individual nuclei. UV-Vis reports on something narrower and, in this chapter, more useful: <b>how far a conjugated π system extends</b>.</p>' +
+          '<p class="step-body">Ultraviolet and visible light carry enough energy to promote an electron from an occupied molecular orbital to an empty one. In a π system the transition that matters is from the <b>HOMO</b> to the <b>LUMO</b> — a <b>π &rarr; π*</b> transition. A molecule absorbs the wavelength whose photon energy matches that gap.</p>' +
+          '<div class="explain-box"><b>Bigger HOMO–LUMO gap &rarr; higher energy photon needed &rarr; shorter wavelength absorbed.</b><br>Smaller gap &rarr; lower energy &rarr; <b>longer</b> wavelength absorbed.<br><br>Learn it in that direction. Almost every UV-Vis question is asking you to run it one way or the other.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'More conjugation, smaller gap, longer wavelength.',
+        bodyHtml: '<p class="step-body">Extending a conjugated system adds more p orbitals to the combination, producing more molecular orbitals spread over a similar total energy range. The highest occupied one rises and the lowest empty one falls, so the gap <b>narrows</b> with every double bond added to the conjugation.</p>' +
+          '<p class="step-body">The group responsible for the absorption is a <b>chromophore</b>. An isolated C=C absorbs below about 200 nm — inconveniently far into the ultraviolet for ordinary instruments — so a simple alkene is effectively invisible. Conjugate two and the absorption moves into the accessible range, which is exactly why this technique is a conjugation detector rather than a general-purpose one.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">Keep extending and λ<sub>max</sub> eventually crosses about 400 nm into the visible. At that point the compound absorbs visible light and your eye sees <b>what was not absorbed</b> — the complementary color. Organic compounds are colorless unless they carry extensive conjugation, so a strongly colored organic compound is a strong hint to look for it.</p>'
+      },
+      {
+        render: function(api){
+          var shuffled = SERIES.slice().sort(function(a,b){ return a.name.localeCompare(b.name); });
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Put these in order of increasing λ<sub>max</sub>.</h2>' +
+            '<p class="step-body">Click them from the <b>shortest</b> wavelength absorbed to the <b>longest</b>. The only thing you need is how many double bonds are in conjugation.</p>' +
+            '<div class="radical-sort" id="pool">' +
+            shuffled.map(function(s){
+              return '<button type="button" class="choice-btn uv-pick" data-id="' + s.id + '" data-n="' + s.n + '">' +
+                s.name + ' <span style="color:var(--muted);font-weight:700;">— ' + s.n + ' conjugated C=C</span></button>';
+            }).join('') +
+            '</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin:14px 0 16px;">Placed: 0 / 4</div>' +
+            api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var hint = api.card.querySelector('#hint');
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var wanted = SERIES.slice().sort(function(a,b){ return a.n - b.n; });
+          var at = 0, missed = false;
+          api.card.querySelectorAll('.uv-pick').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              if(btn.disabled) return;
+              var id = btn.getAttribute('data-id');
+              if(id !== wanted[at].id){
+                missed = true;
+                btn.classList.add('wrong');
+                api.showFeedback(fb, false, 'Not next. Order by how many double bonds are in conjugation: more conjugation means a smaller HOMO–LUMO gap and therefore a LONGER wavelength, so the least conjugated compound comes first.');
+                setTimeout(function(){ btn.classList.remove('wrong'); }, 700);
+                return;
+              }
+              var s = wanted[at];
+              btn.classList.add('correct');
+              btn.disabled = true;
+              btn.innerHTML = '<b>' + (at+1) + '.</b> ' + s.name + ' <span style="color:var(--muted);font-weight:700;">— ' + s.n + ' C=C, λ<sub>max</sub> ≈ ' + s.lam + ' nm</span>';
+              at++;
+              hint.textContent = 'Placed: ' + at + ' / 4';
+              if(at === wanted.length){
+                api.showFeedback(fb, true, (missed ? '' : 'All four in order, first time. ') +
+                  'From 171 nm for a single double bond to about 450 nm for β-carotene\'s eleven. That last one is past 400 nm and therefore in the visible — it absorbs blue light and looks orange, which is the color of carrots.');
+                api.record(!missed);
+                next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'Two isomeric dienes, C₆H₁₀. One absorbs at 227 nm, the other below 200 nm. Which is conjugated?',
+        options: ['The one below 200 nm','The one at 227 nm','Both equally','Neither is conjugated'],
+        correctIndex: 1,
+        correctFeedback: 'Correct. The conjugated diene has the smaller HOMO–LUMO gap, so it absorbs the lower-energy, longer-wavelength light. The isolated diene behaves as two separate alkenes, each absorbing below 200 nm where a plain C=C does.',
+        wrongFeedback: 'Conjugation narrows the gap between the orbitals involved. A narrower gap needs a lower-energy photon — and lower energy means longer wavelength.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'β-Carotene absorbs around 450 nm. Why does that make it orange rather than blue?',
+        options: [
+          'It emits orange light after absorbing',
+          'You see the light it does NOT absorb — the complementary color',
+          'Orange and blue are the same wavelength',
+          'The absorption is too weak to affect color'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. 450 nm is blue light, and that is what the compound removes. What reaches your eye is everything else, which reads as orange. This is the general rule for absorbing pigments and is why the absorbed and perceived colors are always complementary.',
+        wrongFeedback: 'A pigment does not glow. Ask what happens to the rest of the visible spectrum when one part of it is removed.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Beer–Lambert: wavelength says what, absorbance says how much.',
+        bodyHtml: '<p class="step-body" style="text-align:center;font-family:var(--font-mono);font-weight:900;font-size:18px;">A = εcl</p>' +
+          '<ul class="step-body">' +
+          '<li><b>A</b> — absorbance, a unitless number read off the instrument.</li>' +
+          '<li><b>ε</b> — molar absorptivity, a constant for that compound at that wavelength, measuring how strongly it absorbs. Conjugated systems have large ε, often 10,000 or more.</li>' +
+          '<li><b>c</b> — concentration; <b>l</b> — path length through the sample, conventionally 1 cm.</li>' +
+          '</ul>' +
+          '<p class="step-body" style="margin-bottom:0;">Because absorbance is directly proportional to concentration, UV-Vis is genuinely quantitative in a way NMR and IR usually are not in a teaching lab. It is the standard way to follow the concentration of a conjugated or colored species while a reaction runs.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'What does a UV-Vis spectrum NOT tell you?',
+        options: [
+          'Whether a conjugated system is present',
+          'Roughly how extended that conjugation is',
+          'Where in the molecule the double bonds are',
+          'How concentrated the sample is'
+        ],
+        correctIndex: 2,
+        correctFeedback: 'Correct. It reports that conjugation exists and roughly how far it runs, and via Beer–Lambert how much material is there — but it says nothing about position or connectivity. Pair it with NMR to place the double bonds. UV-Vis answers one question sharply and very little else.',
+        wrongFeedback: 'Three of these follow from λmax or from absorbance. One would need you to know which carbons are involved, and nothing in a single broad absorption band carries that.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Why is UV-Vis in the conjugation chapter rather than with IR, NMR and mass spectrometry?',
+        options: [
+          'It is historically older than the others',
+          'It measures conjugation specifically, so it is the experimental half of this chapter',
+          'It requires no instrument',
+          'It is not really a spectroscopic technique'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. It turns this chapter\'s central abstract claim — that a longer π system is a lower-gap system — into a number you read off an instrument, and it is close to useless for anything else. That is also the habit to carry into the Spectroscopy chapter: each technique answers a different question. IR names functional groups, mass spectrometry gives mass and fragments, NMR builds the carbon skeleton, and UV-Vis reports conjugation.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>
