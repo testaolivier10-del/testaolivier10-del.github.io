@@ -210,6 +210,22 @@
   function render(){
     var q = E.reviewQueue();
     var leechIds = q.leeches.map(function(p){ return p.id; });
+
+    /* Tell the reminder scheduler what is waiting. This is the page that knows
+       — the queue is computed right here for its own display — and an honest
+       number is the whole difference between a reminder people act on and one
+       they turn off. Reported even when it is zero, which is how a reminder
+       that was queued yesterday stops being sent once the queue is cleared. */
+    if(window.LevlReminders){
+      window.LevlReminders.report('ochem', {
+        // today, not dueTotal: the queue is capped by a daily budget, and the
+        // number in a reminder has to be the number of questions they will
+        // actually be asked when they tap it.
+        due: (q.today || []).length,
+        label: 'Organic Chemistry',
+        url: '/ochem/review.html'
+      });
+    }
     // Leeches are held out of the queue entirely, so they must not also show
     // up under "coming back later" — they are not coming back until the
     // lesson has been re-read, and listing them twice says the opposite.

@@ -47,6 +47,19 @@ assets/                Shared across every course
                          question. Optionally posts the question plus those passages to an
                          AI endpoint for a written answer; see worker/. site-chrome.js
                          mounts it, so no page loads it directly
+  errors.js            Says when a page breaks. Loaded first on every page that
+                         has an account.js, because the errors worth hearing
+                         about are the ones early enough to stop a page working
+                         — see When a page breaks
+  reminders.js         Study reminders: when to ask, what the notification
+                         says, and the row the courier reads. Inert until a
+                         VAPID key is configured — see Nothing brought anyone
+                         back
+  site-search.js       Matching, ranking and snippet highlighting, shared by
+                         both courses' search pages — see Searching a course
+  report-question.js   "This looks wrong" — the one-tap report under every
+                         explanation in both courses. See Reporting a bad
+                         question
   account.js           One login for the whole site: Supabase auth + namespaced
                          cross-device sync (see Data & accounts)
   hub-progress.js      One shared level and one shared streak; per-subject XP.
@@ -80,6 +93,10 @@ nremt/                 The NREMT-EMT Prep course
     questions.json        The 2,084-question bank: the file you edit. Nothing fetches
                             it; questions-core.json and explanations.json are
                             generated from it (scripts/build-question-bank.mjs)
+    question-ids.js        What every stored question record refers to. Pure
+                             translation between a question's permanent id and
+                             its position in the bank — see "Every question has
+                             an id" below
     nav.js                 This course's tab list and sync namespace; hands the header
                              itself to /assets/site-chrome.js. Also the NREMT-flavored
                              shim over the site-wide level/streak engine in
@@ -319,6 +336,22 @@ is the one way to actually lose progress here.
 `authMessage`, `passwordScore` and `emailTypo` are exported on
 `StudyHubAccount` and tested in `scripts/test/auth-form.test.mjs`.
 
+### Deleting an account
+
+`privacy.html` invoked GDPR and CCPA and then asked people to send an email, which is a deletion right in roughly the sense that a locked door with a doorbell is an exit. It is a button now — **Delete account**, in the account menu.
+
+Three things this screen has to get right, and only the first is obvious.
+
+- **It is irreversible, so it asks properly.** The word has to be typed, and the submit stays dead until it matches; accepting a near miss would make the typing ceremonial, which is the one thing it must not be. Not `window.confirm()` — the sign-out menu exists precisely because that dialog was the wrong shape for a decision.
+- **The account and the browser are two different things**, and almost nobody expects that. Progress lives in `localStorage`; the account is a synced copy. Left alone, "delete my account" would silently leave every streak, level and answered question sitting in the browser the person is looking at — which is either exactly what they wanted or the opposite, and they are the only one who knows. So it is a checkbox, on by default, named plainly enough that turning it off is a real option.
+- **It offers the backup first.** This is the one action on the site that destroys work on purpose, and the export already exists on `privacy.html`; making someone go and find it, in a dialog they cannot leave without starting over, is how a person loses four months of study to a change of mind. `progress-backup.js` is loaded on demand here rather than on all 101 pages that carry `account.js`.
+
+`delete_own_account()` (in `scripts/sql/schema.sql`) **takes no arguments**. It reads `auth.uid()` from the caller's verified JWT, so there is no id to pass and therefore no id to tamper with — the difference between this and every version of it that accepts a user id. It is granted to `authenticated` only.
+
+Two orderings matter and both are the non-obvious one. The browser is cleared **after** the account is confirmed gone, because the other order risks wiping a device for a delete that then failed. And sign-out here does **not** `push()` first, which every other path in `account.js` does — here it would re-create the row that was just deleted.
+
+The erase list is an allow-list, like the backup's, so a key nobody added on purpose survives. It keeps exactly one thing: **`levlprep_analytics_opt_out`**. That is a standing instruction not to collect something rather than progress, and wiping it would turn "delete my account" into "and start tracking me again". `scripts/test/account-delete.test.mjs` pins that, along with the walk-then-delete order — removing keys inside the index walk renumbers them underneath it and skips every other one, which leaves a browser looking mostly wiped.
+
 ### Supabase settings these depend on
 
 Auth → URL Configuration must list the site origin under *Redirect URLs* (the
@@ -518,6 +551,75 @@ Three things, all mounted from `assets/site-chrome.js` rather than written into 
 - **Answer announcements** (`assets/announce.js`) — a polite live region that speaks correct/incorrect and the explanation, wired into the one choke point each course's feedback passes through.
 - **Reduced motion** — a blanket CSS rule in `assets/theme.css`, plus `window.LevlMotion` for the movement CSS cannot reach (smooth scrolls, the body map's camera flights).
 
+## Nothing brought anyone back (`assets/reminders.js`)
+
+The site had a real spaced-repetition scheduler and no way to say anything with it. `ochem/assets/mastery-engine.js` computes a due date per concept; `nremt/practice.html` builds a due queue from the same idea; `hub-progress.js` keeps a streak, a freeze that bridges one missed day, and a goal that eases off after a bad week. Every bit of that machinery assumed the student *chooses* to open the site.
+
+A scheduler that knows forty items are due today and has no way to say so is doing half its job. And the day somebody loses a twelve-day streak is very often the last day they open the site at all — the run was the reason to come back, and nothing was ever going to tell them it was about to end.
+
+**The browser decides everything.** Whether to remind, when, and what the words say are all worked out here and written into one row; the Worker is a courier. That is not a shortcut — the due counts live in `localStorage` and never leave it, so a server that decided when to remind would first have to be told everything the student has ever answered. This way it is told a number and a sentence. `privacy.html` says exactly that under **Study reminders**.
+
+**It says something true or it says nothing.** `compose()` builds the sentence from what is actually waiting: one course names the course, two name both, and a record older than a week is not quoted at all. Nothing due and no streak worth protecting returns `null`, and `null` clears the send time rather than sending something empty. A reminder saying "12 questions due" to somebody who cleared them this morning is worse than no reminder — it is a reason to distrust the next one, and the next one is the one that was going to work. Both courses call `report()` from the page that already computes the number for its own display, which is the cheapest place to keep it honest.
+
+**Asking is the expensive part.** A browser gives a site exactly one notification permission prompt; a "no" is usually permanent and cannot be asked for again from script. So the rules are the same shape as the other two nudges (see *Two nudges, one shape*) and tighter: never a first visit, never when there is nothing to remind them about — an offer to be told about work that does not exist is just a permission prompt — at most three times ever, a week apart, silent for good after two refusals, and never at the same time as the save prompt, which wins the tie because it protects work that already exists.
+
+**It stops on its own.** `MAX_UNANSWERED` is 3. Three sends with no sign the student came back and it goes quiet until they open the site themselves. One is not a reminder, it is a coin flip against whether they had their phone; a daily notification forever is how an app gets its permission revoked, and a revoked permission cannot be asked for again.
+
+**The push carries no payload.** A Web Push message can carry an encrypted one (RFC 8291: ECDH, HKDF, AES128GCM) — a few hundred lines of crypto whose failure mode is a push that silently never arrives. A payload-less push is valid: `sw.js` wakes and asks the Worker what to say. One round trip at a moment nobody is watching, in exchange for deleting the whole encryption path, and the text is fetched when it is *shown* rather than when it was queued, so it cannot be stale. VAPID is still implemented, in `worker/src/push.js`.
+
+**Email is the fallback, and only that.** iOS Safari allows notifications only for a site added to the home screen, which is a large share of the people this site is for. Email reaches them: signed in only (there is no other way to know an address, and asking for one would turn a free tool into a mailing list with a study app attached), strictly opt in, and never alongside push — enabling one turns the other off, because the same sentence twice is the fastest way to make both unwelcome. Every message carries a one-click unsubscribe in the footer *and* in the `List-Unsubscribe` header; without that header, somebody who wants out presses "spam" instead, and that costs the domain's reputation for every message it sends including the password resets.
+
+`privacy.html`'s promise that there was "no product email of any kind" had to change in the same commit as the table. That paragraph has now been wrong twice and corrected twice, and says so.
+
+Setup — VAPID keys, secrets, the cron — is in `worker/README.md`. Everything is inert until it is configured: no prompt, no button, no request, same rule as `analytics.js`. Tested in `scripts/test/reminders.test.mjs`.
+
+## Searching a course
+
+Each course has a search page that indexes the whole course in the browser and sends nothing anywhere. `assets/site-search.js` holds the part that is the same in both — matching, ranking, snippet highlighting — because it used to live inline in `nremt/search.html` and the moment a second course wanted a search page the choice was to share it or copy it, and the two per-course copies of `theme.css` are what copying it looks like eighteen months later.
+
+- **AND, not OR.** Every term has to appear somewhere in a chunk. Matching the whole query as one literal substring returned nothing for anything but an exact quotation; OR returns the entire bank for any query containing a common word.
+- **Heading beats body, and the whole phrase intact beats its words scattered.** A chunk can also declare a `weight`, which is what puts the aldol *lesson* above the ninetieth practice question that mentions aldol.
+- **Escape, then mark.** Marking the raw string and escaping afterwards eats its own `<mark>` tags; marking raw text with a raw pattern misses any term containing `& < > ' "`. So: slice, escape, then match the escaped term against the escaped text.
+- **A URL has one fragment.** Ochem's textbook links already carry a hash naming the section, and appending `#:~:text=` to that produced `learn.html#e2#:~:text=…` — a second `#`, which matches no element and is not a text directive either. A broken text fragment is ignored by the browser rather than reported, so the only symptom was a link that quietly stopped opening the right chapter.
+
+**`ochem/search.html`** is the new one. `learn.html`'s rail already searched the textbook, but only the textbook, and only the sections that happened to have been fetched already — which left the 58 lessons, the 10 mechanism walkthroughs, the 7 tools and 1,860 practice questions with no way in at all. Someone who could not remember whether anti-periplanar was explained in a lesson, a mechanism walkthrough or the textbook had to guess.
+
+Its five sources are all *derived*, never listed: `curriculum.js` for the lessons and mechanisms (so a topic with no page yet is not a result — a hit that leads to "coming soon" is worse than no hit), the note fragments for the textbook, `tools-registry.js` for the tools, and `practice-bank.json` for the questions. Structure is indexed synchronously so a query typed immediately finds the lessons while the megabyte of prose is still arriving; each source may fail on its own, and the status line names **what is missing** rather than only what is present — offline, the difference between "the bank isn't here" and "your search found nothing" is the whole difference between a working page and a broken one, and an empty result list cannot tell them apart. A filter row exists because a mixed index of five kinds returns forty practice questions and "show me only the lessons" is the first thing anyone wants next.
+
+Search is now a tab in the ochem header (the tab row scrolls horizontally, so a seventh item costs nothing on a phone) and a link under the tools grid — outside it, because check #10 compares those tiles byte-for-byte against the registry and search is a way of getting somewhere rather than a tool.
+
+## Reporting a bad question (`assets/report-question.js`)
+
+`sources.html` promised a way to tell us when a question is wrong from the day it was written. It explained the correction policy and said where corrections get listed, and then never said *how* — the only address anywhere on the site was at the bottom of the privacy policy. For a bank of 2,084 NREMT questions and 1,860 ochem ones, written against reference material rather than by a committee, that was the most expensive gap on the site. No script can check whether an answer is clinically right; a student who has just answered one and thinks the key is wrong is the only reviewer who can, and they are on the one screen where saying so costs a tap.
+
+So it is a tap, under the explanation — in the results list after an exam, on the back of a flashcard, and under every ochem question's feedback. Not on a contact page the reader would have to go looking for while holding the thought.
+
+- **Four reasons and an optional box.** Most reports are one of a few things, and making someone write a sentence to say "the key is wrong" loses most of them. The reason list is a contract with `report_question()` in `scripts/sql/schema.sql`, which rejects a reason it does not recognise — so a test asserts the two are the same list, because drifting apart means every report silently fails at the far end while the dialog says thank you.
+- **Reported once per browser, and the button says so.** It becomes an inert "Reported — thank you" for that question. That is less about rate limiting than about the receipt: the same question shows up in a review list *and* on a flashcard, and a button that comes back live invites a second report, because nothing told them the first one landed.
+- **The id is a question id, never a position.** A report outlives the edit it asks for. NREMT reports carry the permanent id; ochem has no id scheme, so a report carries the engine's `lb:<topic>:<n>` reference *plus a short hash of the stem* — the reference finds it instantly, the hash says whether what is there is still the question that was reported. An edited stem stops matching, which is the right answer rather than a failure.
+- **It reuses the auth dialog's classes** instead of bringing a second set, for the same reason there is one `theme.css`. Escape closes, Tab is trapped, focus returns to the button, the page behind cannot scroll, and the textarea is 16px so iOS does not zoom on focus.
+- **The click is stopped in the capture phase.** The flashcard is one big click target that flips on any click inside it; left alone, pressing Report flipped the card away, which hid the button mid-dialog and left Escape with nothing to return focus to. Stopping it on the way back up is too late — `#fcCard`'s handler is bound to the element and has already run.
+- **A failure is never silent.** If the report does not land — offline is the common case, since the rest of the site works offline and this one thing cannot — it says so and leaves the button live, rather than thanking someone for something that went nowhere.
+
+Reading them: `scripts/sql/reports.sql`. Tested in `scripts/test/report-question.test.mjs`.
+
+## When a page breaks (`assets/errors.js`)
+
+183 pages of hand-written vanilla JS, no bundler and no framework — which is the point of the stack, and also means nothing checks that a page still *runs* before it ships. A typo in one lesson's bootstrap renders an inert page: the text is there, the buttons do nothing, no error is visible to the reader, and nobody finds out. The student assumes the site is broken and leaves, which is exactly the population least likely to email about it. Nothing on the site knew this had happened.
+
+An uncaught error or a rejected promise is now reported once, to our own Supabase, through the same `security definer` RPC shape as the page counter (`report_client_error`, in `scripts/sql/schema.sql`).
+
+- **It is loaded first**, immediately above `account.js` in every page's head, which makes it the first deferred script on the page. That position is the whole value: the errors most worth hearing about are thrown by page bootstraps at `DOMContentLoaded`, after the deferred scripts but before anything mounted asynchronously by `site-chrome.js` could have registered a listener. A reporter that arrives late reports only the failures that were not fatal. Check #11 in `check-site.mjs` fails if a page loads `account.js` without it, or loads it after.
+- **Reports are queued before they are sent**, because running before `account.js` means the thing that does the sending does not exist yet at the moment of the most interesting errors. Without the queue, being early would cost exactly the reports being early was for.
+- **Capped at five per load and deduplicated within a load.** One error inside a `requestAnimationFrame` loop is sixty errors a second, and a reporter that forwards all of them faithfully is a denial-of-service against our own database. The same cap bounds the queue, since a page that breaks before `account.js` arrives is exactly the page that breaks repeatedly.
+- **A third party failing to load is not a bug in this site.** An ad blocker stops Umami and the Supabase CDN on a large share of visits; reporting each one would bury the real reports under noise we already design around. A *same-origin* resource failing to load is the opposite — a page just lost a module — and is reported.
+- **`Script error.` is dropped.** A cross-origin script gives no file, no line and no stack, and is almost always an extension.
+- **It goes through the analytics opt-out**, checked before anything is sent rather than discarded at the far end, and it never throws: a reporter that can throw turns one broken page into a broken page plus a loop.
+
+What is sent: path, message, file/line/column, the first few stack frames with the origin stripped, and the user-agent. What is not: any stored value, any answer, any question, any email, any user or session id, any referrer. `privacy.html` says so under **When a page breaks**, including the one honest caveat — a browser-written error message can quote the fragment it choked on, which is why messages are truncated.
+
+Tested in `scripts/test/errors.test.mjs`.
+
 ## Privacy
 
 `privacy.html` is the site's privacy policy, linked from every page footer. The short version: no ads, no cookies, no cross-site tracking; progress lives in `localStorage`; what leaves the browser unprompted is the anonymous page counter and cookieless analytics, both described below.
@@ -551,16 +653,18 @@ then open `http://localhost:8000/`.
 
 ## CI
 
-`.github/workflows/checks.yml` runs `scripts/check-site.mjs` on every push/PR. It has no network dependency and needs no build step, so it runs in seconds. It checks:
+`.github/workflows/checks.yml` runs five jobs on every push/PR. The first, `scripts/check-site.mjs`, has no network dependency and needs no build step, so it runs in seconds. It checks:
 
 1. Every local `href`/`src` in every HTML file points at a file that exists.
 2. Every JSON file parses.
 3. Each Ochem lesson has the number of steps `lesson-concepts.js` was authored against.
 4. Every URL in `sitemap.xml` maps to a real file — **and** every real page is in `sitemap.xml`. Fifty Ochem lesson pages once shipped with no path in from a search engine because the sitemap was hand-maintained; run `node scripts/build-sitemap.mjs` to regenerate it after adding a page.
 5. The question bank carries no answer tell: no keyed option position holds more than 40% of items, no select-N key set dominates, and the "longest option is the answer" rate stays under its ceiling. The ceiling is a ratchet — lower it as the bank improves, never raise it.
-6. Every advertised question count in markup, meta tags and this README matches the bank. The homepage went on advertising a figure from an early build long after the bank had more than doubled.
+6. Every advertised question count in markup, meta tags and this README matches the right bank — there are two now, and which one a page means is decided by whether it lives under `ochem/`. The README describes both, so a figure in it is correct if it matches either. The homepage went on advertising a figure from an early build long after the bank had more than doubled.
 7. Every advertised Ochem count matches `curriculum.js`: a digit count of "topics" is the number of topics with an href, "lessons" the number under `lessons/`, "mechanisms" the number of pages under `ochem/mechanisms/`. The course was "58 lessons", "62 topics" and "Fifty-eight interactive lessons" on three pages at once.
-8. The static tool tiles written into `ochem/tools.html` (so a crawler or a reader with scripts off still gets the list) are byte-identical to what `tools-page.js` renders from `tools-registry.js`.
+8. Every question in the bank has a unique id, so every record in a learner's browser still refers to something.
+9. Every page that loads `assets/account.js` also loads `assets/errors.js`, and loads it first — a page whose failures nothing reports is a page that can break silently forever, and new pages are copied from existing ones.
+10. The static tool tiles written into `ochem/tools.html` (so a crawler or a reader with scripts off still gets the list) are byte-identical to what `tools-page.js` renders from `tools-registry.js`.
 
 ### Generated files
 
@@ -575,12 +679,45 @@ A third job re-derives everything that is generated from the pages and fails if 
 
 `build-sitemap.mjs` reads each page's last commit date out of git, so that job checks out with `fetch-depth: 0`. Its `--check` compares the **URL set** rather than the bytes — `<lastmod>` is derived from history, and a byte comparison would fail over something nobody got wrong.
 
+### Accessibility and weight
+
+Two more jobs, both added because the README argued carefully about something and then nothing defended it.
+
+**`scripts/check-a11y.mjs`** runs axe-core over one page of every *shape* the site has — twelve of them, which is enough: if a lesson is accessible then all 58 built on the same engine are, and a violation in one of them is a violation in the engine. It fails on serious and critical only; minor and moderate are printed and do not fail, because a rule at that level is often a judgement call and a check that cries wolf gets switched off within a month. It also makes three checks axe cannot, because they are about this site's own decisions: the skip link landing on something that exists and can take focus, and the `main` and `nav` landmarks surviving the runtime-rendered header.
+
+It is a separate job because it is the only check here that needs a browser. `check-site.mjs` is dependency-free and runs in seconds on every push; bolting a minute onto it would make the check people actually wait for slow.
+
+Turning it on found eight real things, every one of them invisible to anybody who was not the person it locked out:
+
+- **The brand teal failed contrast.** `#1C8C7B` measured 4.13:1 on white and 3.55:1 on the tinted panel against a 4.5:1 requirement, on ten of the twelve page shapes — and white text on the same green as a button fill failed by the same ratio, so one value was two failures. The comment beside it in `theme.css` read "safe for text and for fills" and was wrong on both counts. Now `#127264`: 5.81:1 and 4.99:1.
+- **`--muted` failed on one course and not the other.** `#55706A` cleared 4.5:1 on white and on the standard surface but landed at 4.47:1 on the ochem tint — under by three hundredths, on the lede of every ochem page.
+- **The "pitfall" callout was the least readable thing on the site**, at 2.89:1, on a box whose whole job is warning somebody about a mistake they are about to make. It used `--amber-press`, a *button's pressed state*, as a text colour. `--amber-text` already existed for exactly this and was not being used — and the same category error turned out to be in sixteen other places.
+- **176 pages had no `main` landmark.** Four files out of 180 declared one. `site-chrome.js` already worked out where the content starts, for the skip link; it applies the same answer as `role="main"` now, so every page gets one and a page added later gets it for free.
+- **208 dead keyboard tab stops in the textbook.** The 3D figures in `ochem/notes/` are snapshots baked from `mol3d.js`, which produces clickable atoms for the *tools* pages. The textbook does not load `mol3d.js`, so every one of those atoms was a `role="button"` tab stop that did nothing — dozens per chapter — inside a wrapper declaring the whole SVG a single image.
+- **Wide figures scrolled but could not be focused**, so the content past their right edge did not exist for anyone not using a pointer. `textbook.js` now gives a tab stop to figures that *actually* overflow, and takes it away again on resize when they do not — a tab stop that scrolls nothing is one more thing to get past for no reason.
+- **Both search inputs had no label**, only a placeholder, which disappears the moment you type.
+- **Two `<figure>`s sat directly inside a `<ul>`**, which is invalid and stops a list reporting its own length.
+
+One advisory is known and deliberately unfixed: `role="main"` on a wrapper that contains the footer leaves a `contentinfo` landmark nested inside `main`. Moving the footer out on every page is DOM surgery under CSS written around the current structure — a real risk of breaking layout to fix a moderate advisory, against a main landmark that is unambiguously worth having.
+
+**`scripts/check-weight.mjs`** is a byte budget, and needs nothing to run: it reads the files off disk and gzips them, so it sits with the fast checks. It measures the HTML plus every same-origin stylesheet, script and font a page references. Scripts count even though all of them are deferred — deferred means "does not block the parser", not "free".
+
+Three buckets, not one number, because every page loads the same `/assets/` shell and counting it into all twelve budgets would put every page within a few KB of every other, which is exactly the resolution at which a page-specific regression disappears. So the site shell, each course shell and each page are budgeted separately. The 2.3 MB question bank is not in any of them: it is fetched after paint, which is the entire point of the split, and folding it in here would erase the distinction that work was for.
+
+The numbers are a **ratchet**, same rule as the answer-tell check: lower a budget when a page gets lighter, never raise one to make a build pass. A budget with more than 30% headroom is reported as stale — reported, never failed, since a ratchet that tightened itself would fail the build for making things better.
+
 ### Unit tests
 
-A second job runs `node --test scripts/test/*.test.mjs` — 24 tests over the two engines whose failure modes are silent. Everything above checks that the site is *wired* correctly; nothing checked that it *scores* correctly. An interval that doubles too eagerly buries a shaky concept for four months, a decay curve that bites too hard makes yesterday's work look undone, a streak that resets in the wrong timezone eats a 40-day run. None of that throws, and none of it would have been caught by a link checker — the student just gets worse practice and no one finds out.
+A second job runs `node --test scripts/test/*.test.mjs` — 161 tests over the pieces whose failure modes are silent. Everything above checks that the site is *wired* correctly; nothing checked that it *scores* correctly. An interval that doubles too eagerly buries a shaky concept for four months, a decay curve that bites too hard makes yesterday's work look undone, a streak that resets in the wrong timezone eats a 40-day run. None of that throws, and none of it would have been caught by a link checker — the student just gets worse practice and no one finds out.
 
 - `scripts/test/hub-progress.test.mjs` — the level curve (pinned: changing it demotes every existing user), XP accumulation and per-subject split, streak continuation across days, goal tracking, rank titles, day-log pruning.
 - `scripts/test/mastery-engine.test.mjs` — unseen vs. scored-zero, the learning rate settling as evidence accumulates, the same-day guard that stops one good session reaching a six-month interval, the interval cap, the decay floor, due-ness, leech benching and its release on a lesson read, the daily review cap, mistake de-duplication, tier records.
+- `scripts/test/reminders.test.mjs` — the asking rules and the composed sentence. Both fail silently in the expensive direction: a rule one condition too loose burns the one permission prompt a browser will ever give, and a sentence quoting a stale number teaches people to ignore the next one.
+- `scripts/test/site-search.test.mjs` — AND vs OR, the ranking order, the escape-then-mark ordering, the one-fragment-per-URL rule, and that ranking does not mutate the index it is handed.
+- `scripts/test/account-delete.test.mjs` — what a "delete my account" erases and, more to the point, what it leaves: the analytics opt-out, anything not on the allow-list, and the Supabase session the delete itself needs.
+- `scripts/test/report-question.test.mjs` — the once-per-browser receipt surviving a re-render, the bounded store, and the reason list matching what the database will actually accept.
+- `scripts/test/errors.test.mjs` — the cap, the dedupe, the opt-out and the queue that holds reports until `account.js` exists. All four fail silently in both directions: a broken cap floods the database, a broken queue reports nothing and looks like a site with no bugs.
+- `scripts/test/question-ids.test.mjs` — what the numbers in a learner's records mean: ids surviving a deletion, a reorder and an append; the positional option-order array converting once and idempotently; a half-finished attempt abandoned rather than graded around a hole.
 - `scripts/test/harness.mjs` — loads these browser IIFEs into a VM context with a window, a localStorage and, crucially, a clock the test controls. Both engines are about *time*; none of this is testable against a real `Date.now()` without either sleeping or asserting nothing.
 
 No dependencies and no build step, in keeping with the rest of the stack. Both engines were checked by mutation: 13 deliberate breaks (level curve shifted, same-day guard removed, interval cap removed, decay floor removed, lesson never lifts the bench, and so on) and every one of them fails the suite. A test that passes either way is worse than no test, so re-run that exercise if you add to these.
@@ -596,6 +733,8 @@ The `page_views` table it writes to has row-level security on with **no policies
 **Umami** (`assets/analytics.js`) answers what that counter never could: not "was this page opened" but "did the person who opened it finish". It is a third party and collects more — referrer, country, browser, OS, device, and a daily visitor hash so visits can be told apart within a day.
 
 Setup: put the website id from the Umami dashboard into `WEBSITE_ID` at the top of `assets/analytics.js`. That is the only step. Until it is set the file does nothing at all, which is deliberate. `cloud.umami.is` is already in `script-src` and `connect-src` in the CSP on all 97 pages that carry one.
+
+**Umami's script host and its data host are not the same host**, and the CSP has to name both. `script.js` comes from `cloud.umami.is`; the script then POSTs its events to `gateway.umami.is`. Only the first was in `connect-src`, so every event was blocked by the browser with a console error nobody was reading — the dashboard showed nothing and looked exactly like a site with no traffic. Both are listed now, on all 102 pages that carry a CSP.
 
 `data-do-not-track="true"` is set, so a browser sending Do Not Track is excluded entirely. Ad blockers block it, as they block every analytics tool including the respectful ones; nothing on the site depends on it, and the site's own counter is unaffected because it goes to our own domain.
 
@@ -657,7 +796,20 @@ The reason is that the explanations are two thirds of the bank's compressed weig
 
 The explanations are fetched immediately afterwards without blocking anything and land about 270 ms later — long before anyone could have answered. The two places that read them (`renderFlashcard`, `renderReview`) `await` that promise anyway, because "long before" is an assumption about a fast phone and not a guarantee. If the second file fails outright, every mode still works and only the "why" under an answer is missing.
 
-**Index alignment is not cosmetic.** Every saved exam, flagged question, missed question and shuffled option order in a learner's browser is stored as a bare integer index into this bank. Re-ordering or re-keying it would silently re-point all of them at different questions — which is also why the bank was *not* split by domain, the change this replaced: that would have meant rebuilding question identity across six files and every `localStorage` record that refers to one, to speed up domain drills alone.
+**Positional alignment between the two generated files is not cosmetic.** `explanations.json` is a bare array of strings, matched to `questions-core.json` by position, which is what lets it skip repeating a key 2,084 times. Both are generated in one pass from `questions.json` and neither is ever reordered independently.
+
+### Every question has an id
+
+What a learner's browser stores is a different question, and it used to have the same answer. Every saved exam, flagged question, missed question, mastery record and shuffled option order was a bare **position** in this bank — which made the bank append-only forever. Deleting a wrong question, deduplicating two near-copies or sorting the file would shift every position after the edit and silently re-point every one of those records at a different question. Nothing would throw; a student's missed queue would just quietly fill with questions they had never seen. The cost of that constraint grew with every new account.
+
+So every question carries an `id`, and everything above is keyed by id instead.
+
+- **`build-question-bank.mjs` assigns them**, only to questions that have none, and only from above the high-water mark — so a hole left by a deleted question stays a hole rather than being handed to a new question that would inherit the deleted one's place in everybody's records. Never renumber, never hand-edit an id. **Deleting a question is now safe**, which is the entire point.
+- **There is no migration step**, because the ids were introduced by numbering the bank in its existing order. `id === index` on the day of the change, so every number already on every device was already a correct id and none of them needed rewriting. Old `practice.html?q=N` links still open the question they always did, for the same reason.
+- **One record changed shape rather than meaning.** `nremt_option_order` was a positional array, and an array cannot survive a question being removed — deleting one question would re-deal the letters of every question after it, including for an exam already in progress. It is now an object keyed by id. `QID.readOrders()` accepts either shape and returns the object, so the conversion happens on the next page load with no marker key and no ordering guarantee needed against account sync — which matters, because a device that has not yet converted can be handed a synced copy from one that has.
+- **Unknown ids are dropped on read**, so a deleted question leaves everyone's queues by itself. This is also the behaviour the old code should have had: a stale position past the end of the bank used to sit in the missed queue forever.
+
+`nremt/assets/question-ids.js` is pure translation — no `localStorage` access; the page owns its reads and writes and this owns what the numbers in them mean. Tested in `scripts/test/question-ids.test.mjs`, where the cases that matter are all bank edits: a question deleted, questions reordered, questions appended. Check #10 in `check-site.mjs` fails on a missing or duplicated id.
 
 ## Pages that stand in for other pages
 

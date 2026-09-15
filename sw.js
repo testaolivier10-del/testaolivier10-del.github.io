@@ -24,7 +24,7 @@
 // model, the 670 KB three.js bundle and the fonts. Those never change with
 // the shell (they are content-addressed by path, and a new model would be a
 // new file), so they live in STATIC_CACHE, which activate leaves alone.
-const CACHE_NAME = 'levlprep-v27';
+const CACHE_NAME = 'levlprep-v32';
 const STATIC_CACHE = 'levlprep-static';
 const PRECACHE_URLS = [
   'index.html',
@@ -60,6 +60,9 @@ const PRECACHE_URLS = [
   'nremt/search.html',
   'nremt/manifest.json',
   'nremt/assets/nav.js',
+  // What every stored record means. practice.html cannot resolve a single
+  // saved question without it, so it is shell, not content.
+  'nremt/assets/question-ids.js',
   'nremt/assets/icon.svg',
   // The three tool behaviours. Small, and each one is the difference between a
   // page that works offline and a page that renders as inert text offline —
@@ -68,6 +71,21 @@ const PRECACHE_URLS = [
   'nremt/assets/flow-drill.js',
   'nremt/assets/station-run.js',
   'nremt/assets/sound-bank.js',
+  // The ochem shell. That course was cached only as pages happened to be
+  // visited, so the one page a reader opens specifically to FIND something was
+  // the one most likely not to be there when they were offline.
+  // (No apostrophes in this block: the precache test parses this list by
+  // pulling quoted strings out of the file, and one would open a string.)
+  'assets/site-search.js',
+  'ochem/index.html',
+  'ochem/learn.html',
+  'ochem/search.html',
+  'ochem/tools.html',
+  'ochem/manifest.json',
+  'ochem/assets/ochem.css',
+  'ochem/assets/ochem-nav.js',
+  'ochem/assets/curriculum.js',
+  'ochem/assets/tools-registry.js',
 ];
 
 // The question bank is 2.3 MB across its two files — an order of magnitude
@@ -110,6 +128,16 @@ const NETWORK_FIRST_EXTENSIONS = /\.(html|css|js|json)$/;
 self.addEventListener('fetch', event => {
   if(event.request.method !== 'GET') return;
   const url = new URL(event.request.url);
+
+  /* The Cache API only accepts http and https. A browser extension fetching
+     through the page arrives here as chrome-extension:// and made cache.put()
+     throw — an uncaught promise rejection on every page load for anybody with
+     the wrong extension installed, and nothing this site can do anything about
+     except decline to touch it.
+
+     Extensions are also not ours to cache even where the scheme allows it. */
+  if(url.protocol !== 'http:' && url.protocol !== 'https:') return;
+  if(url.origin !== self.location.origin) return;
   const isNetworkFirst = event.request.mode === 'navigate' || NETWORK_FIRST_EXTENSIONS.test(url.pathname);
 
   if(isNetworkFirst){
@@ -169,4 +197,72 @@ self.addEventListener('fetch', event => {
       );
     })
   );
+});
+
+/* ---- study reminders ----------------------------------------------------
+   A push wakes this worker. The push itself carries NO payload: the words are
+   fetched here, from the Worker, at the moment the notification is shown.
+
+   Two reasons, and the second is the better one. It skips the whole RFC 8291
+   encryption path (ECDH against the browser's key, HKDF, AES128GCM), which is
+   a few hundred lines whose failure mode is a push that silently never
+   arrives. And it means the text cannot be stale: a reminder queued last night
+   saying "12 due" is fetched fresh, so if the row changed, the notification
+   changed with it.
+
+   A service worker that receives a push and shows nothing gets its
+   permission revoked on most platforms, so every path below ends in a
+   notification — including the paths where the fetch failed. */
+const REMINDER_ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev';
+
+self.addEventListener('push', event => {
+  event.waitUntil((async () => {
+    let text = { title: 'Time to study', body: 'Pick up where you left off.', url: '/' };
+    try {
+      const sub = await self.registration.pushManager.getSubscription();
+      if (sub && REMINDER_ENDPOINT) {
+        const res = await fetch(
+          REMINDER_ENDPOINT + '/reminders/text?endpoint=' + encodeURIComponent(sub.endpoint),
+          { cache: 'no-store' });
+        if (res.ok) {
+          const body = await res.json();
+          if (body && body.title) text = body;
+        }
+      }
+    } catch (e) {
+      // Fall through to the default above rather than showing nothing.
+    }
+
+    await self.registration.showNotification(text.title, {
+      body: text.body,
+      icon: '/assets/icon-192.png',
+      badge: '/assets/icon-192.png',
+      // One reminder at a time. Without a tag, a device that was offline for
+      // two days delivers both at once, which is exactly the experience this
+      // is supposed to avoid.
+      tag: 'levlprep-reminder',
+      renotify: false,
+      data: { url: text.url || '/' },
+    });
+  })());
+});
+
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+  const target = (event.notification.data && event.notification.data.url) || '/';
+  event.waitUntil((async () => {
+    const all = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+    // Reuse a tab the student already has open rather than stacking another
+    // copy of the site on top of it.
+    for (const client of all) {
+      if (client.url.includes(new URL(target, self.location.origin).pathname) && 'focus' in client) {
+        return client.focus();
+      }
+    }
+    if (all.length && 'navigate' in all[0]) {
+      await all[0].focus();
+      return all[0].navigate(target);
+    }
+    return self.clients.openWindow(target);
+  })());
 });

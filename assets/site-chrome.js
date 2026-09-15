@@ -286,7 +286,24 @@
     mountTutor(cfg);
     mountAnnouncer();
     mountAnalytics();
+    mountReminders();
     mountMotion();
+  }
+
+  /* Study reminders, mounted here for the same reason as the three above: the
+     scheduler that decides what is due lives in each course, but the thing
+     that can say so belongs on every page. assets/reminders.js is inert until
+     a VAPID key is configured in it, so this is a no-op until then. */
+  function mountReminders(){
+    // Already loaded means a page asked for it directly — privacy.html does,
+    // because it carries the on/off switch and draws its own header rather
+    // than calling render(), so this hook never runs there.
+    if(window.__levlRemindersMounted || window.LevlReminders) return;
+    window.__levlRemindersMounted = true;
+    var el = document.createElement('script');
+    el.src = '/assets/reminders.js';
+    el.defer = true;
+    document.head.appendChild(el);
   }
 
   /* The XP chip, the level-up toast and the bars filling on arrival. Mounted
@@ -334,6 +351,22 @@
     if(!target.id) target.id = 'levl-main';
     target.setAttribute('data-skip-target', '');
     if(!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+
+    /* The same element is the page's main landmark, which almost no page here
+       declared: four files out of 180 had a <main>. The skip link and the
+       landmark are two answers to one question — "where does the content
+       start" — and this function has already worked it out, so a page that
+       does not say for itself gets the answer applied both ways rather than
+       only to the link.
+
+       role="main" rather than swapping the tag, because these are <div>s and
+       <section>s that pages build their own layout out of; the role is what a
+       screen reader's landmark list reads, and changing the element under a
+       page's CSS is a much larger thing to do from here. A page that already
+       declares <main> keeps it — nothing below overrides one. */
+    if(!document.querySelector('main, [role="main"]')){
+      target.setAttribute('role', 'main');
+    }
 
     var a = document.createElement('a');
     a.id = 'levlSkipLink';

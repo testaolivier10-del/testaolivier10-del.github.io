@@ -481,7 +481,8 @@
         '<small id="accountMenuState">Progress syncs automatically.</small>' +
       '</div>' +
       '<button type="button" role="menuitem" id="accountSyncBtn">Sync now</button>' +
-      '<button type="button" role="menuitem" id="accountSignOutBtn">Sign out</button>';
+      '<button type="button" role="menuitem" id="accountSignOutBtn">Sign out</button>' +
+      '<button type="button" role="menuitem" class="account-menu__danger" id="accountDeleteBtn">Delete account</button>';
     document.body.appendChild(menu);
 
     // Anchored to the button rather than fixed to a corner, so it lands under
@@ -515,8 +516,238 @@
         closeAccountMenu();
       });
     });
+    document.getElementById('accountDeleteBtn').addEventListener('click', function(){
+      closeAccountMenu();
+      openDeleteModal();
+    });
     var first = menu.querySelector('button');
     if(first) first.focus();
+  }
+
+  /* ---- deleting an account --------------------------------------------- */
+
+  /* privacy.html invoked GDPR and CCPA and then asked people to send an email,
+     which is a deletion right in the same sense that a locked door with a
+     doorbell is an exit. This is the button.
+
+     Three things this screen has to get right, and only the first is obvious.
+
+     1. It is irreversible, so it asks properly. Not window.confirm() — the
+        sign-out menu exists because that dialog was the wrong shape for a
+        decision — and not a single OK either. The word has to be typed.
+
+     2. THE ACCOUNT AND THE BROWSER ARE TWO DIFFERENT THINGS, and almost
+        nobody expects that. Progress lives in localStorage and the account is
+        a copy of it for syncing; deleting the account deletes the copy. Left
+        alone, "delete my account" would silently leave every streak, level and
+        answered question sitting in the browser the person is looking at —
+        which is either exactly what they wanted or the opposite, and they are
+        the only one who knows. So it is a checkbox, on by default because
+        somebody asking to be deleted usually means all of it, and named
+        plainly enough that turning it off is a real option.
+
+     3. It offers the backup first. This is the one action on the site that
+        destroys work on purpose, and the export already exists on
+        privacy.html; making someone go and find it, in a dialog they cannot
+        leave without starting over, is how a person loses four months of
+        study to a change of mind. progress-backup.js is loaded on demand
+        here rather than on all 101 pages that carry this file.
+
+     The delete itself is one RPC that takes no arguments: delete_own_account()
+     reads auth.uid() from the caller's verified token, so there is no id to
+     pass and therefore no id to tamper with. */
+  var deleteOverlay = null;
+  var deleteLastFocused = null;
+
+  function ensureBackupModule(cb){
+    if(window.LevlBackup){ cb(); return; }
+    var el = document.createElement('script');
+    el.src = '/assets/progress-backup.js';
+    el.onload = cb;
+    el.onerror = function(){ cb(); };  // the button below just stays disabled
+    document.head.appendChild(el);
+  }
+
+  function ensureDeleteModal(){
+    if(deleteOverlay) return deleteOverlay;
+    deleteOverlay = document.createElement('div');
+    deleteOverlay.className = 'auth-modal-overlay';
+    deleteOverlay.id = 'deleteOverlay';
+    deleteOverlay.innerHTML =
+      '<div class="auth-modal delete-modal" role="dialog" aria-modal="true" aria-labelledby="deleteTitle" aria-describedby="deleteSub">' +
+        '<button type="button" class="auth-modal-close" id="deleteClose" aria-label="Close">&times;</button>' +
+        '<h2 id="deleteTitle">Delete your account</h2>' +
+        '<p class="auth-modal-sub" id="deleteSub">This removes your account, your email address and the synced copy of your progress. It cannot be undone and we cannot get it back for you.</p>' +
+        '<form id="deleteForm">' +
+          '<div class="delete-backup">' +
+            '<p>This is the one thing on the site that deletes your work on purpose. Take a copy first — it is a single file and it can be restored later.</p>' +
+            '<button type="button" class="btn-press alt" id="deleteBackupBtn">Download a backup</button>' +
+            '<small id="deleteBackupNote" role="status" aria-live="polite"></small>' +
+          '</div>' +
+          '<label class="delete-local">' +
+            '<input type="checkbox" id="deleteLocal" checked>' +
+            '<span><b>Also erase everything saved in this browser.</b> Your streak, level, answered questions and lesson progress are stored on this device as well as in your account. Leave this on to clear both; turn it off to keep studying on this device without an account.</span>' +
+          '</label>' +
+          '<label class="delete-confirm" for="deleteConfirm">Type DELETE to confirm' +
+            '<input type="text" id="deleteConfirm" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="DELETE">' +
+          '</label>' +
+          '<div class="auth-modal-msg" id="deleteMsg" role="alert" aria-live="polite"></div>' +
+          '<button type="submit" class="auth-modal-submit delete-submit" id="deleteSubmit" disabled>Delete my account</button>' +
+        '</form>' +
+      '</div>';
+    document.body.appendChild(deleteOverlay);
+
+    deleteOverlay.addEventListener('click', function(e){
+      if(e.target === deleteOverlay) closeDeleteModal();
+    });
+    document.getElementById('deleteClose').addEventListener('click', closeDeleteModal);
+
+    var confirmInput = document.getElementById('deleteConfirm');
+    confirmInput.addEventListener('input', function(){
+      // The submit stays dead until the word is right. Accepting a near miss
+      // would make the typing ceremonial, which is the one thing it must not
+      // be.
+      document.getElementById('deleteSubmit').disabled = confirmInput.value.trim().toUpperCase() !== 'DELETE';
+    });
+
+    document.getElementById('deleteBackupBtn').addEventListener('click', function(){
+      var note = document.getElementById('deleteBackupNote');
+      var btn = this;
+      btn.disabled = true;
+      note.textContent = 'Preparing\u2026';
+      ensureBackupModule(function(){
+        btn.disabled = false;
+        if(!window.LevlBackup){ note.textContent = 'Couldn\u2019t load the backup tool. privacy.html has it too.'; return; }
+        var res = window.LevlBackup.download();
+        note.textContent = res.ok
+          ? 'Saved ' + res.keys + ' items. Keep that file somewhere you will find it.'
+          : res.error;
+      });
+    });
+
+    document.getElementById('deleteForm').addEventListener('submit', submitDelete);
+
+    document.addEventListener('keydown', function(e){
+      if(!deleteOverlay.classList.contains('open')) return;
+      if(e.key === 'Escape'){ closeDeleteModal(); return; }
+      if(e.key !== 'Tab') return;
+      var list = Array.prototype.filter.call(
+        deleteOverlay.querySelectorAll('button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'),
+        function(n){ return n.offsetParent !== null || n === document.activeElement; });
+      if(!list.length) return;
+      var f = list[0], l = list[list.length - 1];
+      if(e.shiftKey && document.activeElement === f){ e.preventDefault(); l.focus(); }
+      else if(!e.shiftKey && document.activeElement === l){ e.preventDefault(); f.focus(); }
+    });
+
+    return deleteOverlay;
+  }
+
+  function openDeleteModal(){
+    if(!currentUser) return;
+    ensureDeleteModal();
+    deleteLastFocused = document.activeElement;
+    document.getElementById('deleteConfirm').value = '';
+    document.getElementById('deleteLocal').checked = true;
+    document.getElementById('deleteSubmit').disabled = true;
+    document.getElementById('deleteSubmit').textContent = 'Delete my account';
+    document.getElementById('deleteMsg').textContent = '';
+    document.getElementById('deleteMsg').className = 'auth-modal-msg';
+    document.getElementById('deleteBackupNote').textContent = '';
+    deleteOverlay.classList.add('open');
+    document.documentElement.classList.add('auth-modal-open');
+    document.getElementById('deleteBackupBtn').focus();
+    authEvent('account-delete-opened');
+  }
+
+  function closeDeleteModal(){
+    if(!deleteOverlay) return;
+    deleteOverlay.classList.remove('open');
+    document.documentElement.classList.remove('auth-modal-open');
+    if(deleteLastFocused && deleteLastFocused.focus){ try { deleteLastFocused.focus(); } catch(e){} }
+    deleteLastFocused = null;
+  }
+
+  function submitDelete(e){
+    e.preventDefault();
+    var msg = document.getElementById('deleteMsg');
+    var btn = document.getElementById('deleteSubmit');
+    var alsoLocal = document.getElementById('deleteLocal').checked;
+    var c = getClient();
+    if(!c || !currentUser){
+      msg.className = 'auth-modal-msg error';
+      msg.textContent = 'You are not signed in any more. Reload the page and try again.';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Deleting\u2026';
+    msg.className = 'auth-modal-msg';
+    msg.textContent = '';
+
+    c.rpc('delete_own_account').then(function(res){
+      if(res && res.error){
+        // Never say "deleted" about something that is still there. Someone who
+        // believes their account is gone will not check, and will not ask.
+        btn.disabled = false;
+        btn.textContent = 'Delete my account';
+        msg.className = 'auth-modal-msg error';
+        msg.textContent = 'That didn\u2019t go through, and your account is untouched. ' +
+          'Check your connection and try again — if it keeps failing, email the address on the privacy page.';
+        return;
+      }
+
+      // Local erasure happens only AFTER the account is confirmed gone. The
+      // other order risks wiping the device for a delete that then failed,
+      // which is the worst outcome available here.
+      if(alsoLocal) clearLocalProgress();
+
+      // Sign out without pushing first. push() before signOut is the rule
+      // everywhere else in this file, and here it would be re-creating the row
+      // that was just deleted.
+      authEvent('account-deleted', { local: alsoLocal ? 'cleared' : 'kept' });
+      c.auth.signOut().then(function(){ location.reload(); }, function(){ location.reload(); });
+    }, function(){
+      btn.disabled = false;
+      btn.textContent = 'Delete my account';
+      msg.className = 'auth-modal-msg error';
+      msg.textContent = 'That didn\u2019t go through, and your account is untouched. Check your connection and try again.';
+    });
+  }
+
+  /* An allow-list, for the same reason progress-backup.js exports by one: a
+     deny-list would quietly stop covering whatever a future feature stores.
+     Here the stakes are reversed — this is the side that destroys data — so it
+     also means a key nobody added on purpose survives, which is the failure
+     worth having.
+
+     KEEP is the part that is easy to get wrong. levlprep_analytics_opt_out is
+     a standing instruction not to collect something, not progress; wiping it
+     would turn "delete my account" into "and start tracking me again", which
+     is the exact opposite of what was asked for. It is the one key that
+     outlives the account on purpose. */
+  var CLEAR_PREFIXES = ['hub_', 'nremt_', 'ochem_', 'levlprep_'];
+  var CLEAR_EXACT = ['levl_sound'];
+  var CLEAR_KEEP = ['levlprep_analytics_opt_out'];
+
+  function clearLocalProgress(store){
+    var ls = store || localStorage;
+    try {
+      var doomed = [];
+      for(var i = 0; i < ls.length; i++){
+        var k = ls.key(i);
+        if(!k || CLEAR_KEEP.indexOf(k) !== -1) continue;
+        var hit = CLEAR_EXACT.indexOf(k) !== -1;
+        for(var j = 0; !hit && j < CLEAR_PREFIXES.length; j++){
+          if(k.indexOf(CLEAR_PREFIXES[j]) === 0) hit = true;
+        }
+        if(hit) doomed.push(k);
+      }
+      // Collected first, then removed: removing inside the loop renumbers the
+      // keys under the index it is walking and skips every other one.
+      doomed.forEach(function(k){ ls.removeItem(k); });
+      return doomed;
+    } catch(e){ return []; /* nothing was stored to begin with */ }
   }
 
   /* ---- auth modal ------------------------------------------------------ */
@@ -1163,6 +1394,7 @@
     loadSdk(function(){
       var c = getClient();
       if(!c) return;
+      flushRpcQueue();
       trackPageview();
       c.auth.onAuthStateChange(handleAuthChange);
       c.auth.getSession().then(function(res){
@@ -1311,7 +1543,40 @@
     }, 5200);
   });
 
+  /* One-way write to a `security definer` RPC, for the small number of things
+     the site records that are not a user's progress: the page counter, a
+     report that a question is wrong, a client-side error.
+
+     Queued rather than dropped when the SDK has not arrived yet. Every caller
+     of this fires on page load or on an event moments after it, which is
+     exactly when the SDK is still in flight — the analytics module learned the
+     same lesson the hard way, and its events were being lost on precisely the
+     slow connections whose problems are most worth hearing about.
+
+     Resolves to true only when the write actually landed, and never rejects:
+     nothing here is important enough to break a page over. */
+  var rpcQueue = [];
+  function rpc(name, args){
+    var c = getClient();
+    if(!c){
+      if(rpcQueue.length < 10) rpcQueue.push([name, args]);
+      return Promise.resolve(false);
+    }
+    return c.rpc(name, args).then(function(res){
+      return !(res && res.error);
+    }, function(){ return false; });
+  }
+  function flushRpcQueue(){
+    var queued = rpcQueue.splice(0, rpcQueue.length);
+    queued.forEach(function(call){ rpc(call[0], call[1]); });
+  }
+
   window.StudyHubAccount = {
+    rpc: rpc,
+    /* Exported for scripts/test/account-delete.test.mjs. This one function
+       erases a student's work on purpose, so what it does and does not touch
+       is worth a test rather than a careful read. */
+    _clearLocalProgress: clearLocalProgress,
     registerNamespace: registerNamespace,
     start: start,
     push: push,

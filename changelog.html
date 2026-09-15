@@ -7,7 +7,7 @@
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>What&rsquo;s New — LevlPrep</title>
 <meta name="description" content="A dated log of what has changed on LevlPrep: new lessons, tools, question-bank edits and fixes, newest first.">
@@ -46,7 +46,7 @@
   </div>
 </div>
 
-<div class="xshell narrow" id="main" data-skip-target tabindex="-1">
+<div class="xshell narrow" id="main" role="main" data-skip-target tabindex="-1">
   <div class="hero">
     <div class="eyebrow">What&rsquo;s new</div>
     <h1>What changed, and when.</h1>
@@ -57,6 +57,17 @@
     <div class="xgrid">
       <div class="xlabel">Log</div>
       <div class="xcontent narrow log">
+
+        <h2>Telling us when something is wrong, and being told when something is due <span class="date">15 September 2026</span></h2>
+        <ul>
+          <li><span class="tag">Both</span><strong>There is a &ldquo;Report a problem&rdquo; link under every explanation now</strong> &mdash; in the results list after an exam, on the back of a flashcard, and under each Organic Chemistry question. Pick what is wrong from four options, add a sentence if you want to, send. No account needed and nothing about you is recorded with it. <a href="sources.html#mistakes">Sources</a> promised a way to do this from the day it was written and never actually gave one; the only address on the site was at the bottom of the privacy policy.</li>
+          <li><span class="tag">Both</span><strong>The site can remind you when something is due.</strong> One notification a day, at a time you pick, and only when you genuinely have questions waiting or a streak about to lapse &mdash; it stops by itself after three unanswered days. Off unless you turn it on, in <a href="privacy.html#reminders">Privacy</a>. The number in it is worked out in your browser; we are told a number and a sentence, not what you have been studying.</li>
+          <li><span class="tag">Site</span><strong>You can delete your account yourself</strong>, from the account menu. It used to be an email request. The same screen offers you a backup file first and can erase this browser&rsquo;s copy too, since your progress lives in both places and almost nobody expects that.</li>
+          <li><span class="tag">Ochem</span><strong>A search page for the whole course</strong> &mdash; the textbook, all 58 lessons, the mechanism walkthroughs, the seven tools and every practice question, in one box. The textbook rail could already search its own prose, but nothing could find a lesson, a mechanism or a tool, so working out where something was explained meant guessing.</li>
+          <li><span class="tag">Site</span><strong>Several colours were hard to read and now are not.</strong> The green used for small labels and buttons failed the contrast standard for text, as did the amber in the &ldquo;watch out for this&rdquo; boxes in the Organic Chemistry notes &mdash; which were, by some distance, the least readable thing on the site. Both are darker now.</li>
+          <li><span class="tag">Ochem</span>The 3D figures in the textbook carried <strong>208 keyboard stops that did nothing</strong> &mdash; the atoms are clickable in the tools, and the textbook was reusing pictures of them. Tabbing through a chapter now goes where you would expect, and the wide figures can be scrolled from the keyboard.</li>
+          <li><span class="tag">Site</span>Corrections to questions are the point of the report link above; when one is made it is listed here, dated, as it always has been.</li>
+        </ul>
 
         <h2>Coming back is easier than it was <span class="date">14 September 2026</span></h2>
         <ul>
@@ -140,7 +151,9 @@
     </footer>
   </div>
 </div>
+<script src="assets/errors.js" defer></script>
 <script src="assets/account.js" defer></script>
+<script src="assets/reminders.js" defer></script>
 <script src="assets/hub-progress.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function(){

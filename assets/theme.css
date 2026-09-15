@@ -37,7 +37,15 @@
      buttons. #106D60 keeps the hue and clears AA at 6.2:1 on white, 5.4:1 on
      --tint-accent. --accent-bright is the old mint, kept for the places where
      the colour is decoration rather than text: bar fills, rules, dots. */
-  --accent:#1C8C7B;      /* primary teal — safe for text and for fills */
+  /* Primary teal. Darkened from #1C8C7B, which the comment here used to call
+     "safe for text and for fills" and which was neither: 4.13:1 against white
+     and 3.55:1 against the tinted panel, where WCAG AA asks for 4.5:1 on text.
+     It failed on ten of the twelve page shapes scripts/check-a11y.mjs samples,
+     on exactly the small bold labels this colour exists for — and white text
+     on the same green as a button fill failed by the same ratio, so one value
+     was two failures. This clears both: 5.81:1 on white, 4.99:1 on the tint.
+     Do not lighten it back without re-running that check. */
+  --accent:#127264;
   --accent-press:#156D60;
   --accent-bright:#35B39F;
   --amber:#E0A63C;       /* streaks, "in progress" */
@@ -60,7 +68,12 @@
 
   /* Text */
   --ink:#1B2A26;
-  --muted:#55706A;
+  /* Secondary text. Darkened from #55706A, which cleared 4.5:1 on white and on
+     the standard surface but landed at 4.47:1 on the Organic Chemistry course
+     tint — under the line by three hundredths, on the lede of every ochem page.
+     A colour that passes on one course's panel and fails on the other's is the
+     kind of thing only a checker finds. 4.74:1 on the ochem tint now. */
+  --muted:#526C66;
   --on-accent:#FFFFFF;   /* text on a solid navy/bad fill — white in both themes */
   /* Text on a solid --accent fill, which is NOT the same thing: dark mode lifts
      the accent to a bright mint that white text cannot sit on (2.37:1). Kept
@@ -983,6 +996,54 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 }
 .auth-modal-toggle button:hover{text-decoration:underline;}
 
+/* ---- reporting a bad question (assets/report-question.js) --------------
+   Deliberately built out of the auth dialog's own classes above rather than a
+   second set: there is one design system here, and the two per-course copies
+   that once existed drifted apart and cost the NREMT course its mute-button
+   styling. Only what is genuinely new to this dialog is below.
+
+   The button is quiet on purpose. It sits under an explanation, next to the
+   thing the reader actually came for, and a loud one there would read as an
+   invitation to disagree rather than a way out if they do. */
+.report-btn{
+  border:none;background:transparent;color:var(--muted);font-family:inherit;
+  font-weight:800;font-size:11.5px;cursor:pointer;padding:4px 2px;
+  text-decoration:underline;text-underline-offset:3px;
+}
+.report-btn:hover{color:var(--ink);}
+.report-btn.is-reported{
+  /* Not disabled-looking-broken: it is a receipt. Someone who has just pressed
+     it needs to see that it worked, or they press it again. */
+  color:var(--good-text);text-decoration:none;cursor:default;opacity:1;
+}
+.report-modal .report-reasons{
+  border:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;
+}
+.report-modal .report-reasons legend{
+  padding:0;margin-bottom:6px;font-size:12px;font-weight:900;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.04em;
+}
+.report-reason{
+  display:flex;flex-direction:row;align-items:center;gap:9px;cursor:pointer;
+  padding:8px 10px;border-radius:10px;font-size:13.5px;font-weight:700;
+  color:var(--ink);text-transform:none;letter-spacing:0;
+}
+.report-reason:hover{background:var(--hover-tint);}
+.report-reason input{width:auto;margin:0;accent-color:var(--accent);}
+.report-note-label span{
+  font-weight:700;color:var(--muted);text-transform:none;letter-spacing:0;opacity:.8;
+}
+.report-modal textarea{
+  /* Matched to .auth-modal input above: same surface, same radius, no border. */
+  width:100%;box-sizing:border-box;border-radius:var(--radius-sm);padding:12px 13px;
+  border:0;background:var(--surface2);color:var(--ink);
+  font-family:inherit;font-weight:600;line-height:1.5;resize:vertical;
+  /* 16px, so iOS does not zoom the page the moment this is focused — the same
+     reason every input in the auth dialog is 16px. */
+  font-size:16px;
+}
+.report-modal textarea:focus{outline:2px solid var(--accent);outline-offset:1px;}
+
 /* The signed-in menu. Replaces a window.confirm(), which could not show
    whether the work in this browser had actually reached the account yet —
    the one fact worth knowing before signing out. */
@@ -1000,6 +1061,42 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 }
 .account-menu button:hover{background:var(--hover-tint);}
 .account-menu button[disabled]{opacity:.55;cursor:default;}
+/* Separated and coloured, because it is the one item in this menu that
+   destroys something. Not hidden behind a second menu: a deletion right you
+   have to hunt for is the thing this replaced. */
+.account-menu__danger{
+  margin-top:6px;padding-top:10px;border-top:1px solid var(--line-soft);
+  color:var(--bad-text);
+}
+.account-menu__danger:hover{background:var(--hover-tint);}
+
+/* ---- deleting an account (assets/account.js) --------------------------- */
+.delete-modal .delete-backup{
+  background:var(--surface2);border-radius:var(--radius-sm);padding:13px 14px;
+  display:flex;flex-direction:column;gap:9px;align-items:flex-start;
+}
+.delete-modal .delete-backup p{margin:0;font-size:13px;font-weight:700;color:var(--muted);line-height:1.5;}
+.delete-modal .delete-backup small{font-size:11.5px;font-weight:700;color:var(--muted);min-height:1.3em;}
+.delete-local{
+  flex-direction:row;align-items:flex-start;gap:10px;cursor:pointer;
+  font-size:13px;font-weight:600;color:var(--ink);line-height:1.5;
+  text-transform:none;letter-spacing:0;
+}
+.delete-local input{width:auto;margin:2px 0 0;accent-color:var(--accent);flex:none;}
+.delete-local b{font-weight:900;}
+.delete-confirm input{
+  /* 16px like every other field in a dialog here: iOS zooms the page in on
+     anything smaller, and a confirmation that lurches sideways on tap is the
+     last thing this particular screen needs. */
+  font-size:16px;letter-spacing:.08em;text-transform:uppercase;
+}
+/* --bad-text is a deep red in light mode and a light pink in dark mode, since
+   it is normally ink on the page background. As a BUTTON FILL that flips which
+   side needs the light text, so the label is set per theme rather than pinned
+   to white and left unreadable in one of them. */
+.delete-submit{background:var(--bad-text);color:#fff;}
+[data-theme="dark"] .delete-submit{color:#2A1110;}
+.delete-submit[disabled]{opacity:.45;cursor:not-allowed;}
 
 @media (prefers-reduced-motion:reduce){
   .auth-modal-overlay,.auth-strength__bar i{transition:none;}

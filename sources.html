@@ -7,7 +7,7 @@
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sources &amp; How the Questions Are Written — LevlPrep</title>
 <meta name="description" content="Who makes LevlPrep, what the NREMT-EMT questions and the Organic Chemistry course are written against, how they are checked, and how to report a mistake.">
@@ -47,7 +47,7 @@
   </div>
 </div>
 
-<div class="xshell narrow" id="main" data-skip-target tabindex="-1">
+<div class="xshell narrow" id="main" role="main" data-skip-target tabindex="-1">
   <div class="hero">
     <div class="eyebrow">Sources</div>
     <h1>Where this material comes from.</h1>
@@ -99,6 +99,10 @@
 
         <h2 id="mistakes">When something is wrong</h2>
         <p>No bank of two thousand questions is free of mistakes, and no script can check whether an answer is clinically right. When a key or an explanation is corrected, the change is listed on <a href="changelog.html">What&rsquo;s new</a> with the date, so you can see what moved since you last studied. Where a question and your program's material disagree, <strong>your program's material wins</strong> on your state's exam.</p>
+        <h3>Telling us</h3>
+        <p>Under every explanation &mdash; in the results list after an exam, on the back of a flashcard, and after each Organic Chemistry question &mdash; there is a <strong>Report a problem</strong> link. It takes one tap: pick what&rsquo;s wrong from four options, add a sentence if you want to, send. You do not need an account and nothing about you is recorded with it.</p>
+        <p>That is the fastest route and the one worth using, because it arrives already knowing which question you meant. If you would rather write, or the problem is with something that isn&rsquo;t a question, the address is at the bottom of the <a href="privacy.html#contact">privacy page</a>.</p>
+        <p>This page promised a way to report a mistake for a long time before there was one. There is now.</p>
 
       </div>
     </div>
@@ -110,7 +114,9 @@
     </footer>
   </div>
 </div>
+<script src="assets/errors.js" defer></script>
 <script src="assets/account.js" defer></script>
+<script src="assets/reminders.js" defer></script>
 <script src="assets/hub-progress.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function(){

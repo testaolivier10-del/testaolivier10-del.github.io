@@ -43,6 +43,12 @@ jobs:
         run: |
           node scripts/build-tutor-bank.mjs
           git diff --exit-code -- nremt/assets/tutor-bank.json ochem/assets/tutor-bank.json
+      # The single-file Worker, flattened from worker/src/ so it can be pasted
+      # into Cloudflare's dashboard with nothing installed. Of everything
+      # generated here this is the one where going stale means the WRONG CODE
+      # RUNS IN PRODUCTION, rather than a missing tag or a broken link.
+      - name: the pasteable Worker matches its source
+        run: node scripts/build-worker.mjs --check
 
   unit-tests:
     runs-on: ubuntu-latest
@@ -55,3 +61,41 @@ jobs:
       # the spaced-repetition schedule. No dependencies — node:test and a VM
       # context standing in for a browser (scripts/test/harness.mjs).
       - run: node --test scripts/test/*.test.mjs
+
+  # Weight lives with the fast checks because it needs nothing to run: it reads
+  # the files off disk and gzips them. No browser, no install, no network.
+  page-weight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # What a page costs on arrival, against a number written down. The bank
+      # split took the first question from 4467 ms to 2394 ms and the fonts
+      # were pulled off a third-party CDN; nothing defended either afterwards.
+      - run: node scripts/check-weight.mjs --check
+
+  # Its own job because it is the only thing here that needs a browser. Bolting
+  # it onto check-links-and-json would make the check people actually wait for
+  # take a minute instead of seconds.
+  accessibility:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # --no-save, so nothing is committed and the repo keeps having no
+      # package.json — the no-build-step stack is the point, and this is a CI
+      # tool rather than a dependency of the site.
+      - name: install the checker
+        run: |
+          npm i --no-save playwright@1.49.1 axe-core@4.10.2
+          npx playwright install --with-deps chromium
+      # axe-core over one page of every SHAPE the site has, plus the three
+      # things axe cannot check because they are this site's own decisions:
+      # the skip link actually landing somewhere focusable, and the main and
+      # nav landmarks surviving the runtime-rendered header.
+      - name: axe-core, and the site's own accessibility rules
+        run: node scripts/check-a11y.mjs --check

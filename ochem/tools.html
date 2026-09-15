@@ -7,7 +7,7 @@
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tools — Organic Chemistry</title>
 <meta name="description" content="Seven interactive organic chemistry tools: an arrow pusher that shows you the product, a resonance explorer, a 3D molecule viewer, a conformation lab, a reaction predictor, an acid/base comparator, and a spectroscopy lab.">
@@ -25,6 +25,7 @@
 <!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Deferred, like every script on the page, so the page paints
      before they arrive; they still run first, in this order. -->
+<script src="../assets/errors.js" defer></script>
 <script src="../assets/account.js" defer></script>
 <script src="../assets/hub-progress.js" defer></script>
 <script src="../assets/chime.js" defer></script>
@@ -91,6 +92,11 @@
       <a class="tool-tile" href="tools/acid-base.html"><span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 8h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M5 8 2.5 14h5zM19 8l-2.5 6h5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 20h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="tool-tile__name">Acid/Base Comparator</span><span class="tool-tile__tag">Two structures. Which proton comes off first?</span><span class="tool-tile__blurb">Compare acids, rank four at once, or find which proton comes off first, from measured pKa.</span><span class="tool-tile__foot"><span>pKa, conjugate base stability</span><span class="tool-tile__go">Open &rarr;</span></span></a>
       <a class="tool-tile" href="tools/spectroscopy.html"><span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 16c2 0 2-8 4-8s2 5 4 5 2-9 4-9 2 12 4 12 2-4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="tool-tile__name">Spectroscopy Lab</span><span class="tool-tile__tag">Read the peaks, name the compound.</span><span class="tool-tile__blurb">An IR spectrum that explains its regions, a ¹H NMR predictor for any structure, and a puzzle mode.</span><span class="tool-tile__foot"><span>IR, ¹H NMR, degrees of unsaturation</span><span class="tool-tile__go">Open &rarr;</span></span></a>
     </div>
+    <!-- Outside the tile grid on purpose: check #9 in scripts/check-site.mjs
+         compares the .tool-tile anchors above byte-for-byte against
+         tools-registry.js, and search is a way of getting somewhere rather
+         than a tool with a page of its own to register. -->
+    <p class="tools-search-note">Or <a href="search.html">search the whole course at once</a> &mdash; the textbook, every lesson and mechanism, these tools, and every practice question.</p>
   </div>
 </div>
 

@@ -31,14 +31,14 @@
   background:var(--tint-amber);border:var(--bw) solid var(--amber);border-radius:var(--radius-lg);
   padding:18px 20px;margin-bottom:18px;
 }
-.dep-alert .k{font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--amber-press);margin-bottom:6px;}
+.dep-alert .k{font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--amber-text);margin-bottom:6px;}
 .dep-alert .msg{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:10px;}
 .dep-alert .prereqs{display:flex;flex-wrap:wrap;gap:8px;}
 .dep-alert .prereqs a, .dep-alert .prereqs span{
   font:800 12.5px var(--font-ui);padding:6px 12px;border-radius:var(--radius-pill);
   text-decoration:none;color:var(--ink);background:var(--white);border:1px solid var(--line);
 }
-.dep-alert .prereqs a{color:var(--accent-press);border-color:var(--accent);}
+.dep-alert .prereqs a{color:var(--accent-text);border-color:var(--accent);}
 
 /* ==========================================================================
    Lesson pages (used by every mechanisms/*.html and lessons/*.html file).
@@ -103,13 +103,13 @@
 .step-body{font-size:15px;font-weight:600;color:var(--ink);line-height:1.6;margin:0 0 18px;}
 .step-body b{color:var(--ink);}
 .formula{
-  font:900 17px var(--font-mono);background:var(--tint-accent);color:var(--accent-press);
+  font:900 17px var(--font-mono);background:var(--tint-accent);color:var(--accent-text);
   border-radius:var(--radius);padding:14px 18px;margin:0 0 18px;text-align:center;
 }
 
 .prereq-note{
   display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--tint-accent);
-  border-radius:var(--radius);padding:10px 14px;margin:0 0 18px;font:800 12.5px var(--font-ui);color:var(--accent-press);
+  border-radius:var(--radius);padding:10px 14px;margin:0 0 18px;font:800 12.5px var(--font-ui);color:var(--accent-text);
 }
 
 .scene{background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);padding:20px 10px;margin-bottom:18px;user-select:none;}
@@ -143,9 +143,12 @@
 .mini-progress span.done{background:var(--accent);}
 
 .actions{display:flex;justify-content:flex-end;gap:10px;}
+/* Under the Next button, not beside it: the way on is the primary action and
+   this must not compete with it. See assets/report-question.js. */
+.q-report{margin-top:8px;text-align:right;}
 .btn-press:disabled{opacity:.45;cursor:default;}
 .explain-box{background:var(--tint-accent);border-radius:var(--radius);padding:16px 18px;font-size:14.5px;font-weight:600;line-height:1.6;margin-bottom:18px;color:var(--ink);}
-.explain-box b{color:var(--accent-press);}
+.explain-box b{color:var(--accent-text);}
 
 /* Plain-English primer for a term a lesson leans on before the module that
    owns it. Module 2 (leaving groups, nucleophiles) needs acid/base/pKa
@@ -172,7 +175,7 @@
 .lesson-resume-note{background:var(--tint-accent);border-radius:var(--radius);padding:10px 16px;font:700 13.5px var(--font-ui);color:var(--ink);margin-bottom:10px;line-height:1.5;}
 .lesson-resume-note a{font-weight:800;margin-left:4px;white-space:nowrap;}
 .notes-view{padding-bottom:4px;}
-.notes-view h3{font:900 15.5px var(--font-ui);color:var(--accent-press);margin:22px 0 8px;}
+.notes-view h3{font:900 15.5px var(--font-ui);color:var(--accent-text);margin:22px 0 8px;}
 .notes-view h3:first-child{margin-top:0;}
 .notes-view .step-body{margin-bottom:14px;}
 .notes-view .scene{margin-bottom:14px;}
@@ -200,7 +203,12 @@
 .notes-example p:last-child{margin-bottom:0;}
 .notes-pitfall{
   background:var(--tint-amber);border-radius:var(--radius);padding:12px 16px;
-  font-size:14px;font-weight:700;color:var(--amber-press);margin-bottom:14px;line-height:1.55;
+  /* --amber-text, not --amber-press. The press colour is a button's pressed
+     state, and as text on the amber tint it measured 2.89:1 against a 4.5:1
+     requirement — the least readable thing on the site, on a box whose entire
+     job is warning somebody about a mistake they are about to make.
+     --amber-text already existed for exactly this and was not being used. */
+  font-size:14px;font-weight:700;color:var(--amber-text);margin-bottom:14px;line-height:1.55;
 }
 .notes-pitfall b{color:inherit;}
 .notes-table{width:100%;border-collapse:collapse;margin-bottom:16px;font-family:var(--font-ui);}
@@ -395,7 +403,7 @@
 .snapshot .cell .k{font:900 10.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
 .snapshot .cell .v{font:900 22px var(--font-mono);color:var(--ink);margin-top:2px;line-height:1.1;}
 .snapshot .cell .v.accent{color:var(--accent);}
-.snapshot .cell .v.warn{color:var(--amber-press);}
+.snapshot .cell .v.warn{color:var(--amber-text);}
 .snapshot .cell .s{font:700 11.5px var(--font-ui);color:var(--muted);margin-top:2px;}
 
 /* ---- mode grid ---- */
@@ -448,7 +456,7 @@ a.mode-card{text-decoration:none;display:block;}
 .concept-row .pct{flex:0 0 40px;text-align:right;font:900 12.5px var(--font-mono);color:var(--muted);}
 .concept-row .drill{
   flex-shrink:0;border:1px solid var(--line);background:var(--white);border-radius:var(--radius-pill);
-  padding:5px 12px;font:800 11.5px var(--font-ui);color:var(--accent-press);cursor:pointer;
+  padding:5px 12px;font:800 11.5px var(--font-ui);color:var(--accent-text);cursor:pointer;
 }
 .concept-row .drill:hover{border-color:var(--accent);background:var(--tint-accent);}
 
@@ -477,8 +485,8 @@ a.mode-card{text-decoration:none;display:block;}
   padding:5px 12px;font:800 11.5px var(--font-ui);color:var(--muted);
   transition:border-color .1s ease,color .1s ease,background .1s ease;
 }
-.flag-btn:hover{border-color:var(--accent);color:var(--accent-press);background:var(--tint-accent);}
-.flag-btn.active{border-color:var(--amber);background:var(--tint-amber);color:var(--amber-press);}
+.flag-btn:hover{border-color:var(--accent);color:var(--accent-text);background:var(--tint-accent);}
+.flag-btn.active{border-color:var(--amber);background:var(--tint-amber);color:var(--amber-text);}
 .flag-btn.active svg{fill:currentColor;}
 
 /* Back / forward through answered cards. */
@@ -520,7 +528,7 @@ a.mode-card{text-decoration:none;display:block;}
 /* ---- interactive answer widgets ---- */
 .click-hint{
   display:flex;align-items:center;gap:8px;background:var(--tint-accent);border-radius:var(--radius);
-  padding:10px 14px;font:800 12.5px var(--font-ui);color:var(--accent-press);margin-bottom:14px;
+  padding:10px 14px;font:800 12.5px var(--font-ui);color:var(--accent-text);margin-bottom:14px;
 }
 .order-list{list-style:none;padding:0;margin:0 0 18px;display:flex;flex-direction:column;gap:8px;}
 .order-list li{
@@ -529,7 +537,7 @@ a.mode-card{text-decoration:none;display:block;}
 }
 .order-list .rank{
   flex-shrink:0;width:26px;height:26px;border-radius:8px;background:var(--tint-accent);
-  color:var(--accent-press);font:900 13px var(--font-mono);display:flex;align-items:center;justify-content:center;
+  color:var(--accent-text);font:900 13px var(--font-mono);display:flex;align-items:center;justify-content:center;
 }
 .order-list .txt{flex:1;font:800 14px var(--font-ui);min-width:0;}
 .order-list .mv{display:flex;gap:4px;flex-shrink:0;}
@@ -573,7 +581,7 @@ a.mode-card{text-decoration:none;display:block;}
   background:var(--tint-amber);border-radius:var(--radius);padding:12px 16px;margin-top:12px;
   font:700 13px var(--font-ui);color:var(--ink);line-height:1.55;
 }
-.prereq-warn b{color:var(--amber-press);}
+.prereq-warn b{color:var(--amber-text);}
 
 .delta-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
 .delta-chip{
@@ -597,7 +605,7 @@ a.mode-card{text-decoration:none;display:block;}
   background:var(--tint-accent);border-radius:var(--radius);padding:14px 18px;
   font-size:14px;font-weight:700;line-height:1.6;color:var(--ink);
 }
-.next-up b{color:var(--accent-press);}
+.next-up b{color:var(--accent-text);}
 
 @media (max-width:520px){
   .concept-row .track{flex-basis:56px;}
@@ -624,12 +632,12 @@ a.mode-card{text-decoration:none;display:block;}
 }
 .med-btn{
   border:1px solid var(--line);background:var(--white);border-radius:var(--radius-pill);
-  padding:6px 14px;font:800 12px var(--font-ui);color:var(--accent-press);cursor:pointer;
+  padding:6px 14px;font:800 12px var(--font-ui);color:var(--accent-text);cursor:pointer;
 }
 .med-btn:hover:not(:disabled){border-color:var(--accent);background:var(--tint-accent);}
 .med-btn:disabled{opacity:.4;cursor:default;}
 .med-status{
-  margin-top:8px;font:700 13px var(--font-ui);color:var(--amber-press);
+  margin-top:8px;font:700 13px var(--font-ui);color:var(--amber-text);
 }
 /* Always in the DOM so it can be a live region, so it must take no room when
    it has nothing to say. */
@@ -919,3 +927,9 @@ a.mode-card{text-decoration:none;display:block;}
 @media (max-width:560px){
   .lesson-links-label{min-width:0;flex-basis:100%;}
 }
+
+/* The way out of the tools grid to the search page (ochem/tools.html). */
+.tools-search-note{
+  margin:26px 0 0;font-size:14px;font-weight:700;color:var(--muted);line-height:1.6;
+}
+.tools-search-note a{color:var(--accent);font-weight:900;}

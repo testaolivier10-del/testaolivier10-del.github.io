@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Search — LevlPrep</title>
 <meta name="description" content="Search across the study notes, glossary, mnemonics, flowcharts, and skills guide on this site.">
@@ -26,10 +26,12 @@
      streak. Deferred, like every script on the page, so the page paints
      before they arrive; they still run first, in this order, and the
      page's own inline script waits for DOMContentLoaded. -->
+<script src="../assets/errors.js" defer></script>
 <script src="../assets/account.js" defer></script>
 <script src="../assets/hub-progress.js" defer></script>
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
+<script src="../assets/site-search.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <style>
 
@@ -99,6 +101,7 @@
   <p class="lede">Notes, glossary, mnemonics, diagrams, scenarios and the skills guide.</p>
   </div>
 
+  <label class="sr-only" for="searchBox">Search this site</label>
   <input type="search" id="searchBox" placeholder="Search this site… (e.g. &quot;OPQRST&quot;, &quot;tension pneumothorax&quot;)" autocomplete="off">
   <div class="search-status" id="searchStatus">Building search index…</div>
   <div id="results"></div>
@@ -171,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function(){
       // Deep link straight to the one question, which practice.html opens on its
       // own in review mode. Without the index a question result could only land
       // the reader on the exam start screen with no way back to what they found.
-      file: 'practice.html?q=' + i,
+      file: 'practice.html?q=' + (typeof q.id === 'number' ? q.id : i),
       heading: q.domain + (q.topic ? ' — ' + q.topic : ''),
       text: q.q + ' ' + (q.explain || ''),
       isQuestion: true,
@@ -206,74 +209,32 @@ document.addEventListener('DOMContentLoaded', function(){
     if(searchBox.value.trim()) runSearch(searchBox.value.trim());
   }
 
-  function escapeHtml(s){
-    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  }
+  // Matching, ranking and snippet highlighting live in /assets/site-search.js,
+  // shared with ochem's search page. They used to live here, and the moment a
+  // second course wanted a search page the choice was to share them or copy
+  // them — and the two per-course copies of theme.css are what copying them
+  // looks like eighteen months later.
+  const S = window.LevlSearch;
 
-  const escapeRe = s => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const tokenize = q => q.toLowerCase().split(/\s+/).filter(Boolean);
-
-  // Highlight AFTER escaping, matching against the escaped text — marking the raw
-  // string first and escaping afterwards would eat its own <mark> tags, and
-  // marking raw text with a raw pattern misses any term containing & < > ' or ".
-  function highlight(text, terms){
-    const first = terms
-      .map(t => text.toLowerCase().indexOf(t))
-      .filter(i => i !== -1)
-      .sort((a, b) => a - b)[0];
-    const start = first === undefined ? 0 : Math.max(0, first - 60);
-    const end = Math.min(text.length, start + 220);
-    let snippet = escapeHtml(text.slice(start, end));
-    if(start > 0) snippet = '… ' + snippet;
-    if(end < text.length) snippet = snippet + ' …';
-    for(const t of terms){
-      snippet = snippet.replace(new RegExp('(' + escapeRe(escapeHtml(t)) + ')', 'ig'), '<mark>$1</mark>');
-    }
-    return snippet;
-  }
-
-  // Every term has to appear somewhere in the chunk (AND, not OR), which is what
-  // makes a natural phrase like "chest pain nitroglycerin" work — matching the
-  // whole query as one literal substring returned nothing for anything but an
-  // exact quotation. A chunk scores higher when terms land in its heading, and
-  // higher again when the whole phrase appears intact.
   function runSearch(q){
     if(!q){ resultsEl.innerHTML = ''; return; }
-    const terms = tokenize(q);
+    const terms = S.tokenize(q);
     if(!terms.length){ resultsEl.innerHTML = ''; return; }
-    const phrase = q.toLowerCase().trim();
 
-    const scored = INDEX
-      .map(c => {
-        const h = c.heading.toLowerCase(), t = c.text.toLowerCase();
-        let score = 0;
-        for(const term of terms){
-          const inH = h.includes(term), inT = t.includes(term);
-          if(!inH && !inT) return null;
-          score += (inH ? 2 : 0) + (inT ? 1 : 0);
-        }
-        if(terms.length > 1 && (h.includes(phrase) || t.includes(phrase))) score += 4;
-        return { ...c, score };
-      })
-      .filter(Boolean)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 40);
-
-    if(scored.length === 0){
-      resultsEl.innerHTML = `<p class="empty-note">No results for "${escapeHtml(q)}".</p>`;
+    const hits = S.rank(INDEX, q, { limit: 40 });
+    if(!hits.length){
+      resultsEl.innerHTML = `<p class="empty-note">No results for "${S.escapeHtml(q)}".</p>`;
       return;
     }
-    resultsEl.innerHTML = scored.map(c => {
-      // Question results carry their own ?q= deep link already; page results get a
-      // text fragment so the browser scrolls to the match. A fragment is built from
-      // the longest term rather than the whole query, which rarely appears verbatim.
-      const longest = terms.slice().sort((a, b) => b.length - a.length)[0];
-      const href = c.isQuestion ? c.file : c.file + '#:~:text=' + encodeURIComponent(longest);
+    resultsEl.innerHTML = hits.map(c => {
+      // Question results carry their own ?q= deep link already; page results get
+      // a text fragment so the browser scrolls to the match.
+      const href = c.isQuestion ? c.file : S.textFragment(c.file, terms);
       return `
-        <a class="result" href="${href}">
-          <div class="result-page">${escapeHtml(c.page)}</div>
-          <div class="result-heading">${escapeHtml(c.heading)}</div>
-          <div class="result-snippet">${highlight(c.text, terms)}</div>
+        <a class="result" href="${S.escapeHtml(href)}">
+          <div class="result-page">${S.escapeHtml(c.page)}</div>
+          <div class="result-heading">${S.escapeHtml(c.heading)}</div>
+          <div class="result-snippet">${c.snippet}</div>
         </a>
       `;
     }).join('');
