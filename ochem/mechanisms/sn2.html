@@ -159,7 +159,7 @@
 
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Setup</div>
   </div>
 
   <div class="lesson-card" id="card"></div>
@@ -296,7 +296,12 @@ document.addEventListener('DOMContentLoaded', function(){
   function updateProgress(){
     var pct = Math.round((Math.min(step, TOTAL_STEPS) / TOTAL_STEPS) * 100);
     progFill.style.width = pct + '%';
-    progLabel.textContent = 'Step ' + (Math.min(step, TOTAL_STEPS) + 1) + ' / ' + (TOTAL_STEPS + 1);
+    // Cards 0 and TOTAL_STEPS are the intro and the summary; the seven in
+    // between are the numbered steps the eyebrows announce. Counting all nine
+    // put "Step 2 / 9" above a card headed "Step 1 · Identify".
+    progLabel.textContent = step <= 0 ? 'Setup'
+      : (step >= TOTAL_STEPS ? 'Complete'
+        : 'Step ' + step + ' / ' + (TOTAL_STEPS - 1));
   }
 
   function atomEl(key, a, extraClass){
@@ -386,7 +391,7 @@ document.addEventListener('DOMContentLoaded', function(){
       '<h2 class="step-title">Nucleophile meets electrophile.</h2>' +
       '<p class="step-body">A <b>nucleophile</b> ("nucleus-loving") is electron-rich — it has a lone pair or negative charge it wants to donate. An <b>electrophile</b> ("electron-loving") is electron-poor and can accept that pair. In an SN2 reaction, the nucleophile attacks an electrophilic carbon and kicks out a <b>leaving group</b> in a single step.</p>' +
       sceneSvg() +
-      '<p class="step-body" style="margin-bottom:0;">Below: <b>' + mol.nucleophileLabel + '</b> and <b>' + mol.substrateLabel + '</b>. You’ll identify each part yourself.</p>' +
+      '<p class="step-body" style="margin-bottom:0;">Above: <b>' + mol.nucleophileLabel + '</b> and <b>' + mol.substrateLabel + '</b>. You’ll identify each part yourself.</p>' +
       nextButton('Continue', true);
     card.querySelector('#nextBtn').addEventListener('click', function(){ step = 1; render(); });
   }

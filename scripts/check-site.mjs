@@ -180,6 +180,24 @@ function countSteps(body) {
 // over cannot be held to the target on day one without failing every build
 // until the content is rewritten. Lower them as that work lands. Do not raise
 // them — raising one is a decision to make the bank more guessable.
+// Below this many single-word-bearing items the rate is noise, not a tell.
+const MIN_WORDING_SAMPLE = 30;
+
+const WORDING_TELLS = [
+  {
+    label: 'an absolute word (always/never/only/must/immediately)',
+    re: /\b(?:always|never|only|must|immediately)\b/i,
+    threshold: 'absoluteFloor',
+    direction: 'marks-wrong',
+  },
+  {
+    label: 'a hedge ("per protocol"/"as appropriate"/"generally")',
+    re: /(?:per protocol|as appropriate|generally)/i,
+    threshold: 'hedgeCeiling',
+    direction: 'marks-right',
+  },
+];
+
 const BANKS = [
   {
     label: 'questions.json',
@@ -191,6 +209,9 @@ const BANKS = [
     positionCeiling: 0.4,
     lengthCeiling: 0.32,
     trueFalseCeiling: null,
+    // Measured 6.6% and 42.9% when the wording tells were first guarded.
+    absoluteFloor: 0.06,
+    hedgeCeiling: 0.43,
   },
   {
     label: 'practice-bank.json',
@@ -209,6 +230,12 @@ const BANKS = [
     // 74% of true/false items key to "True". Chance is 50% and the shuffle is
     // pinned, so this is the whole tell — it is not diluted by anything.
     trueFalseCeiling: 0.75,
+    // Measured 3.0% absolute. The hedge tell here was 13 for 13 — a perfect
+    // giveaway, but on a sample too small for MIN_WORDING_SAMPLE to assert on,
+    // so it is recorded here rather than guarded. If ochem grows past thirty
+    // single-hedge items, this ceiling starts biting; keep it honest.
+    absoluteFloor: 0.03,
+    hedgeCeiling: 0.5,
   },
 ];
 
@@ -290,6 +317,52 @@ for (const spec of BANKS) {
     const [topSet, topN] = Object.entries(sets).sort((a, b) => b[1] - a[1])[0];
     if (topN / multi.length > spec.positionCeiling) {
       fail(`${spec.label}: ${topN}/${multi.length} select-N items key to the same set ${topSet}. Permute the stored options.`);
+    }
+  }
+
+  // (e) and (f): wording tells. Position and length are about the shape of an
+  // option; these two are about its vocabulary, and the option shuffle is no
+  // help against either — reordering does not change how an option is worded.
+  //
+  // The direction matters and it is opposite for the two lists. An absolute
+  // word marks a WRONG answer, because distractors get written as strawmen
+  // ("ALWAYS apply a tourniquet first") while keys get written carefully. A
+  // hedge marks a RIGHT one, for the mirror-image reason: the key is the option
+  // allowed to be cautious. So one gets a floor and the other a ceiling, and
+  // both are measured on items where exactly ONE option carries such a word —
+  // that is the case a student can actually act on.
+  //
+  // A tell this mechanical is worth more than its size suggests: 441 of the
+  // NREMT bank's items have a single absolute-worded option, and the key was
+  // that option 6.6% of the time against a 25% baseline. A student who learns
+  // one rule eliminates an option on a fifth of the bank.
+  if (mc.length) {
+    for (const probe of WORDING_TELLS) {
+      const ceiling = spec[probe.threshold];
+      if (ceiling === undefined || ceiling === null) continue;
+      let n = 0, keyed = 0, chanceSum = 0;
+      for (const q of mc) {
+        if (!Array.isArray(q.options)) continue;
+        const hits = q.options.reduce((acc, o, i) => (probe.re.test(String(o)) ? acc.concat(i) : acc), []);
+        if (hits.length !== 1) continue;
+        n++;
+        chanceSum += 1 / q.options.length;
+        if (hits[0] === q.correct) keyed++;
+      }
+      if (n < MIN_WORDING_SAMPLE) continue;
+      const share = keyed / n;
+      const chance = chanceSum / n;
+      const off = probe.direction === 'marks-wrong' ? share < ceiling : share > ceiling;
+      if (off) {
+        fail(`${spec.label}: on ${n} items exactly one option contains ${probe.label}, ` +
+             `and the key was that option ${(share * 100).toFixed(1)}% of the time ` +
+             `(${keyed}/${n}) against a ${(chance * 100).toFixed(0)}% baseline — ` +
+             (probe.direction === 'marks-wrong'
+               ? `under the ${(ceiling * 100).toFixed(0)}% floor. ${probe.label} is marking distractors. ` +
+                 `Rewrite the strawman distractors so being absolute is not what makes them wrong.`
+               : `over the ${(ceiling * 100).toFixed(0)}% ceiling. ${probe.label} is marking keys. ` +
+                 `Either hedge some distractors too, or commit the key to a definite answer.`));
+      }
     }
   }
 }
@@ -474,6 +547,91 @@ for (const file of htmlFiles) {
     fail(`${rel}: loads assets/account.js but not assets/errors.js, so nothing reports when this page breaks.`);
   } else if (errors > account) {
     fail(`${rel}: loads assets/errors.js after assets/account.js — it has to come first to catch anything thrown before it.`);
+  }
+}
+
+// ---- 12. Molecule drawings must not contradict the valence they teach ----
+// The aldol figure drew acetone's two methyl carbons with two hydrogens each,
+// so a course whose first module is "count the bonds on every atom" was
+// shipping a ketone whose methyls were CH2. Six more structures had the same
+// defect, always for the same reason: the third hydrogen was dropped to keep
+// the picture uncluttered.
+//
+// The rule is narrower than "every carbon needs four bonds", because a carbon
+// with NO hydrogens drawn is ordinary shorthand — skeletal structures are drawn
+// that way on purpose and are not wrong. What a student cannot read is a carbon
+// that draws SOME of its hydrogens and not the rest: that asserts a complete
+// picture and then gets it wrong. So this only flags an atom that draws at
+// least one hydrogen and still falls short.
+//
+// A drawing that means to show only the hydrogens under discussion — a chair
+// whose axial/equatorial fate is the whole point, an E2 substrate where two
+// competing beta hydrogens are the subject — declares `partialH` with its
+// reason, and is exempt. That keeps the intent in the file rather than in
+// whoever last edited it.
+const VALENCE = { C: 4, N: 3, O: 2, S: 2 };
+const moleculesPath = join(ROOT, 'ochem', 'assets', 'molecules.js');
+if (existsSync(moleculesPath)) {
+  const src = readFileSync(moleculesPath, 'utf8');
+  for (const block of src.matchAll(/M\['([^']+)'\]\s*=\s*\{([\s\S]*?)\n  \};/g)) {
+    const [, name, body] = block;
+    if (/\bpartialH\s*:/.test(body)) continue;
+    const atomsBlock = body.match(/atoms:\s*\{([\s\S]*?)\n    \},/);
+    const bondsBlock = body.match(/bonds:\s*\[([\s\S]*?)\]/);
+    if (!atomsBlock || !bondsBlock) continue;
+
+    const atoms = new Map();
+    for (const a of atomsBlock[1].matchAll(/(\w+):\s*\{([^}]*)\}/g)) {
+      const label = a[2].match(/label:\s*'([^']*)'/);
+      if (label) atoms.set(a[1], { el: label[1], charged: /charge\s*:/.test(a[2]) });
+    }
+    const degree = new Map([...atoms.keys()].map((k) => [k, 0]));
+    const drawnH = new Map([...atoms.keys()].map((k) => [k, 0]));
+    for (const b of bondsBlock[1].matchAll(/\{a:'(\w+)',b:'(\w+)'(?:,\s*order:\s*(\d))?/g)) {
+      const [, a1, a2, ord] = b;
+      const order = Number(ord || 1);
+      if (degree.has(a1)) degree.set(a1, degree.get(a1) + order);
+      if (degree.has(a2)) degree.set(a2, degree.get(a2) + order);
+      if (atoms.has(a1) && atoms.has(a2)) {
+        if (atoms.get(a2).el === 'H') drawnH.set(a1, drawnH.get(a1) + 1);
+        if (atoms.get(a1).el === 'H') drawnH.set(a2, drawnH.get(a2) + 1);
+      }
+    }
+    for (const [key, atom] of atoms) {
+      const want = VALENCE[atom.el];
+      if (!want || atom.charged) continue;
+      if (drawnH.get(key) > 0 && degree.get(key) < want) {
+        fail(`ochem/assets/molecules.js: ${name}, atom "${key}" (${atom.el}) draws ` +
+             `${drawnH.get(key)} hydrogen(s) but has only ${degree.get(key)} of ${want} bonds — ` +
+             `it reads as ${atom.el}H${drawnH.get(key)} where the structure needs ${want - degree.get(key)} more. ` +
+             `Draw the missing hydrogen(s), or declare partialH with the reason if the omission is deliberate.`);
+      }
+    }
+  }
+}
+
+// ---- 13. Every scenario branch leads somewhere ----
+// scenario-sim.html is one big literal graph of nodes and `next` pointers,
+// hand-edited. A typo'd target is not a parse error and not a broken link, so
+// nothing above would catch it: the scenario simply dead-ends mid-call, which
+// is the one thing a branching-call trainer must never do. An unreachable node
+// is the same mistake seen from the other end — a branch someone wrote and
+// then orphaned by renaming what pointed at it.
+const scenarioPath = join(ROOT, 'nremt', 'scenario-sim.html');
+if (existsSync(scenarioPath)) {
+  const src = readFileSync(scenarioPath, 'utf8');
+  const ids = new Set([...src.matchAll(/^ {6}(s\d+_\w+):\s*\{/gm)].map((m) => m[1]));
+  const targets = new Set([...src.matchAll(/next:\s*"(\w+)"/g)].map((m) => m[1]));
+  const starts = new Set([...src.matchAll(/startNode:\s*"(\w+)"/g)].map((m) => m[1]));
+  if (ids.size) {
+    for (const t of [...targets, ...starts]) {
+      if (!ids.has(t)) fail(`nremt/scenario-sim.html: a choice points at "${t}", which is not a node — that branch dead-ends.`);
+    }
+    for (const id of ids) {
+      if (!targets.has(id) && !starts.has(id)) {
+        fail(`nremt/scenario-sim.html: node "${id}" is unreachable — nothing points at it and it is no scenario's startNode.`);
+      }
+    }
   }
 }
 

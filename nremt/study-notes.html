@@ -1252,7 +1252,7 @@ const CHAPTERS = [
         topics: [
           {
             heading: "Oxygen delivery isn't one-size-fits-all — the device has to match the patient's actual need",
-            html: `<p>A Venturi mask is a specific tool for a specific problem. It delivers a precisely controlled percentage of oxygen, rather than the more variable concentration of a standard mask. That precision matters most for a narrow but important group of patients, particularly those with chronic obstructive pulmonary disease (COPD), for whom the usual assumption that more oxygen is always better does not hold. In some COPD patients the body has adapted to relying on low oxygen levels, rather than rising carbon dioxide (CO2), as the trigger to breathe. Delivering too much oxygen to such a patient can suppress the drive to breathe, which is why a controlled, precise concentration matters more here than it would for most other patients.</p>`
+            html: `<p>A Venturi mask is a specific tool for a specific problem. It delivers a precisely controlled percentage of oxygen, rather than the more variable concentration of a standard mask. That precision is useful in patients with chronic obstructive pulmonary disease (COPD), where the goal is enough oxygen and not more. A small number of COPD patients retain carbon dioxide (CO2) chronically and depend more on low oxygen levels than on rising CO2 as their trigger to breathe, and in those patients a large excess of oxygen can worsen ventilation. That is a reason to <strong>titrate</strong>, not a reason to withhold. The clinical rule has changed and the exam follows it: a hypoxic COPD patient gets oxygen. Aim for a saturation near the patient's own baseline, commonly the low 90s rather than 100%, and watch mental status and respiratory effort as you go. Leaving a hypoxic patient hypoxic is the larger and more immediate danger, and the old teaching that COPD patients should be denied oxygen out of fear of removing their drive to breathe is no longer taught.</p>`
           },
           {
             heading: "Oxygen equipment has safety features that exist because oxygen systems are genuinely dangerous if mishandled",
@@ -1261,7 +1261,7 @@ const CHAPTERS = [
         ],
         takeaways: [
           "Venturi mask delivers a precisely controlled oxygen percentage, unlike the more variable concentration of a standard mask.",
-          "Some COPD patients rely on low oxygen levels (not rising CO2) as their drive to breathe — too much oxygen can suppress that drive.",
+          "A hypoxic COPD patient still gets oxygen — titrate toward their own baseline (often the low 90s) rather than withholding it. Never deny oxygen to a hypoxic patient.",
           "Pin-index safety system prevents the wrong regulator from connecting to the wrong gas cylinder.",
           "Regulator: steps the cylinder's high internal pressure down to a usable level.",
           "Flowmeter: controls and displays liters per minute delivered to the patient.",
@@ -1955,7 +1955,7 @@ const CHAPTERS = [
             heading: "The specific conditions",
             html: `<p>The conditions that cause breathing difficulty each have a mechanism, a set of key signs and something particular you need to know. The table below sets them out.</p>
             <div class="table-wrap"><table><thead><tr><th>Condition</th><th>Mechanism</th><th>Key signs</th><th>Special notes</th></tr></thead><tbody>
-            <tr><td>COPD</td><td>Inflamed/mucus-clogged bronchioles (bronchitis); alveolar walls break down (emphysema), stale CO2-laden air trapped</td><td>Smoking history, acute worsening w/ URI, fever, colored sputum</td><td>A small subset rely on low O2 (not high CO2) to trigger breathing — don't withhold needed O2 from a hypoxic COPD patient</td></tr>
+            <tr><td>COPD</td><td>Inflamed/mucus-clogged bronchioles (bronchitis); alveolar walls break down (emphysema), stale CO2-laden air trapped</td><td>Smoking history, acute worsening w/ URI, fever, colored sputum</td><td>A small subset rely on low O2 (not high CO2) to trigger breathing — titrate oxygen toward their baseline, but never withhold it from a hypoxic patient — don't withhold needed O2 from a hypoxic COPD patient</td></tr>
             <tr><td>Asthma</td><td>Bronchiole muscle contraction + mucus overproduction narrows airways</td><td>Episodic, triggered by stings/pollutants/infection/exercise/stress</td><td>No hypoxic-drive concern; albuterol for rescue</td></tr>
             <tr><td>Pulmonary edema (CHF)</td><td>Left heart damage → pressure backs up into lungs → fluid crosses into alveoli</td><td>Abrupt onset, recent weight gain, pink frothy sputum, JVD, pedal/sacral edema</td><td>Keep legs dependent (down), NOT elevated; high-conc O2; CPAP often effective</td></tr>
             <tr><td>Pneumonia</td><td>Bacterial/viral/fungal infection</td><td>Cough, fever, pleuritic pain, one-sided crackles</td><td>Supportive care, O2 if hypoxic</td></tr>
@@ -2732,7 +2732,7 @@ const CHAPTERS = [
           {
             heading: "ESRD emergencies",
             html: `<p>The patient with ESRD who misses dialysis presents much like a patient in congestive heart failure (CHF), because fluid the kidneys cannot remove overloads the circulation; the signs are shortness of breath and peripheral edema. The more dangerous consequence is elevated potassium, which can cause fatal dysrhythmias. Cardiac arrest in an ESRD patient may not respond to standard defibrillation.</p>
-            <p>Dialysis itself produces complications. A fistula may bleed or clot; for bleeding, use direct pressure and elevation, and avoid a tourniquet unless the bleeding is life-threatening. Peritoneal dialysis can lead to peritonitis, which presents with abdominal pain, fever and cloudy dialysis fluid that resembles chicken broth. Transport the drained bag with the patient so that the fluid can be tested.</p>`
+            <p>Dialysis itself produces complications. A fistula may bleed or clot; for bleeding, use direct pressure, and avoid a tourniquet unless the bleeding is life-threatening — the fistula is the patient's lifeline for dialysis and is worth preserving where it safely can be. Peritoneal dialysis can lead to peritonitis, which presents with abdominal pain, fever and cloudy dialysis fluid that resembles chicken broth. Transport the drained bag with the patient so that the fluid can be tested.</p>`
           },
           {
             heading: "Kidney transplant patients",
@@ -2753,7 +2753,7 @@ const CHAPTERS = [
   {
     num: 29,
     title: "Bleeding Control",
-    intro: "Uncontrolled external bleeding is one of the most preventable causes of death from trauma, and direct pressure stops most of it. This chapter presents the escalating framework from direct pressure to tourniquet and hemostatic dressing, explains why pressure works, and walks through the procedure step by step.",
+    intro: "Uncontrolled external bleeding is one of the most preventable causes of death from trauma, and direct pressure stops most of it. This chapter presents the escalating framework from direct pressure to tourniquet and hemostatic dressing, explains why pressure works, and walks through the procedure step by step — including the case that does not escalate at all, because life-threatening extremity bleeding gets a tourniquet immediately.",
     sections: [
       {
         title: "External Bleeding Control — Direct Pressure",
@@ -2791,7 +2791,7 @@ const CHAPTERS = [
           "For severe/spurting bleeding, put a gloved hand directly on the wound immediately — don't hunt for a dressing first.",
           "Piling on absorbent gauze soaks up blood but doesn't stop bleeding, and can weaken your hand pressure.",
           "Never remove a placed dressing — blood soaking through means escalate, not swap the dressing.",
-          "Escalation order: direct pressure → wound packing/hemostatics → tourniquet (extremity) or junctional device."
+          "Escalation order for bleeding that is NOT immediately life-threatening: direct pressure → wound packing/hemostatics → tourniquet (extremity) or junctional device. Life-threatening extremity bleeding skips the ladder: tourniquet first, straight away."
         ]
       }
     ]
@@ -2836,7 +2836,7 @@ const CHAPTERS = [
           },
           {
             heading: "General open wound care & special situations",
-            html: `<p>Care of an open wound runs in a set order. Expose the wound, then clean the surface only; controlling the bleeding takes priority over cleaning. Use direct pressure and elevation, and apply a tourniquet if the bleeding cannot be controlled any other way. Treat for shock and give O2, cover the wound with a sterile dressing, and hold the dressing in place with a bandage, checking the distal pulse once the bandage is on.</p>
+            html: `<p>Care of an open wound runs in a set order. Expose the wound, then clean the surface only; controlling the bleeding takes priority over cleaning. Use direct pressure; if the bleeding from an extremity is life-threatening — spurting, pulsing with the heartbeat, or pooling fast — apply a tourniquet straight away rather than working up to it. Elevation is no longer part of bleeding control: it delays the pressure that actually works and has never been shown to stop bleeding on its own. Treat for shock and give O2, cover the wound with a sterile dressing, and hold the dressing in place with a bandage, checking the distal pulse once the bandage is on.</p>
             <p>Three situations call for something beyond that sequence. An impaled object is never removed in the field; stabilize it where it lies with bulky dressings packed against both sides of it. With an avulsion or an amputation, save the separated part: wrap it in a sterile dressing moistened with saline and keep it cool, never placing it directly on ice and never immersing it in water, since the avulsed tissue has lost its oxygen supply and will die.</p>
             <p>Genital injuries bleed heavily, because the tissue is highly vascular. Control the bleeding, keep the patient's dignity and privacy in mind throughout, and consider the possibility of sexual abuse or assault, particularly in a child.</p>`
           }

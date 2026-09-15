@@ -214,6 +214,9 @@
 
   M['chair-dimethylcyclohexane'] = {
     name: 'trans-1,2-dimethylcyclohexane (chair)', formula: 'C₈H₁₆', viewBox: '0 0 320 180',
+    // Only the ring hydrogens whose axial/equatorial fate the lesson turns on are
+    // drawn; showing all ten would bury the point this figure exists to make.
+    partialH: 'chair: only the hydrogens under discussion are drawn',
     atoms: {
       r1: { x:60,  y:104,r:13, label:'C' },
       r2: { x:112, y:130,r:13, label:'C' },
@@ -241,9 +244,10 @@
       o2: { x:214, y:136,r:17, label:'O', charge:'⁻', lp:3, role:'resonance-o', note:'The other equivalent oxygen. Draw the second resonance form and this one carries the double bond instead.' },
       ca: { x:92,  y:86, r:16, label:'C', role:'alpha-carbon' },
       h1: { x:52,  y:44, r:11, label:'H', role:'alpha-h', note:'An alpha C–H, pKa around 20 here — far less acidic than the O–H was.' },
-      h2: { x:52,  y:128,r:11, label:'H', role:'alpha-h' }
+      h2: { x:52,  y:128,r:11, label:'H', role:'alpha-h' },
+      h3: { x:92,  y:24, r:11, label:'H', role:'alpha-h' }
     },
-    bonds: [{a:'c',b:'o1',order:2},{a:'c',b:'o2'},{a:'c',b:'ca'},{a:'ca',b:'h1'},{a:'ca',b:'h2'}],
+    bonds: [{a:'c',b:'o1',order:2},{a:'c',b:'o2'},{a:'c',b:'ca'},{a:'ca',b:'h1'},{a:'ca',b:'h2'},{a:'ca',b:'h3'}],
     caption: 'The conjugate base of acetic acid. Two equivalent oxygens share one negative charge.'
   };
 
@@ -334,9 +338,10 @@
       o2: { x:214, y:140,r:17, label:'O', charge:'⁻', lp:3, role:'resonance-o', note:'The two oxygens are equivalent once both forms are drawn.' },
       c:  { x:96,  y:92, r:16, label:'C', role:'alkyl' },
       h1: { x:52,  y:50, r:11, label:'H' },
-      h2: { x:52,  y:134,r:11, label:'H' }
+      h2: { x:52,  y:134,r:11, label:'H' },
+      h3: { x:96,  y:32, r:11, label:'H' }
     },
-    bonds: [{a:'n',b:'o1',order:2},{a:'n',b:'o2'},{a:'n',b:'c'},{a:'c',b:'h1'},{a:'c',b:'h2'}],
+    bonds: [{a:'n',b:'o1',order:2},{a:'n',b:'o2'},{a:'n',b:'c'},{a:'c',b:'h1'},{a:'c',b:'h2'},{a:'c',b:'h3'}],
     caption: 'A permanently charge-separated group: positive nitrogen, one negative oxygen, two equivalent forms.'
   };
 
@@ -416,11 +421,13 @@
       o:  { x:160, y:56, r:17, label:'O', lp:2, role:'ether-o', note:'An ether oxygen. Unreactive until it is protonated — then it becomes a leaving group.' },
       cm: { x:88,  y:96, r:16, label:'C', role:'less-hindered', note:'The methyl carbon: nothing but hydrogens around it, so the easiest possible backside attack.' },
       hm1:{ x:44,  y:58, r:11, label:'H' },
+      hm2:{ x:44,  y:134,r:11, label:'H' },
+      hm3:{ x:96,  y:152,r:11, label:'H' },
       c1: { x:232, y:96, r:16, label:'C', role:'more-hindered', note:'A primary carbon, but it carries a whole propyl chain — more crowded than a methyl.' },
       c2: { x:272, y:140,r:15, label:'C' },
       c3: { x:224, y:166,r:14, label:'C' }
     },
-    bonds: [{a:'o',b:'cm'},{a:'o',b:'c1'},{a:'cm',b:'hm1'},{a:'c1',b:'c2'},{a:'c2',b:'c3'}],
+    bonds: [{a:'o',b:'cm'},{a:'o',b:'c1'},{a:'cm',b:'hm1'},{a:'cm',b:'hm2'},{a:'cm',b:'hm3'},{a:'c1',b:'c2'},{a:'c2',b:'c3'}],
     caption: 'An unsymmetrical ether. Cleaving it with HI is a question about which carbon is easier to reach.'
   };
 
@@ -488,9 +495,10 @@
       h22:{ x:136, y:56, r:11, label:'H' },
       c1: { x:98,  y:130,r:17, label:'C', role:'ch3', note:'The CH₃: three equivalent hydrogens, split by the two CH₂ hydrogens into a triplet.' },
       h11:{ x:44,  y:108,r:11, label:'H' },
-      h12:{ x:70,  y:168,r:11, label:'H' }
+      h12:{ x:70,  y:168,r:11, label:'H' },
+      h13:{ x:142, y:168,r:11, label:'H' }
     },
-    bonds: [{a:'o',b:'ho'},{a:'o',b:'c2'},{a:'c2',b:'h21'},{a:'c2',b:'h22'},{a:'c2',b:'c1'},{a:'c1',b:'h11'},{a:'c1',b:'h12'}],
+    bonds: [{a:'o',b:'ho'},{a:'o',b:'c2'},{a:'c2',b:'h21'},{a:'c2',b:'h22'},{a:'c2',b:'c1'},{a:'c1',b:'h11'},{a:'c1',b:'h12'},{a:'c1',b:'h13'}],
     caption: 'Three hydrogen environments: CH₃, CH₂ and OH.'
   };
 
@@ -543,6 +551,9 @@
 
   M['e2-butane'] = {
     name: '2-bromobutane', formula: 'CH₃CH₂CHBrCH₃',
+    // The two competing beta hydrogens and the useless alpha hydrogen are the
+    // whole subject of the figure; the rest would be noise around them.
+    partialH: 'E2: only the beta and alpha hydrogens in question are drawn',
     atoms: {
       c1: { x:46,  y:108,r:15, label:'C', note:'The terminal methyl — eliminating toward here gives the less substituted alkene.' },
       c2: { x:110, y:70, r:16, label:'C', role:'beta-carbon', note:'A beta carbon: its hydrogen can be removed to form the more substituted alkene.' },
@@ -561,6 +572,7 @@
   // just asserted. Axial bonds are vertical; equatorial ones splay outward.
   M['chair-bromocyclohexane'] = {
     name: 'Bromocyclohexane (chair)', formula: 'C₆H₁₁Br', viewBox: '0 0 320 180',
+    partialH: 'chair: only the hydrogens under discussion are drawn',
     atoms: {
       r1: { x:60,  y:104,r:13, label:'C' },
       r2: { x:112, y:130,r:13, label:'C', role:'beta-carbon' },
@@ -590,9 +602,11 @@
       ha:  { x:62,  y:88, r:11, label:'H', role:'alpha-h', note:'An alpha hydrogen, pKa ≈ 20 — acidic because the resulting enolate is resonance stabilized.' },
       ha2: { x:74,  y:154,r:11, label:'H', role:'alpha-h' },
       hb:  { x:258, y:88, r:11, label:'H', role:'alpha-h' },
-      hb2: { x:246, y:154,r:11, label:'H', role:'alpha-h' }
+      hb2: { x:246, y:154,r:11, label:'H', role:'alpha-h' },
+      ha3: { x:40,  y:124,r:11, label:'H', role:'alpha-h' },
+      hb3: { x:280, y:124,r:11, label:'H', role:'alpha-h' }
     },
-    bonds: [{a:'c',b:'o',order:2},{a:'c',b:'ca'},{a:'c',b:'cb'},{a:'ca',b:'ha'},{a:'ca',b:'ha2'},{a:'cb',b:'hb'},{a:'cb',b:'hb2'}],
+    bonds: [{a:'c',b:'o',order:2},{a:'c',b:'ca'},{a:'c',b:'cb'},{a:'ca',b:'ha'},{a:'ca',b:'ha2'},{a:'ca',b:'ha3'},{a:'cb',b:'hb'},{a:'cb',b:'hb2'},{a:'cb',b:'hb3'}],
     caption: 'A simple ketone.'
   };
 
@@ -620,9 +634,10 @@
       o2: { x:186, y:120,r:16, label:'O', lp:2, role:'leaving-group', note:'The ester oxygen. Methoxide is basic, so this is a mediocre leaving group — esters are less reactive than acid chlorides.' },
       cm: { x:250, y:88, r:15, label:'C' },
       h1: { x:26,  y:88, r:10, label:'H', role:'alpha-h' },
-      h2: { x:44,  y:158,r:10, label:'H', role:'alpha-h' }
+      h2: { x:44,  y:158,r:10, label:'H', role:'alpha-h' },
+      h3: { x:108, y:156,r:10, label:'H', role:'alpha-h' }
     },
-    bonds: [{a:'c',b:'o1',order:2},{a:'c',b:'ca'},{a:'c',b:'o2'},{a:'o2',b:'cm'},{a:'ca',b:'h1'},{a:'ca',b:'h2'}],
+    bonds: [{a:'c',b:'o1',order:2},{a:'c',b:'ca'},{a:'c',b:'o2'},{a:'o2',b:'cm'},{a:'ca',b:'h1'},{a:'ca',b:'h2'},{a:'ca',b:'h3'}],
     caption: 'An ester — a carbonyl with a leaving group attached.'
   };
 
@@ -742,9 +757,11 @@
       ca: { x:60,  y:124,r:15, label:'C', role:'alpha-carbon' },
       o2: { x:186, y:122,r:16, label:'O', lp:2 },
       h:  { x:244, y:98, r:12, label:'H', role:'acidic-h', note:'The O–H proton, pKa ≈ 4.8 — acidic because the carboxylate left behind is resonance stabilized over two equivalent oxygens.' },
-      ha: { x:24,  y:92, r:10, label:'H', role:'alpha-h', note:'An alpha C–H, pKa far above 20 here — not the acidic proton.' }
+      ha: { x:24,  y:92, r:10, label:'H', role:'alpha-h', note:'An alpha C–H, pKa far above 20 here — not the acidic proton.' },
+      ha2:{ x:22,  y:156,r:10, label:'H', role:'alpha-h' },
+      ha3:{ x:90,  y:160,r:10, label:'H', role:'alpha-h' }
     },
-    bonds: [{a:'c',b:'o1',order:2},{a:'c',b:'ca'},{a:'c',b:'o2'},{a:'o2',b:'h'},{a:'ca',b:'ha'}],
+    bonds: [{a:'c',b:'o1',order:2},{a:'c',b:'ca'},{a:'c',b:'o2'},{a:'o2',b:'h'},{a:'ca',b:'ha'},{a:'ca',b:'ha2'},{a:'ca',b:'ha3'}],
     caption: 'Two oxygens, but only one acidic hydrogen.'
   };
 

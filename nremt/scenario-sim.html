@@ -224,9 +224,18 @@ const SCENARIOS = [
         vitals: "HR 118 · BP 108/70 · RR 22",
         text: "You arrive to find a 28-year-old man lying next to a motorcycle, alert and shouting in pain. His right thigh has an open wound with blood visibly spurting in time with his pulse. Bystanders are standing around, unsure what to do.",
         choices: [
-          { text: "Apply firm direct pressure to the wound immediately", next: "s1_pressure_good" },
+          { text: "Apply a tourniquet high and tight above the wound straight away, then reassess", next: "s1_tourniquet_first" },
+          { text: "Apply firm direct pressure to the wound immediately", next: "s1_pressure_good", consequence: "Direct pressure is never a wrong instinct and it is the right first move for most bleeding — but blood spurting in time with the pulse from a thigh is arterial and can empty a patient in minutes. Current guidance is to go straight to a tourniquet for life-threatening extremity bleeding rather than working up a ladder toward one. You have not lost him, but you have spent time you did not need to spend." },
           { text: "Ask him what happened and check for other injuries first", next: "s1_delayed", consequence: "You spend a moment gathering the story while the bleeding continues unchecked. By the time you look back down, a visibly larger pool of blood has formed and he looks paler." },
           { text: "Get a blood pressure reading before touching the wound", next: "s1_delayed", consequence: "The cuff takes almost a minute to cycle. The bleeding never stopped while you waited — his pressure comes back low, and you've lost time you didn't have." }
+        ]
+      },
+      s1_tourniquet_first: {
+        vitals: "HR 110 · BP 112/74 · RR 18",
+        text: "The bleeding stops the moment the tourniquet is windlassed down. You note the time of application out loud and write it on him. His colour is already better, and you have spent none of his reserve getting here. A bystander mentions he also hit his head on the curb before you arrived, but he is alert and answering clearly.",
+        choices: [
+          { text: "Quickly assess his mental status and pupils before moving him, then treat for shock and package for transport", next: "s1_secondary_good" },
+          { text: "Skip the head check since the leg is clearly the priority and load him now", next: "s1_secondary_skipped", consequence: "You get him loaded quickly, but a minute into transport he suddenly seems slower to answer than before — a head injury you never assessed for is now catching you off guard." }
         ]
       },
       s1_delayed: {
@@ -240,7 +249,7 @@ const SCENARIOS = [
         vitals: "HR 116 · BP 110/72 · RR 20",
         text: "Direct pressure slows the bleeding significantly, but blood is still visibly soaking through the dressing after a minute of firm pressure.",
         choices: [
-          { text: "Add more gauze on top without lifting the original dressing, and press harder", next: "s1_pressure_still_bleeding" },
+          { text: "Add more gauze on top without lifting the original dressing, and press harder", next: "s1_pressure_still_bleeding", consequence: "Never lifting the original dressing is right. Piling gauze on top of it is not doing much: absorbent gauze soaks up blood without stopping it, and the extra padding spreads your hand pressure over a wider area instead of concentrating it on the bleeding vessel. Blood soaking through is the signal to escalate, not to add another layer." },
           { text: "Lift the dressing to see how bad the wound actually looks", next: "s1_lifted_dressing", consequence: "Lifting the dressing disrupts the clot that was just starting to form. The bleeding picks back up as hard as before — you've undone the progress you'd just made." }
         ]
       },
@@ -297,8 +306,8 @@ const SCENARIOS = [
           { text: "Treat aggressively for shock, transport immediately, and request ALS intercept if available", next: "s1_end_ok" }
         ]
       },
-      s1_end_good: { ending: "good", text: "Bleeding controlled fast, shock never truly set in, and a proper head-to-toe caught nothing missed before transport. This is close to a textbook run — the sequence (direct pressure → escalate to a tourniquet the moment pressure isn't keeping up → secondary assessment → treat shock → transport) is exactly what kept him stable the whole way to the hospital." },
-      s1_end_ok: { ending: "neutral", text: "He survives, but either the delay before the tourniquet or the skipped baseline assessment meant a rougher trip than it needed to be — extra blood products, a longer ICU stay, or a late catch on a head injury with no baseline to compare against. Severe arterial bleeding needs a tourniquet the moment direct pressure stops keeping up, and a patient with a reported head strike needs a baseline exam before he's loaded, not after something changes." },
+      s1_end_good: { ending: "good", text: "Bleeding controlled fast, shock never truly set in, and a proper head-to-toe caught nothing missed before transport. This is close to a textbook run — for bleeding this severe the sequence is tourniquet first, then secondary assessment, then shock, then transport. Pressure first and a fast escalation gets there too, but every second of the escalation is blood he does not get back." },
+      s1_end_ok: { ending: "neutral", text: "He survives, but either the delay before the tourniquet or the skipped baseline assessment meant a rougher trip than it needed to be — extra blood products, a longer ICU stay, or a late catch on a head injury with no baseline to compare against. Bleeding that spurts with the pulse needs a tourniquet immediately, not once direct pressure has been given a fair try, and a patient with a reported head strike needs a baseline exam before he's loaded, not after something changes." },
       s1_end_bad: { ending: "bad", text: "By the time you finally escalate to a tourniquet, he's unresponsive and critically hypotensive. He's still alive when you reach the hospital, but only barely. Uncontrolled severe bleeding is one of the most preventable causes of death in trauma — preventable specifically by not waiting." }
     }
   },
@@ -723,7 +732,7 @@ const SCENARIOS = [
         choices: [
           { text: "Perform a rapid stroke screen (face, arm, speech) and get an exact last-known-well time from any available source", next: "s7_fast_good" },
           { text: "Assume she's just disoriented from age and focus on getting her comfortable before assessing further", next: "s7_assume_bad", consequence: "Slurred speech and one-sided arm weakness are classic stroke signs, not just \"disorientation.\" Dismissing them as normal aging costs precious time in a condition where time directly determines treatment options and outcome." },
-          { text: "Check her blood glucose first, since altered mental status could just be low blood sugar", next: "s7_glucose_first", consequence: "Checking glucose isn't wrong on its own, but doing it before a rapid stroke screen delays recognizing time-critical stroke signs that are visible immediately just by looking and listening to her." }
+          { text: "Check her blood glucose first, since altered mental status could just be low blood sugar", next: "s7_glucose_first", consequence: "Glucose belongs in every altered-mental-status workup and hypoglycemia is the classic stroke mimic, so this is a sequencing point rather than a wrong move: the stroke screen takes about thirty seconds and needs nothing but your eyes and ears, so it goes first and the glucose follows immediately. Do both. Just not in this order." }
         ]
       },
       s7_assume_bad: {
@@ -763,9 +772,9 @@ const SCENARIOS = [
         ]
       },
       s7_transport_good: {
-        text: "The stroke team is mobilized before she even arrives, with a clear last-known-well time already in hand. Every minute saved here is a minute closer to potential treatment eligibility.",
+        text: "The stroke team is mobilized before she even arrives, with a clear last-known-well time already in hand. Every minute saved here is a minute closer to potential treatment eligibility. Her glucose still needs checking — hypoglycemia mimics a stroke convincingly — but it costs nothing to do it en route.",
         choices: [
-          { text: "Reassess her stroke signs en route and hand off a clear, complete report", next: "s7_end_good" }
+          { text: "Check her blood glucose, reassess her stroke signs en route, and hand off a clear, complete report", next: "s7_end_good" }
         ]
       },
       s7_transport_ok: {
@@ -774,8 +783,8 @@ const SCENARIOS = [
           { text: "Reassess en route and hand off a report", next: "s7_end_ok" }
         ]
       },
-      s7_end_good: { ending: "good", text: "Rapid recognition, an accurate last-known-well time, and immediate transport with early hospital notification all preserved the treatment window as much as possible. In stroke care, minutes saved before the hospital door can be the difference between treatment options being available or not — this is the sequence that protects that window." },
-      s7_end_ok: { ending: "neutral", text: "She reaches an appropriate facility, but delays — assuming her symptoms were something else, checking glucose before screening for stroke, or spending extra time on scene — narrowed her treatment window more than necessary. \"Time is brain\" isn't a slogan; every extra minute before recognition and transport is a minute that can move a patient out of eligibility for certain treatments." }
+      s7_end_good: { ending: "good", text: "Rapid recognition, an accurate last-known-well time, and immediate transport with early hospital notification all preserved the treatment window as much as possible. Checking her glucose en route ruled out the one mimic that looks just like this, without costing the transport a minute. In stroke care, minutes saved before the hospital door can be the difference between treatment options being available or not — this is the sequence that protects that window." },
+      s7_end_ok: { ending: "neutral", text: "She reaches an appropriate facility, but delays — assuming her symptoms were something else, or spending extra time on scene before recognizing the stroke — narrowed her treatment window more than necessary. \"Time is brain\" isn't a slogan; every extra minute before recognition and transport is a minute that can move a patient out of eligibility for certain treatments." }
     }
   },
   {

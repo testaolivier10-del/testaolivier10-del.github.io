@@ -42,8 +42,12 @@
     html += '<div class="lesson-rail-links"></div>';
     html += '<div class="lesson-rail-progress"></div>';
     html += '<ol class="lesson-steps">' + opts.steps.map(function(cfg, i){
-      // The step's own title where it has one; the eyebrow otherwise.
-      var label = (cfg && cfg.title) ? cfg.title : ((cfg && cfg.eyebrow) ? cfg.eyebrow : 'Step ' + (i + 1));
+      // The eyebrow first, because it is the short label written for exactly
+      // this job ("Step 2 · Attack" -> "Attack"). The title is the step's
+      // question stem, a whole sentence, so preferring it filled the rail with
+      // text cut off mid-question — and any step without one fell through to a
+      // bare "Step 2", which tells a student nothing about what is on it.
+      var label = (cfg && cfg.eyebrow) ? cfg.eyebrow : ((cfg && cfg.title) ? cfg.title : 'Step ' + (i + 1));
       label = String(label).replace(/<[^>]*>/g, '').replace(/^step\s*\d+\s*[\u00b7\-\u2013:]\s*/i, '');
       if(label.length > 64) label = label.slice(0, 61).replace(/\s+\S*$/, '') + '\u2026';
       return '<li class="lesson-step" data-step="' + i + '"><button type="button"><span class="n">' + (i + 1) + '</span><span class="t">' + esc(label) + '</span></button></li>';
