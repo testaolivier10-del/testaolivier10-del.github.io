@@ -1,0 +1,83 @@
+LevlPrep — licensing
+====================
+
+This repository contains two different kinds of work, under two different
+licences. Which one applies depends on what you are copying.
+
+
+1. CONTENT — Creative Commons Attribution-NonCommercial 4.0 International
+---------------------------------------------------------------------------
+
+Applies to the study material: the question banks and their explanations, the
+study notes, the Organic Chemistry lessons, notes and mechanism walkthroughs,
+the branching scenarios, the glossary, mnemonics, skill sheets, flow diagrams
+and body-map descriptions. In file terms, everything under:
+
+    nremt/assets/*.json
+    nremt/study-notes.html, glossary.html, mnemonics.html, skillsheets.html,
+      flowcharts.html, scenario-sim.html, body-map.html   (their text content)
+    ochem/notes/, ochem/lessons/, ochem/mechanisms/        (their text content)
+    ochem/assets/practice-bank.json
+
+You are free to share and adapt this material for non-commercial purposes,
+with attribution to LevlPrep (https://levlprep.com) and an indication of any
+changes made. You may not use it for commercial purposes.
+
+Full text: https://creativecommons.org/licenses/by-nc/4.0/legalcode
+Summary:   https://creativecommons.org/licenses/by-nc/4.0/
+
+The non-commercial term is the point of it. This site is free to use with no
+account, no ads and no paywall, and the licence exists so that the material
+cannot be repackaged and sold back to students. Using it to teach — in a
+classroom, a study group, or a course you do not charge for — is exactly what
+it is for, and needs no permission beyond the attribution.
+
+
+2. CODE — MIT
+---------------------------------------------------------------------------
+
+Applies to the software: the JavaScript under assets/, nremt/assets/ and
+ochem/assets/ (excluding the .json content files listed above), the build and
+check scripts under scripts/, the service worker, the Cloudflare Worker under
+worker/, and the CSS and page scaffolding.
+
+Copyright (c) 2026 LevlPrep
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+3. THIRD-PARTY MATERIAL
+---------------------------------------------------------------------------
+
+Some material here is not ours to license:
+
+  - Lung-sound recordings from Wikimedia Commons, under their own licences.
+    See the sound trainer page and privacy.html for attribution.
+  - IBM Plex Mono and Nunito, served from assets/fonts/, under the SIL Open
+    Font License 1.1.
+
+Neither licence above extends to those.
+
+
+4. NOT A LICENCE TO PRACTISE
+---------------------------------------------------------------------------
+
+Nothing here is medical advice or a clinical protocol. It is study material
+for an exam. Your own protocols and medical direction are the authority, and
+they override anything written here.

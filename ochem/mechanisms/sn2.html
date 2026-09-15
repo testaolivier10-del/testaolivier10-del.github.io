@@ -183,50 +183,98 @@ document.addEventListener('DOMContentLoaded', function(){
 (function(){
   // ---- Two worked molecules. Atom coordinates are hand-placed for a clean
   // small diagram; roles drive which atoms are clickable at each step. ----
+  // ---- Two worked reactions, both on (R)-2-bromobutane. ----
+  //
+  // This page used to run on bromomethane and chloromethane, and then asked the
+  // student to "predict the product and the stereochemistry". A methyl carbon has
+  // no stereocentre, so the inversion — the entire reason SN2 is taught — could
+  // not happen and could not be shown. A secondary substrate with four different
+  // groups fixes that.
+  //
+  // GEOMETRY. The nucleophile, C2 and the leaving group sit on one horizontal
+  // line, because backside attack is an attack along that axis. The three groups
+  // that stay put are drawn around C2: methyl straight up in the plane, ethyl on
+  // a wedge toward the reader, H on a dash away from it.
+  //
+  // WHY THAT IS (R). Priorities at C2 are Br > ethyl > methyl > H: bromine by
+  // atomic number, then ethyl over methyl because its first carbon carries
+  // (C,H,H) against methyl's (H,H,H). H is lowest and is on the dash, pointing
+  // away, so the remaining three can be read straight off the page: Br at the
+  // right, ethyl at the lower left, methyl at the top — clockwise, which is R.
+  //
+  // WHY THE PRODUCT IS (S). Backside attack inverts the carbon. Both nucleophiles
+  // here enter as priority 1, exactly as Br was, so nothing else in the ordering
+  // moves and the descriptor flips with the geometry. Inversion does not always
+  // flip the letter — it flips it when the priorities keep their order, which is
+  // the case worth showing first.
   var MOLECULES = [
     {
-      name: 'Hydroxide + bromomethane',
-      nucleophileLabel: 'HO⁻',
-      substrateLabel: 'CH₃Br',
+      name: '(R)-2-bromobutane + cyanide in DMSO',
+      nucleophileLabel: 'NC\u207b',
+      substrateLabel: '(R)-2-bromobutane',
       atoms: {
-        nucAtom:  { x: 60,  y: 70, r: 16, label: 'O', charge: '⁻' },
-        nucH:     { x: 30,  y: 45, r: 11, label: 'H' },
-        carbon:   { x: 170, y: 70, r: 16, label: 'C' },
-        h1:       { x: 170, y: 28, r: 11, label: 'H' },
-        h2:       { x: 140, y: 100,r: 11, label: 'H' },
-        h3:       { x: 200, y: 100,r: 11, label: 'H' },
-        lg:       { x: 260, y: 70, r: 16, label: 'Br' }
+        nucAtom:  { x: 40,  y: 70, r: 15, label: 'C', charge: '\u207b', lp: [200] },
+        nucN:     { x: 12,  y: 70, r: 13, label: 'N' },
+        carbon:   { x: 165, y: 70, r: 16, label: 'C', delta: '\u03b4+' },
+        me:       { x: 165, y: 24, r: 13, label: 'C' },
+        et1:      { x: 126, y: 114,r: 13, label: 'C' },
+        et2:      { x: 92,  y: 136,r: 12, label: 'C' },
+        h:        { x: 206, y: 114,r: 11, label: 'H' },
+        lg:       { x: 262, y: 70, r: 16, label: 'Br', delta: '\u03b4\u2212', lp: [340, 20] }
       },
-      bonds: [['nucAtom','nucH'],['carbon','h1'],['carbon','h2'],['carbon','h3'],['carbon','lg']],
-      correctNucSpecies: 0, // index into [nucleophileLabel, substrateLabel]
-      nucAtomKey: 'nucAtom',
-      electroKey: 'carbon',
-      lgKey: 'lg',
-      product: 'CH₃OH + Br⁻',
-      distractors: ['CH₃Br + OH⁻ (unreacted)', 'HOCH₂Br + H⁻', 'CH₄ + OBr⁻'],
-      why: 'The hydroxide’s lone pair attacks the carbon from the <b>opposite side</b> of the C–Br bond (backside attack). As the new C–O bond forms, the C–Br bond breaks and bromide leaves — both happen in one step, so the carbon’s configuration inverts (like an umbrella flipping in the wind).'
-    },
-    {
-      name: 'Cyanide + chloromethane',
-      nucleophileLabel: 'NC⁻',
-      substrateLabel: 'CH₃Cl',
-      atoms: {
-        nucAtom:  { x: 60,  y: 70, r: 16, label: 'C' },
-        nucH:     { x: 30,  y: 45, r: 13, label: 'N' },
-        carbon:   { x: 170, y: 70, r: 16, label: 'C' },
-        h1:       { x: 170, y: 28, r: 11, label: 'H' },
-        h2:       { x: 140, y: 100,r: 11, label: 'H' },
-        h3:       { x: 200, y: 100,r: 11, label: 'H' },
-        lg:       { x: 260, y: 70, r: 16, label: 'Cl' }
-      },
-      bonds: [['nucAtom','nucH'],['carbon','h1'],['carbon','h2'],['carbon','h3'],['carbon','lg']],
+      bonds: [
+        ['nucAtom','nucN','triple'],
+        ['carbon','me'],
+        ['carbon','et1','wedge'],
+        ['et1','et2'],
+        ['carbon','h','dash'],
+        ['carbon','lg']
+      ],
       correctNucSpecies: 0,
       nucAtomKey: 'nucAtom',
       electroKey: 'carbon',
       lgKey: 'lg',
-      product: 'CH₃CN + Cl⁻',
-      distractors: ['CH₃Cl + CN⁻ (unreacted)', 'ClCH₂CN + H⁻', 'CH₄ + NCCl'],
-      why: 'Cyanide’s carbon lone pair attacks from the <b>opposite side</b> of the C–Cl bond. The C–CN bond forms exactly as the C–Cl bond breaks and chloride leaves — one concerted step, with inversion at the carbon.'
+      product: '(S)-2-methylbutanenitrile + Br\u207b',
+      distractors: [
+        '(R)-2-methylbutanenitrile + Br\u207b (configuration retained)',
+        'A 50:50 mixture of the (R) and (S) nitriles',
+        'But-2-ene + HBr + CN\u207b (elimination instead)'
+      ],
+      why: 'Cyanide\u2019s lone pair attacks C2 from the side <b>opposite</b> the C\u2013Br bond, because the bromine and its bonding electrons block every other approach. The new C\u2013C bond forms as the C\u2013Br bond breaks \u2014 one step, no intermediate \u2014 so the three groups that stay behind are pushed through the carbon like an umbrella turning inside out. That is <b>inversion</b>, and here it takes (R) to (S). DMSO is the reason it is fast: a polar aprotic solvent solvates the sodium counter-ion but leaves the cyanide bare and reactive, where a protic solvent like ethanol would wrap it in hydrogen bonds and blunt it.'
+    },
+    {
+      name: '(R)-2-bromobutane + azide in DMSO',
+      nucleophileLabel: 'N\u2083\u207b',
+      substrateLabel: '(R)-2-bromobutane',
+      atoms: {
+        nucAtom:  { x: 40,  y: 70, r: 15, label: 'N', charge: '\u207b', lp: [200] },
+        nucN:     { x: 12,  y: 70, r: 13, label: 'N' },
+        carbon:   { x: 165, y: 70, r: 16, label: 'C', delta: '\u03b4+' },
+        me:       { x: 165, y: 24, r: 13, label: 'C' },
+        et1:      { x: 126, y: 114,r: 13, label: 'C' },
+        et2:      { x: 92,  y: 136,r: 12, label: 'C' },
+        h:        { x: 206, y: 114,r: 11, label: 'H' },
+        lg:       { x: 262, y: 70, r: 16, label: 'Br', delta: '\u03b4\u2212', lp: [340, 20] }
+      },
+      bonds: [
+        ['nucAtom','nucN'],
+        ['carbon','me'],
+        ['carbon','et1','wedge'],
+        ['et1','et2'],
+        ['carbon','h','dash'],
+        ['carbon','lg']
+      ],
+      correctNucSpecies: 0,
+      nucAtomKey: 'nucAtom',
+      electroKey: 'carbon',
+      lgKey: 'lg',
+      product: '(S)-2-azidobutane + Br\u207b',
+      distractors: [
+        '(R)-2-azidobutane + Br\u207b (configuration retained)',
+        'A 50:50 mixture of the (R) and (S) azides',
+        'But-2-ene + HBr + N\u2083\u207b (elimination instead)'
+      ],
+      why: 'Azide is small, very nucleophilic and a weak base \u2014 which is the combination that makes it an almost pure SN2 reagent. It attacks C2 from the side <b>opposite</b> the bromine, the C\u2013N bond forming as the C\u2013Br bond breaks, and the carbon inverts: (R) becomes (S). Because azide is such a weak base it barely competes for the beta hydrogens, so elimination stays a minor path even on a secondary carbon \u2014 which is exactly why a strong base like hydroxide would be the wrong reagent to teach this with.'
     }
   ];
 
@@ -304,17 +352,80 @@ document.addEventListener('DOMContentLoaded', function(){
         : 'Step ' + step + ' / ' + (TOTAL_STEPS - 1));
   }
 
+  // Lone pairs are drawn as a pair of dots at a given angle off the atom, because
+  // step 3 asks the student where the arrow STARTS and the answer is a lone pair.
+  // Asking that over a nucleophile drawn without one was asking them to know
+  // rather than to look.
+  function lonePairs(a){
+    if(!a.lp) return '';
+    return a.lp.map(function(deg){
+      var rad = deg * Math.PI / 180, spread = 7;
+      return [-1, 1].map(function(side){
+        var t = rad + side * spread * Math.PI / 180;
+        var R = a.r + 6;
+        return '<circle cx="' + (a.x + R * Math.cos(t)).toFixed(1) + '" cy="' + (a.y + R * Math.sin(t)).toFixed(1) +
+               '" r="2.1" fill="var(--ink)"/>';
+      }).join('');
+    }).join('');
+  }
+
+  function deltaLabel(a){
+    if(!a.delta) return '';
+    return '<text x="' + (a.x + a.r + 4) + '" y="' + (a.y - a.r - 1) + '" font-size="11" font-weight="700" ' +
+           'fill="var(--muted)" text-anchor="start">' + a.delta + '</text>';
+  }
+
   function atomEl(key, a, extraClass){
     return '<g class="atom ' + (extraClass||'') + '" data-key="' + key + '">' +
+      lonePairs(a) +
       '<circle cx="' + a.x + '" cy="' + a.y + '" r="' + a.r + '" fill="var(--white)" stroke="var(--line)" stroke-width="2"/>' +
       '<text x="' + a.x + '" y="' + (a.y + 5) + '" text-anchor="middle" font-size="' + (a.r > 13 ? 15 : 12) + '">' + a.label + (a.charge||'') + '</text>' +
+      deltaLabel(a) +
     '</g>';
   }
 
+  // A bond is [from, to] or [from, to, style]. 'wedge' comes toward the reader,
+  // 'dash' goes away, 'triple' is a triple bond. Without these an SN2 page cannot
+  // show the one thing it exists to teach: that the carbon's three remaining
+  // groups turn inside out.
   function bondLines(){
     return mol.bonds.map(function(pair){
-      var a = mol.atoms[pair[0]], b = mol.atoms[pair[1]];
-      return '<line x1="' + a.x + '" y1="' + a.y + '" x2="' + b.x + '" y2="' + b.y + '" stroke="var(--line)" stroke-width="2.5"/>';
+      var a = mol.atoms[pair[0]], b = mol.atoms[pair[1]], style = pair[2];
+      var dx = b.x - a.x, dy = b.y - a.y, len = Math.hypot(dx, dy) || 1;
+      var ux = dx / len, uy = dy / len;        // along the bond
+      var px = -uy, py = ux;                   // perpendicular to it
+      // Start and end at the circle edges so the bond never runs under a label.
+      var x1 = a.x + ux * a.r, y1 = a.y + uy * a.r;
+      var x2 = b.x - ux * b.r, y2 = b.y - uy * b.r;
+
+      if(style === 'wedge'){
+        var w = 5.5;
+        return '<polygon points="' +
+          x1 + ',' + y1 + ' ' +
+          (x2 + px * w) + ',' + (y2 + py * w) + ' ' +
+          (x2 - px * w) + ',' + (y2 - py * w) +
+          '" fill="var(--ink)"/>';
+      }
+      if(style === 'dash'){
+        var n = 5, out = '';
+        for(var i = 0; i < n; i++){
+          var t = (i + 0.6) / n;
+          var cx = x1 + (x2 - x1) * t, cy = y1 + (y2 - y1) * t;
+          var hw = 1.4 + 3.6 * t;
+          out += '<line x1="' + (cx + px * hw) + '" y1="' + (cy + py * hw) +
+                 '" x2="' + (cx - px * hw) + '" y2="' + (cy - py * hw) +
+                 '" stroke="var(--ink)" stroke-width="2"/>';
+        }
+        return out;
+      }
+      if(style === 'triple'){
+        return [-3.4, 0, 3.4].map(function(off){
+          return '<line x1="' + (x1 + px * off) + '" y1="' + (y1 + py * off) +
+                 '" x2="' + (x2 + px * off) + '" y2="' + (y2 + py * off) +
+                 '" stroke="var(--line)" stroke-width="2"/>';
+        }).join('');
+      }
+      return '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="var(--line)" stroke-width="2.5"/>';
     }).join('');
   }
 
@@ -407,7 +518,7 @@ document.addEventListener('DOMContentLoaded', function(){
     card.innerHTML =
       '<div class="step-eyebrow">Step 1 · Identify</div>' +
       '<h2 class="step-title">Which species is the nucleophile?</h2>' +
-      '<p class="step-body">One of these has a lone pair and a negative charge to give away. The other is neutral and will accept it.</p>' +
+      '<p class="step-body">Look at the two structures above rather than the labels. One of them is carrying electrons it can donate; the other has a carbon that is short of them.</p>' +
       '<div class="choice-row">' +
         options.map(function(o,i){ return '<button class="choice-btn" data-i="' + shuf.toOriginal[i] + '">' + o + '</button>'; }).join('') +
       '</div>' +
@@ -428,7 +539,7 @@ document.addEventListener('DOMContentLoaded', function(){
           showFeedback(fb, true, 'Correct — ' + mol.nucleophileLabel + ' carries a lone pair and a negative charge, making it electron-rich.');
           next.disabled = false;
         } else {
-          showFeedback(fb, false, 'Not quite. Look for the negative charge and the lone pair — that’s the electron source.');
+          showFeedback(fb, false, 'Not quite. Find the atom drawn with a pair of dots beside it — those are the electrons that go on to form the new bond.');
           card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
         }
         saveProgress();
@@ -576,7 +687,7 @@ document.addEventListener('DOMContentLoaded', function(){
     card.innerHTML =
       '<div class="step-eyebrow">Step 5 · Predict</div>' +
       '<h2 class="step-title">What’s the product?</h2>' +
-      '<p class="step-body">Both arrows have fired. What comes out the other side?</p>' +
+      '<p class="step-body">Both arrows have fired. What comes out the other side — and which way round is the carbon now?</p>' +
       '<div class="choice-row">' +
         shuffled.map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
       '</div>' +

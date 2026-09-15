@@ -91,6 +91,29 @@
   }
   .domain-row .practice-link:hover{background:var(--accent);color:var(--on-accent-fill);}
 
+  /* Score-report mapping: the Registry's five content areas against this
+     site's six domains. Collapsed by default — it is the thing you want the
+     day a failed report arrives, and clutter on every other day. */
+  .score-map{margin-top:16px;border-top:1px solid var(--line-soft);padding-top:14px;}
+  .score-map>summary{cursor:pointer;font:800 13px var(--font-ui);color:var(--accent);list-style:none;}
+  .score-map>summary::-webkit-details-marker{display:none;}
+  .score-map>summary::before{content:"\203A";display:inline-block;margin-right:8px;transition:transform .2s ease;}
+  .score-map[open]>summary::before{transform:rotate(90deg);}
+  .score-map p{font-size:13px;color:var(--muted);margin:12px 0;}
+  .score-map-note{border-left:3px solid var(--line);padding-left:12px;}
+  .sm-row{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;padding:10px 0;border-top:1px solid var(--line-soft);}
+  .sm-row:first-child{border-top:0;}
+  .sm-area{flex:1 1 190px;font:800 13px var(--font-ui);}
+  .sm-domains{display:flex;flex-wrap:wrap;gap:6px;}
+  .sm-chip{
+    padding:4px 10px;border-radius:var(--radius-pill);border:2px solid var(--line);
+    background:var(--track);color:inherit;font:800 11px var(--font-ui);
+    text-decoration:none;white-space:nowrap;
+  }
+  .sm-chip:hover{border-color:var(--accent);color:var(--accent);}
+  .sm-pct{font:700 11px var(--font-mono);color:var(--muted);}
+  .sm-chip:hover .sm-pct{color:var(--accent);}
+
   /* Recent activity rows. */
   .activity-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line-soft);font-size:13.5px;}
   .activity-row:first-child{border-top:0;padding-top:0;}
@@ -158,6 +181,12 @@
       <div class="panel">
         <h2>Domain mastery</h2>
         <div id="domainBox"></div>
+        <details class="score-map">
+          <summary>How these map to your score report</summary>
+          <p>If you fail, the National Registry sends you a breakdown by its <strong>five</strong> official content areas. This site uses six domains, because assessment runs through all of them and is worth drilling on its own. Here is how to translate one into the other.</p>
+          <div id="scoreMapBox"></div>
+          <p class="score-map-note">Assessment has no content area of its own on the report. If your weakest domain here is Assessment, the report will show it spread across the other five &mdash; most often as Trauma and Medical.</p>
+        </details>
       </div>
 
       <div class="panel">
@@ -211,6 +240,18 @@
 // scripts execute, in order, just before DOMContentLoaded.
 document.addEventListener('DOMContentLoaded', function(){
   const DOMAINS = ["Assessment","Airway & Respiratory","Cardiac & Medical","Trauma","OB/Peds & Special Populations","EMS Operations"];
+
+  // The National Registry reports a failed attempt against five content areas.
+  // This site drills six. The difference is not cosmetic: a candidate reading
+  // "below passing in Airway, Respiration & Ventilation" needs to know which
+  // button to press here, and two of the five do not map one-to-one.
+  const SCORE_REPORT_MAP = [
+    { area: 'Airway, Respiration & Ventilation', domains: ['Airway & Respiratory'] },
+    { area: 'Cardiology & Resuscitation',        domains: ['Cardiac & Medical'] },
+    { area: 'Trauma',                            domains: ['Trauma'] },
+    { area: 'Medical; Obstetrics & Gynecology',  domains: ['Cardiac & Medical', 'OB/Peds & Special Populations'] },
+    { area: 'EMS Operations',                    domains: ['EMS Operations'] },
+  ];
 
   const HISTORY_KEY = 'nremt_exam100_history';
   const MASTERY_KEY = 'nremt_mastery';
@@ -536,6 +577,24 @@ document.addEventListener('DOMContentLoaded', function(){
     }).join('');
   }
 
+  // ---- Score-report mapping ----
+  // Rendered from SCORE_REPORT_MAP rather than written out, so the five areas,
+  // the six domains and the practice links cannot drift apart. It renders even
+  // with no attempts recorded: a candidate who has just failed and is holding
+  // the report needs the translation before they have answered anything here.
+  const scoreMapBox = document.getElementById('scoreMapBox');
+  if(scoreMapBox){
+    scoreMapBox.innerHTML = SCORE_REPORT_MAP.map(row => {
+      const chips = row.domains.map(d => {
+        const st = domainStats[d];
+        const pct = st && st.total ? Math.round(st.correct/st.total*100) : null;
+        const score = pct === null ? '' : ` <span class="sm-pct">${pct}%</span>`;
+        return `<a class="sm-chip" href="practice.html?domain=${encodeURIComponent(d)}">${d}${score}</a>`;
+      }).join('');
+      return `<div class="sm-row"><div class="sm-area">${row.area}</div><div class="sm-domains">${chips}</div></div>`;
+    }).join('');
+  }
+
   // ---- Mastery distribution + due-for-review ----
   const masteryBox = document.getElementById('masteryBox');
   const levels = [0,0,0,0,0,0];
@@ -560,7 +619,7 @@ document.addEventListener('DOMContentLoaded', function(){
       <div style="height:22px"></div>
       <div class="cta-row">
         <a class="btn-press sm" href="practice.html">Review missed questions</a>
-        <a class="btn-outline" href="practice.html" style="padding:11px 20px;font-size:13.5px">Adaptive practice</a>
+        <a class="btn-outline" href="practice.html" style="padding:11px 20px;font-size:13.5px">Weak-spot practice</a>
       </div>
     `;
   }

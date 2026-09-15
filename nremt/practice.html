@@ -501,6 +501,12 @@
   .fine-print summary:hover{color:var(--accent);}
   .fine-print p{margin-top:12px;}
 
+  .realistic-toggle{
+    display:flex;align-items:flex-start;gap:8px;margin:0 0 12px;
+    font-size:12px;line-height:1.4;color:var(--muted);text-align:left;cursor:pointer;
+  }
+  .realistic-toggle input{margin-top:1px;flex-shrink:0;accent-color:var(--accent);}
+  .realistic-toggle strong{color:var(--ink);}
 </style>
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
@@ -560,7 +566,7 @@
     <div class="page-head">
       <div class="eyebrow">NREMT-EMT</div>
       <h1>Practice</h1>
-      <p class="lede">Three ways into the 2,084-question bank, in the exam’s own question formats.</p>
+      <p class="lede">Three ways into the 2,084-question bank, in multiple-choice, select-all-that-apply and drag-to-order formats.</p>
     </div>
 
     <div id="streakWidget"></div>
@@ -576,20 +582,20 @@
     <div class="mode-grid">
 
       <div class="mode-card mode-card--primary">
-        <div class="k">Adaptive <span class="adaptive-tag">retargets live</span></div>
-        <h2>Adaptive practice</h2>
+        <div class="k">Weak spots <span class="adaptive-tag">retargets live</span></div>
+        <h2>Weak-spot practice</h2>
         <p>Weighted toward the domains and questions you’ve missed.</p>
         <div class="spacer"></div>
         <div class="meta">Re-targets after<br>every question</div>
         <div class="controls">
-          <select id="adaptiveLength" aria-label="Adaptive practice length">
+          <select id="adaptiveLength" aria-label="Weak-spot practice length">
             <option value="15">15 questions</option>
             <option value="20" selected>20 questions</option>
             <option value="30">30 questions</option>
             <option value="50">50 questions</option>
           </select>
         </div>
-        <button class="start-btn" id="adaptiveStartBtn">Start adaptive practice</button>
+        <button class="start-btn" id="adaptiveStartBtn">Start weak-spot practice</button>
       </div>
 
       <div class="mode-card">
@@ -607,6 +613,10 @@
             <option value="expert">Expert only</option>
           </select>
         </div>
+        <label class="realistic-toggle" for="realisticMode">
+          <input type="checkbox" id="realisticMode" checked>
+          <span><strong>Exam-realistic</strong> &mdash; no flagging, no going back, like the real thing</span>
+        </label>
         <button class="start-btn" id="startBtn">Start timed exam</button>
       </div>
 
@@ -936,6 +946,7 @@ const OPTION_ORDER_KEY = 'nremt_option_order';
 
 const flagIcon = '<svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M4 22V4a1 1 0 0 1 1-1h13.5a1 1 0 0 1 .9 1.5l-2.4 4.8a1 1 0 0 0 0 .9l2.4 4.8a1 1 0 0 1-.9 1.5H5"/></svg>';
 let mode = 'full'; // 'full', 'review', 'flagged', 'spaced', 'domain', 'adaptive', 'single', or 'flashcard'
+let realisticMode = false; // timed exam only: hides Flag and Previous, and locks an answer once given
 let selectedDomain = null;
 let activeIndices = []; // maps position-in-quiz -> index into QUESTIONS
 let current = 0;
@@ -1400,7 +1411,7 @@ document.getElementById('progressToggle').addEventListener('click', () => {
 });
 
 // Per-question mastery tracking (a simple Leitner-style level 0-5) — this is the
-// data the Adaptive Practice algorithm reads to decide what to ask next, and it's
+// data the weak-spot practice algorithm reads to decide what to ask next, and it's
 // updated by every mode (full exam, domain drill, review, adaptive), not just
 // adaptive sessions, so the algorithm benefits from everything you've ever answered.
 const MASTERY_KEY = 'nremt_mastery';
@@ -1437,7 +1448,7 @@ function effectiveMasteryLevel(rec){
 }
 
 // A fixed, explicit spaced-repetition queue built from the same mastery/decay data
-// Adaptive Practice already uses to weight its live pool — this just surfaces it as
+// Weak-spot practice already uses to weight its live pool — this just surfaces it as
 // a concrete, countable list: previously-answered questions whose decayed mastery
 // is low, oldest/weakest first, capped so a session stays a reasonable length.
 function loadDueForReview(limit){
@@ -1458,7 +1469,7 @@ function loadDueForReview(limit){
 
 // Per-domain accuracy aggregated across EVERY mode (not just full exams) — this is
 // the shared source of truth for "which domains are actually weak," used by both
-// Adaptive Practice's question weighting and the readiness score's weak-domain check.
+// Weak-spot practice's question weighting and the readiness score's weak-domain check.
 const DOMAIN_STATS_KEY = 'nremt_domain_stats_all';
 function loadDomainStatsAll(){
   const raw = localStorage.getItem(DOMAIN_STATS_KEY);
@@ -1790,7 +1801,7 @@ function refreshIntroState(){
 function examStateSummary(state){
   const totalLen = state.mode === 'adaptive' ? state.adaptiveState.length : state.activeIndices.length;
   const answeredCount = state.answers.filter(a => a !== null).length;
-  const labels = {full:'Timed exam', review:'Missed-question review', flagged:'Flagged-question review', domain:'Domain drill', adaptive:'Adaptive practice'};
+  const labels = {full:'Timed exam', review:'Missed-question review', flagged:'Flagged-question review', domain:'Domain drill', adaptive:'Weak-spot practice'};
   const label = labels[state.mode] || 'Practice session';
   let extra = '';
   if(state.withTimer){
@@ -1893,6 +1904,13 @@ function formatDuration(ms){
 
 document.getElementById('startBtn').addEventListener('click', () => {
   mode = 'full';
+  // The real cognitive exam is adaptive and one-directional: you answer, it
+  // chooses the next item, and there is no route back. A practice exam with
+  // Flag and Previous quietly trains the opposite habit — deferring the hard
+  // ones — which is the habit the exam punishes hardest. On by default for
+  // that reason; off is for the student who wants to review their reasoning
+  // afterwards, which is a different and also useful exercise.
+  realisticMode = document.getElementById('realisticMode').checked;
   const diffFilter = document.getElementById('difficultySelect').value;
   activeIndices = buildRandomExamIndices(diffFilter);
   TARGET_PACE_MS = TIME_LIMIT_MS / activeIndices.length;
@@ -2076,7 +2094,7 @@ document.getElementById('weakDomainsPanel').addEventListener('click', (e) => {
   startDomainQuiz(btn.dataset.domain, 20);
 });
 
-// ---- Adaptive Practice ----
+// ---- Weak-spot practice ----
 // Unlike the domain drill (a fixed set picked once, by hand) this builds the session
 // one question at a time: after every answer it re-weights the remaining pool toward
 // whatever domain you're currently weakest in (blending long-term history with how
@@ -2213,7 +2231,7 @@ function beginQuiz(withTimer, resumeState){
     } else if(mode === 'flagged'){
       banner.textContent = 'Flagged-question review — untimed practice mode';
     } else if(mode === 'adaptive'){
-      banner.textContent = 'Adaptive Practice — untimed, retargets after every question';
+      banner.textContent = 'Weak-spot practice — untimed, retargets after every question';
     } else if(mode === 'spaced'){
       banner.textContent = 'Spaced review — untimed, oldest/weakest items first';
     } else if(mode === 'single'){
@@ -2357,7 +2375,17 @@ function renderQuestion(){
     });
   }
 
-  document.getElementById('prevBtn').disabled = current === 0;
+  // In exam-realistic mode the two controls the real exam does not have are
+  // removed rather than disabled: a greyed-out Previous still invites the habit
+  // of planning to come back. The jump row goes for the same reason.
+  const realistic = realisticMode && mode === 'full';
+  const prevBtn = document.getElementById('prevBtn');
+  prevBtn.hidden = realistic;
+  prevBtn.disabled = current === 0;
+  const flagBtnEl = document.getElementById('flagBtn');
+  if(flagBtnEl) flagBtnEl.hidden = realistic;
+  const jumpRowEl = document.getElementById('jumpRow');
+  if(jumpRowEl) jumpRowEl.hidden = realistic;
   document.getElementById('nextBtn').textContent = current === totalLen-1 ? 'Finish' : 'Next';
   saveExamState();
 }
@@ -2376,12 +2404,14 @@ function renderJumpRow(){
 }
 
 document.getElementById('flagBtn').addEventListener('click', () => {
+  if(realisticMode && mode === 'full') return;
   toggleFlag(activeIndices[current]);
   renderQuestion();
   renderJumpRow();
 });
 
 document.getElementById('prevBtn').addEventListener('click', () => {
+  if(realisticMode && mode === 'full') return;
   if(current > 0){ current--; renderQuestion(); renderJumpRow(); }
 });
 document.getElementById('nextBtn').addEventListener('click', () => {
@@ -2488,7 +2518,7 @@ function showResults(){
     } else {
       missedSet.add(qIdx);
     }
-    // Adaptive sessions already update mastery live, per-question, as they go —
+    // Weak-spot sessions already update mastery live, per-question, as they go —
     // every other mode records it here in bulk instead.
     if(mode !== 'adaptive') updateMastery(qIdx, correct);
   });
