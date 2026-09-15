@@ -420,7 +420,54 @@ recording: "62 topics" on the hub means topics a student can *work through*, so
 it counts topics with a lesson, not entries in the curriculum — otherwise
 unlocking these two would have advertised two lessons that do not exist.
 
-### Phase 9.2 — Interactive lessons for both — **not started**
+### Phase 9.2 — Interactive lessons for both — **complete**
+
+Both lessons are eight steps on the shared engine, so each one's answers reach
+`recordAttempt`/`completeLessonRun` and the concept model at the same time.
+Four new concepts back them, since neither topic had any and a lesson that
+records nothing into the concept graph is invisible to Practice and Review.
+
+| Item | Status |
+|---|---|
+| `lessons/skeletal-structures.html`, wired to mastery, interim label gone | done |
+| `lessons/radical-halogenation.html`, same | done |
+| Concepts: `skeletal-notation`, `implicit-hydrogens`, `radical-chain`, `radical-stability` | done |
+| Step→concept map entries for both, and prerequisites in the curriculum | done |
+| Advertised counts moved 62→64 topics, 58→60 lessons | done |
+
+**The mastery ceiling lifted by itself, which was the point of building it that
+way.** `check-curriculum.mjs` went from reporting "2 notes-only, a perfect run
+reads 98%" to "every topic is tracked, and a perfect run reads 100%" with no
+change to the averaging — the gap closed and the number followed.
+
+**Each lesson's hands-on step grades the mistake the written section names.**
+Skeletal structures draws pentane with no labels at all and asks the student to
+find the carbons; clicking the three corners and stalling triggers the nudge
+about the two ends and scores the step wrong, because that is exactly the
+miscount the step exists to catch. Radical halogenation shows three steps, two
+of which produce CH₃Br, and asks for the stage — the trap being that the
+product-making propagation step is not termination. Sorting it wrong returns
+the radical count for that specific step rather than a generic "try again".
+
+**Two faults found by checking rather than by assuming.** Running axe-core
+directly at the new skeletal-structures page returned a serious violation:
+the SVG carried `role="img"`, which declares the whole graphic a single image
+and makes the focusable carbons inside it invalid and unreachable. It is
+`role="group"` now, with each carbon labeled. The existing a11y job would not
+have caught this — it samples one lesson (`lessons/pka.html`) as the "lesson"
+shape, and that one has no interactive SVG. Separately, the first draft used a
+`mono-inline` class that does not exist anywhere in the site; the course writes
+inline formulas as plain text, and it now does the same.
+
+**Two Phase 9.1 unit tests failed on this work, correctly.** Both asserted
+against a chapter containing a notes-only topic, which is a condition Phase 9.2
+removed. They were rewritten rather than deleted: the arithmetic one now builds
+its own three-topic fixture, so it tests the averaging instead of depending on
+the course being incomplete, and additionally asserts that tracking the third
+topic lifts the chapter to 100. The overall-mastery one now asserts both
+directions against the real curriculum — under 100 while any topic is
+untracked, exactly 100 once none are — so it cannot be satisfied by making
+mastery unreachable.
 
 ### Phase 9.3 — The missing units — **not started**
 

@@ -133,6 +133,31 @@
 .choice-btn.wrong{background:var(--tint-bad);box-shadow:inset 0 0 0 2px var(--coral);}
 .choice-btn:disabled{cursor:default;}
 
+/* The radical-halogenation sorter: three reaction steps, each classified into
+   one of the three stages. Laid out as rows rather than the usual .choice-row
+   because the three questions are asked at once and each keeps its own
+   verdict and explanation underneath — the point of the exercise is comparing
+   the steps to each other, which a one-at-a-time question cannot show. The
+   buttons are .choice-btn so they inherit the correct/wrong states already
+   defined above; .sm only makes them narrow enough for three to a row. */
+.radical-sort{display:flex;flex-direction:column;gap:14px;margin-bottom:18px;}
+.radical-row{
+  border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
+  background:var(--paper);padding:14px 14px 12px;
+}
+.radical-eq{
+  font:700 15px var(--font-mono);color:var(--ink);
+  margin-bottom:10px;line-height:1.5;overflow-wrap:anywhere;
+}
+.radical-cond{font-size:11px;vertical-align:super;color:var(--muted);}
+.radical-choices{display:flex;flex-wrap:wrap;gap:8px;}
+.choice-btn.sm{flex:1 1 110px;text-align:center;padding:9px 10px;font-size:13.5px;}
+.radical-why{
+  font:600 13.5px/1.55 var(--font-ui);color:var(--muted);
+  margin-top:10px;
+}
+.radical-why:empty{margin-top:0;}
+
 .feedback{border-radius:var(--radius);padding:14px 16px;font-size:14.5px;font-weight:700;line-height:1.55;margin-bottom:16px;display:none;}
 .feedback.show{display:block;}
 .feedback.good{background:var(--tint-good);color:var(--good-press);}

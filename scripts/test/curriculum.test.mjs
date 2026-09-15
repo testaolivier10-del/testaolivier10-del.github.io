@@ -66,28 +66,53 @@ test('masteryCoverage counts the whole course, and what of it can be scored', ()
   assert.equal(all.tracked, topics.filter(t => C.hasLesson(t)).length);
 });
 
+/* Built rather than found. When this was written the real curriculum still had
+   two notes-only topics, so the test looked for a chapter containing one — and
+   went green for a reason that had nothing to do with the arithmetic the
+   moment those lessons shipped and no such chapter existed. The property is
+   about how moduleMastery averages, so the fixture is a chapter made to
+   exercise it, and the test keeps working whatever the real course does next. */
 test('a chapter with an untracked section cannot report 100%, even scored perfectly', () => {
   const { C } = fresh();
-  const mod = C.MODULES.find(m => C.masteryCoverage(m).untracked > 0);
-  assert.ok(mod, 'expected at least one chapter with a notes-only section');
+  const mod = { id: 'fixture', title: 'Fixture chapter', topics: [
+    { id: 'fixture-a', title: 'A', href: 'lessons/fixture-a.html' },
+    { id: 'fixture-b', title: 'B', href: 'lessons/fixture-b.html' },
+    { id: 'fixture-c', title: 'C', href: 'notes/fixture-c.html', notesOnly: true },
+  ]};
+  assert.equal(C.masteryCoverage(mod).untracked, 1);
 
-  mod.topics.filter(t => C.hasLesson(t)).forEach(t => score(C, t.id, 100));
-  const pct = C.moduleMastery(mod);
-  assert.ok(pct < 100, `perfect scores still read ${pct}%, which must be under 100`);
+  score(C, 'fixture-a', 100);
+  score(C, 'fixture-b', 100);
 
-  // And it is under 100 by exactly the untracked share, not some softer fudge:
-  // n perfect scores over (n + untracked) topics.
-  const n = mod.topics.filter(t => C.hasLesson(t)).length;
-  const untracked = C.masteryCoverage(mod).untracked;
-  assert.equal(pct, Math.round((100 * n) / (n + untracked)));
+  // Two perfect scores over three topics, because the third can never be
+  // scored — 67%, not the 100% that dropping it from the denominator gives.
+  assert.equal(C.moduleMastery(mod), 67);
+
+  // Track the third and the ceiling lifts on its own: the gap was the cause.
+  mod.topics[2] = { id: 'fixture-c', title: 'C', href: 'lessons/fixture-c.html' };
+  score(C, 'fixture-c', 100);
+  assert.equal(C.moduleMastery(mod), 100);
 });
 
-test('overall mastery cannot reach 100 while any topic is untracked', () => {
+/* The same guarantee against the REAL curriculum, stated both ways so it
+   asserts something whichever state the course is in. While topics are
+   untracked a perfect run must fall short of 100; once none are, a perfect run
+   must reach it — otherwise the check could be satisfied forever by making
+   mastery unreachable, which would be honest and useless. scripts/check-
+   curriculum.mjs enforces the same pair in CI. */
+test('overall mastery tells the truth about coverage, in whichever direction applies', () => {
   const { C } = fresh();
   C.MODULES.flatMap(m => m.topics).filter(t => C.hasLesson(t)).forEach(t => score(C, t.id, 100));
   const overall = C.overallMastery();
+  const untracked = C.masteryCoverage().untracked;
   assert.ok(overall !== null);
-  assert.ok(overall < 100, `a perfect run reads ${overall}%, which must be under 100 while topics are untracked`);
+  if (untracked > 0) {
+    assert.ok(overall < 100,
+      `${untracked} topic(s) are untracked, so a perfect run must read under 100, not ${overall}`);
+  } else {
+    assert.equal(overall, 100,
+      'every topic is tracked, so a perfect run must actually be able to reach 100');
+  }
 });
 
 test('a fully tracked chapter still reaches 100 — the ceiling is the gap, not a permanent tax', () => {

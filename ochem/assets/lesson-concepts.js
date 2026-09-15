@@ -32,6 +32,28 @@
       6:['acetal-formation'],
       7:['acetal-formation','carbonyl-electrophilicity'] } },
 
+    /* Step 2 is the hands-on "find every carbon", which is the skeleton-reading
+       concept alone. 3 and 6 are hydrogen counts, so implicit-hydrogens leads.
+       4 is the C–H versus O–H asymmetry, which is a notation rule rather than
+       a counting one. 7 is the five-bond slip, where both are involved. */
+    /* Step 2 is the sorter (chain mechanism alone). 3 is radical stability, 4
+       is the bromine-versus-chlorine selectivity that follows from it. 6 is
+       NBS, which is a competition/concentration argument resting on the chain.
+       7 is anti-Markovnikov HBr — the chain logic applied somewhere new. */
+    'radical-halogenation': { n:8, steps:{
+      2:['radical-chain'],
+      3:['radical-stability'],
+      4:['radical-stability','radical-chain'],
+      6:['radical-chain','radical-stability'],
+      7:['radical-chain','radical-stability'] } },
+
+    'skeletal-structures': { n:8, steps:{
+      2:['skeletal-notation'],
+      3:['implicit-hydrogens','skeletal-notation'],
+      4:['skeletal-notation'],
+      6:['implicit-hydrogens','skeletal-notation'],
+      7:['implicit-hydrogens','skeletal-notation'] } },
+
     'acidity-factors': { n:9, steps:{
       2:['acidity-factors'],
       3:['acidity-factors','electronegativity-trend'],

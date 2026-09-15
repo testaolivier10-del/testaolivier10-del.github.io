@@ -33,6 +33,34 @@
 (function(){
   var CONCEPTS = [
     /* ---- Structure & bonding ---------------------------------------- */
+    /* Skeletal notation. Two concepts rather than one because students fail
+       them separately and in different places: reading the skeleton (a vertex
+       and an END are both carbons) is a counting error, while the implied
+       hydrogens are an inference error that only shows up later, when a
+       mechanism asks for a hydrogen nobody drew. Tagged into the topics that
+       assume fluency rather than teach it — every mechanism after Foundations
+       is drawn this way. */
+    /* Radical chemistry. Its own pair rather than folded into Electron flow,
+       because the defining move is single-electron (fishhook) rather than the
+       pair-pushing every other mechanism in the course uses — a student who is
+       fluent in curved arrows can still be lost here. Tagged into markovnikov
+       and mass-spec, which is where radicals reappear. */
+    { id:'radical-chain', title:'Radical chain mechanism', family:'Electron flow',
+      topics:['radical-halogenation','markovnikov','mass-spec'],
+      hint:'Count the radicals before and after the step: up from zero, unchanged, or down to zero.',
+      teach:'Sort a radical step by what it does to the radical COUNT, never by whether a product appears. Zero to two is initiation, one to one is propagation, two to zero is termination. The second propagation step makes the product and is still propagation. Bonds break homolytically and the arrows are single-barbed fishhooks; if a step produces a charge, it was not a radical step.' },
+    { id:'radical-stability', title:'Radical stability and selectivity', family:'Electron flow',
+      topics:['radical-halogenation','markovnikov','mass-spec'], dependsOn:['radical-chain'],
+      hint:'Radicals rank like carbocations: 3° > 2° > 1° > methyl. Then ask how selective the attacking radical is.',
+      teach:'Radicals follow 3° > 2° > 1° > methyl, for the same hyperconjugation reason carbocations do. How much that matters depends on the halogen: bromine prefers 3° over 1° by roughly 1600 to 1, chlorine by about 5 to 1. The sluggish reagent is the selective one — its transition state comes late and looks like the radical, so the radical\'s stability shows up in the rate. Rates are per hydrogen, so multiply by how many there are.' },
+    { id:'skeletal-notation', title:'Reading skeletal structures', family:'Structure & bonding',
+      topics:['skeletal-structures','lewis-structures','alkene-structure','cyclohexanes','aromaticity'],
+      hint:'Every vertex AND every end of a line is a carbon — the ends are the ones people miss.',
+      teach:'A line is a bond and every corner or line-end is a carbon, with no C written. A zigzag of five segments is a SIX-carbon chain, because both ends count. Every atom that is not carbon is drawn, and so are the hydrogens on it — an O–H is written out because that hydrogen does chemistry.' },
+    { id:'implicit-hydrogens', title:'Implied hydrogens', family:'Structure & bonding',
+      topics:['skeletal-structures','lewis-structures','formal-charge','h-nmr'], dependsOn:['skeletal-notation'],
+      hint:'Count the lines meeting the atom, then subtract from four.',
+      teach:'Hydrogens on carbon are not drawn; you subtract. Count the bonds you can see at a vertex and take that from four — two lines meeting means CH2, one line at a chain end means CH3. The classic slip is counting a vertex as a carbon and then ALSO writing its hydrogens in when you redraw, giving carbon five bonds.' },
     { id:'valence-electrons', title:'Valence electrons', family:'Structure & bonding',
       topics:['atomic-structure','orbitals','bonding','lewis-structures'],
       hint:'Count the outermost shell, not every electron in the atom.',

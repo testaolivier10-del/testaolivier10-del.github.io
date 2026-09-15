@@ -721,6 +721,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/lessons/radical-halogenation.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/lessons/resonance.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
@@ -732,6 +737,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/rs-configuration.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/skeletal-structures.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
   </url>

@@ -43,9 +43,9 @@
     ]},
     { id: 'electron-movement', title: 'Organic Structure & Electron Movement', topics: [
       // The notation every drawing after Foundations is written in, so it
-      // must never be a dead end: the notes are written and linked, and only
-      // the interactive lesson is still to come.
-      { id: 'skeletal-structures', title: 'Skeletal structures', href: 'notes/skeletal-structures.html', notesOnly: true },
+      // comes before everything that uses it and depends on nothing but
+      // Lewis structures.
+      { id: 'skeletal-structures', title: 'Skeletal structures', href: 'lessons/skeletal-structures.html', dependsOn: ['lewis-structures'] },
       { id: 'resonance', title: 'Resonance', href: 'lessons/resonance.html' },
       { id: 'curved-arrows', title: 'Curved arrows', href: 'lessons/curved-arrows.html', dependsOn: ['resonance'] },
       { id: 'nucleophiles', title: 'Nucleophiles', href: 'lessons/nucleophiles.html', dependsOn: ['electronegativity'] },
@@ -66,9 +66,10 @@
       { id: 'axial-equatorial', title: 'Axial/equatorial', href: 'lessons/axial-equatorial.html', dependsOn: ['cyclohexanes'] },
       { id: 'ring-flips', title: 'Ring flips', href: 'lessons/ring-flips.html', dependsOn: ['axial-equatorial'] },
       { id: 'conformational-analysis', title: 'Conformational analysis', href: 'lessons/conformational-analysis.html', dependsOn: ['ring-flips'] },
-      // The one reaction alkanes have. The notes are written and linked;
-      // the interactive lesson is still to come.
-      { id: 'radical-halogenation', title: 'Radical halogenation', href: 'notes/radical-halogenation.html', notesOnly: true }
+      // The one reaction alkanes have. Needs conformational analysis only for
+      // the substitution vocabulary (3 degrees vs 2 degrees vs 1 degree), and
+      // resonance for the allylic radical at the end.
+      { id: 'radical-halogenation', title: 'Radical halogenation', href: 'lessons/radical-halogenation.html', dependsOn: ['conformational-analysis', 'resonance'] }
     ]},
     { id: 'stereochemistry', title: 'Stereochemistry', topics: [
       { id: 'chirality', title: 'Chirality', href: 'lessons/chirality.html' },
