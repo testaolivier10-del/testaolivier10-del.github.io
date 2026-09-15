@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMT Drug Formulary — Indications, Doses &amp; Contraindications | LevlPrep</title>
+<meta name="description" content="The seven medications an EMT gives or assists with: oxygen, aspirin, oral glucose, epinephrine, naloxone, albuterol and nitroglycerin — indications, contraindications, doses and the checks before you give each one.">
+<link rel="canonical" href="https://levlprep.com/nremt/formulary.html">
+<meta property="og:title" content="EMT Drug Formulary — Indications, Doses &amp; Contraindications | LevlPrep">
+<meta property="og:description" content="The seven medications an EMT gives or assists with: oxygen, aspirin, oral glucose, epinephrine, naloxone, albuterol and nitroglycerin — indications, contraindications, doses and the checks before you give each one.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levlprep.com/nremt/formulary.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order, and the
+     page's own inline script waits for DOMContentLoaded. -->
+<script src="../assets/errors.js" defer></script>
+<script src="../assets/account.js" defer></script>
+<script src="../assets/hub-progress.js" defer></script>
+<script src="../assets/chime.js" defer></script>
+<script src="../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+  .drug-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:clamp(24px,3.5vw,38px);}
+  .drug{break-inside:avoid;border:2px solid var(--line);border-radius:var(--radius-md);padding:clamp(18px,2.5vw,24px);background:var(--surface);}
+  .drug h2{margin:0 0 2px;font:900 22px var(--font-ui);letter-spacing:-.02em;padding-top:0;border-top:0;}
+  .drug .generic{font:700 12px var(--font-mono);color:var(--muted);margin-bottom:14px;}
+  .drug .assist{
+    display:inline-block;margin:0 0 14px;padding:3px 9px;border-radius:var(--radius-pill);
+    background:var(--tint-accent);color:var(--accent);font:900 10px var(--font-ui);
+    text-transform:uppercase;letter-spacing:.05em;
+  }
+  .drug dl{margin:0;}
+  .drug dt{
+    font:900 10.5px var(--font-ui);text-transform:uppercase;letter-spacing:.05em;
+    color:var(--muted);margin-top:14px;
+  }
+  .drug dt:first-child{margin-top:0;}
+  .drug dd{margin:4px 0 0;font-size:14px;line-height:1.55;}
+  .drug dd ul{margin:4px 0 0;padding-left:18px;}
+  .drug dd li{margin-bottom:3px;}
+  .drug .dose{font:800 15px var(--font-mono);}
+  .drug .stop{
+    margin-top:16px;padding:10px 12px;border-left:3px solid var(--coral,#c0392b);
+    background:var(--tint-coral,transparent);font-size:13.5px;line-height:1.5;
+  }
+  .drug .stop b{display:block;font:900 10.5px var(--font-ui);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
+  .formulary-note{
+    margin:0 0 clamp(28px,4vw,40px);padding:14px 16px;border-left:3px solid var(--accent);
+    font-size:14px;line-height:1.6;color:var(--muted);
+  }
+  #drillBox{margin-top:clamp(40px,6vw,64px);}
+</style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="practice.html">Practice</a> · <a href="study-plan.html">Study Plan</a> · <a href="study-notes.html">Notes</a> · <a href="mnemonics.html">Mnemonics</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
+<div class="xshell">
+
+  <div class="hero">
+    <div class="eyebrow">EMT formulary</div>
+    <h1>The seven drugs, and what stops you giving them.</h1>
+    <p class="lede">An EMT carries a very short formulary. Knowing it cold is cheap marks on the exam and the difference between helping and harming on the truck. The contraindications matter more than the indications — the exam tests what stops you, not what starts you.</p>
+  </div>
+
+  <p class="formulary-note"><strong>Scope varies.</strong> Which of these you may give, which you may only assist a patient with, and which need online medical direction, is set by your state and your medical director &mdash; not by this page. Where a drug is commonly &ldquo;assisted&rdquo; rather than administered, it is marked. Doses are the usual adult figures taught to the national standard; <strong>your protocol is the authority</strong>.</p>
+
+  <div class="drug-grid">
+
+    <div class="drug">
+      <h2>Oxygen</h2>
+      <div class="generic">O&#8322; &middot; gas, inhaled</div>
+      <dl>
+        <dt>Indications</dt>
+        <dd>Hypoxia (SpO&#8322; under 94% on room air), respiratory distress, shock, suspected carbon monoxide poisoning, and cardiac arrest.</dd>
+        <dt>Contraindications</dt>
+        <dd>None in a hypoxic patient. There is no patient you may leave hypoxic.</dd>
+        <dt>Dose &amp; route</dt>
+        <dd class="dose">Titrate to 94&ndash;98%</dd>
+        <dd>Nasal cannula 1&ndash;6 L/min &middot; non-rebreather 12&ndash;15 L/min &middot; BVM with reservoir at 15 L/min. In suspected CO poisoning, high-flow regardless of the reading &mdash; the pulse oximeter cannot tell carboxyhaemoglobin from oxyhaemoglobin and reads falsely high.</dd>
+        <dt>Action</dt>
+        <dd>Raises the fraction of inspired oxygen, correcting hypoxia at the tissue.</dd>
+        <dt>Side effects</dt>
+        <dd>Dries and irritates mucosa. Excess oxygen is itself harmful after cardiac arrest, in stroke and in myocardial infarction, which is why the target is a window and not a maximum.</dd>
+      </dl>
+      <div class="stop"><b>Before you give it</b>Match the device to the need. A comfortable patient at 88% needs a cannula titrated up, not a non-rebreather. A patient who is not moving enough air needs a BVM, and no mask fixes inadequate ventilation.</div>
+    </div>
+
+    <div class="drug">
+      <h2>Aspirin</h2>
+      <div class="generic">acetylsalicylic acid &middot; chewable tablet, oral</div>
+      <dl>
+        <dt>Indications</dt>
+        <dd>Chest pain or discomfort of suspected cardiac origin.</dd>
+        <dt>Contraindications</dt>
+        <dd><ul>
+          <li>Known aspirin allergy</li>
+          <li>Active gastrointestinal bleeding or known bleeding disorder</li>
+          <li>Unable to swallow or to protect their own airway</li>
+          <li>A child or adolescent &mdash; risk of Reye&rsquo;s syndrome</li>
+        </ul></dd>
+        <dt>Dose &amp; route</dt>
+        <dd class="dose">160&ndash;324 mg, chewed</dd>
+        <dd>Usually four 81 mg chewable tablets. <strong>Chewed, not swallowed whole</strong> &mdash; chewing gets it absorbed in minutes rather than tens of minutes, and minutes are what this drug is for.</dd>
+        <dt>Action</dt>
+        <dd>Irreversibly blocks platelet aggregation, so the clot that is forming stops growing. It does not dissolve the clot already there and it does not treat the pain.</dd>
+        <dt>Side effects</dt>
+        <dd>Gastric irritation, nausea, prolonged bleeding.</dd>
+      </dl>
+      <div class="stop"><b>Before you give it</b>Ask whether they have already taken any today, and how much. A patient on a daily 81 mg still gets the full dose &mdash; a maintenance dose is not a treatment dose.</div>
+    </div>
+
+    <div class="drug">
+      <h2>Oral glucose</h2>
+      <div class="generic">dextrose gel &middot; buccal</div>
+      <dl>
+        <dt>Indications</dt>
+        <dd>Suspected hypoglycemia &mdash; altered mental status in a diabetic patient, or a measured glucose below about 70 mg/dL &mdash; in a patient who can still swallow and protect their airway.</dd>
+        <dt>Contraindications</dt>
+        <dd><ul>
+          <li>Unresponsive, or unable to swallow</li>
+          <li>No gag reflex</li>
+        </ul></dd>
+        <dt>Dose &amp; route</dt>
+        <dd class="dose">One tube, 15&ndash;24 g</dd>
+        <dd>Squeezed between the cheek and the gum, a little at a time, with the patient sitting up.</dd>
+        <dt>Action</dt>
+        <dd>Absorbed across the buccal mucosa and swallowed, raising blood glucose.</dd>
+        <dt>Side effects</dt>
+        <dd>Almost none. The danger is not the drug, it is aspiration.</dd>
+      </dl>
+      <div class="stop"><b>Before you give it</b>Ask them to swallow on command and watch them do it. &ldquo;They&rsquo;re awake enough&rdquo; is not the test. And ask which diabetes medication they take: a long-acting sulfonylurea will outlast the gel by hours, which is why that patient needs transport even after they wake up and feel fine.</div>
+    </div>
+
+    <div class="drug">
+      <h2>Epinephrine</h2>
+      <div class="generic">adrenaline &middot; auto-injector, intramuscular</div>
+      <div class="assist">Often assisted &mdash; check your scope</div>
+      <dl>
+        <dt>Indications</dt>
+        <dd>Anaphylaxis: a likely allergen plus more than one body system involved, or hypotension after a known allergen. Skin findings alone are an allergic reaction, not anaphylaxis.</dd>
+        <dt>Contraindications</dt>
+        <dd>None in true anaphylaxis. Age, heart disease and hypertension are cautions to be aware of, not reasons to withhold it from someone whose airway is closing.</dd>
+        <dt>Dose &amp; route</dt>
+        <dd class="dose">Adult 0.3 mg IM &middot; Child 0.15 mg IM</dd>
+        <dd>Into the <strong>lateral thigh</strong>, through clothing if necessary, held in place for the time the device specifies. The paediatric dose is usually for a child under about 30 kg (66 lb). May be repeated in 5&ndash;15 minutes per protocol if there is no improvement.</dd>
+        <dt>Action</dt>
+        <dd>Alpha-1 vasoconstriction raises blood pressure and reduces airway swelling; beta-1 increases heart rate and force; beta-2 opens the bronchioles. It is the only drug that addresses all three.</dd>
+        <dt>Side effects</dt>
+        <dd>Tachycardia, palpitations, tremor, anxiety, headache, pallor. All expected, none a reason to have withheld it.</dd>
+      </dl>
+      <div class="stop"><b>Before you give it</b>Lateral thigh, never the buttock and never a digit. Then transport &mdash; a biphasic reaction can return hours later, so this patient goes to hospital even if they recover completely in front of you.</div>
+    </div>
+
+    <div class="drug">
+      <h2>Naloxone</h2>
+      <div class="generic">Narcan &middot; intranasal or intramuscular</div>
+      <dl>
+        <dt>Indications</dt>
+        <dd>Suspected opioid overdose <strong>with respiratory depression</strong>. The indication is the breathing, not the drug use.</dd>
+        <dt>Contraindications</dt>
+        <dd>Known hypersensitivity. That is all.</dd>
+        <dt>Dose &amp; route</dt>
+        <dd class="dose">4 mg intranasal, or 0.4&ndash;2 mg IM</dd>
+        <dd>Intranasal is one device into one nostril; repeat in the other nostril after 2&ndash;3 minutes if there is no response. Doses vary by product and protocol.</dd>
+        <dt>Action</dt>
+        <dd>Competes opioids off their receptors, reversing the respiratory depression.</dd>
+        <dt>Side effects</dt>
+        <dd>Acute withdrawal: vomiting, agitation, combativeness, sometimes seizure. Plan for a patient who wakes up frightened and angry, and protect the airway from the vomit.</dd>
+      </dl>
+      <div class="stop"><b>Before you give it</b>Ventilate first. Opioid overdose kills by hypoxia, and a bag-valve mask treats that immediately while naloxone takes minutes. Naloxone also wears off sooner than many opioids, so a patient who wakes up can go back down &mdash; they are still going to hospital.</div>
+    </div>
+
+    <div class="drug">
+      <h2>Albuterol</h2>
+      <div class="generic">salbutamol &middot; nebulizer or metered-dose inhaler</div>
+      <div class="assist">Often assisted &mdash; check your scope</div>
+      <dl>
+        <dt>Indications</dt>
+        <dd>Bronchospasm with wheezing &mdash; asthma, COPD, and some allergic reactions.</dd>
+        <dt>Contraindications</dt>
+        <dd><ul>
+          <li>Known hypersensitivity</li>
+          <li>Not prescribed to this patient, where your protocol requires it to be</li>
+          <li>Unable to follow the instructions to use the device, for an MDI</li>
+        </ul></dd>
+        <dt>Dose &amp; route</dt>
+        <dd class="dose">2.5 mg in 3 mL saline, nebulized</dd>
+        <dd>Or 2 puffs by metered-dose inhaler, ideally through a spacer. Nebulized over about 5&ndash;15 minutes, driven by oxygen.</dd>
+        <dt>Action</dt>
+        <dd>A beta-2 agonist: relaxes bronchial smooth muscle and opens the airway. It does nothing for the swelling and mucus underneath, which is why a severe asthmatic still deteriorates.</dd>
+        <dt>Side effects</dt>
+        <dd>Tachycardia, tremor, nervousness, palpitations.</dd>
+      </dl>
+      <div class="stop"><b>Before you give it</b>Listen before and after, and count a pulse before you start. A chest that goes quiet after treatment has either opened up or stopped moving air &mdash; and the difference is the patient&rsquo;s work of breathing and mental status, not the wheeze.</div>
+    </div>
+
+    <div class="drug">
+      <h2>Nitroglycerin</h2>
+      <div class="generic">glyceryl trinitrate &middot; sublingual tablet or spray</div>
+      <div class="assist">Usually assisted &mdash; the patient&rsquo;s own prescription</div>
+      <dl>
+        <dt>Indications</dt>
+        <dd>Chest pain of suspected cardiac origin, in a patient with their own prescribed nitroglycerin.</dd>
+        <dt>Contraindications</dt>
+        <dd><ul>
+          <li>Systolic blood pressure below 100 mmHg (some protocols say 90 &mdash; know yours)</li>
+          <li>A sildenafil-type drug in the last 24&ndash;48 hours &mdash; ask every patient, not only the men</li>
+          <li>Maximum dose already taken &mdash; usually three</li>
+          <li>Suspected head injury</li>
+          <li>Heart rate under 50 or over 100</li>
+        </ul></dd>
+        <dt>Dose &amp; route</dt>
+        <dd class="dose">0.4 mg sublingual, up to 3 doses</dd>
+        <dd>One tablet or spray under the tongue, repeated every 5 minutes, <strong>with a blood pressure before every dose</strong>.</dd>
+        <dt>Action</dt>
+        <dd>Dilates veins, dropping preload and so the work the heart has to do. It also dilates the coronary arteries.</dd>
+        <dt>Side effects</dt>
+        <dd>Hypotension, throbbing headache, dizziness, reflex tachycardia.</dd>
+      </dl>
+      <div class="stop"><b>Before you give it</b>A blood pressure before every single dose, not just the first. An inferior MI may involve the right ventricle, which depends on exactly the preload this drug removes &mdash; those patients can drop their pressure catastrophically on a normal dose.</div>
+    </div>
+
+  </div>
+
+  <div id="drillBox"></div>
+
+  <footer>
+    <p>Doses and contraindications are the usual figures taught to the national standard. Your protocol and medical direction are the authority.</p>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+<script src="assets/nav.js" defer></script>
+<script src="assets/formulary-drill.js" defer></script>
+</body>
+</html>

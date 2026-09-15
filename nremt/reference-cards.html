@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMT Reference Cards — Pediatric Vitals, GCS, APGAR | LevlPrep</title>
+<meta name="description" content="The numbers you look up rather than memorise: pediatric vital signs by age, the Glasgow Coma Scale, APGAR scoring, and the pediatric assessment triangle.">
+<link rel="canonical" href="https://levlprep.com/nremt/reference-cards.html">
+<meta property="og:title" content="EMT Reference Cards — Pediatric Vitals, GCS, APGAR | LevlPrep">
+<meta property="og:description" content="The numbers you look up rather than memorise: pediatric vital signs by age, the Glasgow Coma Scale, APGAR scoring, and the pediatric assessment triangle.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levlprep.com/nremt/reference-cards.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order, and the
+     page's own inline script waits for DOMContentLoaded. -->
+<script src="../assets/errors.js" defer></script>
+<script src="../assets/account.js" defer></script>
+<script src="../assets/hub-progress.js" defer></script>
+<script src="../assets/chime.js" defer></script>
+<script src="../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+  .refcard{border:2px solid var(--line);border-radius:var(--radius-md);padding:clamp(18px,2.5vw,26px);margin-bottom:clamp(26px,3.5vw,38px);background:var(--surface);}
+  .refcard h2{margin:0 0 4px;font:900 23px var(--font-ui);letter-spacing:-.02em;padding-top:0;border-top:0;}
+  .refcard .sub{font-size:13.5px;color:var(--muted);margin:0 0 16px;line-height:1.55;}
+  .refcard table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  .refcard th,.refcard td{padding:7px 9px;text-align:left;border-bottom:1px solid var(--line-soft);vertical-align:top;}
+  .refcard th{font:900 10.5px var(--font-ui);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);}
+  .refcard td.n{font:700 13px var(--font-mono);white-space:nowrap;}
+  .refcard tbody tr:last-child td{border-bottom:0;}
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .refnote{margin-top:14px;padding:10px 12px;border-left:3px solid var(--accent);font-size:13px;line-height:1.6;color:var(--muted);}
+  .refnote b{color:var(--ink);}
+</style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="practice.html">Practice</a> · <a href="study-plan.html">Study Plan</a> · <a href="study-notes.html">Notes</a> · <a href="mnemonics.html">Mnemonics</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
+<div class="xshell narrow">
+
+  <div class="hero">
+    <div class="eyebrow">Reference cards</div>
+    <h1>The numbers you look up.</h1>
+    <p class="lede">Not everything is worth memorising. These are the tables you want in front of you &mdash; on a call, or the night before the exam &mdash; rather than half-remembered.</p>
+  </div>
+
+  <div class="refcard">
+    <h2>Pediatric vital signs by age</h2>
+    <p class="sub">Awake and at rest. A crying, frightened or febrile child runs faster than this on every row, which is why a single set of numbers means very little in a child &mdash; the trend and the overall picture mean far more.</p>
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Age</th><th>Heart rate</th><th>Respiratory rate</th><th>Systolic BP</th></tr></thead>
+      <tbody>
+        <tr><td>Newborn <span style="color:var(--muted)">(0&ndash;1 mo)</span></td><td class="n">100&ndash;180</td><td class="n">30&ndash;60</td><td class="n">&gt; 60</td></tr>
+        <tr><td>Infant <span style="color:var(--muted)">(1&ndash;12 mo)</span></td><td class="n">100&ndash;160</td><td class="n">25&ndash;50</td><td class="n">&gt; 70</td></tr>
+        <tr><td>Toddler <span style="color:var(--muted)">(1&ndash;3 y)</span></td><td class="n">90&ndash;150</td><td class="n">20&ndash;30</td><td class="n">&gt; 72&ndash;76</td></tr>
+        <tr><td>Preschool <span style="color:var(--muted)">(3&ndash;6 y)</span></td><td class="n">80&ndash;140</td><td class="n">20&ndash;25</td><td class="n">&gt; 76&ndash;82</td></tr>
+        <tr><td>School age <span style="color:var(--muted)">(6&ndash;12 y)</span></td><td class="n">70&ndash;120</td><td class="n">15&ndash;20</td><td class="n">&gt; 82&ndash;90</td></tr>
+        <tr><td>Adolescent <span style="color:var(--muted)">(12&ndash;18 y)</span></td><td class="n">60&ndash;100</td><td class="n">12&ndash;20</td><td class="n">&gt; 90</td></tr>
+        <tr><td>Adult, for comparison</td><td class="n">60&ndash;100</td><td class="n">12&ndash;20</td><td class="n">90&ndash;140</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="refnote"><b>The formula worth knowing.</b> For a child aged 1 to 10, the lower limit of an acceptable systolic pressure is roughly <b>70 + (2 &times; age in years)</b>. A 4-year-old below about 78 is hypotensive. Published ranges differ between textbooks and protocols by a few beats either way; learn the set your program uses.</div>
+    <div class="refnote"><b>And the thing the table cannot show you.</b> Children compensate extremely well and then fail suddenly. A normal blood pressure in a sick child is not reassurance &mdash; it is the last thing to go. Tachycardia, poor perfusion and a change in how the child behaves all arrive long before the pressure moves, and <b>bradycardia in a child is a pre-arrest sign</b>, usually from hypoxia.</div>
+  </div>
+
+  <div class="refcard">
+    <h2>Glasgow Coma Scale</h2>
+    <p class="sub">Three components, scored independently and summed. Minimum 3, maximum 15 &mdash; there is no zero, because a dead patient still scores 3.</p>
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Score</th><th>Eye opening</th><th>Verbal response</th><th>Motor response</th></tr></thead>
+      <tbody>
+        <tr><td class="n">6</td><td>&mdash;</td><td>&mdash;</td><td>Obeys commands</td></tr>
+        <tr><td class="n">5</td><td>&mdash;</td><td>Oriented</td><td>Localises pain</td></tr>
+        <tr><td class="n">4</td><td>Spontaneous</td><td>Confused</td><td>Withdraws from pain</td></tr>
+        <tr><td class="n">3</td><td>To voice</td><td>Inappropriate words</td><td>Flexion (decorticate)</td></tr>
+        <tr><td class="n">2</td><td>To pain</td><td>Incomprehensible sounds</td><td>Extension (decerebrate)</td></tr>
+        <tr><td class="n">1</td><td>None</td><td>None</td><td>None</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="refnote"><b>Report the parts, not just the total.</b> E3 V4 M6 and E1 V1 M11 cannot both happen, but very different patients can share a total of 13. The motor score carries most of the prognostic weight, and the components are what the receiving team wants.</div>
+    <div class="refnote"><b>The trend beats the number.</b> One GCS is a data point; two, ten minutes apart, is information. A patient dropping from 14 to 11 is the finding, whatever the absolute figure. Below 8 is the classic threshold for an airway that will not protect itself.</div>
+    <div class="refnote"><b>Flexion versus extension.</b> Decorticate flexion brings the arms in toward the <em>core</em>, which is the memory hook. Decerebrate extension straightens and rotates them outward, and is the worse of the two.</div>
+  </div>
+
+  <div class="refcard">
+    <h2>APGAR</h2>
+    <p class="sub">Scored at 1 minute and again at 5 minutes after birth. Five signs, each 0, 1 or 2, for a total out of 10.</p>
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Sign</th><th>0</th><th>1</th><th>2</th></tr></thead>
+      <tbody>
+        <tr><td><b>A</b>ppearance <span style="color:var(--muted)">(colour)</span></td><td>Blue or pale all over</td><td>Body pink, hands and feet blue</td><td>Completely pink</td></tr>
+        <tr><td><b>P</b>ulse</td><td>Absent</td><td>Under 100</td><td>Over 100</td></tr>
+        <tr><td><b>G</b>rimace <span style="color:var(--muted)">(reflex)</span></td><td>No response</td><td>Grimace</td><td>Cries, coughs, sneezes</td></tr>
+        <tr><td><b>A</b>ctivity <span style="color:var(--muted)">(tone)</span></td><td>Limp</td><td>Some flexion</td><td>Active motion</td></tr>
+        <tr><td><b>R</b>espirations</td><td>Absent</td><td>Slow, irregular, weak cry</td><td>Strong cry</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="refnote"><b>The trap.</b> Blue hands and feet with a pink body is <em>acrocyanosis</em>, and it is normal in the first minutes of life. It scores <b>1</b>, not 2. Scoring it as 2 is by far the most common reason an APGAR comes out one point too high.</div>
+    <div class="refnote"><b>It never delays care.</b> APGAR is recorded, not acted on. A baby who needs drying, warming, stimulation or ventilation gets it immediately &mdash; you do not wait for the one-minute mark to decide, and you do not stop resuscitating to score.</div>
+  </div>
+
+  <div class="refcard">
+    <h2>Pediatric assessment triangle</h2>
+    <p class="sub">An impression formed from the doorway, before you touch the child &mdash; which also buys you a calm child for the hands-on assessment that follows.</p>
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Side</th><th>What you are looking at</th><th>Abnormal suggests</th></tr></thead>
+      <tbody>
+        <tr><td><b>Appearance</b></td><td>Tone, interactiveness, consolability, gaze, speech or cry</td><td>Something systemic: hypoxia, hypoglycemia, sepsis, a head injury, a poisoning</td></tr>
+        <tr><td><b>Work of breathing</b></td><td>Audible sounds, retractions, nasal flaring, head bobbing, tripoding</td><td>A respiratory problem, and which part of the airway it is in</td></tr>
+        <tr><td><b>Circulation to skin</b></td><td>Pallor, mottling, cyanosis</td><td>Shock, or a cardiac problem</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="refnote"><b>Reading the combinations.</b> Appearance alone abnormal points at something systemic. Appearance plus breathing is respiratory failure. Appearance plus skin is shock. All three is cardiopulmonary failure &mdash; the child who is about to arrest. It gives you severity and a direction, never a diagnosis, and it supplements the hands-on assessment rather than replacing it.</div>
+    <div class="refnote"><b>Appearance is the one that matters most.</b> A child who will not look at you, will not be consoled by a parent, or has gone quiet when they should be protesting is a sick child, whatever the numbers say.</div>
+  </div>
+
+  <footer>
+    <p>Published ranges vary between textbooks and protocols. Where your program's figures differ from these, use theirs.</p>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

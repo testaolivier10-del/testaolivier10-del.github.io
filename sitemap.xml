@@ -41,6 +41,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/nremt/formulary.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/nremt/glossary.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
@@ -52,6 +57,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/nremt/practice.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/nremt/reference-cards.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
   </url>

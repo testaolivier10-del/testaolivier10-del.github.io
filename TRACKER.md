@@ -45,6 +45,10 @@ clinician, and that is the gap no amount of tooling closes.
 | Oxygen flow rates stated: cannula 1–6 L/min, non-rebreather 12–15 L/min, BVM with reservoir at 15 L/min | Standard EMT practice | `skillsheets.html` | Phase 3 |
 | Airway sounds: snoring means open the airway, gurgling means suction (≤15 s); silent chest named as a pre-arrest finding | Standard EMT practice | `sound-trainer.html` | Phase 3 |
 | BE-FAST, APGAR (with acrocyanosis scoring 1), PAT and SLUDGEM cards added | Standard EMT practice | `mnemonics.html` | Phase 3 |
+| EMT formulary: indications, contraindications, doses and routes for oxygen, aspirin, oral glucose, epinephrine, naloxone, albuterol and nitroglycerin | National EMS Education Standards; doses are the usual figures taught nationally | `nremt/formulary.html` | Phase 4 |
+| 22 new pharmacology questions added to the bank (topic "Pharmacology") | as above | `questions.json` | Phase 4 |
+| Pediatric vital-sign ranges by age, and the 70 + (2 × age) hypotension formula | Standard EMT practice; ranges vary between texts and the page says so | `nremt/reference-cards.html` | Phase 4 |
+| GCS component table; APGAR scoring grid with acrocyanosis scoring 1; PAT with what each side suggests | Standard EMT practice | `nremt/reference-cards.html` | Phase 4 |
 
 ---
 
@@ -127,12 +131,12 @@ rhonchi and normal breath clips are **embedded in the page as base64**, not
 linked as the credit line implied. The page now says so, says the licence has
 not been established, and gives a route to have them removed.
 
-## Phase 4 — New EMT content
+## Phase 4 — New EMT content — **in progress**
 
 | Item | Status |
 |---|---|
-| Pharmacology module (EMT formulary) | open |
-| Reference cards: peds vitals, GCS, APGAR, PAT | open |
+| Pharmacology module (EMT formulary) | done |
+| Reference cards: peds vitals, GCS, APGAR, PAT | done |
 | Expand Airway, Ventilation & Oxygen, Vital Signs, Bleeding Control, Head/Neck/Spine | open |
 | Figures in the notes (currently zero across 40 chapters) | open |
 | More branching scenarios toward 25 | open |

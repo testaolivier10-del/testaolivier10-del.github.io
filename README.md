@@ -2,7 +2,7 @@
 
 Source for [LevlPrep](https://levlprep.com/), home to two courses:
 
-**[NREMT-EMT Prep](https://levlprep.com/nremt/)** — a free NREMT-EMT exam prep app: a 2,084-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
+**[NREMT-EMT Prep](https://levlprep.com/nremt/)** — a free NREMT-EMT exam prep app: a 2,106-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
 
 **[Organic Chemistry](https://levlprep.com/ochem/)** (beta) — a mastery/learning product, not exam prep: a full 14-module Organic Chemistry I curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. **58 lessons and 10 mechanism walkthroughs are built**, covering Foundations through carbonyl and aromatic chemistry; `curriculum.js` is the single source of truth for what exists, and anything it doesn't link yet shows as "coming soon". A Mastery dashboard scores performance per module from real question attempts, not just completion, and flags concept dependencies: struggling on E2 surfaces a "possible gap detected" callout pointing at its declared prerequisites, whether or not those prerequisite lessons exist yet. Alongside the course there are **seven interactive tools** (`ochem/tools.html`) — an arrow pusher that shows you the product your mechanism makes, a resonance explorer, a 3D viewer, a conformation lab, a reaction predictor, an acid/base comparator and a spectroscopy lab — see [Tools](#tools).
 
@@ -90,7 +90,7 @@ nremt/                 The NREMT-EMT Prep course
   scenario-sim.html       Branching clinical scenarios
   search.html             Client-side search across notes + the question bank
   assets/
-    questions.json        The 2,084-question bank: the file you edit. Nothing fetches
+    questions.json        The 2,106-question bank: the file you edit. Nothing fetches
                             it; questions-core.json and explanations.json are
                             generated from it (scripts/build-question-bank.mjs)
     question-ids.js        What every stored question record refers to. Pure
@@ -525,7 +525,7 @@ It works in two layers, and the first one is always on:
 
    When the reference pages answer weakly, a second tier loads: each course's
    practice explanations, built by `scripts/build-tutor-bank.mjs` into
-   `<course>/assets/tutor-bank.json` (NREMT 2,084 entries, ochem 1,844). That
+   `<course>/assets/tutor-bank.json` (NREMT 2,106 entries, ochem 1,844). That
    is the largest body of teaching prose either course has — written to explain
    why an answer is right — and it was invisible to the assistant because it
    sits inside megabyte question banks alongside answer keys. It is fetched
@@ -592,7 +592,7 @@ Search is now a tab in the ochem header (the tab row scrolls horizontally, so a 
 
 ## Reporting a bad question (`assets/report-question.js`)
 
-`sources.html` promised a way to tell us when a question is wrong from the day it was written. It explained the correction policy and said where corrections get listed, and then never said *how* — the only address anywhere on the site was at the bottom of the privacy policy. For a bank of 2,084 NREMT questions and 1,860 ochem ones, written against reference material rather than by a committee, that was the most expensive gap on the site. No script can check whether an answer is clinically right; a student who has just answered one and thinks the key is wrong is the only reviewer who can, and they are on the one screen where saying so costs a tap.
+`sources.html` promised a way to tell us when a question is wrong from the day it was written. It explained the correction policy and said where corrections get listed, and then never said *how* — the only address anywhere on the site was at the bottom of the privacy policy. For a bank of 2,106 NREMT questions and 1,860 ochem ones, written against reference material rather than by a committee, that was the most expensive gap on the site. No script can check whether an answer is clinically right; a student who has just answered one and thinks the key is wrong is the only reviewer who can, and they are on the one screen where saying so costs a tap.
 
 So it is a tap, under the explanation — in the results list after an exam, on the back of a flashcard, and under every ochem question's feedback. Not on a contact page the reader would have to go looking for while holding the thought.
 
@@ -812,7 +812,7 @@ The reason is that the explanations are two thirds of the bank's compressed weig
 
 The explanations are fetched immediately afterwards without blocking anything and land about 270 ms later — long before anyone could have answered. The two places that read them (`renderFlashcard`, `renderReview`) `await` that promise anyway, because "long before" is an assumption about a fast phone and not a guarantee. If the second file fails outright, every mode still works and only the "why" under an answer is missing.
 
-**Positional alignment between the two generated files is not cosmetic.** `explanations.json` is a bare array of strings, matched to `questions-core.json` by position, which is what lets it skip repeating a key 2,084 times. Both are generated in one pass from `questions.json` and neither is ever reordered independently.
+**Positional alignment between the two generated files is not cosmetic.** `explanations.json` is a bare array of strings, matched to `questions-core.json` by position, which is what lets it skip repeating a key 2,106 times. Both are generated in one pass from `questions.json` and neither is ever reordered independently.
 
 ### Every question has an id
 
