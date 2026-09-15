@@ -207,6 +207,10 @@ const WORDING_TELLS = [
     label: 'a hedge ("per protocol"/"as appropriate"/"generally")',
     re: /(?:per protocol|as appropriate|generally)/i,
     threshold: 'hedgeCeiling',
+    // Given a far side once it went past chance, for the same reason the other
+    // two rows have one: a bound that only tightens is wrong for a number that
+    // has arrived and kept going.
+    opposite: 'hedgeFloor',
     direction: 'marks-right',
     advice: 'Either hedge some distractors too, or commit the key to a definite answer.',
   },
@@ -236,7 +240,14 @@ const BANKS = [
     isMulti: (q) => !q.type || q.type === 'mc',
     isTrueFalse: () => false,
     positionCeiling: 0.4,
-    lengthCeiling: 0.32,
+    // 54% when this was first guarded, 32% after the first editorial pass, and
+    // 24.8% now — at chance, which is where it stops being information. The
+    // last two points came from the other side of the same problem: 135 keys
+    // ran 20 to 140 characters longer than every distractor beside them,
+    // because they carried parenthetical explanation that belongs in the
+    // explain field. Trimming them shortens the key AND improves the item, so
+    // the tell closed without a single distractor being padded to close it.
+    lengthCeiling: 0.25,
     trueFalseCeiling: null,
     // Measured 6.6% and 42.9% when the wording tells were first guarded.
     // Tightened as domains are rewritten: 0.06 at the start, then 0.065
@@ -254,6 +265,10 @@ const BANKS = [
     // this and was reworded rather than left to trip the check forever. If
     // more turn up, the pattern needs a lookbehind for a hyphen rather than
     // more rewording.
+    // See 5(g) below before trusting this number. It is an AVERAGE, and at
+    // 22.7% it looks all but closed while "entirely" inside it was 0 for 83
+    // and "only" is still 13.3%. The group row stays because it is the
+    // historical ratchet; the per-word rows are what actually see the bank.
     absoluteFloor: 0.225,
     absoluteCeiling: 0.34,
     // NOT tightened, and the reason is worth reading before the next domain.
@@ -279,7 +294,16 @@ const BANKS = [
     // 25.7% after Trauma Systems it is sitting on the baseline. Not tightened
     // further: squeezing it below 25% would turn it into a tell pointing the
     // other way, which is the mistake the justification row just made.
-    hedgeCeiling: 0.28,
+    //
+    // It has now crossed. Rewriting 38 keys that hedged at "appropriate" and
+    // five that padded with "per protocol" took this to 15.6% on 64 items,
+    // about 1.7 standard errors BELOW the baseline — so the ceiling comes down
+    // to match and the row gains a far side, the same treatment the
+    // justification row needed for the same reason in the opposite direction.
+    // For this tell the remaining work, if any, is putting a hedge back into a
+    // distractor, never taking one out.
+    hedgeCeiling: 0.16,
+    hedgeFloor: 0.15,
     // Measured 17.1% on the single-clause case against a 25% baseline.
     // 16.9% at the start, then 17.4% (Cardiac), 18.0% (Medical),
     // 18.5% (Geriatrics), 19.5% (Secondary Assessment),
@@ -298,7 +322,8 @@ const BANKS = [
     //
     // For the remaining domains: leave justification clauses in distractors
     // alone, and take them out of keys if this needs to come back down.
-    justifyFloor: 0.25,
+    // 28.4% now. The floor follows it up.
+    justifyFloor: 0.28,
     justifyCeiling: 0.34,
   },
   {
@@ -466,10 +491,88 @@ for (const spec of BANKS) {
                `and the key was that option ${(share * 100).toFixed(1)}% of the time ` +
                `(${keyed}/${n}) against a ${(chance * 100).toFixed(0)}% baseline — ` +
                `past chance and outside the ${(far * 100).toFixed(0)}% bound on the far side. ` +
-               `It has stopped marking distractors and started marking keys. ` +
-               `Stop taking these out of distractors; take them out of keys instead.`);
+               (probe.direction === 'marks-wrong'
+                 ? `It has stopped marking distractors and started marking keys. ` +
+                   `Stop taking these out of distractors; take them out of keys instead.`
+                 : `It has stopped marking keys and started marking distractors. ` +
+                   `Stop taking these out of keys; put one back into a distractor instead.`));
         }
       }
+    }
+  }
+}
+
+// ---- 5(g). The same tells again, one word at a time ----
+// The grouped rows above read 22.7% absolute and 15.6% hedge, both close
+// enough to a 25% baseline to look finished. They were an average hiding two
+// perfect giveaways:
+//
+//   entirely     0 / 83   a student eliminating any option containing it was
+//                         right every single time, on 83 questions
+//   appropriate 38 / 43   picking the option containing it was right 88% of
+//                         the time, on 43
+//   completely   1 / 71      all       8 / 191      regardless   5 / 79
+//   per protocol 11 / 12     only     14 / 105
+//
+// The average survived because `immediately` (30.3%) and `never` (22.2%) sat
+// the other side of chance and cancelled the rest out. A grouped measurement
+// cannot see that, so each word is now measured on its own.
+//
+// Thresholds follow the ratchet convention used everywhere else here: they sit
+// at the bank's MEASURED state, so the number cannot get worse while the
+// editorial work continues, and they move toward 25% as it lands. A floor
+// guards a word that marks wrong answers and rises; a ceiling guards a word
+// that marks right answers and falls. Never move one the other way.
+//
+// A word below MIN_WORDING_SAMPLE items is not asserted on — the rate is noise
+// at that size — but its threshold is still recorded, so that reintroducing
+// thirty of them fails the build rather than passing it quietly.
+const PER_WORD_TELLS = [
+  // Marks WRONG answers: the word appears in strawman distractors.
+  { word: 'entirely',     re: /\bentirely\b/i,     direction: 'marks-wrong', floor: 0.20,
+    note: 'was 0/83; the distractors it padded were rewritten, leaving 3 where it does real work' },
+  { word: 'completely',   re: /\bcompletely\b/i,   direction: 'marks-wrong', floor: 0.12,
+    note: 'was 1/71, now 6/48 — unlike "entirely" this word usually describes something real, so only the padding came out and five keys that are genuinely complete now say so' },
+  { word: 'all',          re: /\ball\b/i,          direction: 'marks-wrong', floor: 0.06,
+    note: 'was 8/191, now 8/131 — 96 options carried the bare intensifier "at all", which is padding wherever it appears' },
+  { word: 'regardless',   re: /\bregardless\b/i,   direction: 'marks-wrong', floor: 0.10,
+    note: 'was 5/79, now 7/70 — "regardless of X" is usually the substance of a wrong option, so only a template tail bolted onto nine distractors came out' },
+  { word: 'only',         re: /\bonly\b/i,         direction: 'marks-wrong', floor: 0.13,
+    note: 'measured, not yet worked. The strongest remaining single-word tell in the bank' },
+  // Marks RIGHT answers: the word appears in keys, where it hedges.
+  { word: 'appropriate',  re: /\bappropriate\b/i,  direction: 'marks-right', ceiling: 0.30,
+    note: 'was 38/43. "appropriate warning devices", "appropriate channels", "appropriate resources" — filler that made a key unfalsifiable. Every one now names the thing' },
+  { word: 'per protocol', re: /per protocol/i,     direction: 'marks-right', ceiling: 0.30,
+    note: 'was 11/12. Kept only where protocols genuinely differ, which is the four statements TRACKER records as protocol-dependent' },
+];
+
+if (bank) {
+  const mc = bank.filter((q) => !q.type || q.type === 'mc');
+  for (const probe of PER_WORD_TELLS) {
+    let n = 0, keyed = 0, chanceSum = 0;
+    for (const q of mc) {
+      if (!Array.isArray(q.options)) continue;
+      const hits = q.options.reduce((a, o, i) => (probe.re.test(String(o)) ? a.concat(i) : a), []);
+      if (hits.length !== 1) continue;
+      n++;
+      chanceSum += 1 / q.options.length;
+      if (hits[0] === q.correct) keyed++;
+    }
+    if (n < MIN_WORDING_SAMPLE) continue;
+    const share = keyed / n;
+    const chance = chanceSum / n;
+    const bound = probe.direction === 'marks-wrong' ? probe.floor : probe.ceiling;
+    const off = probe.direction === 'marks-wrong' ? share < bound : share > bound;
+    if (off) {
+      fail(`questions.json: on ${n} items exactly one option contains "${probe.word}", and the key was ` +
+           `that option ${(share * 100).toFixed(1)}% of the time (${keyed}/${n}) against a ` +
+           `${(chance * 100).toFixed(0)}% baseline — ` +
+           (probe.direction === 'marks-wrong'
+             ? `under the ${(bound * 100).toFixed(0)}% floor, so the word marks distractors. ` +
+               `Rewrite the strawmen so that being absolute is not what makes them wrong, or let a key ` +
+               `that is genuinely absolute say so.`
+             : `over the ${(bound * 100).toFixed(0)}% ceiling, so the word marks keys. ` +
+               `Name the thing instead of hedging at it.`));
     }
   }
 }

@@ -625,7 +625,7 @@ The fourth work order. Items are numbered as they were given.
 |---|---|---|
 | 1 | 2025 AHA choking update: flowcharts, the choking toddler scenario, the named questions, every two-finger explanation, a choking section in the notes, and a check so neither can come back | **done** |
 | 2 | Chain of survival: chapter 21 to the 2025 single chain, after verifying its links | **done** |
-| 3 | Per-word tell checks (entirely, completely, all, regardless / per protocol, appropriate), fix what they flag, and bring the longest-option-is-key rate toward 25% | pending |
+| 3 | Per-word tell checks (entirely, completely, all, regardless / per protocol, appropriate), fix what they flag, and bring the longest-option-is-key rate toward 25% | **done** — length tell closed at 24.8%; `only` measured and frozen, not yet worked |
 | 4 | Question 974: V/Q mismatch and the Haldane effect in place of hypoxic drive, keeping "don't withhold oxygen" | **done** |
 | 5 | Reference cards: the impossible "M11" GCS example | **done** |
 | 6 | Formulary: the nitroglycerin heart-rate contraindication, and that protocols vary | **done** |
@@ -748,6 +748,87 @@ immediately, which is the check working exactly as intended: it reads the
 generated output, so a stale generator cannot hide behind a corrected page. The
 generator string was fixed at source.
 
+### Item 3 — the grouped tell was an average hiding two perfect giveaways
+
+The absolute-word row read **22.7%** against a 25% baseline and looked all but
+closed. Measured one word at a time, it was not:
+
+| Word | Before | Keyed | After | Now |
+|---|---|---|---|---|
+| entirely | 0 / 83 | **0.0%** | 0 / 3 | — sample gone |
+| completely | 1 / 71 | 1.4% | 6 / 48 | 12.5% |
+| all | 8 / 191 | 4.2% | 8 / 131 | 6.1% |
+| regardless | 5 / 79 | 6.3% | 7 / 70 | 10.0% |
+| only | 14 / 105 | 13.3% | *not worked* | 13.3% |
+| appropriate | 38 / 43 | **88.4%** | 0 / 6 | — sample gone |
+| per protocol | 11 / 12 | 91.7% | 4 / 5 | — sample gone |
+
+A student who eliminated any option containing **entirely** was right every
+single time, on 83 questions. One who picked the option containing
+**appropriate** was right 88% of the time, on 43. The group average survived
+because `immediately` (30.3%) and `never` (22.2%) sat the other side of chance
+and cancelled the rest out — which is exactly what a grouped measurement cannot
+show you. Check 5(g) now measures each word on its own.
+
+What was actually done, and it is different for each word, because the word is
+doing something different in each:
+
+- **entirely** was an intensifier bolted onto a strawman. 80 distractors lost it
+  and stayed wrong for the reason they were always wrong. Three kept it, where
+  the word is load-bearing: a tourniquet loose enough not to stop distal
+  circulation entirely, energy absorbed entirely by clothing, a system relying
+  almost entirely on standing orders. Two were rewritten by hand rather than by
+  deleting a word, because deleting it would have made a false option true.
+- **appropriate** was filler that made a key unfalsifiable — "appropriate
+  warning devices", "appropriate channels", "appropriate resources", "appropriate
+  PPE". All 38 now name the thing: warning lights and cones; the authority your
+  state names; the utility crew; the PPE the hazmat team directs. Naming it is
+  the improvement; closing the tell is the side effect.
+- **per protocol** stays where protocols genuinely differ, which is the four
+  statements this file already records as protocol-dependent. Five keys that
+  were padding with it lost it.
+- **completely** usually describes something real — a pain that resolves
+  completely, a bag that collapses completely, a patient completely
+  unresponsive with no gag. Only 28 padding uses came out, and five keys that
+  are genuinely complete now say so (a TIA resolving completely, a cervix
+  completely dilated, bleeding stopping completely, a reservoir bag inflated
+  completely, bleeding not completely controlled).
+- **all**: 96 options carried the bare intensifier **"at all"**, which is padding
+  wherever it appears. That alone took the sample from 191 to 131.
+- **regardless** is usually the substance of a wrong option — "transport to the
+  nearest facility regardless of its capabilities" stops being wrong if you
+  delete the clause. What came out was a template tail bolted onto nine
+  distractors ("regardless of the patient's response to treatment" and its
+  variants), which says nothing and is itself a pattern to learn. Three keys
+  where universality IS the teaching point gained it: treating every patient's
+  fluids as infectious regardless of diagnosis, hand hygiene after every contact
+  regardless of whether gloves were worn, transport regardless of whether an
+  injury is apparent.
+
+**only** is measured, recorded and frozen at 13.3% on 105 items, and is the
+strongest single-word tell left in the bank. It was not in the brief and closing
+it is a pass of its own.
+
+### Item 3 — the longest option is no longer the answer
+
+**54% → 32% → 24.8%**, which is chance for a four-option item, on 2,004 items.
+
+The last eight points did not come from padding distractors. They came from the
+other side of the same problem: 135 keys ran 20 to 140 characters longer than
+every distractor beside them, because they were carrying parenthetical
+explanation that belongs in the `explain` field. One key was 331 characters. Two
+sentences of it were a legal argument. Trimming those keys shortens the option
+AND sharpens the item, so the tell closed with no distractor padded to close it.
+
+Twenty-one items needed the opposite treatment, and they were this session's own
+fault: taking padding out of distractors shortened them, which handed the length
+tell 21 items it had not had before. Those runner-up distractors were written
+out to match their keys rather than having the padding put back.
+
+`lengthCeiling` for questions.json is now **0.25**. There is no room left to
+give: at chance the number has stopped being information, and any further
+movement in either direction is a new tell.
+
 ---
 
 ## Already settled
@@ -858,7 +939,7 @@ alternation. Distractors are out of scope by design — a wrong answer is often
 required to state the superseded technique, which is what makes it wrong — so
 only stems, keyed options and explanations are read.
 
-The three wording-tell thresholds are set at the bank's measured state, not at
+The wording-tell thresholds are set at the bank's measured state, not at
 the target, following the convention already used for the ochem ceilings: they
 stop the numbers getting worse while the editorial work in Phase 6 happens.
 Lower them as that work lands. Never raise one.
