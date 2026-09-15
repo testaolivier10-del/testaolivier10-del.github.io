@@ -214,6 +214,7 @@ that should be faked in SVG, and it stays in **Needs a person**.
 | Synthesis / reagent-roadmap tool and flashcard deck | open |
 | Figures in the reaction-heavy sections | in progress — 6 added, and there is now a generator |
 | Skeletal structures after the foundations module | done — and it was the largest hole in the book |
+| Skeletal structures and radical halogenation written but unreachable | done — Phase 1 below |
 | Cut repeated caption/callout/body explanations | done — 2 real repeats, and the finding was much smaller than it looked |
 
 **The no-JavaScript problem was bigger than the item as written.** The ochem
@@ -346,6 +347,90 @@ side by side so the rules can be read off by comparison.
 
 Both new sections carry `href: null` and appear in Learn as locked cards until
 their lessons exist.
+
+## Phase 9 — Completing the ochem course
+
+The course covers the mechanistic spine of a two-semester sequence well and is
+missing several whole units a standard syllabus includes. This phase closes
+that, in order. Scope wording and advertised counts move with the coverage,
+never ahead of it.
+
+### Phase 9.1 — Skeletal structures and radical halogenation unlocked — **complete**
+
+Both sections were *written* — about 1,000 and 1,460 words respectively — and
+both were unreachable. `curriculum.js` carried `href: null` for each, which
+rendered them as locked "coming soon" cards with the finished prose sitting
+behind them in `ochem/notes/`. An earlier review of this repo called them
+missing content; they were missing links.
+
+Skeletal structures is the one that mattered. It sits second in the
+*Organic Structure & Electron Movement* chapter, immediately after Foundations,
+and its own source comment describes it as "the notation every drawing after
+Foundations is written in". A beginner met a locked card for the notation the
+next fifty sections assume.
+
+| Item | Status |
+|---|---|
+| Both topics point at their written notes instead of `href: null` | done |
+| `notesOnly: true` and one shared label on every surface that lists a topic | done |
+| Mastery can no longer read 100% while a topic has no lesson | done |
+| `scripts/check-curriculum.mjs`, in CI, enforcing both | done |
+| Advertised counts rechecked against the new shape | done — one was already wrong |
+
+**`href` stopped meaning "has a lesson", and that was the whole change.** Every
+topic now has an `href` so none is ever a dead link; `notesOnly: true` says the
+destination is the notes page because the lesson is still to come. Six call
+sites read `t.href` as "there is a lesson here" — the resume card, the module
+rollup, the chapter-open test, the completed-lesson tally, the practice
+engine's next-topic pick and Mastery's "Start here" — and each now asks
+`hasLesson(t)`. Left alone, each would have produced the same bug in a
+different place: a lesson that can never be finished, recommended forever,
+holding its chapter permanently open.
+
+**Mastery counts what it cannot measure.** A notes-only topic has no lesson to
+answer questions in, so it can never earn a score. Leaving those topics out of
+the denominator is what let a chapter report 100% mastered while containing a
+section nothing had ever measured. They are now in the denominator as not yet
+mastered, so a flawless run of every lesson that exists reads **98%**, not
+100%, and the two chapters containing them cannot read 100% either. This is
+deliberately a statement about the course rather than about the student, so
+every surface that shows the number also says what it is silent about: the
+chapter line adds "1 section not tracked yet (notes only)", the section header
+reads "Not tracked yet" instead of "Not practiced", and the contents rail
+flags the section. The ceiling lifts by itself when the lesson ships — it is
+the gap, not a permanent tax, and a unit test pins that a fully tracked
+chapter still reaches 100.
+
+**The check verifies the property, not the code.** `check-curriculum.mjs`
+fills in a perfect score for every lesson that exists and asserts the headline
+number still cannot reach 100 while any topic is untracked, so the guarantee
+survives the averaging being rewritten. Five failure modes were reintroduced to
+test it, and the fourth found a real hole: deleting `notesOnly` while leaving
+the notes `href` in place silently promoted a notes page to a lesson — the
+count went up, the label vanished and the ceiling went back to 100, all by
+removing a line rather than adding one. The check now decides what a topic *is*
+from where its `href` points, so the flag and the destination cannot disagree.
+
+**One advertised count was already wrong.** Check 8 reads counts off the pages
+and compares them to the curriculum, but only scanned HTML, and the assistant's
+greeting lives in a string in `assets/tutor.js`. It claimed "all 62 textbook
+sections are indexed" while the textbook had 64 and the assistant was indexing
+all 64. Check 8 now covers that file too. The redefinition it needed is worth
+recording: "62 topics" on the hub means topics a student can *work through*, so
+it counts topics with a lesson, not entries in the curriculum — otherwise
+unlocking these two would have advertised two lessons that do not exist.
+
+### Phase 9.2 — Interactive lessons for both — **not started**
+
+### Phase 9.3 — The missing units — **not started**
+
+Nomenclature · conjugation and Diels–Alder · oxidation and reduction ·
+synthesis and retrosynthesis · biomolecules · organometallics ·
+carbonyl/enolate breadth · aromatic follow-through · polymers.
+
+### Phase 9.4 — Depth in the existing units — **not started**
+
+---
 
 ## Phase 6 — Answer-option rewrites
 
@@ -1081,7 +1166,8 @@ scope framing on capnography and 12-lead items.
 4. Lesson-concept map · 5. Answer tells: keyed position, option length,
 true/false polarity, select-N key sets, **absolute words**, **hedge words**,
 **trailing justification clauses** · 6. Advertised question counts ·
-7. Sitemap completeness · 8. Advertised ochem counts · 9. Tool tiles ·
+7. Sitemap completeness · 8. Advertised ochem counts (including the
+assistant's greeting, which is in a script rather than a page) · 9. Tool tiles ·
 10. Unique question ids · 11. Error reporters load first ·
 12. **Molecule valence** · 13. **Scenario graph** · 14. **Copied option sets** ·
 15. **Flow-diagram branches** · 16. **Tables inside a scroll wrapper** ·
@@ -1112,6 +1198,22 @@ entry is a record rather than a claim about now
 
 Bold entries were added in response to these reviews. Each was verified by
 reintroducing the defect it exists to catch.
+
+`scripts/check-curriculum.mjs`, also in CI, guards the two ways the ochem
+course map can mislead a student without breaking a page:
+
+- **No topic is a dead end.** A bare `href: null` fails. A topic must point at
+  its interactive lesson, or at its own written notes with `notesOnly: true`,
+  which is what puts the "coming soon" label on every surface listing it — and
+  the check confirms the label actually reached the generated page.
+- **Mastery cannot overstate coverage.** It fills in a perfect score for every
+  lesson that exists and fails if the headline number reaches 100 while any
+  topic is untracked — and fails the other way too, if every topic is tracked
+  and a perfect run still cannot reach 100, so the check can never be satisfied
+  by making mastery unreachable.
+
+What a topic *is* comes from where its `href` points, not from the flag alone,
+because the flag was the thing that could be silently deleted.
 
 Checks 16 and 17 both came out of Phase 4 catching this session's own work.
 Check 16 found four tables added to the notes without the scrolling wrapper

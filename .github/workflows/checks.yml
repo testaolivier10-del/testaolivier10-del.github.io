@@ -41,6 +41,12 @@ jobs:
       # contents list a reader without JavaScript can see.
       - name: the ochem section pages match the curriculum
         run: node scripts/build-notes-pages.mjs --check
+      # The course map's two silent failure modes: a topic that is a dead link,
+      # and a mastery percentage that overstates how much of the course has
+      # actually been measured. Neither breaks a page, so nothing else here
+      # would catch either one — they just mislead a student.
+      - name: no dead topics, and mastery cannot overstate coverage
+        run: node scripts/check-curriculum.mjs --check
       # The generated textbook figures. These are drawn from coordinates, so a
       # stale one is not a broken build — it is a diagram that quietly says
       # something the prose next to it no longer says.

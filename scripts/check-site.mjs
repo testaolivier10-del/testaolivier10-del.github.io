@@ -688,21 +688,35 @@ if (existsSync(sitemapForCoverage)) {
 const curriculumPath = join(ROOT, 'ochem', 'assets', 'curriculum.js');
 if (existsSync(curriculumPath)) {
   const src = readFileSync(curriculumPath, 'utf8');
-  const hrefs = [...src.matchAll(/href:\s*'([^']+)'/g)].map(m => m[1]);
+  /* A "topic" in the marketing sense is one a student can actually work
+     through — "62 topics and 10 mechanisms you perform yourself". That is not
+     the same as the number of entries in the curriculum, because a topic whose
+     lesson has not been built yet still has an href: it points at its written
+     notes so it is never a dead link, and carries notesOnly: true to say so.
+     Counting those as topics would advertise lessons that do not exist, so the
+     count here is of topics with a LESSON, which is what hasLesson means in
+     curriculum.js and what scripts/check-curriculum.mjs enforces the shape of. */
+  const entries = [...src.matchAll(/href:\s*'([^']+)'((?:\s*,\s*[a-zA-Z]+:\s*[^,}]+)*)/g)]
+    .map(m => ({ href: m[1], notesOnly: /notesOnly:\s*true/.test(m[2]) }));
+  const hrefs = entries.filter(e => !e.notesOnly).map(e => e.href);
   const topics = hrefs.length;
   const lessons = hrefs.filter(h => h.startsWith('lessons/')).length;
   const mechanismsDir = join(ROOT, 'ochem', 'mechanisms');
   const mechanisms = existsSync(mechanismsDir) ? readdirSync(mechanismsDir).filter(f => f.endsWith('.html')).length : 0;
-  // "sections" is the written half and is counted separately from "topics",
-  // because they are no longer the same number: a topic whose lesson does not
-  // exist yet has href null and is not counted as a topic, but its written
-  // section exists and is a page. Radical halogenation is the first of those.
+  // "sections" is the written half, counted separately from "topics" because
+  // they are not the same number: every topic has a written section, including
+  // the ones whose interactive lesson is still being built.
   const notesCount = existsSync(join(ROOT, 'ochem', 'notes'))
     ? readdirSync(join(ROOT, 'ochem', 'notes')).filter((f) => f.endsWith('.html')).length
     : 0;
   const expected = { topics, lessons, mechanisms, sections: notesCount };
-  const OCHEM_COUNT_RE = /\b(\d{1,3})\s+(?:interactive\s+|chemistry\s+|note\s+)?(topics|lessons|mechanisms|sections)\b/g;
-  for (const file of htmlFiles) {
+  const OCHEM_COUNT_RE = /\b(\d{1,3})\s+(?:interactive\s+|chemistry\s+|note\s+|textbook\s+)?(topics|lessons|mechanisms|sections)\b/g;
+  /* The assistant's greeting ("all 62 textbook sections are indexed") is the
+     same kind of claim as the ones on the pages, and drifted the same way —
+     it sat at 62 while the textbook had 64. It lives in a string in a script,
+     so the HTML sweep never saw it. */
+  const countFiles = [...htmlFiles, join(ROOT, 'assets', 'tutor.js')].filter(f => existsSync(f));
+  for (const file of countFiles) {
     const rel = relative(ROOT, file).split(sep).join('/');
     if (rel.startsWith('ochem/notes/')) continue;
     // The changelog is a dated record, not a claim about now. "audited across

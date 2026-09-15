@@ -64,6 +64,23 @@ function loadModules() {
   return sandbox.M;
 }
 
+/* Mirrors OchemCurriculum.hasLesson. The curriculum is the source of truth for
+   the label text too, so the generated pages and the runtime cannot drift into
+   describing the same state two different ways. */
+const NOTES_ONLY_LABEL = (() => {
+  const sandbox = { window: {}, localStorage: { getItem: () => null, setItem: () => {} }, document: {} };
+  vm.createContext(sandbox);
+  vm.runInContext(
+    readFileSync(join(ROOT, 'ochem', 'assets', 'curriculum.js'), 'utf8') +
+    '\nthis.L = window.OchemCurriculum.NOTES_ONLY_LABEL;',
+    sandbox,
+  );
+  if (!sandbox.L) throw new Error('curriculum.js did not yield NOTES_ONLY_LABEL');
+  return sandbox.L;
+})();
+
+const hasLesson = (topic) => !!(topic && topic.href && !topic.notesOnly);
+
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 /* The meta description is the section's own opening sentence, trimmed to a
@@ -84,9 +101,12 @@ function page({ topic, module: mod, prose, prev, next, index, total }) {
   const title = `${topic.title} — ${mod.title} | Organic Chemistry`;
   const desc = describe(prose, `${topic.title}, from the ${mod.title} chapter of the organic chemistry textbook.`);
   const url = `${ORIGIN}/ochem/notes/${topic.id}.html`;
-  const lessonLink = topic.href
+  /* A notes-only topic's href is this very page, so it gets the shared label
+     instead of a link back to itself. hasLesson is the test for "is there a
+     lesson", not href — see the header comment in curriculum.js. */
+  const lessonLink = hasLesson(topic)
     ? `<a class="notes-onward-cta" href="../${topic.href}">Practice this — interactive lesson</a>`
-    : '';
+    : `<p class="notes-onward-soon">${esc(NOTES_ONLY_LABEL)}</p>`;
   const nav = [
     prev ? `<a class="notes-prevnext notes-prev" href="${prev.id}.html"><span>Previous</span>${esc(prev.title)}</a>` : '<span></span>',
     next ? `<a class="notes-prevnext notes-next" href="${next.id}.html"><span>Next</span>${esc(next.title)}</a>` : '<span></span>',
@@ -214,11 +234,16 @@ if (existsSync(learnPath)) {
     console.error('FAIL: ochem/learn.html has no <!-- toc:start --> / <!-- toc:end --> markers.');
     process.exit(1);
   }
+  const notesOnlyCount = modules.reduce((a, m) => a + m.topics.filter((t) => !hasLesson(t)).length, 0);
+  const notesOnlyNote = notesOnlyCount
+    ? ` ${notesOnlyCount} of them ${notesOnlyCount === 1 ? 'is' : 'are'} written notes only — the interactive lesson is still being built.`
+    : '';
   let n = 0;
   const toc = modules.map((mod) => {
     const items = mod.topics.map((t) => {
       n += 1;
-      return `          <li><a href="notes/${t.id}.html">${esc(t.title)}</a></li>`;
+      const flag = hasLesson(t) ? '' : ` <span class="tb-static-flag">${esc(NOTES_ONLY_LABEL)}</span>`;
+      return `          <li><a href="notes/${t.id}.html">${esc(t.title)}</a>${flag}</li>`;
     }).join('\n');
     return `        <section class="tb-static-chapter">\n` +
            `          <h2>${esc(mod.title)}</h2>\n` +
@@ -229,7 +254,7 @@ if (existsSync(learnPath)) {
   const block = `${TOC_START}\n` +
     `      <div class="tb-static-toc">\n` +
     `        <h1>The Organic Chemistry Textbook</h1>\n` +
-    `        <p class="step-body">${modules.length} chapters, ${n} sections. Every section below is a page you can read on its own.</p>\n` +
+    `        <p class="step-body">${modules.length} chapters, ${n} sections. Every section below is a page you can read on its own.${notesOnlyNote}</p>\n` +
     `${toc}\n` +
     `      </div>\n` +
     `      ${TOC_END}`;

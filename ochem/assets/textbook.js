@@ -182,9 +182,13 @@
           '<span class="tb-toc-count' + (doneCount === mod.topics.length ? ' complete' : '') + '">' + doneCount + '/' + mod.topics.length + '</span>' +
         '</button>' +
         '<div class="tb-toc-topics">' + topics.map(function(t){
-          return '<a href="#' + t.id + '" class="tb-toc-topic' + (read[t.id] ? ' read' : '') + '" data-topic="' + t.id + '">' +
+          var notesOnly = !C.hasLesson(t);
+          return '<a href="#' + t.id + '" class="tb-toc-topic' + (read[t.id] ? ' read' : '') +
+            (notesOnly ? ' notes-only' : '') + '" data-topic="' + t.id + '"' +
+            (notesOnly ? ' title="' + escapeHtml(C.NOTES_ONLY_LABEL) + '"' : '') + '>' +
             '<span class="tb-toc-tick" aria-hidden="true"></span>' +
             escapeHtml(t.title) +
+            (notesOnly ? '<span class="tb-toc-flag">Notes only</span>' : '') +
           '</a>';
         }).join('') + '</div>' +
       '</div>';
@@ -296,11 +300,13 @@
     return notesCache[id];
   }
 
+  /* A notes-only topic's href points at its own notes page, which is the
+     page you are already reading here — so it gets the label rather than a
+     link back to itself. */
   function sectionActionsHtml(t){
-    var links = [];
-    if(t.href) links.push('<a class="btn-press sm" href="' + t.href + '">Do the interactive lesson &rarr;</a>');
+    if(!C.hasLesson(t)) return '<p class="tb-soon">' + escapeHtml(C.NOTES_ONLY_LABEL) + '</p>';
+    var links = ['<a class="btn-press sm" href="' + t.href + '">Do the interactive lesson &rarr;</a>'];
     if(t.mechanism) links.push('<a class="btn-press alt sm" href="' + t.mechanism + '">Draw the mechanism &#9883;</a>');
-    if(!links.length) return '<p class="tb-soon">The interactive lesson for this section is still being built.</p>';
     return '<div class="tb-actions">' + links.join('') + '</div>';
   }
 
@@ -319,7 +325,9 @@
         '<div class="tb-section-head">' +
           '<h2 class="tb-section-title">' + escapeHtml(t.title) + '</h2>' +
           '<div class="tb-section-meta">' +
-            (pct === null
+            (!C.hasLesson(t)
+              ? '<span class="tb-mastery none" title="' + escapeHtml(C.NOTES_ONLY_LABEL) + '">Not tracked yet</span>'
+              : pct === null
               ? '<span class="tb-mastery none" title="Mastery comes from answering questions, not from reading">Not practiced</span>'
               : '<span class="tb-mastery" title="Concept mastery for this topic">' + pct + '% mastery</span>') +
             '<button type="button" class="tb-readtoggle' + (done ? ' done' : '') + '" data-topic="' + t.id + '" aria-pressed="' + done + '">' +
@@ -424,10 +432,17 @@
     if(window.HubProgress) window.HubProgress.renderChips();
   }
 
+  /* The chapter's one-line summary. When the chapter contains a section with
+     no interactive lesson, the mastery figure is silent about that section —
+     so the line says so, rather than letting a number stand for a chapter it
+     does not cover. */
   function chapterMetaText(mod, doneCount, mastery){
+    var untracked = C.masteryCoverage(mod).untracked;
     return mod.topics.length + ' section' + (mod.topics.length === 1 ? '' : 's') +
       ' \u00b7 ' + doneCount + ' read' +
-      ' \u00b7 ' + (mastery === null ? 'not practiced yet' : mastery + '% mastery');
+      ' \u00b7 ' + (mastery === null ? 'not practiced yet' : mastery + '% mastery') +
+      (untracked ? ' \u00b7 ' + untracked + ' section' + (untracked === 1 ? '' : 's') +
+        ' not tracked yet (notes only)' : '');
   }
 
   function refreshCounts(){

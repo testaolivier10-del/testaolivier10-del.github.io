@@ -519,7 +519,7 @@
     for(var i=0;i<mods.length;i++){
       for(var j=0;j<mods[i].topics.length;j++){
         var t = mods[i].topics[j];
-        if(t.href && CU().topicMastery(t.id) === null) return { topic: t, module: mods[i] };
+        if(CU().hasLesson(t) && CU().topicMastery(t.id) === null) return { topic: t, module: mods[i] };
       }
     }
     return null;

@@ -851,6 +851,15 @@ a.mode-card{text-decoration:none;display:block;}
 }
 .notes-onward-cta:hover{background:var(--accent-press,var(--accent));}
 
+/* Stands where the "Practice this" button stands on a section that has an
+   interactive lesson, and says plainly why there is no button — rather than
+   leaving a gap a reader has to interpret. */
+.notes-onward-soon{
+  display:inline-block;margin:0;
+  border:1px dashed var(--line);border-radius:var(--radius-sm);padding:8px 14px;
+  font:800 13px var(--font-ui);color:var(--muted);
+}
+
 /* Previous and next sit at opposite ends on a wide screen and stack on a
    phone. The empty <span> the generator emits for a missing neighbour is what
    keeps "next" hard right on the first and last sections. */
@@ -888,3 +897,6 @@ a.mode-card{text-decoration:none;display:block;}
 .tb-static-chapter li{margin-bottom:5px;font:700 14.5px var(--font-ui);}
 .tb-static-chapter a{color:var(--ink);text-decoration:none;}
 .tb-static-chapter a:hover{color:var(--accent);text-decoration:underline;}
+.tb-static-flag{
+  font:800 11px var(--font-ui);color:var(--muted);white-space:nowrap;
+}

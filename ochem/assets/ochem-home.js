@@ -89,7 +89,7 @@
     var p = readProgress();
     var scored = C.MODULES.map(function(m, i){
       var done = m.topics.filter(function(t){
-        return t.href && p[t.id] && typeof p[t.id].bestScore === 'number';
+        return C.hasLesson(t) && p[t.id] && typeof p[t.id].bestScore === 'number';
       }).length;
       return { mod: m, i: i, done: done, pct: C.moduleMastery(m) };
     }).filter(function(x){ return x.pct !== null && x.done > 0; })
@@ -118,7 +118,7 @@
     C.MODULES.forEach(function(m){
       m.topics.forEach(function(t){
         var r = p[t.id];
-        if(t.href && r && !r.completed && r.step > 0) found = t;
+        if(C.hasLesson(t) && r && !r.completed && r.step > 0) found = t;
       });
     });
     return found;
@@ -311,7 +311,9 @@
       var firstOpen = null;
       var allDone = true;
       m.topics.forEach(function(t){
-        if(!t.href) return;
+        // Notes-only topics have no lesson to score or finish, so they
+        // neither contribute a score nor hold the chapter open forever.
+        if(!C.hasLesson(t)) return;
         var s = C.topicMastery(t.id);
         if(s !== null) scores.push(s);
         var r = p[t.id];
@@ -330,7 +332,7 @@
     if(!current){
       // Nothing scored yet: the first module with an unfinished lesson.
       C.MODULES.some(function(m){
-        var open = m.topics.some(function(t){ var r = p[t.id]; return t.href && !(r && r.completed); });
+        var open = m.topics.some(function(t){ var r = p[t.id]; return C.hasLesson(t) && !(r && r.completed); });
         if(open) current = m.id;
         return open;
       });

@@ -2,10 +2,25 @@
    Learn, Mastery, and the sub-nav all read the same structure instead of
    each page hand-listing modules and drifting out of sync.
 
-   A topic's `href` is null until its lesson actually exists — Learn renders
-   those as locked "coming soon" cards instead of dead links, and Mastery
-   excludes them from the mastery calculation entirely (no content yet means
-   nothing to have mastered, not 0%).
+   A topic has two independent things: written notes (always — every topic
+   has a page under ochem/notes/) and an interactive lesson (not always).
+   `href` points at whatever a reader should open for that topic, and
+   `notesOnly: true` says that destination is the notes page because the
+   interactive lesson has not been built yet.
+
+   So `href` alone does NOT mean "has a lesson" — use hasLesson(topic) for
+   that. Everything that scores, resumes, or recommends a lesson must go
+   through hasLesson, or a notes-only topic becomes a lesson that can never
+   be finished (it would be recommended forever and hold its chapter open).
+
+   A notes-only topic is UNTRACKED: there is no lesson to answer questions
+   in, so it can never earn a mastery score. It is still counted in the
+   denominator of module and overall mastery, deliberately — a chapter with
+   a section nobody can be scored on is not a mastered chapter, and
+   reporting 100% for it would be a lie about the course, not about the
+   student. That also means overall mastery cannot reach 100 while any
+   untracked topic exists, which scripts/check-curriculum.mjs enforces, and
+   which fixes itself the moment the lesson ships.
 
    Progress is read from localStorage under 'ochem_progress': a plain object
    keyed by topic id -> { step, correct, attempts, completed, bestScore }.
@@ -27,9 +42,10 @@
       { id: 'bond-polarity', title: 'Bond polarity', href: 'lessons/bond-polarity.html' }
     ]},
     { id: 'electron-movement', title: 'Organic Structure & Electron Movement', topics: [
-      // The notation every drawing after Foundations is written in. Section
-      // first, lesson to come, so href stays null.
-      { id: 'skeletal-structures', title: 'Skeletal structures', href: null },
+      // The notation every drawing after Foundations is written in, so it
+      // must never be a dead end: the notes are written and linked, and only
+      // the interactive lesson is still to come.
+      { id: 'skeletal-structures', title: 'Skeletal structures', href: 'notes/skeletal-structures.html', notesOnly: true },
       { id: 'resonance', title: 'Resonance', href: 'lessons/resonance.html' },
       { id: 'curved-arrows', title: 'Curved arrows', href: 'lessons/curved-arrows.html', dependsOn: ['resonance'] },
       { id: 'nucleophiles', title: 'Nucleophiles', href: 'lessons/nucleophiles.html', dependsOn: ['electronegativity'] },
@@ -50,9 +66,9 @@
       { id: 'axial-equatorial', title: 'Axial/equatorial', href: 'lessons/axial-equatorial.html', dependsOn: ['cyclohexanes'] },
       { id: 'ring-flips', title: 'Ring flips', href: 'lessons/ring-flips.html', dependsOn: ['axial-equatorial'] },
       { id: 'conformational-analysis', title: 'Conformational analysis', href: 'lessons/conformational-analysis.html', dependsOn: ['ring-flips'] },
-      // The one reaction alkanes have. Written section first, lesson to come —
-      // href stays null until it exists, which Learn renders as a locked card.
-      { id: 'radical-halogenation', title: 'Radical halogenation', href: null }
+      // The one reaction alkanes have. The notes are written and linked;
+      // the interactive lesson is still to come.
+      { id: 'radical-halogenation', title: 'Radical halogenation', href: 'notes/radical-halogenation.html', notesOnly: true }
     ]},
     { id: 'stereochemistry', title: 'Stereochemistry', topics: [
       { id: 'chirality', title: 'Chirality', href: 'lessons/chirality.html' },
@@ -205,15 +221,56 @@
     return t.bestScore;
   }
 
-  // A module's mastery only counts topics that have a lesson AND have been
-  // attempted — modules with no shipped lessons yet report null, not 0%.
+  /* Does this topic have an interactive lesson you can be scored in?
+
+     `href` is set on every topic, including the notes-only ones, so that no
+     topic is ever a dead link. This is the test for "is there a lesson
+     here" — the one the schedulers, resumers and recommenders need. Getting
+     it wrong the other way (treating a notes page as a lesson) produces a
+     lesson that can never be completed: recommended forever, holding its
+     chapter permanently unfinished. */
+  function hasLesson(topic){
+    return !!(topic && topic.href && !topic.notesOnly);
+  }
+
+  // The label shown anywhere a notes-only topic is listed. One string, so
+  // the textbook, the contents, the notes page and the checks cannot drift
+  // into describing the same state three different ways.
+  var NOTES_ONLY_LABEL = 'Notes only — interactive lesson coming soon';
+
+  /* How much of the course can be scored at all.
+
+     Untracked = a topic with written notes but no interactive lesson. These
+     are counted, not hidden: any surface that shows a mastery percentage
+     also has to be able to say what that percentage is silent about. */
+  function masteryCoverage(mod){
+    var topics = mod ? mod.topics : MODULES.reduce(function(a, m){ return a.concat(m.topics); }, []);
+    var tracked = topics.filter(hasLesson).length;
+    return { total: topics.length, tracked: tracked, untracked: topics.length - tracked };
+  }
+
+  function untrackedTopics(mod){
+    var topics = mod ? mod.topics : MODULES.reduce(function(a, m){ return a.concat(m.topics); }, []);
+    return topics.filter(function(t){ return !hasLesson(t); });
+  }
+
+  /* A module's mastery averages the scores you've earned over the topics you
+     could have earned them in: every lesson you've completed, PLUS every
+     untracked topic, which counts as not yet mastered.
+
+     Untracked topics are in the denominator on purpose. Leaving them out is
+     what let a chapter report 100% while containing a section with no lesson
+     in it. A module with nothing scored yet still reports null rather than
+     0% — "you haven't started" and "you scored zero" are different answers. */
   function moduleMastery(mod){
     var scored = mod.topics
-      .filter(function(t){ return t.href; })
+      .filter(hasLesson)
       .map(function(t){ return topicMastery(t.id); })
       .filter(function(m){ return m !== null; });
     if(!scored.length) return null;
-    return Math.round(scored.reduce(function(a,b){ return a+b; }, 0) / scored.length);
+    var untracked = masteryCoverage(mod).untracked;
+    var sum = scored.reduce(function(a,b){ return a+b; }, 0);
+    return Math.round(sum / (scored.length + untracked));
   }
 
   function overallMastery(){
@@ -257,6 +314,10 @@
 
   window.OchemCurriculum = {
     MODULES: MODULES,
+    NOTES_ONLY_LABEL: NOTES_ONLY_LABEL,
+    hasLesson: hasLesson,
+    masteryCoverage: masteryCoverage,
+    untrackedTopics: untrackedTopics,
     beginLessonRun: beginLessonRun,
     saveStep: saveStep,
     recordAttempt: recordAttempt,

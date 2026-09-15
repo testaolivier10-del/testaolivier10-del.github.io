@@ -157,7 +157,7 @@
     var nextUnlocked = null;
     C.MODULES.some(function(m){
       return m.topics.some(function(t){
-        if(t.href && M.topicStrength(t.id).strength === null){ nextUnlocked = t; return true; }
+        if(C.hasLesson(t) && M.topicStrength(t.id).strength === null){ nextUnlocked = t; return true; }
         return false;
       });
     });

@@ -1194,6 +1194,17 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
   border:solid var(--on-accent-fill);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px);
 }
 
+/* A section with written notes but no interactive lesson yet. Flagged in the
+   rail rather than hidden or left to look identical to a section you can be
+   scored in — the difference is the reader's to know. The flag sits hard
+   right so the titles still read as one column. */
+.tb-toc-flag{
+  margin-left:auto;flex-shrink:0;
+  font:800 9.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:1px 6px;
+}
+.tb-toc-topic.notes-only:hover .tb-toc-flag{color:var(--ink);}
+
 
 /* --- the chapter frame --- */
 .tb-main{padding:26px 0 60px;min-width:0;max-width:74ch;}
