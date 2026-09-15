@@ -178,8 +178,16 @@ function countSteps(body) {
 // the bank's measured state on the day it was first guarded, written down so it
 // cannot get worse while the editorial work happens. A bank that is already 2x
 // over cannot be held to the target on day one without failing every build
-// until the content is rewritten. Lower them as that work lands. Do not raise
-// them — raising one is a decision to make the bank more guessable.
+// until the content is rewritten. Tighten them as that work lands; never
+// loosen one, because loosening is a decision to make the bank more guessable.
+//
+// "Tighten" is direction-dependent, and the sentence above used to say "lower",
+// which is only right for half of these. A CEILING (hedgeCeiling) guards a tell
+// that marks the RIGHT answer, so its measured value falls as the bank improves
+// and the ceiling follows it down. A FLOOR (absoluteFloor, justifyFloor) guards
+// a tell that marks the WRONG answer: the share of keyed items rises toward the
+// 25% baseline as the work lands, so the floor follows it UP. Moving a floor
+// down is the loosening, not the improvement.
 // Below this many single-word-bearing items the rate is noise, not a tell.
 const MIN_WORDING_SAMPLE = 30;
 
@@ -224,7 +232,10 @@ const BANKS = [
     lengthCeiling: 0.32,
     trueFalseCeiling: null,
     // Measured 6.6% and 42.9% when the wording tells were first guarded.
-    absoluteFloor: 0.06,
+    // Tightened from 0.06 after the Cardiac rewrite (Phase 6a) took the
+    // measured share from 6.2% to 6.8%. 25% is the target; each domain
+    // rewritten moves this up a little.
+    absoluteFloor: 0.065,
     hedgeCeiling: 0.43,
     // Measured 17.1% on the single-clause case against a 25% baseline.
     justifyFloor: 0.17,

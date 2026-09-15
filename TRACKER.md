@@ -341,7 +341,40 @@ their lessons exist.
 
 | Item | Status |
 |---|---|
-| Rewrite options flagged by the three tell checks, one domain per commit | open |
+| Rewrite options flagged by the three tell checks, one domain per commit | in progress — Cardiac done, ~14 domains to go |
+
+The scale, measured before starting:
+
+| Tell | Items with exactly one matching option | Key was that option | Baseline |
+|---|---|---|---|
+| Absolute word | 450 | 6.2% | 25% |
+| Hedge | 102 | 40.2% | 25% |
+| Trailing justification | 183 | 16.9% | 25% |
+
+The absolute-word tell is the one that matters. A student who learns "the
+absolute-worded option is wrong" can eliminate an option on 450 of 2,106
+items — a fifth of the bank — and be right 94% of the time.
+
+**Cardiac (Phase 6a):** 29 absolute-word distractors and 6 justification-clause
+distractors rewritten. Keys untouched, clinical meaning untouched: each option
+still says the same wrong thing in words a student might actually pick.
+Bank-wide the absolute tell went 450 → 414 items and 6.2% → 6.8% keyed;
+justification 183 → 178 and 16.9% → 17.4%.
+
+Two things worth recording for the remaining domains:
+
+- **Not every absolute is a strawman.** Item 38's distractor read "pain that
+  only occurs during exertion and never at rest" — which is an accurate
+  description of *stable angina*, and a strong distractor for a question about
+  MI. Stripping the absolutes blindly would have weakened it. It was reworded
+  to "comes on with exertion and eases within minutes of stopping": same
+  clinical claim, no giveaway.
+- **Removing one tell can expose another.** Several rewritten options had
+  carried a justification clause as well. Removing it made a *different* option
+  the only justification-bearing one in its question, which pulled those
+  questions into the justify sample and pushed that share below its floor
+  until the Cardiac justification clauses were fixed too. Do all three tells
+  per domain, in one pass, or the checks will fight each other.
 
 ## Phase 7 — Trust and polish
 
