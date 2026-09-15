@@ -153,60 +153,143 @@ function countSteps(body) {
   }
 }
 
-// ---- 5. Question bank: no positional or length tell in the keyed answer ----
-// Both are ways a bank can teach pattern-matching instead of medicine. The
-// first is fatal and mechanical: at one point every one of the 1,000 newest
+// ---- 5. Question banks: no positional, length or polarity tell in the key ----
+// All three are ways a bank can teach pattern-matching instead of the subject.
+// The first is fatal and mechanical: at one point every one of the 1,000 newest
 // multiple-choice items keyed to option A, so anything rendering the file
 // without practice.html's runtime shuffle leaked every answer. The second is
 // softer but the shuffle cannot help with it — reordering options doesn't
-// change which one is longest.
-const bankPath = join(ROOT, 'nremt', 'assets', 'questions.json');
-let bank = null;
-if (existsSync(bankPath)) {
-  try { bank = JSON.parse(readFileSync(bankPath, 'utf8')); } catch { /* section 2 reports it */ }
-  if (Array.isArray(bank)) {
-    const mc = bank.filter(q => !q.type || q.type === 'mc');
+// change which one is longest. The third is true/false drifting to one answer,
+// which shuffle-options.js cannot fix either, because it deliberately PINS a
+// true/false pair in that order so the question still reads correctly.
+//
+// WHY THIS RUNS OVER BOTH BANKS
+// -----------------------------
+// It used to run over questions.json alone. That was right when there was one
+// bank, and quietly wrong from the day ochem got its own: the defence existed,
+// nothing pointed it at the second bank, and practice-bank.json drifted to more
+// than twice the length-tell ceiling NREMT is held to. A check that guards one
+// of two identical things is a check that has stopped meaning what it says.
+//
+// ABOUT THE OCHEM CEILINGS
+// ------------------------
+// Everywhere else in this repo a ceiling is a ratchet you only ever lower. The
+// ochem numbers below are the exception, and they are not a blessing: they are
+// the bank's measured state on the day it was first guarded, written down so it
+// cannot get worse while the editorial work happens. A bank that is already 2x
+// over cannot be held to the target on day one without failing every build
+// until the content is rewritten. Lower them as that work lands. Do not raise
+// them — raising one is a decision to make the bank more guessable.
+const BANKS = [
+  {
+    label: 'questions.json',
+    path: ['nremt', 'assets', 'questions.json'],
+    // A flat array. Untyped items are the 4-option multiple choice.
+    items: (parsed) => (Array.isArray(parsed) ? parsed : null),
+    isMulti: (q) => !q.type || q.type === 'mc',
+    isTrueFalse: () => false,
+    positionCeiling: 0.4,
+    lengthCeiling: 0.32,
+    trueFalseCeiling: null,
+  },
+  {
+    label: 'practice-bank.json',
+    path: ['ochem', 'assets', 'practice-bank.json'],
+    // Keyed by topic slug, one array of items each.
+    items: (parsed) =>
+      parsed && !Array.isArray(parsed) && typeof parsed === 'object'
+        ? Object.values(parsed).flatMap((list) => (Array.isArray(list) ? list : []))
+        : null,
+    isMulti: (q) => q.type === 'mcq',
+    isTrueFalse: (q) => q.type === 'tf',
+    positionCeiling: 0.4,
+    // Measured at 68% when the check was first pointed here. Target is ~32%,
+    // the number NREMT reached after its own editorial pass.
+    lengthCeiling: 0.68,
+    // 74% of true/false items key to "True". Chance is 50% and the shuffle is
+    // pinned, so this is the whole tell — it is not diluted by anything.
+    trueFalseCeiling: 0.75,
+  },
+];
 
-    // (a) keyed position spread
+let bank = null; // questions.json, reused by section 6
+
+for (const spec of BANKS) {
+  const bankPath = join(ROOT, ...spec.path);
+  if (!existsSync(bankPath)) continue;
+
+  let parsed = null;
+  try { parsed = JSON.parse(readFileSync(bankPath, 'utf8')); } catch { continue; /* section 2 reports it */ }
+  if (spec.label === 'questions.json') bank = parsed;
+
+  const all = spec.items(parsed);
+  if (!all) continue;
+
+  const mc = all.filter(spec.isMulti);
+
+  // (a) keyed position spread
+  if (mc.length) {
     const pos = {};
     for (const q of mc) pos[q.correct] = (pos[q.correct] || 0) + 1;
-    const POSITION_CEILING = 0.4;
     for (const [idx, n] of Object.entries(pos)) {
       const share = n / mc.length;
-      if (share > POSITION_CEILING) {
-        fail(`questions.json: ${(share * 100).toFixed(0)}% of multiple-choice answers key to option index ${idx} ` +
-             `(${n}/${mc.length}) — over the ${POSITION_CEILING * 100}% ceiling. Permute the stored options.`);
+      if (share > spec.positionCeiling) {
+        fail(`${spec.label}: ${(share * 100).toFixed(0)}% of multiple-choice answers key to option index ${idx} ` +
+             `(${n}/${mc.length}) — over the ${spec.positionCeiling * 100}% ceiling. Permute the stored options.`);
       }
     }
+  }
 
-    // (b) "the longest option is the answer". Chance is ~25%; the bank sat at
-    // 54% because keys in the newest 1,000 items ran about 10% longer than
-    // their distractors on average. An editorial pass over the 480 items where
-    // the key led by six characters or fewer lengthened one distractor apiece
-    // and brought it to 30%. This ceiling is a ratchet: lower it as more of
-    // that work lands, never raise it to let a regression through.
-    const LENGTH_TELL_CEILING = 0.32;
+  // (b) "the longest option is the answer". Chance is one over the number of
+  // options — ~25% for a 4-option item. NREMT sat at 54% because keys in the
+  // newest 1,000 items ran about 10% longer than their distractors on average;
+  // an editorial pass over the 480 items where the key led by six characters or
+  // fewer lengthened one distractor apiece and brought it to 30%. Ochem has not
+  // had that pass yet. Tags are stripped first: a key wrapped in markup is not
+  // longer to the student reading it, only to the file.
+  if (mc.length) {
+    const visible = (o) => String(o).replace(/<[^>]*>/g, '').trim().length;
     let longestIsKey = 0;
     for (const q of mc) {
-      const lens = q.options.map(o => String(o).length);
+      const lens = q.options.map(visible);
       if (lens.indexOf(Math.max(...lens)) === q.correct) longestIsKey++;
     }
     const tell = longestIsKey / mc.length;
-    if (tell > LENGTH_TELL_CEILING) {
-      fail(`questions.json: the longest option is the answer in ${(tell * 100).toFixed(0)}% of items ` +
-           `(${longestIsKey}/${mc.length}), over the ${LENGTH_TELL_CEILING * 100}% ceiling. ` +
-           `Trim over-long keys or pad thin distractors — chance is ~25%.`);
+    if (tell > spec.lengthCeiling) {
+      const chance = Math.round(100 / (mc.reduce((a, q) => a + q.options.length, 0) / mc.length));
+      fail(`${spec.label}: the longest option is the answer in ${(tell * 100).toFixed(0)}% of items ` +
+           `(${longestIsKey}/${mc.length}), over the ${(spec.lengthCeiling * 100).toFixed(0)}% ceiling. ` +
+           `Trim over-long keys or pad thin distractors — chance is ~${chance}%.`);
     }
+  }
 
-    // (c) select-N keys must not all be the same set
-    const multi = bank.filter(q => q.type === 'multi');
-    if (multi.length > 10) {
-      const sets = {};
-      for (const q of multi) { const k = JSON.stringify(q.correct); sets[k] = (sets[k] || 0) + 1; }
-      const [topSet, topN] = Object.entries(sets).sort((a, b) => b[1] - a[1])[0];
-      if (topN / multi.length > POSITION_CEILING) {
-        fail(`questions.json: ${topN}/${multi.length} select-N items key to the same set ${topSet}. Permute the stored options.`);
+  // (c) true/false must not drift to one answer. shuffle-options.js pins the
+  // pair in order, by design, so nothing downstream dilutes this.
+  if (spec.trueFalseCeiling !== null) {
+    const tf = all.filter(spec.isTrueFalse);
+    if (tf.length > 10) {
+      const counts = {};
+      for (const q of tf) counts[q.correct] = (counts[q.correct] || 0) + 1;
+      for (const [idx, n] of Object.entries(counts)) {
+        const share = n / tf.length;
+        if (share > spec.trueFalseCeiling) {
+          const which = idx === '0' ? 'the first option' : 'the second option';
+          fail(`${spec.label}: ${(share * 100).toFixed(0)}% of true/false items key to ${which} ` +
+               `(${n}/${tf.length}), over the ${(spec.trueFalseCeiling * 100).toFixed(0)}% ceiling. ` +
+               `Chance is 50%, and the option shuffle pins true/false pairs, so this tell reaches the student intact.`);
+        }
       }
+    }
+  }
+
+  // (d) select-N keys must not all be the same set
+  const multi = all.filter((q) => q.type === 'multi');
+  if (multi.length > 10) {
+    const sets = {};
+    for (const q of multi) { const k = JSON.stringify(q.correct); sets[k] = (sets[k] || 0) + 1; }
+    const [topSet, topN] = Object.entries(sets).sort((a, b) => b[1] - a[1])[0];
+    if (topN / multi.length > spec.positionCeiling) {
+      fail(`${spec.label}: ${topN}/${multi.length} select-N items key to the same set ${topSet}. Permute the stored options.`);
     }
   }
 }

@@ -205,6 +205,8 @@ worker/                Optional AI backend for the study assistant — a Cloudfl
                          Worker on the Workers AI free allowance. The site works without
                          it; see worker/README.md
 scripts/check-site.mjs   CI: broken-link + JSON-validity checks (see below)
+scripts/check-console.mjs CI: loads every page in a browser and fails on a
+                            runtime error (see below)
 scripts/test/            CI: unit tests over the scoring engines (see below)
 ```
 
@@ -653,13 +655,13 @@ then open `http://localhost:8000/`.
 
 ## CI
 
-`.github/workflows/checks.yml` runs five jobs on every push/PR. The first, `scripts/check-site.mjs`, has no network dependency and needs no build step, so it runs in seconds. It checks:
+`.github/workflows/checks.yml` runs five jobs on every push/PR (the browser job runs two checks, so there are six in total). The first, `scripts/check-site.mjs`, has no network dependency and needs no build step, so it runs in seconds. It checks:
 
 1. Every local `href`/`src` in every HTML file points at a file that exists.
 2. Every JSON file parses.
 3. Each Ochem lesson has the number of steps `lesson-concepts.js` was authored against.
 4. Every URL in `sitemap.xml` maps to a real file — **and** every real page is in `sitemap.xml`. Fifty Ochem lesson pages once shipped with no path in from a search engine because the sitemap was hand-maintained; run `node scripts/build-sitemap.mjs` to regenerate it after adding a page.
-5. The question bank carries no answer tell: no keyed option position holds more than 40% of items, no select-N key set dominates, and the "longest option is the answer" rate stays under its ceiling. The ceiling is a ratchet — lower it as the bank improves, never raise it.
+5. **Both** question banks carry no answer tell: no keyed option position holds more than 40% of items, no select-N key set dominates, no true/false set drifts to one answer, and the "longest option is the answer" rate stays under its ceiling. This ran over `questions.json` alone for as long as there was one bank, and quietly went on doing so after ochem got its own — the defence existed and nothing pointed it at the second bank, which drifted to more than twice the ceiling NREMT is held to. The ceilings are a ratchet — lower one as a bank improves, never raise it. Ochem's are the exception and say so in the code: they are the bank's measured state on the day it was first guarded, written down so it cannot get worse while the editorial work happens.
 6. Every advertised question count in markup, meta tags and this README matches the right bank — there are two now, and which one a page means is decided by whether it lives under `ochem/`. The README describes both, so a figure in it is correct if it matches either. The homepage went on advertising a figure from an early build long after the bank had more than doubled.
 7. Every advertised Ochem count matches `curriculum.js`: a digit count of "topics" is the number of topics with an href, "lessons" the number under `lessons/`, "mechanisms" the number of pages under `ochem/mechanisms/`. The course was "58 lessons", "62 topics" and "Fifty-eight interactive lessons" on three pages at once.
 8. Every question in the bank has a unique id, so every record in a learner's browser still refers to something.
@@ -685,7 +687,7 @@ Two more jobs, both added because the README argued carefully about something an
 
 **`scripts/check-a11y.mjs`** runs axe-core over one page of every *shape* the site has — twelve of them, which is enough: if a lesson is accessible then all 58 built on the same engine are, and a violation in one of them is a violation in the engine. It fails on serious and critical only; minor and moderate are printed and do not fail, because a rule at that level is often a judgement call and a check that cries wolf gets switched off within a month. It also makes three checks axe cannot, because they are about this site's own decisions: the skip link landing on something that exists and can take focus, and the `main` and `nav` landmarks surviving the runtime-rendered header.
 
-It is a separate job because it is the only check here that needs a browser. `check-site.mjs` is dependency-free and runs in seconds on every push; bolting a minute onto it would make the check people actually wait for slow.
+It shares a job with `check-console.mjs` below, because those two are the only checks here that need a browser and installing Chromium twice would be paying for it twice. `check-site.mjs` is dependency-free and runs in seconds on every push; bolting a minute onto it would make the check people actually wait for slow.
 
 Turning it on found eight real things, every one of them invisible to anybody who was not the person it locked out:
 
@@ -699,6 +701,20 @@ Turning it on found eight real things, every one of them invisible to anybody wh
 - **Two `<figure>`s sat directly inside a `<ul>`**, which is invalid and stops a list reporting its own length.
 
 One advisory is known and deliberately unfixed: `role="main"` on a wrapper that contains the footer leaves a `contentinfo` landmark nested inside `main`. Moving the footer out on every page is DOM surgery under CSS written around the current structure — a real risk of breaking layout to fix a moderate advisory, against a main landmark that is unambiguously worth having.
+
+### Does the page actually run?
+
+Every other check here *reads* the files. `check-site.mjs` proves a path resolves, `check-weight.mjs` proves a page is small, `check-a11y.mjs` proves the rendered DOM is usable. None of them proved the page **runs**. A typo'd property, a module that throws on load, a JSON fetch pointed at a file that moved, a listener bound to an element a refactor renamed: all of it parses, all of it passes every check above, and all of it is a dead page in front of a student.
+
+`assets/errors.js` already exists for exactly this class of bug — but it reports from production, after somebody has hit one. **`scripts/check-console.mjs`** asks the same question before the commit lands. It loads every page in Chromium and fails on an uncaught exception, anything written to `console.error`, a same-origin request that 404s or fails, or the same `id` on two elements once the page has rendered.
+
+That last one is here because this site builds most of its interactive DOM from template strings at runtime, where a duplicated id is invisible to any static scan and makes `getElementById` return the wrong element — silently, and only for whichever control lost.
+
+It ignores **cross-origin** requests. The Supabase SDK and the analytics script come off third-party hosts, and whether those resolve says something about the CI runner's network rather than about this commit; a check that fails when somebody else's CDN has a bad afternoon gets switched off within a month, and then it is not checking anything. Same-origin is this repo's to get right, so same-origin is what is enforced.
+
+It visits **every** page, not one per shape, which is the opposite of the sampling `check-a11y.mjs` does — deliberately. Accessibility is a property of a template, so twelve cover 180. A runtime error is a property of one page's own inline bootstrap, which is exactly where this site puts its per-page wiring, so sampling would look at the one file that cannot be wrong. Six pages load at a time; 180 pages take about a minute.
+
+All 180 pages pass today, which is the point: it starts green and stays that way, so the first thing it ever says is about a commit that broke something. The ignore list is empty, and an entry on it that stops matching **fails** the check rather than sitting there implying a problem that was fixed years ago.
 
 **`scripts/check-weight.mjs`** is a byte budget, and needs nothing to run: it reads the files off disk and gzips them, so it sits with the fast checks. It measures the HTML plus every same-origin stylesheet, script and font a page references. Scripts count even though all of them are deferred — deferred means "does not block the parser", not "free".
 

@@ -76,9 +76,10 @@ jobs:
       # were pulled off a third-party CDN; nothing defended either afterwards.
       - run: node scripts/check-weight.mjs --check
 
-  # Its own job because it is the only thing here that needs a browser. Bolting
-  # it onto check-links-and-json would make the check people actually wait for
-  # take a minute instead of seconds.
+  # Its own job because these are the only things here that need a browser.
+  # Bolting them onto check-links-and-json would make the check people actually
+  # wait for take a minute instead of seconds. Both browser checks share the
+  # job so Chromium is installed once rather than twice.
   accessibility:
     runs-on: ubuntu-latest
     steps:
@@ -99,3 +100,9 @@ jobs:
       # nav landmarks surviving the runtime-rendered header.
       - name: axe-core, and the site's own accessibility rules
         run: node scripts/check-a11y.mjs --check
+      # Every other check here reads the files. This one runs them: a page that
+      # parses, resolves and renders can still throw on load and be dead in
+      # front of a student. errors.js already reports this class of bug — from
+      # production, after somebody hit it. This asks before the commit lands.
+      - name: every page loads without a runtime error
+        run: node scripts/check-console.mjs --check
