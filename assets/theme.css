@@ -1330,3 +1330,150 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
   }
   html{scroll-behavior:auto !important;}
 }
+
+/* ==========================================================================
+   Textbook figures (.notes-figure and the fg-* vocabulary)
+
+   This lived in ochem/assets/ochem.css, because for a long time the ochem
+   textbook was the only part of the site that drew anything. It is here now
+   because the NREMT notes draw too: the forty chapters moved out of their page
+   into a JSON file, which is what made a figure in them practical, and a
+   drawing vocabulary only half the site can reach is not a vocabulary.
+
+   Everything below is structure, never colour. Every stroke is a theme
+   variable, so the same figure reads correctly on the pale ground and the dark
+   one and a palette change lands everywhere at once; a fragment or a generator
+   writes the classes and never a hex value.
+   ========================================================================== */
+
+
+
+/* --------------------------------------------------------------------------
+   Textbook figures (.notes-figure)
+
+   Most of what this book asks you to believe is a claim about shape: a p
+   orbital is two lobes with a node between them, a chair puts six hydrogens
+   straight up and down, an SN2 nucleophile has to arrive on the far side from
+   the leaving group. Prose can state those, but a reader who has never seen
+   one cannot picture it from the sentence, and a wrong mental picture is worse
+   than none — it survives the exam question that depended on the right one.
+
+   So wherever a section describes what something looks like, a figure draws
+   it. They are hand-written inline SVG inside the note fragments rather than
+   images: the drawings are line art, they scale to any width without a second
+   asset to ship, and every stroke can be a theme variable, so the same figure
+   reads correctly on the pale ground and on the dark one. The classes below
+   are the whole vocabulary — a fragment writes structure, never colour, so a
+   palette change lands everywhere at once.
+
+   Sizing: the svg fills the column up to a max, and figures that are wider
+   than they are tall get `notes-figure--wide` to use more of it. Text inside
+   is set in px against the viewBox, so it scales with the drawing; anything
+   under about 10 viewBox units gets unreadable on a phone, so don't go there.
+   -------------------------------------------------------------------------- */
+.notes-figure{
+  margin:0 0 16px;border:var(--bw) solid var(--line-soft);
+  border-radius:var(--radius);padding:16px 14px 12px;
+  /* A diagram scaled down to fit the reading column scales its own labels down
+     with it, and a 9px label at 0.6 is not a label any more. So each figure
+     carries the width it was drawn at (--vb, set on the element) and is never
+     rendered much below it; where that does not fit, the figure scrolls
+     sideways rather than shrinking into illegibility.
+
+     The four backgrounds are the usual scroll-shadow trick: the two `local`
+     gradients sit on the content and slide away as you scroll, uncovering the
+     two `scroll` shadows pinned to the edges. The result is an edge shadow
+     that appears only on the side there is more to see, with no script. */
+  overflow-x:auto;
+  scrollbar-width:thin;
+  /* Flex, so the drawing can be centred SAFELY. It used to be centred with
+     `margin:0 auto` on the svg, which is correct until the svg is wider than
+     this box — and then it centres the overflow, putting the left end of the
+     drawing at a negative offset that no amount of scrolling can reach. Every
+     wide figure on the site was quietly losing its left edge that way. `safe
+     center` centres while it fits and falls back to flex-start when it does
+     not, which is the whole of the fix. */
+  display:flex;
+  flex-direction:column;
+  background:
+    linear-gradient(to right, var(--paper) 60%, rgba(0,0,0,0)) left center / 36px 100% no-repeat local,
+    linear-gradient(to left,  var(--paper) 60%, rgba(0,0,0,0)) right center / 36px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(20,40,35,.16), rgba(0,0,0,0)) left center / 13px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(20,40,35,.16), rgba(0,0,0,0)) right center / 13px 100% no-repeat scroll,
+    var(--paper);
+}
+:root[data-theme="dark"] .notes-figure{
+  background:
+    linear-gradient(to right, var(--paper) 60%, rgba(0,0,0,0)) left center / 36px 100% no-repeat local,
+    linear-gradient(to left,  var(--paper) 60%, rgba(0,0,0,0)) right center / 36px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(0,0,0,.55), rgba(0,0,0,0)) left center / 13px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,.55), rgba(0,0,0,0)) right center / 13px 100% no-repeat scroll,
+    var(--paper);
+}
+.notes-figure svg{
+  width:100%;height:auto;display:block;
+  margin:0;
+  align-self:safe center;
+  /* A little shrinking is fine — below about 0.9 the small labels stop being
+     readable, so that is where the scroll takes over instead. */
+  min-width:calc(var(--vb,420) * 0.92px);
+  max-width:calc(var(--vb,420) * 1.3px);
+}
+.notes-figure figcaption{
+  margin:12px auto 0;max-width:620px;text-align:center;
+  font:700 12.5px var(--font-ui);color:var(--muted);line-height:1.5;
+}
+.notes-figure figcaption b{color:var(--ink);font-weight:900;}
+/* The second half of a caption: the running commentary that used to sit along
+   the bottom of the drawing, where it was too small to read. */
+.notes-figure-note{display:block;margin-top:8px;font-weight:600;}
+
+/* The drawing vocabulary. `fg-` for figure. */
+.notes-figure .fg-bond{stroke:var(--ink);stroke-width:2.2;fill:none;stroke-linecap:round;}
+.notes-figure .fg-bond-soft{stroke:var(--muted);stroke-width:1.6;fill:none;stroke-linecap:round;}
+.notes-figure .fg-bond-hi{stroke:var(--accent);stroke-width:3.2;fill:none;stroke-linecap:round;}
+.notes-figure .fg-dash{stroke:var(--muted);stroke-width:1.6;fill:none;stroke-dasharray:4 4;stroke-linecap:round;}
+.notes-figure .fg-dash-hi{stroke:var(--accent);stroke-width:2;fill:none;stroke-dasharray:4 4;stroke-linecap:round;}
+.notes-figure .fg-wedge{fill:var(--ink);stroke:none;}
+.notes-figure .fg-hash{stroke:var(--ink);stroke-width:2;stroke-linecap:round;}
+
+.notes-figure .fg-atom{fill:var(--white);stroke:var(--line);stroke-width:2;}
+.notes-figure .fg-atom-hi{fill:var(--tint-accent);stroke:var(--accent);stroke-width:2.4;}
+.notes-figure .fg-atom-warn{fill:var(--tint-coral);stroke:var(--coral);stroke-width:2.4;}
+
+.notes-figure text{font-family:var(--font-mono);font-weight:700;fill:var(--ink);}
+.notes-figure .fg-lbl{font-size:13px;font-weight:700;fill:var(--ink);}
+.notes-figure .fg-sm{font-size:10.5px;font-weight:700;fill:var(--muted);}
+.notes-figure .fg-tag{font-family:var(--font-ui);font-size:11px;font-weight:900;fill:var(--accent-text);}
+.notes-figure .fg-tag-mut{font-family:var(--font-ui);font-size:11px;font-weight:900;fill:var(--muted);}
+.notes-figure .fg-tag-warn{font-family:var(--font-ui);font-size:11px;font-weight:900;fill:var(--coral-text);}
+.notes-figure .fg-tag-good{font-family:var(--font-ui);font-size:11px;font-weight:900;fill:var(--good-text);}
+.notes-figure .fg-hi{fill:var(--accent);}
+.notes-figure .fg-mut{fill:var(--muted);}
+.notes-figure .fg-warn{fill:var(--coral-text);}
+
+/* Orbital lobes and electron clouds: a translucent fill so overlapping lobes
+   read as overlapping rather than one hiding the other. */
+.notes-figure .fg-orb{fill:var(--accent);fill-opacity:.20;stroke:var(--accent);stroke-width:1.6;}
+.notes-figure .fg-orb-alt{fill:var(--lilac);fill-opacity:.30;stroke:var(--lilac);stroke-width:1.6;}
+.notes-figure .fg-orb-node{stroke:var(--muted);stroke-width:1.4;stroke-dasharray:3 3;fill:none;}
+.notes-figure .fg-lp{fill:var(--accent);}          /* lone-pair dots */
+.notes-figure .fg-lp-mut{fill:var(--muted);}
+
+/* Curved electron-pushing arrows and reaction arrows share one head. */
+.notes-figure .fg-arrow{stroke:var(--accent);stroke-width:2.2;fill:none;stroke-linecap:round;}
+.notes-figure .fg-arrow-mut{stroke:var(--muted);stroke-width:2;fill:none;stroke-linecap:round;}
+.notes-figure .fg-head{fill:var(--accent);stroke:none;}
+.notes-figure .fg-head-mut{fill:var(--muted);stroke:none;}
+
+/* Panels: the pale plate behind one member of a side-by-side comparison, and
+   the rule that separates them. */
+.notes-figure .fg-panel{fill:var(--white);stroke:var(--line);stroke-width:1.5;}
+.notes-figure .fg-panel-hi{fill:var(--tint-accent);stroke:none;}
+.notes-figure .fg-panel-warn{fill:var(--tint-coral);stroke:none;}
+.notes-figure .fg-panel-good{fill:var(--tint-good);stroke:none;}
+.notes-figure .fg-rule{stroke:var(--line);stroke-width:1.5;}
+.notes-figure .fg-fill-hi{fill:var(--accent);}
+.notes-figure .fg-fill-mut{fill:var(--muted);}
+.notes-figure .fg-fill-warn{fill:var(--coral);}
+.notes-figure .fg-fill-good{fill:var(--good);}

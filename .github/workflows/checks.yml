@@ -46,6 +46,12 @@ jobs:
       # something the prose next to it no longer says.
       - name: the generated ochem figures are up to date
         run: node scripts/build-ochem-figures.mjs --check
+      # And the NREMT ones, which only became possible once the study notes
+      # moved out of their page into a JSON file. Same failure mode: a stale
+      # figure is a diagram quietly saying something the prose beside it no
+      # longer says.
+      - name: the generated notes figures are up to date
+        run: node scripts/build-notes-figures.mjs --check
       # The two files practice.html actually fetches are generated from
       # questions.json. Editing a question without rebuilding them would ship
       # the edit to nobody, silently.

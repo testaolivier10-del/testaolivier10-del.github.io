@@ -632,7 +632,7 @@ The fourth work order. Items are numbered as they were given.
 | 7 | SN2 figure: cyanide's triple bond and lone pair, overlapping atoms, the ethyl group outside the frame | **done** |
 | 8 | The remaining British spellings in visible text | **done** |
 | 9 | Confirm the live site matches main (2,106 questions, Terms link) | pending |
-| 10 | The three deferred decisions: notes chapters to JSON with figures; light and dark homepage screenshots, lazy-loaded; balance the absolute-word tell using only genuinely absolute keys | **split done**; figures, screenshots and absolute keys next |
+| 10 | The three deferred decisions: notes chapters to JSON with figures; light and dark homepage screenshots, lazy-loaded; balance the absolute-word tell using only genuinely absolute keys | **split and figures done**; screenshots and absolute keys next |
 
 ### Item 1 — what the 2025 guidelines actually say
 
@@ -876,6 +876,59 @@ Check 28 and `scripts/test/notes-data.test.mjs` guard the rest. The test lifts
 the real walker out of `tutor.js` by name rather than reimplementing it, since
 a reimplementation would pass while the real one was broken; deleting one line
 of the walker fails three of the five tests.
+
+### Item 10a — four figures, and the four ways I drew them wrong
+
+The notes had no figures, and the reason was structural: the chapters were an
+inline array in a 536 KB page, so a figure meant hand-writing SVG into a
+template literal nobody could diff. With the chapters in a JSON file that stops
+being true, and the drawing kit the ochem textbook uses turned out to be half
+generic — `panel`, `bar`, `rule`, `arrow`, `text` and `figure` know nothing
+about chemistry.
+
+| Figure | Section | What the prose could not do |
+|---|---|---|
+| `ch21-chain` | 21.1 | Six links in order, with the EMT's two shaded. The notes were describing a chain in an ordered list, which is the one shape a chain is not |
+| `ch9-airway-path` | 9.1 | Where a breath goes, and where the epiglottis sits in it — which is the whole reason that structure matters |
+| `ch9-fbao-cycle` | 9.4 | The 2025 five-and-five as a cycle, with the one half that changes by age |
+| `ch21-depth` | 21.2 | 2 in, 2 in and 1.5 in drawn against the chests they are measured in, where they stop looking like three rules |
+
+The figure CSS moved from `ochem/assets/ochem.css` to `assets/theme.css`, since
+a drawing vocabulary only half the site can reach is not a vocabulary. Net cost
+is a wash: the site shell went 226.5 → 228.6 KB and the ochem shell 85.8 → 83.9.
+
+Every one of these was drawn wrong first, and every fault was found by
+rendering it:
+
+1. **900 units wide.** `.notes-figure svg` carries `min-width: calc(--vb *
+   0.92px)`, so a figure wider than the column does not shrink — it becomes a
+   horizontal scroll. For a diagram whose job is a shape at a glance that is a
+   worse trade than a smaller drawing. All four are now ≤ 700, and a test caps
+   it.
+2. **The left edge was unreachable.** The svg was centred with `margin:0 auto`,
+   which centres the *overflow* too and puts the left end of a wide drawing at a
+   negative offset no scrolling can reach. Every wide figure on the site was
+   losing its left edge that way, ochem's included. Fixed at the source:
+   `.notes-figure` is a flex column and the svg uses `align-self: safe center`,
+   which centres while it fits and falls back to flex-start when it does not.
+3. **Ten labels were centred on their own left margin.** `text()` defaults
+   `text-anchor` to `middle`, so a heading placed at x=20 to sit against the
+   left edge is centred on x=20 with half of it off the canvas. The bounds test
+   read anchor coordinates and called all of them fine.
+4. **The `size` option does nothing for these classes.** Every `fg-` class in
+   `theme.css` sets `font-size`, and a CSS declaration beats a presentation
+   attribute — so labels render at 13px however they were sized, and one
+   overflowed the canvas while the test, measuring the attribute, said it fit.
+
+Faults 3 and 4 are now in the test rather than in my memory: it measures a
+label's real extent from its anchor, its text and the size its class actually
+renders at. Reverting either fix fails it.
+
+A fifth thing turned up and was not this session's to fix: **8 of the 133
+hand-written figures in `ochem/notes/` draw measurably outside their canvas**
+(worst: `pka.html`, 95 units off the left). Those are hand-written SVG rather
+than generated, so neither check 20 nor check 26 looks at them. Measured, not
+fixed — recorded here as its own piece of work.
 
 ---
 

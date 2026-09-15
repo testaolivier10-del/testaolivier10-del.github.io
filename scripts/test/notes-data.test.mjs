@@ -120,3 +120,110 @@ test('no chapter is empty, and no topic is headingless', () => {
     }
   }
 });
+
+/* The generated figures in the notes. Same reasoning as the ochem figure test
+   in tool-content.test.mjs — a diagram drawn from coordinates fails by
+   rendering perfectly and reading as nonsense — with one constraint the ochem
+   figures do not need.
+
+   .notes-figure svg carries `min-width: calc(--vb * 0.92px)`, so a figure
+   drawn wider than the reading column does not shrink: it becomes a
+   horizontal scroll, and the first attempt at the chain-of-survival figure was
+   900 units wide and arrived as a strip you had to drag. For a figure whose
+   whole job is to show a shape at a glance that is a worse trade than a
+   slightly smaller drawing, so the notes cap the width. */
+const NOTES_FIG_MAX_VB = 720;
+
+function notesFigures(){
+  const out = [];
+  for (const ch of DATA.chapters) {
+    for (const sec of ch.sections) {
+      for (const t of sec.topics) {
+        for (const m of String(t.html || '').matchAll(/<!-- fig:([a-z0-9-]+):start -->([\s\S]*?)<!-- fig:\1:end -->/g)) {
+          out.push({ id: m[1], block: m[2], section: sec.id });
+        }
+      }
+    }
+  }
+  return out;
+}
+
+test('every generated notes figure draws inside its own canvas', () => {
+  const figs = notesFigures();
+  assert.ok(figs.length >= 4, `expected at least 4 generated notes figures, found ${figs.length}`);
+  for (const { id, block } of figs) {
+    const vb = block.match(/viewBox="([^"]+)"/);
+    assert.ok(vb, `${id}: no viewBox`);
+    const [mx, my, w, h] = vb[1].split(/\s+/).map(Number);
+    assert.ok(w > 0 && h > 0, `${id}: degenerate viewBox`);
+
+    /* Anchor points AND the extent of anything that has one. The ochem
+       version of this test reads anchors only, and a panel whose x is inside
+       the canvas while x+width is 60 units past the right edge passes it — a
+       gap found by shifting a figure right and watching nothing fail. A rect
+       and a circle both say how big they are; there is no reason not to ask. */
+    const xs = [...block.matchAll(/\s(?:cx|x1|x2|x)="(-?[\d.]+)"/g)].map(v => Number(v[1]));
+    const ys = [...block.matchAll(/\s(?:cy|y1|y2|y)="(-?[\d.]+)"/g)].map(v => Number(v[1]));
+    for (const r of block.matchAll(/<rect[^>]*\sx="(-?[\d.]+)"[^>]*\sy="(-?[\d.]+)"[^>]*\swidth="([\d.]+)"[^>]*\sheight="([\d.]+)"/g)) {
+      xs.push(Number(r[1]) + Number(r[3]));
+      ys.push(Number(r[2]) + Number(r[4]));
+    }
+    for (const c of block.matchAll(/<circle[^>]*\scx="(-?[\d.]+)"[^>]*\scy="(-?[\d.]+)"[^>]*\sr="([\d.]+)"/g)) {
+      xs.push(Number(c[1]) + Number(c[3]), Number(c[1]) - Number(c[3]));
+      ys.push(Number(c[2]) + Number(c[3]), Number(c[2]) - Number(c[3]));
+    }
+    /* Text, measured as text. A <text> element's x is an anchor, not a left
+       edge: the drawing kit defaults text-anchor to `middle`, so a label
+       positioned at x=20 to sit against the left margin is in fact centred on
+       x=20, with half of it off the canvas. Four labels in these figures were
+       exactly that, and the anchor-only bounds above declared all four fine.
+       The width estimate is crude — a mean glyph is about 0.56 em in these
+       faces — and deliberately generous, because the failure it is looking for
+       is half a sentence missing, not two pixels. */
+    /* The size that actually renders is the CSS one, not the attribute. Every
+       fg- class in theme.css sets font-size, and a CSS declaration beats a
+       presentation attribute — so the `size` option the drawing kit offers is
+       ineffective for exactly these classes, and estimating from it
+       under-measures every label. Found by a label overflowing the canvas that
+       this test, reading the attribute, had just called fine. */
+    const CSS_SIZE = { 'fg-lbl': 13, 'fg-sm': 10.5, 'fg-tag': 11, 'fg-tag-mut': 11, 'fg-tag-warn': 11, 'fg-tag-good': 11 };
+    for (const t of block.matchAll(/<text class="([a-z-]+)"[^>]*\sx="(-?[\d.]+)"[^>]*\stext-anchor="(\w+)"[^>]*\sfont-size="([\d.]+)"[^>]*>([^<]*)</g)) {
+      const [, cls, ax, anchor, fs, body] = t;
+      const size = CSS_SIZE[cls] ?? Number(fs);
+      const wide = body.replace(/&[a-z]+;/g, 'x').length * size * 0.62;
+      const left = anchor === 'middle' ? Number(ax) - wide / 2 : anchor === 'end' ? Number(ax) - wide : Number(ax);
+      xs.push(left, left + wide);
+    }
+    assert.ok(xs.length && ys.length, `${id}: nothing drawn`);
+    // A few units of slack: a stroke has width and a glyph has descenders.
+    assert.ok(Math.min(...xs) >= mx - 6, `${id}: content runs off the left edge`);
+    assert.ok(Math.max(...xs) <= mx + w + 6, `${id}: content runs off the right edge`);
+    assert.ok(Math.min(...ys) >= my - 6, `${id}: content runs off the top edge`);
+    assert.ok(Math.max(...ys) <= my + h + 6, `${id}: content runs off the bottom edge`);
+
+    assert.match(block, /role="img"/, `${id}: figure is not exposed as an image`);
+    assert.match(block, /aria-label="[^"]{12,}"/, `${id}: figure has no usable alt text`);
+    assert.match(block, /<figcaption>/, `${id}: figure has no caption`);
+  }
+});
+
+test('no notes figure is wider than the column it has to fit', () => {
+  for (const { id, block } of notesFigures()) {
+    const w = Number(block.match(/viewBox="([^"]+)"/)[1].split(/\s+/)[2]);
+    assert.ok(w <= NOTES_FIG_MAX_VB,
+      `${id} is ${w} units wide; above ${NOTES_FIG_MAX_VB} it stops fitting the reading column and becomes a horizontal scroll instead of a picture`);
+  }
+});
+
+test('a figure sits in the section it was written for', () => {
+  const WHERE = {
+    'ch21-chain': 'ch21-arrest-pathophys',
+    'ch9-airway-path': 'ch9-airway',
+    'ch9-fbao-cycle': 'ch9-fbao',
+    'ch21-depth': 'ch21-steps',
+  };
+  const found = Object.fromEntries(notesFigures().map(f => [f.id, f.section]));
+  for (const [id, section] of Object.entries(WHERE)) {
+    assert.equal(found[id], section, `${id} should be in ${section}, and is in ${found[id] ?? 'no section at all'}`);
+  }
+});
