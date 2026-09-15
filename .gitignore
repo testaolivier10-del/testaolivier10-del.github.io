@@ -4,3 +4,10 @@ node_modules/
 *.log
 .vscode/
 .idea/
+# One-off browser harnesses used to drive a lesson end to end or prove a
+# refactor (Playwright lives in node_modules at the repo root, so these have to
+# sit here to resolve their imports). Two of them were committed by accident
+# with `git add -A` while a background run still had its file on disk.
+drive*.mjs
+splittest.mjs
+renum.mjs
