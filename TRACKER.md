@@ -203,7 +203,7 @@ that should be faked in SVG, and it stays in **Needs a person**.
 | Missing mechanisms (check Grignard in carbonyl addition first) | **mostly not missing** — see below. Radical halogenation was, and is now written |
 | Synthesis / reagent-roadmap tool and flashcard deck | open |
 | Figures in the reaction-heavy sections | in progress — 6 added, and there is now a generator |
-| Skeletal structures after the foundations module | open |
+| Skeletal structures after the foundations module | done — and it was the largest hole in the book |
 | Cut repeated caption/callout/body explanations | done — 2 real repeats, and the finding was much smaller than it looked |
 
 **The no-JavaScript problem was bigger than the item as written.** The ochem
@@ -319,6 +319,23 @@ lesson does not. That makes *topics* (62, those with a lesson) and *sections*
 **Still open, and now stated accurately:** interactive mechanism pages for
 hydroboration–oxidation, acetal formation and imine formation, plus a lesson
 for radical halogenation.
+
+**Skeletal structures: the word appeared once in 63 sections.** Once, in
+`fischer`, in passing. There was no topic, no section and no explanation of
+the notation that every drawing after Foundations is written in — wedges and
+dashes in Stereochemistry, arrow-pushing between atoms that are not written
+down in every mechanism chapter, all of it assumed.
+
+Written as the 64th section and placed at the head of Organic Structure &
+Electron Movement, which is where the work order asked for it: the four rules,
+the asymmetry that catches people (a hydrogen on carbon is invisible, a
+hydrogen on oxygen or nitrogen is always drawn, because the second kind is the
+one that does chemistry), a worked example reading a structure back to a name,
+rings, and a fluency test. Its figure puts butan-1-ol in all three notations
+side by side so the rules can be read off by comparison.
+
+Both new sections carry `href: null` and appear in Learn as locked cards until
+their lessons exist.
 
 ## Phase 6 — Answer-option rewrites
 

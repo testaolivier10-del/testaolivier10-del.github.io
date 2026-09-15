@@ -27,6 +27,9 @@
       { id: 'bond-polarity', title: 'Bond polarity', href: 'lessons/bond-polarity.html' }
     ]},
     { id: 'electron-movement', title: 'Organic Structure & Electron Movement', topics: [
+      // The notation every drawing after Foundations is written in. Section
+      // first, lesson to come, so href stays null.
+      { id: 'skeletal-structures', title: 'Skeletal structures', href: null },
       { id: 'resonance', title: 'Resonance', href: 'lessons/resonance.html' },
       { id: 'curved-arrows', title: 'Curved arrows', href: 'lessons/curved-arrows.html', dependsOn: ['resonance'] },
       { id: 'nucleophiles', title: 'Nucleophiles', href: 'lessons/nucleophiles.html', dependsOn: ['electronegativity'] },

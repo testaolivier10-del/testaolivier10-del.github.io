@@ -401,6 +401,72 @@ FIGURES.push({
   note: 'The middle panel is the reaction; the other two only start and stop it. Because each propagation step consumes one radical and produces one, the pair runs as a loop, and a single initiation event can turn over thousands of molecules before two radicals happen to collide and end it. That is also why the second propagation step is not termination even though the product appears there — the product is not what distinguishes the stages, the radical count is.',
 });
 
+/* ------------------------------------------------------------------ 8 ---
+   One molecule, three notations, so the rules can be read off by comparison
+   rather than taken on trust. */
+FIGURES.push({
+  id: 'skeletal-notation',
+  section: 'skeletal-structures',
+  anchor: '<h3>Four rules, and the third is the one people get wrong</h3>',
+  alt: 'Butan-1-ol drawn as a full Lewis structure, condensed, and skeletal, with the implied carbons and hydrogens marked',
+  viewBox: '0 0 760 330',
+  build() {
+    let s = '';
+    // ---- Lewis ----
+    s += tag(130, 40, 'FULL LEWIS');
+    const lx = [46, 102, 158, 214], ly = 104;
+    for (let i = 0; i < 4; i++) {
+      if (i) s += bond(P(lx[i - 1], ly), P(lx[i], ly), { rFrom: 13, rTo: 13 });
+      s += atom(lx[i], ly, 'C', { r: 13, size: 11 });
+      // Hydrogens above and below, and three on the first carbon.
+      s += bond(P(lx[i], ly), P(lx[i], ly - 38), { rFrom: 13, rTo: 11 });
+      s += atom(lx[i], ly - 38, 'H', { r: 11, size: 10 });
+      s += bond(P(lx[i], ly), P(lx[i], ly + 38), { rFrom: 13, rTo: 11 });
+      s += atom(lx[i], ly + 38, 'H', { r: 11, size: 10 });
+    }
+    s += bond(P(lx[0], ly), P(lx[0] - 40, ly), { rFrom: 13, rTo: 11 });
+    s += atom(lx[0] - 40, ly, 'H', { r: 11, size: 10 });
+    s += bond(P(lx[3], ly), P(lx[3] + 42, ly), { rFrom: 13, rTo: 13 });
+    s += atom(lx[3] + 42, ly, 'O', { r: 13, size: 11 });
+    s += bond(P(lx[3] + 42, ly), P(lx[3] + 42, ly - 38), { rFrom: 13, rTo: 11 });
+    s += atom(lx[3] + 42, ly - 38, 'H', { r: 11, size: 10 });
+    s += text(130, 176, '15 symbols to say one molecule', { cls: 'fg-sm', size: 10 });
+
+    s += rule(300, 34, 300, 300);
+
+    // ---- Condensed ----
+    s += tag(400, 40, 'CONDENSED');
+    s += label(400, 108, 'CH₃CH₂CH₂CH₂OH', { size: 15 });
+    s += text(400, 140, 'shorter, but the shape is gone', { cls: 'fg-sm', size: 10 });
+
+    s += rule(500, 34, 500, 300);
+
+    // ---- Skeletal ----
+    s += tag(630, 40, 'SKELETAL');
+    const pts = [P(540, 118), P(576, 96), P(612, 118), P(648, 96), P(684, 118)];
+    for (let i = 1; i < pts.length; i++) s += bond(pts[i - 1], pts[i], { rFrom: 0, rTo: i === pts.length - 1 ? 14 : 0 });
+    s += atom(684, 118, 'OH', { r: 15, size: 10.5 });
+    // Mark the implied carbons and their implied hydrogens.
+    for (let i = 0; i < 4; i++) {
+      s += atom(pts[i].x, pts[i].y, '', { kind: 'point' });
+      const above = i % 2 === 1;
+      s += text(pts[i].x, pts[i].y + (above ? -16 : 26), i === 0 ? 'CH₃' : 'CH₂', { cls: 'fg-sm', size: 9.5 });
+    }
+    // Centred on the column, and short enough that the rendered width stays
+    // inside the canvas — the bounds test checks anchor points, not glyphs.
+    s += text(618, 176, 'every corner and end is a carbon', { cls: 'fg-sm', size: 10 });
+    s += text(618, 192, 'H = whatever is left of four', { cls: 'fg-sm', size: 10 });
+    s += text(618, 214, 'the O and its H are always drawn', { cls: 'fg-tag-good', size: 10.5 });
+
+    s += rule(34, 244, 726, 244);
+    s += text(380, 272, 'Same molecule, butan-1-ol. The hydrogens did not disappear — they became', { cls: 'fg-lbl', size: 12 });
+    s += text(380, 294, 'something you work out, which is cheaper than something you read.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'Butan-1-ol three ways. The skeletal drawing on the right contains exactly the same information as the Lewis structure on the left — it has simply moved the boring half of it into rules you apply rather than symbols you read.',
+  note: 'Note what stayed visible. The oxygen is drawn and its hydrogen is drawn, while nine hydrogens on carbon are not. That is not inconsistency: an O–H hydrogen is acidic, hydrogen bonds, and gets removed by base, so it is part of the chemistry; a C–H hydrogen on a chain almost never is. The notation hides what does not matter and keeps what does.',
+});
+
 /* ---------------------------------------------------------------------- */
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;

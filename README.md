@@ -42,7 +42,7 @@ assets/                Shared across every course
                          hub-progress.js fires; site-chrome.js mounts it
   tutor.js             The study assistant behind the mascot in the corner of every
                          page. Indexes the current course's own material in the browser
-                         (NREMT's reference pages, or ochem's 63 note sections listed by
+                         (NREMT's reference pages, or ochem's 64 note sections listed by
                          curriculum.js) and answers by quoting the passage that covers the
                          question. Optionally posts the question plus those passages to an
                          AI endpoint for a written answer; see worker/. site-chrome.js
@@ -108,7 +108,7 @@ ochem/                 The Organic Chemistry course (beta)
   learn.html             The textbook: a contents rail beside one chapter at a time,
                             rendered from assets/curriculum.js + notes/ (see Textbook)
   notes/                 One HTML fragment per curriculum topic — the written course,
-                            63 sections, fetched on demand by the textbook
+                            64 sections, fetched on demand by the textbook
   practice.html, review.html   Question practice and the review queue, both
                             driven by assets/session-runner.js
   tools.html             Hub for the seven interactive tools, rendered from
@@ -241,7 +241,7 @@ speaker button in the header mutes it, remembered in `localStorage` under
 
 Learn is the course's written half. Every topic's prose is one HTML fragment under `ochem/notes/<topic>.html` — one per curriculum topic, 62 in all, ~63,000 words — and `ochem/assets/textbook.js` renders a contents rail (14 chapters, searchable, with per-chapter read counts) beside one chapter at a time, fetching that chapter's notes on open so the book costs a chapter rather than all 62 topics.
 
-The rail's box searches the prose, not just the 63 section names. `ochem/assets/textbook-search.js` indexes each note fragment as it is fetched — the index is built from the same cache the chapters read from, so there is no separate corpus to keep in sync, and the first query fetches whatever has not been read yet. A query lists the matching passages with the words highlighted; picking one opens that chapter and scrolls to the exact paragraph, still highlighted. Every query term has to appear in a section for it to match, and ordinary question words ("what is a nucleophile") are dropped so a typed question searches for the idea.
+The rail's box searches the prose, not just the 64 section names. `ochem/assets/textbook-search.js` indexes each note fragment as it is fetched — the index is built from the same cache the chapters read from, so there is no separate corpus to keep in sync, and the first query fetches whatever has not been read yet. A query lists the matching passages with the words highlighted; picking one opens that chapter and scrolls to the exact paragraph, still highlighted. Every query term has to appear in a section for it to match, and ordinary question words ("what is a nucleophile") are dropped so a typed question searches for the idea.
 
 The interactive lessons are unchanged and each section links out to its own. Reading is tracked separately from mastery in `ochem_textbook_read`, set by reaching the end of a section or by hand, worth 5 XP the first time, and never mixed into the mastery number — which still comes only from answering questions. Old per-lesson `?notes=1` URLs redirect to the matching section.
 
