@@ -622,7 +622,33 @@
       var label = check ? 'Try a similar one'
                 : (config.nextLabel ? config.nextLabel(S) : 'Next question');
       html += '<div class="actions"><button class="btn-press" id="nextBtn">' + esc(label) + '</button></div>';
+      // Under the explanation, which is where the disagreement happens.
+      if(window.LevlReport) html += '<div class="q-report">' + window.LevlReport.button('ochem', questionRef(q)) + '</div>';
       return html;
+    }
+
+    /* How a report names an ochem question.
+
+       The NREMT bank has permanent ids; this one does not. A question's id here
+       is 'lb:<topic>:<position in that topic's array>' — a position, and a
+       report outlives the edit it asks for, so inserting one question above it
+       would leave every open report below pointing at the wrong thing.
+
+       So a short hash of the stem is appended. The id still finds the question
+       instantly today; the hash says whether what is there is still the
+       question that was reported. A stem that has been edited stops matching,
+       which is the right answer rather than a failure — an edited stem usually
+       means the report was already acted on.
+
+       Cheap FNV-1a. This is a label, not a security boundary. */
+    function questionRef(q){
+      var text = String((q && q.prompt) || '');
+      var h = 2166136261;
+      for(var i = 0; i < text.length; i++){
+        h ^= text.charCodeAt(i);
+        h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0;
+      }
+      return String((q && q.id) || ('unknown:' + (q && q.topic))) + ':' + h.toString(36);
     }
 
     function advance(){

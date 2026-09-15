@@ -27,6 +27,7 @@
      before they arrive; they still run first, in this order, and the
      page's own inline script waits for DOMContentLoaded. -->
 <script src="assets/question-ids.js" defer></script>
+<script src="../assets/report-question.js" defer></script>
 <script src="../assets/errors.js" defer></script>
 <script src="../assets/account.js" defer></script>
 <script src="../assets/hub-progress.js" defer></script>
@@ -438,6 +439,9 @@
   .r-answer.correct{background:var(--tint-good);color:var(--good-text);}
   .r-answer.incorrect{background:var(--tint-bad);color:var(--bad-text);}
   .r-explain{font-size:14px;font-weight:600;color:var(--muted);margin-top:10px;padding-top:10px;border-top:1px solid var(--line-soft);}
+  /* Right-aligned and quiet: it belongs to the explanation above it, not to
+     the next question, and should be findable without competing with either. */
+  .r-report{margin-top:6px;text-align:right;}
 
   .retry-btn{
     width:100%;padding:15px;background:var(--navy);color:var(--on-accent);border:none;
@@ -1969,7 +1973,9 @@ async function renderFlashcard(){
   document.getElementById('fcBack').innerHTML = `
     <div class="answer">${formatCorrectAnswerText(q, letters)}</div>
     <div class="explain">${q.explain || ''}</div>
+    <div class="r-report">${window.LevlReport ? window.LevlReport.button('nremt', QID.idOf(fcIndices[fcCurrent])) : ''}</div>
   `;
+  if(window.LevlReport) window.LevlReport.paint();
 
   fcFlipped = false;
   document.getElementById('fcFront').style.display = 'block';
@@ -2606,9 +2612,13 @@ async function renderReview(filter){
         </div>
         ${!isCorrect ? `<div class="r-answer correct">Correct answer: ${formatCorrectAnswerText(q, letters)}</div>` : ''}
         <div class="r-explain">${q.explain || ''}</div>
+        <div class="r-report">${window.LevlReport ? window.LevlReport.button('nremt', QID.idOf(qIdx)) : ''}</div>
       </div>
   `).join('');
   currentReviewFilter = filter;
+  // Re-paint after a re-render: a question already reported from another card
+  // in this same list must not come back with a live button.
+  if(window.LevlReport) window.LevlReport.paint();
   reviewEl.querySelectorAll('.r-flag-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       toggleFlag(parseInt(btn.dataset.qidx, 10));

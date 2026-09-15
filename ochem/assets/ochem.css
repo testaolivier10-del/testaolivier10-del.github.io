@@ -143,6 +143,9 @@
 .mini-progress span.done{background:var(--accent);}
 
 .actions{display:flex;justify-content:flex-end;gap:10px;}
+/* Under the Next button, not beside it: the way on is the primary action and
+   this must not compete with it. See assets/report-question.js. */
+.q-report{margin-top:8px;text-align:right;}
 .btn-press:disabled{opacity:.45;cursor:default;}
 .explain-box{background:var(--tint-accent);border-radius:var(--radius);padding:16px 18px;font-size:14.5px;font-weight:600;line-height:1.6;margin-bottom:18px;color:var(--ink);}
 .explain-box b{color:var(--accent-press);}

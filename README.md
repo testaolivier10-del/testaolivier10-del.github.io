@@ -51,6 +51,9 @@ assets/                Shared across every course
                          has an account.js, because the errors worth hearing
                          about are the ones early enough to stop a page working
                          — see When a page breaks
+  report-question.js   "This looks wrong" — the one-tap report under every
+                         explanation in both courses. See Reporting a bad
+                         question
   account.js           One login for the whole site: Supabase auth + namespaced
                          cross-device sync (see Data & accounts)
   hub-progress.js      One shared level and one shared streak; per-subject XP.
@@ -526,6 +529,21 @@ Three things, all mounted from `assets/site-chrome.js` rather than written into 
 - **Answer announcements** (`assets/announce.js`) — a polite live region that speaks correct/incorrect and the explanation, wired into the one choke point each course's feedback passes through.
 - **Reduced motion** — a blanket CSS rule in `assets/theme.css`, plus `window.LevlMotion` for the movement CSS cannot reach (smooth scrolls, the body map's camera flights).
 
+## Reporting a bad question (`assets/report-question.js`)
+
+`sources.html` promised a way to tell us when a question is wrong from the day it was written. It explained the correction policy and said where corrections get listed, and then never said *how* — the only address anywhere on the site was at the bottom of the privacy policy. For a bank of 2,084 NREMT questions and 1,860 ochem ones, written against reference material rather than by a committee, that was the most expensive gap on the site. No script can check whether an answer is clinically right; a student who has just answered one and thinks the key is wrong is the only reviewer who can, and they are on the one screen where saying so costs a tap.
+
+So it is a tap, under the explanation — in the results list after an exam, on the back of a flashcard, and under every ochem question's feedback. Not on a contact page the reader would have to go looking for while holding the thought.
+
+- **Four reasons and an optional box.** Most reports are one of a few things, and making someone write a sentence to say "the key is wrong" loses most of them. The reason list is a contract with `report_question()` in `scripts/sql/schema.sql`, which rejects a reason it does not recognise — so a test asserts the two are the same list, because drifting apart means every report silently fails at the far end while the dialog says thank you.
+- **Reported once per browser, and the button says so.** It becomes an inert "Reported — thank you" for that question. That is less about rate limiting than about the receipt: the same question shows up in a review list *and* on a flashcard, and a button that comes back live invites a second report, because nothing told them the first one landed.
+- **The id is a question id, never a position.** A report outlives the edit it asks for. NREMT reports carry the permanent id; ochem has no id scheme, so a report carries the engine's `lb:<topic>:<n>` reference *plus a short hash of the stem* — the reference finds it instantly, the hash says whether what is there is still the question that was reported. An edited stem stops matching, which is the right answer rather than a failure.
+- **It reuses the auth dialog's classes** instead of bringing a second set, for the same reason there is one `theme.css`. Escape closes, Tab is trapped, focus returns to the button, the page behind cannot scroll, and the textarea is 16px so iOS does not zoom on focus.
+- **The click is stopped in the capture phase.** The flashcard is one big click target that flips on any click inside it; left alone, pressing Report flipped the card away, which hid the button mid-dialog and left Escape with nothing to return focus to. Stopping it on the way back up is too late — `#fcCard`'s handler is bound to the element and has already run.
+- **A failure is never silent.** If the report does not land — offline is the common case, since the rest of the site works offline and this one thing cannot — it says so and leaves the button live, rather than thanking someone for something that went nowhere.
+
+Reading them: `scripts/sql/reports.sql`. Tested in `scripts/test/report-question.test.mjs`.
+
 ## When a page breaks (`assets/errors.js`)
 
 183 pages of hand-written vanilla JS, no bundler and no framework — which is the point of the stack, and also means nothing checks that a page still *runs* before it ships. A typo in one lesson's bootstrap renders an inert page: the text is there, the buttons do nothing, no error is visible to the reader, and nobody finds out. The student assumes the site is broken and leaves, which is exactly the population least likely to email about it. Nothing on the site knew this had happened.
@@ -604,10 +622,11 @@ A third job re-derives everything that is generated from the pages and fails if 
 
 ### Unit tests
 
-A second job runs `node --test scripts/test/*.test.mjs` — 114 tests over the pieces whose failure modes are silent. Everything above checks that the site is *wired* correctly; nothing checked that it *scores* correctly. An interval that doubles too eagerly buries a shaky concept for four months, a decay curve that bites too hard makes yesterday's work look undone, a streak that resets in the wrong timezone eats a 40-day run. None of that throws, and none of it would have been caught by a link checker — the student just gets worse practice and no one finds out.
+A second job runs `node --test scripts/test/*.test.mjs` — 122 tests over the pieces whose failure modes are silent. Everything above checks that the site is *wired* correctly; nothing checked that it *scores* correctly. An interval that doubles too eagerly buries a shaky concept for four months, a decay curve that bites too hard makes yesterday's work look undone, a streak that resets in the wrong timezone eats a 40-day run. None of that throws, and none of it would have been caught by a link checker — the student just gets worse practice and no one finds out.
 
 - `scripts/test/hub-progress.test.mjs` — the level curve (pinned: changing it demotes every existing user), XP accumulation and per-subject split, streak continuation across days, goal tracking, rank titles, day-log pruning.
 - `scripts/test/mastery-engine.test.mjs` — unseen vs. scored-zero, the learning rate settling as evidence accumulates, the same-day guard that stops one good session reaching a six-month interval, the interval cap, the decay floor, due-ness, leech benching and its release on a lesson read, the daily review cap, mistake de-duplication, tier records.
+- `scripts/test/report-question.test.mjs` — the once-per-browser receipt surviving a re-render, the bounded store, and the reason list matching what the database will actually accept.
 - `scripts/test/errors.test.mjs` — the cap, the dedupe, the opt-out and the queue that holds reports until `account.js` exists. All four fail silently in both directions: a broken cap floods the database, a broken queue reports nothing and looks like a site with no bugs.
 - `scripts/test/question-ids.test.mjs` — what the numbers in a learner's records mean: ids surviving a deletion, a reorder and an append; the positional option-order array converting once and idempotently; a half-finished attempt abandoned rather than graded around a hole.
 - `scripts/test/harness.mjs` — loads these browser IIFEs into a VM context with a window, a localStorage and, crucially, a clock the test controls. Both engines are about *time*; none of this is testable against a real `Date.now()` without either sleeping or asserting nothing.
