@@ -204,7 +204,7 @@ that should be faked in SVG, and it stays in **Needs a person**.
 | Synthesis / reagent-roadmap tool and flashcard deck | open |
 | Figures in the reaction-heavy sections | in progress — 6 added, and there is now a generator |
 | Skeletal structures after the foundations module | open |
-| Cut repeated caption/callout/body explanations | open |
+| Cut repeated caption/callout/body explanations | done — 2 real repeats, and the finding was much smaller than it looked |
 
 **The no-JavaScript problem was bigger than the item as written.** The ochem
 course's entire written half — 62 sections, about 1.2 MB of prose — lived as
@@ -269,6 +269,22 @@ markup and none of it failed a check; it was found by rendering the figures in
 headless Chromium and looking at them. The bounds test added alongside catches
 the off-canvas half of that class. **The rest still needs eyes, and a figure
 added later should be looked at before it is pushed.**
+
+**Repeated explanations: real, but two of them, not dozens.** A first pass at
+detecting this reported 128 perfect duplicates across the textbook. Every one
+was an artifact: a `<figure>` can sit inside a `.notes-example`, so pulling
+captions and callouts separately extracted the same caption twice and compared
+it with itself. With figures stripped before reading callouts, the true count
+across 3,362 sentences is **20 pairs above 0.55 overlap, of which two were
+genuine** — a figure note restating the paragraph directly above it almost word
+for word, in `curved-arrows` and `rs-configuration`. Both cut.
+
+The other eighteen are the design working, and the check is written not to
+flag them. A caption has to make sense to someone who only looks at the
+picture, so some echo of the body is correct. And parallel construction —
+"For oxygen: 3 bonds means +1" beside "For nitrogen: 4 bonds means +1", at
+0.64 — is the teaching, not redundancy. The ceiling sits at 0.72 against a
+measured maximum of 0.688.
 
 ## Phase 6 — Answer-option rewrites
 
@@ -341,7 +357,8 @@ true/false polarity, select-N key sets, **absolute words**, **hedge words**,
 ending, not merely be reachable from the start ·
 19. **Every lesson and mechanism links to its written section**, in the body
 rather than the head · 20. **Generated figures draw inside their own canvas**,
-and carry alt text and a caption
+and carry alt text and a caption · 21. **No textbook section explains the same
+thing twice** across its body, callouts and captions
 
 Bold entries were added in response to these reviews. Each was verified by
 reintroducing the defect it exists to catch.

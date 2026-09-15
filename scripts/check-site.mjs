@@ -933,6 +933,75 @@ for (const dir of ['lessons', 'mechanisms']) {
   }
 }
 
+// ---- 21. A textbook section must not explain the same thing twice ----
+// A section that says a thing in a paragraph, then again in a callout, then
+// again in the figure caption beside them costs the reader three passes to
+// learn one idea, and it is easy to do by accident because each block is
+// written at a different time.
+//
+// Two things this check is deliberately NOT:
+//
+// It is not a ban on a caption restating the body. A figure caption has to
+// make sense to somebody who only looks at the picture, so some echo is the
+// design working. The measured ceiling below sits above every legitimate
+// echo in the book and below the two near-verbatim repeats that were cut
+// when it was written.
+//
+// It is not a ban on parallel construction. "For oxygen: 3 bonds means +1"
+// beside "For nitrogen: 4 bonds means +1" scores 0.64 and is the whole point
+// of the passage — the pattern IS the teaching.
+//
+// The trap worth recording: a <figure> can sit INSIDE a .notes-example, so
+// pulling captions and callouts independently counts that caption's
+// sentences twice and compares them with themselves. The first version of
+// this reported 128 perfect duplicates, every one of them a sentence matched
+// against itself. Strip figures before reading the callouts.
+const PROSE_ECHO_CEILING = 0.72;   // measured max 0.688. Lower it, never raise it.
+const notesDir = join(ROOT, 'ochem', 'notes');
+if (existsSync(notesDir)) {
+  const words = (t) => t.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(Boolean);
+  const overlap = (a, b) => {
+    const A = new Set(a), B = new Set(b);
+    let i = 0;
+    for (const w of A) if (B.has(w)) i++;
+    return i / (A.size + B.size - i);
+  };
+  for (const name of readdirSync(notesDir)) {
+    if (!name.endsWith('.html')) continue;
+    const html = readFileSync(join(notesDir, name), 'utf8');
+    const prose = html.slice(html.indexOf('<!-- notes:start -->'), html.indexOf('<!-- notes:end -->'));
+    if (!prose) continue;
+    const text = (h) => h.replace(/<[^>]+>/g, ' ').replace(/&[a-z]+;/g, ' ').replace(/\s+/g, ' ').trim();
+    const units = [];
+    const seen = new Set();
+    const add = (kind, block) => {
+      for (const sentence of text(block).split(/(?<=[.!?])\s+/)) {
+        const w = words(sentence);
+        if (w.length < 8) continue;
+        const key = w.join(' ');
+        if (seen.has(key)) continue;   // the nesting guard, belt and braces
+        seen.add(key);
+        units.push({ kind, sentence, w });
+      }
+    };
+    for (const m of prose.matchAll(/<figcaption>([\s\S]*?)<\/figcaption>/g)) add('caption', m[1]);
+    const noFigures = prose.replace(/<figure[\s\S]*?<\/figure>/g, ' ');
+    for (const m of noFigures.matchAll(/<div class="(?:notes-fact|notes-pitfall|explain-box|notes-example)"[^>]*>([\s\S]*?)<\/div>/g)) add('callout', m[1]);
+    for (const m of noFigures.matchAll(/<p class="step-body"[^>]*>([\s\S]*?)<\/p>/g)) add('body', m[1]);
+
+    for (let i = 0; i < units.length; i++) {
+      for (let j = i + 1; j < units.length; j++) {
+        const score = overlap(units[i].w, units[j].w);
+        if (score > PROSE_ECHO_CEILING) {
+          fail(`ochem/notes/${name}: a ${units[i].kind} and a ${units[j].kind} say nearly the same thing ` +
+               `(${score.toFixed(2)} word overlap). Cut one, or make one of them add something.\n` +
+               `    ${units[i].sentence.slice(0, 110)}\n    ${units[j].sentence.slice(0, 110)}`);
+        }
+      }
+    }
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);
