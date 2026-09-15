@@ -474,11 +474,23 @@ if (existsSync(curriculumPath)) {
   const lessons = hrefs.filter(h => h.startsWith('lessons/')).length;
   const mechanismsDir = join(ROOT, 'ochem', 'mechanisms');
   const mechanisms = existsSync(mechanismsDir) ? readdirSync(mechanismsDir).filter(f => f.endsWith('.html')).length : 0;
-  const expected = { topics, lessons, mechanisms };
-  const OCHEM_COUNT_RE = /\b(\d{1,3})\s+(?:interactive\s+|chemistry\s+)?(topics|lessons|mechanisms)\b/g;
+  // "sections" is the written half and is counted separately from "topics",
+  // because they are no longer the same number: a topic whose lesson does not
+  // exist yet has href null and is not counted as a topic, but its written
+  // section exists and is a page. Radical halogenation is the first of those.
+  const notesCount = existsSync(join(ROOT, 'ochem', 'notes'))
+    ? readdirSync(join(ROOT, 'ochem', 'notes')).filter((f) => f.endsWith('.html')).length
+    : 0;
+  const expected = { topics, lessons, mechanisms, sections: notesCount };
+  const OCHEM_COUNT_RE = /\b(\d{1,3})\s+(?:interactive\s+|chemistry\s+|note\s+)?(topics|lessons|mechanisms|sections)\b/g;
   for (const file of htmlFiles) {
     const rel = relative(ROOT, file).split(sep).join('/');
     if (rel.startsWith('ochem/notes/')) continue;
+    // The changelog is a dated record, not a claim about now. "audited across
+    // all 62 sections" under a September date was true in September, and
+    // rewriting it to today's number would make the entry a lie about what
+    // that release actually covered.
+    if (rel === 'changelog.html') continue;
     const body = readFileSync(file, 'utf8');
     for (const m of body.matchAll(OCHEM_COUNT_RE)) {
       const n = Number(m[1]);

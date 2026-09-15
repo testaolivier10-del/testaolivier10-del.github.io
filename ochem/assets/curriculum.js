@@ -46,7 +46,10 @@
       { id: 'cyclohexanes', title: 'Cyclohexanes', href: 'lessons/cyclohexanes.html', dependsOn: ['newman'] },
       { id: 'axial-equatorial', title: 'Axial/equatorial', href: 'lessons/axial-equatorial.html', dependsOn: ['cyclohexanes'] },
       { id: 'ring-flips', title: 'Ring flips', href: 'lessons/ring-flips.html', dependsOn: ['axial-equatorial'] },
-      { id: 'conformational-analysis', title: 'Conformational analysis', href: 'lessons/conformational-analysis.html', dependsOn: ['ring-flips'] }
+      { id: 'conformational-analysis', title: 'Conformational analysis', href: 'lessons/conformational-analysis.html', dependsOn: ['ring-flips'] },
+      // The one reaction alkanes have. Written section first, lesson to come —
+      // href stays null until it exists, which Learn renders as a locked card.
+      { id: 'radical-halogenation', title: 'Radical halogenation', href: null }
     ]},
     { id: 'stereochemistry', title: 'Stereochemistry', topics: [
       { id: 'chirality', title: 'Chirality', href: 'lessons/chirality.html' },

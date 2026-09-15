@@ -200,7 +200,7 @@ that should be faked in SVG, and it stays in **Needs a person**.
 | Lessons, textbook and mechanisms readable without JavaScript | done |
 | Aldol "two carbons apart" wording | done |
 | "Leads to" chip overflow; floating buttons covering content | **not a defect** — see below |
-| Missing mechanisms (check Grignard in carbonyl addition first) | Grignard **verified already covered**; the others open |
+| Missing mechanisms (check Grignard in carbonyl addition first) | **mostly not missing** — see below. Radical halogenation was, and is now written |
 | Synthesis / reagent-roadmap tool and flashcard deck | open |
 | Figures in the reaction-heavy sections | in progress — 6 added, and there is now a generator |
 | Skeletal structures after the foundations module | open |
@@ -286,6 +286,40 @@ picture, so some echo of the body is correct. And parallel construction —
 0.64 — is the teaching, not redundancy. The ceiling sits at 0.72 against a
 measured maximum of 0.688.
 
+**"Missing mechanisms": three named, one actually missing.** Checked each
+against the prose rather than against the mechanisms directory:
+
+- **Hydroboration–oxidation** is covered, and covered well — the concerted
+  single step, boron to the less hindered carbon, syn addition, no
+  carbocation so no rearrangement, and the Hammond argument for why
+  Markovnikov is a consequence of a mechanism rather than a law. It has a
+  figure. What it lacks is an *interactive mechanism page*, which is a
+  different thing from missing content.
+- **Acetal and imine formation** are likewise written: `acetals` has its own
+  lesson and section, and imines have a section heading of their own inside
+  `nucleophilic-addition`. Again, no interactive page.
+- **Radical halogenation of alkanes** was genuinely absent. Not a thin
+  section — no section, no heading, nothing on initiation, propagation or
+  termination anywhere in the book. The radical content in `markovnikov` is
+  HBr adding to an *alkene*, which is a different reaction that happens to
+  share the mechanism class.
+
+So `radical-halogenation` is written: why alkanes are otherwise inert, the
+fishhook arrow, the three stages sorted by what each does to the radical
+count, the selectivity table with the Hammond explanation for why bromine is
+fussy and chlorine is not, the per-hydrogen statistics correction, racemic
+products from a planar radical, and NBS for allylic bromination. It carries
+the chain figure and it is the 63rd section.
+
+Its curriculum entry has `href: null` — the "coming soon" state the curriculum
+already supports — because the written section exists and the interactive
+lesson does not. That makes *topics* (62, those with a lesson) and *sections*
+(63) two different numbers for the first time, so check 8 now counts both.
+
+**Still open, and now stated accurately:** interactive mechanism pages for
+hydroboration–oxidation, acetal formation and imine formation, plus a lesson
+for radical halogenation.
+
 ## Phase 6 — Answer-option rewrites
 
 | Item | Status |
@@ -358,7 +392,9 @@ ending, not merely be reachable from the start ·
 19. **Every lesson and mechanism links to its written section**, in the body
 rather than the head · 20. **Generated figures draw inside their own canvas**,
 and carry alt text and a caption · 21. **No textbook section explains the same
-thing twice** across its body, callouts and captions
+thing twice** across its body, callouts and captions · 8 now also covers
+**advertised section counts**, with changelog.html exempt because a dated
+entry is a record rather than a claim about now
 
 Bold entries were added in response to these reviews. Each was verified by
 reintroducing the defect it exists to catch.

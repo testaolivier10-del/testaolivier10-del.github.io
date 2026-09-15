@@ -349,6 +349,58 @@ FIGURES.push({
   note: 'The amide is the case worth remembering, because the collapse is enormous — around ten orders of magnitude from an ordinary alkylamine. The lone pair is conjugated into the carbonyl and spends its time on oxygen, which is also why an amide C–N bond is short, planar and does not rotate freely. An amide nitrogen is not a weak base; it is not usefully a base at all.',
 });
 
+/* ------------------------------------------------------------------ 7 ---
+   The chain, drawn as a chain. The reason propagation is a cycle and
+   termination is not is a fact about radical counts, and a loop says it
+   better than three paragraphs can. */
+FIGURES.push({
+  id: 'radical-chain',
+  section: 'radical-halogenation',
+  anchor: '<h3>Three stages, and only one of them repeats</h3>',
+  alt: 'Initiation, the two propagation steps drawn as a cycle, and termination, labelled by what each does to the radical count',
+  viewBox: '0 0 760 330',
+  build() {
+    let s = '';
+    // Initiation
+    s += tag(112, 44, 'INITIATION');
+    s += label(112, 92, 'X–X', { size: 14 });
+    s += arrow(P(112, 108), P(112, 150));
+    s += text(150, 132, 'hv or heat', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += label(112, 176, 'X•  +  X•', { size: 14 });
+    s += text(112, 214, 'radicals: 0 → 2', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(112, 236, 'happens rarely, and', { cls: 'fg-sm', size: 9.5 });
+    s += text(112, 250, 'only has to happen once', { cls: 'fg-sm', size: 9.5 });
+    s += rule(224, 40, 224, 300);
+
+    // Propagation, as a cycle
+    s += tag(400, 44, 'PROPAGATION');
+    const a = P(400, 104), b = P(400, 216);
+    s += panel(288, 82, 224, 44, { kind: 'hi' });
+    s += panel(288, 194, 224, 44, { kind: 'hi' });
+    s += label(400, 109, 'X•  +  R–H  →  R•  +  H–X', { size: 12.5 });
+    s += label(400, 221, 'R•  +  X–X  →  R–X  +  X•', { size: 12.5 });
+    // The loop: down the right, back up the left.
+    s += curve(P(516, 104), P(516, 216), { bow: -40 });
+    s += curve(P(284, 216), P(284, 104), { bow: -40 });
+    s += text(400, 168, 'each step uses one radical and makes one', { cls: 'fg-sm', size: 10 });
+    s += text(400, 268, 'radicals: 2 → 2, so the cycle never stops itself', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(400, 292, 'net:  R–H  +  X₂  →  R–X  +  H–X', { cls: 'fg-lbl', size: 12 });
+    s += rule(576, 40, 576, 300);
+
+    // Termination
+    s += tag(668, 44, 'TERMINATION');
+    s += label(668, 96, 'X•  +  X•  →  X–X', { size: 11.5 });
+    s += label(668, 130, 'R•  +  X•  →  R–X', { size: 11.5 });
+    s += label(668, 164, 'R•  +  R•  →  R–R', { size: 11.5 });
+    s += text(668, 214, 'radicals: 2 → 0', { cls: 'fg-tag-warn', size: 10.5 });
+    s += text(668, 236, 'rare while it runs —', { cls: 'fg-sm', size: 9.5 });
+    s += text(668, 250, 'two radicals have to meet', { cls: 'fg-sm', size: 9.5 });
+    return s;
+  },
+  caption: 'Sort the steps by what each does to the <b>number of radicals in the flask</b>, and the three stages name themselves. Up from zero is initiation, unchanged is propagation, down to zero is termination.',
+  note: 'The middle panel is the reaction; the other two only start and stop it. Because each propagation step consumes one radical and produces one, the pair runs as a loop, and a single initiation event can turn over thousands of molecules before two radicals happen to collide and end it. That is also why the second propagation step is not termination even though the product appears there — the product is not what distinguishes the stages, the radical count is.',
+});
+
 /* ---------------------------------------------------------------------- */
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;
