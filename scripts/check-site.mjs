@@ -1596,6 +1596,107 @@ for (const file of walk(join(ROOT, 'ochem', 'mechanisms'), ['.html'])) {
   }
 }
 
+// ---- 28. The study notes and their data file stay in step ----
+// The forty chapters used to be an inline array in study-notes.html: 456 KB of
+// prose in the HTML, which every reader downloaded to read one chapter of. They
+// are now nremt/assets/study-notes.json, fetched by a script in the head.
+//
+// That split introduced four ways to break the page silently, none of which any
+// existing check could see, because a page that renders "Loading the notes…"
+// forever is still valid HTML with no broken links in it:
+//
+//   * the data file goes missing or stops parsing;
+//   * the page stops fetching it, or fetches the wrong path;
+//   * sw.js stops precaching it, so the page works online and is an empty
+//     shell offline — which is the one state nobody tests;
+//   * somebody pastes the chapters back inline, undoing the split without
+//     anything failing.
+//
+// Section ids are checked too: the page routes by them, so a duplicate id
+// sends two different sections to the same URL.
+{
+  const NOTES_PAGE = join(ROOT, 'nremt', 'study-notes.html');
+  const NOTES_DATA = join(ROOT, 'nremt', 'assets', 'study-notes.json');
+  const DATA_REL = 'nremt/assets/study-notes.json';
+
+  if (!existsSync(NOTES_DATA)) {
+    fail(`${DATA_REL} is missing — study-notes.html has nothing to render.`);
+  } else {
+    let data = null;
+    try { data = JSON.parse(readFileSync(NOTES_DATA, 'utf8')); }
+    catch (err) { fail(`${DATA_REL}: does not parse — ${err.message}`); }
+
+    const page = readFileSync(NOTES_PAGE, 'utf8');
+
+    if (data) {
+      const chapters = Array.isArray(data.chapters) ? data.chapters : null;
+      if (!chapters || !chapters.length) {
+        fail(`${DATA_REL}: has no "chapters" array.`);
+      } else {
+        const seenIds = new Map();
+        for (const ch of chapters) {
+          const where = `${DATA_REL} chapter ${ch.num}`;
+          if (typeof ch.num !== 'number' || !ch.title) fail(`${where}: needs a numeric num and a title.`);
+          if (!Array.isArray(ch.sections) || !ch.sections.length) {
+            fail(`${where} ("${ch.title}"): has no sections, so the chapter renders empty.`);
+            continue;
+          }
+          for (const sec of ch.sections) {
+            if (!sec.id) { fail(`${where}: a section has no id, and the page routes by id.`); continue; }
+            if (seenIds.has(sec.id)) {
+              fail(`${DATA_REL}: two sections share the id "${sec.id}" (chapters ${seenIds.get(sec.id)} and ${ch.num}), ` +
+                   `so one of them is unreachable at #${sec.id}.`);
+            }
+            seenIds.set(sec.id, ch.num);
+            if (!Array.isArray(sec.topics) || !sec.topics.length) {
+              fail(`${DATA_REL}: section "${sec.id}" has no topics.`);
+            }
+          }
+        }
+
+        // "forty chapters" is claimed on two hub pages. The bank counts in
+        // check 6 are guarded the same way; this is the same idea for prose.
+        const WORDS = { thirty: 30, forty: 40, fifty: 50, sixty: 60 };
+        // Scoped to pages actually talking about these notes. The first
+        // version was not, and it failed ochem/learn.html for saying
+        // "14 chapters" about the ochem textbook — a different book, with a
+        // different number of chapters, on a page that has never linked here.
+        for (const file of htmlFiles) {
+          const rel = relative(ROOT, file).split(sep).join('/');
+          if (rel === 'changelog.html') continue;   // a dated entry is a record
+          const html = readFileSync(file, 'utf8');
+          const aboutTheseNotes = rel.startsWith('nremt/') ||
+            /href="[^"]*nremt\/study-notes\.html/.test(html);
+          if (!aboutTheseNotes) continue;
+          for (const m of html.matchAll(/\b(\d{2}|thirty|forty|fifty|sixty)[\s -]+chapters\b/gi)) {
+            const claimed = WORDS[m[1].toLowerCase()] ?? Number(m[1]);
+            if (Number.isFinite(claimed) && claimed !== chapters.length) {
+              fail(`${rel}: claims "${m[0]}" but ${DATA_REL} has ${chapters.length}.`);
+            }
+          }
+        }
+      }
+    }
+
+    // The split has to hold. An inline array with real content in it means the
+    // chapters came back into the page.
+    const inline = page.match(/const CHAPTERS\s*=\s*\[([\s\S]{200,}?)\n\];/);
+    if (inline) {
+      fail('nremt/study-notes.html: the chapters are inline again. They belong in ' +
+           `${DATA_REL}, which is why the page is 18 KB instead of 172 KB.`);
+    }
+    if (!page.includes('assets/study-notes.json')) {
+      fail(`nremt/study-notes.html: does not fetch ${DATA_REL}, so it has no chapters to render.`);
+    }
+
+    const sw = readFileSync(join(ROOT, 'sw.js'), 'utf8');
+    if (!sw.includes(DATA_REL)) {
+      fail(`sw.js: does not precache ${DATA_REL}. The page would work online and be an ` +
+           'empty shell offline, which is the state nobody tests.');
+    }
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);

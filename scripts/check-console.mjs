@@ -152,6 +152,15 @@ async function visit(path) {
     // Deferred scripts have run by 'load', but this site's per-page bootstraps
     // wait for DOMContentLoaded and then render. Give that work a moment to
     // throw before deciding the page is clean.
+    // Same reason as scripts/check-a11y.mjs: a page whose content is fetched
+    // says when it has arrived, and an error thrown while rendering it would
+    // otherwise land after this check had stopped listening.
+    await page.waitForFunction(
+      () => !document.documentElement.hasAttribute('data-content-async') ||
+            document.documentElement.hasAttribute('data-content-ready'),
+      null,
+      { timeout: 15000 }
+    ).catch(() => {});
     await page.waitForTimeout(1000);
     const dups = await page.evaluate(() => {
       const counts = {};

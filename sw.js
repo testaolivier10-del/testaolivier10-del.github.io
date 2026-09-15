@@ -24,7 +24,7 @@
 // model, the 670 KB three.js bundle and the fonts. Those never change with
 // the shell (they are content-addressed by path, and a new model would be a
 // new file), so they live in STATIC_CACHE, which activate leaves alone.
-const CACHE_NAME = 'levlprep-v32';
+const CACHE_NAME = 'levlprep-v33';
 const STATIC_CACHE = 'levlprep-static';
 const PRECACHE_URLS = [
   'index.html',
@@ -53,6 +53,10 @@ const PRECACHE_URLS = [
   'nremt/skillsheets.html',
   'nremt/sound-trainer.html',
   'nremt/study-notes.html',
+  // The forty chapters themselves. study-notes.html is a 58 KB shell since the
+  // split, and without this file it is a shell that says "the notes did not
+  // load" — so the data is content, not an optional extra.
+  'nremt/assets/study-notes.json',
   'nremt/study-plan.html',
   'nremt/exam-day.html',
   'nremt/dashboard.html',

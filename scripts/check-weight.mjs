@@ -86,17 +86,14 @@ const BUDGETS = [
   // The busiest page on the site, and the one the bank split was for.
   ['nremt/practice.html', 38],
 
-  // Long reading pages, which carry their content inline. study-notes.html is
-  // forty chapters of prose in one file and is meant to be large.
-  //
-  // Raised 152 -> 172 when the five thin chapters (9, 10, 13, 29, 33) were
-  // expanded to the depth of the other thirty-five. That is a deliberate
-  // decision to make this page slower in exchange for it being complete, and
-  // it is the last time this number should move by adding prose: at ~160 KB
-  // gzipped every reader downloads forty chapters to read one, and the fix
-  // from here is to move CHAPTERS into a fetched JSON file, not to raise the
-  // budget again. See TRACKER.md.
-  ['nremt/study-notes.html', 172],
+  // Long reading pages. study-notes.html was forty chapters of prose in one
+  // file — 172 KB gzipped, every reader downloading forty chapters to read
+  // one — and the note here said the fix was to move CHAPTERS into a fetched
+  // JSON file rather than raise the budget again. That is now done: the page
+  // is an 18 KB shell and the chapters are 144 KB of JSON fetched alongside
+  // it, budgeted under DATA_BUDGETS below. First paint no longer waits on
+  // thirty-nine chapters nobody asked for.
+  ['nremt/study-notes.html', 20],
   ['nremt/glossary.html', 10],
 
   // Added when the scenario set went from eight cases to twenty-five and the
@@ -132,6 +129,30 @@ const BUDGETS = [
   // of those belong here rather than anywhere else — the cost is a page that
   // tells the truth at greater length, which is the one thing this page is for.
   ['privacy.html', 12],
+];
+
+/* Files fetched at RUNTIME by JavaScript, which the reference walk above
+   cannot see: nothing links to them with href or src, so they were invisible
+   to this check and could grow without limit. That was already true of the
+   question banks; splitting the study notes out of their page made it true of
+   the largest single body of prose on the site as well.
+
+   These are not first-paint costs — every one of them is fetched after the
+   page is usable, which is the entire point of moving them out. The budget is
+   here so that "it is fetched separately" does not quietly become "it is
+   unbounded". Measured, then rounded up by roughly a tenth, same as above. */
+const DATA_BUDGETS = [
+  // The forty chapters, fetched by study-notes.html.
+  ['nremt/assets/study-notes.json', 158],
+  // What practice.html waits on before it can ask anything.
+  ['nremt/assets/questions-core.json', 320],
+  // And what it fetches straight afterwards, without blocking.
+  ['nremt/assets/explanations.json', 444],
+  // The assistant's teaching index for each course.
+  ['nremt/assets/tutor-bank.json', 528],
+  ['ochem/assets/tutor-bank.json', 182],
+  // Ochem's question bank, keyed by topic.
+  ['ochem/assets/practice-bank.json', 268],
 ];
 
 const REF_RE = /(?:href|src)="([^"]+)"/g;
@@ -240,6 +261,18 @@ for (const [pageRel, budgetKb] of BUDGETS) {
   }
 }
 
+const dataRows = [];
+for (const [rel, budgetKb] of DATA_BUDGETS) {
+  const abs = join(ROOT, rel);
+  if (!existsSync(abs)) {
+    console.error(`FAIL: ${rel} is in the data budget list but does not exist. Remove it or fix the path.`);
+    failures++;
+    continue;
+  }
+  const kb = gzipSync(readFileSync(abs), { level: 9 }).length / 1024;
+  dataRows.push({ rel, kb, budgetKb, over: kb > budgetKb });
+}
+
 // ---- report ----------------------------------------------------------------
 
 const pad = (s, n) => String(s).padEnd(n);
@@ -270,6 +303,19 @@ for (const r of rows) {
   console.log(line(r.pageRel, r.kb, r.budgetKb));
 }
 
+console.log('\nFetched after the page is usable — data files no reference graph can see.\n');
+console.log(pad('data file', 34) + pad('gzipped', 10) + pad('budget', 9) + 'headroom');
+console.log('-'.repeat(66));
+for (const r of dataRows) {
+  if (r.over) failures++;
+  console.log(line(r.rel, r.kb, r.budgetKb));
+}
+
+for (const r of dataRows.filter((x) => x.over)) {
+  console.error(`\nFAIL: ${r.rel} is ${r.kb.toFixed(1)} KB gzipped, over its ${r.budgetKb} KB budget.`);
+  console.error('      Nothing links to this file, so nothing else was measuring it.');
+}
+
 for (const r of shellRows.filter((x) => x.over)) {
   console.error(`\nFAIL: the ${r.name} shell is ${r.kb.toFixed(1)} KB gzipped, over its ${r.budget} KB budget.`);
   console.error('      This one is on the critical path of EVERY page it belongs to,');
@@ -293,9 +339,9 @@ if (failures) {
 
 // A budget with a lot of room left is a stale budget. Reported, never failed: a
 // ratchet that tightened itself would fail the build for making things better.
-const slack = [...shellRows, ...rows]
+const slack = [...shellRows, ...rows, ...dataRows]
   .filter((r) => !r.over)
-  .map((r) => ({ name: r.name || r.pageRel, kb: r.kb, budget: r.budget ?? r.budgetKb }))
+  .map((r) => ({ name: r.name || r.pageRel || r.rel, kb: r.kb, budget: r.budget ?? r.budgetKb }))
   .filter((r) => r.budget - r.kb > r.budget * 0.3);
 if (slack.length) {
   console.log('\nRoom to tighten — these budgets have drifted generous:');
@@ -306,5 +352,5 @@ if (failures) {
   console.error(`\n${failures} budget(s) exceeded.`);
   if (check) process.exit(1);
 } else {
-  console.log(`\nAll ${shellRows.length + rows.length} budgets are within range.`);
+  console.log(`\nAll ${shellRows.length + rows.length + dataRows.length} budgets are within range.`);
 }

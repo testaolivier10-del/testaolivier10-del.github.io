@@ -632,7 +632,7 @@ The fourth work order. Items are numbered as they were given.
 | 7 | SN2 figure: cyanide's triple bond and lone pair, overlapping atoms, the ethyl group outside the frame | **done** |
 | 8 | The remaining British spellings in visible text | **done** |
 | 9 | Confirm the live site matches main (2,106 questions, Terms link) | pending |
-| 10 | The three deferred decisions: notes chapters to JSON with figures; light and dark homepage screenshots, lazy-loaded; balance the absolute-word tell using only genuinely absolute keys | pending |
+| 10 | The three deferred decisions: notes chapters to JSON with figures; light and dark homepage screenshots, lazy-loaded; balance the absolute-word tell using only genuinely absolute keys | **split done**; figures, screenshots and absolute keys next |
 
 ### Item 1 — what the 2025 guidelines actually say
 
@@ -829,6 +829,54 @@ out to match their keys rather than having the padding put back.
 give: at chance the number has stopped being information, and any further
 movement in either direction is a new tell.
 
+### Item 10a — the notes are data now
+
+`scripts/check-weight.mjs` had carried the instruction for months: *"at ~160 KB
+gzipped every reader downloads forty chapters to read one, and the fix from
+here is to move CHAPTERS into a fetched JSON file, not to raise the budget
+again."* Done.
+
+| | Before | After |
+|---|---|---|
+| `nremt/study-notes.html` | 536 KB raw, **172 KB gzipped** | 58 KB raw, **18.4 KB gzipped** |
+| `nremt/assets/study-notes.json` | — | 445 KB raw, 144 KB gzipped, fetched after paint |
+
+The request starts in a script in `<head>`, so it is in flight during parse
+rather than after `DOMContentLoaded`. The page renders once, when the data
+lands; the `hashchange` listener is registered at the same moment, so a hash
+arriving first cannot route into an empty book. A failed fetch gets a real
+error state with the HTTP status and a retry button, not a permanent
+"Loading…".
+
+Four things had to move with it, and three of them would have failed silently:
+
+- **`assets/tutor.js`** indexed the notes by scraping string literals out of
+  the page's inline script. With the data gone it would have kept working and
+  quietly lost the largest body of teaching text on the site. It now gets a
+  third pass — a walker over the fetched JSON using the same key names, which
+  is better input than regex-scraping ever was. Verified by running the real
+  function over the real file: **540 passages, 379 distinct headings.**
+- **`sw.js`** precaches the page. Without the data file it would work online
+  and be an empty shell offline, which is the one state nobody tests. Added,
+  cache bumped to v33.
+- **`scripts/check-weight.mjs`** measures pages by walking `href` and `src`.
+  Nothing links to a file fetched by JavaScript, so the 144 KB was invisible —
+  "it is fetched separately" was about to become "it is unbounded". New
+  `DATA_BUDGETS` section, and while adding it, the question banks and both
+  tutor banks turned out to have been unbudgeted all along. Six files, now
+  budgeted.
+- **`scripts/check-a11y.mjs` and `scripts/check-console.mjs`** drive the page
+  in a real browser and waited a fixed moment after load. That was fine while
+  the chapters were inline; now it is a race, and they would sometimes audit a
+  "Loading the notes…" paragraph. The page sets `data-content-async` up front
+  and `data-content-ready` when it has rendered — on failure too, because the
+  error state is worth auditing — and both checks wait for that instead.
+
+Check 28 and `scripts/test/notes-data.test.mjs` guard the rest. The test lifts
+the real walker out of `tutor.js` by name rather than reimplementing it, since
+a reimplementation would pass while the real one was broken; deleting one line
+of the walker fails three of the five tests.
+
 ---
 
 ## Already settled
@@ -896,6 +944,10 @@ canvas, no touching circles, no bond with nothing to draw, no lone pair sitting
 on a neighbor ·
 27. **No British spelling in anything a reader sees** — text nodes, the
 attributes a reader hears or sees, and string literals of three words or more ·
+28. **The study notes and their data file stay in step** — the file parses, no
+two sections share an id, the page still fetches it, sw.js still precaches it,
+the chapters have not been pasted back inline, and every page claiming a
+chapter count agrees with the data ·
 8 now also covers
 **advertised section counts**, with changelog.html exempt because a dated
 entry is a record rather than a claim about now

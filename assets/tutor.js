@@ -42,7 +42,11 @@
   // question bank costs more to index than it returns, so domain-flavored
   // questions get a deep link into practice.html's ?domain= filter instead.
   var NREMT_PAGES = [
-    { file: '/nremt/study-notes.html', title: 'Study Notes' },
+    // The forty chapters moved out of the page into a JSON file, so the
+    // served HTML is a 58 KB shell with no prose in it. `data` says where
+    // the prose actually is; without it the assistant silently lost the
+    // largest body of teaching text on the site.
+    { file: '/nremt/study-notes.html', title: 'Study Notes', data: '/nremt/assets/study-notes.json' },
     { file: '/nremt/glossary.html',    title: 'Glossary' },
     { file: '/nremt/mnemonics.html',   title: 'Mnemonics' },
     { file: '/nremt/flowcharts.html',  title: 'Flow Diagrams' },
@@ -384,6 +388,40 @@
     });
   }
 
+  // The third pass. Some pages keep their material in a JSON file rather than
+  // inline, and a fetched object is better input than the string-literal
+  // scraping above: the keys are real keys, not a regex's guess at them. Same
+  // key names, so a page that moves its data out keeps being indexed the same
+  // way it was when the data was inline.
+  function extractFromData(value, page, chunks, heading){
+    if(value == null) return;
+    if(Array.isArray(value)){
+      for(var i = 0; i < value.length; i++) extractFromData(value[i], page, chunks, heading);
+      return;
+    }
+    if(typeof value !== 'object') return;
+
+    var own = heading, body = [], bodyLen = 0, nested = [];
+    for(var key in value){
+      if(!Object.prototype.hasOwnProperty.call(value, key)) continue;
+      var v = value[key];
+      if(typeof v === 'string'){
+        var text = toPlainText(v);
+        if(!text) continue;
+        if(KEY_HEADING.test(key) && text.length <= 140){ own = text; continue; }
+        if(!KEY_BODY.test(key)) continue;
+        if(text.length < 25) continue;
+        body.push(text); bodyLen += text.length + 1;
+      } else if(v && typeof v === 'object'){
+        nested.push(v);
+      }
+    }
+    // The heading this object declares covers its own prose AND everything
+    // under it, which is what makes a chapter title reach its topics.
+    if(bodyLen) pushChunk(chunks, page, own, body.join(' '));
+    for(var j = 0; j < nested.length; j++) extractFromData(nested[j], page, chunks, own);
+  }
+
   function dedupe(chunks){
     var seen = Object.create(null), out = [];
     for(var i = 0; i < chunks.length; i++){
@@ -489,10 +527,22 @@
     if(indexPromise) return indexPromise;
     indexPromise = resolvePages().then(function(pages){
       return mapLimit(pages, 8, function(page){
-        return fetch(page.file)
+        var htmlChunks = fetch(page.file)
           .then(function(r){ if(!r.ok) throw new Error(r.status); return r.text(); })
           .then(function(html){ return extractChunks(html, page); })
           .catch(function(){ return []; });
+        if(!page.data) return htmlChunks;
+        var dataChunks = fetch(page.data)
+          .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+          .then(function(json){
+            var chunks = [];
+            extractFromData(json, page, chunks, page.title);
+            return dedupe(chunks);
+          })
+          .catch(function(){ return []; });
+        return Promise.all([htmlChunks, dataChunks]).then(function(pair){
+          return pair[0].concat(pair[1]);
+        });
       });
     }).then(function(all){
       INDEX = all.reduce(function(a, b){ return a.concat(b); }, []);

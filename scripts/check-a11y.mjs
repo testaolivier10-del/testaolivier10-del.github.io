@@ -220,6 +220,19 @@ for (const [path, what] of PAGES) {
       null,
       { timeout: 15000 }
     ).catch(() => { /* genuinely missing: the site checks below will say so */ });
+
+    /* A page whose content arrives over the network says so, and says when it
+       has arrived. study-notes.html is the first: its forty chapters are a
+       fetched JSON file now, and without this the 400 ms below would sometimes
+       audit a "Loading the notes…" paragraph instead of the notes. Waiting on
+       the page's own signal beats guessing at a longer timeout. */
+    await page.waitForFunction(
+      () => !document.documentElement.hasAttribute('data-content-async') ||
+            document.documentElement.hasAttribute('data-content-ready'),
+      null,
+      { timeout: 15000 }
+    ).catch(() => { /* audit whatever did render, and report on that */ });
+
     // A short settle for anything mounted in the same tick as the above.
     await page.waitForTimeout(400);
 
