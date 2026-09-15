@@ -109,6 +109,33 @@
     color:var(--amber);background:var(--tint-amber);border-radius:var(--radius-pill);
     padding:5px 12px;white-space:nowrap;flex-shrink:0;
   }
+
+  /* What the tools actually look like.
+
+     Two <img> per tool rather than <picture> + prefers-color-scheme, and the
+     reason matters: this site's theme is NOT the OS preference. It is a
+     localStorage value applied as [data-theme] by a script in the head, so a
+     reader with a dark OS and the site in light mode would have been served
+     the dark screenshot. The same attribute that themes everything else
+     themes these, which is the only way they can be right.
+
+     Both are loading="lazy" and below the fold, so the hidden one is not
+     fetched: a display:none lazy image is not loaded until it would be shown.
+     That keeps the honest cost at one picture per tool per reader. */
+  .shot{margin:0;}
+  .shot img{
+    width:100%;height:auto;display:block;
+    border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
+    background:var(--paper);
+  }
+  .shot img.shot--dark{display:none;}
+  :root[data-theme="dark"] .shot img.shot--light{display:none;}
+  :root[data-theme="dark"] .shot img.shot--dark{display:block;}
+  .shot figcaption{
+    margin-top:8px;font:700 13px var(--font-ui);color:var(--muted);
+  }
+  .shot figcaption b{color:var(--ink);font-weight:900;}
+  .shots{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:4px;}
 </style>
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
@@ -224,6 +251,25 @@
           </div>
           <span class="featured-cta">Start learning &rarr;</span>
         </a>
+        </div>
+
+        <div class="shots-wrap" style="margin:26px 0 0">
+          <div class="shots">
+            <figure class="shot">
+              <img class="shot--light" src="assets/shots/body-map-light.png" width="590" height="620" loading="lazy" decoding="async"
+                   alt="The 3D body map: a rotatable anatomical model with the skeleton and organs visible, and a system filter above it">
+              <img class="shot--dark" src="assets/shots/body-map-dark.png" width="590" height="620" loading="lazy" decoding="async"
+                   alt="The 3D body map in dark mode: a rotatable anatomical model with the skeleton and organs visible">
+              <figcaption><b>The body map.</b> A real 3D model &mdash; rotate it, and click any structure to read what it does and what goes wrong with it.</figcaption>
+            </figure>
+            <figure class="shot">
+              <img class="shot--light" src="assets/shots/arrow-pusher-light.png" width="590" height="620" loading="lazy" decoding="async"
+                   alt="The arrow-pushing tool: a molecule drawn on a canvas, with a panel showing what the electrons produce">
+              <img class="shot--dark" src="assets/shots/arrow-pusher-dark.png" width="590" height="620" loading="lazy" decoding="async"
+                   alt="The arrow-pushing tool in dark mode: a molecule drawn on a canvas beside a panel showing what the electrons produce">
+              <figcaption><b>The arrow pusher.</b> Push electrons on any molecule and the structure changes to match, so a mechanism is something you do rather than something you read.</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </div>

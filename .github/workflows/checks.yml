@@ -52,6 +52,15 @@ jobs:
       # longer says.
       - name: the generated notes figures are up to date
         run: node scripts/build-notes-figures.mjs --check
+      # The homepage previews are photographs of the tools, and a photograph
+      # cannot be diffed against what it depicts. What CAN be checked is
+      # whether the tool has changed since the picture was taken, which is the
+      # failure that actually happens — build-og-images.mjs exists because a
+      # hand-made card advertised a question count that had been wrong for a
+      # thousand questions. Capturing needs a browser and is a local step; this
+      # only verifies the hashes.
+      - name: the homepage previews still match the tools they show
+        run: node scripts/build-screenshots.mjs --check
       # The two files practice.html actually fetches are generated from
       # questions.json. Editing a question without rebuilding them would ship
       # the edit to nobody, silently.

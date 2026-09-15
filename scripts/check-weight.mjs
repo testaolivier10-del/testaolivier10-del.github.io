@@ -153,6 +153,21 @@ const DATA_BUDGETS = [
   ['ochem/assets/tutor-bank.json', 182],
   // Ochem's question bank, keyed by topic.
   ['ochem/assets/practice-bank.json', 268],
+
+  /* The homepage previews. This check deliberately excludes images from a
+     page's weight, which is right for an <img> a page happens to carry and
+     wrong for four PNGs added on purpose — being unmeasured is not the same
+     as being free. They are lazy-loaded and below the fold, and only one of
+     each pair is fetched (the other is display:none for the current theme),
+     so the honest cost to a reader is body-map + arrow-pusher, not all four.
+     Budgeted individually so a re-capture that doubles one is loud.
+
+     These are PNG because this environment has no cwebp, no ImageMagick and
+     no PIL. The scale factor is the compression. */
+  ['assets/shots/body-map-light.png', 124],
+  ['assets/shots/body-map-dark.png', 124],
+  ['assets/shots/arrow-pusher-light.png', 62],
+  ['assets/shots/arrow-pusher-dark.png', 64],
 ];
 
 const REF_RE = /(?:href|src)="([^"]+)"/g;
