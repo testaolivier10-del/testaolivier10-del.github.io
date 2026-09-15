@@ -215,6 +215,9 @@ const WORDING_TELLS = [
     label: 'a trailing justification clause (", since ...", ", because ...")',
     re: /,\s+(?:since|because|which|as it|a finding|a delay|rather than|not )/i,
     threshold: 'justifyFloor',
+    // The only row with a far side so far, because it is the only one that has
+    // reached chance and kept going. See the overshoot check below.
+    opposite: 'justifyCeiling',
     direction: 'marks-wrong',
     advice: 'Move the reasoning into the explanation, where it teaches, instead of into the option, where it gives the answer away.',
   },
@@ -237,8 +240,9 @@ const BANKS = [
     // -> 7.9%), 0.08 (Secondary Assessment, -> 8.5%), 0.09 (Musculoskeletal
     // & Burns, -> 9.3%), 0.10 (Obstetrics, -> 10.2%), 0.11 (Scene Safety,
     // -> 11.2%), 0.125 (Bleeding & Shock, -> 12.7%), 0.14 (Pediatrics,
-    // -> 14.1%), 0.145 (Legal & Ethical, -> 14.9%). 25% is the target.
-    absoluteFloor: 0.145,
+    // -> 14.1%), 0.145 (Legal & Ethical, -> 14.9%), 0.17 (Trauma Systems,
+    // -> 17.4%). 25% is the target.
+    absoluteFloor: 0.17,
     // NOT tightened, and the reason is worth reading before the next domain.
     // This is the one tell here that marks the RIGHT answer, so it behaves
     // backwards from the other two: taking a hedge OUT OF A DISTRACTOR shrinks
@@ -258,24 +262,31 @@ const BANKS = [
     // Obstetrics (-> 36.6%), 0.35 after Scene Safety (-> 34.2%), 0.315
     // after Bleeding & Shock (-> 30.7%), 0.295 after Pediatrics (-> 28.8%),
     // 0.28 after Legal & Ethical (-> 26.8%), which is within one standard
-    // error of the 25% baseline. This tell is effectively closed too.
+    // error of the 25% baseline. This tell is effectively closed too, and at
+    // 25.7% after Trauma Systems it is sitting on the baseline. Not tightened
+    // further: squeezing it below 25% would turn it into a tell pointing the
+    // other way, which is the mistake the justification row just made.
     hedgeCeiling: 0.28,
     // Measured 17.1% on the single-clause case against a 25% baseline.
     // 16.9% at the start, then 17.4% (Cardiac), 18.0% (Medical),
     // 18.5% (Geriatrics), 19.5% (Secondary Assessment),
     // 20.1% (Musculoskeletal & Burns), 21.2% (Obstetrics),
     // 22.1% (Scene Safety), 22.9% (Bleeding & Shock), 24.2% (Pediatrics),
-    // 26.9% (Legal & Ethical) — which is at chance, and very slightly past
-    // it. This tell is closed; the floor now holds the number rather than
-    // moving it.
+    // 26.9% (Legal & Ethical), 29.9% (Trauma Systems).
     //
-    // Worth knowing if it keeps climbing: a FLOOR cannot catch an overshoot.
-    // If a justification clause ever started marking the RIGHT answer — say
-    // above 32%, comfortably outside sampling noise on a sample this size —
-    // it would be a tell again in the other direction, and this row would
-    // need a ceiling as well. It is 26.9% on 119 items, where one standard
-    // error is about 4 points, so today it is noise around chance.
+    // It kept climbing, exactly as the previous commit warned it might, so it
+    // now has a bound on both sides. The mechanism is the same one that bit
+    // the hedge row in reverse: taking a justification clause out of a
+    // DISTRACTOR shrinks the denominator and leaves the keyed count alone, so
+    // the share rises — useful while the tell marks distractors, and harmful
+    // once it is past chance. 29.9% on 107 items is about 1.2 standard errors
+    // above 25%, so it is not yet a tell; the ceiling is set where it would
+    // start to be one.
+    //
+    // For the remaining domains: leave justification clauses in distractors
+    // alone, and take them out of keys if this needs to come back down.
     justifyFloor: 0.25,
+    justifyCeiling: 0.34,
   },
   {
     label: 'practice-bank.json',
@@ -425,6 +436,26 @@ for (const spec of BANKS) {
              (probe.direction === 'marks-wrong'
                ? `under the ${(ceiling * 100).toFixed(0)}% floor — it is marking distractors. ${probe.advice}`
                : `over the ${(ceiling * 100).toFixed(0)}% ceiling — it is marking keys. ${probe.advice}`));
+      }
+
+      /* The far side. A tell that has been driven all the way to chance can
+         keep going and become a tell again pointing the other way, and a
+         single bound cannot see that coming. The justification clause did
+         exactly this: 16.9% when it was marking distractors, then past the
+         25% baseline to 29.9% as the clauses came out of distractor after
+         distractor. Only rows that declare `opposite` are checked here,
+         because a tell still far from chance does not need a far side. */
+      const far = probe.opposite ? spec[probe.opposite] : undefined;
+      if (far !== undefined && far !== null) {
+        const overshot = probe.direction === 'marks-wrong' ? share > far : share < far;
+        if (overshot) {
+          fail(`${spec.label}: on ${n} items exactly one option contains ${probe.label}, ` +
+               `and the key was that option ${(share * 100).toFixed(1)}% of the time ` +
+               `(${keyed}/${n}) against a ${(chance * 100).toFixed(0)}% baseline — ` +
+               `past chance and outside the ${(far * 100).toFixed(0)}% bound on the far side. ` +
+               `It has stopped marking distractors and started marking keys. ` +
+               `Stop taking these out of distractors; take them out of keys instead.`);
+        }
       }
     }
   }

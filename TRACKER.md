@@ -341,7 +341,7 @@ their lessons exist.
 
 | Item | Status |
 |---|---|
-| Rewrite options flagged by the three tell checks, one domain per commit | in progress — 10 domains done, ~5 to go |
+| Rewrite options flagged by the three tell checks, one domain per commit | in progress — 11 domains done, 10 to go |
 
 The scale, measured before starting:
 
@@ -418,9 +418,30 @@ Running totals:
 | Scene Safety & Operations | 251 / 11.2% | 79 / 34.2% | 145 / 22.1% |
 | Bleeding & Shock | 228 / 12.7% | 75 / 30.7% | 140 / 22.9% |
 | Pediatrics | 205 / 14.1% | 73 / 28.8% | 132 / 24.2% |
-| Legal & Ethical | **194 / 14.9%** | **71 / 26.8%** | **119 / 26.9%** |
+| Legal & Ethical | 194 / 14.9% | 71 / 26.8% | 119 / 26.9% |
+| Trauma Systems | **172 / 17.4%** | **70 / 25.7%** | 107 / 29.9% ↑ |
 
-Thresholds now `absoluteFloor: 0.145`, `hedgeCeiling: 0.28`, `justifyFloor: 0.25`.
+Thresholds now `absoluteFloor: 0.17`, `hedgeCeiling: 0.28`, `justifyFloor: 0.25`
+and `justifyCeiling: 0.34`.
+
+**The justification tell overshot, and the check now has a far side.** It went
+past the 25% baseline to 29.9% — the previous commit had written down that a
+floor cannot catch this and named ~32% as the point where a clause would start
+marking the *right* answer. It kept climbing, so `check-site.mjs` grew a
+two-sided bound: a row can declare an `opposite` threshold and is then checked
+on both sides. Verified by setting the new ceiling below the measured value and
+watching it fail.
+
+The mechanism is the hedge problem in mirror image. Taking a justification
+clause out of a **distractor** shrinks the denominator and leaves the keyed
+count alone, so the share rises — which is what you want while the tell marks
+distractors, and harmful once it is past chance. For the remaining domains:
+leave justification clauses in distractors alone, and take them out of keys if
+the number needs to come back down.
+
+The same logic is why `hedgeCeiling` was **not** tightened this round despite
+measuring 25.7%. Squeezing it below 25% would make it a tell pointing the other
+way.
 
 **Two of the three tells are closed.** Justification went 16.9% → 26.9% and
 hedge 40.2% → 26.8%, both against a 25% baseline and both now within one
