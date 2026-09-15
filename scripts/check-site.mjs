@@ -1349,6 +1349,108 @@ for (const file of htmlFiles) {
   }
 }
 
+// ---- 26. Hand-placed molecule diagrams are actually drawable ----
+// Check 20 guards the GENERATED ochem figures — the ones drawn from
+// scripts/lib/ochem-figure.mjs, where a coordinate mistake is caught by the
+// code that draws it. The SN2 mechanism page predates that kit and places its
+// atoms by hand, so nothing was looking at it, and it had shipped with three
+// separate faults at once:
+//
+//   * the cyanide carbon and its nitrogen were placed exactly r1+r2 apart, so
+//     the bond between them had zero visible length and the triple bond that
+//     makes the nucleophile cyanide was drawn as three lines of no length;
+//   * the attacking lone pair was placed at 200 degrees, which put both dots
+//     inside the neighbouring nitrogen's circle — invisible, and read
+//     literally, on the wrong atom;
+//   * the ethyl terminus sat eight pixels below a 140-high viewBox and shipped
+//     with a flat bottom.
+//
+// None of those is a broken build, a bad link or a parse error. They are a
+// diagram quietly saying something other than what the prose beside it says,
+// which is the same reason check 20 exists. This is that check, pointed at the
+// coordinates a person typed.
+const MOL_MIN_BOND = 6;      // below this a bond is a smudge, or nothing at all
+const MOL_MIN_GAP = 3;       // circles closer than this read as one blob
+for (const file of walk(join(ROOT, 'ochem', 'mechanisms'), ['.html'])) {
+  const rel = relative(ROOT, file).split(sep).join('/');
+  const src = readFileSync(file, 'utf8');
+  const open = src.indexOf('var MOLECULES = [');
+  if (open === -1) continue;
+  const close = src.indexOf('\n  ];', open);
+  if (close === -1) { fail(`${rel}: found a MOLECULES array with no end.`); continue; }
+
+  const vb = src.match(/viewBox="0 0 (\d+) (\d+)"/);
+  if (!vb) { fail(`${rel}: has molecules but no "0 0 W H" viewBox to draw them in.`); continue; }
+  const W = Number(vb[1]), H = Number(vb[2]);
+
+  let molecules;
+  try {
+    molecules = new Function('return ' + src.slice(open + 'var MOLECULES = '.length, close + 4).replace(/;\s*$/, ''))();
+  } catch (err) {
+    fail(`${rel}: could not read its MOLECULES array — ${err.message}`);
+    continue;
+  }
+
+  for (const mol of molecules) {
+    const where = `${rel} (${mol.name})`;
+    const atoms = mol.atoms || {};
+    const keys = Object.keys(atoms);
+
+    for (const k of keys) {
+      const a = atoms[k];
+      const over = [];
+      if (a.x - a.r < 0) over.push(`${(a.r - a.x).toFixed(1)}px off the left`);
+      if (a.x + a.r > W) over.push(`${(a.x + a.r - W).toFixed(1)}px off the right`);
+      if (a.y - a.r < 0) over.push(`${(a.r - a.y).toFixed(1)}px off the top`);
+      if (a.y + a.r > H) over.push(`${(a.y + a.r - H).toFixed(1)}px off the bottom`);
+      if (over.length) fail(`${where}: atom "${k}" is ${over.join(' and ')} of the ${W}x${H} canvas, so it renders clipped.`);
+    }
+
+    for (let i = 0; i < keys.length; i++) {
+      for (let j = i + 1; j < keys.length; j++) {
+        const a = atoms[keys[i]], b = atoms[keys[j]];
+        const gap = Math.hypot(a.x - b.x, a.y - b.y) - a.r - b.r;
+        if (gap < MOL_MIN_GAP) {
+          fail(`${where}: atoms "${keys[i]}" and "${keys[j]}" are ${gap.toFixed(1)}px apart, so their circles ` +
+               `touch or overlap. Keep at least ${MOL_MIN_GAP}px between them.`);
+        }
+      }
+    }
+
+    for (const [from, to, style] of mol.bonds || []) {
+      const a = atoms[from], b = atoms[to];
+      if (!a || !b) { fail(`${where}: bond ${from}-${to} names an atom that does not exist.`); continue; }
+      // Bonds are drawn from circle edge to circle edge, so the length that
+      // actually appears is the centre distance minus both radii.
+      const drawn = Math.hypot(a.x - b.x, a.y - b.y) - a.r - b.r;
+      if (drawn < MOL_MIN_BOND) {
+        fail(`${where}: the ${style || 'single'} bond ${from}-${to} has ${drawn.toFixed(1)}px of visible length, ` +
+             `so it renders as ${drawn <= 0 ? 'nothing at all' : 'a smudge'}. The atoms are too close together.`);
+      }
+    }
+
+    for (const k of keys) {
+      const a = atoms[k];
+      for (const deg of a.lp || []) {
+        // Same placement the page uses: a pair of dots on a circle of r+6.
+        const R = a.r + 6, rad = (deg * Math.PI) / 180;
+        const px = a.x + R * Math.cos(rad), py = a.y + R * Math.sin(rad);
+        if (px < 0 || px > W || py < 0 || py > H) {
+          fail(`${where}: the lone pair on "${k}" at ${deg}deg falls outside the canvas.`);
+        }
+        for (const k2 of keys) {
+          if (k2 === k) continue;
+          const b = atoms[k2];
+          if (Math.hypot(px - b.x, py - b.y) < b.r + MOL_MIN_GAP) {
+            fail(`${where}: the lone pair on "${k}" at ${deg}deg lands on atom "${k2}", where it cannot be seen ` +
+                 `and reads as belonging to the wrong atom. Point it into open space.`);
+          }
+        }
+      }
+    }
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);

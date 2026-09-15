@@ -629,7 +629,7 @@ The fourth work order. Items are numbered as they were given.
 | 4 | Question 974: V/Q mismatch and the Haldane effect in place of hypoxic drive, keeping "don't withhold oxygen" | **done** |
 | 5 | Reference cards: the impossible "M11" GCS example | **done** |
 | 6 | Formulary: the nitroglycerin heart-rate contraindication, and that protocols vary | **done** |
-| 7 | SN2 figure: cyanide's triple bond and lone pair, overlapping atoms, the ethyl group outside the frame | pending |
+| 7 | SN2 figure: cyanide's triple bond and lone pair, overlapping atoms, the ethyl group outside the frame | **done** |
 | 8 | The remaining British spellings in visible text | pending |
 | 9 | Confirm the live site matches main (2,106 questions, Terms link) | pending |
 | 10 | The three deferred decisions: notes chapters to JSON with figures; light and dark homepage screenshots, lazy-loaded; balance the absolute-word tell using only genuinely absolute keys | pending |
@@ -686,6 +686,28 @@ bank for the changed guidance:
 |---|---|
 | 1757 | Asked for the infant compression technique with two rescuers. After the 2025 change its distractor "the heel of one hand over the center of the chest" became a **second correct answer**, and its explanation taught both eliminated claims — that two fingers are for a single rescuer, and that a one-hand technique is adult-only. Rewritten around the case the guidelines answer directly: a lone rescuer whose hands cannot encircle the chest |
 | 917 | **No change needed.** Its explanation already said "back blows/abdominal thrusts per pediatric BLS guidelines" for a 3-year-old, which is what the 2025 sequence is |
+
+### Item 7 — the SN2 figure, measured rather than eyeballed
+
+All three reported faults were real, and the numbers say so:
+
+| Fault | Measurement |
+|---|---|
+| Cyanide's triple bond missing | The carbon and its nitrogen were placed 28px apart with radii of 15 and 13. Bonds are drawn edge to edge, so the visible length was exactly **0**, and the triple bond rendered as three lines of no length |
+| Atoms overlapping | The same pair, touching at a single point. The nitrogen also sat 1px off the left edge of the canvas |
+| Ethyl group outside the frame | The terminal carbon was at y 136 with r 12 in a 140-high viewBox — **8px** below the bottom, shipping with a flat edge |
+
+A fourth turned up while measuring: the attacking lone pair was at 200 degrees,
+which put both dots inside the neighbouring nitrogen's circle. Invisible, and
+read literally, drawn on the wrong atom. Both nucleophiles here are linear, so
+it now sits at 0 degrees — on the group's axis, pointing at the carbon it
+attacks.
+
+Check 26 fails the build on every one of them. Verified by restoring the
+original coordinate block verbatim, which produces five failures. The fix was
+then rendered in headless Chromium to confirm the triple bond reads as three
+lines, the lone pair as two dots facing the electrophile, and the ethyl group
+as whole.
 
 ---
 
@@ -749,6 +771,9 @@ thing twice** across its body, callouts and captions ·
 24. **The bank cannot outgrow the option letters the page can render** ·
 25. **No impossible Glasgow Coma Scale score**, and a total written beside a
 triple has to be the sum ·
+26. **Hand-placed molecule diagrams are actually drawable** — inside the
+canvas, no touching circles, no bond with nothing to draw, no lone pair sitting
+on a neighbour ·
 8 now also covers
 **advertised section counts**, with changelog.html exempt because a dated
 entry is a record rather than a claim about now

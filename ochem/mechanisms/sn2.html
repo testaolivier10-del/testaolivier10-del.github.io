@@ -214,14 +214,21 @@ document.addEventListener('DOMContentLoaded', function(){
       nucleophileLabel: 'NC\u207b',
       substrateLabel: '(R)-2-bromobutane',
       atoms: {
-        nucAtom:  { x: 40,  y: 70, r: 15, label: 'C', charge: '\u207b', lp: [200] },
-        nucN:     { x: 12,  y: 70, r: 13, label: 'N' },
-        carbon:   { x: 165, y: 70, r: 16, label: 'C', delta: '\u03b4+' },
-        me:       { x: 165, y: 24, r: 13, label: 'C' },
-        et1:      { x: 126, y: 114,r: 13, label: 'C' },
-        et2:      { x: 92,  y: 136,r: 12, label: 'C' },
-        h:        { x: 206, y: 114,r: 11, label: 'H' },
-        lg:       { x: 262, y: 70, r: 16, label: 'Br', delta: '\u03b4\u2212', lp: [340, 20] }
+        // The nucleophile sits far enough from its neighbour that the bond
+        // between them has length to be drawn: at the old spacing the two
+        // circles touched exactly, so cyanide's triple bond rendered as three
+        // zero-length lines and was simply absent from the diagram.
+        nucAtom:  { x: 62,  y: 70, r: 15, label: 'C', charge: '\u207b', lp: [0] },
+        nucN:     { x: 20,  y: 70, r: 13, label: 'N' },
+        carbon:   { x: 165, y: 66, r: 16, label: 'C', delta: '\u03b4+' },
+        me:       { x: 165, y: 22, r: 13, label: 'C' },
+        et1:      { x: 128, y: 106,r: 13, label: 'C' },
+        // The ethyl terminus used to sit at y 136 with r 12, so its lower
+        // eight pixels fell outside a 140-high viewBox and it shipped with a
+        // flat bottom.
+        et2:      { x: 90,  y: 122,r: 12, label: 'C' },
+        h:        { x: 203, y: 104,r: 11, label: 'H' },
+        lg:       { x: 258, y: 66, r: 16, label: 'Br', delta: '\u03b4\u2212', lp: [340, 20] }
       },
       bonds: [
         ['nucAtom','nucN','triple'],
@@ -248,14 +255,21 @@ document.addEventListener('DOMContentLoaded', function(){
       nucleophileLabel: 'N\u2083\u207b',
       substrateLabel: '(R)-2-bromobutane',
       atoms: {
-        nucAtom:  { x: 40,  y: 70, r: 15, label: 'N', charge: '\u207b', lp: [200] },
-        nucN:     { x: 12,  y: 70, r: 13, label: 'N' },
-        carbon:   { x: 165, y: 70, r: 16, label: 'C', delta: '\u03b4+' },
-        me:       { x: 165, y: 24, r: 13, label: 'C' },
-        et1:      { x: 126, y: 114,r: 13, label: 'C' },
-        et2:      { x: 92,  y: 136,r: 12, label: 'C' },
-        h:        { x: 206, y: 114,r: 11, label: 'H' },
-        lg:       { x: 262, y: 70, r: 16, label: 'Br', delta: '\u03b4\u2212', lp: [340, 20] }
+        // The nucleophile sits far enough from its neighbour that the bond
+        // between them has length to be drawn: at the old spacing the two
+        // circles touched exactly, so cyanide's triple bond rendered as three
+        // zero-length lines and was simply absent from the diagram.
+        nucAtom:  { x: 62,  y: 70, r: 15, label: 'N', charge: '\u207b', lp: [0] },
+        nucN:     { x: 20,  y: 70, r: 13, label: 'N' },
+        carbon:   { x: 165, y: 66, r: 16, label: 'C', delta: '\u03b4+' },
+        me:       { x: 165, y: 22, r: 13, label: 'C' },
+        et1:      { x: 128, y: 106,r: 13, label: 'C' },
+        // The ethyl terminus used to sit at y 136 with r 12, so its lower
+        // eight pixels fell outside a 140-high viewBox and it shipped with a
+        // flat bottom.
+        et2:      { x: 90,  y: 122,r: 12, label: 'C' },
+        h:        { x: 203, y: 104,r: 11, label: 'H' },
+        lg:       { x: 258, y: 66, r: 16, label: 'Br', delta: '\u03b4\u2212', lp: [340, 20] }
       },
       bonds: [
         ['nucAtom','nucN'],
@@ -357,6 +371,12 @@ document.addEventListener('DOMContentLoaded', function(){
   // step 3 asks the student where the arrow STARTS and the answer is a lone pair.
   // Asking that over a nucleophile drawn without one was asking them to know
   // rather than to look.
+  //
+  // The angle is not decorative either. Both nucleophiles here are linear, so
+  // the attacking pair lies on the group's axis pointing away from the
+  // neighbouring nitrogen — 0 degrees, toward the carbon. It used to be 200,
+  // which put the dots on top of that nitrogen's own circle, where they could
+  // not be seen and, read literally, sat on the wrong atom.
   function lonePairs(a){
     if(!a.lp) return '';
     return a.lp.map(function(deg){
