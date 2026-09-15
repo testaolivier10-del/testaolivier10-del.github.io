@@ -761,3 +761,40 @@ test('every textbook section is a page and still yields just its prose', () => {
     assert.ok(html.includes('notes-view'), `${f}: article is missing notes-view, so its prose would render unstyled`);
   }
 });
+
+/* Generated figures are drawn from coordinates, and the failure mode is not a
+   crash — it is a diagram with a label sitting outside the canvas, or on top
+   of another label, which renders perfectly and reads as nonsense. The first
+   six of these had all three problems (a clipped row of names, a caption
+   landing on a heading, and a double bond drawn as three lines) and every one
+   of them was found by looking at a rendering rather than by any check.
+   Bounds are the part that can be checked without eyes; this checks that. */
+test('every generated ochem figure draws inside its own canvas', () => {
+  const files = readdirSync('ochem/notes').filter(f => f.endsWith('.html'));
+  let seen = 0;
+  for(const f of files){
+    const html = readFileSync(join('ochem/notes', f), 'utf8');
+    for(const m of html.matchAll(/<!-- fig:([a-z-]+):start -->([\s\S]*?)<!-- fig:\1:end -->/g)){
+      const [, id, block] = m;
+      seen++;
+      const vb = block.match(/viewBox="([^"]+)"/);
+      assert.ok(vb, `${id}: no viewBox`);
+      const [mx, my, w, h] = vb[1].split(/\s+/).map(Number);
+      assert.ok(w > 0 && h > 0, `${id}: degenerate viewBox`);
+
+      const xs = [...block.matchAll(/\s(?:cx|x1|x2|x)="(-?[\d.]+)"/g)].map(v => Number(v[1]));
+      const ys = [...block.matchAll(/\s(?:cy|y1|y2|y)="(-?[\d.]+)"/g)].map(v => Number(v[1]));
+      assert.ok(xs.length && ys.length, `${id}: nothing drawn`);
+      // A few units of slack: a stroke has width and a glyph has descenders.
+      assert.ok(Math.min(...xs) >= mx - 6, `${id}: content runs off the left edge`);
+      assert.ok(Math.max(...xs) <= mx + w + 6, `${id}: content runs off the right edge`);
+      assert.ok(Math.min(...ys) >= my - 6, `${id}: content runs off the top edge`);
+      assert.ok(Math.max(...ys) <= my + h + 6, `${id}: content runs off the bottom edge`);
+
+      assert.match(block, /role="img"/, `${id}: figure is not exposed as an image`);
+      assert.match(block, /aria-label="[^"]{12,}"/, `${id}: figure has no usable alt text`);
+      assert.match(block, /<figcaption>/, `${id}: figure has no caption`);
+    }
+  }
+  assert.ok(seen >= 6, `expected at least 6 generated figures, found ${seen}`);
+});
