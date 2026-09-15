@@ -86,6 +86,8 @@ clinician, and that is the gap no amount of tooling closes.
 | Oxygen-induced hypercapnia in COPD explained by V/Q mismatch (oxygen relieving hypoxic pulmonary vasoconstriction, raising dead space) and the Haldane effect, with reduced minute ventilation named as the smallest contributor — replacing the hypoxic-drive account. "Do not withhold oxygen from a hypoxic patient" kept, with titration to roughly 88-92% for a known retainer | Current respiratory physiology; the hypoxic-drive account is not what the evidence supports | question 974 | Phase 8 |
 | Nitroglycerin heart-rate contraindication kept at under 50 or over 100, now attributed and qualified: many EMS protocols carry no heart-rate criterion at all | ACC/AHA ACS guidance ("marked bradycardia, heart rate less than 50 beats per minute, or tachycardia, greater than 100"); state protocols reviewed showed the criterion is often absent | `nremt/formulary.html` | Phase 8 |
 | Glasgow Coma Scale illustration corrected: "E3 V4 M6 and E1 V1 M11" replaced with E4 V4 M5 and E4 V3 M6, both totalling 13, contrasting localising with obeying commands | The scale itself — the motor component stops at 6 | `nremt/reference-cards.html` | Phase 8 |
+| Four figures added to the study notes, each restating clinical content the prose already carries: the 2025 six-link chain of survival; the path of a breath with the epiglottis marked; the 5-and-5 choking cycle and what "thrusts" means at each age; compression depth as a fraction of chest depth (adult 2–2.4 in, child ~2 in, infant ~1.5 in, all about one third) | 2025 AHA; standard EMT anatomy and BLS figures | notes §`ch21-arrest-pathophys`, §`ch9-airway`, §`ch9-fbao`, §`ch21-steps` | Phase 8g |
+| Fourteen answer keys reworded to state an absolute that was already true of them: entry only after a structure is cleared; PPE on before entry; gloves and eye protection always before contact; hazmat clearance before entry; vehicle stabilization before entry; decontamination before care; mandatory reporting of suspected abuse as a **must**; pediatric bradycardia in respiratory distress **must** be treated as impending arrest; never pushing a prolapsed cord back in; avoiding hypoxia and hypotension in a head injury | Standard EMT practice and scene-safety doctrine; no clinical claim changed, only how definitely it is stated | questions 114, 196, 334, 419, 420, 479, 517, 563, 693, 825, 902, 977, 1069, 1592 | Phase 8i |
 
 ---
 
@@ -619,7 +621,24 @@ Console ownership token — none of which are pages in the sense that matters.
 
 ## Phase 8 — 2025 AHA guideline update, per-word tells and the deferred decisions
 
-The fourth work order. Items are numbered as they were given.
+The fourth work order — **all ten items complete**. Items are numbered as they
+were given.
+
+What is left, in the order it is worth doing, none of it in this brief:
+
+1. **A named clinical reviewer.** 65 rows now wait on it, ten of them added
+   here. Still the highest-value open item on this file, and the only one no
+   amount of tooling closes.
+2. **`only` at 16.0% on 106 items** — the strongest single-word tell left in
+   the bank, measured and frozen but not worked.
+3. **`never` at 33.3% on 21 items** — pushed there by this session's own
+   absolute-key pass. Under the sample floor today, so recorded rather than
+   asserted; it is the word to watch.
+4. **8 of the 133 hand-written figures in `ochem/notes/`** draw measurably
+   outside their canvas (worst: `pka.html`, 95 units off the left). Neither
+   check 20 nor check 26 looks at hand-written SVG.
+5. **Figures in the other 38 notes chapters.** Four exist; the split that made
+   them practical applies to all forty.
 
 | # | Item | Status |
 |---|---|---|
