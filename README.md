@@ -330,6 +330,22 @@ is the one way to actually lose progress here.
 `authMessage`, `passwordScore` and `emailTypo` are exported on
 `StudyHubAccount` and tested in `scripts/test/auth-form.test.mjs`.
 
+### Deleting an account
+
+`privacy.html` invoked GDPR and CCPA and then asked people to send an email, which is a deletion right in roughly the sense that a locked door with a doorbell is an exit. It is a button now — **Delete account**, in the account menu.
+
+Three things this screen has to get right, and only the first is obvious.
+
+- **It is irreversible, so it asks properly.** The word has to be typed, and the submit stays dead until it matches; accepting a near miss would make the typing ceremonial, which is the one thing it must not be. Not `window.confirm()` — the sign-out menu exists precisely because that dialog was the wrong shape for a decision.
+- **The account and the browser are two different things**, and almost nobody expects that. Progress lives in `localStorage`; the account is a synced copy. Left alone, "delete my account" would silently leave every streak, level and answered question sitting in the browser the person is looking at — which is either exactly what they wanted or the opposite, and they are the only one who knows. So it is a checkbox, on by default, named plainly enough that turning it off is a real option.
+- **It offers the backup first.** This is the one action on the site that destroys work on purpose, and the export already exists on `privacy.html`; making someone go and find it, in a dialog they cannot leave without starting over, is how a person loses four months of study to a change of mind. `progress-backup.js` is loaded on demand here rather than on all 101 pages that carry `account.js`.
+
+`delete_own_account()` (in `scripts/sql/schema.sql`) **takes no arguments**. It reads `auth.uid()` from the caller's verified JWT, so there is no id to pass and therefore no id to tamper with — the difference between this and every version of it that accepts a user id. It is granted to `authenticated` only.
+
+Two orderings matter and both are the non-obvious one. The browser is cleared **after** the account is confirmed gone, because the other order risks wiping a device for a delete that then failed. And sign-out here does **not** `push()` first, which every other path in `account.js` does — here it would re-create the row that was just deleted.
+
+The erase list is an allow-list, like the backup's, so a key nobody added on purpose survives. It keeps exactly one thing: **`levlprep_analytics_opt_out`**. That is a standing instruction not to collect something rather than progress, and wiping it would turn "delete my account" into "and start tracking me again". `scripts/test/account-delete.test.mjs` pins that, along with the walk-then-delete order — removing keys inside the index walk renumbers them underneath it and skips every other one, which leaves a browser looking mostly wiped.
+
 ### Supabase settings these depend on
 
 Auth → URL Configuration must list the site origin under *Redirect URLs* (the
@@ -622,10 +638,11 @@ A third job re-derives everything that is generated from the pages and fails if 
 
 ### Unit tests
 
-A second job runs `node --test scripts/test/*.test.mjs` — 122 tests over the pieces whose failure modes are silent. Everything above checks that the site is *wired* correctly; nothing checked that it *scores* correctly. An interval that doubles too eagerly buries a shaky concept for four months, a decay curve that bites too hard makes yesterday's work look undone, a streak that resets in the wrong timezone eats a 40-day run. None of that throws, and none of it would have been caught by a link checker — the student just gets worse practice and no one finds out.
+A second job runs `node --test scripts/test/*.test.mjs` — 129 tests over the pieces whose failure modes are silent. Everything above checks that the site is *wired* correctly; nothing checked that it *scores* correctly. An interval that doubles too eagerly buries a shaky concept for four months, a decay curve that bites too hard makes yesterday's work look undone, a streak that resets in the wrong timezone eats a 40-day run. None of that throws, and none of it would have been caught by a link checker — the student just gets worse practice and no one finds out.
 
 - `scripts/test/hub-progress.test.mjs` — the level curve (pinned: changing it demotes every existing user), XP accumulation and per-subject split, streak continuation across days, goal tracking, rank titles, day-log pruning.
 - `scripts/test/mastery-engine.test.mjs` — unseen vs. scored-zero, the learning rate settling as evidence accumulates, the same-day guard that stops one good session reaching a six-month interval, the interval cap, the decay floor, due-ness, leech benching and its release on a lesson read, the daily review cap, mistake de-duplication, tier records.
+- `scripts/test/account-delete.test.mjs` — what a "delete my account" erases and, more to the point, what it leaves: the analytics opt-out, anything not on the allow-list, and the Supabase session the delete itself needs.
 - `scripts/test/report-question.test.mjs` — the once-per-browser receipt surviving a re-render, the bounded store, and the reason list matching what the database will actually accept.
 - `scripts/test/errors.test.mjs` — the cap, the dedupe, the opt-out and the queue that holds reports until `account.js` exists. All four fail silently in both directions: a broken cap floods the database, a broken queue reports nothing and looks like a site with no bugs.
 - `scripts/test/question-ids.test.mjs` — what the numbers in a learner's records mean: ids surviving a deletion, a reorder and an append; the positional option-order array converting once and idempotently; a half-finished attempt abandoned rather than graded around a hole.

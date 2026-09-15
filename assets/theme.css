@@ -1048,6 +1048,42 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 }
 .account-menu button:hover{background:var(--hover-tint);}
 .account-menu button[disabled]{opacity:.55;cursor:default;}
+/* Separated and coloured, because it is the one item in this menu that
+   destroys something. Not hidden behind a second menu: a deletion right you
+   have to hunt for is the thing this replaced. */
+.account-menu__danger{
+  margin-top:6px;padding-top:10px;border-top:1px solid var(--line-soft);
+  color:var(--bad-text);
+}
+.account-menu__danger:hover{background:var(--hover-tint);}
+
+/* ---- deleting an account (assets/account.js) --------------------------- */
+.delete-modal .delete-backup{
+  background:var(--surface2);border-radius:var(--radius-sm);padding:13px 14px;
+  display:flex;flex-direction:column;gap:9px;align-items:flex-start;
+}
+.delete-modal .delete-backup p{margin:0;font-size:13px;font-weight:700;color:var(--muted);line-height:1.5;}
+.delete-modal .delete-backup small{font-size:11.5px;font-weight:700;color:var(--muted);min-height:1.3em;}
+.delete-local{
+  flex-direction:row;align-items:flex-start;gap:10px;cursor:pointer;
+  font-size:13px;font-weight:600;color:var(--ink);line-height:1.5;
+  text-transform:none;letter-spacing:0;
+}
+.delete-local input{width:auto;margin:2px 0 0;accent-color:var(--accent);flex:none;}
+.delete-local b{font-weight:900;}
+.delete-confirm input{
+  /* 16px like every other field in a dialog here: iOS zooms the page in on
+     anything smaller, and a confirmation that lurches sideways on tap is the
+     last thing this particular screen needs. */
+  font-size:16px;letter-spacing:.08em;text-transform:uppercase;
+}
+/* --bad-text is a deep red in light mode and a light pink in dark mode, since
+   it is normally ink on the page background. As a BUTTON FILL that flips which
+   side needs the light text, so the label is set per theme rather than pinned
+   to white and left unreadable in one of them. */
+.delete-submit{background:var(--bad-text);color:#fff;}
+[data-theme="dark"] .delete-submit{color:#2A1110;}
+.delete-submit[disabled]{opacity:.45;cursor:not-allowed;}
 
 @media (prefers-reduced-motion:reduce){
   .auth-modal-overlay,.auth-strength__bar i{transition:none;}
