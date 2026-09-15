@@ -31,7 +31,7 @@ SUPABASE_URL = "https://bsfcqrczehbcctwhxmrj.supabase.co"
 # The public half of the VAPID pair. Public on purpose — the same value is in
 # assets/reminders.js, because the browser has to send it when subscribing.
 # Generate both halves with: node scripts/vapid-keys.mjs
-VAPID_PUBLIC_KEY = "BME-SpC-0iXjJE9EdSNRU3KvP32vgPO-oUwl3Hw18MuqeweHnvOe53HgxKTy_njkiYjpfvcGDNzZ6Q7IvfiHfGc"
+VAPID_PUBLIC_KEY = "BJQrCo49iKi_sn7czvlq2nNFI1G_uy9IJSo_0KruVHaz3Iu9h7Nug8ay2JXbzlaiqFJuULZ1d1Y2Qqbzp_2Psfk"
 VAPID_SUBJECT = "mailto:testaolivier10@gmail.com"
 
 # Secrets, NOT set here. `wrangler secret put NAME`, or Settings -> Variables
