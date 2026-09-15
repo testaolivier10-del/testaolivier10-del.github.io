@@ -137,7 +137,7 @@
       id:'salicylic', name:'Salicylic acid', formula:'2-HO–C₆H₄–COOH',
       note:'Both an acid and a phenol on the same ring. One of them is ten orders of magnitude more acidic than the other, and it is not close.',
       sites:[
-        { label:'COOH', pKa:2.97, why:'The carboxylic acid, made stronger than benzoic acid’s by the neighbouring OH, which hydrogen-bonds to the carboxylate and holds the charge in place.' },
+        { label:'COOH', pKa:2.97, why:'The carboxylic acid, made stronger than benzoic acid’s by the neighboring OH, which hydrogen-bonds to the carboxylate and holds the charge in place.' },
         { label:'phenol OH', pKa:13.6, why:'The phenol, made much WEAKER than ordinary phenol by the same hydrogen bond — that OH is busy donating to the carboxylate, and taking its proton means breaking that.' }
       ]
     },
@@ -278,7 +278,7 @@
       factor:'Orbital',
       winner: winner,
       text: 'The charge sits in a ' + winner.hyb + ' orbital in ' + winner.name + ' and a ' + loser.hyb + ' one in ' + loser.name + '. ' +
-        'An s orbital is spherical and centred on the nucleus, so the more s character a hybrid has, the closer it holds its ' +
+        'An s orbital is spherical and centered on the nucleus, so the more s character a hybrid has, the closer it holds its ' +
         'electron pair and the more stable a lone pair in it is: ' + S_CHARACTER[winner.hyb] + '% against ' +
         S_CHARACTER[loser.hyb] + '%.'
     };

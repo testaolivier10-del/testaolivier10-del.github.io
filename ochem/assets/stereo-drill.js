@@ -296,7 +296,7 @@
             ? (sol.lowest.label + (fischer
                 ? ' is on a horizontal arm, and horizontal means toward you in a Fischer projection.'
                 : ' is on the bold wedge, so it points at you.') +
-               ' That is the awkward case: you are looking at this centre from the wrong side, so whatever rotation you read off has to be flipped at the end.')
+               ' That is the awkward case: you are looking at this center from the wrong side, so whatever rotation you read off has to be flipped at the end.')
             : (sol.lowest.label + (fischer
                 ? ' is on a vertical arm, and vertical means away from you in a Fischer projection.'
                 : ' is on the hashed bond, so it points away from you.') +
@@ -310,7 +310,7 @@
     // ---- Stage 3: the configuration ----------------------------------
     function assignStage(){
       shell('Step 3 of 3 &middot; The assignment',
-        'Trace 1 &rarr; 2 &rarr; 3. What is the configuration of this centre?',
+        'Trace 1 &rarr; 2 &rarr; 3. What is the configuration of this center?',
         '<p class="step-body">' + (sol.towardViewer
           ? 'Remember what you just established: the lowest-priority group points <b>at you</b>, so the rotation you see is reversed.'
           : 'The lowest-priority group points away, so what you see is what you get.') + '</p>' +

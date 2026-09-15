@@ -421,9 +421,9 @@
         if(nbH) j = 7;
         if(!note){
           note = (nbH === 0
-            ? 'A singlet: there is no hydrogen on any neighbouring carbon for this one to couple with.'
+            ? 'A singlet: there is no hydrogen on any neighboring carbon for this one to couple with.'
             : 'Split into ' + (nbH + 1) + ' lines by the ' + nbH + ' hydrogen' + (nbH === 1 ? '' : 's') +
-              ' on the neighbouring carbon' + (mixed ? 's, which are not all equivalent — so in practice this is a multiplet rather than a clean n+1 pattern' : '') + '.');
+              ' on the neighboring carbon' + (mixed ? 's, which are not all equivalent — so in practice this is a multiplet rather than a clean n+1 pattern' : '') + '.');
         }
       }
 

@@ -474,7 +474,7 @@
           return bond && bond.order > 1;
         });
         if(!propped){
-          notes.push('That leaves a negative charge on a carbon with nothing next to it to share the load — no carbonyl, no pi system, no electronegative neighbour. Carbon is the worst of the common atoms at holding a negative charge, so this is a very basic, very reactive species.');
+          notes.push('That leaves a negative charge on a carbon with nothing next to it to share the load — no carbonyl, no pi system, no electronegative neighbor. Carbon is the worst of the common atoms at holding a negative charge, so this is a very basic, very reactive species.');
         }
       }
     });

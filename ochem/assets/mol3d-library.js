@@ -19,7 +19,7 @@
 
   add('VSEPR shapes', {
     id:'methane', name:'Methane', formula:'CH₄',
-    note:'Four bonding groups, no lone pairs. The shape every other tetrahedral centre is compared against.',
+    note:'Four bonding groups, no lone pairs. The shape every other tetrahedral center is compared against.',
     atoms:[{ el:'C', pos:v(0,0,0) }],
     fill:[{ at:0, h:4, len:1.09 }],
     focus:0
@@ -193,7 +193,7 @@
 
   add('Stereochemistry', {
     id:'methanol', name:'Methanol', formula:'CH₃OH',
-    note:'Two different centres in one small molecule: a tetrahedral carbon and a bent oxygen with two lone pairs. Click either one and the readout follows.',
+    note:'Two different centers in one small molecule: a tetrahedral carbon and a bent oxygen with two lone pairs. Click either one and the readout follows.',
     atoms:[{ el:'C', pos:v(0,0,0) }, { el:'O', pos:v(1.43,0,0) }],
     bonds:[{a:0,b:1}],
     fill:[{ at:0, h:3, len:1.09 }, { at:1, h:1, lp:2, len:0.96 }],
@@ -212,7 +212,7 @@
 
   add('Reactive intermediates', {
     id:'methyl-cation', name:'Methyl cation', formula:'CH₃⁺',
-    note:'Flat, and that is the entire reason SN1 scrambles a stereocentre. Three bonds, no lone pair, an empty p orbital perpendicular to the plane — a nucleophile can arrive at either face with equal ease, so one enantiomer goes in and both come out.',
+    note:'Flat, and that is the entire reason SN1 scrambles a stereocenter. Three bonds, no lone pair, an empty p orbital perpendicular to the plane — a nucleophile can arrive at either face with equal ease, so one enantiomer goes in and both come out.',
     /* Explicit coordinates rather than a planar fill: `planar` resolves to a
        single direction (it exists for benzene's one ring hydrogen), so asking
        it for three would place the first and leave the rest undefined. */
@@ -304,7 +304,7 @@
 
   add('Ring strain', {
     id:'cyclopropane-3d', name:'Cyclopropane', formula:'C₃H₆',
-    note:'Three carbons in a triangle, so the internal angles are 60° against the 109.5° an sp³ carbon wants. Click a carbon and the readout says so. Every C–H is eclipsed with its neighbour as well, which the ring cannot relieve by twisting — nothing here can move.',
+    note:'Three carbons in a triangle, so the internal angles are 60° against the 109.5° an sp³ carbon wants. Click a carbon and the readout says so. Every C–H is eclipsed with its neighbor as well, which the ring cannot relieve by twisting — nothing here can move.',
     atoms: M3.ringPoints(3, 0.87, 0).map(function(p){ return { el:'C', pos:p }; }),
     bonds:[{a:0,b:1},{a:1,b:2},{a:2,b:0}],
     fill:[{ at:0, h:2, len:1.09 }, { at:1, h:2, len:1.09 }, { at:2, h:2, len:1.09 }],

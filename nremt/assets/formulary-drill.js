@@ -35,7 +35,7 @@
         '<h2>Drill</h2>' +
         '<p class="section-sub">' + right + ' of ' + order.length + ' correct.</p>' +
         '<button type="button" class="btn-press" id="drillAgain">Go again</button> ' +
-        '<a class="link-quiet" href="practice.html">Practise the whole bank &rarr;</a>';
+        '<a class="link-quiet" href="practice.html">Practice the whole bank &rarr;</a>';
       document.getElementById('drillAgain').addEventListener('click', start);
       return;
     }

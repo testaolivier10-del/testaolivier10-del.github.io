@@ -75,7 +75,7 @@
         { cm:1050, w:40,  d:60, label:'C–O stretch', note:'Strong, and confirms the oxygen is in an alcohol or ether rather than a carbonyl.' }
       ],
       nmr:[
-        { ppm:1.22, h:3, mult:'t', j:7, label:'CH₃', note:'Three hydrogens, split into a triplet by the two on the neighbouring CH₂. Furthest upfield because it is furthest from the oxygen.' },
+        { ppm:1.22, h:3, mult:'t', j:7, label:'CH₃', note:'Three hydrogens, split into a triplet by the two on the neighboring CH₂. Furthest upfield because it is furthest from the oxygen.' },
         { ppm:2.60, h:1, mult:'s', label:'OH',  note:'Broad singlet, and it does not couple to anything — the proton swaps between molecules faster than the coupling can be felt. Shake with D₂O and this peak vanishes.' },
         { ppm:3.69, h:2, mult:'q', j:7, label:'CH₂', note:'Quartet from the three hydrogens next door, and pushed downfield to 3.7 by the oxygen it is attached to.' }
       ],
@@ -88,7 +88,7 @@
         { cm:1715, w:22, d:78, label:'C=O stretch', note:'Strong, sharp, and at the textbook position for a simple ketone. Nothing above 3000 and no O–H, so this is a ketone rather than an acid or an aldehyde.' }
       ],
       nmr:[
-        { ppm:2.17, h:6, mult:'s', label:'2 × CH₃', note:'One signal for all six hydrogens. The molecule is symmetrical, so both methyls are in identical environments — and with no hydrogen on the neighbouring carbon there is nothing to couple to.' }
+        { ppm:2.17, h:6, mult:'s', label:'2 × CH₃', note:'One signal for all six hydrogens. The molecule is symmetrical, so both methyls are in identical environments — and with no hydrogen on the neighboring carbon there is nothing to couple to.' }
       ],
       tell:'One NMR signal and a carbonyl at 1715. The symmetry is the whole clue.'
     },
@@ -113,7 +113,7 @@
       ],
       nmr:[
         { ppm:1.26, h:3, mult:'t', j:7, label:'OCH₂CH₃', note:'Triplet, coupled to the CH₂ next to it.' },
-        { ppm:2.04, h:3, mult:'s', label:'CH₃C=O', note:'Singlet, alpha to the carbonyl. No neighbouring hydrogens.' },
+        { ppm:2.04, h:3, mult:'s', label:'CH₃C=O', note:'Singlet, alpha to the carbonyl. No neighboring hydrogens.' },
         { ppm:4.12, h:2, mult:'q', j:7, label:'OCH₂', note:'Quartet, and pushed all the way to 4.1 — further than ethanol’s 3.7, because this oxygen is attached to a carbonyl as well.' }
       ],
       tell:'Carbonyl at 1740 rather than 1715, no O–H at all, and a 3:3:2 pattern with a quartet past 4 ppm.'
@@ -169,8 +169,8 @@
       ],
       nmr:[
         { ppm:1.10, h:3, mult:'t', j:7, label:'CH₃', note:'Triplet.' },
-        { ppm:1.30, h:2, mult:'s', label:'NH₂', note:'Broad, exchangeable, and does not couple — the same behaviour as an O–H.' },
-        { ppm:2.72, h:2, mult:'q', j:7, label:'CH₂N', note:'Quartet at 2.7. Nitrogen shifts a neighbouring C–H less than oxygen does, because it is less electronegative — compare ethanol’s 3.69.' }
+        { ppm:1.30, h:2, mult:'s', label:'NH₂', note:'Broad, exchangeable, and does not couple — the same behavior as an O–H.' },
+        { ppm:2.72, h:2, mult:'q', j:7, label:'CH₂N', note:'Quartet at 2.7. Nitrogen shifts a neighboring C–H less than oxygen does, because it is less electronegative — compare ethanol’s 3.69.' }
       ],
       tell:'Two N–H bands rather than one broad O–H, and a CH₂ at 2.7 rather than 3.7.'
     },
@@ -309,7 +309,7 @@
       nmr:[
         { ppm:1.18, h:6, mult:'d', j:6, label:'2 × CH₃', note:'SIX hydrogens as one doublet — the two methyls are equivalent, and they are split by the single CH between them. The integral is the clue: 6H is two identical methyls, not one.' },
         { ppm:2.40, h:1, mult:'s', label:'OH', note:'Broad, exchangeable.' },
-        { ppm:4.01, h:1, mult:'sept', j:6, label:'CH', note:'A septet — seven lines, from the six neighbouring hydrogens. Meeting one is the clearest possible sign of an isopropyl group.' }
+        { ppm:4.01, h:1, mult:'sept', j:6, label:'CH', note:'A septet — seven lines, from the six neighboring hydrogens. Meeting one is the clearest possible sign of an isopropyl group.' }
       ],
       tell:'A 6H doublet and a 1H septet. That pair is an isopropyl group and almost nothing else produces it.'
     }

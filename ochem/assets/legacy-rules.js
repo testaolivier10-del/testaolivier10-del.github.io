@@ -92,7 +92,7 @@
     { q:/stereochem|configuration|what happens.*carbon/i, o:/racemi/i, c:'stereochemical-outcome',
       m:'Racemization needs a planar intermediate that can be attacked from either face — that is the SN1 picture. A concerted backside attack has only one possible approach, so it gives clean inversion, not a mixture.' },
     { q:/stereochem|configuration|SN2/i, o:/retention|retained|no change/i, c:'stereochemical-outcome',
-      m:'Retention would mean the nucleophile arrived on the same side the leaving group left from — but that side is exactly where the leaving group still is. The attack comes from the opposite face, so the centre inverts.' },
+      m:'Retention would mean the nucleophile arrived on the same side the leaving group left from — but that side is exactly where the leaving group still is. The attack comes from the opposite face, so the center inverts.' },
     { o:/stepwise|two[- ]step|via a carbocation|carbocation intermediate/i, q:/SN2|E2|concerted/i, c:'mechanism-selection',
       m:'That is the SN1/E1 answer. The defining feature of the bimolecular pathways is that there is no intermediate at all — bond making and bond breaking happen together in one step.' },
     { o:/radical/i, c:'mechanism-selection',
@@ -118,7 +118,7 @@
     { o:/equatorial.*stronger|axial.*prefer|prefers? (the )?axial/i, c:'chair-axial-equatorial',
       m:'Bulky groups prefer EQUATORIAL. Axial points straight up into the two other axial groups on the same face — the 1,3-diaxial clash — while equatorial points out and away from everything.' },
     { o:/any (number|amount) of swaps|two swaps|even number/i, q:/fischer/i, c:'fischer-reading',
-      m:'An odd number of swaps inverts the stereocentre and an even number returns you to the original. One swap is odd, so it gives the enantiomer.' },
+      m:'An odd number of swaps inverts the stereocenter and an even number returns you to the original. One swap is odd, so it gives the enantiomer.' },
     { o:/constitutional isomer/i, q:/enantiomer|diastereomer|stereo/i, c:'enantiomer-vs-diastereomer',
       m:'Constitutional isomers differ in what is bonded to what. Here the connectivity is identical and only the 3D arrangement differs, which makes them stereoisomers.' },
     { o:/identical|same (molecule|compound)/i, q:/enantiomer|mirror image/i, c:'chirality-recognition',
@@ -152,7 +152,7 @@
     { o:/pi.*stronger than.*sigma|sigma.*weaker/i, c:'lewis-structures-drawing',
       m:'Sigma bonds are the stronger ones: head-on overlap concentrates electron density directly between the nuclei. Pi bonds overlap sideways, which is weaker — and that is exactly why the pi bond is what reacts.' },
     { o:/two identical sigma|two sigma bonds/i, c:'lewis-structures-drawing',
-      m:'A double bond is one sigma plus one pi, not two sigmas. An atom can only form one sigma bond to a given neighbour; the second and third bonds have to be pi.' }
+      m:'A double bond is one sigma plus one pi, not two sigmas. An atom can only form one sigma bond to a given neighbor; the second and third bonds have to be pi.' }
   ]);
   L.define('orbitals', [
     { q:RECALL, recall:true },
@@ -442,17 +442,17 @@
 
     /* Stereochemistry. */
     { o:/retention|retained/i, q:/SN2|backside|inver/i, c:'stereochemical-outcome',
-      m:'Retention would require the nucleophile to arrive on the face the leaving group is still occupying. Backside attack inverts the centre, every time.' },
+      m:'Retention would require the nucleophile to arrive on the face the leaving group is still occupying. Backside attack inverts the center, every time.' },
     { o:/racemi/i, q:/SN2|concerted|backside/i, c:'stereochemical-outcome',
       m:'Racemization needs a planar intermediate open to attack from both faces. A concerted mechanism has no intermediate, so there is only one possible approach and one product.' },
     { o:/single enantiomer|optically (pure|active)/i, q:/SN1|carbocation|racemi/i, c:'stereochemical-outcome',
       m:'The carbocation is planar, so the nucleophile can arrive from either face at roughly equal rates. That gives a racemic (or nearly racemic) mixture, not one enantiomer.' },
     { o:/enantiomer/i, q:/diastereomer|cis.{0,4}trans|one.*inverted/i, c:'enantiomer-vs-diastereomer',
-      m:'Enantiomers need EVERY stereocentre inverted. Invert some but not all and the result is a diastereomer — not a mirror image, and separable by ordinary physical means.' },
+      m:'Enantiomers need EVERY stereocenter inverted. Invert some but not all and the result is a diastereomer — not a mirror image, and separable by ordinary physical means.' },
     { o:/diastereomer/i, q:/mirror image|all.*inverted|non-?superimposab/i, c:'enantiomer-vs-diastereomer',
-      m:'Diastereomers are stereoisomers that are NOT mirror images. When every stereocentre is inverted you have the mirror image — enantiomers.' },
+      m:'Diastereomers are stereoisomers that are NOT mirror images. When every stereocenter is inverted you have the mirror image — enantiomers.' },
     { o:/\bchiral\b/i, q:/meso|plane of symmetry|internal mirror/i, c:'meso-detection',
-      m:'An internal mirror plane makes a molecule achiral no matter how many stereocentres it has. That is exactly what meso means — stereocentres present, optical activity zero.' },
+      m:'An internal mirror plane makes a molecule achiral no matter how many stereocenters it has. That is exactly what meso means — stereocenters present, optical activity zero.' },
 
     /* Regiochemistry and elimination. */
     { o:/less substituted|terminal|Hofmann/i, q:/Zaitsev|major|more substituted/i, c:'zaitsev-hofmann',
@@ -484,7 +484,7 @@
     { o:/carboxylic acid/i, q:/no (broad|O–H|OH)|1715|ketone/i, c:'ir-functional-groups',
       m:'A carboxylic acid would show a very broad O\u2013H from about 2500 to 3300 cm\u207b\u00b9, and the question rules that out. A C=O with no O\u2013H is a ketone or aldehyde.' },
     { o:/number of (neighbou?ring )?(hydrogens|protons) directly|equals the number of/i, q:/splitting|n\s*\+\s*1|peaks/i, c:'nmr-splitting-integration',
-      m:'It is n+1, not n. Three neighbouring hydrogens give a QUARTET, four peaks — the count of peaks is always one more than the count of neighbours.' },
+      m:'It is n+1, not n. Three neighboring hydrogens give a QUARTET, four peaks — the count of peaks is always one more than the count of neighbors.' },
     { o:/total (number of )?hydrogens|exactly \d+ (total )?hydrogens/i, q:/integration|ratio/i, c:'nmr-splitting-integration',
       m:'Integration gives a RATIO, not an absolute count. A 3:2 ratio fits CH\u2083CH\u2082 but equally fits a molecule with six and four of those hydrogens.' }
   ]);
@@ -585,7 +585,7 @@
     { o:/ipso/i, c:'directing-effects',
       m:'Ipso is the substituted carbon itself, and it is already occupied. The available positions are ortho (adjacent), meta (one further) and para (directly across).' },
     { o:/every position equally|all positions equally/i, c:'directing-effects',
-      m:'Substituents direct strongly — often 95% or better to the favoured positions. Which positions are favoured follows from where the arenium ion\u2019s positive charge ends up.' },
+      m:'Substituents direct strongly — often 95% or better to the favored positions. Which positions are favored follows from where the arenium ion\u2019s positive charge ends up.' },
     { o:/halogens (have no|always activate|direct exclusively|only deactivate)/i, c:'directing-effects',
       m:'Halogens are the awkward case, and deliberately so: they DEACTIVATE by induction (electronegative, pulling density out of the ring) while still directing ORTHO/PARA by resonance donation of a lone pair. Slower than benzene, but with the donor\u2019s substitution pattern.' }
   ]);
@@ -643,7 +643,7 @@
     { o:/total electrons in the molecule|atomic number|molar mass|lone pairs? ?(×|x) ?2/i, c:'formal-charge-calc',
       m:'Formal charge is per-ATOM bookkeeping, not a property of the whole molecule. Start from that atom\u2019s own group valence count and compare it with what the drawing gives it.' },
     { o:/\(valence electrons\) \+ \(nonbonding|bonding electrons\) − \(nonbonding|\(bonding electrons\) −/i, c:'formal-charge-calc',
-      m:'The formula is valence \u2212 nonbonding \u2212 bonds. Note that bonds count ONE each, not two: you are counting the sticks, not the electrons in them, because the other electron of each pair belongs to the neighbour.' },
+      m:'The formula is valence \u2212 nonbonding \u2212 bonds. Note that bonds count ONE each, not two: you are counting the sticks, not the electrons in them, because the other electron of each pair belongs to the neighbor.' },
     { o:/most total bonds|least symmetry|most lone pairs overall/i, c:'formal-charge-calc',
       m:'The best structure is the one with formal charges CLOSEST TO ZERO, and where any remaining negative charge sits on the most electronegative atom. Bond count and symmetry are not the criteria.' },
     { o:/least electronegative atom available|a hydrogen atom|whichever atom is in the cent/i, q:/negative (charge|formal)|charge (sit|reside|go)/i, c:'formal-charge-calc',
@@ -658,9 +658,9 @@
     { o:/add lone pairs to satisfy|calculate formal charges|draw all the lone pairs first|assign formal charges to every/i, q:/first step|begin|start/i, c:'lewis-structures-drawing',
       m:'Those come later. The first step is always counting the total valence electrons you have to place \u2014 everything after that is spending a budget you have not worked out yet.' },
     { o:/most electronegative atom|always carbon|listed first|alphabetical|smallest atom/i, q:/central atom/i, c:'lewis-structures-drawing',
-      m:'The central atom is the LEAST electronegative one (hydrogen excepted, which only ever forms one bond). It is the atom most willing to share with several neighbours at once.' },
+      m:'The central atom is the LEAST electronegative one (hydrogen excepted, which only ever forms one bond). It is the atom most willing to share with several neighbors at once.' },
     { o:/leave it short|octets are optional|remove an atom|add a random electron|erase the bonds|remove electrons from the structure/i, c:'lewis-structures-drawing',
-      m:'When you run short of electrons you make a MULTIPLE BOND \u2014 share a lone pair from a neighbour so both atoms count it. You never leave a second-row atom short or invent electrons.' },
+      m:'When you run short of electrons you make a MULTIPLE BOND \u2014 share a lone pair from a neighbor so both atoms count it. You never leave a second-row atom short or invent electrons.' },
     { o:/a single dot|a square around|an arrow pointing away|an empty box|a curved arrow/i, q:/bond.*represent|represent.*bond|shown as|drawn as/i, c:'lewis-structures-drawing',
       m:'A shared pair \u2014 a bond \u2014 is drawn as a line between the two atoms. Dots are reserved for nonbonding (lone pair) electrons.' },
     { o:/constantly changes its actual|alternate, equally wrong guesses|cannot form double bonds/i, c:'resonance-delocalization',

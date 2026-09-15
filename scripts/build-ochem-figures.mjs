@@ -357,7 +357,7 @@ FIGURES.push({
   id: 'radical-chain',
   section: 'radical-halogenation',
   anchor: '<h3>Three stages, and only one of them repeats</h3>',
-  alt: 'Initiation, the two propagation steps drawn as a cycle, and termination, labelled by what each does to the radical count',
+  alt: 'Initiation, the two propagation steps drawn as a cycle, and termination, labeled by what each does to the radical count',
   viewBox: '0 0 760 330',
   build() {
     let s = '';

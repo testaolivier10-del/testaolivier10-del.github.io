@@ -107,7 +107,7 @@
       return { valid:false, code:'broke-sigma', structure:st,
         reason:'That breaks the ' + st0.atoms[ends[0]].label + '–' + st0.atoms[ends[1]].label +
                ' bond completely. Every resonance form of a species has the same skeleton — the atoms stay ' +
-               'exactly where they are and stay bonded to exactly the same neighbours. Once a sigma bond ' +
+               'exactly where they are and stay bonded to exactly the same neighbors. Once a sigma bond ' +
                'is gone you have drawn a reaction, not a resonance structure.' };
     }
 
@@ -248,7 +248,7 @@
     }
     if(sa.adjacentLike !== sb.adjacentLike){
       return { winner: sa.adjacentLike < sb.adjacentLike ? 'a' : 'b', rule:'like-charges',
-        text:'Two like charges on neighbouring atoms repel each other. The form that avoids putting them side by side is the better one.' };
+        text:'Two like charges on neighboring atoms repel each other. The form that avoids putting them side by side is the better one.' };
     }
     if(Math.abs(sa.enFit - sb.enFit) > 0.01){
       return { winner: sa.enFit > sb.enFit ? 'a' : 'b', rule:'electronegativity',
@@ -282,7 +282,7 @@
         return (fc < 0 ? 'negative' : 'positive') + ' on ' + st.atoms[k].label;
       }).join(' and '));
     }
-    if(s.adjacentLike) bits.push('like charges on neighbouring atoms');
+    if(s.adjacentLike) bits.push('like charges on neighboring atoms');
 
     var best = all.reduce(function(m, f){ return score(f).total > score(m).total ? f : m; }, all[0]);
     var tiedForBest = all.filter(function(f){ return score(f).total === score(best).total; }).length;

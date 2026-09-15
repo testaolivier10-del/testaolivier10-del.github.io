@@ -186,7 +186,7 @@
     prompt:'Click the hydrogen E2 can actually remove.', molecule:'chair-bromocyclohexane',
     sub:'The bromine is axial, pointing up.',
     answer:{ role:'axial-h' },
-    why:'E2 needs the C–H and C–Br bonds 180° apart in one plane. On a chair, that means both must be axial and on adjacent carbons pointing opposite ways — only the axial hydrogen down on the neighbouring carbon qualifies.',
+    why:'E2 needs the C–H and C–Br bonds 180° apart in one plane. On a chair, that means both must be axial and on adjacent carbons pointing opposite ways — only the axial hydrogen down on the neighboring carbon qualifies.',
     highlight:['br'],
     diag:{
       hax5:{ concept:'anti-periplanar-geometry', msg:'Right idea — that one IS axial. But it points up, the same direction as the bromine: that is syn-periplanar (0°), not anti (180°). The two bonds have to point opposite ways.' },
@@ -212,7 +212,7 @@
     why:'Taking the hydrogen from the interior carbon gives 2-butene — disubstituted, and therefore the more stable Zaitsev product. A small base like ethoxide can reach it easily.',
     diag:{
       hc:{ concept:'zaitsev-hofmann', msg:'That gives 1-butene, the less substituted alkene. That is the Hofmann product, which you would get with a BULKY base like t-BuOK. Ethoxide is small, so it takes the interior hydrogen and gives the more substituted alkene.' },
-      ha:{ concept:'anti-periplanar-geometry', msg:'That hydrogen is on the same carbon as the bromine. Removing an alpha hydrogen forms nothing — E2 always takes a BETA hydrogen, from the neighbouring carbon.' },
+      ha:{ concept:'anti-periplanar-geometry', msg:'That hydrogen is on the same carbon as the bromine. Removing an alpha hydrogen forms nothing — E2 always takes a BETA hydrogen, from the neighboring carbon.' },
       br:{ concept:'anti-periplanar-geometry', msg:'That is the leaving group itself. You are looking for the hydrogen being removed from an adjacent carbon.' }
     } },
 
@@ -230,7 +230,7 @@
     prompt:'A cyclohexyl bromide is locked by a bulky tert-butyl group so that the bromine must stay equatorial. Treated with a strong base, what happens?',
     options:['Fast E2, giving the Zaitsev alkene','E2 is blocked — no anti-periplanar hydrogen is available','It rearranges to a more stable carbocation first','E2 proceeds but gives the Hofmann product'],
     answer:1,
-    why:'An equatorial C–Br bond is never 180° from any neighbouring C–H. Normally a ring flip would fix that, but the tert-butyl group holds the ring in one conformer, so the geometry E2 requires simply never occurs.',
+    why:'An equatorial C–Br bond is never 180° from any neighboring C–H. Normally a ring flip would fix that, but the tert-butyl group holds the ring in one conformer, so the geometry E2 requires simply never occurs.',
     diag:{
       0:{ concept:'anti-periplanar-geometry', msg:'You checked the base and the substrate but not the geometry. A strong base is necessary for E2, not sufficient — with the leaving group locked equatorial, the orbitals can never align.' },
       2:{ concept:'mechanism-selection', msg:'Rearrangement needs a carbocation, and E2 with a strong base never forms one. The block here is purely geometric.' },
@@ -283,7 +283,7 @@
     why:'SN1 begins with the C–Br bond breaking on its own, bromide departing with both electrons and leaving a carbocation behind. That slow ionization is the rate-determining step.',
     diag:{
       c1:{ concept:'carbocation-stability', msg:'That carbon stays put — it is what becomes the carbocation. The thing that LEAVES is the group attached to it.' },
-      h:{ concept:'leaving-group-ability', msg:'A hydrogen leaving as hydride would be wildly unfavourable — H⁻ is an extremely strong base. The leaving group here is bromide.' }
+      h:{ concept:'leaving-group-ability', msg:'A hydrogen leaving as hydride would be wildly unfavorable— H⁻ is an extremely strong base. The leaving group here is bromide.' }
     } },
 
   /* =================================================================
@@ -315,9 +315,9 @@
     prompt:'Which mechanism dominates?', reaction:'CH₃CH₂CH₂CH₂Br  +  (CH₃)₃CO⁻K⁺',
     options:['SN2','E2','SN1','E1'],
     answer:1,
-    why:'The substrate is primary, which would normally favour SN2 — but tert-butoxide is enormous. It cannot reach the carbon, so it does what a strong bulky base does: removes a beta proton and eliminates.',
+    why:'The substrate is primary, which would normally favor SN2 — but tert-butoxide is enormous. It cannot reach the carbon, so it does what a strong bulky base does: removes a beta proton and eliminates.',
     diag:{
-      0:{ concept:'steric-hindrance', msg:'You read the substrate correctly (primary favours SN2) but not the reagent. tert-Butoxide is too bulky to attack carbon; bulk on the BASE matters as much as bulk on the substrate.' },
+      0:{ concept:'steric-hindrance', msg:'You read the substrate correctly (primary favors SN2) but not the reagent. tert-Butoxide is too bulky to attack carbon; bulk on the BASE matters as much as bulk on the substrate.' },
       2:{ concept:'substrate-class', msg:'A primary carbocation will not form, so SN1 is impossible regardless of reagent.' },
       3:{ concept:'substrate-class', msg:'E1 needs a carbocation too — same problem as SN1 on a primary substrate.' }
     } },
@@ -665,7 +665,7 @@
      Conformations
      ================================================================= */
   { id:'chair-substituent', kind:'mcq', tier:2, topic:'axial-equatorial', concepts:['chair-axial-equatorial','steric-hindrance'],
-    prompt:'In the favoured chair of methylcyclohexane, the methyl group sits:',
+    prompt:'In the favored chair of methylcyclohexane, the methyl group sits:',
     options:['Axial','Equatorial','It makes no difference','Perpendicular to the ring plane'],
     answer:1,
     why:'An axial methyl suffers 1,3-diaxial interactions with the two axial hydrogens three carbons away. Equatorial points outward into open space, so roughly 95% of molecules sit in that conformer at room temperature.',
@@ -711,10 +711,10 @@
     prompt:'A ¹H NMR shows a 3H triplet and a 2H quartet. What fragment is present?',
     options:['An isopropyl group','An ethyl group','A methyl group on an aromatic ring','A tert-butyl group'],
     answer:1,
-    why:'The classic ethyl pattern. The CH₃ (3H) has two neighbours, giving 2+1 = 3 lines; the CH₂ (2H) has three neighbours, giving 3+1 = 4 lines. The 3:2 integration confirms it.',
+    why:'The classic ethyl pattern. The CH₃ (3H) has two neighbors, giving 2+1 = 3 lines; the CH₂ (2H) has three neighbors, giving 3+1 = 4 lines. The 3:2 integration confirms it.',
     diag:{
       0:{ concept:'nmr-splitting-integration', msg:'An isopropyl group gives a 6H DOUBLET and a 1H septet — the two equivalent methyls integrate to 6, not 3.' },
-      3:{ concept:'nmr-splitting-integration', msg:'A tert-butyl group gives a 9H SINGLET: nine equivalent hydrogens with no neighbouring hydrogens to split them.' }
+      3:{ concept:'nmr-splitting-integration', msg:'A tert-butyl group gives a 9H SINGLET: nine equivalent hydrogens with no neighboring hydrogens to split them.' }
     } },
 
   { id:'nmr-shift-q', kind:'mcq', tier:2, topic:'h-nmr', concepts:['nmr-shift-shielding','electronegativity-trend'],
@@ -791,12 +791,12 @@
 
   { id:'lewis-acid-q', kind:'mcq', tier:2, topic:'lewis-acids', concepts:['lewis-acid-base','electrophile-recognition'],
     prompt:'AlCl₃ has no acidic hydrogen. Why is it a strong Lewis acid?',
-    options:['It releases Cl⁻ which is acidic','Aluminium has an empty orbital and only six valence electrons, so it accepts an electron pair','It has three polar bonds','It reacts with water'],
+    options:['It releases Cl⁻ which is acidic','Aluminum has an empty orbital and only six valence electrons, so it accepts an electron pair','It has three polar bonds','It reacts with water'],
     answer:1,
-    why:'The Lewis definition is about electron pairs, not protons. Aluminium here is two electrons short of an octet with an empty p orbital, so it eagerly accepts a lone pair — which is exactly what it does in Friedel-Crafts catalysis.',
+    why:'The Lewis definition is about electron pairs, not protons. Aluminum here is two electrons short of an octet with an empty p orbital, so it eagerly accepts a lone pair — which is exactly what it does in Friedel-Crafts catalysis.',
     diag:{
-      0:{ concept:'lewis-acid-base', msg:'Chloride is a weak BASE, not an acid — and AlCl₃ acts as an acid by accepting electrons at aluminium, not by releasing anything.' },
-      2:{ concept:'lewis-acid-base', msg:'Polar bonds contribute, but the decisive feature is the empty orbital on aluminium. BF₃ works the same way for the same reason.' }
+      0:{ concept:'lewis-acid-base', msg:'Chloride is a weak BASE, not an acid — and AlCl₃ acts as an acid by accepting electrons at aluminum, not by releasing anything.' },
+      2:{ concept:'lewis-acid-base', msg:'Polar bonds contribute, but the decisive feature is the empty orbital on aluminum. BF₃ works the same way for the same reason.' }
     } },
 
   { id:'tf-pi-nucleophile', kind:'tf', tier:1, topic:'alkene-structure', concepts:['alkene-pi-nucleophile','nucleophile-recognition'],
@@ -817,7 +817,7 @@
 
   { id:'challenge-multi-1', kind:'mcq', tier:4, topic:'substrate-effects', concepts:['mechanism-selection','carbocation-rearrangement','stereochemical-outcome'],
     prompt:'(S)-3-bromo-2,2-dimethylbutane is warmed in methanol. What best describes the product?',
-    options:['A single inverted ether from clean SN2','An ether derived from a rearranged tertiary carbocation, essentially racemic at the new centre','The starting material, unchanged','An alkene only, with no substitution product'],
+    options:['A single inverted ether from clean SN2','An ether derived from a rearranged tertiary carbocation, essentially racemic at the new center','The starting material, unchanged','An alkene only, with no substitution product'],
     answer:1,
     why:'Three things chain together: methanol is a weak neutral nucleophile, so this is solvolysis (SN1). The secondary cation formed sits next to a quaternary carbon, so a methyl shift gives the tertiary cation. Attack on that planar cation happens from either face, so the product is racemic — and the stereochemistry you started with is gone.',
     diag:{
@@ -1054,10 +1054,10 @@
       prompt:'Click the group attached to the BACK carbon.',
       molecule:'newman-butane-anti',
       answer:{ role:'back-methyl' },
-      why:'In a Newman projection the front carbon is the point where three bonds meet, and the back carbon is the circle. Bonds that start at the circle’s edge belong to the back carbon; bonds that reach the centre belong to the front one.',
+      why:'In a Newman projection the front carbon is the point where three bonds meet, and the back carbon is the circle. Bonds that start at the circle’s edge belong to the back carbon; bonds that reach the center belong to the front one.',
       diag:{
-        fme:{ concept:'newman-reading', msg:'That methyl’s bond runs all the way to the centre of the circle, which means it is on the FRONT carbon. Back-carbon bonds stop at the circle’s edge.' },
-        fh1:{ concept:'newman-reading', msg:'Front carbon — its bond reaches the centre point. The back carbon’s three bonds radiate from the rim.' },
+        fme:{ concept:'newman-reading', msg:'That methyl’s bond runs all the way to the center of the circle, which means it is on the FRONT carbon. Back-carbon bonds stop at the circle’s edge.' },
+        fh1:{ concept:'newman-reading', msg:'Front carbon — its bond reaches the center point. The back carbon’s three bonds radiate from the rim.' },
         fc:{ concept:'newman-reading', msg:'That is the front carbon itself, not a group attached to the back one. The back carbon is drawn as the circle.' }
       } },
 
@@ -1106,7 +1106,7 @@
       diag:{
         br:{ concept:'stereocenter-identification', msg:'Bromine has only one bond, so there is nothing around it to arrange. A stereocenter needs FOUR different groups on one atom — look at the carbon.' },
         cl:{ concept:'stereocenter-identification', msg:'A terminal atom with a single bond cannot be a stereocenter. The stereocenter is the atom the four different groups are attached TO.' },
-        h:{ concept:'stereocenter-identification', msg:'That hydrogen is one of the four groups, not the centre they are arranged around.' }
+        h:{ concept:'stereocenter-identification', msg:'That hydrogen is one of the four groups, not the center they are arranged around.' }
       } },
 
     { id:'chirality-why-not', kind:'multi-click', tier:2, topic:'chirality',
@@ -1152,7 +1152,7 @@
       molecule:'fischer-glyceraldehyde',
       sub:'A Fischer projection is a 3D molecule flattened by a strict convention.',
       answer:{ keys:['left','right'] },
-      why:'Horizontal bonds come toward the viewer; vertical bonds go away. That convention is the whole reason a single swap of two groups inverts the configuration — you are swapping a front group with a front group across a fixed centre.',
+      why:'Horizontal bonds come toward the viewer; vertical bonds go away. That convention is the whole reason a single swap of two groups inverts the configuration — you are swapping a front group with a front group across a fixed center.',
       diag:{
         top:{ concept:'fischer-reading', msg:'Vertical bonds point AWAY from you, behind the page. Only the horizontal ones come forward.' },
         bot:{ concept:'fischer-reading', msg:'That is vertical, so it points away from you. Remember it as a bow tie: the horizontal arms come at you.' },
@@ -1166,7 +1166,7 @@
       answer:0,
       why:'One swap inverts the stereocenter, giving the mirror image. Two swaps return you to the original. This is why an odd number of swaps means enantiomer and an even number means the same compound — a rule worth more than re-deriving it every time.',
       diag:{
-        1:{ concept:'fischer-reading', msg:'That is what an even number of swaps gives you. A single swap genuinely inverts the centre — the safe legal moves are 180° rotation in the plane, or holding one group fixed and rotating the other three.' },
+        1:{ concept:'fischer-reading', msg:'That is what an even number of swaps gives you. A single swap genuinely inverts the center — the safe legal moves are 180° rotation in the plane, or holding one group fixed and rotating the other three.' },
         2:{ concept:'enantiomer-vs-diastereomer', msg:'A diastereomer needs more than one stereocenter, with some inverted and some not. With a single stereocenter inverted, the only possible relationship is enantiomer.' },
         3:{ concept:'fischer-reading', msg:'Nothing about connectivity changed — the same atoms are bonded to the same atoms. Constitutional isomers differ in what is attached to what.' }
       } },
@@ -1181,7 +1181,7 @@
       why:'Zaitsev: take the proton that yields the MORE substituted alkene, because more substituted alkenes are more stable. Removing the hydrogen from the carbon that also carries a chain gives a disubstituted alkene; taking one from the terminal methyl gives a monosubstituted one.',
       diag:{
         hc:{ concept:'zaitsev-hofmann', msg:'That gives the less substituted alkene — the Hofmann product. It is the major one only with a bulky base like tert-butoxide, and E1 has no base bulky enough to care.' },
-        ha:{ concept:'zaitsev-hofmann', msg:'That hydrogen is on the carbon that HELD the leaving group, not on a neighbouring carbon. Elimination needs a beta hydrogen — one carbon over.' },
+        ha:{ concept:'zaitsev-hofmann', msg:'That hydrogen is on the carbon that HELD the leaving group, not on a neighboring carbon. Elimination needs a beta hydrogen — one carbon over.' },
         br:{ concept:'carbocation-stability', msg:'Bromide already left; that is what formed the carbocation. This step is about which proton goes next.' }
       } },
 
@@ -1274,7 +1274,7 @@
       why:'21 ppm is deep in the aliphatic region — an sp³ carbon with nothing electronegative on it. Aromatic ring carbons sit far downfield, around 125–140 ppm, because the ring current and the sp² hybridization both deshield them.',
       diag:{
         c1:{ concept:'nmr-shift-shielding', msg:'That is an aromatic ring carbon. Ring carbons appear around 125–140 ppm, not at 21 — the aliphatic peak has to be one of the methyls.' },
-        c2:{ concept:'nmr-shift-shielding', msg:'Aromatic CH carbons show up near 128 ppm. 21 ppm is a shielded sp³ carbon with no electronegative neighbours.' },
+        c2:{ concept:'nmr-shift-shielding', msg:'Aromatic CH carbons show up near 128 ppm. 21 ppm is a shielded sp³ carbon with no electronegative neighbors.' },
         c4:{ concept:'nmr-shift-shielding', msg:'Also a ring carbon, far downfield. Look for the saturated carbons.' }
       } },
 
@@ -1474,7 +1474,7 @@
     prompt:'How many nodal planes pass through the nucleus in a single 2p orbital?',
     options:['One','Zero','Two','Three'],
     answer:0,
-    why:'A p orbital has two lobes with opposite phase, separated by one nodal plane through the nucleus. That node is why the two lobes can overlap constructively with a neighbour to make a pi bond, or destructively to make an antibonding one.',
+    why:'A p orbital has two lobes with opposite phase, separated by one nodal plane through the nucleus. That node is why the two lobes can overlap constructively with a neighbor to make a pi bond, or destructively to make an antibonding one.',
     diag:{
       1:{ concept:'hybridization-assignment', msg:'Zero nodal planes through the nucleus describes an s orbital, which is spherical and has no phase change. A p orbital has two lobes, so something separates them.' },
       2:{ concept:'hybridization-assignment', msg:'Two nodal planes through the nucleus is a d orbital. A p orbital has a single pair of lobes along one axis.' },
@@ -1516,7 +1516,7 @@
       'On the right, because alkynes are unusually acidic'
     ],
     answer:0,
-    why:'Compare the two acids: ethanol at 16 and the alkyne at 25. The equilibrium favours the side with the WEAKER acid — the higher pKa — which is the alkyne side, the reactants. To deprotonate a terminal alkyne you need a base whose conjugate acid is weaker still, which is why NaNH₂ (ammonia, pKa 38) is the reagent people actually use.',
+    why:'Compare the two acids: ethanol at 16 and the alkyne at 25. The equilibrium favors the side with the WEAKER acid — the higher pKa — which is the alkyne side, the reactants. To deprotonate a terminal alkyne you need a base whose conjugate acid is weaker still, which is why NaNH₂ (ammonia, pKa 38) is the reagent people actually use.',
     diag:{
       1:{ concept:'pka-scale', msg:'"Strong base" is not absolute — it is relative to what you are trying to deprotonate. Ethoxide is strong next to water and far too weak next to an alkyne, nine pKa units away.' },
       2:{ concept:'conjugate-pairs', msg:'A nine-unit pKa gap is a factor of 10⁹, which is not close to balanced. Equal amounts would need comparable pKa values.' },
@@ -1577,7 +1577,7 @@
   { id:'cyclohexane-strain-source', kind:'mcq', tier:3, topic:'cyclohexanes', concepts:['torsional-strain','chair-axial-equatorial'],
     prompt:'Why is the chair conformation of cyclohexane essentially strain-free?',
     options:[
-      'Its bond angles are near 109.5° and every C–H is staggered with its neighbours',
+      'Its bond angles are near 109.5° and every C–H is staggered with its neighbors',
       'Because the ring is planar, so all the angles are equal',
       'Because the ring is small enough that strain does not apply',
       'Because all twelve hydrogens are equatorial'
@@ -1585,7 +1585,7 @@
     answer:0,
     why:'The chair achieves both things at once: angles close to the tetrahedral ideal, so no angle strain, and fully staggered bonds all the way round, so no torsional strain. A planar hexagon would force 120° angles and eclipse every C–H pair.',
     diag:{
-      1:{ concept:'torsional-strain', msg:'The chair is deliberately NOT planar. A flat ring would have 120° angles and every neighbouring C–H eclipsed — that is the high-energy arrangement the pucker avoids.' },
+      1:{ concept:'torsional-strain', msg:'The chair is deliberately NOT planar. A flat ring would have 120° angles and every neighboring C–H eclipsed — that is the high-energy arrangement the pucker avoids.' },
       2:{ concept:'torsional-strain', msg:'Ring size matters a great deal: cyclopropane and cyclobutane are badly strained. Six carbons is special because it can pucker into a shape with no strain at all.' },
       3:{ concept:'chair-axial-equatorial', msg:'Six are axial and six equatorial, alternating around the ring. That is a feature of the chair, but it is not why it is strain-free.' }
     } },
@@ -1642,7 +1642,7 @@
     why:'Enantiomers must be mirror images, which requires EVERY stereocenter to invert. Change one of two and you get a stereoisomer that is not a mirror image — a diastereomer, with genuinely different physical properties.',
     diag:{
       1:{ concept:'enantiomer-vs-diastereomer', msg:'Differing in stereochemistry is necessary but not sufficient. Enantiomers need all stereocenters inverted; here only one is.' },
-      2:{ concept:'enantiomer-vs-diastereomer', msg:'Inverting a stereocenter gives a different compound, not the same one. Two swaps at the same centre would return the original — one does not.' },
+      2:{ concept:'enantiomer-vs-diastereomer', msg:'Inverting a stereocenter gives a different compound, not the same one. Two swaps at the same center would return the original — one does not.' },
       3:{ concept:'enantiomer-vs-diastereomer', msg:'Constitutional isomers differ in which atoms are bonded to which. The premise here fixes the connectivity as identical, so the difference has to be spatial.' }
     } },
 
@@ -1655,7 +1655,7 @@
       'Only in a chiral solvent'
     ],
     answer:0,
-    why:'Optical activity requires the molecule as a whole to be chiral, and a meso compound is not: one half is the mirror image of the other, so the molecule is superimposable on its own reflection. The two centres rotate light in opposite senses and cancel internally.',
+    why:'Optical activity requires the molecule as a whole to be chiral, and a meso compound is not: one half is the mirror image of the other, so the molecule is superimposable on its own reflection. The two centers rotate light in opposite senses and cancel internally.',
     diag:{
       1:{ concept:'meso-detection', msg:'Having a stereocenter is not enough — the whole molecule has to be chiral. Meso compounds are the standard counterexample, which is the entire reason the term exists.' },
       2:{ concept:'meso-detection', msg:'The cancellation is exact, not partial: the two halves are perfect mirror images, so the rotations are equal and opposite and sum to zero.' },
@@ -1673,7 +1673,7 @@
       'It halves the rate'
     ],
     answer:0,
-    why:'E1 is two steps and the first — losing the leaving group to form a carbocation — is rate determining. The base only appears in the fast second step, so it does not show up in the rate law. That first-order behaviour is exactly how E1 is distinguished from E2 experimentally.',
+    why:'E1 is two steps and the first — losing the leaving group to form a carbocation — is rate determining. The base only appears in the fast second step, so it does not show up in the rate law. That first-order behavior is exactly how E1 is distinguished from E2 experimentally.',
     diag:{
       1:{ concept:'rate-law-kinetics', msg:'That is E2, which is bimolecular: base and substrate come together in one concerted step, so both appear in the rate law. E1 breaks the bond first, on its own.' },
       2:{ concept:'rate-law-kinetics', msg:'Quadrupling would need second order in base alone, which no common mechanism gives.' },
@@ -1684,7 +1684,7 @@
     prompt:'Which mechanism dominates?', reaction:'(CH₃)₃C–Br,  heated in  CH₃CH₂OH  (no added base)',
     options:['E1','E2','SN2','No reaction'],
     answer:0,
-    why:'Tertiary substrate, so ionization is easy; no strong base present, so the concerted E2 pathway has nothing to remove the proton in the same step; heat favours elimination over substitution. Ethanol is a weak nucleophile and a weak base — a solvent, not a reagent — so this ionizes first and then loses a proton: E1, alongside some SN1.',
+    why:'Tertiary substrate, so ionization is easy; no strong base present, so the concerted E2 pathway has nothing to remove the proton in the same step; heat favors elimination over substitution. Ethanol is a weak nucleophile and a weak base — a solvent, not a reagent — so this ionizes first and then loses a proton: E1, alongside some SN1.',
     diag:{
       1:{ concept:'basicity-vs-nucleophilicity', msg:'E2 needs a strong base present to pull the proton off in the same step as the C–Br bond breaks. Ethanol is not one — it is the solvent, and a very weak base.' },
       2:{ concept:'substrate-class', msg:'A tertiary carbon has no accessible backside: three methyl groups sit across the trajectory, so SN2 is essentially impossible regardless of nucleophile.' },

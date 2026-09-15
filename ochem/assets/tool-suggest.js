@@ -1,4 +1,4 @@
-/* "Practise this in —" : the link from a topic back to the tool that drills it.
+/* "Practice this in —" : the link from a topic back to the tool that drills it.
 
    tools-registry.js has always declared, for each tool, which curriculum
    topics it belongs to. Nothing read the field. The result was a site where

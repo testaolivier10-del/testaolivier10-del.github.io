@@ -630,7 +630,7 @@ The fourth work order. Items are numbered as they were given.
 | 5 | Reference cards: the impossible "M11" GCS example | **done** |
 | 6 | Formulary: the nitroglycerin heart-rate contraindication, and that protocols vary | **done** |
 | 7 | SN2 figure: cyanide's triple bond and lone pair, overlapping atoms, the ethyl group outside the frame | **done** |
-| 8 | The remaining British spellings in visible text | pending |
+| 8 | The remaining British spellings in visible text | **done** |
 | 9 | Confirm the live site matches main (2,106 questions, Terms link) | pending |
 | 10 | The three deferred decisions: notes chapters to JSON with figures; light and dark homepage screenshots, lazy-loaded; balance the absolute-word tell using only genuinely absolute keys | pending |
 
@@ -709,6 +709,45 @@ then rendered in headless Chromium to confirm the triple bond reads as three
 lines, the lone pair as two dots facing the electrophile, and the ethyl group
 as whole.
 
+### Item 8 — why two earlier spelling passes kept leaving some behind
+
+Both earlier passes swept text nodes. Most of the words on this site are not in
+text nodes: the study-notes chapters, the scenario graph, both question banks
+and every tool's copy live inside JavaScript strings, and a text-node sweep
+cannot see any of them. That left **235 occurrences across 67 files**.
+
+The difficulty was never the word list. It was telling text from names.
+`stereocentre` in a sentence is a misspelling; `stereocentre` as an object key
+is a name, and renaming a key silently breaks a lookup that no test would
+notice. So `scripts/lib/spelling.mjs` decides what counts as visible: text
+nodes, the attributes a reader sees or hears (`alt`, `title`, `aria-label`,
+`placeholder`, meta `content`), and string literals of **three words or more**
+— a threshold chosen because a lookup key is almost never a sentence fragment.
+Nothing outside a string, a text node or a visible attribute is ever touched.
+
+Verified structurally rather than by reading 235 diffs:
+
+- every changed `.js` file had all its string and template literals stripped,
+  and the remaining code was **byte-identical** to the committed version, in
+  all 15 of them. Nothing outside a string moved;
+- every changed `.html` file had its tag structure compared with the committed
+  version, with visible attribute values masked. Identical in all 50. Only text
+  and visible attributes moved.
+
+Two occurrences were deliberately left:
+
+| Left alone | Why |
+|---|---|
+| `analyse()` in `ochem/assets/tools/acid-base.js` prose | It names the real function `analyse(a, b)` in that file. Rewriting the sentence would make it point at nothing. The check exempts a word followed by a bracket for the same reason |
+| Test names and assertion messages under `scripts/` | Developer-facing, not anything a student reads |
+
+One occurrence could not be fixed on the page at all. `ochem/notes/radical-halogenation.html`
+carries an `aria-label` that is **generated** by `scripts/build-ochem-figures.mjs`,
+so the page-level edit was overwritten by the next rebuild. Check 27 caught it
+immediately, which is the check working exactly as intended: it reads the
+generated output, so a stale generator cannot hide behind a corrected page. The
+generator string was fixed at source.
+
 ---
 
 ## Already settled
@@ -773,7 +812,9 @@ thing twice** across its body, callouts and captions ·
 triple has to be the sum ·
 26. **Hand-placed molecule diagrams are actually drawable** — inside the
 canvas, no touching circles, no bond with nothing to draw, no lone pair sitting
-on a neighbour ·
+on a neighbor ·
+27. **No British spelling in anything a reader sees** — text nodes, the
+attributes a reader hears or sees, and string literals of three words or more ·
 8 now also covers
 **advertised section counts**, with changelog.html exempt because a dated
 entry is a record rather than a claim about now

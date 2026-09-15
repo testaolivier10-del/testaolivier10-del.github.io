@@ -1451,6 +1451,48 @@ for (const file of walk(join(ROOT, 'ochem', 'mechanisms'), ['.html'])) {
   }
 }
 
+// ---- 27. No British spelling in anything a reader sees ----
+// The site teaches an American exam and an American chemistry course. Two
+// earlier passes converted what a text-node sweep could reach, which left
+// everything held in a JavaScript string — the study-notes chapters, the
+// scenario nodes, both question banks, the tool copy — and that is most of the
+// words on the site. 235 occurrences in 67 files.
+//
+// The list and the visible-span logic live in scripts/lib/spelling.mjs, and
+// the distinction they draw is the whole point: `stereocentre` in a sentence
+// is a misspelling, `stereocentre` as an object key is a name, and renaming a
+// key silently breaks a lookup. Only text nodes, the attributes a reader sees
+// (alt, title, aria-label, placeholder, meta content) and string literals of
+// three words or more are in scope.
+//
+// Out of scope by design: scripts/ and docs/, which are developer notes rather
+// than anything a student reads.
+{
+  const spelling = await import('./lib/spelling.mjs');
+  // Vendored third-party code is nobody's prose, and Web Audio's AnalyserNode
+  // is an API name rather than a spelling choice.
+  const SKIP = /^(?:scripts|docs)\/|\/vendor\//;
+  const textFiles = walk(ROOT, ['.html', '.json', '.js', '.mjs'])
+    .filter((f) => !SKIP.test(relative(ROOT, f).split(sep).join('/')));
+
+  for (const file of textFiles) {
+    const rel = relative(ROOT, file).split(sep).join('/');
+    const src = readFileSync(file, 'utf8');
+    const spans = spelling.visibleSpans(rel, src);
+    if (!spans.length) continue;
+    for (const hit of spelling.findAll(src)) {
+      if (!spans.some(([a, b]) => hit.at >= a && hit.at < b)) continue;
+      // `analyse()` inside a sentence names the real function analyse(a, b) in
+      // ochem/assets/tools/acid-base.js. Rewriting the sentence would make it
+      // point at nothing, so a word followed by a bracket is a reference.
+      if (src[hit.at + hit.word.length] === '(') continue;
+      const line = src.slice(0, hit.at).split('\n').length;
+      fail(`${rel}:${line}: "${hit.word}" is a British spelling in visible text — ` +
+           `use "${spelling.americanize(hit.word, hit.brit, hit.amer)}".`);
+    }
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);

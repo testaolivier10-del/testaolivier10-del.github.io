@@ -550,7 +550,7 @@
       var winner = eHere.total < eOther.total ? 'the one on screen' : 'the other one';
       html += '<div class="tnote ' + (eHere.total <= eOther.total ? 'tnote--good' : 'tnote--warn') + '">' +
         '<span class="tnote__k">' + (eHere.total <= eOther.total ? 'You are looking at the major conformer' : 'The other chair is better') + '</span>' +
-        'The gap is ' + gap.toFixed(2) + ' kcal/mol in favour of ' + winner + '. ' +
+        'The gap is ' + gap.toFixed(2) + ' kcal/mol in favor of ' + winner + '. ' +
         'At room temperature that works out to about ' + pct.toFixed(gap > 2 ? 2 : 1) + '% of molecules sitting in the better chair ' +
         'at any moment — energy differences this small still produce lopsided ratios, because the relationship is exponential.' +
       '</div>';

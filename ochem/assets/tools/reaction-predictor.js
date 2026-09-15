@@ -181,7 +181,7 @@
     say('Temperature', heat ? 'elimination' : 'substitution (slightly)',
       heat
         ? 'Heat. Elimination makes more particles from fewer, so it has the larger positive entropy change — and the TΔS term grows with temperature. Heating a mixture that could go either way pushes it toward the alkene.'
-        : 'Room temperature. Nothing is being pushed toward elimination by entropy, which slightly favours substitution in any case that is otherwise balanced.');
+        : 'Room temperature. Nothing is being pushed toward elimination by entropy, which slightly favors substitution in any case that is otherwise balanced.');
 
     /* --- the arbitration --- */
     if(sub.cls === 'methyl'){
@@ -199,7 +199,7 @@
         : 'Nothing worth writing down. The reagent is too weak a nucleophile to attack, and with no beta hydrogen and no possible carbocation there is no other pathway.';
     } else if(sub.cls === '1-hindered'){
       out.major = 'No reaction';
-      out.verdict = 'Effectively nothing. This is the trap: counting carbons says primary and therefore SN2, but the neighbouring quaternary carbon blocks the approach, and with no beta hydrogen on it and no possibility of ionizing, there is no second-choice pathway either.';
+      out.verdict = 'Effectively nothing. This is the trap: counting carbons says primary and therefore SN2, but the neighboring quaternary carbon blocks the approach, and with no beta hydrogen on it and no possibility of ionizing, there is no second-choice pathway either.';
     } else if(sub.cls === '1'){
       if(r.bulky && strongBase){
         /* A bulky base still gives a little substitution if it is a
@@ -419,7 +419,7 @@
             ({ methyl:'a methyl carbon', '1':'primary', '1-hindered':'primary but hindered',
                '2':'secondary', '3':'tertiary', benzylic:'benzylic' })[cls] + '. ' +
             (betaH ? 'There are beta hydrogens, so elimination is on the table.'
-                   : 'There is no hydrogen on any neighbouring carbon, so elimination cannot happen here at all.')
+                   : 'There is no hydrogen on any neighboring carbon, so elimination cannot happen here at all.')
     };
   }
 

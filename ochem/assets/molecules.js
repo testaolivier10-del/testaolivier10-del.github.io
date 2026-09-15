@@ -204,7 +204,7 @@
         fh1: { x:f[1].x, y:f[1].y, r:12, label:'H', role:'front-h' },
         fh2: { x:f[2].x, y:f[2].y, r:12, label:'H', role:'front-h' },
         bme: { x:back[0].x, y:back[0].y, r:17, label:'CH₃', role:'back-methyl', note:'The back methyl, 180° round from the front one. That 180° is what "anti" means.' },
-        bh1: { x:back[1].x, y:back[1].y, r:12, label:'H', role:'back-h', note:'A back hydrogen. Back bonds start at the circle’s edge, front bonds at its centre.' },
+        bh1: { x:back[1].x, y:back[1].y, r:12, label:'H', role:'back-h', note:'A back hydrogen. Back bonds start at the circle’s edge, front bonds at its center.' },
         bh2: { x:back[2].x, y:back[2].y, r:12, label:'H', role:'back-h' }
       },
       bonds: [{a:'fc',b:'fme'},{a:'fc',b:'fh1'},{a:'fc',b:'fh2'}],
@@ -587,7 +587,7 @@
     },
     bonds: [{a:'r1',b:'r2'},{a:'r2',b:'r3'},{a:'r3',b:'r4'},{a:'r4',b:'r5'},{a:'r5',b:'r6'},{a:'r6',b:'r1'},
             {a:'r6',b:'br'},{a:'r2',b:'hax2'},{a:'r5',b:'hax5'},{a:'r3',b:'heq3',style:'faint'}],
-    caption: 'Bromine sits axial. Only an axial hydrogen on a neighbouring carbon is 180° from it.'
+    caption: 'Bromine sits axial. Only an axial hydrogen on a neighboring carbon is 180° from it.'
   };
 
   /* ---- Carbonyls ------------------------------------------------------ */
