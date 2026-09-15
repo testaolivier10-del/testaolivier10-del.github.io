@@ -341,7 +341,7 @@ their lessons exist.
 
 | Item | Status |
 |---|---|
-| Rewrite options flagged by the three tell checks, one domain per commit | in progress — 8 domains done, ~7 to go |
+| Rewrite options flagged by the three tell checks, one domain per commit | in progress — 9 domains done, ~6 to go |
 
 The scale, measured before starting:
 
@@ -416,9 +416,15 @@ Running totals:
 | Musculoskeletal & Burns | 301 / 9.3% | 86 / 39.5% | 159 / 20.1% |
 | Obstetrics | 275 / 10.2% | 82 / 36.6% | 151 / 21.2% |
 | Scene Safety & Operations | 251 / 11.2% | 79 / 34.2% | 145 / 22.1% |
-| Bleeding & Shock | **228 / 12.7%** | **75 / 30.7%** | **140 / 22.9%** |
+| Bleeding & Shock | 228 / 12.7% | 75 / 30.7% | 140 / 22.9% |
+| Pediatrics | **205 / 14.1%** | **73 / 28.8%** | **132 / 24.2%** |
 
-Thresholds now `absoluteFloor: 0.125`, `hedgeCeiling: 0.315`, `justifyFloor: 0.225`.
+Thresholds now `absoluteFloor: 0.14`, `hedgeCeiling: 0.295`, `justifyFloor: 0.24`.
+
+**The justification tell is effectively dead.** 16.9% → 24.2% against a 25%
+baseline. A trailing ", since ..." clause no longer tells a student anything
+about whether the option is right, which is the entire goal. What remains on
+that one is holding the number, not moving it.
 
 **Where distractor rewriting runs out.** Absolute has gone 6.2% → 9.3% across
 five domains, and the remaining work will keep moving it, but not to 25%.
