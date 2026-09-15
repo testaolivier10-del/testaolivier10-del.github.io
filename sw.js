@@ -24,7 +24,7 @@
 // model, the 670 KB three.js bundle and the fonts. Those never change with
 // the shell (they are content-addressed by path, and a new model would be a
 // new file), so they live in STATIC_CACHE, which activate leaves alone.
-const CACHE_NAME = 'levlprep-v30';
+const CACHE_NAME = 'levlprep-v31';
 const STATIC_CACHE = 'levlprep-static';
 const PRECACHE_URLS = [
   'index.html',
@@ -203,7 +203,7 @@ self.addEventListener('fetch', event => {
    A service worker that receives a push and shows nothing gets its
    permission revoked on most platforms, so every path below ends in a
    notification — including the paths where the fetch failed. */
-const REMINDER_ENDPOINT = '';
+const REMINDER_ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev';
 
 self.addEventListener('push', event => {
   event.waitUntil((async () => {
