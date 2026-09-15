@@ -22,34 +22,7 @@
      wrangler secret put SUPABASE_SERVICE_KEY
 */
 import { sendPush } from './push.js';
-
-/* After this many sends with no sign of life from the browser, stop. The row
-   is updated from a page the student is looking at, so `unanswered` resetting
-   to zero IS the sign of life — it means they came back.
-
-   Three is a deliberate number. One is not a reminder, it is a coin flip
-   against whether they had their phone. A daily notification forever is how an
-   app gets its permission revoked, and a revoked permission cannot be asked
-   for again. Three days of "you have work waiting" and then silence is the
-   most a study app has earned. */
-const MAX_UNANSWERED = 3;
-
-/* Sent at most this many per cron tick, so one run cannot take longer than the
-   Worker's CPU budget. Anything left over is picked up fifteen minutes later,
-   which for a daily reminder is not a delay anybody can perceive. */
-const BATCH = 200;
-
-function sb(env, path, init) {
-  return fetch(`${env.SUPABASE_URL}/rest/v1/${path}`, {
-    ...init,
-    headers: {
-      apikey: env.SUPABASE_SERVICE_KEY,
-      Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}`,
-      'Content-Type': 'application/json',
-      ...(init && init.headers),
-    },
-  });
-}
+import { sb, sha256Hex, MAX_UNANSWERED, PUSH_BATCH } from './store.js';
 
 /* The words for one notification, fetched by the service worker when it wakes.
 
@@ -79,11 +52,6 @@ export async function reminderText(request, env) {
   }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
 }
 
-async function sha256Hex(s) {
-  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
-  return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('');
-}
-
 /* The cron. Runs on whatever schedule wrangler.toml declares. */
 export async function runReminders(env) {
   if (!env.SUPABASE_SERVICE_KEY || !env.VAPID_PRIVATE_KEY) {
@@ -96,7 +64,7 @@ export async function runReminders(env) {
   const res = await sb(
     env,
     `push_subscriptions?next_send_at=lte.${now}&next_send_at=not.is.null` +
-      `&select=id,endpoint,p256dh,auth,unanswered&order=next_send_at.asc&limit=${BATCH}`,
+      `&select=id,endpoint,p256dh,auth,unanswered&order=next_send_at.asc&limit=${PUSH_BATCH}`,
     { method: 'GET' }
   );
   if (!res.ok) return { error: `read failed: ${res.status}` };

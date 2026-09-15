@@ -24,31 +24,18 @@
    because a key is missing is noise rather than a signal.
 */
 
-const MAX_UNANSWERED = 3;
-const BATCH = 100;
-
 /* The template lives in scripts/email/reminder.html so it can be read and
    edited as a file rather than as a string in a Worker. Inlined here at deploy
    time by whoever pastes this in — kept minimal and in one place so the two
    cannot drift far. */
+import { sb, MAX_UNANSWERED, EMAIL_BATCH } from './store.js';
+
 const TEMPLATE = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{TITLE}}</title></head><body style="margin:0;padding:0;background:#F3F6F4;"><div style="display:none;max-height:0;overflow:hidden;opacity:0;">{{BODY}}</div><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F6F4;padding:32px 16px;"><tr><td align="center"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:460px;background:#FFFFFF;border-radius:16px;padding:32px 28px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;"><tr><td style="font-size:13px;font-weight:700;color:#127264;letter-spacing:.04em;text-transform:uppercase;padding-bottom:14px;">LevlPrep</td></tr><tr><td style="font-size:21px;font-weight:800;color:#17241F;line-height:1.3;padding-bottom:8px;">{{TITLE}}</td></tr><tr><td style="font-size:15px;font-weight:400;color:#526C66;line-height:1.55;padding-bottom:24px;">{{BODY}}</td></tr><tr><td style="padding-bottom:26px;"><a href="{{URL}}" style="display:inline-block;background:#127264;color:#FFFFFF;font-size:15px;font-weight:700;text-decoration:none;padding:13px 24px;border-radius:12px;">Pick up where you left off</a></td></tr><tr><td style="font-size:12px;font-weight:400;color:#8A9A95;line-height:1.6;border-top:1px solid #E4ECE8;padding-top:18px;">You turned these on in your LevlPrep settings. They only arrive when you actually have work waiting, and they stop by themselves if you stop studying.<br><br><a href="{{UNSUB}}" style="color:#526C66;">Stop sending these</a> &mdash; one click, no sign-in.</td></tr></table></td></tr></table></body></html>`;
 
 function esc(s) {
   return String(s == null ? '' : s)
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-}
-
-function sb(env, path, init) {
-  return fetch(`${env.SUPABASE_URL}/rest/v1/${path}`, {
-    ...init,
-    headers: {
-      apikey: env.SUPABASE_SERVICE_KEY,
-      Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}`,
-      'Content-Type': 'application/json',
-      ...(init && init.headers),
-    },
-  });
 }
 
 function render(row, env) {
@@ -142,7 +129,7 @@ export async function runEmailReminders(env) {
   const res = await sb(
     env,
     `email_reminders?next_send_at=lte.${now}&next_send_at=not.is.null` +
-      `&select=user_id,email,unsub_token,title,body,url,unanswered&order=next_send_at.asc&limit=${BATCH}`,
+      `&select=user_id,email,unsub_token,title,body,url,unanswered&order=next_send_at.asc&limit=${EMAIL_BATCH}`,
     { method: 'GET' }
   );
   if (!res.ok) return { error: `read failed: ${res.status}` };

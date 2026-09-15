@@ -43,6 +43,12 @@ jobs:
         run: |
           node scripts/build-tutor-bank.mjs
           git diff --exit-code -- nremt/assets/tutor-bank.json ochem/assets/tutor-bank.json
+      # The single-file Worker, flattened from worker/src/ so it can be pasted
+      # into Cloudflare's dashboard with nothing installed. Of everything
+      # generated here this is the one where going stale means the WRONG CODE
+      # RUNS IN PRODUCTION, rather than a missing tag or a broken link.
+      - name: the pasteable Worker matches its source
+        run: node scripts/build-worker.mjs --check
 
   unit-tests:
     runs-on: ubuntu-latest
