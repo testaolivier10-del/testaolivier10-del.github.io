@@ -130,6 +130,23 @@
       { id: 'nucleophilic-addition', title: 'Nucleophilic addition', href: 'lessons/nucleophilic-addition.html', mechanism: 'mechanisms/carbonyl-addition.html', dependsOn: ['aldehydes-ketones', 'nucleophiles'] },
       { id: 'acetals', title: 'Acetals & hemiacetals', href: 'lessons/acetals.html', dependsOn: ['nucleophilic-addition', 'alcohol-reactions', 'resonance'] }
     ]},
+    /* Oxidation & Reduction sits after Carbonyl Chemistry because it needs
+       both ends of the ladder available: alcohols (chapter 10) to oxidize and
+       aldehydes and ketones (chapter 11) to reduce. Alkene oxidation is a
+       backward reference to chapter 8, which is fine — the alkene is the
+       substrate there, not a prerequisite idea being introduced.
+
+       Keeping oxidation and reduction in one chapter rather than scattering
+       them is deliberate: nearly every question on this material is "which
+       reagent, and what survives", and that comparison only works if the
+       reagents are in the same place. */
+    { id: 'redox', title: 'Oxidation & Reduction', topics: [
+      { id: 'oxidation-states', title: 'Oxidation levels in organic chemistry', href: 'lessons/oxidation-states.html', dependsOn: ['electronegativity', 'alcohol-reactions'] },
+      { id: 'alcohol-oxidation', title: 'Oxidizing alcohols', href: 'lessons/alcohol-oxidation.html', dependsOn: ['oxidation-states', 'aldehydes-ketones'] },
+      { id: 'carbonyl-reduction', title: 'Reducing carbonyls', href: 'lessons/carbonyl-reduction.html', dependsOn: ['oxidation-states', 'nucleophilic-addition'] },
+      { id: 'hydrogenation', title: 'Catalytic hydrogenation', href: 'lessons/hydrogenation.html', dependsOn: ['oxidation-states', 'alkene-structure', 'alkynes'] },
+      { id: 'alkene-oxidation', title: 'Oxidative cleavage & dihydroxylation', href: 'lessons/alkene-oxidation.html', dependsOn: ['oxidation-states', 'epoxides', 'diastereomers'] }
+    ]},
     { id: 'carboxylic-acids', title: 'Carboxylic Acids & Derivatives', topics: [
       { id: 'carboxylic-acids', title: 'Carboxylic acids', href: 'lessons/carboxylic-acids.html', dependsOn: ['resonance', 'pka', 'acidity-factors'] },
       { id: 'esters-amides', title: 'Esters & amides', href: 'lessons/esters-amides.html', dependsOn: ['carboxylic-acids', 'leaving-groups'] },

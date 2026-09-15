@@ -103,6 +103,30 @@
       dependsOn:['conjugation-recognition'],
       hint:'s-cis or nothing — and because it is concerted, the starting geometry survives into the product.',
       teach:'The diene must react from its s-cis conformation, which is the commonest reason a Diels-Alder fails. The reaction is concerted with no intermediate, so it is stereospecific: cis substituents on the dienophile stay cis in the product, trans stays trans. Electron-rich diene plus electron-poor dienophile is fastest. The endo product is the kinetic one, via secondary orbital interactions.' },
+    /* ---- Oxidation & reduction -----------------------------------------
+       Four concepts. Counting the oxidation level is a separate skill from
+       knowing the reagents; and among the reagents, "where does it stop" and
+       "what else does it touch" fail independently, so they are separate too.
+       Stereochemical control (syn vs anti, cis vs trans) is its own thing
+       again, and is what synthesis questions usually hinge on. */
+    { id:'oxidation-level', title:'Counting oxidation level', family:'Oxidation & reduction',
+      topics:['oxidation-states','alcohol-oxidation','carbonyl-reduction','alkene-oxidation','esters-amides'],
+      dependsOn:['electronegativity-trend'],
+      hint:'More bonds to O (or N, halogen) is up; more bonds to H is down; C-C counts zero.',
+      teach:'Oxidation gains bonds to electronegative atoms or loses bonds to hydrogen; reduction is the reverse. The ladder runs alkane, alcohol, aldehyde/ketone, carboxylic acid, CO2. A reaction that gains one C-H and one C-O is redox-NEUTRAL, which is most alkene additions. Acid, ester, amide and nitrile all sit on the same rung, which is why they interconvert by substitution rather than by redox.' },
+    { id:'oxidant-choice', title:'Where an oxidation stops', family:'Oxidation & reduction',
+      topics:['alcohol-oxidation','oxidation-states','alkene-oxidation'], dependsOn:['oxidation-level'],
+      hint:'For a chromium reagent, ask whether there is water in the flask.',
+      teach:'A primary alcohol gives an aldehyde with an ANHYDROUS oxidant (PCC, Swern, DMP) and a carboxylic acid with an AQUEOUS one (Jones, CrO3/H2SO4). The reason is the hydrate: in water the aldehyde forms a gem-diol, which is an alcohol again and gets oxidized a second time. Secondary alcohols give ketones either way; tertiary alcohols do not react, because there is no C-H on the carbinol carbon to remove.' },
+    { id:'reductant-scope', title:'What a reducing agent will touch', family:'Oxidation & reduction',
+      topics:['carbonyl-reduction','hydrogenation','esters-amides','amine-reactions'], dependsOn:['oxidation-level'],
+      hint:'Choosing the WEAKER reagent on purpose is usually how selectivity is achieved.',
+      teach:'NaBH4 reduces aldehydes and ketones and little else, and tolerates methanol. LiAlH4 also reduces esters, acids, amides and nitriles, and reacts violently with water. An amide plus LiAlH4 gives an AMINE, not an alcohol. Neither hydride touches an isolated C=C — that needs catalytic hydrogenation, which in turn leaves esters, acids and benzene rings alone under ordinary conditions.' },
+    { id:'redox-stereochemistry', title:'Stereochemical control in redox', family:'Oxidation & reduction',
+      topics:['hydrogenation','alkene-oxidation','diastereomers','epoxides','alkynes'],
+      dependsOn:['reductant-scope','stereochemical-outcome'],
+      hint:'Ask whether both new bonds arrive on the same face.',
+      teach:'Surface and cyclic mechanisms deliver both new groups to one face: catalytic hydrogenation is SYN, and OsO4 gives the SYN (cis) diol. Going through an epoxide and opening it with water gives the ANTI (trans) diol instead, because the nucleophile attacks from the opposite face. For alkynes, Lindlar gives the cis alkene and Na/NH3 gives the trans one — one substrate, two conditions, two geometries.' },
     { id:'skeletal-notation', title:'Reading skeletal structures', family:'Structure & bonding',
       topics:['skeletal-structures','lewis-structures','alkene-structure','cyclohexanes','aromaticity'],
       hint:'Every vertex AND every end of a line is a carbon — the ends are the ones people miss.',

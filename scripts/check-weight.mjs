@@ -156,21 +156,29 @@ const DATA_BUDGETS = [
   ['nremt/assets/explanations.json', 444],
   // The assistant's teaching index for each course.
   ['nremt/assets/tutor-bank.json', 528],
-  ['ochem/assets/tutor-bank.json', 182],
+  /* The ochem index grows with the course itself — it is generated from the
+     notes and the question bank — so it moves every time a chapter lands.
+     Unlike practice-bank.json above, this one is genuinely not a first-paint
+     cost: it is fetched only when a reader opens the assistant. Budgeted with
+     this file's usual ~10% headroom rather than held to the measured value,
+     so a chapter does not fail the build for the index doing its job. */
+  ['ochem/assets/tutor-bank.json', 200],
   /* Ochem's question bank, keyed by topic. practice.html and review.html both
      WAIT on this file before their first screen, so every kilobyte here is
      first-paint latency on those two pages — which is why it is budgeted at
      all rather than treated as background data.
 
-     268 -> 280 for the conjugation chapter's 150 questions. That is the honest
-     cost of a bigger bank and it is roughly proportional, but the trend is the
-     thing to watch: the chapters still to be written would add around a
-     thousand more questions and push this past 400 KB. Before that happens
-     this bank wants the same treatment questions.json already gets in
-     build-question-bank.mjs — split the explanations out of the core, so the
-     pages only block on what they need to ask the first question. Recorded in
-     TRACKER; raise this budget once more at most before doing it. */
-  ['ochem/assets/practice-bank.json', 280],
+     268 -> 280 for the conjugation chapter, then 280 -> 292 for oxidation and
+     reduction. That was the one further raise the previous note allowed, and
+     it is now spent.
+
+     DO NOT RAISE THIS AGAIN. The chapters still to be written would add
+     around a thousand more questions and push this past 400 KB of blocking
+     latency. Before the next chapter lands, this bank needs the treatment
+     questions.json already gets in build-question-bank.mjs: split the
+     explanations out of the core so these two pages block only on what they
+     need to ask the first question. Recorded in TRACKER. */
+  ['ochem/assets/practice-bank.json', 292],
 ];
 
 const REF_RE = /(?:href|src)="([^"]+)"/g;

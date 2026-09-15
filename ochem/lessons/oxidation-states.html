@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oxidation levels in organic chemistry — Oxidation &amp; Reduction | Organic Chemistry</title>
+<meta name="description" content="How oxidation and reduction are counted in organic chemistry, the carbon oxidation ladder, and why tertiary alcohols cannot be oxidized.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/oxidation-states.html">
+<meta property="og:title" content="Oxidation levels in organic chemistry — Oxidation &amp; Reduction | Organic Chemistry">
+<meta property="og:description" content="How oxidation and reduction are counted in organic chemistry, the carbon oxidation ladder, and why tertiary alcohols cannot be oxidized.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/oxidation-states.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/oxidation-states.html#lesson",
+      "name": "Oxidation levels in organic chemistry",
+      "url": "https://levlprep.com/ochem/lessons/oxidation-states.html",
+      "description": "How oxidation and reduction are counted in organic chemistry, the carbon oxidation ladder, and why tertiary alcohols cannot be oxidized.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Oxidation levels in organic chemistry"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Oxidation & Reduction",
+          "item": "https://levlprep.com/ochem/learn.html#m-redox"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Oxidation levels in organic chemistry",
+          "item": "https://levlprep.com/ochem/lessons/oxidation-states.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 12 &middot; Oxidation &amp; Reduction</div>
+    <h1 style="margin-bottom:4px;">Oxidation levels in organic chemistry.</h1>
+    <p class="lede" style="margin-top:0;">Count bonds to oxygen and bonds to hydrogen, and the ladder does the rest.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/oxidation-states.html">Oxidation levels in organic chemistry &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/alcohol-oxidation.html">Oxidizing alcohols</a><a href="../lessons/carbonyl-reduction.html">Reducing carbonyls</a><a href="../lessons/hydrogenation.html">Catalytic hydrogenation</a><a href="../lessons/alkene-oxidation.html">Oxidative cleavage</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* Four transformations to classify. Two are the obvious cases and two are
+     the ones people get wrong: hydrogenation (a reduction whose name does not
+     say so) and HBr addition (redox-neutral, because the gain in C-H and the
+     gain in C-Br cancel). */
+  var CASES = [
+    { id:'t1', text:'An alcohol becomes a ketone', right:'ox',
+      why:'A C–H on the carbinol carbon is replaced by a second bond to oxygen. Bonds to O up, bonds to H down — oxidation twice over.' },
+    { id:'t2', text:'An alkene plus H₂ becomes an alkane', right:'red',
+      why:'Two new C–H bonds and nothing gained to oxygen. This is a reduction, which is worth saying out loud because the word "hydrogenation" does not contain it.' },
+    { id:'t3', text:'An alkene plus HBr becomes an alkyl bromide', right:'neither',
+      why:'One new C–H (down) and one new C–Br (up). They cancel exactly, so this is redox-neutral — as most of the alkene additions are.' },
+    { id:'t4', text:'An ester becomes a carboxylic acid by hydrolysis', right:'neither',
+      why:'Both sit at +3 on the ladder. Exchanging OR for OH changes neither the hydrogen count nor the count of bonds to electronegative atoms, which is why acyl derivatives interconvert by substitution rather than by redox.' }
+  ];
+  var KINDS = [{k:'ox',l:'Oxidation'},{k:'red',l:'Reduction'},{k:'neither',l:'Neither'}];
+
+  window.OchemLessonEngine.start({
+    topicId: 'oxidation-states',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A working test that beats counting electrons.',
+        bodyHtml: '<p class="step-body">The general-chemistry definition — oxidation is loss of electrons — is correct and almost unusable here, because organic reactions rarely move a whole electron between identifiable ions. They change what a carbon is bonded to. So organic chemists use a test that gives the same answers with far less arithmetic:</p>' +
+          '<div class="explain-box"><b>Oxidation</b> = gaining bonds to oxygen (or another electronegative atom), <b>or</b> losing bonds to hydrogen.<br><b>Reduction</b> = the reverse.</div>' +
+          '<p class="step-body" style="margin-bottom:0;">A reaction that changes neither count is <b>neither</b>. Adding HBr across an alkene gains a C–H <i>and</i> a C–Br, and those cancel. Most of the alkene additions you already know are redox-neutral, and noticing that is a fast way to check you have not mislabeled something.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The ladder, and why it organizes the rest of the chapter.',
+        bodyHtml: '<p class="step-body">If you want the actual number: each bond to a more electronegative atom counts <b>+1</b>, each bond to hydrogen counts <b>−1</b>, and each bond to another carbon counts <b>0</b> — which is why you can usually ignore the rest of the molecule.</p>' +
+          '<p class="step-body" style="text-align:center;font-family:var(--font-mono);font-weight:700;">CH₄ (−4) &rarr; CH₃OH (−2) &rarr; CH₂O (0) &rarr; HCO₂H (+2) &rarr; CO₂ (+4)</p>' +
+          '<p class="step-body" style="margin-bottom:0;">Each step is a two-electron oxidation. Reading it as a ladder makes several later facts obvious rather than memorized. An alcohol and an alkyl halide sit on the <b>same rung</b>, so converting one to the other is not redox at all. A carboxylic acid, an ester, an amide and a nitrile also all sit together at <b>+3</b> — which is exactly why interconverting them is substitution, the same point the nomenclature chapter made about the top of the priority list.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Oxidation, reduction, or neither?</h2>' +
+            '<p class="step-body">Count bonds to oxygen and bonds to hydrogen on the carbon that changes. Two of these four are not what their names suggest.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.text + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Classify ' + c.text + '">' +
+                KINDS.map(function(k){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-k="' + k.k + '">' + k.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-k') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Not that one. Count both things separately: bonds to oxygen (or N, or halogen), and bonds to hydrogen. If both go up, they cancel.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. The two to remember are hydrogenation, which is a reduction despite its name, and HBr addition, which is neither.'
+                  : 'All four, first time — including both of the ones whose names mislead.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'What is the oxidation state of carbon in CH₃OH?',
+        options: ['−4','−2','0','+2'],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Three bonds to H at −1 each is −3, one bond to O at +1 is +1, total −2. It sits one rung above methane and one below formaldehyde.',
+        wrongFeedback: 'Count each bond separately: three to hydrogen and one to oxygen. Bonds to hydrogen count −1 and bonds to oxygen +1.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'Why can a tertiary alcohol not be oxidized under ordinary conditions?',
+        options: [
+          'Its OH is too hindered to react',
+          'There is no C–H on the carbinol carbon to remove',
+          'Tertiary carbons are already fully oxidized',
+          'The reagent cannot reach the oxygen'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Oxidation removes the hydrogen from the carbon bearing the OH and puts a second bond to oxygen in its place. With no hydrogen there, the reaction has nothing to take. Counting hydrogens on the carbinol carbon also tells you how many times the reaction can run: two for a primary alcohol, one for a secondary.',
+        wrongFeedback: 'Look at what the oxidation actually removes, and then at whether a tertiary carbinol carbon has one of those to give.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Selectivity is the whole subject.',
+        bodyHtml: '<p class="step-body">Almost nothing in the rest of this chapter is about whether a transformation is <i>possible</i>. It is about stopping it in the right place and leaving the rest of the molecule alone.</p>' +
+          '<p class="step-body">Oxidizing a primary alcohol is the clearest case: the same substrate gives an aldehyde with one reagent and a carboxylic acid with another, and the difference is not how much you add or how long you wait. Reducing a carbonyl is the mirror image — two common hydride reagents differ enormously in what they will touch, and deliberately choosing the weaker one is how you reduce a ketone in a molecule that also contains an ester.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">So carry two questions into every reagent you meet from here: <b>where does this stop</b>, and <b>what else does it attack</b>. Those two answers are what a synthesis question is really asking for.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'Converting an alcohol to an alkyl bromide with PBr₃ — is that a redox reaction?',
+        options: [
+          'Yes, an oxidation: bromine is electronegative',
+          'No — both sit on the same rung, since C–O is exchanged for C–Br',
+          'Yes, a reduction: oxygen is lost',
+          'It depends on whether the alcohol is primary'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. One bond to an electronegative atom is traded for another, and the hydrogen count does not move, so the oxidation level is unchanged. This is why the ladder is worth holding: it tells you immediately which transformations need a redox reagent and which are substitutions.',
+        wrongFeedback: 'Count before and after. How many bonds to electronegative atoms does that carbon have in each case, and how many to hydrogen?'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A carboxylic acid, an ester, an amide and a nitrile all have their key carbon at +3. What does that explain?',
+        options: [
+          'That they are all equally reactive',
+          'That converting between them is substitution, not oxidation or reduction',
+          'That none of them can be reduced',
+          'That they all have the same molecular formula'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and it ties three chapters together. Sitting on one rung is why acyl derivatives interconvert by nucleophilic acyl substitution — swapping one leaving group for another without changing the oxidation level — and why getting <i>off</i> that rung, down to an aldehyde or an alcohol, needs a reducing agent rather than another nucleophile. It is also why the nomenclature priority order groups those four together at the top.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

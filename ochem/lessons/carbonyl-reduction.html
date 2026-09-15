@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reducing carbonyls — Oxidation &amp; Reduction | Organic Chemistry</title>
+<meta name="description" content="Hydride reduction of carbonyls: what NaBH4 and LiAlH4 each reduce, why an ester takes two hydrides, and why an amide gives an amine.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/carbonyl-reduction.html">
+<meta property="og:title" content="Reducing carbonyls — Oxidation &amp; Reduction | Organic Chemistry">
+<meta property="og:description" content="Hydride reduction of carbonyls: what NaBH4 and LiAlH4 each reduce, why an ester takes two hydrides, and why an amide gives an amine.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/carbonyl-reduction.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/carbonyl-reduction.html#lesson",
+      "name": "Reducing carbonyls",
+      "url": "https://levlprep.com/ochem/lessons/carbonyl-reduction.html",
+      "description": "Hydride reduction of carbonyls: what NaBH4 and LiAlH4 each reduce, why an ester takes two hydrides, and why an amide gives an amine.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Reducing carbonyls"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Oxidation & Reduction",
+          "item": "https://levlprep.com/ochem/learn.html#m-redox"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Reducing carbonyls",
+          "item": "https://levlprep.com/ochem/lessons/carbonyl-reduction.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 12 &middot; Oxidation &amp; Reduction</div>
+    <h1 style="margin-bottom:4px;">Reducing carbonyls.</h1>
+    <p class="lede" style="margin-top:0;">NaBH4 or LiAlH4 — and the rows where the answer surprises you.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/carbonyl-reduction.html">Reducing carbonyls &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/hydrogenation.html">Catalytic hydrogenation</a><a href="../lessons/nucleophilic-addition.html">Nucleophilic addition</a><a href="../lessons/esters-amides.html">Esters &amp; amides</a><a href="../lessons/amine-reactions.html">Amine reactions</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* Which reagent reduces what. The rows are picked so that answering "the
+     strong one always works" gets you the alkene row wrong, and answering by
+     analogy with esters gets you the amide row wrong. */
+  var CASES = [
+    { id:'h1', sub:'A <b>ketone</b>', right:'both',
+      why:'Both reduce it, to a secondary alcohol. This is the row where the choice does not matter — which is why a ketone alone is a poor test of whether you know the table.' },
+    { id:'h2', sub:'An <b>ester</b>', right:'lah',
+      why:'LiAlH₄ takes it all the way to a primary alcohol, delivering two hydrides. NaBH₄ is far too mild — which is exactly what makes it useful for reducing a ketone in a molecule that also contains an ester.' },
+    { id:'h3', sub:'An <b>amide</b>', right:'lah',
+      why:'LiAlH₄ only — and the product is an <b>amine</b>, not an alcohol. The nitrogen stays attached and the oxygen leaves entirely, which makes this the standard amide-to-amine route. It is the row most often missed.' },
+    { id:'h4', sub:'An isolated <b>alkene</b>', right:'neither',
+      why:'Neither. A hydride is a nucleophile and needs a polarized π bond to attack; C=C has no electrophilic end. Reducing an alkene is catalytic hydrogenation\'s job.' }
+  ];
+  var OPTS = [{k:'both',l:'Both'},{k:'lah',l:'LiAlH₄ only'},{k:'neither',l:'Neither'}];
+
+  window.OchemLessonEngine.start({
+    topicId: 'carbonyl-reduction',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'One mechanism, two appetites.',
+        bodyHtml: '<p class="step-body">Mechanically this is one idea: a <b>hydride</b> — H with two electrons — attacks the electrophilic carbonyl carbon, the π electrons go up onto oxygen, and the alkoxide is protonated on workup to give an alcohol. That is the general carbonyl addition you already know, with H⁻ as the nucleophile.</p>' +
+          '<p class="step-body">Aluminum is less electronegative than boron, so the Al–H bond is more polarized and <b>LiAlH₄ is by far the stronger hydride source</b>. Everything practical follows from that:</p>' +
+          '<ul class="step-body" style="margin-bottom:0;">' +
+          '<li><b>NaBH₄</b> is mild enough to use in methanol or ethanol — you dissolve it and go.</li>' +
+          '<li><b>LiAlH₄</b> reacts violently with water, including atmospheric moisture, so it needs dry ether or THF and a separate aqueous workup.</li>' +
+          '<li><b>Selectivity comes from choosing the weaker reagent on purpose.</b> That is the commonest way this material appears in a synthesis question.</li>' +
+          '</ul>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Why an ester takes two hydrides and cannot stop halfway.',
+        bodyHtml: '<p class="step-body">Reducing a ketone delivers one hydride and stops, because the alkoxide that forms has nothing to expel. An ester is different: the first hydride gives a tetrahedral intermediate that <i>does</i> have a leaving group — the alkoxide of the alcohol half. It collapses, expelling that alkoxide, and what is left is an <b>aldehyde</b>.</p>' +
+          '<p class="step-body">That aldehyde is <i>more</i> electrophilic than the ester was, so it is reduced again immediately. The ester therefore goes through to a primary alcohol and you cannot normally stop at the aldehyde, because the intermediate is more reactive than the starting material.</p>' +
+          '<div class="explain-box">Stopping at the aldehyde requires a deliberately weakened reagent — DIBAL-H at low temperature — which is worth knowing exists even if the details belong to a later course. The general principle is the useful part: <b>you cannot stop a reaction at an intermediate that is more reactive than what you started with</b>, and the only fixes are a weaker reagent or a different route. That is the same reasoning as the aldehyde hydrate in the last lesson.</div>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Which reagent reduces each substrate?</h2>' +
+            '<p class="step-body">NaBH₄ or LiAlH₄. One row is a trap for "the strong one always works", and one is a trap for reasoning by analogy from esters.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.sub + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Reagent for this substrate">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Not that one. A hydride attacks an electrophilic carbon, so first ask whether there is one — then ask whether the mild reagent is strong enough to do it.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. The two worth memorizing are amide → amine, and that neither hydride touches an alkene.'
+                  : 'All four, first time — including amide → amine and the alkene that neither reagent will touch.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'A molecule contains a ketone and an ester. You want to reduce only the ketone. Which reagent?',
+        options: ['LiAlH₄','NaBH₄','H₂ over Pd/C','Either hydride works'],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and this is the archetype of the whole section: you reach for the weaker reagent deliberately. LiAlH₄ would reduce both. Catalytic hydrogenation would reduce neither under ordinary conditions — it is for C=C.',
+        wrongFeedback: 'You want a reagent strong enough for one group and too weak for the other. Which of these is the mild one?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'What does LiAlH₄ give from an amide?',
+        options: ['A primary alcohol','An amine','An aldehyde','A carboxylic acid'],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and it is the exception worth learning separately. Every other carbonyl on the list gives an alcohol; the amide gives an amine, because the nitrogen stays attached and the oxygen leaves entirely. This is the standard route from an amide to an amine.',
+        wrongFeedback: 'Every other substrate here gives an alcohol, which is exactly why this one is asked. Ask which atom stays bonded to the carbon and which one leaves.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Going down two rungs: C=O all the way to CH₂.',
+        bodyHtml: '<p class="step-body">Hydride reduction takes a ketone down one rung, to an alcohol. Two named reactions take it down two, replacing C=O with CH₂ entirely — and they exist as a <b>pair</b> because they tolerate opposite conditions:</p>' +
+          '<ul class="step-body">' +
+          '<li><b>Clemmensen</b> — Zn(Hg), concentrated HCl. Strongly <b>acidic</b>: use it when the molecule survives acid but not base.</li>' +
+          '<li><b>Wolff–Kishner</b> — hydrazine, then hot KOH. Strongly <b>basic</b>: for molecules that cannot survive acid.</li>' +
+          '</ul>' +
+          '<p class="step-body" style="margin-bottom:0;">The pairing is the point: whichever your substrate tolerates, the other is available. Both return in aromatic chemistry, where a Friedel–Crafts acylation followed by one of these is the standard way to attach an unrearranged alkyl chain to a ring — the acylation avoids the carbocation rearrangement that plagues direct alkylation, and the reduction then removes the carbonyl you used to get there.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'Why does neither NaBH₄ nor LiAlH₄ reduce an isolated alkene?',
+        options: [
+          'Alkenes are too stable to reduce at all',
+          'A hydride is a nucleophile, and C=C has no electrophilic carbon to attack',
+          'The alkene is too hindered',
+          'Both reagents are consumed by the solvent first'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Hydride reduction needs a polarized π bond — a carbonyl has a δ+ carbon to attack, and an isolated C=C does not. Alkenes are perfectly reducible, just not this way: catalytic hydrogenation works on a metal surface and does not care about polarization at all.',
+        wrongFeedback: 'Ask what a hydride actually does mechanistically, and then whether an unpolarized C=C offers it anything to do.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A compound has a ketone, an ester and a terminal alkene. Treat it with LiAlH₄. What comes out?',
+        options: [
+          'All three are reduced',
+          'The ketone and the ester become alcohols; the alkene is untouched',
+          'Only the ketone is reduced',
+          'The alkene and the ketone are reduced; the ester survives'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. LiAlH₄ reduces both carbonyls — the ketone to a secondary alcohol and the ester to a primary one — and no hydride reagent touches an isolated C=C. It is worth running the same molecule past the other two reagents: NaBH₄ would reduce only the ketone, and H₂ over Pd/C would reduce only the alkene. Three reagents, three different products, and the substrate never changed.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

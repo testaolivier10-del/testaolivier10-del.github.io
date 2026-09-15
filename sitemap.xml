@@ -131,6 +131,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/alcohol-oxidation.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/alcohol-reactions.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
@@ -142,6 +147,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/aldol.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/alkene-oxidation.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
   </url>
@@ -202,6 +212,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/c-nmr.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/carbonyl-reduction.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
   </url>
@@ -336,6 +351,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/hydrogenation.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/ir.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
@@ -417,6 +437,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/orbitals.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/oxidation-states.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
   </url>
@@ -521,6 +546,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/lessons/alcohol-oxidation.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/lessons/alcohol-reactions.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
@@ -532,6 +562,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/aldol.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/alkene-oxidation.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
   </url>
@@ -592,6 +627,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/c-nmr.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/carbonyl-reduction.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
   </url>
@@ -716,6 +756,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/lessons/hydrogenation.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/lessons/ir.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
@@ -797,6 +842,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/orbitals.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/oxidation-states.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
   </url>

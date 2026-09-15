@@ -22077,6 +22077,1966 @@
    "type": "tf"
   }
  ],
+ "oxidation-states": [
+  {
+   "q": "What is the working test for oxidation in organic chemistry?",
+   "options": [
+    "Losing a whole electron from the atom",
+    "Gaining bonds to O or losing bonds to H",
+    "Gaining mass",
+    "Forming a ring"
+   ],
+   "correct": 1,
+   "why": "The electron-transfer definition is correct but unusable here, because organic reactions change what a carbon is bonded to rather than moving whole electrons.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the working test for reduction?",
+   "options": [
+    "Gaining bonds to H or losing bonds to O",
+    "Losing mass",
+    "Breaking a ring",
+    "Gaining further bonds to oxygen atoms"
+   ],
+   "correct": 0,
+   "why": "The reverse of oxidation, on the same two counts.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Is hydrogenation of an alkene an oxidation or a reduction?",
+   "options": [
+    "Neither",
+    "It depends on the catalyst",
+    "An oxidation",
+    "A reduction"
+   ],
+   "correct": 3,
+   "why": "Two new C-H bonds and nothing gained to oxygen. Worth saying explicitly, because the word does not contain it.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Adding HBr across an alkene is what, in redox terms?",
+   "options": [
+    "An oxidation",
+    "A reduction",
+    "Neither, the counts cancel",
+    "Both an oxidation and a reduction"
+   ],
+   "correct": 2,
+   "why": "One new C-H (down) and one new C-Br (up), which cancel exactly.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "How much does a bond to hydrogen contribute to a carbon's oxidation state?",
+   "options": [
+    "+1",
+    "-1",
+    "0",
+    "+2"
+   ],
+   "correct": 1,
+   "why": "Bonds to more electronegative atoms count +1, bonds to hydrogen -1, and bonds to carbon 0.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How much does a bond to another carbon contribute?",
+   "options": [
+    "+1",
+    "-1",
+    "0",
+    "It varies"
+   ],
+   "correct": 2,
+   "why": "Which is why you can usually ignore the rest of the molecule when working out one carbon's oxidation state.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the oxidation state of carbon in methane?",
+   "options": [
+    "0",
+    "+4",
+    "-2",
+    "-4"
+   ],
+   "correct": 3,
+   "why": "Four bonds to hydrogen at -1 each. Methane is the bottom of the ladder.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the oxidation state of carbon in methanol?",
+   "options": [
+    "-4",
+    "-2",
+    "0",
+    "+2"
+   ],
+   "correct": 1,
+   "why": "Three bonds to H at -1 and one to O at +1 gives -2, one rung above methane.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the oxidation state of carbon in formaldehyde?",
+   "options": [
+    "0",
+    "+2",
+    "+4",
+    "-2"
+   ],
+   "correct": 0,
+   "why": "Two bonds to H at -1 and two to O at +1 cancel to zero.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the oxidation state of carbon in a carboxylic acid?",
+   "options": [
+    "+4",
+    "-2",
+    "0",
+    "+2"
+   ],
+   "correct": 3,
+   "why": "Three bonds to oxygen and one to carbon or hydrogen, putting it one rung below CO2.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the oxidation state of carbon in CO2?",
+   "options": [
+    "-4",
+    "+2",
+    "+4",
+    "0"
+   ],
+   "correct": 2,
+   "why": "Four bonds to oxygen. Fully oxidized, and the top of the ladder.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How many electrons are involved in one step up the ladder?",
+   "options": [
+    "Two",
+    "Three",
+    "Four",
+    "One"
+   ],
+   "correct": 0,
+   "why": "Each rung is a two-electron oxidation.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Converting an alcohol to an alkyl halide is what kind of reaction?",
+   "options": [
+    "Oxidation",
+    "Reduction",
+    "Neither, same rung",
+    "It depends on the halide"
+   ],
+   "correct": 2,
+   "why": "One bond to an electronegative atom is traded for another, and the hydrogen count does not move.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A carboxylic acid, ester, amide and nitrile all have their key carbon at which oxidation state?",
+   "options": [
+    "+1",
+    "+3",
+    "0",
+    "-1"
+   ],
+   "correct": 1,
+   "why": "All four sit on the same rung, which is why interconverting them is substitution rather than redox.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can a tertiary alcohol not be oxidized?",
+   "options": [
+    "No C-H on the carbinol carbon",
+    "It is already oxidized",
+    "Oxidizing reagents cannot reach it",
+    "Its OH is hindered"
+   ],
+   "correct": 0,
+   "why": "Oxidation removes that hydrogen and puts a second bond to oxygen in its place. With none there, nothing can happen.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many times can a primary alcohol be oxidized?",
+   "options": [
+    "Three times",
+    "Not at all",
+    "Once",
+    "Twice"
+   ],
+   "correct": 3,
+   "why": "Two hydrogens on the carbinol carbon means two rungs: aldehyde, then carboxylic acid.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "How many times can a secondary alcohol be oxidized?",
+   "options": [
+    "Twice",
+    "Once",
+    "Three times",
+    "Not at all"
+   ],
+   "correct": 1,
+   "why": "One hydrogen on the carbinol carbon, so it gives a ketone and stops.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does the notation [O] mean in a reaction scheme?",
+   "options": [
+    "An unspecified oxidizing agent",
+    "Ozone",
+    "An oxygen atom",
+    "Molecular oxygen, O2 specifically"
+   ],
+   "correct": 0,
+   "why": "Useful when the point is the transformation rather than the reagent, though most questions are about which reagent.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does [H] mean in a scheme?",
+   "options": [
+    "A proton",
+    "A hydride ion and nothing else",
+    "Hydrogen gas",
+    "An unspecified reducing agent"
+   ],
+   "correct": 3,
+   "why": "The reducing counterpart of [O].",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Hydration of an alkene is what, in redox terms?",
+   "options": [
+    "An oxidation",
+    "A reduction",
+    "Neither",
+    "Both"
+   ],
+   "correct": 2,
+   "why": "One new C-H and one new C-O, which cancel. Most alkene additions are redox-neutral.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which pair sits on the same rung of the ladder?",
+   "options": [
+    "An alcohol and an aldehyde",
+    "Alcohol and alkyl halide",
+    "Aldehyde and acid",
+    "Alkane and alcohol"
+   ],
+   "correct": 1,
+   "why": "Both have one bond to an electronegative atom in place of one C-H.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does the ladder explain about acyl derivatives?",
+   "options": [
+    "They interconvert by substitution, not redox",
+    "They cannot be reduced",
+    "They have the same formula",
+    "They are all equally reactive toward nucleophiles"
+   ],
+   "correct": 0,
+   "why": "Sitting on one rung means swapping a leaving group changes no oxidation level.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "An aldehyde is how many rungs above an alcohol?",
+   "options": [
+    "Two",
+    "Three",
+    "None",
+    "One"
+   ],
+   "correct": 3,
+   "why": "One two-electron step, which is why a single oxidation gets you there.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A carboxylic acid is how many rungs above a primary alcohol?",
+   "options": [
+    "None",
+    "One",
+    "Two",
+    "Three"
+   ],
+   "correct": 2,
+   "why": "Alcohol to aldehyde is one, aldehyde to acid is the second.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What makes selectivity, rather than possibility, the subject of this chapter?",
+   "options": [
+    "Most of these reactions simply do not work",
+    "Stopping in the right place is the hard part",
+    "Reagents are expensive",
+    "Yields are low"
+   ],
+   "correct": 1,
+   "why": "The same substrate gives different products with different reagents, and that choice is the content.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which two questions should you ask of any redox reagent?",
+   "options": [
+    "Color and solubility",
+    "The temperature and the pressure needed",
+    "Cost and toxicity",
+    "Where it stops and what else it touches"
+   ],
+   "correct": 3,
+   "why": "Those two answers are what a synthesis question is really asking for.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Is a Grignard addition to a ketone a redox reaction at the carbonyl carbon?",
+   "options": [
+    "No, a C-C bond forms and bonds to O do not change count",
+    "Yes, a reduction",
+    "It cannot be classified in redox terms at all",
+    "Yes, an oxidation"
+   ],
+   "correct": 0,
+   "why": "The carbon gains a bond to carbon, which counts zero, and the C=O becomes C-O, so the count is unchanged.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is the electron-transfer definition awkward in organic chemistry?",
+   "options": [
+    "It only applies to metals",
+    "It is wrong",
+    "Reactions rarely move whole electrons between clear ions",
+    "Electrons are not involved in organic reactions"
+   ],
+   "correct": 2,
+   "why": "Which is why the bonds-to-O and bonds-to-H test is used instead.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which carbon is fully reduced?",
+   "options": [
+    "The carbon of CO2",
+    "The carbon of methane",
+    "The carbon of methanol",
+    "The carbon of formaldehyde"
+   ],
+   "correct": 1,
+   "why": "Four bonds to hydrogen puts it at -4, the bottom of the ladder.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Getting from an ester down to an aldehyde requires what?",
+   "options": [
+    "A reducing agent",
+    "An acid catalyst",
+    "A leaving group",
+    "Another nucleophile"
+   ],
+   "correct": 0,
+   "why": "Moving off the +3 rung is a change in oxidation level, which substitution cannot do.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "alcohol-oxidation": [
+  {
+   "q": "What does PCC give from a primary alcohol?",
+   "options": [
+    "A carboxylic acid",
+    "An aldehyde",
+    "A ketone",
+    "No reaction"
+   ],
+   "correct": 1,
+   "why": "Cr(VI) with no water present, so the aldehyde cannot hydrate and the oxidation stops.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does Jones reagent give from a primary alcohol?",
+   "options": [
+    "A carboxylic acid",
+    "A ketone",
+    "No reaction",
+    "An aldehyde only"
+   ],
+   "correct": 0,
+   "why": "Aqueous Cr(VI): the aldehyde hydrates to a gem-diol, which is oxidized a second time.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does PCC give from a secondary alcohol?",
+   "options": [
+    "A carboxylic acid",
+    "No reaction",
+    "An aldehyde",
+    "A ketone"
+   ],
+   "correct": 3,
+   "why": "A ketone has no hydrogen left on the carbonyl carbon, so every oxidant stops there.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does any of these reagents give from a tertiary alcohol?",
+   "options": [
+    "An aldehyde",
+    "An ether",
+    "A ketone",
+    "No reaction"
+   ],
+   "correct": 3,
+   "why": "There is no C-H on the carbinol carbon to remove.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does an aqueous chromium oxidation not stop at the aldehyde?",
+   "options": [
+    "It does stop there",
+    "The reagent is simply far too strong",
+    "The aldehyde hydrates and is oxidized again",
+    "The aldehyde is volatile"
+   ],
+   "correct": 2,
+   "why": "The gem-diol is structurally an alcohol, so the reagent oxidizes it a second time.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the key difference between PCC and Jones reagent?",
+   "options": [
+    "Their chromium oxidation state",
+    "Whether water is present",
+    "Their color",
+    "Their cost"
+   ],
+   "correct": 1,
+   "why": "Both are Cr(VI). Anhydrous stops at the aldehyde; aqueous goes through to the acid.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What solvent is PCC used in?",
+   "options": [
+    "Aqueous acetone with acid",
+    "Methanol",
+    "Water",
+    "Anhydrous dichloromethane"
+   ],
+   "correct": 3,
+   "why": "Keeping water out is the entire point of the reagent.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What are the Swern reagents?",
+   "options": [
+    "Oxalyl chloride, DMSO, then Et3N",
+    "KMnO4 with heat and acid",
+    "H2 and Pd",
+    "CrO3 and H2SO4"
+   ],
+   "correct": 0,
+   "why": "Run at -78 C. No metal at all, and it stops at the aldehyde.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does the Swern oxidation give from a primary alcohol?",
+   "options": [
+    "No reaction",
+    "A carboxylic acid",
+    "An aldehyde",
+    "An ester"
+   ],
+   "correct": 2,
+   "why": "Mild and metal-free, and it stops cleanly at the aldehyde.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is Dess-Martin periodinane based on?",
+   "options": [
+    "Chromium(VI) oxide",
+    "Hypervalent iodine",
+    "Manganese",
+    "Osmium"
+   ],
+   "correct": 1,
+   "why": "Metal-free, room temperature, and it stops at the aldehyde.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagents stop at the aldehyde?",
+   "options": [
+    "PCC, Swern and DMP",
+    "Only PCC",
+    "None of them",
+    "Jones reagent and KMnO4"
+   ],
+   "correct": 0,
+   "why": "Group them by outcome and the list is short.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagents take a primary alcohol to the acid?",
+   "options": [
+    "None of them",
+    "PCC and DMP together",
+    "Aqueous Cr(VI) such as Jones",
+    "Swern only"
+   ],
+   "correct": 2,
+   "why": "Water is what allows the second oxidation to happen.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does using less Jones reagent not stop at the aldehyde?",
+   "options": [
+    "The reagent is used catalytically",
+    "The aldehyde is consumed as fast as it forms",
+    "Jones needs excess",
+    "It does stop"
+   ],
+   "correct": 1,
+   "why": "Stoichiometry cannot fix an intermediate that is more reactive than the starting material.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A molecule has a primary and a secondary alcohol, and you want only the primary oxidized. What do you do?",
+   "options": [
+    "Protect the secondary alcohol first",
+    "Use a much stronger oxidant",
+    "Lower the temperature",
+    "Use less reagent"
+   ],
+   "correct": 0,
+   "why": "No common oxidant distinguishes them, so the answer is a protecting group rather than a cleverer reagent.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why do the Swern and DMP exist at all?",
+   "options": [
+    "They also work on tertiary alcohols",
+    "They are faster",
+    "They are cheaper",
+    "Chromium is toxic and environmentally nasty"
+   ],
+   "correct": 3,
+   "why": "Exams still ask about PCC and Jones, but a working lab reaches for the metal-free options first.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What intermediate does a chromium oxidation go through?",
+   "options": [
+    "An epoxide",
+    "A tertiary carbocation",
+    "A chromate ester",
+    "A radical"
+   ],
+   "correct": 2,
+   "why": "It then loses the carbinol C-H to give the carbonyl.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a gem-diol?",
+   "options": [
+    "Two OH on adjacent carbons",
+    "Two OH on the same carbon",
+    "A cyclic ether",
+    "A diketone"
+   ],
+   "correct": 1,
+   "why": "It is what an aldehyde becomes in water, and it is structurally an alcohol again.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which alcohol class gives a ketone on oxidation?",
+   "options": [
+    "Secondary",
+    "Tertiary",
+    "None",
+    "Primary alcohols"
+   ],
+   "correct": 0,
+   "why": "One hydrogen on the carbinol carbon means one oxidation, ending at the ketone.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "You need an aldehyde and the substrate is acid-sensitive. Best choice?",
+   "options": [
+    "Hot KMnO4",
+    "CrO3 in water",
+    "Jones reagent in acetone",
+    "Dess-Martin periodinane"
+   ],
+   "correct": 3,
+   "why": "It stops at the aldehyde, runs at room temperature and is neither metallic nor strongly acidic.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Na2Cr2O7 with H2SO4 behaves most like which reagent?",
+   "options": [
+    "DMP",
+    "PCC in dichloromethane",
+    "Jones reagent",
+    "Swern"
+   ],
+   "correct": 2,
+   "why": "It is aqueous Cr(VI), so a primary alcohol goes through to the carboxylic acid.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does oxidation remove from the carbinol carbon?",
+   "options": [
+    "An oxygen",
+    "A hydrogen",
+    "A carbon",
+    "An electron pair only"
+   ],
+   "correct": 1,
+   "why": "And puts a second bond to oxygen in its place, which is why the hydrogen has to be there.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many rungs can a primary alcohol climb?",
+   "options": [
+    "Two",
+    "Three",
+    "None",
+    "One"
+   ],
+   "correct": 0,
+   "why": "Aldehyde, then carboxylic acid, matching its two carbinol hydrogens.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which statement about secondary alcohols is correct?",
+   "options": [
+    "Only PCC works",
+    "Neither reagent works",
+    "PCC and Jones give different products",
+    "Both give the same ketone"
+   ],
+   "correct": 3,
+   "why": "The aqueous/anhydrous distinction only changes the answer for primary alcohols.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "At what temperature is the Swern oxidation run?",
+   "options": [
+    "0 C",
+    "Room temperature",
+    "-78 C",
+    "100 C"
+   ],
+   "correct": 2,
+   "why": "The cryogenic step is its main practical drawback, and why DMP is often preferred.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does mild in this context actually mean?",
+   "options": [
+    "Slower",
+    "Tolerant of sensitive functional groups",
+    "Less concentrated in solution",
+    "Safer to store"
+   ],
+   "correct": 1,
+   "why": "Mildness is about what else in the molecule survives.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "An aldehyde in water exists partly as what?",
+   "options": [
+    "Its hydrate",
+    "An enol",
+    "An ester",
+    "A carboxylic acid"
+   ],
+   "correct": 0,
+   "why": "That equilibrium is the whole reason aqueous oxidations overshoot.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which is NOT a way to stop at the aldehyde?",
+   "options": [
+    "PCC in dichloromethane",
+    "Swern",
+    "DMP",
+    "Aqueous CrO3"
+   ],
+   "correct": 3,
+   "why": "The aqueous reagent is precisely the one that goes on to the acid.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can a ketone not be oxidized further under these conditions?",
+   "options": [
+    "It forms a hydrate",
+    "It is too stable",
+    "No hydrogen on the carbonyl carbon",
+    "It is no longer electrophilic"
+   ],
+   "correct": 2,
+   "why": "The same rule that stops tertiary alcohols reacting at all.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which class of alcohol is unreactive to all these oxidants?",
+   "options": [
+    "Primary",
+    "Secondary",
+    "Tertiary",
+    "Benzylic"
+   ],
+   "correct": 2,
+   "why": "No carbinol C-H means nothing for the oxidation to take.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the practical summary of this section?",
+   "options": [
+    "Stronger is better",
+    "Anhydrous gives aldehyde, aqueous gives acid",
+    "All of these reagents are equivalent",
+    "Use excess reagent"
+   ],
+   "correct": 1,
+   "why": "And every reagent gives a ketone from a secondary alcohol and nothing from a tertiary one.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "carbonyl-reduction": [
+  {
+   "q": "What does a hydride reagent attack?",
+   "options": [
+    "The carbonyl oxygen",
+    "The carbonyl carbon",
+    "An alpha hydrogen",
+    "A leaving group"
+   ],
+   "correct": 1,
+   "why": "It is a nucleophile attacking the electrophilic carbon, which is the same general carbonyl addition you already know.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does NaBH4 give from a ketone?",
+   "options": [
+    "A secondary alcohol",
+    "An alkane",
+    "No reaction",
+    "A primary alcohol instead"
+   ],
+   "correct": 0,
+   "why": "Hydride adds to the carbonyl carbon and the alkoxide is protonated on workup.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does NaBH4 give from an ester?",
+   "options": [
+    "An aldehyde",
+    "An amine",
+    "A primary alcohol directly",
+    "Essentially no reaction"
+   ],
+   "correct": 3,
+   "why": "NaBH4 is far too mild, which is exactly what makes it useful for reducing a ketone in a molecule containing an ester.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does LiAlH4 give from an ester?",
+   "options": [
+    "A ketone",
+    "No reaction whatsoever",
+    "A primary alcohol",
+    "An aldehyde"
+   ],
+   "correct": 2,
+   "why": "Two hydrides are delivered: the first gives an aldehyde, which is more electrophilic and is reduced immediately.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does LiAlH4 give from an amide?",
+   "options": [
+    "A primary alcohol only",
+    "An amine",
+    "An aldehyde",
+    "A carboxylic acid"
+   ],
+   "correct": 1,
+   "why": "The nitrogen stays attached and the oxygen leaves entirely. This is the standard amide-to-amine route and the row most often missed.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does LiAlH4 give from a nitrile?",
+   "options": [
+    "A primary amine",
+    "An alcohol",
+    "No reaction",
+    "An aldehyde and nothing more"
+   ],
+   "correct": 0,
+   "why": "Reduction of the C-N triple bond leaves a primary amine.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What do NaBH4 and LiAlH4 both give from an aldehyde?",
+   "options": [
+    "An alkane",
+    "An acid",
+    "A ketone, one rung up",
+    "A primary alcohol"
+   ],
+   "correct": 3,
+   "why": "Both reduce aldehydes and ketones, which is the row where the choice does not matter.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does either hydride reagent do to an isolated alkene?",
+   "options": [
+    "Cleaves it",
+    "Reduces it to the alkane",
+    "Nothing",
+    "Epoxidizes it"
+   ],
+   "correct": 2,
+   "why": "A hydride is a nucleophile and needs a polarized pi bond; C=C has no electrophilic end.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is LiAlH4 more reactive than NaBH4?",
+   "options": [
+    "It is supplied at a much higher concentration",
+    "Al is less electronegative, so Al-H is more polarized",
+    "It has more hydrogens",
+    "It is a stronger base"
+   ],
+   "correct": 1,
+   "why": "That single fact produces all the practical differences between them.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "In what solvent can NaBH4 be used?",
+   "options": [
+    "Methanol or ethanol",
+    "Only benzene",
+    "Only water-free THF",
+    "Only rigorously dry ether"
+   ],
+   "correct": 0,
+   "why": "It reacts with protic solvents only slowly, which is a real convenience.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What solvent does LiAlH4 require?",
+   "options": [
+    "Water",
+    "Acetone",
+    "Methanol",
+    "Dry ether or THF"
+   ],
+   "correct": 3,
+   "why": "It reacts violently with water, including atmospheric moisture, and needs a separate aqueous workup afterwards.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A molecule has a ketone and an ester. To reduce only the ketone, use what?",
+   "options": [
+    "Either hydride",
+    "LiAlH4",
+    "NaBH4",
+    "H2 over Pd/C"
+   ],
+   "correct": 2,
+   "why": "Deliberately choosing the weaker reagent is the commonest way this material appears in a synthesis question.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can you not normally stop an ester reduction at the aldehyde?",
+   "options": [
+    "The aldehyde is volatile",
+    "The aldehyde is more electrophilic than the ester",
+    "There is no aldehyde intermediate formed at any point",
+    "The reagent runs out"
+   ],
+   "correct": 1,
+   "why": "You cannot stop a reaction at an intermediate that is more reactive than the starting material.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent can stop an ester at the aldehyde?",
+   "options": [
+    "DIBAL-H at low temperature",
+    "LiAlH4",
+    "H2 and Pd",
+    "NaBH4 in cold methanol"
+   ],
+   "correct": 0,
+   "why": "A deliberately weakened reagent, used cold. Worth knowing it exists even if the details come later.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens to the alkoxide formed during a hydride reduction?",
+   "options": [
+    "It eliminates",
+    "It attacks another carbonyl",
+    "It is the final product",
+    "It is protonated on workup"
+   ],
+   "correct": 3,
+   "why": "Which is why an aqueous workup is part of the procedure.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does the Clemmensen reduction do?",
+   "options": [
+    "Oxidizes an alcohol",
+    "Cleaves an alkene",
+    "Reduces C=O to CH2 under acid",
+    "Reduces C=O to a plain alcohol"
+   ],
+   "correct": 2,
+   "why": "Zn(Hg) and concentrated HCl. Use it when the molecule survives acid but not base.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What conditions does the Wolff-Kishner reduction use?",
+   "options": [
+    "Zn(Hg) and HCl",
+    "Hydrazine then hot KOH",
+    "LiAlH4 in dry ether at 0 C",
+    "H2 and Pd"
+   ],
+   "correct": 1,
+   "why": "Strongly basic, and the partner to the Clemmensen for acid-sensitive molecules.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why do Clemmensen and Wolff-Kishner exist as a pair?",
+   "options": [
+    "They tolerate opposite conditions",
+    "One is faster",
+    "One is cheaper",
+    "They give quite different products"
+   ],
+   "correct": 0,
+   "why": "Whichever your substrate tolerates, the other is available.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Where do those two reductions reappear?",
+   "options": [
+    "In SN2 substitution chemistry",
+    "In distillation",
+    "In spectroscopy",
+    "After a Friedel-Crafts acylation"
+   ],
+   "correct": 3,
+   "why": "Acylation then reduction is the standard way to attach an unrearranged alkyl chain to a ring.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does NaBH4 give from a carboxylic acid?",
+   "options": [
+    "An ester",
+    "A primary alcohol",
+    "No reaction",
+    "An aldehyde"
+   ],
+   "correct": 2,
+   "why": "It is not strong enough. LiAlH4 does reduce acids, all the way to the primary alcohol.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent reduces a nitrile?",
+   "options": [
+    "NaBH4",
+    "LiAlH4",
+    "H2 over Pd at 1 atm",
+    "Neither hydride"
+   ],
+   "correct": 1,
+   "why": "Giving a primary amine.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many hydrides does reducing a ketone require?",
+   "options": [
+    "One",
+    "Two",
+    "Three",
+    "Four"
+   ],
+   "correct": 0,
+   "why": "The alkoxide formed has nothing to expel, so the reaction stops after one delivery.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What makes a hydride reduction the same mechanism as a Grignard addition?",
+   "options": [
+    "Both need acid",
+    "Both form rings",
+    "Both use an organomagnesium reagent",
+    "Both are nucleophilic addition to the carbonyl carbon"
+   ],
+   "correct": 3,
+   "why": "If you can draw one, you can already draw the other, with H- standing in for the carbon nucleophile.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which substrate does NaBH4 NOT reduce?",
+   "options": [
+    "An aldehyde",
+    "A ketone",
+    "An amide",
+    "Neither aldehyde nor ketone"
+   ],
+   "correct": 2,
+   "why": "Amides need LiAlH4, and the product is an amine rather than an alcohol.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the product of reducing a ketone?",
+   "options": [
+    "A primary alcohol always",
+    "A secondary alcohol",
+    "A tertiary alcohol",
+    "An aldehyde"
+   ],
+   "correct": 1,
+   "why": "The carbonyl carbon already bore two carbon substituents, and gains an H and an OH.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the product of reducing an aldehyde?",
+   "options": [
+    "A primary alcohol",
+    "A ketone",
+    "An acid",
+    "A secondary alcohol"
+   ],
+   "correct": 0,
+   "why": "The carbonyl carbon bore one carbon substituent and one hydrogen.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is selectivity usually achieved by choosing the weaker reagent?",
+   "options": [
+    "It is faster",
+    "It is safer",
+    "It is considerably cheaper to buy",
+    "Because the stronger one would reduce everything"
+   ],
+   "correct": 3,
+   "why": "Reaching deliberately for the less powerful reagent is the standard move.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does H2 over Pd/C do to a ketone at one atmosphere?",
+   "options": [
+    "Oxidizes it",
+    "Reduces it to an alcohol",
+    "Leaves it untouched",
+    "Cleaves it"
+   ],
+   "correct": 2,
+   "why": "Ketones need higher pressure and a more active catalyst. This is what makes hydrogenation the complement of the hydrides.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which two reagents reduce a carboxylic acid?",
+   "options": [
+    "Both NaBH4 and LiAlH4",
+    "LiAlH4 only, among these",
+    "H2/Pd only",
+    "Neither"
+   ],
+   "correct": 1,
+   "why": "NaBH4 does not react with a carboxylic acid at all.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the single most-missed row of the reduction table?",
+   "options": [
+    "Amide to amine",
+    "Aldehyde to alcohol",
+    "Ester to alcohol",
+    "Ketone to alcohol"
+   ],
+   "correct": 0,
+   "why": "Every other carbonyl gives an alcohol, which is exactly why this one is asked.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "hydrogenation": [
+  {
+   "q": "What is required for H2 to reduce an alkene?",
+   "options": [
+    "Heat on its own",
+    "A metal catalyst",
+    "Acid",
+    "UV light"
+   ],
+   "correct": 1,
+   "why": "Hydrogen gas and an alkene together do nothing at room temperature; breaking the H-H bond needs a surface.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which catalysts are used for hydrogenation?",
+   "options": [
+    "Pd/C, Pt or Raney nickel",
+    "OsO4",
+    "mCPBA",
+    "CrO3 or KMnO4 in acid"
+   ],
+   "correct": 0,
+   "why": "All work by adsorbing both hydrogen and the alkene onto a metal surface.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the stereochemistry of catalytic hydrogenation?",
+   "options": [
+    "Random",
+    "Inversion",
+    "Anti addition",
+    "Syn addition"
+   ],
+   "correct": 3,
+   "why": "Both hydrogens come from the surface the alkene is lying against, so they arrive on the same face.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Hydrogenating 1,2-dimethylcyclohexene gives what?",
+   "options": [
+    "An open chain",
+    "The trans product",
+    "The cis product",
+    "A racemic mix"
+   ],
+   "correct": 2,
+   "why": "Syn addition to a ring shows up directly as the cis product.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which group is readily reduced by H2/Pd at 1 atm?",
+   "options": [
+    "An ester",
+    "An alkene",
+    "A carboxylic acid",
+    "An amide"
+   ],
+   "correct": 1,
+   "why": "Alkenes, alkynes, imines, nitro groups and azides are on the readily-reduced list.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does H2/Pd/C at 1 atm do to a benzene ring?",
+   "options": [
+    "Essentially nothing",
+    "Opens it",
+    "Oxidizes it",
+    "Reduces it fully to cyclohexane"
+   ],
+   "correct": 0,
+   "why": "Aromatic rings need high pressure and temperature, which is what makes the reaction useful on aromatic substrates.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does H2/Pd/C do to a nitro group?",
+   "options": [
+    "Oxidizes it",
+    "Cleaves the molecule",
+    "Nothing at all to it",
+    "Reduces it to an amine"
+   ],
+   "correct": 3,
+   "why": "The standard route to an aromatic amine from a nitroarene, and a row often forgotten.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What conditions reduce a ketone by hydrogenation?",
+   "options": [
+    "Na in ammonia",
+    "Pd/C at one atmosphere",
+    "Higher pressure with PtO2",
+    "Lindlar catalyst"
+   ],
+   "correct": 2,
+   "why": "Under ordinary conditions over Pd/C a ketone survives.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does an alkyne give over ordinary Pd/C?",
+   "options": [
+    "A cis alkene",
+    "An alkane",
+    "A trans alkene",
+    "No reaction"
+   ],
+   "correct": 1,
+   "why": "It is reduced past the alkene straight through to the alkane.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does the Lindlar catalyst give from an alkyne?",
+   "options": [
+    "The cis alkene",
+    "The trans alkene",
+    "A diol",
+    "An alkane, fully reduced"
+   ],
+   "correct": 0,
+   "why": "Deliberately poisoned palladium that stops at the alkene, and it is still a syn surface addition.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the Lindlar catalyst?",
+   "options": [
+    "Raney nickel",
+    "Osmium tetroxide with NMO added",
+    "Pt on carbon",
+    "Pd on CaCO3 poisoned with quinoline and lead"
+   ],
+   "correct": 3,
+   "why": "The poisoning is what makes it stop at the alkene rather than continuing.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does Na in liquid NH3 give from an alkyne?",
+   "options": [
+    "An amine",
+    "The cis alkene",
+    "The trans alkene",
+    "An alkane"
+   ],
+   "correct": 2,
+   "why": "A dissolving-metal reduction through radical anion intermediates, which adopt the less hindered arrangement.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does Na/NH3 give the trans alkene?",
+   "options": [
+    "It is a surface reaction on the metal, like Lindlar",
+    "Radical anion intermediates adopt the less hindered arrangement",
+    "It is stereorandom",
+    "Ammonia directs it"
+   ],
+   "correct": 1,
+   "why": "Unlike Lindlar, it is not a surface reaction at all, so syn delivery does not apply.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "You need the trans alkene from an internal alkyne. Which conditions?",
+   "options": [
+    "Na in liquid NH3",
+    "H2, Pd/C",
+    "LiAlH4",
+    "H2 with Lindlar"
+   ],
+   "correct": 0,
+   "why": "Lindlar gives the cis alkene; plain Pd/C gives the alkane.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is hydrogenation the complement of hydride reduction?",
+   "options": [
+    "Both reduce esters",
+    "They are identical",
+    "Both of them reduce ketones well",
+    "One reduces C=C and the other C=O"
+   ],
+   "correct": 3,
+   "why": "A molecule with an alkene and a ketone can be reduced at either position by choosing the reagent.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does the heat of hydrogenation measure?",
+   "options": [
+    "The reaction rate",
+    "The activity of the catalyst used",
+    "How stable the starting alkene was",
+    "The pressure needed"
+   ],
+   "correct": 2,
+   "why": "All alkenes give the same kind of product, so a more stable alkene releases less energy.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which claim was established using heats of hydrogenation?",
+   "options": [
+    "That alkenes are planar around the double bond",
+    "That alkene stability rises with substitution",
+    "That Pd is a catalyst",
+    "That H2 is diatomic"
+   ],
+   "correct": 1,
+   "why": "And also the roughly 15 kJ/mol of conjugation energy in buta-1,3-diene.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does the catalyst matter so much?",
+   "options": [
+    "It lowers the barrier to splitting H-H",
+    "It supplies the hydrogen",
+    "It changes the product",
+    "It shifts the position of the equilibrium"
+   ],
+   "correct": 0,
+   "why": "The reaction is thermodynamically downhill already; the barrier is what stops it.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Is catalytic hydrogenation thermodynamically favorable?",
+   "options": [
+    "Only at high pressure and temperature",
+    "Only for alkynes",
+    "No, it is uphill",
+    "Yes, but kinetically slow without a catalyst"
+   ],
+   "correct": 3,
+   "why": "Which is why a catalyst is enough to make it go.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does H2/Pd/C do to an ester?",
+   "options": [
+    "Oxidizes it",
+    "Reduces it to an alcohol",
+    "Essentially nothing",
+    "Cleaves it"
+   ],
+   "correct": 2,
+   "why": "Esters, acids and amides are essentially untouched by catalytic hydrogenation.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An imine treated with H2/Pd gives what?",
+   "options": [
+    "An alcohol",
+    "An amine",
+    "A nitrile",
+    "No reaction"
+   ],
+   "correct": 1,
+   "why": "Imines are on the readily-reduced list, which makes this the basis of reductive amination.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent reduces an alkene but not a ketone?",
+   "options": [
+    "H2/Pd/C at 1 atm",
+    "LiAlH4",
+    "DIBAL-H",
+    "NaBH4 in methanol"
+   ],
+   "correct": 0,
+   "why": "Exactly the complement of NaBH4, which does the reverse.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent reduces a ketone but not an alkene?",
+   "options": [
+    "Lindlar",
+    "Na/NH3",
+    "H2/Pd/C",
+    "NaBH4"
+   ],
+   "correct": 3,
+   "why": "Hydride reduction needs a polarized pi bond, which C=C does not provide.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does poisoned mean for the Lindlar catalyst?",
+   "options": [
+    "Slow to filter",
+    "Contaminated by accident in storage",
+    "Deliberately deactivated so it stops early",
+    "Toxic to handle"
+   ],
+   "correct": 2,
+   "why": "Quinoline and lead reduce its activity on purpose.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Where do the two hydrogens come from in catalytic hydrogenation?",
+   "options": [
+    "The solvent",
+    "The metal surface",
+    "Acid in the mixture",
+    "The alkene itself"
+   ],
+   "correct": 1,
+   "why": "Which is why they can only arrive on one face.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which of these does H2/Pd/C at 1 atm NOT reduce?",
+   "options": [
+    "An alkene",
+    "An alkyne",
+    "A nitro group on a ring",
+    "A carboxylic acid"
+   ],
+   "correct": 3,
+   "why": "Carboxylic acids, esters and amides are essentially untouched.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An alkyne, a ketone and a benzene ring in one molecule, treated with H2/Pd/C at 1 atm. What reacts?",
+   "options": [
+    "The ketone only",
+    "The ring only",
+    "All three",
+    "The alkyne only"
+   ],
+   "correct": 3,
+   "why": "And it is reduced all the way to the alkane unless a poisoned catalyst is used.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is an alkyne useful as a synthetic intermediate?",
+   "options": [
+    "Its reduction can be stopped at either alkene geometry",
+    "It is unusually unreactive toward everything",
+    "It is aromatic",
+    "It is cheap"
+   ],
+   "correct": 0,
+   "why": "Lindlar for cis, dissolving metal for trans, from the same starting material.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does syn addition mean?",
+   "options": [
+    "Only one group adds",
+    "The groups add to opposite faces",
+    "Both groups add to the same face",
+    "The groups add randomly"
+   ],
+   "correct": 2,
+   "why": "It is a direct consequence of both hydrogens being delivered by one surface.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Raney nickel is used for what?",
+   "options": [
+    "Oxidation of alcohols",
+    "Catalytic hydrogenation",
+    "Dihydroxylation",
+    "Ozonolysis"
+   ],
+   "correct": 1,
+   "why": "One of the standard hydrogenation catalysts alongside Pd/C and Pt.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "alkene-oxidation": [
+  {
+   "q": "What does mCPBA give from an alkene?",
+   "options": [
+    "A diol",
+    "An epoxide",
+    "Two carbonyls",
+    "An alkane"
+   ],
+   "correct": 1,
+   "why": "A single oxygen delivered across the double bond in one concerted step.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Is epoxidation with mCPBA stereospecific?",
+   "options": [
+    "Only for cis alkenes, not trans ones",
+    "Only in rings",
+    "No",
+    "Yes, the alkene geometry is retained"
+   ],
+   "correct": 3,
+   "why": "It is concerted, so a cis alkene gives the cis-substituted epoxide and trans gives trans.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does OsO4 give from an alkene?",
+   "options": [
+    "A syn diol",
+    "An epoxide",
+    "Two aldehydes",
+    "An anti diol instead"
+   ],
+   "correct": 0,
+   "why": "Both oxygens are delivered to the same face through a cyclic osmate ester.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is NMO used for alongside OsO4?",
+   "options": [
+    "As a poison",
+    "As the solvent for the reaction",
+    "As a co-oxidant to make OsO4 catalytic",
+    "As an acid"
+   ],
+   "correct": 2,
+   "why": "OsO4 is expensive and toxic, so it is regenerated in situ.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does mCPBA followed by aqueous acid give?",
+   "options": [
+    "A syn diol",
+    "An anti diol",
+    "A ketone",
+    "An alkane"
+   ],
+   "correct": 1,
+   "why": "Water attacks the protonated epoxide from the face opposite the C-O bond being broken.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does epoxide opening give the anti diol?",
+   "options": [
+    "The nucleophile attacks from the opposite face",
+    "Water adds twice",
+    "Acid inverts the stereocenter",
+    "The epoxide rearranges"
+   ],
+   "correct": 0,
+   "why": "Backside attack puts the second oxygen on the opposite face from the first.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent pair gives opposite diol stereochemistry?",
+   "options": [
+    "mCPBA and O3",
+    "O3 and KMnO4",
+    "OsO4 and cold KMnO4",
+    "OsO4 and mCPBA/H3O+"
+   ],
+   "correct": 3,
+   "why": "One delivers both oxygens to one face, the other goes via an epoxide and opens it from the other side.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does O3 followed by Me2S do?",
+   "options": [
+    "Nothing",
+    "Makes an epoxide and stops",
+    "Cleaves the C=C to carbonyls",
+    "Makes a diol"
+   ],
+   "correct": 2,
+   "why": "The reductive workup stops at the aldehydes and ketones.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does O3 followed by H2O2 give from a carbon that bore a hydrogen?",
+   "options": [
+    "An aldehyde, unchanged",
+    "A carboxylic acid",
+    "A ketone",
+    "An alcohol"
+   ],
+   "correct": 1,
+   "why": "The oxidative workup takes the aldehyde fragment one rung further.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does an oxidative ozonolysis workup do to a ketone fragment?",
+   "options": [
+    "Nothing",
+    "Reduces it",
+    "Cleaves it again",
+    "Oxidizes it to an acid"
+   ],
+   "correct": 0,
+   "why": "A ketone has no hydrogen on the carbonyl carbon to lose.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A carbon of the alkene bearing two substituents becomes what on ozonolysis?",
+   "options": [
+    "An acid",
+    "An alcohol",
+    "An aldehyde",
+    "A ketone"
+   ],
+   "correct": 3,
+   "why": "Two substituents means no hydrogen on that carbon, so it can only be a ketone.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A carbon of the alkene bearing one hydrogen becomes what with reductive workup?",
+   "options": [
+    "An alkane",
+    "A ketone instead",
+    "An aldehyde",
+    "An acid"
+   ],
+   "correct": 2,
+   "why": "With oxidative workup that aldehyde would go on to a carboxylic acid.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does cold dilute basic KMnO4 give from an alkene?",
+   "options": [
+    "Cleavage to two fragments",
+    "A syn diol",
+    "An epoxide",
+    "An anti diol"
+   ],
+   "correct": 1,
+   "why": "The same outcome as OsO4, more cheaply and less cleanly.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does hot concentrated KMnO4 give from an alkene?",
+   "options": [
+    "Cleavage to acids and ketones",
+    "An epoxide",
+    "No reaction",
+    "A syn diol"
+   ],
+   "correct": 0,
+   "why": "The conditions, not the reagent, decide which of the two rows applies.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does KMnO4 appear twice in the summary table?",
+   "options": [
+    "It has two oxidation states",
+    "It is used with two different solvents",
+    "It is a typo",
+    "The conditions change the outcome completely"
+   ],
+   "correct": 3,
+   "why": "A question specifying KMnO4 without conditions is incomplete.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is ozonolysis useful for besides synthesis?",
+   "options": [
+    "Drying organic solvents",
+    "Purification",
+    "Structure determination",
+    "Measuring pH"
+   ],
+   "correct": 2,
+   "why": "Identify the fragments and rejoin them at their carbonyl carbons to find where the double bond was.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "An alkene gives propanal and propanone on ozonolysis. What was it?",
+   "options": [
+    "Hex-3-ene",
+    "2-methylpent-2-ene",
+    "Hex-1-ene",
+    "2-methylbut-2-ene, a pentene"
+   ],
+   "correct": 1,
+   "why": "Rejoin at the carbonyl carbons: CH3CH2-CH=C(CH3)2, which is C6H12.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "One fragment is an aldehyde and one a ketone. What does that say about the alkene?",
+   "options": [
+    "It was trisubstituted",
+    "It was terminal",
+    "It was cyclic",
+    "It was fully symmetric"
+   ],
+   "correct": 0,
+   "why": "One carbon bore a hydrogen and the other did not.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Ozonolysis of a symmetric internal alkene gives what?",
+   "options": [
+    "No reaction",
+    "A single ketone and one acid",
+    "Two different products",
+    "One compound in double amount"
+   ],
+   "correct": 3,
+   "why": "The two fragments are identical, so you observe one compound at twice the molar amount.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Ozonolysis of a cyclic alkene gives what?",
+   "options": [
+    "A diol",
+    "Two entirely separate fragments",
+    "One molecule with two carbonyls",
+    "An epoxide"
+   ],
+   "correct": 2,
+   "why": "The two ends stay connected through the rest of the ring.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "You need the anti diol from a cis alkene. What do you do?",
+   "options": [
+    "Cold KMnO4",
+    "Ozonolysis, then reduce",
+    "OsO4 then heat",
+    "mCPBA then aqueous acid"
+   ],
+   "correct": 3,
+   "why": "Going via the epoxide changes the stereochemical outcome; no conditions convert a syn diol into an anti one.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can OsO4 never give the anti diol?",
+   "options": [
+    "It is too slow",
+    "It delivers both oxygens to one face",
+    "It only ever works on ring systems",
+    "It is not an oxidant"
+   ],
+   "correct": 1,
+   "why": "The cyclic osmate ester forces both new C-O bonds onto the same side.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the full name of mCPBA?",
+   "options": [
+    "meta-chloroperoxybenzoic acid",
+    "methyl chloroperbenzoate",
+    "monochloroperbenzene",
+    "meta-chlorobenzoic acid anhydride"
+   ],
+   "correct": 0,
+   "why": "A peroxyacid, which is what delivers the single oxygen atom.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why are epoxides reactive?",
+   "options": [
+    "They are persistent radicals",
+    "They are aromatic",
+    "They are strained three-membered rings",
+    "They are ionic"
+   ],
+   "correct": 2,
+   "why": "Which is what makes the ring-opening step of the anti-diol route possible.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a peroxyacid transfer to an alkene?",
+   "options": [
+    "A hydroxyl",
+    "A single oxygen atom",
+    "Two oxygens",
+    "A proton"
+   ],
+   "correct": 1,
+   "why": "In one concerted step through a cyclic transition state.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent leaves the alkene carbons still bonded to each other?",
+   "options": [
+    "OsO4",
+    "Hot KMnO4",
+    "O3 then H2O2",
+    "O3 then Me2S"
+   ],
+   "correct": 0,
+   "why": "Dihydroxylation adds across the double bond; ozonolysis cuts through it.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many oxygens does dihydroxylation add?",
+   "options": [
+    "Three",
+    "None",
+    "One oxygen",
+    "Two"
+   ],
+   "correct": 3,
+   "why": "One to each carbon of the former double bond.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which two methods give the same diol stereochemistry?",
+   "options": [
+    "KMnO4 hot and cold",
+    "OsO4 and mCPBA then H3O+",
+    "OsO4 and cold dilute KMnO4",
+    "mCPBA and O3"
+   ],
+   "correct": 2,
+   "why": "Both deliver both oxygens to the same face, giving the syn diol.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A question gives KMnO4 with no conditions stated. What is the problem?",
+   "options": [
+    "KMnO4 is not an oxidant",
+    "The outcome is not determined",
+    "It needs a catalyst",
+    "It only works on alkynes, not alkenes"
+   ],
+   "correct": 1,
+   "why": "Cold and dilute gives a diol; hot and concentrated cleaves.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What connects ozonolysis to the spectroscopy chapter?",
+   "options": [
+    "Both are structure-determination tools",
+    "Both need a catalyst",
+    "Neither of them is connected",
+    "Both use light"
+   ],
+   "correct": 0,
+   "why": "Given fragments, find the parent, which is the same reasoning as reading a spectrum.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
  "carboxylic-acids": [
   {
    "q": "Carboxylic acids are much more acidic than alcohols mainly because their conjugate base (carboxylate) is stabilized by:",

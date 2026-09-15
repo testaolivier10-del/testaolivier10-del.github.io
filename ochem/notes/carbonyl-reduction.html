@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reducing carbonyls — Oxidation &amp; Reduction | Organic Chemistry</title>
+<meta name="description" content="Reducing a carbonyl is the reverse of the last section, and mechanically it is one idea: a hydride — H with two electrons — attacks the electrophilic…">
+<link rel="canonical" href="https://levlprep.com/ochem/notes/carbonyl-reduction.html">
+<meta property="og:title" content="Reducing carbonyls — Oxidation &amp; Reduction | Organic Chemistry">
+<meta property="og:description" content="Reducing a carbonyl is the reverse of the last section, and mechanically it is one idea: a hydride — H with two electrons — attacks the electrophilic…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/notes/carbonyl-reduction.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+</head>
+<body>
+<div class="wrap notes-page">
+  <nav class="notes-crumb" aria-label="Breadcrumb">
+    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
+    <span>Oxidation &amp; Reduction</span>
+  </nav>
+
+  <header class="notes-head">
+    <p class="notes-eyebrow">Oxidation &amp; Reduction &middot; Section 61 of 78</p>
+    <h1>Reducing carbonyls</h1>
+    <a class="notes-onward-cta" href="../lessons/carbonyl-reduction.html">Practice this — interactive lesson</a>
+  </header>
+
+  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+       asides); it is the same class the textbook view uses, so a section looks
+       identical whether it is read here or inside learn.html. -->
+  <article class="notes-body notes-view">
+<!-- notes:start -->
+<p class="step-body">Reducing a carbonyl is the reverse of the last section, and mechanically it is one idea: a <b>hydride</b> — H with two electrons — attacks the electrophilic carbonyl carbon, the π electrons go up onto oxygen, and the resulting alkoxide is protonated on workup to give an alcohol. The whole subject is which reagent delivers that hydride, and to what.</p>
+
+<h3>Two reagents, very different appetites</h3>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Substrate</th><th>NaBH₄</th><th>LiAlH₄</th></tr></thead>
+<tbody>
+<tr><td>Aldehyde</td><td>1° alcohol</td><td>1° alcohol</td></tr>
+<tr><td>Ketone</td><td>2° alcohol</td><td>2° alcohol</td></tr>
+<tr><td>Ester</td><td>very slow / no</td><td>1° alcohol</td></tr>
+<tr><td>Carboxylic acid</td><td>no reaction</td><td>1° alcohol</td></tr>
+<tr><td>Amide</td><td>no reaction</td><td><b>amine</b></td></tr>
+<tr><td>Nitrile</td><td>no reaction</td><td>1° amine</td></tr>
+<tr><td>Alkene, alkyne</td><td>no reaction</td><td>no reaction</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="step-body">Two rows in that table are worth reading twice. An <b>amide reduced by LiAlH₄ gives an amine, not an alcohol</b> — the nitrogen stays attached and the oxygen leaves entirely, which makes it the standard route from an amide to an amine. And <b>neither reagent touches an isolated alkene or alkyne</b>: hydride reduction needs a polarized π bond to attack, and C=C has no electrophilic end. Reducing an alkene is catalytic hydrogenation's job, in the next section.</p>
+
+<h3>Why the difference, and how to use it</h3>
+
+<p class="step-body">Aluminum is less electronegative than boron, so the Al–H bond is more polarized and LiAlH₄ is by far the more reactive hydride source. That single fact produces the practical differences:</p>
+
+<ul class="step-body">
+<li><b>NaBH₄ is mild enough to use in methanol or ethanol.</b> It reacts with protic solvents only slowly, so you can simply dissolve it and go. That convenience is real and is part of why it is the default for a simple ketone.</li>
+<li><b>LiAlH₄ reacts violently with water</b>, including atmospheric moisture, and must be used in an aprotic ether solvent — dry THF or diethyl ether — with a separate aqueous workup afterwards to protonate the alkoxide.</li>
+<li><b>Selectivity comes from choosing the weaker reagent.</b> A molecule containing both a ketone and an ester is reduced at the ketone alone by NaBH₄, while LiAlH₄ would reduce both. Deliberately reaching for the less powerful reagent is the commonest way this material appears in a synthesis question.</li>
+</ul>
+
+<div class="notes-fact">Hydride reagents are <b>nucleophiles</b>, not acids or bases in the working sense, and they attack the carbonyl <b>carbon</b>. That is the same electrophilic carbon the nucleophilic addition chapter is about — so this is not a new mechanism, it is the general carbonyl addition with H⁻ as the nucleophile.</div>
+
+<h3>Esters and acids take two hydrides</h3>
+
+<p class="step-body">Reducing a ketone delivers one hydride and stops, because the alkoxide formed has nothing to expel. An ester is different: the first hydride gives a tetrahedral intermediate that <i>does</i> have a leaving group, the alkoxide of the alcohol half. It collapses, expelling that alkoxide and giving an <b>aldehyde</b> — which is more electrophilic than the ester was, and is immediately reduced again by a second hydride.</p>
+
+<p class="step-body">So an ester goes to a primary alcohol and you cannot normally stop at the aldehyde, because the intermediate is more reactive than the starting material. Stopping there requires a deliberately weakened reagent (DIBAL-H at low temperature), which is worth knowing exists even if the details belong to a later course.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — reading a molecule before choosing</span>
+<p>A compound contains a ketone, an ester and a terminal alkene. What does each reagent give?</p>
+<p><b>NaBH₄:</b> the ketone becomes a secondary alcohol. The ester and the alkene are untouched.</p>
+<p><b>LiAlH₄:</b> the ketone becomes a secondary alcohol <i>and</i> the ester becomes a primary alcohol. The alkene is still untouched — no hydride reagent reduces an isolated C=C.</p>
+<p><b>H₂ over Pd/C:</b> the alkene is reduced to an alkane and both carbonyls survive. Three reagents, three different products, and the molecule did not change.</p>
+</div>
+
+<h3>Reduction to a methylene</h3>
+
+<p class="step-body">Hydride reduction takes a ketone down one rung, to an alcohol. Two named reactions take it down two, replacing C=O with CH₂ entirely, and they exist as a pair because they tolerate opposite conditions:</p>
+
+<ul class="step-body">
+<li><b>Clemmensen reduction</b> — Zn(Hg), concentrated HCl. Strongly <b>acidic</b>, so use it when the rest of the molecule can survive acid but not base.</li>
+<li><b>Wolff–Kishner reduction</b> — hydrazine then hot KOH. Strongly <b>basic</b>, for molecules that cannot survive acid.</li>
+</ul>
+
+<p class="step-body">The pairing is the point: whichever one your substrate tolerates, the other is available. Both come up again in aromatic chemistry, where a Friedel–Crafts acylation followed by one of these is the standard way to attach an unrearranged alkyl chain to a ring.</p>
+
+<h3>What carries forward</h3>
+
+<p class="step-body">Hydride addition to a carbonyl is the same mechanism as every other nucleophilic addition in the carbonyl chapters, with H⁻ standing in for the nucleophile — so if you can draw a Grignard addition, you can already draw this. The selectivity table is the part to hold: it is the source of most "which reagent" questions in synthesis, and the amide-to-amine row is the one most often missed.</p>
+<!-- notes:end -->
+  </article>
+
+  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="alcohol-oxidation.html"><span>Previous</span>Oxidizing alcohols</a><a class="notes-prevnext notes-next" href="hydrogenation.html"><span>Next</span>Catalytic hydrogenation</a></nav>
+
+  <footer class="notes-foot">
+    <p><a href="../learn.html">&larr; All 78 sections</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
+  </footer>
+</div>
+</body>
+</html>

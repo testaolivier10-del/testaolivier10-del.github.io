@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalytic hydrogenation — Oxidation &amp; Reduction | Organic Chemistry</title>
+<meta name="description" content="H2 with a metal catalyst: syn addition, what is reduced and what survives, and the Lindlar/dissolving-metal pair that sets alkene geometry.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/hydrogenation.html">
+<meta property="og:title" content="Catalytic hydrogenation — Oxidation &amp; Reduction | Organic Chemistry">
+<meta property="og:description" content="H2 with a metal catalyst: syn addition, what is reduced and what survives, and the Lindlar/dissolving-metal pair that sets alkene geometry.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/hydrogenation.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/hydrogenation.html#lesson",
+      "name": "Catalytic hydrogenation",
+      "url": "https://levlprep.com/ochem/lessons/hydrogenation.html",
+      "description": "H2 with a metal catalyst: syn addition, what is reduced and what survives, and the Lindlar/dissolving-metal pair that sets alkene geometry.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Catalytic hydrogenation"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Oxidation & Reduction",
+          "item": "https://levlprep.com/ochem/learn.html#m-redox"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Catalytic hydrogenation",
+          "item": "https://levlprep.com/ochem/lessons/hydrogenation.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 12 &middot; Oxidation &amp; Reduction</div>
+    <h1 style="margin-bottom:4px;">Catalytic hydrogenation.</h1>
+    <p class="lede" style="margin-top:0;">A surface reaction, a syn addition, and a chemoselectivity you can rely on.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/hydrogenation.html">Catalytic hydrogenation &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/alkene-oxidation.html">Oxidative cleavage</a><a href="../lessons/alkynes.html">Alkynes</a><a href="../lessons/diastereomers.html">Diastereomers</a><a href="../lessons/amine-reactions.html">Amine reactions</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* Chemoselectivity under H2/Pd/C at one atmosphere. The set is chosen so
+     that "hydrogenation reduces everything" fails on three of the four. */
+  var CASES = [
+    { id:'g1', sub:'A disubstituted <b>alkene</b>', right:'yes',
+      why:'Readily reduced, and syn: both hydrogens are delivered from the metal surface the alkene is lying against, so they arrive on the same face.' },
+    { id:'g2', sub:'A <b>ketone</b>', right:'no',
+      why:'Survives ordinary conditions. It needs higher pressure and a more active catalyst such as PtO₂ — which is exactly why H₂/Pd/C is the complement of the hydride reagents, which reduce the ketone and leave the alkene.' },
+    { id:'g3', sub:'An <b>ester</b>', right:'no',
+      why:'Essentially untouched by catalytic hydrogenation. Reducing an ester needs LiAlH₄.' },
+    { id:'g4', sub:'A <b>benzene ring</b>', right:'no',
+      why:'Needs severe conditions — high pressure and temperature. An aromatic ring survives an ordinary hydrogenation intact, which is what makes the reaction useful on aromatic substrates.' }
+  ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'hydrogenation',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A surface reaction, and the stereochemistry that follows from it.',
+        bodyHtml: '<p class="step-body">Hydride reagents cannot reduce an isolated C=C, because a hydride is a nucleophile and an alkene has no electrophilic end. Reducing a carbon–carbon multiple bond needs a different mechanism: adsorb both the alkene and hydrogen gas onto a <b>metal surface</b> — Pd/C, Pt, or Raney nickel — and let them combine there.</p>' +
+          '<p class="step-body">The catalyst is essential rather than convenient. Hydrogen gas and an alkene in a flask together do nothing at room temperature, because breaking the H–H bond costs too much without a surface to do it on.</p>' +
+          '<div class="explain-box">Both hydrogens are delivered from the surface the alkene is lying against, so they can only arrive on the face that is touching it. Hydrogenation is therefore a <b>syn addition</b>. On a ring this is directly visible: hydrogenating a 1,2-disubstituted cyclohexene gives the <b><i>cis</i></b> product, because both hydrogens land on the same face.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'What gets reduced, and in what order.',
+        bodyHtml: '<ul class="step-body">' +
+          '<li><b>Readily reduced:</b> alkenes, alkynes (all the way to alkanes), imines, nitro groups (to amines), azides.</li>' +
+          '<li><b>Needs forcing conditions:</b> ketones and aldehydes, which require higher pressure and a more active catalyst such as PtO₂.</li>' +
+          '<li><b>Essentially untouched:</b> esters, carboxylic acids, amides. Benzene rings need high pressure and temperature.</li>' +
+          '</ul>' +
+          '<p class="step-body" style="margin-bottom:0;">That ordering is what makes the reaction useful rather than merely strong. A molecule containing an alkene, a ketone and a benzene ring is reduced <b>at the alkene alone</b> over Pd/C at one atmosphere — the exact complement of the hydride reagents from the last lesson, which reduce the ketone and leave the alkene. Between the two you can choose either one.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">H₂ over Pd/C at one atmosphere. What gets reduced?</h2>' +
+            '<p class="step-body">Mark each group. Only one of the four is touched under these conditions.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.sub + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Is this reduced">' +
+                  '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-v="yes">Reduced</button>' +
+                  '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-v="no">Survives</button>' +
+                '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-v') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Not quite. Ordinary conditions means Pd/C at one atmosphere — powerful for C=C and C≡C, and much less so for anything with oxygen in it.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. Only the alkene reacts, which is what makes this the complement of the hydride reagents.'
+                  : 'All four, first time. Only the alkene reacts — hydrogenation and hydride reduction are complements, not alternatives.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'Hydrogenating 1,2-dimethylcyclohexene gives which product?',
+        options: ['The trans isomer','The cis isomer','A racemic mixture of both','An open-chain alkane'],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Both hydrogens arrive from the metal surface the ring is lying against, so both land on the same face. Syn addition to a ring is visible directly as the cis product, and this is the standard way the stereochemistry is examined.',
+        wrongFeedback: 'Think about where the two hydrogens physically come from. If they are both delivered by the same surface, can they end up on opposite faces?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'You need the cis alkene from an internal alkyne. Which conditions?',
+        options: ['H₂, Pd/C','H₂, Lindlar catalyst','Na in liquid NH₃','LiAlH₄'],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Lindlar is palladium deliberately poisoned with quinoline and lead, so it stops at the alkene instead of running on to the alkane. It is still a surface reaction, so the addition is syn and the product is the cis (Z) alkene. Plain Pd/C would take it all the way to the alkane.',
+        wrongFeedback: 'Ordinary Pd/C does not stop at the alkene, and one of the other options gives the opposite geometry. Which reagent is a deliberately deactivated catalyst?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'One alkyne, two conditions, two geometries.',
+        bodyHtml: '<ul class="step-body">' +
+          '<li><b>Lindlar catalyst</b> — Pd on CaCO₃, poisoned with quinoline and lead. Deactivated enough to stop at the alkene, still a surface reaction, so syn addition gives the <b><i>cis</i> (Z) alkene</b>.</li>' +
+          '<li><b>Na in liquid NH₃</b> — a dissolving-metal reduction, not a surface reaction at all. It proceeds through radical anion intermediates that adopt the less hindered arrangement, so the hydrogens end up on opposite sides: the <b><i>trans</i> (E) alkene</b>.</li>' +
+          '</ul>' +
+          '<p class="step-body">Learn these as a pair with the geometry attached, because that is how they are examined: "make the cis alkene" means Lindlar and "make the trans alkene" means Na/NH₃. One substrate, two conditions, two stereoisomers you can choose between — which is a large part of why alkynes are such useful synthetic intermediates.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">A second use for this reaction: because hydrogenating any alkene gives the same kind of product, the <b>heat released measures how stable the alkene was</b>. A more stable alkene starts lower and releases less. That is the measurement behind the claim that alkene stability rises with substitution, and behind the ~15 kJ/mol of conjugation energy in buta-1,3-diene.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'Why does hydrogen gas not reduce an alkene without a catalyst?',
+        options: [
+          'The alkene is too stable',
+          'Breaking the H–H bond is too costly without a surface',
+          'Hydrogen is not a reducing agent',
+          'The reaction is thermodynamically uphill'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. The reaction is thermodynamically downhill — it simply has an enormous kinetic barrier, because H₂ has to be split. The metal surface adsorbs and weakens the H–H bond, which is what a catalyst does: it lowers the barrier without changing the energetics.',
+        wrongFeedback: 'The reaction releases energy, so the problem is not that it is uphill. Ask what physically has to happen to the H₂ molecule first, and what makes that expensive.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A molecule has an alkene, a ketone and a nitro group. Treat it with H₂ over Pd/C at one atmosphere. What changes?',
+        options: [
+          'Only the alkene',
+          'The alkene and the nitro group (to an amine); the ketone survives',
+          'All three are reduced',
+          'Only the nitro group'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Nitro groups are on the readily-reduced list alongside alkenes and alkynes — which is worth remembering, because it is the standard route to an aromatic amine from a nitroarene, and because it is the row most often forgotten when people summarize hydrogenation as "reduces C=C". The ketone needs higher pressure and a more active catalyst, so it comes through unchanged.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

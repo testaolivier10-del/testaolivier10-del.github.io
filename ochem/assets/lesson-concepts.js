@@ -42,6 +42,42 @@
        7 is anti-Markovnikov HBr — the chain logic applied somewhere new. */
     /* The four nomenclature lessons. Graded steps are 2, 3, 4, 6, 7 in each
        (0, 1 and 5 are explain steps and record nothing). */
+    /* The oxidation & reduction chapter. Graded steps are 2, 3, 4, 6, 7. */
+    'oxidation-states': { n:8, steps:{
+      2:['oxidation-level'],
+      3:['oxidation-level'],
+      4:['oxidation-level','oxidant-choice'],
+      6:['oxidation-level'],
+      7:['oxidation-level'] } },
+
+    'alcohol-oxidation': { n:8, steps:{
+      2:['oxidant-choice'],
+      3:['oxidant-choice','oxidation-level'],
+      4:['oxidant-choice'],
+      6:['oxidant-choice'],
+      7:['oxidant-choice','oxidation-level'] } },
+
+    'carbonyl-reduction': { n:8, steps:{
+      2:['reductant-scope'],
+      3:['reductant-scope'],
+      4:['reductant-scope'],
+      6:['reductant-scope'],
+      7:['reductant-scope','oxidation-level'] } },
+
+    'hydrogenation': { n:8, steps:{
+      2:['reductant-scope'],
+      3:['redox-stereochemistry'],
+      4:['redox-stereochemistry','reductant-scope'],
+      6:['reductant-scope'],
+      7:['reductant-scope'] } },
+
+    'alkene-oxidation': { n:8, steps:{
+      2:['redox-stereochemistry','oxidant-choice'],
+      3:['oxidant-choice'],
+      4:['oxidant-choice'],
+      6:['oxidant-choice'],
+      7:['redox-stereochemistry'] } },
+
     /* The conjugation chapter. Graded steps are 2, 3, 4, 6, 7 in each. */
     'conjugated-systems': { n:8, steps:{
       2:['conjugation-recognition'],

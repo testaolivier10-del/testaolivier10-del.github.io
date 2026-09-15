@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oxidative cleavage &amp; dihydroxylation — Oxidation &amp; Reduction | Organic Chemistry</title>
+<meta name="description" content="Oxidizing alkenes: mCPBA epoxidation, OsO4 syn dihydroxylation, the anti diol via an epoxide, and ozonolysis with either workup.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/alkene-oxidation.html">
+<meta property="og:title" content="Oxidative cleavage &amp; dihydroxylation — Oxidation &amp; Reduction | Organic Chemistry">
+<meta property="og:description" content="Oxidizing alkenes: mCPBA epoxidation, OsO4 syn dihydroxylation, the anti diol via an epoxide, and ozonolysis with either workup.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/alkene-oxidation.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/alkene-oxidation.html#lesson",
+      "name": "Oxidative cleavage & dihydroxylation",
+      "url": "https://levlprep.com/ochem/lessons/alkene-oxidation.html",
+      "description": "Oxidizing alkenes: mCPBA epoxidation, OsO4 syn dihydroxylation, the anti diol via an epoxide, and ozonolysis with either workup.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Oxidative cleavage & dihydroxylation"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Oxidation & Reduction",
+          "item": "https://levlprep.com/ochem/learn.html#m-redox"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Oxidative cleavage & dihydroxylation",
+          "item": "https://levlprep.com/ochem/lessons/alkene-oxidation.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 12 &middot; Oxidation &amp; Reduction</div>
+    <h1 style="margin-bottom:4px;">Oxidative cleavage &amp; dihydroxylation.</h1>
+    <p class="lede" style="margin-top:0;">Epoxide, syn diol, anti diol or cut in half — the reagent decides.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/alkene-oxidation.html">Oxidative cleavage &amp; dihydroxylation &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/epoxides.html">Epoxides</a><a href="../lessons/diastereomers.html">Diastereomers</a><a href="../lessons/aldehydes-ketones.html">Aldehydes &amp; ketones</a><a href="../lessons/mass-spec.html">Mass spectrometry</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* Reagent -> what happens to the C=C. Both KMnO4 rows are present on
+     purpose: the conditions, not the reagent, decide the answer. */
+  var CASES = [
+    { id:'x1', r:'mCPBA', right:'epox',
+      why:'A single oxygen delivered across the double bond in one concerted step, giving an epoxide. Because it is concerted it is stereospecific: cis alkene gives cis-substituted epoxide, trans gives trans.' },
+    { id:'x2', r:'OsO₄, then NMO', right:'syn',
+      why:'Both oxygens are delivered to the SAME face through a cyclic osmate ester, giving the <b>syn (cis) diol</b>. Cold dilute basic KMnO₄ does the same job more cheaply and less cleanly.' },
+    { id:'x3', r:'mCPBA, then H₃O⁺', right:'anti',
+      why:'Epoxide first, then opened by water attacking from the face opposite the C–O bond being broken — so the two oxygens end up on opposite faces: the <b>anti (trans) diol</b>.' },
+    { id:'x4', r:'O₃, then Me₂S', right:'cleave',
+      why:'Ozone cleaves the C=C completely. The reductive workup stops at the carbonyls: a carbon bearing two substituents becomes a ketone, one bearing a hydrogen becomes an aldehyde.' }
+  ];
+  var OUT = [{k:'epox',l:'Epoxide'},{k:'syn',l:'syn diol'},{k:'anti',l:'anti diol'},{k:'cleave',l:'Cleaved'}];
+
+  window.OchemLessonEngine.start({
+    topicId: 'alkene-oxidation',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Three degrees of oxidation, and you choose how far to go.',
+        bodyHtml: '<p class="step-body">Every reaction here oxidizes a C=C, and they differ in how much of the alkene is left afterwards. One adds a single oxygen, one adds two hydroxyls, and one cuts the molecule in half.</p>' +
+          '<p class="step-body"><b>mCPBA</b> delivers a single oxygen across the double bond to give an <b>epoxide</b>. The transfer is concerted, through a cyclic transition state, so it is <b>stereospecific</b>: a cis alkene gives the cis-substituted epoxide and a trans alkene gives the trans one, cleanly.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">Epoxides are useful precisely because they are strained and therefore reactive — which is what makes the next step possible.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Two routes to a diol, with opposite stereochemistry.',
+        bodyHtml: '<ul class="step-body">' +
+          '<li><b>OsO₄</b> (usually with NMO to make it catalytic) adds both oxygens to the <b>same face</b> through a cyclic osmate ester: a <b><i>syn</i> (cis) diol</b>. Cold, dilute, basic KMnO₄ does the same thing more cheaply and less cleanly.</li>' +
+          '<li><b>mCPBA, then aqueous acid</b> makes the epoxide first and then opens it. Water attacks the protonated epoxide from the face <i>opposite</i> the C–O bond being broken, so the two oxygens end up on opposite faces: an <b><i>anti</i> (trans) diol</b>.</li>' +
+          '</ul>' +
+          '<div class="explain-box"><b>OsO₄ &rarr; syn diol. Epoxidation then hydrolysis &rarr; anti diol.</b><br><br>Same starting alkene, same molecular formula in the product, different diastereomer. If a question specifies which diol it wants, it is testing exactly this pair — and it is the same kind of reagent-chosen stereocontrol as Lindlar against dissolving metal in the last lesson.</div>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">What does each reagent do to the double bond?</h2>' +
+            '<p class="step-body">The substrate is the same alkene every time. Only the reagent changes.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq">' + c.r + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Outcome for ' + c.r + '">' +
+                OUT.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Not that one. Ask how many oxygens are delivered, and whether they arrive on the same face or on opposite ones.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. The syn/anti diol pair is the one to hold — it is a stereochemical choice you make by reagent.'
+                  : 'All four, first time — including both routes to a diol, which differ only in which face the second oxygen arrives on.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'Ozonolysis with H₂O₂ workup instead of Me₂S. What changes?',
+        options: [
+          'Nothing; the workup is cosmetic',
+          'Anything that would have been an aldehyde becomes a carboxylic acid',
+          'The alkene is not cleaved at all',
+          'Ketones become carboxylic acids too'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. The oxidative workup takes the aldehyde fragments one rung further. Ketones are unaffected, because they have no hydrogen on the carbonyl carbon to lose — the same reason a ketone is the end of the line when you oxidize a secondary alcohol.',
+        wrongFeedback: 'The cleavage happens either way. Ask which of the two possible fragments still has a hydrogen on its carbonyl carbon, and what an oxidizing workup would do to it.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'KMnO₄ appears twice in the summary table. What decides which row applies?',
+        options: [
+          'The alkene substitution pattern',
+          'The conditions — cold and dilute gives a diol, hot and concentrated cleaves',
+          'How much reagent is used',
+          'The solvent alone'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Cold, dilute and basic stops at the syn diol; hot and concentrated cleaves right through to carboxylic acids and ketones. A question that specifies KMnO₄ without conditions is incomplete, and one that specifies them is telling you which row to read.',
+        wrongFeedback: 'The same reagent gives two completely different products, so the answer is not in the substrate. What else does a question give you alongside a reagent?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Ozonolysis run backwards is a structure-determination tool.',
+        bodyHtml: '<p class="step-body">Because ozonolysis cleaves cleanly at the double bond and nowhere else, the fragments tell you where the double bond was. Identify the two carbonyl products and mentally rejoin them at their carbonyl carbons, and you have reconstructed the starting alkene.</p>' +
+          '<div class="notes-example" style="margin-top:14px;">' +
+          '<span class="k">Worked example</span>' +
+          '<p>An unknown alkene C₆H₁₂ gives <b>propanal</b> and <b>propanone</b> on ozonolysis with Me₂S workup.</p>' +
+          '<p>Propanal, CH₃CH₂CHO, means that carbon carried a hydrogen and an ethyl group. Propanone, (CH₃)₂CO, means the other carried two methyls. Rejoin them: CH₃CH₂–CH=C(CH₃)₂, which is 2-methylpent-2-ene. Check the formula — C₆H₁₂. ✓</p>' +
+          '<p>The tell is that one fragment is an aldehyde and one a ketone, which says immediately that the alkene was trisubstituted.</p>' +
+          '</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'An alkene is ozonolyzed with reductive workup and gives a single product: one molecule of a symmetric ketone, in double the expected amount. What was the alkene?',
+        options: [
+          'A terminal alkene',
+          'A symmetric internal alkene, with the same two groups on each carbon',
+          'A conjugated diene',
+          'A cyclic alkene'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Cleaving a symmetric alkene gives two identical fragments, which is why you see one compound at twice the molar amount. Getting one product from a cleavage is strong evidence of symmetry — and a cyclic alkene would instead give a single molecule with two carbonyls, since the two ends stay connected through the rest of the ring.',
+        wrongFeedback: 'Two fragments come out of every cleavage. If you only observe one compound, what must be true about the two halves of the original alkene?'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'You need the anti (trans) diol from a cis alkene. What do you do, and why not OsO₄?',
+        options: [
+          'OsO₄, then heat to invert one center',
+          'mCPBA to make the epoxide, then aqueous acid to open it',
+          'Cold dilute KMnO₄, which gives anti diols',
+          'Ozonolysis, then reduce both fragments'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. OsO₄ and cold KMnO₄ both deliver both oxygens to the same face and can only give the syn diol — no amount of heating converts one diastereomer into the other. Going via the epoxide changes the stereochemical outcome because the second oxygen arrives by backside attack on the opposite face. This is the pattern worth carrying: when a reagent gives the wrong stereochemistry, the fix is usually a different mechanism rather than different conditions.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

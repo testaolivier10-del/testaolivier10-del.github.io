@@ -594,7 +594,54 @@ first question. **Raise that budget once more at most before doing the split.**
 **Also still open:** nothing checks that every curriculum topic has practice
 questions. Phase 9.2 shipped two topics with none and nothing noticed.
 
-#### Units 3–9 — **not started**
+#### Unit 3 — Oxidation & Reduction — **complete**
+
+Five sections, five lessons, 150 questions, inserted as **Chapter 12**, after
+Carbonyl Chemistry — the chapter needs both ends of the ladder available:
+alcohols (chapter 10) to oxidize and aldehydes and ketones (chapter 11) to
+reduce.
+
+| Section | Covers |
+|---|---|
+| Oxidation levels | The bonds-to-O/bonds-to-H test, the carbon ladder, why 3° alcohols cannot be oxidized |
+| Oxidizing alcohols | PCC, Jones, Swern, DMP — and why water decides where a chromium oxidation stops |
+| Reducing carbonyls | NaBH₄ vs LiAlH₄, why an ester takes two hydrides, amide → amine |
+| Catalytic hydrogenation | Syn addition, chemoselectivity, the Lindlar/dissolving-metal pair |
+| Oxidative cleavage | mCPBA, OsO₄ syn diol, the anti diol via an epoxide, ozonolysis both ways |
+
+**Keeping oxidation and reduction in one chapter is deliberate.** Nearly every
+question on this material is "which reagent, and what survives", and that
+comparison only works if the reagents are in the same place. The chapter is
+built around two questions asked of every reagent: *where does it stop*, and
+*what else does it touch*.
+
+**The shell generator's own guard caught an authoring error.** Passing a
+pre-escaped title (`Oxidative cleavage &amp; dihydroxylation`) where it expects
+a literal ampersand tripped the assertion that HTML entities must not leak into
+JSON-LD — which exists because exactly that bug shipped silently in the first
+nomenclature lesson before the guard was added.
+
+**The practice bank's page-weight budget is now spent.** 280 → 292 KB gzipped
+was the one further raise the previous note permitted, and the comment in
+`check-weight.mjs` now says **DO NOT RAISE THIS AGAIN**. `practice.html` and
+`review.html` block on this file before their first screen, and the remaining
+six chapters would push it past 400 KB. **The split must happen before Unit 4
+lands.** `ochem/assets/tutor-bank.json` also moved, 182 → 200, but that one is
+genuinely not a first-paint cost — it is fetched only when a reader opens the
+assistant — so it gets this file's usual ~10% headroom instead.
+
+**Bank quality:** 54.6% on longest-is-key after these 150 questions.
+`lengthCeiling` ratcheted 0.58 → 0.56. Keyed position is holding at 26.3%.
+
+#### Next, before Unit 4 — split the ochem practice bank
+
+`build-question-bank.mjs` already does this for `questions.json`: a core file
+with stems and options, and a separate explanations file fetched afterwards.
+`ochem/assets/practice-bank.json` needs the same, and the callers to update are
+`ochem/assets/bank-loader.js`, `ochem/assets/question-engine.js` and
+`ochem/search.html`. Its own page-weight budget then splits in two.
+
+#### Units 4–9 — **not started**
 
 ### Phase 9.4 — Depth in the existing units — **not started**
 
