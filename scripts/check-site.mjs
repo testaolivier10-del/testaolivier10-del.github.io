@@ -269,8 +269,20 @@ const BANKS = [
     // 22.7% it looks all but closed while "entirely" inside it was 0 for 83
     // and "only" is still 13.3%. The group row stays because it is the
     // historical ratchet; the per-word rows are what actually see the bank.
-    absoluteFloor: 0.225,
-    absoluteCeiling: 0.34,
+    // It has crossed. Fourteen keys that were genuinely absolute — enter only
+    // after the structure is cleared, always glove before contact, an EMT
+    // MUST report suspected abuse — now say so, which is the decision recorded
+    // in TRACKER as "balance this only with keys that are genuinely absolute".
+    // That took the group from 22.7% to 27.1%, past the baseline, so the
+    // ceiling is what guards it now and the floor sits just under chance.
+    //
+    // The first attempt overshot: six of those keys said "never", which took
+    // that one word from 26% to 44% and built a new tell pointing the other
+    // way. Three cord-prolapse keys carrying the identical phrase was a
+    // pattern of its own besides. Half were reworded to "only" or "must not",
+    // which is equally true and spreads the load — see 5(g).
+    absoluteFloor: 0.235,
+    absoluteCeiling: 0.30,
     // NOT tightened, and the reason is worth reading before the next domain.
     // This is the one tell here that marks the RIGHT answer, so it behaves
     // backwards from the other two: taking a hedge OUT OF A DISTRACTOR shrinks
@@ -537,8 +549,20 @@ const PER_WORD_TELLS = [
     note: 'was 8/191, now 8/131 — 96 options carried the bare intensifier "at all", which is padding wherever it appears' },
   { word: 'regardless',   re: /\bregardless\b/i,   direction: 'marks-wrong', floor: 0.10,
     note: 'was 5/79, now 7/70 — "regardless of X" is usually the substance of a wrong option, so only a template tail bolted onto nine distractors came out' },
-  { word: 'only',         re: /\bonly\b/i,         direction: 'marks-wrong', floor: 0.13,
-    note: 'measured, not yet worked. The strongest remaining single-word tell in the bank' },
+  { word: 'only',         re: /\bonly\b/i,         direction: 'marks-wrong', floor: 0.16,
+    note: '14/105 before the absolute-key pass, 17/106 after. Still the strongest single-word tell in the bank' },
+  { word: 'always',       re: /\balways\b/i,       direction: 'marks-wrong', floor: 0.13,
+    note: '2/27 before, 4/29 after. Under the sample floor, so recorded rather than asserted' },
+  { word: 'must',         re: /\bmust\b/i,         direction: 'marks-wrong', floor: 0.23,
+    note: '3/22 before, 6/25 after — mandatory-reporting and treat-as-arrest keys saying what they mean' },
+  // The only row here that marks RIGHT answers, and it does so because of this
+  // session's own edits: putting "never" into six keys at once took it from
+  // 26% to 44%. Half were reworded away and it sits at 33% on 21 items, under
+  // the sample floor. The ceiling is where it would start being a giveaway.
+  { word: 'never',        re: /\bnever\b/i,        direction: 'marks-right', ceiling: 0.34,
+    advice: 'Say the same thing with "only" or "must not" where that is equally true, or leave the key as it was. ' +
+            'An absolute word marking KEYS is the same free rule as one marking distractors, pointing the other way.',
+    note: 'watch this one: it is the word an absolute-key pass reaches for first' },
   // Marks RIGHT answers: the word appears in keys, where it hedges.
   { word: 'appropriate',  re: /\bappropriate\b/i,  direction: 'marks-right', ceiling: 0.30,
     note: 'was 38/43. "appropriate warning devices", "appropriate channels", "appropriate resources" — filler that made a key unfalsifiable. Every one now names the thing' },
@@ -572,7 +596,7 @@ if (bank) {
                `Rewrite the strawmen so that being absolute is not what makes them wrong, or let a key ` +
                `that is genuinely absolute say so.`
              : `over the ${(bound * 100).toFixed(0)}% ceiling, so the word marks keys. ` +
-               `Name the thing instead of hedging at it.`));
+               (probe.advice || 'Name the thing instead of hedging at it.')));
     }
   }
 }

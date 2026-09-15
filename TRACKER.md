@@ -632,7 +632,7 @@ The fourth work order. Items are numbered as they were given.
 | 7 | SN2 figure: cyanide's triple bond and lone pair, overlapping atoms, the ethyl group outside the frame | **done** |
 | 8 | The remaining British spellings in visible text | **done** |
 | 9 | Confirm the live site matches main (2,106 questions, Terms link) | pending |
-| 10 | The three deferred decisions: notes chapters to JSON with figures; light and dark homepage screenshots, lazy-loaded; balance the absolute-word tell using only genuinely absolute keys | **split, figures and screenshots done**; absolute keys next |
+| 10 | The three deferred decisions: notes chapters to JSON with figures; light and dark homepage screenshots, lazy-loaded; balance the absolute-word tell using only genuinely absolute keys | **done** |
 
 ### Item 1 — what the 2025 guidelines actually say
 
@@ -966,6 +966,48 @@ does in its second. `display` computed as `block` and the rule was absent from
 the surrounding comment and rules parses fine, so the cause is not the comment,
 and I could not reproduce it. The layout is verified correct by measurement —
 two 536px columns, the image box 456px — rather than by eye.
+
+### Item 10c — the absolute tell, balanced from the key side
+
+The decision recorded here was to balance this **only with keys that are
+genuinely absolute**, and that constraint is what makes the result honest. The
+bank had 450 items where a single option carried an absolute word and the key
+was that option 6.2% of the time; a student who eliminated the emphatic option
+was right nineteen times in twenty. Six phases of rewriting strawman
+distractors took it to 22.7%. The other half of the problem was never touched:
+**no key in the bank was allowed to be absolute**, including the ones where
+being absolute is the whole point.
+
+Fourteen now are. Enter only after trained personnel have cleared the
+structure. Always glove and shield your eyes before contact. An EMT **must**
+report suspected abuse. Pediatric bradycardia in respiratory distress **must**
+be treated as impending arrest. Never push a prolapsed cord back in. Not one of
+these was made absolute to move a number — each is a rule with no exceptions in
+EMT practice that the bank had been stating in softer words.
+
+| | Before | After |
+|---|---|---|
+| Group | 22.7% | 27.1% |
+| `only` | 13.3% | 16.0% |
+| `always` | 7.4% | 13.8% |
+| `must` | 17.4% | 24.0% |
+| `never` | 26.3% | 33.3% |
+
+The group has crossed the baseline, so `absoluteCeiling` is what guards it now
+(tightened 0.34 → 0.30) and the floor sits just under chance at 0.235.
+
+**The first attempt overshot, in exactly the way this file has recorded twice
+before.** Six of those fourteen keys said "never", which took that one word
+from 26% to 44% — a new free rule, pointing the other way. Three cord-prolapse
+keys carrying the identical phrase was a pattern in its own right besides. Half
+were reworded to "only" or "must not", which is equally true and spreads the
+load, and `never` now has its own row in check 5(g) with a **ceiling** rather
+than a floor: it is the word an absolute-key pass reaches for first, and it is
+the one to watch next.
+
+The length tell was watched throughout, because adding a clause to a key is the
+fastest way to make it the longest option again. It moved 24.8% → 24.6%; eight
+keys were shortened during the pass to keep it there.
 
 ---
 
