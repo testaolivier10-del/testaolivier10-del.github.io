@@ -1163,6 +1163,7 @@
     loadSdk(function(){
       var c = getClient();
       if(!c) return;
+      flushRpcQueue();
       trackPageview();
       c.auth.onAuthStateChange(handleAuthChange);
       c.auth.getSession().then(function(res){
@@ -1311,7 +1312,36 @@
     }, 5200);
   });
 
+  /* One-way write to a `security definer` RPC, for the small number of things
+     the site records that are not a user's progress: the page counter, a
+     report that a question is wrong, a client-side error.
+
+     Queued rather than dropped when the SDK has not arrived yet. Every caller
+     of this fires on page load or on an event moments after it, which is
+     exactly when the SDK is still in flight — the analytics module learned the
+     same lesson the hard way, and its events were being lost on precisely the
+     slow connections whose problems are most worth hearing about.
+
+     Resolves to true only when the write actually landed, and never rejects:
+     nothing here is important enough to break a page over. */
+  var rpcQueue = [];
+  function rpc(name, args){
+    var c = getClient();
+    if(!c){
+      if(rpcQueue.length < 10) rpcQueue.push([name, args]);
+      return Promise.resolve(false);
+    }
+    return c.rpc(name, args).then(function(res){
+      return !(res && res.error);
+    }, function(){ return false; });
+  }
+  function flushRpcQueue(){
+    var queued = rpcQueue.splice(0, rpcQueue.length);
+    queued.forEach(function(call){ rpc(call[0], call[1]); });
+  }
+
   window.StudyHubAccount = {
+    rpc: rpc,
     registerNamespace: registerNamespace,
     start: start,
     push: push,

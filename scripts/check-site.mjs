@@ -347,6 +347,29 @@ if (Array.isArray(bank)) {
   }
 }
 
+// ---- 11. Every page that can report an error does ----
+// assets/errors.js is the only thing that says a page broke. A page that
+// carries the rest of the site's chrome but not this one is a page whose
+// failures are invisible — and a new page is copied from an existing one, so
+// the omission would be inherited silently forever.
+//
+// It must also come FIRST. Deferred scripts run in document order, so a
+// reporter below account.js is a reporter that missed anything thrown while
+// account.js was running, and the errors worth hearing about are exactly the
+// ones early enough to stop a page working.
+for (const file of htmlFiles) {
+  const html = readFileSync(file, 'utf8');
+  const account = html.indexOf('assets/account.js');
+  if (account === -1) continue;
+  const errors = html.indexOf('assets/errors.js');
+  const rel = relative(ROOT, file);
+  if (errors === -1) {
+    fail(`${rel}: loads assets/account.js but not assets/errors.js, so nothing reports when this page breaks.`);
+  } else if (errors > account) {
+    fail(`${rel}: loads assets/errors.js after assets/account.js — it has to come first to catch anything thrown before it.`);
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);

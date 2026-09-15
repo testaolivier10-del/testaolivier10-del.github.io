@@ -41,9 +41,16 @@ export function createBrowser(){
   }
 
   const localStorage = MockStorage();
+  const location = { href: 'http://localhost/', origin: 'http://localhost', pathname: '/', search: '' };
   const window = {
     localStorage,
     sessionStorage: MockStorage(),
+    // A real window has these and modules reach for them through `window.`
+    // rather than bare, which a sandbox that only defines the globals does not
+    // provide. Leaving them off made a module that touches window.location
+    // look like a module that does nothing.
+    location,
+    navigator: { userAgent: 'node' },
     Date: MockDate,
     matchMedia: () => ({ matches: false, addEventListener(){}, removeEventListener(){} }),
     addEventListener(){}, removeEventListener(){},
@@ -72,8 +79,8 @@ export function createBrowser(){
   const sandbox = {
     window, document, localStorage,
     sessionStorage: window.sessionStorage,
-    navigator: { userAgent: 'node' },
-    location: { href: 'http://localhost/', pathname: '/', search: '' },
+    navigator: window.navigator,
+    location,
     Date: MockDate,
     console, setTimeout, clearTimeout, setInterval, clearInterval,
     requestAnimationFrame: () => 0,

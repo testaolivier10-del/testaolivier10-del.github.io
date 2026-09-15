@@ -67,7 +67,7 @@
   <div class="hero">
     <div class="eyebrow">Privacy</div>
     <h1>What leaves your browser.</h1>
-    <p class="lede">Short version: almost nothing. There are no ads and no cookies on this site, and nothing here follows you anywhere else on the web. Everything you study is stored on your own device unless you choose to sign in. There is cookieless analytics, and <a href="#site-analytics">Site analytics</a> below lists every field it records.</p>
+    <p class="lede">Short version: almost nothing. There are no ads and no cookies on this site, and nothing here follows you anywhere else on the web. Everything you study is stored on your own device unless you choose to sign in. There is cookieless analytics, and <a href="#site-analytics">Site analytics</a> below lists every field it records. When a page breaks, a short report of the error is sent so it can be fixed; <a href="#errors">When a page breaks</a> lists exactly what is in one.</p>
     <p class="updated">Last updated 14 September 2026</p>
   </div>
 
@@ -96,8 +96,15 @@
         <p>Each page load increments a counter so we can see which pages get used. It records <strong>the page path and the date, and nothing else</strong> — no IP address, no cookie, no user id, no session id, no device fingerprint, no referrer. There is no way to tell two visits apart, or to tell whether a visit was yours.</p>
         <p>It works by calling a single database function that can only do one thing: add one to a <code>(path, day)</code> total. The table behind it is locked so that nothing — including this website — can read it back or write to it any other way.</p>
 
+        <h2 id="errors">When a page breaks</h2>
+        <p>If a page hits a JavaScript error, the site sends us a short report so it can be fixed. This matters here because the site is a few hundred hand-written pages with no framework behind them: a page can break in a way that shows you an ordinary-looking screen where nothing works, and without this the only person who knows is you.</p>
+        <p>A report contains <strong>the page path, the error message, the file, line and column it came from, the first few lines of the stack, and your browser's user-agent string</strong>. That is everything needed to reproduce it and nothing else.</p>
+        <p>It does not contain anything you stored, answered or typed, your email address, an account id, a session id, or a referrer. There is no identifier in a report and no way to connect one to you or to another report. At most five are sent per page load, repeats within a load are sent once, and they go to the same locked table shape as the counter above — nothing, including this website, can read them back.</p>
+        <p>One caveat worth stating plainly rather than burying: an error <em>message</em> is written by the browser and can quote the thing it choked on, most often a fragment of a file that failed to parse. Messages are cut to 300 characters and we do not go looking for anything in them. If one ever turns out to carry something it should not, the fix is in the code that sends it.</p>
+        <p>This is covered by the same off switch as the analytics below: turning that off turns this off too, and nothing is sent rather than sent and discarded.</p>
+
         <h2 id="site-analytics">Site analytics</h2>
-        <p>Alongside that counter we use <strong>Umami</strong>, a privacy-focused analytics service, to understand how the site is actually used — which lessons get opened, and whether people who start an exam finish it. It sets no cookies and does not track you across other websites.</p>
+        <p>Alongside that counter and the error reports above, we use <strong>Umami</strong>, a privacy-focused analytics service, to understand how the site is actually used — which lessons get opened, and whether people who start an exam finish it. It sets no cookies and does not track you across other websites.</p>
         <p>It is a third party and it does collect more than our own counter does. On each page view it records:</p>
         <ul>
           <li>The <strong>page</strong> you are on and the <strong>referrer</strong> — the page or search that sent you here.</li>
@@ -168,6 +175,7 @@
   </div>
 </div>
 
+<script src="assets/errors.js" defer></script>
 <script src="assets/account.js" defer></script>
 <!-- This page draws its own header rather than calling LevlChrome.render, so
      nothing has mounted analytics.js for it. Loaded here on its own account:

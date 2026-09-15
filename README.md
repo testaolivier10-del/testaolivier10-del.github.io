@@ -47,6 +47,10 @@ assets/                Shared across every course
                          question. Optionally posts the question plus those passages to an
                          AI endpoint for a written answer; see worker/. site-chrome.js
                          mounts it, so no page loads it directly
+  errors.js            Says when a page breaks. Loaded first on every page that
+                         has an account.js, because the errors worth hearing
+                         about are the ones early enough to stop a page working
+                         — see When a page breaks
   account.js           One login for the whole site: Supabase auth + namespaced
                          cross-device sync (see Data & accounts)
   hub-progress.js      One shared level and one shared streak; per-subject XP.
@@ -522,6 +526,23 @@ Three things, all mounted from `assets/site-chrome.js` rather than written into 
 - **Answer announcements** (`assets/announce.js`) — a polite live region that speaks correct/incorrect and the explanation, wired into the one choke point each course's feedback passes through.
 - **Reduced motion** — a blanket CSS rule in `assets/theme.css`, plus `window.LevlMotion` for the movement CSS cannot reach (smooth scrolls, the body map's camera flights).
 
+## When a page breaks (`assets/errors.js`)
+
+183 pages of hand-written vanilla JS, no bundler and no framework — which is the point of the stack, and also means nothing checks that a page still *runs* before it ships. A typo in one lesson's bootstrap renders an inert page: the text is there, the buttons do nothing, no error is visible to the reader, and nobody finds out. The student assumes the site is broken and leaves, which is exactly the population least likely to email about it. Nothing on the site knew this had happened.
+
+An uncaught error or a rejected promise is now reported once, to our own Supabase, through the same `security definer` RPC shape as the page counter (`report_client_error`, in `scripts/sql/schema.sql`).
+
+- **It is loaded first**, immediately above `account.js` in every page's head, which makes it the first deferred script on the page. That position is the whole value: the errors most worth hearing about are thrown by page bootstraps at `DOMContentLoaded`, after the deferred scripts but before anything mounted asynchronously by `site-chrome.js` could have registered a listener. A reporter that arrives late reports only the failures that were not fatal. Check #11 in `check-site.mjs` fails if a page loads `account.js` without it, or loads it after.
+- **Reports are queued before they are sent**, because running before `account.js` means the thing that does the sending does not exist yet at the moment of the most interesting errors. Without the queue, being early would cost exactly the reports being early was for.
+- **Capped at five per load and deduplicated within a load.** One error inside a `requestAnimationFrame` loop is sixty errors a second, and a reporter that forwards all of them faithfully is a denial-of-service against our own database. The same cap bounds the queue, since a page that breaks before `account.js` arrives is exactly the page that breaks repeatedly.
+- **A third party failing to load is not a bug in this site.** An ad blocker stops Umami and the Supabase CDN on a large share of visits; reporting each one would bury the real reports under noise we already design around. A *same-origin* resource failing to load is the opposite — a page just lost a module — and is reported.
+- **`Script error.` is dropped.** A cross-origin script gives no file, no line and no stack, and is almost always an extension.
+- **It goes through the analytics opt-out**, checked before anything is sent rather than discarded at the far end, and it never throws: a reporter that can throw turns one broken page into a broken page plus a loop.
+
+What is sent: path, message, file/line/column, the first few stack frames with the origin stripped, and the user-agent. What is not: any stored value, any answer, any question, any email, any user or session id, any referrer. `privacy.html` says so under **When a page breaks**, including the one honest caveat — a browser-written error message can quote the fragment it choked on, which is why messages are truncated.
+
+Tested in `scripts/test/errors.test.mjs`.
+
 ## Privacy
 
 `privacy.html` is the site's privacy policy, linked from every page footer. The short version: no ads, no cookies, no cross-site tracking; progress lives in `localStorage`; what leaves the browser unprompted is the anonymous page counter and cookieless analytics, both described below.
@@ -565,7 +586,8 @@ then open `http://localhost:8000/`.
 6. Every advertised question count in markup, meta tags and this README matches the bank. The homepage went on advertising a figure from an early build long after the bank had more than doubled.
 7. Every advertised Ochem count matches `curriculum.js`: a digit count of "topics" is the number of topics with an href, "lessons" the number under `lessons/`, "mechanisms" the number of pages under `ochem/mechanisms/`. The course was "58 lessons", "62 topics" and "Fifty-eight interactive lessons" on three pages at once.
 8. Every question in the bank has a unique id, so every record in a learner's browser still refers to something.
-9. The static tool tiles written into `ochem/tools.html` (so a crawler or a reader with scripts off still gets the list) are byte-identical to what `tools-page.js` renders from `tools-registry.js`.
+9. Every page that loads `assets/account.js` also loads `assets/errors.js`, and loads it first — a page whose failures nothing reports is a page that can break silently forever, and new pages are copied from existing ones.
+10. The static tool tiles written into `ochem/tools.html` (so a crawler or a reader with scripts off still gets the list) are byte-identical to what `tools-page.js` renders from `tools-registry.js`.
 
 ### Generated files
 
@@ -582,10 +604,11 @@ A third job re-derives everything that is generated from the pages and fails if 
 
 ### Unit tests
 
-A second job runs `node --test scripts/test/*.test.mjs` — 101 tests over the pieces whose failure modes are silent. Everything above checks that the site is *wired* correctly; nothing checked that it *scores* correctly. An interval that doubles too eagerly buries a shaky concept for four months, a decay curve that bites too hard makes yesterday's work look undone, a streak that resets in the wrong timezone eats a 40-day run. None of that throws, and none of it would have been caught by a link checker — the student just gets worse practice and no one finds out.
+A second job runs `node --test scripts/test/*.test.mjs` — 114 tests over the pieces whose failure modes are silent. Everything above checks that the site is *wired* correctly; nothing checked that it *scores* correctly. An interval that doubles too eagerly buries a shaky concept for four months, a decay curve that bites too hard makes yesterday's work look undone, a streak that resets in the wrong timezone eats a 40-day run. None of that throws, and none of it would have been caught by a link checker — the student just gets worse practice and no one finds out.
 
 - `scripts/test/hub-progress.test.mjs` — the level curve (pinned: changing it demotes every existing user), XP accumulation and per-subject split, streak continuation across days, goal tracking, rank titles, day-log pruning.
 - `scripts/test/mastery-engine.test.mjs` — unseen vs. scored-zero, the learning rate settling as evidence accumulates, the same-day guard that stops one good session reaching a six-month interval, the interval cap, the decay floor, due-ness, leech benching and its release on a lesson read, the daily review cap, mistake de-duplication, tier records.
+- `scripts/test/errors.test.mjs` — the cap, the dedupe, the opt-out and the queue that holds reports until `account.js` exists. All four fail silently in both directions: a broken cap floods the database, a broken queue reports nothing and looks like a site with no bugs.
 - `scripts/test/question-ids.test.mjs` — what the numbers in a learner's records mean: ids surviving a deletion, a reorder and an append; the positional option-order array converting once and idempotently; a half-finished attempt abandoned rather than graded around a hole.
 - `scripts/test/harness.mjs` — loads these browser IIFEs into a VM context with a window, a localStorage and, crucially, a clock the test controls. Both engines are about *time*; none of this is testable against a real `Date.now()` without either sleeping or asserting nothing.
 
