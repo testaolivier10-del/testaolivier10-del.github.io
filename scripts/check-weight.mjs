@@ -88,7 +88,15 @@ const BUDGETS = [
 
   // Long reading pages, which carry their content inline. study-notes.html is
   // forty chapters of prose in one file and is meant to be large.
-  ['nremt/study-notes.html', 152],
+  //
+  // Raised 152 -> 172 when the five thin chapters (9, 10, 13, 29, 33) were
+  // expanded to the depth of the other thirty-five. That is a deliberate
+  // decision to make this page slower in exchange for it being complete, and
+  // it is the last time this number should move by adding prose: at ~160 KB
+  // gzipped every reader downloads forty chapters to read one, and the fix
+  // from here is to move CHAPTERS into a fetched JSON file, not to raise the
+  // budget again. See TRACKER.md.
+  ['nremt/study-notes.html', 172],
   ['nremt/glossary.html', 10],
   ['ochem/learn.html', 3],
 

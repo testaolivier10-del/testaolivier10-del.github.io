@@ -1207,10 +1207,10 @@ const CHAPTERS = [
   {
     num: 9,
     title: "Airway Management",
-    intro: "No intervention matters if air cannot reach the lungs, which is why the airway comes first in every assessment. This chapter traces the path a breath follows from the nose and mouth to the lungs, explains why one small structure, the epiglottis, accounts for so much airway trouble and why a patient who cannot protect their own airway is treated before almost anything else, and covers positioning during suctioning when spinal precautions pull the other way.",
+    intro: "No intervention matters if air cannot reach the lungs, which is why the airway comes first in every assessment. This chapter traces the path a breath follows from the nose and mouth to the lungs, explains why one small structure, the epiglottis, accounts for so much airway trouble, and then works through what you actually do about a threatened airway: the two manual maneuvers and when each one applies, sizing and inserting the oral and nasal airways, suctioning within the limits that keep it from doing harm, reading the four sounds an obstructed airway makes, and the technique that makes a bag-valve mask work rather than merely look like it is working.",
     sections: [
       {
-        title: "Airway Anatomy & Suctioning",
+        title: "Airway Anatomy & the Manual Maneuvers",
         id: "ch9-airway",
         domain: "Airway, Respiration & Ventilation",
         topics: [
@@ -1223,8 +1223,16 @@ const CHAPTERS = [
             html: `<p>Right where the throat meets the windpipe sits the <strong>epiglottis</strong>, a flap that flips downward every time you swallow, sealing off the airway so that food and liquid go toward the esophagus instead of the lungs. Just below it is the <strong>glottic opening</strong>, at the level of the vocal cords, which marks the actual boundary between the upper and lower airway. This one structure explains a great deal of airway pathology. Swelling here, injury here, or failure of the mechanism itself, as in a patient with a depressed level of consciousness who can no longer protect their own airway, is why airway problems are addressed before almost anything else in patient care.</p>`
           },
           {
-            heading: "Positioning during suctioning matters even when it seems inconvenient",
-            html: `<p>Whenever possible, a patient who is being suctioned should be turned onto their side, because gravity then helps secretions drain out rather than pool in the airway. When spinal injury is a real concern, the approach changes. You do your best without turning the patient, and you roll them only as a single coordinated unit, keeping the spine aligned, and only if there is truly no safer alternative. This is a good example of how airway priorities and spinal precautions can pull in different directions, and of why judgment, not just a fixed rule, matters in the moment.</p>`
+            heading: "In an unresponsive patient the tongue is the most common obstruction, and it is an obstruction you can fix with your hands",
+            html: `<p>The tongue is anchored to the lower jaw. When a patient loses consciousness, the muscles that hold the jaw forward relax, the jaw falls back toward the spine, and the tongue falls back with it against the posterior wall of the throat. Nothing is stuck in the airway and nothing is swollen; the airway has simply folded shut. This is the single most common cause of airway obstruction in an unresponsive patient, and the reason the first thing you do for such a patient costs nothing and takes two seconds.</p><p>Both manual maneuvers work by the same mechanism: they move the lower jaw forward, and the tongue, being attached to it, comes forward off the back of the throat. Neither one opens anything. They un-fold something.</p>`
+          },
+          {
+            heading: "Head-tilt/chin-lift is the default; jaw-thrust is the one you use when the spine is in question",
+            html: `<p>The <strong>head-tilt/chin-lift</strong> is the standard maneuver for a patient with no suspected spinal injury. One hand on the forehead tilts the head back; the fingertips of the other hand under the bony part of the chin lift it upward. Keep your fingers on bone. Pressing into the soft tissue under the chin pushes the base of the tongue up into the airway, which is the opposite of what you are trying to do.</p><p>The <strong>jaw-thrust</strong> is the maneuver for a patient in whom you suspect a spinal injury, because it opens the airway without moving the neck. You position yourself at the patient's head, place your fingers behind the angles of the jaw on both sides, and displace the jaw forward while keeping the head in a neutral, in-line position. It is harder to hold and it ties up both of your hands, which is why it is not the default.</p><p>There is an order of priority worth being explicit about, because scenarios are written to test it. A patient with a suspected spinal injury who has no airway gets the jaw-thrust first. If the jaw-thrust does not open the airway, you use the maneuver that does. An open airway is the higher priority, because a protected spine in a patient who is not breathing is not a good outcome.</p>`
+          },
+          {
+            heading: "A child's airway is not a small adult airway, and the differences change what you do",
+            html: `<p>Several differences matter at the bedside. A child's tongue is proportionally larger relative to the mouth, so tongue obstruction is more likely and more complete. The airway structures themselves are smaller and softer, so a given amount of swelling narrows the airway far more, and so the trachea can be collapsed by pressure from outside. The back of an infant's head is proportionally large, so when an infant is laid flat on a hard surface the head is pushed forward into flexion and the airway closes.</p><p>The practical consequence is that the neutral position for an infant or small child is not the same as for an adult. You may need a folded towel under the shoulders to bring the airway back into line, and over-extending the neck, tilting the head back as far as it will go, will kink a soft trachea shut rather than open it.</p>`
           }
         ],
         takeaways: [
@@ -1234,8 +1242,107 @@ const CHAPTERS = [
           "Epiglottis: flap that seals the airway during swallowing, directing food/liquid to the esophagus instead of the lungs.",
           "Glottic opening (at the vocal cords) marks the boundary between upper and lower airway.",
           "A patient with depressed LOC may lose the ability to protect their own airway via this mechanism — why airway comes first in patient care.",
-          "Suctioning: turn the patient onto their side when possible so gravity drains secretions.",
-          "With suspected spinal injury: avoid turning if possible; if unavoidable, roll as a single coordinated unit keeping the spine aligned."
+          "The tongue is the most common airway obstruction in an unresponsive patient; it is attached to the jaw, so moving the jaw forward moves the tongue forward.",
+          "Head-tilt/chin-lift: the default maneuver, no suspected spinal injury. Lift the bony chin, not the soft tissue under it.",
+          "Jaw-thrust: the maneuver for suspected spinal injury — opens the airway without moving the neck.",
+          "If a jaw-thrust does not open the airway, use the maneuver that does. An open airway outranks spinal precautions.",
+          "Pediatric airway: larger tongue, smaller and softer structures, large occiput. Padding under the shoulders keeps an infant's airway in line; over-extension kinks it shut."
+        ]
+      },
+      {
+        title: "Airway Adjuncts — OPA and NPA",
+        id: "ch9-adjuncts",
+        domain: "Airway, Respiration & Ventilation",
+        topics: [
+          {
+            heading: "An adjunct holds the tongue off the back of the throat so your hands do not have to",
+            html: `<p>A manual maneuver works only while you are doing it. The moment you let go to do something else, the jaw falls back and the airway closes again. An <strong>airway adjunct</strong> is a device that holds the tongue away from the posterior pharynx mechanically, so the airway stays open without a rescuer permanently committed to holding it.</p><p>Neither adjunct is a definitive airway. Neither one seals the trachea, and neither protects the lungs from vomit. A patient with an adjunct in place can still aspirate, and you still need suction within reach.</p>`
+          },
+          {
+            heading: "The oropharyngeal airway: no gag reflex, sized from the corner of the mouth to the earlobe",
+            html: `<p>The <strong>oropharyngeal airway (OPA)</strong> is a rigid curved plastic device that sits in the mouth with its tip in the posterior pharynx. Its one absolute requirement is that the patient has <strong>no gag reflex</strong>. In a patient who retains a gag, an OPA will provoke gagging and vomiting, and in a patient who cannot protect their airway that vomit goes into the lungs. If the patient tolerates it, the adjunct was appropriate; if the patient gags on it, remove it.</p><p><strong>Sizing:</strong> measure from the corner of the patient's mouth to the angle of the jaw, or from the center of the mouth to the tip of the earlobe. Both landmarks are taught and both give a workable length. Size matters in both directions: an OPA that is too long can push the epiglottis down over the glottic opening and obstruct the airway you were trying to open, and one that is too short leaves the tongue exactly where it was.</p><p><strong>Insertion, adult:</strong> open the mouth, insert the airway with the tip pointed toward the roof of the mouth, and as it reaches the back of the mouth rotate it 180 degrees so the curve follows the curve of the tongue. The flange should rest against the lips.</p><p><strong>Insertion, pediatric:</strong> do not use the rotation technique. A child's palate is soft and the rotation tears it. Insert the airway right side up, following the curve of the tongue, using a tongue depressor to hold the tongue down and out of the way.</p>`
+          },
+          {
+            heading: "The nasopharyngeal airway: tolerated by a patient with a gag, sized nose to earlobe",
+            html: `<p>The <strong>nasopharyngeal airway (NPA)</strong> is a soft flexible tube that passes through the nostril into the posterior pharynx. Its advantage is the one the OPA lacks: most patients with an intact gag reflex will tolerate it. That makes it the adjunct for the patient whose level of consciousness is depressed but not absent, the semi-conscious patient who keeps losing their airway but gags on anything in their mouth.</p><p><strong>Sizing:</strong> length is measured from the tip of the nose to the tip of the earlobe. Diameter should be the largest that fits the nostril without blanching it, roughly the diameter of the patient's own little finger.</p><p><strong>Insertion:</strong> lubricate the tube generously with a water-soluble lubricant. Position the bevel toward the septum, the wall dividing the nostrils, and advance the tube <em>straight back</em>, along the floor of the nasal cavity, not upward. The nasal passage runs backward, not up toward the eyes; advancing upward drives the tube into the roof of the nasal cavity and causes bleeding. If you meet resistance, do not force it. Withdraw and try the other nostril.</p><p><strong>The contraindication to know:</strong> an NPA is avoided in a patient with signs of a <strong>basilar skull fracture</strong> or significant mid-face trauma — raccoon eyes, Battle's sign, fluid from the nose or ears. The concern is a tube passing through a fracture at the base of the skull rather than into the pharynx.</p>`
+          }
+        ],
+        takeaways: [
+          "An adjunct holds the tongue off the posterior pharynx mechanically; a manual maneuver only works while you hold it.",
+          "Neither adjunct protects against aspiration. Keep suction within reach.",
+          "OPA requires NO gag reflex. If the patient gags, remove it.",
+          "OPA sizing: corner of the mouth to the angle of the jaw, or center of the mouth to the tip of the earlobe.",
+          "Too long an OPA can push the epiglottis over the glottic opening and obstruct; too short leaves the tongue in place.",
+          "OPA insertion, adult: tip toward the roof of the mouth, rotate 180° at the back of the mouth. Flange rests at the lips.",
+          "OPA insertion, pediatric: right side up with a tongue depressor. Do NOT rotate — it tears the soft palate.",
+          "NPA is tolerated by most patients WITH a gag reflex — the adjunct for a semi-conscious patient.",
+          "NPA sizing: tip of the nose to the tip of the earlobe; diameter roughly the patient's little finger.",
+          "NPA insertion: lubricate, bevel toward the septum, advance straight back along the floor of the nose — never upward. Resistance means try the other nostril, not more force.",
+          "Avoid an NPA with signs of basilar skull fracture or major mid-face trauma (raccoon eyes, Battle's sign, drainage from nose or ears)."
+        ]
+      },
+      {
+        title: "Suctioning & the Sounds of an Obstructed Airway",
+        id: "ch9-suction",
+        domain: "Airway, Respiration & Ventilation",
+        topics: [
+          {
+            heading: "Suctioning removes what you can hear; it is a time-limited procedure because it removes oxygen too",
+            html: `<p>Suction clears blood, vomit, and secretions from the airway. The reason it is limited in time is that a suction catheter in the pharynx removes air along with fluid, and for the duration of the procedure the patient is neither breathing nor being ventilated. Suctioning a hypoxic patient makes them more hypoxic before it makes them better, so you pre-oxygenate when you can, suction for a defined interval, and ventilate again.</p><p>The limit taught for an adult is <strong>no more than about 15 seconds</strong> per attempt, and <strong>shorter in a child or infant — about 10 seconds or less</strong>, with a lower suction pressure. Some texts teach 10 seconds for an adult rather than 15; local protocol governs the number you are held to. The principle behind whichever number your system uses does not vary: suction, then ventilate, then suction again, rather than staying in the airway until it is perfectly clear.</p>`
+          },
+          {
+            heading: "The technique details are the ones that separate suctioning that helps from suctioning that injures",
+            html: `<p>Measure the catheter before you insert it: from the corner of the mouth to the angle of the jaw or earlobe, the same landmark as an OPA. Insert it <em>without</em> suction applied, to the measured depth only, and apply suction while withdrawing in a sweeping motion. Suctioning on the way in pulls the soft tissue of the pharynx into the catheter tip and removes oxygen for the whole insertion rather than the withdrawal. Never insert past the point you can see.</p><p>The <strong>rigid (Yankauer) catheter</strong> is the one for thick secretions and vomit in the mouth of an adult, because its bore is wide enough not to clog. A <strong>soft (French) catheter</strong> is for the nose, for a stoma, or for going through an adjunct. If vomit is thick enough to clog even a rigid catheter, log-roll the patient onto their side and let gravity do it.</p><p>Stimulating the back of the throat can trigger a vagal response and slow the heart rate, which matters most in infants and children. If the heart rate falls during suctioning, stop and ventilate.</p>`
+          },
+          {
+            heading: "Four sounds, four different problems, four different responses",
+            html: `<p>An airway in trouble usually announces itself, and the sound tells you where the problem is and what to do about it. This is high-yield because each sound has a distinct and non-interchangeable response.</p><p><strong>Snoring</strong> is the tongue against the posterior pharynx — a partially obstructed upper airway in a patient with depressed consciousness. The response is positional: a manual maneuver, then an adjunct. Suction does nothing for it.</p><p><strong>Gurgling</strong> is fluid in the airway — blood, vomit, or secretions. The response is suction. Repositioning does nothing for it.</p><p><strong>Stridor</strong> is a high-pitched sound, heard on inspiration, produced by narrowing at or above the level of the larynx: swelling from anaphylaxis or burns, infection, or a foreign body. It is an upper-airway emergency, and it is the sound that should make you think about rapid transport rather than another adjunct, because nothing in an EMT's hands opens a swollen larynx.</p><p><strong>Wheezing</strong> is a whistling sound from narrowed <em>lower</em> airways, classically on expiration, and it points to bronchoconstriction — asthma, COPD, and also the lower-airway component of anaphylaxis. It is treated pharmacologically, not mechanically.</p><p>And the sound that is not a sound: a patient making obvious respiratory effort with <em>no</em> air movement at all has a complete obstruction. Silence with effort is worse than any noise on this list.</p>`
+          }
+        ],
+        takeaways: [
+          "Suction removes oxygen along with fluid; pre-oxygenate, suction, then ventilate.",
+          "Limit a single attempt to about 15 seconds in an adult and about 10 seconds or less in a child or infant, at a lower pressure. Some texts teach 10 seconds for adults; local protocol governs.",
+          "Measure the catheter corner-of-mouth to earlobe/angle of jaw; insert to that depth only, never past what you can see.",
+          "Insert WITHOUT suction; apply suction while withdrawing, sweeping.",
+          "Rigid (Yankauer): thick secretions and vomit in an adult's mouth. Soft (French): nose, stoma, or through an adjunct.",
+          "Thick vomit that clogs the catheter: log-roll the patient and let gravity clear it.",
+          "Suctioning can trigger a vagal response and bradycardia, especially in children. If the heart rate falls, stop and ventilate.",
+          "Snoring = tongue = reposition and place an adjunct.",
+          "Gurgling = fluid = suction.",
+          "Stridor = upper airway narrowing (inspiratory, high-pitched) = an emergency you transport rather than fix.",
+          "Wheezing = lower airway constriction (expiratory) = treated with medication, not with an adjunct.",
+          "Respiratory effort with no air movement = complete obstruction. Silence with effort is the worst sign here."
+        ]
+      },
+      {
+        title: "Bag-Valve-Mask Ventilation",
+        id: "ch9-bvm",
+        domain: "Airway, Respiration & Ventilation",
+        topics: [
+          {
+            heading: "The bag-valve mask is the skill most often performed badly, and the failure is almost always the seal",
+            html: `<p>A <strong>bag-valve mask (BVM)</strong> delivers positive-pressure ventilation to a patient who is not breathing adequately on their own. The adult bag holds roughly 1,200 to 1,600 mL. Connected to oxygen at 15 L/min with a reservoir attached, it delivers close to 100 percent oxygen; without oxygen connected it delivers room air, about 21 percent, which is still worth doing while someone sets up the tank.</p><p>The device fails in a specific and predictable way. Squeezing the bag is easy; maintaining a seal on the face with one hand while holding the jaw forward with the same hand is hard, and when the seal leaks the volume goes into the room instead of the patient. This is why <strong>two-rescuer BVM is preferred whenever a second pair of hands exists</strong>: one rescuer uses both hands to hold the mask and the jaw, the other squeezes the bag. It is not a matter of preference or staffing convenience. Two-rescuer technique delivers measurably more volume.</p>`
+          },
+          {
+            heading: "The mechanics: E-C clamp, chest rise, one second, and no faster than the rate calls for",
+            html: `<p>For a single rescuer, the <strong>E-C clamp</strong> is the hand position: thumb and index finger form a C over the mask pressing it to the face, while the remaining three fingers form an E along the bony ridge of the jaw, lifting the jaw up into the mask rather than pressing the mask down into the face. Lifting the jaw into the mask both seals and opens; pressing the mask down pushes the jaw back and closes the airway.</p><p>Position the mask with the narrow end over the bridge of the nose and the wide end in the groove between the lower lip and the chin. Squeeze <strong>over about one second</strong>, and squeeze only until <strong>the chest visibly rises</strong>. Visible chest rise is the endpoint, not a full squeeze of the bag.</p><p>Rate, for a patient who has a pulse but is not breathing adequately: about <strong>1 breath every 6 seconds (10 per minute) in an adult</strong>, and <strong>1 every 2 to 3 seconds (20 to 30 per minute) in an infant or child</strong>. During CPR with an advanced airway in place, ventilations run about 10 per minute without pausing compressions. Note that older references teach 10 to 12 per minute for an adult; the current AHA figure is 10.</p>`
+          },
+          {
+            heading: "Too much ventilation is its own injury, and the troubleshooting order is fixed",
+            html: `<p>Ventilating too fast or with too much volume is actively harmful, not merely wasteful. Excess pressure opens the esophagus and forces air into the stomach. <strong>Gastric distention</strong> pushes the diaphragm up, reducing the volume the lungs can hold, and it makes vomiting and aspiration far more likely. Beyond that, sustained positive pressure in the chest raises intrathoracic pressure and reduces the blood returning to the heart, which lowers cardiac output at the exact moment the patient can least afford it.</p><p>When the chest does not rise, work through the causes in this order, because the common ones come first: <strong>re-seal the mask</strong> (the most common failure by a wide margin), <strong>reposition the head and jaw</strong>, <strong>suction</strong> if there is fluid, and <strong>check for an obstruction</strong>. Squeezing harder is not on the list. If the seal is leaking, more force makes a louder leak.</p>`
+          }
+        ],
+        takeaways: [
+          "Adult BVM volume is roughly 1,200–1,600 mL; with 15 L/min oxygen and a reservoir it delivers close to 100% oxygen.",
+          "Two-rescuer BVM is preferred whenever a second rescuer is available — one holds the mask with both hands, one ventilates. It delivers more volume than one-rescuer technique.",
+          "One-rescuer hand position: E-C clamp. Thumb and index finger seal the mask (C); three fingers lift the jaw into the mask (E).",
+          "Lift the jaw up into the mask; do not press the mask down into the face.",
+          "Mask position: narrow end over the bridge of the nose, wide end between the lower lip and chin.",
+          "Squeeze over about one second, and only until the chest visibly rises. Chest rise is the endpoint, not an emptied bag.",
+          "Rate with a pulse: adult about 1 breath every 6 seconds (10/min); infant or child 1 every 2–3 seconds (20–30/min). Older texts say 10–12/min for adults; current AHA is 10.",
+          "With an advanced airway during CPR: about 10 ventilations per minute, without pausing compressions.",
+          "Over-ventilation causes gastric distention (raising the diaphragm, inviting vomiting) and raises intrathoracic pressure, reducing venous return and cardiac output.",
+          "No chest rise? Re-seal, reposition, suction, check for obstruction — in that order. Squeezing harder is never the fix."
         ]
       }
     ]
@@ -1243,8 +1350,55 @@ const CHAPTERS = [
   {
     num: 10,
     title: "Ventilation & Oxygen Equipment",
-    intro: "Oxygen is a drug, delivered by equipment that has to match the patient's need and be handled with respect for the pressure it holds. This chapter covers fitting the delivery device to the patient, with the Venturi mask and the COPD patient as the case that proves more oxygen is not always better, and then the regulators, flowmeters, pin-index system and fire hazards that make oxygen equipment safe or dangerous.",
+    intro: "Oxygen is a drug, delivered by equipment that has to match the patient's need and be handled with respect for the pressure it holds. This chapter covers the decision that comes first — whether this patient needs oxygen or needs someone to breathe for them — then fits the delivery device to the patient, uses the Venturi mask and the COPD patient as the case that proves more oxygen is not always better, and finishes with the cylinders, regulators, flowmeters, pin-index system and fire hazards that make oxygen equipment safe or dangerous.",
     sections: [
+      {
+        title: "Oxygen or Ventilation? Making the Call",
+        id: "ch10-oxygen-or-ventilation",
+        domain: "Airway, Respiration & Ventilation",
+        topics: [
+          {
+            heading: "Oxygen and ventilation solve different problems, and giving the wrong one is a recognizable exam trap",
+            html: `<p>Supplemental oxygen enriches the air a patient is moving. It assumes the patient is moving air. <strong>Ventilation</strong> — a bag-valve mask — moves air for a patient who is not moving enough of it themselves. A patient breathing 6 times a minute with shallow chest movement does not have an oxygen-concentration problem; they have a volume problem, and a non-rebreather at 15 L/min enriches a tidal volume that is too small to matter. The reverse error is rarer but real: bagging a patient who is breathing adequately and merely hypoxic adds nothing and risks gastric distention.</p><p>So the question is not "how sick does this patient look" but "is air actually moving in adequate volume at an adequate rate?" If yes, and the patient is hypoxic, give oxygen. If no, ventilate — and give oxygen through the bag while you do.</p>`
+          },
+          {
+            heading: "The findings that say ventilation, not a mask",
+            html: `<p>Inadequate breathing has a consistent picture, and any of it should push you toward the bag: a rate that is too slow or too fast to move useful volume, chest rise that is shallow or absent, breath sounds that are diminished or absent, cyanosis, altered mental status, an inability to speak more than a word or two at a time, and in a child, the specific signs that the work of breathing has become unsustainable — nasal flaring, retractions between and below the ribs, grunting, and head bobbing.</p><p>One pattern deserves naming because it is regularly misread. A patient in severe respiratory distress who suddenly becomes <strong>quiet and sleepy</strong> is usually not improving. Falling respiratory effort and a falling level of consciousness in a patient who was working hard a minute ago are signs of exhaustion and rising carbon dioxide, and that patient is about to need ventilation rather than reassurance.</p><p>When you assist ventilations in a patient who still has some respiratory drive of their own, time your squeezes to the beginning of their own inspiratory effort. Bagging against a patient who is trying to exhale forces air into the stomach and fights the patient rather than helping them.</p>`
+          }
+        ],
+        takeaways: [
+          "Supplemental oxygen enriches the air a patient moves; ventilation moves air for a patient who cannot move enough of it.",
+          "A slow, shallow breather has a volume problem — a non-rebreather enriches a tidal volume too small to help. Ventilate.",
+          "Signs pointing to ventilation: rate too slow or too fast, shallow or absent chest rise, diminished breath sounds, cyanosis, altered mental status, one- or two-word sentences.",
+          "Pediatric signs of unsustainable work of breathing: nasal flaring, retractions, grunting, head bobbing.",
+          "A patient in severe distress who goes quiet and sleepy is tiring, not improving. Rising CO2 and falling effort mean ventilation is next.",
+          "When assisting a patient with some drive of their own, time squeezes to the start of their own inspiration — bagging against exhalation inflates the stomach."
+        ]
+      },
+      {
+        title: "Delivery Devices, Flow Rates & Targets",
+        id: "ch10-delivery-devices",
+        domain: "Airway, Respiration & Ventilation",
+        topics: [
+          {
+            heading: "Four devices, and the flow rate is part of the device",
+            html: `<p>Each delivery device has a flow range it is designed for, and running it outside that range either fails to work or actively harms. The numbers below are the commonly taught EMT figures; the delivered concentration is always approximate, because it depends on how much room air the patient entrains around the device with each breath.</p><div class="table-wrap"><table><thead><tr><th>Device</th><th>Flow</th><th>Approx. O₂</th><th>Use it for</th></tr></thead><tbody><tr><td>Nasal cannula</td><td>1–6 L/min</td><td>~24–44%</td><td>Mild hypoxia; a patient who will not tolerate a mask</td></tr><tr><td>Simple face mask</td><td>6–10 L/min</td><td>~35–60%</td><td>Moderate need; less often carried</td></tr><tr><td>Non-rebreather mask</td><td>10–15 L/min</td><td>~80–90%</td><td>Significant hypoxia in a patient breathing adequately</td></tr><tr><td>Bag-valve mask with reservoir</td><td>15 L/min</td><td>~100%</td><td>Inadequate breathing or apnea — you are moving the air</td></tr></tbody></table></div><p>Two floor values are worth holding onto. A nasal cannula below 1 L/min delivers essentially nothing, and above 6 L/min it dries and irritates the nasal mucosa without meaningfully raising the delivered concentration. A non-rebreather below about 10 L/min cannot keep its reservoir bag inflated, and a non-rebreather whose bag collapses on inspiration is not delivering what the label claims — inflate the reservoir before you put the mask on the patient, and turn the flow up if the bag deflates as they breathe.</p>`
+          },
+          {
+            heading: "Titrate to a target, and know the one population with a lower target",
+            html: `<p>The modern practice is to treat hypoxia rather than to reflexively apply high-flow oxygen to everyone who looks unwell. For most patients the target saturation is roughly <strong>94% or above</strong>, and reaching it on a nasal cannula is a better outcome than overshooting it on a non-rebreather. For a patient with known <strong>COPD</strong>, the commonly taught target is lower, around <strong>88–92%</strong>, which is closer to their own chronic baseline.</p><p>The important qualifier, repeated because it is the thing candidates get wrong in both directions: a lower target is a reason to titrate, never a reason to withhold. A hypoxic COPD patient gets oxygen. Local protocol sets the actual numbers.</p>`
+          }
+        ],
+        takeaways: [
+          "Nasal cannula: 1–6 L/min, ~24–44%. Below 1 L/min does nothing; above 6 L/min dries the mucosa without adding much.",
+          "Simple face mask: 6–10 L/min, ~35–60%.",
+          "Non-rebreather: 10–15 L/min, ~80–90%. Inflate the reservoir before applying; a bag that collapses on inspiration means the flow is too low.",
+          "BVM with reservoir at 15 L/min: ~100% — and it is for patients whose own breathing is inadequate.",
+          "Delivered concentration is always approximate; it depends on room air entrained around the device.",
+          "General target: SpO₂ about 94% or above. Known COPD: about 88–92%. Local protocol governs.",
+          "A lower target means titrate, never withhold. A hypoxic COPD patient gets oxygen."
+        ]
+      },
       {
         title: "Oxygen Delivery & Equipment Safety",
         id: "ch10-oxygen-equipment",
@@ -1257,6 +1411,10 @@ const CHAPTERS = [
           {
             heading: "Oxygen equipment has safety features that exist because oxygen systems are genuinely dangerous if mishandled",
             html: `<p>Oxygen systems are genuinely dangerous if they are mishandled, and the safety features of the equipment exist for that reason. The pin-index safety system on oxygen cylinders exists specifically to prevent the wrong regulator from being connected to the wrong gas cylinder, a real hazard given how many medical gases look similar but behave very differently under pressure. Two pieces of equipment are easily confused. The <strong>regulator</strong> steps the cylinder's very high internal pressure down to a usable level, while the <strong>flowmeter</strong> is what actually controls and displays how many liters per minute are being delivered to the patient. One small but real hazard is also worth knowing: adhesive tape or petroleum-based products near oxygen equipment pose a genuine fire risk, because oxygen dramatically accelerates combustion.</p>`
+          },
+          {
+            heading: "Cylinder pressure, safe residual, and not running out on the way in",
+            html: `<p>A full portable oxygen cylinder reads roughly <strong>2,000 psi</strong>. The number that matters operationally is the <strong>safe residual pressure of about 200 psi</strong>: at or below that, the cylinder is treated as empty and changed out, because the last of the pressure does not deliver a reliable flow and because a cylinder emptied completely can draw in contaminants. A gauge reading 300 psi at the start of a long transport is a problem to solve at the scene, not in the back of a moving ambulance.</p><p>Handling rules follow from the pressure involved. Secure cylinders so they cannot fall — a cylinder whose valve stem snaps off becomes a projectile driven by 2,000 psi. Open the valve fully, then back it off slightly. Keep the cylinder away from heat, and keep oil, grease, and petroleum products away from every fitting.</p>`
           }
         ],
         takeaways: [
@@ -1265,7 +1423,9 @@ const CHAPTERS = [
           "Pin-index safety system prevents the wrong regulator from connecting to the wrong gas cylinder.",
           "Regulator: steps the cylinder's high internal pressure down to a usable level.",
           "Flowmeter: controls and displays liters per minute delivered to the patient.",
-          "Adhesive tape and petroleum-based products near oxygen equipment are a fire risk — oxygen dramatically accelerates combustion."
+          "Adhesive tape and petroleum-based products near oxygen equipment are a fire risk — oxygen dramatically accelerates combustion.",
+          "A full portable cylinder reads about 2,000 psi; safe residual pressure is about 200 psi, at which point it is treated as empty and swapped.",
+          "Secure cylinders against falling — a snapped valve stem at 2,000 psi makes the cylinder a projectile. Keep oil and grease away from all fittings."
         ]
       }
     ]
@@ -1429,10 +1589,51 @@ const CHAPTERS = [
   {
     num: 13,
     title: "Vital Signs and Monitoring Devices",
-    intro: "Vital signs turn an impression into numbers you can trend over time. This chapter covers the core set of pulse, respirations, skin, pupils and blood pressure, the methods for measuring blood pressure and what a palpable pulse implies about it, and the monitoring devices, pulse oximetry and blood glucose, that add information but never replace what you see in the patient.",
+    intro: "Vital signs turn an impression into numbers you can trend over time. This chapter covers the core set of pulse, respirations, skin, pupils and blood pressure, what counts as normal and how to take each one without introducing the errors that make the number wrong, the methods for measuring blood pressure and what a palpable pulse implies about it, and the monitoring devices — pulse oximetry, capnography and blood glucose — that add information but never replace what you see in the patient.",
     sections: [
       {
-        title: "Pulse, BP, Pulse Oximetry & Glucose",
+        title: "Taking the Core Vitals",
+        id: "ch13-taking-vitals",
+        topics: [
+          {
+            heading: "Normal adult ranges are the baseline every other number is read against",
+            html: `<p>A vital sign means nothing until you know what it is being compared to. These are the adult figures.</p><div class="table-wrap"><table><thead><tr><th>Sign</th><th>Normal adult</th><th>Worth noting</th></tr></thead><tbody><tr><td>Pulse</td><td>60–100/min</td><td>Below 60 is bradycardia, above 100 tachycardia — both normal in some people and ominous in others</td></tr><tr><td>Respirations</td><td>12–20/min</td><td>Below 12 or above 20 in a sick adult is a finding, not a variation</td></tr><tr><td>Blood pressure</td><td>about 120/80</td><td>Systolic below 90 in an adult is the commonly used marker of hypotension</td></tr><tr><td>SpO₂</td><td>94–99%</td><td>Interpreted with the patient's work of breathing, never alone</td></tr><tr><td>Temperature</td><td>about 98.6 °F / 37 °C</td><td></td></tr></tbody></table></div><p>Pediatric ranges differ by age and are covered in depth in the <a href="reference-cards.html">reference cards</a>. The single most important difference is directional: children compensate well and then fail suddenly, and <strong>bradycardia in a child is usually a late sign of hypoxia</strong> rather than a heart problem.</p>`
+          },
+          {
+            heading: "Pulse: rate, rhythm, and strength — and the site depends on the patient",
+            html: `<p>Take the pulse at the <strong>radial</strong> artery in a responsive adult or child, the <strong>carotid</strong> in an unresponsive adult or child, and the <strong>brachial</strong> in an infant, whose neck is too short to find a carotid reliably. Count for 30 seconds and double it; count a full 60 seconds if the rhythm is irregular, because doubling half of an irregular rhythm doubles the error with it.</p><p>Report three things, not one. <strong>Rate</strong> is the number. <strong>Rhythm</strong> is regular or irregular. <strong>Strength</strong> is strong, weak, or thready — and a weak thready pulse at a normal rate is a more worrying finding than a strong pulse at 110.</p>`
+          },
+          {
+            heading: "Respirations: count them without telling the patient you are counting",
+            html: `<p>Breathing is the one vital sign under voluntary control, and a patient who knows you are counting their breaths will change them. The standard approach is to keep your fingers on the radial pulse after you have finished counting it and count respirations while the patient believes you are still on the pulse.</p><p>As with the pulse, the number is not the whole finding. Note <strong>depth</strong> (normal or shallow), <strong>effort</strong> (easy, labored, accessory muscle use, retractions), and any <strong>sounds</strong> — the wheezing, stridor, snoring and gurgling covered in the airway chapter. A rate of 20 that is shallow and labored is a sicker patient than a rate of 24 that is deep and easy.</p>`
+          },
+          {
+            heading: "Skin and pupils are the two vitals you assess by looking",
+            html: `<p><strong>Skin</strong> has three components. <em>Color</em>: pink is normal; pale suggests poor perfusion or blood loss; cyanotic (blue-gray) means poor oxygenation; flushed suggests heat exposure or certain poisonings; jaundiced (yellow) points to liver problems; mottled, a blotchy pattern, is a sign of poor perfusion seen particularly in children. In patients with darker skin, check the color of the nail beds, the inside of the lips, and the conjunctiva rather than the face. <em>Temperature and condition</em>: cool and clammy is the classic shock picture; hot and dry suggests heat stroke.</p><p><strong>Capillary refill</strong>, measured by pressing a nail bed and releasing, should return within <strong>2 seconds</strong>. It is a reliable perfusion indicator in children and less reliable in adults, where cold ambient temperature confounds it.</p><p><strong>Pupils</strong> are remembered as <strong>PEARRL</strong>: Pupils Equal And Round, Regular in size, react to Light. Unequal pupils suggest a head injury or stroke; pinpoint pupils suggest opioids; widely dilated pupils suggest stimulants, hypoxia, or a drop in blood flow to the brain; pupils that are fixed and do not react at all are a serious neurological finding.</p>`
+          },
+          {
+            heading: "Trend the numbers, because one set of vitals is a snapshot and two sets are information",
+            html: `<p>A single set of vital signs tells you where the patient is. Two sets tell you where they are going, which is the part that changes decisions. Reassess <strong>every 5 minutes for an unstable patient</strong> and <strong>every 15 minutes for a stable one</strong>, and document each set with a time, because a pressure that fell from 130 to 100 over ten minutes is a different patient from one who has been 100 all along.</p>`
+          }
+        ],
+        takeaways: [
+          "Adult normals: pulse 60–100, respirations 12–20, BP about 120/80, SpO₂ 94–99%, temperature about 98.6 °F.",
+          "Adult systolic below 90 mmHg is the commonly used marker of hypotension.",
+          "Pulse site: radial (responsive adult/child), carotid (unresponsive adult/child), brachial (infant).",
+          "Count the pulse 30 seconds and double it — but a full 60 seconds if it is irregular.",
+          "Report pulse as rate, rhythm, and strength. A weak thready pulse at a normal rate is worse than a strong fast one.",
+          "Count respirations without the patient knowing — keep your fingers on the wrist after taking the pulse.",
+          "Respirations: note depth, effort, and sounds as well as rate.",
+          "Skin color: pale (poor perfusion/blood loss), cyanotic (poor oxygenation), flushed (heat/poisoning), jaundiced (liver), mottled (poor perfusion, especially children).",
+          "In darker-skinned patients assess color at the nail beds, inside of the lips, and conjunctiva.",
+          "Capillary refill should return within 2 seconds; most reliable in children, confounded by cold in adults.",
+          "PEARRL: Pupils Equal And Round, Regular in size, react to Light. Unequal = head injury or stroke; pinpoint = opioids; dilated = stimulants or hypoxia.",
+          "Bradycardia in a child is usually a late sign of hypoxia, not a primary heart problem.",
+          "Reassess vitals every 5 minutes if unstable, every 15 minutes if stable. Time-stamp every set — the trend is the information."
+        ]
+      },
+      {
+        title: "Blood Pressure, Pulse Oximetry & Glucose",
         id: "ch13-vital-signs",
         topics: [
           {
@@ -1446,9 +1647,26 @@ const CHAPTERS = [
             <p><strong>Pulse oximetry</strong> measures the percentage of hemoglobin that is saturated with oxygen (O2). It cannot tell you how the patient is breathing, only how saturated the blood is. A patient in obvious respiratory distress, with accessory muscle use and cyanosis, can still show 98% on the pulse oximeter, so the number never overrides what you see clinically. The reading is also unreliable with poor perfusion or shock, nail polish, cold extremities, and carbon monoxide poisoning, which produces a falsely high reading.</p>`
           },
           {
-            heading: "Blood glucose monitoring",
-            html: `<p>A blood glucose reading is useful only if you know the normal range and interpret the result together with the patient's mental status and history, never in isolation. The same is true of every vital sign: vitals must always be interpreted alongside the rest of the assessment to refine the patient's priority, because a single number never stands alone. Bear in mind also that circulation is assessed differently in children than in adults, with different pulse points and a heavier reliance on capillary refill.</p>`
+            heading: "The technique errors that make a blood pressure reading wrong",
+            html: `<p>A blood pressure is only as good as how it was taken, and the errors are systematic rather than random, which means they mislead in a predictable direction.</p><p><strong>Cuff size</strong> is the most common. The bladder should cover roughly 80 percent of the circumference of the upper arm and about two-thirds of its length. A cuff that is <strong>too small reads falsely high</strong>; a cuff that is <strong>too large reads falsely low</strong>. This is why an adult cuff on a child's arm produces a reassuring number in a child who is not reassuring.</p><p><strong>Arm position</strong>: the arm should be supported at the level of the heart. An arm held below heart level reads high; above, low. <strong>Deflation rate</strong>: about 2 mmHg per second. Deflating quickly skips past the true systolic and diastolic points and reads low and narrow.</p><p><strong>Where not to take it</strong>: avoid an injured extremity, an arm with a dialysis fistula, an arm on the side of a previous mastectomy, and an arm with an IV running. Use the other arm.</p>`
+          },
+          {
+            heading: "Monitoring devices: glucose, and what capnography adds that pulse oximetry cannot",
+            html: `<p>A blood glucose reading is useful only if you know the normal range and interpret the result together with the patient's mental status and history, never in isolation. A normal fasting value runs roughly <strong>70–99 mg/dL</strong>, and a value <strong>below 70 mg/dL</strong> is the commonly used threshold for hypoglycemia. A patient with an altered mental status and no obvious cause has earned a glucose check.</p><p><strong>Capnography</strong> measures exhaled carbon dioxide, normally about <strong>35–45 mmHg</strong>, and it answers a question pulse oximetry cannot: whether the patient is <em>ventilating</em>, not merely whether their blood is saturated. That distinction matters most in exactly the situation where oximetry is most reassuring and most wrong — a patient on high-flow oxygen whose saturation stays high for minutes after their ventilation has become inadequate. Capnography also drops immediately when air stops moving, which is why it detects a displaced airway or a fall in perfusion faster than a saturation reading does.</p><p>The same caution applies to every device on this list: vitals and monitors refine a picture built from the patient in front of you, and they never replace it. Circulation in children in particular is assessed with different pulse points and a heavier reliance on capillary refill.</p>`
           }
+        ],
+        takeaways: [
+          "Palpable radial ≈ systolic at least 80–90 mmHg; femoral only ≈ at least 70; carotid only ≈ at least 60. A field estimate, not a reading.",
+          "Auscultation: first Korotkoff sound = systolic, disappearance = diastolic. Palpation gives systolic only.",
+          "Pulse oximetry reports saturation, not ventilation. A distressed cyanotic patient can read 98%.",
+          "Oximetry is unreliable with poor perfusion, shock, nail polish, and cold extremities; carbon monoxide poisoning makes it read falsely HIGH.",
+          "Cuff too small reads falsely high; cuff too large reads falsely low. An adult cuff on a child gives a falsely reassuring number.",
+          "Support the arm at heart level; deflate at about 2 mmHg per second. Deflating too fast reads low.",
+          "Do not take a BP on an injured limb, a dialysis fistula arm, a post-mastectomy arm, or an arm with an IV.",
+          "Normal fasting glucose is roughly 70–99 mg/dL; below 70 mg/dL is the usual hypoglycemia threshold.",
+          "Altered mental status with no obvious cause earns a glucose check.",
+          "Capnography (normal 35–45 mmHg) measures ventilation, which oximetry cannot — and it falls immediately when air stops moving.",
+          "Monitors refine the assessment; they never replace looking at the patient."
         ]
       }
     ]
@@ -2769,7 +2987,7 @@ const CHAPTERS = [
   {
     num: 29,
     title: "Bleeding Control",
-    intro: "Uncontrolled external bleeding is one of the most preventable causes of death from trauma, and direct pressure stops most of it. This chapter presents the escalating framework from direct pressure to tourniquet and hemostatic dressing, explains why pressure works, and walks through the procedure step by step — including the case that does not escalate at all, because life-threatening extremity bleeding gets a tourniquet immediately.",
+    intro: "Uncontrolled external bleeding is one of the most preventable causes of death from trauma, and direct pressure stops most of it. This chapter presents the escalating framework from direct pressure to tourniquet and hemostatic dressing, explains why pressure works, walks through the procedure step by step — including the case that does not escalate at all, because life-threatening extremity bleeding gets a tourniquet immediately — and then covers the two things pressure cannot help with: the bleeding you cannot see, and the shock it produces.",
     sections: [
       {
         title: "External Bleeding Control — Direct Pressure",
@@ -2783,6 +3001,10 @@ const CHAPTERS = [
             <tr><td>Wound already clotted/stopped</td><td>Gauze + bandage (protect from contamination), monitor for bleed-through</td></tr>
             <tr><td>Active bleeding</td><td>Direct pressure → wound packing/hemostatics → tourniquet (extremity) or junctional device</td></tr>
             </tbody></table></div>`
+          },
+          {
+            heading: "Three kinds of bleeding, and the one that kills quickly",
+            html: `<p>The appearance of the blood tells you which vessel is open, and that predicts how fast the patient is losing volume and how hard it will be to stop.</p><p><strong>Arterial</strong> bleeding is bright red — it is fully oxygenated — and it spurts in time with the pulse, because it is under the pressure the heart generates. It is the hardest to control and the fastest to kill. <strong>Venous</strong> bleeding is darker red and flows steadily rather than spurting, because venous pressure is low and constant; it can still be heavy from a large vein. <strong>Capillary</strong> bleeding oozes from the surface, is dark red, and usually stops on its own.</p><p>Volume gives the urgency its scale. An adult holds roughly <strong>5 liters</strong> of blood. Sudden loss of about <strong>1 liter in an adult</strong> is serious; in a child the figure is around <strong>500 mL</strong>, and in an infant as little as <strong>100–200 mL</strong>. The same puddle on the floor means something very different depending on who is lying next to it, and a volume that an adult tolerates can be most of a small child's circulating blood.</p>`
           },
           {
             heading: "Why direct pressure works",
@@ -2800,6 +3022,10 @@ const CHAPTERS = [
             <li><strong>Never remove a dressing once it has been placed.</strong> Taking it off can disrupt the clots that are forming under it. If blood soaks through, treat that as your signal to escalate, either to wound packing with a hemostatic agent or, for a wound on an extremity, to a tourniquet.</li>
             </ol>
             <p>Taken as a whole, direct pressure is four ideas in order: compress the wound, hold the compression, leave what you have applied undisturbed, and escalate if it fails.</p>`
+          },
+          {
+            heading: "Nosebleeds are the common exception where position does most of the work",
+            html: `<p>Epistaxis is managed by sitting the patient <strong>upright and leaning forward</strong>, then pinching the soft fleshy part of the nostrils together. Leaning the patient back, which is the instinct and the folk remedy, sends blood down the throat, where it is swallowed, irritates the stomach, and produces vomiting in a patient who is already bleeding. Forward and pinched is the whole technique.</p>`
           }
         ],
         takeaways: [
@@ -2807,7 +3033,67 @@ const CHAPTERS = [
           "For severe/spurting bleeding, put a gloved hand directly on the wound immediately — don't hunt for a dressing first.",
           "Piling on absorbent gauze soaks up blood but doesn't stop bleeding, and can weaken your hand pressure.",
           "Never remove a placed dressing — blood soaking through means escalate, not swap the dressing.",
-          "Escalation order for bleeding that is NOT immediately life-threatening: direct pressure → wound packing/hemostatics → tourniquet (extremity) or junctional device. Life-threatening extremity bleeding skips the ladder: tourniquet first, straight away."
+          "Escalation order for bleeding that is NOT immediately life-threatening: direct pressure → wound packing/hemostatics → tourniquet (extremity) or junctional device. Life-threatening extremity bleeding skips the ladder: tourniquet first, straight away.",
+          "Arterial: bright red, spurting with the pulse, hardest to control. Venous: dark red, steady flow. Capillary: dark red ooze, usually self-limiting.",
+          "An adult holds about 5 liters of blood. Sudden loss of about 1 L (adult), 500 mL (child), or 100–200 mL (infant) is serious.",
+          "Nosebleed: sit the patient upright, lean them FORWARD, pinch the soft part of the nostrils. Leaning back sends blood into the stomach and causes vomiting."
+        ]
+      },
+      {
+        title: "Tourniquets & Wound Packing",
+        id: "ch29-tourniquets",
+        topics: [
+          {
+            heading: "The tourniquet stopped being a last resort, and the change is the point of this section",
+            html: `<p>For decades a tourniquet was taught as the thing you tried when everything else had failed, on the belief that it cost the patient the limb. Military experience over the last two decades changed that. A correctly applied tourniquet left in place for the duration of a prehospital transport rarely costs a limb, and hesitation costs lives. Current civilian practice, reflected in the American College of Surgeons' Stop the Bleed program, is that <strong>life-threatening bleeding from an extremity gets a tourniquet immediately</strong> — not after the ladder of lesser measures has been climbed and failed.</p><p>A <strong>commercial windlass tourniquet</strong> is the device to use. Improvised tourniquets — a belt, a cravat and a stick — are a fallback when nothing else exists, and they fail more often, usually because they are too narrow to occlude the artery and merely occlude the veins, which makes the bleeding worse rather than better.</p>`
+          },
+          {
+            heading: "Applying it: where, how tight, and the two things you write down",
+            html: `<p><strong>Placement:</strong> about <strong>2 to 3 inches proximal to the wound</strong> — between the wound and the heart — and <strong>never over a joint</strong>, because there is no single bone there to compress the artery against. If the wound is an amputation, if there are multiple wounds, or if you cannot see where the bleeding is coming from in a mangled limb, place it <strong>high and tight</strong> on the limb instead.</p><p><strong>Tightness:</strong> tighten the windlass until <strong>the bleeding stops</strong> and <strong>the distal pulse is gone</strong>. Both endpoints matter. A tourniquet tight enough to stop the visible bleeding but not tight enough to occlude the artery is the failure mode that makes bleeding worse: arterial blood still enters the limb while venous return out of it is blocked.</p><p><strong>It will hurt</strong>, often badly, and the pain is not a reason to loosen it. Tell the patient that in advance.</p><p><strong>Write down the time of application</strong>, on the tourniquet itself and in your report, and hand it off verbally. <strong>Leave it visible</strong> — never cover a tourniquet with a blanket or a dressing, because the next person needs to see it without hunting for it. And <strong>do not loosen or remove it in the field</strong> once bleeding is controlled.</p><p>If one tourniquet does not control the bleeding, apply a <strong>second one just proximal to the first</strong> rather than tightening the first past its limit.</p>`
+          },
+          {
+            heading: "Wound packing, and the places you must not pack",
+            html: `<p>Some wounds cannot take a tourniquet because there is no limb to put it around. The <strong>junctional</strong> areas — the groin, the armpit, the base of the neck — are where a limb meets the trunk, and bleeding there is controlled by packing the wound and holding pressure, or with a purpose-built junctional device.</p><p>To pack: push gauze, plain or hemostatic, <strong>directly into the wound, down to the source of the bleeding</strong>, filling the cavity tightly, and then hold firm direct pressure over the packed wound for at least <strong>3 minutes</strong>. Packing that is laid on top of a wound is a dressing, not packing, and it will not work. The pressure held afterward is not optional; hemostatic gauze works by accelerating clotting at the point of contact, and it needs the contact and the time.</p><p><strong>Do not pack the chest or the abdomen.</strong> There is no cavity floor to pack against, the gauze goes somewhere you cannot control, and neither site can be compressed. Neck wounds are also not packed in the usual sense, because the packing can compress the airway; an occlusive dressing and direct pressure that does not obstruct breathing is the approach there.</p>`
+          }
+        ],
+        takeaways: [
+          "Life-threatening extremity bleeding gets a tourniquet immediately — it is not a last resort.",
+          "Use a commercial windlass tourniquet. Improvised ones fail more often, usually by being too narrow to occlude the artery.",
+          "Place it 2–3 inches proximal to the wound and never over a joint. Amputation, multiple wounds, or an unclear source: go high and tight.",
+          "Tighten until the bleeding stops AND the distal pulse is gone. Occluding veins without occluding the artery makes bleeding worse.",
+          "It will hurt. Pain is not a reason to loosen it.",
+          "Write the time of application on the tourniquet and in the report, and say it at handoff.",
+          "Leave a tourniquet visible — never cover it. Do not loosen or remove it in the field.",
+          "If one tourniquet does not control the bleeding, add a second just proximal to the first.",
+          "Junctional bleeding (groin, axilla, base of neck) takes wound packing or a junctional device, not a tourniquet.",
+          "Pack gauze INTO the wound down to the bleeding source, fill the cavity tightly, then hold firm pressure for at least 3 minutes.",
+          "Never pack the chest or abdomen. Neck wounds get an occlusive dressing and pressure that does not obstruct the airway."
+        ]
+      },
+      {
+        title: "Internal Bleeding & Hemorrhagic Shock",
+        id: "ch29-internal-bleeding",
+        topics: [
+          {
+            heading: "The bleeding you cannot see is the bleeding you cannot compress",
+            html: `<p>Internal bleeding has no puddle to point at, and the patient can lose a large fraction of their blood volume into the abdomen, the chest, the pelvis, or the tissue around a femur without a drop reaching the outside. You recognize it from mechanism and from signs rather than from blood.</p><p>Look for bruising and discoloration over the trunk, an abdomen that is <strong>distended, rigid, or tender</strong>, <strong>hematemesis</strong> (vomited blood, which may look like coffee grounds), <strong>melena</strong> (black tarry stool), <strong>hemoptysis</strong> (coughed blood), pain, swelling or deformity over a long bone, and — the finding that ties them together — <strong>signs of shock with no external bleeding to explain them</strong>. A femur fracture alone can hold well over a liter; a pelvic fracture can hold far more.</p><p>There is no field intervention that stops internal bleeding. The treatment is oxygen if indicated, keeping the patient warm, handling them gently, and <strong>rapid transport to a facility that can operate</strong>. Recognizing it early and shortening the time to that facility is the whole of the EMT's contribution, and it is a large contribution.</p>`
+          },
+          {
+            heading: "Shock is recognized before the blood pressure falls, because by then it is late",
+            html: `<p>Hemorrhagic shock progresses in a way that is worth knowing as a sequence rather than a list, because the sequence is what lets you catch it early.</p><p>In <strong>compensated shock</strong>, the body is successfully defending its blood pressure. The heart rate rises, the vessels in the skin and gut constrict to shunt blood to the brain and heart, and the patient looks <strong>pale, cool and clammy</strong>, feels <strong>anxious or restless</strong>, and is <strong>thirsty</strong>. Respirations rise. The pulse pressure — the gap between systolic and diastolic — <strong>narrows</strong>, because the diastolic rises with vasoconstriction while the systolic does not. <strong>And the blood pressure is still normal.</strong> This is the stage at which recognition changes the outcome.</p><p>In <strong>decompensated shock</strong>, the compensation has run out. The <strong>blood pressure falls</strong>, mental status deteriorates, peripheral pulses become weak or absent, and the skin may become mottled or cyanotic. <strong>Hypotension is a late sign of shock, not an early one</strong>, and waiting for it in a patient who is pale, tachycardic and anxious means waiting for the patient to get worse before acting.</p><p>Two populations distort the picture. <strong>Children</strong> compensate extremely well and then crash abruptly, so a normal blood pressure in an injured child is not reassurance. And a patient on a <strong>beta blocker</strong> may not be able to mount the tachycardia that is the earliest sign, so their heart rate stays deceptively normal while they bleed.</p>`
+          }
+        ],
+        takeaways: [
+          "Internal bleeding is recognized from mechanism and signs, not from visible blood.",
+          "Signs: bruising over the trunk; distended, rigid or tender abdomen; hematemesis (may look like coffee grounds); melena (black tarry stool); hemoptysis; pain or deformity over a long bone.",
+          "Shock with no external bleeding to explain it IS the finding.",
+          "A femur fracture can hold over a liter of blood; a pelvic fracture far more.",
+          "There is no field fix for internal bleeding: oxygen if indicated, keep the patient warm, handle gently, transport rapidly to surgical care.",
+          "Compensated shock: rising heart rate, pale/cool/clammy skin, anxiety and restlessness, thirst, rising respirations, NARROWING pulse pressure — with a still-normal blood pressure.",
+          "Decompensated shock: falling blood pressure, deteriorating mental status, weak or absent peripheral pulses, mottled skin.",
+          "Hypotension is a LATE sign of shock. Recognize it at the compensated stage.",
+          "Children compensate well and then crash suddenly — a normal BP in an injured child is not reassurance.",
+          "A patient on a beta blocker may not be able to become tachycardic, hiding the earliest sign."
         ]
       }
     ]
@@ -3031,7 +3317,7 @@ const CHAPTERS = [
   {
     num: 33,
     title: "Trauma to the Head, Neck, and Spine",
-    intro: "Injuries to the head, neck and spine carry the greatest risk of permanent disability, and the care given in the first minutes can prevent or cause it. This chapter covers neck wounds, spinal assessment using NEXUS-based criteria to decide when motion restriction is needed, practical tips for the long backboard, and when and how to remove a helmet.",
+    intro: "Injuries to the head, neck and spine carry the greatest risk of permanent disability, and the care given in the first minutes can prevent or cause it. This chapter covers neck wounds, spinal assessment using NEXUS-based criteria to decide when motion restriction is needed, practical tips for the long backboard, when and how to remove a helmet, the traumatic brain injury whose outcome depends almost entirely on whether you keep the brain oxygenated and perfused, and the spinal cord injury whose shock looks nothing like the shock of blood loss.",
     sections: [
       {
         title: "Neck Wounds & Spinal Assessment",
@@ -3069,10 +3355,70 @@ const CHAPTERS = [
         ],
         takeaways: [
           "Never compress both carotid arteries simultaneously.",
-          "NEXUS criteria: reliability, spinal tenderness, focal neuro deficits, distracting injury — weight MOI more heavily in young children.",
+          "Neck wound: occlusive dressing sealed on all four sides, extending 2 in past the wound edges — the veins can entrain air.",
+          "NEXUS has FIVE criteria, all of which must be absent for a low-risk cervical spine: no midline cervical tenderness, no intoxication, normal alertness, no focal neurologic deficit, no painful distracting injury.",
+          "Intoxication and alertness are separate criteria. Merging them into one question about 'reliability' is how the list gets miscounted as four.",
+          "In young children, weight the mechanism of injury more heavily — cartilaginous vertebrae allow cord injury without tenderness or deformity.",
+          "Backboard: strap the body first (upper chest, pelvis, thighs), secure the head LAST.",
           "Full-term pregnant patients on a backboard should be tilted left to relieve vena cava compression.",
+          "Children 6 and under: pad beneath the shoulder blades to offset the proportionally larger head.",
           "Remove a helmet only if it interferes with airway management, fits poorly, interferes with immobilization, or the patient is in cardiac arrest.",
           "Football-style helmet + shoulder pads: remove both together or neither — never just one."
+        ]
+      },
+      {
+        title: "Traumatic Brain Injury",
+        id: "ch33-tbi",
+        topics: [
+          {
+            heading: "Primary injury is already done; secondary injury is the one you can prevent",
+            html: `<p>A traumatic brain injury has two halves. The <strong>primary injury</strong> is the damage done at the instant of impact — torn tissue, bruised brain, sheared axons. Nothing an EMT does changes it; it happened before the call came in.</p><p>The <strong>secondary injury</strong> is everything that damages the brain afterward: swelling, rising pressure inside a rigid skull, and above all <strong>hypoxia and hypotension</strong>. These two are the reason head-injury care looks so much like ordinary good care. Keeping the airway open, keeping the saturation up, and keeping the blood pressure from dropping is the treatment for a brain injury, because the brain is exquisitely intolerant of low oxygen and low perfusion pressure. Adding hypoglycemia to a head-injured patient does the same thing, which is another reason the glucose gets checked.</p><p>Put plainly: the EMT cannot repair the brain, and the EMT can substantially change whether that brain is further injured in the next twenty minutes.</p>`
+          },
+          {
+            heading: "Rising intracranial pressure announces itself in a pattern that is the opposite of shock",
+            html: `<p>The skull is a closed box. Blood or swelling inside it has nowhere to expand, so the pressure rises and squeezes the brain. Late in that process the body mounts a characteristic response, <strong>Cushing's triad</strong>, and it is worth memorizing precisely because it inverts the pattern you have been taught to look for.</p><div class="table-wrap"><table><thead><tr><th></th><th>Hemorrhagic shock</th><th>Rising ICP (Cushing's triad)</th></tr></thead><tbody><tr><td>Blood pressure</td><td>Falling</td><td><strong>Rising</strong>, with a widening pulse pressure</td></tr><tr><td>Heart rate</td><td>Rising (tachycardia)</td><td><strong>Falling</strong> (bradycardia)</td></tr><tr><td>Respirations</td><td>Rapid</td><td><strong>Irregular</strong> in rate and depth</td></tr></tbody></table></div><p>A head-injured patient whose pressure is climbing while their pulse slows is not stabilizing. Other signs of rising pressure and impending herniation include a deteriorating level of consciousness — the single most sensitive indicator — vomiting, often without nausea, and a <strong>pupil that becomes dilated and unreactive on one side</strong>.</p><p>One thing not to do reflexively: <strong>do not routinely hyperventilate a head-injured patient</strong>. Driving down carbon dioxide constricts cerebral vessels and reduces blood flow to a brain that needs more of it, not less. Ventilate at the normal rate, and hyperventilate only if your protocol directs it for specific signs of herniation.</p>`
+          },
+          {
+            heading: "Skull fractures, concussion, and the drainage you leave alone",
+            html: `<p>A <strong>basilar skull fracture</strong>, at the base of the skull, produces signs that are distinctive and, importantly, <strong>late</strong> — they can take hours to appear, so their absence early means nothing. <strong>Raccoon eyes</strong> are bruising around both eyes; <strong>Battle's sign</strong> is bruising behind the ear over the mastoid; and clear or blood-tinged fluid draining from the nose or the ear is cerebrospinal fluid escaping through the fracture.</p><p><strong>Do not pack the nose or the ears to stop that drainage.</strong> The fluid is coming from around the brain, and blocking its exit raises the pressure inside the skull. Cover loosely with a sterile dressing and let it drain. This is also the reason an NPA is avoided in a patient with these signs.</p><p>A <strong>concussion</strong> is a transient disturbance of brain function without a structural injury that imaging will show. Expect headache, confusion, dizziness, and amnesia — either for events before the injury or for events after it — and the repetitive questioning ("What happened? Where am I?" asked over and over) that is characteristic. Most resolve. All of them are evaluated, because a concussion and a slowly expanding bleed can look identical in the first hour.</p><p>Finally, a point about where to look for shock: in an adult, <strong>a head injury alone rarely causes hypotension</strong>. An adult head-injury patient who is in shock is almost certainly bleeding somewhere else, and looking for it is the priority. Infants are the exception — their blood volume is small enough relative to their head that intracranial bleeding genuinely can cause shock.</p>`
+          }
+        ],
+        takeaways: [
+          "Primary injury happens at impact and cannot be changed. Secondary injury — hypoxia, hypotension, swelling, hypoglycemia — is what EMT care prevents.",
+          "Hypoxia and hypotension are the two biggest worsening factors in TBI. Protecting airway, oxygenation and blood pressure IS head-injury treatment.",
+          "Cushing's triad (LATE sign of rising ICP): rising blood pressure with widening pulse pressure, FALLING heart rate, irregular respirations. It is the mirror image of shock.",
+          "A deteriorating level of consciousness is the most sensitive sign of rising intracranial pressure.",
+          "A unilaterally dilated, unreactive pupil suggests herniation. Vomiting without nausea is another sign of rising pressure.",
+          "Do NOT routinely hyperventilate a head-injured patient — it constricts cerebral vessels and reduces blood flow. Only per protocol for signs of herniation.",
+          "Basilar skull fracture signs — raccoon eyes, Battle's sign, CSF from nose or ears — are LATE. Their absence early means nothing.",
+          "Never pack the nose or ears to stop CSF drainage; cover loosely and let it drain. This is also why an NPA is avoided here.",
+          "Concussion: transient dysfunction without structural injury — headache, confusion, amnesia, repetitive questioning. Evaluate every one; an expanding bleed looks the same early.",
+          "In an adult, a head injury alone rarely causes hypotension — look elsewhere for the bleeding. In infants it can, because of their small blood volume."
+        ]
+      },
+      {
+        title: "Spinal Cord Injury & Neurogenic Shock",
+        id: "ch33-cord-injury",
+        topics: [
+          {
+            heading: "What the cord controls depends on how high the injury is, and breathing is the level that matters most",
+            html: `<p>An injury to the spinal cord removes function below the level of the injury, which means the height of the injury predicts what the patient has lost. The level worth knowing by heart is the diaphragm: the nerves that drive it leave the cord at roughly <strong>C3 through C5</strong> — remembered as "C3, 4, 5 keep the diaphragm alive." An injury <strong>above</strong> that level takes the diaphragm with it and the patient stops breathing. An injury just below it spares the diaphragm but paralyzes the muscles between the ribs, producing <strong>diaphragmatic breathing</strong>: the belly rises and falls while the chest barely moves. That pattern in a trauma patient is a cord injury until proven otherwise.</p><p>Other findings: loss of sensation or movement below a level, numbness or tingling in the extremities, loss of bowel or bladder control, and — in a male patient — <strong>priapism</strong>, a persistent erection caused by the loss of sympathetic tone, which is a specific and often-tested sign.</p>`
+          },
+          {
+            heading: "Neurogenic shock is hypotension without the tachycardia, and confusing it with blood loss is the trap",
+            html: `<p>A high cord injury cuts the sympathetic nervous system's signal to the blood vessels. The vessels below the injury dilate, the effective size of the container becomes larger than the volume of blood in it, and the pressure falls. That is <strong>neurogenic shock</strong>, and it looks unlike any other shock on the exam.</p><div class="table-wrap"><table><thead><tr><th></th><th>Hemorrhagic shock</th><th>Neurogenic shock</th></tr></thead><tbody><tr><td>Blood pressure</td><td>Low</td><td>Low</td></tr><tr><td>Heart rate</td><td>Fast</td><td><strong>Normal or slow</strong></td></tr><tr><td>Skin</td><td>Pale, cool, clammy</td><td><strong>Warm, dry, flushed</strong> below the injury</td></tr></tbody></table></div><p>The heart rate is the giveaway. The same sympathetic signal that would normally speed the heart in response to falling pressure is the signal that has been cut, so the patient cannot mount the tachycardia. A hypotensive trauma patient with a normal or slow pulse and warm dry skin has a cord injury; a hypotensive trauma patient with a fast pulse and cool clammy skin is bleeding.</p><p>Two practical consequences. Because the patient cannot constrict their peripheral vessels, they lose heat continuously and become <strong>hypothermic</strong> quickly even in a mild environment — cover them. And because a trauma patient can have both problems at once, neurogenic shock is never a reason to stop looking for hemorrhage.</p><p>One term to keep separate: <strong>spinal shock</strong> is the temporary loss of cord function — flaccid paralysis and lost reflexes — immediately after an injury, and it may partly resolve over hours to weeks. It describes neurological function. <strong>Neurogenic shock</strong> describes the circulation. They often occur together and they are not the same thing.</p>`
+          }
+        ],
+        takeaways: [
+          "C3, 4, 5 keep the diaphragm alive. An injury above that level stops breathing.",
+          "Diaphragmatic breathing — belly moving, chest still — in a trauma patient means a cord injury until proven otherwise.",
+          "Cord injury signs: loss of sensation or movement below a level, numbness or tingling, loss of bowel or bladder control, and priapism in a male patient.",
+          "Neurogenic shock: LOW blood pressure with a NORMAL or SLOW heart rate and warm, dry, flushed skin below the injury.",
+          "Hemorrhagic shock: low blood pressure with a FAST heart rate and pale, cool, clammy skin. The heart rate is the distinguishing finding.",
+          "The patient cannot mount a tachycardia because the sympathetic signal that would produce it is the one that was cut.",
+          "Neurogenic shock patients lose heat continuously and become hypothermic quickly — cover them.",
+          "A trauma patient can have both — neurogenic shock is never a reason to stop looking for hemorrhage.",
+          "Spinal shock = temporary loss of neurological function, may resolve. Neurogenic shock = the circulatory problem. Not the same thing."
         ]
       }
     ]

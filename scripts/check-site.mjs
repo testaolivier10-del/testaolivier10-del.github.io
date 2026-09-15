@@ -732,6 +732,102 @@ if (existsSync(flowPath)) {
   });
 }
 
+// ---- 16. Every content table must sit inside a horizontal-scroll wrapper ----
+// A <table> with four columns of clinical text is wider than a phone. Without
+// a scrolling wrapper it does not shrink politely — it widens the whole page,
+// and every other element on it scrolls sideways with the table.
+//
+// The site has four wrappers that do this job, one per area's stylesheet, and
+// before this check every table on the site was inside one of them purely by
+// habit. The four tables added to study-notes.html with the chapter expansion
+// were not, which is how the habit got written down as a rule.
+//
+// Email templates are exempt: those tables ARE the layout, which is how HTML
+// email has to be built, and they are never rendered in a browser viewport.
+const SCROLL_WRAPPERS = ['table-wrap', 'table-scroll', 'notes-table-wrap', 'ttable-scroll'];
+for (const file of htmlFiles) {
+  const rel = relative(ROOT, file);
+  if (rel.split(sep).includes('email')) continue;
+  const html = readFileSync(file, 'utf8');
+  let from = 0;
+  for (;;) {
+    const at = html.indexOf('<table', from);
+    if (at === -1) break;
+    from = at + 6;
+    // The wrapper does not have to be the table's immediate parent — on the
+    // ochem notes a full <figure> sits between the two — so find the last
+    // wrapper opened before this table and confirm it is still open, by
+    // counting div tags in between rather than by looking at what is adjacent.
+    const before = html.slice(0, at);
+    let wrapAt = -1;
+    for (const w of SCROLL_WRAPPERS) {
+      const re = new RegExp(`<div[^>]*class="[^"]*\\b${w}\\b[^"]*"[^>]*>`, 'g');
+      for (let m; (m = re.exec(before)); ) wrapAt = Math.max(wrapAt, m.index);
+    }
+    const between = wrapAt === -1 ? '' : before.slice(wrapAt);
+    const stillOpen = wrapAt !== -1 &&
+      (between.match(/<div\b/g) || []).length > (between.match(/<\/div>/g) || []).length;
+    if (!stillOpen) {
+      const line = html.slice(0, at).split('\n').length;
+      fail(`${rel}:${line}: a <table> is not inside a scrolling wrapper. Wrap it in a div with one of: ` +
+           `${SCROLL_WRAPPERS.join(', ')} — otherwise a wide table scrolls the whole page sideways on a phone.`);
+      break; // one report per file is enough to act on
+    }
+  }
+}
+
+// ---- 17. Figures that appear on more than one page must agree ----
+// Writing the airway chapter turned up two numbers the site was stating two
+// different ways: a single adult suction attempt was 15 seconds on the sound
+// trainer and in four keyed questions but 10 seconds in the new chapter, and
+// the non-rebreather was 12-15 L/min on the skill sheets and 10-15 L/min in
+// the new chapter. A student who reads both pages cannot tell which to answer
+// with, and neither can a reviewer.
+//
+// This is not a general fact-checker and cannot be one. It is a short list of
+// figures that are repeated across pages, each with the value this site
+// teaches; anything matching the pattern and disagreeing is a drift. Add a row
+// when a number starts appearing in a second place, not for every number.
+const CANONICAL_FIGURES = [
+  {
+    what: 'nasal cannula flow rate',
+    expect: '1-6 L/min',
+    re: /nasal cannula(?:[^.<]|<\/?[a-z]+>){0,70}?(\d+)\s*(?:&ndash;|[-–—]|to)\s*(\d+)\s*(?:L\/min|liters per minute)/gi,
+  },
+  {
+    what: 'non-rebreather flow rate',
+    expect: '10-15 L/min',
+    re: /non-?rebreather(?:[^.<]|<\/?[a-z]+>){0,70}?(\d+)\s*(?:&ndash;|[-–—]|to)\s*(\d+)\s*(?:L\/min|liters per minute)/gi,
+  },
+  {
+    what: 'longest single adult suction attempt',
+    expect: '15 seconds',
+    // Only the phrasings that state a ceiling for an adult, so the shorter
+    // pediatric figure and the "suction then ventilate" prose do not match.
+    re: /(?:no (?:more|longer) than|limit(?:ed)? to|maximum(?:[^.<]|<\/?[a-z]+>){0,20}?of)\s*(?:about\s*|approximately\s*)?(\d+)\s*seconds(?:[^.<]|<\/?[a-z]+>){0,60}?(?:in an adult|adult)|adult(?:[^.<]|<\/?[a-z]+>){0,60}?(?:no (?:more|longer) than|limit(?:ed)? to)\s*(?:about\s*)?(\d+)\s*seconds/gi,
+  },
+];
+for (const fig of CANONICAL_FIGURES) {
+  const seen = new Map(); // value -> [where]
+  for (const file of htmlFiles) {
+    const rel = relative(ROOT, file);
+    if (rel.split(sep).includes('email')) continue;
+    const html = readFileSync(file, 'utf8');
+    for (const m of html.matchAll(fig.re)) {
+      const nums = m.slice(1).filter(Boolean);
+      const value = nums.length === 2 ? `${nums[0]}-${nums[1]} L/min` : `${nums[0]} seconds`;
+      if (!seen.has(value)) seen.set(value, []);
+      if (!seen.get(value).includes(rel)) seen.get(value).push(rel);
+    }
+  }
+  for (const [value, where] of seen) {
+    if (value !== fig.expect) {
+      fail(`${where.join(', ')}: states the ${fig.what} as ${value}, but this site teaches ${fig.expect}. ` +
+           `Make them agree, or change the expected value in check-site.mjs if the site's teaching has changed.`);
+    }
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);

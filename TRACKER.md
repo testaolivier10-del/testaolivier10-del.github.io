@@ -49,6 +49,22 @@ clinician, and that is the gap no amount of tooling closes.
 | 22 new pharmacology questions added to the bank (topic "Pharmacology") | as above | `questions.json` | Phase 4 |
 | Pediatric vital-sign ranges by age, and the 70 + (2 × age) hypotension formula | Standard EMT practice; ranges vary between texts and the page says so | `nremt/reference-cards.html` | Phase 4 |
 | GCS component table; APGAR scoring grid with acrocyanosis scoring 1; PAT with what each side suggests | Standard EMT practice | `nremt/reference-cards.html` | Phase 4 |
+| Airway chapter written from one section to four: manual maneuvers (head-tilt/chin-lift vs jaw-thrust, and airway outranking spinal precautions), OPA/NPA sizing and insertion, suction, airway sounds, BVM technique | National EMS Education Standards; 2025 AHA for ventilation rates | Ch 9, `study-notes.html` | Phase 4 |
+| Assisted ventilation rate with a pulse stated as **1 breath every 6 seconds (10/min)** for an adult and 1 every 2–3 seconds (20–30/min) for an infant or child, with a note that older texts teach 10–12/min for adults | 2025 AHA | Ch 9 | Phase 4 |
+| NPA contraindicated with signs of basilar skull fracture or major mid-face trauma | Standard EMT teaching | Ch 9 | Phase 4 |
+| Oxygen targets stated: about **94% or above** generally, about **88–92%** in known COPD, with titration never meaning withholding | Current practice; local protocol named as governing | Ch 10 | Phase 4 |
+| Oxygen cylinder: full ≈ 2,000 psi, safe residual ≈ 200 psi | Standard EMT practice | Ch 10 | Phase 4 |
+| Vital signs: adult normal ranges, pulse/respiration technique, PEARRL, capillary refill 2 s, BP cuff-size and arm-position errors, reassessment at 5 min unstable / 15 min stable | Standard EMT practice | Ch 13 | Phase 4 |
+| Capnography added with a normal of **35–45 mmHg**, and the point that it measures ventilation where oximetry does not | Standard EMT practice | Ch 13 | Phase 4 |
+| Tourniquet procedure: 2–3 in proximal, never over a joint, high-and-tight for amputation or unclear source, tighten until bleeding stops **and** the distal pulse is gone, time written on it, left visible, not loosened in the field, second tourniquet proximal if needed | ACS Stop the Bleed | Ch 29 | Phase 4 |
+| Wound packing: pack into the wound to the bleeding source then hold pressure ≥ 3 minutes; never pack the chest or abdomen | ACS Stop the Bleed | Ch 29 | Phase 4 |
+| Blood volume figures: adult ≈ 5 L; serious sudden loss ≈ 1 L adult, 500 mL child, 100–200 mL infant | Standard EMT texts | Ch 29 | Phase 4 |
+| Compensated vs decompensated shock, with narrowing pulse pressure as an early sign and hypotension named as a late one; beta blockers and children named as the two things that hide it | Standard EMT practice | Ch 29 | Phase 4 |
+| TBI: primary vs secondary injury, hypoxia and hypotension as the two biggest worsening factors, Cushing's triad as the inverse of shock, no routine hyperventilation, CSF drainage not packed | Standard EMT practice | Ch 33 | Phase 4 |
+| Neurogenic shock distinguished from hemorrhagic by heart rate and skin; C3–C5 and the diaphragm; spinal shock kept separate from neurogenic shock | Standard EMT practice | Ch 33 | Phase 4 |
+| **Correction:** adult suction attempt was stated as 10 s in the new Ch 9 draft and 15 s on `sound-trainer.html` and in four keyed questions. Reconciled to **15 s adult / ~10 s or less child and infant**, matching the bank | AAOS figures; the bank's keyed answers | Ch 9, `sound-trainer.html` | Phase 4 |
+| **Correction:** non-rebreather flow was 12–15 L/min on `skillsheets.html` and `formulary.html` and 10–15 L/min in the new Ch 10. Reconciled to **10–15 L/min** everywhere, consistent with the reservoir-collapse rule the same pages already gave | AAOS figures | Ch 10, `skillsheets.html`, `formulary.html` | Phase 4 |
+| **Correction:** Ch 33's takeaway listed NEXUS as four criteria while the body text warned against exactly that merge. Takeaway rewritten to five | NEXUS | Ch 33 | Phase 4 |
 
 ---
 
@@ -137,9 +153,32 @@ not been established, and gives a route to have them removed.
 |---|---|
 | Pharmacology module (EMT formulary) | done |
 | Reference cards: peds vitals, GCS, APGAR, PAT | done |
-| Expand Airway, Ventilation & Oxygen, Vital Signs, Bleeding Control, Head/Neck/Spine | open |
-| Figures in the notes (currently zero across 40 chapters) | open |
+| Expand Airway, Ventilation & Oxygen, Vital Signs, Bleeding Control, Head/Neck/Spine | done |
+| Figures in the notes (currently zero across 40 chapters) | **blocked — see below** |
 | More branching scenarios toward 25 | open |
+
+The five chapters were the five smallest in the book — 2,461 to 4,744
+characters against a median of 8,900 — and are now 10,674 to 21,009. Airway
+went from one section to four and covers everything the work order named.
+
+**Why figures are blocked, not skipped.** The figure system this site already
+has (`.notes-figure`, inline SVG with `role="img"`, `<figcaption>`) lives in
+`ochem/assets/ochem.css` and is used well across the ochem notes. Porting it to
+the NREMT notes is easy. The problem is where the figures would go:
+`study-notes.html` carries all forty chapters inline and is now 159.6 KB
+gzipped against a budget just raised to 172. Every reader downloads the whole
+book to read one chapter, and every figure makes that worse for all of them.
+
+The right order is to move `CHAPTERS` into a fetched JSON file first — the page
+already refuses to render without JavaScript, so nothing regresses — and then
+add figures against a per-chapter payload. Doing it the other way round means
+paying the weight twice. This is a real piece of work, not a large one, and it
+is not in the work order, so it is flagged here for a decision rather than
+done quietly.
+
+Schematic figures are what is on offer either way: OPA/NPA sizing landmarks,
+tourniquet placement, the E-C clamp. Anatomical illustration is not something
+that should be faked in SVG, and it stays in **Needs a person**.
 
 ## Phase 5 — Ochem
 
@@ -164,6 +203,7 @@ not been established, and gives a route to have them removed.
 
 | Item | Status |
 |---|---|
+| Normalize British spellings to American (~170 occurrences, mostly ochem prose: centre, favour, behaviour, haemoglobin) | open |
 | Terms of Use page with medical disclaimer, linked in every footer | open |
 | FAQPage schema on exam-day; Course schema on both hubs | open |
 | Homepage screenshots or GIFs | open |
@@ -217,10 +257,20 @@ true/false polarity, select-N key sets, **absolute words**, **hedge words**,
 **trailing justification clauses** · 6. Advertised question counts ·
 7. Sitemap completeness · 8. Advertised ochem counts · 9. Tool tiles ·
 10. Unique question ids · 11. Error reporters load first ·
-12. **Molecule valence** · 13. **Scenario graph** · 14. **Copied option sets**
+12. **Molecule valence** · 13. **Scenario graph** · 14. **Copied option sets** ·
+15. **Flow-diagram branches** · 16. **Tables inside a scroll wrapper** ·
+17. **Figures that appear on more than one page agree**
 
 Bold entries were added in response to these reviews. Each was verified by
 reintroducing the defect it exists to catch.
+
+Checks 16 and 17 both came out of Phase 4 catching this session's own work.
+Check 16 found four tables added to the notes without the scrolling wrapper
+every other table on the site already had, plus one more on a page nobody had
+looked at. Check 17 exists because two numbers — the adult suction limit and
+the non-rebreather flow rate — had drifted into two values across pages; it is
+a short list of repeated figures, not a fact-checker, and it should grow a row
+only when a number starts appearing in a second place.
 
 The three wording-tell thresholds are set at the bank's measured state, not at
 the target, following the convention already used for the ochem ceilings: they
