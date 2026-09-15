@@ -341,7 +341,7 @@ their lessons exist.
 
 | Item | Status |
 |---|---|
-| Rewrite options flagged by the three tell checks, one domain per commit | in progress — Cardiac done, ~14 domains to go |
+| Rewrite options flagged by the three tell checks, one domain per commit | in progress — Cardiac and Medical done, ~13 to go |
 
 The scale, measured before starting:
 
@@ -375,6 +375,30 @@ Two things worth recording for the remaining domains:
   questions into the justify sample and pushed that share below its floor
   until the Cardiac justification clauses were fixed too. Do all three tells
   per domain, in one pass, or the checks will fight each other.
+
+**Medical (Phase 6b):** 42 distractors rewritten, plus 3 keys de-hedged. Running
+totals — absolute 450 → 385 items and 6.2% → 7.3% keyed; justification 183 → 172
+and 16.9% → 18.0%.
+
+**The hedge tell runs backwards, and the Medical pass got it wrong.** Hedge went
+41.0% → 42.2%, away from the 25% target, while still inside its ceiling. The
+reason is direction: hedge is the one tell here that marks the RIGHT answer, so
+removing a hedge from a *distractor* shrinks the denominator while the keyed
+count stays put and the share rises. Seven distractor hedges came out as a side
+effect of fixing absolute and justification tells in the same options.
+
+For the remaining domains the rule is:
+
+| Tell | Marks | Fix it by |
+|---|---|---|
+| Absolute word | the wrong answer | rewriting **distractors** |
+| Trailing justification | the wrong answer | rewriting **distractors** |
+| Hedge | the **right** answer | committing **keys** to a definite answer |
+
+Two Medical keys kept their hedge deliberately: "generally does not experience
+complications" is true of sickle cell *trait*, and "the criteria generally
+require" is true of the anaphylaxis criteria, which have a second limb. A key
+made wrong to satisfy a metric is a worse outcome than the tell.
 
 ## Phase 7 — Trust and polish
 
