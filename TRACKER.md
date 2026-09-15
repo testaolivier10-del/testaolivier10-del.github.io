@@ -202,7 +202,7 @@ that should be faked in SVG, and it stays in **Needs a person**.
 | "Leads to" chip overflow; floating buttons covering content | **not a defect** — see below |
 | Missing mechanisms (check Grignard in carbonyl addition first) | Grignard **verified already covered**; the others open |
 | Synthesis / reagent-roadmap tool and flashcard deck | open |
-| Figures in the reaction-heavy sections | open |
+| Figures in the reaction-heavy sections | in progress — 6 added, and there is now a generator |
 | Skeletal structures after the foundations module | open |
 | Cut repeated caption/callout/body explanations | open |
 
@@ -244,10 +244,31 @@ documented 12px gap. Neither reproduces.
 and works through why one gives a primary alcohol and the other a secondary.
 The remaining gaps are real: hydroboration–oxidation, radical halogenation,
 and acetal/imine formation.
-| Synthesis / reagent-roadmap tool and flashcard deck | open |
-| Figures in the reaction-heavy sections | open |
-| Skeletal structures after the foundations module | open |
-| Cut repeated caption/callout/body explanations | open |
+
+**Figures: the finding was precise.** Density ran 2.8, 2.7 and 2.4 figures per
+section across Foundations, Organic Structure and Alkanes, and 1.0 across
+Carboxylic Acids, Enolate Chemistry and Amines — exactly backwards, since the
+back of the book is where a picture stops being a nice extra and becomes the
+only honest way to state the claim.
+
+The reason nobody had fixed it: the existing figures are committed SVG with
+**no source**. Coordinates precise to two decimals, and nothing checked in that
+produced them, so adding one meant hand-writing trigonometry into a
+4,000-character attribute soup. `scripts/lib/ochem-figure.mjs` is that missing
+source; `scripts/build-ochem-figures.mjs` holds the definitions.
+
+Six figures so far, each the load-bearing idea of a thin chapter: the acyl
+reactivity ladder, the tetrahedral-intermediate fork, enolate resonance, which
+bond forms in an aldol, where the charge lands in the sigma complex, and
+lone-pair availability across amine types. Those chapters now run 1.3–1.7.
+
+**Every one of the six was wrong on first render** — a clipped column of names,
+a caption on top of a heading, a double bond drawn as three lines, and a
+substituent drawn on top of a charge symbol. None of it is visible in the
+markup and none of it failed a check; it was found by rendering the figures in
+headless Chromium and looking at them. The bounds test added alongside catches
+the off-canvas half of that class. **The rest still needs eyes, and a figure
+added later should be looked at before it is pushed.**
 
 ## Phase 6 — Answer-option rewrites
 
@@ -319,7 +340,8 @@ true/false polarity, select-N key sets, **absolute words**, **hedge words**,
 18. **Advertised scenario count**, and scenario nodes must be able to reach an
 ending, not merely be reachable from the start ·
 19. **Every lesson and mechanism links to its written section**, in the body
-rather than the head
+rather than the head · 20. **Generated figures draw inside their own canvas**,
+and carry alt text and a caption
 
 Bold entries were added in response to these reviews. Each was verified by
 reintroducing the defect it exists to catch.
