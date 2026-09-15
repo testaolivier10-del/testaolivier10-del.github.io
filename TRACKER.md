@@ -11,6 +11,41 @@ when the change is in the repo and the checks pass.
 
 ---
 
+## Pending chemistry review
+
+The same gap the clinical table below describes, for the other course. Phase 9
+added roughly 19,000 words of chemistry prose, 21 lessons and 780 questions
+across five chapters, and **no chemist has read any of it**. Nothing here is a
+guess — each entry follows standard undergraduate organic chemistry — but the
+numerical claims in particular are the kind a reviewer should check against a
+textbook rather than take on trust.
+
+Listed because the rule for this repo is to record what cannot be verified from
+here rather than to assert it quietly.
+
+| Claim | Where | Why it needs checking |
+|---|---|---|
+| Heat of hydrogenation: but-1-ene ≈ 127 kJ/mol, buta-1,3-diene ≈ 239, difference ≈ 15 as the delocalization energy | `conjugated-systems` | Quoted figures; textbooks vary slightly and some quote kcal |
+| C2–C3 bond of buta-1,3-diene ≈ 1.47 Å against 1.54 and 1.34 | `conjugated-systems` | Quoted bond lengths |
+| HBr + buta-1,3-diene: ~80:20 favoring 1,2 at −80 °C, ~15:85 favoring 1,4 at 40 °C | `diene-addition` | The exact ratios and temperatures vary between sources |
+| λmax: ethene 171 nm, butadiene 217, hexatriene 258, β-carotene ~450 with 11 conjugated C=C | `uv-vis` | Quoted spectroscopic values |
+| Radical halogenation selectivity per hydrogen: Br₂ 3°:2°:1° ≈ 1600:80:1, Cl₂ ≈ 5:4:1 | `radical-halogenation` | Widely quoted but source-dependent |
+| Molar absorptivity of a conjugated system "often 10,000 or more" | `uv-vis` | An order-of-magnitude claim |
+| Oxidation states: acid/ester/amide/nitrile carbons all at +3; aldehyde +1, ketone 0 | `oxidation-states`, `naming-functional-groups` | Arithmetic is checkable but the pedagogical framing is mine |
+| That 2-methylpropane gives ~99% tertiary bromide with Br₂ but more primary than tertiary product with Cl₂ | `radical-halogenation` lesson | A worked consequence of the selectivity figures above |
+| Reagent scope tables (what NaBH₄/LiAlH₄/H₂-Pd each reduce; which oxidant stops where) | `carbonyl-reduction`, `hydrogenation`, `alcohol-oxidation` | Standard, but the "essentially untouched" boundaries are judgment calls |
+| That a Friedel–Crafts acylation cannot deliver a plain CHO because formyl chloride is too unstable | `carbon-carbon-bonds` | Correct as far as I know; Gattermann–Koch is the workaround and is not mentioned |
+| Every worked example's product and name | all five chapters | Each was checked by hand or by a short script; none has been checked by a chemist |
+
+**Errors already found and fixed during this phase**, recorded so the rate is
+visible rather than implied: a symmetric allylic cation used as a 1,2/1,4
+example that gives only one product; a claim that the top four priority groups
+are ranked by oxidation level when all four sit at +3; an alkene/alcohol naming
+contrast whose "wrong" answer was a different molecule; a benzaldehyde step
+that is not a clean intro-level reaction; and a yield question whose stem
+asserted something its own answer contradicted. Five caught in four chapters is
+not a reassuring rate for a body of work this size.
+
 ## Pending clinical review
 
 Everything in this section is a clinical statement this repo now makes that a
