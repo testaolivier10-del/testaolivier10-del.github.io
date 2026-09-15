@@ -341,7 +341,7 @@ their lessons exist.
 
 | Item | Status |
 |---|---|
-| Rewrite options flagged by the three tell checks, one domain per commit | in progress — 6 domains done, ~9 to go |
+| Rewrite options flagged by the three tell checks, one domain per commit | in progress — 7 domains done, ~8 to go |
 
 The scale, measured before starting:
 
@@ -414,9 +414,10 @@ Running totals:
 | Geriatrics | 355 / 7.9% | 88 / 40.9% | 173 / 18.5% |
 | Secondary Assessment | 328 / 8.5% | 88 / 40.9% | 164 / 19.5% |
 | Musculoskeletal & Burns | 301 / 9.3% | 86 / 39.5% | 159 / 20.1% |
-| Obstetrics | **275 / 10.2%** | **82 / 36.6%** | **151 / 21.2%** |
+| Obstetrics | 275 / 10.2% | 82 / 36.6% | 151 / 21.2% |
+| Scene Safety & Operations | **251 / 11.2%** | **79 / 34.2%** | **145 / 22.1%** |
 
-Thresholds now `absoluteFloor: 0.10`, `hedgeCeiling: 0.37`, `justifyFloor: 0.21`.
+Thresholds now `absoluteFloor: 0.11`, `hedgeCeiling: 0.35`, `justifyFloor: 0.22`.
 
 **Where distractor rewriting runs out.** Absolute has gone 6.2% → 9.3% across
 five domains, and the remaining work will keep moving it, but not to 25%.
