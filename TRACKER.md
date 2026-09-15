@@ -508,10 +508,34 @@ way.
 | Item | Status |
 |---|---|
 | Normalize British spellings to American (~170 occurrences, mostly ochem prose: centre, favour, behaviour, haemoglobin) | open |
-| Terms of Use page with medical disclaimer, linked in every footer | open |
+| Terms of Use page with medical disclaimer, linked in every footer | done for every page that has a footer — see below |
+| Footers on the 80 ochem lessons and mechanisms (they have none) | open |
 | FAQPage schema on exam-day; Course schema on both hubs | open |
 | Homepage screenshots or GIFs | open |
 | About section with name and reviewer | needs a person |
+
+**Terms of Use (Phase 7a).** `terms.html` covers the thing that actually
+matters first: this is study material, not medical advice, and your own
+protocols and medical director govern where they disagree with it. It names
+the specific places that vary — a second dose of epinephrine, realigning a limb
+to restore a pulse, treating a fever, implied consent for a minor — because
+those are the ones this site has had to hedge in its own answer keys.
+
+It also says plainly, under *accuracy*, that the clinical content has **not**
+been reviewed and signed off by a named clinician. That is the same open item
+sitting at the top of this file, and a terms page is the honest place to
+disclose it rather than the place to imply otherwise.
+
+Coverage: 89 pages link it, 13 are redirect stubs that are a meta-refresh and
+nothing else, and 3 are 404/offline/ownership-token pages. Check 22 enforces
+that any page with a footer link row reaches it.
+
+**The remaining 80 are the ochem lessons and mechanisms, which have no footer
+at all.** That is a pre-existing layout gap rather than a missing link, and it
+is listed as its own row above rather than hidden behind a check that passes.
+The medical disclaimer matters least on an organic chemistry lesson, which is
+why this is not urgent — but "every footer" is only true because those pages
+have none.
 
 ---
 

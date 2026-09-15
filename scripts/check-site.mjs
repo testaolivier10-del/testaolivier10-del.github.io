@@ -1106,6 +1106,25 @@ if (existsSync(notesDir)) {
   }
 }
 
+// ---- 22. A page with a footer link row must reach the Terms of Use ----
+// terms.html carries the medical disclaimer: this is study material, not
+// medical advice, and your own protocols govern. A disclaimer nobody can find
+// is decoration, so every page that has a footer link row has to link it.
+//
+// Pages with no footer at all are not in scope and cannot be: the thirteen
+// root-level redirect stubs are a meta-refresh and nothing else, and the ochem
+// lessons and mechanisms have never had a footer. That second gap is real but
+// it is a layout gap rather than a missing link, and it is recorded in
+// TRACKER.md instead of being papered over by a check that would pass.
+for (const file of htmlFiles) {
+  const rel = relative(ROOT, file).split(sep).join('/');
+  const html = readFileSync(file, 'utf8');
+  if (!html.includes('class="privacy-link"')) continue;
+  if (!/href="(?:\.\.\/)*terms\.html"/.test(html)) {
+    fail(`${rel}: has a footer link row but does not link terms.html, so the medical disclaimer is unreachable from this page.`);
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);

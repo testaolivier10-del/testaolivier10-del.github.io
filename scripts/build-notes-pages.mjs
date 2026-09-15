@@ -153,7 +153,7 @@ ${END}
 
   <footer class="notes-foot">
     <p><a href="../learn.html">&larr; All ${total} sections</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../sources.html">Sources</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
   </footer>
 </div>
 </body>
