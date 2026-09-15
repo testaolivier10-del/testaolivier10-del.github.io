@@ -318,6 +318,35 @@ if (existsSync(registryPath) && existsSync(toolsPagePath)) {
   }
 }
 
+// ---- 10. Every question has a unique, permanent id ----
+// An id is what every record in a learner's browser refers to: their missed
+// queue, their flagged list, their mastery record, the option order each
+// question is displayed in, and any half-finished attempt. A question with no
+// id cannot be referred to at all; two questions sharing one means both sets
+// of records land on whichever the code resolves first. Neither throws in a
+// browser — the student just silently gets the wrong questions back.
+//
+// This does not check that ids were not RENUMBERED, which is the other way to
+// break every record at once and which no static check can see. Don't. Adding
+// a question means running build-question-bank.mjs, which only ever hands out
+// ids above the high-water mark; removing one means deleting its line and
+// leaving the hole.
+if (Array.isArray(bank)) {
+  const byId = new Map();
+  let missing = 0;
+  bank.forEach((q, at) => {
+    if (!Number.isInteger(q.id) || q.id < 0) { missing++; return; }
+    if (byId.has(q.id)) {
+      fail(`questions.json: id ${q.id} is on both question ${byId.get(q.id)} and question ${at}.`);
+    } else {
+      byId.set(q.id, at);
+    }
+  });
+  if (missing) {
+    fail(`questions.json: ${missing} question(s) have no id — run scripts/build-question-bank.mjs to assign them.`);
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);

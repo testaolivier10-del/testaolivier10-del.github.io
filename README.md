@@ -80,6 +80,10 @@ nremt/                 The NREMT-EMT Prep course
     questions.json        The 2,084-question bank: the file you edit. Nothing fetches
                             it; questions-core.json and explanations.json are
                             generated from it (scripts/build-question-bank.mjs)
+    question-ids.js        What every stored question record refers to. Pure
+                             translation between a question's permanent id and
+                             its position in the bank — see "Every question has
+                             an id" below
     nav.js                 This course's tab list and sync namespace; hands the header
                              itself to /assets/site-chrome.js. Also the NREMT-flavored
                              shim over the site-wide level/streak engine in
@@ -560,7 +564,8 @@ then open `http://localhost:8000/`.
 5. The question bank carries no answer tell: no keyed option position holds more than 40% of items, no select-N key set dominates, and the "longest option is the answer" rate stays under its ceiling. The ceiling is a ratchet — lower it as the bank improves, never raise it.
 6. Every advertised question count in markup, meta tags and this README matches the bank. The homepage went on advertising a figure from an early build long after the bank had more than doubled.
 7. Every advertised Ochem count matches `curriculum.js`: a digit count of "topics" is the number of topics with an href, "lessons" the number under `lessons/`, "mechanisms" the number of pages under `ochem/mechanisms/`. The course was "58 lessons", "62 topics" and "Fifty-eight interactive lessons" on three pages at once.
-8. The static tool tiles written into `ochem/tools.html` (so a crawler or a reader with scripts off still gets the list) are byte-identical to what `tools-page.js` renders from `tools-registry.js`.
+8. Every question in the bank has a unique id, so every record in a learner's browser still refers to something.
+9. The static tool tiles written into `ochem/tools.html` (so a crawler or a reader with scripts off still gets the list) are byte-identical to what `tools-page.js` renders from `tools-registry.js`.
 
 ### Generated files
 
@@ -577,10 +582,11 @@ A third job re-derives everything that is generated from the pages and fails if 
 
 ### Unit tests
 
-A second job runs `node --test scripts/test/*.test.mjs` — 24 tests over the two engines whose failure modes are silent. Everything above checks that the site is *wired* correctly; nothing checked that it *scores* correctly. An interval that doubles too eagerly buries a shaky concept for four months, a decay curve that bites too hard makes yesterday's work look undone, a streak that resets in the wrong timezone eats a 40-day run. None of that throws, and none of it would have been caught by a link checker — the student just gets worse practice and no one finds out.
+A second job runs `node --test scripts/test/*.test.mjs` — 101 tests over the pieces whose failure modes are silent. Everything above checks that the site is *wired* correctly; nothing checked that it *scores* correctly. An interval that doubles too eagerly buries a shaky concept for four months, a decay curve that bites too hard makes yesterday's work look undone, a streak that resets in the wrong timezone eats a 40-day run. None of that throws, and none of it would have been caught by a link checker — the student just gets worse practice and no one finds out.
 
 - `scripts/test/hub-progress.test.mjs` — the level curve (pinned: changing it demotes every existing user), XP accumulation and per-subject split, streak continuation across days, goal tracking, rank titles, day-log pruning.
 - `scripts/test/mastery-engine.test.mjs` — unseen vs. scored-zero, the learning rate settling as evidence accumulates, the same-day guard that stops one good session reaching a six-month interval, the interval cap, the decay floor, due-ness, leech benching and its release on a lesson read, the daily review cap, mistake de-duplication, tier records.
+- `scripts/test/question-ids.test.mjs` — what the numbers in a learner's records mean: ids surviving a deletion, a reorder and an append; the positional option-order array converting once and idempotently; a half-finished attempt abandoned rather than graded around a hole.
 - `scripts/test/harness.mjs` — loads these browser IIFEs into a VM context with a window, a localStorage and, crucially, a clock the test controls. Both engines are about *time*; none of this is testable against a real `Date.now()` without either sleeping or asserting nothing.
 
 No dependencies and no build step, in keeping with the rest of the stack. Both engines were checked by mutation: 13 deliberate breaks (level curve shifted, same-day guard removed, interval cap removed, decay floor removed, lesson never lifts the bench, and so on) and every one of them fails the suite. A test that passes either way is worse than no test, so re-run that exercise if you add to these.
@@ -657,7 +663,20 @@ The reason is that the explanations are two thirds of the bank's compressed weig
 
 The explanations are fetched immediately afterwards without blocking anything and land about 270 ms later — long before anyone could have answered. The two places that read them (`renderFlashcard`, `renderReview`) `await` that promise anyway, because "long before" is an assumption about a fast phone and not a guarantee. If the second file fails outright, every mode still works and only the "why" under an answer is missing.
 
-**Index alignment is not cosmetic.** Every saved exam, flagged question, missed question and shuffled option order in a learner's browser is stored as a bare integer index into this bank. Re-ordering or re-keying it would silently re-point all of them at different questions — which is also why the bank was *not* split by domain, the change this replaced: that would have meant rebuilding question identity across six files and every `localStorage` record that refers to one, to speed up domain drills alone.
+**Positional alignment between the two generated files is not cosmetic.** `explanations.json` is a bare array of strings, matched to `questions-core.json` by position, which is what lets it skip repeating a key 2,084 times. Both are generated in one pass from `questions.json` and neither is ever reordered independently.
+
+### Every question has an id
+
+What a learner's browser stores is a different question, and it used to have the same answer. Every saved exam, flagged question, missed question, mastery record and shuffled option order was a bare **position** in this bank — which made the bank append-only forever. Deleting a wrong question, deduplicating two near-copies or sorting the file would shift every position after the edit and silently re-point every one of those records at a different question. Nothing would throw; a student's missed queue would just quietly fill with questions they had never seen. The cost of that constraint grew with every new account.
+
+So every question carries an `id`, and everything above is keyed by id instead.
+
+- **`build-question-bank.mjs` assigns them**, only to questions that have none, and only from above the high-water mark — so a hole left by a deleted question stays a hole rather than being handed to a new question that would inherit the deleted one's place in everybody's records. Never renumber, never hand-edit an id. **Deleting a question is now safe**, which is the entire point.
+- **There is no migration step**, because the ids were introduced by numbering the bank in its existing order. `id === index` on the day of the change, so every number already on every device was already a correct id and none of them needed rewriting. Old `practice.html?q=N` links still open the question they always did, for the same reason.
+- **One record changed shape rather than meaning.** `nremt_option_order` was a positional array, and an array cannot survive a question being removed — deleting one question would re-deal the letters of every question after it, including for an exam already in progress. It is now an object keyed by id. `QID.readOrders()` accepts either shape and returns the object, so the conversion happens on the next page load with no marker key and no ordering guarantee needed against account sync — which matters, because a device that has not yet converted can be handed a synced copy from one that has.
+- **Unknown ids are dropped on read**, so a deleted question leaves everyone's queues by itself. This is also the behaviour the old code should have had: a stale position past the end of the bank used to sit in the missed queue forever.
+
+`nremt/assets/question-ids.js` is pure translation — no `localStorage` access; the page owns its reads and writes and this owns what the numbers in them mean. Tested in `scripts/test/question-ids.test.mjs`, where the cases that matter are all bank edits: a question deleted, questions reordered, questions appended. Check #10 in `check-site.mjs` fails on a missing or duplicated id.
 
 ## Pages that stand in for other pages
 

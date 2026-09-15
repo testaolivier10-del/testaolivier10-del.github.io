@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function(){
       // Deep link straight to the one question, which practice.html opens on its
       // own in review mode. Without the index a question result could only land
       // the reader on the exam start screen with no way back to what they found.
-      file: 'practice.html?q=' + i,
+      file: 'practice.html?q=' + (typeof q.id === 'number' ? q.id : i),
       heading: q.domain + (q.topic ? ' — ' + q.topic : ''),
       text: q.q + ' ' + (q.explain || ''),
       isQuestion: true,

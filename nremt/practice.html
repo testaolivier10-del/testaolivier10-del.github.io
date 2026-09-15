@@ -26,6 +26,7 @@
      streak. Deferred, like every script on the page, so the page paints
      before they arrive; they still run first, in this order, and the
      page's own inline script waits for DOMContentLoaded. -->
+<script src="assets/question-ids.js" defer></script>
 <script src="../assets/account.js" defer></script>
 <script src="../assets/hub-progress.js" defer></script>
 <script src="../assets/chime.js" defer></script>
@@ -801,6 +802,13 @@ const QUESTIONS = await (async function(){
   }
 })();
 
+// What every stored record refers to. QUESTIONS is a list and the code below
+// works in positions, because a position is a direct array lookup; but nothing
+// that reaches localStorage may be a position, or editing the bank re-points
+// every learner's records at different questions. QID translates between the
+// two at each of those boundaries — see assets/question-ids.js.
+const QID = window.NremtQuestionIds.attach(QUESTIONS);
+
 // The other half of the bank, started now and deliberately not awaited. The
 // earliest it can be wanted is the moment someone answers a question or flips
 // a flashcard, which is many seconds of reading away; by then this has long
@@ -869,26 +877,32 @@ if(!QUESTIONS.length){
 // pointed to, so resuming an in-progress exam (or even just reloading mid-quiz) could show
 // "you picked C" for an option the user never clicked, and grade against the new order
 // instead of the one shown when they answered.
+//
+// Keyed by question ID, not position. This was a positional array, which meant
+// deleting one question re-dealt the letters of every question after it — for
+// an exam already in progress, on a record whose entire purpose is to stay
+// still. QID.readOrders() accepts the old array and returns the map, so the
+// conversion happens on the next page load with no migration step.
 const OPTION_ORDER_KEY = 'nremt_option_order';
 (function shuffleQuestionOptions(){
-  // A saved order array shorter than the bank means questions were APPENDED since the
-  // user last loaded the page. Keep the saved orders for questions 0..savedLen-1 (so a
-  // half-finished exam still grades against the letters it displayed) and shuffle only
-  // the newly added ones.
-  let orders = null;
+  // A question with no saved order is one added to the bank since this browser
+  // last loaded the page. It gets shuffled; every question that already had an
+  // order keeps it, so a half-finished exam still grades against the letters it
+  // displayed.
+  let orders = {};
+  let changed = false;
   try{
     const raw = localStorage.getItem(OPTION_ORDER_KEY);
-    if(raw){
-      const parsed = JSON.parse(raw);
-      if(Array.isArray(parsed) && parsed.length <= QUESTIONS.length) orders = parsed;
-    }
-  }catch(e){}
-
-  let changed = !orders;
-  if(!orders) orders = [];
+    const parsed = raw ? JSON.parse(raw) : null;
+    orders = QID.readOrders(parsed);
+    // Dropping a stale entry, or converting the array, is itself a change
+    // worth writing back — otherwise the conversion is redone on every load.
+    if(raw && JSON.stringify(orders) !== raw) changed = true;
+  }catch(e){ orders = {}; }
 
   QUESTIONS.forEach((q, qi) => {
-    let order = orders[qi];
+    const id = QID.idOf(qi);
+    let order = orders[id];
     const needsShuffle = !Array.isArray(order) || order.length !== q.options.length;
     if(needsShuffle){
       order = q.options.map((_, i) => i);
@@ -896,7 +910,7 @@ const OPTION_ORDER_KEY = 'nremt_option_order';
         const j = Math.floor(Math.random() * (i + 1));
         [order[i], order[j]] = [order[j], order[i]];
       }
-      orders[qi] = order;
+      orders[id] = order;
       changed = true;
     }
     if(q.type === 'multi' || q.type === 'order'){
@@ -1007,14 +1021,17 @@ function filterPoolByDifficulty(pool, diffFilter, count){
 // already been seen, that pool's seen-state resets so the cycle starts over
 // rather than ever blocking the user from taking a quiz.
 const SEEN_KEY = 'nremt_seen_questions';
+// Stored as ids, held in memory as positions. Same for the missed and flagged
+// queues below: every one of these crosses into localStorage, so every one of
+// them goes through QID on the way in and out.
 function loadSeen(){
   try {
     const raw = localStorage.getItem(SEEN_KEY);
-    return raw ? new Set(JSON.parse(raw)) : new Set();
+    return raw ? new Set(QID.indicesOf(JSON.parse(raw))) : new Set();
   } catch(e){ return new Set(); }
 }
 function saveSeen(seenSet){
-  try { localStorage.setItem(SEEN_KEY, JSON.stringify(Array.from(seenSet))); } catch(e){}
+  try { localStorage.setItem(SEEN_KEY, JSON.stringify(QID.idsOf(Array.from(seenSet)))); } catch(e){}
 }
 function markSeen(indices){
   const seen = loadSeen();
@@ -1079,13 +1096,17 @@ function saveExamState(){
       historicalAcc: adaptiveState.historicalAcc,
     };
   }
-  try{ localStorage.setItem(EXAM_STATE_KEY, JSON.stringify(state)); }catch(e){}
+  try{ localStorage.setItem(EXAM_STATE_KEY, JSON.stringify(QID.writeExamState(state))); }catch(e){}
 }
 function loadExamState(){
   try{
     const raw = localStorage.getItem(EXAM_STATE_KEY);
     if(!raw) return null;
-    const state = JSON.parse(raw);
+    // Returns null if the bank no longer has one of the questions this attempt
+    // was asking. Resuming around a hole would mean grading someone against a
+    // question they were never shown.
+    const state = QID.readExamState(JSON.parse(raw));
+    if(!state) return null;
     // A timed exam whose 2-hour window has already elapsed can't meaningfully
     // resume — the clock would just immediately end it again.
     if(state.withTimer && Date.now() - state.startTime >= TIME_LIMIT_MS) return null;
@@ -1378,13 +1399,17 @@ document.getElementById('progressToggle').addEventListener('click', () => {
 // updated by every mode (full exam, domain drill, review, adaptive), not just
 // adaptive sessions, so the algorithm benefits from everything you've ever answered.
 const MASTERY_KEY = 'nremt_mastery';
+// Keyed by question id. The keys come back from JSON as strings, which is
+// what QID.indexOf() is string-tolerant for.
 function loadMastery(){
   const raw = localStorage.getItem(MASTERY_KEY);
-  return raw ? JSON.parse(raw) : {};
+  return raw ? QID.pruneById(JSON.parse(raw)) : {};
 }
 function updateMastery(qIdx, correct){
   const m = loadMastery();
-  const rec = m[qIdx] || {level:0, timesCorrect:0, timesWrong:0, lastSeen:0};
+  const qId = QID.idOf(qIdx);
+  if(qId === undefined) return;
+  const rec = m[qId] || {level:0, timesCorrect:0, timesWrong:0, lastSeen:0};
   if(correct){
     rec.level = Math.min(5, rec.level + 1);
     rec.timesCorrect++;
@@ -1393,7 +1418,7 @@ function updateMastery(qIdx, correct){
     rec.timesWrong++;
   }
   rec.lastSeen = Date.now();
-  m[qIdx] = rec;
+  m[qId] = rec;
   localStorage.setItem(MASTERY_KEY, JSON.stringify(m));
 }
 // A "mastered" item that hasn't been seen in a while gradually becomes due again —
@@ -1414,10 +1439,11 @@ function loadDueForReview(limit){
   const mastery = loadMastery();
   const now = Date.now();
   const items = Object.keys(mastery)
-    .map(k => parseInt(k, 10))
-    .filter(i => QUESTIONS[i] !== undefined)
-    .map(i => {
-      const rec = mastery[i];
+    // The keys are ids; the queue this returns is positions. loadMastery() has
+    // already dropped any id whose question has left the bank.
+    .map(k => ({ i: QID.indexOf(k), rec: mastery[k] }))
+    .filter(x => x.i !== -1)
+    .map(({ i, rec }) => {
       return { i, eff: effectiveMasteryLevel(rec), daysSince: (now - rec.lastSeen) / 86400000 };
     })
     .filter(x => x.eff < 5)
@@ -1700,10 +1726,10 @@ function renderStreakWidget(){
 
 function loadMissed(){
   const raw = localStorage.getItem(MISSED_KEY);
-  return raw ? JSON.parse(raw) : [];
+  return raw ? QID.indicesOf(JSON.parse(raw)) : [];
 }
 function saveMissed(list){
-  localStorage.setItem(MISSED_KEY, JSON.stringify(list));
+  localStorage.setItem(MISSED_KEY, JSON.stringify(QID.idsOf(list)));
 }
 
 // Flagged questions are a manual bookmark, unlike the missed-question queue —
@@ -1712,10 +1738,10 @@ function saveMissed(list){
 const FLAGGED_KEY = 'nremt_exam100_flagged';
 function loadFlagged(){
   const raw = localStorage.getItem(FLAGGED_KEY);
-  return raw ? JSON.parse(raw) : [];
+  return raw ? QID.indicesOf(JSON.parse(raw)) : [];
 }
 function saveFlagged(list){
-  localStorage.setItem(FLAGGED_KEY, JSON.stringify(list));
+  localStorage.setItem(FLAGGED_KEY, JSON.stringify(QID.idsOf(list)));
 }
 function toggleFlag(qIdx){
   const flagged = new Set(loadFlagged());
@@ -1831,16 +1857,21 @@ setInterval(maybeShowStudyReminder, 15*60*1000);
   beginQuiz(false);
 })();
 
-// Lets a search result (practice.html?q=N) open the single question it found,
+// Lets a search result (practice.html?q=ID) open the single question it found,
 // untimed and on its own. Without this the dominant result type in the whole
 // search index could only drop the reader on the exam start screen with no way
 // back to the question they had just found. Same precedence rule as ?domain=
 // above: an exam in progress wins over a fresh auto-launch.
+//
+// N is a question id, so a link shared in a study group or sitting in someone's
+// bookmarks still opens the same question after the bank is edited — and every
+// such link made before ids existed still resolves, because the ids were
+// numbered in the order those links were counting positions in.
 (function(){
   const raw = new URLSearchParams(location.search).get('q');
   if(raw === null || loadExamState()) return;
-  const i = Number(raw);
-  if(!Number.isInteger(i) || i < 0 || i >= QUESTIONS.length) return;
+  const i = QID.indexOf(Number(raw));
+  if(i === -1) return;
   mode = 'single';
   activeIndices = [i];
   history.replaceState(null, '', location.pathname);
