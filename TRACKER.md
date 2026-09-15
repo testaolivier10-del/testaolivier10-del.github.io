@@ -83,6 +83,9 @@ clinician, and that is the gap no amount of tooling closes.
 | Infant chest compressions: two thumbs encircling, or the heel of one hand when the rescuer cannot encircle the chest. The two-finger technique is eliminated | 2025 AHA, Part 6 Pediatric BLS | notes ch21 compression table, question 1757 | Phase 8 |
 | Chain of survival: a single six-link chain for all cardiac arrest, adult and pediatric, in- and out-of-hospital — Recognition and Emergency Activation, High-Quality CPR, Defibrillation, Advanced Resuscitation, Post–Cardiac Arrest Care, Recovery and Survivorship. Newborns keep a separate Newborn Chain of Care | 2025 AHA, Part 4 Systems of Care (CIR.0000000000001378) and the AHA Chain of Survival infographic | notes ch21 §Chain of survival | Phase 8 |
 | New notes section: Choking — Foreign Body Airway Obstruction (mild vs. severe, the sequence by age, what changed in 2025, the transition to CPR, aftercare, and what thrusts do not fix) | 2025 AHA, Parts 6 and 7 | notes ch9 §`ch9-fbao` | Phase 8 |
+| Oxygen-induced hypercapnia in COPD explained by V/Q mismatch (oxygen relieving hypoxic pulmonary vasoconstriction, raising dead space) and the Haldane effect, with reduced minute ventilation named as the smallest contributor — replacing the hypoxic-drive account. "Do not withhold oxygen from a hypoxic patient" kept, with titration to roughly 88-92% for a known retainer | Current respiratory physiology; the hypoxic-drive account is not what the evidence supports | question 974 | Phase 8 |
+| Nitroglycerin heart-rate contraindication kept at under 50 or over 100, now attributed and qualified: many EMS protocols carry no heart-rate criterion at all | ACC/AHA ACS guidance ("marked bradycardia, heart rate less than 50 beats per minute, or tachycardia, greater than 100"); state protocols reviewed showed the criterion is often absent | `nremt/formulary.html` | Phase 8 |
+| Glasgow Coma Scale illustration corrected: "E3 V4 M6 and E1 V1 M11" replaced with E4 V4 M5 and E4 V3 M6, both totalling 13, contrasting localising with obeying commands | The scale itself — the motor component stops at 6 | `nremt/reference-cards.html` | Phase 8 |
 
 ---
 
@@ -623,9 +626,9 @@ The fourth work order. Items are numbered as they were given.
 | 1 | 2025 AHA choking update: flowcharts, the choking toddler scenario, the named questions, every two-finger explanation, a choking section in the notes, and a check so neither can come back | **done** |
 | 2 | Chain of survival: chapter 21 to the 2025 single chain, after verifying its links | **done** |
 | 3 | Per-word tell checks (entirely, completely, all, regardless / per protocol, appropriate), fix what they flag, and bring the longest-option-is-key rate toward 25% | pending |
-| 4 | Question 974: V/Q mismatch and the Haldane effect in place of hypoxic drive, keeping "don't withhold oxygen" | pending |
-| 5 | Reference cards: the impossible "M11" GCS example | pending |
-| 6 | Formulary: the nitroglycerin heart-rate contraindication, and that protocols vary | pending |
+| 4 | Question 974: V/Q mismatch and the Haldane effect in place of hypoxic drive, keeping "don't withhold oxygen" | **done** |
+| 5 | Reference cards: the impossible "M11" GCS example | **done** |
+| 6 | Formulary: the nitroglycerin heart-rate contraindication, and that protocols vary | **done** |
 | 7 | SN2 figure: cyanide's triple bond and lone pair, overlapping atoms, the ethyl group outside the frame | pending |
 | 8 | The remaining British spellings in visible text | pending |
 | 9 | Confirm the live site matches main (2,106 questions, Terms link) | pending |
@@ -744,6 +747,8 @@ thing twice** across its body, callouts and captions ·
 22. **A page with a footer link row reaches terms.html** ·
 23. **Superseded resuscitation guidance cannot come back** ·
 24. **The bank cannot outgrow the option letters the page can render** ·
+25. **No impossible Glasgow Coma Scale score**, and a total written beside a
+triple has to be the sum ·
 8 now also covers
 **advertised section counts**, with changelog.html exempt because a dated
 entry is a record rather than a claim about now

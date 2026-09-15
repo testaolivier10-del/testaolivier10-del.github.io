@@ -1316,6 +1316,39 @@ for (const file of htmlFiles) {
   }
 }
 
+// ---- 25. No impossible Glasgow Coma Scale score ----
+// The reference card illustrated "report the parts, not just the total" with
+// the pair "E3 V4 M6 and E1 V1 M11" — and M11 does not exist, the motor scale
+// stopping at 6. It had been sitting under a correct table of the scale, on the
+// page whose whole job is to be the number you look up. Nothing caught it
+// because nothing was looking: a component score is three characters of prose.
+//
+// So every E/V/M triple the site writes down is checked against the scale it
+// appears beneath, and any total stated beside one has to be the sum. The
+// ranges are the scale itself and are not a threshold to tune.
+const GCS_MAX = { E: 4, V: 5, M: 6 };
+for (const file of htmlFiles) {
+  const rel = relative(ROOT, file).split(sep).join('/');
+  const html = readFileSync(file, 'utf8');
+  for (const m of html.matchAll(/\bE\s?(\d+)\s*V\s?(\d+)\s*M\s?(\d+)\b/g)) {
+    const parts = { E: Number(m[1]), V: Number(m[2]), M: Number(m[3]) };
+    for (const [k, v] of Object.entries(parts)) {
+      if (v < 1 || v > GCS_MAX[k]) {
+        fail(`${rel}: "${m[0]}" is not a possible Glasgow Coma Scale score — ` +
+             `${k}${v} is outside ${k}1-${k}${GCS_MAX[k]}.`);
+      }
+    }
+    // "E4 V4 M5 and E4 V3 M6 both come to 13" — the total, when it is written
+    // down within the next hundred characters, has to be the one that adds up.
+    const sum = parts.E + parts.V + parts.M;
+    const after = html.slice(m.index + m[0].length, m.index + m[0].length + 100);
+    const claim = after.match(/\b(?:total(?:s|ling)?(?: of)?|come to|comes to|add(?:s| up to)?)\s+(\d+)\b/i);
+    if (claim && Number(claim[1]) !== sum && Number.isFinite(sum)) {
+      fail(`${rel}: "${m[0]}" sums to ${sum}, but the text beside it says ${claim[1]}.`);
+    }
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);
