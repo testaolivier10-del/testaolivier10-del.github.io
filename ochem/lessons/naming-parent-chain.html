@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The parent chain — IUPAC Nomenclature | Organic Chemistry</title>
+<meta name="description" content="Find the parent chain and number it: the longest continuous carbon path, the tie-break when two chains match, and the lowest-locant rule.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/naming-parent-chain.html">
+<meta property="og:title" content="The parent chain — IUPAC Nomenclature | Organic Chemistry">
+<meta property="og:description" content="Find the parent chain and number it: the longest continuous carbon path, the tie-break when two chains match, and the lowest-locant rule.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/naming-parent-chain.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/naming-parent-chain.html#lesson",
+      "name": "The parent chain",
+      "url": "https://levlprep.com/ochem/lessons/naming-parent-chain.html",
+      "description": "Find the parent chain and number it: the longest continuous carbon path, the tie-break when two chains match, and the lowest-locant rule.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "The parent chain"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "IUPAC Nomenclature",
+          "item": "https://levlprep.com/ochem/learn.html#m-nomenclature"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "The parent chain",
+          "item": "https://levlprep.com/ochem/lessons/naming-parent-chain.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 3 &middot; IUPAC Nomenclature</div>
+    <h1 style="margin-bottom:4px;">The parent chain.</h1>
+    <p class="lede" style="margin-top:0;">Find the longest chain, number it, and half of every name is done.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/naming-parent-chain.html">The parent chain &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/naming-substituents.html">Substituents &amp; locants</a><a href="../lessons/naming-functional-groups.html">Functional group priority</a><a href="../lessons/naming-rings-unsaturation.html">Rings &amp; unsaturation</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* 3-Methylhexane, drawn so the longest chain is NOT the horizontal row.
+
+     The horizontal row A–B–C–D–E is five carbons. The longest continuous
+     path turns the corner at D and runs down the branch: A–B–C–D–F–G, six.
+     So the molecule is a hexane with a methyl at C3, and E — the carbon that
+     looks like part of the main chain because it is in line with it — is the
+     substituent. That is the whole trap, and clicking E is what the step is
+     built to catch. */
+  var C_ = {
+    a:{x:32, y:62},  b:{x:62, y:84},  c:{x:92, y:62},
+    d:{x:122,y:84},  e:{x:152,y:62},
+    f:{x:122,y:120}, g:{x:152,y:142}
+  };
+  var BONDS = [['a','b'],['b','c'],['c','d'],['d','e'],['d','f'],['f','g']];
+  var CHAIN = ['a','b','c','d','f','g'];   // the six that form the parent
+  var BRANCH = 'e';                        // the one-carbon substituent
+
+  function skeleton(){
+    var lines = BONDS.map(function(p){
+      var A = C_[p[0]], B = C_[p[1]];
+      return '<line x1="' + A.x + '" y1="' + A.y + '" x2="' + B.x + '" y2="' + B.y +
+             '" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round"/>';
+    }).join('');
+    var hits = Object.keys(C_).map(function(k){
+      return '<g class="atom" data-key="' + k + '" role="button" tabindex="0" aria-label="carbon ' + k.toUpperCase() + '">' +
+        '<circle cx="' + C_[k].x + '" cy="' + C_[k].y + '" r="15" fill="transparent" stroke="transparent" stroke-width="2"/></g>';
+    }).join('');
+    return '<div class="scene"><svg viewBox="0 0 200 175" role="group" ' +
+      'aria-label="A branched alkane. Five carbons run across the page and two more continue downward from the fourth of them.">' +
+      lines + hits + '</svg></div>';
+  }
+
+  window.OchemLessonEngine.start({
+    topicId: 'naming-parent-chain',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A name is not chosen. It is derived.',
+        bodyHtml: '<p class="step-body">That is the whole point of IUPAC nomenclature: a name is a set of instructions for drawing the molecule. Two chemists who have never met describe the same structure identically, and a name you have never seen before still tells you what to draw. Learning it is not memorization — it is learning to run a procedure in a fixed order.</p>' +
+          '<p class="step-body">Every name is built from three pieces, always in this order: <b>prefix</b> (what is hanging off it) + <b>root</b> (how long the parent chain is) + <b>suffix</b> (what the main functional group is). In <b>2-methylbutan-1-ol</b> the prefix is <i>2-methyl</i>, the root is <i>but</i>, and the suffix is <i>-1-ol</i>.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">This lesson is about the root. The root says how many carbons are in the parent chain, and ten words cover almost everything: <b>meth</b> 1, <b>eth</b> 2, <b>prop</b> 3, <b>but</b> 4, <b>pent</b> 5, <b>hex</b> 6, <b>hept</b> 7, <b>oct</b> 8, <b>non</b> 9, <b>dec</b> 10. Add <b>-ane</b> and you have named the alkanes.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Rule 1: the parent is the longest continuous chain of carbons.',
+        bodyHtml: '<p class="step-body">Find the longest unbroken path of carbons through the molecule. That path is the parent; everything not on it is a substituent named in the prefix. The word doing the work is <b>continuous</b> — you may turn as many corners as you like, and you may not jump a gap or pass through the same carbon twice.</p>' +
+          '<p class="step-body">The trap is that molecules are drawn for the convenience of whoever drew them, and the longest chain is very often <i>not</i> the one lying horizontally across the page. Pick the wrong parent and every number after it is wrong too, so this is the step where a name goes wrong earliest.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">One more thing to watch: <b>count carbons, not line segments.</b> A chain of six carbons is drawn with five bonds, so counting the lines is off by one every time. It is the same miscount as forgetting the ends of a skeletal structure, wearing different clothes.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Click the carbons that make up the parent chain.</h2>' +
+            '<p class="step-body">Trace the longest continuous path through this molecule. You may turn corners. Whatever you leave out is a substituent.</p>' +
+            skeleton() +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Carbons in the chain: 0</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+          var hint = api.card.querySelector('#hint');
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var picked = {};
+          var count = 0;
+          var missed = false;
+
+          function take(g){
+            var key = g.getAttribute('data-key');
+            if(picked[key]) return;
+            if(key === BRANCH){
+              missed = true;
+              g.classList.add('atom--wrong');
+              api.showFeedback(fb, false, 'That one is the substituent. It sits in line with the row across the page, which is exactly why it looks like part of the main chain — but taking it would mean turning off the path and back onto it. Follow the longer route down instead.');
+              return;
+            }
+            picked[key] = true;
+            count++;
+            g.classList.add('chosen');
+            hint.textContent = 'Carbons in the chain: ' + count;
+            if(count === CHAIN.length){
+              api.showFeedback(fb, true, missed
+                ? 'Six carbons — a hexane. The chain turns the corner and runs down the branch, and the carbon left over is a methyl on the third carbon: 3-methylhexane.'
+                : 'Six carbons, first time, including the turn. The row across the page was only five; the longest path goes down the branch instead. The carbon left over is a methyl, making this 3-methylhexane.');
+              api.record(!missed);
+              next.disabled = false;
+            }
+          }
+
+          api.card.querySelectorAll('.atom').forEach(function(g){
+            g.addEventListener('click', function(){ take(g); });
+            g.addEventListener('keydown', function(e){
+              if(e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'){ e.preventDefault(); take(g); }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'Two different paths through a molecule are both seven carbons long. One carries a single ethyl group, the other carries two methyls. Which is the parent?',
+        options: [
+          'The one with the single ethyl group — fewer substituents makes a simpler name',
+          'The one with two methyls — when chains tie, take the one with more substituents',
+          'Either; a tie means the name is ambiguous',
+          'Whichever is drawn more horizontally'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. It reads backwards — you deliberately pick the messier-looking parent — but the reason is that a name should describe as much of the molecule as possible with locants, rather than burying part of it inside a complicated branch name.',
+        wrongFeedback: 'A tie is never ambiguous; there is a rule for it. Think about which choice puts more of the molecule into numbered prefixes rather than hiding it inside one big branch.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'Numbered from one end the substituents fall at 2, 3 and 6; from the other end, at 2, 5 and 6. Which numbering wins?',
+        options: [
+          '{2, 3, 6} — compare term by term, and it wins at the first point of difference',
+          '{2, 5, 6} — it has the higher last number, which breaks the tie',
+          '{2, 3, 6} — because 2+3+6 is smaller than 2+5+6',
+          'Neither; you would renumber from a different carbon'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct, and the reasoning matters as much as the answer. You compare the sets term by term and stop at the first place they differ: both start at 2, and then 3 beats 5. Adding the numbers up happens to give the same answer here and does not in general — a decane substituted at {2, 7, 8} versus {3, 4, 9} is decided the other way by the two methods.',
+        wrongFeedback: 'Compare the two sets one term at a time, left to right, and stop at the first place they differ. Totals are not what the rule uses, even when they agree with it.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Punctuation is part of the name.',
+        bodyHtml: '<p class="step-body">Names are written to be read unambiguously, and the punctuation carries meaning rather than decorating it. Numbers are separated from letters by <b>hyphens</b> and from each other by <b>commas</b>: 2,3-dimethylpentane — never 2 3 dimethylpentane, and never 2-3-dimethyl pentane. There is no space anywhere inside the name of a single compound, except in names like "acetic acid" where the second word names a class.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">Modern IUPAC also puts a locant immediately before the part of the name it refers to, which is why this course writes <b>but-2-ene</b> and <b>butan-1-ol</b> rather than 2-butene and 1-butanol. Both styles are in wide use and older textbooks use the second, so read both and write the first.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'A six-carbon chain carries one methyl group. Counting from the left it sits on C3; from the right, on C4. What is the name?',
+        options: ['4-methylhexane', '3-methylhexane', '3-methylpentane', 'methylhexane'],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Six carbons in the parent gives <i>hex</i>, no functional group gives <i>-ane</i>, and 3 beats 4 so the chain is numbered from the left. The locant is required here because the methyl genuinely could have been somewhere else.',
+        wrongFeedback: 'Two decisions: how many carbons are in the parent chain, and which of the two numbering directions gives the lower locant. One of the options gets the chain length wrong and one drops the locant entirely.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A structure is drawn as a straight row of five carbons with an ethyl group hanging off the middle one. A student names it 3-ethylpentane. What went wrong?',
+        options: [
+          'Nothing — five carbons in the row, ethyl on the third, so 3-ethylpentane is right',
+          'The longest chain runs through the ethyl group: it is a six-carbon chain, making this 3-methylhexane',
+          'The ethyl should be numbered from the other end, giving 2-ethylpentane',
+          'Ethyl groups are never named as substituents'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Tracing from one end of the row, through the middle carbon and out along the ethyl branch gives a continuous path of six carbons — longer than the five-carbon row that was drawn horizontally. So the parent is hexane, and what is left over is a one-carbon methyl: 3-methylhexane. The drawing was arranged to make the wrong chain look like the obvious one, which is what real structures do all the time.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

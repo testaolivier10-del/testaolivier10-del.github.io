@@ -40,6 +40,36 @@
        is the bromine-versus-chlorine selectivity that follows from it. 6 is
        NBS, which is a competition/concentration argument resting on the chain.
        7 is anti-Markovnikov HBr — the chain logic applied somewhere new. */
+    /* The four nomenclature lessons. Graded steps are 2, 3, 4, 6, 7 in each
+       (0, 1 and 5 are explain steps and record nothing). */
+    'naming-parent-chain': { n:8, steps:{
+      2:['parent-chain'],
+      3:['parent-chain'],
+      4:['locant-rules'],
+      6:['parent-chain','locant-rules'],
+      7:['parent-chain'] } },
+
+    'naming-substituents': { n:8, steps:{
+      2:['alphabetization'],
+      3:['locant-rules','alphabetization'],
+      4:['alphabetization'],
+      6:['locant-rules'],
+      7:['locant-rules','alphabetization'] } },
+
+    'naming-functional-groups': { n:8, steps:{
+      2:['group-priority'],
+      3:['group-priority','locant-rules'],
+      4:['group-priority','parent-chain'],
+      6:['group-priority','alphabetization'],
+      7:['group-priority'] } },
+
+    'naming-rings-unsaturation': { n:8, steps:{
+      2:['locant-rules','parent-chain'],
+      3:['locant-rules'],
+      4:['group-priority','locant-rules'],
+      6:['locant-rules'],
+      7:['parent-chain','group-priority'] } },
+
     'radical-halogenation': { n:8, steps:{
       2:['radical-chain'],
       3:['radical-stability'],

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Substituents &amp; locants — IUPAC Nomenclature | Organic Chemistry</title>
+<meta name="description" content="Alkyl and halogen prefixes, multiplying prefixes, and the alphabetization rules - including which prefixes are ignored and which are not.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/naming-substituents.html">
+<meta property="og:title" content="Substituents &amp; locants — IUPAC Nomenclature | Organic Chemistry">
+<meta property="og:description" content="Alkyl and halogen prefixes, multiplying prefixes, and the alphabetization rules - including which prefixes are ignored and which are not.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/naming-substituents.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/naming-substituents.html#lesson",
+      "name": "Substituents & locants",
+      "url": "https://levlprep.com/ochem/lessons/naming-substituents.html",
+      "description": "Alkyl and halogen prefixes, multiplying prefixes, and the alphabetization rules - including which prefixes are ignored and which are not.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Substituents & locants"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "IUPAC Nomenclature",
+          "item": "https://levlprep.com/ochem/learn.html#m-nomenclature"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Substituents & locants",
+          "item": "https://levlprep.com/ochem/lessons/naming-substituents.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 3 &middot; IUPAC Nomenclature</div>
+    <h1 style="margin-bottom:4px;">Substituents &amp; locants.</h1>
+    <p class="lede" style="margin-top:0;">Naming the branches, numbering them, and the alphabet rule with a sharp edge.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/naming-substituents.html">Substituents &amp; locants &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/naming-functional-groups.html">Functional group priority</a><a href="../lessons/naming-rings-unsaturation.html">Rings &amp; unsaturation</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* The alphabetization drill. Each row is a pair of substituent names and
+     the student picks which one is cited first. The rows are chosen so that
+     the three separate rules each decide exactly one of them, and the naive
+     answer ("compare the strings as written") is wrong for two of the three. */
+  var PAIRS = [
+    { id:'p1', a:'ethyl', b:'dimethyl', first:'a',
+      why:'Ignore the multiplying prefix. "Dimethyl" files under <b>m</b>, not d — so you are comparing ethyl with methyl, and e comes before m.' },
+    { id:'p2', a:'<i>tert</i>-butyl', b:'ethyl', first:'a',
+      why:'Ignore the italicized structural prefix. <i>tert</i>-Butyl files under <b>b</b>, so it beats ethyl.' },
+    { id:'p3', a:'isopropyl', b:'ethyl', first:'b',
+      why:'Do NOT ignore iso — it is joined to the word and counts as part of the name, so isopropyl files under <b>i</b>. Ethyl, under e, comes first.' }
+  ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'naming-substituents',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A branch is an alkane minus one hydrogen.',
+        bodyHtml: '<p class="step-body">Take the root for the branch\'s length and add <b>-yl</b>: one carbon is <b>methyl</b>, two is <b>ethyl</b>, three <b>propyl</b>, four <b>butyl</b>. The suffix -yl means "attached to something else rather than standing alone", so methane is a molecule and methyl is a piece of one.</p>' +
+          '<p class="step-body">From three carbons up, a branch can attach through different carbons, and those are genuinely different groups: <b>propyl</b> attaches through an end carbon, <b>isopropyl</b> (systematically <i>propan-2-yl</i>) through the middle one. Among the four-carbon groups, <b>butyl</b> attaches at an end, <b>sec-butyl</b> at the second carbon, <b>isobutyl</b> is a three-carbon chain with a methyl attached at its end, and <b>tert-butyl</b> attaches through a carbon bearing three methyls.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">The systematic names are what current IUPAC prefers; the common ones are what almost every lecturer, paper and exam actually says. Nobody says 2-methylpropan-2-yl out loud. Learn both directions and answer in whichever the question uses.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Every substituent gets its own number, even when two share a carbon.',
+        bodyHtml: '<p class="step-body">Halogens are prefixes, always: <b>fluoro</b>, <b>chloro</b>, <b>bromo</b>, <b>iodo</b>. They never become a suffix and never outrank anything, which makes them the easiest substituent in the language. Two more behave identically and are worth meeting now: <b>nitro</b> (–NO₂) and <b>alkoxy</b> (–OR, so –OCH₃ is <i>methoxy</i>). An ether has no suffix of its own — it is always an alkoxy substituent on something else.</p>' +
+          '<p class="step-body">Identical substituents are collected with <b>di-</b>, <b>tri-</b>, <b>tetra-</b>, <b>penta-</b>. Each one still keeps its own locant, even when two sit on the same carbon: a pentane with two methyls both on C2 is <b>2,2-dimethylpentane</b>. Writing 2-dimethylpentane is not a shorthand — it is a missing number, and the reader cannot tell where the second methyl went.</p>' +
+          '<div class="explain-box">Count the locants against the multiplying prefix every time you write a name. <i>di</i> needs two numbers, <i>tri</i> needs three. It is the fastest self-check in nomenclature and it catches most typos.</div>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Which substituent is cited first in the name?</h2>' +
+            '<p class="step-body">Substituents are written in alphabetical order whatever their numbers. The only question is what you alphabetize <i>by</i> — and the answer is not always the string as written.</p>' +
+            '<div class="radical-sort">' +
+            PAIRS.map(function(p){
+              return '<div class="radical-row" data-pair="' + p.id + '">' +
+                '<div class="radical-choices" role="group" aria-label="Which is cited first">' +
+                  '<button type="button" class="choice-btn sm" data-pair="' + p.id + '" data-pick="a">' + p.a + '</button>' +
+                  '<button type="button" class="choice-btn sm" data-pair="' + p.id + '" data-pick="b">' + p.b + '</button>' +
+                '</div>' +
+                '<div class="radical-why" data-why="' + p.id + '"></div>' +
+              '</div>';
+            }).join('') +
+            '</div>' +
+            api.feedbackHtml('fb') +
+            api.nextButtonHtml('Continue', false);
+
+          var fb = api.card.querySelector('#fb');
+          var next = api.card.querySelector('#nextBtn');
+          var done = {};
+          var missed = false;
+
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-pair');
+              if(done[id]) return;
+              var cfg = PAIRS.filter(function(p){ return p.id === id; })[0];
+              if(btn.getAttribute('data-pick') !== cfg.first){
+                missed = true;
+                btn.classList.add('wrong');
+                btn.disabled = true;
+                api.showFeedback(fb, false, 'Not that one. Work out what each name files under before comparing them — a prefix that is ignored changes the letter you are sorting on.');
+                return;
+              }
+              done[id] = true;
+              btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-pair="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === PAIRS.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All three. The pattern to take away: di/tri/tetra and the italic sec-/tert- are ignored; iso, neo and cyclo are not. The typography is the tell — a hyphenated italic prefix is skipped, a prefix joined straight onto the word is counted.'
+                  : 'All three, first time. The typography is the tell: a hyphenated italic prefix (sec-, tert-) is skipped, a multiplying prefix (di-, tri-) is skipped, and a prefix joined straight onto the word (iso, neo, cyclo) is counted.');
+                api.record(!missed);
+                next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'In a heptane, numbering from the left gives substituents at {2, 4, 5} and from the right at {3, 4, 6}. The alphabetically first substituent happens to be the one at C5. Which direction do you number from?',
+        options: [
+          'From the right, so the alphabetically first substituent gets the lower number',
+          'From the left — {2, 4, 5} wins at the first point of difference, and the alphabet plays no part here',
+          'Whichever gives the alphabetically first substituent the number 1',
+          'From the left, because the alphabetically first substituent is nearer that end'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. The numbering is settled by the structure alone: {2, 4, 5} against {3, 4, 6} is decided at the first term, 2 against 3. The alphabet only breaks a tie when both directions give the identical locant set — which is not the case here.',
+        wrongFeedback: 'The alphabet has a much smaller job than it looks. Compare the two locant sets first, term by term. Only if they come out identical does alphabetical order decide anything.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'A heptane carries chloro at C5, ethyl at C4 and methyl at C2 — that numbering already established as correct. How is the name written?',
+        options: [
+          '2-methyl-4-ethyl-5-chloroheptane',
+          '5-chloro-4-ethyl-2-methylheptane',
+          '2-methyl-5-chloro-4-ethylheptane',
+          '4-ethyl-5-chloro-2-methylheptane'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Alphabetical order sets the order of the words — chloro, ethyl, methyl — and the numbers come along attached to whichever substituent they belong to. The locants ending up out of numerical order is normal and correct.',
+        wrongFeedback: 'The numbers are already fixed. All that is left is to write the three substituents in alphabetical order: c, e, m. Do not reorder them to make the numbers ascend.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The rules apply in a fixed order, and swapping two of them looks reasonable.',
+        bodyHtml: '<ul class="step-body">' +
+          '<li><b>First, number for lowest locants.</b> The numbering is decided by the structure, not by the alphabet.</li>' +
+          '<li><b>Then, if and only if both directions give the identical locant set,</b> break the tie by giving the lower number to the substituent that comes first alphabetically.</li>' +
+          '<li><b>Last, write the substituents in alphabetical order,</b> whatever their numbers turned out to be.</li>' +
+          '</ul>' +
+          '<p class="step-body">The middle rule is narrow, and it is often misremembered as "the alphabetically first substituent always gets the lowest number". That is false, and it is false in a way that produces a plausible-looking wrong name rather than an obvious error.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">One more piece of machinery: a branch can itself be branched. When it is, it gets a name in <b>parentheses</b>, numbered from its own point of attachment — the attaching carbon is C1 of the substituent, always. A three-carbon branch bearing a methyl on its second carbon is a <i>(2-methylpropyl)</i> group, and the parentheses are what tell the reader the 2 counts along the branch rather than along the parent chain. For alphabetizing, it files under the first letter of its complete name: <b>m</b>.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'Why is 2-dimethylpentane not a valid name?',
+        options: [
+          'Because "dimethyl" should be written "di-methyl"',
+          'Because di- needs two locants, and only one is given — the second methyl has no stated position',
+          'Because two methyls on a pentane is impossible',
+          'Because the locant should come after the substituent name'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. A multiplying prefix and its locants have to agree in number: <i>di</i> demands two, <i>tri</i> three. If both methyls are on C2 the name is 2,2-dimethylpentane, with the number written twice — that repetition is not redundant, it is the only thing saying where the second one is.',
+        wrongFeedback: 'Count the locants and count what the prefix promises. They have to match, and here they do not.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A molecule has an ethyl group and two methyl groups. Both numbering directions give the locant set {3, 3, 5}. Which group gets the 5?',
+        options: [
+          'The ethyl — with a genuine tie, the alphabetically first substituent takes the lowest available locant, so ethyl takes a 3',
+          'A methyl — ethyl is a larger group so it takes the higher number',
+          'Either; a true tie means both names are acceptable',
+          'The ethyl — larger substituents always take higher locants'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct, and this is the one situation where the alphabet does touch the numbering. The locant sets are identical, so the structure cannot decide, and the tie-break hands the lower number to the substituent cited first alphabetically. Ethyl beats methyl, so ethyl gets a 3 and a methyl is left with the 5: 3-ethyl-3,5-dimethyl… Note that this rule only ever fires on an exact tie — applying it any earlier is the most common way this material goes wrong.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

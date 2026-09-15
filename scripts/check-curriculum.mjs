@@ -14,7 +14,11 @@
       is what puts the "coming soon" label on every surface that lists it.
       A bare `href: null` is the failure.
 
-   2. A MASTERY FIGURE THAT OVERSTATES THE COURSE. A topic with no interactive
+   2. A LESSON THAT NAMES THE WRONG CHAPTER. Each lesson's eyebrow carries
+      "Module N · Chapter title", typed in by hand, so inserting a module
+      anywhere but the end silently invalidates every number below it.
+
+   3. A MASTERY FIGURE THAT OVERSTATES THE COURSE. A topic with no interactive
       lesson can never be scored, so if such topics are left out of the
       mastery denominator the course can report 100% mastered while a section
       of it has never been measured at all. This check answers that by
@@ -127,7 +131,36 @@ for (const { mod, t } of topics) {
   }
 }
 
-/* ---- 2. mastery cannot reach 100% while a topic is untracked ----------- */
+/* ---- 2. a lesson's eyebrow names the module it is actually in ---------- */
+
+/* Each lesson opens with "Module N · Chapter title", typed into the page by
+   hand. Insert a module anywhere but the end and every number after it is
+   wrong — 47 of them were, the moment Nomenclature went in at position 3 —
+   and nothing about that breaks: the page renders, the links work, and a
+   student reads a chapter number that disagrees with the contents rail.
+
+   Not every lesson carries one (the older mechanism pages open with the
+   reaction name instead), so a missing eyebrow is not a failure. One that
+   disagrees with the curriculum is. */
+for (const { mod, t } of topics) {
+  if (!C.hasLesson(t)) continue;
+  const file = join(ROOT, 'ochem', t.href);
+  if (!existsSync(file)) continue;
+  const m = readFileSync(file, 'utf8').match(/class="eyebrow">Module (\d+) &middot; ([^<]*)</);
+  if (!m) continue;
+  const index = C.MODULES.indexOf(mod) + 1;
+  // The title is compared with entities decoded, since the page writes
+  // "Alkanes &amp; Conformations" for the curriculum's "Alkanes & Conformations".
+  const shown = m[2].replace(/&amp;/g, '&').trim();
+  if (Number(m[1]) !== index) {
+    fail(`${mod.id}/${t.id}: its eyebrow says "Module ${m[1]}" but the chapter is number ${index}.`);
+  }
+  if (shown !== mod.title) {
+    fail(`${mod.id}/${t.id}: its eyebrow says "${shown}" but the chapter is "${mod.title}".`);
+  }
+}
+
+/* ---- 3. mastery cannot reach 100% while a topic is untracked ----------- */
 
 const coverage = C.masteryCoverage();
 if (coverage.total !== topics.length) {

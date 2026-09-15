@@ -348,10 +348,17 @@ const BANKS = [
         : null,
     isMulti: (q) => q.type === 'mcq',
     isTrueFalse: (q) => q.type === 'tf',
-    positionCeiling: 0.4,
-    // Measured at 68% when the check was first pointed here. Target is ~32%,
-    // the number NREMT reached after its own editorial pass.
-    lengthCeiling: 0.68,
+    // Was 0.4, measured 37.7% at index 0. The six topics added with the
+    // nomenclature chapter were authored with the key position cycled, which
+    // pulled the whole bank to 26.4% — near the 25% chance for a four-option
+    // item. Ratcheted down to match, with a little headroom.
+    positionCeiling: 0.3,
+    // Measured at 68% when the check was first pointed here; the target is
+    // ~32%, the number NREMT reached after its own editorial pass. The same
+    // six topics were authored with the reasoning kept in `why` rather than in
+    // the keyed option, which took the bank to 60.2%. Ratcheted to match.
+    // Keep lowering it as the older topics get the same pass.
+    lengthCeiling: 0.62,
     // 74% of true/false items key to "True". Chance is 50% and the shuffle is
     // pinned, so this is the whole tell — it is not diluted by anything.
     trueFalseCeiling: 0.75,

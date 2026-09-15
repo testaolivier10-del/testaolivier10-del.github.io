@@ -102,9 +102,15 @@ const BUDGETS = [
   // who opens one downloads all twenty-five; if this number needs to move
   // again, move the data out of the page instead.
   ['nremt/scenario-sim.html', 50],
-  ['ochem/learn.html', 3],
+  // learn.html is a shell whose only real weight is the static table of
+  // contents generated into it for readers without JavaScript — one line per
+  // section. It crossed 3.0 KB when the IUPAC Nomenclature chapter added four
+  // sections, so the budget follows the book: this is the contents list doing
+  // its job, not the page getting heavier per section. If it needs moving
+  // again for any reason OTHER than new sections, find out why first.
+  ['ochem/learn.html', 4],
 
-  // One textbook section, standing in for the other 61. They became real
+  // One textbook section, standing in for the other 67. They became real
   // pages when the ochem prose was made readable without JavaScript
   // (scripts/build-notes-pages.mjs); hybridization.html is the largest of
   // them at 17.0 KB, so a budget here defends the worst case rather than a

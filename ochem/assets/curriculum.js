@@ -53,6 +53,17 @@
       { id: 'leaving-groups', title: 'Leaving groups', href: 'lessons/leaving-groups.html', dependsOn: ['electrophiles'] },
       { id: 'electron-rich-poor', title: 'Electron-rich vs. electron-poor atoms', href: 'lessons/electron-rich-poor.html', dependsOn: ['nucleophiles', 'electrophiles'] }
     ]},
+    /* Nomenclature sits here, third, for one reason: you have to be able to
+       READ a structure before you can name one (module 2), and everything
+       from Acids & Bases onward refers to compounds by name in its prose and
+       its questions. Teaching it later would mean the course spends eleven
+       chapters using a vocabulary it has not introduced. */
+    { id: 'nomenclature', title: 'IUPAC Nomenclature', topics: [
+      { id: 'naming-parent-chain', title: 'The parent chain', href: 'lessons/naming-parent-chain.html', dependsOn: ['skeletal-structures'] },
+      { id: 'naming-substituents', title: 'Substituents & locants', href: 'lessons/naming-substituents.html', dependsOn: ['naming-parent-chain'] },
+      { id: 'naming-functional-groups', title: 'Functional group priority', href: 'lessons/naming-functional-groups.html', dependsOn: ['naming-substituents'] },
+      { id: 'naming-rings-unsaturation', title: 'Rings & unsaturation', href: 'lessons/naming-rings-unsaturation.html', dependsOn: ['naming-functional-groups'] }
+    ]},
     { id: 'acids-bases', title: 'Acids & Bases', topics: [
       { id: 'bronsted', title: 'Brønsted acids/bases', href: 'lessons/bronsted.html' },
       { id: 'lewis-acids', title: 'Lewis acids/bases', href: 'lessons/lewis-acids.html', dependsOn: ['nucleophiles', 'electrophiles'] },

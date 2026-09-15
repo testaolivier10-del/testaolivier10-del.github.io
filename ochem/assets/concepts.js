@@ -53,6 +53,31 @@
       topics:['radical-halogenation','markovnikov','mass-spec'], dependsOn:['radical-chain'],
       hint:'Radicals rank like carbocations: 3° > 2° > 1° > methyl. Then ask how selective the attacking radical is.',
       teach:'Radicals follow 3° > 2° > 1° > methyl, for the same hyperconjugation reason carbocations do. How much that matters depends on the halogen: bromine prefers 3° over 1° by roughly 1600 to 1, chlorine by about 5 to 1. The sluggish reagent is the selective one — its transition state comes late and looks like the radical, so the radical\'s stability shows up in the rate. Rates are per hydrogen, so multiply by how many there are.' },
+    /* ---- Nomenclature ------------------------------------------------
+       Four concepts, split the way students actually fail. Picking the parent
+       chain is a structural skill; the locant rules are a procedure; the
+       priority order is recall; and the alphabet rules are a small set of
+       exceptions people misapply in a specific direction. Merging them would
+       hide which of the four a wrong name came from, which is the one thing
+       the mastery model is for. */
+    { id:'parent-chain', title:'Choosing the parent chain', family:'Nomenclature',
+      topics:['naming-parent-chain','naming-rings-unsaturation','naming-functional-groups'],
+      dependsOn:['skeletal-notation'],
+      hint:'Longest CONTINUOUS path, turning corners if it has to — and it must contain the principal characteristic group.',
+      teach:'The parent is the longest continuous chain of carbons, which is very often not the row drawn horizontally across the page. Two rules bend it: when two chains tie, take the one with more substituents; and once a principal characteristic group is present, the parent must contain it even if that means a shorter chain. Count carbons, not line segments.' },
+    { id:'locant-rules', title:'Numbering and locants', family:'Nomenclature',
+      topics:['naming-parent-chain','naming-substituents','naming-functional-groups','naming-rings-unsaturation'],
+      dependsOn:['parent-chain'],
+      hint:'Compare the two locant sets term by term and stop at the first place they differ.',
+      teach:'Number from the end giving the lowest set of locants, decided at the FIRST POINT OF DIFFERENCE — not by adding the numbers up, which agrees often enough to feel right and is not the rule. Priority order for who gets the low number: principal characteristic group, then multiple bonds, then prefixes, then the alphabet as a last tie-break. Every substituent keeps its own locant, so di- needs two numbers.' },
+    { id:'group-priority', title:'Functional group priority', family:'Nomenclature',
+      topics:['naming-functional-groups','naming-rings-unsaturation','carboxylic-acids','esters-amides','aldehydes-ketones'],
+      hint:'One group takes the suffix; every other becomes a prefix. Ethers and halides can never be the suffix.',
+      teach:'acid > ester > amide > nitrile > aldehyde > ketone > alcohol > amine > alkene/alkyne. Ethers, halides and nitro groups are never suffixes. The winner takes the suffix AND the lowest locant, and the parent chain must contain it. A demoted group changes name: an -ol becomes hydroxy-, a ketone becomes oxo-.' },
+    { id:'alphabetization', title:'Citation order in a name', family:'Nomenclature',
+      topics:['naming-substituents','naming-rings-unsaturation'], dependsOn:['locant-rules'],
+      hint:'The typography tells you: a hyphenated italic prefix is skipped, one joined to the word is counted.',
+      teach:'Substituents are cited alphabetically whatever their numbers. Ignore the multiplying prefixes di-, tri-, tetra- and the italic sec-, tert-; do NOT ignore iso, neo or cyclo. Alphabetical order sets the order of WORDS in the name — it only touches the numbering when both directions give an identical locant set.' },
     { id:'skeletal-notation', title:'Reading skeletal structures', family:'Structure & bonding',
       topics:['skeletal-structures','lewis-structures','alkene-structure','cyclohexanes','aromaticity'],
       hint:'Every vertex AND every end of a line is a carbon — the ends are the ones people miss.',

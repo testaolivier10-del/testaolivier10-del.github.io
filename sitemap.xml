@@ -361,6 +361,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/naming-functional-groups.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/naming-parent-chain.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/naming-rings-unsaturation.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/naming-substituents.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/newman.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
@@ -692,6 +712,26 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/molecular-geometry.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/naming-functional-groups.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/naming-parent-chain.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/naming-rings-unsaturation.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/naming-substituents.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
   </url>

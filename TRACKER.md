@@ -469,11 +469,78 @@ directions against the real curriculum — under 100 while any topic is
 untracked, exactly 100 once none are — so it cannot be satisfied by making
 mastery unreachable.
 
-### Phase 9.3 — The missing units — **not started**
+### Phase 9.3 — The missing units
 
 Nomenclature · conjugation and Diels–Alder · oxidation and reduction ·
 synthesis and retrosynthesis · biomolecules · organometallics ·
 carbonyl/enolate breadth · aromatic follow-through · polymers.
+
+#### Unit 1 — IUPAC Nomenclature — **complete**
+
+The largest gap in the course, and the one that blocked reading everything
+else: the book used compound names in its prose and its questions for eleven
+chapters without ever introducing the system. One passing mention of "IUPAC"
+existed site-wide, in the Fischer projections section.
+
+Four sections, four lessons, 120 questions, inserted as **Chapter 3** —
+after Organic Structure (you have to be able to read a structure before you
+can name one) and before Acids & Bases (which is where the prose starts
+naming compounds).
+
+| Section | Covers |
+|---|---|
+| The parent chain | Roots, longest continuous chain, the tie-break, first point of difference |
+| Substituents & locants | Alkyl and halogen prefixes, multiplying prefixes, alphabetization |
+| Functional group priority | Principal characteristic group, suffix/prefix table, retained names |
+| Rings & unsaturation | cyclo-, ring vs chain parent, alkene/alkyne locants, ortho/meta/para |
+
+**Inserting a chapter renumbered 47 lessons, and nothing would have caught
+it.** Each lesson's eyebrow carries "Module N · Chapter title" typed in by
+hand, so putting Nomenclature at position 3 made every number below it wrong
+— on a page that still renders, still links, and simply tells the student the
+wrong chapter number. They were rewritten from the curriculum, and
+`check-curriculum.mjs` now has a third check that compares every eyebrow to
+the chapter it is actually in. `mechanisms/sn2.html` legitimately has no
+module number in its eyebrow and is skipped rather than "fixed".
+
+**Two chemistry claims were wrong in the first draft and were caught before
+they shipped.** The notes asserted that the top four groups in the priority
+order (acid, ester, amide, nitrile) are ranked by how oxidized the carbon is.
+They are not — all four of those carbons sit at +3, so the sequence within
+that block is a convention. It is now stated as one, with the genuine
+oxidation difference (aldehyde +1, ketone 0) named where it does apply. The
+second was an alkene/alcohol example whose "wrong" alternative, hex-1-en-4-ol,
+was a different molecule rather than a different numbering of the same one;
+it is now hex-5-en-1-ol against hex-1-en-6-ol, which is the real choice.
+
+**The question bank got measurably harder to game, and the ceilings moved.**
+The first draft of the 180 new questions had the key as the longest option
+83% of the time, because the keys carried the reasoning and the distractors
+were thin. The reasoning belongs in the `why` field, which is where it is now;
+options are short and parallel claims. Combined with cycling the keyed
+position, the whole ochem bank moved from **68% to 60.2%** on the
+longest-is-key tell and from **37.7% to 26.4%** on keyed position — the latter
+is within 1.4 points of the 25% chance for a four-option item. Both ceilings in
+`check-site.mjs` were ratcheted down to match (0.68→0.62 and 0.40→0.30), per
+the standing rule that these only ever tighten.
+
+**Two topics from Phase 9.2 had no practice questions at all.** Unlocking
+skeletal structures and radical halogenation gave them lessons and concepts
+but left them absent from the per-topic bank, so a student who practiced
+either got nothing. Nothing checks bank coverage — it is worth adding. Both
+now have 30 questions, bringing the bank to 2,040.
+
+**`ochem/learn.html` went over its page-weight budget** (3 KB, now 4). The
+page is a shell whose only real weight is the static contents list generated
+for readers without JavaScript, so four new sections is four new lines; the
+budget follows the book. If it needs moving again for any reason other than
+new sections, that is worth investigating first.
+
+Advertised counts moved with the work: 64→68 topics, 60→64 lessons, 64→68
+sections, 14→15 chapters, 1,860→2,040 questions, across the hub, the ochem
+home, search, learn, the assistant greeting and the README.
+
+#### Units 2–9 — **not started**
 
 ### Phase 9.4 — Depth in the existing units — **not started**
 
@@ -1258,6 +1325,10 @@ course map can mislead a student without breaking a page:
   topic is untracked — and fails the other way too, if every topic is tracked
   and a perfect run still cannot reach 100, so the check can never be satisfied
   by making mastery unreachable.
+- **No lesson names the wrong chapter.** Every "Module N · Chapter title"
+  eyebrow is compared to the chapter the lesson is actually in. Inserting a
+  chapter renumbers everything below it, which breaks nothing and misinforms
+  every reader of those pages.
 
 What a topic *is* comes from where its `href` points, not from the flag alone,
 because the flag was the thing that could be silently deleted.
