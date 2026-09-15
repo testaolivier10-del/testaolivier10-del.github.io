@@ -68,7 +68,7 @@
     <div class="eyebrow">Privacy</div>
     <h1>What leaves your browser.</h1>
     <p class="lede">Short version: almost nothing. There are no ads and no cookies on this site, and nothing here follows you anywhere else on the web. Everything you study is stored on your own device unless you choose to sign in. There is cookieless analytics, and <a href="#site-analytics">Site analytics</a> below lists every field it records. When a page breaks, a short report of the error is sent so it can be fixed; <a href="#errors">When a page breaks</a> lists exactly what is in one. <a href="#reminders">Study reminders</a> are off unless you turn them on.</p>
-    <p class="updated">Last updated 14 September 2026</p>
+    <p class="updated">Last updated 15 September 2026</p>
   </div>
 
   <div class="xsection">
@@ -80,7 +80,7 @@
         <p>Answers, scores, streaks, XP, mastery, flagged questions, your study plan and your light/dark preference are all written to your browser's <strong>localStorage</strong>. That is a store only this site can read, it never travels with a request, and clearing your browser data erases it. No account is needed to use any feature on this site.</p>
 
         <h2 id="backup">Keeping a copy of it</h2>
-        <p>That last part cuts both ways. Nothing leaves your device, and nothing survives clearing your browser data, switching browsers, or moving to a new laptop. Signing in syncs your XP and streak; it does not carry every per-question record.</p>
+        <p>That last part cuts both ways. Nothing leaves your device, and nothing survives clearing your browser data, switching browsers, or moving to a new laptop. Signing in is the fix: it carries your XP, streak and activity, and the records that took real work to build &mdash; which questions you have seen, which you missed on a timed exam, your mastery and your per-domain statistics, and which textbook sections you have read. Three things stay deliberately device-local: an exam you are part-way through, so two devices cannot race on the same attempt; the order this browser shuffles answer choices into; and your light/dark preference.</p>
         <p>So you can take the whole thing with you as a file — everything above, as readable JSON — and put it back on any browser. Your sign-in token is deliberately left out of it: that is a live credential, and a backup should not be a way to hand over an account.</p>
         <div class="controls">
           <div class="row">
@@ -166,7 +166,6 @@
 
         <h2>Third parties your browser does contact</h2>
         <ul>
-          <li><strong>Google Fonts</strong> serves the two typefaces. Google receives the request, including your IP address, as it would for any hosted file.</li>
           <li><strong>jsDelivr</strong> serves the Supabase client library, and only on pages where signing in is possible.</li>
           <li><strong>Google, Apple or GitHub</strong> — only if you choose one of those buttons to sign in, and only at the moment you press it. The buttons appear only where that provider is switched on for this site; if none is, your browser never contacts any of them.</li>
           <li><strong>Wikimedia Commons</strong> serves three lung-sound recordings, and only if you press play on one in the sound trainer.</li>
@@ -174,6 +173,7 @@
           <li><strong>Umami</strong> receives the analytics described above, on every page.</li>
           <li><strong>GitHub Pages</strong> hosts the site and, like any web host, sees the requests for it.</li>
         </ul>
+        <p>The two typefaces used to come from Google Fonts, which meant Google saw your IP address on every page. They are now served from this site, so no font service is contacted at all. This paragraph said otherwise for longer than it should have.</p>
 
         <h2>Your rights</h2>
         <p>Because there is no identifier attached to the page counter, there is nothing there to look up, correct or delete. The same is true of the error reports and question reports above: neither carries anything that identifies who sent it.</p>
