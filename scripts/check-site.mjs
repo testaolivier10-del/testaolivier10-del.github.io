@@ -648,6 +648,49 @@ if (existsSync(scenarioPath)) {
       }
     }
   }
+
+  // Reachable from the start is only half of it: a node also has to be able to
+  // reach an ending. A branch that loops back on itself forever, or a chain
+  // that runs into a node someone forgot to give an ending, leaves the reader
+  // stuck in a call that never resolves — which looks like a broken page
+  // rather than a wrong answer. Walk the graph backwards from every ending and
+  // anything not visited cannot finish.
+  //
+  // This parses the literal rather than eval'ing it, for the same reason the
+  // checks above do: the file is a page, not a module.
+  const endingIds = new Set([...src.matchAll(/^ {6}(s\d+_\w+):\s*\{\s*ending:/gm)].map((m) => m[1]));
+  if (endingIds.size) {
+    // edges: node -> [targets]. Slice between node headers rather than trying
+    // to match a node's closing brace: an ending node is written on one line
+    // and has no brace of its own at that indent, so a brace-matching pattern
+    // runs past it and swallows the headers that follow.
+    const edges = new Map();
+    const headers = [...src.matchAll(/^ {6}(s\d+_\w+):\s*\{/gm)];
+    headers.forEach((h, n) => {
+      const body = src.slice(h.index, n + 1 < headers.length ? headers[n + 1].index : h.index + 4000);
+      edges.set(h[1], [...body.matchAll(/next:\s*"(\w+)"/g)].map((m) => m[1]));
+    });
+    const reverse = new Map();
+    for (const [id, outs] of edges) {
+      for (const t of outs) {
+        if (!reverse.has(t)) reverse.set(t, []);
+        reverse.get(t).push(id);
+      }
+    }
+    const canFinish = new Set(endingIds);
+    const queue = [...endingIds];
+    while (queue.length) {
+      for (const from of reverse.get(queue.pop()) ?? []) {
+        if (!canFinish.has(from)) { canFinish.add(from); queue.push(from); }
+      }
+    }
+    for (const id of edges.keys()) {
+      if (!canFinish.has(id)) {
+        fail(`nremt/scenario-sim.html: node "${id}" cannot reach any ending — every path out of it loops or dead-ends, ` +
+             `so a reader who gets there can never finish the scenario.`);
+      }
+    }
+  }
 }
 
 // ---- 14. No question may carry the previous question's answer options ----
@@ -824,6 +867,36 @@ for (const fig of CANONICAL_FIGURES) {
     if (value !== fig.expect) {
       fail(`${where.join(', ')}: states the ${fig.what} as ${value}, but this site teaches ${fig.expect}. ` +
            `Make them agree, or change the expected value in check-site.mjs if the site's teaching has changed.`);
+    }
+  }
+}
+
+// ---- 18. The advertised scenario count matches scenario-sim.html ----
+// Same failure mode as the question counts in section 6, one page over: the
+// NREMT hub said "eight branching scenarios" while the file held eighteen.
+// It is written as a word rather than a numeral, so section 6's pattern — and
+// any search for a digit — walks straight past it.
+const NUMBER_WORDS = {
+  four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11,
+  twelve: 12, thirteen: 13, fourteen: 14, fifteen: 15, sixteen: 16,
+  seventeen: 17, eighteen: 18, nineteen: 19, twenty: 20, 'twenty-five': 25,
+  'twenty-one': 21, 'twenty-two': 22, 'twenty-three': 23, 'twenty-four': 24,
+};
+if (existsSync(scenarioPath)) {
+  const scenarioCount = [...readFileSync(scenarioPath, 'utf8').matchAll(/^ {4}id:\s*"s\d+"/gm)].length;
+  if (scenarioCount) {
+    const re = new RegExp(`\\b(\\d{1,3}|${Object.keys(NUMBER_WORDS).join('|')})\\s+(?:branching\\s+)?(?:clinical\\s+)?scenarios\\b`, 'gi');
+    for (const file of [...htmlFiles, join(ROOT, 'README.md')]) {
+      if (!existsSync(file)) continue;
+      const rel = relative(ROOT, file);
+      if (rel === relative(ROOT, scenarioPath)) continue;
+      for (const m of readFileSync(file, 'utf8').matchAll(re)) {
+        const word = m[1].toLowerCase();
+        const claimed = NUMBER_WORDS[word] ?? Number(word);
+        if (Number.isFinite(claimed) && claimed !== scenarioCount) {
+          fail(`${rel}: advertises ${m[1]} scenarios, but scenario-sim.html has ${scenarioCount}.`);
+        }
+      }
     }
   }
 }

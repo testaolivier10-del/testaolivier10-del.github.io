@@ -459,7 +459,10 @@ test('every scenario path leads somewhere, and every fork can be rewound to', ()
   const s = browser().ctx;
   vm.runInContext(src + '\nthis.S=SCENARIOS;', s);
 
-  assert.equal(s.S.length, 8);
+  // A floor, not an exact count: scenarios get added, and the advertised
+  // number is tied to the real one by check 18 in check-site.mjs. What this
+  // guards is a scenario silently disappearing.
+  assert.ok(s.S.length >= 18, `expected at least 18 scenarios, found ${s.S.length}`);
   for(const sc of s.S){
     assert.ok(sc.nodes[sc.startNode], `${sc.id}: startNode "${sc.startNode}" does not exist`);
     for(const [id, n] of Object.entries(sc.nodes)){

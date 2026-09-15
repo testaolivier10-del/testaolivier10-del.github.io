@@ -65,6 +65,13 @@ clinician, and that is the gap no amount of tooling closes.
 | **Correction:** adult suction attempt was stated as 10 s in the new Ch 9 draft and 15 s on `sound-trainer.html` and in four keyed questions. Reconciled to **15 s adult / ~10 s or less child and infant**, matching the bank | AAOS figures; the bank's keyed answers | Ch 9, `sound-trainer.html` | Phase 4 |
 | **Correction:** non-rebreather flow was 12–15 L/min on `skillsheets.html` and `formulary.html` and 10–15 L/min in the new Ch 10. Reconciled to **10–15 L/min** everywhere, consistent with the reservoir-collapse rule the same pages already gave | AAOS figures | Ch 10, `skillsheets.html`, `formulary.html` | Phase 4 |
 | **Correction:** Ch 33's takeaway listed NEXUS as four criteria while the body text warned against exactly that merge. Takeaway rewritten to five | NEXUS | Ch 33 | Phase 4 |
+| Ten new branching scenarios: six pediatric (febrile seizure, croup vs epiglottitis, asthma with a silent chest, infant sepsis, suspected abuse, drowning arrest) and four obstetric (imminent delivery, third-trimester bleeding, eclampsia, neonatal resuscitation) | National EMS Education Standards; 2025 AHA and NRP for the arrest and newborn cases; ACOG-consistent obstetric practice | `scenario-sim.html` | Phase 4 |
+| Drowning arrest taught as hypoxic: CPR includes ventilations rather than compression-only, no abdominal thrusts to clear water, no routine spinal precautions without a mechanism, dry the chest before AED pads, hypothermia is a reason to continue | 2025 AHA | s14 | Phase 4 |
+| Newborn resuscitation: warm/dry/position/stimulate, PPV at 40–60/min for apnea or HR < 100, compressions at **3:1** only for HR < 60 after 30 s of effective ventilation | NRP | s18 | Phase 4 |
+| Field delivery: no routine suctioning of a vigorous newborn, loose nuchal cord slipped over the head rather than clamped, acrocyanosis read as normal | NRP | s15 | Phase 4 |
+| Third-trimester bleeding: no vaginal exam, left lateral position, and concealed abruption taught as vital signs disagreeing with visible blood | Standard obstetric emergency practice | s16 | Phase 4 |
+| Eclampsia: left lateral, minimize stimulation, obstetric-capable destination, and the risk continuing postpartum | Standard obstetric emergency practice | s17 | Phase 4 |
+| Suspected child abuse: treat and transport, document observations and verbatim quotes rather than conclusions, report as a mandatory reporter, do not confront on scene | Mandatory-reporter practice; state law varies and the scenario says so | s13 | Phase 4 |
 
 ---
 
@@ -155,7 +162,7 @@ not been established, and gives a route to have them removed.
 | Reference cards: peds vitals, GCS, APGAR, PAT | done |
 | Expand Airway, Ventilation & Oxygen, Vital Signs, Bleeding Control, Head/Neck/Spine | done |
 | Figures in the notes (currently zero across 40 chapters) | **blocked — see below** |
-| More branching scenarios toward 25 | open |
+| More branching scenarios toward 25 | in progress — 18 of 25 |
 
 The five chapters were the five smallest in the book — 2,461 to 4,744
 characters against a median of 8,900 — and are now 10,674 to 21,009. Airway
@@ -259,7 +266,9 @@ true/false polarity, select-N key sets, **absolute words**, **hedge words**,
 10. Unique question ids · 11. Error reporters load first ·
 12. **Molecule valence** · 13. **Scenario graph** · 14. **Copied option sets** ·
 15. **Flow-diagram branches** · 16. **Tables inside a scroll wrapper** ·
-17. **Figures that appear on more than one page agree**
+17. **Figures that appear on more than one page agree** ·
+18. **Advertised scenario count**, and scenario nodes must be able to reach an
+ending, not merely be reachable from the start
 
 Bold entries were added in response to these reviews. Each was verified by
 reintroducing the defect it exists to catch.

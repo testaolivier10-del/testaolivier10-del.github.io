@@ -232,7 +232,7 @@ const SCENARIOS = [
       },
       s1_tourniquet_first: {
         vitals: "HR 110 · BP 112/74 · RR 18",
-        text: "The bleeding stops the moment the tourniquet is windlassed down. You note the time of application out loud and write it on him. His colour is already better, and you have spent none of his reserve getting here. A bystander mentions he also hit his head on the curb before you arrived, but he is alert and answering clearly.",
+        text: "The bleeding stops the moment the tourniquet is windlassed down. You note the time of application out loud and write it on him. His color is already better, and you have spent none of his reserve getting here. A bystander mentions he also hit his head on the curb before you arrived, but he is alert and answering clearly.",
         choices: [
           { text: "Quickly assess his mental status and pupils before moving him, then treat for shock and package for transport", next: "s1_secondary_good" },
           { text: "Skip the head check since the leg is clearly the priority and load him now", next: "s1_secondary_skipped", consequence: "You get him loaded quickly, but a minute into transport he suddenly seems slower to answer than before — a head injury you never assessed for is now catching you off guard." }
@@ -855,6 +855,674 @@ const SCENARIOS = [
       },
       s8_end_good: { ending: "good", text: "Ventilatory support came first, buying time for the naloxone to work without oxygenation depending entirely on it — and once his own breathing returned, you kept watching for the naloxone wearing off before the longer-acting opioid does, since re-sedation on the way to the hospital is a real risk. This is the sequence that treats the actual emergency (he isn't breathing enough) rather than just the cause of it." },
       s8_end_ok: { ending: "neutral", text: "He recovers, but a longer period of severe hypoxia than necessary — from waiting on naloxone alone, from treating recovery position as sufficient, or from delaying naloxone once bagging was already underway — meant more physiologic stress than the best-case run. Airway and breathing come before reversal agents; a patient who isn't breathing adequately needs ventilatory support started immediately, with naloxone as an addition to that, not a replacement for it." }
+    }
+  },
+  {
+    id: "s9",
+    title: "A Two-Year-Old Who Just Stopped Shaking",
+    domain: "Pediatrics — Neurologic",
+    blurb: "The seizure is over before you arrive. The parents are the ones who need managing — and so does the thing you have not ruled out.",
+    startNode: "s9_start",
+    nodes: {
+      s9_start: {
+        vitals: "HR 152 · RR 28 · Temp 103.1 °F · SpO₂ 97%",
+        text: "A 2-year-old girl is lying on the living room floor, drowsy and limp, breathing on her own. Her mother says she shook all over for about a minute, then went limp, and that she has been feverish since yesterday. She is flushed and hot to the touch. Both parents are frightened and talking over each other.",
+        choices: [
+          { text: "Position her on her side, confirm the airway is clear, and give blow-by oxygen while you assess", next: "s9_positioned" },
+          { text: "Put an oropharyngeal airway in to protect the airway", next: "s9_opa_attempt", consequence: "She still has a gag reflex — she gags immediately and nearly vomits. A postictal child who is breathing on her own needs positioning and a clear airway, not an OPA she cannot tolerate." },
+          { text: "Hold her still and try to wake her fully so you can assess her mental status", next: "s9_restrained", consequence: "Postictal drowsiness is expected and it resolves on its own. Shaking her awake tells you nothing you could not get by watching her breathe, and it upsets both the child and the parents further." },
+          { text: "Strip her and apply cold packs and wet towels to bring the fever down fast", next: "s9_overcooled", consequence: "Rapid cooling makes a small child shiver, and shivering generates heat and burns oxygen. Removing excess clothing is right; ice packs and cold water are not." }
+        ]
+      },
+      s9_positioned: {
+        vitals: "HR 148 · RR 26 · Temp 103.1 °F · SpO₂ 98%",
+        text: "She is on her side with a clear airway and is slowly becoming more responsive — she opens her eyes to your voice and starts to whimper for her mother. The parents ask whether it was a febrile seizure and whether they still need to go to the hospital.",
+        choices: [
+          { text: "Check her blood glucose, look her over for a rash and for neck stiffness, and get a history", next: "s9_assessed" },
+          { text: "Reassure them it was a febrile seizure, they are harmless, and they can follow up with their pediatrician", next: "s9_no_transport", consequence: "Most febrile seizures are benign, and none of that is something you can establish in a living room. A first seizure in a child with a fever needs to be evaluated for the causes that are not benign — meningitis among them — and that evaluation does not happen at home." },
+          { text: "Load her immediately without further assessment, since the seizure is over and time matters", next: "s9_rushed", consequence: "Nothing here is time-critical in the way a bleed is. Skipping the glucose check and the skin exam means you arrive with no baseline and no answer to the first question the hospital will ask." }
+        ]
+      },
+      s9_overcooled: {
+        vitals: "HR 160 · RR 30 · Temp 102.8 °F · SpO₂ 96%",
+        text: "She begins shivering hard and crying. The number on the thermometer has barely moved.",
+        choices: [
+          { text: "Stop the aggressive cooling, remove only the excess clothing, and get back to the airway and assessment", next: "s9_positioned" }
+        ]
+      },
+      s9_restrained: {
+        vitals: "HR 156 · RR 28 · Temp 103.1 °F · SpO₂ 97%",
+        text: "She becomes more upset rather than more awake. Her mother is now crying too.",
+        choices: [
+          { text: "Stop, let her settle on her side, and assess by watching her instead", next: "s9_positioned" }
+        ]
+      },
+      s9_opa_attempt: {
+        vitals: "HR 154 · RR 28 · Temp 103.1 °F · SpO₂ 96%",
+        text: "You remove the airway before she vomits. She is still breathing adequately on her own.",
+        choices: [
+          { text: "Position her on her side with suction ready and reassess", next: "s9_positioned" }
+        ]
+      },
+      s9_assessed: {
+        vitals: "HR 140 · RR 24 · Temp 103.0 °F · SpO₂ 98% · Glucose 88 mg/dL",
+        text: "Glucose is normal. No rash, no neck stiffness, fontanelle long since closed, and she is now reaching for her mother and saying her name. The mother mentions she has never had a seizure before.",
+        choices: [
+          { text: "Transport with a parent riding along, keeping her comfortable and reassessing en route", next: "s9_end_good" },
+          { text: "Since everything checks out, let the parents drive her in themselves", next: "s9_end_ok", consequence: "She is stable now, and a child who has seized once in the last ten minutes can seize again in a car with no one in the back seat. Transport is the safer call and it costs nothing." }
+        ]
+      },
+      s9_rushed: {
+        vitals: "HR 146 · RR 26 · Temp 103.1 °F · SpO₂ 97%",
+        text: "She is loaded and en route. In the back you finally check a glucose — normal — and notice no rash. Everything you skipped turns out to be reassuring, but you did not know that when you decided not to look.",
+        choices: [
+          { text: "Document what you found and when, and continue in", next: "s9_end_ok" }
+        ]
+      },
+      s9_no_transport: {
+        vitals: "HR 144 · RR 26 · Temp 103.2 °F · SpO₂ 97%",
+        text: "The parents are relieved and begin to agree with you. Then the father mentions, almost in passing, that she has been much harder to wake all day and has not wanted to be held.",
+        choices: [
+          { text: "Change course — that detail matters. Assess fully and transport", next: "s9_assessed" },
+          { text: "Stay with your original advice, since she looks fine now", next: "s9_end_bad" }
+        ]
+      },
+      s9_end_good: { ending: "good", text: "A postictal child positioned and watched rather than handled, a glucose checked, a look for the things a fever and a seizure together can mean, and a ride in with a parent. Most febrile seizures are benign and brief — but 'benign' is a diagnosis made after meningitis has been excluded, not before, and excluding it is not something that happens in a living room." },
+      s9_end_ok: { ending: "neutral", text: "She does well. The parts you skipped — the glucose, the skin, the ride in — happened to be unremarkable this time, which is luck rather than assessment. A first febrile seizure is evaluated, not reassured away, and a child who seized ten minutes ago belongs in the back of an ambulance rather than a back seat." },
+      s9_end_bad: { ending: "bad", text: "They keep her home. She is brought in by private car four hours later with a petechial rash and a stiff neck, and is admitted with bacterial meningitis. Nothing you saw ruled that out, because you never looked — and the detail that would have changed your mind was volunteered while you were talking rather than asking." }
+    }
+  },
+  {
+    id: "s10",
+    title: "A Barking Cough at Two in the Morning",
+    domain: "Pediatrics — Airway",
+    blurb: "Two illnesses that sound similar at the door. One of them punishes you for looking in the mouth.",
+    startNode: "s10_start",
+    nodes: {
+      s10_start: {
+        vitals: "HR 142 · RR 32 · Temp 100.4 °F · SpO₂ 96%",
+        text: "A 3-year-old boy is sitting up on the edge of his bed with a harsh, barking cough that his father describes as sounding like a seal. It started this evening and has been getting worse. He has a runny nose, a low-grade fever, and audible noise on the way in when he breathes. He is talking to you between coughs.",
+        choices: [
+          { text: "Keep him calm and upright in his parent's arms, give humidified or blow-by oxygen, and assess without upsetting him", next: "s10_calm" },
+          { text: "Use a tongue depressor and a light to look at the back of his throat", next: "s10_throat_exam", consequence: "Nothing here is certain enough to make that safe. Putting anything into the mouth of a child with upper-airway noise risks turning a partial obstruction into a complete one, and the presentation that punishes this hardest — epiglottitis — is the one you have not yet ruled out." },
+          { text: "Lay him flat on the stretcher so you can assess his chest properly", next: "s10_supine", consequence: "A child with an upper-airway obstruction is sitting up because sitting up is what works. Laying him flat takes away the position he has chosen and makes the obstruction worse." }
+        ]
+      },
+      s10_calm: {
+        vitals: "HR 138 · RR 30 · Temp 100.4 °F · SpO₂ 97%",
+        text: "He settles against his father. The noise is a harsh sound on the way in, worse when he cries and better when he is calm. He is swallowing normally, not drooling, and his voice is hoarse but clear. He has been well until tonight.",
+        choices: [
+          { text: "Treat this as croup: keep him calm and upright, cool air or blow-by oxygen, transport gently without agitating him", next: "s10_croup_path" },
+          { text: "Treat it as epiglottitis and prepare for an emergency airway", next: "s10_over_treated", consequence: "The picture does not fit. Epiglottitis comes on fast with a high fever, drooling, a muffled voice and a child who refuses to lie down and often will not swallow — and it usually has no barking cough at all. Preparing for the worst is not wrong, but acting on a diagnosis the findings contradict means intervening on a child who needed to be left alone." }
+        ]
+      },
+      s10_supine: {
+        vitals: "HR 150 · RR 36 · Temp 100.4 °F · SpO₂ 93%",
+        text: "The noise gets noticeably louder and he starts to struggle and cry, which makes it worse still.",
+        choices: [
+          { text: "Sit him back up in his father's arms and let him settle", next: "s10_calm" }
+        ]
+      },
+      s10_throat_exam: {
+        vitals: "HR 158 · RR 38 · Temp 100.4 °F · SpO₂ 92%",
+        text: "He gags, panics and fights you. The stridor is louder than it was a minute ago and he is working harder. Nothing you saw was worth this.",
+        choices: [
+          { text: "Stop immediately, get him upright with his father, and let him calm down", next: "s10_calm" }
+        ]
+      },
+      s10_croup_path: {
+        vitals: "HR 132 · RR 28 · Temp 100.4 °F · SpO₂ 98%",
+        text: "Carried out into the cold night air toward the ambulance, his breathing visibly eases. In the back he is calm on his father's lap with blow-by oxygen near his face. Ten minutes into transport the stridor returns and is now audible even at rest, and he is beginning to use the muscles between his ribs.",
+        choices: [
+          { text: "Recognize that stridor at rest with retractions is a worsening upper airway, notify the hospital and request ALS", next: "s10_escalate" },
+          { text: "He has been up and down all night — keep watching and say nothing until you arrive", next: "s10_end_ok", consequence: "Stridor that is present at rest rather than only on crying is a step worse than what you left the house with, and retractions say the work of breathing is rising. That is the moment to tell somebody, not the moment to wait and see." }
+        ]
+      },
+      s10_over_treated: {
+        vitals: "HR 154 · RR 34 · Temp 100.4 °F · SpO₂ 94%",
+        text: "The activity around him frightens him and he starts to cry hard, which worsens the stridor.",
+        choices: [
+          { text: "Step back, return him to his father, and manage this as the croup it looks like", next: "s10_croup_path" }
+        ]
+      },
+      s10_escalate: {
+        vitals: "HR 136 · RR 30 · Temp 100.4 °F · SpO₂ 96%",
+        text: "You call ahead with what you are seeing and keep him upright and undisturbed. He remains alert and is moving air. The receiving team is waiting at the door.",
+        choices: [
+          { text: "Hand off with a clear description of the sound, when it changed, and what he looked like at each point", next: "s10_end_good" }
+        ]
+      },
+      s10_end_good: { ending: "good", text: "Kept calm, kept upright, kept out of his mouth, and escalated when the sound changed. The single most useful thing an EMT does for a child with an upper-airway obstruction is refrain from making it worse: no tongue blades, no forced positions, no separating him from the parent who is keeping him settled. Croup and epiglottitis are told apart by the history and the picture — onset, fever, drooling, voice, whether there is a barking cough at all — not by looking." },
+      s10_end_ok: { ending: "neutral", text: "He arrives and does well. The escalation you did not report was a change in his airway, and arriving with a team that was not expecting it is a worse handoff than it needed to be. Stridor at rest is not the same finding as stridor on crying, and noticing the difference is most of the skill here." }
+    }
+  },
+  {
+    id: "s11",
+    title: "The Six-Year-Old Whose Wheezing Stopped",
+    domain: "Pediatrics — Airway",
+    blurb: "A quieter chest is not always a better chest.",
+    startNode: "s11_start",
+    nodes: {
+      s11_start: {
+        vitals: "HR 138 · RR 36 · SpO₂ 91% · Peak effort: retractions, nasal flaring",
+        text: "A 6-year-old with known asthma is sitting forward on a kitchen chair, hands on her knees, working hard to breathe. You hear wheezing across the room. Her mother has her prescribed albuterol inhaler and says she used it about twenty minutes ago without much effect.",
+        choices: [
+          { text: "Assist her with her own prescribed inhaler using a spacer, per protocol, and give oxygen", next: "s11_treated" },
+          { text: "Give oxygen alone and transport, since she has already used the inhaler once", next: "s11_oxygen_only", consequence: "Oxygen treats the hypoxia and does nothing about the bronchoconstriction causing it. A repeat dose of her own prescribed bronchodilator, within protocol, is the intervention that addresses the problem." },
+          { text: "Lay her down so she can rest and conserve energy", next: "s11_supine", consequence: "She is sitting forward because that is the position that lets her use her accessory muscles. Taking it away from her makes the work of breathing harder, not easier." }
+        ]
+      },
+      s11_supine: {
+        vitals: "HR 146 · RR 40 · SpO₂ 88%",
+        text: "She immediately sits back up on her own, more distressed than before. You let her stay in the position she chose. She is still wheezing audibly and working hard.",
+        choices: [
+          { text: "Assist her with her own prescribed inhaler using a spacer, per protocol, and give oxygen", next: "s11_treated" },
+          { text: "Give oxygen alone, since she has already used the inhaler once", next: "s11_oxygen_only", consequence: "Oxygen treats the hypoxia and does nothing about the bronchoconstriction causing it. A repeat dose of her own prescribed bronchodilator, within protocol, is the intervention that addresses the problem." }
+        ]
+      },
+      s11_oxygen_only: {
+        vitals: "HR 142 · RR 38 · SpO₂ 93%",
+        text: "The saturation improves slightly. The wheezing and the retractions have not changed at all.",
+        choices: [
+          { text: "Assist with her prescribed inhaler and a spacer as well", next: "s11_treated" }
+        ]
+      },
+      s11_treated: {
+        vitals: "HR 144 · RR 34 · SpO₂ 94%",
+        text: "She takes the treatment. A few minutes later something changes: the wheezing has become much quieter, and she has stopped talking to you. Her head is nodding forward between breaths and she looks tired rather than frightened.",
+        choices: [
+          { text: "Recognize this as deterioration, not improvement — begin assisted ventilation with a BVM and high-flow oxygen, and call for ALS", next: "s11_ventilated" },
+          { text: "Take the quieter chest as a good response and continue transport, reassessing in a few minutes", next: "s11_missed", consequence: "Wheezing is the sound of air moving through narrowed airways. When a child this sick goes quiet and sleepy, the usual reason is that too little air is moving to make the sound at all. A silent chest in a patient who was wheezing hard is a pre-arrest finding." },
+          { text: "Give another dose of the inhaler and wait for it to work", next: "s11_missed", consequence: "A child who has stopped talking and is nodding off is not moving enough air to carry an inhaled medication into her lungs. The problem is now ventilation, and the fix for that is a bag, not another puff." }
+        ]
+      },
+      s11_ventilated: {
+        vitals: "HR 130 · RR assisted at 20 · SpO₂ 96%",
+        text: "You begin assisting her breaths, timing them to her own effort where she still has it. Her color improves and she becomes more responsive. ALS is en route to meet you.",
+        choices: [
+          { text: "Continue assisted ventilation, transport without delay, and hand off with a clear timeline of when the chest went quiet", next: "s11_end_good" }
+        ]
+      },
+      s11_missed: {
+        vitals: "HR 118 · RR 10 and shallow · SpO₂ 84%",
+        text: "Her respiratory rate is now falling and her lips are dusky. She does not respond when you say her name.",
+        choices: [
+          { text: "Begin bag-valve-mask ventilation immediately with high-flow oxygen and call for ALS", next: "s11_late_rescue" }
+        ]
+      },
+      s11_late_rescue: {
+        vitals: "HR 124 · RR assisted at 20 · SpO₂ 91%",
+        text: "Ventilation brings her back from the edge, but she spent several minutes severely hypoxic before you started.",
+        choices: [
+          { text: "Continue ventilating and transport immediately", next: "s11_end_ok" }
+        ]
+      },
+      s11_end_good: { ending: "good", text: "The bronchodilator was the right first move and the recognition was the right second one. A wheezing child who goes quiet, stops talking and starts to look sleepy is tiring out, and rising carbon dioxide with falling effort is the picture immediately before a respiratory arrest. The intervention at that point is ventilation, not another treatment she can no longer inhale." },
+      s11_end_ok: { ending: "neutral", text: "She recovers, after several minutes of severe hypoxia that the timeline did not require. The quiet chest was the finding, and it was read as the treatment working. In a patient who was audibly wheezing and is now silent and drowsy, less noise means less air." }
+    }
+  },
+  {
+    id: "s12",
+    title: "The Baby Who Is Not Feeding",
+    domain: "Pediatrics — Medical",
+    blurb: "Nothing dramatic, a normal blood pressure, and a sick infant.",
+    startNode: "s12_start",
+    nodes: {
+      s12_start: {
+        vitals: "HR 186 · RR 58 · Temp 100.8 °F · SpO₂ 95% · BP 78/50",
+        text: "A 3-month-old boy is lying quietly in his mother's arms. She says he has not fed properly since yesterday, has had fewer wet diapers than usual, and has been 'floppy' and hard to wake. He does not cry when you unwrap him, and his cry when it comes is weak. His skin looks blotchy.",
+        choices: [
+          { text: "Assess the fontanelle, capillary refill and skin, check a glucose, and keep him warm while you work", next: "s12_assessed" },
+          { text: "The blood pressure is normal for his age, so treat this as a feeding problem and transport without urgency", next: "s12_reassured", consequence: "A normal blood pressure in an infant is not reassurance, because infants hold their pressure up until they cannot and then fall off a cliff. Everything else here — the rate, the mottled skin, the weak cry, the poor feeding, the dry diapers — is the picture of a compensating infant." },
+          { text: "Undress him fully for a thorough head-to-toe exam in the room", next: "s12_cold", consequence: "Infants lose heat fast, and a cold infant burns oxygen and glucose it does not have to spare. Expose what you need to see, then cover him again." }
+        ]
+      },
+      s12_cold: {
+        vitals: "HR 192 · RR 60 · Temp 99.9 °F · SpO₂ 94%",
+        text: "He is cool to the touch and his mottling is worse. Nothing in the exam was worth what it cost.",
+        choices: [
+          { text: "Wrap him, including a hat, and continue assessing in stages", next: "s12_assessed" }
+        ]
+      },
+      s12_reassured: {
+        vitals: "HR 190 · RR 60 · SpO₂ 94% · BP 76/48",
+        text: "En route he becomes harder to rouse. His capillary refill, which you check now for the first time, is nearly four seconds.",
+        choices: [
+          { text: "Upgrade the transport, give oxygen, keep him warm and request ALS", next: "s12_late_recognition" }
+        ]
+      },
+      s12_assessed: {
+        vitals: "HR 186 · RR 58 · SpO₂ 95% · Cap refill 4 s · Glucose 46 mg/dL",
+        text: "The fontanelle is slightly sunken, capillary refill is four seconds, his skin is mottled and cool at the hands and feet, and his glucose is 46. He is quiet in a way that is not restful.",
+        choices: [
+          { text: "Treat this as a critically ill infant: oxygen, keep him warm, contact medical direction about the glucose, and transport rapidly to a facility that takes children", next: "s12_managed" },
+          { text: "Give oral glucose gel between his cheek and gum", next: "s12_oral_glucose", consequence: "Oral glucose needs a patient who can protect their own airway and swallow on purpose. An infant this lethargic can do neither, and putting gel in his mouth risks aspiration. This is a call to medical direction, not a self-directed intervention." }
+        ]
+      },
+      s12_oral_glucose: {
+        vitals: "HR 188 · RR 58 · SpO₂ 93%",
+        text: "He does not swallow it. You suction his mouth and stop.",
+        choices: [
+          { text: "Leave the airway alone, keep him warm, give oxygen and transport rapidly while contacting medical direction", next: "s12_managed" }
+        ]
+      },
+      s12_managed: {
+        vitals: "HR 178 · RR 52 · SpO₂ 98%",
+        text: "He is wrapped, oxygenated, and moving. You call ahead with the whole picture — the feeding history, the wet diapers, the mottling, the refill time and the glucose — rather than a set of numbers.",
+        choices: [
+          { text: "Reassess every few minutes and hand off with the trend, not just the current vitals", next: "s12_end_good" }
+        ]
+      },
+      s12_late_recognition: {
+        vitals: "HR 196 · RR 62 · SpO₂ 92% · BP 62/38",
+        text: "His pressure is falling now, which in an infant means the compensation has run out.",
+        choices: [
+          { text: "Transport emergently with oxygen, warmth and an ALS intercept", next: "s12_end_ok" }
+        ]
+      },
+      s12_end_good: { ending: "good", text: "Recognized early, kept warm, and handed off as a story rather than a snapshot. Poor feeding, fewer wet diapers, a weak cry, mottled skin and a delayed capillary refill are what a sick infant looks like, and a normal blood pressure sits happily alongside all of it right up until it does not. The blood pressure is the last thing to go in a child, which is exactly why it is the worst thing to be reassured by." },
+      s12_end_ok: { ending: "neutral", text: "He is resuscitated at the hospital and does well, after decompensating in the back of your ambulance rather than in an emergency department. Every finding that mattered was available in the living room; the one that was used to rule out serious illness was the only one that could not do that job." }
+    }
+  },
+  {
+    id: "s13",
+    title: "A Story That Does Not Fit the Injury",
+    domain: "Pediatrics — Medical-Legal",
+    blurb: "What you suspect is not what you say on scene. What you write down is what matters.",
+    startNode: "s13_start",
+    nodes: {
+      s13_start: {
+        vitals: "HR 148 · RR 30 · SpO₂ 98%",
+        text: "You are called for a 7-month-old who 'rolled off the couch'. He has a spiral bruise pattern on the upper arm, bruising of several different colors on his back, and he cries when the arm is touched. He is not yet crawling or pulling to stand. The caregiver is calm, gives a detailed account, and then gives a slightly different one a minute later.",
+        choices: [
+          { text: "Treat the injuries, keep your manner neutral, and continue a careful assessment", next: "s13_neutral" },
+          { text: "Tell the caregiver the injuries do not match the story and ask him directly what really happened", next: "s13_confronted", consequence: "Confronting a caregiver on scene changes the call from a medical one into a confrontation, and the most common outcome is that the family refuses transport and disappears — taking the child with them. Your suspicion is reported, not argued." },
+          { text: "Say nothing, treat the arm, and leave the rest alone since it is not your business", next: "s13_ignored", consequence: "It is precisely your business. EMTs are mandatory reporters in every state, and a report is a report of what you observed, not an accusation you have to be able to prove." }
+        ]
+      },
+      s13_confronted: {
+        vitals: "HR 152 · RR 32 · SpO₂ 98%",
+        text: "The caregiver becomes hostile, says he will take the baby to his own doctor, and starts to pick him up.",
+        choices: [
+          { text: "De-escalate, focus entirely on the child's need for treatment, and involve law enforcement as your protocol directs", next: "s13_recovered" }
+        ]
+      },
+      s13_ignored: {
+        vitals: "HR 146 · RR 30 · SpO₂ 98%",
+        text: "You splint the arm and prepare to transport, having documented only the arm.",
+        choices: [
+          { text: "Reconsider — document everything you actually observed and make the report your role requires", next: "s13_neutral" },
+          { text: "Leave the report to the hospital, who will see the same things you did", next: "s13_end_bad" }
+        ]
+      },
+      s13_recovered: {
+        vitals: "HR 150 · RR 30 · SpO₂ 98%",
+        text: "The situation settles and the child is transported, but the scene was harder than it needed to be and the account you were given is now guarded.",
+        choices: [
+          { text: "Document objectively, including what was said and when it changed, and report through the proper channel", next: "s13_documenting" }
+        ]
+      },
+      s13_neutral: {
+        vitals: "HR 144 · RR 28 · SpO₂ 99%",
+        text: "You treat the arm, keep the child warm and calm, and note what you can see: the pattern and location of each bruise, the colors, the developmental history the caregiver gave you, and the two versions of the account in the caregiver's own words.",
+        choices: [
+          { text: "Write it as observation and direct quotation, with no conclusions or accusations, and report as a mandatory reporter", next: "s13_documenting" },
+          { text: "Write 'suspected non-accidental trauma, caregiver is lying' in the narrative", next: "s13_bad_documentation", consequence: "Conclusions in a narrative are worth less than observations, not more — they can be challenged, and they make everything else you wrote look like advocacy. 'Bruises of several different colors across the upper back' and a quoted account cannot be argued with. 'He is lying' can." }
+        ]
+      },
+      s13_bad_documentation: {
+        vitals: "HR 144 · RR 28 · SpO₂ 99%",
+        text: "You reread what you have written and it reads as an argument rather than a record.",
+        choices: [
+          { text: "Rewrite it as what you saw, what you were told in quotation marks, and nothing else", next: "s13_documenting" }
+        ]
+      },
+      s13_documenting: {
+        vitals: "HR 142 · RR 28 · SpO₂ 99%",
+        text: "The narrative describes the injuries, their pattern and apparent ages, the child's developmental stage, and both versions of the history verbatim. You make the report your state requires and tell the receiving staff directly.",
+        choices: [
+          { text: "Hand off in person to the receiving nurse and physician as well as in writing", next: "s13_end_good" }
+        ]
+      },
+      s13_end_good: { ending: "good", text: "Treated the child, stayed neutral on scene, documented observations rather than conclusions, and reported. The finding that carried the most weight was not a bruise: a 7-month-old who is not yet crawling has very few ways to bruise his own back, and bruises of several different colors happened on several different days. None of that had to be said out loud to the caregiver, and all of it had to be written down." },
+      s13_end_bad: { ending: "bad", text: "No report is made, on the assumption that someone else will make it. The arm is treated and the family goes home. Mandatory reporting is mandatory precisely because it does not depend on anyone else noticing, on proof, or on being right — the standard is reasonable suspicion, and the report is the entire obligation." }
+    }
+  },
+  {
+    id: "s14",
+    title: "Pulled From the Pool",
+    domain: "Pediatrics — Cardiac Arrest",
+    blurb: "A hypoxic arrest, not a cardiac one — and the difference changes what you do first.",
+    startNode: "s14_start",
+    nodes: {
+      s14_start: {
+        vitals: "Unresponsive · No normal breathing · No pulse",
+        text: "A 4-year-old has been pulled from a backyard pool by her father, who thinks she was in the water for two or three minutes. She is unresponsive, limp and not breathing. You find no pulse. She is soaking wet on a wet concrete deck.",
+        choices: [
+          { text: "Move her to a dry surface, start CPR with compressions and ventilations, and get the AED", next: "s14_cpr" },
+          { text: "Perform abdominal thrusts to clear the water from her lungs first", next: "s14_thrusts", consequence: "There is no water to clear in the way that suggests — very little is aspirated, and what is there is absorbed. Abdominal thrusts delay compressions and ventilations and cause vomiting and aspiration. This is one of the most persistent myths in drowning care." },
+          { text: "Apply a cervical collar and immobilize her before moving her", next: "s14_spinal", consequence: "Routine spinal precautions are not indicated in drowning without a mechanism that suggests spinal injury — a dive into shallow water, a fall, a trauma history. She was in a pool and she is in cardiac arrest, and the precaution costs her the only minutes that matter." },
+          { text: "Begin compression-only CPR, as with an adult collapse", next: "s14_compressions_only", consequence: "Compression-only CPR exists for the adult whose arrest was sudden and cardiac, where the blood is still oxygenated. A drowning arrest is hypoxic from the beginning — the oxygen is what ran out — so ventilations are not optional here." }
+        ]
+      },
+      s14_thrusts: {
+        vitals: "Unresponsive · No breathing · No pulse",
+        text: "She vomits. You now have an airway full of stomach contents and you have not yet started compressions.",
+        choices: [
+          { text: "Suction, roll her, and start CPR with compressions and ventilations immediately", next: "s14_cpr" }
+        ]
+      },
+      s14_spinal: {
+        vitals: "Unresponsive · No breathing · No pulse",
+        text: "Nearly a minute goes by. She is still pulseless and now the collar is in the way of the airway.",
+        choices: [
+          { text: "Abandon the collar, move her to a dry surface and begin CPR", next: "s14_cpr" }
+        ]
+      },
+      s14_compressions_only: {
+        vitals: "Unresponsive · No breathing · No pulse",
+        text: "You compress for two minutes without ventilating. Her color does not improve at all.",
+        choices: [
+          { text: "Add ventilations at the correct ratio and continue", next: "s14_cpr" }
+        ]
+      },
+      s14_cpr: {
+        vitals: "CPR in progress · Compressions 100–120/min",
+        text: "High-quality CPR is underway with ventilations, and the AED has arrived. Her chest is still wet.",
+        choices: [
+          { text: "Dry her chest, then apply the pediatric pads and let the AED analyze", next: "s14_aed" },
+          { text: "Apply the pads to the wet chest immediately to save time", next: "s14_wet_pads", consequence: "Water across the chest lets the current track across the skin between the pads instead of through the heart, and it is a shock hazard for the rescuers. Drying the chest takes a few seconds and it is the difference between a shock that works and one that does not." }
+        ]
+      },
+      s14_wet_pads: {
+        vitals: "CPR in progress",
+        text: "The pads will not adhere properly and the machine reports a poor connection.",
+        choices: [
+          { text: "Dry the chest and reapply", next: "s14_aed" }
+        ]
+      },
+      s14_aed: {
+        vitals: "AED: no shock advised · CPR resumed",
+        text: "No shock advised. You resume compressions and ventilations immediately. She is cold to the touch, and her father says the water was not heated.",
+        choices: [
+          { text: "Continue CPR, remove the wet clothing, dry her and prevent further heat loss, and transport while resuscitating", next: "s14_transport" },
+          { text: "Stop resuscitation, since she is cold and has been down several minutes", next: "s14_end_bad", consequence: "Hypothermia in a drowning child is a reason to keep going, not a reason to stop. Cold slows the brain's oxygen demand, and children have been resuscitated intact after submersion times that would be hopeless in a warm adult." }
+        ]
+      },
+      s14_transport: {
+        vitals: "CPR in progress · Passive rewarming started",
+        text: "She is dried, covered, and CPR continues without long interruptions on the way in. ALS meets you en route.",
+        choices: [
+          { text: "Continue high-quality CPR with minimal interruptions all the way to the door", next: "s14_end_good" }
+        ]
+      },
+      s14_end_good: { ending: "good", text: "Compressions and ventilations together, no time spent trying to empty lungs that were not full, no collar she did not need, a dried chest before the pads, and resuscitation continued rather than abandoned because she was cold. A drowning arrest is a hypoxic arrest: the oxygen is what she ran out of, which is why ventilation belongs in the CPR from the first cycle rather than being the part that gets left out." },
+      s14_end_bad: { ending: "bad", text: "Resuscitation is stopped on scene. A cold child pulled from water is the classic case for continuing — the hypothermia that makes her look hopeless is the same hypothermia that protects the brain, and the decision to stop in the field is not one made on temperature and downtime alone." }
+    }
+  },
+  {
+    id: "s15",
+    title: "Crowning in the Driveway",
+    domain: "Obstetrics",
+    blurb: "The decision that matters is made in the first thirty seconds: this baby is coming here.",
+    startNode: "s15_start",
+    nodes: {
+      s15_start: {
+        vitals: "HR 104 · BP 128/78 · RR 22 · Contractions 2 min apart",
+        text: "A 27-year-old woman at full term is in the back seat of a car in her driveway. Her contractions are about two minutes apart and lasting nearly a minute, her water broke twenty minutes ago, and she says she has to push. This is her third baby. You look and see the top of the head at the vaginal opening with each contraction.",
+        choices: [
+          { text: "Recognize that delivery is imminent, stay where you are, and prepare to deliver", next: "s15_prepare" },
+          { text: "Load her and drive fast — the hospital is eight minutes away", next: "s15_transport_attempt", consequence: "Crowning means the baby is coming now, and a delivery in a moving vehicle with you braced against a turn is worse in every way than a controlled delivery where you are standing. Once the head is visible, the decision to transport has already been made for you." },
+          { text: "Have her cross her legs and hold the baby in until you can get to the hospital", next: "s15_transport_attempt", consequence: "This is actively dangerous and it does not work. Delivery cannot be held back, and attempting it risks injuring both of them." }
+        ]
+      },
+      s15_transport_attempt: {
+        vitals: "HR 110 · BP 126/76 · Contractions 90 seconds apart",
+        text: "Before you have gone two blocks she screams that the baby is coming. You pull over on the shoulder with the head already delivering.",
+        choices: [
+          { text: "Stop, get into position, and deliver where you are", next: "s15_prepare" }
+        ]
+      },
+      s15_prepare: {
+        vitals: "HR 106 · BP 128/78 · Contractions 2 min apart",
+        text: "You put on gloves, eye protection and a gown, open the OB kit, and position her with room to work. Towels are ready, the bulb syringe is out, and your partner is preparing to receive the newborn. The head is advancing.",
+        choices: [
+          { text: "Support the head with gentle pressure as it delivers, letting it come out under control rather than in a rush", next: "s15_head_out" },
+          { text: "Pull gently on the head to speed the delivery along", next: "s15_pulling", consequence: "Never pull. Traction on a newborn's head and neck causes injury, and the delivery does not need help — it needs control. Your hands are there to keep the head from delivering explosively, not to extract it." }
+        ]
+      },
+      s15_pulling: {
+        vitals: "HR 108 · BP 126/76",
+        text: "You stop yourself. The next contraction delivers the head on its own.",
+        choices: [
+          { text: "Support the head and check around the neck", next: "s15_head_out" }
+        ]
+      },
+      s15_head_out: {
+        vitals: "HR 106 · BP 128/78",
+        text: "The head is delivered and rotates on its own to face her thigh. You feel around the neck and find the cord looped once around it, loose enough to move.",
+        choices: [
+          { text: "Slip the cord gently over the baby's head and continue", next: "s15_shoulders" },
+          { text: "Clamp and cut the cord immediately", next: "s15_cut_early", consequence: "Clamping and cutting is for a cord so tight it cannot be slipped over the head, because it leaves the baby with no circulation until delivery is complete. A loose loop is simply lifted off." },
+          { text: "Leave it and deliver the body anyway", next: "s15_cord_left", consequence: "A cord left around the neck can tighten as the body delivers and strangle the baby at the moment of birth. It takes two seconds to move it." }
+        ]
+      },
+      s15_cut_early: {
+        vitals: "HR 106 · BP 128/78",
+        text: "The cord is clamped and cut, and now the delivery has to be completed promptly. It proceeds without further trouble, but you have removed a margin you did not need to remove.",
+        choices: [
+          { text: "Deliver the shoulders and body without delay", next: "s15_shoulders" }
+        ]
+      },
+      s15_cord_left: {
+        vitals: "HR 108 · BP 126/76",
+        text: "You reconsider before the next contraction and check the cord again.",
+        choices: [
+          { text: "Slip it over the head now", next: "s15_shoulders" }
+        ]
+      },
+      s15_shoulders: {
+        vitals: "HR 104 · BP 128/78",
+        text: "With the next contraction you guide the head gently downward to free the upper shoulder, then upward for the lower one. The body delivers quickly and slipperily into your hands at 3:12 in the morning. The baby is blue, floppy, and has not cried.",
+        choices: [
+          { text: "Dry her vigorously, keep her warm including her head, position the airway, and stimulate", next: "s15_newborn" },
+          { text: "Suction the mouth and nose thoroughly first as a routine step", next: "s15_suction_first", consequence: "Routine suctioning of every newborn is no longer recommended — it delays drying and stimulation, which is what actually gets most newborns breathing, and it can cause a vagal response and bradycardia. Suction when there is something obstructing, not as a ritual." }
+        ]
+      },
+      s15_suction_first: {
+        vitals: "Newborn: limp, apneic",
+        text: "The airway was clear. Thirty seconds have passed and she still has not breathed.",
+        choices: [
+          { text: "Dry vigorously, warm her, position the airway and stimulate", next: "s15_newborn" }
+        ]
+      },
+      s15_newborn: {
+        vitals: "Newborn HR 128 · crying · pink centrally, blue hands and feet",
+        text: "Within twenty seconds of vigorous drying she grimaces, then cries strongly. Her heart rate is over 100 and her trunk is pink, though her hands and feet remain blue. Mother is stable with no excessive bleeding.",
+        choices: [
+          { text: "Keep the baby warm and skin-to-skin, assign APGAR at 1 and 5 minutes, clamp and cut the cord, and transport both", next: "s15_end_good" },
+          { text: "Treat the blue hands and feet as a problem and begin positive-pressure ventilation", next: "s15_end_ok", consequence: "Blue hands and feet with a pink trunk is acrocyanosis, and it is normal in the minutes after birth — it scores 1 on the APGAR rather than signalling trouble. A newborn who is crying with a heart rate over 100 does not need ventilating." }
+        ]
+      },
+      s15_end_good: { ending: "good", text: "Delivered where the baby was coming rather than where you wanted to be, controlled the head instead of pulling it, cleared a loose cord, dried and stimulated rather than suctioning by reflex, and read acrocyanosis as normal. Almost everything that gets a newborn breathing is drying, warmth and stimulation, and almost everything that goes wrong in a field delivery comes from doing something more energetic than that." },
+      s15_end_ok: { ending: "neutral", text: "Both do well. Ventilating a vigorous crying newborn with a heart rate over 100 is an intervention she did not need, and the finding it was based on — blue hands and feet with a pink trunk — is one of the few things in a newborn that is expected rather than worrying." }
+    }
+  },
+  {
+    id: "s16",
+    title: "Third-Trimester Bleeding",
+    domain: "Obstetrics",
+    blurb: "How much blood is on the outside tells you very little about how much she has lost.",
+    startNode: "s16_start",
+    nodes: {
+      s16_start: {
+        vitals: "HR 122 · BP 96/62 · RR 24 · SpO₂ 97%",
+        text: "A 31-year-old woman at 34 weeks is pale and anxious on her bathroom floor. She reports constant severe abdominal pain that came on suddenly about an hour ago, and a small amount of dark vaginal bleeding. Her abdomen is firm and tender, and it does not relax between contractions. There is very little blood visible.",
+        choices: [
+          { text: "Treat her as a patient in shock despite the small amount of visible blood — high-flow oxygen, left lateral position, rapid transport", next: "s16_managed" },
+          { text: "Perform a visual internal exam to find the source of the bleeding", next: "s16_exam", consequence: "Never perform a vaginal exam in third-trimester bleeding. If the placenta is covering the cervix, an examining hand can provoke catastrophic hemorrhage, and nothing you would find changes what you do next." },
+          { text: "The external bleeding is minimal, so treat the pain and transport without urgency", next: "s16_underestimated", consequence: "Her pulse is 122 and her pressure is 96 systolic with a rigid, tender uterus. That combination with almost no external blood is the signature of a concealed abruption — the blood is behind the placenta rather than on the floor." },
+          { text: "Lay her flat on her back to improve her blood pressure", next: "s16_supine", consequence: "A supine third-trimester patient compresses her own vena cava with the weight of the uterus, which reduces venous return and drops the pressure further. Left lateral, or tilted, is the position that helps." }
+        ]
+      },
+      s16_exam: {
+        vitals: "HR 130 · BP 88/56 · RR 26",
+        text: "You stop before doing any harm, but you have spent time and frightened her further.",
+        choices: [
+          { text: "Abandon the exam entirely and manage her for shock", next: "s16_managed" }
+        ]
+      },
+      s16_supine: {
+        vitals: "HR 128 · BP 86/54 · RR 26",
+        text: "Her pressure drops further within a minute of lying flat and she says she feels like she is going to pass out.",
+        choices: [
+          { text: "Roll her onto her left side and reassess", next: "s16_managed" }
+        ]
+      },
+      s16_underestimated: {
+        vitals: "HR 134 · BP 84/52 · RR 28 · Skin cool and clammy",
+        text: "In the ambulance she becomes drowsy and her skin is cold and wet. There is still almost no blood to be seen.",
+        choices: [
+          { text: "Recognize the concealed hemorrhage, treat aggressively for shock and transport emergently with ALS", next: "s16_late" }
+        ]
+      },
+      s16_managed: {
+        vitals: "HR 118 · BP 100/64 · RR 22 · SpO₂ 99%",
+        text: "She is on high-flow oxygen, on her left side, warm, and moving. You call ahead with her gestational age, the character of the pain, the rigid uterus and the mismatch between her vital signs and the visible blood loss.",
+        choices: [
+          { text: "Reassess continuously, keep her warm, and hand off to a team that is expecting an obstetric hemorrhage", next: "s16_end_good" },
+          { text: "Since she has stabilized somewhat, downgrade the transport", next: "s16_end_ok", consequence: "Nothing has been fixed. Her numbers improved because she is oxygenated, positioned and warm, and the bleeding behind the placenta is continuing regardless of how she looks at this moment." }
+        ]
+      },
+      s16_late: {
+        vitals: "HR 140 · BP 76/44 · RR 30",
+        text: "ALS intercepts and she reaches the operating room, but she arrived in a worse condition than the timeline required.",
+        choices: [
+          { text: "Hand off with the full timeline including when the signs of shock first appeared", next: "s16_end_ok" }
+        ]
+      },
+      s16_end_good: { ending: "good", text: "Read the patient rather than the puddle. Painful bleeding with a rigid, tender uterus is the picture of placental abruption, and abruption conceals most of its blood loss behind the placenta — which is exactly why her vital signs and the visible blood disagreed. Painless bright red bleeding is the other pattern, previa, and both share the same field care: no internal exam, oxygen, left lateral, warmth and speed." },
+      s16_end_ok: { ending: "neutral", text: "Mother and baby survive. The delay came from using the amount of visible blood as the measure of how much she had lost, in the one presentation where those two numbers have almost nothing to do with each other." }
+    }
+  },
+  {
+    id: "s17",
+    title: "A Seizure at Thirty-Four Weeks",
+    domain: "Obstetrics",
+    blurb: "Everything you would normally do to assess her makes this one worse.",
+    startNode: "s17_start",
+    nodes: {
+      s17_start: {
+        vitals: "HR 96 · BP 178/112 · RR 20 · SpO₂ 95%",
+        text: "A 29-year-old woman at 34 weeks has just had a generalized seizure witnessed by her husband. She is postictal on the bedroom floor. He says she has had a bad headache for two days, has been seeing spots, and that her hands and face have been swollen. She has never had a seizure before. Her blood pressure is 178/112.",
+        choices: [
+          { text: "Recognize eclampsia, position her on her left side, protect her airway, give oxygen, and minimize light, noise and handling", next: "s17_managed" },
+          { text: "Treat it as a new-onset seizure disorder and transport routinely with bright lights and the radio on", next: "s17_stimulation", consequence: "The combination of pregnancy past 20 weeks, hypertension, headache, visual disturbance, swelling and a first seizure is eclampsia until proven otherwise. Stimulation provokes further seizures, so light, noise and unnecessary handling are things to remove rather than ignore." },
+          { text: "Lay her supine and take a full set of vitals with the overhead light on", next: "s17_stimulation", consequence: "Supine positioning compresses the vena cava late in pregnancy, and the bright light and activity are exactly the stimulation that invites another seizure." }
+        ]
+      },
+      s17_stimulation: {
+        vitals: "HR 104 · BP 184/118 · RR 22",
+        text: "She seizes again in the ambulance, this time for longer.",
+        choices: [
+          { text: "Protect her airway, turn her onto her left side, dim the lights, stop the noise and request ALS immediately", next: "s17_managed" }
+        ]
+      },
+      s17_managed: {
+        vitals: "HR 92 · BP 172/108 · RR 18 · SpO₂ 98%",
+        text: "She is on her left side, the compartment is dim and quiet, suction is at hand and she is on oxygen. ALS is intercepting for magnesium. She is slowly becoming more responsive.",
+        choices: [
+          { text: "Transport to a facility with obstetric capability, moving smoothly and keeping stimulation to a minimum", next: "s17_transport" },
+          { text: "Transport to the nearest emergency department regardless of obstetric capability", next: "s17_wrong_destination", consequence: "The definitive treatment for eclampsia is delivery, and that needs an obstetric service. Where a choice exists and she is stable enough to make it, the destination matters." }
+        ]
+      },
+      s17_wrong_destination: {
+        vitals: "HR 94 · BP 174/110 · RR 18",
+        text: "You reconsider the destination with medical direction before you have gone far.",
+        choices: [
+          { text: "Redirect to the facility with obstetrics", next: "s17_transport" }
+        ]
+      },
+      s17_transport: {
+        vitals: "HR 90 · BP 168/104 · RR 18 · SpO₂ 99%",
+        text: "She arrives without a further seizure. Her husband asks whether she is out of danger now that she is at the hospital and the seizure is over.",
+        choices: [
+          { text: "Tell him honestly that eclampsia can occur after delivery as well, and hand off the full history including the headache and visual symptoms", next: "s17_end_good" }
+        ]
+      },
+      s17_end_good: { ending: "good", text: "Recognized from the history rather than the seizure, positioned left lateral, and managed by taking stimulation away instead of adding it. The headache, the visual disturbance and the swelling were pre-eclampsia, and they were present for two days before the seizure that named it. The risk does not end at delivery — eclampsia can occur postpartum, which is worth knowing and worth saying." }
+    }
+  },
+  {
+    id: "s18",
+    title: "The Newborn Who Will Not Start",
+    domain: "Obstetrics — Neonatal",
+    blurb: "Almost all of newborn resuscitation is one thing, and it is not compressions.",
+    startNode: "s18_start",
+    nodes: {
+      s18_start: {
+        vitals: "Newborn: limp · apneic · HR 80",
+        text: "You have just delivered a term newborn in an apartment bathroom. He is limp, blue, and not breathing. You have dried him with a towel. His heart rate, felt at the base of the cord, is about 80.",
+        choices: [
+          { text: "Warm, dry, position the airway and stimulate briskly — rub the back and flick the soles", next: "s18_stimulated" },
+          { text: "Begin chest compressions immediately, since the heart rate is under 100", next: "s18_early_compressions", consequence: "Compressions are for a heart rate under 60 after effective ventilation, not for a rate under 100 at birth. A newborn's slow heart rate is almost always caused by not breathing, so the fix is air, not compressions." },
+          { text: "Suction the mouth and nose thoroughly and wait to see whether he starts", next: "s18_suction", consequence: "Waiting is the problem. Routine deep suctioning delays the drying and stimulation that start most newborns, and it can slow the heart further." }
+        ]
+      },
+      s18_suction: {
+        vitals: "Newborn: limp · apneic · HR 76",
+        text: "Thirty seconds gone and nothing has changed except the heart rate, which is slightly lower.",
+        choices: [
+          { text: "Warm, dry, position and stimulate", next: "s18_stimulated" }
+        ]
+      },
+      s18_early_compressions: {
+        vitals: "Newborn: limp · apneic · HR 72",
+        text: "You are compressing a chest that has never been ventilated. Nothing improves.",
+        choices: [
+          { text: "Stop, and deliver effective positive-pressure ventilation instead", next: "s18_ppv" }
+        ]
+      },
+      s18_stimulated: {
+        vitals: "Newborn: limp · apneic · HR 78",
+        text: "You dry him vigorously, cover his head, position the airway with a slight shoulder roll and rub his back for several seconds. He grimaces once but does not breathe, and his heart rate is still below 100.",
+        choices: [
+          { text: "Begin positive-pressure ventilation at 40–60 breaths per minute", next: "s18_ppv" },
+          { text: "Continue stimulating for another minute", next: "s18_over_stimulated", consequence: "Stimulation gets a brief trial, not a long one. An apneic newborn with a heart rate under 100 after drying and stimulation needs ventilation started, and the clock on that is around the first minute of life." }
+        ]
+      },
+      s18_over_stimulated: {
+        vitals: "Newborn: limp · apneic · HR 70",
+        text: "The heart rate is falling rather than rising.",
+        choices: [
+          { text: "Start positive-pressure ventilation now", next: "s18_ppv" }
+        ]
+      },
+      s18_ppv: {
+        vitals: "Newborn: PPV in progress at 40–60/min",
+        text: "You begin ventilating with a correctly sized mask, watching for gentle chest rise with each breath rather than squeezing hard. After thirty seconds of effective ventilation you reassess: the heart rate is now 52.",
+        choices: [
+          { text: "Add chest compressions, coordinated with ventilation at 3 compressions to 1 breath", next: "s18_compressions" },
+          { text: "Continue ventilating alone and reassess in another thirty seconds", next: "s18_delayed_compressions", consequence: "Under 60 after thirty seconds of effective ventilation is the threshold where compressions are added. Continuing to ventilate alone at this heart rate is waiting for a deterioration you have already been told about." }
+        ]
+      },
+      s18_delayed_compressions: {
+        vitals: "Newborn HR 44 · PPV continuing",
+        text: "The heart rate continues to fall.",
+        choices: [
+          { text: "Begin compressions at 3:1 with ventilation and call for ALS", next: "s18_compressions" }
+        ]
+      },
+      s18_compressions: {
+        vitals: "Newborn: 3:1 compressions and ventilation · 90 compressions and 30 breaths per minute",
+        text: "Compressions and ventilations run together at three to one. Within a minute his heart rate climbs past 60, then past 100, and he takes a gasping breath of his own, then cries.",
+        choices: [
+          { text: "Stop compressions, continue ventilation until his own breathing is adequate, keep him warm, and transport with the mother", next: "s18_end_good" },
+          { text: "Stop everything now that he is crying", next: "s18_end_ok", consequence: "Compressions stop once the heart rate is above 60, and ventilation continues until he is breathing adequately on his own. Stopping both at the first cry means removing support from a newborn who has not yet demonstrated he can manage without it." }
+        ]
+      },
+      s18_end_good: { ending: "good", text: "Warm, dry, position, stimulate — then ventilate, and only then compress. The ratio that makes newborn resuscitation different is 3:1 rather than 30:2, and the reason is the same reason ventilation comes first: a newborn's arrest is a breathing problem almost every time, so the intervention that fixes most of them is air. Compressions are rarely needed, and they are never the first thing." },
+      s18_end_ok: { ending: "neutral", text: "He does well. Withdrawing all support at the first cry is premature — compressions stop above 60, but ventilation continues until his own breathing is adequate, and a newborn who needed compressions a minute ago has not yet earned that assumption." }
     }
   }
 ];
