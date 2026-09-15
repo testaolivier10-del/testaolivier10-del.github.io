@@ -341,7 +341,7 @@ their lessons exist.
 
 | Item | Status |
 |---|---|
-| Rewrite options flagged by the three tell checks, one domain per commit | in progress — 3 domains done, ~12 to go |
+| Rewrite options flagged by the three tell checks, one domain per commit | in progress — 4 domains done, ~11 to go |
 
 The scale, measured before starting:
 
@@ -411,9 +411,10 @@ Running totals:
 | start | 450 / 6.2% | 102 / 40.2% | 183 / 16.9% |
 | Cardiac | 414 / 6.8% | 100 / 41.0% | 178 / 17.4% |
 | Medical | 385 / 7.3% | 90 / 42.2% | 172 / 18.0% |
-| Geriatrics | **355 / 7.9%** | **88 / 40.9%** | **173 / 18.5%** |
+| Geriatrics | 355 / 7.9% | 88 / 40.9% | 173 / 18.5% |
+| Secondary Assessment | **328 / 8.5%** | 88 / 40.9% | **164 / 19.5%** |
 
-Thresholds now `absoluteFloor: 0.075`, `hedgeCeiling: 0.415`, `justifyFloor: 0.18`.
+Thresholds now `absoluteFloor: 0.08`, `hedgeCeiling: 0.415`, `justifyFloor: 0.19`.
 The hedge ceiling moved for the first time here — it had only ever been held,
 never tightened, because until this commit the work kept pushing it the wrong
 way.

@@ -234,8 +234,8 @@ const BANKS = [
     // Measured 6.6% and 42.9% when the wording tells were first guarded.
     // Tightened as domains are rewritten: 0.06 at the start, then 0.065
     // (Cardiac, 6.2% -> 6.8%), 0.07 (Medical, -> 7.3%), 0.075 (Geriatrics,
-    // -> 7.9%). 25% is the target.
-    absoluteFloor: 0.075,
+    // -> 7.9%), 0.08 (Secondary Assessment, -> 8.5%). 25% is the target.
+    absoluteFloor: 0.08,
     // NOT tightened, and the reason is worth reading before the next domain.
     // This is the one tell here that marks the RIGHT answer, so it behaves
     // backwards from the other two: taking a hedge OUT OF A DISTRACTOR shrinks
@@ -253,8 +253,8 @@ const BANKS = [
     hedgeCeiling: 0.415,
     // Measured 17.1% on the single-clause case against a 25% baseline.
     // 16.9% at the start, then 17.4% (Cardiac), 18.0% (Medical),
-    // 18.5% (Geriatrics).
-    justifyFloor: 0.18,
+    // 18.5% (Geriatrics), 19.5% (Secondary Assessment).
+    justifyFloor: 0.19,
   },
   {
     label: 'practice-bank.json',
