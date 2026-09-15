@@ -189,12 +189,26 @@ const WORDING_TELLS = [
     re: /\b(?:always|never|only|must|immediately)\b/i,
     threshold: 'absoluteFloor',
     direction: 'marks-wrong',
+    advice: 'Rewrite the strawman distractors so that being absolute is not what makes them wrong.',
   },
   {
     label: 'a hedge ("per protocol"/"as appropriate"/"generally")',
     re: /(?:per protocol|as appropriate|generally)/i,
     threshold: 'hedgeCeiling',
     direction: 'marks-right',
+    advice: 'Either hedge some distractors too, or commit the key to a definite answer.',
+  },
+  {
+    // The third tell, and the one this repo created. Fixing the length tell
+    // moved explanation out of the keys and into the distractors, where it
+    // arrives as a clause justifying why the option is wrong — "..., since
+    // that appears only late in shock". A student who notices that an option
+    // arguing against itself is never the answer has a third free rule.
+    label: 'a trailing justification clause (", since ...", ", because ...")',
+    re: /,\s+(?:since|because|which|as it|a finding|a delay|rather than|not )/i,
+    threshold: 'justifyFloor',
+    direction: 'marks-wrong',
+    advice: 'Move the reasoning into the explanation, where it teaches, instead of into the option, where it gives the answer away.',
   },
 ];
 
@@ -212,6 +226,8 @@ const BANKS = [
     // Measured 6.6% and 42.9% when the wording tells were first guarded.
     absoluteFloor: 0.06,
     hedgeCeiling: 0.43,
+    // Measured 17.1% on the single-clause case against a 25% baseline.
+    justifyFloor: 0.17,
   },
   {
     label: 'practice-bank.json',
@@ -236,6 +252,7 @@ const BANKS = [
     // single-hedge items, this ceiling starts biting; keep it honest.
     absoluteFloor: 0.03,
     hedgeCeiling: 0.5,
+    justifyFloor: 0.1,
   },
 ];
 
@@ -358,10 +375,8 @@ for (const spec of BANKS) {
              `and the key was that option ${(share * 100).toFixed(1)}% of the time ` +
              `(${keyed}/${n}) against a ${(chance * 100).toFixed(0)}% baseline — ` +
              (probe.direction === 'marks-wrong'
-               ? `under the ${(ceiling * 100).toFixed(0)}% floor. ${probe.label} is marking distractors. ` +
-                 `Rewrite the strawman distractors so being absolute is not what makes them wrong.`
-               : `over the ${(ceiling * 100).toFixed(0)}% ceiling. ${probe.label} is marking keys. ` +
-                 `Either hedge some distractors too, or commit the key to a definite answer.`));
+               ? `under the ${(ceiling * 100).toFixed(0)}% floor — it is marking distractors. ${probe.advice}`
+               : `over the ${(ceiling * 100).toFixed(0)}% ceiling — it is marking keys. ${probe.advice}`));
       }
     }
   }
@@ -631,6 +646,45 @@ if (existsSync(scenarioPath)) {
       if (!targets.has(id) && !starts.has(id)) {
         fail(`nremt/scenario-sim.html: node "${id}" is unreachable — nothing points at it and it is no scenario's startNode.`);
       }
+    }
+  }
+}
+
+// ---- 14. No question may carry the previous question's answer options ----
+// Five items had option sets that were lightly reworded copies of the item
+// before them: a question about a diving injury whose four options were all
+// about blood pressure, a question about the pediatric assessment triangle
+// answered by "instability or grinding felt on gentle pressure". The stems and
+// the explanations were correct and unrelated to the options, which is what
+// made it invisible — the file parses, the ids are unique, the counts match,
+// and nothing else here reads a question and its options together.
+//
+// The signal is deliberately narrow. Adjacent items legitimately share
+// vocabulary (two musculoskeletal definitions drawing on sprain/strain/
+// fracture/dislocation score high on any naive similarity measure and are
+// both perfectly correct), so similarity alone produces false positives. What
+// does not happen legitimately is an option set that is near-identical to the
+// previous item's AND shares almost nothing with its own question stem.
+const STOP = new Set(['the','a','an','of','to','in','is','and','or','for','with','which','that','best','following','what','how','when','should','patient','describes','appropriate','most','be','are','this','his','her','you','your','at','on','it','as','from','by','not','any','all','more','than','during','after','before']);
+const words = (t) => new Set(String(t).toLowerCase().match(/[a-z]{3,}/g)?.filter((w) => !STOP.has(w)) ?? []);
+const jaccard = (a, b) => {
+  if (!a.size || !b.size) return 0;
+  let hit = 0;
+  for (const w of a) if (b.has(w)) hit++;
+  return hit / (a.size + b.size - hit);
+};
+if (Array.isArray(bank)) {
+  for (let n = 1; n < bank.length; n++) {
+    const prev = bank[n - 1], cur = bank[n];
+    if (!Array.isArray(prev.options) || !Array.isArray(cur.options)) continue;
+    if (prev.options.length !== cur.options.length) continue;
+    const prevOpts = words(prev.options.join(' '));
+    const curOpts = words(cur.options.join(' '));
+    const curStem = words(`${cur.q} ${cur.explain ?? ''}`);
+    // Options that look like the neighbour's, and unlike their own question.
+    if (jaccard(prevOpts, curOpts) > 0.6 && jaccard(curOpts, curStem) < 0.12) {
+      fail(`questions.json: question ${cur.id}'s options look like a copy of question ${prev.id}'s ` +
+           `and share almost nothing with its own stem — the options were probably clobbered when this item was written.`);
     }
   }
 }
