@@ -237,8 +237,8 @@ const BANKS = [
     // -> 7.9%), 0.08 (Secondary Assessment, -> 8.5%), 0.09 (Musculoskeletal
     // & Burns, -> 9.3%), 0.10 (Obstetrics, -> 10.2%), 0.11 (Scene Safety,
     // -> 11.2%), 0.125 (Bleeding & Shock, -> 12.7%), 0.14 (Pediatrics,
-    // -> 14.1%). 25% is the target.
-    absoluteFloor: 0.14,
+    // -> 14.1%), 0.145 (Legal & Ethical, -> 14.9%). 25% is the target.
+    absoluteFloor: 0.145,
     // NOT tightened, and the reason is worth reading before the next domain.
     // This is the one tell here that marks the RIGHT answer, so it behaves
     // backwards from the other two: taking a hedge OUT OF A DISTRACTOR shrinks
@@ -256,17 +256,26 @@ const BANKS = [
     // where three keys kept their "per protocol" because repositioning a
     // limb to restore a pulse genuinely is protocol-gated, and 0.37 after
     // Obstetrics (-> 36.6%), 0.35 after Scene Safety (-> 34.2%), 0.315
-    // after Bleeding & Shock (-> 30.7%), 0.295 after Pediatrics (-> 28.8%).
-    hedgeCeiling: 0.295,
+    // after Bleeding & Shock (-> 30.7%), 0.295 after Pediatrics (-> 28.8%),
+    // 0.28 after Legal & Ethical (-> 26.8%), which is within one standard
+    // error of the 25% baseline. This tell is effectively closed too.
+    hedgeCeiling: 0.28,
     // Measured 17.1% on the single-clause case against a 25% baseline.
     // 16.9% at the start, then 17.4% (Cardiac), 18.0% (Medical),
     // 18.5% (Geriatrics), 19.5% (Secondary Assessment),
     // 20.1% (Musculoskeletal & Burns), 21.2% (Obstetrics),
-    // 22.1% (Scene Safety), 22.9% (Bleeding & Shock), 24.2% (Pediatrics) —
-    // which is within a point of the 25% baseline. Once a tell sits at chance
-    // it has stopped being a tell, and the remaining work on this one is
-    // holding the number rather than moving it.
-    justifyFloor: 0.24,
+    // 22.1% (Scene Safety), 22.9% (Bleeding & Shock), 24.2% (Pediatrics),
+    // 26.9% (Legal & Ethical) — which is at chance, and very slightly past
+    // it. This tell is closed; the floor now holds the number rather than
+    // moving it.
+    //
+    // Worth knowing if it keeps climbing: a FLOOR cannot catch an overshoot.
+    // If a justification clause ever started marking the RIGHT answer — say
+    // above 32%, comfortably outside sampling noise on a sample this size —
+    // it would be a tell again in the other direction, and this row would
+    // need a ceiling as well. It is 26.9% on 119 items, where one standard
+    // error is about 4 points, so today it is noise around chance.
+    justifyFloor: 0.25,
   },
   {
     label: 'practice-bank.json',

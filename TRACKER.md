@@ -341,7 +341,7 @@ their lessons exist.
 
 | Item | Status |
 |---|---|
-| Rewrite options flagged by the three tell checks, one domain per commit | in progress — 9 domains done, ~6 to go |
+| Rewrite options flagged by the three tell checks, one domain per commit | in progress — 10 domains done, ~5 to go |
 
 The scale, measured before starting:
 
@@ -417,14 +417,20 @@ Running totals:
 | Obstetrics | 275 / 10.2% | 82 / 36.6% | 151 / 21.2% |
 | Scene Safety & Operations | 251 / 11.2% | 79 / 34.2% | 145 / 22.1% |
 | Bleeding & Shock | 228 / 12.7% | 75 / 30.7% | 140 / 22.9% |
-| Pediatrics | **205 / 14.1%** | **73 / 28.8%** | **132 / 24.2%** |
+| Pediatrics | 205 / 14.1% | 73 / 28.8% | 132 / 24.2% |
+| Legal & Ethical | **194 / 14.9%** | **71 / 26.8%** | **119 / 26.9%** |
 
-Thresholds now `absoluteFloor: 0.14`, `hedgeCeiling: 0.295`, `justifyFloor: 0.24`.
+Thresholds now `absoluteFloor: 0.145`, `hedgeCeiling: 0.28`, `justifyFloor: 0.25`.
 
-**The justification tell is effectively dead.** 16.9% → 24.2% against a 25%
-baseline. A trailing ", since ..." clause no longer tells a student anything
-about whether the option is right, which is the entire goal. What remains on
-that one is holding the number, not moving it.
+**Two of the three tells are closed.** Justification went 16.9% → 26.9% and
+hedge 40.2% → 26.8%, both against a 25% baseline and both now within one
+standard error of it. Neither a trailing ", since ..." clause nor a "per
+protocol" tells a student anything about whether an option is right, which is
+the whole goal. What remains on those two is holding the numbers, not moving
+them.
+
+Absolute is the one still moving: 6.2% → 14.9%, with 57% of the flagged items
+already gone.
 
 **Where distractor rewriting runs out.** Absolute has gone 6.2% → 9.3% across
 five domains, and the remaining work will keep moving it, but not to 25%.
