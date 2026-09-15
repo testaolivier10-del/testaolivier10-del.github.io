@@ -25,7 +25,11 @@ function fresh({ permission = 'default', days = 5, configured = true } = {}) {
   b.localStorage.setItem('levlprep_visits', JSON.stringify({ days }));
   b.load('assets/reminders.js');
   const R = b.window.LevlReminders;
-  if (configured) R._setKeys('BTestKeyNotReal', 'https://example.workers.dev');
+  // Set BOTH ways explicitly rather than letting the unconfigured case rely on
+  // the shipped file still having a blank key. It does not, now that a real
+  // site has one — and a test that silently starts asserting the opposite of
+  // what it says is worse than a test that fails.
+  R._setKeys(configured ? 'BTestKeyNotReal' : '', configured ? 'https://example.workers.dev' : '');
   return { b, R };
 }
 

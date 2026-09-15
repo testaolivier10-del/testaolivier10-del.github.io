@@ -50,7 +50,7 @@
      Empty means reminders are off entirely — no prompt, no button, no request.
      Same rule as analytics.js: a half-configured feature that quietly does
      something is worse than one that does nothing. */
-  var VAPID_PUBLIC_KEY = '';
+  var VAPID_PUBLIC_KEY = 'BME-SpC-0iXjJE9EdSNRU3KvP32vgPO-oUwl3Hw18MuqeweHnvOe53HgxKTy_njkiYjpfvcGDNzZ6Q7IvfiHfGc';
 
   /* Where the service worker asks what to say when a push wakes it. Same
      Worker as the study assistant; empty means reminders stay off.
