@@ -232,9 +232,10 @@ const BANKS = [
     lengthCeiling: 0.32,
     trueFalseCeiling: null,
     // Measured 6.6% and 42.9% when the wording tells were first guarded.
-    // Tightened as domains are rewritten: 0.06 at the start, 0.065 after
-    // Cardiac (6.2% -> 6.8%), 0.07 after Medical (-> 7.3%). 25% is the target.
-    absoluteFloor: 0.07,
+    // Tightened as domains are rewritten: 0.06 at the start, then 0.065
+    // (Cardiac, 6.2% -> 6.8%), 0.07 (Medical, -> 7.3%), 0.075 (Geriatrics,
+    // -> 7.9%). 25% is the target.
+    absoluteFloor: 0.075,
     // NOT tightened, and the reason is worth reading before the next domain.
     // This is the one tell here that marks the RIGHT answer, so it behaves
     // backwards from the other two: taking a hedge OUT OF A DISTRACTOR shrinks
@@ -244,10 +245,16 @@ const BANKS = [
     // share went 41.0% -> 42.2% — still inside the ceiling, but the wrong way.
     // For this tell the work is in the KEYS: a correct answer that needs "per
     // protocol" to be defensible is usually just a vaguer correct answer.
-    hedgeCeiling: 0.43,
+    //
+    // Geriatrics followed that rule — two padded keys committed to definite
+    // answers, no distractor hedges touched — and the share fell to 40.9%,
+    // which is the first real movement this number has made. Tightened to
+    // match.
+    hedgeCeiling: 0.415,
     // Measured 17.1% on the single-clause case against a 25% baseline.
-    // 16.9% at the start, 17.4% after Cardiac, 18.0% after Medical.
-    justifyFloor: 0.175,
+    // 16.9% at the start, then 17.4% (Cardiac), 18.0% (Medical),
+    // 18.5% (Geriatrics).
+    justifyFloor: 0.18,
   },
   {
     label: 'practice-bank.json',

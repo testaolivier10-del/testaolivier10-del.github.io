@@ -341,7 +341,7 @@ their lessons exist.
 
 | Item | Status |
 |---|---|
-| Rewrite options flagged by the three tell checks, one domain per commit | in progress — Cardiac and Medical done, ~13 to go |
+| Rewrite options flagged by the three tell checks, one domain per commit | in progress — 3 domains done, ~12 to go |
 
 The scale, measured before starting:
 
@@ -399,6 +399,24 @@ Two Medical keys kept their hedge deliberately: "generally does not experience
 complications" is true of sickle cell *trait*, and "the criteria generally
 require" is true of the anaphylaxis criteria, which have a second limb. A key
 made wrong to satisfy a metric is a worse outcome than the tell.
+
+**Geriatrics & Special Populations (Phase 6c):** 31 distractors rewritten and 2
+padded keys de-hedged, following the table above rather than fighting it. All
+three tells improved for the first time in the same commit.
+
+Running totals:
+
+| After | Absolute | Hedge | Justification |
+|---|---|---|---|
+| start | 450 / 6.2% | 102 / 40.2% | 183 / 16.9% |
+| Cardiac | 414 / 6.8% | 100 / 41.0% | 178 / 17.4% |
+| Medical | 385 / 7.3% | 90 / 42.2% | 172 / 18.0% |
+| Geriatrics | **355 / 7.9%** | **88 / 40.9%** | **173 / 18.5%** |
+
+Thresholds now `absoluteFloor: 0.075`, `hedgeCeiling: 0.415`, `justifyFloor: 0.18`.
+The hedge ceiling moved for the first time here — it had only ever been held,
+never tightened, because until this commit the work kept pushing it the wrong
+way.
 
 ## Phase 7 — Trust and polish
 
