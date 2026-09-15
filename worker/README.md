@@ -91,3 +91,101 @@ The chain exists so one retirement can no longer take the assistant down.
 
 If the Cloudflare dashboard's model catalog disagrees with these ids, the
 catalog is right.
+
+---
+
+## Study reminders
+
+The same Worker also delivers study reminders, on a cron. It is a separate
+concern from the assistant and shares nothing with it except the deployment.
+
+**The browser decides everything.** Whether to remind, when, and what the words
+say are all worked out in `assets/reminders.js` and written into one row. This
+is a courier. That is not a shortcut: the due counts live in `localStorage` and
+never leave it, so a server that decided when to remind would first have to be
+told everything the student has ever answered.
+
+**The push carries no payload.** A Web Push message *can* carry an encrypted
+one (RFC 8291: ECDH against the browser's key, HKDF, then AES128GCM). That is a
+few hundred lines of crypto whose failure mode is a push that silently never
+arrives. A payload-less push is valid: the browser wakes the service worker, and
+`sw.js` asks `/reminders/text` what to say. One extra round trip at a moment
+nobody is watching, in exchange for deleting the whole encryption path — and
+the text is then fetched when it is *shown* rather than when it was queued, so
+it cannot be stale.
+
+VAPID is still required and is implemented in `src/push.js`: it is how a push
+service knows the sender is us rather than anybody who scraped an endpoint.
+
+### Setting it up
+
+1. **Generate the key pair, once.**
+
+   ```
+   node ../scripts/vapid-keys.mjs
+   ```
+
+   Replacing this pair later invalidates every existing subscription — every
+   browser would have to grant permission again, and there is no way to ask a
+   browser that has already said yes. Generate once; do not regenerate for
+   tidiness.
+
+2. **Public key into two committed files**, `wrangler.toml` (`VAPID_PUBLIC_KEY`)
+   and `../assets/reminders.js` (`VAPID_PUBLIC_KEY`). Also set `ENDPOINT` in
+   `reminders.js` and `REMINDER_ENDPOINT` in `../sw.js` to this Worker's URL.
+   Until all of them are filled in, reminders are **completely inert**: no
+   prompt, no button, no request. Same rule as `analytics.js`.
+
+3. **Secrets.**
+
+   ```
+   wrangler secret put VAPID_PRIVATE_KEY
+   wrangler secret put SUPABASE_SERVICE_KEY
+   ```
+
+   The service key bypasses row-level security, which is the whole point —
+   `push_subscriptions` has RLS on with no policies, like every other table
+   here. It never goes near a browser.
+
+4. **Run `scripts/sql/schema.sql`** in the Supabase SQL editor. Sections 4 and 5
+   are the reminder tables and their functions.
+
+5. **Deploy with the CLI**, not the dashboard: the cron trigger lives in
+   `wrangler.toml` and the dashboard editor will not create it.
+
+   ```
+   wrangler deploy
+   ```
+
+### Email, for browsers that cannot do push
+
+iOS Safari only allows notifications for a site added to the home screen, which
+is a large share of the people this site is for. Email reaches them. It is
+**signed in only** (there is no other way to know an address, and asking for one
+would turn a free tool into a mailing list with a study app attached), strictly
+opt in, and never alongside push — enabling one turns the other off, because
+the same sentence arriving twice is the fastest way to make both unwelcome.
+
+```
+wrangler secret put RESEND_API_KEY
+```
+
+plus `REMINDER_FROM` (a verified domain on the provider, **not** a gmail
+address, or every message lands in spam) and `SITE_URL`. Leave `RESEND_API_KEY`
+unset and the whole email path is skipped silently.
+
+Every message carries a one-click unsubscribe — in the footer and in the
+`List-Unsubscribe` header, which serious mail clients turn into their own
+button. Without that header, somebody who wants out presses "spam" instead, and
+that costs the domain's reputation for every message it sends *including the
+password resets*.
+
+### The rule that matters most
+
+`MAX_UNANSWERED` is 3, in both senders. Three sends with no sign that the
+student came back and it goes quiet until they open the site on their own.
+
+One is not a reminder, it is a coin flip against whether they had their phone.
+A daily notification forever is how an app gets its permission revoked — and a
+revoked permission cannot be asked for again. Three days of "you have work
+waiting" and then silence is the most a study app has earned.

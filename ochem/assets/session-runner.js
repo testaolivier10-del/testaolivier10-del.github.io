@@ -688,6 +688,16 @@
           window.StudyHubAccount.promptToSave('Session finished \u2014 ' + S.index + ' questions');
         }, 2600);
       }
+
+      /* Reminders ask at the same high point, and only if the save prompt did not
+             take it. Both draw the same .levl-prompt and only one is ever in the DOM at
+             once — LevlReminders.offer() checks for the other and stands down, so the
+             two cannot stack and the student is never asked for two things at the end
+             of one session. Saving progress wins the tie: it protects work that already
+             exists, where a reminder is about work that does not exist yet. */
+      if(window.LevlReminders && S && S.index >= 8){
+        setTimeout(function(){ window.LevlReminders.offer('session-finished'); }, 3400);
+      }
       config.onFinish(S);
     }
 

@@ -14,3 +14,29 @@ name = "RATE_LIMITER"
 type = "ratelimit"
 namespace_id = "1001"
 simple = { limit = 12, period = 60 }
+
+# The reminder cron. Every fifteen minutes rather than once a day, because a
+# student picks their own hour and there are as many local times as there are
+# time zones — a daily cron would deliver everybody's reminder at whatever hour
+# UTC happened to be chosen. Each tick only reads rows whose time has actually
+# come, so an idle tick costs one indexed query.
+[triggers]
+crons = ["*/15 * * * *"]
+
+# Reminders need the site's own database, since push_subscriptions is locked
+# the same way every other table is (RLS on, no policies) and the browser can
+# only reach it through a security-definer function.
+[vars]
+SUPABASE_URL = "https://bsfcqrczehbcctwhxmrj.supabase.co"
+# The public half of the VAPID pair. Public on purpose — the same value is in
+# assets/reminders.js, because the browser has to send it when subscribing.
+# Generate both halves with: node scripts/vapid-keys.mjs
+VAPID_PUBLIC_KEY = ""
+VAPID_SUBJECT = "mailto:testaolivier10@gmail.com"
+
+# Secrets, NOT set here. `wrangler secret put NAME`, or Settings -> Variables
+# -> add as Secret in the dashboard:
+#
+#   VAPID_PRIVATE_KEY      the private half of the pair above
+#   SUPABASE_SERVICE_KEY   service role key; bypasses RLS, so it never goes
+#                          near a browser

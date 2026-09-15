@@ -104,7 +104,12 @@ const BUDGETS = [
 
   // The privacy policy: the page that has to load well for somebody who has
   // not decided yet whether to trust the site.
-  ['privacy.html', 10],
+  //
+  // Raised from 10 when study reminders were added. This page carries the
+  // switch for them and the prose explaining exactly what is stored, and both
+  // of those belong here rather than anywhere else — the cost is a page that
+  // tells the truth at greater length, which is the one thing this page is for.
+  ['privacy.html', 12],
 ];
 
 const REF_RE = /(?:href|src)="([^"]+)"/g;

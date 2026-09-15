@@ -14,6 +14,9 @@
  * Deploy: see ../README.md
  */
 
+import { runReminders, reminderText } from './reminders.js';
+import { runEmailReminders, unsubscribe } from './email.js';
+
 // Tried in order until one answers. A single hard-coded model is a time bomb:
 // this shipped on @cf/meta/llama-3.1-8b-instruct, which the docs still list but
 // the platform had deprecated months earlier, and the assistant fell back to
@@ -111,7 +114,7 @@ function corsHeaders(origin) {
   const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
   return {
     'Access-Control-Allow-Origin': allowed,
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Max-Age': '86400',
     'Vary': 'Origin',
@@ -126,12 +129,54 @@ function json(body, status, origin) {
 }
 
 export default {
+  /* The cron that delivers study reminders. Separate from fetch() entirely: it
+     is not triggered by anybody's request and shares nothing with the AI path.
+     See src/reminders.js for why the browser decides everything and this only
+     delivers. */
+  async scheduled(event, env, ctx) {
+    // Both channels on the same tick, and independently: an email provider
+    // that is down must not stop the push reminders, and vice versa.
+    ctx.waitUntil(Promise.allSettled([
+      runReminders(env).then((r) => console.log('push reminders', JSON.stringify(r))),
+      runEmailReminders(env).then((r) => console.log('email reminders', JSON.stringify(r))),
+    ]).then((results) => {
+      results.forEach((r) => { if (r.status === 'rejected') console.log('reminder run failed', String(r.reason)); });
+    }));
+  },
+
   async fetch(request, env) {
     const origin = request.headers.get('Origin') || '';
+    const path = new URL(request.url).pathname;
 
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: corsHeaders(origin) });
     }
+
+    /* The only GET on this Worker, and the only route that is not the
+       assistant. A service worker woken by a push asks what to say; the
+       notification text is fetched at the moment it is shown rather than
+       carried in the push, which is what lets the push itself be payload-less
+       and skips the entire RFC 8291 encryption path. See src/push.js.
+
+       Answered for any origin, because the caller is a service worker whose
+       fetch carries no Origin header at all — and because it returns only what
+       somebody already holding that endpoint could learn anyway. */
+    /* The one-click way out of the reminder emails, from the footer link and
+       from the List-Unsubscribe header. A GET, because that is what a link in
+       an email is, and it must work with nobody signed in on a device that has
+       never seen this site. */
+    if (path === '/api/unsubscribe' || path === '/reminders/unsubscribe') {
+      return unsubscribe(request, env);
+    }
+
+    if (path === '/reminders/text') {
+      if (request.method !== 'GET') return json({ error: 'GET only' }, 405, origin);
+      const res = await reminderText(request, env);
+      const headers = new Headers(res.headers);
+      headers.set('Access-Control-Allow-Origin', '*');
+      return new Response(res.body, { status: res.status, headers });
+    }
+
     if (request.method !== 'POST') {
       return json({ error: 'POST only' }, 405, origin);
     }

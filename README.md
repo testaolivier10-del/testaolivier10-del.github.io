@@ -51,6 +51,10 @@ assets/                Shared across every course
                          has an account.js, because the errors worth hearing
                          about are the ones early enough to stop a page working
                          — see When a page breaks
+  reminders.js         Study reminders: when to ask, what the notification
+                         says, and the row the courier reads. Inert until a
+                         VAPID key is configured — see Nothing brought anyone
+                         back
   site-search.js       Matching, ranking and snippet highlighting, shared by
                          both courses' search pages — see Searching a course
   report-question.js   "This looks wrong" — the one-tap report under every
@@ -547,6 +551,28 @@ Three things, all mounted from `assets/site-chrome.js` rather than written into 
 - **Answer announcements** (`assets/announce.js`) — a polite live region that speaks correct/incorrect and the explanation, wired into the one choke point each course's feedback passes through.
 - **Reduced motion** — a blanket CSS rule in `assets/theme.css`, plus `window.LevlMotion` for the movement CSS cannot reach (smooth scrolls, the body map's camera flights).
 
+## Nothing brought anyone back (`assets/reminders.js`)
+
+The site had a real spaced-repetition scheduler and no way to say anything with it. `ochem/assets/mastery-engine.js` computes a due date per concept; `nremt/practice.html` builds a due queue from the same idea; `hub-progress.js` keeps a streak, a freeze that bridges one missed day, and a goal that eases off after a bad week. Every bit of that machinery assumed the student *chooses* to open the site.
+
+A scheduler that knows forty items are due today and has no way to say so is doing half its job. And the day somebody loses a twelve-day streak is very often the last day they open the site at all — the run was the reason to come back, and nothing was ever going to tell them it was about to end.
+
+**The browser decides everything.** Whether to remind, when, and what the words say are all worked out here and written into one row; the Worker is a courier. That is not a shortcut — the due counts live in `localStorage` and never leave it, so a server that decided when to remind would first have to be told everything the student has ever answered. This way it is told a number and a sentence. `privacy.html` says exactly that under **Study reminders**.
+
+**It says something true or it says nothing.** `compose()` builds the sentence from what is actually waiting: one course names the course, two name both, and a record older than a week is not quoted at all. Nothing due and no streak worth protecting returns `null`, and `null` clears the send time rather than sending something empty. A reminder saying "12 questions due" to somebody who cleared them this morning is worse than no reminder — it is a reason to distrust the next one, and the next one is the one that was going to work. Both courses call `report()` from the page that already computes the number for its own display, which is the cheapest place to keep it honest.
+
+**Asking is the expensive part.** A browser gives a site exactly one notification permission prompt; a "no" is usually permanent and cannot be asked for again from script. So the rules are the same shape as the other two nudges (see *Two nudges, one shape*) and tighter: never a first visit, never when there is nothing to remind them about — an offer to be told about work that does not exist is just a permission prompt — at most three times ever, a week apart, silent for good after two refusals, and never at the same time as the save prompt, which wins the tie because it protects work that already exists.
+
+**It stops on its own.** `MAX_UNANSWERED` is 3. Three sends with no sign the student came back and it goes quiet until they open the site themselves. One is not a reminder, it is a coin flip against whether they had their phone; a daily notification forever is how an app gets its permission revoked, and a revoked permission cannot be asked for again.
+
+**The push carries no payload.** A Web Push message can carry an encrypted one (RFC 8291: ECDH, HKDF, AES128GCM) — a few hundred lines of crypto whose failure mode is a push that silently never arrives. A payload-less push is valid: `sw.js` wakes and asks the Worker what to say. One round trip at a moment nobody is watching, in exchange for deleting the whole encryption path, and the text is fetched when it is *shown* rather than when it was queued, so it cannot be stale. VAPID is still implemented, in `worker/src/push.js`.
+
+**Email is the fallback, and only that.** iOS Safari allows notifications only for a site added to the home screen, which is a large share of the people this site is for. Email reaches them: signed in only (there is no other way to know an address, and asking for one would turn a free tool into a mailing list with a study app attached), strictly opt in, and never alongside push — enabling one turns the other off, because the same sentence twice is the fastest way to make both unwelcome. Every message carries a one-click unsubscribe in the footer *and* in the `List-Unsubscribe` header; without that header, somebody who wants out presses "spam" instead, and that costs the domain's reputation for every message it sends including the password resets.
+
+`privacy.html`'s promise that there was "no product email of any kind" had to change in the same commit as the table. That paragraph has now been wrong twice and corrected twice, and says so.
+
+Setup — VAPID keys, secrets, the cron — is in `worker/README.md`. Everything is inert until it is configured: no prompt, no button, no request, same rule as `analytics.js`. Tested in `scripts/test/reminders.test.mjs`.
+
 ## Searching a course
 
 Each course has a search page that indexes the whole course in the browser and sends nothing anywhere. `assets/site-search.js` holds the part that is the same in both — matching, ranking, snippet highlighting — because it used to live inline in `nremt/search.html` and the moment a second course wanted a search page the choice was to share it or copy it, and the two per-course copies of `theme.css` are what copying it looks like eighteen months later.
@@ -682,10 +708,11 @@ The numbers are a **ratchet**, same rule as the answer-tell check: lower a budge
 
 ### Unit tests
 
-A second job runs `node --test scripts/test/*.test.mjs` — 141 tests over the pieces whose failure modes are silent. Everything above checks that the site is *wired* correctly; nothing checked that it *scores* correctly. An interval that doubles too eagerly buries a shaky concept for four months, a decay curve that bites too hard makes yesterday's work look undone, a streak that resets in the wrong timezone eats a 40-day run. None of that throws, and none of it would have been caught by a link checker — the student just gets worse practice and no one finds out.
+A second job runs `node --test scripts/test/*.test.mjs` — 161 tests over the pieces whose failure modes are silent. Everything above checks that the site is *wired* correctly; nothing checked that it *scores* correctly. An interval that doubles too eagerly buries a shaky concept for four months, a decay curve that bites too hard makes yesterday's work look undone, a streak that resets in the wrong timezone eats a 40-day run. None of that throws, and none of it would have been caught by a link checker — the student just gets worse practice and no one finds out.
 
 - `scripts/test/hub-progress.test.mjs` — the level curve (pinned: changing it demotes every existing user), XP accumulation and per-subject split, streak continuation across days, goal tracking, rank titles, day-log pruning.
 - `scripts/test/mastery-engine.test.mjs` — unseen vs. scored-zero, the learning rate settling as evidence accumulates, the same-day guard that stops one good session reaching a six-month interval, the interval cap, the decay floor, due-ness, leech benching and its release on a lesson read, the daily review cap, mistake de-duplication, tier records.
+- `scripts/test/reminders.test.mjs` — the asking rules and the composed sentence. Both fail silently in the expensive direction: a rule one condition too loose burns the one permission prompt a browser will ever give, and a sentence quoting a stale number teaches people to ignore the next one.
 - `scripts/test/site-search.test.mjs` — AND vs OR, the ranking order, the escape-then-mark ordering, the one-fragment-per-URL rule, and that ranking does not mutate the index it is handed.
 - `scripts/test/account-delete.test.mjs` — what a "delete my account" erases and, more to the point, what it leaves: the analytics opt-out, anything not on the allow-list, and the Supabase session the delete itself needs.
 - `scripts/test/report-question.test.mjs` — the once-per-browser receipt surviving a re-render, the bounded store, and the reason list matching what the database will actually accept.

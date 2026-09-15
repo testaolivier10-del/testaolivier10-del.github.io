@@ -67,7 +67,7 @@
   <div class="hero">
     <div class="eyebrow">Privacy</div>
     <h1>What leaves your browser.</h1>
-    <p class="lede">Short version: almost nothing. There are no ads and no cookies on this site, and nothing here follows you anywhere else on the web. Everything you study is stored on your own device unless you choose to sign in. There is cookieless analytics, and <a href="#site-analytics">Site analytics</a> below lists every field it records. When a page breaks, a short report of the error is sent so it can be fixed; <a href="#errors">When a page breaks</a> lists exactly what is in one.</p>
+    <p class="lede">Short version: almost nothing. There are no ads and no cookies on this site, and nothing here follows you anywhere else on the web. Everything you study is stored on your own device unless you choose to sign in. There is cookieless analytics, and <a href="#site-analytics">Site analytics</a> below lists every field it records. When a page breaks, a short report of the error is sent so it can be fixed; <a href="#errors">When a page breaks</a> lists exactly what is in one. <a href="#reminders">Study reminders</a> are off unless you turn them on.</p>
     <p class="updated">Last updated 14 September 2026</p>
   </div>
 
@@ -124,13 +124,26 @@
           <p class="note" id="anNote" role="status" aria-live="polite" aria-atomic="true"></p>
         </div>
 
+        <h2 id="reminders">Study reminders</h2>
+        <p>The site can send you <strong>one notification a day</strong>, at a time you pick, when you actually have questions due for review or a streak about to lapse. It is off unless you turn it on, and nothing about it runs until you do.</p>
+        <p>What it needs to work: the address your browser&rsquo;s own push service gives us, which is what a notification is delivered to. Alongside it we keep <strong>the time your next reminder is due and the sentence it will say</strong> &mdash; that is all.</p>
+        <p>The number in that sentence is worked out <em>in your browser</em>, from the study records that never leave it. We are told &ldquo;12&rdquo; and a time; we are not told what the twelve are, which subjects you study, or anything you have answered. Turning reminders off deletes the row, rather than flagging it as off.</p>
+        <p>It also stops on its own. Three reminders with no sign that you have come back and it goes quiet until you open the site again &mdash; there is no re-engagement campaign here and no second notification because the first was ignored.</p>
+        <div class="controls">
+          <div class="row">
+            <button type="button" class="btn-press sm" id="remToggle" aria-pressed="false">Checking&hellip;</button>
+          </div>
+          <p class="note" id="remNote" role="status" aria-live="polite" aria-atomic="true"></p>
+        </div>
+
         <h2>Signing in is optional</h2>
         <p>If you create an account, the same progress described above is also copied to a row in our database so it follows you to another device. In that case we store:</p>
         <ul>
           <li>Your <strong>email address</strong>, used to sign you in and nothing else.</li>
           <li>Your <strong>progress data</strong> — the same values already on your device.</li>
         </ul>
-        <p>We send you email only when you ask us to, and only to get you into your account: confirming a new account, a sign-in link if you request one, and a password reset if you ask for one. There is no newsletter, no product email and no marketing of any kind, so there is nothing to unsubscribe from. This page previously said we did not email you at all, which stopped being true when password resets and sign-in links were added.</p>
+        <p>We send you email only when you ask us to. Four of the five are about getting you into your account: confirming a new account, a sign-in link if you request one, a password reset, and a confirmation if you change your address. The fifth is the <a href="#reminders">study reminder</a> above, which is off unless you switch it on, only exists for browsers that cannot do notifications, arrives at most once a day, and carries a one-click unsubscribe that needs no sign-in. There is still no newsletter and no marketing of any kind.</p>
+        <p>This paragraph has been wrong twice and been corrected twice: it said we did not email you at all until password resets were added, and it said there was no product email until study reminders were. If it is ever wrong again, that is a bug in this page, not a change of policy.</p>
         <p>The data is never sold, shared or used for advertising. Accounts and storage are handled by <strong>Supabase</strong>, acting as our processor; each account can read and write only its own row, enforced by the database rather than by the app.</p>
         <p><strong>You can delete your account yourself, from the site.</strong> Open the account menu in the header and choose <em>Delete account</em>. It removes your account, your email address and the synced copy of your progress immediately and permanently; nobody has to approve it and there is nothing to wait for. Because your progress also lives in this browser separately from the account, the same screen offers to erase that too &mdash; and offers you a backup file first, since this is the one thing on the site that deletes your work on purpose. This used to be an email request, which is a deletion right in roughly the sense that a locked door with a doorbell is an exit.</p>
         <p>If the sign-in box offers a provider button — Google, Apple or GitHub — using it is optional and never required. If you do, that provider handles the sign-in itself and therefore learns that you signed in here and when; we receive your email address from them and nothing else, and no other route into your account sends them anything. Signing in with an email and password, or with a sign-in link, involves no provider at all.</p>
@@ -179,6 +192,7 @@
 
 <script src="assets/errors.js" defer></script>
 <script src="assets/account.js" defer></script>
+<script src="assets/reminders.js" defer></script>
 <!-- This page draws its own header rather than calling LevlChrome.render, so
      nothing has mounted analytics.js for it. Loaded here on its own account:
      the opt-out switch below needs LevlAnalytics to read and write. -->
@@ -290,6 +304,113 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     sync();
+  })();
+
+  /* The reminders switch. Four states, not two, because "off" and "your
+     browser will not let us" and "this build has no keys configured" and "you
+     blocked notifications six months ago" are four different things and only
+     one of them is fixed by pressing a button. A switch that offers to turn on
+     something that cannot turn on is worse than no switch. */
+  (function(){
+    var btn = document.getElementById('remToggle');
+    var note = document.getElementById('remNote');
+    if(!btn || !note) return;
+
+    function ready(fn){
+      // reminders.js is mounted asynchronously by site-chrome.js, so it may not
+      // be here yet when this runs.
+      if(window.LevlReminders) return fn();
+      var tries = 0;
+      var t = setInterval(function(){
+        if(window.LevlReminders || ++tries > 40){ clearInterval(t); fn(); }
+      }, 100);
+    }
+
+    ready(function(){
+      var R = window.LevlReminders;
+      if(!R || !R.configured()){
+        btn.hidden = true;
+        note.textContent = 'Reminders are not switched on for this site yet, so there is nothing here to turn on.';
+        note.className = 'note';
+        return;
+      }
+      /* No push in this browser. That is iOS Safari without the site on the
+         home screen, which is a large share of the people this site is for, so
+         it gets the email channel instead of a dead end — but only if there is
+         an account to send to, because there is no other way to know an
+         address and this site is not going to start asking for one. */
+      if(!R.supported()){
+        if(!R.emailAvailable()){
+          btn.hidden = true;
+          note.textContent = 'This browser cannot send notifications. On an iPhone or iPad, add the site to your home screen first \u2014 Safari only allows them for an installed app. Or sign in, and we can email you instead.';
+          note.className = 'note';
+          return;
+        }
+        var onE = R.emailSettings().on;
+        var syncE = function(){
+          var on = R.emailSettings().on;
+          btn.textContent = on ? 'Stop emailing me' : 'Email me instead';
+          btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+          btn.disabled = false;
+          note.className = 'note' + (on ? ' good' : '');
+          note.textContent = on
+            ? 'On. One email a day at most, only when something is waiting, and every one has a one-click way out.'
+            : 'This browser cannot send notifications, but we can email you instead \u2014 at most once a day, only when something is waiting.';
+        };
+        syncE();
+        btn.addEventListener('click', function(){
+          var on = R.emailSettings().on;
+          btn.disabled = true;
+          btn.textContent = 'Just a moment\u2026';
+          (on ? R.disableEmail() : R.enableEmail()).then(function(res){
+            syncE();
+            if(!on && res && !res.ok){
+              note.className = 'note bad';
+              note.textContent = 'That did not work just now. Check your connection and try again.';
+            }
+          });
+        });
+        return;
+      }
+      if(window.Notification && window.Notification.permission === 'denied'){
+        btn.hidden = true;
+        note.textContent = 'Notifications are blocked for this site in your browser\u2019s settings. We cannot ask again from here \u2014 that has to be changed there.';
+        note.className = 'note';
+        return;
+      }
+
+      function sync(){
+        var on = R.settings().subscribed;
+        btn.textContent = on ? 'Turn reminders off' : 'Turn reminders on';
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        btn.disabled = false;
+        note.className = 'note' + (on ? ' good' : '');
+        note.textContent = on
+          ? 'On. One notification a day, only when something is actually waiting.'
+          : 'Off. Nothing is sent and no subscription is stored.';
+      }
+      sync();
+
+      btn.addEventListener('click', function(){
+        var on = R.settings().subscribed;
+        btn.disabled = true;
+        btn.textContent = on ? 'Turning off\u2026' : 'Asking your browser\u2026';
+        (on ? R.disable() : R.enable()).then(function(res){
+          if(!on && res && !res.ok){
+            btn.disabled = false;
+            sync();
+            note.className = 'note bad';
+            note.textContent = res.reason === 'denied'
+              ? 'Your browser blocked the request. You can allow notifications for this site in its settings.'
+              : res.reason === 'unsupported'
+                ? 'This browser cannot send notifications.'
+                : 'That did not work just now. Check your connection and try again.';
+            return;
+          }
+          sync();
+        });
+      });
+    });
   })();
 
   (function(){

@@ -426,6 +426,15 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     var due = dueForReviewCount();
+    // Tell the reminder scheduler what is waiting. This page already works the
+    // number out for its own call-to-action, so it is the cheapest place on the
+    // site to keep a reminder honest — and an honest number is the whole
+    // difference between a reminder people act on and one they turn off.
+    if(window.LevlReminders){
+      window.LevlReminders.report('nremt', {
+        due: due, label: 'NREMT-EMT Prep', url: '/nremt/practice.html?start=spaced'
+      });
+    }
     if(due > 0){
       cta.textContent = 'Continue \u2014 ' + due + ' due for review';
       cta.href = 'practice.html?start=spaced';

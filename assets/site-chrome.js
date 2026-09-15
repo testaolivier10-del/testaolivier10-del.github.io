@@ -286,7 +286,24 @@
     mountTutor(cfg);
     mountAnnouncer();
     mountAnalytics();
+    mountReminders();
     mountMotion();
+  }
+
+  /* Study reminders, mounted here for the same reason as the three above: the
+     scheduler that decides what is due lives in each course, but the thing
+     that can say so belongs on every page. assets/reminders.js is inert until
+     a VAPID key is configured in it, so this is a no-op until then. */
+  function mountReminders(){
+    // Already loaded means a page asked for it directly — privacy.html does,
+    // because it carries the on/off switch and draws its own header rather
+    // than calling render(), so this hook never runs there.
+    if(window.__levlRemindersMounted || window.LevlReminders) return;
+    window.__levlRemindersMounted = true;
+    var el = document.createElement('script');
+    el.src = '/assets/reminders.js';
+    el.defer = true;
+    document.head.appendChild(el);
   }
 
   /* The XP chip, the level-up toast and the bars filling on arrival. Mounted
