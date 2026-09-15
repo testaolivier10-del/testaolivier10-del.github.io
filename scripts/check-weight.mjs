@@ -98,6 +98,13 @@ const BUDGETS = [
   // budget again. See TRACKER.md.
   ['nremt/study-notes.html', 172],
   ['nremt/glossary.html', 10],
+
+  // Added when the scenario set went from eight cases to twenty-five and the
+  // page went from 73 KB to 168 KB raw. Measured at 46.5 KB gzipped and
+  // budgeted at 50. Like study-notes.html, every case is inline and a reader
+  // who opens one downloads all twenty-five; if this number needs to move
+  // again, move the data out of the page instead.
+  ['nremt/scenario-sim.html', 50],
   ['ochem/learn.html', 3],
 
   // Search. Both build a large index at runtime; this is the shell, not the

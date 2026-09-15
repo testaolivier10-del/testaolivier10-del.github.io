@@ -1524,6 +1524,466 @@ const SCENARIOS = [
       s18_end_good: { ending: "good", text: "Warm, dry, position, stimulate — then ventilate, and only then compress. The ratio that makes newborn resuscitation different is 3:1 rather than 30:2, and the reason is the same reason ventilation comes first: a newborn's arrest is a breathing problem almost every time, so the intervention that fixes most of them is air. Compressions are rarely needed, and they are never the first thing." },
       s18_end_ok: { ending: "neutral", text: "He does well. Withdrawing all support at the first cry is premature — compressions stop above 60, but ventilation continues until his own breathing is adequate, and a newborn who needed compressions a minute ago has not yet earned that assumption." }
     }
+  },
+  {
+    id: "s19",
+    title: "The Man Pacing in the Parking Lot",
+    domain: "Behavioral & Psychiatric",
+    blurb: "Scene safety is not a box you tick at the start. It is the whole call.",
+    startNode: "s19_start",
+    nodes: {
+      s19_start: {
+        vitals: "Unable to obtain — patient will not permit contact",
+        text: "Dispatch sends you for a 'man acting strangely'. From the ambulance you see a 34-year-old man pacing a tight line beside a parked car, talking rapidly to himself, clenching and unclenching his fists. He has not seen you yet. There is no one else in the lot and no police on scene.",
+        choices: [
+          { text: "Stay back, request law enforcement, and observe from a distance while you plan an approach", next: "s19_staged" },
+          { text: "Walk straight up to him and start taking a history", next: "s19_approached", consequence: "You have no idea yet what this is, whether he is armed, or whether he perceives you as a threat. Approaching an agitated stranger alone, in an empty lot, with no exit planned, is how EMTs get hurt — and an injured EMT helps nobody, least of all him." },
+          { text: "Wait in the ambulance with the doors locked until police arrive, without observing further", next: "s19_passive", consequence: "Staging is right; going blind is not. From a safe distance you can watch for the things that change the call — a weapon, a medical cause, deterioration — and that observation is part of the assessment." }
+        ]
+      },
+      s19_approached: {
+        vitals: "Unable to obtain",
+        text: "He wheels around, shouts at you to get back, and takes a step forward. You are between him and your ambulance.",
+        choices: [
+          { text: "Back away calmly along a clear path, put distance and an object between you, and call for law enforcement", next: "s19_staged" }
+        ]
+      },
+      s19_passive: {
+        vitals: "Unable to obtain",
+        text: "Several minutes pass. When police arrive you have no more information than dispatch gave you.",
+        choices: [
+          { text: "Begin observing and planning the approach now, with police present", next: "s19_staged" }
+        ]
+      },
+      s19_staged: {
+        vitals: "Observed: RR ~24, diaphoretic, no visible weapon",
+        text: "From a distance you note he is sweating heavily, breathing fast, and has no visible weapon. A woman who works nearby says he is diabetic and 'went weird like this once before, and they gave him sugar'. Police arrive and stand by.",
+        choices: [
+          { text: "Treat this as a possible medical cause — plan a calm approach, one person talking, and get a glucose reading as soon as he permits it", next: "s19_approach_planned" },
+          { text: "Treat it as purely psychiatric and wait for police to restrain him for transport", next: "s19_psych_assumption", consequence: "Agitation is a symptom, not a diagnosis. Hypoglycemia, hypoxia, head injury, sepsis and intoxication all present as a combative patient, and the diabetic history you were just handed is the most treatable of them." }
+        ]
+      },
+      s19_psych_assumption: {
+        vitals: "Observed: diaphoretic, RR 26",
+        text: "He is restrained and loaded. In the back he is still agitated and sweating. Nobody has checked a glucose.",
+        choices: [
+          { text: "Check a blood glucose now", next: "s19_glucose_late" }
+        ]
+      },
+      s19_approach_planned: {
+        vitals: "HR 118 · RR 24 · Skin cool and diaphoretic",
+        text: "One EMT speaks, calmly and at a normal volume, from a few steps away, with a clear path behind. You avoid crowding him or standing over him. After a couple of minutes he stops pacing and lets you near enough to touch his hand, which is cold and wet.",
+        choices: [
+          { text: "Check a blood glucose", next: "s19_glucose" },
+          { text: "Ask him a long list of history questions first while you have his attention", next: "s19_questions", consequence: "Long questioning of an agitated patient uses up the cooperation you just earned. The single test most likely to explain everything in front of you takes fifteen seconds." }
+        ]
+      },
+      s19_questions: {
+        vitals: "HR 122 · RR 26",
+        text: "He becomes irritable again and starts to pull away.",
+        choices: [
+          { text: "Stop and check a blood glucose", next: "s19_glucose" }
+        ]
+      },
+      s19_glucose: {
+        vitals: "HR 118 · RR 24 · Glucose 38 mg/dL",
+        text: "His glucose is 38. He is agitated and confused but is following simple instructions, can hold his own head up, and swallows when asked.",
+        choices: [
+          { text: "Give oral glucose, since he can protect his own airway and swallow, and reassess", next: "s19_treated" },
+          { text: "Restrain him first and transport, treating the glucose at the hospital", next: "s19_restrained_anyway", consequence: "He has a treatable cause of his agitation and an intact airway. Restraining a hypoglycemic patient instead of correcting the hypoglycemia treats the behavior and leaves the illness running." }
+        ]
+      },
+      s19_restrained_anyway: {
+        vitals: "HR 124 · Glucose 36 mg/dL",
+        text: "Restrained and in the ambulance, he is no less agitated and his glucose is lower.",
+        choices: [
+          { text: "Give glucose now and reassess", next: "s19_treated" }
+        ]
+      },
+      s19_glucose_late: {
+        vitals: "HR 126 · Glucose 34 mg/dL",
+        text: "34 mg/dL. He has been restrained and combative for twenty minutes with a correctable cause nobody looked for.",
+        choices: [
+          { text: "Treat the hypoglycemia, reassess the need for the restraints, and document the timeline honestly", next: "s19_end_ok" }
+        ]
+      },
+      s19_treated: {
+        vitals: "HR 96 · RR 18 · Glucose 84 mg/dL",
+        text: "Within minutes he is calm, oriented, apologetic and embarrassed. He has no memory of the pacing. He asks whether he really has to go to the hospital.",
+        choices: [
+          { text: "Explain why evaluation matters, document his capacity carefully if he still refuses, and involve medical direction", next: "s19_end_good" },
+          { text: "He is alert and oriented now, so simply accept the refusal and clear", next: "s19_end_ok", consequence: "He may well have the capacity to refuse, and establishing that is a documented process rather than an impression — especially in a patient whose mental status was altered ten minutes ago. Medical direction and a careful record protect him and you." }
+        ]
+      },
+      s19_end_good: { ending: "good", text: "Staged, observed, approached calmly, and found the medical cause hiding under the behavior. Scene safety here was not a box ticked on arrival — it was the reason there was anyone left to treat him. And the most important idea in the call is the one the bystander handed over for free: agitation is a symptom, and hypoglycemia, hypoxia, head injury and sepsis all wear it. Check the glucose." },
+      s19_end_ok: { ending: "neutral", text: "He is treated and does well. Either the hypoglycemia ran for twenty minutes longer than it needed to because the behavior was taken as the diagnosis, or a refusal was accepted from a patient whose capacity had not been established and documented. Both are recoverable. Neither is what you would want written down." }
+    }
+  },
+  {
+    id: "s20",
+    title: "She Says She Is Fine and She Wants You to Leave",
+    domain: "Behavioral & Medical-Legal",
+    blurb: "A refusal is a decision she is allowed to make — unless she is not.",
+    startNode: "s20_start",
+    nodes: {
+      s20_start: {
+        vitals: "HR 88 · BP 118/72 · RR 16 · SpO₂ 99% · Glucose 96 mg/dL",
+        text: "A 22-year-old woman is sitting on her bed. Her roommate called after finding a note and an empty pill bottle in the bathroom bin. The patient is alert, calm, oriented, and says she threw the bottle out weeks ago, the note is old, and she wants everyone to leave. She answers every question appropriately. Her vital signs are normal.",
+        choices: [
+          { text: "Keep talking with her, ask directly and without judgment about self-harm, and gather information from the roommate and the scene", next: "s20_engaged" },
+          { text: "She is alert and oriented, so take the refusal, have her sign, and clear", next: "s20_quick_refusal", consequence: "Alert and oriented is not the same as having capacity for this decision. Capacity means she understands her situation, the risks of refusing, and the alternatives, and can express a reasoned choice — and active suicidal ideation is one of the recognized reasons a patient may be unable to do that." },
+          { text: "Tell her she has no choice and she is going, then take hold of her arm", next: "s20_forced", consequence: "Even where transport against a patient's wishes is lawful, leading with force rather than conversation loses the cooperation that makes it safe, and touching a patient who has not consented is where a call becomes an assault allegation." }
+        ]
+      },
+      s20_forced: {
+        vitals: "HR 104 · BP 124/78 · RR 20",
+        text: "She pulls away and becomes distressed and tearful, and now refuses to speak to you at all.",
+        choices: [
+          { text: "Let go, step back, apologize, and rebuild the conversation", next: "s20_engaged" }
+        ]
+      },
+      s20_quick_refusal: {
+        vitals: "HR 88 · BP 118/72",
+        text: "As you are packing up, the roommate quietly shows you the note. It is dated today.",
+        choices: [
+          { text: "Stop, go back in, and restart the assessment properly", next: "s20_engaged" },
+          { text: "You already have a signed refusal — leave", next: "s20_end_bad" }
+        ]
+      },
+      s20_engaged: {
+        vitals: "HR 92 · BP 120/74 · RR 16 · SpO₂ 99%",
+        text: "You sit down at her level and ask plainly whether she has been thinking about hurting herself. She goes quiet, then says she took 'some' of the pills about an hour ago and that she does not want to be here anymore. She still does not want to go to the hospital.",
+        choices: [
+          { text: "Treat this as a patient who lacks capacity to refuse, involve medical direction and law enforcement, and arrange transport as calmly as possible", next: "s20_transport_decision" },
+          { text: "Respect her stated wish and leave, since she is an adult", next: "s20_end_bad", consequence: "Asking the question directly is what found the overdose. A patient who has just taken an overdose and states she does not want to be alive is not making a decision the law treats as a competent refusal, and leaving her is the outcome every element of this call exists to prevent." }
+        ]
+      },
+      s20_transport_decision: {
+        vitals: "HR 94 · BP 118/72 · RR 16 · SpO₂ 99%",
+        text: "Medical direction agrees. Police are present. She is crying but not resisting.",
+        choices: [
+          { text: "Search for and remove anything she could use to harm herself, keep one EMT with her at all times, and transport", next: "s20_transported" },
+          { text: "Restrain her preemptively because she is a psychiatric patient", next: "s20_unnecessary_restraint", consequence: "Restraints are for a patient who is a danger right now and cannot be managed otherwise, not a routine step for a diagnosis. She is cooperative and crying. Restraining her here is both unnecessary and likely to make the rest of the transport harder." }
+        ]
+      },
+      s20_unnecessary_restraint: {
+        vitals: "HR 112 · BP 128/80 · RR 22",
+        text: "She becomes frightened and begins to struggle against restraints she did not need.",
+        choices: [
+          { text: "Remove them, return to talking with her, and transport with continuous observation", next: "s20_transported" }
+        ]
+      },
+      s20_transported: {
+        vitals: "HR 90 · BP 116/72 · RR 16 · SpO₂ 99%",
+        text: "She is transported with one EMT beside her the whole way. She talks a little. You ask what she took, how much, and when, and whether she took anything with it.",
+        choices: [
+          { text: "Bring the pill bottle and the note with you, and hand off both the clinical details and the timeline", next: "s20_end_good" },
+          { text: "Leave the bottle and the note at the scene", next: "s20_end_ok", consequence: "The bottle tells the hospital what she took and how much was missing, and both are things she may not be able or willing to tell them. It costs nothing to bring." }
+        ]
+      },
+      s20_end_good: { ending: "good", text: "Asked the question directly, which is what found the overdose an ordinary history would have missed. The decision not to accept the refusal rested on capacity — understanding the situation, the risks and the alternatives — rather than on orientation, and it was made with medical direction rather than alone. Continuous observation, nothing she could hurt herself with, and the bottle brought along." },
+      s20_end_ok: { ending: "neutral", text: "She is transported safely and treated. Leaving the bottle behind costs the receiving team the two facts they most need — what and how much — in a patient who may not tell them herself." },
+      s20_end_bad: { ending: "bad", text: "You leave with a signed refusal from a patient who had taken an overdose an hour earlier. A signature is not a defense when capacity was never assessed, and the question that would have uncovered it — asked plainly, without euphemism — was never put to her. Asking directly about self-harm does not plant the idea, and not asking is how this call ends this way." }
+    }
+  },
+  {
+    id: "s21",
+    title: "Fighting Four People in the Street",
+    domain: "Behavioral & Toxicology",
+    blurb: "The most dangerous moment is the one right after he stops fighting.",
+    startNode: "s21_start",
+    nodes: {
+      s21_start: {
+        vitals: "Observed: extreme agitation, diaphoresis, no shirt in cold weather",
+        text: "Police are struggling with a 29-year-old man in the street. He is stripped to the waist in forty-degree weather, drenched in sweat, shouting incoherently, and showing enormous strength against four officers. Bystanders say he has been like this for twenty minutes.",
+        choices: [
+          { text: "Recognize this as a medical emergency, not just a behavioral one — request ALS immediately and prepare for rapid sedation, cooling and monitoring", next: "s21_recognized" },
+          { text: "Wait for police to fully restrain him face-down, then assess once he is under control", next: "s21_prone", consequence: "Prolonged prone restraint in a patient who is already hyperthermic, acidotic and exhausted is associated with sudden death. He needs to be off his front and on a monitor as soon as it is safe, not held face-down until he goes quiet." },
+          { text: "Stand by and treat this as a police matter until they hand him over", next: "s21_bystander", consequence: "Extreme agitation with hyperthermia and undressing in the cold is a recognized medical emergency with a real mortality. The medical clock started before you arrived." }
+        ]
+      },
+      s21_bystander: {
+        vitals: "Observed: still fighting, visibly hot",
+        text: "Several more minutes pass with no medical care started.",
+        choices: [
+          { text: "Step in as the medical lead, request ALS and start planning cooling and monitoring", next: "s21_recognized" }
+        ]
+      },
+      s21_prone: {
+        vitals: "Restrained prone · breathing rapid and shallow",
+        text: "He is face-down with weight across his back, and his breathing is getting faster and shallower.",
+        choices: [
+          { text: "Get him off his front immediately, onto his side or supine, and begin assessment", next: "s21_recognized" }
+        ]
+      },
+      s21_recognized: {
+        vitals: "HR 156 · RR 32 · Skin hot and diaphoretic · Temp elevated",
+        text: "ALS is en route. He is moved off his front. His skin is hot and soaking, his pulse is very fast, and he is still fighting but visibly tiring.",
+        choices: [
+          { text: "Begin active cooling, apply oxygen, get him on a monitor, and check a glucose", next: "s21_cooling" },
+          { text: "Wait until he stops struggling before starting any treatment", next: "s21_waited", consequence: "Waiting for him to stop is waiting for the thing you are trying to prevent. The period immediately after the struggle ends is when these patients arrest." }
+        ]
+      },
+      s21_waited: {
+        vitals: "HR 168 · RR 36 · Skin hot",
+        text: "He suddenly goes limp and quiet.",
+        choices: [
+          { text: "Check a pulse immediately — this is the moment of highest risk", next: "s21_collapse" }
+        ]
+      },
+      s21_cooling: {
+        vitals: "HR 148 · RR 30 · SpO₂ 95% · Glucose 104 mg/dL",
+        text: "Cooling is underway and he is on oxygen and a monitor. A few minutes later he abruptly stops struggling and becomes still and quiet.",
+        choices: [
+          { text: "Treat the sudden calm as the danger sign it is — check a pulse and breathing immediately", next: "s21_collapse" },
+          { text: "Take the calm as a sign the sedation and cooling are working, and continue transport", next: "s21_missed", consequence: "A patient who has been fighting at this intensity and then goes suddenly quiet has either been sedated or has arrested, and telling those apart takes five seconds. The transition from maximal exertion to stillness is the classic moment of collapse in these patients." }
+        ]
+      },
+      s21_missed: {
+        vitals: "No pulse · agonal respirations",
+        text: "A minute later you realize he has no pulse and has been in arrest for some of that time.",
+        choices: [
+          { text: "Begin high-quality CPR immediately and work the arrest", next: "s21_arrest" }
+        ]
+      },
+      s21_collapse: {
+        vitals: "No pulse · no normal breathing",
+        text: "He is pulseless. The sudden stillness was the arrest, caught immediately.",
+        choices: [
+          { text: "Start high-quality CPR at once, apply the AED, and work the arrest with ALS", next: "s21_arrest" }
+        ]
+      },
+      s21_arrest: {
+        vitals: "CPR in progress",
+        text: "CPR is underway with minimal interruption, the AED is on, and ALS is working alongside you. Cooling continues.",
+        choices: [
+          { text: "Continue high-quality CPR, keep cooling, and transport", next: "s21_end_good" }
+        ]
+      },
+      s21_end_good: { ending: "good", text: "Treated as a medical emergency from the start, taken off his front, cooled and monitored while he was still fighting, and the arrest caught in the seconds it happened rather than minutes later. The single most useful piece of knowledge in this call is counterintuitive: the sudden calm after a prolonged violent struggle is not relief, it is the most dangerous moment of the call, and it is checked rather than enjoyed." }
+    }
+  },
+  {
+    id: "s22",
+    title: "The Psychiatric Patient Who Is Not",
+    domain: "Behavioral & Medical",
+    blurb: "A history of schizophrenia does not make you immune to anything else.",
+    startNode: "s22_start",
+    nodes: {
+      s22_start: {
+        vitals: "HR 118 · BP 104/64 · RR 24 · Temp 101.8 °F · SpO₂ 94%",
+        text: "Staff at a group home ask you to transport a 48-year-old man with schizophrenia who is 'acting up again'. He is confused, agitated, and talking about things that are not there. Staff say this is exactly how he gets when he stops his medication, and that they just want him taken to the psychiatric facility. He feels warm and his breathing is fast.",
+        choices: [
+          { text: "Assess him fully as a medical patient — vitals, glucose, temperature, lung sounds, skin, and a history of the last few days", next: "s22_assessed" },
+          { text: "Accept the staff's account and transport him to the psychiatric facility", next: "s22_psych_direct", consequence: "The staff know his baseline and that is genuinely useful information. It is not a physical exam. A temperature of 101.8, a pulse of 118 and a respiratory rate of 24 are findings that belong to a body, and 'this is how he always gets' has never explained a fever." },
+          { text: "Ask about medication compliance and transport based on the answer", next: "s22_psych_direct", consequence: "Whether he has taken his medication is worth knowing and does not explain the fever, the tachycardia or the low saturation." }
+        ]
+      },
+      s22_psych_direct: {
+        vitals: "HR 126 · BP 96/58 · RR 28 · SpO₂ 92%",
+        text: "En route he becomes harder to rouse and his breathing is getting worse. The psychiatric facility has no emergency department.",
+        choices: [
+          { text: "Reassess fully, divert to an emergency department, and notify them of a possible sepsis", next: "s22_late" }
+        ]
+      },
+      s22_assessed: {
+        vitals: "HR 118 · BP 104/64 · RR 24 · Temp 101.8 °F · SpO₂ 94% · Glucose 92 mg/dL · Crackles at the right base",
+        text: "Glucose is normal. He has a fever, a fast pulse, a fast respiratory rate, a saturation of 94% and crackles at the right base. Staff, asked directly, say he has had a cough for about four days and has not been eating.",
+        choices: [
+          { text: "Treat this as a medical emergency — likely pneumonia with sepsis — give oxygen, and transport to an emergency department", next: "s22_managed" },
+          { text: "Note the findings but continue to the psychiatric facility as requested, since his behavior is the presenting complaint", next: "s22_late", consequence: "The presenting complaint was chosen by the caller, not by the findings. A confused, febrile, tachycardic and tachypneic patient with crackles needs an emergency department, and altered mental status is one of the ways sepsis presents rather than a separate problem running alongside it." }
+        ]
+      },
+      s22_managed: {
+        vitals: "HR 112 · BP 106/66 · RR 22 · SpO₂ 97%",
+        text: "He is on oxygen and en route to an emergency department. You call ahead with the fever, the vital signs, the lung findings, the four-day cough and the change from his baseline as staff describe it.",
+        choices: [
+          { text: "Hand off the whole picture, including the psychiatric history as context rather than as the diagnosis", next: "s22_end_good" }
+        ]
+      },
+      s22_late: {
+        vitals: "HR 130 · BP 88/54 · RR 30 · SpO₂ 90%",
+        text: "He is diverted to an emergency department, arriving septic and hypotensive.",
+        choices: [
+          { text: "Hand off with an honest timeline of when each finding was available", next: "s22_end_ok" }
+        ]
+      },
+      s22_end_good: { ending: "good", text: "Assessed the patient rather than the label. Diagnostic overshadowing — attributing new physical symptoms to an existing psychiatric diagnosis — is a documented source of harm, and patients with serious mental illness die earlier of ordinary medical causes partly because of it. Everything needed to catch this was in a set of vitals and a question about the last few days." },
+      s22_end_ok: { ending: "neutral", text: "He is treated and survives, having spent part of the call travelling toward a facility with no ability to treat what was actually wrong. The fever was measurable in the first two minutes, and the account that sent him the wrong way was a behavioral history offered in place of a physical examination." }
+    }
+  },
+  {
+    id: "s23",
+    title: "Down at Mile Nineteen",
+    domain: "Environmental",
+    blurb: "Hot and confused, with the skin finding that decides everything.",
+    startNode: "s23_start",
+    nodes: {
+      s23_start: {
+        vitals: "HR 142 · BP 96/58 · RR 28 · Temp 105.2 °F · Skin hot and dry",
+        text: "A 45-year-old runner has collapsed near mile nineteen on a 94-degree day. He is confused, does not know where he is, and his skin is hot and dry to the touch. Two volunteers are holding him upright and offering him a sports drink.",
+        choices: [
+          { text: "Recognize heat stroke — move him to shade, remove excess clothing, and begin aggressive active cooling immediately", next: "s23_cooling" },
+          { text: "Have him drink the sports drink and rest in the shade", next: "s23_oral_fluids", consequence: "A confused patient should not be given anything by mouth, and oral fluid does nothing for a core temperature of 105. This is heat stroke, not heat exhaustion, and the difference is altered mental status." },
+          { text: "Get a full set of vitals and a history before intervening", next: "s23_delayed", consequence: "You already have the two findings that matter: a very high temperature and an altered mental status. Cooling starts now and the rest of the assessment happens while it runs — time to cooling is what predicts the outcome." }
+        ]
+      },
+      s23_oral_fluids: {
+        vitals: "HR 146 · Temp 105.2 °F",
+        text: "He cannot cooperate with drinking and some of it runs down his chin. His condition has not changed.",
+        choices: [
+          { text: "Stop oral fluids and begin aggressive cooling", next: "s23_cooling" }
+        ]
+      },
+      s23_delayed: {
+        vitals: "HR 148 · BP 92/56 · Temp 105.4 °F",
+        text: "Two minutes go by and his temperature has risen further.",
+        choices: [
+          { text: "Begin aggressive cooling now and continue assessing as it runs", next: "s23_cooling" }
+        ]
+      },
+      s23_cooling: {
+        vitals: "HR 138 · BP 98/60 · RR 26 · Temp 104.1 °F",
+        text: "He is in the shade, stripped to shorts, with cold packs at the neck, armpits and groin, wet sheets and fanning. His temperature is coming down. He begins shivering hard.",
+        choices: [
+          { text: "Continue cooling and manage the shivering, monitoring the temperature and mental status as you transport", next: "s23_transport" },
+          { text: "Stop cooling because he is shivering", next: "s23_stopped", consequence: "Shivering is uncomfortable and it slightly opposes the cooling, and stopping altogether hands the emergency back. In heat stroke, cooling continues — the target is a controlled descent, not the patient's comfort." }
+        ]
+      },
+      s23_stopped: {
+        vitals: "HR 144 · Temp 104.8 °F",
+        text: "His temperature begins climbing again and he becomes less responsive.",
+        choices: [
+          { text: "Resume aggressive cooling immediately", next: "s23_transport" }
+        ]
+      },
+      s23_transport: {
+        vitals: "HR 122 · BP 104/64 · RR 22 · Temp 102.4 °F",
+        text: "Cooling continues en route, his temperature is falling, and he is beginning to answer questions. You notify the hospital of a heat stroke with the temperature on arrival at the scene and the cooling already delivered.",
+        choices: [
+          { text: "Keep cooling, keep reassessing mental status, and hand off the numbers with times", next: "s23_end_good" }
+        ]
+      },
+      s23_end_good: { ending: "good", text: "Cooled first and assessed alongside, which is the order that changes outcomes — in heat stroke the time to cooling predicts survival and neurological recovery more than anything else an EMT does. The finding that separated this from heat exhaustion was the mental status, not the temperature and not the skin: hot and dry is classic, but a heat stroke patient who is still sweating is still a heat stroke patient if they are confused." }
+    }
+  },
+  {
+    id: "s24",
+    title: "\"I Just Slipped, It's Nothing\"",
+    domain: "Geriatrics — Trauma",
+    blurb: "The fall is the easy part. Why she fell is the call.",
+    startNode: "s24_start",
+    nodes: {
+      s24_start: {
+        vitals: "HR 58 · BP 112/68 · RR 18 · SpO₂ 96%",
+        text: "An 84-year-old woman is on her kitchen floor, alert and embarrassed, insisting she slipped on a wet patch and does not need anyone. Her right leg is shortened and rotated outward and she winces when she moves. She lives alone. Her daughter, on speakerphone, says she has 'been dizzy on and off for a fortnight'.",
+        choices: [
+          { text: "Treat the hip, and take the dizziness seriously — find out why she fell, including her medications and whether she lost consciousness", next: "s24_why" },
+          { text: "Splint the hip, make her comfortable and transport for the fracture", next: "s24_mechanical_only", consequence: "The fracture is the obvious injury and the reason for the fall is the actual emergency. A pulse of 58 and two weeks of dizziness in an elderly patient point somewhere — a dysrhythmia, a medication, orthostatic hypotension — and none of it is treated by a splint." },
+          { text: "She is refusing, so document the refusal and leave", next: "s24_refusal", consequence: "She has an obvious fracture and lives alone. Accepting a refusal here needs capacity established and documented, and it needs her to understand what happens to an 84-year-old with an untreated hip fracture and nobody in the house." }
+        ]
+      },
+      s24_refusal: {
+        vitals: "HR 58 · BP 110/66",
+        text: "You start the conversation properly and she admits she cannot get herself up off the floor.",
+        choices: [
+          { text: "Explain plainly, treat the hip, and look into why she fell", next: "s24_why" }
+        ]
+      },
+      s24_mechanical_only: {
+        vitals: "HR 52 · BP 104/62",
+        text: "En route, her pulse drifts into the low fifties and she becomes lightheaded when the stretcher is raised.",
+        choices: [
+          { text: "Reassess fully, get a full history and medication list, and notify the hospital of the bradycardia and the syncopal history", next: "s24_late" }
+        ]
+      },
+      s24_why: {
+        vitals: "HR 56 · BP 110/66 lying, 88/54 sitting · SpO₂ 96%",
+        text: "She admits she has felt 'swimmy' standing up for two weeks and that she blacked out briefly this morning before the fall. Her pressure drops markedly when sitting up. Among her medications are a beta blocker and a diuretic, and a new one her doctor started last month.",
+        choices: [
+          { text: "Treat the hip with careful padding and splinting, keep her flat and warm, and transport with the medications and the full history", next: "s24_managed" },
+          { text: "Sit her upright on the stretcher for comfort during transport", next: "s24_upright", consequence: "Her pressure falls markedly when she sits up, which is most of why she is on the floor. Keeping her flat is both the treatment and the diagnosis." }
+        ]
+      },
+      s24_upright: {
+        vitals: "HR 54 · BP 86/52 · Pale",
+        text: "She becomes pale and says everything is going grey.",
+        choices: [
+          { text: "Lay her flat again and reassess", next: "s24_managed" }
+        ]
+      },
+      s24_managed: {
+        vitals: "HR 58 · BP 112/68 · SpO₂ 98%",
+        text: "The leg is splinted in the position found with generous padding, she is kept flat and warm, and her medication bottles are in the bag beside her. You call ahead with the fracture, the bradycardia, the orthostatic drop, the syncope and the new medication.",
+        choices: [
+          { text: "Handle her gently — thin skin and fragile bones — and hand off both problems, not just the visible one", next: "s24_end_good" }
+        ]
+      },
+      s24_late: {
+        vitals: "HR 50 · BP 98/58",
+        text: "She arrives with the fracture identified and the bradycardia found in the emergency department rather than by you.",
+        choices: [
+          { text: "Hand off honestly with the timeline and the medication list you gathered late", next: "s24_end_ok" }
+        ]
+      },
+      s24_end_good: { ending: "good", text: "Treated the hip and answered the real question, which was why an 84-year-old ended up on her kitchen floor. Syncope, a pulse in the fifties, a marked orthostatic drop and a newly started medication are the call; the fracture is its consequence. Taking the medications along and handing off both problems is what stops this being a fall that gets fixed and then happens again." },
+      s24_end_ok: { ending: "neutral", text: "Both problems are found, one of them by somebody else. 'I just slipped' is an account, not a mechanism, and in an elderly patient the reason for a fall is usually more dangerous than the injury it caused." }
+    }
+  },
+  {
+    id: "s25",
+    title: "The Whole Family Has a Headache",
+    domain: "Environmental — Toxicology",
+    blurb: "Four patients with the same symptom in the same building is a finding about the building.",
+    startNode: "s25_start",
+    nodes: {
+      s25_start: {
+        vitals: "Four patients · all headache, nausea · SpO₂ readings 98–100%",
+        text: "You are called for a 'sick person' at a house on the first genuinely cold night of the year. At the door, the father says he has a headache and feels sick. Inside, his wife and both children say the same, and have since this morning. The furnace was serviced yesterday. Everyone's pulse oximeter reading is between 98 and 100 percent.",
+        choices: [
+          { text: "Recognize the pattern, get everyone out of the building immediately, and treat with high-flow oxygen", next: "s25_evacuated" },
+          { text: "Assess each patient thoroughly inside the house before deciding", next: "s25_stayed_inside", consequence: "Four people in one building with the same symptoms on the night the heating came on is the pattern, and the building is the hazard. Every minute spent assessing inside is a minute you and your partner are being poisoned alongside them." },
+          { text: "The saturations are normal, so treat this as a viral illness going round the family", next: "s25_dismissed", consequence: "A pulse oximeter cannot distinguish carboxyhemoglobin from oxyhemoglobin — carbon monoxide binds the same sites and the machine counts it as oxygen. A normal reading in suspected CO poisoning is meaningless, and in this presentation a falsely reassuring one." }
+        ]
+      },
+      s25_stayed_inside: {
+        vitals: "Four patients · your partner now reports a headache",
+        text: "Fifteen minutes in, your partner mentions his head is pounding.",
+        choices: [
+          { text: "Get everyone, including your crew, out of the building now", next: "s25_evacuated" }
+        ]
+      },
+      s25_dismissed: {
+        vitals: "Four patients · SpO₂ 99%",
+        text: "As you prepare to leave, the youngest child vomits and becomes drowsy.",
+        choices: [
+          { text: "Reconsider — evacuate everyone and treat for carbon monoxide exposure", next: "s25_evacuated" }
+        ]
+      },
+      s25_evacuated: {
+        vitals: "Four patients outside · headaches, nausea; one child drowsy",
+        text: "Everyone is outside in the fresh air. You request the fire department for atmospheric monitoring, additional units for four patients, and start high-flow oxygen by non-rebreather on each of them.",
+        choices: [
+          { text: "Treat all four, transport all four, and tell the hospital this is a suspected carbon monoxide exposure so they can test for it", next: "s25_transport" },
+          { text: "Transport only the drowsy child, since the others feel better outside already", next: "s25_partial", consequence: "Feeling better in fresh air is expected and does not mean the exposure was trivial. Carboxyhemoglobin takes hours to clear on room air, delayed neurological effects are well described, and the level can only be measured with a blood test none of them will get at home." }
+        ]
+      },
+      s25_partial: {
+        vitals: "Three patients declining transport",
+        text: "The parents start to say they would rather stay and sort out the furnace.",
+        choices: [
+          { text: "Explain the delayed effects and the need for a blood level, and arrange transport for all four", next: "s25_transport" }
+        ]
+      },
+      s25_transport: {
+        vitals: "Four patients on high-flow oxygen",
+        text: "All four are on non-rebreathers at 15 L/min and en route with additional units. The fire department confirms a high carbon monoxide reading in the house and secures it. You tell the receiving hospital explicitly that this is a suspected CO exposure.",
+        choices: [
+          { text: "Hand off with the shared exposure, the timeline, and which patient had symptoms first and worst", next: "s25_end_good" }
+        ]
+      },
+      s25_end_good: { ending: "good", text: "Read the pattern rather than the patients: several people in one building with the same symptoms, on the night the heating started, is a finding about the building. Everyone out first — including the crew — then high-flow oxygen, which is the treatment, because it displaces carbon monoxide from hemoglobin far faster than room air does. The normal pulse oximetry was the trap, and it is a trap by design: the machine cannot tell the two apart." }
+    }
   }
 ];
 

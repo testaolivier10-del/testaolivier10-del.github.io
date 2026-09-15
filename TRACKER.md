@@ -72,6 +72,12 @@ clinician, and that is the gap no amount of tooling closes.
 | Third-trimester bleeding: no vaginal exam, left lateral position, and concealed abruption taught as vital signs disagreeing with visible blood | Standard obstetric emergency practice | s16 | Phase 4 |
 | Eclampsia: left lateral, minimize stimulation, obstetric-capable destination, and the risk continuing postpartum | Standard obstetric emergency practice | s17 | Phase 4 |
 | Suspected child abuse: treat and transport, document observations and verbatim quotes rather than conclusions, report as a mandatory reporter, do not confront on scene | Mandatory-reporter practice; state law varies and the scenario says so | s13 | Phase 4 |
+| Seven further scenarios: four behavioral (agitation with a medical cause, suicidal refusal and capacity, extreme agitation with hyperthermia, diagnostic overshadowing) plus heat stroke, a geriatric fall with syncope, and a household carbon monoxide exposure | National EMS Education Standards | `scenario-sim.html` | Phase 4 |
+| Agitation taught as a symptom rather than a diagnosis, with hypoglycemia, hypoxia, head injury and sepsis named as causes and a glucose check as the first move | Standard EMT practice | s19, s22 | Phase 4 |
+| Capacity to refuse distinguished from being alert and oriented; active suicidal ideation named as a reason a patient may lack it; restraint framed as for present danger only, never routine for a psychiatric diagnosis | Standard EMS medical-legal practice; state law and protocol vary | s20 | Phase 4 |
+| Extreme agitation with hyperthermia: prolonged prone restraint named as dangerous, active cooling started during the struggle, and the sudden calm after exertion taught as the moment of arrest | Current prehospital practice on agitation-related death | s21 | Phase 4 |
+| Heat stroke distinguished from heat exhaustion by **altered mental status**, with a note that a heat-stroke patient may still be sweating; cooling continued through shivering | Standard EMT practice | s23 | Phase 4 |
+| Carbon monoxide: pulse oximetry named as unable to distinguish carboxyhemoglobin, so a normal reading is meaningless; evacuate including the crew; high-flow oxygen; transport all exposed | Standard EMT practice | s25 | Phase 4 |
 
 ---
 
@@ -154,7 +160,7 @@ rhonchi and normal breath clips are **embedded in the page as base64**, not
 linked as the credit line implied. The page now says so, says the licence has
 not been established, and gives a route to have them removed.
 
-## Phase 4 — New EMT content — **in progress**
+## Phase 4 — New EMT content — **done, except figures**
 
 | Item | Status |
 |---|---|
@@ -162,7 +168,7 @@ not been established, and gives a route to have them removed.
 | Reference cards: peds vitals, GCS, APGAR, PAT | done |
 | Expand Airway, Ventilation & Oxygen, Vital Signs, Bleeding Control, Head/Neck/Spine | done |
 | Figures in the notes (currently zero across 40 chapters) | **blocked — see below** |
-| More branching scenarios toward 25 | in progress — 18 of 25 |
+| More branching scenarios toward 25 | done — 25 |
 
 The five chapters were the five smallest in the book — 2,461 to 4,744
 characters against a median of 8,900 — and are now 10,674 to 21,009. Airway
