@@ -247,6 +247,9 @@
         if (emailSettings().on) disableEmail();
         return schedule(sub).then(function (saved) {
           if (!saved) {
+            describe('the subscription was created but save_push_subscription ' +
+                     'did not accept it — check that scripts/sql/schema.sql has been ' +
+                     'run, and that PostgREST has reloaded its schema cache');
             // The subscription exists in the browser but we could not record
             // it, so nothing will ever be sent to it. Undo, rather than leave
             // a switch that says on and does nothing.
@@ -258,12 +261,28 @@
           if (window.LevlAnalytics) window.LevlAnalytics.event('reminders-enabled');
           return { ok: true };
         });
-      }).catch(function () {
-        return { ok: false, reason: 'failed' };
+      }).catch(function (err) {
+        return { ok: false, reason: 'failed', error: describe(err) };
       });
-    }).catch(function () {
-      return { ok: false, reason: 'failed' };
+    }).catch(function (err) {
+      return { ok: false, reason: 'failed', error: describe(err) };
     });
+  }
+
+  /* The reader gets "that did not work"; whoever has to fix it gets the cause.
+
+     Every failure path here used to swallow its error, which made the one
+     message on screen the only record that anything had happened — and that
+     message is deliberately vague, because a student cannot act on
+     "AbortError: Registration failed - push service error". Logged rather than
+     shown, and console.warn rather than console.error so it is not mistaken
+     for a page that crashed. */
+  function describe(err) {
+    var text = err && (err.name ? err.name + ': ' + err.message : String(err));
+    try {
+      window.console.warn('[LevlReminders] could not enable reminders —', text || err);
+    } catch (e) { /* no console */ }
+    return text || 'unknown';
   }
 
   function disable() {
