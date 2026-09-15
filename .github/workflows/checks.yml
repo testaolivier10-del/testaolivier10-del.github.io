@@ -33,6 +33,14 @@ jobs:
         run: node scripts/build-og-tags.mjs --check
       - name: sitemap.xml lists every page
         run: node scripts/build-sitemap.mjs --check
+      # The ochem prose is one file per section, and each of those files is
+      # both the source learn.html fetches AND a page you can open. The shell
+      # around the prose, and learn.html's static contents, are generated from
+      # the curriculum — so an added or renamed topic that was not rebuilt
+      # would leave a section with the wrong title, or missing from the only
+      # contents list a reader without JavaScript can see.
+      - name: the ochem section pages match the curriculum
+        run: node scripts/build-notes-pages.mjs --check
       # The two files practice.html actually fetches are generated from
       # questions.json. Editing a question without rebuilding them would ship
       # the edit to nobody, silently.

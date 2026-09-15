@@ -31,7 +31,8 @@ const check = process.argv.includes('--check');
 //   offline.html      same: served by sw.js at whatever URL could not be
 //                     fetched, and never reachable on its own.
 //   googleb*.html     Search Console's ownership token, not a page.
-//   ochem/notes/**    prose fragments injected into a lesson, never visited.
+//   (ochem/notes/** used to be listed here as fragments; they are full pages
+//    now and carry their own hand-generated tags from build-notes-pages.mjs.)
 // The thirteen root-level redirect stubs are skipped by the no-canonical rule
 // below rather than by name: they are two lines of meta refresh pointing at
 // the real page under /nremt/, and that page carries the card.
@@ -39,7 +40,7 @@ const check = process.argv.includes('--check');
 // dashboard (SQL, auth email templates) — none of it is a published page, so
 // none of it needs an OG tag or a sitemap entry. check-site.mjs has always
 // skipped it; these two now agree.
-const SKIP_DIRS = new Set(['.git', 'node_modules', 'notes', 'scripts']);
+const SKIP_DIRS = new Set(['.git', 'node_modules', 'scripts']);
 const SKIP_FILES = /^(404\.html|offline\.html|googleb[0-9a-f]+\.html)$/;
 
 function walk(dir, out = []) {

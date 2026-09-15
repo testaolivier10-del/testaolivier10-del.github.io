@@ -107,6 +107,13 @@ const BUDGETS = [
   ['nremt/scenario-sim.html', 50],
   ['ochem/learn.html', 3],
 
+  // One textbook section, standing in for the other 61. They became real
+  // pages when the ochem prose was made readable without JavaScript
+  // (scripts/build-notes-pages.mjs); hybridization.html is the largest of
+  // them at 17.0 KB, so a budget here defends the worst case rather than a
+  // typical one. The median section is 5.9 KB.
+  ['ochem/notes/hybridization.html', 18],
+
   // Search. Both build a large index at runtime; this is the shell, not the
   // corpus, for the same reason as practice.html above.
   ['nremt/search.html', 6],

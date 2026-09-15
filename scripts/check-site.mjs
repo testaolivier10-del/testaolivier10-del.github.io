@@ -901,6 +901,38 @@ if (existsSync(scenarioPath)) {
   }
 }
 
+// ---- 19. Every lesson and mechanism links to its written section ----
+// A lesson page is a step machine: with JavaScript off it renders a heading
+// and nothing else. The prose for that topic does exist, as its own page
+// under ochem/notes/, and before this check nothing static pointed at it —
+// so a reader without JavaScript, and a crawler that does not run scripts,
+// landed on a lesson and found a dead end with no way to the words.
+//
+// The link lives in the page's .lesson-links nav, which is static HTML, and
+// it must be in the body: an earlier pass at this inserted six of them into
+// <head>, where they are valid, invisible and useless.
+for (const dir of ['lessons', 'mechanisms']) {
+  const dirPath = join(ROOT, 'ochem', dir);
+  if (!existsSync(dirPath)) continue;
+  for (const name of readdirSync(dirPath)) {
+    if (!name.endsWith('.html')) continue;
+    const rel = `ochem/${dir}/${name}`;
+    const html = readFileSync(join(dirPath, name), 'utf8');
+    const m = html.match(/<a href="\.\.\/notes\/([a-z0-9-]+)\.html"/);
+    if (!m) {
+      fail(`${rel}: nothing static links to the written section for this topic, so with JavaScript off the page is a dead end.`);
+      continue;
+    }
+    if (!existsSync(join(ROOT, 'ochem', 'notes', `${m[1]}.html`))) {
+      fail(`${rel}: links to ochem/notes/${m[1]}.html, which does not exist.`);
+    }
+    const headEnd = html.indexOf('</head>');
+    if (headEnd !== -1 && html.indexOf('<nav class="lesson-links') < headEnd) {
+      fail(`${rel}: the .lesson-links nav is inside <head>, where it renders for nobody.`);
+    }
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);

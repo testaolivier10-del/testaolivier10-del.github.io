@@ -197,14 +197,57 @@ that should be faked in SVG, and it stays in **Needs a person**.
 
 | Item | Status |
 |---|---|
-| Lessons, textbook and mechanisms readable without JavaScript | open |
-| Missing mechanisms (check Grignard in carbonyl addition first) | open |
+| Lessons, textbook and mechanisms readable without JavaScript | done |
+| Aldol "two carbons apart" wording | done |
+| "Leads to" chip overflow; floating buttons covering content | **not a defect** — see below |
+| Missing mechanisms (check Grignard in carbonyl addition first) | Grignard **verified already covered**; the others open |
 | Synthesis / reagent-roadmap tool and flashcard deck | open |
 | Figures in the reaction-heavy sections | open |
 | Skeletal structures after the foundations module | open |
 | Cut repeated caption/callout/body explanations | open |
-| Aldol "two carbons apart" wording | open |
-| "Leads to" chip overflow; floating buttons covering content | open |
+
+**The no-JavaScript problem was bigger than the item as written.** The ochem
+course's entire written half — 62 sections, about 1.2 MB of prose — lived as
+bare HTML fragments with no title, stylesheet or navigation. `learn.html`
+fetched and injected them, and that shell is 142 characters of static HTML, so
+with JavaScript off the textbook was empty and a lesson page rendered a
+heading and nothing else.
+
+Three separate places encoded the decision to keep it that way —
+`robots.txt` disallowed the fragments, `build-sitemap.mjs` skipped them and
+`build-og-tags.mjs` skipped them — and all three gave the same reason:
+indexed alone they would be "a wall of unstyled text with no way out". That
+reason was correct, and it described a **fixable property of the files**
+rather than an argument against the pages existing.
+
+So each fragment is now a page: title, description, canonical, the site's
+stylesheets, breadcrumbs, a link to its interactive lesson, and previous/next
+through the book. The prose sits between two markers and is never touched by
+the generator, so a section is still edited by editing its own file, and
+`textbook.js` slices between the same markers — one copy of the words,
+serving both the embedded textbook and the standalone page. `learn.html` also
+carries a real table of contents now instead of one sentence apologising for
+needing JavaScript.
+
+Static text without JavaScript, before → after: the textbook 142 → 1,563
+chars; a section 0 → 7,304; a lesson page 212 → 393 with a link that reaches
+the prose.
+
+**Verified as not a defect:** the "Leads to" chip row already has
+`flex-wrap: wrap` and a `max-width: 560px` rule that gives the label its own
+line, and its CSS comment already documents the no-JavaScript case. The
+floating periodic-table button and the mascot are deliberately stacked with a
+documented 12px gap. Neither reproduces.
+
+**Verified as already done:** Grignard addition is covered in
+`mechanisms/carbonyl-addition.html`, which contrasts it with hydride reduction
+and works through why one gives a primary alcohol and the other a secondary.
+The remaining gaps are real: hydroboration–oxidation, radical halogenation,
+and acetal/imine formation.
+| Synthesis / reagent-roadmap tool and flashcard deck | open |
+| Figures in the reaction-heavy sections | open |
+| Skeletal structures after the foundations module | open |
+| Cut repeated caption/callout/body explanations | open |
 
 ## Phase 6 — Answer-option rewrites
 
@@ -274,7 +317,9 @@ true/false polarity, select-N key sets, **absolute words**, **hedge words**,
 15. **Flow-diagram branches** · 16. **Tables inside a scroll wrapper** ·
 17. **Figures that appear on more than one page agree** ·
 18. **Advertised scenario count**, and scenario nodes must be able to reach an
-ending, not merely be reachable from the start
+ending, not merely be reachable from the start ·
+19. **Every lesson and mechanism links to its written section**, in the body
+rather than the head
 
 Bold entries were added in response to these reviews. Each was verified by
 reintroducing the defect it exists to catch.

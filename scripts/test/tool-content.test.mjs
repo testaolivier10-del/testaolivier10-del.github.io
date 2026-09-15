@@ -715,3 +715,49 @@ test('every tool that renders a send row actually mounts one', () => {
     assert.match(src, /mountSend\(/, `${slug} has a send row in its markup but never mounts it`);
   }
 });
+
+/* ====================================================================== */
+/* The textbook prose, which is now two things at once                     */
+/* ====================================================================== */
+
+/* Each file under ochem/notes/ is both the source learn.html fetches and a
+   page a reader can open. That only works while the markers around the prose
+   are intact: textbook.js slices between them, and if they were missing it
+   would inject a whole document — <head>, stylesheets, breadcrumbs and all —
+   into the middle of the textbook. The page would still render, which is what
+   makes it worth a test rather than an assumption. */
+test('every textbook section is a page and still yields just its prose', () => {
+  const START = '<!-- notes:start -->';
+  const END = '<!-- notes:end -->';
+  const files = readdirSync('ochem/notes').filter(f => f.endsWith('.html'));
+  assert.ok(files.length >= 62, `expected at least 62 sections, found ${files.length}`);
+
+  // The extraction textbook.js performs, kept identical on purpose.
+  const extract = (html) => {
+    const a = html.indexOf(START);
+    const b = html.indexOf(END);
+    return (a !== -1 && b !== -1) ? html.slice(a + START.length, b) : html;
+  };
+
+  for(const f of files){
+    const html = readFileSync(join('ochem/notes', f), 'utf8');
+
+    // A page in its own right.
+    assert.match(html, /^<!DOCTYPE html>/, `${f}: not a standalone page`);
+    assert.match(html, /<title>[^<]+<\/title>/, `${f}: no title`);
+    assert.match(html, /<link rel="canonical"/, `${f}: no canonical URL`);
+    assert.match(html, /ochem\.css/, `${f}: no stylesheet — the reason these used to be disallowed`);
+
+    // And still a fragment when sliced.
+    assert.ok(html.includes(START) && html.includes(END), `${f}: missing prose markers`);
+    const prose = extract(html);
+    assert.ok(prose.trim().length > 200, `${f}: prose between the markers is empty or tiny`);
+    assert.ok(!/<html|<head|<body|<!DOCTYPE/i.test(prose),
+      `${f}: the extracted prose still contains page structure — the textbook would inject a whole document`);
+    assert.ok(!prose.includes('notes-crumb'),
+      `${f}: the extracted prose contains the standalone page's breadcrumbs`);
+
+    // The prose carries the class the styles are written against.
+    assert.ok(html.includes('notes-view'), `${f}: article is missing notes-view, so its prose would render unstyled`);
+  }
+});

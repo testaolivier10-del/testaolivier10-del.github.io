@@ -122,6 +122,7 @@
 </div>
 
 <nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/aldol.html">Aldol reactions &mdash; the written section</a></span></div>
   <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/alpha-hydrogens.html">Alpha hydrogens &amp; enolates</a><a href="../lessons/nucleophilic-addition.html">Nucleophilic addition</a></span></div>
   <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/claisen.html">Claisen reactions</a></span></div>
   <div class="lesson-links-row"><span class="lesson-links-label">Mechanism</span><span class="lesson-links-list"><a href="../mechanisms/aldol.html">Aldol reactions step by step</a></span></div>
@@ -159,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'An enolate attacking a second carbonyl builds a new carbon-carbon bond.',
-        bodyHtml: '<p class="step-body">The enolate\'s carbon-centered resonance form (from the previous lesson) means the alpha carbon carries genuine nucleophilic character. Give it a second carbonyl compound to react with, and it attacks that carbonyl carbon exactly like any other carbon nucleophile — Grignards and acetylides included — forming a brand-new C–C bond.</p><p class="step-body" style="margin-bottom:0;">This is called the <b>aldol reaction</b>: base deprotonates an alpha hydrogen on one carbonyl compound (forming its enolate), that enolate\'s carbon attacks the carbonyl carbon of a second molecule, and the resulting alkoxide is protonated to give a product carrying both a hydroxyl (from the electrophile\'s former carbonyl) and the original carbonyl (from the nucleophile), now two carbons apart.</p>'
+        bodyHtml: '<p class="step-body">The enolate\'s carbon-centered resonance form (from the previous lesson) means the alpha carbon carries genuine nucleophilic character. Give it a second carbonyl compound to react with, and it attacks that carbonyl carbon exactly like any other carbon nucleophile — Grignards and acetylides included — forming a brand-new C–C bond.</p><p class="step-body" style="margin-bottom:0;">This is called the <b>aldol reaction</b>: base deprotonates an alpha hydrogen on one carbonyl compound (forming its enolate), that enolate\'s carbon attacks the carbonyl carbon of a second molecule, and the resulting alkoxide is protonated to give a <b>beta-hydroxy carbonyl</b>: the original carbonyl survives, and the new hydroxyl sits on the beta carbon &mdash; one carbon past the alpha carbon that did the attacking.</p>'
       },
       {
         render: function(api){
@@ -214,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function(){
         options: ['On the same carbon as the surviving carbonyl', 'Two carbons away (a "beta-hydroxy carbonyl")', 'It varies randomly depending on the reagents'],
         correctIndex: 1,
         correctFeedback: 'Correct — the new C–C bond connects the alpha carbon to the electrophile\'s former carbonyl carbon, placing the new OH exactly at the beta position relative to the remaining carbonyl.',
-        wrongFeedback: 'Trace the new bond: it forms between the alpha carbon (adjacent to the surviving carbonyl) and the former carbonyl carbon of the other molecule — that places the new OH two carbons, not zero, away.'
+        wrongFeedback: 'Trace the new bond: it forms between the alpha carbon (adjacent to the surviving carbonyl) and the former carbonyl carbon of the other molecule — that puts the new OH on the beta carbon &mdash; one carbon past the alpha carbon, not on the alpha carbon itself.'
       },
       {
         type: 'explain',

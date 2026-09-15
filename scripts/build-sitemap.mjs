@@ -22,14 +22,19 @@ const check = process.argv.includes('--check');
 
 // Same exclusions as the Open Graph tags, for the same reasons: 404.html and
 // offline.html each stand in for an unbounded set of URLs, googleb*.html is an
-// ownership token, ochem/notes/** are fragments (robots.txt disallows them). The
-// thirteen redirect stubs drop out on the meta-refresh test below — their
-// canonical points at the real page, which is listed on its own.
+// ownership token. The thirteen redirect stubs drop out on the meta-refresh
+// test below — their canonical points at the real page, which is listed on
+// its own.
+//
+// ochem/notes/** used to be skipped here as bare fragments. They are full
+// pages now (scripts/build-notes-pages.mjs) and robots.txt no longer
+// disallows them, so they are listed like anything else — they are the only
+// form in which the ochem prose is readable without JavaScript.
 // 'scripts' holds build tooling and files meant to be pasted into a
 // dashboard (SQL, auth email templates) — none of it is a published page, so
 // none of it needs an OG tag or a sitemap entry. check-site.mjs has always
 // skipped it; these two now agree.
-const SKIP_DIRS = new Set(['.git', 'node_modules', 'notes', 'scripts']);
+const SKIP_DIRS = new Set(['.git', 'node_modules', 'scripts']);
 const SKIP_FILES = /^(404\.html|offline\.html|googleb[0-9a-f]+\.html)$/;
 
 function walk(dir, out = []) {
