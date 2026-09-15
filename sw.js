@@ -24,7 +24,7 @@
 // model, the 670 KB three.js bundle and the fonts. Those never change with
 // the shell (they are content-addressed by path, and a new model would be a
 // new file), so they live in STATIC_CACHE, which activate leaves alone.
-const CACHE_NAME = 'levlprep-v28';
+const CACHE_NAME = 'levlprep-v29';
 const STATIC_CACHE = 'levlprep-static';
 const PRECACHE_URLS = [
   'index.html',
@@ -71,6 +71,21 @@ const PRECACHE_URLS = [
   'nremt/assets/flow-drill.js',
   'nremt/assets/station-run.js',
   'nremt/assets/sound-bank.js',
+  // The ochem shell. That course was cached only as pages happened to be
+  // visited, so the one page a reader opens specifically to FIND something was
+  // the one most likely not to be there when they were offline.
+  // (No apostrophes in this block: the precache test parses this list by
+  // pulling quoted strings out of the file, and one would open a string.)
+  'assets/site-search.js',
+  'ochem/index.html',
+  'ochem/learn.html',
+  'ochem/search.html',
+  'ochem/tools.html',
+  'ochem/manifest.json',
+  'ochem/assets/ochem.css',
+  'ochem/assets/ochem-nav.js',
+  'ochem/assets/curriculum.js',
+  'ochem/assets/tools-registry.js',
 ];
 
 // The question bank is 2.3 MB across its two files — an order of magnitude

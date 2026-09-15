@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search — Organic Chemistry — LevlPrep</title>
+<meta name="description" content="Search the whole Organic Chemistry course at once: the textbook, all 58 lessons, the mechanism walkthroughs, the seven tools, and every practice question.">
+<link rel="canonical" href="https://levlprep.com/ochem/search.html">
+<meta property="og:title" content="Search — Organic Chemistry — LevlPrep">
+<meta property="og:description" content="Search the whole Organic Chemistry course at once: the textbook, all 58 lessons, the mechanism walkthroughs, the seven tools, and every practice question.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levlprep.com/ochem/search.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="assets/ochem.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order, and the
+     page's own inline script waits for DOMContentLoaded. -->
+<script src="../assets/errors.js" defer></script>
+<script src="../assets/account.js" defer></script>
+<script src="../assets/hub-progress.js" defer></script>
+<script src="../assets/chime.js" defer></script>
+<script src="../assets/site-chrome.js" defer></script>
+<script src="../assets/site-search.js" defer></script>
+<script src="assets/curriculum.js" defer></script>
+<script src="assets/tools-registry.js" defer></script>
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+
+  #searchBox{
+    width:100%;padding:14px 16px;border:2px solid var(--line);border-radius:var(--radius);
+    font-family:var(--font-ui);font-weight:700;font-size:16px;background:var(--white);color:var(--ink);margin-bottom:6px;
+  }
+  #searchBox:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  .search-status{font:700 12.5px var(--font-mono);color:var(--muted);margin-bottom:14px;}
+
+  /* One row of filters, because this index mixes five very different things
+     and "show me only the lessons" is the first thing anyone wants after a
+     query returns forty practice questions. */
+  .search-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+  .search-filters button{
+    border:2px solid var(--line);background:var(--white);color:var(--muted);
+    font-family:var(--font-ui);font-weight:800;font-size:12px;letter-spacing:.03em;
+    padding:7px 13px;border-radius:999px;cursor:pointer;
+  }
+  .search-filters button:hover{color:var(--ink);}
+  .search-filters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--white);}
+  .search-filters button[disabled]{opacity:.4;cursor:default;}
+
+  .result{
+    display:block;background:var(--white);border:2px solid var(--line);border-radius:16px;box-shadow:var(--lift-sm);
+    padding:16px 18px;margin-bottom:12px;text-decoration:none;color:inherit;
+    transition:transform .08s ease, box-shadow .08s ease, border-color .12s ease;
+  }
+  .result:hover{transform:translateY(-2px);box-shadow:var(--lift-lg);}
+  .result-page{
+    font-family:var(--font-ui);font-weight:800;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:4px;
+  }
+  .result-heading{font-weight:900;font-size:15px;margin-bottom:4px;}
+  .result-snippet{font-size:13.5px;font-weight:600;color:var(--muted);line-height:1.6;}
+  .result-snippet mark{background:#FDE9A0;color:inherit;border-radius:2px;}
+  :root[data-theme="dark"] .result-snippet mark{background:#6b5a1f;}
+  .empty-note{font-size:14px;font-weight:700;color:var(--muted);line-height:1.6;}
+
+  @media (prefers-reduced-motion: reduce){
+    .result{transition:none;}
+    .result:hover{transform:none;}
+  }
+
+</style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Search",
+          "item": "https://levlprep.com/ochem/search.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body data-course="ochem">
+  <div id="site-header"></div>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="learn.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="tools.html">Tools</a> · <a href="mastery.html">Mastery</a></div></noscript>
+<div class="wrap">
+  <div class="page-head">
+  <div class="eyebrow">Tools</div>
+  <h1>Search</h1>
+  <p class="lede">The textbook, every lesson and mechanism, the seven tools, and every practice question &mdash; in one place.</p>
+  </div>
+
+  <input type="search" id="searchBox" placeholder="Search the course… (e.g. &quot;anti-periplanar&quot;, &quot;why is SN1 racemic&quot;)" autocomplete="off" aria-describedby="searchStatus">
+  <div class="search-status" id="searchStatus" role="status" aria-live="polite">Building search index&hellip;</div>
+  <div class="search-filters" id="searchFilters" role="group" aria-label="Filter results by kind"></div>
+  <div id="results"></div>
+
+  <footer>
+    <p>Runs in your browser. Nothing is sent anywhere.</p>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
+    </footer>
+</div>
+
+<script>
+window.OCHEM_SECTION = 'search';
+window.OCHEM_BASE = '';
+</script>
+<script>
+/* Search across the whole Organic Chemistry course.
+
+   learn.html's rail already searches the textbook, but only the textbook, and
+   only the sections that happen to have been fetched already. That leaves the
+   58 lessons, the 10 mechanism walkthroughs, the 7 tools and 1,860 questions in the practice bank with no way in at all: someone who cannot remember whether
+   anti-periplanar is explained in a lesson, in a mechanism walkthrough or in
+   the textbook had to guess. NREMT has had this page for a long time; this is
+   the same page for the other course.
+
+   Five sources, all of them derived rather than listed:
+
+     curriculum.js   is the single source of truth for what exists, so the
+                     lessons and mechanisms come from it rather than a second
+                     list here that could disagree with it — the same rule the
+                     textbook, the mastery dashboard and check-site all follow.
+     notes/<id>.html the written course, one fragment per topic.
+     tools-registry  the seven tools, same registry tools.html renders from.
+     practice-bank   1,860 questions, stems and explanations.
+
+   Everything is fetched in parallel and every source is allowed to fail on its
+   own: offline, a reader should get whatever is in the cache rather than an
+   empty page. The status line says what actually made it in. */
+document.addEventListener('DOMContentLoaded', function(){
+  var S = window.LevlSearch;
+  var CU = window.OchemCurriculum;
+  var statusEl = document.getElementById('searchStatus');
+  var resultsEl = document.getElementById('results');
+  var filtersEl = document.getElementById('searchFilters');
+  var searchBox = document.getElementById('searchBox');
+
+  var INDEX = [];
+  var activeKind = 'all';
+
+  // Ordered as the filter row renders them, most specific first. 'Textbook'
+  // leads because prose is what a question-shaped query usually wants.
+  var KINDS = ['Textbook', 'Lessons', 'Mechanisms', 'Tools', 'Practice questions'];
+
+  function topics(){
+    if(!CU || !CU.MODULES) return [];
+    var out = [];
+    CU.MODULES.forEach(function(m){
+      (m.topics || []).forEach(function(t){ out.push({ topic: t, module: m }); });
+    });
+    return out;
+  }
+
+  /* The lessons and mechanisms, from the curriculum rather than from disk.
+     A topic with no href is one the course says is coming and has no page, so
+     it is not a result — a search hit that leads to "coming soon" is worse
+     than no hit.
+
+     Weighted above prose on purpose: someone searching "aldol" wants the aldol
+     lesson at the top, not the ninetieth practice question that mentions it. */
+  function structureChunks(){
+    var out = [];
+    topics().forEach(function(e){
+      var t = e.topic;
+      if(!t.href) return;
+      var isMech = t.href.indexOf('mechanisms/') === 0;
+      out.push({
+        page: isMech ? 'Mechanisms' : 'Lessons',
+        file: t.href,
+        heading: t.title,
+        text: t.title + ' — ' + e.module.title + '. ' +
+              (isMech ? 'Click-through mechanism walkthrough: identify the nucleophile and electrophile, push the arrows, predict the product.'
+                      : 'Interactive lesson: explain, visualize, interact, guided and independent practice, then a challenge.'),
+        weight: 3,
+      });
+      // A topic can have a lesson AND a separate mechanism walkthrough.
+      if(t.mechanism){
+        out.push({
+          page: 'Mechanisms',
+          file: t.mechanism,
+          heading: t.title + ' — mechanism',
+          text: 'The ' + t.title.toLowerCase() + ' mechanism, step by step: ' + e.module.title + '.',
+          weight: 3,
+        });
+      }
+    });
+    return out;
+  }
+
+  function toolChunks(){
+    if(!window.OchemTools || !window.OchemTools.ALL) return [];
+    return window.OchemTools.ALL.map(function(t){
+      return {
+        page: 'Tools',
+        file: 'tools/' + t.slug + '.html',
+        heading: t.name,
+        text: t.tagline + ' ' + t.blurb + ' Teaches: ' + t.teaches,
+        weight: 3,
+      };
+    });
+  }
+
+  /* One chunk per top-level block of a note fragment, so a hit points at the
+     paragraph rather than the chapter. The fragments are plain HTML with no
+     <head>, which DOMParser handles by wrapping them in a document — the
+     blocks are then just the body's descendants. */
+  function noteChunks(id, title, moduleTitle, html){
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    doc.querySelectorAll('script,style').forEach(function(n){ n.remove(); });
+    var out = [];
+    var heading = title;
+    doc.body.querySelectorAll('h1,h2,h3,h4,p,li,dt,dd,td,figcaption').forEach(function(el){
+      var tag = el.tagName.toLowerCase();
+      var text = (el.textContent || '').replace(/\s+/g, ' ').trim();
+      if(!text) return;
+      if(/^h[1-4]$/.test(tag)){ heading = text; return; }
+      // Short fragments are labels and table cells, not prose worth a result.
+      if(text.length < 25) return;
+      out.push({
+        page: 'Textbook',
+        // The textbook opens the right chapter from a topic hash, so this
+        // lands on the section; the text fragment added at render time scrolls
+        // to the paragraph within it.
+        file: 'learn.html#' + id,
+        heading: title === heading ? title : title + ' — ' + heading,
+        text: text,
+        moduleTitle: moduleTitle,
+      });
+    });
+    return out;
+  }
+
+  function fetchNotes(){
+    var list = topics();
+    return Promise.all(list.map(function(e){
+      return fetch('notes/' + e.topic.id + '.html', { credentials: 'omit' })
+        .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+        .then(function(html){ return noteChunks(e.topic.id, e.topic.title, e.module.title, html); })
+        // A topic with no written notes yet is not an error; nor is one that
+        // failed to fetch. Either way it contributes nothing and the rest of
+        // the index is unaffected.
+        .catch(function(){ return []; });
+    })).then(function(all){
+      return all.reduce(function(a, b){ return a.concat(b); }, []);
+    });
+  }
+
+  /* The practice bank. Both the stem and the explanation are indexed: the
+     explanations are where most of the prose is, and a student searching
+     "why is the axial position worse" is searching an explanation.
+
+     There is no per-question deep link in this course the way there is in
+     NREMT's practice.html, so a question result opens the textbook section for
+     its topic — which is the thing a person who searched for the idea actually
+     wanted. The result says so rather than pretending to open the question. */
+  function fetchQuestions(){
+    return fetch('assets/practice-bank.json', { credentials: 'omit' })
+      .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function(bank){
+        var byId = {};
+        topics().forEach(function(e){ byId[e.topic.id] = e; });
+        var out = [];
+        Object.keys(bank).forEach(function(topicId){
+          var meta = byId[topicId];
+          var title = meta ? meta.topic.title : topicId;
+          (bank[topicId] || []).forEach(function(q){
+            out.push({
+              page: 'Practice questions',
+              file: 'learn.html#' + topicId,
+              heading: title,
+              text: (q.q || '') + ' ' + (q.why || ''),
+              isQuestion: true,
+              // Below prose and structure: a question that mentions a term is
+              // weaker evidence than a section that explains it.
+              weight: 0.8,
+            });
+          });
+        });
+        return out;
+      })
+      .catch(function(){ return []; });
+  }
+
+  function countsByPage(){
+    var c = {};
+    INDEX.forEach(function(x){ c[x.page] = (c[x.page] || 0) + 1; });
+    return c;
+  }
+
+  function renderFilters(){
+    var counts = countsByPage();
+    var buttons = [['all', 'Everything', INDEX.length]];
+    KINDS.forEach(function(k){ if(counts[k]) buttons.push([k, k, counts[k]]); });
+    filtersEl.innerHTML = buttons.map(function(b){
+      return '<button type="button" data-kind="' + S.escapeHtml(b[0]) + '" aria-pressed="' +
+        (b[0] === activeKind ? 'true' : 'false') + '">' + S.escapeHtml(b[1]) +
+        ' <span>' + b[2].toLocaleString() + '</span></button>';
+    }).join('');
+    filtersEl.querySelectorAll('button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        activeKind = btn.dataset.kind;
+        renderFilters();
+        runSearch(searchBox.value.trim());
+      });
+    });
+  }
+
+  function buildIndex(){
+    if(!CU || !CU.MODULES){
+      statusEl.textContent = 'The course outline didn’t load, so there is nothing to search yet. Reload the page.';
+      return;
+    }
+    // Structure first and synchronously, so a query typed immediately finds
+    // the lessons while the megabyte of prose is still arriving.
+    INDEX = structureChunks().concat(toolChunks());
+    renderFilters();
+    if(searchBox.value.trim()) runSearch(searchBox.value.trim());
+
+    Promise.all([fetchNotes(), fetchQuestions()]).then(function(parts){
+      INDEX = INDEX.concat(parts[0]).concat(parts[1]);
+      var counts = countsByPage();
+      var bits = [];
+      if(counts['Lessons'] || counts['Mechanisms']) {
+        bits.push(((counts['Lessons'] || 0) + (counts['Mechanisms'] || 0)) + ' lessons and mechanisms');
+      }
+      if(counts['Textbook']) bits.push(counts['Textbook'].toLocaleString() + ' textbook passages');
+      if(counts['Practice questions']) bits.push(counts['Practice questions'].toLocaleString() + ' practice questions');
+      if(counts['Tools']) bits.push(counts['Tools'] + ' tools');
+
+      // Name what is MISSING rather than only what is present: offline, the
+      // difference between "the bank isn't here" and "your search found
+      // nothing" is the whole difference between a working page and a broken
+      // one, and the reader cannot tell them apart from an empty result list.
+      var missing = [];
+      if(!counts['Textbook']) missing.push('the textbook');
+      if(!counts['Practice questions']) missing.push('the practice bank');
+      statusEl.textContent = 'Searching ' + bits.join(', ') + '. Type to search.' +
+        (missing.length ? ' ' + missing.join(' and ') + ' couldn’t be loaded — reconnect once and they’ll be included next time.' : '');
+      renderFilters();
+      if(searchBox.value.trim()) runSearch(searchBox.value.trim());
+    });
+  }
+
+  function runSearch(q){
+    if(!q){ resultsEl.innerHTML = ''; return; }
+    var pool = activeKind === 'all' ? INDEX : INDEX.filter(function(c){ return c.page === activeKind; });
+    var hits = S.rank(pool, q, { limit: 40, maxPerSource: 2 });
+    var terms = S.tokenize(q);
+
+    if(!hits.length){
+      resultsEl.innerHTML = '<p class="empty-note">No results for &ldquo;' + S.escapeHtml(q) + '&rdquo;' +
+        (activeKind === 'all' ? '.' : ' in ' + S.escapeHtml(activeKind) + ' — try Everything.') + '</p>';
+      return;
+    }
+
+    resultsEl.innerHTML = hits.map(function(c){
+      // A textbook hit already carries the section hash; adding a text fragment
+      // to it scrolls to the paragraph inside that section. A lesson, mechanism
+      // or tool is a whole page about the thing, so there is nothing to scroll
+      // to and a fragment would only risk landing mid-page.
+      var href = c.page === 'Textbook' ? S.textFragment(c.file, terms) : c.file;
+      var label = c.isQuestion ? 'Practice question — opens the section it covers' : c.page;
+      return '<a class="result" href="' + S.escapeHtml(href) + '">' +
+        '<div class="result-page">' + S.escapeHtml(label) + '</div>' +
+        '<div class="result-heading">' + S.escapeHtml(c.heading) + '</div>' +
+        '<div class="result-snippet">' + c.snippet + '</div>' +
+      '</a>';
+    }).join('');
+  }
+
+  var debounceTimer;
+  searchBox.addEventListener('input', function(){
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(function(){ runSearch(searchBox.value.trim()); }, 120);
+  });
+
+  var params = new URLSearchParams(location.search);
+  if(params.get('q')) searchBox.value = params.get('q');
+
+  buildIndex();
+});
+</script>
+<script src="assets/ochem-nav.js" defer></script>
+</body>
+</html>

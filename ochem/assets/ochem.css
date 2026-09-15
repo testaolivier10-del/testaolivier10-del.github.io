@@ -922,3 +922,9 @@ a.mode-card{text-decoration:none;display:block;}
 @media (max-width:560px){
   .lesson-links-label{min-width:0;flex-basis:100%;}
 }
+
+/* The way out of the tools grid to the search page (ochem/tools.html). */
+.tools-search-note{
+  margin:26px 0 0;font-size:14px;font-weight:700;color:var(--muted);line-height:1.6;
+}
+.tools-search-note a{color:var(--accent);font-weight:900;}

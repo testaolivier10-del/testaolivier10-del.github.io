@@ -215,12 +215,33 @@ if (existsSync(bankPath)) {
 // The homepage advertised "920 practice questions" long after the bank passed
 // two thousand. The figure appears in nine places — page copy, meta
 // descriptions, Open Graph tags — so it drifts quietly. This makes it loud.
+//
+// There are TWO banks now, and which one a page is talking about is decided by
+// where the page lives: anything under ochem/ means the ochem bank, anything
+// else means NREMT's. Before ochem had a bank of its own this was a single
+// comparison, and the first ochem page to quote its own figure would have
+// failed the build for being accurate.
+const ochemBankPath = join(ROOT, 'ochem', 'assets', 'practice-bank.json');
+let ochemBankCount = null;
+if (existsSync(ochemBankPath)) {
+  try {
+    const parsed = JSON.parse(readFileSync(ochemBankPath, 'utf8'));
+    ochemBankCount = Object.values(parsed).reduce((n, list) => n + (Array.isArray(list) ? list.length : 0), 0);
+  } catch { /* section 2 reports it */ }
+}
+
 if (Array.isArray(bank)) {
-  const expected = bank.length.toLocaleString('en-US');
+  const nremtExpected = bank.length.toLocaleString('en-US');
+  const ochemExpected = ochemBankCount === null ? null : ochemBankCount.toLocaleString('en-US');
   const COUNT_RE = /\b(\d{1,3}(?:,\d{3})+|\d{3,5})(?=[- ](?:practice )?questions?\b|-question\b)/g;
   for (const file of [...htmlFiles, join(ROOT, 'README.md')]) {
     if (!existsSync(file)) continue;
+    const rel = relative(ROOT, file);
     const body = readFileSync(file, 'utf8');
+    // The README describes both courses in the same file, so a figure in it is
+    // correct if it matches either bank. Everything else belongs to one course.
+    const isReadme = rel === 'README.md';
+    const isOchem = rel.split(/[\\/]/)[0] === 'ochem';
     for (const m of body.matchAll(COUNT_RE)) {
       const n = m[1];
       // Session lengths (a 100-question exam, a 20-question drill) and badge
@@ -228,9 +249,12 @@ if (Array.isArray(bank)) {
       // 900 sits above every one of those and below any real pool figure — the
       // stale "920 practice questions" on the homepage is still caught.
       if (Number(n.replace(/,/g, '')) < 900) continue;
-      if (n !== expected) {
-        fail(`${relative(ROOT, file)}: advertises "${n} questions" but the bank holds ${expected}.`);
-      }
+
+      const allowed = isReadme
+        ? [nremtExpected, ochemExpected].filter(Boolean)
+        : [isOchem ? ochemExpected : nremtExpected].filter(Boolean);
+      if (!allowed.length || allowed.includes(n)) continue;
+      fail(`${rel}: advertises "${n} questions" but the ${isOchem ? 'ochem' : 'NREMT'} bank holds ${allowed.join(' or ')}.`);
     }
   }
 }

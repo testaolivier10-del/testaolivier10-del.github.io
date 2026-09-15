@@ -51,6 +51,8 @@ assets/                Shared across every course
                          has an account.js, because the errors worth hearing
                          about are the ones early enough to stop a page working
                          — see When a page breaks
+  site-search.js       Matching, ranking and snippet highlighting, shared by
+                         both courses' search pages — see Searching a course
   report-question.js   "This looks wrong" — the one-tap report under every
                          explanation in both courses. See Reporting a bad
                          question
@@ -545,6 +547,21 @@ Three things, all mounted from `assets/site-chrome.js` rather than written into 
 - **Answer announcements** (`assets/announce.js`) — a polite live region that speaks correct/incorrect and the explanation, wired into the one choke point each course's feedback passes through.
 - **Reduced motion** — a blanket CSS rule in `assets/theme.css`, plus `window.LevlMotion` for the movement CSS cannot reach (smooth scrolls, the body map's camera flights).
 
+## Searching a course
+
+Each course has a search page that indexes the whole course in the browser and sends nothing anywhere. `assets/site-search.js` holds the part that is the same in both — matching, ranking, snippet highlighting — because it used to live inline in `nremt/search.html` and the moment a second course wanted a search page the choice was to share it or copy it, and the two per-course copies of `theme.css` are what copying it looks like eighteen months later.
+
+- **AND, not OR.** Every term has to appear somewhere in a chunk. Matching the whole query as one literal substring returned nothing for anything but an exact quotation; OR returns the entire bank for any query containing a common word.
+- **Heading beats body, and the whole phrase intact beats its words scattered.** A chunk can also declare a `weight`, which is what puts the aldol *lesson* above the ninetieth practice question that mentions aldol.
+- **Escape, then mark.** Marking the raw string and escaping afterwards eats its own `<mark>` tags; marking raw text with a raw pattern misses any term containing `& < > ' "`. So: slice, escape, then match the escaped term against the escaped text.
+- **A URL has one fragment.** Ochem's textbook links already carry a hash naming the section, and appending `#:~:text=` to that produced `learn.html#e2#:~:text=…` — a second `#`, which matches no element and is not a text directive either. A broken text fragment is ignored by the browser rather than reported, so the only symptom was a link that quietly stopped opening the right chapter.
+
+**`ochem/search.html`** is the new one. `learn.html`'s rail already searched the textbook, but only the textbook, and only the sections that happened to have been fetched already — which left the 58 lessons, the 10 mechanism walkthroughs, the 7 tools and 1,860 practice questions with no way in at all. Someone who could not remember whether anti-periplanar was explained in a lesson, a mechanism walkthrough or the textbook had to guess.
+
+Its five sources are all *derived*, never listed: `curriculum.js` for the lessons and mechanisms (so a topic with no page yet is not a result — a hit that leads to "coming soon" is worse than no hit), the note fragments for the textbook, `tools-registry.js` for the tools, and `practice-bank.json` for the questions. Structure is indexed synchronously so a query typed immediately finds the lessons while the megabyte of prose is still arriving; each source may fail on its own, and the status line names **what is missing** rather than only what is present — offline, the difference between "the bank isn't here" and "your search found nothing" is the whole difference between a working page and a broken one, and an empty result list cannot tell them apart. A filter row exists because a mixed index of five kinds returns forty practice questions and "show me only the lessons" is the first thing anyone wants next.
+
+Search is now a tab in the ochem header (the tab row scrolls horizontally, so a seventh item costs nothing on a phone) and a link under the tools grid — outside it, because check #10 compares those tiles byte-for-byte against the registry and search is a way of getting somewhere rather than a tool.
+
 ## Reporting a bad question (`assets/report-question.js`)
 
 `sources.html` promised a way to tell us when a question is wrong from the day it was written. It explained the correction policy and said where corrections get listed, and then never said *how* — the only address anywhere on the site was at the bottom of the privacy policy. For a bank of 2,084 NREMT questions and 1,860 ochem ones, written against reference material rather than by a committee, that was the most expensive gap on the site. No script can check whether an answer is clinically right; a student who has just answered one and thinks the key is wrong is the only reviewer who can, and they are on the one screen where saying so costs a tap.
@@ -617,7 +634,7 @@ then open `http://localhost:8000/`.
 3. Each Ochem lesson has the number of steps `lesson-concepts.js` was authored against.
 4. Every URL in `sitemap.xml` maps to a real file — **and** every real page is in `sitemap.xml`. Fifty Ochem lesson pages once shipped with no path in from a search engine because the sitemap was hand-maintained; run `node scripts/build-sitemap.mjs` to regenerate it after adding a page.
 5. The question bank carries no answer tell: no keyed option position holds more than 40% of items, no select-N key set dominates, and the "longest option is the answer" rate stays under its ceiling. The ceiling is a ratchet — lower it as the bank improves, never raise it.
-6. Every advertised question count in markup, meta tags and this README matches the bank. The homepage went on advertising a figure from an early build long after the bank had more than doubled.
+6. Every advertised question count in markup, meta tags and this README matches the right bank — there are two now, and which one a page means is decided by whether it lives under `ochem/`. The README describes both, so a figure in it is correct if it matches either. The homepage went on advertising a figure from an early build long after the bank had more than doubled.
 7. Every advertised Ochem count matches `curriculum.js`: a digit count of "topics" is the number of topics with an href, "lessons" the number under `lessons/`, "mechanisms" the number of pages under `ochem/mechanisms/`. The course was "58 lessons", "62 topics" and "Fifty-eight interactive lessons" on three pages at once.
 8. Every question in the bank has a unique id, so every record in a learner's browser still refers to something.
 9. Every page that loads `assets/account.js` also loads `assets/errors.js`, and loads it first — a page whose failures nothing reports is a page that can break silently forever, and new pages are copied from existing ones.
@@ -638,10 +655,11 @@ A third job re-derives everything that is generated from the pages and fails if 
 
 ### Unit tests
 
-A second job runs `node --test scripts/test/*.test.mjs` — 129 tests over the pieces whose failure modes are silent. Everything above checks that the site is *wired* correctly; nothing checked that it *scores* correctly. An interval that doubles too eagerly buries a shaky concept for four months, a decay curve that bites too hard makes yesterday's work look undone, a streak that resets in the wrong timezone eats a 40-day run. None of that throws, and none of it would have been caught by a link checker — the student just gets worse practice and no one finds out.
+A second job runs `node --test scripts/test/*.test.mjs` — 141 tests over the pieces whose failure modes are silent. Everything above checks that the site is *wired* correctly; nothing checked that it *scores* correctly. An interval that doubles too eagerly buries a shaky concept for four months, a decay curve that bites too hard makes yesterday's work look undone, a streak that resets in the wrong timezone eats a 40-day run. None of that throws, and none of it would have been caught by a link checker — the student just gets worse practice and no one finds out.
 
 - `scripts/test/hub-progress.test.mjs` — the level curve (pinned: changing it demotes every existing user), XP accumulation and per-subject split, streak continuation across days, goal tracking, rank titles, day-log pruning.
 - `scripts/test/mastery-engine.test.mjs` — unseen vs. scored-zero, the learning rate settling as evidence accumulates, the same-day guard that stops one good session reaching a six-month interval, the interval cap, the decay floor, due-ness, leech benching and its release on a lesson read, the daily review cap, mistake de-duplication, tier records.
+- `scripts/test/site-search.test.mjs` — AND vs OR, the ranking order, the escape-then-mark ordering, the one-fragment-per-URL rule, and that ranking does not mutate the index it is handed.
 - `scripts/test/account-delete.test.mjs` — what a "delete my account" erases and, more to the point, what it leaves: the analytics opt-out, anything not on the allow-list, and the Supabase session the delete itself needs.
 - `scripts/test/report-question.test.mjs` — the once-per-browser receipt surviving a re-render, the bounded store, and the reason list matching what the database will actually accept.
 - `scripts/test/errors.test.mjs` — the cap, the dedupe, the opt-out and the queue that holds reports until `account.js` exists. All four fail silently in both directions: a broken cap floods the database, a broken queue reports nothing and looks like a site with no bugs.
