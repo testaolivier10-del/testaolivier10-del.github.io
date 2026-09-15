@@ -341,7 +341,7 @@ their lessons exist.
 
 | Item | Status |
 |---|---|
-| Rewrite options flagged by the three tell checks, one domain per commit | in progress — 4 domains done, ~11 to go |
+| Rewrite options flagged by the three tell checks, one domain per commit | in progress — 5 domains done, ~10 to go |
 
 The scale, measured before starting:
 
@@ -412,9 +412,19 @@ Running totals:
 | Cardiac | 414 / 6.8% | 100 / 41.0% | 178 / 17.4% |
 | Medical | 385 / 7.3% | 90 / 42.2% | 172 / 18.0% |
 | Geriatrics | 355 / 7.9% | 88 / 40.9% | 173 / 18.5% |
-| Secondary Assessment | **328 / 8.5%** | 88 / 40.9% | **164 / 19.5%** |
+| Secondary Assessment | 328 / 8.5% | 88 / 40.9% | 164 / 19.5% |
+| Musculoskeletal & Burns | **301 / 9.3%** | **86 / 39.5%** | **159 / 20.1%** |
 
-Thresholds now `absoluteFloor: 0.08`, `hedgeCeiling: 0.415`, `justifyFloor: 0.19`.
+Thresholds now `absoluteFloor: 0.09`, `hedgeCeiling: 0.40`, `justifyFloor: 0.20`.
+
+**Where distractor rewriting runs out.** Absolute has gone 6.2% → 9.3% across
+five domains, and the remaining work will keep moving it, but not to 25%.
+Rewriting distractors can only remove the tell; it cannot create the balancing
+evidence that an absolute-worded option is *sometimes* the answer. Reaching the
+baseline needs keys that are legitimately absolute — "never delay compressions
+to place an advanced airway", "always clear before defibrillating" — which is a
+different edit, on key wording rather than distractor wording, and one worth
+agreeing before starting.
 The hedge ceiling moved for the first time here — it had only ever been held,
 never tightened, because until this commit the work kept pushing it the wrong
 way.

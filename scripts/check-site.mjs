@@ -234,8 +234,9 @@ const BANKS = [
     // Measured 6.6% and 42.9% when the wording tells were first guarded.
     // Tightened as domains are rewritten: 0.06 at the start, then 0.065
     // (Cardiac, 6.2% -> 6.8%), 0.07 (Medical, -> 7.3%), 0.075 (Geriatrics,
-    // -> 7.9%), 0.08 (Secondary Assessment, -> 8.5%). 25% is the target.
-    absoluteFloor: 0.08,
+    // -> 7.9%), 0.08 (Secondary Assessment, -> 8.5%), 0.09 (Musculoskeletal
+    // & Burns, -> 9.3%). 25% is the target.
+    absoluteFloor: 0.09,
     // NOT tightened, and the reason is worth reading before the next domain.
     // This is the one tell here that marks the RIGHT answer, so it behaves
     // backwards from the other two: taking a hedge OUT OF A DISTRACTOR shrinks
@@ -249,12 +250,15 @@ const BANKS = [
     // Geriatrics followed that rule — two padded keys committed to definite
     // answers, no distractor hedges touched — and the share fell to 40.9%,
     // which is the first real movement this number has made. Tightened to
-    // match.
-    hedgeCeiling: 0.415,
+    // match, and again to 0.40 after Musculoskeletal & Burns (-> 39.5%),
+    // where three keys kept their "per protocol" because repositioning a
+    // limb to restore a pulse genuinely is protocol-gated.
+    hedgeCeiling: 0.40,
     // Measured 17.1% on the single-clause case against a 25% baseline.
     // 16.9% at the start, then 17.4% (Cardiac), 18.0% (Medical),
-    // 18.5% (Geriatrics), 19.5% (Secondary Assessment).
-    justifyFloor: 0.19,
+    // 18.5% (Geriatrics), 19.5% (Secondary Assessment),
+    // 20.1% (Musculoskeletal & Burns).
+    justifyFloor: 0.20,
   },
   {
     label: 'practice-bank.json',
