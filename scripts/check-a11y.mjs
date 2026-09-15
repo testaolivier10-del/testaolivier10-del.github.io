@@ -205,9 +205,23 @@ for (const [path, what] of PAGES) {
 
   try {
     await page.goto(`http://127.0.0.1:${PORT}${path}`, { waitUntil: 'domcontentloaded' });
-    // The header, the tutor and the announcer all mount after load, and they
-    // are exactly what a check like this needs to see.
-    await page.waitForTimeout(1200);
+
+    /* Wait for the chrome to actually be there rather than for a number of
+       milliseconds. The header, the skip link, the tutor and the announcer all
+       mount after load, and a page that fetches a megabyte on the way (either
+       search page) can still be assembling itself when a fixed timeout
+       expires — which showed up exactly once in four runs as a page "failing"
+       for a landmark that appeared a moment later. A check that fails one run
+       in four is a check that gets ignored, and an accessibility suite nobody
+       trusts is worse than none. */
+    await page.waitForFunction(
+      () => document.querySelector('.skip-link') &&
+            document.querySelector('main, [role="main"]'),
+      null,
+      { timeout: 15000 }
+    ).catch(() => { /* genuinely missing: the site checks below will say so */ });
+    // A short settle for anything mounted in the same tick as the above.
+    await page.waitForTimeout(400);
 
     await page.addScriptTag({ content: axeSource });
     const results = await page.evaluate(async (off) => {
