@@ -226,7 +226,7 @@
   </div>
 
   <div class="notice">
-    <strong>A note on these recordings:</strong> the wheeze, crackles, and stridor clips are real auscultation recordings sourced from Wikimedia Commons (each individually credited and licensed CC BY-SA). The rhonchi and normal breath sound clips are also playable directly here, with a link to the Hawaii COPD Coalition's lung sounds page if you'd like to hear more from the original source.
+    <strong>A note on these recordings:</strong> the wheeze, crackles and stridor clips are real auscultation recordings from Wikimedia Commons, each individually credited and licensed CC BY-SA. The rhonchi and normal breath sound clips are embedded in this page and come from the Hawaii COPD Coalition's lung sounds page. We have not established what licence those two carry, and they will be replaced with openly licensed recordings or removed. Snoring, gurgling and diminished breath sounds have no clip yet for the same reason — the descriptions are there, the audio is not, and a synthesised substitute would be worse than silence.
   </div>
 
   <section id="listenSection">
@@ -242,7 +242,7 @@
   </section>
 
   <footer>
-    <p>Audio credits: the wheeze, crackles, and stridor recordings are sourced from Wikimedia Commons contributors under CC BY-SA 3.0 — individual credits are shown next to each clip above. The rhonchi and normal breath sound recordings come via the <a href="https://hawaiicopd.org/lung-sounds/" target="_blank" rel="noopener">Hawaii COPD Coalition's lung sounds page</a>, linked next to each clip. This trainer is a supplementary study aid; it is not a substitute for hands-on stethoscope practice with an instructor.</p>
+    <p>Audio credits: the wheeze, crackles and stridor recordings come from Wikimedia Commons contributors under CC BY-SA 3.0, with individual credits shown next to each clip above. The rhonchi and normal breath sound recordings come from the <a href="https://hawaiicopd.org/lung-sounds/" target="_blank" rel="noopener">Hawaii COPD Coalition's lung sounds page</a> and are embedded in this page rather than linked, which is a distinction that matters: we have not confirmed the licence permits that, and until we have, those two are provisional. If you hold the rights to them and object, the address at the foot of the privacy policy reaches us and they will come down the same day. This trainer is a supplementary study aid; it is not a substitute for hands-on stethoscope practice with an instructor.</p>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
     </footer>
 </div>
@@ -293,7 +293,7 @@ const SOUNDS = [
   {
     id: "stridor",
     label: "Stridor",
-    group: "lung",
+    group: "airway",
     available: true,
     audioUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Stridor_NP_OGG_2.ogg",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Stridor_NP_OGG_2.ogg",
@@ -323,6 +323,30 @@ const SOUNDS = [
     clinical: "The baseline every abnormal sound is judged against. Knowing what normal actually sounds like is what makes an abnormal finding jump out in the first place."
   },
 
+  {
+    id: "snoring",
+    label: "Snoring (sonorous)",
+    group: "airway",
+    available: false,
+    description: "A coarse, low, rattling snore on inspiration \u2014 the sound of a tongue partly blocking the airway in a patient whose muscle tone has gone.",
+    clinical: "The most important airway sound an EMT will ever hear, because it has an immediate fix: it means the airway is partly obstructed and a head-tilt chin-lift, a jaw thrust, or an airway adjunct will open it. A snoring patient is telling you to do something about their airway right now."
+  },
+  {
+    id: "gurgling",
+    label: "Gurgling",
+    group: "airway",
+    available: false,
+    description: "A wet, bubbling sound with each breath \u2014 air moving through fluid sitting in the upper airway: secretions, blood, vomit.",
+    clinical: "Suction, immediately, and no more than about 15 seconds per attempt in an adult. Gurgling is aspiration happening in front of you; no adjunct and no amount of oxygen helps until the fluid is out. Never place an airway adjunct into a gurgling airway before suctioning it."
+  },
+  {
+    id: "diminished",
+    label: "Diminished or absent breath sounds",
+    group: "lung",
+    available: false,
+    description: "Quiet, or nothing at all, over one side or over both \u2014 heard by comparing side to side at the same level rather than by listening to one spot.",
+    clinical: "Unilateral absence is a pneumothorax, a hemothorax, or a mainstem intubation until proven otherwise, and with hypotension and distended neck veins it is a tension pneumothorax. Bilateral quiet with poor air movement is the ominous one in asthma: a chest that has stopped wheezing because too little air is moving to make the sound \u2014 the silent chest, which is a pre-arrest finding and not an improvement."
+  },
   {
     id: "heart-normal",
     label: "Normal S1 / S2",
@@ -384,8 +408,9 @@ function renderListenSection(){
   /* Grouped, because "lung" and "heart" are two different listening tasks and
      a flat grid of eleven cards implies they are one. */
   const groups = [
+    { key:'airway', title:'Airway sounds', note:'The ones with an immediate fix. Snoring means open the airway; gurgling means suction. These two are worth more to an EMT than everything below them, and they are the ones most likely to appear on your exam.' },
     { key:'lung',  title:'Lung sounds', note:'Recordings. Use headphones if you have them — a phone speaker loses the low end, which is where half of these live.' },
-    { key:'heart', title:'Heart sounds', note:'Generated rather than recorded. What separates these from each other is where the sound falls in the cycle, which is reproduced exactly; the timbre of a real chest is not. See the note below.' }
+    { key:'heart', title:'Heart sounds', note:'Beyond EMT scope, and included because they are interesting rather than because they are tested — murmurs, S3 and S4 are not EMT assessment findings and will not be on your cognitive exam. Generated rather than recorded: what separates them is where the sound falls in the cycle, which synthesis reproduces exactly; the timbre of a real chest it does not.' }
   ];
   grid.innerHTML = groups.map(g => `
     <div class="sound-group">
@@ -533,14 +558,22 @@ function renderQuizRound(){
   const box = document.getElementById('quizBox');
   if (!quizState) {
     const counts = {
-      all: SOUNDS.filter(s => s.available).length,
-      lung: SOUNDS.filter(s => s.available && s.group === 'lung').length,
-      heart: SOUNDS.filter(s => s.available && s.group === 'heart').length
+      all:    SOUNDS.filter(s => s.available).length,
+      airway: SOUNDS.filter(s => s.available && s.group === 'airway').length,
+      lung:   SOUNDS.filter(s => s.available && s.group === 'lung').length,
+      heart:  SOUNDS.filter(s => s.available && s.group === 'heart').length
     };
+    // A group is only offered once it has enough playable clips to make a fair
+    // multiple choice. Airway currently has one, so it is described on the page
+    // but not yet quizzable — a two-option quiz is not a quiz.
+    const MIN_FOR_QUIZ = 4;
+    const groupChoices = [['all','Everything'],['airway','Airway only'],['lung','Lung only'],['heart','Heart only']]
+      .filter(([k]) => k === 'all' || counts[k] >= MIN_FOR_QUIZ);
+    if (!groupChoices.some(([k]) => k === quizGroup)) quizGroup = 'all';
     box.innerHTML = `
       <div class="quiz-start">
         <div class="quiz-group" role="group" aria-label="Which sounds to be asked about">
-          ${[['all','Everything'],['lung','Lung only'],['heart','Heart only']].map(([k,label]) =>
+          ${groupChoices.map(([k,label]) =>
             `<button type="button" data-group="${k}" class="${quizGroup === k ? 'on' : ''}" aria-pressed="${quizGroup === k}">${label} <span>${counts[k]}</span></button>`
           ).join('')}
         </div>

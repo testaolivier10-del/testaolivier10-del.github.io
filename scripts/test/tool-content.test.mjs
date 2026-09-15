@@ -412,20 +412,25 @@ test('every sound in the trainer has a source and a group', () => {
   vm.runInContext(src + '\nthis.S=SOUNDS; this.draw=drawSound; this.misses=misses;', s);
 
   assert.ok(s.S.length >= 10, `only ${s.S.length} sounds`);
+  const GROUPS = ['airway', 'lung', 'heart'];
   for(const x of s.S){
-    const source = x.localSrc || x.synth || x.audioUrl;
-    assert.ok(source, `${x.id} has no local file, no synth and no URL — nothing will play`);
-    assert.ok(x.group === 'lung' || x.group === 'heart', `${x.id} has no group`);
+    assert.ok(GROUPS.includes(x.group), `${x.id} has no group`);
     assert.ok(x.label && x.description && x.clinical, `${x.id} is missing its copy`);
-    // Lung sounds must not be synthesized: a wheeze is a texture, and a
-    // synthetic texture teaches the wrong thing. See sound-bank.js.
-    if(x.group === 'lung') assert.ok(!x.synth, `${x.id} is a lung sound and must not be generated`);
+    // An entry may exist without audio — the description still teaches, and an
+    // invented clip would be worse than none. But if it claims to be playable
+    // it has to have something to play.
+    const source = x.localSrc || x.synth || x.audioUrl;
+    if(x.available) assert.ok(source, `${x.id} is marked available but has no local file, no synth and no URL`);
+    else assert.ok(!source, `${x.id} is marked unavailable but carries a source — mark it available or drop the source`);
+    // Airway and lung sounds must not be synthesized: a wheeze is a texture,
+    // and a synthetic texture teaches the wrong thing. See sound-bank.js.
+    if(x.group !== 'heart') assert.ok(!x.synth, `${x.id} is a recorded-only sound and must not be generated`);
   }
-  // A round offers only its own group, so each group needs enough choices to
-  // be a fair multiple choice.
+  // A round offers only its own group, so a group is quizzable only once it has
+  // four playable clips. Airway is described on the page before it reaches that.
   for(const g of ['lung', 'heart']){
-    const n = s.S.filter(x => x.group === g).length;
-    assert.ok(n >= 4, `only ${n} ${g} sounds — too few for a multiple choice`);
+    const n = s.S.filter(x => x.group === g && x.available).length;
+    assert.ok(n >= 4, `only ${n} playable ${g} sounds — too few for a multiple choice`);
   }
 });
 

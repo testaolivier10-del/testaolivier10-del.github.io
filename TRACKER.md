@@ -34,6 +34,17 @@ clinician, and that is the gap no amount of tooling closes.
 | Hypoglycemia threshold set at **70 mg/dL** with an explicit note that protocols vary and some use 60 | ADA Level 1 hypoglycemia | Ch 22 | Phase 2 |
 | Sildenafil-type drugs (ED **and** pulmonary hypertension) asked before nitroglycerin, for patients of any sex | Standard EMT pharmacology | chest pain scenario | Phase 2 |
 | Long-acting sulfonylurea named as the reason a hypoglycemia refusal is dangerous — it outlasts oral glucose | Standard EMT pharmacology | diabetic scenario | Phase 2 |
+| Primary assessment: AVPU added, and catastrophic external bleeding placed before the airway for trauma (X-ABC) | Current prehospital trauma practice | `flowcharts.html` | Phase 3 |
+| Anaphylaxis criteria: more than one body system, or hypotension after a known allergen; skin findings alone are an allergic reaction, not anaphylaxis | Standard anaphylaxis diagnostic criteria | `flowcharts.html` | Phase 3 |
+| Anaphylaxis: epinephrine, then call ALS and start moving before reassessing; biphasic reaction named as the reason everyone transports | 2025 AHA | `flowcharts.html` | Phase 3 |
+| START: "Expectant" removed (it is a SALT category), respiratory criterion stated as over 30, and "breathing only after repositioning → Immediate" added | START | `flowcharts.html`, `mnemonics.html` | Phase 3 |
+| SALT triage added, including the Expectant category and its meaning as resource-dependent and revisitable | SALT | `flowcharts.html` | Phase 3 |
+| Stroke: high-glucose branch added, and a swallow/airway check before any oral glucose | Standard EMT practice | `flowcharts.html` | Phase 3 |
+| CPR diagram: depth given as 2–2.4 in; "AED re-analysis prompts" removed as a stopping point | 2025 AHA | `flowcharts.html` | Phase 3 |
+| Infant choking: back blows and chest thrusts only, no abdominal thrusts under 1 year, with the liver named as the reason | 2025 AHA | `flowcharts.html` | Phase 3 |
+| Oxygen flow rates stated: cannula 1–6 L/min, non-rebreather 12–15 L/min, BVM with reservoir at 15 L/min | Standard EMT practice | `skillsheets.html` | Phase 3 |
+| Airway sounds: snoring means open the airway, gurgling means suction (≤15 s); silent chest named as a pre-arrest finding | Standard EMT practice | `sound-trainer.html` | Phase 3 |
+| BE-FAST, APGAR (with acrocyanosis scoring 1), PAT and SLUDGEM cards added | Standard EMT practice | `mnemonics.html` | Phase 3 |
 
 ---
 
@@ -45,6 +56,8 @@ clinician, and that is the gap no amount of tooling closes.
 | About section with a real name | Best done once a reviewer is named, so the two land together. Placeholder kept here deliberately. |
 | Sound trainer: Hawaii COPD Coalition clips | Re-hosting permission is a question for the rights holder, not a code change. |
 | Whether the state tests supine/seated spinal immobilization stations | Varies by state; needs the local office of EMS. |
+| Three openly licensed recordings: snoring, gurgling, diminished/absent breath sounds | Entries and teaching are on the page; only the audio is missing. Must be openly licensed — not synthesised. |
+| Whether the rhonchi and normal breath clips may be re-hosted | They are embedded as base64, not linked. Licence unestablished. |
 | Whether drag-to-order items appear on the **EMT** cognitive exam | The 2024 technology-enhanced item changes are documented for AEMT and Paramedic. Could not confirm for EMT from here, so the claim is softened rather than asserted. |
 
 ---
@@ -82,23 +95,37 @@ clinician, and that is the gap no amount of tooling closes.
 | Chest pain scenario: sildenafil-type drugs before nitro; 12-lead "if in scope" | done |
 | Diabetic scenario: which medication (long-acting sulfonylurea) | done |
 
-## Phase 3 — Flow diagrams and reference content
+## Phase 3 — Flow diagrams and reference content — **complete**
 
 | Item | Status |
 |---|---|
-| Branch arrows must not imply a wrong path (anaphylaxis, choking) | open |
-| Branches readable on mobile | open |
-| Primary assessment: AVPU; massive haemorrhage first in trauma | open |
-| START: remove "Expectant", correct respiratory criteria, add reposition branch | open |
-| Stroke: high-glucose branch, swallow check | open |
-| CPR: remove "AED re-analysis prompts" endpoint; depth 2–2.4 in | open |
-| Shock: branches must differ or merge | open |
-| Anaphylaxis: hives alone must not qualify; transport earlier | open |
-| Infant choking diagram | open |
-| Mnemonics: BE-FAST, APGAR, PAT, SLUDGEM; fix RPM "expectant" | open |
-| Skill sheets: spinal immobilisation stations; non-rebreather flow rate | open |
-| Sound trainer: snoring, gurgling, diminished/absent; label heart sounds out of scope | open |
-| SALT triage alongside START and JumpSTART | open |
+| Branch arrows must not imply a wrong path (anaphylaxis, choking) | done |
+| Branches readable on mobile | done |
+| Primary assessment: AVPU; massive hemorrhage first in trauma | done |
+| START: remove "Expectant", correct respiratory criteria, add reposition branch | done |
+| Stroke: high-glucose branch, swallow check | done |
+| CPR: remove "AED re-analysis prompts" endpoint; depth 2–2.4 in | done |
+| Shock: branches must differ or merge | done |
+| Anaphylaxis: hives alone must not qualify; transport earlier | done |
+| Infant choking diagram | done |
+| Mnemonics: BE-FAST, APGAR, PAT, SLUDGEM; fix RPM "expectant" | done |
+| Skill sheets: spinal immobilisation stations; non-rebreather flow rate | done |
+| Sound trainer: snoring, gurgling, diminished — **entries added, audio not** (see below) | partial |
+| Sound trainer: heart sounds labelled beyond EMT scope | done |
+| SALT triage alongside START and JumpSTART | done |
+
+**Sound trainer, honestly:** the three airway entries are on the page with their
+full clinical teaching, marked "clip coming soon". No audio was added, because
+no openly licensed recording of them was available to me and a synthesised
+substitute would be worse than silence — the file's own comment says lung sounds
+must not be synthesised, and airway sounds are the same kind of texture.
+
+Sourcing three openly licensed clips is now in **Needs a person**.
+
+While there, a licensing problem was made explicit rather than left implied: the
+rhonchi and normal breath clips are **embedded in the page as base64**, not
+linked as the credit line implied. The page now says so, says the licence has
+not been established, and gives a route to have them removed.
 
 ## Phase 4 — New EMT content
 

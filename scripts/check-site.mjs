@@ -689,6 +689,49 @@ if (Array.isArray(bank)) {
   }
 }
 
+// ---- 15. Flow-diagram branches must not imply both arms continue ----
+// Every branch on flowcharts.html used to be two bare columns followed by a
+// shared down-arrow. Drawn that way, the diagram says both arms lead to the
+// next box — so the mild-obstruction arm appeared to flow into abdominal
+// thrusts, and the mild-allergy arm into epinephrine. Both are the opposite of
+// the teaching.
+//
+// The convention now is that every arm ends in either a terminal box (it stops
+// there) or a rejoin marker (it carries on to the next step), and no arrow
+// follows a branch. This checks all three, plus the two structural things
+// flow-drill.js needs to build its quiz from the same markup: each arm must
+// carry a .branch-label and a .flow-box.
+const flowPath = join(ROOT, 'nremt', 'flowcharts.html');
+if (existsSync(flowPath)) {
+  const html = readFileSync(flowPath, 'utf8');
+
+  if (/<\/div>\s*<\/div>\s*<div class="flow-arrow">/.test(html)) {
+    fail('nremt/flowcharts.html: a flow-arrow follows a branch, which draws both arms as leading to the next step. ' +
+         'End each arm in a terminal box or a rejoin marker instead.');
+  }
+
+  const branches = [...html.matchAll(/<div class="flow-branch">([\s\S]*?)\n    <\/div>/g)];
+  if (!branches.length) {
+    fail('nremt/flowcharts.html: no flow branches found — the diagram markup or this check has drifted.');
+  }
+  branches.forEach((branch, n) => {
+    const arms = branch[1].split(/\n      <div>\n/).slice(1);
+    if (arms.length < 2) {
+      fail(`nremt/flowcharts.html: branch ${n + 1} has fewer than two arms.`);
+      return;
+    }
+    arms.forEach((arm, i) => {
+      const where = `branch ${n + 1}, arm ${i + 1}`;
+      if (!arm.includes('branch-label')) fail(`nremt/flowcharts.html: ${where} has no .branch-label — flow-drill.js will skip it.`);
+      if (!arm.includes('flow-box')) fail(`nremt/flowcharts.html: ${where} has no .flow-box — flow-drill.js will skip it.`);
+      if (!arm.includes('flow-box terminal') && !arm.includes('flow-rejoin')) {
+        fail(`nremt/flowcharts.html: ${where} neither ends in a terminal box nor carries a rejoin marker, ` +
+             `so a reader cannot tell whether that path stops or continues.`);
+      }
+    });
+  });
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);

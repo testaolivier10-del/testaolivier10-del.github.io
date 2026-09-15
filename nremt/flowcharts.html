@@ -42,6 +42,32 @@
   .flow-box.action{font-weight:900;}
   .flow-arrow{text-align:center;font-size:16px;color:var(--muted);margin:2px 0;}
   .flow-branch{display:flex;gap:10px;margin:2px 0;}
+  /* Each arm is a self-contained alternative, not a step in a sequence. It was
+     two bare columns with a shared arrow underneath, which read — correctly, as
+     drawn — as "both of these lead to the next box". So the mild-obstruction arm
+     appeared to flow into abdominal thrusts, and the mild-allergy arm into
+     epinephrine. The border and the IF label make each arm a fork you take one
+     of, and every arm now ends in either a terminal box or a rejoin marker so
+     it is never ambiguous which one carries on. */
+  .flow-branch > div{
+    border:2px solid var(--line-soft);border-radius:var(--radius-sm);
+    padding:8px;background:var(--surface-2,transparent);
+  }
+  .flow-box.terminal{
+    border-style:dashed;font-weight:800;
+  }
+  .flow-box.terminal::after{
+    content:"\2014 stop here";display:block;margin-top:5px;
+    font:700 10px var(--font-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em;
+  }
+  .flow-rejoin{
+    text-align:center;margin-top:6px;
+    font:700 10px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.05em;
+  }
+  .flow-note{
+    margin:6px 0 2px;padding:8px 10px;border-left:3px solid var(--accent);
+    font-size:12.5px;color:var(--muted);
+  }
   /* min-width:0 overrides the flex default of min-width:auto, which refuses to
      shrink a column below its longest word — "anaphylaxis" alone pushed the
      page 40px wide on a 390px screen. Below 520px the two branches stack. */
@@ -49,7 +75,11 @@
   @media (max-width:520px){
     .flow-branch{flex-direction:column;gap:6px;}
   }
-  .branch-label{font:700 11px var(--font-mono);color:var(--muted);text-align:center;margin-bottom:3px;}
+  .branch-label{
+    font:700 10.5px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:5px;
+    text-transform:uppercase;letter-spacing:.04em;
+  }
+  .branch-label::before{content:"if \00a0";opacity:.65;}
 
   /* ---- Drill mode ------------------------------------------------------- */
 
@@ -200,142 +230,210 @@
     <div class="flow-arrow">&darr;</div>
     <div class="flow-box">Form general impression (age, sex, distress level, obvious life threats)</div>
     <div class="flow-arrow">&darr;</div>
+    <div class="flow-box decision">Level of consciousness &mdash; AVPU: Alert, responds to Verbal, responds to Painful, Unresponsive</div>
+    <div class="flow-arrow">&darr;</div>
+    <div class="flow-box decision">Trauma with life-threatening external bleeding?</div>
+    <div class="flow-branch">
+      <div>
+        <div class="branch-label">Yes &mdash; spurting or pooling</div>
+        <div class="flow-box action">Control it first: tourniquet for a life-threatening extremity bleed, pressure or packing otherwise</div>
+        <div class="flow-rejoin">&darr; then airway</div>
+      </div>
+      <div>
+        <div class="branch-label">No</div>
+        <div class="flow-box">Go straight to the airway</div>
+        <div class="flow-rejoin">&darr; continue</div>
+      </div>
+    </div>
+    <div class="flow-note">Catastrophic bleeding comes before the airway in trauma &mdash; the X in X-ABC. A patient can exsanguinate from a femoral artery faster than an obstructed airway will kill them. For a medical patient, the airway is still first.</div>
     <div class="flow-box decision">Airway patent?</div>
     <div class="flow-branch">
       <div>
         <div class="branch-label">No</div>
         <div class="flow-box action">Open airway (manual maneuver, suction, adjunct as needed)</div>
+        <div class="flow-rejoin">&darr; then breathing</div>
       </div>
       <div>
         <div class="branch-label">Yes</div>
         <div class="flow-box">Proceed to breathing</div>
+        <div class="flow-rejoin">&darr; continue</div>
       </div>
     </div>
-    <div class="flow-arrow">&darr;</div>
     <div class="flow-box decision">Breathing adequate? (rate, depth, effort)</div>
     <div class="flow-branch">
       <div>
         <div class="branch-label">No</div>
         <div class="flow-box action">Assist ventilations, high-flow oxygen</div>
+        <div class="flow-rejoin">&darr; then circulation</div>
       </div>
       <div>
         <div class="branch-label">Yes</div>
         <div class="flow-box">Proceed to circulation</div>
+        <div class="flow-rejoin">&darr; continue</div>
       </div>
     </div>
-    <div class="flow-arrow">&darr;</div>
-    <div class="flow-box decision">Circulation: pulse, major bleeding, skin signs</div>
+    <div class="flow-box decision">Circulation: pulse, remaining bleeding, skin signs</div>
     <div class="flow-branch">
       <div>
-        <div class="branch-label">Major bleeding present</div>
-        <div class="flow-box action">Control bleeding immediately</div>
+        <div class="branch-label">Bleeding still uncontrolled</div>
+        <div class="flow-box action">Escalate: packing, hemostatic dressing, or tourniquet</div>
+        <div class="flow-rejoin">&darr; then priority</div>
       </div>
       <div>
-        <div class="branch-label">No major bleeding</div>
-        <div class="flow-box">Proceed to priority decision</div>
+        <div class="branch-label">Perfusion adequate</div>
+        <div class="flow-box">Proceed to the priority decision</div>
+        <div class="flow-rejoin">&darr; continue</div>
       </div>
     </div>
-    <div class="flow-arrow">&darr;</div>
     <div class="flow-box decision">Significant MOI, unstable finding, or altered mental status?</div>
     <div class="flow-branch">
       <div>
         <div class="branch-label">Yes</div>
-        <div class="flow-box action">Rapid trauma exam or detailed exam, high transport priority</div>
+        <div class="flow-box action">Rapid head-to-toe exam, high transport priority</div>
+        <div class="flow-rejoin">&darr; reassess</div>
       </div>
       <div>
         <div class="branch-label">No</div>
-        <div class="flow-box">Focused exam on chief complaint, history, vitals</div>
+        <div class="flow-box">Focused exam on the chief complaint, then history and vitals</div>
+        <div class="flow-rejoin">&darr; reassess</div>
       </div>
     </div>
-    <div class="flow-arrow">&darr;</div>
-    <div class="flow-box">Ongoing reassessment (more frequent if unstable)</div>
+    <div class="flow-box">Ongoing reassessment &mdash; every 5 minutes if unstable, every 15 if stable</div>
   </div>
 
-  <h2>Adult Foreign Body Airway Obstruction</h2>
+  <h2>Adult &amp; Child Foreign Body Airway Obstruction (1 year and over)</h2>
   <div class="diagram-card">
-    <div class="flow-box decision">Signs of choking — can the patient cough or speak?</div>
+    <div class="flow-box decision">Signs of choking &mdash; can the patient cough, speak or cry?</div>
     <div class="flow-branch">
       <div>
-        <div class="branch-label">Mild / partial obstruction</div>
-        <div class="flow-box">Encourage forceful coughing, monitor closely, do not intervene further unless it worsens</div>
+        <div class="branch-label">Yes &mdash; mild / partial</div>
+        <div class="flow-box terminal">Encourage forceful coughing. Do not do anything else. Stay with them and watch for it becoming severe</div>
       </div>
       <div>
-        <div class="branch-label">Severe / complete obstruction</div>
-        <div class="flow-box action">Deliver abdominal thrusts repeatedly (chest thrusts if pregnant or significantly obese)</div>
+        <div class="branch-label">No &mdash; severe / complete</div>
+        <div class="flow-box action">Abdominal thrusts, repeated (chest thrusts if pregnant or significantly obese)</div>
+        <div class="flow-rejoin">&darr; continue</div>
       </div>
     </div>
-    <div class="flow-arrow">&darr;</div>
+    <div class="flow-note">A cough moves more air than any thrust you can deliver. Intervening on a patient who is still coughing effectively can turn a partial obstruction into a complete one.</div>
     <div class="flow-box decision">Result of thrusts?</div>
     <div class="flow-branch">
       <div>
         <div class="branch-label">Object expelled</div>
-        <div class="flow-box">Reassess airway and breathing, monitor</div>
+        <div class="flow-box terminal">Reassess airway and breathing, monitor, transport for evaluation</div>
       </div>
       <div>
         <div class="branch-label">Patient becomes unresponsive</div>
-        <div class="flow-box action">Lower to ground, begin CPR — check mouth for a visible object before each set of breaths</div>
+        <div class="flow-box terminal">Lower to the ground and begin CPR &mdash; look in the mouth before each set of breaths and remove an object only if you can see it</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Infant Foreign Body Airway Obstruction (under 1 year)</h2>
+  <div class="diagram-card">
+    <div class="flow-box decision">Infant choking &mdash; can they cry, cough or make any sound?</div>
+    <div class="flow-branch">
+      <div>
+        <div class="branch-label">Yes &mdash; mild / partial</div>
+        <div class="flow-box terminal">Let them cough. Do not intervene. Keep them calm and watch closely</div>
+      </div>
+      <div>
+        <div class="branch-label">No &mdash; severe / complete</div>
+        <div class="flow-box action">5 back blows between the shoulder blades, head lower than the chest</div>
+        <div class="flow-rejoin">&darr; continue</div>
+      </div>
+    </div>
+    <div class="flow-note">No abdominal thrusts under 1 year. An infant&rsquo;s liver sits low and largely unprotected by the rib cage, and abdominal thrusts can tear it.</div>
+    <div class="flow-box action">Turn the infant over, 5 chest thrusts &mdash; two fingers on the lower sternum, as for compressions</div>
+    <div class="flow-arrow">&darr;</div>
+    <div class="flow-box decision">Object out?</div>
+    <div class="flow-branch">
+      <div>
+        <div class="branch-label">No, still responsive</div>
+        <div class="flow-box terminal">Repeat 5 back blows and 5 chest thrusts until it clears or the infant goes unresponsive</div>
+      </div>
+      <div>
+        <div class="branch-label">Infant becomes unresponsive</div>
+        <div class="flow-box terminal">Begin CPR &mdash; look in the mouth before each set of breaths, and remove an object only if you can see it. Never sweep blindly</div>
       </div>
     </div>
   </div>
 
   <h2>Anaphylaxis Recognition &amp; Management</h2>
   <div class="diagram-card">
-    <div class="flow-box decision">Signs of an allergic reaction after exposure — severity?</div>
+    <div class="flow-box decision">Allergic reaction after a likely exposure &mdash; is it anaphylaxis?</div>
+    <div class="flow-note">Anaphylaxis needs <strong>more than one body system</strong>, or hypotension after a known allergen. Skin findings alone &mdash; hives, flushing, itching &mdash; are an allergic reaction, not anaphylaxis, however dramatic they look.</div>
     <div class="flow-branch">
       <div>
-        <div class="branch-label">Mild / localized</div>
-        <div class="flow-box">Rash or itching only, no airway/breathing/circulation involvement — supportive care, monitor for progression</div>
+        <div class="branch-label">Skin only &mdash; hives, itching, flushing</div>
+        <div class="flow-box terminal">Allergic reaction, not anaphylaxis. Supportive care, transport, and reassess often &mdash; it can progress</div>
       </div>
       <div>
-        <div class="branch-label">Severe / anaphylaxis</div>
-        <div class="flow-box">Stridor, wheezing, widespread hives, or hypotension — systemic involvement</div>
+        <div class="branch-label">Skin plus airway, breathing or circulation &mdash; or hypotension alone after a known allergen</div>
+        <div class="flow-box action">Anaphylaxis: stridor, hoarseness, tongue or throat swelling, wheeze, vomiting, dizziness, hypotension</div>
+        <div class="flow-rejoin">&darr; treat now</div>
       </div>
     </div>
+    <div class="flow-box action">Epinephrine into the lateral thigh &mdash; the patient&rsquo;s own auto-injector or your own supply, per standing orders or medical direction</div>
     <div class="flow-arrow">&darr;</div>
-    <div class="flow-box action">Assist with the patient's prescribed epinephrine auto-injector (or administer per local protocol), lateral thigh</div>
+    <div class="flow-box action">Call for ALS and start moving to the ambulance now &mdash; do not wait to see whether it works</div>
     <div class="flow-arrow">&darr;</div>
-    <div class="flow-box action">High-flow oxygen, position for comfort/perfusion, reassess</div>
+    <div class="flow-box action">High-flow oxygen, supine with legs raised if hypotensive, sitting up if breathing is the problem</div>
     <div class="flow-arrow">&darr;</div>
     <div class="flow-box decision">Improving?</div>
     <div class="flow-branch">
       <div>
-        <div class="branch-label">No</div>
-        <div class="flow-box action">Repeat epinephrine per protocol/timing if authorized, continue support</div>
+        <div class="branch-label">No, after about 5 minutes</div>
+        <div class="flow-box terminal">Repeat epinephrine per protocol, continue support, transport emergency traffic</div>
       </div>
       <div>
         <div class="branch-label">Yes</div>
-        <div class="flow-box">Continue monitoring — reaction can still recur</div>
+        <div class="flow-box terminal">Keep transporting and keep watching &mdash; a biphasic reaction can return hours later, so this patient goes to hospital regardless</div>
       </div>
     </div>
-    <div class="flow-arrow">&darr;</div>
-    <div class="flow-box action">Immediate, high-priority transport</div>
   </div>
 
   <h2>Stroke Assessment &amp; Transport Decision</h2>
   <div class="diagram-card">
-    <div class="flow-box decision">Sudden neurological symptoms — perform a stroke screen (FAST / Cincinnati)</div>
+    <div class="flow-box decision">Sudden neurological symptoms &mdash; perform a stroke screen (BE-FAST or Cincinnati)</div>
     <div class="flow-arrow">&darr;</div>
-    <div class="flow-box decision">Screen positive? (facial droop, arm drift, or speech abnormality)</div>
+    <div class="flow-box decision">Screen positive? (balance, eyes, facial droop, arm drift, speech)</div>
     <div class="flow-branch">
       <div>
         <div class="branch-label">No, but suspicion remains</div>
-        <div class="flow-box">Still transport and monitor — symptoms can evolve</div>
+        <div class="flow-box">Transport and monitor anyway &mdash; symptoms evolve, and a negative screen does not rule it out</div>
+        <div class="flow-rejoin">&darr; still check glucose</div>
       </div>
       <div>
         <div class="branch-label">Yes</div>
-        <div class="flow-box">Note the time last known well, check blood glucose</div>
+        <div class="flow-box">Establish the time last known well &mdash; this decides what treatment is still possible</div>
+        <div class="flow-rejoin">&darr; continue</div>
       </div>
     </div>
-    <div class="flow-arrow">&darr;</div>
-    <div class="flow-box decision">Blood glucose result?</div>
+    <div class="flow-box decision">Check blood glucose &mdash; result?</div>
     <div class="flow-branch">
       <div>
         <div class="branch-label">Low</div>
-        <div class="flow-box action">Treat hypoglycemia per protocol, reassess — it can mimic a stroke</div>
+        <div class="flow-box decision">Can the patient swallow safely and protect their own airway?</div>
+        <div class="flow-rejoin">&darr; see below</div>
+      </div>
+      <div>
+        <div class="branch-label">High</div>
+        <div class="flow-box terminal">Treat as a stroke and transport. Hyperglycemia can mimic a stroke and worsens its outcome, but there is nothing an EMT gives for it in the field</div>
       </div>
       <div>
         <div class="branch-label">Normal</div>
-        <div class="flow-box action">Treat as a stroke — high-priority transport to a stroke-capable facility, avoid on-scene delay</div>
+        <div class="flow-box terminal">Treat as a stroke &mdash; high-priority transport to a stroke-capable facility, minimal scene time, alert the hospital with the last-known-well time</div>
+      </div>
+    </div>
+    <div class="flow-branch">
+      <div>
+        <div class="branch-label">Swallows safely</div>
+        <div class="flow-box terminal">Oral glucose, then reassess &mdash; hypoglycemia is the classic stroke mimic and may resolve the findings entirely</div>
+      </div>
+      <div>
+        <div class="branch-label">Cannot swallow safely</div>
+        <div class="flow-box terminal">Nothing by mouth. Protect the airway, request ALS for IV dextrose or IM glucagon, and transport</div>
       </div>
     </div>
   </div>
@@ -344,37 +442,39 @@
   <div class="diagram-card">
     <div class="flow-box decision">Trauma with a mechanism that could involve the spine</div>
     <div class="flow-arrow">&darr;</div>
-    <div class="flow-box decision">Is the patient reliable? (alert, not intoxicated, no distracting injury)</div>
+    <div class="flow-box decision">Is the patient assessable? (alert, not intoxicated, no distracting injury)</div>
     <div class="flow-branch">
       <div>
         <div class="branch-label">No</div>
-        <div class="flow-box action">Spinal motion restriction indicated</div>
+        <div class="flow-box terminal">Spinal motion restriction indicated</div>
       </div>
       <div>
         <div class="branch-label">Yes</div>
-        <div class="flow-box decision">Midline spinal tenderness or deformity?</div>
+        <div class="flow-box">Assess the spine directly</div>
+        <div class="flow-rejoin">&darr; continue</div>
       </div>
     </div>
-    <div class="flow-arrow">&darr;</div>
+    <div class="flow-box decision">Midline spinal tenderness or deformity?</div>
     <div class="flow-branch">
       <div>
         <div class="branch-label">Present</div>
-        <div class="flow-box action">Spinal motion restriction indicated</div>
+        <div class="flow-box terminal">Spinal motion restriction indicated</div>
       </div>
       <div>
         <div class="branch-label">Absent</div>
-        <div class="flow-box decision">Numbness, tingling, or weakness in the extremities?</div>
+        <div class="flow-box">Check the extremities</div>
+        <div class="flow-rejoin">&darr; continue</div>
       </div>
     </div>
-    <div class="flow-arrow">&darr;</div>
+    <div class="flow-box decision">Numbness, tingling, or weakness in the extremities?</div>
     <div class="flow-branch">
       <div>
         <div class="branch-label">Present</div>
-        <div class="flow-box action">Spinal motion restriction indicated</div>
+        <div class="flow-box terminal">Spinal motion restriction indicated</div>
       </div>
       <div>
         <div class="branch-label">Absent</div>
-        <div class="flow-box">Spinal motion restriction generally not required — continue monitoring</div>
+        <div class="flow-box terminal">Spinal motion restriction generally not required &mdash; continue monitoring</div>
       </div>
     </div>
   </div>
@@ -385,81 +485,165 @@
     <div class="flow-arrow">&darr;</div>
     <div class="flow-box decision">Check responsiveness</div>
     <div class="flow-arrow">&darr;</div>
-    <div class="flow-box decision">Check breathing &amp; pulse (&le;10 sec)</div>
-    <div class="flow-arrow">&darr;</div>
+    <div class="flow-box decision">Check breathing &amp; pulse together (&le;10 sec)</div>
     <div class="flow-branch">
       <div>
         <div class="branch-label">No pulse</div>
-        <div class="flow-box action">Begin CPR<br>30:2, 100-120/min, &ge;2 in. depth</div>
+        <div class="flow-box action">Begin CPR<br>30:2, 100&ndash;120/min, 2&ndash;2.4 in. deep, full recoil</div>
+        <div class="flow-rejoin">&darr; continue</div>
       </div>
       <div>
-        <div class="branch-label">Pulse, no breathing</div>
-        <div class="flow-box action">Rescue breaths<br>1 every 6 sec</div>
+        <div class="branch-label">Pulse, not breathing</div>
+        <div class="flow-box terminal">Rescue breaths, 1 every 6 seconds. Recheck the pulse every 2 minutes &mdash; start CPR if it is lost</div>
       </div>
     </div>
+    <div class="flow-box action">Attach the AED as soon as it arrives, analyze, shock if advised</div>
     <div class="flow-arrow">&darr;</div>
-    <div class="flow-box action">Attach AED as soon as available, analyze, shock if advised</div>
+    <div class="flow-box action">Resume compressions immediately after the shock, or immediately if no shock is advised</div>
     <div class="flow-arrow">&darr;</div>
-    <div class="flow-box action">Resume CPR immediately after shock/no-shock advised</div>
+    <div class="flow-box action">Switch compressors every 2 minutes, at the AED&rsquo;s rhythm check</div>
     <div class="flow-arrow">&darr;</div>
-    <div class="flow-box">Continue until ROSC, AED re-analysis prompts, or handoff to higher care</div>
+    <div class="flow-box">Continue until ROSC, handoff to higher care, or you are physically unable to continue</div>
+    <div class="flow-note">The AED prompting a re-analysis is a pause in the cycle, not a reason to stop resuscitating. Every two minutes it asks you to stand clear, it analyzes, and compressions resume either way.</div>
   </div>
 
   <h2>Shock Recognition &amp; General Management</h2>
   <div class="diagram-card">
-    <div class="flow-box decision">Assess perfusion: skin color/temp/moisture, pulse rate/quality, mental status, cap refill</div>
+    <div class="flow-box decision">Assess perfusion: skin color, temperature and moisture; pulse rate and quality; mental status; cap refill</div>
     <div class="flow-arrow">&darr;</div>
+    <div class="flow-box action">Treat the cause you can treat &mdash; control severe bleeding first of all</div>
+    <div class="flow-arrow">&darr;</div>
+    <div class="flow-box action">Oxygen titrated to 94&ndash;98%, keep the patient warm, supine unless injuries dictate otherwise</div>
+    <div class="flow-arrow">&darr;</div>
+    <div class="flow-box decision">Compensated or decompensated?</div>
     <div class="flow-branch">
       <div>
-        <div class="branch-label">Compensated</div>
-        <div class="flow-box">Tachycardia, normal or slightly low BP, still mentating</div>
+        <div class="branch-label">Compensated &mdash; tachycardic, anxious, still mentating, BP holding</div>
+        <div class="flow-box terminal">Prompt transport. Reassess vitals every 5 minutes: the blood pressure holds until it suddenly does not, and catching that moment is the whole point of reassessing</div>
       </div>
       <div>
-        <div class="branch-label">Decompensated</div>
-        <div class="flow-box">Hypotension, altered mental status, weak/absent peripheral pulses</div>
+        <div class="branch-label">Decompensated &mdash; hypotensive, altered, weak or absent peripheral pulses</div>
+        <div class="flow-box terminal">Load and go. Request ALS intercept, assist ventilation if breathing is inadequate, and do the rest of the assessment en route</div>
       </div>
     </div>
-    <div class="flow-arrow">&darr;</div>
-    <div class="flow-box action">Manage identifiable cause (e.g. control severe bleeding)</div>
-    <div class="flow-arrow">&darr;</div>
-    <div class="flow-box action">High-concentration oxygen as indicated</div>
-    <div class="flow-arrow">&darr;</div>
-    <div class="flow-box action">Position appropriately, prevent heat loss</div>
-    <div class="flow-arrow">&darr;</div>
-    <div class="flow-box action">Indicate need for immediate transport</div>
+    <div class="flow-note">The management above the fork is the same either way, which is why it sits above the fork. What changes is urgency: a decompensated patient has already spent the reserve the compensated one is still using.</div>
   </div>
 
-  <h2>START Triage (general concept)</h2>
+  <h2>START Triage (adult, multi-casualty incident)</h2>
   <div class="diagram-card">
     <div class="flow-box decision">Can the patient walk?</div>
-    <div class="flow-arrow">&darr;</div>
     <div class="flow-branch">
       <div>
         <div class="branch-label">Yes</div>
-        <div class="flow-box">Minor</div>
+        <div class="flow-box terminal">MINOR (green) &mdash; direct them to the treatment area</div>
       </div>
       <div>
         <div class="branch-label">No</div>
-        <div class="flow-box decision">Check breathing</div>
+        <div class="flow-box">Assess breathing</div>
+        <div class="flow-rejoin">&darr; continue</div>
       </div>
     </div>
-    <div class="flow-arrow">&darr;</div>
-    <div class="flow-box decision">Breathing present? Rate very high/low?</div>
-    <div class="flow-arrow">&darr;</div>
+    <div class="flow-box decision">Breathing?</div>
     <div class="flow-branch">
       <div>
-        <div class="branch-label">Absent, no response to reposition</div>
-        <div class="flow-box">Deceased / Expectant</div>
+        <div class="branch-label">No &mdash; reposition the airway once</div>
+        <div class="flow-box decision">Breathing now?</div>
+        <div class="flow-rejoin">&darr; see below</div>
       </div>
       <div>
-        <div class="branch-label">Present, abnormal rate</div>
-        <div class="flow-box">Immediate</div>
+        <div class="branch-label">Yes</div>
+        <div class="flow-box decision">Respiratory rate over 30?</div>
+        <div class="flow-rejoin">&darr; see below</div>
       </div>
     </div>
+    <div class="flow-branch">
+      <div>
+        <div class="branch-label">Still not breathing after repositioning</div>
+        <div class="flow-box terminal">DECEASED (black)</div>
+      </div>
+      <div>
+        <div class="branch-label">Breathing only after repositioning</div>
+        <div class="flow-box terminal">IMMEDIATE (red)</div>
+      </div>
+      <div>
+        <div class="branch-label">Rate over 30</div>
+        <div class="flow-box terminal">IMMEDIATE (red)</div>
+      </div>
+    </div>
+    <div class="flow-box decision">Rate 30 or under &mdash; check perfusion: radial pulse present, or cap refill under 2 seconds?</div>
+    <div class="flow-branch">
+      <div>
+        <div class="branch-label">No radial pulse, or refill over 2 seconds</div>
+        <div class="flow-box terminal">IMMEDIATE (red)</div>
+      </div>
+      <div>
+        <div class="branch-label">Perfusion adequate</div>
+        <div class="flow-box decision">Can they follow simple commands?</div>
+        <div class="flow-rejoin">&darr; see below</div>
+      </div>
+    </div>
+    <div class="flow-branch">
+      <div>
+        <div class="branch-label">No</div>
+        <div class="flow-box terminal">IMMEDIATE (red)</div>
+      </div>
+      <div>
+        <div class="branch-label">Yes</div>
+        <div class="flow-box terminal">DELAYED (yellow)</div>
+      </div>
+    </div>
+    <div class="flow-note">START has four categories: Minor, Delayed, Immediate and Deceased. There is no Expectant tag in START &mdash; that belongs to SALT, below. Under START a patient who is breathing is never tagged black.</div>
+  </div>
+
+  <h2>SALT Triage</h2>
+  <div class="diagram-card">
+    <div class="flow-note">SALT &mdash; Sort, Assess, Lifesaving interventions, Treatment/Transport &mdash; is the other system taught nationally, and the one that has an Expectant category. It differs from START in two ways that matter: it sorts by voice command before touching anyone, and it allows a handful of interventions <em>during</em> triage rather than after it.</div>
+    <div class="flow-box action">STEP 1 &mdash; SORT, by voice, from where you stand</div>
+    <div class="flow-branch">
+      <div>
+        <div class="branch-label">Walks when asked</div>
+        <div class="flow-box">Assess third</div>
+        <div class="flow-rejoin">&darr; to step 2</div>
+      </div>
+      <div>
+        <div class="branch-label">Waves or makes a purposeful movement</div>
+        <div class="flow-box">Assess second</div>
+        <div class="flow-rejoin">&darr; to step 2</div>
+      </div>
+      <div>
+        <div class="branch-label">Still, or has an obvious life threat</div>
+        <div class="flow-box">Assess first</div>
+        <div class="flow-rejoin">&darr; to step 2</div>
+      </div>
+    </div>
+    <div class="flow-box action">STEP 2 &mdash; LIFESAVING INTERVENTIONS, done now, during triage: control major hemorrhage; open the airway (two rescue breaths for a child); chest decompression and auto-injector antidotes where in scope</div>
     <div class="flow-arrow">&darr;</div>
-    <div class="flow-box decision">If breathing rate normal: check perfusion (pulse/cap refill) and mental status</div>
-    <div class="flow-arrow">&darr;</div>
-    <div class="flow-box">Poor perfusion or can't follow commands &rarr; Immediate. Otherwise &rarr; Delayed.</div>
+    <div class="flow-box decision">STEP 3 &mdash; ASSESS and assign</div>
+    <div class="flow-branch">
+      <div>
+        <div class="branch-label">Not breathing after the airway is opened</div>
+        <div class="flow-box terminal">DEAD</div>
+      </div>
+      <div>
+        <div class="branch-label">Injuries incompatible with survival given the resources you actually have</div>
+        <div class="flow-box terminal">EXPECTANT &mdash; reassess if resources improve</div>
+      </div>
+    </div>
+    <div class="flow-branch">
+      <div>
+        <div class="branch-label">Obeys commands, has a peripheral pulse, not in respiratory distress, major bleeding controlled &mdash; but injuries are not minor</div>
+        <div class="flow-box terminal">DELAYED</div>
+      </div>
+      <div>
+        <div class="branch-label">Any of those missing</div>
+        <div class="flow-box terminal">IMMEDIATE</div>
+      </div>
+      <div>
+        <div class="branch-label">Injuries are minor</div>
+        <div class="flow-box terminal">MINIMAL</div>
+      </div>
+    </div>
+    <div class="flow-note">Expectant is not a synonym for dead, and it is not permanent. It means this patient cannot be saved with what is on scene right now &mdash; and if more crews arrive, the category is meant to be revisited.</div>
   </div>
 
   </div><!-- /flowDiagrams -->
