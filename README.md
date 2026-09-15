@@ -627,7 +627,7 @@ then open `http://localhost:8000/`.
 
 ## CI
 
-`.github/workflows/checks.yml` runs `scripts/check-site.mjs` on every push/PR. It has no network dependency and needs no build step, so it runs in seconds. It checks:
+`.github/workflows/checks.yml` runs five jobs on every push/PR. The first, `scripts/check-site.mjs`, has no network dependency and needs no build step, so it runs in seconds. It checks:
 
 1. Every local `href`/`src` in every HTML file points at a file that exists.
 2. Every JSON file parses.
@@ -652,6 +652,33 @@ A third job re-derives everything that is generated from the pages and fails if 
 | `build-tutor-bank.mjs` + `git diff --exit-code` | the assistant's teaching index matches both banks |
 
 `build-sitemap.mjs` reads each page's last commit date out of git, so that job checks out with `fetch-depth: 0`. Its `--check` compares the **URL set** rather than the bytes — `<lastmod>` is derived from history, and a byte comparison would fail over something nobody got wrong.
+
+### Accessibility and weight
+
+Two more jobs, both added because the README argued carefully about something and then nothing defended it.
+
+**`scripts/check-a11y.mjs`** runs axe-core over one page of every *shape* the site has — twelve of them, which is enough: if a lesson is accessible then all 58 built on the same engine are, and a violation in one of them is a violation in the engine. It fails on serious and critical only; minor and moderate are printed and do not fail, because a rule at that level is often a judgement call and a check that cries wolf gets switched off within a month. It also makes three checks axe cannot, because they are about this site's own decisions: the skip link landing on something that exists and can take focus, and the `main` and `nav` landmarks surviving the runtime-rendered header.
+
+It is a separate job because it is the only check here that needs a browser. `check-site.mjs` is dependency-free and runs in seconds on every push; bolting a minute onto it would make the check people actually wait for slow.
+
+Turning it on found eight real things, every one of them invisible to anybody who was not the person it locked out:
+
+- **The brand teal failed contrast.** `#1C8C7B` measured 4.13:1 on white and 3.55:1 on the tinted panel against a 4.5:1 requirement, on ten of the twelve page shapes — and white text on the same green as a button fill failed by the same ratio, so one value was two failures. The comment beside it in `theme.css` read "safe for text and for fills" and was wrong on both counts. Now `#127264`: 5.81:1 and 4.99:1.
+- **`--muted` failed on one course and not the other.** `#55706A` cleared 4.5:1 on white and on the standard surface but landed at 4.47:1 on the ochem tint — under by three hundredths, on the lede of every ochem page.
+- **The "pitfall" callout was the least readable thing on the site**, at 2.89:1, on a box whose whole job is warning somebody about a mistake they are about to make. It used `--amber-press`, a *button's pressed state*, as a text colour. `--amber-text` already existed for exactly this and was not being used — and the same category error turned out to be in sixteen other places.
+- **176 pages had no `main` landmark.** Four files out of 180 declared one. `site-chrome.js` already worked out where the content starts, for the skip link; it applies the same answer as `role="main"` now, so every page gets one and a page added later gets it for free.
+- **208 dead keyboard tab stops in the textbook.** The 3D figures in `ochem/notes/` are snapshots baked from `mol3d.js`, which produces clickable atoms for the *tools* pages. The textbook does not load `mol3d.js`, so every one of those atoms was a `role="button"` tab stop that did nothing — dozens per chapter — inside a wrapper declaring the whole SVG a single image.
+- **Wide figures scrolled but could not be focused**, so the content past their right edge did not exist for anyone not using a pointer. `textbook.js` now gives a tab stop to figures that *actually* overflow, and takes it away again on resize when they do not — a tab stop that scrolls nothing is one more thing to get past for no reason.
+- **Both search inputs had no label**, only a placeholder, which disappears the moment you type.
+- **Two `<figure>`s sat directly inside a `<ul>`**, which is invalid and stops a list reporting its own length.
+
+One advisory is known and deliberately unfixed: `role="main"` on a wrapper that contains the footer leaves a `contentinfo` landmark nested inside `main`. Moving the footer out on every page is DOM surgery under CSS written around the current structure — a real risk of breaking layout to fix a moderate advisory, against a main landmark that is unambiguously worth having.
+
+**`scripts/check-weight.mjs`** is a byte budget, and needs nothing to run: it reads the files off disk and gzips them, so it sits with the fast checks. It measures the HTML plus every same-origin stylesheet, script and font a page references. Scripts count even though all of them are deferred — deferred means "does not block the parser", not "free".
+
+Three buckets, not one number, because every page loads the same `/assets/` shell and counting it into all twelve budgets would put every page within a few KB of every other, which is exactly the resolution at which a page-specific regression disappears. So the site shell, each course shell and each page are budgeted separately. The 2.3 MB question bank is not in any of them: it is fetched after paint, which is the entire point of the split, and folding it in here would erase the distinction that work was for.
+
+The numbers are a **ratchet**, same rule as the answer-tell check: lower a budget when a page gets lighter, never raise one to make a build pass. A budget with more than 30% headroom is reported as stale — reported, never failed, since a ratchet that tightened itself would fail the build for making things better.
 
 ### Unit tests
 

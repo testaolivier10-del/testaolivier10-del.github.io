@@ -219,6 +219,49 @@
       '<div class="tb-progress-track"><div class="tb-progress-fill" style="width:' + pct + '%"></div></div>';
   }
 
+  /* A wide figure scrolls sideways on a narrow screen (overflow:auto), and a
+     region that scrolls with no way to focus it is unreachable by keyboard:
+     the content past its right edge simply does not exist for anyone not using
+     a pointer. The fix is a tab stop on the figure itself.
+
+     Applied after render and only to figures that ACTUALLY overflow, rather
+     than to every wide figure in the stylesheet. A tab stop that scrolls
+     nothing is a tab stop the reader has to get past for no reason, and these
+     chapters have a dozen figures each — at a wider window most of them fit,
+     and the ones that fit should not be in the tab order at all.
+
+     role="group" with the figure's own label, so a screen reader announces
+     what it has landed on rather than an unnamed focusable box. */
+  function makeFiguresReachable(root){
+    root.querySelectorAll('figure').forEach(function(fig){
+      var scrolls = fig.scrollWidth > fig.clientWidth + 1 || fig.scrollHeight > fig.clientHeight + 1;
+      if(!scrolls){
+        fig.removeAttribute('tabindex');
+        return;
+      }
+      if(!fig.hasAttribute('tabindex')) fig.setAttribute('tabindex', '0');
+      if(!fig.hasAttribute('role')) fig.setAttribute('role', 'group');
+      if(!fig.hasAttribute('aria-label')){
+        var svg = fig.querySelector('svg[aria-label]');
+        var cap = fig.querySelector('figcaption');
+        var label = (svg && svg.getAttribute('aria-label')) ||
+                    (cap && cap.textContent.trim().slice(0, 120)) || 'Figure';
+        fig.setAttribute('aria-label', label + ' (scrollable)');
+      }
+    });
+  }
+
+  // Figures that fit at one window width overflow at another, so the tab stops
+  // have to be recomputed rather than decided once on load.
+  var figureResizeTimer;
+  window.addEventListener('resize', function(){
+    clearTimeout(figureResizeTimer);
+    figureResizeTimer = setTimeout(function(){
+      var main = document.getElementById('tbMain') || document.querySelector('.tb-main');
+      if(main) makeFiguresReachable(main);
+    }, 200);
+  });
+
   // ---- one chapter ------------------------------------------------------
   var notesCache = {};
   function loadNotes(id){
@@ -301,7 +344,7 @@
     mod.topics.forEach(function(t){
       loadNotes(t.id).then(function(html){
         var slot = mainEl.querySelector('[data-notes="' + t.id + '"]');
-        if(slot) slot.innerHTML = html;
+        if(slot){ slot.innerHTML = html; makeFiguresReachable(slot); }
         observeEnds();
         applyPendingHit();
       });

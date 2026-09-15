@@ -37,7 +37,15 @@
      buttons. #106D60 keeps the hue and clears AA at 6.2:1 on white, 5.4:1 on
      --tint-accent. --accent-bright is the old mint, kept for the places where
      the colour is decoration rather than text: bar fills, rules, dots. */
-  --accent:#1C8C7B;      /* primary teal — safe for text and for fills */
+  /* Primary teal. Darkened from #1C8C7B, which the comment here used to call
+     "safe for text and for fills" and which was neither: 4.13:1 against white
+     and 3.55:1 against the tinted panel, where WCAG AA asks for 4.5:1 on text.
+     It failed on ten of the twelve page shapes scripts/check-a11y.mjs samples,
+     on exactly the small bold labels this colour exists for — and white text
+     on the same green as a button fill failed by the same ratio, so one value
+     was two failures. This clears both: 5.81:1 on white, 4.99:1 on the tint.
+     Do not lighten it back without re-running that check. */
+  --accent:#127264;
   --accent-press:#156D60;
   --accent-bright:#35B39F;
   --amber:#E0A63C;       /* streaks, "in progress" */
@@ -60,7 +68,12 @@
 
   /* Text */
   --ink:#1B2A26;
-  --muted:#55706A;
+  /* Secondary text. Darkened from #55706A, which cleared 4.5:1 on white and on
+     the standard surface but landed at 4.47:1 on the Organic Chemistry course
+     tint — under the line by three hundredths, on the lede of every ochem page.
+     A colour that passes on one course's panel and fails on the other's is the
+     kind of thing only a checker finds. 4.74:1 on the ochem tint now. */
+  --muted:#526C66;
   --on-accent:#FFFFFF;   /* text on a solid navy/bad fill — white in both themes */
   /* Text on a solid --accent fill, which is NOT the same thing: dark mode lifts
      the accent to a bright mint that white text cannot sit on (2.37:1). Kept
