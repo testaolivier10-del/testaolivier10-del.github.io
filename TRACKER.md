@@ -508,8 +508,8 @@ way.
 | Item | Status |
 |---|---|
 | Normalize British spellings to American | done for prose; code identifiers deliberately left |
-| Terms of Use page with medical disclaimer, linked in every footer | done for every page that has a footer — see below |
-| Footers on the 80 ochem lessons and mechanisms (they have none) | open |
+| Terms of Use page with medical disclaimer, linked in every footer | done — every page, not just every footer |
+| Footers on the 80 ochem lessons and mechanisms (they had none) | done |
 | FAQPage schema on exam-day; Course schema on both hubs | **verified already done** |
 | Homepage screenshots or GIFs | **open — buildable, but needs a decision first. Measured below.** |
 | About section with name and reviewer | needs a person |
@@ -597,12 +597,15 @@ decision with a real cost**, and the reasonable options are:
 Not chosen unilaterally. The capture harness works and the remaining work is
 short once the direction is set.
 
-**The remaining 80 are the ochem lessons and mechanisms, which have no footer
-at all.** That is a pre-existing layout gap rather than a missing link, and it
-is listed as its own row above rather than hidden behind a check that passes.
-The medical disclaimer matters least on an organic chemistry lesson, which is
-why this is not urgent — but "every footer" is only true because those pages
-have none.
+**The 80 ochem lessons, mechanisms, tools and hub pages had no footer at all**,
+which is why "linked in every footer" was true while a fifth of the site had no
+route to the disclaimer. They have one now, inside an `.xshell` so it picks up
+the site's gutter — a bare `<footer>` would have sat flush against the viewport
+edge, since the base rule sets `max-width: 60ch` and does no centring.
+
+Coverage is now 169 pages. What is left is 13 redirect stubs that are a
+meta-refresh and nothing else, plus `404.html`, `offline.html` and the Search
+Console ownership token — none of which are pages in the sense that matters.
 
 ---
 
