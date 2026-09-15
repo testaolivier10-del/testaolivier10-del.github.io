@@ -63,6 +63,11 @@ jobs:
       # the edit to nobody, silently.
       - name: the split question bank matches questions.json
         run: node scripts/build-question-bank.mjs --check
+      # The ochem bank ships as a core plus its explanations, so the two pages
+      # that wait on it block only on what they need to ask a question. Editing
+      # practice-bank.json without rebuilding would ship the edit to nobody.
+      - name: the split ochem bank matches practice-bank.json
+        run: node scripts/build-ochem-bank.mjs --check
       # And the assistant's teaching index, generated from the same source.
       - name: the tutor banks are in step with their sources
         run: |

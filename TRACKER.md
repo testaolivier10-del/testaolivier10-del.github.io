@@ -633,13 +633,37 @@ assistant — so it gets this file's usual ~10% headroom instead.
 **Bank quality:** 54.6% on longest-is-key after these 150 questions.
 `lengthCeiling` ratcheted 0.58 → 0.56. Keyed position is holding at 26.3%.
 
-#### Next, before Unit 4 — split the ochem practice bank
+#### The ochem practice bank split — **complete**
 
-`build-question-bank.mjs` already does this for `questions.json`: a core file
-with stems and options, and a separate explanations file fetched afterwards.
-`ochem/assets/practice-bank.json` needs the same, and the callers to update are
-`ochem/assets/bank-loader.js`, `ochem/assets/question-engine.js` and
-`ochem/search.html`. Its own page-weight budget then splits in two.
+Done before Unit 4, as the budget note required.
+
+| | Before | After |
+|---|---|---|
+| Blocked on before first screen | 282 KB gz | **168 KB gz** |
+| Fetched afterwards, blocking nothing | — | 121 KB gz |
+
+`practice-bank.json` stays the file you edit; `scripts/build-ochem-bank.mjs`
+generates `practice-bank-core.json` and `practice-bank-why.json` from it, and
+CI fails if they drift. The two halves together are about 7 KB larger than the
+single file, because splitting costs some cross-compression — that is the
+trade, against 114 KB less before a page can show anything.
+
+**The subtle part is when a question is normalized before its explanation
+arrives.** `question-engine.js` builds each pooled question once, and that can
+happen during the gap. Copying `why` in at that moment would freeze it empty
+forever for anything built during the gap, and the only symptom would be a
+question that silently explains nothing. So `why` is a **getter** that reads
+through to `window.OchemPracticeWhy` at display time, and the gap closes
+itself. It is deliberately non-enumerable, because several places copy a
+question with `for..in` and a getter copied as a getter would carry a live
+reference into an object meant to be a snapshot.
+
+Verified in a real browser with the explanations artificially delayed 4
+seconds: the pool built with zero explanations loaded, `why` read as `""`
+rather than `undefined`, and the *same pooled object* returned the correct
+text once the file arrived. Six unit tests pin the alignment and the
+resolve-at-read-time behavior; shifting one topic's explanations by one
+position fails three of them and the build check.
 
 #### Units 4–9 — **not started**
 

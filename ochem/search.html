@@ -287,22 +287,39 @@ document.addEventListener('DOMContentLoaded', function(){
      NREMT's practice.html, so a question result opens the textbook section for
      its topic — which is the thing a person who searched for the idea actually
      wanted. The result says so rather than pretending to open the question. */
+  /* The bank ships as two files (scripts/build-ochem-bank.mjs): the stems and
+     options, and the explanations, positionally aligned per topic. Search wants
+     both — an explanation is often where a term is actually discussed — so it
+     fetches them together and stitches them back up by index.
+
+     Unlike practice.html, nothing here is blocked on either file: the index is
+     built in the background after the page is already usable. If the
+     explanations fail to arrive the questions are still indexed by their stems,
+     which is a smaller index rather than a broken one. */
   function fetchQuestions(){
-    return fetch('assets/practice-bank.json', { credentials: 'omit' })
+    var opts = { credentials: 'omit' };
+    var core = fetch('assets/practice-bank-core.json', opts)
+      .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+    var why = fetch('assets/practice-bank-why.json', opts)
       .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-      .then(function(bank){
+      .catch(function(){ return {}; });
+
+    return Promise.all([core, why])
+      .then(function(both){
+        var bank = both[0], explanations = both[1];
         var byId = {};
         topics().forEach(function(e){ byId[e.topic.id] = e; });
         var out = [];
         Object.keys(bank).forEach(function(topicId){
           var meta = byId[topicId];
           var title = meta ? meta.topic.title : topicId;
-          (bank[topicId] || []).forEach(function(q){
+          var whys = explanations[topicId] || [];
+          (bank[topicId] || []).forEach(function(q, i){
             out.push({
               page: 'Practice questions',
               file: 'learn.html#' + topicId,
               heading: title,
-              text: (q.q || '') + ' ' + (q.why || ''),
+              text: (q.q || '') + ' ' + (whys[i] || ''),
               isQuestion: true,
               // Below prose and structure: a question that mentions a term is
               // weaker evidence than a section that explains it.

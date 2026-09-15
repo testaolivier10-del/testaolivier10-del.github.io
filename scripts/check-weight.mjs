@@ -163,22 +163,22 @@ const DATA_BUDGETS = [
      this file's usual ~10% headroom rather than held to the measured value,
      so a chapter does not fail the build for the index doing its job. */
   ['ochem/assets/tutor-bank.json', 200],
-  /* Ochem's question bank, keyed by topic. practice.html and review.html both
-     WAIT on this file before their first screen, so every kilobyte here is
-     first-paint latency on those two pages — which is why it is budgeted at
-     all rather than treated as background data.
+  /* Ochem's question bank, now split in two (scripts/build-ochem-bank.mjs).
 
-     268 -> 280 for the conjugation chapter, then 280 -> 292 for oxidation and
-     reduction. That was the one further raise the previous note allowed, and
-     it is now spent.
+     The core is what practice.html and review.html WAIT on before their first
+     screen, so every kilobyte of it is first-paint latency on those two pages.
+     It had climbed 268 -> 280 -> 292 KB as three chapters landed, which is why
+     the split happened; it is 168 KB now and has six more chapters of room.
 
-     DO NOT RAISE THIS AGAIN. The chapters still to be written would add
-     around a thousand more questions and push this past 400 KB of blocking
-     latency. Before the next chapter lands, this bank needs the treatment
-     questions.json already gets in build-question-bank.mjs: split the
-     explanations out of the core so these two pages block only on what they
-     need to ask the first question. Recorded in TRACKER. */
-  ['ochem/assets/practice-bank.json', 292],
+     The explanations are fetched straight afterwards and block nothing —
+     nothing reads one until somebody has already answered something — so that
+     half is budgeted as ordinary background data.
+
+     practice-bank.json itself is the SOURCE the two are generated from. It is
+     no longer fetched by anything at runtime, so it has no budget: adding one
+     would be budgeting a file no reader downloads. */
+  ['ochem/assets/practice-bank-core.json', 180],
+  ['ochem/assets/practice-bank-why.json', 132],
 ];
 
 const REF_RE = /(?:href|src)="([^"]+)"/g;

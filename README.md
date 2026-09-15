@@ -153,14 +153,20 @@ ochem/                 The Organic Chemistry course (beta)
                             second attempt, so walking back and forth can't move a score
                             (retries within a step are unaffected)
     practice-bank.json     2,340 multiple-choice/true-false questions, 30 per topic
-                            across the 62 shipped topics, keyed by topic id. Plain
-                            JSON rather than a script so Practice and Review can
-                            render their setup screens while the megabyte is still
-                            arriving; assets/bank-loader.js fetches it and the two
-                            page bootstraps await it
-    bank-loader.js         Fetches practice-bank.json, exposes the promise both page
-                            bootstraps wait on, and invalidates any pool the question
-                            engine built before the bank landed
+                            across the 78 shipped topics, keyed by topic id. This is
+                            the file you EDIT; nothing fetches it at runtime any more
+    practice-bank-core.json  Generated. Stems, options and answer keys — what the two
+                            pages actually wait on before their first screen (168 KB gz)
+    practice-bank-why.json   Generated. The explanations, positionally aligned per
+                            topic, fetched afterwards and blocking nothing (121 KB gz).
+                            Nothing reads one until a question has been answered, so
+                            waiting on them cost 114 KB of first paint for no reason
+    bank-loader.js         Fetches the core, exposes the promise both page bootstraps
+                            wait on, invalidates any pool the question engine built
+                            before it landed, and fetches the explanations separately.
+                            A question normalized before they arrive resolves its `why`
+                            through a getter when it is displayed, so the gap closes
+                            itself instead of freezing in an empty explanation
     session-runner.js      The shared question loop behind Practice and Review: renders
                             each question kind, grades, diagnoses, teaches, and keeps a
                             session history so any answered card can be replayed read-only
@@ -586,7 +592,7 @@ Each course has a search page that indexes the whole course in the browser and s
 
 **`ochem/search.html`** is the new one. `learn.html`'s rail already searched the textbook, but only the textbook, and only the sections that happened to have been fetched already — which left the 74 lessons, the 10 mechanism walkthroughs, the 7 tools and 2,340 practice questions with no way in at all. Someone who could not remember whether anti-periplanar was explained in a lesson, a mechanism walkthrough or the textbook had to guess.
 
-Its five sources are all *derived*, never listed: `curriculum.js` for the lessons and mechanisms (so a topic with no page yet is not a result — a hit that leads to "coming soon" is worse than no hit), the note fragments for the textbook, `tools-registry.js` for the tools, and `practice-bank.json` for the questions. Structure is indexed synchronously so a query typed immediately finds the lessons while the megabyte of prose is still arriving; each source may fail on its own, and the status line names **what is missing** rather than only what is present — offline, the difference between "the bank isn't here" and "your search found nothing" is the whole difference between a working page and a broken one, and an empty result list cannot tell them apart. A filter row exists because a mixed index of five kinds returns forty practice questions and "show me only the lessons" is the first thing anyone wants next.
+Its five sources are all *derived*, never listed: `curriculum.js` for the lessons and mechanisms (so a topic with no page yet is not a result — a hit that leads to "coming soon" is worse than no hit), the note fragments for the textbook, `tools-registry.js` for the tools, and `practice-bank-core.json` for the questions (with `practice-bank-why.json` stitched back on by position, so an explanation is searchable too). Structure is indexed synchronously so a query typed immediately finds the lessons while the megabyte of prose is still arriving; each source may fail on its own, and the status line names **what is missing** rather than only what is present — offline, the difference between "the bank isn't here" and "your search found nothing" is the whole difference between a working page and a broken one, and an empty result list cannot tell them apart. A filter row exists because a mixed index of five kinds returns forty practice questions and "show me only the lessons" is the first thing anyone wants next.
 
 Search is now a tab in the ochem header (the tab row scrolls horizontally, so a seventh item costs nothing on a phone) and a link under the tools grid — outside it, because check #10 compares those tiles byte-for-byte against the registry and search is a way of getting somewhere rather than a tool.
 

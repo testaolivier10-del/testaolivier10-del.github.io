@@ -85,7 +85,7 @@
     var concept = (LG && LG.conceptFor(topicId, raw.q)) ||
                   C().inferConcept(raw.q, topicId) ||
                   C().defaultConceptFor(topicId);
-    return {
+    var q = {
       id: 'lb:' + topicId + ':' + index,
       kind: raw.type === 'tf' ? 'tf' : 'mcq',
       tier: TIER_FROM_DIFFICULTY[raw.difficulty] || 2,
@@ -94,7 +94,6 @@
       prompt: raw.q,
       options: raw.options,
       answer: raw.correct,
-      why: raw.why,
       source: 'legacy',
       legacy: true,
       /* Vocabulary and trivia. Still worth asking — knowing that saponification
@@ -102,6 +101,30 @@
          about any concept, so nothing is recorded for it. */
       recall: recall
     };
+
+    /* `why` reads through to the explanations file instead of being copied in.
+
+       The explanations are fetched separately and land after the core bank
+       (assets/bank-loader.js), so a question can be normalized — and even
+       answered — before they arrive. Copying raw.why here would freeze in
+       whatever was available at that moment, leaving any question normalized
+       during the gap permanently without an explanation. A getter resolves at
+       display time instead, so the gap closes itself.
+
+       Defined non-enumerably on purpose: several places copy a question with
+       `for (var k in q)`, and a getter that copied as a getter would carry a
+       live reference into an object meant to be a snapshot. */
+    Object.defineProperty(q, 'why', {
+      enumerable: false,
+      configurable: true,
+      get: function(){
+        var all = window.OchemPracticeWhy;
+        var list = all && all[topicId];
+        var text = list && list[index];
+        return text || '';
+      }
+    });
+    return q;
   }
 
   function build(){
