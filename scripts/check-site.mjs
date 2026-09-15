@@ -1125,6 +1125,197 @@ for (const file of htmlFiles) {
   }
 }
 
+// ---- 23. Superseded resuscitation guidance cannot come back ----
+// The 2025 AHA Guidelines for CPR and ECC changed two things this site had
+// taught, in prose, in flowcharts, in a scenario and in nineteen bank items:
+//
+//   * Adults and children with a severe foreign-body airway obstruction now get
+//     cycles of 5 back blows and 5 abdominal thrusts. It was abdominal thrusts
+//     alone. (A cohort of 709 patients: back blows relieved more obstructions,
+//     with fewer injuries. Part 7, Adult BLS; Part 6, Pediatric BLS.)
+//   * Infant chest thrusts and infant chest compressions are delivered with the
+//     heel of one hand or two thumbs encircling. The two-finger technique was
+//     eliminated for failing to reach adequate depth. (Part 6.)
+//
+// Guidance that has been superseded once comes back the way it left: somebody
+// writes a new question from an old textbook, or copies a neighbouring item.
+// So this reads every block of prose the site can show a learner and fails on a
+// unit that PRESCRIBES the old thing.
+//
+// Prescribes, not mentions. The distinction is the whole design. A unit saying
+// "abdominal thrusts can injure the liver, spleen or stomach" is aftercare, and
+// an early draft of this check failed it. A unit saying "the heel of one hand,
+// not two fingers" is teaching the change and must stay legal, or the check
+// would forbid the very sentences that fixed the site. Hence: the trigger wants
+// an imperative verb or a "... until/repeated", and any unit that negates or
+// historicizes what it names is exempt.
+//
+// Distractors are deliberately out of scope. A wrong answer is allowed — is
+// often required — to state the superseded technique; that is what makes it
+// wrong. Only the stem, the keyed option(s) and the explanation are scanned.
+const GUIDANCE_RULES = [
+  {
+    label: 'abdominal thrusts as the whole choking sequence',
+    prescribes: (t) =>
+      /\b(?:deliver|perform|give|begin|start|use|apply|escalate to|proceed to|repeat)\b[^.;]{0,60}(?:abdominal thrusts?|Heimlich)/i.test(t)
+      || /(?:abdominal thrusts?|Heimlich)[^.;]{0,60}\b(?:until|repeated|repeatedly)\b/i.test(t)
+      || /^\s*abdominal thrusts\b/i.test(t),
+    topic: /chok|obstruct|foreign.?body|FBAO|Heimlich/i,
+    ok: (t) => /back blow|back slap/i.test(t),
+    exempt: /\bnot\b|\bnever\b|no longer|no place|used to|previously|thrusts alone|abdominal-thrusts-only|outdated|rather than|instead of|do(?:es)? nothing/i,
+    why: 'The 2025 AHA sequence for an adult or child is 5 back blows THEN 5 abdominal thrusts, repeated. Add the back blows, or say explicitly that thrusts alone is the superseded guidance.',
+  },
+  {
+    label: 'the two-finger technique for an infant',
+    prescribes: (t) => /\btwo[- ]fingers?\b|\b2 fingers\b/i.test(t),
+    topic: /\binfants?\b|\bsternum\b|chest thrust|chest compression/i,
+    ok: () => false,
+    exempt: /\bnot\b|\bnever\b|no longer|eliminat|replaced|dropped|used to|previously|older|instead of|rather than|did not/i,
+    why: 'The 2025 AHA guidelines eliminated the two-finger technique for infants: it did not reach adequate depth. Use the heel of one hand, or two thumbs encircling the chest.',
+  },
+  {
+    label: 'abdominal thrusts on an infant',
+    prescribes: (t) =>
+      /\b(?:deliver|perform|give|begin|start|use|apply)\b[^.;]{0,60}(?:abdominal thrusts?|Heimlich)/i.test(t)
+      || /^\s*abdominal thrusts\b/i.test(t),
+    topic: /\binfants?\b|under (?:one|1) year|under a year/i,
+    ok: () => false,
+    exempt: /\bnot\b|\bnever\b|no place|avoid|used to|previously|rather than|do(?:es)? nothing/i,
+    why: 'Abdominal thrusts are not used under 1 year at all — the infant liver is large, low and poorly protected. Infants get 5 back blows and 5 chest thrusts.',
+  },
+];
+
+// A unit is a block of prose plus the heading it sits under, and sometimes the
+// table it sits in. None of that is decoration:
+//
+//   * A flowchart box reads "Abdominal thrusts, repeated". The word
+//     "obstruction" is only in the <h2> above it.
+//   * A cell of the choking grid in the notes reads "5 abdominal thrusts", the
+//     back blows are in the row above, and the word "choking" is in a JS
+//     `title:` key rather than in any HTML heading at all.
+//
+// Each of those slipped through a version of this check, and each was found the
+// same way: by putting the old guidance back and watching nothing happen. So
+// headings are tracked in document order across BOTH the markup and the inline
+// JS data, and a table cell borrows its whole table.
+function guidanceUnits(html) {
+  const out = [];
+  const flatten = (s) => s
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&mdash;/g, '—').replace(/&ndash;/g, '–')
+    .replace(/&rsquo;/g, "'").replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ').trim();
+
+  const tables = [];
+  for (const m of html.matchAll(/<table\b[^>]*>[\s\S]*?<\/table>/gi)) {
+    tables.push({ start: m.index, end: m.index + m[0].length, text: flatten(m[0]) });
+  }
+  const enclosingTable = (i) => tables.find((t) => i >= t.start && i < t.end);
+
+  // One ordered pass over markup blocks and over the JS keys that title them,
+  // so a heading declared in either form covers what follows it.
+  // One pass PER TAG, not one combined pass. A combined alternation walks the
+  // file left to right, so `<div class="table-wrap">` matched to its closing
+  // tag and every <td> inside the table was consumed with it — the grid
+  // arrived as a single unit, and a row reading "Abdominal thrusts are not
+  // used at this age" excused every other cell beside it. Separate passes see
+  // the cells. A <div> that still wraps other blocks is then dropped as a
+  // duplicate of the leaves inside it.
+  const seen = [];
+  for (const tag of ['p', 'li', 'td', 'th', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div']) {
+    const re = new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)</${tag}>`, 'gi');
+    for (const m of html.matchAll(re)) {
+      if (tag === 'div' && /<(?:p|li|td|th|table|div)\b/i.test(m[1])) continue;
+      const text = flatten(m[1]);
+      if (!text) continue;
+      seen.push({
+        at: m.index,
+        text,
+        heading: /^h[1-6]$/.test(tag),
+        table: (tag === 'td' || tag === 'th') ? enclosingTable(m.index) : null,
+      });
+    }
+  }
+  for (const m of html.matchAll(/\b(title|heading|blurb|text|consequence):\s*"((?:[^"\\]|\\.)*)"/g)) {
+    const text = m[2].replace(/\\"/g, '"').replace(/\\n/g, ' ').replace(/\s+/g, ' ').trim();
+    if (!text) continue;
+    seen.push({ at: m.index, text, heading: m[1] === 'title' || m[1] === 'heading', table: null });
+  }
+  seen.sort((a, b) => a.at - b.at);
+
+  let heading = '';
+  for (const u of seen) {
+    if (u.heading) { heading = u.text; continue; }
+    const body = u.table ? u.table.text : u.text;
+    out.push({ text: u.text, scope: heading ? heading + '. ' + body : body });
+  }
+  return out;
+}
+
+function checkGuidance(where, text, scope = text) {
+  for (const rule of GUIDANCE_RULES) {
+    if (!rule.prescribes(text)) continue;
+    if (!rule.topic.test(scope)) continue;
+    // `ok` looks at the scope, because the correct guidance can be spread
+    // across a table: back blows in one row, thrusts in the next. `exempt`
+    // looks at the block alone, because a unit earns its exemption by its own
+    // wording — reading it from the scope let one table's "not used at this
+    // age" row excuse every other cell in the same grid.
+    if (rule.ok(scope)) continue;
+    if (rule.exempt.test(text)) continue;
+    fail(`${where}: teaches ${rule.label}, which the 2025 AHA guidelines superseded.\n` +
+         `    ${rule.why}\n` +
+         `    ${text.slice(0, 160)}`);
+  }
+}
+
+for (const file of htmlFiles) {
+  const rel = relative(ROOT, file).split(sep).join('/');
+  for (const u of guidanceUnits(readFileSync(file, 'utf8'))) checkGuidance(rel, u.text, u.scope);
+}
+
+{
+  const bank = JSON.parse(readFileSync(join(ROOT, 'nremt', 'assets', 'questions.json'), 'utf8'));
+  for (const q of bank) {
+    const keyed = Array.isArray(q.correct) ? q.correct : [q.correct];
+    checkGuidance(`questions.json id ${q.id} (stem)`, String(q.q || ''));
+    checkGuidance(`questions.json id ${q.id} (explanation)`, String(q.explain || ''));
+    // An 'order' item's options are all steps of the same correct sequence,
+    // so every one of them is keyed content.
+    const keyedOptions = q.type === 'order' ? q.options.map((_, i) => i) : keyed;
+    for (const i of keyedOptions) {
+      if (typeof q.options?.[i] === 'string') {
+        checkGuidance(`questions.json id ${q.id} (keyed option)`, q.options[i]);
+      }
+    }
+  }
+}
+
+// ---- 24. The bank cannot outgrow the option letters the page can render ----
+// practice.html labels options from a fixed LETTERS array. The choking-sequence
+// ordering item became the bank's first six-option question, which is exactly
+// as many letters as exist — a seventh would render `undefined)` beside a step
+// and nothing would have caught it.
+{
+  const page = readFileSync(join(ROOT, 'nremt', 'practice.html'), 'utf8');
+  const m = page.match(/const LETTERS\s*=\s*\[([^\]]*)\]/);
+  if (!m) {
+    fail('nremt/practice.html: cannot find the LETTERS array that labels options.');
+  } else {
+    const letters = m[1].split(',').filter((s) => s.trim()).length;
+    const bank = JSON.parse(readFileSync(join(ROOT, 'nremt', 'assets', 'questions.json'), 'utf8'));
+    let worst = 0, worstId = null;
+    for (const q of bank) {
+      const n = q.options?.length || 0;
+      if (n > worst) { worst = n; worstId = q.id; }
+    }
+    if (worst > letters) {
+      fail(`nremt/practice.html: LETTERS has ${letters} entries but questions.json id ${worstId} ` +
+           `has ${worst} options, so the last option(s) would render with no letter.`);
+    }
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);

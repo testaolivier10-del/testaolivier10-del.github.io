@@ -78,6 +78,11 @@ clinician, and that is the gap no amount of tooling closes.
 | Extreme agitation with hyperthermia: prolonged prone restraint named as dangerous, active cooling started during the struggle, and the sudden calm after exertion taught as the moment of arrest | Current prehospital practice on agitation-related death | s21 | Phase 4 |
 | Heat stroke distinguished from heat exhaustion by **altered mental status**, with a note that a heat-stroke patient may still be sweating; cooling continued through shivering | Standard EMT practice | s23 | Phase 4 |
 | Carbon monoxide: pulse oximetry named as unable to distinguish carboxyhemoglobin, so a normal reading is meaningless; evacuate including the crew; high-flow oxygen; transport all exposed | Standard EMT practice | s25 | Phase 4 |
+| Choking, adults and children: cycles of 5 back blows then 5 abdominal thrusts, replacing abdominal thrusts alone; 5 chest thrusts substituted when the rescuer cannot encircle the abdomen | 2025 AHA, Part 7 Adult BLS (CIR.0000000000001369) and Part 6 Pediatric BLS (CIR.0000000000001370); adult FBAO algorithm | `nremt/flowcharts.html`, notes ch9 §Choking, scenario s3, questions 20, 21, 466, 758, 873, 1087, 1153 | Phase 8 |
+| Choking, infants: 5 back blows then 5 chest thrusts delivered with the **heel of one hand**, replacing the two-finger technique; abdominal thrusts still not used under 1 year | 2025 AHA, Part 6 Pediatric BLS | `nremt/flowcharts.html`, notes ch9 §Choking, questions 129, 467, 1774 | Phase 8 |
+| Infant chest compressions: two thumbs encircling, or the heel of one hand when the rescuer cannot encircle the chest. The two-finger technique is eliminated | 2025 AHA, Part 6 Pediatric BLS | notes ch21 compression table, question 1757 | Phase 8 |
+| Chain of survival: a single six-link chain for all cardiac arrest, adult and pediatric, in- and out-of-hospital — Recognition and Emergency Activation, High-Quality CPR, Defibrillation, Advanced Resuscitation, Post–Cardiac Arrest Care, Recovery and Survivorship. Newborns keep a separate Newborn Chain of Care | 2025 AHA, Part 4 Systems of Care (CIR.0000000000001378) and the AHA Chain of Survival infographic | notes ch21 §Chain of survival | Phase 8 |
+| New notes section: Choking — Foreign Body Airway Obstruction (mild vs. severe, the sequence by age, what changed in 2025, the transition to CPR, aftercare, and what thrusts do not fix) | 2025 AHA, Parts 6 and 7 | notes ch9 §`ch9-fbao` | Phase 8 |
 
 ---
 
@@ -609,6 +614,78 @@ Console ownership token — none of which are pages in the sense that matters.
 
 ---
 
+## Phase 8 — 2025 AHA guideline update, per-word tells and the deferred decisions
+
+The fourth work order. Items are numbered as they were given.
+
+| # | Item | Status |
+|---|---|---|
+| 1 | 2025 AHA choking update: flowcharts, the choking toddler scenario, the named questions, every two-finger explanation, a choking section in the notes, and a check so neither can come back | **done** |
+| 2 | Chain of survival: chapter 21 to the 2025 single chain, after verifying its links | **done** |
+| 3 | Per-word tell checks (entirely, completely, all, regardless / per protocol, appropriate), fix what they flag, and bring the longest-option-is-key rate toward 25% | pending |
+| 4 | Question 974: V/Q mismatch and the Haldane effect in place of hypoxic drive, keeping "don't withhold oxygen" | pending |
+| 5 | Reference cards: the impossible "M11" GCS example | pending |
+| 6 | Formulary: the nitroglycerin heart-rate contraindication, and that protocols vary | pending |
+| 7 | SN2 figure: cyanide's triple bond and lone pair, overlapping atoms, the ethyl group outside the frame | pending |
+| 8 | The remaining British spellings in visible text | pending |
+| 9 | Confirm the live site matches main (2,106 questions, Terms link) | pending |
+| 10 | The three deferred decisions: notes chapters to JSON with figures; light and dark homepage screenshots, lazy-loaded; balance the absolute-word tell using only genuinely absolute keys | pending |
+
+### Item 1 — what the 2025 guidelines actually say
+
+Verified against the primary text before anything was edited, because the whole
+point of a guideline update is that the old wording was also confidently
+written down somewhere:
+
+- **Adults** (Part 7, Adult BLS): "rescuers should perform cycles of 5 back
+  blows followed by 5 abdominal thrusts until the object is expelled or the
+  patient becomes unresponsive." The adult FBAO algorithm adds that if the
+  rescuer cannot encircle the patient's abdomen, 5 chest thrusts are used
+  instead. The change rests on a cohort of 709 patients in which back blows
+  relieved more obstructions, with fewer injuries, than abdominal thrusts.
+- **Children** (Part 6, Pediatric BLS): "repeated cycles of 5 back blows
+  alternating with 5 abdominal thrusts." Previously abdominal thrusts alone.
+- **Infants** (Part 6): "repeated cycles of 5 back blows alternating with 5
+  chest thrusts (no abdominal thrusts)." The thrusts use the heel of one hand,
+  which "generates greater compression depth than the previously recommended
+  2-finger technique." The AHA deliberately avoids the phrase *chest
+  compression* here, because rate and recoil do not apply.
+- **Infant CPR** (Part 6): the 2-finger technique is eliminated "due to
+  ineffectiveness of achieving proper depth"; the recommendation is the 1-hand
+  or 2-thumb–encircling hands technique, and the heel of one hand specifically
+  when the rescuer cannot physically encircle the chest.
+- **Chain of survival** (Part 4): "we have elected to revert to a single Chain
+  of Survival for all forms of cardiac arrest, whether adult or pediatric, in-
+  or out-of-hospital." Six links, named above. Neonatal is out of scope and
+  keeps its own Newborn Chain of Care.
+
+### Item 1 — the named questions, and the ones that turned out to be fine
+
+Eighteen ids were given. Twelve carried superseded guidance and were rewritten;
+six did not, and are recorded here rather than edited for the sake of it.
+
+| Question | What was done |
+|---|---|
+| 20, 466, 1087 | Adult key rewritten to 5 back blows then 5 abdominal thrusts; the pregnancy/obesity substitution moved into the explanation |
+| 873 | Child key rewritten the same way. The infant sequence stays as the discriminating distractor — what separates a child from an infant is now only the second half of the cycle |
+| 758 | Key and explanation rewritten to give the sequence by age rather than "abdominal thrusts (or back blows/chest thrusts per age)" |
+| 1153 | Ordering item rebuilt: back blows added as a step, hand placement kept, six steps instead of five |
+| 129, 467, 1774 | Infant explanations: heel of one hand in place of two fingers, and the 5-and-5 stated |
+| 21 | Explanation updated to name back blows, and a stale sentence about a jaw-thrust option that this question does not have was removed |
+| 176 | Explanation referred to "Option 1" and "Options 3 and 4" — option numbers, in a bank whose options shuffle at runtime, and wrong even unshuffled, since one of the numbers it called wrong was the key. Rewritten without numbers |
+| 474, 756, 1009, 1177, 1193 | **No change needed.** Each mentions choking or abdominal thrusts, but none states guidance the 2025 update changed: thrusts are still the wrong answer for drowning, for angioedema, and for a well-fitting set of dentures |
+| 1167, 1836 | **No change needed.** Both are partial-obstruction items where the answer is still to encourage coughing, and both explanations already reserve thrusts *and* back blows for a complete obstruction |
+
+Two further questions the list did not name were found by scanning the whole
+bank for the changed guidance:
+
+| Question | What was wrong |
+|---|---|
+| 1757 | Asked for the infant compression technique with two rescuers. After the 2025 change its distractor "the heel of one hand over the center of the chest" became a **second correct answer**, and its explanation taught both eliminated claims — that two fingers are for a single rescuer, and that a one-hand technique is adult-only. Rewritten around the case the guidelines answer directly: a lone rescuer whose hands cannot encircle the chest |
+| 917 | **No change needed.** Its explanation already said "back blows/abdominal thrusts per pediatric BLS guidelines" for a 3-year-old, which is what the 2025 sequence is |
+
+---
+
 ## Already settled
 
 ### Done in earlier pushes
@@ -663,7 +740,11 @@ ending, not merely be reachable from the start ·
 19. **Every lesson and mechanism links to its written section**, in the body
 rather than the head · 20. **Generated figures draw inside their own canvas**,
 and carry alt text and a caption · 21. **No textbook section explains the same
-thing twice** across its body, callouts and captions · 8 now also covers
+thing twice** across its body, callouts and captions ·
+22. **A page with a footer link row reaches terms.html** ·
+23. **Superseded resuscitation guidance cannot come back** ·
+24. **The bank cannot outgrow the option letters the page can render** ·
+8 now also covers
 **advertised section counts**, with changelog.html exempt because a dated
 entry is a record rather than a claim about now
 
@@ -677,6 +758,34 @@ looked at. Check 17 exists because two numbers — the adult suction limit and
 the non-rebreather flow rate — had drifted into two values across pages; it is
 a short list of repeated figures, not a fact-checker, and it should grow a row
 only when a number starts appearing in a second place.
+
+Check 23 is the one that most repaid the reintroduction habit. It reads every
+block of prose the site can show a learner and fails on a unit that
+*prescribes* the superseded guidance — not one that merely mentions it, since
+the sentences that fixed the site all name the old technique in order to
+correct it. Nine defects were put back to test it. The first version caught
+five. The four it missed were all the same shape, a unit too small to carry its
+own context:
+
+- a flowchart box reading "Abdominal thrusts, repeated", with the word
+  *obstruction* only in the `<h2>` above it;
+- a notes table cell reading "5 abdominal thrusts", with the back blows in the
+  row above and the word *choking* in a JavaScript `title:` key rather than any
+  HTML heading;
+- the same table again, because a `<div class="table-wrap">` matched as one
+  block and flattened the whole grid, so a row saying "Abdominal thrusts are
+  not used at this age" excused every other cell beside it;
+- and then every table cell at once, because a single alternating regex walks
+  the file left to right, so matching the wrapping `<div>` consumed its `<td>`s
+  before they could be seen.
+
+So a unit now carries the heading above it and, for a cell, the table around
+it; a rule's *prescribes* half is tested against the block alone and its
+*topic* half against the wider scope; exemptions are read from the block, never
+the scope; and the tags are scanned one at a time rather than in one
+alternation. Distractors are out of scope by design — a wrong answer is often
+required to state the superseded technique, which is what makes it wrong — so
+only stems, keyed options and explanations are read.
 
 The three wording-tell thresholds are set at the bank's measured state, not at
 the target, following the convention already used for the ochem ceilings: they
