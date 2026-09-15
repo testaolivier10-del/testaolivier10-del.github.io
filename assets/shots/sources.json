@@ -1,7 +1,0 @@
-{
-  "note": "A hash of the files each picture was taken from. build-screenshots.mjs --check fails when one moves on, which is the only way a screenshot can be known to be stale.",
-  "shots": {
-    "arrow-pusher": "23af4a15bdd353ca",
-    "body-map": "fe388b30a27d0f34"
-  }
-}

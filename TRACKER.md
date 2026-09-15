@@ -521,7 +521,7 @@ way.
 | Terms of Use page with medical disclaimer, linked in every footer | done — every page, not just every footer |
 | Footers on the 80 ochem lessons and mechanisms (they had none) | done |
 | FAQPage schema on exam-day; Course schema on both hubs | **verified already done** |
-| Homepage screenshots or GIFs | **done, Phase 8h.** The first option was chosen: capture all four, lazy-loaded. |
+| Homepage screenshots or GIFs | **won't do — reverted, Phase 8i.** Built in 8h, shipped, and taken back out at the owner's word: they do not want the tools shown on the homepage. The finding stands closed by decision, not by implementation. |
 | About section with name and reviewer | needs a person |
 
 **Terms of Use (Phase 7a).** `terms.html` covers the thing that actually
@@ -651,7 +651,7 @@ What is left, in the order it is worth doing, none of it in this brief:
 | 7 | SN2 figure: cyanide's triple bond and lone pair, overlapping atoms, the ethyl group outside the frame | **done** |
 | 8 | The remaining British spellings in visible text | **done** |
 | 9 | Confirm the live site matches main (2,106 questions, Terms link) | pending |
-| 10 | The three deferred decisions: notes chapters to JSON with figures; light and dark homepage screenshots, lazy-loaded; balance the absolute-word tell using only genuinely absolute keys | **done** |
+| 10 | The three deferred decisions: notes chapters to JSON with figures; light and dark homepage screenshots, lazy-loaded; balance the absolute-word tell using only genuinely absolute keys | **done**, then the screenshots were reverted in Phase 8i at the owner's word — see Item 10b |
 
 ### Item 1 — what the 2025 guidelines actually say
 
@@ -949,42 +949,49 @@ hand-written figures in `ochem/notes/` draw measurably outside their canvas**
 than generated, so neither check 20 nor check 26 looks at them. Measured, not
 fixed — recorded here as its own piece of work.
 
-### Item 10b — the homepage shows the tools now
+### Item 10b — the homepage screenshots, built and then reverted
 
-Phase 7c measured this rather than guessing, and listed four faults with the
-idea. Three are answered; the fourth is answered as well as a photograph can be.
+**Reverted in Phase 8i. The homepage carries no screenshots and there is no
+capture harness.** `scripts/build-screenshots.mjs`, `scripts/lib/png-crop.mjs`,
+`assets/shots/`, the four `DATA_BUDGETS` entries and the CI step are all gone,
+and the `.shots` CSS and markup are out of `index.html`.
 
-| The objection | What was done |
-|---|---|
-| Dark mode doubles it | Four captures, two per tool. But **not** `<picture>` + `prefers-color-scheme` — this site's theme is a localStorage value applied as `[data-theme]`, not the OS preference, so that would have served the dark picture to a reader with a dark OS and the site in light mode. Two `<img>`, swapped by the same attribute that themes everything else |
-| No compression tooling | Still true. The capture scale is the compression: 0.46, which is about the size these render at on the homepage. 339 KB for four, and only one of each pair is ever fetched |
-| `check-weight.mjs` excludes images | Each file is in `DATA_BUDGETS` now. Being unmeasured is not the same as being free, and this is weight added on purpose |
-| A screenshot is a second copy of the UI with nothing checking it | Each capture records a hash of the **sources** it was taken from, and `--check` fails when one moves on. That does not prove the picture is right; it proves nobody changed the tool and left the picture behind, which is the failure that actually happened to the og-image cards |
+Why it existed: a reviewer finding said the homepage describes the tools and
+never shows them. Phase 7c measured four ways to answer that, priced each, and
+deliberately left the choice open rather than taking it. Item 10 of the Phase 8
+work order chose one — light and dark captures, lazy-loaded — and 8h built it.
 
-Three things went wrong on the way, all of them instructive:
+Why it is gone: what shipped was a **whole-page** capture of each tool, site
+header and nav included, rendering about 700px tall apiece. The homepage then
+read as two embedded copies of the site rather than two previews of a tool.
+That was an execution fault, not a fault in the idea — a crop to the tool
+region was half-built when the owner said plainly that they did not want the
+screenshots there at all. So this closes as a decision, and the reviewer
+finding above is marked won't-do rather than done.
 
-1. **The capture harness deadlocked.** The script serves the repo from its own
-   process and drove Chromium with `spawnSync` — which blocks the event loop,
-   so the browser requested the page and node never got round to answering.
-   It looked exactly like a Chromium hang.
-2. **The body map captured a spinner.** It is a real WebGL scene and headless
-   Chromium has no GPU. `--use-angle=swiftshader` renders it in software.
-3. **The "dark" body map looked identical to the light one**, and that was not
-   a theming failure: the 3D viewer paints its own light stage in both themes,
-   so a crop of the model alone contains nothing the theme touches. Widening
-   the frame to include the page around it is what makes the two differ — and
-   is the better picture anyway. The offset-iframe cropping was dropped
-   entirely at that point, because the viewer sizes its canvas from the layout
-   it finds and drew a third-height model inside a short iframe. The capture
-   navigates to the page and shrinks the whole thing.
+What is worth keeping if this is ever revisited:
 
-One unexplained observation, recorded rather than guessed at: the `.shots` grid
-rule did not apply in its first position in the homepage `<style>` block, and
-does in its second. `display` computed as `block` and the rule was absent from
-`document.styleSheets`, so it was not an override. A minimal reproduction of
-the surrounding comment and rules parses fine, so the cause is not the comment,
-and I could not reproduce it. The layout is verified correct by measurement —
-two 536px columns, the image box 456px — rather than by eye.
+- **A preview must be cropped to the tool.** Shipping the page chrome is what
+  made it look wrong, and it is not obvious until it is on the homepage.
+- **Dark mode doubles it**, and `<picture>` + `prefers-color-scheme` is the
+  wrong mechanism here: this site's theme is a localStorage value applied as
+  `[data-theme]`, not the OS preference. Two `<img>` swapped by that same
+  attribute is the only correct version.
+- **There is no compression tooling here** — no cwebp, no ImageMagick, no PIL.
+  The capture scale and the crop are the only compression available, and PNG
+  of a 3D render is expensive: the cropped body map was 193 KB, above the
+  124 KB budget the uncropped one fit.
+- **A screenshot is a second copy of the UI with nothing checking it.** The
+  answer that worked was hashing the **sources** each picture was taken from
+  so `--check` fails when the tool moves on. It does not prove the picture is
+  right; it proves nobody changed the tool and left the picture behind, which
+  is the failure that actually happened to the og-image cards.
+- Three harness faults, all real: `spawnSync` deadlocks a script that also
+  serves the pages (it blocks the event loop); the body map needs
+  `--use-angle=swiftshader` or headless Chromium captures its loading spinner;
+  and the 3D viewer sizes its canvas from the layout it finds, so an
+  offset-iframe frame drew a third-height model — crop the finished picture
+  instead.
 
 ### Item 10c — the absolute tell, balanced from the key side
 
