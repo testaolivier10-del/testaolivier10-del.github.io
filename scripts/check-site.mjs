@@ -241,8 +241,15 @@ const BANKS = [
     // & Burns, -> 9.3%), 0.10 (Obstetrics, -> 10.2%), 0.11 (Scene Safety,
     // -> 11.2%), 0.125 (Bleeding & Shock, -> 12.7%), 0.14 (Pediatrics,
     // -> 14.1%), 0.145 (Legal & Ethical, -> 14.9%), 0.17 (Trauma Systems,
-    // -> 17.4%). 25% is the target.
-    absoluteFloor: 0.17,
+    // -> 17.4%), 0.195 (Incident Management, -> 19.9%). 25% is the target.
+    //
+    // One false positive worth knowing about: the word boundary in \bonly\b
+    // matches inside a hyphenated compound, so "an EMS-only response" reads as
+    // an absolute-worded option when it is just a term of art. One item hit
+    // this and was reworded rather than left to trip the check forever. If
+    // more turn up, the pattern needs a lookbehind for a hyphen rather than
+    // more rewording.
+    absoluteFloor: 0.195,
     // NOT tightened, and the reason is worth reading before the next domain.
     // This is the one tell here that marks the RIGHT answer, so it behaves
     // backwards from the other two: taking a hedge OUT OF A DISTRACTOR shrinks

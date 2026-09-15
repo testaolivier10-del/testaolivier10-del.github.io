@@ -341,7 +341,7 @@ their lessons exist.
 
 | Item | Status |
 |---|---|
-| Rewrite options flagged by the three tell checks, one domain per commit | in progress — 11 domains done, 10 to go |
+| Rewrite options flagged by the three tell checks, one domain per commit | in progress — 12 domains done, 9 to go |
 
 The scale, measured before starting:
 
@@ -419,10 +419,16 @@ Running totals:
 | Bleeding & Shock | 228 / 12.7% | 75 / 30.7% | 140 / 22.9% |
 | Pediatrics | 205 / 14.1% | 73 / 28.8% | 132 / 24.2% |
 | Legal & Ethical | 194 / 14.9% | 71 / 26.8% | 119 / 26.9% |
-| Trauma Systems | **172 / 17.4%** | **70 / 25.7%** | 107 / 29.9% ↑ |
+| Trauma Systems | 172 / 17.4% | 70 / 25.7% | 107 / 29.9% ↑ |
+| Incident Management | **151 / 19.9%** | 70 / 25.7% | 107 / 29.9% |
 
-Thresholds now `absoluteFloor: 0.17`, `hedgeCeiling: 0.28`, `justifyFloor: 0.25`
+Thresholds now `absoluteFloor: 0.195`, `hedgeCeiling: 0.28`, `justifyFloor: 0.25`
 and `justifyCeiling: 0.34`.
+
+From Incident Management on, the apply script **asserts** that a rewrite keeps
+any justification clause the original had, and adds none where there was none.
+That kept hedge and justification exactly flat while absolute moved 17.4% →
+19.9% — the first pass to move one number without disturbing the other two.
 
 **The justification tell overshot, and the check now has a far side.** It went
 past the 25% baseline to 29.9% — the previous commit had written down that a
