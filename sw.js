@@ -24,7 +24,7 @@
 // model, the 670 KB three.js bundle and the fonts. Those never change with
 // the shell (they are content-addressed by path, and a new model would be a
 // new file), so they live in STATIC_CACHE, which activate leaves alone.
-const CACHE_NAME = 'levlprep-v31';
+const CACHE_NAME = 'levlprep-v32';
 const STATIC_CACHE = 'levlprep-static';
 const PRECACHE_URLS = [
   'index.html',
@@ -128,6 +128,16 @@ const NETWORK_FIRST_EXTENSIONS = /\.(html|css|js|json)$/;
 self.addEventListener('fetch', event => {
   if(event.request.method !== 'GET') return;
   const url = new URL(event.request.url);
+
+  /* The Cache API only accepts http and https. A browser extension fetching
+     through the page arrives here as chrome-extension:// and made cache.put()
+     throw — an uncaught promise rejection on every page load for anybody with
+     the wrong extension installed, and nothing this site can do anything about
+     except decline to touch it.
+
+     Extensions are also not ours to cache even where the scheme allows it. */
+  if(url.protocol !== 'http:' && url.protocol !== 'https:') return;
+  if(url.origin !== self.location.origin) return;
   const isNetworkFirst = event.request.mode === 'navigate' || NETWORK_FIRST_EXTENSIONS.test(url.pathname);
 
   if(isNetworkFirst){

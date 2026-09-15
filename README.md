@@ -734,6 +734,8 @@ The `page_views` table it writes to has row-level security on with **no policies
 
 Setup: put the website id from the Umami dashboard into `WEBSITE_ID` at the top of `assets/analytics.js`. That is the only step. Until it is set the file does nothing at all, which is deliberate. `cloud.umami.is` is already in `script-src` and `connect-src` in the CSP on all 97 pages that carry one.
 
+**Umami's script host and its data host are not the same host**, and the CSP has to name both. `script.js` comes from `cloud.umami.is`; the script then POSTs its events to `gateway.umami.is`. Only the first was in `connect-src`, so every event was blocked by the browser with a console error nobody was reading — the dashboard showed nothing and looked exactly like a site with no traffic. Both are listed now, on all 102 pages that carry a CSP.
+
 `data-do-not-track="true"` is set, so a browser sending Do Not Track is excluded entirely. Ad blockers block it, as they block every analytics tool including the respectful ones; nothing on the site depends on it, and the site's own counter is unaffected because it goes to our own domain.
 
 There is also a per-browser opt-out, on `privacy.html` under **Site analytics**. It writes `levlprep_analytics_opt_out` to `localStorage`, and `assets/analytics.js` checks it *before* creating the script tag, so opting out means no request to Umami rather than one discarded at the far end. Two people want this for different reasons: a visitor who would rather not be counted, and whoever runs the site, whose own testing is otherwise indistinguishable from real traffic. **Turn it on in your own browser** or every number on the dashboard includes you.
