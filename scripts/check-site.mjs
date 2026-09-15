@@ -236,8 +236,8 @@ const BANKS = [
     // (Cardiac, 6.2% -> 6.8%), 0.07 (Medical, -> 7.3%), 0.075 (Geriatrics,
     // -> 7.9%), 0.08 (Secondary Assessment, -> 8.5%), 0.09 (Musculoskeletal
     // & Burns, -> 9.3%), 0.10 (Obstetrics, -> 10.2%), 0.11 (Scene Safety,
-    // -> 11.2%). 25% is the target.
-    absoluteFloor: 0.11,
+    // -> 11.2%), 0.125 (Bleeding & Shock, -> 12.7%). 25% is the target.
+    absoluteFloor: 0.125,
     // NOT tightened, and the reason is worth reading before the next domain.
     // This is the one tell here that marks the RIGHT answer, so it behaves
     // backwards from the other two: taking a hedge OUT OF A DISTRACTOR shrinks
@@ -254,14 +254,15 @@ const BANKS = [
     // match, and again to 0.40 after Musculoskeletal & Burns (-> 39.5%),
     // where three keys kept their "per protocol" because repositioning a
     // limb to restore a pulse genuinely is protocol-gated, and 0.37 after
-    // Obstetrics (-> 36.6%), 0.35 after Scene Safety (-> 34.2%).
-    hedgeCeiling: 0.35,
+    // Obstetrics (-> 36.6%), 0.35 after Scene Safety (-> 34.2%), 0.315
+    // after Bleeding & Shock (-> 30.7%).
+    hedgeCeiling: 0.315,
     // Measured 17.1% on the single-clause case against a 25% baseline.
     // 16.9% at the start, then 17.4% (Cardiac), 18.0% (Medical),
     // 18.5% (Geriatrics), 19.5% (Secondary Assessment),
     // 20.1% (Musculoskeletal & Burns), 21.2% (Obstetrics),
-    // 22.1% (Scene Safety).
-    justifyFloor: 0.22,
+    // 22.1% (Scene Safety), 22.9% (Bleeding & Shock).
+    justifyFloor: 0.225,
   },
   {
     label: 'practice-bank.json',
