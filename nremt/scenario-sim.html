@@ -331,19 +331,19 @@ const SCENARIOS = [
         vitals: "HR 98 · BP 136/86 · SpO2 99%",
         text: "You back off to titrating oxygen appropriately once you realize her saturation was already fine. She's still anxious and in pain — time to keep assessing.",
         choices: [
-          { text: "Get a SAMPLE history and ask about nitroglycerin and any aspirin allergy", next: "s2_history_good" }
+          { text: "Get a SAMPLE history: aspirin allergy, her own nitroglycerin, and any sildenafil-type drug in the last 24–48 hours", next: "s2_history_good" }
         ]
       },
       s2_walk_bad: {
         vitals: "HR 108 · BP 134/86 · SpO2 96%",
         text: "She's sitting on the stretcher now, more winded than before. You continue your assessment.",
         choices: [
-          { text: "Get a SAMPLE history and ask about nitroglycerin and any aspirin allergy", next: "s2_history_worse" }
+          { text: "Get a SAMPLE history: aspirin allergy, her own nitroglycerin, and any sildenafil-type drug in the last 24–48 hours", next: "s2_history_worse" }
         ]
       },
       s2_history_good: {
         vitals: "HR 96 · BP 138/88 · SpO2 98%",
-        text: "She's alert and oriented, describes the pain as crushing and radiating to her left arm. No allergies. She has her own prescribed nitroglycerin with her.",
+        text: "She's alert and oriented, describes the pain as crushing and radiating to her left arm. No allergies. She has her own prescribed nitroglycerin with her, and takes nothing in the sildenafil family — worth asking every patient before nitro, not only the men, since the same drugs are prescribed for pulmonary hypertension. Taken within 24 to 48 hours they turn a normal nitro dose into profound, refractory hypotension.",
         choices: [
           { text: "Give aspirin (chewed) per protocol, and check her blood pressure before assisting with her nitro", next: "s2_meds_good" },
           { text: "Give nitro first — several doses, before considering aspirin at all", next: "s2_meds_outoforder", consequence: "Order isn't strictly fixed, but you also didn't check her blood pressure before that first dose — her pressure was borderline, and it drops further with nitro. She now feels lightheaded and worse." }
@@ -360,7 +360,7 @@ const SCENARIOS = [
         vitals: "HR 90 · BP 128/82 · Pain 5/10",
         text: "Aspirin given, BP checked and adequate, nitro assisted per protocol. Her pain eases somewhat but she is still uncomfortable. You have a 12-lead monitor in the rig.",
         choices: [
-          { text: "Acquire a 12-lead ECG before moving her and transmit it ahead to the receiving hospital", next: "s2_ecg_good" },
+          { text: "If your service carries one and you are permitted to acquire it, get a 12-lead before moving her and transmit it ahead", next: "s2_ecg_good" },
           { text: "Skip the 12-lead since her pain is already improving and just transport", next: "s2_ecg_skipped", consequence: "You load her without a 12-lead. At the hospital the crew has to acquire one cold, with no pre-arrival notification — a STEMI alert that could have started the moment you left the scene instead starts only once she's already in the door." }
         ]
       },
@@ -382,7 +382,7 @@ const SCENARIOS = [
         vitals: "HR 102 · BP 96/64 · Pain 7/10, lightheaded",
         text: "You catch the mistake and hold further nitro since her pressure has dropped. She's shaken by the dizziness but stabilizes somewhat.",
         choices: [
-          { text: "Treat supportively, get a 12-lead once her pressure allows, and transport promptly", next: "s2_end_ok" },
+          { text: "Treat supportively, get a 12-lead once her pressure allows if it is in your scope, and transport promptly", next: "s2_end_ok" },
           { text: "Give another dose of nitro to try to fully resolve the pain despite her dizziness", next: "s2_end_bad" }
         ]
       },
@@ -390,7 +390,7 @@ const SCENARIOS = [
         vitals: "HR 96 · BP 122/80 · Pain 6/10",
         text: "Medications given correctly this time, though she's more distressed overall than she needed to be given the earlier walk.",
         choices: [
-          { text: "Get a 12-lead and transport promptly", next: "s2_end_ok" }
+          { text: "Get a 12-lead if in scope, and transport promptly", next: "s2_end_ok" }
         ]
       },
       s2_end_good: { ending: "good", text: "Every step matched protocol: appropriate oxygen, aspirin, nitro only after confirming her pressure could tolerate it, an early transmitted 12-lead, and a smooth, low-stress transport. This is the version of this call that goes right — the cath lab is ready before she even arrives." },
@@ -474,7 +474,7 @@ const SCENARIOS = [
       s4_start: {
         text: "You're called to a home for \"a person not acting right.\" You find a 45-year-old man sitting on the kitchen floor, awake but confused, sweaty, and shaky. His wife says he's diabetic and hasn't eaten since this morning.",
         choices: [
-          { text: "Check his blood glucose if your protocol allows, while assessing his airway and ability to swallow", next: "s4_glucose_good" },
+          { text: "Check his blood glucose if your protocol allows, while assessing his airway, his ability to swallow, and which diabetes medication he takes", next: "s4_glucose_good" },
           { text: "Assume he's intoxicated based on his confused, unsteady presentation", next: "s4_assume_bad", consequence: "Confusion, sweating, and unsteadiness can look identical to intoxication — but his wife just told you he's diabetic and hasn't eaten. Anchoring on \"probably drunk\" nearly costs you a time-sensitive hypoglycemic emergency." },
           { text: "Wait for him to explain what's wrong before doing anything else", next: "s4_wait_bad", consequence: "He's confused and struggling to get words out — waiting on his own explanation costs you time you don't need to spend, especially with a diabetic history and a skipped meal right in front of you." }
         ]
@@ -493,7 +493,7 @@ const SCENARIOS = [
       },
       s4_glucose_good: {
         vitals: "Glucose 42 mg/dL",
-        text: "His glucose reads 42 mg/dL. He's confused but still awake enough to follow simple commands and swallow on request.",
+        text: "His glucose reads 42 mg/dL. He's confused but still awake enough to follow simple commands and swallow on request. His wife hands you his medications: he is on a long-acting sulfonylurea, not insulin.",
         choices: [
           { text: "Give oral glucose gel between his cheek and gum, and reassess", next: "s4_oralglucose_good" },
           { text: "Give him a large glass of orange juice to drink quickly", next: "s4_juice_risky", consequence: "He's confused enough that swallowing a full glass of liquid quickly carries real aspiration risk — oral glucose gel, given slowly, is the safer choice when a patient's airway protection is already in question." }
@@ -523,19 +523,19 @@ const SCENARIOS = [
         vitals: "Glucose 92 mg/dL",
         text: "Within a few minutes, his confusion clears noticeably. He's now alert, oriented, and a little embarrassed about the scene. He tells you he feels completely fine now and wants to just sign a refusal and skip the hospital.",
         choices: [
-          { text: "Recheck his glucose again in a few minutes, explain the risk of it dropping again, and strongly recommend transport", next: "s4_refusal_handled_good" },
-          { text: "Accept the refusal immediately since he's alert and clearly back to normal", next: "s4_refusal_rushed", consequence: "You didn't recheck his glucose or walk him through what could happen if it drops again once the glucose gel wears off. A rushed refusal on a patient who was just altered, without a second glucose check or a clear risk conversation, is a real liability and a real risk to him." }
+          { text: "Recheck his glucose, explain that his long-acting medication will outlast the glucose gel, and strongly recommend transport", next: "s4_refusal_handled_good" },
+          { text: "Accept the refusal immediately since he's alert and clearly back to normal", next: "s4_refusal_rushed", consequence: "You didn't recheck his glucose, and you did not act on what his medication list was telling you. A tube of glucose gel works for perhaps an hour; a long-acting sulfonylurea goes on driving his insulin for many more. He will very likely go hypoglycemic again, at home, alone, after you have cleared. That is the single strongest argument for transport here, and it is the one he never heard." }
         ]
       },
       s4_refusal_handled_good: {
         vitals: "Glucose 96 mg/dL",
-        text: "His repeat glucose is stable. You explain clearly that hypoglycemia can recur, especially since he still hasn't eaten a real meal, and that transport is strongly recommended. He agrees to go to be evaluated and eat something under observation.",
+        text: "His repeat glucose is stable. You explain that the sulfonylurea in his pocket lasts far longer than the gel you just gave him, so the low will very likely come back once it wears off — and that he still hasn't eaten a real meal. He agrees to go and be observed.",
         choices: [
           { text: "Transport for evaluation, monitoring glucose en route", next: "s4_end_good" }
         ]
       },
       s4_refusal_rushed: {
-        text: "He signs the refusal and you clear the scene. You never confirmed a second glucose reading stayed up, and he still hasn't eaten anything solid.",
+        text: "He signs the refusal and you clear the scene. You never confirmed a second glucose reading stayed up, he still hasn't eaten anything solid, and the drug that caused this is still working.",
         choices: [
           { text: "Document the refusal and clear", next: "s4_end_ok" }
         ]
@@ -586,8 +586,8 @@ const SCENARIOS = [
         vitals: "HR 112 · BP 120/76 · SpO2 95%",
         text: "He confirms a known peanut allergy and says this feels like his past reactions, only worse. Hives, throat tightness, and a known allergen exposure — this meets criteria for anaphylaxis.",
         choices: [
-          { text: "Administer his epinephrine auto-injector into the outer thigh right away", next: "s5_epi_good" },
-          { text: "Call medical control to ask permission before using his prescribed auto-injector", next: "s5_delay_call", consequence: "This is a life threat with a patient's own prescribed epinephrine right there — most protocols don't require an online call before assisting with a patient's own auto-injector, and the extra minutes spent on the phone let his airway symptoms progress." }
+          { text: "Give his epinephrine into the outer thigh now, per your standing orders or with medical direction en route", next: "s5_epi_good" },
+          { text: "Stop and call medical control for permission first, before anything else", next: "s5_delay_call", consequence: "Contacting medical control is not a mistake — in plenty of systems an EMT assisting with epinephrine needs standing orders or online direction, and following your protocol is always right. What costs this patient is the sequencing. A tight throat ten minutes after a known peanut exposure is a life threat, so the call is made <em>while</em> you are getting the auto-injector out, moving him, and preparing to give it, not instead of all that. Know before the shift which your service requires, so the question never has to be answered on scene." }
         ]
       },
       s5_delay_call: {

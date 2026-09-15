@@ -2141,15 +2141,27 @@ const CHAPTERS = [
           },
           {
             heading: "Step 1 — identify arrest & begin",
-            html: `<p>The first step is to identify the arrest and begin compressions where the patient is found. Moving the patient before starting delays compressions, and it is a common and avoidable error. Once compressions have started, they must continue without pause for as much of the resuscitation as possible. The proportion of the resuscitation during which compressions are actually being delivered is the <strong>compression fraction</strong>, and the goal is to keep it high. Because the quality of compressions falls as the compressor tires, switch compressors at least every 2 minutes.</p>`
+            html: `<p>The first step is to identify the arrest and begin compressions where the patient is found. Moving the patient before starting delays compressions, and it is a common and avoidable error. Once compressions have started, they must continue without pause for as much of the resuscitation as possible. The proportion of the resuscitation during which compressions are actually being delivered is the <strong>compression fraction</strong>, and the goal is to keep it high. Because the quality of compressions falls as the compressor tires, switch compressors at least every 2 minutes.</p>
+            <p>High-quality compressions are defined by five numbers, and they are the most examinable figures in the whole chapter:</p>
+            <div class="table-wrap"><table><thead><tr><th></th><th>Adult</th><th>Child (1 year to puberty)</th><th>Infant (under 1 year)</th></tr></thead><tbody>
+            <tr><td><strong>Rate</strong></td><td colspan="3">100&ndash;120 compressions per minute, at every age</td></tr>
+            <tr><td><strong>Depth</strong></td><td>2 to 2.4 inches (5&ndash;6 cm)</td><td>About 2 inches &mdash; one third of the chest depth</td><td>About 1.5 inches &mdash; one third of the chest depth</td></tr>
+            <tr><td><strong>Ratio, one rescuer</strong></td><td>30:2</td><td>30:2</td><td>30:2</td></tr>
+            <tr><td><strong>Ratio, two rescuers</strong></td><td>30:2</td><td>15:2</td><td>15:2</td></tr>
+            <tr><td><strong>Hands</strong></td><td>Two hands, heel on the lower half of the sternum</td><td>One or two hands, depending on the child's size</td><td>Two fingers, or two thumbs encircling for two rescuers</td></tr>
+            </tbody></table></div>
+            <p><strong>Full recoil</strong> is the fifth, and it is the one most often lost. Let the chest come all the way back up between compressions and keep your weight off it at the top: the heart refills during the recoil, so leaning on the chest quietly halves the value of every compression that follows. Depth has an upper limit for the same reason it has a lower one &mdash; deeper than about 2.4 inches in an adult causes injury without improving flow.</p>
+            <p>Once an advanced airway is in place the ratio stops applying: compressions run continuously at 100&ndash;120 while ventilations are given about once every 6 seconds, roughly 10 per minute.</p>`
           },
           {
             heading: "Step 2 — integrate the AED",
             html: `<p>The second step is to integrate the AED. There is no benefit to delaying its application, but the order in which CPR and the AED come depends on the patient, as the table below shows.</p>
             <div class="table-wrap"><table><thead><tr><th>Patient</th><th>Priority sequence</th><th>Why</th></tr></thead><tbody>
-            <tr><td>Adult</td><td>AED first</td><td>Sudden dysrhythmia is the most likely cause</td></tr>
-            <tr><td>Child/infant</td><td>CPR first (2 min), then attach AED</td><td>Pediatric arrests are usually asphyxial</td></tr>
+            <tr><td>Any patient, AED to hand</td><td>Attach and use it as soon as it arrives</td><td>Defibrillation is time-critical, and nothing is gained by holding the AED back</td></tr>
+            <tr><td>Lone rescuer, child or infant, arrest not witnessed</td><td>About 2 minutes of CPR first, then fetch the AED</td><td>Pediatric arrests are usually asphyxial, so oxygenation matters most &mdash; and a lone rescuer leaving to find an AED is time with no compressions at all</td></tr>
+            <tr><td>Lone rescuer, adult, or any witnessed sudden collapse</td><td>Get the AED first</td><td>A sudden dysrhythmia is the likely cause, and a shock is the treatment</td></tr>
             </tbody></table></div>
+            <p class="sub">The old shorthand &mdash; &ldquo;adults AED first, children CPR first&rdquo; &mdash; gets this wrong. The two-minutes-of-CPR rule is about a <em>lone</em> rescuer having to leave an unwitnessed pediatric arrest to go and find an AED. A crew does not face that choice: one provider compresses while the other fetches and attaches the AED, at any age.</p>
             <p>Turn the AED on first, so that it can guide you. The pads go on bare skin: remove clothing, jewelry and medication patches, shave excess hair, and offset the pads around a visible pacemaker. Do not interrupt compressions to place the pads. The analysis phase usually requires about 15 to 20 seconds during which no one touches the patient. Clear the patient before delivering a shock, and resume compressions immediately afterward without waiting for the device to prompt you. The AED reanalyzes the rhythm every 2 minutes.</p>`
           },
           {
@@ -2159,7 +2171,8 @@ const CHAPTERS = [
           },
           {
             heading: "Step 4 — transitioning after ROSC",
-            html: `<p>The fourth step is the transition to postarrest care once ROSC occurs. The most reliable sign of ROSC is the return of breathing. Less commonly, the patient regains consciousness. Pulse checks are notoriously unreliable in this setting, so if you are in doubt, err on the side of continuing the resuscitation. Once ROSC is confirmed, care shifts to the postarrest priorities: rapid transport, aggressive airway management that avoids hyperventilation, oxygen (O2) titrated toward a saturation of 95% or greater, and a 12-lead ECG if you are trained and permitted to obtain one.</p>
+            html: `<p>The fourth step is the transition to postarrest care once ROSC occurs. There is no single reliable sign of it. A palpable pulse is the definition, but pulse checks are notoriously unreliable in this setting; spontaneous breathing, movement or a return of consciousness all suggest it, and where waveform capnography is in use a sudden sustained rise in end-tidal CO2 is the earliest and most objective clue. If you are in doubt, err on the side of continuing the resuscitation.</p>
+            <p>Once ROSC is confirmed, care shifts to the postarrest priorities: rapid transport, airway management that avoids hyperventilation, and oxygen <strong>titrated to a saturation of 92–98%</strong>. The target is a window, not a floor. Both ends of it matter: hypoxia after an arrest worsens the brain injury that has already happened, and so does hyperoxia, which is why the instruction is no longer to push the saturation as high as it will go. A 12-lead ECG belongs in the postarrest sequence too, if your service carries one and you are permitted to acquire it.</p>
             <p>The resuscitated patient is at high risk of re-arrest. Recheck the pulse roughly every 30 seconds in a patient who has ROSC but remains unconscious. If the pulse is lost again, stop the vehicle if you are en route, resume CPR, analyze the rhythm, shock if indicated, and continue according to local protocol.</p>`
           },
           {
@@ -2182,7 +2195,7 @@ const CHAPTERS = [
         topics: [
           {
             heading: "Hypothermia, submersion & moving ambulances",
-            html: `<p>Several situations change the standard approach. In hypothermic cardiac arrest, attempt defibrillation once, and then wait until the core temperature has reached at least 86°F (30°C) before attempting it again. The window of survivability is longer in the cold patient, so do not terminate resuscitation in the field for a hypothermic patient.</p>
+            html: `<p>Several situations change the standard approach. In hypothermic cardiac arrest, defibrillate as you would for any other patient and follow the standard BLS algorithm while rewarming. The older teaching — one shock, then nothing further until the core reached 86°F (30°C) — has been dropped; withholding shocks by temperature is no longer advised. Handle the patient gently, get wet clothing off, prevent further heat loss, and transport to a facility that can rewarm actively. The window of survivability is longer in the cold patient, which is what “not dead until warm and dead” means, so do not terminate resuscitation in the field for a hypothermic patient.</p>
             <p>Most arrests from submersion, or drowning, are asphyxial, so be aggressive with airway management and rescue breathing. Never defibrillate a soaking-wet patient. Dry the chest, or move the patient out of the wet environment, first.</p>
             <p>Resuscitation in a moving ambulance is generally avoided. Motion reduces the quality of compressions, and some AEDs cannot analyze a rhythm while the vehicle is moving. If arrest occurs during transport, stop the vehicle to perform CPR and use the AED.</p>`
           },
@@ -2198,18 +2211,21 @@ const CHAPTERS = [
           },
           {
             heading: "Sudden unexpected infant death syndrome (SUIDS)",
-            html: `<p><strong>Sudden unexpected infant death syndrome (SUIDS)</strong> is the death of an infant under 1 year of age with no immediately obvious cause; the category includes sudden infant death syndrome (SIDS). It is not caused by external suffocation, vomiting or choking. The EMT's role is to resuscitate unless rigor mortis or dependent lividity is present. As the saying goes, it is better to resuscitate when it isn't necessary than to fail to resuscitate when it is.</p>
+            html: `<p><strong>Sudden unexpected infant death (SUID)</strong> is the death of an infant under 1 year of age with no immediately obvious cause. It is an umbrella term covering three things: <strong>SIDS</strong>, accidental <strong>suffocation or strangulation in bed</strong>, and deaths that remain undetermined after investigation. So accidental suffocation is part of the SUID category, not something ruled out of it.</p>
+            <p><strong>SIDS</strong> is the narrower term, and it is a diagnosis of exclusion: it is what a death is called after a full investigation, autopsy and scene review have failed to find a cause — including failing to find suffocation. None of that can be determined in the field, which is why what you are looking at on scene is a SUID until somebody else decides otherwise.</p>
+            <p>The EMT's role is to resuscitate unless rigor mortis or dependent lividity is present. As the saying goes, it is better to resuscitate when it isn't necessary than to fail to resuscitate when it is.</p>
             <p>Support for the family is critical. Remind the parents that SUIDS happens to well-cared-for babies, and never speak to them in a suspicious tone.</p>`
           }
         ],
         takeaways: [
           "Only quality compressions and early defibrillation reliably change cardiac arrest outcomes.",
-          "Adults: AED first. Children/infants: 2 minutes of CPR first, then AED.",
+          "Use the AED as soon as it is to hand, at any age. The \u201c2 minutes of CPR first\u201d rule is only for a LONE rescuer at an unwitnessed child or infant arrest who must leave to fetch one.",
+          "Compressions: 100\u2013120/min at every age. Depth 2\u20132.4 in (adult), ~2 in (child), ~1.5 in (infant). 30:2, or 15:2 for two rescuers on a child or infant. Full recoil every time \u2014 do not lean.",
           "Agonal respirations are a good sign but don't delay compressions if there's no pulse.",
           "PEA – organized electrical rhythm without effective mechanical pumping.",
-          "ROSC often doesn't happen until the 2nd–4th shock — stay ready.",
+          "After ROSC, titrate oxygen to 92–98% — a window, not a floor; hyperoxia harms the post-arrest brain too. ROSC often doesn't happen until the 2nd–4th shock — stay ready.",
           "Never defibrillate a soaking-wet patient — dry the chest first.",
-          "Hypothermic arrest: don't terminate resuscitation in the field; wait for rewarming before repeat defibrillation.",
+          "Hypothermic arrest: don't terminate resuscitation in the field. Defibrillate by the standard algorithm while rewarming \u2014 the old \u201cone shock, then wait for 86\u00b0F\u201d rule has been dropped.",
           "VAD/LVAD patients may have no palpable pulse even while alive."
         ]
       }
@@ -2253,7 +2269,7 @@ const CHAPTERS = [
           },
           {
             heading: "Blood glucose meters & treatment",
-            html: `<p>When a diabetic patient has altered mental status, measure the blood glucose, and generally use your own device rather than the patient's own meter. A reading below 60 mg/dL in a symptomatic patient is the typical threshold for hypoglycemia. Below 50 mg/dL, altered mental status is often significant and the patient may be unable to take oral glucose safely. A reading above 140 mg/dL is hyperglycemia, and above 300 mg/dL the patient becomes dehydrated and the symptoms become more serious.</p>
+            html: `<p>When a diabetic patient has altered mental status, measure the blood glucose, and generally use your own device rather than the patient's own meter. A reading below <strong>70 mg/dL</strong> is the usual threshold for hypoglycemia, and it is where treatment starts in a symptomatic patient. Protocols vary on the exact number — some services use 60 — so learn the figure your own protocol uses and treat that as authoritative on the truck. The number matters less than the pairing: a low reading in a patient who is symptomatic is what you are treating, and a patient who is clearly hypoglycemic gets treated even if the meter reads a little above the line. Below 50 mg/dL, altered mental status is often significant and the patient may be unable to take oral glucose safely. A reading above 140 mg/dL is hyperglycemia, and above 300 mg/dL the patient becomes dehydrated and the symptoms become more serious.</p>
             <p>Low glucose is more dangerous than high glucose. Giving glucose helps a hypoglycemic patient and does no meaningful harm to a hyperglycemic one, which is why, when you are uncertain, giving it is the safer default. Oral glucose has three criteria, all of which must be met:</p>
             <ul>
             <li>The patient has a history of diabetes.</li>
@@ -3028,13 +3044,15 @@ const CHAPTERS = [
           },
           {
             heading: "Spinal assessment — NEXUS-based criteria",
-            html: `<p>The NEXUS study validated a tool for judging the risk of spinal injury, with a sensitivity of 99.6% when it is applied correctly. The assessment rests on four criteria:</p>
+            html: `<p>The NEXUS study validated a tool for judging the risk of spinal injury. It rests on <strong>five</strong> criteria, and they are written as things that must all be <em>absent</em> before the cervical spine can be considered low risk:</p>
             <ol>
-            <li><strong>Reliability</strong>: whether the patient can accurately report symptoms. A patient with altered mental status (AMS) or intoxication is unreliable.</li>
-            <li><strong>Spinal pain or tenderness</strong>: palpate the entire length of the spine.</li>
-            <li><strong>Focal neurologic deficits</strong>: compare grip strength for equality and check for paralysis and numbness.</li>
-            <li><strong>Distracting injury or circumstance</strong>: painful or grotesque injuries, or a situation that distracts the patient.</li>
+            <li><strong>No posterior midline cervical tenderness</strong>: palpate down the midline of the neck, and the rest of the spine while you are there.</li>
+            <li><strong>No evidence of intoxication</strong>: alcohol or drugs blunt the pain that the other criteria depend on the patient reporting.</li>
+            <li><strong>A normal level of alertness</strong>: the patient is fully awake and oriented, not confused, drowsy or post-ictal.</li>
+            <li><strong>No focal neurologic deficit</strong>: compare grip strength for equality, and check for paralysis, weakness, numbness or tingling.</li>
+            <li><strong>No painful distracting injury</strong>: a femur fracture or a large burn can occupy a patient's attention so completely that a broken neck does not hurt yet.</li>
             </ol>
+            <p class="sub">Intoxication and alertness are two separate criteria, not one. They are often taught merged into a single question about whether the patient is "reliable", which is how the list gets miscounted as four — and a patient can be fully sober and still too drowsy to assess, or wide awake and drunk.</p>
             <p class="sub">In pediatric patients, weight the mechanism of injury (MOI) more heavily. Young children cannot reliably report pain, and because their vertebrae are more cartilaginous, a significant spinal cord injury can occur without external tenderness or deformity.</p>`
           },
           {

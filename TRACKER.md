@@ -24,6 +24,16 @@ clinician, and that is the gap no amount of tooling closes.
 | Field triage: red/yellow criteria replacing the four numbered steps; mechanism is a yellow consideration, not red | 2021 National Field Triage Guideline (ACS COT / NAEMSP) | questions 672, 843, 966 | Phase 1 |
 | SN2 worked example moved to a secondary substrate; (R)→(S) inversion asserted for both cyanide and azide | Standard organic chemistry; priorities Br > ethyl > methyl > H, and both nucleophiles enter as priority 1 | `ochem/mechanisms/sn2.html` | Phase 1 |
 | Sources now names 2025 AHA, NRP, Stop the Bleed and the 2021 Field Triage Guideline as the editions written against | — | `sources.html` | Phase 1 |
+| Post-ROSC oxygen titrated to **92–98%**, stated as a window with hyperoxia named as a harm, replacing "95% or greater" | 2025 AHA | Ch 21, `study-notes.html` | Phase 2 |
+| "The most reliable sign of ROSC is the return of breathing" removed; no single reliable sign, with capnography named as the earliest objective clue | 2025 AHA | Ch 21 | Phase 2 |
+| Hypothermic arrest: defibrillate by the standard algorithm while rewarming; "one shock then wait for 86°F/30°C" removed | 2025 AHA | Ch 21 | Phase 2 |
+| Pediatric AED: use as soon as available at any age; the "2 minutes of CPR first" rule restricted to a lone rescuer at an unwitnessed child/infant arrest | 2025 AHA | Ch 21 | Phase 2 |
+| CPR numbers added where the chapter had none: 100–120/min all ages; depth 2–2.4 in adult, ~2 in child, ~1.5 in infant; 30:2, and 15:2 two-rescuer child/infant; full recoil; ~10/min with an advanced airway | 2025 AHA | Ch 21 | Phase 2 |
+| NEXUS listed as **five** criteria, with intoxication and alertness separated rather than merged into "reliability" | NEXUS low-risk criteria | Ch 33 | Phase 2 |
+| SUID redefined as the umbrella term including accidental suffocation/strangulation in bed, with SIDS as the narrower diagnosis of exclusion | CDC SUID/SIDS classification | Ch 21 | Phase 2 |
+| Hypoglycemia threshold set at **70 mg/dL** with an explicit note that protocols vary and some use 60 | ADA Level 1 hypoglycemia | Ch 22 | Phase 2 |
+| Sildenafil-type drugs (ED **and** pulmonary hypertension) asked before nitroglycerin, for patients of any sex | Standard EMT pharmacology | chest pain scenario | Phase 2 |
+| Long-acting sulfonylurea named as the reason a hypoglycemia refusal is dangerous — it outlasts oral glucose | Standard EMT pharmacology | diabetic scenario | Phase 2 |
 
 ---
 
@@ -56,21 +66,21 @@ clinician, and that is the gap no amount of tooling closes.
 | Drag-to-order claim softened (could not confirm for the EMT exam) | done |
 | Remove the "locked door with a doorbell" line on Privacy | done |
 
-## Phase 2 — Clinical corrections
+## Phase 2 — Clinical corrections — **complete**
 
 | Item | Status |
 |---|---|
-| Post-ROSC oxygen target 92–98% | open |
-| Hypothermic arrest: standard defibrillation while rewarming | open |
-| NEXUS: all five criteria | open |
-| SUID: contradictory sentence | open |
-| Hypoglycemia: one cutoff everywhere, note that protocols vary | open |
-| Ch 21: CPR rate, depth, ratio, recoil, peds and infant numbers | open |
-| Ch 21: "most reliable ROSC sign" wording | open |
-| Pediatric AED statement | open |
-| Anaphylaxis scenario: medical control must not be penalised | open |
-| Chest pain scenario: PDE-5 inhibitors before nitro; 12-lead "if in scope" | open |
-| Diabetic scenario: which medication (long-acting oral agents) | open |
+| Post-ROSC oxygen target 92–98% | done |
+| Hypothermic arrest: standard defibrillation while rewarming | done |
+| NEXUS: all five criteria | done |
+| SUID: contradictory sentence | done |
+| Hypoglycemia: one cutoff (70 mg/dL), note that protocols vary | done |
+| Ch 21: CPR rate, depth, ratio, recoil, peds and infant numbers | done |
+| Ch 21: "most reliable ROSC sign" wording | done |
+| Pediatric AED statement | done |
+| Anaphylaxis scenario: medical control must not be penalised | done |
+| Chest pain scenario: sildenafil-type drugs before nitro; 12-lead "if in scope" | done |
+| Diabetic scenario: which medication (long-acting sulfonylurea) | done |
 
 ## Phase 3 — Flow diagrams and reference content
 
