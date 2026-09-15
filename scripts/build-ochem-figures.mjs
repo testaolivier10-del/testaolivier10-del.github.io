@@ -150,7 +150,7 @@ FIGURES.push({
   id: 'enolate-resonance',
   section: 'alpha-hydrogens',
   anchor: '<h3>Why: delocalization into the carbonyl</h3>',
-  alt: 'The two resonance forms of an enolate, with the carbon-centred form doing the chemistry',
+  alt: 'The two resonance forms of an enolate, with the carbon-centered form doing the chemistry',
   viewBox: '0 0 660 250',
   build() {
     let s = '';

@@ -507,10 +507,10 @@ way.
 
 | Item | Status |
 |---|---|
-| Normalize British spellings to American (~170 occurrences, mostly ochem prose: centre, favour, behaviour, haemoglobin) | open |
+| Normalize British spellings to American | done for prose; code identifiers deliberately left |
 | Terms of Use page with medical disclaimer, linked in every footer | done for every page that has a footer — see below |
 | Footers on the 80 ochem lessons and mechanisms (they have none) | open |
-| FAQPage schema on exam-day; Course schema on both hubs | open |
+| FAQPage schema on exam-day; Course schema on both hubs | **verified already done** |
 | Homepage screenshots or GIFs | open |
 | About section with name and reviewer | needs a person |
 
@@ -529,6 +529,34 @@ disclose it rather than the place to imply otherwise.
 Coverage: 89 pages link it, 13 are redirect stubs that are a meta-refresh and
 nothing else, and 3 are 404/offline/ownership-token pages. Check 22 enforces
 that any page with a footer link row reaches it.
+
+**Schema: already done, and done properly.** `exam-day.html` already carries
+FAQPage, and both hubs already carry Course. The part worth recording is that
+the FAQ passes the test that usually fails: Google requires FAQ content to be
+*visible on the page*, and all six questions and answers are, word for word,
+with a dated caveat telling the reader to confirm the figures in the current
+candidate handbook. Nothing to do.
+
+A first pass at checking this reported 5 of 6 entries missing from the page. It
+was comparing exact strings against headings the page shortens ("How long do
+you get?" against "How long do you get for the NREMT-EMT exam?"). A matcher
+that is stricter than the thing it is checking invents findings, which is the
+second time that has happened here.
+
+**Spellings: 79 in visible prose, all fixed.** Only text nodes were touched —
+never a tag, an attribute, a `<script>` or a `<style>` — and that was verified
+by extracting every attribute value from all 40 changed files before and after
+and confirming the multisets were identical.
+
+Four more needed hand-fixing because they were not text nodes: an `aria-label`
+on a generated figure, two pieces of prose living inside JavaScript strings,
+and — the one that mattered — the copy of an FAQ answer inside the ld+json
+block on `exam-day.html`, which the text-node pass could not see and which
+would otherwise have said "licence" three lines from a visible "license".
+
+About 130 occurrences remain in `.js`, `.css` and `.mjs`. Those are identifiers
+(`centre()`, `.centred`) and code comments. Renaming an identifier to fix a
+spelling is a bad trade, and the comments are not user-visible.
 
 **The remaining 80 are the ochem lessons and mechanisms, which have no footer
 at all.** That is a pre-existing layout gap rather than a missing link, and it
