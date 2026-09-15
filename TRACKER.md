@@ -341,7 +341,7 @@ their lessons exist.
 
 | Item | Status |
 |---|---|
-| Rewrite options flagged by the three tell checks, one domain per commit | in progress — 12 domains done, 9 to go |
+| Rewrite options flagged by the three tell checks, one domain per commit | **the three tells are closed**; ~128 individually weak distractors remain — see below |
 
 The scale, measured before starting:
 
@@ -420,7 +420,8 @@ Running totals:
 | Pediatrics | 205 / 14.1% | 73 / 28.8% | 132 / 24.2% |
 | Legal & Ethical | 194 / 14.9% | 71 / 26.8% | 119 / 26.9% |
 | Trauma Systems | 172 / 17.4% | 70 / 25.7% | 107 / 29.9% ↑ |
-| Incident Management | **151 / 19.9%** | 70 / 25.7% | 107 / 29.9% |
+| Incident Management | 151 / 19.9% | 70 / 25.7% | 107 / 29.9% |
+| Head, Chest & Abdominal | **128 / 23.4%** | 70 / 25.7% | 107 / 29.9% |
 
 Thresholds now `absoluteFloor: 0.195`, `hedgeCeiling: 0.28`, `justifyFloor: 0.25`
 and `justifyCeiling: 0.34`.
@@ -428,7 +429,38 @@ and `justifyCeiling: 0.34`.
 From Incident Management on, the apply script **asserts** that a rewrite keeps
 any justification clause the original had, and adds none where there was none.
 That kept hedge and justification exactly flat while absolute moved 17.4% →
-19.9% — the first pass to move one number without disturbing the other two.
+19.9% → 23.4% — passes that move one number without disturbing the other two.
+
+## All three tells are closed
+
+| Tell | Start | Now | Baseline |
+|---|---|---|---|
+| Absolute word | 450 items / 6.2% | 128 / **23.4%** | 25% |
+| Hedge | 102 / 40.2% | 70 / **25.7%** | 25% |
+| Trailing justification | 183 / 16.9% | 107 / **29.9%** | 25% |
+
+All three now carry a bound on both sides, because a ratchet that only tightens
+is right for a number heading toward a target and wrong for one that has
+arrived.
+
+**What is NOT finished, and it is worth being exact about the difference.**
+The *tell* is closed: a student who spots an absolute-worded option learns
+nothing from it, on the 128 items where one still exists, and on the other 322
+there is no longer a lone absolute-worded option to spot. That is the pattern
+gone.
+
+Individual weak distractors are a separate problem. "Chest injuries never
+affect oxygen saturation readings" is a lazy option whatever the aggregate
+statistic says, and roughly 128 items still contain one. Rewriting them would
+improve those items **and push the metric past chance**, turning the absolute
+word into a tell that marks keys.
+
+So the remaining work is no longer tell-removal, it is a balancing act: each
+further distractor rewritten needs a key somewhere that is legitimately
+absolute — "never delay compressions to place an advanced airway", "always
+clear before defibrillating" — to hold the ratio. Those keys would teach
+something true, and they are the edit the work order's "keep keys unchanged"
+was read as excluding. **This needs a decision before it continues.**
 
 **The justification tell overshot, and the check now has a far side.** It went
 past the 25% baseline to 29.9% — the previous commit had written down that a

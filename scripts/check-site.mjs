@@ -196,6 +196,10 @@ const WORDING_TELLS = [
     label: 'an absolute word (always/never/only/must/immediately)',
     re: /\b(?:always|never|only|must|immediately)\b/i,
     threshold: 'absoluteFloor',
+    // Given a far side once it reached chance, for the same reason the
+    // justification row has one: the next domain rewritten would push it past
+    // 25% and it would start marking keys instead.
+    opposite: 'absoluteCeiling',
     direction: 'marks-wrong',
     advice: 'Rewrite the strawman distractors so that being absolute is not what makes them wrong.',
   },
@@ -241,7 +245,8 @@ const BANKS = [
     // & Burns, -> 9.3%), 0.10 (Obstetrics, -> 10.2%), 0.11 (Scene Safety,
     // -> 11.2%), 0.125 (Bleeding & Shock, -> 12.7%), 0.14 (Pediatrics,
     // -> 14.1%), 0.145 (Legal & Ethical, -> 14.9%), 0.17 (Trauma Systems,
-    // -> 17.4%), 0.195 (Incident Management, -> 19.9%). 25% is the target.
+    // -> 17.4%), 0.195 (Incident Management, -> 19.9%), 0.225 (Head, Chest
+    // & Abdominal Trauma, -> 23.4%), which is the target reached.
     //
     // One false positive worth knowing about: the word boundary in \bonly\b
     // matches inside a hyphenated compound, so "an EMS-only response" reads as
@@ -249,7 +254,8 @@ const BANKS = [
     // this and was reworded rather than left to trip the check forever. If
     // more turn up, the pattern needs a lookbehind for a hyphen rather than
     // more rewording.
-    absoluteFloor: 0.195,
+    absoluteFloor: 0.225,
+    absoluteCeiling: 0.34,
     // NOT tightened, and the reason is worth reading before the next domain.
     // This is the one tell here that marks the RIGHT answer, so it behaves
     // backwards from the other two: taking a hedge OUT OF A DISTRACTOR shrinks
