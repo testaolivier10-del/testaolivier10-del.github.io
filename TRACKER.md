@@ -665,7 +665,64 @@ text once the file arrived. Six unit tests pin the alignment and the
 resolve-at-read-time behavior; shifting one topic's explanations by one
 position fails three of them and the build check.
 
-#### Units 4–9 — **not started**
+#### Unit 4 — Synthesis & Retrosynthesis — **complete**
+
+Five sections, five lessons, 150 questions, appended as **Chapter 18**.
+Synthesis is the capstone, so it goes last and draws on everything before it —
+including Spectroscopy, since confirming a product is part of making one.
+Appending rather than inserting also means **no chapter below it needed
+renumbering**, which is the first time that has been true in this phase.
+
+| Section | Covers |
+|---|---|
+| Thinking backwards | The open arrow, disconnections, synthons vs synthetic equivalents, retrons |
+| Making C–C bonds | The ten reactions, counting carbons, the three attachment points a carbonyl offers |
+| Functional group interconversion | Ladder moves vs substitutions, the reagent pairs, the two-step workarounds |
+| Protecting groups | Why a Grignard cannot meet an O–H, silyl ethers and acetals, orthogonality |
+| Planning a multistep route | What to ask of every step, the ordering rules, the failures to recognize |
+
+**Two things were corrected before they shipped.** A worked example reached
+benzaldehyde from benzene "in one Friedel–Crafts-type step", which is not a
+clean intro-level move — a Friedel–Crafts acylation cannot deliver a plain CHO
+because formyl chloride is too unstable. The example now takes the
+bromobenzene/Grignard route and says explicitly why the other one is not
+available. Separately, a challenge question asked "why is a ten-step route at
+80% worse than an eight-step at 70%" — but 0.8¹⁰ ≈ 11% beats 0.7⁸ ≈ 6%, so the
+stem asserted something the answer then had to contradict. It now asks which
+route returns more and makes the point that yields multiply and the heuristic
+is not a law.
+
+**An auto-fixer for the length tell was written and thrown away.** Padding the
+longest distractor programmatically produced "A carboxylate in every case" as
+an answer to "what is the synthetic equivalent of an acylium synthon" — filler
+that would have degraded the questions to satisfy a check. The hand pass stays.
+For the `multistep-synthesis` set the right fix turned out to be the opposite
+of the usual one: its keys were long because they carried the reasoning, so the
+keys were **shortened** and the reasoning left in `why` where it belongs.
+
+**Two budgets moved, both for real growth.** `ochem/assets` — the shell every
+ochem page loads — went 92 → 96 KB gzipped, because `concepts.js` (64 → 84
+concepts), `curriculum.js` and `lesson-concepts.js` all grow one entry per
+topic and the course went from 64 topics to 83. The note records what moved and
+where a saving would be if one is ever needed. `ochem/assets/tutor-bank.json`
+grows the same way and has ~10% headroom by convention.
+
+**Bank quality:** 54.1% on longest-is-key, `lengthCeiling` ratcheted 0.56 →
+0.55, keyed position 26.3%.
+
+#### Units 5–9 — **not started**
+
+Biomolecules · organometallics · carbonyl/enolate breadth · aromatic
+follow-through · polymers.
+
+#### Known gap across all four new chapters — **figures**
+
+Every one of the original 64 sections carries at least one figure. The 19
+sections added in this phase carry none. `scripts/build-ochem-figures.mjs` and
+its drawing kit (`scripts/lib/ochem-figure.mjs`) exist and are in CI, so this
+is an authoring pass rather than a build problem — but it is a visible
+inconsistency in the textbook and should be closed deliberately rather than
+bolted onto a content chapter.
 
 ### Phase 9.4 — Depth in the existing units — **not started**
 

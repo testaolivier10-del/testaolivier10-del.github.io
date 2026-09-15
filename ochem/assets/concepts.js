@@ -127,6 +127,31 @@
       dependsOn:['reductant-scope','stereochemical-outcome'],
       hint:'Ask whether both new bonds arrive on the same face.',
       teach:'Surface and cyclic mechanisms deliver both new groups to one face: catalytic hydrogenation is SYN, and OsO4 gives the SYN (cis) diol. Going through an epoxide and opening it with water gives the ANTI (trans) diol instead, because the nucleophile attacks from the opposite face. For alkynes, Lindlar gives the cis alkene and Na/NH3 gives the trans one — one substrate, two conditions, two geometries.' },
+    /* ---- Synthesis ------------------------------------------------------
+       Four concepts, split by what actually goes wrong. Choosing a
+       disconnection, knowing the short list of C-C reactions, navigating the
+       functional group map, and getting the ORDER right are separate
+       failures — a student can have all the reactions and still write a route
+       that destroys its own reagent in step two. */
+    { id:'disconnection', title:'Choosing a disconnection', family:'Synthesis',
+      topics:['retrosynthesis','carbon-carbon-bonds','multistep-synthesis','diels-alder','aldol'],
+      hint:'A disconnection is only legitimate if you can name the forward reaction that makes that bond.',
+      teach:'Retrosynthesis works backwards from the target with an open arrow meaning "could be made from". Disconnect next to functional groups, at branch points, and across a cyclohexene (retro-Diels-Alder). The fragments are synthons — idealized, usually charged — and each has a real synthetic equivalent: R- is a Grignard, RCO+ is an acyl chloride with AlCl3. A structural pattern that signals a disconnection is a retron: a beta-hydroxy carbonyl means aldol, a 1,3-dicarbonyl means Claisen.' },
+    { id:'cc-bond-toolkit', title:'Ways to make a C–C bond', family:'Synthesis',
+      topics:['carbon-carbon-bonds','retrosynthesis','multistep-synthesis','alkynes','aldol','claisen','eas'],
+      dependsOn:['disconnection'],
+      hint:'Count the carbons first. The difference tells you how many C-C bonds you must form.',
+      teach:'There are only about ten: Grignard or organolithium onto a carbonyl or CO2, acetylide plus alkyl halide, cyanide plus alkyl halide, aldol, Claisen, Michael, Diels-Alder, Friedel-Crafts, Wittig. The one-carbon extensions are worth knowing as a set — RX + NaCN, RMgBr + CO2, RMgBr + formaldehyde — because each ends somewhere different. A carbonyl offers three attachment points: the carbonyl carbon, the alpha carbon via an enolate, and the beta carbon via conjugate addition.' },
+    { id:'fgi-map', title:'Functional group interconversion', family:'Synthesis',
+      topics:['functional-group-interconversion','multistep-synthesis','oxidation-states','alcohol-reactions'],
+      dependsOn:['oxidation-level'],
+      hint:'Ask whether the move is UP or DOWN the oxidation ladder, or SIDEWAYS within one level.',
+      teach:'Up or down the ladder needs a redox reagent; sideways within a level (alcohol to halide, acid to ester to amide) is substitution and needs none. Asking which kind of move it is picks the class of reagent immediately. Some conversions have no direct reagent and go around: to move a functional group along a chain, eliminate to the alkene and add back with the opposite regiochemistry.' },
+    { id:'route-order', title:'Ordering a synthesis', family:'Synthesis',
+      topics:['multistep-synthesis','protecting-groups','directing-effects','eas','amine-reactions'],
+      dependsOn:['cc-bond-toolkit','fgi-map'],
+      hint:'For every step ask what ELSE the reagent could attack, and whether the product survives the next step.',
+      teach:'Install sensitive groups late. A Grignard is destroyed by any O-H, N-H or S-H in the molecule, so that group goes on later or gets protected. On a ring the group attached first decides where the next one lands. Use Friedel-Crafts ACYLATION then reduce, rather than alkylation, because the alkylation cation rearranges. Protecting groups cost two steps, so prefer a selective reagent or a reordering first — an acetal protects a carbonyl and comes off with aqueous acid, a silyl ether protects an alcohol and comes off with fluoride, and being removable independently makes them orthogonal.' },
     { id:'skeletal-notation', title:'Reading skeletal structures', family:'Structure & bonding',
       topics:['skeletal-structures','lewis-structures','alkene-structure','cyclohexanes','aromaticity'],
       hint:'Every vertex AND every end of a line is a carbon — the ends are the ones people miss.',

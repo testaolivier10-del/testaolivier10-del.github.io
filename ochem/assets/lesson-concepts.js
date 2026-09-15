@@ -42,6 +42,27 @@
        7 is anti-Markovnikov HBr — the chain logic applied somewhere new. */
     /* The four nomenclature lessons. Graded steps are 2, 3, 4, 6, 7 in each
        (0, 1 and 5 are explain steps and record nothing). */
+    /* The synthesis chapter. Graded steps are 2, 3, 4, 6, 7. */
+    'retrosynthesis': { n:8, steps:{
+      2:['disconnection'], 3:['disconnection'], 4:['disconnection','cc-bond-toolkit'],
+      6:['disconnection'], 7:['disconnection'] } },
+
+    'carbon-carbon-bonds': { n:8, steps:{
+      2:['cc-bond-toolkit'], 3:['cc-bond-toolkit'], 4:['cc-bond-toolkit','disconnection'],
+      6:['cc-bond-toolkit'], 7:['cc-bond-toolkit'] } },
+
+    'functional-group-interconversion': { n:8, steps:{
+      2:['fgi-map'], 3:['fgi-map'], 4:['fgi-map','route-order'],
+      6:['fgi-map'], 7:['fgi-map'] } },
+
+    'protecting-groups': { n:8, steps:{
+      2:['route-order'], 3:['route-order'], 4:['route-order'],
+      6:['route-order'], 7:['route-order','fgi-map'] } },
+
+    'multistep-synthesis': { n:8, steps:{
+      2:['route-order'], 3:['route-order'], 4:['route-order'],
+      6:['route-order'], 7:['route-order','cc-bond-toolkit'] } },
+
     /* The oxidation & reduction chapter. Graded steps are 2, 3, 4, 6, 7. */
     'oxidation-states': { n:8, steps:{
       2:['oxidation-level'],

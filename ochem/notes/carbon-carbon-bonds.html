@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Making carbon–carbon bonds — Synthesis &amp; Retrosynthesis | Organic Chemistry</title>
+<meta name="description" content="Here is the fact that makes synthesis learnable: in a first-year course there are only about eight ways to make a carbon–carbon bond. Functional group…">
+<link rel="canonical" href="https://levlprep.com/ochem/notes/carbon-carbon-bonds.html">
+<meta property="og:title" content="Making carbon–carbon bonds — Synthesis &amp; Retrosynthesis | Organic Chemistry">
+<meta property="og:description" content="Here is the fact that makes synthesis learnable: in a first-year course there are only about eight ways to make a carbon–carbon bond. Functional group…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/notes/carbon-carbon-bonds.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+</head>
+<body>
+<div class="wrap notes-page">
+  <nav class="notes-crumb" aria-label="Breadcrumb">
+    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
+    <span>Synthesis &amp; Retrosynthesis</span>
+  </nav>
+
+  <header class="notes-head">
+    <p class="notes-eyebrow">Synthesis &amp; Retrosynthesis &middot; Section 80 of 83</p>
+    <h1>Making carbon–carbon bonds</h1>
+    <a class="notes-onward-cta" href="../lessons/carbon-carbon-bonds.html">Practice this — interactive lesson</a>
+  </header>
+
+  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+       asides); it is the same class the textbook view uses, so a section looks
+       identical whether it is read here or inside learn.html. -->
+  <article class="notes-body notes-view">
+<!-- notes:start -->
+<p class="step-body">Here is the fact that makes synthesis learnable: in a first-year course there are only about eight ways to make a carbon–carbon bond. Functional group interconversions are numerous and mostly interchangeable, but the carbon skeleton can only be built in a few places — so the <b>C–C disconnections are where a synthesis problem is actually decided</b>.</p>
+
+<p class="step-body">Learn this list as a list. When you are stuck on a target, the question "which of these eight could have made that bond?" is usually enough to find the route.</p>
+
+<h3>The list</h3>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Reaction</th><th>Joins</th><th>Gives</th></tr></thead>
+<tbody>
+<tr><td>Grignard / organolithium + carbonyl</td><td>R⁻ + C=O</td><td>Alcohol</td></tr>
+<tr><td>Grignard + CO₂</td><td>R⁻ + CO₂</td><td>Carboxylic acid (one carbon longer)</td></tr>
+<tr><td>Acetylide + alkyl halide (S<sub>N</sub>2)</td><td>RC&equiv;C⁻ + R'X</td><td>Internal alkyne</td></tr>
+<tr><td>Cyanide + alkyl halide (S<sub>N</sub>2)</td><td>⁻CN + RX</td><td>Nitrile (one carbon longer)</td></tr>
+<tr><td>Aldol</td><td>enolate + C=O</td><td>β-hydroxy carbonyl</td></tr>
+<tr><td>Claisen</td><td>enolate + ester</td><td>β-keto ester</td></tr>
+<tr><td>Michael (conjugate) addition</td><td>enolate + enone</td><td>1,5-dicarbonyl</td></tr>
+<tr><td>Diels–Alder</td><td>diene + dienophile</td><td>Cyclohexene (two bonds at once)</td></tr>
+<tr><td>Friedel–Crafts alkylation / acylation</td><td>arene + R⁺ or RCO⁺</td><td>Substituted arene</td></tr>
+<tr><td>Wittig</td><td>ylide + C=O</td><td>Alkene</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="step-body">Ten rather than eight, but several are variations on one idea — an enolate attacking something electrophilic covers the aldol, the Claisen and the Michael.</p>
+
+<h3>Counting carbons is the fastest diagnostic</h3>
+
+<p class="step-body">Before you plan anything, count the carbons in the target and in the permitted starting materials. The difference tells you how many C–C bonds you must form and roughly what size pieces you need.</p>
+
+<ul class="step-body">
+<li>If the target has the same number of carbons as your starting material, you need <b>no</b> C–C bond formation at all — the whole problem is functional group interconversion, which is the next section.</li>
+<li>If it has <b>one</b> more carbon, the candidates are a short list: cyanide (then hydrolysis or reduction), a Grignard on formaldehyde, a Grignard on CO₂, or a Wittig with a one-carbon ylide.</li>
+<li>If it has <b>several</b> more, look for a disconnection that splits the target into two pieces of roughly the sizes you were given.</li>
+</ul>
+
+<div class="notes-fact">The one-carbon extensions are worth memorizing as a set, because "make this molecule one carbon longer" is an extremely common exam instruction and each route ends somewhere different: <b>RX + NaCN</b> gives a nitrile, which hydrolyzes to an acid or reduces to a primary amine; <b>RMgBr + CO₂</b> gives the acid directly; <b>RMgBr + HCHO</b> gives a primary alcohol.</div>
+
+<h3>Two reactions that build rings</h3>
+
+<p class="step-body">Most of the list joins two pieces into a chain. Two are worth separating out because they make rings, which is otherwise hard:</p>
+
+<ul class="step-body">
+<li><b>Diels–Alder</b> forms two C–C bonds in one step and delivers a six-membered ring with defined stereochemistry. If a target contains a cyclohexene, try this disconnection first — it is the highest-value single move in the whole list.</li>
+<li><b>Intramolecular aldol and Dieckmann</b> — the same aldol and Claisen chemistry with both partners in one molecule — close five- and six-membered rings. The retron is a 1,4- or 1,5-dicarbonyl relationship in the open-chain precursor.</li>
+</ul>
+
+<h3>Where the new bond can go relative to a carbonyl</h3>
+
+<p class="step-body">Enolate chemistry and carbonyl addition between them cover both sides of a carbonyl, and keeping them straight is worth doing explicitly:</p>
+
+<ul class="step-body">
+<li>A nucleophile attacking the <b>carbonyl carbon</b> builds a bond <i>at</i> that carbon — Grignard, cyanide, hydride.</li>
+<li>An <b>enolate</b> is nucleophilic at the <b>α carbon</b>, so it builds a bond <i>next to</i> the carbonyl.</li>
+<li><b>Conjugate addition</b> to an enone builds a bond at the <b>β carbon</b>, two positions away.</li>
+</ul>
+
+<p class="step-body">So a carbonyl group gives you three different places to attach a new carbon, chosen by reagent and conditions. That is a large part of why carbonyls dominate synthesis.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — counting first</span>
+<p><b>Target:</b> 1-phenylpropan-1-ol, PhCH(OH)CH₂CH₃, from benzene and any three-carbon or smaller pieces.</p>
+<p><b>Count.</b> Nine carbons: six in the ring, three in the chain. Benzene supplies the six, so exactly one C–C bond joins the ring to the chain.</p>
+<p><b>Disconnect at the carbinol carbon</b> — the Grignard retron. Two options present themselves: PhMgBr + propanal, or CH₃CH₂MgBr + benzaldehyde.</p>
+<p><b>Choose on availability.</b> Take the first. Benzene brominates to bromobenzene (Br₂, FeBr₃), which gives PhMgBr with magnesium; propanal is a permitted three-carbon piece. The second route would need benzaldehyde, which is not something benzene gives you in one straightforward step at this level — a Friedel–Crafts acylation cannot deliver a plain CHO, because formyl chloride is too unstable to use.</p>
+<p>The counting step did the real work: it said immediately that only one C–C bond had to be formed, which pointed straight at the carbinol disconnection.</p>
+</div>
+
+<h3>What carries forward</h3>
+
+<p class="step-body">This list is the skeleton of every synthesis question you will meet. Functional group interconversions decorate it, protecting groups keep it from interfering with itself, and the planning section puts the steps in the right order — but the C–C bonds are the decisions, and everything else is bookkeeping around them.</p>
+<!-- notes:end -->
+  </article>
+
+  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="retrosynthesis.html"><span>Previous</span>Thinking backwards</a><a class="notes-prevnext notes-next" href="functional-group-interconversion.html"><span>Next</span>Functional group interconversion</a></nav>
+
+  <footer class="notes-foot">
+    <p><a href="../learn.html">&larr; All 83 sections</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
+  </footer>
+</div>
+</body>
+</html>

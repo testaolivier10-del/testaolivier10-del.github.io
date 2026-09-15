@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planning a multistep route — Synthesis &amp; Retrosynthesis | Organic Chemistry</title>
+<meta name="description" content="Ordering a synthesis: what to ask of every step, the rules that come up repeatedly, and the failures worth recognizing in your own work.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/multistep-synthesis.html">
+<meta property="og:title" content="Planning a multistep route — Synthesis &amp; Retrosynthesis | Organic Chemistry">
+<meta property="og:description" content="Ordering a synthesis: what to ask of every step, the rules that come up repeatedly, and the failures worth recognizing in your own work.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/multistep-synthesis.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/multistep-synthesis.html#lesson",
+      "name": "Planning a multistep route",
+      "url": "https://levlprep.com/ochem/lessons/multistep-synthesis.html",
+      "description": "Ordering a synthesis: what to ask of every step, the rules that come up repeatedly, and the failures worth recognizing in your own work.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Planning a multistep route"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Synthesis & Retrosynthesis",
+          "item": "https://levlprep.com/ochem/learn.html#m-synthesis"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Planning a multistep route",
+          "item": "https://levlprep.com/ochem/lessons/multistep-synthesis.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 18 &middot; Synthesis &amp; Retrosynthesis</div>
+    <h1 style="margin-bottom:4px;">Planning a multistep route.</h1>
+    <p class="lede" style="margin-top:0;">Getting the steps in an order that does not destroy its own reagents.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/multistep-synthesis.html">Planning a multistep route &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/directing-effects.html">Ortho/meta/para directing effects</a><a href="../lessons/eas.html">Electrophilic aromatic substitution</a><a href="../lessons/carbon-carbon-bonds.html">Making carbon–carbon bonds</a><a href="../lessons/protecting-groups.html">Protecting groups</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* Order-of-operations failures. Each row is a proposed step pair; the
+     student says whether the order works. Three of the four are the standard
+     mistakes, which is deliberate — this lesson is about catching them. */
+  var CASES = [
+    { id:'o1', t:'Attach a propyl chain to benzene by <b>Friedel–Crafts alkylation</b> with 1-bromopropane', right:'bad',
+      why:'Fails. The primary carbocation rearranges to the secondary one, so you get an <i>isopropyl</i> group. Acylate with propanoyl chloride instead and then reduce the ketone away — the acylium ion is resonance-stabilized and does not shift.' },
+    { id:'o2', t:'<b>Nitrate</b> a ring, then run a <b>Friedel–Crafts acylation</b> on it', right:'bad',
+      why:'Fails. A nitro group deactivates the ring strongly, and Friedel–Crafts does not work on a strongly deactivated ring at all. Acylate first, or carry the nitro group through and reduce it at the end.' },
+    { id:'o3', t:'Make a Grignard, then add it to a molecule that still has a <b>free OH</b>', right:'bad',
+      why:'Fails. Any O–H destroys the Grignard before it reaches a carbonyl. Either install the OH later or protect it as a silyl ether. This is the single commonest error in student syntheses.' },
+    { id:'o4', t:'<b>Acylate</b> the ring, <b>reduce</b> the ketone, then <b>brominate</b>', right:'good',
+      why:'Works. Acylation avoids rearrangement, Clemmensen or Wolff–Kishner removes the carbonyl leaving a straight chain, and the alkyl group then directs the bromine <i>ortho, para</i>. Acylating the more reactive ring before deactivating it with bromine is also the better order on rate grounds.' }
+  ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'multistep-synthesis',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Plan backwards, then write forwards.',
+        bodyHtml: '<p class="step-body">These are two different activities and keeping them separate helps. <b>Retrosynthesis</b> is exploratory: you are searching, and dead ends are expected. The <b>forward route</b> is a claim — every step has reagents, every step has a product, and you have checked that each survives the next.</p>' +
+          '<p class="step-body">Write the forward route out in full at the end, even when the backward analysis felt convincing. Errors of order are invisible in a retrosynthetic tree and obvious in a forward list.</p>' +
+          '<div class="explain-box">Four questions to ask of every step:<br><br>' +
+          '&bull; Does the reagent have anything <b>else</b> to attack? (This finds missing protecting groups.)<br>' +
+          '&bull; Does this step\'s product <b>survive the next one</b>?<br>' +
+          '&bull; Is the <b>regiochemistry</b> controlled, or are you hoping?<br>' +
+          '&bull; If the target has defined <b>stereochemistry</b>, which step sets it?</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Ordering rules that come up again and again.',
+        bodyHtml: '<ul class="step-body">' +
+          '<li><b>Install sensitive groups late.</b> A group that cannot survive later conditions goes on after them. Always cheaper than protecting it.</li>' +
+          '<li><b>Grignards never share a molecule with an O–H, N–H or S–H.</b> Either that group goes on later, or it is protected.</li>' +
+          '<li><b>On a ring, the group you attach first decides where the second lands.</b> Nitration-then-bromination and bromination-then-nitration give different products, and choosing between them is often the whole question.</li>' +
+          '<li><b>Reduce a nitro group late.</b> An amine is a strong activator and a Lewis base — it wrecks Friedel–Crafts entirely. Carry the NO₂ through the ring chemistry and reduce at the end.</li>' +
+          '<li><b>Acylate rather than alkylate.</b> Friedel–Crafts alkylation goes through a carbocation and rearranges; acylation does not. Acylate, then Clemmensen or Wolff–Kishner, and the chain is unrearranged.</li>' +
+          '</ul>' +
+          '<p class="step-body" style="margin-bottom:0;">Two of those are the same idea: a reaction proceeding through a carbocation will rearrange if a better cation is available, so when the skeleton matters, prefer a route with no cation in it. That is also why hydroboration is used for a rearrangement-free alcohol, and why the Diels–Alder is so trusted.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Does this step, in this order, work?</h2>' +
+            '<p class="step-body">Three of these four are the standard failures. Ask what else the reagent can reach, and whether the ring is in a state to react at all.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Does this work">' +
+                  '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-v="good">Works</button>' +
+                  '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-v="bad">Fails</button>' +
+                '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-v') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Not quite. Check three things in order: does a carbocation form anywhere it could rearrange, is the ring activated enough to react, and is there an acidic proton that would kill the reagent?');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. Three failures and one working route — and the working one is the failing alkylation done properly.'
+                  : 'All four, first time. Notice the fourth is the first one done properly: acylate, reduce, then substitute.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'Why acylate and reduce rather than alkylate, when attaching a propyl chain to benzene?',
+        options: [
+          'Acylation is faster',
+          'Alkylation would rearrange the primary cation to a secondary one, giving isopropyl',
+          'Alkylation does not work on benzene',
+          'Acylation needs no catalyst'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. The acylium ion is resonance-stabilized and does not shift, so the chain arrives intact; then Clemmensen or Wolff–Kishner removes the carbonyl. Two steps instead of one, and the only route that actually delivers a straight propyl group.',
+        wrongFeedback: 'Alkylation works — it just does not give what you asked for. What happens to a primary carbocation when a secondary one is available one shift away?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'A route produces a single enantiomer from achiral starting materials and achiral reagents. What is wrong?',
+        options: [
+          'Nothing; that is normal',
+          'Nothing can produce a single enantiomer from achiral inputs — the product would be racemic',
+          'The yield would be too low',
+          'Enantiomers cannot be made synthetically'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Achiral inputs and achiral conditions cannot prefer one enantiomer over its mirror image; both form at equal rates. Getting a single enantiomer needs a chiral reagent, a chiral catalyst, a chiral starting material, or a resolution. A route that quietly asserts one is wrong however good it looks.',
+        wrongFeedback: 'Ask what would have to distinguish the two mirror-image transition states. If nothing in the flask is chiral, what could?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Worked example',
+        title: 'A full route, with the order doing the work.',
+        bodyHtml: '<p class="step-body"><b>Target:</b> 1-bromo-4-propylbenzene. <b>From:</b> benzene and anything with three carbons or fewer.</p>' +
+          '<p class="step-body"><b>Count.</b> Nine carbons — the ring plus a three-carbon chain, with bromine <i>para</i> to it. Two bonds to make: ring-to-chain and ring-to-Br.</p>' +
+          '<p class="step-body"><b>Ordering.</b> Both an alkyl group and a bromine are <i>ortho, para</i> directors, so either order gives the <i>para</i> relationship. The decision is made elsewhere: alkylating with 1-bromopropane would rearrange and give isopropyl.</p>' +
+          '<ul class="step-body">' +
+          '<li><b>1.</b> Propanoyl chloride, AlCl₃ &rarr; propiophenone. No rearrangement.</li>' +
+          '<li><b>2.</b> Zn(Hg), HCl &rarr; propylbenzene. The carbonyl is removed and the straight chain survives.</li>' +
+          '<li><b>3.</b> Br₂, FeBr₃ &rarr; 1-bromo-4-propylbenzene. Propyl directs <i>ortho, para</i>, and <i>para</i> dominates because the <i>ortho</i> positions are crowded by the chain.</li>' +
+          '</ul>' +
+          '<p class="step-body" style="margin-bottom:0;"><b>Why not brominate first?</b> It would work, but bromine deactivates the ring and makes the acylation slower. Acylating the more reactive ring first is the better order — and the reasoning, not the answer, is what a question like this is testing.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'Why is a nitro group usually carried through a synthesis and reduced at the very end?',
+        options: [
+          'Nitro groups are unstable',
+          'The amine it becomes is a strong activator and a Lewis base, which wrecks Friedel–Crafts',
+          'Reduction is easier on a crowded ring',
+          'Nitro groups cannot be installed late'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. An amine on the ring is strongly activating and its nitrogen complexes the Lewis acid catalyst, so a Friedel–Crafts on an aniline simply does not go. Keeping the nitrogen as NO₂ through the ring chemistry, and reducing at the end, sidesteps both problems — and NO₂ is also a useful <i>meta</i> director in its own right while it is there.',
+        wrongFeedback: 'Ask what the nitro group becomes on reduction, and what that new group does to a ring and to a Lewis acid.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Your forward route produces a compound with one more carbon than the target. What is the most likely mistake?',
+        options: [
+          'A protecting group was left on',
+          'A C–C bond-forming step added a carbon you did not need — recount and re-check the disconnection',
+          'The stereochemistry is wrong',
+          'Nothing; formulas do not need to match'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and checking the molecular formula of your forward product against the target is the cheapest final check available. Cyanide, CO₂ and formaldehyde routes all add exactly one carbon, so mixing up "make the acid" with "make the acid one carbon longer" is easy and produces precisely this symptom. Count carbons at the start to plan, and count them again at the end to check.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

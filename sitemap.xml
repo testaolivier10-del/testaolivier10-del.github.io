@@ -216,6 +216,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/carbon-carbon-bonds.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/carbonyl-reduction.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
@@ -341,6 +346,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/functional-group-interconversion.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/h-nmr.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
@@ -401,6 +411,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/multistep-synthesis.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/naming-functional-groups.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
@@ -451,12 +466,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/protecting-groups.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/radical-halogenation.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/resonance.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/retrosynthesis.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
   </url>
@@ -631,6 +656,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/lessons/carbon-carbon-bonds.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/lessons/carbonyl-reduction.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
@@ -746,6 +776,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/lessons/functional-group-interconversion.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/lessons/h-nmr.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
@@ -806,6 +841,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/lessons/multistep-synthesis.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/lessons/naming-functional-groups.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
@@ -856,12 +896,22 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/lessons/protecting-groups.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/lessons/radical-halogenation.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/resonance.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/retrosynthesis.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
   </url>

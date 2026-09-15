@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Functional group interconversion — Synthesis &amp; Retrosynthesis | Organic Chemistry</title>
+<meta name="description" content="The functional group map: ladder moves versus substitutions, the reagent pairs that give opposite outcomes, and the conversions that need two steps.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/functional-group-interconversion.html">
+<meta property="og:title" content="Functional group interconversion — Synthesis &amp; Retrosynthesis | Organic Chemistry">
+<meta property="og:description" content="The functional group map: ladder moves versus substitutions, the reagent pairs that give opposite outcomes, and the conversions that need two steps.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/functional-group-interconversion.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/functional-group-interconversion.html#lesson",
+      "name": "Functional group interconversion",
+      "url": "https://levlprep.com/ochem/lessons/functional-group-interconversion.html",
+      "description": "The functional group map: ladder moves versus substitutions, the reagent pairs that give opposite outcomes, and the conversions that need two steps.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Functional group interconversion"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Synthesis & Retrosynthesis",
+          "item": "https://levlprep.com/ochem/learn.html#m-synthesis"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Functional group interconversion",
+          "item": "https://levlprep.com/ochem/lessons/functional-group-interconversion.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 18 &middot; Synthesis &amp; Retrosynthesis</div>
+    <h1 style="margin-bottom:4px;">Functional group interconversion.</h1>
+    <p class="lede" style="margin-top:0;">Up the ladder, down the ladder, or sideways — and that answer picks the reagent.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/functional-group-interconversion.html">Functional group interconversion &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/protecting-groups.html">Protecting groups</a><a href="../lessons/oxidation-states.html">Oxidation levels</a><a href="../lessons/alcohol-oxidation.html">Oxidizing alcohols</a><a href="../lessons/carbonyl-reduction.html">Reducing carbonyls</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* Ladder move or sideways move. The point is that naming the KIND of move
+     picks the class of reagent before you have recalled a single name. */
+  var CASES = [
+    { id:'f1', t:'Alcohol &rarr; alkyl halide', right:'side',
+      why:'Sideways. One bond to an electronegative atom is traded for another and the hydrogen count does not change, so no redox reagent is involved: PBr₃, SOCl₂ or HX.' },
+    { id:'f2', t:'Primary alcohol &rarr; aldehyde', right:'up',
+      why:'Up one rung. A C–H on the carbinol carbon is replaced by a second bond to oxygen, so it needs an oxidant — and an anhydrous one, or it overshoots to the acid.' },
+    { id:'f3', t:'Ester &rarr; amide', right:'side',
+      why:'Sideways. Both carbons sit at +3, so this is nucleophilic acyl substitution: one leaving group swapped for another, no oxidation level change.' },
+    { id:'f4', t:'Ketone &rarr; secondary alcohol', right:'down',
+      why:'Down one rung. A bond to oxygen becomes a bond to hydrogen, which is a reduction: NaBH₄ is enough, and LiAlH₄ would also work but is not needed.' }
+  ];
+  var OPTS = [{k:'up',l:'Up the ladder'},{k:'down',l:'Down the ladder'},{k:'side',l:'Sideways'}];
+
+  window.OchemLessonEngine.start({
+    topicId: 'functional-group-interconversion',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Two kinds of move, and naming the kind picks the reagent.',
+        bodyHtml: '<p class="step-body">Once the carbon skeleton is right, the rest of a synthesis is moving functional groups around. These steps are individually easy and collectively where routes go wrong — because there are many of them and it is tempting to memorize a list rather than a map.</p>' +
+          '<ul class="step-body">' +
+          '<li><b>Up or down the oxidation ladder</b> — alkane, alcohol, aldehyde/ketone, carboxylic acid. Needs an oxidizing or reducing agent.</li>' +
+          '<li><b>Sideways, within one level</b> — alcohol to alkyl halide, acid to ester to amide. These are substitutions and need no redox reagent at all.</li>' +
+          '</ul>' +
+          '<p class="step-body" style="margin-bottom:0;">Asking which kind of move a step is tells you immediately what class of reagent to reach for, and it catches the commonest planning error: trying to reach a carboxylic acid from an alcohol with a substitution, or trying to turn an ester into an amide with a reducing agent.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Read the map for the pairs, not the rows.',
+        bodyHtml: '<p class="step-body">Several destinations can be reached by either of two reagents that give <b>opposite outcomes</b>, and those pairs are where synthesis questions are built — because they are the choices only you can make:</p>' +
+          '<ul class="step-body">' +
+          '<li>Alkene &rarr; alcohol: <b>H₃O⁺</b> gives Markovnikov, <b>BH₃ then H₂O₂/HO⁻</b> gives anti-Markovnikov.</li>' +
+          '<li>Alkyne &rarr; alkene: <b>H₂/Lindlar</b> gives <i>cis</i>, <b>Na/NH₃</b> gives <i>trans</i>.</li>' +
+          '<li>1° alcohol &rarr; carbonyl: <b>PCC, Swern, DMP</b> stop at the aldehyde, <b>aqueous CrO₃</b> goes to the acid.</li>' +
+          '<li>Alkene &rarr; diol: <b>OsO₄</b> gives <i>syn</i>, <b>mCPBA then H₃O⁺</b> gives <i>anti</i>.</li>' +
+          '<li>Nitrile &rarr; ?: <b>H₃O⁺</b> gives the acid, <b>LiAlH₄</b> gives the primary amine.</li>' +
+          '</ul>' +
+          '<div class="explain-box">Every one of those pairs shares a starting material and differs only in reagent. If a question specifies a stereochemistry or a stopping point, it is almost certainly testing one of these.</div>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Which kind of move is each conversion?</h2>' +
+            '<p class="step-body">Count bonds to oxygen and bonds to hydrogen. If both change in the same direction, it is a ladder move; if one is traded for another, it is sideways.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Kind of move">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Not that one. Look at the carbon that changes: did it gain a bond to oxygen, gain a bond to hydrogen, or simply swap one electronegative partner for another?');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. Naming the kind of move picks the class of reagent before you have recalled a single reagent name.'
+                  : 'All four, first time — including both sideways moves, which are the ones people try to do with a redox reagent.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'How do you convert propan-2-ol into propan-1-ol?',
+        options: [
+          'Oxidize, then reduce',
+          'Dehydrate to propene, then hydroborate',
+          'Treat with PBr₃, then water',
+          'It cannot be done'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Same carbons, same oxidation level, same functional group — only the position differs, so the move is to eliminate and then add back the other way round. Hydroboration is anti-Markovnikov, so it puts the OH on the less substituted carbon. Using acid-catalyzed hydration in step 2 would put it straight back where it started.',
+        wrongFeedback: 'Nothing about the oxidation level or the group type needs to change — only where the group sits. What pair of steps moves a substituent along a chain?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'You need an aldehyde from an ester and only have reagents from the standard table. What do you do?',
+        options: [
+          'LiAlH₄, and stop it halfway',
+          'LiAlH₄ to the primary alcohol, then PCC back up to the aldehyde',
+          'NaBH₄, which stops at the aldehyde',
+          'Aqueous CrO₃'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. You cannot stop the LiAlH₄ reduction at the aldehyde, because that aldehyde is more electrophilic than the ester was and is reduced as soon as it appears. Going all the way down and oxidizing back up is two steps using only ordinary reagents — DIBAL-H at low temperature is the one-step alternative if it is permitted.',
+        wrongFeedback: 'One of these tries to stop a reaction at an intermediate more reactive than the starting material, which does not work. If you cannot stop halfway, what can you do instead?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Going around rather than through.',
+        bodyHtml: '<ul class="step-body">' +
+          '<li><b>Alcohol to a specific alkene.</b> Acid-catalyzed dehydration goes through a carbocation, gives the Zaitsev product, and can rearrange. To control where the alkene ends up, make the halide first and eliminate with a base you choose.</li>' +
+          '<li><b>Anti-Markovnikov alkyl halide from an alkene.</b> No direct acid does it. Hydroborate to the anti-Markovnikov alcohol, then PBr₃.</li>' +
+          '<li><b>Moving a group along a chain.</b> Eliminate to the alkene, add back with the opposite regiochemistry. Almost always the intended answer when a target looks like the starting material with the group on the wrong carbon.</li>' +
+          '</ul>' +
+          '<p class="step-body" style="margin-bottom:0;">Each of these is two steps where a student hopes for one, and recognizing them quickly is worth more than memorizing another reagent.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'Converting an ester to an amide — which class of reagent?',
+        options: [
+          'A reducing agent',
+          'An oxidizing agent',
+          'A nucleophile — it is a sideways move at the same oxidation level',
+          'A radical initiator'
+        ],
+        correctIndex: 2,
+        correctFeedback: 'Correct. Ester and amide carbons both sit at +3, so nothing is oxidized or reduced: an amine displaces the alkoxide in nucleophilic acyl substitution. Reaching for a reducing agent here is the classic version of this mistake — LiAlH₄ on an ester gives an alcohol, and on an amide gives an amine, neither of which is what was asked.',
+        wrongFeedback: 'Work out the oxidation state of the key carbon in each. If it does not change, what kind of reaction is this?'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A target is the starting material with an OH moved from C2 to C1, and nothing else changed. What is the shortest sensible route?',
+        options: [
+          'PBr₃, then NaOH',
+          'Dehydrate to the alkene, then hydroborate/oxidize',
+          'Oxidize to the ketone, then reduce',
+          'Nothing needed — they are the same compound'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and each wrong option fails in a way worth seeing. PBr₃ then hydroxide substitutes at the same carbon, so the OH comes back where it was. Oxidizing to the ketone and reducing also returns it to the same carbon, because the carbonyl was at C2. Only going through the alkene lets you re-add the oxygen somewhere else — and only the anti-Markovnikov reagent puts it on C1 rather than back on C2.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

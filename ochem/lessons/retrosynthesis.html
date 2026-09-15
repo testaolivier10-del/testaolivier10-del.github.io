@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thinking backwards — Synthesis &amp; Retrosynthesis | Organic Chemistry</title>
+<meta name="description" content="Retrosynthetic analysis: disconnections, synthons and their synthetic equivalents, retrons, and knowing where to cut and when to stop.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/retrosynthesis.html">
+<meta property="og:title" content="Thinking backwards — Synthesis &amp; Retrosynthesis | Organic Chemistry">
+<meta property="og:description" content="Retrosynthetic analysis: disconnections, synthons and their synthetic equivalents, retrons, and knowing where to cut and when to stop.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/retrosynthesis.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/retrosynthesis.html#lesson",
+      "name": "Thinking backwards",
+      "url": "https://levlprep.com/ochem/lessons/retrosynthesis.html",
+      "description": "Retrosynthetic analysis: disconnections, synthons and their synthetic equivalents, retrons, and knowing where to cut and when to stop.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Thinking backwards"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Synthesis & Retrosynthesis",
+          "item": "https://levlprep.com/ochem/learn.html#m-synthesis"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Thinking backwards",
+          "item": "https://levlprep.com/ochem/lessons/retrosynthesis.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 18 &middot; Synthesis &amp; Retrosynthesis</div>
+    <h1 style="margin-bottom:4px;">Thinking backwards.</h1>
+    <p class="lede" style="margin-top:0;">Start at the target, disconnect one bond at a time, and stop at something you can buy.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/retrosynthesis.html">Thinking backwards &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/carbon-carbon-bonds.html">Making carbon–carbon bonds</a><a href="../lessons/protecting-groups.html">Protecting groups</a><a href="../lessons/multistep-synthesis.html">Planning a multistep route</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* Retron recognition: each target carries a structural pattern that names
+     its own disconnection. These four cover the highest-value ones. */
+  var CASES = [
+    { id:'r1', t:'A <b>β-hydroxy ketone</b> — an OH two carbons from a C=O', right:'aldol',
+      why:'The aldol retron. Disconnect the bond between the α carbon and the carbinol carbon: the fragments are an enolate and a carbonyl, which is exactly what an aldol joins.' },
+    { id:'r2', t:'A <b>cyclohexene</b> ring', right:'da',
+      why:'The Diels–Alder retron. Cut the two σ bonds across the ring from the alkene and you get a diene and a dienophile — one disconnection undoing two bonds, which is why it is the highest-value move in the list.' },
+    { id:'r3', t:'A <b>tertiary alcohol</b> with three different groups', right:'grignard',
+      why:'The Grignard retron. Any C–C bond to the carbinol carbon can be disconnected into a carbanion and a ketone. There are three legitimate cuts here, and you choose whichever leaves the most available starting materials.' },
+    { id:'r4', t:'A <b>1,3-dicarbonyl</b> (β-keto ester)', right:'claisen',
+      why:'The Claisen retron. Disconnect the bond between the α carbon and the second carbonyl: the fragments are an ester enolate and an ester.' }
+  ];
+  var OPTS = [
+    { k:'grignard', l:'Grignard' }, { k:'aldol', l:'Aldol' },
+    { k:'claisen', l:'Claisen' }, { k:'da', l:'Diels–Alder' }
+  ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'retrosynthesis',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Start at the target and work backwards.',
+        bodyHtml: '<p class="step-body">Every chapter so far has run forwards: here is a substrate and a reagent, what is the product. Synthesis runs the other way — you are given a target and asked how to build it, and the space of possible routes is far too large to search by trying reactions and seeing where they lead.</p>' +
+          '<p class="step-body">A retrosynthetic step is written with a <b>double-lined open arrow</b>, &rArr;, meaning "could be made from" rather than "reacts to give". It is a different arrow on purpose, because it points the other way in time. Breaking a bond in that direction is a <b>disconnection</b> — a thought, not a reaction. Nothing in a flask breaks the bond you crossed out; you are asking which two pieces, joined by a reaction you know, would give it.</p>' +
+          '<div class="explain-box">A disconnection is only legitimate if you can name the <b>forward reaction</b> that would make that bond. "Cut it in half and hope" is not a disconnection — if you cannot say what reagents would rejoin the pieces, you have drawn a picture rather than planned a synthesis.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Synthons are the idea; synthetic equivalents are what you order.',
+        bodyHtml: '<p class="step-body">Disconnecting a bond gives two idealized fragments, usually charged, called <b>synthons</b>. Cut the C–C bond next to the carbinol carbon of a secondary alcohol and you get a carbanion R⁻ and an aldehyde.</p>' +
+          '<p class="step-body">R⁻ is not a bottle on a shelf. The reagent that behaves like it is the <b>synthetic equivalent</b> — here a Grignard, RMgBr.</p>' +
+          '<ul class="step-body" style="margin-bottom:0;">' +
+          '<li>R⁻ &rarr; RMgBr or RLi</li>' +
+          '<li>RC≡C⁻ &rarr; a terminal alkyne with NaNH₂</li>' +
+          '<li>⁻CN &rarr; NaCN</li>' +
+          '<li>an enolate &rarr; the carbonyl compound plus base</li>' +
+          '<li>R⁺ &rarr; an alkyl halide</li>' +
+          '<li>RCO⁺ &rarr; an acyl chloride with AlCl₃</li>' +
+          '</ul>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Which disconnection does each pattern call for?</h2>' +
+            '<p class="step-body">A structural pattern that signals a particular disconnection is a <b>retron</b>. Learning to see them is most of what makes this fast.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Disconnection for this pattern">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Not that one. Ask which forward reaction produces that exact arrangement of atoms — the pattern in the target is the fingerprint of the reaction that made it.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. These four retrons cover a large share of the disconnections you will need.'
+                  : 'All four, first time. β-hydroxy carbonyl means aldol, 1,3-dicarbonyl means Claisen, cyclohexene means Diels–Alder, and a C–C bond to a carbinol carbon means Grignard.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'What makes a disconnection legitimate?',
+        options: [
+          'It splits the molecule into two equal halves',
+          'You can name the forward reaction that would form that bond',
+          'It breaks the weakest bond in the target',
+          'It leaves no charged fragments'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. A disconnection is a claim about a reaction you could actually run. Equal halves are sometimes convenient and never the criterion, bond strength is irrelevant because you are not breaking anything, and the fragments are usually charged by design — those are the synthons.',
+        wrongFeedback: 'You are not breaking a bond in a flask; you are proposing a way to make one. So what has to be true for the proposal to be worth anything?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'Disconnecting 2-phenylbutan-2-ol at the ethyl group gives which synthetic equivalents?',
+        options: [
+          'CH₃CH₂MgBr and acetophenone',
+          'CH₃CH₂Br and phenol',
+          'CH₃CH₂OH and benzaldehyde',
+          'Benzene and butanal'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. The synthons are the carbanion CH₃CH₂⁻ and the ketone PhCOCH₃; their equivalents are the Grignard and acetophenone. Check it forwards: the Grignard attacks the ketone carbonyl, workup protonates the alkoxide, and you have the tertiary alcohol.',
+        wrongFeedback: 'Cutting a C–C bond to a carbinol carbon gives a carbanion and a carbonyl compound. What real reagent behaves as a carbanion, and what carbonyl is left behind?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Where to cut, and when to stop.',
+        bodyHtml: '<ul class="step-body">' +
+          '<li><b>Next to a functional group.</b> That is where reactivity lives, so those are the bonds you have reactions for.</li>' +
+          '<li><b>At a branch point.</b> Branches are where a molecule was assembled, and cutting one usually gives two comparably simple pieces.</li>' +
+          '<li><b>Across a six-membered ring containing an alkene.</b> The retro-Diels–Alder — one disconnection undoing two bonds.</li>' +
+          '<li><b>Symmetrically,</b> when the target is symmetric, which halves the problem.</li>' +
+          '</ul>' +
+          '<p class="step-body">Stop when every piece is something you can reasonably buy. A question usually names the permitted starting materials, and that constraint is the real definition of "done".</p>' +
+          '<p class="step-body" style="margin-bottom:0;">The other stopping rule is practical: each step loses material, so ten steps at 80% each returns about <b>11%</b> overall. Fewer steps is genuinely better, and a shorter route with one awkward step usually beats a longer elegant one.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'A target has three chemically reasonable Grignard disconnections. What does that mean?',
+        options: [
+          'The analysis is wrong; there should be one',
+          'Nothing is wrong — pick whichever leaves the most available starting materials',
+          'The target cannot be made by a Grignard',
+          'All three must be used in sequence'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Several valid answers is the normal state of a synthesis problem, and a question asking for "a" synthesis rather than "the" synthesis is telling you so. The tie-break is availability of starting materials, then route length.',
+        wrongFeedback: 'A tertiary alcohol has three C–C bonds to its carbinol carbon and each is a legitimate cut. Does having options mean something has gone wrong?'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Ten steps at 80% each, against eight steps at 70% each. Which route returns more material?',
+        options: [
+          'The eight-step route, because fewer steps always wins',
+          'The ten-step route: 0.8¹⁰ ≈ 11% against 0.7⁸ ≈ 6%',
+          'They are identical once rounded',
+          'It cannot be calculated without knowing the reagents'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and the point is to do the arithmetic rather than assume. Yields multiply, so a longer route made of good steps can beat a shorter one made of poor steps — 11% against 6% here. The general advice still holds, because each extra step costs material and adds a chance to fail: do not add steps casually. But "fewer steps is better" is a heuristic rather than a law, and when two routes are close it is worth actually multiplying them out.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

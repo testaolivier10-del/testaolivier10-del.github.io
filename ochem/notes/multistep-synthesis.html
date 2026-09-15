@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planning a multistep route — Synthesis &amp; Retrosynthesis | Organic Chemistry</title>
+<meta name="description" content="You now have the pieces: disconnect backwards from the target, build the skeleton with one of about ten C–C reactions, adjust the functional groups, and…">
+<link rel="canonical" href="https://levlprep.com/ochem/notes/multistep-synthesis.html">
+<meta property="og:title" content="Planning a multistep route — Synthesis &amp; Retrosynthesis | Organic Chemistry">
+<meta property="og:description" content="You now have the pieces: disconnect backwards from the target, build the skeleton with one of about ten C–C reactions, adjust the functional groups, and…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/notes/multistep-synthesis.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+</head>
+<body>
+<div class="wrap notes-page">
+  <nav class="notes-crumb" aria-label="Breadcrumb">
+    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
+    <span>Synthesis &amp; Retrosynthesis</span>
+  </nav>
+
+  <header class="notes-head">
+    <p class="notes-eyebrow">Synthesis &amp; Retrosynthesis &middot; Section 83 of 83</p>
+    <h1>Planning a multistep route</h1>
+    <a class="notes-onward-cta" href="../lessons/multistep-synthesis.html">Practice this — interactive lesson</a>
+  </header>
+
+  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+       asides); it is the same class the textbook view uses, so a section looks
+       identical whether it is read here or inside learn.html. -->
+  <article class="notes-body notes-view">
+<!-- notes:start -->
+<p class="step-body">You now have the pieces: disconnect backwards from the target, build the skeleton with one of about ten C–C reactions, adjust the functional groups, and protect anything that would interfere. What remains is putting the steps in an order that works — which is where most routes that look right on paper fail.</p>
+
+<h3>Plan backwards, then write forwards</h3>
+
+<p class="step-body">These are two different activities and it helps to keep them separate. <b>Retrosynthesis</b> is exploratory: you are searching, and dead ends are expected. The <b>forward route</b> is a claim: every step has reagents, every step has a product, and you have checked that each one survives the next.</p>
+
+<p class="step-body">Write the forward route out in full at the end, even when the backward analysis felt convincing. Errors of order are invisible in a retrosynthetic tree and obvious in a forward list.</p>
+
+<h3>Four questions to ask of every step</h3>
+
+<ul class="step-body">
+<li><b>Does the reagent have anything else to attack?</b> Look at every functional group present, not just the one you are aiming at. This is the question that finds missing protecting groups.</li>
+<li><b>Does the product of this step survive the next one?</b> Making an aldehyde and then running a reaction in aqueous base will not leave you with an aldehyde.</li>
+<li><b>Is the regiochemistry controlled?</b> Wherever two positions could react, name the reagent that chooses between them rather than hoping.</li>
+<li><b>Is the stereochemistry controlled?</b> If the target has defined stereochemistry, some step has to set it, and you should be able to say which one.</li>
+</ul>
+
+<h3>Ordering rules that come up repeatedly</h3>
+
+<ul class="step-body">
+<li><b>Install sensitive groups late.</b> A group that cannot survive later conditions should be put on after them. This is the alternative to protection and is always cheaper.</li>
+<li><b>Grignards before anything acidic — and never with anything acidic.</b> Any O–H, N–H or S–H anywhere in the molecule destroys a Grignard. Either the group goes on later, or it is protected.</li>
+<li><b>On an aromatic ring, the order of substitution sets the pattern.</b> Directing effects mean the group you attach first decides where the second one lands. Nitration then bromination and bromination then nitration give different products, and choosing between them is usually the entire question.</li>
+<li><b>Reduce a nitro group late.</b> An amine is a strong activator and a Lewis base — it complicates Friedel–Crafts entirely and directs strongly. Carrying an NO₂ through the ring chemistry and reducing at the end is the standard tactic.</li>
+<li><b>Use an acylation rather than an alkylation when attaching a chain to a ring.</b> Friedel–Crafts alkylation goes through a carbocation and rearranges; acylation does not. Acylate, then reduce the ketone away with Clemmensen or Wolff–Kishner, and you get the unrearranged chain.</li>
+</ul>
+
+<div class="notes-fact">Two of those rules are really the same idea: a reaction that proceeds through a carbocation will rearrange if a more stable cation is available, so when the skeleton matters, prefer a route with no cation in it. That is also why hydroboration is used when a rearrangement-free alcohol is needed, and why the Diels–Alder is so trusted.</div>
+
+<div class="notes-example">
+<span class="k">Worked example — a full route, with the order doing the work</span>
+<p><b>Target:</b> 1-bromo-4-propylbenzene. <b>From:</b> benzene and anything with three carbons or fewer.</p>
+<p><b>Count and disconnect.</b> Nine carbons: the ring plus a three-carbon chain, with a bromine <i>para</i> to it. Two bonds to make: ring-to-chain, and ring-to-Br.</p>
+<p><b>Ordering question.</b> An alkyl group is an <i>ortho, para</i> director and bromine is too, so either order puts them in a <i>para</i> relationship. The decision is made on something else: attaching propyl by Friedel–Crafts <b>alkylation</b> with 1-bromopropane would give a rearranged <i>isopropyl</i> group, because the primary cation rearranges to the secondary one.</p>
+<p><b>Route.</b></p>
+<p><b>1.</b> Propanoyl chloride, AlCl₃ &rarr; propiophenone. Acylation, so no rearrangement: the acylium ion is resonance-stabilized and does not shift.<br>
+<b>2.</b> Zn(Hg), HCl (Clemmensen) &rarr; propylbenzene. The carbonyl is removed and the straight chain survives.<br>
+<b>3.</b> Br₂, FeBr₃ &rarr; 1-bromo-4-propylbenzene. Propyl directs <i>ortho, para</i>; the <i>para</i> product dominates because the <i>ortho</i> positions are crowded by the chain.</p>
+<p><b>Why not brominate first?</b> It would work, but bromine deactivates the ring, making the subsequent acylation slower. Acylating the more reactive ring first is the better order — and the reasoning, not the answer, is what the question is testing.</p>
+</div>
+
+<h3>Common failures worth recognizing in your own work</h3>
+
+<ul class="step-body">
+<li><b>A Grignard drawn onto a molecule containing an O–H.</b> The single commonest error in student syntheses.</li>
+<li><b>Friedel–Crafts on a strongly deactivated ring.</b> It does not work on a ring bearing a nitro group, and it fails with an amine for a different reason — the nitrogen complexes the Lewis acid.</li>
+<li><b>An oxidation that overshoots.</b> Using aqueous CrO₃ where an aldehyde was wanted.</li>
+<li><b>Stereochemistry asserted rather than set.</b> A route that produces a single enantiomer from achiral starting materials and achiral reagents is wrong, however good it looks — that is not something the reagents can do.</li>
+<li><b>Counting carbons wrong.</b> Worth re-checking at the end: the forward route's product must have the same molecular formula as the target.</li>
+</ul>
+
+<h3>What carries forward</h3>
+
+<p class="step-body">This is the chapter that uses all the others, and the reverse is also true: a reaction you can only recite is not yet a reaction you can use. If a synthesis problem stalls, the useful move is almost never to recall a new reagent — it is to count the carbons, find the C–C bond that has to form, and ask which of the ten ways could have formed it.</p>
+<!-- notes:end -->
+  </article>
+
+  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="protecting-groups.html"><span>Previous</span>Protecting groups</a><span></span></nav>
+
+  <footer class="notes-foot">
+    <p><a href="../learn.html">&larr; All 83 sections</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
+  </footer>
+</div>
+</body>
+</html>

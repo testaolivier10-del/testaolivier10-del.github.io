@@ -358,8 +358,9 @@ const BANKS = [
     // six topics were authored with the reasoning kept in `why` rather than in
     // the keyed option, which took the bank to 60.2%. Ratcheted to match.
     // Keep lowering it as the older topics get the same pass. The conjugation
-    // chapter took it to 56.5%, and the oxidation & reduction chapter to 54.6%.
-    lengthCeiling: 0.56,
+    // chapter took it to 56.5%, oxidation & reduction to 54.6%, and synthesis
+    // to 54.1%.
+    lengthCeiling: 0.55,
     // 74% of true/false items key to "True". Chance is 50% and the shuffle is
     // pinned, so this is the whole tell — it is not diluted by anything.
     trueFalseCeiling: 0.75,

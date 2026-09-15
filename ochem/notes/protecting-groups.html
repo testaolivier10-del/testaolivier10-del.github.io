@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protecting groups — Synthesis &amp; Retrosynthesis | Organic Chemistry</title>
+<meta name="description" content="Every reagent in this course was described by what it does to a functional group. Real molecules have several, and a reagent that cannot tell two of them…">
+<link rel="canonical" href="https://levlprep.com/ochem/notes/protecting-groups.html">
+<meta property="og:title" content="Protecting groups — Synthesis &amp; Retrosynthesis | Organic Chemistry">
+<meta property="og:description" content="Every reagent in this course was described by what it does to a functional group. Real molecules have several, and a reagent that cannot tell two of them…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/notes/protecting-groups.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+</head>
+<body>
+<div class="wrap notes-page">
+  <nav class="notes-crumb" aria-label="Breadcrumb">
+    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
+    <span>Synthesis &amp; Retrosynthesis</span>
+  </nav>
+
+  <header class="notes-head">
+    <p class="notes-eyebrow">Synthesis &amp; Retrosynthesis &middot; Section 82 of 83</p>
+    <h1>Protecting groups</h1>
+    <a class="notes-onward-cta" href="../lessons/protecting-groups.html">Practice this — interactive lesson</a>
+  </header>
+
+  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+       asides); it is the same class the textbook view uses, so a section looks
+       identical whether it is read here or inside learn.html. -->
+  <article class="notes-body notes-view">
+<!-- notes:start -->
+<p class="step-body">Every reagent in this course was described by what it does to <i>a</i> functional group. Real molecules have several, and a reagent that cannot tell two of them apart will attack both. When reagent choice cannot solve that, the answer is to hide one of them temporarily.</p>
+
+<p class="step-body">A <b>protecting group</b> converts a reactive group into an unreactive one, survives the step you actually wanted, and comes off again under conditions that leave the rest of the molecule alone. Three steps where you wanted one, which is why you use them only when you have to.</p>
+
+<h3>The classic problem: a Grignard and an alcohol in one molecule</h3>
+
+<p class="step-body">A Grignard reagent is a carbanion, and a carbanion is a very strong base. An O–H proton — pKa around 16 — is more than acidic enough to destroy it instantly:</p>
+
+<p class="step-body">RMgBr + R'OH &rarr; R–H + R'OMgBr</p>
+
+<p class="step-body">The Grignard is gone, converted to an alkane, before it can reach any carbonyl. This is not a slow side reaction; it is the fastest thing available to it. The same is true of N–H, S–H and a carboxylic acid's O–H, and it is why Grignard reactions are run in scrupulously dry ether: water would do exactly the same thing.</p>
+
+<div class="notes-fact">If a synthesis question puts a Grignard and an O–H in the same molecule, the protecting group is the point of the question. There is no reagent trick that makes a Grignard tolerate a free alcohol.</div>
+
+<h3>The two protecting groups worth knowing</h3>
+
+<p class="step-body"><b>Protecting an alcohol: a silyl ether.</b> Treat the alcohol with <i>tert</i>-butyldimethylsilyl chloride (TBSCl) and a base such as imidazole, and the O–H becomes an O–Si bond. There is no acidic proton left, so a Grignard ignores it entirely.</p>
+
+<p class="step-body">Removal is the elegant part: <b>fluoride</b>, usually as TBAF. The Si–F bond is exceptionally strong, so fluoride strips the silicon off under conditions that are neither acidic nor basic nor oxidizing — which means the deprotection can be done without disturbing almost anything else.</p>
+
+<p class="step-body"><b>Protecting a ketone or aldehyde: an acetal.</b> Treat the carbonyl with a diol — ethylene glycol is standard — and an acid catalyst, removing water. The carbonyl becomes a cyclic acetal, which has no C=O and no electrophilic carbon, so hydride reagents and Grignards have nothing to attack.</p>
+
+<p class="step-body">Removal is <b>aqueous acid</b>. Acetal formation is an equilibrium, so it is driven forwards by removing water and reversed by adding it back — the same reaction run in the other direction, which is why it is so reliable.</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Group</th><th>Protect with</th><th>Becomes</th><th>Remove with</th></tr></thead>
+<tbody>
+<tr><td>Alcohol</td><td>TBSCl, imidazole</td><td>Silyl ether</td><td>TBAF (F⁻)</td></tr>
+<tr><td>Ketone / aldehyde</td><td>HOCH₂CH₂OH, H⁺</td><td>Cyclic acetal</td><td>H₃O⁺</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Orthogonality</h3>
+
+<p class="step-body">Notice that these two come off under <b>unrelated</b> conditions: one needs fluoride and the other needs aqueous acid, and neither touches the other. Protecting groups that can be removed independently are called <b>orthogonal</b>, and it is what lets a molecule carry two protected groups and have them unmasked in a chosen order.</p>
+
+<p class="step-body">It also explains a subtlety worth watching for: an acetal is removed by aqueous acid, so it cannot survive a step that requires aqueous acid for some other reason. Choosing a protecting group means checking it against every remaining step, not just the one you are protecting from.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — the full three steps</span>
+<p><b>Target:</b> add a methyl group to the ketone of 4-hydroxybutan-2-one, HOCH₂CH₂COCH₃, making a tertiary alcohol — without touching the existing OH.</p>
+<p><b>The problem.</b> CH₃MgBr would be destroyed by the free O–H before it reached the ketone.</p>
+<p><b>1. Protect.</b> TBSCl, imidazole. The alcohol becomes a silyl ether with no acidic proton.</p>
+<p><b>2. React.</b> CH₃MgBr, then aqueous workup. The Grignard now survives to attack the ketone, giving a tertiary alkoxide and then a tertiary alcohol.</p>
+<p><b>3. Deprotect.</b> TBAF. Fluoride removes the silicon and gives the original alcohol back, leaving the new tertiary alcohol untouched.</p>
+<p>Three steps for one bond. That is the cost, and it is worth it because the alternative is not a lower yield — it is no product at all.</p>
+</div>
+
+<h3>When not to use one</h3>
+
+<p class="step-body">Protecting groups add two steps and lose material twice, so they are a last resort rather than a first move. Before reaching for one, ask:</p>
+
+<ul class="step-body">
+<li><b>Is there a milder reagent that is already selective?</b> A molecule with a ketone and an ester needs no protection to reduce only the ketone — NaBH₄ does it. Reaching for a protecting group here would be doing three steps where one works.</li>
+<li><b>Can the steps be reordered?</b> Often the interfering group can be installed <i>after</i> the sensitive step, which removes the problem entirely and is always better than protecting.</li>
+<li><b>Is the group genuinely reactive under these conditions?</b> An ester survives catalytic hydrogenation and a benzene ring survives most things; not every functional group present is a threat.</li>
+</ul>
+
+<h3>What carries forward</h3>
+
+<p class="step-body">Protecting groups are where synthesis stops being a list of reactions and becomes planning: the decision is not which reaction to use but in what order, and what has to be hidden while it happens. That is the subject of the last section of this chapter.</p>
+<!-- notes:end -->
+  </article>
+
+  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="functional-group-interconversion.html"><span>Previous</span>Functional group interconversion</a><a class="notes-prevnext notes-next" href="multistep-synthesis.html"><span>Next</span>Planning a multistep route</a></nav>
+
+  <footer class="notes-foot">
+    <p><a href="../learn.html">&larr; All 83 sections</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
+  </footer>
+</div>
+</body>
+</html>

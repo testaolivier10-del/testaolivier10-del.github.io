@@ -70,7 +70,19 @@ const check = process.argv.includes('--check');
 const SHELL_BUDGETS = [
   ['site', 240],
   ['nremt', 7],
-  ['ochem', 92],
+  /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
+     saying what moved rather than just moving the number: the course went from
+     64 topics to 83 across four new chapters, and three shared files grew with
+     it — concepts.js (64 concepts to 84), curriculum.js (one entry per topic)
+     and lesson-concepts.js (one entry per lesson). That is the shell doing its
+     job rather than a regression.
+
+     If it needs raising again, check first whether the growth is still
+     proportional. The obvious saving, if one is ever needed, is that
+     ochem/index.html loads lesson-concepts.js for one call in ochem-home.js;
+     splitting that call out would take 4.4 KB off the home page, though not
+     off this number, since the lessons still load the file. */
+  ['ochem', 96],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as

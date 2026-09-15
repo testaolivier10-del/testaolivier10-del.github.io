@@ -27364,5 +27364,1815 @@
    "difficulty": "hard",
    "type": "mcq"
   }
+ ],
+ "retrosynthesis": [
+  {
+   "q": "What does the open double-lined arrow mean in retrosynthesis?",
+   "options": [
+    "Reacts to give",
+    "Could be made from",
+    "Is in equilibrium with",
+    "Resonates with"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a disconnection?",
+   "options": [
+    "A bond broken on paper, in the backwards direction",
+    "A failed reaction",
+    "A protecting group",
+    "A bond physically broken in the flask"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What makes a disconnection legitimate?",
+   "options": [
+    "It breaks the weakest bond",
+    "It leaves neutral fragments",
+    "It splits the molecule into two equal halves",
+    "You can name the forward reaction that makes that bond"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a synthon?",
+   "options": [
+    "A catalyst",
+    "A real reagent you can buy off the shelf",
+    "An idealized, usually charged fragment from a disconnection",
+    "A protecting group"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the synthetic equivalent of the synthon R-?",
+   "options": [
+    "An alkyl halide such as RBr",
+    "A Grignard reagent or organolithium",
+    "An alcohol",
+    "An alkene"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the synthetic equivalent of the synthon R+?",
+   "options": [
+    "An alkyl halide",
+    "An enolate",
+    "A hydride",
+    "A Grignard reagent"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the synthetic equivalent of an acylium synthon RCO+?",
+   "options": [
+    "A carboxylate",
+    "An ester",
+    "An aldehyde with a Lewis acid",
+    "An acyl chloride with AlCl3"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a retron?",
+   "options": [
+    "A protecting group",
+    "A reaction run in the reverse direction",
+    "A structural pattern that signals a particular disconnection",
+    "A synthon"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A beta-hydroxy ketone is the retron for which reaction?",
+   "options": [
+    "Claisen",
+    "Aldol",
+    "Diels-Alder",
+    "Wittig"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A 1,3-dicarbonyl is the retron for which reaction?",
+   "options": [
+    "Claisen",
+    "Michael",
+    "Grignard",
+    "A crossed aldol condensation"
+   ],
+   "correct": 0,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A cyclohexene is the retron for which reaction?",
+   "options": [
+    "Friedel-Crafts",
+    "Wittig",
+    "Aldol",
+    "Diels-Alder"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A tertiary alcohol is the retron for which reaction?",
+   "options": [
+    "Michael",
+    "Aldol",
+    "Grignard addition to a ketone",
+    "Claisen"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which is generally the best place to disconnect?",
+   "options": [
+    "The middle of a long chain",
+    "Next to a functional group",
+    "At the least hindered CH2",
+    "Anywhere symmetric"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a branch point a good disconnection site?",
+   "options": [
+    "It is where the molecule was assembled",
+    "Branches are the most reactive positions",
+    "It avoids stereochemistry",
+    "Branches are weakest"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "When do you stop disconnecting?",
+   "options": [
+    "When all the fragments are neutral",
+    "When the target is symmetric",
+    "After three steps",
+    "When every piece is something you can buy"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Ten steps at 80% yield each gives roughly what overall yield?",
+   "options": [
+    "8%",
+    "80%",
+    "11%",
+    "50%"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Disconnecting 2-phenylbutan-2-ol at the ethyl group gives which pair?",
+   "options": [
+    "EtBr and phenol",
+    "EtMgBr and acetophenone",
+    "EtOH and benzaldehyde together",
+    "Benzene and butanal"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A tertiary alcohol has three possible Grignard disconnections. What does that mean?",
+   "options": [
+    "Pick whichever leaves the most available starting materials",
+    "It cannot be made by a Grignard route",
+    "All three are needed",
+    "The analysis is wrong"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Every polar bond-forming disconnection produces what?",
+   "options": [
+    "Two radicals",
+    "Two neutral, uncharged fragments",
+    "Two nucleophiles",
+    "One nucleophilic and one electrophilic synthon"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the synthetic equivalent of an enolate synthon?",
+   "options": [
+    "An alcohol",
+    "An alkyl halide plus a base",
+    "The carbonyl compound plus base",
+    "A Grignard"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the synthetic equivalent of the -CN synthon?",
+   "options": [
+    "HCN gas only",
+    "NaCN",
+    "An amide",
+    "A nitro compound"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why write the forward route out at the end?",
+   "options": [
+    "Errors of order are invisible in a retrosynthetic tree",
+    "It is the required notation for an exam",
+    "To count atoms",
+    "For presentation"
+   ],
+   "correct": 0,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Retrosynthesis differs from forward planning in what way?",
+   "options": [
+    "It is always shorter",
+    "It ignores stereochemistry",
+    "It uses an entirely different set of reactions",
+    "It is exploratory, and dead ends are expected"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which disconnection undoes two bonds at once?",
+   "options": [
+    "SN2",
+    "A Grignard addition",
+    "Retro-Diels-Alder",
+    "Aldol"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a symmetric target suggest?",
+   "options": [
+    "Protecting groups on both ends",
+    "A disconnection through the middle",
+    "A radical route",
+    "No C-C bonds"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "The synthon RC-C- corresponds to which reagent?",
+   "options": [
+    "A terminal alkyne with NaNH2",
+    "An alkene",
+    "A nitrile",
+    "A primary alkyl halide"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a shorter route usually preferred?",
+   "options": [
+    "The reagents involved are cheaper",
+    "It needs no planning",
+    "It is more elegant",
+    "Each step loses material and can fail"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What should you do before disconnecting anything?",
+   "options": [
+    "Assign the stereochemistry first",
+    "Draw the mechanism",
+    "Count the carbons in target and starting materials",
+    "Choose a solvent"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which statement about synthons is correct?",
+   "options": [
+    "They are isolable, bottled compounds",
+    "They are idealized fragments needing a real equivalent",
+    "They are catalysts",
+    "They are always neutral"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the relationship between a retron and a disconnection?",
+   "options": [
+    "The retron is the pattern that tells you which disconnection to make",
+    "Retrons block certain disconnections",
+    "Retrons are reagents",
+    "They are the same thing"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "carbon-carbon-bonds": [
+  {
+   "q": "Roughly how many ways are there to make a C-C bond in an introductory course?",
+   "options": [
+    "About three",
+    "About ten",
+    "About fifty",
+    "Unlimited"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a Grignard plus a ketone give?",
+   "options": [
+    "A tertiary alcohol",
+    "An alkene",
+    "An ester",
+    "A carboxylic acid product"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a Grignard plus CO2 give?",
+   "options": [
+    "A ketone",
+    "An ester",
+    "An alcohol of the same length",
+    "A carboxylic acid one carbon longer"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a Grignard plus formaldehyde give?",
+   "options": [
+    "An acid",
+    "A secondary alcohol, one longer",
+    "A primary alcohol one carbon longer",
+    "A ketone"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does an acetylide plus an alkyl halide give?",
+   "options": [
+    "A terminal alkyne again",
+    "An internal alkyne",
+    "An alkene",
+    "An alcohol"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does cyanide plus an alkyl halide give?",
+   "options": [
+    "An alcohol",
+    "An alkene",
+    "An amine of the same length",
+    "A nitrile one carbon longer"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which route gives a primary amine one carbon longer than RX?",
+   "options": [
+    "RX + NaCN, then LiAlH4",
+    "RMgBr + CO2",
+    "RX + NaOH",
+    "RX with excess NH3"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which route gives a carboxylic acid one carbon longer than RX?",
+   "options": [
+    "RX + H2",
+    "RX + NaOH, then oxidize",
+    "RX + NaCN, then H3O+",
+    "RX + NaBH4"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does an aldol reaction produce?",
+   "options": [
+    "A 1,3-dicarbonyl compound",
+    "A beta-hydroxy carbonyl",
+    "An alkene",
+    "An ester"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a Claisen condensation produce?",
+   "options": [
+    "A beta-keto ester",
+    "An alkene",
+    "An amide",
+    "A beta-hydroxy ketone"
+   ],
+   "correct": 0,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a Michael addition produce?",
+   "options": [
+    "An epoxide",
+    "An alkyne",
+    "A 1,3-dicarbonyl",
+    "A 1,5-dicarbonyl"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a Wittig reaction produce?",
+   "options": [
+    "An ether",
+    "An alcohol",
+    "An alkene",
+    "An epoxide"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many C-C bonds does a Diels-Alder form?",
+   "options": [
+    "One",
+    "Two",
+    "Three",
+    "None"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reaction attaches a carbon chain to a benzene ring?",
+   "options": [
+    "Friedel-Crafts",
+    "Wittig",
+    "Ozonolysis",
+    "An aldol condensation"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An enolate is nucleophilic at which carbon?",
+   "options": [
+    "The beta carbon",
+    "The oxygen only",
+    "The carbonyl carbon itself",
+    "The alpha carbon"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Conjugate addition builds a bond at which carbon?",
+   "options": [
+    "The carbonyl carbon",
+    "The alpha carbon",
+    "The beta carbon",
+    "The gamma carbon"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A Grignard builds a bond at which carbon?",
+   "options": [
+    "The alpha carbon",
+    "The carbonyl carbon",
+    "The beta carbon",
+    "Any of them"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Target and starting material have the same carbon count. What does that mean?",
+   "options": [
+    "No C-C bond formation is needed",
+    "A Diels-Alder is required",
+    "They are the same compound",
+    "The synthesis is simply impossible"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A target has six more carbons and contains a benzene ring. What does that suggest?",
+   "options": [
+    "A polymerization",
+    "An ozonolysis",
+    "Six separate C-C bonds must form",
+    "The ring arrived intact, so one ring-to-chain bond"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which two reactions build rings?",
+   "options": [
+    "Friedel-Crafts and Wittig",
+    "The aldol and the Wittig",
+    "Diels-Alder and intramolecular aldol",
+    "Grignard and cyanide"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the retron for an intramolecular aldol?",
+   "options": [
+    "A 1,2-diol arrangement",
+    "A 1,4- or 1,5-dicarbonyl",
+    "An epoxide",
+    "A nitrile"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a Dieckmann condensation?",
+   "options": [
+    "An intramolecular Claisen",
+    "A ring-opening",
+    "An oxidation",
+    "An intramolecular aldol reaction"
+   ],
+   "correct": 0,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is counting carbons the fastest diagnostic?",
+   "options": [
+    "It gives the yield",
+    "It sets the stereochemistry directly",
+    "It checks the formula",
+    "It tells you how many C-C bonds must form"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reaction gives an alkene from a carbonyl?",
+   "options": [
+    "Michael",
+    "An aldol condensation",
+    "Wittig",
+    "Claisen"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which enolate reactions are essentially one idea?",
+   "options": [
+    "The Grignard and cyanide routes",
+    "Aldol, Claisen and Michael",
+    "Wittig and Diels-Alder",
+    "Friedel-Crafts and SN2"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What limits an acetylide alkylation?",
+   "options": [
+    "It is SN2, so it works best on primary halides",
+    "It needs acid",
+    "It requires a ring in the substrate",
+    "It needs heat"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which is NOT a C-C bond-forming reaction?",
+   "options": [
+    "An aldol condensation",
+    "Wittig",
+    "Hydroboration",
+    "Diels-Alder"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A carbonyl offers how many distinct attachment points for a new carbon?",
+   "options": [
+    "Four",
+    "One position",
+    "Two",
+    "Three"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why do carbonyls dominate synthesis?",
+   "options": [
+    "They are cheap",
+    "They offer several reactive positions chosen by reagent",
+    "They are unreactive",
+    "They are almost always solids"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which disconnection should you try first on a target containing a cyclohexene?",
+   "options": [
+    "Diels-Alder",
+    "Grignard",
+    "Friedel-Crafts",
+    "An aldol condensation"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "functional-group-interconversion": [
+  {
+   "q": "A move up or down the oxidation ladder needs what kind of reagent?",
+   "options": [
+    "A nucleophile",
+    "An oxidizing or reducing agent",
+    "An acid catalyst",
+    "A radical chain initiator"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Alcohol to alkyl halide is which kind of move?",
+   "options": [
+    "Sideways",
+    "Down the ladder",
+    "Not possible",
+    "Up the oxidation ladder"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Primary alcohol to aldehyde is which kind of move?",
+   "options": [
+    "Down the ladder",
+    "Not possible",
+    "Sideways",
+    "Up the ladder"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Ketone to secondary alcohol is which kind of move?",
+   "options": [
+    "Not possible",
+    "Up the ladder",
+    "Down the ladder",
+    "Sideways"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Ester to amide is which kind of move?",
+   "options": [
+    "Up the ladder",
+    "Sideways",
+    "Down the ladder",
+    "Not possible"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent converts an alcohol to an alkyl bromide?",
+   "options": [
+    "PBr3",
+    "LiAlH4",
+    "OsO4",
+    "NaBH4"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent gives a Markovnikov alcohol from an alkene?",
+   "options": [
+    "OsO4",
+    "O3",
+    "BH3 then H2O2",
+    "H3O+"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent gives an anti-Markovnikov alcohol from an alkene?",
+   "options": [
+    "mCPBA",
+    "H3O+",
+    "BH3, then H2O2 and HO-",
+    "OsO4"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which conditions give a cis alkene from an alkyne?",
+   "options": [
+    "Na in liquid ammonia",
+    "H2 with Lindlar catalyst",
+    "H2 with Pd/C",
+    "LiAlH4"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which conditions give a trans alkene from an alkyne?",
+   "options": [
+    "Na in liquid NH3",
+    "H2 with Pd/C",
+    "mCPBA",
+    "H2 with a Lindlar catalyst"
+   ],
+   "correct": 0,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent converts a nitrile to a carboxylic acid?",
+   "options": [
+    "NaBH4",
+    "PBr3",
+    "LiAlH4",
+    "H3O+ with heat"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent converts a nitrile to a primary amine?",
+   "options": [
+    "PCC",
+    "H3O+",
+    "LiAlH4",
+    "NaBH4"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent converts a carboxylic acid to an acyl chloride?",
+   "options": [
+    "PBr3",
+    "SOCl2",
+    "LiAlH4",
+    "NaBH4"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent reduces an ester to a primary alcohol?",
+   "options": [
+    "LiAlH4",
+    "H2 over Pd",
+    "PCC",
+    "NaBH4 in methanol"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How do you make an aldehyde from an ester using only standard reagents?",
+   "options": [
+    "Aqueous CrO3",
+    "H2 over Pd",
+    "NaBH4 alone",
+    "LiAlH4 to the alcohol, then PCC"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How do you convert propan-2-ol to propan-1-ol?",
+   "options": [
+    "It is impossible",
+    "PBr3, then NaOH",
+    "Dehydrate, then hydroborate",
+    "Oxidize it, then reduce"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does PBr3 then NaOH fail to move an OH along a chain?",
+   "options": [
+    "PBr3 does not react",
+    "Substitution happens at the same carbon",
+    "NaOH is too weak",
+    "The bromide just eliminates"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How do you get an anti-Markovnikov alkyl halide from an alkene?",
+   "options": [
+    "Hydroborate to the alcohol, then PBr3",
+    "Br2 in water",
+    "NBS",
+    "Adding HBr directly"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which oxidant takes a primary alcohol to the carboxylic acid?",
+   "options": [
+    "Swern",
+    "DMP",
+    "PCC in dichloromethane",
+    "Aqueous CrO3 (Jones)"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which oxidant stops at the aldehyde?",
+   "options": [
+    "Aqueous CrO3",
+    "Jones reagent in acetone",
+    "PCC",
+    "Hot KMnO4"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent gives a syn diol from an alkene?",
+   "options": [
+    "mCPBA, then aqueous H3O+",
+    "OsO4 with NMO",
+    "O3 then Me2S",
+    "HBr"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which sequence gives an anti diol from an alkene?",
+   "options": [
+    "mCPBA, then aqueous acid",
+    "Cold KMnO4",
+    "O3 then H2O2",
+    "OsO4, then heating"
+   ],
+   "correct": 0,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent converts a ketone to an alkene?",
+   "options": [
+    "LiAlH4",
+    "PCC",
+    "NaBH4",
+    "A Wittig ylide"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reactions convert a ketone all the way to CH2?",
+   "options": [
+    "OsO4 or mCPBA",
+    "NaBH4 or LiAlH4 in ether",
+    "Clemmensen or Wolff-Kishner",
+    "PCC or Jones"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Fischer esterification converts an acid to an ester using what?",
+   "options": [
+    "SOCl2",
+    "An alcohol with acid catalysis",
+    "LiAlH4",
+    "NaOH"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which is the commonest planning error this map prevents?",
+   "options": [
+    "Trying to change oxidation level with a substitution",
+    "Forgetting a catalyst",
+    "Using too much reagent",
+    "Choosing an unsuitable solvent"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An alkene plus H2 over Pd/C gives what?",
+   "options": [
+    "An epoxide",
+    "A diol",
+    "An alcohol",
+    "An alkane"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why are reagent PAIRS the important thing in this table?",
+   "options": [
+    "They avoid catalysts",
+    "They are cheaper when bought together",
+    "They reach the same destination with opposite outcomes",
+    "They react faster"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Alcohol to alkene by concentrated H2SO4 gives which product?",
+   "options": [
+    "The Hofmann alkene",
+    "The Zaitsev alkene",
+    "A single enantiomer",
+    "No reaction"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How do you control where an alkene forms from an alcohol?",
+   "options": [
+    "Make the halide first, then eliminate with a chosen base",
+    "Heat more strongly",
+    "Switch to a different solvent",
+    "Use more acid"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "protecting-groups": [
+  {
+   "q": "Why is a Grignard destroyed by an alcohol?",
+   "options": [
+    "It oxidizes the Grignard",
+    "The O-H proton is acidic enough to protonate the carbanion",
+    "It coordinates to the magnesium",
+    "It dilutes the reagent"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the approximate pKa of an alcohol O-H?",
+   "options": [
+    "About 25",
+    "About 50",
+    "About 5",
+    "About 16"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which groups also destroy a Grignard?",
+   "options": [
+    "N-H, S-H and a carboxylic acid O-H",
+    "C-C only",
+    "None besides an alcohol O-H",
+    "C-H only"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What protects an alcohol from a Grignard?",
+   "options": [
+    "An amide",
+    "An acetal on the alcohol",
+    "A silyl ether",
+    "An ester"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "How is a silyl ether removed?",
+   "options": [
+    "Aqueous acid on warming",
+    "Fluoride, as TBAF",
+    "Hydrogenation",
+    "Strong base"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What protects a ketone from a hydride or Grignard?",
+   "options": [
+    "A cyclic acetal",
+    "An ester",
+    "An ether",
+    "A silyl ether on it"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How is an acetal formed?",
+   "options": [
+    "With LiAlH4",
+    "With NaOH",
+    "With TBSCl and a base",
+    "With a diol and acid, removing water"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How is an acetal removed?",
+   "options": [
+    "Base",
+    "TBAF",
+    "Aqueous acid",
+    "Hydrogenation"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does orthogonal mean for two protecting groups?",
+   "options": [
+    "They protect two different groups",
+    "Each can be removed without disturbing the other",
+    "They are added together",
+    "They are the same size"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can an acetal not be used if a later step needs aqueous acid?",
+   "options": [
+    "Aqueous acid is exactly what removes it",
+    "Acetals need base",
+    "It would polymerize the substrate",
+    "Acid oxidizes it"
+   ],
+   "correct": 0,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A molecule has a ketone and an ester, and you want to reduce only the ketone. Protect?",
+   "options": [
+    "Yes, protect the ketone",
+    "It cannot be done",
+    "Yes, protect the ester",
+    "No, NaBH4 is already selective"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A molecule has an alkene and a ketone, and you want to hydrogenate only the alkene. Protect?",
+   "options": [
+    "It cannot be done",
+    "Yes, protect the ketone",
+    "No, H2 over Pd/C at 1 atm leaves the ketone alone",
+    "Yes, protect the alkene"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A molecule has a ketone and a free alcohol, treated with CH3MgBr. Protect?",
+   "options": [
+    "No, the ketone is more reactive",
+    "Yes, protect the alcohol",
+    "Yes, protect the ketone instead",
+    "Use two equivalents"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A molecule has an aldehyde and an ester, and you want to reduce only the ester. Protect?",
+   "options": [
+    "Yes, protect the aldehyde as an acetal",
+    "Yes, protect the ester",
+    "Use NaBH4",
+    "No, LiAlH4 is already selective"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many steps does using a protecting group add?",
+   "options": [
+    "One",
+    "Four",
+    "None",
+    "Two"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What should you check before using a protecting group?",
+   "options": [
+    "The yield",
+    "The solvent",
+    "Whether a selective reagent or a reordering already solves it",
+    "The temperature"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Adding two equivalents of Grignard to a molecule with a free OH does what?",
+   "options": [
+    "It works; one equivalent is left over",
+    "Does not solve it — the alkoxide is still there",
+    "Doubles the yield",
+    "Causes elimination"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What reagent pair installs a silyl ether?",
+   "options": [
+    "TBSCl and imidazole",
+    "SOCl2 and pyridine",
+    "LiAlH4 and ether",
+    "TBAF with added water"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is the silyl deprotection unusually gentle?",
+   "options": [
+    "It happens simply on standing",
+    "It needs only heat",
+    "It needs no reagent",
+    "Fluoride is neither acidic, basic nor oxidizing in effect"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does an acetal do to the carbonyl carbon?",
+   "options": [
+    "Nothing",
+    "Makes it much more electrophilic",
+    "Removes its electrophilicity entirely",
+    "Makes it basic"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which diol is standard for acetal protection?",
+   "options": [
+    "Propane-1,3-diol",
+    "Ethylene glycol",
+    "Glycerol",
+    "Catechol"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is protection a last resort rather than a first move?",
+   "options": [
+    "It adds two steps and loses material twice",
+    "It never works",
+    "It needs specialized glassware",
+    "It is expensive"
+   ],
+   "correct": 0,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which is the archetype of a problem needing protection?",
+   "options": [
+    "An alkene and a ring",
+    "Two esters",
+    "A ketone alongside an ester",
+    "A Grignard and a free alcohol"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens to a Grignard in wet solvent?",
+   "options": [
+    "It forms an ether",
+    "It works normally",
+    "It is protonated to an alkane",
+    "It becomes far more reactive"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A silyl ether and an acetal in one molecule can be removed in which order?",
+   "options": [
+    "Only silyl first",
+    "Either order — they are orthogonal",
+    "Only the acetal first",
+    "Both at once only"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the product of treating an alcohol with TBSCl and imidazole?",
+   "options": [
+    "A silyl ether",
+    "An acetal",
+    "An alkoxide salt",
+    "An ester"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which is NOT a reason to skip protection?",
+   "options": [
+    "A selective reagent exists",
+    "The steps can be reordered",
+    "The group is not reactive here",
+    "The molecule is large"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Protecting a ketone and then trying to add a Grignard to it does what?",
+   "options": [
+    "Speeds the reaction up",
+    "Works well",
+    "Masks the very group you wanted to react",
+    "Doubles the yield"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What makes the acetal deprotection reliable?",
+   "options": [
+    "It is irreversible",
+    "It is the same equilibrium run backwards",
+    "It needs no water",
+    "It is catalyzed by added base"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is an ester not usually a threat during catalytic hydrogenation?",
+   "options": [
+    "Catalytic hydrogenation leaves esters essentially untouched",
+    "It is far too hindered",
+    "It is not present",
+    "It is protected"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "multistep-synthesis": [
+  {
+   "q": "What should you do after finishing a retrosynthetic analysis?",
+   "options": [
+    "Submit it",
+    "Write the forward route",
+    "Draw mechanisms",
+    "Calculate the overall yield"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which question finds missing protecting groups?",
+   "options": [
+    "What else does it attack?",
+    "How long does the step take?",
+    "What solvent is used?",
+    "What is the yield?"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why should sensitive groups be installed late?",
+   "options": [
+    "They are hard to make",
+    "They slow the reaction down",
+    "They are expensive",
+    "They may not survive"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why acylate rather than alkylate when attaching a chain to a ring?",
+   "options": [
+    "Acylation is reversible",
+    "Acylation is faster",
+    "Alkylation rearranges",
+    "Alkylation needs no Lewis acid"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "After a Friedel-Crafts acylation, how do you remove the carbonyl?",
+   "options": [
+    "LiAlH4 in dry ether",
+    "Clemmensen or Wolff-Kishner",
+    "NaBH4",
+    "PCC"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does Friedel-Crafts fail on a nitrobenzene?",
+   "options": [
+    "The ring is too deactivated",
+    "Nitro groups are simply unstable",
+    "AlCl3 reacts with nitro",
+    "The ring is too small"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a nitro group reduced at the end of a synthesis?",
+   "options": [
+    "The reduction is very slow",
+    "It costs less",
+    "It is unstable",
+    "The amine wrecks Friedel-Crafts"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "On a benzene ring, what decides where the second substituent lands?",
+   "options": [
+    "The temperature",
+    "The reagent chosen for it",
+    "The group already attached",
+    "The solvent"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is wrong with a route giving a single enantiomer from achiral inputs?",
+   "options": [
+    "Nothing",
+    "Achiral inputs cannot choose",
+    "The yield is low",
+    "It needs considerably more steps"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the commonest error in student syntheses?",
+   "options": [
+    "A Grignard with a free O-H",
+    "Too few steps",
+    "Running at the wrong temperature",
+    "Wrong solvent"
+   ],
+   "correct": 0,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What final check catches an extra carbon in your route?",
+   "options": [
+    "The yield",
+    "The stereochemistry",
+    "Re-drawing the mechanism",
+    "Comparing molecular formulas"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why prefer a route with no carbocation when the skeleton matters?",
+   "options": [
+    "Cations are strongly colored",
+    "Cations are slow",
+    "Carbocations rearrange",
+    "Cations need acid"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does the question 'does this product survive the next step' catch?",
+   "options": [
+    "Problems with the yield",
+    "A step that undoes the last",
+    "Solvent issues",
+    "Cost problems"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Friedel-Crafts alkylation with 1-bromopropane gives what group on the ring?",
+   "options": [
+    "Isopropyl",
+    "Butyl",
+    "No reaction",
+    "Propyl"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "In making 1-bromo-4-propylbenzene, why acylate before brominating?",
+   "options": [
+    "Acylation needs bromine",
+    "The order does not matter",
+    "Bromine would block the para position",
+    "Bromine deactivates the ring"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An alkyl group on a benzene ring directs an incoming group where?",
+   "options": [
+    "Nowhere",
+    "Meta exclusively",
+    "Ortho and para",
+    "Only ortho"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does the para product dominate over ortho with a propyl group present?",
+   "options": [
+    "Para is electronically more stable",
+    "The ortho positions are crowded",
+    "Ortho is deactivated",
+    "They are equal"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which is a legitimate reason to skip a protecting group?",
+   "options": [
+    "Install the group later",
+    "Protection is always expensive",
+    "There is no time",
+    "The molecule is small"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What should you ask about stereochemistry in a route?",
+   "options": [
+    "Whether it is cheap",
+    "How to measure it",
+    "Whether it matters",
+    "Which step sets it"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A route uses aqueous CrO3 where an aldehyde was wanted. What went wrong?",
+   "options": [
+    "It needed heat",
+    "The reagent used was too weak",
+    "The oxidation overshot",
+    "Nothing"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why write the four questions out for every step?",
+   "options": [
+    "Purely for presentation",
+    "That is where routes fail",
+    "It is required",
+    "To count atoms"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Retrosynthesis is best described as what?",
+   "options": [
+    "An exploratory search",
+    "A required format for an exam",
+    "A mechanism",
+    "A proof"
+   ],
+   "correct": 0,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the effect of an amine on a Lewis acid catalyst?",
+   "options": [
+    "It has no effect on it at all",
+    "It oxidizes it",
+    "It activates it",
+    "Its nitrogen deactivates it"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which two ordering rules are really the same idea?",
+   "options": [
+    "Plan and write",
+    "Protecting and reordering",
+    "Avoiding carbocations",
+    "Count and check"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "If a target looks like the starting material with a group on the wrong carbon, what is the move?",
+   "options": [
+    "Oxidize it",
+    "Use a Grignard reagent",
+    "Protect it",
+    "Eliminate, then re-add"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a Clemmensen reduction require?",
+   "options": [
+    "Base",
+    "Zn(Hg) and concentrated HCl",
+    "LiAlH4",
+    "H2 and Pd"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a Wolff-Kishner reduction require?",
+   "options": [
+    "Hydrazine then hot KOH",
+    "NaBH4",
+    "PCC",
+    "Zn(Hg) with concentrated HCl"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why do Clemmensen and Wolff-Kishner exist as a pair?",
+   "options": [
+    "One is faster",
+    "They give different products",
+    "They tolerate opposite conditions",
+    "One is cheaper"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does counting carbons at the END of a route check?",
+   "options": [
+    "The yield",
+    "That the product has the target's formula",
+    "The stereochemistry",
+    "The cost"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which is the best summary of synthesis planning?",
+   "options": [
+    "Count, disconnect, then order",
+    "Always reach for a protecting group",
+    "Draw every mechanism",
+    "Memorize more reagents"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  }
  ]
 }

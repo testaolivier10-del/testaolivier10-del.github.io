@@ -171,6 +171,18 @@
       { id: 'h-nmr', title: '¹H NMR', href: 'lessons/h-nmr.html', dependsOn: ['electronegativity', 'aromaticity'] },
       { id: 'c-nmr', title: '¹³C NMR', href: 'lessons/c-nmr.html', dependsOn: ['h-nmr'] },
       { id: 'mass-spec', title: 'Mass spectrometry', href: 'lessons/mass-spec.html', dependsOn: ['sn1', 'markovnikov', 'eas'] }
+    ]},
+    /* Synthesis is the capstone, so it goes last and draws on everything
+       before it — including Spectroscopy, since confirming a product is part
+       of making one. Appending rather than inserting also means no chapter
+       below it needs renumbering, which is the first time that has been true
+       in this phase. */
+    { id: 'synthesis', title: 'Synthesis & Retrosynthesis', topics: [
+      { id: 'retrosynthesis', title: 'Thinking backwards', href: 'lessons/retrosynthesis.html', dependsOn: ['nucleophilic-addition', 'aldol'] },
+      { id: 'carbon-carbon-bonds', title: 'Making carbon–carbon bonds', href: 'lessons/carbon-carbon-bonds.html', dependsOn: ['retrosynthesis', 'alkynes', 'diels-alder', 'claisen'] },
+      { id: 'functional-group-interconversion', title: 'Functional group interconversion', href: 'lessons/functional-group-interconversion.html', dependsOn: ['retrosynthesis', 'alcohol-oxidation', 'carbonyl-reduction', 'hydrogenation'] },
+      { id: 'protecting-groups', title: 'Protecting groups', href: 'lessons/protecting-groups.html', dependsOn: ['acetals', 'nucleophilic-addition', 'alcohol-reactions'] },
+      { id: 'multistep-synthesis', title: 'Planning a multistep route', href: 'lessons/multistep-synthesis.html', dependsOn: ['carbon-carbon-bonds', 'functional-group-interconversion', 'protecting-groups', 'directing-effects'] }
     ]}
   ];
 

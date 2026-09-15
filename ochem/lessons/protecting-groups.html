@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protecting groups — Synthesis &amp; Retrosynthesis | Organic Chemistry</title>
+<meta name="description" content="Why a Grignard cannot survive an O-H, the silyl ether and acetal protecting groups, orthogonality, and when not to use one.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/protecting-groups.html">
+<meta property="og:title" content="Protecting groups — Synthesis &amp; Retrosynthesis | Organic Chemistry">
+<meta property="og:description" content="Why a Grignard cannot survive an O-H, the silyl ether and acetal protecting groups, orthogonality, and when not to use one.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/protecting-groups.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/protecting-groups.html#lesson",
+      "name": "Protecting groups",
+      "url": "https://levlprep.com/ochem/lessons/protecting-groups.html",
+      "description": "Why a Grignard cannot survive an O-H, the silyl ether and acetal protecting groups, orthogonality, and when not to use one.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Protecting groups"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Synthesis & Retrosynthesis",
+          "item": "https://levlprep.com/ochem/learn.html#m-synthesis"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Protecting groups",
+          "item": "https://levlprep.com/ochem/lessons/protecting-groups.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 18 &middot; Synthesis &amp; Retrosynthesis</div>
+    <h1 style="margin-bottom:4px;">Protecting groups.</h1>
+    <p class="lede" style="margin-top:0;">Hide a group, do the step, put it back — and only when nothing else works.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/protecting-groups.html">Protecting groups &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/multistep-synthesis.html">Planning a multistep route</a><a href="../lessons/acetals.html">Acetals &amp; hemiacetals</a><a href="../lessons/nucleophilic-addition.html">Nucleophilic addition</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* Does this molecule need a protecting group? The set is built so that
+     "any two functional groups means protect" gets two of the four wrong —
+     the point being that protection is a last resort, not a reflex. */
+  var CASES = [
+    { id:'p1', t:'A molecule with a <b>ketone and a free alcohol</b>, treated with CH₃MgBr', right:'yes',
+      why:'Protect. The Grignard is a carbanion and the O–H, pKa about 16, destroys it instantly — it becomes an alkane before reaching any carbonyl. There is no reagent trick for this; protect the alcohol as a silyl ether.' },
+    { id:'p2', t:'A molecule with a <b>ketone and an ester</b>, reducing only the ketone', right:'no',
+      why:'No protection needed. NaBH₄ reduces the ketone and leaves the ester alone — a selective reagent already exists, and using a protecting group here would be three steps where one works.' },
+    { id:'p3', t:'A molecule with an <b>alkene and a ketone</b>, hydrogenating only the alkene', right:'no',
+      why:'No protection needed. H₂ over Pd/C at one atmosphere reduces the alkene and leaves the ketone untouched. Not every functional group present is a threat.' },
+    { id:'p4', t:'A molecule with an <b>aldehyde and an ester</b>, reducing only the ester with LiAlH₄', right:'yes',
+      why:'Protect. LiAlH₄ reduces both, and the aldehyde is the more reactive of the two — so there is no way to reach the ester selectively. Protect the aldehyde as an acetal first.' }
+  ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'protecting-groups',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A Grignard cannot survive an O–H. Anywhere in the molecule.',
+        bodyHtml: '<p class="step-body">Every reagent so far was described by what it does to <i>a</i> functional group. Real molecules have several, and a reagent that cannot tell two of them apart attacks both.</p>' +
+          '<p class="step-body">The sharpest case is a Grignard, which is a carbanion and therefore a very strong base. An O–H proton — pKa around 16 — is more than acidic enough to destroy it:</p>' +
+          '<p class="step-body" style="text-align:center;font-family:var(--font-mono);font-weight:700;">RMgBr + R\'OH &rarr; R–H + R\'OMgBr</p>' +
+          '<p class="step-body" style="margin-bottom:0;">The Grignard is gone — converted to an alkane — before it can reach any carbonyl. This is not a slow side reaction; it is the fastest thing available to it. The same goes for N–H, S–H and a carboxylic acid\'s O–H, and it is why Grignard reactions are run in scrupulously dry ether: water does exactly the same thing.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Two protecting groups, and why they come off differently.',
+        bodyHtml: '<ul class="step-body">' +
+          '<li><b>An alcohol becomes a silyl ether.</b> TBSCl with a base such as imidazole replaces the O–H with an O–Si bond, leaving no acidic proton for a Grignard to find. Removed with <b>fluoride</b> (TBAF) — the Si–F bond is exceptionally strong, so the deprotection needs nothing acidic, basic or oxidizing.</li>' +
+          '<li><b>A ketone or aldehyde becomes an acetal.</b> A diol such as ethylene glycol with acid catalysis, removing water, converts C=O into a cyclic acetal with no electrophilic carbon at all. Removed with <b>aqueous acid</b> — the same equilibrium run backwards, which is why it is so reliable.</li>' +
+          '</ul>' +
+          '<div class="explain-box">Those two come off under <b>unrelated</b> conditions — one needs fluoride, the other aqueous acid, and neither touches the other. Protecting groups removable independently are called <b>orthogonal</b>, and that is what lets a molecule carry two and have them unmasked in a chosen order.<br><br>It also sets a trap: an acetal cannot survive a later step that needs aqueous acid for some other reason. Choosing a protecting group means checking it against <i>every</i> remaining step.</div>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Does this one actually need a protecting group?</h2>' +
+            '<p class="step-body">Protection costs two extra steps, so it is a last resort. Before reaching for one, ask whether a selective reagent already exists.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Protect or not">' +
+                  '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-v="yes">Protect</button>' +
+                  '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-v="no">No need</button>' +
+                '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-v') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Not quite. Two functional groups in one molecule is not by itself a reason to protect. Ask first whether a reagent exists that already distinguishes them.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. Half of them needed nothing — protection is a last resort, not a reflex.'
+                  : 'All four, first time, including the two that need nothing at all. Protection is a last resort, not a reflex.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'How is a silyl ether removed?',
+        options: ['Aqueous acid','Fluoride, as TBAF','Hydrogenation','Strong base'],
+        correctIndex: 1,
+        correctFeedback: 'Correct. The Si–F bond is exceptionally strong, so fluoride strips the silicon off under conditions that are neither acidic nor basic nor oxidizing — which is what makes it usable on a molecule carrying almost anything else.',
+        wrongFeedback: 'The deprotection is prized because it needs nothing harsh. Which reagent forms an exceptionally strong bond to silicon?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'Why can an acetal not be used to protect a ketone in a route that later requires aqueous acid?',
+        options: [
+          'Acid would oxidize the acetal',
+          'Aqueous acid is exactly what removes an acetal, so it would be unmasked early',
+          'Acetals only form on aldehydes',
+          'Acid would open the ring irreversibly'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and it is the general point about orthogonality: the deprotection conditions have to be absent from every other step. Checking a protecting group against the whole remaining route — not just the step you are protecting from — is part of choosing it.',
+        wrongFeedback: 'Acetal formation is an equilibrium driven by removing water. What does adding water back, with acid, do to it?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'In practice',
+        title: 'Three questions before you protect anything.',
+        bodyHtml: '<ul class="step-body">' +
+          '<li><b>Is there a milder reagent that is already selective?</b> A ketone and an ester need no protection to reduce only the ketone — NaBH₄ does it.</li>' +
+          '<li><b>Can the steps be reordered?</b> Often the interfering group can be installed <i>after</i> the sensitive step, which removes the problem entirely and is always better than protecting.</li>' +
+          '<li><b>Is the group genuinely reactive under these conditions?</b> An ester survives catalytic hydrogenation and a benzene ring survives most things. Not every functional group present is a threat.</li>' +
+          '</ul>' +
+          '<p class="step-body" style="margin-bottom:0;">Protection adds two steps and loses material twice. It is worth it when the alternative is not a lower yield but <b>no product at all</b> — which is exactly the Grignard-and-alcohol case, and is why that one is the archetype.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'What does "orthogonal" mean for two protecting groups?',
+        options: [
+          'They protect different kinds of group',
+          'Each can be removed without disturbing the other',
+          'They are added in the same step',
+          'They are the same size'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. A silyl ether comes off with fluoride and an acetal with aqueous acid, and neither condition touches the other — so a molecule can carry both and have them unmasked in whichever order the route needs. Protecting two different kinds of group is necessary but not sufficient; the removals have to be independent.',
+        wrongFeedback: 'The word is about removal rather than installation. What would you need to be true to unmask one of two protected groups while leaving the other protected?'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'You need to add CH₃MgBr to the ketone of HOCH₂CH₂COCH₃ without touching the alcohol. Give the route.',
+        options: [
+          'Just add CH₃MgBr — the ketone is more reactive than the alcohol',
+          'TBSCl/imidazole, then CH₃MgBr and workup, then TBAF',
+          'Ethylene glycol/H⁺, then CH₃MgBr, then H₃O⁺',
+          'Add two equivalents of CH₃MgBr so one is left over'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct — protect, react, deprotect. The third option protects the wrong group: putting an acetal on the ketone would mask the very thing you are trying to react. The fourth is the tempting one and does not work either: the first equivalent is destroyed by the O–H, and the resulting alkoxide is still there, so the second equivalent is not attacking a clean substrate. Three steps for one bond is the cost, and it is worth it because the alternative is no product at all.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>
