@@ -1,5 +1,31 @@
 # Review tracker
 
+## Morning summary (self-study pass, night of 2026-09-16)
+
+Interim; rewritten at the end of the run. Everything below is on `main`.
+
+**Done.**
+- Step 0: `check-console` runs in 56 s instead of 84 and no longer flakes
+  (cross-origin requests are blocked at the route; the one CI failure was a
+  third-party script holding a page past the 30 s navigation timeout). The
+  118 concept teach strings moved to `concept-teach.json`; the ochem shell
+  went from 108 to 92.8 KB gzipped and the budget followed it down to 102.
+  The amine-synthesis carbon-count sort is two rows per answer.
+- Step 1: `docs/concept-map.json` (every section: teaches / relies on /
+  forward references, ~130 found) and `docs/proposed-order.md` (the order,
+  the reasoning, every lesson that moves, every split). **Not applied.**
+- Step 2: all 412 hard-coded "Module N" references replaced with chapter
+  names linked from `curriculum.js`; the lesson eyebrows carry a chapter id
+  and get their number at runtime; check-site rule 30 and a rewritten
+  check-curriculum eyebrow check stop the numbers coming back. Fifteen
+  missing `dependsOn` filled from the concept map. New **Functional groups**
+  section closes Foundations (117 topics, 113 lessons, 3,510 questions).
+- Step 3: in progress, chapter by chapter; see the status table below.
+
+**Decisions you need to make** are listed under "Decisions for Olivier"
+below, and in `docs/proposed-order.md`. The order is the big one.
+
+
 Every item raised across four outside reviews, with its real status verified
 against this repo rather than against what a review claimed.
 
