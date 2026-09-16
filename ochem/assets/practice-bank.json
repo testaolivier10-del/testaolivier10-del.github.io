@@ -37544,5 +37544,1965 @@
    "difficulty": "medium",
    "type": "mcq"
   }
+ ],
+ "nucleophilic-aromatic": [
+  {
+   "q": "Why will chlorobenzene not undergo SN2?",
+   "options": [
+    "Its backside is shielded by the ring",
+    "Chloride is a poor leaving group",
+    "The ring is too electron-poor",
+    "It is sterically hindered by hydrogens"
+   ],
+   "correct": 0,
+   "why": "The carbon is sp2 and the trajectory a nucleophile needs does not exist.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why will chlorobenzene not undergo SN1?",
+   "options": [
+    "Chloride will not leave",
+    "The ring stabilizes the substrate too well",
+    "It would lose aromaticity",
+    "An aryl cation is badly unstable"
+   ],
+   "correct": 3,
+   "why": "The positive charge would sit in an sp2 orbital in the ring plane, with no way to delocalize.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What order of steps does SNAr follow?",
+   "options": [
+    "Elimination, then addition",
+    "Concerted substitution",
+    "Radical abstraction",
+    "Addition, then elimination"
+   ],
+   "correct": 3,
+   "why": "The opposite order from every substitution before it.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the SNAr intermediate called?",
+   "options": [
+    "An arenium ion",
+    "A Criegee intermediate",
+    "A Meisenheimer complex",
+    "A benzyne"
+   ],
+   "correct": 2,
+   "why": "Negatively charged and not aromatic, which is what the withdrawing groups pay for.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does SNAr need on the ring?",
+   "options": [
+    "Nothing at all",
+    "An EWG ortho or para",
+    "Donating groups anywhere",
+    "Withdrawing groups meta"
+   ],
+   "correct": 1,
+   "why": "Only ortho and para can reach the negative charge by resonance.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a meta nitro group fail to activate for SNAr?",
+   "options": [
+    "Resonance cannot reach it",
+    "It donates from meta",
+    "It is too far to withdraw at all",
+    "It blocks the nucleophile"
+   ],
+   "correct": 0,
+   "why": "The intermediate's charge lands ortho and para to the attack, never meta.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which is the best leaving group in SNAr?",
+   "options": [
+    "Br",
+    "Cl",
+    "F",
+    "I"
+   ],
+   "correct": 2,
+   "why": "The reverse of every other substitution, because attack is the slow step.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is fluorine best in SNAr?",
+   "options": [
+    "It is smallest",
+    "It makes that carbon most electrophilic",
+    "The C-F bond is weakest",
+    "Fluoride is most stable"
+   ],
+   "correct": 1,
+   "why": "The C-X bond is not breaking in the rate-determining step, so electronegativity decides.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is lost in the SNAr intermediate?",
+   "options": [
+    "Aromaticity",
+    "A proton",
+    "The nitro group",
+    "A halide, first"
+   ],
+   "correct": 0,
+   "why": "And restored when the leaving group finally departs.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many products does SNAr give?",
+   "options": [
+    "Two",
+    "Three",
+    "A statistical mixture",
+    "One"
+   ],
+   "correct": 3,
+   "why": "The nucleophile arrives exactly where the leaving group was.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What conditions produce benzyne from chlorobenzene?",
+   "options": [
+    "Aqueous NaOH",
+    "Br2 with FeBr3",
+    "NaNH2 in liquid ammonia",
+    "Warm methoxide"
+   ],
+   "correct": 2,
+   "why": "A very strong base is needed to remove a ring hydrogen.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What order of steps does the benzyne route follow?",
+   "options": [
+    "Addition, then elimination",
+    "Concerted substitution",
+    "Two eliminations",
+    "Elimination, then addition"
+   ],
+   "correct": 3,
+   "why": "The mirror image of SNAr.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is benzyne's extra bond made from?",
+   "options": [
+    "Two s orbitals",
+    "Two sp2 orbitals in the ring plane",
+    "Two p orbitals above the ring",
+    "An sp3 and a p orbital"
+   ],
+   "correct": 1,
+   "why": "They point away from each other rather than overlapping properly, which is why it is strained.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How many products does the benzyne route give?",
+   "options": [
+    "Two",
+    "One",
+    "Three",
+    "Four"
+   ],
+   "correct": 0,
+   "why": "The triple bond is symmetric, so the nucleophile can attack either carbon.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does the benzyne route need on the ring?",
+   "options": [
+    "A donating group",
+    "Nothing",
+    "A hydrogen ortho to the halide",
+    "A nitro group"
+   ],
+   "correct": 2,
+   "why": "That hydrogen is what the base removes in the first step.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What proved benzyne exists?",
+   "options": [
+    "A crystal structure",
+    "A split 14C label",
+    "Isolation of the intermediate",
+    "An IR spectrum"
+   ],
+   "correct": 1,
+   "why": "No direct displacement could put the nucleophile on a carbon that never bore the leaving group.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Can 2-bromo-1,3-dimethylbenzene form a benzyne?",
+   "options": [
+    "No, no ortho H",
+    "Yes, readily",
+    "Only at high temperature",
+    "Only with a stronger base"
+   ],
+   "correct": 0,
+   "why": "There is no ortho hydrogen to eliminate.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does 1-chloro-2,4-dinitrobenzene plus methoxide give?",
+   "options": [
+    "Two isomeric products",
+    "No reaction",
+    "A benzyne",
+    "The methyl ether at the chlorine's position"
+   ],
+   "correct": 3,
+   "why": "Nitro groups ortho and para make this an SNAr, which gives one product.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which nucleophile is used in the classic benzyne reaction?",
+   "options": [
+    "Water",
+    "Cyanide",
+    "Amide",
+    "Methoxide"
+   ],
+   "correct": 2,
+   "why": "The base and the nucleophile are the same species here.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is the Meisenheimer complex stable enough to form?",
+   "options": [
+    "The ring is planar",
+    "Nitro groups take the charge onto their oxygens",
+    "It is aromatic",
+    "It has no charge"
+   ],
+   "correct": 1,
+   "why": "Delocalization onto the substituents is what makes losing aromaticity affordable.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which substitution has the C-X bond breaking in its slow step?",
+   "options": [
+    "SN1 and SN2",
+    "SNAr only",
+    "All three",
+    "None of them"
+   ],
+   "correct": 0,
+   "why": "Which is exactly why the leaving group order inverts for SNAr.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What kind of intermediate is benzyne?",
+   "options": [
+    "Stable and isolable",
+    "Aromatic and stabilized",
+    "Ionic",
+    "Strained and fleeting"
+   ],
+   "correct": 3,
+   "why": "It lasts only long enough to be attacked.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which ring is unreactive to both routes?",
+   "options": [
+    "A plain benzene ring with NaNH2",
+    "One with two ortho nitro groups",
+    "Unactivated, no ortho H",
+    "One with a para nitro group"
+   ],
+   "correct": 2,
+   "why": "No activation rules out SNAr, and no ortho hydrogen rules out benzyne.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does para-chlorotoluene plus NaNH2 give?",
+   "options": [
+    "No reaction",
+    "Two toluidines",
+    "Only para toluidine",
+    "Only meta toluidine"
+   ],
+   "correct": 1,
+   "why": "Amide can attack either carbon of the benzyne, and the two are not equivalent.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Does SNAr rearrange?",
+   "options": [
+    "No",
+    "Yes, always",
+    "Only with fluorine",
+    "Only at high temperature"
+   ],
+   "correct": 0,
+   "why": "The nucleophile adds where the leaving group already is.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which chapter's reaction also puts a nucleophile on an aryl carbon?",
+   "options": [
+    "Aldol condensation",
+    "Wittig",
+    "Ozonolysis",
+    "Cross-coupling"
+   ],
+   "correct": 3,
+   "why": "A third route, and the one that needs neither activation nor a brutal base.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What makes losing aromaticity affordable in SNAr?",
+   "options": [
+    "The nucleophile is strong",
+    "The solvent is polar",
+    "The EWGs pay for it",
+    "The ring is small"
+   ],
+   "correct": 2,
+   "why": "Without them the intermediate is too high in energy to form.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which positions carry the negative charge in a Meisenheimer complex?",
+   "options": [
+    "Only the attacked carbon",
+    "Ortho and para to the attack",
+    "Meta to the attack",
+    "All six equally"
+   ],
+   "correct": 1,
+   "why": "Which is exactly why only ortho and para substituents help.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens to the ring after the halide leaves in SNAr?",
+   "options": [
+    "Aromaticity is restored",
+    "It stays non-aromatic",
+    "It ring-opens",
+    "It is reduced"
+   ],
+   "correct": 0,
+   "why": "Which is the thermodynamic payoff for the whole sequence.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which halide is worst for SNAr?",
+   "options": [
+    "F",
+    "Cl",
+    "Br",
+    "I"
+   ],
+   "correct": 3,
+   "why": "Iodine is the least electronegative of the four, so it activates the carbon least.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "benzylic-reactivity": [
+  {
+   "q": "What is the benzylic position?",
+   "options": [
+    "The carbon attached to the ring",
+    "A carbon in the ring",
+    "The carbon two away from the ring",
+    "Any ring hydrogen"
+   ],
+   "correct": 0,
+   "why": "It is not part of the ring, and it behaves unlike any other sp3 carbon.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a benzylic cation stabilized?",
+   "options": [
+    "The ring withdraws inductively",
+    "It is tertiary",
+    "It is planar",
+    "It delocalizes into the ring"
+   ],
+   "correct": 3,
+   "why": "The charge spreads over the benzylic carbon plus both ortho and the para positions.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many carbons share a benzylic charge?",
+   "options": [
+    "Three",
+    "Six",
+    "Four",
+    "Two"
+   ],
+   "correct": 2,
+   "why": "The benzylic carbon plus the two ortho and one para ring positions.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which other position uses the same argument?",
+   "options": [
+    "Axial",
+    "Allylic",
+    "Vinylic",
+    "Anomeric"
+   ],
+   "correct": 1,
+   "why": "Allylic delocalization spreads over three carbons; benzylic over four.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A benzylic halide is good at which mechanisms?",
+   "options": [
+    "Both",
+    "SN1 only",
+    "SN2 only",
+    "Neither"
+   ],
+   "correct": 0,
+   "why": "Rare, and it is why benzyl bromide is used as an alkylating agent everywhere.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a primary benzylic halide good at SN1?",
+   "options": [
+    "Primary halides ionize readily",
+    "The C-X bond is weak",
+    "It cannot do SN2",
+    "Its cation is delocalized"
+   ],
+   "correct": 3,
+   "why": "It sits roughly where a tertiary alkyl halide does.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a benzylic halide also good at SN2?",
+   "options": [
+    "The halide is a better leaving group",
+    "The ring blocks elimination",
+    "The ring stabilizes the transition state",
+    "The carbon is tertiary"
+   ],
+   "correct": 2,
+   "why": "And a benzylic carbon is usually unhindered, which helps as well.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent brominates the benzylic position?",
+   "options": [
+    "Br2 with FeBr3",
+    "HBr",
+    "Br2 in water",
+    "NBS with light"
+   ],
+   "correct": 3,
+   "why": "Light means radicals, and the benzylic radical is by far the most stable.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is NBS used rather than Br2?",
+   "options": [
+    "It is a stronger brominating agent",
+    "It is a radical initiator itself",
+    "It is ionic",
+    "It keeps the Br2 concentration low"
+   ],
+   "correct": 3,
+   "why": "Low Br2 suppresses the ionic addition that would attack any alkene present.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What other position does NBS brominate?",
+   "options": [
+    "Anomeric",
+    "Allylic",
+    "Vinylic",
+    "Aromatic"
+   ],
+   "correct": 1,
+   "why": "Same reagent, same mechanism, and a selectivity problem if a molecule has both.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does hot KMnO4 do to toluene?",
+   "options": [
+    "Gives benzaldehyde",
+    "Oxidizes the ring",
+    "Nothing",
+    "Gives benzoic acid"
+   ],
+   "correct": 3,
+   "why": "The side chain is cut back to one carbon and oxidized to the carboxyl.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does hot KMnO4 do to propylbenzene?",
+   "options": [
+    "Gives benzoic acid",
+    "Gives propanoic acid",
+    "Gives 3-phenylpropanoic acid",
+    "Nothing"
+   ],
+   "correct": 0,
+   "why": "Chain length makes no difference; everything past the benzylic carbon is cut away.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does hot KMnO4 do to tert-butylbenzene?",
+   "options": [
+    "Gives 2-methylpropanoic acid",
+    "Oxidizes the ring",
+    "Nothing",
+    "Gives benzoic acid"
+   ],
+   "correct": 2,
+   "why": "There is no benzylic hydrogen, so the reaction cannot start.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does the tert-butylbenzene result reveal?",
+   "options": [
+    "That permanganate is weak",
+    "The reaction starts at a benzylic C-H",
+    "That the ring is reactive",
+    "That chain length matters"
+   ],
+   "correct": 1,
+   "why": "The one exception that shows what the mechanism requires.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Does hot KMnO4 attack the benzene ring?",
+   "options": [
+    "No",
+    "Yes, readily",
+    "Only with heat",
+    "Only in acid"
+   ],
+   "correct": 0,
+   "why": "Aromatic stabilization keeps the ring inert to conditions that destroy alkenes.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a radical abstract the benzylic hydrogen preferentially?",
+   "options": [
+    "It is the most accessible",
+    "Radicals prefer primary sites",
+    "That radical is most stable",
+    "That C-H bond is longest"
+   ],
+   "correct": 2,
+   "why": "Stability of the radical formed is what selectivity tracks.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What should a benzoic acid suggest retrosynthetically?",
+   "options": [
+    "A diazonium reaction",
+    "An oxidized alkylbenzene",
+    "A Grignard on CO2",
+    "A Friedel-Crafts acylation"
+   ],
+   "correct": 1,
+   "why": "Oxidation converts any alkyl chain to a carboxyl, so the chain identity is free.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which alkylbenzene will not oxidize?",
+   "options": [
+    "One with no benzylic H",
+    "One with a long chain",
+    "One with a branched chain",
+    "One with two rings"
+   ],
+   "correct": 0,
+   "why": "No benzylic hydrogen means no starting point.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is benzyl bromide used for?",
+   "options": [
+    "Reducing carbonyls",
+    "Protecting alkenes",
+    "Alkylating nucleophiles",
+    "Brominating rings"
+   ],
+   "correct": 2,
+   "why": "It appears in malonic ester and enamine chemistry for exactly this reason.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Is a benzylic anion stabilized?",
+   "options": [
+    "Only in acid",
+    "Yes, by the ring",
+    "No, anions are not",
+    "Only if the ring is substituted"
+   ],
+   "correct": 1,
+   "why": "The same resonance that stabilizes the cation and the radical.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What comparison does benzylic stabilization most resemble?",
+   "options": [
+    "Allylic, but wider",
+    "Hyperconjugation",
+    "Aromatic stabilization",
+    "Inductive withdrawal"
+   ],
+   "correct": 0,
+   "why": "One alkene replaced by a whole ring, so the charge spreads further.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which intermediate is NOT stabilized at a benzylic position?",
+   "options": [
+    "The cation",
+    "The radical",
+    "The anion",
+    "None; all three are"
+   ],
+   "correct": 3,
+   "why": "Cation, radical and anion are all delocalized by the same resonance.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What conditions does benzylic bromination need?",
+   "options": [
+    "Aqueous acid",
+    "A palladium catalyst",
+    "Light or a radical initiator",
+    "A Lewis acid"
+   ],
+   "correct": 2,
+   "why": "Ionic conditions would brominate the ring instead.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can an alkyl group be put on a ring and then oxidized?",
+   "options": [
+    "It protects the ring",
+    "It installs a carboxyl",
+    "It is cheaper",
+    "It avoids rearrangement"
+   ],
+   "correct": 1,
+   "why": "Electrophilic substitution cannot deliver a carboxyl group directly.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens to the carbons beyond the benzylic one in KMnO4 oxidation?",
+   "options": [
+    "They are lost",
+    "They become a second acid",
+    "They are reduced",
+    "They stay attached"
+   ],
+   "correct": 0,
+   "why": "Which is why chain length is irrelevant to the product.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which product comes from isopropylbenzene and hot KMnO4?",
+   "options": [
+    "2-Phenylpropanoic acid",
+    "Acetophenone",
+    "No reaction",
+    "Benzoic acid"
+   ],
+   "correct": 3,
+   "why": "One benzylic hydrogen is enough, and both methyls go with the rest of the chain.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Does Friedel-Crafts alkylation give a benzylic carbon?",
+   "options": [
+    "Only with primary halides",
+    "Only with acylation",
+    "Yes, always",
+    "No"
+   ],
+   "correct": 2,
+   "why": "Any carbon attached directly to the ring is benzylic by definition.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What limits selectivity if a molecule is both allylic and benzylic?",
+   "options": [
+    "NBS attacks only benzylic",
+    "NBS attacks both positions",
+    "NBS attacks neither",
+    "NBS attacks only allylic"
+   ],
+   "correct": 1,
+   "why": "One reagent and one mechanism means it cannot tell them apart.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is the benzylic C-H weaker than an ordinary alkane C-H?",
+   "options": [
+    "The radical it forms is stabilized",
+    "The bond is longer",
+    "The carbon is sp2",
+    "The ring withdraws inductively"
+   ],
+   "correct": 0,
+   "why": "Bond strength tracks the stability of the fragments it gives.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which position does an aromatic ring make reactive without being reactive itself?",
+   "options": [
+    "The ortho carbon",
+    "The para carbon",
+    "The ipso carbon",
+    "The benzylic carbon"
+   ],
+   "correct": 3,
+   "why": "The ring supplies the stabilization and stays intact.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "phenols": [
+  {
+   "q": "What is a phenol?",
+   "options": [
+    "An OH attached directly to a ring",
+    "An OH on a carbon next to a ring",
+    "An ether on a ring",
+    "A ketone on a ring"
+   ],
+   "correct": 0,
+   "why": "An OH on a carbon next to the ring is a benzylic alcohol, which behaves quite differently.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is phenol's approximate pKa?",
+   "options": [
+    "16",
+    "4.8",
+    "1",
+    "10"
+   ],
+   "correct": 3,
+   "why": "Six orders of magnitude more acidic than ethanol.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is ethanol's approximate pKa?",
+   "options": [
+    "4.8",
+    "20",
+    "16",
+    "10"
+   ],
+   "correct": 2,
+   "why": "Its conjugate base has the charge on one oxygen with nowhere to go.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is phenol more acidic than ethanol?",
+   "options": [
+    "It hydrogen bonds better",
+    "Its anion is delocalized",
+    "Its O-H bond is weaker",
+    "The ring withdraws inductively"
+   ],
+   "correct": 1,
+   "why": "Acidity is about the stability of the conjugate base, not the bond that breaks.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Where does the phenoxide charge go?",
+   "options": [
+    "Ortho and para",
+    "Onto the meta carbons",
+    "Onto all six equally",
+    "It stays on oxygen"
+   ],
+   "correct": 0,
+   "why": "Which is also why only ortho and para substituents affect the acidity much.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which base deprotonates a phenol?",
+   "options": [
+    "NaHCO3",
+    "Water",
+    "Pyridine",
+    "NaOH"
+   ],
+   "correct": 3,
+   "why": "Bicarbonate is not strong enough, which is what makes it useful as a discriminator.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which base deprotonates a carboxylic acid but not a phenol?",
+   "options": [
+    "NaNH2",
+    "LDA",
+    "NaHCO3",
+    "NaOH"
+   ],
+   "correct": 2,
+   "why": "Carbonic acid at pKa 6.4 sits between the two.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How do you separate a phenol from a carboxylic acid?",
+   "options": [
+    "Distill them",
+    "Shake with aqueous NaHCO3",
+    "Shake with aqueous NaOH",
+    "Shake with aqueous HCl"
+   ],
+   "correct": 1,
+   "why": "The acid leaves as its water-soluble salt and the phenol stays behind.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is carbonic acid's pKa?",
+   "options": [
+    "10",
+    "4.8",
+    "16",
+    "6.4"
+   ],
+   "correct": 3,
+   "why": "Between a phenol at 10 and a carboxylic acid at 4.8, which is the whole basis of the separation.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is 4-nitrophenol's approximate pKa?",
+   "options": [
+    "4.1",
+    "0.4",
+    "7.2",
+    "10"
+   ],
+   "correct": 2,
+   "why": "Nitro withdraws by resonance from para, taking the charge onto its own oxygens.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is picric acid's approximate pKa?",
+   "options": [
+    "4.1",
+    "7.2",
+    "10",
+    "0.4"
+   ],
+   "correct": 3,
+   "why": "2,4,6-trinitrophenol, more acidic than most carboxylic acids.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is 4-nitrophenol more acidic than 3-nitrophenol?",
+   "options": [
+    "Para can use resonance",
+    "Para is closer to the OH",
+    "Meta groups donate",
+    "Para is less hindered"
+   ],
+   "correct": 0,
+   "why": "From meta only induction is available, which is the smaller effect.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What kind of substituent makes a phenol more acidic?",
+   "options": [
+    "Aromatic",
+    "Electron-withdrawing",
+    "Electron-donating",
+    "Bulky"
+   ],
+   "correct": 1,
+   "why": "Anything that stabilizes the phenoxide strengthens the acid.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which positions matter most for a substituent's effect?",
+   "options": [
+    "Ortho and para",
+    "Meta",
+    "All equally",
+    "Only ipso"
+   ],
+   "correct": 0,
+   "why": "Only those can reach the negative charge by resonance.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Is OH an activator or deactivator on a ring?",
+   "options": [
+    "A weak deactivator",
+    "Neither",
+    "A strong activator",
+    "A strong deactivator"
+   ],
+   "correct": 2,
+   "why": "The same lone pair that stabilizes the anion also donates into the ring.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Is OH ortho/para or meta directing?",
+   "options": [
+    "Neither",
+    "Ortho/para",
+    "Meta",
+    "Both equally"
+   ],
+   "correct": 1,
+   "why": "Donation reaches the ortho and para positions, which is where the substitution goes.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does phenol plus bromine water give?",
+   "options": [
+    "2,4,6-tribromophenol",
+    "Monobromophenol",
+    "No reaction",
+    "A quinone"
+   ],
+   "correct": 0,
+   "why": "No Lewis acid catalyst is needed, and all three activated positions react at once.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does phenol brominate without a catalyst?",
+   "options": [
+    "Bromine water is more reactive",
+    "The OH is a catalyst",
+    "Water activates Br2",
+    "The ring is strongly activated"
+   ],
+   "correct": 3,
+   "why": "A Lewis acid is needed only for rings that are not already electron-rich.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Can a phenol undergo SN2 at its C-O bond?",
+   "options": [
+    "Only with a strong nucleophile",
+    "Only in acid",
+    "No, that carbon is sp2",
+    "Yes, readily"
+   ],
+   "correct": 2,
+   "why": "The backside is behind the ring, which rules the trajectory out entirely.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "In a Williamson ether synthesis with a phenol, what is the nucleophile?",
+   "options": [
+    "The base",
+    "The phenoxide",
+    "The alkyl halide",
+    "The phenol's ring"
+   ],
+   "correct": 1,
+   "why": "The aryl carbon can never be the electrophile in a substitution.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does oxidizing a phenol give?",
+   "options": [
+    "A quinone",
+    "A carboxylic acid",
+    "An aldehyde",
+    "An epoxide"
+   ],
+   "correct": 0,
+   "why": "Not aromatic any more, which is why quinones are colored.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why are quinones colored?",
+   "options": [
+    "They contain metals",
+    "They are radicals",
+    "They are ionic",
+    "They are conjugated and not aromatic"
+   ],
+   "correct": 3,
+   "why": "A long conjugated system with a small HOMO-LUMO gap absorbs visible light.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Can a phenol be dehydrated like an alcohol?",
+   "options": [
+    "Yes, with heat",
+    "Only if substituted",
+    "No",
+    "Yes, with acid"
+   ],
+   "correct": 2,
+   "why": "Nothing that needs SN1 or SN2 at that carbon works.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How are phenols usually made?",
+   "options": [
+    "By reducing quinones",
+    "From diazonium salts",
+    "By oxidizing benzene",
+    "From aryl halides directly"
+   ],
+   "correct": 1,
+   "why": "Warm water on an aryl diazonium salt is the standard route.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a phenol plus an acyl chloride give?",
+   "options": [
+    "An aryl ester",
+    "An aryl ketone",
+    "A quinone",
+    "An ether"
+   ],
+   "correct": 0,
+   "why": "Aspirin is one of these.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is 2,4-dinitrophenol's approximate pKa?",
+   "options": [
+    "7.2",
+    "10",
+    "0.4",
+    "4.1"
+   ],
+   "correct": 3,
+   "why": "Two nitro groups in resonance-capable positions, and now as acidic as a carboxylic acid.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a methyl group on a phenol slightly deactivating toward acidity?",
+   "options": [
+    "It withdraws inductively",
+    "It blocks solvation",
+    "It is a weak donor",
+    "It is bulky"
+   ],
+   "correct": 2,
+   "why": "Donating electron density destabilizes the anion, which weakens the acid.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which compound is least acidic?",
+   "options": [
+    "Acetic acid",
+    "Cyclohexanol",
+    "Phenol",
+    "4-Nitrophenol"
+   ],
+   "correct": 1,
+   "why": "An ordinary alcohol has no way to spread the charge at all.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which is more acidic, phenol or acetic acid?",
+   "options": [
+    "Acetic acid",
+    "Phenol",
+    "They are equal",
+    "It depends on solvent"
+   ],
+   "correct": 0,
+   "why": "4.8 against 10, because a carboxylate spreads charge over two equivalent oxygens.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a carboxylate beat a phenoxide at stabilizing charge?",
+   "options": [
+    "It is aromatic",
+    "It is smaller",
+    "It is planar",
+    "Charge sits on two electronegative oxygens"
+   ],
+   "correct": 3,
+   "why": "A phenoxide spreads charge onto carbons, which hold it less well than oxygen does.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "birch-reduction": [
+  {
+   "q": "What does a Birch reduction produce from benzene?",
+   "options": [
+    "A 1,3-cyclohexadiene",
+    "Cyclohexane",
+    "Cyclohexene",
+    "A 1,4-cyclohexadiene"
+   ],
+   "correct": 3,
+   "why": "The unconjugated isomer, which is the less stable of the two dienes.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What are the Birch conditions?",
+   "options": [
+    "Na or Li in liquid NH3 with an alcohol",
+    "H2 with Pd",
+    "NaBH4 in methanol",
+    "LiAlH4 in ether"
+   ],
+   "correct": 0,
+   "why": "A dissolving-metal reduction rather than a catalytic one.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does the deep blue color indicate?",
+   "options": [
+    "A charge-transfer complex",
+    "The radical anion",
+    "Solvated electrons",
+    "Dissolved sodium atoms"
+   ],
+   "correct": 2,
+   "why": "The reducing agent is a free electron in solution.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the sequence of steps?",
+   "options": [
+    "A concerted addition",
+    "e-, H+, e-, H+",
+    "Two electrons then two protons",
+    "Two protons then two electrons"
+   ],
+   "correct": 1,
+   "why": "Alternating, which is what makes the intermediates controllable.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the first intermediate?",
+   "options": [
+    "A radical anion",
+    "A carbanion",
+    "A carbocation",
+    "A radical"
+   ],
+   "correct": 0,
+   "why": "One electron added to the ring.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does the alcohol do?",
+   "options": [
+    "Reduces the ring",
+    "Acts as solvent",
+    "Coordinates the metal",
+    "Supplies protons"
+   ],
+   "correct": 3,
+   "why": "The electrons come from the metal and the solvent is ammonia.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is the 1,4-diene formed rather than the 1,3?",
+   "options": [
+    "The 1,3 would be aromatic",
+    "Sterics",
+    "Kinetic control",
+    "The 1,4 is more stable"
+   ],
+   "correct": 2,
+   "why": "Protonation happens where charge density is highest, not where stability is greatest.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which isomer is more stable?",
+   "options": [
+    "Neither is stable",
+    "The 1,3-diene",
+    "The 1,4-diene",
+    "They are equal"
+   ],
+   "correct": 1,
+   "why": "And it is not what forms, which is how you know stability is not deciding.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "With a donating group, where does the substituted carbon end up?",
+   "options": [
+    "On a double bond",
+    "sp3 and saturated",
+    "Removed",
+    "Unchanged as aromatic"
+   ],
+   "correct": 0,
+   "why": "A donor destabilizes charge on its own carbon, so the carbanion goes elsewhere.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "With a withdrawing group, where does the substituted carbon end up?",
+   "options": [
+    "On a double bond",
+    "Removed",
+    "It varies",
+    "Saturated"
+   ],
+   "correct": 3,
+   "why": "A withdrawing group holds the charge on its own carbon, so that carbon is protonated.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does anisole give on Birch reduction?",
+   "options": [
+    "1-Methoxycyclohexa-2,5-diene",
+    "Anisole is unreactive",
+    "Cyclohexanone",
+    "1-Methoxycyclohexa-1,4-diene"
+   ],
+   "correct": 3,
+   "why": "Methoxy is donating, so its carbon stays on a double bond.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does benzoic acid give on Birch reduction?",
+   "options": [
+    "Cyclohexa-1,4-diene-1-carboxylic acid",
+    "Benzoic acid is unreactive",
+    "Cyclohexanecarboxylic acid",
+    "Cyclohexa-2,5-diene-1-carboxylic acid"
+   ],
+   "correct": 3,
+   "why": "Carboxyl is withdrawing, so its carbon ends up sp3.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What single question answers both substituent rules?",
+   "options": [
+    "Which group is more electronegative",
+    "Which position is less hindered",
+    "Where is the carbanion most stable",
+    "Which group is bigger"
+   ],
+   "correct": 2,
+   "why": "That carbon gets protonated and comes out saturated.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reaction uses the same electron-then-proton pattern?",
+   "options": [
+    "Catalytic hydrogenation",
+    "Alkyne with Na/NH3",
+    "Lindlar hydrogenation",
+    "NaBH4 reduction"
+   ],
+   "correct": 1,
+   "why": "Both are dissolving-metal reductions, and both give the less-stable-looking product.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does catalytic hydrogenation give from benzene?",
+   "options": [
+    "Cyclohexane",
+    "A cyclohexadiene",
+    "Cyclohexene",
+    "No reaction, ever"
+   ],
+   "correct": 0,
+   "why": "It either leaves the ring alone or reduces it completely; there is no halfway.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is the Birch useful?",
+   "options": [
+    "It needs no metal",
+    "It works in water",
+    "It stops partway",
+    "It is faster"
+   ],
+   "correct": 2,
+   "why": "An unconjugated diene is a handle nothing else in the course provides.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a Birch-derived enol ether give on mild acid hydrolysis?",
+   "options": [
+    "An epoxide",
+    "A cyclohexenone",
+    "A diol",
+    "A phenol"
+   ],
+   "correct": 1,
+   "why": "Which is the standard route into a substituted cyclohexenone from a flat ring.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which starting material gives an enol ether on Birch reduction?",
+   "options": [
+    "Anisole",
+    "Benzoic acid",
+    "Toluene",
+    "Nitrobenzene"
+   ],
+   "correct": 0,
+   "why": "The methoxy stays on a double bond, and a C=C with an OR on it is an enol ether.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can an unconjugated diene be functionalized selectively?",
+   "options": [
+    "It is planar",
+    "It is aromatic",
+    "Its two double bonds are independent",
+    "It is more reactive"
+   ],
+   "correct": 2,
+   "why": "A conjugated diene reacts as one system, which makes single-site chemistry harder.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What kind of control does the Birch operate under?",
+   "options": [
+    "Neither",
+    "Kinetic",
+    "Thermodynamic",
+    "Steric"
+   ],
+   "correct": 1,
+   "why": "The product that forms fastest, rather than the one that is most stable.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which metal is used besides sodium?",
+   "options": [
+    "Lithium",
+    "Magnesium",
+    "Zinc",
+    "Copper"
+   ],
+   "correct": 0,
+   "why": "Both dissolve in liquid ammonia to give solvated electrons.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many electrons are added in total?",
+   "options": [
+    "One",
+    "Three",
+    "Four",
+    "Two"
+   ],
+   "correct": 3,
+   "why": "Two electrons and two protons, alternating.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the solvent?",
+   "options": [
+    "THF",
+    "Water",
+    "Liquid ammonia",
+    "Ether"
+   ],
+   "correct": 2,
+   "why": "It solvates the electrons, which is what makes the blue solution.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Does a Birch reduction touch an isolated alkene?",
+   "options": [
+    "Only with excess metal",
+    "No, it wants the ring",
+    "Yes, first",
+    "Yes, equally"
+   ],
+   "correct": 1,
+   "why": "Which is the opposite selectivity from catalytic hydrogenation.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a withdrawing group put its carbon sp3?",
+   "options": [
+    "It holds the carbanion",
+    "It is protonated directly",
+    "It blocks the double bond",
+    "It is reduced too"
+   ],
+   "correct": 0,
+   "why": "The carbanion sits where the substituent lets it, and that carbon gets the proton.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a radical anion?",
+   "options": [
+    "A radical pair",
+    "A dianion",
+    "A cation radical",
+    "A species with an unpaired electron and a charge"
+   ],
+   "correct": 3,
+   "why": "One electron added to a neutral molecule gives both at once.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which position is protonated second?",
+   "options": [
+    "The least hindered",
+    "Randomly",
+    "Where the carbanion's charge is highest",
+    "The most substituted"
+   ],
+   "correct": 2,
+   "why": "Which is what sets the 1,4 relationship in the product.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does toluene give on Birch reduction?",
+   "options": [
+    "1-Methylcyclohexa-2,5-diene",
+    "Methylcyclohexane",
+    "No reaction",
+    "1-Methylcyclohexa-1,4-diene"
+   ],
+   "correct": 3,
+   "why": "Methyl is a weak donor, and direction rather than strength decides the outcome.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does the Birch not over-reduce to cyclohexane?",
+   "options": [
+    "It is run cold",
+    "The diene is not aromatic and resists further electron addition",
+    "The metal is consumed",
+    "The alcohol stops it"
+   ],
+   "correct": 1,
+   "why": "Adding an electron to an isolated alkene is far harder than to an aromatic ring.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What makes a dissolving-metal reduction different from hydrogenation?",
+   "options": [
+    "It adds electrons, not surface hydrogens",
+    "It needs no reagent",
+    "It is reversible",
+    "It is faster"
+   ],
+   "correct": 0,
+   "why": "Which is why it can stop where a surface reaction cannot.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "diazonium-chemistry": [
+  {
+   "q": "What is the formula of an aryl diazonium ion?",
+   "options": [
+    "Ar-NH2",
+    "Ar-NO2",
+    "Ar-N3",
+    "Ar-N2+"
+   ],
+   "correct": 3,
+   "why": "And it leaves as N2 gas, which is what makes it so useful.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How is a diazonium salt made?",
+   "options": [
+    "An aryl amine plus HNO2",
+    "An aryl halide with NaN3",
+    "Nitrobenzene with acid",
+    "A phenol with NaNO2"
+   ],
+   "correct": 0,
+   "why": "Cold, because the salt decomposes above about 5 degrees.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "At what temperature is diazotization run?",
+   "options": [
+    "Reflux",
+    "Minus 78 degrees",
+    "Near 0 degrees",
+    "Room temperature"
+   ],
+   "correct": 2,
+   "why": "Warmer and the salt loses nitrogen before you can use it.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is N2+ such a good leaving group?",
+   "options": [
+    "Nitrogen is electronegative",
+    "It leaves as stable N2 gas",
+    "It is positively charged",
+    "The C-N bond is weak"
+   ],
+   "correct": 1,
+   "why": "A gas that escapes the solution and cannot come back.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What are the three steps to reach a diazonium salt from benzene?",
+   "options": [
+    "Nitrate, reduce, diazotize",
+    "Brominate, aminate, oxidize",
+    "Sulfonate, reduce, nitrate",
+    "Acylate, reduce, diazotize"
+   ],
+   "correct": 0,
+   "why": "The first two are reactions the course already covered.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What reduces a nitro group to an amine?",
+   "options": [
+    "NaBH4",
+    "PCC",
+    "mCPBA",
+    "Fe or Sn with HCl"
+   ],
+   "correct": 3,
+   "why": "Or H2 with a catalyst, which does the same job.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does CuCl do to a diazonium salt?",
+   "options": [
+    "Gives the nitrile",
+    "Removes the group",
+    "Gives Ar-Cl",
+    "Gives the phenol"
+   ],
+   "correct": 2,
+   "why": "A Sandmeyer reaction.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does CuCN do to a diazonium salt?",
+   "options": [
+    "Gives the amine back",
+    "Gives the aryl nitrile",
+    "Gives the aryl chloride",
+    "Gives the phenol"
+   ],
+   "correct": 1,
+   "why": "A group electrophilic substitution cannot install at all.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does KI do to a diazonium salt?",
+   "options": [
+    "Gives the aryl iodide",
+    "Gives the phenol",
+    "Gives the aryl fluoride",
+    "Nothing"
+   ],
+   "correct": 0,
+   "why": "No copper salt is needed for the iodide.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does HBF4 then heat give?",
+   "options": [
+    "The aryl bromide",
+    "A borate ester",
+    "The phenol",
+    "Ar-F"
+   ],
+   "correct": 3,
+   "why": "The Schiemann reaction, and effectively the only route to an aryl fluoride.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does warm water give?",
+   "options": [
+    "An ether",
+    "A quinone",
+    "The phenol",
+    "The aryl alcohol on the side chain"
+   ],
+   "correct": 2,
+   "why": "The standard way phenols are made, since no substitution works at that C-O bond.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does H3PO2 give?",
+   "options": [
+    "The amine",
+    "Ar-H",
+    "The phosphonate",
+    "The phenol"
+   ],
+   "correct": 1,
+   "why": "Which is the most useful row on the menu once you see what it is for.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which groups can diazonium chemistry install that EAS cannot?",
+   "options": [
+    "OH, CN, F, I",
+    "Cl and Br",
+    "NO2 and SO3H",
+    "Alkyl and acyl"
+   ],
+   "correct": 0,
+   "why": "Four groups no electrophilic substitution reaches.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the point of replacing N2+ with H?",
+   "options": [
+    "To shorten the synthesis",
+    "To reduce the ring",
+    "To make the ring aromatic",
+    "The amine directed a previous step and is no longer needed"
+   ],
+   "correct": 3,
+   "why": "A substituent installed to control a step and then deleted.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does NH2 do as a substituent on a ring?",
+   "options": [
+    "Weakly activates, meta",
+    "Nothing",
+    "Activates, ortho/para",
+    "Deactivates, meta"
+   ],
+   "correct": 2,
+   "why": "Which is why it is worth installing purely to direct.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the aromatic analogue of a protecting group here?",
+   "options": [
+    "A halogen",
+    "An amine installed to direct, then removed",
+    "A nitro group",
+    "A methyl group"
+   ],
+   "correct": 1,
+   "why": "Same idea as the second carbonyl of a malonic ester synthesis.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which other group is used reversibly to block a position?",
+   "options": [
+    "Sulfonic acid",
+    "Nitro",
+    "Methyl",
+    "Chloro"
+   ],
+   "correct": 0,
+   "why": "Sulfonation is reversible, so the group can be removed afterwards.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is azo coupling?",
+   "options": [
+    "Two diazonium salts joining",
+    "A radical coupling",
+    "An amine oxidation",
+    "A diazonium salt attacking an activated ring"
+   ],
+   "correct": 3,
+   "why": "The diazonium acts as a weak electrophile here rather than as a substrate.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which rings will couple with a diazonium salt?",
+   "options": [
+    "Nitrobenzene",
+    "Any aryl halide",
+    "Activated ones",
+    "Benzene"
+   ],
+   "correct": 2,
+   "why": "The diazonium is too weak an electrophile for anything less activated.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Where does azo coupling occur?",
+   "options": [
+    "At the meta position",
+    "At the ipso position",
+    "At the nitrogen",
+    "At the para position"
+   ],
+   "correct": 3,
+   "why": "Ortho/para directors send it there, and para is less hindered.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why are azo compounds colored?",
+   "options": [
+    "They are ionic",
+    "A long conjugated system absorbs visible light",
+    "They contain metals",
+    "They are radicals"
+   ],
+   "correct": 1,
+   "why": "Two rings joined by a conjugated N=N bridge gives a small HOMO-LUMO gap.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What industry did azo chemistry create?",
+   "options": [
+    "Synthetic dyes",
+    "Plastics",
+    "Pharmaceuticals",
+    "Fertilizers"
+   ],
+   "correct": 0,
+   "why": "Methyl orange is one of these compounds.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can 1,3,5-tribromobenzene not be made by direct bromination?",
+   "options": [
+    "Br2 cannot brominate three times",
+    "The ring would be destroyed",
+    "Br directs ortho/para",
+    "Bromine deactivates too strongly"
+   ],
+   "correct": 2,
+   "why": "Each bromine sends the next one ortho or para, so 1,3,5 is unreachable.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How is 1,3,5-tribromobenzene made?",
+   "options": [
+    "Use a palladium catalyst",
+    "Via tribromoaniline",
+    "Brominate benzene three times",
+    "Nitrate then brominate"
+   ],
+   "correct": 1,
+   "why": "The amine directs all three bromines, then H3PO2 deletes it.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does aniline plus bromine water give?",
+   "options": [
+    "2,4,6-Tribromoaniline",
+    "Monobromoaniline",
+    "No reaction",
+    "A quinone"
+   ],
+   "correct": 0,
+   "why": "Strongly activated, so all three positions react without a catalyst.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a diazonium salt decompose to if warmed?",
+   "options": [
+    "An amine",
+    "A nitro compound",
+    "A phenol only",
+    "An aryl cation"
+   ],
+   "correct": 3,
+   "why": "Which is why the reaction is run cold and used immediately.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the Sandmeyer reaction specifically?",
+   "options": [
+    "Azo coupling",
+    "Diazotization itself",
+    "Copper-mediated substitution of N2+",
+    "Any diazonium reaction"
+   ],
+   "correct": 2,
+   "why": "CuCl, CuBr and CuCN are the three standard cases.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reaction sequence lets you place a group meta when it would go ortho/para?",
+   "options": [
+    "Use excess reagent",
+    "Direct, then delete",
+    "Use a stronger Lewis acid",
+    "Run it colder"
+   ],
+   "correct": 1,
+   "why": "Directing effects cannot be argued with, so you change what is doing the directing.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Can an aryl halide be converted to a phenol directly?",
+   "options": [
+    "Only if activated",
+    "Yes, with NaOH",
+    "Yes, with water",
+    "Yes, with a Grignard"
+   ],
+   "correct": 0,
+   "why": "An unactivated aryl halide does neither SN1 nor SN2.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is diazonium chemistry described as a hub?",
+   "options": [
+    "It is used in every synthesis",
+    "It links two rings",
+    "It is reversible",
+    "One route, many products"
+   ],
+   "correct": 3,
+   "why": "A single ring position becomes a socket almost anything can be plugged into.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
  ]
 }

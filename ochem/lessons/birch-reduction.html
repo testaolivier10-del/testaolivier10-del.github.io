@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birch reduction — Aromatic Follow-Through | Organic Chemistry</title>
+<meta name="description" content="Learn how dissolving-metal reduction alternates electrons and protons, why the product is the unconjugated 1,4-diene, and why donating and withdrawing groups end up in opposite states.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/birch-reduction.html">
+<meta property="og:title" content="Birch reduction — Aromatic Follow-Through | Organic Chemistry">
+<meta property="og:description" content="Learn how dissolving-metal reduction alternates electrons and protons, why the product is the unconjugated 1,4-diene, and why donating and withdrawing groups end up in opposite states.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/birch-reduction.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/birch-reduction.html#lesson",
+      "name": "Birch reduction",
+      "url": "https://levlprep.com/ochem/lessons/birch-reduction.html",
+      "description": "Learn how dissolving-metal reduction alternates electrons and protons, why the product is the unconjugated 1,4-diene, and why donating and withdrawing groups end up in opposite states.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Birch reduction"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Aromatic Follow-Through",
+          "item": "https://levlprep.com/ochem/learn.html#m-aromatic-breadth"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Birch reduction",
+          "item": "https://levlprep.com/ochem/lessons/birch-reduction.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 22 &middot; Aromatic Follow-Through</div>
+    <h1 style="margin-bottom:4px;">Birch reduction.</h1>
+    <p class="lede" style="margin-top:0;">The only way to reduce a benzene ring partway rather than not at all or completely.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/birch-reduction.html">Birch reduction &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="diazonium-chemistry.html">Diazonium salts</a> &middot; <a href="hydrogenation.html">Hydrogenation</a> &middot; <a href="aromaticity.html">Aromaticity</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* The substituent rule is the only testable thing here, and it inverts, so
+     the sort step is four rings and the question "does the substituted carbon
+     end up sp3 or on a double bond". */
+  var CASES = [
+    { id:'r1', t:'<b>Anisole</b> &nbsp;<span style="color:var(--muted);">(OCH₃ — donating)</span>', right:'alkene',
+      why:'On a double bond. A donating group destabilizes negative charge on its own carbon, so the carbanion goes elsewhere, that carbon never gets protonated, and it stays sp².' },
+    { id:'r2', t:'<b>Benzoic acid</b> &nbsp;<span style="color:var(--muted);">(COOH — withdrawing)</span>', right:'sp3',
+      why:'sp³. A withdrawing group stabilizes negative charge on its own carbon, so the carbanion sits there, gets protonated there, and that carbon comes out saturated.' },
+    { id:'r3', t:'<b>Toluene</b> &nbsp;<span style="color:var(--muted);">(CH₃ — weakly donating)</span>', right:'alkene',
+      why:'On a double bond. A methyl group is a weak donor, but it pushes the same way as a methoxy — the direction of the effect decides the outcome, not its size.' },
+    { id:'r4', t:'<b>Acetophenone</b> &nbsp;<span style="color:var(--muted);">(COCH₃ — withdrawing)</span>', right:'sp3',
+      why:'sp³, for the same reason as benzoic acid. Any group that can accept negative charge draws the carbanion onto its own carbon and ends up saturated.' }
+  ];
+  var OPTS = [ { k:'alkene', l:'On a double bond' }, { k:'sp3', l:'sp³, saturated' } ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'birch-reduction',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The reduction that stops halfway.',
+        bodyHtml: '<p class="step-body">Benzene resists almost everything. Catalytic hydrogenation reduces alkenes and alkynes readily and leaves an aromatic ring alone unless you force it with pressure and heat &mdash; and when you do force it, you get the fully saturated <b>cyclohexane</b>.</p>' +
+          '<p class="step-body">What you cannot get that way is the useful product: the ring reduced <i>partly</i>, stopping at a cyclohexadiene. The <b>Birch reduction</b> stops there, because it works by an entirely different mechanism.</p>' +
+          '<div class="explain-box">Sodium or lithium dissolved in <b>liquid ammonia</b>, with an alcohol present as the proton source. The ammonia turns deep blue, which is solvated electrons in solution &mdash; the reducing agent is a free electron rather than a hydrogen on a metal surface.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Electron, proton, electron, proton.',
+        bodyHtml: '<p class="step-body">Four steps, alternating:</p>' +
+          '<ul class="step-body">' +
+          '<li>An electron adds to the ring, giving a <b>radical anion</b>.</li>' +
+          '<li>The alcohol protonates it.</li>' +
+          '<li>A second electron adds, giving a <b>carbanion</b>.</li>' +
+          '<li>The alcohol protonates that.</li>' +
+          '</ul>' +
+          '<p class="step-body">Two electrons and two protons, and the product is a <b>1,4-cyclohexadiene</b> &mdash; note, <i>not</i> the conjugated 1,3-isomer, which is the more stable of the two.</p>' +
+          '<div class="explain-box">Getting the less stable product is the tell that this is <b>kinetic control</b>. The second protonation happens where the carbanion&rsquo;s charge density is highest, and that lands the two double bonds 1,4. Stability never gets a vote &mdash; which is the same argument that gave the unstabilized Wittig its <i>cis</i> alkene.</div>' +
+          '<p class="step-body" style="margin-bottom:0;">You have seen this mechanism before: Na/NH₃ reducing an alkyne to a <i>trans</i> alkene is the same electron-then-proton pattern. Dissolving-metal reductions add electrons where catalytic hydrogenation adds a surface.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Where does the substituted carbon end up?</h2>' +
+            '<p class="step-body">One question answers all four: <b>where does the carbanion want to sit?</b> It goes wherever the substituent lets it, gets protonated there, and that carbon comes out sp&sup3;.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:13.5px;">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Where the substituted carbon ends up">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Ask whether this group would be happy with a negative charge on its own carbon. If yes, the carbanion sits there and gets protonated there.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four, and none of them needed the two rules memorized separately — only the one question about the carbanion.'
+                  : 'All four, first time. Donors push the charge away and stay unsaturated; acceptors hold it and end up saturated.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'Why does the Birch give the 1,4-diene rather than the conjugated 1,3-diene?',
+        options: [
+          'The 1,4-isomer is more stable',
+          'The reaction is under kinetic control, and the carbanion protonates where its charge is highest',
+          'The 1,3-isomer would be aromatic',
+          'The alcohol cannot reach the 1,3 position'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. The 1,3-isomer is genuinely the more stable of the two — conjugation is worth something — and the reaction does not produce it, which is precisely what tells you stability is not deciding. The protonation happens fastest where the carbanion’s charge density is greatest, and that position puts the remaining double bonds 1,4.',
+        wrongFeedback: 'The conjugated isomer is the more stable one, and it is not what forms. What does that tell you about which kind of control is operating?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'What does the deep blue color of the reaction mixture indicate?',
+        options: [
+          'Solvated electrons in liquid ammonia',
+          'A charge-transfer complex with the ring',
+          'Dissolved sodium metal as atoms',
+          'The radical anion of the aromatic ring'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. Sodium dissolving in liquid ammonia gives Na⁺ and an electron that the ammonia solvates in its own right, and that solvated electron absorbs strongly enough to color the solution deep blue. It is the reducing agent, which is what makes this a dissolving-metal reduction rather than a hydrogenation.',
+        wrongFeedback: 'Ask what sodium metal gives up when it dissolves, and what the ammonia does with it.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Why you would want a 1,4-cyclohexadiene.',
+        bodyHtml: '<p class="step-body">Because it is a handle nothing else in the course gives you. An <b>unconjugated</b> diene can be epoxidized, hydrated or hydrogenated at one double bond selectively, which a conjugated one makes much harder.</p>' +
+          '<p class="step-body">And there is one sequence worth knowing by name. Birch an <b>anisole</b> &mdash; a methoxy group is donating, so the substituted carbon stays on a double bond &mdash; and what you have made is an <b>enol ether</b>. Mild aqueous acid hydrolyzes an enol ether to a carbonyl, and the product is a <b>cyclohexenone</b>.</p>' +
+          '<div class="explain-box">That is worth connecting forward. Cyclohexenones are what the Robinson chapter was about, and they are Michael acceptors in their own right. Birch-then-hydrolyze is a route into one that starts from a flat aromatic ring, which no condensation could do.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'What role does the alcohol play in a Birch reduction?',
+        options: [
+          'It is the proton source',
+          'It is the reducing agent',
+          'It is the solvent',
+          'It prevents over-reduction by coordinating the metal'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. The electrons come from the dissolved metal and the solvent is liquid ammonia; the alcohol is there to protonate the radical anion and then the carbanion. Leave it out and the intermediates have nothing to take a proton from until workup, which loses the control the reaction depends on.',
+        wrongFeedback: 'Three things are in the flask — metal, ammonia, alcohol — and the mechanism alternates electrons with protons. Which one supplies the protons?'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Benzoic acid and anisole both undergo Birch reduction. Why do their substituted carbons end up in opposite states?',
+        options: [
+          'Benzoic acid is a stronger acid, so it is protonated first',
+          'One stabilizes negative charge on its own carbon and the other destabilizes it',
+          'The carboxyl group is reduced and the methoxy group is not',
+          'They are different because one is meta-directing'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and this is why the two rules never need to be memorized separately. The whole reaction hinges on where the carbanion intermediate sits, because that carbon is the one that gets protonated and therefore ends up sp³. A carboxyl group is happy to accept negative charge onto itself, so the carbanion goes to the carbon bearing it — and benzoic acid comes out as the cyclohexa-2,5-diene, with the substituted carbon saturated. A methoxy group pushes electron density in and wants nothing to do with a negative charge next door, so the carbanion goes elsewhere, that carbon is never protonated, and anisole comes out as the cyclohexa-1,4-diene with the substituted carbon still on a double bond. One question, asked of the intermediate rather than of the starting material, and both rows fall out.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

@@ -1073,9 +1073,36 @@ carbon leaves the phosphonium with no hydrogen to remove.
 the course from 83 topics to 98, at about 1.5 KB per chapter of course map,
 which is the number to check the growth against next time.
 
-#### Units 8–9 — **not started**
+#### Unit 8 — Aromatic Follow-Through — **complete**
 
-Aromatic follow-through · polymers.
+Five sections, five lessons, 150 questions, five concepts, five figures,
+appended as **Chapter 22**. The aromatic chapter taught one reaction —
+electrophilic substitution — and stopped. This is everything that follows from
+it.
+
+| Section | Covers |
+|---|---|
+| S<sub>N</sub>Ar and benzyne | Why an aryl halide does neither S<sub>N</sub>1 nor S<sub>N</sub>2, the two routes as mechanistic opposites, why F is the best leaving group in one of them |
+| Benzylic reactivity | Cations, radicals and anions all stabilized by one resonance; both substitution mechanisms; NBS; side-chain oxidation and its one exception |
+| Phenols | pKa 10 and where it comes from, why position beats presence, the bicarbonate separation, a C–O bond nothing substitutes at |
+| Birch reduction | Dissolving-metal alternation, the unconjugated product as kinetic control, and the two substituent rules as one question |
+| Diazonium salts and Sandmeyer | The leaving group that departs as N₂, the four groups EAS cannot install, and deleting a director as a protecting-group move |
+
+**The unit is built around pairs of opposites**, which is what makes it
+learnable rather than a list. S<sub>N</sub>Ar and benzyne run the same two
+steps in opposite orders. A donating and a withdrawing group send a Birch
+carbanion to opposite carbons — one question, not two rules. And fluorine is
+the *best* leaving group in S<sub>N</sub>Ar and the worst everywhere else,
+because the C–X bond is not breaking in the slow step.
+
+**The strengthened figure test earned its place immediately.** The new
+`phenol-pka-scale` figure had a summary line running off the left edge, and the
+test caught it on the first build — the check that did not exist two chapters
+ago.
+
+#### Unit 9 — **not started**
+
+Polymers.
 
 ### Phase 9.4 — Depth in the existing units — **not started**
 

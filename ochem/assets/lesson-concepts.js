@@ -123,6 +123,26 @@
       2:['migratory-aptitude'], 3:['migratory-aptitude'], 4:['migratory-aptitude'],
       6:['migratory-aptitude'], 7:['migratory-aptitude'] } },
 
+    'nucleophilic-aromatic': { n:8, steps:{
+      2:['aromatic-nucleophilic'], 3:['aromatic-nucleophilic'], 4:['aromatic-nucleophilic'],
+      6:['aromatic-nucleophilic'], 7:['aromatic-nucleophilic'] } },
+
+    'benzylic-reactivity': { n:8, steps:{
+      2:['benzylic-stabilization'], 3:['benzylic-stabilization'], 4:['benzylic-stabilization'],
+      6:['benzylic-stabilization'], 7:['benzylic-stabilization'] } },
+
+    'phenols': { n:8, steps:{
+      2:['phenol-acidity'], 3:['phenol-acidity'], 4:['phenol-acidity'],
+      6:['phenol-acidity'], 7:['phenol-acidity'] } },
+
+    'birch-reduction': { n:8, steps:{
+      2:['partial-reduction'], 3:['partial-reduction'], 4:['partial-reduction'],
+      6:['partial-reduction'], 7:['partial-reduction'] } },
+
+    'diazonium-chemistry': { n:8, steps:{
+      2:['diazonium-hub'], 3:['diazonium-hub'], 4:['diazonium-hub'],
+      6:['diazonium-hub'], 7:['diazonium-hub','aromatic-nucleophilic'] } },
+
     /* The oxidation & reduction chapter. Graded steps are 2, 3, 4, 6, 7. */
     'oxidation-states': { n:8, steps:{
       2:['oxidation-level'],

@@ -2422,6 +2422,213 @@ FIGURES.push({
   note: 'The order is not a separate fact to memorize. Partway through the shift the migrating carbon is electron-poor, so whatever stabilizes a carbocation stabilizes this transition state — same ranking, arriving from a different direction. The practical shortcut: in a methyl ketone the methyl essentially never migrates, so the product is the acetate ester of whatever the other group was.',
 });
 
+
+/* ----------------------------------------------------------------- 43 ---
+   Two mechanisms students routinely merge, and the thing that separates
+   them is the ORDER of the two steps. Drawn as two tracks running opposite
+   ways, the contrast is structural rather than a table to memorize. */
+FIGURES.push({
+  id: 'snar-vs-benzyne',
+  section: 'nucleophilic-aromatic',
+  anchor: '<h3>Telling them apart</h3>',
+  viewBox: '0 0 760 330',
+  alt: 'The SNAr track adding then eliminating through a Meisenheimer complex against the benzyne track eliminating then adding to give two products',
+  build() {
+    let s = '';
+    const track = (y, title, a, b, out, kind) => {
+      s += text(24, y - 22, title, { cls: 'fg-tag', anchor: 'start', size: 11 });
+      const boxes = [['Ar–X', null], [a, kind], [b, kind], [out, 'ok']];
+      boxes.forEach((bx, i) => {
+        const x = 24 + i * 176;
+        s += panel(x, y, 150, 44, { kind: bx[1] === 'ok' ? null : bx[1] });
+        s += text(x + 75, y + 27, bx[0], { cls: 'fg-lbl', size: 11.5 });
+        if (i) s += arrow(P(x - 24, y + 22), P(x - 4, y + 22));
+      });
+    };
+    track(58,  'SₙAr — needs an EWG ortho or para', 'add the nucleophile',
+          'Meisenheimer anion', 'ONE product', 'hi');
+    track(178, 'Benzyne — needs only an ortho H', 'eliminate HX',
+          'strained benzyne', 'TWO products', 'warn');
+
+    s += text(400, 122, 'add first, then eliminate', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(400, 242, 'eliminate first, then add', { cls: 'fg-tag-good', size: 10.5 });
+
+    s += rule(24, 268, 700, 268);
+    s += text(360, 292, 'The two steps are the same two steps, run in opposite orders — and that is what', { cls: 'fg-lbl', size: 12 });
+    s += text(360, 314, 'decides whether the nucleophile can land anywhere except where the halide was.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'The two routes to a nucleophile on a ring, which are mechanistic opposites. SₙAr adds first, through an anion the withdrawing groups stabilize, so the nucleophile arrives exactly where the halide was. Benzyne eliminates first, and because the strained bond it forms is symmetric, the nucleophile can land on either of two carbons.',
+  note: 'Read the substrate before choosing. Withdrawing groups <b>ortho or para</b> to the halide mean SₙAr — meta does nothing, because only ortho and para reach the charge by resonance. A bare ring plus NaNH₂ means benzyne. A ring with neither activation nor an ortho hydrogen runs neither, which is the answer people skip past.',
+});
+
+/* ----------------------------------------------------------------- 44 ---
+   Side-chain oxidation is the most predictable reaction in the section and
+   its one exception is what reveals the mechanism, so the figure is three
+   substrates with the benzylic C-H circled or absent. */
+FIGURES.push({
+  id: 'side-chain-cut',
+  section: 'benzylic-reactivity',
+  anchor: '<h3>Radical bromination, and the reagent that makes it selective</h3>',
+  viewBox: '0 0 760 320',
+  alt: 'Toluene and propylbenzene both giving benzoic acid with hot permanganate while tert-butylbenzene does not react',
+  build() {
+    let s = '';
+    const row = (y, name, chain, hasH, out, kind) => {
+      s += label(24, y + 4, name, { anchor: 'start', size: 12 });
+      s += text(210, y + 4, chain, { cls: 'fg-sm', size: 11 });
+      s += text(392, y + 4, hasH ? 'yes' : 'none', { cls: hasH ? 'fg-tag-good' : 'fg-tag', size: 11 });
+      if (hasH) s += arrow(P(432, y), P(482, y));
+      s += text(590, y + 4, out, { cls: kind === 'warn' ? 'fg-tag' : 'fg-lbl', size: 12 });
+    };
+    s += tag(90, 44, 'substrate');
+    s += tag(210, 44, 'side chain');
+    s += tag(392, 44, 'benzylic H?');
+    s += tag(590, 44, 'hot KMnO₄ gives');
+    s += rule(24, 56, 700, 56);
+    row(92,  'Toluene',           '–CH₃',            true,  'benzoic acid', null);
+    row(142, 'Propylbenzene',     '–CH₂CH₂CH₃', true,  'benzoic acid', null);
+    row(192, 'Isopropylbenzene',  '–CH(CH₃)₂',     true,  'benzoic acid', null);
+    row(242, 'tert-Butylbenzene', '–C(CH₃)₃',      false, 'no reaction',  'warn');
+
+    s += rule(24, 268, 700, 268);
+    s += text(360, 294, 'Chain length is irrelevant — everything past the benzylic carbon is cut away.', { cls: 'fg-lbl', size: 12 });
+    s += text(360, 314, 'One hydrogen on the carbon touching the ring is the entire requirement.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'Hot permanganate cuts any alkyl side chain back to a single carbon and oxidizes it to a carboxyl, so three different chains give the same benzoic acid. <i>tert</i>-Butylbenzene is the exception, and it is the one that tells you what the mechanism needs.',
+  note: 'The ring itself survives conditions that would cleave an isolated alkene without hesitation, which is aromatic stabilization earning its name. Retrosynthetically the reaction is a route rather than a fact: a benzoic acid should make you ask which alkylbenzene it came from, because the oxidation does not care what the chain was and electrophilic substitution cannot deliver a carboxyl directly.',
+});
+
+/* ----------------------------------------------------------------- 45 ---
+   The pKa numbers only mean something next to each other, and the pair of
+   nitrophenols is the whole argument that POSITION beats presence. */
+FIGURES.push({
+  id: 'phenol-pka-scale',
+  section: 'phenols',
+  anchor: '<h3>The ring is strongly activated</h3>',
+  viewBox: '0 0 760 312',
+  alt: 'A pKa scale from 0 to 16 placing ethanol, phenol, the two nitrophenols, picric acid and acetic acid, with the bicarbonate cut marked',
+  build() {
+    let s = '';
+    const x = (p) => 80 + ((16 - p) / 16) * 600;
+    s += rule(72, 176, 688, 176);
+    for (let p = 0; p <= 16; p += 4) {
+      s += rule(x(p), 176, x(p), 183);
+      s += text(x(p), 198, String(p), { cls: 'fg-sm', size: 10 });
+    }
+    s += text(380, 220, 'pKₐ  —  more acidic to the right', { cls: 'fg-tag', size: 11 });
+
+    const mark = (p, name, up, kind) => {
+      s += rule(x(p), up ? 96 : 132, x(p), 176);
+      s += text(x(p), up ? 88 : 124, name, { cls: kind || 'fg-lbl', size: 11 });
+    };
+    mark(16,   'ethanol',        true,  null);
+    mark(10,   'phenol',         true,  null);
+    mark(8.4,  '3-nitro (meta)', false, 'fg-tag');
+    mark(7.2,  '4-nitro (para)', true,  'fg-tag-good');
+    mark(4.8,  'acetic acid',    false, null);
+    mark(0.4,  'picric acid',    true,  null);
+
+    // The bicarbonate cut: everything right of 6.4 is deprotonated by HCO3-.
+    s += rule(x(6.4), 56, x(6.4), 176);
+    s += text(x(6.4) + 4, 48, 'carbonic acid, 6.4', { cls: 'fg-tag', anchor: 'start', size: 10.5 });
+    s += text(x(6.4) + 4, 66, 'NaHCO₃ deprotonates only past here', { cls: 'fg-sm', anchor: 'start', size: 9.5 });
+
+    s += rule(24, 244, 700, 244);
+    s += text(360, 268, 'The two nitrophenols are the same group on the same ring,', { cls: 'fg-lbl', size: 12 });
+    s += text(360, 290, '1.2 pK\u2090 units apart on position alone.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'Where a phenol sits. Six units below an alcohol because the phenoxide delocalizes into the ring, and moved further by substituents — but only by those that can reach the charge. The meta and para nitrophenols differ by 1.2 pKa units with the identical group on the identical ring.',
+  note: 'The carbonic acid line is the practical one. Bicarbonate deprotonates anything more acidic than pKa 6.4, which means a carboxylic acid and not a phenol — so shaking a mixture with aqueous NaHCO₃ pulls the acid into the water layer and leaves the phenol behind. That is a pKa table being used rather than recited.',
+});
+
+/* ----------------------------------------------------------------- 46 ---
+   The substituent rule inverts, and students memorize it as two unrelated
+   rows. Drawing the carbanion in each case shows it is one question. */
+FIGURES.push({
+  id: 'birch-where-charge',
+  section: 'birch-reduction',
+  anchor: '<h3>Why you would want a 1,4-cyclohexadiene</h3>',
+  viewBox: '0 0 760 330',
+  alt: 'A donating group pushing the Birch carbanion away from its own carbon and a withdrawing group holding it there, giving opposite diene products',
+  build() {
+    let s = '';
+    const col = (ox, title, sub, charge, verdict, product, kind) => {
+      s += panel(ox, 48, 320, 150, { kind });
+      s += tag(ox + 160, 36, title);
+      s += text(ox + 160, 82, sub, { cls: 'fg-lbl', size: 13 });
+      s += text(ox + 160, 112, charge, { cls: 'fg-sm', size: 10.5 });
+      s += text(ox + 160, 146, verdict, { cls: kind === 'warn' ? 'fg-tag' : 'fg-tag-good', size: 11 });
+      s += text(ox + 160, 176, product, { cls: 'fg-sm', size: 10.5 });
+    };
+    col(24,  'donating — OCH₃, CH₃', 'pushes electrons in',
+        'so the carbanion goes ELSEWHERE', 'that carbon is never protonated',
+        'it stays on a double bond — the 1,4-diene', null);
+    col(416, 'withdrawing — COOH, COR', 'pulls electrons out',
+        'so the carbanion sits THERE', 'that carbon takes the proton',
+        'it comes out sp³ — the 2,5-diene', 'warn');
+
+    s += rule(24, 224, 700, 224);
+    s += text(360, 250, 'One question, asked of the intermediate rather than the starting material:', { cls: 'fg-lbl', size: 12 });
+    s += text(360, 272, 'where does the carbanion want to be? That carbon gets the proton, and ends up saturated.', { cls: 'fg-lbl', size: 12 });
+    s += text(360, 306, 'Neither row has to be memorized once you ask it that way.', { cls: 'fg-tag-good', size: 11 });
+    return s;
+  },
+  caption: 'Why the two substituent rules for a Birch reduction are one rule. The reaction alternates electrons and protons, and the carbon that gets the second proton is the one that ends up sp³ — so everything depends on where the carbanion is most stable.',
+  note: 'The product is the <b>unconjugated</b> diene in both cases, which is the less stable of the two and the sign that this is kinetic control: protonation happens fastest where the charge density is highest, and stability never gets a vote. The same alternation of electron and proton runs the Na/NH₃ reduction of an alkyne to a <i>trans</i> alkene, one chapter earlier.',
+});
+
+/* ----------------------------------------------------------------- 47 ---
+   The point of the section is that one intermediate reaches many products,
+   several of which nothing else can. A hub is a picture, not a list. */
+FIGURES.push({
+  id: 'diazonium-hub-map',
+  section: 'diazonium-chemistry',
+  anchor: '<h3>Removing a group is a synthetic tool</h3>',
+  viewBox: '0 0 760 340',
+  alt: 'An aryl diazonium salt at the center with seven reagents radiating out to the chloride, bromide, nitrile, iodide, fluoride, phenol and arene',
+  build() {
+    let s = '';
+    s += panel(286, 142, 190, 56, { kind: 'hi' });
+    s += text(381, 168, 'Ar–N₂⁺', { cls: 'fg-lbl', size: 15 });
+    s += text(381, 188, 'leaves as N₂ gas', { cls: 'fg-sm', size: 9.5 });
+
+    const spoke = (x, y, reagent, product, anchorSide, novel) => {
+      s += text(x, y, reagent, { cls: 'fg-tag', anchor: anchorSide, size: 10.5 });
+      s += text(x, y + 17, product, { cls: novel ? 'fg-tag-good' : 'fg-lbl', anchor: anchorSide, size: 11.5 });
+    };
+    // Left column: the halides that EAS can also reach.
+    spoke(246, 62,  'CuCl', 'Ar–Cl', 'end', false);
+    spoke(246, 120, 'CuBr', 'Ar–Br', 'end', false);
+    spoke(246, 236, 'KI',   'Ar–I',  'end', true);
+    // Right column: the ones it cannot.
+    spoke(516, 62,  'CuCN',           'Ar–CN', 'start', true);
+    spoke(516, 120, 'HBF₄, heat', 'Ar–F',  'start', true);
+    spoke(516, 236, 'H₂O, warm',  'Ar–OH', 'start', true);
+    spoke(516, 288, 'H₃PO₂', 'Ar–H',  'start', true);
+
+    s += arrow(P(282, 156), P(252, 104));
+    s += arrow(P(282, 166), P(252, 140));
+    s += arrow(P(282, 186), P(252, 224));
+    s += arrow(P(480, 156), P(510, 104));
+    s += arrow(P(480, 166), P(510, 140));
+    s += arrow(P(480, 186), P(510, 224));
+    s += arrow(P(480, 196), P(510, 276));
+
+    s += text(180, 288, 'green = unreachable', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(180, 304, 'by electrophilic', { cls: 'fg-sm', size: 10 });
+    s += text(180, 318, 'substitution', { cls: 'fg-sm', size: 10 });
+
+    s += rule(24, 326, 700, 326);
+    s += text(360, 338, 'Four of these seven are groups no substitution reaction can put on a ring.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'One intermediate, seven products. The diazonium group leaves as nitrogen gas — stable, and a gas that escapes the solution — which is enough to make an aryl position substitutable when no aryl cation should be accessible at all.',
+  note: 'The H₃PO₂ row looks like undoing your own work and is the most useful of the seven. An NH₂ group is a powerful ortho/para director, so it can be installed purely to <b>steer</b> the next substitution and then deleted — which is how 1,3,5-tribromobenzene gets made, since bromine itself directs ortho and para and can never reach that pattern. That is a protecting group in aromatic clothes.',
+});
+
 /* ---------------------------------------------------------------------- */
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;

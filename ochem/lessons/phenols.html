@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phenols — Aromatic Follow-Through | Organic Chemistry</title>
+<meta name="description" content="Learn why a phenoxide is stabilized, why substituent position matters more than presence, why bicarbonate separates a phenol from a carboxylic acid, and why nothing substitutes at that C–O bond.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/phenols.html">
+<meta property="og:title" content="Phenols — Aromatic Follow-Through | Organic Chemistry">
+<meta property="og:description" content="Learn why a phenoxide is stabilized, why substituent position matters more than presence, why bicarbonate separates a phenol from a carboxylic acid, and why nothing substitutes at that C–O bond.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/phenols.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/phenols.html#lesson",
+      "name": "Phenols",
+      "url": "https://levlprep.com/ochem/lessons/phenols.html",
+      "description": "Learn why a phenoxide is stabilized, why substituent position matters more than presence, why bicarbonate separates a phenol from a carboxylic acid, and why nothing substitutes at that C–O bond.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Phenols"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Aromatic Follow-Through",
+          "item": "https://levlprep.com/ochem/learn.html#m-aromatic-breadth"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Phenols",
+          "item": "https://levlprep.com/ochem/lessons/phenols.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 22 &middot; Aromatic Follow-Through</div>
+    <h1 style="margin-bottom:4px;">Phenols.</h1>
+    <p class="lede" style="margin-top:0;">One structural change — OH on a ring rather than a chain — and the pKa moves by six orders of magnitude.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/phenols.html">Phenols &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="diazonium-chemistry.html">Diazonium salts</a> &middot; <a href="acidity-factors.html">What makes an acid strong</a> &middot; <a href="directing-effects.html">Directing effects</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* Acidity ranking is the testable skill, and the substituent effects only
+     work from ortho and para — so one row carries a meta nitro group to
+     make sure position is being read rather than presence. */
+  var CASES = [
+    { id:'p1', t:'<b>Ethanol</b>', right:'weak',
+      why:'pKa 16. Deprotonate it and the charge sits on one oxygen with nowhere to go, so the conjugate base is not stabilized at all.' },
+    { id:'p2', t:'<b>Phenol</b>', right:'mid',
+      why:'pKa 10. Six orders of magnitude more acidic than ethanol, because the phenoxide delocalizes onto both ortho carbons and the para carbon.' },
+    { id:'p3', t:'<b>3-Nitrophenol</b> &nbsp;<span style="color:var(--muted);">(meta)</span>', right:'mid',
+      why:'pKa 8.4 — more acidic than phenol, but only a little. From META the nitro group cannot reach the negative charge by resonance, so all it contributes is an inductive pull, which is the smaller effect.' },
+    { id:'p4', t:'<b>4-Nitrophenol</b> &nbsp;<span style="color:var(--muted);">(para)</span>', right:'strong',
+      why:'pKa 7.2. From PARA the nitro group takes the negative charge onto its own oxygens by resonance, which is a much larger stabilization than induction alone — and the whole reason position matters more than presence.' }
+  ];
+  var OPTS = [ { k:'weak', l:'pKₐ ~16' }, { k:'mid', l:'pKₐ 8–10' }, { k:'strong', l:'pKₐ ~7' } ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'phenols',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Move an OH onto a ring and it becomes a million times more acidic.',
+        bodyHtml: '<p class="step-body">Ethanol has a pKa of 16. Phenol has a pKa of <b>10</b>. Same functional group, six orders of magnitude apart, and the only structural difference is what the oxygen is attached to.</p>' +
+          '<p class="step-body">The explanation is the one that explains every acidity question: look at the <b>conjugate base</b>. Deprotonate ethanol and the negative charge sits on one oxygen with nowhere to go. Deprotonate phenol and the <b>phenoxide</b> spreads that charge into the ring &mdash; onto both ortho carbons and the para carbon.</p>' +
+          '<div class="explain-box">Spread charge is stabilized charge. A more stable conjugate base means a stronger acid, every time. Nothing about the O&ndash;H bond itself is different; what changed is what is left behind after it breaks.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Which is acidic enough to matter in a separating funnel.',
+        bodyHtml: '<p class="step-body">Put the three compounds on one scale and a practical fact falls out:</p>' +
+          '<ul class="step-body">' +
+          '<li><b>Ethanol</b>, pKa 16 &mdash; deprotonated by neither NaOH nor NaHCO₃.</li>' +
+          '<li><b>Phenol</b>, pKa 10 &mdash; deprotonated by <b>NaOH</b>, not by NaHCO₃.</li>' +
+          '<li><b>Acetic acid</b>, pKa 4.8 &mdash; deprotonated by <b>both</b>.</li>' +
+          '</ul>' +
+          '<p class="step-body">Carbonic acid sits at 6.4, between the phenol and the carboxylic acid, which is what makes bicarbonate the discriminating reagent.</p>' +
+          '<div class="explain-box">So shaking a mixture of a phenol and a carboxylic acid with <b>aqueous NaHCO₃</b> pulls the carboxylic acid into the water layer as its salt and leaves the phenol in the organic layer. That is a standard separation, and it is a pKa table being used rather than recited.</div>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Place each one on the acidity scale.</h2>' +
+            '<p class="step-body">Deprotonate each in your head and ask how well the resulting charge is spread. For the two nitrophenols, check <b>where</b> the nitro group is &mdash; not just that it is there.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Acidity">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Ask where the negative charge ends up, and whether the substituent can reach it. Resonance reaches ortho and para; meta gets induction only.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. The two nitrophenols are the same substituent on the same ring, a whole pKa unit apart on position alone.'
+                  : 'All four, first time, including the meta nitro group that helps far less than it looks like it should.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'Why is phenol more acidic than cyclohexanol?',
+        options: [
+          'Its conjugate base delocalizes the charge into the ring',
+          'Its O–H bond is weaker',
+          'The ring withdraws electrons inductively',
+          'Phenol is a stronger hydrogen-bond donor'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct, and it is worth being precise about which half of the equilibrium the explanation lives in. Acidity is about the stability of what is left after the proton goes, not about the bond that breaks. The ring does withdraw a little inductively, since sp² carbon is more electronegative than sp³, but that is a small correction next to delocalizing a full negative charge over three ring positions.',
+        wrongFeedback: 'Compare the two conjugate bases rather than the two acids. Where does the negative charge sit in each?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'How would you separate a phenol from a carboxylic acid in an organic solvent?',
+        options: [
+          'Shake with aqueous NaHCO₃',
+          'Shake with aqueous NaOH',
+          'Shake with aqueous HCl',
+          'Distill them apart'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. Bicarbonate sits between them: at pKa 6.4, carbonic acid is weak enough that HCO₃⁻ deprotonates a pKa 4.8 carboxylic acid completely and barely touches a pKa 10 phenol. So the acid leaves as its water-soluble salt and the phenol stays in the organic layer. NaOH would deprotonate both and separate neither, and HCl would deprotonate nothing.',
+        wrongFeedback: 'You want a base strong enough for one of them and not the other. Where does carbonic acid’s pKa sit relative to 4.8 and 10?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The same lone pair makes the ring very reactive.',
+        bodyHtml: '<p class="step-body">The oxygen lone pair that stabilizes the phenoxide also donates into the ring when the phenol is <i>not</i> deprotonated. So OH is a <b>strong activator</b> and an <b>ortho/para director</b> &mdash; among the strongest there is.</p>' +
+          '<p class="step-body">The practical consequence is that phenols are often too reactive to control. Phenol plus <b>bromine water</b> &mdash; no Lewis acid catalyst, no heating &mdash; gives <b>2,4,6-tribromophenol</b> immediately, as a precipitate. All three activated positions are substituted before you can stop it.</p>' +
+          '<div class="explain-box">And one thing a phenol cannot do: its C&ndash;O bond will not undergo substitution. That carbon is sp&sup2; and in the ring, so neither S<sub>N</sub>1 nor S<sub>N</sub>2 is available &mdash; which is why you cannot make a phenol from an aryl halide the obvious way, and why the next section exists.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'Which of these will NOT work on a phenol?',
+        options: [
+          'S_N2 at the C–O bond to give an alkylbenzene',
+          'Williamson ether synthesis using the phenoxide',
+          'Acylation with an acyl chloride to give an aryl ester',
+          'Bromination of the ring without a catalyst'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. The oxygen is attached to an sp² ring carbon whose backside is behind the ring, so nothing substitutes there — the phenol is always the <i>nucleophile</i> in a Williamson, never the electrophile. The other three all work, and the last one works rather too well: bromine water alone gives the 2,4,6-tribromide.',
+        wrongFeedback: 'Look at what kind of carbon the oxygen is attached to, and ask whether a nucleophile could ever reach its backside.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Picric acid, 2,4,6-trinitrophenol, has a pKa of 0.4 — stronger than trifluoroacetic acid. How does an OH on a ring get there?',
+        options: [
+          'Three nitro groups withdraw inductively from close range',
+          'Two of the three are ortho or para, so they take the charge by resonance onto six oxygens',
+          'The O–H bond is destabilized by steric crowding',
+          'The ring loses aromaticity, which weakens the O–H'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and the counting is the point. The 2, 4 and 6 positions are the two ortho and the one para — every single one of them is a position the phenoxide charge actually reaches. So all three nitro groups can accept that charge onto their own oxygens by resonance, and the anion ends up with its negative charge spread across the ring and six nitro oxygens. Induction contributes, but it is the smaller term: 3-nitrophenol, where the group is meta and only induction is available, manages pKa 8.4 against phenol’s 10, while moving that single group to para gets you to 7.2. Multiply the resonance-capable positions by three and you arrive at an OH more acidic than most carboxylic acids — without changing the O–H bond at all.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

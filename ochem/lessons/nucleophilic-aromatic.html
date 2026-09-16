@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SₙAr and benzyne — Aromatic Follow-Through | Organic Chemistry</title>
+<meta name="description" content="Learn why an aryl halide does neither S_N1 nor S_N2, how S_NAr adds before it eliminates, why fluorine is the best leaving group there, and how benzyne gives two products.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/nucleophilic-aromatic.html">
+<meta property="og:title" content="SₙAr and benzyne — Aromatic Follow-Through | Organic Chemistry">
+<meta property="og:description" content="Learn why an aryl halide does neither S_N1 nor S_N2, how S_NAr adds before it eliminates, why fluorine is the best leaving group there, and how benzyne gives two products.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/nucleophilic-aromatic.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/nucleophilic-aromatic.html#lesson",
+      "name": "S\u2099Ar and benzyne",
+      "url": "https://levlprep.com/ochem/lessons/nucleophilic-aromatic.html",
+      "description": "Learn why an aryl halide does neither S_N1 nor S_N2, how S_NAr adds before it eliminates, why fluorine is the best leaving group there, and how benzyne gives two products.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "S\u2099Ar and benzyne"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Aromatic Follow-Through",
+          "item": "https://levlprep.com/ochem/learn.html#m-aromatic-breadth"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "S\u2099Ar and benzyne",
+          "item": "https://levlprep.com/ochem/lessons/nucleophilic-aromatic.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 22 &middot; Aromatic Follow-Through</div>
+    <h1 style="margin-bottom:4px;">SₙAr and benzyne.</h1>
+    <p class="lede" style="margin-top:0;">Two ways to put a nucleophile on a ring, and they are mechanistic opposites.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/nucleophilic-aromatic.html">SₙAr and benzyne &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="diazonium-chemistry.html">Diazonium salts</a> &middot; <a href="eas.html">Electrophilic aromatic substitution</a> &middot; <a href="directing-effects.html">Directing effects</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* Reading the substrate is the whole skill: which of the two mechanisms a
+     given aryl halide can run, and whether it can run either. */
+  var CASES = [
+    { id:'n1', t:'<b>1-chloro-2,4-dinitrobenzene</b> + CH₃O⁻, warm', right:'snar',
+      why:'SNAr. Two nitro groups, one ortho and one para to the chlorine, so the negative charge of the Meisenheimer complex reaches both by resonance. One product, methoxide exactly where the chlorine was.' },
+    { id:'n2', t:'<b>Chlorobenzene</b> + NaNH₂ in liquid NH₃', right:'benzyne',
+      why:'Benzyne. Nothing activates this ring, so SNAr is impossible — but NaNH₂ is strong enough to remove an ortho hydrogen and force the elimination. Two products, at adjacent positions.' },
+    { id:'n3', t:'<b>1-chloro-3-nitrobenzene</b> + CH₃O⁻, warm', right:'neither',
+      why:'Neither. The nitro group is META to the chlorine, and from meta it cannot reach the negative charge by resonance at all — so it does not activate. This is the case that catches people who check only for a nitro group and not for where it is.' },
+    { id:'n4', t:'<b>2-bromo-1,3-dimethylbenzene</b> + NaNH₂', right:'neither',
+      why:'Neither. The ring is not activated, so no SNAr — and both positions ortho to the bromine carry methyl groups rather than hydrogens, so there is nothing to eliminate and no benzyne either.' }
+  ];
+  var OPTS = [ { k:'snar', l:'SₙAr' }, { k:'benzyne', l:'Benzyne' }, { k:'neither', l:'Neither' } ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'nucleophilic-aromatic',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The ring has only ever been the nucleophile.',
+        bodyHtml: '<p class="step-body">Everything in the aromatic chapter so far runs one way. Benzene is electron-rich, so it attacks an electrophile, and a leaving group departs from the carbon that was attacked. That is electrophilic aromatic substitution.</p>' +
+          '<p class="step-body">Reverse it &mdash; a nucleophile displacing a halide <i>on</i> the ring &mdash; and for a plain aryl halide nothing happens. <b>S<sub>N</sub>2 is impossible</b>, because the backside of that carbon is behind the ring and the carbon is sp&sup2;. <b>S<sub>N</sub>1 is impossible</b>, because an aryl cation would put a positive charge in an sp&sup2; orbital in the ring plane, which is badly unstable.</p>' +
+          '<div class="explain-box">There are two ways round it, and they are <b>opposites</b>. One adds before it eliminates and needs the ring made electron-poor; the other eliminates before it adds and needs no activation at all. Merging them is the standard mistake, so it is worth holding on to which is which from the start.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'S_NAr: add first, then eliminate.',
+        bodyHtml: '<p class="step-body">Put strong withdrawing groups on the ring and the nucleophile can simply add to the carbon carrying the halide. What forms is a negatively charged, non-aromatic intermediate &mdash; the <b>Meisenheimer complex</b> &mdash; and then the halide leaves and aromaticity comes back.</p>' +
+          '<p class="step-body">Aromaticity is lost in the middle, which is the cost, and the nitro groups are what pay for it by taking the negative charge onto their own oxygens.</p>' +
+          '<ul class="step-body">' +
+          '<li><b>Ortho or para only.</b> Only from those positions can a withdrawing group reach the charge by resonance. A meta nitro group does nothing whatsoever.</li>' +
+          '<li><b>Fluorine is the best leaving group</b> &mdash; F &gt; Cl &gt; Br &gt; I, the reverse of every other substitution you know.</li>' +
+          '<li><b>One product</b>, at exactly the position the halide occupied.</li>' +
+          '</ul>' +
+          '<div class="explain-box">That fluorine result is worth pausing on. Everywhere else, a better leaving group means a weaker C&ndash;X bond. Here the C&ndash;X bond is not breaking in the rate-determining step &mdash; the nucleophile&rsquo;s attack is &mdash; so what matters is which halogen makes that carbon most electrophilic, and fluorine wins on electronegativity.</div>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Which mechanism, if either, can each substrate run?</h2>' +
+            '<p class="step-body">Two checks per row. For S<sub>N</sub>Ar: is there a withdrawing group <b>ortho or para</b> to the halide? For benzyne: is the base strong enough, and is there a <b>hydrogen ortho</b> to the halide to remove?</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:13.5px;">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Which mechanism">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Check the POSITION of the withdrawing group, not just its presence — and for benzyne, check that an ortho hydrogen exists to be removed.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. Two of them run nothing at all, which is the answer people skip past.'
+                  : 'All four, first time, including both of the substrates where neither mechanism is available.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'Why is fluorine the best leaving group in an S_NAr reaction?',
+        options: [
+          'The C–F bond is the weakest of the carbon–halogen bonds',
+          'Fluorine makes that carbon the most electrophilic, and attack is rate-determining',
+          'Fluoride is the most stable halide ion',
+          'Fluorine is the smallest, so it leaves fastest'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and it is worth seeing why the usual reasoning does not apply. In S<sub>N</sub>1 and S<sub>N</sub>2 the C–X bond breaks in the rate-determining step, so a weak bond and a stable anion win — and C–F is the <i>strongest</i> C–X bond, which is why fluorides are the worst substrates there. Here the slow step is the nucleophile adding, so the only question is which halogen pulls the most electron density off that carbon.',
+        wrongFeedback: 'Ask which step is rate-determining in S_NAr. If the C–X bond is not breaking in it, does bond strength matter?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'Why does a meta nitro group fail to activate a ring toward S_NAr?',
+        options: [
+          'It cannot reach the negative charge by resonance',
+          'It is too far away to withdraw inductively',
+          'It donates electrons from the meta position',
+          'It blocks the nucleophile sterically'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. Draw the Meisenheimer complex and push the negative charge around: it lands on the carbons ortho and para to the point of attack, and never on the meta ones. A meta nitro group still withdraws inductively, which is a small effect, but it cannot take the charge onto its own oxygens — and that delocalization is the whole reason the intermediate is stable enough to form.',
+        wrongFeedback: 'Draw the anionic intermediate and work out which ring carbons actually carry the negative charge. Is meta one of them?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Benzyne: eliminate first, then add.',
+        bodyHtml: '<p class="step-body">Give chlorobenzene no activating groups and a brutal base &mdash; NaNH<sub>2</sub> in liquid ammonia &mdash; and the other route opens. The base removes a hydrogen <b>ortho</b> to the chlorine, chloride leaves, and what is left is <b>benzyne</b>.</p>' +
+          '<p class="step-body">That extra bond is made from two sp&sup2; orbitals lying <i>in the plane of the ring</i>, pointing away from each other rather than overlapping properly. It is a poor bond and the molecule is strained, reactive, and gone as soon as a nucleophile finds it.</p>' +
+          '<div class="explain-box">Because the new bond is <b>symmetric</b>, the nucleophile can attack either of its two carbons. That gives the reaction its fingerprint: <b>two products</b>, one with the nucleophile where the halide was and one with it on the neighboring carbon. Labeling the halide-bearing carbon with ¹⁴C and finding the label split between two positions is how benzyne was proved to exist.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'What prevents 2-bromo-1,3-dimethylbenzene from reacting through benzyne?',
+        options: [
+          'Both positions ortho to the bromine carry methyl groups, not hydrogens',
+          'The methyl groups deactivate the ring',
+          'Bromide is too poor a leaving group',
+          'The ring is too hindered for NaNH₂ to approach'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. The first step of the benzyne route is removing an <i>ortho</i> hydrogen, and here there is none to remove — both neighbors are substituted. The base has nothing to do, so no elimination occurs and no benzyne forms. Methyl groups are weak activators rather than deactivators, and bromide is a perfectly good leaving group; the blocked positions are the whole reason.',
+        wrongFeedback: 'Write out the first step of the benzyne mechanism. What does NaNH₂ have to take, and is there one available here?'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'para-Chlorotoluene is treated with NaNH₂. What comes out, and what does the answer prove?',
+        options: [
+          'Only para-toluidine, since the amine arrives where the chloride was',
+          'para- and meta-toluidine, because the nucleophile can attack either carbon of the benzyne',
+          'Only meta-toluidine',
+          'No reaction, since toluene is activated'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and the mixture is the evidence. Removing a hydrogen ortho to the chlorine and losing chloride gives a benzyne with its extra bond between C3 and C4, counting the methyl as C1. Amide can attack either end of that bond: attacking C4 gives <i>para</i>-toluidine, attacking C3 gives <i>meta</i>-toluidine. No direct displacement could ever put the nucleophile on a carbon that never carried the leaving group, so a rearranged product is proof that something symmetric existed in between. That is exactly the argument the ¹⁴C labeling experiment made, and it is why "two adjacent products" is the fingerprint you look for.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

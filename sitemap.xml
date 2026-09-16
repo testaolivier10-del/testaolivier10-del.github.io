@@ -206,6 +206,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/benzylic-reactivity.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/birch-reduction.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/bond-polarity.html</loc>
     <lastmod>2026-09-16</lastmod>
     <priority>0.8</priority>
@@ -287,6 +297,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/diastereomers.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/diazonium-chemistry.html</loc>
     <lastmod>2026-09-16</lastmod>
     <priority>0.8</priority>
   </url>
@@ -506,6 +521,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/nucleophilic-aromatic.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/orbitals.html</loc>
     <lastmod>2026-09-16</lastmod>
     <priority>0.8</priority>
@@ -527,6 +547,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/peptides-proteins.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/phenols.html</loc>
     <lastmod>2026-09-16</lastmod>
     <priority>0.8</priority>
   </url>
@@ -721,6 +746,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/lessons/benzylic-reactivity.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/birch-reduction.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/lessons/bond-polarity.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
@@ -803,6 +838,11 @@
   <url>
     <loc>https://levlprep.com/ochem/lessons/diastereomers.html</loc>
     <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/diazonium-chemistry.html</loc>
+    <lastmod>2026-09-16</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -1011,6 +1051,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/lessons/nucleophilic-aromatic.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/lessons/orbitals.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
@@ -1032,6 +1077,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/peptides-proteins.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/phenols.html</loc>
     <lastmod>2026-09-16</lastmod>
     <priority>0.7</priority>
   </url>

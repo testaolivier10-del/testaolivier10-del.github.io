@@ -220,6 +220,18 @@
       { id: 'michael-robinson', title: 'Michael and Robinson', href: 'lessons/michael-robinson.html', dependsOn: ['aldol', 'alpha-hydrogens', 'gilman-reagents'] },
       { id: 'ester-syntheses', title: 'Malonic and acetoacetic ester', href: 'lessons/ester-syntheses.html', dependsOn: ['claisen', 'alpha-hydrogens', 'sn2'] },
       { id: 'baeyer-villiger', title: 'Baeyer–Villiger oxidation', href: 'lessons/baeyer-villiger.html', dependsOn: ['epoxides', 'esters-amides', 'sn1'] }
+    ]},
+    /* The aromatic chapter taught one reaction — electrophilic substitution —
+       and stopped. This is everything that follows from it: the two ways to
+       put a NUCLEOPHILE on a ring, the position next to the ring, what an OH
+       on a ring does, how to reduce a ring partway, and the intermediate that
+       reaches the groups substitution cannot. */
+    { id: 'aromatic-breadth', title: 'Aromatic Follow-Through', topics: [
+      { id: 'nucleophilic-aromatic', title: 'SNAr and benzyne', href: 'lessons/nucleophilic-aromatic.html', dependsOn: ['eas', 'directing-effects', 'sn2'] },
+      { id: 'benzylic-reactivity', title: 'Benzylic reactivity', href: 'lessons/benzylic-reactivity.html', dependsOn: ['resonance', 'sn1', 'radical-halogenation'] },
+      { id: 'phenols', title: 'Phenols', href: 'lessons/phenols.html', dependsOn: ['acidity-factors', 'pka', 'directing-effects'] },
+      { id: 'birch-reduction', title: 'Birch reduction', href: 'lessons/birch-reduction.html', dependsOn: ['aromaticity', 'hydrogenation', 'conjugated-systems'] },
+      { id: 'diazonium-chemistry', title: 'Diazonium salts and Sandmeyer', href: 'lessons/diazonium-chemistry.html', dependsOn: ['amine-reactions', 'eas', 'directing-effects'] }
     ]}
   ];
 
