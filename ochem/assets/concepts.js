@@ -277,6 +277,9 @@
     { id:'valence-electrons', title:'Valence electrons', family:'Structure & bonding',
       topics:['atomic-structure','orbitals','bonding','lewis-structures'],
       hint:'Count the outermost shell, not every electron in the atom.' },
+    { id:'sigma-pi-bonding', title:'Sigma and pi bonds', family:'Structure & bonding',
+      topics:['bonding','hybridization','alkene-structure'], dependsOn:['valence-electrons'],
+      hint:'One sigma per connection; every extra line in a multiple bond is a pi bond, and pi electrons sit above and below the axis.' },
     { id:'formal-charge-calc', title:'Formal charge', family:'Structure & bonding',
       topics:['formal-charge','lewis-structures','resonance','curved-arrows'], dependsOn:['valence-electrons'],
       hint:'Formal charge = valence electrons − (lone-pair electrons + number of bonds).' },
@@ -612,7 +615,7 @@
      is actually testing. */
   var TOPIC_PRIMARY = {
     'atomic-structure':'valence-electrons', 'orbitals':'valence-electrons',
-    'hybridization':'hybridization-assignment', 'bonding':'lewis-structures-drawing',
+    'hybridization':'hybridization-assignment', 'bonding':'sigma-pi-bonding',
     'electronegativity':'electronegativity-trend', 'formal-charge':'formal-charge-calc',
     'lewis-structures':'lewis-structures-drawing', 'molecular-geometry':'molecular-geometry-vsepr',
     'bond-polarity':'bond-polarity-dipoles',

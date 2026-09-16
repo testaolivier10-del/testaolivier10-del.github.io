@@ -1306,7 +1306,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'oxidation-ladder',
   section: 'oxidation-states',
-  anchor: '<h3>Why 3\u00B0 alcohols cannot be oxidized</h3>',
+  anchor: 'the number depends on what else is attached.</p>',
   alt: 'The carbon oxidation ladder, with the one-carbon example, the count of bonds to heteroatoms, and the functional group families sharing each rung',
   viewBox: '0 0 760 392',
   build() {
@@ -4020,7 +4020,7 @@ FIGURES.push({
           { at: 0, to: P(610, 80), lab: 'CH(CH₃)COOH', kind: 'warn', stop: 16 },
           { at: 3, to: P(610, 216), lab: 'CH₂CH(CH₃)₂', kind: null, stop: 16 },
         ],
-        lines: ['COOH = carboxylic acid', 'the rest is spectator carbon', 'one group, thirteen carbons'],
+        lines: ['COOH = carboxylic acid', 'the rest is spectator carbon', 'acid + ring, six spectator carbons'],
       },
     ];
     for (const p of panels) {
@@ -4039,7 +4039,7 @@ FIGURES.push({
     s += text(380, 344, 'Three drugs, five groups between them, and every other atom is skeleton.', { cls: 'fg-lbl', size: 11.5 });
     return s;
   },
-  caption: 'The three molecules the worked examples run through, with the groups marked. Aspirin carries a carboxylic acid and an ester on the same ring; acetaminophen carries a phenol and an amide, and no acid at all despite the name most people expect; ibuprofen carries one carboxylic acid on a molecule that is otherwise thirteen carbons of inert skeleton.',
+  caption: 'The three molecules the worked examples run through, with the groups marked. Aspirin carries a carboxylic acid and an ester on the same ring; acetaminophen carries a phenol and an amide, and no acid at all despite the name most people expect; ibuprofen carries one carboxylic acid; of its other twelve carbons, six are the aromatic ring and six are genuinely spectator.',
   note: 'Compare the two O–CO patterns. In aspirin the ring oxygen leads to a carbonyl, which makes it an <b>ester</b>; in acetaminophen a ring nitrogen leads to a carbonyl, which makes it an <b>amide</b>. One atom apart, and the difference decides how each one is broken down in the body — which is why aspirin hydrolyzes in the stomach and acetaminophen does not.',
 });
 
@@ -4396,6 +4396,525 @@ FIGURES.push({
   note: 'This is the first place in the course where a drawing carries information that a formula does not: both structures here are C₄H₈, and both are “CH₃CH=CHCH₃” written out. <a class="chapter-ref" href="/ochem/learn.html#m-alkenes-alkynes">Alkenes &amp; Alkynes</a> gives the pair their systematic names and the rule for when cis/trans applies at all.',
 });
 
+
+/* ------------------------------------------------------------------ R1 ---
+   The redox-neutral case, which the section asserts in a sentence and which
+   is the single thing students get wrong. It is pure arithmetic on a drawing:
+   run two tallies, and only when they disagree has anything been oxidized. */
+FIGURES.push({
+  id: 'redox-neutral',
+  section: 'oxidation-states',
+  anchor: 'a fast way to check you have not mislabeled something.</p>',
+  alt: 'Three columns comparing an oxidation, a reduction and a redox-neutral addition by counting bonds to hydrogen against bonds to oxygen or halogen',
+  viewBox: '0 0 760 300',
+  build() {
+    let s = '';
+    const cols = [
+      {
+        cx: 145, head: 'OXIDATION', sm: 'CH₃CH₂OH', rg: '[O]', pr: 'CH₃CHO',
+        counts: ['start — on that C: 2 H, 1 O', 'product — on that C: 1 H, 2 O'],
+        lines: ['H count down 1, O count up 1:', 'the two tallies disagree.', 'OXIDATION (+2 states)'],
+        kind: 'fg-tag-good',
+      },
+      {
+        cx: 385, head: 'REDUCTION', sm: 'CH₃CHO', rg: '[H]', pr: 'CH₃CH₂OH',
+        counts: ['start — on that C: 1 H, 2 O', 'product — on that C: 2 H, 1 O'],
+        lines: ['H count up 1, O count down 1:', 'they disagree the other way.', 'REDUCTION (−2 states)'],
+        kind: 'fg-tag-good',
+      },
+      {
+        cx: 620, head: 'NEITHER', sm: 'CH₂=CH₂', rg: 'HBr', pr: 'CH₃CH₂Br',
+        counts: ['that C: 2 H, no O or X', 'that C: 2 H, 1 Br', 'the other C: gained 1 H'],
+        lines: ['One carbon gained Br (up 1).', 'The other gained H (down 1).', 'They cancel — REDOX-NEUTRAL.'],
+        kind: 'fg-tag-warn',
+      },
+    ];
+    for (const c of cols) {
+      s += tag(c.cx, 40, c.head);
+      s += label(c.cx - 74, 80, c.sm, { size: 12.5 });
+      s += arrow(P(c.cx - 34, 76), P(c.cx + 34, 76));
+      s += text(c.cx, 64, c.rg, { cls: 'fg-sm', size: 10 });
+      s += label(c.cx + 74, 80, c.pr, { size: 12.5 });
+      c.counts.forEach((t, i) => { s += text(c.cx, 108 + i * 16, t, { cls: 'fg-sm', size: 10 }); });
+      c.lines.forEach((t, i) => { s += text(c.cx, 170 + i * 20, t, { cls: i === 2 ? c.kind : 'fg-lbl', size: i === 2 ? 11 : 11 }); });
+    }
+    s += rule(260, 58, 260, 240);
+    s += rule(505, 58, 505, 240);
+    s += rule(30, 250, 730, 250);
+    s += text(380, 272, 'Do the two counts separately, then compare.', { cls: 'fg-lbl', size: 12 });
+    s += text(380, 292, 'Most alkene additions land in the third column.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'The three answers, with the arithmetic shown rather than asserted. Count bonds to hydrogen and bonds to O/N/halogen as two separate tallies; only when they disagree is there a redox change at all.',
+  note: 'The third column is the one that catches people, because HBr addition <i>looks</i> like something happened — and it did, just not a redox something. The same applies to hydration, to halohydrin formation and to bromination reversed; run the two counts on every alkene addition you already know and almost all of them come out neutral. That is a free check: if you have labeled an addition as an oxidation, you have probably counted only the halogen.',
+});
+
+/* ------------------------------------------------------------------ R2 ---
+   Where "the carbinol C-H" goes. The section names the chromate ester and
+   never draws it, so the 1/2/3 alcohol rule reads as a rule rather than as
+   the consequence of an elimination that needs a hydrogen to take. */
+FIGURES.push({
+  id: 'chromate-ester',
+  section: 'alcohol-oxidation',
+  anchor: 'the gem-diol formed by water adding across the C=O.</p>',
+  alt: 'A chromium oxidation in three panels: the alcohol oxygen attacking chromium to form a chromate ester, an E2-like collapse in which a base removes the carbinol hydrogen while chromium leaves, and the aldehyde product with chromium reduced from six to three',
+  viewBox: '0 0 760 330',
+  build() {
+    let s = '';
+    // ---- Panel 1: the chromate ester forms ----
+    s += tag(132, 34, 'STEP 1 — the chromate ester forms');
+    s += panel(14, 44, 236, 226);
+    {
+      const C = P(96, 158), O = P(152, 158), H = P(196, 186), Cr = P(190, 96);
+      s += bond(C, O, { rFrom: 22, rTo: 15 });
+      s += bond(O, H, { rFrom: 15, rTo: 12 });
+      s += atom(C.x, C.y, 'RCH₂', { r: 22, size: 9.5 });
+      s += atom(O.x, O.y, 'O', { kind: 'hi' });
+      s += atom(H.x, H.y, 'H', { r: 12 });
+      s += lonePair(O.x, O.y, 200);
+      s += lonePair(O.x, O.y, 285);
+      s += atom(Cr.x, Cr.y, 'CrO₃', { kind: 'warn', r: 22, size: 9.5 });
+      s += curve(P(160, 138), P(180, 118), { bow: 10 });
+      s += text(132, 216, 'the alcohol oxygen attacks chromium', { cls: 'fg-sm', size: 10 });
+      s += text(132, 232, 'and water leaves from the metal', { cls: 'fg-sm', size: 10 });
+      s += text(132, 254, 'gives R–CH₂–O–CrO₂–OH', { cls: 'fg-tag', size: 10.5 });
+    }
+    // ---- Panel 2: the E2-like collapse ----
+    s += tag(380, 34, 'STEP 2 — an E2-like collapse');
+    s += panel(258, 44, 244, 226);
+    {
+      const C = P(348, 152), H = P(348, 104), O = P(404, 152), Cr = P(452, 116), R = P(304, 192);
+      s += bond(C, H, { rFrom: 15, rTo: 13, cls: 'fg-bond-hi' });
+      s += bond(C, O, { rFrom: 15, rTo: 14 });
+      s += bond(O, Cr, { rFrom: 14, rTo: 22 });
+      s += bond(C, R, { rFrom: 15, rTo: 13 });
+      s += atom(C.x, C.y, 'C', { kind: 'hi' });
+      s += atom(H.x, H.y, 'H', { kind: 'warn', r: 13 });
+      s += atom(O.x, O.y, 'O', { r: 14 });
+      s += atom(Cr.x, Cr.y, 'CrO₂OH', { kind: 'warn', r: 22, size: 9 });
+      s += atom(R.x, R.y, 'R', { r: 13 });
+      s += atom(292, 104, 'B:', { r: 14, size: 10.5 });
+      s += curve(P(306, 100), P(332, 100), { bow: -10 });
+      s += curve(P(348, 128), P(376, 148), { bow: 12 });
+      s += curve(P(428, 134), P(452, 94), { bow: 16 });
+      s += text(380, 222, 'the base takes the hydrogen on the C', { cls: 'fg-sm', size: 10 });
+      s += text(380, 238, 'while chromium leaves from the O —', { cls: 'fg-sm', size: 10 });
+      s += text(380, 254, 'the same anti geometry as an E2', { cls: 'fg-sm', size: 10 });
+    }
+    // ---- Panel 3: the product ----
+    s += tag(624, 34, 'THE PRODUCT');
+    s += panel(510, 44, 236, 226);
+    {
+      const C = P(600, 152), O = P(600, 104), H = P(560, 190), R = P(644, 190);
+      s += bond(C, O, { order: 2, gap: 5, rFrom: 15, rTo: 14 });
+      s += bond(C, H, { rFrom: 15, rTo: 12 });
+      s += bond(C, R, { rFrom: 15, rTo: 13 });
+      s += atom(C.x, C.y, 'C', { kind: 'hi' });
+      s += atom(O.x, O.y, 'O', { r: 14 });
+      s += atom(H.x, H.y, 'H', { r: 12 });
+      s += atom(R.x, R.y, 'R', { r: 13 });
+      s += text(624, 224, 'an aldehyde — R–CHO', { cls: 'fg-tag-good', size: 11 });
+      s += text(624, 244, 'Cr(VI) → Cr(III)', { cls: 'fg-lbl', size: 12 });
+      s += text(624, 260, 'orange → green', { cls: 'fg-sm', size: 10 });
+    }
+    s += rule(30, 286, 730, 286);
+    s += text(380, 304, 'The reaction needs a hydrogen ON the carbinol carbon, because step 2 takes it.', { cls: 'fg-lbl', size: 12 });
+    s += text(380, 322, 'That is the whole 1°/2°/3° rule.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'Where &ldquo;the carbinol C&ndash;H&rdquo; actually goes. The alcohol first hangs itself on chromium, and then the collapse is an elimination: a base removes the hydrogen on the carbon while chromium leaves from the oxygen, and the electrons between them become the second C&ndash;O bond.',
+  note: 'Reading step 2 as an E2 explains two things at once. A tertiary alcohol forms the chromate ester perfectly well — it just has no hydrogen for the base to take, so the ester sits there and nothing happens; the reaction fails at the <i>second</i> step, not the first. And the chromium is reduced by two here, Cr(VI) to Cr(IV) and on to Cr(III) through further steps, which is the other half of the trade: the carbon went up two, so something had to come down.',
+});
+
+/* ------------------------------------------------------------------ R3 ---
+   The section's whole content on one named molecule, drawn skeletally: one
+   substrate, two destinations, and the reagents sorted by which they reach. */
+FIGURES.push({
+  id: 'one-alcohol-two-destinations',
+  section: 'alcohol-oxidation',
+  anchor: 'it tells them apart by position (allylic/benzylic) rather than by class.</p>',
+  alt: 'Skeletal 2-methylbutan-1-ol with two arrows: anhydrous oxidants give 2-methylbutanal, aqueous oxidants give 2-methylbutanoic acid',
+  viewBox: '0 0 760 340',
+  build() {
+    let s = '';
+    /* The skeleton is the same four carbons three times, so it is drawn once
+       and shifted: only the group on C1 changes. */
+    const chain = (x, y, head) => {
+      let g = '';
+      const c1 = P(x + 36, y - 20), c2 = P(x + 72, y + 2), me = P(x + 72, y + 44),
+            c3 = P(x + 108, y - 20), c4 = P(x + 144, y + 2);
+      g += bond(c1, c2, { rFrom: 0, rTo: 0 });
+      g += bond(c2, me, { rFrom: 0, rTo: 0 });
+      g += bond(c2, c3, { rFrom: 0, rTo: 0 });
+      g += bond(c3, c4, { rFrom: 0, rTo: 0 });
+      if (head === 'OH') {
+        g += bond(P(x, y + 2), c1, { rFrom: 18, rTo: 0 });
+        g += atom(x, y + 2, 'HO', { r: 18, size: 10.5 });
+      } else if (head === 'CHO') {
+        g += bond(P(x, y + 2), c1, { rFrom: 14, rTo: 0 });
+        g += bond(P(x, y + 2), P(x - 4, y - 40), { order: 2, gap: 4, rFrom: 14, rTo: 14 });
+        g += atom(x, y + 2, 'C', { r: 14 });
+        g += atom(x - 4, y - 40, 'O', { r: 14 });
+        g += atom(x - 34, y + 24, 'H', { r: 12 });
+        g += bond(P(x, y + 2), P(x - 34, y + 24), { rFrom: 14, rTo: 12 });
+      } else {
+        g += bond(P(x, y + 2), c1, { rFrom: 14, rTo: 0 });
+        g += bond(P(x, y + 2), P(x - 4, y - 40), { order: 2, gap: 4, rFrom: 14, rTo: 14 });
+        g += atom(x, y + 2, 'C', { r: 14 });
+        g += atom(x - 4, y - 40, 'O', { r: 14 });
+        g += bond(P(x, y + 2), P(x - 40, y + 26), { rFrom: 14, rTo: 18 });
+        g += atom(x - 40, y + 26, 'OH', { r: 18, size: 10.5 });
+      }
+      return g;
+    };
+
+    s += tag(150, 40, 'START');
+    s += panel(14, 52, 244, 220);
+    s += chain(70, 150, 'OH');
+    s += text(136, 246, '2-methylbutan-1-ol', { cls: 'fg-lbl', size: 12 });
+
+    s += arrow(P(266, 130), P(400, 104));
+    s += text(336, 92, '[O], no water', { cls: 'fg-sm', size: 10 });
+    s += arrow(P(266, 196), P(400, 232));
+    s += text(336, 258, '[O], in water', { cls: 'fg-sm', size: 10 });
+
+    s += tag(590, 40, 'PCC, PDC, Swern or DMP');
+    s += panel(410, 52, 336, 96);
+    s += chain(482, 108, 'CHO');
+    s += text(676, 130, '2-methylbutanal', { cls: 'fg-tag-good', size: 11 });
+
+    s += tag(590, 176, 'Jones, CrO₃/H₂SO₄ or hot KMnO₄');
+    s += panel(410, 188, 336, 96);
+    s += chain(486, 244, 'CO2H');
+    s += text(676, 266, '2-methylbutanoic acid', { cls: 'fg-tag-good', size: 11 });
+
+    s += rule(30, 300, 730, 300);
+    s += text(380, 324, 'One substrate, two destinations. The reagent list only ever answers: does it stop at the first?', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'The section on one molecule. Every reagent in the list lands on one of these two products, and which one it lands on is decided by whether there is water in the flask &mdash; not by how strong it is.',
+  note: 'Draw the substrate once and ask the two questions in order. The carbinol carbon here carries two hydrogens, so two rungs are available: that sets the ceiling. Then read the reagent for water, which says whether the reaction climbs one rung or both. A secondary alcohol would put a single product in both boxes, and a tertiary one would put nothing in either.',
+});
+
+/* ------------------------------------------------------------------ R4 ---
+   The chapter's central mechanism, with the arrows it was missing. The
+   species were already drawn in fig:hydride-once-twice; what was absent is
+   which electrons move, which is the part a student has to reproduce. */
+FIGURES.push({
+  id: 'hydride-arrows',
+  section: 'carbonyl-reduction',
+  anchor: 'The whole subject is which reagent delivers that hydride, and to what.</p>',
+  alt: 'Hydride addition to a ketone drawn with curved arrows: hydride attacking the carbonyl carbon while the pi electrons move onto oxygen, the tetrahedral alkoxide, and protonation on workup to the alcohol',
+  viewBox: '0 0 760 340',
+  build() {
+    let s = '';
+    // ---- Panel 1 ----
+    s += tag(132, 34, 'STEP 1 — hydride attacks the carbon');
+    s += panel(14, 44, 236, 212);
+    {
+      const C = P(132, 146), O = P(132, 98), R1 = P(88, 184), R2 = P(176, 184), H = P(66, 122);
+      s += bond(C, O, { order: 2, gap: 5, rFrom: 15, rTo: 14 });
+      s += bond(C, R1, { rFrom: 15, rTo: 13 });
+      s += bond(C, R2, { rFrom: 15, rTo: 13 });
+      s += atom(O.x, O.y, 'O', { r: 14 });
+      s += atom(C.x, C.y, 'C', { kind: 'hi' });
+      s += atom(R1.x, R1.y, 'R', { r: 13 });
+      s += atom(R2.x, R2.y, 'R', { r: 13 });
+      s += lonePair(O.x, O.y, 200);
+      s += lonePair(O.x, O.y, 340);
+      s += atom(H.x, H.y, 'H⁻', { kind: 'hi', r: 15, size: 11 });
+      s += lonePair(H.x, H.y, 180, { dist: 20 });
+      s += curve(P(82, 130), P(114, 142), { bow: 10 });
+      s += curve(P(140, 122), P(146, 82), { bow: 14 });
+      s += text(132, 202, 'the π electrons go up onto oxygen,', { cls: 'fg-sm', size: 10 });
+      s += text(132, 218, 'carbon cannot hold five bonds', { cls: 'fg-sm', size: 10 });
+      s += text(132, 240, 'H⁻ source: Na⁺[BH₄]⁻ or Li⁺[AlH₄]⁻', { cls: 'fg-sm', size: 9.5 });
+    }
+    // ---- Panel 2 ----
+    s += tag(380, 34, 'the tetrahedral alkoxide');
+    s += panel(258, 44, 244, 212);
+    {
+      const C = P(374, 150), O = P(374, 100), R1 = P(322, 182), R2 = P(426, 182), H = P(374, 200);
+      s += bond(C, O, { rFrom: 15, rTo: 16 });
+      s += bond(C, R1, { rFrom: 15, rTo: 13 });
+      s += bond(C, R2, { rFrom: 15, rTo: 13 });
+      s += bond(C, H, { rFrom: 15, rTo: 13, cls: 'fg-bond-hi' });
+      s += atom(O.x, O.y, 'O⁻', { kind: 'hi', r: 16, size: 11 });
+      s += atom(C.x, C.y, 'C', { r: 15 });
+      s += atom(R1.x, R1.y, 'R', { r: 13 });
+      s += atom(R2.x, R2.y, 'R', { r: 13 });
+      s += atom(H.x, H.y, 'H', { kind: 'warn', r: 13 });
+      s += lonePair(O.x, O.y, 180);
+      s += lonePair(O.x, O.y, 0);
+      s += lonePair(O.x, O.y, 270);
+      s += text(380, 226, 'flat → tetrahedral. Nothing here is', { cls: 'fg-sm', size: 10 });
+      s += text(380, 242, 'a leaving group, so it stops.', { cls: 'fg-sm', size: 10 });
+    }
+    // ---- Panel 3 ----
+    s += tag(624, 34, 'STEP 2 — workup protonates it');
+    s += panel(510, 44, 236, 212);
+    {
+      const O = P(578, 118), C = P(530, 146), Hp = P(650, 138);
+      s += bond(C, O, { rFrom: 20, rTo: 16 });
+      s += atom(C.x, C.y, 'R₂CH', { r: 20, size: 9.5 });
+      s += atom(O.x, O.y, 'O⁻', { kind: 'hi', r: 16, size: 11 });
+      s += lonePair(O.x, O.y, 40);
+      s += atom(Hp.x, Hp.y, 'H–OH₂⁺', { kind: 'warn', r: 26, size: 9 });
+      s += curve(P(594, 128), P(626, 134), { bow: -10 });
+      s += text(624, 190, 'R₂CH–OH', { cls: 'fg-lbl', size: 13 });
+      s += text(624, 210, 'a 2° alcohol, after acid is added', { cls: 'fg-tag-good', size: 10.5 });
+      s += text(624, 234, 'no proton source, no alcohol', { cls: 'fg-sm', size: 10 });
+    }
+    s += rule(30, 274, 730, 274);
+    s += text(380, 298, 'Identical to the Grignard mechanism you have already drawn — H⁻ in place of R⁻.', { cls: 'fg-lbl', size: 12 });
+    s += text(380, 322, 'Two moves in step 1: the hydride comes in, the π pair goes up.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The mechanism, with the arrows. The hydride is a nucleophile and the carbonyl carbon is the electrophile, so the attack happens there and the &pi; pair has nowhere to go but onto oxygen.',
+  note: 'Three things to carry from the drawing. <b>The hydride attacks carbon, not oxygen</b> — it is a nucleophile, and the electrophile is the δ+ carbon. <b>The alkoxide is the product until workup</b>, which is why &ldquo;NaBH₄&rdquo; in an exam answer is incomplete without &ldquo;then H₃O⁺&rdquo;. And <b>the arrow from H⁻ starts at a lone pair on the hydride</b>, not at the B–H or Al–H bond you see in the formula; drawing it from the boron is the commonest arrow mistake here.',
+});
+
+/* ------------------------------------------------------------------ R5 ---
+   Why hydrogenation is syn. The reason is physical rather than electronic -
+   an alkene lying on a surface has one reachable face - and no figure in the
+   section showed the surface at all. */
+FIGURES.push({
+  id: 'syn-on-surface',
+  section: 'hydrogenation',
+  anchor: 'Hydrogenation is therefore a <b>syn addition</b>: the two new C–H bonds form on the same face.</p>',
+  alt: 'Three frames showing an alkene adsorbed face down on a palladium surface, both hydrogens delivered from that surface, and the syn product; below, 1,2-dimethylcyclohexene hydrogenated to cis-1,2-dimethylcyclohexane',
+  viewBox: '0 0 760 470',
+  build() {
+    let s = '';
+    s += text(60, 28, 'WHY SYN', { cls: 'fg-tag', size: 11 });
+
+    /* The surface is the same object in the first two frames, so it is one
+       function: a filled bar with the metal label under it. */
+    const surface = (x, w, label) => bar(x, 176, w, 12, { kind: 'mut', r: 4 }) +
+      text(x + w / 2, 206, label, { cls: 'fg-sm', size: 10 });
+
+    // ---- Frame 1: adsorption ----
+    s += panel(14, 44, 236, 186);
+    s += tag(132, 62, 'adsorption');
+    {
+      const C1 = P(108, 128), C2 = P(158, 128);
+      s += bond(C1, C2, { order: 2, gap: 5, rFrom: 14, rTo: 14 });
+      s += bond(C1, P(84, 92), { rFrom: 14, rTo: 13 });
+      s += bond(C2, P(182, 92), { rFrom: 14, rTo: 13 });
+      s += atom(C1.x, C1.y, 'C', { r: 14 });
+      s += atom(C2.x, C2.y, 'C', { r: 14 });
+      s += atom(84, 92, 'R', { r: 13 });
+      s += atom(182, 92, 'R', { r: 13 });
+      s += atom(110, 162, 'H', { kind: 'hi', r: 12 });
+      s += atom(156, 162, 'H', { kind: 'hi', r: 12 });
+      s += surface(30, 204, 'metal surface (Pd)');
+      s += text(132, 222, 'H–H splits here; the alkene lies flat', { cls: 'fg-sm', size: 9.5 });
+    }
+    // ---- Frame 2: delivery ----
+    s += panel(258, 44, 236, 186);
+    s += tag(376, 62, 'delivery');
+    {
+      const C1 = P(352, 128), C2 = P(402, 128);
+      s += bond(C1, C2, { rFrom: 14, rTo: 14 });
+      s += bond(C1, P(328, 92), { rFrom: 14, rTo: 13 });
+      s += bond(C2, P(426, 92), { rFrom: 14, rTo: 13 });
+      s += atom(C1.x, C1.y, 'C', { r: 14 });
+      s += atom(C2.x, C2.y, 'C', { r: 14 });
+      s += atom(328, 92, 'R', { r: 13 });
+      s += atom(426, 92, 'R', { r: 13 });
+      s += arrow(P(352, 160), P(352, 146), { size: 6 });
+      s += arrow(P(402, 160), P(402, 146), { size: 6 });
+      s += surface(274, 204, 'both H come off the metal');
+      s += text(376, 222, 'there is no other side available', { cls: 'fg-sm', size: 10 });
+    }
+    // ---- Frame 3: the product ----
+    s += panel(502, 44, 244, 186);
+    s += tag(624, 62, 'SYN addition');
+    {
+      const C1 = P(600, 132), C2 = P(650, 132);
+      s += bond(C1, C2, { rFrom: 14, rTo: 14 });
+      s += hash(C1, P(576, 96), { rFrom: 14, rTo: 13 });
+      s += hash(C2, P(674, 96), { rFrom: 14, rTo: 13 });
+      s += wedge(C1, P(576, 170), { rFrom: 14, rTo: 12 });
+      s += wedge(C2, P(674, 170), { rFrom: 14, rTo: 12 });
+      s += atom(C1.x, C1.y, 'C', { r: 14 });
+      s += atom(C2.x, C2.y, 'C', { r: 14 });
+      s += atom(576, 96, 'R', { r: 13 });
+      s += atom(674, 96, 'R', { r: 13 });
+      s += atom(576, 170, 'H', { kind: 'hi', r: 12 });
+      s += atom(674, 170, 'H', { kind: 'hi', r: 12 });
+      s += text(624, 206, 'both new H on one face,', { cls: 'fg-tag-good', size: 11 });
+      s += text(624, 222, 'both R groups left on the other', { cls: 'fg-sm', size: 10 });
+    }
+
+    s += rule(30, 248, 730, 248);
+    s += text(58, 274, 'ON A RING', { cls: 'fg-tag', size: 11 });
+
+    /* A hexagon from its center, vertex 0 at the top right, so the C1-C2 edge
+       that carries the two methyls is the top edge in both drawings. */
+    const hex = (cx, cy, r) => {
+      const v = [];
+      for (let i = 0; i < 6; i++) {
+        const a = ((60 * i - 120) * Math.PI) / 180;
+        v.push(P(cx + r * Math.cos(a), cy + r * Math.sin(a)));
+      }
+      return v;
+    };
+    {
+      const v = hex(150, 352, 44);
+      let ring = '';
+      for (let i = 0; i < 6; i++) ring += bond(v[i], v[(i + 1) % 6], { rFrom: 0, rTo: 0 });
+      s += ring;
+      s += ringDouble(v[0], v[1], P(150, 352));
+      s += bond(v[0], P(v[0].x - 22, v[0].y - 32), { rFrom: 0, rTo: 16 });
+      s += bond(v[1], P(v[1].x + 22, v[1].y - 32), { rFrom: 0, rTo: 16 });
+      s += atom(v[0].x - 22, v[0].y - 32, 'CH₃', { r: 16, size: 9.5 });
+      s += atom(v[1].x + 22, v[1].y - 32, 'CH₃', { r: 16, size: 9.5 });
+      s += text(150, 424, '1,2-dimethylcyclohexene', { cls: 'fg-lbl', size: 11.5 });
+    }
+    s += arrow(P(240, 352), P(360, 352));
+    s += text(300, 338, 'H₂, Pd/C', { cls: 'fg-sm', size: 10 });
+    {
+      const v = hex(450, 352, 44);
+      let ring = '';
+      for (let i = 0; i < 6; i++) ring += bond(v[i], v[(i + 1) % 6], { rFrom: 0, rTo: 0 });
+      s += ring;
+      s += wedge(v[0], P(v[0].x, v[0].y - 40), { rFrom: 0, rTo: 16 });
+      s += wedge(v[1], P(v[1].x, v[1].y - 40), { rFrom: 0, rTo: 16 });
+      s += hash(v[0], P(v[0].x - 36, v[0].y - 20), { rFrom: 0, rTo: 12 });
+      s += hash(v[1], P(v[1].x + 36, v[1].y - 20), { rFrom: 0, rTo: 12 });
+      s += atom(v[0].x, v[0].y - 40, 'CH₃', { r: 16, size: 9.5 });
+      s += atom(v[1].x, v[1].y - 40, 'CH₃', { r: 16, size: 9.5 });
+      s += atom(v[0].x - 36, v[0].y - 20, 'H', { kind: 'hi', r: 12 });
+      s += atom(v[1].x + 36, v[1].y - 20, 'H', { kind: 'hi', r: 12 });
+      s += text(450, 424, 'cis-1,2-dimethylcyclohexane', { cls: 'fg-lbl', size: 11.5 });
+    }
+    s += text(636, 320, 'both H arrived on the', { cls: 'fg-sm', size: 10 });
+    s += text(636, 336, 'bottom face, so both', { cls: 'fg-sm', size: 10 });
+    s += text(636, 352, 'methyls are left on top', { cls: 'fg-sm', size: 10 });
+    s += text(636, 378, 'cis here is meso — achiral', { cls: 'fg-tag-good', size: 10.5 });
+
+    s += rule(30, 440, 730, 440);
+    s += text(380, 462, 'Syn fixes which side, not which enantiomer: the alkene can lie down either way up.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'The mechanism in one picture. Hydrogenation is syn for a physical reason rather than an electronic one &mdash; an alkene lying on a surface has only one reachable face, and both hydrogens come off that surface.',
+  note: 'The ring makes it visible, which is why it is always the exam case: a cyclohexene cannot rotate its two halves relative to each other, so &ldquo;both H on the same face&rdquo; shows up directly as &ldquo;both methyls cis&rdquo;. On an open-chain alkene the same thing happens, but the result is stated as a relative relationship instead — one diastereomer, formed as a racemate because half the molecules adsorb with the other face down.',
+});
+
+/* ------------------------------------------------------------------ R6 ---
+   The two cyclic intermediates the syn/anti rule is actually about. The
+   section states the rule and draws the products; what was missing is the
+   reason, which lives entirely in the shape of the intermediate. */
+FIGURES.push({
+  id: 'diol-intermediates',
+  section: 'alkene-oxidation',
+  anchor: 'so the two oxygens end up on <b>opposite faces</b>: an <b><i>anti</i> (trans) diol</b>.</li>',
+  alt: 'The syn route through a five-membered cyclic osmate ester giving a cis diol, against the anti route through an epoxide opened by backside attack of water giving a trans diol',
+  viewBox: '0 0 760 420',
+  build() {
+    let s = '';
+    const alkene = (x, y) => {
+      const C1 = P(x, y), C2 = P(x + 50, y);
+      return bond(C1, C2, { order: 2, gap: 5, rFrom: 14, rTo: 14 }) +
+        bond(C1, P(x - 24, y - 34), { rFrom: 14, rTo: 13 }) +
+        bond(C2, P(x + 74, y - 34), { rFrom: 14, rTo: 13 }) +
+        atom(C1.x, C1.y, 'C', { r: 14 }) + atom(C2.x, C2.y, 'C', { r: 14 }) +
+        atom(x - 24, y - 34, 'R', { r: 13 }) + atom(x + 74, y - 34, 'R', { r: 13 });
+    };
+
+    // ================= SYN =================
+    s += text(92, 28, 'SYN — the osmate ester', { cls: 'fg-tag', size: 11 });
+    s += panel(14, 40, 732, 150);
+    s += alkene(70, 118);
+    s += atom(120, 66, 'OsO₄', { kind: 'warn', r: 22, size: 9.5 });
+    s += curve(P(104, 84), P(78, 100), { bow: 10 });
+    s += curve(P(138, 84), P(114, 100), { bow: -10 });
+    s += arrow(P(210, 112), P(286, 112));
+    {
+      // the five-membered ring: C-C-O-Os-O
+      const C1 = P(336, 132), C2 = P(386, 132), O1 = P(322, 86), O2 = P(400, 86), Os = P(361, 58);
+      s += bond(C1, C2, { rFrom: 14, rTo: 14 });
+      s += bond(C1, O1, { rFrom: 14, rTo: 14 });
+      s += bond(C2, O2, { rFrom: 14, rTo: 14 });
+      s += bond(O1, Os, { rFrom: 14, rTo: 18 });
+      s += bond(O2, Os, { rFrom: 14, rTo: 18 });
+      s += bond(C1, P(312, 166), { rFrom: 14, rTo: 13 });
+      s += bond(C2, P(410, 166), { rFrom: 14, rTo: 13 });
+      s += atom(C1.x, C1.y, 'C', { r: 14 });
+      s += atom(C2.x, C2.y, 'C', { r: 14 });
+      s += atom(O1.x, O1.y, 'O', { kind: 'hi', r: 14 });
+      s += atom(O2.x, O2.y, 'O', { kind: 'hi', r: 14 });
+      s += atom(Os.x, Os.y, 'Os', { kind: 'warn', r: 18, size: 11 });
+      s += atom(312, 166, 'R', { r: 13 });
+      s += atom(410, 166, 'R', { r: 13 });
+      s += text(361, 182, 'both C–O bonds made at once, on one face', { cls: 'fg-sm', size: 10 });
+    }
+    s += arrow(P(440, 112), P(516, 112));
+    s += text(478, 98, 'NaHSO₃', { cls: 'fg-sm', size: 10 });
+    {
+      const C1 = P(580, 122), C2 = P(630, 122);
+      s += bond(C1, C2, { rFrom: 14, rTo: 14 });
+      s += hash(C1, P(556, 88), { rFrom: 14, rTo: 13 });
+      s += hash(C2, P(654, 88), { rFrom: 14, rTo: 13 });
+      s += wedge(C1, P(556, 156), { rFrom: 14, rTo: 17 });
+      s += wedge(C2, P(654, 156), { rFrom: 14, rTo: 17 });
+      s += atom(C1.x, C1.y, 'C', { r: 14 });
+      s += atom(C2.x, C2.y, 'C', { r: 14 });
+      s += atom(556, 88, 'R', { r: 13 });
+      s += atom(654, 88, 'R', { r: 13 });
+      s += atom(556, 156, 'OH', { kind: 'hi', r: 17, size: 10 });
+      s += atom(654, 156, 'OH', { kind: 'hi', r: 17, size: 10 });
+      s += text(692, 122, 'syn diol', { cls: 'fg-tag-good', size: 11 });
+    }
+
+    // ================= ANTI =================
+    s += text(156, 226, 'ANTI — the epoxide, then backside attack', { cls: 'fg-tag', size: 11 });
+    s += panel(14, 238, 732, 150);
+    s += alkene(70, 316);
+    s += atom(150, 262, 'mCPBA', { kind: 'warn', r: 26, size: 9 });
+    s += curve(P(134, 284), P(100, 302), { bow: 14 });
+    s += text(166, 356, 'one concerted step — the alkene geometry survives', { cls: 'fg-sm', size: 9.5 });
+    s += arrow(P(200, 316), P(268, 316));
+    {
+      // the protonated epoxide, with water arriving from the far side
+      const C1 = P(320, 332), C2 = P(370, 332), O = P(345, 292);
+      s += bond(C1, C2, { rFrom: 14, rTo: 14 });
+      s += bond(C1, O, { rFrom: 14, rTo: 15 });
+      s += bond(C2, O, { rFrom: 14, rTo: 15 });
+      s += atom(C1.x, C1.y, 'C', { r: 14 });
+      s += atom(C2.x, C2.y, 'C', { r: 14 });
+      s += atom(O.x, O.y, 'O⁺H', { kind: 'warn', r: 15, size: 9.5 });
+      s += atom(392, 380, 'H₂O', { kind: 'hi', r: 17, size: 10 });
+      s += curve(P(384, 363), P(374, 348), { bow: 8, size: 7 });
+      s += text(345, 258, 'attack comes from the face away from the oxygen', { cls: 'fg-sm', size: 10 });
+      s += text(345, 274, 'the Sₙ₂2 geometry, on a strained ring', { cls: 'fg-sm', size: 9.5 });
+    }
+    s += arrow(P(438, 316), P(514, 316));
+    s += text(476, 302, 'H₃O⁺', { cls: 'fg-sm', size: 10 });
+    {
+      const C1 = P(580, 320), C2 = P(630, 320);
+      s += bond(C1, C2, { rFrom: 14, rTo: 14 });
+      s += hash(C1, P(556, 286), { rFrom: 14, rTo: 13 });
+      s += wedge(C2, P(654, 286), { rFrom: 14, rTo: 17 });
+      s += wedge(C1, P(556, 354), { rFrom: 14, rTo: 17 });
+      s += hash(C2, P(654, 354), { rFrom: 14, rTo: 13 });
+      s += atom(C1.x, C1.y, 'C', { r: 14 });
+      s += atom(C2.x, C2.y, 'C', { r: 14 });
+      s += atom(556, 286, 'R', { r: 13 });
+      s += atom(654, 286, 'OH', { kind: 'hi', r: 17, size: 10 });
+      s += atom(556, 354, 'OH', { kind: 'hi', r: 17, size: 10 });
+      s += atom(654, 354, 'R', { r: 13 });
+      s += text(694, 320, 'anti diol', { cls: 'fg-tag-good', size: 11 });
+    }
+
+    s += rule(30, 396, 730, 396);
+    s += text(380, 414, 'Both routes make two C–O bonds — the difference is when, and from which side.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'The two intermediates the syn/anti rule is really about. Osmium ties both oxygens to one face before anything is released; the epoxide route makes the first C&ndash;O bond on one face and is then forced to make the second on the other.',
+  note: 'The osmate ester is why syn dihydroxylation is stereospecific and not merely stereoselective: at no point in the sequence do the two oxygens have the freedom to be anywhere else, because they are joined to each other through osmium until the ring is cut. In the anti route, look at where the nucleophile has to come from — an epoxide carbon can only be attacked from the side away from its own oxygen, which is the S<sub>N</sub>2 geometry from <a class="chapter-ref" href="/ochem/learn.html#m-substitution-elimination">Substitution &amp; Elimination</a> applied to a strained ring.',
+});
 
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;

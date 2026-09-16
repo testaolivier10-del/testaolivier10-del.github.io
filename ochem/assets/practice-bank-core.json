@@ -20817,12 +20817,12 @@
    "type": "mcq"
   },
   {
-   "q": "What is the oxidation state of carbon in a carboxylic acid?",
+   "q": "What is the oxidation state of the carboxyl carbon in acetic acid, CH3CO2H?",
    "options": [
-    "+4",
-    "-2",
+    "+2",
     "0",
-    "+2"
+    "-1",
+    "+3"
    ],
    "correct": 3,
    "difficulty": "hard",
@@ -20997,48 +20997,48 @@
    "type": "mcq"
   },
   {
-   "q": "What makes selectivity, rather than possibility, the subject of this chapter?",
+   "q": "Which of these transformations is NOT a redox change at carbon?",
    "options": [
-    "Most of these reactions simply do not work",
-    "Stopping in the right place is the hard part",
-    "Reagents are expensive",
-    "Yields are low"
+    "CH3CH2OH to CH3CHO",
+    "CH3CH2Br to CH3CH2OH",
+    "CH3CH=CH2 to CH3CH2CH3",
+    "CH3CHO to CH3CO2H"
    ],
    "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which two questions should you ask of any redox reagent?",
+   "q": "A synthesis has to turn CH3CH2CH2OH into CH3CH2CO2H. How many rungs is that, and what does it tell you about the reagent?",
    "options": [
-    "Color and solubility",
-    "The temperature and the pressure needed",
-    "Cost and toxicity",
-    "Where it stops and what else it touches"
+    "One rung up, so almost any oxidant will do",
+    "Two rungs down, so it needs a hydride reagent",
+    "No change in rung, so a nucleophile is enough",
+    "Two rungs up, so it needs an oxidant that does not stop at the aldehyde"
    ],
    "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Is a Grignard addition to a ketone a redox reaction at the carbonyl carbon?",
+   "q": "A Grignard adds to acetone. What happens to the oxidation state of the carbonyl carbon, and to the Grignard's carbon?",
    "options": [
-    "No, a C-C bond forms and bonds to O do not change count",
-    "Yes, a reduction",
-    "It cannot be classified in redox terms at all",
-    "Yes, an oxidation"
+    "The carbonyl carbon falls by one and the Grignard carbon rises by one, so overall nothing is oxidized or reduced",
+    "Both carbons fall by one, so the reaction is a reduction",
+    "Neither carbon changes, because C-C bonds count zero",
+    "The carbonyl carbon rises by two, so the reaction is an oxidation"
    ],
    "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Why is the electron-transfer definition awkward in organic chemistry?",
+   "q": "Cyclohexene is treated with Br2 to give trans-1,2-dibromocyclohexane. In redox terms this is:",
    "options": [
-    "It only applies to metals",
-    "It is wrong",
-    "Reactions rarely move whole electrons between clear ions",
-    "Electrons are not involved in organic reactions"
+    "Neither, because two atoms add across the double bond",
+    "A reduction, because the pi bond is destroyed",
+    "An oxidation - two bonds to halogen gained, no C-H gained",
+    "Neither, because bromine is not oxygen"
    ],
    "correct": 2,
    "difficulty": "hard",
@@ -21239,12 +21239,12 @@
    "type": "mcq"
   },
   {
-   "q": "Why do the Swern and DMP exist at all?",
+   "q": "You need butan-1-ol converted to butanal in one step, and the molecule elsewhere cannot survive a cryogenic step. Which reagent?",
    "options": [
-    "They also work on tertiary alcohols",
-    "They are faster",
-    "They are cheaper",
-    "Chromium is toxic and environmentally nasty"
+    "Jones reagent",
+    "Swern: (COCl)2/DMSO at -78 C, then Et3N",
+    "Hot KMnO4",
+    "Dess-Martin periodinane at room temperature"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -21347,24 +21347,24 @@
    "type": "mcq"
   },
   {
-   "q": "At what temperature is the Swern oxidation run?",
+   "q": "Propose the two-step route from 1-bromobutane to butanoic acid.",
    "options": [
-    "0 C",
-    "Room temperature",
-    "-78 C",
-    "100 C"
+    "PCC, then NaOH",
+    "Jones reagent directly on the bromide",
+    "NaOH in water (SN2) to give butan-1-ol, then Jones reagent",
+    "NaBH4, then PCC"
    ],
    "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What does mild in this context actually mean?",
+   "q": "Hex-5-en-1-ol (HOCH2CH2CH2CH2CH=CH2) is treated with PCC in CH2Cl2. What is the product?",
    "options": [
-    "Slower",
-    "Tolerant of sensitive groups",
-    "Less concentrated in solution",
-    "Safer to store"
+    "Hexanal - the alkene is reduced as well",
+    "Hex-5-enal - the alkene is untouched",
+    "Hex-5-enoic acid",
+    "6-hydroxyhexanal"
    ],
    "correct": 1,
    "difficulty": "easy",
@@ -21419,12 +21419,12 @@
    "type": "mcq"
   },
   {
-   "q": "What is the practical summary of this section?",
+   "q": "Hexane-1,6-diol is treated with excess Jones reagent. What comes out?",
    "options": [
-    "Stronger is better",
-    "Anhydrous gives aldehyde, aqueous gives acid",
-    "All of these reagents are equivalent",
-    "Use excess reagent"
+    "6-hydroxyhexanoic acid - one end reacts",
+    "Hexanedioic acid - both ends oxidized",
+    "6-hydroxyhexanal",
+    "No reaction; diols are inert to Cr(VI)"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -21649,12 +21649,12 @@
    "type": "mcq"
   },
   {
-   "q": "Where do those two reductions reappear?",
+   "q": "Which substrate does NOT give a CH2 group with Clemmensen or Wolff-Kishner?",
    "options": [
-    "In SN2 substitution chemistry",
-    "In distillation",
-    "In spectroscopy",
-    "After a Friedel-Crafts acylation"
+    "A methyl ketone",
+    "An aryl ketone",
+    "An aldehyde",
+    "An ester"
    ],
    "correct": 3,
    "difficulty": "easy",
@@ -21677,7 +21677,7 @@
    "options": [
     "NaBH4",
     "LiAlH4",
-    "H2 over Pd at 1 atm",
+    "Aqueous NaOH",
     "Neither hydride"
    ],
    "correct": 1,
@@ -21745,24 +21745,24 @@
    "type": "mcq"
   },
   {
-   "q": "Why is selectivity usually achieved by choosing the weaker reagent?",
+   "q": "Supply the reagent: CH3CH2CO2CH3 (methyl propanoate) into CH3CH2CH2OH (propan-1-ol).",
    "options": [
-    "It is faster",
-    "It is safer",
-    "It is considerably cheaper to buy",
-    "Because the stronger one would reduce everything"
+    "NaBH4 in methanol",
+    "H2 over Pd/C at 1 atm",
+    "PCC in CH2Cl2",
+    "LiAlH4 in dry THF, then aqueous workup"
    ],
    "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What does H2 over Pd/C do to a ketone at one atmosphere?",
+   "q": "A molecule contains a ketone, an ester and a terminal alkene. You want the alkene reduced and nothing else. Which reagent?",
    "options": [
-    "Oxidizes it",
-    "Reduces it to an alcohol",
-    "Leaves it untouched",
-    "Cleaves it"
+    "LiAlH4 in dry THF",
+    "NaBH4 in methanol",
+    "H2 over Pd/C at 1 atm",
+    "H2 over PtO2 at high pressure"
    ],
    "correct": 2,
    "difficulty": "hard",
@@ -21781,12 +21781,12 @@
    "type": "mcq"
   },
   {
-   "q": "What is the single most-missed row of the reduction table?",
+   "q": "Butan-2-one is reduced with NaBH4 in methanol, then worked up. What is the product?",
    "options": [
-    "Amide to amine",
-    "Aldehyde to alcohol",
-    "Ester to alcohol",
-    "Ketone to alcohol"
+    "Racemic butan-2-ol, optically inactive",
+    "(R)-butan-2-ol and nothing else",
+    "(S)-butan-2-ol and nothing else",
+    "Butane, by loss of the oxygen"
    ],
    "correct": 0,
    "difficulty": "medium",
@@ -21941,10 +21941,10 @@
   {
    "q": "Why does Na/NH3 give the trans alkene?",
    "options": [
-    "It is a surface reaction on the metal, like Lindlar",
     "The radical anion adopts the less hindered form",
-    "It is stereorandom",
-    "Ammonia directs it"
+    "The vinyl anion formed after the second electron transfer is configurationally stable and sits with its R groups apart",
+    "It is a surface reaction on the metal, like Lindlar",
+    "Ammonia coordinates one face and blocks it"
    ],
    "correct": 1,
    "difficulty": "easy",
@@ -21975,27 +21975,27 @@
    "type": "mcq"
   },
   {
-   "q": "What does the heat of hydrogenation measure?",
+   "q": "But-1-ene releases 127 kJ/mol on hydrogenation, cis-but-2-ene 120 and trans-but-2-ene 116. All three give butane. Which is most stable, and how do you know?",
    "options": [
-    "The reaction rate",
-    "The activity of the catalyst used",
-    "How stable the starting alkene was",
-    "The pressure needed"
+    "but-1-ene, because it releases the most energy",
+    "cis-but-2-ene, because its value is in the middle",
+    "trans-but-2-ene, because it releases the least energy and so started lowest",
+    "They are equally stable, since they give the same product"
    ],
    "correct": 2,
-   "difficulty": "hard",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which claim was established using heats of hydrogenation?",
+   "q": "(Z)-3,4-dimethyloct-3-ene is hydrogenated over Pd/C. What is the stereochemical outcome at the two former alkene carbons?",
    "options": [
-    "That alkenes are planar around the double bond",
-    "That alkene stability rises with substitution",
-    "That Pd is a catalyst",
-    "That H2 is diatomic"
+    "A single enantiomer, because the addition is syn",
+    "One diastereomer, formed as a racemic mixture",
+    "A mixture of all four stereoisomers",
+    "No stereocenters are formed at all"
    ],
    "correct": 1,
-   "difficulty": "easy",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -22337,12 +22337,12 @@
    "type": "mcq"
   },
   {
-   "q": "What is ozonolysis useful for besides synthesis?",
+   "q": "cis-But-2-ene is treated with OsO4 then NaHSO3. What is the product?",
    "options": [
-    "Drying organic solvents",
-    "Purification",
-    "Structure determination",
-    "Measuring pH"
+    "racemic butane-2,3-diol",
+    "a 50:50 mixture of the meso and racemic diols",
+    "meso-butane-2,3-diol, a single achiral compound",
+    "(2R,3R)-butane-2,3-diol and nothing else"
    ],
    "correct": 2,
    "difficulty": "hard",
@@ -22469,12 +22469,12 @@
    "type": "mcq"
   },
   {
-   "q": "How many oxygens does dihydroxylation add?",
+   "q": "Why does the workup, rather than the ozone, decide whether you get an aldehyde or an acid?",
    "options": [
-    "Three",
-    "None",
-    "One oxygen",
-    "Two"
+    "Because the ozone is consumed before any carbonyl forms",
+    "Because the aldehyde is volatile and escapes",
+    "Because the workup changes where the C=C is cut",
+    "Because the ozone step stops at an ozonide, which is not a carbonyl compound yet"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -22505,12 +22505,12 @@
    "type": "mcq"
   },
   {
-   "q": "What connects ozonolysis to the spectroscopy chapter?",
+   "q": "Oct-1-ene is treated with O3, then H2O2. What products are isolated?",
    "options": [
-    "Both determine structure",
-    "Both need a catalyst",
-    "Neither of them is connected",
-    "Both use light"
+    "Heptanoic acid alone - the terminal CH2 ends up as CO2 and is lost",
+    "Heptanoic acid and formaldehyde",
+    "Heptanal and formaldehyde",
+    "Octanoic acid"
    ],
    "correct": 0,
    "difficulty": "medium",

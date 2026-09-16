@@ -85,13 +85,18 @@ reviews land.
 
 | Chapter | Reviewed | Fixed | Verified | Pushed |
 |---|---|---|---|---|
-| 1 Foundations | yes (48/24/20/32 findings) | yes: 11 figures, 6 graded lesson steps, 131 questions replaced or edited, formal-charge formula and Hund's rule errors fixed | in progress | yes |
+| 1 Foundations | yes (48/24/20/32 findings) | yes: 11 figures, 6 graded lesson steps, 131 questions replaced or edited, formal-charge formula and Hund's rule errors fixed | yes: 8 of 10 topics met; 7 confirmed errors (an ibuprofen ester, a keyed 'most electron-poor carbon' that ignored the carboxyl, a 1-18 group-number slip in a teach string, and four wording errors) fixed, plus a missing sigma/pi concept added | yes |
 | 2 Organic Structure & Electron Movement | yes (38/24/19/33) | queued | | |
 | 3 IUPAC Nomenclature | yes (24/9/12/22) | yes: 9 figures, 85 questions rewritten, 3 chemistry errors (3-ethylpentane keyed as 3-methylhexane; ketone carbon called oxidation level 0; an impossible {3,3,5} locant tie) | yes: all four topics meet the standard; five wording errors found and fixed, no wrong key | yes |
 | 4 Acids & Bases | yes (38/17/19/22) | queued | | |
 | 5 Alkanes & Conformations | yes (34/17/16/15) | queued | | |
 | 6 Stereochemistry | yes (31/14/18/27) | queued | | |
 | 7 Substitution & Elimination | yes | queued | | |
+| 8 Alkenes & Alkynes | yes (21/11/14/20) | queued | | |
+| 9 Conjugation & Pericyclic | yes (24/12/15/20) | queued | | |
+| 10 Alcohols, Ethers & Related | yes (21/12/13/12) | queued | | |
+| 11 Carbonyl Chemistry | yes (24/21/17/20) | queued | | |
+| 12 Oxidation & Reduction | yes (18/4/8/13, anchored format) | yes: 6 figures (the chapter's first curved arrows), 22 questions, wrong +2 key for an acid carbon, Na/NH3 selectivity attributed to the wrong intermediate | in progress | yes |
 
 ---
 
