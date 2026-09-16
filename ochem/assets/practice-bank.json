@@ -4138,7 +4138,7 @@
     "A carbon vertex with one line and three hydrogens"
    ],
    "correct": 2,
-   "why": "Count to four. Two lines plus three hydrogens is five bonds on carbon, which no structure has; the other three each come to exactly four. This is the miscount made when a vertex is read as a carbon and labeled as a substituent too.",
+   "why": "Count to four. Two lines plus three hydrogens is five bonds on carbon, which no structure has; the other three descriptions each come to exactly four. This is the miscount that happens when a vertex is read as a carbon and then labeled as if it were a substituent too.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -4190,7 +4190,7 @@
     "Mechanisms do not use drawn structures"
    ],
    "correct": 2,
-   "why": "You have to see the implied carbons and the undrawn lone pairs as clearly as the drawn ones, because arrows start and end on atoms nobody wrote down.",
+   "why": "You have to see the implied carbons and the undrawn lone pairs as clearly as the drawn ones.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -4431,7 +4431,7 @@
     "Pyridine's ring is not aromatic"
    ],
    "correct": 0,
-   "why": "Pyrrole's N–H leaves its lone pair in a p orbital that overlaps the ring pi system. Pyridine's lone pair sits in an in-plane sp² orbital, perpendicular to that system, so it cannot delocalize.",
+   "why": "In pyrrole the N–H leaves the lone pair in a p orbital that overlaps the ring pi system (delocalized), whereas in pyridine the lone pair occupies an in-plane sp2 orbital perpendicular to the pi system and cannot delocalize.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -4492,7 +4492,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "Pushing electrons from the oxygen lone pair into the ring and around the pi system puts negative charge at the ortho and para carbons, which is where phenoxide's extra stability and reactivity come from.",
+   "why": "Pushing electrons from the oxygen lone pair into the ring, and then around the ring pi system, generates resonance structures with negative charge at the ortho and para positions, explaining phenoxide's extra stability and its reactivity there.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -4531,7 +4531,7 @@
     "Neither comparison can be made without knowing the solvent involved"
    ],
    "correct": 1,
-   "why": "Counting contributors is a rough guide, not a rule, and the ranking criteria say so: one low-energy structure with full octets and the charge on an electronegative atom describes the hybrid better than three high-energy ones do.",
+   "why": "Counting contributors is a rough guide, not a rule, and the ranking criteria say so: a low-energy structure with full octets and the charge on an electronegative atom describes the hybrid better than three high-energy ones do. Exams use this comparison precisely because the count is the tempting answer.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -4570,7 +4570,7 @@
     "(CH₃)₃C–OH, with the OH on a fully substituted carbon"
    ],
    "correct": 1,
-   "why": "Delocalization needs an unbroken run of overlapping p orbitals, and only the second has oxygen bonded directly to an sp² carbon of the pi bond. The first has an sp³ CH₂ in between, and the last two have no pi bond at all.",
+   "why": "Delocalization needs an unbroken run of overlapping p orbitals. Only in the second is oxygen bonded directly to an sp² carbon of the pi bond. In the first an sp³ CH₂ sits in between and breaks the run, and the last two have no pi bond for the pair to reach.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -4596,7 +4596,7 @@
     "Resonance structures may not alter the bond order of any bond"
    ],
    "correct": 1,
-   "why": "Second-row atoms have four valence orbitals and a hard ceiling of eight electrons. A five-bonded carbon is not a poor contributor to be ranked low, it is not a Lewis structure at all — a bond was formed without one being broken.",
+   "why": "Second-row atoms have four valence orbitals and a hard ceiling of eight electrons. A five-bonded carbon is not a poor contributor to be ranked low, it is not a Lewis structure at all, and the arrow that produced it formed a bond without breaking one.",
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -4687,7 +4687,7 @@
     "At a lone pair on the neighboring heteroatom"
    ],
    "correct": 1,
-   "why": "A head pointing at the middle of an existing bond means a new pi bond forms there. The C–H electrons become the second bond between the two carbons, so the head sits on the C–C bond rather than on any single atom.",
+   "why": "A head pointing at the middle of an existing bond means a new pi bond forms there. The C–H electrons become the second bond between the two carbons, so the head sits on the C–C bond between them rather than on any single atom.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -4700,7 +4700,7 @@
     "HO⁻ and H–Br, both unchanged from the start"
    ],
    "correct": 0,
-   "why": "Arrow 1 makes the new O–H bond, so hydroxide (one bond, three lone pairs, −1) becomes neutral water. Arrow 2 hands the bonding pair to bromine, which ends with no bonds and four lone pairs: 7 − 8 = −1. Charge balances.",
+   "why": "Arrow 1 makes the new O–H bond, so hydroxide (one bond, three lone pairs, −1) becomes water (two bonds, two lone pairs, neutral). Arrow 2 hands the bonding pair to bromine, which ends with no bonds and four lone pairs: 7 − 8 = −1. Charge in −1, charge out −1.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -4724,7 +4724,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "A formal negative charge implies an unshared pair at that atom, so a tail drawn there is still starting on a lone pair — one that was not redrawn. It is shorthand, not a third kind of tail: you must still be able to name the pair.",
+   "why": "A formal negative charge implies an unshared pair at that atom, so a tail drawn there is still starting on a lone pair — one that simply was not redrawn. It is accepted shorthand rather than a third kind of tail, and the test does not change: you must still be able to name the pair the tail is standing on.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -4761,7 +4761,7 @@
     "It cannot be shown with curved arrows"
    ],
    "correct": 0,
-   "why": "As in any nucleophilic substitution, one arrow shows the nucleophile attacking and a second shows the leaving group departing. Being tethered inside the same molecule changes nothing.",
+   "why": "As in any nucleophilic substitution, one arrow shows the nucleophile (even if intramolecular) attacking, and a second shows the leaving group departing, regardless of whether the nucleophile is in the same molecule.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -4800,7 +4800,7 @@
     "Because one curved arrow may never cross another curved arrow"
    ],
    "correct": 1,
-   "why": "Two electron pairs are in play and they are not the same pair: one starts as the nucleophile's lone pair and ends in the new bond, the other starts as the C–LG bonding pair and ends on the leaving group. One arrow describes one pair.",
+   "why": "Two electron pairs are in play and they are not the same pair. One starts as the nucleophile's lone pair and ends in the new bond; the other starts as the C–LG bonding pair and ends on the leaving group. A single arrow can only describe one pair going from one place to one other place.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -4839,7 +4839,7 @@
     "The solvent attacking the carbon"
    ],
    "correct": 2,
-   "why": "E2 is one concerted step: the base takes the beta hydrogen, those electrons become the new pi bond, and the leaving group departs with the C–LG pair — three arrows at once.",
+   "why": "E2 is a single concerted step: base removes the beta-hydrogen, those electrons form the new pi bond, and simultaneously the leaving group departs with the sigma bond electrons — three synchronized arrows.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -4889,7 +4889,7 @@
     "The tail rule, because a pi bond is not a valid source of electrons"
    ],
    "correct": 1,
-   "why": "Charge in is +1 from the proton and charge out is +1 on the carbocation, so nothing is unbalanced. Carbocations are electron-deficient but not illegal: six electrons on carbon is what an empty p orbital looks like.",
+   "why": "Charge in is +1 from the proton and charge out is +1 on the carbocation, so nothing is unbalanced. Carbocations are electron-deficient but not illegal: six electrons on carbon is exactly what an empty p orbital looks like. Only more than eight would be impossible.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -4913,7 +4913,7 @@
     "One arrow from the ketone oxygen to the Grignard carbon, and nothing else"
    ],
    "correct": 2,
-   "why": "The polarized C–Mg bond attacks the carbonyl carbon, and the C=O pi electrons move onto oxygen so that carbon never exceeds four bonds. The product is an alkoxide.",
+   "why": "The polarized C–Mg bond's electrons attack the electrophilic carbonyl carbon (first arrow), and the pi electrons of C=O simultaneously shift onto oxygen to avoid carbon exceeding four bonds (second arrow), generating an alkoxide.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -4950,7 +4950,7 @@
     "A C–H bond breaking on the aldehyde"
    ],
    "correct": 0,
-   "why": "Acid catalysis usually opens with protonation of the carbonyl oxygen: its lone pair attacks H⁺, which makes the carbonyl carbon far more electrophilic before the alcohol arrives.",
+   "why": "Under acid catalysis, the mechanism usually begins with protonation of the carbonyl oxygen (its lone pair attacks H+), which increases the electrophilicity of the carbonyl carbon before the alcohol attacks.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5002,7 +5002,7 @@
     "Higher electronegativity"
    ],
    "correct": 1,
-   "why": "In a protic solvent every anion sits in a shell of hydrogen bonds, and the small charge-dense ones are held tightest. A large, polarizable anion such as I⁻ is barely caged and is free to attack. In an aprotic solvent the order reverses.",
+   "why": "In a protic solvent every anion sits in a shell of hydrogen bonds, and the small charge-dense ones are held tightest. A large, polarizable anion such as I⁻ is barely caged and is free to attack, so size wins here. In a polar aprotic solvent there is no cage to strip and the order reverses.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -5015,7 +5015,7 @@
     "Switching to a protic solvent, which stabilizes the neutral alcohol"
    ],
    "correct": 1,
-   "why": "Deprotonation leaves the same oxygen with the same nuclear charge but an extra unshared pair and no bond holding it. That pair sits higher in energy, so it has less distance to climb to the transition state — which is what faster means.",
+   "why": "Deprotonation leaves the same oxygen with the same nuclear charge but an extra unshared pair and no bond holding it. That pair sits higher in energy than any pair in the neutral alcohol, so it has less distance to climb to reach the transition state, which is what a faster attack means.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5052,7 +5052,7 @@
     "Increases only for neutral nucleophiles"
    ],
    "correct": 0,
-   "why": "Two things change together down the column: the anion gets larger and more polarizable, and less tightly solvated. Both free it to attack, so iodide is best in water or methanol — and worst of the four once the solvent is aprotic.",
+   "why": "Two things change together down the column: the anion gets larger and more polarizable, and it gets less tightly solvated by hydrogen bonds. Both free it to attack, so iodide is the best nucleophile of the four in water or methanol — and the worst of the four once the solvent is aprotic.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -5063,7 +5063,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "Protic solvents hydrogen-bond hard to small, charge-dense anions like F⁻ and cage them. An aprotic solvent offers no such cage, so fluoride's high charge density makes it the better nucleophile there.",
+   "why": "Protic solvents hydrogen-bond strongly to small, localized-charge anions like F-, caging it and lowering its reactivity; in aprotic solvents with no hydrogen bonding, F- is not solvated as heavily and its small size/high charge density can make it more nucleophilic than I-.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -5100,7 +5100,7 @@
     "Alkoxides cannot act as nucleophiles at all"
    ],
    "correct": 2,
-   "why": "Sulfur is larger and more polarizable than oxygen, so its lone pairs deform easily and begin bonding at longer range. It is the weaker base for a separate reason — the charge is spread over a bigger atom — which is why the two rankings come apart.",
+   "why": "Sulfur is larger and more polarizable than oxygen, so its lone pairs deform easily and can begin forming a bond at longer range. It is the weaker base for a related but separate reason — the charge is spread over a much bigger atom, and H–S is a weaker bond than H–O — which is exactly why the two rankings come apart here.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5198,7 +5198,7 @@
     "The carbon end is electron-rich and less hindered"
    ],
    "correct": 3,
-   "why": "Formal charge might point at nitrogen, but carbon is the kinetically preferred site: its lone pair is less tightly held and the atom is less hindered, so cyanide installs a carbon.",
+   "why": "Although formal charge considerations might suggest nitrogen, the carbon atom of cyanide is the kinetically preferred nucleophilic site in most SN2-type reactions due to its orbital characteristics and accessibility.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5211,7 +5211,7 @@
     "Sodium amide, among the strongest bases available"
    ],
    "correct": 1,
-   "why": "Substitution needs a species that attacks carbon; elimination needs one that grabs a proton next door. Iodide is large, polarizable and a very weak base, so it does the first and not the second. The other three are chosen as proton removers.",
+   "why": "Substitution needs a species that attacks carbon; elimination needs one that grabs a proton from the carbon next door. Iodide is large, polarizable and a very weak base, so it does the first and not the second. The other three are chosen for how well they remove protons, which is the wrong job here.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -5222,7 +5222,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "An sp³ lone pair has less s character than an sp² one, so it sits further from the nucleus and is more available to donate. That is why pyridine's sp² nitrogen is the weaker nucleophile and base.",
+   "why": "An sp3 lone pair has less s-character than an sp2 lone pair, so it sits farther from the nucleus and is held less tightly, making it somewhat more available to donate; this fits pyridine's sp2 nitrogen being a weaker nucleophile and base than a typical sp3 trialkylamine.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -5272,7 +5272,7 @@
     "SN2 needs a close backside approach that bulk blocks"
    ],
    "correct": 3,
-   "why": "An SN2 nucleophile has to approach a crowded tetrahedral carbon from one specific backside angle, so bulk on either partner clashes. Removing a small, exposed proton demands nothing like that geometry.",
+   "why": "Because an SN2 nucleophile must approach a tetrahedral, often crowded carbon from a specific backside angle, bulky substituents on the nucleophile or substrate create steric clashes that aren't nearly as significant when a small, exposed proton is simply being removed by a base.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5309,7 +5309,7 @@
     "RNH₃⁺ is a stronger nucleophile than RNH₂"
    ],
    "correct": 0,
-   "why": "A negative charge raises the electron density on the donor atom, so the anion of a conjugate pair is the better nucleophile. Going the other way is worse than it looks: protonating an amine consumes the lone pair outright.",
+   "why": "A negative charge raises the electron density on the donor atom, so the anion of a conjugate pair is always the better nucleophile. Going the other way is worse than it looks: protonating an amine consumes the lone pair entirely, so the ammonium ion is not a weak nucleophile but no nucleophile at all.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5322,7 +5322,7 @@
     "Basicity and nucleophilicity are unrelated to one another"
    ],
    "correct": 1,
-   "why": "Both jobs use the same nitrogen lone pair, so the difference is not electronic. Taking a proton means reaching a bare hydrogen on the outside of a molecule; attacking a carbon means reaching an atom surrounded by three other groups.",
+   "why": "Both jobs use the same nitrogen lone pair, so the difference is not electronic. Taking a proton means reaching a bare hydrogen on the outside of a molecule; attacking a carbon means reaching an atom already surrounded by three other groups. Three ethyls barely hinder the first and badly hinder the second.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -5402,7 +5402,7 @@
     "The methyl on the far right"
    ],
    "correct": 1,
-   "why": "The carbonyl carbon is bonded twice over to oxygen, so it is the most polarized carbon here, and it needs no leaving group because the pi bond can break onto the oxygen. The CH₂Cl carbon is a genuine second site, but the less electron-poor one.",
+   "why": "The carbonyl carbon is bonded twice over to oxygen, so it is the most polarized carbon in the molecule, and it needs no leaving group because the pi bond can break onto the oxygen instead. The CH₂Cl carbon is a genuine second site — δ+ and carrying a group that departs — but it is the less electron-poor of the two.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5426,7 +5426,7 @@
     "Epoxides have no dipole at all"
    ],
    "correct": 0,
-   "why": "The electronegative ring oxygen pulls density off both ring carbons, and the strained three-membered ring adds a driving force for a nucleophile to open it at carbon.",
+   "why": "The electronegative oxygen pulls electron density from the ring carbons (inducing partial positive charge), and the strained three-membered ring geometry adds extra driving force for nucleophiles to open the ring at carbon.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5452,7 +5452,7 @@
     "Neither of them, without an acid catalyst present"
    ],
    "correct": 1,
-   "why": "Induction from three fluorines strips further density out of the carbonyl carbon and deepens its δ+. Withdrawing neighbors sharpen an electrophile and donating ones such as alkyl groups blunt it, so the methyl compound is milder.",
+   "why": "Induction from three fluorines strips further electron density out of the carbonyl carbon and deepens its δ+. Electron-withdrawing neighbors sharpen an electrophile and electron-donating ones such as alkyl groups blunt it, which makes the methyl compound the milder of the two.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -5528,7 +5528,7 @@
     "Better electrophile, since the positive oxygen withdraws more"
    ],
    "correct": 3,
-   "why": "Protonating the oxygen gives it a formal positive charge, which pulls still more density off the attached carbon through the sigma bond. That carbon becomes markedly more reactive toward nucleophiles.",
+   "why": "Protonating the oxygen gives it a formal positive charge, which pulls even more electron density away from the attached carbon through the sigma bond, increasing that carbon's electrophilicity and making it far more reactive to nucleophilic attack or departure as a leaving group.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5541,7 +5541,7 @@
     "A carboxylate ion (R-COO-)"
    ],
    "correct": 0,
-   "why": "Chlorine withdraws strongly and donates almost nothing back by resonance, leaving the acid chloride's carbonyl carbon the most electron-poor. Amides are the least, because nitrogen donates its lone pair into the carbonyl.",
+   "why": "Chlorine is a strong electron-withdrawing group and a poor electron donor by resonance, leaving the acid chloride's carbonyl carbon the most electron-poor and electrophilic; amides are the least electrophilic because nitrogen donates its lone pair into the carbonyl most effectively, reducing electrophilicity.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5628,7 +5628,7 @@
     "Whichever of the two the nucleophile reaches first"
    ],
    "correct": 1,
-   "why": "A drawn charge is formal bookkeeping, not a measure of electron deficiency. Oxygen with three bonds and a plus still has lone pairs and a full octet; the carbon is the atom that is short. Hunt for the deficient atom, not the symbol.",
+   "why": "A drawn charge is formal bookkeeping, not a measure of electron deficiency. Oxygen with three bonds and a plus still has lone pairs and a full octet; the carbon is the atom that is short, and the minor contributor placing the positive charge on it says so. Hunt for the deficient atom, not the symbol.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -5641,7 +5641,7 @@
     "Only the carbonyl carbon is ever electrophilic in an enone"
    ],
    "correct": 2,
-   "why": "A contributor of an enone shifts the C=C pi electrons all the way onto the electronegative oxygen, leaving a positive charge on the beta carbon. That is why nucleophiles can add there as well as at the carbonyl.",
+   "why": "A resonance structure of an enone shows the C=C pi electrons shifting all the way to the very electronegative oxygen, leaving a positive charge on the beta carbon; this explains why nucleophiles can add either directly to the carbonyl carbon or to this more remote beta carbon (conjugate addition).",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5667,7 +5667,7 @@
     "Protonation turns the oxygen itself into the site of attack"
    ],
    "correct": 1,
-   "why": "A protonated carbonyl has two contributors: one with the plus on oxygen and every octet full, one with the plus on carbon and six electrons there. The second is minor but real, and its share of the hybrid deepens the carbon's positive character.",
+   "why": "A protonated carbonyl has two contributors: one with the plus on oxygen and every octet full, and one with the plus on carbon and only six electrons there. The second is minor but real, and its share of the hybrid is what deepens the carbon's positive character. That is why so many carbonyl reactions are run under acid.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5693,7 +5693,7 @@
     "Sulfur is the site that nucleophiles attack, not carbon"
    ],
    "correct": 1,
-   "why": "The sulfonate oxygen polarizes the attached carbon, and the sulfonate anion is exceptionally stable by resonance, so it departs easily — the same two properties that make an alkyl halide useful.",
+   "why": "Like halides, the oxygen in a sulfonate ester polarizes the attached carbon (making it electrophilic), and the resulting sulfonate anion is exceptionally stable (weak base) due to extensive resonance and charge delocalization, making it depart easily as a leaving group.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5706,7 +5706,7 @@
     "Convert the carbon into a full nucleophile"
    ],
    "correct": 2,
-   "why": "Alkyl groups are weak electron donors, by induction and hyperconjugation, and they also block approach physically. More substitution at a potentially electrophilic carbon therefore makes it both less electron-poor and less reachable.",
+   "why": "Alkyl groups are weak electron donors (by induction/hyperconjugation) and also physically block approach, so more substitution at a potentially electrophilic carbon generally reduces how strongly and how accessibly electrophilic it is (this is part of why more substituted carbonyls are less reactive toward nucleophiles).",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5717,7 +5717,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "Alkyl groups donate electron density to an adjacent positive charge, so a tertiary cation sits lower in energy than a primary one and forms more readily. All carbocations stay strong electrophiles once formed; this is about how readily they appear.",
+   "why": "Alkyl groups donate electron density to an adjacent positive charge, so a tertiary cation sits lower in energy than a primary one and the ionization that produces it is easier. Every carbocation remains a strong electrophile once formed; this comparison is about how readily they appear, not how hungry they are.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -5730,7 +5730,7 @@
     "Iodide is an excellent, polarizable leaving group"
    ],
    "correct": 3,
-   "why": "The C–I bond is only modestly polarized, but it is weak and long and iodide is a very stable, weakly basic leaving group, so the substitution is fast anyway.",
+   "why": "Even though the C–I bond is only modestly polarized, the weak, long C–I bond breaks easily and iodide is a very stable, weakly basic leaving group, so the overall reaction is fast even if carbon itself is not the most electron-poor among the halomethanes.",
    "difficulty": "hard",
    "type": "mcq"
   }
@@ -5771,7 +5771,7 @@
     "It adds positive charge directly onto the reacting carbon"
    ],
    "correct": 1,
-   "why": "Nothing was wrong with the nucleophile: bromide is the same species in both flasks. The blocked step was the departure, because hydroxide (pKaH 15.7) will not leave a carbon. Protonation makes the departing species neutral water.",
+   "why": "Nothing was wrong with the nucleophile: bromide is the same species in both flasks. The blocked step was the departure, because hydroxide (pKaH 15.7) will not leave a carbon. Protonation changes the departing species to neutral water (pKaH −1.7), and the reaction goes.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -5797,7 +5797,7 @@
     "Sodium hydroxide in ethanol"
    ],
    "correct": 1,
-   "why": "TsCl with pyridine gives a tosylate under mild, neutral conditions. Sulfuric acid also activates the OH, by protonation, but every acid-sensitive group then has to survive it; the other two reagents do nothing useful here.",
+   "why": "TsCl with pyridine converts the alcohol to a tosylate under mild, neutral conditions. Sulfuric acid also activates the OH, by protonation, but every acid-sensitive group in the molecule then has to survive it; the other two reagents do nothing useful here at all.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -5910,7 +5910,7 @@
     "There is no real relationship between base strength and leaving group ability"
    ],
    "correct": 2,
-   "why": "Base strength measures how badly a species wants to hold electron density. A weak base is already stable on its own and is content to leave with the bonding pair, which is why leaving-group ability and base strength run opposite.",
+   "why": "Base strength measures how strongly a species wants to grab and hold a proton (or, analogously, electron density); weak bases are inherently stable on their own and 'happy' to leave with the bonding electron pair, which is the core reason leaving group ability and base strength are inversely related.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -5962,7 +5962,7 @@
     "Two arrows may not be drawn within one mechanism step"
    ],
    "correct": 1,
-   "why": "Hydroxide is the conjugate base of water, pKaH 15.7, so it is a strong base and does not depart from carbon on its own. The missing piece is an activation step — protonate the OH, tosylate it, or convert it to a halide.",
+   "why": "Hydroxide is the conjugate base of water, pKaH 15.7, so it is a strong base and does not depart from carbon on its own. The missing piece is an activation step — protonate the OH, tosylate it, or convert it to a halide — and only then can something leave.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -5986,7 +5986,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "The amide anion ⁻NH₂ is far too strong a base to leave a carbon. Put a positive charge on the nitrogen first, by protonation or by alkylation to a quaternary ammonium, and what departs is a neutral amine rather than an anion.",
+   "why": "The amide anion ⁻NH₂ is far too strong a base to leave a carbon. Put a positive charge on the nitrogen first, by protonation or by alkylation to a quaternary ammonium, and the departing species is a neutral amine rather than an anion, which is a much cheaper thing to become.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -6036,7 +6036,7 @@
     "Carbanions cannot be discussed in terms of leaving group ability at all"
    ],
    "correct": 1,
-   "why": "Strong bases and good leaving groups sit at opposite ends of one stability scale. A reactive carbanion is a very strong base, so it is a very poor leaving group: it has no wish to depart carrying the electron pair.",
+   "why": "Because strong bases/nucleophiles and good leaving groups are generally opposite ends of the same stability spectrum, a reactive carbanion (strong base) is a very poor leaving group — it simply does not want to depart and take the electron pair in an already-stable low-energy form elsewhere.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -6062,7 +6062,7 @@
     "Sodium hydroxide, which deprotonates the alcohol"
    ],
    "correct": 1,
-   "why": "Bromide alone cannot displace hydroxide, and deprotonating the alcohol makes the leaving group worse. PBr₃ converts the OH into a good leaving group and delivers bromide in the same operation, which is the standard one-step route.",
+   "why": "Bromide on its own cannot displace hydroxide, and deprotonating the alcohol makes the leaving group worse rather than better. PBr₃ converts the OH into a good leaving group and delivers bromide in the same operation, which is why it is the standard one-step route.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -6075,7 +6075,7 @@
     "Its charge is delocalized over several oxygens by resonance"
    ],
    "correct": 3,
-   "why": "Phosphate spreads its negative charge over several oxygens by resonance, exactly as sulfonates and carboxylates do. That lowers its basicity enough to make it leave readily despite the formal charge it carries.",
+   "why": "Like sulfonates and carboxylates, phosphate leaving groups spread their negative charge over several oxygen atoms via resonance, lowering their basicity and making them effective leaving groups despite the formal negative charge, which is central to many biochemical substitution reactions.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -6088,7 +6088,7 @@
     "OH- > I- > OTs-"
    ],
    "correct": 0,
-   "why": "Hydroxide is a strong base and a poor leaving group, so it is last. Tosylate and iodide are both conjugate bases of very strong acids and belong to the same top tier; measured rates put tosylate marginally ahead, which is the order keyed here.",
+   "why": "Hydroxide is a strong base and a poor leaving group, so it is clearly last. Tosylate and iodide are both conjugate bases of very strong acids and belong to the same top tier; measured substitution rates put tosylate marginally ahead of iodide, which is the order keyed here. Getting the tiers right matters more than the order inside one.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -6099,7 +6099,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "The three fluorines withdraw density and help stabilize the negative charge on the departing sulfonate, making triflate an exceptionally weak base and a leaving group better still than tosylate.",
+   "why": "The three highly electronegative fluorine atoms further withdraw electron density and help delocalize/stabilize the negative charge on the departing sulfonate oxygen, making triflate an exceptionally weak base and outstanding leaving group, even better than a simple tosylate.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -6112,7 +6112,7 @@
     "The reaction mechanism switches automatically to E2"
    ],
    "correct": 1,
-   "why": "SN1 rate depends on how readily the substrate ionizes, so a poor leaving group makes that step slow or unfavorable. Such substrates usually have to be activated first, by protonation or conversion to a sulfonate.",
+   "why": "Since SN1 rate depends on how readily the substrate ionizes, a poor leaving group (strong base, high-energy anion) makes that ionization step slow or unfavorable, often requiring the substrate to be activated first (e.g., protonation or conversion to a sulfonate) before substitution can proceed.",
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -6190,7 +6190,7 @@
     "None of them, since ethers resist attack by any nucleophile"
    ],
    "correct": 1,
-   "why": "Oxygen (3.44) is more electronegative than chlorine (3.16), so the carbons flanking the ether oxygen are polarized at least as strongly. What decides it is the second condition: only the chlorine-bearing carbon holds a group that will actually depart.",
+   "why": "Oxygen (3.44) is more electronegative than chlorine (3.16), so the carbons flanking the ether oxygen are polarized at least as strongly as the Cl-bearing one. What decides it is the second condition: only the chlorine-bearing carbon holds a group that will actually depart. Electron-poor makes a carbon a candidate; a leaving group makes it the answer.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -6251,7 +6251,7 @@
     "Alkyl groups donate electron density into the pi bond"
    ],
    "correct": 3,
-   "why": "Alkyl groups donate weakly, through hyperconjugation and induction, so each extra substituent raises the pi bond's electron density and makes the alkene a better nucleophile.",
+   "why": "Alkyl groups are weak electron donors (through hyperconjugation with adjacent C–H/C–C bonds and simple induction), so each additional alkyl substituent on a double bond increases the electron density of the pi bond, making the alkene a better nucleophile.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -6288,7 +6288,7 @@
     "The oxygen atom itself is the only reactive site"
    ],
    "correct": 1,
-   "why": "A contributor of the enol puts an oxygen lone pair into the pi system, shifting density to the terminal alpha carbon. That is the carbon electrophiles attack.",
+   "why": "A resonance structure of the enol places a lone pair from oxygen into the pi system, shifting electron density to the terminal (alpha) carbon and giving it significant nucleophilic, electron-rich character, which is why enols react with electrophiles at that carbon.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -6327,7 +6327,7 @@
     "Both, since the two effects act in the same direction"
    ],
    "correct": 1,
-   "why": "The two effects point opposite ways here. Induction pulls density out of the ring, because nitrogen is the more electronegative atom, while resonance pushes a whole lone pair in. A relocated pair beats a tilted one, so resonance wins.",
+   "why": "The two effects point opposite ways in this molecule. Induction pulls density out of the ring, because nitrogen is the more electronegative atom, while resonance pushes a whole lone pair in. A relocated pair beats a tilted one, so resonance wins and the ring ends up electron-rich.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -6388,7 +6388,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "Oxygen holds its own electrons more tightly, so it is the stronger base. Sulfur's larger, more polarizable cloud makes it more willing to donate density in a bond-forming step, so it behaves as the more nucleophilic of the two.",
+   "why": "Although oxygen holds its own electrons more tightly (higher electronegativity, stronger base), sulfur's larger, more polarizable, more loosely held electron cloud makes it more willing to donate electron density in bond-forming reactions, so it behaves as more nucleophilic/electron-rich in a reactivity sense.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -6414,7 +6414,7 @@
     "There is no difference between the two oxygens"
    ],
    "correct": 0,
-   "why": "One lone pair of the hydroxyl oxygen conjugates with the carbonyl pi system, pulling density toward the carbonyl oxygen. That depletion is part of why the O–H is more acidic than an alcohol's.",
+   "why": "One of the hydroxyl oxygen's lone pairs conjugates with the carbonyl pi system, pulling electron density toward the carbonyl oxygen; this depletion of electron density on the OH oxygen is part of why the O–H bond is more acidic (and the oxygen less basic) than in a simple alcohol.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -6451,7 +6451,7 @@
     "Enamines have no nitrogen lone pair available to donate"
    ],
    "correct": 2,
-   "why": "An enamine's nitrogen lone pair conjugates through the C=C pi system, making the far carbon unusually electron-rich and nucleophilic — the same move an enolate's oxygen makes toward its alpha carbon.",
+   "why": "Just as an enolate's oxygen lone pair activates the alpha carbon through resonance, an enamine's nitrogen lone pair conjugates through the C=C pi system to make the beta carbon unusually electron-rich and nucleophilic, a key feature exploited in many carbon-carbon bond-forming reactions.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -6462,7 +6462,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "A halogen on an aromatic ring is the classic case: it withdraws density inductively, making the ring electron-poor overall, while donating density by resonance at the ortho and para positions. The two effects genuinely oppose.",
+   "why": "A classic example is a halogen substituent on an aromatic ring: it withdraws electron density inductively (making the ring somewhat electron-poor overall) while donating electron density by resonance at the ortho/para positions (making those specific positions more electron-rich), so the two effects can genuinely pull in opposite directions.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -6475,7 +6475,7 @@
     "No contributor does, since the beta carbon is three bonds from the oxygen"
    ],
    "correct": 0,
-   "why": "Push the C=C electrons into the central C–C bond and the carbonyl pi electrons onto oxygen: the result carries a minus on oxygen and a plus on the far, beta carbon. That contributor is why nucleophiles add at the beta position.",
+   "why": "Push the C=C electrons into the central C–C bond and the carbonyl pi electrons onto oxygen, and the result carries a minus on oxygen and a plus on the far, beta carbon. That contributor is a genuine part of the hybrid, which is why nucleophiles add at the beta position — conjugate addition.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -6486,7 +6486,7 @@
     "False"
    ],
    "correct": 1,
-   "why": "Bromine formally bears the positive charge in the strained three-membered ring, but the nucleophile attacks one of the ring carbons from the backside, opening the ring. Formal charge does not always mark the site of attack.",
+   "why": "Although bromine formally bears the positive charge in the strained three-membered bromonium ring, the nucleophile actually attacks one of the electrophilic ring carbons from the backside, displacing bromine and opening the ring; formal charge location does not always mark the exact site of nucleophilic attack.",
    "difficulty": "hard",
    "type": "tf"
   }
