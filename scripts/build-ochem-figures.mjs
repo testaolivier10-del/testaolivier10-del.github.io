@@ -40,6 +40,29 @@ const check = process.argv.includes('--check');
 
 const FIGURES = [];
 
+/* A double bond inside a ring, or on a skeleton whose ends carry something
+   else. `bond(a, b, { order: 2 })` draws two full-length lines either side of
+   the axis, which is right for an isolated C=C and wrong the moment the
+   vertices are shared: the second line runs past the corner and hangs over
+   the neighbouring bond, and where a dashed forming-bond arrives at the same
+   vertex the two cross. A ring chemist draws the second line short and on the
+   inside instead, so this does that — one full line along the bond, one
+   inset line offset toward `inward`. */
+function ringDouble(a, b, inward, opts = {}) {
+  const gap = opts.gap ?? 4.6;
+  const inset = opts.inset ?? 12;
+  const dx = b.x - a.x, dy = b.y - a.y;
+  const len = Math.hypot(dx, dy) || 1;
+  const ux = dx / len, uy = dy / len;
+  let px = -uy, py = ux;
+  const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+  if ((inward.x - mx) * px + (inward.y - my) * py < 0) { px = -px; py = -py; }
+  const A = P(a.x + ux * inset + px * gap, a.y + uy * inset + py * gap);
+  const B = P(b.x - ux * inset + px * gap, b.y - uy * inset + py * gap);
+  return bond(a, b, { rFrom: 0, rTo: 0, cls: opts.cls }) +
+         bond(A, B, { rFrom: 0, rTo: 0, cls: opts.cls });
+}
+
 /* ------------------------------------------------------------------ 1 ---
    Why acid derivatives only react downhill. The ladder is the organising
    fact of the whole chapter and the notes state it in words only. */
@@ -730,7 +753,11 @@ FIGURES.push({
        comparable at a glance. `ox` shifts the whole thing into its panel. */
     const skeleton = (ox, traced, nums, branchLabel) => {
       const R = [P(ox + 50, 210), P(ox + 92, 186), P(ox + 134, 210), P(ox + 176, 186), P(ox + 218, 210)];
-      const B = [P(ox + 92, 138), P(ox + 134, 114), P(ox + 176, 138)];
+      /* The branch leans back over the start of the row rather than arcing
+         across it. Drawn the other way its third carbon ended up one bond
+         length above C4, and the skeleton read as a closed six-membered ring
+         — a reader could see cyclohexane where there is none. */
+      const B = [P(ox + 92, 138), P(ox + 54, 112), P(ox + 54, 64)];
       const links = [
         ['R0R1', R[0], R[1]], ['R1R2', R[1], R[2]], ['R2R3', R[2], R[3]], ['R3R4', R[3], R[4]],
         ['R1B1', R[1], B[0]], ['B1B2', B[0], B[1]], ['B2B3', B[1], B[2]],
@@ -745,28 +772,28 @@ FIGURES.push({
       // a bond; the branch carbons get theirs above the branch.
       for (const [x, y, v] of nums) t += text(ox + x, y, v, { cls: 'fg-lbl', size: 11 });
       t += text(ox + 50, 236, branchLabel[0], { cls: 'fg-sm', size: 9.5 });
-      t += text(ox + 134, 102, branchLabel[1], { cls: 'fg-sm', size: 9.5 });
+      t += text(ox + 150, 92, branchLabel[1], { cls: 'fg-sm', size: 9.5 });
       return t;
     };
 
-    s += panel(24, 88, 250, 180, { kind: 'warn' });
-    s += tag(149, 76, 'the row you can see');
+    s += panel(24, 44, 250, 224, { kind: 'warn' });
+    s += tag(149, 32, 'the row you can see');
     s += skeleton(30, ['R0R1', 'R1R2', 'R2R3', 'R3R4'],
       [[50, 236, '1'], [92, 212, '2'], [134, 236, '3'], [176, 212, '4'], [218, 236, '5']],
       ['', 'a three-carbon branch']);
 
-    s += panel(404, 88, 250, 180, { kind: 'hi' });
-    s += tag(529, 76, 'the path that turns a corner');
-    s += skeleton(410, ['B2B3', 'B1B2', 'R1B1', 'R1R2', 'R2R3', 'R3R4'],
-      [[200, 134, '1'], [134, 94, '2'], [68, 134, '3'], [92, 212, '4'], [134, 236, '5'], [176, 212, '6'], [218, 236, '7']],
+    s += panel(396, 44, 250, 224, { kind: 'hi' });
+    s += tag(521, 32, 'the path that turns a corner');
+    s += skeleton(402, ['B2B3', 'B1B2', 'R1B1', 'R1R2', 'R2R3', 'R3R4'],
+      [[30, 68, '1'], [30, 116, '2'], [64, 146, '3'], [92, 212, '4'], [134, 236, '5'], [176, 212, '6'], [218, 236, '7']],
       ['methyl', '']);
 
     s += text(149, 292, 'five carbons, one propyl branch', { cls: 'fg-sm', size: 10 });
     s += text(149, 314, '2-propylpentane', { cls: 'fg-tag-warn', size: 11.5 });
     s += text(149, 332, 'no such compound name \u2014 a longer chain exists', { cls: 'fg-sm', size: 9.5 });
-    s += text(529, 292, 'seven carbons, one methyl branch', { cls: 'fg-sm', size: 10 });
-    s += text(529, 314, '4-methylheptane', { cls: 'fg-tag-good', size: 11.5 });
-    s += text(529, 332, 'correct \u2014 nothing longer runs through the molecule', { cls: 'fg-sm', size: 9.5 });
+    s += text(521, 292, 'seven carbons, one methyl branch', { cls: 'fg-sm', size: 10 });
+    s += text(521, 314, '4-methylheptane', { cls: 'fg-tag-good', size: 11.5 });
+    s += text(521, 332, 'correct \u2014 nothing longer runs through the molecule', { cls: 'fg-sm', size: 9.5 });
     return s;
   },
   caption: 'The same eight carbons, traced twice. The five-carbon row is what the drawing puts in front of you; the seven-carbon parent runs up into the branch and back along the row, and it is a longer continuous path through exactly the same skeleton.',
@@ -831,7 +858,7 @@ FIGURES.push({
   viewBox: '0 0 760 390',
   build() {
     let s = '';
-    const skeleton = (ox, traced, nums, extra) => {
+    const skeleton = (ox, traced, nums, extra, extraAnchor = 'middle') => {
       const a = [P(ox + 50, 174), P(ox + 86, 152), P(ox + 122, 174), P(ox + 158, 152), P(ox + 194, 174), P(ox + 230, 152)];
       const b1 = P(ox + 122, 216), oh = P(ox + 122, 258);
       const links = [
@@ -847,29 +874,33 @@ FIGURES.push({
       t += bond(b1, oh, { rFrom: 0, rTo: 15, cls: traced.includes('oh') ? 'fg-bond-hi' : 'fg-bond' });
       t += atom(oh.x, oh.y, 'OH', { kind: traced.includes('oh') ? 'hi' : 'plain' });
       for (const [x, y, v] of nums) t += text(ox + x, y, v, { cls: 'fg-lbl', size: 11 });
-      for (const [x, y, v] of extra) t += text(ox + x, y, v, { cls: 'fg-sm', size: 9.5 });
+      for (const [x, y, v] of extra) t += text(ox + x, y, v, { cls: 'fg-sm', size: 9.5, anchor: extraAnchor });
       return t;
     };
 
-    s += panel(24, 64, 300, 224, { kind: 'warn' });
-    s += tag(174, 52, 'the longest chain in the molecule');
-    s += skeleton(30, ['a0', 'a1', 'a2', 'a3', 'a4'],
+    /* Both panels sit inside the left 90% of the canvas: the right-hand one
+       carries the answer, and past that the reading column has scrolled it
+       off. The OH note is anchored to the right of its own disc rather than
+       centred over it, which is what had it sitting on the label. */
+    s += panel(20, 64, 300, 224, { kind: 'warn' });
+    s += tag(170, 52, 'the longest chain in the molecule');
+    s += skeleton(26, ['a0', 'a1', 'a2', 'a3', 'a4'],
       [[50, 130, '1'], [86, 130, '2'], [122, 130, '3'], [158, 130, '4'], [194, 130, '5'], [230, 130, '6']],
-      [[205, 250, 'the OH is off the chain']]);
+      [[144, 250, 'the OH is off the chain']], 'start');
 
-    s += panel(404, 64, 300, 224, { kind: 'hi' });
-    s += tag(554, 52, 'the longest chain through the OH');
-    s += skeleton(410, ['br', 'a2', 'a3', 'a4', 'oh'],
+    s += panel(370, 64, 300, 224, { kind: 'hi' });
+    s += tag(520, 52, 'the longest chain through the OH');
+    s += skeleton(376, ['br', 'a2', 'a3', 'a4', 'oh'],
       [[122, 130, '2'], [158, 130, '3'], [194, 130, '4'], [230, 130, '5'], [96, 220, '1']],
       [[68, 130, 'ethyl']]);
 
-    s += rule(34, 300, 726, 300);
-    s += text(174, 322, 'six carbons \u2014 the longest path there is', { cls: 'fg-sm', size: 10 });
-    s += text(174, 344, '3-(hydroxymethyl)hexane', { cls: 'fg-tag-warn', size: 11.5 });
-    s += text(174, 364, 'demotes the alcohol to a prefix, which is not allowed', { cls: 'fg-sm', size: 9.5 });
-    s += text(554, 322, 'five carbons \u2014 shorter, and it contains the OH', { cls: 'fg-sm', size: 10 });
-    s += text(554, 344, '2-ethylpentan-1-ol', { cls: 'fg-tag-good', size: 11.5 });
-    s += text(554, 364, 'the alcohol takes the suffix and C1', { cls: 'fg-sm', size: 9.5 });
+    s += rule(20, 300, 670, 300);
+    s += text(170, 322, 'six carbons \u2014 the longest path there is', { cls: 'fg-sm', size: 10 });
+    s += text(170, 344, '3-(hydroxymethyl)hexane', { cls: 'fg-tag-warn', size: 11.5 });
+    s += text(170, 364, 'demotes the alcohol to a prefix, which is not allowed', { cls: 'fg-sm', size: 9.5 });
+    s += text(520, 322, 'five carbons \u2014 shorter, and it contains the OH', { cls: 'fg-sm', size: 10 });
+    s += text(520, 344, '2-ethylpentan-1-ol', { cls: 'fg-tag-good', size: 11.5 });
+    s += text(520, 364, 'the alcohol takes the suffix and C1', { cls: 'fg-sm', size: 9.5 });
     return s;
   },
   caption: 'One molecule, two candidate parents. The six-carbon chain on the left is genuinely the longest path through the skeleton and it is still the wrong parent, because it does not pass through the carbon carrying the \u2013OH.',
@@ -900,7 +931,10 @@ FIGURES.push({
         v.push(P(cx + Math.cos(ang) * 56, 170 + Math.sin(ang) * 56));
       }
       let t = '';
-      for (let i = 0; i < 6; i++) t += bond(v[i], v[(i + 1) % 6], { rFrom: 0, rTo: 0, order: i === 0 ? 2 : 1 });
+      for (let i = 0; i < 6; i++) {
+        if (i === 0) t += ringDouble(v[i], v[1], P(cx, 170));
+        else t += bond(v[i], v[(i + 1) % 6], { rFrom: 0, rTo: 0 });
+      }
       // The methyl stub points straight out from the center.
       const m = v[2];
       const ux = (m.x - cx) / 56, uy = (m.y - 170) / 56;
@@ -914,21 +948,24 @@ FIGURES.push({
       return t;
     };
 
-    s += panel(76, 76, 248, 196, { kind: 'warn' });
-    s += tag(200, 64, 'round one way');
-    s += ring(200, [2, 1, 6, 5, 4, 3]);
+    /* The pair is centred on the part of the canvas the reading column
+       actually shows, not on the canvas: the right-hand panel carries the
+       answer and past about 0.9 of the width it is behind a scroll. */
+    s += panel(44, 76, 248, 196, { kind: 'warn' });
+    s += tag(168, 64, 'round one way');
+    s += ring(168, [2, 1, 6, 5, 4, 3]);
 
-    s += panel(436, 76, 248, 196, { kind: 'hi' });
-    s += tag(560, 64, 'round the other');
-    s += ring(560, [1, 2, 3, 4, 5, 6]);
+    s += panel(404, 76, 248, 196, { kind: 'hi' });
+    s += tag(528, 64, 'round the other');
+    s += ring(528, [1, 2, 3, 4, 5, 6]);
 
-    s += text(200, 298, 'methyl lands on C6', { cls: 'fg-sm', size: 10 });
-    s += text(200, 320, '6-methylcyclohex-1-ene', { cls: 'fg-tag-warn', size: 11.5 });
-    s += text(560, 298, 'methyl lands on C3', { cls: 'fg-sm', size: 10 });
-    s += text(560, 320, '3-methylcyclohex-1-ene', { cls: 'fg-tag-good', size: 11.5 });
+    s += text(168, 298, 'methyl lands on C6', { cls: 'fg-sm', size: 10 });
+    s += text(168, 320, '6-methylcyclohex-1-ene', { cls: 'fg-tag-warn', size: 11.5 });
+    s += text(528, 298, 'methyl lands on C3', { cls: 'fg-sm', size: 10 });
+    s += text(528, 320, '3-methylcyclohex-1-ene', { cls: 'fg-tag-good', size: 11.5 });
 
-    s += rule(34, 336, 726, 336);
-    s += text(380, 360, 'Both give the double bond 1 and 2. Only the methyl separates them, and 3 beats 6.', { cls: 'fg-lbl', size: 12 });
+    s += rule(34, 336, 662, 336);
+    s += text(348, 360, 'Both give the double bond 1 and 2. Only the methyl separates them, and 3 beats 6.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
   caption: 'The same methylcyclohexene, numbered in both directions. A ring has no end to start from, so the double bond is placed first \u2014 it takes C1 and C2 either way \u2014 and the direction is then settled by whichever substituent is left.',
@@ -946,7 +983,7 @@ FIGURES.push({
   section: 'conjugated-systems',
   anchor: '<h3>s-cis and s-trans: a conformation, not a configuration</h3>',
   alt: 'Heats of hydrogenation compared as bars: but-1-ene 127, penta-1,4-diene 254, buta-1,3-diene 239 kilojoules per mole, with the 15 kilojoule shortfall marked',
-  viewBox: '0 0 760 340',
+  viewBox: '0 0 760 356',
   build() {
     let s = '';
     // 1.7 px per kJ/mol, all three bars from the same origin, so the only
@@ -958,7 +995,7 @@ FIGURES.push({
       { y: 236, name: 'Buta-1,3-diene',  sub: 'two conjugated C=C',   kJ: 239, kind: 'good', note: 'less heat out, so it started further down' },
     ];
     s += tag(430, 46, 'heat released on hydrogenation (kJ/mol)');
-    s += rule(20, 62, 740, 62);
+    s += rule(20, 62, 700, 62);
     for (const r of rows) {
       const w = r.kJ * k;
       s += label(20, r.y + 2, r.name, { anchor: 'start', size: 12 });
@@ -975,7 +1012,10 @@ FIGURES.push({
     s += rule(xAct, 250, xAct, 266);
     s += rule(xAct, 266, xExp, 266);
     s += text((xAct + xExp) / 2, 288, '15 kJ/mol', { cls: 'fg-tag-good', size: 11 });
-    s += text(380, 318, 'The shortfall is the delocalization energy: buta-1,3-diene began 15 kJ/mol lower down.', { cls: 'fg-lbl', size: 12 });
+    /* Two lines: on one, the sentence ran past the right-hand edge of the
+       part of the canvas the reading column shows without scrolling. */
+    s += text(360, 316, 'The shortfall is the delocalization energy:', { cls: 'fg-lbl', size: 12 });
+    s += text(360, 338, 'buta-1,3-diene began 15 kJ/mol lower down.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
   caption: 'The measurement behind the claim. Hydrogenating one double bond in but-1-ene gives out 127 kJ/mol, and penta-1,4-diene \u2014 whose two double bonds are insulated from each other \u2014 gives out exactly twice that. Buta-1,3-diene gives out <b>less</b>.',
@@ -992,7 +1032,7 @@ FIGURES.push({
   section: 'diene-addition',
   anchor: '<h3>Why the 1,2-product forms faster</h3>',
   alt: 'The allylic cation from protonating buta-1,3-diene, bromide capturing at C2 or C4 to give 3-bromobut-1-ene or 1-bromobut-2-ene, with the 80:20 and 15:85 ratios at minus 80 and 40 degrees Celsius',
-  viewBox: '0 0 760 350',
+  viewBox: '0 0 760 366',
   build() {
     let s = '';
     // ---- the one intermediate ----
@@ -1057,13 +1097,24 @@ FIGURES.push({
       t += label(24, y + 4, temp, { anchor: 'start', size: 12 });
       t += bar(bx, y - 9, w1, 18, { kind: 'hi', opacity: 0.34 });
       t += bar(bx + w1, y - 9, barW - w1, 18, { kind: 'warn', opacity: 0.34 });
-      t += text(bx + w1 / 2, y + 4, `${pct12}% 1,2`, { cls: 'fg-sm', size: 10 });
-      t += text(bx + w1 + (barW - w1) / 2, y + 4, `${100 - pct12}% 1,4`, { cls: 'fg-sm', size: 10 });
+      /* A label wider than the segment it belongs to is drawn just above the
+         bar instead of inside it. Centred on its own segment either way, so
+         which share it names stays unambiguous — written inside, the two
+         minority figures spilled onto the neighbouring colour and read as
+         labels for it. */
+      const put = (cxSeg, segW, txt) => {
+        const wide = txt.length * 10.5 * 0.62;
+        return text(cxSeg, wide <= segW - 8 ? y + 4 : y - 15, txt, { cls: 'fg-sm', size: 10 });
+      };
+      t += put(bx + w1 / 2, w1, `${pct12}% 1,2`);
+      t += put(bx + w1 + (barW - w1) / 2, barW - w1, `${100 - pct12}% 1,4`);
       return t;
     };
     s += ratio(250, '\u221280 \u00b0C', 80);
     s += ratio(290, '40 \u00b0C', 15);
     s += text(196, 324, 'Same cation \u2014 only the temperature differs.', { cls: 'fg-sm', size: 10 });
+    s += text(560, 336, 'Product names are numbered from their own chain,', { cls: 'fg-sm', size: 9.5 });
+    s += text(560, 350, 'so C1 of a name is not C1 of the cation above.', { cls: 'fg-sm', size: 9.5 });
     return s;
   },
   caption: 'One protonation, one cation, and then a choice. Bromide can land on C2 or on C4 \u2014 the two carbons the resonance forms put the charge on \u2014 and the two landings give compounds that differ in where the bromine sits and where the surviving double bond ended up.',
@@ -1090,7 +1141,7 @@ FIGURES.push({
     // The shared starting point, and the level it sits at.
     s += rule(220, 110, 550, 110);
     s += `<path class="fg-bond" fill="none" d="M330 110 C300 110 280 88 250 88 C218 88 202 196 150 196 L100 196"></path>`;
-    s += `<path class="fg-bond" fill="none" d="M430 110 C460 110 490 62 520 62 C554 62 580 244 630 244 L700 244"></path>`;
+    s += `<path class="fg-bond" fill="none" d="M430 110 C460 110 490 62 520 62 C554 62 580 244 626 244 L678 244"></path>`;
     s += tag(380, 98, 'the allylic cation');
 
     // Barriers.
@@ -1103,13 +1154,13 @@ FIGURES.push({
     s += text(566, 224, 'deeper', { cls: 'fg-tag-good', size: 10.5, anchor: 'end' });
     s += text(128, 218, '1,2-product', { cls: 'fg-lbl', size: 12 });
     s += text(128, 234, 'terminal alkene', { cls: 'fg-sm', size: 10 });
-    s += text(640, 266, '1,4-product', { cls: 'fg-lbl', size: 12 });
-    s += text(640, 282, 'internal, more substituted', { cls: 'fg-sm', size: 10 });
+    s += text(678, 266, '1,4-product', { cls: 'fg-lbl', size: 12, anchor: 'end' });
+    s += text(678, 282, 'internal, more substituted', { cls: 'fg-sm', size: 10, anchor: 'end' });
     s += tag(380, 272, 'reaction coordinate');
 
-    s += rule(34, 296, 726, 296);
-    s += text(208, 318, '\u221280 \u00b0C: no way back out \u2014 the barriers decide', { cls: 'fg-sm', size: 11 });
-    s += text(552, 318, '40 \u00b0C: both wells empty back out \u2014 the depths decide', { cls: 'fg-sm', size: 11 });
+    s += rule(34, 296, 686, 296);
+    s += text(186, 318, '\u221280 \u00b0C: no way back out \u2014 the barriers decide', { cls: 'fg-sm', size: 11 });
+    s += text(508, 318, '40 \u00b0C: both wells empty back out \u2014 the depths decide', { cls: 'fg-sm', size: 11 });
     return s;
   },
   caption: 'Two routes down from one intermediate, and they disagree. The left route has the lower hill because bromide attacks the carbon carrying more positive charge; the right route ends in the deeper valley because its alkene is more substituted. Neither fact has anything to say about the other.',
@@ -1132,13 +1183,17 @@ FIGURES.push({
     // ---- the two partners, stacked the way they have to meet ----
     s += tag(195, 46, 'diene, held s-cis');
     const c1 = P(120, 180), c2 = P(160, 126), c3 = P(230, 126), c4 = P(270, 180);
-    s += bond(c1, c2, { order: 2, rFrom: 0, rTo: 0 });
+    /* The second line of each double bond is drawn short and on the inside.
+       Full length, it overhung C1 and C4 and crossed the dashed bonds that
+       are forming there — which are the two marks the figure exists for. */
+    const mid = P(195, 200);
+    s += ringDouble(c1, c2, mid);
     s += bond(c2, c3, { rFrom: 0, rTo: 0 });
-    s += bond(c3, c4, { order: 2, rFrom: 0, rTo: 0 });
+    s += ringDouble(c3, c4, mid);
     [[c1, 'C1', -18, 8], [c2, 'C2', -4, -14], [c3, 'C3', 4, -14], [c4, 'C4', 18, 8]].forEach(([p, t, dx, dy]) =>
       s += text(p.x + dx, p.y + dy, t, { cls: 'fg-sm', size: 10 }));
     const d1 = P(150, 272), d2 = P(240, 272);
-    s += bond(d1, d2, { order: 2, rFrom: 0, rTo: 0 });
+    s += ringDouble(d1, d2, mid);
     s += tag(195, 300, 'dienophile');
 
     // The two bonds that are forming, drawn as the dashes they are in the
@@ -1162,7 +1217,7 @@ FIGURES.push({
     }
     // v5 v0 v1 v2 = diene C1 C2 C3 C4; v3 v4 = the dienophile carbons.
     s += bond(v[5], v[0], { rFrom: 0, rTo: 0 });
-    s += bond(v[0], v[1], { order: 2, rFrom: 0, rTo: 0 });
+    s += ringDouble(v[0], v[1], P(cx, cy));
     s += bond(v[1], v[2], { rFrom: 0, rTo: 0 });
     s += bond(v[3], v[4], { rFrom: 0, rTo: 0 });
     s += bond(v[2], v[3], { cls: 'fg-bond-hi', rFrom: 0, rTo: 0 });
@@ -1175,8 +1230,8 @@ FIGURES.push({
     s += text(v[2].x + 26, v[2].y + 4, 'C4', { cls: 'fg-sm', size: 10 });
     s += text(cx, 290, 'the two new \u03c3 bonds', { cls: 'fg-tag-good', size: 11 });
 
-    s += rule(34, 312, 726, 312);
-    s += text(380, 334, 'Three \u03c0 bonds in; two \u03c3 bonds and one \u03c0 bond out \u2014 so it runs downhill unaided.', { cls: 'fg-lbl', size: 12 });
+    s += rule(34, 312, 686, 312);
+    s += text(348, 334, 'Three \u03c0 bonds in; two \u03c3 bonds and one \u03c0 bond out \u2014 so it runs downhill unaided.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
   caption: 'The whole reaction as one circle of six electrons. The diene\u2019s C1 and C4 reach the two ends of the dienophile, the arrows chase each other head to tail round the ring, and every bond that breaks and every bond that forms does so in the same instant.',
@@ -1196,7 +1251,10 @@ FIGURES.push({
   viewBox: '0 0 760 330',
   build() {
     let s = '';
-    const x = (nm) => 60 + ((nm - 150) / 350) * 640;
+    /* The axis stops short of the canvas edge on purpose: drawn to 700 the
+       500 tick and the label under the visible band were both behind the
+       reading column's horizontal scroll. */
+    const x = (nm) => 40 + ((nm - 150) / 350) * 620;
 
     // The two regions that bound the useful range.
     s += bar(x(150), 200, x(200) - x(150), 20, { kind: 'warn', opacity: 0.26, r: 4 });
@@ -1207,32 +1265,32 @@ FIGURES.push({
       s += rule(x(nm), 220, x(nm), 227);
       s += text(x(nm), 242, String(nm), { cls: 'fg-sm', size: 10 });
     }
-    s += tag(380, 268, 'wavelength absorbed, \u03bb\u2098\u2090\u2093 (nm)');
+    s += tag(340, 268, 'wavelength absorbed, \u03bb\u2098\u2090\u2093 (nm)');
 
     // Three lines per compound, then the stem starts below them: a stem drawn
     // from the label down to the axis otherwise runs straight through its own
     // caption, which reads as a struck-out word.
     const marks = [
       { nm: 171, y: 100, name: 'Ethene',            n: '1 conjugated C=C' },
-      { nm: 217, y: 142, name: 'Buta-1,3-diene',    n: '2' },
-      { nm: 258, y: 176, name: 'Hexa-1,3,5-triene', n: '3' },
+      { nm: 217, y: 146, name: 'Buta-1,3-diene',    n: '2' },
+      { nm: 258, y: 100, name: 'Hexa-1,3,5-triene', n: '3' },
       { nm: 450, y: 100, name: '\u03b2-Carotene',   n: '11' },
     ];
     for (const m of marks) {
       s += rule(x(m.nm), m.y + 20, x(m.nm), 200);
       s += text(x(m.nm), m.y, m.name, { cls: 'fg-lbl', size: 12 });
-      s += text(x(m.nm), m.y - 16, `${m.nm} nm`, { cls: 'fg-tag-good', size: 11 });
+      s += text(x(m.nm), m.y - 21, `${m.nm} nm`, { cls: 'fg-tag-good', size: 11 });
       s += text(x(m.nm), m.y + 14, m.n, { cls: 'fg-sm', size: 9.5 });
     }
 
     // The two band labels sit inside their bands, clear of the stems.
     s += text(x(175), 214, 'out of range', { cls: 'fg-tag-warn', size: 10 });
-    s += text(x(462), 214, 'visible region', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(x(455), 214, 'visible region', { cls: 'fg-tag-good', size: 10.5 });
     s += text(x(175), 268, 'a lone C=C absorbs here', { cls: 'fg-sm', size: 10 });
-    s += text(x(462), 268, 'here the compound has a color', { cls: 'fg-sm', size: 10 });
+    s += text(x(450), 268, 'here the compound has a color', { cls: 'fg-sm', size: 10 });
 
-    s += rule(34, 286, 726, 286);
-    s += text(380, 308, 'Each double bond added to the conjugation narrows the gap, so \u03bb\u2098\u2090\u2093 moves right.', { cls: 'fg-lbl', size: 12 });
+    s += rule(20, 286, 670, 286);
+    s += text(345, 308, 'Each double bond added to the conjugation narrows the gap, so \u03bb\u2098\u2090\u2093 moves right.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
   caption: 'The four compounds from the table, placed on the axis they actually differ along. An isolated double bond absorbs off the left-hand end of the accessible range; each double bond joined to the conjugation moves the absorption to the right, and with eleven of them \u03b2-carotene has walked all the way into visible light.',
@@ -1250,7 +1308,7 @@ FIGURES.push({
   section: 'oxidation-states',
   anchor: '<h3>Why 3\u00B0 alcohols cannot be oxidized</h3>',
   alt: 'The carbon oxidation ladder, with the one-carbon example, the count of bonds to heteroatoms, and the functional group families sharing each rung',
-  viewBox: '0 0 760 372',
+  viewBox: '0 0 760 392',
   build() {
     let s = '';
     const rows = [
@@ -1260,25 +1318,32 @@ FIGURES.push({
       { y: 252, n: '1', ex: 'CH\u2083OH', ox: '\u22122', fam: 'alcohol \u00B7 ether \u00B7 alkyl halide \u00B7 amine', hi: true },
       { y: 308, n: '0', ex: 'CH\u2084',   ox: '\u22124', fam: 'alkane' },
     ];
-    s += tag(96, 50, 'one-carbon case');
-    s += tag(234, 50, 'bonds to O/N/X');
-    s += tag(338, 50, 'ox. state');
-    s += tag(524, 50, 'everything that shares the rung');
-    s += rule(30, 62, 730, 62);
+    /* The families column is the widest thing here and the acid rung's list
+       is the widest row in it, so it is set from a left edge rather than
+       centred: centred, it started underneath the oxidation-state column and
+       ended past the right of what the reading column shows. The direction
+       arrow moves to the left margin for the same reason — its label was
+       the other casualty. */
+    s += tag(110, 50, 'one-carbon case');
+    s += tag(200, 50, 'bonds to O/N/X');
+    s += tag(276, 50, 'that C\u2019s state');
+    s += text(318, 50, 'everything that shares the rung', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += rule(30, 62, 700, 62);
     // The highlight goes down first, so the row's own labels sit on top of it.
-    for (const r of rows) if (r.hi) s += panel(36, r.y - 20, 694, 40, { kind: 'hi' });
+    for (const r of rows) if (r.hi) s += panel(72, r.y - 20, 628, 40, { kind: 'hi' });
     for (const r of rows) {
-      s += label(96, r.y + 4, r.ex, { size: 13 });
-      s += text(234, r.y + 4, r.n, { cls: 'fg-lbl', size: 12.5 });
-      s += text(338, r.y + 4, r.ox, { cls: 'fg-lbl', size: 12.5 });
-      s += text(524, r.y + 4, r.fam, { cls: 'fg-sm', size: 10 });
-      if (r.y !== 308) s += rule(30, r.y + 28, 730, r.y + 28);
+      s += label(110, r.y + 4, r.ex, { size: 13 });
+      s += text(200, r.y + 4, r.n, { cls: 'fg-lbl', size: 12.5 });
+      s += text(282, r.y + 4, r.ox, { cls: 'fg-lbl', size: 12.5 });
+      s += text(318, r.y + 4, r.fam, { cls: 'fg-sm', size: 10, anchor: 'start' });
+      if (r.y !== 308) s += rule(30, r.y + 28, 700, r.y + 28);
     }
-    // Direction of travel, on the far right where nothing else is drawn.
-    s += arrow(P(700, 300), P(700, 92));
-    s += text(700, 78, 'oxidation', { cls: 'fg-tag', size: 10.5 });
-    s += rule(30, 330, 730, 330);
-    s += text(380, 354, 'Along a rung is substitution. Up a rung is a two-electron oxidation, and needs an oxidant.', { cls: 'fg-lbl', size: 12 });
+    // Direction of travel, in the left margin where nothing else is drawn.
+    s += arrow(P(46, 300), P(46, 92));
+    s += text(46, 78, 'oxidation', { cls: 'fg-tag', size: 10.5 });
+    s += rule(30, 330, 700, 330);
+    s += text(350, 354, 'Along a rung is substitution.', { cls: 'fg-lbl', size: 12 });
+    s += text(350, 376, 'Up a rung is a two-electron oxidation, and needs an oxidant.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
   caption: 'The ladder with its second dimension drawn in. A rung is not one compound but a whole set of them &mdash; everything whose carbon carries the same number of bonds to oxygen, nitrogen or halogen &mdash; and moving <b>sideways</b> along a rung costs no oxidant at all.',
@@ -1295,12 +1360,12 @@ FIGURES.push({
   section: 'alcohol-oxidation',
   anchor: '<h3>The reagents worth knowing</h3>',
   alt: 'Anhydrous oxidation of a primary alcohol stopping at the aldehyde, against aqueous oxidation running through the hydrate on to the carboxylic acid',
-  viewBox: '0 0 760 342',
+  viewBox: '0 0 760 362',
   build() {
     let s = '';
     // ---- Anhydrous ----
     s += tag(118, 50, 'ANHYDROUS \u2014 PCC, Swern, DMP');
-    s += panel(30, 62, 700, 96);
+    s += panel(30, 62, 670, 96);
     s += label(76, 116, 'R\u2013CH\u2082OH', { size: 13 });
     s += arrow(P(126, 112), P(200, 112));
     s += text(163, 98, '[O]', { cls: 'fg-sm', size: 10 });
@@ -1308,11 +1373,11 @@ FIGURES.push({
     s += label(238, 116, 'R\u2013CHO', { size: 13 });
     s += arrow(P(280, 112), P(324, 112), { muted: true });
     s += text(340, 116, 'no water, so no hydrate \u2014 nothing left to grip', { cls: 'fg-sm', size: 10, anchor: 'start' });
-    s += text(640, 140, 'stops at the aldehyde', { cls: 'fg-tag-good', size: 11 });
+    s += text(596, 140, 'stops at the aldehyde', { cls: 'fg-tag-good', size: 11 });
 
     // ---- Aqueous ----
     s += tag(122, 176, 'AQUEOUS \u2014 Jones, CrO\u2083/H\u2082SO\u2084');
-    s += panel(30, 188, 700, 118);
+    s += panel(30, 188, 670, 118);
     s += label(76, 240, 'R\u2013CH\u2082OH', { size: 13 });
     s += arrow(P(126, 236), P(192, 236));
     s += text(159, 222, '[O]', { cls: 'fg-sm', size: 10 });
@@ -1340,9 +1405,12 @@ FIGURES.push({
     s += arrow(P(474, 236), P(534, 236));
     s += text(504, 222, '[O] again', { cls: 'fg-sm', size: 9.5 });
     s += label(578, 240, 'R\u2013CO\u2082H', { size: 13 });
-    s += text(668, 240, 'carboxylic acid', { cls: 'fg-tag-good', size: 11 });
+    // Under the product rather than beside it: beside it, the name of the
+    // thing this whole panel is about sat past the right-hand edge.
+    s += text(578, 264, 'carboxylic acid', { cls: 'fg-tag-good', size: 11 });
 
-    s += text(380, 330, 'Same oxidant, same substrate, same carbinol C\u2013H. The water is the entire difference.', { cls: 'fg-lbl', size: 12 });
+    s += text(356, 330, 'Same oxidant, same substrate, same carbinol C\u2013H.', { cls: 'fg-lbl', size: 12 });
+    s += text(356, 352, 'The water is the entire difference.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
   caption: 'Why a chromium oxidation stops in one flask and not in the other. Both runs make the aldehyde first; only in water does that aldehyde turn back into something carrying an OH and a hydrogen on the same carbon &mdash; which is exactly what the oxidant attacked the first time.',
@@ -1423,7 +1491,7 @@ FIGURES.push({
   section: 'hydrogenation',
   anchor: '<h3>Heats of hydrogenation, as a measuring tool</h3>',
   alt: 'An internal alkyne reduced three ways: Lindlar to the cis alkene, sodium in ammonia to the trans alkene, and excess hydrogen over palladium on carbon to the alkane',
-  viewBox: '0 0 760 366',
+  viewBox: '0 0 760 390',
   build() {
     let s = '';
     // The starting alkyne, on the left, level with the middle branch.
@@ -1435,9 +1503,16 @@ FIGURES.push({
     s += atom(66, 196, 'R');
     s += atom(258, 196, 'R\u2032', { size: 11 });
 
-    s += arrow(P(292, 178), P(396, 96));
-    s += arrow(P(292, 196), P(396, 196));
-    s += arrow(P(292, 214), P(396, 296));
+    /* A bus and three stubs rather than a fan. Fanned out from one point the
+       upper and lower arrows cut diagonally across the band the branch
+       captions occupy, and two of the captions were struck through by a line
+       and one product's H sat on top of another. Kept to x = 300..384,
+       nothing the branches say has an arrow through it. */
+    s += bond(P(276, 196), P(300, 196), { rFrom: 0, rTo: 0, cls: 'fg-arrow' });
+    s += bond(P(300, 96), P(300, 296), { rFrom: 0, rTo: 0, cls: 'fg-arrow' });
+    s += arrow(P(300, 96), P(384, 96));
+    s += arrow(P(300, 196), P(384, 196));
+    s += arrow(P(300, 296), P(384, 296));
 
     /* An alkene with both R groups up (cis) or one up and one down (trans).
        The two hydrogens are drawn as well, because the claim is about where
@@ -1460,21 +1535,22 @@ FIGURES.push({
     // Branch 1: poisoned surface, syn delivery, cis product.
     s += text(500, 44, 'H\u2082, Lindlar \u2014 Pd/CaCO\u2083, Pb, quinoline', { cls: 'fg-lbl', size: 11.5 });
     s += alkene(500, 96, false);
-    s += text(500, 150, 'both new H arrive on one face \u2014 syn addition on a surface', { cls: 'fg-sm', size: 10 });
-    s += text(676, 68, 'cis (Z)', { cls: 'fg-tag-good', size: 11 });
+    s += text(500, 146, 'both new H arrive on one face \u2014 syn addition on a surface', { cls: 'fg-sm', size: 10 });
+    s += text(638, 68, 'cis (Z)', { cls: 'fg-tag-good', size: 11 });
 
     // Branch 2: dissolving metal, no surface, trans product.
     s += alkene(500, 196, true);
-    s += text(500, 244, 'Na in liquid NH\u2083 \u2014 no surface, radical anion route', { cls: 'fg-lbl', size: 11.5 });
-    s += text(676, 168, 'trans (E)', { cls: 'fg-tag-good', size: 11 });
+    s += text(500, 254, 'Na in NH\u2083(l) \u2014 no surface, radical anion route', { cls: 'fg-lbl', size: 11.5 });
+    s += text(638, 168, 'trans (E)', { cls: 'fg-tag-good', size: 11 });
 
     // Branch 3: straight past the alkene.
-    s += text(500, 276, 'H\u2082 in excess, Pd/C \u2014 nothing stops it', { cls: 'fg-lbl', size: 11.5 });
-    s += label(500, 310, 'R\u2013CH\u2082\u2013CH\u2082\u2013R\u2032', { size: 14 });
-    s += text(676, 310, 'alkane', { cls: 'fg-tag-warn', size: 11 });
+    s += text(500, 286, 'H\u2082 in excess, Pd/C \u2014 nothing stops it', { cls: 'fg-lbl', size: 11.5 });
+    s += label(500, 318, 'R\u2013CH\u2082\u2013CH\u2082\u2013R\u2032', { size: 14 });
+    s += text(638, 318, 'alkane', { cls: 'fg-tag-warn', size: 11 });
 
-    s += rule(30, 332, 730, 332);
-    s += text(380, 354, 'The alkyne does not choose. The conditions do \u2014 and two of these choices are stereoisomers.', { cls: 'fg-lbl', size: 12 });
+    s += rule(30, 332, 700, 332);
+    s += text(356, 354, 'The alkyne does not choose. The conditions do \u2014', { cls: 'fg-lbl', size: 12 });
+    s += text(356, 376, 'and two of these choices are stereoisomers.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
   caption: 'The same internal alkyne, three sets of conditions. Lindlar and sodium in ammonia both stop at the alkene and hand you <b>opposite geometries</b>; ordinary Pd/C does not stop at the alkene at all.',
@@ -1581,39 +1657,47 @@ FIGURES.push({
     const c = P(380, 104);
     s += bond(c, P(380, 54));
     s += bond(c, P(300, 104));
-    s += bond(c, P(462, 104));
+    s += bond(c, P(470, 104), { rTo: 24 });
     s += bond(c, P(380, 158));
     s += atom(380, 54, 'OH');
     s += atom(300, 104, 'Ph');
-    s += atom(462, 104, 'CH\u2082CH\u2083', { r: 19 });
+    // The disc has to be big enough for six characters at the size the
+    // stylesheet actually renders a label at, which is not the size the
+    // drawing kit was asked for.
+    s += atom(470, 104, 'CH\u2082CH\u2083', { r: 24 });
     s += atom(380, 158, 'CH\u2083');
     s += atom(c.x, c.y, 'C', { kind: 'hi' });
 
     // The cut marks, drawn across the bonds rather than through the atoms.
     s += bond(P(340, 84), P(340, 124), { cls: 'fg-dash-hi', rFrom: 0, rTo: 0 });
-    s += bond(P(421, 84), P(421, 124), { cls: 'fg-dash-hi', rFrom: 0, rTo: 0 });
+    s += bond(P(418, 84), P(418, 124), { cls: 'fg-dash-hi', rFrom: 0, rTo: 0 });
     s += bond(P(358, 131), P(402, 131), { cls: 'fg-dash-hi', rFrom: 0, rTo: 0 });
     s += tag(340, 76, 'a');
-    s += tag(421, 76, 'c');
-    s += tag(416, 136, 'b');
+    s += tag(418, 76, 'c');
+    // b goes on the far side of its own mark: directly under c's dashes it
+    // read as a second label for c.
+    s += tag(346, 136, 'b');
 
-    s += rule(30, 178, 730, 178);
+    s += rule(30, 178, 700, 178);
     s += text(380, 200, '\u21D2   reads \u201Ccould be made from\u201D', { cls: 'fg-tag', size: 12 });
 
+    /* Three columns inside the left 90% of the canvas. At 224 wide starting
+       at 512 the third panel's own border, and the pair of reagents in it,
+       were past the edge of what the reading column shows. */
     const col = (x, cut, synthons, equivs) => {
-      const cx = x + 112;
-      s += panel(x, 212, 224, 124);
+      const cx = x + 105;
+      s += panel(x, 212, 210, 124);
       s += tag(cx, 236, cut);
       s += text(cx, 258, 'synthons', { cls: 'fg-sm', size: 9.5 });
       s += label(cx, 278, synthons, { size: 11 });
       s += text(cx, 302, 'synthetic equivalents', { cls: 'fg-sm', size: 9.5 });
       s += text(cx, 324, equivs, { cls: 'fg-tag-good', size: 11 });
     };
-    col(24,  'cut a', 'Ph\u207B  +  CH\u2083COCH\u2082CH\u2083', 'PhMgBr + butan-2-one');
-    col(268, 'cut b', 'CH\u2083\u207B  +  PhCOCH\u2082CH\u2083', 'CH\u2083MgBr + propiophenone');
-    col(512, 'cut c', 'CH\u2083CH\u2082\u207B  +  PhCOCH\u2083', 'CH\u2083CH\u2082MgBr + acetophenone');
+    col(18,  'cut a', 'Ph\u207B  +  CH\u2083COCH\u2082CH\u2083', 'PhMgBr + butan-2-one');
+    col(244, 'cut b', 'CH\u2083\u207B  +  PhCOCH\u2082CH\u2083', 'CH\u2083MgBr + propiophenone');
+    col(470, 'cut c', 'CH\u2083CH\u2082\u207B  +  PhCOCH\u2083', 'CH\u2083CH\u2082MgBr + acetophenone');
 
-    s += text(380, 362, 'All three are the same disconnection. Only the shopping list differs.', { cls: 'fg-lbl', size: 12 });
+    s += text(350, 362, 'All three are the same disconnection. Only the shopping list differs.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
   caption: 'One target, cut three ways. Every bond from the carbinol carbon to a carbon is a Grignard disconnection, so 2-phenylbutan-2-ol has three complete one-step routes and no rule of chemistry picks between them \u2014 availability does.',
@@ -1654,9 +1738,12 @@ FIGURES.push({
       return g;
     };
 
+    /* The three panels are pulled inside the left 90% of the canvas: at 512
+       the third one's border, its R and the reagent line under it were all
+       behind the reading column's horizontal scroll. */
     const col = (x, title, enone, reagents, product) => {
-      const cx = x + 112;
-      s += panel(x, 52, 224, 244);
+      const cx = x + 108;
+      s += panel(x, 52, 216, 244);
       s += tag(cx, 40, title);
       s += skeleton(cx, enone);
       s += text(cx, 268, reagents, { cls: 'fg-sm', size: 10 });
@@ -1665,22 +1752,22 @@ FIGURES.push({
     };
 
     // At the carbonyl carbon: the nucleophile comes in from outside.
-    let cx = col(24, 'at the carbonyl carbon', false, 'RMgBr, RLi, \u207BCN, acetylide', 'an alcohol');
+    let cx = col(16, 'at the carbonyl carbon', false, 'RMgBr, RLi, \u207BCN, acetylide', 'an alcohol');
     s += curve(P(cx + 34, 232), P(cx + 34, 172), { bow: 14 });
     s += label(cx + 34, 248, 'Nu\u207B', { size: 12 });
 
     // At the alpha carbon: the molecule itself is the nucleophile.
-    cx = col(268, 'at the \u03B1 carbon', false, 'base first, then RX or a carbonyl', 'alkylation, aldol, Claisen');
+    cx = col(240, 'at the \u03B1 carbon', false, 'base first, then RX or a carbonyl', 'alkylation, aldol, Claisen');
     s += curve(P(cx - 16, 196), P(cx - 16, 230), { bow: 12 });
     s += label(cx - 16, 250, 'E\u207A', { size: 12 });
     s += text(cx, 74, 'base takes an \u03B1 H first', { cls: 'fg-sm', size: 9 });
 
     // At the beta carbon: only an enone offers this one.
-    cx = col(512, 'at the \u03B2 carbon', true, 'enolate + an enone (Michael)', '1,5-dicarbonyl');
+    cx = col(464, 'at the \u03B2 carbon', true, 'enolate + an enone (Michael)', '1,5-dicarbonyl');
     s += curve(P(cx - 66, 232), P(cx - 66, 172), { bow: 14 });
     s += label(cx - 66, 248, 'Nu\u207B', { size: 12 });
 
-    s += text(380, 326, 'One carbonyl, three carbons to attach to. The reagent chooses which.', { cls: 'fg-lbl', size: 12 });
+    s += text(350, 326, 'One carbonyl, three carbons to attach to. The reagent chooses which.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
   caption: 'The same four atoms three times, with the new C\u2013C bond arriving in a different place each time. A nucleophile lands <b>on</b> the carbonyl carbon; an enolate makes the molecule itself the nucleophile and the bond forms <b>next to</b> it; conjugate addition to an enone lands <b>two carbons out</b>.',
@@ -1718,9 +1805,9 @@ FIGURES.push({
     ];
     for (const l of levels) s += label(96, l.y + 4, l.name, { anchor: 'start', size: 12 });
     s += rule(240, 76, 240, 352);
-    s += rule(244, 135, 730, 135);
-    s += rule(244, 213, 730, 213);
-    s += rule(244, 291, 730, 291);
+    s += rule(244, 135, 700, 135);
+    s += rule(244, 213, 700, 213);
+    s += rule(244, 291, 700, 291);
 
     // Acid level: the acyl ladder, every step a substitution.
     s += label(252, 100, 'RCO\u2082H', { anchor: 'start', size: 12 });
@@ -1741,7 +1828,7 @@ FIGURES.push({
     s += arrow(P(400, 186), P(312, 186), { muted: true });
     s += text(356, 200, 'H\u2083O\u207A', { cls: 'fg-sm', size: 9 });
     s += label(412, 178, 'cyclic acetal', { anchor: 'start', size: 12 });
-    s += text(630, 178, 'a sideways move, and a mask', { cls: 'fg-sm', size: 9.5 });
+    s += text(412, 200, 'a sideways move, and a mask', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
 
     // Alcohol level: alkene, halide and alcohol are one height.
     s += label(252, 256, 'R\u2013OH', { anchor: 'start', size: 12 });
@@ -1751,7 +1838,7 @@ FIGURES.push({
     s += arrow(P(408, 252), P(470, 252));
     s += text(439, 240, 'bulky base (E2)', { cls: 'fg-sm', size: 9 });
     s += label(480, 256, 'alkene', { anchor: 'start', size: 12 });
-    s += text(640, 256, 'and back with H\u2083O\u207A or BH\u2083', { cls: 'fg-sm', size: 9.5 });
+    s += text(480, 278, 'and back with H\u2083O\u207A or BH\u2083', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
 
     s += label(252, 334, 'R\u2013H', { anchor: 'start', size: 12 });
     s += text(500, 334, 'nothing sideways from here \u2014 the only way out is up', { cls: 'fg-sm', size: 9.5 });
@@ -1857,18 +1944,22 @@ FIGURES.push({
       return g;
     };
 
+    /* The whole sequence is compressed left. The two product names are the
+       answer this figure exists to give, and with the last ring centred at
+       636 both of them ran past the right-hand edge of what the reading
+       column shows without scrolling. */
     const row = (cy, first, second, mid, product, verdict, kind, drop) => {
-      s += ring(150, cy, []);
-      s += text(150, cy + 52, 'benzene', { cls: 'fg-sm', size: 9.5 });
-      s += arrow(P(208, cy), P(342, cy));
-      s += text(275, cy - 14, first, { cls: 'fg-sm', size: 10 });
-      s += ring(400, cy, mid.subs);
-      s += text(400, cy + 52, mid.name, { cls: 'fg-sm', size: 9.5 });
-      s += arrow(P(458, cy), P(578, cy));
-      s += text(518, cy - 14, second, { cls: 'fg-sm', size: 10 });
-      s += ring(636, cy, product.subs);
-      s += label(636, cy + drop, product.name, { size: 12 });
-      s += text(636, cy + drop + 18, verdict, { cls: kind, size: 10.5 });
+      s += ring(130, cy, []);
+      s += text(130, cy + 52, 'benzene', { cls: 'fg-sm', size: 9.5 });
+      s += arrow(P(188, cy), P(300, cy));
+      s += text(244, cy - 14, first, { cls: 'fg-sm', size: 10 });
+      s += ring(352, cy, mid.subs);
+      s += text(352, cy + 52, mid.name, { cls: 'fg-sm', size: 9.5 });
+      s += arrow(P(410, cy), P(506, cy));
+      s += text(458, cy - 14, second, { cls: 'fg-sm', size: 10 });
+      s += ring(576, cy, product.subs);
+      s += label(576, cy + drop, product.name, { size: 12 });
+      s += text(576, cy + drop + 18, verdict, { cls: kind, size: 10.5 });
     };
 
     s += label(30, 126, 'A', { anchor: 'start', size: 15 });
@@ -1877,7 +1968,7 @@ FIGURES.push({
       { name: '1-bromo-3-nitrobenzene', subs: [{ v: 0, label: 'NO\u2082', kind: 'warn' }, { v: 4, label: 'Br' }] },
       'NO\u2082 directs meta', 'fg-tag-warn', 62);
 
-    s += rule(30, 210, 730, 210);
+    s += rule(30, 210, 700, 210);
 
     s += label(30, 292, 'B', { anchor: 'start', size: 15 });
     row(286, 'Br\u2082, FeBr\u2083', 'HNO\u2083, H\u2082SO\u2084',
@@ -1885,7 +1976,7 @@ FIGURES.push({
       { name: '1-bromo-4-nitrobenzene', subs: [{ v: 0, label: 'Br' }, { v: 3, label: 'NO\u2082', kind: 'warn' }] },
       'Br directs ortho, para', 'fg-tag-good', 86);
 
-    s += text(380, 412, 'Same two reactions, opposite order, two different compounds.', { cls: 'fg-lbl', size: 12 });
+    s += text(350, 412, 'Same two reactions, opposite order, two different compounds.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
   caption: 'Nitration and bromination, run in both orders. The products are constitutional isomers of one another, and nothing about the reagents chose between them \u2014 the group installed <b>first</b> did, because by the time the second electrophile arrives there is already a director on the ring.',

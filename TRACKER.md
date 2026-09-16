@@ -138,6 +138,22 @@ outside — passed. That gap is now closed: the ochem test measures rects,
 circles and text the same way, with the same note about CSS font-size beating
 the presentation attribute.
 
+**Fourteen rendering defects, all fixed.** A screenshot pass at 1280 and 390
+px found clipped labels in twelve figures, an arrow drawn straight through two
+captions, percentage labels spilling onto the neighboring bar, and a branch
+drawn so it read as a closed ring. All fourteen were fixed by moving, resizing
+or wrapping — no figure's wording changed meaning, and the one abbreviation
+made ("liquid NH₃" to "NH₃(l)") says the same thing. Verified afterwards by
+measuring every `<text>` with `getBBox()` in the page: no text in any figure
+now ends past 90% of the canvas width.
+
+Two things the fix pass flagged rather than changed, both since addressed: the
+oxidation ladder's family list sat beside a column headed "ox. state" showing
++2, which invites reading +2 as those families' state generally — the header
+now says whose state it is, as the note already did — and `diene-capture`
+numbers the cation C1–C4 while naming its products from their own chains, so
+the two numberings run opposite ways. Both are correct; the figure now says so.
+
 **A site-wide rendering property, recorded rather than changed.** Every figure
 declares `min-width: --vb × 0.92` inside a ~672 px reading column, so all 37
 scroll horizontally and roughly the rightmost 8% of the canvas is off-screen
