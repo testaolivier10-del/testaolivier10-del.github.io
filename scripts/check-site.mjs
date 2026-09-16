@@ -353,14 +353,25 @@ const BANKS = [
     // pulled the whole bank to 26.4% — near the 25% chance for a four-option
     // item. Ratcheted down to match, with a little headroom.
     positionCeiling: 0.3,
-    // Measured at 68% when the check was first pointed here; the target is
-    // ~32%, the number NREMT reached after its own editorial pass. The same
-    // six topics were authored with the reasoning kept in `why` rather than in
-    // the keyed option, which took the bank to 60.2%. Ratcheted to match.
-    // Keep lowering it as the older topics get the same pass. The conjugation
-    // chapter took it to 56.5%, oxidation & reduction to 54.6%, and synthesis
-    // to 54.1%.
-    lengthCeiling: 0.55,
+    // 68% when the check was first pointed here, then down in steps as each
+    // new chapter was authored with the reasoning kept in `why` rather than in
+    // the keyed option: 60.2%, 56.5%, 54.6%, 54.1%, 51.2% with Biomolecules.
+    // A pass over the whole bank then trimmed 638 keys that ran longer than
+    // every distractor beside them, and took it to 22.3%. Not one distractor
+    // was padded: every fix shortened a key, which improves the item as well
+    // as closing the tell, and the trimming was allocated per topic so no
+    // single topic sits far above the whole — the worst is 28%.
+    lengthCeiling: 0.28,
+    // The other side of the same tell, and the reason the pass stopped where
+    // it did rather than trimming every key it could. 1,026 usable trims were
+    // available; applying all of them would have put the bank near 10%, and a
+    // bank where the longest option is almost never the answer is as
+    // exploitable as one where it usually is — a student can eliminate a
+    // distractor by picking the long one. Chance for a four-option item is
+    // 25%, so the target is chance, from either direction. The floor is set
+    // well below the current 22.3% because the newest chapters are written
+    // with short keys by habit and sit at 0-3% on their own.
+    lengthFloor: 0.12,
     // 74% of true/false items key to "True". Chance is 50% and the shuffle is
     // pinned, so this is the whole tell — it is not diluted by anything.
     trueFalseCeiling: 0.75,
@@ -417,11 +428,21 @@ for (const spec of BANKS) {
       if (lens.indexOf(Math.max(...lens)) === q.correct) longestIsKey++;
     }
     const tell = longestIsKey / mc.length;
+    const chance = Math.round(100 / (mc.reduce((a, q) => a + q.options.length, 0) / mc.length));
     if (tell > spec.lengthCeiling) {
-      const chance = Math.round(100 / (mc.reduce((a, q) => a + q.options.length, 0) / mc.length));
       fail(`${spec.label}: the longest option is the answer in ${(tell * 100).toFixed(0)}% of items ` +
            `(${longestIsKey}/${mc.length}), over the ${(spec.lengthCeiling * 100).toFixed(0)}% ceiling. ` +
-           `Trim over-long keys or pad thin distractors — chance is ~${chance}%.`);
+           `Trim over-long keys — chance is ~${chance}%.`);
+    }
+    // Both directions are information. A bank where the longest option is
+    // almost never the key hands the student a way to eliminate one option,
+    // and the usual cause is an over-enthusiastic trimming pass rather than
+    // anything about the chemistry. Only checked where a floor is declared.
+    if (spec.lengthFloor != null && tell < spec.lengthFloor) {
+      fail(`${spec.label}: the longest option is the answer in only ${(tell * 100).toFixed(0)}% of items ` +
+           `(${longestIsKey}/${mc.length}), under the ${(spec.lengthFloor * 100).toFixed(0)}% floor. ` +
+           `That is a tell in the other direction — chance is ~${chance}%. ` +
+           `Stop trimming keys; the target is chance, not zero.`);
     }
   }
 

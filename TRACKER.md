@@ -819,6 +819,56 @@ questions. The `why` half is unchanged at 132 and has ~3 KB of headroom left.
 and the reasoning kept in `why`; the length tell across them is 11%, reached by
 trimming keys only — no distractor was padded.
 
+#### The bank-wide length pass — **complete**
+
+The ochem bank's "the longest option is the answer" rate had been coming down
+one chapter at a time — 68% when the check was first pointed at it, 51.2% after
+Biomolecules — because each new chapter was written to avoid the tell while the
+older 64 topics were never revisited. This pass did the older topics.
+
+**Method, and what was ruled out.** Eight reviewers each took a shard of the
+1,081 items where the key was strictly the longest option, and rewrote the key
+to be shorter without touching the stem or a single distractor. The rule was
+the one the NREMT pass arrived at: an option does not need to justify itself,
+because the justification is in `why` and the student sees it after answering.
+So "The stereocenter furthest from the carbonyl" becomes "The lowest
+stereocenter", and the item gets better as well as shorter. Padding distractors
+was ruled out — that was tried once before, produced filler, and was thrown
+away.
+
+**Why it stopped at 22% rather than 10%.** 1,026 usable trims came back, and
+applying all of them would have put the bank near 10%. That is not better. A
+bank where the longest option is almost never the key hands the student a way
+to eliminate an option, which is the same tell pointing the other way. Chance
+for a four-option item is 25%, so chance is the target from either direction.
+638 trims were applied, chosen **per topic** rather than globally, so no single
+topic sits far above the whole: the bank is at **22.1%** and the worst topic is
+28%. `lengthCeiling` drops 0.55 → **0.28**, and a new `lengthFloor` of 0.12
+guards the other direction. Keyed position is unchanged at 26.4/25.8/24.1/23.7.
+
+**Two other checks moved and were put back.** Trimming cut absolute words
+("only", "must", "always") out of six keys as a side effect, which pushed the
+separate *absolute words mark distractors* tell under its 3% floor. The six
+were restored in short form, in each case where the absolute is load-bearing in
+the claim. A British "cancelled" arrived in one trimmed key and was caught by
+the spelling check.
+
+**Six chemistry errors surfaced, none of them length problems.** Putting fresh
+readers in front of questions written much earlier found things no automated
+check could:
+
+| Item | What was wrong |
+|---|---|
+| `chirality` #14 | Keyed 3-methylhexane as achiral. C3 carries methyl, H, **ethyl and propyl** — four different groups, so it is chiral, and the correct answer was sitting in the distractor list |
+| `rs-configuration` #14 | Keyed –CH₂OH over –CHO. Duplicating the double bond makes –CHO (O, O, H) against –CH₂OH at (O, H, H), so –CHO wins. The `why` had actually worked this out and then contradicted itself |
+| `e1` #15 | 3-chloro-3-methylpentane keyed to 2-methyl-2-pentene. The cation is at C3 with a methyl and two ethyls, so Zaitsev gives **3-methyl-2-pentene**; the Hofmann product is 2-ethyl-1-butene, which replaced an unobtainable distractor |
+| `nucleophiles` #26 | All four options were false statements, so the item **had no correct answer**. Rewritten so exactly one is true |
+| `electron-rich-poor` #28 | The key refused to answer and then answered, landing on the same claim as a distractor. Rewritten to state the s-character argument directly |
+| `aromaticity` #25 | Two questions merged into one garbled stem. Rewritten |
+
+Recorded because the point of the exercise was the length tell, and six wrong
+answers is what it cost to look at 1,081 questions closely.
+
 #### Units 6–9 — **not started**
 
 Organometallics · carbonyl/enolate breadth · aromatic follow-through ·
