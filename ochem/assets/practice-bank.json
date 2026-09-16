@@ -35725,7 +35725,7 @@
     "Release of ring strain"
    ],
    "correct": 2,
-   "why": "One of the strongest single bonds in organic chemistry, formed in the last step.",
+   "why": "A P=O double bond at around 130-140 kcal/mol, one of the strongest in organic chemistry, formed in the last step.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -36909,12 +36909,12 @@
    "q": "Why does the intermediate decarboxylate on heating?",
    "options": [
     "The ester is still present",
-    "It is a beta-keto acid",
+    "A second carbonyl sits beta to it",
     "All acids decarboxylate",
     "The base catalyzes it"
    ],
    "correct": 1,
-   "why": "A six-membered cyclic transition state reaches from the carboxyl O-H to the other carbonyl.",
+   "why": "A six-membered cyclic transition state reaches from the carboxyl O-H to that second carbonyl. It is a ketone in the acetoacetic route and the other carboxyl in the malonic one, and either works.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -36940,7 +36940,7 @@
     "No, the ring cannot close"
    ],
    "correct": 3,
-   "why": "The geometry needs the second carbonyl exactly beta.",
+   "why": "The geometry needs the second carbonyl exactly beta, whether that carbonyl is a ketone or another carboxyl.",
    "difficulty": "medium",
    "type": "mcq"
   },

@@ -167,8 +167,8 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'One hydrogen left, or none.',
-        bodyHtml: '<p class="step-body">A <b>primary</b> amine RNH₂ brings two hydrogens and uses none of them in the addition, so the C=N⁺ cation still has one on nitrogen. Lose it and you have a neutral <b>imine</b>, C=N&ndash;R. Done.</p>' +
-          '<p class="step-body">A <b>secondary</b> amine R₂NH brings one, and that one is on the nitrogen of the cation. Losing it would just undo the reaction, so instead the proton comes from the <b>&alpha; carbon</b> &mdash; the carbon on the other side. The double bond ends up between the two carbons, and the product is an <b>enamine</b>, C=C&ndash;NR₂.</p>' +
+        bodyHtml: '<p class="step-body">A <b>primary</b> amine RNH₂ brings two hydrogens and spends one getting to the cation, so the C=N⁺ still has one on nitrogen. Lose that one and you have a neutral <b>imine</b>, C=N&ndash;R. Done.</p>' +
+          '<p class="step-body">A <b>secondary</b> amine R₂NH brings only one, and it spends that one the same way, so the cation has <b>no</b> hydrogen on nitrogen at all. The only proton available is on the <b>&alpha; carbon</b> &mdash; the carbon on the other side of the C=N⁺. Take that one and the double bond ends up between the two carbons: an <b>enamine</b>, C=C&ndash;NR₂.</p>' +
           '<p class="step-body" style="margin-bottom:0;">A <b>tertiary</b> amine has no N&ndash;H at all. It can still add, but there is no way forward from the intermediate, so nothing stable forms. That is why tertiary amines show up in these reactions as bases and never as the condensing partner.</p>'
       },
       {
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function(){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Cyclohexanone plus each amine. What comes out?</h2>' +
-            '<p class="step-body">Do not run the mechanism. Count the hydrogens on the nitrogen, subtract none for the addition, and ask what is left to lose.</p>' +
+            '<p class="step-body">Do not run the mechanism. Count the hydrogens the nitrogen brought, subtract the one it spends getting to the cation, and ask what is left to lose.</p>' +
             '<div class="radical-sort">' +
             CASES.map(function(c){
               return '<div class="radical-row" data-case="' + c.id + '">' +
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'By using a strong base instead of acid'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct. Water is a product of every step of the sequence, so taking it out drives the equilibrium forward — and adding it back with acid runs the whole thing in reverse, which is exactly how a Stork sequence releases its ketone at the end. The reversibility is a feature rather than a nuisance.',
+        correctFeedback: 'Correct. Every step is an equilibrium and water is the by-product of the condensation overall, so taking it out drives the whole thing forward — and adding it back with acid runs the whole thing in reverse, which is exactly how a Stork sequence releases its ketone at the end. The reversibility is a feature rather than a nuisance.',
         wrongFeedback: 'Look at what is produced alongside the imine. If the reaction is reversible, what would removing that product do?'
       },
       {

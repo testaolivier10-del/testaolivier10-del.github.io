@@ -259,8 +259,8 @@ document.addEventListener('DOMContentLoaded', function(){
           '<li><b>Intramolecular aldol.</b> An enolate on one side reaches the carbonyl on the other. From a 1,5-dicarbonyl the closure that reaches without strain is <b>six-membered</b>.</li>' +
           '<li><b>Dehydration.</b> The &beta;-hydroxy ketone loses water to give a conjugated enone, which is what makes the whole thing irreversible.</li>' +
           '</ul>' +
-          '<p class="step-body">The product is a <b>cyclohexenone</b>, every time. Methyl vinyl ketone is the classic acceptor, because it is cheap and the ring it gives is the one steroid synthesis needed.</p>' +
-          '<div class="explain-box">Why six and not some other size? Because the chain length is what decides it. A 1,5-dicarbonyl has its two ends exactly far enough apart to meet without strain, and five- and six-membered rings close far faster than anything larger. The reaction is not choosing a ring size; the spacing already chose it.</div>'
+          '<p class="step-body">The product is a <b>cyclohexenone</b> in every case you will meet. Methyl vinyl ketone is the classic acceptor, because it is cheap and the ring it gives is the one steroid synthesis needed.</p>' +
+          '<div class="explain-box">Why six and not some other size? Count it. An aldol joins an <b>&alpha; carbon to a carbonyl carbon</b>, never two carbonyl carbons to each other &mdash; so from a 1,5-dicarbonyl the closure that works runs from the &alpha;&prime; carbon just past one carbonyl round to the far carbonyl carbon, and that path encloses six atoms. The alternatives a 1,5-dicarbonyl could try are three- and four-membered rings, which is why they never happen. The reaction is not choosing a ring size; the spacing chose it first.</div>'
       },
       {
         type: 'mcq',
@@ -279,15 +279,15 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'You are given 4,4-dimethylcyclohex-2-en-1-one. Work backwards: what does it come from?',
+        title: 'A cyclohexenone came from a Robinson annulation. In what order do you undo it?',
         options: [
-          'It cannot be made by a Robinson annulation',
-          'A Michael of 2,2-dimethyl-1,3-cyclohexanedione with an enone',
-          'Undo the dehydration, then the aldol to a 1,5-dicarbonyl, then the Michael to a donor and methyl vinyl ketone',
-          'An aldol condensation of two ketones'
+          'Disconnect the Michael first, then open the ring',
+          'Rehydrate, break the aldol bond to a 1,5-dicarbonyl, then disconnect the Michael',
+          'Open the ring at a carbonyl, then add water',
+          'Break the aldol bond first, then rehydrate'
         ],
-        correctIndex: 2,
-        correctFeedback: 'Correct, and the value here is the order of the three moves rather than the answer. Undo them in reverse: put the water back across the C=C to get a β-hydroxy ketone; break the aldol bond — the one between the α carbon and the carbinol carbon — which opens the ring to a 1,5-dicarbonyl; then disconnect that 1,5-dicarbonyl at the bond β to one carbonyl, giving an enolate donor and an enone acceptor. Every cyclohexenone you meet should get this treatment: if the ring opens cleanly to a 1,5-dicarbonyl, a Robinson annulation made it, and the two pieces fall out of the disconnection rather than having to be guessed.'
+        correctIndex: 1,
+        correctFeedback: 'Correct, and the order is the whole skill here — you undo the steps in reverse, last one first. Put the water back across the C=C to recover the β-hydroxy ketone. Break the aldol bond, which is the one between the α carbon and the carbinol carbon, and the ring opens to a <b>1,5-dicarbonyl</b>. Then disconnect that at the bond β to one carbonyl, and the two pieces fall out: an enolate donor and an enone acceptor. Try it in any other order and you are working on a bond that has not been exposed yet. The canonical case to have in mind is 2-methylcyclohexane-1,3-dione with methyl vinyl ketone, which gives the Wieland–Miescher ketone — a doubly stabilized 1,3-diketone donor, exactly as the rule above says, and the starting point for a great deal of steroid synthesis.'
       }
     ]
   });

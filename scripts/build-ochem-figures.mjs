@@ -2247,7 +2247,12 @@ FIGURES.push({
     let g = ring(180, 118, 42); s += g.svg;
     // Endocyclic double bond: a second line just inside the top-right edge.
     s += bond(g.pts[0], g.pts[1], { rFrom: 10, rTo: 10, cls: 'fg-bond' });
-    s += text(180, 118, 'in the ring', { cls: 'fg-sm', size: 9.5 });
+    // The methyl is the whole point of the comparison, so it has to be drawn:
+    // without it the left panel is cyclohexene and the label is a different
+    // compound from the structure.
+    s += bond(g.pts[0], P(180, 52), { rFrom: 0, rTo: 13 });
+    s += atom(180, 46, 'CH\u2083', { r: 13 });
+    s += text(180, 124, 'in the ring', { cls: 'fg-sm', size: 9.5 });
     s += text(180, 176, '1-methylcyclohexene', { cls: 'fg-lbl', size: 11.5 });
 
     g = ring(580, 118, 42); s += g.svg;
@@ -2301,7 +2306,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Both amines give the same iminium cation, and everything up to that point is identical. What separates the two products is where the last proton can come from — the nitrogen, if it still has one, and otherwise the α carbon.',
-  note: 'This is why the answer is a count rather than a mechanism. You do not need to run the steps: look at how many hydrogens the nitrogen brought, subtract none for the addition, and the product follows. A tertiary amine brings none, which is why it can add and still give nothing, and why tertiary amines appear in these reactions as bases.',
+  note: 'This is why the answer is a count rather than a mechanism. You do not need to run the steps: look at how many hydrogens the nitrogen brought and subtract the one it spends reaching the cation. Two becomes one, so a primary amine gives an imine; one becomes none, so a secondary amine has to take the alpha proton instead. A tertiary amine brings none, which is why it can add and still give nothing, and why tertiary amines appear in these reactions as bases.',
 });
 
 /* ----------------------------------------------------------------- 40 ---

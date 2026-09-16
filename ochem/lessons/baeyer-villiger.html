@@ -136,17 +136,22 @@ document.addEventListener('DOMContentLoaded', function(){
 (function(){
   /* Migratory aptitude is the only thing this reaction asks, so the
      interactive step is four ketones and the question "which group moves". */
+  /* Migratory aptitude is the only thing this reaction asks, so the
+     interactive step is four ketones and the question "which group moves".
+     The two options name a SIDE rather than a group, and the answer
+     alternates, because with methyl on the right every time a student could
+     click the same button four times and never rank anything. */
   var CASES = [
-    { id:'m1', t:'CH₃–CO–CH(CH₃)₂ &nbsp;<span style="color:var(--muted);">(methyl vs isopropyl)</span>', right:'other',
-      why:'The isopropyl migrates. Secondary beats methyl comfortably, so the oxygen ends up between the carbonyl and the isopropyl group and the product is isopropyl acetate.' },
-    { id:'m2', t:'CH₃–CO–C(CH₃)₃ &nbsp;<span style="color:var(--muted);">(methyl vs tert-butyl)</span>', right:'other',
-      why:'The tert-butyl migrates, and this is the widest gap in the series — tertiary is the best migrator and methyl the worst. Product: tert-butyl acetate.' },
-    { id:'m3', t:'CH₃–CO–CH₂C₆H₅ &nbsp;<span style="color:var(--muted);">(methyl vs benzyl)</span>', right:'other',
-      why:'The benzyl migrates. A benzylic carbon supports positive charge well, which is exactly what the migrating carbon has to do in the transition state.' },
-    { id:'m4', t:'CH₃–CO–CH₂CH₃ &nbsp;<span style="color:var(--muted);">(methyl vs ethyl)</span>', right:'other',
-      why:'The ethyl migrates. Primary beats methyl — the margin is smaller here than in the other rows, but methyl is last in the series and stays last. That is why methyl ketones are the predictable substrates.' }
+    { id:'m1', t:'CH\u2083\u2013CO\u2013CH(CH\u2083)\u2082 &nbsp;<span style="color:var(--muted);">(methyl \u00b7 isopropyl)</span>', right:'right',
+      why:'The isopropyl, on the right. Secondary beats methyl comfortably, so the oxygen ends up between the carbonyl and the isopropyl and the product is isopropyl acetate.' },
+    { id:'m2', t:'(CH\u2083)\u2083C\u2013CO\u2013CH\u2083 &nbsp;<span style="color:var(--muted);">(tert-butyl \u00b7 methyl)</span>', right:'left',
+      why:'The tert-butyl, on the left. This is the widest gap in the series \u2014 tertiary is the best migrator and methyl the worst \u2014 so the product is tert-butyl acetate.' },
+    { id:'m3', t:'C\u2086H\u2085CH\u2082\u2013CO\u2013CH\u2083 &nbsp;<span style="color:var(--muted);">(benzyl \u00b7 methyl)</span>', right:'left',
+      why:'The benzyl, on the left. A benzylic carbon supports positive charge well, which is exactly what the migrating carbon has to do in the transition state.' },
+    { id:'m4', t:'CH\u2083\u2013CO\u2013CH\u2082CH\u2083 &nbsp;<span style="color:var(--muted);">(methyl \u00b7 ethyl)</span>', right:'right',
+      why:'The ethyl, on the right. Primary beats methyl, and the margin here is the narrowest of the four \u2014 but methyl is last in the series and stays last, which is why methyl ketones are the predictable substrates.' }
   ];
-  var OPTS = [ { k:'me', l:'The methyl' }, { k:'other', l:'The other group' } ];
+  var OPTS = [ { k:'left', l:'The left group' }, { k:'right', l:'The right group' } ];
 
   window.OchemLessonEngine.start({
     topicId: 'baeyer-villiger',
@@ -196,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function(){
               var cfg = CASES.filter(function(c){ return c.id === id; })[0];
               if(btn.getAttribute('data-o') !== cfg.right){
                 missed = true; btn.classList.add('wrong'); btn.disabled = true;
-                api.showFeedback(fb, false, 'Methyl is last in the migration series, so in a methyl ketone the answer is always the other group. Ask which carbon better supports a positive charge.');
+                api.showFeedback(fb, false, 'Do not go by position \u2014 the methyl is not always on the same side. Ask which of the two carbons better supports a positive charge, since that is what the migrating carbon has to do.');
                 return;
               }
               done[id] = true; btn.classList.add('correct');
@@ -204,8 +209,8 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
               if(Object.keys(done).length === CASES.length){
                 api.showFeedback(fb, true, missed
-                  ? 'All four. Methyl never wins, which is exactly what makes a methyl ketone the substrate you can predict.'
-                  : 'All four, first time. Four different partners and the same answer, because methyl sits at the bottom of the series.');
+                  ? 'All four. Methyl never wins, which is exactly what makes a methyl ketone the substrate you can predict \u2014 but note that it was on a different side each time.'
+                  : 'All four, first time. The methyl was on the left twice and the right twice, so the side never told you the answer; the ranking did.');
                 api.record(!missed); next.disabled = false;
               }
             });

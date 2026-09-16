@@ -163,6 +163,44 @@ fixed is the placement of *load-bearing* content inside that strip, most
 sharply in `order-sets-pattern`, where both product names — the entire answer
 of the figure — sat in the hidden band.
 
+### Unit 7 — Carbonyl & Enolate Breadth
+
+Fourteen findings. Ten confident errors, all accepted; the first had already
+been caught and fixed during authoring, which the reviewer confirmed
+independently.
+
+| Finding | Where | Resolution |
+|---|---|---|
+| A Wittig disconnection said to need a **tertiary** halide | `lessons/wittig-reaction` | It needs a **secondary** one. Caught during authoring and rebuilt around a target where the two routes really differ as primary against secondary |
+| "Every alkene so far came from an elimination" | notes and lesson | False, and it contradicts this course's own alkyne chapter: Lindlar and Na/NH₃ make alkenes by **reduction**, and that pair is taught as the way to set geometry |
+| Ph₃P=O's bond called "one of the strongest **single** bonds" | notes, lesson, concept, bank — four places | It is a P=O **double** bond, about 130–140 kcal/mol |
+| "A primary amine brings two hydrogens and **uses none** in the addition, so one is left" | `lessons/imines-enamines` | Two minus none is two. It spends one reaching the cation, which is exactly what leaves one |
+| "A secondary amine brings one, and **that one is on the nitrogen** of the cation. Losing it would undo the reaction" | `lessons/imines-enamines` | Wrong twice: the iminium from a secondary amine has **no** N–H at all, and the α proton is taken because nothing else is available, not for the stated reason |
+| "Count the hydrogens, **subtract none** for the addition" | figure note and lesson | Gives the wrong answer if followed. Subtract **one** — two becomes one, one becomes none, which is the whole split |
+| "Water is a product of **every step** of the sequence" | `lessons/imines-enamines` | It comes off in one step. The correct statement is that every step is an equilibrium and water is the by-product overall |
+| Pinacolone said to be out of reach because it "needs a **tertiary halide**" | `lessons/ester-syntheses` | Out of reach, but for a different reason: its α carbon carries three methyls and no hydrogen, so it would need **three** alkylations of a CH₂ that has only two acidic hydrogens |
+| The malonic intermediate called a **β-keto acid** | notes, concept, lesson, bank | Only the acetoacetic route passes through one. The malonic route gives a substituted **malonic acid**. Same six-membered transition state, different name |
+| A bare cyclohexene drawn and labeled **1-methylcyclohexene** | `zaitsev-vs-wittig` | The missing methyl is the substituent the whole Zaitsev argument is about. Now drawn |
+
+**Four qualified findings, all also accepted.** The "why six?" argument for a
+Robinson annulation was muddled — the two carbonyl *carbons* are not what join,
+so the ring is counted from the α′ carbon to the far carbonyl, and the
+competing closures are three- and four-membered rather than "anything larger".
+The final challenge's target implied an **isobutyraldehyde** donor two steps
+after the lesson insists donors are doubly stabilized, so the question now asks
+for the order of the three reverse moves and names the Wieland–Miescher case,
+which really does come from a 1,3-diketone. Aryl was missing from the migratory
+aptitude list in the notes, and the "same ranking as carbocation stability"
+shortcut fails precisely for aryl — a phenyl cation is badly unstable, yet aryl
+migrates well, because the transition state is bridged. And two absolutes were
+softened to "in every case you will meet".
+
+**The browser pass found a design flaw the chemistry review did not.** Every
+case in the Baeyer–Villiger sort step had the same answer, so clicking one
+button four times scored 100% without ranking anything. The options now name a
+**side** rather than a group and the methyl sits left twice and right twice, so
+the position cannot be used as a shortcut.
+
 ## Pending clinical review
 
 Everything in this section is a clinical statement this repo now makes that a
