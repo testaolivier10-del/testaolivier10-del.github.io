@@ -121,7 +121,14 @@ try {
 
 const PORT = 8732;
 const ORIGIN = `http://localhost:${PORT}`;
-const pages = walk(ROOT).map((f) => '/' + relative(ROOT, f).split(/[\\/]/).join('/'));
+/* The thirteen redirect stubs at the site root are a <meta http-equiv="refresh">
+   and one link, no script at all, and each one's target is itself in this
+   list. Loading a stub tested nothing and produced the check's only remaining
+   intermittent failure: Playwright's own injected evaluation occasionally
+   lands while the meta refresh is navigating away, and Chromium reports it
+   as a CSP "unsafe-eval" refusal on a page that contains no JavaScript. */
+const isRedirectStub = (f) => /<meta http-equiv="refresh"/i.test(readFileSync(f, 'utf8'));
+const pages = walk(ROOT).filter((f) => !isRedirectStub(f)).map((f) => '/' + relative(ROOT, f).split(/[\\/]/).join('/'));
 pages.sort();
 
 const server = await serve(PORT);

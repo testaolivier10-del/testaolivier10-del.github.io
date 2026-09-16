@@ -103,7 +103,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 7</div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -198,8 +198,23 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'explain',
         eyebrow: 'Explain',
+        title: 'Drawing three dimensions on flat paper: wedge and dash.',
+        bodyHtml: '<p class="step-body">A tetrahedral carbon has four bonds pointing into three dimensions and the page has only two, so chemists use a convention. Two bonds are drawn as <b>plain lines</b>, in the plane of the paper. One is a solid <b>wedge</b>, widening toward you \u2014 that bond comes out of the page. One is a <b>dashed</b> line, receding \u2014 that bond goes behind the page.</p><div class="scene"><svg viewBox="0 0 220 170"><line x1="110" y1="88" x2="64" y2="54" stroke="var(--line)" stroke-width="2.5"/><line x1="110" y1="88" x2="156" y2="54" stroke="var(--line)" stroke-width="2.5"/><path d="M110 88 L70 128 L81 136 Z" fill="var(--ink)"/><line x1="117" y1="100" x2="119" y2="98" stroke="var(--line)" stroke-width="2.2"/><line x1="124" y1="112" x2="129" y2="108" stroke="var(--line)" stroke-width="2.2"/><line x1="131" y1="124" x2="138" y2="118" stroke="var(--line)" stroke-width="2.2"/><line x1="138" y1="136" x2="148" y2="128" stroke="var(--line)" stroke-width="2.2"/><circle cx="110" cy="88" r="16" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="110" y="93" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="14">C</text><circle cx="56" cy="48" r="12" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="56" y="53" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">H</text><circle cx="164" cy="48" r="12" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="164" y="53" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">H</text><circle cx="62" cy="138" r="12" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="62" y="143" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">H</text><circle cx="158" cy="138" r="12" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="158" y="143" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">H</text><text x="110" y="163" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="10" fill="var(--muted)">wedge and dash, always adjacent</text></svg></div><p class="step-body" style="margin-bottom:0;">The detail that trips everyone: the wedge and the dash go <b>next to each other</b>, never on opposite sides. On a real tetrahedron the two bonds they stand for are adjacent, so drawing them opposite depicts no tetrahedron at all. Swapping which one is the wedge, on the other hand, draws a perfectly legal molecule \u2014 just the mirror image of the one you meant, which is the whole subject of <a class=\\"chapter-ref\\" href=\\"/ochem/learn.html#m-stereochemistry\\">Stereochemistry</a>.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: 'A student draws a carbon with the wedge and the dash on opposite sides of the atom. What is wrong with it?',
+        options: ['Nothing \u2014 opposite is the standard way to draw it', 'It is the mirror image of the intended molecule', 'It does not describe a tetrahedron at all', 'The wedge should always point up the page'],
+        correctIndex: 2,
+        correctFeedback: 'Correct \u2014 the two bonds a wedge and a dash stand for are adjacent on a real tetrahedron, so putting them opposite draws a shape that does not exist. Swapping which bond is the wedge is the different error: that one is legal, and gives the mirror image.',
+        wrongFeedback: 'Think about the solid shape. Are the two bonds that come toward you and go away from you next to each other on a tetrahedron, or across from each other?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
         title: 'Beyond 4 groups: shapes for expanded octets.',
-        bodyHtml: '<p class="step-body">Central atoms with more than 4 electron groups — period 3+ elements like S and P, for the reason given in the Hybridization lesson — settle into their own named shapes.</p><p class="step-body"><b>5 groups, 0 lone pairs</b> gives <b>trigonal bipyramidal</b>: 3 groups in a flat triangle around the center (equatorial), plus 2 more directly above and below (axial). PCl₅ is the standard example.</p><p class="step-body"><b>6 groups, 0 lone pairs</b> gives <b>octahedral</b>: 4 groups in a flat square around the center, plus 1 above and 1 below. SF₆ is the standard example.</p><p class="step-body" style="margin-bottom:0;">Same lone-pair logic applies here too: swap a group for a lone pair and the name changes even though the underlying electron arrangement doesn\'t (e.g. 5 groups with 1 lone pair is called "seesaw," not trigonal bipyramidal). You won\'t need these day to day in organic chemistry — they exist mainly so you recognize them if a sulfur or phosphorus compound comes up.</p>'
+        bodyHtml: '<p class="step-body">Central atoms with more than 4 electron groups — period 3 elements like S and P, which can exceed an octet for the reasons set out once in the Lewis Structures lesson — settle into their own named shapes.</p><p class="step-body"><b>5 groups, 0 lone pairs</b> gives <b>trigonal bipyramidal</b>: 3 groups in a flat triangle around the center (equatorial), plus 2 more directly above and below (axial). PCl₅ is the standard example.</p><p class="step-body"><b>6 groups, 0 lone pairs</b> gives <b>octahedral</b>: 4 groups in a flat square around the center, plus 1 above and 1 below. SF₆ is the standard example.</p><p class="step-body" style="margin-bottom:0;">Same lone-pair logic applies here too: swap a group for a lone pair and the name changes even though the underlying electron arrangement doesn\'t (e.g. 5 groups with 1 lone pair is called "seesaw," not trigonal bipyramidal). You won\'t need these day to day in organic chemistry — they exist mainly so you recognize them if a sulfur or phosphorus compound comes up.</p>'
       },
       {
         type: 'explain',

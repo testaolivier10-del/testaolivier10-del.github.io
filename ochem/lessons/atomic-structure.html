@@ -132,6 +132,10 @@
 // scripts execute, in order, just before DOMContentLoaded.
 document.addEventListener('DOMContentLoaded', function(){
 (function(){
+  /* The slots inside a shell are drawn in a ring for legibility only: nothing
+     in chemistry orders them, so a click lands in whichever slot was clicked
+     and any empty one is a legal move. What IS chemistry is that the inner
+     shell fills before the outer one, and that is the only ordering enforced. */
   function shellSvg(kFilled, lFilled){
     var cx = 150, cy = 95, kRadius = 42, lRadius = 75;
     var kSlots = [200, 340].map(function(a){
@@ -144,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function(){
       return [cx + lRadius*Math.cos(rad), cy + lRadius*Math.sin(rad)];
     });
     function slot(pos, i, filled, key){
-      var isFilled = i < filled;
+      var isFilled = !!filled[i];
       return '<g class="atom' + (isFilled ? ' chosen' : '') + '" data-key="' + key + i + '">' +
         '<circle cx="' + pos[0] + '" cy="' + pos[1] + '" r="10" fill="' + (isFilled ? 'var(--tint-accent)' : 'var(--white)') + '" stroke="var(--line)" stroke-width="2"/>' +
         (isFilled ? '<text x="' + pos[0] + '" y="' + (pos[1]+4) + '" text-anchor="middle" font-size="10" fill="var(--accent-press)">e⁻</text>' : '') +
@@ -187,13 +191,16 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       {
         render: function(api){
-          var kFilled = 0, lFilled = 0, done = false;
+          var kSlots = [false, false];
+          var lSlots = [false, false, false, false, false, false, false, false];
+          var count = function(a){ var n = 0; for(var i=0;i<a.length;i++) if(a[i]) n++; return n; };
+          var done = false;
           function paint(){
             api.card.innerHTML =
               '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
               '<h2 class="step-title">Build a neutral nitrogen atom (atomic number 7).</h2>' +
-              '<p class="step-body">Nitrogen has 7 protons, so a neutral atom has 7 electrons. Click slots to add them — the K shell (2 slots) fills before the L shell.</p>' +
-              shellSvg(kFilled, lFilled) +
+              '<p class="step-body">Nitrogen has 7 protons, so a neutral atom has 7 electrons. Click slots to add them. The K shell (2 slots) fills before the L shell, because the inner shell is lower in energy — but <i>within</i> a shell the slots are all equivalent, so any empty one will do.</p>' +
+              shellSvg(kSlots, lSlots) +
               api.feedbackHtml('fb') +
               api.nextButtonHtml('Continue', done);
             var fb = api.card.querySelector('#fb');
@@ -204,16 +211,14 @@ document.addEventListener('DOMContentLoaded', function(){
                 var isK = key.charAt(0) === 'k';
                 var idx = parseInt(key.slice(1), 10);
                 if(isK){
-                  if(idx < kFilled){ return; }
-                  if(idx !== kFilled){ api.showFeedback(fb, false, 'Fill slots in order, left to right.'); return; }
-                  kFilled++;
+                  if(kSlots[idx]){ return; }
+                  kSlots[idx] = true;
                 } else {
-                  if(kFilled < 2){ api.showFeedback(fb, false, 'Fill the K shell (2 electrons) before adding to the L shell.'); return; }
-                  if(idx < lFilled){ return; }
-                  if(idx !== lFilled){ api.showFeedback(fb, false, 'Fill slots in order, left to right.'); return; }
-                  lFilled++;
+                  if(count(kSlots) < 2){ api.showFeedback(fb, false, 'Fill the K shell (2 electrons) before adding to the L shell — the inner shell is lower in energy.'); return; }
+                  if(lSlots[idx]){ return; }
+                  lSlots[idx] = true;
                 }
-                var total = kFilled + lFilled;
+                var total = count(kSlots) + count(lSlots);
                 if(total === 7){
                   done = true;
                   api.record(true);
@@ -258,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Ions: what "cation" and "carbocation" actually mean.',
-        bodyHtml: '<p class="step-body">Instead of sharing electrons, an atom can fully gain or lose them. Lose an electron and you\'re left with one more proton than electrons — an overall positive charge, called a <b>cation</b>. Gain an electron and you have one more electron than protons — an overall negative charge, called an <b>anion</b>.</p><p class="step-body" style="margin-bottom:0;">This vocabulary comes back constantly: a <b>carbocation</b> (<a class=\"chapter-ref\" href=\"/ochem/learn.html#m-substitution-elimination\">Substitution &amp; Elimination</a>, in SN1 and E1) is just a carbon atom that\'s lost enough electron density to carry a positive charge, and a <b>carbanion</b> is a carbon-centered anion. Same idea as sodium losing an electron to become Na⁺ — just applied to carbon later on.</p>'
+        bodyHtml: '<p class="step-body">Instead of sharing electrons, an atom can fully gain or lose them. Lose an electron and you\'re left with one more proton than electrons — an overall positive charge, called a <b>cation</b>. Gain an electron and you have one more electron than protons — an overall negative charge, called an <b>anion</b>.</p><p class="step-body" style="margin-bottom:0;">This vocabulary comes back constantly: a <b>carbocation</b> (<a class=\"chapter-ref\" href=\"/ochem/learn.html#m-substitution-elimination\">Substitution &amp; Elimination</a>, in SN1 and E1) is a carbon that has lost a whole <b>bonding pair</b> — the group that left took both shared electrons with it — leaving carbon with three bonds, six valence electrons, an empty orbital and a +1. A <b>carbanion</b> is the opposite: three bonds, the pair kept, a full octet and a −1. It is the same idea as sodium becoming Na⁺, with one difference worth noticing now: sodium loses one electron, while carbon loses two at a time, because electrons leave carbon in pairs inside a bond.</p>'
       },
       {
         type: 'final',

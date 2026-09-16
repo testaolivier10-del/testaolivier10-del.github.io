@@ -22,33 +22,34 @@
     "8"
    ],
    "correct": 1,
-   "why": "Carbon’s configuration is 1s² 2s² 2p² — the 2nd shell holds 4 electrons, all valence.",
+   "why": "Carbon sits in group 14, and for the p-block you subtract ten: 14 − 10 = 4 valence electrons. Those four are the only electrons that bond, which is why carbon forms four bonds and why the whole subject is built on it.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Nitrogen has 5 valence electrons. In a neutral molecule, how many bonds and lone pairs does it carry?",
+   "options": [
+    "2 bonds, 2 lone pairs",
+    "3 bonds, 1 lone pair",
+    "4 bonds, 0 lone pairs",
+    "1 bond, 3 lone pairs"
+   ],
+   "correct": 1,
+   "why": "Every shared pair counts toward the octet of both partners, so for a second-row atom bonds + lone pairs = 4. Nitrogen brings 5 electrons of its own: three of them go into bonds (each picking up a partner's electron to make 3 shared pairs) and the remaining two stay behind as one lone pair.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Which subatomic particle determines an element’s identity?",
+   "q": "A structure shows an oxygen with three bonds and one lone pair. What has to be written on that oxygen?",
    "options": [
-    "Electron",
-    "Neutron",
-    "Proton",
-    "Positron"
-   ],
-   "correct": 2,
-   "why": "The number of protons (atomic number) defines which element an atom is.",
-   "difficulty": "hard",
-   "type": "mcq"
-  },
-  {
-   "q": "Which subatomic particle carries no electric charge?",
-   "options": [
-    "Neutron",
-    "Proton",
-    "Electron"
+    "A +1 charge",
+    "A −1 charge",
+    "Nothing, that is neutral oxygen",
+    "A dot for an unpaired electron"
    ],
    "correct": 0,
-   "why": "Neutrons are electrically neutral, unlike protons (+1) and electrons (−1); they add mass but no charge to the nucleus.",
-   "difficulty": "easy",
+   "why": "Neutral oxygen takes 2 bonds and 2 lone pairs. Here it has swapped a lone pair for a third bond, so it owns only half of that pair instead of all of it: one electron fewer than a free oxygen atom, which is a +1.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -134,7 +135,7 @@
    ],
    "correct": 0,
    "why": "Charge equals protons minus electrons: 8 − 10 = −2, consistent with the oxide ion O²⁻ that oxygen commonly forms.",
-   "difficulty": "hard",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -145,45 +146,45 @@
    ],
    "correct": 1,
    "why": "Atoms of the same element can have different neutron counts — these variants are isotopes, and they still behave identically in chemical reactions.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "tf"
   },
   {
-   "q": "Nearly all of an atom's mass is concentrated in its:",
+   "q": "Which pair of atoms bonds by transferring an electron outright rather than sharing one?",
    "options": [
-    "Electron cloud",
-    "Nucleus",
-    "Valence shell",
-    "Outer orbitals"
+    "Carbon and hydrogen",
+    "Sodium and chlorine",
+    "Carbon and oxygen",
+    "Nitrogen and hydrogen"
    ],
    "correct": 1,
-   "why": "Protons and neutrons, both much heavier than electrons, reside in the tiny nucleus, which is why it holds almost all the atom's mass.",
+   "why": "Transfer is only cheap when one atom gives an electron up easily and the other takes it eagerly. Sodium has a single loose valence electron and chlorine is one short of a full shell, so the electron moves across and the resulting Na⁺ and Cl⁻ attract electrostatically.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "The Pauli exclusion principle states that no two electrons in the same atom can have:",
+   "q": "A carbon is drawn with a double bond to oxygen and single bonds to two hydrogens. How many electrons surround that carbon?",
    "options": [
-    "The same number of neutrons",
-    "The same atomic radius",
-    "Identical sets of four quantum numbers",
-    "Opposite spins in the same orbital"
+    "6",
+    "7",
+    "8",
+    "10"
    ],
    "correct": 2,
-   "why": "Every electron must be uniquely described by its quantum numbers; two electrons can share an orbital only if their spins differ.",
-   "difficulty": "medium",
+   "why": "Count shared pairs, not neighbors. The double bond is two shared pairs and each C–H is one more, so four pairs — eight electrons, a full octet. The slip this question is built on is counting three neighboring atoms and concluding the carbon is two electrons short.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Hund's rule says that when filling a set of degenerate (equal-energy) orbitals, electrons will:",
+   "q": "A group leaves a carbon and takes the shared pair with it. How many valence electrons does that carbon have left?",
    "options": [
-    "Pair up in the first orbital before occupying others",
-    "Skip the orbitals entirely",
-    "Always occupy the orbital closest to the nucleus first",
-    "Occupy separate orbitals singly before any pairing occurs"
+    "8",
+    "7",
+    "6",
+    "4"
    ],
-   "correct": 3,
-   "why": "Hund's rule minimizes electron-electron repulsion by spreading electrons into separate same-energy orbitals before any pairing happens.",
+   "correct": 2,
+   "why": "The carbon started with four bonds, so eight electrons surrounded it. Losing a whole bonding pair removes two of them, leaving three bonds and six electrons — an incomplete octet with an empty orbital.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -227,14 +228,14 @@
    "type": "mcq"
   },
   {
-   "q": "Neutrons carry a positive electric charge.",
+   "q": "Carbon-12 and carbon-14 react at exactly the same rate.",
    "options": [
     "True",
     "False"
    ],
    "correct": 1,
-   "why": "Neutrons are neutral (no charge); protons are the positively charged nuclear particles.",
-   "difficulty": "easy",
+   "why": "Almost, but not quite. Identical electron counts mean identical bonds, so for nearly every purpose the two are interchangeable — but a heavier nucleus sits in a slightly deeper vibrational well, so a bond to it breaks a little more slowly.",
+   "difficulty": "medium",
    "type": "tf"
   },
   {
@@ -273,30 +274,30 @@
    ],
    "correct": 1,
    "why": "For main-group elements, the group number (17, or 7A) gives 7 valence electrons, explaining why chlorine needs just one more electron for a full octet.",
-   "difficulty": "hard",
-   "type": "mcq"
-  },
-  {
-   "q": "The periodic table arranges elements in order of increasing:",
-   "options": [
-    "Atomic mass only",
-    "Number of neutrons",
-    "Atomic number",
-    "Electronegativity"
-   ],
-   "correct": 2,
-   "why": "Elements are ordered by increasing atomic number (proton count), which also roughly tracks increasing mass for most elements.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Electrons are located inside the nucleus along with protons and neutrons.",
+   "q": "Chlorine has 7 valence electrons. In a neutral organic molecule, what does a chlorine atom carry?",
+   "options": [
+    "1 bond and 3 lone pairs",
+    "2 bonds and 2 lone pairs",
+    "3 bonds and 1 lone pair",
+    "1 bond and 2 lone pairs"
+   ],
+   "correct": 0,
+   "why": "Bonds + lone pairs = 4 for an atom reaching an octet. Chlorine already owns 7 of the 8 electrons it needs, so a single shared pair finishes the octet and the other 6 electrons stay put as 3 lone pairs.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "In an ionic bond the electrons are shared between the two atoms, just far less evenly than in a covalent bond.",
    "options": [
     "True",
     "False"
    ],
    "correct": 1,
-   "why": "Only protons and neutrons occupy the nucleus; electrons exist in surrounding orbitals/shells outside the nucleus.",
+   "why": "That describes a polar covalent bond, which is what most organic bonds are: shared, but pulled toward one end. In a true ionic bond the electron is handed over completely — sodium keeps no share in it at all — and what holds Na⁺ and Cl⁻ together is plain electrostatic attraction between opposite charges.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -314,28 +315,29 @@
    "type": "mcq"
   },
   {
-   "q": "Which particle has dramatically smaller mass than the other two?",
+   "q": "A nitrogen in a structure has four bonds and no lone pair. What is true of it?",
    "options": [
-    "Proton",
-    "Neutron",
-    "Electron"
+    "It is impossible",
+    "It carries a −1 charge",
+    "It carries a +1 charge",
+    "It is an ordinary neutral amine"
    ],
    "correct": 2,
-   "why": "An electron has roughly 1/1800th the mass of a proton or neutron, so electrons contribute almost nothing to an atom's total mass.",
-   "difficulty": "easy",
+   "why": "Neutral nitrogen takes 3 bonds and 1 lone pair. A fourth bond has replaced that lone pair, so nitrogen now shares a pair it used to own outright and comes out one electron short: +1.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Which quantum number describes an electron's intrinsic spin?",
+   "q": "Magnesium is in group 2 and chlorine in group 17. What kind of bonding forms between them?",
    "options": [
-    "Principal quantum number (n)",
-    "Spin quantum number (m_s)",
-    "Angular momentum quantum number (l)",
-    "Magnetic quantum number (m_l)"
+    "Polar covalent",
+    "Ionic",
+    "Nonpolar covalent",
+    "No bonding at all"
    ],
    "correct": 1,
-   "why": "The spin quantum number (m_s = +1/2 or −1/2) distinguishes the two electrons that can occupy the same orbital.",
-   "difficulty": "medium",
+   "why": "Magnesium has two loose valence electrons and each chlorine is one electron short of a full shell, so each chlorine takes one outright. Nothing is shared: the result is Mg²⁺ and two Cl⁻ held together electrostatically.",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -348,18 +350,18 @@
    ],
    "correct": 2,
    "why": "Being one electron short of an octet, fluorine strongly favors gaining an electron to form the stable F⁻ ion rather than losing one.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "An atom's atomic number is defined by its number of protons, not its number of neutrons or electrons.",
+   "q": "A carbon drawn with three bonds and one lone pair carries a negative charge.",
    "options": [
     "True",
     "False"
    ],
    "correct": 0,
-   "why": "Atomic number is fixed by proton count; this is what defines which element an atom is, regardless of isotope or ionic charge.",
-   "difficulty": "easy",
+   "why": "Neutral carbon comes with four valence electrons and takes four bonds. Three bonds plus a lone pair means it owns 3 (one from each shared pair) + 2 = 5 electrons against the 4 it started with, so it is −1.",
+   "difficulty": "medium",
    "type": "tf"
   },
   {
@@ -400,7 +402,7 @@
    ],
    "correct": 1,
    "why": "The Pauli exclusion principle allows at most 2 electrons per orbital, and they must have opposite spins.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -412,8 +414,8 @@
     "Neither ever fills"
    ],
    "correct": 2,
-   "why": "By the (n+l) filling order, 4s (4+0=4) fills before 3d (3+2=5).",
-   "difficulty": "hard",
+   "why": "Energy, not shell number, sets the filling order. An s electron penetrates closer to the nucleus than a d electron does, so it is screened less by the inner electrons and feels a stronger pull — enough that 4s drops below 3d.",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -455,14 +457,14 @@
    "type": "mcq"
   },
   {
-   "q": "A d subshell contains 5 orbitals.",
+   "q": "An orbital is a region of space, not a path, so an electron in a p orbital passes through the node at its center.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "The d subshell has five distinct orbitals, each able to hold up to 2 electrons, for a maximum of 10 electrons.",
-   "difficulty": "easy",
+   "correct": 1,
+   "why": "A node is a surface where the probability of finding the electron is exactly zero, so it is never found there — which is impossible to picture if you imagine the electron as a ball tracing a route between the two lobes. That is the point of dropping the orbit picture: the orbital is a probability distribution, and the two lobes are two regions where the electron is likely to be.",
+   "difficulty": "hard",
    "type": "tf"
   },
   {
@@ -488,7 +490,7 @@
    ],
    "correct": 3,
    "why": "Like any p subshell, 2p has three orbitals that each hold 2 electrons, giving a maximum of 6 electrons.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -500,8 +502,8 @@
     "Only s orbitals can hold 2 electrons"
    ],
    "correct": 0,
-   "why": "Two electrons can occupy one orbital only if their spins are opposite; a third electron would necessarily duplicate a full set of quantum numbers, which the Pauli exclusion principle forbids.",
-   "difficulty": "hard",
+   "why": "Two electrons fit in one orbital only if their spins are opposed, one up and one down. A third electron would have to match one of them exactly, and the Pauli exclusion principle forbids that — so two is the ceiling for every orbital, of every shape, in every shell.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -516,54 +518,54 @@
    "type": "tf"
   },
   {
-   "q": "A sigma (σ) bond forms from which type of orbital overlap?",
+   "q": "What is the ground-state electron configuration of nitrogen (7 electrons)?",
    "options": [
-    "Side-by-side overlap of parallel orbitals",
-    "Head-on, direct overlap along the bond axis",
-    "No orbital overlap at all",
-    "Overlap only between d orbitals"
+    "1s² 2s² 2p³",
+    "1s² 2s³ 2p²",
+    "1s² 2s² 2p² 3s¹",
+    "1s² 2p⁵"
    ],
-   "correct": 1,
-   "why": "Sigma bonds result from orbitals overlapping end-to-end directly along the axis connecting the two nuclei, giving strong, rotation-tolerant bonding.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "A pi (π) bond forms from which type of orbital overlap?",
-   "options": [
-    "Head-on overlap along the bond axis",
-    "Overlap of only s orbitals",
-    "Side-by-side overlap of p orbitals",
-    "Overlap of hybridized orbitals only"
-   ],
-   "correct": 2,
-   "why": "Pi bonds arise when two parallel, unhybridized p orbitals overlap side-by-side above and below the bond axis, creating electron density off the direct line between nuclei.",
+   "correct": 0,
+   "why": "Fill from the bottom: 1s takes 2, 2s takes 2, and the remaining 3 go into the 2p set. Because the three 2p orbitals are equal in energy, those 3 electrons go one to each rather than pairing up — so nitrogen has three unpaired electrons and makes three bonds, and the 2s pair that has nowhere else to go is ammonia's lone pair.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Which bond type, sigma or pi, allows free rotation around the bond axis?",
+   "q": "How many unpaired electrons does a ground-state oxygen atom have?",
    "options": [
-    "Pi bonds",
-    "Both allow free rotation",
-    "Neither allows rotation",
-    "Sigma bonds"
+    "0",
+    "1",
+    "2",
+    "4"
    ],
-   "correct": 3,
-   "why": "Sigma bonds are symmetric around the bond axis, so rotating one end doesn't disrupt the overlap, unlike pi bonds whose parallel-p-orbital overlap would be destroyed by rotation.",
-   "difficulty": "hard",
+   "correct": 2,
+   "why": "Oxygen is 1s² 2s² 2p⁴. The 1s and 2s are full, and four electrons go into three equal-energy 2p orbitals: one each first, then the fourth has to double up in one of them.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Hybrid orbitals (like sp3) are formed by mathematically mixing together:",
+   "q": "The Pauli exclusion principle is what limits an orbital to two electrons. What does it require of those two?",
    "options": [
-    "s and p orbitals from the same atom",
-    "Only p orbitals from different atoms",
-    "Protons and neutrons",
-    "Only d orbitals"
+    "The same spin",
+    "Opposite spins",
+    "The same shell",
+    "Equal distances from the nucleus"
    ],
-   "correct": 0,
-   "why": "Hybridization combines an atom's own s and p orbitals into new, equivalent hybrid orbitals (sp, sp2, or sp3) better suited for bonding geometry.",
+   "correct": 1,
+   "why": "An orbital can hold two electrons only if they differ in spin, one up and one down. A third has no way to be different from both, so it cannot join them — which is why every subshell's capacity is exactly twice its number of orbitals: 2 for s, 6 for p, 10 for d.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Hund's rule says that when filling a set of degenerate (equal-energy) orbitals, electrons will:",
+   "options": [
+    "Pair up in the first orbital before occupying others",
+    "Skip the orbitals entirely",
+    "Always occupy the orbital closest to the nucleus first",
+    "Occupy separate orbitals singly before any pairing occurs"
+   ],
+   "correct": 3,
+   "why": "Hund's rule minimizes electron-electron repulsion by spreading electrons into separate same-energy orbitals before any pairing happens.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -614,20 +616,20 @@
    ],
    "correct": 3,
    "why": "A node is a location where the probability of finding the electron drops to zero, separating regions (lobes) of the orbital.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Which letter designates the orbital type with a spherical shape (zero angular momentum)?",
+   "q": "Fluorine is 1s² 2s² 2p⁵. How many bonds and lone pairs does that predict?",
    "options": [
-    "s",
-    "p",
-    "d",
-    "f"
+    "2 bonds, 2 lone pairs",
+    "3 bonds, 1 lone pair",
+    "1 bond, 2 lone pairs",
+    "1 bond, 3 lone pairs"
    ],
-   "correct": 0,
-   "why": "The s designation corresponds to orbitals with zero orbital angular momentum, which are spherically symmetric.",
-   "difficulty": "easy",
+   "correct": 3,
+   "why": "Five electrons spread over the three 2p orbitals fill two of them and leave one with a single electron; the 2s pair is already full. So one unpaired electron is available to bond, and the three filled pairs (one 2s, two 2p) stay put as lone pairs.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -639,44 +641,46 @@
     "In a single plane only"
    ],
    "correct": 1,
-   "why": "The three p orbitals point along the x, y, and z axes, perpendicular to one another, minimizing their mutual overlap.",
+   "why": "Three mutually perpendicular axes is the arrangement that puts the three orbitals as far from each other as possible, which keeps the electrons in them apart and the repulsion between them at a minimum. It is also why the three of them are identical in energy: no axis is special.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "An s orbital has the same basic spherical shape at every energy level, just larger at higher levels.",
+   "q": "Two of carbon's 2p orbitals hold one electron each and the third is empty. What does this predict about carbon's bonding?",
    "options": [
-    "True",
-    "False"
+    "Carbon should form two bonds",
+    "Carbon should form four bonds",
+    "Carbon should form no bonds",
+    "Carbon should form six bonds"
    ],
    "correct": 0,
-   "why": "1s, 2s, 3s, etc. are all spherically symmetric; higher-energy s orbitals are simply larger (with additional internal nodes) but keep the overall spherical shape.",
-   "difficulty": "easy",
-   "type": "tf"
-  },
-  {
-   "q": "When two p orbitals overlap end-to-end along the axis connecting two nuclei, what type of bond results?",
-   "options": [
-    "A pi bond",
-    "An ionic bond",
-    "A sigma bond",
-    "No bond forms"
-   ],
-   "correct": 2,
-   "why": "Even p orbitals can form a sigma bond if they overlap directly along the internuclear axis, concentrating electron density between the nuclei.",
+   "why": "Counting unpaired electrons, the prediction is two — and it is wrong, since carbon plainly forms four. That mismatch is the paradox the next section resolves: carbon promotes one 2s electron into the empty 2p, giving four unpaired electrons in four orbitals, and then mixes them.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Two parallel p orbitals overlapping side-by-side (not along the bond axis) form what type of bond?",
+   "q": "Which of these box diagrams for the 2p subshell of carbon violates Hund's rule?",
    "options": [
-    "A sigma bond",
-    "A lone pair",
-    "A hybrid orbital",
-    "A pi bond"
+    "↑ ↑ __ (one electron each in two orbitals)",
+    "↑↓ __ __ (both electrons paired in one orbital)",
+    "↑ __ ↑ (one each in the first and third)",
+    "None of them — both arrangements are allowed"
    ],
-   "correct": 3,
-   "why": "Side-by-side, parallel overlap of p orbitals places electron density above and below the bond axis, which is the defining feature of a pi bond.",
+   "correct": 1,
+   "why": "Hund's rule says electrons spread singly across orbitals of equal energy before any of them pairs. Forcing both 2p electrons into one orbital puts them in the same small region where they repel each other, when two empty orbitals of identical energy are sitting there unused.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which box diagram breaks the Pauli exclusion principle rather than Hund's rule?",
+   "options": [
+    "↑ ↑ ↑ in three equal orbitals",
+    "↑↑ in one orbital, the others empty",
+    "↑↓ ↑ __ in three equal orbitals",
+    "↑↓ ↑↓ ↑↓ in three equal orbitals"
+   ],
+   "correct": 1,
+   "why": "Pauli forbids two electrons in one orbital from having the same spin — an orbital can hold two only if they are opposed, ↑↓. Two arrows pointing the same way in one box is therefore impossible, not merely unfavorable.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -694,15 +698,15 @@
    "type": "mcq"
   },
   {
-   "q": "How many individual orbitals make up an f subshell?",
+   "q": "What is the electron configuration of the sodium ion, Na⁺?",
    "options": [
-    "3",
-    "7",
-    "5",
-    "9"
+    "1s² 2s² 2p⁶ 3s¹",
+    "1s² 2s² 2p⁵",
+    "1s² 2s² 2p⁶ 3s²",
+    "1s² 2s² 2p⁶"
    ],
-   "correct": 1,
-   "why": "The f subshell contains seven orbitals, each capable of holding 2 electrons, for a maximum of 14 electrons.",
+   "correct": 3,
+   "why": "Neutral sodium is 1s² 2s² 2p⁶ 3s¹. The electron it loses is the outermost, highest-energy one — the lone 3s — leaving a filled n = 2 shell. That is the whole reason sodium gives up exactly one electron and stops: the ion has the configuration of neon, and prising a second electron out of a full shell is enormously expensive.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -716,7 +720,7 @@
    ],
    "correct": 2,
    "why": "The n=3 shell has 1 s-orbital, 3 p-orbitals, and 5 d-orbitals (9 orbitals total), each holding 2 electrons, for a maximum of 18.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -731,29 +735,29 @@
    "type": "tf"
   },
   {
-   "q": "Which bond type results from orbital overlap directly along the internuclear axis, maximizing electron density between the two nuclei?",
+   "q": "Why can carbon never hold more than eight valence electrons?",
    "options": [
-    "Pi bond",
-    "Ionic bond",
-    "Hydrogen bond",
-    "Sigma bond"
+    "Carbon is too light",
+    "The n = 2 shell has only four orbitals",
+    "Carbon has no lone pairs",
+    "Eight is the largest even number below ten"
    ],
-   "correct": 3,
-   "why": "A sigma bond's defining feature is head-on overlap along the axis connecting the nuclei, giving the strongest, most direct electron density between them.",
-   "difficulty": "medium",
+   "correct": 1,
+   "why": "Count them: one 2s and three 2p is four orbitals, and an orbital holds at most two electrons, so the shell tops out at eight. A ninth electron on carbon, nitrogen, oxygen or fluorine would have nowhere to sit.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "A g subshell (theoretical, not used in ground-state atoms found in nature) would contain how many individual orbitals, following the same pattern as s, p, d, f?",
+   "q": "Which subshell is lower in energy, 2s or 2p, and why?",
    "options": [
-    "9",
-    "5",
-    "7",
-    "11"
+    "2p, because p orbitals have more lobes",
+    "They are equal in energy",
+    "2s, because an s electron penetrates closer to the nucleus",
+    "2p, because it holds more electrons"
    ],
-   "correct": 0,
-   "why": "Subshell orbital counts follow 2l+1: s=1, p=3, d=5, f=7, g=9 — each subsequent subshell type has 2 more orbitals than the last.",
-   "difficulty": "hard",
+   "correct": 2,
+   "why": "An s orbital's shape lets its electron spend more of its time very close to the nucleus, inside the screening cloud of the inner electrons. Feeling less shielding means feeling a stronger nuclear pull, and that means lower energy.",
+   "difficulty": "medium",
    "type": "mcq"
   }
  ],
@@ -764,7 +768,7 @@
     "sp²",
     "sp",
     "sp³",
-    "sp³d"
+    "Not hybridized"
    ],
    "correct": 0,
    "why": "Three regions of electron density (trigonal planar) come from mixing one s and two p orbitals — sp².",
@@ -794,7 +798,7 @@
    ],
    "correct": 2,
    "why": "2 regions of electron density (linear) come from mixing one s and one p orbital — sp, leaving 2 unhybridized p orbitals for the 2 pi bonds.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -822,16 +826,16 @@
    "type": "tf"
   },
   {
-   "q": "An sp2 hybridized carbon (trigonal planar) has a bond angle of about:",
+   "q": "Ethene's carbons are trigonal planar, so VSEPR predicts 120°. The measured H–C–H angle is about 117°. Why?",
    "options": [
-    "120°",
-    "90°",
-    "109.5°",
-    "180°"
+    "The measurement is within error of 120°",
+    "The C=C is a fatter group and pushes the hydrogens together",
+    "Ethene is not really planar",
+    "The carbons are actually sp³"
    ],
-   "correct": 0,
-   "why": "The three sp2 hybrid orbitals spread out evenly in a plane, 120° apart, to minimize electron repulsion.",
-   "difficulty": "easy",
+   "correct": 1,
+   "why": "The ideal angles assume the three groups are identical, and here they are not: two C–H bonds and one C=C holding four electrons. The double bond takes up more angular room than a single bond, so it squeezes the two hydrogens a few degrees closer together.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -870,7 +874,7 @@
    ],
    "correct": 3,
    "why": "Adding 2 sigma bonds and 2 lone pairs gives a steric number of 4, so oxygen is sp3 hybridized despite forming only 2 visible bonds.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -894,7 +898,7 @@
    ],
    "correct": 0,
    "why": "The carbonyl carbon has 3 sigma bonds total (the double bond counts once for sigma purposes) and 0 lone pairs, giving a steric number of 3 and sp2 hybridization.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -926,26 +930,26 @@
   {
    "q": "Why does an sp2 hybridized carbon have exactly one unhybridized p orbital left over?",
    "options": [
-    "Because carbon only has one p orbital to begin with",
-    "Because sp2 carbons never form pi bonds",
-    "Because the unhybridized orbital is destroyed during hybridization",
-    "Because sp2 hybridization mixes one s orbital with two of the three p orbitals, leaving the third p orbital unused"
+    "Carbon has only one p orbital to begin with",
+    "The third p orbital is left unmixed",
+    "The unhybridized orbital is destroyed by mixing",
+    "An sp2 carbon cannot form a pi bond at all"
    ],
-   "correct": 3,
-   "why": "Hybridization combines one s and two p orbitals into three sp2 orbitals; the one remaining, un-mixed p orbital is what allows sp2 carbons to form a pi bond.",
-   "difficulty": "hard",
+   "correct": 1,
+   "why": "Hybridization never changes the number of orbitals: one s plus two p goes in, three sp2 orbitals come out, and the third p orbital simply was not invited. It survives untouched, standing perpendicular to the plane of the three hybrids, and it is what makes the pi bond of a C=C.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
    "q": "A terminal alkyne's C–H bond (attached to an sp carbon) is more acidic than a C–H bond on an sp3 carbon mainly because:",
    "options": [
-    "sp orbitals have more s-character, holding the bonding electrons closer to carbon and better stabilizing the resulting negative charge",
-    "sp carbons are less electronegative than sp3 carbons",
-    "Triple bonds weaken all nearby C–H bonds",
-    "Alkynes have more hydrogens overall"
+    "sp orbitals hold the pair closer to carbon",
+    "sp carbons are less electronegative than sp3",
+    "A triple bond weakens every C–H nearby",
+    "Alkynes simply have more hydrogens"
    ],
    "correct": 0,
-   "why": "Higher s-character (50% in sp vs 25% in sp3) pulls electron density closer to the carbon nucleus, which better stabilizes the negative charge left behind when that C–H bond's proton is removed.",
+   "why": "Taking H⁺ off leaves the bonding pair behind on carbon, so the question is which carbon holds that pair most comfortably. An sp orbital is 50% s against sp3's 25%, and s character means density close to the nucleus — so an sp carbon holds the leftover pair tightly and gives the proton up far more readily.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -959,7 +963,7 @@
    ],
    "correct": 1,
    "why": "More s-character spreads the hybrid orbitals further apart in angle — from 109.5° (sp3) to 120° (sp2) to 180° (sp).",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -972,7 +976,7 @@
    ],
    "correct": 2,
    "why": "Greater s-character pulls the bonding electron pair closer to the carbon nucleus, making sp C–H bonds shorter (and stronger) than sp2 or sp3 C–H bonds.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -987,7 +991,7 @@
    "type": "tf"
   },
   {
-   "q": "In an imine (C=N), the nitrogen has one double bond, one single bond, and one lone pair. What is nitrogen's hybridization?",
+   "q": "An imine is a C=N group (the nitrogen analogue of a C=O). Its nitrogen has one double bond, one single bond and one lone pair. What is its hybridization?",
    "options": [
     "sp",
     "sp3",
@@ -996,7 +1000,7 @@
    ],
    "correct": 3,
    "why": "Counting 2 sigma bonds plus 1 lone pair gives a steric number of 3, so the imine nitrogen is sp2 hybridized, just like the carbon it's double-bonded to.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -1059,7 +1063,7 @@
    ],
    "correct": 3,
    "why": "With only 3 sigma bonds and no lone pair, the carbocation's steric number is 3, giving sp2 hybridization and a trigonal planar shape with an empty, unhybridized p orbital.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -1076,33 +1080,33 @@
    "type": "mcq"
   },
   {
-   "q": "A steric number of 4 (sigma bonds plus lone pairs) on a central atom corresponds to which hybridization?",
+   "q": "In propene, CH₃CH=CH₂, how many of the three carbons are sp³?",
    "options": [
-    "sp",
-    "sp3",
-    "sp2",
-    "Not hybridized"
-   ],
-   "correct": 1,
-   "why": "A steric number of 4 means the atom mixes one s and all three p orbitals together, producing four sp3 hybrid orbitals.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "A steric number of 2 (sigma bonds plus lone pairs) on a central atom corresponds to which hybridization?",
-   "options": [
-    "sp2",
-    "sp3",
-    "sp",
-    "Not hybridized"
+    "None of them",
+    "Two",
+    "One",
+    "All three"
    ],
    "correct": 2,
-   "why": "A steric number of 2 means only one s and one p orbital are mixed, leaving two p orbitals unhybridized and giving a linear sp arrangement.",
+   "why": "Assign each carbon separately. The CH₃ carbon has four groups — three hydrogens and the neighboring carbon — so it is sp³. Each of the two alkene carbons has three groups, counting the double bond once, so both are sp².",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A carbon atom's hybridization can change during a reaction, such as going from sp3 to sp2 when a leaving group departs to form a carbocation.",
+   "q": "In acetic acid, CH₃COOH, what are the hybridizations of the carbonyl carbon and of the OH oxygen?",
+   "options": [
+    "Both sp³",
+    "sp² and sp³",
+    "Both sp²",
+    "sp and sp²"
+   ],
+   "correct": 1,
+   "why": "The carbonyl carbon has three groups — the methyl, the OH oxygen, and the C=O counted once — so it is sp², and it plus its three neighbors are flat. The OH oxygen has two bonds and two lone pairs, four groups, so nominally sp³ and bent.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A carbon atom's hybridization can change during a reaction — for example from sp3 to sp2 when a bonded group leaves, taking the shared pair with it and leaving a carbocation.",
    "options": [
     "True",
     "False"
@@ -1113,29 +1117,29 @@
    "type": "tf"
   },
   {
-   "q": "Which hybridization state is associated with linear molecular geometry at the hybridized atom?",
+   "q": "An amide nitrogen (R–CO–NH₂) has three bonds and one lone pair, yet it is flat rather than pyramidal. What does that tell you?",
    "options": [
-    "sp2",
-    "sp3",
-    "sp",
-    "None of these"
+    "The group count was done wrong",
+    "It is sp², because the lone pair sits in a p orbital",
+    "Nitrogen is never hybridized",
+    "It is sp³ and the measurement is wrong"
    ],
-   "correct": 2,
-   "why": "sp hybrid orbitals point exactly 180° apart from each other, producing a linear arrangement around that atom.",
-   "difficulty": "medium",
+   "correct": 1,
+   "why": "This is the one case where counting groups gives the wrong answer. The lone pair is next door to the C=O pi bond, and it does better sitting in a p orbital where it can overlap sideways with that pi system than in a hybrid orbital of its own.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
    "q": "Why do the two hybrid orbitals on an sp carbon point exactly 180° apart?",
    "options": [
-    "Because mixing one s orbital and one p orbital produces exactly two hybrid orbitals that point in opposite directions to minimize repulsion",
-    "Because carbon always forms linear molecules",
-    "Because sp carbons have no unhybridized orbitals",
-    "Because triple bonds force a fixed 180° angle regardless of hybridization"
+    "Mixing one s with one p gives two opposed orbitals",
+    "Carbon always forms linear molecules",
+    "sp carbons have no unhybridized orbitals",
+    "A triple bond forces 180° whatever the hybrids do"
    ],
    "correct": 0,
-   "why": "Combining one s and one p orbital mathematically yields two equivalent hybrid orbitals oriented oppositely (180° apart), which is the geometric root of every linear sp center.",
-   "difficulty": "hard",
+   "why": "Two orbitals, each built from the same s and the same p, can only be equivalent if they point in exactly opposite directions — and that also puts the two electron groups as far apart as they can get. The linear geometry is a consequence of the mixing, not an extra rule laid on top of it.",
+   "difficulty": "medium",
    "type": "mcq"
   }
  ],
@@ -1176,7 +1180,7 @@
    ],
    "correct": 2,
    "why": "More bonds between the same two atoms pulls the nuclei closer together, so C=C (~134 pm) is shorter than C–C (~154 pm).",
-   "difficulty": "hard",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -1206,15 +1210,17 @@
    "type": "mcq"
   },
   {
-   "q": "A pi bond is always stronger than a sigma bond between the same two atoms.",
+   "q": "The 'Strength' column of a bond table is the bond dissociation energy, measured for homolytic cleavage. What does homolytic mean?",
    "options": [
-    "True",
-    "False"
+    "The bond breaks and both electrons go to one fragment",
+    "The shared pair splits, one electron to each fragment",
+    "The bond breaks into two ions",
+    "The molecule breaks into equal halves by mass"
    ],
    "correct": 1,
-   "why": "Pi bonds form from side-by-side p-orbital overlap, which is generally less effective than the direct head-on overlap of a sigma bond, making pi bonds typically weaker.",
-   "difficulty": "easy",
-   "type": "tf"
+   "why": "Homolytic cleavage splits the shared pair down the middle and leaves two neutral radicals. The alternative, heterolytic cleavage, sends the whole pair off with one fragment and gives a cation and an anion — which is what almost every polar mechanism you will draw does.",
+   "difficulty": "hard",
+   "type": "mcq"
   },
   {
    "q": "Which type of bond forms from direct, head-on orbital overlap along the axis connecting two nuclei?",
@@ -1315,7 +1321,7 @@
    ],
    "correct": 3,
    "why": "Head-on sigma overlap is more efficient than the side-by-side overlap of a pi bond, so sigma bonds are typically stronger per bond.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -1356,16 +1362,16 @@
    "type": "tf"
   },
   {
-   "q": "What is the bond order of a single bond?",
+   "q": "How many sigma and how many pi bonds are there in propenal, CH₂=CH–CHO?",
    "options": [
-    "0",
-    "2",
-    "1",
-    "3"
+    "8 σ and 1 π",
+    "7 σ and 2 π",
+    "6 σ and 2 π",
+    "9 σ and 2 π"
    ],
-   "correct": 2,
-   "why": "Bond order simply counts the number of shared electron pairs between two atoms; a single bond has exactly one.",
-   "difficulty": "easy",
+   "correct": 1,
+   "why": "Count connections first, then the extra lines. Four C–H bonds, two C–C connections and one C–O connection is seven links, and every link contributes exactly one sigma: 7 σ. Then the extra line of the C=C and the extra line of the C=O are one pi each: 2 π.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -1415,7 +1421,7 @@
    ],
    "correct": 1,
    "why": "The opposite is true: as bond order increases, bond length decreases while bond strength increases — both trends move together, not apart.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "tf"
   },
   {
@@ -1458,16 +1464,16 @@
    "type": "mcq"
   },
   {
-   "q": "Why can't a pi bond exist on its own between two atoms without an accompanying sigma bond in typical organic molecules?",
+   "q": "In CH₃–CH=CH₂, which bond can the two halves of the molecule freely rotate about?",
    "options": [
-    "Pi bonds always form before sigma bonds",
-    "The sigma bond holds the p orbitals aligned",
-    "Pi bonds don't actually involve orbital overlap",
-    "Atoms can only have one type of bond between them at a time"
+    "Only the C–C single bond",
+    "Only the C=C double bond",
+    "Both carbon–carbon bonds",
+    "Neither one"
    ],
-   "correct": 1,
-   "why": "The sigma bond holds the two atoms at the right distance and orientation; without it, there would be no stable framework for the p orbitals to align and form a pi bond.",
-   "difficulty": "hard",
+   "correct": 0,
+   "why": "Rotation twists the two ends relative to each other. A sigma bond's overlap lies along the axis you are twisting about, so it survives the twist and the bond spins freely.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -1495,15 +1501,15 @@
    "type": "mcq"
   },
   {
-   "q": "Ionic, covalent, and metallic bonding fundamentally differ in:",
+   "q": "Which orbitals overlap to make a C–H bond in methane?",
    "options": [
-    "The total number of electrons in the atoms involved",
-    "Whether atoms are involved at all",
-    "The color of the resulting compound",
-    "How electrons are shared or transferred between the atoms involved"
+    "Two p orbitals, side by side",
+    "Two sp³ orbitals",
+    "An sp³ orbital on carbon with hydrogen's 1s",
+    "An unhybridized p orbital with a 1s"
    ],
-   "correct": 3,
-   "why": "The key distinction between bonding types is the behavior of the valence electrons — transferred in ionic bonds, shared between specific atoms in covalent bonds, and delocalized across many atoms in metallic bonds.",
+   "correct": 2,
+   "why": "Carbon has four groups, so it mixes its 2s and three 2p into four sp³ hybrids, and hydrogen brings the only orbital it has, a 1s. The two meet head-on along the bond axis, which makes it a sigma bond.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -1556,7 +1562,7 @@
    ],
    "correct": 2,
    "why": "Atomic radius increases down a group, so the valence electrons are farther from the nucleus and less tightly held — electronegativity decreases.",
-   "difficulty": "hard",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -1573,39 +1579,39 @@
    "type": "mcq"
   },
   {
-   "q": "Which is more electronegative: oxygen or carbon?",
+   "q": "In chloromethane, CH₃Cl, which atom carries the δ+?",
    "options": [
-    "Oxygen",
-    "Carbon",
-    "They are identical",
-    "Neither has electronegativity"
+    "The chlorine",
+    "The carbon",
+    "Each hydrogen equally",
+    "No atom — the molecule is neutral"
    ],
-   "correct": 0,
-   "why": "Oxygen (electronegativity ≈ 3.5) is significantly more electronegative than carbon (≈ 2.5), reflecting oxygen's position further right on the periodic table.",
+   "correct": 1,
+   "why": "Chlorine (3.16) outpulls carbon (2.55), so the shared pair in the C–Cl bond sits closer to chlorine: chlorine is δ− and the carbon it is attached to is δ+. That δ+ carbon is the point of the whole section — it is short of electron density, so it is where anything electron-rich will come and attack.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Electronegativity describes the pulling power of an atom only when it exists completely alone, unbonded to anything.",
+   "q": "Electronegativity describes an atom on its own, unbonded to anything.",
    "options": [
     "True",
     "False"
    ],
    "correct": 1,
-   "why": "Electronegativity specifically describes an atom's behavior within a bond, pulling on shared electrons — it's meaningless for a truly isolated, unbonded atom.",
+   "why": "It describes an atom in a bond. Pauling's scale, the one this course uses, is derived from bond energies, so the number only means anything once the atom is bonded to something. Ionization energy and electron affinity are the quantities measured on isolated atoms.",
    "difficulty": "easy",
    "type": "tf"
   },
   {
-   "q": "Nitrogen and phosphorus are in the same group. Which is more electronegative?",
+   "q": "In CH₃–CH₂–CH₂–Cl, which carbon is the most electron-poor?",
    "options": [
-    "Phosphorus",
-    "Nitrogen",
-    "They are equal",
-    "Phosphorus, because it's larger"
+    "The one bearing the chlorine",
+    "The middle CH₂",
+    "The CH₃ at the far end",
+    "All three equally"
    ],
-   "correct": 1,
-   "why": "Electronegativity decreases down a group, so nitrogen (higher up, smaller atom) is more electronegative than phosphorus below it.",
+   "correct": 0,
+   "why": "The pull is strongest in the bond the chlorine is actually part of, so the carbon it sits on is the most depleted. The middle carbon feels a weaker, second-hand version of the same pull through the sigma framework, and the far methyl feels almost nothing.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -1619,7 +1625,7 @@
    ],
    "correct": 2,
    "why": "Electronegativity decreases going down a group, and fluorine, chlorine, and bromine appear in that order from top to bottom, so F is most electronegative and Br is least.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -1638,14 +1644,14 @@
   {
    "q": "Why is fluorine the most electronegative element on the periodic table?",
    "options": [
-    "Its small atomic radius combined with high effective nuclear charge lets it pull bonding electrons very strongly toward its nucleus",
-    "It has the largest atomic radius of any element",
-    "It has the most valence electrons of any element",
+    "It is small and holds electrons tightly",
+    "It has the largest atomic radius",
+    "It has the most valence electrons",
     "It is a noble gas"
    ],
    "correct": 0,
    "why": "Fluorine's small size means its nucleus is close to the bonding electrons, and its high effective nuclear charge gives it an especially strong pull on those shared electrons.",
-   "difficulty": "hard",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -1660,28 +1666,28 @@
    "type": "tf"
   },
   {
-   "q": "Which group of elements generally has the lowest electronegativity values (excluding noble gases)?",
+   "q": "C–F is the most polar bond in organic chemistry. Does that make it the easiest to break?",
    "options": [
-    "Halogens (group 17)",
-    "Alkali metals (group 1)",
-    "Group 16 elements",
-    "Transition metals in period 4"
+    "Yes — polarity always weakens a bond",
+    "No — it is one of the strongest bonds there is",
+    "Yes, but only in water",
+    "The two are unrelated in every case"
    ],
    "correct": 1,
-   "why": "Alkali metals sit at the far left of the periodic table, where atoms are large and electronegativity is at its lowest for that period.",
-   "difficulty": "easy",
+   "why": "This is the commonest misreading of the section. Opposite partial charges attract each other, so polarity generally helps hold a bond together; C–F is both the most polar and among the strongest single bonds carbon makes.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Given carbon (≈2.5) and hydrogen (≈2.1) electronegativities, a typical C–H bond is considered:",
+   "q": "Carbon is 2.55 on the Pauling scale and hydrogen 2.20. What does that make a C–H bond?",
    "options": [
     "Strongly ionic",
-    "Extremely polar, similar to C–F",
-    "Nearly nonpolar (only weakly polar)",
-    "Purely nonpolar with zero electronegativity difference"
+    "Nearly nonpolar",
+    "Extremely polar, like C–F",
+    "Perfectly nonpolar, ΔEN exactly 0"
    ],
-   "correct": 2,
-   "why": "The small electronegativity difference (about 0.4) between carbon and hydrogen makes C–H bonds only weakly polar, often treated as essentially nonpolar in practice.",
+   "correct": 1,
+   "why": "ΔEN is 0.35, below the 0.5 line this course draws for polar covalent, so C–H is treated as essentially nonpolar throughout. Not exactly zero — the difference is real and shows up in spectroscopy — but small enough that the carbon skeleton of a molecule is a spectator and the chemistry lives on the C–O, C–N and C–halogen bonds instead.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -1695,20 +1701,20 @@
    ],
    "correct": 3,
    "why": "Fluorine (≈4.0) is more electronegative than chlorine (≈3.0), giving the C–F bond a larger electronegativity difference and therefore greater polarity.",
-   "difficulty": "hard",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which trend correctly describes electronegativity across period 2, from lithium to fluorine?",
+   "q": "In acetic acid, CH₃COOH, which atoms carry the largest δ−?",
    "options": [
-    "It increases steadily",
-    "It decreases steadily",
-    "It stays constant",
-    "It increases then sharply decreases"
+    "The methyl hydrogens",
+    "The two oxygens",
+    "The carbonyl carbon",
+    "The acidic hydrogen"
    ],
-   "correct": 0,
-   "why": "Moving left to right across a period, increasing nuclear charge with similar shielding pulls electrons more strongly, so electronegativity rises steadily from Li to F.",
-   "difficulty": "medium",
+   "correct": 1,
+   "why": "Oxygen at 3.44 is the most electronegative atom present, so both oxygens pull density toward themselves and both carry δ−. The carbonyl carbon, pulled on from two sides, is correspondingly the most δ+ atom in the molecule — which is exactly why carbonyl carbons are attacked by electron-rich reagents over and over in the second half of the course.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -1725,53 +1731,53 @@
   {
    "q": "Why does electronegativity decrease going down a group, despite the increasing number of protons in the nucleus?",
    "options": [
-    "The added protons exactly cancel out any attraction",
-    "Increasing atomic radius and additional electron shielding outweigh the added nuclear charge, so bonding electrons feel a weaker net pull",
-    "Electronegativity doesn't actually depend on nuclear charge",
-    "Lower elements in a group have fewer valence electrons"
+    "Added protons exactly cancel the attraction",
+    "Electronegativity ignores nuclear charge",
+    "Size and shielding outweigh the extra charge",
+    "Lower elements have fewer valence electrons"
    ],
-   "correct": 1,
+   "correct": 2,
    "why": "Even though nuclear charge increases down a group, the valence electrons are farther from the nucleus and more shielded by inner electrons, so the net attraction on bonding electrons actually weakens.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Which is more electronegative: oxygen or nitrogen?",
+   "q": "Lithium is 0.98 on the Pauling scale and carbon is 2.55. In a C–Li bond, which atom is δ−?",
    "options": [
-    "Nitrogen",
-    "They are equal",
-    "Oxygen",
-    "Nitrogen, because it has fewer bonds"
+    "The lithium",
+    "Neither — the bond is nonpolar",
+    "The carbon",
+    "They alternate"
    ],
    "correct": 2,
-   "why": "Oxygen sits one position to the right of nitrogen in period 2, and electronegativity increases across a period, so oxygen is more electronegative.",
+   "why": "The pull runs the other way here. Carbon outpulls lithium by a wide margin, so the shared pair sits on the carbon and the carbon is the negative end — the reverse of almost every bond in the course.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Which is more electronegative: chlorine or sulfur (same period, chlorine further right)?",
+   "q": "Which of these bonds is essentially nonpolar?",
    "options": [
-    "Sulfur",
-    "They are equal",
-    "Sulfur, because it's larger",
-    "Chlorine"
+    "O–H",
+    "C–Cl",
+    "C–C",
+    "C–O"
+   ],
+   "correct": 2,
+   "why": "A bond between two atoms of the same element has a ΔEN of exactly zero, so neither end pulls harder and there is no δ+ or δ−. C–H, at 0.35, is treated the same way in practice.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Rank the polarity of the C–N, C–O and C–F bonds.",
+   "options": [
+    "C–N > C–O > C–F",
+    "C–O > C–F > C–N",
+    "They are all equally polar",
+    "C–F > C–O > C–N"
    ],
    "correct": 3,
-   "why": "Within the same period, electronegativity increases moving rightward, and chlorine sits to the right of sulfur, making it more electronegative.",
+   "why": "Subtract from carbon's 2.55: nitrogen 3.04 gives 0.49, oxygen 3.44 gives 0.89, fluorine 3.98 gives 1.43. All three sit in period 2, and electronegativity rises steadily left to right across a period, so the order follows the row.",
    "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "The most commonly used electronegativity scale in chemistry is named after:",
-   "options": [
-    "Linus Pauling",
-    "Niels Bohr",
-    "Gilbert Lewis",
-    "Dmitri Mendeleev"
-   ],
-   "correct": 0,
-   "why": "Linus Pauling developed the widely used electronegativity scale, assigning fluorine the highest value (about 4.0).",
-   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -1799,16 +1805,16 @@
    "type": "mcq"
   },
   {
-   "q": "Which is more electronegative: carbon or silicon (same group, carbon above silicon)?",
+   "q": "Why is the carbon of a C=O bond a good place for an electron-rich reagent to attack?",
    "options": [
-    "Silicon",
-    "They are equal",
-    "Carbon",
-    "Silicon, because it's heavier"
+    "Because oxygen pulls density off it, leaving it δ+",
+    "Because carbon is the most electronegative atom there",
+    "Because the C=O bond is unusually weak",
+    "Because oxygen has no lone pairs"
    ],
-   "correct": 2,
-   "why": "Electronegativity decreases down a group, so carbon, sitting above silicon, is more electronegative.",
-   "difficulty": "medium",
+   "correct": 0,
+   "why": "Electronegativity decides where density is missing, and a reagent looking to donate a pair goes where density is missing. Oxygen pulls the electrons of the double bond toward itself, so the carbon is left short — and a large fraction of the reactions in the second half of this course are something electron-rich arriving at exactly that carbon.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -1827,10 +1833,10 @@
   {
    "q": "Why does a smaller atomic radius within the same period generally correlate with higher electronegativity?",
    "options": [
-    "The nucleus is physically closer to the bonding electrons, so it exerts a stronger attractive pull on them",
+    "The nucleus sits closer to the shared pair",
     "Smaller atoms have fewer protons",
-    "Smaller atoms have more valence electrons to share",
-    "Atomic radius has no real effect on electronegativity"
+    "Smaller atoms share more electrons",
+    "Radius has no effect on the pull"
    ],
    "correct": 0,
    "why": "Within the same period, a shorter distance between the nucleus and the outer (bonding) electrons lets the nucleus attract those electrons more strongly, raising electronegativity.",
@@ -1851,15 +1857,17 @@
    "type": "mcq"
   },
   {
-   "q": "Within the same row of the periodic table, the element farthest to the left (an alkali metal) is generally the least electronegative.",
+   "q": "Which statement about the C–H bonds in a long hydrocarbon chain is correct?",
    "options": [
-    "True",
-    "False"
+    "They are the most reactive bonds present",
+    "They are essentially nonpolar spectators",
+    "They carry a large δ− on hydrogen",
+    "They are ionic in character"
    ],
-   "correct": 0,
-   "why": "Electronegativity increases from left to right across a period, so the leftmost element (an alkali metal) has the lowest electronegativity in that row.",
+   "correct": 1,
+   "why": "With a ΔEN of 0.35 there is no meaningful partial charge on either end, so nothing is drawn to them and they attack nothing. This is why organic chemistry is organized around functional groups: the skeleton is inert, and all the chemistry happens at the handful of polar bonds and lone pairs stuck onto it.",
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Among the halogens F, Cl, Br, and I, which is the least electronegative?",
@@ -1877,24 +1885,24 @@
   {
    "q": "Sulfur and oxygen are in the same group and both have 6 valence electrons. Why is oxygen more electronegative?",
    "options": [
-    "Oxygen has more protons overall than sulfur",
+    "Oxygen has more protons than sulfur",
     "Sulfur has fewer valence electrons",
-    "Electronegativity doesn't depend on position within a group",
-    "Oxygen's smaller atomic radius (being higher in the group) lets its nucleus attract bonding electrons more strongly"
+    "Position in a group does not matter",
+    "Oxygen is smaller, so it pulls harder"
    ],
    "correct": 3,
    "why": "Being higher up the group, oxygen is smaller than sulfur, so its bonding electrons sit closer to the nucleus and experience a stronger pull, despite both elements sharing the same valence electron count.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A carbon-hydrogen bond (ΔEN ≈ 0.4) is usually treated as essentially nonpolar in practice, even though there is a small electronegativity difference.",
+   "q": "A C–H bond (ΔEN 0.35) is treated as essentially nonpolar throughout this course, even though the difference is not exactly zero.",
    "options": [
     "True",
     "False"
    ],
    "correct": 0,
-   "why": "The C-H electronegativity difference is small enough that chemists commonly treat it as nonpolar for most practical purposes, even though a slight polarity technically exists.",
+   "why": "0.35 sits below the 0.5 boundary for polar covalent, so C–H counts as nonpolar in practice. That is a working simplification, not a measurement: the small real polarity is why a hydrogen next to an electronegative atom shifts in an NMR spectrum.",
    "difficulty": "medium",
    "type": "tf"
   }
@@ -1936,7 +1944,7 @@
    ],
    "correct": 2,
    "why": "O normally has 6 valence e⁻; with 1 bond (1 \"owned\" electron) and 3 lone pairs (6 nonbonding e⁻): 6 − 6 − 1 = −1.",
-   "difficulty": "hard",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -1986,7 +1994,7 @@
    ],
    "correct": 1,
    "why": "4 valence electrons − 0 nonbonding − 1/2(6 bonding) = 4 − 0 − 3 = +1, consistent with the positive charge of a carbocation.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -1999,7 +2007,7 @@
    ],
    "correct": 2,
    "why": "4 valence electrons − 2 nonbonding − 1/2(6 bonding) = 4 − 2 − 3 = -1, consistent with a carbanion.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -2012,7 +2020,7 @@
    ],
    "correct": 3,
    "why": "6 valence electrons − 4 nonbonding − 1/2(4 bonding) = 6 − 4 − 2 = 0, matching oxygen's usual neutral bonding pattern.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -2038,20 +2046,20 @@
    ],
    "correct": 1,
    "why": "5 valence electrons − 2 nonbonding − 1/2(6 bonding) = 5 − 2 − 3 = 0, confirming that a nitrogen with 3 bonds and 1 lone pair is neutral, as expected.",
-   "difficulty": "hard",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "A nitrogen atom with only 2 bonds and 2 lone pairs has a formal charge of:",
+   "q": "An oxygen is drawn with one bond and a −1 written on it, but no lone pairs are shown. How many lone pairs must it have?",
    "options": [
-    "0",
-    "+1",
-    "-1",
-    "+2"
+    "1",
+    "2",
+    "3",
+    "4"
    ],
    "correct": 2,
-   "why": "5 valence electrons − 4 nonbonding − 1/2(4 bonding) = 5 − 4 − 2 = -1, which is why a nitrogen with only 2 bonds typically carries a negative formal charge.",
-   "difficulty": "hard",
+   "why": "Run the formula backwards: lone-pair electrons = valence − bonds − formal charge = 6 − 1 − (−1) = 6, which is 3 lone pairs. Structures are often drawn with charges shown and lone pairs left off, and supplying the missing pairs is a standard exam task — the arithmetic is the same, just solved for a different unknown.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -2075,7 +2083,7 @@
    ],
    "correct": 3,
    "why": "5 valence electrons − 0 nonbonding − 1/2(8 bonding) = 5 − 0 − 4 = +1, matching the overall +1 charge carried by the ammonium ion.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -2116,42 +2124,42 @@
    "type": "tf"
   },
   {
-   "q": "In one common Lewis structure for carbon monoxide (C≡O with one lone pair on each atom), the formal charges work out to:",
+   "q": "In methoxide, CH₃O⁻, which atom carries the −1 and why?",
    "options": [
-    "Carbon 0, oxygen 0",
-    "Carbon +1, oxygen -1",
-    "Carbon -1, oxygen +1",
-    "Carbon -2, oxygen +2"
+    "The carbon, since it has the most bonds",
+    "The charge is spread over all five atoms",
+    "The oxygen, which has 1 bond and 3 lone pairs",
+    "A hydrogen, which lost its share"
    ],
    "correct": 2,
-   "why": "Giving carbon 1 lone pair and 3 bonds yields a formal charge of -1, while oxygen with 1 lone pair and 3 bonds yields +1 — an unusual but correct result for CO.",
-   "difficulty": "hard",
+   "why": "Neutral oxygen takes 2 bonds and 2 lone pairs. Here it has only one bond, so the pair it would have shared stays entirely on it as a third lone pair: 6 − 6 − 1 = −1. The carbon is at its usual four bonds, 4 − 0 − 4 = 0.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A hydrogen atom with 1 bond and no lone pairs has a formal charge of:",
+   "q": "Which of these is an impossible structure?",
    "options": [
-    "-1",
-    "+1",
-    "Cannot be determined",
-    "0"
+    "A nitrogen with 4 bonds and a +1",
+    "A carbon with 5 bonds",
+    "An oxygen with 1 bond and a −1",
+    "A carbon with 3 bonds and a +1"
    ],
-   "correct": 3,
-   "why": "1 valence electron − 0 nonbonding − 1/2(2 bonding) = 1 − 0 − 1 = 0, the normal, neutral state for bonded hydrogen.",
-   "difficulty": "easy",
+   "correct": 1,
+   "why": "Five bonds means ten electrons around a period-2 atom, and n = 2 has only four orbitals to hold them. No formal charge can rescue it — the other three are all ordinary, correctly charged species, but a five-bonded carbon cannot be written at all.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A fluorine atom with 1 bond and 3 lone pairs (its typical neutral bonding pattern) has a formal charge of:",
+   "q": "A carbonyl oxygen has two lone pairs and a double bond to carbon. What is its formal charge?",
    "options": [
+    "+1",
     "0",
-    "-1",
-    "+1",
-    "+2"
+    "−1",
+    "−2"
    ],
-   "correct": 0,
-   "why": "7 valence electrons − 6 nonbonding − 1/2(2 bonding) = 7 − 6 − 1 = 0, matching fluorine's usual neutral, single-bonded state.",
-   "difficulty": "easy",
+   "correct": 1,
+   "why": "6 − 4 − 2 = 0. The trap is the bond term: it counts shared pairs, so a double bond is 2, not 1. Count it as 1 and you get +1 on an oxygen that is plainly neutral, and every carbonyl in the course comes out wrongly charged.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -2168,15 +2176,15 @@
    "type": "mcq"
   },
   {
-   "q": "In the nitrate ion (NO3−, overall charge -1), a common structure has nitrogen at +1 and the three oxygens collectively totaling -2 (two at 0, one at -1). Do these formal charges correctly represent the ion?",
+   "q": "Nitrate, NO₃⁻, is drawn with nitrogen double-bonded to one oxygen and single-bonded to the other two. What are the formal charges?",
    "options": [
-    "No, because formal charges must always be zero on every atom",
-    "No, because nitrogen can never have a positive formal charge",
-    "Yes, because they sum to -1, matching the ion's overall charge",
-    "No, oxygen atoms can never carry formal charge"
+    "N +1, one O at 0, two O at −1",
+    "N 0, all three O at 0",
+    "N −1, all three O at 0",
+    "N +1, all three O at −1"
    ],
-   "correct": 2,
-   "why": "Formal charges don't need to be zero individually — they only need to sum to the species' true overall charge, and +1 + 0 + 0 + (-1) = 0... more precisely +1 and three oxygens summing to -2 gives an overall -1, matching the nitrate ion.",
+   "correct": 0,
+   "why": "Run the arithmetic atom by atom. Nitrogen has 4 bonds and no lone pair: 5 − 0 − 4 = +1. The double-bonded oxygen has 2 lone pairs and a double bond: 6 − 4 − 2 = 0. Each single-bonded oxygen has 3 lone pairs and 1 bond: 6 − 6 − 1 = −1. Sum: +1 + 0 − 1 − 1 = −1, which is the ion's charge.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -2192,16 +2200,16 @@
    "type": "tf"
   },
   {
-   "q": "A boron atom in the tetrafluoroborate ion (BF4−) with 4 bonds and no lone pair has a formal charge of:",
+   "q": "In methylammonium, CH₃NH₃⁺, which atom carries the +1?",
    "options": [
-    "0",
-    "+1",
-    "+2",
-    "-1"
+    "The carbon",
+    "Each hydrogen shares it",
+    "No atom — the ion is neutral inside",
+    "The nitrogen, with 4 bonds and no lone pair"
    ],
    "correct": 3,
-   "why": "3 valence electrons − 0 nonbonding − 1/2(8 bonding) = 3 − 0 − 4 = -1, consistent with boron's contribution to the ion's overall -1 charge.",
-   "difficulty": "hard",
+   "why": "Nitrogen started neutral with 3 bonds and a lone pair. Protonating it turns that lone pair into a fourth bond, so it now shares a pair it used to own outright: 5 − 0 − 4 = +1. Carbon is unchanged at 0.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -2218,16 +2226,16 @@
    "type": "mcq"
   },
   {
-   "q": "For a neutral molecule, the sum of the formal charges on all its atoms must equal:",
+   "q": "In acetate, CH₃COO⁻, drawn with one C=O and one C–O single bond, where does the −1 sit?",
    "options": [
-    "+1",
-    "0",
-    "-1",
-    "The molecule's molar mass"
+    "On the carbonyl oxygen",
+    "On the carbonyl carbon",
+    "On the singly bonded oxygen",
+    "On the methyl carbon"
    ],
-   "correct": 1,
-   "why": "Since a neutral molecule has no net charge, all of its individual atomic formal charges must add up to zero overall.",
-   "difficulty": "easy",
+   "correct": 2,
+   "why": "Take the oxygens one at a time. The double-bonded one has 2 lone pairs and 2 shared pairs: 6 − 4 − 2 = 0. The singly bonded one has 3 lone pairs and 1 bond: 6 − 6 − 1 = −1.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -2255,28 +2263,28 @@
    "type": "tf"
   },
   {
-   "q": "If an atom's number of bonds exactly matches its typical valence (carbon with 4, nitrogen with 3, oxygen with 2, a halogen with 1), its formal charge is generally:",
+   "q": "A structure is drawn with a nitrogen carrying four bonds and no charge written beside it. What is wrong?",
    "options": [
-    "+1",
-    "-1",
-    "Impossible to determine without more information",
-    "0"
+    "Nothing — neutral amines have four bonds",
+    "Nitrogen cannot have four bonds at all",
+    "The nitrogen should carry a +1",
+    "The nitrogen should carry a −1"
    ],
-   "correct": 3,
-   "why": "These are each atom's 'normal' bonding patterns in a neutral molecule, for which the formal charge works out to zero by design.",
-   "difficulty": "easy",
+   "correct": 2,
+   "why": "Four bonds and no lone pair gives 5 − 0 − 4 = +1, so the charge has to be written. Four-bonded nitrogen is perfectly legal — ammonium, protonated amines, the nitrogen of a nitro group — it is just never neutral.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Phosphorus in PCl5 has 5 bonds and no lone pair (an expanded octet). What is phosphorus's formal charge?",
+   "q": "Nitromethane, CH₃NO₂, is neutral overall. Its nitrogen has one bond to carbon, a double bond to one oxygen and a single bond to the other. What is the nitrogen's formal charge?",
    "options": [
     "0",
-    "-1",
+    "−1",
     "+1",
     "+2"
    ],
-   "correct": 0,
-   "why": "5 valence electrons − 0 nonbonding − 1/2(10 bonding) = 5 − 0 − 5 = 0, showing that an expanded octet on a period-3+ element doesn't automatically create a formal charge.",
+   "correct": 2,
+   "why": "The bond term counts shared pairs, so the double bond contributes 2: one plus two plus one is 4 bonds, with no lone pair. 5 − 0 − 4 = +1. The singly bonded oxygen comes out at −1 and everything else at 0, so the charges sum to zero — a neutral molecule that nonetheless must be drawn with charges inside it.",
    "difficulty": "hard",
    "type": "mcq"
   }
@@ -2296,15 +2304,15 @@
    "type": "mcq"
   },
   {
-   "q": "In a good Lewis structure, the central atom is usually:",
+   "q": "Which atom is 'central' in methanol, CH₃OH?",
    "options": [
-    "The most electronegative atom",
-    "The least electronegative (non-hydrogen) atom",
-    "Always carbon",
-    "Whichever atom is listed first"
+    "The oxygen",
+    "The carbon",
+    "Whichever is least electronegative",
+    "Neither — organic molecules have no central atom"
    ],
-   "correct": 1,
-   "why": "Less electronegative atoms tend to form more bonds and sit centrally; hydrogen can never be central (only 1 bond).",
+   "correct": 3,
+   "why": "The central-atom recipe is for small molecules genuinely built around one atom, like CO₂ or BF₃. Organic molecules are chains: methanol is C–O with hydrogens hung off both, and asking which is central has no answer.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -2322,28 +2330,28 @@
    "type": "mcq"
   },
   {
-   "q": "In a Lewis structure, a shared pair of bonding electrons is typically drawn as:",
+   "q": "How many valence electrons must a Lewis structure of ethanol, CH₃CH₂OH, account for?",
    "options": [
-    "A single dot",
-    "A square around the atom",
-    "An arrow pointing away from the atom",
-    "A line (or two dots) between two atoms"
+    "18",
+    "24",
+    "20",
+    "26"
    ],
-   "correct": 3,
-   "why": "A bonding pair is represented either as two dots between the bonded atoms or, more commonly, as a single line connecting them.",
-   "difficulty": "easy",
+   "correct": 2,
+   "why": "Add them up by atom: two carbons at 4 is 8, six hydrogens at 1 is 6, one oxygen at 6. Total 20. Check it against the finished drawing: 8 bonds (16 electrons) plus 2 lone pairs on the oxygen (4 electrons) is 20.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A lone (nonbonding) pair of electrons is drawn in a Lewis structure as:",
+   "q": "How many lone pairs does the nitrogen of methylamine, CH₃NH₂, carry?",
    "options": [
-    "Two dots placed on a single atom, not between atoms",
-    "A line between two atoms",
-    "An empty box",
-    "A curved arrow"
+    "0",
+    "2",
+    "1",
+    "3"
    ],
-   "correct": 0,
-   "why": "Lone pairs belong to just one atom, so they're shown as a pair of dots on that atom rather than as a line connecting to another atom.",
+   "correct": 2,
+   "why": "Nitrogen's quota is 3 bonds and 1 lone pair, and here it has exactly its three bonds — one to carbon, two to hydrogen — so one lone pair completes the octet. That single pair is the whole chemistry of amines: it is what makes them basic, what makes them attack electron-poor carbons, and what makes the molecule pyramidal instead of flat.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -2381,7 +2389,7 @@
    ],
    "correct": 2,
    "why": "Carbon contributes 4 and each oxygen contributes 6, giving 4 + 6 + 6 = 16 total valence electrons.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -2405,7 +2413,7 @@
    ],
    "correct": 0,
    "why": "A negative charge means the species has gained that many extra electrons beyond the neutral sum of its atoms' valence electrons, so they must be added to the total before distributing them.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "tf"
   },
   {
@@ -2435,16 +2443,16 @@
    "type": "mcq"
   },
   {
-   "q": "Why do ions like NO3− often require multiple resonance structures rather than one single Lewis structure?",
+   "q": "Which of these drawn structures is impossible?",
    "options": [
-    "Because the molecule constantly changes its actual atomic connectivity",
-    "Because resonance structures are simply alternate, equally wrong guesses",
-    "No single structure captures the delocalized electrons",
-    "Because nitrogen cannot form double bonds"
+    "A hydrogen bonded to two carbons at once",
+    "An oxygen with 1 bond and a −1 charge",
+    "A nitrogen with 4 bonds and a +1",
+    "A carbon with 3 bonds and a +1"
    ],
-   "correct": 2,
-   "why": "The true electron distribution in such ions is an average (delocalized) across several equivalent arrangements, which a single fixed structure can't represent alone — resonance structures together approximate the real picture.",
-   "difficulty": "hard",
+   "correct": 0,
+   "why": "Hydrogen's only shell holds two electrons, which is one shared pair, so it bonds to exactly one thing. An H drawn between two atoms is a slip of the pen. The other three are all ordinary species with their charges correctly written: an alkoxide, an ammonium, a carbocation.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -2480,7 +2488,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "Elements in period 3 or lower have accessible d orbitals (or simply larger atomic size) that allow them to accommodate more than 8 electrons around them, unlike strict period-2 elements.",
+   "why": "They genuinely do — SF₆, H₂SO₄ and PCl₅ are all real. What allows it is that a period-3 atom is physically larger, so more neighbors fit around it, and that the extra bonds carry substantial ionic character.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -2493,20 +2501,20 @@
     "Chlorine"
    ],
    "correct": 1,
-   "why": "Carbon, a period-2 element, has no available orbitals beyond 2s and 2p, so it is strictly limited to 8 electrons, unlike period-3+ elements that can expand their octets.",
+   "why": "Carbon sits in period 2, whose shell holds one 2s and three 2p orbitals — four in all, so eight electrons and no more. Sulfur and phosphorus are in period 3 and can exceed an octet; carbon, nitrogen, oxygen and fluorine never can, which is why a five-bonded carbon is always an error rather than an exotic case.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What is the very first practical step before placing any electrons in a Lewis structure?",
+   "q": "In a neutral molecule, what do bonds + lone pairs add up to for C, N, O and the halogens?",
    "options": [
-    "Draw all the lone pairs first",
-    "Guess the final shape of the molecule",
-    "Count the total valence electrons",
-    "Assign formal charges to every atom"
+    "3",
+    "4",
+    "5",
+    "It varies by element"
    ],
-   "correct": 2,
-   "why": "Knowing the total electron budget up front is essential — every later step (bonds, lone pairs, multiple bonds) depends on correctly distributing that fixed total.",
+   "correct": 1,
+   "why": "Each bond brings in one shared pair and each lone pair is one pair kept, and an octet is four pairs — so the two always total 4. That single line generates the whole table: carbon 4 bonds and 0 lone pairs, nitrogen 3 and 1, oxygen 2 and 2, a halogen 1 and 3.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -2524,16 +2532,16 @@
    "type": "mcq"
   },
   {
-   "q": "Why is a single, fixed Lewis structure inadequate for describing the bonding in the azide ion N3−?",
+   "q": "How many lone pairs are there in a full Lewis structure of acetic acid, CH₃COOH?",
    "options": [
-    "Its bonding is a delocalized average",
-    "Nitrogen cannot form any bonds at all",
-    "Azide has no valence electrons to draw",
-    "The ion does not actually exist"
+    "2",
+    "3",
+    "4",
+    "6"
    ],
-   "correct": 0,
-   "why": "Just as with nitrate, azide's electron density is spread across multiple equivalent bonding arrangements, and drawing several resonance structures better represents the real, delocalized bonding than any single structure alone.",
-   "difficulty": "hard",
+   "correct": 2,
+   "why": "Only the oxygens carry any. The C=O oxygen has two bonds' worth of sharing (the double bond) plus 2 lone pairs; the O–H oxygen has two single bonds plus 2 lone pairs. Carbons at their quota of four bonds have none, and hydrogens have none.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -2582,7 +2590,7 @@
     "An error — period 2 cannot expand"
    ],
    "correct": 3,
-   "why": "Period-2 elements like carbon and nitrogen lack accessible orbitals beyond the octet, so any structure giving them more than 8 electrons signals a mistake that needs correcting.",
+   "why": "A period-2 shell contains four orbitals, one 2s and three 2p, which hold eight electrons and no more. Ten electrons on carbon or nitrogen is therefore not an exotic structure but an arithmetic mistake — most often a fifth bond, or a lone pair left on an atom that already has four bonds.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -2595,7 +2603,7 @@
     "Neither requires it"
    ],
    "correct": 0,
-   "why": "Sulfur in SF6 forms 6 bonds (12 electrons around it), which is only possible because sulfur, a period-3 element, can exceed the standard octet — something carbon in CH4 (period 2) cannot do.",
+   "why": "SF₆ needs six bonds on sulfur, which is twelve electrons — only possible because sulfur is in period 3. Methane's carbon has four bonds and exactly eight electrons, the ordinary octet.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -2650,16 +2658,16 @@
    "type": "mcq"
   },
   {
-   "q": "Which best explains why many molecules and ions require more than one valid Lewis structure (resonance) to be fully described?",
+   "q": "Why can a carbon never carry five bonds, while sulfur can carry six?",
    "options": [
-    "Electrons can be delocalized over several positions",
-    "The rules for Lewis structures are inconsistent and unreliable",
-    "Resonance structures are simply different molecules entirely",
-    "Only charged species ever need more than one structure"
+    "Carbon is not electronegative enough",
+    "The n = 2 shell has only four orbitals",
+    "Carbon has too few protons",
+    "Carbon is always the central atom"
    ],
-   "correct": 0,
-   "why": "When electron density can be equally well placed in more than one equivalent arrangement, drawing several resonance structures together gives a more accurate picture of the real, averaged bonding than any single structure alone.",
-   "difficulty": "hard",
+   "correct": 1,
+   "why": "One 2s and three 2p is four orbitals, and four orbitals hold eight electrons, so a ninth has nowhere to sit on any period-2 atom. Sulfur is in period 3, which has more room around a physically larger atom, and its extra bonds carry substantial ionic character.",
+   "difficulty": "medium",
    "type": "mcq"
   }
  ],
@@ -2700,7 +2708,7 @@
    ],
    "correct": 2,
    "why": "4 total electron domains give a tetrahedral electron geometry, but with one domain as a lone pair, the atoms alone form a trigonal pyramidal shape (like NH₃).",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -2776,7 +2784,7 @@
    ],
    "correct": 3,
    "why": "Each extra lone pair adds more repulsion pushing the bonding pairs closer together; with 2 lone pairs instead of ammonia's 1, water's H–O–H angle gets squeezed down the most.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -2843,16 +2851,16 @@
    "type": "mcq"
   },
   {
-   "q": "Sulfur dioxide (SO2) has sulfur with 2 bonds and 1 lone pair (using a resonance structure). Why is SO2 bent rather than linear, since it only has 2 terminal atoms?",
+   "q": "In acetic acid, CH₃COOH, what is the geometry at the carbonyl carbon?",
    "options": [
-    "The sulfur lone pair takes a third electron-group position",
-    "Sulfur is too large to form a linear molecule",
-    "Oxygen atoms repel each other directly, bending the molecule",
-    "SO2 doesn't actually have a defined shape"
+    "Tetrahedral",
+    "Trigonal planar",
+    "Bent",
+    "Linear"
    ],
-   "correct": 0,
-   "why": "With 3 total electron groups (2 bonds + 1 lone pair), the electron-pair geometry is trigonal planar; removing the invisible lone pair from the picture leaves the 2 oxygens in a bent arrangement, not a straight line.",
-   "difficulty": "hard",
+   "correct": 1,
+   "why": "It has three electron groups — the methyl carbon, the OH oxygen, and the C=O counted once — and no lone pairs, so trigonal planar at about 120°. That carbon and its three neighbors are flat, which is why a reagent arriving at a carbonyl can approach from either face equally.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -2893,15 +2901,15 @@
    "type": "tf"
   },
   {
-   "q": "For a tetrahedral carbon with 4 different substituents, roughly how many of the bond angles between pairs of substituents are approximately equal?",
+   "q": "In ethanol, CH₃CH₂OH, what is the geometry at each of the two carbons and at the oxygen?",
    "options": [
-    "Only 1 pair",
-    "Only half of them",
-    "None — they are all different",
-    "All of them, about 109.5°"
+    "All three tetrahedral/bent from 4 groups",
+    "Both carbons trigonal planar, oxygen linear",
+    "Both carbons linear, oxygen bent",
+    "Carbons tetrahedral, oxygen linear"
    ],
-   "correct": 3,
-   "why": "In an ideal tetrahedral arrangement, every pair of substituents around the central atom is separated by approximately the same 109.5° angle.",
+   "correct": 0,
+   "why": "Every heavy atom here has four electron groups. Each carbon has four bonds, so both are tetrahedral at about 109.5°. The oxygen has two bonds and two lone pairs — still four groups, so still built on a tetrahedron, but with only two corners holding atoms it is described as bent, at about 104.5°.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -2945,14 +2953,14 @@
    "type": "mcq"
   },
   {
-   "q": "A double bond counts as two separate electron groups when determining a central atom's steric number for VSEPR purposes.",
+   "q": "The ideal angles in the VSEPR table are exact measurements of real molecules.",
    "options": [
     "True",
     "False"
    ],
    "correct": 1,
-   "why": "A double bond occupies only one spatial position around the central atom (toward the same neighboring atom), so it always counts as a single electron group, not two.",
-   "difficulty": "hard",
+   "why": "They are what the model predicts when all the groups are identical, and real molecules land a degree or two off whenever they are not. Ethene's carbons are trigonal planar, but the measured H–C–H angle is about 117° rather than 120°, because the double bond is a fatter electron group than a C–H and squeezes the hydrogens together.",
+   "difficulty": "medium",
    "type": "tf"
   },
   {
@@ -2982,16 +2990,16 @@
    "type": "mcq"
   },
   {
-   "q": "Which steric number (total electron groups) gives a linear electron-pair geometry?",
+   "q": "Which atoms of propenal, CH₂=CH–CHO, lie in one plane?",
    "options": [
-    "3",
-    "2",
-    "4",
-    "5"
+    "Only the two alkene carbons",
+    "Every heavy atom, and the hydrogens on them",
+    "Only the C=O carbon and oxygen",
+    "None — it is a tetrahedral chain"
    ],
    "correct": 1,
-   "why": "With just 2 total electron groups and no other groups to consider, the only way to minimize repulsion is to place them 180° apart, giving a linear arrangement.",
-   "difficulty": "easy",
+   "why": "Count groups on each heavy atom: both alkene carbons have three, the aldehyde carbon has three, and the oxygen has one bond plus two lone pairs, also three. Three groups means trigonal planar at every one of them, and a chain of trigonal planar atoms joined end to end is flat.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -3004,7 +3012,7 @@
    ],
    "correct": 2,
    "why": "Water's oxygen has 2 bonding pairs (to the 2 hydrogens) plus 2 lone pairs, for a total steric number of 4, even though the visible molecular shape only shows 2 atoms.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -3028,20 +3036,20 @@
    ],
    "correct": 3,
    "why": "Each double bond counts as just one electron group, so carbon has 2 total groups with no lone pairs, giving a linear molecule with 180° bond angles.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A central atom with 2 bonding pairs and 0 lone pairs, and no ability to expand its octet, will have what molecular geometry?",
+   "q": "A student draws a tetrahedral carbon with the wedge and the dash on opposite sides of the atom. What is wrong?",
    "options": [
-    "Linear",
-    "Bent",
-    "Trigonal planar",
-    "Tetrahedral"
+    "Nothing, that is the standard convention",
+    "It is the mirror image of the molecule meant",
+    "It does not depict a tetrahedron at all",
+    "The wedge must always point upward"
    ],
-   "correct": 0,
-   "why": "Two electron groups with nothing else around the central atom always spread as far apart as possible, producing a straight, linear shape.",
-   "difficulty": "medium",
+   "correct": 2,
+   "why": "On a real tetrahedron the bond coming toward you and the bond going away are next to each other, so drawing them opposite depicts a shape that does not exist. Swapping which of the two is the wedge is the other error, and it fails differently: that drawing is perfectly legal, it is just the mirror image of the molecule you meant.",
+   "difficulty": "hard",
    "type": "mcq"
   }
  ],
@@ -3049,13 +3057,13 @@
   {
    "q": "A bond is considered polar covalent when the electronegativity difference is roughly:",
    "options": [
-    "0.4–1.7",
-    "0",
-    ">2.0 (ionic)",
-    "Negative"
+    "0.5–1.7",
+    "0.0–0.2",
+    "1.7–3.0",
+    "2.0 and above"
    ],
    "correct": 0,
-   "why": "Small/zero difference = nonpolar covalent; moderate difference (~0.4–1.7) = polar covalent; large difference = ionic.",
+   "why": "Below about 0.5 the pull is too even to matter and the bond is treated as nonpolar; above about 1.7 the electron is effectively transferred and the bonding is ionic. In between is polar covalent, which is where nearly every bond in organic chemistry sits.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -3086,16 +3094,16 @@
    "type": "mcq"
   },
   {
-   "q": "In a C–H bond, which atom carries the slight partial negative charge?",
+   "q": "In CH₃–CH₂–OH, which atoms carry a δ+?",
    "options": [
-    "Hydrogen",
-    "Neither — the bond is perfectly nonpolar",
-    "Both carry equal partial charges",
-    "Carbon"
+    "Only the carbons",
+    "Only the oxygen",
+    "The carbon bonded to oxygen, and the O–H hydrogen",
+    "Every hydrogen equally"
    ],
-   "correct": 3,
-   "why": "Carbon (electronegativity ≈ 2.5) is slightly more electronegative than hydrogen (≈ 2.1), so carbon pulls the shared electrons marginally toward itself, giving it a small partial negative charge.",
-   "difficulty": "easy",
+   "correct": 2,
+   "why": "Mark the polar bonds and ignore the rest. C–H at ΔEN 0.35 is treated as nonpolar, so the methyl end carries nothing. The C–O bond makes that carbon δ+ and the oxygen δ−; the O–H bond makes the hydrogen δ+ and, again, the oxygen δ−.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -3108,7 +3116,7 @@
    ],
    "correct": 0,
    "why": "Oxygen is far more electronegative than hydrogen, pulling the shared electrons toward itself and leaving hydrogen with a partial positive charge.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -3145,7 +3153,7 @@
    ],
    "correct": 2,
    "why": "Fluorine is the most electronegative of the three atoms, giving C–F the largest electronegativity gap and the greatest degree of ionic character among typical organic bonds.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -3158,20 +3166,20 @@
    ],
    "correct": 3,
    "why": "The dipole arrow represents the net pull on the shared electrons, which always points toward the more electronegative (more electron-hungry) atom in the bond.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "The symbol δ+ placed near an atom indicates:",
+   "q": "Which of these can donate a hydrogen bond?",
    "options": [
-    "A partial (fractional) positive charge",
-    "A full positive charge of +1",
-    "A full negative charge",
-    "That the atom has gained an electron"
+    "Dimethyl ether, CH₃OCH₃",
+    "Hexane, C₆H₁₄",
+    "Methane, CH₄",
+    "Ethanol, CH₃CH₂OH"
    ],
-   "correct": 0,
-   "why": "The delta (δ) symbol denotes a partial charge resulting from unequal electron sharing in a polar covalent bond, not a full formal ionic charge.",
-   "difficulty": "easy",
+   "correct": 3,
+   "why": "Donating needs a hydrogen sitting directly on N, O or F, stripped of most of its density. Ethanol's O–H qualifies. Dimethyl ether has the same formula as ethanol and an oxygen with lone pairs, so it can accept a hydrogen bond, but with no O–H it cannot donate one — which is why ethanol boils at 78°C and the ether at −24°C.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -3197,20 +3205,20 @@
    ],
    "correct": 2,
    "why": "Because CO2 is linear and symmetric, the two equal-but-opposite C=O dipoles point directly away from each other and sum to zero, leaving no net molecular dipole.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What single factor most directly determines whether a bond is classified as ionic, polar covalent, or nonpolar covalent?",
+   "q": "Butane, acetone and propan-1-ol all weigh about the same. Rank their boiling points, lowest first.",
    "options": [
-    "The total number of atoms in the molecule",
-    "The molecule's overall molecular weight",
-    "The number of lone pairs on each atom",
-    "The electronegativity difference between the two bonded atoms"
+    "butane < acetone < propan-1-ol",
+    "propan-1-ol < acetone < butane",
+    "acetone < butane < propan-1-ol",
+    "All three are within a few degrees"
    ],
-   "correct": 3,
-   "why": "The size of the electronegativity difference between two bonded atoms is the standard criterion used to classify a bond along the spectrum from nonpolar covalent to polar covalent to ionic.",
-   "difficulty": "medium",
+   "correct": 0,
+   "why": "With weight held constant, the only thing left is the strongest attraction each one can make. Butane has dispersion forces alone (−1°C), acetone has a strong C=O dipole and so dipole–dipole (56°C), propan-1-ol has an O–H and so hydrogen bonding (97°C).",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -3240,16 +3248,16 @@
    "type": "mcq"
   },
   {
-   "q": "An electronegativity difference close to zero between two bonded atoms typically results in what kind of bond?",
+   "q": "Which of these dissolves readily in water?",
    "options": [
-    "An ionic bond",
-    "A strongly polar covalent bond",
-    "A nonpolar (or nearly nonpolar) covalent bond",
-    "No bond at all"
+    "Hexane, C₆H₁₄",
+    "Carbon tetrachloride, CCl₄",
+    "Ethanol, CH₃CH₂OH",
+    "Butane, C₄H₁₀"
    ],
    "correct": 2,
-   "why": "When two atoms have essentially equal electronegativity, the shared electrons are distributed evenly, producing little to no bond polarity.",
-   "difficulty": "easy",
+   "why": "Dissolving means water has to break its own hydrogen-bond network and get something back. Ethanol's O–H both donates and accepts hydrogen bonds, so it pays water back and mixes in any proportion.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -3262,7 +3270,7 @@
    ],
    "correct": 3,
    "why": "Once the electronegativity gap is large enough, the bonding electrons are held so strongly by one atom that the bond is better described as mostly ionic rather than simply polar covalent.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -3299,11 +3307,11 @@
    ],
    "correct": 1,
    "why": "Oxygen's much higher electronegativity pulls the shared pi and sigma electrons toward itself, giving it the partial negative (δ−) end of the carbonyl dipole.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Why does the carbon in a Grignard reagent's C–Mg bond carry the partial negative charge, rather than the metal?",
+   "q": "A Grignard reagent (R–MgBr, met in Organometallics) has a C–Mg bond. Why does the carbon carry the partial negative charge?",
    "options": [
     "Magnesium is more electronegative than carbon",
     "Carbon always carries negative charge in every bond",
@@ -3312,7 +3320,7 @@
    ],
    "correct": 2,
    "why": "Even though carbon is usually the less electronegative partner compared to oxygen or nitrogen, it is considerably more electronegative than a metal like magnesium, reversing the usual polarity seen in most organic bonds.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -3325,7 +3333,7 @@
    ],
    "correct": 3,
    "why": "Oxygen is more electronegative than sulfur (despite being in the same group), giving O–H a larger electronegativity difference and therefore greater polarity than S–H.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -3349,7 +3357,7 @@
    ],
    "correct": 0,
    "why": "With only one strongly polar C–Cl bond and three much weaker C–H dipoles that don't offset it, the molecule ends up with an unbalanced, net dipole moment overall.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -3374,21 +3382,21 @@
     "Oxygen becomes less electronegative in a double bond"
    ],
    "correct": 2,
-   "why": "Because a double bond includes both a sigma and a pi bond, there's more total electron density being pulled toward the electronegative oxygen, amplifying the charge separation compared to a single C–O bond.",
+   "why": "Roughly: the double bond puts two shared pairs between the same two atoms, so there is more electron density for the oxygen to pull on, and the pi electrons are held loosely and shift easily. The measured dipole of a C=O is larger than that of a C–O.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "In trans-1,2-dichloroethene, the two C–Cl bond dipoles point in opposite directions across the double bond. This makes the molecule:",
+   "q": "Dichloromethane, CH₂Cl₂, is tetrahedral. Is it polar?",
    "options": [
-    "More polar than the cis isomer",
-    "Exactly as polar as a single C–Cl bond",
-    "Impossible to analyze for polarity",
-    "Much less polar (nearly nonpolar) compared to the cis isomer"
+    "Nonpolar — tetrahedral shapes always cancel",
+    "Polar — the two C–Cl dipoles do not cancel",
+    "Nonpolar — the C–H bonds cancel the C–Cl bonds",
+    "Polar — only because chlorine is heavy"
    ],
-   "correct": 3,
-   "why": "Because the trans arrangement places the two equal C–Cl dipoles pointing opposite each other, they largely cancel, giving the trans isomer a much smaller net dipole than the cis isomer, where the dipoles add together.",
-   "difficulty": "medium",
+   "correct": 1,
+   "why": "Symmetry is what cancels dipoles, not the tetrahedral label. In CCl₄ four identical dipoles point at four corners and sum to zero. Replace two chlorines with hydrogens and the two remaining C–Cl dipoles point to the same side of the molecule, so they add rather than cancel and the molecule has a net dipole of about 1.6 D.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -3425,7 +3433,7 @@
    ],
    "correct": 1,
    "why": "Because water is bent (not linear), the two O–H dipoles reinforce rather than cancel each other, summing into a single net molecular dipole pointing toward the electronegative oxygen.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   }
  ],

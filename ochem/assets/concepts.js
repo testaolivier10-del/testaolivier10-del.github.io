@@ -164,7 +164,7 @@
       topics:['lipids','esters-amides','acyl-substitution','hydrogenation','alkene-structure'],
       hint:'Lipid is a solubility class, not a functional group — ask what the ester is doing.' },
     { id:'nucleotide-assembly', title:'How a nucleotide is put together', family:'Biomolecules',
-      topics:['nucleic-acids','carbohydrates','acetals','amine-structure','bond-polarity'],
+      topics:['nucleic-acids','carbohydrates','acetals','amine-structure'],
       dependsOn:['sugar-ring'],
       hint:'Build it in order: sugar, then base, then phosphate. Two of the three links you already know.' },
     /* ---- Organometallics -----------------------------------------------
@@ -285,13 +285,13 @@
       hint:'Total the valence electrons first, then place them — bonds before lone pairs.' },
     { id:'hybridization-assignment', title:'Assigning hybridization', family:'Structure & bonding',
       topics:['hybridization','orbitals','molecular-geometry','alkene-structure','alkynes','aromaticity','aldehydes-ketones'],
-      hint:'Count groups around the atom: bonds to atoms plus lone pairs. Ignore the extra bonds of a double bond.' },
+      hint:'Count groups around the atom: bonds to atoms plus lone pairs, counting a double or triple bond once. Exception: a lone pair next to a pi bond moves into a p orbital, so an amide N is sp2, not sp3.' },
     { id:'molecular-geometry-vsepr', title:'Molecular geometry', family:'Structure & bonding',
       topics:['molecular-geometry','hybridization','bond-polarity'], dependsOn:['hybridization-assignment'],
       hint:'Lone pairs take up space and push bond angles closed.' },
     { id:'electronegativity-trend', title:'Electronegativity trends', family:'Structure & bonding',
       topics:['electronegativity','bond-polarity','acidity-factors','nucleophiles','electrophiles','h-nmr'],
-      hint:'Electronegativity rises going right across a period and falling up a group.' },
+      hint:'Electronegativity rises going right across a period and rising up a group: F > O > Cl > N > Br > I > C > H.' },
     { id:'bond-polarity-dipoles', title:'Bond polarity & dipoles', family:'Structure & bonding',
       topics:['bond-polarity','electronegativity','molecular-geometry','ir'], dependsOn:['electronegativity-trend','molecular-geometry-vsepr'],
       hint:'A molecule can hold polar bonds and still have no net dipole if they cancel.' },
@@ -506,7 +506,7 @@
 
     /* ---- Spectroscopy --------------------------------------------------- */
     { id:'ir-functional-groups', title:'IR functional groups', family:'Spectroscopy',
-      topics:['ir','bonding','aldehydes-ketones','carboxylic-acids','esters-amides'],
+      topics:['ir','aldehydes-ketones','carboxylic-acids','esters-amides'],
       hint:'Check three places: ~1700 (C=O), ~3300 broad (O–H), ~2250 (C≡N or C≡C).' },
     { id:'nmr-shift-shielding', title:'NMR chemical shift', family:'Spectroscopy',
       topics:['h-nmr','c-nmr','electronegativity','aromaticity'], dependsOn:['electronegativity-trend'],

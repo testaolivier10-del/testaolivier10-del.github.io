@@ -462,11 +462,12 @@
       6:['carbonyl-family-distinction','functional-group-recognition'],
       7:['functional-group-recognition','carbonyl-family-distinction'] } },
 
-    'bond-polarity': { n:7, steps:{
+    'bond-polarity': { n:9, steps:{
       1:['bond-polarity-dipoles'],
       2:['bond-polarity-dipoles','molecular-geometry-vsepr'],
       3:['bond-polarity-dipoles','molecular-geometry-vsepr'],
-      6:['bond-polarity-dipoles','molecular-geometry-vsepr'] } },
+      6:['bond-polarity-dipoles'],
+      8:['bond-polarity-dipoles','molecular-geometry-vsepr'] } },
 
     'bonding': { n:7, steps:{
       1:['lewis-structures-drawing','valence-electrons'],
@@ -558,11 +559,12 @@
       4:['electron-rich-poor','electrophile-recognition'],
       6:['electron-rich-poor','electrophile-recognition'] } },
 
-    'electronegativity': { n:7, steps:{
+    'electronegativity': { n:9, steps:{
       2:['electronegativity-trend'],
       3:['electronegativity-trend'],
       4:['electronegativity-trend','bond-polarity-dipoles'],
-      6:['electronegativity-trend','bond-polarity-dipoles'] } },
+      6:['electronegativity-trend'],
+      8:['electronegativity-trend','bond-polarity-dipoles'] } },
 
     'electrophiles': { n:7, steps:{
       1:['electrophile-recognition'],
@@ -615,11 +617,11 @@
       6:['nmr-splitting-integration'],
       7:['nmr-shift-shielding','huckel-aromaticity'] } },
 
-    'hybridization': { n:8, steps:{
-      2:['hybridization-assignment'],
+    'hybridization': { n:9, steps:{
       3:['hybridization-assignment'],
       4:['hybridization-assignment'],
-      7:['hybridization-assignment','molecular-geometry-vsepr'] } },
+      5:['hybridization-assignment'],
+      8:['hybridization-assignment','molecular-geometry-vsepr'] } },
 
     'ir': { n:8, steps:{
       1:['ir-functional-groups'],
@@ -663,11 +665,12 @@
       3:['meso-detection','enantiomer-vs-diastereomer'],
       6:['meso-detection'] } },
 
-    'molecular-geometry': { n:7, steps:{
+    'molecular-geometry': { n:9, steps:{
       1:['molecular-geometry-vsepr'],
       2:['molecular-geometry-vsepr','lewis-structures-drawing'],
       3:['molecular-geometry-vsepr','lewis-structures-drawing'],
-      6:['molecular-geometry-vsepr','hybridization-assignment'] } },
+      5:['molecular-geometry-vsepr'],
+      8:['molecular-geometry-vsepr','hybridization-assignment'] } },
 
     'newman': { n:7, steps:{
       1:['newman-reading'],

@@ -104,7 +104,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 7</div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -226,9 +226,24 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       {
         type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The pull carries down the chain \u2014 and a polar bond is not a weak bond.',
+        bodyHtml: '<p class="step-body">Two things the numbers do not say on their own.</p><p class="step-body"><b>The pull reaches past the bond it is in.</b> An electronegative atom drags density out of the bond next door too, and the one after that, fading fast with each bond it has to cross. That is the <b>inductive effect</b>, and it is cumulative: one chlorine on a carbon pulls, three chlorines on the same carbon pull about three times as hard. Move the chlorine three bonds away and almost nothing is left. You will meet it measured, on the acidity scale, in <a class=\\"chapter-ref\\" href=\\"/ochem/learn.html#m-acids-bases\\">Acids &amp; Bases</a>; here it is enough to know the pull travels and that it dies with distance.</p><p class="step-body" style="margin-bottom:0;"><b>Polar does not mean weak.</b> The most common misreading of this whole section is that a big \u0394EN makes a fragile bond. C\u2013F is the most polar bond in organic chemistry and also one of the strongest \u2014 the opposite charges attract each other and <i>help</i> hold it together. Polarity tells you <b>where</b> a bond will be attacked, not <b>how easily</b> it breaks.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Guided Practice',
+        title: 'In CH\u2083\u2013CHCl\u2013CH\u2082\u2013COOH, which carbon is the most electron-poor?',
+        options: ['The CH\u2083 carbon at the far end', 'The carbon bearing the Cl', 'The CH\u2082 carbon in the middle', 'They are all equally electron-poor'],
+        correctIndex: 1,
+        correctFeedback: 'Correct \u2014 the chlorine pulls hardest on the bond it is actually in, so the carbon it sits on is the most depleted. The CH\u2082 next door feels a weaker version of the same pull, and the CH\u2083 at the far end feels essentially none. That fading with distance is the signature of induction.',
+        wrongFeedback: 'Induction is strongest in the bond the electronegative atom is part of, and it fades with every bond it has to travel through. Which carbon is the chlorine attached to?'
+      },
+      {
+        type: 'explain',
         eyebrow: 'Why it matters',
         title: 'This is where "electron-poor" and "electron-rich" come from.',
-        bodyHtml: '<div class="explain-box">An electronegativity difference is what makes a bond polar, and it’s what makes the carbon in C–Br electron-poor enough for a nucleophile to attack — the exact idea behind SN1/SN2. It also decides which end of a bond dipole points where, coming up in Bond Polarity.</div>'
+        bodyHtml: '<div class="explain-box">An electronegativity difference is what makes a bond polar, and it is what leaves the carbon of a C–Br bond electron-poor — short of electron density, and therefore the place something electron-rich will come and attack. <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-electron-movement\">Organic Structure &amp; Electron Movement</a> names those two halves (nucleophile and electrophile) and <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-substitution-elimination\">Substitution &amp; Elimination</a> is where a whole family of reactions runs on exactly this. It also decides which way a bond dipole points, coming up in Bond Polarity.</div>'
       },
       {
         type: 'final',

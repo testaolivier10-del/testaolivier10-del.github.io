@@ -44,7 +44,7 @@ const FIGURES = [];
    else. `bond(a, b, { order: 2 })` draws two full-length lines either side of
    the axis, which is right for an isolated C=C and wrong the moment the
    vertices are shared: the second line runs past the corner and hangs over
-   the neighbouring bond, and where a dashed forming-bond arrives at the same
+   the neighboring bond, and where a dashed forming-bond arrives at the same
    vertex the two cross. A ring chemist draws the second line short and on the
    inside instead, so this does that — one full line along the bond, one
    inset line offset toward `inward`. */
@@ -881,7 +881,7 @@ FIGURES.push({
     /* Both panels sit inside the left 90% of the canvas: the right-hand one
        carries the answer, and past that the reading column has scrolled it
        off. The OH note is anchored to the right of its own disc rather than
-       centred over it, which is what had it sitting on the label. */
+       centered over it, which is what had it sitting on the label. */
     s += panel(20, 64, 300, 224, { kind: 'warn' });
     s += tag(170, 52, 'the longest chain in the molecule');
     s += skeleton(26, ['a0', 'a1', 'a2', 'a3', 'a4'],
@@ -948,7 +948,7 @@ FIGURES.push({
       return t;
     };
 
-    /* The pair is centred on the part of the canvas the reading column
+    /* The pair is centered on the part of the canvas the reading column
        actually shows, not on the canvas: the right-hand panel carries the
        answer and past about 0.9 of the width it is behind a scroll. */
     s += panel(44, 76, 248, 196, { kind: 'warn' });
@@ -1100,7 +1100,7 @@ FIGURES.push({
       /* A label wider than the segment it belongs to is drawn just above the
          bar instead of inside it. Centred on its own segment either way, so
          which share it names stays unambiguous — written inside, the two
-         minority figures spilled onto the neighbouring colour and read as
+         minority figures spilled onto the neighboring colour and read as
          labels for it. */
       const put = (cxSeg, segW, txt) => {
         const wide = txt.length * 10.5 * 0.62;
@@ -1320,7 +1320,7 @@ FIGURES.push({
     ];
     /* The families column is the widest thing here and the acid rung's list
        is the widest row in it, so it is set from a left edge rather than
-       centred: centred, it started underneath the oxidation-state column and
+       centered: centered, it started underneath the oxidation-state column and
        ended past the right of what the reading column shows. The direction
        arrow moves to the left margin for the same reason — its label was
        the other casualty. */
@@ -1945,7 +1945,7 @@ FIGURES.push({
     };
 
     /* The whole sequence is compressed left. The two product names are the
-       answer this figure exists to give, and with the last ring centred at
+       answer this figure exists to give, and with the last ring centered at
        636 both of them ran past the right-hand edge of what the reading
        column shows without scrolling. */
     const row = (cy, first, second, mid, product, verdict, kind, drop) => {
@@ -3260,7 +3260,7 @@ FIGURES.push({
 /* A zigzag chain: n carbons, even indices on the baseline y0 and odd ones
    raised by dy, the way a skeletal chain is drawn. */
 const zig = (x0, y0, n, dx = 34, dy = 22) => Array.from({ length: n }, (_, i) => P(x0 + i * dx, y0 + (i % 2 ? -dy : 0)));
-/* Skeletal bonds: vertices are unlabelled carbons, so nothing is trimmed. */
+/* Skeletal bonds: vertices are unlabeled carbons, so nothing is trimmed. */
 const sk = (a, b, hi) => bond(a, b, { rFrom: 0, rTo: 0, cls: hi ? 'fg-bond-hi' : 'fg-bond' });
 
 /* ---------------------------------------------------------------- N1 ---
@@ -3761,6 +3761,641 @@ FIGURES.push({
   caption: 'Phenyl and benzyl, which are one carbon apart and are both used constantly. Phenyl is the benzene ring bonded directly through a ring carbon. Benzyl is the ring plus a CH₂, bonded through that CH₂, so the ring is one bond further away from whatever it is attached to.',
   note: 'The reason the words matter beyond spelling is that the CH₂ in a benzyl group is the benzylic carbon, and the chemistry at that carbon (in <a class="chapter-ref" href="/ochem/learn.html#m-aromatic-breadth">Aromatic Follow-Through</a>) is nothing like the chemistry at a ring carbon. Benzyl alcohol is PhCH₂OH, a primary alcohol; phenol is PhOH, and is not an alcohol at all.',
 });
+
+
+/* ================================================================ F1 ---
+   Foundations, second pass. The reviewer's count: the Lewis-structures
+   section draws no organic molecule at all, the functional-groups section
+   runs 2,500 words on one figure, and the three places a first reader most
+   often draws something impossible (five-bond carbon, neutral four-bond
+   nitrogen, a nitro group with no charges) are text only. These eight put a
+   picture where the prose asks the reader to picture something.
+
+   Everything here is condensed or Lewis notation on purpose: skeletal
+   drawing is taught at the start of the next chapter, so a Foundations
+   figure that used it would be showing a reader a notation they have not
+   met. Lone pairs are drawn everywhere, because "the group is where the
+   lone pairs are" is the argument these sections are making. */
+
+/* ---------------------------------------------------------------- F1 ---
+   Four organic molecules as Lewis structures, with every lone pair drawn and
+   each atom's quota written under it. The valence-rule method the section
+   now teaches is a table; this is the table applied four times. */
+FIGURES.push({
+  id: 'organic-lewis-structures',
+  section: 'lewis-structures',
+  anchor: '<h3>The general-chemistry recipe, for molecules with a real center</h3>',
+  viewBox: '0 0 760 300',
+  alt: 'Four Lewis structures drawn side by side: ethanol, methylamine, acetic acid and the methoxide ion, each with every lone pair shown as a pair of dots and each heavy atom labeled with how many bonds and lone pairs it carries.',
+  build() {
+    let s = '';
+    const quota = (x, y, t) => text(x, y, t, { cls: 'fg-tag-good', size: 10.5 });
+
+    // Ethanol, CH3-CH2-O-H
+    {
+      const x = 14; s += panel(x, 16, 176, 200);
+      s += text(x + 88, 40, 'ethanol', { cls: 'fg-lbl', size: 12.5 });
+      const C1 = P(x + 34, 104), C2 = P(x + 88, 104), O = P(x + 142, 104), H = P(x + 142, 156);
+      s += bond(C1, C2); s += bond(C2, O); s += bond(O, H);
+      s += atom(C1.x, C1.y, 'CH₃'); s += atom(C2.x, C2.y, 'CH₂');
+      s += atom(O.x, O.y, 'O', { kind: 'hi' }); s += atom(H.x, H.y, 'H');
+      s += lonePair(O.x, O.y, 270); s += lonePair(O.x, O.y, 40);
+      s += quota(x + 88, 186, 'O: 2 bonds + 2 pairs = 4');
+      s += quota(x + 88, 202, 'both C: 4 bonds, no pair');
+    }
+    // Methylamine, CH3-NH2
+    {
+      const x = 204; s += panel(x, 16, 176, 200);
+      s += text(x + 88, 40, 'methylamine', { cls: 'fg-lbl', size: 12.5 });
+      const C = P(x + 44, 104), N = P(x + 104, 104), H1 = P(x + 148, 74), H2 = P(x + 148, 138);
+      s += bond(C, N); s += bond(N, H1); s += bond(N, H2);
+      s += atom(C.x, C.y, 'CH₃');
+      s += atom(N.x, N.y, 'N', { kind: 'hi' });
+      s += atom(H1.x, H1.y, 'H'); s += atom(H2.x, H2.y, 'H');
+      s += lonePair(N.x, N.y, 270);
+      s += quota(x + 88, 186, 'N: 3 bonds + 1 pair = 4');
+      s += quota(x + 88, 202, 'that pair is all of amine chemistry');
+    }
+    // Acetic acid, CH3-C(=O)-O-H
+    {
+      const x = 394; s += panel(x, 16, 186, 200);
+      s += text(x + 93, 40, 'acetic acid', { cls: 'fg-lbl', size: 12.5 });
+      const CM = P(x + 34, 122), C = P(x + 94, 122), Od = P(x + 94, 70), Os = P(x + 150, 122), H = P(x + 150, 172);
+      s += bond(CM, C); s += bond(C, Od, { order: 2 }); s += bond(C, Os); s += bond(Os, H);
+      s += atom(CM.x, CM.y, 'CH₃'); s += atom(C.x, C.y, 'C', { kind: 'hi' });
+      s += atom(Od.x, Od.y, 'O'); s += atom(Os.x, Os.y, 'O'); s += atom(H.x, H.y, 'H');
+      s += lonePair(Od.x, Od.y, 200); s += lonePair(Od.x, Od.y, 340);
+      s += lonePair(Os.x, Os.y, 20); s += lonePair(Os.x, Os.y, 300);
+      s += quota(x + 93, 186, 'middle C: 4 bonds — the C=O counts twice');
+      s += quota(x + 93, 202, 'each O: 2 bonds + 2 pairs');
+    }
+    // Methoxide, CH3-O(-)
+    {
+      const x = 594; s += panel(x, 16, 152, 200);
+      s += text(x + 76, 40, 'methoxide ion', { cls: 'fg-lbl', size: 12.5 });
+      const C = P(x + 44, 110), O = P(x + 108, 110);
+      s += bond(C, O);
+      s += atom(C.x, C.y, 'CH₃');
+      s += atom(O.x, O.y, 'O', { kind: 'warn' });
+      s += lonePair(O.x, O.y, 45); s += lonePair(O.x, O.y, 315); s += lonePair(O.x, O.y, 0, { dist: 28 });
+      s += text(x + 108, 78, '−', { cls: 'fg-tag-warn', size: 14 });
+      s += quota(x + 76, 186, 'O: 1 bond + 3 pairs');
+      s += quota(x + 76, 202, 'one short of quota → −1');
+    }
+    s += rule(14, 240, 746, 240);
+    s += text(380, 262, 'bonds + lone pairs = 4 for C, N, O and the halogens', { cls: 'fg-lbl', size: 12 });
+    s += text(380, 284, 'Every departure from the quota is a formal charge — and none of this needed a central atom.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The valence rule applied four times. Each heavy atom takes its quota of bonds, lone pairs fill the rest of the octet, and the only atom that departs from its quota — methoxide’s oxygen, one bond short — is the only atom carrying a charge. Read the lone pairs on the oxygens and nitrogen especially: they are drawn in every structure in this course, and leaving them off is how charges get lost later.',
+  note: 'Acetic acid is the one to study. The two oxygens in <b>CH₃COOH</b> are not a chain of two oxygens: the first is doubly bonded to the carbon and the second carries the hydrogen, which is why the middle carbon reaches four bonds and the formula is not read left to right like the rest.',
+});
+
+/* ---------------------------------------------------------------- F2 ---
+   Four impossible structures beside their corrections. A wrong/right pair
+   teaches a trap better than a sentence about it, because the reader has to
+   look at the wrong one to see what is wrong with it. */
+FIGURES.push({
+  id: 'four-wrong-structures',
+  section: 'lewis-structures',
+  anchor: '<h3>Three real exceptions to the octet rule</h3>',
+  viewBox: '0 0 760 250',
+  alt: 'Four pairs of drawings. In each pair an impossible structure is shown on the left and its correction on the right: a five-bonded carbon corrected to four bonds, a nitrogen with four bonds and no charge corrected to carry a plus one, an oxygen with three bonds and no charge corrected to carry a plus one, and a hydrogen drawn bridging two carbons corrected to a single bond.',
+  build() {
+    let s = '';
+    const cell = (x, title) => { s += panel(x, 16, 176, 172); s += text(x + 88, 40, title, { cls: 'fg-lbl', size: 12 }); };
+
+    // 1. five-bonded carbon
+    {
+      const x = 14; cell(x, 'C: 5 bonds');
+      const C = P(x + 60, 104);
+      [[0, -42], [0, 42], [-42, 0], [30, -30], [30, 30]].forEach(([dx, dy]) =>
+        s += bond(C, P(C.x + dx, C.y + dy), { rTo: 9 }));
+      s += atom(C.x, C.y, 'C', { kind: 'warn' });
+      s += text(x + 88, 160, '10 electrons, period 2', { cls: 'fg-tag-warn', size: 10 });
+      s += text(x + 88, 176, 'no orbital holds them', { cls: 'fg-sm', size: 10 });
+    }
+    // 2. neutral four-bond nitrogen
+    {
+      const x = 204; cell(x, 'N: 4 bonds, no charge');
+      const N = P(x + 70, 104);
+      [[0, -42], [0, 42], [-42, 0], [42, 0]].forEach(([dx, dy]) =>
+        s += bond(N, P(N.x + dx, N.y + dy), { rTo: 9 }));
+      s += atom(N.x, N.y, 'N', { kind: 'warn' });
+      s += text(x + 88, 160, '5 − 0 − 4 = +1', { cls: 'fg-tag-warn', size: 10 });
+      s += text(x + 88, 176, 'legal — but write the +', { cls: 'fg-sm', size: 10 });
+    }
+    // 3. neutral three-bond oxygen
+    {
+      const x = 394; cell(x, 'O: 3 bonds, no charge');
+      const O = P(x + 70, 104);
+      [[0, -42], [-40, 24], [40, 24]].forEach(([dx, dy]) =>
+        s += bond(O, P(O.x + dx, O.y + dy), { rTo: 9 }));
+      s += atom(O.x, O.y, 'O', { kind: 'warn' });
+      s += lonePair(O.x, O.y, 160);
+      s += text(x + 88, 160, '6 − 2 − 3 = +1', { cls: 'fg-tag-warn', size: 10 });
+      s += text(x + 88, 176, 'the arrow-pushing slip', { cls: 'fg-sm', size: 10 });
+    }
+    // 4. bridging hydrogen
+    {
+      const x = 584; cell(x, 'H: 2 bonds');
+      const A = P(x + 40, 104), H = P(x + 88, 104), B = P(x + 136, 104);
+      s += bond(A, H); s += bond(H, B);
+      s += atom(A.x, A.y, 'C'); s += atom(B.x, B.y, 'C');
+      s += atom(H.x, H.y, 'H', { kind: 'warn' });
+      s += text(x + 88, 160, 'one shell, one pair', { cls: 'fg-tag-warn', size: 10 });
+      s += text(x + 88, 176, 'H bonds to one thing', { cls: 'fg-sm', size: 10 });
+    }
+    s += rule(14, 208, 746, 208);
+    s += text(380, 230, 'Two can never be drawn at all; two are correct structures missing their charge.', { cls: 'fg-lbl', size: 11.5 });
+    return s;
+  },
+  caption: 'The four structures a first course draws most often and cannot draw. The first and the last are impossible outright: a period-2 atom has four orbitals and hydrogen has one, so ten electrons on carbon and four on hydrogen have nowhere to sit. The middle two are perfectly good structures that are simply missing their charge — four-bonded nitrogen and three-bonded oxygen exist everywhere in this course, and neither is ever neutral.',
+  note: 'The valence rule catches all four in about two seconds each: work out what the atom’s quota is (C 4 bonds, N 3 + 1 pair, O 2 + 2 pairs, H 1), compare it to what is drawn, and if there is a difference either write the charge the arithmetic gives or redraw the bond.',
+});
+
+/* ---------------------------------------------------------------- F3 ---
+   A neutral molecule that must be drawn with charges inside it. The section
+   works nitromethane in prose; a reader who has only ever seen charges on
+   ions needs to see the + and the - sitting on a molecule with none. */
+FIGURES.push({
+  id: 'nitro-group-charges',
+  section: 'formal-charge',
+  anchor: '<h3>The built-in check</h3>',
+  viewBox: '0 0 760 250',
+  alt: 'Nitromethane drawn twice. On the left, the tempting structure with nitrogen double-bonded to both oxygens, marked impossible because nitrogen would have five bonds. On the right, the correct structure with one double bond and one single bond, a plus one on nitrogen and a minus one on the singly bonded oxygen, summing to zero.',
+  build() {
+    let s = '';
+    // Left: the tempting, impossible structure.
+    {
+      const C = P(110, 130), N = P(186, 130), O1 = P(252, 86), O2 = P(252, 174);
+      s += text(186, 40, 'what most people draw first', { cls: 'fg-tag-warn', size: 11.5 });
+      s += bond(C, N); s += bond(N, O1, { order: 2 }); s += bond(N, O2, { order: 2 });
+      s += atom(C.x, C.y, 'CH₃');
+      s += atom(N.x, N.y, 'N', { kind: 'warn' });
+      s += atom(O1.x, O1.y, 'O'); s += atom(O2.x, O2.y, 'O');
+      s += lonePair(O1.x, O1.y, 20); s += lonePair(O1.x, O1.y, 330);
+      s += lonePair(O2.x, O2.y, 30); s += lonePair(O2.x, O2.y, 340);
+      s += text(186, 214, 'no charges anywhere — and 5 bonds on N', { cls: 'fg-tag-warn', size: 11 });
+      s += text(186, 232, 'ten electrons on a period-2 atom: impossible', { cls: 'fg-sm', size: 10.5 });
+    }
+    s += rule(380, 40, 380, 236);
+    // Right: the real structure.
+    {
+      const C = P(470, 130), N = P(546, 130), O1 = P(612, 86), O2 = P(612, 174);
+      s += text(546, 40, 'the structure that works', { cls: 'fg-tag-good', size: 11.5 });
+      s += bond(C, N); s += bond(N, O1, { order: 2 }); s += bond(N, O2);
+      s += atom(C.x, C.y, 'CH₃');
+      s += atom(N.x, N.y, 'N', { kind: 'hi' });
+      s += atom(O1.x, O1.y, 'O'); s += atom(O2.x, O2.y, 'O', { kind: 'warn' });
+      s += lonePair(O1.x, O1.y, 20); s += lonePair(O1.x, O1.y, 330);
+      s += lonePair(O2.x, O2.y, 30); s += lonePair(O2.x, O2.y, 90); s += lonePair(O2.x, O2.y, 340);
+      s += text(546, 104, '+', { cls: 'fg-tag-warn', size: 14 });
+      s += text(640, 160, '−', { cls: 'fg-tag-warn', size: 14 });
+      s += text(546, 214, 'N: 5 − 0 − 4 = +1   ·   lower O: 6 − 6 − 1 = −1', { cls: 'fg-tag-good', size: 11 });
+      s += text(546, 232, 'sum = 0, and the molecule is neutral', { cls: 'fg-sm', size: 10.5 });
+    }
+    return s;
+  },
+  caption: 'Nitromethane is a neutral molecule that cannot be drawn without charges in it. The tidy-looking structure on the left gives nitrogen five bonds, which period 2 cannot do; forcing it down to four leaves the arithmetic no choice, and a +1 on nitrogen appears beside a −1 on the singly bonded oxygen. They cancel, which is why the molecule is neutral overall.',
+  note: 'This is the trap the worked examples in this section are built around: “neutral molecule” is a statement about the <i>sum</i> of the formal charges, not about each atom. Any nitro group you meet from here on — in a nitrated aromatic ring, in TNT, in a nitroalkane — is drawn exactly this way, and one without the charges is wrong.',
+});
+
+/* ---------------------------------------------------------------- F4 ---
+   The section's three worked examples are drugs given as condensed formulas
+   and the reader is asked to "circle each group". Nothing is drawn, so
+   there is nothing to circle. This draws them. */
+FIGURES.push({
+  id: 'three-drugs-groups-named',
+  section: 'functional-groups',
+  anchor: '<h3>What carries forward</h3>',
+  viewBox: '0 0 760 356',
+  alt: 'Aspirin, acetaminophen and ibuprofen drawn as condensed formulas around a benzene ring, with every functional group boxed and named: carboxylic acid and ester on aspirin, phenol and amide on acetaminophen, carboxylic acid and two alkyl branches on ibuprofen.',
+  build() {
+    let s = '';
+    /* A benzene ring drawn as a hexagon with the inner circle, which is what
+       C6H4 and C6H5 stand for in the condensed formulas the section uses. */
+    const ring = (cx, cy, R = 30) => {
+      const pts = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (i * 60 - 90) * Math.PI / 180;
+        pts.push(P(cx + Math.cos(a) * R, cy + Math.sin(a) * R));
+      }
+      let g = '';
+      for (let i = 0; i < 6; i++) g += bond(pts[i], pts[(i + 1) % 6], { rFrom: 0, rTo: 0 });
+      g += `<circle class="fg-bond" cx="${cx}" cy="${cy}" r="${R * 0.56}" fill="none"></circle>`;
+      return { g, pts };
+    };
+    /* A group written as a tinted chip rather than a circle: the labels here
+       are whole condensed fragments, and a disc big enough to hold one is big
+       enough to collide with everything around it. */
+    const chip = (cx, cy, lab, kind) => {
+      const w = lab.length * 7.4 + 16;
+      return { g: panel(cx - w / 2, cy - 13, w, 26, { kind, r: 9 }) +
+                  text(cx, cy + 4, lab, { cls: kind === 'warn' ? 'fg-tag-warn' : 'fg-tag', size: 11 }),
+               half: w / 2 };
+    };
+    const link = (a, b, stop) => bond(a, b, { rFrom: 0, rTo: stop });
+
+    const panels = [
+      {
+        x: 14, name: 'aspirin', cx: 82, cy: 150,
+        groups: [
+          { at: 0, to: P(82, 80),  lab: 'COOH', kind: 'warn', stop: 16 },
+          { at: 1, to: P(186, 146), lab: 'OCOCH₃', kind: 'warn', stop: 36 },
+        ],
+        lines: ['COOH = carboxylic acid', 'O–CO–CH₃ = ester', 'plus the ring — an aromatic'],
+      },
+      {
+        x: 268, name: 'acetaminophen', cx: 336, cy: 150,
+        groups: [
+          { at: 0, to: P(336, 80), lab: 'OH', kind: 'warn', stop: 16 },
+          { at: 3, to: P(400, 212), lab: 'NHCOCH₃', kind: 'warn', stop: 40 },
+        ],
+        lines: ['OH on the ring = phenol', 'NH–CO–CH₃ = amide', 'no carboxylic acid anywhere'],
+      },
+      {
+        x: 522, name: 'ibuprofen', cx: 610, cy: 150,
+        groups: [
+          { at: 0, to: P(610, 80), lab: 'CH(CH₃)COOH', kind: 'warn', stop: 16 },
+          { at: 3, to: P(610, 216), lab: 'CH₂CH(CH₃)₂', kind: null, stop: 16 },
+        ],
+        lines: ['COOH = carboxylic acid', 'the rest is spectator carbon', 'one group, thirteen carbons'],
+      },
+    ];
+    for (const p of panels) {
+      s += panel(p.x, 16, 226, 236);
+      s += text(p.x + 113, 40, p.name, { cls: 'fg-lbl', size: 12.5 });
+      const r = ring(p.cx, p.cy); s += r.g;
+      for (const g of p.groups) {
+        const c = chip(g.to.x, g.to.y, g.lab, g.kind);
+        s += link(r.pts[g.at], g.to, g.stop);
+        s += c.g;
+      }
+      p.lines.forEach((t, i) =>
+        s += text(p.x + 113, 276 + i * 17, t, { cls: i === 2 ? 'fg-sm' : 'fg-tag-good', size: i === 2 ? 10 : 10.5 }));
+    }
+    s += rule(14, 256, 746, 256);
+    s += text(380, 344, 'Three drugs, five groups between them, and every other atom is skeleton.', { cls: 'fg-lbl', size: 11.5 });
+    return s;
+  },
+  caption: 'The three molecules the worked examples run through, with the groups marked. Aspirin carries a carboxylic acid and an ester on the same ring; acetaminophen carries a phenol and an amide, and no acid at all despite the name most people expect; ibuprofen carries one carboxylic acid on a molecule that is otherwise thirteen carbons of inert skeleton.',
+  note: 'Compare the two O–CO patterns. In aspirin the ring oxygen leads to a carbonyl, which makes it an <b>ester</b>; in acetaminophen a ring nitrogen leads to a carbonyl, which makes it an <b>amide</b>. One atom apart, and the difference decides how each one is broken down in the body — which is why aspirin hydrolyzes in the stomach and acetaminophen does not.',
+});
+
+/* ---------------------------------------------------------------- F5 ---
+   The degree trap, drawn. The same tert-butyl skeleton twice: counting on
+   the carbon for the alcohol, on the nitrogen for the amine. */
+FIGURES.push({
+  id: 'degree-counted-twice',
+  section: 'functional-groups',
+  anchor: '<h3>Why polarity tells you where a group will react</h3>',
+  viewBox: '0 0 760 250',
+  alt: 'Two structures built on the same tert-butyl group. On the left the OH version, whose central carbon carries three methyl groups, is labeled a tertiary alcohol. On the right the NH2 version, whose nitrogen carries one carbon, is labeled a primary amine.',
+  build() {
+    let s = '';
+    const skeleton = (cx, cy, tail, kind) => {
+      const C = P(cx, cy), X = P(cx + 72, cy);
+      let g = '';
+      [[-52, -34], [-52, 34], [0, 52]].forEach(([dx, dy]) => {
+        const m = P(cx + dx, cy + dy);
+        g += bond(C, m, { rTo: 17 });
+        g += atom(m.x, m.y, 'CH₃', { r: 17 });
+      });
+      g += bond(C, X, { rTo: 17 });
+      g += atom(C.x, C.y, 'C', { kind: 'hi' });
+      g += atom(X.x, X.y, tail, { kind: kind, r: 17 });
+      return { g, X };
+    };
+    {
+      const x = 150, y = 116;
+      s += text(x + 20, 40, '(CH₃)₃C–OH', { cls: 'fg-lbl', size: 13 });
+      const a = skeleton(x, y, 'OH', 'warn'); s += a.g;
+      s += lonePair(a.X.x, a.X.y, 320, { dist: 24 }); s += lonePair(a.X.x, a.X.y, 40, { dist: 24 });
+      s += text(x + 20, 190, 'count the carbons on the CARBON: 3', { cls: 'fg-tag-good', size: 11 });
+      s += text(x + 20, 212, 'tertiary alcohol', { cls: 'fg-lbl', size: 12.5 });
+      s += text(x + 20, 234, 'the OH sits on a carbon with no H of its own', { cls: 'fg-sm', size: 10 });
+    }
+    s += rule(392, 40, 392, 236);
+    {
+      const x = 528, y = 116;
+      s += text(x + 20, 40, '(CH₃)₃C–NH₂', { cls: 'fg-lbl', size: 13 });
+      const b = skeleton(x, y, 'NH₂', 'warn'); s += b.g;
+      s += lonePair(b.X.x, b.X.y, 320, { dist: 26 });
+      s += text(x + 20, 190, 'count the carbons on the NITROGEN: 1', { cls: 'fg-tag-good', size: 11 });
+      s += text(x + 20, 212, 'primary amine', { cls: 'fg-lbl', size: 12.5 });
+      s += text(x + 20, 234, 'the same skeleton, the opposite answer', { cls: 'fg-sm', size: 10 });
+    }
+    return s;
+  },
+  caption: 'The same tert-butyl group with two different groups on it, and two opposite answers. For an alcohol or an alkyl halide you count the carbons attached to the carbon bearing the group, and this one has three: tertiary. For an amine you count the carbons attached to the nitrogen, and this one has one: primary.',
+  note: 'The rule is not arbitrary. Degree exists to say how crowded the reacting atom is, and the reacting atom is different in the two cases: an alcohol reacts at its carbon, so the carbon’s neighbors are what matter, while an amine reacts through the lone pair on its nitrogen, so the nitrogen’s neighbors are. Both structures reduce to that one question.',
+});
+
+/* ---------------------------------------------------------------- F6 ---
+   The fill order as a ladder. The section argues 4s below 3d in prose and
+   gives a reader nothing to look at; this is the argument as a picture,
+   with the n=2 count that the octet rule rests on marked on it. */
+FIGURES.push({
+  id: 'orbital-energy-ladder',
+  section: 'orbitals',
+  anchor: '<h3>Why the periodic table has that stair-step shape</h3>',
+  viewBox: '0 0 760 340',
+  alt: 'An energy ladder of orbitals from 1s at the bottom to 3d at the top, with each subshell drawn as its boxes: one box for each s, three for each p, five for 3d. The 4s rung is drawn below the 3d rung, and the 2s and 2p rungs are bracketed together and labeled as the four orbitals that make the octet.',
+  build() {
+    let s = '';
+    const rungs = [
+      { y: 300, name: '1s', boxes: 1 },
+      { y: 254, name: '2s', boxes: 1 },
+      { y: 216, name: '2p', boxes: 3 },
+      { y: 166, name: '3s', boxes: 1 },
+      { y: 130, name: '3p', boxes: 3 },
+      { y: 86,  name: '4s', boxes: 1 },
+      { y: 52,  name: '3d', boxes: 5 },
+    ];
+    s += arrow(P(60, 318), P(60, 36));
+    s += text(36, 176, 'energy', { cls: 'fg-tag', size: 11, anchor: 'middle' });
+    for (const r of rungs) {
+      const w = 26, gap = 5, x0 = 150;
+      for (let i = 0; i < r.boxes; i++) {
+        s += `<rect class="fg-panel" x="${x0 + i * (w + gap)}" y="${r.y - 12}" width="${w}" height="22" rx="4"></rect>`;
+      }
+      s += text(126, r.y + 4, r.name, { cls: 'fg-lbl', size: 12.5, anchor: 'end' });
+      s += text(x0 + r.boxes * (w + gap) + 8, r.y + 4,
+                r.boxes === 1 ? '1 orbital · holds 2' : r.boxes + ' orbitals · hold ' + (r.boxes * 2),
+                { cls: 'fg-sm', size: 10, anchor: 'start' });
+    }
+    // The n = 2 bracket: four orbitals, eight electrons, the octet.
+    s += `<rect class="fg-fill-hi" x="140" y="200" width="200" height="70" rx="8" opacity="0.14"></rect>`;
+    s += text(414, 232, 'n = 2: one 2s + three 2p = 4 orbitals, 8 electrons', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    s += text(414, 250, 'this, and nothing else, is the octet rule', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    // The inversion.
+    s += text(414, 72, '4s sits BELOW 3d — an s electron penetrates', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
+    s += text(414, 90, 'closer to the nucleus, so it is shielded less', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(414, 108, 'and held harder. Potassium fills 4s first.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += rule(60, 326, 740, 326);
+    s += text(400, 338, 'Fill from the bottom, one electron per box across a rung before any box doubles up.', { cls: 'fg-lbl', size: 11.5 });
+    return s;
+  },
+  caption: 'The filling order as a ladder rather than a sentence. Two things are worth reading off it. The n = 2 shell is four boxes wide — one 2s and three 2p — and four boxes hold eight electrons, which is the whole of the octet rule. And the 4s rung sits below the 3d rung even though 4 is larger than 3, which is why the d-block starts in row 4.',
+  note: 'The rung widths are the part to remember. An s subshell is always one orbital, a p always three, a d always five, whatever shell they belong to — so the maximum occupancy of any subshell is just twice its width, and a shell’s capacity is the sum of its rungs: 2 for n = 1, 8 for n = 2, 18 for n = 3.',
+});
+
+/* ---------------------------------------------------------------- F7 ---
+   What a covalent bond IS, in the shell picture the section is already
+   using. The prose says "sharing electrons is precisely what a covalent
+   bond is" with nothing beside it, and the whole idea is that ONE pair is
+   counted by BOTH atoms, which is exactly the kind of claim a drawing can
+   make and a sentence cannot. */
+FIGURES.push({
+  id: 'shared-pair-counts-twice',
+  section: 'atomic-structure',
+  anchor: '<h3>Transfer or share: the two ways to satisfy an octet</h3>',
+  viewBox: '0 0 760 280',
+  alt: 'Two overlapping shell diagrams for a hydrogen molecule and, beside them, a sodium and a chlorine drawn separately as ions. In the shared picture one pair of electrons sits in the overlap and is counted by both atoms; in the transferred picture the electron has moved completely from sodium to chlorine and the two carry full charges.',
+  build() {
+    let s = '';
+    // Left: sharing.
+    {
+      s += text(190, 40, 'SHARING — a covalent bond', { cls: 'fg-tag-good', size: 12 });
+      const A = P(140, 140), B = P(240, 140);
+      s += `<circle class="fg-orb-node" cx="${A.x}" cy="${A.y}" r="56"></circle>`;
+      s += `<circle class="fg-orb-node" cx="${B.x}" cy="${B.y}" r="56"></circle>`;
+      s += atom(A.x, A.y, 'H'); s += atom(B.x, B.y, 'H');
+      // the shared pair, in the overlap
+      s += `<circle class="fg-lp" cx="186" cy="140" r="4.6"></circle>`;
+      s += `<circle class="fg-lp" cx="200" cy="140" r="4.6"></circle>`;
+      s += text(190, 118, 'one pair', { cls: 'fg-tag-good', size: 10.5 });
+      s += text(190, 216, 'the pair sits in the overlap, and BOTH', { cls: 'fg-sm', size: 10.5 });
+      s += text(190, 232, 'atoms count it toward a full shell', { cls: 'fg-sm', size: 10.5 });
+      s += text(190, 256, 'neither atom pays for a charge', { cls: 'fg-tag-good', size: 11 });
+    }
+    s += rule(380, 40, 380, 266);
+    // Right: transfer.
+    {
+      s += text(570, 40, 'TRANSFER — an ionic bond', { cls: 'fg-tag', size: 12 });
+      const A = P(500, 140), B = P(646, 140);
+      s += `<circle class="fg-orb-node" cx="${A.x}" cy="${A.y}" r="42"></circle>`;
+      s += `<circle class="fg-orb-node" cx="${B.x}" cy="${B.y}" r="56"></circle>`;
+      s += atom(A.x, A.y, 'Na', { kind: 'warn' }); s += atom(B.x, B.y, 'Cl', { kind: 'warn' });
+      s += text(500, 86, '+', { cls: 'fg-tag-warn', size: 15 });
+      s += text(646, 74, '−', { cls: 'fg-tag-warn', size: 15 });
+      s += arrow(P(546, 140), P(584, 140));
+      s += `<circle class="fg-lp" cx="612" cy="140" r="4.6"></circle>`;
+      s += text(565, 118, 'the electron', { cls: 'fg-sm', size: 10 });
+      s += text(570, 216, 'the electron has moved across entirely;', { cls: 'fg-sm', size: 10.5 });
+      s += text(570, 232, 'nothing is shared, and the ions attract', { cls: 'fg-sm', size: 10.5 });
+      s += text(570, 256, 'both atoms now carry a full charge', { cls: 'fg-tag', size: 11 });
+    }
+    return s;
+  },
+  caption: 'The two ways to fill a shell, side by side. On the left one pair of electrons sits between the two hydrogens and each atom counts that same pair toward its own full shell — which is why sharing is cheap and why two atoms can both be satisfied by two electrons. On the right the electron has gone across completely: sodium is left a cation, chlorine an anion, and nothing is shared at all.',
+  note: 'Carbon can do neither trick on its own terms. Four electrons is too many to give away and too many to take on, so every bond carbon makes is the left-hand picture — which is the reason organic chemistry is a covalent subject from end to end, and why the ions you do meet (a sodium beside a carboxylate, a lithium beside an alkoxide) sit at the edges of a molecule rather than inside it.',
+});
+
+/* ---------------------------------------------------------------- F8 ---
+   A triple bond's two pi bonds, drawn perpendicular. The notes say "a
+   triple bond is not three of the same thing" and the acetonitrile figure
+   labels "1 sigma + 2 pi" without drawing the second overlap, which is
+   exactly the thing a reader cannot picture. */
+FIGURES.push({
+  id: 'triple-bond-two-pi',
+  section: 'bonding',
+  anchor: '<h3>Bond length and strength</h3>',
+  viewBox: '0 0 760 280',
+  alt: 'A carbon-carbon triple bond drawn in three panels: the sigma bond along the axis, the first pi bond from p orbitals above and below the axis, and the second pi bond from p orbitals in front of and behind it, perpendicular to the first.',
+  build() {
+    let s = '';
+    const lobe = (cx, cy, rx, ry, cls) =>
+      `<ellipse class="${cls}" cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill-opacity="0.18"></ellipse>`;
+    const panels = [
+      { x: 14,  title: 'the σ bond', sub: 'head-on, along the axis' },
+      { x: 262, title: 'the first π', sub: 'p orbitals above and below' },
+      { x: 510, title: 'the second π', sub: 'p orbitals in front and behind' },
+    ];
+    panels.forEach((p, i) => {
+      s += panel(p.x, 16, 236, 200);
+      const cx = p.x + 118;
+      s += text(cx, 40, p.title, { cls: 'fg-lbl', size: 12.5 });
+      const A = P(cx - 44, 124), B = P(cx + 44, 124);
+      if (i === 0) {
+        s += lobe(cx, 124, 46, 18, 'fg-orb');
+        s += bond(A, B);
+      } else if (i === 1) {
+        s += lobe(cx, 96, 44, 20, 'fg-orb');
+        s += lobe(cx, 152, 44, 20, 'fg-orb');
+        s += bond(A, B, { cls: 'fg-bond-soft' });
+      } else {
+        // perpendicular: drawn as two lobes offset on the other diagonal, so
+        // the reader sees a different pair of lobes in a different place.
+        s += lobe(cx - 24, 100, 28, 24, 'fg-orb');
+        s += lobe(cx + 24, 148, 28, 24, 'fg-orb');
+        s += text(cx - 76, 96, 'front', { cls: 'fg-sm', size: 9.5 });
+        s += text(cx + 76, 152, 'behind', { cls: 'fg-sm', size: 9.5 });
+        s += bond(A, B, { cls: 'fg-bond-soft' });
+      }
+      s += atom(A.x, A.y, 'C'); s += atom(B.x, B.y, 'C');
+      s += text(cx, 190, p.sub, { cls: 'fg-sm', size: 10.5 });
+    });
+    s += rule(14, 234, 746, 234);
+    s += text(380, 254, 'Three bonds, three different overlaps.', { cls: 'fg-lbl', size: 12 });
+    s += text(380, 274, 'Only the sigma holds the carbons end-on, and the two pi bonds sit at right angles.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'A triple bond taken apart. One sigma, made head-on along the axis, plus two pi bonds made sideways from two perpendicular pairs of p orbitals. Drawing them separately is the point: a triple bond is not three copies of the same thing, and the increments in the strength table (64 kcal/mol for the first pi, 53 for the second) are measuring three different overlaps.',
+  note: 'The right angle between the two pi bonds is forced. Each sp carbon has exactly two leftover p orbitals, and those two are perpendicular to each other and to the bond axis — so the second pi bond has nowhere else to go. It also explains why nothing can rotate: turning one carbon would break both pi bonds at once.',
+});
+
+
+
+/* ---------------------------------------------------------------- F9 ---
+   Lone pairs are electron groups, and the group-count worked examples for
+   ammonia and water are the two where a reader forgets that. Drawing the
+   pair in the fourth corner is the whole argument. */
+FIGURES.push({
+  id: 'lone-pairs-are-groups',
+  section: 'hybridization',
+  anchor: '<h3>The shortcut you will actually use</h3>',
+  viewBox: '0 0 760 250',
+  alt: 'Methane, ammonia and water drawn side by side, each with four electron groups around the central atom. Methane has four bonds, ammonia three bonds and one lone pair drawn in the fourth corner, water two bonds and two lone pairs, and all three are labeled sp3.',
+  build() {
+    let s = '';
+    const cases = [
+      { x: 14,  name: 'methane, CH₄',  el: 'C', bonds: 4, count: '4 bonds + 0 pairs' },
+      { x: 268, name: 'ammonia, NH₃',  el: 'N', bonds: 3, count: '3 bonds + 1 pair' },
+      { x: 522, name: 'water, H₂O',    el: 'O', bonds: 2, count: '2 bonds + 2 pairs' },
+    ];
+    /* Four tetrahedral directions, drawn flat: two up, two down. Whichever
+       corners are not bonds are drawn as a lone pair in the same place, so
+       the reader sees that a pair occupies a corner exactly as a bond does. */
+    const dirs = [[-52, -40], [52, -40], [-52, 44], [52, 44]];
+    for (const c of cases) {
+      s += panel(c.x, 16, 226, 176);
+      const cx = c.x + 113, cy = 108;
+      s += text(cx, 40, c.name, { cls: 'fg-lbl', size: 12.5 });
+      dirs.forEach(([dx, dy], i) => {
+        const at = P(cx + dx, cy + dy);
+        if (i < c.bonds) {
+          s += bond(P(cx, cy), at, { rFrom: 16, rTo: 13 });
+          s += atom(at.x, at.y, 'H', { r: 13 });
+        } else {
+          s += `<circle class="fg-orb" cx="${at.x}" cy="${at.y}" r="15" fill-opacity="0.16"></circle>`;
+          s += text(at.x, at.y + 4, 'lp', { cls: 'fg-sm', size: 9.5 });
+          s += bond(P(cx, cy), at, { rFrom: 16, rTo: 16, cls: 'fg-dash' });
+        }
+      });
+      s += atom(cx, cy, c.el, { kind: 'hi' });
+      s += text(cx, 182, c.count + ' = 4 groups', { cls: 'fg-tag-good', size: 11 });
+    }
+    s += rule(14, 208, 746, 208);
+    s += text(380, 228, 'Four groups every time, so all three are sp³ and all three are built on a tetrahedron.', { cls: 'fg-lbl', size: 11.5 });
+    s += text(380, 246, 'What changes is how many corners hold an atom — which is the shape, not the hybridization.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The three worked examples with the lone pairs drawn. Counting groups means counting corners, and a lone pair occupies a corner exactly as a bonded atom does — so ammonia and water have the same four groups methane has, and all three are sp³. Forgetting the pairs always answers one step too unsaturated: sp² for ammonia, sp for water.',
+  note: 'Keep hybridization and shape apart. All three are sp³, because all three have four groups; their <i>shapes</i> differ — tetrahedral, trigonal pyramidal, bent — because shape describes where the atoms are and ignores the pairs. Molecular Geometry is about that second question.',
+});
+
+/* --------------------------------------------------------------- F10 ---
+   The section's own worked examples say "the molecule has a shape at every
+   atom" and then list the shapes in prose. This is that sentence drawn: two
+   molecules with the geometry written at each heavy atom. */
+FIGURES.push({
+  id: 'shape-at-every-atom',
+  section: 'molecular-geometry',
+  anchor: '<h3>Drawing three dimensions on paper</h3>',
+  viewBox: '0 0 760 260',
+  alt: 'Ethanol and acetic acid drawn as condensed structures with the geometry written under each heavy atom: tetrahedral at both carbons of ethanol and bent at its oxygen, and tetrahedral at the methyl carbon of acetic acid, trigonal planar at its carbonyl carbon, trigonal planar at the carbonyl oxygen and bent at the OH oxygen.',
+  build() {
+    let s = '';
+    const note = (x, y, a, b) => text(x, y, a, { cls: 'fg-tag-good', size: 10.5 }) +
+                                 text(x, y + 16, b, { cls: 'fg-sm', size: 10 });
+    // Ethanol
+    {
+      s += panel(14, 16, 352, 150);
+      s += text(190, 40, 'ethanol, CH₃CH₂OH', { cls: 'fg-lbl', size: 12.5 });
+      const C1 = P(84, 96), C2 = P(172, 96), O = P(260, 96), H = P(312, 130);
+      s += bond(C1, C2, { rFrom: 20, rTo: 20 }); s += bond(C2, O, { rFrom: 20, rTo: 15 }); s += bond(O, H, { rFrom: 15, rTo: 12 });
+      s += atom(C1.x, C1.y, 'CH₃', { r: 20 }); s += atom(C2.x, C2.y, 'CH₂', { r: 20 });
+      s += atom(O.x, O.y, 'O', { kind: 'hi' }); s += atom(H.x, H.y, 'H', { r: 12 });
+      s += lonePair(O.x, O.y, 250); s += lonePair(O.x, O.y, 300);
+      s += note(84, 138, '4 groups', 'tetrahedral');
+      s += note(172, 138, '4 groups', 'tetrahedral');
+      s += note(262, 138, '4 groups', 'bent, 104.5°');
+    }
+    // Acetic acid
+    {
+      s += panel(394, 16, 352, 150);
+      s += text(570, 40, 'acetic acid, CH₃COOH', { cls: 'fg-lbl', size: 12.5 });
+      const CM = P(452, 104), C = P(540, 104), Od = P(540, 56), Os = P(628, 104), H = P(676, 132);
+      s += bond(CM, C, { rFrom: 20, rTo: 15 }); s += bond(C, Od, { order: 2, gap: 5, rFrom: 15, rTo: 14 });
+      s += bond(C, Os, { rFrom: 15, rTo: 14 }); s += bond(Os, H, { rFrom: 14, rTo: 12 });
+      s += atom(CM.x, CM.y, 'CH₃', { r: 20 });
+      s += atom(Od.x, Od.y, 'O', { r: 14 }); s += atom(Os.x, Os.y, 'O', { kind: 'hi', r: 14 });
+      s += atom(H.x, H.y, 'H', { r: 12 });
+      s += atom(C.x, C.y, 'C', { kind: 'hi' });
+      s += lonePair(Od.x, Od.y, 200); s += lonePair(Od.x, Od.y, 340);
+      s += lonePair(Os.x, Os.y, 250); s += lonePair(Os.x, Os.y, 20);
+      s += note(452, 138, '4 groups', 'tetrahedral');
+      s += note(540, 138, '3 groups', 'trigonal planar');
+      s += note(632, 138, '4 groups', 'bent');
+      s += text(660, 52, '3 groups \u2014 in the plane', { cls: 'fg-tag-good', size: 10.5 });
+    }
+    s += rule(14, 186, 746, 186);
+    s += text(380, 206, 'A molecule has a shape at every atom, read one atom at a time.', { cls: 'fg-lbl', size: 11.5 });
+    s += text(380, 226, 'The carbonyl carbon and its three neighbors are flat; the methyl beside it is not, and spins freely.', { cls: 'fg-sm', size: 10.5 });
+    s += text(380, 246, 'Note the double bond counts once: the carbonyl carbon has three groups, not four.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The exam question this section is really preparing you for: given a molecule, give the geometry at every heavy atom. Run the group count once per atom and read the answer off the table. The oxygens are the ones people skip — they have shapes too, and both of acetic acid’s are different from each other.',
+  note: 'Watch the two oxygens of acetic acid. The one carrying the hydrogen has two bonds and two lone pairs — four groups, so bent, like water. The doubly bonded one has one group from the double bond plus two lone pairs — three groups, so it sits in the plane of the carbonyl. Same element, same molecule, different count.',
+});
+
+/* --------------------------------------------------------------- F11 ---
+   Where cis/trans comes from, drawn. The section makes the claim in prose
+   and points forward; a reader who has not met alkene naming still needs to
+   see that the two drawings are different substances. */
+FIGURES.push({
+  id: 'locked-rotation-cis-trans',
+  section: 'bonding',
+  anchor: '<h3>Bond strength is not the same as reactivity</h3>',
+  viewBox: '0 0 760 250',
+  alt: 'The two forms of 2-butene drawn side by side as condensed structures: cis, with both methyl groups on the same side of the locked double bond, and trans, with one on each side. A note says the single bond of butane by contrast rotates freely, so it has no such pair.',
+  build() {
+    let s = '';
+    const alkene = (cx, cy, sameSide) => {
+      const A = P(cx - 40, cy), B = P(cx + 40, cy);
+      let g = bond(A, B, { order: 2, rFrom: 15, rTo: 15 });
+      const m1 = P(cx - 84, cy - 42);
+      const m2 = sameSide ? P(cx + 84, cy - 42) : P(cx + 84, cy + 42);
+      const h1 = P(cx - 84, cy + 42);
+      const h2 = sameSide ? P(cx + 84, cy + 42) : P(cx + 84, cy - 42);
+      g += bond(A, m1, { rFrom: 15, rTo: 20 }) + atom(m1.x, m1.y, 'CH₃', { kind: 'hi', r: 20 });
+      g += bond(B, m2, { rFrom: 15, rTo: 20 }) + atom(m2.x, m2.y, 'CH₃', { kind: 'hi', r: 20 });
+      g += bond(A, h1, { rFrom: 15, rTo: 12 }) + atom(h1.x, h1.y, 'H', { r: 12 });
+      g += bond(B, h2, { rFrom: 15, rTo: 12 }) + atom(h2.x, h2.y, 'H', { r: 12 });
+      g += atom(A.x, A.y, 'C') + atom(B.x, B.y, 'C');
+      return g;
+    };
+    s += panel(14, 16, 352, 176);
+    s += text(190, 40, 'cis-2-butene', { cls: 'fg-lbl', size: 12.5 });
+    s += alkene(190, 112, true);
+    s += text(190, 182, 'both methyls on the same side', { cls: 'fg-tag-good', size: 11 });
+
+    s += panel(394, 16, 352, 176);
+    s += text(570, 40, 'trans-2-butene', { cls: 'fg-lbl', size: 12.5 });
+    s += alkene(570, 112, false);
+    s += text(570, 182, 'one methyl on each side', { cls: 'fg-tag-good', size: 11 });
+
+    s += rule(14, 208, 746, 208);
+    s += text(380, 228, 'Two different substances, not two drawings of one.', { cls: 'fg-lbl', size: 11.5 });
+    s += text(380, 248, 'They have different boiling points and different dipoles. Butane, on a single bond, spins freely and has no such pair.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'What a locked double bond buys. Because the pi bond stops the two carbons twisting past each other, the methyl groups cannot swap sides, and the two arrangements are separate compounds that can be bottled apart. Put the same four carbons on a single bond, as in butane, and the two ends spin freely millions of times a second — there is nothing to separate.',
+  note: 'This is the first place in the course where a drawing carries information that a formula does not: both structures here are C₄H₈, and both are “CH₃CH=CHCH₃” written out. <a class="chapter-ref" href="/ochem/learn.html#m-alkenes-alkynes">Alkenes &amp; Alkynes</a> gives the pair their systematic names and the rule for when cis/trans applies at all.',
+});
+
 
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;

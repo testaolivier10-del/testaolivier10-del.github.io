@@ -76,6 +76,8 @@ Findings that are wrong only because of where a chapter sits, left alone so
 the fix is made once against the approved order. Chapter by chapter, as the
 reviews land.
 
+- **Ch 1 Foundations.** `bonding` points at Alkenes & Alkynes for cis/trans;
+  the proposed order moves cis/trans and E/Z into Stereochemistry.
 - **Ch 3 Nomenclature.** `naming-rings-unsaturation` points at Stereochemistry
   for E/Z; true only under the proposed order (E/Z moves into that chapter).
 
@@ -83,11 +85,13 @@ reviews land.
 
 | Chapter | Reviewed | Fixed | Verified | Pushed |
 |---|---|---|---|---|
-| 1 Foundations | yes (48/24/20/32 findings) | in progress | | |
+| 1 Foundations | yes (48/24/20/32 findings) | yes: 11 figures, 6 graded lesson steps, 131 questions replaced or edited, formal-charge formula and Hund's rule errors fixed | in progress | yes |
 | 2 Organic Structure & Electron Movement | yes (38/24/19/33) | queued | | |
-| 3 IUPAC Nomenclature | yes (24/9/12/22) | yes: 9 figures, 85 questions rewritten, 3 chemistry errors (3-ethylpentane keyed as 3-methylhexane; ketone carbon called oxidation level 0; an impossible {3,3,5} locant tie) | in progress | yes |
+| 3 IUPAC Nomenclature | yes (24/9/12/22) | yes: 9 figures, 85 questions rewritten, 3 chemistry errors (3-ethylpentane keyed as 3-methylhexane; ketone carbon called oxidation level 0; an impossible {3,3,5} locant tie) | yes: all four topics meet the standard; five wording errors found and fixed, no wrong key | yes |
 | 4 Acids & Bases | yes (38/17/19/22) | queued | | |
 | 5 Alkanes & Conformations | yes (34/17/16/15) | queued | | |
+| 6 Stereochemistry | yes (31/14/18/27) | queued | | |
+| 7 Substitution & Elimination | yes | queued | | |
 
 ---
 

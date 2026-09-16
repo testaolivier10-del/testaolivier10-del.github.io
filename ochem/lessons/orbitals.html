@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function(){
             api.card.innerHTML =
               '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
               '<h2 class="step-title">Fill carbon’s orbitals in order.</h2>' +
-              '<p class="step-body">Carbon has 6 electrons: 2 pair up in 1s, 2 pair up in 2s, then the last 2 spread out singly across the three (equal-energy) 2p orbitals — Hund’s rule. Click the highlighted orbital each time to add its next electron; an orbital always gets its second (paired, opposite-spin) electron before the next orbital starts filling.</p>' +
+              '<p class="step-body">Carbon has 6 electrons: 2 pair up in 1s, 2 pair up in 2s, then the last 2 spread out singly across the three (equal-energy) 2p orbitals — Hund’s rule. Click the highlighted orbital each time to add its next electron. The rule the highlight follows: fill the lower-energy orbitals first, pairing up inside 1s and 2s because there is nothing else at that energy — then spread singly across the equal-energy 2p set rather than doubling up in one of them.</p>' +
               boxSvg() +
               api.feedbackHtml('fb') +
               api.nextButtonHtml('Continue', done);
@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 var idx = parseInt(g.getAttribute('data-key').slice(1), 10);
                 var targetIdx = slots[next];
                 if(idx !== targetIdx){
-                  api.showFeedback(fb, false, 'Not yet — fill lower-energy orbitals first, and pair up each orbital (2 electrons, opposite spins) before moving to the next one.');
+                  api.showFeedback(fb, false, 'Not yet — fill the lowest available energy first. 1s and 2s each take a pair, because at those energies there is nowhere else to go; the three 2p orbitals are equal in energy, so they take one electron each before any of them gets a second.');
                   return;
                 }
                 counts[idx]++;
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Why it matters',
         title: 'Orbitals combine to make bonds.',
-        bodyHtml: '<div class="explain-box">When atoms bond, their orbitals mix into new shapes called <b>hybrid orbitals</b> — that’s the very next lesson. Everything about a molecule’s 3D shape starts here.</div>'
+        bodyHtml: '<div class="explain-box">Two different things happen to orbitals, and it is worth keeping them apart from the start. An atom first mixes <i>its own</i> orbitals into new shapes — <b>hybridization</b>, the very next lesson, and it happens on one atom at a time. A <b>bond</b> is then what you get when one atom’s orbital <i>overlaps</i> with a neighbor’s and the two share the pair inside. Hybrid orbitals are not shared between atoms; they are the shapes the atoms bring to the overlap. Everything about a molecule’s 3D shape starts here.</div>'
       },
       {
         type: 'final',

@@ -103,7 +103,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 7</div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -211,6 +211,21 @@ document.addEventListener('DOMContentLoaded', function(){
         eyebrow: 'Explain',
         title: 'Polarity is actually measurable: the dipole moment.',
         bodyHtml: '<p class="step-body">A bond or molecule\'s dipole isn\'t just a qualitative arrow — it\'s a real, measurable vector quantity called the <b>dipole moment</b> (symbol μ), measured in <b>debyes (D)</b>. Bigger electronegativity difference and longer bond distance both increase it. Water, with its bent shape and two O–H dipoles adding together, has μ ≈ 1.85 D. CO₂, despite having two individually polar C=O bonds, measures μ = 0 D exactly, because the two bond dipoles are equal-magnitude vectors pointing in exactly opposite directions and cancel completely.</p><p class="step-body" style="margin-bottom:0;">Recall from Electronegativity: a bond\'s polarity as a rule of thumb follows its ΔEN — under 0.5 is essentially nonpolar, 0.5–1.7 is polar covalent. A molecule\'s overall dipole moment is what you get after adding up every individual bond dipole as a vector, accounting for the geometry from Molecular Geometry.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'What polarity is for: it decides how molecules stick to each other.',
+        bodyHtml: '<p class="step-body">A dipole is not only a label on a drawing. It is an attraction between one molecule and the next, and that attraction is what you have to overcome to boil a liquid. Three tiers, weakest first.</p><p class="step-body"><b>Dispersion forces</b> act between every pair of molecules, polar or not: electrons slosh about, a momentary uneven patch on one molecule induces the opposite patch on its neighbor, and they attract. Weak per contact, but they scale with surface area, which is why boiling point climbs steadily along a series of alkanes.</p><p class="step-body"><b>Dipole\u2013dipole forces</b> act between molecules that have a permanent net dipole \u2014 the \u03b4+ end of one lines up with the \u03b4\u2212 end of the next. Stronger than dispersion at the same size.</p><p class="step-body" style="margin-bottom:0;"><b>Hydrogen bonding</b> is the strong special case, and it needs <i>both</i> halves: a hydrogen sitting directly on N, O or F (so it is stripped of density and nearly a bare proton), and a lone pair on an N, O or F to receive it. An O\u2013H or N\u2013H donates; an oxygen or nitrogen anywhere in the molecule accepts. Ethanol has both and boils at 78\u00b0C; dimethyl ether has the same formula, can only accept, and boils at \u221224\u00b0C.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: 'Butane, acetone and propan-1-ol all weigh about the same. Which boils highest, and why?',
+        options: ['Butane \u2014 it has the most carbons', 'Acetone \u2014 its C=O is the most polar bond of the three', 'Propan-1-ol \u2014 its O\u2013H lets it hydrogen bond', 'All three boil within a few degrees, since their weights match'],
+        correctIndex: 2,
+        correctFeedback: 'Correct \u2014 propan-1-ol (97\u00b0C) beats acetone (56\u00b0C) beats butane (\u22121\u00b0C). Weight is matched on purpose, so the only thing left is the tier of force: hydrogen bonding, then dipole\u2013dipole, then dispersion alone. Weight only breaks ties <i>within</i> a tier.',
+        wrongFeedback: 'Rank by the strongest attraction each one can make, not by weight. Which of the three has a hydrogen sitting directly on an oxygen?'
       },
       {
         type: 'explain',

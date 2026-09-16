@@ -10,10 +10,10 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Formal Charge — Foundations | Organic Chemistry</title>
-<meta name="description" content="Learn formal charge by counting bonds and lone pairs on real Lewis structures, from ammonium through the counterintuitive case of perchlorate.">
+<meta name="description" content="Learn formal charge by counting bonds and lone pairs on real Lewis structures, from ammonium through a carbonyl double bond to the nitro group of nitromethane.">
 <link rel="canonical" href="https://levlprep.com/ochem/lessons/formal-charge.html">
 <meta property="og:title" content="Formal Charge — Foundations | Organic Chemistry">
-<meta property="og:description" content="Learn formal charge by counting bonds and lone pairs on real Lewis structures, from ammonium through the counterintuitive case of perchlorate.">
+<meta property="og:description" content="Learn formal charge by counting bonds and lone pairs on real Lewis structures, from ammonium through a carbonyl double bond to the nitro group of nitromethane.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/lessons/formal-charge.html">
 <meta property="og:site_name" content="LevlPrep">
@@ -98,7 +98,7 @@
       "@id": "https://levlprep.com/ochem/lessons/formal-charge.html#lesson",
       "name": "Formal charge",
       "url": "https://levlprep.com/ochem/lessons/formal-charge.html",
-      "description": "Learn formal charge by counting bonds and lone pairs on real Lewis structures, from ammonium through the counterintuitive case of perchlorate.",
+      "description": "Learn formal charge by counting bonds and lone pairs on real Lewis structures, from ammonium through a carbonyl double bond to the nitro group of nitromethane.",
       "learningResourceType": "Lesson",
       "educationalLevel": "Undergraduate",
       "inLanguage": "en",
@@ -159,7 +159,7 @@
 
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 6</div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
   </div>
 
   <div class="lesson-card" id="card"></div>
@@ -189,8 +189,8 @@
 document.addEventListener('DOMContentLoaded', function(){
 (function(){
   var TOPIC_ID = 'formal-charge';
-  var step = 0; // 0 explain, 1 visualize+interact (NH4+), 2 guided (OH-), 3 independent (H3O+), 4 why-it-matters, 5 checksum rule, 6 challenge (ClO4-)
-  var TOTAL = 6;
+  var step = 0; // 0 explain, 1 visualize+interact (NH4+), 2 guided (OH-), 3 independent (H3O+), 4 multiple bond (acetone C=O), 5 why-it-matters, 6 checksum rule, 7 challenge (nitromethane)
+  var TOTAL = 7;
   var card = document.getElementById('card');
   var progFill = document.getElementById('progFill');
   var progLabel = document.getElementById('progLabel');
@@ -204,8 +204,9 @@ document.addEventListener('DOMContentLoaded', function(){
     1: ['formal-charge-calc'],
     2: ['formal-charge-calc'],
     3: ['formal-charge-calc'],
-    5: ['formal-charge-calc', 'lewis-structures-drawing'],
-    6: ['formal-charge-calc', 'lewis-structures-drawing']
+    4: ['formal-charge-calc', 'lewis-structures-drawing'],
+    6: ['formal-charge-calc', 'lewis-structures-drawing'],
+    7: ['formal-charge-calc', 'lewis-structures-drawing']
   };
   var M = window.OchemMastery;
   var conceptRec = M ? M.lessonRecorder(TOPIC_ID) : null;
@@ -243,8 +244,9 @@ document.addEventListener('DOMContentLoaded', function(){
     else if(step===1) renderInteractNH4();
     else if(step===2) renderGuidedOH();
     else if(step===3) renderIndependentH3O();
-    else if(step===4) renderWhyItMatters();
-    else if(step===5) renderChecksum();
+    else if(step===4) renderMultipleBond();
+    else if(step===5) renderWhyItMatters();
+    else if(step===6) renderChecksum();
     // Reaching the challenge step means the lesson has been worked through.
     // This page has no completeLessonRun call of its own, but the concept
     // model still needs the "they went and read it" signal — that is what
@@ -259,7 +261,8 @@ document.addEventListener('DOMContentLoaded', function(){
       '<h2 class="step-title">Not every atom in a Lewis structure is neutral.</h2>' +
       '<p class="step-body">An atom’s <b>formal charge</b> compares the electrons it "owns" in a structure to the electrons it would have on its own as a neutral atom. It’s how you spot which Lewis structure is realistic, and which atom in a molecule is actually charged.</p>' +
       '<div class="formula">FC = (valence electrons) − (lone-pair electrons) − (number of bonds)</div>' +
-      '<p class="step-body" style="margin-bottom:0;">Every bond — single, double, or triple — counts as <b>one bond</b> here, because you’re counting how many bonds surround the atom, not how many electrons are in them.</p>' +
+      '<p class="step-body">The bond term counts <b>shared pairs</b>, one per line you have drawn: a single bond is 1, a double bond is <b>2</b>, a triple bond is <b>3</b>. It is the same thing as taking half the bonding electrons — a double bond holds four electrons and the atom owns two of them.</p>' +
+      '<p class="step-body" style="margin-bottom:0;">Get that wrong and every carbonyl in the course comes out charged. The oxygen of a C=O has 2 lone pairs and a double bond: 6 − 4 − 2 = 0, neutral. Count the double bond as one and you get +1 on an oxygen that is not charged at all.</p>' +
       nextButton('Continue', true);
     card.querySelector('#nextBtn').addEventListener('click', function(){ step=1; render(); });
   }
@@ -414,35 +417,94 @@ document.addEventListener('DOMContentLoaded', function(){
     next.addEventListener('click', function(){ step=4; render(); });
   }
 
-  // ---- Step 4: Why it matters ----
+  // ---- Step 4: A multiple bond — the carbonyl oxygen of acetone ----
+  function renderMultipleBond(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Independent Practice</div>' +
+      '<h2 class="step-title">Now one with a double bond: acetone, CH\u2083COCH\u2083.</h2>' +
+      '<div class="scene"><svg viewBox="0 0 260 180" style="max-width:280px;">' +
+        '<line x1="124" y1="98" x2="124" y2="50" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="138" y1="98" x2="138" y2="50" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="113" y1="112" x2="72" y2="136" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="149" y1="112" x2="190" y2="136" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<circle cx="106" cy="34" r="2.6" class="lp-dot"/><circle cx="112" cy="24" r="2.6" class="lp-dot"/>' +
+        '<circle cx="150" cy="24" r="2.6" class="lp-dot"/><circle cx="156" cy="34" r="2.6" class="lp-dot"/>' +
+        '<circle cx="131" cy="104" r="16" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="131" y="110" text-anchor="middle" font-size="15">C</text>' +
+        '<circle cx="131" cy="44" r="16" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="131" y="50" text-anchor="middle" font-size="15">O</text>' +
+        '<circle cx="53" cy="147" r="22" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="53" y="152" text-anchor="middle" font-size="12">CH\u2083</text>' +
+        '<circle cx="209" cy="147" r="22" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="209" y="152" text-anchor="middle" font-size="12">CH\u2083</text>' +
+      '</svg></div>' +
+      '<p class="step-body">The oxygen has 6 valence electrons, <b>two lone pairs</b>, and a <b>double bond</b> to carbon. What is its formal charge?</p>' +
+      '<div class="choice-row">' + ['\u22122','\u22121','0','+1'].map(function(o){ return '<button class="choice-btn" data-v="' + o + '">' + o + '</button>'; }).join('') + '</div>' +
+      feedbackHtml('fb') +
+      nextButton('Continue', false);
+
+    var fb = card.querySelector('#fb');
+    var next = card.querySelector('#nextBtn');
+    card.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var v = btn.getAttribute('data-v');
+        var isCorrect = v === '0';
+        card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+        btn.classList.add(isCorrect ? 'correct' : 'wrong');
+        record(isCorrect);
+        if(isCorrect){
+          showFeedback(fb, true, 'Correct \u2014 6 \u2212 4 \u2212 2 = 0. The double bond contributes 2 to the bond term, not 1, and a neutral carbonyl oxygen comes out neutral, which is what you want.');
+          next.disabled = false;
+        } else {
+          showFeedback(fb, false, 'The trap is the bond term. Two lone pairs is 4 electrons; the double bond is two shared pairs, so it counts as 2, not 1.');
+          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
+        }
+      });
+    });
+    next.addEventListener('click', function(){ step=5; render(); });
+  }
+
+  // ---- Step 5: Why it matters ----
   function renderWhyItMatters(){
     card.innerHTML =
       '<div class="step-eyebrow">Why it matters</div>' +
       '<h2 class="step-title">Formal charge tells you which structure is realistic.</h2>' +
-      '<div class="explain-box">When a molecule or ion could be drawn several valid ways, the <b>best</b> Lewis structure is usually the one where formal charges are smallest and negative charge sits on the most electronegative atom. You’ll use this constantly — to pick the right resonance structure, to spot the electrophilic atom in a molecule, and to explain why a mechanism attacks where it does.</div>' +
+      '<div class="explain-box">When a molecule or ion could be drawn several valid ways, the <b>best</b> Lewis structure is usually the one where formal charges are smallest and negative charge sits on the most electronegative atom. You’ll use this constantly — to pick the right <b>resonance structure</b> and to find the electron-poor atom that a mechanism attacks, both of which are the business of <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-electron-movement\">Organic Structure &amp; Electron Movement</a>.</div>' +
       nextButton('Continue', true);
-    card.querySelector('#nextBtn').addEventListener('click', function(){ step=5; render(); });
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step=6; render(); });
   }
 
-  // ---- Step 5: A useful check — formal charges must sum to the overall charge ----
+  // ---- Step 6: A useful check — formal charges must sum to the overall charge ----
   function renderChecksum(){
     card.innerHTML =
       '<div class="step-eyebrow">Explain</div>' +
       '<h2 class="step-title">A built-in check: the formal charges have to add up.</h2>' +
       '<p class="step-body">For any structure, the sum of every atom\'s formal charge must equal the overall charge on the molecule or ion. If it doesn\'t, you\'ve made an arithmetic mistake somewhere — go back and recount.</p>' +
-      '<p class="step-body">Check it against the three ions you just did: in NH₄⁺, only nitrogen carries a nonzero formal charge (+1), and every hydrogen is 0 — sum = +1, matching the ion. In OH⁻, oxygen is −1 and hydrogen is 0 — sum = −1, matching. In H₃O⁺, oxygen is +1 and every hydrogen is 0 — sum = +1, matching.</p>' +
+      '<p class="step-body">Check it against the three ions you just did: in NH₄⁺, only nitrogen carries a nonzero formal charge (+1), and every hydrogen is 0 — sum = +1, matching the ion. In OH⁻, oxygen is −1 and hydrogen is 0 — sum = −1, matching. In H₃O⁺, oxygen is +1 and every hydrogen is 0 — sum = +1, matching. Acetone is neutral and every atom in it came out 0 — sum = 0, matching.</p>' +
       '<p class="step-body" style="margin-bottom:0;">For a neutral molecule, this means the formal charges must sum to exactly <b>0</b> — so if you calculate a nonzero total for something you believe is neutral, recheck your bond and lone-pair counts before moving on.</p>' +
       nextButton('One more — a harder case', true);
-    card.querySelector('#nextBtn').addEventListener('click', function(){ step=6; render(); });
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step=7; render(); });
   }
 
-  // ---- Step 6: Challenge — ClO4- ----
+  // ---- Step 7: Challenge — nitromethane, a neutral molecule that still carries charges ----
   function renderChallenge(){
     card.innerHTML =
       '<div class="step-eyebrow">Challenge</div>' +
-      '<h2 class="step-title">Perchlorate, ClO₄⁻: what’s the formal charge on chlorine?</h2>' +
-      '<p class="step-body">Chlorine has 7 valence electrons. In this structure it forms 4 single bonds to oxygen and has no lone pairs left.</p>' +
-      '<div class="choice-row">' + ['−1','0','+1','+3'].map(function(o){ return '<button class="choice-btn" data-v="' + o + '">' + o + '</button>'; }).join('') + '</div>' +
+      '<h2 class="step-title">Nitromethane, CH\u2083NO\u2082: what is the formal charge on nitrogen?</h2>' +
+      '<div class="scene"><svg viewBox="0 0 300 180" style="max-width:300px;">' +
+        '<line x1="76" y1="92" x2="112" y2="92" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="146" y1="80" x2="182" y2="52" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="152" y1="88" x2="188" y2="60" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<line x1="149" y1="104" x2="186" y2="132" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<circle cx="186" cy="20" r="2.5" class="lp-dot"/><circle cx="198" cy="16" r="2.5" class="lp-dot"/>' +
+        '<circle cx="216" cy="20" r="2.5" class="lp-dot"/><circle cx="228" cy="16" r="2.5" class="lp-dot"/>' +
+        '<circle cx="198" cy="164" r="2.5" class="lp-dot"/><circle cx="210" cy="168" r="2.5" class="lp-dot"/>' +
+        '<circle cx="228" cy="164" r="2.5" class="lp-dot"/><circle cx="240" cy="168" r="2.5" class="lp-dot"/>' +
+        '<circle cx="216" cy="152" r="2.5" class="lp-dot"/><circle cx="228" cy="156" r="2.5" class="lp-dot"/>' +
+        '<circle cx="54" cy="92" r="22" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="54" y="97" text-anchor="middle" font-size="12">CH\u2083</text>' +
+        '<circle cx="130" cy="92" r="16" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="130" y="98" text-anchor="middle" font-size="15">N</text>' +
+        '<circle cx="200" cy="44" r="14" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="200" y="49" text-anchor="middle" font-size="14">O</text>' +
+        '<circle cx="200" cy="140" r="14" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="200" y="145" text-anchor="middle" font-size="14">O</text>' +
+        '<text class="atom-label" x="222" y="134" text-anchor="middle" font-size="13">\u2212</text>' +
+      '</svg></div>' +
+      '<p class="step-body">Nitrogen has 5 valence electrons. Here it has <b>no lone pair</b>, a single bond to the methyl carbon, a double bond to the upper oxygen, and a single bond to the lower one \u2014 which carries three lone pairs and a \u22121. The molecule as a whole is neutral.</p>' +
+      '<div class="choice-row">' + ['\u22121','0','+1','+2'].map(function(o){ return '<button class="choice-btn" data-v="' + o + '">' + o + '</button>'; }).join('') + '</div>' +
       feedbackHtml('fb') +
       '<div id="doneBox"></div>';
 
@@ -450,15 +512,15 @@ document.addEventListener('DOMContentLoaded', function(){
     card.querySelectorAll('.choice-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
         var v = btn.getAttribute('data-v');
-        var isCorrect = v === '+3';
+        var isCorrect = v === '+1';
         card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
         btn.classList.add(isCorrect ? 'correct' : 'wrong');
         record(isCorrect);
         if(isCorrect){
-          showFeedback(fb, true, 'Correct, and yes, it looks strange: 7 − 0 − 4 = +3 on chlorine, even though the whole ion is −1. That’s exactly why formal charge matters — it’s telling you this isn’t the most realistic structure, and a chemist would look for one that spreads that charge out better.');
+          showFeedback(fb, true, 'Correct: 5 \u2212 0 \u2212 4 = +1, counting the double bond as 2. And now the checksum pays off \u2014 +1 on nitrogen and \u22121 on the single-bonded oxygen sum to 0, which is the neutral molecule you were given. A molecule with no overall charge can still have charged atoms inside it, and a nitro group always does.');
           card.querySelector('#doneBox').innerHTML = '<div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press">Back to the textbook</a></div>';
         } else {
-          showFeedback(fb, false, '7 − 0 − 4 — work through it once more.');
+          showFeedback(fb, false, 'Count the bond term carefully: one bond to carbon, two for the double bond to oxygen, one to the other oxygen. That is 4, with no lone pair to subtract.');
           card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
         }
       });
