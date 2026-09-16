@@ -913,7 +913,7 @@
 
   var GREETING = {
     nremt: 'Ask me anything from this course — the notes, glossary, mnemonics, flow diagrams and skill sheets are all indexed. I can define a term, explain it a different way, or point you at the page it came from.',
-    ochem: 'Ask me anything from this course — all 103 textbook sections are indexed. I can define a term, explain a mechanism another way, or point you at the section it came from.'
+    ochem: 'Ask me anything from this course — all 108 textbook sections are indexed. I can define a term, explain a mechanism another way, or point you at the section it came from.'
   };
 
   function Tutor(mount, opts){

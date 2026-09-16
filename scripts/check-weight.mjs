@@ -77,11 +77,13 @@ const SHELL_BUDGETS = [
      and lesson-concepts.js (one entry per lesson). That is the shell doing its
      job rather than a regression.
 
-     96 -> 104 across three chapters, and the growth is still proportional:
-     the course went from 83 topics to 98, so concepts.js (84 -> 100),
-     curriculum.js and lesson-concepts.js each gained fifteen entries. About
-     1.5 KB gzipped per chapter, which is what a chapter of course map costs
-     and is the number to check against the next time this needs raising.
+     96 -> 108 across five chapters, and the growth is still proportional:
+     the course went from 83 topics to 108, so concepts.js (84 -> 110),
+     curriculum.js and lesson-concepts.js each gained twenty-five entries.
+     About 1.4 KB gzipped per chapter, which is what a chapter of course map
+     costs and is the number to check against the next time this is raised.
+     Phase 3 is finished at this point, so the next raise should be treated
+     as a question rather than a formality.
 
      The obvious saving, if one is ever needed, is that ochem/index.html loads
      lesson-concepts.js for one call in ochem-home.js; splitting that call out
@@ -90,7 +92,7 @@ const SHELL_BUDGETS = [
      every page loads every concept's `teach` string — moving those to a
      fetched file would roughly halve concepts.js at the cost of one request on
      the pages that actually surface a teach block. */
-  ['ochem', 104],
+  ['ochem', 108],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -197,8 +199,8 @@ const DATA_BUDGETS = [
      practice-bank.json itself is the SOURCE the two are generated from. It is
      no longer fetched by anything at runtime, so it has no budget: adding one
      would be budgeting a file no reader downloads. */
-  ['ochem/assets/practice-bank-core.json', 192],
-  ['ochem/assets/practice-bank-why.json', 140],
+  ['ochem/assets/practice-bank-core.json', 204],
+  ['ochem/assets/practice-bank-why.json', 148],
 ];
 
 const REF_RE = /(?:href|src)="([^"]+)"/g;

@@ -38900,7 +38900,7 @@
     "NaBH4 reduction"
    ],
    "correct": 1,
-   "why": "Both are dissolving-metal reductions, and both give the less-stable-looking product.",
+   "why": "Both are dissolving-metal reductions running on solvated electrons, and both give the opposite outcome from catalytic hydrogenation on the same substrate.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -39440,15 +39440,15 @@
    "type": "mcq"
   },
   {
-   "q": "What does a diazonium salt decompose to if warmed?",
+   "q": "What intermediate forms when a diazonium salt loses N2?",
    "options": [
-    "An amine",
-    "A nitro compound",
-    "A phenol only",
-    "An aryl cation"
+    "An aryl cation",
+    "An aryl radical",
+    "A benzyne",
+    "An aryl anion"
    ],
-   "correct": 3,
-   "why": "Which is why the reaction is run cold and used immediately.",
+   "correct": 0,
+   "why": "Badly unstable, which is why it grabs whatever nucleophile is present at once. In warm water that nucleophile is water, and the product is the phenol.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -39501,6 +39501,1966 @@
    ],
    "correct": 3,
    "why": "A single ring position becomes a socket almost anything can be plugged into.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "polymer-basics": [
+  {
+   "q": "What is a monomer?",
+   "options": [
+    "The small unit a polymer is built from",
+    "The repeating piece inside the chain",
+    "The chain end",
+    "The catalyst"
+   ],
+   "correct": 0,
+   "why": "The repeating piece inside the chain is the repeat unit, which may differ from the monomer.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the degree of polymerization?",
+   "options": [
+    "The percent conversion",
+    "The molecular weight",
+    "The number of branches",
+    "The repeat count"
+   ],
+   "correct": 3,
+   "why": "For step-growth it is 1/(1-p), where p is the fraction of groups reacted.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many reactive sites does a chain-forming monomer need?",
+   "options": [
+    "Three",
+    "Four",
+    "Two",
+    "One"
+   ],
+   "correct": 2,
+   "why": "One stops after a single bond; three or more gives a network.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a monomer with three reactive sites give?",
+   "options": [
+    "Nothing",
+    "A cross-linked network",
+    "A longer chain",
+    "A shorter chain"
+   ],
+   "correct": 1,
+   "why": "Which is what makes a thermoset, and why it cannot be melted.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a monomer with one reactive site give?",
+   "options": [
+    "No polymer",
+    "A short chain",
+    "A network",
+    "A branched chain"
+   ],
+   "correct": 0,
+   "why": "It makes one bond and is finished.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is lost in an addition polymerization?",
+   "options": [
+    "Water",
+    "An alcohol",
+    "Carbon dioxide",
+    "Nothing"
+   ],
+   "correct": 3,
+   "why": "The pi bond simply opens, so the repeat unit matches the monomer.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is lost in a condensation polymerization?",
+   "options": [
+    "A radical",
+    "A proton only",
+    "Water",
+    "Nothing"
+   ],
+   "correct": 2,
+   "why": "Which is what the word condensation means.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How do you tell addition from condensation quickly?",
+   "options": [
+    "Check the color",
+    "Compare the formulas",
+    "Measure the melting point",
+    "Count the branches"
+   ],
+   "correct": 1,
+   "why": "Matching formulas means addition; a lighter repeat unit means something was expelled.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which monomer class gives addition polymers?",
+   "options": [
+    "Alkenes",
+    "Diacids",
+    "Diamines",
+    "Diols"
+   ],
+   "correct": 0,
+   "why": "The double bond supplies both reactive ends.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reaction builds a condensation polymer?",
+   "options": [
+    "Radical addition",
+    "Elimination",
+    "Oxidation",
+    "Acyl substitution"
+   ],
+   "correct": 3,
+   "why": "Esterification or amide formation, run repeatedly.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a thermoplastic?",
+   "options": [
+    "A cross-linked rubber",
+    "A branched network",
+    "Separate chains",
+    "One covalent network"
+   ],
+   "correct": 2,
+   "why": "Heating lets the chains slide, so it can be melted and remolded.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a thermoset?",
+   "options": [
+    "An oligomer",
+    "One covalent network",
+    "Separate chains",
+    "A linear polymer"
+   ],
+   "correct": 1,
+   "why": "Heating destroys it rather than softening it, because melting would mean breaking bonds.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which can be melted and remolded?",
+   "options": [
+    "A thermoplastic",
+    "A thermoset",
+    "Both",
+    "Neither"
+   ],
+   "correct": 0,
+   "why": "A network has nothing to loosen.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the repeat unit of polyethylene?",
+   "options": [
+    "-[CH2-CHCl]-",
+    "-[CH=CH]-",
+    "-[CH2-O]-",
+    "-[CH2-CH2]-"
+   ],
+   "correct": 3,
+   "why": "Break the pi bond of ethylene and bracket what is left.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does chain length raise melting point?",
+   "options": [
+    "They are more polar",
+    "They branch more",
+    "Longer chains have more contact and entangle",
+    "They are heavier"
+   ],
+   "correct": 2,
+   "why": "More surface in contact means more total intermolecular attraction.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does branching do to packing?",
+   "options": [
+    "Only matters above Tg",
+    "Prevents it",
+    "Improves it",
+    "Has no effect"
+   ],
+   "correct": 1,
+   "why": "Which is the whole difference between LDPE and HDPE.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What do cross-links do?",
+   "options": [
+    "Tie chains together permanently",
+    "Shorten the chains",
+    "Increase branching",
+    "Lower the molecular weight"
+   ],
+   "correct": 0,
+   "why": "A few make rubber elastic; many make a rigid thermoset.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does regularity along a chain allow?",
+   "options": [
+    "Faster polymerization",
+    "More branching",
+    "Lower molecular weight",
+    "Crystalline packing"
+   ],
+   "correct": 3,
+   "why": "Chains that match can lie against each other.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which grows faster in an addition polymerization?",
+   "options": [
+    "Only the shortest chains",
+    "Nothing until the end",
+    "Individual chains",
+    "All chains together, slowly"
+   ],
+   "correct": 2,
+   "why": "One active end adds monomer very fast, so long chains exist from the start.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How do chains grow in a step-growth polymerization?",
+   "options": [
+    "By radical propagation",
+    "Any two pieces can join",
+    "Only monomer adds to a chain",
+    "Only at one active end"
+   ],
+   "correct": 1,
+   "why": "Which is why nothing is long until conversion is very high.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the degree of polymerization at 99% conversion in a step-growth?",
+   "options": [
+    "About 100",
+    "About 99",
+    "About 1000",
+    "About 10"
+   ],
+   "correct": 0,
+   "why": "1/(1-0.99), and 99% sounds finished while giving a marginal material.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the degree of polymerization at 90% conversion?",
+   "options": [
+    "About 90",
+    "About 100",
+    "About 900",
+    "About 10"
+   ],
+   "correct": 3,
+   "why": "An oil rather than a plastic.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does step-growth need exact stoichiometry?",
+   "options": [
+    "It affects the color",
+    "It prevents branching",
+    "An excess caps the ends",
+    "It changes the mechanism"
+   ],
+   "correct": 2,
+   "why": "Two like groups cannot react with each other, so growth stops.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a monofunctional impurity matter so much?",
+   "options": [
+    "It changes the color",
+    "It ends a chain",
+    "It slows the reaction",
+    "It causes branching"
+   ],
+   "correct": 1,
+   "why": "A small mole fraction of it wrecks the molecular weight.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which polymer class is polyethylene?",
+   "options": [
+    "Addition",
+    "Condensation",
+    "Step-growth",
+    "Network"
+   ],
+   "correct": 0,
+   "why": "From an alkene, with nothing lost.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which polymer class is nylon?",
+   "options": [
+    "Addition",
+    "Chain-growth",
+    "Network",
+    "Condensation"
+   ],
+   "correct": 3,
+   "why": "A diacid and a diamine, losing water at each amide.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a repeat unit?",
+   "options": [
+    "The monomer before reaction",
+    "The chain end",
+    "What repeats in the chain",
+    "The initiator"
+   ],
+   "correct": 2,
+   "why": "It equals the monomer only for addition polymers.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is no new reaction needed for this chapter?",
+   "options": [
+    "They need only heat",
+    "The reactions are old",
+    "Polymerization is physical",
+    "Polymers form spontaneously"
+   ],
+   "correct": 1,
+   "why": "Alkene addition and acyl substitution, run on a monomer with two ends.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does glycerol's three OH groups predict?",
+   "options": [
+    "A cross-linked network",
+    "A linear chain",
+    "No polymer",
+    "A branched chain only"
+   ],
+   "correct": 0,
+   "why": "Three sites lets each monomer join three others.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which question predicts the material before any mechanism?",
+   "options": [
+    "What the melting point is",
+    "Which catalyst is used",
+    "What the solvent is",
+    "How many sites"
+   ],
+   "correct": 3,
+   "why": "One, two or three or more gives three different outcomes.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "addition-polymers": [
+  {
+   "q": "What are the three stages of radical polymerization?",
+   "options": [
+    "Initiation, propagation, termination",
+    "Addition, elimination, substitution",
+    "Start, middle, end",
+    "Nucleation, growth, capping"
+   ],
+   "correct": 0,
+   "why": "The same three as radical halogenation.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What starts a radical polymerization?",
+   "options": [
+    "Light alone",
+    "A Lewis acid",
+    "Heat alone",
+    "A peroxide or azo initiator"
+   ],
+   "correct": 3,
+   "why": "It breaks homolytically to give two radicals.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens in propagation?",
+   "options": [
+    "The initiator breaks",
+    "A proton transfers",
+    "The radical adds to the next alkene",
+    "Two radicals combine"
+   ],
+   "correct": 2,
+   "why": "Generating a new radical at the end of a longer chain, thousands of times.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens in termination?",
+   "options": [
+    "The initiator re-forms",
+    "Two radicals meet",
+    "A monomer is consumed",
+    "The chain branches"
+   ],
+   "correct": 1,
+   "why": "Either combining or disproportionating.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why are the chains long?",
+   "options": [
+    "Radicals rarely meet",
+    "Propagation is slow",
+    "Initiation is slow",
+    "Termination is forbidden"
+   ],
+   "correct": 0,
+   "why": "So propagation runs a long way before two radicals find each other.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which end of CH2=CHX does the growing radical attack?",
+   "options": [
+    "The CHX end",
+    "Either equally",
+    "Neither",
+    "The CH2 end"
+   ],
+   "correct": 3,
+   "why": "That leaves the radical on the substituted, more stable carbon.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is head-to-tail linking?",
+   "options": [
+    "Random placement",
+    "Substituents at chain ends",
+    "Substituents alternate",
+    "Substituents on adjacent carbons"
+   ],
+   "correct": 2,
+   "why": "It follows from taking the more stable radical every time.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which rule does head-to-tail regiochemistry resemble?",
+   "options": [
+    "Huckel's",
+    "Markovnikov's",
+    "Zaitsev's",
+    "Hund's"
+   ],
+   "correct": 1,
+   "why": "Both come from asking which intermediate is more stable.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What polymer comes from styrene?",
+   "options": [
+    "Polystyrene",
+    "PVC",
+    "PTFE",
+    "Polypropylene"
+   ],
+   "correct": 0,
+   "why": "Foam cups and packaging.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What polymer comes from vinyl chloride?",
+   "options": [
+    "Polystyrene",
+    "PTFE",
+    "PMMA",
+    "PVC"
+   ],
+   "correct": 3,
+   "why": "Pipe, flooring and insulation.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What polymer comes from tetrafluoroethylene?",
+   "options": [
+    "Polystyrene",
+    "Polypropylene",
+    "PTFE",
+    "PVC"
+   ],
+   "correct": 2,
+   "why": "Teflon, and there is no head-to-tail question because both carbons are identical.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What polymer comes from methyl methacrylate?",
+   "options": [
+    "Polystyrene",
+    "PMMA",
+    "PVC",
+    "PTFE"
+   ],
+   "correct": 1,
+   "why": "Plexiglas, and it is transparent because it is amorphous.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does tacticity describe?",
+   "options": [
+    "How substituents are arranged along the chain",
+    "The chain length",
+    "The branching",
+    "The cross-link density"
+   ],
+   "correct": 0,
+   "why": "Every substituted carbon in the chain is a stereocenter.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is isotactic?",
+   "options": [
+    "Alternating substituents",
+    "Random substituents",
+    "No substituents",
+    "All on one side"
+   ],
+   "correct": 3,
+   "why": "Packs well, so the material is crystalline and strong.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is syndiotactic?",
+   "options": [
+    "Random",
+    "Only at the ends",
+    "Substituents alternating regularly",
+    "All on one side"
+   ],
+   "correct": 2,
+   "why": "Regular, so it packs well too.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is atactic?",
+   "options": [
+    "Clustered",
+    "Random placement",
+    "All on one side",
+    "Alternating"
+   ],
+   "correct": 1,
+   "why": "Cannot pack, so the material is amorphous and soft.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What tacticity does radical polymerization give?",
+   "options": [
+    "Atactic",
+    "Isotactic",
+    "Syndiotactic",
+    "It varies with temperature"
+   ],
+   "correct": 0,
+   "why": "A planar radical has no preference about which face the next monomer arrives on.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What gives isotactic polypropylene?",
+   "options": [
+    "A peroxide initiator",
+    "High pressure",
+    "A Lewis acid",
+    "A Ziegler catalyst"
+   ],
+   "correct": 3,
+   "why": "It holds the chain on a metal center so every addition happens the same way.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is atactic polypropylene like?",
+   "options": [
+    "Transparent and rigid",
+    "A thermoset",
+    "A sticky goo",
+    "Rope-strong"
+   ],
+   "correct": 2,
+   "why": "Nothing packs, so there is no strength.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How does branching happen in radical polymerization?",
+   "options": [
+    "Monomer adds backwards",
+    "The chain bites itself",
+    "The initiator adds twice",
+    "Two chains combine"
+   ],
+   "correct": 1,
+   "why": "The chain then continues from that point, leaving a branch.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which polyethylene is branched?",
+   "options": [
+    "LDPE",
+    "HDPE",
+    "Both equally",
+    "Neither"
+   ],
+   "correct": 0,
+   "why": "High-pressure radical polymerization does this constantly.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which polyethylene is linear?",
+   "options": [
+    "LDPE",
+    "Both",
+    "Neither",
+    "HDPE"
+   ],
+   "correct": 3,
+   "why": "A Ziegler-Natta catalyst suppresses the backbiting that makes branches.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is LDPE used for?",
+   "options": [
+    "Milk bottles",
+    "Pipe",
+    "Rope",
+    "Plastic bags"
+   ],
+   "correct": 3,
+   "why": "Branched, badly packed and flexible.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is HDPE used for?",
+   "options": [
+    "Cling film",
+    "Foam",
+    "Milk bottles and pipe",
+    "Plastic bags"
+   ],
+   "correct": 2,
+   "why": "Linear, well packed and rigid.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Do LDPE and HDPE have the same formula?",
+   "options": [
+    "Only at low molecular weight",
+    "Yes",
+    "No",
+    "Only approximately"
+   ],
+   "correct": 1,
+   "why": "Same monomer, same repeat unit, different architecture.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How do you draw an addition polymer from its monomer?",
+   "options": [
+    "Open the pi bond",
+    "Remove water",
+    "Add a catalyst",
+    "Join two monomers"
+   ],
+   "correct": 0,
+   "why": "Then write a bond leaving each side of the bracket.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is polystyrene brittle?",
+   "options": [
+    "Its chains are short",
+    "It is crystalline",
+    "Bulky phenyl groups",
+    "It is cross-linked"
+   ],
+   "correct": 2,
+   "why": "Nothing packs, so the material is amorphous.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What kind of polymerization suits an alkene with donating groups?",
+   "options": [
+    "None",
+    "Cationic",
+    "Anionic",
+    "Only radical"
+   ],
+   "correct": 1,
+   "why": "The growing cation has to be stabilized.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What kind of polymerization suits an alkene with withdrawing groups?",
+   "options": [
+    "Anionic",
+    "Cationic",
+    "Only radical",
+    "None"
+   ],
+   "correct": 0,
+   "why": "The mirror image of the cationic case.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a Ziegler-Natta catalyst control?",
+   "options": [
+    "Only the rate",
+    "Only the molecular weight",
+    "Only the color",
+    "Stereochemistry"
+   ],
+   "correct": 3,
+   "why": "Holding the chain at a defined metal site does both at once.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "condensation-polymers": [
+  {
+   "q": "What does a diacid plus a diol give?",
+   "options": [
+    "A polyester",
+    "A polyamide",
+    "A polyether",
+    "A polyurethane"
+   ],
+   "correct": 0,
+   "why": "Losing water at each ester bond.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a diacid plus a diamine give?",
+   "options": [
+    "A polyester",
+    "A polyether",
+    "A polycarbonate",
+    "A polyamide"
+   ],
+   "correct": 3,
+   "why": "Losing water at each amide bond.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is PET made from?",
+   "options": [
+    "Lactic acid alone",
+    "Styrene",
+    "Terephthalate and a diol",
+    "Adipic acid and a diamine"
+   ],
+   "correct": 2,
+   "why": "The drinks bottle and the polyester shirt.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is nylon 6,6 made from?",
+   "options": [
+    "Lactic acid",
+    "Adipic acid and a diamine",
+    "Terephthalic acid and a diol",
+    "Caprolactam"
+   ],
+   "correct": 1,
+   "why": "The two sixes count the carbons in each monomer.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What do the numbers in nylon 6,6 count?",
+   "options": [
+    "Carbons",
+    "Repeat units",
+    "Cross-links",
+    "Melting point"
+   ],
+   "correct": 0,
+   "why": "Six in the diacid and six in the diamine, readable straight from the name.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is Kevlar made from?",
+   "options": [
+    "Adipic acid and a diamine",
+    "Ethylene glycol and a diacid",
+    "Styrene and a diene",
+    "Two aromatic para monomers"
+   ],
+   "correct": 3,
+   "why": "Both aromatic and both para-substituted, which is what makes the chains straight.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is Kevlar so strong?",
+   "options": [
+    "Its chains are unusually long",
+    "It contains metal",
+    "Straight aligned chains",
+    "It is cross-linked"
+   ],
+   "correct": 2,
+   "why": "Three factors compounding, none of them exotic.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which resists hydrolysis better?",
+   "options": [
+    "It depends on the chain length",
+    "A polyamide",
+    "A polyester",
+    "They are equal"
+   ],
+   "correct": 1,
+   "why": "Amides are the least reactive acyl derivative, which carries over to the material.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is PET chemically recyclable?",
+   "options": [
+    "Its ester bonds can be hydrolyzed back to monomers",
+    "It melts cleanly",
+    "It is crystalline",
+    "It is transparent"
+   ],
+   "correct": 0,
+   "why": "The property that makes it less durable is what makes it recoverable.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What comparison does a polyamide invite?",
+   "options": [
+    "A carbohydrate chain",
+    "A lipid bilayer",
+    "A nucleic acid",
+    "A protein backbone"
+   ],
+   "correct": 3,
+   "why": "Same amide, same planarity, same interchain hydrogen bonding.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Nylon is strong for the same reason as which biological structure?",
+   "options": [
+    "A lipid bilayer",
+    "A DNA duplex",
+    "A beta sheet",
+    "An alpha helix"
+   ],
+   "correct": 2,
+   "why": "Backbone hydrogen bonds between neighboring chains.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a polyurethane made from?",
+   "options": [
+    "Two diols",
+    "A diol and a diisocyanate",
+    "A diacid and a diol",
+    "A diacid and a diamine"
+   ],
+   "correct": 1,
+   "why": "The alcohol adds across the N=C=O group.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is unusual about polyurethane formation?",
+   "options": [
+    "Nothing is lost",
+    "It needs no monomer",
+    "It is a radical reaction",
+    "It is reversible"
+   ],
+   "correct": 0,
+   "why": "Which is why the class is properly called step-growth rather than condensation.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is the class called step-growth rather than condensation?",
+   "options": [
+    "It grows in steps of ten",
+    "Condensation means something else",
+    "It is a newer name only",
+    "Some lose nothing"
+   ],
+   "correct": 3,
+   "why": "Polyurethane is the exception that forces the broader name.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What linkage does a polycarbonate have?",
+   "options": [
+    "CO-O",
+    "NH-CO-NH",
+    "O-CO-O",
+    "CO-NH"
+   ],
+   "correct": 2,
+   "why": "Two oxygens on one carbonyl.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is polycarbonate used for?",
+   "options": [
+    "Non-stick coatings",
+    "Safety glazing",
+    "Plastic bags",
+    "Rope"
+   ],
+   "correct": 1,
+   "why": "Transparent and extremely impact-resistant.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the formula for degree of polymerization in step-growth?",
+   "options": [
+    "1/(1-p)",
+    "p/(1-p)",
+    "1-p",
+    "p squared"
+   ],
+   "correct": 0,
+   "why": "Which is why the last tenth of a percent is where the material appears.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "At 99.9% conversion, what is the degree of polymerization?",
+   "options": [
+    "About 100",
+    "About 10",
+    "About 999",
+    "About 1000"
+   ],
+   "correct": 3,
+   "why": "And 99% gives only 100, which is barely a plastic.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why must the water be removed continuously?",
+   "options": [
+    "To control the temperature",
+    "To dissolve the polymer",
+    "To drive the equilibrium to completion",
+    "To prevent hydrolysis of the monomer"
+   ],
+   "correct": 2,
+   "why": "Every step is an equilibrium, and the reaction has to be driven the whole way.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens with a 2% excess of one monomer?",
+   "options": [
+    "Nothing measurable",
+    "The chains get capped",
+    "The reaction runs faster",
+    "The polymer cross-links"
+   ],
+   "correct": 1,
+   "why": "Two like groups cannot react with each other, so growth halts.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which polymer is made from lactic acid?",
+   "options": [
+    "PLA",
+    "PET",
+    "Nylon",
+    "Kevlar"
+   ],
+   "correct": 0,
+   "why": "One monomer carrying both an OH and a COOH.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can lactic acid polymerize with itself?",
+   "options": [
+    "It is an alkene",
+    "It has three reactive sites",
+    "It is aromatic",
+    "It has both an OH and a COOH"
+   ],
+   "correct": 3,
+   "why": "Two reactive sites is the only requirement, and they need not be the same kind.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What bond does PET's backbone contain?",
+   "options": [
+    "An ether",
+    "A carbonate",
+    "An ester",
+    "An amide"
+   ],
+   "correct": 2,
+   "why": "Which is the handle that hydrolysis can select.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does para substitution matter in Kevlar?",
+   "options": [
+    "It prevents hydrogen bonding",
+    "It makes the chain straight",
+    "It makes the ring more reactive",
+    "It lowers the melting point"
+   ],
+   "correct": 1,
+   "why": "A straight chain lets neighbors touch along their whole length.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many reactive groups does each condensation monomer need?",
+   "options": [
+    "Two",
+    "One",
+    "Three",
+    "Four"
+   ],
+   "correct": 0,
+   "why": "The same rule as every chain polymer.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What kind of reaction forms each join?",
+   "options": [
+    "Radical addition",
+    "Electrophilic addition",
+    "Elimination",
+    "Acyl substitution"
+   ],
+   "correct": 3,
+   "why": "Esterification or amide formation, and nothing else.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is polyester fabric less durable than nylon to harsh treatment?",
+   "options": [
+    "It is amorphous",
+    "It is branched",
+    "Esters hydrolyze more readily than amides",
+    "It has shorter chains"
+   ],
+   "correct": 2,
+   "why": "The acyl reactivity ladder applied to a material.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does 90% conversion give in a step-growth?",
+   "options": [
+    "A thermoset",
+    "An oil, DP about 10",
+    "A useful plastic",
+    "A fiber"
+   ],
+   "correct": 1,
+   "why": "Which is why these reactions are run to a completeness that looks excessive.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Is Kevlar a thermoset?",
+   "options": [
+    "No, it is a thermoplastic",
+    "Yes",
+    "Only when heated",
+    "It is neither"
+   ],
+   "correct": 0,
+   "why": "Its strength comes from alignment and hydrogen bonds, not from cross-links.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What are the two monomers of a polyester, read backwards?",
+   "options": [
+    "Two diacids",
+    "Two diols",
+    "A diacid and a diamine",
+    "A diacid and a diol"
+   ],
+   "correct": 3,
+   "why": "Cut every ester C-O bond and check each fragment has two reactive sites.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "polymer-properties": [
+  {
+   "q": "What are crystalline regions in a polymer?",
+   "options": [
+    "Where chains pack",
+    "Pure single crystals",
+    "Cross-linked zones",
+    "Branch points"
+   ],
+   "correct": 0,
+   "why": "Almost every real polymer has both crystalline and amorphous regions.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does higher crystallinity do to density?",
+   "options": [
+    "Lowers it",
+    "No effect",
+    "Only matters above Tg",
+    "Raises it"
+   ],
+   "correct": 3,
+   "why": "Packed chains occupy less space.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a highly crystalline polymer opaque?",
+   "options": [
+    "It contains pigment",
+    "It is thicker",
+    "Crystalline and amorphous regions scatter light",
+    "It absorbs visible light"
+   ],
+   "correct": 2,
+   "why": "Their refractive indices differ, so light scatters at every boundary.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which polymers are used for windows?",
+   "options": [
+    "Branched ones",
+    "Amorphous ones like PMMA",
+    "Crystalline ones like HDPE",
+    "Cross-linked ones"
+   ],
+   "correct": 1,
+   "why": "No crystalline regions means nothing to scatter light.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is Tg?",
+   "options": [
+    "Where amorphous regions unfreeze",
+    "Where crystals melt",
+    "Where it decomposes",
+    "Where cross-links break"
+   ],
+   "correct": 0,
+   "why": "Every polymer has one; only semicrystalline ones also have a Tm.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is Tm?",
+   "options": [
+    "Where amorphous regions unfreeze",
+    "The decomposition point",
+    "The cross-link temperature",
+    "Where crystalline regions melt"
+   ],
+   "correct": 3,
+   "why": "A fully amorphous polymer has no Tm at all.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which transition does every polymer have?",
+   "options": [
+    "Both",
+    "Neither",
+    "Tg",
+    "Tm"
+   ],
+   "correct": 2,
+   "why": "Because every polymer has amorphous regions.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does rubber shatter in liquid nitrogen?",
+   "options": [
+    "It depolymerizes",
+    "It is below its Tg",
+    "Its cross-links break",
+    "It crystallizes fully"
+   ],
+   "correct": 1,
+   "why": "Below Tg the chains are frozen and cannot deform.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is rubber elastic at room temperature?",
+   "options": [
+    "It is above its Tg",
+    "It is below its Tg",
+    "It is crystalline",
+    "It is cross-linked only"
+   ],
+   "correct": 0,
+   "why": "Its amorphous chains are mobile, and the cross-links pull them back.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is vulcanization?",
+   "options": [
+    "Melting rubber",
+    "Oxidizing rubber",
+    "Stretching rubber",
+    "Cross-linking rubber with sulfur"
+   ],
+   "correct": 3,
+   "why": "Short S-S bridges form between the chains.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a few percent of cross-links give?",
+   "options": [
+    "A flowing liquid",
+    "A thermoplastic",
+    "An elastic material",
+    "A brittle solid"
+   ],
+   "correct": 2,
+   "why": "Chains can stretch apart and are pulled back, which is a tire.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does heavy cross-linking give?",
+   "options": [
+    "A transparent one",
+    "Brittleness",
+    "An elastic one",
+    "A flowing one"
+   ],
+   "correct": 1,
+   "why": "Nothing can move at all.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is rubber with no cross-links like?",
+   "options": [
+    "Sticky, and it flows",
+    "Elastic",
+    "Brittle",
+    "Rigid"
+   ],
+   "correct": 0,
+   "why": "Chains slide past each other permanently.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is rubber elasticity an entropy effect?",
+   "options": [
+    "Bonds are stretched and stored",
+    "Cross-links compress",
+    "Crystals form on stretching",
+    "Stretching lowers entropy"
+   ],
+   "correct": 3,
+   "why": "Releasing it lets entropy pull the chains back into a coil.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens to a stretched rubber band when heated?",
+   "options": [
+    "Nothing",
+    "It melts",
+    "It contracts further",
+    "It expands"
+   ],
+   "correct": 2,
+   "why": "The entropic restoring force scales with temperature, unlike almost every other material.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a rubber band warm when stretched?",
+   "options": [
+    "Crystallization",
+    "Entropy falls",
+    "Friction between chains",
+    "Bonds break"
+   ],
+   "correct": 1,
+   "why": "The standard demonstration that the elasticity is entropic.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What holds a thermoplastic together?",
+   "options": [
+    "Intermolecular forces",
+    "Covalent cross-links",
+    "Ionic bonds",
+    "Hydrogen bonds only"
+   ],
+   "correct": 0,
+   "why": "Which heat can overcome, so the chains slide and it can be remolded.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What holds a thermoset together?",
+   "options": [
+    "Intermolecular forces",
+    "Hydrogen bonds",
+    "Van der Waals only",
+    "Covalent cross-links"
+   ],
+   "correct": 3,
+   "why": "One network, so melting would mean breaking bonds.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which is recyclable by melting?",
+   "options": [
+    "Both",
+    "Neither",
+    "A thermoplastic",
+    "A thermoset"
+   ],
+   "correct": 2,
+   "why": "A network has nothing to loosen.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Give an example of a thermoset.",
+   "options": [
+    "Polyethylene",
+    "Epoxy",
+    "PET",
+    "Nylon"
+   ],
+   "correct": 1,
+   "why": "Bakelite and vulcanized rubber are others.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What do bulky side groups do?",
+   "options": [
+    "Keep chains apart",
+    "Help chains pack",
+    "Increase crystallinity",
+    "Lower Tg"
+   ],
+   "correct": 0,
+   "why": "Polystyrene is brittle and amorphous for this reason.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What do interchain hydrogen bonds do?",
+   "options": [
+    "Push chains apart",
+    "Lower the melting point",
+    "Prevent crystallinity",
+    "Hold chains together"
+   ],
+   "correct": 3,
+   "why": "Nylon and Kevlar both depend on them.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which argument from the biomolecules chapter does packing repeat?",
+   "options": [
+    "Sugar ring closure",
+    "Base pairing",
+    "Fatty acid shape",
+    "Protein folding"
+   ],
+   "correct": 2,
+   "why": "Straight chains stack and melt high; kinked or branched ones do not.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does more crystallinity do to transparency?",
+   "options": [
+    "Only at high Tm",
+    "Reduces it",
+    "Increases it",
+    "No effect"
+   ],
+   "correct": 1,
+   "why": "Scattering at the boundaries between regions is what causes the cloudiness.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which has a sharp melting point?",
+   "options": [
+    "A crystalline one",
+    "A fully amorphous one",
+    "Neither",
+    "Both"
+   ],
+   "correct": 0,
+   "why": "Amorphous material softens over a range instead.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a long flexible spacer do to Tg?",
+   "options": [
+    "Raises it",
+    "No effect",
+    "Removes it",
+    "Lowers it"
+   ],
+   "correct": 3,
+   "why": "More mobility in the chain means less energy needed to unfreeze it.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is HDPE rigid?",
+   "options": [
+    "It has a higher formula weight",
+    "It is aromatic",
+    "Linear chains pack",
+    "It is cross-linked"
+   ],
+   "correct": 2,
+   "why": "The same repeat unit as LDPE, arranged differently.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does stretching do to a polymer's chains?",
+   "options": [
+    "Cross-links them",
+    "Aligns them",
+    "Coils them",
+    "Breaks them"
+   ],
+   "correct": 1,
+   "why": "Which is also how fibers are drawn to increase strength.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which property does crystallinity NOT increase?",
+   "options": [
+    "Transparency",
+    "Density",
+    "Strength",
+    "Melting point"
+   ],
+   "correct": 0,
+   "why": "It reduces transparency, because ordered regions scatter light.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How many transition temperatures can a polymer have?",
+   "options": [
+    "One",
+    "Three",
+    "None",
+    "Two"
+   ],
+   "correct": 3,
+   "why": "Tg for the amorphous regions and Tm for the crystalline ones.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "polymer-design": [
+  {
+   "q": "A polymer backbone contains only carbons. What was the monomer?",
+   "options": [
+    "A diacid",
+    "A diamine",
+    "A diol",
+    "An alkene"
+   ],
+   "correct": 3,
+   "why": "Put the double bond back into the repeat unit.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A polymer backbone contains esters. What were the monomers?",
+   "options": [
+    "A diacid and a diol",
+    "A diacid and a diamine",
+    "Two diols",
+    "An alkene"
+   ],
+   "correct": 0,
+   "why": "Cut every ester C-O bond.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A polymer backbone contains amides. What were the monomers?",
+   "options": [
+    "Two diamines",
+    "An alkene",
+    "A diacid and a diamine",
+    "A diacid and a diol"
+   ],
+   "correct": 2,
+   "why": "Cut every amide C-N bond.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A disconnection gives a fragment with one reactive group. What does that mean?",
+   "options": [
+    "Nothing unusual",
+    "You cut in the wrong place",
+    "It was a thermoset",
+    "The monomer was monofunctional"
+   ],
+   "correct": 1,
+   "why": "Every chain-forming monomer must have two, which is what let it join on both sides.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "How do you check a polyester disconnection by atom count?",
+   "options": [
+    "Monomers minus repeat unit should be water",
+    "They should be equal",
+    "It should be CO2",
+    "It should be an alcohol"
+   ],
+   "correct": 0,
+   "why": "A condensation loses exactly the small molecule you can account for.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which feature gives high strength?",
+   "options": [
+    "Long flexible spacers",
+    "Branching",
+    "Bulky side groups",
+    "Para aromatic rings"
+   ],
+   "correct": 3,
+   "why": "Rigid, straight chains that align along their whole length.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which feature gives hydrolytic resistance?",
+   "options": [
+    "Carbonate linkages",
+    "Ether linkages",
+    "Amide linkages",
+    "Ester linkages"
+   ],
+   "correct": 2,
+   "why": "Amides are the least reactive acyl derivative.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which feature gives flexibility?",
+   "options": [
+    "Hydrogen bonding",
+    "Long flexible spacers or branching",
+    "Aromatic rings",
+    "Cross-links"
+   ],
+   "correct": 1,
+   "why": "Both lower Tg and prevent packing.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which feature gives transparency?",
+   "options": [
+    "An amorphous structure",
+    "High crystallinity",
+    "Cross-linking",
+    "Linear chains"
+   ],
+   "correct": 0,
+   "why": "Crystalline regions scatter light at every boundary.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which feature gives a shape that cannot be melted?",
+   "options": [
+    "A longer chain",
+    "More branching",
+    "Aromatic rings",
+    "A third site"
+   ],
+   "correct": 3,
+   "why": "Three reactive sites gives a network.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which feature gives degradability?",
+   "options": [
+    "Cross-links",
+    "Aromatic rings",
+    "Ester bonds in the backbone",
+    "A C-C backbone"
+   ],
+   "correct": 2,
+   "why": "They hydrolyze, and enzymes can reach them.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why do durability and persistence go together?",
+   "options": [
+    "Persistence requires crystallinity",
+    "Both come from an unreactive backbone",
+    "They are unrelated",
+    "Durability requires cross-links"
+   ],
+   "correct": 1,
+   "why": "The honest version of the plastics problem rather than a failure of chemistry.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is mechanical recycling?",
+   "options": [
+    "Melting and remolding",
+    "Depolymerizing to monomers",
+    "Burning for energy",
+    "Composting"
+   ],
+   "correct": 0,
+   "why": "Thermoplastics only, and each cycle shortens the chains a little.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is chemical recycling?",
+   "options": [
+    "Melting and remolding",
+    "Grinding into filler",
+    "Incineration",
+    "Back to monomers"
+   ],
+   "correct": 3,
+   "why": "It needs a backbone bond that can be cleaved selectively.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which plastic is most chemically recyclable?",
+   "options": [
+    "Polypropylene",
+    "Polystyrene",
+    "PET",
+    "Polyethylene"
+   ],
+   "correct": 2,
+   "why": "Its ester bonds are a handle hydrolysis can select.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is polyethylene not chemically recyclable?",
+   "options": [
+    "It melts too high",
+    "No selectable bond",
+    "Its chains are too long",
+    "It is cross-linked"
+   ],
+   "correct": 1,
+   "why": "There is nothing for water or an enzyme to pick out from any other bond.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can a thermoset not be recycled either way?",
+   "options": [
+    "It is one network",
+    "It is too crystalline",
+    "It is too pure",
+    "It is too brittle"
+   ],
+   "correct": 0,
+   "why": "The hardest case at end of life.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does PLA hydrolyze back to?",
+   "options": [
+    "Ethylene glycol",
+    "Terephthalic acid",
+    "Glucose",
+    "Lactic acid"
+   ],
+   "correct": 3,
+   "why": "An ordinary metabolite, which is what makes it compostable.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the qualifier on PLA's biodegradability?",
+   "options": [
+    "It degrades instantly",
+    "It needs sunlight",
+    "It needs a composter",
+    "It never degrades"
+   ],
+   "correct": 2,
+   "why": "Biodegradable is a claim about conditions as much as about structure.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What decides whether a polymer can be chemically recycled?",
+   "options": [
+    "The crystallinity",
+    "The backbone bond",
+    "The molecular weight",
+    "The color"
+   ],
+   "correct": 1,
+   "why": "One functional group is the whole difference.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does each mechanical recycling cycle do?",
+   "options": [
+    "Shortens the chains slightly",
+    "Lengthens the chains",
+    "Cross-links the polymer",
+    "Nothing measurable"
+   ],
+   "correct": 0,
+   "why": "Which is why mechanically recycled material degrades with reuse.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which backbone is a handle for hydrolysis?",
+   "options": [
+    "A C-C bond",
+    "A C-H bond",
+    "An alkane chain",
+    "An ester"
+   ],
+   "correct": 3,
+   "why": "An amide is one too, though a more resistant one.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "When was a polymer's end of life decided?",
+   "options": [
+    "At collection",
+    "At the recycling plant",
+    "At the monomer",
+    "During processing"
+   ],
+   "correct": 2,
+   "why": "The backbone functional group is fixed by the monomer.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which polymer can be both recycled and composted?",
+   "options": [
+    "Epoxy",
+    "PLA",
+    "Polyethylene",
+    "Polystyrene"
+   ],
+   "correct": 1,
+   "why": "A polyester that hydrolyzes to a metabolite.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a polyolefin so persistent?",
+   "options": [
+    "Nothing to attack",
+    "It is cross-linked",
+    "It is crystalline",
+    "It is aromatic"
+   ],
+   "correct": 0,
+   "why": "The properties that make it cheap and inert make it permanent.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What must every fragment of a correct disconnection have?",
+   "options": [
+    "One reactive site",
+    "A ring",
+    "An aromatic group",
+    "Two reactive sites"
+   ],
+   "correct": 3,
+   "why": "That is the self-check that catches an error without knowing the compound.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which property argues against crystallinity?",
+   "options": [
+    "Density",
+    "Melting point",
+    "Transparency",
+    "Strength"
+   ],
+   "correct": 2,
+   "why": "The other three all improve with crystallinity.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does an amorphous rigid polymer get its rigidity from?",
+   "options": [
+    "Hydrogen bonds",
+    "Bulky groups",
+    "Crystalline packing",
+    "Cross-links"
+   ],
+   "correct": 1,
+   "why": "PMMA and polycarbonate work this way.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which monomer would you add to make a thermoset?",
+   "options": [
+    "A trifunctional one",
+    "Another difunctional one",
+    "A monofunctional one",
+    "An alkene"
+   ],
+   "correct": 0,
+   "why": "A third reactive site lets chains tie to each other.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the honest summary of the plastics problem?",
+   "options": [
+    "Recycling is only economic",
+    "Polymers are inherently toxic",
+    "Better catalysts would fix it",
+    "They are the same thing"
+   ],
+   "correct": 3,
+   "why": "You cannot have an inert, durable material that also disappears.",
    "difficulty": "medium",
    "type": "mcq"
   }

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a polymer is — Polymers | Organic Chemistry</title>
+<meta name="description" content="Learn why counting reactive sites predicts a chain, a network or nothing, how to tell addition from condensation by counting atoms, and why step-growth needs 99.9% conversion.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/polymer-basics.html">
+<meta property="og:title" content="What a polymer is — Polymers | Organic Chemistry">
+<meta property="og:description" content="Learn why counting reactive sites predicts a chain, a network or nothing, how to tell addition from condensation by counting atoms, and why step-growth needs 99.9% conversion.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/polymer-basics.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/polymer-basics.html#lesson",
+      "name": "What a polymer is",
+      "url": "https://levlprep.com/ochem/lessons/polymer-basics.html",
+      "description": "Learn why counting reactive sites predicts a chain, a network or nothing, how to tell addition from condensation by counting atoms, and why step-growth needs 99.9% conversion.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "What a polymer is"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Polymers",
+          "item": "https://levlprep.com/ochem/learn.html#m-polymers"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "What a polymer is",
+          "item": "https://levlprep.com/ochem/lessons/polymer-basics.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 23 &middot; Polymers</div>
+    <h1 style="margin-bottom:4px;">What a polymer is.</h1>
+    <p class="lede" style="margin-top:0;">No new reactions — only old ones run on a molecule with two reactive ends instead of one.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/polymer-basics.html">What a polymer is &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="addition-polymers.html">Addition polymers</a> &middot; <a href="condensation-polymers.html">Condensation polymers</a> &middot; <a href="acyl-substitution.html">Acyl substitution</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* Counting reactive sites predicts the material before any mechanism is
+     written, so the sort step is four monomers and the question "chain,
+     network, or neither". */
+  var CASES = [
+    { id:'c1', t:'<b>Ethylene</b>, CH₂=CH₂', right:'chain',
+      why:'A chain. The double bond counts as the two reactive ends — one carbon carries the growing chain and the other becomes the new active center.' },
+    { id:'c2', t:'<b>Adipic acid</b>, HOOC(CH₂)₄COOH', right:'chain',
+      why:'A chain, with a partner. Two carboxyls means two joins per monomer, so it links into a line — which is half of nylon 6,6.' },
+    { id:'c3', t:'<b>Acetic acid</b>, CH₃COOH', right:'neither',
+      why:'Neither. One reactive group means it can make one bond and then it is finished — you get a small molecule, not a polymer. The rule is not about how reactive the group is but how many there are.' },
+    { id:'c4', t:'<b>Glycerol</b>, HOCH₂CH(OH)CH₂OH', right:'network',
+      why:'A network. Three OH groups means each monomer can join three others, so the chains tie into each other in every direction. That is what makes a thermoset, and why it cannot be melted.' }
+  ];
+  var OPTS = [ { k:'chain', l:'A chain' }, { k:'network', l:'A network' }, { k:'neither', l:'Neither' } ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'polymer-basics',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'No new reactions in this chapter.',
+        bodyHtml: '<p class="step-body">A <b>polymer</b> is many small units joined end to end. The unit you start with is the <b>monomer</b>, the piece that repeats inside the chain is the <b>repeat unit</b>, and how many times it repeats is the <b>degree of polymerization</b>.</p>' +
+          '<p class="step-body">That is the vocabulary, and it is nearly all the new material there is. Polymers are made by reactions you already have &mdash; alkene addition, esterification, amide formation &mdash; run over and over on a molecule that has <b>two</b> reactive ends instead of one.</p>' +
+          '<div class="explain-box">So the interesting question is not "what is the mechanism" but "what does the structure do". This chapter is where the course stops predicting products and starts predicting <b>materials</b>, which is a genuinely different skill.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Two kinds, told apart by counting atoms.',
+        bodyHtml: '<p class="step-body">Every polymerization here is one of two kinds, and the difference is whether anything is left over.</p>' +
+          '<ul class="step-body">' +
+          '<li><b>Addition</b> (chain-growth). The monomer is an alkene; the π bond opens and nothing is lost. Polyethylene, PVC, polystyrene.</li>' +
+          '<li><b>Condensation</b> (step-growth). Each monomer has two functional groups, and a small molecule &mdash; usually water &mdash; is expelled at every join. Nylon, polyester, Kevlar.</li>' +
+          '</ul>' +
+          '<div class="explain-box">To tell which you are looking at, <b>count atoms</b>. Compare the repeat unit with the monomer: same formula means addition, and a lighter repeat unit means something was condensed out. That works from a drawing alone, without knowing the reaction.</div>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">What will each of these give?</h2>' +
+            '<p class="step-body">One question: <b>how many reactive sites does one monomer have?</b> One stops after a single bond, two builds a line, three or more ties the lines to each other.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:13.5px;">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="What this monomer gives">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Count the reactive groups on one molecule. It is the number that decides, not how reactive they are.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four, from counting alone. One, two and three sites give three different outcomes.'
+                  : 'All four, first time. The count predicts the material before any mechanism is written.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'A repeat unit has the same molecular formula as its monomer. Which kind of polymerization was it?',
+        options: [
+          'Addition',
+          'Condensation',
+          'Either is possible',
+          'Neither; the formulas never match'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct, and this is the fastest diagnostic there is. A condensation expels a small molecule at every join, so its repeat unit is always lighter than its monomer by exactly that much. Matching formulas means nothing left, which means the π bond simply opened.',
+        wrongFeedback: 'Ask what a condensation polymerization produces besides the polymer, and what that does to the repeat unit’s formula.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'Why does a monomer with three reactive sites give a thermoset?',
+        options: [
+          'It links in three directions, forming one covalent network',
+          'It reacts faster than a difunctional monomer',
+          'It produces longer chains',
+          'It cannot be polymerized at all'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. Two sites can only extend a line; a third lets a chain tie to another chain, and repeating that in every direction makes the whole sample a single molecule. That is why a thermoset cannot be melted — melting it would mean breaking covalent bonds rather than letting chains slide past each other.',
+        wrongFeedback: 'Draw what a third reactive site lets a monomer do that a second one does not. Does the chain stay a line?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Why the two kinds feel different to run.',
+        bodyHtml: '<p class="step-body">In an <b>addition</b> polymerization each chain has one active end, and once started it adds monomer extremely fast. So long chains exist from the beginning, and the mixture is long polymer plus unreacted monomer.</p>' +
+          '<p class="step-body">In a <b>step-growth</b>, any two pieces can join &mdash; monomer with monomer, dimer with trimer, and so on. Everything grows together and slowly, so the mixture is full of short pieces until very late.</p>' +
+          '<div class="explain-box">The arithmetic is unforgiving. Degree of polymerization is <b>1/(1&minus;p)</b>, where p is the fraction of groups that have reacted. At 90% that is 10 &mdash; an oil. At 99% it is 100. At 99.9% it is 1,000. So step-growth needs exact stoichiometry, high purity and the by-product removed continuously: the material only appears in the last fraction of a percent.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'Low-density and high-density polyethylene have the same repeat unit. What differs?',
+        options: [
+          'The branching, which decides how well chains pack',
+          'The monomer used',
+          'The molecular formula of the repeat unit',
+          'One is a thermoset'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct, and it is the clearest case in the chapter that architecture is a separate variable from chemistry. LDPE is branched, so the chains cannot lie against each other, and it is flexible and low-density — plastic bags. HDPE is linear, packs well, and is rigid and dense — milk bottles and pipe. Identical formula, identical repeat unit, genuinely different materials.',
+        wrongFeedback: 'They come from the same monomer and have the same formula, so the difference cannot be compositional. What else about a chain can vary?'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'You have a polymer sample that softens when heated and can be remolded. What does that tell you about its monomer?',
+        options: [
+          'The monomer had exactly one reactive site',
+          'The monomer had two reactive sites, so the sample is separate chains',
+          'The monomer had three or more reactive sites',
+          'Nothing; melting behavior is unrelated to the monomer'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and the chain of inference is worth following because it runs all the way from one number to a physical observation. Softening on heating means the chains are <i>separate</i> — held to each other by intermolecular forces that heat can overcome, so they slide past one another. That is a thermoplastic. It cannot be a network, because a network is one covalent molecule and heating it breaks bonds rather than loosening them. And it cannot come from a monofunctional monomer, because that never made a polymer in the first place. So: two reactive sites. Counting them at the start predicted the behavior of the finished material, which is the habit this whole chapter is trying to build.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

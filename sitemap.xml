@@ -126,6 +126,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/addition-polymers.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/addition-reactions.html</loc>
     <lastmod>2026-09-16</lastmod>
     <priority>0.8</priority>
@@ -262,6 +267,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/claisen.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/condensation-polymers.html</loc>
     <lastmod>2026-09-16</lastmod>
     <priority>0.8</priority>
   </url>
@@ -561,6 +571,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/polymer-basics.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/polymer-design.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/polymer-properties.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/protecting-groups.html</loc>
     <lastmod>2026-09-16</lastmod>
     <priority>0.8</priority>
@@ -663,6 +688,11 @@
   <url>
     <loc>https://levlprep.com/ochem/lessons/acyl-substitution.html</loc>
     <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/addition-polymers.html</loc>
+    <lastmod>2026-09-16</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -803,6 +833,11 @@
   <url>
     <loc>https://levlprep.com/ochem/lessons/claisen.html</loc>
     <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/condensation-polymers.html</loc>
+    <lastmod>2026-09-16</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -1088,6 +1123,21 @@
   <url>
     <loc>https://levlprep.com/ochem/lessons/pka.html</loc>
     <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/polymer-basics.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/polymer-design.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/polymer-properties.html</loc>
+    <lastmod>2026-09-16</lastmod>
     <priority>0.7</priority>
   </url>
   <url>

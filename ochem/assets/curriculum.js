@@ -232,6 +232,18 @@
       { id: 'phenols', title: 'Phenols', href: 'lessons/phenols.html', dependsOn: ['acidity-factors', 'pka', 'directing-effects'] },
       { id: 'birch-reduction', title: 'Birch reduction', href: 'lessons/birch-reduction.html', dependsOn: ['aromaticity', 'hydrogenation', 'conjugated-systems'] },
       { id: 'diazonium-chemistry', title: 'Diazonium salts and Sandmeyer', href: 'lessons/diazonium-chemistry.html', dependsOn: ['amine-reactions', 'eas', 'directing-effects'] }
+    ]},
+    /* Polymers last, and genuinely last rather than as an afterthought: not
+       one reaction in the chapter is new. It is addition and acyl
+       substitution run on monomers with two reactive ends, which makes it
+       the place where the course's own reactions get applied to materials
+       people can pick up. */
+    { id: 'polymers', title: 'Polymers', topics: [
+      { id: 'polymer-basics', title: 'What a polymer is', href: 'lessons/polymer-basics.html', dependsOn: ['addition-reactions', 'acyl-substitution', 'alkene-structure'] },
+      { id: 'addition-polymers', title: 'Addition polymers', href: 'lessons/addition-polymers.html', dependsOn: ['polymer-basics', 'markovnikov', 'radical-halogenation'] },
+      { id: 'condensation-polymers', title: 'Condensation polymers', href: 'lessons/condensation-polymers.html', dependsOn: ['polymer-basics', 'esters-amides', 'peptides-proteins'] },
+      { id: 'polymer-properties', title: 'Structure and properties', href: 'lessons/polymer-properties.html', dependsOn: ['addition-polymers', 'condensation-polymers', 'lipids'] },
+      { id: 'polymer-design', title: 'Designing and unmaking a polymer', href: 'lessons/polymer-design.html', dependsOn: ['polymer-properties', 'retrosynthesis', 'acyl-substitution'] }
     ]}
   ];
 

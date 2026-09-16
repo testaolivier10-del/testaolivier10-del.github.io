@@ -143,6 +143,26 @@
       2:['diazonium-hub'], 3:['diazonium-hub'], 4:['diazonium-hub'],
       6:['diazonium-hub'], 7:['diazonium-hub','aromatic-nucleophilic'] } },
 
+    'polymer-basics': { n:8, steps:{
+      2:['two-reactive-sites'], 3:['two-reactive-sites'], 4:['two-reactive-sites'],
+      6:['two-reactive-sites'], 7:['two-reactive-sites'] } },
+
+    'addition-polymers': { n:8, steps:{
+      2:['chain-growth'], 3:['chain-growth'], 4:['chain-growth'],
+      6:['chain-growth'], 7:['chain-growth','packing-and-properties'] } },
+
+    'condensation-polymers': { n:8, steps:{
+      2:['step-growth'], 3:['step-growth'], 4:['step-growth'],
+      6:['step-growth'], 7:['step-growth'] } },
+
+    'polymer-properties': { n:8, steps:{
+      2:['packing-and-properties'], 3:['packing-and-properties'], 4:['packing-and-properties'],
+      6:['crosslink-and-end-of-life'], 7:['crosslink-and-end-of-life'] } },
+
+    'polymer-design': { n:8, steps:{
+      2:['crosslink-and-end-of-life'], 3:['two-reactive-sites'], 4:['packing-and-properties'],
+      6:['crosslink-and-end-of-life'], 7:['crosslink-and-end-of-life'] } },
+
     /* The oxidation & reduction chapter. Graded steps are 2, 3, 4, 6, 7. */
     'oxidation-states': { n:8, steps:{
       2:['oxidation-level'],

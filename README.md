@@ -152,7 +152,7 @@ ochem/                 The Organic Chemistry course (beta)
                             back safe: a step you have already left never records a
                             second attempt, so walking back and forth can't move a score
                             (retries within a step are unaffected)
-    practice-bank.json     3,090 multiple-choice/true-false questions, 30 per topic
+    practice-bank.json     3,240 multiple-choice/true-false questions, 30 per topic
                             across the 78 shipped topics, keyed by topic id. This is
                             the file you EDIT; nothing fetches it at runtime any more
     practice-bank-core.json  Generated. Stems, options and answer keys — what the two
@@ -590,7 +590,7 @@ Each course has a search page that indexes the whole course in the browser and s
 - **Escape, then mark.** Marking the raw string and escaping afterwards eats its own `<mark>` tags; marking raw text with a raw pattern misses any term containing `& < > ' "`. So: slice, escape, then match the escaped term against the escaped text.
 - **A URL has one fragment.** Ochem's textbook links already carry a hash naming the section, and appending `#:~:text=` to that produced `learn.html#e2#:~:text=…` — a second `#`, which matches no element and is not a text directive either. A broken text fragment is ignored by the browser rather than reported, so the only symptom was a link that quietly stopped opening the right chapter.
 
-**`ochem/search.html`** is the new one. `learn.html`'s rail already searched the textbook, but only the textbook, and only the sections that happened to have been fetched already — which left the 99 lessons, the 10 mechanism walkthroughs, the 7 tools and 3,090 practice questions with no way in at all. Someone who could not remember whether anti-periplanar was explained in a lesson, a mechanism walkthrough or the textbook had to guess.
+**`ochem/search.html`** is the new one. `learn.html`'s rail already searched the textbook, but only the textbook, and only the sections that happened to have been fetched already — which left the 104 lessons, the 10 mechanism walkthroughs, the 7 tools and 3,240 practice questions with no way in at all. Someone who could not remember whether anti-periplanar was explained in a lesson, a mechanism walkthrough or the textbook had to guess.
 
 Its five sources are all *derived*, never listed: `curriculum.js` for the lessons and mechanisms (so a topic with no page yet is not a result — a hit that leads to "coming soon" is worse than no hit), the note fragments for the textbook, `tools-registry.js` for the tools, and `practice-bank-core.json` for the questions (with `practice-bank-why.json` stitched back on by position, so an explanation is searchable too). Structure is indexed synchronously so a query typed immediately finds the lessons while the megabyte of prose is still arriving; each source may fail on its own, and the status line names **what is missing** rather than only what is present — offline, the difference between "the bank isn't here" and "your search found nothing" is the whole difference between a working page and a broken one, and an empty result list cannot tell them apart. A filter row exists because a mixed index of five kinds returns forty practice questions and "show me only the lessons" is the first thing anyone wants next.
 
@@ -598,7 +598,7 @@ Search is now a tab in the ochem header (the tab row scrolls horizontally, so a 
 
 ## Reporting a bad question (`assets/report-question.js`)
 
-`sources.html` promised a way to tell us when a question is wrong from the day it was written. It explained the correction policy and said where corrections get listed, and then never said *how* — the only address anywhere on the site was at the bottom of the privacy policy. For a bank of 2,106 NREMT questions and 3,090 ochem ones, written against reference material rather than by a committee, that was the most expensive gap on the site. No script can check whether an answer is clinically right; a student who has just answered one and thinks the key is wrong is the only reviewer who can, and they are on the one screen where saying so costs a tap.
+`sources.html` promised a way to tell us when a question is wrong from the day it was written. It explained the correction policy and said where corrections get listed, and then never said *how* — the only address anywhere on the site was at the bottom of the privacy policy. For a bank of 2,106 NREMT questions and 3,240 ochem ones, written against reference material rather than by a committee, that was the most expensive gap on the site. No script can check whether an answer is clinically right; a student who has just answered one and thinks the key is wrong is the only reviewer who can, and they are on the one screen where saying so costs a tap.
 
 So it is a tap, under the explanation — in the results list after an exam, on the back of a flashcard, and under every ochem question's feedback. Not on a contact page the reader would have to go looking for while holding the thought.
 

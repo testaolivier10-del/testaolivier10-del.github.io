@@ -2459,7 +2459,7 @@ FIGURES.push({
     return s;
   },
   caption: 'The two routes to a nucleophile on a ring, which are mechanistic opposites. SₙAr adds first, through an anion the withdrawing groups stabilize, so the nucleophile arrives exactly where the halide was. Benzyne eliminates first, and because the strained bond it forms is symmetric, the nucleophile can land on either of two carbons.',
-  note: 'Read the substrate before choosing. Withdrawing groups <b>ortho or para</b> to the halide mean SₙAr — meta does nothing, because only ortho and para reach the charge by resonance. A bare ring plus NaNH₂ means benzyne. A ring with neither activation nor an ortho hydrogen runs neither, which is the answer people skip past.',
+  note: 'Read the substrate before choosing. Withdrawing groups <b>ortho or para</b> to the halide mean SₙAr — a meta group helps only inductively, which is measurable and far too little, because only ortho and para reach the charge by resonance. A bare ring plus NaNH₂ means benzyne. A ring with neither activation nor an ortho hydrogen runs neither, which is the answer people skip past.',
 });
 
 /* ----------------------------------------------------------------- 44 ---
@@ -2603,11 +2603,14 @@ FIGURES.push({
     spoke(246, 62,  'CuCl', 'Ar–Cl', 'end', false);
     spoke(246, 120, 'CuBr', 'Ar–Br', 'end', false);
     spoke(246, 236, 'KI',   'Ar–I',  'end', true);
+    // Ar-H is the DELETION row. It is not a group EAS cannot install, so it
+    // gets its own marker rather than sharing the "unreachable" one.
     // Right column: the ones it cannot.
     spoke(516, 62,  'CuCN',           'Ar–CN', 'start', true);
     spoke(516, 120, 'HBF₄, heat', 'Ar–F',  'start', true);
     spoke(516, 236, 'H₂O, warm',  'Ar–OH', 'start', true);
-    spoke(516, 288, 'H₃PO₂', 'Ar–H',  'start', true);
+    spoke(516, 288, 'H₃PO₂', 'Ar–H',  'start', false);
+    s += text(516, 306, 'deletes the substituent', { cls: 'fg-tag', anchor: 'start', size: 9.5 });
 
     s += arrow(P(282, 156), P(252, 104));
     s += arrow(P(282, 166), P(252, 140));
@@ -2617,16 +2620,225 @@ FIGURES.push({
     s += arrow(P(480, 186), P(510, 224));
     s += arrow(P(480, 196), P(510, 276));
 
-    s += text(180, 288, 'green = unreachable', { cls: 'fg-tag-good', size: 10.5 });
-    s += text(180, 304, 'by electrophilic', { cls: 'fg-sm', size: 10 });
-    s += text(180, 318, 'substitution', { cls: 'fg-sm', size: 10 });
+    s += text(170, 288, 'green = unreachable by', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(170, 304, 'electrophilic substitution', { cls: 'fg-sm', size: 10 });
 
     s += rule(24, 326, 700, 326);
-    s += text(360, 338, 'Four of these seven are groups no substitution reaction can put on a ring.', { cls: 'fg-lbl', size: 12 });
+    s += text(360, 338, 'Four reach groups no substitution can install. The fifth takes one away.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
   caption: 'One intermediate, seven products. The diazonium group leaves as nitrogen gas — stable, and a gas that escapes the solution — which is enough to make an aryl position substitutable when no aryl cation should be accessible at all.',
   note: 'The H₃PO₂ row looks like undoing your own work and is the most useful of the seven. An NH₂ group is a powerful ortho/para director, so it can be installed purely to <b>steer</b> the next substitution and then deleted — which is how 1,3,5-tribromobenzene gets made, since bromine itself directs ortho and para and can never reach that pattern. That is a protecting group in aromatic clothes.',
+});
+
+
+/* ----------------------------------------------------------------- 48 ---
+   The chapter's first claim is that one count predicts the material. Three
+   monomers, three outcomes, drawn as what each can connect to. */
+FIGURES.push({
+  id: 'sites-decide',
+  section: 'polymer-basics',
+  anchor: '<h3>Addition polymerization: one active end</h3>',
+  viewBox: '0 0 760 300',
+  alt: 'One reactive site giving a single bond, two giving a chain and three giving a cross-linked network',
+  build() {
+    let s = '';
+    const col = (ox, n, title, out, kind) => {
+      s += panel(ox, 48, 220, 130, { kind });
+      s += tag(ox + 110, 36, title);
+      const cx = ox + 110, cy = 110;
+      s += atom(cx, cy, 'M', { kind: kind === 'warn' ? 'warn' : 'hi' });
+      const dirs = [[0, -40], [0, 40], [-46, 26]];
+      for (let i = 0; i < n; i++) {
+        const [dx, dy] = dirs[i];
+        s += bond(P(cx, cy), P(cx + dx, cy + dy), { rTo: 13 });
+        s += atom(cx + dx, cy + dy, 'M', {});
+      }
+      s += text(ox + 110, 202, out, { cls: kind === 'warn' ? 'fg-tag' : 'fg-tag-good', size: 11.5 });
+    };
+    col(24,  1, 'one reactive site',   'a small molecule, and it stops', 'warn');
+    col(270, 2, 'two reactive sites',  'a chain — a thermoplastic', null);
+    col(516, 3, 'three or more',       'a network — a thermoset',   null);
+
+    s += rule(24, 232, 700, 232);
+    s += text(360, 258, 'Counting the reactive groups on ONE monomer predicts the material,', { cls: 'fg-lbl', size: 12 });
+    s += text(360, 280, 'before any mechanism has been written down.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'The count that runs the whole chapter. One reactive site makes a single bond and stops; two extends a line; three or more ties the lines to each other in every direction, which is what a network is.',
+  note: 'The consequence reaches all the way to the end of the material’s life. Separate chains are held to each other by intermolecular forces, so heat lets them slide and a thermoplastic can be melted and remolded. A network is one covalent molecule, so heating it breaks bonds rather than loosening them — and a thermoset cannot be recycled by melting at all.',
+});
+
+/* ----------------------------------------------------------------- 49 ---
+   Two samples with identical formula and identical repeat unit, and one is
+   a bag and the other a pipe. Drawing the chains is the only way to make
+   that believable. */
+FIGURES.push({
+  id: 'packing-architecture',
+  section: 'addition-polymers',
+  anchor: '<h3>Branching, and the two polyethylenes</h3>',
+  viewBox: '0 0 760 320',
+  alt: 'Linear chains lying flat against each other beside branched chains held apart, labeled HDPE and LDPE',
+  build() {
+    let s = '';
+    // A run of chain as a shallow zigzag, optionally with a short branch.
+    const chain = (x0, y, n, branchAt) => {
+      let t = '', px = x0, py = y, up = true;
+      for (let i = 0; i < n; i++) {
+        const nx = px + 16, ny = up ? y - 6 : y + 6;
+        t += `<line class="fg-bond" x1="${px}" y1="${py}" x2="${nx}" y2="${ny}"></line>`;
+        if (branchAt && i === branchAt) {
+          t += `<line class="fg-bond" x1="${nx}" y1="${ny}" x2="${nx + 8}" y2="${ny - 26}"></line>`;
+          t += `<line class="fg-bond" x1="${nx + 8}" y1="${ny - 26}" x2="${nx + 22}" y2="${ny - 20}"></line>`;
+        }
+        px = nx; py = ny; up = !up;
+      }
+      return t;
+    };
+    const col = (ox, title, branched, label2, use, kind) => {
+      s += panel(ox, 46, 330, 152, { kind });
+      s += tag(ox + 165, 34, title);
+      for (let r = 0; r < 4; r++) {
+        s += chain(ox + 24, 78 + r * 30, 16, branched ? (r % 2 ? 4 : 9) : 0);
+      }
+      s += text(ox + 165, 220, label2, { cls: 'fg-lbl', size: 12 });
+      s += text(ox + 165, 242, use, { cls: kind === 'warn' ? 'fg-tag' : 'fg-tag-good', size: 11 });
+    };
+    col(24,  'linear — chains touch along their length', false,
+        'HDPE: crystalline, dense, rigid', 'milk bottles and pipe', null);
+    col(406, 'branched — held apart', true,
+        'LDPE: amorphous, less dense, floppy', 'plastic bags', 'warn');
+
+    s += rule(24, 268, 700, 268);
+    s += text(360, 294, 'Same monomer. Same repeat unit. Same molecular formula.', { cls: 'fg-lbl', size: 12 });
+    s += text(360, 316, 'The difference is architecture, and it is the whole material.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'The two polyethylenes. High-pressure radical polymerization lets a growing chain abstract a hydrogen from itself and continue from there, leaving branches; a Ziegler–Natta catalyst holds the chain end and suppresses it. Branches stop the chains touching, and everything else follows.',
+  note: 'This is the fatty-acid argument from the biomolecules chapter, applied to a different molecule. Straight chains lie against their neighbors along their full length and the London forces add up; a bend or a branch breaks that contact and the melting point falls with it. Tacticity does the same job by a different route — atactic polypropylene cannot pack either, and it is a goo where the isotactic polymer is rope.',
+});
+
+/* ----------------------------------------------------------------- 50 ---
+   1/(1-p) is the whole reason step-growth is run the way it is, and a
+   number line makes the cliff at the end visible in a way a table does not. */
+FIGURES.push({
+  id: 'conversion-cliff',
+  section: 'condensation-polymers',
+  anchor: '<h3>Why the kinetics feel different</h3>',
+  viewBox: '0 0 760 310',
+  alt: 'Degree of polymerization plotted against conversion, showing 10 at 90 percent, 100 at 99 percent and 1000 at 99.9 percent',
+  build() {
+    let s = '';
+    const rows = [
+      { p: '50%',   dp: '2',     w: 6,   note: 'dimers',        kind: 'warn' },
+      { p: '90%',   dp: '10',    w: 30,  note: 'an oil',        kind: 'warn' },
+      { p: '99%',   dp: '100',   w: 120, note: 'barely a plastic', kind: 'warn' },
+      { p: '99.9%', dp: '1,000', w: 400, note: 'a material',    kind: null },
+    ];
+    s += tag(92, 48, 'conversion');
+    s += tag(210, 48, 'DP = 1/(1−p)');
+    s += tag(470, 48, 'what you have');
+    s += rule(24, 62, 700, 62);
+    rows.forEach((r, i) => {
+      const y = 96 + i * 44;
+      s += label(92, y + 4, r.p, { size: 12.5 });
+      s += text(210, y + 4, r.dp, { cls: 'fg-lbl', size: 12.5 });
+      s += bar(268, y - 11, r.w, 22, { kind: r.kind === 'warn' ? 'warn' : 'hi', opacity: 0.34 });
+      s += text(688, y + 4, r.note, { cls: r.kind === 'warn' ? 'fg-tag' : 'fg-tag-good', anchor: 'end', size: 11 });
+    });
+    s += rule(24, 282, 700, 282);
+    s += text(360, 306, 'Ninety-nine percent conversion sounds finished and gives a chain of a hundred.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'Why a step-growth polymerization is run to a completeness that would be absurd for making a single ester. Any two pieces can join, so the mixture is short fragments until almost every functional group has reacted — and the material only appears in the last fraction of a percent.',
+  note: 'Three requirements follow, and none of them is fussiness. <b>Exact stoichiometry</b>, because an excess of one monomer caps every chain end with a group that cannot react with its own kind. <b>High purity</b>, because one monofunctional impurity terminates a chain permanently. And <b>continuous removal of the water</b>, because every join is an equilibrium and the reaction has to be driven the whole way.',
+});
+
+/* ----------------------------------------------------------------- 51 ---
+   A polymer needs two transition temperatures where a small molecule needs
+   one, and which regions each describes is the thing students merge. */
+FIGURES.push({
+  id: 'tg-and-tm',
+  section: 'polymer-properties',
+  anchor: '<h3>Thermoplastic against thermoset</h3>',
+  viewBox: '0 0 760 300',
+  alt: 'A temperature axis with the glass transition below the melting temperature, marking the glassy, rubbery and molten regions',
+  build() {
+    let s = '';
+    const zones = [
+      { x: 40,  w: 210, lab: 'glassy',  sub: 'amorphous regions frozen',   kind: 'warn' },
+      { x: 250, w: 230, lab: 'rubbery', sub: 'amorphous regions mobile',   kind: 'hi'   },
+      { x: 480, w: 220, lab: 'molten',  sub: 'crystalline regions melted', kind: 'hi'   },
+    ];
+    for (const z of zones) {
+      s += bar(z.x, 96, z.w, 56, { kind: z.kind, opacity: 0.3 });
+      s += text(z.x + z.w / 2, 122, z.lab, { cls: 'fg-lbl', size: 13 });
+      s += text(z.x + z.w / 2, 142, z.sub, { cls: 'fg-sm', size: 10 });
+    }
+    s += arrow(P(40, 180), P(700, 180));
+    s += text(370, 204, 'temperature', { cls: 'fg-tag', size: 11 });
+
+    s += rule(250, 66, 250, 180);
+    s += text(250, 58, 'Tₑ — the glass transition', { cls: 'fg-tag-good', size: 11 });
+    s += rule(480, 66, 480, 180);
+    s += text(480, 58, 'Tₘ — melting', { cls: 'fg-tag-good', size: 11 });
+
+    s += rule(24, 230, 700, 230);
+    s += text(360, 254, 'Every polymer has a Tₑ, because every polymer has amorphous regions.', { cls: 'fg-lbl', size: 12 });
+    s += text(360, 276, 'Only a semicrystalline one also has a Tₘ.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'Two transitions, describing two different parts of the same sample. The glass transition is where the tangled amorphous regions stop being frozen; the melting temperature is where the packed crystalline regions come apart. A fully amorphous polymer simply has no Tₘ.',
+  note: 'Tₑ is the one you meet without noticing. Natural rubber sits well above its glass transition at room temperature, which is exactly why it is elastic — cool it in liquid nitrogen, take it below Tₑ, and the same material shatters like glass because its chains can no longer move.',
+});
+
+/* ----------------------------------------------------------------- 52 ---
+   The chapter ends on an argument rather than a fact, and the argument is
+   visible in a recycling bin: one functional group decides everything. */
+FIGURES.push({
+  id: 'backbone-decides',
+  section: 'polymer-design',
+  anchor: '<h3>Biodegradable by design</h3>',
+  viewBox: '0 0 760 320',
+  alt: 'A polyester backbone with a cleavable ester bond beside a polyethylene backbone of identical C-C bonds',
+  build() {
+    let s = '';
+    const col = (ox, title, kind) => { s += panel(ox, 46, 330, 128, { kind }); s += tag(ox + 165, 34, title); };
+    col(24,  'an ester in the backbone', null);
+    col(406, 'a C–C backbone', 'warn');
+
+    // Left: ...C-C(=O)-O-C... with the cleavable bond marked.
+    const pts = [P(70, 104), P(118, 104), P(166, 104), P(214, 104), P(262, 104)];
+    s += atom(pts[0].x, pts[0].y, 'C', {});
+    s += atom(pts[1].x, pts[1].y, 'C', { kind: 'hi' });
+    s += atom(pts[2].x, pts[2].y, 'O', { kind: 'hi' });
+    s += atom(pts[3].x, pts[3].y, 'C', {});
+    s += atom(pts[4].x, pts[4].y, 'C', {});
+    for (let i = 0; i < 4; i++) s += bond(pts[i], pts[i + 1]);
+    s += atom(118, 58, 'O', {});
+    s += bond(pts[1], P(118, 58), { order: 2 });
+    s += text(142, 148, 'water can pick this bond out', { cls: 'fg-tag-good', size: 10.5 });
+
+    // Right: an undifferentiated run of carbons.
+    let px = 452;
+    const cs = [];
+    for (let i = 0; i < 5; i++) { cs.push(P(px, 104)); px += 48; }
+    cs.forEach((c) => s += atom(c.x, c.y, 'C', {}));
+    for (let i = 0; i < 4; i++) s += bond(cs[i], cs[i + 1]);
+    s += text(548, 148, 'every bond is the same as every other', { cls: 'fg-tag', size: 10.5 });
+
+    s += text(190, 196, 'PET, nylon, PLA', { cls: 'fg-lbl', size: 12 });
+    s += text(190, 216, 'chemically recyclable; PLA composts', { cls: 'fg-sm', size: 10.5 });
+    s += text(560, 196, 'polyethylene, polypropylene', { cls: 'fg-lbl', size: 12 });
+    s += text(560, 216, 'melt-and-remold only, then landfill', { cls: 'fg-sm', size: 10.5 });
+
+    s += rule(24, 246, 700, 246);
+    s += text(360, 272, 'Both are thermoplastics, so both can be melted — but only one can be unmade.', { cls: 'fg-lbl', size: 12 });
+    s += text(360, 294, 'The difference is one functional group, chosen with the monomer.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'Why PET is the most recycled plastic and polyethylene the most landfilled. An ester in the backbone is a bond that hydrolysis can select out of all the others, so the polymer can be taken apart and rebuilt. A saturated C–C chain offers nothing to select.',
+  note: 'The uncomfortable part is that this is not a failure of chemistry to solve. The properties that make a polyolefin cheap, inert and durable — an unreactive backbone with no functional group in it — are exactly the properties that make it permanent. Designing for degradability means deliberately building in a weakness, and the choice is made when someone picks the monomer, not at the recycling plant.',
 });
 
 /* ---------------------------------------------------------------------- */

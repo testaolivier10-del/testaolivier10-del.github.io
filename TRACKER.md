@@ -1100,9 +1100,30 @@ because the C–X bond is not breaking in the slow step.
 test caught it on the first build — the check that did not exist two chapters
 ago.
 
-#### Unit 9 — **not started**
+#### Unit 9 — Polymers — **complete**
 
-Polymers.
+Five sections, five lessons, 150 questions, five concepts, five figures,
+appended as **Chapter 23**. Not one reaction in the chapter is new: it is
+alkene addition and acyl substitution, run on monomers with two reactive ends.
+
+| Section | Covers |
+|---|---|
+| What a polymer is | Counting reactive sites, addition against condensation by atom count, thermoplastic against thermoset, 1/(1−p) |
+| Addition polymers | Initiation/propagation/termination, head-to-tail from radical stability, tacticity and branching |
+| Condensation polymers | Polyesters and polyamides, nylon as a one-residue protein, Kevlar, why the last tenth of a percent is the reaction |
+| Structure and properties | Crystallinity and what it drives, T<sub>g</sub> against T<sub>m</sub>, cross-linking as a dial, elasticity as entropy |
+| Designing and unmaking | Disconnecting a polymer, property-to-feature mapping, and why one backbone bond decides recyclability |
+
+**What makes it a chapter rather than a list** is that it applies the course's
+own arguments to materials people handle. Chain packing is the fatty-acid
+argument from Biomolecules. Nylon's strength is a β sheet's strength. Head-to-
+tail linking is Markovnikov. And the chapter ends on a claim that is chemistry
+rather than policy: an ester in a backbone is a bond hydrolysis can select and
+a saturated C–C chain is not, so the properties that make a polyolefin cheap
+and durable are the same ones that make it permanent.
+
+**Phase 3 is complete.** Nine units, 45 sections, 45 lessons, 1,350 questions,
+49 concepts and 45 figures, taking the course from 64 topics to 108.
 
 ### Phase 9.4 — Depth in the existing units — **not started**
 

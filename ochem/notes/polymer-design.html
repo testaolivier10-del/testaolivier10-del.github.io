@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designing and unmaking a polymer — Polymers | Organic Chemistry</title>
+<meta name="description" content="The previous sections asked what a structure does. This one runs the question backwards: given a material you need, what monomers make it &amp;mdash; and given…">
+<link rel="canonical" href="https://levlprep.com/ochem/notes/polymer-design.html">
+<meta property="og:title" content="Designing and unmaking a polymer — Polymers | Organic Chemistry">
+<meta property="og:description" content="The previous sections asked what a structure does. This one runs the question backwards: given a material you need, what monomers make it &amp;mdash; and given…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/notes/polymer-design.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+</head>
+<body>
+<div class="wrap notes-page">
+  <nav class="notes-crumb" aria-label="Breadcrumb">
+    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
+    <span>Polymers</span>
+  </nav>
+
+  <header class="notes-head">
+    <p class="notes-eyebrow">Polymers &middot; Section 108 of 108</p>
+    <h1>Designing and unmaking a polymer</h1>
+    <a class="notes-onward-cta" href="../lessons/polymer-design.html">Practice this — interactive lesson</a>
+  </header>
+
+  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+       asides); it is the same class the textbook view uses, so a section looks
+       identical whether it is read here or inside learn.html. -->
+  <article class="notes-body notes-view">
+<!-- notes:start -->
+<p class="step-body">The previous sections asked what a structure does. This one runs the question backwards: given a material you need, what monomers make it &mdash; and given a polymer you no longer want, what happens to it.</p>
+
+<h3>Reading a polymer backwards</h3>
+
+<p class="step-body">The disconnection is mechanical once you know which kind you are looking at.</p>
+
+<ul class="step-body">
+<li><b>Only carbons in the backbone?</b> It came from an alkene. Find the repeat unit, put the double bond back, and you have the monomer.</li>
+<li><b>An ester in the backbone?</b> Cut every C&ndash;O bond of the ester. What comes back is a <b>diacid and a diol</b>.</li>
+<li><b>An amide in the backbone?</b> Cut every C&ndash;N bond. What comes back is a <b>diacid and a diamine</b>.</li>
+</ul>
+
+<p class="step-body">The rule that makes this reliable is the one from the first section: <b>every monomer must have two reactive sites.</b> If a disconnection hands you a fragment with only one, you have cut in the wrong place.</p>
+
+<div class="notes-fact">Check the atom count as well. Cut a polyester and you get a diacid and a diol; add their formulas and subtract the repeat unit, and the difference should be water. If it is not, the disconnection is wrong.</div>
+
+<h3>Choosing monomers for a property</h3>
+
+<div class="table-wrap">
+<table class="notes-table">
+<thead><tr><th>You need</th><th>Build in</th><th>Because</th></tr></thead>
+<tbody>
+<tr><td>High strength</td><td>Aromatic rings, para-substituted</td><td>Rigid, straight chains that align</td></tr>
+<tr><td>Hydrolytic resistance</td><td>Amides rather than esters</td><td>Amides are the least reactive acyl derivative</td></tr>
+<tr><td>Flexibility</td><td>Long flexible spacers, or branching</td><td>Lowers T<sub>g</sub>, prevents packing</td></tr>
+<tr><td>Transparency</td><td>Amorphous structure: atactic or bulky</td><td>No crystalline regions to scatter light</td></tr>
+<tr><td>A shape that will not melt</td><td>A trifunctional monomer</td><td>Three sites gives a network</td></tr>
+<tr><td>Degradability</td><td>Ester bonds in the backbone</td><td>They hydrolyze, and enzymes can reach them</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="step-body">Notice that the last two rows point in opposite directions from the second. A property that makes a material durable is the same property that makes it persist in the environment, and you cannot have one without the other &mdash; which is the honest version of the recycling problem.</p>
+
+<h3>What happens at the end</h3>
+
+<p class="step-body">Three fates, and the chemistry decides which is available.</p>
+
+<ul class="step-body">
+<li><b>Mechanical recycling.</b> Melt and remold. Only works for thermoplastics, and each cycle shortens the chains a little, so the material degrades with reuse.</li>
+<li><b>Chemical recycling.</b> Depolymerize back to monomers and rebuild. This needs a backbone that can be cleaved, so it works for <b>PET</b> and for nylon and not for polyethylene &mdash; a C&ndash;C backbone has no bond that hydrolysis can select.</li>
+<li><b>Degradation.</b> Polyesters such as PLA hydrolyze, and given the right conditions organisms can finish the job. Polyolefins essentially do not, because there is nothing in a saturated hydrocarbon chain for water or an enzyme to attack.</li>
+</ul>
+
+<div class="notes-fact">This is why PET is the most recycled plastic and polyethylene is the most landfilled, and the reason is a single functional group. An ester in the backbone is a handle; a C&ndash;C backbone is not. The properties that make polyethylene cheap, inert and durable are exactly the ones that make it permanent.</div>
+
+<h3>Biodegradable by design</h3>
+<!-- fig:backbone-decides:start -->
+<figure class="notes-figure notes-figure--wide" style="--vb:760"><svg viewBox="0 0 760 320" role="img" aria-label="A polyester backbone with a cleavable ester bond beside a polyethylene backbone of identical C-C bonds"><rect class="fg-panel" x="24" y="46" width="330" height="128" rx="10"></rect><text class="fg-tag" x="189" y="34" text-anchor="middle" font-size="11">an ester in the backbone</text><rect class="fg-panel-warn" x="406" y="46" width="330" height="128" rx="10"></rect><text class="fg-tag" x="571" y="34" text-anchor="middle" font-size="11">a C–C backbone</text><circle class="fg-atom" cx="70" cy="104" r="15"></circle><text class="fg-lbl" x="70" y="108.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom-hi" cx="118" cy="104" r="16"></circle><text class="fg-lbl" x="118" y="108.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom-hi" cx="166" cy="104" r="16"></circle><text class="fg-lbl" x="166" y="108.44" text-anchor="middle" font-size="12">O</text><circle class="fg-atom" cx="214" cy="104" r="15"></circle><text class="fg-lbl" x="214" y="108.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom" cx="262" cy="104" r="15"></circle><text class="fg-lbl" x="262" y="108.44" text-anchor="middle" font-size="12">C</text><line class="fg-bond" x1="85" y1="104" x2="103" y2="104"></line><line class="fg-bond" x1="133" y1="104" x2="151" y2="104"></line><line class="fg-bond" x1="181" y1="104" x2="199" y2="104"></line><line class="fg-bond" x1="229" y1="104" x2="247" y2="104"></line><circle class="fg-atom" cx="118" cy="58" r="15"></circle><text class="fg-lbl" x="118" y="62.44" text-anchor="middle" font-size="12">O</text><line class="fg-bond" x1="114" y1="89" x2="114" y2="73"></line><line class="fg-bond" x1="122" y1="89" x2="122" y2="73"></line><text class="fg-tag-good" x="142" y="148" text-anchor="middle" font-size="10.5">water can pick this bond out</text><circle class="fg-atom" cx="452" cy="104" r="15"></circle><text class="fg-lbl" x="452" y="108.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom" cx="500" cy="104" r="15"></circle><text class="fg-lbl" x="500" y="108.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom" cx="548" cy="104" r="15"></circle><text class="fg-lbl" x="548" y="108.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom" cx="596" cy="104" r="15"></circle><text class="fg-lbl" x="596" y="108.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom" cx="644" cy="104" r="15"></circle><text class="fg-lbl" x="644" y="108.44" text-anchor="middle" font-size="12">C</text><line class="fg-bond" x1="467" y1="104" x2="485" y2="104"></line><line class="fg-bond" x1="515" y1="104" x2="533" y2="104"></line><line class="fg-bond" x1="563" y1="104" x2="581" y2="104"></line><line class="fg-bond" x1="611" y1="104" x2="629" y2="104"></line><text class="fg-tag" x="548" y="148" text-anchor="middle" font-size="10.5">every bond is the same as every other</text><text class="fg-lbl" x="190" y="196" text-anchor="middle" font-size="12">PET, nylon, PLA</text><text class="fg-sm" x="190" y="216" text-anchor="middle" font-size="10.5">chemically recyclable; PLA composts</text><text class="fg-lbl" x="560" y="196" text-anchor="middle" font-size="12">polyethylene, polypropylene</text><text class="fg-sm" x="560" y="216" text-anchor="middle" font-size="10.5">melt-and-remold only, then landfill</text><line class="fg-rule" x1="24" y1="246" x2="700" y2="246"></line><text class="fg-lbl" x="360" y="272" text-anchor="middle" font-size="12">Both are thermoplastics, so both can be melted — but only one can be unmade.</text><text class="fg-lbl" x="360" y="294" text-anchor="middle" font-size="12">The difference is one functional group, chosen with the monomer.</text></svg><figcaption>Why PET is the most recycled plastic and polyethylene the most landfilled. An ester in the backbone is a bond that hydrolysis can select out of all the others, so the polymer can be taken apart and rebuilt. A saturated C–C chain offers nothing to select.<span class="notes-figure-note">The uncomfortable part is that this is not a failure of chemistry to solve. The properties that make a polyolefin cheap, inert and durable — an unreactive backbone with no functional group in it — are exactly the properties that make it permanent. Designing for degradability means deliberately building in a weakness, and the choice is made when someone picks the monomer, not at the recycling plant.</span></figcaption></figure>
+<!-- fig:backbone-decides:end -->
+
+<p class="step-body"><b>PLA</b> &mdash; polylactic acid &mdash; is the clearest example of designing for the end. Lactic acid carries both an OH and a COOH, so it is its own diol-and-diacid and polymerizes with itself. The resulting polyester hydrolyzes back to lactic acid, which is a normal metabolite.</p>
+
+<p class="step-body">The qualifier matters, though: PLA composts efficiently at industrial temperatures and only slowly in a garden or in seawater. "Biodegradable" is a claim about conditions as much as about structure.</p>
+
+<h3>What carries forward</h3>
+
+<p class="step-body">Disconnect a polymer by finding the backbone functional group and cutting it, checking that every fragment has two reactive sites. Choose monomers by the property you need, knowing that rigidity, durability and persistence are the same property seen three ways. And when a question asks whether something can be recycled chemically, the answer is whether its backbone has a bond that hydrolysis can find.</p>
+<!-- notes:end -->
+  </article>
+
+  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="polymer-properties.html"><span>Previous</span>Structure and properties</a><span></span></nav>
+
+  <footer class="notes-foot">
+    <p><a href="../learn.html">&larr; All 108 sections</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
+  </footer>
+</div>
+</body>
+</html>
