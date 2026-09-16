@@ -147,10 +147,7 @@ document.addEventListener('DOMContentLoaded', function(){
     { id:'c4', t:'Target is a <b>cyclohexene</b> with four more carbons than either piece', right:'ring',
       why:'Two new C–C bonds in one step — the Diels–Alder. Whenever a target contains a cyclohexene, try this disconnection before anything else.' }
   ];
-  var OPTS = [
-    { k:'none', l:'No C–C bond' }, { k:'one', l:'One-carbon extension' },
-    { k:'aromatic', l:'Ring-to-chain bond' }, { k:'ring', l:'Cycloaddition' }
-  ];
+  var OPTS = [ { k:'one', l:'One-carbon extension' }, { k:'none', l:'No C–C bond' }, { k:'ring', l:'Cycloaddition' }, { k:'aromatic', l:'Ring-to-chain bond' } ];
 
   window.OchemLessonEngine.start({
     topicId: 'carbon-carbon-bonds',

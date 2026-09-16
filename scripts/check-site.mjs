@@ -1765,6 +1765,59 @@ for (const file of walk(join(ROOT, 'ochem', 'mechanisms'), ['.html'])) {
   }
 }
 
+// ---- 29. A sort step's answers must not lie on the diagonal ----
+
+/* The lesson sort steps render their own buttons from a fixed OPTS array, so
+   none of the answer-tell checks above ever saw them — and they had the worst
+   version of the tell. An author writes the rows in the order the options were
+   listed, because that is the order the ideas arrive in while writing, and the
+   correct answers end up on the diagonal: click the Nth button in the Nth row
+   and the whole step clears. When this check was written, twelve lessons were
+   on the diagonal and six of them were perfectly so, clearable with no
+   chemistry at all.
+
+   shuffle-options.js now reorders these buttons at render time, so a reader
+   cannot exploit it. This check exists anyway, for the reason that file gives
+   about the banks: the runtime fix makes the tell invisible, and an invisible
+   tell in the source is still a step whose rows were never thought about. It
+   also fails loudly if the shuffle is ever removed.
+
+   Two separate things are measured. DIAGONAL is how many rows are answered by
+   the button at their own index. DOMINANT is the best score available from
+   pressing one button in every row, which is the check the polymer-properties
+   step failed by hand earlier in this work. */
+{
+  const lessonFiles = htmlFiles.filter((f) => f.includes(`ochem${sep}lessons${sep}`));
+  for (const file of lessonFiles) {
+    const html = readFileSync(file, 'utf8');
+    if (!html.includes('radical-sort')) continue;
+
+    const rights = [...html.matchAll(/right:\s*'([A-Za-z0-9_-]+)'/g)].map((m) => m[1]);
+    const optsBlock = html.match(/var OPTS\s*=\s*\[([\s\S]*?)\];/);
+    if (!rights.length || !optsBlock) continue;
+    const keys = [...optsBlock[1].matchAll(/k:\s*'([A-Za-z0-9_-]+)'/g)].map((m) => m[1]);
+    if (keys.length < 2) continue;
+
+    const where = file.slice(file.indexOf(`ochem${sep}lessons${sep}`));
+    const diagonal = rights.filter((r, i) => keys[i] === r).length;
+    const dominant = Math.max(...keys.map((k) => rights.filter((r) => r === k).length));
+    const chance = rights.length / keys.length;
+
+    if (diagonal / rights.length >= 0.6) {
+      fail(`${where}: the sort step's answers run down the diagonal — ` +
+           `${diagonal} of ${rights.length} rows are answered by the option at their own ` +
+           'index, so pressing the buttons straight down the page clears the step without ' +
+           'reading it. Reorder the CASES array so the answers do not track the OPTS order.');
+    }
+    if (dominant > Math.max(chance * 1.5, chance + 1)) {
+      fail(`${where}: one answer covers ${dominant} of the sort step's ${rights.length} rows, ` +
+           `against ${chance.toFixed(1)} expected by chance across ${keys.length} options. ` +
+           'Pressing that one button scores well without knowing anything. Add rows that ' +
+           'need the other answers, or drop an option that is barely used.');
+    }
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);

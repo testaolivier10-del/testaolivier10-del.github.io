@@ -42589,7 +42589,7 @@
    "type": "mcq"
   },
   {
-   "q": "Benzoic acid to phenyl ketone: which reagent is used first?",
+   "q": "Benzoic acid to benzophenone: which reagent is used first?",
    "options": [
     "NaCN",
     "LiAlH4",
@@ -42597,7 +42597,7 @@
     "AlCl3"
    ],
    "correct": 2,
-   "why": "The ring cannot be acylated until the acid is activated.",
+   "why": "The ring cannot be acylated until the acid is activated; AlCl3 comes second.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -42812,15 +42812,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why is Sandmeyer the only route to an aryl nitrile?",
+   "q": "Why can't EAS put a CN group on a benzene ring?",
    "options": [
-    "CN is too large",
-    "CuCN is inexpensive",
-    "EAS cannot install it",
-    "Benzene is unreactive"
+    "There is no electrophilic cyanide reagent",
+    "Benzene is too unreactive",
+    "The CN group is too large",
+    "Cyanide is a poor nucleophile"
    ],
-   "correct": 2,
-   "why": "There is no electrophilic cyanide reagent for aromatic substitution.",
+   "correct": 0,
+   "why": "So aryl nitriles come from a diazonium salt, or from dehydrating an aryl amide.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -42833,7 +42833,7 @@
     "RCOOH"
    ],
    "correct": 3,
-   "why": "Base with heat reaches the same product via its carboxylate.",
+   "why": "Through the amide, and no oxidant is needed because it is a move along the rung.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -43029,6 +43029,790 @@
    ],
    "correct": 3,
    "why": "Any acidic proton quenches the organometallic reagent.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "alpha-halogenation": [
+  {
+   "q": "Where does the halogen end up in alpha-halogenation?",
+   "options": [
+    "On the alpha carbon",
+    "On the carbonyl carbon",
+    "On the carbonyl oxygen",
+    "On the beta carbon"
+   ],
+   "correct": 0,
+   "why": "Both the enol and the enolate are nucleophilic at that carbon.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Under acid, what is the slow step?",
+   "options": [
+    "Attack on the halogen",
+    "Loss of the OH proton",
+    "Expulsion of halide",
+    "Enol formation"
+   ],
+   "correct": 3,
+   "why": "Halogen is consumed only as fast as enol is made.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which conditions give clean monohalogenation?",
+   "options": [
+    "Excess hydroxide",
+    "Strong base in the cold",
+    "Acid",
+    "Base"
+   ],
+   "correct": 2,
+   "why": "Only the acid route slows itself down after the first halogen.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does acid halogenation stop after one halogen?",
+   "options": [
+    "The acid is consumed in the first step",
+    "The halogen makes the carbonyl less basic",
+    "The halogen blocks the alpha carbon sterically",
+    "The halogen makes the alpha H less acidic"
+   ],
+   "correct": 1,
+   "why": "Enolization needs the oxygen protonated, and withdrawal makes that harder.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does base halogenation run past one halogen?",
+   "options": [
+    "The next alpha H is more acidic",
+    "The enolate becomes more nucleophilic",
+    "Hydroxide is regenerated each cycle",
+    "The carbonyl becomes more electrophilic"
+   ],
+   "correct": 0,
+   "why": "Halogen stabilizes the next enolate's charge, so each step speeds up the one after.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Under base, the second deprotonation is:",
+   "options": [
+    "As fast as the first",
+    "Impossible",
+    "Faster than the first",
+    "Slower than the first"
+   ],
+   "correct": 2,
+   "why": "The installed halogen acidifies what is left behind.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Under acid, the second enolization is:",
+   "options": [
+    "Impossible",
+    "Slower than the first",
+    "Faster than the first",
+    "As fast as the first"
+   ],
+   "correct": 1,
+   "why": "A less basic carbonyl is harder to protonate.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which species attacks Br2 under acidic conditions?",
+   "options": [
+    "The enolate",
+    "The protonated ketone",
+    "An acyl bromide",
+    "The enol"
+   ],
+   "correct": 3,
+   "why": "Acid generates the neutral tautomer, not the anion.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which species attacks Br2 under basic conditions?",
+   "options": [
+    "The enolate",
+    "The enol",
+    "A carbocation",
+    "The hydrate"
+   ],
+   "correct": 0,
+   "why": "Base removes an alpha proton outright.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "The haloform reaction needs which substrate?",
+   "options": [
+    "Any ketone",
+    "A carboxylic acid",
+    "An aldehyde with no alpha H",
+    "A methyl ketone"
+   ],
+   "correct": 3,
+   "why": "Three identical hydrogens on one carbon are required.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What reagents run the haloform reaction?",
+   "options": [
+    "Bromine with catalytic PBr3",
+    "Iodine with no base at all",
+    "Excess X2 and excess hydroxide",
+    "Catalytic halogen in aqueous acid"
+   ],
+   "correct": 2,
+   "why": "Every methyl hydrogen must be replaced before cleavage happens.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What leaves in the haloform cleavage step?",
+   "options": [
+    "The carboxylate",
+    "-CX3",
+    "Hydroxide",
+    "A halide ion"
+   ],
+   "correct": 1,
+   "why": "Three halogens stabilize the departing carbanion.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "The cleavage step of the haloform reaction is:",
+   "options": [
+    "Nucleophilic acyl substitution",
+    "An E2 elimination",
+    "An SN2 displacement at the alpha carbon",
+    "A radical chain step"
+   ],
+   "correct": 0,
+   "why": "Hydroxide adds and the tetrahedral intermediate collapses.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What are the haloform products?",
+   "options": [
+    "An alkyl halide and CO2",
+    "A carboxylate and CX4",
+    "An aldehyde and CHX3",
+    "A carboxylate and CHX3"
+   ],
+   "correct": 3,
+   "why": "Acidic workup then delivers the free acid.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Acetone with excess I2 and NaOH gives which acid?",
+   "options": [
+    "Formic acid",
+    "Oxalic acid",
+    "Acetic acid",
+    "Propanoic acid"
+   ],
+   "correct": 2,
+   "why": "Three carbons become two; the methyl leaves as CHI3.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How does the haloform reaction change the carbon count?",
+   "options": [
+    "Loses two carbons",
+    "Loses one carbon",
+    "Gains one carbon",
+    "Keeps it unchanged"
+   ],
+   "correct": 1,
+   "why": "The methyl group departs as the haloform itself.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which compound gives a positive iodoform test?",
+   "options": [
+    "2-Butanol",
+    "1-Butanol",
+    "3-Pentanone",
+    "Benzaldehyde"
+   ],
+   "correct": 0,
+   "why": "Alkaline hypoiodite oxidizes it to a methyl ketone first.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which alcohol gives a positive iodoform test?",
+   "options": [
+    "Methanol",
+    "1-Propanol",
+    "tert-Butanol",
+    "Ethanol"
+   ],
+   "correct": 3,
+   "why": "It is the primary alcohol that oxidizes to acetaldehyde.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What fragment does a positive iodoform test report?",
+   "options": [
+    "A terminal alkyne",
+    "An aromatic ring",
+    "CH3CO or CH3CH(OH)",
+    "Any carbonyl group"
+   ],
+   "correct": 2,
+   "why": "It is not a test for ketones as such.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is seen in a positive iodoform test?",
+   "options": [
+    "A red precipitate",
+    "A yellow precipitate",
+    "A white precipitate",
+    "Gas evolution"
+   ],
+   "correct": 1,
+   "why": "CHI3 is insoluble and carries a medicinal smell.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which aldehyde gives a positive iodoform test?",
+   "options": [
+    "Acetaldehyde",
+    "Benzaldehyde",
+    "Formaldehyde",
+    "Propanal"
+   ],
+   "correct": 0,
+   "why": "It carries the CH3CO fragment the test detects.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why will a carboxylic acid not halogenate directly?",
+   "options": [
+    "It has no alpha hydrogens",
+    "It is far too electrophilic",
+    "Halogen attacks its oxygen",
+    "It has essentially no enol"
+   ],
+   "correct": 3,
+   "why": "The hydroxyl oxygen already donates into the carbonyl.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What are the Hell-Volhard-Zelinsky reagents?",
+   "options": [
+    "Br2 with LDA",
+    "Br2 with AlCl3",
+    "Br2 with catalytic PBr3",
+    "Br2 with excess aqueous NaOH"
+   ],
+   "correct": 2,
+   "why": "Red phosphorus serves as well, making PBr3 in situ.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What species does HVZ actually halogenate?",
+   "options": [
+    "The anhydride",
+    "The acyl bromide",
+    "The free acid",
+    "The carboxylate salt"
+   ],
+   "correct": 1,
+   "why": "That derivative enolizes where the acid will not.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the HVZ product?",
+   "options": [
+    "An alpha-bromo acid",
+    "An acyl bromide",
+    "An alpha-bromo ketone",
+    "A beta-bromo acid"
+   ],
+   "correct": 0,
+   "why": "Exchange with more starting acid releases it and carries the cycle on.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "HVZ followed by excess NH3 gives:",
+   "options": [
+    "An alpha-hydroxy acid",
+    "An amide",
+    "A nitrile",
+    "An alpha-amino acid"
+   ],
+   "correct": 3,
+   "why": "Ammonia displaces the alpha bromide by SN2.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "HVZ followed by water gives:",
+   "options": [
+    "A dicarboxylic acid",
+    "An alpha-hydroxy acid",
+    "An alpha-amino acid",
+    "An alpha-bromo ketone"
+   ],
+   "correct": 1,
+   "why": "Same SN2 displacement, different nucleophile.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Amino acids made by HVZ then ammonia are:",
+   "options": [
+    "Enantiopure D",
+    "Meso",
+    "Racemic",
+    "Enantiopure L"
+   ],
+   "correct": 2,
+   "why": "Nothing in the sequence selects one face over the other.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is an alpha-halo ketone a good alkylating agent?",
+   "options": [
+    "That position is activated toward SN2",
+    "The halide there is a poor leaving group",
+    "It carries a positive charge",
+    "The carbonyl blocks the backside"
+   ],
+   "correct": 0,
+   "why": "Sitting next to the carbonyl lowers the barrier to displacement.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Treating an alpha-bromo ketone with base gives:",
+   "options": [
+    "An epoxide",
+    "A diketone",
+    "A carboxylic acid",
+    "An enone"
+   ],
+   "correct": 3,
+   "why": "Loss of HX reaches the same enone the aldol condensation does.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "enolate-regiochemistry": [
+  {
+   "q": "In 2-methylcyclohexanone, what is C6?",
+   "options": [
+    "An unsubstituted CH2",
+    "The carbon bearing methyl",
+    "The carbonyl carbon",
+    "A methyl group"
+   ],
+   "correct": 0,
+   "why": "C2 is the crowded side; C6 has nothing on it.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How many ring hydrogens sit on C2 of 2-methylcyclohexanone?",
+   "options": [
+    "Two",
+    "Three",
+    "None",
+    "One"
+   ],
+   "correct": 3,
+   "why": "The methyl group occupies what would be the second one.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Deprotonating C6 of 2-methylcyclohexanone gives:",
+   "options": [
+    "The tetrasubstituted enolate",
+    "A monosubstituted enolate",
+    "The disubstituted enolate",
+    "The trisubstituted enolate"
+   ],
+   "correct": 2,
+   "why": "The less substituted C=C, which is the kinetic choice.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Deprotonating C2 of 2-methylcyclohexanone gives a C=C that is:",
+   "options": [
+    "Tetrasubstituted",
+    "Trisubstituted",
+    "Disubstituted",
+    "Monosubstituted"
+   ],
+   "correct": 1,
+   "why": "The methyl already sits on a carbon of the new double bond.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which base gives the kinetic enolate?",
+   "options": [
+    "LDA",
+    "Sodium ethoxide",
+    "Sodium hydride",
+    "Potassium carbonate"
+   ],
+   "correct": 0,
+   "why": "Bulky, and strong enough to make deprotonation irreversible.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which conditions give the thermodynamic enolate?",
+   "options": [
+    "LDA in THF at -78 degrees C",
+    "LDA in THF, warm",
+    "NaH at -78 C in THF",
+    "NaOEt in ethanol, warm"
+   ],
+   "correct": 3,
+   "why": "Reversible deprotonation lets the mixture settle on the stable enolate.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What makes LDA deprotonation irreversible?",
+   "options": [
+    "The lithium counterion",
+    "Running the reaction cold",
+    "A conjugate acid pKa near 36",
+    "Its poor solubility in cold THF"
+   ],
+   "correct": 2,
+   "why": "Against a ketone's 20, deprotonation goes to completion.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does LDA pick the less hindered alpha carbon?",
+   "options": [
+    "Lithium chelates the oxygen",
+    "It is bulky",
+    "It is weak",
+    "It is a poor nucleophile"
+   ],
+   "correct": 1,
+   "why": "Two isopropyl groups do the discriminating; strength alone would not.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is C6 deprotonated faster in 2-methylcyclohexanone?",
+   "options": [
+    "Two open protons instead of one",
+    "The resulting anion is more stable",
+    "Its C=C is the more substituted",
+    "C6 is closer to the carbonyl"
+   ],
+   "correct": 0,
+   "why": "Statistics and access both point the same way.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why add the ketone to the base, not the reverse?",
+   "options": [
+    "To keep the base cold",
+    "To improve solubility",
+    "To slow the addition",
+    "To avoid free ketone"
+   ],
+   "correct": 3,
+   "why": "Leftover ketone shuttles protons and equilibrates the two enolates.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is inverse addition?",
+   "options": [
+    "Both added to solvent",
+    "Reagents added in portions",
+    "Ketone added to the base",
+    "Base added to the ketone"
+   ],
+   "correct": 2,
+   "why": "It keeps the ketone from ever being present in excess.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What temperature is standard for the kinetic enolate?",
+   "options": [
+    "-78 C",
+    "0 C",
+    "25 C",
+    "100 C"
+   ],
+   "correct": 0,
+   "why": "Cold enough that nothing equilibrates once it has formed.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which solvent is used with LDA here?",
+   "options": [
+    "Acetic acid",
+    "THF",
+    "Water",
+    "Ethanol"
+   ],
+   "correct": 1,
+   "why": "It dissolves the lithium enolate without destroying the base.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Does LDA at room temperature give the thermodynamic enolate?",
+   "options": [
+    "Yes, warmth is enough",
+    "Yes, given several hours",
+    "Only in ethanol",
+    "No, it is still kinetic"
+   ],
+   "correct": 3,
+   "why": "Reversibility is what matters, not the temperature on its own.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does thermodynamic control require here?",
+   "options": [
+    "The ketone must be symmetric",
+    "The solvent must be aprotic",
+    "Deprotonation must reverse",
+    "The base must be bulky"
+   ],
+   "correct": 2,
+   "why": "Only a reversible first step lets the stable enolate accumulate.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which enolate accumulates under equilibrating conditions?",
+   "options": [
+    "Equal amounts of both",
+    "The more substituted",
+    "The less substituted",
+    "The less hindered"
+   ],
+   "correct": 1,
+   "why": "It is the more stable one, and everything can revert to reach it.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which rule ranks the two enolates for stability?",
+   "options": [
+    "Alkene substitution",
+    "Markovnikov's rule",
+    "Huckel's rule",
+    "The Hammond postulate"
+   ],
+   "correct": 0,
+   "why": "The same ranking that makes Zaitsev products favored.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A base that deprotonates completely gives:",
+   "options": [
+    "The thermodynamic enolate",
+    "A mixture at equilibrium",
+    "No enolate at all",
+    "The kinetic enolate"
+   ],
+   "correct": 3,
+   "why": "Complete means irreversible, which blocks equilibration.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "In enolate regiochemistry, the two choices are:",
+   "options": [
+    "Transition states",
+    "Tautomers",
+    "Intermediates",
+    "Products"
+   ],
+   "correct": 2,
+   "why": "You commit to one before any electrophile is added.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Where is the branch point in this control problem?",
+   "options": [
+    "The choice of halide",
+    "The deprotonation",
+    "The C-C bond formation",
+    "The workup"
+   ],
+   "correct": 1,
+   "why": "Reversing it just moves a proton back onto the ketone.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A ketone plus a secondary amine gives:",
+   "options": [
+    "An enamine",
+    "An imine",
+    "An enolate",
+    "An amide"
+   ],
+   "correct": 0,
+   "why": "A primary amine would stop at the imine instead.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Where does an enamine put its double bond?",
+   "options": [
+    "Away from nitrogen entirely",
+    "At the carbonyl carbon",
+    "Toward the less substituted side",
+    "Toward the more substituted side"
+   ],
+   "correct": 2,
+   "why": "The substituted alternative twists the nitrogen lone pair out of alignment.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "An enamine is nucleophilic at:",
+   "options": [
+    "The nitrogen",
+    "The carbonyl oxygen",
+    "The beta carbon",
+    "The alpha carbon"
+   ],
+   "correct": 3,
+   "why": "The nitrogen lone pair pushes electron density out to that carbon.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does an enamine stop after one alkylation?",
+   "options": [
+    "It has only one alpha carbon",
+    "It is less reactive than an enolate",
+    "It is more basic than a lithium enolate",
+    "It is hydrolyzed before reacting"
+   ],
+   "correct": 1,
+   "why": "A lithium enolate is reactive enough to go around twice.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What completes the Stork enamine sequence?",
+   "options": [
+    "Hydrolysis to the ketone",
+    "Reduction to the amine",
+    "Oxidation to the amide",
+    "Elimination of the amine"
+   ],
+   "correct": 0,
+   "why": "Alkylate the enamine first, then unmask the carbonyl.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "The enamine route avoids the need for:",
+   "options": [
+    "A solvent",
+    "An electrophile",
+    "An amine",
+    "A strong base"
+   ],
+   "correct": 3,
+   "why": "The enamine is neutral rather than anionic.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Enolate alkylation proceeds by which mechanism?",
+   "options": [
+    "E2",
+    "Electrophilic addition",
+    "SN2",
+    "SN1"
+   ],
+   "correct": 2,
+   "why": "That is exactly what limits which halides are usable.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which halide alkylates a lithium enolate cleanly?",
+   "options": [
+    "2-Bromopropane",
+    "Iodomethane",
+    "2-Bromobutane",
+    "tert-Butyl bromide"
+   ],
+   "correct": 1,
+   "why": "Methyl and primary halides are the reliable ones.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A tertiary halide with a lithium enolate gives:",
+   "options": [
+    "Elimination only",
+    "Clean substitution",
+    "Substitution and elimination",
+    "No reaction at all"
+   ],
+   "correct": 0,
+   "why": "The enolate acts as a base rather than as a nucleophile.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Secondary halides with lithium enolates give:",
+   "options": [
+    "Clean substitution",
+    "No reaction",
+    "Rearrangement to the enol",
+    "Substantial elimination"
+   ],
+   "correct": 3,
+   "why": "Enough SN2 to tempt you, enough E2 to hurt the yield.",
    "difficulty": "medium",
    "type": "mcq"
   }

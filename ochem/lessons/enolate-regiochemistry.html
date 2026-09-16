@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kinetic &amp; thermodynamic enolates — Enolate Chemistry | Organic Chemistry</title>
+<meta name="description" content="An unsymmetrical ketone has two different alpha carbons, so "form the enolate" is a question. LDA in the cold keeps the first one formed; a weak base lets the mixture find the more stable one.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/enolate-regiochemistry.html">
+<meta property="og:title" content="Kinetic &amp; thermodynamic enolates — Enolate Chemistry | Organic Chemistry">
+<meta property="og:description" content="An unsymmetrical ketone has two different alpha carbons, so "form the enolate" is a question. LDA in the cold keeps the first one formed; a weak base lets the mixture find the more stable one.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/enolate-regiochemistry.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/enolate-regiochemistry.html#lesson",
+      "name": "Kinetic & thermodynamic enolates",
+      "url": "https://levlprep.com/ochem/lessons/enolate-regiochemistry.html",
+      "description": "An unsymmetrical ketone has two different alpha carbons, so "form the enolate" is a question. LDA in the cold keeps the first one formed; a weak base lets the mixture find the more stable one.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Kinetic & thermodynamic enolates"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Enolate Chemistry",
+          "item": "https://levlprep.com/ochem/learn.html#m-enolate-chemistry"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Kinetic & thermodynamic enolates",
+          "item": "https://levlprep.com/ochem/lessons/enolate-regiochemistry.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 14 &middot; Enolate Chemistry</div>
+    <h1 style="margin-bottom:4px;">Kinetic &amp; thermodynamic enolates.</h1>
+    <p class="lede" style="margin-top:0;">Which alpha carbon, and why reversibility rather than temperature is what decides.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/enolate-regiochemistry.html">Kinetic &amp; thermodynamic enolates &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="michael-robinson.html">Michael and Robinson</a><a href="ester-syntheses.html">Malonic and acetoacetic ester</a><a href="imines-enamines.html">Imines and enamines</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+
+  var CASES = [
+    { id:'k1', t:'<b>LDA</b>, 1 equiv, &minus;78 &deg;C, ketone added to base', right:'kin',
+      why:'Kinetic. Strong enough to deprotonate completely so nothing reverses, bulky enough to prefer the open proton, cold enough that nothing equilibrates, and inverse addition so there is never free ketone around to shuttle protons between enolates.' },
+    { id:'k2', t:'<b>NaOEt</b> in EtOH, room temperature', right:'thd',
+      why:'Thermodynamic. The base is not strong enough to deprotonate completely, so every deprotonation can reverse, and the mixture accumulates as the more stable enolate — the more substituted C=C.' },
+    { id:'k3', t:'<b>LDA</b>, 1 equiv, room temperature', right:'kin',
+      why:'Still kinetic, and this is the row that tests whether you have the idea or the recipe. LDA deprotonates irreversibly whatever the temperature, and thermodynamic control requires the first step to reverse. Warmth is not what makes something thermodynamic; reversibility is.' },
+    { id:'k4', t:'<b>NaH</b>, warm, long reaction time', right:'thd',
+      why:'Thermodynamic. Hydride is not a hindered base and the conditions let the system equilibrate, so the more substituted enolate wins on stability.' },
+    { id:'k5', t:'<b>Pyrrolidine</b>, cat. acid, then the halide', right:'enam',
+      why:'Neither — this is the enamine route. A secondary amine gives a neutral nucleophile that forms toward the less substituted side, needs no strong base, and stops cleanly after one alkylation where a lithium enolate can go twice.' },
+    { id:'k6', t:'<b>LDA</b>, then warm and stir before adding the halide', right:'thd',
+      why:'Thermodynamic, and for a reason worth seeing. The deprotonation itself is irreversible, but once both enolates exist, warming lets the small amount of ketone always present shuttle protons between them — so the mixture equilibrates anyway. It is why the cold and the inverse addition are both in the recipe.' }
+  ];
+  var OPTS = [ { k:'thd', l:'Thermodynamic enolate' }, { k:'enam', l:'Neither — an enamine' },
+               { k:'kin', l:'Kinetic enolate' } ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'enolate-regiochemistry',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: '"Form the enolate" is a question, not an instruction.',
+        bodyHtml: '<p class="step-body">For acetone or cyclohexanone every &alpha; hydrogen is equivalent, so it is an instruction. For an <b>unsymmetrical</b> ketone it is not.</p>' +
+          '<p class="step-body">Take <b>2-methylcyclohexanone</b>. The carbonyl is C1, and it has an &alpha; carbon on each side:</p>' +
+          '<ul class="step-body">' +
+          '<li><b>C6</b> is an unsubstituted CH<sub>2</sub> &mdash; two hydrogens, nothing crowding them. Deprotonating it gives the <b>less substituted</b> C=C.</li>' +
+          '<li><b>C2</b> carries the methyl and one hydrogen. Deprotonating it gives the <b>more substituted</b>, more stable C=C.</li>' +
+          '</ul>' +
+          '<div class="explain-box">So the easier proton to reach and the more stable anion are on <b>opposite sides of the molecule</b>. Nothing about the ketone settles which one you get. The conditions do.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Every condition in the recipe does one job.',
+        bodyHtml: '<p class="step-body">The kinetic recipe looks fussy and is not. Each piece prevents the system from reconsidering:</p>' +
+          '<ul class="step-body">' +
+          '<li><b>LDA.</b> Its conjugate acid has a pK<sub>a</sub> near 36 against a ketone’s 20, so deprotonation is complete and does not reverse.</li>' +
+          '<li><b>Bulky.</b> The two isopropyl groups are what let it discriminate between the crowded proton and the open one. A small base of the same strength would not.</li>' +
+          '<li><b>&minus;78 &deg;C in THF.</b> Cold enough that nothing equilibrates once formed.</li>' +
+          '<li><b>Ketone added to the base.</b> The other way round, the last of the base sits in a flask full of ketone — and free ketone shuttles protons from one enolate to the other.</li>' +
+          '</ul>' +
+          '<div class="explain-box">The thermodynamic recipe is the same list inverted: a base that does <i>not</i> deprotonate completely, at room temperature or warmer, so every step can reverse and the mixture settles into the more stable enolate. <b>Reversibility is what matters, not the temperature on its own</b> &mdash; which is why LDA at room temperature is still kinetic.</div>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Which enolate do these conditions give?</h2>' +
+            '<p class="step-body">One question decides almost every row: <b>can the deprotonation reverse?</b> If it can, the mixture finds the more stable enolate. If it cannot, you keep whichever formed first.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Which enolate">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Do not read the temperature first. Ask whether anything in these conditions lets a proton go back on — a base too weak to finish the job, or free ketone left in the flask.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All six. Three of these rows use LDA and they do not all give the same answer, which is the point.'
+                  : 'All six, first time — including the two LDA rows that are not kinetic-by-recipe, where what decides it is whether anything can reverse.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'Which &alpha; carbon of 2-methylcyclohexanone does LDA deprotonate?',
+        options: [
+          'C6, the unsubstituted CH<sub>2</sub>',
+          'C2, the one bearing the methyl',
+          'Both equally',
+          'The methyl group itself'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct, for two reinforcing reasons: C6 has two hydrogens to C2’s one, and nothing crowds them, which is exactly what a bulky base cares about. The resulting enolate has the <i>less</i> substituted double bond and is the less stable of the two — and you keep it anyway, because LDA does not let the deprotonation reverse. The methyl group is not an &alpha; carbon at all; it hangs off C2, one bond too far from the carbonyl.',
+        wrongFeedback: 'Count the hydrogens on each &alpha; carbon, then ask which of them a base with two isopropyl groups can actually reach.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'Why does a weaker base give the more substituted enolate?',
+        options: [
+          'Deprotonation reverses, so the mixture finds the more stable one',
+          'A weaker base prefers the more hindered proton',
+          'It deprotonates the methyl group instead',
+          'The more substituted enolate forms faster'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct, and notice that the base is not <i>choosing</i> anything. A weak base establishes an equilibrium: both enolates form, both get reprotonated, and over time the population collects in the more stable one, which is the more substituted C=C by the same rule that ranks Zaitsev products. Thermodynamic control never means a reagent with different preferences — it means the system was given a way back.',
+        wrongFeedback: 'A weak base is not more selective than a strong one. Ask what a base too weak to finish the job allows to happen that a strong one does not.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The same switch you already met, one step earlier.',
+        bodyHtml: '<p class="step-body">This is the control problem from the conjugation chapter. There, an allylic cation could be captured at two carbons, and warming let bromide leave again so the mixture settled into the more substituted product.</p>' +
+          '<p class="step-body">Here the branch point is the <b>deprotonation</b>, and reversing it is a proton moving back rather than a C&ndash;Br bond breaking. One difference matters: in the diene case the two options were <b>products</b>. Here they are <b>intermediates</b>, chosen to control where the <i>next</i> reaction happens.</p>' +
+          '<div class="explain-box">There is a third option that is not an enolate at all. A secondary amine gives an <b>enamine</b>, which forms toward the less substituted side, is <b>neutral</b> rather than anionic so no strong base is needed, and is less reactive &mdash; so it stops cleanly after <b>one</b> alkylation where a lithium enolate can go twice. Alkylate, then hydrolyze back to the ketone: the Stork sequence.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'You have the kinetic enolate and want to alkylate it with a secondary bromide. What happens?',
+        options: [
+          'Mostly elimination',
+          'Clean S<sub>N</sub>2 alkylation',
+          'The enolate is protonated',
+          'The enolate adds twice'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct, and it is the constraint nobody gets around. Alkylating an enolate is an S<sub>N</sub>2, and an enolate is a strong base as well as a nucleophile — so a secondary halide gives substantial elimination and a tertiary one gives nothing else. Methyl and primary halides are what work. This is the identical limit that caps the malonic ester synthesis, and the habit to build is checking it on the <b>halide</b> rather than on the target.',
+        wrongFeedback: 'Alkylation here is an S<sub>N</sub>2. What does a secondary substrate do when the nucleophile attacking it is also a strong base?'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: '2-Methylcyclohexanone is treated with LDA at &minus;78 &deg;C, but the LDA is added to the ketone rather than the other way around. What is the effect?',
+        options: [
+          'None; the temperature controls the outcome',
+          'More of the thermodynamic enolate than intended',
+          'The ketone is reduced instead',
+          'Both &alpha; carbons are deprotonated'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and this is why the direction of addition is written into the recipe rather than left to taste. Adding base to ketone means that until the very end there is always <b>excess unreacted ketone</b> in the flask, and free ketone is an acid that any enolate already formed can take a proton from. That proton transfer is the reverse step the cold was supposed to prevent — so the kinetic enolate is quietly converted to the thermodynamic one, and the temperature never gets a say. The deeper point: LDA’s deprotonation is irreversible, but irreversibility of that <i>one</i> step is not enough. Equilibration needs only some route back, and leftover starting material is one.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

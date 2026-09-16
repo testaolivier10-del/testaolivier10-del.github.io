@@ -2953,14 +2953,14 @@ FIGURES.push({
     s += text(40, 210, 'the nucleophile instead', { cls: 'fg-sm', size: 10, anchor: 'start' });
     s += arrow(P(240, 160), P(296, 62));
     s += text(236, 118, 'SOCl\u2082', { cls: 'fg-tag-good', size: 12, anchor: 'start' });
-    s += text(236, 134, 'the only way up', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(236, 134, 'the usual way up', { cls: 'fg-sm', size: 10, anchor: 'start' });
 
     s += rule(24, 262, 700, 262);
     s += text(24, 286, 'Every step down expels a leaving group more basic than the one before it.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
-    s += text(24, 308, 'Nothing climbs, because that would mean expelling a better one \u2014 hence the detour.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(24, 308, 'Nothing climbs, because that would mean expelling the WORSE of the two \u2014 hence the detour.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
     return s;
   },
-  caption: 'The ranking is read straight off the leaving group: chloride, then carboxylate, then alkoxide, then amide anion, each more basic and so less willing to go than the last. That is why the list is one-way, and why almost every route out of a carboxylic acid opens with the same move.',
+  caption: 'The ranking is read straight off the leaving group: chloride, then carboxylate, then alkoxide, then amide anion, each more basic and so less willing to go than the last. Going down means the tetrahedral intermediate expels the better of the two groups it holds, which is what it does anyway; going up would mean expelling the worse one, which is why the list is one-way and why almost every route out of a carboxylic acid opens with the same move.',
   note: 'The acid is drawn beside the ladder rather than on it because its problem is not really its position. On reactivity alone it would sit between the anhydride and the ester, but it carries a proton, and any nucleophile good enough to attack is basic enough to take that proton first. What you get is an ammonium carboxylate: the nucleophile protonated, the electrophile now anionic, and both halves of the reaction switched off by a proton transfer faster than anything else in the flask.',
 });
 
@@ -2994,8 +2994,91 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'One starting material, four oxidation outcomes, and the carbon skeleton is the thing to watch. Only the Grignard row changes the carbon count, because only there does a new group arrive; the other three rearrange what the nitrile carbon already had.',
+  caption: 'One starting material, four destinations \u2014 only three of them a step off the rung, since hydrolysis to the acid is a sideways move. The carbon skeleton is the thing to watch. Only the Grignard row changes the carbon count, because only there does a new group arrive; the other three rearrange what the nitrile carbon already had.',
   note: 'The two reductions differ for a structural reason rather than a stoichiometric one. DIBAL-H adds a single hydride and the product of that addition is a metalated imine anion, which is not an electrophile, so nothing further can attack it however long you wait — the aldehyde appears only when water hydrolyzes it on workup. LiAlH\u2084 is not stopped by anything, so rationing it to one equivalent does not give you an aldehyde; it gives you a mixture. The reagent is crippled, not rationed.',
+});
+
+/* ----------------------------------------------------------------- 57 ---
+   The whole section is one substituent effect read in two directions, which is
+   a thing a diagram can show and a paragraph has to assert. Two columns, the
+   same halogen in both, opposite arrows out of it. */
+FIGURES.push({
+  id: 'one-effect-two-directions',
+  section: 'alpha-halogenation',
+  anchor: '<h3>The haloform reaction</h3>',
+  viewBox: '0 0 760 300',
+  alt: 'Two columns comparing the acid route through the enol, which stops, with the base route through the enolate, which does not',
+  build() {
+    let s = '';
+    const col = (x, kind, title, sub) => {
+      s += panel(x, 46, 330, 150, { kind });
+      s += text(x + 165, 74, title, { cls: 'fg-lbl', size: 13 });
+      s += text(x + 165, 94, sub, { cls: 'fg-sm', size: 10.5 });
+    };
+    col(24,  null,   'ACID \u2014 through the enol', 'slow step: making the enol');
+    col(406, 'warn', 'BASE \u2014 through the enolate', 'slow step: removing the proton');
+
+    const line = (x, y, t, cls) => s += text(x, y, t, { cls, size: 11, anchor: 'start' });
+    line(44,  124, 'needs the carbonyl to be BASIC', 'fg-tag');
+    line(44,  146, 'the new halogen withdraws \u2192', 'fg-sm');
+    line(44,  166, 'harder to protonate \u2192 slower', 'fg-tag-good');
+    line(44,  186, 'STOPS at one halogen', 'fg-tag-good');
+
+    line(426, 124, 'needs the \u03b1 protons ACIDIC', 'fg-tag');
+    line(426, 146, 'the new halogen withdraws \u2192', 'fg-sm');
+    line(426, 166, 'more acidic \u2192 faster', 'fg-tag');
+    line(426, 186, 'DOES NOT STOP', 'fg-tag');
+
+    s += rule(24, 224, 700, 224);
+    s += text(24, 250, 'The halogen does the same thing in both columns. Only the requirement differs.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(24, 274, 'On a METHYL ketone the runaway is the point: CX\u2083 is a leaving group hydroxide can expel.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(24, 296, 'Out come the carboxylate and CHX\u2083 \u2014 one carbon shorter than you started.', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    return s;
+  },
+  caption: 'Two mechanisms, one substituent effect, opposite results. It is worth reading the two middle lines together: they are the same sentence, and everything after them diverges only because one route needs the substrate to be a base and the other needs it to be an acid.',
+  note: 'The iodoform test rests on the right-hand column and on a distinction the name hides. It reports a CH\u2083CO or CH\u2083CH(OH) fragment, not a methyl group anywhere in the molecule \u2014 so 2-methylcyclohexanone, which has a methyl and is a ketone, is negative, because neither of its \u03b1 carbons is that methyl. It brominates happily and simply never forms a CX\u2083 to expel.',
+});
+
+/* ----------------------------------------------------------------- 58 ---
+   Students memorize the kinetic recipe as a list of four conditions. Drawing
+   the molecule with an arrow to each side, and the conditions attached to the
+   arrows rather than listed underneath, makes the recipe read as a
+   consequence of which side you want. */
+FIGURES.push({
+  id: 'which-alpha-carbon',
+  section: 'enolate-regiochemistry',
+  anchor: '<h3>The same switch, one step earlier</h3>',
+  viewBox: '0 0 760 300',
+  alt: 'An unsymmetrical ketone in the middle with arrows to the less substituted enolate on one side and the more substituted enolate on the other',
+  build() {
+    let s = '';
+    s += panel(286, 116, 190, 70, {});
+    s += text(381, 144, '2-methylcyclohexanone', { cls: 'fg-lbl', size: 12 });
+    s += text(381, 166, 'C6 open \u00b7 C2 carries the methyl', { cls: 'fg-sm', size: 10 });
+
+    s += arrow(P(280, 140), P(200, 88));
+    s += arrow(P(482, 140), P(562, 88));
+
+    s += panel(24, 40, 220, 92, {});
+    s += text(40, 64, 'KINETIC \u2014 at C6', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += text(40, 84, 'LDA, 1 eq, \u221278 \u00b0C, THF', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    s += text(40, 102, 'ketone added to the base', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    s += text(40, 122, 'less substituted C=C', { cls: 'fg-sm', size: 10, anchor: 'start' });
+
+    s += panel(518, 40, 220, 92, { kind: 'warn' });
+    s += text(534, 64, 'THERMODYNAMIC \u2014 at C2', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += text(534, 84, 'NaOEt or NaH', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(534, 102, 'room temperature or warmer', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(534, 122, 'more substituted C=C', { cls: 'fg-sm', size: 10, anchor: 'start' });
+
+    s += rule(24, 218, 700, 218);
+    s += text(24, 244, 'The easier proton and the more stable anion are on OPPOSITE sides of the molecule.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(24, 268, 'One question settles every case: can the deprotonation reverse?', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(24, 290, 'If it can, the mixture finds the stabler enolate. If it cannot, you keep the first one formed.', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    return s;
+  },
+  caption: 'Nothing about the ketone settles which enolate you get, which is why the conditions are written out in full rather than abbreviated to a reagent name. Each item in the kinetic column blocks one route back: the base is strong enough not to reverse, bulky enough to pick the open proton, cold enough not to equilibrate, and added first so no free ketone is left to shuttle protons.',
+  note: 'Reversibility is the test, not temperature. LDA at room temperature is still kinetic, because its deprotonation does not reverse \u2014 and LDA at \u221278 \u00b0C added the wrong way round is not, because leftover ketone gives the protons a way back. Reading the thermometer instead of asking the question gets both of those wrong.',
 });
 
 const START = (id) => `<!-- fig:${id}:start -->`;

@@ -158,5 +158,68 @@
     return (options && options.length) ? apply(options, key).options : options;
   }
 
-  window.OchemShuffle = { apply: apply, remapByIndex: remapByIndex, list: list };
+  /* The sort steps were missed by all of the above, and they had a worse
+     version of the same bug.
+
+     A sort step renders its own buttons from a fixed OPTS array inside each
+     lesson's render function, so nothing here ever saw them. Authors then
+     wrote the rows in the order the options happened to be listed, because
+     that is the order the ideas arrive in while you are writing. The result
+     was a DIAGONAL: in twelve lessons, clicking the Nth button in the Nth
+     row cleared the whole step first try, and in six of those it cleared it
+     perfectly, with no chemistry involved at all. That is worse than
+     answer-first on a single question, because a sort step is scored as one
+     unit and feeds the concept model as one piece of evidence.
+
+     Reordering the buttons per row fixes every lesson at once and needs no
+     change to any of them: the click handlers read data-o, never position,
+     so moving a button in the DOM moves its listener with it and nothing
+     downstream notices. The key is the row's own id, so each row gets a
+     different permutation and the diagonal cannot survive; the session salt
+     keeps it stable if the student steps back to re-read.
+
+     A rendered step is caught by observing the card, because the lesson
+     engine builds each step's HTML fresh when the student reaches it. */
+  function shuffleSortRow(group){
+    if(!group || group.getAttribute('data-shuffled') === '1') return;
+    var btns = [];
+    var kids = group.children;
+    for(var i = 0; i < kids.length; i++){
+      if(kids[i].tagName === 'BUTTON') btns.push(kids[i]);
+    }
+    if(btns.length < 2) return;
+    var key = (window.OCHEM_SORT_KEY || document.location.pathname) + '|' +
+      (btns[0].getAttribute('data-case') || '') + '|' + btns.length;
+    var perm = permutation(btns.length, key);
+    var frag = document.createDocumentFragment();
+    for(var j = 0; j < perm.length; j++) frag.appendChild(btns[perm[j]]);
+    group.appendChild(frag);
+    group.setAttribute('data-shuffled', '1');
+  }
+
+  function shuffleSortSteps(root){
+    if(!root || !root.querySelectorAll) return;
+    var groups = root.querySelectorAll('.radical-choices');
+    for(var i = 0; i < groups.length; i++) shuffleSortRow(groups[i]);
+  }
+
+  function watchForSortSteps(){
+    var card = document.getElementById('card');
+    if(!card) return;
+    shuffleSortSteps(card);
+    if(typeof MutationObserver !== 'function') return;
+    new MutationObserver(function(){ shuffleSortSteps(card); })
+      .observe(card, { childList: true, subtree: true });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', watchForSortSteps);
+  }else{
+    watchForSortSteps();
+  }
+
+  window.OchemShuffle = {
+    apply: apply, remapByIndex: remapByIndex, list: list,
+    shuffleSortSteps: shuffleSortSteps
+  };
 })();

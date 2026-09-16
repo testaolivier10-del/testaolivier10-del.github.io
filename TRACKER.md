@@ -1319,6 +1319,68 @@ because what stops DIBAL is that its intermediate is an anion.
 costs about 1.4 KB of shell and 60 questions, so these cover the rest of the
 phase and should be the last raise in it.
 
+**The review found six confident errors, one of them serious.**
+
+| Claim as written | Where | Why it is wrong |
+| --- | --- | --- |
+| "Benzoic acid to **phenyl propyl ketone**", with SOCl<sub>2</sub> then AlCl<sub>3</sub> as the route | `lessons/acyl-chlorides-anhydrides` step 7 | Impossible. Benzoyl chloride with AlCl<sub>3</sub> and benzene gives **benzophenone**, C<sub>13</sub>, because the new group comes from the arene. Phenyl propyl ketone is C<sub>10</sub> and needs three carbons from a carbon nucleophile &mdash; a Gilman reagent, not a Friedel&ndash;Crafts. Rebuilt around benzophenone, with the Gilman route named as what the propyl case would actually take |
+| "Nothing climbs, because that would mean expelling **a better one**" | figure `one-way-ladder` | Backwards. Going down expels the better of the two groups the tetrahedral intermediate holds; climbing would mean expelling the **worse** one, which is why it does not happen |
+| "the **only way up**" on the SOCl<sub>2</sub> arrow | same figure | The same page lists three reagents that climb |
+| Cyanide "tolerates acidic protons **and other electrophilic groups**" | notes and lesson | It tolerates O&ndash;H and N&ndash;H, which is the whole contrast with a Grignard. It is a nucleophile, so a ketone elsewhere becomes a cyanohydrin &mdash; which the same page lists three bullets above as a way to make a nitrile |
+| Sandmeyer "the **only way** to put a CN on a benzene ring" | notes and a bank stem | Dehydrating an aryl amide reaches one too, as do Rosenmund&ndash;von Braun and S<sub>N</sub>Ar. The true half is the reason: EAS cannot install CN because there is no electrophilic cyanide reagent. The bank item asserted the false premise in its stem and was rewritten around the reason |
+| Pyridine "too **hindered** to attack" | concept card | Pyridine is flat and its nitrogen is not hindered at all; it is simply a far weaker nucleophile, its lone pair sitting in an sp&sup2; orbital in the ring plane. Triethylamine is the hindered one, and the lesson wrongly called that "the property pyridine was chosen for". Two different defenses, now distinguished |
+
+#### The sort steps were on the diagonal — **fixed**
+
+The browser pass on the acyl pair found something none of the answer-tell
+checks could see, because none of them ever looked at a sort step: **the
+correct answers lay on the diagonal.** Clicking the Nth button in the Nth row
+cleared the whole step, first try, with no chemistry involved.
+
+Measured across the course, **twelve lessons** were on it and **six were
+perfectly so**. The cause is the same one `shuffle-options.js` was written
+about: an author lists the options, then writes the rows in the order the
+ideas arrive, and the two orders match. It is worse than answer-first on a
+single question, because a sort step is scored as one unit and feeds the
+concept model as one piece of evidence.
+
+Fixed in three places rather than one:
+
+- **`shuffle-options.js` now reorders the buttons of every sort row at render
+  time**, keyed by the row id and the session salt. No lesson needed editing:
+  the handlers read `data-o`, never position, so moving a button in the DOM
+  moves its listener with it.
+- **`check-site.mjs` gained check 29**, which fails a sort step whose answers
+  run down the diagonal, and separately one where a single answer covers more
+  rows than chance allows &mdash; the defect found by hand in
+  `polymer-properties` earlier in this phase.
+- **All twelve lessons were reordered** so the source is clean too. The `OPTS`
+  array moved rather than `CASES`, because row order frequently carries the
+  argument and some feedback text refers to "the row above".
+
+#### Enolate Chemistry 3 &rarr; 5 — **complete**
+
+Two sections, two lessons, 60 questions, two concepts, two figures.
+
+**&alpha;-Halogenation and the haloform reaction** is built on one observation:
+acid stops after a single halogen and base does not stop at all, and it is the
+*same* substituent effect both times. The acid route needs the carbonyl basic
+enough to protonate and the halogen makes it less so; the base route needs the
+&alpha; hydrogens acidic enough to remove and the halogen makes them more so.
+The runaway is then the point on a methyl ketone, where CX<sub>3</sub> becomes
+a leaving group. The trap worth teaching is that the iodoform test reports a
+CH<sub>3</sub>CO fragment rather than a methyl group anywhere in the molecule,
+so 2-methylcyclohexanone is negative despite its name.
+
+**Kinetic and thermodynamic enolates** exists because every earlier section
+said "form the enolate" as though it were an instruction. For an unsymmetrical
+ketone the easier proton and the more stable anion are on opposite sides of
+the molecule. The organizing correction is that **reversibility decides, not
+temperature**: LDA at room temperature is still kinetic, and LDA at
+&minus;78&nbsp;&deg;C added the wrong way round is not, because leftover ketone
+gives the protons a way back. The sort step is built around exactly those two
+rows.
+
 
 ---
 

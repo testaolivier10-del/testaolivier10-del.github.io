@@ -39,6 +39,25 @@
     /* Step 2 sorts six nucleophiles against one acid chloride, 3 is the
        two-equivalent trap, 4 the leaving-group ranking, 6 the activate-then-
        acylate order, 7 the deprotonation that turns nothing into a reaction. */
+    /* Step 2 sorts six condition sets, 3 is why acid stops, 4 the iodoform
+       scope, 6 the monohalogenation choice, 7 the methyl-versus-alpha trap. */
+    'alpha-halogenation': { n:8, steps:{
+      2:['alpha-halogenation-control','enolate-formation'],
+      3:['alpha-halogenation-control','alpha-acidity'],
+      4:['alpha-halogenation-control'],
+      6:['alpha-halogenation-control'],
+      7:['alpha-halogenation-control','acyl-reactivity-order'] } },
+
+    /* Step 2 sorts six condition sets including two LDA rows that are not
+       kinetic. 3 is which alpha carbon, 4 why a weak base wins on stability,
+       6 the SN2 limit on the halide, 7 the inverse-addition trap. */
+    'enolate-regiochemistry': { n:8, steps:{
+      2:['enolate-regiocontrol','enolate-formation'],
+      3:['enolate-regiocontrol','alpha-acidity'],
+      4:['enolate-regiocontrol'],
+      6:['enolate-regiocontrol','mechanism-selection'],
+      7:['enolate-regiocontrol'] } },
+
     'acyl-chlorides-anhydrides': { n:8, steps:{
       2:['activation-before-acylation','acyl-reactivity-order'],
       3:['activation-before-acylation'],

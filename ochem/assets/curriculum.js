@@ -159,7 +159,9 @@
     { id: 'enolate-chemistry', title: 'Enolate Chemistry', topics: [
       { id: 'alpha-hydrogens', title: 'Alpha hydrogens & enolates', href: 'lessons/alpha-hydrogens.html', dependsOn: ['aldehydes-ketones', 'acidity-factors', 'alkynes'] },
       { id: 'aldol', title: 'Aldol reactions', href: 'lessons/aldol.html', mechanism: 'mechanisms/aldol.html', dependsOn: ['alpha-hydrogens', 'nucleophilic-addition'] },
-      { id: 'claisen', title: 'Claisen reactions', href: 'lessons/claisen.html', mechanism: 'mechanisms/claisen.html', dependsOn: ['aldol', 'acyl-substitution'] }
+      { id: 'claisen', title: 'Claisen reactions', href: 'lessons/claisen.html', mechanism: 'mechanisms/claisen.html', dependsOn: ['aldol', 'acyl-substitution'] },
+      { id: 'alpha-halogenation', title: 'Alpha halogenation & the haloform reaction', href: 'lessons/alpha-halogenation.html', dependsOn: ['alpha-hydrogens', 'acyl-substitution'] },
+      { id: 'enolate-regiochemistry', title: 'Kinetic & thermodynamic enolates', href: 'lessons/enolate-regiochemistry.html', dependsOn: ['alpha-hydrogens', 'aldol'] }
     ]},
     { id: 'amines', title: 'Amines', topics: [
       { id: 'amine-structure', title: 'Structure & basicity', href: 'lessons/amine-structure.html', dependsOn: ['bronsted', 'lewis-acids', 'esters-amides'] },

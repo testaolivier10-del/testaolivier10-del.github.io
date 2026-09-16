@@ -149,8 +149,7 @@ document.addEventListener('DOMContentLoaded', function(){
     { id:'c6', t:'RCOCl + <b>R&prime;COOH</b>, no base', right:'nothing',
       why:'Essentially nothing useful. A neutral carboxylic acid is a weak nucleophile, and there is no base present to make the carboxylate. The contrast with the row above is the whole lesson: same two partners, one deprotonation apart.' }
   ];
-  var OPTS = [ { k:'acid', l:'Carboxylic acid' }, { k:'ester', l:'Ester' }, { k:'amide', l:'Amide' },
-               { k:'anhy', l:'Anhydride' }, { k:'ketone', l:'Aryl ketone' }, { k:'nothing', l:'No useful reaction' } ];
+  var OPTS = [ { k:'ester', l:'Ester' }, { k:'acid', l:'Carboxylic acid' }, { k:'anhy', l:'Anhydride' }, { k:'amide', l:'Amide' }, { k:'nothing', l:'No useful reaction' }, { k:'ketone', l:'Aryl ketone' } ];
 
   window.OchemLessonEngine.start({
     topicId: 'acyl-chlorides-anhydrides',
@@ -259,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'mcq',
         eyebrow: 'Step 7 · Independent Practice',
-        title: 'You need benzoic acid to become phenyl propyl ketone. What is the first step?',
+        title: 'You need benzoic acid to become benzophenone, Ph–CO–Ph. What is the first step?',
         options: [
           'SOCl<sub>2</sub>',
           'AlCl<sub>3</sub>',
@@ -267,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'Propylmagnesium bromide'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct. The plan is activate, then acylate: SOCl<sub>2</sub> makes the acid chloride, and only then does AlCl<sub>3</sub> ionize it to the acylium ion that attacks the ring. AlCl<sub>3</sub> is needed, just second. A Grignard is the wrong instinct twice over — it would be destroyed by the acid’s O–H before it reached the carbonyl, and it would not install an aryl group anyway.',
+        correctFeedback: 'Correct. The plan is activate, then acylate: SOCl<sub>2</sub> makes benzoyl chloride, and only then does AlCl<sub>3</sub> ionize it to the acylium ion that benzene attacks. AlCl<sub>3</sub> is needed, just second. Note what this route can and cannot deliver — the new group comes from the <i>arene</i>, so benzene gives Ph–CO–Ph and nothing else. Wanting Ph–CO–CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub> instead would mean bringing three carbons from a carbon nucleophile, which is a Gilman reagent on the same acid chloride, not a Friedel–Crafts. A Grignard fails here for two separate reasons: the acid’s O–H destroys it, and it would not stop at the ketone.',
         wrongFeedback: 'Two of these reagents are both used in this route. The question is the order, and the ladder answers it: what has to be true of the carbonyl before anything can acylate with it?'
       },
       {
@@ -281,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'It converts the acid chloride into an acylium ion'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct, and it is the mirror image of the amide problem two steps ago. There, a proton transfer <i>ruined</i> the reaction by protonating the nucleophile; here, a proton transfer <i>enables</i> it by deprotonating one. Same idea, opposite sign: a neutral carboxylic acid is a poor nucleophile because its lone pairs are tied up in the O–H and the resonance, while the carboxylate is a good one. Triethylamine is a deliberate choice too — it is basic enough to do the deprotonation but its three ethyl groups make it too hindered to attack the acid chloride itself, which is exactly the property pyridine was chosen for earlier. Getting the base right is not housekeeping; on this ladder it is frequently the whole reaction.'
+        correctFeedback: 'Correct, and it is the mirror image of the amide problem two steps ago. There, a proton transfer <i>ruined</i> the reaction by protonating the nucleophile; here, a proton transfer <i>enables</i> it by deprotonating one. Same idea, opposite sign: a neutral carboxylic acid is a poor nucleophile because its lone pairs are tied up in the O–H and the resonance, while the carboxylate is a good one. Triethylamine is a deliberate choice too — basic enough to do the deprotonation, and its three ethyl groups make it too hindered to attack the acid chloride itself. That is a different defense from pyridine’s earlier: pyridine is flat and its nitrogen is not hindered at all, it is simply a much weaker nucleophile because that lone pair sits in an sp² orbital in the ring plane. Two ways to be a base that does not compete. Getting the base right is not housekeeping; on this ladder it is frequently the whole reaction.'
       }
     ]
   });

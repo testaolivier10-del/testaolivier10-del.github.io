@@ -149,8 +149,7 @@ document.addEventListener('DOMContentLoaded', function(){
     { id:'n6', t:'(CH<sub>3</sub>)<sub>3</sub>CBr + <b>NaCN</b>', right:'alkene',
       why:'Isobutylene, and no nitrile at all. A tertiary substrate cannot do S<sub>N</sub>2, so the only thing left is elimination. This is the row that decides whether the cyanide route is available to you.' }
   ];
-  var OPTS = [ { k:'acid', l:'Carboxylic acid' }, { k:'amine', l:'Primary amine' }, { k:'ald', l:'Aldehyde' },
-               { k:'ket', l:'Ketone' }, { k:'nitrile', l:'Nitrile' }, { k:'alkene', l:'Alkene' } ];
+  var OPTS = [ { k:'amine', l:'Primary amine' }, { k:'acid', l:'Carboxylic acid' }, { k:'ket', l:'Ketone' }, { k:'ald', l:'Aldehyde' }, { k:'alkene', l:'Alkene' }, { k:'nitrile', l:'Nitrile' } ];
 
   window.OchemLessonEngine.start({
     topicId: 'nitriles',
@@ -176,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function(){
           '<li><b>Secondary</b>: sluggish, with elimination alongside.</li>' +
           '<li><b>Tertiary</b>: alkene only, and no nitrile at all.</li>' +
           '</ul>' +
-          '<div class="explain-box">The Grignard route &mdash; RX, then Mg, then CO<sub>2</sub> &mdash; reaches the same product with the same one added carbon, and the two are complements rather than duplicates. Cyanide demands a primary, unhindered substrate but tolerates acidic protons and other electrophilic groups. A Grignard tolerates a hindered substrate but is destroyed by any O&ndash;H, N&ndash;H or carbonyl in the molecule. <b>Look at the substrate, not at the target.</b></div>'
+          '<div class="explain-box">The Grignard route &mdash; RX, then Mg, then CO<sub>2</sub> &mdash; reaches the same product with the same one added carbon, and the two are complements rather than duplicates. Cyanide demands a primary, unhindered substrate but is untroubled by acidic protons — an O–H or N–H does not touch it. A Grignard tolerates a hindered substrate but is destroyed by any O&ndash;H, N&ndash;H or carbonyl in the molecule. <b>Look at the substrate, not at the target.</b></div>'
       },
       {
         render: function(api){
@@ -228,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'The intermediate is an imine salt, not a carbonyl',
           'The nitrile is less electrophilic than an ester',
           'Magnesium is consumed in the first addition',
-          'The nitrile carbon has no leaving group'
+          'A nitrile is less electrophilic after the first addition'
         ],
         correctIndex: 0,
         correctFeedback: 'Correct, and the contrast is worth holding onto. An ester expels alkoxide partway through, releasing a ketone <i>while the Grignard is still in the flask</i> — and that ketone is hungrier than the ester was, so it is attacked immediately. A nitrile expels nothing: the first addition gives a magnesium imine salt, which is an anion and no electrophile at all, and it simply sits there until water is added on workup. The ketone appears only after the Grignard is gone.',
