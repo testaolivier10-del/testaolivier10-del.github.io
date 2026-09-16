@@ -126,7 +126,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 9</div>
+    <div class="label" id="progLabel">Step 1 / 11</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -171,13 +171,26 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Four questions, in order: Atom, Resonance, Induction, Orbital.',
-        bodyHtml: '<p class="step-body">Comparing the acidity of two molecules always comes down to comparing the stability of their <b>conjugate bases</b> — the more stable the conjugate base, the more acidic the starting acid. Four factors determine that stability, usually checked in this order of importance:</p><ul class="step-body" style="margin-top:0;"><li><b>Atom</b> — what atom is holding the negative charge? Bigger and more electronegative atoms stabilize it better.</li><li><b>Resonance</b> — can the charge delocalize over multiple atoms?</li><li><b>Induction</b> — are nearby electronegative atoms pulling electron density away through sigma bonds?</li><li><b>Orbital</b> — what hybridization holds the charge? More s-character is more stable.</li></ul><p class="step-body" style="margin-bottom:0;">This is often abbreviated <b>ARIO</b>. Atom effects tend to be the largest, so check that first — but all four are real, independent, additive effects, and you\'ll need all four to explain acidity differences precisely.</p>'
+        bodyHtml: '<p class="step-body">Comparing the acidity of two molecules always comes down to comparing the stability of their <b>conjugate bases</b> — the more stable the conjugate base, the more acidic the starting acid. Four factors determine that stability, usually checked in this order of importance:</p><ul class="step-body" style="margin-top:0;"><li><b>Atom</b> — what atom is holding the negative charge? Bigger and more electronegative atoms stabilize it better.</li><li><b>Resonance</b> — can the charge delocalize over multiple atoms?</li><li><b>Induction</b> — are nearby electronegative atoms pulling electron density away through sigma bonds?</li><li><b>Orbital</b> — what hybridization holds the charge? More s-character is more stable.</li></ul><p class="step-body" style="margin-bottom:0;">This is often abbreviated <b>ARIO</b>, and the order is a <i>search order</i>, not a ranking of strengths. Work down the list and the first factor that differs between your two molecules usually settles the question — which is why atom goes first, since it settles most comparisons on its own. But it is a heuristic, not a law: a strongly resonance-stabilized carbanion beats an unstabilized alkoxide, and when two factors point opposite ways you have to draw both anions and weigh them.</p>'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Atom effects run in two different directions for two different reasons.',
         bodyHtml: '<p class="step-body"><b>Across a period</b> (same row, increasing electronegativity left to right): C–H (pKa ≈ 50) &lt; N–H (≈ 38) &lt; O–H (≈ 16) &lt; F–H (≈ 3.2). Acidity tracks electronegativity directly — a more electronegative atom is simply more comfortable holding extra negative charge.</p><p class="step-body" style="margin-bottom:0;"><b>Down a group</b> (same column, decreasing electronegativity top to bottom): H–F (pKa 3.2) &lt; H–Cl (≈ −7) &lt; H–Br (≈ −9) &lt; H–I (≈ −10) — acidity <i>increases</i> even though electronegativity is <i>decreasing</i>. Size wins this trend: a larger atom (iodine) spreads its negative charge over a much bigger, more polarizable electron cloud, which stabilizes the anion more than the lost electronegativity costs. These are genuinely different physical effects competing along different directions of the periodic table — memorizing just "more electronegative = more acidic" will get the group trend backwards.</p>'
+      },
+      {
+        diagramHtml: window.OchemMolecules.svg('acetate-ion', { caption: 'Acetate. One charge, two equivalent oxygens, and no way to say which one holds it — that is what delocalization buys.' }),
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Resonance: the same charge, spread over more atoms.',
+        bodyHtml: '<p class="step-body">Take the two O–H bonds that differ in nothing but what sits behind the oxygen. Ethanol gives ethoxide, CH₃CH₂O⁻: one oxygen, one full negative charge, nowhere for it to go. Acetic acid gives acetate, CH₃CO₂⁻: push the lone pair back toward the carbon and the C=O π bond out onto the other oxygen, and you have drawn the second resonance structure. The two are <b>equivalent</b>, so the real anion is the average of them — half a negative charge on each oxygen, and both C–O bonds the same length.</p><p class="step-body" style="margin-bottom:0;">Half a charge is far easier to carry than a whole one, and the payoff is eleven pKa units: ethanol 16, acetic acid 4.76, a hundred billion to one. Two things decide how much resonance is worth. <b>How many atoms share the charge</b> — a 1,3-diketone\'s anion reaches two oxygens and lands at pKa 9. And <b>which atoms</b> — phenoxide spreads its charge into a benzene ring, but onto carbons, which hold it less willingly than oxygen does; real stabilization, worth six units rather than eleven.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Induction: pulling on the charge from a distance.',
+        bodyHtml: '<p class="step-body">An electronegative atom in the neighborhood drags electron density toward itself along the sigma bonds, and that helps carry a nearby negative charge. Watch it accumulate on the same carboxylic acid: acetic acid 4.76, chloroacetic 2.86, dichloroacetic 1.29, trichloroacetic 0.65. Every chlorine makes the acid stronger, though by less each time — 1.90 units, then 1.57, then 0.64 — because each one finds less charge density left to pull on.</p><p class="step-body" style="margin-bottom:0;">The other half of the story is the one exam questions turn on: induction <b>dies with distance</b>. Move that chlorine from the carbon next to the COOH to three carbons away and the pKa goes from 2.86 back to 4.52, which is almost unsubstituted acetic acid. Two bonds of separation and the effect is nearly gone. That is the fingerprint that tells induction from resonance: resonance runs the length of a conjugated system losing almost nothing, while induction fades bond by bond.</p>'
       },
       {
         render: function(api){
@@ -188,9 +201,9 @@ document.addEventListener('DOMContentLoaded', function(){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Click the more acidic of these two carboxylic acids.</h2>' +
-            '<p class="step-body">One has an extra chlorine attached to the carbon next to the COOH group.</p>' +
+            '<p class="step-body">One has an extra chlorine attached to the carbon next to the COOH group. The pKa values are hidden until you answer: decide it by drawing the two carboxylate anions in your head and asking which one has help holding its charge.</p>' +
             '<div class="choice-row">' + pairs.map(function(p){
-              return '<button class="choice-btn" data-v="' + p.key + '" style="text-align:center;font:900 15px var(--font-mono);">' + p.label + '<br><span style="font-weight:700;font-size:11px;color:var(--muted);">pKa ' + p.pka + '</span></button>';
+              return '<button class="choice-btn" data-v="' + p.key + '" style="text-align:center;font:900 15px var(--font-mono);">' + p.label + '<br><span class="pka-reveal" style="font-weight:700;font-size:11px;color:var(--muted);visibility:hidden;">pKa ' + p.pka + '</span></button>';
             }).join('') + '</div>' +
             api.feedbackHtml('fb') +
             api.nextButtonHtml('Continue', false);
@@ -203,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function(){
               answered = true;
               var isCorrect = btn.getAttribute('data-v') === 'chloroacetic';
               api.card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+              api.card.querySelectorAll('.pka-reveal').forEach(function(el){ el.style.visibility = 'visible'; });
               btn.classList.add(isCorrect ? 'correct' : 'wrong');
               api.record(isCorrect);
               api.showFeedback(fb, isCorrect, 'Chloroacetic acid (pKa 2.87) is more acidic than acetic acid (pKa 4.76) — this is a pure induction effect. The electronegative chlorine pulls electron density away from the carboxylate anion through the sigma bond framework, stabilizing the negative charge and making the acid stronger.');
@@ -214,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 3 · Guided Practice',
+        eyebrow: 'Step 5 · Guided Practice',
         title: 'H–I is a stronger acid than H–F, even though fluorine is more electronegative. Why?',
         options: ['Fluorine forms stronger bonds to hydrogen, which has nothing to do with acidity', 'Iodine is much larger, spreading the negative charge over a more polarizable cloud', 'This trend is actually backwards — H–F is the stronger acid'],
         correctIndex: 1,
@@ -223,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 4 · Independent Practice',
+        eyebrow: 'Step 6 · Independent Practice',
         title: 'Carboxylic acids are far more acidic than alcohols mainly because of...',
         options: ['Atom effects — the oxygens are somehow different elements', 'Orbital effects — different hybridization at oxygen', 'Resonance — the carboxylate spreads its charge over two equivalent oxygens'],
         correctIndex: 2,

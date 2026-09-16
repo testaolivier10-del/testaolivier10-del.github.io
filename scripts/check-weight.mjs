@@ -218,8 +218,20 @@ const DATA_BUDGETS = [
      so a chapter does not fail the build for the index doing its job. */
 /* 200 -> 212 for Phase 4's eight sections, on the same reasoning as above:
      fetched only when a reader opens the assistant, and budgeted with this
-     file's usual headroom so a pair of sections does not fail the build. */
-  ['ochem/assets/tutor-bank.json', 212],
+     file's usual headroom so a pair of sections does not fail the build.
+
+     212 -> 264 for the self-study rewrite, and the reason is the same one
+     written against practice-bank-why.json below: this index is built from
+     the `why` field of every bank question, so rewriting recall items into
+     application ones grows it for exactly the reason it should. Chapter 4
+     alone took it from 211 to 224 KB. The alternative was to shorten worked
+     solutions to fit a number, which is the budget doing harm to the
+     teaching. Nothing blocks on this file — it is fetched only when a reader
+     opens the assistant — so its cost is bytes on an idle connection. 264
+     covers the chapters still to be rewritten at the measured ~13 KB each
+     for the four largest, and it is still a ceiling: lower it when the
+     rewrite finishes and the real number is known. */
+  ['ochem/assets/tutor-bank.json', 264],
   /* Ochem's question bank, now split in two (scripts/build-ochem-bank.mjs).
 
      The core is what practice.html and review.html WAIT on before their first

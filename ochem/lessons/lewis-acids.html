@@ -147,13 +147,34 @@
 // scripts execute, in order, just before DOMContentLoaded.
 document.addEventListener('DOMContentLoaded', function(){
 (function(){
+  /* The step text talks about an empty p orbital and a lone pair, so both have
+     to be on the page. This used to be the equation as plain text, which named
+     the evidence and drew none of it. */
   function bf3nh3Svg(){
-    return '<div class="scene"><svg viewBox="0 0 300 110">' +
-      '<g class="atom" data-key="lewisacid"><circle cx="70" cy="55" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="70" y="60" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">BF₃</text></g>' +
-      '<text x="112" y="60" font-family="Nunito" font-weight="800" font-size="16" fill="var(--muted)">+</text>' +
-      '<g class="atom" data-key="lewisbase"><circle cx="155" cy="55" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="155" y="52" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">N</text><text x="155" y="66" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">H₃</text></g>' +
-      '<text x="192" y="60" font-family="Nunito" font-weight="900" font-size="18" fill="var(--accent)">&#8594;</text>' +
-      '<circle cx="250" cy="55" r="26" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="250" y="52" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">F₃B–NH₃</text><text x="250" y="66" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="9">(new bond)</text>' +
+    return '<div class="scene"><svg viewBox="0 0 340 164" role="group" aria-label="BF3 with its empty p orbital and ammonia with its lone pair, forming the F3B-NH3 adduct">' +
+      '<text x="60" y="150" text-anchor="middle" font-family="Nunito" font-weight="700" font-size="9" fill="var(--muted)">empty p orbital</text>' +
+      '<ellipse cx="60" cy="60" rx="9" ry="13" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/>' +
+      '<ellipse cx="60" cy="112" rx="9" ry="13" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/>' +
+      '<g class="atom" data-key="lewisacid">' +
+        '<circle cx="60" cy="86" r="19" fill="var(--white)" stroke="var(--line)" stroke-width="2"/>' +
+        '<text x="60" y="91" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">BF₃</text>' +
+      '</g>' +
+      '<text x="112" y="91" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="15" fill="var(--muted)">+</text>' +
+      '<g class="atom" data-key="lewisbase">' +
+        '<circle cx="160" cy="86" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/>' +
+        '<text x="160" y="83" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">N</text>' +
+        '<text x="160" y="97" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">H₃</text>' +
+      '</g>' +
+      '<circle cx="154" cy="62" r="2.4" fill="var(--ink)"/><circle cx="166" cy="62" r="2.4" fill="var(--ink)"/>' +
+      '<path d="M150 54 Q112 30 72 56" fill="none" stroke="var(--accent)" stroke-width="2"/>' +
+      '<polygon points="72,56 76.5,48.3 80.9,54.9" fill="var(--accent)"/>' +
+      '<text x="116" y="20" text-anchor="middle" font-family="Nunito" font-weight="700" font-size="9" fill="var(--muted)">the pair fills the empty orbital</text>' +
+      '<text x="206" y="93" font-family="Nunito" font-weight="900" font-size="18" fill="var(--accent)">&#8594;</text>' +
+      '<circle cx="282" cy="86" r="30" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/>' +
+      '<text x="282" y="84" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">F₃B–NH₃</text>' +
+      '<text x="282" y="97" text-anchor="middle" font-family="Nunito" font-weight="700" font-size="8" fill="var(--muted)">new B–N bond</text>' +
+      '<text x="252" y="44" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="9" fill="var(--muted)">− on B</text>' +
+      '<text x="312" y="44" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="9" fill="var(--muted)">+ on N</text>' +
     '</svg></div>';
   }
 
@@ -174,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function(){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Click the Lewis acid, then the Lewis base.</h2>' +
-            '<p class="step-body">BF₃ has only 6 electrons around boron — an incomplete octet with an empty p orbital. NH₃ has a lone pair on nitrogen it isn\'t using in a bond.</p>' +
+            '<p class="step-body">BF₃ has only 6 electrons around boron — an incomplete octet, with the empty p orbital drawn above and below it. NH₃ has a lone pair on nitrogen it isn\'t using in a bond. One of them accepts a pair; the other supplies it.</p>' +
             bf3nh3Svg() +
             api.feedbackHtml('fb') +
             api.nextButtonHtml('Continue', false);
@@ -183,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function(){
           var got = { lewisacid: false, lewisbase: false };
           function checkDone(){
             if(got.lewisacid && got.lewisbase){
-              api.showFeedback(fb, true, 'Right — BF₃ is the Lewis acid (empty orbital, accepts the electron pair) and NH₃ is the Lewis base (lone pair, donates it). The nitrogen lone pair forms a brand-new bond to boron without breaking any existing bond.');
+              api.showFeedback(fb, true, 'Right — BF₃ is the Lewis acid (empty orbital, accepts the electron pair) and NH₃ is the Lewis base (lone pair, donates it). The nitrogen lone pair forms a brand-new bond to boron without breaking any existing bond. Now do the bookkeeping, because this is the classic trap: count formal charges on the adduct and neither atom is neutral. Nitrogen has four bonds where it normally has three, so it is +1; boron has four bonds and three valence electrons, 3 − 0 − 4 = −1. The molecule as a whole is neutral, but drawing it without those two charges is wrong.');
               next.disabled = false;
             }
           }
@@ -203,11 +224,11 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'mcq',
         eyebrow: 'Step 2 · Guided Practice',
-        title: 'Which of these can be a Lewis acid even though it has no proton to donate?',
-        options: ['Water, since it has lone pairs', 'A carbocation, since it has an empty p orbital', 'Ammonia, since it has a lone pair'],
+        title: 'Which of these three species is the Lewis acid?',
+        options: ['Water', 'A carbocation', 'Ammonia'],
         correctIndex: 1,
-        correctFeedback: 'Correct — a carbocation\'s empty p orbital can accept an electron pair, making it a Lewis acid with no proton in sight.',
-        wrongFeedback: 'Water and ammonia both have lone pairs to donate, which makes them electron pair donors — Lewis bases, not Lewis acids.'
+        correctFeedback: 'Correct — a carbocation\'s carbon has six valence electrons and an empty p orbital, so it accepts a pair. Water and ammonia each have lone pairs to give away, which makes them donors: Lewis bases.',
+        wrongFeedback: 'Ask one question of each: does it have a pair going spare, or somewhere for a pair to land? Water and ammonia have lone pairs to donate. Only the carbocation has the empty orbital.'
       },
       {
         type: 'mcq',

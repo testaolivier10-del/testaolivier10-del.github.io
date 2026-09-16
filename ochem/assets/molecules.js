@@ -757,12 +757,61 @@
       ca: { x:60,  y:124,r:15, label:'C', role:'alpha-carbon' },
       o2: { x:186, y:122,r:16, label:'O', lp:2 },
       h:  { x:244, y:98, r:12, label:'H', role:'acidic-h', note:'The O–H proton, pKa ≈ 4.8 — acidic because the carboxylate left behind is resonance stabilized over two equivalent oxygens.' },
-      ha: { x:24,  y:92, r:10, label:'H', role:'alpha-h', note:'An alpha C–H, pKa far above 20 here — not the acidic proton.' },
+      ha: { x:24,  y:92, r:10, label:'H', role:'alpha-h', note:'An alpha C–H, around pKa 25 here — not the acidic proton.' },
       ha2:{ x:22,  y:156,r:10, label:'H', role:'alpha-h' },
       ha3:{ x:90,  y:160,r:10, label:'H', role:'alpha-h' }
     },
     bonds: [{a:'c',b:'o1',order:2},{a:'c',b:'ca'},{a:'c',b:'o2'},{a:'o2',b:'h'},{a:'ca',b:'ha'},{a:'ca',b:'ha2'},{a:'ca',b:'ha3'}],
     caption: 'Two oxygens, but only one acidic hydrogen.'
+  };
+
+  /* Acetic acid WITH the base that takes the proton, so a draw-it step can
+     require both arrows. Every other proton-transfer molecule here shows the
+     acid alone, which lets a student draw the bond-breaking arrow and stop —
+     and the arrow that actually forms the new bond is the one the notes
+     insist is not optional. */
+  M['acetic-acid-hydroxide'] = {
+    name: 'Acetic acid + hydroxide', formula: 'CH\u2083CO\u2082H + HO\u207b', viewBox: '0 0 320 200',
+    atoms: {
+      o1:   { x:104, y:34, r:16, label:'O', lp:2, role:'carbonyl-o', note:'The carbonyl oxygen. Basic enough to be protonated by strong acid, but it is not what leaves here.' },
+      c:    { x:104, y:90, r:17, label:'C' },
+      ca:   { x:46,  y:124,r:15, label:'C', role:'alpha-carbon' },
+      o2:   { x:168, y:120,r:16, label:'O', lp:2, note:'The hydroxyl oxygen. When the proton goes, this pair stays behind — and resonance immediately shares the charge with the other oxygen.' },
+      h:    { x:222, y:96, r:12, label:'H', role:'acidic-h', note:'The O\u2013H proton, pKa \u2248 4.8. Hydroxide takes this one.' },
+      ha:   { x:14,  y:92, r:10, label:'H', role:'alpha-h', note:'An alpha C\u2013H, around pKa 25 \u2014 twenty orders of magnitude less acidic than the O\u2013H.' },
+      ha2:  { x:12,  y:156,r:10, label:'H', role:'alpha-h' },
+      ha3:  { x:76,  y:160,r:10, label:'H', role:'alpha-h' },
+      nucO: { x:268, y:44, r:16, label:'O', charge:'\u207b', lp:3, role:'nucleophile', note:'Hydroxide: a negative charge and three lone pairs. One of those pairs is what forms the new O\u2013H bond.' },
+      nucH: { x:306, y:20, r:10, label:'H' }
+    },
+    bonds: [{a:'c',b:'o1',order:2},{a:'c',b:'ca'},{a:'c',b:'o2'},{a:'o2',b:'h'},
+            {a:'ca',b:'ha'},{a:'ca',b:'ha2'},{a:'ca',b:'ha3'},{a:'nucO',b:'nucH'}],
+    caption: 'Two species, two arrows: one makes a bond, one breaks a bond.'
+  };
+
+  /* A molecule with more than one candidate proton, which chapter 4 needed
+     and did not have: every proton-transfer structure in this file has a
+     single acidic site, so "find the acidic hydrogen" was never a real scan.
+     Here the O-H (pKa 16) beats the alpha C-H (pKa 20) by four units, and the
+     intuition that a hydrogen next to a carbonyl must win is exactly what the
+     question exists to correct. */
+  M['hydroxybutanone'] = {
+    name: '4-Hydroxybutan-2-one', formula: 'CH\u2083COCH\u2082CH\u2082OH',
+    partialH: 'only the hydrogens the question compares are drawn: the O-H and the two alpha C-H',
+    atoms: {
+      c1:  { x:44,  y:112,r:15, label:'C', note:'The methyl group. Its hydrogens are alpha to the carbonyl too, around pKa 20 \u2014 same answer as the other alpha position, and still not the most acidic site.' },
+      c2:  { x:100, y:80, r:16, label:'C', role:'electrophile', note:'The carbonyl carbon. Electrophilic, and not an acidic site \u2014 it carries no hydrogen at all.' },
+      o1:  { x:100, y:28, r:16, label:'O', lp:2, role:'carbonyl-o', note:'The carbonyl oxygen: the most BASIC site in the molecule, and the atom that gets protonated under acid. It has no hydrogen to give away.' },
+      c3:  { x:156, y:112,r:15, label:'C', role:'alpha-carbon' },
+      h31: { x:140, y:152,r:10, label:'H', role:'alpha-h', note:'An alpha C\u2013H, pKa about 20. Remarkably acidic for carbon, because the enolate delocalizes onto oxygen \u2014 and still four units above the O\u2013H.' },
+      h32: { x:188, y:146,r:10, label:'H', role:'alpha-h' },
+      c4:  { x:212, y:80, r:15, label:'C', note:'An ordinary CH\u2082 next to the oxygen. Its hydrogens have nothing stabilizing their anion \u2014 around pKa 50.' },
+      o2:  { x:264, y:112,r:16, label:'O', lp:2 },
+      ho:  { x:300, y:80, r:11, label:'H', role:'acidic-h', note:'The O\u2013H, pKa about 16 \u2014 the most acidic proton here, by roughly four units over the alpha positions.' }
+    },
+    bonds: [{a:'c1',b:'c2'},{a:'c2',b:'o1',order:2},{a:'c2',b:'c3'},{a:'c3',b:'h31'},{a:'c3',b:'h32'},
+            {a:'c3',b:'c4'},{a:'c4',b:'o2'},{a:'o2',b:'ho'}],
+    caption: 'Two kinds of acidic hydrogen, four pKa units apart.'
   };
 
   M['ethylamine'] = {

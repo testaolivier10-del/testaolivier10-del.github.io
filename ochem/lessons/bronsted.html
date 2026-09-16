@@ -137,17 +137,41 @@
 // scripts execute, in order, just before DOMContentLoaded.
 document.addEventListener('DOMContentLoaded', function(){
 (function(){
+  /* The step asks the student to reason about who donates the proton, so the
+     picture has to show the two things that decide it: the polarity of the
+     H-Cl bond and the lone pair on nitrogen. It used to be the equation as
+     plain text, which asked for reasoning and then drew none of the evidence. */
   function protonTransferSvg(){
-    return '<div class="scene"><svg viewBox="0 0 300 110">' +
-      '<text x="10" y="60" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="15" fill="var(--ink)">H</text>' +
-      '<line x1="20" y1="55" x2="45" y2="55" stroke="var(--line)" stroke-width="2.5"/>' +
-      '<g class="atom" data-key="acid"><circle cx="62" cy="55" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="62" y="61" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">Cl</text></g>' +
-      '<text x="105" y="60" font-family="Nunito" font-weight="800" font-size="16" fill="var(--muted)">+</text>' +
-      '<g class="atom" data-key="base"><circle cx="150" cy="55" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="150" y="52" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">N</text><text x="150" y="66" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">H₃</text></g>' +
-      '<text x="185" y="60" font-family="Nunito" font-weight="900" font-size="18" fill="var(--accent)">&#8594;</text>' +
-      '<circle cx="230" cy="55" r="18" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="230" y="52" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">NH₄</text><text x="230" y="65" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="10">+</text>' +
-      '<text x="262" y="60" font-family="Nunito" font-weight="800" font-size="16" fill="var(--muted)">+</text>' +
-      '<text x="278" y="60" font-family="IBM Plex Mono" font-weight="700" font-size="14" fill="var(--ink)">Cl⁻</text>' +
+    return '<div class="scene"><svg viewBox="0 0 340 150" role="group" aria-label="HCl and ammonia, with both curved arrows of the proton transfer drawn">' +
+      // ---- the acid, clickable as one unit ----
+      '<g class="atom" data-key="acid">' +
+        '<text x="18" y="83" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="15" fill="var(--ink)">H</text>' +
+        '<line x1="29" y1="77" x2="51" y2="77" stroke="var(--line)" stroke-width="2.5"/>' +
+        '<circle cx="70" cy="77" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/>' +
+        '<text x="70" y="83" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">Cl</text>' +
+      '</g>' +
+      '<text x="18" y="52" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="12" fill="var(--warn, #b45309)">δ+</text>' +
+      '<text x="96" y="83" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="12" fill="var(--accent)">δ−</text>' +
+      // ---- the base, clickable as one unit ----
+      '<g class="atom" data-key="base">' +
+        '<circle cx="160" cy="77" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/>' +
+        '<text x="160" y="74" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">N</text>' +
+        '<text x="160" y="88" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">H₃</text>' +
+      '</g>' +
+      '<circle cx="154" cy="52" r="2.4" fill="var(--ink)"/><circle cx="166" cy="52" r="2.4" fill="var(--ink)"/>' +
+      // ---- arrow 1: the lone pair takes the proton ----
+      '<path d="M158 46 Q100 14 30 60" fill="none" stroke="var(--accent)" stroke-width="2"/>' +
+      '<polygon points="30,60 34.5,52.3 38.9,58.9" fill="var(--accent)"/>' +
+      '<text x="104" y="16" text-anchor="middle" font-family="Nunito" font-weight="700" font-size="9" fill="var(--muted)">1 · the lone pair takes the proton</text>' +
+      // ---- arrow 2: chloride leaves with the bonding pair ----
+      '<path d="M40 86 Q46 114 64 102" fill="none" stroke="var(--accent)" stroke-width="2"/>' +
+      '<polygon points="64,102 59.5,109.7 55.1,103.1" fill="var(--accent)"/>' +
+      '<text x="84" y="132" text-anchor="middle" font-family="Nunito" font-weight="700" font-size="9" fill="var(--muted)">2 · chloride leaves with the pair</text>' +
+      // ---- products ----
+      '<text x="202" y="84" font-family="Nunito" font-weight="900" font-size="18" fill="var(--accent)">&#8594;</text>' +
+      '<text x="252" y="83" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13" fill="var(--ink)">NH₄⁺</text>' +
+      '<text x="288" y="83" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="15" fill="var(--muted)">+</text>' +
+      '<text x="316" y="83" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13" fill="var(--ink)">Cl⁻</text>' +
     '</svg></div>';
   }
 
@@ -168,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function(){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Click the acid, then click the base.</h2>' +
-            '<p class="step-body">HCl reacts with NH₃ to form NH₄⁺ and Cl⁻. One of these two starting materials donates a proton; the other accepts it.</p>' +
+            '<p class="step-body">HCl reacts with NH₃ to form NH₄⁺ and Cl⁻. The drawing shows the two things that decide which is which: the H–Cl bond is polarized, leaving that hydrogen δ+, and nitrogen has a lone pair doing nothing. One of these starting materials donates a proton; the other accepts it.</p>' +
             protonTransferSvg() +
             api.feedbackHtml('fb') +
             api.nextButtonHtml('Continue', false);
@@ -177,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function(){
           var got = { acid: false, base: false };
           function checkDone(){
             if(got.acid && got.base){
-              api.showFeedback(fb, true, 'Right — HCl is the acid (it donates its proton to nitrogen\'s lone pair) and NH₃ is the base (it accepts that proton). The products, NH₄⁺ and Cl⁻, are their conjugate base and conjugate acid.');
+              api.showFeedback(fb, true, 'Right — HCl is the acid (it donates its proton to nitrogen\'s lone pair) and NH₃ is the base (it accepts that proton). The products, NH₄⁺ and Cl⁻, are the conjugate acid of NH₃ and the conjugate base of HCl.');
               next.disabled = false;
             }
           }
@@ -230,17 +254,19 @@ document.addEventListener('DOMContentLoaded', function(){
         render: function(api){
           window.OchemArrowStep.mount(api, {
             eyebrow: 'Draw it',
-            title: 'A base removes the acidic proton from acetic acid. Draw the arrow.',
-            bodyHtml: '<p class="step-body">One arrow, and the question it answers is: when a proton leaves, what happens to the pair of electrons that was holding it on?</p>',
-            molecule: 'acetic-acid',
+            title: 'Hydroxide removes the acidic proton from acetic acid. Draw both arrows.',
+            bodyHtml: '<p class="step-body">Two arrows, and each answers its own question. Where do the electrons that make the new bond come from? And where do the electrons that were holding the proton on end up?</p>',
+            molecule: 'acetic-acid-hydroxide',
             concepts: ['bronsted-identification', 'curved-arrow-direction'],
-            arrows: [{ from: 'bond:o2-h', to: 'o2' }],
-            hint: 'Find the acidic hydrogen, click the bond holding it, then click where its electrons stay.',
-            why: 'A proton leaves bare — as H\u207a, with no electrons — so the O\u2013H bonding pair is left behind on the oxygen. That is what makes the conjugate base negative, and it is the entire content of a Br\u00f8nsted acid-base step.',
+            arrows: [{ from: 'nucO', to: 'h' }, { from: 'bond:o2-h', to: 'o2' }],
+            hint: 'One arrow starts on a hydroxide lone pair and ends on the acidic hydrogen. The other starts on the O\u2013H bond and ends on the oxygen it came from.',
+            why: 'Arrow one: hydroxide\'s lone pair attacks the \u03b4+ hydrogen and becomes the new O\u2013H bond of water. Arrow two: the old O\u2013H bonding pair is left behind on acetic acid\'s oxygen, which is what makes the conjugate base negative. The proton itself moves bare, carrying no electrons at all \u2014 it is the nucleus alone that changes address, and the two arrows are the accounting for the two pairs of electrons that had to move around it. Drawing only the second arrow describes a molecule falling apart on its own; drawing only the first gives the hydrogen two bonds.',
             wrong: {
-              'bond:o2-h>h': 'The electrons do not leave with the hydrogen. A Br\u00f8nsted acid donates a proton — the nucleus alone — and the bonding pair stays behind, which is why the conjugate base ends up with a negative charge.',
+              'bond:o2-h>h': 'The electrons do not leave with the hydrogen. A Br\u00f8nsted acid donates a proton \u2014 the nucleus alone \u2014 and the bonding pair stays behind, which is why the conjugate base ends up with a negative charge.',
               'o2>bond:o2-h': 'Backwards: that arrow forms the O\u2013H bond rather than breaking it. Here the bond is breaking.',
-              'bond:ca-ha>ca': 'That is an alpha C\u2013H, far above pKa 20 and not the acidic proton. The O\u2013H is the acidic one, because the anion left behind is spread over two oxygens by resonance.',
+              'h>nucO': 'Backwards, and in the way that matters most: an arrow always starts on the electrons that move, and the hydrogen has none to give. Start on hydroxide\'s lone pair and finish on the hydrogen.',
+              'bond:ca-ha>ca': 'That is an alpha C\u2013H, around pKa 25 and not the acidic proton. The O\u2013H is the acidic one, because the anion left behind is spread over two oxygens by resonance.',
+              'nucO>c': 'Hydroxide could attack the carbonyl carbon \u2014 that is a real reaction later in the course \u2014 but proton transfer is far faster, and this step is an acid-base step. Aim for the hydrogen.',
               'bond:c-o1>o1': 'The C=O pi bond is not what breaks when an acid is deprotonated. Look for the bond to the departing proton.'
             }
           });

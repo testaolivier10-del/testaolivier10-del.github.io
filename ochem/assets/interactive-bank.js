@@ -1016,9 +1016,9 @@
       prompt:'Click the proton a Brønsted base would remove first.',
       molecule:'acetic-acid',
       answer:{ role:'acidic-h' },
-      why:'The O–H proton, pKa around 4.76. It leaves easily because what stays behind — a carboxylate — spreads its negative charge over two equivalent oxygens. The alpha C–H is around pKa 20 and does not compete.',
+      why:'The O–H proton, pKa around 4.76. It leaves easily because what stays behind — a carboxylate — spreads its negative charge over two equivalent oxygens. The alpha C–H is around pKa 25 and does not compete.',
       diag:{
-        ha:{ concept:'acidity-factors', msg:'That is an alpha C–H, roughly pKa 20 here — fifteen orders of magnitude less acidic than the O–H. Acidity is about how stable the conjugate base is, and a carbanion is far less stable than a carboxylate.' }
+        ha:{ concept:'acidity-factors', msg:'That is an alpha C–H, roughly pKa 25 here — twenty orders of magnitude less acidic than the O–H. Acidity is about how stable the conjugate base is, and a carbanion is far less stable than a carboxylate.' }
       } },
 
     { id:'bronsted-conjugate-acid', kind:'click-atom', tier:1, topic:'conjugate',
@@ -1531,6 +1531,31 @@
     diag:{
       c1:{ concept:'bronsted-identification', msg:'Carbon has no lone pair to offer a proton. A Brønsted base needs an available electron pair.' },
       c2:{ concept:'bronsted-identification', msg:'An ordinary alkyl carbon — nothing available to bond to H⁺. Look for lone pairs.' }
+    } },
+
+  { id:'bronsted-polyfunctional-h', kind:'click-atom', tier:3, topic:'bronsted', concepts:['bronsted-identification','acidity-factors'],
+    prompt:'Click the proton that one equivalent of sodium hydride removes.',
+    molecule:'hydroxybutanone',
+    sub:'Two kinds of hydrogen are drawn. Give each one a pKa before you click.',
+    answer:{ role:'acidic-h' },
+    why:'The O\u2013H, pKa about 16. The alpha C\u2013H bonds either side of the carbonyl are around 20 \u2014 extraordinary for carbon, because the enolate spreads its charge onto oxygen, and still four pKa units short of an ordinary alcohol. Four units is ten thousand to one, so with one equivalent of base the O\u2013H comes off and nothing else does. Rank against the table, not against how special a site looks.',
+    diag:{
+      h31:{ concept:'acidity-factors', msg:'That alpha C\u2013H is around pKa 20 \u2014 thirty orders of magnitude more acidic than an alkane, and still four units less acidic than the O\u2013H at 16. Being remarkable for a C\u2013H is not the same as beating an O\u2013H.' },
+      h32:{ concept:'acidity-factors', msg:'Same site as the other alpha hydrogen, pKa about 20. The O\u2013H beats it by four units, which is ten thousand to one.' },
+      o1:{ concept:'bronsted-identification', msg:'The carbonyl oxygen is the most BASIC site here, not the most acidic \u2014 it has no hydrogen on it to give away. Different question, different answer.' },
+      c2:{ concept:'bronsted-identification', msg:'The carbonyl carbon carries no hydrogen at all. An acid needs a proton to donate.' }
+    } },
+
+  { id:'bronsted-polyfunctional-base', kind:'click-atom', tier:3, topic:'bronsted', concepts:['bronsted-identification','acidity-factors'],
+    prompt:'Now the other question: click the atom that gets protonated when strong acid is added.',
+    molecule:'hydroxybutanone',
+    sub:'Most acidic proton and most basic site are different questions.',
+    answer:{ role:'carbonyl-o' },
+    why:'The carbonyl oxygen. Both oxygens carry lone pairs, but the carbonyl one is the more available: protonating it lets the positive charge be shared with the carbon through the pi system, which the hydroxyl oxygen cannot do. This is the first step of acid-catalyzed carbonyl chemistry \u2014 protonate the oxygen, and the carbon becomes a much better electrophile. Note that the answer is on a different atom from the most acidic proton, which is why the two questions have to be asked separately.',
+    diag:{
+      o2:{ concept:'bronsted-identification', msg:'The hydroxyl oxygen does have lone pairs and can be protonated, but the carbonyl oxygen is more basic \u2014 its conjugate acid is stabilized by sharing the charge with the carbonyl carbon.' },
+      ho:{ concept:'bronsted-identification', msg:'That is the most ACIDIC proton, which is the other question. A basic site needs an available lone pair, not a hydrogen.' },
+      c3:{ concept:'bronsted-identification', msg:'An ordinary CH\u2082 carbon: no lone pair, nothing to offer a proton.' }
     } },
 
   { id:'lewis-acid-identify', kind:'mcq', tier:3, topic:'lewis-acids', concepts:['lewis-acid-base','electrophile-recognition'],

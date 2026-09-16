@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function(){
               }
               api.record(p.correct && !wrongPicked);
               if(found === 3){
-                api.showFeedback(fb, !wrongPicked, wrongPicked ? 'You found all three real pairs, but also picked the odd one out — CH₃COOH and CH₃NH₂ differ by more than one proton and aren\'t a conjugate pair at all.' : 'Exactly right — HCl/Cl⁻, H₂O/OH⁻, and NH₄⁺/NH₃ each differ by exactly one proton. CH₃COOH and CH₃NH₂ are unrelated molecules, not a conjugate pair.');
+                api.showFeedback(fb, !wrongPicked, wrongPicked ? 'You found all three real pairs, but also picked the odd one out — CH₃COOH and CH₃NH₂ are unrelated molecules — different atoms entirely, not two species differing by one proton.' : 'Exactly right — HCl/Cl⁻, H₂O/OH⁻, and NH₄⁺/NH₃ each differ by exactly one proton. CH₃COOH and CH₃NH₂ are unrelated molecules, not a conjugate pair.');
                 next.disabled = false;
               }
             });

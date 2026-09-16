@@ -358,12 +358,12 @@
       6:['implicit-hydrogens','skeletal-notation'],
       7:['implicit-hydrogens','skeletal-notation'] } },
 
-    'acidity-factors': { n:9, steps:{
-      2:['acidity-factors'],
-      3:['acidity-factors','electronegativity-trend'],
-      4:['resonance-delocalization','acidity-factors'],
-      7:['acidity-factors','pka-scale'],
-      8:['resonance-delocalization','acidity-factors'] } },
+    'acidity-factors': { n:11, steps:{
+      4:['acidity-factors'],
+      5:['acidity-factors','electronegativity-trend'],
+      6:['resonance-delocalization','acidity-factors'],
+      9:['acidity-factors','pka-scale'],
+      10:['resonance-delocalization','acidity-factors'] } },
 
     'acyl-substitution': { n:8, steps:{
       1:['tetrahedral-intermediate'],

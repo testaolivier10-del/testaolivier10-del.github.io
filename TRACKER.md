@@ -20,7 +20,17 @@ Interim; rewritten at the end of the run. Everything below is on `main`.
   check-curriculum eyebrow check stop the numbers coming back. Fifteen
   missing `dependsOn` filled from the concept map. New **Functional groups**
   section closes Foundations (117 topics, 113 lessons, 3,510 questions).
-- Step 3: in progress, chapter by chapter; see the status table below.
+- Step 3: in progress. Chapters 1, 2, 3 and 12 are reviewed, fixed and
+  verified (12 twice); chapters 4-11 and 13-18 are reviewed and queued for
+  fixing; the fix step is serial because every fixer edits the same bank,
+  concept and figure files. Process change mid-run: reviews are now written
+  with file:line anchors and full replacement text so the fixer reads only
+  the topics it edits (about 20% fewer tokens per chapter, same verifier
+  finding rate), and every chapter still gets a full independent
+  verification. Reviews and fixes from chapter 6 on ran on Opus 5 to spare
+  the Fable budget. The explanations file's byte budget was raised from 156
+  to 200 KB with a reason in check-weight.mjs: worked-solution explanations
+  are longer than recall ones and the file never blocks a page.
 
 **Decisions you need to make** are listed under "Decisions for Olivier"
 below, and in `docs/proposed-order.md`. The order is the big one.
@@ -99,6 +109,7 @@ reviews land.
 | 14 Enolate Chemistry | yes (26/9/11/17, anchored) | queued | | |
 | 15 Amines | yes (26/8/7/14, anchored) | queued | | |
 | 16 Aromatic Chemistry | yes (18/7/8/14, anchored) | queued | | |
+| 18 Synthesis & Retrosynthesis | yes (anchored) | queued | | |
 | 17 Spectroscopy | yes (17/4/7/12, anchored; no labeled example spectrum exists) | queued | | |
 | 13 Carboxylic Acids & Derivatives | yes (26/8/11/13, anchored) | queued | | |
 | 12 Oxidation & Reduction | yes (18/4/8/13, anchored format) | yes: 6 figures (the chapter's first curved arrows), 22 questions, wrong +2 key for an acid carbon, Na/NH3 selectivity attributed to the wrong intermediate | yes: 2 of 5 met on first verification; 5 errors and 2 missing figures (ozonolysis mechanism, Clemmensen/Wolff-Kishner) fixed in a second pass. Open: the five banks are still recall-heavy | yes |

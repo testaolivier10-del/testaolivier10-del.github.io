@@ -4077,7 +4077,7 @@
    "type": "tf"
   },
   {
-   "q": "Why can the lone pair on the nitrogen of pyrrole delocalize into the aromatic ring, while the lone pair on the nitrogen of pyridine cannot?",
+   "q": "Pyrrole is a flat five-membered ring with an N–H whose nitrogen uses its three sp² orbitals for two C–N bonds and the N–H. Pyridine is a flat six-membered ring in which nitrogen uses its three sp² orbitals for two C–N bonds and its lone pair. Why can pyrrole's nitrogen lone pair delocalize into the ring while pyridine's cannot?",
    "options": [
     "Pyrrole's lone pair is in a p orbital",
     "Pyridine nitrogen has no lone pair",
@@ -4453,7 +4453,7 @@
    "type": "mcq"
   },
   {
-   "q": "In an E2 elimination, three curved arrows are typically drawn in one step: one for the base removing a proton, one for the C–H bond forming the new pi bond, and one for:",
+   "q": "Preview of a later chapter: in an E2 elimination a base removes a hydrogen, a C=C forms, and a leaving group departs, all in one step. Three curved arrows are drawn: one for the base removing a proton, one for the C–H bond forming the new pi bond, and one for:",
    "options": [
     "A second proton being removed",
     "A lone pair returning to the base",
@@ -4521,7 +4521,7 @@
    "type": "tf"
   },
   {
-   "q": "A Grignard reagent's carbanion-like carbon attacks the carbon of a ketone's C=O. Which two curved arrows are needed for this addition step?",
+   "q": "Preview of a later chapter: a Grignard reagent is R–MgBr, whose C–Mg bond is polarized so that carbon is nucleophilic. That carbon attacks the carbon of a ketone's C=O. Which two curved arrows are needed for this addition step?",
    "options": [
     "One arrow from oxygen to carbon, and one arrow from magnesium to carbon",
     "Only one arrow is needed, from carbon to carbon",
@@ -4555,7 +4555,7 @@
    "type": "mcq"
   },
   {
-   "q": "In drawing the mechanism for forming a hemiacetal from an aldehyde and an alcohol (acid-catalyzed), the very first curved arrow in the overall sequence typically shows:",
+   "q": "Preview of a later chapter: an alcohol adds to an aldehyde under acid catalysis (the product is called a hemiacetal). Using only the four arrow patterns, the very first curved arrow in the overall sequence typically shows:",
    "options": [
     "A lone pair on the carbonyl oxygen attacking a proton on the acid catalyst",
     "The alcohol oxygen attacking the carbonyl carbon directly",
@@ -7455,14 +7455,14 @@
    "type": "mcq"
   },
   {
-   "q": "Water can act as both a Brønsted acid and a Brønsted base. What is this property called?",
+   "q": "A mechanism step shows R–OH₂⁺ handing a proton to a chloride ion. Which assignment of roles is right?",
    "options": [
-    "Resonance",
-    "Hybridization",
-    "Amphoterism",
-    "Chirality"
+    "Chloride is the acid; the oxygen of R–OH₂⁺ is the base",
+    "R–OH₂⁺ is the acid; chloride is the base",
+    "R–OH₂⁺ is the base; chloride is the acid",
+    "R–OH₂⁺ is the acid; the water it releases is the base"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -7479,12 +7479,12 @@
    "type": "mcq"
   },
   {
-   "q": "In a Bronsted acid-base reaction, a proton is transferred from the acid to the base.",
+   "q": "The curved arrow that forms the new bond in a proton transfer starts on the acidic hydrogen.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "easy",
    "type": "tf"
   },
@@ -7504,7 +7504,7 @@
    "q": "Which of the following best describes HCl dissolving in water?",
    "options": [
     "HCl acts as a Bronsted base",
-    "HCl acts as a Bronsted acid, donating H+ to water",
+    "HCl donates a proton to water",
     "HCl undergoes no proton transfer",
     "HCl acts as a Lewis base"
    ],
@@ -7513,7 +7513,7 @@
    "type": "mcq"
   },
   {
-   "q": "A species must contain oxygen to act as a Bronsted acid.",
+   "q": "Diluting glacial acetic acid with water makes it a weaker acid.",
    "options": [
     "True",
     "False"
@@ -7535,14 +7535,14 @@
    "type": "mcq"
   },
   {
-   "q": "Which statement about amphoteric species is correct?",
+   "q": "In NH₃ + H₂O ⇌ NH₄⁺ + HO⁻, what role does water play, and what role would it play with HCl instead?",
    "options": [
-    "They can never accept a proton",
-    "They only exist in the gas phase",
-    "They have no lone pairs",
-    "They can act as acid or base"
+    "Acid in both reactions",
+    "Base in both reactions",
+    "Acid here, base with HCl",
+    "Base here, acid with HCl"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -7581,19 +7581,19 @@
    "type": "mcq"
   },
   {
-   "q": "Which of the following is the best Bronsted base among these conjugate bases of the hydrohalic acids: F-, Cl-, Br-, I-?",
+   "q": "4-Hydroxybutan-2-one is CH₃–CO–CH₂–CH₂–OH. One equivalent of sodium hydride is added. Which proton is removed?",
    "options": [
-    "Cl-",
-    "Br-",
-    "F-",
-    "I-"
+    "A C–H next to the carbonyl",
+    "A C–H on the carbon bearing the OH",
+    "A methyl C–H at the far end",
+    "The O–H proton"
    ],
-   "correct": 2,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A Bronsted-Lowry acid-base reaction always requires an aqueous solvent.",
+   "q": "Moving a proton between two oxygen atoms is usually the slow step of a mechanism.",
    "options": [
     "True",
     "False"
@@ -7603,21 +7603,21 @@
    "type": "tf"
   },
   {
-   "q": "In the reaction of two molecules of acetic acid, with one acting as acid and one as base, what species results from the molecule acting as the base?",
+   "q": "Sodium acetate is added to a solution of phenol. Acetic acid has pKa 4.76 and phenol has pKa 10. What happens?",
    "options": [
-    "Acetate ion",
-    "Acetic anhydride",
-    "Acetyl chloride",
-    "Protonated acetic acid (its conjugate acid)"
+    "Acetate is protonated and phenoxide forms quantitatively",
+    "Almost nothing — the equilibrium lies far toward phenol",
+    "Phenol is deprotonated essentially completely",
+    "The mixture settles at roughly fifty-fifty"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
    "q": "Consider HC triple-bond CH (acetylene) reacting with a very strong base like NaNH2. What role does acetylene play?",
    "options": [
-    "Bronsted acid, donating a terminal alkyne proton",
+    "Bronsted acid, at the terminal C-H",
     "Bronsted base",
     "Lewis acid",
     "None, alkynes have no acidic protons"
@@ -7627,7 +7627,7 @@
    "type": "mcq"
   },
   {
-   "q": "Every Bronsted acid is automatically also classified as a Lewis acid in the usual sense.",
+   "q": "A Brønsted base must carry a negative charge.",
    "options": [
     "True",
     "False"
@@ -7649,38 +7649,38 @@
    "type": "mcq"
   },
   {
-   "q": "Which best explains why NH3 is a stronger Bronsted base than H2O?",
+   "q": "Which best explains why ammonia is a stronger Brønsted base than water?",
    "options": [
-    "Nitrogen has more lone pairs than oxygen",
-    "Ammonia is a liquid at room temperature",
-    "Nitrogen holds its lone pair loosely",
-    "Ammonia has a lower molecular weight"
+    "The N–H bonds of ammonia are more polarized than water’s O–H bonds",
+    "Ammonia is the smaller molecule, so its lone pair is less hindered",
+    "Nitrogen holds its lone pair less tightly than oxygen does",
+    "Nitrogen carries more lone pairs available for bonding than oxygen"
    ],
    "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Complete the analogy: a Bronsted acid is to a proton donor as a Bronsted base is to a ____.",
+   "q": "In the step R–OH + H₂SO₄ → R–OH₂⁺ + HSO₄⁻, which species is the Brønsted base?",
    "options": [
-    "electron donor",
-    "electron acceptor",
-    "oxidizing agent",
-    "proton acceptor"
+    "H₂SO₄",
+    "R–OH₂⁺",
+    "HSO₄⁻",
+    "R–OH"
    ],
    "correct": 3,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which of the following equations shows a classic Bronsted acid-base (proton transfer) reaction?",
+   "q": "Which of these reactions is a proton transfer?",
    "options": [
-    "HCl + NaOH → NaCl + H2O",
-    "Na + Cl2 → NaCl",
-    "H2 + O2 → H2O",
-    "CH4 + 2O2 → CO2 + 2H2O"
+    "CH₃Br + ⁻CN → CH₃CN + Br⁻",
+    "CH₃CO₂H + HO⁻ → CH₃CO₂⁻ + H₂O",
+    "CH₂=CH₂ + Br₂ → BrCH₂CH₂Br",
+    "(CH₃)₃C⁺ + H₂O → (CH₃)₃COH₂⁺"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -7709,24 +7709,24 @@
    "type": "mcq"
   },
   {
-   "q": "Amino acids exist predominantly as zwitterions in water. Regarding the carboxylic acid and amine groups, which statement is correct?",
+   "q": "A carbocation is captured by water during acid-catalyzed hydration, giving R–OH₂⁺. What has to happen next to give a neutral alcohol?",
    "options": [
-    "Only the amine group can ever be acidic",
-    "Zwitterions have no acid-base character",
-    "The carboxylic acid group is a Lewis base",
-    "The acid protonated the amine group"
+    "A hydride shifts from carbon onto the oxygen",
+    "The new C–O bond breaks and then reforms",
+    "A base removes a proton from that oxygen",
+    "The oxygen releases one of its lone pairs to the solvent"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "The stronger a Bronsted acid is, the weaker its conjugate base will be.",
+   "q": "In a molecule carrying both an O–H and an N–H, a base removes the N–H proton first.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
    "type": "tf"
   },
@@ -7743,7 +7743,7 @@
    "type": "mcq"
   },
   {
-   "q": "Hydronium ion (H3O+) is the conjugate acid of water.",
+   "q": "Hydrogens on carbon are generally far less acidic than hydrogens on oxygen or nitrogen.",
    "options": [
     "True",
     "False"
@@ -7753,14 +7753,14 @@
    "type": "tf"
   },
   {
-   "q": "Why is it often said that there is no such thing as a truly free, unattached proton in solution?",
+   "q": "Which pair of curved arrows correctly shows methoxide deprotonating acetic acid?",
    "options": [
-    "Protons cannot exist",
-    "H+ binds a solvent lone pair at once",
-    "Protons are too large to move in solution",
-    "Protons only exist in the gas phase"
+    "The acidic H to methoxide, and acetic acid’s oxygen to the O–H bond",
+    "A methoxide lone pair to the H, and the C=O bond to the carbonyl oxygen",
+    "The O–H bond to the H, and methoxide to acetic acid’s carbonyl carbon",
+    "A methoxide lone pair to the H, and the O–H bond to acetic acid’s oxygen"
    ],
-   "correct": 1,
+   "correct": 3,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -7815,14 +7815,14 @@
    "type": "mcq"
   },
   {
-   "q": "Which of these is the best definition of a Lewis base?",
+   "q": "In the step (CH₃)₃C⁺ + H₂O → (CH₃)₃COH₂⁺, which species is the Lewis acid and where does the charge end up?",
    "options": [
-    "An electron pair acceptor",
-    "A proton donor",
-    "An oxidizing agent",
-    "An electron pair donor"
+    "The cation is the acid; the charge stays on carbon",
+    "Water is the acid; the charge is canceled entirely",
+    "The cation is the acid; the charge moves to oxygen",
+    "Water is the acid; the charge moves to oxygen"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -7849,26 +7849,28 @@
    "type": "mcq"
   },
   {
-   "q": "BF3 acts as a strong Lewis acid primarily because:",
+   "q": "BF₃ is a strong Lewis acid primarily because:",
    "options": [
-    "fluorine is very electronegative and donates electrons",
-    "boron has an empty p orbital and incomplete octet",
-    "boron has a full octet",
-    "BF3 carries a formal negative charge"
+    "boron is bonded to three very electronegative fluorines",
+    "boron has only six valence electrons and an empty p orbital",
+    "the B–F bonds are unusually long and easy to break",
+    "fluorine donates electron density into boron by resonance"
    ],
    "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "A Lewis acid must contain a hydrogen atom.",
+   "q": "Which of these can act as a Lewis base even though it has no lone pair at all?",
    "options": [
-    "True",
-    "False"
+    "Chloride ion",
+    "Dimethyl ether",
+    "Ammonia",
+    "Ethene, CH₂=CH₂"
    ],
-   "correct": 1,
+   "correct": 3,
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Which species below is a Lewis base that donates electron density through pi bond electrons rather than a lone pair?",
@@ -7895,7 +7897,7 @@
    "type": "mcq"
   },
   {
-   "q": "A Lewis acid-base adduct always involves the transfer of a proton between the two species.",
+   "q": "A Lewis acid–base reaction always involves a proton changing hands.",
    "options": [
     "True",
     "False"
@@ -7917,24 +7919,24 @@
    "type": "mcq"
   },
   {
-   "q": "Which statement correctly distinguishes Lewis acid-base theory from Bronsted-Lowry theory?",
+   "q": "Which of these drawn species could act as a Lewis acid?",
    "options": [
-    "Lewis theory applies only to gases",
-    "Lewis theory includes non-proton-transfer species",
-    "Bronsted theory includes more species than Lewis theory",
-    "They are mutually exclusive theories with no overlap"
+    "A carbonyl carbon",
+    "An alkene",
+    "A chloride ion",
+    "An ether oxygen"
    ],
-   "correct": 1,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Why does SnCl4 act as a Lewis acid in certain organic reactions?",
+   "q": "SnCl₄ and BF₃ are both Lewis acids, but they accept an electron pair in different ways. How do they differ?",
    "options": [
-    "Tin has a full valence shell and cannot accept electrons",
-    "SnCl4 is a strong Bronsted base",
-    "Tin can expand its coordination sphere",
-    "SnCl4 has no empty orbitals"
+    "Both have an empty p orbital and neither changes coordination",
+    "Both expand coordination and neither has an empty orbital",
+    "BF₃ has an empty p orbital; tin expands its coordination number",
+    "Tin has an empty p orbital; BF₃ expands its coordination number"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -7965,12 +7967,12 @@
    "type": "mcq"
   },
   {
-   "q": "Grignard reagents (RMgX) contain a carbon-metal bond. When a Grignard reagent attacks a carbonyl, which role does the carbonyl carbon play with respect to Lewis theory?",
+   "q": "AlCl₃ is added to an acyl chloride, RCOCl. What does it do, and what is produced?",
    "options": [
-    "Lewis base",
-    "Lewis acid",
-    "Bronsted acid",
-    "Bronsted base"
+    "It accepts a pair from the carbonyl oxygen, generating a carbanion",
+    "It accepts a lone pair from chlorine, generating an acylium ion",
+    "It removes a proton from the alpha carbon, generating an enolate",
+    "It donates a chloride to the carbonyl carbon, generating a diol"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -7987,14 +7989,14 @@
    "type": "tf"
   },
   {
-   "q": "Which of these pairs correctly identifies the electron-pair donor and acceptor in the reaction H3N: + BF3 → H3N-BF3?",
+   "q": "In H₃N: + BF₃ → H₃N–BF₃, which species donates and which accepts?",
    "options": [
-    "BF3 is the donor, NH3 is the acceptor",
-    "Both are donors",
-    "NH3 is the donor (Lewis base), BF3 is the acceptor (Lewis acid)",
-    "Both are acceptors"
+    "BF₃ donates the pair; ammonia accepts it",
+    "Ammonia donates the pair; BF₃ accepts it",
+    "Both species donate a pair into the new bond",
+    "Both species accept a share of an existing pair"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -8004,14 +8006,14 @@
     "Alkane C-H",
     "Benzene ring only",
     "Alkyl halide carbon",
-    "Carbonyl (C=O) oxygen"
+    "Carbonyl oxygen"
    ],
    "correct": 3,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Lewis acids always carry a positive formal charge.",
+   "q": "A Lewis acid must have a formally empty orbital.",
    "options": [
     "True",
     "False"
@@ -8023,7 +8025,7 @@
   {
    "q": "Which of the following is NOT typically classified as a Lewis acid?",
    "options": [
-    "Cl- (chloride ion)",
+    "Cl⁻",
     "BF3",
     "AlCl3",
     "H+"
@@ -8033,14 +8035,14 @@
    "type": "mcq"
   },
   {
-   "q": "TiCl4 is often used in organic synthesis, such as in Mukaiyama aldol reactions, because it:",
+   "q": "Why does adding TiCl₄ make a ketone react faster with a weak nucleophile?",
    "options": [
-    "acts as a Bronsted base deprotonating alcohols",
-    "acts as a Lewis acid activating carbonyls",
-    "is a strong reducing agent",
-    "has no empty orbitals"
+    "It donates chloride to the carbonyl carbon and opens a faster pathway",
+    "It reduces the carbonyl to an alcohol, which is easier to attack",
+    "It coordinates the carbonyl oxygen and makes the carbon more electrophilic",
+    "It deprotonates the alpha carbon and generates a more reactive enolate"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -8069,14 +8071,14 @@
    "type": "mcq"
   },
   {
-   "q": "Which best explains why carbenes, such as singlet :CH2, can act as Lewis acids?",
+   "q": "Why is H⁺ often described as the simplest possible Lewis acid?",
    "options": [
-    "The carbon has an empty orbital",
-    "Carbenes are always negatively charged",
-    "Carbenes have a complete octet",
-    "Carbenes cannot react with nucleophiles"
+    "It carries the largest positive charge of any cation",
+    "It is the smallest atom and therefore the most reactive",
+    "It can accept a proton as well as donate one",
+    "It has no electrons at all and an empty 1s orbital"
    ],
-   "correct": 0,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -8103,26 +8105,26 @@
    "type": "tf"
   },
   {
-   "q": "Why is SO3 (sulfur trioxide) considered a Lewis acid?",
+   "q": "An ether is stirred with BF₃ and a complex forms. Which statement about that complex is correct?",
    "options": [
-    "Sulfur has a complete octet and excess electrons",
-    "SO3 only acts as a base",
-    "Sulfur readily accepts an electron pair",
-    "SO3 cannot react with water"
+    "The C–O bonds break to accommodate the new bond",
+    "Oxygen becomes positive and boron becomes negative",
+    "Oxygen becomes negative and boron becomes positive",
+    "Both atoms stay neutral because nothing was ionized"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A chemist uses a chiral Lewis acid catalyst in an asymmetric Diels-Alder reaction. What is the general purpose of the Lewis acid here?",
+   "q": "A chemist wants to make a carbonyl react faster but the substrate decomposes in strong acid. What is the standard solution?",
    "options": [
-    "To act as the diene itself",
-    "To irreversibly consume the dienophile",
-    "To quench the reaction",
-    "To activate and orient the dienophile"
+    "Use a strong base to deprotonate the carbonyl oxygen",
+    "Use a nucleophilic catalyst to attack the carbonyl first",
+    "Use a Lewis acid such as ZnCl₂ to coordinate the oxygen",
+    "Use a stronger protic acid and run the reaction colder"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   }
@@ -8153,48 +8155,50 @@
    "type": "mcq"
   },
   {
-   "q": "Comparing HCl (pKa ≈ −7) and acetic acid (pKa ≈ 4.76), which is the stronger acid?",
+   "q": "Hydroxide is added to a terminal alkyne (C–H pKa 25). Roughly what is the equilibrium constant for deprotonation?",
    "options": [
-    "Acetic acid",
-    "They are equally strong",
-    "HCl",
-    "Cannot be determined"
+    "About 10⁻⁹ — essentially nothing happens",
+    "About 10⁹ — the alkyne is deprotonated completely",
+    "About 1 — the two forms are present equally",
+    "About 10²⁵ — the reaction is irreversible"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "What does pKa represent mathematically?",
+   "q": "Acid A has Ka = 1 × 10⁻³ and acid B has Ka = 1 × 10⁻⁷. How do they compare?",
    "options": [
-    "log10(Ka)",
-    "Ka divided by 10",
-    "10 raised to Ka",
-    "-log10(Ka)"
+    "Both have the same acid strength",
+    "A has pKa 3 and is the stronger acid",
+    "A has pKa 3 and is the weaker acid",
+    "B has pKa 7 and is the stronger acid"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "A higher pKa value indicates a stronger acid.",
+   "q": "Sodium hydride is added to ethanol. What happens, and why is the choice of base a good one?",
    "options": [
-    "True",
-    "False"
-   ],
-   "correct": 1,
-   "difficulty": "easy",
-   "type": "tf"
-  },
-  {
-   "q": "Which acid is stronger: one with pKa = 2 or one with pKa = 9?",
-   "options": [
-    "The acid with pKa = 2",
-    "The acid with pKa = 9",
-    "They are equally strong",
-    "Cannot be determined"
+    "Complete deprotonation, and the hydrogen gas escapes",
+    "Partial deprotonation, leaving an equilibrium mixture",
+    "No reaction, because hydride is too weak a base here",
+    "Complete deprotonation, but the product re-protonates"
    ],
    "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which base will deprotonate a ketone alpha hydrogen (pKa 20) essentially completely?",
+   "options": [
+    "Sodium hydroxide, pKaH 15.7",
+    "Sodium ethoxide, pKaH 16",
+    "Sodium acetate, pKaH 4.76",
+    "LDA, pKaH about 36"
+   ],
+   "correct": 3,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -8213,10 +8217,10 @@
   {
    "q": "Water has a pKa of about 15.7 (based on its autoionization), while ethanol's O-H has a pKa of about 16. What does this comparison show?",
    "options": [
-    "Ethanol is dramatically more acidic than water",
-    "Water is not acidic at all",
-    "Water and ethanol have very similar O-H acidity, with water very slightly more acidic",
-    "Ethanol has no acidic protons"
+    "Water is not measurably acidic in any solvent",
+    "Ethanol has no acidic proton on its oxygen",
+    "Water and ethanol have nearly equal O–H acidity",
+    "Ethanol is dramatically more acidic than water"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -8225,24 +8229,24 @@
   {
    "q": "A carboxylic acid has pKa around 4 to 5, while a simple alcohol has pKa around 16 to 18. Approximately how many orders of magnitude more acidic is the carboxylic acid?",
    "options": [
-    "About 2 times",
-    "About 10 times",
     "They are about equally acidic",
-    "About 10^12 (twelve orders of magnitude)"
+    "About 10^12",
+    "About 2 times",
+    "About 10 times"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
    "q": "To fully drive deprotonation of a carboxylic acid (pKa approximately 5) forward, the base used should form a conjugate acid whose pKa is:",
    "options": [
-    "significantly higher than 5, so the equilibrium favors the products",
-    "significantly lower than 5",
-    "exactly equal to 5",
-    "irrelevant to the outcome"
+    "significantly lower than 5, so reactants are favored",
+    "exactly equal to 5, so the sides are balanced",
+    "below zero, so the base is as strong as possible",
+    "significantly higher than 5, so products are favored"
    ],
-   "correct": 0,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -8295,12 +8299,12 @@
   {
    "q": "A compound has two acidic protons with pKa1 = 3 and pKa2 = 10. At a pH of 7, which species predominates?",
    "options": [
-    "The monoprotonated form, since pH is above pKa1 but below pKa2",
-    "The fully protonated (neutral diacid) form",
     "The fully deprotonated (dianion) form",
-    "All three forms are present in equal amounts"
+    "All three forms are present in equal amounts",
+    "The monoprotonated form",
+    "The fully protonated (neutral diacid) form"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -8315,26 +8319,26 @@
    "type": "tf"
   },
   {
-   "q": "Which range of pKa values is typical for a simple alcohol's O-H proton?",
+   "q": "A carboxylic acid (pKa 4.76) and a phenol (pKa 10) are dissolved together in ether. Which reagent separates them?",
    "options": [
-    "4 to 5",
-    "16 to 18",
-    "-7 to -10",
-    "35 to 45"
+    "Aqueous sodium hydroxide",
+    "Aqueous sodium bicarbonate",
+    "Aqueous hydrochloric acid",
+    "Aqueous sodium chloride"
    ],
    "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which range of pKa values is typical for a simple carboxylic acid?",
+   "q": "Which of these will NOT be deprotonated to any useful extent by sodium ethoxide (pKaH 16)?",
    "options": [
-    "16 to 18",
-    "about 25",
-    "4 to 5",
-    "about -2"
+    "A terminal alkyne",
+    "Acetic acid",
+    "Phenol",
+    "A 1,3-diketone"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -8353,12 +8357,12 @@
   {
    "q": "If Ka for acid A is 1 times 10^-5 and Ka for acid B is 1 times 10^-3, what is the approximate difference in their pKa values, and which acid has the higher pKa?",
    "options": [
-    "2 pKa units, with acid A having the higher pKa",
-    "2 pKa units, with acid B having the higher pKa",
-    "100 pKa units",
-    "They have identical pKa values"
+    "100 units, either way round",
+    "No difference at all",
+    "2 units, with A the higher pKa",
+    "2 units, with B the higher pKa"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -8397,85 +8401,87 @@
    "type": "mcq"
   },
   {
-   "q": "Which acid would you expect to have the lowest (most negative) pKa among methanol, acetic acid, HCl, and ethane?",
+   "q": "Ethanol (pKa 16) and acetic acid (pKa 4.76) are both treated with one equivalent of sodium bicarbonate (pKaH 6.4). What is the result?",
    "options": [
-    "Methanol",
-    "Acetic acid",
-    "Ethane",
-    "HCl"
+    "Neither is deprotonated",
+    "Both are deprotonated completely",
+    "Only acetic acid is deprotonated",
+    "Only ethanol is deprotonated"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Phenol has pKa around 10, while cyclohexanol has pKa around 18. What is the primary reason phenol is more acidic?",
+   "q": "A student needs to know whether hydroxide will deprotonate a given substrate. What is the fastest reliable test?",
    "options": [
-    "The phenoxide is resonance stabilized",
-    "Phenol has more oxygen atoms than cyclohexanol",
-    "Cyclohexanol is aromatic while phenol is not",
-    "Phenol has a smaller molecular weight"
+    "Compare the substrate’s pKa with 7, the neutral point of water",
+    "Check whether the substrate has an oxygen–hydrogen bond in it",
+    "Check whether the substrate dissolves in water before reacting",
+    "Compare the substrate’s pKa with 15.7, the pKa of water"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Two acids differ by 3 pKa units. How different are they in acid strength?",
+   "options": [
+    "About a thousand times",
+    "About six times",
+    "About three times",
+    "About thirty times"
    ],
    "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Trifluoroacetic acid (pKa approximately 0.5) is much more acidic than acetic acid (pKa approximately 4.76). This roughly 4.3-unit difference is mainly attributed to:",
+   "q": "Acetic acid has pKa 4.76 and ammonium has pKa 9.2. In CH₃CO₂H + NH₃ ⇌ CH₃CO₂⁻ + NH₄⁺, which side is favored and by roughly how much?",
    "options": [
-    "resonance differences between the two carboxylates",
-    "the inductive withdrawal by three fluorines",
-    "the larger atomic size of fluorine compared to hydrogen",
-    "trifluoroacetic acid having two acidic protons instead of one"
+    "Neither — the two sides are balanced",
+    "The right, by about 10⁴",
+    "The left, by about 10⁴",
+    "The right, by about 10¹⁴"
    ],
    "correct": 1,
-   "difficulty": "hard",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "pKa is calculated using a base-10 logarithm of the acid dissociation constant.",
+   "q": "A reaction needs a base strong enough to deprotonate an alkyne (pKa 25) but must not use anything that attacks a carbonyl elsewhere in the molecule. Which consideration matters most?",
    "options": [
-    "True",
-    "False"
-   ],
-   "correct": 0,
-   "difficulty": "easy",
-   "type": "tf"
-  },
-  {
-   "q": "Ascorbic acid (vitamin C) has a pKa around 4.2 for its first ionizable proton. Based on this value, how is it classified?",
-   "options": [
-    "A strong acid that fully dissociates in water",
-    "Neither acidic nor basic",
-    "A weak acid that does not fully dissociate",
-    "A superacid"
+    "The base’s boiling point, and its cost",
+    "The base’s charge, and its solubility in water",
+    "The base’s pKaH, and its bulk",
+    "The base’s molecular weight, and its color"
    ],
    "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A chemist measures an unusually low pKa, around 5, for an alcohol's O-H proton, much lower than the typical 16 to 18 range. What structural feature most likely explains this?",
+   "q": "Trifluoroethanol has pKa 12.4, while ethanol has pKa 16. Which base is strong enough to deprotonate ethanol but not trifluoroethanol?",
    "options": [
-    "The molecule must be aromatic",
-    "The molecule must contain no carbon atoms",
-    "This result is impossible and must be an experimental error",
-    "Strong electron-withdrawing groups nearby, such as multiple fluorines, stabilize the resulting alkoxide through induction"
+    "Sodium hydride, because hydrogen gas escapes",
+    "Sodium bicarbonate, because it is a mild base",
+    "Hydroxide, because water sits between the two",
+    "No base can do that — ethanol is the weaker acid"
    ],
    "correct": 3,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "When comparing two acids, which quantity most directly and reliably predicts the extent to which an acid-base reaction will proceed toward completion?",
+   "q": "Why is the pKa of HCl usually quoted as about −7 when nobody can measure it in water?",
    "options": [
-    "Their Ka (or pKa) values",
-    "Their molecular weights",
-    "Their boiling points",
-    "The color of their solutions"
+    "It is measured in water at very high dilution instead",
+    "It is measured in another solvent and extrapolated to water",
+    "It is calculated exactly from the H–Cl bond dissociation energy",
+    "It is a convention with no experimental basis at all"
    ],
-   "correct": 0,
-   "difficulty": "medium",
+   "correct": 1,
+   "difficulty": "hard",
    "type": "mcq"
   }
  ],
@@ -8517,36 +8523,36 @@
    "type": "mcq"
   },
   {
-   "q": "The conjugate base of H2SO4, formed after losing one proton, is:",
+   "q": "What is the conjugate acid of ethanol, CH₃CH₂OH?",
    "options": [
-    "SO4^2-",
-    "H3SO4+",
-    "SO3",
-    "HSO4-"
+    "CH₃CHO",
+    "CH₃CH₂OH₂⁺",
+    "CH₃CH₂O⁻",
+    "CH₃CH₃"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "The conjugate acid of OH- is:",
+   "q": "What is the conjugate base of a terminal alkyne, RC≡CH?",
    "options": [
-    "H2O",
-    "H3O+",
-    "O2-",
-    "H2O2"
+    "An alkyl anion, RCH₂CH₂⁻",
+    "An enolate, RC(O⁻)=CH₂",
+    "An acetylide, RC≡C⁻",
+    "A vinyl anion, RCH=CH⁻"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "A conjugate acid-base pair differs by exactly one proton (H+).",
+   "q": "A conjugate base always carries a negative charge.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "easy",
    "type": "tf"
   },
@@ -8609,50 +8615,50 @@
    "type": "tf"
   },
   {
-   "q": "Amide ion (NH2-) is the conjugate base of which species?",
+   "q": "Which pair is a conjugate acid–base pair?",
    "options": [
-    "NH4+",
-    "NH3",
-    "N2",
-    "HN3"
+    "CH₃CO₂H and CH₃CH₂OH",
+    "CH₃CO₂H and CH₃CO₂CH₃",
+    "CH₃CO₂⁻ and HO⁻",
+    "CH₃CO₂H and CH₃CO₂⁻"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A ketone can act as both an acid and a base. What are its conjugate acid and conjugate base?",
+   "options": [
+    "Enol and alkoxide",
+    "Protonated carbonyl and enolate",
+    "Enolate and protonated carbonyl",
+    "Alkoxide and enol"
    ],
    "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Which of these is the conjugate acid of the carbonate ion, CO3^2-?",
+   "q": "Which of these is the strongest base?",
    "options": [
-    "H2CO3",
-    "CO2",
-    "HCO3-",
-    "OH-"
+    "CH₃CO₂⁻ (from CH₃CO₂H, pKa 4.76)",
+    "Cl⁻ (from HCl, pKa −7)",
+    "CH₃⁻ (from CH₄, pKa 50)",
+    "HO⁻ (from H₂O, pKa 15.7)"
    ],
    "correct": 2,
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "An acid HA has pKa = 4. Using which relationship can you find the pKb of its conjugate base A- in water at 25 degrees C?",
-   "options": [
-    "pKa + pKb = 7",
-    "pKa = pKb",
-    "pKa minus pKb = 14",
-    "pKa + pKb = 14"
-   ],
-   "correct": 3,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
    "q": "Why does the acetate ion, the conjugate base of acetic acid, react with water far less extensively than the ethoxide ion, the conjugate base of ethanol?",
    "options": [
-    "Acetate is stabilized by resonance delocalization of its negative charge across two oxygens, making it a much weaker base than ethoxide, which lacks such delocalization",
-    "Acetate carries a positive charge",
-    "Ethoxide is aromatic",
-    "Acetic acid is itself a base, not an acid"
+    "Acetic acid is itself a base, not an acid",
+    "Acetate’s charge is delocalized over two oxygens",
+    "Acetate carries a positive charge in solution",
+    "Ethoxide is aromatic and therefore stabilized"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -8681,14 +8687,16 @@
    "type": "mcq"
   },
   {
-   "q": "Adding a proton to a conjugate base regenerates the original acid it came from.",
+   "q": "HCN has pKa 9.2 and HF has pKa 3.2. Which conjugate base is stronger, and what follows for leaving-group ability?",
    "options": [
-    "True",
-    "False"
+    "Fluoride; and cyanide is the better leaving group",
+    "Cyanide; and cyanide is also the better leaving group",
+    "Fluoride; and fluoride is also the better leaving group",
+    "Cyanide; and fluoride is the better leaving group"
    ],
-   "correct": 0,
+   "correct": 3,
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Given the conjugate acids methane (pKa about 50), ammonia (pKa about 38), water (pKa about 15.7), and HF (pKa about 3.2), which of their conjugate bases, CH3-, NH2-, OH-, or F-, is the strongest base?",
@@ -8715,15 +8723,15 @@
    "type": "mcq"
   },
   {
-   "q": "In a buffer made of acetic acid and sodium acetate, which species is the conjugate base, and what role does it play when a strong acid is added?",
+   "q": "Rank these bases from strongest to weakest: ⁻NH₂, HO⁻, CH₃CO₂⁻, Cl⁻.",
    "options": [
-    "Acetic acid is the conjugate base and neutralizes added OH-",
-    "Acetate ion is the conjugate base, and it neutralizes added H+ by accepting the proton to re-form acetic acid",
-    "Sodium ion is the conjugate base component",
-    "Acetate ion reacts with added acid by donating a proton"
+    "CH₃CO₂⁻ > HO⁻ > ⁻NH₂ > Cl⁻",
+    "⁻NH₂ > HO⁻ > CH₃CO₂⁻ > Cl⁻",
+    "Cl⁻ > CH₃CO₂⁻ > HO⁻ > ⁻NH₂",
+    "HO⁻ > ⁻NH₂ > Cl⁻ > CH₃CO₂⁻"
    ],
    "correct": 1,
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -8739,58 +8747,58 @@
   {
    "q": "Why is hydroxide (OH-) often called a strong base while water itself is called a weak base, even though both are conjugate bases of something?",
    "options": [
-    "The two statements are contradictory and cannot both be true",
-    "Base strength has nothing to do with conjugate relationships",
-    "OH- is the conjugate base of water, a weak acid (pKa about 15.7), making OH- a strong base, while water is the conjugate base of H3O+, a strong acid (pKa about -1.74), making water a comparatively weak base",
-    "OH- and H2O are not conjugate to anything"
+    "Bicarbonate can only ever act as an acid, never as a base",
+    "Bicarbonate can only ever act as a base, never as an acid",
+    "Bicarbonate is the conjugate base of H₂CO₃ and the conjugate acid of CO₃²⁻",
+    "Bicarbonate is the conjugate base of CO₃²⁻ and the conjugate acid of H₂CO₃"
    ],
    "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "What is the conjugate acid of a chloride ion (Cl-)?",
+   "q": "What is the conjugate base of an amine, RNH₂, and what does it take to make it?",
    "options": [
-    "Cl2",
-    "HOCl",
-    "ClO-",
-    "HCl"
+    "RNH⁻, and it needs only aqueous sodium hydroxide",
+    "RN²⁻, and it needs two equivalents of a strong base",
+    "RNH⁻, and it needs butyllithium or a similar reagent",
+    "RNH₃⁺, and it needs only a trace of any strong acid"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "A buffer requires a weak acid and its conjugate base (or a weak base and its conjugate acid) present in significant amounts. Why can't a strong acid and its conjugate base form an effective buffer?",
+   "q": "Hydroxide is often called a strong base and water a weak one. How can both be true?",
    "options": [
-    "A strong acid's conjugate base is too weak to meaningfully react with added acid or hold onto protons, so it cannot resist pH changes the way a weak acid and conjugate base pair can",
-    "Strong acids cannot have conjugate bases",
-    "Buffers only ever work using bases, never acids",
-    "Strong acids always buffer better than weak acids"
+    "Base strength has nothing to do with conjugate relationships",
+    "Water is not really a base at all under any conditions",
+    "The two statements contradict each other and one must be wrong",
+    "They are conjugate to different acids"
    ],
-   "correct": 0,
-   "difficulty": "medium",
+   "correct": 3,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Sulfanilic acid has both an acidic -SO3H group and a basic -NH2 group in the same molecule and exists largely as a zwitterion. Which statement correctly uses conjugate acid-base terminology here?",
+   "q": "Identify both conjugate pairs in CH₃CO₂H + CH₃NH₂ → CH₃CO₂⁻ + CH₃NH₃⁺.",
    "options": [
-    "Both groups are conjugate acids of one another",
-    "The -NH3+ form is the conjugate acid of the -NH2 group, while the -SO3- form is the conjugate base of the -SO3H group",
-    "The zwitterion has no conjugate acid-base relationships at all",
-    "-NH2 is the conjugate base of -SO3H"
+    "CH₃CO₂⁻/CH₃NH₂ and CH₃CO₂H/CH₃NH₃⁺",
+    "CH₃CO₂H/CH₃CO₂⁻ and CH₃NH₂/CH₃NH₃⁺",
+    "CH₃CO₂H/CH₃NH₃⁺ and CH₃NH₂/CH₃CO₂⁻",
+    "CH₃CO₂H/CH₃NH₂ and CH₃CO₂⁻/CH₃NH₃⁺"
    ],
    "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "If an acid is written generically as A-H, which species represents its conjugate base after losing that proton?",
+   "q": "A carboxylate RCO₂⁻ is treated with dilute HCl. What forms, and what is it called?",
    "options": [
-    "A+",
-    "AH2+",
-    "A-",
-    "A2-"
+    "RCH₂OH, its reduced form",
+    "RCOCl, its acyl chloride",
+    "RCO₂H, its conjugate acid",
+    "RCO₂H, its conjugate base"
    ],
    "correct": 2,
    "difficulty": "easy",
@@ -8809,19 +8817,21 @@
    "type": "mcq"
   },
   {
-   "q": "Two different acids can have conjugate bases of exactly equal base strength only if the two acids themselves have identical pKa values.",
+   "q": "Which statement about an acid and its conjugate base is correct?",
    "options": [
-    "True",
-    "False"
+    "The weaker the acid, the weaker its conjugate base",
+    "A very weak acid has no conjugate base at all",
+    "Acid strength and conjugate base strength are independent",
+    "The weaker the acid, the stronger its conjugate base"
    ],
-   "correct": 0,
+   "correct": 3,
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Identify the two conjugate acid-base pairs in the reaction HCN + OH- → CN- + H2O.",
    "options": [
-    "HCN/CN- is one pair and H2O/OH- is the other pair",
+    "HCN/CN⁻ and H₂O/HO⁻",
     "HCN/H2O is a conjugate pair",
     "CN-/OH- is a conjugate pair",
     "There are no conjugate pairs in this reaction"
@@ -8833,12 +8843,12 @@
  ],
  "acidity-factors": [
   {
-   "q": "Which factor makes an O–H more acidic: resonance stabilization of the conjugate base, or destabilization of the conjugate base?",
+   "q": "Ethanol has pKa 16 and pentane-2,4-dione has pKa 9, even though the acidic hydrogen of the diketone is on carbon. Which factor decides it?",
    "options": [
-    "Resonance stabilization increases acidity",
-    "Resonance destabilization increases acidity",
-    "Resonance has no effect on acidity",
-    "Only inductive effects matter"
+    "Resonance, which outweighs the atom effect here",
+    "Atom, because oxygen always beats carbon",
+    "Induction from the two methyl groups on the diketone",
+    "Orbital, because the alpha carbon is sp hybridized"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -8853,28 +8863,28 @@
     "Becomes unpredictable"
    ],
    "correct": 1,
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which typically has the biggest effect on acidity when comparing O–H bonds across different molecules: atom size, hybridization, induction, and resonance all matter, but which factor dominates when a strongly electron-withdrawing group is nearby?",
+   "q": "Acetic acid has pKa 4.76 and trifluoroacetic acid has pKa 0.5. Which factor accounts for the difference?",
    "options": [
-    "Resonance stabilization from the withdrawing group",
-    "Atom identity (always oxygen)",
-    "Inductive electron withdrawal stabilizing the conjugate base",
-    "Hybridization of a distant, unrelated carbon"
+    "Atom, because fluorine is bigger than hydrogen",
+    "Orbital, because fluorine changes the hybridization",
+    "Induction, transmitted through the sigma bonds",
+    "Resonance, because fluorine donates into the carbonyl"
    ],
    "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Which of the four classic factors affecting relative acidity refers to the identity of the element to which the acidic H is attached?",
+   "q": "Which anion is the most stable?",
    "options": [
-    "Resonance",
-    "Induction",
-    "Hybridization",
-    "Atom (element) effects"
+    "CH₃CH₂O⁻",
+    "CH₃CH₂NH⁻",
+    "CH₃CH₂CH₂⁻",
+    "CH₃CO₂⁻"
    ],
    "correct": 3,
    "difficulty": "easy",
@@ -8883,46 +8893,46 @@
   {
    "q": "Down a column of the periodic table, such as F, Cl, Br, I, acidity of the corresponding H-X bond generally:",
    "options": [
-    "increases, due to increasing atom size and a weaker, more polarizable H-X bond",
-    "decreases",
-    "stays exactly the same",
-    "cannot be predicted at all"
-   ],
-   "correct": 0,
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Resonance stabilization of a conjugate base increases acidity only when the negative charge can be delocalized onto an atom actually capable of stabilizing it, such as an electronegative atom, not onto just any atom in the structure.",
-   "options": [
-    "True",
-    "False"
-   ],
-   "correct": 0,
-   "difficulty": "easy",
-   "type": "tf"
-  },
-  {
-   "q": "Inductive electron withdrawal by a nearby electronegative atom or group will generally:",
-   "options": [
-    "decrease acidity",
-    "increase acidity by helping stabilize the conjugate base's negative charge",
-    "have no effect on acidity",
-    "only affect basicity, never acidity"
+    "cannot be predicted without measuring each one",
+    "increases, because the anion gets larger and more polarizable",
+    "decreases, because electronegativity falls down the column",
+    "stays the same, since all four halides behave alike"
    ],
    "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Comparing HF, H2O, and NH3, all with H attached to similarly sized second-period atoms, what is the correct acidity order from most to least acidic?",
+   "q": "Cyclopentadiene has pKa 16, comparable to an alcohol, although its acidic hydrogen is on carbon and no heteroatom is involved. Resonance onto carbon alone can therefore be strongly stabilizing.",
    "options": [
-    "NH3 greater than H2O greater than HF",
-    "H2O greater than HF greater than NH3",
-    "HF greater than H2O greater than NH3",
-    "All three are equally acidic"
+    "True",
+    "False"
    ],
-   "correct": 2,
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "tf"
+  },
+  {
+   "q": "Which is the stronger acid: ethanethiol (CH₃CH₂SH) or ethanol (CH₃CH₂OH)?",
+   "options": [
+    "Ethanethiol, because sulfur is larger and more polarizable",
+    "Ethanol, because oxygen is the more electronegative atom",
+    "Ethanol, because the O–H bond is longer and weaker",
+    "They are equally acidic, since both are second-row hydrides"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Pent-4-yn-1-ol is HC≡C–CH₂CH₂CH₂–OH. One equivalent of sodium hydride is added. Which proton comes off?",
+   "options": [
+    "A CH₂ proton next to the OH",
+    "The O–H proton",
+    "The terminal alkyne C–H",
+    "A CH₂ proton next to the alkyne"
+   ],
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -8951,12 +8961,12 @@
    "type": "mcq"
   },
   {
-   "q": "Placing an electron-withdrawing group closer to the acidic proton generally has a larger effect on acidity than placing the same group farther away along the chain.",
+   "q": "A base is stronger when its own conjugate acid has a lower pKa.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
    "type": "tf"
   },
@@ -8964,60 +8974,60 @@
    "q": "Chloroacetic acid (pKa about 2.87) is more acidic than acetic acid (pKa about 4.76). What is the dominant factor responsible for this difference?",
    "options": [
     "Resonance differences between the two carboxylates",
-    "Inductive electron withdrawal by the electronegative chlorine stabilizes the carboxylate's negative charge",
+    "Induction from the electronegative chlorine",
     "Chlorine changes the hybridization of the carbon it is attached to",
     "Chlorine adds an extra acidic proton to the molecule"
    ],
    "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Trichloroacetic acid has pKa 0.65, chloroacetic acid 2.86 and acetic acid 4.76. What does the series show about induction?",
+   "options": [
+    "It is cumulative, but with diminishing returns",
+    "It is cumulative, and each chlorine is worth the same",
+    "Only the first chlorine has any measurable effect",
+    "It is resonance rather than induction doing the work"
+   ],
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Trichloroacetic acid (pKa about 0.7) is dramatically more acidic than chloroacetic acid (pKa about 2.87), which is itself more acidic than acetic acid (pKa about 4.76). What does this trend best illustrate?",
+   "q": "Phenol (pKa about 10) is far more acidic than a simple alcohol like tert-butanol (pKa about 18), despite neither having a strong electron-withdrawing substituent like a halogen. What best explains this?",
    "options": [
-    "Only the first chlorine added has any effect, and additional ones do nothing further",
-    "Resonance is the dominant factor explaining this particular series",
-    "Inductive effects are additive: each chlorine adds stabilization",
-    "Hybridization changes with each added chlorine in this series"
+    "Phenol’s oxygen is a more electronegative element",
+    "The two oxygens differ in hybridization",
+    "Phenoxide delocalizes its charge into the ring",
+    "tert-Butanol has more resonance stabilization than phenol"
    ],
    "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Phenol (pKa about 10) is far more acidic than a simple alcohol like tert-butanol (pKa about 18), despite neither having a strong electron-withdrawing substituent like a halogen. What best explains this?",
+   "q": "Which will the stronger base be: ethoxide (from ethanol, pKa 16) or acetate (from acetic acid, pKa 4.76)?",
    "options": [
-    "Phenol simply has a smaller atom attached to its oxygen",
-    "tert-Butanol actually has more resonance stabilization than phenol",
-    "The hybridization of oxygen differs fundamentally between the two compounds",
-    "Resonance delocalization of the phenoxide charge into the ring"
+    "Acetate, by about eleven orders of magnitude",
+    "They are equal, since both carry the charge on oxygen",
+    "Acetate, because it has two oxygens to share the charge",
+    "Ethoxide, by about eleven orders of magnitude"
    ],
    "correct": 3,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Para-nitrophenol (pKa about 7.2) is considerably more acidic than phenol itself (pKa about 10). Which combination of effects explains this?",
+   "q": "Why is H₃O⁺ (pKa −1.7) so much more acidic than H₂O (pKa 15.7), when both give up a proton from oxygen?",
    "options": [
-    "The nitro group withdraws electrons both inductively and by resonance through the para position",
-    "The nitro group has no meaningful electronic effect, and the difference is due to molecular weight alone",
-    "The nitro group donates electrons by resonance, which destabilizes the acid form",
-    "This difference is due entirely to hybridization changes at the oxygen atom"
+    "Losing the proton neutralizes a positive charge",
+    "Hydronium has an extra resonance structure available",
+    "The O–H bonds of hydronium are inherently weaker",
+    "Oxygen changes hybridization when the proton leaves"
    ],
    "correct": 0,
-   "difficulty": "hard",
-   "type": "mcq"
-  },
-  {
-   "q": "Which of the following is generally considered one of the four classic factors affecting relative acidity of an X-H bond?",
-   "options": [
-    "The color of the compound",
-    "The hybridization of the atom bearing the negative charge in the conjugate base",
-    "The melting point of the acid",
-    "The optical rotation of the acid"
-   ],
-   "correct": 1,
-   "difficulty": "easy",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -9029,40 +9039,40 @@
     "Formic acid contains a carbon-carbon triple bond"
    ],
    "correct": 2,
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Larger atoms generally form weaker bonds to hydrogen, which tends to increase the acidity of that H-X bond.",
+   "q": "The order C–H < N–H < O–H < H–F across the second period is explained by the H–X bond getting weaker from left to right.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "easy",
    "type": "tf"
   },
   {
-   "q": "Which of the following correctly ranks CH4, NH3, H2O, and HF by increasing acidity, based primarily on the atom (element) effect?",
+   "q": "Rank CH₄, NH₃, H₂O and HF from least to most acidic, and name the factor responsible.",
    "options": [
-    "HF less than H2O less than NH3 less than CH4",
-    "NH3 less than CH4 less than HF less than H2O",
-    "All four are equal in acidity",
-    "CH4 less than NH3 less than H2O less than HF"
+    "CH₄ < NH₃ < H₂O < HF, by electronegativity",
+    "HF < H₂O < NH₃ < CH₄, by electronegativity",
+    "CH₄ < NH₃ < H₂O < HF, by atom size",
+    "NH₃ < CH₄ < HF < H₂O, by bond strength"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
    "q": "A student argues that since fluorine is the most electronegative halogen, HF should always be the most acidic hydrogen halide. Why is this reasoning flawed?",
    "options": [
-    "Bond strength dominates: HI is the most acidic hydrogen halide",
-    "The reasoning is entirely correct, and HF is indeed the most acidic hydrogen halide",
-    "Electronegativity is irrelevant to every acidity trend",
-    "HF has no acidic proton at all"
+    "The reasoning is correct and HF is the most acidic hydrogen halide",
+    "Electronegativity has no bearing on any acidity trend at all",
+    "HF does not have an acidic proton to give away in the first place",
+    "Down a group, size and polarizability outweigh electronegativity"
    ],
-   "correct": 0,
+   "correct": 3,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -9089,38 +9099,38 @@
    "type": "mcq"
   },
   {
-   "q": "Which acidity factor is most directly responsible for carboxylic acids (pKa about 4 to 5) being far more acidic than alcohols (pKa about 16 to 18), even though both have an O-H bond?",
+   "q": "Ethanethiol has pKa 10.6 and acetic acid 4.76. Which factor decides which is the stronger acid?",
    "options": [
-    "Differences in the hybridization of the oxygen atom itself",
-    "Differences in the size of the attached atom",
-    "Resonance stabilization of the carboxylate",
-    "Differences in the length of the O-H bond itself"
+    "Induction from the methyl group of the thiol",
+    "Orbital, since the two atoms differ in hybridization",
+    "Resonance, which beats the atom effect here",
+    "Atom, since sulfur is larger than oxygen"
    ],
    "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Methanol has pKa 15.5 and tert-butanol 18 in water, although both are simple alcohols. What explains the gap?",
+   "options": [
+    "Water solvates the bulky tert-butoxide less effectively",
+    "tert-Butoxide is stabilized by resonance methoxide lacks",
+    "The oxygen of tert-butanol is less electronegative",
+    "tert-Butanol’s oxygen is sp² rather than sp³ hybridized"
+   ],
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Which statement about hybridization and acidity is correct?",
+   "q": "Which of these C–H bonds is the most acidic?",
    "options": [
-    "Greater percent s-character always decreases acidity",
-    "Hybridization has no effect on acidity whatsoever",
-    "Greater p-character increases acidity more than greater s-character does",
-    "Greater percent s-character increases acidity"
+    "The C–H of an alkene",
+    "The C–H of pentane-2,4-dione",
+    "The C–H of a terminal alkyne",
+    "The alpha C–H of a simple ketone"
    ],
-   "correct": 3,
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Picric acid (2,4,6-trinitrophenol) has a pKa of about 0.4, far more acidic than para-nitrophenol (pKa about 7.2) or plain phenol (pKa about 10). What best explains this extreme acidity?",
-   "options": [
-    "Three nitro groups combine their withdrawing effects on the phenoxide",
-    "Only the nitro group at the 2-position matters, and the others are irrelevant",
-    "Picric acid's extreme acidity is due to its increased molecular weight",
-    "The three nitro groups act as electron donors, destabilizing the neutral acid form"
-   ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -9137,48 +9147,48 @@
    "type": "mcq"
   },
   {
-   "q": "Why does the acidity-increasing effect of an electron-withdrawing substituent typically fall off sharply as that substituent is moved farther away from the acidic proton along a carbon chain?",
+   "q": "Rank these O–H acids from strongest to weakest: acetic acid, ethanol, phenol, trifluoroethanol.",
    "options": [
-    "Inductive effects actually get stronger with greater distance",
-    "Resonance effects always take over and replace induction at long range",
-    "Inductive effects are transmitted through sigma bonds and weaken rapidly with each additional bond of separation",
-    "There is no distance dependence for inductive effects at all"
+    "trifluoroethanol > acetic acid > phenol > ethanol",
+    "acetic acid > phenol > trifluoroethanol > ethanol",
+    "ethanol > trifluoroethanol > phenol > acetic acid",
+    "phenol > acetic acid > ethanol > trifluoroethanol"
    ],
-   "correct": 2,
-   "difficulty": "medium",
+   "correct": 1,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "When a substituent can stabilize a conjugate base by both resonance and induction at the same time, the combined effect on acidity is generally larger than either effect alone would produce.",
+   "q": "Placing an electron-withdrawing group two carbons further from the acidic proton usually leaves the acidity almost unchanged.",
    "options": [
     "True",
     "False"
    ],
    "correct": 0,
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "tf"
   },
   {
-   "q": "Which statement correctly compares the typical acidity effect of resonance versus induction?",
+   "q": "A hydrogen sits on a carbon next to a carbonyl. How does its acidity compare with an ordinary alcohol O–H?",
    "options": [
-    "Induction always has a larger effect on acidity than resonance does",
-    "Resonance and induction are always exactly equal in magnitude",
-    "Neither resonance nor induction has any real effect on acidity",
-    "Resonance produces a larger acidity change than induction"
+    "Resonance and induction are always equal in size",
+    "Neither has a measurable effect on acidity",
+    "Resonance is usually larger, but not always",
+    "Induction is always larger than resonance"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "A student compares 4-chlorophenol (pKa about 9.4) to phenol (pKa about 10.0) and expects a large acidity increase similar to what nitro substitution produces, but finds only a modest change. Why is chlorine's effect so much smaller than a nitro group's at the same position?",
+   "q": "Which base is stronger: ethylamine (conjugate acid pKa 10.7) or aniline-free ammonia (conjugate acid pKa 9.2)?",
    "options": [
-    "Chlorine's weak inductive withdrawal is partly canceled by pi donation",
-    "Chlorine donates electrons purely by induction with no resonance component",
-    "Nitro groups have no significant electronic effect on a phenol ring",
-    "Chlorine and nitro groups have essentially identical electronic effects on phenol"
+    "Ammonia, because its conjugate acid is the weaker one",
+    "Ethylamine, because it has a larger alkyl group attached",
+    "They are equal, because both put the charge on nitrogen",
+    "Ethylamine, because its conjugate acid is the weaker one"
    ],
-   "correct": 0,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   }

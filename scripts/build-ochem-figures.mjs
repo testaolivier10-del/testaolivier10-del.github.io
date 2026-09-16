@@ -5618,7 +5618,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'rich-poor-scan',
   section: 'electron-rich-poor',
-  anchor: '<p><b>The verdict</b>: the nitrogen is the nucleophile, the carbonyl carbon is the electrophile, and the molecule has no leaving group anywhere. Since the two reactive sites are in the same molecule and four atoms apart, the prediction almost makes itself — the nitrogen will attack that carbonyl, closing a five-membered ring. You are not expected to know the product; you are expected to be able to say which two atoms bond.</p>',
+  anchor: '<p><b>The verdict</b>: the nitrogen is the nucleophile, the carbonyl carbon is the electrophile, and the molecule has no leaving group anywhere. Since the two reactive sites are in the same molecule and four atoms apart, the prediction almost makes itself — the nitrogen will attack that carbonyl and close a ring. (Count it: N, C4, C3, C2 make a strained four-membered ring, so in practice chemists use the chain one CH₂ longer, which closes a comfortable five-membered ring; the logic of who attacks whom is identical.) You are not expected to know the product; you are expected to be able to say which two atoms bond.</p>',
   alt: 'A skeletal drawing of 4-aminobutan-2-one with lone pairs drawn on nitrogen and oxygen, the nitrogen marked electron-rich, the carbonyl carbon marked electron-poor, and a dashed arrow showing which bond forms',
   viewBox: '0 0 760 300',
   build() {
@@ -5664,6 +5664,558 @@ FIGURES.push({
   note: 'The oxygen is electron-rich too, and it is worth saying why it is not the nucleophile of interest. Its lone pairs sit on a small, very electronegative atom and are held tightly, so as a nucleophile it is feeble next to the nitrogen; what it does readily instead is pick up a proton, which is why acid catalysis works on carbonyls at all. Rich and poor are the first cut, not the last word &mdash; among rich atoms, the loosely held pairs are the reactive ones.',
 });
 
+
+
+/* ---------------------------------------------------------------- 107 ---
+   Chapter 4 had one drawn proton transfer, HCl + NH3, and not one organic
+   one. The notes insist that "the second arrow is not optional" and then
+   never show both arrows on a molecule a student will actually meet. */
+FIGURES.push({
+  id: 'organic-proton-transfer',
+  section: 'bronsted',
+  anchor: 'which is why carboxylate salts are trivially easy to make and why a carboxylic acid cannot survive in a flask containing an alkoxide.</p>',
+  alt: 'Methoxide removing the O-H proton of acetic acid, drawn skeletally with both curved arrows: one from a methoxide lone pair to the hydrogen, one from the O-H bond back onto oxygen',
+  viewBox: '0 0 760 300',
+  build() {
+    let s = '';
+    s += tag(250, 36, 'TWO ARROWS, ONE PROTON');
+
+    // ---- acetic acid ----
+    const me = P(120, 190), c = P(172, 160), o1 = P(172, 100), o2 = P(224, 190), h = P(272, 166);
+    s += bond(me, c, { rFrom: 0, rTo: 0 });
+    s += bond(c, o1, { rFrom: 0, rTo: 15, order: 2 });
+    s += bond(c, o2, { rFrom: 0, rTo: 15 });
+    s += bond(o2, h, { rFrom: 15, rTo: 15 });
+    s += atom(me.x, me.y, '', { kind: 'point' });
+    s += atom(c.x, c.y, '', { kind: 'point' });
+    s += atom(o1.x, o1.y, 'O', { size: 11 });
+    s += atom(o2.x, o2.y, 'O', { size: 11 });
+    s += atom(h.x, h.y, 'H', { kind: 'warn', size: 11 });
+    for (const ang of [-40, -140]) s += lonePair(o1.x, o1.y, ang, { dist: 24 });
+    for (const ang of [60, 120]) s += lonePair(o2.x, o2.y, ang, { dist: 24 });
+    s += text(160, 262, 'acetic acid, pKa 4.76', { cls: 'fg-sm', size: 10 });
+
+    // ---- methoxide ----
+    const mo = P(360, 126), mc = P(412, 96);
+    s += bond(mo, mc, { rFrom: 16, rTo: 0 });
+    s += atom(mo.x, mo.y, 'O', { kind: 'hi', size: 11 });
+    s += atom(mc.x, mc.y, '', { kind: 'point' });
+    s += text(386, 106, '−', { cls: 'fg-hi', size: 16 });
+    for (const ang of [135, 180, 225]) s += lonePair(mo.x, mo.y, ang, { dist: 24 });
+    s += text(392, 214, 'methoxide, CH₃O⁻', { cls: 'fg-sm', size: 10 });
+
+    // ---- arrow 1: base to proton ----
+    s += curve(P(338, 122), P(288, 156), { bow: -20 });
+    s += tag(276, 70, '1 · the base takes the proton');
+
+    // ---- arrow 2: the bonding pair stays behind ----
+    s += curve(P(250, 180), P(222, 208), { bow: -18 });
+    s += tag(318, 244, '2 · the bonding pair stays behind');
+
+    s += rule(500, 40, 500, 268);
+    s += text(524, 64, 'What you get', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(524, 88, 'methanol, CH₃OH', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(524, 106, 'acetate, CH₃CO₂⁻', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(524, 132, 'Charge in: −1 and 0', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(524, 150, 'Charge out: 0 and −1', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(524, 184, 'Acid used up: 4.76', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(524, 202, 'Acid made: 15.5', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(524, 228, 'Gap of 10.7 units, so', { cls: 'fg-tag-good', size: 10.5, anchor: 'start' });
+    s += text(524, 246, 'it goes, completely.', { cls: 'fg-tag-good', size: 10.5, anchor: 'start' });
+    return s;
+  },
+  caption: 'The same two arrows as the HCl figure, on an acid and a base you will meet in a real flask. Arrow one makes the new O–H bond out of a methoxide lone pair; arrow two leaves the old bonding pair behind on acetic acid’s oxygen, which is what makes the conjugate base negative.',
+  note: 'Draw only arrow two and you have described acetic acid falling apart by itself, which it does not do. Draw only arrow one and the hydrogen ends up with two bonds. The pair of arrows is not decoration &mdash; it is the electron bookkeeping, and the charge check at the right is how you know it balances.',
+});
+
+
+/* ---------------------------------------------------------------- 108 ---
+   "Which proton comes off, and which site gets protonated" is the most
+   asked question on this topic and the chapter never ran it on a molecule
+   with more than one candidate. */
+FIGURES.push({
+  id: 'acid-base-site-scan',
+  section: 'bronsted',
+  anchor: 'protonate this molecule with one equivalent of HCl and the proton goes to nitrogen every time, giving the ammonium salt and leaving the alcohol untouched.</p>',
+  alt: 'A skeletal drawing of 4-aminobutan-1-ol with each kind of hydrogen labeled by pKa with the nitrogen lone pair marked as the basic site',
+  viewBox: '0 0 760 290',
+  build() {
+    let s = '';
+    s += tag(250, 36, 'ONE MOLECULE, TWO DIFFERENT ANSWERS');
+
+    const n = P(104, 176), c1 = P(164, 142), c2 = P(224, 176), c3 = P(284, 142), c4 = P(344, 176), o = P(404, 142);
+    s += bond(n, c1, { rFrom: 22, rTo: 0 });
+    s += bond(c1, c2, { rFrom: 0, rTo: 0 });
+    s += bond(c2, c3, { rFrom: 0, rTo: 0 });
+    s += bond(c3, c4, { rFrom: 0, rTo: 0 });
+    s += bond(c4, o, { rFrom: 0, rTo: 19 });
+    s += atom(n.x, n.y, 'H₂N', { kind: 'hi', r: 22, size: 10 });
+    s += atom(o.x, o.y, 'OH', { kind: 'warn', r: 19, size: 10.5 });
+    for (const pt of [c1, c2, c3, c4]) s += atom(pt.x, pt.y, '', { kind: 'point' });
+    s += lonePair(n.x, n.y, 180, { dist: 30 });
+
+    s += text(404, 96, 'O–H, pKa 16', { cls: 'fg-tag-warn', size: 11 });
+    s += text(404, 78, 'most acidic proton', { cls: 'fg-sm', size: 10 });
+    s += text(104, 222, 'N–H, pKa 38', { cls: 'fg-sm', size: 10 });
+    s += text(104, 240, 'lone pair: most basic site', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(254, 226, 'C–H, pKa about 50', { cls: 'fg-sm', size: 10 });
+    s += text(254, 244, 'never in the running', { cls: 'fg-sm', size: 10 });
+    s += text(250, 268, '4-aminobutan-1-ol', { cls: 'fg-sm', size: 10 });
+
+    s += rule(500, 40, 500, 272);
+    s += text(524, 64, 'Add one equivalent of', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(524, 88, 'NaH → takes the O–H.', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(524, 106, 'It is 22 units below the', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(524, 124, 'N–H, so nothing else', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(524, 142, 'competes for the base.', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(524, 178, 'HCl → goes to nitrogen.', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(524, 196, 'Both atoms have pairs,', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(524, 214, 'but nitrogen holds its', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(524, 232, 'more loosely and gives', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(524, 250, 'it up more willingly.', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    return s;
+  },
+  caption: 'The scan run on a molecule that has an O–H, an N–H and six C–H bonds. The acid question and the base question have different answers, on opposite ends of the same molecule — which is why they have to be asked separately.',
+  note: 'The order the scan runs in matters more than it looks. Check O–H and N–H first and you are done in one pass on most molecules; start with the carbons and you will spend the paper arguing about a proton that is thirty orders of magnitude out of contention.',
+});
+
+
+/* ---------------------------------------------------------------- 109 ---
+   The notes said an acid in a mechanism "might be a protonated intermediate
+   generated two steps earlier" and never drew one, so the commonest acids in
+   the whole book went unillustrated. */
+FIGURES.push({
+  id: 'cation-acids',
+  section: 'bronsted',
+  anchor: 'protonation invents an acidic hydrogen where there was none.</p>',
+  alt: 'Three cationic acids drawn side by side: hydronium, a protonated alcohol and a protonated carbonyl, each with its pKa and its neutral parent',
+  viewBox: '0 0 760 268',
+  build() {
+    let s = '';
+    s += tag(380, 36, 'THE ACID IS USUALLY A CATION');
+
+    const panels = [
+      { x: 140, name: 'hydronium', pka: 'pKa −1.7', from: 'from water, 15.7' },
+      { x: 380, name: 'protonated alcohol', pka: 'pKa about −2', from: 'from an alcohol, 16' },
+      { x: 620, name: 'protonated carbonyl', pka: 'pKa about −7', from: 'from a ketone, no O–H at all' },
+    ];
+
+    // --- hydronium ---
+    {
+      const o = P(140, 122), h1 = P(92, 152), h2 = P(188, 152), h3 = P(140, 76);
+      s += bond(o, h1, { rTo: 12 }); s += bond(o, h2, { rTo: 12 }); s += bond(o, h3, { rTo: 12 });
+      s += atom(o.x, o.y, 'O', { kind: 'warn', size: 12 });
+      s += atom(h1.x, h1.y, 'H', { r: 12, size: 10 });
+      s += atom(h2.x, h2.y, 'H', { r: 12, size: 10 });
+      s += atom(h3.x, h3.y, 'H', { r: 12, size: 10 });
+      s += text(172, 96, '+', { cls: 'fg-tag-warn', size: 14 });
+      s += lonePair(o.x, o.y, 180, { dist: 24 });
+    }
+    // --- protonated alcohol ---
+    {
+      const o = P(380, 122), r = P(332, 152), h1 = P(428, 152), h2 = P(380, 76);
+      s += bond(o, r, { rTo: 20 }); s += bond(o, h1, { rTo: 12 }); s += bond(o, h2, { rTo: 12 });
+      s += atom(o.x, o.y, 'O', { kind: 'warn', size: 12 });
+      s += atom(r.x, r.y, 'R', { r: 20, size: 11 });
+      s += atom(h1.x, h1.y, 'H', { r: 12, size: 10 });
+      s += atom(h2.x, h2.y, 'H', { r: 12, size: 10 });
+      s += text(412, 96, '+', { cls: 'fg-tag-warn', size: 14 });
+      s += lonePair(o.x, o.y, 180, { dist: 24 });
+    }
+    // --- protonated carbonyl ---
+    {
+      const c = P(596, 150), o = P(596, 92), h = P(648, 62), r1 = P(544, 180), r2 = P(648, 180);
+      s += bond(c, o, { rFrom: 15, rTo: 15, order: 2 });
+      s += bond(o, h, { rFrom: 15, rTo: 12 });
+      s += bond(c, r1, { rFrom: 15, rTo: 18 });
+      s += bond(c, r2, { rFrom: 15, rTo: 18 });
+      s += atom(c.x, c.y, 'C', { size: 12 });
+      s += atom(o.x, o.y, 'O', { kind: 'warn', size: 12 });
+      s += atom(h.x, h.y, 'H', { r: 12, size: 10 });
+      s += atom(r1.x, r1.y, 'R', { r: 18, size: 11 });
+      s += atom(r2.x, r2.y, 'R', { r: 18, size: 11 });
+      s += text(562, 70, '+', { cls: 'fg-tag-warn', size: 14 });
+      s += lonePair(o.x, o.y, 180, { dist: 24 });
+    }
+
+    for (const p of panels) {
+      s += text(p.x, 214, p.name, { cls: 'fg-sm', size: 10 });
+      s += text(p.x, 232, p.pka, { cls: 'fg-tag-warn', size: 11 });
+      s += text(p.x, 252, p.from, { cls: 'fg-sm', size: 10 });
+    }
+    return s;
+  },
+  caption: 'Three acids that appear in mechanisms constantly and in reagent bottles never. Each is made by protonating something neutral, and each gives that proton straight back to anything mildly basic — which is exactly what makes them useful intermediates rather than reagents.',
+  note: 'The reason a full positive charge is worth seventeen or eighteen pK<sub>a</sub> units is visible in the drawing: when the proton leaves, the charge does not move somewhere else, it disappears. Every other acid on the ladder has to find a home for a negative charge it has just created. These three simply stop being charged.',
+});
+
+
+/* ---------------------------------------------------------------- 110 ---
+   The Lewis section described three organic Lewis acid-base events in prose
+   and drew none of them; the one worked example was BF3 + NH3, which is the
+   one case with no carbon in it. */
+FIGURES.push({
+  id: 'carbocation-lewis-acid',
+  section: 'lewis-acids',
+  anchor: 'Students routinely draw this product neutral on both atoms, and the formal-charge count is what catches it.</p>',
+  alt: 'The tert-butyl cation accepting a lone pair from water, drawn with one curved arrow and with the formal charge moving from carbon to oxygen',
+  viewBox: '0 0 760 280',
+  build() {
+    let s = '';
+    s += tag(250, 36, 'A LEWIS ACID–BASE STEP WITH NO PROTON IN IT');
+
+    // ---- the cation ----
+    const c = P(140, 146), m1 = P(88, 110), m2 = P(192, 110), m3 = P(140, 206);
+    s += bond(c, m1, { rFrom: 16, rTo: 0 }); s += bond(c, m2, { rFrom: 16, rTo: 0 }); s += bond(c, m3, { rFrom: 16, rTo: 0 });
+    s += atom(c.x, c.y, 'C', { kind: 'warn', size: 12 });
+    for (const pt of [m1, m2, m3]) s += atom(pt.x, pt.y, '', { kind: 'point' });
+    s += text(172, 118, '+', { cls: 'fg-tag-warn', size: 15 });
+    s += text(140, 244, 'tert-butyl cation', { cls: 'fg-sm', size: 10 });
+    s += text(140, 262, 'six electrons, empty p orbital', { cls: 'fg-sm', size: 10 });
+
+    // ---- water ----
+    const o = P(330, 106), wh1 = P(378, 78), wh2 = P(378, 136);
+    s += bond(o, wh1, { rTo: 12 }); s += bond(o, wh2, { rTo: 12 });
+    s += atom(o.x, o.y, 'O', { kind: 'hi', size: 12 });
+    s += atom(wh1.x, wh1.y, 'H', { r: 12, size: 10 });
+    s += atom(wh2.x, wh2.y, 'H', { r: 12, size: 10 });
+    for (const ang of [160, 210]) s += lonePair(o.x, o.y, ang, { dist: 24 });
+    s += text(330, 174, 'water, the Lewis base', { cls: 'fg-sm', size: 10 });
+
+    // ---- the arrow ----
+    s += curve(P(300, 100), P(162, 136), { bow: -34 });
+    s += tag(240, 62, 'one arrow · no bond breaks');
+
+    // ---- product ----
+    s += rule(456, 40, 456, 264);
+    const pc = P(556, 146), pm1 = P(504, 110), pm2 = P(556, 206), pm3 = P(500, 180), po = P(626, 118), ph1 = P(676, 88), ph2 = P(676, 148);
+    s += bond(pc, pm1, { rFrom: 16, rTo: 0 });
+    s += bond(pc, pm2, { rFrom: 16, rTo: 0 });
+    s += bond(pc, pm3, { rFrom: 16, rTo: 0 });
+    s += bond(pc, po, { rFrom: 16, rTo: 15 });
+    s += bond(po, ph1, { rFrom: 15, rTo: 12 });
+    s += bond(po, ph2, { rFrom: 15, rTo: 12 });
+    s += atom(pc.x, pc.y, 'C', { size: 12 });
+    s += atom(pm1.x, pm1.y, '', { kind: 'point' });
+    s += atom(pm2.x, pm2.y, '', { kind: 'point' });
+    s += atom(pm3.x, pm3.y, '', { kind: 'point' });
+    s += atom(po.x, po.y, 'O', { kind: 'warn', size: 12 });
+    s += atom(ph1.x, ph1.y, 'H', { r: 12, size: 10 });
+    s += atom(ph2.x, ph2.y, 'H', { r: 12, size: 10 });
+    s += lonePair(po.x, po.y, 250, { dist: 24 });
+    s += text(658, 92, '+', { cls: 'fg-tag-warn', size: 15 });
+    s += text(556, 244, 'an oxonium ion', { cls: 'fg-sm', size: 10 });
+    s += text(596, 262, 'carbon neutral · oxygen +1', { cls: 'fg-tag-warn', size: 11 });
+    return s;
+  },
+  caption: 'SN1’s second step, described honestly. The carbocation is the electron-pair acceptor and water is the donor, so this is a Lewis acid–base reaction — the same event as BF₃ plus ammonia, with carbon in place of boron.',
+  note: 'Follow the charge rather than assuming it cancels. It started on carbon and ended on oxygen, because oxygen supplied both electrons of the new bond and got no share of them back. The neutral alcohol appears only after a second, Brønsted step removes that proton &mdash; two definitions, one mechanism, one step each.',
+});
+
+
+/* ---------------------------------------------------------------- 111 ---
+   The bicarbonate separation is the classic exam and lab question and the
+   notes taught it in three sentences with nothing to look at. */
+FIGURES.push({
+  id: 'bicarbonate-extraction',
+  section: 'pka',
+  anchor: '<p>This is a real laboratory separation, and it rests on nothing but two pKa comparisons.</p>',
+  alt: 'A separatory funnel with an aqueous upper layer holding the carboxylate salt and an organic lower layer holding the neutral phenol, with the two pKa comparisons written beside it',
+  viewBox: '0 0 760 320',
+  build() {
+    let s = '';
+    s += tag(192, 36, 'ONE REAGENT, TWO LAYERS');
+
+    // ---- the funnel: a body with two layers and a stem ----
+    s += panel(56, 64, 272, 176, { r: 14 });
+    s += bar(60, 68, 264, 82, { kind: 'hi', r: 10, opacity: 0.3 });
+    s += bar(60, 152, 264, 84, { kind: 'mut', r: 10, opacity: 0.12 });
+    s += rule(60, 150, 328, 150);
+    s += rule(178, 240, 178, 278);
+    s += rule(206, 240, 206, 278);
+
+    s += text(192, 98, 'AQUEOUS LAYER', { cls: 'fg-tag', size: 11 });
+    s += text(192, 122, 'RCO\u2082\u207b Na\u207a', { cls: 'fg-lbl', size: 13 });
+    s += text(192, 140, 'charged \u2014 dissolves in water', { cls: 'fg-sm', size: 10 });
+
+    s += text(192, 180, 'ORGANIC LAYER', { cls: 'fg-tag-mut', size: 11 });
+    s += text(192, 204, 'PhOH', { cls: 'fg-lbl', size: 13 });
+    s += text(192, 222, 'still neutral \u2014 stays put', { cls: 'fg-sm', size: 10 });
+
+    s += text(192, 300, 'run the bottom layer off', { cls: 'fg-sm', size: 10 });
+
+    s += rule(376, 48, 376, 300);
+
+    s += text(404, 74, 'The base is NaHCO\u2083.', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(404, 94, 'Its conjugate acid is carbonic acid, pKa 6.4,', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(404, 112, 'so it deprotonates anything below 6.4 and', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(404, 130, 'nothing above it.', { cls: 'fg-sm', size: 10, anchor: 'start' });
+
+    s += text(404, 168, 'RCO\u2082H, pKa 4.76', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    s += text(404, 186, '1.6 units below \u2014 deprotonated, goes ionic,', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(404, 204, 'and moves into the water.', { cls: 'fg-sm', size: 10, anchor: 'start' });
+
+    s += text(404, 240, 'PhOH, pKa 10', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
+    s += text(404, 258, '3.6 units above \u2014 not touched, stays neutral,', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(404, 276, 'and stays in the organic solvent.', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    return s;
+  },
+  caption: 'Why the reagent is bicarbonate and not hydroxide. Hydroxide (conjugate acid water, pKa 15.7) is strong enough to deprotonate both compounds, so both would end up in the aqueous layer and nothing would be separated. Bicarbonate sits deliberately between the two pKa values.',
+  note: 'This is the general shape of every extraction you will run: pick a base whose conjugate-acid pK<sub>a</sub> falls <i>between</i> the two compounds you want apart. Charged species go into water, neutral ones stay in the organic layer, and the funnel does the rest. Acidifying the aqueous layer afterwards puts the proton back and gives the carboxylic acid out clean.',
+});
+
+
+/* ---------------------------------------------------------------- 112 ---
+   Every conjugate in this section was inorganic. The conjugates students are
+   actually asked for are an alcohol's and an amine's, in both directions. */
+FIGURES.push({
+  id: 'organic-conjugates',
+  section: 'conjugate',
+  anchor: '<p><b>The same operation on the groups you will meet later:</b> the conjugate acid of a ketone is the protonated carbonyl C=OH⁺; the conjugate base of a ketone is the enolate; the conjugate base of a terminal alkyne is the acetylide. In each case, count one H and one unit of charge, and change nothing else.</p>',
+  alt: 'Two rows showing ethanol and ethylamine each flanked by their conjugate acid on the left and conjugate base on the right, with pKa values under each',
+  viewBox: '0 0 760 320',
+  build() {
+    let s = '';
+    s += tag(380, 34, 'ONE PROTON EITHER SIDE OF THE MOLECULE YOU STARTED WITH');
+
+    /* A two-carbon skeleton ending in a heteroatom, drawn at a given origin.
+       `extra` is what hangs off the heteroatom, `charge` the sign to write. */
+    const chain = (ox, oy, el, extra, charge, kind) => {
+      let g = '';
+      const a = P(ox, oy + 30), b = P(ox + 46, oy), x = P(ox + 92, oy + 30);
+      g += bond(a, b, { rFrom: 0, rTo: 0 });
+      g += bond(b, x, { rFrom: 0, rTo: 17 });
+      g += atom(a.x, a.y, '', { kind: 'point' });
+      g += atom(b.x, b.y, '', { kind: 'point' });
+      g += atom(x.x, x.y, el, { kind, r: 17, size: el.length > 2 ? 9.5 : 11 });
+      if (extra) g += text(x.x + 31, x.y + 5, extra, { cls: 'fg-lbl', size: 12, anchor: 'start' });
+      if (charge) g += text(x.x + 6, x.y - 26, charge, { cls: kind === 'hi' ? 'fg-hi' : 'fg-warn', size: 15 });
+      return g;
+    };
+
+    const row = (y, title, acid, acidPka, mid, base, basePka) => {
+      let g = '';
+      g += chain(60, y, acid[0], acid[1], '+', 'warn');
+      g += chain(300, y, mid[0], mid[1], '', 'plain');
+      g += chain(540, y, base[0], base[1], '−', 'hi');
+      g += arrow(P(240, y + 30), P(288, y + 30), { muted: true });
+      g += arrow(P(480, y + 30), P(528, y + 30), { muted: true });
+      g += text(106, y + 74, acid[2], { cls: 'fg-sm', size: 10 });
+      g += text(106, y + 92, acidPka, { cls: 'fg-tag-warn', size: 11 });
+      g += text(346, y + 74, mid[2], { cls: 'fg-sm', size: 10 });
+      g += text(346, y + 92, title, { cls: 'fg-tag', size: 11 });
+      g += text(586, y + 74, base[2], { cls: 'fg-sm', size: 10 });
+      g += text(586, y + 92, basePka, { cls: 'fg-tag-good', size: 11 });
+      g += text(264, y + 8, '−H⁺', { cls: 'fg-sm', size: 10 });
+      g += text(504, y + 8, '−H⁺', { cls: 'fg-sm', size: 10 });
+      return g;
+    };
+
+    s += row(64, 'the alcohol',
+      ['O', 'H₂', 'conjugate acid'], 'pKa about −2',
+      ['O', 'H', 'ethanol'],
+      ['O', '', 'conjugate base'], 'parent pKa 16');
+
+    s += rule(40, 178, 720, 178);
+
+    s += row(210, 'the amine',
+      ['N', 'H₃', 'conjugate acid'], 'pKa about 10.7',
+      ['N', 'H₂', 'ethylamine'],
+      ['N', 'H', 'conjugate base'], 'parent pKa 38');
+    return s;
+  },
+  caption: 'The operation, run forwards and backwards on the two functional groups exams ask about. Left of center you have added a proton and a positive charge; right of center you have removed a proton and gone down one unit of charge. Nothing else about the molecule changes.',
+  note: 'Which of the two you will actually meet is decided by the numbers underneath. An ammonium ion at pK<sub>a</sub> 10.7 forms whenever an amine meets any ordinary acid; the amide anion beside it needs butyllithium, because its parent N&ndash;H is pK<sub>a</sub> 38. Same operation, wildly different difficulty.',
+});
+
+
+/* ---------------------------------------------------------------- 113 ---
+   "Phenoxide delocalizes its charge into the aromatic ring" was a sentence
+   with no picture, in a section whose own pitfall box says to draw both
+   conjugate bases before reasoning. */
+FIGURES.push({
+  id: 'phenoxide-resonance',
+  section: 'acidity-factors',
+  anchor: 'Six units more acidic than an alcohol, five units less acidic than a carboxylic acid.</p>',
+  alt: 'The four resonance structures of phenoxide: the charge on oxygen, then on the ortho, para and other ortho carbons of the ring',
+  viewBox: '0 0 760 300',
+  build() {
+    let s = '';
+    s += tag(380, 34, 'WHERE PHENOXIDE’S CHARGE ACTUALLY GOES');
+
+    /* Ring vertices, index 0 at the top (bearing the oxygen), then clockwise:
+       1 and 5 are ortho, 2 and 4 are meta, 3 is para. When the charge moves
+       off oxygen and onto a ring carbon, the C\u2013O bond becomes a C=O double
+       bond \u2014 that is the bond the electrons came out of, and leaving it
+       single is the commonest way this picture is drawn wrongly. */
+    const drawRing = (cx, cy, r, chargeAt, doubles) => {
+      let g = '';
+      const onO = chargeAt === 'o';
+      const v = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (-90 + i * 60) * Math.PI / 180;
+        v.push(P(cx + r * Math.cos(a), cy + r * Math.sin(a)));
+      }
+      const mid = P(cx, cy);
+      for (let i = 0; i < 6; i++) {
+        const a = v[i], b = v[(i + 1) % 6];
+        if (doubles.includes(i)) g += ringDouble(a, b, mid, { gap: 4.4, inset: 9 });
+        else g += bond(a, b, { rFrom: 0, rTo: 0 });
+      }
+      const o = P(cx, cy - r - 40);
+      g += bond(v[0], o, { rFrom: 0, rTo: 15, order: onO ? 1 : 2 });
+      g += atom(o.x, o.y, 'O', { kind: onO ? 'hi' : 'plain', size: 11 });
+      for (const ang of onO ? [-40, -90, -140] : [-40, -140]) g += lonePair(o.x, o.y, ang, { dist: 23 });
+      if (onO) g += text(o.x + 26, o.y - 4, '\u2212', { cls: 'fg-hi', size: 15 });
+      for (let i = 0; i < 6; i++) {
+        g += atom(v[i].x, v[i].y, '', { kind: 'point' });
+        if (chargeAt === i) {
+          const dx = v[i].x - cx, dy = v[i].y - cy;
+          const len = Math.hypot(dx, dy) || 1;
+          g += text(v[i].x + (dx / len) * 20, v[i].y + (dy / len) * 20 + 4, '\u2212', { cls: 'fg-hi', size: 15 });
+        }
+      }
+      return g;
+    };
+
+    const cy = 170, r = 36;
+    s += drawRing(96, cy, r, 'o', [0, 2, 4]);
+    s += drawRing(288, cy, r, 1, [2, 4]);
+    s += drawRing(480, cy, r, 3, [1, 4]);
+    s += drawRing(672, cy, r, 5, [1, 3]);
+
+    for (const x of [192, 384, 576]) {
+      s += arrow(P(x - 20, cy), P(x + 20, cy), { muted: true });
+      s += arrow(P(x + 20, cy + 12), P(x - 20, cy + 12), { muted: true });
+    }
+
+    s += text(96, 254, 'charge on oxygen', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(96, 272, 'the major contributor', { cls: 'fg-sm', size: 10 });
+    s += text(288, 254, 'ortho carbon', { cls: 'fg-tag-warn', size: 10.5 });
+    s += text(480, 254, 'para carbon', { cls: 'fg-tag-warn', size: 10.5 });
+    s += text(672, 254, 'the other ortho', { cls: 'fg-tag-warn', size: 10.5 });
+    s += text(480, 272, 'three carbon contributors — real, but each worth less than the oxygen one', { cls: 'fg-sm', size: 10 });
+    return s;
+  },
+  caption: 'Four contributors, and the reason phenol lands at pKa 10 rather than at an alcohol’s 16. The charge is genuinely shared with three ring carbons, which is worth six pKa units — and it is still not worth as much as acetate’s deal, where the other place to put the charge is a second oxygen.',
+  note: 'Count which positions get the charge: ortho, para, ortho. The meta carbons never receive it, and that pattern is not a detail of this molecule &mdash; it is the same ortho/para bias that decides where substituents end up on a benzene ring later in the course. The arrows that delocalize a phenoxide and the arrows that direct an aromatic substitution are the same arrows.',
+});
+
+
+/* ---------------------------------------------------------------- 114 ---
+   The 1,3-dicarbonyl worked example said "the anion now delocalizes onto two
+   oxygens rather than one" and drew nothing, which is the one claim in the
+   section a picture settles instantly. */
+FIGURES.push({
+  id: 'diketone-enolate',
+  section: 'acidity-factors',
+  anchor: '<p>That is roughly as acidic as phenol, and more acidic than ammonium — from a hydrogen on carbon. This is why 1,3-dicarbonyls are the workhorse nucleophiles of',
+  alt: 'The three resonance structures of the pentane-2,4-dione anion, with the negative charge on the central carbon and then on each of the two oxygens',
+  viewBox: '0 0 760 290',
+  build() {
+    let s = '';
+    s += tag(380, 34, 'ONE CHARGE, THREE PLACES TO PUT IT');
+
+    /* Left carbonyl, central carbon, right carbonyl. `on` says where the
+       charge sits: 'c', 'left' or 'right'. */
+    const unit = (ox, on) => {
+      let g = '';
+      const mL = P(ox, 168), cL = P(ox + 44, 138), oL = P(ox + 44, 84);
+      const cc = P(ox + 88, 168);
+      const cR = P(ox + 132, 138), oR = P(ox + 132, 84), mR = P(ox + 176, 168);
+      g += bond(mL, cL, { rFrom: 0, rTo: 0 });
+      g += bond(cL, oL, { rFrom: 0, rTo: 15, order: on === 'left' ? 1 : 2 });
+      g += bond(cL, cc, { rFrom: 0, rTo: 0, order: on === 'left' ? 2 : 1 });
+      g += bond(cc, cR, { rFrom: 0, rTo: 0, order: on === 'right' ? 2 : 1 });
+      g += bond(cR, oR, { rFrom: 0, rTo: 15, order: on === 'right' ? 1 : 2 });
+      g += bond(cR, mR, { rFrom: 0, rTo: 0 });
+      for (const pt of [mL, cL, cc, cR, mR]) g += atom(pt.x, pt.y, '', { kind: 'point' });
+      g += atom(oL.x, oL.y, 'O', { kind: on === 'left' ? 'hi' : 'plain', size: 11 });
+      g += atom(oR.x, oR.y, 'O', { kind: on === 'right' ? 'hi' : 'plain', size: 11 });
+      const pairs = (o, charged) => { let t = ''; for (const ang of charged ? [-40, -90, -140] : [-40, -140]) t += lonePair(o.x, o.y, ang, { dist: 23 }); return t; };
+      g += pairs(oL, on === 'left');
+      g += pairs(oR, on === 'right');
+      if (on === 'left') g += text(oL.x - 26, oL.y - 4, '−', { cls: 'fg-hi', size: 15 });
+      if (on === 'right') g += text(oR.x + 26, oR.y - 4, '−', { cls: 'fg-hi', size: 15 });
+      if (on === 'c') g += text(cc.x, cc.y + 30, '−', { cls: 'fg-hi', size: 15 });
+      return g;
+    };
+
+    s += unit(36, 'left');
+    s += unit(292, 'c');
+    s += unit(548, 'right');
+    s += arrow(P(240, 150), P(276, 150), { muted: true });
+    s += arrow(P(276, 162), P(240, 162), { muted: true });
+    s += arrow(P(496, 150), P(532, 150), { muted: true });
+    s += arrow(P(532, 162), P(496, 162), { muted: true });
+
+    s += text(124, 218, 'charge on the left oxygen', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(380, 218, 'charge on carbon', { cls: 'fg-tag-warn', size: 10.5 });
+    s += text(636, 218, 'charge on the right oxygen', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(380, 248, 'pentane-2,4-dione, pKa 9 — as acidic as phenol, from a hydrogen on carbon', { cls: 'fg-sm', size: 10 });
+    s += text(380, 270, 'a ketone with one carbonyl manages pKa 20; the second one is worth eleven more units', { cls: 'fg-sm', size: 10 });
+    return s;
+  },
+  caption: 'The anion an ordinary base can make out of a C–H. The charge spends most of its time on the two oxygens and only a minority of it on the carbon between them — which is why a carbon acid ends up as acidic as a phenol.',
+  note: 'The carbon-centered structure is the minor contributor and it is still the one that does the chemistry: it is the carbon, not the oxygen, that attacks an electrophile. A minor contributor is not a rare event &mdash; there is one real anion, and the carbon form is a permanent fraction of it.',
+});
+
+
+/* ---------------------------------------------------------------- 115 ---
+   The induction figure showed one trichloroacetate with a text label. The
+   claim the table and the prose both turn on is the DISTANCE fall-off, which
+   nothing in the section drew. */
+FIGURES.push({
+  id: 'induction-distance',
+  section: 'acidity-factors',
+  anchor: 'Move the chlorine three carbons from the acid group and almost nothing is left of the effect.',
+  alt: 'Three butanoic acids with the chlorine moved one, two and three carbons from the carboxyl group, with the pKa under each showing the effect fading with distance',
+  viewBox: '0 0 760 292',
+  build() {
+    let s = '';
+    s += tag(380, 34, 'INDUCTION FADES BOND BY BOND');
+
+    /* Butanoic acid drawn skeletally, with the chlorine hung off carbon
+       `pos` counted from the carboxyl carbon (1 = alpha). */
+    const acid = (ox, pos) => {
+      let g = '';
+      const c1 = P(ox, 150), o1 = P(ox, 96), o2 = P(ox - 46, 180);
+      const c2 = P(ox + 46, 180), c3 = P(ox + 92, 150), c4 = P(ox + 138, 180);
+      g += bond(c1, o1, { rFrom: 0, rTo: 15, order: 2 });
+      g += bond(c1, o2, { rFrom: 0, rTo: 19 });
+      g += bond(c1, c2, { rFrom: 0, rTo: 0 });
+      g += bond(c2, c3, { rFrom: 0, rTo: 0 });
+      g += bond(c3, c4, { rFrom: 0, rTo: 0 });
+      g += atom(o1.x, o1.y, 'O', { size: 11 });
+      g += atom(o2.x, o2.y, 'OH', { r: 19, size: 10.5 });
+      for (const pt of [c1, c2, c3, c4]) g += atom(pt.x, pt.y, '', { kind: 'point' });
+      for (const ang of [-40, -140]) g += lonePair(o1.x, o1.y, ang, { dist: 23 });
+      const host = [c2, c3, c4][pos - 1];
+      const cl = P(host.x, host.y + 44);
+      g += bond(host, cl, { rFrom: 0, rTo: 16 });
+      g += atom(cl.x, cl.y, 'Cl', { kind: 'warn', size: 11 });
+      return g;
+    };
+
+    s += acid(108, 1);
+    s += acid(348, 2);
+    s += acid(588, 3);
+
+    const rows = [
+      [108, 'on the alpha carbon', 'pKa 2.86 \u00b7 the full effect'],
+      [348, 'one carbon further out', 'pKa 4.06 \u00b7 most of it gone'],
+      [588, 'three carbons from the acid', 'pKa 4.52 \u00b7 all but gone'],
+    ];
+    for (const [x, where, pka] of rows) {
+      s += text(x + 46, 254, pka, { cls: 'fg-tag-warn', size: 11 });
+      s += text(x + 46, 274, where, { cls: 'fg-sm', size: 10 });
+    }
+    s += text(380, 66, 'butanoic acid itself is pKa 4.82 — read each number against that', { cls: 'fg-sm', size: 10 });
+    return s;
+  },
+  caption: 'The same chlorine on the same acid, moved one bond at a time. Almost two pKa units on the alpha carbon, about three quarters of a unit one bond further out, and essentially nothing by the third.',
+  note: 'That fall-off is what tells induction apart from resonance in an exam question. Resonance runs the length of a conjugated system losing very little &mdash; a nitro group four bonds away across a benzene ring still moves a phenol’s pK<sub>a</sub> by three units. Induction is gone in two.',
+});
 
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;

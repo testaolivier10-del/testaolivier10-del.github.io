@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function(){
     progLabel: document.getElementById('progLabel'),
     steps: [
       {
-        diagramHtml: window.OchemMolecules.svg('acetic-acid', { caption: 'Acetic acid, pKa 4.76. Two oxygens, but only the O–H proton is acidic — the alpha C–H sits far above pKa 20.' }),
+        diagramHtml: window.OchemMolecules.svg('acetic-acid', { caption: 'Acetic acid, pKa 4.76. Two oxygens, but only the O–H proton is acidic — the alpha C–H sits around pKa 25.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Ka measures how much an acid actually falls apart.',
@@ -167,9 +167,9 @@ document.addEventListener('DOMContentLoaded', function(){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Click the strongest acid of these four.</h2>' +
-            '<p class="step-body">Each button shows the substance and its approximate pKa.</p>' +
+            '<p class="step-body">The pKa values are hidden until you answer — the point is to reason from structure. Hydrogen on a halogen, on a carboxylic acid oxygen, on water, on an alkane: which of those four leaves behind the anion that is most comfortable?</p>' +
             '<div class="choice-row">' + acids.map(function(a){
-              return '<button class="choice-btn" data-v="' + a.key + '" style="text-align:center;font:900 15px var(--font-mono);">' + a.label + '<br><span style="font-weight:700;font-size:11px;color:var(--muted);">pKa ' + a.pka + '</span></button>';
+              return '<button class="choice-btn" data-v="' + a.key + '" style="text-align:center;font:900 15px var(--font-mono);">' + a.label + '<br><span class="pka-reveal" style="font-weight:700;font-size:11px;color:var(--muted);visibility:hidden;">pKa ' + a.pka + '</span></button>';
             }).join('') + '</div>' +
             api.feedbackHtml('fb') +
             api.nextButtonHtml('Continue', false);
@@ -182,6 +182,7 @@ document.addEventListener('DOMContentLoaded', function(){
               answered = true;
               var isCorrect = btn.getAttribute('data-v') === 'hcl';
               api.card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+              api.card.querySelectorAll('.pka-reveal').forEach(function(el){ el.style.visibility = 'visible'; });
               btn.classList.add(isCorrect ? 'correct' : 'wrong');
               api.record(isCorrect);
               api.showFeedback(fb, isCorrect, 'HCl has by far the lowest pKa (≈ −7) of the four, making it the strongest acid — it\'s essentially 100% dissociated in water. Ethane\'s C–H at pKa 50 is barely acidic at all — that gap of 57 pKa units is a factor of roughly 10⁵⁷ in acid strength.');
@@ -224,10 +225,10 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'An amine (pKaH of its conjugate acid ≈ 38 for the N–H) is deprotonated by hydroxide (conjugate acid water, pKa 15.7). Which side does this equilibrium favor?',
+        title: 'Hydroxide is used to deprotonate an amine N–H (pKa ≈ 38), which would give water (pKa 15.7) as the other product. Which side does this equilibrium favor?',
         options: ['The left side (the amine and hydroxide) — water is the much stronger acid here', 'The right side — the products are more stable', 'It\'s a 50/50 equilibrium'],
         correctIndex: 0,
-        correctFeedback: 'Correct — comparing the two acids, water (pKa 15.7) is far more acidic than the amine\'s conjugate acid (pKa ≈ 38), so the equilibrium favors the side with the weaker acid: the reactants. Hydroxide is actually too weak a base to deprotonate a typical amine to any significant extent.'
+        correctFeedback: 'Correct — compare the two acids in the equation: the amine N–H at pKa 38 on the left, water at 15.7 on the right. Water is over twenty orders of magnitude more acidic, so the equilibrium settles on the side holding the weaker acid — the reactants — by roughly 10²² to one. Hydroxide is far too weak a base to take a proton off nitrogen. Watch the wording: the amine\'s own N–H is pKa 38, whereas its <b>conjugate acid</b> is the ammonium ion at pKa ≈ 10 — two different numbers for two different questions.'
       }
     ]
   });
