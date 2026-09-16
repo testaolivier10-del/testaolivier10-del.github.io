@@ -295,6 +295,12 @@
     { id:'bond-polarity-dipoles', title:'Bond polarity & dipoles', family:'Structure & bonding',
       topics:['bond-polarity','electronegativity','molecular-geometry','ir'], dependsOn:['electronegativity-trend','molecular-geometry-vsepr'],
       hint:'A molecule can hold polar bonds and still have no net dipole if they cancel.' },
+    { id:'functional-group-recognition', title:'Recognizing functional groups', family:'Structure & bonding',
+      topics:['functional-groups','skeletal-structures','naming-functional-groups','bond-polarity'], dependsOn:['lewis-structures-drawing','bond-polarity-dipoles'],
+      hint:'Look for anything that is not C-C or C-H: an O, N, halogen, S, or a double or triple bond. For amines, count carbons on the nitrogen.' },
+    { id:'carbonyl-family-distinction', title:'Telling the carbonyl family apart', family:'Structure & bonding',
+      topics:['functional-groups','aldehydes-ketones','esters-amides','acyl-substitution'], dependsOn:['functional-group-recognition'],
+      hint:'Find the C=O, then read the atom on its other side: H, carbon, OH, O-carbon, N, Cl, or an O leading to a second C=O.' },
 
     /* ---- Electron flow ----------------------------------------------- */
     { id:'resonance-delocalization', title:'Resonance delocalization', family:'Electron flow',
@@ -610,6 +616,7 @@
     'electronegativity':'electronegativity-trend', 'formal-charge':'formal-charge-calc',
     'lewis-structures':'lewis-structures-drawing', 'molecular-geometry':'molecular-geometry-vsepr',
     'bond-polarity':'bond-polarity-dipoles',
+    'functional-groups':'functional-group-recognition',
     'resonance':'resonance-delocalization', 'curved-arrows':'curved-arrow-direction',
     'nucleophiles':'nucleophile-recognition', 'electrophiles':'electrophile-recognition',
     'leaving-groups':'leaving-group-ability', 'electron-rich-poor':'electron-rich-poor',

@@ -11,6 +11,52 @@ when the change is in the repo and the checks pass.
 
 ---
 
+## Self-study pass (in progress)
+
+The pass that makes the course learnable on its own: an approved order, no
+idea used before it is taught, every concept explained with its why and how,
+a figure wherever a student needs to picture something, and practice that
+matches how organic chemistry is examined. Process per chapter: a fresh
+reviewer reads every notes page, lesson step, figure and question as a
+student who has finished only the earlier chapters; the order-independent
+findings are fixed; a second fresh reviewer confirms the chapter meets the
+standards and is chemically correct; all checks run; push.
+
+### Decisions for Olivier
+
+Recorded here as they arise, and collected in `docs/proposed-order.md`.
+
+1. **Approve the proposed order** in `docs/proposed-order.md`, or say which
+   moves to drop. Nothing has been moved. The two largest moves: a new
+   chapter 7 "How Reactions Happen" (nucleophiles, electrophiles, leaving
+   groups, energy diagrams and the Hammond postulate, carbocations, radical
+   halogenation), and dissolving Carbonyl & Enolate Breadth into the carbonyl,
+   redox and enolate chapters.
+2. **Two new lessons and one split-out** the order needs: energy-diagrams,
+   carbocations (carved out of sn1), cis-trans-ez (carved out of
+   alkene-structure).
+3. **Spectroscopy placement**: keep after aromatics (recommended) or move to
+   the textbook position after Alcohols & Ethers.
+4. **HOMO/LUMO**: add a short frontier-orbital lesson to Conjugation
+   (recommended) or rewrite Diels–Alder and UV-Vis to avoid it.
+5. **Oxymercuration–demercuration**: teach it in one paragraph as the
+   rearrangement-free Markovnikov hydration (recommended) or delete the two
+   mentions.
+6. **Chapter 2's title** once nucleophiles and leaving groups move out of it.
+
+### Waiting on reorder
+
+Findings that are wrong only because of where a chapter sits, left alone so
+the fix is made once against the approved order. Chapter by chapter, as the
+reviews land.
+
+### Chapter status
+
+| Chapter | Reviewed | Fixed | Verified | Pushed |
+|---|---|---|---|---|
+
+---
+
 ## Pending chemistry review
 
 The same gap the clinical table below describes, for the other course. Phase 9

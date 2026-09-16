@@ -452,6 +452,16 @@
       3:['chair-axial-equatorial','steric-hindrance'],
       6:['chair-axial-equatorial','steric-hindrance'] } },
 
+    /* Step 2 sorts six condensed formulas into ester/ether/amide/ketone, 3 is
+       the tert-butylamine degree trap, 4 is "which one contains an amide", 6
+       reads aspirin, 7 reads acetaminophen. */
+    'functional-groups': { n:8, steps:{
+      2:['carbonyl-family-distinction','functional-group-recognition'],
+      3:['functional-group-recognition'],
+      4:['carbonyl-family-distinction','functional-group-recognition'],
+      6:['carbonyl-family-distinction','functional-group-recognition'],
+      7:['functional-group-recognition','carbonyl-family-distinction'] } },
+
     'bond-polarity': { n:7, steps:{
       1:['bond-polarity-dipoles'],
       2:['bond-polarity-dipoles','molecular-geometry-vsepr'],

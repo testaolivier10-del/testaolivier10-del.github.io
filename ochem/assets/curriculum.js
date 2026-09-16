@@ -32,21 +32,26 @@
   var MODULES = [
     { id: 'foundations', title: 'Foundations', topics: [
       { id: 'atomic-structure', title: 'Atomic structure', href: 'lessons/atomic-structure.html' },
-      { id: 'orbitals', title: 'Orbitals', href: 'lessons/orbitals.html' },
-      { id: 'hybridization', title: 'Hybridization', href: 'lessons/hybridization.html' },
-      { id: 'bonding', title: 'Bonding', href: 'lessons/bonding.html' },
-      { id: 'electronegativity', title: 'Electronegativity', href: 'lessons/electronegativity.html' },
-      { id: 'formal-charge', title: 'Formal charge', href: 'lessons/formal-charge.html' },
-      { id: 'lewis-structures', title: 'Lewis structures', href: 'lessons/lewis-structures.html' },
-      { id: 'molecular-geometry', title: 'Molecular geometry', href: 'lessons/molecular-geometry.html' },
-      { id: 'bond-polarity', title: 'Bond polarity', href: 'lessons/bond-polarity.html' }
+      { id: 'orbitals', title: 'Orbitals', href: 'lessons/orbitals.html', dependsOn: ['atomic-structure'] },
+      { id: 'hybridization', title: 'Hybridization', href: 'lessons/hybridization.html', dependsOn: ['orbitals'] },
+      { id: 'bonding', title: 'Bonding', href: 'lessons/bonding.html', dependsOn: ['orbitals', 'hybridization'] },
+      { id: 'electronegativity', title: 'Electronegativity', href: 'lessons/electronegativity.html', dependsOn: ['atomic-structure'] },
+      { id: 'formal-charge', title: 'Formal charge', href: 'lessons/formal-charge.html', dependsOn: ['bonding', 'electronegativity'] },
+      { id: 'lewis-structures', title: 'Lewis structures', href: 'lessons/lewis-structures.html', dependsOn: ['formal-charge', 'bonding'] },
+      { id: 'molecular-geometry', title: 'Molecular geometry', href: 'lessons/molecular-geometry.html', dependsOn: ['lewis-structures', 'hybridization'] },
+      { id: 'bond-polarity', title: 'Bond polarity', href: 'lessons/bond-polarity.html', dependsOn: ['electronegativity', 'molecular-geometry'] },
+      // Last in Foundations on purpose: it needs Lewis structures to draw the
+      // groups and bond polarity to say why each one reacts where it does,
+      // and it comes before skeletal structures, so every group is drawn in
+      // condensed or Lewis form.
+      { id: 'functional-groups', title: 'Functional groups', href: 'lessons/functional-groups.html', dependsOn: ['lewis-structures', 'bond-polarity'] }
     ]},
     { id: 'electron-movement', title: 'Organic Structure & Electron Movement', topics: [
       // The notation every drawing after Foundations is written in, so it
       // comes before everything that uses it and depends on nothing but
       // Lewis structures.
       { id: 'skeletal-structures', title: 'Skeletal structures', href: 'lessons/skeletal-structures.html', dependsOn: ['lewis-structures'] },
-      { id: 'resonance', title: 'Resonance', href: 'lessons/resonance.html' },
+      { id: 'resonance', title: 'Resonance', href: 'lessons/resonance.html', dependsOn: ['lewis-structures', 'formal-charge', 'skeletal-structures'] },
       { id: 'curved-arrows', title: 'Curved arrows', href: 'lessons/curved-arrows.html', dependsOn: ['resonance'] },
       { id: 'nucleophiles', title: 'Nucleophiles', href: 'lessons/nucleophiles.html', dependsOn: ['electronegativity'] },
       { id: 'electrophiles', title: 'Electrophiles', href: 'lessons/electrophiles.html', dependsOn: ['electronegativity'] },
@@ -65,14 +70,14 @@
       { id: 'naming-rings-unsaturation', title: 'Rings & unsaturation', href: 'lessons/naming-rings-unsaturation.html', dependsOn: ['naming-functional-groups'] }
     ]},
     { id: 'acids-bases', title: 'Acids & Bases', topics: [
-      { id: 'bronsted', title: 'Brønsted acids/bases', href: 'lessons/bronsted.html' },
+      { id: 'bronsted', title: 'Brønsted acids/bases', href: 'lessons/bronsted.html', dependsOn: ['lewis-structures', 'curved-arrows'] },
       { id: 'lewis-acids', title: 'Lewis acids/bases', href: 'lessons/lewis-acids.html', dependsOn: ['nucleophiles', 'electrophiles'] },
       { id: 'pka', title: 'pKa', href: 'lessons/pka.html', dependsOn: ['bronsted'] },
       { id: 'conjugate', title: 'Conjugate acids/bases', href: 'lessons/conjugate.html', dependsOn: ['pka'] },
       { id: 'acidity-factors', title: 'Factors affecting acidity', href: 'lessons/acidity-factors.html', dependsOn: ['pka', 'resonance', 'electronegativity', 'hybridization'] }
     ]},
     { id: 'alkanes-conformations', title: 'Alkanes & Conformations', topics: [
-      { id: 'newman', title: 'Newman projections', href: 'lessons/newman.html' },
+      { id: 'newman', title: 'Newman projections', href: 'lessons/newman.html', dependsOn: ['molecular-geometry', 'bonding'] },
       { id: 'cyclohexanes', title: 'Cyclohexanes', href: 'lessons/cyclohexanes.html', dependsOn: ['newman'] },
       { id: 'axial-equatorial', title: 'Axial/equatorial', href: 'lessons/axial-equatorial.html', dependsOn: ['cyclohexanes'] },
       { id: 'ring-flips', title: 'Ring flips', href: 'lessons/ring-flips.html', dependsOn: ['axial-equatorial'] },
@@ -83,7 +88,7 @@
       { id: 'radical-halogenation', title: 'Radical halogenation', href: 'lessons/radical-halogenation.html', dependsOn: ['conformational-analysis', 'resonance'] }
     ]},
     { id: 'stereochemistry', title: 'Stereochemistry', topics: [
-      { id: 'chirality', title: 'Chirality', href: 'lessons/chirality.html' },
+      { id: 'chirality', title: 'Chirality', href: 'lessons/chirality.html', dependsOn: ['molecular-geometry'] },
       { id: 'stereocenters', title: 'Stereocenters', href: 'lessons/stereocenters.html', dependsOn: ['chirality'] },
       { id: 'enantiomers', title: 'Enantiomers', href: 'lessons/enantiomers.html', dependsOn: ['stereocenters'] },
       { id: 'diastereomers', title: 'Diastereomers', href: 'lessons/diastereomers.html', dependsOn: ['enantiomers'] },
@@ -92,8 +97,8 @@
       { id: 'fischer', title: 'Fischer projections', href: 'lessons/fischer.html', dependsOn: ['rs-configuration'] }
     ]},
     { id: 'substitution-elimination', title: 'Substitution & Elimination', topics: [
-      { id: 'sn2', title: 'SN2', href: 'mechanisms/sn2.html' },
-      { id: 'sn1', title: 'SN1', href: 'mechanisms/sn1.html' },
+      { id: 'sn2', title: 'SN2', href: 'mechanisms/sn2.html', dependsOn: ['nucleophiles', 'leaving-groups', 'curved-arrows', 'molecular-geometry'] },
+      { id: 'sn1', title: 'SN1', href: 'mechanisms/sn1.html', dependsOn: ['sn2', 'leaving-groups', 'resonance', 'enantiomers'] },
       { id: 'e1', title: 'E1', href: 'mechanisms/e1.html', dependsOn: ['sn1'] },
       { id: 'e2', title: 'E2', href: 'mechanisms/e2.html', dependsOn: ['conformational-analysis', 'leaving-groups', 'bronsted'] },
       { id: 'substrate-effects', title: 'Substrate & solvent effects', href: 'lessons/substrate-effects.html', dependsOn: ['sn2', 'sn1', 'e1', 'e2'] }

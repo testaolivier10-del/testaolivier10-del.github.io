@@ -3429,6 +3429,398 @@
    "type": "mcq"
   }
  ],
+ "functional-groups": [
+  {
+   "q": "Which functional group is CH3CH2OCH3?",
+   "options": [
+    "An ester",
+    "An ether",
+    "An alcohol",
+    "A ketone"
+   ],
+   "correct": 1,
+   "why": "An oxygen with a carbon on each side and no C=O anywhere near it is an ether. An ester would need a carbonyl next to that oxygen.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "CH3COOCH2CH3 contains which group?",
+   "options": [
+    "An ester",
+    "A ketone",
+    "An ether",
+    "A carboxylic acid"
+   ],
+   "correct": 0,
+   "why": "Find the C=O: one neighbor is CH3, the other is O–CH2CH3. Carbon on one side and O–carbon on the other is an ester (ethyl acetate). The extra O rules out ketone; the C=O rules out ether.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What distinguishes an aldehyde from a ketone?",
+   "options": [
+    "The ketone has an oxygen on each side of the carbon",
+    "The aldehyde has no C=O",
+    "The ketone is always a ring",
+    "The aldehyde has a hydrogen on the carbonyl carbon"
+   ],
+   "correct": 3,
+   "why": "Both are a C=O with carbon attached. An aldehyde has at least one H on that carbon, so it sits at the end of a chain; a ketone has carbon on both sides.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "CH3CH2CH2NH2 is what kind of amine?",
+   "options": [
+    "Secondary",
+    "Tertiary",
+    "Primary",
+    "Quaternary"
+   ],
+   "correct": 2,
+   "why": "Count carbons bonded to the nitrogen, not to any carbon: one carbon on N, so primary. The three-carbon chain is irrelevant.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "(CH3)2NH is what kind of amine?",
+   "options": [
+    "Primary",
+    "Secondary",
+    "Tertiary",
+    "Quaternary"
+   ],
+   "correct": 1,
+   "why": "Two carbons on nitrogen. The degree of an amine is the number of carbons on N.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "(CH3)2CHOH is what kind of alcohol?",
+   "options": [
+    "Secondary",
+    "Primary",
+    "Tertiary",
+    "Quaternary"
+   ],
+   "correct": 0,
+   "why": "The carbon carrying the OH is bonded to two other carbons, so it is a secondary carbon and the alcohol is secondary.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which of these contains an amide?",
+   "options": [
+    "CH3CH2NH2",
+    "CH3CH2CN",
+    "(CH3)3N",
+    "CH3CONHCH3"
+   ],
+   "correct": 3,
+   "why": "An amide is a nitrogen bonded to a C=O. Only CH3CONHCH3 has a carbonyl next to its nitrogen; the first and last are amines and the third is a nitrile.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which group has a C≡N?",
+   "options": [
+    "Nitro",
+    "Amine",
+    "Nitrile",
+    "Amide"
+   ],
+   "correct": 2,
+   "why": "A nitrile is R–C≡N. A nitro group is R–NO2 (nitrogen bonded to two oxygens), and amines and amides have single bonds to nitrogen.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "An OH directly on a benzene ring is a:",
+   "options": [
+    "Alcohol",
+    "Phenol",
+    "Ether",
+    "Ketone"
+   ],
+   "correct": 1,
+   "why": "The same OH on a saturated carbon would be an alcohol. On an aromatic carbon it is a phenol, which is far more acidic.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which piece of a molecule is the spectator in most reactions?",
+   "options": [
+    "The C–C and C–H framework",
+    "Every oxygen atom",
+    "The double bonds",
+    "The halogens"
+   ],
+   "correct": 0,
+   "why": "C–C and C–H bonds are close to nonpolar and carry no lone pairs, so they have no electron-rich or electron-poor site to react through. The functional groups are where the action is.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "HCOOCH3 is best described as:",
+   "options": [
+    "Formaldehyde, an aldehyde",
+    "Methoxymethane, an ether",
+    "Acetic acid, a carboxylic acid",
+    "Methyl formate, an ester"
+   ],
+   "correct": 3,
+   "why": "The carbonyl carbon carries an H and an O–CH3. O–carbon on the carbonyl makes it an ester; the H on the same carbon is what an aldehyde needs, but the O–carbon outranks it, and this compound is the ester of formic acid.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "CH3COCl belongs to which family?",
+   "options": [
+    "Alkyl halide",
+    "Ketone",
+    "Acid chloride",
+    "Anhydride"
+   ],
+   "correct": 2,
+   "why": "Chlorine on a carbonyl carbon is an acid chloride. In an alkyl halide the chlorine is on an sp3 carbon with no C=O.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "(CH3CO)2O is:",
+   "options": [
+    "An ester",
+    "An acid anhydride",
+    "A ketone",
+    "A peroxide"
+   ],
+   "correct": 1,
+   "why": "Two C=O groups joined through one oxygen: an anhydride (acetic anhydride). An ester has one carbonyl next to its oxygen; an anhydride has two.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "(CH3)3C–NH2 is what kind of amine?",
+   "options": [
+    "Primary",
+    "Secondary",
+    "Tertiary",
+    "Quaternary"
+   ],
+   "correct": 0,
+   "why": "Count carbons on the nitrogen: one. The tert-butyl carbon has three carbon neighbors, which would make a tertiary alcohol if it carried an OH, but the amine rule counts carbons on N.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "(CH3)3C–OH is what kind of alcohol?",
+   "options": [
+    "Primary",
+    "Secondary",
+    "Quaternary",
+    "Tertiary"
+   ],
+   "correct": 3,
+   "why": "The carbon carrying the OH has three carbon neighbors. Alcohols are classified by that carbon, so tertiary.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "CH3CH2CHO contains which group?",
+   "options": [
+    "Ketone",
+    "Alcohol",
+    "Aldehyde",
+    "Ether"
+   ],
+   "correct": 2,
+   "why": "A CHO written at the end of a condensed formula is an aldehyde: the carbonyl carbon carries a hydrogen.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which molecule contains an ester but no ether?",
+   "options": [
+    "CH3OCH2CH3",
+    "CH3CH2COOCH3",
+    "CH3COCH2OCH3",
+    "CH3CH2OH"
+   ],
+   "correct": 1,
+   "why": "CH3CH2COOCH3 has a C=O with O–CH3 on it and nothing else oxygen-containing. The third option has a ketone plus an ether; the first is a plain ether.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Acetaminophen, HO–C6H4–NH–CO–CH3, contains which groups?",
+   "options": [
+    "Phenol and amide",
+    "Alcohol and amine",
+    "Alcohol and amide",
+    "Phenol and amine"
+   ],
+   "correct": 0,
+   "why": "The OH is on the ring, so phenol; the nitrogen is bonded to a C=O, so amide. Neither an alcohol nor an amine is present.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Aspirin, HOOC–C6H4–O–CO–CH3, contains which set of groups?",
+   "options": [
+    "Aromatic ring, carboxylic acid, ether",
+    "Aromatic ring, ketone, ether",
+    "Aromatic ring, alcohol, ester",
+    "Aromatic ring, carboxylic acid, ester"
+   ],
+   "correct": 3,
+   "why": "COOH is the acid. The –O–CO–CH3 has a carbonyl next to its oxygen, which makes it an ester rather than an ether, and the C=O has an oxygen neighbor, so it is not a ketone.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a carbonyl carbon end up strongly δ+?",
+   "options": [
+    "The carbon has an extra lone pair",
+    "Oxygen donates electrons to the carbon",
+    "Both bonds of the C=O pull electron density toward oxygen",
+    "A double bond is nonpolar"
+   ],
+   "correct": 2,
+   "why": "Oxygen is much more electronegative than carbon, and the double bond means two bonds pull the same way, so the carbonyl carbon is the most electron-poor carbon in the table.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Through which feature does an amine mostly react?",
+   "options": [
+    "The δ+ carbon next to nitrogen",
+    "The lone pair on nitrogen",
+    "The N–H bond dipole",
+    "The C–H bonds"
+   ],
+   "correct": 1,
+   "why": "The C–N bond is only mildly polar. The nitrogen lone pair is the accessible pair of electrons, and it is what an amine uses.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "C=C has no polar bond. Why is it still a functional group?",
+   "options": [
+    "Its π electrons are exposed above and below the plane",
+    "It carries a formal charge",
+    "Carbon is more electronegative than hydrogen",
+    "It has a lone pair"
+   ],
+   "correct": 0,
+   "why": "Uneven electron density is one way for electrons to be available; exposed is the other. π electrons sit outside the bond axis, held only by sideways p-orbital overlap.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which formula contains a nitro group?",
+   "options": [
+    "CH3CN",
+    "CH3NH2",
+    "CH3CONH2",
+    "CH3NO2"
+   ],
+   "correct": 3,
+   "why": "A nitro group is R–NO2, nitrogen bonded to two oxygens. CH3CN is a nitrile, CH3NH2 an amine, CH3CONH2 an amide.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which of these is a thiol?",
+   "options": [
+    "CH3SCH3",
+    "CH3CH2OH",
+    "CH3CH2SH",
+    "CH3SO3H"
+   ],
+   "correct": 2,
+   "why": "A thiol is R–SH, sulfur carrying a hydrogen. CH3SCH3 is a sulfide (the sulfur analog of an ether).",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many distinct functional groups are in HO–CH2CH2–COOCH3?",
+   "options": [
+    "One: ester",
+    "Two: alcohol and ester",
+    "Two: alcohol and ether",
+    "Three: alcohol, ether and ketone"
+   ],
+   "correct": 1,
+   "why": "The OH on a saturated CH2 is an alcohol. The COOCH3 is one ester group, which should not be split into an ether and a ketone.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "CH3CH2CH(CH3)Br is what kind of alkyl halide?",
+   "options": [
+    "Secondary",
+    "Primary",
+    "Tertiary",
+    "Quaternary"
+   ],
+   "correct": 0,
+   "why": "The carbon carrying Br is bonded to two other carbons (the ethyl and the methyl), so it is secondary.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Ibuprofen is (CH3)2CHCH2–C6H4–CH(CH3)–COOH. How many functional groups does it contain besides the aromatic ring?",
+   "options": [
+    "Two: a carboxylic acid and an alkene",
+    "Two: a carboxylic acid and an alcohol",
+    "Three: an acid, an ether and an alkene",
+    "One: a carboxylic acid"
+   ],
+   "correct": 3,
+   "why": "Everything to the left of the ring and the CH(CH3) to its right are C–C and C–H only. The only group beyond the ring is COOH.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A student calls the C=O in CH3COOCH3 a ketone. What is wrong?",
+   "options": [
+    "Nothing; esters contain a ketone",
+    "A ketone needs a hydrogen on the carbonyl carbon",
+    "One neighbor of the carbonyl carbon is oxygen, so it is part of an ester",
+    "Methyl groups cannot flank a ketone"
+   ],
+   "correct": 2,
+   "why": "A ketone requires carbon on both sides of the C=O. With an oxygen on one side, the carbonyl is the ester functional group, not a ketone plus an ether.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "In R–NO2 the nitrogen has four bonds. What formal charge does it carry?",
+   "options": [
+    "0, because nitrogen can have four bonds",
+    "+1, with −1 on the singly bonded oxygen",
+    "−1, with +1 on an oxygen",
+    "+2, with −1 on each oxygen"
+   ],
+   "correct": 1,
+   "why": "Nitrogen with four bonds and no lone pair has one electron fewer than neutral, so +1. The singly bonded oxygen with three lone pairs carries −1, so the group is neutral overall.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which pair of condensed formulas differ by a single oxygen atom yet belong to different groups?",
+   "options": [
+    "CH3COCH3 and CH3COOCH3",
+    "CH3CHO and CH3COCH3",
+    "CH3OH and CH3SH",
+    "CH3NH2 and CH3CONH2"
+   ],
+   "correct": 0,
+   "why": "Inserting one O between the carbonyl and the methyl turns the ketone (acetone) into an ester (methyl acetate). The other pairs differ by a carbon, by a sulfur-for-oxygen swap, or by a whole C=O.",
+   "difficulty": "hard",
+   "type": "mcq"
+  }
+ ],
  "skeletal-structures": [
   {
    "q": "A skeletal structure is drawn as a zigzag of five line segments. How many carbons?",
