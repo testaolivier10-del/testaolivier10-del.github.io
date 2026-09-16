@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function(){
     { id:'t2', text:'An alkene plus H₂ becomes an alkane', right:'red',
       why:'Two new C–H bonds and nothing gained to oxygen. This is a reduction, which is worth saying out loud because the word "hydrogenation" does not contain it.' },
     { id:'t3', text:'An alkene plus HBr becomes an alkyl bromide', right:'neither',
-      why:'One new C–H (down) and one new C–Br (up). They cancel exactly, so this is redox-neutral — as most of the alkene additions are.' },
+      why:'One new C–H (down) and one new C–Br (up). They cancel exactly, so this is redox-neutral — and so are hydration, oxymercuration and hydroboration–oxidation, which also deliver one hydrogen and one heteroatom. Bromination and halohydrin formation are different: a heteroatom at both ends, a hydrogen at neither, so both are oxidations.' },
     { id:'t4', text:'An ester becomes a carboxylic acid by hydrolysis', right:'neither',
       why:'Both sit at +3 on the ladder. Exchanging OR for OH changes neither the hydrogen count nor the count of bonds to electronegative atoms, which is why acyl derivatives interconvert by substitution rather than by redox.' }
   ];
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function(){
         title: 'A working test that beats counting electrons.',
         bodyHtml: '<p class="step-body">The general-chemistry definition — oxidation is loss of electrons — is correct and almost unusable here, because organic reactions rarely move a whole electron between identifiable ions. They change what a carbon is bonded to. So organic chemists use a test that gives the same answers with far less arithmetic:</p>' +
           '<div class="explain-box"><b>Oxidation</b> = gaining bonds to oxygen (or another electronegative atom), <b>or</b> losing bonds to hydrogen.<br><b>Reduction</b> = the reverse.</div>' +
-          '<p class="step-body" style="margin-bottom:0;">A reaction that changes neither count is <b>neither</b>. Adding HBr across an alkene gains a C–H <i>and</i> a C–Br, and those cancel. Most of the alkene additions you already know are redox-neutral, and noticing that is a fast way to check you have not mislabeled something.</p>'
+          '<p class="step-body" style="margin-bottom:0;">A reaction that changes neither count is <b>neither</b>. Adding HBr across an alkene gains a C–H <i>and</i> a C–Br, and those cancel — as they do in hydration, oxymercuration and hydroboration–oxidation. Do not stretch that into &quot;additions are neutral&quot;, though: bromination, halohydrin formation, epoxidation and dihydroxylation put a heteroatom on <i>both</i> carbons and a hydrogen on neither, so all four are oxidations, and hydrogenation puts a hydrogen on both and is a reduction. Running the two counts is a fast way to check you have not mislabeled something.</p>'
       },
       {
         type: 'explain',

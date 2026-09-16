@@ -96,7 +96,8 @@ reviews land.
 | 9 Conjugation & Pericyclic | yes (24/12/15/20) | queued | | |
 | 10 Alcohols, Ethers & Related | yes (21/12/13/12) | queued | | |
 | 11 Carbonyl Chemistry | yes (24/21/17/20) | queued | | |
-| 12 Oxidation & Reduction | yes (18/4/8/13, anchored format) | yes: 6 figures (the chapter's first curved arrows), 22 questions, wrong +2 key for an acid carbon, Na/NH3 selectivity attributed to the wrong intermediate | in progress | yes |
+| 13 Carboxylic Acids & Derivatives | yes (26/8/11/13, anchored) | queued | | |
+| 12 Oxidation & Reduction | yes (18/4/8/13, anchored format) | yes: 6 figures (the chapter's first curved arrows), 22 questions, wrong +2 key for an acid carbon, Na/NH3 selectivity attributed to the wrong intermediate | yes: 2 of 5 met on first verification; 5 errors and 2 missing figures (ozonolysis mechanism, Clemmensen/Wolff-Kishner) fixed in a second pass. Open: the five banks are still recall-heavy | yes |
 
 ---
 

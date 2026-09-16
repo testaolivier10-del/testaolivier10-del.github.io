@@ -22734,7 +22734,7 @@
     "Both"
    ],
    "correct": 2,
-   "why": "One new C-H and one new C-O, which cancel. Most alkene additions are redox-neutral.",
+   "why": "One new C-H and one new C-O, which cancel. Any addition that delivers one hydrogen and one electronegative atom lands here; halogenation and halohydrin formation do not, because they deliver no hydrogen at all.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -23053,14 +23053,14 @@
    "type": "mcq"
   },
   {
-   "q": "You need butan-1-ol converted to butanal in one step, and the molecule elsewhere cannot survive a cryogenic step. Which reagent?",
+   "q": "You need butan-1-ol converted to butanal in one step, and you have no way to cool a reaction to -78 C. Which reagent?",
    "options": [
     "Jones reagent",
     "Swern: (COCl)2/DMSO at -78 C, then Et3N",
     "Hot KMnO4",
     "Dess-Martin periodinane at room temperature"
    ],
-   "why": "Two of these overshoot to butanoic acid, because both are aqueous and the aldehyde hydrates and is oxidized again. Of the two that stop at the aldehyde, the Swern needs -78 C. DMP is metal-free and runs at room temperature.",
+   "why": "Two of these overshoot to butanoic acid, because both are aqueous and the aldehyde hydrates and is oxidized again. Of the two that stop at the aldehyde, the Swern has to be run at -78 C. DMP is metal-free and runs at room temperature.",
    "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
@@ -23806,7 +23806,7 @@
     "An alkane"
    ],
    "correct": 2,
-   "why": "A dissolving-metal reduction through radical anion intermediates, which adopt the less hindered arrangement.",
+   "why": "Sodium adds an electron, ammonia protonates, a second electron gives a vinyl anion, and that anion is configurationally stable with its two R groups apart.",
    "difficulty": "medium",
    "type": "mcq"
   },

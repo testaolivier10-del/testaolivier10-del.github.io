@@ -21239,7 +21239,7 @@
    "type": "mcq"
   },
   {
-   "q": "You need butan-1-ol converted to butanal in one step, and the molecule elsewhere cannot survive a cryogenic step. Which reagent?",
+   "q": "You need butan-1-ol converted to butanal in one step, and you have no way to cool a reaction to -78 C. Which reagent?",
    "options": [
     "Jones reagent",
     "Swern: (COCl)2/DMSO at -78 C, then Et3N",

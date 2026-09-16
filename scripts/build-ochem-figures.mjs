@@ -1313,7 +1313,7 @@ FIGURES.push({
     let s = '';
     const rows = [
       { y: 84,  n: '4', ex: 'CO\u2082',   ox: '+4',      fam: 'CO\u2082   \u00B7   CCl\u2084' },
-      { y: 140, n: '3', ex: 'HCO\u2082H', ox: '+2',      fam: 'carboxylic acid \u00B7 ester \u00B7 amide \u00B7 acid chloride \u00B7 nitrile' },
+      { y: 140, n: '3', ex: 'HCO\u2082H', ox: '+2',      fam: 'carboxylic acid \u00B7 ester \u00B7 amide \u00B7 acid chloride \u00B7 nitrile', sub: '(RCO\u2082H is +3)' },
       { y: 196, n: '2', ex: 'CH\u2082O',  ox: '0',       fam: 'aldehyde \u00B7 ketone \u00B7 acetal \u00B7 imine' },
       { y: 252, n: '1', ex: 'CH\u2083OH', ox: '\u22122', fam: 'alcohol \u00B7 ether \u00B7 alkyl halide \u00B7 amine', hi: true },
       { y: 308, n: '0', ex: 'CH\u2084',   ox: '\u22124', fam: 'alkane' },
@@ -1336,6 +1336,7 @@ FIGURES.push({
       s += text(200, r.y + 4, r.n, { cls: 'fg-lbl', size: 12.5 });
       s += text(282, r.y + 4, r.ox, { cls: 'fg-lbl', size: 12.5 });
       s += text(318, r.y + 4, r.fam, { cls: 'fg-sm', size: 10, anchor: 'start' });
+      if (r.sub) s += text(282, r.y + 20, r.sub, { cls: 'fg-sm', size: 8 });
       if (r.y !== 308) s += rule(30, r.y + 28, 700, r.y + 28);
     }
     // Direction of travel, in the left margin where nothing else is drawn.
@@ -1564,7 +1565,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'syn-anti-diol',
   section: 'alkene-oxidation',
-  anchor: '<h3>Ozonolysis: cutting the double bond in half</h3>',
+  anchor: 'and why that work won a Nobel Prize.</div>',
   alt: 'One alkene giving a syn diol with osmium tetroxide and an anti diol by way of the epoxide, drawn with wedges and hashes',
   viewBox: '0 0 760 372',
   build() {
@@ -4442,11 +4443,11 @@ FIGURES.push({
     s += rule(505, 58, 505, 240);
     s += rule(30, 250, 730, 250);
     s += text(380, 272, 'Do the two counts separately, then compare.', { cls: 'fg-lbl', size: 12 });
-    s += text(380, 292, 'Most alkene additions land in the third column.', { cls: 'fg-lbl', size: 12 });
+    s += text(380, 292, 'An addition that brings one H and one heteroatom lands in the third column.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
   caption: 'The three answers, with the arithmetic shown rather than asserted. Count bonds to hydrogen and bonds to O/N/halogen as two separate tallies; only when they disagree is there a redox change at all.',
-  note: 'The third column is the one that catches people, because HBr addition <i>looks</i> like something happened — and it did, just not a redox something. The same applies to hydration, to halohydrin formation and to bromination reversed; run the two counts on every alkene addition you already know and almost all of them come out neutral. That is a free check: if you have labeled an addition as an oxidation, you have probably counted only the halogen.',
+  note: 'The third column is the one that catches people, because HBr addition <i>looks</i> like something happened — and it did, just not a redox something. But do not turn that into “additions are neutral”: run the two counts and the alkene reactions you already know sort into three groups. <b>Redox-neutral</b> — hydration, hydrohalogenation, oxymercuration and hydroboration–oxidation, because each carbon gains one of the pair and the two tallies move together. <b>Oxidations</b> — halogenation, halohydrin formation, epoxidation and dihydroxylation, because <i>both</i> carbons gain a bond to an electronegative atom and neither gains a hydrogen. <b>A reduction</b> — hydrogenation, where both carbons gain an H. Halohydrin formation is the one students put in the wrong column: the OH lands on one carbon and the Br on the other, so both carbons gain a heteroatom and neither gains a hydrogen — the tallies move apart, and that is an oxidation.',
 });
 
 /* ------------------------------------------------------------------ R2 ---
@@ -4457,7 +4458,7 @@ FIGURES.push({
   id: 'chromate-ester',
   section: 'alcohol-oxidation',
   anchor: 'the gem-diol formed by water adding across the C=O.</p>',
-  alt: 'A chromium oxidation in three panels: the alcohol oxygen attacking chromium to form a chromate ester, an E2-like collapse in which a base removes the carbinol hydrogen while chromium leaves, and the aldehyde product with chromium reduced from six to three',
+  alt: 'A chromium oxidation in three panels: the alcohol oxygen attacking chromic acid to form a chromate ester, an E2-like collapse in which a base removes the carbinol hydrogen while chromium leaves, and the aldehyde product with chromium reduced from six to three',
   viewBox: '0 0 760 330',
   build() {
     let s = '';
@@ -4473,7 +4474,8 @@ FIGURES.push({
       s += atom(H.x, H.y, 'H', { r: 12 });
       s += lonePair(O.x, O.y, 200);
       s += lonePair(O.x, O.y, 285);
-      s += atom(Cr.x, Cr.y, 'CrO₃', { kind: 'warn', r: 22, size: 9.5 });
+      s += atom(Cr.x, Cr.y, 'H₂CrO₄', { kind: 'warn', r: 22, size: 9 });
+      s += text(132, 66, 'chromic acid — CrO₃ in water', { cls: 'fg-sm' });
       s += curve(P(160, 138), P(180, 118), { bow: 10 });
       s += text(132, 216, 'the alcohol oxygen attacks chromium', { cls: 'fg-sm', size: 10 });
       s += text(132, 232, 'and water leaves from the metal', { cls: 'fg-sm', size: 10 });
@@ -4499,7 +4501,7 @@ FIGURES.push({
       s += curve(P(428, 134), P(452, 94), { bow: 16 });
       s += text(380, 222, 'the base takes the hydrogen on the C', { cls: 'fg-sm', size: 10 });
       s += text(380, 238, 'while chromium leaves from the O —', { cls: 'fg-sm', size: 10 });
-      s += text(380, 254, 'the same anti geometry as an E2', { cls: 'fg-sm', size: 10 });
+      s += text(380, 254, 'two bonds break at once, as in an E2', { cls: 'fg-sm', size: 10 });
     }
     // ---- Panel 3: the product ----
     s += tag(624, 34, 'THE PRODUCT');
@@ -4523,7 +4525,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Where &ldquo;the carbinol C&ndash;H&rdquo; actually goes. The alcohol first hangs itself on chromium, and then the collapse is an elimination: a base removes the hydrogen on the carbon while chromium leaves from the oxygen, and the electrons between them become the second C&ndash;O bond.',
-  note: 'Reading step 2 as an E2 explains two things at once. A tertiary alcohol forms the chromate ester perfectly well — it just has no hydrogen for the base to take, so the ester sits there and nothing happens; the reaction fails at the <i>second</i> step, not the first. And the chromium is reduced by two here, Cr(VI) to Cr(IV) and on to Cr(III) through further steps, which is the other half of the trade: the carbon went up two, so something had to come down.',
+  note: 'The chromium electrophile is drawn as H₂CrO₄ because that is what CrO₃ becomes the moment it meets the aqueous acid of a Jones oxidation, and it is the OH on chromium that leaves as water when the ester forms; CrO₃ itself has no OH to lose. PCC and PDC reach the same chromate ester in dry solvent by a different first step, and everything after that is identical. Reading step 2 as an E2 explains two things at once. A tertiary alcohol forms the chromate ester perfectly well — it just has no hydrogen for the base to take, so the ester sits there and nothing happens; the reaction fails at the <i>second</i> step, not the first. (E2-<i>like</i> is the claim: a C–H and a C–O break in the same step. Unlike a real E2 there is no anti-periplanar requirement to satisfy, so do not go looking for one.) And the chromium is reduced by two here, Cr(VI) to Cr(IV) and on to Cr(III) through further steps, which is the other half of the trade: the carbon went up two, so something had to come down.',
 });
 
 /* ------------------------------------------------------------------ R3 ---
@@ -4626,9 +4628,10 @@ FIGURES.push({
       s += lonePair(H.x, H.y, 180, { dist: 20 });
       s += curve(P(82, 130), P(114, 142), { bow: 10 });
       s += curve(P(140, 122), P(146, 82), { bow: 14 });
-      s += text(132, 202, 'the π electrons go up onto oxygen,', { cls: 'fg-sm', size: 10 });
-      s += text(132, 218, 'carbon cannot hold five bonds', { cls: 'fg-sm', size: 10 });
-      s += text(132, 240, 'H⁻ source: Na⁺[BH₄]⁻ or Li⁺[AlH₄]⁻', { cls: 'fg-sm', size: 9.5 });
+      s += text(132, 200, 'the π electrons go up onto oxygen,', { cls: 'fg-sm', size: 10 });
+      s += text(132, 214, 'carbon cannot hold five bonds', { cls: 'fg-sm', size: 10 });
+      s += text(132, 232, 'H⁻ source: Na⁺[BH₄]⁻ or Li⁺[AlH₄]⁻', { cls: 'fg-sm', size: 9.5 });
+      s += text(132, 246, 'really the B–H bond attacks, not H⁻', { cls: 'fg-sm' });
     }
     // ---- Panel 2 ----
     s += tag(380, 34, 'the tetrahedral alkoxide');
@@ -4671,7 +4674,7 @@ FIGURES.push({
     return s;
   },
   caption: 'The mechanism, with the arrows. The hydride is a nucleophile and the carbonyl carbon is the electrophile, so the attack happens there and the &pi; pair has nowhere to go but onto oxygen.',
-  note: 'Three things to carry from the drawing. <b>The hydride attacks carbon, not oxygen</b> — it is a nucleophile, and the electrophile is the δ+ carbon. <b>The alkoxide is the product until workup</b>, which is why &ldquo;NaBH₄&rdquo; in an exam answer is incomplete without &ldquo;then H₃O⁺&rdquo;. And <b>the arrow from H⁻ starts at a lone pair on the hydride</b>, not at the B–H or Al–H bond you see in the formula; drawing it from the boron is the commonest arrow mistake here.',
+  note: 'Three things to carry from the drawing. <b>The hydride attacks carbon, not oxygen</b> — it is a nucleophile, and the electrophile is the δ+ carbon. <b>The alkoxide is the product until workup</b>, which is why &ldquo;NaBH₄&rdquo; in an exam answer is incomplete without &ldquo;then H₃O⁺&rdquo;. And <b>the free H⁻ in panel 1 is a simplification</b>, drawn that way so the two arrows stay legible: there is no naked hydride in the flask. In a full mechanism the arrow starts at a <b>B–H (or Al–H) σ bond</b> of the [BH₄]⁻ or [AlH₄]⁻ ion and ends at the carbonyl carbon — that is the arrow Klein, Wade and Clayden all draw, and it is the one to reproduce on an exam. The mistake to avoid is starting the arrow at the <b>boron or aluminum itself</b>, which has no lone pair to give; the electrons come from the bond.',
 });
 
 /* ------------------------------------------------------------------ R5 ---
@@ -4809,7 +4812,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'diol-intermediates',
   section: 'alkene-oxidation',
-  anchor: 'so the two oxygens end up on <b>opposite faces</b>: an <b><i>anti</i> (trans) diol</b>.</li>',
+  anchor: 'so the two oxygens end up on <b>opposite faces</b>: an <b><i>anti</i> (trans) diol</b>.</li>\n</ul>',
   alt: 'The syn route through a five-membered cyclic osmate ester giving a cis diol, against the anti route through an epoxide opened by backside attack of water giving a trans diol',
   viewBox: '0 0 760 420',
   build() {
@@ -4915,6 +4918,232 @@ FIGURES.push({
   caption: 'The two intermediates the syn/anti rule is really about. Osmium ties both oxygens to one face before anything is released; the epoxide route makes the first C&ndash;O bond on one face and is then forced to make the second on the other.',
   note: 'The osmate ester is why syn dihydroxylation is stereospecific and not merely stereoselective: at no point in the sequence do the two oxygens have the freedom to be anywhere else, because they are joined to each other through osmium until the ring is cut. In the anti route, look at where the nucleophile has to come from — an epoxide carbon can only be attacked from the side away from its own oxygen, which is the S<sub>N</sub>2 geometry from <a class="chapter-ref" href="/ochem/learn.html#m-substitution-elimination">Substitution &amp; Elimination</a> applied to a strained ring.',
 });
+
+
+/* ------------------------------------------------------------------ R7 ---
+   Ozonolysis had no figure at all: the section describes a two-stage
+   mechanism and a branching workup entirely in prose, and "the workup, not
+   the ozone, decides the product" is a claim about an intermediate nobody
+   had been shown. Three panels for the mechanism, two for the branch. */
+FIGURES.push({
+  id: 'ozonolysis-mechanism',
+  section: 'alkene-oxidation',
+  anchor: 'and <i>that</i> is why the workup, not the ozone, decides the answer.</p>',
+  alt: 'Ozonolysis in five drawings: ozone adding across a double bond to give the five-membered molozonide, its rearrangement into the ozonide, and then the two workups — dimethyl sulfide capping the fragments as a ketone and an aldehyde, hydrogen peroxide taking the aldehyde on to a carboxylic acid',
+  viewBox: '0 0 760 486',
+  build() {
+    let s = '';
+
+    // ---- Panel 1: ozone meets the alkene ----
+    s += tag(132, 34, 'STEP 1 — ozone adds across the C=C');
+    s += panel(14, 44, 236, 180);
+    {
+      const C1 = P(100, 128), C2 = P(164, 128);
+      const Oa = P(96, 80), Ob = P(132, 60), Oc = P(168, 80);
+      s += bond(C1, C2, { order: 2, gap: 5, rFrom: 15, rTo: 15 });
+      s += bond(C1, P(64, 100), { rFrom: 15, rTo: 13 });
+      s += bond(C1, P(64, 156), { rFrom: 15, rTo: 13 });
+      s += bond(C2, P(200, 100), { rFrom: 15, rTo: 13 });
+      s += bond(C2, P(200, 156), { rFrom: 15, rTo: 13 });
+      s += bond(Oa, Ob, { rFrom: 14, rTo: 14 });
+      s += bond(Ob, Oc, { order: 2, gap: 4, rFrom: 14, rTo: 14 });
+      s += atom(C1.x, C1.y, 'C', { kind: 'hi' });
+      s += atom(C2.x, C2.y, 'C', { kind: 'hi' });
+      s += atom(64, 100, 'R', { r: 13 });
+      s += atom(64, 156, 'R', { r: 13 });
+      s += atom(200, 100, 'R', { r: 13 });
+      s += atom(200, 156, 'R', { r: 13 });
+      s += atom(Oa.x, Oa.y, 'O⁻', { kind: 'warn', r: 14, size: 10.5 });
+      s += atom(Ob.x, Ob.y, 'O⁺', { kind: 'warn', r: 14, size: 10.5 });
+      s += atom(Oc.x, Oc.y, 'O', { kind: 'warn', r: 14 });
+      s += lonePair(Oa.x, Oa.y, 180);
+      s += curve(P(80, 92), P(94, 114), { bow: 10 });
+      s += curve(P(140, 120), P(160, 96), { bow: -12 });
+      s += text(132, 194, 'a concerted 1,3-dipolar addition', { cls: 'fg-tag', size: 10.5 });
+      s += text(132, 210, 'both new C–O bonds form at once', { cls: 'fg-sm', size: 9.5 });
+    }
+
+    /* The two rings are the same pentagon twice, so the vertices are computed
+       once: radius 46 puts ~23px of visible bond between neighbouring atoms,
+       which is what stops a five-membered ring reading as a blob. */
+    const ring = (cx, cy, r = 46) => [-90, -18, 54, 126, 198].map((d) => {
+      const a = (d * Math.PI) / 180;
+      return P(cx + r * Math.cos(a), cy + r * Math.sin(a));
+    });
+
+    // ---- Panel 2: the molozonide, C–C–O–O–O ----
+    s += tag(380, 34, 'STEP 2 — the molozonide falls apart');
+    s += panel(258, 44, 244, 180);
+    {
+      const [v0, v1, v2, v3, v4] = ring(380, 118);
+      // v3 and v2 are the two former alkene carbons; v4, v0, v1 the ozone.
+      s += bond(v3, v2, { rFrom: 17, rTo: 17, cls: 'fg-bond-hi' });
+      s += bond(v2, v1, { rFrom: 17, rTo: 14 });
+      s += bond(v1, v0, { rFrom: 14, rTo: 14, cls: 'fg-bond-hi' });
+      s += bond(v0, v4, { rFrom: 14, rTo: 14 });
+      s += bond(v4, v3, { rFrom: 14, rTo: 17 });
+      s += atom(v3.x, v3.y, 'CR₂', { r: 17, size: 9.5 });
+      s += atom(v2.x, v2.y, 'CR₂', { r: 17, size: 9.5 });
+      s += atom(v1.x, v1.y, 'O', { kind: 'warn', r: 14 });
+      s += atom(v0.x, v0.y, 'O', { kind: 'warn', r: 14 });
+      s += atom(v4.x, v4.y, 'O', { kind: 'warn', r: 14 });
+      s += text(380, 188, 'molozonide (1,2,3-trioxolane)', { cls: 'fg-tag' });
+      s += text(380, 204, 'the bolder two bonds break,', { cls: 'fg-sm' });
+      s += text(380, 218, 'and the pieces re-close', { cls: 'fg-sm' });
+    }
+
+    // ---- Panel 3: the ozonide, C–O–O–C–O ----
+    s += tag(628, 34, 'STEP 3 — and re-forms as the ozonide');
+    s += panel(510, 44, 236, 180);
+    {
+      const [v0, v1, v2, v3, v4] = ring(628, 118);
+      // v3 and v1 are the carbons now; v4, v0 an O–O pair and v2 the bridge.
+      s += bond(v3, v4, { rFrom: 17, rTo: 14 });
+      s += bond(v4, v0, { rFrom: 14, rTo: 14 });
+      s += bond(v0, v1, { rFrom: 14, rTo: 17 });
+      s += bond(v1, v2, { rFrom: 17, rTo: 14 });
+      s += bond(v2, v3, { rFrom: 14, rTo: 17 });
+      s += atom(v3.x, v3.y, 'CR₂', { r: 17, size: 9.5 });
+      s += atom(v1.x, v1.y, 'CR₂', { r: 17, size: 9.5 });
+      s += atom(v4.x, v4.y, 'O', { kind: 'warn', r: 14 });
+      s += atom(v0.x, v0.y, 'O', { kind: 'warn', r: 14 });
+      s += atom(v2.x, v2.y, 'O', { kind: 'warn', r: 14 });
+      s += text(628, 188, 'ozonide (1,2,4-trioxolane)', { cls: 'fg-tag' });
+      s += text(628, 204, 'this is what is in the flask —', { cls: 'fg-sm' });
+      s += text(628, 218, 'and not a C=O yet', { cls: 'fg-sm' });
+    }
+
+    s += rule(30, 240, 730, 240);
+    s += text(380, 262, 'Now take (CH₃)₂C=CH–CH₃ through both workups — same cut, different caps.', { cls: 'fg-lbl', size: 12 });
+
+    // ---- Panel 4: reductive workup ----
+    s += panel(14, 276, 360, 150);
+    s += tag(194, 298, 'REDUCTIVE WORKUP — Me₂S or Zn/AcOH');
+    s += text(194, 320, 'each fragment stops at the carbonyl', { cls: 'fg-sm', size: 10 });
+    s += label(120, 352, '(CH₃)₂C=O', { size: 13 });
+    s += label(194, 352, '+', { size: 13 });
+    s += label(268, 352, 'CH₃CHO', { size: 13 });
+    s += text(120, 372, 'propanone', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(268, 372, 'ethanal', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(194, 398, 'the carbon with no hydrogen can only be a ketone;', { cls: 'fg-sm' });
+    s += text(194, 414, 'the one that had a hydrogen becomes an aldehyde', { cls: 'fg-sm' });
+
+    // ---- Panel 5: oxidative workup ----
+    s += panel(386, 276, 360, 150);
+    s += tag(566, 298, 'OXIDATIVE WORKUP — H₂O₂');
+    s += text(566, 320, 'anything that would be an aldehyde climbs one more rung', { cls: 'fg-sm', size: 9.5 });
+    s += label(492, 352, '(CH₃)₂C=O', { size: 13 });
+    s += label(566, 352, '+', { size: 13 });
+    s += label(640, 352, 'CH₃CO₂H', { size: 13 });
+    s += text(492, 372, 'propanone, unchanged', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(640, 372, 'ethanoic acid', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(566, 398, 'a ketone has no hydrogen there for peroxide to take;', { cls: 'fg-sm' });
+    s += text(566, 414, 'a =CH₂ end ends up as CO₂ and leaves the flask', { cls: 'fg-sm' });
+
+    s += rule(30, 442, 730, 442);
+    s += text(380, 462, 'Ozone builds the ring; the workup decides the caps.', { cls: 'fg-lbl', size: 12 });
+    s += text(380, 480, 'Rejoin the two carbonyl carbons and the alkene comes back — ozonolysis read backwards.', { cls: 'fg-sm' });
+    return s;
+  },
+  caption: 'Why ozonolysis is always written with two reagents over the arrow. Ozone alone does not make the carbonyls &mdash; it makes a ring, and the ring is what is in the flask when the ozone is switched off. The second reagent opens it, and that is where the two answers separate.',
+  note: 'The two ring names are worth holding apart because the numbers say where the oxygens are: the <b>molozonide</b> is a 1,2,3-trioxolane, three oxygens in a row with the old C&ndash;C bond still intact, and it is too strained to last. It comes apart and the pieces re-close as the <b>ozonide</b>, a 1,2,4-trioxolane, in which the two carbons no longer touch each other at all &mdash; that is the moment the double bond is genuinely gone. After that the workup is a separate decision: Me₂S takes the extra oxygen away and leaves carbonyls, while H₂O₂ leaves an oxidant in the flask, so any fragment still carrying a hydrogen on its new carbonyl carbon keeps climbing. A terminal =CH₂ carries two, which is why it disappears as CO₂ rather than appearing in the product list.',
+});
+
+/* ------------------------------------------------------------------ R8 ---
+   Both figures in carbonyl-reduction show hydride addition, so "C=O to CH₂"
+   - a different depth of reduction, reached by two reactions that exist only
+   because they tolerate opposite conditions - was prose only. */
+FIGURES.push({
+  id: 'carbonyl-to-methylene',
+  section: 'carbonyl-reduction',
+  anchor: 'N₂ leaving is irreversible and enormously favorable, and it is what drags the whole sequence forward.</p>',
+  alt: 'A ketone reduced all the way to a methylene group, with the two routes side by side: the Clemmensen in zinc amalgam and strong acid, and the Wolff-Kishner through a hydrazone that loses nitrogen gas under hot hydroxide',
+  viewBox: '0 0 760 466',
+  build() {
+    let s = '';
+    s += text(380, 24, 'ONE TRANSFORMATION, TWO SETS OF CONDITIONS', { cls: 'fg-tag', size: 11 });
+
+    // ---- The shared start and finish ----
+    {
+      const C = P(310, 92), O = P(310, 56);
+      s += bond(C, O, { order: 2, gap: 5, rFrom: 15, rTo: 14 });
+      s += bond(C, P(274, 120), { rFrom: 15, rTo: 13 });
+      s += bond(C, P(346, 120), { rFrom: 15, rTo: 13 });
+      s += atom(C.x, C.y, 'C', { kind: 'hi' });
+      s += atom(O.x, O.y, 'O', { r: 14 });
+      s += atom(274, 120, 'R', { r: 13 });
+      s += atom(346, 120, 'R', { r: 13 });
+      s += arrow(P(376, 92), P(440, 92));
+      s += text(408, 80, '4 e⁻, 4 H⁺', { cls: 'fg-sm' });
+    }
+    {
+      const C = P(480, 92);
+      s += bond(C, P(452, 60), { rFrom: 15, rTo: 12, cls: 'fg-bond-hi' });
+      s += bond(C, P(508, 60), { rFrom: 15, rTo: 12, cls: 'fg-bond-hi' });
+      s += bond(C, P(444, 120), { rFrom: 15, rTo: 13 });
+      s += bond(C, P(516, 120), { rFrom: 15, rTo: 13 });
+      s += atom(C.x, C.y, 'C', { kind: 'hi' });
+      s += atom(452, 60, 'H', { kind: 'warn', r: 12 });
+      s += atom(508, 60, 'H', { kind: 'warn', r: 12 });
+      s += atom(444, 120, 'R', { r: 13 });
+      s += atom(516, 120, 'R', { r: 13 });
+      s += text(470, 150, 'the oxygen is gone entirely — two rungs, not one', { cls: 'fg-tag-good' });
+    }
+    s += rule(30, 160, 730, 160);
+
+    // ---- The acidic route ----
+    s += panel(14, 176, 360, 240);
+    s += tag(194, 198, 'CLEMMENSEN — Zn(Hg), conc. HCl');
+    s += text(194, 218, 'strongly ACIDIC', { cls: 'fg-tag-warn', size: 10.5 });
+    {
+      s += label(104, 258, 'R₂C=O', { size: 13 });
+      s += arrow(P(150, 254), P(240, 254));
+      s += text(195, 242, 'Zn(Hg), HCl, Δ', { cls: 'fg-sm', size: 9.5 });
+      s += label(286, 258, 'R₂CH₂', { size: 13 });
+    }
+    s += text(194, 292, 'the electrons come off the zinc surface,', { cls: 'fg-sm', size: 9.5 });
+    s += text(194, 308, 'in acid, and no free carbanion is ever made', { cls: 'fg-sm', size: 9.5 });
+    s += text(194, 336, 'USE IT WHEN', { cls: 'fg-tag', size: 10 });
+    s += text(194, 356, 'the rest of the molecule survives strong acid', { cls: 'fg-sm', size: 9.5 });
+    s += text(194, 388, 'Neither route touches an ester or an amide:', { cls: 'fg-sm' });
+    s += text(194, 404, 'those carbonyls expel a leaving group instead', { cls: 'fg-sm' });
+
+    // ---- The basic route ----
+    s += panel(386, 176, 360, 240);
+    s += tag(566, 198, 'WOLFF–KISHNER — H₂NNH₂, then hot KOH');
+    s += text(566, 218, 'strongly BASIC', { cls: 'fg-tag-warn', size: 10.5 });
+    {
+      const C = P(470, 262), N1 = P(516, 262), N2 = P(556, 262);
+      s += bond(C, N1, { order: 2, gap: 5, rFrom: 15, rTo: 14 });
+      s += bond(N1, N2, { rFrom: 14, rTo: 16 });
+      s += bond(C, P(436, 234), { rFrom: 15, rTo: 13 });
+      s += bond(C, P(436, 290), { rFrom: 15, rTo: 13 });
+      s += atom(C.x, C.y, 'C', { r: 15 });
+      s += atom(N1.x, N1.y, 'N', { kind: 'hi', r: 14 });
+      s += atom(N2.x, N2.y, 'NH₂', { kind: 'hi', r: 16, size: 9.5 });
+      s += atom(436, 234, 'R', { r: 13 });
+      s += atom(436, 290, 'R', { r: 13 });
+      s += lonePair(N1.x, N1.y, 270);
+      s += arrow(P(590, 262), P(660, 262));
+      s += text(625, 250, 'KOH, Δ', { cls: 'fg-sm', size: 9.5 });
+      s += label(700, 266, 'R₂CH₂', { size: 13 });
+      s += text(700, 288, '+ N₂ ↑', { cls: 'fg-tag-good', size: 10.5 });
+      s += text(536, 298, 'the hydrazone', { cls: 'fg-tag' });
+    }
+    s += text(566, 322, 'hydrazine condenses on first, exactly as an imine does;', { cls: 'fg-sm' });
+    s += text(566, 338, 'hot hydroxide then takes the C–H off, and the carbanion', { cls: 'fg-sm' });
+    s += text(566, 354, 'pushes out N₂ — a gas, so it never comes back', { cls: 'fg-sm' });
+    s += text(566, 380, 'USE IT WHEN', { cls: 'fg-tag', size: 10 });
+    s += text(566, 400, 'the rest of the molecule survives strong base', { cls: 'fg-sm', size: 9.5 });
+
+    s += rule(30, 432, 730, 432);
+    s += text(380, 452, 'Whichever conditions your substrate tolerates, one of the two routes is open.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'The reduction that goes two rungs instead of one. A hydride reagent takes a ketone to an alcohol and stops; these two take the oxygen off altogether and leave a CH<sub>2</sub> &mdash; and they are learned as a pair because one needs strong acid and the other needs strong base.',
+  note: 'The only thing you have to decide in an exam question is which half of the molecule you are protecting: acid-sensitive substrate &rarr; Wolff&ndash;Kishner, base-sensitive substrate &rarr; Clemmensen. The mechanisms are not symmetric even though the outcomes are &mdash; the Clemmensen happens on the zinc surface and is not well described by arrows on paper, while the Wolff&ndash;Kishner is drawable all the way through and is therefore the one asked about: hydrazone, deprotonation, carbanion, loss of N<sub>2</sub>. That last step is the engine. A gas escaping the flask cannot react backwards, so the equilibrium in front of it is dragged forward however unfavorable it looked.',
+});
+
 
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;
