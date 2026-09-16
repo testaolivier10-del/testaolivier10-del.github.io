@@ -3091,19 +3091,19 @@ FIGURES.push({
   section: 'amine-synthesis',
   anchor: '<h3>Reductive amination: build the C&ndash;N bond by reduction instead</h3>',
   viewBox: '0 0 760 320',
-  alt: 'The over-alkylation problem in the center with five routes around it, each labeled with what it gives and whether the carbon count changes',
+  alt: 'The over-alkylation problem in the center with six routes around it, each labeled with what it gives and whether the carbon count changes',
   build() {
     let s = '';
     s += panel(250, 132, 260, 74, { kind: 'warn' });
     s += text(380, 158, 'R\u2013X + NH\u2083', { cls: 'fg-lbl', size: 13 });
     s += text(380, 180, 'a mixture: 1\u00b0, 2\u00b0, 3\u00b0, 4\u00b0', { cls: 'fg-sm', size: 10.5 });
-    s += text(380, 196, 'each product beats the last', { cls: 'fg-sm', size: 10 });
+    s += text(380, 196, 'the first products outrun the ammonia', { cls: 'fg-sm', size: 10 });
 
     const rows = [
       { y: 46,  name: 'Gabriel',            gives: '1\u00b0 only',        c: 'same' },
       { y: 90,  name: 'azide, then reduce', gives: '1\u00b0 only',        c: 'same' },
       { y: 240, name: 'CN\u207b, then LiAlH\u2084', gives: '1\u00b0 only',   c: '+1' },
-      { y: 284, name: 'amide, then LiAlH\u2084',  gives: '2\u00b0 or 3\u00b0', c: 'same' },
+      { y: 284, name: 'amide, then LiAlH\u2084',  gives: '1\u00b0, 2\u00b0 or 3\u00b0', c: 'same' },
     ];
     for (const r of rows) {
       s += text(24, r.y, r.name, { cls: 'fg-lbl', size: 12, anchor: 'start' });
@@ -3112,7 +3112,7 @@ FIGURES.push({
     }
     s += text(540, 46, 'reductive amination', { cls: 'fg-lbl', size: 12, anchor: 'start' });
     s += text(540, 64, '1\u00b0, 2\u00b0 or 3\u00b0 \u00b7 your choice', { cls: 'fg-tag-good', size: 10.5, anchor: 'start' });
-    s += text(540, 82, 'no substrate limit', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(540, 82, 'no S\u2099\u00b2 limit on the halide', { cls: 'fg-sm', size: 10, anchor: 'start' });
     s += text(540, 262, 'Hofmann rearrangement', { cls: 'fg-lbl', size: 12, anchor: 'start' });
     s += text(540, 280, '1\u00b0 only \u00b7 carbons \u22121', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
     s += text(540, 298, 'that carbon leaves as CO\u2082', { cls: 'fg-sm', size: 10, anchor: 'start' });
@@ -3120,7 +3120,7 @@ FIGURES.push({
     s += rule(24, 218, 700, 218);
     return s;
   },
-  caption: 'One failure and five escapes from it. The three that run an S\u2099\u00b2 on a nitrogen surrogate \u2014 Gabriel, azide, cyanide \u2014 can only ever hand back a primary amine, and need a primary unhindered halide to do it. Reductive amination and amide reduction have neither limit, which is why they are the workhorses.',
+  caption: 'One failure and six escapes from it. The three that run an S\u2099\u00b2 on a nitrogen surrogate \u2014 Gabriel, azide, cyanide \u2014 can only ever hand back a primary amine, and need a primary unhindered halide to do it. Reductive amination and amide reduction have neither limit, which is why they are the workhorses.',
   note: 'Read the right-hand column first. Butanamide is the compound to keep in mind: LiAlH\u2084 gives butylamine and Br\u2082/NaOH gives propylamine, so the same starting material and the same kind of product differ by a carbon depending only on the reagent. That is why the carbon count is the first question to ask of a proposed amine synthesis and not the last \u2014 a route can be flawless step by step and still arrive one carbon short.',
 });
 
@@ -3133,7 +3133,7 @@ FIGURES.push({
   section: 'hofmann-elimination',
   anchor: '<h3>Worked example: 2-aminobutane</h3>',
   viewBox: '0 0 760 300',
-  alt: 'A butyl trimethylammonium salt with its two beta carbons labeled, and the less substituted alkene marked as the major product',
+  alt: 'A sec-butyltrimethylammonium salt with its two beta carbons labeled, and the less substituted alkene marked as the major product',
   build() {
     let s = '';
     const c1 = P(140, 120), c2 = P(220, 150), c3 = P(300, 120), c4 = P(380, 150);
@@ -3146,7 +3146,7 @@ FIGURES.push({
     s += text(140, 152, 'C1 \u00b7 CH\u2083 \u00b7 3 H', { cls: 'fg-tag-good', size: 11 });
     s += text(140, 168, 'open', { cls: 'fg-sm', size: 10 });
     s += text(300, 96, 'C3 \u00b7 CH\u2082 \u00b7 2 H', { cls: 'fg-tag', size: 11 });
-    s += text(300, 80, 'crowded by the N\u207a', { cls: 'fg-sm', size: 10 });
+    s += text(300, 80, 'more substituted \u2014 carries C4', { cls: 'fg-sm', size: 10 });
 
     s += rule(24, 196, 700, 196);
     s += text(24, 222, 'H from C1  \u2192  but-1-ene, monosubstituted  \u2014  MAJOR', { cls: 'fg-tag-good', size: 12, anchor: 'start' });

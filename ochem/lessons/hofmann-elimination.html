@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function(){
     { id:'h3', t:'<b>Triethylamine</b>, (CH<sub>3</sub>CH<sub>2</sub>)<sub>3</sub>N', right:'one',
       why:'One. Nothing to replace, so the single methylation quaternizes it directly.' },
     { id:'h4', t:'<b>Piperidine</b>, a six-membered ring with NH', right:'two',
-      why:'Two, by the N&ndash;H count &mdash; but the informative part comes later. Two C&ndash;N bonds hold this nitrogen in the ring, so the first elimination only <i>opens</i> the ring and leaves the nitrogen attached. Freeing it takes a second full round, and needing two rounds was itself the evidence that the nitrogen had been in a ring.' }
+      why:'Two to quaternize it, by the N&ndash;H count &mdash; but the informative part comes later. Two C&ndash;N bonds hold this nitrogen in the ring, so the first elimination only <i>opens</i> the ring and leaves the nitrogen attached. Freeing it takes a second full round, which means re-methylating the ring-opened amine first &mdash; so the whole degradation consumes three equivalents even though the first methylation took two. Needing two rounds was itself the evidence that the nitrogen had been in a ring.' }
   ];
   var OPTS = [ { k:'two', l:'Two equivalents' }, { k:'one', l:'One equivalent' }, { k:'three', l:'Three equivalents' } ];
 
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'mcq',
         eyebrow: 'Step 7 · Independent Practice',
-        title: 'An unknown amine consumes two equivalents of CH<sub>3</sub>I, and needs two full rounds of elimination to release its nitrogen. What does that tell you?',
+        title: 'An unknown amine takes two equivalents of CH<sub>3</sub>I in the first methylation, and needs two full rounds of elimination to release its nitrogen. What does that tell you?',
         options: [
           'It is a secondary amine, and cyclic',
           'It is a primary amine in a ring',

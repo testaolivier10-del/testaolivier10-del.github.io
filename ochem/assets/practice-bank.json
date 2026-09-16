@@ -43840,7 +43840,7 @@
     "1°, 2°, 3° and 4° together"
    ],
    "correct": 3,
-   "why": "Proportions are set by kinetics, not by the stoichiometry you weigh out.",
+   "why": "Relative rates decide it, so adding less halide does not help; only a big excess of ammonia biases it.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -43912,7 +43912,7 @@
   {
    "q": "Which substrate works best in a Gabriel alkylation?",
    "options": [
-    "2-Bromo-2-methylpropane",
+    "Bromobenzene",
     "Methyl iodide",
     "tert-Butyl bromide",
     "2-Bromobutane"

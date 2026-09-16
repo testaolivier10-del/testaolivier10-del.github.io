@@ -3649,7 +3649,7 @@
  ],
  "amine-synthesis": [
   "Each added alkyl group pushes electron density onto nitrogen, so the product outruns the ammonia still in the flask.",
-  "Proportions are set by kinetics, not by the stoichiometry you weigh out.",
+  "Relative rates decide it, so adding less halide does not help; only a big excess of ammonia biases it.",
   "There is nowhere further to alkylate, so one compound comes out.",
   "Methyl iodide is the typical choice when a quaternary salt is the target.",
   "The imide nitrogen's lone pair is also tied into both carbonyls.",

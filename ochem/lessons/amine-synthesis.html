@@ -162,8 +162,8 @@ document.addEventListener('DOMContentLoaded', function(){
         eyebrow: 'Explain',
         title: 'The obvious route does not work.',
         bodyHtml: '<p class="step-body">Treat ammonia with an alkyl halide and nitrogen does the S<sub>N</sub>2 you expect. The trouble starts immediately after.</p>' +
-          '<p class="step-body">The primary amine you just made is a <b>better nucleophile than the ammonia was</b>, because the new alkyl group donates electron density to nitrogen. So it attacks the next halide faster than the remaining ammonia does — and the secondary amine is faster again.</p>' +
-          '<p class="step-body">Out comes a mixture of primary, secondary and tertiary amine plus quaternary ammonium salt, in proportions set by <b>kinetics rather than stoichiometry</b>. Adding less halide does not fix it.</p>' +
+          '<p class="step-body">The primary amine you just made is a <b>better nucleophile than the ammonia was</b>, because the new alkyl group donates electron density to nitrogen. So it attacks the next halide faster than the remaining ammonia does — and the secondary amine is faster again. (Not forever: a tertiary amine is <i>poorer</i> than the secondary one that made it, because three alkyl groups crowd the transition state. It is the early steps that outrun ammonia.)</p>' +
+          '<p class="step-body">Out comes a mixture of primary, secondary and tertiary amine plus quaternary ammonium salt, in proportions set by <b>relative rates rather than by how much halide you add</b>. Adding less halide does not fix it. A large excess of <i>ammonia</i> does help, which is how simple primary amines are made industrially — but that is biasing a mixture, not controlling a reaction.</p>' +
           '<div class="explain-box">Every method in this section is a way around that one failure, and they divide by how they escape it: alkylate something that <i>cannot</i> react twice, use a nucleophile that is not an amine at all, or stop using displacement to make the C&ndash;N bond. The one time the runaway is welcome is when a <b>quaternary ammonium salt</b> is what you want — excess CH<sub>3</sub>I run to completion gives a single product, because there is nowhere further to go.</div>'
       },
       {
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function(){
           '<li><b>Azide.</b> N<sub>3</sub><sup>&minus;</sup> is small and an excellent nucleophile, and its product is an azide, not an amine. Reduce with LiAlH<sub>4</sub> or H<sub>2</sub>/Pd. Same idea, fewer steps.</li>' +
           '<li><b>Reductive amination.</b> Condense a carbonyl with the amine to an imine or iminium, then reduce it in the same flask.</li>' +
           '</ul>' +
-          '<p class="step-body">The first two are still S<sub>N</sub>2 reactions, so they need a <b>primary, unhindered</b> halide and they give only a <b>primary</b> amine. Reductive amination has neither limit.</p>' +
+          '<p class="step-body">The first two are still S<sub>N</sub>2 reactions, so they need a <b>primary, unhindered</b> halide and they give only a <b>primary</b> amine. Reductive amination has neither limit — but it has two of its own. The nitrogen lands on the <b>old carbonyl carbon</b>, so <i>tert</i>-butylamine and aryl amines are out of reach; and making a primary amine from ammonia is the one case that still over-alkylates, since the product competes with ammonia for the next carbonyl.</p>' +
           '<div class="explain-box">The reagent is what makes reductive amination work. <b>NaBH<sub>3</sub>CN</b> and <b>NaBH(OAc)<sub>3</sub></b> are attenuated hydride sources: they survive the mildly acidic pH (around 4&ndash;5) that imine formation wants, and they reduce the protonated imine far faster than the carbonyl — so the ketone survives long enough to condense. Plain NaBH<sub>4</sub> would just give you the alcohol.</div>'
       },
       {
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'You need butylamine from butanoic acid. Two routes reach a four-carbon amine and one does not. Which fails?',
+        title: 'You need butylamine from butanoic acid. Three of these reach a four-carbon amine and one does not. Which fails?',
         options: [
           'SOCl<sub>2</sub>, then NH<sub>3</sub>, then Br<sub>2</sub>/NaOH',
           'SOCl<sub>2</sub>, then NH<sub>3</sub>, then LiAlH<sub>4</sub>',

@@ -1428,6 +1428,46 @@ the **third** distinct way Zaitsev breaks: the E2 chapter broke it with
 geometry and again with a bulky base, and here the bulk is on the **leaving
 group**, which is part of the substrate rather than something you choose.
 
+**The review found twelve, six confident.** The figure claimed *five* escapes
+and drew six. It labeled amide reduction as giving only a 2&deg; or 3&deg;
+amine, contradicting the table three paragraphs below it &mdash; a primary
+amide gives a primary amine. The final challenge said "two routes reach a
+four-carbon amine" above four options, three of which do. Two bank distractors
+were the **same compound under two names**, 2-bromo-2-methylpropane and
+*tert*-butyl bromide, which after shuffling puts the identical structure on
+screen twice. The Hofmann figure's alt text called the salt *butyl*
+trimethylammonium when the drawing is the *sec*-butyl one &mdash; the n-butyl
+salt has a single &beta; carbon and would make the figure pointless.
+
+And the one I should have caught: the figure said **"each product beats the
+last"**, which fails at the step it most needs to hold. A tertiary amine is a
+*poorer* nucleophile than the secondary amine that made it, because three
+alkyl groups crowd the S<sub>N</sub>2 transition state &mdash; the classical
+Menshutkin ordering. The prose was careful and only claimed it through the
+secondary amine; the figure generalized it one step too far.
+
+Six qualified findings were also accepted, two of them substantive. "Set by
+kinetics, not stoichiometry" is only true of **halide** stoichiometry: a large
+excess of ammonia genuinely does bias the mixture toward the primary amine and
+is how simple ones are made industrially. And reductive amination was said to
+have "no substrate limit", when it has two that students trip on &mdash; the
+nitrogen lands on the old carbonyl carbon, so *tert*-butylamine and aryl
+amines are unreachable, and making a primary amine from ammonia is the one
+case that still over-alkylates.
+
+**Phase 4 is complete.** Eight sections, eight lessons, 240 questions, eight
+concepts and eight figures, taking the course from 108 topics to 116 across
+23 chapters, 112 lessons and 3,480 questions.
+
+**The scope wording was three places behind.** `sources.html` described a
+thirteen-chapter course; `mass-spec.html` and `nucleic-acids.html` each opened
+with "this is the last section", true when written and false since Phase 3
+appended nine chapters behind them. The hub and the textbook never drifted,
+because they render their counts from `curriculum.js` rather than stating them
+in prose &mdash; the two files that went stale are the two that hardcode
+English, which is the argument for deriving these numbers wherever it is
+possible.
+
 **The weight budget note was wrong, and says so now.** It predicted 4 KB would
 cover three pairs of sections; two used it up and the third went 1.4 KB over.
 The error was the per-pair figure rather than the arithmetic &mdash; a pair
