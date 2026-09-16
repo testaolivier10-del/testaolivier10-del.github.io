@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Every substituent gets its own number, even when two share a carbon.',
-        bodyHtml: '<p class="step-body">Halogens are prefixes, always: <b>fluoro</b>, <b>chloro</b>, <b>bromo</b>, <b>iodo</b>. They never become a suffix and never outrank anything, which makes them the easiest substituent in the language. Two more behave identically and are worth meeting now: <b>nitro</b> (–NO₂) and <b>alkoxy</b> (–OR, so –OCH₃ is <i>methoxy</i>). An ether has no suffix of its own — it is always an alkoxy substituent on something else.</p>' +
+        bodyHtml: '<p class="step-body">Halogens are prefixes, always: <b>fluoro</b>, <b>chloro</b>, <b>bromo</b>, <b>iodo</b>. They never become a suffix and never outrank anything — but nothing outranks them either: for numbering, a halogen and an alkyl group have equal standing. That makes them the easiest substituent in the language. Two more behave identically and are worth meeting now: <b>nitro</b> (–NO₂) and <b>alkoxy</b> (–OR, so –OCH₃ is <i>methoxy</i>). An ether has no suffix of its own — it is always an alkoxy substituent on something else.</p>' +
           '<p class="step-body">Identical substituents are collected with <b>di-</b>, <b>tri-</b>, <b>tetra-</b>, <b>penta-</b>. Each one still keeps its own locant, even when two sit on the same carbon: a pentane with two methyls both on C2 is <b>2,2-dimethylpentane</b>. Writing 2-dimethylpentane is not a shorthand — it is a missing number, and the reader cannot tell where the second methyl went.</p>' +
           '<div class="explain-box">Count the locants against the multiplying prefix every time you write a name. <i>di</i> needs two numbers, <i>tri</i> needs three. It is the fastest self-check in nomenclature and it catches most typos.</div>'
       },
@@ -212,8 +212,8 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
               if(Object.keys(done).length === PAIRS.length){
                 api.showFeedback(fb, true, missed
-                  ? 'All three. The pattern to take away: di/tri/tetra and the italic sec-/tert- are ignored; iso, neo and cyclo are not. The typography is the tell — a hyphenated italic prefix is skipped, a prefix joined straight onto the word is counted.'
-                  : 'All three, first time. The typography is the tell: a hyphenated italic prefix (sec-, tert-) is skipped, a multiplying prefix (di-, tri-) is skipped, and a prefix joined straight onto the word (iso, neo, cyclo) is counted.');
+                  ? 'All three. The pattern to take away: di/tri/tetra and the italic sec-/tert- are ignored; iso, neo and cyclo are not (cyclo marks a ring used as a branch — rings are the last lesson of this chapter). The typography is the tell — a hyphenated italic prefix is skipped, a prefix joined straight onto the word is counted.'
+                  : 'All three, first time. The typography is the tell: a hyphenated italic prefix (sec-, tert-) is skipped, a multiplying prefix (di-, tri-) is skipped, and a prefix joined straight onto the word (iso, neo, cyclo — the last marks a ring used as a branch, which the final lesson of this chapter names) is counted.');
                 api.record(!missed);
                 next.disabled = false;
               }
@@ -279,15 +279,15 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'A molecule has an ethyl group and two methyl groups. Both numbering directions give the locant set {3, 3, 5}. Which group gets the 5?',
+        title: 'A heptane carries an ethyl on C3 and a methyl on C5 counting from the left; from the right, the methyl is on C3 and the ethyl on C5. Which name is right?',
         options: [
-          'The ethyl — with a genuine tie, the alphabetically first substituent takes the lowest available locant, so ethyl takes a 3',
-          'A methyl — ethyl is a larger group so it takes the higher number',
+          '3-ethyl-5-methylheptane — a genuine tie, so the alphabetically first substituent takes the lower locant',
+          '5-ethyl-3-methylheptane — the smaller group takes the lower number',
           'Either; a true tie means both names are acceptable',
-          'The ethyl — larger substituents always take higher locants'
+          '3-methyl-5-ethylheptane — the lower locant is written first'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct, and this is the one situation where the alphabet does touch the numbering. The locant sets are identical, so the structure cannot decide, and the tie-break hands the lower number to the substituent cited first alphabetically. Ethyl beats methyl, so ethyl gets a 3 and a methyl is left with the 5: 3-ethyl-3,5-dimethyl… Note that this rule only ever fires on an exact tie — applying it any earlier is the most common way this material goes wrong.'
+        correctFeedback: 'Correct, and this is the one situation where the alphabet does touch the numbering. Both directions give {3, 5}, so the structure cannot decide, and the tie-break hands the lower number to the substituent cited first alphabetically: ethyl beats methyl, so ethyl gets the 3. Then the words are written in that same order. Note that this rule only ever fires on an exact tie — applying it any earlier is the most common way this material goes wrong.'
       }
     ]
   });

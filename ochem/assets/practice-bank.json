@@ -6467,407 +6467,407 @@
  ],
  "naming-parent-chain": [
   {
-   "q": "What are the three parts of a systematic name, in order?",
+   "q": "CH₃CH₂CH(CH₃)CH₂CH₂CH₃. What is the name?",
    "options": [
-    "Root, prefix, suffix",
-    "Prefix, root, suffix",
-    "Suffix, root, prefix",
-    "Prefix, suffix, root"
+    "3-methylhexane",
+    "4-methylhexane",
+    "2-ethylpentane",
+    "3-methylpentane"
    ],
-   "correct": 1,
-   "why": "Prefix (what is hanging off it), root (how long the parent chain is), suffix (the main functional group). In 2-methylbutan-1-ol that is 2-methyl, but, and -1-ol.",
+   "correct": 0,
+   "why": "Count the row: six carbons, and the methyl is a one-carbon branch that cannot extend any path, so the parent is hexane. From the left the methyl is on C3, from the right on C4; 3 beats 4. 3-methylhexane.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which root means a four-carbon chain?",
+   "q": "A student names CH₃CH(CH₂CH₃)CH₂CH₃ as 2-ethylbutane. What is the correct name?",
    "options": [
-    "but",
-    "pent",
-    "tetr",
-    "prop"
+    "3-methylpentane",
+    "2-ethylbutane is correct",
+    "3-ethylbutane",
+    "2-methylpentane"
    ],
    "correct": 0,
-   "why": "meth 1, eth 2, prop 3, but 4, pent 5, hex 6, hept 7, oct 8, non 9, dec 10. The first four are historical; the rest are Greek and Latin numbers.",
+   "why": "Trace from the far end of the ethyl through the branch carbon and along the row: two ethyl carbons, the branch carbon, then two more is five. The row was only four. So the parent is pentane, and the carbon left over (the near end of the row) is a methyl on C3. An ethyl on C2 can never be right, because the route through it always beats the row by one.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which of these names cannot be correct as written?",
+   "options": [
+    "2-ethylbutane",
+    "4-methylheptane",
+    "3-ethylpentane",
+    "3-methylhexane"
+   ],
+   "correct": 0,
+   "why": "An ethyl on the second carbon of a chain always extends it: two ethyl carbons plus C2 plus the rest of the chain is one longer than the chain itself. 2-ethylbutane is really 3-methylpentane. The other three describe a molecule where the row is genuinely the longest path.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Which root means a seven-carbon chain?",
+   "q": "CH₃CH₂CH₂CH(CH₂CH₂CH₃)CH₂CH₃. How many carbons are in the parent chain?",
    "options": [
-    "hex",
-    "sept",
-    "hept",
-    "oct"
+    "Seven",
+    "Six",
+    "Five",
+    "Eight"
    ],
-   "correct": 2,
-   "why": "Seven is hept. 'Sept' is Latin but is not the root organic chemistry uses.",
+   "correct": 0,
+   "why": "Three arms leave the branch carbon: three carbons to the left, three in the propyl, two to the right. A chain joins the two longest arms through that carbon: 3 + 1 + 3 = 7. The two-carbon arm is an ethyl on C4: 4-ethylheptane. Every carbon counted at once (eight) would need the path to pass through the branch carbon twice.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
    "q": "How is the parent chain defined?",
    "options": [
-    "The chain with fewest branches",
-    "The chain drawn first",
-    "The horizontal chain drawn",
-    "The longest continuous chain"
+    "The longest continuous chain",
+    "The chain drawn horizontally",
+    "The chain with the fewest branches",
+    "The chain drawn first"
+   ],
+   "correct": 0,
+   "why": "The longest unbroken path of carbons, turning as many corners as it needs to. It is very often not the row lying across the page, which is why every end has to be checked.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Two seven-carbon paths run through a molecule. One carries a single ethyl group, the other carries two methyls. Which is the parent?",
+   "options": [
+    "The one with two methyls",
+    "The one with the ethyl",
+    "Either; a tie means both names are valid",
+    "Whichever is drawn horizontally"
+   ],
+   "correct": 0,
+   "why": "A tie on length is broken by the number of substituents, and the chain with more wins. It reads backwards, but a name should put as much of the molecule as possible into numbered prefixes instead of hiding it inside a big branch name.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "CH₃CH(CH₃)CH(CH₂CH₃)CH₂CH₃. Which name is right?",
+   "options": [
+    "3-isopropylpentane",
+    "3-(propan-2-yl)pentane",
+    "2-methyl-3-ethylpentane",
+    "3-ethyl-2-methylpentane"
    ],
    "correct": 3,
-   "why": "The longest unbroken path of carbons, turning as many corners as it needs to. It is very often not the row lying across the page.",
+   "why": "Two five-carbon chains tie. The one along the row carries a methyl and an ethyl (two substituents); the one through the ethyl carries a single isopropyl. More substituents wins, so the parent is the row with methyl at C2 and ethyl at C3. Then the alphabet orders the words: ethyl before methyl.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Two chains through a molecule are the same length. Which is the parent?",
+   "q": "From one end a chain’s substituents fall at {2, 2, 5}; from the other at {2, 5, 5}. Which numbering is right?",
    "options": [
-    "The one with fewer substituents",
-    "The one with more substituents",
-    "Either, they are equivalent",
-    "The one drawn horizontally"
+    "{2, 5, 5}: the higher last term breaks the tie",
+    "Both; the sets are equivalent",
+    "Neither; renumber from a middle carbon",
+    "{2, 2, 5}: it wins at the second term"
    ],
-   "correct": 1,
-   "why": "It reads backwards, but a name should describe as much of the molecule as possible with locants rather than burying it inside a complex branch name.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "A chain of six carbons is drawn with how many bonds?",
-   "options": [
-    "Five bonds",
-    "Seven bonds",
-    "Four bonds",
-    "Six bonds"
-   ],
-   "correct": 0,
-   "why": "Always one fewer than the number of carbons. Counting the lines and calling it pentane is the standard off-by-one error.",
+   "correct": 3,
+   "why": "Compare term by term and stop at the first difference. Both open with 2; then 2 beats 5. That settles it without looking at the third term.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "How do you choose which end of the chain to number from?",
+   "q": "CH₃CH(CH₃)CH₂CH₂CH(CH₃)CH₂CH₃. What is the name?",
    "options": [
-    "Always from the branch",
-    "Alphabetically first end",
-    "Always from the left",
-    "Lowest set of locants"
-   ],
-   "correct": 3,
-   "why": "You compare the two possible numberings and take the one giving the lowest locants, decided at the first point of difference.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Locants {2, 3, 6} versus {2, 5, 6}. Which wins, and why?",
-   "options": [
-    "Neither; renumber again",
-    "{2,5,6}, larger last term",
-    "{2,3,6}, first difference",
-    "{2,5,6}, larger total"
+    "3,6-dimethylheptane",
+    "2,5-dimethyloctane",
+    "2,5-dimethylheptane",
+    "3-ethyl-6-methylhexane"
    ],
    "correct": 2,
-   "why": "Compare term by term and stop where they differ: both open at 2, then 3 beats 5. Totals are not what the rule uses, even when they agree with it.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "Why is adding the locants up not the rule?",
-   "options": [
-    "It is too slow to compute",
-    "Locant totals are never comparable",
-    "It is the rule, in fact",
-    "It can disagree with the real rule"
-   ],
-   "correct": 3,
-   "why": "A decane substituted at {2,7,8} versus {3,4,9} is decided one way by first point of difference and the other way by totals. The first is correct.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "A six-carbon chain has one methyl: C3 from the left, C4 from the right. Name it.",
-   "options": [
-    "4-methylhexane",
-    "3-methylhexane",
-    "3-methylpentane",
-    "methylhexane"
-   ],
-   "correct": 1,
-   "why": "Six carbons gives hex, no functional group gives -ane, and 3 beats 4 so number from the left.",
+   "why": "Seven carbons in the row and nothing longer through a methyl. From the left the methyls are at {2, 5}; from the right at {3, 6}. 2 beats 3 at the first term. Two methyls take di- and two locants: 2,5-dimethylheptane.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "What punctuation separates a number from a letter in a name?",
+   "q": "A chain of six carbons is drawn with how many bonds between them?",
    "options": [
-    "A period",
-    "A comma",
-    "A hyphen",
-    "A space"
-   ],
-   "correct": 2,
-   "why": "Hyphens between numbers and letters, commas between numbers: 2,3-dimethylpentane.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "What punctuation separates two numbers in a name?",
-   "options": [
-    "A comma",
-    "A space",
-    "A slash",
-    "A hyphen"
-   ],
-   "correct": 0,
-   "why": "Commas between numbers, hyphens between a number and a letter. The punctuation carries meaning rather than decorating it.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "How many spaces are inside the name of a simple alkane?",
-   "options": [
-    "One before the root",
-    "None at all",
-    "One per substituent",
-    "Two, around the root"
-   ],
-   "correct": 1,
-   "why": "No space anywhere inside the name of a single compound, except in names like 'acetic acid' where the second word names a class.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Which is the modern IUPAC style?",
-   "options": [
-    "but-2-ene",
-    "butene-2",
-    "2-butylene",
-    "2-butene"
-   ],
-   "correct": 0,
-   "why": "Modern IUPAC puts the locant immediately before the part of the name it refers to. Older texts write 2-butene, so read both and write the first.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "What does the suffix -ane signify?",
-   "options": [
-    "A double bond",
-    "A ring is present",
-    "An alcohol group is present somewhere",
-    "No multiple bond or group"
+    "Six",
+    "Four",
+    "Seven",
+    "Five"
    ],
    "correct": 3,
-   "why": "It is the default suffix, and the rest of nomenclature is about replacing it with something that names a functional group.",
+   "why": "Always one fewer bond than carbons. Counting the line segments and calling a hexane a pentane is the standard off-by-one, and it is the same miscount as forgetting the ends of a skeletal structure.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A student writes 1-methylpentane. What is wrong with it?",
+   "options": [
+    "It should be 5-methylpentane",
+    "Nothing; it is a valid name",
+    "A methyl on C1 lengthens the chain: it is hexane",
+    "The locant belongs after the word"
+   ],
+   "correct": 2,
+   "why": "A methyl on the end carbon is one more carbon in a straight line, so the chain is six long, not five. A name with a 1-alkyl locant on an unbranched chain is a sign the parent was chosen wrongly.",
    "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which condensed formula is 2,3-dimethylpentane?",
+   "options": [
+    "CH₃CH(CH₃)CH₂CH(CH₃)CH₃",
+    "CH₃C(CH₃)₂CH₂CH₂CH₃",
+    "CH₃CH(CH₃)CH(CH₃)CH₂CH₂CH₃",
+    "CH₃CH(CH₃)CH(CH₃)CH₂CH₃"
+   ],
+   "correct": 3,
+   "why": "Pentane is five in a row; put methyls on the second and third. The first option is 2,4-dimethylpentane, the second 2,2-dimethylpentane, and the third has six carbons in the row (2,3-dimethylhexane).",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "(CH₃)₂CHCH₂CH₂CH₂CH₃. What is the name?",
+   "options": [
+    "Isopropylbutane",
+    "2-methylhexane",
+    "5-methylhexane",
+    "2-methylheptane"
+   ],
+   "correct": 1,
+   "why": "The longest path runs through one of the two end methyls: six carbons, hexane. The other methyl is the branch, on C2 counting from that end (C5 from the other). Isopropylbutane buries two chain carbons in the branch name.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which condensed formula is 4-ethylheptane?",
+   "options": [
+    "CH₃CH₂CH(CH₂CH₃)CH₂CH₂CH₃",
+    "CH₃CH₂CH₂C(CH₃)₂CH₂CH₂CH₃",
+    "CH₃CH₂CH₂CH(CH₂CH₃)CH₂CH₂CH₃",
+    "CH₃CH₂CH₂CH(CH₃)CH₂CH₂CH₃"
+   ],
+   "correct": 2,
+   "why": "Seven in a row with a two-carbon branch on the fourth. The first option is a hexane (3-ethylhexane), the second has two methyls on one carbon, and the last is 4-methylheptane.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "CH₃CH₂C(CH₂CH₃)₂CH₂CH₃. A student rejects the name 3,3-diethylpentane, saying the longest chain must run through an ethyl. Who is right?",
+   "options": [
+    "The student; through an ethyl it is heptane",
+    "The student; it is 3-ethyl-3-methylhexane",
+    "Neither; it is 4-ethylhexane",
+    "The name; all four arms are two carbons long"
+   ],
+   "correct": 3,
+   "why": "Four two-carbon arms leave the central carbon, so every route through it is 2 + 1 + 2 = 5. All the candidate chains tie at five with the same two substituents, and the name is 3,3-diethylpentane. The longest-chain rule only changes an answer when an arm is longer than the ones it competes with.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "CH₃CH₂CH(CH₃)CH₂CH(CH₃)CH₂CH₂CH₃. What is the name?",
+   "options": [
+    "3,5-dimethyloctane",
+    "4,6-dimethyloctane",
+    "2-ethyl-4-methylheptane",
+    "3,5-dimethylheptane"
+   ],
+   "correct": 0,
+   "why": "Eight in the row. From the left the methyls are at {3, 5}, from the right at {4, 6}; 3 beats 4. The ethyl name has the wrong parent, since an ethyl on C2 would extend the chain.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
    "q": "A structure is drawn as a five-carbon row with an ethyl on the middle carbon. What is the parent?",
    "options": [
-    "Propane, the shortest path",
-    "Pentane, the drawn row",
-    "Hexane, through the ethyl",
-    "Heptane, the whole thing"
+    "Hexane, turning the corner into the ethyl group",
+    "Heptane, counting every carbon in the drawing",
+    "Pentane; row and corner routes all tie at five",
+    "Propane, the shortest path through the middle"
    ],
    "correct": 2,
-   "why": "Tracing from one end of the row through the middle carbon and out along the ethyl gives six continuous carbons, which beats the five drawn horizontally.",
-   "difficulty": "hard",
+   "why": "Three ends: the two row ends and the ethyl end. Row end to row end is five. Ethyl end to either row end is two, plus the middle carbon, plus two: also five. Nothing is longer than the row, so it stays the parent.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "That same structure is correctly named what?",
+   "q": "That same structure, a five-carbon row with an ethyl on the middle carbon, is correctly named what?",
    "options": [
-    "3-ethylpentane",
     "3-methylhexane",
+    "3-ethylpentane",
     "2-ethylpentane",
     "3-ethylhexane"
    ],
    "correct": 1,
-   "why": "The parent is the six-carbon path, and what is left over is a single carbon: a methyl at C3.",
+   "why": "Pentane parent, two-carbon branch on C3 from either end. The ethyl survives as an ethyl because every route through it ties the row instead of beating it.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Can the parent chain pass through the same carbon twice?",
+   "q": "A molecule is drawn as a Y: three arms of 3, 3 and 2 carbons leave one central carbon. What is the parent?",
    "options": [
-    "No, never",
-    "Only in branched chains",
-    "Only for long chains",
-    "Yes, if it is a ring"
-   ],
-   "correct": 0,
-   "why": "A chain is a path. You may turn corners freely, but you may not revisit a carbon or jump a gap.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "What does the root of a name tell you?",
-   "options": [
-    "The total number of branches",
-    "The molecular weight",
-    "The functional group",
-    "The parent chain length"
+    "Octane, through all three arms",
+    "Hexane, two arms of three",
+    "Nonane, every carbon in the molecule",
+    "Heptane, through the two longest arms"
    ],
    "correct": 3,
-   "why": "The root is purely the count of carbons in the parent chain: meth through dec.",
-   "difficulty": "easy",
+   "why": "A chain is a path and cannot pass through the same carbon twice, so only two arms can be joined: the two three-carbon arms plus the center is seven. The two-carbon arm is an ethyl on C4: 4-ethylheptane.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Why is choosing the parent chain the highest-stakes step?",
+   "q": "Why is choosing the parent chain the highest-stakes step in a name?",
    "options": [
     "It fixes the stereochemistry",
-    "It sets the molecular formula outright",
     "Every later number depends on it",
+    "It sets the molecular formula",
     "It determines the suffix"
    ],
-   "correct": 2,
-   "why": "Pick the wrong parent and the numbering, the locants and the substituent names that follow are all wrong too.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "Which root means ten carbons?",
-   "options": [
-    "non",
-    "dec",
-    "oct",
-    "deca"
-   ],
    "correct": 1,
-   "why": "Ten is dec, as in decane. 'Deca' is the multiplying prefix, not the chain root.",
+   "why": "Pick the wrong parent and the numbering, the locants and the substituent names that follow are all wrong too. It is the step where a name goes wrong earliest and most completely.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A molecule's longest path is eight carbons but two paths of eight exist. What decides?",
+   "q": "Which name shows the modern IUPAC placement of the locant?",
    "options": [
-    "The number of substituents",
+    "2-butene",
+    "butene-2",
+    "but-2-ene",
+    "2-butylene"
+   ],
+   "correct": 2,
+   "why": "Current IUPAC puts a locant immediately before the part of the name it refers to. Older texts write 2-butene, so read both; write the first.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A molecule has two eight-carbon paths and nothing longer. What decides between them?",
+   "options": [
     "Alphabetical order",
+    "The number of substituents",
     "The orientation of the drawing",
     "Molecular symmetry"
    ],
-   "correct": 0,
-   "why": "When chains tie on length, the one carrying more substituents is the parent.",
-   "difficulty": "hard",
-   "type": "mcq"
-  },
-  {
-   "q": "How many carbons are in a heptane parent chain?",
-   "options": [
-    "Eight",
-    "Five",
-    "Six",
-    "Seven"
-   ],
-   "correct": 3,
-   "why": "hept means seven. The -ane says it is saturated with no functional group.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Is the longest chain always the one drawn horizontally?",
-   "options": [
-    "Only when the chain is branched",
-    "Yes, by convention",
-    "No, and often it is not",
-    "Only for alkanes"
-   ],
-   "correct": 2,
-   "why": "Structures are drawn for the convenience of whoever drew them, and the longest path very often turns a corner.",
+   "correct": 1,
+   "why": "When chains tie on length, the one carrying more substituents is the parent. If that ties too, the numbering rule decides: the chain whose substituents get the lower locants.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What is the first thing to do when naming an unfamiliar structure?",
+   "q": "A decane’s substituents fall at {2, 7, 8} from one end and {3, 4, 9} from the other. Which numbering is right?",
    "options": [
-    "Count the hydrogens",
-    "Find the parent chain",
-    "Alphabetize the branches",
-    "Assign stereochemistry"
+    "{3, 4, 9}: its total is smaller",
+    "{2, 7, 8}: it wins at the first term",
+    "{3, 4, 9}: more of its numbers are low",
+    "Either; the sets are equally low"
    ],
    "correct": 1,
-   "why": "Find the longest continuous carbon chain. Everything else in the name is positioned relative to it.",
+   "why": "First point of difference: 2 against 3, decided at once. The totals (17 against 16) point the other way, which is exactly why adding locants up is not the rule.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A molecule is drawn as a horizontal five-carbon row with a three-carbon branch on the second carbon. What is the parent?",
+   "options": [
+    "Pentane",
+    "Hexane",
+    "Heptane",
+    "Octane"
+   ],
+   "correct": 2,
+   "why": "From the branch carbon: one carbon to the left, three in the branch, three to the right. Join the two longest arms through it: 3 + 1 + 3 = 7. The leftover carbon is a methyl: 4-methylheptane.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "A name is best thought of as what?",
+   "q": "Which condensed formula is 2,2-dimethylbutane?",
    "options": [
-    "Instructions for drawing",
-    "An arbitrary code",
-    "A molecular formula written in words",
-    "A historical label"
+    "(CH₃)₂CHCH₂CH₂CH₃",
+    "(CH₃)₃CCH₂CH₃",
+    "CH₃C(CH₃)₂CH₂CH₂CH₃",
+    "(CH₃)₂CHCH(CH₃)₂"
    ],
-   "correct": 0,
-   "why": "That is the point of a systematic name: a name you have never seen still tells you exactly what to draw.",
+   "correct": 1,
+   "why": "Four in a row with two methyls on the second carbon, which gives a carbon bearing three methyls at one end. The first is 2-methylpentane, the third 2,2-dimethylpentane, the last 2,3-dimethylbutane.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "CH₃CH₂CH(CH₃)CH(CH₃)CH₂CH₃. A student writes 3,4-dimethylhexane. Is that right?",
+   "options": [
+    "No; it is 2,3-dimethylhexane",
+    "No; it is 3-ethyl-4-methylpentane",
+    "Yes; both directions give {3, 4}",
+    "No; it is 3,4-dimethylheptane"
+   ],
+   "correct": 2,
+   "why": "Six in the row, methyls on the middle two carbons. From either end the set is {3, 4}: the molecule is symmetric, so there is no direction to choose and the name is simply 3,4-dimethylhexane.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Propane has how many carbons?",
+   "q": "Which of these is the same compound as 3-methylhexane, under a wrong name?",
    "options": [
-    "Four carbons",
-    "Five carbons",
-    "Two carbons",
-    "Three carbons"
+    "3-ethylpentane",
+    "4-methylhexane",
+    "2-methylhexane",
+    "3-methylheptane"
    ],
-   "correct": 3,
-   "why": "prop is the three-carbon root, so propane is CH3CH2CH3.",
-   "difficulty": "medium",
+   "correct": 1,
+   "why": "Number the same chain from the other end and the methyl lands on C4. Same structure, wrong direction. The other three are genuinely different molecules.",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
    "q": "Which of these is a correctly punctuated name?",
    "options": [
     "2,3 dimethylpentane",
+    "2-3-dimethyl pentane",
     "2 3-dimethylpentane",
-    "2,3-dimethylpentane",
-    "2-3-dimethyl pentane"
-   ],
-   "correct": 2,
-   "why": "Comma between the two numbers, hyphen between the numbers and the word, and no space anywhere.",
-   "difficulty": "hard",
-   "type": "mcq"
-  },
-  {
-   "q": "If a chain and a branch are the same length, what happens?",
-   "options": [
-    "The whole molecule is renamed",
-    "You pick either freely",
-    "The name is ambiguous",
-    "The substituent count decides"
+    "2,3-dimethylpentane"
    ],
    "correct": 3,
-   "why": "A tie on length is broken by taking the chain with more substituents attached, so the name is never ambiguous.",
+   "why": "Comma between the two numbers, hyphen between the numbers and the word, and no space anywhere inside the name of a single compound.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "What is the parent chain of 3-methylhexane?",
+   "q": "Two candidate parents are the same length and carry the same number of substituents. What decides?",
    "options": [
-    "A five-carbon chain",
-    "A six-carbon chain",
-    "A seven-carbon chain",
-    "A three-carbon chain"
+    "The lower locant set",
+    "Alphabetical order of the substituents",
+    "Either; both names are correct",
+    "The one drawn horizontally"
+   ],
+   "correct": 0,
+   "why": "After length and substituent count, the numbering rule is the next tie-break: take the chain whose substituents get the lower set of locants at the first point of difference.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which condensed formula is 3-ethyl-2-methylhexane?",
+   "options": [
+    "CH₃CH(CH₃)CH₂CH(CH₂CH₃)CH₂CH₃",
+    "CH₃CH(CH₃)CH(CH₂CH₃)CH₂CH₂CH₃",
+    "CH₃CH₂CH(CH₃)CH(CH₂CH₃)CH₂CH₃",
+    "CH₃CH(CH₃)CH(CH₃)CH₂CH₂CH₃"
    ],
    "correct": 1,
-   "why": "hex means six. The methyl at C3 is a substituent and is not part of the parent.",
-   "difficulty": "medium",
+   "why": "Hexane row, methyl on C2, ethyl on C3. Check the parent: from C3 the arms are 2 (left), 2 (ethyl) and 3 (right), so the six-carbon row is the longest and the ethyl is a real branch. The first option is 4-ethyl-2-methylhexane, the last 2,3-dimethylhexane.",
+   "difficulty": "hard",
    "type": "mcq"
   }
  ],
  "naming-substituents": [
   {
-   "q": "How is a carbon branch named?",
+   "q": "A branch –CH₂CH(CH₃)₂ hangs off a parent chain. Which group is it?",
    "options": [
-    "Root plus -ane",
-    "Root plus -yl",
-    "Root plus -ide",
-    "Root plus -oyl"
+    "sec-Butyl (butan-2-yl)",
+    "tert-Butyl",
+    "Isobutyl (2-methylpropyl)",
+    "Isopropyl"
    ],
-   "correct": 1,
-   "why": "One carbon is methyl, two ethyl, three propyl. The -yl says the fragment is attached to something rather than standing alone.",
+   "correct": 2,
+   "why": "Attached through a CH₂, then a CH carrying two methyls: a three-carbon chain attached at its end with a methyl on its second carbon. That is isobutyl. sec-Butyl attaches through the branch point itself.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -6875,199 +6875,199 @@
    "q": "Which group attaches through its middle carbon?",
    "options": [
     "Isopropyl",
+    "Propyl",
     "Butyl",
-    "Isobutyl, a four-carbon branch",
-    "Propyl"
+    "Isobutyl"
    ],
    "correct": 0,
-   "why": "Isopropyl, systematically propan-2-yl, attaches at C2 of a three-carbon fragment. Propyl attaches at an end.",
-   "difficulty": "medium",
+   "why": "Isopropyl, systematically propan-2-yl, attaches at C2 of a three-carbon fragment. Propyl and butyl attach at an end; isobutyl attaches at the end of a branched three-chain.",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "What is the systematic name for tert-butyl?",
+   "q": "What is the systematic name of the tert-butyl group, (CH₃)₃C–?",
    "options": [
-    "2-methylpropyl",
-    "Butan-1-yl",
-    "Butan-2-yl, also called sec-butyl",
-    "2-methylpropan-2-yl"
-   ],
-   "correct": 3,
-   "why": "It attaches through a carbon bearing three methyls. Almost nobody says it aloud, but you should be able to decode it.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "What is the systematic name for isobutyl?",
-   "options": [
-    "Butan-1-yl",
     "Butan-2-yl",
     "2-methylpropyl",
+    "Butan-1-yl",
     "2-methylpropan-2-yl"
    ],
-   "correct": 2,
-   "why": "Isobutyl is a three-carbon chain with a methyl on C2, attached at the end of that chain.",
-   "difficulty": "hard",
+   "correct": 3,
+   "why": "The attached carbon carries three methyls: a propane chain attached through its middle carbon with a methyl on that same carbon, so propan-2-yl with a 2-methyl. Almost nobody says it aloud, but you should be able to decode it.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "How are halogens named in a systematic name?",
+   "q": "CH₃CH₂CH(CH₃)– attached to the parent through the CH. What is its common name?",
    "options": [
-    "Always as suffixes",
-    "Always as prefixes",
-    "As suffix when alone",
-    "They are not named"
+    "Isobutyl",
+    "Butyl",
+    "sec-Butyl",
+    "tert-Butyl"
    ],
-   "correct": 1,
-   "why": "fluoro, chloro, bromo, iodo. They never become a suffix and never outrank anything.",
-   "difficulty": "easy",
+   "correct": 2,
+   "why": "Four carbons, attached through the second one: butan-2-yl, called sec-butyl. Isobutyl attaches through a CH₂; tert-butyl through a carbon bearing three methyls.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "How is an -OCH3 group named as a substituent?",
+   "q": "How is a halogen named in a systematic name?",
    "options": [
-    "Methoxy",
-    "Methylether",
-    "Oxymethyl",
-    "Methanol"
+    "As a prefix in every case",
+    "As a suffix when alone",
+    "As a suffix when two are present",
+    "As a separate word"
    ],
    "correct": 0,
-   "why": "An ether has no suffix of its own in substitutive nomenclature; it is always an alkoxy substituent on something else.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "Three identical substituents take which multiplying prefix?",
-   "options": [
-    "tetra-",
-    "tris-",
-    "di-",
-    "tri-"
-   ],
-   "correct": 3,
-   "why": "di- two, tri- three, tetra- four, penta- five. Each substituent still keeps its own locant.",
+   "why": "fluoro, chloro, bromo, iodo. A halogen is a prefix wherever it sits and is not a suffix, but it ranks equally with alkyl groups for numbering, so a chloro can claim the low locant over a methyl on first-point-of-difference terms.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Why is 2-dimethylpentane invalid?",
+   "q": "CH₃OCH₂CH₂CH₃. What is the name?",
    "options": [
-    "The hyphen is misplaced",
-    "di- is not a real prefix",
-    "Only one locant is given",
-    "Pentane cannot hold two"
+    "3-methoxypropane",
+    "Propoxymethane",
+    "1-methoxypropane",
+    "Methoxypropan-1-yl"
    ],
    "correct": 2,
-   "why": "di- promises two locants and only one is supplied, so the reader cannot tell where the second methyl went. It should be 2,2-dimethylpentane.",
+   "why": "An ether has no suffix; it is an alkoxy prefix on the longer chain. Propane is the parent, and the –OCH₃ is methoxy on C1, numbered from the end nearer it.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Two methyls sit on the same carbon, C2 of a pentane. How is it written?",
+   "q": "CH₃C(CH₃)₂CH₂CH₂CH₃. What is the name?",
    "options": [
-    "2-dimethylpentane",
     "2,2-dimethylpentane",
-    "2-methyl-2-methylpentane",
+    "2-dimethylpentane",
+    "3,3-dimethylpentane",
     "2,2-methylpentane"
    ],
-   "correct": 1,
-   "why": "The number is written twice. That repetition is not redundant — it is the only thing stating where the second methyl is.",
+   "correct": 0,
+   "why": "Two methyls on C2 of a pentane. Each substituent keeps its own locant even when they share a carbon: di- promises two numbers, and the repeated 2 is the only thing saying where the second methyl is.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Which prefix is ignored when alphabetizing?",
+   "q": "CH₃CH₂C(CH₃)(CH₂CH₃)CH₂CH₂CH₃. Which name is right?",
    "options": [
-    "di",
-    "cyclo",
-    "neo",
-    "iso"
+    "3-methyl-3-ethylhexane",
+    "3-ethyl-3-methylheptane",
+    "4-ethyl-4-methylhexane",
+    "3-ethyl-3-methylhexane"
    ],
-   "correct": 0,
-   "why": "Multiplying prefixes di-, tri-, tetra- are ignored, as are the italic sec- and tert-. iso, neo and cyclo are counted.",
+   "correct": 3,
+   "why": "Six in the longest row; from either end the branch carbon is C3 or C4, and 3 wins. Both substituents sit on C3, and the alphabet orders the words: ethyl before methyl. The numbers being equal does not change the word order.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "CH₃CH(Cl)CH₂CH(CH₃)CH₂CH₃. What is the name?",
+   "options": [
+    "5-chloro-3-methylhexane",
+    "3-methyl-5-chlorohexane",
+    "4-methyl-2-chlorohexane",
+    "2-chloro-4-methylhexane"
+   ],
+   "correct": 3,
+   "why": "From the left: chloro 2, methyl 4, so {2, 4}. From the right: methyl 3, chloro 5, so {3, 5}. 2 beats 3, and the halogen and the alkyl are equals in that comparison. Then chloro before methyl alphabetically.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Under which letter does 'dimethyl' file?",
+   "q": "A hexane carries an ethyl on C4 and two methyls on C2. Which is the correct name?",
    "options": [
-    "di",
-    "It does not file",
-    "d",
-    "m"
+    "2,2-dimethyl-4-ethylhexane",
+    "4-ethyl-2-dimethylhexane",
+    "2,2,4-dimethylethylhexane",
+    "4-ethyl-2,2-dimethylhexane"
    ],
    "correct": 3,
-   "why": "Ignore the multiplying prefix and alphabetize on methyl, so it files under m.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Under which letter does 'isopropyl' file?",
-   "options": [
-    "It does not file",
-    "p",
-    "i",
-    "iso"
-   ],
-   "correct": 2,
-   "why": "iso is joined to the word and counts as part of the name, so isopropyl files under i — unlike di- or tert-.",
+   "why": "Ignore di- when alphabetizing: you are comparing ethyl with methyl, and e comes before m, so ethyl is cited first despite its higher locant. di- needs two locants, which rules out the last option.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Under which letter does 'tert-butyl' file?",
+   "q": "Under which letter does tert-butyl file when substituents are alphabetized?",
    "options": [
     "t",
-    "b",
+    "It is not filed",
     "te",
-    "It does not file"
+    "b"
    ],
-   "correct": 1,
-   "why": "The italic hyphenated tert- is ignored, so it files under b. The typography is the tell: hyphenated italic prefixes are skipped.",
+   "correct": 3,
+   "why": "The italic, hyphenated tert- is ignored, so the name files under b. The typography is the tell: hyphenated italic prefixes are skipped, prefixes joined to the word are counted.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which comes first in a name: ethyl or dimethyl?",
+   "q": "A parent carries a tert-butyl, an isopropyl and two methyls. In what order are they written?",
    "options": [
-    "Ethyl",
-    "Whichever has lower locant",
-    "Either is acceptable",
-    "Dimethyl"
-   ],
-   "correct": 0,
-   "why": "Compare ethyl with methyl, since di- is ignored. e comes before m.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "Which comes first: ethyl or isopropyl?",
-   "options": [
-    "Whichever has lower locant",
-    "Either is acceptable",
-    "Isopropyl",
-    "Ethyl"
-   ],
-   "correct": 3,
-   "why": "iso counts, so isopropyl files under i. e comes before i, so ethyl is cited first.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "When does alphabetical order affect the NUMBERING?",
-   "options": [
-    "Only for halogens",
-    "Always, it sets numbering",
-    "Only on an exact tie",
-    "Never, under any rule"
+    "dimethyl, isopropyl, tert-butyl",
+    "isopropyl, dimethyl, tert-butyl",
+    "tert-butyl, isopropyl, dimethyl",
+    "tert-butyl, dimethyl, isopropyl"
    ],
    "correct": 2,
-   "why": "Only when both directions give an identical locant set. Otherwise the structure decides the numbering and the alphabet only orders the words.",
+   "why": "File each name: tert-butyl under b (tert- ignored), isopropyl under i (iso counts), dimethyl under m (di- ignored). b, i, m.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "sec-Butyl and ethyl are both substituents on one parent. Which is cited first?",
+   "options": [
+    "Ethyl",
+    "sec-Butyl",
+    "Whichever has the lower locant",
+    "Either order is accepted"
+   ],
+   "correct": 1,
+   "why": "sec- is an italic hyphenated prefix and is ignored, so sec-butyl files under b, ahead of ethyl under e. Locants play no part in the order of the words.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A hexane has methyls on C2 and C4 and an ethyl on C3, numbering already fixed. Write the name.",
+   "options": [
+    "2,4-dimethyl-3-ethylhexane",
+    "3-ethyl-2-methyl-4-methylhexane",
+    "3-ethyl-2,4-dimethylhexane",
+    "2,3,4-ethyldimethylhexane"
+   ],
+   "correct": 2,
+   "why": "Collect the two methyls as 2,4-dimethyl, then alphabetize with di- ignored: ethyl before methyl. Identical substituents are always gathered under one multiplying prefix.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which structure is tert-butyl chloride?",
+   "options": [
+    "(CH₃)₂CHCH₂Cl",
+    "(CH₃)₃CCl",
+    "CH₃CH₂CH(Cl)CH₃",
+    "CH₃CH₂CH₂CH₂Cl"
+   ],
+   "correct": 1,
+   "why": "Common halide names are alkyl group plus halide: the chlorine sits on a carbon bearing three methyls. Systematically, 2-chloro-2-methylpropane. The others are isobutyl, sec-butyl and butyl chloride.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "An octane carries an ethyl on C3 and a methyl on C6 counting from the left; from the right the methyl is on C3 and the ethyl on C6. What is the name?",
+   "options": [
+    "3-ethyl-6-methyloctane",
+    "6-ethyl-3-methyloctane",
+    "3-methyl-6-ethyloctane",
+    "Either name is correct"
+   ],
+   "correct": 0,
+   "why": "Both directions give {3, 6}: a genuine tie, and the one situation where the alphabet touches the numbering. The substituent cited first (ethyl) takes the lower locant. 6-ethyl-3-methyloctane numbers the wrong way.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "What is the correct order of steps?",
+   "q": "In what order do the rules apply when naming a substituted alkane?",
    "options": [
     "Alphabetize, then number",
     "Number, then alphabetize",
@@ -7075,33 +7075,33 @@
     "Alphabetize twice"
    ],
    "correct": 1,
-   "why": "First number for lowest locants, then break an exact tie alphabetically if one exists, then write the substituents in alphabetical order.",
+   "why": "First number for lowest locants; then, only on an exact tie, give the alphabetically first substituent the lower number; last, write the substituents in alphabetical order whatever their numbers.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Locants are fixed as chloro-5, ethyl-4, methyl-2 on a heptane. How is the name written?",
+   "q": "Locants are fixed as bromo-4, methyl-2, propyl-5 on an octane. How is the name written?",
    "options": [
-    "4-ethyl-5-chloro-2-methylheptane",
-    "2-methyl-5-chloro-4-ethylheptane",
-    "2-methyl-4-ethyl-5-chloroheptane",
-    "5-chloro-4-ethyl-2-methylheptane"
+    "2-methyl-4-bromo-5-propyloctane",
+    "4-bromo-2-methyl-5-propyloctane",
+    "5-propyl-4-bromo-2-methyloctane",
+    "4-bromo-5-propyl-2-methyloctane"
    ],
-   "correct": 3,
-   "why": "Alphabetical order sets the order of words: chloro, ethyl, methyl. The locants ending up out of numerical order is normal.",
+   "correct": 1,
+   "why": "Alphabetical order sets the order of the words: bromo, methyl, propyl. The numbers travel with their substituents, so they end up out of numerical order, which is normal.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A branch is itself branched. How is it written?",
+   "q": "A branch is itself branched. How is its name written?",
    "options": [
     "In parentheses",
     "With a semicolon",
     "It cannot be named",
-    "With square brackets"
+    "In square brackets"
    ],
    "correct": 0,
-   "why": "Parentheses tell the reader that the branch's own number counts along the branch, not along the parent chain.",
+   "why": "Parentheses tell the reader that the number inside counts along the branch, from its attaching carbon, and not along the parent chain.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -7109,64 +7109,64 @@
    "q": "A complex substituent is numbered from where?",
    "options": [
     "Either end",
-    "The parent chain's own C1 position",
     "Its point of attachment",
+    "The parent chain’s C1",
     "Its longest end"
    ],
-   "correct": 2,
-   "why": "The attaching carbon is C1 of the substituent, always.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "A three-carbon branch with a methyl on its second carbon is named what?",
-   "options": [
-    "(3-methylpropyl)",
-    "(2-methylpropyl)",
-    "(2-methylethyl)",
-    "(1-methylpropyl)"
-   ],
    "correct": 1,
-   "why": "Numbered from the attachment point, the methyl sits on C2. This group is also called isobutyl.",
+   "why": "The attaching carbon is C1 of the substituent, always. So –CH₂CH(CH₃)₂ is (2-methylpropyl), with the methyl on the branch’s own C2.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Under which letter does (2-methylpropyl) file?",
+   "q": "A branch –CH₂CH(CH₃)₂ on a parent chain is named, in parentheses, as:",
    "options": [
-    "m",
-    "2",
-    "It does not file",
-    "p"
+    "(1-methylpropyl)",
+    "(2-methylethyl)",
+    "(3-methylpropyl)",
+    "(2-methylpropyl)"
+   ],
+   "correct": 3,
+   "why": "Numbered from the attachment point, the CH₂ is C1 and the CH bearing the methyl is C2; the branch is three carbons long. This group is also called isobutyl.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "The same group is called (2-methylpropyl) or isobutyl. Under which letter does each name file?",
+   "options": [
+    "m and i",
+    "p and i",
+    "m and b",
+    "i and i"
    ],
    "correct": 0,
-   "why": "A complex substituent files under the first letter of its complete name, which here is m.",
+   "why": "A complex substituent files under the first letter of its complete name, m. The common name files under i, because iso is joined to the word. Which name you use can change where the group sits in a longer name.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Which is NOT a valid substituent prefix?",
+   "q": "CH₃CH₂CH₂Br is commonly called what?",
    "options": [
-    "chloro",
-    "methoxy",
-    "nitro",
-    "hydro"
+    "Isopropyl bromide",
+    "Propyl bromide",
+    "Bromopropyl",
+    "Propane bromide"
    ],
-   "correct": 3,
-   "why": "nitro (-NO2), chloro and methoxy are all standard prefixes. 'Hydro' is not used this way for a substituent.",
+   "correct": 1,
+   "why": "Alkyl group plus halide: the bromine is on the end carbon of a three-chain, so propyl bromide (1-bromopropane). Isopropyl bromide would put it on the middle carbon.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "What does the -yl suffix signify?",
+   "q": "Which condensed formula is 4-isopropylheptane?",
    "options": [
-    "An ionic charge on the fragment",
-    "A double bond",
-    "Attachment to something",
-    "A ring system"
+    "CH₃CH₂CH₂CH(CH₂CH₂CH₃)CH₂CH₂CH₃",
+    "CH₃CH₂CH(CH(CH₃)₂)CH₂CH₂CH₂CH₃",
+    "(CH₃)₂CHCH₂CH₂CH₂CH₂CH₂CH₃",
+    "CH₃CH₂CH₂CH(CH(CH₃)₂)CH₂CH₂CH₃"
    ],
-   "correct": 2,
-   "why": "Methane is a molecule; methyl is a piece of one. The -yl marks the fragment as attached.",
+   "correct": 3,
+   "why": "Heptane row, with a three-carbon group attached through its middle carbon on C4. The first option is 4-propylheptane, the second puts the branch on C3, and the third is 2-methyloctane.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -7179,640 +7179,640 @@
     "A carbon with three methyls"
    ],
    "correct": 1,
-   "why": "sec-Butyl is butan-2-yl. C1 of a four-chain is butyl; a carbon with three methyls is tert-butyl.",
+   "why": "sec-Butyl is butan-2-yl. C1 of a four-chain is butyl; C2 of a three-chain is isopropyl; a carbon bearing three methyls is tert-butyl.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "How many locants does tri- require?",
+   "q": "CH₃CH(CH₃)CH(CH₃)CH(CH₃)CH₃. What is the name?",
    "options": [
-    "Three locants",
-    "Four locants",
-    "One locant",
-    "Two locants"
-   ],
-   "correct": 0,
-   "why": "Counting the locants against the multiplying prefix is the fastest self-check in nomenclature.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "Substituents are cited in the name in what order?",
-   "options": [
-    "Size order",
-    "Order of discovery",
-    "Numerical order",
-    "Alphabetical order"
-   ],
-   "correct": 3,
-   "why": "Alphabetical, whatever their locants. So 4-ethyl-2-methylhexane, with ethyl first despite its higher number.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "Two directions give the identical locant set {3,3,5}, with an ethyl and two methyls. Which gets a 3?",
-   "options": [
-    "Neither; renumber",
-    "A methyl",
-    "The ethyl",
-    "Either freely"
+    "2,3,4-methylpentane",
+    "2,4-dimethyl-3-methylpentane",
+    "2,3,4-trimethylpentane",
+    "1,2,3-trimethylbutane"
    ],
    "correct": 2,
-   "why": "On a genuine tie the alphabetically first substituent takes the lowest available locant, and ethyl beats methyl.",
+   "why": "Five in the longest row, methyls on C2, C3 and C4 from either end. Three identical substituents take tri- and three locants; they are never split between two prefixes. A methyl on C1 would extend the chain.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "BrCH₂CH₂CH₂Cl. What is the name?",
+   "options": [
+    "3-bromo-1-chloropropane",
+    "1-chloro-3-bromopropane",
+    "1-bromo-3-chloropropane",
+    "3-chloro-1-bromopropane"
+   ],
+   "correct": 2,
+   "why": "From either end the locant set is {1, 3}: a tie, so the alphabetically first substituent takes the lower number. Bromo before chloro, so the bromine gets 1. The words are then written in that same order.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Which statement about alphabetization is correct?",
+   "q": "CH₃CH₂CH(CH₃)CH₂CH(CH₂CH₃)CH₂CH₃. What is the name?",
    "options": [
-    "Every prefix is ignored entirely",
-    "Italic hyphenated ones are",
+    "3-ethyl-5-methylheptane",
+    "5-ethyl-3-methylheptane",
+    "3-methyl-5-ethylheptane",
+    "4-ethyl-2-methylheptane"
+   ],
+   "correct": 0,
+   "why": "Seven in the longest chain (the route through the ethyl also gives seven, with the same two substituents). From the left: methyl 3, ethyl 5. From the right: ethyl 3, methyl 5. Both {3, 5}, so ethyl, cited first, takes the 3.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which statement about alphabetizing substituents is correct?",
+   "options": [
+    "Every prefix is ignored",
+    "Italic hyphenated ones are ignored",
     "No prefixes are ignored",
-    "Only iso is ignored"
+    "iso is ignored"
    ],
    "correct": 1,
-   "why": "Ignore di-, tri-, tetra- and the italic sec-, tert-. Do not ignore iso, neo or cyclo.",
+   "why": "Ignore di-, tri-, tetra- and the italic sec-, tert-. Do not ignore iso, neo or cyclo, which are joined to the word and count as part of it.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "What is the easiest substituent in the language, and why?",
+   "q": "CH₃CH(CH₃)CH₂Cl: systematic name, and common name?",
    "options": [
-    "A halogen, always a prefix",
-    "Ethyl, being common",
-    "Phenyl, being rigid",
-    "Methyl, being the smallest one"
+    "1-chloro-2-methylpropane (isobutyl chloride)",
+    "2-methyl-1-chloropropane (isobutyl chloride)",
+    "2-chloro-2-methylpropane (tert-butyl chloride)",
+    "1-chloro-2-methylpropane (sec-butyl chloride)"
    ],
    "correct": 0,
-   "why": "A halogen is a prefix wherever it sits, never a suffix, and never outranks anything. Its only job is to collect a locant.",
+   "why": "Propane parent with a methyl on C2 and a chlorine on C1, cited alphabetically: chloro before methyl. The group carrying the chlorine is –CH₂CH(CH₃)₂, isobutyl, so the common name is isobutyl chloride.",
    "difficulty": "medium",
    "type": "mcq"
   }
  ],
  "naming-functional-groups": [
   {
-   "q": "How many functional groups take the suffix in a name?",
+   "q": "CH₃COCH₂CH₂OH. What is the name?",
    "options": [
-    "All of them",
-    "Exactly one",
-    "Two at most",
-    "None of them"
+    "4-hydroxybutan-2-one",
+    "3-oxobutan-1-ol",
+    "1-hydroxybutan-3-one",
+    "2-oxobutan-4-ol"
    ],
-   "correct": 1,
-   "why": "Exactly one is the principal characteristic group and takes the suffix. Every other functional group is demoted to a prefix.",
+   "correct": 0,
+   "why": "Ketone outranks alcohol, so the suffix is -one and the OH is demoted to hydroxy-. The ketone claims the lower locant: C2 from its end, which puts the OH on C4.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which is highest priority?",
+   "q": "Which of these groups has the highest priority?",
    "options": [
-    "Carboxylic acid",
     "Alcohol",
     "Aldehyde",
-    "Ketone, as a carbonyl"
-   ],
-   "correct": 0,
-   "why": "acid > ester > amide > nitrile > aldehyde > ketone > alcohol > amine > alkene/alkyne.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "Which of these can NEVER be a suffix?",
-   "options": [
-    "Nitrile",
-    "Ketone",
-    "Amine",
-    "Ether"
-   ],
-   "correct": 3,
-   "why": "Ethers, halides and nitro groups are always prefixes. An ether is cited as alkoxy- wherever it appears.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "An -OH is outranked by a ketone. What prefix does it take?",
-   "options": [
-    "carboxy-",
-    "oxo-",
-    "hydroxy-",
-    "alkoxy-"
+    "Carboxylic acid",
+    "Ketone"
    ],
    "correct": 2,
-   "why": "A demoted alcohol becomes hydroxy-. Nothing about the oxygen changed; its rank did.",
-   "difficulty": "hard",
+   "why": "acid > ester > amide > nitrile > aldehyde > ketone > alcohol > amine > alkene/alkyne. The acid and its derivatives are the top block.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "ClCH₂CH₂CO₂H. What is the name?",
+   "options": [
+    "3-chloropropanoic acid",
+    "1-chloropropanoic acid",
+    "3-chloropropan-1-oic acid",
+    "2-chloropropanoic acid"
+   ],
+   "correct": 0,
+   "why": "The acid carbon is C1 by necessity and needs no locant; count from it and the chlorine sits on C3. Halogens are prefixes in every name.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "An –OH is outranked by a ketone in the same molecule. What prefix does it take?",
+   "options": [
+    "hydroxy-",
+    "carboxy-",
+    "oxo-",
+    "alkoxy-"
+   ],
+   "correct": 0,
+   "why": "A demoted alcohol becomes hydroxy-. Nothing about the oxygen changed; its rank did. oxo- is a demoted ketone, carboxy- a demoted acid.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
    "q": "A ketone is outranked by a carboxylic acid. What prefix does it take?",
    "options": [
-    "keto-",
     "oxo-",
+    "keto-",
     "carbonyl-",
     "hydroxy-"
    ],
-   "correct": 1,
+   "correct": 0,
    "why": "The IUPAC prefix is oxo-, not keto-. A compound chemists call a keto acid has no mention of a ketone in its systematic name.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "What suffix does a carboxylic acid take?",
+   "q": "HOCH₂CH₂CHO. What is the name?",
    "options": [
-    "-oic acid",
-    "-one",
-    "-oate",
-    "-al, as for aldehydes"
-   ],
-   "correct": 0,
-   "why": "And its carbon is necessarily C1, so no locant is written: ethanoic acid needs no number.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "What suffix does an aldehyde take?",
-   "options": [
-    "-ol",
-    "-oic acid",
-    "-one",
-    "-al"
-   ],
-   "correct": 3,
-   "why": "An aldehyde carbon sits at the end of a chain, so it is always C1 and the locant is not written: butanal.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "What suffix does a ketone take?",
-   "options": [
-    "-oate",
-    "-al",
-    "-one",
-    "-ol"
+    "3-oxopropan-1-ol",
+    "1-hydroxypropan-3-al",
+    "3-hydroxypropanal",
+    "3-hydroxypropan-1-al"
    ],
    "correct": 2,
-   "why": "Propan-2-one is the systematic name for acetone. A ketone carbon is interior, so it does need a locant.",
+   "why": "Aldehyde outranks alcohol: suffix -al, C1 is the CHO and no locant is written for it. The OH is hydroxy- on C3.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What suffix does an amine take?",
+   "q": "CH₃CH(OH)CH₂CO₂H. What is the name?",
    "options": [
-    "-amide",
-    "-amine",
-    "-imine",
-    "-ammonium"
+    "2-hydroxybutanoic acid",
+    "3-hydroxybutan-1-oic acid",
+    "4-carboxybutan-2-ol",
+    "3-hydroxybutanoic acid"
    ],
-   "correct": 1,
-   "why": "-amine. An amide, which outranks it, takes -amide.",
+   "correct": 3,
+   "why": "The acid wins the suffix and is C1. Counting from it, the OH is on C3. The acid needs no locant; writing -1-oic is redundant.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Which outranks the other: aldehyde or ketone?",
+   "q": "NCCH₂CH₂CH₂OH. What is the name?",
    "options": [
-    "Aldehyde",
-    "They are equal",
-    "It depends on the chain",
-    "Ketone"
+    "3-cyanopropan-1-ol",
+    "4-hydroxybutannitrile",
+    "1-hydroxybutane-4-nitrile",
+    "4-hydroxybutanenitrile"
    ],
-   "correct": 0,
-   "why": "Aldehyde is above ketone. That pair is a genuine oxidation difference: an aldehyde carbon is at +1 and a ketone carbon at 0.",
+   "correct": 3,
+   "why": "Nitrile outranks alcohol, so -nitrile is the suffix and the nitrile carbon is C1 (four carbons in the parent, including it). The OH is hydroxy- on C4. Nitrile begins with a consonant, so the e of butane stays.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "H₂NCH₂CH₂CH₂OH. What is the name?",
+   "options": [
+    "3-hydroxypropan-1-amine",
+    "3-aminopropane",
+    "1-aminopropan-3-ol",
+    "3-aminopropan-1-ol"
+   ],
+   "correct": 3,
+   "why": "Alcohol outranks amine: suffix -ol, OH on C1. The NH₂ is demoted to amino- on C3.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Aldehyde outranks ketone in the priority order. What is the basis of that ranking?",
+   "options": [
+    "The aldehyde carbon is more oxidized",
+    "Aldehydes are more acidic",
+    "The ketone carbon is more oxidized",
+    "Convention; both carbons have two bonds to oxygen"
+   ],
+   "correct": 3,
+   "why": "An aldehyde carbon and a ketone carbon are at the same oxidation level, two bonds to oxygen each; the aldehyde’s extra C–H is why it can be oxidized further, but it does not make it a higher level. The order within that pair, like the order within the acid-derivative block, is convention.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "The top four groups (acid, ester, amide, nitrile) differ in oxidation level. True?",
+   "q": "How do the functional carbons of an acid, an ester, an amide and a nitrile compare in oxidation level?",
    "options": [
-    "True, they ascend",
-    "False, all are at +1",
-    "True, they descend",
-    "False, all are at +3"
+    "They descend from acid to nitrile",
+    "They ascend from acid to nitrile",
+    "All the same: three bonds to O or N",
+    "Only the acid and ester match"
    ],
-   "correct": 3,
-   "why": "All four carbons sit at +3. The order within that block is a convention, though it usefully runs in the same direction as their reactivity.",
-   "difficulty": "easy",
+   "correct": 2,
+   "why": "Each has three bonds from carbon to oxygen or nitrogen (the nitrile’s are all to one nitrogen), so all four sit at the same level. The order within the block is a convention that happens to run with their reactivity.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Once a principal characteristic group exists, who gets the lowest locant?",
+   "q": "Once a principal characteristic group is present, which feature gets the lowest locant first?",
    "options": [
-    "The alphabetical first",
-    "The first substituent",
+    "The alphabetically first substituent",
     "The principal group",
+    "The first substituent drawn",
     "The longest branch"
    ],
-   "correct": 2,
-   "why": "The principal group claims the low number before multiple bonds or substituents are considered at all.",
+   "correct": 1,
+   "why": "The principal group claims the low number before multiple bonds or substituents are considered at all. The old lowest-locants-to-substituents rule was only ever for molecules with nothing to outrank them.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A hexane has an OH reachable at C2 from one end and a methyl at C2 from the other. Name it.",
+   "q": "A heptane has an OH reachable at C3 from one end and a methyl at C2 from the other. What is the name?",
    "options": [
-    "2-methylhexan-5-ol",
-    "5-methylhexan-2-ol",
-    "2-methylhexan-2-ol",
-    "5-methylhexan-5-ol"
+    "2-methylheptan-6-ol",
+    "6-methylheptan-3-ol",
+    "2-methylheptan-3-ol",
+    "6-methylheptan-2-ol"
    ],
    "correct": 1,
-   "why": "The alcohol outranks the methyl and takes the 2; the methyl is left with the 5. Giving the low number to the substituent out of habit is the commonest error here.",
-   "difficulty": "easy",
+   "why": "The alcohol takes the lower locant first: number from its end, OH at C3. The methyl is then C6, whatever it would have been the other way. Giving the methyl the 2 out of habit is the commonest error here.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "The longest chain does not contain the -OH. What is the parent?",
+   "q": "The longest chain in a molecule does not contain the –OH. What is the parent?",
    "options": [
-    "The longest chain with OH",
-    "Either chain",
-    "The shortest chain",
-    "The longest chain in the molecule"
+    "The longest chain in the molecule",
+    "The longest chain that contains the OH",
+    "The shortest chain that contains the OH",
+    "Either; the OH becomes hydroxy-"
    ],
-   "correct": 0,
-   "why": "Priority beats length. 'Longest chain' was only ever the rule for a molecule with nothing to outrank it.",
+   "correct": 1,
+   "why": "Priority beats length. The parent must contain the principal characteristic group, so you take the longest chain that does, even when a longer one exists.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
    "q": "Why does a carboxylic acid need no locant?",
    "options": [
+    "Its carbon must be C1",
     "It is always at C2",
     "Acids are never numbered",
-    "Locants are optional",
-    "Its carbon must be C1"
+    "Locants are optional"
    ],
-   "correct": 3,
-   "why": "The functional carbon is necessarily at the end of a chain. Writing butan-1-al is redundant for the same reason.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "Propane plus the -ol suffix gives what spelling?",
-   "options": [
-    "Propan-ol",
-    "Propaneol",
-    "Propanol",
-    "Propanool"
-   ],
-   "correct": 2,
-   "why": "When the suffix begins with a vowel the parent's final e is dropped. With a consonant it stays: propanenitrile.",
-   "difficulty": "hard",
-   "type": "mcq"
-  },
-  {
-   "q": "Propane plus the -nitrile suffix gives what spelling?",
-   "options": [
-    "Propanitrile",
-    "Propanenitrile",
-    "Propannitrile",
-    "Propano-nitrile"
-   ],
-   "correct": 1,
-   "why": "The suffix begins with a consonant, so the e is kept.",
+   "correct": 0,
+   "why": "The functional carbon is necessarily at the end of a chain, so it is C1 by construction. Butan-1-al is redundant for the same reason.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "A pentane chain has an acid at C1, a ketone at C3 and a bromine at C4. Name it.",
+   "q": "Propane plus the -ol suffix is spelled how?",
    "options": [
-    "4-bromo-3-oxopentanoic acid",
-    "2-bromo-3-oxopentanoic acid",
-    "4-bromo-3-oxopentan-1-oic acid",
-    "4-bromo-3-ketopentanoic acid"
+    "Propaneol",
+    "Propan-ol",
+    "Propanool",
+    "Propanol"
    ],
-   "correct": 0,
-   "why": "The acid takes the suffix and fixes C1; the ketone is demoted to oxo-; prefixes are cited alphabetically, bromo before oxo.",
+   "correct": 3,
+   "why": "When the suffix begins with a vowel the parent’s final e is dropped. Before a consonant it stays: propanenitrile.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "HOCH₂CH₂CH₂CH₂OH. What is the name?",
+   "options": [
+    "butan-1,4-diol",
+    "butane-1,4-diol",
+    "1,4-dihydroxybutane",
+    "butane-1,4-ol"
+   ],
+   "correct": 1,
+   "why": "Two alcohols take -diol with two locants, and because di- begins with a consonant the e of butane is kept. Both OH groups are principal, so neither is demoted to hydroxy-.",
    "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "OHC–CH₂–CO–CH₃. What is the name?",
+   "options": [
+    "3-ketobutanal",
+    "4-oxobutan-2-one",
+    "3-oxobutanal",
+    "1-oxobutan-3-one"
+   ],
+   "correct": 2,
+   "why": "Aldehyde outranks ketone: suffix -al, the CHO is C1. The ketone is demoted to oxo- on C3. keto- is not an IUPAC prefix.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
    "q": "What is the systematic name for acetone?",
    "options": [
     "Propan-1-one",
-    "Propanoic acid",
     "Propanal",
-    "Propan-2-one"
+    "Propan-2-one",
+    "Propanoic acid"
    ],
-   "correct": 3,
-   "why": "Acetone is a retained common name. Its systematic name can be read back into a structure; 'acetone' cannot.",
+   "correct": 2,
+   "why": "Three carbons with the C=O on the middle one. Acetone is a retained name and cannot be read back into a structure; propan-2-one can.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
    "q": "What is the systematic name for acetic acid?",
    "options": [
-    "Acetanoic acid",
-    "Methanoic acid",
     "Ethanoic acid",
-    "Propanoic acid"
-   ],
-   "correct": 2,
-   "why": "Two carbons, so eth. Methanoic acid is formic acid.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "What is the systematic name for formaldehyde?",
-   "options": [
-    "Ethanal",
-    "Methanal",
     "Methanoic acid",
-    "Formalin"
-   ],
-   "correct": 1,
-   "why": "One carbon plus the aldehyde suffix. Acetaldehyde is ethanal.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "Which retained name has no systematic equivalent in common use?",
-   "options": [
-    "Phenol",
-    "Acetic acid",
-    "Formaldehyde",
-    "Acetone"
+    "Propanoic acid",
+    "Acetanoic acid"
    ],
    "correct": 0,
-   "why": "Hydroxybenzene is essentially never used. Aniline and toluene are similar cases.",
-   "difficulty": "hard",
-   "type": "mcq"
-  },
-  {
-   "q": "Which prefix does a demoted ester take?",
-   "options": [
-    "oxo-",
-    "cyano-",
-    "carboxy-, as for an acid",
-    "alkoxycarbonyl-"
-   ],
-   "correct": 3,
-   "why": "carboxy- is a demoted acid, cyano- a demoted nitrile, and oxo- a demoted ketone or aldehyde.",
+   "why": "Two carbons, including the acid carbon, so eth-. Methanoic acid is formic acid.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which prefix does a demoted nitrile take?",
+   "q": "CH₃CH₂COOCH₃. What is the name?",
    "options": [
-    "amino-",
-    "carbamoyl-",
-    "cyano-",
-    "oxo-"
+    "Propyl methanoate",
+    "Methyl propanoic acid",
+    "Propyl ethanoate",
+    "Methyl propanoate"
    ],
-   "correct": 2,
-   "why": "A demoted amide takes carbamoyl-, and a demoted amine takes amino-.",
+   "correct": 3,
+   "why": "Find the C=O and count its chain: three carbons, so the acid part is propanoate. The carbon on the single-bonded oxygen is the alcohol part: methyl. Two words, alcohol part first.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What does 'principal characteristic group' mean?",
+   "q": "In ethyl ethanoate, CH₃COOCH₂CH₃, which fragment is the \"ethyl\"?",
+   "options": [
+    "The two carbons nearest the C=O",
+    "The carbons on the single-bonded O",
+    "The carbons of the C=O chain",
+    "Either; the molecule is symmetric"
+   ],
+   "correct": 1,
+   "why": "The first word of an ester name is the alcohol’s carbon chain, attached through the single-bonded oxygen. The second word is the acid’s chain, counted from the C=O. Here both happen to be two carbons, which is why the example is worth checking.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A cyclohexane ring has a C=O as one ring carbon and a methyl two carbons away from it. What is the name?",
+   "options": [
+    "1-methylcyclohexan-3-one",
+    "3-methylcyclohexan-1-one",
+    "3-methylcyclohexanol",
+    "5-methylcyclohexan-1-one"
+   ],
+   "correct": 1,
+   "why": "The ketone takes the suffix and C1; the ring is the parent. Going round the direction that reaches the methyl sooner gives 3 rather than 5.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A cyclohexane ring carries a –COOH. What is the name?",
+   "options": [
+    "Cyclohexanoic acid",
+    "Carboxycyclohexane",
+    "Cyclohexanecarboxylic acid",
+    "Cycloheptanoic acid"
+   ],
+   "correct": 2,
+   "why": "The acid carbon cannot be part of the ring, so it is not counted in the parent: the ring is cyclohexane and the group is the suffix -carboxylic acid. The e is kept because the suffix begins with a consonant.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does \"principal characteristic group\" mean?",
    "options": [
     "The largest group in the molecule",
+    "The most reactive group",
     "The group taking the suffix",
-    "The first group drawn",
-    "The most reactive group"
+    "The first group drawn"
    ],
-   "correct": 1,
-   "why": "It is chosen by the fixed priority order, not by size, position or interest.",
+   "correct": 2,
+   "why": "It is chosen by the fixed priority order, not by size, position or interest, and it is the one group named as the suffix.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Where do multiple bonds sit in the priority order?",
+   "q": "Where do double and triple bonds sit in the priority order?",
    "options": [
-    "Below them, above alkane",
+    "Above all functional groups",
+    "Below the functional groups, above alkane",
     "Between acid and ester",
-    "They are not ranked",
-    "Above all functional groups"
+    "They are not ranked"
+   ],
+   "correct": 1,
+   "why": "Alkenes and alkynes rank below every group in the list, so a functional group always claims the lower locant over a multiple bond.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "CH₃OCH₂CH₂NH₂. What is the name?",
+   "options": [
+    "2-methoxyethan-1-amine",
+    "2-aminoethoxymethane",
+    "1-amino-2-methoxyethane",
+    "2-aminoethyl methyl ether"
    ],
    "correct": 0,
-   "why": "Alkenes and alkynes rank below every group in the list, so a functional group always claims the lower locant.",
+   "why": "An ether can never be a suffix, so the amine wins by default: -amine on C1 of a two-carbon parent, and methoxy- on C2.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "An amine and an ether are both present. Which takes the suffix?",
+   "q": "CH₂=CHCH₂OH. What is the name?",
    "options": [
-    "Neither",
-    "Both, jointly",
-    "The ether",
-    "The amine"
+    "prop-1-en-3-ol",
+    "3-hydroxypropene",
+    "1-hydroxyprop-2-ene",
+    "prop-2-en-1-ol"
    ],
    "correct": 3,
-   "why": "An amine is near the bottom of the list and still wins, because an ether is not on the list at all.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "What happens to a functional group that loses the priority contest?",
-   "options": [
-    "The molecule is renamed",
-    "It is left out of the name",
-    "It is cited as a prefix",
-    "It becomes a second suffix"
-   ],
-   "correct": 2,
-   "why": "It joins the alkyls and halogens in the prefix, often under a different name: -ol becomes hydroxy-.",
+   "why": "The alcohol outranks the double bond and takes C1. The double bond then starts at C2. Both suffixes appear, the multiple bond first and with its e dropped before -ol.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "What suffix does an ester take?",
+   "q": "A cyclohexane ring carries a –CHO. What is the name?",
    "options": [
-    "-oic acid, as for an acid",
-    "alkyl ...-oate",
-    "-amide",
-    "-one"
+    "Cyclohexanal",
+    "Cyclohexanecarbaldehyde",
+    "Formylcyclohexane",
+    "Cyclohexylmethanal"
    ],
    "correct": 1,
-   "why": "Methyl ethanoate, for instance. The alkyl group from the alcohol half is cited as a separate word.",
-   "difficulty": "easy",
+   "why": "Like the acid, the aldehyde carbon hangs off the ring and cannot be part of it, so the ring is the parent and the group becomes -carbaldehyde. Formyl- is the prefix for a demoted aldehyde, and nothing outranks it here.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
    "q": "Why is the naming priority order worth knowing beyond naming?",
    "options": [
     "It tracks acyl reactivity",
-    "It fixes the stereochemistry",
-    "It has no other use",
-    "It sets molecular weight"
+    "It fixes stereochemistry",
+    "It sets molecular weight",
+    "It has no other use"
    ],
    "correct": 0,
-   "why": "The top of the list is close to the reactivity ladder in the Carboxylic Acids chapter: an acid converts to an ester, an ester to an amide, never back up.",
-   "difficulty": "medium",
+   "why": "The top of the list is close to the reactivity ladder of the Carboxylic Acids chapter: an acid or acyl chloride converts to an ester, an ester to an amide. Going back up is not a direct step; an ester or amide is hydrolyzed to the acid first.",
+   "difficulty": "easy",
    "type": "mcq"
   }
  ],
  "naming-rings-unsaturation": [
   {
-   "q": "How is a six-membered saturated ring named?",
+   "q": "CH₃CH=CHCH₂CH₃. What is the name?",
    "options": [
-    "Hexane, a six-carbon chain",
-    "Cyclohexane",
-    "Hexene",
-    "Benzene"
+    "pent-2-ene",
+    "pent-3-ene",
+    "pent-2,3-ene",
+    "2-pentane"
    ],
-   "correct": 1,
-   "why": "cyclo- in front of the root for the number of ring carbons.",
+   "correct": 0,
+   "why": "Five carbons, double bond between C2 and C3 counting from the nearer end. Only the lower of the two carbons is cited; the reader infers the bond runs to the next one.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "The same ring used as a substituent is called what?",
+   "q": "A cyclohexane ring carries one ethyl group. What is the name?",
    "options": [
-    "Cyclohexyl",
-    "Hexyl",
-    "Phenyl",
-    "Cyclohexane"
+    "Ethylcyclohexane",
+    "Cyclohexylethane",
+    "1-ethylcyclohexane",
+    "1-cyclohexylethane"
    ],
    "correct": 0,
-   "why": "Substituent forms take -yl, as with chains: cyclopentyl, cyclopropyl.",
-   "difficulty": "medium",
+   "why": "The ring has six carbons to the chain’s two, so the ring is the parent. With only one substituent there is nowhere else it could be, and no locant is written.",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
    "q": "How does numbering a ring differ from numbering a chain?",
    "options": [
+    "A ring has no ends",
     "Rings number clockwise",
     "Rings start at the top",
-    "Rings are never numbered",
-    "A ring has no ends"
+    "Rings are not numbered"
    ],
-   "correct": 3,
-   "why": "You choose both the starting carbon and the direction, subject to the same priority rules as a chain.",
+   "correct": 0,
+   "why": "You choose both the starting carbon and the direction, subject to the same priority rules as a chain: principal group at C1, then lowest locants.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A cyclohexane carries one methyl. How is it named?",
+   "q": "A three-carbon chain is attached to a cyclohexane ring. Which name is right?",
    "options": [
-    "2-methylcyclohexane",
-    "1-methylcyclohexane",
-    "Methylcyclohexane",
-    "Cyclohexylmethane"
+    "Propylcyclohexane",
+    "Cyclohexylpropane",
+    "1-cyclohexylpropane",
+    "1-propylcyclohexane"
    ],
-   "correct": 2,
-   "why": "With only one substituent no locant is written, because there is nowhere else it could be.",
-   "difficulty": "hard",
-   "type": "mcq"
-  },
-  {
-   "q": "A cyclohexane ring is attached to an eight-carbon chain. What is the parent?",
-   "options": [
-    "The ring, always",
-    "The chain, being longer",
-    "Either, they are equal",
-    "Neither, it is named as two"
-   ],
-   "correct": 1,
-   "why": "With no higher-priority group present, the parent is whichever has more carbons. Eight beats six, so the ring becomes a cyclohexyl substituent.",
+   "correct": 0,
+   "why": "Six ring carbons beat three chain carbons, so the ring is the parent and the chain is a propyl substituent. One substituent needs no locant.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "A cyclohexane ring carries a single methyl. What is the parent?",
+   "q": "A cyclohexane ring is attached to the end of an eight-carbon chain, with no functional groups. What is the parent?",
    "options": [
-    "The ring, being larger",
-    "Either one",
-    "Neither of the two",
-    "The methyl group itself"
+    "The chain",
+    "The ring",
+    "Either",
+    "Neither; two names"
    ],
    "correct": 0,
-   "why": "Six beats one, so the ring is the parent: methylcyclohexane.",
+   "why": "With no higher-priority group present, the parent is whichever has more carbons. Eight beats six, so the ring becomes a cyclohexyl substituent: 1-cyclohexyloctane.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A cyclopentane ring is attached to a five-carbon chain, with no functional groups. What is the parent?",
+   "options": [
+    "The chain",
+    "Whichever is drawn first",
+    "Either; both are correct",
+    "The ring"
+   ],
+   "correct": 3,
+   "why": "Five against five is a tie, and on a tie the ring is the parent: pentylcyclopentane. Current IUPAC recommendations go further and prefer the ring whatever the chain length, but exams count carbons.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A benzene ring used as a substituent is called what?",
+   "q": "A benzene ring bonded to the parent directly through one of its ring carbons is called what?",
    "options": [
-    "Benzenyl",
-    "Tolyl",
     "Benzyl",
+    "Tolyl",
+    "Benzenyl",
     "Phenyl"
    ],
    "correct": 3,
-   "why": "Benzyl is a different group — phenyl plus a CH2, so PhCH2-. Confusing them changes the molecule by a carbon.",
+   "why": "Phenyl is C₆H₅–, the ring itself. Benzyl is the ring plus a CH₂, attached through the CH₂; confusing the two changes the molecule by a carbon.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "What is the benzyl group?",
+   "q": "C₆H₅CH₂– as a substituent is called what?",
    "options": [
-    "A methylated ring",
-    "A bare benzene ring",
-    "Phenyl plus a CH2",
-    "Benzene minus two H"
+    "Benzyl",
+    "Phenyl",
+    "Tolyl",
+    "Benzoyl"
    ],
-   "correct": 2,
-   "why": "PhCH2-. Phenyl is the bare ring, C6H5-.",
+   "correct": 0,
+   "why": "A benzene ring attached through an extra CH₂ is benzyl. Phenyl is the bare ring, and benzoyl is C₆H₅CO–.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A double bond changes the suffix to what?",
+   "q": "CH₃C≡CCH₂CH₃. What is the name?",
    "options": [
-    "-ane",
-    "-ene",
-    "-yne",
-    "-ol"
-   ],
-   "correct": 1,
-   "why": "-ene for a double bond, -yne for a triple bond.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "A triple bond changes the suffix to what?",
-   "options": [
-    "-ane",
-    "-yl",
-    "-ene",
-    "-yne"
+    "pent-3-yne",
+    "pent-2-ene",
+    "pent-2,3-yne",
+    "pent-2-yne"
    ],
    "correct": 3,
-   "why": "-yne. Both need a locant, cited as the lower-numbered of the two carbons.",
+   "why": "A triple bond takes -yne and one locant, the lower of the two carbons: from the nearer end the bond runs from C2. Nothing else about the procedure changes.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "CH₂=CHCH₂C≡CH. What is the name?",
+   "options": [
+    "pent-1-yn-4-ene",
+    "pent-1-en-4-yne",
+    "pent-4-en-1-yne",
+    "pent-4-yn-1-ene"
+   ],
+   "correct": 1,
+   "why": "From the left the double bond is at 1 and the triple at 4; from the right it is the other way round. The locant sets tie, so the double bond takes the lower number. The suffix order is fixed, en before yne, and the e of ene is dropped before the y.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "A double bond runs between C2 and C3 of a butane. Name it.",
+   "q": "CH₂=CHCH₂CH₂CH₃. What is the name?",
    "options": [
-    "but-2-ene",
-    "but-3-ene",
-    "butene",
-    "but-2,3-ene"
+    "pentene",
+    "pent-4-ene",
+    "pent-1,2-ene",
+    "pent-1-ene"
    ],
-   "correct": 0,
-   "why": "Only the first of the pair is cited; the reader infers the bond runs to the next carbon. But-1-ene is a different compound.",
+   "correct": 3,
+   "why": "Five carbons, double bond starting at C1 from the nearer end. The locant is needed because pent-2-ene is a different compound, and only the first of the two carbons is cited.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
    "q": "Which carbon number is cited for a double bond?",
    "options": [
-    "Neither; none is cited",
     "The higher of the two",
+    "Both, separated by a comma",
     "The lower of the two",
-    "Both, separated by a comma"
+    "Neither; none is cited"
    ],
    "correct": 2,
-   "why": "By convention the locant is the lower-numbered of the two carbons the bond joins.",
+   "why": "By convention the locant is the lower-numbered of the two carbons the bond joins; the reader infers that the bond runs to the next carbon along.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Two double bonds in a five-carbon chain, at C1 and C3. Name the pattern.",
+   "q": "CH₂=CH–CH=CH–CH₃. What is the name?",
    "options": [
-    "pent-1,3-ene",
-    "penta-diene-1,3",
-    "penta-1-diene",
-    "penta-1,3-diene"
+    "penta-2,4-diene",
+    "pent-1,3-diene",
+    "penta-1,3-diene",
+    "pent-1,3-ene"
    ],
-   "correct": 3,
-   "why": "-diene takes two locants, one for each double bond.",
-   "difficulty": "easy",
+   "correct": 2,
+   "why": "Two double bonds take -diene with two locants, one per bond, from the end that gives the lower set: {1, 3} beats {2, 4}. The a in penta- is kept before the consonant d.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A six-carbon chain has an OH at C1 and a double bond starting at C5. Name it.",
+   "q": "A six-carbon chain has an OH at C1 and a double bond starting at C5. What is the name?",
    "options": [
     "hex-1-en-6-ol",
     "hex-5-en-1-ol",
@@ -7820,215 +7820,215 @@
     "hex-5-ene-1-ol"
    ],
    "correct": 1,
-   "why": "The alcohol outranks the double bond and claims the lower locant, even though it means the double bond gets a 5 rather than a 1.",
+   "why": "The alcohol outranks the double bond and claims the lower locant, even though that gives the double bond a 5 rather than a 1. The e of ene is dropped before the vowel of -ol.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "When a double and a triple bond compete for the lower locant, which wins?",
+   "q": "CH₃CH=CH–C≡CH. What is the name?",
    "options": [
-    "The double bond",
-    "Whichever is nearer C1",
-    "They cannot compete",
-    "The triple bond"
-   ],
-   "correct": 0,
-   "why": "With a genuine choice of direction, the double bond is given the lower locant.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "In a name with both a double bond and an alcohol, which suffix is written first?",
-   "options": [
-    "Either order",
-    "The alcohol",
-    "The multiple bond",
-    "Alphabetical order"
+    "pent-2-en-4-yne",
+    "pent-4-yn-2-ene",
+    "pent-3-en-1-yne",
+    "pent-1-yn-3-ene"
    ],
    "correct": 2,
-   "why": "Both appear, the multiple bond first: hex-5-en-1-ol.",
+   "why": "From the left: ene at 2, yne at 4, so {2, 4}. From the right: yne at 1, ene at 3, so {1, 3}. The lower set wins regardless of which bond it favors, so the triple bond gets the 1 here; the double bond only gets preference on an exact tie.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Two substituents on adjacent benzene carbons are described as what?",
+   "q": "A name contains both a double bond and an alcohol. Which suffix is written first?",
    "options": [
-    "meta",
-    "ortho",
-    "para",
-    "vicinal"
-   ],
-   "correct": 1,
-   "why": "ortho is 1,2. meta is 1,3 and para is 1,4.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Two substituents directly across a benzene ring are described as what?",
-   "options": [
-    "para",
-    "meta",
-    "trans",
-    "ortho"
-   ],
-   "correct": 0,
-   "why": "Straight across a six-membered ring is three bonds away, the 1,4 relationship.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "Two substituents one carbon apart on a benzene ring are described as what?",
-   "options": [
-    "para",
-    "gem",
-    "ortho",
-    "meta"
+    "The alcohol",
+    "Either order",
+    "Alphabetical order",
+    "The multiple bond"
    ],
    "correct": 3,
-   "why": "meta is 1,3 — one carbon between them.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Where does the ortho/meta/para vocabulary become load-bearing?",
-   "options": [
-    "In conformations",
-    "In stereochemistry, for E and Z",
-    "In aromatic substitution",
-    "In spectroscopy"
-   ],
-   "correct": 2,
-   "why": "The whole question of directing effects is phrased in it: a substituent is an ortho, para director or a meta director.",
+   "why": "Both appear, the multiple bond first and the principal group last: hex-5-en-1-ol. The order of suffixes is fixed whatever the locants.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Why can but-2-ene describe two different compounds?",
+   "q": "1,2-dimethylbenzene is also called what?",
+   "options": [
+    "o-xylene",
+    "m-xylene",
+    "p-xylene",
+    "toluene"
+   ],
+   "correct": 0,
+   "why": "Xylene is the retained name for dimethylbenzene, and adjacent methyls are ortho: o-xylene. Toluene is methylbenzene.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A benzene ring carries chlorines at positions 1 and 3. What is the name?",
+   "options": [
+    "1,2-dichlorobenzene (meta)",
+    "1,3-dichlorobenzene (ortho)",
+    "1,4-dichlorobenzene (para)",
+    "1,3-dichlorobenzene (meta)"
+   ],
+   "correct": 3,
+   "why": "One ring carbon between the two substituents is the 1,3 relationship, meta. The numbers and the word say the same thing, and both are in constant use.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Two substituents at positions 1 and 4 of a benzene ring are described by which prefix?",
+   "options": [
+    "ortho",
+    "meta",
+    "para",
+    "trans"
+   ],
+   "correct": 2,
+   "why": "Straight across a six-membered ring is three bonds away, the 1,4 relationship: para. Adjacent is ortho (1,2) and one apart is meta (1,3).",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "CH₂=C(CH₂CH₃)CH₂CH₂CH₃. A student uses the longest chain and writes 3-methylidenehexane. What does the textbook rule say?",
+   "options": [
+    "Longest chain wins: 3-methylidenehexane",
+    "The parent must contain the C=C: 2-ethylpent-1-ene",
+    "Either name is acceptable",
+    "The parent must contain the C=C: 3-ethylpent-1-ene"
+   ],
+   "correct": 1,
+   "why": "The six-carbon chain misses the double bond, so it is not the parent; the longest chain through the C=C is five, starting at the CH₂. The double bond takes C1 and the two carbons left over are an ethyl on C2. The 2013 IUPAC rules relaxed this, but textbooks and exams still apply it.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can the name but-2-ene describe two different compounds?",
    "options": [
     "The chain can branch",
     "The double bond blocks rotation",
-    "The locant is genuinely ambiguous",
+    "The locant is ambiguous",
     "It cannot; it is one"
    ],
    "correct": 1,
-   "why": "The two carbons cannot rotate, so the methyls are fixed either on the same side or on opposite sides.",
+   "why": "The two alkene carbons cannot rotate, so the methyls are fixed either on the same side (cis) or on opposite sides (trans). The name needs a prefix to say which.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Which system works for any four groups on a double bond?",
+   "q": "(CH₃)₂C=CHCH₃. What is the name?",
    "options": [
-    "E and Z",
-    "R and S",
-    "D and L",
-    "cis and trans"
+    "3-methylbut-2-ene",
+    "2-methylbut-3-ene",
+    "2-methylbut-2-ene",
+    "3-methylbut-3-ene"
    ],
-   "correct": 0,
-   "why": "cis/trans works informally when each alkene carbon has one hydrogen. E/Z uses the same priority rules that assign R and S.",
+   "correct": 2,
+   "why": "The longest chain through the double bond is four carbons, with a methyl on one of the alkene carbons. The double bond is at 2 from either end, a tie; the methyl then takes the lower number, 2 rather than 3.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "A double bond in a ring is numbered so its carbons are which?",
+   "q": "A double bond in a ring is numbered so that its two carbons are which?",
    "options": [
-    "Any two adjacent",
+    "Any two adjacent carbons",
     "C1 and C6",
-    "C2 and C3",
-    "C1 and C2"
+    "C1 and C2",
+    "C2 and C3"
    ],
-   "correct": 3,
-   "why": "The bond takes the lowest possible locants before substituents are considered.",
+   "correct": 2,
+   "why": "The double bond takes the lowest possible pair of locants before substituents are considered; only the direction round the ring is left for them to decide.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "A cyclohexene carries a methyl on a carbon adjacent to the double bond. Name it.",
+   "q": "A cyclohexene ring has an OH on the carbon next to one of the alkene carbons. What is the name?",
    "options": [
-    "4-methylcyclohex-1-ene",
-    "1-methylcyclohex-2-ene",
-    "3-methylcyclohex-1-ene",
-    "2-methylcyclohex-1-ene"
+    "cyclohex-1-en-3-ol",
+    "3-hydroxycyclohexene",
+    "cyclohex-2-en-1-ol",
+    "cyclohex-1-en-6-ol"
    ],
    "correct": 2,
-   "why": "The double bond takes C1 and C2, then you choose the direction giving the methyl the lower number: 3 rather than 6.",
+   "why": "The alcohol is the principal group and takes C1. Numbering then goes round the way that reaches the double bond soonest, so it starts at C2. The e of ene is dropped before -ol.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A three-membered ring is named with which root?",
+   "q": "Which condensed formula is 3-methylbut-1-ene?",
    "options": [
-    "Cyclomethane",
-    "Cyclobutane",
-    "Cycloethane",
-    "Cyclopropane"
+    "CH₃CH=C(CH₃)₂",
+    "CH₂=CHCH(CH₃)₂",
+    "CH₂=C(CH₃)CH₂CH₃",
+    "CH₃CH=CHCH₂CH₃"
    ],
-   "correct": 3,
-   "why": "Three carbons, so prop: cyclopropane.",
+   "correct": 1,
+   "why": "Four carbons in the parent, double bond starting at C1, methyl on C3. The first option is 2-methylbut-2-ene, the third 2-methylbut-1-ene, the last pent-2-ene.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "If a principal characteristic group sits on a ring, what must the parent be?",
+   "q": "A principal characteristic group sits on a ring, and the ring is attached to a longer chain. What must the parent be?",
    "options": [
-    "Always the longest chain",
-    "The ring, containing it",
+    "The chain, being longer",
+    "The ring, containing the group",
     "Either one",
     "The larger of the two"
    ],
    "correct": 1,
-   "why": "The parent must contain the principal characteristic group, overriding the more-carbons rule.",
+   "why": "The parent must contain the principal characteristic group, and that overrides the more-carbons rule exactly as it overrides the longest-chain rule.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What starts the numbering on a ring with no functional group?",
+   "q": "A cyclohexane ring carries an ethyl and a methyl on adjacent carbons. What is the name?",
    "options": [
-    "The rightmost carbon",
-    "Any carbon at all",
-    "A substituted carbon",
-    "The topmost carbon"
+    "1-methyl-2-ethylcyclohexane",
+    "2-ethyl-1-methylcyclohexane",
+    "Ethylmethylcyclohexane",
+    "1-ethyl-2-methylcyclohexane"
    ],
-   "correct": 2,
-   "why": "You start at a substituted carbon and go round the way that gives the lowest locants.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "1,3-dimethylcyclohexane: how many valid choices of C1 are there?",
-   "options": [
-    "Two, either methyl carbon",
-    "All six",
-    "None; the name is ambiguous",
-    "Exactly one, by convention"
-   ],
-   "correct": 0,
-   "why": "Both methyl-bearing carbons give the locant set {1,3}, so both are equally correct.",
+   "correct": 3,
+   "why": "Either direction gives {1, 2}: a tie, so the alphabetically first substituent takes C1. Ethyl before methyl. Locants are needed because the two groups could also be 1,3 or 1,4.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Which is the correct name for a bare five-membered saturated ring?",
+   "q": "A cyclohexane ring carries three methyls. Numbered one way they fall at {1, 2, 4}; the other way at {1, 3, 4}. Which set is used?",
    "options": [
-    "Pentane",
-    "Cyclopentene",
-    "Cyclobutane",
-    "Cyclopentane"
+    "1,2,4-trimethylcyclohexane",
+    "1,3,4-trimethylcyclohexane",
+    "1,2,5-trimethylcyclohexane",
+    "Either; the sets tie"
    ],
-   "correct": 3,
-   "why": "Five ring carbons and no multiple bond.",
-   "difficulty": "easy",
+   "correct": 0,
+   "why": "First point of difference: both start at 1, then 2 beats 3. On a ring you try every starting carbon and both directions, and {1, 2, 4} is the lowest set this arrangement can give.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Is 3-methylcyclohexene an acceptable way to write 3-methylcyclohex-1-ene?",
+   "q": "A cyclohexane ring carries an OH, with a methyl on the carbon two positions away. What is the name?",
    "options": [
-    "No, it is simply incorrect",
-    "Yes, the 1 is often dropped",
-    "Only in much older texts",
-    "Only for rings"
+    "1-methylcyclohexan-3-ol",
+    "3-methylcyclohexan-1-ol",
+    "3-hydroxymethylcyclohexane",
+    "5-methylcyclohexan-1-ol"
    ],
    "correct": 1,
-   "why": "The double bond is understood to start at C1 in a cyclohexene, so the locant is commonly omitted in practice.",
+   "why": "The alcohol takes the suffix and C1. Going round the direction that reaches the methyl sooner gives 3 rather than 5.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does the prefix in cis-1,2-dimethylcyclohexane tell you?",
+   "options": [
+    "Whether the methyls are adjacent",
+    "Whether the methyls are on the same face of the ring",
+    "Whether the ring is a chair",
+    "Whether the methyls are axial"
+   ],
+   "correct": 1,
+   "why": "The locants already say the methyls are adjacent. cis and trans on a ring say whether the two groups are on the same face or opposite faces, which are different compounds; the full treatment is in Stereochemistry.",
    "difficulty": "medium",
    "type": "mcq"
   }

@@ -220,8 +220,8 @@ document.addEventListener('DOMContentLoaded', function(){
             hint.textContent = 'Carbons in the chain: ' + count;
             if(count === CHAIN.length){
               api.showFeedback(fb, true, missed
-                ? 'Six carbons — a hexane. The chain turns the corner and runs down the branch, and the carbon left over is a methyl on the third carbon: 3-methylhexane.'
-                : 'Six carbons, first time, including the turn. The row across the page was only five; the longest path goes down the branch instead. The carbon left over is a methyl, making this 3-methylhexane.');
+                ? 'Six carbons — a hexane. The chain turns the corner and runs down the branch, and the carbon left over is a methyl (a one-carbon branch) on the third carbon: 3-methylhexane.'
+                : 'Six carbons, first time, including the turn. The row across the page was only five; the longest path goes down the branch instead. The carbon left over is a methyl — a one-carbon branch — making this 3-methylhexane.');
               api.record(!missed);
               next.disabled = false;
             }
@@ -283,15 +283,15 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'A structure is drawn as a straight row of five carbons with an ethyl group hanging off the middle one. A student names it 3-ethylpentane. What went wrong?',
+        title: 'A structure is drawn as a straight row of four carbons with an ethyl group hanging off the second one. A student names it 2-ethylbutane. What went wrong?',
         options: [
-          'Nothing — five carbons in the row, ethyl on the third, so 3-ethylpentane is right',
-          'The longest chain runs through the ethyl group: it is a six-carbon chain, making this 3-methylhexane',
-          'The ethyl should be numbered from the other end, giving 2-ethylpentane',
+          'Nothing — four carbons in the row, ethyl on the second, so 2-ethylbutane is right',
+          'The longest chain runs through the ethyl group: it is a five-carbon chain, making this 3-methylpentane',
+          'The ethyl should be numbered from the other end, giving 3-ethylbutane',
           'Ethyl groups are never named as substituents'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct. Tracing from one end of the row, through the middle carbon and out along the ethyl branch gives a continuous path of six carbons — longer than the five-carbon row that was drawn horizontally. So the parent is hexane, and what is left over is a one-carbon methyl: 3-methylhexane. The drawing was arranged to make the wrong chain look like the obvious one, which is what real structures do all the time.'
+        correctFeedback: 'Correct. Count from every end. From the far end of the ethyl, through the carbon it hangs from and on to the far end of the row is two, plus one, plus two: a continuous path of five carbons, longer than the four-carbon row that was drawn horizontally. So the parent is pentane, and the carbon left over — the near end of the row — is a methyl on C3: 3-methylpentane. An ethyl on the second carbon of a row can never survive as an ethyl, because the route through it is always one longer than the row. (Had the row been five carbons with the ethyl on the middle one, every route would have tied at five and 3-ethylpentane would have been right; the drawing decides, and only counting tells you which case you have.)'
       }
     ]
   });

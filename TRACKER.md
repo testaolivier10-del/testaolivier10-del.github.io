@@ -76,10 +76,18 @@ Findings that are wrong only because of where a chapter sits, left alone so
 the fix is made once against the approved order. Chapter by chapter, as the
 reviews land.
 
+- **Ch 3 Nomenclature.** `naming-rings-unsaturation` points at Stereochemistry
+  for E/Z; true only under the proposed order (E/Z moves into that chapter).
+
 ### Chapter status
 
 | Chapter | Reviewed | Fixed | Verified | Pushed |
 |---|---|---|---|---|
+| 1 Foundations | yes (48/24/20/32 findings) | in progress | | |
+| 2 Organic Structure & Electron Movement | yes (38/24/19/33) | queued | | |
+| 3 IUPAC Nomenclature | yes (24/9/12/22) | yes: 9 figures, 85 questions rewritten, 3 chemistry errors (3-ethylpentane keyed as 3-methylhexane; ketone carbon called oxidation level 0; an impossible {3,3,5} locant tie) | in progress | yes |
+| 4 Acids & Bases | yes (38/17/19/22) | queued | | |
+| 5 Alkanes & Conformations | yes (34/17/16/15) | queued | | |
 
 ---
 
