@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palladium cross-coupling — Organometallics | Organic Chemistry</title>
+<meta name="description" content="Learn the three steps of the palladium catalytic cycle, which named coupling goes with which partner, why the Suzuki needs a base, and why convergent routes beat linear ones.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/cross-coupling.html">
+<meta property="og:title" content="Palladium cross-coupling — Organometallics | Organic Chemistry">
+<meta property="og:description" content="Learn the three steps of the palladium catalytic cycle, which named coupling goes with which partner, why the Suzuki needs a base, and why convergent routes beat linear ones.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/cross-coupling.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/cross-coupling.html#lesson",
+      "name": "Palladium cross-coupling",
+      "url": "https://levlprep.com/ochem/lessons/cross-coupling.html",
+      "description": "Learn the three steps of the palladium catalytic cycle, which named coupling goes with which partner, why the Suzuki needs a base, and why convergent routes beat linear ones.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Palladium cross-coupling"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Organometallics",
+          "item": "https://levlprep.com/ochem/learn.html#m-organometallics"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Palladium cross-coupling",
+          "item": "https://levlprep.com/ochem/lessons/cross-coupling.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 20 &middot; Organometallics</div>
+    <h1 style="margin-bottom:4px;">Palladium cross-coupling.</h1>
+    <p class="lede" style="margin-top:0;">A catalyst that joins two pieces neither of which is reactive enough on its own.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/cross-coupling.html">Palladium cross-coupling &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="gilman-reagents.html">Cuprates</a> &middot; <a href="carbon-carbon-bonds.html">Making C–C bonds</a> &middot; <a href="eas.html">Electrophilic aromatic substitution</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* The cycle is three steps and the named reactions differ only in the
+     partner, so the interactive step drills the partner-to-name mapping and
+     keeps Heck visible as the one that breaks the pattern. */
+  var CASES = [
+    { id:'x1', t:'Partner is a <b>boronic acid</b>, R–B(OH)₂, with base', right:'suz',
+      why:'Suzuki. The base is not optional: it converts the boronic acid to a borate, and the borate is what transfers the R group during transmetalation. Boronic acids are air-stable and low in toxicity, which is why this became the industrial default.' },
+    { id:'x2', t:'Partner is an <b>organostannane</b>, R–SnBu₃', right:'sti',
+      why:'Stille. Chemically at least as good as the Suzuki and it needs no base, but organotin reagents are seriously toxic, so it lost on practicality rather than on chemistry.' },
+    { id:'x3', t:'Partner is a <b>terminal alkyne</b>, with a copper cocatalyst', right:'son',
+      why:'Sonogashira. The copper forms the acetylide that transmetalates, which is why there are two metals in the flask.' },
+    { id:'x4', t:'Partner is an <b>alkene</b> — no organometallic at all', right:'hec',
+      why:'Heck. With no organometallic there is no transmetalation: the alkene inserts into the Ar–Pd bond instead, and a beta-hydride elimination releases the product, usually as the trans alkene.' }
+  ];
+  var OPTS = [ { k:'suz', l:'Suzuki' }, { k:'sti', l:'Stille' }, { k:'son', l:'Sonogashira' }, { k:'hec', l:'Heck' } ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'cross-coupling',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The bond nobody could make.',
+        bodyHtml: '<p class="step-body">Every carbon nucleophile so far has needed a partner it could attack. That rules out the pair chemists most often want to join: an <b>aryl halide</b> and another aryl group. An aryl halide will not do S<sub>N</sub>2 &mdash; the carbon is sp² and its backside is behind the ring &mdash; and it will not do S<sub>N</sub>1 either, because an aryl cation is badly unstable.</p>' +
+          '<p class="step-body">Cross-coupling solves it by changing who does the work. A <b>palladium</b> catalyst takes the two pieces in one at a time, holds both, and then pushes them together. The metal makes the aryl halide reactive by bonding to it directly, rather than waiting to be attacked.</p>' +
+          '<div class="explain-box">The 2010 Nobel Prize in Chemistry went to Heck, Negishi and Suzuki for this, and it is now the most-used carbon&ndash;carbon bond-forming reaction in the pharmaceutical industry. If you have taken a drug approved in the last twenty years, a palladium catalyst probably made one of its bonds.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'One cycle, three steps, named after the palladium.',
+        bodyHtml: '<p class="step-body">The reactions below differ in what the partner is. The palladium does the same three things every time, and the names describe what happens to <i>its</i> oxidation state, which is the easiest way to keep them straight.</p>' +
+          '<ul class="step-body">' +
+          '<li><b>Oxidative addition.</b> Pd(0) inserts into the Ar&ndash;X bond and ends up bonded to both pieces. <b>Pd(0) &rarr; Pd(II)</b> &mdash; oxidized by two, hence the name.</li>' +
+          '<li><b>Transmetalation.</b> The R group moves from its own metal onto the palladium. The oxidation state does not change.</li>' +
+          '<li><b>Reductive elimination.</b> The two organic groups on palladium join and leave as Ar&ndash;R. <b>Pd(II) &rarr; Pd(0)</b> &mdash; reduced by two, and back where it started.</li>' +
+          '</ul>' +
+          '<div class="explain-box">That last point is why palladium is a <b>catalyst</b> and not a reagent. It finishes each turn in exactly the state it began, so a few mole percent turns over thousands of times. Nothing else in this course recovers its own starting material as part of the mechanism.</div>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Name the coupling from its partner.</h2>' +
+            '<p class="step-body">The aryl halide and the palladium are the same in all four. Only the nucleophilic partner changes &mdash; and in one of them there is no organometallic partner at all, which is the one that breaks the pattern.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Which named coupling">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Go by the element on the partner: boron, tin, zinc, copper-with-an-alkyne &mdash; or no metal at all.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. Three share a cycle and differ only in the partner; the Heck has no transmetalation step because it has nothing to transmetalate.'
+                  : 'All four, first time, including the Heck &mdash; the one with no organometallic and a beta-hydride elimination at the end.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'In which step does palladium go from Pd(0) to Pd(II)?',
+        options: [
+          'Oxidative addition',
+          'Transmetalation',
+          'Reductive elimination',
+          'β-hydride elimination'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct, and the name gives it away once you know it refers to the metal. Transmetalation leaves the oxidation state alone, reductive elimination takes it back down to Pd(0), and β-hydride elimination belongs to the Heck reaction rather than to the shared cycle.',
+        wrongFeedback: 'Each step name describes what happens to the palladium. Which word means "oxidized"?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'Why does a Suzuki coupling need a base?',
+        options: [
+          'To neutralize the HX that is produced',
+          'To convert the boronic acid to a borate, which can transmetalate',
+          'To deprotonate the aryl halide',
+          'To reduce the palladium back to Pd(0)'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. A neutral boronic acid is a poor transmetalating agent; hydroxide adds to the boron to give a four-coordinate borate, and that anionic species delivers the R group to palladium. The Stille coupling needs no base for exactly this reason — tin transfers its group without any such activation.',
+        wrongFeedback: 'The base is doing something to the boron, not to the halide or the metal. What does adding hydroxide to a trivalent boron produce?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Why this changed how molecules get made.',
+        bodyHtml: '<p class="step-body">Two reasons, and the first is arithmetic. Cross-coupling is <b>convergent</b>: two halves are built separately and joined near the end, instead of one chain being extended step by step.</p>' +
+          '<p class="step-body">Yields multiply, so this matters more than it sounds. Ten linear steps at 85% each returns about <b>20%</b>. Two five-step branches at 85% each reach 44% apiece, and one more step to join them still leaves about <b>37%</b> of the limiting half &mdash; nearly double, for the same number of reactions.</p>' +
+          '<p class="step-body">The second reason is <b>tolerance</b>. A Suzuki coupling runs in the presence of ketones, esters, free alcohols and amines &mdash; none of which a Grignard would survive &mdash; because the reactive carbon is bound to a metal for its entire lifetime and never exists as a free carbanion.</p>' +
+          '<div class="explain-box">Together those two properties are what medicinal chemistry needs. Both halves can be varied independently, so fifty analogs of one scaffold cost fifty final steps rather than fifty syntheses, and none of them has to be protected first.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'Which bond should you see as a cross-coupling disconnection?',
+        options: [
+          'The C–C bond joining two aromatic rings',
+          'The C–O bond of an ester',
+          'The C–C bond next to a carbonyl',
+          'The C–H bond of a terminal alkyne'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. A biaryl bond has essentially no other good disconnection — neither ring is nucleophilic enough for the other, and neither is electrophilic enough for a substitution — so seeing it and reaching for a halide plus a boronic acid should be automatic. The bond next to a carbonyl is an aldol or alkylation disconnection instead.',
+        wrongFeedback: 'Ask which bond in the list has no reasonable disconnection using anything from earlier chapters.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A target is a biaryl carrying a free phenol on one ring and a ketone on the other. Why is a Suzuki coupling a better answer than making the aryl Grignard and adding it?',
+        options: [
+          'Grignards cannot be made from aryl halides',
+          'The Grignard would be destroyed by the phenol and would attack the ketone',
+          'Palladium is cheaper than magnesium',
+          'The Suzuki gives the other regiochemistry'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and it fails twice over rather than once. The phenol O–H (pKa 10) is acidic enough to quench the Grignard on contact, and even if you spent an extra equivalent on that, the Grignard would add to the ketone on the other ring rather than couple. You would have to protect both groups, couple, and deprotect both — four extra steps. The Suzuki needs none of them, because the aryl group is bound to boron and then to palladium for its whole life and is never a free carbanion. Aryl Grignards <i>can</i> be made, which is worth keeping straight; the problem is what they do once they exist.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

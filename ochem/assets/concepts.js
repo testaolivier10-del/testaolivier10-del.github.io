@@ -181,6 +181,36 @@
       dependsOn:['sugar-ring'],
       hint:'Build it in order: sugar, then base, then phosphate. Two of the three links you already know.',
       teach:'A base bonded to the anomeric carbon of ribose or 2-deoxyribose is a NUCLEOSIDE, and that bond is an N-glycoside — the same acetal-forming step as an O-glycoside, with nitrogen as the nucleophile. Add a phosphate ester at the 5\' OH and it is a NUCLEOTIDE. Phosphate then esterifies a second sugar at its 3\' OH, so the backbone is a chain of PHOSPHODIESTERS running 5\' to 3\'. RNA keeps the 2\' OH, which can attack the neighboring phosphate, and that is why RNA hydrolyzes and DNA lasts. The two strands run antiparallel and pair by hydrogen bonds only: A-T with two, G-C with three. Weak bonds are the right choice, because the strands have to come apart to be read.' },
+    /* ---- Organometallics -----------------------------------------------
+       Five concepts on one axis. Every question in this chapter is really
+       "how reactive does this reagent need to be", and the failures are
+       separate: not seeing why the carbon is nucleophilic at all, forgetting
+       what kills the reagent, picking 1,2 when 1,4 was wanted, and treating
+       the palladium cycle as four names rather than one mechanism. */
+    { id:'polarity-reversal', title:'Why C–metal means nucleophilic carbon', family:'Organometallics',
+      topics:['organometallic-bonding','grignard-reagents','electronegativity','bond-polarity','nucleophiles'],
+      hint:'Compare the electronegativities and put the electrons on the more electronegative atom. Here that is carbon.',
+      teach:'Carbon is at 2.55, magnesium 1.31, lithium 0.98. So in C-Cl the carbon is delta plus, and in C-MgBr the SAME carbon is delta minus: it has gone from electrophile to nucleophile without anything else about the molecule changing. A deliberate reversal like this is called umpolung. The C-Mg bond is polar covalent rather than ionic, so the reagent is not a free carbanion, but it behaves like one and the curved arrow starts at the C-metal bond.' },
+    { id:'organometallic-quench', title:'What destroys an organometallic', family:'Organometallics',
+      topics:['grignard-reagents','organolithium-reagents','organometallic-bonding','protecting-groups','pka'],
+      dependsOn:['polarity-reversal'],
+      hint:'Scan the substrate for O-H, N-H, S-H and terminal alkyne C-H before writing any organometallic step.',
+      teach:'R- is the conjugate base of an alkane, pKa about 50, so it deprotonates essentially anything acidic: water at 15.7, alcohols at 16, carboxylic acids at 5, amines at 35, terminal alkynes at 25. The reagent is consumed and the carbonyl is untouched, which is why a route that works on paper fails in a flask. Three fixes in order of cost: reorder so the organometallic step comes before the acidic group is installed, use an extra equivalent, or protect. Quenching with D2O instead of water puts a deuterium exactly where the metal was.' },
+    { id:'grignard-scope', title:'What a Grignard gives you', family:'Organometallics',
+      topics:['grignard-reagents','organolithium-reagents','nucleophilic-addition','acyl-substitution','epoxides'],
+      dependsOn:['polarity-reversal'],
+      hint:'Name the electrophile first; the alcohol class follows from it, and only esters take two equivalents.',
+      teach:'Formaldehyde gives a primary alcohol, any other aldehyde a secondary, a ketone a tertiary. CO2 gives a carboxylic acid, an epoxide opens at the less hindered carbon to give an alcohol two carbons along, and a nitrile gives a ketone after hydrolysis. The one-carbon extensions are worth knowing as a set, because each ends somewhere different. An ester adds TWICE: the tetrahedral intermediate expels alkoxide to give a ketone that is more electrophilic than the ester was, so a second equivalent attacks at once and the product is a tertiary alcohol with two identical R groups.' },
+    { id:'hard-soft-addition', title:'1,2 against 1,4', family:'Organometallics',
+      topics:['gilman-reagents','grignard-reagents','nucleophilic-addition','conjugated-systems','aldol'],
+      dependsOn:['grignard-scope'],
+      hint:'An enone has two electrophilic carbons. The metal on the nucleophile decides which one it picks.',
+      teach:'A hard, charge-dense nucleophile such as RMgX or RLi adds 1,2, at the carbonyl carbon, giving an allylic alcohol. A soft, polarizable one such as a Gilman reagent R2CuLi adds 1,4, at the beta carbon, giving an enolate that protonates on workup to a ketone with the new group at beta. Same substrate, same R group, two different products, chosen by the metal. The cuprate is less reactive because copper is much closer to carbon in electronegativity than lithium is, and that lower reactivity is the property being used rather than a limitation: it also lets a cuprate couple with vinyl and aryl halides and stop at the ketone with an acyl chloride.' },
+    { id:'catalytic-cycle', title:'The cross-coupling cycle', family:'Organometallics',
+      topics:['cross-coupling','gilman-reagents','eas','carbon-carbon-bonds','multistep-synthesis'],
+      dependsOn:['hard-soft-addition'],
+      hint:'Track the palladium oxidation state and the three step names tell you what they are.',
+      teach:'Oxidative addition: Pd(0) inserts into the Ar-X bond and becomes Pd(II), holding both pieces. Transmetalation: the R group moves from its own metal onto the palladium. Reductive elimination: the two organic groups join, leave as Ar-R, and hand back Pd(0) — which is why a few mole percent turns over thousands of times. The named reactions differ only in the partner: boronic acid plus base is Suzuki, stannane is Stille, organozinc is Negishi, terminal alkyne with copper is Sonogashira. Heck is the exception with no organometallic at all: the alkene inserts and a beta-hydride elimination releases the product. The metal activates the aryl halide by bonding to it, which is how a substrate inert to both SN1 and SN2 becomes usable.' },
     { id:'skeletal-notation', title:'Reading skeletal structures', family:'Structure & bonding',
       topics:['skeletal-structures','lewis-structures','alkene-structure','cyclohexanes','aromaticity'],
       hint:'Every vertex AND every end of a line is a carbon — the ends are the ones people miss.',

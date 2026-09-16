@@ -869,17 +869,62 @@ check could:
 Recorded because the point of the exercise was the length tell, and six wrong
 answers is what it cost to look at 1,081 questions closely.
 
-#### Units 6–9 — **not started**
+#### The figures backfill — **complete**
 
-Organometallics · carbonyl/enolate breadth · aromatic follow-through ·
-polymers.
+Every one of the original 64 sections carried at least one figure and the 24
+added in this phase carried none. That gap is closed: all 93 sections now have
+one, and from Unit 6 onward figures are authored as part of the unit rather
+than recorded here as something to come back to.
 
-#### Figures for the new chapters — **in progress**
+The 19 for Units 1–4 were drafted in parallel, one agent per chapter, each
+writing to its own file rather than to `scripts/build-ochem-figures.mjs`, so
+four authors could work on one generator without colliding.
 
-Every one of the original 64 sections carries at least one figure. The 24
-sections added in this phase started with none. Unit 5's five are written; the
-19 from Units 1–4 are being backfilled now, and from Unit 6 onward figures are
-authored as part of the unit rather than recorded here as a gap.
+**Two of them shipped a draft rather than their final work, and it mattered.**
+Merging picked up an intermediate state of two files. In that state the
+`syn-anti-diol` figure drew the anti diol with **both hydroxyls on wedges** —
+a syn diol twice, which is exactly the thing the figure exists to distinguish.
+Both were re-merged from the authors' final files and the drawing now flips
+only the wedge/hash on one carbon. The lesson is not about agents: a figure
+that is chemically wrong reads as authoritative in a way prose does not, so
+figures need the same review pass the prose gets.
+
+One import was missing — `wedge` and `hash` were used by the new figures and
+not imported — which failed loudly at build time rather than silently.
+
+#### Unit 6 — Organometallics — **complete**
+
+Five sections, five lessons, 150 questions, five concepts, five figures,
+appended as **Chapter 20**.
+
+| Section | Covers |
+|---|---|
+| Why C–metal means nucleophilic carbon | Electronegativity, umpolung, the family ordered by reactivity, what an acidic proton does to all of them |
+| Grignard reagents | Formation, the electrophile-to-product table, the one-carbon extensions, why esters add twice |
+| Organolithiums and acetylides | Where RLi beats RMgX, the carboxylate dianion, LDA, acetylide alkylation and its limits |
+| Cuprates and conjugate addition | 1,2 against 1,4 as a hard/soft question, coupling to vinyl and aryl halides, stopping at the ketone |
+| Palladium cross-coupling | The three-step cycle by oxidation state, Suzuki/Stille/Negishi/Sonogashira/Heck, convergence and tolerance |
+
+It could have gone next to the carbonyl chapters, since that is where a
+Grignard is first used. It goes at the end because the chapter's real subject
+is the trade between reactivity and selectivity, and that argument only lands
+once you have seen enough reactions to know what "too reactive" costs a route.
+Every section is built around it: the Grignard is limited by being too hot, the
+cuprate is useful by being cool, and palladium wins by never making a free
+carbanion at all.
+
+**Budgets:** `ochem` shell 96 → 100 KB gzipped, because `concepts.js`,
+`curriculum.js` and `lesson-concepts.js` each gained ten entries across two
+chapters — about 1.4 KB per chapter, which is what a chapter of course map
+costs. `practice-bank-why.json` 132 → 140 KB for 300 new explanations.
+
+**Bank quality:** the 150 new items were trimmed to land at 27% per topic
+rather than the 10% a full trim would have given, for the same reason the
+bank-wide pass stopped at 22% — chance is the target from both directions.
+
+#### Units 7–9 — **not started**
+
+Carbonyl/enolate breadth · aromatic follow-through · polymers.
 
 ### Phase 9.4 — Depth in the existing units — **not started**
 

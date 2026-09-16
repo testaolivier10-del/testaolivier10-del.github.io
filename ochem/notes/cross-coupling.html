@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palladium cross-coupling — Organometallics | Organic Chemistry</title>
+<meta name="description" content="Every carbon nucleophile so far has needed an electrophilic partner that could be attacked &amp;mdash; a carbonyl, or an alkyl halide willing to do SN2. That…">
+<link rel="canonical" href="https://levlprep.com/ochem/notes/cross-coupling.html">
+<meta property="og:title" content="Palladium cross-coupling — Organometallics | Organic Chemistry">
+<meta property="og:description" content="Every carbon nucleophile so far has needed an electrophilic partner that could be attacked &amp;mdash; a carbonyl, or an alkyl halide willing to do SN2. That…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/notes/cross-coupling.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+</head>
+<body>
+<div class="wrap notes-page">
+  <nav class="notes-crumb" aria-label="Breadcrumb">
+    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
+    <span>Organometallics</span>
+  </nav>
+
+  <header class="notes-head">
+    <p class="notes-eyebrow">Organometallics &middot; Section 93 of 93</p>
+    <h1>Palladium cross-coupling</h1>
+    <a class="notes-onward-cta" href="../lessons/cross-coupling.html">Practice this — interactive lesson</a>
+  </header>
+
+  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+       asides); it is the same class the textbook view uses, so a section looks
+       identical whether it is read here or inside learn.html. -->
+  <article class="notes-body notes-view">
+<!-- notes:start -->
+<p class="step-body">Every carbon nucleophile so far has needed an electrophilic partner that could be attacked &mdash; a carbonyl, or an alkyl halide willing to do S<sub>N</sub>2. That leaves out the two partners organic chemists most often want to join: an <b>aryl halide</b> and another aryl group. Aryl halides do not do S<sub>N</sub>2 at all, and aryl Grignards are too indiscriminate to be pointed at one site in a complicated molecule.</p>
+
+<p class="step-body"><b>Cross-coupling</b> solves this with a transition metal &mdash; almost always palladium &mdash; that takes the two pieces in one at a time, holds both, and then pushes them together. The 2010 Nobel Prize in Chemistry went to Heck, Negishi and Suzuki for it, and it is now the most-used carbon&ndash;carbon bond-forming reaction in the pharmaceutical industry.</p>
+
+<h3>One catalytic cycle, three steps</h3>
+
+<p class="step-body">The reactions below differ in what the nucleophilic partner is, but the palladium does the same three things every time. Learn the cycle once and the named reactions stop needing to be memorized separately.</p>
+
+<div class="table-wrap">
+<table class="notes-table">
+<thead><tr><th>Step</th><th>What happens</th><th>Palladium goes</th></tr></thead>
+<tbody>
+<tr><td><b>Oxidative addition</b></td><td>Pd inserts into the Ar&ndash;X bond, ending up bonded to both pieces</td><td>Pd(0) &rarr; Pd(II)</td></tr>
+<tr><td><b>Transmetalation</b></td><td>The R group moves from its own metal onto the palladium</td><td>stays Pd(II)</td></tr>
+<tr><td><b>Reductive elimination</b></td><td>The two organic groups on Pd join and leave as Ar&ndash;R</td><td>Pd(II) &rarr; Pd(0)</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="step-body">The names describe the palladium's oxidation state, which is the easiest way to keep them straight. Oxidative addition <i>oxidizes</i> the metal by two; reductive elimination <i>reduces</i> it by two and hands back the Pd(0) the cycle started with. That is why palladium is a catalyst rather than a reagent: it ends each turn exactly as it began, and a few mole percent turns over thousands of times.</p>
+
+<div class="notes-fact">Notice what the metal is doing that no nucleophile could. It makes the aryl halide reactive by bonding to it directly, rather than waiting to be attacked. That is the whole reason an aryl halide &mdash; inert to S<sub>N</sub>1 and S<sub>N</sub>2 alike &mdash; becomes a usable partner.</div>
+
+<h3>The named reactions, by what the partner is</h3>
+<!-- fig:pd-cycle:start -->
+<figure class="notes-figure notes-figure--wide" style="--vb:760"><svg viewBox="0 0 760 340" role="img" aria-label="The palladium catalytic cycle with oxidative addition, transmetalation and reductive elimination, and the palladium oxidation state marked on each stage"><rect class="fg-panel" x="248" y="52" width="104" height="40" rx="10"></rect><text class="fg-lbl" x="300" y="70" text-anchor="middle" font-size="12">Pd(0)</text><text class="fg-sm" x="300" y="86" text-anchor="middle" font-size="9.5">the catalyst</text><rect class="fg-panel-hi" x="340" y="144" width="104" height="40" rx="10"></rect><text class="fg-lbl" x="392" y="162" text-anchor="middle" font-size="12">Ar–Pd–X</text><text class="fg-sm" x="392" y="178" text-anchor="middle" font-size="9.5">Pd(II)</text><rect class="fg-panel-hi" x="248" y="236" width="104" height="40" rx="10"></rect><text class="fg-lbl" x="300" y="254" text-anchor="middle" font-size="12">Ar–Pd–R</text><text class="fg-sm" x="300" y="270" text-anchor="middle" font-size="9.5">Pd(II)</text><line class="fg-arrow" x1="358" y1="98" x2="379.64" y2="131.29"></line><path class="fg-head" d="M384 138 L376.15 133.56 L383.13 129.03 Z"></path><text class="fg-tag" x="432" y="106" text-anchor="middle" font-size="10.5">oxidative addition</text><text class="fg-sm" x="432" y="122" text-anchor="middle" font-size="9.5">0 → II</text><line class="fg-arrow" x1="388" y1="196" x2="366.52" y2="227.4"></line><path class="fg-head" d="M362 234 L363.08 225.05 L369.95 229.75 Z"></path><text class="fg-tag" x="428" y="234" text-anchor="middle" font-size="10.5">transmetalation</text><text class="fg-sm" x="428" y="250" text-anchor="middle" font-size="9.5">II → II</text><line class="fg-arrow" x1="238" y1="230" x2="238" y2="146"></line><path class="fg-head" d="M238 138 L242.16 146 L233.84 146 Z"></path><text class="fg-tag" x="172" y="186" text-anchor="middle" font-size="10.5">reductive elimination</text><text class="fg-sm" x="172" y="202" text-anchor="middle" font-size="9.5">II → 0, gives Ar–R</text><line class="fg-rule" x1="560" y1="56" x2="560" y2="272"></line><text class="fg-tag" x="660" y="48" text-anchor="middle" font-size="11">what the partner is</text><text class="fg-lbl" x="600" y="92" text-anchor="start" font-size="12">Suzuki</text><text class="fg-sm" x="600" y="108" text-anchor="start" font-size="9.5">boronic acid + base</text><text class="fg-lbl" x="600" y="128" text-anchor="start" font-size="12">Stille</text><text class="fg-sm" x="600" y="144" text-anchor="start" font-size="9.5">stannane</text><text class="fg-lbl" x="600" y="164" text-anchor="start" font-size="12">Negishi</text><text class="fg-sm" x="600" y="180" text-anchor="start" font-size="9.5">organozinc</text><text class="fg-lbl" x="600" y="200" text-anchor="start" font-size="12">Sonogashira</text><text class="fg-sm" x="600" y="216" text-anchor="start" font-size="9.5">alkyne + Cu</text><text class="fg-lbl" x="600" y="236" text-anchor="start" font-size="12">Heck</text><text class="fg-sm" x="600" y="252" text-anchor="start" font-size="9.5">an alkene — no metal</text><line class="fg-rule" x1="34" y1="292" x2="726" y2="292"></line><text class="fg-lbl" x="380" y="318" text-anchor="middle" font-size="12">Four names, one cycle. The Heck is the exception: no partner metal, so no transmetalation.</text></svg><figcaption>The palladium cycle, with the oxidation state on every stage. Pd(0) inserts into the aryl halide and is oxidized to Pd(II); the partner hands over its organic group without changing that; the two groups then join and leave, reducing the metal back to Pd(0).<span class="notes-figure-note">Ending each turn exactly where it began is what makes palladium a catalyst rather than a reagent, and it is why a few mole percent can turn over thousands of times. It also explains the tolerance: the reactive carbon is bound to a metal for its whole life and never exists as a free carbanion, so ketones, esters and free alcohols elsewhere in the molecule survive.</span></figcaption></figure>
+<!-- fig:pd-cycle:end -->
+
+<div class="table-wrap">
+<table class="notes-table">
+<thead><tr><th>Reaction</th><th>Nucleophilic partner</th><th>Forms</th></tr></thead>
+<tbody>
+<tr><td><b>Suzuki</b></td><td>Boronic acid, R&ndash;B(OH)<sub>2</sub>, with base</td><td>Biaryls, most often</td></tr>
+<tr><td><b>Stille</b></td><td>Organostannane, R&ndash;SnBu<sub>3</sub></td><td>The same, with no base needed</td></tr>
+<tr><td><b>Negishi</b></td><td>Organozinc, R&ndash;ZnX</td><td>The same, and tolerates esters</td></tr>
+<tr><td><b>Sonogashira</b></td><td>Terminal alkyne, with a copper cocatalyst</td><td>An aryl alkyne</td></tr>
+<tr><td><b>Heck</b></td><td>An alkene &mdash; no organometallic at all</td><td>A substituted alkene</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="step-body">The <b>Suzuki</b> coupling is the one to know properly. Boronic acids are air-stable, water-tolerant, low in toxicity and easy to store, which is why it displaced the alternatives industrially even though the Stille coupling works at least as well chemically &mdash; organotin reagents are seriously toxic. The base is not optional: it converts the boronic acid to a borate, which is what transfers the R group in the transmetalation step.</p>
+
+<p class="step-body">The <b>Heck</b> reaction is the odd one out and worth separating. There is no organometallic nucleophile, so there is no transmetalation. The alkene inserts into the Ar&ndash;Pd bond instead, and a β-hydride elimination releases the product. It usually gives the <i>trans</i> alkene, and the new bond forms at the less substituted carbon.</p>
+
+<h3>Why this changed how molecules get made</h3>
+
+<p class="step-body">Cross-coupling is <b>convergent</b>. Two halves are built separately and joined near the end, instead of one chain being extended step by step. Since yields multiply, joining two five-step pieces at the end beats a linear ten-step route badly &mdash; and both halves can be varied independently, which is exactly what a medicinal chemistry program needs when it wants fifty analogs of one scaffold.</p>
+
+<div class="notes-fact">The functional group tolerance is the other half of the argument. A Suzuki coupling runs in the presence of ketones, esters, free alcohols and amines, none of which a Grignard would survive. The reactive species is bound to a metal for its entire lifetime and never exists as a free carbanion.</div>
+
+<h3>What carries forward</h3>
+
+<p class="step-body">A palladium catalyst joins an aryl or vinyl halide to a carbon partner by oxidative addition, transmetalation and reductive elimination, and the named reactions differ only in what the partner is. Suzuki with a boronic acid is the default; Heck is the one with no organometallic and a β-hydride elimination at the end. Retrosynthetically, a biaryl bond is now a disconnection you should see immediately.</p>
+<!-- notes:end -->
+  </article>
+
+  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="gilman-reagents.html"><span>Previous</span>Cuprates and conjugate addition</a><span></span></nav>
+
+  <footer class="notes-foot">
+    <p><a href="../learn.html">&larr; All 93 sections</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
+  </footer>
+</div>
+</body>
+</html>

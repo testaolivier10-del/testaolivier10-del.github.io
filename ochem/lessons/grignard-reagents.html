@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grignard reagents — Organometallics | Organic Chemistry</title>
+<meta name="description" content="Learn how Grignard reagents are made, what each electrophile gives, why esters add twice, and why an acidic proton anywhere in the substrate ends the reaction.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/grignard-reagents.html">
+<meta property="og:title" content="Grignard reagents — Organometallics | Organic Chemistry">
+<meta property="og:description" content="Learn how Grignard reagents are made, what each electrophile gives, why esters add twice, and why an acidic proton anywhere in the substrate ends the reaction.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/grignard-reagents.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/grignard-reagents.html#lesson",
+      "name": "Grignard reagents",
+      "url": "https://levlprep.com/ochem/lessons/grignard-reagents.html",
+      "description": "Learn how Grignard reagents are made, what each electrophile gives, why esters add twice, and why an acidic proton anywhere in the substrate ends the reaction.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Grignard reagents"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Organometallics",
+          "item": "https://levlprep.com/ochem/learn.html#m-organometallics"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Grignard reagents",
+          "item": "https://levlprep.com/ochem/lessons/grignard-reagents.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 20 &middot; Organometallics</div>
+    <h1 style="margin-bottom:4px;">Grignard reagents.</h1>
+    <p class="lede" style="margin-top:0;">The reagent that makes carbon skeletons buildable — and the acidic hydrogen that quietly stops it.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/grignard-reagents.html">Grignard reagents &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="organolithium-reagents.html">Organolithiums</a> &middot; <a href="gilman-reagents.html">Cuprates</a> &middot; <a href="nucleophilic-addition.html">Nucleophilic addition</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* The electrophile decides the product class, and the four cases here are
+     the ones students conflate most: the three alcohol classes and the ester
+     that adds twice. */
+  var CASES = [
+    { id:'g1', t:'CH₃MgBr + <b>formaldehyde</b>, then H₃O⁺', right:'p1',
+      why:'A primary alcohol, ethanol. Formaldehyde has two hydrogens on its carbonyl carbon, so after the Grignard adds one R group that carbon still carries two H &mdash; the definition of primary.' },
+    { id:'g2', t:'CH₃MgBr + <b>propanal</b>, then H₃O⁺', right:'p2',
+      why:'A secondary alcohol, butan-2-ol. Any aldehyde other than formaldehyde leaves one hydrogen and one R group on the carbinol carbon.' },
+    { id:'g3', t:'CH₃MgBr + <b>propanone</b>, then H₃O⁺', right:'p3',
+      why:'A tertiary alcohol, 2-methylbutan-2-ol. A ketone brings two carbon groups of its own, and the Grignard adds a third.' },
+    { id:'g4', t:'2 CH₃MgBr + <b>ethyl propanoate</b>, then H₃O⁺', right:'p3',
+      why:'A tertiary alcohol as well, and this is the case people get wrong. The first addition expels ethoxide to give a ketone, which is MORE electrophilic than the ester was, so a second equivalent attacks at once. The two methyl groups on the product are identical, because both came from the same reagent.' }
+  ];
+  var OPTS = [ { k:'p1', l:'1° alcohol' }, { k:'p2', l:'2° alcohol' }, { k:'p3', l:'3° alcohol' } ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'grignard-reagents',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Magnesium, dry ether, and nothing else.',
+        bodyHtml: '<p class="step-body">Stir an alkyl, vinyl or aryl halide with magnesium turnings in dry ether and the metal inserts into the carbon&ndash;halogen bond: <b>R&ndash;Br + Mg &rarr; R&ndash;MgBr</b>. Nothing is added and nothing leaves, and the carbon that was &delta;+ comes out &delta;&minus;.</p>' +
+          '<p class="step-body">The solvent is not incidental. The magnesium is electron-poor, and the two lone pairs on an ether oxygen coordinate to it, which is what holds the reagent in solution. In a hydrocarbon the reaction does not go; in anything with an O&ndash;H the reagent destroys the solvent.</p>' +
+          '<div class="explain-box">Dry means dry. A trace of water quenches the reagent as fast as it forms, and the symptom is not a mess &mdash; it is the magnesium never being consumed and the halide still sitting there at the end.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'One mechanism, and the electrophile picks the product.',
+        bodyHtml: '<p class="step-body">Every reaction in this section is the same two moves: the nucleophilic carbon attacks an electrophilic carbon, and an acidic workup protonates whatever anion is left. What changes is what it attacked, and the useful way to hold the list is by <b>how many carbons the chain gains</b>.</p>' +
+          '<ul class="step-body">' +
+          '<li><b>Formaldehyde</b> &rarr; primary alcohol. <b>Other aldehydes</b> &rarr; secondary. <b>Ketones</b> &rarr; tertiary.</li>' +
+          '<li><b>CO₂</b> &rarr; carboxylic acid, one carbon longer.</li>' +
+          '<li><b>An epoxide</b>, attacked at the less hindered carbon &rarr; an alcohol two carbons further along.</li>' +
+          '<li><b>A nitrile</b>, then hydrolysis &rarr; a ketone.</li>' +
+          '</ul>' +
+          '<div class="explain-box">The <b>one-carbon extensions</b> are worth learning as a set, because each lands somewhere different: formaldehyde gives a primary alcohol, CO₂ gives a carboxylic acid, a nitrile gives a ketone. Asked to lengthen a chain by exactly one carbon, you choose from those three by what functional group you want at the end.</div>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">What class of alcohol comes out?</h2>' +
+            '<p class="step-body">Count what ends up on the carbinol carbon: the R group the Grignard brought, plus whatever the electrophile already had there. Hydrogens do not count as substituents.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Product class">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Draw the carbinol carbon and count the carbon groups on it after the addition. And check whether the electrophile can be attacked twice.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. The first three are a counting exercise; the fourth is the one that needs a mechanism.'
+                  : 'All four, first time, including the ester &mdash; which reaches a tertiary alcohol by a completely different route from the ketone above it.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'Why can an ester not be stopped at the ketone by using only one equivalent of Grignard?',
+        options: [
+          'The ester is less reactive than the ketone it forms',
+          'Esters cannot be attacked by Grignard reagents at all',
+          'The alkoxide leaving group re-adds to the ketone',
+          'The ketone is reduced by the magnesium salt'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct, and this is the whole explanation. The OR group donates electron density into the carbonyl and makes the ester sluggish; once it leaves, what remains is a ketone with no such donor, so the second equivalent is consumed faster than the first. Limiting the stoichiometry cannot help when the intermediate outcompetes the starting material.',
+        wrongFeedback: 'Compare the electrophilicity of the ester with that of the ketone it becomes after the alkoxide leaves. Which one does the next equivalent of Grignard prefer?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'You need to convert 1-bromopropane into butanoic acid. What do you use?',
+        options: [
+          'Mg, then formaldehyde, then H₃O⁺',
+          'Mg, then CO₂, then H₃O⁺',
+          'Mg, then acetone, then H₃O⁺',
+          'Mg, then an epoxide, then H₃O⁺'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Butanoic acid is four carbons and the halide is three, so you need exactly one more carbon and it has to arrive as a carboxyl — that is CO₂ and nothing else. Formaldehyde also adds one carbon but leaves an alcohol, which would then need oxidizing.',
+        wrongFeedback: 'Count the carbons in the starting material and the target, then ask which electrophile supplies that many and leaves the right functional group behind.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The failure mode that costs more marks than any other.',
+        bodyHtml: '<p class="step-body">Every reaction above assumes the substrate has no acidic hydrogen. Put an alcohol, a carboxylic acid, an amine, a thiol or a terminal alkyne anywhere in the molecule and the Grignard removes <i>that</i> proton instead. The reagent leaves as R&ndash;H, a magnesium salt is left behind, and the carbonyl is untouched.</p>' +
+          '<p class="step-body">Three ways around it, in the order you should consider them:</p>' +
+          '<ul class="step-body">' +
+          '<li><b>Reorder.</b> Run the Grignard step before the acidic group is installed. Costs nothing, and is usually possible.</li>' +
+          '<li><b>Use two equivalents.</b> One to kill the proton, one to do the chemistry. Wasteful, but it is one line in a procedure.</li>' +
+          '<li><b>Protect.</b> A silyl ether on the alcohol, removed with fluoride afterwards. Two extra steps, so it is the last resort rather than the first.</li>' +
+          '</ul>' +
+          '<div class="explain-box">Reaching for a protecting group first is the common error. Protection costs two steps and therefore two yields, so it is worth it only when reordering genuinely cannot be done &mdash; which is less often than it looks.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'A Grignard reagent is added to an epoxide. Where does it attack, and what comes out?',
+        options: [
+          'At the more substituted carbon, giving a branched alcohol',
+          'At the less hindered carbon, giving an alcohol two carbons along',
+          'At the oxygen, giving an ether',
+          'It deprotonates the epoxide instead'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Under basic or neutral conditions an epoxide opening is an SN2, so sterics decide and the nucleophile takes the less hindered carbon. The alkoxide left behind is protonated on workup, and the new OH sits two carbons from the bond that was formed — which makes epoxides the standard way to add a two-carbon unit.',
+        wrongFeedback: 'There is no acid here, so nothing protonates the epoxide oxygen and no carbocation character develops. What controls an SN2 attack on a strained ring?'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Propose a route from bromobenzene to 1-phenylethan-1-ol. What is the trap if you plan it as benzene → phenylmagnesium bromide → acetaldehyde in one flask?',
+        options: [
+          'Nothing — the route works exactly as written',
+          'The Grignard cannot be made from an aryl halide',
+          'Acetaldehyde is too hindered for a Grignard to attack',
+          'Nothing is wrong with the reagents; the trap is adding them together, since acetaldehyde enolizes'
+        ],
+        correctIndex: 3,
+        correctFeedback: 'Correct on both halves. Bromobenzene does form a Grignard — aryl halides work fine with magnesium even though they refuse SN2 entirely, which is worth noticing on its own. And the reagents are right: phenylmagnesium bromide plus acetaldehyde, then acidic workup, gives 1-phenylethan-1-ol, a secondary alcohol. The trap is the order of operations. The Grignard is a very strong base and acetaldehyde has α hydrogens, so if the aldehyde is present while the Grignard is still forming, some of it is deprotonated to the enolate rather than attacked. The reagent is made first and the aldehyde added to it afterwards, slowly and cold — a procedural detail that is invisible on paper and decides the yield in practice.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

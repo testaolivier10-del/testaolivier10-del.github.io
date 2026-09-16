@@ -77,12 +77,19 @@ const SHELL_BUDGETS = [
      and lesson-concepts.js (one entry per lesson). That is the shell doing its
      job rather than a regression.
 
-     If it needs raising again, check first whether the growth is still
-     proportional. The obvious saving, if one is ever needed, is that
-     ochem/index.html loads lesson-concepts.js for one call in ochem-home.js;
-     splitting that call out would take 4.4 KB off the home page, though not
-     off this number, since the lessons still load the file. */
-  ['ochem', 96],
+     96 -> 100, and the growth is still proportional: two more chapters took
+     the course from 83 topics to 93, so concepts.js (84 -> 94), curriculum.js
+     and lesson-concepts.js each gained ten entries. About 1.4 KB gzipped per
+     chapter, which is what a chapter of course map costs.
+
+     The obvious saving, if one is ever needed, is that ochem/index.html loads
+     lesson-concepts.js for one call in ochem-home.js; splitting that call out
+     would take 4.4 KB off the home page, though not off this number, since the
+     lessons still load the file. The larger one, not yet worth doing, is that
+     every page loads every concept's `teach` string — moving those to a
+     fetched file would roughly halve concepts.js at the cost of one request on
+     the pages that actually surface a teach block. */
+  ['ochem', 100],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -190,7 +197,7 @@ const DATA_BUDGETS = [
      no longer fetched by anything at runtime, so it has no budget: adding one
      would be budgeting a file no reader downloads. */
   ['ochem/assets/practice-bank-core.json', 192],
-  ['ochem/assets/practice-bank-why.json', 132],
+  ['ochem/assets/practice-bank-why.json', 140],
 ];
 
 const REF_RE = /(?:href|src)="([^"]+)"/g;

@@ -196,6 +196,18 @@
       { id: 'peptides-proteins', title: 'Peptides and proteins', href: 'lessons/peptides-proteins.html', dependsOn: ['amino-acids', 'esters-amides', 'resonance'] },
       { id: 'lipids', title: 'Lipids', href: 'lessons/lipids.html', dependsOn: ['esters-amides', 'acyl-substitution', 'hydrogenation'] },
       { id: 'nucleic-acids', title: 'Nucleic acids', href: 'lessons/nucleic-acids.html', dependsOn: ['carbohydrates', 'acetals', 'amine-structure'] }
+    ]},
+    /* Organometallics could have gone next to the carbonyl chapters, since
+       that is where a Grignard is first used. It goes here instead because
+       the chapter's real subject is the trade between reactivity and
+       selectivity, and that argument only lands once you have seen enough
+       reactions to know what "too reactive" costs a route. */
+    { id: 'organometallics', title: 'Organometallics', topics: [
+      { id: 'organometallic-bonding', title: 'Why C–metal means nucleophilic carbon', href: 'lessons/organometallic-bonding.html', dependsOn: ['electronegativity', 'bond-polarity', 'nucleophiles'] },
+      { id: 'grignard-reagents', title: 'Grignard reagents', href: 'lessons/grignard-reagents.html', dependsOn: ['organometallic-bonding', 'nucleophilic-addition', 'acyl-substitution'] },
+      { id: 'organolithium-reagents', title: 'Organolithiums and acetylides', href: 'lessons/organolithium-reagents.html', dependsOn: ['grignard-reagents', 'alkynes', 'alpha-hydrogens'] },
+      { id: 'gilman-reagents', title: 'Cuprates and conjugate addition', href: 'lessons/gilman-reagents.html', dependsOn: ['grignard-reagents', 'nucleophilic-addition', 'resonance'] },
+      { id: 'cross-coupling', title: 'Palladium cross-coupling', href: 'lessons/cross-coupling.html', dependsOn: ['gilman-reagents', 'eas', 'carbon-carbon-bonds'] }
     ]}
   ];
 

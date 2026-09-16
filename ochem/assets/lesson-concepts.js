@@ -83,6 +83,26 @@
       2:['nucleotide-assembly'], 3:['nucleotide-assembly'], 4:['nucleotide-assembly'],
       6:['nucleotide-assembly','sugar-ring'], 7:['nucleotide-assembly'] } },
 
+    'organometallic-bonding': { n:8, steps:{
+      2:['polarity-reversal'], 3:['polarity-reversal'], 4:['polarity-reversal'],
+      6:['organometallic-quench'], 7:['polarity-reversal','organometallic-quench'] } },
+
+    'grignard-reagents': { n:8, steps:{
+      2:['grignard-scope'], 3:['grignard-scope'], 4:['grignard-scope'],
+      6:['grignard-scope'], 7:['organometallic-quench','grignard-scope'] } },
+
+    'organolithium-reagents': { n:8, steps:{
+      2:['grignard-scope'], 3:['grignard-scope'], 4:['grignard-scope'],
+      6:['grignard-scope'], 7:['grignard-scope'] } },
+
+    'gilman-reagents': { n:8, steps:{
+      2:['hard-soft-addition'], 3:['hard-soft-addition'], 4:['hard-soft-addition'],
+      6:['hard-soft-addition'], 7:['hard-soft-addition'] } },
+
+    'cross-coupling': { n:8, steps:{
+      2:['catalytic-cycle'], 3:['catalytic-cycle'], 4:['catalytic-cycle'],
+      6:['catalytic-cycle'], 7:['catalytic-cycle','hard-soft-addition'] } },
+
     /* The oxidation & reduction chapter. Graded steps are 2, 3, 4, 6, 7. */
     'oxidation-states': { n:8, steps:{
       2:['oxidation-level'],

@@ -30984,5 +30984,1815 @@
    "difficulty": "medium",
    "type": "mcq"
   }
+ ],
+ "organometallic-bonding": [
+  {
+   "q": "Why is the carbon of a Grignard reagent nucleophilic?",
+   "options": [
+    "Carbon outranks magnesium in electronegativity",
+    "Magnesium donates a lone pair to it",
+    "The C-Mg bond is fully ionic",
+    "Magnesium withdraws electron density from it"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is umpolung?",
+   "options": [
+    "Inverting a stereocenter",
+    "Reversing the direction of a reaction",
+    "Exchanging one metal for another",
+    "Reversing a site's normal polarity"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Where is carbon's Pauling electronegativity?",
+   "options": [
+    "3.44",
+    "0.98",
+    "2.55",
+    "1.31"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "In C-Cl, which atom carries the partial negative charge?",
+   "options": [
+    "Both equally",
+    "Chlorine",
+    "Carbon",
+    "Neither"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "In C-Li, which atom carries the partial negative charge?",
+   "options": [
+    "Carbon",
+    "Lithium",
+    "Neither",
+    "It alternates"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Is the C-Mg bond ionic?",
+   "options": [
+    "Yes, fully ionic",
+    "Yes, in ether only",
+    "No, it is nonpolar",
+    "No, it is polar covalent"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which organometallic is the most reactive?",
+   "options": [
+    "R2CuLi",
+    "R-ZnX",
+    "R-Li",
+    "R-MgX"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which organometallic is the most selective?",
+   "options": [
+    "An acetylide",
+    "R2CuLi",
+    "R-Li",
+    "R-MgX"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does high reactivity cost an organometallic reagent?",
+   "options": [
+    "Selectivity",
+    "Solubility",
+    "Stability in ether",
+    "Its carbanion character"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Approximately what is the pKa of an alkane C-H?",
+   "options": [
+    "25",
+    "16",
+    "35",
+    "50"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens when a Grignard reagent meets water?",
+   "options": [
+    "It is oxidized",
+    "Nothing, in ether",
+    "It becomes R-H",
+    "It adds to water"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which group destroys a Grignard reagent?",
+   "options": [
+    "An alkyl halide on a different molecule",
+    "An alcohol",
+    "An ether",
+    "An alkene"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why must Grignard reactions be run in dry glassware?",
+   "options": [
+    "Water quenches it",
+    "Water dissolves the magnesium",
+    "Water oxidizes the halide",
+    "Water catalyzes elimination"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why are Grignard reagents made in ether?",
+   "options": [
+    "Ether is a nucleophile for the reaction",
+    "Ether lowers the boiling point",
+    "Ether is acidic enough to help",
+    "Ether oxygen coordinates to the magnesium"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does quenching a Grignard with D2O accomplish?",
+   "options": [
+    "It oxidizes the carbon",
+    "It regenerates the halide",
+    "It labels that carbon",
+    "It reverses the reaction"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which nucleophiles has this course mostly used before organometallics?",
+   "options": [
+    "Metals",
+    "Heteroatom nucleophiles",
+    "Carbon nucleophiles",
+    "Radicals"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a carbon nucleophile needed to build a skeleton?",
+   "options": [
+    "The nucleophile supplies the new bond",
+    "Carbon electrophiles are unreactive",
+    "Heteroatoms cannot form bonds",
+    "Carbon skeletons form by radical routes"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which two carbon nucleophiles appeared before this chapter?",
+   "options": [
+    "Hydroxide and cyanide",
+    "Amines and acetylides",
+    "Water and alkoxides",
+    "Cyanide and acetylides"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How is a Grignard reagent made?",
+   "options": [
+    "An alcohol with magnesium",
+    "An alkene with magnesium",
+    "A halide with magnesium turnings",
+    "A halide with a magnesium salt"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How many equivalents of lithium does R-Br need?",
+   "options": [
+    "Half",
+    "Two",
+    "One",
+    "Three"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which halide will not form a Grignard reagent?",
+   "options": [
+    "One bearing a free OH group",
+    "An aryl bromide",
+    "A vinyl bromide",
+    "A primary alkyl chloride"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a magnesium alkoxide the product of?",
+   "options": [
+    "A Grignard adding to a ketone",
+    "Oxidation of a Grignard",
+    "Hydrolysis of an ether",
+    "Deprotonating an alcohol"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is an aryl Grignard useful even though aryl halides resist substitution?",
+   "options": [
+    "The ring activates the halide",
+    "Aryl cations are stable",
+    "Insertion is not SN2",
+    "Aryl halides do slow SN2"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a larger electronegativity gap between C and the metal produce?",
+   "options": [
+    "A more ionic solvent",
+    "More carbanion character",
+    "A weaker base",
+    "Better selectivity"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which of these will a Grignard reagent tolerate in the same molecule?",
+   "options": [
+    "An ether",
+    "A carboxylic acid",
+    "A terminal alkyne",
+    "A thiol"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a terminal alkyne quench an organometallic?",
+   "options": [
+    "It adds across the C-metal bond",
+    "It coordinates to the metal",
+    "It oxidizes the carbanion",
+    "Its C-H has a pKa near 25"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "If a substrate has an OH and a ketone, which does a Grignard reach first?",
+   "options": [
+    "Both at once",
+    "Neither",
+    "The OH",
+    "The ketone"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the cheapest fix for an acidic proton in a Grignard substrate?",
+   "options": [
+    "Lower the temperature",
+    "Reorder the synthesis",
+    "Protect the group",
+    "Use a different solvent"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent needs a palladium catalyst to be useful?",
+   "options": [
+    "A boronic acid",
+    "A Grignard",
+    "An organolithium",
+    "An acetylide"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the practical signal that a Grignard preparation has failed?",
+   "options": [
+    "The mixture turns black",
+    "The solvent boils away",
+    "A precipitate forms",
+    "Magnesium is left over"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "grignard-reagents": [
+  {
+   "q": "A Grignard reagent plus formaldehyde gives what after workup?",
+   "options": [
+    "A primary alcohol",
+    "A secondary alcohol",
+    "A tertiary alcohol",
+    "A carboxylic acid"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A Grignard plus an aldehyde other than formaldehyde gives what?",
+   "options": [
+    "A primary alcohol",
+    "A tertiary alcohol",
+    "A ketone",
+    "A secondary alcohol"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A Grignard plus a ketone gives what?",
+   "options": [
+    "A primary alcohol",
+    "An ether",
+    "A tertiary alcohol",
+    "A secondary alcohol"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A Grignard plus CO2, then acid, gives what?",
+   "options": [
+    "A primary alcohol",
+    "A ketone",
+    "An ester",
+    "A carboxylic acid"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A Grignard plus an epoxide gives what?",
+   "options": [
+    "A ketone",
+    "An alcohol two carbons along",
+    "An ether",
+    "A diol"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Where does a Grignard attack an epoxide?",
+   "options": [
+    "At the less hindered carbon",
+    "At the more substituted carbon",
+    "At the oxygen",
+    "At either, equally"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A Grignard plus a nitrile, then hydrolysis, gives what?",
+   "options": [
+    "A carboxylic acid",
+    "An amide",
+    "A ketone",
+    "An amine"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How many equivalents of Grignard does an ester consume?",
+   "options": [
+    "One and a half",
+    "Two",
+    "One",
+    "Three"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the product of an ester plus excess Grignard?",
+   "options": [
+    "A tertiary alcohol",
+    "A ketone",
+    "A secondary alcohol",
+    "An aldehyde"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can an ester not be stopped at the ketone with one equivalent?",
+   "options": [
+    "Esters resist Grignard attack",
+    "The alkoxide re-adds",
+    "The ketone is reduced",
+    "The ketone is more reactive"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which two R groups appear on the product of an ester plus Grignard?",
+   "options": [
+    "Two from the ester",
+    "One of each, plus a hydroxyl",
+    "Two identical ones from the reagent",
+    "One from the reagent, one from the ester"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent gives a ketone from an acyl chloride?",
+   "options": [
+    "A Grignard",
+    "An organolithium",
+    "An acetylide",
+    "A Gilman reagent"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a Weinreb amide used for?",
+   "options": [
+    "Reducing an ester",
+    "Stopping an acyl addition at the ketone",
+    "Protecting an alcohol",
+    "Making a Grignard"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which three electrophiles extend a chain by exactly one carbon?",
+   "options": [
+    "Formaldehyde, CO2 and a nitrile",
+    "Formaldehyde, an ester and CO2",
+    "CO2, an epoxide and a ketone",
+    "An epoxide, a nitrile and an aldehyde"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many carbons does an epoxide add to a chain?",
+   "options": [
+    "Three",
+    "None",
+    "Two",
+    "One"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "CH3MgBr is added to a molecule containing both a ketone and a carboxylic acid. What happens first?",
+   "options": [
+    "Nothing reacts",
+    "The acid is deprotonated",
+    "The ketone is attacked",
+    "Both react at once"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What leaves the flask when a Grignard meets an O-H?",
+   "options": [
+    "R-H",
+    "R-OH",
+    "R-OMgX",
+    "MgO"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the workup step in every Grignard reaction?",
+   "options": [
+    "Aqueous base",
+    "An oxidant",
+    "A reductant",
+    "Aqueous acid"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which target is 1-bromopropane plus Mg plus CO2 plus acid?",
+   "options": [
+    "Butan-1-ol",
+    "Butanal",
+    "Butanoic acid",
+    "Propanoic acid"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which target is 1-bromopropane plus Mg plus formaldehyde plus acid?",
+   "options": [
+    "Butan-2-ol",
+    "Butan-1-ol",
+    "Propan-1-ol",
+    "Butanoic acid"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which target is 1-bromopropane plus Mg plus propanone plus acid?",
+   "options": [
+    "2-Methylpentan-2-ol",
+    "Hexan-3-ol",
+    "Pentan-2-ol",
+    "Hexan-2-one"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a Grignard fail on a substrate bearing a terminal alkyne?",
+   "options": [
+    "The alkyne adds to the metal",
+    "The alkyne is reduced",
+    "The alkyne polymerizes",
+    "The alkyne C-H is deprotonated"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which is the last resort for an acidic proton in a Grignard substrate?",
+   "options": [
+    "Using two equivalents",
+    "Cooling the reaction",
+    "Protecting the group",
+    "Reordering the route"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What functional group does a Grignard plus an aldehyde always produce?",
+   "options": [
+    "An ester",
+    "An alcohol",
+    "An ether",
+    "A ketone"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does acetaldehyde sometimes give poor yields with a Grignard?",
+   "options": [
+    "It is enolized by the reagent",
+    "It is too hindered",
+    "It polymerizes in ether",
+    "It reduces the reagent"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the correct order of operations for a Grignard reaction?",
+   "options": [
+    "Mix everything at once",
+    "Add the electrophile to the magnesium",
+    "Add water first",
+    "Make the reagent first"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which functional group survives a Grignard reaction untouched?",
+   "options": [
+    "A nitrile",
+    "A ketone",
+    "An ether",
+    "An ester"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a vinyl Grignard let you attach?",
+   "options": [
+    "A carbene",
+    "A vinyl group",
+    "A radical",
+    "An aryl cation"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What class of alcohol comes from a Grignard plus an acyl chloride in excess?",
+   "options": [
+    "Tertiary",
+    "Secondary",
+    "Primary",
+    "No alcohol forms"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which is the correct disconnection for a tertiary alcohol?",
+   "options": [
+    "The C-O bond",
+    "A C-H bond",
+    "The bond furthest from the OH",
+    "A C-C bond at the carbinol"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "organolithium-reagents": [
+  {
+   "q": "How is an organolithium made from R-Br?",
+   "options": [
+    "Two equivalents of lithium metal",
+    "One equivalent of lithium metal",
+    "A lithium salt in ether",
+    "Lithium hydride"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is RLi more reactive than RMgX?",
+   "options": [
+    "Lithium is smaller",
+    "Lithium is divalent",
+    "RLi is ionic and RMgX is not",
+    "A wider gap to carbon"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent adds to a hindered ketone that a Grignard only enolizes?",
+   "options": [
+    "R-ZnX",
+    "A boronic acid",
+    "RLi",
+    "R2CuLi"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does RLi plus a carboxylic acid give after workup?",
+   "options": [
+    "An ester",
+    "A ketone",
+    "A tertiary alcohol",
+    "A secondary alcohol"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does RLi plus a carboxylic acid stop at the ketone?",
+   "options": [
+    "The dianion cannot collapse until workup",
+    "The ketone is protected",
+    "RLi adds only once by design",
+    "The carboxylate is unreactive"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How many equivalents of RLi does a carboxylic acid need?",
+   "options": [
+    "One",
+    "Three",
+    "Four",
+    "Two"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is LDA made from?",
+   "options": [
+    "LiAlH4 and an amine",
+    "Lithium and an alkyl halide",
+    "n-BuLi and diisopropylamine",
+    "Lithium metal and ammonia"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What makes LDA useful?",
+   "options": [
+    "Both weakly basic and weakly nucleophilic",
+    "Strongly basic but too hindered to add",
+    "Weakly basic and selective",
+    "Nucleophilic but not basic"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is LDA a weaker base than n-BuLi?",
+   "options": [
+    "It is the conjugate base of an amine, not an alkane",
+    "It is more hindered",
+    "It contains no lithium",
+    "It is stabilized by the ring"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is n-BuLi most often used for besides addition?",
+   "options": [
+    "Reduction",
+    "Oxidation",
+    "Halogenation",
+    "Deprotonation"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is t-BuLi poorly nucleophilic?",
+   "options": [
+    "It is not basic",
+    "Its carbon is sp2",
+    "It is too hindered",
+    "Lithium is buried in it"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the approximate pKa of a terminal alkyne C-H?",
+   "options": [
+    "16",
+    "25",
+    "44",
+    "50"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a terminal alkyne so much more acidic than an alkane?",
+   "options": [
+    "The carbanion sits in an sp orbital",
+    "The triple bond withdraws inductively",
+    "The alkyne is aromatic",
+    "It has fewer hydrogens"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which bases deprotonate a terminal alkyne?",
+   "options": [
+    "NaOH",
+    "NaHCO3",
+    "Pyridine",
+    "NaNH2"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What kind of halide will an acetylide alkylate cleanly?",
+   "options": [
+    "Tertiary",
+    "Aryl",
+    "Primary",
+    "Secondary"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does sodium acetylide plus 2-bromopropane give?",
+   "options": [
+    "No reaction",
+    "Propene",
+    "An internal alkyne",
+    "Propan-2-ol"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does an acetylide plus an aldehyde give?",
+   "options": [
+    "A propargylic alcohol",
+    "A ketone",
+    "An alkene",
+    "An enol"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does Lindlar hydrogenation of an internal alkyne give?",
+   "options": [
+    "The trans alkene",
+    "The alkane",
+    "A mixture of both alkenes",
+    "The cis alkene"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does Na in liquid NH3 give from an internal alkyne?",
+   "options": [
+    "The alkane",
+    "An acetylide",
+    "The trans alkene",
+    "The cis alkene"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is acetylide alkylation followed by reduction a useful pair?",
+   "options": [
+    "It oxidizes the chain",
+    "It sets alkene geometry",
+    "It shortens the chain",
+    "It removes stereocenters"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which is the odd one out among n-BuLi, t-BuLi and LDA?",
+   "options": [
+    "LDA, which is an amide base",
+    "t-BuLi, which is not basic",
+    "n-BuLi, which is not nucleophilic",
+    "None; all three are identical"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Can an organolithium do everything a Grignard does?",
+   "options": [
+    "No, it is narrower",
+    "Only with carbonyls",
+    "Only in ether",
+    "Yes, and more, with less selectivity"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can an alkyne not be alkylated twice in the same step?",
+   "options": [
+    "The base is spent",
+    "The product is unstable",
+    "Only one C-H is acidic",
+    "The alkyne is consumed"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent turns a terminal alkyne into a nucleophile?",
+   "options": [
+    "mCPBA",
+    "NaNH2",
+    "H2 and Lindlar catalyst",
+    "HBr"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the product of an acetylide plus a ketone after workup?",
+   "options": [
+    "A 3° alcohol",
+    "A ketone with a longer chain",
+    "An enol ether",
+    "An allene"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a propargylic position?",
+   "options": [
+    "Next to a double bond",
+    "Next to a carbonyl",
+    "Next to a ring",
+    "Next to a triple bond"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is RLi used rather than RMgX for a very hindered ketone?",
+   "options": [
+    "It is less basic",
+    "It is larger",
+    "It adds instead of enolizing",
+    "It is more selective"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the intermediate in the RLi plus carboxylic acid reaction?",
+   "options": [
+    "A free carbanion",
+    "A dianion",
+    "A neutral hydrate",
+    "An acylium ion"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent would you choose to form a ketone enolate completely?",
+   "options": [
+    "LDA",
+    "NaOH",
+    "n-BuLi",
+    "Pyridine"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does the s character of an orbital do to a lone pair in it?",
+   "options": [
+    "Pushes it further out",
+    "Makes it more basic",
+    "Has no effect",
+    "Holds it in tighter"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "gilman-reagents": [
+  {
+   "q": "How is a Gilman reagent made?",
+   "options": [
+    "Two RLi plus a copper(I) salt",
+    "One RLi plus copper metal",
+    "A Grignard plus copper(II)",
+    "An alkyne plus copper"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Where does a Gilman reagent add to an enone?",
+   "options": [
+    "At the carbonyl carbon",
+    "At the oxygen",
+    "At the alpha carbon",
+    "At the beta carbon"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Where does a Grignard add to an enone?",
+   "options": [
+    "At the alpha carbon",
+    "At the oxygen",
+    "At the carbonyl carbon",
+    "At the beta carbon"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the product of an enone plus a Grignard?",
+   "options": [
+    "An enol ether",
+    "An allylic alcohol",
+    "A beta-substituted ketone",
+    "A diol"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the product of an enone plus a cuprate?",
+   "options": [
+    "A β-alkyl ketone",
+    "An allylic alcohol",
+    "An epoxide",
+    "A diol"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What decides 1,2 against 1,4 addition?",
+   "options": [
+    "The temperature",
+    "The solvent",
+    "The ring size",
+    "The metal"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a cuprate less reactive than a Grignard?",
+   "options": [
+    "The reagent is neutral",
+    "Copper blocks the carbon",
+    "Copper is near carbon",
+    "Copper is a transition metal"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What intermediate forms immediately after 1,4 addition?",
+   "options": [
+    "A radical",
+    "An enolate",
+    "An alkoxide",
+    "A carbocation"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many of a cuprate's two R groups are transferred?",
+   "options": [
+    "One",
+    "Both",
+    "Neither",
+    "It varies with the halide"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which halides couple with a Gilman reagent?",
+   "options": [
+    "Tertiary only",
+    "Secondary and tertiary",
+    "None",
+    "Methyl, primary, vinyl and aryl"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can a cuprate couple with a vinyl halide?",
+   "options": [
+    "Vinyl cations are stable",
+    "The pi bond activates the carbon",
+    "It does not need an SN2 trajectory",
+    "Vinyl halides have better leaving groups"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens to double-bond geometry in a cuprate coupling?",
+   "options": [
+    "The alkene is reduced",
+    "It is preserved",
+    "It is scrambled",
+    "It becomes trans"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a cuprate plus an acyl chloride give?",
+   "options": [
+    "A ketone",
+    "A tertiary alcohol",
+    "An aldehyde",
+    "A carboxylic acid"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What do a cuprate's three abilities have in common?",
+   "options": [
+    "They follow from copper's d orbitals",
+    "They require high temperature",
+    "They need a base",
+    "They follow from its low reactivity"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which functional groups does a cuprate tolerate?",
+   "options": [
+    "Free alcohols only",
+    "None",
+    "Esters and nitriles",
+    "Only alkanes"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does hard mean for a nucleophile?",
+   "options": [
+    "Weakly basic",
+    "Small and charge-dense",
+    "Large and polarizable",
+    "Highly basic"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does soft mean for a nucleophile?",
+   "options": [
+    "Large and polarizable",
+    "Small and charge-dense",
+    "Strongly basic",
+    "Anionic"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which carbon of an enone carries the greater positive charge?",
+   "options": [
+    "The beta carbon",
+    "The alpha carbon",
+    "They are equal",
+    "The carbonyl carbon"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is 1,4 addition also called?",
+   "options": [
+    "Alpha addition",
+    "Michael elimination",
+    "Conjugate addition",
+    "Direct addition"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does an enone have two electrophilic carbons?",
+   "options": [
+    "The ring is strained",
+    "The pi system is conjugated",
+    "The oxygen is protonated",
+    "The alpha carbon is acidic"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent gives 3-methylcyclohexanone from cyclohex-2-enone?",
+   "options": [
+    "(CH3)2CuLi",
+    "CH3MgBr",
+    "CH3Li",
+    "NaBH4"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does CH3MgBr plus cyclohex-2-enone give?",
+   "options": [
+    "3-Methylcyclohexanone",
+    "Cyclohexanone",
+    "Methylcyclohexane",
+    "An allylic alcohol"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can PCC not fix a tertiary alcohol into a ketone?",
+   "options": [
+    "The alcohol is hindered",
+    "The alcohol is basic",
+    "No H on that carbon",
+    "PCC is too mild"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which organometallic is mild enough to be made with an ester present?",
+   "options": [
+    "An acetylide",
+    "An organozinc",
+    "A Grignard",
+    "An organolithium"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Does temperature switch a cuprate from 1,4 to 1,2?",
+   "options": [
+    "No, the metal decides",
+    "Yes, at low temperature",
+    "Yes, at high temperature",
+    "Only in THF"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What would a Grignard do to a substrate containing both an enone and an ester?",
+   "options": [
+    "Add 1,4 to the enone only",
+    "Attack the ester only",
+    "Nothing",
+    "Attack both"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the general fix when a reagent attacks too many sites?",
+   "options": [
+    "Add more reagent",
+    "Change the solvent",
+    "A milder reagent",
+    "Lower the concentration"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which product comes from 1,4 addition followed by workup?",
+   "options": [
+    "An enol",
+    "An allylic alcohol",
+    "An epoxide",
+    "A saturated ketone"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a cuprate used at half efficiency?",
+   "options": [
+    "The solvent takes one",
+    "Only one R transfers",
+    "Half decomposes",
+    "Copper consumes one"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What kind of control does a soft nucleophile follow?",
+   "options": [
+    "Orbital control",
+    "Charge control",
+    "Steric control",
+    "Thermodynamic control"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "cross-coupling": [
+  {
+   "q": "Which metal catalyzes the standard cross-coupling reactions?",
+   "options": [
+    "Magnesium",
+    "Copper",
+    "Zinc",
+    "Palladium"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What are the three steps of the cross-coupling cycle?",
+   "options": [
+    "Oxidative addition, transmetalation, reductive elimination",
+    "Addition, elimination, substitution",
+    "Insertion, rearrangement, loss",
+    "Coordination, protonation, release"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens in oxidative addition?",
+   "options": [
+    "The two groups join and leave",
+    "The alkene inserts",
+    "Pd inserts into the Ar-X bond",
+    "The R group moves to Pd"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens to palladium during oxidative addition?",
+   "options": [
+    "Pd(II) becomes Pd(0)",
+    "It stays Pd(0)",
+    "It becomes Pd(IV)",
+    "Pd(0) becomes Pd(II)"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens in transmetalation?",
+   "options": [
+    "The halide leaves",
+    "The R group moves to Pd",
+    "Pd changes oxidation state",
+    "The product is released"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens in reductive elimination?",
+   "options": [
+    "The two groups join",
+    "Pd inserts into a bond",
+    "The halide is displaced",
+    "An alkene inserts"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is palladium a catalyst rather than a reagent?",
+   "options": [
+    "It is used in excess",
+    "It is regenerated by the base",
+    "It ends each cycle as it began",
+    "It is not consumed by the solvent"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which coupling uses a boronic acid?",
+   "options": [
+    "Heck",
+    "Suzuki",
+    "Stille",
+    "Negishi"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which coupling uses an organostannane?",
+   "options": [
+    "Stille",
+    "Suzuki",
+    "Negishi",
+    "Sonogashira"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which coupling uses an organozinc reagent?",
+   "options": [
+    "Suzuki",
+    "Heck",
+    "Stille",
+    "Negishi"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which coupling joins an aryl halide to a terminal alkyne?",
+   "options": [
+    "Heck",
+    "Negishi",
+    "Sonogashira",
+    "Suzuki"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which coupling uses no organometallic partner at all?",
+   "options": [
+    "Negishi",
+    "Heck",
+    "Suzuki",
+    "Stille"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a Suzuki coupling need a base?",
+   "options": [
+    "To form the borate",
+    "To neutralize HX",
+    "To deprotonate the halide",
+    "To reduce the palladium"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why did the Suzuki coupling displace the Stille industrially?",
+   "options": [
+    "The Stille gives lower yields",
+    "Tin is more expensive",
+    "The Stille needs palladium",
+    "Boronic acids are safer"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which step is unique to the Heck reaction?",
+   "options": [
+    "Reductive elimination",
+    "Transmetalation",
+    "Beta-hydride elimination",
+    "Oxidative addition"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What geometry does the Heck reaction usually give?",
+   "options": [
+    "No alkene",
+    "Trans",
+    "Cis",
+    "A racemic mixture"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can an aryl halide not undergo SN2?",
+   "options": [
+    "Its backside is shielded",
+    "The halide is a poor leaving group",
+    "The ring is electron-poor",
+    "It prefers SN1"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How does palladium make an aryl halide reactive?",
+   "options": [
+    "It removes the halide first",
+    "It protonates the ring",
+    "It reduces the ring",
+    "It bonds that carbon"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does convergent mean for a synthesis?",
+   "options": [
+    "The route has no branches",
+    "Yields are additive",
+    "Two halves, joined late",
+    "Steps run in one pot"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a convergent route return more material?",
+   "options": [
+    "Purification is easier",
+    "Yields multiply along each branch",
+    "Each branch is shorter in time",
+    "Fewer reagents are needed"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which functional groups survive a Suzuki coupling?",
+   "options": [
+    "Ketones, esters and free alcohols",
+    "Only alkanes",
+    "Only ethers",
+    "None"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which bond should signal a cross-coupling disconnection?",
+   "options": [
+    "An ester C-O bond",
+    "A C-C bond next to a carbonyl",
+    "A C-H bond",
+    "A biaryl C-C bond"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What prize recognized cross-coupling?",
+   "options": [
+    "The 2001 Nobel Prize in Chemistry",
+    "No prize was awarded",
+    "The 2010 Nobel Prize in Chemistry",
+    "The 1912 Nobel Prize in Chemistry"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why would a Grignard fail on a substrate carrying a free phenol?",
+   "options": [
+    "Magnesium binds the phenol",
+    "The phenol O-H quenches it",
+    "Phenols are not nucleophilic",
+    "The ring deactivates it"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Can an aryl Grignard be made from an aryl halide?",
+   "options": [
+    "Yes, magnesium insertion works",
+    "No, aryl halides are inert to magnesium",
+    "Only for iodides",
+    "Only with a catalyst"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the oxidation state of palladium during transmetalation?",
+   "options": [
+    "Pd(0) throughout",
+    "It rises from 0 to II",
+    "It falls from II to 0",
+    "Pd(II) throughout"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a mole percent loading typical of a palladium catalyst?",
+   "options": [
+    "Ten equivalents",
+    "None is needed",
+    "A few percent",
+    "Stoichiometric"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which partner is oxidatively added in a Suzuki coupling?",
+   "options": [
+    "The solvent",
+    "The aryl halide",
+    "The boronic acid",
+    "The base"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is cross-coupling suited to making many analogs?",
+   "options": [
+    "Both halves vary independently",
+    "It needs no catalyst",
+    "It is a one-pot reaction",
+    "It requires no purification"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which is not a step in the standard catalytic cycle?",
+   "options": [
+    "Oxidative addition",
+    "Transmetalation",
+    "Reductive elimination",
+    "Electrophilic aromatic substitution"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  }
  ]
 }
