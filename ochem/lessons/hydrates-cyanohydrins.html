@@ -111,7 +111,7 @@
 
 <nav class="lesson-links xshell" aria-label="Related lessons">
   <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/hydrates-cyanohydrins.html">Hydrates &amp; cyanohydrins &mdash; the written section</a></span></div>
-  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="acetals.html">Acetals &amp; hemiacetals</a><a href="alcohol-oxidation.html">Oxidizing alcohols</a><a href="carbon-carbon-bonds.html">Making carbon&ndash;carbon bonds</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="aldehyde-oxidation.html">Oxidizing an aldehyde</a><a href="alcohol-oxidation.html">Oxidizing alcohols</a><a href="carbon-carbon-bonds.html">Making carbon&ndash;carbon bonds</a></span></div>
 </nav>
 <script src="../assets/shuffle-options.js" defer></script>
 <script src="../assets/step-back.js" defer></script>
@@ -164,18 +164,19 @@ document.addEventListener('DOMContentLoaded', function(){
         bodyHtml: '<p class="step-body">Water adds to a carbonyl exactly as any other nucleophile does, and the product is a <b>gem-diol</b> &mdash; two OH groups on one carbon &mdash; usually called a <b>hydrate</b>.</p>' +
           '<p class="step-body" style="text-align:center;"><b>R<sub>2</sub>C=O + H<sub>2</sub>O &nbsp;&rlhar;&nbsp; R<sub>2</sub>C(OH)<sub>2</sub></b></p>' +
           '<p class="step-body">Nothing about the mechanism is new. What is new is that this one is <b>reversible and measurable</b>, so for the first time you can put a number on how much a carbonyl wants to be attacked.</p>' +
-          '<div class="explain-box">Every other addition in this chapter is described with words like &ldquo;more reactive&rdquo;. Hydration is the reaction where that phrase becomes a percentage, and the percentages run across four orders of magnitude.</div>'
+          '<div class="explain-box">Every other addition in this chapter is described with words like &ldquo;more reactive&rdquo;. Hydration is the reaction where that phrase becomes a percentage, and the percentages run from a tenth of one to essentially a hundred.</div>'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'Two causes, and they never disagree.',
+        title: 'Two causes, and a third once a ring is attached.',
         bodyHtml: '<p class="step-body">Whether a given carbonyl hydrates is decided by two things, and for ordinary substituents they point the same way:</p>' +
           '<ul class="step-body">' +
           '<li><b>Sterics.</b> Addition converts a flat sp&sup2; carbon into a crowded sp&sup3; one, squeezing substituents from 120&deg; to 109&deg;. Two methyls object to that; two hydrogens do not.</li>' +
           '<li><b>Electronics.</b> Alkyl groups donate into the carbonyl and make the starting material comfortable. Electron-withdrawing groups do the reverse and make the carbonyl carbon hungrier.</li>' +
           '</ul>' +
           '<p class="step-body">Which is why <b>aldehyde &gt; ketone</b> toward every nucleophile in this chapter. It is one ordering with two independent reasons behind it, and that is why it holds so reliably.</p>' +
+          '<p class="step-body">A third cause appears once the carbonyl is <b>conjugated</b>. Benzaldehyde hydrates far less than acetaldehyde, even though both are aldehydes carrying one substituent, because addition destroys the conjugation with the ring. Same principle as the other two: anything that makes the starting material comfortable holds the equilibrium back.</p>' +
           '<div class="explain-box">Watch for the case where the two <i>do</i> disagree, because it is the one that tests whether you are reasoning or reciting. In a small ring the carbonyl carbon is already strained as sp&sup2;, so addition <b>relieves</b> strain instead of creating it &mdash; and the steric argument reverses.</div>'
       },
       {
@@ -231,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'Chromium is in a different oxidation state in the two reagents'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct, and this is the payoff for a reaction whose product is usually a trace species. An oxidant cannot attack a C=O directly; it needs a C–H with an O–H on the same carbon, which is what an alcohol has. In water the aldehyde hydrates, the gem-diol <i>is</i> that arrangement, and the oxidation runs a second time. PCC works in anhydrous dichloromethane, so no hydrate forms and there is nothing left to attack. Both reagents are Cr(VI).',
+        correctFeedback: 'Correct, and this is the payoff for a reaction whose product is usually the minor species. An oxidant cannot attack a C=O directly; it needs a C–H with an O–H on the same carbon, which is what an alcohol has. In water the aldehyde hydrates, the gem-diol <i>is</i> that arrangement, and the oxidation runs a second time. PCC works in anhydrous dichloromethane, so no hydrate forms and there is nothing left to attack. Both reagents are Cr(VI).',
         wrongFeedback: 'Ask what an oxidant actually needs to grab. It is not the carbonyl — it is a C–H next to an O–H. Which of the two conditions can supply that arrangement from an aldehyde?'
       },
       {
@@ -273,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'Bisulfite adduct, then hydrolysis'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct. All four one-carbon moves are worth holding side by side, and they differ only in what the new carbon brings with it: formaldehyde plus a Grignard gives a primary alcohol, CO<sub>2</sub> plus a Grignard gives a carboxylic acid, a nitrile plus a Grignard gives a ketone, and a cyanohydrin gives a carbon that can become an acid, an alkene or — with LiAlH<sub>4</sub> — a CH<sub>2</sub>NH<sub>2</sub> next to the alcohol you already made. The bisulfite adduct adds no carbon at all.',
+        correctFeedback: 'Correct. All four one-carbon moves are worth holding side by side, and they differ only in what the new carbon brings with it: formaldehyde plus a Grignard gives a primary alcohol, CO<sub>2</sub> plus a Grignard gives a carboxylic acid, a nitrile plus a Grignard gives a ketone, and a cyanohydrin gives a carbon that can become an acid, an α,β-unsaturated nitrile, or — with LiAlH<sub>4</sub> — a CH<sub>2</sub>NH<sub>2</sub> next to the alcohol you already made. The bisulfite adduct adds no carbon at all.',
         wrongFeedback: 'Three of these add a carbon and one does not. Of the three, which one arrives with a nitrogen already attached to it?'
       },
       {

@@ -36,6 +36,26 @@
        structures, which is the equilibrium concept alone. 3 and 4 are the
        Jones/PCC payoff, so oxidizability joins it. 6 is the one-carbon
        extension, and 7 is the case where the two causes disagree. */
+    /* Step 2 sorts six nucleophiles against one acid chloride, 3 is the
+       two-equivalent trap, 4 the leaving-group ranking, 6 the activate-then-
+       acylate order, 7 the deprotonation that turns nothing into a reaction. */
+    'acyl-chlorides-anhydrides': { n:8, steps:{
+      2:['activation-before-acylation','acyl-reactivity-order'],
+      3:['activation-before-acylation'],
+      4:['acyl-reactivity-order','leaving-group-ability'],
+      6:['activation-before-acylation'],
+      7:['activation-before-acylation','acyl-reactivity-order'] } },
+
+    /* Step 2 is the product sorter and carries the carbon counting with it.
+       3 is why a Grignard adds once, 4 is a pure carbon count, 6 the route
+       chosen on the substrate rather than the target, 7 the DIBAL trap. */
+    'nitriles': { n:8, steps:{
+      2:['nitrile-as-acyl-level'],
+      3:['nitrile-as-acyl-level','tetrahedral-intermediate'],
+      4:['nitrile-as-acyl-level','oxidation-level'],
+      6:['nitrile-as-acyl-level'],
+      7:['nitrile-as-acyl-level'] } },
+
     'hydrates-cyanohydrins': { n:8, steps:{
       2:['addition-equilibrium'],
       3:['addition-equilibrium','aldehyde-oxidizability'],

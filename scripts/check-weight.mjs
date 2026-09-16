@@ -85,6 +85,16 @@ const SHELL_BUDGETS = [
      Phase 3 is finished at this point, so the next raise should be treated
      as a question rather than a formality.
 
+     108 -> 112, asked as a question rather than taken. Phase 4 deepens four
+     existing chapters by two sections each, so this is eight topics, not a
+     chapter — and it costs about the same 1.4 KB gzipped per pair that a
+     chapter of course map cost above, because the per-topic content is the
+     same three entries. The measured overrun at 112 topics was 0.8 KB, so 4
+     KB covers the remaining three pairs with room to spare and this should
+     be the last raise of Phase 4. If a fifth pair ever appears, take one of
+     the two savings below instead of raising again: the teach-string split
+     is worth roughly half of concepts.js and is the one to reach for.
+
      The obvious saving, if one is ever needed, is that ochem/index.html loads
      lesson-concepts.js for one call in ochem-home.js; splitting that call out
      would take 4.4 KB off the home page, though not off this number, since the
@@ -92,7 +102,7 @@ const SHELL_BUDGETS = [
      every page loads every concept's `teach` string — moving those to a
      fetched file would roughly halve concepts.js at the cost of one request on
      the pages that actually surface a teach block. */
-  ['ochem', 108],
+  ['ochem', 112],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -184,7 +194,10 @@ const DATA_BUDGETS = [
      cost: it is fetched only when a reader opens the assistant. Budgeted with
      this file's usual ~10% headroom rather than held to the measured value,
      so a chapter does not fail the build for the index doing its job. */
-  ['ochem/assets/tutor-bank.json', 200],
+/* 200 -> 212 for Phase 4's eight sections, on the same reasoning as above:
+     fetched only when a reader opens the assistant, and budgeted with this
+     file's usual headroom so a pair of sections does not fail the build. */
+  ['ochem/assets/tutor-bank.json', 212],
   /* Ochem's question bank, now split in two (scripts/build-ochem-bank.mjs).
 
      The core is what practice.html and review.html WAIT on before their first
@@ -199,8 +212,13 @@ const DATA_BUDGETS = [
      practice-bank.json itself is the SOURCE the two are generated from. It is
      no longer fetched by anything at runtime, so it has no budget: adding one
      would be budgeting a file no reader downloads. */
-  ['ochem/assets/practice-bank-core.json', 204],
-  ['ochem/assets/practice-bank-why.json', 148],
+/* 204 -> 216 and 148 -> 156 for Phase 4. Each pair of sections adds 60
+     questions, about 4 KB of core and 2 KB of explanations, so this covers
+     the phase. The core half is first-paint latency on practice.html and
+     review.html, which is why it is tracked to the kilobyte rather than
+     rounded up generously. */
+  ['ochem/assets/practice-bank-core.json', 216],
+  ['ochem/assets/practice-bank-why.json', 156],
 ];
 
 const REF_RE = /(?:href|src)="([^"]+)"/g;

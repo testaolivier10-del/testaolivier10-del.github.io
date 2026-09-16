@@ -38769,14 +38769,14 @@
    "type": "mcq"
   },
   {
-   "q": "Benedict's solution holds Cu(II) with which ligand?",
+   "q": "Why does fructose give a positive Benedict's test?",
    "options": [
-    "EDTA",
-    "Citrate",
-    "Tartrate",
-    "Ammonia"
+    "Base isomerizes it to an aldose",
+    "It already contains an aldehyde",
+    "Its ring cannot open at all",
+    "Copper attacks the ketone directly"
    ],
-   "correct": 1,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -38943,6 +38943,730 @@
     "An alcohol",
     "A carboxylate",
     "An ester"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "acyl-chlorides-anhydrides": [
+  {
+   "q": "By-products of the SOCl2 route to an acid chloride?",
+   "options": [
+    "SO2 and HCl",
+    "SO3 and water",
+    "Cl2 and H2S",
+    "H2SO4 and HCl"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Oxalyl chloride with catalytic DMF releases:",
+   "options": [
+    "CO2, H2O, HCl",
+    "COCl2 and HCl",
+    "SO2, CO, HCl",
+    "CO, CO2, HCl"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "PCl3 converts a carboxylic acid to an acid chloride plus:",
+   "options": [
+    "PCl5",
+    "H3PO3",
+    "POCl3",
+    "H3PO4"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "PCl5 gives an acid chloride plus:",
+   "options": [
+    "PCl3 and Cl2",
+    "H3PO4 alone",
+    "POCl3 and HCl",
+    "H3PO3 and HCl"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why are SOCl2 and oxalyl chloride preferred?",
+   "options": [
+    "By-products are gases",
+    "They are non-toxic",
+    "They need no heating",
+    "They act only on esters"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a carboxylic acid a poor acylating agent for amines?",
+   "options": [
+    "Its carbonyl is not electrophilic",
+    "It has no leaving group at all",
+    "Amines are not nucleophilic",
+    "The amine is protonated first"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Typical pKa of a carboxylic acid:",
+   "options": [
+    "16-18",
+    "Around -7",
+    "4-5",
+    "9-10"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which nucleophile converts an acid chloride to an ester?",
+   "options": [
+    "R'COO-",
+    "R'OH",
+    "H2O",
+    "R'NH2"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent turns an acid chloride into an anhydride?",
+   "options": [
+    "R'COO-",
+    "R'COOH",
+    "R'OH",
+    "R'NH2"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many equivalents of amine are needed for amide formation?",
+   "options": [
+    "1",
+    "3",
+    "0.5",
+    "2"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does amide formation consume extra amine?",
+   "options": [
+    "Amines are weak nucleophiles",
+    "Chloride leaves twice over",
+    "HCl protonates the amine",
+    "The amide needs two nitrogens"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What replaces the sacrificial second equivalent of amine?",
+   "options": [
+    "Acetic acid",
+    "Pyridine",
+    "Ethanol",
+    "Water"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does pyridine not compete with the amine?",
+   "options": [
+    "Poorly nucleophilic",
+    "Not basic enough",
+    "Acidic, not basic",
+    "It traps chloride ion"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Leaving group expelled from an anhydride:",
+   "options": [
+    "Chloride ion",
+    "Alkoxide ion",
+    "Hydroxide ion",
+    "Carboxylate"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Correct reactivity order?",
+   "options": [
+    "Acid chloride > anhydride > ester",
+    "Anhydride > acid chloride > ester",
+    "Ester > anhydride > acid chloride",
+    "Anhydride > ester > acid chloride"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Standard acetylating agent:",
+   "options": [
+    "Ethyl acetate",
+    "Acetonitrile",
+    "Acetic anhydride",
+    "Acetic acid with base"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Acetic anhydride acetylates which group of salicylic acid?",
+   "options": [
+    "The carbonyl oxygen",
+    "The phenol OH",
+    "The carboxyl OH",
+    "The ring carbon"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "By-product of the aspirin synthesis:",
+   "options": [
+    "Water",
+    "HCl",
+    "Carbon dioxide",
+    "Acetic acid"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Main drawback of acylating with an anhydride:",
+   "options": [
+    "It requires AlCl3",
+    "It decomposes in air",
+    "Poor atom economy",
+    "It cannot acylate amines"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Heating succinic acid gives:",
+   "options": [
+    "A diamide",
+    "A cyclic anhydride",
+    "An open-chain imide",
+    "A cyclic ester"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Ring size formed when phthalic acid is heated:",
+   "options": [
+    "Five",
+    "Six",
+    "Four",
+    "Seven"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A cyclic anhydride plus an amine first gives:",
+   "options": [
+    "An imide directly",
+    "A diamide",
+    "A diester",
+    "An amic acid"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "An amic acid becomes an imide on treatment with:",
+   "options": [
+    "Acid, losing HCl",
+    "Heat, losing CO2",
+    "Heat, losing water",
+    "Base, losing water"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which of these is an imide?",
+   "options": [
+    "Ethyl succinate",
+    "Succinimide",
+    "Succinic anhydride",
+    "Succinic acid"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An acid chloride with AlCl3 ionizes to:",
+   "options": [
+    "An acylium ion",
+    "A primary carbocation",
+    "A carbanion",
+    "An alkoxide"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Friedel-Crafts acylation forms which bond?",
+   "options": [
+    "Carbon-oxygen",
+    "Carbon-nitrogen",
+    "Carbon-chlorine",
+    "Carbon-carbon"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Benzoic acid to phenyl ketone: which reagent is used first?",
+   "options": [
+    "NaCN",
+    "LiAlH4",
+    "SOCl2",
+    "AlCl3"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "SOCl2 converts alcohols into:",
+   "options": [
+    "Ethers",
+    "Alkyl chlorides",
+    "Secondary alcohols",
+    "Aldehydes"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does SOCl2 do to an OH group?",
+   "options": [
+    "Makes a chlorosulfite",
+    "Converts it to an alkoxide",
+    "Oxidizes it to C=O",
+    "Removes it as water"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How does esterification via an acid chloride differ from Fischer?",
+   "options": [
+    "It is an equilibrium",
+    "It needs acid catalyst",
+    "It gives an amide",
+    "It is irreversible"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "nitriles": [
+  {
+   "q": "Oxidation level of the nitrile carbon:",
+   "options": [
+    "+3",
+    "+1",
+    "+2",
+    "+4"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which sits on the same oxidation rung as a nitrile?",
+   "options": [
+    "Aldehyde",
+    "Alkane",
+    "Carboxylic acid",
+    "Primary alcohol"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A nitrile carbon and a carboxylic acid carbon both carry:",
+   "options": [
+    "1 heteroatom bond",
+    "3 heteroatom bonds",
+    "2 heteroatom bonds",
+    "4 heteroatom bonds"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Converting a nitrile into an amide counts as:",
+   "options": [
+    "Oxidation",
+    "Reduction",
+    "Rearrangement",
+    "Substitution"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "RCH2X plus NaCN gives:",
+   "options": [
+    "RCH2CN",
+    "RCH2NH2",
+    "RCH2OH",
+    "RCH=CH2"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Mechanism of cyanide with a primary alkyl halide:",
+   "options": [
+    "SN1",
+    "E1",
+    "Radical",
+    "SN2"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is cyanide well suited to this reaction?",
+   "options": [
+    "Weak nucleophile and base",
+    "Neither basic nor nucleophilic",
+    "Strong nucleophile, weak base",
+    "Strong base, weak nucleophile"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Approximate pKa of HCN:",
+   "options": [
+    "25",
+    "9",
+    "4",
+    "16"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A tertiary alkyl halide with NaCN gives mainly:",
+   "options": [
+    "Alkene",
+    "Nitrile",
+    "Amine",
+    "Alcohol"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Dehydrating a primary amide gives:",
+   "options": [
+    "An acid chloride",
+    "A primary amine",
+    "An imide",
+    "A nitrile"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagents dehydrate a primary amide?",
+   "options": [
+    "NaCN or KCN",
+    "H3O+ or HO-",
+    "SOCl2 or P2O5",
+    "LiAlH4 or NaBH4"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A cyanohydrin comes from cyanide plus which of these?",
+   "options": [
+    "An amide",
+    "A ketone",
+    "An alkene",
+    "An ester"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "The Sandmeyer route to an aryl nitrile starts from:",
+   "options": [
+    "A diazonium salt",
+    "A Grignard reagent",
+    "An acid chloride",
+    "An aryl halide"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is Sandmeyer the only route to an aryl nitrile?",
+   "options": [
+    "CN is too large",
+    "CuCN is inexpensive",
+    "EAS cannot install it",
+    "Benzene is unreactive"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "RCN with aqueous H3O+ and heat gives:",
+   "options": [
+    "RCH2NH2",
+    "RCHO",
+    "RCOR'",
+    "RCOOH"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Nitrile hydrolysis passes through:",
+   "options": [
+    "The imine",
+    "The amide",
+    "The aldehyde",
+    "The ester"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Mild hydrolysis of a nitrile can be stopped at:",
+   "options": [
+    "RCONH2",
+    "RCOOH",
+    "RCHO",
+    "RCH2NH2"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "LiAlH4 then water converts RCN into:",
+   "options": [
+    "RCH2NH2",
+    "RCH2OH",
+    "RCONH2",
+    "RCH2NHR"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Butanenitrile with LiAlH4 gives:",
+   "options": [
+    "Propan-1-amine",
+    "Butanal",
+    "Butanoic acid",
+    "Butan-1-amine"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "DIBAL-H, one equivalent at -78 C, converts RCN into:",
+   "options": [
+    "RCOOH",
+    "RCOR'",
+    "RCHO",
+    "RCH2NH2"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "The species present before DIBAL-H workup is:",
+   "options": [
+    "A carbocation",
+    "An imine anion",
+    "A tetrahedral alkoxide",
+    "A free aldehyde"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does DIBAL-H stop after a single hydride?",
+   "options": [
+    "Aluminum blocks the second hydride",
+    "Only one equivalent is added",
+    "Low temperature stops it",
+    "The anion is not electrophilic"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A Grignard on a nitrile, after workup, gives:",
+   "options": [
+    "A primary amine",
+    "An aldehyde",
+    "A ketone",
+    "A tertiary alcohol"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does only one Grignard equivalent add to a nitrile?",
+   "options": [
+    "Magnesium blocks the carbon",
+    "No carbonyl forms until workup",
+    "The ketone formed is unreactive",
+    "Grignards add only once ever"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "With an ester, what does the Grignard release mid-reaction?",
+   "options": [
+    "A ketone",
+    "An aldehyde",
+    "A carboxylate",
+    "An imine salt"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "The C-N triple bond stretch appears near:",
+   "options": [
+    "2250 cm-1",
+    "1700 cm-1",
+    "3300 cm-1",
+    "1600 cm-1"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is that nitrile stretch diagnostic?",
+   "options": [
+    "No group absorbs above 3000",
+    "It is the strongest peak",
+    "It appears as a doublet",
+    "The window is nearly empty"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "RX to RCN to RCOOH accomplishes:",
+   "options": [
+    "Chain shortening",
+    "No net change",
+    "One-carbon extension",
+    "Two-carbon extension"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "The cyanide route is chosen over a Grignard when the substrate has:",
+   "options": [
+    "No other groups",
+    "An O-H group",
+    "A tertiary center",
+    "A hindered carbon"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "The Grignard route to a chain-extended acid fails on substrates with:",
+   "options": [
+    "C-C bonds",
+    "Primary carbons",
+    "Long chains",
+    "N-H bonds"
    ],
    "correct": 3,
    "difficulty": "medium",

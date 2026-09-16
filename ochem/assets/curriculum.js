@@ -152,7 +152,9 @@
     { id: 'carboxylic-acids', title: 'Carboxylic Acids & Derivatives', topics: [
       { id: 'carboxylic-acids', title: 'Carboxylic acids', href: 'lessons/carboxylic-acids.html', dependsOn: ['resonance', 'pka', 'acidity-factors'] },
       { id: 'esters-amides', title: 'Esters & amides', href: 'lessons/esters-amides.html', dependsOn: ['carboxylic-acids', 'leaving-groups'] },
-      { id: 'acyl-substitution', title: 'Nucleophilic acyl substitution', href: 'lessons/acyl-substitution.html', mechanism: 'mechanisms/acyl-substitution.html', dependsOn: ['esters-amides', 'nucleophilic-addition'] }
+      { id: 'acyl-substitution', title: 'Nucleophilic acyl substitution', href: 'lessons/acyl-substitution.html', mechanism: 'mechanisms/acyl-substitution.html', dependsOn: ['esters-amides', 'nucleophilic-addition'] },
+      { id: 'acyl-chlorides-anhydrides', title: 'Acid chlorides & anhydrides', href: 'lessons/acyl-chlorides-anhydrides.html', dependsOn: ['acyl-substitution', 'alcohol-reactions'] },
+      { id: 'nitriles', title: 'Nitriles', href: 'lessons/nitriles.html', dependsOn: ['acyl-chlorides-anhydrides', 'sn2'] }
     ]},
     { id: 'enolate-chemistry', title: 'Enolate Chemistry', topics: [
       { id: 'alpha-hydrogens', title: 'Alpha hydrogens & enolates', href: 'lessons/alpha-hydrogens.html', dependsOn: ['aldehydes-ketones', 'acidity-factors', 'alkynes'] },

@@ -121,6 +121,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/acyl-chlorides-anhydrides.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/acyl-substitution.html</loc>
     <lastmod>2026-09-16</lastmod>
     <priority>0.8</priority>
@@ -526,6 +531,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/nitriles.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/nucleic-acids.html</loc>
     <lastmod>2026-09-16</lastmod>
     <priority>0.8</priority>
@@ -693,6 +703,11 @@
   <url>
     <loc>https://levlprep.com/ochem/lessons/acidity-factors.html</loc>
     <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/acyl-chlorides-anhydrides.html</loc>
+    <lastmod>2026-09-16</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -1088,6 +1103,11 @@
   <url>
     <loc>https://levlprep.com/ochem/lessons/newman.html</loc>
     <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/nitriles.html</loc>
+    <lastmod>2026-09-16</lastmod>
     <priority>0.7</priority>
   </url>
   <url>

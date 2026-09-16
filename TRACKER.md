@@ -1254,6 +1254,71 @@ opening with an em dash shipped `&amp;mdash;` into its own search snippet.
 Thirteen pages were affected, eleven of them pre-existing. Fixed at the
 generator.
 
+**The independent review found twelve, and one of them was mine twice over.**
+Eight confident, four qualified, all accepted.
+
+| Claim as written | Where | Why it is wrong |
+| --- | --- | --- |
+| "That spread is **four orders of magnitude**" | notes, lesson, concept | 0.1% to 100% is three, and the figure caption on the same page already said three. Now stated as three in percent, with the caveat that comparing equilibrium constants gives about six |
+| A cyanohydrin's nitrile becomes "an acid, a beta-amino alcohol, or **an alkene**" | concept and lesson | Dehydration gives an &alpha;,&beta;-unsaturated **nitrile**; the nitrile carbon is retained in all three routes. The notes had it right and the two summaries did not |
+| "You met it already without being told" (Jones and PCC) | both new notes and both lessons | Alcohol oxidation is section 62 and these are 59 and 60, so the reader has not met it. Reframed as what the next chapter will state without explaining, which is a better claim anyway |
+| "A species present at **a few percent** controls the outcome" | `notes/hydrates-cyanohydrins` | The hydrate doing the work in a Jones oxidation is an aliphatic aldehyde's, which the table two paragraphs up puts at ~50%. The trace-species framing belongs to the sugar case, where it is now made |
+| The hydrates lesson's "Leads to" pointed at **acetals**, the previous section | `lessons/hydrates-cyanohydrins` | Now points forward |
+| "Two causes, and they **never disagree**" as a step title, with a benzaldehyde row explained by conjugation | `lessons/hydrates-cyanohydrins` | My own new row created the contradiction. Conjugation is now taught as the third cause in the step, not sprung in the answer |
+| Bisulfite adduct called a "**water-soluble** salt" and then filtered off as a solid | `notes/hydrates-cyanohydrins` | Both are said in textbooks and they sit badly together. The useful property is the reversed solubility &mdash; soluble in water, insoluble in organic solvents &mdash; so the separation is an extraction, with filtration as the case where it crystallizes |
+| "A ketone **never** enters this picture" and a concept titled "Why **only** aldehydes oxidize" | figure and concept | Too narrow twice. Ketones are oxidized by Baeyer&ndash;Villiger and by hot KMnO<sub>4</sub>, and &mdash; the one that matters here &mdash; **fructose is a reducing sugar**: these reagents are basic, and base isomerizes a ketose to an aldose through an enediol. A free anomeric carbon, not an aldehyde, is what a positive test actually needs |
+
+The four qualified findings: the figure's alt text described a branch that is
+not drawn, "under anhydrous conditions there is **nothing** to oxidize" ignores
+the starting alcohol, and two wordings were tightened. The ketose point earned
+a new bank question, replacing one of a near-duplicate pair on the Fehling's
+and Benedict's ligands.
+
+**A layout bug found by a drafting agent, not by a check.** Thirty-two notes
+files wrapped their tables in `class="table-wrap"`, which has **no CSS rule
+anywhere**; only `notes-table-wrap` is styled. Those tables lost their
+`overflow-x:auto`, so a wide table overflowed the page on a phone instead of
+scrolling. `check-site.mjs` accepted both spellings, which is why nobody
+noticed. All thirty-two are converted.
+
+**The browser pass confirmed both lessons end to end**, walking every option in
+every gradeable step across four runs, and independently measured the sort-step
+distributions at 3/2/1 of six and 4/3 of seven &mdash; so no single button
+scores above 57%. It also noted that `mastery-engine.js` silently drops an
+unknown concept id rather than warning, which means a typo in
+`lesson-concepts.js` would fail invisibly. Worth a guard.
+
+#### Carboxylic Acids & Derivatives 3 &rarr; 5 — **complete**
+
+Two sections, two lessons, 60 questions, two concepts, two figures.
+
+**Acid chlorides & anhydrides** is the missing first move. The course taught
+the reactivity ladder and that you may only go down it, without ever teaching
+how to get to the top &mdash; and the reason the acid itself is a poor
+acylating agent is not its position on the ladder but its proton: at pK<sub>a</sub>
+4&ndash;5 it protonates any nucleophile good enough to attack, giving an
+ammonium carboxylate with the nucleophile switched off and the electrophile
+anionic. The section covers SOCl<sub>2</sub>, oxalyl chloride and the
+phosphorus reagents, chosen on their by-products rather than their mechanism;
+the two-equivalent amine trap; anhydrides and what spending half a molecule as
+a leaving group costs; and Friedel&ndash;Crafts as the one use that builds a
+carbon skeleton.
+
+**Nitriles** closes the chapter on the member with no carbonyl in it. Three
+bonds to nitrogen is the same count as three bonds to oxygen, so it sits on the
+acid rung, and everything follows from that: moving along the rung needs no
+oxidant, stepping off it needs a reducing agent. The four exits &mdash; acid,
+primary amine, aldehyde, ketone &mdash; are one reagent apart, and the
+distinction worth teaching is that DIBAL-H is **crippled, not rationed**:
+rationing LiAlH<sub>4</sub> to one equivalent gives a mixture, not an aldehyde,
+because what stops DIBAL is that its intermediate is an anion.
+
+**Budgets raised, with the reasoning written into the file.** The ochem shell
+108 &rarr; 112 KB, `practice-bank-core.json` 204 &rarr; 216, the `why` half
+148 &rarr; 156 and `tutor-bank.json` 200 &rarr; 212. Each pair of sections
+costs about 1.4 KB of shell and 60 questions, so these cover the rest of the
+phase and should be the last raise in it.
+
 
 ---
 

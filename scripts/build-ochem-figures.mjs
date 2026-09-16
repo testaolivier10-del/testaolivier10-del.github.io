@@ -2888,7 +2888,7 @@ FIGURES.push({
   section: 'aldehyde-oxidation',
   anchor: '<h3>Tollens\' reagent and the silver mirror</h3>',
   viewBox: '0 0 760 300',
-  alt: 'An aldehyde branching to its hydrate and on to the carboxylic acid under wet conditions, or stopping under dry conditions',
+  alt: 'Three boxes in a row: an aldehyde, then its hydrate, then the carboxylic acid, with the wet and dry conditions listed beneath',
   build() {
     let s = '';
     const box = (x, w, kind, title, sub) => {
@@ -2910,11 +2910,92 @@ FIGURES.push({
     s += text(24, 216, 'water present \u2192 the hydrate keeps re-forming \u2192 runs to the acid', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
     s += text(24, 244, 'PCC in anhydrous CH\u2082Cl\u2082', { cls: 'fg-lbl', size: 12, anchor: 'start' });
     s += text(24, 264, 'no water \u2192 no hydrate \u2192 nothing left to attack, so it stops', { cls: 'fg-tag', size: 11, anchor: 'start' });
-    s += text(24, 292, 'A ketone never enters this picture: its carbonyl carbon has no hydrogen to remove.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(24, 292, 'A ketone stops at the first box: its carbonyl carbon has no hydrogen to remove.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
     return s;
   },
   caption: 'The step everyone skips. An oxidant needs an O\u2013H and a C\u2013H on the same carbon, and a C=O offers neither \u2014 so what is actually attacked is the hydrate. That single box is the whole difference between a reagent that stops at the aldehyde and one that does not.',
   note: 'The same argument explains a sugar. A cyclic hemiacetal holds only a trace of the open-chain aldehyde, and yet glucose gives a full silver mirror, because the equilibrium delivers that trace continuously and the oxidant consumes it as fast as it appears. A species can be present in traces and still control the product, provided it is the only form that can react.',
+});
+
+/* ----------------------------------------------------------------- 55 ---
+   The ladder is usually drawn as a list. Drawing it as a one-way staircase,
+   with the acid sitting off to the side and one arrow climbing back up, says
+   the thing the list cannot: there is exactly one way up, and you take it
+   first. */
+FIGURES.push({
+  id: 'one-way-ladder',
+  section: 'acyl-chlorides-anhydrides',
+  anchor: '<h3>What an acid chloride then does</h3>',
+  viewBox: '0 0 760 320',
+  alt: 'Four acyl derivatives on descending steps with downward arrows between them, and a single upward arrow labeled SOCl2 from the carboxylic acid',
+  build() {
+    let s = '';
+    const steps = [
+      { y: 58,  lab: 'acid chloride', sub: 'leaving group: Cl\u207b' },
+      { y: 116, lab: 'anhydride',     sub: 'leaving group: RCOO\u207b' },
+      { y: 174, lab: 'ester',         sub: 'leaving group: RO\u207b' },
+      { y: 232, lab: 'amide',         sub: 'leaving group: R\u2082N\u207b' },
+    ];
+    steps.forEach((st, i) => {
+      s += panel(300 + i * 26, st.y - 22, 250, 44, { kind: i === 0 ? null : null });
+      s += text(316 + i * 26, st.y - 4, st.lab, { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+      s += text(316 + i * 26, st.y + 14, st.sub, { cls: 'fg-sm', size: 10, anchor: 'start' });
+      if (i < steps.length - 1) {
+        s += arrow(P(560 + i * 26, st.y + 6), P(574 + i * 26, st.y + 36));
+      }
+    });
+    s += text(650, 40, 'down, freely', { cls: 'fg-tag-good', size: 11 });
+
+    // The acid, off to the side, and the one arrow back up.
+    s += panel(24, 152, 210, 66, { kind: 'warn' });
+    s += text(40, 176, 'carboxylic acid', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += text(40, 196, 'pK\u2090 4\u20135: it protonates', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(40, 210, 'the nucleophile instead', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += arrow(P(240, 160), P(296, 62));
+    s += text(236, 118, 'SOCl\u2082', { cls: 'fg-tag-good', size: 12, anchor: 'start' });
+    s += text(236, 134, 'the only way up', { cls: 'fg-sm', size: 10, anchor: 'start' });
+
+    s += rule(24, 262, 700, 262);
+    s += text(24, 286, 'Every step down expels a leaving group more basic than the one before it.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(24, 308, 'Nothing climbs, because that would mean expelling a better one \u2014 hence the detour.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    return s;
+  },
+  caption: 'The ranking is read straight off the leaving group: chloride, then carboxylate, then alkoxide, then amide anion, each more basic and so less willing to go than the last. That is why the list is one-way, and why almost every route out of a carboxylic acid opens with the same move.',
+  note: 'The acid is drawn beside the ladder rather than on it because its problem is not really its position. On reactivity alone it would sit between the anhydride and the ester, but it carries a proton, and any nucleophile good enough to attack is basic enough to take that proton first. What you get is an ammonium carboxylate: the nucleophile protonated, the electrophile now anionic, and both halves of the reaction switched off by a proton transfer faster than anything else in the flask.',
+});
+
+/* ----------------------------------------------------------------- 56 ---
+   Four reagents, four products, one starting material. Drawn as a hub so the
+   carbon count can be written on each spoke, since the count is the thing
+   students get wrong rather than the reagents. */
+FIGURES.push({
+  id: 'nitrile-four-ways',
+  section: 'nitriles',
+  anchor: '<h3>One carbon, four destinations</h3>',
+  viewBox: '0 0 760 300',
+  alt: 'A nitrile at the left with four labeled arrows to a carboxylic acid, a primary amine, an aldehyde and a ketone',
+  build() {
+    let s = '';
+    s += panel(24, 116, 180, 62, { kind: 'warn' });
+    s += text(114, 142, 'R\u2013C\u2261N', { cls: 'fg-lbl', size: 15 });
+    s += text(114, 164, 'three bonds to N', { cls: 'fg-sm', size: 10 });
+
+    const rows = [
+      { y: 44,  rgt: 'H\u2083O\u207a or HO\u207b, heat',        prod: 'R\u2013COOH',                 note: 'via the amide \u00b7 same carbons' },
+      { y: 108, rgt: 'LiAlH\u2084, then H\u2082O',              prod: 'R\u2013CH\u2082NH\u2082',   note: 'the CN carbon becomes the CH\u2082' },
+      { y: 172, rgt: 'DIBAL-H, 1 eq, \u221278 \u00b0C',        prod: 'R\u2013CHO',                   note: 'stops at an imine anion' },
+      { y: 236, rgt: "R\u2032MgX, then H\u2083O\u207a",        prod: "R\u2013CO\u2013R\u2032",    note: 'adds R\u2032 \u00b7 one addition only' },
+    ];
+    for (const r of rows) {
+      s += arrow(P(216, 147), P(392, r.y + 6));
+      s += text(400, r.y - 4, r.rgt, { cls: 'fg-tag', size: 11, anchor: 'start' });
+      s += text(400, r.y + 16, r.prod, { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+      s += text(560, r.y + 16, r.note, { cls: 'fg-sm', size: 10, anchor: 'start' });
+    }
+    return s;
+  },
+  caption: 'One starting material, four oxidation outcomes, and the carbon skeleton is the thing to watch. Only the Grignard row changes the carbon count, because only there does a new group arrive; the other three rearrange what the nitrile carbon already had.',
+  note: 'The two reductions differ for a structural reason rather than a stoichiometric one. DIBAL-H adds a single hydride and the product of that addition is a metalated imine anion, which is not an electrophile, so nothing further can attack it however long you wait — the aldehyde appears only when water hydrolyzes it on workup. LiAlH\u2084 is not stopped by anything, so rationing it to one equivalent does not give you an aldehyde; it gives you a mixture. The reagent is crippled, not rationed.',
 });
 
 const START = (id) => `<!-- fig:${id}:start -->`;
