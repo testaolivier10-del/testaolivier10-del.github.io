@@ -240,7 +240,18 @@ const DATA_BUDGETS = [
      review.html, which is why it is tracked to the kilobyte rather than
      rounded up generously. */
   ['ochem/assets/practice-bank-core.json', 216],
-  ['ochem/assets/practice-bank-why.json', 156],
+  /* 156 -> 200 for the explanations, and this one is a decision rather than
+     a formality. The self-study pass rewrites recall questions into
+     application ones, and an application question's explanation is a
+     worked solution, two or three sentences longer than "the suffix is
+     -ol". The first chapter to hit the ceiling (chapter 2) had thirty
+     explanations shortened to fit, which is the budget doing harm: this
+     file is fetched after paint and never blocks a question, so its cost is
+     bytes on an idle connection, and a trimmed explanation is a worse
+     lesson for a student who just got something wrong. 200 covers the
+     twenty-one chapters still to be rewritten at the measured 1.7 KB per
+     chapter. The core file's budget is untouched; that one is first-paint. */
+  ['ochem/assets/practice-bank-why.json', 200],
 ];
 
 const REF_RE = /(?:href|src)="([^"]+)"/g;

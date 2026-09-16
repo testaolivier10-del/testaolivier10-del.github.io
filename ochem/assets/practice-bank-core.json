@@ -3575,7 +3575,7 @@
     "Three hydrogens"
    ],
    "correct": 3,
-   "difficulty": "hard",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -3639,12 +3639,12 @@
    "type": "mcq"
   },
   {
-   "q": "A vertex carbon is redrawn with two bonds plus two hydrogens, and comes to five bonds. Why?",
+   "q": "A four-vertex zigzag carries a methyl branch on vertex 2 and a C=C between vertices 3 and 4. How many hydrogens sit on vertex 3?",
    "options": [
-    "Vertex carbons do have five",
-    "A bond was counted twice",
-    "Vertex carbons have three H",
-    "The drawing was wrong"
+    "None",
+    "One",
+    "Two",
+    "Three"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -3737,10 +3737,10 @@
   {
    "q": "What does a drawn ring show that a condensed formula does not?",
    "options": [
-    "The molecular weight of the compound",
-    "Connectivity and shape",
-    "Oxidation states",
-    "Hydrogen counts"
+    "Which atom is bonded to which atom",
+    "Its size and shape at a glance",
+    "How many hydrogens each carbon holds",
+    "The oxidation state of each carbon"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -3783,12 +3783,12 @@
    "type": "mcq"
   },
   {
-   "q": "Why is a chain C-H hydrogen safe to leave undrawn?",
+   "q": "A five-vertex zigzag has a methyl branch on vertex 2 and a C=C between vertices 4 and 5. What is its molecular formula?",
    "options": [
-    "It rarely does any chemistry",
-    "Lewis structures add it in error",
-    "Carbon barely bonds to it",
-    "It is not really present"
+    "C₆H₁₂",
+    "C₆H₁₄",
+    "C₅H₁₀",
+    "C₆H₁₀"
    ],
    "correct": 0,
    "difficulty": "hard",
@@ -3807,14 +3807,14 @@
    "type": "mcq"
   },
   {
-   "q": "A hexagon and a five-segment zigzag: how do their carbon counts compare?",
+   "q": "Which of these descriptions is of a structure that cannot exist?",
    "options": [
-    "The zigzag has more",
-    "Cannot be determined from the drawings",
-    "The hexagon has more",
-    "They are equal at six"
+    "A carbon vertex with four lines and no hydrogens",
+    "A carbon vertex with three lines and one hydrogen",
+    "A carbon vertex with two lines and three hydrogens",
+    "A carbon vertex with one line and three hydrogens"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -3879,14 +3879,14 @@
    "type": "mcq"
   },
   {
-   "q": "Hiding C-H but showing O-H: is that an inconsistency?",
+   "q": "A skeletal drawing shows an oxygen with one line to a carbon and a minus sign beside it. What does that oxygen carry?",
    "options": [
-    "Yes, a known flaw",
-    "No, it tracks reactivity",
-    "Yes, but entrenched",
-    "No, oxygen simply has more hydrogens"
+    "Three lone pairs and no hydrogen",
+    "Two lone pairs and one hydrogen",
+    "Two lone pairs and no hydrogen",
+    "One lone pair and one hydrogen"
    ],
-   "correct": 1,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -3925,7 +3925,7 @@
     "Whichever has the most double bonds regardless of charge"
    ],
    "correct": 2,
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -4046,9 +4046,9 @@
    "q": "Which of the following is a requirement for two structures to be valid resonance forms of each other?",
    "options": [
     "They must have the same formal charges on every atom",
-    "They must both be neutral",
+    "They must both be neutral overall",
     "They must share connectivity and electron count",
-    "They must differ in which atoms are sp2 vs sp3 hybridized"
+    "They must have the same number of drawn bonds"
    ],
    "correct": 2,
    "difficulty": "easy",
@@ -4157,26 +4157,28 @@
    "type": "mcq"
   },
   {
-   "q": "How many total pi electrons are shown as delocalized across the three resonance structures typically drawn for the nitrate ion (NO3^-)?",
+   "q": "Three equivalent contributors of the nitrate ion (NO₃⁻) each place one N=O double bond. What is the average N–O bond order in the real ion?",
    "options": [
-    "2",
-    "4",
-    "6",
-    "8"
+    "1",
+    "4/3",
+    "3/2",
+    "2"
    ],
    "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "A molecule with more significant resonance structures (more ways to delocalize charge) is generally more stable than one with fewer.",
+   "q": "One anion has a single excellent contributor with full octets and the charge on oxygen. Another has three contributors, all putting the charge on carbon. Which is better stabilized?",
    "options": [
-    "True",
-    "False"
+    "The one with three contributors, since more structures means more delocalization",
+    "The one with the single excellent contributor, since quality outweighs count",
+    "They are equally stabilized, because both spread their charge over several atoms",
+    "Neither comparison can be made without knowing the solvent involved"
    ],
-   "correct": 0,
-   "difficulty": "easy",
-   "type": "tf"
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
   },
   {
    "q": "Why is it misleading to say a resonance hybrid is a 'mixture' of its contributing structures?",
@@ -4203,14 +4205,16 @@
    "type": "mcq"
   },
   {
-   "q": "The cyclopentadienyl anion is unusually stable in part because its negative charge can be delocalized by resonance onto every carbon of the five-membered ring.",
+   "q": "In which of these is an oxygen lone pair delocalized by resonance?",
    "options": [
-    "True",
-    "False"
+    "CH₂=CH–CH₂–OH, with the OH one carbon from the double bond",
+    "CH₂=CH–OH, with the OH bonded straight to the double bond",
+    "CH₃–CH₂–OH, with the OH on a saturated two-carbon chain",
+    "(CH₃)₃C–OH, with the OH on a fully substituted carbon"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "In the acetate ion's major resonance structures, what happens to the C–O bond lengths compared to a simple ester's C=O and C–O–R bonds?",
@@ -4225,15 +4229,15 @@
    "type": "mcq"
   },
   {
-   "q": "Predict which resonance structure of an enamine (R2N–CH=CH2) contributes more: the neutral form, or the zwitterionic form with a positive charge on nitrogen and a negative charge on the terminal carbon.",
+   "q": "A student draws a contributor of acetate in which the carboxyl carbon ends up with five bonds. What is wrong with it?",
    "options": [
-    "The zwitterionic form, because separating charges is always favorable",
-    "The neutral form, because it avoids charge separation",
-    "They contribute exactly equally",
-    "Neither is a legitimate resonance structure of an enamine"
+    "Nothing is wrong; a carboxylate carbon expands its octet by resonance",
+    "Carbon has only four valence orbitals, so five bonds is not a structure",
+    "The formal charges on the two oxygens have been worked out wrongly",
+    "Resonance structures may not alter the bond order of any bond"
    ],
    "correct": 1,
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   }
  ],
@@ -4309,26 +4313,28 @@
    "type": "mcq"
   },
   {
-   "q": "A curved arrow drawn from a C–H sigma bond directly into an adjacent pi system (hyperconjugation/elimination step) has its head pointing at:",
+   "q": "A curved arrow starts on a C–H bond, and in the product there is a C=C between that carbon and the one next to it. Where must the arrowhead point?",
    "options": [
-    "The hydrogen atom",
-    "The space where the new pi bond forms",
-    "The leaving group",
-    "The carbon bearing the leaving group only"
+    "At the hydrogen, which is the atom leaving",
+    "At the middle of the C–C bond, where the new pi bond forms",
+    "At the carbon bearing the leaving group, and nowhere else",
+    "At a lone pair on the neighboring heteroatom"
    ],
    "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Curved arrows are only used to draw mechanisms involving charged species, never neutral radicals.",
+   "q": "Arrow 1 runs from a lone pair on HO⁻ to the H of H–Br. Arrow 2 runs from the H–Br bond to Br. What are the products and their charges?",
    "options": [
-    "True",
-    "False"
+    "H₂O, neutral, and Br⁻ carrying −1",
+    "H₃O⁺ carrying +1, and Br⁻ carrying −1",
+    "H₂O, neutral, and a neutral Br atom",
+    "HO⁻ and H–Br, both unchanged from the start"
    ],
-   "correct": 1,
+   "correct": 0,
    "difficulty": "medium",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "If you draw a curved arrow from a lone pair on oxygen toward a neighboring carbon, but that carbon already has four bonds and no leaving group departing, what is wrong with the arrow?",
@@ -4411,14 +4417,14 @@
    "type": "mcq"
   },
   {
-   "q": "Why is it mechanistically incorrect to draw a single curved arrow going directly from a leaving group's departing bond to the incoming nucleophile's final bonding position in an SN2 reaction?",
+   "q": "Why can you not draw one continuous curved arrow from the breaking C–leaving group bond straight to where the nucleophile will bond?",
    "options": [
-    "It is actually correct and commonly drawn that way",
-    "Because SN2 has no leaving group",
-    "Because nucleophiles never have electrons to give",
-    "Electrons must pass through the reacting atom"
+    "Because an SN2 step has no leaving group to speak of at all",
+    "Because those are two different pairs, with different sources",
+    "Because nucleophiles do not supply electrons in a substitution",
+    "Because one curved arrow may never cross another curved arrow"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -4493,12 +4499,12 @@
    "type": "mcq"
   },
   {
-   "q": "In a mechanism, using a curved arrow to move electrons from a C=C pi bond to form a new bond to a proton, while a separate arrow shows nothing happening to the leaving group, would violate which rule if the starting material was neutral and had no leaving group to begin with?",
+   "q": "One arrow takes a C=C pi bond to a proton and nothing else is drawn. The starting alkene is neutral and has no leaving group. Which rule does this break?",
    "options": [
-    "The octet rule is always violated in this case",
-    "No rule is violated; this is alkene protonation",
-    "This is never a valid step because alkenes have no available electrons",
-    "A curved arrow can never point to a proton"
+    "The octet rule, because the carbon left behind holds only six electrons",
+    "None of them, because a carbocation with six electrons is a legal species",
+    "Charge balance, because a neutral molecule cannot give a charged product",
+    "The tail rule, because a pi bond is not a valid source of electrons"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -4597,7 +4603,7 @@
    "type": "mcq"
   },
   {
-   "q": "Which factor generally makes a species a better nucleophile in a polar aprotic solvent?",
+   "q": "Which factor generally makes a species a better nucleophile in a polar protic solvent?",
    "options": [
     "Smaller atomic size",
     "Larger atomic size down a group (more polarizable)",
@@ -4609,14 +4615,14 @@
    "type": "mcq"
   },
   {
-   "q": "Why is a negatively charged nucleophile (like OH⁻) generally stronger than its neutral conjugate acid (H₂O)?",
+   "q": "Methanol is a mediocre nucleophile and sodium methoxide is a strong one. What single change does that, and why does it work?",
    "options": [
-    "Neutral species always react faster",
-    "Charge has no effect on nucleophilicity",
-    "More electron density to donate",
-    "OH⁻ has fewer lone pairs"
+    "Heating the methanol, which speeds up every step in the mechanism",
+    "Removing the O–H proton, which leaves a higher-energy electron pair",
+    "Adding more methanol, which raises the concentration of the donor",
+    "Switching to a protic solvent, which stabilizes the neutral alcohol"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -4643,7 +4649,7 @@
    "type": "tf"
   },
   {
-   "q": "Going down a column of the periodic table (e.g., F- to Cl- to Br- to I-), nucleophilicity in a polar aprotic solvent generally:",
+   "q": "Going down a column of the periodic table (F⁻ to Cl⁻ to Br⁻ to I⁻), nucleophilicity in a polar protic solvent generally:",
    "options": [
     "Increases with polarizability",
     "Decreases because atomic size increases",
@@ -4789,15 +4795,15 @@
    "type": "mcq"
   },
   {
-   "q": "Increasing solvent polarity in a protic solvent (like going from methanol to water) generally affects the nucleophilicity of a small anion like F- by:",
+   "q": "You want substitution rather than elimination on a primary alkyl bromide. Which reagent choice fits that goal?",
    "options": [
-    "Decreasing it, because stronger solvation cages the anion",
-    "Increasing it, because polar solvents always activate nucleophiles",
-    "Having no effect whatsoever",
-    "Converting the anion into an electrophile"
+    "Potassium tert-butoxide, a bulky and very strong base",
+    "Sodium iodide, a good nucleophile and a weak base",
+    "Sodium hydride, which removes protons quantitatively",
+    "Sodium amide, among the strongest bases available"
    ],
-   "correct": 0,
-   "difficulty": "hard",
+   "correct": 1,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -4891,14 +4897,16 @@
    "type": "mcq"
   },
   {
-   "q": "A tertiary amine (R3N) generally makes a better nucleophile than a primary amine (RNH2) of similar electronic character because it has more alkyl substituents donating electron density, outweighing any steric penalty in most simple cases used in intro courses.",
+   "q": "Triethylamine is routinely used as a base but is a poor nucleophile toward a crowded carbon. What explains the difference?",
    "options": [
-    "True",
-    "False"
+    "Its nitrogen has no lone pair available to donate to anything",
+    "A proton is a small exposed target and a carbon is not",
+    "Tertiary amines carry a partial positive charge on nitrogen",
+    "Basicity and nucleophilicity are unrelated to one another"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "A hydride ion (H-) delivered from a reagent like NaBH4 or LiAlH4 acts as a nucleophile in reducing a carbonyl. What is it attacking?",
@@ -4963,15 +4971,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which of these species is NOT typically a good electrophile?",
+   "q": "Which carbon of ClCH₂–CH₂–CO–CH₃ is the most electrophilic?",
    "options": [
-    "A carbocation",
-    "A proton (H+)",
-    "A carbonyl carbon",
-    "A hydroxide ion (OH-)"
+    "The CH₂ bonded to chlorine",
+    "The carbonyl carbon",
+    "The middle CH₂ of the chain",
+    "The methyl on the far right"
    ],
-   "correct": 3,
-   "difficulty": "easy",
+   "correct": 1,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -5009,15 +5017,15 @@
    "type": "mcq"
   },
   {
-   "q": "A carbonyl carbon (C=O) is a good electrophile primarily because:",
+   "q": "Which has the more electrophilic carbonyl carbon, CH₃CHO or CF₃CHO?",
    "options": [
-    "Carbon is more electronegative than oxygen",
-    "The carbonyl has no polarity at all",
-    "Oxygen's pull leaves carbon positive",
-    "Oxygen donates extra electrons to carbon"
+    "CH₃CHO, because a methyl group is smaller than CF₃",
+    "CF₃CHO, because three fluorines pull density off the carbon",
+    "They are identical, since both of them are aldehydes",
+    "Neither of them, without an acid catalyst present"
    ],
-   "correct": 2,
-   "difficulty": "easy",
+   "correct": 1,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -5171,15 +5179,15 @@
    "type": "mcq"
   },
   {
-   "q": "A proton (H+) is considered the simplest electrophile because it has:",
+   "q": "In a protonated ketone the plus sign is drawn on oxygen. Which atom does a nucleophile attack?",
    "options": [
-    "A full valence shell with extra electrons to share",
-    "No electrons at all and a full positive charge",
-    "A negative charge",
-    "Multiple empty orbitals like boron"
+    "The oxygen, because that is where the charge is drawn",
+    "The carbon, because that is the atom short of density",
+    "Neither, since a protonated ketone resists nucleophiles",
+    "Whichever of the two the nucleophile reaches first"
    ],
    "correct": 1,
-   "difficulty": "easy",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -5207,14 +5215,16 @@
    "type": "mcq"
   },
   {
-   "q": "Increasing the positive character of a Lewis acid's central atom (for example, comparing BF3 to BH3) tends to increase its strength as an electrophile when the substituents are strongly electron-withdrawing.",
+   "q": "Why does protonating a ketone's oxygen make its carbon a far better electrophile?",
    "options": [
-    "True",
-    "False"
+    "The proton attaches to the carbon and gives it a positive charge",
+    "A contributor now places a full positive charge on that carbon",
+    "The carbonyl pi bond is destroyed outright by the incoming proton",
+    "Protonation turns the oxygen itself into the site of attack"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "A terminal alkyne's acidic proton can be removed by a strong base. In this acid-base reaction, which species is acting as the electrophile?",
@@ -5253,7 +5263,7 @@
    "type": "mcq"
   },
   {
-   "q": "A tertiary carbocation is generally a better (more stabilized, and therefore more readily formed, though still highly electrophilic) intermediate than a primary carbocation.",
+   "q": "A tertiary carbocation forms more readily than a primary carbocation.",
    "options": [
     "True",
     "False"
@@ -5301,15 +5311,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why is F⁻ generally a poor leaving group compared to the other halides?",
+   "q": "An alcohol does not react with NaBr, but the same alcohol with HBr gives the alkyl bromide. What does the acid change?",
    "options": [
-    "It is too large",
-    "Fluorine has no lone pairs",
-    "It is the strongest base among the halides, making it less stable once departed",
-    "F⁻ cannot exist"
+    "It makes bromide a stronger nucleophile than it was before",
+    "It protonates the OH, so the group that leaves is water",
+    "It raises the temperature of the reaction mixture",
+    "It adds positive charge directly onto the reacting carbon"
    ],
-   "correct": 2,
-   "difficulty": "hard",
+   "correct": 1,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -5325,14 +5335,16 @@
    "type": "mcq"
   },
   {
-   "q": "Hydroxide (OH-) is generally an excellent leaving group in substitution reactions on alcohols without any activation.",
+   "q": "Which reagent turns R–OH into a substrate with an excellent leaving group without strong acid?",
    "options": [
-    "True",
-    "False"
+    "Sodium bromide dissolved in water",
+    "Tosyl chloride with pyridine",
+    "Concentrated sulfuric acid, warmed",
+    "Sodium hydroxide in ethanol"
    ],
    "correct": 1,
-   "difficulty": "easy",
-   "type": "tf"
+   "difficulty": "medium",
+   "type": "mcq"
   },
   {
    "q": "Rank Cl-, Br-, and I- in order of decreasing ability to act as a leaving group.",
@@ -5475,14 +5487,16 @@
    "type": "mcq"
   },
   {
-   "q": "In an E1 elimination mechanism, the leaving group departs in the same step as the base removing a proton.",
+   "q": "A proposed mechanism has a nucleophile attacking a carbon while hydroxide is pushed off that same carbon. What is wrong with it?",
    "options": [
-    "True",
-    "False"
+    "Nothing is wrong; this is an ordinary substitution step",
+    "Hydroxide is a strong base and will not leave unassisted",
+    "The nucleophile ought to attack the oxygen instead",
+    "Two arrows may not be drawn within one mechanism step"
    ],
    "correct": 1,
    "difficulty": "medium",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Which leaving group would most likely make an SN2 reaction proceed fastest, all else being equal: Cl-, Br-, or a tosylate (OTs-)?",
@@ -5497,7 +5511,7 @@
    "type": "mcq"
   },
   {
-   "q": "An amine (NH2R) attached directly to a carbon is typically a poor leaving group unless it is first protonated to become a neutral amine leaving as RNH2 from a positively charged ammonium-like carbon, or otherwise activated.",
+   "q": "An amine (R–NH₂) is a poor leaving group, but it can depart once its nitrogen carries a positive charge, as in R–NH₃⁺ or R–NR₃⁺, because what leaves is then a neutral amine.",
    "options": [
     "True",
     "False"
@@ -5565,14 +5579,16 @@
    "type": "mcq"
   },
   {
-   "q": "A leaving group's steric bulk (size) plays as large a role in determining its leaving group ability as its base strength does.",
+   "q": "Which reagent would you supply to convert an alcohol directly into an alkyl bromide in one step?",
    "options": [
-    "True",
-    "False"
+    "Sodium bromide, which supplies bromide ion",
+    "Phosphorus tribromide, which activates and substitutes",
+    "Bromine, which adds across a double bond",
+    "Sodium hydroxide, which deprotonates the alcohol"
    ],
    "correct": 1,
    "difficulty": "medium",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Phosphate groups (such as those in ATP) are biologically important leaving groups. Why are they effective leaving groups despite carrying a full negative charge?",
@@ -5681,15 +5697,15 @@
    "type": "tf"
   },
   {
-   "q": "In a C–Mg bond (as in a Grignard reagent, R–MgBr), which atom is electron-rich?",
+   "q": "In CH₃–CH₂–O–CH₂–CH₂–Cl, which carbon does a nucleophile attack?",
    "options": [
-    "Carbon, because magnesium is significantly less electronegative than carbon",
-    "Magnesium, because metals are always electron-poor",
-    "Bromine, because halogens are always electron-rich",
-    "Neither atom has any polarity"
+    "A carbon next to the oxygen, the most electronegative atom here",
+    "The carbon bonded to chlorine, which is δ+ and holds a leaving group",
+    "The terminal methyl carbon, the least hindered site in the chain",
+    "None of them, since ethers resist attack by any nucleophile"
    ],
-   "correct": 0,
-   "difficulty": "medium",
+   "correct": 1,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -5807,14 +5823,16 @@
    "type": "mcq"
   },
   {
-   "q": "A carbon directly bonded to a strongly electron-withdrawing group such as a trifluoromethyl group (CF3) is generally more electron-poor than the same carbon bonded only to hydrogens.",
+   "q": "An amino group on a benzene ring makes the ring more reactive toward electrophiles, though nitrogen is more electronegative than carbon. Which effect explains it?",
    "options": [
-    "True",
-    "False"
+    "Induction, because electronegativity sets the outcome here",
+    "Resonance, because the nitrogen lone pair is donated in",
+    "Neither, since the effect comes from the size of the group",
+    "Both, since the two effects act in the same direction"
    ],
-   "correct": 0,
-   "difficulty": "medium",
-   "type": "tf"
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
   },
   {
    "q": "Between the carbon and the boron atom in a carbon-boron bond (as found in certain organoborane reagents), which atom is electron-rich?",
@@ -5941,12 +5959,12 @@
    "type": "tf"
   },
   {
-   "q": "Which carbon holds its bonding electrons most tightly: sp, sp2 or sp3?",
+   "q": "Which contributor of CH₂=CH–CHO puts a positive charge on the beta carbon, and what does it predict?",
    "options": [
-    "The sp carbon, which has the most s character",
-    "The sp3 carbon, which has the most p character",
-    "The sp2 carbon, which is intermediate in both",
-    "All three hold them equally, since all are carbon"
+    "The one moving the C=C electrons toward oxygen; nucleophiles can attack there",
+    "The one moving an oxygen lone pair onto carbon; the beta carbon turns rich",
+    "The one moving a hydrogen onto the oxygen; the molecule becomes an enol",
+    "No contributor does, since the beta carbon is three bonds from the oxygen"
    ],
    "correct": 0,
    "difficulty": "hard",

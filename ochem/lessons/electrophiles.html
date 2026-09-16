@@ -147,12 +147,12 @@ document.addEventListener('DOMContentLoaded', function(){
      direction, and the C=O second line is a parallel offset of the first. */
   function carbonylSvg(){
     return '<div class="scene"><svg viewBox="0 0 260 140" role="img" aria-label="Acetone: a carbonyl carbon double bonded to oxygen and single bonded to two methyl groups">' +
-      '<text x="76" y="76" text-anchor="end" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="16" fill="var(--ink)">CH\u2083</text>' +
+      '<g class="atom" data-key="methylA"><circle cx="54" cy="70" r="24" fill="transparent"/><text x="76" y="76" text-anchor="end" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="16" fill="var(--ink)">CH\u2083</text></g>' +
       '<line x1="82" y1="70" x2="102" y2="70" stroke="var(--line)" stroke-width="2.5"/>' +
       '<line x1="136.6" y1="64.3" x2="175.5" y2="37.2" stroke="var(--line)" stroke-width="2.2"/>' +
       '<line x1="133.0" y1="59.1" x2="171.9" y2="32.0" stroke="var(--line)" stroke-width="2.2"/>' +
       '<line x1="132.7" y1="84.7" x2="158" y2="108" stroke="var(--line)" stroke-width="2.5"/>' +
-      '<text x="164" y="115" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="16" fill="var(--ink)">CH\u2083</text>' +
+      '<g class="atom" data-key="methylB"><circle cx="186" cy="109" r="24" fill="transparent"/><text x="164" y="115" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="16" fill="var(--ink)">CH\u2083</text></g>' +
       '<g class="atom" data-key="oxygen"><circle cx="186" cy="26" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="186" y="31" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">O</text></g>' +
       '<g class="atom" data-key="carbon"><circle cx="120" cy="70" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="120" y="76" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="14">C</text></g>' +
     '</svg></div>';
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function(){
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
-            '<h2 class="step-title">Click the electrophilic atom in this ketone.</h2>' +
+            '<h2 class="step-title">Four atoms are clickable. Click the electrophilic one.</h2>' +
             carbonylSvg() +
             api.feedbackHtml('fb') +
             api.nextButtonHtml('Continue', false);
@@ -191,8 +191,10 @@ document.addEventListener('DOMContentLoaded', function(){
                 g.classList.add('chosen');
                 api.showFeedback(fb, true, 'Correct — oxygen\'s pull leaves the carbon partially positive (δ+), which is exactly what a nucleophile targets.');
                 next.disabled = false;
+              } else if(g.getAttribute('data-key') === 'oxygen'){
+                api.showFeedback(fb, false, 'Oxygen is the atom doing the pulling — it ends up electron-rich, not electron-poor. Nucleophiles do not attack it; acids protonate it.');
               } else {
-                api.showFeedback(fb, false, 'Oxygen is the one pulling electron density away — it ends up electron-rich, not electron-poor. Try the carbon.');
+                api.showFeedback(fb, false, 'A methyl carbon is bonded only to carbon and hydrogen, so nothing is withdrawing density from it. Look for the carbon that has an electronegative atom on it.');
               }
             });
           });

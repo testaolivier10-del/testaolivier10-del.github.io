@@ -5145,6 +5145,526 @@ FIGURES.push({
 });
 
 
+/* ---------------------------------------------------------------- 100 ---
+   Skeletal structures taught the rule "subtract the drawn bonds from four"
+   and then worked one example in prose. The count is the whole skill, and a
+   count is exactly the kind of claim that is easier to check on a drawing
+   than to follow in a sentence — especially the multiple-bond case, where
+   the number of lines and the number of bonds stop being the same thing. */
+FIGURES.push({
+  id: 'skeletal-h-count',
+  section: 'skeletal-structures',
+  anchor: '<p>Put it together: CH₃–CH(OH)–CH₂–CH₂–CH₃, pentan-2-ol. The whole read is one pass, and the hydrogens were never guessed — they were subtracted.</p>',
+  alt: 'Pentan-2-ol and 2-methylbut-2-ene drawn skeletally with the bond count and hydrogen count written under every carbon',
+  viewBox: '0 0 760 290',
+  build() {
+    let s = '';
+
+    // ---- Pentan-2-ol: single bonds only ----
+    s += tag(174, 40, 'ALL SINGLE BONDS');
+    const a = [P(70, 150), P(122, 122), P(174, 150), P(226, 122), P(278, 150)];
+    for (let i = 1; i < a.length; i++) s += bond(a[i - 1], a[i], { rFrom: 0, rTo: 0 });
+    s += bond(a[1], P(122, 74), { rFrom: 0, rTo: 15 });
+    s += atom(122, 74, 'OH', { kind: 'hi', size: 10.5 });
+    for (const pt of a) s += atom(pt.x, pt.y, '', { kind: 'point' });
+    const aH = ['1 bond', '3 bonds', '2 bonds', '2 bonds', '1 bond'];
+    const aN = ['CH₃', 'CH', 'CH₂', 'CH₂', 'CH₃'];
+    for (let i = 0; i < a.length; i++) {
+      s += text(a[i].x, 196, aH[i], { cls: 'fg-sm', size: 9.5 });
+      s += text(a[i].x, 214, aN[i], { cls: 'fg-tag-good', size: 10.5 });
+    }
+    s += text(174, 242, 'C₅H₁₂O — the OH is one of that carbon’s four', { cls: 'fg-sm', size: 10 });
+
+    s += rule(390, 34, 390, 262);
+
+    // ---- 2-methylbut-2-ene: the double bond eats two of the four ----
+    s += tag(530, 40, 'WITH A DOUBLE BOND');
+    const b = [P(460, 150), P(512, 122), P(564, 122), P(616, 150)];
+    s += bond(b[0], b[1], { rFrom: 0, rTo: 0 });
+    s += bond(b[1], b[2], { rFrom: 0, rTo: 0, order: 2 });
+    s += bond(b[2], b[3], { rFrom: 0, rTo: 0 });
+    s += bond(b[1], P(512, 74), { rFrom: 0, rTo: 0 });
+    for (const pt of b) s += atom(pt.x, pt.y, '', { kind: 'point' });
+    s += atom(512, 74, '', { kind: 'point' });
+    s += text(512, 62, '3 H', { cls: 'fg-tag-good', size: 10.5 });
+    const bH = ['1 bond', '4 bonds', '3 bonds', '1 bond'];
+    const bN = ['3 H', 'no H', '1 H', '3 H'];
+    for (let i = 0; i < b.length; i++) {
+      s += text(b[i].x, 196, bH[i], { cls: 'fg-sm', size: 9.5 });
+      s += text(b[i].x, 214, bN[i], { cls: 'fg-tag-good', size: 10.5 });
+    }
+    s += text(530, 242, 'C₅H₁₀ — a C=C is two of the four', { cls: 'fg-sm', size: 10 });
+
+    s += rule(34, 262, 726, 262);
+    s += text(380, 282, 'Count bonds at the vertex, subtract from four, the rest is hydrogen.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'The hydrogen count written out under every carbon of two molecules. Nothing here is remembered &mdash; each number is four minus the bonds you can see at that vertex.',
+  note: 'The right-hand molecule is where the rule earns its keep. The carbon carrying the methyl has three lines drawn at it but four bonds, because one of those lines is a double bond; it therefore carries no hydrogen at all. Read lines and you get it wrong, read bonds and you get it right, and the difference only ever shows up at a multiple bond &mdash; which is to say, at every carbonyl and every alkene in the rest of the book.',
+});
+
+
+/* ---------------------------------------------------------------- 101 ---
+   Rings, and the five-bond slip. The notes name a bare hexagon, a benzene
+   and a pitfall in prose, and three bank questions depend on telling the
+   first two apart. The pitfall in particular is a drawing error, so it is
+   drawn: the wrong structure beside the right one, with the count. */
+FIGURES.push({
+  id: 'skeletal-rings',
+  section: 'skeletal-structures',
+  anchor: '<h3>Rings, and why they are the clearest case for the notation</h3>',
+  alt: 'A bare hexagon read as cyclohexane, benzene drawn with alternating double bonds and with a circle, and a vertex carbon wrongly redrawn with five bonds',
+  viewBox: '0 0 760 300',
+  build() {
+    let s = '';
+    const hex = (cx, cy, r) => {
+      const pts = [];
+      for (let i = 0; i < 6; i++) {
+        const t = (Math.PI / 180) * (90 + i * 60);
+        pts.push(P(cx + r * Math.cos(t), cy - r * Math.sin(t)));
+      }
+      return pts;
+    };
+    const ringSkeleton = (pts) => {
+      let g = '';
+      for (let i = 0; i < 6; i++) g += bond(pts[i], pts[(i + 1) % 6], { rFrom: 0, rTo: 0 });
+      for (const pt of pts) g += atom(pt.x, pt.y, '', { kind: 'point' });
+      return g;
+    };
+
+    // ---- Cyclohexane ----
+    s += tag(118, 44, 'A BARE HEXAGON');
+    const h1 = hex(118, 140, 50);
+    s += ringSkeleton(h1);
+    s += text(118, 218, 'six corners, six carbons', { cls: 'fg-sm', size: 10 });
+    s += text(118, 236, 'two H on each: C₆H₁₂', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(118, 256, 'cyclohexane', { cls: 'fg-lbl', size: 12 });
+
+    s += rule(236, 34, 236, 274);
+
+    // ---- Benzene, both conventions ----
+    s += tag(378, 44, 'BENZENE, TWO WAYS');
+    const h2 = hex(316, 140, 44);
+    s += ringSkeleton(h2);
+    for (const i of [0, 2, 4]) s += ringDouble(h2[i], h2[(i + 1) % 6], P(316, 140));
+    const h3 = hex(440, 140, 44);
+    s += ringSkeleton(h3);
+    s += `<circle class="fg-bond" cx="440" cy="140" r="26" fill="none"></circle>`;
+    s += text(378, 218, 'alternating double bonds, or a circle', { cls: 'fg-sm', size: 10 });
+    s += text(378, 236, 'one H on each: C₆H₆', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(378, 256, 'same molecule, two conventions', { cls: 'fg-lbl', size: 12 });
+
+    s += rule(520, 34, 520, 274);
+
+    // ---- The five-bond slip ----
+    s += tag(630, 44, 'THE FIVE-BOND SLIP');
+    s += text(630, 78, '2 bonds + 2 H = 4 ✓', { cls: 'fg-tag-good', size: 10.5 });
+    const ok = [P(586, 118), P(630, 94), P(674, 118)];
+    for (let i = 1; i < ok.length; i++) s += bond(ok[i - 1], ok[i], { rFrom: 0, rTo: 0 });
+    for (const pt of ok) s += atom(pt.x, pt.y, '', { kind: 'point' });
+    const bad = [P(586, 178), P(630, 154), P(674, 178)];
+    for (let i = 1; i < bad.length; i++) s += bond(bad[i - 1], bad[i], { rFrom: 0, rTo: i === 1 ? 15 : 0 });
+    s += bond(bad[1], bad[2], { rFrom: 15, rTo: 0 });
+    s += atom(586, 178, '', { kind: 'point' });
+    s += atom(674, 178, '', { kind: 'point' });
+    s += atom(630, 154, 'CH₃', { kind: 'warn', size: 9.5 });
+    s += text(630, 202, '2 bonds + 3 H = 5 ✗', { cls: 'fg-tag-warn', size: 10.5 });
+    s += text(630, 228, 'the vertex is already a carbon,', { cls: 'fg-sm', size: 10 });
+    s += text(630, 244, 'so writing CH₃ on it adds a bond', { cls: 'fg-sm', size: 10 });
+    s += text(630, 260, 'that was never there', { cls: 'fg-sm', size: 10 });
+
+    s += rule(34, 274, 726, 274);
+    s += text(380, 292, 'A ring vertex is read exactly like a chain vertex.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'Three things the prose can only assert: what a bare hexagon means, the two accepted ways of marking benzene, and what going wrong looks like.',
+  note: 'The circle inside the ring is the honest drawing &mdash; benzene has no alternating single and double bonds, it has one delocalized system and six identical C&ndash;C bonds. The alternating-bond drawing survives because you can push arrows on it and because it lets you count hydrogens the ordinary way; the circle cannot do either. Both appear in exams, and neither is wrong to write.',
+});
+
+
+/* ---------------------------------------------------------------- 102 ---
+   Ranking contributors was five rules with nothing drawn to apply them to.
+   These are the two pairs the rules were written for, and they disagree
+   about which rule wins: the enolate is decided by where the charge sits,
+   the protonated carbonyl by whose octet is short. Drawn together, the
+   order of the rules is the thing you can see. */
+FIGURES.push({
+  id: 'resonance-ranking',
+  section: 'resonance',
+  anchor: '<p class="step-body">None of the valid structures is "wrong" to draw \u2014 each contributes something. These rules only say which contributes more.</p>',
+  alt: 'Two pairs of resonance contributors with formal charges marked: an enolate ranked by which atom holds the negative charge, and a protonated carbonyl ranked by which structure has full octets',
+  viewBox: '0 0 760 340',
+  build() {
+    let s = '';
+
+    // ---- Row 1: the enolate, decided by which atom holds the minus ----
+    s += tag(290, 38, 'RANKED BY WHERE THE CHARGE SITS');
+    const drawEnolate = (ox, onO) => {
+      let g = '';
+      const ca = P(ox, 104), cb = P(ox + 72, 104), o = P(ox + 122, 70);
+      g += bond(ca, cb, { order: onO ? 2 : 1 });
+      g += bond(cb, o, { order: onO ? 1 : 2 });
+      g += atom(ca.x, ca.y, onO ? 'CH\u2082' : '\u207bCH\u2082', { kind: onO ? 'plain' : 'hi', size: 9.5 });
+      g += atom(cb.x, cb.y, 'CH', { size: 10.5 });
+      g += atom(o.x, o.y, onO ? 'O\u207b' : 'O', { kind: onO ? 'hi' : 'plain', size: 10.5 });
+      for (const ang of onO ? [40, 90, 140] : [40, 140]) g += lonePair(o.x, o.y, -ang, { dist: 24 });
+      return g;
+    };
+    s += drawEnolate(66, true);
+    s += drawEnolate(356, false);
+    s += arrow(P(254, 100), P(316, 100), { muted: true });
+    s += arrow(P(316, 108), P(254, 108), { muted: true });
+    s += text(130, 150, 'MAJOR \u2014 \u2212 on oxygen', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(420, 150, 'minor \u2014 \u2212 on carbon', { cls: 'fg-tag-warn', size: 10.5 });
+
+    s += rule(556, 40, 556, 312);
+    s += text(654, 86, 'Both have full octets', { cls: 'fg-sm', size: 10 });
+    s += text(654, 102, 'and one charge each,', { cls: 'fg-sm', size: 10 });
+    s += text(654, 118, 'so rule 3 decides it:', { cls: 'fg-sm', size: 10 });
+    s += text(654, 138, 'O beats C for \u2212', { cls: 'fg-tag-good', size: 10.5 });
+
+    s += rule(34, 176, 530, 176);
+
+    // ---- Row 2: the protonated carbonyl, decided by the octet ----
+    s += tag(290, 208, 'RANKED BY WHOSE OCTET IS SHORT');
+    const drawProt = (ox, onO) => {
+      let g = '';
+      const me = P(ox, 268), c = P(ox + 82, 268), o = P(ox + 132, 234);
+      g += bond(me, c, { rFrom: 26, rTo: 15 });
+      g += atom(me.x, me.y, '(CH\u2083)\u2082', { r: 26, size: 9.5 });
+      g += bond(c, o, { order: onO ? 2 : 1 });
+      g += atom(c.x, c.y, onO ? 'C' : 'C\u207a', { kind: onO ? 'plain' : 'hi', size: 10.5 });
+      g += atom(o.x, o.y, onO ? 'OH\u207a' : 'OH', { kind: onO ? 'hi' : 'plain', size: 9.5 });
+      for (const ang of onO ? [40, 140] : [40, 90, 140]) g += lonePair(o.x, o.y, -ang, { dist: 24 });
+      return g;
+    };
+    s += drawProt(66, true);
+    s += drawProt(356, false);
+    s += arrow(P(254, 264), P(316, 264), { muted: true });
+    s += arrow(P(316, 272), P(254, 272), { muted: true });
+    s += text(130, 314, 'MAJOR \u2014 every octet full', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(420, 314, 'minor \u2014 carbon has six', { cls: 'fg-tag-warn', size: 10.5 });
+
+    s += text(654, 212, 'Rule 3 would prefer', { cls: 'fg-sm', size: 10 });
+    s += text(654, 228, 'the + on carbon \u2014 but', { cls: 'fg-sm', size: 10 });
+    s += text(654, 244, 'rule 1 comes first:', { cls: 'fg-sm', size: 10 });
+    s += text(654, 264, 'octets outrank charge', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(654, 290, 'and that minor form is', { cls: 'fg-sm', size: 10 });
+    s += text(654, 306, 'the carbon\u2019s \u03b4+', { cls: 'fg-sm', size: 10 });
+    return s;
+  },
+  caption: 'Two ranked pairs, with the formal charges worked out on the drawing. The rules are the same both times; which rule does the deciding is not.',
+  note: 'Read the minor structures rather than dismissing them. The carbon-centered enolate form is where an enolate\u2019s reactivity lives, and the carbon-centered protonated-carbonyl form is where a carbonyl carbon gets the partial positive charge that nucleophiles attack. A minor contributor is not a rare event &mdash; there is only one real structure, and a minor contributor is a permanent fraction of it.',
+});
+
+
+/* ---------------------------------------------------------------- 103 ---
+   The four arrow-pushing patterns. The notes had shown two of them (a
+   protonation and an SN2) and the practice bank was already testing a
+   hydride shift and a lone departure, so a student met two patterns in
+   prose and four in the questions. All four, drawn on real molecules with
+   the charges worked out, is the whole vocabulary on one page. */
+FIGURES.push({
+  id: 'arrow-patterns',
+  section: 'curved-arrows',
+  anchor: '<h3>The four patterns, and that is the whole list</h3>',
+  alt: 'Four arrow-pushing patterns drawn on real molecules: nucleophilic attack on a carbocation, loss of bromide from a tertiary bromide, proton transfer from HCl to hydroxide, and a 1,2-hydride shift',
+  viewBox: '0 0 760 430',
+  build() {
+    let s = '';
+
+    // ---- 1. Nucleophilic attack, one arrow, because the target has room ----
+    s += tag(190, 42, '1 \u00b7 NUCLEOPHILIC ATTACK');
+    s += atom(96, 116, 'HO\u207b', { kind: 'hi', size: 10.5 });
+    for (const ang of [-150, -90, 150]) s += lonePair(96, 116, ang, { dist: 24 });
+    s += atom(266, 116, 'C\u207a', { kind: 'warn', size: 11 });
+    s += text(266, 148, '(CH\u2083)\u2083C\u207a', { cls: 'fg-sm', size: 9.5 });
+    s += curve(P(120, 100), P(248, 108), { bow: -26 });
+    s += text(190, 174, 'one arrow is the whole step:', { cls: 'fg-sm', size: 10 });
+    s += text(190, 190, 'the carbon has an empty orbital,', { cls: 'fg-sm', size: 10 });
+    s += text(190, 206, 'so nothing has to break', { cls: 'fg-sm', size: 10 });
+
+    s += rule(380, 34, 380, 396);
+
+    // ---- 2. Loss of a leaving group, one arrow, no attacker at all ----
+    s += tag(560, 42, '2 \u00b7 LOSS OF A LEAVING GROUP');
+    s += atom(492, 116, 'C', { size: 11 });
+    s += text(492, 148, '(CH\u2083)\u2083C', { cls: 'fg-sm', size: 9.5 });
+    s += atom(614, 116, 'Br', { size: 11 });
+    s += bond(P(492, 116), P(614, 116));
+    s += curve(P(553, 116), P(614, 96), { bow: -20 });
+    s += text(560, 174, 'tail on the C\u2013Br bond, head on Br:', { cls: 'fg-sm', size: 10 });
+    s += text(560, 190, 'carbon keeps three bonds and goes +1,', { cls: 'fg-sm', size: 10 });
+    s += text(560, 206, 'bromine keeps the pair and goes \u22121', { cls: 'fg-sm', size: 10 });
+
+    s += rule(34, 226, 726, 226);
+
+    // ---- 3. Proton transfer, two arrows, always ----
+    s += tag(190, 258, '3 \u00b7 PROTON TRANSFER');
+    s += atom(86, 330, 'HO\u207b', { kind: 'hi', size: 10.5 });
+    for (const ang of [-150, -90, 150]) s += lonePair(86, 330, ang, { dist: 24 });
+    s += atom(212, 330, 'H', { size: 11 });
+    s += atom(310, 330, 'Cl', { size: 11 });
+    s += bond(P(212, 330), P(310, 330));
+    s += curve(P(110, 314), P(196, 318), { bow: -22 });
+    s += curve(P(261, 330), P(310, 310), { bow: -18 });
+    s += text(190, 380, 'arrow 1 makes the new O\u2013H bond;', { cls: 'fg-sm', size: 10 });
+    s += text(190, 396, 'arrow 2 breaks the old H\u2013Cl bond', { cls: 'fg-sm', size: 10 });
+
+    // ---- 4. Rearrangement: a sigma bond is a legal electron source ----
+    s += tag(560, 258, '4 \u00b7 1,2-HYDRIDE SHIFT');
+    s += atom(492, 330, 'C', { size: 11 });
+    s += atom(492, 282, 'H', { size: 10.5 });
+    s += bond(P(492, 330), P(492, 282));
+    s += atom(614, 330, 'C\u207a', { kind: 'warn', size: 11 });
+    s += bond(P(492, 330), P(614, 330));
+    s += curve(P(492, 306), P(600, 314), { bow: -30 });
+    s += text(560, 380, 'the C\u2013H pair moves onto the cation;', { cls: 'fg-sm', size: 10 });
+    s += text(560, 396, 'the + ends up where it came from', { cls: 'fg-sm', size: 10 });
+
+    s += rule(34, 408, 726, 408);
+    s += text(380, 424, 'Every mechanism in the course is these four, in some order.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'The complete vocabulary. Two of these need a partner arrow and two do not, and the difference is only ever whether the destination already has a full valence shell.',
+  note: 'Pattern 2 is the one to practice deliberately. It is the only pattern where nothing attacks anything &mdash; a bond just breaks, with both electrons going to one side &mdash; and because there is no attacker to point at, students often refuse to draw it and then cannot start an S<sub>N</sub>1 or an E1. The test is the same as always: name the pair the tail stands on. Here it is the C&ndash;Br bonding pair, which is a perfectly ordinary place for an arrow to begin.',
+});
+
+
+/* ---------------------------------------------------------------- 104 ---
+   The two nucleophilicity trends run in opposite directions on the periodic
+   table, and one of them changes sign with the solvent. The notes asked the
+   reader to hold all of that in their head at once with no picture. Two
+   strips of the table, one horizontal and one vertical, is the picture. */
+FIGURES.push({
+  id: 'nucleophile-trends',
+  section: 'nucleophiles',
+  anchor: '<h3>Two words worth pinning down: protic, and polarizable</h3>',
+  alt: 'A row of the periodic table showing nucleophilicity falling from carbanion to fluoride, and a column showing halide nucleophilicity rising down the group in protic solvent and reversing in aprotic solvent',
+  viewBox: '0 0 760 330',
+  build() {
+    let s = '';
+
+    // ---- Across a row ----
+    s += tag(200, 40, 'ACROSS A ROW');
+    const row = ['H\u2083C\u207b', 'H\u2082N\u207b', 'HO\u207b', 'F\u207b'];
+    for (let i = 0; i < 4; i++) {
+      const x = 84 + i * 76;
+      s += panel(x, 84, 60, 60, { kind: i === 0 ? 'hi' : i === 3 ? 'warn' : null, r: 8 });
+      s += label(x + 30, 120, row[i], { size: 13 });
+    }
+    s += arrow(P(84, 176), P(348, 176), { muted: true });
+    s += text(216, 166, 'electronegativity rises', { cls: 'fg-sm', size: 10 });
+    s += text(216, 200, 'nucleophilicity FALLS', { cls: 'fg-tag-warn', size: 10.5 });
+    s += text(216, 226, 'a more electronegative atom holds its', { cls: 'fg-sm', size: 10 });
+    s += text(216, 242, 'pair tighter and shares it less readily', { cls: 'fg-sm', size: 10 });
+    s += text(216, 268, 'this trend does not care about solvent', { cls: 'fg-tag-good', size: 10.5 });
+
+    s += rule(392, 34, 392, 306);
+
+    // ---- Down a column ----
+    s += tag(570, 40, 'DOWN A COLUMN');
+    const col = ['F\u207b', 'Cl\u207b', 'Br\u207b', 'I\u207b'];
+    for (let i = 0; i < 4; i++) {
+      const y = 70 + i * 56;
+      s += panel(452, y, 56, 46, { kind: i === 3 ? 'hi' : i === 0 ? 'warn' : null, r: 8 });
+      s += label(480, y + 29, col[i], { size: 13 });
+    }
+    s += arrow(P(428, 76), P(428, 288), { muted: true });
+    s += text(528, 96, 'IN WATER OR METHANOL', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+    s += text(528, 114, 'the order rises downward:', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(528, 130, 'I\u207b is big and barely', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(528, 146, 'solvated; F\u207b is caged', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(528, 186, 'IN DMSO OR DMF', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+    s += text(528, 204, 'no cage to strip, so the', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(528, 220, 'order flips back:', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(528, 240, 'F\u207b > Cl\u207b > Br\u207b > I\u207b', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    s += text(528, 268, 'and every anion is', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(528, 284, 'stronger than in water', { cls: 'fg-sm', size: 10, anchor: 'start' });
+
+    s += rule(34, 306, 726, 306);
+    s += text(380, 324, 'A halide ranking with no solvent named is not an answer to anything.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'Two strips of the periodic table. The horizontal trend is a property of the atoms and never changes; the vertical one is a property of the atoms <i>and their solvent</i>, and changes sign when the solvent does.',
+  note: 'Exam questions on this topic are usually testing whether you noticed the solvent in the stem. Protic &mdash; water, methanol, ethanol, acetic acid &mdash; means the anions are hydrogen-bonded into a shell, the small ones worst, so iodide wins. Aprotic &mdash; DMSO, DMF, acetone, acetonitrile &mdash; means no shell, so the intrinsic order returns and fluoride wins. If no solvent is given, the question is either incomplete or is asking about the row rather than the column.',
+});
+
+
+/* ---------------------------------------------------------------- 105 ---
+   The electrophiles section worked one example, a ketone, with exactly one
+   candidate atom in it. Real questions hand you a molecule with four
+   carbons and ask which one, so here is that molecule, drawn skeletally
+   (this chapter teaches skeletal notation and then stops using it), with
+   every carbon argued rather than the answer asserted. */
+FIGURES.push({
+  id: 'electrophile-scan',
+  section: 'electrophiles',
+  anchor: '<h3>Ranking electrophiles</h3>',
+  alt: 'A skeletal drawing of 4-chlorobutan-2-one with its four carbons numbered, beside a list saying why each one is or is not the electrophilic site',
+  viewBox: '0 0 760 300',
+  build() {
+    let s = '';
+    s += tag(210, 40, 'FOUR CARBONS, ONE ANSWER');
+
+    const cl = P(96, 176), c1 = P(154, 142), c2 = P(212, 176), c3 = P(270, 142), o = P(270, 82), c4 = P(328, 176);
+    s += bond(cl, c1, { rFrom: 15, rTo: 0 });
+    s += bond(c1, c2, { rFrom: 0, rTo: 0 });
+    s += bond(c2, c3, { rFrom: 0, rTo: 0 });
+    s += bond(c3, o, { rFrom: 0, rTo: 15, order: 2 });
+    s += bond(c3, c4, { rFrom: 0, rTo: 0 });
+    s += atom(cl.x, cl.y, 'Cl', { size: 11 });
+    s += atom(o.x, o.y, 'O', { size: 11 });
+    for (const ang of [-40, -140, 180]) s += lonePair(cl.x, cl.y, ang, { dist: 24 });
+    for (const ang of [-40, -140]) s += lonePair(o.x, o.y, ang, { dist: 24 });
+    for (const pt of [c1, c2, c3, c4]) s += atom(pt.x, pt.y, '', { kind: 'point' });
+
+    s += text(154, 120, '1', { cls: 'fg-tag', size: 12 });
+    s += text(212, 202, '2', { cls: 'fg-tag', size: 12 });
+    s += text(292, 120, '3', { cls: 'fg-tag', size: 12 });
+    s += text(328, 202, '4', { cls: 'fg-tag', size: 12 });
+    s += text(210, 240, 'ClCH\u2082\u2013CH\u2082\u2013CO\u2013CH\u2083', { cls: 'fg-lbl', size: 12 });
+    s += text(210, 262, '4-chlorobutan-2-one', { cls: 'fg-sm', size: 10 });
+
+    s += rule(376, 34, 376, 288);
+
+    const lines = [
+      ['1', 'CH\u2082Cl carbon: \u03b4+ from Cl, and Cl will leave.', 'a real target', true],
+      ['2', 'middle CH\u2082: two bonds from either puller,', 'and nothing on it to leave', false],
+      ['3', 'carbonyl carbon: two bonds to oxygen, and the', '\u03c0 can break instead of a group leaving', true],
+      ['4', 'methyl: nothing withdrawing, nothing to leave', '', false],
+    ];
+    let y = 72;
+    for (const [num, a, b, good] of lines) {
+      s += text(404, y, num, { cls: good ? 'fg-tag-good' : 'fg-tag-mut', size: 12, anchor: 'start' });
+      s += text(424, y, a, { cls: 'fg-sm', size: 10, anchor: 'start' });
+      if (b) s += text(424, y + 16, b, { cls: 'fg-sm', size: 10, anchor: 'start' });
+      y += b ? 54 : 44;
+    }
+    s += text(404, 264, 'Most electrophilic: 3. Also attackable: 1.', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    s += text(404, 282, 'Two sites is normal; the question is which wins.', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    return s;
+  },
+  caption: 'The scan the prose describes, run on a molecule with more than one candidate. Each carbon gets an argument, and two of them survive it.',
+  note: 'Notice what separates the two survivors. Carbon 1 needs its chloride to leave before anything can happen, so its reactivity is limited by how good that leaving group is. Carbon 3 needs nothing to leave at all &mdash; the C=O pi bond simply breaks onto the oxygen, which is delighted to hold the charge &mdash; so a nucleophile can attack it with no leaving group anywhere in sight. That is why carbonyl chemistry and substitution chemistry feel so different even though both are a nucleophile hitting a &delta;+ carbon.',
+});
+
+
+/* ---------------------------------------------------------------- 106 ---
+   Three routes out of an alcohol, named in the prose and drawn nowhere.
+   The tosylate in particular was discussed for a paragraph and never
+   shown, so a student was asked to believe a charge is spread over three
+   oxygens of a group they had not seen. */
+FIGURES.push({
+  id: 'alcohol-activation',
+  section: 'leaving-groups',
+  anchor: '<h3>Activating an alcohol</h3>',
+  alt: 'Three routes that turn an alcohol into a substrate with a good leaving group: protonation to an oxonium, tosylation with the tosylate structure drawn out, and conversion to a halide with thionyl chloride or phosphorus tribromide',
+  viewBox: '0 0 760 350',
+  build() {
+    let s = '';
+    s += tag(210, 36, 'THREE WAYS OUT OF AN ALCOHOL');
+
+    // ---- 1. Protonate ----
+    s += label(104, 88, 'R\u2014OH', { size: 14 });
+    s += arrow(P(158, 84), P(268, 84));
+    s += text(213, 68, 'H\u2082SO\u2084 or HBr', { cls: 'fg-sm', size: 10 });
+    s += text(213, 104, 'strong acid', { cls: 'fg-sm', size: 9.5 });
+    s += label(318, 88, 'R\u2014OH\u2082\u207a', { size: 14 });
+    s += text(470, 76, 'what leaves is neutral water,', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(470, 92, 'pKaH \u22121.7 instead of 15.7', { cls: 'fg-tag-good', size: 10.5, anchor: 'start' });
+    s += text(470, 110, 'cost: everything else meets acid', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+
+    s += rule(34, 130, 726, 130);
+
+    // ---- 2. Tosylate, drawn properly ----
+    s += label(104, 196, 'R\u2014OH', { size: 14 });
+    s += arrow(P(158, 192), P(250, 192));
+    s += text(204, 176, 'TsCl, pyridine', { cls: 'fg-sm', size: 10 });
+    s += text(204, 212, 'mild, neutral', { cls: 'fg-sm', size: 9.5 });
+    const rr = P(288, 192), oo = P(340, 192), ss = P(396, 192), ar = P(452, 192);
+    s += bond(rr, oo); s += bond(oo, ss); s += bond(ss, ar);
+    s += bond(ss, P(396, 146), { order: 2 });
+    s += bond(ss, P(396, 238), { order: 2 });
+    s += atom(rr.x, rr.y, 'R'); s += atom(oo.x, oo.y, 'O'); s += atom(ss.x, ss.y, 'S');
+    s += atom(ar.x, ar.y, 'Ar'); s += atom(396, 146, 'O'); s += atom(396, 238, 'O');
+    s += text(470, 176, 'once it leaves, the charge is', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(470, 192, 'shared by three oxygens:', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(470, 210, '\u2212\u2153 on each, pKaH \u22122.8', { cls: 'fg-tag-good', size: 10.5, anchor: 'start' });
+    s += text(470, 228, 'the C\u2013O bond never breaks here', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+
+    s += rule(34, 262, 726, 262);
+
+    // ---- 3. Straight to the halide ----
+    s += label(104, 312, 'R\u2014OH', { size: 14 });
+    s += arrow(P(158, 308), P(268, 308));
+    s += text(213, 292, 'SOCl\u2082 or PBr\u2083', { cls: 'fg-sm', size: 10 });
+    s += text(213, 328, 'one step', { cls: 'fg-sm', size: 9.5 });
+    s += label(330, 312, 'R\u2014Cl  or  R\u2014Br', { size: 14 });
+    s += text(470, 300, 'a good halide leaving group', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(470, 318, 'with no strong acid anywhere', { cls: 'fg-tag-good', size: 10.5, anchor: 'start' });
+    return s;
+  },
+  caption: 'The same problem solved three ways. In every one of them the carbon is barely changed &mdash; what changed is the identity of the group that has to walk away.',
+  note: 'The reagents on the arrows belong to <a class="chapter-ref" href="/ochem/learn.html#m-alcohols-ethers">Alcohols, Ethers &amp; Related Chemistry</a> and are worth recognizing rather than memorizing at this stage. What is worth taking now is the shape of the move: when a substitution refuses to go, the fix is almost never a better nucleophile. It is an activation step that replaces a strong-base leaving group with a weak-base one.',
+});
+
+
+/* ---------------------------------------------------------------- 107 ---
+   The chapter's closing habit, run on a molecule that contains both halves
+   of a reaction. Drawn skeletally and with every lone pair on the page,
+   which is what the first section of this chapter promised the rest of it
+   would look like. */
+FIGURES.push({
+  id: 'rich-poor-scan',
+  section: 'electron-rich-poor',
+  anchor: '<p><b>The verdict</b>: the nitrogen is the nucleophile, the carbonyl carbon is the electrophile, and the molecule has no leaving group anywhere. Since the two reactive sites are in the same molecule and four atoms apart, the prediction almost makes itself — the nitrogen will attack that carbonyl, closing a five-membered ring. You are not expected to know the product; you are expected to be able to say which two atoms bond.</p>',
+  alt: 'A skeletal drawing of 4-aminobutan-2-one with lone pairs drawn on nitrogen and oxygen, the nitrogen marked electron-rich, the carbonyl carbon marked electron-poor, and a dashed arrow showing which bond forms',
+  viewBox: '0 0 760 300',
+  build() {
+    let s = '';
+    s += tag(212, 38, 'ONE MOLECULE, BOTH HALVES OF A REACTION');
+
+    const n = P(96, 186), c1 = P(154, 152), c2 = P(212, 186), c3 = P(270, 152), o = P(270, 92), c4 = P(328, 186);
+    s += bond(n, c1, { rFrom: 20, rTo: 0 });
+    s += bond(c1, c2, { rFrom: 0, rTo: 0 });
+    s += bond(c2, c3, { rFrom: 0, rTo: 0 });
+    s += bond(c3, o, { rFrom: 0, rTo: 15, order: 2 });
+    s += bond(c3, c4, { rFrom: 0, rTo: 0 });
+    s += atom(n.x, n.y, 'H\u2082N', { kind: 'hi', r: 20, size: 10 });
+    s += atom(o.x, o.y, 'O', { size: 11 });
+    s += lonePair(n.x, n.y, 150, { dist: 28 });
+    for (const ang of [-40, -140]) s += lonePair(o.x, o.y, ang, { dist: 24 });
+    for (const pt of [c1, c2, c3, c4]) s += atom(pt.x, pt.y, '', { kind: 'point' });
+    s += atom(c3.x, c3.y, '', { kind: 'warn', r: 15 });
+
+    s += text(96, 226, 'RICH \u2014 lone pair', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(96, 242, 'the nucleophile', { cls: 'fg-sm', size: 10 });
+    s += text(288, 68, '\u03b4\u2212', { cls: 'fg-sm', size: 11 });
+    s += text(300, 226, 'POOR \u2014 \u03b4+', { cls: 'fg-tag-warn', size: 10.5 });
+    s += text(300, 242, 'the electrophile', { cls: 'fg-sm', size: 10 });
+    s += curve(P(112, 162), P(256, 140), { bow: 46, muted: true });
+    s += text(196, 108, 'the bond that forms', { cls: 'fg-sm', size: 10 });
+    s += text(212, 268, 'H\u2082N\u2013CH\u2082\u2013CH\u2082\u2013CO\u2013CH\u2083', { cls: 'fg-lbl', size: 12 });
+
+    s += rule(404, 34, 404, 278);
+    s += text(430, 78, 'The other three carbons fail', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(430, 94, 'for two different reasons:', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(430, 124, 'the one next to N is \u03b4+, but', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(430, 140, '\u207bNH\u2082 never leaves \u2014 \u03b4+ with', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(430, 156, 'no exit is not a reaction site', { cls: 'fg-tag-warn', size: 10.5, anchor: 'start' });
+    s += text(430, 186, 'the middle CH\u2082 and the methyl', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(430, 202, 'are two bonds from anything', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(430, 218, 'polarizing, so induction has', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(430, 234, 'already faded to nothing', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(430, 264, 'No leaving group anywhere.', { cls: 'fg-tag-good', size: 10.5, anchor: 'start' });
+    return s;
+  },
+  caption: 'The three-step scan on a molecule that answers it twice. Lone pairs are drawn here because the scan is a hunt for them, and a hunt is easier when the quarry is on the page.',
+  note: 'The oxygen is electron-rich too, and it is worth saying why it is not the nucleophile of interest. Its lone pairs sit on a small, very electronegative atom and are held tightly, so as a nucleophile it is feeble next to the nitrogen; what it does readily instead is pick up a proton, which is why acid catalysis works on carbonyls at all. Rich and poor are the first cut, not the last word &mdash; among rich atoms, the loosely held pairs are the reactive ones.',
+});
+
+
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;
 

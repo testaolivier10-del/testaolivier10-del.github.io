@@ -104,7 +104,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 7</div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -173,6 +173,24 @@ document.addEventListener('DOMContentLoaded', function(){
           '<p class="step-body" style="margin-bottom:0;">The structure that scores best on this checklist is the <b>major contributor</b> — it looks the most like the real hybrid. Every valid resonance structure still counts, though; minor contributors still pull the real electron distribution toward themselves, just less than the major one does.</p>'
       },
       {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'An enolate has two contributors: CH₂=CH–O⁻ and ⁻CH₂–CH=O. Both give every atom a full octet and both carry exactly one negative charge. Which contributes more?',
+        options: ['The O⁻ structure, because a negative charge belongs on the more electronegative atom', 'The C⁻ structure, because carbon forms more bonds to hydrogen than oxygen does', 'Neither, since equal octet counts and equal charge counts must mean equal weight'],
+        correctIndex: 0,
+        correctFeedback: 'Correct — and notice how you got there. Rules 1 and 2 both came out level, so the decision fell to rule 3, which asks which atom is better suited to the charge. Oxygen is, by a wide margin. The carbon-centered structure is still a real contributor, and it is the one that explains why an enolate attacks through carbon.',
+        wrongFeedback: 'Work the checklist in order. Octets: tied. Number of charges: tied. So the next rule down has to decide it — which atom would you rather put a negative charge on?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Guided Practice',
+        title: 'Three drawings are offered as resonance structures of acetate, CH₃COO⁻. Which one is not a resonance structure at all?',
+        options: ['The one with the double bond and the minus sign swapped between the two oxygens', 'The one where a methyl hydrogen has moved onto the negatively charged oxygen', 'The one drawn without the lone pairs written out explicitly on either oxygen'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — an atom moved. Shifting that hydrogen gives a genuinely different compound (the enol form), related to acetate by an equilibrium, not by resonance. Resonance moves electrons and nothing else, so the first drawing is a proper contributor and the third is the same structure with some dots left off.',
+        wrongFeedback: 'Run the one non-negotiable test: are the atoms in the same places in both drawings? One of these three answers no.'
+      },
+      {
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
@@ -206,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 3 · Guided Practice',
+        eyebrow: 'Step 4 · Guided Practice',
         title: 'Which of these is required for two structures to be true resonance structures of each other?',
         options: ['Atoms are allowed to shift slightly between the two', 'Only the electrons move — no atom changes position', 'One structure must be thrown out because the other is more stable'],
         correctIndex: 1,
@@ -215,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 4 · Independent Practice',
+        eyebrow: 'Step 5 · Independent Practice',
         title: 'Between acetate\'s two resonance structures (charge on the top O vs. the bottom O), is one the "major" contributor?',
         options: ['Yes — one is major and the other barely matters', 'It depends on the solvent', 'No — they\'re equivalent, so both contribute equally to the hybrid'],
         correctIndex: 2,

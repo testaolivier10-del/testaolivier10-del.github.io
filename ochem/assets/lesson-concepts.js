@@ -520,12 +520,13 @@
       3:['conjugate-pairs','pka-scale'],
       6:['conjugate-pairs','pka-scale'] } },
 
-    'curved-arrows': { n:8, steps:{
+    'curved-arrows': { n:9, steps:{
       1:['curved-arrow-direction'],
       2:['curved-arrow-direction','resonance-validity'],
       3:['curved-arrow-direction','formal-charge-calc'],
       6:['curved-arrow-direction','carbonyl-electrophilicity'],
-      7:['curved-arrow-direction','resonance-validity'] } },
+      7:['curved-arrow-direction'],
+      8:['curved-arrow-direction','resonance-validity'] } },
 
     'cyclohexanes': { n:7, steps:{
       1:['chair-axial-equatorial'],
@@ -630,11 +631,11 @@
       6:['ir-functional-groups'],
       7:['ir-functional-groups'] } },
 
-    'leaving-groups': { n:8, steps:{
-      2:['leaving-group-ability'],
-      3:['leaving-group-ability','pka-scale'],
+    'leaving-groups': { n:9, steps:{
+      3:['leaving-group-ability'],
       4:['leaving-group-ability','pka-scale'],
-      7:['leaving-group-ability'] } },
+      5:['leaving-group-ability','pka-scale'],
+      8:['leaving-group-ability'] } },
 
     'lewis-acids': { n:7, steps:{
       1:['lewis-acid-base'], 2:['lewis-acid-base'],
@@ -699,11 +700,13 @@
       1:['pka-scale'], 2:['pka-scale'], 3:['pka-scale'],
       6:['pka-scale','conjugate-pairs'] } },
 
-    'resonance': { n:7, steps:{
-      2:['resonance-delocalization'],
+    'resonance': { n:9, steps:{
+      2:['resonance-delocalization','resonance-validity'],
       3:['resonance-validity'],
-      4:['resonance-delocalization','resonance-validity'],
-      6:['resonance-validity','resonance-delocalization'] } },
+      4:['resonance-delocalization'],
+      5:['resonance-validity'],
+      6:['resonance-delocalization','resonance-validity'],
+      8:['resonance-validity','resonance-delocalization'] } },
 
     'ring-flips': { n:7, steps:{
       1:['ring-flip-mechanics'], 2:['ring-flip-mechanics'],

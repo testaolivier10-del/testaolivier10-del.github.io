@@ -111,7 +111,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'A curved arrow always tracks an electron pair.',
-        bodyHtml: '<p class="step-body">A full curved arrow represents <b>two electrons</b> moving together. The <b>tail</b> starts at wherever those electrons currently are — a lone pair, or an existing bond. The <b>head</b> points to wherever they end up — a new bond, or a new lone pair.</p><p class="step-body" style="margin-bottom:0;">The tail can never start on a bare atom or a positive charge, because there\'s nothing there to give away. It has to start on an actual pair of electrons.</p>'
+        bodyHtml: '<div class="term-primer"><span class="term-primer-head">First: three words this lesson borrows</span><p>A <b>nucleophile</b> is the species that brings the electron pair — where an arrow\'s tail goes. A <b>leaving group</b> is a group that departs from a carbon taking the bonding pair with it — where an arrow\'s head goes. A <b>carbanion</b> is a carbon carrying a lone pair and a negative charge, which makes it a very strong nucleophile. The next few sections of <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-electron-movement\">Organic Structure &amp; Electron Movement</a> build all three properly; the one-line versions are enough for the arrows.</p></div><p class="step-body">A full curved arrow represents <b>two electrons</b> moving together. The <b>tail</b> starts at wherever those electrons currently are — a lone pair, or an existing bond. The <b>head</b> points to wherever they end up — a new bond, or a new lone pair.</p><p class="step-body" style="margin-bottom:0;">The tail can never start on a bare atom or a positive charge, because there\'s nothing there to give away. It has to start on an actual pair of electrons.</p>'
       },
       {
         render: function(api){
@@ -250,9 +250,33 @@ document.addEventListener('DOMContentLoaded', function(){
         }
       },
       {
+        /* The notes' own two-arrow example, drawn rather than read. One
+           arrow is impossible here — carbon cannot reach five bonds — so
+           this is where the "a partner arrow empties what the first one
+           fills" rule stops being a sentence. */
+        render: function(api){
+          window.OchemArrowStep.mount(api, {
+            eyebrow: 'Draw it',
+            title: 'Hydroxide attacks this carbon and bromide leaves. Draw both arrows.',
+            bodyHtml: '<p class="step-body">Two arrows, fired at the same instant. One of them makes a bond; the other has to break one, because carbon cannot hold five.</p>',
+            molecule: 'sn2-bromoethane',
+            concepts: ['curved-arrow-direction'],
+            arrows: [{ from: 'nucO', to: 'c1' }, { from: 'bond:c1-br', to: 'br' }],
+            hint: 'Start on the hydroxide oxygen for one arrow, and on the C–Br bond for the other.',
+            why: 'Arrow 1 takes a lone pair from the hydroxide oxygen to the carbon, forming the new C–O bond. Arrow 2 takes the C–Br bonding pair onto bromine, which leaves as bromide. Count the charges: one minus goes in on hydroxide, one minus comes out on bromide, and the carbon stays at four bonds the whole way through.',
+            wrong: {
+              'nucO>br': 'Hydroxide is not attacking the bromine — bromine is leaving, not being bonded to. The electrophilic atom here is the carbon that bromine is pulling density away from.',
+              'nucO>c2': 'That carbon has no leaving group on it and nothing making it electron-poor. A nucleophile has no reason to go there.',
+              'br>c1': 'Backwards. Bromine is departing with the bonding pair, so the arrow runs from the C–Br bond out to bromine, not from bromine in.',
+              'bond:c1-br>c1': 'That puts the bonding pair onto the carbon, which already has four bonds — and it leaves bromine with nothing. The pair leaves with the group that leaves.'
+            }
+          });
+        }
+      },
+      {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'A carbanion (CH₃⁻) attacks a carbonyl carbon (C=O). Where should the arrow\'s tail start?',
+        title: 'A carbanion (CH₃⁻ — a carbon with a lone pair and a negative charge) attacks a carbonyl carbon (C=O). Where should the arrow\'s tail start?',
         options: ['On the carbanion\'s lone pair', 'On the carbonyl oxygen', 'On the carbonyl carbon'],
         correctIndex: 0,
         correctFeedback: 'Correct — the carbanion\'s lone pair is the electron source attacking the electrophilic carbonyl carbon. (A second arrow, from the C=O π bond to oxygen, completes the mechanism — you\'ll draw full sequences like this in <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-carbonyl-chemistry\">Carbonyl Chemistry</a>.)'
