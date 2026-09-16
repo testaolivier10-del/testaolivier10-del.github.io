@@ -6514,7 +6514,7 @@
     "Eight"
    ],
    "correct": 0,
-   "why": "Three arms leave the branch carbon: three carbons to the left, three in the propyl, two to the right. A chain joins the two longest arms through that carbon: 3 + 1 + 3 = 7. The two-carbon arm is an ethyl on C4: 4-ethylheptane. Every carbon counted at once (eight) would need the path to pass through the branch carbon twice.",
+   "why": "Three arms leave the branch carbon: three carbons to the left, three in the propyl, two to the right. A chain joins the two longest arms through that carbon: 3 + 1 + 3 = 7. The two-carbon arm is an ethyl on C4: 4-ethylheptane. Counting every carbon in the molecule (nine) as one chain would need the path to pass through the branch carbon twice.",
    "difficulty": "medium",
    "type": "mcq"
   },

@@ -3344,7 +3344,7 @@ FIGURES.push({
   id: 'alkyl-group-gallery',
   section: 'naming-substituents',
   anchor: 'Learn both directions and use whichever the question uses.</p>',
-  alt: 'Six alkyl groups drawn as skeletal fragments: propyl, isopropyl, butyl, sec-butyl, isobutyl and tert-butyl. In each the bond to the parent chain is highlighted and ends in a dot, and the carbons are numbered from the attached carbon to show where the systematic name comes from.',
+  alt: 'Six alkyl groups drawn as skeletal fragments: propyl, isopropyl, butyl, sec-butyl, isobutyl and tert-butyl. In each the bond to the parent chain is highlighted and ends in a dot, and the carbons are numbered as in the systematic name, so the attached carbon is C2 in propan-2-yl and butan-2-yl.',
   viewBox: '0 0 720 420',
   build() {
     let s = '';
@@ -3387,10 +3387,10 @@ FIGURES.push({
       s += text(px + 112, py + 42, g.sys, { cls: 'fg-sm', size: 10 });
       s += g.draw(px + 46, py + 112);
     });
-    s += text(360, 408, 'The dot is the bond to the parent chain; the numbers are the group’s own, from the attached carbon.', { cls: 'fg-sm', size: 10 });
+    s += text(360, 408, 'The dot is the bond to the parent chain; the numbers are the group’s own, as in its systematic name.', { cls: 'fg-sm', size: 10 });
     return s;
   },
-  caption: 'The six alkyl groups you will be asked to recognize, drawn. Same carbon count in each row; what changes is which carbon carries the bond to the parent. The systematic name says exactly that: <i>propan-2-yl</i> is a three-carbon group attached through its second carbon, <i>2-methylpropyl</i> is a three-carbon group attached through its first with a methyl on its second.',
+  caption: 'The six alkyl groups you will be asked to recognize, drawn. Each pair — propyl and isopropyl, then the four butyls — shares a carbon count; what changes is which carbon carries the bond to the parent. The systematic name says exactly that: <i>propan-2-yl</i> is a three-carbon group attached through its second carbon, <i>2-methylpropyl</i> is a three-carbon group attached through its first with a methyl on its second.',
   note: 'Two of these are the ones people confuse. <i>sec</i>-Butyl and isobutyl are both four carbons and both branched, and the difference is whether the branch point is the attached carbon (<i>sec</i>) or the one next to it (iso). Cover the names, look at where the dot sits, and say which is which; if you can do that, the words will stick.',
 });
 
