@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amino acids — Biomolecules | Organic Chemistry</title>
+<meta name="description" content="Learn why amino acids exist as zwitterions, how to calculate and use the isoelectric point, and what the four classes of side chain do in a folded protein.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/amino-acids.html">
+<meta property="og:title" content="Amino acids — Biomolecules | Organic Chemistry">
+<meta property="og:description" content="Learn why amino acids exist as zwitterions, how to calculate and use the isoelectric point, and what the four classes of side chain do in a folded protein.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/amino-acids.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/amino-acids.html#lesson",
+      "name": "Amino acids",
+      "url": "https://levlprep.com/ochem/lessons/amino-acids.html",
+      "description": "Learn why amino acids exist as zwitterions, how to calculate and use the isoelectric point, and what the four classes of side chain do in a folded protein.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Amino acids"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Biomolecules",
+          "item": "https://levlprep.com/ochem/learn.html#m-biomolecules"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Amino acids",
+          "item": "https://levlprep.com/ochem/lessons/amino-acids.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 19 &middot; Biomolecules</div>
+    <h1 style="margin-bottom:4px;">Amino acids.</h1>
+    <p class="lede" style="margin-top:0;">An acid and a base bolted to the same carbon — which is why an amino acid is never the neutral molecule you first draw.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/amino-acids.html">Amino acids &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="peptides-proteins.html">Peptides and proteins</a> &middot; <a href="pka.html">pKa</a> &middot; <a href="amine-reactions.html">Amine reactions</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* Electrophoresis is the cleanest way to test whether someone can actually
+     use pI, because it forces a sign and then a direction. Each case pairs a
+     known pI with a pH on one side of it. */
+  var CASES = [
+    { id:'e1', t:'<b>Glycine</b> (pI 5.97) at <b>pH 1</b>', right:'cath',
+      why:'The pH is well below the pI, so both groups are protonated: the net charge is +1 and the cation moves toward the negative electrode, the cathode.' },
+    { id:'e2', t:'<b>Glycine</b> (pI 5.97) at <b>pH 5.97</b>', right:'stay',
+      why:'This is the definition of the isoelectric point: the zwitterion dominates, plus and minus cancel, and with no net charge there is nothing for the field to pull on.' },
+    { id:'e3', t:'<b>Glycine</b> (pI 5.97) at <b>pH 11</b>', right:'anode',
+      why:'Above the pI the ammonium has given up its proton, leaving the carboxylate alone: net &minus;1, and the anion moves toward the positive electrode, the anode.' },
+    { id:'e4', t:'<b>Aspartic acid</b> (pI 2.77) at <b>pH 7</b>', right:'anode',
+      why:'The low pI is the giveaway — a second COOH in the side chain drags it down to 2.77. At pH 7 both carboxyls are deprotonated and the ammonium is still on, so the net charge is &minus;1 and it runs to the anode.' }
+  ];
+  var OPTS = [ { k:'cath', l:'Toward the cathode' }, { k:'stay', l:'Does not move' }, { k:'anode', l:'Toward the anode' } ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'amino-acids',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'One carbon carries all four.',
+        bodyHtml: '<p class="step-body">An α-amino acid is a single carbon holding an amino group, a carboxyl group, a hydrogen, and a side chain R. Twenty of them, differing only in R, build every protein you have. The α in the name is doing real work: the nitrogen sits on the carbon <i>next to</i> the carboxyl, and that adjacency is why the two groups interact instead of behaving independently.</p>' +
+          '<p class="step-body">Four different groups on one carbon makes it a stereocenter — except in <b>glycine</b>, where R is H and the molecule is achiral. Biology uses the <b>L</b> series, read from a Fischer projection with the carboxyl at the top and the amino group on the left.</p>' +
+          '<div class="explain-box">L and S usually coincide here, but they are not the same statement, and <b>cysteine</b> proves it. Its side chain is CH₂SH, sulfur outranks the carboxyl carbon in the CIP priorities, the ranking around the α carbon reshuffles, and L-cysteine comes out <b>(R)</b>. Nothing about the molecule changed — only which rule you applied.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The neutral molecule is a salt of itself.',
+        bodyHtml: '<p class="step-body">Put a carboxylic acid with pKa ≈ 2 in the same molecule as an amine whose conjugate acid has pKa ≈ 9–10 and the outcome is not in doubt. The stronger acid protonates the stronger base, the proton moves across, and what you have is ⁻OOC–CHR–NH₃⁺: a <b>zwitterion</b>, charged at both ends and neutral overall. That is why amino acids are high-melting crystalline solids that dissolve in water and not in ether — they are internal salts, and drawing them with a plain COOH and NH₂ is simply wrong at any ordinary pH.</p>' +
+          '<p class="step-body">Net charge then follows pH, and only three states matter:</p>' +
+          '<ul class="step-body">' +
+          '<li><b>Strong acid</b> — everything protonated: HOOC–CHR–NH₃⁺, net <b>+1</b>.</li>' +
+          '<li><b>Near neutral</b> — the zwitterion, net <b>0</b>.</li>' +
+          '<li><b>Strong base</b> — everything deprotonated: ⁻OOC–CHR–NH₂, net <b>&minus;1</b>.</li>' +
+          '</ul>' +
+          '<p class="step-body" style="margin-bottom:0;">The pH at which the net charge is zero is the <b>isoelectric point</b>, pI. When the side chain has no ionizable group, it is the average of the two pKa values that bracket the neutral form: pI = ½(pKa₁ + pKa₂), which lands near 6 for most of them. A side chain that ionizes changes which two you average, and that is the only complication in the whole calculation.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Which way does each one move in an electric field?</h2>' +
+            '<p class="step-body">Two comparisons, in order. First <b>pH against pI</b>: below the pI the molecule is a cation, above it an anion. Then remember that opposite charges attract, so a cation runs to the negative electrode. Both steps invert, so skipping one gets you the right answer for the wrong reason.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Direction of migration">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Write the sign down before picking a direction. Is this pH above or below the pI, and does that leave the molecule positive or negative?');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. Sign first, direction second — that order stops the two inversions from cancelling by accident.'
+                  : 'All four, first time. Below the pI a molecule is positive and runs to the cathode; above it, negative and to the anode; at it, nowhere.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'Why is the neutral form of alanine a zwitterion rather than HOOC–CH(CH₃)–NH₂?',
+        options: [
+          'The zwitterion is smaller and packs into a crystal better',
+          'A pKa 2 acid and a pKa 9 base in one molecule transfer the proton',
+          'Water forces both groups to ionize regardless of their pKa values',
+          'Nitrogen is more electronegative than oxygen and takes the proton'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. This is an ordinary acid–base equilibrium with the two partners tethered together, and it lies where every such equilibrium lies: toward the weaker acid and weaker base. Seven pKa units of difference is not a close call.',
+        wrongFeedback: 'Ignore the tether for a moment and treat it as an acid meeting a base. Compare the two pKa values — which way does that equilibrium go?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'Alanine has pKa values of 2.34 and 9.69, and its side chain does not ionize. What is its pI?',
+        options: [
+          'About 2.3, set by the carboxyl group',
+          'About 6.0, the average of the two',
+          'About 7.0, because the zwitterion is neutral',
+          'About 12.0, the sum of the two'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct: ½(2.34 + 9.69) = 6.02. The two values you average are the ones on either side of the neutral species, which for a non-ionizing side chain are simply the only two there are. Note that the answer is not 7 — an amino acid solution is mildly acidic at its isoelectric point.',
+        wrongFeedback: 'The pI is the pH at which the molecule is half a cation and half an anion, so it sits between the two pKa values that bracket the neutral form.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The side chain is the whole variable.',
+        bodyHtml: '<p class="step-body">Twenty amino acids share a backbone, so every difference in a protein traces back to R. Sorting them four ways covers most of what you need:</p>' +
+          '<ul class="step-body">' +
+          '<li><b>Nonpolar</b> — alkyl or aromatic (alanine, valine, leucine, phenylalanine). Water pushes these to the interior of a folded protein.</li>' +
+          '<li><b>Polar but neutral</b> — OH, SH or amide (serine, threonine, cysteine, asparagine). Hydrogen bond, carry no charge.</li>' +
+          '<li><b>Acidic</b> — a second carboxyl (aspartic and glutamic acid). Deprotonated and negative at pH 7, with a low pI to match.</li>' +
+          '<li><b>Basic</b> — an extra nitrogen (lysine, arginine, histidine). Protonated and positive at pH 7, with a high pI.</li>' +
+          '</ul>' +
+          '<div class="explain-box">Three earn separate attention. <b>Glycine</b> has no side chain, so it is achiral and lets the backbone turn corners nothing else can. <b>Proline</b>&rsquo;s side chain loops back onto the nitrogen, making a ring that stiffens the chain and breaks helices. <b>Cysteine</b>&rsquo;s SH can be oxidized to an S–S bond with a second cysteine, the one covalent cross-link a folded protein gets.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'At pH 7, what is the charge on the side chain of lysine?',
+        options: [
+          'Negative, because the amine is deprotonated',
+          'Positive, because the side-chain amine is protonated',
+          'Neutral, because amines are weak bases',
+          'It depends on which other residues are nearby'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. The side-chain ammonium has a pKa near 10.5, so at pH 7 — three and a half units below it — it is overwhelmingly protonated and carries a full positive charge. That charge is why lysine residues sit on the outside of a folded protein and why lysine&rsquo;s pI is up near 9.7.',
+        wrongFeedback: 'Compare pH 7 with the pKa of an alkylammonium ion, about 10.5. Below the pKa, is the acid form present or absent?'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Lysine (pI 9.7) and glutamic acid (pI 3.2) are run together at pH 6. What happens?',
+        options: [
+          'Both move to the anode, lysine more slowly',
+          'Lysine goes to the cathode, glutamate to the anode — they separate',
+          'Neither moves, because pH 6 is between the two pI values',
+          'Both move to the cathode, glutamate more slowly'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and this is the whole idea behind separating proteins by charge. Pick a pH <i>between</i> two pI values and the two species are forced to opposite signs: pH 6 is below lysine&rsquo;s pI, so lysine is a cation and runs to the cathode, and above glutamic acid&rsquo;s, so glutamate is an anion and runs to the anode. They travel in opposite directions and are cleanly resolved. Choosing a pH outside both pI values would have made both migrate the same way, separating them only by how fast.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

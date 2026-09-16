@@ -183,6 +183,19 @@
       { id: 'functional-group-interconversion', title: 'Functional group interconversion', href: 'lessons/functional-group-interconversion.html', dependsOn: ['retrosynthesis', 'alcohol-oxidation', 'carbonyl-reduction', 'hydrogenation'] },
       { id: 'protecting-groups', title: 'Protecting groups', href: 'lessons/protecting-groups.html', dependsOn: ['acetals', 'nucleophilic-addition', 'alcohol-reactions'] },
       { id: 'multistep-synthesis', title: 'Planning a multistep route', href: 'lessons/multistep-synthesis.html', dependsOn: ['carbon-carbon-bonds', 'functional-group-interconversion', 'protecting-groups', 'directing-effects'] }
+    ]},
+    /* Biomolecules sits after Synthesis for the same appending reason, and
+       because it earns its place by being downstream of almost everything:
+       a sugar is an intramolecular hemiacetal, a peptide bond is an amide,
+       a fat is a triester, and DNA's backbone is a diester. Nothing here is
+       a new reaction — it is the reactions already taught, shown doing the
+       work they do in a cell. */
+    { id: 'biomolecules', title: 'Biomolecules', topics: [
+      { id: 'carbohydrates', title: 'Carbohydrates', href: 'lessons/carbohydrates.html', dependsOn: ['acetals', 'nucleophilic-addition', 'fischer'] },
+      { id: 'amino-acids', title: 'Amino acids', href: 'lessons/amino-acids.html', dependsOn: ['pka', 'bronsted', 'rs-configuration'] },
+      { id: 'peptides-proteins', title: 'Peptides and proteins', href: 'lessons/peptides-proteins.html', dependsOn: ['amino-acids', 'esters-amides', 'resonance'] },
+      { id: 'lipids', title: 'Lipids', href: 'lessons/lipids.html', dependsOn: ['esters-amides', 'acyl-substitution', 'hydrogenation'] },
+      { id: 'nucleic-acids', title: 'Nucleic acids', href: 'lessons/nucleic-acids.html', dependsOn: ['carbohydrates', 'acetals', 'amine-structure'] }
     ]}
   ];
 

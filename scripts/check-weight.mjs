@@ -189,7 +189,7 @@ const DATA_BUDGETS = [
      practice-bank.json itself is the SOURCE the two are generated from. It is
      no longer fetched by anything at runtime, so it has no budget: adding one
      would be budgeting a file no reader downloads. */
-  ['ochem/assets/practice-bank-core.json', 180],
+  ['ochem/assets/practice-bank-core.json', 192],
   ['ochem/assets/practice-bank-why.json', 132],
 ];
 

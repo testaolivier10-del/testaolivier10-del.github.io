@@ -46,6 +46,44 @@ that is not a clean intro-level reaction; and a yield question whose stem
 asserted something its own answer contradicted. Five caught in four chapters is
 not a reassuring rate for a body of work this size.
 
+## Chemistry review log
+
+Every unit from Biomolecules onward is read by a fresh reviewer that has not
+seen the author's notes or reasoning. This is the record of what each pass
+found, kept whether or not the finding was accepted, so the disagreement rate
+stays visible rather than implied.
+
+### Unit 5 — Biomolecules
+
+Eleven findings, all accepted, all fixed before the unit shipped.
+
+**Confident errors (4).**
+
+| Finding | Where | Resolution |
+|---|---|---|
+| "the other nineteen L amino acids are S" — glycine is achiral and has no descriptor, and the same page says so two paragraphs earlier | `notes/amino-acids` | Corrected to eighteen chiral ones, with glycine named as having no configuration |
+| "testosterone and estradiol … differing by an A ring that has been aromatized" reads as though both are aromatic; only estradiol is, and it contradicted the unit's own question #23 | `lessons/lipids` | Rewritten to say estradiol is testosterone with its A ring aromatized, which turns that ring's ketone into a phenol |
+| "an OH four or five carbons down the chain … a pyranose or a furanose" — off by one both ways: C5 (four down) gives the pyranose, C4 (three down) the furanose, and five down would be a seven-membered ring | `concepts.js`, `sugar-ring` | Corrected to three or four, with C4 and C5 named explicitly |
+| The option keyed for "What are anomers?" read "Isomers differing at one carbon", which is the definition of an **epimer** — and the same set defines epimers that way six questions later | `practice-bank`, `carbohydrates` | Key changed to "Epimers at the anomeric carbon" |
+
+**Weaker claims (7), all also accepted.** Chargaff's rule stated for "any DNA
+sample" rather than any double-stranded DNA; cholesterol described as
+stiffening a membrane when it buffers fluidity in both directions; 6 M HCl
+hydrolysis described as returning the composition, when it destroys tryptophan
+and deamidates Asn and Gln; "the only level that is covalent" sitting against
+the same bank's correct claim that the disulfide is covalent; an enolate called
+an enediol, conflating the anion with its neutral tautomer; the N-glycoside's
+acid lability stated flatly when purines depurinate far faster than
+pyrimidines; and a question that marked 5′ the only place a nucleotide's
+phosphate can sit, when 3′-monophosphates are nucleotides too — that one was
+reworded to ask what a polymerase adds, which is unambiguously 5′.
+
+**Not a disagreement, but worth recording:** the reviewer independently
+verified every numerical claim in the unit — the two pI calculations, the four
+C18 melting points, the bond lengths, the anomeric equilibrium ratio, the
+hydrogen-bond counts — and found all of them correct. The errors were in prose
+and in one keyed option, not in the arithmetic.
+
 ## Pending clinical review
 
 Everything in this section is a clinical statement this repo now makes that a
@@ -745,19 +783,53 @@ grows the same way and has ~10% headroom by convention.
 **Bank quality:** 54.1% on longest-is-key, `lengthCeiling` ratcheted 0.56 →
 0.55, keyed position 26.3%.
 
-#### Units 5–9 — **not started**
+#### Unit 5 — Biomolecules — **complete**
 
-Biomolecules · organometallics · carbonyl/enolate breadth · aromatic
-follow-through · polymers.
+Five sections, five lessons, 150 questions, appended as **Chapter 19**. It
+earns its place by being downstream of nearly everything: a sugar is an
+intramolecular hemiacetal, a peptide bond is an amide, a fat is a triester, and
+the DNA backbone is a diester. Nothing in the chapter is a new reaction — it is
+the reactions already taught, shown doing the work they do in a cell.
 
-#### Known gap across all four new chapters — **figures**
+| Section | Covers |
+|---|---|
+| Carbohydrates | Aldose/ketose, D/L, the ring as a cyclic hemiacetal, anomers and mutarotation, reducing sugars, α vs β in starch and cellulose |
+| Amino acids | The zwitterion, the two pKa values, pI and electrophoresis, L with cysteine as R, the four side-chain classes |
+| Peptides and proteins | The peptide bond as an amide, what amide resonance causes, the four levels of structure, disulfides and the hydrophobic effect |
+| Lipids | Solubility as the defining property, packing and melting point, saponification and micelles, phospholipids and the bilayer, steroids |
+| Nucleic acids | Nucleoside vs nucleotide, the N-glycoside and phosphodiester links, base pairing, why RNA hydrolyzes and DNA does not |
 
-Every one of the original 64 sections carries at least one figure. The 19
-sections added in this phase carry none. `scripts/build-ochem-figures.mjs` and
-its drawing kit (`scripts/lib/ochem-figure.mjs`) exist and are in CI, so this
-is an authoring pass rather than a build problem — but it is a visible
-inconsistency in the textbook and should be closed deliberately rather than
-bolted onto a content chapter.
+**This is the first unit reviewed by an independent second pass** — a fresh
+agent read the five sections, five lessons, 150 questions and five concepts
+without access to any of the reasoning above, and reported back. It found four
+confident errors and seven weaker claims. All eleven were accepted and fixed;
+the log is in *Chemistry review log* near the top of this file. That rate, on
+material written carefully and checked once already, is the argument for doing
+it on every remaining unit.
+
+**Figures are now part of the unit rather than deferred.** Five were authored
+with the existing kit: the anomeric carbon with and without a free OH, glycine's
+net charge against pH, amide resonance and its three consequences, three C18
+chains drawn as they pack, and a nucleotide taken apart into its three pieces.
+
+**Budget:** `practice-bank-core.json` 180 → 192 KB gzipped, for 150 new
+questions. The `why` half is unchanged at 132 and has ~3 KB of headroom left.
+
+**Bank quality:** the 150 new items were authored with the key position cycled
+and the reasoning kept in `why`; the length tell across them is 11%, reached by
+trimming keys only — no distractor was padded.
+
+#### Units 6–9 — **not started**
+
+Organometallics · carbonyl/enolate breadth · aromatic follow-through ·
+polymers.
+
+#### Figures for the new chapters — **in progress**
+
+Every one of the original 64 sections carries at least one figure. The 24
+sections added in this phase started with none. Unit 5's five are written; the
+19 from Units 1–4 are being backfilled now, and from Unit 6 onward figures are
+authored as part of the unit rather than recorded here as a gap.
 
 ### Phase 9.4 — Depth in the existing units — **not started**
 

@@ -181,6 +181,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/amino-acids.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/aromaticity.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
@@ -212,6 +217,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/c-nmr.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/carbohydrates.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
   </url>
@@ -391,6 +401,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/lipids.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/markovnikov.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
@@ -441,6 +456,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/nucleic-acids.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/nucleophiles.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
@@ -457,6 +477,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/oxidation-states.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/peptides-proteins.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
   </url>
@@ -621,6 +646,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/lessons/amino-acids.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/lessons/aromaticity.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
@@ -652,6 +682,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/c-nmr.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/carbohydrates.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
   </url>
@@ -821,6 +856,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/lessons/lipids.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/lessons/markovnikov.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
@@ -871,6 +911,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/lessons/nucleic-acids.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/lessons/nucleophiles.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
@@ -887,6 +932,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/oxidation-states.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/peptides-proteins.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
   </url>

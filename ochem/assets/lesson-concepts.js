@@ -63,6 +63,26 @@
       2:['route-order'], 3:['route-order'], 4:['route-order'],
       6:['route-order'], 7:['route-order','cc-bond-toolkit'] } },
 
+    'carbohydrates': { n:8, steps:{
+      2:['sugar-ring'], 3:['sugar-ring'], 4:['sugar-ring'],
+      6:['sugar-ring'], 7:['sugar-ring'] } },
+
+    'amino-acids': { n:8, steps:{
+      2:['zwitterion'], 3:['zwitterion'], 4:['zwitterion'],
+      6:['zwitterion'], 7:['zwitterion'] } },
+
+    'peptides-proteins': { n:8, steps:{
+      2:['peptide-bond'], 3:['peptide-bond'], 4:['peptide-bond'],
+      6:['peptide-bond'], 7:['peptide-bond'] } },
+
+    'lipids': { n:8, steps:{
+      2:['lipid-ester'], 3:['lipid-ester'], 4:['lipid-ester'],
+      6:['lipid-ester'], 7:['lipid-ester'] } },
+
+    'nucleic-acids': { n:8, steps:{
+      2:['nucleotide-assembly'], 3:['nucleotide-assembly'], 4:['nucleotide-assembly'],
+      6:['nucleotide-assembly','sugar-ring'], 7:['nucleotide-assembly'] } },
+
     /* The oxidation & reduction chapter. Graded steps are 2, 3, 4, 6, 7. */
     'oxidation-states': { n:8, steps:{
       2:['oxidation-level'],

@@ -31664,5 +31664,1965 @@
    "difficulty": "medium",
    "type": "mcq"
   }
+ ],
+ "carbohydrates": [
+  {
+   "q": "What is a carbohydrate, in functional-group terms?",
+   "options": [
+    "A polyhydroxy carbonyl",
+    "A polyester of glycerol",
+    "A polymer of amino acids",
+    "A chain of phosphodiesters"
+   ],
+   "correct": 0,
+   "why": "Every property of a sugar follows from a carbonyl surrounded by alcohols on the same chain.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A sugar whose carbonyl is at the end of the chain is called what?",
+   "options": [
+    "A ketose",
+    "A furanose",
+    "An anomer",
+    "An aldose"
+   ],
+   "correct": 3,
+   "why": "Aldehyde at C1. A carbonyl inside the chain, usually C2, makes it a ketose instead.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Fructose has its carbonyl at C2. What does that make it?",
+   "options": [
+    "A ketopentose",
+    "An aldopentose",
+    "A ketohexose",
+    "An aldohexose"
+   ],
+   "correct": 2,
+   "why": "Six carbons and an internal carbonyl: keto- for the position, -hexose for the count.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many stereocenters does an aldohexose have?",
+   "options": [
+    "Two",
+    "Five",
+    "Six",
+    "Four"
+   ],
+   "correct": 3,
+   "why": "C2 through C5 each carry an H and an OH; C1 is the carbonyl and C6 is a CH2OH.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "How many stereoisomeric aldohexoses are there?",
+   "options": [
+    "32",
+    "16",
+    "8",
+    "4"
+   ],
+   "correct": 1,
+   "why": "Two to the power of four stereocenters.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "In a Fischer projection, which carbon decides whether a sugar is D or L?",
+   "options": [
+    "The lowest stereocenter",
+    "The carbonyl carbon itself",
+    "The anomeric carbon",
+    "The terminal CH2OH"
+   ],
+   "correct": 0,
+   "why": "One carbon carries the whole label, and it is the one at the bottom of the drawing.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A Fischer projection shows the OH on the right at the bottom stereocenter. Which is it?",
+   "options": [
+    "Neither, until the rotation is measured",
+    "Both, since the two interconvert",
+    "D",
+    "L"
+   ],
+   "correct": 2,
+   "why": "Right means D. The label is read off the drawing, not off a polarimeter.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Does calling a sugar D tell you which way it rotates polarized light?",
+   "options": [
+    "Only for ketoses",
+    "No — the two are unrelated labels",
+    "Yes, D always rotates clockwise",
+    "Yes, D always rotates counterclockwise"
+   ],
+   "correct": 1,
+   "why": "D fixes one stereocenter's drawn position; the observed rotation is a measured property of the whole molecule.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What forms when the C5 OH of glucose adds to its own C1 carbonyl?",
+   "options": [
+    "A cyclic hemiacetal",
+    "A cyclic acetal",
+    "A lactone",
+    "An epoxide"
+   ],
+   "correct": 0,
+   "why": "One alcohol plus one carbonyl gives a hemiacetal; it takes a second alcohol to reach an acetal.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A six-membered sugar ring is called what?",
+   "options": [
+    "A furanose",
+    "An anomer",
+    "A glycoside",
+    "A pyranose"
+   ],
+   "correct": 3,
+   "why": "Named after pyran. The five-membered ring is a furanose, after furan.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which carbon of the ring form is the anomeric carbon?",
+   "options": [
+    "The ring oxygen's other neighbor only",
+    "Any carbon bearing an OH",
+    "The one bearing two oxygens",
+    "The one bearing the CH2OH"
+   ],
+   "correct": 2,
+   "why": "It was the carbonyl carbon, so after cyclization it holds the ring oxygen and an OH.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What are anomers?",
+   "options": [
+    "Aldose and ketose forms",
+    "Epimers at the anomeric carbon",
+    "Mirror images at every stereocenter",
+    "Ring and open-chain forms"
+   ],
+   "correct": 1,
+   "why": "They differ at the anomeric carbon only, which is the one stereocenter the ring can open and reset.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "In a Haworth drawing of a D-pyranose, where does the alpha anomeric OH point?",
+   "options": [
+    "Down",
+    "Up",
+    "Into the ring",
+    "It varies with the sugar"
+   ],
+   "correct": 0,
+   "why": "Alpha is down and beta is up for the D series.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a solution of pure alpha-D-glucopyranose change its optical rotation over time?",
+   "options": [
+    "The sugar oxidizes in air",
+    "The D configuration inverts to L",
+    "Water hydrolyzes the ring permanently",
+    "The anomers equilibrate"
+   ],
+   "correct": 3,
+   "why": "Mutarotation. Only the anomeric center can change, because only it opens.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the name for that change in rotation?",
+   "options": [
+    "Epimerization",
+    "Tautomerization",
+    "Mutarotation",
+    "Racemization"
+   ],
+   "correct": 2,
+   "why": "A specific term for the anomeric equilibration of a sugar in solution.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which anomer of D-glucopyranose dominates at equilibrium?",
+   "options": [
+    "Neither — the open chain dominates",
+    "Beta, at roughly 64%",
+    "Alpha, at roughly 64%",
+    "They are equal"
+   ],
+   "correct": 1,
+   "why": "Beta puts the anomeric OH equatorial, and glucose is the sugar that can get every substituent equatorial.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What makes a sugar a reducing sugar?",
+   "options": [
+    "A free anomeric OH",
+    "A free primary alcohol",
+    "An even number of carbons",
+    "A six-membered ring"
+   ],
+   "correct": 0,
+   "why": "The test oxidizes the open-chain aldehyde, so the ring has to be able to open to supply it.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Capping the anomeric OH with a second alcohol gives what?",
+   "options": [
+    "A second hemiacetal",
+    "An ether at C1",
+    "A lactol",
+    "An acetal"
+   ],
+   "correct": 3,
+   "why": "Two OR groups on the anomeric carbon is a full acetal, and the sugar-specific name for it is glycoside.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Is a methyl glycoside a reducing sugar?",
+   "options": [
+    "Yes, but only slowly",
+    "Only in its furanose form",
+    "No — the acetal cannot open",
+    "Yes, acetals open freely in base"
+   ],
+   "correct": 2,
+   "why": "An acetal is stable to base, so no open-chain aldehyde is ever available.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Sucrose is glucose joined to fructose. Why is it non-reducing?",
+   "options": [
+    "Its ring is five-membered",
+    "Both anomeric carbons are used",
+    "It has no anomeric carbon",
+    "It is a ketose"
+   ],
+   "correct": 1,
+   "why": "The bond runs anomeric carbon to anomeric carbon, so neither ring can open.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Maltose is two glucoses joined alpha-1,4. Is it reducing?",
+   "options": [
+    "Yes, one end stays free",
+    "No, both anomeric centers are tied up",
+    "No, the link blocks ring opening",
+    "Only after hydrolysis"
+   ],
+   "correct": 0,
+   "why": "A 1,4 link commits one anomeric carbon, leaving the other end free to open.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What kind of bond joins two sugar units in a disaccharide?",
+   "options": [
+    "An ester bond",
+    "An amide bond",
+    "A phosphodiester bond",
+    "A glycosidic bond"
+   ],
+   "correct": 3,
+   "why": "One anomeric carbon, two OR groups, made by an alcohol displacing the anomeric OH under acid.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does alpha-1,4 describe in a polysaccharide?",
+   "options": [
+    "The number of branches",
+    "The ring size",
+    "The configuration and the carbons joined",
+    "Only the chain length"
+   ],
+   "correct": 2,
+   "why": "Alpha names the anomeric configuration; 1,4 names which carbon bonds to which.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Cellulose and amylose are both 1,4 chains of D-glucose. What differs?",
+   "options": [
+    "Ring size",
+    "Alpha against beta",
+    "D in one, L in the other",
+    "Ester links in one, ether in the other"
+   ],
+   "correct": 1,
+   "why": "One stereocenter on one carbon, and the two materials could hardly behave less alike.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can humans digest starch but not cellulose?",
+   "options": [
+    "Amylase reads only alpha links",
+    "Cellulose has no glycosidic bonds",
+    "Cellulose is not made of glucose",
+    "Cellulose is too acidic"
+   ],
+   "correct": 0,
+   "why": "The enzyme reads the configuration at the anomeric carbon, and it only fits alpha.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why do cellulose chains form rigid sheets?",
+   "options": [
+    "They are covalently cross-linked",
+    "They carry a net charge",
+    "They are branched",
+    "Beta links let them lie flat"
+   ],
+   "correct": 3,
+   "why": "Alpha-1,4 chains coil into helices instead, which is why starch is soft.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Fructose is a ketose, yet it gives a positive Tollens' test. Why?",
+   "options": [
+    "It contains glucose as an impurity",
+    "Its furanose ring is oxidized intact",
+    "Base isomerizes it to an aldose",
+    "Tollens' reagent oxidizes ketones directly"
+   ],
+   "correct": 2,
+   "why": "The test medium is basic, and an alpha deprotonation gives an enediol that can collapse to the aldose.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent distinguishes an aldehyde from an acetal at the anomeric carbon?",
+   "options": [
+    "Acetic anhydride",
+    "Tollens' reagent",
+    "Aqueous NaOH",
+    "Sodium borohydride"
+   ],
+   "correct": 1,
+   "why": "Tollens' oxidizes the free aldehyde a hemiacetal supplies, and an acetal supplies none.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is beta-D-glucopyranose the most stable common hexose ring?",
+   "options": [
+    "Everything can sit equatorial",
+    "It has the fewest stereocenters",
+    "Its ring is five-membered",
+    "Its anomeric OH is axial"
+   ],
+   "correct": 0,
+   "why": "No 1,3-diaxial strain anywhere in the chair, which is a conformational argument, not a new one.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Epimers are stereoisomers differing at how many stereocenters?",
+   "options": [
+    "Two",
+    "All of them",
+    "None",
+    "One"
+   ],
+   "correct": 3,
+   "why": "A single center. Differing at the anomeric one specifically makes them anomers.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "amino-acids": [
+  {
+   "q": "Which four groups sit on the alpha carbon of an amino acid?",
+   "options": [
+    "NH2, COOH, H, and a side chain",
+    "Two NH2 groups and two COOH groups",
+    "OH, COOH, H, and a side chain",
+    "NH2, CHO, H, and a side chain"
+   ],
+   "correct": 0,
+   "why": "The alpha carbon is defined as the one next to the carboxyl, and it carries the amine.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which standard amino acid is achiral?",
+   "options": [
+    "Alanine",
+    "Serine",
+    "Proline",
+    "Glycine"
+   ],
+   "correct": 3,
+   "why": "Its side chain is H, so the alpha carbon has two identical substituents.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which stereochemical series do the amino acids of proteins belong to?",
+   "options": [
+    "A racemic mixture of both",
+    "Neither — they are achiral",
+    "L",
+    "D"
+   ],
+   "correct": 2,
+   "why": "Read from a Fischer projection with COOH at the top and NH2 on the left.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which L-amino acid has the R configuration?",
+   "options": [
+    "Valine",
+    "Cysteine",
+    "Alanine",
+    "Serine"
+   ],
+   "correct": 1,
+   "why": "Sulfur outranks the carboxyl carbon in CIP priority, so the ranking around the alpha carbon reshuffles.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the dominant form of an amino acid near neutral pH?",
+   "options": [
+    "The zwitterion",
+    "The neutral COOH and NH2 form",
+    "The fully protonated cation",
+    "The fully deprotonated anion"
+   ],
+   "correct": 0,
+   "why": "A pKa 2 acid and a pKa 9 base in one molecule transfer the proton to each other.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Roughly what is the pKa of an amino acid's carboxyl group?",
+   "options": [
+    "5",
+    "9",
+    "12",
+    "2"
+   ],
+   "correct": 3,
+   "why": "Lower than acetic acid's 4.8, because the nearby ammonium withdraws inductively.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Roughly what is the pKa of an amino acid's alpha-ammonium group?",
+   "options": [
+    "5 to 6",
+    "13 to 14",
+    "9 to 10",
+    "2 to 3"
+   ],
+   "correct": 2,
+   "why": "Typical for an alkylammonium ion, pulled down slightly by the adjacent carboxylate.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why are amino acids high-melting solids insoluble in ether?",
+   "options": [
+    "They are covalent networks",
+    "They are internal salts",
+    "They hydrogen bond unusually strongly",
+    "They are polymeric"
+   ],
+   "correct": 1,
+   "why": "A zwitterion is ionic, and ionic solids behave like this.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the isoelectric point?",
+   "options": [
+    "The pH of zero net charge",
+    "The pH at which the acid is half ionized",
+    "The pH of a pure water solution",
+    "The pH at maximum solubility"
+   ],
+   "correct": 0,
+   "why": "Plus and minus cancel exactly, which is a property of the pH rather than of the molecule alone.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "For a side chain that does not ionize, how is pI calculated?",
+   "options": [
+    "Add the two pKa values",
+    "Subtract the smaller from the larger",
+    "Take the lower pKa",
+    "Average the two pKa values"
+   ],
+   "correct": 3,
+   "why": "The two values bracketing the neutral form, which for a simple side chain are the only two.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Glycine has pKa values 2.34 and 9.60. What is its pI?",
+   "options": [
+    "7.00",
+    "11.94",
+    "5.97",
+    "4.63"
+   ],
+   "correct": 2,
+   "why": "Half of the sum. Note it is below 7, so an isoelectric solution is mildly acidic.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Alanine has pKa values 2.34 and 9.69. What is its pI?",
+   "options": [
+    "12.03",
+    "6.02",
+    "7.00",
+    "3.85"
+   ],
+   "correct": 1,
+   "why": "The same average, and the result is close to glycine's because the side chain is inert in both.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An amino acid is at a pH above its pI. What is its net charge?",
+   "options": [
+    "Negative",
+    "Positive",
+    "Zero",
+    "It depends on the side chain only"
+   ],
+   "correct": 0,
+   "why": "More base than the isoelectric condition means more protons removed.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "At a pH below its pI, which electrode does an amino acid move toward?",
+   "options": [
+    "The anode",
+    "Neither",
+    "Both, alternately",
+    "The cathode"
+   ],
+   "correct": 3,
+   "why": "Below the pI it is a cation, and cations are drawn to the negative electrode.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Aspartic acid has a pI of 2.77. Why so low?",
+   "options": [
+    "It has no alpha-amino group",
+    "It is a D-amino acid",
+    "It has a second carboxyl",
+    "Its side chain is basic"
+   ],
+   "correct": 2,
+   "why": "Two acidic groups have to be neutralized before the molecule is uncharged, so the balance point drops.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Lysine has a pI near 9.7. What does that tell you?",
+   "options": [
+    "It has no carboxyl group",
+    "Its side chain is basic",
+    "Its side chain is acidic",
+    "It is achiral"
+   ],
+   "correct": 1,
+   "why": "A second amine has to stay protonated, so you must go to high pH before the charge cancels.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "At pH 7, what is the charge on a lysine side chain?",
+   "options": [
+    "Positive",
+    "Negative",
+    "Zero",
+    "Half positive and half negative"
+   ],
+   "correct": 0,
+   "why": "The side-chain ammonium has a pKa near 10.5, so at pH 7 it is overwhelmingly protonated.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "At pH 7, what is the charge on a glutamic acid side chain?",
+   "options": [
+    "Positive",
+    "Zero",
+    "It varies with concentration",
+    "Negative"
+   ],
+   "correct": 3,
+   "why": "The side-chain carboxyl has a pKa near 4.3, so at pH 7 it is deprotonated.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which class does phenylalanine's side chain belong to?",
+   "options": [
+    "Basic",
+    "Polar neutral",
+    "Nonpolar",
+    "Acidic"
+   ],
+   "correct": 2,
+   "why": "A benzyl group with no heteroatom, so water pushes it into the protein's interior.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which class does serine's side chain belong to?",
+   "options": [
+    "Nonpolar",
+    "Polar but uncharged",
+    "Acidic",
+    "Basic"
+   ],
+   "correct": 1,
+   "why": "A CH2OH hydrogen bonds well and carries no charge at any ordinary pH.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is unusual about proline?",
+   "options": [
+    "Its side chain reaches the nitrogen",
+    "It has two carboxyl groups",
+    "It is achiral",
+    "It contains sulfur"
+   ],
+   "correct": 0,
+   "why": "The ring stiffens the backbone, which is why proline interrupts helices.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which amino acid can form a covalent cross-link in a protein?",
+   "options": [
+    "Serine",
+    "Threonine",
+    "Alanine",
+    "Cysteine"
+   ],
+   "correct": 3,
+   "why": "Two SH groups oxidize to a disulfide, the only covalent link outside the backbone.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does oxidizing two cysteine residues produce?",
+   "options": [
+    "An ether link",
+    "A peptide bond",
+    "A disulfide bond",
+    "An ester link"
+   ],
+   "correct": 2,
+   "why": "R-S-S-R, and reducing it undoes the cross-link.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Where do nonpolar side chains end up in a folded, water-soluble protein?",
+   "options": [
+    "In the active site only",
+    "Buried inside",
+    "On the surface",
+    "Bonded to the backbone"
+   ],
+   "correct": 1,
+   "why": "The hydrophobic effect: burying them frees the water that would otherwise be ordered around them.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Histidine is the only side chain with a pKa near 6. Why does that matter?",
+   "options": [
+    "It can act as acid or base",
+    "It makes histidine achiral",
+    "It prevents histidine from folding",
+    "It makes histidine nonpolar"
+   ],
+   "correct": 0,
+   "why": "A pKa near the working pH means the residue can act as either an acid or a base in a mechanism.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How would you separate two amino acids with pI values of 3.2 and 9.7?",
+   "options": [
+    "Electrophoresis at pH 1",
+    "Distillation",
+    "Filtration",
+    "Electrophoresis at pH 6"
+   ],
+   "correct": 3,
+   "why": "A pH between the two pI values forces them to opposite signs, so they migrate in opposite directions.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is an amino acid least soluble in water at its pI?",
+   "options": [
+    "It decomposes at that pH",
+    "It becomes nonpolar",
+    "Nothing keeps molecules apart",
+    "Its salts are always insoluble"
+   ],
+   "correct": 2,
+   "why": "Without a net charge there is no electrostatic repulsion keeping the molecules apart.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many ionizable groups does aspartic acid have?",
+   "options": [
+    "Four",
+    "Three",
+    "Two",
+    "One"
+   ],
+   "correct": 1,
+   "why": "Two carboxyls and one ammonium, so three pKa values and a pI set by the lowest two.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is the carboxyl pKa of an amino acid lower than that of acetic acid?",
+   "options": [
+    "The ammonium withdraws inductively",
+    "The molecule is larger",
+    "The nitrogen donates a lone pair",
+    "It is a zwitterion"
+   ],
+   "correct": 0,
+   "why": "An inductive effect stabilizing the carboxylate, on the neighboring carbon.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which single reagent class distinguishes cysteine from serine chemically?",
+   "options": [
+    "A strong acid",
+    "A dehydrating agent",
+    "A reducing agent",
+    "A mild oxidant"
+   ],
+   "correct": 3,
+   "why": "Thiols dimerize to disulfides under mild oxidation; alcohols do not.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "peptides-proteins": [
+  {
+   "q": "What functional group is a peptide bond?",
+   "options": [
+    "An amide",
+    "An ester",
+    "An ether",
+    "An anhydride"
+   ],
+   "correct": 0,
+   "why": "A carboxyl joined to an amine with loss of water gives an amide, and nothing about proteins changes that.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which end of a written peptide sequence comes first?",
+   "options": [
+    "The C-terminus",
+    "Whichever is charged",
+    "The longer side chain",
+    "The N-terminus"
+   ],
+   "correct": 3,
+   "why": "Sequences run N to C, so the direction is part of the information.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which terminus keeps a free carboxyl group?",
+   "options": [
+    "The N-terminus",
+    "Both",
+    "Neither",
+    "The C-terminus"
+   ],
+   "correct": 3,
+   "why": "That carboxyl was never consumed by an amide bond.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Are Gly-Ala and Ala-Gly the same compound?",
+   "options": [
+    "Yes, they interconvert freely",
+    "Only in solution",
+    "No, they differ",
+    "Yes, they are the same"
+   ],
+   "correct": 2,
+   "why": "Same atoms and formula, opposite order, and the chain has a direction.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "How many different tripeptides can be made from the 20 standard amino acids?",
+   "options": [
+    "20",
+    "8,000",
+    "60",
+    "400"
+   ],
+   "correct": 1,
+   "why": "Twenty choices at each of three positions, and repeats are allowed.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does amide resonance do to the C-N bond?",
+   "options": [
+    "Breaks it",
+    "Makes it ionic",
+    "It shortens it",
+    "Lengthens it"
+   ],
+   "correct": 2,
+   "why": "The nitrogen lone pair pushes into the carbonyl, so the real bond is between single and double.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Roughly how long is the peptide C-N bond?",
+   "options": [
+    "1.33 angstroms",
+    "1.54 angstroms",
+    "1.47 angstroms, a normal single bond",
+    "1.20 angstroms, a full triple bond"
+   ],
+   "correct": 0,
+   "why": "Between a single bond at 1.47 and a double bond, exactly as the resonance picture predicts.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How many atoms of the amide unit lie in one plane?",
+   "options": [
+    "Nine",
+    "Six",
+    "Three",
+    "Four"
+   ],
+   "correct": 1,
+   "why": "The two alpha carbons plus C, O, N and H, held flat by the partial pi bond.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is rotation about the peptide C-N bond restricted?",
+   "options": [
+    "Partial double-bond character",
+    "Steric bulk of the side chains",
+    "Hydrogen bonding across it",
+    "Its ionic character"
+   ],
+   "correct": 0,
+   "why": "Rotating would break the overlap that the second resonance structure depends on.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Is the peptide nitrogen basic?",
+   "options": [
+    "Yes, more than an alkylamine",
+    "Yes, about the same as an alkylamine",
+    "Only above pH 10",
+    "No — its lone pair is delocalized"
+   ],
+   "correct": 3,
+   "why": "A lone pair already spent on the neighboring carbonyl cannot also grab a proton.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Where is an amide protonated in strong acid?",
+   "options": [
+    "On the alpha carbon",
+    "It is not protonated at all",
+    "On the carbonyl oxygen",
+    "On the nitrogen"
+   ],
+   "correct": 2,
+   "why": "Protonating oxygen keeps the resonance stabilization; protonating nitrogen would destroy it.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How does an amide rank among acyl derivatives for reactivity?",
+   "options": [
+    "Equal to an acyl chloride",
+    "Least reactive",
+    "Most reactive",
+    "Between anhydride and ester"
+   ],
+   "correct": 1,
+   "why": "The strongest lone-pair donation gives the greatest stabilization and the lowest reactivity.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What conditions hydrolyze a peptide bond in the laboratory?",
+   "options": [
+    "Hours in hot 6 M HCl",
+    "Cold water",
+    "Dilute aqueous base at 25 C",
+    "Mild oxidation"
+   ],
+   "correct": 0,
+   "why": "An amide is the least reactive acyl derivative, so it takes force or an enzyme.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is primary structure?",
+   "options": [
+    "The pattern of local folding",
+    "The overall three-dimensional shape",
+    "How several chains assemble",
+    "The residue sequence"
+   ],
+   "correct": 3,
+   "why": "The only level whose structure is its covalent bonds, and the one from which the others follow.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is secondary structure?",
+   "options": [
+    "The full shape of one chain",
+    "The assembly of several chains",
+    "Helices and sheets",
+    "The residue sequence"
+   ],
+   "correct": 2,
+   "why": "Defined as involving the backbone only, which is why any sequence can form it.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What holds an alpha helix together?",
+   "options": [
+    "Covalent side-chain bonds",
+    "Backbone hydrogen bonds",
+    "Disulfide bonds",
+    "Ionic side-chain pairs"
+   ],
+   "correct": 1,
+   "why": "Every residue supplies an N-H and a C=O regardless of its side chain.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is tertiary structure?",
+   "options": [
+    "One chain's full shape",
+    "The residue sequence",
+    "Local helices and sheets",
+    "The assembly of several chains"
+   ],
+   "correct": 0,
+   "why": "Set mostly by side-chain interactions rather than by the backbone.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is quaternary structure?",
+   "options": [
+    "The sequence of one chain",
+    "The shape of one chain",
+    "The pattern of hydrogen bonds",
+    "How chains assemble"
+   ],
+   "correct": 3,
+   "why": "Hemoglobin's four subunits are the standard example, and a single-chain protein has none.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What contributes most to tertiary structure?",
+   "options": [
+    "Peptide bonds",
+    "Van der Waals forces alone",
+    "The hydrophobic effect",
+    "Disulfide bonds"
+   ],
+   "correct": 2,
+   "why": "Burying nonpolar side chains releases the ordered water around them, which is the large term.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which interaction in a folded protein is covalent?",
+   "options": [
+    "The hydrophobic contact",
+    "The disulfide",
+    "The salt bridge",
+    "The hydrogen bond"
+   ],
+   "correct": 1,
+   "why": "Everything else holding a fold together is noncovalent, which is why folding is reversible.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a salt bridge in a protein?",
+   "options": [
+    "An ion pair of side chains",
+    "A bound sodium ion",
+    "A hydrogen bond to water",
+    "A disulfide link"
+   ],
+   "correct": 0,
+   "why": "For example a lysine ammonium paired with a glutamate carboxylate.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does denaturing a protein destroy?",
+   "options": [
+    "Its peptide bonds",
+    "Its amino acid side chains",
+    "Its primary structure",
+    "Its folded shape"
+   ],
+   "correct": 3,
+   "why": "Heat overwhelms weak noncovalent forces long before it touches an amide.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does boiling not hydrolyze a protein to amino acids?",
+   "options": [
+    "Boiling reduces the amides",
+    "Water cannot reach the backbone",
+    "Amides resist hot water",
+    "Proteins have no amide bonds"
+   ],
+   "correct": 2,
+   "why": "An amide is the least reactive acyl derivative, and 100 C water is nowhere near enough.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What reagent cleaves disulfide bonds without touching the backbone?",
+   "options": [
+    "A dehydrating agent",
+    "A reducing agent",
+    "A strong acid",
+    "An oxidizing agent"
+   ],
+   "correct": 1,
+   "why": "A disulfide is the oxidized form, so reduction takes it back to two thiols.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does proline disrupt an alpha helix?",
+   "options": [
+    "Its ring removes the N-H",
+    "Its side chain is charged",
+    "It is achiral",
+    "It is too small"
+   ],
+   "correct": 0,
+   "why": "No N-H means no hydrogen bond donor at that position, and the ring restricts the geometry.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which level of structure does a single point mutation change directly?",
+   "options": [
+    "Secondary",
+    "Tertiary",
+    "Quaternary",
+    "Primary"
+   ],
+   "correct": 3,
+   "why": "It changes one residue in the sequence, and the other levels change only as a consequence.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is the peptide backbone described as rigid plates hinged at the alpha carbons?",
+   "options": [
+    "The hydrogen bonds are covalent",
+    "The backbone is aromatic",
+    "The amide units are planar",
+    "The side chains are rigid"
+   ],
+   "correct": 2,
+   "why": "That restriction is what makes a finite, predictable set of folds possible.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does hydrolyzing a protein completely give?",
+   "options": [
+    "Ammonia and carbon dioxide",
+    "Free amino acids",
+    "A single long chain",
+    "Peptide fragments only"
+   ],
+   "correct": 1,
+   "why": "Every amide is cut, and each residue is released with its own carboxyl and amine restored.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can any sequence form a beta sheet in principle?",
+   "options": [
+    "All side chains are identical",
+    "Sheets are covalent",
+    "Sheets need no hydrogen bonds",
+    "Only the backbone is involved"
+   ],
+   "correct": 3,
+   "why": "Secondary structure is a backbone property, so the side chains only tip the preference.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What makes a protein water soluble?",
+   "options": [
+    "Polar residues on the surface",
+    "A high proline content",
+    "Its disulfide bonds",
+    "Its molecular weight"
+   ],
+   "correct": 0,
+   "why": "The fold puts the polar residues outside and the nonpolar ones in, which is the hydrophobic effect stated the other way round.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "lipids": [
+  {
+   "q": "How is the lipid class defined?",
+   "options": [
+    "By solubility",
+    "By having an ester group",
+    "By containing nitrogen",
+    "By molecular weight"
+   ],
+   "correct": 0,
+   "why": "It collects the cell components that dissolve in nonpolar solvents, which is why it holds fats and steroids together.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a fatty acid?",
+   "options": [
+    "A long-chain alcohol",
+    "A long-chain amide",
+    "A cyclic ester",
+    "A long-chain acid"
+   ],
+   "correct": 3,
+   "why": "The acid group is the only functional group on an otherwise plain hydrocarbon.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why do most natural fatty acids have an even number of carbons?",
+   "options": [
+    "They are cyclic",
+    "They come from amino acids",
+    "Two-carbon building blocks",
+    "Odd chains are unstable"
+   ],
+   "correct": 2,
+   "why": "Biosynthesis adds acetate units, so the count comes out even.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a triglyceride?",
+   "options": [
+    "A fatty acid trimer",
+    "A glycerol triester",
+    "Three linked fatty acids",
+    "A glycerol triether"
+   ],
+   "correct": 1,
+   "why": "Glycerol has three OH groups, and all three are esterified.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What distinguishes a fat from an oil?",
+   "options": [
+    "The melting point",
+    "Fats have esters and oils do not",
+    "Fats are longer chains only",
+    "Oils contain no glycerol"
+   ],
+   "correct": 0,
+   "why": "They are the same compound class in two physical states.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which fatty acid has the higher melting point at equal chain length?",
+   "options": [
+    "The cis-unsaturated one",
+    "The one with two cis double bonds",
+    "They are equal",
+    "The saturated one"
+   ],
+   "correct": 3,
+   "why": "A straight chain stacks against its neighbors along its full length.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a cis double bond lower a fatty acid's melting point?",
+   "options": [
+    "The molecule becomes polar",
+    "The mass drops sharply",
+    "Kinked chains cannot pack",
+    "The pi bond is weak"
+   ],
+   "correct": 2,
+   "why": "Melting separates molecules, and a bent chain makes much less contact with the next one.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Stearic acid melts near 69 C and oleic acid near 13 C. Both are C18. Why?",
+   "options": [
+    "Oleic acid is branched",
+    "A cis double bond",
+    "Oleic acid is much lighter",
+    "Stearic acid is ionic"
+   ],
+   "correct": 1,
+   "why": "Chain length is held constant, so only the geometry can be responsible.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Elaidic acid is C18 with one trans double bond and melts near 44 C. What does that show?",
+   "options": [
+    "Geometry sets the packing",
+    "Trans bonds are stronger",
+    "Unsaturation raises melting points",
+    "Chain length is irrelevant"
+   ],
+   "correct": 0,
+   "why": "It is unsaturated and still nearly as high-melting as the saturated acid, because it is still straight.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which has the lowest melting point?",
+   "options": [
+    "A C18 acid with one cis double bond",
+    "A saturated C18 acid",
+    "A C18 acid with one trans double bond",
+    "A C18 acid with two cis double bonds"
+   ],
+   "correct": 3,
+   "why": "More kinks means worse packing, and the melting point falls with each one.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What intermolecular force holds fatty acid chains together?",
+   "options": [
+    "Ionic attraction",
+    "Dipole-dipole along the chain",
+    "London dispersion",
+    "Hydrogen bonding along the chain"
+   ],
+   "correct": 2,
+   "why": "Hydrocarbon chains are nonpolar, so contact area is what matters.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does heating a triglyceride with aqueous NaOH give?",
+   "options": [
+    "Three fatty aldehydes",
+    "Glycerol plus carboxylates",
+    "Glycerol and three fatty acids",
+    "A long-chain alcohol"
+   ],
+   "correct": 1,
+   "why": "Base-promoted ester hydrolysis three times over, and the excess base deprotonates each acid.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is that reaction called?",
+   "options": [
+    "Saponification",
+    "Transesterification",
+    "Hydrogenation",
+    "Esterification"
+   ],
+   "correct": 0,
+   "why": "Literally soap-making, which is exactly what it produces.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is saponification irreversible?",
+   "options": [
+    "Glycerol evaporates",
+    "The ester is destroyed by heat",
+    "Water is removed",
+    "Base deprotonates the product"
+   ],
+   "correct": 3,
+   "why": "A carboxylate is a poor electrophile, so nothing runs backwards.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What makes a molecule amphipathic?",
+   "options": [
+    "It carries two charges",
+    "It is very large",
+    "Polar and nonpolar ends",
+    "It is soluble in everything"
+   ],
+   "correct": 2,
+   "why": "A soap is the standard case: an ionic head on a long hydrocarbon tail.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a micelle?",
+   "options": [
+    "A crystal of soap",
+    "Tails turned inward",
+    "A lipid bilayer sheet",
+    "A protein aggregate"
+   ],
+   "correct": 1,
+   "why": "It resolves the solubility conflict by hiding the tails from water.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "How does soap remove grease?",
+   "options": [
+    "Grease dissolves in the micelle",
+    "It reacts with the grease chemically",
+    "It lowers the grease's melting point",
+    "It oxidizes the grease"
+   ],
+   "correct": 0,
+   "why": "The nonpolar core is a pocket of nonpolar solvent that water can carry away.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a phospholipid?",
+   "options": [
+    "A fatty acid salt",
+    "A steroid with a phosphate",
+    "A triester of glycerol",
+    "A diester with a phosphate"
+   ],
+   "correct": 3,
+   "why": "Two fatty acid tails and one charged phosphate group in place of the third.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why do phospholipids form bilayers rather than micelles?",
+   "options": [
+    "They are not amphipathic",
+    "They are too short",
+    "Two tails are too bulky",
+    "They carry no charge"
+   ],
+   "correct": 2,
+   "why": "A one-tailed molecule tapers into a sphere; a two-tailed one is a cylinder and tiles into a sheet.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the lipid bilayer?",
+   "options": [
+    "A micelle of triglycerides",
+    "Two sheets, tails inward",
+    "A single layer of fat",
+    "A protein network"
+   ],
+   "correct": 1,
+   "why": "Tails inward and heads facing the water on both sides, which is every cell membrane.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which lipid class has no ester group at all?",
+   "options": [
+    "Steroids",
+    "Triglycerides",
+    "Phospholipids",
+    "Waxes"
+   ],
+   "correct": 0,
+   "why": "Four fused rings and nothing else, grouped as lipids purely by solubility.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many fused rings does a steroid have?",
+   "options": [
+    "Three",
+    "Five",
+    "Two",
+    "Four"
+   ],
+   "correct": 3,
+   "why": "Three six-membered and one five-membered, fused in a fixed arrangement.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does cholesterol do in a membrane?",
+   "options": [
+    "Forms the hydrogen bonds",
+    "Provides the ester links",
+    "It changes the fluidity",
+    "Carries the charge"
+   ],
+   "correct": 2,
+   "why": "A rigid ring system inserted among flexible chains changes how easily they move.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What structural feature distinguishes estradiol from testosterone?",
+   "options": [
+    "It is an ester",
+    "Its A ring is aromatic",
+    "It has five rings",
+    "It lacks the ring system"
+   ],
+   "correct": 1,
+   "why": "Aromatizing the A ring also converts the ketone there to a phenol.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is partial hydrogenation used for industrially?",
+   "options": [
+    "Hardening a liquid oil",
+    "Making a solid fat liquid",
+    "Removing the glycerol",
+    "Splitting the esters"
+   ],
+   "correct": 0,
+   "why": "Removing double bonds straightens chains, so the material packs better and melts higher.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does partial hydrogenation create trans fats?",
+   "options": [
+    "The catalyst adds hydrogen anti",
+    "Heat isomerizes the esters",
+    "Trans fats form from glycerol",
+    "Addition is reversible"
+   ],
+   "correct": 3,
+   "why": "An alkene that picks up one hydrogen and loses it again does not remember its original geometry.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a trans fat behave like a saturated fat physically?",
+   "options": [
+    "It is fully saturated",
+    "It is much heavier",
+    "Its chain stays straight",
+    "It contains no double bond"
+   ],
+   "correct": 2,
+   "why": "The property that sets the melting point is shape, and trans barely bends the chain.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a wax, chemically?",
+   "options": [
+    "A hydrocarbon mixture",
+    "An ester of two long chains",
+    "A triester of glycerol",
+    "A free fatty acid"
+   ],
+   "correct": 1,
+   "why": "One ester joining two long chains, which is why waxes are hard and very water-repellent.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why are lipids a compact energy store compared with carbohydrates?",
+   "options": [
+    "They are more reduced",
+    "They are heavier",
+    "They dissolve in water",
+    "They contain phosphate"
+   ],
+   "correct": 0,
+   "why": "A more reduced carbon has further to fall on oxidation, so more energy is released per gram.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What are terpenes built from?",
+   "options": [
+    "Two-carbon acetate units",
+    "Six-carbon sugar units",
+    "Amino acids",
+    "Isoprene units"
+   ],
+   "correct": 3,
+   "why": "Counting in fives is the quickest way to recognize one.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "nucleic-acids": [
+  {
+   "q": "What three parts make up a nucleotide?",
+   "options": [
+    "Sugar, base, phosphate",
+    "Two sugars and a base",
+    "A sugar and two phosphates",
+    "An amino acid and a sugar"
+   ],
+   "correct": 0,
+   "why": "Assembling them in that order makes the vocabulary fall out on its own.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the difference between a nucleoside and a nucleotide?",
+   "options": [
+    "The nucleoside has no base",
+    "The nucleotide uses ribose only",
+    "The nucleoside is cyclic",
+    "The nucleotide has a phosphate"
+   ],
+   "correct": 3,
+   "why": "Sugar plus base is a nucleoside; adding the phosphate ester makes it a nucleotide.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which sugar does DNA use?",
+   "options": [
+    "Glucose",
+    "Fructose",
+    "2-Deoxyribose",
+    "Ribose"
+   ],
+   "correct": 2,
+   "why": "Deoxy names the missing OH, and the missing OH is at C2 prime.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the only structural difference between ribose and 2-deoxyribose?",
+   "options": [
+    "The number of carbons",
+    "An OH at C2 prime",
+    "The ring size",
+    "The anomeric configuration"
+   ],
+   "correct": 1,
+   "why": "One hydroxyl group, and it decides which molecule lasts and which does not.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why are the sugar carbons numbered with primes?",
+   "options": [
+    "The base is numbered too",
+    "To mark the anomeric carbon",
+    "To show the ring size",
+    "To indicate stereochemistry"
+   ],
+   "correct": 0,
+   "why": "Both rings have numbered atoms, so the sugar's get primes.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which bases are purines?",
+   "options": [
+    "Cytosine and thymine",
+    "Thymine and uracil",
+    "Cytosine and uracil",
+    "Adenine and guanine"
+   ],
+   "correct": 3,
+   "why": "Two fused rings. The single-ring bases are the pyrimidines.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which base does RNA use in place of thymine?",
+   "options": [
+    "Guanine",
+    "Adenine",
+    "Uracil",
+    "Cytosine"
+   ],
+   "correct": 2,
+   "why": "Uracil is thymine without the methyl group.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What kind of bond joins a base to its sugar?",
+   "options": [
+    "An ester",
+    "An N-glycoside",
+    "An amide",
+    "An ether"
+   ],
+   "correct": 1,
+   "why": "A nitrogen displaces the anomeric OH, which is acetal formation with N in place of O.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which carbon of the sugar bonds to the base?",
+   "options": [
+    "C2 prime",
+    "C3 prime",
+    "C5 prime",
+    "C1 prime"
+   ],
+   "correct": 3,
+   "why": "The anomeric carbon is the electrophilic one, exactly as in ordinary glycoside formation.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which OH of the sugar carries the phosphate that a polymerase adds to a growing chain?",
+   "options": [
+    "The 2 prime OH",
+    "The base",
+    "The 5 prime OH",
+    "The 3 prime OH"
+   ],
+   "correct": 2,
+   "why": "Polymerases use 5 prime triphosphates, and the 3 prime OH of the chain is the nucleophile that attacks one. A 3 prime monophosphate is a perfectly good nucleotide too, but it is not what gets added.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What links one nucleotide to the next?",
+   "options": [
+    "A phosphodiester",
+    "A glycosidic bond",
+    "A peptide bond",
+    "A disulfide"
+   ],
+   "correct": 0,
+   "why": "One phosphorus esterified to two different sugars, 3 prime of one and 5 prime of the next.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "In which direction are nucleic acid sequences written?",
+   "options": [
+    "From the middle outward",
+    "5 prime to 3 prime",
+    "3 prime to 5 prime",
+    "Either, interchangeably"
+   ],
+   "correct": 1,
+   "why": "The chain has distinguishable ends, so direction is part of the information.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why are nucleic acids called acids?",
+   "options": [
+    "The phosphates are ionized",
+    "The bases are acidic",
+    "The sugars are acidic",
+    "They release protons from the 2 prime OH"
+   ],
+   "correct": 0,
+   "why": "A row of negative charges on the outside, which is also why they dissolve in water.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How many hydrogen bonds join an A-T pair?",
+   "options": [
+    "Three",
+    "One",
+    "Four",
+    "Two"
+   ],
+   "correct": 3,
+   "why": "G-C uses three, which is why G-C rich DNA melts higher.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many hydrogen bonds join a G-C pair?",
+   "options": [
+    "One",
+    "Four",
+    "Three",
+    "Two"
+   ],
+   "correct": 2,
+   "why": "One more than A-T, and that difference shows up directly in melting temperature.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What holds the two strands of DNA together?",
+   "options": [
+    "Disulfide bridges",
+    "Hydrogen bonds between the bases",
+    "Covalent bonds between the bases",
+    "Phosphodiester links between strands"
+   ],
+   "correct": 1,
+   "why": "Weak bonds on purpose, because anything read must first be opened without being destroyed.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A purine always pairs with what?",
+   "options": [
+    "A pyrimidine",
+    "Another purine",
+    "Either kind",
+    "Nothing, if unpaired"
+   ],
+   "correct": 0,
+   "why": "One large plus one small keeps every rung of the ladder the same width.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How do the two strands of a double helix run relative to each other?",
+   "options": [
+    "Parallel",
+    "At right angles",
+    "In the same direction",
+    "Antiparallel"
+   ],
+   "correct": 3,
+   "why": "One runs 5 prime to 3 prime while its partner runs the other way.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is on the outside of the double helix?",
+   "options": [
+    "The hydrogen bonds",
+    "The 2 prime hydroxyls",
+    "The backbone",
+    "The stacked bases"
+   ],
+   "correct": 2,
+   "why": "Charges face the water and the flat nonpolar bases stack away from it.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "If a DNA sample is 30% adenine, how much thymine does it contain?",
+   "options": [
+    "It cannot be determined",
+    "30%",
+    "20%",
+    "70%"
+   ],
+   "correct": 1,
+   "why": "A pairs only with T, so their amounts are equal in double-stranded DNA.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does G-C rich DNA melt at a higher temperature?",
+   "options": [
+    "Three hydrogen bonds",
+    "G and C are heavier",
+    "G-C pairs are covalent",
+    "G-C pairs stack less"
+   ],
+   "correct": 0,
+   "why": "Melting separates the strands, so it measures what joins them.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does denaturing DNA do?",
+   "options": [
+    "Hydrolyzes the phosphodiesters",
+    "Removes the bases",
+    "Oxidizes the sugars",
+    "It separates the strands"
+   ],
+   "correct": 3,
+   "why": "Only the hydrogen bonds between bases are undone, which is why the strands can re-anneal.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does RNA hydrolyze much faster than DNA in base?",
+   "options": [
+    "Its backbone is an ester and DNA's is an ether",
+    "It is single stranded",
+    "Its 2 prime OH attacks the phosphorus",
+    "Uracil is unstable"
+   ],
+   "correct": 2,
+   "why": "An intramolecular attack through a five-membered ring is enormously faster than one from solution.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What product does base-promoted RNA cleavage form at the cut?",
+   "options": [
+    "A cyclic acetal",
+    "A cyclic phosphate",
+    "A free phosphate ester",
+    "An aldehyde"
+   ],
+   "correct": 1,
+   "why": "The five-membered ring the intramolecular attack closes.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is DNA rather than RNA used for long-term storage?",
+   "options": [
+    "It has no 2 prime OH",
+    "Its bases are stronger",
+    "It is smaller",
+    "It is uncharged"
+   ],
+   "correct": 0,
+   "why": "Removing one hydroxyl removes the internal nucleophile, and with it the built-in self-destruct.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What conditions cleave the base from the sugar?",
+   "options": [
+    "Dilute base",
+    "Mild oxidation",
+    "Mild reduction",
+    "Warm aqueous acid"
+   ],
+   "correct": 3,
+   "why": "It is an N,O-acetal, and acetals are cut by aqueous acid and stable to base. The rate is very uneven: purines depurinate far more readily than pyrimidines.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the 3 prime end of a strand?",
+   "options": [
+    "The end with the purine",
+    "Either end",
+    "The end with a free OH",
+    "The end with a free phosphate"
+   ],
+   "correct": 2,
+   "why": "The other end keeps the free 5 prime phosphate.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a nucleoside triphosphate such as ATP provide?",
+   "options": [
+    "Extra hydrogen bonds",
+    "A second base",
+    "Ring stability",
+    "A good leaving group"
+   ],
+   "correct": 3,
+   "why": "Diphosphate leaves well because the charge is spread over many oxygens.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which part of a nucleotide carries the genetic information?",
+   "options": [
+    "The ring size",
+    "The base",
+    "The sugar",
+    "The phosphate"
+   ],
+   "correct": 1,
+   "why": "Sugar and phosphate repeat identically along the chain, so only the bases can vary.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does complementary mean for two DNA strands?",
+   "options": [
+    "Each base has a partner",
+    "They have identical sequences",
+    "They run in the same direction",
+    "They have equal lengths only"
+   ],
+   "correct": 0,
+   "why": "That is what makes each strand a template for rebuilding the other.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
  ]
 }

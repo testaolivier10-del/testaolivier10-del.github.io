@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nucleic acids — Biomolecules | Organic Chemistry</title>
+<meta name="description" content="Learn how a nucleotide is assembled, why the backbone is a phosphodiester with a direction, what forces the base-pairing rules, and why RNA hydrolyzes and DNA does not.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/nucleic-acids.html">
+<meta property="og:title" content="Nucleic acids — Biomolecules | Organic Chemistry">
+<meta property="og:description" content="Learn how a nucleotide is assembled, why the backbone is a phosphodiester with a direction, what forces the base-pairing rules, and why RNA hydrolyzes and DNA does not.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/nucleic-acids.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/nucleic-acids.html#lesson",
+      "name": "Nucleic acids",
+      "url": "https://levlprep.com/ochem/lessons/nucleic-acids.html",
+      "description": "Learn how a nucleotide is assembled, why the backbone is a phosphodiester with a direction, what forces the base-pairing rules, and why RNA hydrolyzes and DNA does not.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Nucleic acids"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Biomolecules",
+          "item": "https://levlprep.com/ochem/learn.html#m-biomolecules"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Nucleic acids",
+          "item": "https://levlprep.com/ochem/lessons/nucleic-acids.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 19 &middot; Biomolecules</div>
+    <h1 style="margin-bottom:4px;">Nucleic acids.</h1>
+    <p class="lede" style="margin-top:0;">A sugar, a base and a phosphate — and two of the three links are reactions you already know.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/nucleic-acids.html">Nucleic acids &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="carbohydrates.html">Carbohydrates</a> &middot; <a href="acetals.html">Acetals</a> &middot; <a href="esters-amides.html">Esters and amides</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* The useful discrimination is not "name the parts" but "which parts are
+     shared". Two of these are true of both polymers, and saying so is the
+     harder answer, because the instinct in a compare-and-contrast exercise
+     is to find a difference in every row. */
+  var CASES = [
+    { id:'n1', t:'The sugar carries an <b>OH at C2&prime;</b>', right:'rna',
+      why:'RNA only. That missing 2&prime; OH is what deoxy in deoxyribose means, and it is the single structural difference between the two sugars.' },
+    { id:'n2', t:'<b>Thymine</b> is one of the four bases', right:'dna',
+      why:'DNA only. RNA uses uracil, which is thymine without the methyl group. The other three bases — adenine, guanine, cytosine — are common to both.' },
+    { id:'n3', t:'The backbone is a chain of <b>phosphodiesters</b>', right:'both',
+      why:'Both. One phosphate esterified to two different sugars, the 3&prime; OH of one and the 5&prime; OH of the next, is a phosphodiester — and it is the same linkage in either polymer.' },
+    { id:'n4', t:'The base is attached at the <b>anomeric carbon</b>', right:'both',
+      why:'Both. In each case the base&rsquo;s nitrogen has displaced the anomeric OH to give an N-glycoside, which is an acetal made with nitrogen instead of a second oxygen.' }
+  ];
+  var OPTS = [ { k:'dna', l:'DNA only' }, { k:'rna', l:'RNA only' }, { k:'both', l:'Both' } ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'nucleic-acids',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Build it in order: sugar, base, phosphate.',
+        bodyHtml: '<p class="step-body">A nucleic acid has exactly three kinds of part, and assembling them in order makes the vocabulary fall out on its own.</p>' +
+          '<p class="step-body">Start with the <b>sugar</b>, a five-carbon furanose: <b>ribose</b> in RNA, <b>2-deoxyribose</b> in DNA, identical but for an OH at C2&prime;. Its carbons are numbered with primes so they never collide with the numbering of the base.</p>' +
+          '<p class="step-body">Attach a nitrogen <b>base</b> at the anomeric carbon, C1&prime;. The two-ring bases are <b>purines</b> — adenine and guanine; the one-ring bases are <b>pyrimidines</b> — cytosine, plus thymine in DNA or uracil in RNA. Sugar plus base is a <b>nucleoside</b>.</p>' +
+          '<div class="explain-box">That base–sugar bond is a reaction you already know. A nitrogen nucleophile displaces the anomeric OH to give an <b>N-glycoside</b> — the same acetal-forming step that makes an ordinary glycoside, with N in the place of O. Adding a <b>phosphate</b> ester at the 5&prime; OH turns the nucleoside into a <b>nucleotide</b>. That one phosphate is the whole difference between the two words.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The backbone is a chain of diesters, and it has a direction.',
+        bodyHtml: '<p class="step-body">The 5&prime; phosphate of one nucleotide also esterifies the <b>3&prime; OH</b> of the next sugar. One phosphorus, two ester links to two different sugars: a <b>phosphodiester</b>. Repeat it and you have the backbone — sugar, phosphate, sugar, phosphate — with the bases hanging off the side.</p>' +
+          '<p class="step-body">Like a peptide, the chain has ends that differ: a free phosphate at one end and a free 3&prime; OH at the other, so sequences are written <b>5&prime; to 3&prime;</b> and the direction is part of the information. The third P–O bond still carries its acidic proton, which at cell pH is gone — the backbone is a row of negative charges, and that is why these are <i>acids</i> and why they are soluble in water.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">RNA differs in one place, and it costs it. The 2&prime; OH sits one carbon away from the phosphate, which means RNA carries a permanent internal nucleophile. DNA does not, which is why DNA is the molecule used for storage and RNA for messages that are meant to be temporary.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">DNA, RNA, or both?</h2>' +
+            '<p class="step-body">Resist the pull of the format: not every row is a difference. Two of these four describe both polymers, and knowing which is most of knowing how little separates them.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Which polymer">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'The two polymers differ in exactly two places: one OH on the sugar, and one of the four bases. Everything else about the construction is shared.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. One OH and one methyl group is the entire structural difference between the two.'
+                  : 'All four, first time, including the two rows that were not differences at all.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'What distinguishes a nucleotide from a nucleoside?',
+        options: [
+          'The nucleotide has a phosphate ester on the sugar',
+          'The nucleoside uses ribose and the nucleotide deoxyribose',
+          'The nucleotide has a purine base and the nucleoside a pyrimidine',
+          'The nucleoside is the cyclic form and the nucleotide the open chain'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct, and the ending is a useful hook: the one with the phosphate is the one whose name ends in -tide, and it is the unit the polymer is built from. Which sugar and which base are separate choices that either form can make.',
+        wrongFeedback: 'Both have a sugar and a base. Build the molecule in order and ask what the third step adds.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'The bond between a base and its sugar is best described as what?',
+        options: [
+          'An amide, since a nitrogen is bonded to a ring',
+          'An N-glycoside — an acetal at the anomeric carbon using nitrogen',
+          'An ether between the base and C1&prime;',
+          'An ionic attraction between the charged base and the sugar'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. The anomeric carbon of the free sugar is a hemiacetal, and a nucleophile displacing its OH converts it to the full acetal; here the nucleophile happens to be a ring nitrogen. That also explains why the bond survives base but is cut by warm aqueous acid, exactly as an acetal should be.',
+        wrongFeedback: 'Look at what the anomeric carbon is attached to after the bond forms: the ring oxygen, and a nitrogen. Which functional group has two heteroatoms on one carbon?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The pairing rules are hydrogen-bond counting.',
+        bodyHtml: '<p class="step-body">Two strands run in <b>opposite directions</b> — one 5&prime;→3&prime; left to right, its partner 3&prime;→5&prime; — and wind into a double helix with the charged backbone outside, in the water, and the flat bases stacked inside, away from it.</p>' +
+          '<p class="step-body">What holds the two strands to each other is nothing but <b>hydrogen bonds between the bases</b>, and the pairing is forced by which donors and acceptors line up:</p>' +
+          '<ul class="step-body">' +
+          '<li><b>A pairs with T</b> (or U in RNA) through <b>two</b> hydrogen bonds.</li>' +
+          '<li><b>G pairs with C</b> through <b>three</b>.</li>' +
+          '</ul>' +
+          '<p class="step-body">A purine always pairs with a pyrimidine, so every rung of the ladder is the same width. That is also why the amounts of A and T in any double-stranded DNA are equal, and G and C likewise.</p>' +
+          '<div class="explain-box">It is worth asking why the strands are held by the weakest interaction available rather than by bonds. Anything the cell has to read must first be opened, and opening it cannot be allowed to destroy it. Hydrogen bonds are strong enough in their thousands to hold a helix together and weak enough that an enzyme can unzip a stretch of it without breaking a single covalent bond.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'A stretch of DNA rich in G and C melts at a higher temperature than an A/T-rich stretch. Why?',
+        options: [
+          'G and C are purines and therefore heavier',
+          'Each G–C pair contributes three hydrogen bonds rather than two',
+          'G–C pairs are joined by covalent bonds',
+          'G and C hydrogen bond to the backbone as well as to each other'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Melting means separating the strands, so it measures the total strength holding them together, and three hydrogen bonds per rung beats two. Note the trap in the first option: C is a pyrimidine, and in any case pairs are purine-with-pyrimidine by construction.',
+        wrongFeedback: 'Separating the strands breaks only what joins them. Count the hydrogen bonds in each pair.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Dilute aqueous base cleaves RNA within minutes and leaves DNA essentially untouched. What is responsible?',
+        options: [
+          'Uracil is more easily hydrolyzed than thymine',
+          'The 2&prime; alkoxide attacks the neighboring phosphorus intramolecularly',
+          'RNA is single-stranded and therefore more exposed to hydroxide',
+          'The phosphodiesters of RNA are esters while those of DNA are ethers'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and the reason is proximity rather than any difference in the linkage itself. Base removes the 2&prime; OH proton, and the alkoxide it leaves is held two atoms from the phosphorus of its own backbone — so the attack is intramolecular, through a five-membered ring, and enormously faster than the same attack by hydroxide arriving from solution. The leaving group departs, a 2&prime;,3&prime;-cyclic phosphate forms, and the chain is cut. DNA has nothing at C2&prime; to do this with, so its identical phosphodiesters simply sit there. One hydroxyl group is the difference between a molecule built to be read once and one built to last.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

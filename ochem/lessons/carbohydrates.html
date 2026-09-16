@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carbohydrates — Biomolecules | Organic Chemistry</title>
+<meta name="description" content="Learn why sugars cyclize to hemiacetals, what the anomeric carbon is, how mutarotation works, and why one stereocenter separates starch from cellulose.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/carbohydrates.html">
+<meta property="og:title" content="Carbohydrates — Biomolecules | Organic Chemistry">
+<meta property="og:description" content="Learn why sugars cyclize to hemiacetals, what the anomeric carbon is, how mutarotation works, and why one stereocenter separates starch from cellulose.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/carbohydrates.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/carbohydrates.html#lesson",
+      "name": "Carbohydrates",
+      "url": "https://levlprep.com/ochem/lessons/carbohydrates.html",
+      "description": "Learn why sugars cyclize to hemiacetals, what the anomeric carbon is, how mutarotation works, and why one stereocenter separates starch from cellulose.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Carbohydrates"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Biomolecules",
+          "item": "https://levlprep.com/ochem/learn.html#m-biomolecules"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Carbohydrates",
+          "item": "https://levlprep.com/ochem/lessons/carbohydrates.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 19 &middot; Biomolecules</div>
+    <h1 style="margin-bottom:4px;">Carbohydrates.</h1>
+    <p class="lede" style="margin-top:0;">Sugars are polyhydroxy aldehydes that react with themselves — and the ring that results explains almost everything they do.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/carbohydrates.html">Carbohydrates &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="nucleic-acids.html">Nucleic acids</a> &middot; <a href="acetals.html">Acetals</a> &middot; <a href="amino-acids.html">Amino acids</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* Reducing vs non-reducing is the single highest-value test in sugar
+     chemistry, because the answer is always the same question: can this ring
+     still open? A free anomeric OH is a hemiacetal and opens; a capped one is
+     an acetal and does not. */
+  var CASES = [
+    { id:'c1', t:'<b>D-Glucose</b> — the free sugar', right:'red',
+      why:'Reducing. The anomeric carbon carries a free OH, so it is a hemiacetal: the ring opens to the open-chain aldehyde, and that aldehyde is what Tollens&rsquo; reagent oxidizes.' },
+    { id:'c2', t:'<b>Maltose</b> — two glucoses joined α-1,4', right:'red',
+      why:'Reducing. The bond ties up the anomeric carbon of the first glucose only. The second one still has a free anomeric OH, so that end of the molecule opens exactly as free glucose does.' },
+    { id:'c3', t:'<b>Sucrose</b> — glucose joined to fructose α-1,2', right:'non',
+      why:'Non-reducing, and it is the standard exception. The link runs anomeric carbon to anomeric carbon, so both are acetals at once and neither ring can open.' },
+    { id:'c4', t:'<b>Methyl α-D-glucopyranoside</b>', right:'non',
+      why:'Non-reducing. Capping the anomeric OH with methanol converts the hemiacetal into a full acetal, and an acetal is stable to base — no ring opening, no aldehyde, no test.' }
+  ];
+  var OPTS = [ { k:'red', l:'Reducing' }, { k:'non', l:'Non-reducing' } ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'carbohydrates',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A sugar is a polyhydroxy aldehyde or ketone.',
+        bodyHtml: '<p class="step-body">That definition is the whole chapter in one line. A carbohydrate is a chain of carbons carrying an OH on nearly every one and a carbonyl on one of them. If that carbonyl is at the end of the chain the sugar is an <b>aldose</b>; if it is inside the chain, normally at C2, it is a <b>ketose</b>. Glucose is an aldohexose — six carbons, aldehyde. Fructose is a ketohexose.</p>' +
+          '<p class="step-body">Every carbon between the carbonyl and the terminal CH₂OH carries an OH and an H, so every one of them is a stereocenter. An aldohexose has four, which is why there are 2⁴ = <b>16</b> of them and why they all needed names.</p>' +
+          '<div class="explain-box"><b>D or L</b> is read off one carbon only: the stereocenter <i>furthest</i> from the carbonyl. Drawn as a Fischer projection with the carbonyl at the top, OH on the right at that carbon means <b>D</b>, on the left means <b>L</b>. Essentially every sugar in biology is D. Note what this label does not tell you — it fixes one carbon, not the other three, and it does not predict which way the compound rotates plane-polarized light.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The ring is a hemiacetal the molecule makes with itself.',
+        bodyHtml: '<p class="step-body">You already know that an alcohol adds to an aldehyde to give a hemiacetal. In a sugar the alcohol and the aldehyde are in the same molecule: the OH on C5 reaches the C1 carbonyl, and the addition closes a six-membered ring. Nothing new happens — it is intramolecular nucleophilic addition, and it is favorable because a five- or six-membered ring costs almost nothing to form.</p>' +
+          '<p class="step-body">A six-membered sugar ring is a <b>pyranose</b>, a five-membered one a <b>furanose</b>. Glucose is drawn as a pyranose; the fructose in sucrose is a furanose.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">The old carbonyl carbon becomes the <b>anomeric carbon</b> — the only carbon in the ring attached to two oxygens, one in the ring and one as an OH. Closing the ring makes it a stereocenter, and the two possible answers are the <b>anomers</b>: α has that OH pointing down in a Haworth drawing, β has it up. β-D-glucopyranose puts every substituent equatorial, which is why glucose is the sugar life settled on.</p>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Which of these still reduce Tollens&rsquo; reagent?</h2>' +
+            '<p class="step-body">One question decides all four: <b>can the ring still open?</b> A free OH on the anomeric carbon is a hemiacetal and opens back to the aldehyde. A second alcohol capping it makes an acetal, and acetals do not open under the basic conditions of the test.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Reducing or not">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Look at the anomeric carbon and count the oxygens on it. One OR and one OH is a hemiacetal, and it opens. Two ORs is an acetal, and it does not.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. Run the same check every time and the disaccharides stop needing to be memorized.'
+                  : 'All four, first time. Hemiacetal opens, acetal does not — and sucrose is non-reducing because the link joins the two anomeric carbons to each other.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'What identifies the anomeric carbon in a ring-form sugar?',
+        options: [
+          'It is the carbon bearing the CH₂OH group',
+          'It is the ring carbon attached to two oxygens',
+          'It is the stereocenter furthest from the ring oxygen',
+          'It is any carbon carrying an OH group'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. It was the carbonyl carbon before the ring closed, and it is the only ring carbon holding both the ring oxygen and an OH. That is also why it behaves differently from every other position: it is a hemiacetal, not an alcohol.',
+        wrongFeedback: 'Ask which carbon was the carbonyl carbon before cyclization, and what closing the ring left attached to it.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'Pure α-D-glucopyranose is dissolved in water and its optical rotation drifts from +112° to +52.7°. Why?',
+        options: [
+          'The ring opens and recloses, equilibrating α with β',
+          'The sugar is slowly oxidized by dissolved oxygen',
+          'Water hydrolyzes the ring irreversibly to the open chain',
+          'The D configuration inverts to L over time'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct — this is mutarotation. The hemiacetal opens to a trace of the open-chain aldehyde, and closing again can give either anomer, so a pure anomer relaxes to the equilibrium mixture (about 36% α and 64% β for glucose) and the rotation settles at the weighted average. Only the anomeric carbon changes; the other three stereocenters never open.',
+        wrongFeedback: 'Nothing is being oxidized or destroyed — the sample is the same compound at the end. Which single stereocenter in a hemiacetal can change without breaking a C–C bond?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Glycosidic bonds, and why you can eat starch but not wood.',
+        bodyHtml: '<p class="step-body">Treat the anomeric OH with another alcohol under acid and you get the full <b>acetal</b>: a <b>glycosidic bond</b>. When the second alcohol is an OH on another sugar, you have a disaccharide, and repeating the move gives a polysaccharide. The name records which carbons are joined and the configuration at the anomeric carbon — α-1,4 means the anomeric carbon is α and it is bonded to O on C4 of the next unit.</p>' +
+          '<p class="step-body">Because that acetal is stable to base but hydrolyzed by aqueous acid, chemists protected the anomeric center this way long before anyone called it a protecting group.</p>' +
+          '<div class="explain-box"><b>Starch and cellulose are both polymers of D-glucose joined 1,4.</b> The only difference is α against β at the anomeric carbon. α-1,4 chains coil into a helix; β-1,4 chains lie flat and hydrogen-bond into rigid sheets. Human amylase hydrolyzes α-1,4 and cannot touch β-1,4 — so one stereocenter, on one carbon, is the difference between food and fiber.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'Amylose and cellulose are both unbranched chains of D-glucose. What differs?',
+        options: [
+          'Cellulose uses L-glucose instead of D-glucose',
+          'The configuration at the anomeric carbon of each link: α in amylose, β in cellulose',
+          'Cellulose is joined 1,6 rather than 1,4',
+          'Amylose is joined by ether bonds and cellulose by ester bonds'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Same monomer, same numbering, one stereocenter — and the two materials could hardly behave less alike. This is the cleanest argument in biochemistry that stereochemistry is not a detail.',
+        wrongFeedback: 'Both are D-glucose, both are 1,4, and both links are acetals. What is left that can differ?'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Fructose is a ketose with no aldehyde anywhere in it, yet it gives a positive Tollens&rsquo; test. How?',
+        options: [
+          'Tollens&rsquo; reagent oxidizes ketones as readily as aldehydes',
+          'The basic test medium isomerizes the ketose to an aldose through an enediol',
+          'The furanose ring is oxidized directly without opening',
+          'Fructose contains a trace of glucose as an impurity'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and the mechanism is one you have already met. Tollens&rsquo; reagent is basic, base removes the α hydrogen next to the C2 carbonyl, and protonating the resulting enolate on oxygen gives an <b>enediol</b> — a C=C carrying an OH on both carbons. Collapsing it the other way puts the carbonyl at C1, which is an aldose, and that is what gets oxidized. So fructose counts as a reducing sugar, and the honest way to state the rule is that any sugar with a free anomeric center reduces Tollens&rsquo;, ketoses included. A stricter test that leaves ketoses alone has to avoid base.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

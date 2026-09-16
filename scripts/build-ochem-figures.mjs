@@ -467,6 +467,251 @@ FIGURES.push({
   note: 'Note what stayed visible. The oxygen is drawn and its hydrogen is drawn, while nine hydrogens on carbon are not. That is not inconsistency: an O–H hydrogen is acidic, hydrogen bonds, and gets removed by base, so it is part of the chemistry; a C–H hydrogen on a chain almost never is. The notation hides what does not matter and keeps what does.',
 });
 
+
+/* ------------------------------------------------------------------ 9 ---
+   Reducing or not. The notes make the claim in a sentence — a hemiacetal
+   opens, an acetal does not — and it is the single test the whole
+   disaccharide section rests on. Drawn side by side, the difference is one
+   substituent on one carbon, which is exactly the point. */
+FIGURES.push({
+  id: 'anomeric-test',
+  section: 'carbohydrates',
+  anchor: '<h3>The polysaccharides worth knowing</h3>',
+  viewBox: '0 0 760 330',
+  alt: 'A hemiacetal anomeric carbon opening to the open-chain aldehyde beside an acetal anomeric carbon that cannot open',
+  build() {
+    let s = '';
+    const col = (x, title, kind) => {
+      s += panel(x, 44, 330, 176, { kind });
+      s += tag(x + 165, 30, title);
+    };
+    col(24, 'hemiacetal — one OR, one OH', null);
+    col(406, 'acetal — two OR', 'warn');
+
+    // Left: ring carbon with OH and ring O, opening to the aldehyde.
+    const c1 = P(120, 116);
+    s += atom(c1.x, c1.y, 'C', { kind: 'hi' });
+    s += atom(120, 62, 'OH', { });
+    s += atom(62, 148, 'O', { });
+    s += bond(c1, P(120, 62));
+    s += bond(c1, P(62, 148));
+    s += text(62, 176, 'ring', { cls: 'fg-sm', size: 9.5 });
+    s += arrow(P(176, 116), P(250, 116));
+    s += text(213, 104, 'opens', { cls: 'fg-tag-good', size: 10.5 });
+    s += atom(300, 116, 'CHO');
+    s += text(300, 150, 'free aldehyde', { cls: 'fg-sm', size: 10 });
+    s += text(189, 200, 'Tollens’ has something to oxidize', { cls: 'fg-tag-good', size: 10.5 });
+
+    // Right: the same carbon with the OH replaced by OR.
+    const c2 = P(502, 116);
+    s += atom(c2.x, c2.y, 'C', { kind: 'warn' });
+    s += atom(502, 62, 'OR', { });
+    s += atom(444, 148, 'O', { });
+    s += bond(c2, P(502, 62));
+    s += bond(c2, P(444, 148));
+    s += text(444, 176, 'ring', { cls: 'fg-sm', size: 9.5 });
+    s += arrow(P(558, 116), P(632, 116), { muted: true });
+    s += text(595, 104, 'stays shut', { cls: 'fg-tag', size: 10.5 });
+    s += text(682, 120, 'no aldehyde', { cls: 'fg-sm', size: 10 });
+    s += text(571, 200, 'nothing to oxidize, so no test', { cls: 'fg-tag', size: 10.5 });
+
+    s += rule(34, 246, 726, 246);
+    s += text(380, 274, 'One substituent on one carbon decides whether a sugar reduces Tollens’', { cls: 'fg-lbl', size: 12 });
+    s += text(380, 296, 'reagent — and therefore whether maltose behaves like glucose or like sucrose.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'The anomeric carbon, with and without a free OH. On the left it is a hemiacetal: the ring opens back to the open-chain aldehyde, and that aldehyde is what a reducing-sugar test oxidizes. On the right a second alcohol has capped it, making a full acetal — stable to base, so the ring never opens and no aldehyde is ever available.',
+  note: 'This is why sucrose is the standard exception. Its glycosidic bond runs anomeric carbon to anomeric carbon, so both rings are acetals at once and neither end can open; maltose commits only one, which leaves the other free and keeps maltose reducing.',
+});
+
+/* ----------------------------------------------------------------- 10 ---
+   Charge against pH. The notes give three species and two pKa values and
+   expect the reader to assemble the picture; the picture is a number line,
+   and drawing it makes the pI visibly the midpoint rather than a formula to
+   memorize. */
+FIGURES.push({
+  id: 'zwitterion-ladder',
+  section: 'amino-acids',
+  anchor: '<h3>Stereochemistry: one carbon, one answer, two exceptions</h3>',
+  viewBox: '0 0 760 310',
+  alt: 'Glycine net charge plotted against pH, showing the cation below pKa 2.34, the zwitterion between, and the anion above pKa 9.60, with pI at 5.97',
+  build() {
+    let s = '';
+    const x = (pH) => 70 + (pH / 14) * 620;
+    s += rule(70, 196, 690, 196);
+    for (let pH = 0; pH <= 14; pH += 2) {
+      s += rule(x(pH), 196, x(pH), 203);
+      s += text(x(pH), 218, String(pH), { cls: 'fg-sm', size: 10 });
+    }
+    s += text(380, 240, 'pH', { cls: 'fg-tag', size: 11 });
+
+    const zones = [
+      { a: 0,    b: 2.34, label: 'cation',     charge: '+1', kind: 'warn' },
+      { a: 2.34, b: 9.60, label: 'zwitterion', charge: '0',  kind: 'hi'   },
+      { a: 9.60, b: 14,   label: 'anion',      charge: '−1', kind: 'warn' },
+    ];
+    for (const z of zones) {
+      const x1 = x(z.a), x2 = x(z.b);
+      s += bar(x1, 128, x2 - x1, 52, { kind: z.kind === 'hi' ? 'hi' : 'warn', opacity: 0.32 });
+      s += text((x1 + x2) / 2, 150, z.label, { cls: 'fg-lbl', size: 12 });
+      s += text((x1 + x2) / 2, 168, 'net ' + z.charge, { cls: 'fg-sm', size: 10 });
+    }
+
+    for (const [pH, name] of [[2.34, 'pKₐ₁ 2.34'], [9.60, 'pKₐ₂ 9.60']]) {
+      s += rule(x(pH), 104, x(pH), 196);
+      s += text(x(pH), 96, name, { cls: 'fg-tag', size: 10.5 });
+    }
+    s += rule(x(5.97), 62, x(5.97), 128);
+    s += text(x(5.97), 54, 'pI 5.97', { cls: 'fg-tag-good', size: 11 });
+    s += text(x(5.97), 38, '½(2.34 + 9.60)', { cls: 'fg-sm', size: 10 });
+
+    s += text(150, 272, 'below pI: cation → cathode', { cls: 'fg-sm', size: 10.5 });
+    s += text(380, 272, 'at pI: no net charge, no migration', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(620, 272, 'above pI: anion → anode', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'Glycine’s net charge against pH. The two pKa values are the only boundaries there are, so the molecule has exactly three states, and the isoelectric point sits at their midpoint because that is where the cation and anion populations are equal.',
+  note: 'Reading the electrophoresis direction takes two inversions and they do not cancel: first compare the pH with the pI to get the sign, then remember that opposite charges attract. Getting one of the two backwards produces a confident wrong answer.',
+});
+
+/* ----------------------------------------------------------------- 11 ---
+   One resonance structure, three consequences. The notes list them; the
+   drawing puts the arrow that causes all three next to the properties it
+   causes, which is the only way the list stops looking like three facts. */
+FIGURES.push({
+  id: 'amide-planarity',
+  section: 'peptides-proteins',
+  anchor: '<h3>Four levels of structure</h3>',
+  viewBox: '0 0 760 320',
+  alt: 'Amide resonance pushing the nitrogen lone pair into the carbonyl, with the resulting planar unit and its three consequences',
+  build() {
+    let s = '';
+    const draw = (ox, dbl) => {
+      const c = P(ox + 70, 112), o = P(ox + 70, 58), nAt = P(ox + 128, 142), ca = P(ox + 12, 142);
+      let t = '';
+      t += atom(ca.x, ca.y, 'Cα', { });
+      t += atom(c.x, c.y, 'C', { kind: 'hi' });
+      t += atom(o.x, o.y, 'O', { });
+      t += atom(nAt.x, nAt.y, 'N', { kind: 'hi' });
+      t += bond(ca, c);
+      t += bond(c, o, { order: dbl ? 1 : 2 });
+      t += bond(c, nAt, { order: dbl ? 2 : 1 });
+      if (dbl) {
+        t += text(o.x + 26, o.y - 4, '−', { cls: 'fg-lbl', size: 13 });
+        t += text(nAt.x + 24, nAt.y - 12, '+', { cls: 'fg-lbl', size: 13 });
+      } else {
+        t += lonePair(nAt.x, nAt.y, 20);
+      }
+      return t;
+    };
+    s += draw(30, false);
+    s += draw(400, true);
+    s += curve(P(190, 136), P(130, 84), { bow: 26 });
+    s += arrow(P(250, 112), P(330, 112));
+    s += text(290, 100, 'resonance', { cls: 'fg-tag', size: 10.5 });
+    s += text(160, 188, 'the lone pair is donated', { cls: 'fg-sm', size: 10 });
+    s += text(530, 188, 'C–N is partly double', { cls: 'fg-tag-good', size: 10.5 });
+
+    s += rule(34, 214, 726, 214);
+    const cons = [
+      ['planar and rigid', 'six atoms in one plane; no free rotation'],
+      ['nitrogen is not basic', 'that lone pair is already spent'],
+      ['least reactive acyl derivative', 'hydrolysis wants hot acid or an enzyme'],
+    ];
+    cons.forEach((c, i) => {
+      const cx = 150 + i * 230;
+      s += text(cx, 246, c[0], { cls: 'fg-lbl', size: 12 });
+      s += text(cx, 266, c[1], { cls: 'fg-sm', size: 10 });
+    });
+    s += text(380, 298, 'Three separate exam questions, one cause.', { cls: 'fg-tag-good', size: 11 });
+    return s;
+  },
+  caption: 'The second resonance structure of an amide, and what follows from it. Pushing the nitrogen lone pair into the carbonyl gives the C–N bond partial double-bond character, and planarity, low basicity and low reactivity all fall out of that one move.',
+  note: 'The basicity consequence is the one that inverts against intuition. A lone pair on nitrogen looks like a base, and here it is the reason the nitrogen is not one — delocalization makes a lone pair less available, not more.',
+});
+
+/* ----------------------------------------------------------------- 12 ---
+   Why one double bond changes the melting point by tens of degrees. This is
+   a claim about SHAPE, which prose can assert and a drawing can show: three
+   C18 chains, same length, drawn as they pack. */
+FIGURES.push({
+  id: 'chain-packing',
+  section: 'lipids',
+  anchor: '<h3>Triglycerides are triesters</h3>',
+  viewBox: '0 0 760 320',
+  alt: 'Three C18 fatty acid chains drawn as they pack: straight saturated chains, kinked cis chains that cannot stack, and near-straight trans chains',
+  build() {
+    let s = '';
+    // A zigzag chain from (x, y) running down, optionally kinked at the middle.
+    const chain = (x, y, kink) => {
+      let t = '', px = x, py = y, dir = 1;
+      for (let i = 0; i < 12; i++) {
+        let nx = px + dir * 9, ny = py + 13;
+        if (kink && i === 6) { x += 26; nx = px + dir * 9 + 26; }
+        t += `<line class="fg-bond" x1="${px}" y1="${py}" x2="${nx}" y2="${ny}"></line>`;
+        px = nx; py = ny; dir = -dir;
+      }
+      return t;
+    };
+    const col = (ox, title, sub, kink, mp, kind) => {
+      s += panel(ox, 40, 216, 184, { kind });
+      s += tag(ox + 108, 30, title);
+      for (let j = 0; j < 4; j++) s += chain(ox + 40 + j * 34, 58, kink);
+      s += text(ox + 108, 242, sub, { cls: 'fg-sm', size: 10 });
+      s += text(ox + 108, 264, mp, { cls: kind === 'warn' ? 'fg-tag' : 'fg-tag-good', size: 11 });
+    };
+    col(24,  'saturated', 'chains lie flat against each other', 'melts near 69 °C', false, null);
+    col(272, 'one cis double bond', 'the kink breaks the contact', 'melts near 13 °C', true, 'warn');
+    col(520, 'one trans double bond', 'still essentially straight', 'melts near 44 °C', false, null);
+
+    s += rule(34, 282, 726, 282);
+    s += text(380, 306, 'All three are C18. Only the shape differs — and the shape is what the melting point reads.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'Three eighteen-carbon fatty acids, drawn as they pack. Chain length is held constant, so the fifty-six degrees between stearic and oleic acid is entirely the bend that one cis double bond puts in the middle of the chain.',
+  note: 'The trans column is what makes the rule precise. Elaidic acid is exactly as unsaturated as oleic acid and melts thirty degrees higher, because a trans double bond leaves the chain straight. “Unsaturated means low melting” is a shortcut that stops working the moment partial hydrogenation is in the room.',
+});
+
+/* ----------------------------------------------------------------- 13 ---
+   The three parts and the two links. Built in order, the vocabulary stops
+   needing to be memorized: nucleoside is the first two, nucleotide is all
+   three, and both links are reactions the reader already has. */
+FIGURES.push({
+  id: 'nucleotide-parts',
+  section: 'nucleic-acids',
+  anchor: '<h3>The bases, in two families</h3>',
+  viewBox: '0 0 760 300',
+  alt: 'A nucleotide assembled from phosphate, sugar and base, showing the phosphate ester and N-glycoside links and where nucleoside and nucleotide begin',
+  build() {
+    let s = '';
+    const box = (x, w, title, sub, kind) => {
+      s += panel(x, 74, w, 76, { kind });
+      s += text(x + w / 2, 108, title, { cls: 'fg-lbl', size: 12.5 });
+      s += text(x + w / 2, 130, sub, { cls: 'fg-sm', size: 10 });
+    };
+    box(40, 170, 'phosphate', 'at the 5′ OH', 'warn');
+    box(280, 200, 'sugar', 'ribose or 2-deoxyribose', null);
+    box(560, 160, 'base', 'purine or pyrimidine', null);
+
+    s += rule(210, 112, 280, 112);
+    s += text(245, 100, 'ester', { cls: 'fg-tag', size: 10.5 });
+    s += rule(480, 112, 560, 112);
+    s += text(520, 100, 'N-glycoside', { cls: 'fg-tag', size: 10.5 });
+    s += text(520, 138, 'at C1′, the anomeric carbon', { cls: 'fg-sm', size: 9.5 });
+
+    s += rule(280, 176, 720, 176);
+    s += text(500, 196, 'nucleoside', { cls: 'fg-tag-good', size: 11 });
+    s += rule(40, 216, 720, 216);
+    s += text(380, 236, 'nucleotide', { cls: 'fg-tag-good', size: 11 });
+
+    s += rule(34, 256, 726, 256);
+    s += text(380, 280, 'One phosphate is the entire difference between the two words.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'A nucleotide, assembled in the order that makes the names obvious. Sugar plus base is a nucleoside; adding the 5′ phosphate makes it a nucleotide, and the polymer is built by esterifying that phosphate to the 3′ OH of the next sugar.',
+  note: 'Neither link is new. The base–sugar bond is an acetal formed at the anomeric carbon with nitrogen as the nucleophile, which is why warm aqueous acid cuts it and base does not; the backbone is two ester bonds to one phosphorus, which is all a phosphodiester is.',
+});
+
 /* ---------------------------------------------------------------------- */
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;
