@@ -1168,7 +1168,7 @@ FIGURES.push({
     s += bond(v[2], v[3], { cls: 'fg-bond-hi', rFrom: 0, rTo: 0 });
     s += bond(v[4], v[5], { cls: 'fg-bond-hi', rFrom: 0, rTo: 0 });
     for (const p of v) s += atom(p.x, p.y, '', { kind: 'point' });
-    s += text(cx, 104, 'the surviving \u03c0 bond, C2 to C3', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(cx, 104, 'the new \u03c0 bond, C2 to C3', { cls: 'fg-tag-good', size: 10.5 });
     s += text(v[5].x - 26, v[5].y + 4, 'C1', { cls: 'fg-sm', size: 10 });
     s += text(v[0].x, v[0].y - 14, 'C2', { cls: 'fg-sm', size: 10 });
     s += text(v[1].x + 26, v[1].y + 4, 'C3', { cls: 'fg-sm', size: 10 });
@@ -1411,7 +1411,7 @@ FIGURES.push({
     return s;
   },
   caption: 'One hydride or two, settled by the question that settles every carbonyl reaction: does the tetrahedral intermediate have anything it can throw out? A ketone&rsquo;s does not, so it stops. An ester&rsquo;s has an alkoxide &mdash; and what it collapses to is an aldehyde.',
-  note: 'The reason you cannot stop an ester at that aldehyde is in the bottom row: the aldehyde is a better electrophile than the ester it came from, so it is consumed faster than it accumulates. Stopping there means crippling the reagent rather than rationing it, which is what DIBAL-H at low temperature is for. The same reading runs down the table above &mdash; an acid chloride, an ester and an amide all give tetrahedral intermediates with something to expel, which is why LiAlH<sub>4</sub> takes them past the aldehyde every time.',
+  note: 'The reason you cannot stop an ester at that aldehyde is in the bottom row: the aldehyde is a better electrophile than the ester it came from, so it is consumed faster than it accumulates. Stopping there means crippling the reagent rather than rationing it, which is what DIBAL-H at low temperature is for. The same reading runs down the table above &mdash; an acid chloride and an ester both give tetrahedral intermediates with an alkoxide or chloride to expel, which is why LiAlH<sub>4</sub> takes them past the aldehyde every time. An amide is the one that does not fit, and it is worth keeping separate: R<sub>2</sub>N&minus; is far too strong a base to leave, so the intermediate expels its <i>oxygen</i> instead and the product is an amine.',
 });
 
 /* ------------------------------------------------------------------ C4 ---
@@ -1458,7 +1458,7 @@ FIGURES.push({
     };
 
     // Branch 1: poisoned surface, syn delivery, cis product.
-    s += text(500, 44, 'H\u2082, Lindlar catalyst \u2014 Pd/CaCO\u2083, quinoline', { cls: 'fg-lbl', size: 11.5 });
+    s += text(500, 44, 'H\u2082, Lindlar \u2014 Pd/CaCO\u2083, Pb, quinoline', { cls: 'fg-lbl', size: 11.5 });
     s += alkene(500, 96, false);
     s += text(500, 150, 'both new H arrive on one face \u2014 syn addition on a surface', { cls: 'fg-sm', size: 10 });
     s += text(676, 68, 'cis (Z)', { cls: 'fg-tag-good', size: 11 });
@@ -1478,7 +1478,7 @@ FIGURES.push({
     return s;
   },
   caption: 'The same internal alkyne, three sets of conditions. Lindlar and sodium in ammonia both stop at the alkene and hand you <b>opposite geometries</b>; ordinary Pd/C does not stop at the alkene at all.',
-  note: 'The split comes from where the hydrogens are delivered. Lindlar is a deliberately poisoned surface, and an alkene lying against a surface can only be reached from the face touching it, so both hydrogens arrive on that face and the product is cis. Sodium in ammonia never uses a surface: it adds an electron, then a proton, twice over, and the vinyl radical in the middle sits with its two R groups apart, so the product is trans. Same two hydrogens, same alkyne, opposite answers.',
+  note: 'The split comes from where the hydrogens are delivered. Lindlar is a deliberately poisoned surface, and an alkene lying against a surface can only be reached from the face touching it, so both hydrogens arrive on that face and the product is cis. Sodium in ammonia never uses a surface: it adds an electron, then a proton, twice over, and the geometry is fixed at the <i>vinyl anion</i> formed by the second electron transfer, which is configurationally stable and sits with its two R groups apart. The radical before it inverts far too fast to decide anything. Same two hydrogens, same alkyne, opposite answers.',
 });
 
 /* ------------------------------------------------------------------ C5 ---
@@ -1577,7 +1577,7 @@ FIGURES.push({
 
     // The target. The carbinol carbon is highlighted because every cut
     // below is a cut to it; the OH is drawn but never cut, since no
-    // reaction in the course joins a carbon to an oxygen anion.
+    // C-OH bond is made by an interconversion, not by joining two fragments.
     const c = P(380, 104);
     s += bond(c, P(380, 54));
     s += bond(c, P(300, 104));
@@ -1617,7 +1617,7 @@ FIGURES.push({
     return s;
   },
   caption: 'One target, cut three ways. Every bond from the carbinol carbon to a carbon is a Grignard disconnection, so 2-phenylbutan-2-ol has three complete one-step routes and no rule of chemistry picks between them \u2014 availability does.',
-  note: 'The bond to OH is not on the list, and that is the discipline the whole method rests on: a cut is only a disconnection if you can name the forward reaction that makes it. There is no reagent pair that joins a carbon to a hydroxide, so that bond is never cut, however tempting it looks on paper.',
+  note: 'The bond to OH is not on the list, and that is the discipline the whole method rests on: a cut is only a disconnection if you can name the forward reaction that makes it. Not because nothing makes a C&ndash;O bond &mdash; hydration, hydroboration and an S<sub>N</sub>2 on a halide all do &mdash; but because those are functional group interconversions rather than ways of joining two pieces. A disconnection is for bonds that assemble the skeleton, and this one does not.',
 });
 
 /* ------------------------------------------------------------------ D2 ---
@@ -1665,7 +1665,7 @@ FIGURES.push({
     };
 
     // At the carbonyl carbon: the nucleophile comes in from outside.
-    let cx = col(24, 'at the carbonyl carbon', false, 'RMgBr, RLi, \u207BCN, acetylide', 'alcohol, or nitrile');
+    let cx = col(24, 'at the carbonyl carbon', false, 'RMgBr, RLi, \u207BCN, acetylide', 'an alcohol');
     s += curve(P(cx + 34, 232), P(cx + 34, 172), { bow: 14 });
     s += label(cx + 34, 248, 'Nu\u207B', { size: 12 });
 
@@ -1981,20 +1981,23 @@ FIGURES.push({
   build() {
     let s = '';
     const col = (ox, title, charges, verdict, kind, out) => {
-      s += panel(ox, 46, 330, 150, { kind });
-      s += tag(ox + 165, 34, title);
-      const c = P(ox + 165, 118);
+      s += panel(ox, 42, 330, 172, { kind });
+      s += tag(ox + 165, 32, title);
+      const c = P(ox + 165, 112);
       s += atom(c.x, c.y, 'C', { kind: kind === 'warn' ? 'warn' : 'hi' });
-      s += atom(c.x, c.y - 52, 'O', { });
-      s += atom(c.x - 60, c.y + 34, 'O', { });
-      s += atom(c.x + 60, c.y + 34, 'R', { });
-      s += bond(c, P(c.x, c.y - 52));
-      s += bond(c, P(c.x - 60, c.y + 34));
-      s += bond(c, P(c.x + 60, c.y + 34));
-      s += text(c.x + 24, c.y - 56, charges[0], { cls: 'fg-lbl', size: 13 });
-      s += text(c.x - 84, c.y + 30, charges[1], { cls: 'fg-lbl', size: 13 });
-      s += text(ox + 165, 180, verdict, { cls: kind === 'warn' ? 'fg-tag' : 'fg-tag-good', size: 11 });
-      s += text(ox + 165, 224, out, { cls: 'fg-sm', size: 10.5 });
+      s += atom(c.x, c.y - 48, 'O', { });
+      s += atom(c.x - 58, c.y + 30, 'O', { });
+      s += atom(c.x + 58, c.y + 30, 'R', { });
+      s += atom(c.x, c.y + 54, 'R\u2032', { kind: 'hi' });
+      s += bond(c, P(c.x, c.y - 48));
+      s += bond(c, P(c.x - 58, c.y + 30));
+      s += bond(c, P(c.x + 58, c.y + 30));
+      s += bond(c, P(c.x, c.y + 54));
+      s += text(c.x + 22, c.y - 52, charges[0], { cls: 'fg-lbl', size: 13 });
+      s += text(c.x - 80, c.y + 26, charges[1], { cls: 'fg-lbl', size: 13 });
+      s += text(c.x + 34, c.y + 62, 'from RLi', { cls: 'fg-sm', size: 9.5 });
+      s += text(ox + 165, 202, verdict, { cls: kind === 'warn' ? 'fg-tag' : 'fg-tag-good', size: 11 });
+      s += text(ox + 165, 236, out, { cls: 'fg-sm', size: 10.5 });
     };
     col(24,  'from an ester',      ['−', 'R'], 'collapses in the flask', 'warn',
         'the ketone forms, and is attacked again');
@@ -2053,7 +2056,7 @@ FIGURES.push({
     return s;
   },
   caption: 'One enone and two nucleophiles carrying the same R group. The hard, charge-dense Grignard adds at the carbonyl carbon; the soft, polarizable cuprate adds at the β carbon, and the enolate it forms protonates on workup to give the ketone back with the new group installed.',
-  note: 'The carbonyl carbon still carries the larger partial positive charge — that is exactly why the Grignard picks it, and why saying the cuprate “prefers the more electrophilic site” gets the reasoning backwards. Temperature and solvent do not move this selectivity; choosing the reagent is how you choose the product.',
+  note: 'The carbonyl carbon still carries the larger partial positive charge — that is exactly why the Grignard picks it, and why saying the cuprate “prefers the more electrophilic site” gets the reasoning backwards. The metal is the dominant factor rather than the only one \u2014 a catalytic copper salt added to a Grignard will switch it to 1,4, which is the same argument arriving by a different route. What does not move it is temperature.',
 });
 
 /* ----------------------------------------------------------------- 37 ---

@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function(){
         eyebrow: 'Explain',
         title: 'A carboxylic acid to a ketone, which should not work.',
         bodyHtml: '<p class="step-body">Take the problem at face value and it looks impossible. A carboxylic acid has an O&ndash;H, so the first equivalent of RLi is spent deprotonating it. What is left is a <b>carboxylate</b> &mdash; a carbonyl carrying a full negative charge, which is about the worst electrophile in the course.</p>' +
-          '<p class="step-body">An organolithium is reactive enough to add to it anyway. And the intermediate that results is the reason the reaction is useful: it is a <b>dianion</b>, with two negative charges on the two oxygens of one carbon, and it is far too unstable to collapse. So it does not. It sits there until the acidic workup, and only then loses water to give the ketone.</p>' +
+          '<p class="step-body">An organolithium is reactive enough to add to it anyway. And the intermediate that results is the reason the reaction is useful: it is a <b>dianion</b>, with two negative charges on the two oxygens of one carbon, and it <b>cannot</b> collapse. Collapsing would mean expelling O²⁻, which is no leaving group at all, and pushing a third negative charge onto a center that already carries two. So it sits there until the acidic workup, and only then loses water to give the ketone.</p>' +
           '<div class="explain-box">That is why this stops at the ketone when an ester does not. With an ester, the ketone actually forms in the flask and is attacked at once. Here the ketone <b>does not exist</b> until workup, by which point every equivalent of RLi has been consumed. Two equivalents are needed: one for the proton, one for the addition.</div>'
       },
       {
@@ -264,13 +264,13 @@ document.addEventListener('DOMContentLoaded', function(){
           'Alkyne hydrogens are attached to a more electronegative carbon isotope'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct. Acidity is about the stability of the conjugate base, and an sp orbital is half s character against a quarter for sp³, so the lone pair is held much closer to the positively charged nucleus. This is the same hybridization argument that explains why an alkyne carbon is the least electron-rich of the three.',
+        correctFeedback: 'Correct. Acidity is about the stability of the conjugate base, and an sp orbital is half s character against a quarter for sp³, so the lone pair is held much closer to the positively charged nucleus. This is the same hybridization argument that makes an sp carbon the most electronegative of the three: it holds its bonding electrons most tightly, which is why the hydrogen attached to it is the most acidic.',
         wrongFeedback: 'Ask what is different about the orbital the lone pair occupies in the conjugate base of an alkyne, compared with that of an alkane.'
       },
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'You want cis-hex-3-ene from propyne and a two-carbon electrophile. What is the sequence, and where could it go wrong?',
+        title: 'You want cis-pent-2-ene from propyne and a two-carbon electrophile. What is the sequence, and where could it go wrong?',
         options: [
           'Alkylate the acetylide with bromoethane, then Lindlar — and the trap is using a secondary halide',
           'Alkylate with 2-bromopropane, then H₂/Pd',
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'Hydrogenate the alkyne first, then alkylate'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct on both. Deprotonate propyne with NaNH₂ to the acetylide, alkylate with bromoethane to give hex-3-yne, then reduce with H₂ over Lindlar catalyst, which delivers both hydrogens to one face and gives the <i>cis</i> alkene. Na/NH₃ at that last step would give <i>trans</i> instead — one substrate, two conditions, two geometries. The trap is the halide: bromoethane is primary and works, while anything secondary sends the strongly basic acetylide into E2 and you get an alkene you did not ask for. And the fourth option fails for a different reason worth seeing — once the alkyne is reduced there is no acidic hydrogen left to deprotonate, so the order cannot be reversed.'
+        correctFeedback: 'Correct on both. Deprotonate propyne with NaNH₂ to the acetylide, alkylate with bromoethane to give pent-2-yne — three carbons plus two — then reduce with H₂ over Lindlar catalyst, which delivers both hydrogens to one face and gives the <i>cis</i> alkene. Na/NH₃ at that last step would give <i>trans</i> instead — one substrate, two conditions, two geometries. The trap is the halide: bromoethane is primary and works, while anything secondary sends the strongly basic acetylide into E2 and you get an alkene you did not ask for. And the fourth option fails for a different reason worth seeing — once the alkyne is reduced there is no acidic hydrogen left to deprotonate, so the order cannot be reversed.'
       }
     ]
   });

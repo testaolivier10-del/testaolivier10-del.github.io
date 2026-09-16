@@ -508,7 +508,7 @@
   "Inductive (sigma-bond) electron withdrawal falls off rapidly with each bond, so while the alpha carbon feels the halogen's pull strongly, the beta carbon experiences only a faint residual effect.",
   "Just as an enolate's oxygen lone pair activates the alpha carbon through resonance, an enamine's nitrogen lone pair conjugates through the C=C pi system to make the beta carbon unusually electron-rich and nucleophilic, a key feature exploited in many carbon-carbon bond-forming reactions.",
   "A classic example is a halogen substituent on an aromatic ring: it withdraws electron density inductively (making the ring somewhat electron-poor overall) while donating electron density by resonance at the ortho/para positions (making those specific positions more electron-rich), so the two effects can genuinely pull in opposite directions.",
-  "An sp carbon is one third s, and an s orbital keeps electron density close to the nucleus. That pulls density out of the C-H bond, leaving the alkyne carbon the less electron-rich of the two and its hydrogen unusually acidic. The trap is the word always: hybridization is one factor among several.",
+  "An s orbital keeps electron density closer to the nucleus than a p orbital does, and an sp carbon is one third s against one quarter for sp3. That is why an sp carbon behaves as the most electronegative of the three, and why a terminal alkyne C-H at pKa 25 is far more acidic than an alkane C-H at 50.",
   "Although bromine formally bears the positive charge in the strained three-membered bromonium ring, the nucleophile actually attacks one of the electrophilic ring carbons from the backside, displacing bromine and opening the ring; formal charge location does not always mark the exact site of nucleophilic attack."
  ],
  "naming-parent-chain": [
@@ -2837,7 +2837,7 @@
   "The metal inserts into the carbon-halogen bond; nothing is added and nothing leaves.",
   "Each lithium carries one electron, and one of them departs as LiBr.",
   "The reagent would destroy itself on its own acidic proton as fast as it formed.",
-  "Acid-base beats addition every time, because it is far faster.",
+  "Deprotonating an alcohol gives the same magnesium alkoxide that a Grignard addition does, but the reagent has been spent on a proton and no carbon was joined to anything.",
   "The metal inserts into the C-X bond rather than displacing the halide from behind.",
   "More charge on carbon means a more reactive and less discriminating reagent.",
   "An ether has no acidic hydrogen, which is also why it can be the solvent.",
@@ -2862,7 +2862,7 @@
   "A cuprate is too mild to attack the ketone it just made; a Grignard is not.",
   "Its chelated intermediate survives until workup, so no second addition can occur.",
   "Each lands somewhere different: an alcohol, an acid and a ketone.",
-  "Which is why epoxides are the standard two-carbon extension.",
+  "Which is why it is the standard two-carbon extension. A substituted epoxide adds more, and the attack still goes at the less hindered carbon.",
   "A carboxylic acid at pKa 5 is the most acidic thing present by a wide margin.",
   "The carbanion takes the proton and departs as the alkane.",
   "The alkoxide or carboxylate intermediate has to be protonated.",
@@ -2876,7 +2876,7 @@
   "Having the electrophile present while the reagent forms invites enolization and self-condensation.",
   "Esters, nitriles and ketones are all electrophiles the reagent attacks.",
   "The metal insertion does not touch the double bond.",
-  "Same double-addition logic as the ester, since the ketone formed is the more reactive species.",
+  "Two additions again, but not for the ester's reason: an acyl chloride is the most electrophilic acyl derivative, and the ketone it gives is simply still reactive enough to be attacked as fast as it forms.",
   "Each cut gives a carbanion and a ketone, and there are three legitimate choices."
  ],
  "organolithium-reagents": [
@@ -2890,7 +2890,7 @@
   "That pairing is what allows complete enolate formation without attack on the carbonyl.",
   "An amine pKa near 36 against an alkane near 50, and it is still far more than enough.",
   "Half its value is what it removes a proton from rather than what it attacks.",
-  "Same combination LDA achieves, by bulk rather than by a heteroatom.",
+  "Bulk does slow its approach to a hindered carbonyl, but t-BuLi is still a fine nucleophile and the standard reagent for lithium-halogen exchange. LDA is the reagent for which basic-but-not-nucleophilic actually holds.",
   "An alkene is 44 and an alkane 50, so the alkyne is by far the most acidic of the three.",
   "Half s character holds the lone pair close to the nucleus.",
   "You need a base whose conjugate acid has a pKa well above 25.",
@@ -2907,7 +2907,7 @@
   "Addition to the carbonyl, protonated on workup.",
   "By analogy with allylic, which is next to a double bond.",
   "The Grignard stalls and acts as a base; the smaller, hotter reagent gets in.",
-  "Two negative charges on one carbon's oxygens, too unstable to collapse before workup.",
+  "Two negative charges on one carbon's oxygens. It cannot collapse, because that would mean expelling O2- and adding a third charge, so it survives until workup.",
   "Hydroxide gives an equilibrium, n-BuLi attacks the carbonyl, and pyridine is far too weak.",
   "Which is why acidity rises sp3 to sp2 to sp."
  ],
@@ -2968,7 +2968,7 @@
   "Neither ring is nucleophilic or electrophilic enough for anything from earlier chapters.",
   "Shared by Heck, Negishi and Suzuki.",
   "A phenol pKa near 10 is easily acidic enough to consume the reagent.",
-  "The trouble is what the reagent does afterward, not whether it forms.",
+  "Bromides and iodides go readily. Aryl chlorides are sluggish and need heat or activation, and aryl fluorides do not go at all. The trouble with the reagent is what it does afterward, not whether it forms.",
   "Only the two elimination and addition steps move it.",
   "Because the cycle regenerates the active species every turn.",
   "The organometallic partner arrives later, at transmetalation.",

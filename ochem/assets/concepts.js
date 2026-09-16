@@ -200,7 +200,7 @@
       topics:['grignard-reagents','organolithium-reagents','nucleophilic-addition','acyl-substitution','epoxides'],
       dependsOn:['polarity-reversal'],
       hint:'Name the electrophile first; the alcohol class follows from it, and only esters take two equivalents.',
-      teach:'Formaldehyde gives a primary alcohol, any other aldehyde a secondary, a ketone a tertiary. CO2 gives a carboxylic acid, an epoxide opens at the less hindered carbon to give an alcohol two carbons along, and a nitrile gives a ketone after hydrolysis. The one-carbon extensions are worth knowing as a set, because each ends somewhere different. An ester adds TWICE: the tetrahedral intermediate expels alkoxide to give a ketone that is more electrophilic than the ester was, so a second equivalent attacks at once and the product is a tertiary alcohol with two identical R groups.' },
+      teach:'Formaldehyde gives a primary alcohol, any other aldehyde a secondary, a ketone a tertiary. CO2 gives a carboxylic acid, ethylene oxide opens to give an alcohol two carbons along, and a substituted epoxide adds more, still opening at the less hindered carbon, and a nitrile gives a ketone after hydrolysis. The one-carbon extensions are worth knowing as a set, because each ends somewhere different. An ester adds TWICE: the tetrahedral intermediate expels alkoxide to give a ketone that is more electrophilic than the ester was, so a second equivalent attacks at once and the product is a tertiary alcohol with two identical R groups.' },
     { id:'hard-soft-addition', title:'1,2 against 1,4', family:'Organometallics',
       topics:['gilman-reagents','grignard-reagents','nucleophilic-addition','conjugated-systems','aldol'],
       dependsOn:['grignard-scope'],

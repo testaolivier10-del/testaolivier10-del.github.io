@@ -6049,15 +6049,15 @@
    "type": "tf"
   },
   {
-   "q": "Which atom would you expect to be more electron-rich: the carbon of a terminal alkyne's triple bond carbon that bears the acidic hydrogen, or a typical sp3 alkane carbon?",
+   "q": "Which carbon holds its bonding electrons most tightly: sp, sp2 or sp3?",
    "options": [
-    "The sp3 alkane carbon, because sp3 carbons are always more electron-rich",
-    "Neither is meaningfully different in electron density",
-    "The terminal alkyne carbon is always the most electron-rich carbon possible",
-    "The sp3 carbon, since the sp carbon holds its electrons tightly"
+    "The sp carbon, which has the most s character",
+    "The sp3 carbon, which has the most p character",
+    "The sp2 carbon, which is intermediate in both",
+    "All three hold them equally, since all are carbon"
    ],
-   "correct": 3,
-   "why": "An sp carbon is one third s, and an s orbital keeps electron density close to the nucleus. That pulls density out of the C-H bond, leaving the alkyne carbon the less electron-rich of the two and its hydrogen unusually acidic. The trap is the word always: hybridization is one factor among several.",
+   "correct": 0,
+   "why": "An s orbital keeps electron density closer to the nucleus than a p orbital does, and an sp carbon is one third s against one quarter for sp3. That is why an sp carbon behaves as the most electronegative of the three, and why a terminal alkyne C-H at pKa 25 is far more acidic than an alkane C-H at 50.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -33900,7 +33900,7 @@
    "type": "mcq"
   },
   {
-   "q": "What is a magnesium alkoxide the product of?",
+   "q": "Which reaction gives a magnesium alkoxide WITHOUT forming a new C-C bond?",
    "options": [
     "A Grignard adding to a ketone",
     "Oxidation of a Grignard",
@@ -33908,7 +33908,7 @@
     "Deprotonating an alcohol"
    ],
    "correct": 3,
-   "why": "Acid-base beats addition every time, because it is far faster.",
+   "why": "Deprotonating an alcohol gives the same magnesium alkoxide that a Grignard addition does, but the reagent has been spent on a proton and no carbon was joined to anything.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -34201,7 +34201,7 @@
    "type": "mcq"
   },
   {
-   "q": "How many carbons does an epoxide add to a chain?",
+   "q": "How many carbons does ethylene oxide add to a chain?",
    "options": [
     "Three",
     "None",
@@ -34209,7 +34209,7 @@
     "One"
    ],
    "correct": 2,
-   "why": "Which is why epoxides are the standard two-carbon extension.",
+   "why": "Which is why it is the standard two-carbon extension. A substituted epoxide adds more, and the attack still goes at the less hindered carbon.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -34391,7 +34391,7 @@
     "No alcohol forms"
    ],
    "correct": 0,
-   "why": "Same double-addition logic as the ester, since the ketone formed is the more reactive species.",
+   "why": "Two additions again, but not for the ester's reason: an acyl chloride is the most electrophilic acyl derivative, and the ketone it gives is simply still reactive enough to be attacked as fast as it forms.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -34541,15 +34541,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why is t-BuLi poorly nucleophilic?",
+   "q": "What distinguishes t-BuLi from n-BuLi in practice?",
    "options": [
-    "It is not basic",
-    "Its carbon is sp2",
-    "It is too hindered",
-    "Lithium is buried in it"
+    "It is far more basic and pyrophoric",
+    "It is a much weaker base",
+    "It contains no lithium",
+    "It is not hindered at all"
    ],
-   "correct": 2,
-   "why": "Same combination LDA achieves, by bulk rather than by a heteroatom.",
+   "correct": 0,
+   "why": "Bulk does slow its approach to a hindered carbonyl, but t-BuLi is still a fine nucleophile and the standard reagent for lithium-halogen exchange. LDA is the reagent for which basic-but-not-nucleophilic actually holds.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -34770,7 +34770,7 @@
     "An acylium ion"
    ],
    "correct": 1,
-   "why": "Two negative charges on one carbon's oxygens, too unstable to collapse before workup.",
+   "why": "Two negative charges on one carbon's oxygens. It cannot collapse, because that would mean expelling O2- and adding a third charge, so it survives until workup.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -35507,15 +35507,15 @@
    "type": "mcq"
   },
   {
-   "q": "Can an aryl Grignard be made from an aryl halide?",
+   "q": "Can an aryl Grignard be made from an aryl bromide?",
    "options": [
     "Yes, magnesium insertion works",
     "No, aryl halides are inert to magnesium",
-    "Only for iodides",
-    "Only with a catalyst"
+    "Only with a palladium catalyst",
+    "Only below 0 degrees Celsius"
    ],
    "correct": 0,
-   "why": "The trouble is what the reagent does afterward, not whether it forms.",
+   "why": "Bromides and iodides go readily. Aryl chlorides are sluggish and need heat or activation, and aryl fluorides do not go at all. The trouble with the reagent is what it does afterward, not whether it forms.",
    "difficulty": "easy",
    "type": "mcq"
   },

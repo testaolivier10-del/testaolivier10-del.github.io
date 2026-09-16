@@ -84,6 +84,69 @@ C18 melting points, the bond lengths, the anomeric equilibrium ratio, the
 hydrogen-bond counts — and found all of them correct. The errors were in prose
 and in one keyed option, not in the arithmetic.
 
+### Unit 6 — Organometallics
+
+Fifteen findings, all accepted. Eight were outright errors.
+
+| Finding | Where | Resolution |
+|---|---|---|
+| CH₃MgBr + propanone named as 2-methylbutan-2-ol | `lessons/grignard-reagents` | It is **2-methylpropan-2-ol** — C4, not C5. The C5 name belongs to the ester row directly below it, so the two had been crossed |
+| "cis-hex-3-ene from propyne and a two-carbon electrophile" | `lessons/organolithium-reagents` | Propyne is C3 and ethyl is C2, so the product is **pent-2-yne** and the target cis-pent-2-ene. The carbon count was impossible as written |
+| An acyl chloride adding twice "for the same reason" as an ester | notes, lesson and bank, three places | **Backwards.** An acyl chloride is the *most* electrophilic acyl derivative, comfortably more so than the ketone it gives. The ester argument does not transfer; the ketone is simply still reactive enough to be attacked as fast as it forms |
+| "What is a magnesium alkoxide the product of?" | `practice-bank`, `organometallic-bonding` | A Grignard adding to a ketone gives one too, so the item had **two correct answers**. Reworded to ask which route gives one without forming a C–C bond |
+| A dianion "too unstable to collapse. It simply sits there" | notes, lesson and bank | Self-contradictory, and inverted. It is *persistent*: collapsing would mean expelling O²⁻ and adding a third charge. The figure caption had it right and the prose did not |
+| Convergence "nearly double, for the same number of reactions" | `lessons/cross-coupling` | 5 + 5 + 1 is **eleven** reactions against ten. The arithmetic was right and the claim attached to it was not |
+| "Nothing else in this course recovers its own starting material" | `lessons/cross-coupling` | Plainly false — every acid- and base-catalyzed mechanism does. Narrowed to the first transition-metal cycle, and the first catalyst that holds both partners |
+| "benzene → phenylmagnesium bromide" in a stem whose own first sentence says bromobenzene | `lessons/grignard-reagents` | Benzene does not react with magnesium. Corrected to bromobenzene |
+
+**Seven qualified findings, all also accepted.** An epoxide stated flatly as a
+two-carbon extension, which is true of ethylene oxide only; "temperature and
+solvent do not move this selectivity", when catalytic copper added to a
+Grignard switches it to 1,4; *t*-BuLi called poorly nucleophilic, when it is a
+fine nucleophile and the standard reagent for lithium–halogen exchange; aryl
+Grignards described as forming from aryl halides generally, when chlorides are
+sluggish and fluorides do not go at all; an sp carbon called "least
+electron-rich", which reads as the opposite of the argument it was supporting;
+an acetylide contrasted with "a Grignard", when acetylides are often magnesium
+salts themselves — the real contrast is sp against sp³; and a figure labeled
+"tetrahedral intermediate" that drew only **three** substituents on the central
+carbon, the missing one being the R the organolithium had just delivered.
+
+**One accessibility regression, caught by the browser pass and not by the
+review:** `opacity:.6` on the electronegativity values in the interactive step
+dropped them below the 4.5:1 contrast threshold. Replaced with the `--muted`
+token, which is what it should have been.
+
+### The 19 backfilled figures
+
+Three confident errors and five qualified ones, all accepted.
+
+| Finding | Where | Resolution |
+|---|---|---|
+| "the surviving π bond, C2 to C3" | `da-bond-accounting` | C2–C3 is **single** in the diene; that π bond is new. The figure's own note said so, so the label contradicted it |
+| Acid chloride, ester **and amide** all said to have something to expel | `hydride-once-twice` | An amide does not fit: R₂N⁻ is no leaving group, so it expels its *oxygen* and ends as an amine. Split out |
+| "There is no reagent pair that joins a carbon to a hydroxide" | `three-disconnections` | False — hydration, hydroboration and an S<sub>N</sub>2 all make that bond. The defensible point is that a C–OH cut is an interconversion rather than a way of joining two pieces |
+| Trans selectivity attributed to "the vinyl radical in the middle" | `alkyne-three-ways` | The geometry is fixed at the configurationally stable **vinyl anion**; the radical inverts far too fast to decide anything |
+| Lindlar given as "Pd/CaCO₃, quinoline" | `alkyne-three-ways` | Lead as well, which the section's own prose says |
+| A silyl ether shown as untouched by dilute warm acid | `orthogonal-grid` | True of TBS as a simplification, not as a fact; the note already contrasted TMS and now carries the qualifier |
+| Cyanide's product given as "alcohol, or nitrile" | `carbonyl-three-sites` | A cyanohydrin is an alcohol **and** a nitrile on the same carbon, not one or the other |
+
+**The check that should have caught the rendering problems did not exist.** The
+NREMT figure test measures estimated text extent; the ochem one read anchor
+points only, so a label centered two characters inside the canvas — half of it
+outside — passed. That gap is now closed: the ochem test measures rects,
+circles and text the same way, with the same note about CSS font-size beating
+the presentation attribute.
+
+**A site-wide rendering property, recorded rather than changed.** Every figure
+declares `min-width: --vb × 0.92` inside a ~672 px reading column, so all 37
+scroll horizontally and roughly the rightmost 8% of the canvas is off-screen
+until the reader scrolls. The pre-existing figures do this too — 28 of 37 place
+text past 92% — so it is the house pattern rather than a regression. What was
+fixed is the placement of *load-bearing* content inside that strip, most
+sharply in `order-sets-pattern`, where both product names — the entire answer
+of the figure — sat in the hidden band.
+
 ## Pending clinical review
 
 Everything in this section is a clinical statement this repo now makes that a

@@ -5571,14 +5571,14 @@
    "type": "tf"
   },
   {
-   "q": "Which atom would you expect to be more electron-rich: the carbon of a terminal alkyne's triple bond carbon that bears the acidic hydrogen, or a typical sp3 alkane carbon?",
+   "q": "Which carbon holds its bonding electrons most tightly: sp, sp2 or sp3?",
    "options": [
-    "The sp3 alkane carbon, because sp3 carbons are always more electron-rich",
-    "Neither is meaningfully different in electron density",
-    "The terminal alkyne carbon is always the most electron-rich carbon possible",
-    "The sp3 carbon, since the sp carbon holds its electrons tightly"
+    "The sp carbon, which has the most s character",
+    "The sp3 carbon, which has the most p character",
+    "The sp2 carbon, which is intermediate in both",
+    "All three hold them equally, since all are carbon"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -31239,7 +31239,7 @@
    "type": "mcq"
   },
   {
-   "q": "What is a magnesium alkoxide the product of?",
+   "q": "Which reaction gives a magnesium alkoxide WITHOUT forming a new C-C bond?",
    "options": [
     "A Grignard adding to a ketone",
     "Oxidation of a Grignard",
@@ -31517,7 +31517,7 @@
    "type": "mcq"
   },
   {
-   "q": "How many carbons does an epoxide add to a chain?",
+   "q": "How many carbons does ethylene oxide add to a chain?",
    "options": [
     "Three",
     "None",
@@ -31831,14 +31831,14 @@
    "type": "mcq"
   },
   {
-   "q": "Why is t-BuLi poorly nucleophilic?",
+   "q": "What distinguishes t-BuLi from n-BuLi in practice?",
    "options": [
-    "It is not basic",
-    "Its carbon is sp2",
-    "It is too hindered",
-    "Lithium is buried in it"
+    "It is far more basic and pyrophoric",
+    "It is a much weaker base",
+    "It contains no lithium",
+    "It is not hindered at all"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -32723,12 +32723,12 @@
    "type": "mcq"
   },
   {
-   "q": "Can an aryl Grignard be made from an aryl halide?",
+   "q": "Can an aryl Grignard be made from an aryl bromide?",
    "options": [
     "Yes, magnesium insertion works",
     "No, aryl halides are inert to magnesium",
-    "Only for iodides",
-    "Only with a catalyst"
+    "Only with a palladium catalyst",
+    "Only below 0 degrees Celsius"
    ],
    "correct": 0,
    "difficulty": "easy",

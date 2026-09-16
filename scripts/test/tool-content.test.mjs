@@ -784,6 +784,43 @@ test('every generated ochem figure draws inside its own canvas', () => {
 
       const xs = [...block.matchAll(/\s(?:cx|x1|x2|x)="(-?[\d.]+)"/g)].map(v => Number(v[1]));
       const ys = [...block.matchAll(/\s(?:cy|y1|y2|y)="(-?[\d.]+)"/g)].map(v => Number(v[1]));
+
+      /* Rects and circles say how wide they are, so ask. A panel whose x is
+         inside the canvas while x+width is 60 units past the right edge passed
+         the anchor-only version of this check. */
+      for (const r of block.matchAll(/<rect[^>]*\sx="(-?[\d.]+)"[^>]*\sy="(-?[\d.]+)"[^>]*\swidth="([\d.]+)"[^>]*\sheight="([\d.]+)"/g)) {
+        xs.push(Number(r[1]) + Number(r[3]));
+        ys.push(Number(r[2]) + Number(r[4]));
+      }
+      for (const c of block.matchAll(/<circle[^>]*\scx="(-?[\d.]+)"[^>]*\scy="(-?[\d.]+)"[^>]*\sr="([\d.]+)"/g)) {
+        xs.push(Number(c[1]) + Number(c[3]), Number(c[1]) - Number(c[3]));
+        ys.push(Number(c[2]) + Number(c[3]), Number(c[2]) - Number(c[3]));
+      }
+
+      /* Text, measured as text. This is the check that was missing, and the
+         gap it left was not theoretical: a review of nineteen figures found
+         clipped labels in twelve of them, including one where BOTH product
+         names — the whole answer the figure existed to give — were cut off at
+         the right edge. A <text> element's x is an anchor, not a left edge,
+         and the drawing kit defaults text-anchor to `middle`, so a label
+         centred two characters inside the canvas is half outside it.
+
+         The size that renders is the CSS one, not the attribute: every fg-
+         class in theme.css sets font-size and a CSS declaration beats a
+         presentation attribute, so estimating from the `size` option the kit
+         offers under-measures every label. The width estimate is crude — a
+         mean glyph is about 0.62 em in these faces — and deliberately
+         generous, because the failure it is looking for is half a sentence
+         missing, not two pixels. */
+      const CSS_SIZE = { 'fg-lbl': 13, 'fg-sm': 10.5, 'fg-tag': 11, 'fg-tag-mut': 11, 'fg-tag-warn': 11, 'fg-tag-good': 11 };
+      for (const t of block.matchAll(/<text class="([a-z-]+)"[^>]*\sx="(-?[\d.]+)"[^>]*\stext-anchor="(\w+)"[^>]*\sfont-size="([\d.]+)"[^>]*>([^<]*)</g)) {
+        const [, cls, ax, anchor, fs, body] = t;
+        const size = CSS_SIZE[cls] ?? Number(fs);
+        const wide = body.replace(/&[a-z]+;/g, 'x').length * size * 0.62;
+        const left = anchor === 'middle' ? Number(ax) - wide / 2 : anchor === 'end' ? Number(ax) - wide : Number(ax);
+        xs.push(left, left + wide);
+      }
+
       assert.ok(xs.length && ys.length, `${id}: nothing drawn`);
       // A few units of slack: a stroke has width and a glyph has descenders.
       assert.ok(Math.min(...xs) >= mx - 6, `${id}: content runs off the left edge`);
