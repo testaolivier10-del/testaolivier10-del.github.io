@@ -1886,6 +1886,41 @@ for (const file of walk(join(ROOT, 'ochem', 'mechanisms'), ['.html'])) {
   }
 }
 
+// ---- 30. No hard-coded chapter number in anything an ochem reader sees ----
+
+/* The course was numbered by hand for a long time — "Module 6", "Modules 9
+   through 11" — in 412 places across 190 files, and every one of them went
+   wrong the day Nomenclature was inserted as chapter 3. A reader following
+   "see Module 6" landed on Stereochemistry. Those references are now the
+   chapter's name, linked to its place in the textbook, and the lesson
+   eyebrows carry a chapter id that ochem-nav.js turns into a position at
+   runtime. This check is what stops the numbers coming back: it reads every
+   ochem page and script, drops the comments (which are allowed to say
+   whatever helps the next author), and fails on "Module N", "Chapter N" or
+   "Unit N" anywhere a reader could see it. A number that is computed from
+   curriculum.js ('Chapter ' + (i + 1)) is fine, and is exactly the point. */
+{
+  const ochemFiles = [...htmlFiles, ...walk(join(ROOT, 'ochem', 'assets'), ['.js'])]
+    .filter((f) => f.includes(`${sep}ochem${sep}`));
+  const stripComments = (src, isJs) => {
+    let out = src.replace(/<!--[\s\S]*?-->/g, ' ');
+    if (isJs) out = out.replace(/\/\*[\s\S]*?\*\//g, ' ');
+    // Line comments, in scripts and in the inline <script> of a page. Only a
+    // line that begins with // — a URL's "//" inside a string is content.
+    out = out.replace(/^\s*\/\/.*$/gm, ' ');
+    return out;
+  };
+  for (const file of ochemFiles) {
+    const src = stripComments(readFileSync(file, 'utf8'), file.endsWith('.js'));
+    const hit = src.match(/\b(Module|Chapter|Unit)s? \d+\b/);
+    if (hit) {
+      const line = src.slice(0, hit.index).split('\n').length;
+      fail(`${relative(ROOT, file)}:${line}: "${hit[0]}" is a hard-coded chapter number. Name the chapter ` +
+           '(a chapter-ref link generated from curriculum.js) instead, or derive the number at runtime.');
+    }
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);

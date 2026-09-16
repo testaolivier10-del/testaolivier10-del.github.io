@@ -54,7 +54,7 @@
     catch(e){ return {}; }
   }
 
-  /* The module a topic belongs to, for the "Module 2 · Electron Movement"
+  /* The module a topic belongs to, for the "Chapter 2 · Electron Movement"
      line on the resume card. */
   function moduleOf(topicId){
     for(var i = 0; i < C.MODULES.length; i++){
@@ -139,7 +139,7 @@
     el('homeResume').innerHTML =
       '<div class="k">Pick up where you left off</div>' +
       '<h3>' + esc(topic.title) + '</h3>' +
-      '<p>' + (where ? 'Module ' + where.index + ' · ' + esc(where.mod.title) + ' · ' : '') +
+      '<p>' + (where ? 'Chapter ' + where.index + ' · ' + esc(where.mod.title) + ' · ' : '') +
         'step ' + step + (total ? ' of ' + total : '') + '</p>' +
       (pct === null ? '' : '<div class="track" style="margin-bottom:16px"><i style="width:' + pct + '%"></i></div>') +
       '<a href="' + base + topic.href + '" class="btn-press">Resume lesson</a>';

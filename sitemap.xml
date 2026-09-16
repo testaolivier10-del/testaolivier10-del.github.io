@@ -426,6 +426,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/functional-groups.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/gilman-reagents.html</loc>
     <lastmod>2026-09-16</lastmod>
     <priority>0.8</priority>
@@ -1018,6 +1023,11 @@
   <url>
     <loc>https://levlprep.com/ochem/lessons/functional-group-interconversion.html</loc>
     <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/functional-groups.html</loc>
+    <lastmod>2026-09-16</lastmod>
     <priority>0.7</priority>
   </url>
   <url>

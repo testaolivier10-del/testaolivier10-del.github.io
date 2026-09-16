@@ -28,6 +28,23 @@
     { key: 'search', label: 'Search', href: base + 'search.html' }
   ];
 
+  /* A lesson's eyebrow names the chapter it belongs to, and nothing else:
+     the number used to be typed in by hand, and inserting a chapter
+     renumbered every page below it without breaking anything. The chapter
+     id is on the element, so the position is read off the curriculum here
+     and prefixed at runtime — the one place it cannot go stale. Pages that
+     do not load curriculum.js simply keep the name. */
+  var eyebrow = document.querySelector('.eyebrow[data-chapter]');
+  var CU = window.OchemCurriculum;
+  if(eyebrow && CU && CU.MODULES){
+    for(var i = 0; i < CU.MODULES.length; i++){
+      if(CU.MODULES[i].id === eyebrow.getAttribute('data-chapter')){
+        eyebrow.textContent = 'Chapter ' + (i + 1) + ' \u00b7 ' + CU.MODULES[i].title;
+        break;
+      }
+    }
+  }
+
   if(window.LevlChrome){
     window.LevlChrome.registerServiceWorker();
     // 'ochem' selects this course's rank names (Lewis Apprentice → Ochem

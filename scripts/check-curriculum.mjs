@@ -131,29 +131,34 @@ for (const { mod, t } of topics) {
   }
 }
 
-/* ---- 2. a lesson's eyebrow names the module it is actually in ---------- */
+/* ---- 2. a lesson's eyebrow names the chapter it is actually in --------- */
 
-/* Each lesson opens with "Module N · Chapter title", typed into the page by
-   hand. Insert a module anywhere but the end and every number after it is
-   wrong — 47 of them were, the moment Nomenclature went in at position 3 —
-   and nothing about that breaks: the page renders, the links work, and a
-   student reads a chapter number that disagrees with the contents rail.
+/* Each lesson used to open with "Module N · Chapter title", typed into the
+   page by hand. Insert a module anywhere but the end and every number after
+   it was wrong — 47 of them were, the moment Nomenclature went in at
+   position 3 — and nothing about that broke: the page rendered, the links
+   worked, and a student read a chapter number that disagreed with the
+   contents rail.
 
-   Not every lesson carries one (the older mechanism pages open with the
-   reaction name instead), so a missing eyebrow is not a failure. One that
-   disagrees with the curriculum is. */
+   So the number is gone from the source. The eyebrow now carries only the
+   chapter's id and title, and ochem-nav.js prefixes "Chapter N" at runtime
+   from the curriculum, which is the one place the position cannot go stale.
+   What this check holds is the part that is still typed by hand: the id has
+   to be the chapter the lesson actually belongs to, and the title has to be
+   that chapter's title. A page that carries no eyebrow at all is not a
+   failure (a page that has one with a number in it is — scripts/check-site.mjs
+   fails on any hard-coded chapter number in reader-facing text). */
 for (const { mod, t } of topics) {
   if (!C.hasLesson(t)) continue;
   const file = join(ROOT, 'ochem', t.href);
   if (!existsSync(file)) continue;
-  const m = readFileSync(file, 'utf8').match(/class="eyebrow">Module (\d+) &middot; ([^<]*)</);
+  const m = readFileSync(file, 'utf8').match(/class="eyebrow" data-chapter="([a-z0-9-]+)">([^<]*)</);
   if (!m) continue;
-  const index = C.MODULES.indexOf(mod) + 1;
   // The title is compared with entities decoded, since the page writes
   // "Alkanes &amp; Conformations" for the curriculum's "Alkanes & Conformations".
   const shown = m[2].replace(/&amp;/g, '&').trim();
-  if (Number(m[1]) !== index) {
-    fail(`${mod.id}/${t.id}: its eyebrow says "Module ${m[1]}" but the chapter is number ${index}.`);
+  if (m[1] !== mod.id) {
+    fail(`${mod.id}/${t.id}: its eyebrow says data-chapter="${m[1]}" but the lesson is in "${mod.id}".`);
   }
   if (shown !== mod.title) {
     fail(`${mod.id}/${t.id}: its eyebrow says "${shown}" but the chapter is "${mod.title}".`);
