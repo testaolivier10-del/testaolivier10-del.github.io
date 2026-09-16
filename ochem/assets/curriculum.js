@@ -208,6 +208,18 @@
       { id: 'organolithium-reagents', title: 'Organolithiums and acetylides', href: 'lessons/organolithium-reagents.html', dependsOn: ['grignard-reagents', 'alkynes', 'alpha-hydrogens'] },
       { id: 'gilman-reagents', title: 'Cuprates and conjugate addition', href: 'lessons/gilman-reagents.html', dependsOn: ['grignard-reagents', 'nucleophilic-addition', 'resonance'] },
       { id: 'cross-coupling', title: 'Palladium cross-coupling', href: 'lessons/cross-coupling.html', dependsOn: ['gilman-reagents', 'eas', 'carbon-carbon-bonds'] }
+    ]},
+    /* The carbonyl chapters teach one reaction each and stop. This chapter is
+       the breadth pass over them: five named reactions that a second-semester
+       course expects and that the course had only mentioned in passing. It
+       goes after Organometallics because the Wittig needs a phosphorus ylide
+       and the Michael reads most clearly against the cuprate case. */
+    { id: 'carbonyl-breadth', title: 'Carbonyl & Enolate Breadth', topics: [
+      { id: 'wittig-reaction', title: 'The Wittig reaction', href: 'lessons/wittig-reaction.html', dependsOn: ['nucleophilic-addition', 'sn2', 'alkene-structure'] },
+      { id: 'imines-enamines', title: 'Imines and enamines', href: 'lessons/imines-enamines.html', dependsOn: ['nucleophilic-addition', 'amine-structure', 'acetals'] },
+      { id: 'michael-robinson', title: 'Michael and Robinson', href: 'lessons/michael-robinson.html', dependsOn: ['aldol', 'alpha-hydrogens', 'gilman-reagents'] },
+      { id: 'ester-syntheses', title: 'Malonic and acetoacetic ester', href: 'lessons/ester-syntheses.html', dependsOn: ['claisen', 'alpha-hydrogens', 'sn2'] },
+      { id: 'baeyer-villiger', title: 'Baeyer–Villiger oxidation', href: 'lessons/baeyer-villiger.html', dependsOn: ['epoxides', 'esters-amides', 'sn1'] }
     ]}
   ];
 

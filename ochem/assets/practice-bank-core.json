@@ -32794,5 +32794,1815 @@
    "difficulty": "medium",
    "type": "mcq"
   }
+ ],
+ "wittig-reaction": [
+  {
+   "q": "What does a Wittig reaction convert a C=O into?",
+   "options": [
+    "A C=C",
+    "A C-O single bond",
+    "An epoxide",
+    "An alcohol"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What reagent class performs a Wittig?",
+   "options": [
+    "A peroxyacid",
+    "A Grignard reagent",
+    "A hydride donor",
+    "A phosphorus ylide"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is an ylide?",
+   "options": [
+    "A carbocation",
+    "A cyclic ester",
+    "Adjacent opposite charges in a neutral molecule",
+    "A radical pair"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How is a phosphonium salt made?",
+   "options": [
+    "PPh3 is protonated",
+    "PPh3 does SN2 on RX",
+    "PPh3 adds to a carbonyl",
+    "PPh3 is oxidized"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which halides can be used to make a Wittig ylide?",
+   "options": [
+    "Methyl and primary",
+    "Tertiary only",
+    "Aryl only",
+    "Any halide"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why will a tertiary halide not give an ylide?",
+   "options": [
+    "PPh3 is not nucleophilic enough",
+    "It has no acidic hydrogen",
+    "It eliminates on contact with PPh3",
+    "Its backside is blocked to SN2"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can bromobenzene not be used to make an ylide?",
+   "options": [
+    "PPh3 attacks the ring instead",
+    "The ylide would be aromatic",
+    "An aryl halide will not do SN2",
+    "Aryl halides are too stable to handle"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What base deprotonates a phosphonium salt?",
+   "options": [
+    "Pyridine",
+    "n-BuLi or NaH",
+    "Water",
+    "Sodium bicarbonate"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is the hydrogen next to P+ acidic?",
+   "options": [
+    "It sits beside a plus charge",
+    "Phosphorus is electronegative",
+    "The C-H bond is unusually long",
+    "It is allylic"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What by-product does a Wittig give?",
+   "options": [
+    "Triphenylphosphine",
+    "A phosphonium salt",
+    "Water",
+    "Ph3P=O"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What drives the Wittig forward?",
+   "options": [
+    "Loss of halide",
+    "Aromatization",
+    "The P=O bond",
+    "Release of ring strain"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the four-membered intermediate called?",
+   "options": [
+    "A phosphorane",
+    "An oxaphosphetane",
+    "An oxetane",
+    "A betaine ring"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How does a Wittig differ from an elimination?",
+   "options": [
+    "It joins two separate pieces",
+    "It needs no reagent",
+    "It gives a mixture",
+    "It requires a leaving group"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What decides where the double bond goes in an elimination?",
+   "options": [
+    "The nucleophile",
+    "The solvent",
+    "Nothing; it is random",
+    "Zaitsev's rule"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Where does the Wittig double bond end up?",
+   "options": [
+    "Wherever Zaitsev prefers",
+    "At a random position",
+    "At the old carbonyl carbon",
+    "At the most substituted position"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does cyclohexanone plus Ph3P=CH2 give?",
+   "options": [
+    "1-Methylcyclohexene",
+    "1-Methylcyclohexanol",
+    "Cycloheptanone",
+    "Methylenecyclohexane"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does an unstabilized ylide give?",
+   "options": [
+    "No alkene at all",
+    "Mainly the cis alkene",
+    "Mainly the trans alkene",
+    "An equal mixture"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a stabilized ylide give?",
+   "options": [
+    "Mainly the trans alkene",
+    "Mainly the cis alkene",
+    "An equal mixture",
+    "A mixture of positions"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What makes an ylide stabilized?",
+   "options": [
+    "A halogen on phosphorus",
+    "Being made from a primary halide",
+    "Conjugation to an ester or ketone",
+    "A bulky alkyl group"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which gives the less stable alkene geometry?",
+   "options": [
+    "Both give the same mixture",
+    "The more reactive ylide",
+    "The less reactive ylide",
+    "Neither; both give trans"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What kind of control gives the cis alkene here?",
+   "options": [
+    "Kinetic",
+    "Thermodynamic",
+    "Steric only",
+    "Neither"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which ylide would you use for PhCH=CH-CO2Et?",
+   "options": [
+    "Ph3P=CH2, then esterify",
+    "Ph3P=CHCH3",
+    "Any ylide",
+    "Ph3P=CH-CO2Et"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a Wittig disconnection look like?",
+   "options": [
+    "Cut next to the double bond",
+    "Cut at a branch point",
+    "Cut the C=C in two",
+    "Cut a C-O bond"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "When two Wittig disconnections exist, how do you choose?",
+   "options": [
+    "Either works equally",
+    "By the easier halide",
+    "Take the longer fragment",
+    "Take the aromatic fragment"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is phosphorus used stoichiometrically here?",
+   "options": [
+    "It leaves as the oxide",
+    "It catalyzes the reaction",
+    "It is regenerated each cycle",
+    "It is only a spectator"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which carbon of the ylide ends up in the alkene?",
+   "options": [
+    "The phosphorus",
+    "One of the phenyls",
+    "None of them",
+    "The carbanion carbon"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Does a Wittig rearrange?",
+   "options": [
+    "Yes, at high temperature",
+    "Only with secondary halides",
+    "No",
+    "Yes, under acid"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which alkene is hard to reach by elimination but easy by Wittig?",
+   "options": [
+    "A trisubstituted one",
+    "A terminal one",
+    "The most substituted one",
+    "A conjugated one"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens if you try a Wittig with a secondary halide?",
+   "options": [
+    "It struggles but can work",
+    "It is the preferred case",
+    "It fails completely",
+    "It gives an ether"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which part of the target does the carbonyl compound supply?",
+   "options": [
+    "The whole alkene",
+    "Only the oxygen",
+    "Nothing; it is a catalyst",
+    "One half of the new C=C"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "imines-enamines": [
+  {
+   "q": "What does a primary amine plus a ketone give?",
+   "options": [
+    "An imine",
+    "An enamine",
+    "An amide",
+    "An amine oxide"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a secondary amine plus a ketone give?",
+   "options": [
+    "An imine",
+    "An amide",
+    "A carbinolamine only",
+    "An enamine"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a tertiary amine plus a ketone give?",
+   "options": [
+    "An enamine",
+    "An ammonium ylide",
+    "No stable product",
+    "An imine"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the first intermediate in imine formation?",
+   "options": [
+    "An oxime",
+    "A carbinolamine",
+    "An enamine",
+    "An acetal"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What decides imine against enamine?",
+   "options": [
+    "How many H remain on nitrogen",
+    "The temperature",
+    "The solvent",
+    "The carbonyl's substituents"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Where is the double bond in an imine?",
+   "options": [
+    "Between two carbons",
+    "Between carbon and oxygen",
+    "There is none",
+    "Carbon to nitrogen"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Where is the double bond in an enamine?",
+   "options": [
+    "Between nitrogen and oxygen",
+    "There is none",
+    "Between two carbons",
+    "Between carbon and nitrogen"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Roughly what pH does imine formation need?",
+   "options": [
+    "About 12",
+    "About 4.5",
+    "About 1",
+    "About 7"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is acid required?",
+   "options": [
+    "To make the OH leave",
+    "The amine must be activated",
+    "The carbonyl must be reduced",
+    "To catalyze tautomerization only"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does strong acid stop the reaction?",
+   "options": [
+    "The imine hydrolyzes instantly",
+    "The carbonyl polymerizes",
+    "The solvent freezes",
+    "The amine is protonated"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "How is the equilibrium pulled forward?",
+   "options": [
+    "By raising the pressure",
+    "By adding base",
+    "By removing water",
+    "By adding water"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What reverses imine formation?",
+   "options": [
+    "Heat alone",
+    "Aqueous acid",
+    "Dry ether",
+    "A reducing agent"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is reductive amination?",
+   "options": [
+    "Forming an imine and reducing it",
+    "Reducing a nitro group",
+    "Oxidizing an amine",
+    "Alkylating ammonia directly"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is reductive amination better than alkylating ammonia?",
+   "options": [
+    "It needs no reagents",
+    "It is faster",
+    "It works only on tertiary amines",
+    "It does not over-alkylate"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What reagent selectively reduces an imine?",
+   "options": [
+    "PCC",
+    "mCPBA",
+    "NaBH3CN",
+    "LiAlH4"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does hydroxylamine plus a ketone give?",
+   "options": [
+    "An amide",
+    "An oxime",
+    "An enamine",
+    "A hydrazone"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which carbon of an enamine is nucleophilic?",
+   "options": [
+    "The alpha carbon",
+    "The carbon bonded to N",
+    "The nitrogen",
+    "Neither carbon"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is an enamine comparable to?",
+   "options": [
+    "A carbocation",
+    "A radical",
+    "An ylide",
+    "An enolate"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How does an enamine differ from an enolate?",
+   "options": [
+    "It is more basic",
+    "It cannot alkylate",
+    "It is neutral",
+    "It is anionic"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the Stork enamine synthesis?",
+   "options": [
+    "Reduce then alkylate",
+    "Form, alkylate, hydrolyze",
+    "Form, oxidize, reduce",
+    "Form and isolate"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does hydrolyzing an enamine give back?",
+   "options": [
+    "The ketone and the amine",
+    "An imine",
+    "An alcohol",
+    "An amide"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does an enamine alkylate only once?",
+   "options": [
+    "It is consumed by the halide",
+    "It is not basic enough to form again",
+    "The amine blocks the site",
+    "It is a milder nucleophile"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is an enamine good at besides alkylation?",
+   "options": [
+    "Reduction",
+    "Rearrangement",
+    "Conjugate addition",
+    "Oxidation"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which amine is most used for making enamines?",
+   "options": [
+    "Aniline",
+    "Pyrrolidine",
+    "Ammonia",
+    "Trimethylamine"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What class of amine is pyrrolidine?",
+   "options": [
+    "Secondary",
+    "Primary",
+    "Tertiary",
+    "Quaternary"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which step of imine formation is rate-determining near pH 4.5?",
+   "options": [
+    "The initial addition",
+    "The final deprotonation",
+    "Tautomerization",
+    "Losing the water"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the product of cyclohexanone and pyrrolidine?",
+   "options": [
+    "An amide",
+    "A carbinolamine that is isolated",
+    "An enamine",
+    "An imine"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reaction makes a secondary amine cleanly?",
+   "options": [
+    "Hofmann elimination",
+    "Reductive amination",
+    "SN2 on ammonia",
+    "Nitration then reduction"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a tertiary amine used as a base in these reactions?",
+   "options": [
+    "It cannot condense",
+    "It is a stronger base than others",
+    "It is cheaper",
+    "It dissolves better"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What kind of curve does the rate of imine formation follow with pH?",
+   "options": [
+    "A steady rise",
+    "A steady fall",
+    "A flat line",
+    "A maximum"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "michael-robinson": [
+  {
+   "q": "What is a Michael addition?",
+   "options": [
+    "Conjugate addition of an enolate to an enone",
+    "Direct addition to a carbonyl",
+    "An elimination",
+    "A rearrangement"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the Michael donor?",
+   "options": [
+    "The enone",
+    "The base",
+    "The solvent",
+    "The nucleophile that gets deprotonated"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the Michael acceptor?",
+   "options": [
+    "The alkoxide",
+    "The alcohol product",
+    "The enone",
+    "The enolate"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What spacing does a Michael addition leave?",
+   "options": [
+    "1,2-diol",
+    "1,5-dicarbonyl",
+    "1,3-dicarbonyl",
+    "Beta-hydroxy carbonyl"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What spacing does an aldol leave?",
+   "options": [
+    "Beta-hydroxy",
+    "1,5-dicarbonyl",
+    "1,3-dicarbonyl",
+    "1,4-diketone"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What spacing does a Claisen leave?",
+   "options": [
+    "1,5-dicarbonyl",
+    "Beta-hydroxy ester",
+    "1,2-diketone",
+    "1,3-dicarbonyl"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the Michael retron?",
+   "options": [
+    "A cyclohexane ring",
+    "An epoxide",
+    "A 1,5-dicarbonyl",
+    "A 1,3-dicarbonyl"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Roughly what pKa does a typical Michael donor have?",
+   "options": [
+    "35",
+    "9 to 13",
+    "20",
+    "25"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why must the donor be doubly stabilized?",
+   "options": [
+    "To be soft enough",
+    "To be more reactive",
+    "To resist hydrolysis",
+    "To dissolve in the solvent"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What would a simple ketone enolate do to an enone?",
+   "options": [
+    "Add 1,4 as well",
+    "Nothing",
+    "Reduce it",
+    "Add 1,2"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a catalytic alkoxide enough?",
+   "options": [
+    "The enone is basic",
+    "Alkoxides are regenerated by the enone",
+    "The donor is far more acidic",
+    "The reaction is catalytic in donor"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which of these is a common Michael donor?",
+   "options": [
+    "Cyclohexane",
+    "Diethyl malonate",
+    "Diethyl ether",
+    "Benzene"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is methyl vinyl ketone used as?",
+   "options": [
+    "An acceptor",
+    "A Michael donor",
+    "A base",
+    "A solvent"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a Robinson annulation?",
+   "options": [
+    "Two aldols",
+    "A Michael then a Claisen",
+    "An aldol then a Wittig",
+    "A Michael then an intramolecular aldol"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What ring size does a Robinson annulation give?",
+   "options": [
+    "Seven",
+    "Four",
+    "Six",
+    "Five"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What functional group does a Robinson annulation leave?",
+   "options": [
+    "An epoxide",
+    "A cyclohexenone",
+    "A cyclohexanol",
+    "A lactone"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which step makes a Robinson annulation irreversible?",
+   "options": [
+    "The dehydration",
+    "The Michael addition",
+    "The aldol addition",
+    "The deprotonation"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is the ring six-membered rather than some other size?",
+   "options": [
+    "The catalyst templates it",
+    "Six is always preferred",
+    "The acceptor is six carbons",
+    "The spacing decides it"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How do you undo a Robinson annulation on paper?",
+   "options": [
+    "Open the ring at the carbonyl",
+    "Add water to the ring",
+    "Reverse all three steps",
+    "Disconnect the Michael first"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Where does the Michael bond form?",
+   "options": [
+    "Between the two carbonyls",
+    "Donor alpha to acceptor beta",
+    "Donor alpha to acceptor carbonyl",
+    "Donor carbonyl to acceptor beta"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does diethyl malonate plus NaOEt plus MVK give?",
+   "options": [
+    "A 1,5-dicarbonyl",
+    "A beta-hydroxy ester",
+    "A 1,3-dicarbonyl",
+    "An epoxide"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is an alpha,beta-unsaturated carbonyl also called?",
+   "options": [
+    "An enol",
+    "An enamine",
+    "An acetal",
+    "An enone"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a soft nucleophile add 1,4?",
+   "options": [
+    "It is smaller",
+    "It is more basic",
+    "It follows the orbital",
+    "It follows the largest charge"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which carbon of an enone carries more positive charge?",
+   "options": [
+    "They are equal",
+    "The carbonyl carbon",
+    "The beta carbon",
+    "The alpha carbon"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does an intramolecular aldol need to close a ring?",
+   "options": [
+    "An enolate and a carbonyl that can reach",
+    "A catalyst",
+    "High dilution",
+    "A leaving group"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reaction sequence builds a cyclohexenone from two acyclic pieces?",
+   "options": [
+    "Diels-Alder",
+    "Aldol only",
+    "Claisen",
+    "Robinson"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What should a cyclohexenone in an exam question make you check?",
+   "options": [
+    "Its ring strain",
+    "Its boiling point",
+    "For a 1,5-dicarbonyl",
+    "Whether it is aromatic"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a 1,3-diketone's approximate alpha pKa?",
+   "options": [
+    "35",
+    "9",
+    "20",
+    "25"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which product spacing tells you a Claisen happened?",
+   "options": [
+    "1,3",
+    "1,5",
+    "Beta-hydroxy",
+    "1,2"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is reading product spacing useful?",
+   "options": [
+    "It gives the yield",
+    "It predicts stereochemistry",
+    "It gives the mechanism's rate",
+    "It names the reaction"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "ester-syntheses": [
+  {
+   "q": "What does a malonic ester synthesis give?",
+   "options": [
+    "A carboxylic acid",
+    "A methyl ketone",
+    "An ester",
+    "An aldehyde"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does an acetoacetic ester synthesis give?",
+   "options": [
+    "A carboxylic acid",
+    "An aldehyde",
+    "A diester",
+    "A methyl ketone"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What are the three steps of both syntheses?",
+   "options": [
+    "Alkylate, oxidize, decarboxylate",
+    "Protect, alkylate, deprotect",
+    "Deprotonate, alkylate, heat",
+    "Oxidize, reduce, hydrolyze"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the approximate alpha pKa of diethyl malonate?",
+   "options": [
+    "35",
+    "13",
+    "25",
+    "20"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the approximate alpha pKa of an ordinary ester?",
+   "options": [
+    "13",
+    "11",
+    "20",
+    "25"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What base deprotonates diethyl malonate?",
+   "options": [
+    "NaOEt",
+    "LDA",
+    "NaOH only",
+    "Pyridine"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is the second carbonyl there?",
+   "options": [
+    "To act as a leaving group",
+    "To dissolve the substrate",
+    "To acidify one hydrogen",
+    "To be the product's carbonyl"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is an activating group?",
+   "options": [
+    "One that stabilizes a product",
+    "One installed, then removed",
+    "One that speeds up a catalyst",
+    "One that blocks a site"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What type of reaction is the alkylation step?",
+   "options": [
+    "SN2",
+    "SN1",
+    "E2",
+    "Addition"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which halide will not work in either synthesis?",
+   "options": [
+    "A methyl one",
+    "A primary one",
+    "A benzylic one",
+    "A tertiary one"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens with a secondary halide?",
+   "options": [
+    "No reaction at all",
+    "Rearrangement",
+    "Mostly elimination",
+    "Clean substitution"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does the intermediate decarboxylate on heating?",
+   "options": [
+    "The ester is still present",
+    "It is a beta-keto acid",
+    "All acids decarboxylate",
+    "The base catalyzes it"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is lost in the decarboxylation?",
+   "options": [
+    "CO2",
+    "Water",
+    "Ethanol",
+    "An alkoxide"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Would an alpha-keto acid decarboxylate on warming?",
+   "options": [
+    "Yes, faster than a beta one",
+    "Yes, at the same rate",
+    "Only in base",
+    "No, the ring cannot close"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many times can malonate be alkylated?",
+   "options": [
+    "Three times",
+    "Not at all",
+    "Twice",
+    "Once"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is diethyl malonate's structure?",
+   "options": [
+    "CH2(CN)2",
+    "CH2(CO2Et)2",
+    "CH3COCH2CO2Et",
+    "CH3CO2Et"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What is ethyl acetoacetate's structure?",
+   "options": [
+    "CH3COCH2CO2Et",
+    "CH2(CO2Et)2",
+    "CH3CH2CO2Et",
+    "CH3COCH3"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does the ketone survive in the acetoacetic route?",
+   "options": [
+    "It is protected",
+    "It is less reactive",
+    "It is regenerated later",
+    "It has no carboxyl to lose"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What product would ethyl acetoacetate plus benzyl bromide give?",
+   "options": [
+    "Benzyl acetate",
+    "Acetophenone",
+    "4-Phenylbutan-2-one",
+    "Phenylacetic acid"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What product would diethyl malonate plus bromoethane give?",
+   "options": [
+    "Pentanoic acid",
+    "Butanoic acid",
+    "Propanoic acid",
+    "Butan-1-ol"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which halides would make 2-methylpentanoic acid from malonate?",
+   "options": [
+    "Methyl and propyl",
+    "Butyl bromide alone",
+    "Isopropyl bromide alone",
+    "It cannot be made"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which target is out of reach for an acetoacetic ester synthesis?",
+   "options": [
+    "Pentan-2-one",
+    "Hexan-2-one",
+    "4-Phenylbutan-2-one",
+    "A tertiary one"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What should an alpha-substituted carboxylic acid make you look for?",
+   "options": [
+    "A reduction step",
+    "A protecting group",
+    "The halide used",
+    "An oxidation step"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent performs the hydrolysis and decarboxylation?",
+   "options": [
+    "mCPBA",
+    "Aqueous acid with heat",
+    "Sodium ethoxide",
+    "LiAlH4"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can a plain ester not be alkylated this way?",
+   "options": [
+    "Its alpha pKa is 25",
+    "It has no alpha hydrogen",
+    "It is too hindered",
+    "Alkoxides attack esters only"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does the alkoxide base need to match?",
+   "options": [
+    "The halide",
+    "The product",
+    "The temperature",
+    "The ester's alkyl group"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which carbon of malonate is alkylated?",
+   "options": [
+    "A terminal methyl",
+    "The ethyl group",
+    "The middle one",
+    "An ester carbon"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many carboxyls does malonate have after hydrolysis?",
+   "options": [
+    "None",
+    "Two",
+    "One",
+    "Three"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What survives from acetoacetate into the product?",
+   "options": [
+    "The methyl ketone",
+    "Both carbonyls",
+    "The ester",
+    "Neither carbonyl"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which constraint should you check first on either route?",
+   "options": [
+    "The product's melting point",
+    "The solvent's polarity",
+    "The order of the two carbonyls",
+    "Whether the halide survives an SN2"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "baeyer-villiger": [
+  {
+   "q": "What does a Baeyer-Villiger oxidation do to a ketone?",
+   "options": [
+    "Inserts an oxygen into a C-C bond",
+    "Adds an oxygen to the alpha carbon",
+    "Reduces the carbonyl",
+    "Removes the carbonyl"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What reagent performs it?",
+   "options": [
+    "A chromium reagent",
+    "A hydride donor",
+    "A Grignard reagent",
+    "A peroxyacid"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the tetrahedral intermediate called?",
+   "options": [
+    "The Meisenheimer complex",
+    "The oxaphosphetane",
+    "The betaine",
+    "The Criegee intermediate"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What kind of step is the migration?",
+   "options": [
+    "An E2",
+    "A radical abstraction",
+    "A 1,2-shift",
+    "An SN2"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does the migrating group take with it?",
+   "options": [
+    "Nothing",
+    "Its bonding pair",
+    "A proton",
+    "A halide"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens to a migrating stereocenter?",
+   "options": [
+    "It is retained",
+    "It inverts",
+    "It racemizes",
+    "It is destroyed"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the migratory aptitude order?",
+   "options": [
+    "Methyl > primary > secondary > tertiary",
+    "Aryl > methyl > tertiary",
+    "All groups migrate equally",
+    "Tertiary > secondary > primary > methyl"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does the more substituted group migrate?",
+   "options": [
+    "It bonds oxygen more strongly",
+    "It is more nucleophilic",
+    "That carbon goes positive",
+    "It is larger"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What migrates in a methyl ketone?",
+   "options": [
+    "Neither",
+    "The other group",
+    "The methyl",
+    "Both equally"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a methyl ketone give?",
+   "options": [
+    "The acetate ester of the other group",
+    "Methyl ester of the other group",
+    "A lactone",
+    "A diketone"
+   ],
+   "correct": 0,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does a cyclic ketone give?",
+   "options": [
+    "A diol",
+    "An epoxide",
+    "A lactone one atom larger",
+    "An open diester"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does cyclohexanone give with mCPBA?",
+   "options": [
+    "Adipic acid",
+    "A seven-membered lactone",
+    "A six-membered lactone",
+    "Cyclohexene oxide"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does cyclopentanone give with mCPBA?",
+   "options": [
+    "A six-membered lactone",
+    "A five-membered lactone",
+    "A seven-membered lactone",
+    "An epoxide"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is a lactone?",
+   "options": [
+    "A cyclic ketone",
+    "A cyclic amide",
+    "A cyclic ether",
+    "A cyclic ester"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens if the substrate also has an alkene?",
+   "options": [
+    "Both react equally",
+    "Neither reacts",
+    "The alkene reacts",
+    "The ketone reacts first"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What does acetophenone give with mCPBA?",
+   "options": [
+    "Phenol",
+    "Phenyl acetate",
+    "Methyl benzoate",
+    "Benzoic acid"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What does phenyl acetate tell you about aryl migration?",
+   "options": [
+    "Methyl outranks aryl",
+    "Neither migrates",
+    "Both migrate",
+    "Aryl outranks methyl"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What breaks during the collapse of the Criegee intermediate?",
+   "options": [
+    "The O-O bond",
+    "The C=O bond",
+    "A C-H bond",
+    "The ester bond"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What leaves in a Baeyer-Villiger?",
+   "options": [
+    "Water",
+    "An alkoxide",
+    "A carboxylate",
+    "A halide"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which other reaction uses the same reagent?",
+   "options": [
+    "Wittig",
+    "Epoxidation",
+    "Ozonolysis",
+    "Hydroboration"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Where does the inserted oxygen end up?",
+   "options": [
+    "Between the carbonyl and the migrating group",
+    "On the alpha carbon",
+    "On the carbonyl oxygen",
+    "In the leaving carboxylate"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How do you tell which group migrated from the product?",
+   "options": [
+    "It is attached to the carbonyl",
+    "It is lost entirely",
+    "You cannot tell",
+    "It is past the new oxygen"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is this reaction usable on a chiral center?",
+   "options": [
+    "The intermediate is planar",
+    "It racemizes predictably",
+    "Configuration is kept",
+    "The reagent is chiral"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What class of compound is the product?",
+   "options": [
+    "An ether",
+    "An ester",
+    "A ketone",
+    "An acid"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which is the worst migrator?",
+   "options": [
+    "Methyl",
+    "Tertiary alkyl",
+    "Benzyl",
+    "Secondary alkyl"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What kind of ring expansion is this?",
+   "options": [
+    "Insertion of a carbon",
+    "Contraction",
+    "Fusion",
+    "Insertion of a heteroatom"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Is the Criegee intermediate charged?",
+   "options": [
+    "Yes, it is an anion",
+    "It is a radical",
+    "No, it is neutral",
+    "Yes, it is a cation"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which bond does the oxygen go into?",
+   "options": [
+    "A C-O bond",
+    "A C-C bond",
+    "The C=O bond",
+    "A C-H bond"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which retrosynthetic clue suggests a Baeyer-Villiger?",
+   "options": [
+    "A hindered alkyl on O",
+    "An ester with a methyl on oxygen",
+    "A simple ketone",
+    "An aldehyde"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How many groups on the carbonyl carbon migrate?",
+   "options": [
+    "Both",
+    "Neither",
+    "It varies with temperature",
+    "One"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  }
  ]
 }

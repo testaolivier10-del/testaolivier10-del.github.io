@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Wittig reaction — Carbonyl &amp; Enolate Breadth | Organic Chemistry</title>
+<meta name="description" content="Learn how a phosphorus ylide is made, why the S_N2 step limits which alkenes are reachable, what drives the reaction, and why the more reactive ylide gives the less stable alkene.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/wittig-reaction.html">
+<meta property="og:title" content="The Wittig reaction — Carbonyl &amp; Enolate Breadth | Organic Chemistry">
+<meta property="og:description" content="Learn how a phosphorus ylide is made, why the S_N2 step limits which alkenes are reachable, what drives the reaction, and why the more reactive ylide gives the less stable alkene.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/wittig-reaction.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/wittig-reaction.html#lesson",
+      "name": "The Wittig reaction",
+      "url": "https://levlprep.com/ochem/lessons/wittig-reaction.html",
+      "description": "Learn how a phosphorus ylide is made, why the S_N2 step limits which alkenes are reachable, what drives the reaction, and why the more reactive ylide gives the less stable alkene.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "The Wittig reaction"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Carbonyl & Enolate Breadth",
+          "item": "https://levlprep.com/ochem/learn.html#m-carbonyl-breadth"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "The Wittig reaction",
+          "item": "https://levlprep.com/ochem/lessons/wittig-reaction.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 21 &middot; Carbonyl &amp; Enolate Breadth</div>
+    <h1 style="margin-bottom:4px;">The Wittig reaction.</h1>
+    <p class="lede" style="margin-top:0;">The only way you have to put a double bond exactly where you want it rather than where Zaitsev wants it.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/wittig-reaction.html">The Wittig reaction &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="imines-enamines.html">Imines and enamines</a> &middot; <a href="nucleophilic-addition.html">Nucleophilic addition</a> &middot; <a href="alkene-structure.html">Alkene structure</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* The SN2 constraint is the whole limit on the reaction and the thing a
+     route gets wrong, so the interactive step is four halides rather than
+     four products. */
+  var CASES = [
+    { id:'w1', t:'CH₃–I', right:'yes',
+      why:'Works. A methyl halide is the easiest SN2 substrate there is, and PPh₃ is an excellent nucleophile.' },
+    { id:'w2', t:'CH₃CH₂CH₂–Br', right:'yes',
+      why:'Works. Primary, unhindered, and the backside of that carbon is open.' },
+    { id:'w3', t:'(CH₃)₃C–Br', right:'no',
+      why:'Fails. A tertiary halide has no accessible backside at all, so no phosphonium salt forms. This is the case a route proposes when it wants a tetrasubstituted alkene, and it is the case that does not work.' },
+    { id:'w4', t:'C₆H₅–Br <span style="color:var(--muted);">(bromobenzene)</span>', right:'no',
+      why:'Fails. An aryl halide is sp² with its backside behind the ring, so it refuses SN2 entirely. Aryl groups get into a Wittig from the carbonyl side instead — benzaldehyde, not bromobenzene.' }
+  ];
+  var OPTS = [ { k:'yes', l:'Forms the ylide' }, { k:'no', l:'Does not' } ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'wittig-reaction',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Every alkene so far came from an elimination.',
+        bodyHtml: '<p class="step-body">E1, E2, dehydration of an alcohol, dehydrohalogenation &mdash; all of them make the double bond between two carbons that were <i>already bonded to each other</i>. The consequence is that you do not choose where it goes. <b>Zaitsev</b> does, and Zaitsev always votes for the most substituted alkene.</p>' +
+          '<p class="step-body">That is fine when the most substituted alkene is the one you want, and a problem otherwise. Ask for a terminal alkene from a secondary substrate and elimination will give you mostly the internal one, with the terminal alkene as a minor product you then have to separate.</p>' +
+          '<div class="explain-box">The <b>Wittig reaction</b> escapes this by not being an elimination. It joins two separate pieces, and the new C=C forms <b>exactly where the carbonyl oxygen was</b>. There is no competition to lose, because there is only one position the bond can occupy.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Making the ylide: an S_N2, then a deprotonation.',
+        bodyHtml: '<p class="step-body">Both steps are reactions you already have.</p>' +
+          '<p class="step-body"><b>One.</b> Triphenylphosphine, PPh₃, is a large, polarizable, soft nucleophile. It does S<sub>N</sub>2 on an alkyl halide to give a <b>phosphonium salt</b>, R₃P⁺&ndash;CH₂R&prime; X⁻.</p>' +
+          '<p class="step-body"><b>Two.</b> The hydrogens next to that P⁺ are now acidic, because the carbanion they leave behind sits directly beside a positive charge. <i>n</i>-BuLi or NaH removes one.</p>' +
+          '<p class="step-body">The product is an <b>ylide</b>: a negative carbon bonded to a positive phosphorus, neutral overall, both charges real and adjacent. It is drawn either as Ph₃P⁺&ndash;C⁻R₂ or as Ph₃P=CR₂, and the second is shorthand rather than a different molecule.</p>' +
+          '<div class="explain-box">Step one is an <b>S<sub>N</sub>2</b>, and that is the entire limitation on the reaction. Methyl and primary halides work, secondary ones struggle, and tertiary and aryl halides do not react at all. Before proposing a Wittig, check the halide &mdash; not the alkene.</div>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Which of these will give a phosphonium salt?</h2>' +
+            '<p class="step-body">You are not judging the alkene. You are judging whether PPh₃ can perform an S<sub>N</sub>2 on this carbon, which is the same question you asked in the substitution chapter.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Does the ylide form">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Ask whether a nucleophile can reach the backside of that carbon. Nothing about the Wittig changes the S_N2 rules.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. The Wittig is limited by its first step, and its first step is an ordinary S_N2.'
+                  : 'All four, first time. An aryl group can be in a Wittig product, but it has to arrive on the carbonyl side.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'What drives the Wittig reaction forward?',
+        options: [
+          'Formation of the strong P=O bond of Ph₃P=O',
+          'Release of ring strain in the oxaphosphetane',
+          'Loss of a halide ion',
+          'Aromatization of the phenyl groups'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. The phosphorus–oxygen bond of triphenylphosphine oxide is one of the strongest single bonds in organic chemistry, and forming it is what pulls the whole sequence over. The four-membered oxaphosphetane is real and strained, but the strain is a feature of the intermediate rather than the thermodynamic driver.',
+        wrongFeedback: 'Look at the by-product rather than the product. What is thrown away at the end of a Wittig, and what bond did making it form?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'Cyclohexanone is treated with Ph₃P=CH₂. What is the product?',
+        options: [
+          'Methylenecyclohexane',
+          '1-Methylcyclohexan-1-ol',
+          '1-Methylcyclohexene',
+          'Cyclohexanone remains unchanged'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. The C=C forms exactly where the C=O was, so the new double bond is <i>exocyclic</i> — between the ring carbon and the incoming CH₂. Note what that buys you: 1-methylcyclohexene is the more stable, more substituted alkene, and an elimination route would give you that one instead. The Wittig reaches the less stable isomer precisely because it is not an elimination.',
+        wrongFeedback: 'Put the double bond where the carbonyl oxygen was, and attach the ylide carbon to it. Is the resulting C=C inside the ring or outside it?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Connectivity is certain; geometry is not quite.',
+        bodyHtml: '<p class="step-body">Where the double bond goes is never in doubt. Whether it comes out <i>cis</i> or <i>trans</i> depends on how stabilized the ylide is:</p>' +
+          '<ul class="step-body">' +
+          '<li><b>Unstabilized ylide</b> &mdash; carbanion carrying only alkyl groups. Very reactive, adds fast and irreversibly, gives mainly the <b><i>cis</i> (Z)</b> alkene.</li>' +
+          '<li><b>Stabilized ylide</b> &mdash; carbanion conjugated to an ester or ketone. Less reactive, adds reversibly, has time to equilibrate, gives mainly the <b><i>trans</i> (E)</b> alkene.</li>' +
+          '</ul>' +
+          '<div class="explain-box">Notice which way round that is, because it inverts the usual intuition. The <b>more</b> reactive reagent gives the <b>less</b> stable product. A fast, irreversible step locks in whatever geometry its transition state happened to have; a slow, reversible one has time to find the more stable arrangement. This is kinetic against thermodynamic control, in a place you might not have expected it.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'You need (E)-PhCH=CH–CO₂Et. Which ylide should you use with benzaldehyde?',
+        options: [
+          'Ph₃P=CH–CO₂Et, a stabilized ylide',
+          'Ph₃P=CH₂, then esterify afterwards',
+          'Ph₃P=CH–CH₃, an unstabilized ylide',
+          'Any ylide — the Wittig always gives E'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct on both counts. The ester has to come from the ylide, because the aldehyde supplies the other half; and conjugation to that ester is exactly what makes the ylide stabilized, slow, reversible, and therefore <i>E</i>-selective. The requirement and the selectivity come from the same structural feature, which is why this substrate class is the reliable one.',
+        wrongFeedback: 'Work out which half of the target the ylide must supply, then ask what conjugation to an ester does to the ylide’s reactivity and its selectivity.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'For 2-methylbut-2-ene there are two Wittig disconnections. Which one would you run?',
+        options: [
+          'Neither — the alkene is too substituted for a Wittig',
+          'Acetone + Ph₃P=CHCH₃, whose ylide comes from a primary halide',
+          'Acetaldehyde + Ph₃P=C(CH₃)₂, whose ylide comes from 2-bromopropane',
+          'Both equally, since both halides are usable'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and the reasoning is the point of the whole lesson. Cut the C=C of CH₃CH=C(CH₃)₂ and the carbonyl can go on either side. Put it on the C(CH₃)₂ end and you need acetone plus Ph₃P=CHCH₃, whose ylide comes from bromoethane — primary, so the S<sub>N</sub>2 is clean. Put it on the other end and you need acetaldehyde plus Ph₃P=C(CH₃)₂, whose ylide comes from 2-bromopropane — secondary, where the S<sub>N</sub>2 is sluggish and yields fall. Both are chemically real; you pick by the halide, and primary beats secondary every time. Worth noticing what is <i>not</i> on this list: no Wittig disconnection ever calls for a tertiary halide, because a tertiary carbon would leave the phosphonium with no hydrogen to remove — so even if the S<sub>N</sub>2 somehow worked, there would be no ylide to make.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

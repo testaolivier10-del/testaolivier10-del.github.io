@@ -1001,9 +1001,43 @@ costs. `practice-bank-why.json` 132 → 140 KB for 300 new explanations.
 rather than the 10% a full trim would have given, for the same reason the
 bank-wide pass stopped at 22% — chance is the target from both directions.
 
-#### Units 7–9 — **not started**
+#### Unit 7 — Carbonyl & Enolate Breadth — **complete**
 
-Carbonyl/enolate breadth · aromatic follow-through · polymers.
+Five sections, five lessons, 150 questions, six concepts, five figures,
+appended as **Chapter 21**. The carbonyl chapters taught one reaction each and
+stopped; this is the breadth pass over them, and it covers the five named
+reactions a second-semester course expects that the course had only mentioned
+in passing.
+
+| Section | Covers |
+|---|---|
+| The Wittig reaction | Ylide formation, the S<sub>N</sub>2 constraint, the P=O driving force, cis/trans by ylide stabilization |
+| Imines and enamines | The one count that decides the product, the pH-4.5 argument, the enamine as a neutral enolate, Stork |
+| Michael and Robinson | Donor/acceptor, why the donor is doubly stabilized, product spacing as a reading skill, the cyclohexenone |
+| Malonic and acetoacetic ester | The pKa drop from 25 to 13, which start gives which product, β-keto decarboxylation, the S<sub>N</sub>2 limit |
+| Baeyer–Villiger oxidation | Oxygen insertion, the Criegee intermediate, migratory aptitude as carbocation stability, lactones |
+
+**The organizing idea is product spacing.** An aldol gives a β-hydroxy
+carbonyl, a Claisen a 1,3-dicarbonyl, a Michael a 1,5-dicarbonyl. Counting the
+gap names the reaction, forwards to predict and backwards to disconnect, and it
+survives every change of conditions — which is what makes it worth learning
+instead of the conditions.
+
+**One error caught during authoring, before any review.** The Wittig lesson's
+final step claimed that one of the two disconnections of 2-methylbut-1-ene
+needs a *tertiary* halide. It needs a **secondary** one (2-bromobutane). The
+step was rebuilt around 2-methylbut-2-ene, where the two routes genuinely
+differ as primary against secondary — and it now makes the better point that
+no Wittig disconnection can ever call for a tertiary halide, because a tertiary
+carbon leaves the phosphonium with no hydrogen to remove.
+
+**Budget:** `ochem` shell 100 → 104 KB gzipped. Three chapters have now taken
+the course from 83 topics to 98, at about 1.5 KB per chapter of course map,
+which is the number to check the growth against next time.
+
+#### Units 8–9 — **not started**
+
+Aromatic follow-through · polymers.
 
 ### Phase 9.4 — Depth in the existing units — **not started**
 

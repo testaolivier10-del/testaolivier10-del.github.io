@@ -77,10 +77,11 @@ const SHELL_BUDGETS = [
      and lesson-concepts.js (one entry per lesson). That is the shell doing its
      job rather than a regression.
 
-     96 -> 100, and the growth is still proportional: two more chapters took
-     the course from 83 topics to 93, so concepts.js (84 -> 94), curriculum.js
-     and lesson-concepts.js each gained ten entries. About 1.4 KB gzipped per
-     chapter, which is what a chapter of course map costs.
+     96 -> 104 across three chapters, and the growth is still proportional:
+     the course went from 83 topics to 98, so concepts.js (84 -> 100),
+     curriculum.js and lesson-concepts.js each gained fifteen entries. About
+     1.5 KB gzipped per chapter, which is what a chapter of course map costs
+     and is the number to check against the next time this needs raising.
 
      The obvious saving, if one is ever needed, is that ochem/index.html loads
      lesson-concepts.js for one call in ochem-home.js; splitting that call out
@@ -89,7 +90,7 @@ const SHELL_BUDGETS = [
      every page loads every concept's `teach` string — moving those to a
      fetched file would roughly halve concepts.js at the cost of one request on
      the pages that actually surface a teach block. */
-  ['ochem', 100],
+  ['ochem', 104],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as

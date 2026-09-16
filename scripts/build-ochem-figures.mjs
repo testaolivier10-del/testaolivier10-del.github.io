@@ -2212,6 +2212,211 @@ FIGURES.push({
   note: 'Ending each turn exactly where it began is what makes palladium a catalyst rather than a reagent, and it is why a few mole percent can turn over thousands of times. It also explains the tolerance: the reactive carbon is bound to a metal for its whole life and never exists as a free carbanion, so ketones, esters and free alcohols elsewhere in the molecule survive.',
 });
 
+
+/* ----------------------------------------------------------------- 38 ---
+   The argument for the Wittig is a comparison, and prose can only assert it:
+   an elimination lets Zaitsev choose where the C=C goes, and a Wittig does
+   not. One substrate, two routes, two different alkenes. */
+FIGURES.push({
+  id: 'zaitsev-vs-wittig',
+  section: 'wittig-reaction',
+  anchor: '<h3>Geometry, which is the one thing it does not fully control</h3>',
+  viewBox: '0 0 760 320',
+  alt: 'An elimination route giving the more substituted endocyclic alkene against a Wittig giving the exocyclic one from the same ring',
+  build() {
+    let s = '';
+    // A hexagon, drawn small, used as the shared skeleton in both panels.
+    const ring = (cx, cy, r) => {
+      let t = '', pts = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (i * 60 - 90) * Math.PI / 180;
+        pts.push(P(cx + r * Math.cos(a), cy + r * Math.sin(a)));
+      }
+      for (let i = 0; i < 6; i++) t += bond(pts[i], pts[(i + 1) % 6], { rFrom: 0, rTo: 0 });
+      return { svg: t, pts };
+    };
+
+    const col = (ox, title, sub, kind) => {
+      s += panel(ox, 44, 300, 150, { kind });
+      s += tag(ox + 150, 32, title);
+      s += text(ox + 150, 214, sub, { cls: kind === 'warn' ? 'fg-tag' : 'fg-tag-good', size: 11 });
+    };
+    col(30,  'elimination — Zaitsev picks', 'the more substituted alkene', 'warn');
+    col(430, 'Wittig — you pick', 'the exocyclic alkene', null);
+
+    let g = ring(180, 118, 42); s += g.svg;
+    // Endocyclic double bond: a second line just inside the top-right edge.
+    s += bond(g.pts[0], g.pts[1], { rFrom: 10, rTo: 10, cls: 'fg-bond' });
+    s += text(180, 118, 'in the ring', { cls: 'fg-sm', size: 9.5 });
+    s += text(180, 176, '1-methylcyclohexene', { cls: 'fg-lbl', size: 11.5 });
+
+    g = ring(580, 118, 42); s += g.svg;
+    s += bond(g.pts[0], P(580, 46), { rFrom: 0, rTo: 6, order: 2 });
+    s += atom(580, 40, 'CH₂', { kind: 'hi', r: 15 });
+    s += text(580, 124, 'outside it', { cls: 'fg-sm', size: 9.5 });
+    s += text(580, 176, 'methylenecyclohexane', { cls: 'fg-lbl', size: 11.5 });
+
+    s += rule(34, 240, 700, 240);
+    s += text(360, 266, 'Both start from the same ring. The elimination route cannot reach the one on the right,', { cls: 'fg-lbl', size: 12 });
+    s += text(360, 288, 'because Zaitsev votes for the alkene inside the ring and wins.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'The reason a Wittig is worth the phosphine. An elimination forms the C=C between two carbons that were already bonded, so Zaitsev decides which, and on a ring that means the endocyclic alkene. A Wittig puts the double bond where the carbonyl carbon was, which here is pointing out of the ring.',
+  note: 'Note that the Wittig product is the <i>less</i> stable of the two. That is the point: it is not that the reaction prefers the exocyclic alkene, it is that no other position is available to it, so stability never gets a vote. Where regiochemistry is concerned, having only one option is better than having a preference.',
+});
+
+/* ----------------------------------------------------------------- 39 ---
+   Two products from one mechanism, split by a count. Drawing the shared
+   cation once and branching from it shows that nothing differs until the
+   very last proton. */
+FIGURES.push({
+  id: 'imine-or-enamine',
+  section: 'imines-enamines',
+  anchor: '<h3>Why the pH has to be about 4.5</h3>',
+  viewBox: '0 0 760 340',
+  alt: 'One iminium cation branching to an imine when a hydrogen remains on nitrogen and to an enamine when the proton must come from the alpha carbon',
+  build() {
+    let s = '';
+    s += panel(250, 44, 260, 76, { kind: 'hi' });
+    s += text(380, 76, 'C=N⁺  —  the shared cation', { cls: 'fg-lbl', size: 12.5 });
+    s += text(380, 100, 'identical for both amines', { cls: 'fg-sm', size: 10 });
+
+    s += arrow(P(320, 126), P(200, 172));
+    s += arrow(P(440, 126), P(560, 172));
+
+    const branch = (cx, title, from, prod, note, kind) => {
+      s += panel(cx - 150, 178, 300, 94, { kind });
+      s += text(cx, 202, title, { cls: 'fg-tag', size: 11 });
+      s += text(cx, 226, from, { cls: 'fg-sm', size: 10.5 });
+      s += text(cx, 250, prod, { cls: 'fg-lbl', size: 13 });
+      s += text(cx, 292, note, { cls: 'fg-sm', size: 10 });
+    };
+    branch(190, 'primary amine — one H left on N', 'lose the proton from nitrogen', 'C=N–R   an imine',
+           'the nitrogen still had one to give', null);
+    branch(570, 'secondary amine — none left', 'lose it from the α carbon instead', 'C=C–NR₂   an enamine',
+           'so the double bond lands between carbons', 'hi');
+
+    s += rule(34, 308, 726, 308);
+    s += text(380, 330, 'A tertiary amine reaches neither: with no N–H at all there is no way out of the cation.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'Both amines give the same iminium cation, and everything up to that point is identical. What separates the two products is where the last proton can come from — the nitrogen, if it still has one, and otherwise the α carbon.',
+  note: 'This is why the answer is a count rather than a mechanism. You do not need to run the steps: look at how many hydrogens the nitrogen brought, subtract none for the addition, and the product follows. A tertiary amine brings none, which is why it can add and still give nothing, and why tertiary amines appear in these reactions as bases.',
+});
+
+/* ----------------------------------------------------------------- 40 ---
+   Three condensations that students memorize separately are one skill:
+   count the gap. Putting the three products on one line, aligned by their
+   oxygen-bearing carbons, makes the spacing the visible thing. */
+FIGURES.push({
+  id: 'condensation-spacing',
+  section: 'michael-robinson',
+  anchor: '<h3>Why a doubly stabilized donor</h3>',
+  viewBox: '0 0 760 330',
+  alt: 'The products of an aldol, a Claisen and a Michael addition aligned to show their one, three and five carbon spacings',
+  build() {
+    let s = '';
+    const chain = (y, n, marks, name, tag2, kind) => {
+      const x0 = 150, dx = 52;
+      for (let i = 0; i < n; i++) {
+        const p = P(x0 + i * dx, y);
+        const m = marks[i];
+        s += atom(p.x, p.y, m || '', { kind: m ? (kind === 'warn' ? 'warn' : 'hi') : 'point', r: m ? 15 : 0 });
+        if (i) s += bond(P(x0 + (i - 1) * dx, y), p, { rFrom: marks[i - 1] ? 15 : 0, rTo: m ? 15 : 0 });
+      }
+      s += label(30, y + 4, name, { anchor: 'start', size: 12 });
+      s += text(x0 + (n - 1) * dx + 70, y + 4, tag2, { cls: 'fg-tag-good', size: 11 });
+    };
+    s += tag(300, 46, 'the two oxygen-bearing carbons, and the gap between them');
+    chain(96,  3, ['O', null, 'OH'], 'Aldol',   'β-hydroxy', null);
+    chain(160, 3, ['O', null, 'O'],  'Claisen', '1,3', null);
+    chain(224, 5, ['O', null, null, null, 'O'], 'Michael', '1,5', null);
+
+    s += rule(34, 258, 726, 258);
+    s += text(380, 284, 'Count the carbons between them and the reaction names itself — forwards to predict', { cls: 'fg-lbl', size: 12 });
+    s += text(380, 306, 'a product, backwards to disconnect one. A 1,5-dicarbonyl is the Michael retron.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'Three condensations, three spacings. An aldol’s nucleophile hits a carbonyl carbon and the oxygen stays as an alcohol; a Claisen’s hits an ester and the alkoxide leaves; a Michael’s hits a β carbon, two positions further along, which is what pushes the two carbonyls to 1,5.',
+  note: 'Spacing survives every change of conditions, which is what makes it worth learning instead of the conditions. It is also what makes a Robinson annulation predictable: a 1,5-dicarbonyl has its ends exactly far enough apart to close a six-membered ring, so the product is a cyclohexenone without anyone having chosen the ring size.',
+});
+
+/* ----------------------------------------------------------------- 41 ---
+   The whole point of these two syntheses is a pKa difference, and a number
+   line makes twelve orders of magnitude look like twelve orders of
+   magnitude rather than like two numbers. */
+FIGURES.push({
+  id: 'activating-pka',
+  section: 'ester-syntheses',
+  anchor: '<h3>Malonic ester synthesis &rarr; a carboxylic acid</h3>',
+  viewBox: '0 0 760 300',
+  alt: 'A pKa scale from 10 to 26 showing an ester at 25 and malonate and acetoacetate near 11 to 13, with the base each one needs',
+  build() {
+    let s = '';
+    const x = (pka) => 90 + ((26 - pka) / 16) * 580;
+    s += rule(80, 186, 690, 186);
+    for (let p = 10; p <= 26; p += 4) {
+      s += rule(x(p), 186, x(p), 193);
+      s += text(x(p), 208, String(p), { cls: 'fg-sm', size: 10 });
+    }
+    s += text(385, 230, 'α pKₐ', { cls: 'fg-tag', size: 11 });
+
+    const mark = (pka, name, base, kind, up) => {
+      const px = x(pka);
+      s += rule(px, up ? 92 : 132, px, 186);
+      s += panel(px - 84, up ? 56 : 96, 168, 36, { kind });
+      s += text(px, up ? 74 : 114, name, { cls: 'fg-lbl', size: 11.5 });
+      s += text(px, up ? 46 : 86, base, { cls: kind === 'warn' ? 'fg-tag' : 'fg-tag-good', size: 10.5 });
+    };
+    mark(25, 'a plain ester',       'needs LDA, and it fights back', 'warn', true);
+    mark(13, 'diethyl malonate',    'NaOEt is enough', null, true);
+    mark(11, 'ethyl acetoacetate',  'NaOEt is enough', null, false);
+
+    s += rule(34, 248, 726, 248);
+    s += text(380, 274, 'Twelve orders of magnitude, bought with one extra carbonyl — which is then thrown away.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'What the second carbonyl is for. An ester’s α hydrogen sits at pKa 25, where the only bases strong enough will also attack the ester; flanking that carbon with a second carbonyl delocalizes the carbanion onto a second oxygen and drops it to 11 to 13, where the alkoxide matching your solvent does the job.',
+  note: 'The carbonyl that made this possible is gone from the product. It was installed to acidify one hydrogen and is removed by hydrolysis and decarboxylation once the alkylation is done — which is what an activating group is, and the clearest example of one in the course. Note also that the decarboxylation works only because the intermediate is a β-keto acid, able to reach a six-membered cyclic transition state.',
+});
+
+/* ----------------------------------------------------------------- 42 ---
+   One reaction, one question: which group moves. Drawing the two possible
+   products from the same ketone makes "read the product backwards to find
+   the migrator" something the reader does rather than is told. */
+FIGURES.push({
+  id: 'which-migrates',
+  section: 'baeyer-villiger',
+  anchor: '<h3>Rings become lactones</h3>',
+  viewBox: '0 0 760 320',
+  alt: 'Acetophenone giving phenyl acetate by phenyl migration rather than methyl benzoate by methyl migration',
+  build() {
+    let s = '';
+    s += panel(250, 42, 260, 62, { kind: 'hi' });
+    s += text(380, 68, 'Ph–CO–CH₃', { cls: 'fg-lbl', size: 14 });
+    s += text(380, 90, 'two groups, one moves', { cls: 'fg-sm', size: 10 });
+
+    s += arrow(P(320, 110), P(200, 150));
+    s += arrow(P(440, 110), P(560, 150));
+
+    const out = (cx, formula, name, verdict, kind) => {
+      s += panel(cx - 150, 156, 300, 84, { kind });
+      s += text(cx, 184, formula, { cls: 'fg-lbl', size: 13.5 });
+      s += text(cx, 208, name, { cls: 'fg-sm', size: 10.5 });
+      s += text(cx, 232, verdict, { cls: kind === 'warn' ? 'fg-tag' : 'fg-tag-good', size: 11 });
+    };
+    out(190, 'Ph–O–CO–CH₃', 'phenyl acetate — the phenyl moved', 'this is what forms', null);
+    out(570, 'CH₃–O–CO–Ph', 'methyl benzoate — the methyl moved', 'this does not', 'warn');
+
+    s += rule(34, 258, 726, 258);
+    s += text(380, 282, 'Find the inserted oxygen and look at its far side: whatever is there is what migrated.', { cls: 'fg-lbl', size: 12 });
+    s += text(380, 304, 'tertiary  >  secondary, benzyl, aryl  >  primary  >  methyl', { cls: 'fg-tag-good', size: 11.5 });
+    return s;
+  },
+  caption: 'Acetophenone gives phenyl acetate, not methyl benzoate. Reading the names tells you which group moved: in phenyl acetate the oxygen sits between the phenyl and the carbonyl, so the phenyl is what migrated onto it and the methyl stayed where it was.',
+  note: 'The order is not a separate fact to memorize. Partway through the shift the migrating carbon is electron-poor, so whatever stabilizes a carbocation stabilizes this transition state — same ranking, arriving from a different direction. The practical shortcut: in a methyl ketone the methyl essentially never migrates, so the product is the acetate ester of whatever the other group was.',
+});
+
 /* ---------------------------------------------------------------------- */
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;

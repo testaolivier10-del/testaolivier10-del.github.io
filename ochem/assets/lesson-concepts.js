@@ -103,6 +103,26 @@
       2:['catalytic-cycle'], 3:['catalytic-cycle'], 4:['catalytic-cycle'],
       6:['catalytic-cycle'], 7:['catalytic-cycle','hard-soft-addition'] } },
 
+    'wittig-reaction': { n:8, steps:{
+      2:['alkene-by-construction'], 3:['alkene-by-construction'], 4:['alkene-by-construction'],
+      6:['alkene-by-construction'], 7:['alkene-by-construction'] } },
+
+    'imines-enamines': { n:8, steps:{
+      2:['amine-condensation'], 3:['amine-condensation'], 4:['amine-condensation'],
+      6:['enamine-nucleophile'], 7:['enamine-nucleophile','amine-condensation'] } },
+
+    'michael-robinson': { n:8, steps:{
+      2:['product-spacing'], 3:['product-spacing'], 4:['product-spacing'],
+      6:['product-spacing'], 7:['product-spacing'] } },
+
+    'ester-syntheses': { n:8, steps:{
+      2:['activating-group'], 3:['activating-group'], 4:['activating-group'],
+      6:['activating-group'], 7:['activating-group'] } },
+
+    'baeyer-villiger': { n:8, steps:{
+      2:['migratory-aptitude'], 3:['migratory-aptitude'], 4:['migratory-aptitude'],
+      6:['migratory-aptitude'], 7:['migratory-aptitude'] } },
+
     /* The oxidation & reduction chapter. Graded steps are 2, 3, 4, 6, 7. */
     'oxidation-states': { n:8, steps:{
       2:['oxidation-level'],
