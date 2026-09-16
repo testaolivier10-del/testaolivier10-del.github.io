@@ -146,6 +146,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/aldehyde-oxidation.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/aldehydes-ketones.html</loc>
     <lastmod>2026-09-16</lastmod>
     <priority>0.8</priority>
@@ -417,6 +422,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/hybridization.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/hydrates-cyanohydrins.html</loc>
     <lastmod>2026-09-16</lastmod>
     <priority>0.8</priority>
   </url>
@@ -711,6 +721,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/lessons/aldehyde-oxidation.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/lessons/aldehydes-ketones.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.7</priority>
@@ -973,6 +988,11 @@
   <url>
     <loc>https://levlprep.com/ochem/lessons/hybridization.html</loc>
     <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/hydrates-cyanohydrins.html</loc>
+    <lastmod>2026-09-16</lastmod>
     <priority>0.7</priority>
   </url>
   <url>

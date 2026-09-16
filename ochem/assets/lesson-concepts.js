@@ -32,6 +32,27 @@
       6:['acetal-formation'],
       7:['acetal-formation','carbonyl-electrophilicity'] } },
 
+    /* Step 2 is the hydration sorter: sterics and electronics read off five
+       structures, which is the equilibrium concept alone. 3 and 4 are the
+       Jones/PCC payoff, so oxidizability joins it. 6 is the one-carbon
+       extension, and 7 is the case where the two causes disagree. */
+    'hydrates-cyanohydrins': { n:8, steps:{
+      2:['addition-equilibrium'],
+      3:['addition-equilibrium','aldehyde-oxidizability'],
+      4:['addition-equilibrium','aldehyde-oxidizability'],
+      6:['addition-equilibrium','tetrahedral-intermediate'],
+      7:['addition-equilibrium','carbonyl-electrophilicity'] } },
+
+    /* Step 2 sorts five test results, 3 is why a weak oxidant is the right
+       tool for a test, 4 is the hemiacetal opening, 6 the reagent choice
+       under two constraints, 7 the IR-against-chemical-test contradiction. */
+    'aldehyde-oxidation': { n:8, steps:{
+      2:['aldehyde-oxidizability'],
+      3:['aldehyde-oxidizability'],
+      4:['aldehyde-oxidizability','addition-equilibrium'],
+      6:['aldehyde-oxidizability','oxidation-level'],
+      7:['aldehyde-oxidizability','addition-equilibrium'] } },
+
     /* Step 2 is the hands-on "find every carbon", which is the skeleton-reading
        concept alone. 3 and 6 are hydrogen counts, so implicit-hydrogens leads.
        4 is the C–H versus O–H asymmetry, which is a notation rule rather than

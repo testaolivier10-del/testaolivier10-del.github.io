@@ -529,6 +529,15 @@
       hint:'One alcohol gives a hemiacetal; a second, under acid, gives the acetal.',
       teach:'Adding one alcohol to a carbonyl gives a hemiacetal (OH + OR on one carbon). Under acid catalysis that OH leaves as water through an oxocarbenium, and a second alcohol adds to give the acetal (two OR groups). Acetals are stable to base — the standard carbonyl protecting group.' },
 
+    { id:'addition-equilibrium', title:'How far a carbonyl addition goes', family:'Carbonyl chemistry',
+      topics:['hydrates-cyanohydrins','aldehydes-ketones','nucleophilic-addition','acetals'], dependsOn:['carbonyl-electrophilicity','tetrahedral-intermediate'],
+      hint:'Two causes, and for ordinary substituents they agree: crowding of the sp3 product, and donation into the C=O.',
+      teach:'Water, cyanide and bisulfite all add reversibly to a carbonyl, and how far each goes is a number rather than an adjective. Hydration runs acetone 0.1%, acetaldehyde about 50%, formaldehyde about 99.9%, chloral essentially 100% — four orders of magnitude from two causes. STERICS: addition squeezes substituents from 120 to 109 degrees, which two methyls resist and two hydrogens do not. ELECTRONICS: alkyl groups donate into the C=O and stabilize the starting material, while withdrawing groups do the opposite. Together they are why ALDEHYDE > KETONE toward every nucleophile in the chapter. They can disagree: hexafluoroacetone is crowded and fully hydrated because electronics wins, and cyclopropanone is fully hydrated because addition RELIEVES ring strain, which runs the steric argument backwards. Cyanide is the one of the three that makes a C-C bond, so a cyanohydrin is a one-carbon extension whose nitrile becomes an alpha-hydroxy acid, a beta-amino alcohol, or an alkene.' },
+    { id:'aldehyde-oxidizability', title:'Why only aldehydes oxidize', family:'Carbonyl chemistry',
+      topics:['aldehyde-oxidation','hydrates-cyanohydrins','oxidation-states','carbohydrates'], dependsOn:['addition-equilibrium','carbonyl-electrophilicity'],
+      hint:'An oxidant needs a C-H and an O-H on the same carbon. A C=O has neither, but its hydrate has both.',
+      teach:'Oxidation trades a C-H for a bond to oxygen, so an aldehyde goes on to the acid and a ketone does not, because a ketone would have to break a C-C bond. The oxidant never attacks the C=O itself: it attacks the HYDRATE, which has an O-H and a C-H on one carbon and is oxidized exactly as a primary alcohol is. That is the whole Jones-against-PCC difference — aqueous Cr(VI) keeps regenerating the hydrate and runs to the acid, anhydrous PCC cannot and stops at the aldehyde. TOLLENS (Ag(NH3)2+, basic) gives a silver mirror and the carboxylate, and is useful precisely because it is too weak to touch alcohols or alkenes. FEHLINGS (Cu(II) tartrate) and BENEDICTS (Cu(II) citrate) drop brick-red Cu2O; Fehlings is unreliable with aromatic aldehydes, which is why Benedicts is the clinical one. A REDUCING SUGAR tests positive because its hemiacetal ring opens and supplies the aldehyde continuously; sucrose does not, because its glycosidic bond locks both anomeric carbons. The same reactivity is a hazard: aldehydes autoxidize in air, so old benzaldehyde carries benzoic acid.' },
+
     /* ---- Enolate chemistry --------------------------------------------- */
     { id:'alpha-acidity', title:'Alpha hydrogen acidity', family:'Enolate chemistry',
       topics:['alpha-hydrogens','aldol','claisen','acidity-factors'], dependsOn:['resonance-delocalization','acidity-factors'],
@@ -702,6 +711,7 @@
     'epoxides':'epoxide-opening-regiochem',
     'aldehydes-ketones':'carbonyl-electrophilicity', 'nucleophilic-addition':'tetrahedral-intermediate',
     'acetals':'acetal-formation',
+    'hydrates-cyanohydrins':'addition-equilibrium', 'aldehyde-oxidation':'aldehyde-oxidizability',
     'carboxylic-acids':'acidity-factors', 'esters-amides':'acyl-reactivity-order',
     'acyl-substitution':'acyl-reactivity-order',
     'alpha-hydrogens':'alpha-acidity', 'aldol':'aldol-connectivity', 'claisen':'claisen-connectivity',

@@ -2842,6 +2842,81 @@ FIGURES.push({
 });
 
 /* ---------------------------------------------------------------------- */
+/* ----------------------------------------------------------------- 53 ---
+   The hydration table is four numbers spanning four orders of magnitude, and
+   a bar chart is the only honest way to show that: 0.1 against 99.9 is not a
+   difference a table communicates. The two causes are written under the axis
+   because every bar is explained by some mixture of them. */
+FIGURES.push({
+  id: 'hydration-spread',
+  section: 'hydrates-cyanohydrins',
+  anchor: '<h3>Why the hydrate matters even though it is a minor species</h3>',
+  viewBox: '0 0 760 320',
+  alt: 'Four bars of increasing length showing percent hydrate for acetone, acetaldehyde, formaldehyde and chloral',
+  build() {
+    let s = '';
+    // A log-ish scale: linear in percent would make the first two invisible.
+    const rows = [
+      { lab: 'acetone, (CH\u2083)\u2082C=O', pct: '0.1%',   w: 14,  why: 'two methyls: crowded and fed',      kind: 'warn' },
+      { lab: 'acetaldehyde, CH\u2083CHO',    pct: '~50%',   w: 210, why: 'one methyl',                        kind: null   },
+      { lab: 'formaldehyde, H\u2082C=O',     pct: '~99.9%', w: 400, why: 'no alkyl group at all',             kind: null   },
+      { lab: 'chloral, CCl\u2083CHO',        pct: '~100%',  w: 430, why: 'three chlorines pulling; isolable', kind: null   },
+    ];
+    let y = 62;
+    for (const r of rows) {
+      s += text(24, y + 4, r.lab, { cls: 'fg-lbl', size: 12, anchor: 'start' });
+      s += bar(250, y - 11, r.w, 18, { kind: r.kind === 'warn' ? 'warn' : 'hi', opacity: 0.3 + r.w / 700 });
+      s += text(250 + r.w + 8, y + 4, r.pct, { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+      s += text(24, y + 22, r.why, { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+      y += 52;
+    }
+    s += rule(24, 262, 700, 262);
+    s += text(360, 286, 'Sterics: the sp\u00b2 carbon becomes sp\u00b3, and 120\u00b0 closes to 109\u00b0.', { cls: 'fg-lbl', size: 12 });
+    s += text(360, 308, 'Electronics: alkyl groups feed the C=O; withdrawing groups starve it.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'The reactivity order of the chapter, with numbers on it. Aldehyde beats ketone toward every nucleophile, and hydration is where you can see how large the gap actually is \u2014 three orders of magnitude between acetone and formaldehyde, from nothing more than removing two methyl groups.',
+  note: 'The two causes usually agree, which is what makes the trend so reliable \u2014 and the interesting cases are the ones where they do not. Hexafluoroacetone is more crowded than acetone and essentially completely hydrated, because six fluorines outweigh the crowding. Cyclopropanone is fully hydrated for the opposite reason again: the ring already strains the sp\u00b2 carbon, so addition relieves strain instead of creating it, and the steric argument runs backwards.',
+});
+
+/* ----------------------------------------------------------------- 54 ---
+   The point students miss is that the oxidant never sees the carbonyl. Drawing
+   the hydrate on the path, with the fork for wet against dry conditions,
+   turns the Jones/PCC rule from something memorized into something read. */
+FIGURES.push({
+  id: 'oxidant-sees-the-hydrate',
+  section: 'aldehyde-oxidation',
+  anchor: '<h3>Tollens\' reagent and the silver mirror</h3>',
+  viewBox: '0 0 760 300',
+  alt: 'An aldehyde branching to its hydrate and on to the carboxylic acid under wet conditions, or stopping under dry conditions',
+  build() {
+    let s = '';
+    const box = (x, w, kind, title, sub) => {
+      s += panel(x, 58, w, 74, { kind });
+      s += text(x + w / 2, 88, title, { cls: 'fg-lbl', size: 13 });
+      s += text(x + w / 2, 110, sub, { cls: 'fg-sm', size: 10.5 });
+    };
+    box(24,  190, null,   'R\u2013CHO',        'no O\u2013H to grip');
+    box(286, 190, 'warn', 'R\u2013CH(OH)\u2082', 'an alcohol, in effect');
+    box(548, 188, null,   'R\u2013COOH',       'oxidized a second time');
+
+    s += arrow(P(214, 95), P(286, 95));
+    s += text(250, 78, '+ H\u2082O', { cls: 'fg-tag', size: 11 });
+    s += arrow(P(476, 95), P(548, 95));
+    s += text(512, 78, '[O]', { cls: 'fg-tag', size: 11 });
+
+    s += rule(24, 168, 700, 168);
+    s += text(24, 196, 'Jones, Cr(VI) in aqueous acid', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(24, 216, 'water present \u2192 the hydrate keeps re-forming \u2192 runs to the acid', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    s += text(24, 244, 'PCC in anhydrous CH\u2082Cl\u2082', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(24, 264, 'no water \u2192 no hydrate \u2192 nothing left to attack, so it stops', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(24, 292, 'A ketone never enters this picture: its carbonyl carbon has no hydrogen to remove.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    return s;
+  },
+  caption: 'The step everyone skips. An oxidant needs an O\u2013H and a C\u2013H on the same carbon, and a C=O offers neither \u2014 so what is actually attacked is the hydrate. That single box is the whole difference between a reagent that stops at the aldehyde and one that does not.',
+  note: 'The same argument explains a sugar. A cyclic hemiacetal holds only a trace of the open-chain aldehyde, and yet glucose gives a full silver mirror, because the equilibrium delivers that trace continuously and the oxidant consumes it as fast as it appears. A species can be present in traces and still control the product, provided it is the only form that can react.',
+});
+
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;
 

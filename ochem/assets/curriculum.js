@@ -128,7 +128,9 @@
     { id: 'carbonyl-chemistry', title: 'Carbonyl Chemistry', topics: [
       { id: 'aldehydes-ketones', title: 'Aldehydes & ketones', href: 'lessons/aldehydes-ketones.html', dependsOn: ['hybridization', 'electrophiles'] },
       { id: 'nucleophilic-addition', title: 'Nucleophilic addition', href: 'lessons/nucleophilic-addition.html', mechanism: 'mechanisms/carbonyl-addition.html', dependsOn: ['aldehydes-ketones', 'nucleophiles'] },
-      { id: 'acetals', title: 'Acetals & hemiacetals', href: 'lessons/acetals.html', dependsOn: ['nucleophilic-addition', 'alcohol-reactions', 'resonance'] }
+      { id: 'acetals', title: 'Acetals & hemiacetals', href: 'lessons/acetals.html', dependsOn: ['nucleophilic-addition', 'alcohol-reactions', 'resonance'] },
+      { id: 'hydrates-cyanohydrins', title: 'Hydrates & cyanohydrins', href: 'lessons/hydrates-cyanohydrins.html', dependsOn: ['nucleophilic-addition', 'electronegativity'] },
+      { id: 'aldehyde-oxidation', title: 'Oxidizing an aldehyde', href: 'lessons/aldehyde-oxidation.html', dependsOn: ['hydrates-cyanohydrins', 'aldehydes-ketones'] }
     ]},
     /* Oxidation & Reduction sits after Carbonyl Chemistry because it needs
        both ends of the ladder available: alcohols (chapter 10) to oxidize and

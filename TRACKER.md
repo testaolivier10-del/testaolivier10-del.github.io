@@ -1200,7 +1200,60 @@ and durable are the same ones that make it permanent.
 **Phase 3 is complete.** Nine units, 45 sections, 45 lessons, 1,350 questions,
 49 concepts and 45 figures, taking the course from 64 topics to 108.
 
-### Phase 9.4 — Depth in the existing units — **not started**
+### Phase 9.4 — Depth in the existing units — **in progress**
+
+Four chapters were named as thin, and each gets two more sections. The test
+for what to add was not "what is missing from a syllabus" but "what does this
+course already gesture at without ever teaching". A coverage sweep found the
+gaps: zero files mentioning the haloform reaction or &alpha;-halogenation, one
+mentioning Gabriel, one mentioning Tollens'.
+
+| Chapter | Was | Adding |
+|---|---|---|
+| 11 Carbonyl Chemistry | 3 | Hydrates & cyanohydrins; Oxidizing an aldehyde |
+| 13 Carboxylic Acids & Derivatives | 3 | Acid chlorides & anhydrides; Nitriles |
+| 14 Enolate Chemistry | 3 | &alpha;-Halogenation & the haloform reaction; Kinetic against thermodynamic enolates |
+| 15 Amines | 2 | Making amines; Hofmann elimination |
+
+#### Carbonyl Chemistry 3 &rarr; 5 — **complete**
+
+Two sections, two lessons, 60 questions, two concepts, two figures.
+
+**Hydrates & cyanohydrins** exists because the chapter had been saying "more
+reactive" for three sections without ever putting a number on it. Hydration
+does: acetone 0.1%, acetaldehyde ~50%, formaldehyde ~99.9%, chloral ~100%.
+Four orders of magnitude from two causes that usually agree &mdash; the sp&sup2;
+carbon becoming sp&sup3;, and alkyl donation into the C=O &mdash; which is
+exactly why *aldehyde > ketone* is so reliable. The interesting rows are where
+they disagree: hexafluoroacetone is crowded *and* fully hydrated, benzaldehyde
+is barely hydrated because addition destroys conjugation, and cyclopropanone is
+fully hydrated because addition *relieves* ring strain, which runs the steric
+argument backwards.
+
+**Oxidizing an aldehyde** exists to close a gap the course had left open. It
+had taught that Jones goes to the acid and PCC stops at the aldehyde without
+ever saying why, and the reason is the previous section: an oxidant needs an
+O&ndash;H and a C&ndash;H on one carbon, a C=O has neither, and the species
+actually attacked is the *hydrate*. That also explains reducing sugars, since a
+hemiacetal ring supplies its trace of open-chain aldehyde continuously. One
+idea, three places.
+
+**Two guessability defects, caught before review.** The hydration sort step ran
+five rows over three options with one answer correct three times; it now runs
+six rows, the new one being benzaldehyde, which also carries the conjugation
+argument. The test-result step ran five rows over two options with four
+negatives &mdash; clicking "negative" scored 80%. It now runs seven rows at
+four to three, and the two added rows are benzaldehyde against Tollens' and
+against Fehling's: same substrate, opposite results, which is the pair worth
+remembering.
+
+**A generator defect found in passing.** `build-notes-pages.mjs` derived each
+meta description from the prose's opening sentence and then escaped it, without
+first decoding the entities the prose is written with &mdash; so a section
+opening with an em dash shipped `&amp;mdash;` into its own search snippet.
+Thirteen pages were affected, eleven of them pre-existing. Fixed at the
+generator.
+
 
 ---
 

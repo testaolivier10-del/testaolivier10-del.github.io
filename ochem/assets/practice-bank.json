@@ -41464,5 +41464,789 @@
    "difficulty": "medium",
    "type": "mcq"
   }
+ ],
+ "hydrates-cyanohydrins": [
+  {
+   "q": "Adding water across a C=O gives what kind of product?",
+   "options": [
+    "A gem-diol",
+    "An epoxide",
+    "An enol ether",
+    "A hemiacetal"
+   ],
+   "correct": 0,
+   "why": "Two OH groups end up on the one former carbonyl carbon.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A gem-diol is more commonly called a:",
+   "options": [
+    "Cyanohydrin",
+    "Bisulfite adduct",
+    "Acetal",
+    "Hydrate"
+   ],
+   "correct": 3,
+   "why": "The common name records where it came from, not its structure.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which carbonyl is the least hydrated at equilibrium?",
+   "options": [
+    "Formaldehyde",
+    "Acetaldehyde",
+    "Acetone",
+    "Chloral"
+   ],
+   "correct": 2,
+   "why": "Only about 0.1%, since two methyls both crowd and feed the carbon.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Acetaldehyde's percent hydrate is closest to:",
+   "options": [
+    "0.1%",
+    "50%",
+    "1%",
+    "99.9%"
+   ],
+   "correct": 1,
+   "why": "One methyl instead of two puts it halfway between formaldehyde and acetone.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which hydrate is stable enough to isolate?",
+   "options": [
+    "Chloral hydrate",
+    "Acetone hydrate",
+    "Acetaldehyde hydrate",
+    "Formaldehyde hydrate"
+   ],
+   "correct": 0,
+   "why": "Its equilibrium sits essentially all the way over.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is chloral almost completely hydrated?",
+   "options": [
+    "The chlorines donate electron density to carbon",
+    "The chlorines relieve steric crowding",
+    "The chlorines strengthen the C=O bond",
+    "The chlorines withdraw electron density"
+   ],
+   "correct": 3,
+   "why": "Three of them pulling makes the carbonyl carbon badly electron poor.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What happens to the carbonyl carbon during hydration?",
+   "options": [
+    "It stays sp2",
+    "It becomes sp",
+    "sp2 becomes sp3",
+    "sp3 becomes sp2"
+   ],
+   "correct": 2,
+   "why": "A flat carbon turns pyramidal, which is why crowding matters.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Hydration squeezes the substituent angles from about 120 degrees to:",
+   "options": [
+    "109 degrees",
+    "90 degrees",
+    "180 degrees",
+    "120 degrees"
+   ],
+   "correct": 0,
+   "why": "Tetrahedral geometry, and groups that were comfortable at 120 no longer are.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why do two methyls disfavor the hydrate more than two hydrogens?",
+   "options": [
+    "They block the oxygen lone pairs",
+    "They crowd the new sp3 carbon",
+    "They are more electronegative",
+    "They shorten the C=O bond"
+   ],
+   "correct": 1,
+   "why": "Hydrogens have almost nothing to give up when the angle closes.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Alkyl groups affect a carbonyl by:",
+   "options": [
+    "Withdrawing electron density",
+    "Removing steric bulk",
+    "Breaking conjugation",
+    "Donating electron density"
+   ],
+   "correct": 3,
+   "why": "That donation stabilizes the starting material, so it has less reason to react.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Toward nucleophiles, the reactivity order is:",
+   "options": [
+    "Ketone > formaldehyde",
+    "They react equally",
+    "Aldehyde > ketone",
+    "Ketone > aldehyde"
+   ],
+   "correct": 2,
+   "why": "Sterics and electronics point the same way, and the hydration table measures it.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which two factors set the hydration equilibrium?",
+   "options": [
+    "Bond length and pH",
+    "Sterics and electronics",
+    "Resonance and aromaticity",
+    "Solvent and temperature"
+   ],
+   "correct": 1,
+   "why": "The same pair sets every carbonyl reactivity order in the chapter.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does aqueous Cr(VI) carry a primary alcohol past the aldehyde?",
+   "options": [
+    "The aldehyde hydrates first",
+    "The aldehyde tautomerizes",
+    "Water deprotonates the aldehyde",
+    "Chromium adds to the carbonyl"
+   ],
+   "correct": 0,
+   "why": "The gem-diol is an alcohol again, so the oxidant attacks a second time.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does PCC stop at the aldehyde?",
+   "options": [
+    "The reagent is too weak",
+    "Aldehydes resist Cr(VI)",
+    "The solvent quenches it",
+    "No water is present"
+   ],
+   "correct": 3,
+   "why": "No water means no hydrate, and nothing left with an O-H to attack.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Cyanide adds to a carbonyl to give:",
+   "options": [
+    "An amide",
+    "A nitrile only",
+    "A cyanohydrin",
+    "An imine"
+   ],
+   "correct": 2,
+   "why": "Attack at carbon, then protonation of the alkoxide.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A cyanohydrin carbon carries which two groups?",
+   "options": [
+    "Two CN groups",
+    "OH and CN",
+    "Two OH groups",
+    "OH and OR"
+   ],
+   "correct": 1,
+   "why": "One came from the old carbonyl oxygen, the other from cyanide.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What makes cyanohydrin formation worth doing synthetically?",
+   "options": [
+    "It makes a C-C bond",
+    "It removes oxygen",
+    "It never reaches equilibrium",
+    "It closes a ring"
+   ],
+   "correct": 0,
+   "why": "Hydration and bisulfite addition build no new carbon skeleton.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Cyanohydrin formation is run near what pH?",
+   "options": [
+    "2-3",
+    "5-6",
+    "13-14",
+    "8-10"
+   ],
+   "correct": 3,
+   "why": "Both forms of the reagent have to be present at once.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is that pH range chosen?",
+   "options": [
+    "Only HCN adds to carbonyls",
+    "The carbonyl is protonated there",
+    "Both CN- and HCN are present",
+    "Cyanide is destroyed below pH 8"
+   ],
+   "correct": 2,
+   "why": "CN- does the attacking and HCN protonates the alkoxide.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Hydrolyzing a cyanohydrin's nitrile gives:",
+   "options": [
+    "A primary amine",
+    "An alpha-hydroxy acid",
+    "A beta-amino alcohol",
+    "An unsaturated nitrile"
+   ],
+   "correct": 1,
+   "why": "The nitrile becomes the acid and the OH is already in place.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Reducing a cyanohydrin with LiAlH4 gives:",
+   "options": [
+    "A beta-amino alcohol",
+    "An alpha-hydroxy acid",
+    "A primary amine only",
+    "An aldehyde"
+   ],
+   "correct": 0,
+   "why": "The nitrile carbon becomes CH2NH2, one carbon away from the OH.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which step turns a cyanohydrin into an unsaturated nitrile?",
+   "options": [
+    "Acid hydrolysis",
+    "Reduction",
+    "Hydration",
+    "Dehydration"
+   ],
+   "correct": 3,
+   "why": "Losing the OH and an adjacent hydrogen conjugates the nitrile.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A cyanohydrin extends the carbon chain by how many carbons?",
+   "options": [
+    "Three",
+    "None",
+    "One",
+    "Two"
+   ],
+   "correct": 2,
+   "why": "And that one carbon arrives with a functional group already on it.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Carbon dioxide plus a Grignard reagent gives:",
+   "options": [
+    "An aldehyde",
+    "A carboxylic acid",
+    "A primary alcohol",
+    "A ketone"
+   ],
+   "correct": 1,
+   "why": "Another one-carbon extension, chosen for what it leaves behind.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A nitrile plus a Grignard reagent gives:",
+   "options": [
+    "A ketone",
+    "A carboxylic acid",
+    "A primary alcohol",
+    "An amine"
+   ],
+   "correct": 0,
+   "why": "Same one-carbon logic, different functional group at the end.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Sodium bisulfite adds to a carbonyl to give:",
+   "options": [
+    "A water-insoluble oil",
+    "A neutral gem-diol",
+    "A volatile ether",
+    "A crystalline salt"
+   ],
+   "correct": 3,
+   "why": "Solid and water soluble, which is exactly what makes it handy.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is the bisulfite adduct useful?",
+   "options": [
+    "It oxidizes aldehydes",
+    "It blocks the alpha carbon",
+    "It allows purification",
+    "It forms C-C bonds"
+   ],
+   "correct": 2,
+   "why": "Filter off the solid, then regenerate the carbonyl.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which of these will not form a bisulfite adduct?",
+   "options": [
+    "Formaldehyde",
+    "A hindered ketone",
+    "Acetaldehyde",
+    "An unhindered methyl ketone"
+   ],
+   "correct": 1,
+   "why": "The same crowding that keeps hindered ketones from hydrating.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "The bisulfite adduct is reversed by:",
+   "options": [
+    "Acid or base",
+    "Heat alone",
+    "Visible light",
+    "A strong oxidant"
+   ],
+   "correct": 0,
+   "why": "Reversibility is the point, since you want the carbonyl back.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A ketone bearing three fluorines on the next carbon would hydrate:",
+   "options": [
+    "Less than acetone",
+    "The same as acetone",
+    "Not at all",
+    "More than acetone"
+   ],
+   "correct": 3,
+   "why": "Fluorine pulls like chlorine does in chloral.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "aldehyde-oxidation": [
+  {
+   "q": "An aldehyde is readily oxidized to:",
+   "options": [
+    "A carboxylic acid",
+    "A secondary alcohol",
+    "An ester of itself",
+    "A tertiary alcohol"
+   ],
+   "correct": 0,
+   "why": "It is the one carbonyl in the chapter still able to climb a rung.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why do ordinary oxidants leave ketones untouched?",
+   "options": [
+    "Ketones are too volatile",
+    "Ketones are already acids",
+    "The C=O bond is too weak",
+    "No C-H on that carbon"
+   ],
+   "correct": 3,
+   "why": "Two carbons sit there instead, and a C-C bond would have to break.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Oxidation at a carbon means:",
+   "options": [
+    "Adding two hydrogens",
+    "Breaking a carbon-carbon bond",
+    "Trading a C-H for a C-O",
+    "Trading a C-O for a C-H"
+   ],
+   "correct": 2,
+   "why": "The same hydrogen bookkeeping that ranked the alcohols.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which species is actually oxidized when an aldehyde becomes an acid?",
+   "options": [
+    "The carbonyl itself",
+    "The hydrate",
+    "The enol",
+    "The acetal"
+   ],
+   "correct": 1,
+   "why": "A bare carbonyl carbon has no hydroxyl for an oxidant to grip.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "The gem-diol can be oxidized because it is:",
+   "options": [
+    "An alcohol",
+    "An ether",
+    "An ester",
+    "An acetal"
+   ],
+   "correct": 0,
+   "why": "It has an OH and an H on the same carbon, like a primary alcohol.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does PCC stop at the aldehyde?",
+   "options": [
+    "PCC is a reductant",
+    "Aldehydes resist chromium",
+    "PCC is used catalytically",
+    "No water, so no hydrate"
+   ],
+   "correct": 3,
+   "why": "Anhydrous dichloromethane keeps the second oxidation from ever starting.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Jones reagent takes a primary alcohol to:",
+   "options": [
+    "A secondary alcohol",
+    "A ketone",
+    "A carboxylic acid",
+    "An aldehyde only"
+   ],
+   "correct": 2,
+   "why": "Water in the flask keeps regenerating the hydrate.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Tollens' reagent contains which metal ion?",
+   "options": [
+    "Manganese(VII)",
+    "Silver(I)",
+    "Copper(II)",
+    "Chromium(VI)"
+   ],
+   "correct": 1,
+   "why": "Held in solution by ammonia under basic conditions.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "The active species in Tollens' reagent is:",
+   "options": [
+    "Ag(NH3)2+",
+    "AgNO3 alone",
+    "Cu(OH)2",
+    "Ag2O in acid"
+   ],
+   "correct": 0,
+   "why": "The diammine complex keeps silver soluble in base.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Under Tollens' conditions the aldehyde ends up as:",
+   "options": [
+    "A ketone",
+    "A primary alcohol",
+    "An ester",
+    "A carboxylate"
+   ],
+   "correct": 3,
+   "why": "The solution is basic, so the acid is deprotonated as it forms.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A positive Tollens' test looks like:",
+   "options": [
+    "A deep blue solution",
+    "A yellow gas",
+    "A silver mirror",
+    "A red precipitate"
+   ],
+   "correct": 2,
+   "why": "Metallic silver plating out on clean glass.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "In a Tollens' test the silver(I) is:",
+   "options": [
+    "Bound by tartrate",
+    "Reduced to the metal",
+    "Oxidized to silver(II)",
+    "Left unchanged"
+   ],
+   "correct": 1,
+   "why": "The aldehyde is what gets oxidized, so silver has to go the other way.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What makes Tollens' useful as a test?",
+   "options": [
+    "It ignores alcohols and alkenes",
+    "It oxidizes every group",
+    "It requires no solvent",
+    "It oxidizes alcohols and alkenes too"
+   ],
+   "correct": 0,
+   "why": "A reagent that picks out one group and skips its neighbors.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is Tollens' not used to prepare carboxylic acids?",
+   "options": [
+    "It reduces the product",
+    "It needs high pressure",
+    "It attacks alkenes too",
+    "Silver is expensive"
+   ],
+   "correct": 3,
+   "why": "Cost, not chemistry, is what keeps it a test.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Fehling's solution holds Cu(II) with which ligand?",
+   "options": [
+    "Oxalate",
+    "Ethylenediamine",
+    "Tartrate",
+    "Citrate"
+   ],
+   "correct": 2,
+   "why": "Benedict's is the one built on citrate.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Benedict's solution holds Cu(II) with which ligand?",
+   "options": [
+    "EDTA",
+    "Citrate",
+    "Tartrate",
+    "Ammonia"
+   ],
+   "correct": 1,
+   "why": "It is the more robust of the two, and the clinical version.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A positive Fehling's or Benedict's test shows:",
+   "options": [
+    "Brick-red Cu2O",
+    "A silver mirror",
+    "A deep blue solution",
+    "A white precipitate"
+   ],
+   "correct": 0,
+   "why": "The red solid drops out of the blue solution that was there before.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Before reaction, a Benedict's solution is what color?",
+   "options": [
+    "Brick red",
+    "Colorless",
+    "Bright green",
+    "Deep blue"
+   ],
+   "correct": 3,
+   "why": "Cu(II) in solution, which is why the red precipitate is easy to see.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent pair is more robust and used clinically?",
+   "options": [
+    "Tollens'",
+    "Jones reagent",
+    "Benedict's",
+    "Fehling's"
+   ],
+   "correct": 2,
+   "why": "Citrate holds the copper better than tartrate does.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Fehling's solution is unreliable with:",
+   "options": [
+    "Tertiary alcohols",
+    "Aromatic aldehydes",
+    "Aliphatic aldehydes",
+    "Primary alcohols"
+   ],
+   "correct": 1,
+   "why": "Aliphatic aldehydes are the case it handles well.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does glucose test positive although it is drawn as a ring?",
+   "options": [
+    "The hemiacetal ring opens",
+    "Glucose is an acid",
+    "The ring oxygen is oxidized",
+    "Glucose contains a ketone"
+   ],
+   "correct": 0,
+   "why": "Opening exposes the aldehyde the ring drawing hides.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How much open-chain aldehyde does glucose hold at equilibrium?",
+   "options": [
+    "About half",
+    "Almost all",
+    "None at all",
+    "A trace"
+   ],
+   "correct": 3,
+   "why": "Delivered continuously, and consumed as fast as it appears.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A sugar is called reducing because of:",
+   "options": [
+    "Its ring size",
+    "Its sweetness",
+    "What it does to the metal",
+    "What happens to the sugar"
+   ],
+   "correct": 2,
+   "why": "The sugar is in fact the thing being oxidized.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is sucrose not a reducing sugar?",
+   "options": [
+    "Its rings are aromatic",
+    "Neither ring can open",
+    "It contains no rings",
+    "It is a monosaccharide"
+   ],
+   "correct": 1,
+   "why": "The glycosidic bond ties up both anomeric carbons.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Lactose and maltose test positive because each:",
+   "options": [
+    "Has one free anomeric carbon",
+    "Ties up both anomeric carbons",
+    "Contains a free ketone",
+    "Has no glycosidic bond"
+   ],
+   "correct": 0,
+   "why": "One ring can still open and deliver an aldehyde.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Aldehydes oxidize in air by:",
+   "options": [
+    "An ionic chain",
+    "Photolysis only",
+    "Enzyme catalysis",
+    "A radical chain"
+   ],
+   "correct": 3,
+   "why": "No added reagent is needed at all.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An old bottle of benzaldehyde grows crystals of:",
+   "options": [
+    "Acetophenone",
+    "Benzene",
+    "Benzoic acid",
+    "Benzyl alcohol"
+   ],
+   "correct": 2,
+   "why": "Air finishes the oxidation around the cap.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How should aldehydes be stored?",
+   "options": [
+    "With an oxidant added",
+    "Under inert gas",
+    "Open to air",
+    "In aqueous acid"
+   ],
+   "correct": 1,
+   "why": "They are also often made immediately before use.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Oxidizing a ketone requires:",
+   "options": [
+    "Breaking a C-C bond",
+    "Breaking a C-H bond",
+    "Adding water",
+    "Removing oxygen"
+   ],
+   "correct": 0,
+   "why": "There is no hydrogen on that carbon to take.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "The Baeyer-Villiger converts a ketone to:",
+   "options": [
+    "An aldehyde",
+    "An alcohol",
+    "A carboxylate",
+    "An ester"
+   ],
+   "correct": 3,
+   "why": "An oxygen is inserted into one of the C-C bonds.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
  ]
 }

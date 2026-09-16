@@ -83,6 +83,32 @@ const hasLesson = (topic) => !!(topic && topic.href && !topic.notesOnly);
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+/* The prose is HTML, so its entities have to be turned back into characters
+   before the description is re-escaped for the attribute — otherwise a section
+   that opens with an em dash ships "&amp;mdash;" into its search snippet,
+   which is what a reader sees in the result list. &amp; is decoded last so a
+   literal ampersand written as &amp;amp; survives one round trip. */
+const ENTITIES = {
+  nbsp: ' ', mdash: '\u2014', ndash: '\u2013', hellip: '\u2026',
+  lsquo: '\u2018', rsquo: '\u2019', ldquo: '\u201c', rdquo: '\u201d',
+  alpha: '\u03b1', beta: '\u03b2', gamma: '\u03b3', delta: '\u03b4',
+  pi: '\u03c0', sigma: '\u03c3', mu: '\u03bc', deg: '\u00b0',
+  rarr: '\u2192', larr: '\u2190', harr: '\u2194', rlhar: '\u21cc',
+  times: '\u00d7', minus: '\u2212', plusmn: '\u00b1', middot: '\u00b7',
+  sup2: '\u00b2', sup3: '\u00b3', frac12: '\u00bd',
+  lt: '<', gt: '>', quot: '"'
+};
+
+function decodeEntities(text) {
+  let out = text.replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
+                .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
+                .replace(/&([a-z][a-z0-9]*);/gi, (whole, name) => {
+                  const hit = ENTITIES[name] ?? ENTITIES[name.toLowerCase()];
+                  return hit === undefined ? whole : hit;
+                });
+  return out.replace(/&amp;/g, '&');
+}
+
 /* The meta description is the section's own opening sentence, trimmed to a
    sensible length at a word boundary. Deriving it means it cannot contradict
    the prose, and it means nobody has to write 62 of them. */
@@ -90,7 +116,7 @@ function describe(prose, fallback) {
   const firstPara = prose.match(/<p[^>]*>([\s\S]*?)<\/p>/);
   if (!firstPara) return fallback;
   let text = firstPara[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-  text = text.replace(/&nbsp;/g, ' ');
+  text = decodeEntities(text).replace(/\s+/g, ' ').trim();
   if (!text) return fallback;
   if (text.length <= 160) return text;
   const cut = text.slice(0, 157);
