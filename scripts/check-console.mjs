@@ -33,6 +33,16 @@
    and then it is not checking anything. Same-origin is this repo's to get
    right, so same-origin is what is enforced.
 
+   Ignoring them was not enough: they are now BLOCKED before they leave the
+   browser. The one intermittent failure this check ever produced was two
+   lesson pages timing out at page.goto — 'load' waits for every subresource,
+   and a third-party script that hangs holds the whole page past 30 s. That
+   is exactly the kind of failure the paragraph above says must not fail the
+   build, and it did. Aborting cross-origin requests at the route makes the
+   run deterministic (every page sees the same "CDN unreachable" it would see
+   offline, which every script on the site already tolerates) and faster,
+   since no page waits on a network it is not being judged on.
+
    EVERY page, not one per shape. check-a11y.mjs samples twelve templates
    because accessibility is a property of a template. A runtime error is a
    property of one page's own inline bootstrap, which is exactly where this
@@ -120,8 +130,11 @@ const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PAT
 console.log(`Loading ${pages.length} pages in Chromium.\n`);
 
 /* Pages are independent, so they run several at a time — serially this is four
-   minutes, which is long enough that somebody starts skipping it. */
-const CONCURRENCY = 6;
+   minutes, which is long enough that somebody starts skipping it. Eight rather
+   than six because the per-page cost is now mostly Chromium's own parse and
+   layout rather than waiting on the network, and the CI runner has the cores
+   for it. */
+const CONCURRENCY = 8;
 const results = [];
 
 async function visit(path) {
@@ -129,6 +142,10 @@ async function visit(path) {
   const page = await ctx.newPage();
   const problems = [];
   const sameOrigin = (url) => url.startsWith(ORIGIN);
+
+  // Everything off this origin is dropped at the route. See the header: the
+  // check never judged these requests, and letting them run made it flaky.
+  await page.route((url) => !sameOrigin(url.href), (route) => route.abort('blockedbyclient'));
 
   page.on('pageerror', (e) => problems.push(`uncaught exception: ${e.message.split('\n')[0]}`));
   page.on('console', (m) => {
@@ -161,7 +178,12 @@ async function visit(path) {
       null,
       { timeout: 15000 }
     ).catch(() => {});
-    await page.waitForTimeout(1000);
+    // Deferred scripts and DOMContentLoaded handlers have all run by 'load',
+    // and a page that fetches its content has just said so above. What is
+    // left is microtask and animation-frame work, which is milliseconds; a
+    // quarter second is generous for that, where the full second this used
+    // to wait was a third of the whole run spent asleep.
+    await page.waitForTimeout(250);
     const dups = await page.evaluate(() => {
       const counts = {};
       for (const el of document.querySelectorAll('[id]')) counts[el.id] = (counts[el.id] || 0) + 1;

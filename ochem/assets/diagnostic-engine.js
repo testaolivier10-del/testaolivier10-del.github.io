@@ -234,7 +234,7 @@
 
     out.concept = C().get(out.conceptId);
     out.whatYouDid = whatYouDid(q, response);
-    if(out.concept) out.teach = out.concept.teach;
+    if(out.concept) out.teach = out.concept.teach || '';
 
     // Ring the correct atoms so the student can SEE what they overlooked,
     // rather than reading a sentence about it.

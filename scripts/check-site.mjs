@@ -169,6 +169,33 @@ function countSteps(body) {
       if (!known.size) {
         fail('ochem/assets/concepts.js: no concept ids parsed, so lesson-concepts.js cannot be checked');
       } else {
+        /* The micro-lessons were moved out of concepts.js into a fetched
+           file so that every ochem page stops downloading prose only two of
+           them show. The cost of that split is drift: a concept added to
+           one file and not the other fails silently, as a miss with no
+           explanation under it. So the two are held to the same id set. */
+        const teachPath = join(ROOT, 'ochem/assets/concept-teach.json');
+        if (!existsSync(teachPath)) {
+          fail('ochem/assets/concept-teach.json is missing — the concept micro-lessons live there');
+        } else {
+          let teach = {};
+          try { teach = JSON.parse(readFileSync(teachPath, 'utf8')); } catch (e) { teach = null; }
+          if (!teach || typeof teach !== 'object') {
+            fail('ochem/assets/concept-teach.json does not parse to an object');
+          } else {
+            for (const id of known) {
+              if (typeof teach[id] !== 'string' || !teach[id].trim()) {
+                fail(`concept-teach.json: no teach string for the concept "${id}" — a miss diagnosed as it would show no micro-lesson`);
+              }
+            }
+            for (const id of Object.keys(teach)) {
+              if (!known.has(id)) fail(`concept-teach.json: "${id}" is not a concept in concepts.js`);
+            }
+          }
+        }
+        if (/teach:\s*'/.test(conceptSrc)) {
+          fail('concepts.js: a `teach:` string is back inline — they belong in concept-teach.json');
+        }
         /* A regex cannot find the end of a steps block reliably — the entries
            close as `] } },` on the last line, not on one of their own — so the
            braces are counted instead. */

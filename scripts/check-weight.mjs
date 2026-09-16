@@ -111,14 +111,20 @@ const SHELL_BUDGETS = [
      on the pages that actually surface a teach block, and it is worth more
      now than when it was first noted because the strings have grown.
 
-     The obvious saving, if one is ever needed, is that ochem/index.html loads
-     lesson-concepts.js for one call in ochem-home.js; splitting that call out
-     would take 4.4 KB off the home page, though not off this number, since the
-     lessons still load the file. The larger one, not yet worth doing, is that
-     every page loads every concept's `teach` string — moving those to a
-     fetched file would roughly halve concepts.js at the cost of one request on
-     the pages that actually surface a teach block. */
-  ['ochem', 116],
+     116 -> 102, DOWN, because the teach-string saving above was taken. The
+     118 `teach` strings now live in ochem/assets/concept-teach.json and are
+     fetched by session-runner.js on the two pages that render one, so
+     concepts.js went from 113 KB to 54 KB on disk and the shell measured
+     92.8 KB gzipped afterwards. The budget is a ratchet, so it follows the
+     measurement down: 102 is that number plus the same tenth of headroom
+     every other budget here carries. The next chapter costs what it costs
+     without the prose — nearer 1 KB gzipped than the 1.8 measured above.
+
+     The remaining obvious saving, if one is ever needed, is that
+     ochem/index.html loads lesson-concepts.js for one call in ochem-home.js;
+     splitting that call out would take 4.4 KB off the home page, though not
+     off this number, since the lessons still load the file. */
+  ['ochem', 102],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as

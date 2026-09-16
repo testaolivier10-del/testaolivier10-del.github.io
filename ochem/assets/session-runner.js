@@ -27,6 +27,12 @@
 */
 (function(){
   var CO = window.OchemConcepts;
+  /* The concept micro-lessons are not part of concepts.js (see its header):
+     they are fetched here, by the only two pages that ever render one, and
+     attached onto the concept records. Started at load rather than on the
+     first miss so the string is there by the time anyone has answered
+     anything wrong. Same base convention as bank-loader.js. */
+  if(CO && CO.loadTeach) CO.loadTeach((window.OCHEM_BANK_BASE || 'assets/') + 'concept-teach.json');
   var M  = window.OchemMastery;
   var D  = window.OchemDiagnostics;
   var E  = window.OchemQuestionEngine;
@@ -580,7 +586,7 @@
           html += '<div class="teach-box">' +
             '<div class="k">The concept behind it</div>' +
             '<h3>' + esc(d.concept.title) + '</h3>' +
-            '<p>' + esc(d.teach) + '</p>';
+            (d.teach ? '<p>' + esc(d.teach) + '</p>' : '');
           var links = [];
           if(d.lessonTopic) links.push('<a href="' + d.lessonTopic.href + '">Full lesson: ' + esc(d.lessonTopic.title) + '</a>');
           // The written version of the same topic, in the textbook. (Both

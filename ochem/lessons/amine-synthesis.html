@@ -141,13 +141,13 @@ document.addEventListener('DOMContentLoaded', function(){
     { id:'m2', t:'1-Bromopropane + <b>NaCN</b>, then LiAlH<sub>4</sub>', right:'plus',
       why:'Three carbons in, four out. Cyanide brings the extra carbon and LiAlH<sub>4</sub> turns the nitrile carbon into the CH<sub>2</sub>. Product: butan-1-amine.' },
     { id:'m3', t:'1-Bromopropane + <b>potassium phthalimide</b>, then hydrazine', right:'same',
-      why:'Gabriel. Three carbons in, three out, and a clean primary amine because the alkylated imide has no N&ndash;H and no available lone pair, so it cannot alkylate twice.' },
+      why:'Gabriel. Three carbons in, three out, and a clean primary amine because the alkylated imide has no N&ndash;H and no available lone pair, so it cannot alkylate twice. Azide displacement (NaN<sub>3</sub>, then LiAlH<sub>4</sub> or H<sub>2</sub>/Pd) is the same escape in fewer steps and the same bookkeeping: skeleton in, skeleton out.' },
     { id:'m4', t:'Butanal + <b>CH<sub>3</sub>NH<sub>2</sub>/NaBH<sub>3</sub>CN</b>', right:'plus',
       why:'Reductive amination, and the carbon count goes up because the <i>amine</i> brought one: four from the aldehyde plus one from methylamine gives a five-carbon secondary amine. The bond is made by reducing a C=N, not by displacement, so nothing over-alkylates.' },
     { id:'m5', t:'Butanamide + <b>LiAlH<sub>4</sub></b>', right:'same',
       why:'Amide reduction. Four carbons in, four out — the C=O simply becomes CH<sub>2</sub>. Contrast the top row, which is the same starting material under different reagents and loses a carbon.' },
-    { id:'m6', t:'1-Bromopropane + <b>NaN<sub>3</sub></b>, then H<sub>2</sub>/Pd', right:'same',
-      why:'Azide displacement. Three in, three out. Azide is an excellent nucleophile whose product is not an amine at all, so there is nothing to over-alkylate — the same escape as Gabriel, in fewer steps.' }
+    { id:'m6', t:'Pentanamide + <b>Br<sub>2</sub>/NaOH</b>', right:'minus',
+      why:'Hofmann rearrangement again, on a different amide: five carbons in, four out. Product: butan-1-amine — the same amine the cyanide route reached from three carbons, which is the point of putting the two rows side by side. Azide displacement, not in this list, behaves exactly like Gabriel: the skeleton you put in is the skeleton you get back.' }
   ];
   var OPTS = [ { k:'plus', l:'One more carbon' }, { k:'same', l:'Same carbon count' }, { k:'minus', l:'One fewer carbon' } ];
 
@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
               if(Object.keys(done).length === CASES.length){
                 api.showFeedback(fb, true, missed
-                  ? 'All six. Two rows start from butanamide and go opposite ways, which is the pair worth remembering.'
+                  ? 'All six. Two rows start from butanamide and go opposite ways, which is the pair worth remembering — and two amides lose a carbon, so it is the reagent, not the substrate, that decides.'
                   : 'All six, first time — including the two butanamide rows, where the same starting material loses a carbon or keeps it depending entirely on the reagent.');
                 api.record(!missed); next.disabled = false;
               }
