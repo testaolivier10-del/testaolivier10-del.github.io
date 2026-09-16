@@ -41,7 +41,7 @@
   </nav>
 
   <header class="notes-head">
-    <p class="notes-eyebrow">Enolate Chemistry &middot; Section 75 of 114</p>
+    <p class="notes-eyebrow">Enolate Chemistry &middot; Section 75 of 116</p>
     <h1>Kinetic &amp; thermodynamic enolates</h1>
     <a class="notes-onward-cta" href="../lessons/enolate-regiochemistry.html">Practice this — interactive lesson</a>
   </header>
@@ -59,7 +59,7 @@
 
 <ul class="step-body">
 <li>Deprotonating <b>C6</b> gives the <b>less substituted</b> C=C &mdash; disubstituted.</li>
-<li>Deprotonating <b>C2</b> gives the <b>more substituted</b> C=C &mdash; trisubstituted, because the methyl already sits on one of the two carbons now sharing the double bond.</li>
+<li>Deprotonating <b>C2</b> gives the <b>more substituted</b> C=C &mdash; trisubstituted, because the methyl already sits on one of the two carbons now sharing the double bond. (Counting carbon substituents only; some texts count the enolate oxygen as well and would call these tri- and tetrasubstituted.)</li>
 </ul>
 
 <p class="step-body">So the more accessible proton and the more stable anion are on <b>opposite sides of the molecule</b>. That conflict is settled by conditions, not by the ketone.</p>
@@ -77,16 +77,24 @@
 
 <h3>The thermodynamic enolate: let it equilibrate</h3>
 
-<p class="step-body">Use a base that does <i>not</i> deprotonate completely &mdash; sodium ethoxide in ethanol, or sodium hydride &mdash; at room temperature or above, and every deprotonation can reverse. Both enolates form, both are reprotonated, and the mixture accumulates as the more stable one: the trisubstituted enolate from C2. The alkene-substitution rule that ranks Zaitsev products ranks these.</p>
+<p class="step-body">The thermodynamic enolate needs the opposite: the two enolates must be able to <b>interconvert</b>, so that the mixture can find the more stable one. A proton has to be able to travel from one &alpha; carbon to the other, and there is more than one way for that to happen.</p>
+
+<ul class="step-body">
+<li><b>The deprotonation itself reverses.</b> Sodium ethoxide in ethanol is the clean case: its conjugate acid is an alcohol of comparable pK<sub>a</sub>, so only a small equilibrium amount of enolate exists and it is handed back constantly.</li>
+<li><b>Free ketone shuttles it.</b> Un-ionized ketone is an acid, and any enolate in the flask can take a proton from it. This is the route that operates with <b>sodium hydride</b> &mdash; whose own deprotonation does <i>not</i> reverse, since the conjugate acid is H<sub>2</sub> and it leaves the flask. NaH is slow and heterogeneous, so a large pool of un-ionized ketone sits there throughout, and that pool equilibrates the two enolates.</li>
+<li><b>The amine shuttles it.</b> Deprotonating with LDA generates a full equivalent of diisopropylamine, which is a proton donor too. It is why warming a lithium enolate erodes its regiochemistry even though the base is long gone.</li>
+</ul>
+
+<p class="step-body">Whichever route is open, the mixture accumulates as the more stable enolate: the trisubstituted one from C2. The alkene-substitution rule that ranks Zaitsev products ranks these.</p>
 
 <div class="notes-table-wrap">
 <table class="notes-table">
 <thead><tr><th></th><th>Kinetic</th><th>Thermodynamic</th></tr></thead>
 <tbody>
-<tr><td>Base</td><td>LDA, 1 equiv</td><td>NaOEt or NaH</td></tr>
+<tr><td>Base</td><td>LDA, 1 equiv</td><td>NaOEt (reverses) or NaH (leaves free ketone)</td></tr>
 <tr><td>Temperature</td><td>&minus;78&nbsp;&deg;C</td><td>Room temperature or warmer</td></tr>
-<tr><td>Addition</td><td>Ketone into base</td><td>Irrelevant &mdash; it equilibrates anyway</td></tr>
-<tr><td>Reversible?</td><td>No</td><td>Yes, and that is the point</td></tr>
+<tr><td>Addition</td><td>Ketone into base, so no free ketone survives</td><td>Irrelevant &mdash; it equilibrates anyway</td></tr>
+<tr><td>Can the enolates interconvert?</td><td>No route left open</td><td>Yes, and that is the point</td></tr>
 <tr><td>Deprotonates</td><td>Less hindered &alpha; carbon</td><td>More substituted &alpha; carbon</td></tr>
 <tr><td>Enolate C=C</td><td>Less substituted</td><td>More substituted</td></tr>
 </tbody>
@@ -95,24 +103,24 @@
 
 <h3>The same switch, one step earlier</h3>
 <!-- fig:which-alpha-carbon:start -->
-<figure class="notes-figure notes-figure--wide" style="--vb:760"><svg viewBox="0 0 760 300" role="img" aria-label="An unsymmetrical ketone in the middle with arrows to the less substituted enolate on one side and the more substituted enolate on the other"><rect class="fg-panel" x="286" y="116" width="190" height="70" rx="10"></rect><text class="fg-lbl" x="381" y="144" text-anchor="middle" font-size="12">2-methylcyclohexanone</text><text class="fg-sm" x="381" y="166" text-anchor="middle" font-size="10">C6 open · C2 carries the methyl</text><line class="fg-arrow" x1="280" y1="140" x2="206.71" y2="92.36"></line><path class="fg-head" d="M200 88 L208.97 88.87 L204.44 95.85 Z"></path><line class="fg-arrow" x1="482" y1="140" x2="555.29" y2="92.36"></line><path class="fg-head" d="M562 88 L557.56 95.85 L553.03 88.87 Z"></path><rect class="fg-panel" x="24" y="40" width="220" height="92" rx="10"></rect><text class="fg-lbl" x="40" y="64" text-anchor="start" font-size="12.5">KINETIC — at C6</text><text class="fg-tag-good" x="40" y="84" text-anchor="start" font-size="11">LDA, 1 eq, −78 °C, THF</text><text class="fg-tag-good" x="40" y="102" text-anchor="start" font-size="11">ketone added to the base</text><text class="fg-sm" x="40" y="122" text-anchor="start" font-size="10">less substituted C=C</text><rect class="fg-panel-warn" x="518" y="40" width="220" height="92" rx="10"></rect><text class="fg-lbl" x="534" y="64" text-anchor="start" font-size="12.5">THERMODYNAMIC — at C2</text><text class="fg-tag" x="534" y="84" text-anchor="start" font-size="11">NaOEt or NaH</text><text class="fg-tag" x="534" y="102" text-anchor="start" font-size="11">room temperature or warmer</text><text class="fg-sm" x="534" y="122" text-anchor="start" font-size="10">more substituted C=C</text><line class="fg-rule" x1="24" y1="218" x2="700" y2="218"></line><text class="fg-lbl" x="24" y="244" text-anchor="start" font-size="12">The easier proton and the more stable anion are on OPPOSITE sides of the molecule.</text><text class="fg-lbl" x="24" y="268" text-anchor="start" font-size="12">One question settles every case: can the deprotonation reverse?</text><text class="fg-tag-good" x="24" y="290" text-anchor="start" font-size="11">If it can, the mixture finds the stabler enolate. If it cannot, you keep the first one formed.</text></svg><figcaption>Nothing about the ketone settles which enolate you get, which is why the conditions are written out in full rather than abbreviated to a reagent name. Each item in the kinetic column blocks one route back: the base is strong enough not to reverse, bulky enough to pick the open proton, cold enough not to equilibrate, and added first so no free ketone is left to shuttle protons.<span class="notes-figure-note">Reversibility is the test, not temperature. LDA at room temperature is still kinetic, because its deprotonation does not reverse — and LDA at −78 °C added the wrong way round is not, because leftover ketone gives the protons a way back. Reading the thermometer instead of asking the question gets both of those wrong.</span></figcaption></figure>
+<figure class="notes-figure notes-figure--wide" style="--vb:760"><svg viewBox="0 0 760 300" role="img" aria-label="An unsymmetrical ketone in the middle with arrows to the less substituted enolate on one side and the more substituted enolate on the other"><rect class="fg-panel" x="286" y="116" width="190" height="70" rx="10"></rect><text class="fg-lbl" x="381" y="144" text-anchor="middle" font-size="12">2-methylcyclohexanone</text><text class="fg-sm" x="381" y="166" text-anchor="middle" font-size="10">C6 open · C2 carries the methyl</text><line class="fg-arrow" x1="280" y1="140" x2="206.71" y2="92.36"></line><path class="fg-head" d="M200 88 L208.97 88.87 L204.44 95.85 Z"></path><line class="fg-arrow" x1="482" y1="140" x2="555.29" y2="92.36"></line><path class="fg-head" d="M562 88 L557.56 95.85 L553.03 88.87 Z"></path><rect class="fg-panel" x="24" y="40" width="220" height="92" rx="10"></rect><text class="fg-lbl" x="40" y="64" text-anchor="start" font-size="12.5">KINETIC — at C6</text><text class="fg-tag-good" x="40" y="84" text-anchor="start" font-size="11">LDA, 1 eq, −78 °C, THF</text><text class="fg-tag-good" x="40" y="102" text-anchor="start" font-size="11">ketone added to the base</text><text class="fg-sm" x="40" y="122" text-anchor="start" font-size="10">less substituted C=C</text><rect class="fg-panel-warn" x="518" y="40" width="220" height="92" rx="10"></rect><text class="fg-lbl" x="534" y="64" text-anchor="start" font-size="12.5">THERMODYNAMIC — at C2</text><text class="fg-tag" x="534" y="84" text-anchor="start" font-size="11">NaOEt or NaH</text><text class="fg-tag" x="534" y="102" text-anchor="start" font-size="11">room temperature or warmer</text><text class="fg-sm" x="534" y="122" text-anchor="start" font-size="10">more substituted C=C</text><line class="fg-rule" x1="24" y1="218" x2="700" y2="218"></line><text class="fg-lbl" x="24" y="244" text-anchor="start" font-size="12">The easier proton and the more stable anion are on OPPOSITE sides of the molecule.</text><text class="fg-lbl" x="24" y="268" text-anchor="start" font-size="12">One question settles every case: can the two enolates trade a proton?</text><text class="fg-tag-good" x="24" y="290" text-anchor="start" font-size="11">If they can, the mixture finds the stabler one. If not, you keep whichever formed first.</text></svg><figcaption>Nothing about the ketone settles which enolate you get, which is why the conditions are written out in full rather than abbreviated to a reagent name. Each item in the kinetic column blocks one route back: the base is strong enough not to reverse, bulky enough to pick the open proton, cold enough not to equilibrate, and added first so no free ketone is left to shuttle protons.<span class="notes-figure-note">The test is whether the two enolates can trade a proton, and there are three ways they can. The deprotonation reverses — ethoxide. Free ketone shuttles it — which is why NaH, whose deprotonation is as irreversible as LDA’s, is a thermodynamic base: it is slow enough that un-ionized ketone is always present. Or the amine the base generated shuttles it, which is what erodes a lithium enolate on warming. Each item in the kinetic column closes one of the three, which is why missing any single one is enough to lose the regiochemistry.</span></figcaption></figure>
 <!-- fig:which-alpha-carbon:end -->
 
 <p class="step-body">This is the control problem from the conjugation chapter, applied to a different step. There, an allylic cation could be captured at two carbons, and warming let bromide leave again so the mixture settled into the more substituted alkene. Here the branch point is the <b>deprotonation</b>, and reversing it means a proton moving back from enolate to ketone rather than a C&ndash;Br bond breaking.</p>
 
 <p class="step-body">One difference matters. In the diene case the two options were <b>products</b>. Here they are <b>intermediates</b>: you choose an enolate to control where the <i>next</i> reaction happens, so the choice is made before any electrophile is added.</p>
 
-<div class="notes-fact">A base strong enough to deprotonate completely cannot give the thermodynamic enolate, because thermodynamic control requires the first step to reverse. LDA at room temperature is still kinetic. Reversibility is what matters, not the temperature on its own.</div>
+<div class="notes-fact">So the question to ask is not &ldquo;is the base strong?&rdquo; and not &ldquo;is it cold?&rdquo; but <b>can the two enolates trade a proton?</b> A base strong enough to deprotonate completely closes only <i>one</i> of the three routes above &mdash; its own reversal &mdash; which is exactly why NaH, whose deprotonation is as irreversible as LDA's, still delivers the thermodynamic enolate. Every item in the kinetic recipe is there to close a different route: LDA for the reversal, inverse addition for the free ketone, and the cold for the amine. Miss any one and the regiochemistry drifts.</div>
 
 <h3>The third option: don't use an enolate</h3>
 
 <p class="step-body">A ketone and a secondary amine give an <b>enamine</b>, nucleophilic at the &alpha; carbon for the reasons set out in the imines and enamines section. It reaches the same regiochemistry by a different route: the double bond forms toward the <b>less substituted</b> side, because the substituted alternative twists the nitrogen lone pair out of alignment with the C=C.</p>
 
-<p class="step-body">It is also <b>neutral</b> rather than anionic, so no strong base is needed, and less reactive than an enolate, so it stops cleanly after <b>one</b> alkylation where a lithium enolate can go twice. Alkylate, then hydrolyze back to the ketone &mdash; the Stork enamine sequence.</p>
+<p class="step-body">It is also <b>neutral</b> rather than anionic, so no strong base is needed, and it stops cleanly after <b>one</b> alkylation where a lithium enolate can go twice. The reason is structural rather than a matter of reactivity: alkylating an enamine converts it into an <b>iminium salt</b>, which has no nucleophilic carbon at all, and there is no base present to turn it back into an enamine. A second alkylation is not slow, it is impossible. Compare the lithium enolate, where the monoalkylated ketone is simply deprotonated by enolate that has not yet reacted. Alkylate, then hydrolyze back to the ketone &mdash; the Stork enamine sequence.</p>
 
 <h3>The limit nobody gets around</h3>
 
-<p class="step-body">Alkylating a lithium enolate is an S<sub>N</sub>2, and an enolate is a base as well as a nucleophile. Methyl and primary halides work well, secondary halides give substantial elimination, and tertiary halides give elimination and nothing else &mdash; the identical constraint that limits the malonic ester synthesis. Check it on the <b>halide</b>, never on the target.</p>
+<p class="step-body">Alkylating a lithium enolate is an S<sub>N</sub>2, and an enolate is a base as well as a nucleophile. Methyl, primary, allylic and benzylic halides work well, secondary halides give substantial elimination, and tertiary halides give elimination and nothing else &mdash; the identical constraint that limits the malonic ester synthesis. Check it on the <b>halide</b>, never on the target.</p>
 
 <h3>What carries forward</h3>
 
@@ -123,7 +131,7 @@
   <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="alpha-halogenation.html"><span>Previous</span>Alpha halogenation &amp; the haloform reaction</a><a class="notes-prevnext notes-next" href="amine-structure.html"><span>Next</span>Structure &amp; basicity</a></nav>
 
   <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 114 sections</a></p>
+    <p><a href="../learn.html">&larr; All 116 sections</a></p>
     <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
   </footer>
 </div>

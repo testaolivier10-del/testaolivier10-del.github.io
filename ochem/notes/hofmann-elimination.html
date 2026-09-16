@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hofmann elimination — Amines | Organic Chemistry</title>
+<meta name="description" content="The previous section noted in passing that an amine can be pushed into an elimination if the nitrogen is methylated first, and that the alkene is the less…">
+<link rel="canonical" href="https://levlprep.com/ochem/notes/hofmann-elimination.html">
+<meta property="og:title" content="Hofmann elimination — Amines | Organic Chemistry">
+<meta property="og:description" content="The previous section noted in passing that an amine can be pushed into an elimination if the nitrogen is methylated first, and that the alkene is the less…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/notes/hofmann-elimination.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+</head>
+<body>
+<div class="wrap notes-page">
+  <nav class="notes-crumb" aria-label="Breadcrumb">
+    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
+    <span>Amines</span>
+  </nav>
+
+  <header class="notes-head">
+    <p class="notes-eyebrow">Amines &middot; Section 79 of 116</p>
+    <h1>Hofmann elimination</h1>
+    <a class="notes-onward-cta" href="../lessons/hofmann-elimination.html">Practice this — interactive lesson</a>
+  </header>
+
+  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+       asides); it is the same class the textbook view uses, so a section looks
+       identical whether it is read here or inside learn.html. -->
+  <article class="notes-body notes-view">
+<!-- notes:start -->
+<p class="step-body">The previous section noted in passing that an amine can be pushed into an elimination if the nitrogen is methylated first, and that the alkene is the less substituted one. The reason behind that settles a question left open in the substitution and elimination chapter &mdash; how firm the Zaitsev rule is.</p>
+
+<h3>Why the amine has to be converted first</h3>
+
+<p class="step-body">An amine cannot undergo E2 as it stands. The group on the &alpha; carbon has to leave with the electron pair, and here that would be an amide anion, R<sub>2</sub>N<sup>&minus;</sup> &mdash; one of the strongest bases in the course and therefore, by the leaving-group logic of the substitution and elimination chapter, one of the worst leaving groups.</p>
+
+<p class="step-body"><b>Exhaustive methylation</b> fixes this. Excess CH<sub>3</sub>I methylates the nitrogen to a <b>quaternary ammonium</b> salt, R&ndash;N<sup>+</sup>(CH<sub>3</sub>)<sub>3</sub> &mdash; the runaway alkylation of the last section used deliberately rather than suffered. What leaves now is a <b>neutral trialkylamine</b>: the nitrogen was positively charged beforehand and uncharged after, so it carries no negative charge away, and a neutral amine is a far weaker base.</p>
+
+<p class="step-body">Then <b>Ag<sub>2</sub>O in water, with heat</b>. The two supply hydroxide and precipitate the iodide as AgI, removing the competing nucleophile. Heat drives the E2 &mdash; one step, anti-periplanar, exactly as in the substitution and elimination chapter.</p>
+
+<h3>The Hofmann rule: the less substituted alkene</h3>
+
+<p class="step-body">The product is the <b>least substituted</b> alkene, the opposite of Zaitsev, and the reason is not a new principle. The N<sup>+</sup>(CH<sub>3</sub>)<sub>3</sub> group is enormous, so hydroxide finds the crowded, more-substituted &beta; carbon shielded and takes a hydrogen from the less-substituted one instead. That is the steric argument the E2 section makes for <i>tert</i>-butoxide giving the Hofmann product where ethoxide gives Zaitsev; read the two together. Only the location of the bulk differs &mdash; there the base, here the leaving group.</p>
+
+<div class="notes-fact">A second effect points the same way. The positive nitrogen makes the &beta; hydrogens unusually acidic, so the transition state takes on E1cb character: the C&ndash;H bond breaks well ahead of the C&ndash;N bond, and partial negative charge builds on the &beta; carbon. Alkyl groups destabilize a carbanion, so the &beta; carbon carrying fewest of them holds that charge best. Sterics and charge agree.</div>
+
+<h3>Worked example: 2-aminobutane</h3>
+<!-- fig:hofmann-picks-the-open-side:start -->
+<figure class="notes-figure notes-figure--wide" style="--vb:760"><svg viewBox="0 0 760 300" role="img" aria-label="A butyl trimethylammonium salt with its two beta carbons labeled, and the less substituted alkene marked as the major product"><circle class="fg-atom" cx="140" cy="120" r="15"></circle><text class="fg-lbl" x="140" y="124.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom-hi" cx="220" cy="150" r="16"></circle><text class="fg-lbl" x="220" y="154.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom" cx="300" cy="120" r="15"></circle><text class="fg-lbl" x="300" y="124.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom" cx="380" cy="150" r="15"></circle><text class="fg-lbl" x="380" y="154.44" text-anchor="middle" font-size="12">C</text><line class="fg-bond" x1="154.04" y1="125.27" x2="205.96" y2="144.73"></line><line class="fg-bond" x1="234.04" y1="144.73" x2="285.96" y2="125.27"></line><line class="fg-bond" x1="314.04" y1="125.27" x2="365.96" y2="144.73"></line><circle class="fg-atom-warn" cx="220" cy="88" r="16"></circle><text class="fg-lbl" x="220" y="91.52" text-anchor="middle" font-size="9.5">N⁺(CH₃)₃</text><line class="fg-bond" x1="220" y1="135" x2="220" y2="111"></line><text class="fg-tag" x="220" y="62" text-anchor="middle" font-size="11">very bulky</text><text class="fg-tag-good" x="140" y="152" text-anchor="middle" font-size="11">C1 · CH₃ · 3 H</text><text class="fg-sm" x="140" y="168" text-anchor="middle" font-size="10">open</text><text class="fg-tag" x="300" y="96" text-anchor="middle" font-size="11">C3 · CH₂ · 2 H</text><text class="fg-sm" x="300" y="80" text-anchor="middle" font-size="10">crowded by the N⁺</text><line class="fg-rule" x1="24" y1="196" x2="700" y2="196"></line><text class="fg-tag-good" x="24" y="222" text-anchor="start" font-size="12">H from C1  →  but-1-ene, monosubstituted  —  MAJOR</text><text class="fg-tag" x="24" y="244" text-anchor="start" font-size="12">H from C3  →  but-2-ene, disubstituted and more stable  —  minor</text><text class="fg-lbl" x="24" y="272" text-anchor="start" font-size="12">Four carbons either way. Trimethylamine leaves alongside.</text><text class="fg-lbl" x="24" y="294" text-anchor="start" font-size="12">The more stable alkene loses, because the base cannot reach the hydrogen that makes it.</text></svg><figcaption>Zaitsev would pick but-2-ene and this reaction does not, which is the whole point of drawing the ammonium group oversized. Hydroxide takes the hydrogen it can reach rather than the one that gives the better alkene, exactly as tert-butoxide does in the E2 chapter — only here the bulk is on the leaving group instead of the base.<span class="notes-figure-note">Run the picture backwards and it becomes an assay. Counting how many equivalents of CH₃I an unknown amine swallowed said whether it was primary, secondary or tertiary, and identifying the alkene said what sat around the nitrogen — which is how alkaloid skeletons were argued for decades, at the cost of the whole sample and several weeks per compound.</span></figcaption></figure>
+<!-- fig:hofmann-picks-the-open-side:end -->
+
+<p class="step-body">2-Aminobutane, CH<sub>3</sub>&ndash;CH(NH<sub>2</sub>)&ndash;CH<sub>2</sub>&ndash;CH<sub>3</sub>, is a primary amine on C2 of a four-carbon chain. It takes <b>three equivalents</b> of CH<sub>3</sub>I &mdash; two replacing the N&ndash;H hydrogens, a third quaternizing the nitrogen &mdash; giving the <i>sec</i>-butyltrimethylammonium salt.</p>
+
+<p class="step-body">C2 bears the leaving group, so the &beta; carbons are C1 and C3. C1 is a CH<sub>3</sub> with three hydrogens; C3 is a CH<sub>2</sub> carrying a further methyl, with two. A hydrogen from C1 gives <b>but-1-ene</b>, CH<sub>2</sub>=CH&ndash;CH<sub>2</sub>&ndash;CH<sub>3</sub>, monosubstituted; one from C3 gives but-2-ene, disubstituted and more stable. Hofmann conditions give but-1-ene as the major product &mdash; four carbons either way, with trimethylamine alongside.</p>
+
+<div class="notes-table-wrap">
+<table class="notes-table">
+<thead><tr><th></th><th>Ordinary E2, small base</th><th>Hofmann elimination</th></tr></thead>
+<tbody>
+<tr><td>Leaving group</td><td>halide, small</td><td>NR<sub>3</sub>, very bulky</td></tr>
+<tr><td>Where the bulk is</td><td>on the base, if anywhere</td><td>on the substrate</td></tr>
+<tr><td>&beta; hydrogen taken</td><td>most substituted</td><td>least hindered</td></tr>
+<tr><td>Product</td><td>Zaitsev alkene</td><td>Hofmann alkene</td></tr>
+</tbody></table>
+</div>
+
+<h3>Counting methyl groups: structure determination before NMR</h3>
+
+<p class="step-body">Before spectroscopy this sequence was analysis, not synthesis. How much CH<sub>3</sub>I an unknown amine consumed reported its class directly:</p>
+
+<ul class="step-body">
+<li>three equivalents &rarr; a primary amine, RNH<sub>2</sub></li>
+<li>two equivalents &rarr; a secondary amine, R<sub>2</sub>NH</li>
+<li>one equivalent &rarr; a tertiary amine, R<sub>3</sub>N</li>
+</ul>
+
+<p class="step-body">Identifying the alkenes released then showed what the skeleton around the nitrogen looked like. A <b>cyclic</b> amine is the informative case: two C&ndash;N bonds hold the nitrogen, so the first elimination only opens the ring and leaves the nitrogen attached. Freeing it takes a second round &mdash; so a compound needing two rounds had its nitrogen in a ring, a conclusion drawn from bottles and a balance.</p>
+
+<p class="step-body">The method is obsolete, and it is worth seeing why it mattered. It consumed the sample, took weeks, and was only as good as the identification of the fragments &mdash; yet alkaloid structures were argued this way. NMR now settles it in minutes, on a milligram, non-destructively.</p>
+
+<h3>What carries forward</h3>
+
+<p class="step-body">This is why Zaitsev was stated as a tendency rather than a law. The E2 section made that point with geometry, where anti-periplanar availability outranks alkene stability; this reaction makes it with sterics, and adds something: bulk on the <b>leaving group</b>, not only on the base, is enough to invert the regiochemistry. Check both partners for size before reaching for the more substituted alkene.</p>
+<!-- notes:end -->
+  </article>
+
+  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="amine-synthesis.html"><span>Previous</span>Making amines</a><a class="notes-prevnext notes-next" href="aromaticity.html"><span>Next</span>Aromaticity</a></nav>
+
+  <footer class="notes-foot">
+    <p><a href="../learn.html">&larr; All 116 sections</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
+  </footer>
+</div>
+</body>
+</html>

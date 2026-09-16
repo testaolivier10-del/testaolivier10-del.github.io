@@ -137,17 +137,17 @@ document.addEventListener('DOMContentLoaded', function(){
 
   var CASES = [
     { id:'k1', t:'<b>LDA</b>, 1 equiv, &minus;78 &deg;C, ketone added to base', right:'kin',
-      why:'Kinetic. Strong enough to deprotonate completely so nothing reverses, bulky enough to prefer the open proton, cold enough that nothing equilibrates, and inverse addition so there is never free ketone around to shuttle protons between enolates.' },
+      why:'Kinetic, and every item is closing a different door. LDA is strong enough that its own deprotonation never reverses; bulky enough to prefer the open proton; inverse addition leaves no free ketone to shuttle protons; and the cold keeps the diisopropylamine it generates from doing the same job. Three routes back, all shut.' },
     { id:'k2', t:'<b>NaOEt</b> in EtOH, room temperature', right:'thd',
       why:'Thermodynamic. The base is not strong enough to deprotonate completely, so every deprotonation can reverse, and the mixture accumulates as the more stable enolate — the more substituted C=C.' },
     { id:'k3', t:'<b>LDA</b>, 1 equiv, room temperature', right:'kin',
-      why:'Still kinetic, and this is the row that tests whether you have the idea or the recipe. LDA deprotonates irreversibly whatever the temperature, and thermodynamic control requires the first step to reverse. Warmth is not what makes something thermodynamic; reversibility is.' },
+      why:'Largely kinetic, and this is the row that tests whether you have the idea or the recipe. LDA’s own deprotonation does not reverse at any temperature, so warmth alone does not hand the proton back to the base. But it is not the clean answer the recipe implies: a full equivalent of diisopropylamine is sitting in the flask, and at room temperature that amine shuttles protons between the two enolates well enough to erode the regiochemistry. Which is exactly why −78 °C is in every real procedure.' },
     { id:'k4', t:'<b>NaH</b>, warm, long reaction time', right:'thd',
-      why:'Thermodynamic. Hydride is not a hindered base and the conditions let the system equilibrate, so the more substituted enolate wins on stability.' },
+      why:'Thermodynamic — and for a reason that breaks the easy rule. NaH’s deprotonation is as irreversible as LDA’s: its conjugate acid is H<sub>2</sub>, which leaves the flask, so nothing hands the proton back to the base. What equilibrates the mixture is that NaH is slow and heterogeneous, so a large pool of un-ionized ketone sits there throughout, and free ketone passes protons between the two enolates. Strong does not mean kinetic.' },
     { id:'k5', t:'<b>Pyrrolidine</b>, cat. acid, then the halide', right:'enam',
       why:'Neither — this is the enamine route. A secondary amine gives a neutral nucleophile that forms toward the less substituted side, needs no strong base, and stops cleanly after one alkylation where a lithium enolate can go twice.' },
     { id:'k6', t:'<b>LDA</b>, then warm and stir before adding the halide', right:'thd',
-      why:'Thermodynamic, and for a reason worth seeing. The deprotonation itself is irreversible, but once both enolates exist, warming lets the small amount of ketone always present shuttle protons between them — so the mixture equilibrates anyway. It is why the cold and the inverse addition are both in the recipe.' }
+      why:'Thermodynamic, and for the reason the row above shows. The deprotonation is irreversible, but the flask still holds a full equivalent of diisopropylamine from the base, and warming lets that amine pass protons between the two enolates until the mixture settles on the more stable one. Nothing about the base changed; a route back was left open.' }
   ];
   var OPTS = [ { k:'thd', l:'Thermodynamic enolate' }, { k:'enam', l:'Neither — an enamine' },
                { k:'kin', l:'Kinetic enolate' } ];
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function(){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Which enolate do these conditions give?</h2>' +
-            '<p class="step-body">One question decides almost every row: <b>can the deprotonation reverse?</b> If it can, the mixture finds the more stable enolate. If it cannot, you keep whichever formed first.</p>' +
+            '<p class="step-body">One question decides every row, and it is not about the base: <b>can the two enolates trade a proton?</b> Anything that can carry one between them — a deprotonation that reverses, leftover ketone, or the amine the base generated — lets the mixture find the more stable enolate.</p>' +
             '<div class="radical-sort">' +
             CASES.map(function(c){
               return '<div class="radical-row" data-case="' + c.id + '">' +
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function(){
               var cfg = CASES.filter(function(c){ return c.id === id; })[0];
               if(btn.getAttribute('data-o') !== cfg.right){
                 missed = true; btn.classList.add('wrong'); btn.disabled = true;
-                api.showFeedback(fb, false, 'Do not read the temperature first. Ask whether anything in these conditions lets a proton go back on — a base too weak to finish the job, or free ketone left in the flask.');
+                api.showFeedback(fb, false, 'Do not read the temperature first, and do not read the strength of the base. Ask what could carry a proton from one α carbon to the other: a deprotonation that reverses, leftover ketone, or the amine the base left behind.');
                 return;
               }
               done[id] = true; btn.classList.add('correct');
@@ -216,8 +216,8 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
               if(Object.keys(done).length === CASES.length){
                 api.showFeedback(fb, true, missed
-                  ? 'All six. Three of these rows use LDA and they do not all give the same answer, which is the point.'
-                  : 'All six, first time — including the two LDA rows that are not kinetic-by-recipe, where what decides it is whether anything can reverse.');
+                  ? 'All six. Three rows use LDA and do not all give the same answer, and one row uses a base as irreversible as LDA and gives the opposite one.'
+                  : 'All six, first time — including NaH, which deprotonates irreversibly and still gives the thermodynamic enolate, because what matters is whether the two enolates can trade a proton.');
                 api.record(!missed); next.disabled = false;
               }
             });
@@ -242,16 +242,16 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'mcq',
         eyebrow: 'Step 5 · Independent Practice',
-        title: 'Why does a weaker base give the more substituted enolate?',
+        title: 'Sodium ethoxide gives the more substituted enolate. Why?',
         options: [
-          'Deprotonation reverses, so the mixture finds the more stable one',
+          'Its deprotonation reverses, so the enolates interconvert',
           'A weaker base prefers the more hindered proton',
           'It deprotonates the methyl group instead',
           'The more substituted enolate forms faster'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct, and notice that the base is not <i>choosing</i> anything. A weak base establishes an equilibrium: both enolates form, both get reprotonated, and over time the population collects in the more stable one, which is the more substituted C=C by the same rule that ranks Zaitsev products. Thermodynamic control never means a reagent with different preferences — it means the system was given a way back.',
-        wrongFeedback: 'A weak base is not more selective than a strong one. Ask what a base too weak to finish the job allows to happen that a strong one does not.'
+        correctFeedback: 'Correct, and notice that the base is not <i>choosing</i> anything. Ethoxide’s conjugate acid is an alcohol of comparable pK<sub>a</sub>, so only a small equilibrium amount of enolate exists and it is handed back constantly; over time the population collects in the more stable enolate, the more substituted C=C. Thermodynamic control never means a reagent with different preferences — it means the enolates were given a way to trade a proton. Reversal of the deprotonation is one such way, and the section shows two others.',
+        wrongFeedback: 'A weak base is not more selective than a strong one. Ask what a base whose conjugate acid is comparable in pK<sub>a</sub> allows to keep happening.'
       },
       {
         type: 'explain',
@@ -266,13 +266,13 @@ document.addEventListener('DOMContentLoaded', function(){
         eyebrow: 'Step 7 · Independent Practice',
         title: 'You have the kinetic enolate and want to alkylate it with a secondary bromide. What happens?',
         options: [
-          'Mostly elimination',
+          'Substantial elimination',
           'Clean S<sub>N</sub>2 alkylation',
-          'The enolate is protonated',
+          'The enolate attacks the carbonyl instead',
           'The enolate adds twice'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct, and it is the constraint nobody gets around. Alkylating an enolate is an S<sub>N</sub>2, and an enolate is a strong base as well as a nucleophile — so a secondary halide gives substantial elimination and a tertiary one gives nothing else. Methyl and primary halides are what work. This is the identical limit that caps the malonic ester synthesis, and the habit to build is checking it on the <b>halide</b> rather than on the target.',
+        correctFeedback: 'Correct, and it is the constraint nobody gets around. Alkylating an enolate is an S<sub>N</sub>2, and an enolate is a strong base as well as a nucleophile — so a secondary halide gives substantial elimination and a tertiary one gives nothing else. Methyl, primary, allylic and benzylic halides are what work. This is the identical limit that caps the malonic ester synthesis, and the habit to build is checking it on the <b>halide</b> rather than on the target.',
         wrongFeedback: 'Alkylation here is an S<sub>N</sub>2. What does a secondary substrate do when the nucleophile attacking it is also a strong base?'
       },
       {
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'Both &alpha; carbons are deprotonated'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct, and this is why the direction of addition is written into the recipe rather than left to taste. Adding base to ketone means that until the very end there is always <b>excess unreacted ketone</b> in the flask, and free ketone is an acid that any enolate already formed can take a proton from. That proton transfer is the reverse step the cold was supposed to prevent — so the kinetic enolate is quietly converted to the thermodynamic one, and the temperature never gets a say. The deeper point: LDA’s deprotonation is irreversible, but irreversibility of that <i>one</i> step is not enough. Equilibration needs only some route back, and leftover starting material is one.'
+        correctFeedback: 'Correct, and this is why the direction of addition is written into the recipe rather than left to taste. Adding base to ketone means that until the very end there is always <b>excess unreacted ketone</b> in the flask, and free ketone is an acid that any enolate already formed can take a proton from. The two enolates can therefore trade, and the mixture drifts to the more stable one while the thermometer says nothing is happening. The deeper point is that LDA’s irreversibility closes exactly one route of three. Leftover ketone is the second, and the diisopropylamine LDA itself generates is the third — which is why NaH, whose deprotonation is every bit as irreversible as LDA’s, is a thermodynamic base: it is slow enough that free ketone is always present. Strong does not mean kinetic.'
       }
     ]
   });

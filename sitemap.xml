@@ -201,6 +201,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/amine-synthesis.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/amino-acids.html</loc>
     <lastmod>2026-09-16</lastmod>
     <priority>0.8</priority>
@@ -432,6 +437,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/h-nmr.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/notes/hofmann-elimination.html</loc>
     <lastmod>2026-09-16</lastmod>
     <priority>0.8</priority>
   </url>
@@ -796,6 +806,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/lessons/amine-synthesis.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/lessons/amino-acids.html</loc>
     <lastmod>2026-09-16</lastmod>
     <priority>0.7</priority>
@@ -857,7 +872,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/carbon-carbon-bonds.html</loc>
-    <lastmod>2026-09-15</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -1018,6 +1033,11 @@
   <url>
     <loc>https://levlprep.com/ochem/lessons/h-nmr.html</loc>
     <lastmod>2026-09-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/hofmann-elimination.html</loc>
+    <lastmod>2026-09-16</lastmod>
     <priority>0.7</priority>
   </url>
   <url>

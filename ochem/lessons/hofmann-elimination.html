@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hofmann elimination — Amines | Organic Chemistry</title>
+<meta name="description" content="An amine cannot do E2 because an amide anion will not leave. Quaternize the nitrogen and it will - and the bulky leaving group gives the least substituted alkene, the opposite of Zaitsev.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/hofmann-elimination.html">
+<meta property="og:title" content="Hofmann elimination — Amines | Organic Chemistry">
+<meta property="og:description" content="An amine cannot do E2 because an amide anion will not leave. Quaternize the nitrogen and it will - and the bulky leaving group gives the least substituted alkene, the opposite of Zaitsev.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/hofmann-elimination.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/hofmann-elimination.html#lesson",
+      "name": "Hofmann elimination",
+      "url": "https://levlprep.com/ochem/lessons/hofmann-elimination.html",
+      "description": "An amine cannot do E2 because an amide anion will not leave. Quaternize the nitrogen and it will - and the bulky leaving group gives the least substituted alkene, the opposite of Zaitsev.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Hofmann elimination"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Amines",
+          "item": "https://levlprep.com/ochem/learn.html#m-amines"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Hofmann elimination",
+          "item": "https://levlprep.com/ochem/lessons/hofmann-elimination.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow">Module 15 &middot; Amines</div>
+    <h1 style="margin-bottom:4px;">Hofmann elimination.</h1>
+    <p class="lede" style="margin-top:0;">Methylate the nitrogen until it can leave, and the alkene comes out the wrong way round.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 8</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/hofmann-elimination.html">Hofmann elimination &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../mechanisms/e2.html">E2 elimination</a><a href="amine-synthesis.html">Making amines</a><a href="h-nmr.html">&sup1;H NMR</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+
+  var CASES = [
+    { id:'h1', t:'<b>2-Aminobutane</b>, CH<sub>3</sub>CH(NH<sub>2</sub>)CH<sub>2</sub>CH<sub>3</sub>', right:'three',
+      why:'Three equivalents. Two replace the N&ndash;H hydrogens and a third quaternizes the nitrogen. A primary amine always takes three.' },
+    { id:'h2', t:'<b>Diethylamine</b>, (CH<sub>3</sub>CH<sub>2</sub>)<sub>2</sub>NH', right:'two',
+      why:'Two. One N&ndash;H to replace, then quaternization. Counting the equivalents consumed is how the class of an unknown amine was read off before spectroscopy.' },
+    { id:'h3', t:'<b>Triethylamine</b>, (CH<sub>3</sub>CH<sub>2</sub>)<sub>3</sub>N', right:'one',
+      why:'One. Nothing to replace, so the single methylation quaternizes it directly.' },
+    { id:'h4', t:'<b>Piperidine</b>, a six-membered ring with NH', right:'two',
+      why:'Two, by the N&ndash;H count &mdash; but the informative part comes later. Two C&ndash;N bonds hold this nitrogen in the ring, so the first elimination only <i>opens</i> the ring and leaves the nitrogen attached. Freeing it takes a second full round, and needing two rounds was itself the evidence that the nitrogen had been in a ring.' }
+  ];
+  var OPTS = [ { k:'two', l:'Two equivalents' }, { k:'one', l:'One equivalent' }, { k:'three', l:'Three equivalents' } ];
+
+  window.OchemLessonEngine.start({
+    topicId: 'hofmann-elimination',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'An amine cannot eliminate until you change the nitrogen.',
+        bodyHtml: '<p class="step-body">E2 needs the group on the &alpha; carbon to leave with the electron pair. For an amine that would be R<sub>2</sub>N<sup>&minus;</sup> &mdash; one of the strongest bases in the course, and therefore one of the worst leaving groups there is. Nothing happens.</p>' +
+          '<p class="step-body"><b>Exhaustive methylation</b> fixes it. Excess CH<sub>3</sub>I converts the nitrogen to a <b>quaternary ammonium</b> salt, and what leaves now is a <b>neutral trialkylamine</b>: the nitrogen was positively charged before and uncharged after, so it carries no negative charge away.</p>' +
+          '<div class="explain-box">Then <b>Ag<sub>2</sub>O in water, with heat</b>. The two together supply hydroxide and precipitate the iodide as AgI, which removes the competing nucleophile from the flask. Heat drives an ordinary E2 &mdash; one step, anti-periplanar, nothing new. Note what has happened here: the runaway alkylation the previous section spent its length avoiding is being used on purpose.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The product is the LESS substituted alkene.',
+        bodyHtml: '<p class="step-body">This is the opposite of Zaitsev, and the reason is not a new principle.</p>' +
+          '<p class="step-body">The N<sup>+</sup>(CH<sub>3</sub>)<sub>3</sub> group is <b>enormous</b>. Hydroxide finds the crowded, more-substituted &beta; carbon shielded by it, and takes a hydrogen from the open one instead. That is exactly the steric argument the E2 chapter makes for <i>tert</i>-butoxide giving the anti-Zaitsev product where ethoxide gives Zaitsev.</p>' +
+          '<div class="explain-box">A second effect points the same way. The positive nitrogen makes the &beta; hydrogens unusually acidic, so the C&ndash;H bond breaks well ahead of the C&ndash;N bond and partial negative charge builds on the &beta; carbon &mdash; E1cb character. Alkyl groups destabilize a carbanion, so the &beta; carbon with fewest of them carries that charge best. Sterics and charge agree, which is why the outcome is so reliable.</div>'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">How many equivalents of CH<sub>3</sub>I?</h2>' +
+            '<p class="step-body">Count the hydrogens on nitrogen, then add one to quaternize. Before spectroscopy this number <i>was</i> the analysis: it reports the class of the amine directly.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Equivalents of methyl iodide">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Count the N–H hydrogens, then add one more for quaternization. A ring does not change that count — it changes what happens afterward.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. The count is N–H hydrogens plus one, and the cyclic case is the one that carries extra information.'
+                  : 'All four, first time — including piperidine, where the equivalents match a secondary amine but the ring shows up in how many rounds it takes to free the nitrogen.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Guided Practice',
+        title: 'Why must the amine be methylated before it will eliminate?',
+        options: [
+          'R<sub>2</sub>N<sup>&minus;</sup> is far too basic to leave',
+          'The amine is not nucleophilic enough',
+          'Methylation makes the &beta; hydrogens acidic',
+          'The nitrogen must become planar first'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct, and it is the leaving-group logic from the substitution chapter applied unchanged: a good leaving group is the conjugate base of a strong acid, and an amide anion is the conjugate base of an amine, which is barely acidic at all. Quaternizing the nitrogen changes what departs from an anion to a <i>neutral</i> trialkylamine, and that is a workable leaving group. Methylation does also acidify the &beta; hydrogens, which matters later — but it is not why the reaction becomes possible.',
+        wrongFeedback: 'Ask what would have to leave with the electron pair if the amine eliminated as it stands, and how basic that species is.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'Exhaustive methylation of 2-aminobutane, then Ag<sub>2</sub>O and heat. Major product?',
+        options: [
+          'But-1-ene',
+          'But-2-ene',
+          '2-Methylpropene',
+          'Butan-2-ol'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. The nitrogen sits on C2, so the &beta; carbons are C1 — a CH<sub>3</sub> with three hydrogens and nothing crowding it — and C3, a CH<sub>2</sub> carrying a further methyl. Taking a hydrogen from C1 gives but-1-ene, monosubstituted; from C3 it would give but-2-ene, disubstituted and more stable. Hofmann conditions give the <i>less</i> substituted alkene, so but-1-ene is major. Four carbons either way, with trimethylamine released alongside.',
+        wrongFeedback: 'Identify the two &beta; carbons, work out what alkene each would give, and then remember which of the two this reaction prefers.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Structure determination, before there was any other way.',
+        bodyHtml: '<p class="step-body">This sequence was analysis long before it was synthesis. How much CH<sub>3</sub>I an unknown amine consumed reported its class outright:</p>' +
+          '<ul class="step-body">' +
+          '<li><b>Three</b> equivalents &rarr; primary, RNH<sub>2</sub></li>' +
+          '<li><b>Two</b> &rarr; secondary, R<sub>2</sub>NH</li>' +
+          '<li><b>One</b> &rarr; tertiary, R<sub>3</sub>N</li>' +
+          '</ul>' +
+          '<p class="step-body">Identifying the alkenes released then showed what the skeleton around the nitrogen looked like. A <b>cyclic</b> amine is the informative case: two C&ndash;N bonds hold the nitrogen, so the first elimination only opens the ring and the nitrogen is still attached. Freeing it takes a second round &mdash; so a compound needing two rounds had its nitrogen in a ring.</p>' +
+          '<div class="explain-box">It is worth seeing what this cost. The method consumed the sample, took weeks, and was only ever as reliable as the identification of the fragments &mdash; and alkaloid structures were argued this way for decades. NMR now answers the same question in minutes, on a milligram, without destroying anything.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'An unknown amine consumes two equivalents of CH<sub>3</sub>I, and needs two full rounds of elimination to release its nitrogen. What does that tell you?',
+        options: [
+          'It is a secondary amine, and cyclic',
+          'It is a primary amine in a ring',
+          'It is a tertiary amine, and cyclic',
+          'It is a secondary amine, not cyclic'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct, and the two observations answer different questions. The equivalent count reads the N&ndash;H hydrogens: two equivalents means one N&ndash;H plus quaternization, so the amine is secondary. The number of rounds reads the connectivity: a nitrogen held by two C&ndash;N bonds to the same chain is still attached after the first elimination opens the ring, so it takes a second round to leave. Neither measurement on its own would have settled it — which is what doing structure determination this way was actually like.',
+        wrongFeedback: 'Two separate facts here. One of them counts hydrogens on nitrogen; the other counts carbon&ndash;nitrogen bonds. Work out what each is telling you before combining them.'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'The E2 chapter said Zaitsev is a tendency rather than a law. What does this reaction add to that?',
+        options: [
+          'Bulk on the leaving group can flip it, not just bulk on the base',
+          'Zaitsev never applies to nitrogen compounds',
+          'Heat always favors the less substituted alkene',
+          'Hydroxide is too weak a base to follow Zaitsev'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct, and it is worth seeing as the third distinct way the rule breaks. The E2 chapter broke it with <b>geometry</b>: an anti-periplanar hydrogen has to be available, and in a locked ring the only one available may not be the one Zaitsev wants. It broke it again with a <b>bulky base</b>, tert-butoxide reaching the accessible proton instead of the one that gives the better alkene. This reaction breaks it a third way, with bulk on the <b>leaving group</b> — and the leaving group is part of the substrate, so it is not something you choose when you pick your reagents. The habit to take away is to size up both partners before reaching for the more substituted alkene. Zaitsev describes what happens when nothing is in the way; it was never a statement about which product is more stable winning by right.'
+      }
+    ]
+  });
+
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

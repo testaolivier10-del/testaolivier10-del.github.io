@@ -150,6 +150,47 @@ function countSteps(body) {
         fail(`lesson-concepts.js: "${topic}" authored against ${n} steps but the lesson now has ${steps} — re-check the step indices, then update n.`);
       }
     }
+
+    /* Every concept id credited here has to exist, because nothing else will
+       ever say so. mastery-engine.js filters an unknown id out silently rather
+       than warning, which is the right call at runtime — a typo should not
+       break a lesson for a reader — but it means a misspelled concept is a
+       step that quietly scores nothing, in a file whose entire purpose is to
+       make steps score something. A browser pass noticed this; no check did.
+
+       The ids are read out of concepts.js by pattern rather than by executing
+       it, so this stays a text check like everything else in this file. */
+    const conceptsPath = join(ROOT, 'ochem/assets/concepts.js');
+    if (existsSync(conceptsPath)) {
+      const conceptSrc = readFileSync(conceptsPath, 'utf8');
+      const known = new Set(
+        [...conceptSrc.matchAll(/\{\s*id:\s*'([a-z0-9-]+)'/g)].map((m) => m[1]),
+      );
+      if (!known.size) {
+        fail('ochem/assets/concepts.js: no concept ids parsed, so lesson-concepts.js cannot be checked');
+      } else {
+        /* A regex cannot find the end of a steps block reliably — the entries
+           close as `] } },` on the last line, not on one of their own — so the
+           braces are counted instead. */
+        for (const start of src.matchAll(/'([a-z0-9-]+)':\s*\{\s*n:\s*\d+,\s*steps:\s*\{/g)) {
+          const topic = start[1];
+          let depth = 1;
+          let i = start.index + start[0].length;
+          for (; i < src.length && depth > 0; i++) {
+            if (src[i] === '{') depth++;
+            else if (src[i] === '}') depth--;
+          }
+          const block = src.slice(start.index + start[0].length, i - 1);
+          for (const ref of block.matchAll(/'([a-z0-9-]+)'/g)) {
+            if (!known.has(ref[1])) {
+              fail(`lesson-concepts.js: "${topic}" credits the concept "${ref[1]}", which does not exist ` +
+                   'in concepts.js. The mastery engine drops an unknown id without complaining, so that ' +
+                   'step would score nothing and nobody would find out.');
+            }
+          }
+        }
+      }
+    }
   }
 }
 

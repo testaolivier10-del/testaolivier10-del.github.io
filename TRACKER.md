@@ -1375,11 +1375,67 @@ so 2-methylcyclohexanone is negative despite its name.
 **Kinetic and thermodynamic enolates** exists because every earlier section
 said "form the enolate" as though it were an instruction. For an unsymmetrical
 ketone the easier proton and the more stable anion are on opposite sides of
-the molecule. The organizing correction is that **reversibility decides, not
-temperature**: LDA at room temperature is still kinetic, and LDA at
-&minus;78&nbsp;&deg;C added the wrong way round is not, because leftover ketone
-gives the protons a way back. The sort step is built around exactly those two
-rows.
+the molecule.
+
+**The review broke this section's organizing idea, which was the most useful
+finding of the phase.** The section was built on "reversibility decides, not
+temperature" &mdash; and **NaH is a counterexample to that rule**. Its
+deprotonation is as irreversible as LDA's, since the conjugate acid is
+H<sub>2</sub> and it leaves the flask, and it still gives the thermodynamic
+enolate. The rule was not merely imprecise; it was false, and the section
+itself listed the counterexample as a thermodynamic base two paragraphs later.
+
+The corrected idea is better teaching as well as true. The question is whether
+the two **enolates** can interconvert, and a proton can travel between them by
+three routes: the deprotonation reverses (ethoxide), free ketone shuttles it
+(NaH, slow and heterogeneous, so un-ionized ketone is always present), or the
+amine the base generated shuttles it (which is what erodes a lithium enolate
+on warming). Each item in the kinetic recipe closes exactly one route, which
+is why missing any single one loses the regiochemistry &mdash; and why "LDA at
+room temperature is still kinetic" was a half-truth worth retiring.
+
+Seven further findings were accepted. Two distractors were **correct answers**:
+LDA at &minus;78&nbsp;&deg;C with Br<sub>2</sub> really does give clean
+monobromination (stoichiometric enolate, not catalytic base), and "strong base
+in the cold" is that same method. "Base does not stop at all" has a
+counterexample in isopropyl phenyl ketone, whose single &alpha; hydrogen ends
+the runaway after one. And the enamine's stopping after one alkylation was
+given the wrong reason &mdash; it is not that the enamine is *less reactive*
+but that alkylation makes an **iminium with no nucleophilic carbon**, and no
+base is present to restore one, so a second alkylation is impossible rather
+than slow. The bank item on that had no option expressing the real reason, so
+it was rewritten rather than re-keyed.
+
+#### Amines 2 &rarr; 4 — **complete**
+
+Two sections, two lessons, 60 questions, two concepts, two figures.
+
+**Making amines** is organized around a failure rather than a list. Direct
+alkylation of ammonia cannot be stopped, because each product is a better
+nucleophile than what made it, so the composition is set by relative rates and
+using less halide does not help. Every method in the section is an escape from
+that one problem, and they divide by *how* they escape: alkylate something
+that cannot react twice (Gabriel), use a nucleophile that is not an amine
+(azide), or stop using displacement altogether (reductive amination, amide
+reduction). The axis that actually decides between them is the carbon count,
+which is why the lesson's sort step asks only that.
+
+**Hofmann elimination** closes the chapter and reaches back to the
+substitution one. An amine cannot eliminate because an amide anion will not
+leave; quaternize the nitrogen and what departs is neutral. The product is the
+*least* substituted alkene, and the section's lasting point is that this is
+the **third** distinct way Zaitsev breaks: the E2 chapter broke it with
+geometry and again with a bulky base, and here the bulk is on the **leaving
+group**, which is part of the substrate rather than something you choose.
+
+**The weight budget note was wrong, and says so now.** It predicted 4 KB would
+cover three pairs of sections; two used it up and the third went 1.4 KB over.
+The error was the per-pair figure rather than the arithmetic &mdash; a pair
+costs nearer 1.8 KB than 1.4, because these eight concepts carry longer
+`teach` strings than the Phase 3 ones did. They are corrections to ideas the
+course already taught, so each has to say what the earlier statement got wrong
+as well as what is true. The comment now records that, and says the next
+chapter should take the teach-string saving instead of raising again.
 
 
 ---

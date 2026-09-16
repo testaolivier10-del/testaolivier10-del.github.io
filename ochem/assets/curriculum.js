@@ -165,7 +165,9 @@
     ]},
     { id: 'amines', title: 'Amines', topics: [
       { id: 'amine-structure', title: 'Structure & basicity', href: 'lessons/amine-structure.html', dependsOn: ['bronsted', 'lewis-acids', 'esters-amides'] },
-      { id: 'amine-reactions', title: 'Amine reactions', href: 'lessons/amine-reactions.html', dependsOn: ['amine-structure', 'sn2', 'nucleophilic-addition', 'acyl-substitution'] }
+      { id: 'amine-reactions', title: 'Amine reactions', href: 'lessons/amine-reactions.html', dependsOn: ['amine-structure', 'sn2', 'nucleophilic-addition', 'acyl-substitution'] },
+      { id: 'amine-synthesis', title: 'Making amines', href: 'lessons/amine-synthesis.html', dependsOn: ['amine-reactions', 'sn2', 'carbonyl-reduction'] },
+      { id: 'hofmann-elimination', title: 'Hofmann elimination', href: 'lessons/hofmann-elimination.html', dependsOn: ['amine-synthesis', 'e2'] }
     ]},
     { id: 'aromatic-chemistry', title: 'Aromatic Chemistry', topics: [
       { id: 'aromaticity', title: 'Aromaticity', href: 'lessons/aromaticity.html', dependsOn: ['resonance', 'hybridization'] },

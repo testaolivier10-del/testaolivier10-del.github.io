@@ -91,9 +91,25 @@ const SHELL_BUDGETS = [
      chapter of course map cost above, because the per-topic content is the
      same three entries. The measured overrun at 112 topics was 0.8 KB, so 4
      KB covers the remaining three pairs with room to spare and this should
-     be the last raise of Phase 4. If a fifth pair ever appears, take one of
-     the two savings below instead of raising again: the teach-string split
-     is worth roughly half of concepts.js and is the one to reach for.
+     be the last raise of Phase 4.
+
+     112 -> 116, and the paragraph above was wrong. It predicted 4 KB would
+     cover three more pairs; two pairs used it up and the third went 1.4 KB
+     over. The error was in the per-pair figure, not the arithmetic: a pair
+     costs closer to 1.8 KB than 1.4, because these eight concepts carry
+     longer `teach` strings than the Phase 3 ones did — they are corrections
+     to ideas the course already taught, so each has to say what the earlier
+     statement got wrong as well as what is true. That is content doing its
+     job, but it means per-topic cost is not the constant the earlier note
+     assumed, and a future estimate should be measured rather than
+     extrapolated.
+
+     This is the last raise in the phase because the phase is finished at 116
+     topics, not because the headroom is comfortable. The next chapter that
+     lands should take the teach-string saving instead: moving those strings
+     to a fetched file roughly halves concepts.js, at the cost of one request
+     on the pages that actually surface a teach block, and it is worth more
+     now than when it was first noted because the strings have grown.
 
      The obvious saving, if one is ever needed, is that ochem/index.html loads
      lesson-concepts.js for one call in ochem-home.js; splitting that call out
@@ -102,7 +118,7 @@ const SHELL_BUDGETS = [
      every page loads every concept's `teach` string — moving those to a
      fetched file would roughly halve concepts.js at the cost of one request on
      the pages that actually surface a teach block. */
-  ['ochem', 112],
+  ['ochem', 116],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as

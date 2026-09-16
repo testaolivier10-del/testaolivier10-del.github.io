@@ -41,6 +41,27 @@
        acylate order, 7 the deprotonation that turns nothing into a reaction. */
     /* Step 2 sorts six condition sets, 3 is why acid stops, 4 the iodoform
        scope, 6 the monohalogenation choice, 7 the methyl-versus-alpha trap. */
+    /* Step 2 is the carbon-count sorter, which is the first question to ask of
+       any amine synthesis. 3 is why direct alkylation runs away, 4 why Gabriel
+       can only go once, 6 the route for a secondary amine, 7 a synthesis that
+       is flawless step by step and still arrives one carbon short. */
+    'amine-synthesis': { n:8, steps:{
+      2:['amine-synthesis-routes','oxidation-level'],
+      3:['amine-synthesis-routes','nucleophile-recognition'],
+      4:['amine-synthesis-routes'],
+      6:['amine-synthesis-routes'],
+      7:['amine-synthesis-routes'] } },
+
+    /* Step 2 counts equivalents, which is the historical assay. 3 is the
+       leaving-group argument, 4 the worked alkene, 6 the two-observation
+       deduction, 7 the third way Zaitsev breaks. */
+    'hofmann-elimination': { n:8, steps:{
+      2:['hofmann-elimination-rule'],
+      3:['hofmann-elimination-rule','leaving-group-ability'],
+      4:['hofmann-elimination-rule','anti-periplanar-geometry'],
+      6:['hofmann-elimination-rule'],
+      7:['hofmann-elimination-rule','anti-periplanar-geometry'] } },
+
     'alpha-halogenation': { n:8, steps:{
       2:['alpha-halogenation-control','enolate-formation'],
       3:['alpha-halogenation-control','alpha-acidity'],

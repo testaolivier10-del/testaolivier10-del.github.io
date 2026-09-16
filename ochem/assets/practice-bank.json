@@ -43063,13 +43063,13 @@
   {
    "q": "Which conditions give clean monohalogenation?",
    "options": [
+    "Acid, through the enol",
     "Excess hydroxide",
-    "Strong base in the cold",
-    "Acid",
-    "Base"
+    "Warm aqueous base",
+    "Hydroxide with excess halogen"
    ],
-   "correct": 2,
-   "why": "Only the acid route slows itself down after the first halogen.",
+   "correct": 0,
+   "why": "The halogen makes the carbonyl harder to protonate, so the second enol forms more slowly.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -43604,7 +43604,7 @@
     "No, it is still kinetic"
    ],
    "correct": 3,
-   "why": "Reversibility is what matters, not the temperature on its own.",
+   "why": "Its own deprotonation never reverses, though the amine it leaves behind will equilibrate the mixture if warmed.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -43648,15 +43648,15 @@
    "type": "mcq"
   },
   {
-   "q": "A base that deprotonates completely gives:",
+   "q": "What lets the two enolates interconvert?",
    "options": [
-    "The thermodynamic enolate",
-    "A mixture at equilibrium",
-    "No enolate at all",
-    "The kinetic enolate"
+    "A proton donor left in the flask",
+    "A bulkier base",
+    "A lower temperature",
+    "A stronger base"
    ],
-   "correct": 3,
-   "why": "Complete means irreversible, which blocks equilibration.",
+   "correct": 0,
+   "why": "Leftover ketone or the amine the base generated will do it; NaH is irreversible and still thermodynamic.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -43728,13 +43728,13 @@
   {
    "q": "Why does an enamine stop after one alkylation?",
    "options": [
-    "It has only one alpha carbon",
+    "Alkylation gives an iminium, not a nucleophile",
     "It is less reactive than an enolate",
-    "It is more basic than a lithium enolate",
-    "It is hydrolyzed before reacting"
+    "The amine is consumed in the first step",
+    "The product precipitates out of solution"
    ],
-   "correct": 1,
-   "why": "A lithium enolate is reactive enough to go around twice.",
+   "correct": 0,
+   "why": "No nucleophilic carbon is left and no base is present to restore one, so a second alkylation is impossible.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -43813,6 +43813,790 @@
    ],
    "correct": 3,
    "why": "Enough SN2 to tempt you, enough E2 to hurt the yield.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "amine-synthesis": [
+  {
+   "q": "Why does ammonia plus RX give mixtures?",
+   "options": [
+    "Each new amine is more nucleophilic",
+    "Ammonia is a very poor nucleophile",
+    "Alkyl halides cannot undergo SN2 here",
+    "The nitrogen lone pair is delocalized"
+   ],
+   "correct": 0,
+   "why": "Each added alkyl group pushes electron density onto nitrogen, so the product outruns the ammonia still in the flask.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Direct alkylation of ammonia delivers what?",
+   "options": [
+    "only the primary amine",
+    "only the quaternary salt",
+    "the primary amine plus alkene",
+    "1°, 2°, 3° and 4° together"
+   ],
+   "correct": 3,
+   "why": "Proportions are set by kinetics, not by the stoichiometry you weigh out.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "When is runaway alkylation actually welcome?",
+   "options": [
+    "Making a secondary amine cleanly",
+    "Making an amide from an acid chloride",
+    "Making a quaternary ammonium salt",
+    "Making a primary amine cleanly"
+   ],
+   "correct": 2,
+   "why": "There is nowhere further to alkylate, so one compound comes out.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagent is used for exhaustive alkylation?",
+   "options": [
+    "Excess H2NNH2",
+    "Excess CH3I",
+    "Excess NaCN",
+    "Excess LiAlH4"
+   ],
+   "correct": 1,
+   "why": "Methyl iodide is the typical choice when a quaternary salt is the target.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can phthalimide be alkylated only once?",
+   "options": [
+    "No N–H remains afterward",
+    "Phthalimide is not nucleophilic",
+    "The product is too acidic",
+    "KOH destroys the alkylated product"
+   ],
+   "correct": 0,
+   "why": "The imide nitrogen's lone pair is also tied into both carbonyls.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which step frees the amine in a Gabriel synthesis?",
+   "options": [
+    "Reduction with LiAlH4",
+    "Treatment with Ag2O and heat",
+    "Treatment with Br2 and NaOH",
+    "Hydrazinolysis with H2NNH2"
+   ],
+   "correct": 3,
+   "why": "Hot aqueous acid or base does the same job less gently.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Gabriel synthesis gives which class of amine?",
+   "options": [
+    "Tertiary only",
+    "Any of the three",
+    "Primary only",
+    "Secondary only"
+   ],
+   "correct": 2,
+   "why": "The nitrogen leaves the imide carrying just one alkyl group.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which substrate works best in a Gabriel alkylation?",
+   "options": [
+    "2-Bromo-2-methylpropane",
+    "Methyl iodide",
+    "tert-Butyl bromide",
+    "2-Bromobutane"
+   ],
+   "correct": 1,
+   "why": "The step is an SN2, so tertiary halides give only alkene.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does azide displacement avoid over-alkylation?",
+   "options": [
+    "The product is not nucleophilic",
+    "Azide is a weak nucleophile",
+    "Azide reacts only with hydroxide",
+    "Alkyl azides cannot be reduced"
+   ],
+   "correct": 0,
+   "why": "Nothing left after the displacement can attack more halide.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagents reduce an alkyl azide to an amine?",
+   "options": [
+    "NaBH3CN or NaBH(OAc)3",
+    "Br2 and aqueous NaOH",
+    "Ag2O in water, with heat",
+    "LiAlH4 or H2/Pd"
+   ],
+   "correct": 3,
+   "why": "Both leave the nitrogen attached to the same carbon it displaced onto.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Azide displacement gives which class of amine?",
+   "options": [
+    "Tertiary",
+    "A mixture of all three",
+    "Primary",
+    "Secondary"
+   ],
+   "correct": 2,
+   "why": "Only one alkyl group ever reaches that nitrogen.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which route lengthens the carbon chain by one?",
+   "options": [
+    "Hofmann rearrangement",
+    "Cyanide, then LiAlH4",
+    "Gabriel synthesis",
+    "Azide, then LiAlH4"
+   ],
+   "correct": 1,
+   "why": "The nitrile carbon becomes the CH2 next to nitrogen.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "1-Bromopropane with NaCN, then LiAlH4, gives:",
+   "options": [
+    "Butylamine",
+    "Propylamine",
+    "Pentylamine",
+    "Butan-2-amine"
+   ],
+   "correct": 0,
+   "why": "Three carbons in, four out, because cyanide supplies one.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How does reductive amination build the C–N bond?",
+   "options": [
+    "Azide displaces a halide",
+    "Nitrogen displaces a halide",
+    "Cyanide displaces a halide",
+    "Hydride adds to a C=N"
+   ],
+   "correct": 3,
+   "why": "No leaving group is displaced, so the product amine has nothing to attack.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which hydride reagent suits reductive amination?",
+   "options": [
+    "LiAlH4",
+    "Ag2O in water",
+    "NaBH3CN",
+    "NaBH4"
+   ],
+   "correct": 2,
+   "why": "It survives the mildly acidic pH that imine formation wants.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is NaBH4 wrong for reductive amination?",
+   "options": [
+    "It cannot reduce any C=O",
+    "It just gives the alcohol",
+    "It reduces nitriles instead",
+    "It destroys the amine partner"
+   ],
+   "correct": 1,
+   "why": "The ketone is consumed before it has a chance to condense.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What pH does reductive amination need?",
+   "options": [
+    "Around 4–5",
+    "Strongly acidic",
+    "Strongly basic",
+    "Exactly neutral"
+   ],
+   "correct": 0,
+   "why": "The attenuated hydride reagents were chosen to tolerate that range.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which amines can reductive amination deliver?",
+   "options": [
+    "primary amines only",
+    "secondary amines only",
+    "quaternary salts only",
+    "1°, 2° or 3°"
+   ],
+   "correct": 3,
+   "why": "One carbonyl and one amine in decides the product.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is acylation of an amine self-limiting?",
+   "options": [
+    "The amide is immediately hydrolyzed",
+    "Chloride blocks the nitrogen",
+    "Amide nitrogen is not nucleophilic",
+    "Acyl chlorides react only once"
+   ],
+   "correct": 2,
+   "why": "Its lone pair is tied up in the carbonyl.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does LiAlH4 do to an amide carbonyl?",
+   "options": [
+    "Leaves it untouched",
+    "Reduces it to CH2",
+    "Reduces it to CH–OH",
+    "Expels it as CO2"
+   ],
+   "correct": 1,
+   "why": "No carbon is lost, so the skeleton is unchanged.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Cleanest general route to a secondary amine?",
+   "options": [
+    "Amide, then LiAlH4",
+    "Gabriel synthesis",
+    "Azide, then LiAlH4",
+    "Cyanide, then LiAlH4"
+   ],
+   "correct": 0,
+   "why": "Every SN2 route on a nitrogen surrogate stops at primary.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "RCOCl + R'NH2, then LiAlH4, gives:",
+   "options": [
+    "RCH2NHR'",
+    "RCONHR'",
+    "RCH2NH2",
+    "R'CH2NH2"
+   ],
+   "correct": 0,
+   "why": "The carbonyl becomes CH2 and both alkyl groups stay on nitrogen.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "The Hofmann rearrangement changes carbon count how?",
+   "options": [
+    "One more carbon",
+    "Two fewer carbons",
+    "No change at all",
+    "One fewer carbon"
+   ],
+   "correct": 3,
+   "why": "The old carbonyl carbon leaves as CO2.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Butanamide with Br2 and NaOH gives:",
+   "options": [
+    "Pentylamine",
+    "Butan-2-amine",
+    "Propylamine",
+    "Butylamine"
+   ],
+   "correct": 2,
+   "why": "Four carbons in, three out.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "In the Hofmann rearrangement, what migrates?",
+   "options": [
+    "Hydroxide, onto the carbonyl",
+    "Alkyl, from carbon to nitrogen",
+    "Hydride, from nitrogen to carbon",
+    "Bromine, onto the alkyl group"
+   ],
+   "correct": 1,
+   "why": "That migration is what builds the isocyanate.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which intermediate do Hofmann and Curtius share?",
+   "options": [
+    "An alkyl azide",
+    "A nitrile",
+    "A quaternary salt",
+    "An isocyanate"
+   ],
+   "correct": 3,
+   "why": "Its hydrolysis is where the carbon is lost in both.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How is the Curtius rearrangement started?",
+   "options": [
+    "Heating a primary amide",
+    "Heating a quaternary salt",
+    "Heating an acyl azide",
+    "Heating an alkyl azide"
+   ],
+   "correct": 2,
+   "why": "It reaches the same isocyanate without bromine.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which pair leaves the carbon skeleton unchanged?",
+   "options": [
+    "Azide and Curtius",
+    "Gabriel and azide",
+    "Cyanide and Curtius",
+    "Gabriel and Hofmann"
+   ],
+   "correct": 1,
+   "why": "Both hand back exactly the halide you put in.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "First question when choosing an amine synthesis?",
+   "options": [
+    "Must the carbon count change?",
+    "Is the halide primary or secondary?",
+    "Which hydride reagent is used?",
+    "How acidic is the N–H?"
+   ],
+   "correct": 0,
+   "why": "That cuts most of the table before substitution level matters.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can Gabriel never give a tertiary amine?",
+   "options": [
+    "Phthalimide is too hindered",
+    "Hydrazinolysis cleaves C–N bonds",
+    "Tertiary amines cannot form imides",
+    "Only one alkyl group attaches"
+   ],
+   "correct": 3,
+   "why": "The nitrogen leaves the imide with a single substituent.",
+   "difficulty": "medium",
+   "type": "mcq"
+  }
+ ],
+ "hofmann-elimination": [
+  {
+   "q": "Why can an amine not undergo E2 directly?",
+   "options": [
+    "R2N− is a poor leaving group",
+    "Amines have no beta hydrogens",
+    "Nitrogen cannot carry a charge",
+    "Amines are too weakly basic"
+   ],
+   "correct": 0,
+   "why": "Very strong bases make very poor leaving groups.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What converts the amine into an E2 substrate?",
+   "options": [
+    "Acylation with RCOCl",
+    "Reduction with LiAlH4",
+    "Treatment with hydrazine",
+    "Exhaustive methylation"
+   ],
+   "correct": 3,
+   "why": "Nitrogen ends up quaternary and positively charged.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What actually leaves in a Hofmann elimination?",
+   "options": [
+    "A quaternary ammonium ion",
+    "An iodide ion",
+    "A neutral trialkylamine",
+    "An amide anion"
+   ],
+   "correct": 2,
+   "why": "It carries no negative charge away, unlike R2N−.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a trialkylamine a good leaving group?",
+   "options": [
+    "It leaves with the negative charge",
+    "It departs neutral",
+    "It is a very strong base",
+    "It is small and unhindered"
+   ],
+   "correct": 1,
+   "why": "The nitrogen was positive before it left and uncharged after.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which conditions carry out the elimination step?",
+   "options": [
+    "Ag2O, water, heat",
+    "LiAlH4 in dry ether",
+    "Br2 with aqueous NaOH",
+    "Excess CH3I"
+   ],
+   "correct": 0,
+   "why": "Silver oxide and water together supply the hydroxide base.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does the silver do besides supplying base?",
+   "options": [
+    "It stabilizes the alkene product",
+    "It deprotonates the nitrogen",
+    "It reduces the ammonium salt",
+    "It precipitates iodide as AgI"
+   ],
+   "correct": 3,
+   "why": "That removes the competing nucleophile from solution.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Hofmann elimination follows which mechanism?",
+   "options": [
+    "SN2",
+    "SN1",
+    "E2",
+    "E1"
+   ],
+   "correct": 2,
+   "why": "One step and anti-periplanar, on an unusual substrate.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which alkene does Hofmann elimination favor?",
+   "options": [
+    "The conjugated one",
+    "The least substituted",
+    "The most substituted",
+    "The thermodynamically stable one"
+   ],
+   "correct": 1,
+   "why": "That is the opposite of the Zaitsev preference.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is the less substituted alkene favored?",
+   "options": [
+    "The leaving group is enormous",
+    "The base is enormous",
+    "The alkene formed is more stable",
+    "Hydroxide is a weak base"
+   ],
+   "correct": 0,
+   "why": "Bulk on the substrate shields the crowded beta carbon.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "In Hofmann elimination, where does the bulk sit?",
+   "options": [
+    "On the leaving group",
+    "On the base",
+    "On the alkene",
+    "On the beta hydrogen"
+   ],
+   "correct": 0,
+   "why": "With tert-butoxide the bulk sits on the base instead.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which base gives the Hofmann product in ordinary E2?",
+   "options": [
+    "Ethoxide",
+    "Hydroxide",
+    "Trimethylamine",
+    "tert-Butoxide"
+   ],
+   "correct": 3,
+   "why": "Its bulk reaches only the least hindered beta hydrogen.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "The transition state takes on what character?",
+   "options": [
+    "SN2",
+    "SN1 with rearrangement",
+    "E1cb",
+    "E1"
+   ],
+   "correct": 2,
+   "why": "The C–H bond breaks well ahead of the C–N bond.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why are the beta hydrogens unusually acidic here?",
+   "options": [
+    "Silver coordinates the C–H",
+    "The nitrogen is positive",
+    "The alkene is conjugated",
+    "Hydroxide is very strong"
+   ],
+   "correct": 1,
+   "why": "That is what shifts the transition state toward E1cb.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which beta carbon best carries partial negative charge?",
+   "options": [
+    "The one with most alkyl groups",
+    "The one bearing the nitrogen",
+    "The one bearing the fewest hydrogens",
+    "The one with fewest alkyl groups"
+   ],
+   "correct": 3,
+   "why": "Alkyl groups destabilize a carbanion.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How many equivalents of CH3I does 2-aminobutane take?",
+   "options": [
+    "One",
+    "More than four",
+    "Three",
+    "Two"
+   ],
+   "correct": 2,
+   "why": "Two replace the N–H hydrogens and a third quaternizes nitrogen.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Exhaustive methylation of 2-aminobutane gives:",
+   "options": [
+    "tert-Butyltrimethylammonium salt",
+    "sec-Butyltrimethylammonium salt",
+    "n-Butyltrimethylammonium salt",
+    "sec-Butyldimethylammonium salt"
+   ],
+   "correct": 1,
+   "why": "The nitrogen stays on C2 and picks up three methyls.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which carbons are beta in sec-butyltrimethylammonium?",
+   "options": [
+    "C1 and C3",
+    "C1 and C4",
+    "C2 and C3",
+    "C3 and C4"
+   ],
+   "correct": 0,
+   "why": "The leaving group sits on C2.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "In sec-butyltrimethylammonium, which beta carbon reacts?",
+   "options": [
+    "C1",
+    "C3",
+    "C2",
+    "C4"
+   ],
+   "correct": 0,
+   "why": "C1 is an unhindered methyl with three hydrogens.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Major product from sec-butyltrimethylammonium hydroxide?",
+   "options": [
+    "But-2-ene",
+    "2-Methylprop-1-ene",
+    "Buta-1,3-diene",
+    "But-1-ene"
+   ],
+   "correct": 3,
+   "why": "Monosubstituted, and the less stable of the two choices.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How many carbons has the Hofmann product from 2-aminobutane?",
+   "options": [
+    "Five",
+    "Two",
+    "Four",
+    "Three"
+   ],
+   "correct": 2,
+   "why": "Elimination rearranges bonds, not the skeleton.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Besides the alkene, what else is formed?",
+   "options": [
+    "Trimethylamine",
+    "Ammonia",
+    "Methyl iodide",
+    "An amide anion"
+   ],
+   "correct": 0,
+   "why": "The neutral amine is the leaving group departing.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which alkene would Zaitsev predict here?",
+   "options": [
+    "Buta-1,3-diene",
+    "But-2-ene",
+    "But-1-ene",
+    "2-Methylprop-1-ene"
+   ],
+   "correct": 1,
+   "why": "Zaitsev picks the more substituted, more stable alkene.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "An amine taking two equivalents of CH3I is:",
+   "options": [
+    "Primary",
+    "Tertiary",
+    "Quaternary",
+    "Secondary"
+   ],
+   "correct": 3,
+   "why": "One methyl per N–H, plus one to quaternize.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How much CH3I does a tertiary amine consume?",
+   "options": [
+    "Three equivalents",
+    "Four equivalents",
+    "One equivalent",
+    "Two equivalents"
+   ],
+   "correct": 2,
+   "why": "It has no N–H, so only the quaternizing methyl is needed.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a cyclic amine need two rounds?",
+   "options": [
+    "Cyclic amines are less basic",
+    "Nitrogen holds two C–N bonds",
+    "The ring is too strained",
+    "Hydroxide cannot reach the ring"
+   ],
+   "correct": 1,
+   "why": "The first elimination only opens the ring.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A nitrogen freed only after two rounds was:",
+   "options": [
+    "On a primary carbon",
+    "On a quaternary carbon",
+    "Attached to an alkene",
+    "In a ring"
+   ],
+   "correct": 3,
+   "why": "One C–N bond survives the first elimination.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is the classical method obsolete?",
+   "options": [
+    "Zaitsev overrides Hofmann",
+    "Alkenes cannot be identified",
+    "NMR does it on a milligram",
+    "The reagents are unavailable"
+   ],
+   "correct": 2,
+   "why": "It answers the same question in minutes rather than weeks.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What did the released alkenes reveal?",
+   "options": [
+    "The leaving group's size",
+    "The carbon skeleton",
+    "The class of the nitrogen",
+    "The alkene's stability"
+   ],
+   "correct": 1,
+   "why": "The class of the nitrogen came from the methyl count instead.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Main drawback of the methylation-elimination method?",
+   "options": [
+    "It consumed the sample",
+    "It needed silver reagents",
+    "It gave only molecular weight",
+    "It needed pure alkene starting material"
+   ],
+   "correct": 0,
+   "why": "It also took weeks, where NMR takes minutes.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does Hofmann elimination teach about Zaitsev?",
+   "options": [
+    "It never applies to E2 reactions",
+    "It applies only to E1",
+    "It was disproved entirely",
+    "It is a tendency, not a law"
+   ],
+   "correct": 3,
+   "why": "Bulk on the leaving group alone can invert the regiochemistry.",
    "difficulty": "medium",
    "type": "mcq"
   }

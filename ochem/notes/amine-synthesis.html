@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Making amines — Amines | Organic Chemistry</title>
+<meta name="description" content="There is one obvious way to make an amine, and it does not work. Every method here is a way around that single failure.">
+<link rel="canonical" href="https://levlprep.com/ochem/notes/amine-synthesis.html">
+<meta property="og:title" content="Making amines — Amines | Organic Chemistry">
+<meta property="og:description" content="There is one obvious way to make an amine, and it does not work. Every method here is a way around that single failure.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/notes/amine-synthesis.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+</head>
+<body>
+<div class="wrap notes-page">
+  <nav class="notes-crumb" aria-label="Breadcrumb">
+    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
+    <span>Amines</span>
+  </nav>
+
+  <header class="notes-head">
+    <p class="notes-eyebrow">Amines &middot; Section 78 of 116</p>
+    <h1>Making amines</h1>
+    <a class="notes-onward-cta" href="../lessons/amine-synthesis.html">Practice this — interactive lesson</a>
+  </header>
+
+  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+       asides); it is the same class the textbook view uses, so a section looks
+       identical whether it is read here or inside learn.html. -->
+  <article class="notes-body notes-view">
+<!-- notes:start -->
+<p class="step-body">There is one obvious way to make an amine, and it does not work. Every method here is a way around that single failure.</p>
+
+<h3>The problem: alkylation cannot be stopped</h3>
+
+<p class="step-body">Treat ammonia with an alkyl halide and the nitrogen does the S<sub>N</sub>2 you expect, giving a primary amine. That amine is a <i>better</i> nucleophile than ammonia was, because the new alkyl group donates electron density to nitrogen, so it attacks the next molecule of halide faster than the ammonia still in the flask does &mdash; and the secondary amine it produces is faster again. Out comes a mixture of primary, secondary and tertiary amine plus quaternary ammonium salt, in proportions set by kinetics, not stoichiometry.</p>
+
+<p class="step-body">The reactions section flagged this and named exhaustive alkylation, Gabriel and reductive amination; here those are taken apart and the rest of the toolkit added.</p>
+
+<p class="step-body">One case welcomes the runaway: if a <b>quaternary ammonium salt</b> is the target, excess CH<sub>3</sub>I run to completion gives a single product, because there is nowhere further to go.</p>
+
+<h3>Gabriel synthesis: alkylate something that can only react once</h3>
+
+<p class="step-body">Phthalimide's N&ndash;H sits between two carbonyls, which makes it acidic enough (pK<sub>a</sub> near 9) for KOH to deprotonate. The anion does an S<sub>N</sub>2, and afterwards the nitrogen has no N&ndash;H left and its lone pair is delocalized into both carbonyls &mdash; an imide, not an amine, so it cannot alkylate again. Hot aqueous acid or base, or hydrazinolysis with H<sub>2</sub>NNH<sub>2</sub>, then releases a clean <b>primary</b> amine.</p>
+
+<p class="step-body">The catch: the alkylation is still an S<sub>N</sub>2, so the halide must be primary or methyl and unhindered. Secondary substrates eliminate, tertiary ones give only alkene.</p>
+
+<h3>Azide displacement: use a nucleophile that is not an amine</h3>
+
+<p class="step-body">Azide, N<sub>3</sub><sup>&minus;</sup>, is small and an excellent nucleophile, and its displacement product is an alkyl azide &mdash; not an amine and not nucleophilic, so there is nothing to over-alkylate. LiAlH<sub>4</sub>, or H<sub>2</sub> over Pd, then gives the <b>primary</b> amine. Same S<sub>N</sub>2 limits, fewer steps than Gabriel.</p>
+
+<h3>Cyanide, then reduce: the route that adds a carbon</h3>
+
+<p class="step-body">RX + NaCN gives RCN, and LiAlH<sub>4</sub> reduces that to RCH<sub>2</sub>NH<sub>2</sub>. The nitriles section covers it; the bookkeeping is the point here. The nitrile carbon becomes the CH<sub>2</sub>, so the amine has <b>one more carbon</b> than the halide did. Gabriel and azide hand back the skeleton you put in; this lengthens it.</p>
+
+<h3>Reductive amination: build the C&ndash;N bond by reduction instead</h3>
+<!-- fig:escapes-from-overalkylation:start -->
+<figure class="notes-figure notes-figure--wide" style="--vb:760"><svg viewBox="0 0 760 320" role="img" aria-label="The over-alkylation problem in the center with five routes around it, each labeled with what it gives and whether the carbon count changes"><rect class="fg-panel-warn" x="250" y="132" width="260" height="74" rx="10"></rect><text class="fg-lbl" x="380" y="158" text-anchor="middle" font-size="13">R–X + NH₃</text><text class="fg-sm" x="380" y="180" text-anchor="middle" font-size="10.5">a mixture: 1°, 2°, 3°, 4°</text><text class="fg-sm" x="380" y="196" text-anchor="middle" font-size="10">each product beats the last</text><text class="fg-lbl" x="24" y="46" text-anchor="start" font-size="12">Gabriel</text><text class="fg-tag-good" x="24" y="64" text-anchor="start" font-size="10.5">1° only  ·  carbons same</text><text class="fg-lbl" x="24" y="90" text-anchor="start" font-size="12">azide, then reduce</text><text class="fg-tag-good" x="24" y="108" text-anchor="start" font-size="10.5">1° only  ·  carbons same</text><text class="fg-lbl" x="24" y="240" text-anchor="start" font-size="12">CN⁻, then LiAlH₄</text><text class="fg-tag" x="24" y="258" text-anchor="start" font-size="10.5">1° only  ·  carbons +1</text><text class="fg-lbl" x="24" y="284" text-anchor="start" font-size="12">amide, then LiAlH₄</text><text class="fg-tag-good" x="24" y="302" text-anchor="start" font-size="10.5">2° or 3°  ·  carbons same</text><text class="fg-lbl" x="540" y="46" text-anchor="start" font-size="12">reductive amination</text><text class="fg-tag-good" x="540" y="64" text-anchor="start" font-size="10.5">1°, 2° or 3° · your choice</text><text class="fg-sm" x="540" y="82" text-anchor="start" font-size="10">no substrate limit</text><text class="fg-lbl" x="540" y="262" text-anchor="start" font-size="12">Hofmann rearrangement</text><text class="fg-tag" x="540" y="280" text-anchor="start" font-size="10.5">1° only · carbons −1</text><text class="fg-sm" x="540" y="298" text-anchor="start" font-size="10">that carbon leaves as CO₂</text><line class="fg-rule" x1="24" y1="218" x2="700" y2="218"></line></svg><figcaption>One failure and five escapes from it. The three that run an Sₙ² on a nitrogen surrogate — Gabriel, azide, cyanide — can only ever hand back a primary amine, and need a primary unhindered halide to do it. Reductive amination and amide reduction have neither limit, which is why they are the workhorses.<span class="notes-figure-note">Read the right-hand column first. Butanamide is the compound to keep in mind: LiAlH₄ gives butylamine and Br₂/NaOH gives propylamine, so the same starting material and the same kind of product differ by a carbon depending only on the reagent. That is why the carbon count is the first question to ask of a proposed amine synthesis and not the last — a route can be flawless step by step and still arrive one carbon short.</span></figcaption></figure>
+<!-- fig:escapes-from-overalkylation:end -->
+
+<p class="step-body">An aldehyde or ketone condenses with ammonia or a primary amine to an imine, or with a secondary amine to an iminium ion (see the imines and enamines section), and that C=N is reduced in the same flask. The escape is structural: the C&ndash;N bond comes from hydride adding to a C=N rather than from displacement, so the product amine has no halide left to attack, and the product is set by what you put in.</p>
+
+<p class="step-body">The reagent is the trick. <b>NaBH<sub>3</sub>CN</b> and <b>NaBH(OAc)<sub>3</sub></b> are attenuated hydride sources: they survive the mildly acidic pH (around 4&ndash;5) imine formation wants, and reduce the protonated imine far faster than the carbonyl, so the ketone survives to condense. NaBH<sub>4</sub> would simply give the alcohol.</p>
+
+<h3>Amide reduction: acylate once, then take the oxygen away</h3>
+
+<p class="step-body">Acylation is self-limiting: the amide nitrogen it produces has its lone pair tied up in the carbonyl and is not nucleophilic, so one acylation gives one product. LiAlH<sub>4</sub> then reduces the C=O to CH<sub>2</sub>, with <b>no carbon lost</b>. It is the cleanest general route to a <b>secondary</b> or <b>tertiary</b> amine: RCOCl + R&prime;NH<sub>2</sub> &rarr; RCONHR&prime; &rarr; RCH<sub>2</sub>NHR&prime;.</p>
+
+<h3>Losing a carbon on purpose</h3>
+
+<p class="step-body">The <b>Hofmann rearrangement</b> takes a primary amide with Br<sub>2</sub> and NaOH to a primary amine with <b>one fewer carbon</b>: the alkyl group migrates from the carbonyl carbon to nitrogen, giving an isocyanate that hydrolyzes and expels that carbon as CO<sub>2</sub>. Butanamide, four carbons, gives propylamine, three. The <b>Curtius rearrangement</b> reaches the same isocyanate by heating an acyl azide, losing the same carbon.</p>
+
+<div class="notes-table-wrap">
+<table class="notes-table">
+<thead><tr><th>Route</th><th>Gives</th><th>Carbon count</th></tr></thead>
+<tbody>
+<tr><td>Direct alkylation</td><td>a mixture of 1&deg;, 2&deg;, 3&deg;, 4&deg;</td><td>unchanged</td></tr>
+<tr><td>Gabriel</td><td>1&deg; only</td><td>unchanged</td></tr>
+<tr><td>Azide, then reduce</td><td>1&deg; only</td><td>unchanged</td></tr>
+<tr><td>Cyanide, then LiAlH<sub>4</sub></td><td>1&deg; only</td><td>+1</td></tr>
+<tr><td>Reductive amination</td><td>1&deg;, 2&deg; or 3&deg;, your choice</td><td>gains the carbonyl's carbons</td></tr>
+<tr><td>Amide, then LiAlH<sub>4</sub></td><td>1&deg;, 2&deg; or 3&deg;</td><td>unchanged</td></tr>
+<tr><td>Hofmann or Curtius</td><td>1&deg; only</td><td>&minus;1</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="notes-fact">Choose with two questions. Does the carbon count have to change? That cuts most of the table at once. Then: how substituted is the target nitrogen? Every route running an S<sub>N</sub>2 on a nitrogen surrogate &mdash; Gabriel, azide, cyanide &mdash; gives only a primary amine. For anything more substituted, reductive amination or amide reduction.</div>
+<!-- notes:end -->
+  </article>
+
+  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="amine-reactions.html"><span>Previous</span>Amine reactions</a><a class="notes-prevnext notes-next" href="hofmann-elimination.html"><span>Next</span>Hofmann elimination</a></nav>
+
+  <footer class="notes-foot">
+    <p><a href="../learn.html">&larr; All 116 sections</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
+  </footer>
+</div>
+</body>
+</html>

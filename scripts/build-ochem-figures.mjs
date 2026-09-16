@@ -3027,7 +3027,7 @@ FIGURES.push({
     line(426, 124, 'needs the \u03b1 protons ACIDIC', 'fg-tag');
     line(426, 146, 'the new halogen withdraws \u2192', 'fg-sm');
     line(426, 166, 'more acidic \u2192 faster', 'fg-tag');
-    line(426, 186, 'DOES NOT STOP', 'fg-tag');
+    line(426, 186, 'KEEPS GOING while \u03b1-H remain', 'fg-tag');
 
     s += rule(24, 224, 700, 224);
     s += text(24, 250, 'The halogen does the same thing in both columns. Only the requirement differs.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
@@ -3073,12 +3073,90 @@ FIGURES.push({
 
     s += rule(24, 218, 700, 218);
     s += text(24, 244, 'The easier proton and the more stable anion are on OPPOSITE sides of the molecule.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
-    s += text(24, 268, 'One question settles every case: can the deprotonation reverse?', { cls: 'fg-lbl', size: 12, anchor: 'start' });
-    s += text(24, 290, 'If it can, the mixture finds the stabler enolate. If it cannot, you keep the first one formed.', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    s += text(24, 268, 'One question settles every case: can the two enolates trade a proton?', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(24, 290, 'If they can, the mixture finds the stabler one. If not, you keep whichever formed first.', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
     return s;
   },
   caption: 'Nothing about the ketone settles which enolate you get, which is why the conditions are written out in full rather than abbreviated to a reagent name. Each item in the kinetic column blocks one route back: the base is strong enough not to reverse, bulky enough to pick the open proton, cold enough not to equilibrate, and added first so no free ketone is left to shuttle protons.',
-  note: 'Reversibility is the test, not temperature. LDA at room temperature is still kinetic, because its deprotonation does not reverse \u2014 and LDA at \u221278 \u00b0C added the wrong way round is not, because leftover ketone gives the protons a way back. Reading the thermometer instead of asking the question gets both of those wrong.',
+  note: 'The test is whether the two enolates can trade a proton, and there are three ways they can. The deprotonation reverses \u2014 ethoxide. Free ketone shuttles it \u2014 which is why NaH, whose deprotonation is as irreversible as LDA\u2019s, is a thermodynamic base: it is slow enough that un-ionized ketone is always present. Or the amine the base generated shuttles it, which is what erodes a lithium enolate on warming. Each item in the kinetic column closes one of the three, which is why missing any single one is enough to lose the regiochemistry.',
+});
+
+/* ----------------------------------------------------------------- 59 ---
+   The section's argument is that every route is an escape from one failure, so
+   the failure goes in the middle and the escapes radiate off it. The carbon
+   count is on each spoke because that is the question that actually decides
+   between them. */
+FIGURES.push({
+  id: 'escapes-from-overalkylation',
+  section: 'amine-synthesis',
+  anchor: '<h3>Reductive amination: build the C&ndash;N bond by reduction instead</h3>',
+  viewBox: '0 0 760 320',
+  alt: 'The over-alkylation problem in the center with five routes around it, each labeled with what it gives and whether the carbon count changes',
+  build() {
+    let s = '';
+    s += panel(250, 132, 260, 74, { kind: 'warn' });
+    s += text(380, 158, 'R\u2013X + NH\u2083', { cls: 'fg-lbl', size: 13 });
+    s += text(380, 180, 'a mixture: 1\u00b0, 2\u00b0, 3\u00b0, 4\u00b0', { cls: 'fg-sm', size: 10.5 });
+    s += text(380, 196, 'each product beats the last', { cls: 'fg-sm', size: 10 });
+
+    const rows = [
+      { y: 46,  name: 'Gabriel',            gives: '1\u00b0 only',        c: 'same' },
+      { y: 90,  name: 'azide, then reduce', gives: '1\u00b0 only',        c: 'same' },
+      { y: 240, name: 'CN\u207b, then LiAlH\u2084', gives: '1\u00b0 only',   c: '+1' },
+      { y: 284, name: 'amide, then LiAlH\u2084',  gives: '2\u00b0 or 3\u00b0', c: 'same' },
+    ];
+    for (const r of rows) {
+      s += text(24, r.y, r.name, { cls: 'fg-lbl', size: 12, anchor: 'start' });
+      s += text(24, r.y + 18, r.gives + '  \u00b7  carbons ' + r.c,
+                { cls: r.c === 'same' ? 'fg-tag-good' : 'fg-tag', size: 10.5, anchor: 'start' });
+    }
+    s += text(540, 46, 'reductive amination', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(540, 64, '1\u00b0, 2\u00b0 or 3\u00b0 \u00b7 your choice', { cls: 'fg-tag-good', size: 10.5, anchor: 'start' });
+    s += text(540, 82, 'no substrate limit', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(540, 262, 'Hofmann rearrangement', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(540, 280, '1\u00b0 only \u00b7 carbons \u22121', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+    s += text(540, 298, 'that carbon leaves as CO\u2082', { cls: 'fg-sm', size: 10, anchor: 'start' });
+
+    s += rule(24, 218, 700, 218);
+    return s;
+  },
+  caption: 'One failure and five escapes from it. The three that run an S\u2099\u00b2 on a nitrogen surrogate \u2014 Gabriel, azide, cyanide \u2014 can only ever hand back a primary amine, and need a primary unhindered halide to do it. Reductive amination and amide reduction have neither limit, which is why they are the workhorses.',
+  note: 'Read the right-hand column first. Butanamide is the compound to keep in mind: LiAlH\u2084 gives butylamine and Br\u2082/NaOH gives propylamine, so the same starting material and the same kind of product differ by a carbon depending only on the reagent. That is why the carbon count is the first question to ask of a proposed amine synthesis and not the last \u2014 a route can be flawless step by step and still arrive one carbon short.',
+});
+
+/* ----------------------------------------------------------------- 60 ---
+   Two beta carbons, two alkenes, and the bulk of the leaving group choosing
+   between them. Drawing the ammonium group oversized is the point of the
+   figure: the steric argument is visible or it is just an assertion. */
+FIGURES.push({
+  id: 'hofmann-picks-the-open-side',
+  section: 'hofmann-elimination',
+  anchor: '<h3>Worked example: 2-aminobutane</h3>',
+  viewBox: '0 0 760 300',
+  alt: 'A butyl trimethylammonium salt with its two beta carbons labeled, and the less substituted alkene marked as the major product',
+  build() {
+    let s = '';
+    const c1 = P(140, 120), c2 = P(220, 150), c3 = P(300, 120), c4 = P(380, 150);
+    [c1, c2, c3, c4].forEach((c, i) => s += atom(c.x, c.y, 'C', { kind: i === 1 ? 'hi' : undefined }));
+    s += bond(c1, c2); s += bond(c2, c3); s += bond(c3, c4);
+    s += atom(220, 88, 'N\u207a(CH\u2083)\u2083', { kind: 'warn' });
+    s += bond(c2, P(220, 96));
+    s += text(220, 62, 'very bulky', { cls: 'fg-tag', size: 11 });
+
+    s += text(140, 152, 'C1 \u00b7 CH\u2083 \u00b7 3 H', { cls: 'fg-tag-good', size: 11 });
+    s += text(140, 168, 'open', { cls: 'fg-sm', size: 10 });
+    s += text(300, 96, 'C3 \u00b7 CH\u2082 \u00b7 2 H', { cls: 'fg-tag', size: 11 });
+    s += text(300, 80, 'crowded by the N\u207a', { cls: 'fg-sm', size: 10 });
+
+    s += rule(24, 196, 700, 196);
+    s += text(24, 222, 'H from C1  \u2192  but-1-ene, monosubstituted  \u2014  MAJOR', { cls: 'fg-tag-good', size: 12, anchor: 'start' });
+    s += text(24, 244, 'H from C3  \u2192  but-2-ene, disubstituted and more stable  \u2014  minor', { cls: 'fg-tag', size: 12, anchor: 'start' });
+    s += text(24, 272, 'Four carbons either way. Trimethylamine leaves alongside.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(24, 294, 'The more stable alkene loses, because the base cannot reach the hydrogen that makes it.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    return s;
+  },
+  caption: 'Zaitsev would pick but-2-ene and this reaction does not, which is the whole point of drawing the ammonium group oversized. Hydroxide takes the hydrogen it can reach rather than the one that gives the better alkene, exactly as tert-butoxide does in the E2 chapter \u2014 only here the bulk is on the leaving group instead of the base.',
+  note: 'Run the picture backwards and it becomes an assay. Counting how many equivalents of CH\u2083I an unknown amine swallowed said whether it was primary, secondary or tertiary, and identifying the alkene said what sat around the nitrogen \u2014 which is how alkaloid skeletons were argued for decades, at the cost of the whole sample and several weeks per compound.',
 });
 
 const START = (id) => `<!-- fig:${id}:start -->`;
