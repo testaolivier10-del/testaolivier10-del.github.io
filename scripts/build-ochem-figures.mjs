@@ -2665,7 +2665,7 @@ FIGURES.push({
     s += text(360, 280, 'before any mechanism has been written down.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
-  caption: 'The count that runs the whole chapter. One reactive site makes a single bond and stops; two extends a line; three or more ties the lines to each other in every direction, which is what a network is.',
+  caption: 'The count that runs the whole chapter. One reactive site makes a single bond and stops; two extends a line; three or more ties the lines to each other in every direction, which is what a network is. Count one functional group per site for a step-growth monomer and one C=C for a chain-growth one — counted that way, a vinyl monomer has two sites and divinylbenzene, with two C=C, is the cross-linker.',
   note: 'The consequence reaches all the way to the end of the material’s life. Separate chains are held to each other by intermolecular forces, so heat lets them slide and a thermoplastic can be melted and remolded. A network is one covalent molecule, so heating it breaks bonds rather than loosening them — and a thermoset cannot be recycled by melting at all.',
 });
 
@@ -2707,7 +2707,7 @@ FIGURES.push({
     col(24,  'linear — chains touch along their length', false,
         'HDPE: crystalline, dense, rigid', 'milk bottles and pipe', null);
     col(406, 'branched — held apart', true,
-        'LDPE: amorphous, less dense, floppy', 'plastic bags', 'warn');
+        'LDPE: less crystalline, less dense, floppy', 'plastic bags', 'warn');
 
     s += rule(24, 268, 700, 268);
     s += text(360, 294, 'Same monomer. Same repeat unit. Same molecular formula.', { cls: 'fg-lbl', size: 12 });
@@ -2767,7 +2767,7 @@ FIGURES.push({
     let s = '';
     const zones = [
       { x: 40,  w: 210, lab: 'glassy',  sub: 'amorphous regions frozen',   kind: 'warn' },
-      { x: 250, w: 230, lab: 'rubbery', sub: 'amorphous regions mobile',   kind: 'hi'   },
+      { x: 250, w: 230, lab: 'rubbery or tough', sub: 'amorphous regions mobile', kind: 'hi' },
       { x: 480, w: 220, lab: 'molten',  sub: 'crystalline regions melted', kind: 'hi'   },
     ];
     for (const z of zones) {
@@ -2784,12 +2784,12 @@ FIGURES.push({
     s += text(480, 58, 'Tₘ — melting', { cls: 'fg-tag-good', size: 11 });
 
     s += rule(24, 230, 700, 230);
-    s += text(360, 254, 'Every polymer has a Tₑ, because every polymer has amorphous regions.', { cls: 'fg-lbl', size: 12 });
+    s += text(360, 254, 'Essentially every polymer has a Tₑ: some of the sample is always amorphous.', { cls: 'fg-lbl', size: 12 });
     s += text(360, 276, 'Only a semicrystalline one also has a Tₘ.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
   caption: 'Two transitions, describing two different parts of the same sample. The glass transition is where the tangled amorphous regions stop being frozen; the melting temperature is where the packed crystalline regions come apart. A fully amorphous polymer simply has no Tₘ.',
-  note: 'Tₑ is the one you meet without noticing. Natural rubber sits well above its glass transition at room temperature, which is exactly why it is elastic — cool it in liquid nitrogen, take it below Tₑ, and the same material shatters like glass because its chains can no longer move.',
+  note: 'How soft it gets above Tₑ depends on how much crystallinity is left holding the sample: with little of it you get rubber, while HDPE, PET and nylon are all far above their Tₑ at room temperature and stay rigid, because the crystallites act as physical cross-links up to Tₘ. Natural rubber is the clean case — cool it in liquid nitrogen, take it below Tₑ, and the same material shatters like glass because its chains can no longer move.',
 });
 
 /* ----------------------------------------------------------------- 52 ---

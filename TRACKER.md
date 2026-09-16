@@ -201,6 +201,81 @@ button four times scored 100% without ranking anything. The options now name a
 **side** rather than a group and the methyl sits left twice and right twice, so
 the position cannot be used as a shortcut.
 
+### Unit 8 — Aromatic Follow-Through
+
+Eleven findings. Four confident, seven qualified, all accepted and fixed.
+
+**Confident errors (4).**
+
+| Claim as written | Where | Why it is wrong |
+| --- | --- | --- |
+| Picric acid: "**Two of the three** are ortho or para, so they take the charge by resonance onto six oxygens" — and it was the *keyed* option | `lessons/phenols`, final challenge | All **three** nitro groups in 2,4,6-trinitrophenol are resonance-capable; 2 and 6 are ortho, 4 is para. The option also contradicted itself, since "six oxygens" is three NO₂ groups, and the `correctFeedback` directly below it said "all three" |
+| Na/NH₃ alkyne reduction and Birch "both give the **less-stable-looking** product" | bank, `birch-reduction` | Na/NH₃ gives the **trans** alkene, which is the *more* stable isomer. It is Lindlar's cis product that is less stable. The parallel that actually holds is the e⁻, H⁺, e⁻, H⁺ pattern |
+| "A meta nitro group does **nothing at all**" | notes, lesson, figure note and concept — four places | It withdraws inductively and measurably accelerates SNAr; it is resonance stabilization it cannot supply. The lesson's own step-5 feedback said this correctly, so the unit contradicted itself |
+| Diazonium hub: legend counted "**four** of these seven" groups EAS cannot install, but five spokes were drawn green | `build-ochem-figures` | Ar–H was flagged with the others. Removing a substituent is not the same idea as installing one EAS cannot reach |
+
+**Seven qualified findings, all also accepted.** Mild hydrolysis of
+1-methoxycyclohexa-1,4-diene gives the **β,γ**-unsaturated ketone, not the
+conjugated enone, so the forward link to Robinson chemistry needed the
+isomerization step named — a β,γ-ketone is not a Michael acceptor. Picric acid
+at pKa 0.4 is not reliably "more acidic than trifluoroacetic acid", whose
+quoted values overlap it; the comparison is now to carboxylic acids generally.
+An NH₂ group cannot act as a **para blocker**, because it directs rather than
+merely occupying — that trick belongs to reversible sulfonation alone. The
+"what does a diazonium salt decompose to if warmed" item was ambiguous against
+the phenol synthesis taught in the same section, and now asks for the
+intermediate. The allylic-three-against-benzylic-four comparison mixed two
+conventions (π-system size against charge-bearing positions) and now counts the
+same thing both times. Direct iodination of benzene is possible with an
+oxidant, so "EAS cannot install iodine" was softened. And the Ar–H row in the
+hub map was given its own category rather than sharing the "unreachable" color.
+
+### Unit 9 — Polymers
+
+Eighteen findings. Eight confident, ten qualified, all accepted and fixed.
+
+**Confident errors (8).**
+
+| Claim as written | Where | Why it is wrong |
+| --- | --- | --- |
+| "LDPE: **amorphous**, less dense, floppy" | figure, notes, lesson sort step | LDPE is about half crystalline (density 0.910–0.925, Tm ≈ 110 °C). Branching *lowers* crystallinity; it does not abolish it, and a genuinely amorphous polyethylene would have no melting point and make no film |
+| "Nylon 6,6 comes from **adipic acid (six carbons) and hexamethylenediamine**… the two numbers count the carbons in each monomer" | notes, lesson, concept, bank | The order is backwards. In nylon *X,Y* the first number is the **diamine**, the second the **diacid**. 6,6 hides it; nylon 6,10 is hexamethylenediamine with ten-carbon sebacic acid, and the rule as taught gives the wrong answer |
+| "Add the monomer formulas, subtract the repeat unit, and the difference should be **water**" | notes, lesson, bank | A diacid-plus-diol repeat unit contains **two** ester bonds, so two waters. PET: 166 + 62 − 192 = 36 = 2 H₂O. A student applying the stated check to PET would reject a correct disconnection |
+| "Cut **every C–O bond** of the ester" | notes, lesson, bank (two items) | An ester has two C–O single bonds. Cutting both strips the oxygen out of the alcohol fragment and no diol can be recovered. Only the **acyl** C–O is cut, with the oxygen staying on the alcohol side |
+| "Radical… this is how **most polyethylene** and polystyrene are made" | `notes/polymer-basics` | Only LDPE is made that way. HDPE and LLDPE, together the clear majority of world production, come from coordination catalysts — which the unit's own next section says |
+| "Above T<sub>g</sub>… the material **is rubbery**", stated without qualification | notes, lesson, figure | True only for a largely amorphous, uncrosslinked polymer. HDPE, PET and nylon are all far above their T<sub>g</sub> at room temperature and stay rigid, because crystallites act as physical cross-links up to T<sub>m</sub>. As written the unit called HDPE rigid in one section and rubbery in another |
+| "Same formula as the monomer ⇒ **addition**", keyed with "Either is possible" marked wrong | notes, lesson, concept, bank | Ring-opening loses nothing either: caprolactam → nylon 6 is formula-identical and gives a **polyamide**. Caprolactam is a distractor in this same bank, so the counterexample was already in front of the student. The claim is now scoped to alkene monomers |
+| Polystyrene amorphous because **phenyl is bulky** | notes table, lesson, two bank items | Ordinary polystyrene is amorphous because radical growth makes it **atactic**. Syndiotactic polystyrene has the same phenyl group and is crystalline, melting near 270 °C. Bulk raises T<sub>g</sub> and slows crystallization; it does not forbid packing |
+
+**Ten qualified findings, all also accepted.** "Every polymer has a T<sub>g</sub>"
+rested on a second absolute that fails in the limit and is now "essentially
+every". Kevlar keyed as a **thermoplastic** contradicted the unit's own
+definition of one ("can be melted and remolded") — Kevlar has no melt, decomposing
+near 500 °C, so the answer is now "not a network; its chains are separate".
+"Polyethylene cannot be chemically recycled" is true of hydrolysis but not of
+pyrolysis, which cracks it back to feedstock at commercial scale. "Nylon
+outlasts polyester" was a blanket ranking over two materials that fail under
+*different* conditions: nylon is the one acid, chlorine and sunlight attack.
+The "it varies with temperature" distractor on radical tacticity is genuinely
+defensible — radical PMMA is syndiotactic-rich at low temperature — and was
+replaced. Backbone carbons were called **stereocenters**, which they are not in
+the CIP sense, and the claim was false outright for the polyethylene and PTFE
+listed in the same section. The reactive-site count needed scoping to one
+functional group (step-growth) or one C=C (chain growth), since butadiene has
+two C=C and gives a linear chain while divinylbenzene is the cross-linker. "PET
+is the most recycled plastic **because** its esters can be hydrolyzed" asserts a
+causal link the collection-and-mechanical-reprocessing numbers do not support.
+PLA in seawater degrades not "slowly" but negligibly, which strengthens the
+point the section is making. And polycarbonate's rigidity was credited to bulky
+**side** groups, when it has essentially none — the rigidity is in its
+bisphenol A backbone.
+
+**What the browser pass caught that the chemistry review did not.** The
+`polymer-properties` sort step offered only two options across four rows, so a
+coin flip scored well. It now runs three options over five rows, the extra row
+being polystyrene as "amorphous, but rigid" — which is also the case that breaks
+the assumption that amorphous means soft.
+
 ## Pending clinical review
 
 Everything in this section is a clinical statement this repo now makes that a

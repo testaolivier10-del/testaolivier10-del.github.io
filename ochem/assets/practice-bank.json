@@ -39606,7 +39606,7 @@
     "Count the branches"
    ],
    "correct": 1,
-   "why": "Matching formulas means addition; a lighter repeat unit means something was expelled.",
+   "why": "A lighter repeat unit means something was expelled; matching formulas mean nothing was, so for an alkene monomer, addition.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -40063,7 +40063,7 @@
     "The cross-link density"
    ],
    "correct": 0,
-   "why": "Every substituted carbon in the chain is a stereocenter.",
+   "why": "Each substituted backbone carbon has a fixed orientation, and tacticity names the pattern they make.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -40112,10 +40112,10 @@
     "Atactic",
     "Isotactic",
     "Syndiotactic",
-    "It varies with temperature"
+    "It alternates strictly along the chain"
    ],
    "correct": 0,
-   "why": "A planar radical has no preference about which face the next monomer arrives on.",
+   "why": "A planar radical has no strong preference about which face the next monomer arrives on.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -40237,15 +40237,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why is polystyrene brittle?",
+   "q": "Why is ordinary polystyrene amorphous?",
    "options": [
-    "Its chains are short",
-    "It is crystalline",
-    "Bulky phenyl groups",
-    "It is cross-linked"
+    "Radical polymerization places the phenyls at random",
+    "Phenyl groups are too bulky to pack",
+    "It is lightly cross-linked",
+    "Its chains are too short to form crystals"
    ],
-   "correct": 2,
-   "why": "Nothing packs, so the material is amorphous.",
+   "correct": 0,
+   "why": "Syndiotactic polystyrene has the same phenyl group and is crystalline, melting near 270 C, so bulk is not the cause. Atacticity is.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -40338,7 +40338,7 @@
     "Caprolactam"
    ],
    "correct": 1,
-   "why": "The two sixes count the carbons in each monomer.",
+   "why": "First number the diamine's carbons, second the diacid's: hexamethylenediamine and adipic acid.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -40629,7 +40629,7 @@
    "type": "mcq"
   },
   {
-   "q": "Why is polyester fabric less durable than nylon to harsh treatment?",
+   "q": "Why does polyester fabric lose strength in hot alkali faster than nylon?",
    "options": [
     "It is amorphous",
     "It is branched",
@@ -40637,7 +40637,7 @@
     "It has shorter chains"
    ],
    "correct": 2,
-   "why": "The acyl reactivity ladder applied to a material.",
+   "why": "The acyl reactivity ladder applied to a material. It is not a blanket ranking: nylon is the one attacked by acid, chlorine and sunlight.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -40657,13 +40657,13 @@
   {
    "q": "Is Kevlar a thermoset?",
    "options": [
-    "No, it is a thermoplastic",
+    "No, its chains are separate",
     "Yes",
     "Only when heated",
     "It is neither"
    ],
    "correct": 0,
-   "why": "Its strength comes from alignment and hydrogen bonds, not from cross-links.",
+   "why": "No cross-links, so not a network. It has no melt either, decomposing near 500 C and spun from solution.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -40676,7 +40676,7 @@
     "A diacid and a diol"
    ],
    "correct": 3,
-   "why": "Cut every ester C-O bond and check each fragment has two reactive sites.",
+   "why": "Cut the acyl C-O bond, leaving the oxygen on the alcohol side, and check each fragment has two reactive sites.",
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -40743,7 +40743,7 @@
     "Where cross-links break"
    ],
    "correct": 0,
-   "why": "Every polymer has one; only semicrystalline ones also have a Tm.",
+   "why": "Essentially every polymer has one; only semicrystalline ones also have a Tm.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -40951,7 +40951,7 @@
     "Lower Tg"
    ],
    "correct": 0,
-   "why": "Polystyrene is brittle and amorphous for this reason.",
+   "why": "They raise Tg and slow crystallization. In polystyrene the random placement is what actually prevents packing.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -41096,7 +41096,7 @@
     "An alkene"
    ],
    "correct": 0,
-   "why": "Cut every ester C-O bond.",
+   "why": "Cut the acyl C-O bond of each ester: OH to the acid side, H to the alcohol side.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -41129,13 +41129,13 @@
   {
    "q": "How do you check a polyester disconnection by atom count?",
    "options": [
-    "Monomers minus repeat unit should be water",
+    "Monomers minus repeat unit should be two waters",
     "They should be equal",
     "It should be CO2",
     "It should be an alcohol"
    ],
    "correct": 0,
-   "why": "A condensation loses exactly the small molecule you can account for.",
+   "why": "One water per ester bond, and a diacid-plus-diol repeat unit has two. PET: 166 + 62 - 192 = 36.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -41278,7 +41278,7 @@
     "It is cross-linked"
    ],
    "correct": 1,
-   "why": "There is nothing for water or an enzyme to pick out from any other bond.",
+   "why": "No bond hydrolysis can pick out from any other. Cracking it back to feedstock works, but that is pyrolysis, not selective cleavage.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -41429,12 +41429,12 @@
    "q": "What does an amorphous rigid polymer get its rigidity from?",
    "options": [
     "Hydrogen bonds",
-    "Bulky groups",
+    "Bulky or rigid groups",
     "Crystalline packing",
     "Cross-links"
    ],
    "correct": 1,
-   "why": "PMMA and polycarbonate work this way.",
+   "why": "PMMA through bulky side groups; polycarbonate through rigid bisphenol A units in the backbone.",
    "difficulty": "hard",
    "type": "mcq"
   },

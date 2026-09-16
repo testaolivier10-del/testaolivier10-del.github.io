@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function(){
      network, or neither". */
   var CASES = [
     { id:'c1', t:'<b>Ethylene</b>, CH₂=CH₂', right:'chain',
-      why:'A chain. The double bond counts as the two reactive ends — one carbon carries the growing chain and the other becomes the new active center.' },
+      why:'A chain. One C=C counts as the two reactive ends — one carbon carries the growing chain and the other becomes the new active center. A monomer with two C=C, such as divinylbenzene, is the cross-linker for the same reason a triol is.' },
     { id:'c2', t:'<b>Adipic acid</b>, HOOC(CH₂)₄COOH', right:'chain',
       why:'A chain, with a partner. Two carboxyls means two joins per monomer, so it links into a line — which is half of nylon 6,6.' },
     { id:'c3', t:'<b>Acetic acid</b>, CH₃COOH', right:'neither',
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function(){
           '<li><b>Addition</b> (chain-growth). The monomer is an alkene; the π bond opens and nothing is lost. Polyethylene, PVC, polystyrene.</li>' +
           '<li><b>Condensation</b> (step-growth). Each monomer has two functional groups, and a small molecule &mdash; usually water &mdash; is expelled at every join. Nylon, polyester, Kevlar.</li>' +
           '</ul>' +
-          '<div class="explain-box">To tell which you are looking at, <b>count atoms</b>. Compare the repeat unit with the monomer: same formula means addition, and a lighter repeat unit means something was condensed out. That works from a drawing alone, without knowing the reaction.</div>'
+          '<div class="explain-box">To tell which you are looking at, <b>count atoms</b>. Compare the repeat unit with the monomer: a lighter repeat unit means something was condensed out, and a matching formula means nothing was — so for an alkene monomer, addition. That works from a drawing alone, without knowing the reaction. The exception to keep in mind is ring-opening: caprolactam becomes nylon 6 with no atoms lost, and that chain is a polyamide.</div>'
       },
       {
         render: function(api){
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'mcq',
         eyebrow: 'Step 4 · Guided Practice',
-        title: 'A repeat unit has the same molecular formula as its monomer. Which kind of polymerization was it?',
+        title: 'A repeat unit has the same molecular formula as its <i>alkene</i> monomer. Which kind of polymerization was it?',
         options: [
           'Addition',
           'Condensation',
@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'Neither; the formulas never match'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct, and this is the fastest diagnostic there is. A condensation expels a small molecule at every join, so its repeat unit is always lighter than its monomer by exactly that much. Matching formulas means nothing left, which means the π bond simply opened.',
+        correctFeedback: 'Correct, and this is the fastest diagnostic there is. A condensation expels a small molecule at every join, so its repeat unit is always lighter than its monomer by exactly that much. Matching formulas means nothing left, which for an alkene means the π bond simply opened. The word alkene in the question is doing real work: a cyclic monomer can also polymerize with nothing lost — caprolactam to nylon 6 — and that is a polyamide, not an addition polymer.',
         wrongFeedback: 'Ask what a condensation polymerization produces besides the polymer, and what that does to the repeat unit’s formula.'
       },
       {

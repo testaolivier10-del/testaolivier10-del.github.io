@@ -36976,7 +36976,7 @@
     "Atactic",
     "Isotactic",
     "Syndiotactic",
-    "It varies with temperature"
+    "It alternates strictly along the chain"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -37091,14 +37091,14 @@
    "type": "mcq"
   },
   {
-   "q": "Why is polystyrene brittle?",
+   "q": "Why is ordinary polystyrene amorphous?",
    "options": [
-    "Its chains are short",
-    "It is crystalline",
-    "Bulky phenyl groups",
-    "It is cross-linked"
+    "Radical polymerization places the phenyls at random",
+    "Phenyl groups are too bulky to pack",
+    "It is lightly cross-linked",
+    "Its chains are too short to form crystals"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -37453,7 +37453,7 @@
    "type": "mcq"
   },
   {
-   "q": "Why is polyester fabric less durable than nylon to harsh treatment?",
+   "q": "Why does polyester fabric lose strength in hot alkali faster than nylon?",
    "options": [
     "It is amorphous",
     "It is branched",
@@ -37479,7 +37479,7 @@
   {
    "q": "Is Kevlar a thermoset?",
    "options": [
-    "No, it is a thermoplastic",
+    "No, its chains are separate",
     "Yes",
     "Only when heated",
     "It is neither"
@@ -37915,7 +37915,7 @@
   {
    "q": "How do you check a polyester disconnection by atom count?",
    "options": [
-    "Monomers minus repeat unit should be water",
+    "Monomers minus repeat unit should be two waters",
     "They should be equal",
     "It should be CO2",
     "It should be an alcohol"
@@ -38192,7 +38192,7 @@
    "q": "What does an amorphous rigid polymer get its rigidity from?",
    "options": [
     "Hydrogen bonds",
-    "Bulky groups",
+    "Bulky or rigid groups",
     "Crystalline packing",
     "Cross-links"
    ],

@@ -136,13 +136,13 @@ document.addEventListener('DOMContentLoaded', function(){
 (function(){
   var CASES = [
     { id:'d1', t:'<b>PET</b> — an ester backbone', right:'chem',
-      why:'Chemically recyclable. The ester bonds are a handle hydrolysis can select, so the polymer can be taken back to terephthalic acid and ethylene glycol and rebuilt — which is why PET is the most recycled plastic there is.' },
+      why:'Chemically recyclable. The ester bonds are a handle hydrolysis can select, so the polymer can be taken back to terephthalic acid and ethylene glycol and rebuilt. That is a structural fact about PET; its actual high recycling rate is mostly down to bottle collection and mechanical reprocessing, not to depolymerization.' },
     { id:'d2', t:'<b>Polyethylene</b> — a C–C backbone', right:'mech',
-      why:'Mechanical only. A saturated hydrocarbon chain offers nothing for water or an enzyme to attack, so it can be melted and remoulded but never unmade. Which is also why it persists.' },
+      why:'Mechanical only. A saturated hydrocarbon chain offers nothing for water or an enzyme to attack, so it can be melted and remolded but never hydrolyzed back to its monomer. Cracking it thermally returns a mixture of olefins and naphtha \u2014 useful feedstock, but not ethylene recovered from ethylene. Which is also why it persists.' },
     { id:'d3', t:'<b>Epoxy</b> — a cross-linked network', right:'none',
       why:'Neither. It is one covalent molecule, so it cannot be melted, and there is no backbone bond to cleave selectively. Thermosets are the hardest case at end of life.' },
     { id:'d4', t:'<b>PLA</b> — a polyester from lactic acid', right:'chem',
-      why:'Chemically recyclable, and degradable as well: hydrolysis returns lactic acid, an ordinary metabolite. The qualifier is conditions — it composts efficiently at industrial temperatures and only slowly in a garden.' }
+      why:'Chemically recyclable, and degradable as well: hydrolysis returns lactic acid, an ordinary metabolite. The qualifier is conditions — it composts efficiently at industrial temperatures and negligibly in a garden.' }
   ];
   var OPTS = [ { k:'chem', l:'Chemically, back to monomers' }, { k:'mech', l:'Mechanically only' }, { k:'none', l:'Neither' } ];
 
@@ -159,10 +159,10 @@ document.addEventListener('DOMContentLoaded', function(){
         bodyHtml: '<p class="step-body">Given a polymer, find its monomers. The disconnection is mechanical once you have identified which kind it is:</p>' +
           '<ul class="step-body">' +
           '<li><b>Only carbons in the backbone?</b> It came from an alkene. Find the repeat unit, put the double bond back.</li>' +
-          '<li><b>An ester in the backbone?</b> Cut every ester C&ndash;O bond. Out comes a <b>diacid and a diol</b>.</li>' +
+          '<li><b>An ester in the backbone?</b> Cut the <b>acyl C&ndash;O</b> bond, OH to the acid side and H to the alcohol side. Out comes a <b>diacid and a diol</b>.</li>' +
           '<li><b>An amide in the backbone?</b> Cut every amide C&ndash;N bond. Out comes a <b>diacid and a diamine</b>.</li>' +
           '</ul>' +
-          '<div class="explain-box">Two checks keep you honest. Every fragment must have <b>two reactive sites</b> &mdash; if one comes back with a single group, you cut in the wrong place. And the atoms must balance: add the two monomer formulas, subtract the repeat unit, and the difference should be exactly the water that was lost.</div>'
+          '<div class="explain-box">Two checks keep you honest. Every fragment must have <b>two reactive sites</b> &mdash; if one comes back with a single group, you cut in the wrong place. And the atoms must balance: add the two monomer formulas, subtract the repeat unit, and the difference should be exactly the water that was lost &mdash; one molecule per linkage, so <i>two</i> for a diacid-plus-diol repeat unit. PET: 166 + 62 &minus; 192 = 36, which is 2 H<sub>2</sub>O.</div>'
       },
       {
         type: 'explain',
@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'Long flexible spacers between the functional groups'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct, and it is the one property that argues <i>against</i> crystallinity. Crystalline regions scatter light at every boundary with the amorphous material around them, so a highly crystalline polymer is cloudy no matter how pure it is. Amorphous polymers such as PMMA and polycarbonate are glass-clear, and their rigidity comes from bulky side groups and a high T_g rather than from packing.',
+        correctFeedback: 'Correct, and it is the one property that argues <i>against</i> crystallinity. Crystalline regions scatter light at every boundary with the amorphous material around them, so a highly crystalline polymer is cloudy no matter how pure it is. Amorphous polymers such as PMMA and polycarbonate are glass-clear, and their rigidity comes from a glass transition well above room temperature rather than from packing. PMMA gets that from bulky side groups; polycarbonate has essentially no side groups and gets it from the rigid bisphenol A units in the backbone itself.',
         wrongFeedback: 'What makes a polymer cloudy? Work out which feature you must therefore avoid, even though it would help the strength.'
       },
       {
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function(){
           '<li><b>Chemical recycling.</b> Depolymerize to monomers and rebuild. Needs a cleavable backbone, so it works for <b>PET</b> and nylon and not for polyethylene.</li>' +
           '<li><b>Degradation.</b> Polyesters such as PLA hydrolyze and organisms can finish the job. Polyolefins essentially do not.</li>' +
           '</ul>' +
-          '<div class="explain-box">PET is the most recycled plastic and polyethylene the most landfilled, and the reason is a single functional group. An ester in the backbone is a handle; a saturated C&ndash;C chain is not. The properties that make polyethylene cheap, inert and durable are precisely the ones that make it permanent, and no amount of processing changes that &mdash; it was decided by the monomer.</div>'
+          '<div class="explain-box">PET can be taken back to its monomers and polyethylene cannot, and the reason is a single functional group. An ester in the backbone is a handle; a saturated C&ndash;C chain is not. The properties that make polyethylene cheap, inert and durable are precisely the ones that make it permanent, and no amount of processing changes that &mdash; it was decided by the monomer.</div>'
       },
       {
         type: 'mcq',

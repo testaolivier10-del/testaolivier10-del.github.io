@@ -136,15 +136,17 @@ document.addEventListener('DOMContentLoaded', function(){
 (function(){
   var CASES = [
     { id:'p1', t:'<b>Linear, isotactic</b> chains', right:'cryst',
-      why:'Crystalline. Regular chains lie neatly against their neighbors, so the material is dense, strong, higher-melting — and opaque, because those ordered regions scatter light.' },
-    { id:'p2', t:'<b>Branched</b> chains', right:'amorph',
-      why:'Amorphous. Branches hold the chains apart and stop them packing, which is exactly the difference between LDPE and HDPE.' },
-    { id:'p3', t:'<b>Atactic</b> chains', right:'amorph',
-      why:'Amorphous. With substituents placed at random no two stretches of chain match, so nothing can pack — which is why atactic polypropylene is a goo.' },
+      why:'Crystalline. Regular chains lie neatly against their neighbors, so the material is dense, strong, higher-melting \u2014 and opaque, because those ordered regions scatter light.' },
+    { id:'p2', t:'<b>Branched</b> chains', right:'soft',
+      why:'Poorly packed and flexible. Branches hold the chains apart, so much less of the sample can crystallize \u2014 which is exactly the difference between LDPE and HDPE. Note the word is less, not none: LDPE is still about half crystalline, and it still has a melting point.' },
+    { id:'p3', t:'<b>Atactic</b> chains', right:'soft',
+      why:'Poorly packed and soft. With substituents placed at random no two stretches of chain match, so nothing can pack \u2014 which is why atactic polypropylene is a goo.' },
     { id:'p4', t:'Chains with <b>interchain hydrogen bonds</b>', right:'cryst',
-      why:'Crystalline, and strongly so. Nylon and Kevlar both work this way: each amide contributes a hydrogen bond to the neighboring chain, and straight chains line those bonds up into sheets.' }
+      why:'Crystalline, and strongly so. Nylon and Kevlar both work this way: each amide contributes a hydrogen bond to the neighboring chain, and straight chains line those bonds up into sheets.' },
+    { id:'p5', t:'<b>Atactic chains with bulky side groups</b>, as in ordinary polystyrene', right:'rigid',
+      why:'Amorphous, but rigid \u2014 the case that shows amorphous does not mean soft. Radical polymerization places the phenyl groups at random, so the chains cannot register with each other and the material is glass-clear. What makes it stiff is a glass transition well above room temperature, not crystallinity, and being amorphous is also why it is brittle rather than tough. The cause is the randomness, not the bulk: syndiotactic polystyrene, made with a metallocene catalyst, has the same phenyl group and is crystalline, melting near 270 \u00b0C.' }
   ];
-  var OPTS = [ { k:'cryst', l:'Crystalline, strong' }, { k:'amorph', l:'Amorphous, soft' } ];
+  var OPTS = [ { k:'cryst', l:'Crystalline, strong' }, { k:'soft', l:'Poorly packed, flexible' }, { k:'rigid', l:'Amorphous, but rigid' } ];
 
   window.OchemLessonEngine.start({
     topicId: 'polymer-properties',
@@ -180,8 +182,8 @@ document.addEventListener('DOMContentLoaded', function(){
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
-            '<h2 class="step-title">Crystalline or amorphous?</h2>' +
-            '<p class="step-body">One question for all four: <b>can the chains lie against each other?</b> Everything else &mdash; density, strength, clarity, melting behavior &mdash; follows from the answer.</p>' +
+            '<h2 class="step-title">What kind of material does each give?</h2>' +
+            '<p class="step-body">Start with one question: <b>can the chains lie against each other?</b> That settles crystalline against amorphous. Then, for the amorphous ones, a second question decides whether the material is floppy or stiff.</p>' +
             '<div class="radical-sort">' +
             CASES.map(function(c){
               return '<div class="radical-row" data-case="' + c.id + '">' +
@@ -201,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function(){
               var cfg = CASES.filter(function(c){ return c.id === id; })[0];
               if(btn.getAttribute('data-o') !== cfg.right){
                 missed = true; btn.classList.add('wrong'); btn.disabled = true;
-                api.showFeedback(fb, false, 'Picture two chains side by side and ask whether anything stops them touching along their whole length.');
+                api.showFeedback(fb, false, 'Picture two chains side by side and ask whether anything stops them touching. Then remember that amorphous does not automatically mean soft \u2014 a high glass transition can make an unpacked polymer rigid.');
                 return;
               }
               done[id] = true; btn.classList.add('correct');
@@ -209,8 +211,8 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
               if(Object.keys(done).length === CASES.length){
                 api.showFeedback(fb, true, missed
-                  ? 'All four. Two features that prevent packing and two that help it, and none of them changes the chemistry.'
-                  : 'All four, first time. Regularity and interchain attraction build crystallinity; branching and randomness destroy it.');
+                  ? 'All five. Two features build crystallinity, two destroy it, and the last shows that destroying it does not have to make the material soft.'
+                  : 'All five, first time, including polystyrene \u2014 amorphous, and rigid anyway.');
                 api.record(!missed); next.disabled = false;
               }
             });

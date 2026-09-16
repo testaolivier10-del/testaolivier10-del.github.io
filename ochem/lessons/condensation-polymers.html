@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function(){
     { id:'k1', t:'Diacid + <b>diol</b>', right:'ester',
       why:'A polyester, losing water at each join. PET, from terephthalic acid and ethylene glycol, is the drinks bottle and the polyester shirt.' },
     { id:'k2', t:'Diacid + <b>diamine</b>', right:'amide',
-      why:'A polyamide. Nylon 6,6 comes from adipic acid and hexamethylenediamine, and the two sixes count the carbons in each monomer.' },
+      why:'A polyamide. Nylon 6,6 comes from hexamethylenediamine and adipic acid, in that order: the first number counts the diamine\u2019s carbons and the second the diacid\u2019s.' },
     { id:'k3', t:'Diol + <b>diisocyanate</b>', right:'neither',
       why:'A polyurethane — and the exception in this section, because NOTHING is lost. The alcohol simply adds across the N=C=O group, so it is step-growth but not technically a condensation. That is why the broader name for the class is step-growth.' },
     { id:'k4', t:'<b>Lactic acid</b> with itself', right:'ester',
@@ -159,9 +159,9 @@ document.addEventListener('DOMContentLoaded', function(){
         bodyHtml: '<p class="step-body">A condensation polymer is made by the reactions from the carboxylic acid chapter &mdash; esterification and amide formation &mdash; performed over and over on monomers that each carry <b>two</b> reactive groups. A small molecule, usually water, is expelled at every join.</p>' +
           '<ul class="step-body">' +
           '<li><b>Diacid + diol</b> &rarr; a <b>polyester</b>. The one to know is PET, from terephthalic acid and ethylene glycol.</li>' +
-          '<li><b>Diacid + diamine</b> &rarr; a <b>polyamide</b>. Nylon 6,6, from adipic acid and hexamethylenediamine.</li>' +
+          '<li><b>Diacid + diamine</b> &rarr; a <b>polyamide</b>. Nylon 6,6, from hexamethylenediamine and adipic acid.</li>' +
           '</ul>' +
-          '<div class="explain-box">The name tells you the carbon counts. <b>Nylon 6,6</b> has six carbons in the diacid and six in the diamine &mdash; both numbers are structural facts you can read straight out of the name.</div>'
+          '<div class="explain-box">The name tells you the carbon counts. <b>Nylon 6,6</b> has six carbons in the diamine and six in the diacid, in that order &mdash; the first number is always the diamine. Both are structural facts you can read straight out of the name, and nylon 6,10 shows why the order matters: hexamethylenediamine with ten-carbon sebacic acid.</div>'
       },
       {
         type: 'explain',
@@ -169,8 +169,8 @@ document.addEventListener('DOMContentLoaded', function(){
         title: 'A polyamide is a protein backbone made of one residue.',
         bodyHtml: '<p class="step-body">Look at what nylon actually is. An amide bond, repeated. Planar because of the same resonance, hydrogen bonding through the same N&ndash;H and C=O, holding neighboring chains to each other exactly as a β pleated sheet does.</p>' +
           '<p class="step-body"><b>Nylon is strong for the reason a β sheet is strong.</b> Nothing new is happening; it is one residue instead of twenty, and no folding.</p>' +
-          '<p class="step-body">And the reactivity carries over too. Amides are the least reactive acyl derivative, so a polyamide resists hydrolysis far better than a polyester does &mdash; which is why nylon survives repeated washing and why a polyester fabric is the more fragile of the two to harsh treatment.</p>' +
-          '<div class="explain-box">That same difference is what makes PET the most chemically recyclable plastic. Ester bonds can be hydrolyzed back to the monomers deliberately; the property that makes polyester less durable is the property that makes it recoverable.</div>'
+          '<p class="step-body">And the reactivity carries over too. Amides are the least reactive acyl derivative, so a polyamide resists hydrolysis far better than a polyester does &mdash; which is why polyester fabric weakens in hot alkali faster than nylon. Not a blanket ranking, though: nylon is the one that acid, chlorine and sunlight attack.</p>' +
+          '<div class="explain-box">That same difference is what makes PET chemically recyclable at all. Ester bonds can be hydrolyzed back to the monomers deliberately; the property that makes polyester less durable is the property that makes it recoverable.</div>'
       },
       {
         render: function(api){
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'It contains metal atoms in the backbone'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct, and the three factors compound. The aromatic rings are flat and rigid so the chain cannot coil; para substitution makes it straight so chains lie against each other along their whole length; and every amide contributes a hydrogen bond between neighbors, which a straight chain lines up into sheets. It is a thermoplastic, not a network — nothing exotic is happening beyond perfect alignment of ordinary amide hydrogen bonds.',
+        correctFeedback: 'Correct, and the three factors compound. The aromatic rings are flat and rigid so the chain cannot coil; para substitution makes it straight so chains lie against each other along their whole length; and every amide contributes a hydrogen bond between neighbors, which a straight chain lines up into sheets. It is not a network — the chains are separate, and nothing exotic is happening beyond perfect alignment of ordinary amide hydrogen bonds.',
         wrongFeedback: 'Kevlar is a polyamide like nylon. What is different about its monomers, and what does that do to the shape of the chain?'
       },
       {
