@@ -2413,7 +2413,7 @@
   "Below about 1500 cm⁻¹, absorptions arise from complex combinations of bending and skeletal vibrations unique to each molecule, making this region a usable fingerprint even when individual bands are hard to assign.",
   "Vibrational frequency increases as reduced mass decreases, so light-atom bonds like C-H vibrate much faster, and thus at higher wavenumber, than heavier-atom bonds like C-Cl.",
   "The alkoxy oxygen withdraws electron density inductively and its resonance donation into the carbonyl is weaker than an amide nitrogen's, leaving the ester C=O stiffer and higher in frequency than a simple ketone.",
-  "The C-H bond directly on the carbonyl carbon of an aldehyde gives a characteristic weak doublet near 2720 and 2850 cm⁻¹ that ketones, lacking that C-H, do not show.",
+  "The C-H bond directly on the carbonyl carbon of an aldehyde gives a characteristic weak doublet near 2720 and 2820 cm⁻¹ that ketones, lacking that C-H, do not show.",
   "Nitrogen's lone pair delocalizes strongly into the carbonyl pi system, increasing single-bond character in C=O and lowering its stretching frequency relative to a ketone.",
   "Conjugation delocalizes pi electron density between the alkene and the carbonyl, giving the C=O bond more single-bond character and a lower force constant, shifting the stretch lower.",
   "Carboxylic acids hydrogen-bond strongly to form dimers even in dilute solution, producing a very broad O-H absorption from roughly 2500-3300 cm⁻¹, broader than a typical alcohol O-H band.",
@@ -2429,7 +2429,7 @@
   "A carbonyl stretch combined with a very broad, hydrogen-bonded O-H absorption smeared across the C-H region, rather than a sharp free O-H, is the classic signature of a carboxylic acid dimer.",
   "Enantiomers have identical bond types and strengths, so their standard IR spectra are essentially indistinguishable; other techniques are needed to tell them apart.",
   "Good pi donors, like an amide nitrogen, soften the C=O bond by adding single-bond character; chlorine's lone pairs overlap poorly with carbon, so its strong inductive pull dominates and stiffens the bond.",
-  "Water's own strong, broad O-H absorption overlaps exactly where chemists look for O-H and N-H stretches in the sample, and liquid water can dissolve traditional salt-plate cells, so it is usually avoided."
+  "The flat baseline from 2400 to 3600 is the decisive observation: it rules out every structure containing an O-H, which kills the acid and both alcohols. The survivor has to put both oxygens elsewhere, and 1735 is the ester carbonyl - a ketone would be 1715, an acid 1710, an aldehyde 1725 with a weak C-H doublet near 2720 and 2820 that is absent here. The strong 1240 band is the ester C-O."
  ],
  "h-nmr": [
   "Electron-withdrawing groups nearby deshield a proton, shifting its signal downfield (higher ppm); shielded protons appear upfield.",
@@ -2443,7 +2443,7 @@
   "Fast proton exchange (often catalyzed by trace acid, base, or water) averages the local environment and can broaden or shift the O-H/N-H signal, making it variable from sample to sample and solvent to solvent.",
   "Coupling is transmitted through the bonding electrons connecting the nuclei, which is why it typically falls off sharply beyond three bonds, not through direct spatial proximity.",
   "Vicinal coupling is coupling between protons on adjacent (neighboring) carbons, which are three bonds apart (H-C-C-H), and is the basis of the simple n+1 splitting rule.",
-  "Only nuclei with nonzero spin (¹H has spin 1/2) behave like tiny magnets that can align with or against an external field and absorb energy at a characteristic radiofrequency, which is what NMR detects.",
+  "Two 2H doublets sharing one J is the para-disubstituted pattern, so the ring carries two different groups at the 1 and 4 positions. The flat baseline above 3100 rules out the acid, and 1720 with no aldehyde C-H doublet rules out the aldehyde. The 3H singlets separate the two esters: 3.9 ppm is a methyl on oxygen (the 3.3-4.5 window), 2.4 ppm a methyl on the ring. In 4-methylphenyl acetate nothing would appear near 3.9.",
   "Each electronegative chlorine pulls electron density away inductively; stacking more of them on the same carbon compounds this effect, progressively deshielding the remaining protons and pushing the shift downfield.",
   "Geminal protons share one carbon (two bonds apart), while vicinal protons sit on neighboring carbons (three bonds apart); both can show coupling, but the structural relationship and typical coupling constants differ.",
   "The CH3 protons have two neighboring CH2 protons, giving n+1 = 3 peaks (a triplet); the CH2 protons have three neighboring CH3 protons, giving n+1 = 4 peaks (a quartet).",
@@ -2460,7 +2460,7 @@
   "Plain alkyl CH3 is least deshielded (around 0.9 ppm); a carbonyl-adjacent CH3 is pulled somewhat downfield (around 2.1 ppm) by the electron-withdrawing carbonyl; an aromatic-ring CH3 is shifted further by ring anisotropy (around 2.3 ppm); and an O-CH3 is most deshielded (around 3.3-3.8 ppm) by the directly attached electronegative oxygen.",
   "Coupling is transmitted through bonding electrons, and its magnitude typically shrinks quickly as the number of intervening bonds grows, so beyond three bonds the coupling constant in a flexible, saturated system is usually too small to resolve as visible splitting.",
   "Because O-H protons exchange rapidly with any available exchangeable protons (like trace water), the effective population and position of this signal is sensitive to moisture and sample purity, making its integration and shift less reproducible than for non-exchangeable C-H protons.",
-  "Anisotropic shielding effects, like those from aromatic rings, alkenes, and alkynes, depend on where a proton sits relative to the induced field lines, which is why the same functional group can deshield some nearby protons while shielding others in a different spatial position.",
+  "One proton is shielded and the other deshielded by the same ring, so the ring's effect cannot be a single number attached to the group: it has a direction. The circulating pi electrons reinforce the applied field outside the ring and oppose it above the face - magnetic anisotropy. Geometry, not just which atoms are nearby, sets the shift.",
   "Protons related by a genuine symmetry operation of the molecule, such as reflection through an internal mirror plane, occupy equivalent environments on a time-averaged basis and therefore resonate at the same chemical shift."
  ],
  "c-nmr": [
@@ -2469,7 +2469,7 @@
   "Both the rarity of the ¹³C isotope and its inherently weaker NMR signal (lower gyromagnetic ratio) compared to ¹H make ¹³C NMR much less sensitive, requiring longer acquisition times.",
   "Each unique carbon environment gives rise to its own peak, regardless of how many hydrogens are attached to that carbon, which is different from how ¹H NMR integration works.",
   "Carbonyl carbons are strongly deshielded by the attached oxygen and the carbon's bonding, placing their signals well downfield of essentially all other common carbon environments.",
-  "TMS is used as the zero-point reference for both ¹H and ¹³C NMR because its carbons (and protons) are highly shielded, inert, and give a single clean reference peak.",
+  "A peak at 212 that is absent from DEPT is a ketone carbonyl with no attached hydrogen. That rules out the aldehyde, whose carbonyl carbon carries an H and would appear in DEPT, and the alcohol, which has no carbonyl and would put its C-O carbon near 70. Three peaks for five carbons means the molecule is symmetric, and the down peak at 35 (a CH2) with the up peak at 8 (a CH3) puts an equivalent CH2 and CH3 on each side of the carbonyl. Pentan-2-one is unsymmetrical and gives five peaks.",
   "Because carbon sits at the center of bonding with more direct exposure to hybridization and substituent effects, its chemical shift is more sensitive to structural differences, spreading ¹³C signals over a much wider ppm range than ¹H signals.",
   "Differences in relaxation times and the nuclear Overhauser effect between different carbons (especially quaternary versus protonated carbons) make simple peak height or area an unreliable guide to the number of carbons in ¹³C NMR, unlike in ¹H NMR.",
   "The delocalized pi system and partial double-bond character of aromatic carbons deshield them into the roughly 100-150 ppm region, distinct from both simple alkyl carbons and carbonyl carbons.",
@@ -2484,7 +2484,7 @@
   "Oxygen's electronegativity pulls electron density away from the carbon it is bonded to, deshielding that carbon and shifting its signal downfield relative to an ordinary alkane carbon.",
   "Just as with ¹H NMR, carbons related by a genuine symmetry operation of the molecule occupy chemically equivalent environments and therefore resonate at the same shift.",
   "The shift ranges for these two carbonyl types overlap somewhat, so chemists often combine the ¹³C shift with other evidence, such as the presence of a broad O-H absorption in IR or an O-H proton in ¹H NMR, to tell them apart confidently.",
-  "Although close to the aromatic/alkene region, a nitrile carbon's shift around 115-120 ppm, especially combined with a sharp triple-bond stretch in IR, helps distinguish it from other unsaturated carbons.",
+  "115-120 ppm sits inside the 110-160 aromatic range and at the bottom of the alkene range, so the shift on its own cannot prove a nitrile. What settles it is a second technique: a sharp, medium IR band near 2250 cm⁻¹ in a region where almost nothing else absorbs.",
   "The mirror plane running through the two substituted carbons makes the two carbons next to one substituent equivalent to each other, and the two carbons next to the other substituent equivalent to each other, giving four unique aromatic carbons: the two substituted carbons plus the two equivalent pairs.",
   "Since roughly 99 percent of carbon atoms are the spin-inactive ¹²C isotope, the probability that a given ¹³C nucleus happens to be bonded to another ¹³C nucleus is small, so carbon-carbon coupling is rarely visible above the noise in a normal spectrum.",
   "Because chemical shift differences and coincidental overlaps differ between ¹H and ¹³C environments, and because symmetry can relate protons without necessarily relating the carbons carrying them (or vice versa), the number of resolved signals does not have to match between the two spectra.",
@@ -2516,7 +2516,7 @@
   "Both the isopropyl radical (C3H7, mass 43) and the acetyl cation-forming group (CH3CO, also mass 43) are common fragments lost from molecular ions, so a loss of 43 alone is often ambiguous without further context.",
   "Alpha cleavage adjacent to the aldehyde carbonyl commonly ejects the formyl radical, CHO, which has a mass of 29, leaving behind a stabilized carbon-centered cation.",
   "The aromatic ring can delocalize the positive charge and radical character of the molecular ion over the ring system, stabilizing it and making the intact M+ more likely to survive and be detected as a prominent peak.",
-  "It is actually the reverse: the x-axis shows the mass-to-charge ratio (m/z) of each ion, while the y-axis shows that ion's relative intensity, or abundance, compared to the base peak.",
+  "M+1 at 8.8% of M means about 8.8/1.1 = 8 carbons. The missing M+2 rules out chlorine, whose M+2 would stand at roughly a third of M, and the flat baseline above 3100 rules out benzoic acid's very broad O-H. The base peak at 105 is M - 15, a methyl lost by alpha cleavage to leave the benzoyl cation, which then loses CO to give the phenyl cation at 77. Benzaldehyde has no methyl to lose and weighs 106.",
   "Fragmentation in the gas phase favors pathways that produce the most stable cation, following the same substitution-based stability trend (tertiary greater than secondary greater than primary) used to rationalize carbocation stability throughout organic chemistry.",
   "Alpha cleavage on either side of an asymmetric ketone's carbonyl generates two different acylium-type cations, explaining why both a methyl loss (15) and a loss consistent with the other alkyl substituent pattern can appear together in the spectrum of a compound like methyl ethyl ketone.",
   "Because forming larger, more stable radicals (or undergoing favorable rearrangements like McLafferty) is usually more thermodynamically favorable than simply ejecting a lone hydrogen atom, simple H-loss is typically a minor pathway rather than the dominant one.",

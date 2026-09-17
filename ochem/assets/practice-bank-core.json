@@ -26621,7 +26621,7 @@
    "options": [
     "A broad O-H band near 3300 cm⁻¹",
     "A triple-bond stretch near 2200 cm⁻¹",
-    "Two weak C-H bands near 2720 and 2850 cm⁻¹",
+    "Two weak C-H bands near 2720 and 2820 cm⁻¹",
     "A complete absence of any carbonyl absorption"
    ],
    "correct": 2,
@@ -26743,7 +26743,7 @@
    "type": "tf"
   },
   {
-   "q": "Even though the aldehyde C-H stretch near 2720-2850 cm⁻¹ overlaps with other C-H absorptions, it remains diagnostically useful mainly because:",
+   "q": "Even though the aldehyde C-H doublet near 2720 and 2820 cm⁻¹ sits close to other C-H absorptions, it remains diagnostically useful mainly because:",
    "options": [
     "It is always the strongest band in the entire spectrum",
     "It exactly overlaps the carbonyl stretch itself",
@@ -26801,14 +26801,14 @@
    "type": "mcq"
   },
   {
-   "q": "Why is water generally avoided as a solvent when preparing a sample for IR spectroscopy, especially when looking for O-H or N-H functional groups?",
+   "q": "An unknown of formula C₄H₈O₂ shows IR bands at 2960 (medium), 1735 (very strong, sharp) and 1240 (strong), with a completely flat baseline from 2400 to 3600 cm⁻¹. Which structure is consistent with all four observations?",
    "options": [
-    "Water is simply too expensive to use as a solvent",
-    "Water has essentially no effect on an IR spectrum",
-    "Water absorbs in the O-H and N-H regions",
-    "Water is always completely immiscible with organic compounds"
+    "CH₃CH₂CH₂COOH, butanoic acid",
+    "CH₃COOCH₂CH₃, ethyl acetate",
+    "HOCH₂CH₂CH₂CHO, 4-hydroxybutanal",
+    "CH₃CH₂COCH₂OH, 1-hydroxybutan-2-one"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   }
@@ -26943,14 +26943,16 @@
    "type": "mcq"
   },
   {
-   "q": "For a hydrogen nucleus to be observable in ¹H NMR, it must have a nonzero nuclear spin.",
+   "q": "A compound of formula C₉H₁₀O₂ gives a ¹H NMR with four signals: 8.0 ppm (2H, d, J = 8 Hz), 7.3 ppm (2H, d, J = 8 Hz), 3.9 ppm (3H, s), 2.4 ppm (3H, s). Its IR has a strong band at 1720 cm⁻¹ and nothing above 3100. What is the structure?",
    "options": [
-    "True",
-    "False"
+    "Methyl 4-methylbenzoate, 4-CH₃-C₆H₄-COOCH₃",
+    "4-Methylphenyl acetate, 4-CH₃-C₆H₄-OCOCH₃",
+    "2-Phenylpropanoic acid, C₆H₅CH(CH₃)COOH",
+    "3-Phenylpropanal, C₆H₅CH₂CH₂CHO"
    ],
    "correct": 0,
-   "difficulty": "easy",
-   "type": "tf"
+   "difficulty": "hard",
+   "type": "mcq"
   },
   {
    "q": "Comparing CH3Cl, CH2Cl2, and CHCl3, the chemical shift of the carbon-bound proton(s) moves progressively further downfield as the number of chlorine atoms increases. This trend is best explained by:",
@@ -27139,14 +27141,14 @@
    "type": "mcq"
   },
   {
-   "q": "Given that aromatic ring protons are deshielded by the ring's induced magnetic field while a proton located directly above or below the ring plane (if one existed in a rigid system) could actually be shielded, this anisotropic behavior shows that a functional group's effect on chemical shift depends only on:",
+   "q": "A proton held directly above the face of a benzene ring in a rigid molecule appears at 0.5 ppm, upfield of an ordinary alkane proton, while the protons on the ring's edge appear at 7.3 ppm. What does this pair of observations establish?",
    "options": [
-    "The electronegativity of the group alone, regardless of geometry",
-    "The molecular weight of the entire molecule",
-    "Both electronic character and geometric position",
-    "The number of carbons in the ring alone"
+    "That chemical shift is fixed by the electronegativity of nearby atoms alone",
+    "That chemical shift depends on where a proton sits relative to a nearby pi system",
+    "That the rigid molecule has to be measured on a different spectrometer entirely",
+    "That protons above a ring and protons on its edge are chemically identical"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -27223,14 +27225,16 @@
    "type": "mcq"
   },
   {
-   "q": "¹³C NMR spectra are referenced to tetramethylsilane (TMS), just as ¹H NMR spectra are, with TMS's carbons defined as 0 ppm.",
+   "q": "A compound of formula C₅H₁₀O has a ¹³C spectrum with three peaks: 212, 35 and 8 ppm. In DEPT-135 the 212 peak is absent, the 35 peak points down, and the 8 peak points up. What is the structure?",
    "options": [
-    "True",
-    "False"
+    "Pentan-3-one, CH₃CH₂COCH₂CH₃",
+    "Pentan-2-one, CH₃COCH₂CH₂CH₃",
+    "Pentanal, CH₃CH₂CH₂CH₂CHO",
+    "Cyclopentanol, C₅H₉OH"
    ],
    "correct": 0,
-   "difficulty": "easy",
-   "type": "tf"
+   "difficulty": "hard",
+   "type": "mcq"
   },
   {
    "q": "The typical chemical shift range for ¹³C NMR signals (roughly 0-220 ppm) is much wider than for ¹H NMR (roughly 0-12 ppm). This is best explained by:",
@@ -27395,12 +27399,12 @@
    "type": "mcq"
   },
   {
-   "q": "A nitrile carbon (C of a C≡N group) typically appears around 115-120 ppm in ¹³C NMR, a range that is useful diagnostically mainly because:",
+   "q": "A nitrile carbon (C of a C≡N group) typically appears around 115-120 ppm in ¹³C NMR, a range that must be interpreted carefully because:",
    "options": [
-    "It falls in an open region, away from aromatic carbons",
+    "It overlaps the aromatic and alkene region instead of standing clear of it",
     "Nitrile carbons are never detectable by ¹³C NMR",
     "This range is identical to a typical aldehyde carbonyl carbon",
-    "Nitrile carbons always overlap exactly with TMS"
+    "Nitrile carbons overlap exactly with the TMS reference signal at zero ppm"
    ],
    "correct": 0,
    "difficulty": "medium",
@@ -27745,14 +27749,16 @@
    "type": "mcq"
   },
   {
-   "q": "In a standard mass spectrum plot, the x-axis (m/z) represents a peak's relative abundance, while the y-axis (intensity) represents its mass-to-charge ratio.",
+   "q": "An unknown shows a molecular ion at m/z 120 with an M+1 peak about 8.8% as tall, no M+2 of any significance, a base peak at m/z 105, and a further strong fragment at m/z 77. Its IR has a strong band at 1690 cm⁻¹ and nothing above 3100 cm⁻¹. What is the structure?",
    "options": [
-    "True",
-    "False"
+    "Benzaldehyde, C₆H₅CHO",
+    "Acetophenone, C₆H₅COCH₃",
+    "Benzoic acid, C₆H₅COOH",
+    "Chlorobenzene, C₆H₅Cl"
    ],
    "correct": 1,
-   "difficulty": "medium",
-   "type": "tf"
+   "difficulty": "hard",
+   "type": "mcq"
   },
   {
    "q": "When an alkane's molecular ion fragments by breaking a carbon-carbon bond, the fragmentation pathway that generates the most stable resulting carbocation (tertiary over secondary over primary) is generally favored. This principle is analogous to:",

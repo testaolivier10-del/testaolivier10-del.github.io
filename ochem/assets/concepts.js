@@ -538,9 +538,15 @@
     { id:'nmr-splitting-integration', title:'Splitting & integration', family:'Spectroscopy',
       topics:['h-nmr','c-nmr'], dependsOn:['nmr-shift-shielding'],
       hint:'n neighboring hydrogens give n+1 lines; integration gives the ratio of hydrogens.' },
+    { id:'carbon-count-symmetry', title:'Counting carbon environments', family:'Spectroscopy',
+      topics:['c-nmr','h-nmr','aromaticity'], dependsOn:['nmr-shift-shielding'],
+      hint:'Count environments, not atoms: symmetry-equivalent carbons share one line, and DEPT says how many H each carries.' },
     { id:'ms-fragmentation', title:'Mass spec fragmentation', family:'Spectroscopy',
       topics:['mass-spec','sn1'], dependsOn:['carbocation-stability'],
-      hint:'Molecules fragment to give the most stable cation available.' }
+      hint:'Molecules fragment to give the most stable cation available.' },
+    { id:'structure-elucidation', title:'Structure from spectra', family:'Spectroscopy',
+      topics:['ir','h-nmr','c-nmr','mass-spec'], dependsOn:['ir-functional-groups','nmr-splitting-integration','ms-fragmentation'],
+      hint:'Formula first, then groups, then symmetry, then connectivity — and every piece of data has to be used.' }
   ];
 
   var BY_ID = {};
@@ -677,7 +683,7 @@
     'amine-synthesis':'amine-synthesis-routes', 'hofmann-elimination':'hofmann-elimination-rule',
     'aromaticity':'huckel-aromaticity', 'eas':'eas-mechanism', 'directing-effects':'directing-effects',
     'ir':'ir-functional-groups', 'h-nmr':'nmr-splitting-integration',
-    'c-nmr':'nmr-shift-shielding', 'mass-spec':'ms-fragmentation'
+    'c-nmr':'carbon-count-symmetry', 'mass-spec':'ms-fragmentation'
   };
   function defaultConceptFor(topicId){
     if(TOPIC_PRIMARY[topicId]) return TOPIC_PRIMARY[topicId];

@@ -219,9 +219,9 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'mcq',
         eyebrow: 'Step 4 · Check Understanding',
         title: 'Why does a highly symmetric molecule like para-xylene show fewer ¹³C peaks than its total carbon count?',
-        options: ['Carbons related by the molecule\'s symmetry are chemically equivalent and produce a single shared signal, just like equivalent hydrogens in ¹H NMR', 'Symmetric molecules are invisible to ¹³C NMR', 'NMR can only detect a maximum of 3 carbons per molecule'],
+        options: ['Carbons related by the molecule\'s symmetry share a single signal', 'Symmetric molecules are invisible to ¹³C NMR, so only the unsymmetrical part of one is seen', 'A ¹³C spectrometer can resolve at most three separate carbon signals in any molecule'],
         correctIndex: 0,
-        correctFeedback: 'Correct — this is the exact same equivalence principle from ¹H NMR integration, just applied to carbon peak count instead of proton integration values.',
+        correctFeedback: 'Correct — it is the same equivalence principle as in ¹H NMR, applied to carbon peak count instead of proton integration. p-Xylene has eight carbons and three signals: the two methyls, the two substituted ring carbons, and all four ring CH carbons.',
         wrongFeedback: 'Symmetric molecules are perfectly visible to NMR — the reduced peak count comes specifically from chemically equivalent carbons overlapping into shared signals.'
       },
       {
@@ -234,9 +234,9 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'final',
         eyebrow: 'Challenge',
         title: 'A compound\'s standard ¹³C spectrum shows 5 peaks, but its DEPT spectrum shows only 4 (one peak from the standard spectrum is simply missing in DEPT). What does this tell you about the carbon corresponding to that missing peak?',
-        options: ['It must be a CH₃ carbon, the most common type DEPT excludes', 'It is a quaternary carbon (no hydrogens attached), since DEPT specifically excludes carbons with no attached H', 'The spectrometer made an error, since DEPT should always show every peak from the standard spectrum'],
+        options: ['It must be a CH₃ carbon, which is the kind of carbon DEPT leaves out of its spectrum', 'It is a quaternary carbon, with no hydrogens attached', 'The spectrometer made an error, since DEPT is supposed to show every peak the standard run does'],
         correctIndex: 1,
-        correctFeedback: 'Correct — a peak present in the standard decoupled spectrum but absent from DEPT is the classic signature of a quaternary (no-hydrogen) carbon.'
+        correctFeedback: 'Correct — DEPT works by transferring polarization from attached hydrogens, so a carbon with none has nothing to transfer and never appears. A peak present in the standard decoupled spectrum but absent from DEPT is the classic signature of a quaternary carbon.'
       }
     ]
   });

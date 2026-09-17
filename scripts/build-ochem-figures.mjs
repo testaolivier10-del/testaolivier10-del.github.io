@@ -12886,6 +12886,383 @@ FIGURES.push({
   note: 'Do not count resonance structures &mdash; three against three is a tie, and the tie is exactly why counting fails here. Count the GOOD one. Ortho and para each get a fourth structure with full octets; meta gets none, and that single structure decides the question. The same drawing with NO₂ in place of NH₂ inverts it: there the charge reaching the substituted carbon is the disaster, and meta becomes the only tolerable attack.',
 });
 
+/* ------------------------------------------------------------ Spectroscopy ---
+   The chapter taught four techniques and showed no spectrum. A region map is
+   not a spectrum, a range chart is not a spectrum, and three structures are
+   not a spectrum: a student could finish the chapter having never seen the
+   thing every exam question in the subject puts in front of them. These five
+   figures are the missing pictures. Every peak position drawn below is a real
+   textbook value for the named compound. */
+
+/* A % transmittance trace. Absorptions are Gaussian dips from a 100 %T
+   baseline, which is what an IR trace actually is, and the sampling step
+   tightens near a sharp band so a narrow spike does not come out triangular. */
+function irTrace(peaks, X, Y) {
+  const T = (w) => {
+    let t = 100;
+    for (const p of peaks) t -= p.d * Math.exp(-Math.pow((w - p.c) / p.s, 2) / 2);
+    return Math.max(t, 3);
+  };
+  const near = (w) => peaks.some((p) => p.s < 40 && Math.abs(w - p.c) < 90);
+  const pts = [];
+  let w = 4000;
+  while (w >= 500) {
+    pts.push(`${n2(X(w))} ${n2(Y(T(w)))}`);
+    w -= near(w) ? 3 : 14;
+  }
+  pts.push(`${n2(X(500))} ${n2(Y(T(500)))}`);
+  return `<path class="fg-bond" d="M${pts.join(' L')}"></path>`;
+}
+const n2 = (v) => (Math.round(v * 10) / 10).toString();
+
+/* A stick, for the three spectra that are line spectra rather than traces. */
+function stick(x, yBase, h, cls = 'fg-bond', w = 2.6) {
+  return `<line class="${cls}" x1="${n2(x)}" y1="${n2(yBase)}" x2="${n2(x)}" y2="${n2(yBase - h)}" stroke-width="${w}"></line>`;
+}
+
+/* ------------------------------------------------------------------ IR ---
+   Butanoic acid, because it carries the two bands the section spends the most
+   words on at once — the acid O–H wall and the carbonyl spike — and because it
+   shows both conventions that students get backwards: wavenumber runs
+   backwards and the peaks point down. */
+FIGURES.push({
+  id: 'ir-spectrum-butanoic-acid',
+  section: 'ir',
+  anchor: 'pointing at the same conjugation.</p>\n</div>',
+  alt: 'The infrared spectrum of butanoic acid drawn as a percent-transmittance trace. Wavenumber runs from 4000 on the left to 500 on the right and the peaks point downward. A very broad trough runs from about 3300 to 2500, with two small sharp dips at 2960 and 2875 sitting inside it. A deep narrow spike reaches almost to zero transmittance at 1710. Below 1500 the trace is a shaded tangle of peaks labeled the fingerprint region, and a dotted vertical line marks 3000.',
+  viewBox: '0 0 760 432',
+  build() {
+    const X = (w) => 64 + ((4000 - w) / 3500) * 660;
+    const Y = (t) => 70 + ((100 - t) / 100) * 240;
+    let s = '';
+    /* fingerprint shading first, so the trace draws over it */
+    s += `<rect class="fg-fill-mut" x="${n2(X(1500))}" y="70" width="${n2(X(500) - X(1500))}" height="240" rx="6" opacity="0.10"></rect>`;
+    s += rule(64, 310, 724, 310) + rule(64, 310, 64, 70);
+    for (const w of [4000, 3500, 3000, 2500, 2000, 1500, 1000, 500]) {
+      s += rule(X(w), 310, X(w), 316);
+      s += text(X(w), 330, String(w), { cls: 'fg-sm', size: 9.5 });
+    }
+    for (const t of [100, 50, 0]) {
+      s += rule(58, Y(t), 64, Y(t));
+      s += text(54, Y(t) + 4, String(t), { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+    }
+    s += `<text class="fg-sm" x="24" y="190" text-anchor="middle" transform="rotate(-90 24 190)">% transmittance</text>`;
+    s += text(394, 350, 'wavenumber (cm⁻¹) — high on the LEFT, exactly as a spectrum is printed', { cls: 'fg-sm', size: 10.5 });
+
+    /* the 3000 line the section keeps referring to */
+    s += `<line class="fg-dash" x1="${n2(X(3000))}" y1="70" x2="${n2(X(3000))}" y2="310"></line>`;
+    s += text(X(3000), 88, '3000', { cls: 'fg-tag-mut', size: 10 });
+
+    s += irTrace([
+      { c: 3000, s: 255, d: 58 },   // the acid O–H wall, 3300 down to 2500
+      { c: 2960, s: 13, d: 20 },    // sp3 C–H, riding inside it
+      { c: 2875, s: 13, d: 16 },
+      { c: 1710, s: 11, d: 90 },    // the acid C=O
+      { c: 1415, s: 16, d: 26 },
+      { c: 1285, s: 13, d: 52 },    // C–O
+      { c: 1230, s: 12, d: 36 },
+      { c: 1100, s: 14, d: 20 },
+      { c: 935, s: 18, d: 34 },     // the dimer's O–H bend
+      { c: 800, s: 16, d: 16 },
+      { c: 640, s: 20, d: 14 },
+    ], X, Y);
+
+    /* O–H */
+    s += text(88, 38, 'O–H of the acid — very broad,', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(88, 54, '3300 all the way down to 2500', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += `<line class="fg-dash-hi" x1="196" y1="60" x2="${n2(X(3150))}" y2="178"></line>`;
+    /* sp3 C–H */
+    s += text(330, 112, 'sp³ C–H, 2960 and 2875 —', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(330, 128, 'just below 3000, half buried', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += `<line class="fg-dash-hi" x1="326" y1="122" x2="${n2(X(2920))}" y2="232"></line>`;
+    /* C=O */
+    s += text(474, 244, 'C=O, 1710', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
+    s += text(474, 260, 'the carboxylic acid carbonyl', { cls: 'fg-sm', size: 10, anchor: 'end' });
+    s += `<line class="fg-dash-hi" x1="478" y1="252" x2="${n2(X(1710) - 5)}" y2="276"></line>`;
+    /* fingerprint */
+    s += text(716, 248, 'fingerprint region', { cls: 'fg-tag-mut', size: 11, anchor: 'end' });
+    s += text(716, 264, 'below 1500 — match it, do not assign it', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+
+    s += text(394, 380, 'Peaks point DOWN, because the axis is how much light got THROUGH.', { cls: 'fg-lbl', size: 12.5 });
+    s += text(394, 400, 'Everything diagnostic is left of 1500; everything right of it is the fingerprint.', { cls: 'fg-sm', size: 10.5 });
+    s += text(394, 420, 'butanoic acid, CH₃CH₂CH₂COOH', { cls: 'fg-tag', size: 11 });
+    return s;
+  },
+  caption: 'What all of the above actually looks like. Two conventions trip people up and both are visible here: wavenumber runs <b>backwards</b>, high on the left, and peaks point <b>down</b>, because the y-axis is transmittance &mdash; how much light got through &mdash; so an absorption is a trough. The acid&rsquo;s O&ndash;H is not a peak so much as a wall, sprawling from 3300 to 2500 and half-swallowing the sp³ C&ndash;H dips that sit inside it; the carbonyl at 1710 is the opposite, narrow and nearly to the floor.',
+  note: 'Four features, read in the order of the thirty-second scan: the deep spike at 1710 says carbonyl; the broad wall from 3300 to 2500 says <b>carboxylic acid</b> specifically; the small dips just below 3000 say sp³ C&ndash;H; and the scribble below 1500 says nothing you should try to read.',
+});
+
+/* ------------------------------------------------------------- 1H NMR ---
+   Ethyl acetate, which is the compound the section's own worked example
+   solves — so the figure is the answer to the example, drawn. */
+FIGURES.push({
+  id: 'h-nmr-spectrum-ethyl-acetate',
+  section: 'h-nmr',
+  anchor: 'Assemble: CH₃–CO–O–CH₂CH₃, ethyl acetate. Every piece of data accounted for.</p>\n</div>',
+  alt: 'The proton NMR spectrum of ethyl acetate. The chemical shift axis runs from 5 ppm on the left to 0 on the right. A four-line quartet stands at 4.1 ppm, a single line at 2.0 ppm, a three-line triplet at 1.3 ppm and a small TMS reference line at 0. A stepped integration trace above the peaks rises by two hydrogens at the quartet and by three at each of the other two signals, and a labeled bar underneath links the quartet and the triplet by their shared coupling constant of about 7 hertz.',
+  viewBox: '0 0 760 444',
+  build() {
+    const X = (d) => 80 + (5 - d) * 124;
+    const base = 300;
+    let s = '';
+    s += rule(70, base, 716, base);
+    for (const d of [5, 4, 3, 2, 1, 0]) {
+      s += rule(X(d), base, X(d), base + 6);
+      s += text(X(d), base + 20, String(d), { cls: 'fg-sm', size: 9.5 });
+    }
+    s += text(394, 350, 'chemical shift δ (ppm) — δ decreasing to the right, as a spectrum is printed', { cls: 'fg-sm', size: 10.5 });
+
+    /* the three multiplets. The line SPACING is drawn far wider than scale:
+       7 Hz on a 300 MHz instrument is 0.023 ppm, about three pixels here, and
+       at that size nobody could count the lines. */
+    const mult = (d, heights, gap) => {
+      let out = '';
+      const x0 = X(d) - ((heights.length - 1) * gap) / 2;
+      heights.forEach((h, i) => { out += stick(x0 + i * gap, base, h); });
+      return out;
+    };
+    s += mult(4.1, [34, 100, 100, 34], 7);
+    s += mult(2.0, [130], 7);
+    s += mult(1.3, [48, 120, 48], 7);
+    s += stick(X(0), base, 34, 'fg-bond-soft', 2.2);
+
+    /* integration, drawn the way an instrument draws it: a trace that steps up
+       by the area of each signal as it crosses it. */
+    let step = 'M110 150';
+    const risers = [[4.1, 20], [2.0, 30], [1.3, 30]];
+    let y = 150;
+    for (const [d, h] of risers) {
+      step += ` L${n2(X(d) - 16)} ${n2(y)} L${n2(X(d) + 16)} ${n2(y - h)}`;
+      y -= h;
+    }
+    step += ` L690 ${n2(y)}`;
+    s += `<path class="fg-arrow-mut" d="${step}"></path>`;
+    s += text(X(4.1) + 22, 142, '2H', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(X(2.0) + 22, 118, '3H', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(X(1.3) + 22, 88, '3H', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(96, 74, 'integration 2 : 3 : 3 — eight hydrogens, and C₄H₈O₂ has exactly eight', { cls: 'fg-tag-mut', size: 11, anchor: 'start' });
+
+    /* assignments, under the axis where there is room for two lines each */
+    const assign = (d, a, b, dx = 0) => text(X(d), 374, a, { cls: 'fg-lbl', size: 12 }) + text(X(d) + dx, 390, b, { cls: 'fg-sm', size: 9.5 });
+    s += assign(4.1, '–O–CH₂–', 'δ 4.1 · q · 2H');
+    s += assign(2.0, 'CH₃–C=O', 'δ 2.0 · s · 3H', -14);
+    s += assign(1.3, '–CH₃', 'δ 1.3 · t · 3H', 16);
+    s += text(716, 374, 'TMS', { cls: 'fg-tag-mut', size: 11, anchor: 'end' });
+    s += text(716, 390, 'δ 0 by definition', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+
+    s += text(X(2.7), 412, 'matching J ≈ 7 Hz — these two are coupled to each other', { cls: 'fg-tag', size: 11 });
+    s += `<line class="fg-arrow" x1="${n2(X(4.1))}" y1="426" x2="${n2(X(1.3))}" y2="426"></line>`;
+    s += `<line class="fg-arrow" x1="${n2(X(4.1))}" y1="420" x2="${n2(X(4.1))}" y2="432"></line>`;
+    s += `<line class="fg-arrow" x1="${n2(X(1.3))}" y1="420" x2="${n2(X(1.3))}" y2="432"></line>`;
+    s += text(680, 46, 'ethyl acetate, CH₃COOCH₂CH₃', { cls: 'fg-tag', size: 11, anchor: 'end' });
+    return s;
+  },
+  caption: 'A real spectrum, with the three readings marked on it. The quartet at 4.1 and the triplet at 1.3 are an ethyl group, and their matching line spacing &mdash; the coupling constant J &mdash; is what proves they are neighbors rather than two unrelated signals that happen to look right. The 3H singlet at 2.0 has no neighbors at all, so its methyl must be attached to something carrying no hydrogens, which here is the carbonyl.',
+  note: 'The line spacings are drawn much wider than scale on purpose: 7 Hz on a 300 MHz instrument is 0.023 ppm, about three pixels at this size, and a real printed multiplet is expanded before anyone tries to count its lines.',
+});
+
+/* ------------------------------------------- 1H NMR, the splitting tree ---
+   Two neighbour sets, taken one at a time. Panel 1 is the case where the two
+   J values match and the tree collapses; panel 2 is the case where they do
+   not and every line survives. The prose can state that; only a picture can
+   show it. */
+FIGURES.push({
+  id: 'h-nmr-splitting-tree',
+  section: 'h-nmr',
+  anchor: 'and only then ask what it looks like.</p>',
+  alt: 'Two splitting trees side by side. On the left, one line splits into four equally spaced lines and each of those splits into three, and because both coupling constants are 7 hertz the twelve lines fall onto six positions, drawn underneath as a six-line multiplet with heights 1, 5, 10, 10, 5 and 1. On the right, one line splits into two lines 17.6 hertz apart and each of those splits into two lines 10.9 hertz apart, giving four separate lines of equal height drawn underneath.',
+  viewBox: '0 0 760 440',
+  build() {
+    let s = '';
+    const tier = (cx, y, positions, from) => {
+      let out = '';
+      for (const p of positions) {
+        out += `<line class="fg-bond-soft" x1="${n2(from)}" y1="${n2(y - 34)}" x2="${n2(p)}" y2="${n2(y)}"></line>`;
+        out += stick(p, y + 16, 16, 'fg-bond', 2.4);
+      }
+      return out;
+    };
+    /* ---- panel 1: equal J, the tree collapses ---- */
+    const c1 = 196;
+    s += text(c1, 36, 'CH₃–CH₂–CHBr–CH₃, the CHBr hydrogen', { cls: 'fg-lbl', size: 12 });
+    s += text(c1, 52, 'two different neighbor sets, both J ≈ 7 Hz', { cls: 'fg-sm', size: 10 });
+    s += stick(c1, 92, 16, 'fg-bond', 2.4);
+    s += text(c1, 108, 'before any coupling', { cls: 'fg-sm', size: 9.5 });
+
+    const g = 24;
+    const q = [-1.5, -0.5, 0.5, 1.5].map((k) => c1 + k * g);
+    s += tier(c1, 150, q, c1);
+    s += text(c1, 186, 'split by the 3 H of the CH₃ — a quartet', { cls: 'fg-tag', size: 11 });
+
+    const t2 = [];
+    for (const p of q) for (const k of [-1, 0, 1]) t2.push(p + k * g);
+    for (const p of q) {
+      for (const k of [-1, 0, 1]) {
+        s += `<line class="fg-bond-soft" x1="${n2(p)}" y1="${n2(206)}" x2="${n2(p + k * g)}" y2="${n2(236)}"></line>`;
+      }
+    }
+    s += text(c1, 262, 'each line split again by the 2 H of the CH₂', { cls: 'fg-tag', size: 11 });
+    s += text(c1, 278, 'twelve lines — but only six positions', { cls: 'fg-sm', size: 9.5 });
+
+    const base1 = 370;
+    s += rule(60, base1, 332, base1);
+    const heights = [1, 5, 10, 10, 5, 1];
+    [-2.5, -1.5, -0.5, 0.5, 1.5, 2.5].forEach((k, i) => {
+      s += stick(c1 + k * g, base1, 8 + heights[i] * 6.4, 'fg-bond', 3);
+    });
+    s += text(c1, 392, 'what you see: a sextet', { cls: 'fg-lbl', size: 12 });
+    s += text(c1, 408, '1 : 5 : 10 : 10 : 5 : 1 — equal J stacks the lines', { cls: 'fg-sm', size: 10 });
+
+    /* ---- panel 2: unequal J, nothing collapses ---- */
+    s += `<line class="fg-dash" x1="380" y1="30" x2="380" y2="412"></line>`;
+    const c2 = 566;
+    s += text(c2, 36, 'C₆H₅–CH=CH₂, the internal vinyl hydrogen', { cls: 'fg-lbl', size: 12 });
+    s += text(c2, 52, 'two different neighbors, J = 17.6 and 10.9 Hz', { cls: 'fg-sm', size: 10 });
+    s += stick(c2, 92, 16, 'fg-bond', 2.4);
+    s += text(c2, 108, 'before any coupling', { cls: 'fg-sm', size: 9.5 });
+
+    const gA = 52, gB = 22;
+    const d1 = [-0.5, 0.5].map((k) => c2 + k * gA);
+    s += tier(c2, 150, d1, c2);
+    s += text(c2, 186, 'split by the trans partner — J = 17.6 Hz', { cls: 'fg-tag', size: 11 });
+    const d2 = [];
+    for (const p of d1) for (const k of [-0.5, 0.5]) d2.push(p + k * gB);
+    for (const p of d1) for (const k of [-0.5, 0.5]) {
+      s += `<line class="fg-bond-soft" x1="${n2(p)}" y1="206" x2="${n2(p + k * gB)}" y2="236"></line>`;
+    }
+    s += text(c2, 262, 'split again by the cis partner — J = 10.9 Hz', { cls: 'fg-tag', size: 11 });
+    s += text(c2, 278, 'four lines, and all four survive', { cls: 'fg-sm', size: 9.5 });
+
+    s += rule(430, base1, 702, base1);
+    d2.forEach((p) => { s += stick(p, base1, 72, 'fg-bond', 3); });
+    s += text(c2, 392, 'what you see: a doublet of doublets', { cls: 'fg-lbl', size: 12 });
+    s += text(c2, 408, '1 : 1 : 1 : 1 — unequal J keeps every line apart', { cls: 'fg-sm', size: 10 });
+    s += text(380, 432, 'Same procedure both times. Only the two J values decide what comes out.', { cls: 'fg-tag', size: 11 });
+    return s;
+  },
+  caption: 'Splitting happens one neighbor set at a time, so draw the tree and read the bottom row &mdash; never try to guess the multiplet in a single step. On the left the two coupling constants are equal, the twelve lines land on six positions, and what prints is an ordinary sextet. On the right they are not equal, so nothing merges and you count four lines: a <b>doublet of doublets</b>, the pattern the n + 1 rule cannot produce.',
+  note: 'The n + 1 rule is the special case of this drawing in which every neighbor has the same J. That is why it works so well on freely rotating chains, where all the vicinal couplings really are about 7 Hz, and fails the moment a hydrogen has neighbors of two different kinds &mdash; as any vinyl hydrogen does.',
+});
+
+/* ------------------------------------------------------------ 13C/DEPT ---
+   Butan-2-one, the compound the section's own worked example solves, and the
+   only way to show what "up", "down" and "absent" mean. */
+FIGURES.push({
+  id: 'c-nmr-dept-butanone',
+  section: 'c-nmr',
+  anchor: 'with no multiplets to untangle.</p>',
+  alt: 'The carbon-13 and DEPT-135 spectra of butan-2-one drawn one above the other on a shared chemical shift axis running from 220 ppm on the left to 0 on the right. The upper decoupled spectrum has four lines, at 209, 37, 29 and 8 ppm, plus a small gray three-line solvent signal at 77. The lower DEPT spectrum has lines pointing up at 29 and 8 labeled CH3, a line pointing down at 37 labeled CH2, and a dashed gray ghost at 209 labeled absent, quaternary.',
+  viewBox: '0 0 760 476',
+  build() {
+    const X = (d) => 80 + ((220 - d) / 220) * 620;
+    let s = '';
+    const top = 170;
+    s += text(74, 54, 'standard proton-decoupled ¹³C — four lines, so four carbon environments', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += rule(70, top, 716, top);
+    for (const [d, lbl] of [[209, '209'], [37, '37'], [29, '29'], [8, '8']]) {
+      s += stick(X(d), top, 80, 'fg-bond', 3);
+      s += text(X(d), top - 88, lbl, { cls: 'fg-lbl', size: 11.5 });
+    }
+    s += text(X(209) + 12, top - 62, 'C=O', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
+    /* the solvent line nobody warns you about */
+    for (const k of [-5, 0, 5]) s += stick(X(77) + k, top, 24, 'fg-bond-soft', 2);
+    s += text(X(77), top - 34, 'CDCl₃ — the solvent, 77 ppm. Ignore it.', { cls: 'fg-tag-mut', size: 10.5 });
+
+    s += `<line class="fg-dash" x1="60" y1="212" x2="716" y2="212"></line>`;
+
+    const mid = 322;
+    s += text(74, 246, 'DEPT-135 — the same carbons, now with their hydrogen counts', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += rule(70, mid, 716, mid);
+    s += stick(X(29), mid, 64, 'fg-bond', 3);
+    s += stick(X(8), mid, 64, 'fg-bond', 3);
+    s += text(X(29), mid - 74, 'CH₃', { cls: 'fg-tag', size: 11 });
+    s += text(X(8), mid - 74, 'CH₃', { cls: 'fg-tag', size: 11 });
+    s += stick(X(37), mid, -52, 'fg-bond', 3);
+    s += text(X(37), mid + 68, 'CH₂', { cls: 'fg-tag', size: 11 });
+    s += `<line class="fg-dash" x1="${n2(X(209))}" y1="${mid}" x2="${n2(X(209))}" y2="${mid - 52}"></line>`;
+    s += text(X(209) + 10, mid - 62, 'absent — quaternary', { cls: 'fg-tag-mut', size: 10.5, anchor: 'start' });
+    s += text(X(209) + 10, mid - 46, 'no attached H', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+
+    const ax = 414;
+    s += rule(70, ax, 716, ax);
+    for (const d of [220, 200, 150, 100, 50, 0]) {
+      s += rule(X(d), ax, X(d), ax + 6);
+      s += text(X(d), ax + 20, String(d), { cls: 'fg-sm', size: 9.5 });
+    }
+    s += text(394, 450, 'chemical shift δ (ppm) — δ decreasing to the right', { cls: 'fg-sm', size: 10.5 });
+    s += text(394, 470, 'butan-2-one, CH₃–CO–CH₂–CH₃', { cls: 'fg-tag', size: 11 });
+    return s;
+  },
+  caption: 'The same molecule twice. The top spectrum counts environments: four lines for four carbons, so there is no symmetry anywhere in the molecule. The bottom one puts hydrogens on them &mdash; two methyls pointing up, one CH₂ pointing down, and a gap where the carbonyl was. Together they give CH₃&ndash;CO&ndash;CH₂&ndash;CH₃ without a single multiplet to untangle.',
+  note: 'Up for CH and CH₃, down for CH₂, missing for a carbon with no hydrogens. A peak present in the top spectrum and absent from the bottom one is how you find a quaternary carbon &mdash; and the gray line at 77 is the solvent, not your compound.',
+});
+
+/* ----------------------------------------------------------- mass spec ---
+   Two spectra: one that shows what a base peak is and where it comes from,
+   and one that shows the halogen isotope pattern on a real fragment pattern
+   rather than as a two-bar cartoon. */
+FIGURES.push({
+  id: 'ms-spectra-butanone-bromoethane',
+  section: 'mass-spec',
+  anchor: 'applied to a different question.</div>',
+  alt: 'Two mass spectra drawn as bar charts. The upper one, of 2-butanone, has its tallest bar at m/z 43 labeled base peak, a bar at about a quarter height at m/z 72 labeled molecular ion, smaller bars at 57 and 29, and a hairline at 73 labeled M+1. The lower one, of bromoethane, has its tallest bar at m/z 29 and a pair of bars of almost equal height at m/z 108 and 110, labeled M and M+2 for one bromine.',
+  viewBox: '0 0 760 540',
+  build() {
+    let s = '';
+    const panelA = (base, X, bars) => {
+      let out = rule(70, base, 716, base) + rule(70, base, 70, base - 140);
+      for (const t of [100, 50, 0]) {
+        out += rule(64, base - t * 1.3, 70, base - t * 1.3);
+        out += text(60, base - t * 1.3 + 4, String(t), { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+      }
+      for (const b of bars) out += stick(X(b[0]), base, Math.max(b[1] * 1.3, 1.5), b[2] || 'fg-bond', 4);
+      return out;
+    };
+    /* ---- 2-butanone ---- */
+    const XA = (m) => 70 + ((m - 10) / 70) * 620;
+    const baseA = 206;
+    s += text(74, 40, '2-butanone, CH₃–CO–CH₂–CH₃ (M = 72)', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += panelA(baseA, XA, [[15, 6], [27, 16], [29, 24], [43, 100], [57, 8], [72, 25], [73, 1.1]]);
+    for (const m of [20, 30, 40, 50, 60, 70, 80]) {
+      s += rule(XA(m), baseA, XA(m), baseA + 6);
+      s += text(XA(m), baseA + 20, String(m), { cls: 'fg-sm', size: 9.5 });
+    }
+    s += text(XA(45), baseA + 40, 'm/z', { cls: 'fg-sm', size: 10 });
+    s += `<text class="fg-sm" x="30" y="140" text-anchor="middle" transform="rotate(-90 30 140)">relative abundance (%)</text>`;
+    s += text(XA(43), 60, 'base peak — CH₃CO⁺ at 43,', { cls: 'fg-tag', size: 11 });
+    s += text(XA(43), 76, 'left behind when the ethyl radical goes', { cls: 'fg-sm', size: 10 });
+    s += `<line class="fg-dash-hi" x1="${n2(XA(43))}" y1="84" x2="${n2(XA(43))}" y2="${n2(baseA - 136)}"></line>`;
+    s += text(XA(72), 126, 'M⁺• = 72', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
+    s += text(XA(72), 142, 'the molecular ion', { cls: 'fg-sm', size: 10, anchor: 'end' });
+    s += `<line class="fg-dash-hi" x1="${n2(XA(72) - 2)}" y1="150" x2="${n2(XA(72) - 2)}" y2="${n2(baseA - 36)}"></line>`;
+    s += text(XA(57), 182, '57, CH₃CH₂CO⁺', { cls: 'fg-sm', size: 10, anchor: 'middle' });
+    s += text(XA(29), 150, '29, C₂H₅⁺', { cls: 'fg-sm', size: 10 });
+    s += text(716, 108, 'M+1 at 73 — the ¹³C shadow, ~4% of M', { cls: 'fg-tag-mut', size: 10, anchor: 'end' });
+    s += `<line class="fg-dash" x1="656" y1="114" x2="${n2(XA(73) + 3)}" y2="${n2(baseA - 8)}"></line>`;
+
+    /* ---- bromoethane ---- */
+    const XB = (m) => 70 + ((m - 10) / 110) * 620;
+    const baseB = 470;
+    s += text(74, 296, 'bromoethane, CH₃CH₂Br (M = 108)', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += panelA(baseB, XB, [[26, 10], [27, 52], [29, 100], [93, 5], [95, 5], [108, 45], [110, 44]]);
+    for (const m of [20, 40, 60, 80, 100, 120]) {
+      s += rule(XB(m), baseB, XB(m), baseB + 6);
+      s += text(XB(m), baseB + 20, String(m), { cls: 'fg-sm', size: 9.5 });
+    }
+    s += text(XB(65), baseB + 38, 'm/z', { cls: 'fg-sm', size: 10 });
+    s += `<text class="fg-sm" x="30" y="404" text-anchor="middle" transform="rotate(-90 30 404)">relative abundance (%)</text>`;
+    s += text(XB(29), 314, 'base peak 29 — C₂H₅⁺, the bromine radical lost', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += `<line class="fg-dash-hi" x1="${n2(XB(29))}" y1="322" x2="${n2(XB(29))}" y2="${n2(baseB - 136)}"></line>`;
+    s += text(XB(109), 372, 'M at 108 and M+2 at 110,', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
+    s += text(XB(109), 388, 'almost exactly equal — one bromine', { cls: 'fg-sm', size: 10, anchor: 'end' });
+    s += `<line class="fg-dash-hi" x1="${n2(XB(109))}" y1="396" x2="${n2(XB(109))}" y2="${n2(baseB - 62)}"></line>`;
+    s += text(394, 530, 'Highest mass is not tallest: 72 and 108 give the weight, 43 and 29 give the weakest bond.', { cls: 'fg-lbl', size: 12.5 });
+    return s;
+  },
+  caption: 'One spectrum each, and in both of them the two peaks that matter are not the same peak. The <b>molecular ion</b> at the right-hand end of each trace gives the molecular weight &mdash; 72 and 108. The <b>base peak</b> is the tallest, and in both cases it is a fragment: the acylium ion left when 2-butanone loses its ethyl radical, and the ethyl cation left when bromoethane loses its bromine. Reading from high mass down is reading the molecule coming apart.',
+  note: 'The bromoethane trace is what &ldquo;M and M+2, roughly 1:1&rdquo; looks like when it is not a cartoon: two bars of nearly equal height, two units apart, at the top of the spectrum. A single chlorine would give the same pair at 3:1 instead, and no halogen at all leaves M standing alone.',
+});
+
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;
 

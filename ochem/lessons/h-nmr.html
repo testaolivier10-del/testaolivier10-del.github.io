@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function(){
     progLabel: document.getElementById('progLabel'),
     steps: [
       {
-        diagramHtml: window.OchemMolecules.svg('ethanol', { caption: 'Three chemically distinct hydrogen environments, so three signals: the CH₃ triplet, the CH₂ quartet, and the OH singlet.' }),
+        diagramHtml: window.OchemMolecules.svg('ethanol', { caption: 'The structure, not the spectrum: ethanol has three chemically distinct hydrogen environments, which is why its spectrum has three signals — a CH₃ triplet, a CH₂ quartet and an OH singlet. The written section draws the spectrum itself.' }),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Chemical shift: electronegative neighbors deshield a hydrogen and push its signal downfield.',
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'mcq',
         eyebrow: 'Step 2 · Guided Practice',
         title: 'A molecule\'s ¹H NMR spectrum shows two signals with integration values in a 3:2 ratio. What does this tell you?',
-        options: ['The molecule contains exactly 3 and 2 total hydrogens', 'One signal is three times stronger in chemical shift than the other', 'The two signals come from hydrogen environments in a 3:2 ratio (e.g., 3 hydrogens of one type for every 2 of another)'],
+        options: ['The molecule contains exactly three hydrogens of one kind and two of another, and no more', 'One signal sits three times further downfield in chemical shift than the other one does', 'The two environments hold hydrogens in a 3:2 ratio'],
         correctIndex: 2,
         correctFeedback: 'Correct — integration gives relative, not absolute, hydrogen counts; the actual numbers could be 3 and 2, or 6 and 4, or any multiple preserving that ratio.',
         wrongFeedback: 'Integration values are relative to each other, not absolute counts, and they have nothing to do with chemical shift (position) — they measure signal area (proportional to hydrogen count).'
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'mcq',
         eyebrow: 'Step 4 · Check Understanding',
         title: 'In ethanol (CH₃CH₂OH), the CH₂ signal appears as a quartet. How many hydrogens are on the carbon adjacent to it?',
-        options: ['3 — the n+1 rule means 3 neighboring hydrogens produce 3+1=4 peaks (a quartet)', '4 — the number of peaks equals the number of neighboring hydrogens directly', '2 — a quartet always means exactly 2 neighbors'],
+        options: ['3 — a quartet is four peaks, so n + 1 = 4', '4 — the number of peaks is simply the number of neighboring hydrogens, with no correction', '2 — a quartet comes from two neighbors, one on each side of the carbon in question'],
         correctIndex: 0,
         correctFeedback: 'Correct — reversing the n+1 rule (a quartet has 4 peaks, so n+1=4, meaning n=3) correctly identifies the adjacent CH₃ group\'s three hydrogens as the source of the splitting.',
         wrongFeedback: 'Remember the rule is n+1, not n — a quartet (4 peaks) comes from n=3 neighboring hydrogens, not 4 or 2.'
@@ -240,18 +240,18 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'mcq',
         eyebrow: 'Step 6 · Independent Practice',
         title: 'A compound\'s ¹H NMR shows a 2H signal at 2.3 ppm as a triplet, and a 3H signal at 1.0 ppm as a triplet. What does the fact that BOTH signals are triplets suggest about their relationship?',
-        options: ['They must be identical environments', 'They are likely NOT directly coupled to each other in a simple CH₃–CH₂ pattern (since coupled partners would typically show n+1 patterns matching each other\'s hydrogen counts, like a quartet paired with a triplet), so another explanation (like a symmetric CH₂ neighbor) should be considered', 'Triplet-triplet pairings are impossible under any circumstances'],
+        options: ['They must be two hydrogens in one and the same chemical environment', 'They are not a plain CH₃–CH₂ pair, since that would give a triplet and a quartet', 'A triplet paired with another triplet cannot arise in any real spectrum at all'],
         correctIndex: 1,
-        correctFeedback: 'Correct — a classic ethyl group (CH₃CH₂–) pairs a triplet (CH₃, split by 2 neighbors) with a quartet (CH₂, split by 3 neighbors), not two triplets, so this pattern hints at a different structural arrangement (each proton set is actually next to 2 equivalent neighboring hydrogens instead).',
+        correctFeedback: 'Correct — a classic ethyl group pairs a triplet (the CH₃, split by 2 neighbors) with a quartet (the CH₂, split by 3), not two triplets. Two triplets means each of these sets has exactly two neighboring hydrogens, which is what a –CH₂–CH₂– fragment in the middle of a chain gives: a propyl group such as CH₃CH₂CH₂– read from its two ends.',
         wrongFeedback: 'Two different signals appearing as two different triplets are neither identical nor impossible — but it does rule out the simplest ethyl-group (CH₃–CH₂–) interpretation, since that specific pattern would pair a triplet with a quartet, not two triplets.'
       },
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'A compound shows exactly one ¹H NMR signal: a single, unsplit peak (singlet) at 7.3 ppm, integrating for 5H relative to no other signal in the spectrum. What structure is most consistent with this data?',
-        options: ['A simple, isolated CH₅ group', 'This data is impossible to produce from any real molecule', 'A monosubstituted benzene ring where all 5 remaining aromatic hydrogens happen to be equivalent (or nearly so) and appear together, downfield due to ring current, with no non-equivalent neighboring hydrogens to split them'],
+        title: 'A compound of formula C₄H₉Br shows exactly one ¹H NMR signal: a 9H singlet at 1.8 ppm. What is the structure?',
+        options: ['1-bromobutane, CH₃CH₂CH₂CH₂Br', '2-bromobutane, CH₃CH₂CHBrCH₃', '2-bromo-2-methylpropane, (CH₃)₃CBr'],
         correctIndex: 2,
-        correctFeedback: 'Correct — a monosubstituted phenyl group (like in toluene\'s aromatic ring) often shows its 5 aromatic hydrogens clustered together around 7.3 ppm; since they\'re not coupled to any non-equivalent hydrogens outside that aromatic system, the signal doesn\'t split further.'
+        correctFeedback: 'Correct — one signal means one environment, and 9H means nine equivalent hydrogens, which only three equivalent methyl groups can supply. A singlet means no hydrogens on the neighboring carbon, and in (CH₃)₃CBr the central carbon carries none. Both other isomers would give four signals with visible splitting.'
       }
     ]
   });
