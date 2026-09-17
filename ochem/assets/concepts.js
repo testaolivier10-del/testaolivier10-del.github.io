@@ -116,7 +116,7 @@
       topics:['alcohol-oxidation','oxidation-states','alkene-oxidation'], dependsOn:['oxidation-level'],
       hint:'For a chromium reagent, ask whether there is water in the flask.' },
     { id:'reductant-scope', title:'What a reducing agent will touch', family:'Oxidation & reduction',
-      topics:['carbonyl-reduction','hydrogenation','esters-amides','amine-reactions'], dependsOn:['oxidation-level'],
+      topics:['carbonyl-reduction','nucleophilic-addition','hydrogenation','esters-amides','amine-reactions'], dependsOn:['oxidation-level'],
       hint:'Choosing the WEAKER reagent on purpose is usually how selectivity is achieved.' },
     { id:'redox-stereochemistry', title:'Stereochemical control in redox', family:'Oxidation & reduction',
       topics:['hydrogenation','alkene-oxidation','diastereomers','epoxides','alkynes'],

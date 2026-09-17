@@ -8056,7 +8056,7 @@ FIGURES.push({
    p orbitals point, which groups E/Z is actually ranking, where a proton
    goes and where the charge lands, and what "syn" does to a ring. */
 
-/* A skeletal double bond between two unlabelled vertices: one full line plus
+/* A skeletal double bond between two unlabeled vertices: one full line plus
    one inset line on the side `inward` points to, so nothing overhangs the
    neighboring bond the way a plain order-2 bond does at a shared vertex. */
 const skDouble = (a, b, inward) => ringDouble(a, b, inward, { inset: 7, gap: 4.6 });
@@ -9425,7 +9425,7 @@ FIGURES.push({
   viewBox: '0 0 760 462',
   build() {
     let s = '';
-    /* The butan-2-ol skeleton as a zigzag: C1 and C4 are labelled methyls,
+    /* The butan-2-ol skeleton as a zigzag: C1 and C4 are labeled methyls,
        C2 carries the oxygen and C3 is a plain vertex. */
     const chain = (ox, oy) => {
       const c1 = P(ox, oy + 30), c2 = P(ox + 58, oy), c3 = P(ox + 116, oy + 30), c4 = P(ox + 174, oy);
@@ -9763,6 +9763,725 @@ FIGURES.push({
   },
   caption: 'The reason epoxides get a section of their own, on the substrate from the worked example above. Under <b>base</b>, nothing has activated the ring, so a strong nucleophile does what SN2 always does and attacks the carbon it can reach — the less hindered one. Under <b>acid</b>, protonating the oxygen stretches the C–O bond on whichever side can better support a partial positive charge, which is the <i>more</i> substituted carbon, and the nucleophile follows the charge. Same epoxide, opposite product.',
   note: 'One substrate, two conditions, OPPOSITE ends. Nothing else in the course lets you choose the regiochemistry this cleanly, and it is worth understanding rather than memorizing: under base you are doing sterics, and under acid you are doing carbocation stability with the ring still half attached. Note what does <i>not</i> change — the nucleophile arrives from the face the ring does not block in both panels, so both products are anti.',
+});
+
+
+/* ------------------------------------------------------------- 11.1 ---
+   The acid-catalyzed order, drawn. The notes name three species and the
+   section's two other figures are both the basic pathway, so the mechanism
+   that every later chapter reuses had no picture at all. */
+FIGURES.push({
+  id: 'acid-catalyzed-addition',
+  section: 'nucleophilic-addition',
+  anchor: 'Count the protons across the whole sequence and the catalyst comes back out, which is what makes it catalytic.</p>',
+  alt: 'Four panels showing acid-catalyzed addition to a ketone. First a lone pair on the carbonyl oxygen takes a proton. Second, the resulting cation is drawn as two resonance contributors, the protonated carbonyl and the oxocarbenium ion with the positive charge on carbon. Third, a neutral alcohol attacks that carbon with a lone pair, giving a positively charged oxygen on the added group. Fourth, a base removes that proton, giving the neutral addition product and handing the catalyst back.',
+  viewBox: '0 0 760 528',
+  build() {
+    let s = '';
+    const cell = (x, y, t) => panel(x, y, 360, 208) + tag(x + 180, y + 28, t);
+
+    /* One carbonyl unit: the carbon, its two R groups, and the oxygen above
+       it. `order` is 2 for a C=O and 1 once the pi bond has been used up. */
+    const unit = (c, order, oLabel, degs) => {
+      const o = armEnd(c, 90, 56);
+      const d = degs || [214, 326];
+      const r1 = armEnd(c, d[0], 46), r2 = armEnd(c, d[1], 46);
+      let g = bond(c, o, { order, rTo: 15 });
+      g += bond(c, r1, { rTo: 13 }) + atom(r1.x, r1.y, 'R', { r: 13 });
+      g += bond(c, r2, { rTo: 13 }) + atom(r2.x, r2.y, 'R', { r: 13 });
+      g += atom(o.x, o.y, oLabel || 'O');
+      g += atom(c.x, c.y, 'C', { kind: 'warn' });
+      return { g, o, r1, r2 };
+    };
+
+    // ---- 1. protonate the oxygen ----
+    s += cell(8, 16, 'STEP 1 · ACID PROTONATES THE OXYGEN');
+    const c1 = P(118, 146);
+    const u1 = unit(c1, 2);
+    s += u1.g;
+    s += lonePair(u1.o.x, u1.o.y, 232, { dist: 23 }) + lonePair(u1.o.x, u1.o.y, 308, { dist: 23 });
+    const hp = P(262, 96);
+    s += atom(hp.x, hp.y, 'H', { r: 13, kind: 'hi' });
+    s += text(hp.x + 22, hp.y - 12, '+', { cls: 'fg-warn', size: 15 });
+    s += curve(P(u1.o.x + 18, u1.o.y - 12), P(hp.x - 14, hp.y - 4), { bow: -20 });
+    s += text(188, 210, 'the basic site is the oxygen, not the carbon', { cls: 'fg-sm', size: 9.5 });
+
+    // ---- 2. the activated cation, two contributors ----
+    s += cell(392, 16, 'STEP 2 · ONE CATION, TWO CONTRIBUTORS');
+    const c2 = P(482, 146);
+    const u2 = unit(c2, 2, 'O');
+    s += u2.g;
+    s += text(u2.o.x + 24, u2.o.y - 12, 'H', { cls: 'fg-lbl', size: 11, anchor: 'start' });
+    s += text(u2.o.x - 22, u2.o.y - 14, '+', { cls: 'fg-warn', size: 15 });
+    s += curve(P(c2.x + 14, c2.y - 34), P(u2.o.x + 14, u2.o.y + 16), { bow: -18 });
+    s += text(578, 146, '↔', { cls: 'fg-lbl', size: 20 });
+    const c3 = P(660, 146);
+    const u3 = unit(c3, 1, 'O');
+    s += u3.g;
+    s += text(u3.o.x + 24, u3.o.y - 12, 'H', { cls: 'fg-lbl', size: 11, anchor: 'start' });
+    s += lonePair(u3.o.x, u3.o.y, 232, { dist: 23 });
+    s += text(c3.x - 26, c3.y - 14, '+', { cls: 'fg-warn', size: 15 });
+    s += text(482, 210, 'protonated carbonyl', { cls: 'fg-sm', size: 9.5 });
+    s += text(660, 210, 'oxocarbenium — this is', { cls: 'fg-tag-warn', size: 10 });
+    s += text(660, 224, 'what gets attacked', { cls: 'fg-tag-warn', size: 10 });
+
+    // ---- 3. the neutral nucleophile adds ----
+    s += cell(8, 248, 'STEP 3 · A NEUTRAL ALCOHOL ADDS');
+    const c4 = P(118, 380);
+    const u4 = unit(c4, 1, 'O', [200, 268]);
+    s += u4.g;
+    s += text(u4.o.x + 24, u4.o.y - 12, 'H', { cls: 'fg-lbl', size: 11, anchor: 'start' });
+    s += text(c4.x - 26, c4.y - 14, '+', { cls: 'fg-warn', size: 15 });
+    const nu = P(268, 404);
+    s += atom(nu.x, nu.y, 'O', { kind: 'hi' });
+    s += text(nu.x + 22, nu.y - 14, 'H', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(nu.x + 22, nu.y + 22, 'R', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += lonePair(nu.x, nu.y, 186, { dist: 23 });
+    s += curve(P(nu.x - 24, nu.y - 6), P(c4.x + 18, c4.y + 6), { bow: 20 });
+    s += text(188, 444, 'no alkoxide anywhere — in acid the', { cls: 'fg-sm', size: 9.5 });
+    s += text(188, 458, 'nucleophile arrives neutral', { cls: 'fg-sm', size: 9.5 });
+
+    // ---- 4. lose the proton ----
+    s += cell(392, 248, 'STEP 4 · LOSE THE EXTRA PROTON');
+    const c5 = P(502, 380);
+    const u5 = unit(c5, 1, 'O', [200, 268]);
+    s += u5.g;
+    s += text(u5.o.x + 24, u5.o.y - 12, 'H', { cls: 'fg-lbl', size: 11, anchor: 'start' });
+    const op = armEnd(c5, 20, 62);
+    s += bond(c5, op, { rTo: 15 });
+    s += atom(op.x, op.y, 'O', { kind: 'hi' });
+    s += text(op.x + 22, op.y - 6, '+', { cls: 'fg-warn', size: 15 });
+    s += text(op.x + 4, op.y + 30, 'R', { cls: 'fg-sm', size: 10, anchor: 'middle' });
+    const hx = armEnd(op, 60, 42);
+    s += bond(op, hx, { rTo: 12 }) + atom(hx.x, hx.y, 'H', { r: 12, kind: 'warn' });
+    const base = P(hx.x - 54, hx.y - 30);
+    s += text(base.x, base.y, 'ROH', { cls: 'fg-sm', size: 10 });
+    s += curve(P(base.x + 20, base.y + 8), P(hx.x - 6, hx.y - 12), { bow: -14 });
+    s += text(572, 444, 'a second alcohol takes it, and the acid', { cls: 'fg-sm', size: 9.5 });
+    s += text(572, 458, 'is handed back — it was a catalyst', { cls: 'fg-sm', size: 9.5 });
+
+    s += rule(30, 474, 730, 474);
+    s += text(380, 496, 'BASE activates the nucleophile, and protonates at the end.', { cls: 'fg-lbl', size: 11 });
+    s += text(380, 512, 'ACID activates the electrophile, and deprotonates at the end.', { cls: 'fg-lbl', size: 11 });
+    return s;
+  },
+  caption: 'The order reversed, with arrows. Under base a charged nucleophile hits a neutral carbonyl and the alkoxide is protonated afterwards; under acid the proton goes on <i>first</i>, and what a weak neutral nucleophile then attacks is the oxocarbenium contributor, where the positive charge is on carbon and the octet is complete on oxygen.',
+  note: 'Learn the shape rather than the four pictures: <b>protonate, add, deprotonate</b>. Acetal formation is this run twice, imine formation is this plus a dehydration, and ester hydrolysis is this with a leaving group on the carbon. The proton count is the tell that something has gone wrong in a mechanism — if the catalyst does not come back out, a step is missing.',
+});
+
+
+/* ------------------------------------------------------------- 11.2 ---
+   Hydride and Grignard, drawn on the SAME aldehyde. Four paragraphs of
+   reagent prose and the chapter's most important C–C bond had no drawn
+   example anywhere; putting both on propanal also makes the counting
+   argument visible instead of asserted. */
+FIGURES.push({
+  id: 'hydride-vs-grignard',
+  section: 'nucleophilic-addition',
+  anchor: 'Derived this way the rule survives a substrate you have never seen.</p>',
+  alt: 'Two rows, both starting from propanal. In the top row a hydride from sodium borohydride attacks the carbonyl carbon while the pi bond moves onto oxygen; the alkoxide is protonated on workup to give propan-1-ol, a primary alcohol. In the bottom row a methyl group from methylmagnesium bromide attacks the same carbon, making a new carbon-carbon bond, and workup gives butan-2-ol, a secondary alcohol.',
+  viewBox: '0 0 760 500',
+  build() {
+    let s = '';
+
+    /* Propanal drawn skeletally, with the carbonyl carbon labeled because
+       every arrow in the figure starts or ends on it. `top` is what sits on
+       the oxygen: a double bond before attack, a single bond after. */
+    const propanal = (X, Y, opts = {}) => {
+      const c = P(X + 84, Y), o = P(X + 84, Y - 52);
+      const v1 = P(X + 42, Y + 26), me = P(X, Y);
+      let g = bond(me, v1, { rFrom: 17, rTo: 0 }) + bond(v1, c, { rFrom: 0, rTo: 15 });
+      g += atom(v1.x, v1.y, '', { kind: 'point' });
+      g += atom(me.x, me.y, 'CH₃', { r: 17, size: 10 });
+      g += bond(c, o, { order: opts.single ? 1 : 2, rTo: 15 });
+      const h = P(X + 126, Y + 26);
+      g += bond(c, h, { rTo: 12 }) + atom(h.x, h.y, 'H', { r: 12 });
+      g += atom(o.x, o.y, 'O', { kind: opts.oKind || 'plain' });
+      g += atom(c.x, c.y, 'C', { kind: 'warn' });
+      return { g, c, o, h };
+    };
+
+    const row = (Y, cfg) => {
+      let g = '';
+      g += tag(18, Y - 86, cfg.title, { anchor: 'start' });
+
+      // --- frame 1: the attack, with both arrows ---
+      const A = propanal(28, Y);
+      g += A.g;
+      const nu = P(A.c.x - 4, A.c.y + 74);
+      g += atom(nu.x, nu.y, cfg.nu, { kind: 'hi', r: cfg.nu.length > 1 ? 18 : 15 });
+      g += text(nu.x + (cfg.nu.length > 1 ? 24 : 20), nu.y - 12, '−', { cls: 'fg-hi', size: 15 });
+      g += curve(P(nu.x - 6, nu.y - (cfg.nu.length > 1 ? 20 : 17)), P(A.c.x - 8, A.c.y + 17), { bow: 14 });
+      g += curve(P(A.c.x + 16, A.c.y - 20), P(A.o.x + 16, A.o.y + 16), { bow: -26 });
+      g += text(112, Y + 106, cfg.reagent, { cls: 'fg-sm', size: 9.5 });
+
+      g += arrow(P(228, Y - 6), P(276, Y - 6), { muted: true });
+
+      // --- frame 2: the alkoxide ---
+      const B = propanal(302, Y, { single: true, oKind: 'hi' });
+      g += B.g;
+      g += text(B.o.x + 22, B.o.y - 10, '−', { cls: 'fg-hi', size: 15 });
+      const nb = P(B.c.x - 4, B.c.y + 52);
+      g += bond(B.c, nb, { rTo: cfg.nu.length > 1 ? 17 : 13 });
+      g += atom(nb.x, nb.y, cfg.nu, { r: cfg.nu.length > 1 ? 17 : 13, size: cfg.nu.length > 1 ? 10 : 11, kind: 'hi' });
+      g += text(386, Y + 106, 'tetrahedral alkoxide', { cls: 'fg-sm', size: 9.5 });
+
+      g += arrow(P(502, Y - 6), P(550, Y - 6), { muted: true });
+      g += text(526, Y - 22, 'H₃O⁺', { cls: 'fg-sm', size: 9.5 });
+
+      // --- frame 3: the alcohol ---
+      const C = propanal(576, Y, { single: true });
+      g += C.g;
+      const oh = P(C.o.x + 26, C.o.y - 4);
+      g += text(oh.x, oh.y, 'H', { cls: 'fg-lbl', size: 11, anchor: 'start' });
+      const nc = P(C.c.x - 4, C.c.y + 52);
+      g += bond(C.c, nc, { rTo: cfg.nu.length > 1 ? 17 : 13 });
+      g += atom(nc.x, nc.y, cfg.nu, { r: cfg.nu.length > 1 ? 17 : 13, size: cfg.nu.length > 1 ? 10 : 11 });
+      g += text(648, Y + 106, cfg.product, { cls: 'fg-tag-good', size: 10.5 });
+      g += text(648, Y + 122, cfg.count, { cls: 'fg-sm', size: 9.5 });
+      return g;
+    };
+
+    s += row(120, {
+      title: 'HYDRIDE — THE NUCLEOPHILE THAT BRINGS NO CARBON',
+      nu: 'H', reagent: '1. NaBH₄ (or LiAlH₄)  2. H₃O⁺',
+      product: 'propan-1-ol · 1° alcohol',
+      count: 'carbinol carbon: ONE carbon',
+    });
+    s += rule(30, 268, 730, 268);
+    s += row(360, {
+      title: 'GRIGNARD — THE NUCLEOPHILE THAT BRINGS ONE',
+      nu: 'CH₃', reagent: '1. CH₃MgBr, dry ether  2. H₃O⁺',
+      product: 'butan-2-ol · 2° alcohol',
+      count: 'carbinol carbon: TWO carbons',
+    });
+    return s;
+  },
+  caption: 'One aldehyde, two nucleophiles, and the only difference in the mechanism is what the nucleophile carries in with it. Both rows are the same two arrows — nucleophile to carbon, pi bond up onto oxygen — and both stop at an alkoxide that needs the workup step to become an alcohol.',
+  note: 'Read the last column rather than memorizing the rule. Propanal’s carbonyl carbon starts with one carbon substituent; hydride adds none, so the product carbon still has one and the alcohol is primary; the Grignard adds one, so the product carbon has two and the alcohol is secondary. Do that arithmetic on any carbonyl and the 1°/2°/3° rule falls out, including for substrates the rule was never stated for.',
+});
+
+
+/* ------------------------------------------------------------- 11.3 ---
+   Acetal formation, every elementary step, with the electron arrows. The
+   section's only figure shows the four SPECIES joined by equilibrium heads
+   and contains no curved arrows at all — and this is the mechanism students
+   are most often asked to produce in full. */
+FIGURES.push({
+  id: 'acetal-seven-steps',
+  section: 'acetals',
+  anchor: '<h3>Step one: hemiacetal formation</h3>',
+  alt: 'Seven panels drawing the acid-catalyzed formation of an acetal from a ketone. Protonation of the carbonyl oxygen; attack by the first alcohol on the carbonyl carbon; loss of a proton to give the hemiacetal; protonation of the hemiacetal hydroxyl; loss of water to give the oxocarbenium ion; attack by the second alcohol; and loss of the final proton to give the acetal. Every step carries curved arrows, and every arrow is reversible.',
+  viewBox: '0 0 760 742',
+  build() {
+    let s = '';
+    const W = 236, H = 208;
+    const frame = (x, y, n, t) => panel(x, y, W, H) + tag(x + 118, y + 26, n + ' · ' + t);
+
+    /* The shared core: the carbon, its two R groups, an oxygen above it and
+       optionally one to its right. Everything in this mechanism happens on
+       those two oxygens, so keeping them in the same two places across all
+       seven frames is most of what makes the sequence readable. */
+    const core = (c, o) => {
+      const r1 = armEnd(c, 216, 42), r2 = armEnd(c, 324, 42);
+      let g = bond(c, r1, { rTo: 13 }) + atom(r1.x, r1.y, 'R', { r: 13 });
+      g += bond(c, r2, { rTo: 13 }) + atom(r2.x, r2.y, 'R', { r: 13 });
+      const top = armEnd(c, 90, 54);
+      let right = null;
+      if (o.top) {
+        g += bond(c, top, { order: o.topOrder || 1, rTo: 15 });
+      }
+      if (o.right) {
+        right = armEnd(c, 16, 62);
+        g += bond(c, right, { order: o.rightOrder || 1, rTo: 15 });
+      }
+      if (o.top) g += atom(top.x, top.y, 'O', { kind: o.topKind || 'plain' });
+      if (o.right) g += atom(right.x, right.y, 'O', { kind: o.rightKind || 'plain' });
+      g += atom(c.x, c.y, 'C', { kind: 'warn' });
+      return { g, top, right };
+    };
+    const plusAt = (x, y) => text(x, y, '+', { cls: 'fg-warn', size: 15 });
+    const sub = (x, y, t, cls) => text(x, y, t, { cls: cls || 'fg-sm', size: 9.5 });
+
+    // ---- 1 protonate the carbonyl ----
+    s += frame(8, 16, '1', 'PROTONATE THE C=O');
+    let c = P(96, 132);
+    let k = core(c, { top: 1, topOrder: 2 });
+    s += k.g;
+    s += lonePair(k.top.x, k.top.y, 232, { dist: 23 }) + lonePair(k.top.x, k.top.y, 308, { dist: 23 });
+    let h = P(186, 74);
+    s += atom(h.x, h.y, 'H', { r: 12, kind: 'hi' }) + plusAt(h.x + 18, h.y - 10);
+    s += curve(P(k.top.x + 18, k.top.y - 12), P(h.x - 13, h.y + 2), { bow: -16 });
+    s += sub(126, 202, 'acid activates the electrophile');
+
+    // ---- 2 first alcohol attacks ----
+    s += frame(260, 16, '2', 'FIRST ROH ATTACKS C');
+    c = P(342, 132);
+    k = core(c, { top: 1, topOrder: 2, topKind: 'hi' });
+    s += k.g;
+    s += text(k.top.x + 22, k.top.y - 10, 'H', { cls: 'fg-lbl', size: 11, anchor: 'start' });
+    s += plusAt(k.top.x - 20, k.top.y - 12);
+    let nu = P(444, 168);
+    s += atom(nu.x, nu.y, 'O', { kind: 'hi' });
+    s += text(nu.x + 20, nu.y - 12, 'H', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(nu.x + 20, nu.y + 20, 'R', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += lonePair(nu.x, nu.y, 186, { dist: 23 });
+    s += curve(P(nu.x - 22, nu.y - 6), P(c.x + 16, c.y + 8), { bow: 18 });
+    s += sub(378, 202, 'the nucleophile is NEUTRAL');
+
+    // ---- 3 deprotonate, giving the hemiacetal ----
+    s += frame(512, 16, '3', 'LOSE H⁺ → HEMIACETAL');
+    c = P(596, 132);
+    k = core(c, { top: 1, right: 1, rightKind: 'hi' });
+    s += k.g;
+    s += text(k.top.x - 22, k.top.y - 8, 'H', { cls: 'fg-lbl', size: 11, anchor: 'end' });
+    s += plusAt(k.right.x + 4, k.right.y - 24);
+    s += text(k.right.x + 4, k.right.y + 28, 'R', { cls: 'fg-sm', size: 10 });
+    h = P(k.right.x + 42, k.right.y - 6);
+    s += bond(k.right, h, { rTo: 12 }) + atom(h.x, h.y, 'H', { r: 12, kind: 'warn' });
+    s += sub(600, 202, 'one OH and one OR: the hemiacetal');
+    s += curve(P(h.x + 22, h.y - 34), P(h.x + 4, h.y - 14), { bow: 12 });
+
+    // ---- 4 protonate the OH ----
+    s += frame(8, 240, '4', 'PROTONATE THAT OH');
+    c = P(96, 356);
+    k = core(c, { top: 1, right: 1 });
+    s += k.g;
+    s += text(k.top.x + 22, k.top.y - 8, 'H', { cls: 'fg-lbl', size: 11, anchor: 'start' });
+    s += lonePair(k.top.x, k.top.y, 200, { dist: 23 });
+    s += text(k.right.x + 4, k.right.y - 24, 'R', { cls: 'fg-sm', size: 10 });
+    h = P(24, 300);
+    s += atom(h.x, h.y, 'H', { r: 12, kind: 'hi' }) + plusAt(h.x - 4, h.y - 22);
+    s += curve(P(k.top.x - 20, k.top.y - 8), P(h.x + 12, h.y + 2), { bow: 16 });
+    s += sub(126, 202 + 224, 'a hopeless leaving group becomes water');
+
+    // ---- 5 water leaves ----
+    s += frame(260, 240, '5', 'LOSE WATER → OXOCARBENIUM');
+    c = P(348, 356);
+    k = core(c, { top: 1, right: 1, topKind: 'warn' });
+    s += k.g;
+    s += text(k.top.x - 26, k.top.y - 14, 'H', { cls: 'fg-sm', size: 10 });
+    s += text(k.top.x + 22, k.top.y - 14, 'H', { cls: 'fg-sm', size: 10 });
+    s += plusAt(k.top.x + 2, k.top.y - 30);
+    s += text(k.right.x + 4, k.right.y - 24, 'R', { cls: 'fg-sm', size: 10 });
+    s += curve(P(c.x - 14, c.y - 24), P(k.top.x - 14, k.top.y + 16), { bow: 18 });
+    s += sub(378, 202 + 224, 'the C–O bond leaves WITH the oxygen');
+
+    // ---- 6 second alcohol attacks the oxocarbenium ----
+    s += frame(512, 240, '6', 'SECOND ROH ATTACKS');
+    c = P(596, 356);
+    k = core(c, { right: 1, rightOrder: 2, rightKind: 'hi' });
+    s += k.g;
+    s += plusAt(k.right.x + 4, k.right.y - 24);
+    s += text(k.right.x + 4, k.right.y + 28, 'R', { cls: 'fg-sm', size: 10 });
+    nu = P(c.x - 4, c.y - 62);
+    s += atom(nu.x, nu.y, 'O', { kind: 'hi' });
+    s += text(nu.x - 22, nu.y - 12, 'H', { cls: 'fg-sm', size: 10, anchor: 'end' });
+    s += text(nu.x + 20, nu.y - 12, 'R', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += lonePair(nu.x, nu.y, 110, { dist: 23 });
+    s += curve(P(nu.x + 12, nu.y + 20), P(c.x + 8, c.y - 18), { bow: -14 });
+    s += sub(600, 202 + 224, 'flat, and open from both faces');
+
+    // ---- 7 deprotonate, giving the acetal ----
+    s += frame(8, 464, '7', 'LOSE H⁺ → ACETAL');
+    c = P(96, 590);
+    k = core(c, { top: 1, right: 1, topKind: 'hi' });
+    s += k.g;
+    s += plusAt(k.top.x + 2, k.top.y - 24);
+    s += text(k.top.x - 22, k.top.y - 8, 'R', { cls: 'fg-sm', size: 10, anchor: 'end' });
+    s += text(k.right.x + 4, k.right.y - 24, 'R', { cls: 'fg-sm', size: 10 });
+    h = P(k.top.x + 40, k.top.y - 4);
+    s += bond(k.top, h, { rTo: 12 }) + atom(h.x, h.y, 'H', { r: 12, kind: 'warn' });
+    s += curve(P(h.x + 22, h.y - 32), P(h.x + 4, h.y - 14), { bow: 12 });
+    s += sub(126, 202 + 448, 'two OR groups, no carbonyl left');
+
+    // the running commentary, beside the last frame
+    s += text(272, 512, 'Every one of the seven is an equilibrium.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(272, 540, 'Read left to right with the water pulled out by a Dean–Stark', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(272, 558, 'trap and you are protecting a carbonyl. Read right to left in', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(272, 576, 'dilute aqueous acid and you are deprotecting it. The steps do', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(272, 594, 'not change — only which side you flood.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(272, 626, 'Count the protons: one in at step 1, one out at step 3, one in', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(272, 644, 'at step 4, one out at step 7. The acid is a catalyst, and a', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(272, 662, 'mechanism that does not balance that way has a step missing.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+
+    s += rule(30, 696, 730, 696);
+    s += text(380, 722, 'protonate · add · deprotonate   —   then protonate · lose water · add · deprotonate', { cls: 'fg-lbl', size: 11.5 });
+    return s;
+  },
+  caption: 'The whole mechanism as elementary steps, which is how an exam asks for it. Two halves of three and four: an ordinary acid-catalyzed addition gives the hemiacetal, then the hemiacetal’s OH is turned into water, ionizes, and is replaced by a second alcohol. The oxocarbenium ion in the middle is what makes the second half possible at all.',
+  note: 'Two steps carry the difficulty. Step 5 is where the arrow starts on the <b>C–O bond</b> and ends on the oxygen — the leaving group departs with the electron pair, exactly as in any SN1 — and step 6 is where a flat, positively charged carbon is attacked from either face. Everything else is a proton moving on or off an oxygen.',
+});
+
+
+/* ------------------------------------------------------------- 11.4 ---
+   The section names a gem-diol, a cyanohydrin and a bisulfite adduct, and
+   then a whole fan-out of products from the nitrile, and draws none of
+   them — the one figure it has is a bar chart. Row one makes the "same
+   addition, three nucleophiles" claim visible; row two settles the
+   alpha/beta bookkeeping that the labels alone never explain. */
+FIGURES.push({
+  id: 'three-nucleophiles-one-addition',
+  section: 'hydrates-cyanohydrins',
+  anchor: '<h3>Cyanohydrins: addition of cyanide</h3>',
+  alt: 'Top row: the same ketone drawn three times after addition, giving a gem-diol from water, a cyanohydrin from cyanide and a bisulfite adduct from sodium bisulfite, each with an OH and the new group on one carbon. Bottom row: a cyanohydrin fanning out to an alpha-hydroxy carboxylic acid on hydrolysis and to a beta-amino alcohol on reduction, with the numbering that makes one alpha and the other beta marked on each product.',
+  viewBox: '0 0 760 556',
+  build() {
+    let s = '';
+
+    /* One adduct: the former carbonyl carbon, its two R groups, the OH that
+       was the carbonyl oxygen, and whatever the nucleophile left behind. */
+    const adduct = (c, right, opts = {}) => {
+      const r1 = armEnd(c, 250, 44), r2 = armEnd(c, 290, 44);
+      let g = bond(c, r1, { rTo: 13 }) + atom(r1.x, r1.y, 'R', { r: 13 });
+      g += bond(c, r2, { rTo: 13 }) + atom(r2.x, r2.y, 'R', { r: 13 });
+      const oh = armEnd(c, 140, 56), nu = armEnd(c, 40, 56);
+      g += bond(c, oh, { rTo: 17 }) + atom(oh.x, oh.y, 'OH', { r: 17, size: 10 });
+      g += bond(c, nu, { rTo: opts.r || 20 }) + atom(nu.x, nu.y, right, { r: opts.r || 20, size: opts.size || 9.5, kind: opts.kind || 'hi' });
+      g += atom(c.x, c.y, 'C', { kind: 'warn' });
+      return { g, oh, nu };
+    };
+
+    const cell = (x, t, sub) => panel(x, 16, 236, 204) + tag(x + 118, 40, t) + text(x + 118, 208, sub, { cls: 'fg-sm', size: 9.5 });
+
+    s += cell(8, 'WATER', 'reversible, and usually far to the left');
+    s += adduct(P(118, 120), 'OH', { r: 17, size: 10 }).g;
+    s += text(118, 194, 'a gem-diol (hydrate)', { cls: 'fg-tag-good', size: 10.5 });
+
+    s += cell(260, 'HCN + cat. CN⁻', 'the only one that builds a skeleton');
+    s += adduct(P(370, 120), 'C≡N', { r: 20, size: 10 }).g;
+    s += text(370, 194, 'a cyanohydrin', { cls: 'fg-tag-good', size: 10.5 });
+
+    s += cell(512, 'NaHSO₃', 'crystalline, soluble, reversible');
+    s += adduct(P(622, 120), 'SO₃⁻', { r: 20, size: 10 }).g;
+    s += text(622, 194, 'a bisulfite adduct', { cls: 'fg-tag-good', size: 10.5 });
+
+    // ---------- row 2: what the nitrile becomes, and where the letters start ----------
+    s += panel(8, 244, 744, 268);
+    s += tag(140, 268, 'WHERE THE α AND β LABELS COME FROM');
+
+    const cy = P(96, 376);
+    const A = adduct(cy, 'C≡N', { r: 20, size: 10 });
+    s += A.g;
+    s += text(96, 436, 'the cyanohydrin', { cls: 'fg-sm', size: 9.5 });
+
+    s += arrow(P(186, 348), P(250, 328), { muted: true });
+    s += text(218, 314, 'H₃O⁺, heat', { cls: 'fg-sm', size: 9.5 });
+    s += arrow(P(186, 404), P(250, 424), { muted: true });
+    s += text(218, 450, 'LiAlH₄', { cls: 'fg-sm', size: 9.5 });
+
+    /* Upper branch: the acid's letters start AFTER the carboxyl carbon, so
+       the carbon carrying the OH is alpha. */
+    const ac = P(360, 318);
+    const B = adduct(ac, 'COOH', { r: 24, size: 9.5 });
+    s += B.g;
+    s += text(B.nu.x + 30, B.nu.y - 2, 'C1', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
+    s += text(ac.x + 30, ac.y + 14, 'α', { cls: 'fg-tag-warn', size: 14 });
+    s += text(470, 300, 'an α-hydroxy acid', { cls: 'fg-tag-good', size: 10.5, anchor: 'start' });
+    s += text(470, 318, 'the acid counts from the carboxyl', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    s += text(470, 334, 'carbon, so its neighbor is α', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+
+    /* Lower branch: an alcohol's letters start ON the carbinol carbon, so the
+       carbon beside it is beta. */
+    const bc = P(360, 440);
+    const C = adduct(bc, 'CH₂NH₂', { r: 26, size: 9 });
+    s += C.g;
+    s += text(bc.x - 30, bc.y + 14, 'α', { cls: 'fg-tag-warn', size: 14 });
+    s += text(C.nu.x + 32, C.nu.y - 2, 'β', { cls: 'fg-tag-warn', size: 14, anchor: 'start' });
+    s += text(470, 422, 'a β-amino alcohol', { cls: 'fg-tag-good', size: 10.5, anchor: 'start' });
+    s += text(470, 440, 'the alcohol counts from the carbinol', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    s += text(470, 456, 'carbon itself, so its neighbor is β', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+
+    s += rule(30, 524, 730, 524);
+    s += text(380, 546, 'Same skeleton both times. The letter changes because the group that owns the numbering does.', { cls: 'fg-lbl', size: 11 });
+    return s;
+  },
+  caption: 'Three nucleophiles, one mechanism, three adducts that differ only in what is sitting beside the OH. Water gives the gem-diol, cyanide gives the cyanohydrin — the only one of the three that makes a carbon–carbon bond — and bisulfite gives a salt you can filter off and then take apart again.',
+  note: 'The lower half is the part that gets marked wrong, and it is a naming convention rather than a chemical difference. A carboxylic acid\u2019s Greek letters start <b>after</b> the carboxyl carbon, so the carbon holding the OH is α. An alcohol\u2019s start <b>on</b> the carbinol carbon, so that same carbon is α there and the CH₂NH₂ beside it is β. One fragment, two reference points, two letters.',
+});
+
+
+/* ------------------------------------------------------------- 10.4 ---
+   The butterfly transition state and what "syn, stereospecific" buys you.
+   Both epoxide figures in the section are about OPENING the ring; the one
+   3D claim the section makes about forming it — one oxygen, one face, at
+   once — was prose only, and it is examined three times in the bank. */
+FIGURES.push({
+  id: 'mcpba-butterfly-syn',
+  section: 'epoxides',
+  anchor: 'Reactions that convert stereochemistry into stereochemistry this predictably are called <b>stereospecific</b>.',
+  alt: 'Top: the butterfly transition state, with mCPBA above an alkene, two dashed partial bonds running from the same peroxyacid oxygen down to both alkene carbons and the oxygen-oxygen bond drawn as breaking. Bottom left: cis-2-butene giving the cis epoxide, with both methyl groups on wedges and a mirror plane through the ring, labeled meso and achiral. Bottom right: trans-2-butene giving the trans epoxide, drawn as the two enantiomers 2R,3R and 2S,3S in equal amounts.',
+  viewBox: '0 0 760 500',
+  build() {
+    let s = '';
+
+    // ---------------- the transition state ----------------
+    s += panel(8, 16, 744, 236);
+    s += tag(380, 42, 'THE BUTTERFLY TRANSITION STATE — ONE OXYGEN, ONE FACE, ALL AT ONCE');
+
+    const cL = P(300, 176), cR = P(380, 176);
+    s += bond(cL, cR, { order: 2, rFrom: 15, rTo: 15 });
+    s += bond(cL, armEnd(cL, 215, 42), { rTo: 13 }) + atom(armEnd(cL, 215, 42).x, armEnd(cL, 215, 42).y, 'R', { r: 13 });
+    s += bond(cL, armEnd(cL, 145, 42), { rTo: 13 }) + atom(armEnd(cL, 145, 42).x, armEnd(cL, 145, 42).y, 'R', { r: 13 });
+    s += bond(cR, armEnd(cR, 325, 42), { rTo: 13 }) + atom(armEnd(cR, 325, 42).x, armEnd(cR, 325, 42).y, 'R', { r: 13 });
+    s += bond(cR, armEnd(cR, 35, 42), { rTo: 13 }) + atom(armEnd(cR, 35, 42).x, armEnd(cR, 35, 42).y, 'R', { r: 13 });
+    s += atom(cL.x, cL.y, 'C', { kind: 'warn' });
+    s += atom(cR.x, cR.y, 'C', { kind: 'warn' });
+
+    const ot = P(340, 118), oi = P(408, 98), ca = P(468, 116), oc = P(468, 70);
+    // the two bonds being made, drawn as partial bonds
+    s += bond(ot, cL, { rFrom: 15, rTo: 16, cls: 'fg-dash-hi' });
+    s += bond(ot, cR, { rFrom: 15, rTo: 16, cls: 'fg-dash-hi' });
+    // the bond being broken
+    s += bond(ot, oi, { rFrom: 15, rTo: 15, cls: 'fg-dash' });
+    s += bond(oi, ca, { rTo: 15 });
+    s += bond(ca, oc, { order: 2, rTo: 15 });
+    s += bond(ca, armEnd(ca, 340, 46), { rTo: 13 }) + atom(armEnd(ca, 340, 46).x, armEnd(ca, 340, 46).y, 'R', { r: 13 });
+    s += atom(oc.x, oc.y, 'O');
+    s += atom(ca.x, ca.y, 'C');
+    s += atom(oi.x, oi.y, 'O');
+    s += atom(ot.x, ot.y, 'O', { kind: 'hi' });
+    s += text(298, 100, 'this oxygen is', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+    s += text(298, 114, 'the one delivered', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+    s += text(556, 100, 'the weak O–O bond breaks', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    s += text(556, 114, 'in the same step, and the', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    s += text(556, 128, 'proton goes back to the acid', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    s += text(340, 222, 'Both C–O bonds form at once, from whichever face the peroxyacid sits on —', { cls: 'fg-sm', size: 9.5 });
+    s += text(340, 238, 'and there is no intermediate for anything to rotate in.', { cls: 'fg-sm', size: 9.5 });
+
+    // ---------------- the two stereochemical outcomes ----------------
+    /* An epoxide drawn face-on: two carbons side by side, the oxygen bridging
+       above them, and the two methyls on wedges or hashes to say which face
+       they are on. */
+    const epox = (x, y, leftUp, rightUp) => {
+      const a = P(x, y), b = P(x + 60, y), o = P(x + 30, y - 46);
+      let g = bond(a, b, { rFrom: 0, rTo: 0 });
+      g += bond(a, o, { rFrom: 0, rTo: 15 }) + bond(b, o, { rFrom: 0, rTo: 15 });
+      const mL = armEnd(a, 235, 44), mR = armEnd(b, 305, 44);
+      g += (leftUp ? wedge : hash)(a, mL, { rFrom: 0, rTo: 18 });
+      g += (rightUp ? wedge : hash)(b, mR, { rFrom: 0, rTo: 18 });
+      g += atom(mL.x, mL.y, 'CH₃', { r: 18, size: 10 });
+      g += atom(mR.x, mR.y, 'CH₃', { r: 18, size: 10 });
+      g += atom(o.x, o.y, 'O');
+      g += atom(a.x, a.y, '', { kind: 'point' });
+      g += atom(b.x, b.y, '', { kind: 'point' });
+      return g;
+    };
+    /* The alkene, drawn with both methyls on the same side (cis) or on
+       opposite sides (trans). */
+    const butene = (x, y, cis) => {
+      const a = P(x, y), b = P(x + 60, y);
+      let g = bond(a, b, { order: 2, rFrom: 0, rTo: 0 });
+      const mL = armEnd(a, 215, 44), mR = cis ? armEnd(b, 325, 44) : armEnd(b, 35, 44);
+      const hL = armEnd(a, 145, 40), hR = cis ? armEnd(b, 35, 40) : armEnd(b, 325, 40);
+      g += bond(a, mL, { rFrom: 0, rTo: 18 }) + atom(mL.x, mL.y, 'CH₃', { r: 18, size: 10 });
+      g += bond(b, mR, { rFrom: 0, rTo: 18 }) + atom(mR.x, mR.y, 'CH₃', { r: 18, size: 10 });
+      g += bond(a, hL, { rFrom: 0, rTo: 12 }) + atom(hL.x, hL.y, 'H', { r: 12, size: 11 });
+      g += bond(b, hR, { rFrom: 0, rTo: 12 }) + atom(hR.x, hR.y, 'H', { r: 12, size: 11 });
+      g += atom(a.x, a.y, '', { kind: 'point' });
+      g += atom(b.x, b.y, '', { kind: 'point' });
+      return g;
+    };
+
+    s += panel(8, 268, 368, 206);
+    s += tag(192, 294, 'cis-2-BUTENE');
+    s += butene(52, 362, true);
+    s += arrow(P(178, 356), P(218, 356), { muted: true });
+    s += text(198, 342, 'mCPBA', { cls: 'fg-sm', size: 9.5 });
+    s += epox(252, 370, true, true);
+    s += text(192, 436, 'both methyls delivered to the same face:', { cls: 'fg-sm', size: 9.5 });
+    s += text(192, 452, 'a MESO epoxide — achiral, one compound', { cls: 'fg-tag-good', size: 10.5 });
+
+    s += panel(392, 268, 360, 206);
+    s += tag(572, 294, 'trans-2-BUTENE');
+    s += butene(428, 362, false);
+    s += arrow(P(554, 356), P(594, 356), { muted: true });
+    s += text(574, 342, 'mCPBA', { cls: 'fg-sm', size: 9.5 });
+    s += epox(624, 370, true, false);
+    s += text(572, 436, 'chiral — and the peroxyacid can sit on either face,', { cls: 'fg-sm', size: 9.5 });
+    s += text(572, 452, 'so (2R,3R) and (2S,3S) come out 50:50: a RACEMATE', { cls: 'fg-tag-good', size: 10.5 });
+
+    s += text(380, 492, 'Stereospecific: the alkene geometry sets the answer, not the reagent.', { cls: 'fg-lbl', size: 11 });
+    return s;
+  },
+  caption: 'Why epoxidation is the cleanest stereochemistry in the chapter. One oxygen is handed to one face of the alkene in a single step, so the two new C–O bonds are <b>syn</b> and nothing in between exists long enough to rotate — which means the alkene’s geometry walks straight through into the product.',
+  note: 'Work the two cases rather than memorizing them. <i>cis</i>-2-Butene puts both methyls on the same face of the ring, and that epoxide has an internal mirror plane, so the two faces of attack give the same achiral <b>meso</b> compound. <i>trans</i>-2-Butene puts them on opposite faces, and that epoxide is chiral — but a flat alkene offers mCPBA both faces equally, so you get equal amounts of the two enantiomers. Stereospecific does not mean enantioselective.',
+});
+
+
+/* ------------------------------------------------------------- 10.5 ---
+   SOCl2 and PBr3, drawn. The section's thesis is that the activation
+   happens at sulfur or phosphorus and never at carbon — which is exactly
+   the kind of claim a diagram settles and prose only asserts. The existing
+   figure carries the HBr rearrangement and gives PBr3 one caption line. */
+FIGURES.push({
+  id: 'socl2-pbr3-mechanisms',
+  section: 'alcohol-reactions',
+  anchor: 'PBr₃ runs the same play: the oxygen attacks phosphorus to give R–O–PBr₂, and bromide displaces the phosphorus-bearing oxygen from the back.</p>',
+  alt: 'Two rows, each in two panels. In the top row the oxygen of butan-2-ol attacks the sulfur of thionyl chloride and a chloride is expelled, giving an alkyl chlorosulfite; then that chloride attacks the carbon from the opposite side while the carbon-oxygen bond breaks, so the leaving group departs as sulfur dioxide and chloride and the configuration is inverted. The bottom row repeats the same two steps with PBr3, through R-O-PBr2, giving the inverted bromide.',
+  viewBox: '0 0 760 520',
+  build() {
+    let s = '';
+
+    /* One stereocentre, drawn twice per row: before attack with the oxygen on
+       the right, and after attack with the halide on the left, so the
+       umbrella has visibly turned inside out. */
+    const centre = (c, x, opts = {}) => {
+      const flip = !!opts.flip;
+      const et = armEnd(c, flip ? 0 : 180, 48);
+      const me = armEnd(c, flip ? 290 : 250, 44);
+      const h = armEnd(c, flip ? 240 : 300, 42);
+      const xp = armEnd(c, flip ? 140 : 40, 54);
+      let g = bond(c, et, { rTo: 15 }) + atom(et.x, et.y, 'Et', { r: 15, size: 11 });
+      g += wedge(c, me, { rFrom: 15, rTo: 18 }) + atom(me.x, me.y, 'CH₃', { r: 18, size: 10 });
+      g += hash(c, h, { rFrom: 15, rTo: 12 }) + atom(h.x, h.y, 'H', { r: 12, size: 11 });
+      g += bond(c, xp, { rTo: opts.xr || 15 });
+      g += atom(xp.x, xp.y, x, { r: opts.xr || 15, size: opts.xs || 12, kind: opts.xkind || 'plain' });
+      g += atom(c.x, c.y, 'C', { kind: 'warn' });
+      return { g, xp, et, me, h };
+    };
+
+    const row = (Y, cfg) => {
+      let g = '';
+      // ---- panel 1: the oxygen attacks sulfur (or phosphorus) ----
+      g += panel(8, Y, 368, 216) + tag(192, Y + 26, cfg.t1);
+      const c1 = P(96, Y + 124);
+      const A = centre(c1, 'O', { xkind: 'hi' });
+      g += A.g;
+      g += lonePair(A.xp.x, A.xp.y, 300, { dist: 22 });
+      g += text(A.xp.x - 4, A.xp.y - 26, 'H', { cls: 'fg-sm', size: 10 });
+      const z = P(A.xp.x + 78, A.xp.y - 8);
+      g += atom(z.x, z.y, cfg.centreAtom, { kind: 'warn' });
+      const zo = armEnd(z, 44, 46);
+      g += bond(z, zo, { order: 2, rTo: 14 }) + atom(zo.x, zo.y, cfg.topGroup, { r: 14, size: 11 });
+      const lg = armEnd(z, 304, 52);
+      g += bond(z, lg, { rTo: 15, cls: 'fg-bond-hi' }) + atom(lg.x, lg.y, cfg.x, { kind: 'hi' });
+      g += curve(P(A.xp.x + 16, A.xp.y - 10), P(z.x - 16, z.y - 2), { bow: -16 });
+      g += curve(P(z.x + 14, z.y + 10), P(lg.x - 4, lg.y - 18), { bow: -14 });
+      g += text(192, Y + 190, cfg.n1, { cls: 'fg-sm', size: 9.5 });
+      g += text(192, Y + 206, cfg.n1b, { cls: 'fg-sm', size: 9.5 });
+
+      // ---- panel 2: the halide comes in from the back ----
+      g += panel(392, Y, 360, 216) + tag(572, Y + 26, cfg.t2);
+      const c2 = P(576, Y + 128);
+      const B = centre(c2, 'O', { flip: true, xkind: 'hi' });
+      g += B.g;
+      const z2 = P(B.xp.x - 26, B.xp.y - 34);
+      g += bond(B.xp, z2, { rFrom: 15, rTo: 15 });
+      g += atom(z2.x, z2.y, cfg.leaving, { r: 22, size: 9, kind: 'warn' });
+      const nuc = P(c2.x + 74, c2.y + 32);
+      g += atom(nuc.x, nuc.y, cfg.x, { kind: 'hi' });
+      g += text(nuc.x + 20, nuc.y - 12, '−', { cls: 'fg-hi', size: 15 });
+      g += curve(P(nuc.x - 18, nuc.y - 8), P(c2.x + 18, c2.y + 6), { bow: 16 });
+      g += curve(P(c2.x - 10, c2.y - 18), P(B.xp.x + 12, B.xp.y + 12), { bow: -14 });
+      g += text(572, Y + 190, cfg.n2, { cls: 'fg-sm', size: 9.5 });
+      g += text(572, Y + 206, cfg.n2b, { cls: 'fg-tag-good', size: 10.5 });
+      return g;
+    };
+
+    s += row(16, {
+      t1: 'SOCl₂ · STEP 1 — THE OXYGEN ATTACKS SULFUR',
+      centreAtom: 'S', topGroup: 'O', x: 'Cl', leaving: 'S(=O)Cl',
+      n1: 'chloride leaves sulfur, and the oxygen is left',
+      n1b: 'carrying –SOCl: an alkyl chlorosulfite',
+      t2: 'SOCl₂ · STEP 2 — BACKSIDE ATTACK BY Cl⁻',
+      n2: 'it departs as SO₂ and Cl⁻, with no cation anywhere',
+      n2b: '2-chlorobutane, configuration INVERTED',
+    });
+    s += row(276, {
+      t1: 'PBr₃ · STEP 1 — THE OXYGEN ATTACKS PHOSPHORUS',
+      centreAtom: 'P', topGroup: 'Br', x: 'Br', leaving: 'PBr₂',
+      n1: 'bromide leaves phosphorus, and the oxygen is left',
+      n1b: 'carrying –PBr₂',
+      t2: 'PBr₃ · STEP 2 — BACKSIDE ATTACK BY Br⁻',
+      n2: 'again no positive charge on carbon at any stage',
+      n2b: '2-bromobutane, configuration INVERTED',
+    });
+
+    s += text(380, 508, 'Both reagents work at S or P, never at carbon — which is the whole reason neither one rearranges.', { cls: 'fg-lbl', size: 11 });
+    return s;
+  },
+  caption: 'The two reagents that convert an alcohol into a halide without ever making a carbocation, drawn as the two steps they actually are. The alcohol’s <b>oxygen</b> is the nucleophile in step 1, attacking sulfur or phosphorus; only in step 2 does anything happen at carbon, and when it does it is an ordinary backside SN2.',
+  note: 'Compare the leaving groups with the HBr route. There the OH became water and left the carbon on its own, which is what gives a cation time to rearrange. Here it becomes –OSOCl or –OPBr₂ and departs only as the halide arrives from the opposite side, so the carbon is never electron-deficient and the skeleton cannot move. The price is that the configuration <b>must</b> invert — with SOCl₂ that is the pyridine case; run without a base it can collapse internally and retain instead.',
+});
+
+
+/* ------------------------------------------------------------- 10.6 ---
+   The crown ether, drawn. "Six oxygens, one cation, a 2.7 Å hole" is an
+   inherently spatial claim, and the section made it in prose only. The
+   right-hand panel draws the three diameters to scale, because the whole
+   selectivity argument is a comparison of sizes. */
+FIGURES.push({
+  id: 'crown-ether-cavity',
+  section: 'ether-chemistry',
+  anchor: 'A "naked" anion like that is a dramatically better nucleophile than the same anion in water, where every lone pair is hydrogen-bonded to a solvent molecule.</p>',
+  alt: 'Left: 18-crown-6 drawn as an eighteen-membered ring of six oxygens separated by pairs of CH2 groups, with every oxygen lone pair pointing inward at a potassium ion sitting in the middle of the cavity. Right: the three diameters drawn to scale — the cavity at 2.7 angstroms, potassium at 2.66 which fills it, and sodium at 1.9 which leaves a gap — above a line showing potassium fluoride dissolving in benzene as a crowned cation and a naked, unsolvated fluoride.',
+  viewBox: '0 0 760 430',
+  build() {
+    let s = '';
+
+    // ---------------- the macrocycle ----------------
+    s += panel(8, 16, 368, 398);
+    s += tag(192, 42, '18-CROWN-6, WITH K⁺ IN THE MIDDLE');
+
+    const CX = 192, CY = 224, RO = 92, RC = 108;
+    const at = (deg, r) => P(CX + Math.cos((deg * Math.PI) / 180) * r, CY + Math.sin((deg * Math.PI) / 180) * r);
+    const os = [];
+    for (let i = 0; i < 6; i++) os.push({ deg: -90 + i * 60, p: at(-90 + i * 60, RO) });
+    let ring = '';
+    for (let i = 0; i < 6; i++) {
+      const a = os[i], b = os[(i + 1) % 6];
+      const ca = at(a.deg + 20, RC), cb = at(a.deg + 40, RC);
+      ring += bond(a.p, ca, { rFrom: 14, rTo: 0 });
+      ring += bond(ca, cb, { rFrom: 0, rTo: 0 });
+      ring += bond(cb, b.p, { rFrom: 0, rTo: 14 });
+      ring += atom(ca.x, ca.y, '', { kind: 'point' });
+      ring += atom(cb.x, cb.y, '', { kind: 'point' });
+    }
+    s += ring;
+    for (const o of os) {
+      s += lonePair(o.p.x, o.p.y, o.deg + 180, { dist: 22 });
+      s += atom(o.p.x, o.p.y, 'O', { r: 14, kind: 'hi' });
+    }
+    s += atom(CX, CY, 'K', { r: 22, kind: 'warn', size: 13 });
+    s += text(CX + 26, CY - 16, '+', { cls: 'fg-warn', size: 15 });
+    s += text(192, 356, 'every vertex between two oxygens is a CH₂', { cls: 'fg-sm', size: 9.5 });
+    s += text(192, 374, 'six lone pairs, all pointing at the same ion', { cls: 'fg-sm', size: 9.5 });
+    s += text(192, 396, 'the ring is a solvent shell you can weigh out', { cls: 'fg-tag', size: 10.5 });
+
+    // ---------------- the sizes, drawn to scale ----------------
+    s += panel(392, 16, 360, 220);
+    s += tag(572, 42, 'WHY IT PICKS K⁺ AND NOT Na⁺');
+    const SCALE = 26;   // pixels per angstrom of DIAMETER
+    const circleAt = (x, y, dia, label, kind) => {
+      const r = (dia * SCALE) / 2;
+      let g = kind === 'cavity'
+        ? `<circle class="fg-dash" cx="${x}" cy="${y}" r="${r}" fill="none"></circle>`
+        : `<circle class="${kind === 'k' ? 'fg-fill-warn' : 'fg-fill-hi'}" cx="${x}" cy="${y}" r="${r}" opacity="0.5"></circle>`;
+      g += text(x, y + 4, label, { cls: 'fg-lbl', size: 11 });
+      return g;
+    };
+    s += circleAt(470, 128, 2.7, '', 'cavity');
+    s += text(470, 132, 'cavity', { cls: 'fg-sm', size: 9.5 });
+    s += text(470, 186, '≈ 2.7 Å across', { cls: 'fg-sm', size: 9.5 });
+    s += circleAt(572, 128, 2.66, 'K⁺', 'k');
+    s += text(572, 186, '2.66 Å — fills it', { cls: 'fg-tag-good', size: 10 });
+    s += circleAt(672, 128, 1.9, 'Na⁺', 'na');
+    s += text(672, 186, '1.9 Å — rattles', { cls: 'fg-tag-warn', size: 10 });
+    s += text(572, 212, 'Diameters, drawn to the same scale.', { cls: 'fg-sm', size: 9.5 });
+
+    // ---------------- what it is for ----------------
+    s += panel(392, 252, 360, 162);
+    s += tag(572, 278, 'AND WHAT THAT BUYS YOU');
+    s += text(572, 306, 'KF is insoluble in benzene.', { cls: 'fg-lbl', size: 11.5 });
+    s += text(572, 330, 'Crown the K⁺ and the ion pair dissolves —', { cls: 'fg-sm', size: 10 });
+    s += text(572, 348, 'and the fluoride comes with it, neither', { cls: 'fg-sm', size: 10 });
+    s += text(572, 366, 'solvated nor held to its cation.', { cls: 'fg-sm', size: 10 });
+    s += text(572, 392, 'a NAKED anion: a far better nucleophile', { cls: 'fg-tag-good', size: 10.5 });
+    return s;
+  },
+  caption: 'What "size-selective" actually looks like. Six ether oxygens held in one ring point all of their lone pairs into the middle, and an ion of the right size is wrapped by the lot of them at once — the ring doing, as a single molecule, the job a shell of solvent molecules normally does.',
+  note: 'The middle panel is the argument, and the numbers in it are <b>diameters</b>: a 2.7 Å hole against a 2.66 Å potassium ion and a 1.9 Å sodium one. Potassium fills the cavity and contacts all six oxygens; sodium sits in a hole too big for it and touches fewer of them at a time, which is why the binding is so much weaker. The payoff is the anion left behind: unsolvated, uncoupled from its cation, and far more nucleophilic than the same ion in water.',
 });
 
 const START = (id) => `<!-- fig:${id}:start -->`;

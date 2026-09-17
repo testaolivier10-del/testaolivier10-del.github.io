@@ -19827,15 +19827,15 @@
    "type": "tf"
   },
   {
-   "q": "Which common name refers to propan-2-one?",
+   "q": "You need cyclohexanone. Which starting material and transformation delivers it most directly?",
    "options": [
-    "Acetone",
-    "Formalin",
-    "Acetaldehyde",
-    "Benzaldehyde"
+    "Cyclohexane, by oxidation of an unactivated C-H bond",
+    "Cyclohexanol, by oxidation of the secondary alcohol",
+    "Cyclohexanol, by reduction of the secondary alcohol",
+    "Cyclohexene, by anti-Markovnikov hydration"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 1,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -19861,12 +19861,12 @@
    "type": "mcq"
   },
   {
-   "q": "Which of these carbonyl compounds would be expected to have the lowest boiling point relative to its molecular weight, compared to an alcohol of similar size?",
+   "q": "Butanal, butan-1-ol and pentane all have similar molar masses. Which boiling-point order do you expect, and why?",
    "options": [
-    "An alcohol, because it has an O-H group",
-    "A ketone, because of extensive hydrogen bonding",
-    "An aldehyde, because it cannot hydrogen-bond to itself",
-    "They all boil at identical temperatures"
+    "Pentane > butanal > butan-1-ol, because larger dipoles lower boiling points",
+    "Butanal > butan-1-ol > pentane, because a C=O is a stronger attraction than an O-H",
+    "Butan-1-ol > butanal > pentane, because only the alcohol can donate a hydrogen bond",
+    "All three boil within a degree of each other at similar molar mass"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -19895,26 +19895,26 @@
    "type": "tf"
   },
   {
-   "q": "In an infrared (IR) spectrum, the C=O stretch of a simple aliphatic aldehyde or ketone typically appears around:",
+   "q": "A carbonyl C=O stretch falls between 1700 and 1750 cm-1, and conjugating the C=O with a ring or a double bond lowers that number by roughly 30 cm-1. On that basis, which compound absorbs at the LOWEST wavenumber?",
    "options": [
-    "1700-1750 cm-1, a strong sharp peak",
-    "3300 cm-1, a broad peak",
-    "2900 cm-1, a medium peak",
-    "1000 cm-1, a weak peak"
+    "Acetone",
+    "Propanal",
+    "Butan-2-one",
+    "Benzaldehyde"
    ],
-   "correct": 0,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "In 1H NMR, the aldehyde proton (the H directly on the carbonyl carbon) typically appears in which chemical shift range?",
+   "q": "You have butan-1-ol and you want butanal, not butanoic acid. Which condition stops the oxidation one rung short?",
    "options": [
-    "0.5-1.5 ppm",
-    "9-10 ppm",
-    "2-3 ppm",
-    "4-5 ppm"
+    "Anhydrous conditions, so no hydrate can form",
+    "Aqueous conditions, so the hydrate forms freely",
+    "Strongly basic conditions, which block the second step",
+    "A large excess of the oxidant and a long reaction time"
    ],
-   "correct": 1,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -19965,27 +19965,27 @@
    "type": "mcq"
   },
   {
-   "q": "Which alpha-hydrogen-related property is shared by most aldehydes and ketones but absent in a carbonyl like formaldehyde?",
+   "q": "Resonance stabilization usually speeds a reaction up, yet benzaldehyde’s conjugation with the ring makes it react more slowly than acetaldehyde. What resolves that?",
    "options": [
-    "The ability to absorb IR radiation",
-    "The ability to form an enol tautomer via an alpha hydrogen",
-    "A polar C=O bond",
-    "A trigonal planar carbonyl carbon"
+    "Conjugation with a ring is not real resonance stabilization",
+    "Here the stabilization is of the starting material, so the barrier is higher",
+    "The ring adds steric bulk, and electronics play no part in this case",
+    "Resonance raises the energy of benzaldehyde relative to acetaldehyde"
    ],
    "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Which reagent would selectively reduce an aldehyde or ketone's C=O to a C-OH without reducing other common functional groups like esters under mild conditions?",
+   "q": "A nucleophile approaches a carbonyl carbon at about 107 degrees to the C=O axis, tilted away from the oxygen, rather than straight down onto the plane. Why that trajectory?",
    "options": [
-    "LiAlH4, which reduces almost everything",
-    "H2/Pd catalyst, which reduces C=C bonds preferentially",
-    "NaBH4, which does not reduce esters",
-    "KMnO4, a strong oxidizer"
+    "It is the shortest possible path to the carbon",
+    "It keeps the nucleophile in the plane of the carbonyl group",
+    "It aligns with the larger lobe of the C=O antibonding orbital",
+    "It lets the nucleophile bond to the oxygen on the way past"
    ],
    "correct": 2,
-   "difficulty": "medium",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -20001,25 +20001,27 @@
    "type": "mcq"
   },
   {
-   "q": "Acetone is fully miscible with water.",
+   "q": "Both routes hydrate an alkyne, but they give different carbonyls. Which one gives an ALDEHYDE from a terminal alkyne?",
    "options": [
-    "True",
-    "False"
+    "Aqueous acid with a mercury(II) salt",
+    "Hydroboration, then oxidative workup",
+    "Ozone, then dimethyl sulfide",
+    "Hydrogen over a poisoned palladium catalyst"
    ],
-   "correct": 0,
-   "difficulty": "easy",
-   "type": "tf"
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
   },
   {
-   "q": "What is the simplest possible ketone?",
+   "q": "Rank chloral (Cl3CCHO), acetaldehyde, benzaldehyde and cyclohexanone from MOST to LEAST reactive toward a nucleophile.",
    "options": [
-    "Acetone",
-    "Formaldehyde",
-    "Acetaldehyde",
-    "Propanal"
+    "Cyclohexanone > benzaldehyde > acetaldehyde > chloral",
+    "Acetaldehyde > chloral > cyclohexanone > benzaldehyde",
+    "Benzaldehyde > acetaldehyde > chloral > cyclohexanone",
+    "Chloral > acetaldehyde > benzaldehyde > cyclohexanone"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 3,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -20045,22 +20047,24 @@
    "type": "mcq"
   },
   {
-   "q": "Cyclohexanone is an example of a cyclic ketone in which the carbonyl carbon is part of a six-membered ring.",
+   "q": "A student says the carbonyl OXYGEN must be the electrophile because it is the atom carrying a charge. What has gone wrong?",
    "options": [
-    "True",
-    "False"
+    "Nothing; the oxygen is attacked by nucleophiles",
+    "The oxygen carries a partial positive charge, not a negative one",
+    "The charge is negative, so oxygen is the basic site and carbon is attacked",
+    "Neither atom is charged, so the molecule has no electrophilic site at all"
    ],
-   "correct": 0,
-   "difficulty": "easy",
-   "type": "tf"
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
   },
   {
-   "q": "A chemist wants to use a color/precipitate test to tell whether an unknown liquid is an aldehyde or a ketone. Which classic reagent combination would give a positive (color change/precipitate) result specifically with the aldehyde?",
+   "q": "A chemist needs a quick bench test that gives a visible result with an aldehyde and no result with a ketone. Which reagent does that?",
    "options": [
-    "Lucas reagent",
-    "Bromine water only",
-    "Tollens' reagent (Ag(NH3)2+)",
-    "2,4-dinitrophenylhydrazine (which reacts with both)"
+    "Sodium borohydride, which reduces both",
+    "Bromine in dichloromethane",
+    "Tollens’ reagent, Ag(NH3)2+",
+    "Dilute aqueous acid"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -20173,14 +20177,14 @@
    "type": "tf"
   },
   {
-   "q": "Which trajectory angle (relative to the carbonyl plane) does a nucleophile typically follow when approaching a carbonyl carbon, known as the Bürgi-Dunitz angle?",
+   "q": "A synthesis calls for CH3MgBr to be added to a molecule that contains a ketone and, elsewhere, a free OH group. What happens?",
    "options": [
-    "Approximately 107 degrees, offset from perpendicular",
-    "Approximately 90 degrees, directly perpendicular to the C=O bond",
-    "Approximately 180 degrees, directly in line with the C=O bond",
-    "Approximately 0 degrees, in the same plane as the carbonyl"
+    "The Grignard adds to the ketone and ignores the OH",
+    "The Grignard is destroyed by the OH proton before it can add",
+    "The OH group adds to the ketone in an intramolecular reaction",
+    "The Grignard reduces the OH to a C-H bond"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -20243,14 +20247,16 @@
    "type": "mcq"
   },
   {
-   "q": "Addition of water to an aldehyde or ketone to form a geminal diol (hydrate) is generally reversible, with the equilibrium position depending on the electrophilicity of the starting carbonyl.",
+   "q": "An ester treated with excess CH3MgBr gives a tertiary alcohol carrying two new methyl groups, not a ketone. Why can the reaction not be stopped at the ketone?",
    "options": [
-    "True",
-    "False"
+    "The ketone intermediate is more electrophilic than the ester was",
+    "Esters cannot form a tetrahedral intermediate at all",
+    "The second methyl group adds to the ester oxygen rather than the carbon",
+    "Grignard reagents add twice to every carbonyl, including ketones"
    ],
    "correct": 0,
-   "difficulty": "medium",
-   "type": "tf"
+   "difficulty": "hard",
+   "type": "mcq"
   },
   {
    "q": "Compared to hydroxide ion, water is a much weaker nucleophile toward carbonyls mainly because:",
@@ -20311,7 +20317,7 @@
    "type": "tf"
   },
   {
-   "q": "Which of the following nucleophiles, when added to a ketone, would give a product best described as a hemiketal (a type of hemiacetal)?",
+   "q": "Which nucleophile, added to a ketone in a single equivalent, gives a product whose carbon carries both an OH and an OR group?",
    "options": [
     "An amine",
     "An alcohol",
@@ -20405,14 +20411,16 @@
    "type": "mcq"
   },
   {
-   "q": "In the reaction of an aldehyde with excess hydrazine (H2N-NH2) followed by strong base and heat (the Wolff-Kishner-type sequence), the initial step is still a nucleophilic addition of the amine nitrogen to the carbonyl carbon.",
+   "q": "You need 2-phenylbutan-2-ol. Which carbonyl and organometallic pair would you use?",
    "options": [
-    "True",
-    "False"
+    "Benzaldehyde with propylmagnesium bromide",
+    "Butanal with phenylmagnesium bromide",
+    "Butan-2-one with phenylmagnesium bromide",
+    "Acetophenone with methylmagnesium bromide"
    ],
-   "correct": 0,
-   "difficulty": "medium",
-   "type": "tf"
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
   },
   {
    "q": "Which best describes why an alkoxide intermediate formed during nucleophilic addition is typically quenched with water or dilute acid at the end of a reaction?",
@@ -20499,15 +20507,15 @@
    "type": "mcq"
   },
   {
-   "q": "An acetal is formed when a carbonyl compound reacts, under acid catalysis, with how many equivalents of an alcohol?",
+   "q": "Acetal formation has just reached the oxocarbenium ion. What is the next step?",
    "options": [
-    "Zero",
-    "One",
-    "Three",
-    "Two"
+    "Water attacks the oxocarbenium carbon",
+    "A hydride shifts to the positive carbon",
+    "The oxocarbenium loses a proton to give an alkene",
+    "A second alcohol attacks the oxocarbenium carbon"
    ],
    "correct": 3,
-   "difficulty": "easy",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -20521,27 +20529,27 @@
    "type": "tf"
   },
   {
-   "q": "Acetals are stable under basic or neutral aqueous conditions but hydrolyze back to the parent carbonyl compound under:",
+   "q": "You need to protect a ketone as a SIX-membered cyclic acetal. Which diol does that?",
    "options": [
-    "Aqueous acid",
-    "Strongly basic, anhydrous conditions",
-    "High temperature alone with no other reagent",
-    "Exposure to visible light"
+    "Ethylene glycol, a 1,2-diol",
+    "Propane-1,3-diol, a 1,3-diol",
+    "Butane-1,4-diol, a 1,4-diol",
+    "Methanol, used in two equivalents"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 1,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Why are acetals commonly used as protecting groups for aldehydes and ketones during multi-step organic synthesis?",
+   "q": "A molecule contains a ketone, a tert-butyl ether and a tertiary alcohol. Is an acetal a safe way to protect the ketone here?",
    "options": [
-    "Because acetals are more reactive than the original carbonyl, allowing faster synthesis",
-    "They are stable to base, nucleophiles, and oxidants, but removed by aqueous acid",
-    "Because acetals permanently replace the carbonyl group with no way back",
-    "Because acetals only form in the presence of strong base"
+    "Yes, because acetals are removed under basic conditions",
+    "Yes, because acetal formation and removal are both neutral",
+    "No, because the deprotection needs aqueous acid, which the rest of the molecule will not survive",
+    "No, because acetals cannot be made from ketones"
    ],
-   "correct": 1,
-   "difficulty": "easy",
+   "correct": 2,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -20613,14 +20621,14 @@
    "type": "tf"
   },
   {
-   "q": "Mutarotation, the slow change in optical rotation observed when crystalline glucose is dissolved in water, occurs because:",
+   "q": "Open-chain hemiacetals are usually too unstable to isolate, yet glucose sits over 99% as its cyclic hemiacetal. What accounts for the difference?",
    "options": [
-    "Glucose decomposes into smaller sugars over time",
-    "Water oxidizes glucose to gluconic acid",
-    "The anomers interconvert via the open form",
-    "Glucose forms a full acetal with water"
+    "The cyclic form is an acetal rather than a hemiacetal",
+    "Ring closure here is intramolecular and gives a five- or six-membered ring",
+    "Sugars are not in equilibrium with their open-chain form",
+    "The cyclic form has no OH group left to lose"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -20649,14 +20657,16 @@
    "type": "mcq"
   },
   {
-   "q": "Thioacetals, formed from a carbonyl compound and two equivalents of a thiol (RSH) instead of an alcohol, are generally LESS easily hydrolyzed back to the carbonyl under aqueous acid than ordinary oxygen acetals.",
+   "q": "A molecule holds both an aldehyde and a ketone. One equivalent of ethylene glycol with catalytic acid is added. Which carbonyl is protected?",
    "options": [
-    "True",
-    "False"
+    "The aldehyde, because it is the more reactive carbonyl",
+    "The ketone, because it is the more reactive carbonyl",
+    "Both equally, since acetal formation ignores substitution",
+    "Neither, because a diol needs two carbonyls to react"
    ],
    "correct": 0,
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Which of the following is NOT a typical catalyst used to promote acetal formation from a ketone and an alcohol?",
@@ -20717,15 +20727,15 @@
    "type": "mcq"
   },
   {
-   "q": "A student claims that acetals are good protecting groups because they are unreactive toward essentially everything, including both strong acid and strong base. Is this claim accurate?",
+   "q": "A route has to reduce an ester to a primary alcohol while leaving a ketone in the same molecule untouched. Which order of operations works?",
    "options": [
-    "Yes, acetals are completely unreactive under all conditions",
-    "No, acetals are stable to base but hydrolyzed by aqueous acid",
-    "No, acetals spontaneously decompose even in neutral water with no catalyst",
-    "Yes, but only because they contain nitrogen"
+    "Reduce with LiAlH4 first, then protect the ketone, then deprotect",
+    "Protect the ketone, reduce with LiAlH4, then hydrolyze the acetal",
+    "Reduce with NaBH4, which leaves both the ester and the ketone alone",
+    "Protect the ester as an acetal, then reduce with LiAlH4"
    ],
    "correct": 1,
-   "difficulty": "medium",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -38841,27 +38851,27 @@
    "type": "mcq"
   },
   {
-   "q": "Why does aqueous Cr(VI) carry a primary alcohol past the aldehyde?",
+   "q": "Cyanohydrin formation is run with HCN plus a catalytic amount of cyanide. What goes wrong if only NaCN is used, with no HCN present?",
    "options": [
-    "The aldehyde hydrates first",
-    "The aldehyde tautomerizes",
-    "Water deprotonates the aldehyde",
-    "Chromium adds to the carbonyl"
+    "Cyanide is too weak a nucleophile to attack the carbonyl",
+    "The alkoxide has no proton source, so the addition reverses",
+    "Cyanide attacks the carbonyl oxygen instead of the carbon",
+    "The carbonyl is protonated first and cannot be attacked"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 1,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Why does PCC stop at the aldehyde?",
+   "q": "Which is hydrated to a greater extent at equilibrium: acetophenone (PhCOCH3) or 2,2,2-trifluoroacetophenone (PhCOCF3)?",
    "options": [
-    "The reagent is too weak",
-    "Aldehydes resist Cr(VI)",
-    "The solvent quenches it",
-    "No water is present"
+    "Acetophenone, because a methyl group is smaller than CF3",
+    "They are hydrated equally, since both are aryl ketones",
+    "The trifluoro compound, because three fluorines pull density from the carbonyl",
+    "Neither hydrates at all, because conjugation with the ring forbids it"
    ],
-   "correct": 3,
-   "difficulty": "medium",
+   "correct": 2,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -38901,15 +38911,15 @@
    "type": "mcq"
   },
   {
-   "q": "Cyanohydrin formation is run near what pH?",
+   "q": "Starting from butan-2-one, which sequence gives 2-hydroxy-2-methylbutanoic acid?",
    "options": [
-    "2-3",
-    "5-6",
-    "13-14",
-    "8-10"
+    "HCN with catalytic cyanide, then aqueous acid and heat",
+    "HCN with catalytic cyanide, then LiAlH4 and workup",
+    "Aqueous bisulfite, then aqueous acid and heat",
+    "Water and acid, then LiAlH4 and workup"
    ],
-   "correct": 3,
-   "difficulty": "medium",
+   "correct": 0,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -39071,12 +39081,12 @@
    "type": "mcq"
   },
   {
-   "q": "Why do ordinary oxidants leave ketones untouched?",
+   "q": "Which reagent would you actually put over the arrow to convert butanal into butanoic acid?",
    "options": [
-    "Ketones are too volatile",
-    "Ketones are already acids",
-    "The C=O bond is too weak",
-    "No C-H on that carbon"
+    "PCC in dichloromethane",
+    "Tollens’ reagent",
+    "NaBH4 in methanol",
+    "Jones reagent, CrO3 in aqueous acid"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -39107,15 +39117,15 @@
    "type": "mcq"
   },
   {
-   "q": "The gem-diol can be oxidized because it is:",
+   "q": "A molecule contains an aldehyde and, elsewhere, an alkene and a secondary alcohol. Which reagent oxidizes the aldehyde and leaves the other two alone?",
    "options": [
-    "An alcohol",
-    "An ether",
-    "An ester",
-    "An acetal"
+    "Hot concentrated KMnO4",
+    "Ag2O in aqueous base",
+    "Jones reagent",
+    "PCC in dichloromethane"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 1,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -39215,14 +39225,14 @@
    "type": "mcq"
   },
   {
-   "q": "Why is Tollens' not used to prepare carboxylic acids?",
+   "q": "Tollens’ reagent oxidizes aldehydes cleanly. Why is it still the wrong choice for preparing a carboxylic acid?",
    "options": [
-    "It reduces the product",
-    "It needs high pressure",
-    "It attacks alkenes too",
-    "Silver is expensive"
+    "It is too mild to oxidize an aldehyde on a preparative scale",
+    "It would also oxidize any alkene in the molecule",
+    "The properties that make it a good test make it a poor preparation",
+    "It gives the carboxylate rather than an isolable product"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -39263,15 +39273,15 @@
    "type": "mcq"
   },
   {
-   "q": "Before reaction, a Benedict's solution is what color?",
+   "q": "An unknown gives a silver mirror with Tollens’ reagent and no precipitate with Fehling’s solution. What is the best conclusion?",
    "options": [
-    "Brick red",
-    "Colorless",
-    "Bright green",
-    "Deep blue"
+    "It is a ketone, since the two tests disagree",
+    "It is an aromatic aldehyde, which Fehling’s handles badly",
+    "It contains no aldehyde, since Fehling’s was negative",
+    "It is a non-reducing sugar such as sucrose"
    ],
-   "correct": 3,
-   "difficulty": "medium",
+   "correct": 1,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -39371,24 +39381,24 @@
    "type": "mcq"
   },
   {
-   "q": "An old bottle of benzaldehyde grows crystals of:",
+   "q": "Air oxidizes an aldehyde by a radical chain. Which hydrogen does the chain abstract, and why that one?",
    "options": [
-    "Acetophenone",
-    "Benzene",
-    "Benzoic acid",
-    "Benzyl alcohol"
+    "A hydrogen on the alpha carbon, which is the most acidic",
+    "A hydrogen on the alkyl chain, which is the most plentiful",
+    "The hydrogen on the carbonyl carbon, giving a stabilized acyl radical",
+    "The hydrogen of the hydrate’s O-H group"
    ],
    "correct": 2,
-   "difficulty": "medium",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "How should aldehydes be stored?",
+   "q": "Convert butan-1-ol into butanoic acid, stopping at butanal on the way to check it. Which two reagents, in order?",
    "options": [
-    "With an oxidant added",
-    "Under inert gas",
-    "Open to air",
-    "In aqueous acid"
+    "Jones reagent, then PCC in dichloromethane",
+    "PCC in dichloromethane, then Jones reagent",
+    "NaBH4, then Tollens’ reagent",
+    "Tollens’ reagent, then Jones reagent"
    ],
    "correct": 1,
    "difficulty": "hard",

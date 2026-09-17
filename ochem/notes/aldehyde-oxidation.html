@@ -65,6 +65,18 @@
 
 <div class="notes-fact">This is the mechanism behind a reagent rule the next chapter will state without explaining. <b>Jones reagent</b>, Cr(VI) in aqueous acid, carries a primary alcohol past the aldehyde to the carboxylic acid because the water in the flask keeps regenerating the hydrate. <b>PCC</b> in anhydrous dichloromethane stops at the aldehyde because there is no water, therefore no hydrate, therefore nothing with an O&ndash;H left to attack.</div>
 
+<h3>The reagents you would actually use</h3>
+
+<p class="step-body">The tests below are diagnostics, not preparations, so it is worth saying plainly what goes over the arrow when the question is &ldquo;butanal &rarr; butanoic acid&rdquo;. Three answers are standard.</p>
+
+<ul class="step-body">
+<li><b>KMnO<sub>4</sub></b>, usually warm and basic with an acidic workup. Cheap and thorough &mdash; and indiscriminate, so it will also cleave an alkene or oxidize a benzylic position elsewhere in the molecule.</li>
+<li><b>Jones reagent</b> (CrO<sub>3</sub> in aqueous sulfuric acid, or Na<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>/H<sub>2</sub>SO<sub>4</sub>). The workhorse, and the same reagent <a class="chapter-ref" href="/ochem/learn.html#m-redox">Oxidation &amp; Reduction</a> uses to take a primary alcohol the whole way &mdash; because, as the section above argues, it is the hydrate it attacks either time.</li>
+<li><b>Ag<sub>2</sub>O</b> in aqueous base, the preparative relative of Tollens'. Expensive, but mild enough to leave alkenes, alcohols and acid-sensitive groups alone, which is why it is the one chosen when the rest of the molecule is delicate.</li>
+</ul>
+
+<p class="step-body">The choice between them is not about whether the aldehyde will oxidize &mdash; it will, under all three &mdash; but about what else in the molecule you are willing to lose.</p>
+
 <h3>Tollens' reagent and the silver mirror</h3>
 <!-- fig:oxidant-sees-the-hydrate:start -->
 <figure class="notes-figure notes-figure--wide" style="--vb:760"><svg viewBox="0 0 760 300" role="img" aria-label="Three boxes in a row: an aldehyde, then its hydrate, then the carboxylic acid, with the wet and dry conditions listed beneath"><rect class="fg-panel" x="24" y="58" width="190" height="74" rx="10"></rect><text class="fg-lbl" x="119" y="88" text-anchor="middle" font-size="13">R–CHO</text><text class="fg-sm" x="119" y="110" text-anchor="middle" font-size="10.5">no O–H to grip</text><rect class="fg-panel-warn" x="286" y="58" width="190" height="74" rx="10"></rect><text class="fg-lbl" x="381" y="88" text-anchor="middle" font-size="13">R–CH(OH)₂</text><text class="fg-sm" x="381" y="110" text-anchor="middle" font-size="10.5">an alcohol, in effect</text><rect class="fg-panel" x="548" y="58" width="188" height="74" rx="10"></rect><text class="fg-lbl" x="642" y="88" text-anchor="middle" font-size="13">R–COOH</text><text class="fg-sm" x="642" y="110" text-anchor="middle" font-size="10.5">oxidized a second time</text><line class="fg-arrow" x1="214" y1="95" x2="278" y2="95"></line><path class="fg-head" d="M286 95 L278 99.16 L278 90.84 Z"></path><text class="fg-tag" x="250" y="78" text-anchor="middle" font-size="11">+ H₂O</text><line class="fg-arrow" x1="476" y1="95" x2="540" y2="95"></line><path class="fg-head" d="M548 95 L540 99.16 L540 90.84 Z"></path><text class="fg-tag" x="512" y="78" text-anchor="middle" font-size="11">[O]</text><line class="fg-rule" x1="24" y1="168" x2="700" y2="168"></line><text class="fg-lbl" x="24" y="196" text-anchor="start" font-size="12">Jones, Cr(VI) in aqueous acid</text><text class="fg-tag-good" x="24" y="216" text-anchor="start" font-size="11">water present → the hydrate keeps re-forming → runs to the acid</text><text class="fg-lbl" x="24" y="244" text-anchor="start" font-size="12">PCC in anhydrous CH₂Cl₂</text><text class="fg-tag" x="24" y="264" text-anchor="start" font-size="11">no water → no hydrate → nothing left to attack, so it stops</text><text class="fg-lbl" x="24" y="292" text-anchor="start" font-size="12">A ketone stops at the first box: its carbonyl carbon has no hydrogen to remove.</text></svg><figcaption>The step everyone skips. An oxidant needs an O–H and a C–H on the same carbon, and a C=O offers neither — so what is actually attacked is the hydrate. That single box is the whole difference between a reagent that stops at the aldehyde and one that does not.<span class="notes-figure-note">The same argument explains a sugar. A cyclic hemiacetal holds only a trace of the open-chain aldehyde, and yet glucose gives a full silver mirror, because the equilibrium delivers that trace continuously and the oxidant consumes it as fast as it appears. A species can be present in traces and still control the product, provided it is the only form that can react.</span></figcaption></figure>
@@ -96,9 +108,26 @@
 
 <p class="step-body">Sucrose is negative, because its glycosidic bond ties up <b>both</b> anomeric carbons; neither ring can open. Lactose and maltose each leave one anomeric carbon free, so both are positive. The carbohydrate section develops that bookkeeping properly; here it is the hydrate argument again, with a hemiacetal in place of the gem-diol.</p>
 
+<div class="notes-example">
+<span class="k">Worked example &mdash; reading a pair of test results</span>
+<p>An unknown gives a <b>silver mirror with Tollens'</b> and <b>no brick-red precipitate with Fehling's</b>. What can you conclude, and what would you do next?</p>
+<p><b>Step 1 &mdash; what a positive Tollens' rules in.</b> Tollens' oxidizes a carbon that carries both an oxygen and a hydrogen. An aldehyde qualifies; so does anything in equilibrium with one, which means a hemiacetal &mdash; a sugar with a free anomeric carbon. A ketone does not.</p>
+<p><b>Step 2 &mdash; what a negative Fehling's would normally mean.</b> On its own, no aldehyde. That contradicts step 1, so one of the two tests must have a blind spot &mdash; and Fehling's has exactly one: it is unreliable with <b>aromatic</b> aldehydes.</p>
+<p><b>Step 3 &mdash; reconcile.</b> The pair is not a contradiction but a diagnosis. An aromatic aldehyde is positive to Tollens' and negative to Fehling's, and benzaldehyde is the type case.</p>
+<p><b>Step 4 &mdash; the confirmation.</b> Do not settle it with another copper reagent; take the compound up to the acid with Ag<sub>2</sub>O and identify the product &mdash; benzoic acid, if the reading is right &mdash; by its melting point. The trap the question is setting is treating a negative result from a reagent with a known blind spot as evidence of absence.</p>
+</div>
+
 <h3>The consequence on the shelf</h3>
 
 <p class="step-body">Aldehydes oxidize in air on standing, by a radical chain that needs no reagent at all. An old bottle of benzaldehyde grows crystals of <b>benzoic acid</b> around the cap, and that contamination is a routine cause of unexplained failures. Aldehydes are therefore stored under inert gas, and are often made immediately before use.</p>
+
+<p class="step-body">The chain is worth writing out, because it explains <i>why the aldehyde</i> and nothing else in the bottle. The bond that breaks is the <b>aldehyde C–H</b>, and it is the weakest C–H in the molecule at about 88 kcal/mol, because the radical left behind is an <b>acyl radical</b> whose unpaired electron sits next to the carbonyl and is delocalized onto it. Three steps, in the pattern of the chains from <a class="chapter-ref" href="/ochem/learn.html#m-alkanes-conformations">Alkanes &amp; Conformations</a>:</p>
+<ul class="step-body">
+<li><b>Initiation / abstraction.</b> Something &mdash; light, a trace metal, an existing radical &mdash; takes that aldehyde hydrogen, leaving RC&bull;=O.</li>
+<li><b>Oxygen addition.</b> O<sub>2</sub> is itself a diradical and adds straight to the acyl radical, giving an acylperoxy radical RC(=O)OO&bull;.</li>
+<li><b>Propagation.</b> That peroxy radical takes the aldehyde hydrogen from a <i>second</i> molecule, giving a <b>peroxyacid</b> RCO<sub>3</sub>H and a fresh acyl radical &mdash; so the chain carries on. The peroxyacid then oxidizes another aldehyde to the acid, and two molecules of carboxylic acid come out of it.</li>
+</ul>
+<p class="step-body">Which is the same &ldquo;one hydrogen&rdquo; theme as the rest of the section, one level deeper: a ketone has no such C–H to abstract, so it sits in its bottle indefinitely.</p>
 
 <div class="notes-fact">A ketone <i>can</i> be oxidized, but only by breaking a C&ndash;C bond, and both routes this course covers do exactly that. The <b>Baeyer&ndash;Villiger</b> inserts an oxygen into one of those bonds to give an ester. Hot, concentrated <b>KMnO<sub>4</sub></b> cleaves straight through. Neither is something that happens by accident in a bottle.</div>
 
