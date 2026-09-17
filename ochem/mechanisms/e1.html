@@ -189,8 +189,16 @@
 document.addEventListener('DOMContentLoaded', function(){
 (function(){
   var TOPIC_ID = 'e1';
-  // 0 explain, 1 ionize, 2 visualize cation, 3 remove beta-H, 4 predict (Zaitsev), 5 rate/competition, 6 challenge
-  var TOTAL = 6;
+  // 0 explain, 1 ionize, 2 visualize the cation and its beta hydrogens,
+  // 3 push both arrows of the deprotonation, 4 Zaitsev with both alkenes
+  // drawn, 5 rate law and SN1 competition, 6 rearrangement, 7 challenge.
+  //
+  // Step 3 used to say "click a beta carbon to have a base remove one of its
+  // hydrogens" with no base drawn, no hydrogens drawn and no arrows, and
+  // scored every click correct. The step that distinguishes E1 from SN1 is
+  // the one step the page did not make the student do, so it now draws the
+  // ethanol, draws the reacting hydrogens, and asks for both arrows in order.
+  var TOTAL = 7;
   var begin = window.OchemCurriculum.beginLessonRun(TOPIC_ID, TOTAL+1);
   var step = begin.step;
   var card = document.getElementById('card');
@@ -210,7 +218,8 @@ document.addEventListener('DOMContentLoaded', function(){
     3: ['curved-arrow-direction', 'zaitsev-hofmann'],         // remove a beta hydrogen
     4: ['zaitsev-hofmann'],                                   // which alkene dominates
     5: ['rate-law-kinetics', 'mechanism-selection'],          // E1 vs SN1 competition
-    6: ['mechanism-selection', 'zaitsev-hofmann']             // challenge
+    6: ['carbocation-stability', 'zaitsev-hofmann'],          // rearrangement before elimination
+    7: ['mechanism-selection', 'zaitsev-hofmann']             // challenge
   };
   var M = window.OchemMastery;
   var conceptRec = M ? M.lessonRecorder(TOPIC_ID) : null;
@@ -250,7 +259,72 @@ document.addEventListener('DOMContentLoaded', function(){
     else if(step===3) renderRemoveBetaH();
     else if(step===4) renderZaitsev();
     else if(step===5) renderRateCompetition();
+    else if(step===6) renderRearrangement();
     else renderChallenge();
+  }
+
+  // ---- drawing helpers, shared by the scenes below ----------------------
+  function lineTo(ax, ay, ar, bx, by, br, stroke, sw){
+    var dx = bx-ax, dy = by-ay, L = Math.hypot(dx,dy)||1, ux = dx/L, uy = dy/L;
+    return '<line x1="' + (ax+ux*ar).toFixed(1) + '" y1="' + (ay+uy*ar).toFixed(1) +
+           '" x2="' + (bx-ux*br).toFixed(1) + '" y2="' + (by-uy*br).toFixed(1) +
+           '" stroke="' + (stroke||'var(--line)') + '" stroke-width="' + (sw||2.5) + '"/>';
+  }
+  function doubleTo(ax, ay, ar, bx, by, br){
+    var dx = bx-ax, dy = by-ay, L = Math.hypot(dx,dy)||1, ux = dx/L, uy = dy/L;
+    var px = -uy*3.2, py = ux*3.2, o = '';
+    for(var k=-1;k<2;k+=2){
+      o += '<line x1="' + (ax+ux*ar+px*k).toFixed(1) + '" y1="' + (ay+uy*ar+py*k).toFixed(1) +
+           '" x2="' + (bx-ux*br+px*k).toFixed(1) + '" y2="' + (by-uy*br+py*k).toFixed(1) +
+           '" stroke="var(--line)" stroke-width="2.5"/>';
+    }
+    return o;
+  }
+  function node(x, y, r, label, opts){
+    opts = opts || {};
+    var size = opts.size || (String(label).length > 3 ? 10 : String(label).length > 2 ? 11 : String(label).length > 1 ? 12 : 14);
+    return '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" fill="' + (opts.fill||'var(--white)') +
+      '" stroke="' + (opts.stroke||'var(--line)') + '" stroke-width="' + (opts.sw||2) + '"/>' +
+      '<text x="' + x + '" y="' + (y+5) + '" text-anchor="middle" font-family="IBM Plex Mono" ' +
+        'font-weight="700" font-size="' + size + '">' + label + '</text>';
+  }
+  function hit(key, x, y, r, inner){
+    return '<g class="atom" data-key="' + key + '">' + inner +
+      '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" fill="transparent" stroke="none"/></g>';
+  }
+  function dots(x, y, deg){
+    var rad = deg*Math.PI/180, o = '';
+    [-1,1].forEach(function(side){
+      var t = rad + side*8*Math.PI/180;
+      o += '<circle cx="' + (x+21*Math.cos(t)).toFixed(1) + '" cy="' + (y+21*Math.sin(t)).toFixed(1) +
+           '" r="2.2" fill="var(--ink)"/>';
+    });
+    return o;
+  }
+  // The carbocation (CH3)2C(+)-CH2CH3, drawn with the two hydrogens that can
+  // actually be removed. The left group reads CH2 plus one drawn H, which is
+  // a methyl; the right one reads CH plus one drawn H plus a methyl, which is
+  // the ethyl's CH2. Nothing here is drawn with the wrong valence.
+  var CAT = {
+    a:  { x: 150, y: 132 },
+    bL: { x: 74,  y: 132 }, hL: { x: 74,  y: 90 },
+    bR: { x: 224, y: 132 }, hR: { x: 224, y: 90 },
+    me: { x: 150, y: 192 }, et: { x: 278, y: 162 }
+  };
+  function cationScene(){
+    return lineTo(CAT.a.x,CAT.a.y,17, CAT.bL.x,CAT.bL.y,17) +
+      lineTo(CAT.a.x,CAT.a.y,17, CAT.bR.x,CAT.bR.y,15) +
+      lineTo(CAT.a.x,CAT.a.y,17, CAT.me.x,CAT.me.y,16) +
+      lineTo(CAT.bL.x,CAT.bL.y,17, CAT.hL.x,CAT.hL.y,11) +
+      lineTo(CAT.bR.x,CAT.bR.y,15, CAT.hR.x,CAT.hR.y,11) +
+      lineTo(CAT.bR.x,CAT.bR.y,15, CAT.et.x,CAT.et.y,16) +
+      node(CAT.bL.x,CAT.bL.y,17,'CH₂') + node(CAT.hL.x,CAT.hL.y,11,'H') +
+      node(CAT.bR.x,CAT.bR.y,15,'CH') + node(CAT.hR.x,CAT.hR.y,11,'H') +
+      node(CAT.et.x,CAT.et.y,16,'CH₃') + node(CAT.me.x,CAT.me.y,16,'CH₃') +
+      node(CAT.a.x,CAT.a.y,17,'C',{stroke:'var(--coral)',sw:2.5}) +
+      '<text x="172" y="120" font-family="Nunito" font-weight="900" font-size="15" fill="var(--coral)">+</text>' +
+      '<text x="74" y="172" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="10" fill="var(--muted)">β (methyl)</text>' +
+      '<text x="238" y="112" font-family="Nunito" font-weight="800" font-size="10" fill="var(--muted)">β (ethyl CH₂)</text>';
   }
 
   // ---- Step 0: Explain ----
@@ -325,69 +399,111 @@ document.addEventListener('DOMContentLoaded', function(){
     card.innerHTML =
       '<div class="step-eyebrow">Visualize</div>' +
       '<h2 class="step-title">A tertiary carbocation, with beta-hydrogens on two different sides.</h2>' +
-      '<p class="step-body">The cationic carbon is sp² and trigonal planar, just like in SN1. But now look one bond further out: the carbons directly attached to it — the <b>beta carbons</b> — each carry hydrogens of their own. This cation has beta-hydrogens on <b>two different kinds</b> of neighboring carbon: a methyl group, and a CH₂ of the ethyl group.</p>' +
-      '<div class="scene"><svg viewBox="0 0 260 160">' +
-        '<line x1="130" y1="90" x2="130" y2="30" stroke="var(--line)" stroke-width="2.5"/>' +
-        '<line x1="130" y1="90" x2="75" y2="122" stroke="var(--line)" stroke-width="2.5"/>' +
-        '<line x1="130" y1="90" x2="195" y2="112" stroke="var(--line)" stroke-width="2.5"/>' +
-        '<circle cx="130" cy="90" r="17" fill="var(--white)" stroke="var(--coral)" stroke-width="2.5"/><text x="130" y="96" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="15">C</text>' +
-        '<text x="150" y="80" font-family="Nunito" font-weight="900" font-size="14" fill="var(--coral)">+</text>' +
-        '<circle cx="130" cy="20" r="16" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="130" y="25" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">CH₃(β)</text>' +
-        '<circle cx="60" cy="130" r="16" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="60" y="135" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">CH₃(β)</text>' +
-        '<circle cx="210" cy="120" r="20" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="210" y="118" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="10">CH₂(β)</text><text x="210" y="130" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">–CH₃</text>' +
-      '</svg></div>' +
+      '<p class="step-body">The cationic carbon is sp² and trigonal planar, just like in SN1. Now look one bond further out. The carbons attached to it are the <b>beta carbons</b>, and each carries hydrogens of its own. Two <i>kinds</i> are available here: a hydrogen on one of the methyls, and a hydrogen on the CH₂ of the ethyl group. (The second methyl is the mirror of the first — taking a hydrogen from either gives the same alkene.)</p>' +
+      '<div class="scene"><svg viewBox="0 0 320 210">' + cationScene() + '</svg></div>' +
+      '<p class="step-body" style="margin-bottom:0;">Those two hydrogens are the whole story of the next two steps: which one comes off decides which alkene you get.</p>' +
       nextButton('Continue', true);
     card.querySelector('#nextBtn').addEventListener('click', function(){ step=3; render(); });
   }
 
-  // ---- Step 3: Remove a beta-hydrogen ----
+  // ---- Step 3: push both arrows of the deprotonation ----
+  // Graded on the ARROWS, not on which hydrogen: either beta hydrogen is a
+  // real E1 pathway, so choosing the minor one is not an error here. Zaitsev
+  // is graded on its own in the next step, which is where the choice is
+  // actually a choice.
   function renderRemoveBetaH(){
+    var base = { x: 96, y: 34 };
     card.innerHTML =
-      '<div class="step-eyebrow">Interact</div>' +
-      '<h2 class="step-title">Click a beta carbon to have a base remove one of its hydrogens.</h2>' +
-      '<p class="step-body">When a base removes a beta-hydrogen, its bonding electrons swing in to form a new pi bond between the alpha and beta carbons — that\'s the alkene double bond forming. Try clicking the CH₂ (ethyl) side.</p>' +
-      '<div class="scene"><svg viewBox="0 0 260 160">' +
-        '<line x1="130" y1="90" x2="130" y2="30" stroke="var(--line)" stroke-width="2.5"/>' +
-        '<line x1="130" y1="90" x2="75" y2="122" stroke="var(--line)" stroke-width="2.5"/>' +
-        '<line x1="130" y1="90" x2="195" y2="112" stroke="var(--line)" stroke-width="2.5"/>' +
-        '<circle cx="130" cy="90" r="17" fill="var(--white)" stroke="var(--coral)" stroke-width="2.5"/><text x="130" y="96" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="15">C</text>' +
-        '<text x="150" y="80" font-family="Nunito" font-weight="900" font-size="14" fill="var(--coral)">+</text>' +
-        '<g class="atom" data-key="methyl1"><circle cx="130" cy="20" r="16" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="130" y="25" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">CH₃(β)</text></g>' +
-        '<g class="atom" data-key="methyl2"><circle cx="60" cy="130" r="16" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="60" y="135" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">CH₃(β)</text></g>' +
-        '<g class="atom" data-key="ethylCH2"><circle cx="210" cy="120" r="20" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="210" y="118" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="10">CH₂(β)</text><text x="210" y="130" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">–CH₃</text></g>' +
+      '<div class="step-eyebrow">Interact · Draw both arrows</div>' +
+      '<h2 class="step-title">Two arrows, and neither one is optional.</h2>' +
+      '<p class="step-body">The base is the solvent, ethanol — weak, but strong enough for a hydrogen sitting next to a full positive charge. <b>Click the ethanol oxygen first</b> (that is where arrow 1 starts, on a lone pair), <b>then click the beta hydrogen you want it to take.</b> The second arrow then follows automatically: the electrons from that C–H bond swing into the gap between the two carbons and become the pi bond.</p>' +
+      '<div class="scene"><svg viewBox="0 0 320 210">' +
+        cationScene() +
+        lineTo(base.x,base.y,15, base.x-38,base.y-10,11) +
+        lineTo(base.x,base.y,15, base.x+50,base.y-8,18) +
+        node(base.x-38,base.y-10,11,'H') + node(base.x+50,base.y-8,18,'C₂H₅') +
+        dots(base.x, base.y, 75) +
+        hit('base', base.x, base.y, 17, node(base.x,base.y,15,'O')) +
+        hit('hL', CAT.hL.x, CAT.hL.y, 14, '') +
+        hit('hR', CAT.hR.x, CAT.hR.y, 14, '') +
       '</svg></div>' +
       feedbackHtml('fb') +
       nextButton('Continue', false);
 
     var fb = card.querySelector('#fb');
     var next = card.querySelector('#nextBtn');
-    var chosen = false;
+    var from = null, done = false;
     card.querySelectorAll('.atom').forEach(function(g){
       g.addEventListener('click', function(){
-        if(chosen) return;
-        chosen = true;
-        g.classList.add('chosen');
+        if(done) return;
         var key = g.getAttribute('data-key');
-        record(true);
-        if(key === 'ethylCH2'){
-          showFeedback(fb, true, 'Removing a hydrogen from the CH₂ gives 2-methyl-2-butene — a trisubstituted alkene (three carbon groups on the double bond).');
-        } else {
-          showFeedback(fb, true, 'Removing a hydrogen from this CH₃ gives 2-methyl-1-butene — a disubstituted alkene (only two carbon groups on the double bond).');
+        if(from === null){
+          if(key !== 'base'){
+            record(false);
+            showFeedback(fb, false, 'An arrow starts where the electrons are. The hydrogen has none to give — it is about to leave as H⁺, without its bonding pair. Start on the ethanol oxygen\'s lone pair instead.');
+            return;
+          }
+          from = key;
+          showFeedback(fb, true, 'Good — arrow 1 starts on a lone pair of that oxygen. Now click the beta hydrogen it takes.');
+          return;
         }
+        if(key !== 'hL' && key !== 'hR'){ return; }
+        done = true;
+        record(true);
+        var h = key === 'hL' ? CAT.hL : CAT.hR;
+        var bc = key === 'hL' ? CAT.bL : CAT.bR;
+        var m1 = { x: (h.x+bc.x)/2, y: (h.y+bc.y)/2 };
+        var m2 = { x: (CAT.a.x+bc.x)/2, y: (CAT.a.y+bc.y)/2 };
+        var side = key === 'hL' ? -1 : 1;
+        var svg = '<defs><marker id="ahE1a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">' +
+            '<path d="M0,0 L6,3 L0,6 Z" fill="var(--accent)"/></marker>' +
+            '<marker id="ahE1b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">' +
+            '<path d="M0,0 L6,3 L0,6 Z" fill="var(--coral)"/></marker></defs>' +
+          '<path d="M ' + (base.x+6) + ' ' + (base.y+17) + ' Q ' + ((base.x+h.x)/2 + side*34) + ' ' +
+            ((base.y+h.y)/2) + ' ' + h.x + ' ' + (h.y-13) +
+            '" stroke="var(--accent)" stroke-width="2.5" fill="none" marker-end="url(#ahE1a)"/>' +
+          '<path d="M ' + m1.x.toFixed(0) + ' ' + m1.y.toFixed(0) + ' Q ' + (m1.x + side*44).toFixed(0) + ' ' +
+            ((m1.y+m2.y)/2).toFixed(0) + ' ' + m2.x.toFixed(0) + ' ' + m2.y.toFixed(0) +
+            '" stroke="var(--coral)" stroke-width="2.5" fill="none" marker-end="url(#ahE1b)"/>';
+        card.querySelector('.scene svg').insertAdjacentHTML('beforeend', svg);
+        showFeedback(fb, true, key === 'hR'
+          ? 'Both arrows drawn. Ethanol leaves as EtOH₂⁺, and the C–H pair becomes the pi bond between the alpha carbon and the ethyl CH₂ — that alkene is 2-methylbut-2-ene, with three carbon groups on the double bond.'
+          : 'Both arrows drawn. Ethanol leaves as EtOH₂⁺, and the C–H pair becomes the pi bond between the alpha carbon and that methyl — that alkene is 2-methylbut-1-ene, with two carbon groups on the double bond.');
         next.disabled = false;
       });
     });
     next.addEventListener('click', function(){ step=4; render(); });
   }
 
-  // ---- Step 4: Zaitsev's rule ----
+  // ---- Step 4: Zaitsev's rule, with both products drawn ----
   function renderZaitsev(){
+    // 2-methylbut-2-ene on the left, 2-methylbut-1-ene on the right.
+    var A = { l:{x:70,y:96}, r:{x:142,y:96} };
+    var B = { l:{x:268,y:96}, r:{x:340,y:96} };
+    var prodA = doubleTo(A.l.x,A.l.y,17, A.r.x,A.r.y,17) +
+      lineTo(A.l.x,A.l.y,17, A.l.x-16,A.l.y-48,16) + lineTo(A.l.x,A.l.y,17, A.l.x-16,A.l.y+48,16) +
+      lineTo(A.r.x,A.r.y,17, A.r.x+16,A.r.y-48,11) + lineTo(A.r.x,A.r.y,17, A.r.x+16,A.r.y+48,16) +
+      node(A.l.x-16,A.l.y-48,16,'CH₃') + node(A.l.x-16,A.l.y+48,16,'CH₃') +
+      node(A.r.x+16,A.r.y-48,11,'H') + node(A.r.x+16,A.r.y+48,16,'CH₃') +
+      node(A.l.x,A.l.y,17,'C') + node(A.r.x,A.r.y,17,'C') +
+      '<text x="106" y="24" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="11">2-methylbut-2-ene</text>' +
+      '<text x="106" y="186" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="10.5" fill="var(--muted)">3 carbon groups on the C=C</text>';
+    var prodB = doubleTo(B.l.x,B.l.y,17, B.r.x,B.r.y,17) +
+      lineTo(B.l.x,B.l.y,17, B.l.x-16,B.l.y-48,11) + lineTo(B.l.x,B.l.y,17, B.l.x-16,B.l.y+48,11) +
+      lineTo(B.r.x,B.r.y,17, B.r.x+16,B.r.y-48,16) + lineTo(B.r.x,B.r.y,17, B.r.x+16,B.r.y+48,20) +
+      node(B.l.x-16,B.l.y-48,11,'H') + node(B.l.x-16,B.l.y+48,11,'H') +
+      node(B.r.x+16,B.r.y-48,16,'CH₃') + node(B.r.x+16,B.r.y+48,20,'CH₂CH₃') +
+      node(B.l.x,B.l.y,17,'C') + node(B.r.x,B.r.y,17,'C') +
+      '<text x="304" y="24" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="11">2-methylbut-1-ene</text>' +
+      '<text x="304" y="186" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="10.5" fill="var(--muted)">2 carbon groups on the C=C</text>';
     card.innerHTML =
       '<div class="step-eyebrow">Predict</div>' +
       '<h2 class="step-title">Two different alkenes are possible. Which one dominates?</h2>' +
-      '<p class="step-body">Removing a hydrogen from the ethyl CH₂ gives 2-methyl-2-butene (trisubstituted). Removing one from either methyl group gives 2-methyl-1-butene (disubstituted).</p>' +
+      '<p class="step-body">Here they are, drawn. Count the carbon groups attached to the two carbons of each double bond — that count, and nothing else, is what "more substituted" means.</p>' +
+      '<div class="scene"><svg viewBox="0 0 420 196">' + prodA +
+        '<line x1="205" y1="30" x2="205" y2="166" stroke="var(--line-soft)" stroke-width="2"/>' + prodB + '</svg></div>' +
       '<div class="choice-row">' +
-        window.OchemShuffle.list(['The more substituted alkene (2-methyl-2-butene) — it\'s the major product', 'The less substituted alkene (2-methyl-1-butene) — it\'s the major product', 'Both form in exactly equal amounts, always'], 'e1:zaitsev').map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
+        window.OchemShuffle.list(['2-Methylbut-2-ene is the major product', '2-Methylbut-1-ene is the major product', 'The two form in equal amounts', 'Neither forms without a strong base'], 'e1:zaitsev').map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
       '</div>' +
       feedbackHtml('fb') +
       nextButton('Continue', false);
@@ -396,15 +512,15 @@ document.addEventListener('DOMContentLoaded', function(){
     var next = card.querySelector('#nextBtn');
     card.querySelectorAll('.choice-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        var isCorrect = btn.getAttribute('data-v').indexOf('The more substituted') === 0;
+        var isCorrect = btn.getAttribute('data-v').indexOf('2-Methylbut-2-ene') === 0;
         card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
         btn.classList.add(isCorrect ? 'correct' : 'wrong');
         record(isCorrect);
         if(isCorrect){
-          showFeedback(fb, true, 'Correct — this is <b>Zaitsev\'s rule</b>: the more substituted (more stable) alkene is the major product. More substituted double bonds are lower in energy for the same hyperconjugation reason more substituted carbocations are more stable.');
+          showFeedback(fb, true, 'Correct — this is Zaitsev\'s rule: the more substituted, more stable alkene is the major product. Three alkyl groups around the double bond beat two, for the same hyperconjugation reason that makes a tertiary carbocation beat a secondary one. And note what is NOT deciding it: there are six hydrogens on the two methyls against only two on the CH₂, so if this were a numbers game the minor product would win.');
           next.disabled = false;
         } else {
-          showFeedback(fb, false, 'Compare the stability of the two possible alkenes — more alkyl substitution on a double bond makes it more stable, the same logic as carbocation stability.');
+          showFeedback(fb, false, 'Count the carbon groups on each double bond in the drawing above, then ask which alkene is more stable — the same logic as carbocation stability, one bond further out.');
           card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
         }
       });
@@ -423,7 +539,42 @@ document.addEventListener('DOMContentLoaded', function(){
     card.querySelector('#nextBtn').addEventListener('click', function(){ step=6; render(); });
   }
 
-  // ---- Step 6: Why it matters + Challenge ----
+  // ---- Step 6: rearrangement before elimination ----
+  // The notes call this "the classic explanation for the wrong alkene", and
+  // the page had nothing on it at all.
+  function renderRearrangement(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Explain &middot; Predict</div>' +
+      '<h2 class="step-title">Check the cation for a shift before you apply Zaitsev.</h2>' +
+      '<div class="explain-box">E1 goes through a real carbocation, and a carbocation that can reach a more stable one in a single move usually does — before any base gets near a hydrogen. A <b>hydride shift</b> moves an H with its bonding pair from the carbon next door; a <b>methyl shift</b> moves a whole CH₃ the same way. Either leaves the positive charge where the migrating group came from. Eliminate from the <i>rearranged</i> cation, not the original one.</div>' +
+      '<p class="step-body">Warm <b>3-bromo-2,2-dimethylbutane</b>, (CH₃)₃C–CHBr–CH₃, in aqueous ethanol. Bromide leaves to give a secondary cation. Its neighbor is quaternary — three methyls and no hydrogen — so no hydride can move, but a methyl can. What is the major alkene?</p>' +
+      '<div class="choice-row">' +
+        window.OchemShuffle.list(['2,3-Dimethylbut-2-ene', '3,3-Dimethylbut-1-ene', '2,3-Dimethylbut-1-ene', '3,3-Dimethylbut-2-ene'], 'e1:shift').map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
+      '</div>' +
+      feedbackHtml('fb') +
+      nextButton('Continue', false);
+
+    var fb = card.querySelector('#fb');
+    var next = card.querySelector('#nextBtn');
+    card.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var isCorrect = btn.getAttribute('data-v') === '2,3-Dimethylbut-2-ene';
+        card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+        btn.classList.add(isCorrect ? 'correct' : 'wrong');
+        record(isCorrect);
+        if(isCorrect){
+          showFeedback(fb, true, 'Correct. The methyl migrates with its bonding pair, turning the secondary cation into the tertiary (CH₃)₂C⁺–CH(CH₃)₂. Eliminating a hydrogen from that lone C–H next door gives 2,3-dimethylbut-2-ene — tetrasubstituted, and with its double bond in a position you cannot reach from the original skeleton at all. That is why "check for a shift" comes before "apply Zaitsev".');
+          next.disabled = false;
+        } else {
+          showFeedback(fb, false, 'Move a methyl from the quaternary carbon onto the positive one and redraw. Where is the charge now, how many alkyl groups does that carbon carry, and which beta hydrogen gives the most substituted alkene from the NEW skeleton?');
+          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
+        }
+      });
+    });
+    next.addEventListener('click', function(){ step=7; render(); });
+  }
+
+  // ---- Step 7: Why it matters + Challenge ----
   function renderChallenge(){
     card.innerHTML =
       '<div class="step-eyebrow">Why it matters &middot; Challenge</div>' +

@@ -126,7 +126,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 10</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -175,20 +175,28 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Substrate class rules mechanisms in or out before anything else matters.',
-        bodyHtml: '<p class="step-body"><b>Methyl and primary</b> substrates can only do SN2 (or, rarely, E2 with a very bulky base): there\'s too little steric bulk for backside attack to matter, and a primary carbocation is too unstable to form, ruling out SN1/E1 almost completely.</p><p class="step-body"><b>Tertiary</b> substrates are the opposite: SN2 is blocked outright (too crowded for backside attack), so only SN1/E1 are possible — a tertiary carbocation forms readily.</p><p class="step-body" style="margin-bottom:0;"><b>Secondary</b> substrates are genuinely ambiguous by substrate class alone — sterically possible for SN2, but also able to form a moderate secondary carbocation. This is where the nucleophile/base and solvent actually decide the outcome.</p>'
+        bodyHtml: '<p class="step-body"><b>Methyl and primary</b> substrates can only do SN2 (or, rarely, E2 with a very bulky base): there\'s too little steric bulk for backside attack to matter, and a primary carbocation is too unstable to form, ruling out SN1/E1 almost completely.</p><p class="step-body"><b>Tertiary</b> substrates are the opposite: SN2 is blocked outright (too crowded for backside attack). What remains is SN1/E1 with a weak reagent, since a tertiary carbocation forms readily — or E2 with a strong base, which is in fact the <i>only</i> bimolecular pathway open to a tertiary substrate.</p><p class="step-body" style="margin-bottom:0;"><b>Secondary</b> substrates are genuinely ambiguous by substrate class alone — sterically possible for SN2, but also able to form a moderate secondary carbocation. This is where the nucleophile/base and solvent actually decide the outcome.</p>'
       },
       {
         render: function(api){
           var subs = [
-            { key: 'methyl', label: 'Methyl bromide, CH₃Br', correct: 'sn2' },
-            { key: 'tert', label: '(CH₃)₃C–Br', correct: 'sn1e1' },
-            { key: 'sec', label: 'Secondary alkyl bromide', correct: 'ambiguous' }
+            { key: 'methyl', label: 'Methyl bromide, CH₃Br' },
+            { key: 'tert', label: '(CH₃)₃C–Br' },
+            { key: 'sec', label: 'Secondary alkyl bromide, CH₃CHBrCH₂CH₃' }
           ];
+          var WRONG = {
+            methyl: 'Not methyl — it is the other end of the scale. There is nothing at all around that carbon, so its backside is wide open and SN2 runs faster there than anywhere else.',
+            sec: 'Not secondary — two groups crowd the backside and slow SN2 down, but they do not close it. A secondary substrate is the ambiguous case, not the impossible one.'
+          };
+          var order = (window.OchemShuffle && window.OchemShuffle.apply)
+            ? (function(){ var sh = window.OchemShuffle.apply(subs.map(function(x){ return x.key; }), 'substrate-effects:step3');
+                           return sh.options.map(function(k){ return subs.filter(function(x){ return x.key === k; })[0]; }); })()
+            : subs;
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Click the substrate for which SN2 is completely impossible.</h2>' +
             '<p class="step-body">Think about steric access to the backside of the carbon bearing the leaving group.</p>' +
-            '<div class="choice-row">' + subs.map(function(s){
+            '<div class="choice-row">' + order.map(function(s){
               return '<button class="choice-btn" data-v="' + s.key + '">' + s.label + '</button>';
             }).join('') + '</div>' +
             api.feedbackHtml('fb') +
@@ -204,7 +212,9 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
               btn.classList.add(isCorrect ? 'correct' : 'wrong');
               api.record(isCorrect);
-              api.showFeedback(fb, isCorrect, 'Right — the tertiary carbon has three alkyl groups blocking backside approach entirely, ruling out SN2. It can only react via SN1/E1 (ionization) or E2 (if a strong base is present).');
+              api.showFeedback(fb, isCorrect, isCorrect
+                ? 'Right — the tertiary carbon has three alkyl groups blocking backside approach entirely, ruling out SN2. What is left for it is SN1/E1 with a weak reagent, or E2 with a strong base.'
+                : (WRONG[btn.getAttribute('data-v')] || 'Not that one — look for the carbon whose backside is completely enclosed.'));
               next.disabled = false;
             });
           });
@@ -215,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'mcq',
         eyebrow: 'Step 4 · Guided Practice',
         title: 'A secondary substrate reacts with a strong, small nucleophile (like NaOEt) in a polar aprotic solvent (DMSO). What\'s favored?',
-        options: ['SN1/E1 — the substrate is secondary', 'SN2 (and/or E2) — the strong nucleophile/base forces a bimolecular pathway, reinforced by the aprotic solvent', 'No reaction is possible'],
+        options: ['SN1/E1, because the secondary substrate can ionize and the reagent then adds on', 'SN2 and/or E2, because the strong reagent forces a bimolecular step', 'No reaction, because a secondary substrate needs a catalyst', 'E1 only, because the aprotic solvent blocks substitution'],
         correctIndex: 1,
         correctFeedback: 'Correct. A strong nucleophile/base doesn\'t wait for a slow ionization step — it forces the bimolecular pathway whenever sterically accessible, and polar aprotic solvent keeps it highly reactive.',
         wrongFeedback: 'Substrate class alone doesn\'t decide it for secondary substrates — a strong nucleophile/base pushes the reaction toward the bimolecular (SN2/E2) pathway instead of waiting for ionization.'
@@ -224,10 +234,19 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'mcq',
         eyebrow: 'Step 5 · Independent Practice',
         title: 'The same secondary substrate instead reacts with a weak nucleophile (H₂O) in a polar protic solvent (water). What\'s favored?',
-        options: ['SN2 — water is still a nucleophile', 'E2 exclusively', 'SN1/E1 — the weak nucleophile can\'t force a bimolecular reaction, and the protic solvent stabilizes the ionization pathway'],
+        options: ['SN2, because water is still a nucleophile and the carbon is reachable', 'E2 only, because water removes a beta-hydrogen faster than it attacks', 'SN1/E1, because a weak reagent cannot force a bimolecular step', 'No reaction, because water is not reactive enough to do anything'],
         correctIndex: 2,
         correctFeedback: 'Correct. A weak nucleophile/base doesn\'t force the bimolecular pathway, so the substrate ionizes instead — and a polar protic solvent actively stabilizes that ionization by solvating the developing carbocation and leaving group.',
         wrongFeedback: 'Water is a poor nucleophile and an even poorer base — it can\'t force SN2 or E2 efficiently, so the unimolecular (SN1/E1) pathway wins once the solvent is protic, too.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 6 · Predict the product',
+        title: 'Neopentyl bromide, (CH₃)₃C–CH₂Br, is warmed with sodium ethoxide in ethanol. What is the major outcome?',
+        options: ['An alkene, from E2 at the quaternary carbon next door', 'Very slow SN2 to the ether; E2 is impossible here', 'Rapid SN1, because the neighboring carbon is quaternary', 'A rearranged alkene, after a methyl shift'],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Count the beta-hydrogens before proposing any elimination: the only beta carbon is the quaternary one, and it carries three methyls and no hydrogen at all. E2 has nothing to remove. SN2 is allowed but throttled by that same neighbor — about 10⁵ times slower than ethyl bromide — so neopentyl is famously sluggish.',
+        wrongFeedback: 'Find the beta carbon and count its hydrogens. There is exactly one beta carbon here, it is quaternary, and it has no hydrogen — so elimination is not slow, it is impossible. A primary substrate also will not ionize, which rules out SN1 and any rearrangement.'
       },
       {
         type: 'explain',
@@ -242,10 +261,19 @@ document.addEventListener('DOMContentLoaded', function(){
         bodyHtml: '<div class="explain-box">Every exam question of the form "predict the major product" for an alkyl halide is really asking you to run through this three-question framework: substrate class, then nucleophile/base strength (and bulk), then solvent. Memorizing each mechanism individually (as you did in the four previous lessons) only pays off once you can also decide <i>which</i> mechanism applies — that decision is what this lesson adds.</div>'
       },
       {
+        type: 'mcq',
+        eyebrow: 'Step 9 · Read the evidence backwards',
+        title: 'An optically active secondary bromide in methanol gives an optically inactive product; adding sodium azide does not speed the reaction up; and a second product has a branch the substrate did not. Which mechanism?',
+        options: ['SN2, because the nucleophile attacks the backside', 'E2, because a beta-hydrogen was removed', 'SN1, because all three observations need a carbocation', 'A radical chain, because the rate is unchanged'],
+        correctIndex: 2,
+        correctFeedback: 'Correct. Take the three separately: a rate that a strong added nucleophile cannot raise means the nucleophile is absent from the rate-determining step; loss of optical activity means the stereocenter went flat; a rearranged skeleton means an intermediate lived long enough to shift a group. Only a carbocation explains all three, so SN1 — with the branched product coming from the same cation after a hydride or methyl shift.',
+        wrongFeedback: 'Test each observation against the mechanism you picked. SN2 is one step, so it would show a nucleophile-dependent rate, clean inversion, and no rearrangement — three misses. Elimination does not explain an optically inactive substitution product either.'
+      },
+      {
         type: 'final',
         eyebrow: 'Challenge',
         title: '(CH₃)₃C–Br is treated with NaOEt (a strong, moderately bulky base) in ethanol, with heat. What do you expect?',
-        options: ['E2 as the dominant pathway — SN2 is impossible (tertiary), and the strong base plus heat both favor elimination over any unimolecular pathway', 'SN2 as the dominant pathway', 'SN1/E1 exclusively, since the substrate is tertiary'],
+        options: ['E2, because a strong base does not wait for ionization', 'SN2, because ethoxide is a good nucleophile', 'SN1/E1 only, because the substrate is tertiary', 'No reaction, because tertiary halides are unreactive'],
         correctIndex: 0,
         correctFeedback: 'Correct — SN2 is ruled out immediately by the tertiary substrate. Between the remaining options, the strong base (NaOEt) forces the bimolecular E2 pathway rather than waiting for ionization, and the added heat reinforces elimination over substitution even further. Some SN1/E1 background reaction is possible since ethanol is protic, but E2 dominates given the strong base.'
       }

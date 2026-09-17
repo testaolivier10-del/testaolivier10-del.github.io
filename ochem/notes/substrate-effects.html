@@ -69,10 +69,12 @@
 <tbody><tr><th>Reagent type</th><th>Examples</th><th>Drives</th></tr>
 <tr><td>Strong Nu, weak base</td><td>I⁻, RS⁻, N₃⁻, ⁻CN</td><td>SN2</td></tr>
 <tr><td>Strong Nu and base</td><td>HO⁻, CH₃O⁻, EtO⁻</td><td>SN2 + E2</td></tr>
-<tr><td>Strong bulky base</td><td>t-BuO⁻, LDA, DBU</td><td>E2</td></tr>
+<tr><td>Strong bulky base</td><td>t-BuO⁻, DBU</td><td>E2</td></tr>
 <tr><td>Weak Nu and base</td><td>H₂O, ROH</td><td>SN1 + E1</td></tr>
 </tbody></table>
 </div>
+
+<p class="step-body">Two names in that table are worth a clause each. <b>DBU</b> is an amidine — a nitrogen base whose cation is resonance-stabilized, which makes it strong, while the two fused rings around the reacting nitrogen make it almost useless as a nucleophile. It is the reagent of choice when you want elimination and nothing else. And <b>acetylide</b>, ⁻C≡CR, is the anion left when a terminal alkyne is deprotonated; you met it as a conjugate base in <a class="chapter-ref" href="/ochem/learn.html#m-acids-bases">Acids &amp; Bases</a>, and it is used as a reagent — a strong carbon nucleophile that builds carbon chains — in <a class="chapter-ref" href="/ochem/learn.html#m-alkenes-alkynes">Alkenes &amp; Alkynes</a>. For now, just place it with the strong nucleophiles.</p>
 
 <div class="notes-fact">A bulky base such as <i>tert</i>-butoxide pushes secondary and tertiary substrates toward elimination even though it is technically a strong reagent: it cannot thread into a crowded carbon for SN2, but it can still reach an exposed peripheral beta hydrogen for E2. This is the clearest practical demonstration that nucleophilicity and basicity are different properties — the same molecule is excellent at one and poor at the other.</div>
 
@@ -82,10 +84,50 @@
 <p class="step-body"><b>Heat</b> favors elimination across the board — E1 over SN1, E2 over SN2 — because elimination forms two molecules from one and therefore gains entropy, and the TΔS contribution to ΔG grows with temperature. "Heat" or "reflux" in a set of conditions is a deliberate signal that elimination is intended.</p>
 
 <div class="notes-example">
-<span class="k">Worked example — running the framework three times</span>
-<p><b>1-Bromobutane + NaCN in DMSO.</b> Step 1: primary, so SN2 only. Step 2: cyanide is a strong nucleophile and a weak base, which confirms SN2. Step 3: polar aprotic reinforces it. Product: pentanenitrile, clean SN2.</p>
-<p><b>2-Bromobutane + NaOEt in ethanol, heated.</b> Step 1: secondary, all four possible. Step 2: ethoxide is strong, so bimolecular — and it is a strong base as well as a nucleophile, so SN2 and E2 compete. Step 3: heat tips it to E2. Product: mainly but-2-ene, the Zaitsev alkene.</p>
-<p><b>2-Bromo-2-methylpropane in aqueous ethanol, warm.</b> Step 1: tertiary, so SN2 is out. Step 2: water and ethanol are weak, so unimolecular — SN1 and E1. Step 3: protic solvent reinforces it, warmth adds some elimination. Products: a mixture of <i>tert</i>-butanol, <i>tert</i>-butyl ethyl ether and isobutylene.</p>
+<span class="k">Worked example 1 — 1-bromobutane + NaCN in DMSO</span>
+<p><b>Substrate.</b> Primary. That deletes SN1 and E1 outright — a primary cation does not form.</p>
+<p><b>Reagent.</b> Cyanide is a strong nucleophile and a weak base (HCN's pKa is about 9, so ⁻CN is a feeble base). Strong reagent means bimolecular; weak base means substitution rather than elimination.</p>
+<p><b>Solvent.</b> DMSO is polar aprotic: it leaves cyanide unsolvated and at its most reactive. Everything points the same way.</p>
+<p><b>Products.</b> Pentanenitrile, essentially exclusively. The competing product would be but-1-ene from E2, and it barely appears, because cyanide has no appetite for a proton.</p>
+</div>
+
+<div class="notes-example">
+<span class="k">Worked example 2 — 2-bromobutane + NaOEt in ethanol, heated</span>
+<p><b>Substrate.</b> Secondary — the ambiguous class. Nothing is deleted.</p>
+<p><b>Reagent.</b> Ethoxide is strong on both counts: a good nucleophile <i>and</i> a strong base (ethanol's pKa is 16). Bimolecular for certain, but SN2 and E2 both remain live.</p>
+<p><b>Solvent and temperature.</b> Ethanol is protic, which blunts the nucleophile a little; heat favors elimination. Both tip the same way.</p>
+<p><b>Products, major and minor.</b> Elimination wins: <b>but-2-ene</b>, the Zaitsev alkene, and mostly its E isomer, since the trans double bond is the less crowded one. The minor elimination product is but-1-ene, from the other beta carbon. And there is a third product in the flask that questions often forget: <b>sec-butyl ethyl ether</b>, from the SN2 that did not quite lose. A secondary substrate with a strong base gives a mixture; naming only the major product is a partial answer.</p>
+</div>
+
+<div class="notes-example">
+<span class="k">Worked example 3 — 2-bromo-2-methylpropane in aqueous ethanol, warm</span>
+<p><b>Substrate.</b> Tertiary. SN2 is impossible.</p>
+<p><b>Reagent.</b> Water and ethanol are weak as nucleophiles and weak as bases, so nothing forces a bimolecular step: this is a solvolysis, SN1 and E1 from the same cation.</p>
+<p><b>Solvent and temperature.</b> Protic, which is exactly what ionization wants; warmth adds elimination.</p>
+<p><b>Products.</b> <i>tert</i>-Butanol and <i>tert</i>-butyl ethyl ether from SN1 (two nucleophiles are present, so there are two substitution products), plus 2-methylpropene from E1. All three, always — that is the trouble with unimolecular conditions, and the reason nobody runs them for synthesis.</p>
+</div>
+
+<div class="notes-example">
+<span class="k">Worked example 4 — the borderline case: 2-bromobutane + NaN₃ in acetone versus in water</span>
+<p>Same substrate, same class of reagent, different answer — and the only thing that moved was the solvent.</p>
+<p><b>In acetone (polar aprotic).</b> Azide is a strong nucleophile and a very weak base (HN₃'s pKa is about 4.6). Unsolvated, it attacks fast: clean SN2 to 2-azidobutane, with inversion at C2. Almost no alkene.</p>
+<p><b>In water.</b> Azide is now hydrogen-bonded and slowed, and water is itself an ionizing solvent, so the substrate's own slow ionization starts to compete. The product becomes a mixture: some inverted 2-azidobutane from SN2, some racemic 2-azidobutane and butan-2-ol from SN1, and a little but-2-ene. The honest answer to a borderline secondary question is "a mixture, and here is why each piece is there" — not one product.</p>
+<p><b>What to say in an exam.</b> Name the major pathway, name the competitor, and give the variable that decides between them. A question that gives you a secondary substrate is usually testing exactly that.</p>
+</div>
+
+<div class="notes-example">
+<span class="k">Worked example 5 — when the leaving group is the deciding variable</span>
+<p>Leaving-group quality is one of the four variables and almost never the one an exam changes, which is why it is worth seeing once on its own. Take butan-2-yl <b>chloride</b> and butan-2-yl <b>tosylate</b>, and warm each one in ethanol with no added reagent.</p>
+<p>The substrate class is the same, the reagent is the same, the solvent is the same. The chloride barely moves: chloride is a mediocre leaving group, and with nothing to push it out the ionization is too slow to see. The tosylate solvolyzes smoothly, because ⁻OTs spreads its charge over three oxygens and is a far more stable anion. Product: butan-2-ol and sec-butyl ethyl ether, largely racemic, plus some butene — SN1 and E1.</p>
+<p>The lesson is the one from the SN1 section: a leaving group that would be adequate when a strong nucleophile is shoving it out can be hopeless when it has to leave unassisted.</p>
+</div>
+
+<div class="notes-example">
+<span class="k">Worked example 6 — the substrate with no beta hydrogen</span>
+<p>Treat <b>neopentyl bromide</b>, (CH₃)₃C–CH₂Br, with sodium ethoxide, and run the framework honestly.</p>
+<p><b>Substrate.</b> Primary, so SN1 and E1 are out. SN2 is allowed on paper, but the neighboring quaternary carbon blocks the backside approach and the rate is about 10⁵ times slower than ethyl bromide's.</p>
+<p><b>What about E2?</b> Find the beta carbon: there is exactly one, and it is the quaternary carbon, which carries three methyls and <b>no hydrogen at all</b>. E2 requires a beta hydrogen. There is none. E2 is not slow here; it is impossible.</p>
+<p><b>So what happens?</b> Very slow SN2, and not much else. Neopentyl is famous for being unreactive — not because anything unusual happens, but because its one available pathway is throttled and its obvious alternative does not exist. Count the beta hydrogens before you propose an elimination; a substrate with none cannot eliminate however strong the base is.</p>
 </div>
 
 <h3>Quick reference</h3>
@@ -104,9 +146,10 @@
 
 <h3>Reading the evidence backwards</h3>
 <p class="step-body">Exam questions often run the other way: here is what happened, which mechanism was it? The diagnostics are clean. A rate that depends on the nucleophile means bimolecular; a rate that does not means unimolecular. Clean inversion at a stereocenter means SN2; racemization means SN1. A rearranged carbon skeleton means a carbocation, so SN1 or E1. A product whose alkene geometry traces to the starting diastereomer means E2. These are the observations the mechanisms were deduced from in the first place.</p>
+<p class="step-body"><b>Worked diagnosis.</b> An optically active secondary bromide is warmed in methanol. Three observations come back: adding sodium azide, a far better nucleophile, does not speed the disappearance of the bromide up at all; the product is optically inactive; and a second, isomeric product has a carbon skeleton with a branch the starting material did not have. Take them in turn. A rate independent of the nucleophile means the nucleophile is not in the rate-determining step, so the mechanism is <b>unimolecular</b>. Loss of optical activity means the stereocenter passed through something flat. A rearranged skeleton means there was a real intermediate with time to shift a group. All three name the same thing: a carbocation, so <b>SN1</b> — with the rearranged product coming from the same cation after a hydride or methyl shift. Any one observation alone would be suggestive; together they are conclusive, and that is how these questions are built.</p>
 
 <h3>What carries forward</h3>
-<p class="step-body">This four-way framework is the model for every later competition in the course: 1,2- versus 1,4-addition in <a class="chapter-ref" href="/ochem/learn.html#m-enolate-chemistry">Enolate Chemistry</a>, substitution versus addition on aromatic rings in <a class="chapter-ref" href="/ochem/learn.html#m-aromatic-chemistry">Aromatic Chemistry</a>, and which carbonyl derivative reacts fastest in <a class="chapter-ref" href="/ochem/learn.html#m-carboxylic-acids">Carboxylic Acids &amp; Derivatives</a>. The habit of asking "what does the substrate allow, what does the reagent want, what does the solvent reward" transfers directly.</p>
+<p class="step-body">This four-way framework is the model for every later competition in the course: 1,2- versus 1,4-addition in <a class="chapter-ref" href="/ochem/learn.html#m-conjugation">Conjugation &amp; Pericyclic Reactions</a>, substitution versus addition on aromatic rings in <a class="chapter-ref" href="/ochem/learn.html#m-aromatic-chemistry">Aromatic Chemistry</a>, and which carbonyl derivative reacts fastest in <a class="chapter-ref" href="/ochem/learn.html#m-carboxylic-acids">Carboxylic Acids &amp; Derivatives</a>. The habit of asking "what does the substrate allow, what does the reagent want, what does the solvent reward" transfers directly.</p>
 <!-- notes:end -->
   </article>
 

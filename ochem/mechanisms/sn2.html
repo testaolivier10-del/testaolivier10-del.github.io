@@ -184,11 +184,12 @@ document.addEventListener('DOMContentLoaded', function(){
 (function(){
   // ---- Two worked molecules. Atom coordinates are hand-placed for a clean
   // small diagram; roles drive which atoms are clickable at each step. ----
-  // ---- Two worked reactions, both on (R)-2-bromobutane. ----
+  // ---- Two worked reactions, deliberately unlike each other: a secondary
+  // bromide with a stereocenter, then a primary bromide without one. ----
   //
   // This page used to run on bromomethane and chloromethane, and then asked the
   // student to "predict the product and the stereochemistry". A methyl carbon has
-  // no stereocentre, so the inversion — the entire reason SN2 is taught — could
+  // no stereocenter, so the inversion — the entire reason SN2 is taught — could
   // not happen and could not be shown. A secondary substrate with four different
   // groups fixes that.
   //
@@ -246,27 +247,28 @@ document.addEventListener('DOMContentLoaded', function(){
       distractors: [
         '(R)-2-methylbutanenitrile + Br\u207b (configuration retained)',
         'A 50:50 mixture of the (R) and (S) nitriles',
-        'But-2-ene + HBr + CN\u207b (elimination instead)'
+        'But-2-ene + HCN + Br\u207b (elimination instead)'
       ],
       why: 'Cyanide\u2019s lone pair attacks C2 from the side <b>opposite</b> the C\u2013Br bond, because the bromine and its bonding electrons block every other approach. The new C\u2013C bond forms as the C\u2013Br bond breaks \u2014 one step, no intermediate \u2014 so the three groups that stay behind are pushed through the carbon like an umbrella turning inside out. That is <b>inversion</b>, and here it takes (R) to (S). DMSO is the reason it is fast: a polar aprotic solvent solvates the sodium counter-ion but leaves the cyanide bare and reactive, where a protic solvent like ethanol would wrap it in hydrogen bonds and blunt it.'
     },
     {
-      name: '(R)-2-bromobutane + azide in DMSO',
-      nucleophileLabel: 'N\u2083\u207b',
-      substrateLabel: '(R)-2-bromobutane',
+      name: '1-bromopropane + hydrosulfide in DMSO',
+      nucleophileLabel: 'HS\u207b',
+      substrateLabel: '1-bromopropane',
+      // The second reaction is deliberately NOT another secondary bromide.
+      // The first one exists to show inversion at a stereocenter; this one
+      // exists to show the two things that case cannot: that a PRIMARY carbon
+      // is the easiest SN2 substrate of all, and that the umbrella still turns
+      // inside out on a carbon carrying two identical hydrogens \u2014 where the
+      // inversion is real but invisible, because there is no stereocenter to
+      // record it. Students who have only ever seen SN2 on a stereocenter
+      // routinely answer \u201ca racemic mixture\u201d here, so that is a distractor.
       atoms: {
-        // The nucleophile sits far enough from its neighbour that the bond
-        // between them has length to be drawn: at the old spacing the two
-        // circles touched exactly, so cyanide's triple bond rendered as three
-        // zero-length lines and was simply absent from the diagram.
-        nucAtom:  { x: 62,  y: 70, r: 15, label: 'N', charge: '\u207b', lp: [0] },
-        nucN:     { x: 20,  y: 70, r: 13, label: 'N' },
+        nucAtom:  { x: 62,  y: 70, r: 15, label: 'S', charge: '\u207b', lp: [0] },
+        nucN:     { x: 26,  y: 70, r: 11, label: 'H' },
         carbon:   { x: 165, y: 66, r: 16, label: 'C', delta: '\u03b4+' },
-        me:       { x: 165, y: 22, r: 13, label: 'C' },
+        me:       { x: 165, y: 22, r: 11, label: 'H' },
         et1:      { x: 128, y: 106,r: 13, label: 'C' },
-        // The ethyl terminus used to sit at y 136 with r 12, so its lower
-        // eight pixels fell outside a 140-high viewBox and it shipped with a
-        // flat bottom.
         et2:      { x: 90,  y: 122,r: 12, label: 'C' },
         h:        { x: 203, y: 104,r: 11, label: 'H' },
         lg:       { x: 258, y: 66, r: 16, label: 'Br', delta: '\u03b4\u2212', lp: [340, 20] }
@@ -283,13 +285,13 @@ document.addEventListener('DOMContentLoaded', function(){
       nucAtomKey: 'nucAtom',
       electroKey: 'carbon',
       lgKey: 'lg',
-      product: '(S)-2-azidobutane + Br\u207b',
+      product: 'Propane-1-thiol + Br\u207b',
       distractors: [
-        '(R)-2-azidobutane + Br\u207b (configuration retained)',
-        'A 50:50 mixture of the (R) and (S) azides',
-        'But-2-ene + HBr + N\u2083\u207b (elimination instead)'
+        'A 50:50 mixture of two enantiomeric thiols',
+        'Propane-2-thiol + Br\u207b (attack at the middle carbon)',
+        'Propene + H\u2082S + Br\u207b (elimination instead)'
       ],
-      why: 'Azide is small, very nucleophilic and a weak base \u2014 which is the combination that makes it an almost pure SN2 reagent. It attacks C2 from the side <b>opposite</b> the bromine, the C\u2013N bond forming as the C\u2013Br bond breaks, and the carbon inverts: (R) becomes (S). Because azide is such a weak base it barely competes for the beta hydrogens, so elimination stays a minor path even on a secondary carbon \u2014 which is exactly why a strong base like hydroxide would be the wrong reagent to teach this with.'
+      why: 'Two things change from the first reaction, and both are worth having seen. <b>The carbon is primary.</b> Only two groups sit around it besides the leaving group, and both are hydrogens, so the backside is almost as open as a methyl\u2019s \u2014 this is the substrate class SN2 likes best, and the reason a synthesis that needs a clean SN2 reaches for a primary halide. <b>And the inversion is invisible.</b> The umbrella still turns inside out: the hydrogen on the wedge, the hydrogen on the dash and the ethyl group all sweep past the carbon to the other side. But two of those three groups are identical hydrogens, so the carbon was never a stereocenter and the flipped molecule is the same molecule. Inversion is a statement about geometry that only becomes <i>observable</i> when four different groups are present. As for the reagent: HS\u207b is large and polarizable, which makes it one of the strongest nucleophiles there is, and a weak base (H\u2082S has a pK<sub>a</sub> of about 7), so it substitutes rather than eliminating \u2014 propene is a trace product at most.'
     }
   ];
 
@@ -607,8 +609,8 @@ document.addEventListener('DOMContentLoaded', function(){
     arrow1From = null;
     card.innerHTML =
       '<div class="step-eyebrow">Step 3 · Draw the arrow</div>' +
-      '<h2 class="step-title">Push the electrons: click the lone pair, then the carbon.</h2>' +
-      '<p class="step-body">A curved arrow starts at a source of electrons and points at the atom that receives them. Click the nucleophile’s atom first, then the electrophilic carbon.</p>' +
+      '<h2 class="step-title">Push the electrons: from the lone pair to the carbon.</h2>' +
+      '<p class="step-body">A curved arrow starts at a source of electrons and points at the atom that receives them. The pair that attacks is a lone pair on the nucleophile — click that atom first, then the electrophilic carbon.</p>' +
       sceneSvg() +
       feedbackHtml('fb') +
       nextButton('Continue', false);
@@ -656,7 +658,7 @@ document.addEventListener('DOMContentLoaded', function(){
     card.innerHTML =
       '<div class="step-eyebrow">Step 4 · Draw the arrow</div>' +
       '<h2 class="step-title">As the new bond forms, the old one breaks.</h2>' +
-      '<p class="step-body">Click the bond between the carbon and the leaving group (click the carbon), then click the leaving group itself, to show those electrons leaving with it.</p>' +
+      '<p class="step-body">This arrow starts at the C–leaving-group <b>bond</b>, not at an atom. Click the carbon end of that bond first, then the leaving group, to send the bonding pair away with it.</p>' +
       sceneSvg() +
       feedbackHtml('fb') +
       nextButton('See the product', false);

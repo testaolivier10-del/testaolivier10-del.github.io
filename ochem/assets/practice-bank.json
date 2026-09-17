@@ -14935,15 +14935,15 @@
    "type": "mcq"
   },
   {
-   "q": "What happens to the stereochemistry at the reacting carbon during an SN2 reaction?",
+   "q": "(S)-CH₃–CHBr–CH₂OCH₃ is treated with NaCN in acetone. What happens at C2?",
    "options": [
-    "No change — configuration is retained",
-    "It racemizes completely",
-    "It inverts completely",
-    "Stereochemistry is irrelevant to SN2"
+    "It inverts, and the descriptor changes to (R)",
+    "It inverts, but the descriptor is still (S)",
+    "It is retained, and the descriptor is still (S)",
+    "It racemizes, giving both descriptors"
    ],
-   "correct": 2,
-   "why": "Backside attack forces the other three groups to flip to the opposite side as the new bond forms — this inversion is called a Walden inversion.",
+   "correct": 1,
+   "why": "Two separate things happen and they cancel. Geometrically the carbon inverts, as it does in every SN2. But the priorities are re-ranked in the product: the nitrile carbon is (N,N,N) while the CH₂OCH₃ carbon is (O,H,H), and O beats N at the first point of difference — so the incoming cyanide is priority 2, not the priority 1 that bromine held. Reversing the geometry and swapping the top two priorities are two reversals, and two reversals leave the letter where it was. Assign R/S from the product itself, never by assuming that \"inversion\" means the letter flips.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -15011,15 +15011,17 @@
    "type": "mcq"
   },
   {
-   "q": "Tertiary substrates readily undergo SN2 reactions because their transition state is well stabilized.",
+   "q": "Which reagent converts 1-bromobutane into pentanenitrile in one step?",
    "options": [
-    "True",
-    "False"
+    "KOtBu in tert-butanol",
+    "NaOH in hot water",
+    "NaCN in DMSO",
+    "HCN in hexane"
    ],
-   "correct": 1,
-   "why": "Tertiary carbons are surrounded by three alkyl groups that sterically block the nucleophile from approaching from the backside, so SN2 is essentially shut down.",
+   "correct": 2,
+   "why": "Working backwards: pentanenitrile is butyl–C≡N, so a carbon nucleophile has to displace the bromide, and the carbon nucleophile that does it is cyanide. Sodium cyanide supplies it as the free anion, and DMSO is polar aprotic, so the anion is not hydrogen-bonded and attacks at full strength. Hydroxide would give butan-1-ol, tert-butoxide would give elimination, and neutral HCN is far too weak a nucleophile to displace anything.",
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "What geometric shape describes the transition state of an SN2 reaction?",
@@ -15035,28 +15037,30 @@
    "type": "mcq"
   },
   {
-   "q": "Methyl halides (CH3X) react in SN2 reactions:",
+   "q": "Hydroxide reacts with bromomethane. Which pair of curved arrows describes the step?",
    "options": [
-    "Exceptionally fast, since there is no steric hindrance",
-    "Exceptionally slow, since there is no nearby stabilization",
-    "Not at all, since there is no beta-hydrogen",
-    "Only under strongly acidic conditions"
+    "C–Br bond to carbon; O lone pair to bromine",
+    "O lone pair to bromine; C–Br bond to carbon",
+    "Carbon to oxygen; bromine to the C–Br bond",
+    "O lone pair to carbon; C–Br bond to bromine"
    ],
-   "correct": 0,
-   "why": "With no substituents around the reacting carbon at all, the nucleophile has a completely open path for backside attack.",
+   "correct": 3,
+   "why": "Every curved arrow starts at electrons and ends where they are going. Arrow one starts on a lone pair of the hydroxide oxygen — that is the electron source — and lands on the carbon, which is the new bond. Arrow two starts on the C–Br bonding pair and lands on bromine, which is why bromine leaves as Br⁻ rather than as a bromine atom. The two fire together, which is what makes the reaction one step.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "SN2 reactions occur in a single concerted step with no intermediate forming along the way.",
+   "q": "(R)-2-bromobutane is warmed with NaSH in DMSO. What is the product?",
    "options": [
-    "True",
-    "False"
+    "(S)-butane-2-thiol, one enantiomer",
+    "(R)-butane-2-thiol, one enantiomer",
+    "Racemic butane-2-thiol",
+    "But-2-ene, plus H₂S and Br⁻"
    ],
    "correct": 0,
-   "why": "Bond-breaking and bond-forming happen simultaneously in one transition state, unlike the two-step SN1 mechanism.",
+   "why": "Hydrosulfide is a large, polarizable, weakly basic anion — close to an ideal SN2 nucleophile — and DMSO leaves it unsolvated. It attacks C2 from the face opposite bromine, so the carbon inverts, and there is no intermediate for the stereochemistry to leak away through: the product is a single enantiomer. Here the descriptor flips too, because sulfur takes exactly the rank bromine held (S > ethyl > methyl > H), so the priority order is unchanged and only the geometry has moved.",
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Ranking CH3Br, (CH3)2CHBr, and (CH3)3CBr by SN2 reaction rate, which order is correct?",
@@ -15148,15 +15152,15 @@
    "type": "mcq"
   },
   {
-   "q": "SN2 reactions are known for proceeding with a single inversion of configuration, often called:",
+   "q": "A secondary tosylate reacts with NaN₃. Doubling [N₃⁻] doubles the rate, and the product is one enantiomer, inverted. Which mechanism?",
    "options": [
-    "Epimerization",
-    "Racemization",
-    "Anomeric inversion",
-    "Walden inversion"
+    "SN1",
+    "E1",
+    "SN2",
+    "E2"
    ],
-   "correct": 3,
-   "why": "This classic term describes the clean flip in spatial arrangement caused by backside nucleophilic attack.",
+   "correct": 2,
+   "why": "Read the two observations separately. A rate that responds to the nucleophile's concentration means the nucleophile is present in the rate-determining step, which rules out both unimolecular pathways at once. Clean inversion with no trace of the other enantiomer means no flat intermediate ever existed — an SN1 cation would have been attacked from both faces. Elimination is out because the product is a substitution product. One step, two species, inversion: SN2.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -15187,15 +15191,15 @@
    "type": "mcq"
   },
   {
-   "q": "For a cyclohexane ring, SN2 backside attack on C1 proceeds fastest when the leaving group at C1 is positioned:",
+   "q": "Bromomethane, 1-bromobutane, 2-bromobutane and 2-bromo-2-methylpropane meet NaN₃ in DMSO. Which is fastest, and what does it give?",
    "options": [
-    "Equatorial, since the ring doesn't block the approach",
-    "It makes no difference in a chair conformation",
-    "Axial, giving an open backside trajectory",
-    "Neither position allows any SN2 reaction"
+    "1-Bromobutane, giving 1-azidobutane",
+    "2-Bromobutane, giving 2-azidobutane",
+    "2-Bromo-2-methylpropane, giving the tertiary azide",
+    "Bromomethane, giving azidomethane"
    ],
-   "correct": 2,
-   "why": "When the leaving group is axial, the nucleophile can approach from the opposite axial direction without the ring itself blocking the path; an equatorial leaving group has its backside trajectory obstructed by the ring.",
+   "correct": 3,
+   "why": "SN2 rate is set by how open the backside of the carbon is, and it falls steeply with substitution: methyl is roughly thirty times faster than the primary halide, which is in turn about thirty times faster than the secondary one. The tertiary substrate is not merely slow — its backside is enclosed and SN2 does not happen there at all. So bromomethane wins, and since azide simply replaces bromide, the product is azidomethane.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -15226,15 +15230,17 @@
    "type": "mcq"
   },
   {
-   "q": "An SN2 reaction between a negatively charged nucleophile and a neutral substrate is slowed in polar protic solvents because the solvent hydrogen-bonds to and stabilizes the nucleophile, raising the activation energy needed for it to attack.",
+   "q": "1-Bromobutane meets a halide salt in DMSO rather than methanol. How do the halides rank as nucleophiles?",
    "options": [
-    "True",
-    "False"
+    "F⁻ > Cl⁻ > Br⁻ > I⁻",
+    "I⁻ > Br⁻ > Cl⁻ > F⁻",
+    "Br⁻ > I⁻ > F⁻ > Cl⁻",
+    "All four attack at the same rate"
    ],
    "correct": 0,
-   "why": "Solvating (caging) the nucleophile with hydrogen bonds lowers its ground-state energy and effectively shields it, so more energy is needed to free it for attack.",
+   "why": "The familiar I⁻ > Br⁻ > Cl⁻ > F⁻ order is a statement about protic solvents, not about the ions. In water or an alcohol, hydrogen bonds wrap the small hard fluoride most tightly of all, and that shell has to be stripped before it can attack — which costs more than its greater basicity gains. A polar aprotic solvent has no O–H to donate, so nothing is caged, the anions are effectively naked, and basicity shows through: the order reverses to F⁻ > Cl⁻ > Br⁻ > I⁻. Check the solvent before ranking any halide.",
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Why does increasing the bulk of the alkyl substituents at the reacting carbon, from primary to tertiary, always slow SN2, regardless of any electronic stabilization those groups might otherwise provide?",
@@ -15304,15 +15310,15 @@
    "type": "mcq"
   },
   {
-   "q": "SN1 reactions are favored at which type of carbon?",
+   "q": "3-Methylbutan-2-ol, CH₃–CH(OH)–CH(CH₃)₂, is treated with concentrated HBr. What is the major product?",
    "options": [
-    "Methyl",
-    "Tertiary (stabilizes the carbocation)",
-    "Primary",
-    "None — carbon type doesn’t matter"
+    "2-Bromo-3-methylbutane",
+    "2-Bromo-2-methylbutane",
+    "1-Bromo-3-methylbutane",
+    "3-Bromo-2-methylbutane"
    ],
    "correct": 1,
-   "why": "Tertiary carbocations are the most stable (hyperconjugation/inductive effects from 3 alkyl groups), so SN1 favors tertiary substrates.",
+   "why": "Acid protonates the OH so it can leave as water, giving a secondary cation at C2. Before bromide arrives, look next door: C3 carries a hydrogen, and moving that hydride across with its bonding pair leaves the charge on a carbon bearing two methyls and the chain — a tertiary cation. That shift is fast and downhill, so it happens first, and bromide then attacks the rearranged cation. The product's skeleton is not the one you get by swapping OH for Br, which is exactly the trap.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -15380,15 +15386,17 @@
    "type": "mcq"
   },
   {
-   "q": "SN1 reactions proceed with complete inversion of stereochemistry at the reacting carbon.",
+   "q": "You need tert-butyl ethyl ether from 2-bromo-2-methylpropane. Which conditions work?",
    "options": [
-    "True",
-    "False"
+    "NaOEt in DMSO, cold",
+    "Warm ethanol, nothing added",
+    "NaOEt in ethanol, refluxed",
+    "KOtBu in tert-butanol, hot"
    ],
    "correct": 1,
-   "why": "The flat carbocation intermediate can be attacked from either face, so the product is typically a racemic (or nearly racemic) mixture rather than cleanly inverted.",
+   "why": "The substrate is tertiary, so SN2 is impossible and the ether has to come from a carbocation trapped by the alcohol — that is, SN1. For that you want a weak nucleophile and an ionizing protic solvent, and warm ethanol alone is both. Adding ethoxide does the opposite of what you want: a strong base on a tertiary substrate forces E2 and gives 2-methylpropene instead. Bulky tert-butoxide is worse still. This is the standard case where the way to get substitution is to add nothing.",
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Which solvent type most favors SN1 reactions?",
@@ -15465,15 +15473,17 @@
    "type": "mcq"
   },
   {
-   "q": "A 1,2-hydride shift can convert a less stable secondary carbocation into a more stable tertiary carbocation during an SN1 reaction.",
+   "q": "3-Chlorobut-1-ene solvolyzes in water. Why are two alcohols isolated?",
    "options": [
-    "True",
-    "False"
+    "Water attacks both faces of one flat carbon",
+    "The allylic cation is spread over two carbons",
+    "Some chloride never ionizes at all",
+    "The double bond is hydrated as well"
    ],
-   "correct": 0,
-   "why": "A neighboring hydrogen can migrate with its bonding electrons to the cationic carbon, shifting the positive charge to a position where it is better stabilized.",
+   "correct": 1,
+   "why": "Ionization gives an allylic cation, and the positive charge is not on one carbon: resonance spreads it over C1 and C3, with the double bond in between shifting accordingly. Water can attack at either end of that delocalized system, so one cation gives two constitutionally different alcohols — but-3-en-2-ol from attack where the chloride left, and but-2-en-1-ol from attack at the far end. Racemization at the original carbon is real too, but it would give two enantiomers, not two different compounds.",
    "difficulty": "medium",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Allylic and benzylic halides react readily via SN1 even though they are often only secondary or primary. Why?",
@@ -15491,12 +15501,12 @@
   {
    "q": "Comparing a tertiary alkyl chloride to the otherwise identical tertiary alkyl iodide under SN1 conditions, which reacts faster, and why?",
    "options": [
-    "The chloride, because chlorine is more electronegative",
-    "They react at identical rates",
-    "The chloride, because it ionizes in a different mechanism entirely",
-    "The iodide, because iodide is the better leaving group"
+    "The chloride, since chlorine is more electronegative",
+    "The iodide, since iodide is the better leaving group",
+    "Neither — both are tertiary, so the rates match",
+    "The chloride, since it ionizes by a different route"
    ],
-   "correct": 3,
+   "correct": 1,
    "why": "A weaker carbon-halogen bond combined with a more stable leaving anion makes ionization easier and faster for the iodide.",
    "difficulty": "medium",
    "type": "mcq"
@@ -15526,41 +15536,41 @@
    "type": "mcq"
   },
   {
-   "q": "What kind of solvent effect accelerates the rate-determining step of an SN1 reaction?",
+   "q": "An optically active bromide in aqueous acetone gives an inactive alcohol plus an isomer with a new branch, and azide does not raise the rate. Which mechanism?",
    "options": [
-    "Increasing solvent nucleophilicity",
-    "Increasing solvent polarity",
-    "Decreasing solvent polarity",
-    "Increasing solvent viscosity"
+    "SN2",
+    "SN1",
+    "E2",
+    "A radical chain"
    ],
    "correct": 1,
-   "why": "A more polar, ionizing solvent stabilizes the separating charges (the carbocation and the departing anion) as the bond breaks, lowering the activation energy.",
+   "why": "Three observations, one explanation. A rate that a strong added nucleophile cannot raise means the nucleophile is absent from the rate-determining step. Loss of optical activity means the stereocenter went flat at some point. A rearranged skeleton means an intermediate lived long enough for a group to migrate. Only a carbocation does all three: SN2 would show a nucleophile-dependent rate, clean inversion and no rearrangement, and elimination does not give a substitution product at all.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
    "q": "Why do vinyl and aryl halides essentially never undergo SN1?",
    "options": [
-    "Vinyl and aryl halides have unusually strong carbon-halogen bonds",
-    "There is no possible nucleophile that could trap such a cation",
-    "The vinyl or aryl cation would be far too unstable",
+    "Vinyl and aryl halides have unusually strong carbon–halogen bonds",
+    "No nucleophile exists that could trap such a cation",
+    "Neither cation can put its empty orbital where the pi system is",
     "SN1 requires a double bond to already be present"
    ],
    "correct": 2,
-   "why": "Vinylic and aryl cations place the positive charge in an sp2 orbital that is not well stabilized by the adjacent pi system, making ionization prohibitively unfavorable.",
+   "why": "The two cases fail for related but distinct reasons, and it is worth keeping them apart. A vinyl cation is sp-hybridized: its empty orbital is a p orbital, but the carbon is only two-coordinate and the cation is very high in energy, so ionization is prohibitive. An aryl cation is sp²-hybridized and its empty orbital is an sp² orbital lying in the plane of the ring, perpendicular to the pi cloud — so the ring's electrons, which look as though they should help, cannot overlap with it at all. Neither cation is accessible, so neither substrate does SN1.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "For a tertiary substrate, which solvent type gives a faster SN1 rate: polar protic or polar aprotic?",
+   "q": "Butan-2-yl chloride and butan-2-yl tosylate are each warmed in ethanol alone. What happens?",
    "options": [
-    "Polar aprotic, since it leaves the nucleophile unshielded",
-    "Both give identical rates",
-    "Neither solvent type affects SN1 rate",
-    "Polar protic, which stabilizes the cation and anion"
+    "Both go at the same rate; the carbon is the same",
+    "The chloride is faster; chloride is smaller",
+    "The tosylate is far faster; ⁻OTs is more stable",
+    "Neither reacts; ethanol is too weak"
    ],
-   "correct": 3,
-   "why": "SN1's rate-determining step is ionization, which benefits specifically from a solvent that can stabilize charged species through hydrogen bonding.",
+   "correct": 2,
+   "why": "Substrate, solvent and reagent are all identical here, so the leaving group is the only variable — and in SN1 it is the whole of the rate-determining step, because nothing is pushing it out. The cost of the step is the cost of making the anion, and tosylate spreads its charge over three oxygens where chloride has to hold it on one atom. A leaving group that is merely adequate when a strong nucleophile is shoving it out can be hopeless when it has to leave unassisted.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -15721,15 +15731,17 @@
    "type": "mcq"
   },
   {
-   "q": "E1 reactions, like SN1, are unimolecular in their rate-determining step.",
+   "q": "Acid-catalyzed dehydration is run with the alkene distilled off as it forms. Why does that matter?",
    "options": [
-    "True",
-    "False"
+    "Distilling pushes past the activation barrier",
+    "Every step is reversible, so removing it drives on",
+    "The acid would otherwise reduce the alkene",
+    "It stops the alcohol being oxidized"
    ],
-   "correct": 0,
-   "why": "Both mechanisms share the same first step, the unassisted departure of the leaving group to generate a carbocation, which depends only on substrate concentration.",
+   "correct": 1,
+   "why": "Dehydration is E1 run in reverse of alkene hydration, and each step of it genuinely goes both ways: the alkene can be reprotonated by the acid to regenerate the cation, and the cation can capture water to give the alcohol back. Left alone, the mixture settles at an equilibrium that is not especially favorable. Alkenes boil far below their parent alcohols, so distilling the alkene out as it appears removes a product from the equilibrium and pulls the whole sequence forward — Le Châtelier, doing the work that the thermodynamics will not.",
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "What is removed in the second step of E1, once the carbocation has already formed?",
@@ -15845,15 +15857,17 @@
    "type": "mcq"
   },
   {
-   "q": "An E1 reaction can proceed through a carbocation rearrangement before the final proton is lost, giving an alkene skeleton different from simple dehydrohalogenation.",
+   "q": "3-Bromo-2,2-dimethylbutane, (CH₃)₃C–CHBr–CH₃, is warmed in aqueous ethanol. Which alkene is major?",
    "options": [
-    "True",
-    "False"
+    "3,3-Dimethylbut-1-ene",
+    "2,3-Dimethylbut-2-ene",
+    "2,3-Dimethylbut-1-ene",
+    "3,3-Dimethylbut-2-ene"
    ],
-   "correct": 0,
-   "why": "If the initially formed cation rearranges to a more stable one, the final elimination step occurs from that rearranged structure, changing the product's carbon skeleton.",
+   "correct": 1,
+   "why": "Bromide leaves to give a secondary cation. Check the neighbor before doing anything else: it is quaternary, so there is no hydride to move — but a whole methyl can migrate with its bonding pair, and doing so leaves the charge on a carbon bearing two methyls and an isopropyl group, a tertiary cation. Now apply Zaitsev to that rearranged skeleton: removing the lone hydrogen on the isopropyl carbon gives the tetrasubstituted 2,3-dimethylbut-2-ene. Applying Zaitsev to the original skeleton, before the shift, gives the wrong answer confidently.",
    "difficulty": "medium",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "3-chloro-3-methylpentane undergoes E1 solvolysis with heat. Which alkene is the expected major product?",
@@ -15877,7 +15891,7 @@
     "Adding a very strong nucleophile"
    ],
    "correct": 0,
-   "why": "Heat favors the entropically-preferred elimination pathway, and having an actual base present (rather than just a weak nucleophilic solvent) makes proton removal more competitive with nucleophilic capture.",
+   "why": "Both E1 and SN1 start from the same cation, so anything that changes the shared first step changes neither ratio. What tips the balance is the second step, and heat tips it toward elimination: elimination makes two molecules from one, so it gains entropy, and the TΔS term in ΔG grows with temperature. A worse leaving group would slow everything down without choosing between them, and adding a strong nucleophile stops being an E1 question at all — it forces the bimolecular pathways instead.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -15919,15 +15933,15 @@
    "type": "mcq"
   },
   {
-   "q": "A secondary carbocation in an E1 reaction can lose either of two different beta-hydrogens, giving alkene A (more substituted) or alkene B (less substituted). Which is the expected major product?",
+   "q": "2-Bromo-2-methylbutane is warmed in aqueous ethanol. Name the major and minor alkene.",
    "options": [
-    "Alkene B, since less substituted alkenes are always kinetically preferred",
-    "Both alkenes form in exactly equal amounts in every case",
-    "Neither forms; the carbocation is trapped by the leaving group instead",
-    "Alkene A, the more substituted Zaitsev product"
+    "Major 2-methylbut-1-ene; minor 2-methylbut-2-ene",
+    "Major 2-methylbut-2-ene; minor 2-methylbut-1-ene",
+    "Major but-2-ene; minor 2-methylbut-1-ene",
+    "Major 3-methylbut-1-ene; minor but-1-ene"
    ],
-   "correct": 3,
-   "why": "With no strict geometric constraint like E2's anti-periplanar requirement, E1 product selection is governed mainly by the relative stability of the possible alkenes.",
+   "correct": 1,
+   "why": "Ionization gives the tertiary cation (CH₃)₂C⁺–CH₂CH₃, and two kinds of beta hydrogen are available. Taking one from the ethyl CH₂ puts the double bond between the two inner carbons: 2-methylbut-2-ene, with three carbon groups on it. Taking one from a methyl gives 2-methylbut-1-ene, with two. Zaitsev picks the more substituted one as major even though there are six methyl hydrogens against only two on the CH₂ — it is alkene stability that decides, not a head count.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -15945,15 +15959,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why can E1 and SN1 give a surprisingly complex product mixture when a carbocation rearranges partway through the reaction?",
+   "q": "An E1 solvolysis whose cation rearranges gives four organic products rather than two. Why?",
    "options": [
-    "Rearrangement always stops the reaction completely",
-    "Both the original and rearranged cations react",
-    "Only the rearranged cation can ever react further",
-    "Rearrangement converts E1 into E2"
+    "Rearrangement converts part of the E1 into an E2",
+    "Both cations are present, and each can substitute or eliminate",
+    "Only the rearranged cation goes on to react further",
+    "The leaving group adds back to half the product"
    ],
    "correct": 1,
-   "why": "Each distinct carbocation present in solution, whether original or rearranged, has its own competing fates (substitution or elimination), so the overall outcome can be a mixture of several structurally different products.",
+   "why": "A hydride or methyl shift is fast but not instantaneous, so some of the original cation is captured before it can rearrange. That leaves two different cations in solution, and each of them faces the same fork every carbocation faces: the solvent can attack the positive carbon, giving a substitution product, or take a beta hydrogen, giving an alkene. Two cations times two fates is four products, which is exactly why unimolecular conditions are a poor way to make any one thing on purpose.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -15997,13 +16011,13 @@
   {
    "q": "Why might E1 show greater selectivity for the thermodynamically most stable (Zaitsev) alkene than E2 does on the same substrate?",
    "options": [
-    "The long-lived carbocation gives thermodynamic control",
-    "E2 never produces the Zaitsev product under any conditions",
-    "E1 cannot produce the Hofmann product under any conditions",
-    "Carbocations are always more stable than alkenes"
+    "The long-lived carbocation lets the products equilibrate",
+    "E1's transition state is late, so it looks like the alkene",
+    "E2 cannot give a Zaitsev product under any conditions",
+    "Carbocations are more stable than the alkenes they give"
    ],
-   "correct": 0,
-   "why": "Because the cation exists as a discrete intermediate, there is more opportunity for the more stable transition state (leading to the more stable alkene) to be favored, compared to E2's single, more geometry-constrained step.",
+   "correct": 1,
+   "why": "E1 is not under thermodynamic control: deprotonation of the cation is fast and is not reversed under solvolysis conditions, so the alkenes are not equilibrating with each other. The real reason is where the transition state sits. Starting from a cation that is already flat and electron-poor, the barrier to losing the proton is low and the transition state is reached late, when the C=C is largely formed — so the relative stabilities of the possible alkenes are already reflected in the barriers, and the more substituted one wins by a wider margin than in E2, whose transition state is earlier and also has the base's bulk to contend with.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -16188,15 +16202,15 @@
    "type": "mcq"
   },
   {
-   "q": "A substrate that has only one type of beta-hydrogen available typically gives how many distinct alkene connectivity products from E2 (ignoring E/Z isomerism)?",
+   "q": "The same base and leaving group are used on a primary, a secondary and a tertiary substrate. How do the E2 rates compare?",
    "options": [
-    "Two",
-    "One",
-    "Three",
-    "Zero, since elimination requires multiple beta-hydrogen types"
+    "1° > 2° > 3°; the base reaches the H more easily",
+    "3° > 2° > 1°; the transition state looks like the alkene",
+    "All equal; the base concentration is the same",
+    "2° > 1° > 3°; secondary is the borderline case"
    ],
    "correct": 1,
-   "why": "If there's only a single position from which a beta-hydrogen can be removed, there is only one possible carbon-skeleton outcome for the alkene, though E and Z isomers may still both form.",
+   "why": "The order is 3° > 2° > 1°, which looks like SN1's order and has nothing to do with cations — E2 never makes one. In the E2 transition state the alpha and beta carbons already share partial double-bond character, so whatever stabilizes the alkene being formed also stabilizes the transition state leading to it. Alkyl groups stabilize alkenes, so more of them means a lower barrier. Note this is about rate; which alkene forms is a separate question decided by the base's bulk and by geometry.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -16227,15 +16241,15 @@
    "type": "mcq"
   },
   {
-   "q": "In most acyclic and many cyclic substrates, efficient E2 elimination requires the leaving group and the beta-hydrogen being removed to be in what geometric relationship?",
+   "q": "The two diastereomers of 1-bromo-1,2-diphenylpropane each meet ethoxide. What is observed?",
    "options": [
-    "Anti-periplanar (roughly 180 degrees apart)",
-    "Gauche (roughly 60 degrees apart)",
-    "Syn-periplanar (roughly 0 degrees apart)",
-    "Perpendicular (roughly 90 degrees apart)"
+    "Both give the same alkene; E2 scrambles geometry",
+    "Each gives a different geometry, E from one, Z from the other",
+    "Both give E and Z in the same ratio",
+    "Neither reacts; the phenyls block the base"
    ],
-   "correct": 0,
-   "why": "This geometry lets the orbitals that are breaking and forming align properly in a single transition state, minimizing torsional strain as the pi bond develops.",
+   "correct": 1,
+   "why": "Rotate each diastereomer until the bromine and the beta hydrogen are anti-periplanar — that is the only conformation that can react — and then flatten the picture. The groups that were on one side of the Newman projection stay on that side of the new double bond, so the arrangement of phenyl and methyl across the C=C is fixed by which diastereomer went in. That is what stereospecific means, and it is the best evidence for the concerted mechanism: if anything broke first, the intermediate could rotate and both diastereomers would give the same mixture.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -16253,15 +16267,15 @@
    "type": "mcq"
   },
   {
-   "q": "2-bromobutane is treated with NaOEt, a strong, non-bulky base. What is the expected major E2 alkene product?",
+   "q": "2-Bromobutane meets NaOEt. Which product is major?",
    "options": [
-    "1-butene (the less substituted, Hofmann product)",
-    "A 50:50 mixture of 1-butene and 2-butene with no preference",
-    "2-butene (the Zaitsev product), mainly the E isomer",
-    "No alkene forms under these conditions"
+    "But-1-ene, from the terminal methyl",
+    "(E)-but-2-ene, from the internal CH₂",
+    "(Z)-but-2-ene, which forms faster",
+    "Butan-2-ol, from substitution"
    ],
-   "correct": 2,
-   "why": "A small strong base reaches the internal beta-hydrogens easily, so the more stable, more substituted double bond is favored, and the less sterically strained E geometry is typically the major stereoisomer.",
+   "correct": 1,
+   "why": "Ethoxide is strong but small, so it can reach the crowded beta hydrogen on the internal CH₂, and it does, because the alkene that results is disubstituted rather than monosubstituted — the Zaitsev product. Between the two geometries of but-2-ene, the E isomer dominates: its transition state keeps the two methyl groups on opposite sides of the forming double bond, where they do not crowd each other. But-1-ene is the minor elimination product and some butan-2-yl ethyl ether comes along from SN2, but the major product is (E)-but-2-ene.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -16366,15 +16380,15 @@
    "type": "mcq"
   },
   {
-   "q": "Switching the base on a secondary substrate from hydroxide to much bulkier tert-butoxide typically has what combined effect on E2?",
+   "q": "You need 2-methylbut-1-ene, not 2-methylbut-2-ene, from 2-bromo-2-methylbutane in one step. Which base?",
    "options": [
-    "The rate always increases dramatically with no change in selectivity",
-    "Rate may drop, but selectivity shifts to the Hofmann alkene",
-    "Selectivity shifts toward the Zaitsev alkene instead",
-    "Both rate and product distribution remain completely unchanged"
+    "Sodium ethoxide in ethanol",
+    "Potassium tert-butoxide in tert-butanol",
+    "Sodium iodide in acetone",
+    "Water, warmed"
    ],
    "correct": 1,
-   "why": "Steric bulk in the base both hinders its approach somewhat and redirects it toward whichever hydrogen is least crowded, which usually leads to the less substituted alkene and less competing SN2.",
+   "why": "The target is the less substituted alkene, which is the Hofmann product, and the way to get it is a base too bulky to reach the crowded internal hydrogen. tert-Butoxide fits: with this substrate it gives about 73% of the terminal alkene, where small ethoxide gives about 70% of the internal one. Iodide is a good nucleophile and a weak base, so it substitutes rather than eliminating; warm water gives unimolecular chemistry and, through the cation, the Zaitsev alkene again.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -16392,15 +16406,15 @@
    "type": "mcq"
   },
   {
-   "q": "In a stereochemically defined diastereomer where only one specific beta-hydrogen happens to be anti-periplanar to the leaving group, what primarily determines the regiochemistry of the E2 product?",
+   "q": "A cyclohexyl bromide's most stable chair has the bromine equatorial. What must happen before E2?",
    "options": [
-    "The relative thermodynamic stability of the possible alkenes alone",
-    "The identity of the leaving group alone",
-    "The polarity of the solvent alone",
-    "The anti-periplanar requirement, not alkene stability"
+    "The base has to be made bulkier",
+    "The ring must flip so the bromine becomes axial",
+    "The bromide must first ionize to a carbocation",
+    "Nothing — equatorial leaving groups eliminate normally"
    ],
-   "correct": 3,
-   "why": "When geometry restricts the reaction to only one accessible hydrogen, that constraint, not which alkene would otherwise be most stable, controls which product actually forms.",
+   "correct": 1,
+   "why": "On a chair, the only pairs of neighboring substituents that are genuinely anti-periplanar are trans-diaxial ones. An equatorial leaving group is roughly 60° from every hydrogen on both neighboring carbons, so no continuous orbital overlap is available and the concerted step cannot run. The ring has to flip first, which puts the bromine axial and every other substituent on the ring into its opposite position — and if those substituents are large, the cost of that flip shows up directly as a slower reaction. Menthyl chloride is the classic case.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -16498,15 +16512,17 @@
    "type": "mcq"
   },
   {
-   "q": "Tertiary substrates cannot undergo SN2 because three alkyl groups sterically block backside attack.",
+   "q": "2-Bromobutane meets NaN₃ in acetone, and separately in water. What changes?",
    "options": [
-    "True",
-    "False"
+    "Nothing — azide is a strong nucleophile in both",
+    "Acetone gives clean inverted SN2; water gives a mixture",
+    "Water gives clean SN2; acetone gives elimination",
+    "Both give mainly but-2-ene, since azide is a strong base"
    ],
-   "correct": 0,
-   "why": "No matter how strong or small the nucleophile, the geometric backside approach is physically obstructed at a tertiary carbon.",
+   "correct": 1,
+   "why": "Only the solvent moved, and for a secondary substrate that is enough to change the answer. In acetone, a polar aprotic solvent, azide is unsolvated and attacks fast: clean SN2, giving 2-azidobutane with inversion at C2. In water, azide is hydrogen-bonded and blunted while the solvent itself is strongly ionizing, so the substrate's own slow ionization starts to compete — the product becomes a mixture of inverted and racemized azide plus some butan-2-ol and a little alkene. Azide is a weak base either way, so elimination is never the main event.",
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Primary substrates essentially cannot undergo SN1 or E1 because the primary carbocation is too unstable to form.",
@@ -16572,10 +16588,10 @@
   {
    "q": "Which single factor generally has the largest influence on whether SN2 or SN1/E1 is even feasible at all for a given substrate?",
    "options": [
-    "Substrate structure (the degree of alkyl substitution at the reacting carbon)",
-    "Solvent polarity alone",
-    "Reaction temperature alone",
-    "The color of the leaving group"
+    "The degree of alkyl substitution at the reacting carbon",
+    "Solvent polarity, taken on its own",
+    "Reaction temperature, taken on its own",
+    "The molecular weight of the leaving group"
    ],
    "correct": 0,
    "why": "Substrate substitution pattern determines both whether backside attack is geometrically possible and whether a stable carbocation can form, which are the two gateway requirements for these mechanisms.",
@@ -16661,10 +16677,10 @@
   {
    "q": "A tertiary substrate is treated with a strong, bulky base like potassium tert-butoxide in a polar aprotic solvent. What is the expected major outcome?",
    "options": [
-    "SN2, since bulky bases are always good nucleophiles",
+    "SN2, since bulky bases are good nucleophiles",
     "SN1, since bulky bases promote ionization",
-    "E2, typically giving the Hofmann (less substituted) alkene as the major product",
-    "No reaction, since bulky bases cannot react with tertiary substrates"
+    "E2, giving mainly the Hofmann alkene",
+    "No reaction, since the base cannot reach"
    ],
    "correct": 2,
    "why": "SN2 is blocked by the tertiary carbon's sterics, so a strong base reaching an available beta-hydrogen drives E2, and its bulk biases the outcome toward the less hindered, less substituted alkene.",
@@ -16674,12 +16690,12 @@
   {
    "q": "Methyl iodide is treated with a strong, bulky base like potassium tert-butoxide. What is the expected outcome?",
    "options": [
-    "E2 elimination dominates, just as it would with a tertiary substrate",
-    "No reaction occurs at all",
-    "SN1 dominates, since strong bases always promote ionization",
-    "SN2 substitution still occurs, since a methyl carbon has no beta-carbon at all and therefore cannot undergo elimination"
+    "E2 elimination, as with a tertiary substrate",
+    "SN2 substitution, since there is no beta carbon",
+    "SN1, since strong bases promote ionization",
+    "No reaction under these conditions"
    ],
-   "correct": 3,
+   "correct": 1,
    "why": "Elimination requires a beta-hydrogen on an adjacent carbon, and methyl carbons have no adjacent carbon whatsoever, so substitution is the only mechanistic option available regardless of base bulk.",
    "difficulty": "medium",
    "type": "mcq"
@@ -16696,15 +16712,15 @@
    "type": "tf"
   },
   {
-   "q": "Neopentyl bromide, (CH3)3CCH2Br, is treated with NaOEt (a strong base/nucleophile). Despite the reacting carbon being primary, which pathway dominates, and why?",
+   "q": "Neopentyl bromide, (CH₃)₃C–CH₂Br, meets NaOEt in warm ethanol. What happens?",
    "options": [
-    "E2, because the neighboring quaternary carbon blocks backside attack",
-    "SN2, because primary carbons always favor substitution regardless of neighboring groups",
-    "SN1, because the leaving group departs spontaneously",
-    "No reaction occurs, since neopentyl systems are completely unreactive"
+    "E2 at the neighboring carbon, giving an alkene",
+    "Rapid SN1, since the neighbor is quaternary",
+    "Very slow SN2; elimination is not available at all",
+    "A methyl shift, then elimination to a branched alkene"
    ],
-   "correct": 0,
-   "why": "Steric hindrance for SN2 purposes depends on what's crowding the approach path, not strictly on the formal classification of the reacting carbon; a bulky neighbor can make substitution difficult even at a primary center.",
+   "correct": 2,
+   "why": "Count the beta hydrogens before proposing any elimination. Neopentyl has exactly one beta carbon and it is quaternary — three methyls and no hydrogen — so E2 is not slow here, it is impossible. The carbon bearing bromine is primary, so it will not ionize either, which rules out SN1, E1 and any rearrangement. That leaves SN2, which is allowed but throttled by the same quaternary neighbor blocking the backside: about 10⁵ times slower than ethyl bromide. Neopentyl is famous for being unreactive precisely because its one available pathway is crippled and its obvious alternative does not exist.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -16735,9 +16751,9 @@
   {
    "q": "A tertiary substrate sits in a nonpolar, non-nucleophilic, non-basic solvent (such as an inert hydrocarbon) with no added nucleophile or base. What happens, and why?",
    "options": [
-    "SN2 proceeds readily, since tertiary substrates favor substitution in nonpolar solvents",
-    "SN1/E1 proceed rapidly, since nonpolar solvents always favor ionization",
-    "Essentially no useful reaction occurs, since there is no polar solvent to stabilize ionization and no nucleophile/base to drive a bimolecular pathway",
+    "SN2 proceeds, since tertiary carbons favor substitution",
+    "SN1 and E1 proceed, since nonpolar solvents favor ionization",
+    "Essentially nothing happens, for want of both a solvent and a reagent",
     "E2 proceeds rapidly even with no base present"
    ],
    "correct": 2,
@@ -16746,15 +16762,15 @@
    "type": "mcq"
   },
   {
-   "q": "3-bromo-3-ethylpentane (tertiary) is solvolyzed separately in (a) pure water and (b) an 80:20 water:ethanol mixture. Which solvent gives the faster SN1/E1 rate, and why?",
+   "q": "You want butan-2-yl ethyl ether from 2-bromobutane, with as little alkene as possible. Which conditions?",
    "options": [
-    "The water-ethanol mixture, because ethanol is a better nucleophile",
-    "Both give identical rates, since both are polar protic solvents",
-    "The water-ethanol mixture, because it has a lower boiling point",
-    "Pure water, whose greater ionizing power stabilizes the cation"
+    "NaOEt in ethanol, refluxed",
+    "Warm ethanol, nothing added",
+    "KOtBu in tert-butanol, warmed",
+    "NaOEt in DMSO, cold"
    ],
-   "correct": 3,
-   "why": "Even among polar protic solvents, overall polarity/ionizing power can vary; diluting water with a less polar component lowers that ionizing power and slows the rate-determining ionization step.",
+   "correct": 1,
+   "why": "The substrate is secondary, so all four mechanisms are on the table and the reagent decides. Ethoxide is a strong base as well as a strong nucleophile, so adding it — in any solvent, and especially with heat — buys you mostly but-2-ene. What you want is a weak nucleophile that is an even weaker base, which is what neutral ethanol is: it cannot force a bimolecular step, the substrate ionizes slowly instead, and ethanol traps the cation to give the ether. The price is some racemization and a little E1 alkene, but it is the cleanest route to this ether from this substrate.",
    "difficulty": "hard",
    "type": "mcq"
   },

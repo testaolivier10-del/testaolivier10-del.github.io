@@ -202,34 +202,34 @@
 <script src="../assets/ochem-nav.js" defer></script>
 <script src="../assets/periodic-table.js" defer></script>
 <script>
-// Runs after the deferred scripts above it: every external script on this
-// page is deferred so the page can paint before they arrive, and deferred
-// scripts execute, in order, just before DOMContentLoaded.
+// Runs after the deferred scripts above it, which execute in order just
+// before DOMContentLoaded so the page can paint first.
 document.addEventListener('DOMContentLoaded', function(){
 (function(){
   var TOPIC_ID = 'e2';
-  // 0 explain, 1 arrow1 (base->H), 2 arrow2 (C-H->pi), 3 arrow3 (C-LG->LG), 4 predict, 5 challenge
-  var TOTAL = 6;
+  // 0 explain, 1 anti-periplanar Newman, 2-4 the three arrows, 5 predict,
+  // 6 rate law, 7 challenge. Step 1 is new: the page used to call
+  // anti-periplanar geometry decisive, never show or test it, and draw the
+  // beta hydrogen and the bromine on the same side of the flat sketch.
+  var TOTAL = 7;
   var begin = window.OchemCurriculum.beginLessonRun(TOPIC_ID, TOTAL+1);
   var step = begin.step;
   var card = document.getElementById('card');
   var progFill = document.getElementById('progFill');
   var progLabel = document.getElementById('progLabel');
 
-  // Mirrors into the concept model too, so this mechanism counts toward the
-  // same mastery Practice and Review read. Shared recorder, not a local copy:
-  // the tier/share/first-attempt rules must not drift from the lesson engine.
-  /* Which concept each step of this mechanism actually tests. Authored
-     rather than inferred: inference over the step's rendered text reads the
-     whole card, which on a mechanism page is dense with every term at once,
-     and it reliably picked one concept for the entire walkthrough. */
+  // Mirrors into the concept model, through the shared recorder rather than
+  // a local copy, so the first-attempt rules cannot drift from the lesson
+  // engine. The step-to-concept map is authored: inferring it from a card's
+  // text picked one concept for the whole walkthrough, every time.
   var STEP_CONCEPTS = {
-    1: ['curved-arrow-direction', 'basicity-vs-nucleophilicity'], // base takes the beta H
-    2: ['curved-arrow-direction', 'anti-periplanar-geometry'],    // C-H electrons become the pi bond
-    3: ['leaving-group-ability', 'curved-arrow-direction'],       // leaving group departs
-    4: ['zaitsev-hofmann', 'anti-periplanar-geometry'],           // predict the alkene
-    5: ['rate-law-kinetics', 'mechanism-selection'],              // second-order rate law
-    6: ['mechanism-selection', 'zaitsev-hofmann']                 // challenge
+    1: ['anti-periplanar-geometry'],                              // rotate into the reactive conformer
+    2: ['curved-arrow-direction', 'basicity-vs-nucleophilicity'], // base takes the beta H
+    3: ['curved-arrow-direction', 'anti-periplanar-geometry'],    // C-H electrons become the pi bond
+    4: ['leaving-group-ability', 'curved-arrow-direction'],       // leaving group departs
+    5: ['zaitsev-hofmann', 'anti-periplanar-geometry'],           // predict the alkene
+    6: ['rate-law-kinetics', 'mechanism-selection'],              // second-order rate law
+    7: ['mechanism-selection', 'zaitsev-hofmann']                 // challenge
   };
   var M = window.OchemMastery;
   var conceptRec = M ? M.lessonRecorder(TOPIC_ID) : null;
@@ -246,9 +246,8 @@ document.addEventListener('DOMContentLoaded', function(){
     window.OchemCurriculum.saveStep(TOPIC_ID, step);
   }
   function feedbackHtml(id){ return '<div class="feedback" id="' + id + '"></div>'; }
-  /* Every verdict this page shows goes through here, so it is also where the
-     reward chime is sounded. The wrong case is reported too, to reset the
-     rising run the chime walks up on a streak. See /assets/chime.js. */
+  /* Every verdict goes through here, so it is also where the chime sounds;
+     the wrong case is reported too, to reset the streak. See chime.js. */
   function showFeedback(el, good, text){
     el.className = 'feedback show ' + (good?'good':'bad');
     el.textContent = text;
@@ -268,8 +267,8 @@ document.addEventListener('DOMContentLoaded', function(){
       // bonds
       '<line x1="120" y1="110" x2="80" y2="80" stroke="var(--line)" stroke-width="2.5"/>' +
       '<line x1="120" y1="110" x2="200" y2="110" stroke="var(--line)" stroke-width="2.5"/>' +
-      '<line x1="200" y1="110" x2="260" y2="70" stroke="var(--line)" stroke-width="2.5"/>' +
-      '<line x1="200" y1="110" x2="240" y2="150" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<line x1="200" y1="110" x2="250" y2="66" stroke="var(--line)" stroke-width="2.5"/>' +
+      '<line x1="200" y1="110" x2="258" y2="152" stroke="var(--line)" stroke-width="2.5"/>' +
       '<line x1="120" y1="110" x2="90" y2="150" stroke="var(--line)" stroke-width="2.5"/>' +
       // Hb (beta hydrogen)
       '<g class="atom" data-key="hb"><circle cx="80" cy="80" r="14" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="80" y="85" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">H</text></g>' +
@@ -280,9 +279,11 @@ document.addEventListener('DOMContentLoaded', function(){
       // Ca (alpha carbon)
       '<g class="atom" data-key="ca"><circle cx="200" cy="110" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="200" y="116" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="14">C</text></g>' +
       // CH3 off Ca
-      '<circle cx="240" cy="150" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="240" y="155" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">CH₃</text>' +
-      // leaving group
-      '<g class="atom" data-key="lg"><circle cx="260" cy="70" r="16" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="260" y="75" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">Br</text></g>' +
+      '<circle cx="250" cy="66" r="15" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="250" y="71" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="11">CH₃</text>' +
+      // Br down, beta H up: the only arrangement that can react.
+      '<g class="atom" data-key="lg"><circle cx="258" cy="152" r="16" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="258" y="157" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">Br</text></g>' +
+      '<text x="118" y="48" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="10" fill="var(--muted)">β-H, up</text>' +
+      '<text x="258" y="180" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="10" fill="var(--muted)">Br, down — anti to it</text>' +
       (arrowsHtml || '') +
     '</svg></div>';
   }
@@ -295,12 +296,87 @@ document.addEventListener('DOMContentLoaded', function(){
     updateProgress();
     if(SB) SB.sync(step);
     if(step===0) renderExplain();
-    else if(step===1) renderArrow1();
-    else if(step===2) renderArrow2();
-    else if(step===3) renderArrow3();
-    else if(step===4) renderPredict();
-    else if(step===5) renderRateLaw();
+    else if(step===1) renderAntiPeriplanar();
+    else if(step===2) renderArrow1();
+    else if(step===3) renderArrow2();
+    else if(step===4) renderArrow3();
+    else if(step===5) renderPredict();
+    else if(step===6) renderRateLaw();
     else renderChallenge();
+  }
+
+  // ---- Step 1: rotate into the anti-periplanar conformation -------------
+  // A Newman down the C2-C3 bond of 2-bromobutane. Only a conformer with a
+  // HYDROGEN at 180 degrees from the bromine can eliminate.
+  var apRot = 0;
+  function apLabel(x, y, lab, fill, stroke, sw){
+    var r = lab.length > 1 ? 16 : 12;
+    return '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r + '" fill="' + fill +
+      '" stroke="' + stroke + '" stroke-width="' + sw + '"/><text x="' + x.toFixed(1) + '" y="' +
+      (y+5).toFixed(1) + '" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" ' +
+      'font-size="' + (lab.length > 1 ? 11 : 12) + '">' + lab + '</text>';
+  }
+  function newmanSvg(rot, marks){
+    var cx = 150, cy = 108, r = 52;
+    var at = function(a, R){ return { x: cx + R*Math.sin(a*Math.PI/180), y: cy - R*Math.cos(a*Math.PI/180) }; };
+    var out = '';
+    [['H',0],['CH₃',1],['H',2]].forEach(function(g){          // slots: 60, 180, 300 degrees
+      var a = [60,180,300][(g[1] + rot) % 3];
+      var p1 = at(a, r), p2 = at(a, r+20), p3 = at(a, r+36), anti = (a === 180);
+      out += '<line x1="' + p1.x.toFixed(1) + '" y1="' + p1.y.toFixed(1) + '" x2="' + p2.x.toFixed(1) +
+             '" y2="' + p2.y.toFixed(1) + '" stroke="var(--line-soft)" stroke-width="2.5"/>' +
+             apLabel(p3.x, p3.y, g[0], anti ? 'var(--tint-accent)' : 'var(--white)',
+                     anti ? 'var(--accent)' : 'var(--line)', 2);
+    });
+    out += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="var(--line)" stroke-width="2.5"/>';
+    [['Br',0],['CH₃',120],['H',240]].forEach(function(g){
+      var p2 = at(g[1], r), p3 = at(g[1], r+18), hot = (g[0] === 'Br');
+      out += '<line x1="' + cx + '" y1="' + cy + '" x2="' + p2.x.toFixed(1) + '" y2="' + p2.y.toFixed(1) +
+             '" stroke="var(--line)" stroke-width="2.5"/>' +
+             apLabel(p3.x, p3.y, g[0], 'var(--white)', hot ? 'var(--coral)' : 'var(--line)', hot ? 3 : 2);
+    });
+    out += '<text x="150" y="18" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="10.5" ' +
+           'fill="var(--coral)">Br — front carbon, fixed at the top</text>' +
+           '<text x="150" y="224" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="10.5" ' +
+           'fill="var(--muted)">' + (marks || '') + '</text>';
+    return '<div class="scene"><svg viewBox="0 0 300 234">' + out + '</svg></div>';
+  }
+  function apAnti(rot){
+    // Which back group currently sits at 180 degrees?
+    var g = [['H',0],['CH₃',1],['H',2]].filter(function(x){ return (x[1]+rot)%3 === 1; })[0];
+    return g[0];
+  }
+  function renderAntiPeriplanar(){
+    var scored = false;
+    function paint(){
+      var at180 = apAnti(apRot);
+      card.innerHTML =
+        '<div class="step-eyebrow">Step 1 · Get the geometry right</div>' +
+        '<h2 class="step-title">Before any arrow: line the bromine up with a hydrogen.</h2>' +
+        '<p class="step-body">2-Bromobutane, seen straight down the bond from the alpha carbon (front) to the beta carbon (back). E2 fires only when the hydrogen it removes is <b>anti-periplanar</b> to the leaving group — 180° round the circle, highlighted below. Rotate the back carbon until a <b>hydrogen</b> is there, then press Eliminate.</p>' +
+        newmanSvg(apRot, 'currently anti to Br: ' + at180) +
+        '<div class="choice-row">' +
+          '<button class="choice-btn" id="rotBtn">Rotate the back carbon 120°</button>' +
+          '<button class="choice-btn" id="elimBtn">Eliminate from this conformation</button>' +
+        '</div>' +
+        feedbackHtml('fb') +
+        nextButton('Continue', false);
+      var fb = card.querySelector('#fb');
+      var next = card.querySelector('#nextBtn');
+      card.querySelector('#rotBtn').addEventListener('click', function(){ apRot = (apRot+1) % 3; paint(); });
+      card.querySelector('#elimBtn').addEventListener('click', function(){
+        var ok = apAnti(apRot) === 'H';
+        if(!scored){ record(ok); scored = true; }
+        if(ok){
+          showFeedback(fb, true, 'Correct — the C–H and C–Br bonds are now parallel and opposed, so the electrons can flow continuously from one into the other as the pi bond forms. This is the conformation the flat drawings on the next three steps stand in for.');
+          next.disabled = false;
+        } else {
+          showFeedback(fb, false, 'Nothing happens. What sits 180° from the bromine is a methyl, and E2 removes a hydrogen, not a methyl. The beta hydrogens are there — just gauche, 60° round, where the orbitals do not line up. Rotate first.');
+        }
+      });
+      next.addEventListener('click', function(){ step=2; render(); });
+    }
+    paint();
   }
 
   // ---- Step 0: Explain ----
@@ -309,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function(){
       '<div class="step-eyebrow">Explain</div>' +
       '<h2 class="step-title">One step, three things moving together.</h2>' +
       '<div class="prereq-note">Builds on: conformational analysis (anti-periplanar geometry) · leaving groups · base strength</div>' +
-      '<p class="step-body">E2 is concerted, like SN2 — but instead of two arrows, it takes <b>three</b>: a base removes a hydrogen on the carbon <i>next to</i> the leaving group (the "beta" carbon), those electrons form a new π bond, and the leaving group departs — all in one step.</p>' +
+      '<p class="step-body">E2 is concerted, like SN2 — but it takes <b>three</b> arrows rather than two: a base removes a hydrogen on the carbon <i>next to</i> the leaving group (the "beta" carbon), those electrons become a new π bond, and the leaving group departs, all in one step.</p>' +
       '<p class="step-body" style="margin-bottom:0;">This only works when that beta-hydrogen and the leaving group are lined up <b>anti-periplanar</b> (opposite sides, 180° apart) — which is why E2 depends so heavily on conformation.</p>' +
       nextButton('Continue', true);
     card.querySelector('#nextBtn').addEventListener('click', function(){ step=1; render(); });
@@ -318,9 +394,9 @@ document.addEventListener('DOMContentLoaded', function(){
   // ---- Step 1: Arrow 1 — base attacks the beta hydrogen ----
   function renderArrow1(){
     card.innerHTML =
-      '<div class="step-eyebrow">Step 1 · Draw the arrow</div>' +
+      '<div class="step-eyebrow">Step 2 · Draw the arrow</div>' +
       '<h2 class="step-title">Click the base, then the beta-hydrogen it removes.</h2>' +
-      '<p class="step-body">Ethoxide’s lone pair grabs a hydrogen on the carbon next to the leaving group.</p>' +
+      '<p class="step-body">Back to the flat drawing — read it as the conformation you just built: the beta hydrogen up, the bromine down, opposed across the C–C bond. Ethoxide’s lone pair takes that hydrogen.</p>' +
       sceneSvg() +
       feedbackHtml('fb') +
       nextButton('Continue', false);
@@ -353,15 +429,15 @@ document.addEventListener('DOMContentLoaded', function(){
         }
       });
     });
-    next.addEventListener('click', function(){ step=2; render(); });
+    next.addEventListener('click', function(){ step=3; render(); });
   }
 
-  // ---- Step 2: Arrow 2 — C-H electrons form the pi bond ----
+  // ---- Step 3: Arrow 2 — C-H electrons form the pi bond ----
   function renderArrow2(){
     var doneArrow = '<path d="M 55 42 Q 65 55 72 70" stroke="var(--line)" stroke-width="2" fill="none" marker-end="url(#ahdone)"/>' +
       '<defs><marker id="ahdone" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--line)"/></marker></defs>';
     card.innerHTML =
-      '<div class="step-eyebrow">Step 2 · Draw the arrow</div>' +
+      '<div class="step-eyebrow">Step 3 · Draw the arrow</div>' +
       '<h2 class="step-title">Click the beta carbon, then the alpha carbon.</h2>' +
       '<p class="step-body">As the C–H bond breaks, those electrons become the new π bond between the two carbons.</p>' +
       sceneSvg(doneArrow) +
@@ -395,17 +471,17 @@ document.addEventListener('DOMContentLoaded', function(){
         }
       });
     });
-    next.addEventListener('click', function(){ step=3; render(); });
+    next.addEventListener('click', function(){ step=4; render(); });
   }
 
-  // ---- Step 3: Arrow 3 — C-LG bond breaks, LG leaves ----
+  // ---- Step 4: Arrow 3 — C-LG bond breaks, LG leaves ----
   function renderArrow3(){
     var doneArrows = '<path d="M 55 42 Q 65 55 72 70" stroke="var(--line)" stroke-width="2" fill="none" marker-end="url(#ahd1)"/>' +
       '<path d="M 128 100 Q 160 85 192 100" stroke="var(--line)" stroke-width="2" fill="none" marker-end="url(#ahd2)"/>' +
       '<defs><marker id="ahd1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--line)"/></marker>' +
       '<marker id="ahd2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--line)"/></marker></defs>';
     card.innerHTML =
-      '<div class="step-eyebrow">Step 3 · Draw the arrow</div>' +
+      '<div class="step-eyebrow">Step 4 · Draw the arrow</div>' +
       '<h2 class="step-title">Click the alpha carbon, then bromine.</h2>' +
       '<p class="step-body">At the same instant, the C–Br bond breaks and bromide leaves with both electrons.</p>' +
       sceneSvg(doneArrows) +
@@ -428,7 +504,7 @@ document.addEventListener('DOMContentLoaded', function(){
           record(isCorrect);
           if(isCorrect){
             done = true;
-            var arrowSvg = '<path d="M 210 95 Q 235 75 250 65" stroke="var(--coral)" stroke-width="2.5" fill="none" marker-end="url(#ahE3)"/>' +
+            var arrowSvg = '<path d="M 212 122 Q 240 128 250 141" stroke="var(--coral)" stroke-width="2.5" fill="none" marker-end="url(#ahE3)"/>' +
               '<defs><marker id="ahE3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--coral)"/></marker></defs>';
             card.querySelector('.scene svg').insertAdjacentHTML('beforeend', arrowSvg);
             showFeedback(fb, true, 'Correct — all three arrows fire together. That’s the whole E2 step.');
@@ -439,17 +515,17 @@ document.addEventListener('DOMContentLoaded', function(){
         }
       });
     });
-    next.addEventListener('click', function(){ step=4; render(); });
+    next.addEventListener('click', function(){ step=5; render(); });
   }
 
-  // ---- Step 4: Predict the product ----
+  // ---- Step 5: Predict the product ----
   function renderPredict(){
     card.innerHTML =
       '<div class="step-eyebrow">Predict</div>' +
       '<h2 class="step-title">What forms?</h2>' +
-      '<p class="step-body">All three arrows have fired.</p>' +
+      '<p class="step-body">All three arrows have fired. Note that this substrate has a <i>second</i> beta carbon — the methyl on the far side of the alpha carbon — whose hydrogens ethoxide could have taken instead. Which product came out of the arrows you drew?</p>' +
       '<div class="choice-row">' +
-        window.OchemShuffle.list(['An alkene (but-2-ene)', 'A new alcohol', 'A carbocation intermediate', 'No reaction'], 'e2:product').map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
+        window.OchemShuffle.list(['But-2-ene, plus ethanol and bromide', 'But-1-ene, plus ethanol and bromide', 'Butan-2-ol, plus bromide', 'A carbocation, which then loses a proton'], 'e2:product').map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
       '</div>' +
       feedbackHtml('fb') +
       nextButton('Continue', false);
@@ -458,39 +534,39 @@ document.addEventListener('DOMContentLoaded', function(){
     var next = card.querySelector('#nextBtn');
     card.querySelectorAll('.choice-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        var isCorrect = btn.getAttribute('data-v') === 'An alkene (but-2-ene)';
+        var isCorrect = btn.getAttribute('data-v').indexOf('But-2-ene') === 0;
         card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
         btn.classList.add(isCorrect ? 'correct' : 'wrong');
         record(isCorrect);
         if(isCorrect){
-          showFeedback(fb, true, 'Correct — removing a beta-hydrogen and the leaving group together forms a new C=C double bond: but-2-ene, plus ethanol and bromide.');
+          showFeedback(fb, true, 'Correct — the pi bond formed between the two carbons you pushed the arrow between, so the double bond is at C2–C3: but-2-ene. Taking a hydrogen off the far methyl would have given but-1-ene, the minor product here.');
           next.disabled = false;
         } else {
-          showFeedback(fb, false, 'Trace the arrows again — a new π bond formed between the two carbons.');
+          showFeedback(fb, false, 'Trace the three arrows again. Nothing ionized and nothing added oxygen — a pi bond formed between the two carbons you pushed electrons between, so the answer is an alkene; the question is which one.');
           card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
         }
       });
     });
-    next.addEventListener('click', function(){ step=5; render(); });
+    next.addEventListener('click', function(){ step=6; render(); });
   }
 
-  // ---- Step 5: rate law, and a preview of E1 ----
+  // ---- Step 6: rate law, and a preview of E1 ----
   function renderRateLaw(){
     card.innerHTML =
       '<div class="step-eyebrow">Explain</div>' +
       '<h2 class="step-title">What the "2" in E2 means — and a preview of E1.</h2>' +
-      '<p class="step-body">E2 is <b>bimolecular</b>: the base and the substrate both take part in the single concerted step, giving the rate law <b>rate = k[base][substrate]</b>. This is the exact same shape as SN2\'s rate law — makes sense, since both are single-step, concerted mechanisms driven by a nucleophile/base attacking a substrate.</p>' +
-      '<p class="step-body" style="margin-bottom:0;">Just like SN1 is the unimolecular substitution (ionize first, then react), there\'s an unimolecular elimination too: <b>E1</b>. It shares SN1\'s first step exactly — the leaving group departs on its own to form a carbocation — and then, instead of a nucleophile attacking the cation (SN1\'s path), a base simply removes a beta-hydrogen to form the double bond. E1\'s rate law is rate = k[substrate], with no base concentration in it, same shape as SN1. You\'ll get the full E1 lesson soon, but recognizing this SN1/E1 vs. SN2/E2 pairing — one-step-concerted vs. ionize-first — is the single most useful organizing idea for this whole module.</p>' +
+      '<p class="step-body">E2 is <b>bimolecular</b>: the base and the substrate both take part in the single concerted step, giving the rate law <b>rate = k[base][substrate]</b>. That is the same shape as SN2\'s rate law, which makes sense: both are single concerted steps driven by a reagent attacking the substrate.</p>' +
+      '<p class="step-body" style="margin-bottom:0;">There is an unimolecular elimination too: <b>E1</b>. It shares SN1\'s first step exactly — the leaving group departs on its own to give a carbocation — and then a base removes a beta-hydrogen instead of a nucleophile attacking the cation. Its rate law is rate = k[substrate], with no base in it, the same shape as SN1\'s. The E1 section of this chapter works that through in full; what matters here is the pairing — SN1 with E1, SN2 with E2, ionize-first against one-step-concerted — which is the most useful organizing idea in the chapter.</p>' +
       nextButton('Continue', true);
-    card.querySelector('#nextBtn').addEventListener('click', function(){ step=6; render(); });
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step=7; render(); });
   }
 
-  // ---- Step 6: Why it matters + Challenge ----
+  // ---- Step 7: Why it matters + Challenge ----
   function renderChallenge(){
     card.innerHTML =
       '<div class="step-eyebrow">Why it matters &middot; Challenge</div>' +
       '<h2 class="step-title">The base decides which hydrogen leaves.</h2>' +
-      '<div class="explain-box">This carbon had a choice of beta-hydrogens to remove, and removing this one gave the <b>more substituted</b> alkene — the <b>Zaitsev</b> (major) product, favored with small bases like ethoxide. A bulky base can’t easily reach a crowded hydrogen, so it grabs a less hindered one instead.</div>' +
+      '<div class="explain-box">Ethoxide had a choice: the hydrogen you removed, on a CH₂ between two carbons, or one of the three on the far methyl. It took the crowded one, because the alkene that results is the <b>more substituted</b> one — the <b>Zaitsev</b> product. Ethoxide is small enough to reach it; a bulky base is not, and takes the exposed methyl hydrogen instead.</div>' +
       '<p class="step-body">Which base would favor the <b>less</b> substituted "Hofmann" alkene instead?</p>' +
       '<div class="choice-row">' +
         window.OchemShuffle.list(['A bulky base, like tert-butoxide', 'A small base, like hydroxide', 'It doesn’t depend on the base'], 'e2:base').map(function(o){ return '<button class="choice-btn" data-v="' + o.replace(/"/g,'&quot;') + '">' + o + '</button>'; }).join('') +
