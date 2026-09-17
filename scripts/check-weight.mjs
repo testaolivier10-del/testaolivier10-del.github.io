@@ -279,7 +279,12 @@ const DATA_BUDGETS = [
      lesson for a student who just got something wrong. 200 covers the
      twenty-one chapters still to be rewritten at the measured 1.7 KB per
      chapter. The core file's budget is untouched; that one is first-paint. */
-  ['ochem/assets/practice-bank-why.json', 200],
+  /* 200 -> 230 during the self-study pass, for the reason given for the core
+     half above: chapter 16 landed exactly on the line with six chapters of
+     worked-solution explanations still queued. This file loads after first
+     paint, so the cost of the extra 30 KB is a later tooltip, not a slower
+     page. */
+  ['ochem/assets/practice-bank-why.json', 230],
 ];
 
 const REF_RE = /(?:href|src)="([^"]+)"/g;

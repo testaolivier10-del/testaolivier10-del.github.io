@@ -28369,7 +28369,7 @@
    "type": "mcq"
   },
   {
-   "q": "Aniline treated directly with HNO₃/H₂SO₄ gives mainly 3-nitroaniline, not the 4-nitroaniline the NH₂ group predicts. Why, and what is the standard fix?",
+   "q": "Aniline nitrated directly with HNO₃/H₂SO₄ gives about 47 % 3-nitroaniline — a meta fraction dozens of times larger than an –NH₂ group should ever allow. Why, and what is the standard fix?",
    "options": [
     "Nitric acid attacks the nitrogen rather than the ring, so a much milder nitrating agent is needed",
     "Aniline is too unreactive to nitrate, so the mixture simply has to be heated far more strongly",
@@ -28377,7 +28377,7 @@
     "The NH₂ group is genuinely a meta director, so 3-nitroaniline is the expected product here"
    ],
    "correct": 2,
-   "why": "Ask what is actually on the ring under the reaction conditions. Nitrating acid is overwhelmingly acidic and aniline is a base, so essentially all of it exists as the anilinium ion. –NH₃⁺ has no lone pair left to donate and carries a full positive charge next to the ring, which makes it a deactivating meta director — the opposite of what –NH₂ does. (Aniline also oxidizes badly in nitric acid, a second reason the direct route is a mess.) The fix is to convert the nitrogen into something that cannot be protonated: acetic anhydride gives acetanilide, whose nitrogen lone pair is shared with a carbonyl. Acetanilide is still an ortho/para director, just a milder one, so nitration goes para; hot aqueous acid or base then hydrolyzes the amide back to the free amine.",
+   "why": "Ask what is actually on the ring under the reaction conditions. Nitrating acid is overwhelmingly acidic and aniline is a base, so most of it exists as the anilinium ion. –NH₃⁺ has no lone pair left to donate and carries a full positive charge next to the ring, which makes it a deactivating meta director — the opposite of what –NH₂ does. Both species react, giving roughly 2 % ortho, 47 % meta and 51 % para: the para still comes from the trace of free amine, and the huge meta fraction is the anilinium's. Aniline also oxidizes badly in nitric acid. The fix is a nitrogen that cannot be protonated: acetic anhydride gives acetanilide, still an ortho/para director but a milder one, so nitration goes cleanly para; aqueous acid or base then hydrolyzes the amide back to the free amine.",
    "difficulty": "hard",
    "type": "mcq"
   },

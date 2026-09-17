@@ -26147,7 +26147,7 @@
    "type": "mcq"
   },
   {
-   "q": "Aniline treated directly with HNO₃/H₂SO₄ gives mainly 3-nitroaniline, not the 4-nitroaniline the NH₂ group predicts. Why, and what is the standard fix?",
+   "q": "Aniline nitrated directly with HNO₃/H₂SO₄ gives about 47 % 3-nitroaniline — a meta fraction dozens of times larger than an –NH₂ group should ever allow. Why, and what is the standard fix?",
    "options": [
     "Nitric acid attacks the nitrogen rather than the ring, so a much milder nitrating agent is needed",
     "Aniline is too unreactive to nitrate, so the mixture simply has to be heated far more strongly",

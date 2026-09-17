@@ -160,8 +160,8 @@
       "type": "draw",
       "eyebrow": "Step 1 · Attack",
       "title": "A strong electrophile (say Br⁺ from Br₂/FeBr₃) is nearby. Push one of the ring's pi bonds at it.",
-      "bodyHtml": "<p class=\"step-body\">One arrow, from a pi bond of the ring out to the electrophile. Use the C1–C2 bond as the one that attacks.</p>",
-      "molecule": "benzene",
+      "bodyHtml": "<p class=\"step-body\">One arrow, from a pi bond of the ring out to the electrophile. Use the C1–C2 bond as the one that attacks, and remember where an electron arrow has to end — on the atom that accepts the pair.</p>",
+      "molecule": "benzene-electrophile",
       "concepts": [
         "eas-mechanism",
         "alkene-pi-nucleophile",
@@ -170,14 +170,15 @@
       "arrows": [
         {
           "from": "bond:c1-c2",
-          "to": "c1"
+          "to": "e"
         }
       ],
-      "hint": "Push the C1–C2 pi bond onto C1 — that is the carbon that will bond to the incoming electrophile.",
+      "hint": "The source is the C1–C2 pi bond; the head goes on the bromine, because that is the bond being made. C1 is simply the end of the pi bond that stays behind.",
       "why": "The pi electrons form a bond to the electrophile at C1. The ring is no longer aromatic: C1 is now sp³, the loop of conjugation is broken, and the five remaining carbons hold a pentadienyl cation. Draw its resonance structures and the positive charge appears on only three of those five — the two carbons ortho to C1 and the one para to it. The two meta carbons never carry charge in any structure. This is the arenium ion (sigma complex), it is the high-energy step, and which three carbons carry that charge is the entire content of the next section.",
       "wrong": {
-        "c1>bond:c1-c2": "That arrow runs backwards. The electrons are in the pi system, so the pi bond is the source; the carbon is where they end up.",
-        "bond:c2-c3>c3": "Any pi bond could attack in principle, but the question asked for the C1–C2 bond so the numbering stays consistent through the rest of the walkthrough."
+        "e>bond:c1-c2": "That arrow runs backwards. The electrophile has an empty orbital, not a pair to give — arrows never start at a positive charge. The pi bond is the source.",
+        "bond:c1-c2>c1": "The source is right and the target is not. An arrow from a pi bond onto one of its own carbons makes that carbon a carbanion; nothing bonds to the electrophile. The head belongs on Br.",
+        "bond:c3-c4>e": "Any pi bond could attack in principle, but the question asked for the C1–C2 bond so the numbering stays consistent through the rest of the walkthrough."
       },
       "nextLabel": "What does it do now?"
     },
@@ -231,22 +232,22 @@
     {
       "type": "mcq",
       "eyebrow": "Step 4 · Direction",
-      "title": "The ring now carries an OCH₃ group. A second electrophile arrives. Where does it attack?",
-      "bodyHtml": "<p class=\"step-body\">Think about the arenium ion each option would produce, and where the positive charge sits in it.</p>",
+      "title": "Step 3 left bromobenzene. A second electrophile arrives. Where does it attack?",
+      "bodyHtml": "<p class=\"step-body\">Think about the arenium ion each option would produce, and where the positive charge sits in it. Bromine is electronegative — and it also has lone pairs.</p>",
       "options": [
-        "Meta — the group pushes the electrophile as far away as possible",
-        "Ortho and para — only those put the positive charge on the carbon bearing the OCH₃, where its lone pair can stabilize it",
-        "All positions equally — the substituent is too small to matter"
+        "Meta — bromine drains the ring, and groups that withdraw direct meta",
+        "Ortho and para — only those put the positive charge on the carbon bearing the Br, where a lone pair can stabilize it",
+        "All positions equally — the ring is deactivated, so it has lost its selectivity"
       ],
       "correctIndex": 1,
       "concepts": [
         "directing-effects",
         "resonance-delocalization"
       ],
-      "why": "Draw the three arenium ions. Attack ortho or para puts positive charge directly on the substituted carbon in one of the resonance forms, and the methoxy lone pair can donate into it — an extra, very stabilizing resonance structure. Meta attack never produces that form, so it gets no help.",
+      "why": "Draw the three arenium ions. Attack ortho or para puts positive charge directly on the carbon bearing the bromine in one of the resonance forms, and a bromine lone pair can then donate into it — an extra resonance structure with the charge on Br and every atom's octet complete. Meta attack never produces that form, so it gets no help, and bromobenzene brominates mostly para (with some ortho) to give 1,4-dibromobenzene. The halogens are the case where rate and regiochemistry come apart: induction through the sigma bond slows the ring down relative to benzene, because it reaches every position, while resonance decides where, because it only reaches ortho and para.",
       "wrong": {
-        "0": "Distance is not the mechanism. Donors direct ortho/para; it is the WITHDRAWING groups that end up meta, and even then by elimination rather than preference.",
-        "2": "Directing effects are strong — often better than 95% selectivity. A methoxy group also makes the ring react far faster than benzene itself."
+        "0": "That is induction reasoning, and induction is answering the wrong question. Bromine does withdraw, which is why bromobenzene is slower than benzene — but withdrawal through the sigma bond touches every position roughly alike, so it cannot pick one. The lone pair can, and it only reaches ortho and para.",
+        "2": "Deactivated and unselective are different claims. Bromobenzene reacts more slowly than benzene and still gives mostly the para product: the rate and the regiochemistry are decided by two different effects here."
       },
       "nextLabel": "Last one"
     },

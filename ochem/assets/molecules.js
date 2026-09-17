@@ -895,6 +895,30 @@
       caption:'Six pi electrons in a planar ring — 4n+2 with n=1.' };
   })();
 
+  /* Benzene with the electrophile actually on the page. The walkthrough's
+     first step asks for an arrow "out to the electrophile", and with only bare
+     benzene drawn the keyed arrow had to end on a ring carbon instead — which
+     is the arrow for making that carbon a carbanion, not for forming the C–E
+     bond. Br⁺ is shorthand, as the notes say: what is really there is Br₂ with
+     FeBr₃ hanging off one end, polarized far enough that the near bromine
+     behaves like this. */
+  M['benzene-electrophile'] = (function(){
+    /* ring() reads 0 as "no angle given", so -360 is how you ask for a
+       flat-top hexagon: it puts c1 at the right-hand vertex, pointing
+       straight at the electrophile. That matters mechanically, not just
+       visually — a pi-bond arrow bonds whichever end of the bond is nearer
+       the target, and the walkthrough says the bond forms at C1. */
+    var pts = ring(130, 92, 52, 6, -360), atoms = {};
+    ['c1','c2','c3','c4','c5','c6'].forEach(function(k,i){ atoms[k] = { x:pts[i].x, y:pts[i].y, r:15, label:'C', role:'pi-nucleophile' }; });
+    atoms.c1.note = 'The end of the attacking pi bond that faces the electrophile — so this is the carbon that bonds to it, and the one that goes sp³ in the arenium ion.';
+    atoms.c2.note = 'The other end of the attacking pi bond. Its electrons move; it keeps a single bond to C1 and stays part of the pi system.';
+    atoms.e = { x:256, y:92, r:16, label:'Br', charge:'\u207a', lp:3, role:'electrophile',
+      note:'The electrophile, written Br⁺ for short — in the flask it is the near bromine of a Br₂·FeBr₃ complex, polarized far enough to behave like this. Three lone pairs, no bonds, one empty orbital: the arrow has to end here.' };
+    return { name:'Benzene + Br⁺', formula:'C₆H₆ + Br⁺', atoms: atoms,
+      bonds:[{a:'c1',b:'c2',order:2},{a:'c2',b:'c3'},{a:'c3',b:'c4',order:2},{a:'c4',b:'c5'},{a:'c5',b:'c6',order:2},{a:'c6',b:'c1'}],
+      caption:'Six pi electrons that would rather stay where they are, and an electrophile strong enough to make them move.' };
+  })();
+
   /* The arenium ion, with the base that takes the proton off it. The EAS
      walkthrough could draw the attack and then had to describe the step that
      defines the reaction in prose, because no structure existed to draw it
