@@ -6217,6 +6217,497 @@ FIGURES.push({
   note: 'That fall-off is what tells induction apart from resonance in an exam question. Resonance runs the length of a conjugated system losing very little &mdash; a nitro group four bonds away across a benzene ring still moves a phenol’s pK<sub>a</sub> by three units. Induction is gone in two.',
 });
 
+
+/* ================================================================== ch5 ===
+   Alkanes & Conformations, plus one for leaving-groups. Added after a review
+   found the chapter asserting in prose the four things it is actually
+   examined on: turning a structure into a Newman, drawing a chair, telling
+   cis/trans on a ring from up/down, and the radical mechanism itself. */
+
+/* A fishhook: one barb, because it carries one electron. `curve` in the kit
+   draws a full two-barbed head, which in a radical mechanism says the wrong
+   thing about how many electrons moved. */
+function fishhook(a, b, opts = {}) {
+  const f = (v) => (Math.round(v * 100) / 100);
+  const bow = opts.bow ?? 30;
+  const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+  const dx = b.x - a.x, dy = b.y - a.y;
+  const len = Math.hypot(dx, dy) || 1;
+  const cx = mx + (-dy / len) * bow, cy = my + (dx / len) * bow;
+  let ux = b.x - cx, uy = b.y - cy;
+  const ul = Math.hypot(ux, uy) || 1; ux /= ul; uy /= ul;
+  const size = opts.size ?? 9;
+  const px = -uy, py = ux;
+  const side = opts.side ?? 1;
+  const bx = b.x - ux * size, by = b.y - uy * size;
+  const h = size * 0.6 * side;
+  return `<path class="fg-arrow" d="M${f(a.x)} ${f(a.y)} Q${f(cx)} ${f(cy)} ${f(bx)} ${f(by)}"></path>` +
+         `<path class="fg-head" d="M${f(b.x)} ${f(b.y)} L${f(bx + px * h)} ${f(by + py * h)} L${f(bx)} ${f(by)} Z"></path>`;
+}
+
+/* The single dot that makes a species a radical. */
+const dot = (x, y) => `<circle class="fg-lp" cx="${x}" cy="${y}" r="3.4"></circle>`;
+
+/* A Newman projection. Angles are degrees clockwise from straight up, which
+   is how a student reads a dihedral off the page. */
+function newman(cx, cy, r, front, back, opts = {}) {
+  const at = (a, R) => P(cx + R * Math.sin(a * Math.PI / 180), cy - R * Math.cos(a * Math.PI / 180));
+  let s = '';
+  // back spokes first, so the front circle and dot sit on top of them
+  for (const [a, lab] of back) {
+    const p1 = at(a, r), p2 = at(a, r + 21), p3 = at(a, r + 34);
+    s += `<line class="fg-bond-soft" x1="${p1.x.toFixed(2)}" y1="${p1.y.toFixed(2)}" x2="${p2.x.toFixed(2)}" y2="${p2.y.toFixed(2)}"></line>`;
+    s += text(p3.x, p3.y + 3.5, lab, { cls: 'fg-lbl', size: lab.length > 1 ? 9.5 : 11 });
+  }
+  s += `<circle class="fg-atom" cx="${cx}" cy="${cy}" r="${r}"></circle>`;
+  for (const [a, lab] of front) {
+    const p2 = at(a, r), p3 = at(a, r + 13);
+    s += `<line class="fg-bond" x1="${cx}" y1="${cy}" x2="${p2.x.toFixed(2)}" y2="${p2.y.toFixed(2)}"></line>`;
+    s += text(p3.x, p3.y + 3.5, lab, { cls: 'fg-lbl', size: lab.length > 1 ? 9.5 : 11 });
+  }
+  s += `<circle class="fg-lp-mut" cx="${cx}" cy="${cy}" r="4.5"></circle>`;
+  return s;
+}
+
+/* The chair, taken from the one already drawn in axial-equatorial (the
+   twelve-position figure), so a new drawing cannot disagree with the book's
+   own reference. Offsets are relative to the ring centre; axial is vertical
+   and alternates, and each equatorial unit vector is the one that figure
+   uses, which is parallel to the ring bond two carbons round and tilted
+   OPPOSITE to that carbon's axial. Getting that tilt backwards is the
+   classic bad chair, so it is measured here rather than re-derived. */
+const CHAIR_V = [
+  P(113.15, -18.21), P(56.57, -15.31), P(-56.57, -51.72),
+  P(-113.15, 18.21), P(-56.58, 15.31), P(56.57, 51.72),
+];
+const CHAIR_EQ = [
+  P(0.944, 0.329), P(0.613, -0.790), P(-0.994, 0.104),
+  P(-0.944, -0.329), P(-0.613, 0.790), P(0.994, -0.104),
+];
+function chair(cx, cy, k = 1) {
+  return CHAIR_V.map((v) => P(cx + v.x * k, cy + v.y * k));
+}
+const chairRing = (pts, cls) => pts.map((p, i) => bond(p, pts[(i + 1) % 6], { rFrom: 0, rTo: 0, cls })).join('');
+/* Axial: straight up on the even carbons, straight down on the odd ones. */
+const axialEnd = (pts, i, L = 34) => P(pts[i].x, pts[i].y + (i % 2 === 0 ? -L : L));
+/* Equatorial: outward, and tilted the other way from that carbon's axial. */
+const equatorialEnd = (pts, i, L = 32) => P(pts[i].x + CHAIR_EQ[i].x * L, pts[i].y + CHAIR_EQ[i].y * L);
+
+/* ---------------------------------------------------------------- ch5.1 ---
+   The conversion the section describes and never performs. */
+FIGURES.push({
+  id: 'structure-to-newman',
+  section: 'newman',
+  anchor: '<p class="step-body">Practical advice: identify the bond you are looking down before you draw anything, and label the front and back atoms on the original structure. Most Newman errors are not drawing errors but bookkeeping errors — a substituent placed on the wrong carbon.</p>',
+  alt: 'A skeletal drawing of butane with the C2 to C3 bond highlighted and the front and back carbons labeled, and beside it the anti Newman projection obtained by sighting down that bond',
+  viewBox: '0 0 760 300',
+  build() {
+    let s = '';
+    s += tag(180, 34, 'STEP 1 — MARK THE BOND, AND WHICH END IS WHICH');
+    const c1 = P(58, 178), c2 = P(116, 144), c3 = P(174, 178), c4 = P(232, 144);
+    s += bond(c1, c2, { rFrom: 0, rTo: 0 });
+    s += bond(c2, c3, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
+    s += bond(c3, c4, { rFrom: 0, rTo: 0 });
+    for (const p of [c1, c2, c3, c4]) s += atom(p.x, p.y, '', { kind: 'point' });
+    s += text(58, 200, 'C1', { cls: 'fg-sm', size: 10 });
+    s += text(232, 166, 'C4', { cls: 'fg-sm', size: 10 });
+    s += text(116, 122, 'C2', { cls: 'fg-tag-warn', size: 11 });
+    s += text(174, 202, 'C3', { cls: 'fg-tag', size: 11 });
+    s += text(116, 108, 'FRONT', { cls: 'fg-tag-warn', size: 10.5 });
+    s += text(174, 218, 'BACK', { cls: 'fg-tag', size: 10.5 });
+    s += text(150, 252, 'C2 carries CH₃ + H + H', { cls: 'fg-sm', size: 10 });
+    s += text(150, 268, 'C3 carries CH₃ + H + H', { cls: 'fg-sm', size: 10 });
+
+    s += arrow(P(296, 170), P(368, 170), { muted: true });
+    s += text(332, 152, 'put your eye', { cls: 'fg-sm', size: 9.5 });
+    s += text(332, 192, 'on the red bond', { cls: 'fg-sm', size: 9.5 });
+    s += rule(398, 56, 398, 268);
+
+    s += tag(578, 34, 'STEP 2 — DRAW WHAT EACH CARBON CARRIES');
+    s += newman(578, 160, 46,
+      [[0, 'CH₃'], [120, 'H'], [240, 'H']],
+      [[60, 'H'], [180, 'CH₃'], [300, 'H']]);
+    s += text(578, 268, 'anti — the two CH₃ groups 180° apart', { cls: 'fg-tag-good', size: 10.5 });
+    return s;
+  },
+  caption: 'The one conversion this section is examined on, done once slowly. Notice that <b>nothing is decided in the drawing</b>: step 1 is pure bookkeeping — which carbon is front, which is back, and what each of them carries besides the bond you are sighting down — and step 2 only writes that bookkeeping out at 120° intervals.',
+  note: 'Run it backwards and it is the same list. A Newman with CH₃/H/H on the dot and CH₃/H/H on the circle <i>is</i> butane sighted down C2–C3, and you can redraw the skeleton from it. Almost every mistake in this topic is a group put on the wrong one of the two carbons, which is why labelling front and back on the original structure is worth the five seconds.',
+});
+
+/* ---------------------------------------------------------------- ch5.2 ---
+   All four butane conformers. The energy curve names four and draws two. */
+FIGURES.push({
+  id: 'butane-four-conformers',
+  section: 'newman',
+  anchor: '<p class="step-body">By symmetry there are two equivalent gauche conformations and two equivalent methyl/hydrogen eclipsed ones. The <b>anti</b> conformation is the global minimum, and butane spends roughly 70% of its time there at room temperature, with most of the rest in the two gauche forms.</p>',
+  alt: 'The four named conformations of butane drawn as Newman projections in order of energy: anti, gauche, methyl-hydrogen eclipsed and syn',
+  viewBox: '0 0 760 320',
+  build() {
+    let s = '';
+    s += tag(380, 30, 'ONE ROTATION, FOUR NAMES — IN ORDER OF ENERGY');
+    const panels = [
+      { x: 108, name: 'anti', deg: '180°', kind: 'staggered', e: '0 (reference)', cls: 'fg-tag-good',
+        front: [[0, 'CH₃'], [120, 'H'], [240, 'H']], back: [[60, 'H'], [180, 'CH₃'], [300, 'H']] },
+      { x: 289, name: 'gauche', deg: '60°', kind: 'staggered', e: '+0.9', cls: 'fg-tag-good',
+        front: [[0, 'CH₃'], [120, 'H'], [240, 'H']], back: [[60, 'CH₃'], [180, 'H'], [300, 'H']] },
+      { x: 470, name: 'eclipsed', deg: '120°', kind: 'eclipsed', e: '+3.6', cls: 'fg-tag-warn',
+        front: [[0, 'CH₃'], [120, 'H'], [240, 'H']], back: [[7, 'H'], [127, 'CH₃'], [247, 'H']] },
+      { x: 651, name: 'syn', deg: '0°', kind: 'eclipsed', e: '+4.5 to 6', cls: 'fg-tag-warn',
+        front: [[0, 'CH₃'], [120, 'H'], [240, 'H']], back: [[7, 'CH₃'], [127, 'H'], [247, 'H']] },
+    ];
+    for (const p of panels) {
+      s += newman(p.x, 158, 40, p.front, p.back);
+      s += text(p.x, 262, p.name + ' — ' + p.deg, { cls: p.cls, size: 11 });
+      s += text(p.x, 280, p.kind, { cls: 'fg-sm', size: 9.5 });
+      s += text(p.x, 300, p.e + ' kcal/mol', { cls: 'fg-lbl', size: 11 });
+    }
+    for (const x of [198, 379, 560]) s += rule(x, 62, x, 290);
+    return s;
+  },
+  caption: 'The four conformers the table names, actually drawn. Read them left to right as one continuous 180° turn of the back carbon: the two methyls start apart, come to 60°, pass through each other twice, and meet head-on. The two <b>staggered</b> forms are dips and the two <b>eclipsed</b> forms are peaks, so a real sample is essentially a mixture of the first two.',
+  note: 'The gauche panel is the one to study. It is staggered — every front bond sits in a gap — and it still costs 0.9 kcal/mol, because the two methyls are only 60° apart and are bumping into each other. That is steric strain with no torsional strain anywhere near it, which is why this drawing is the cleanest definition of the difference in the chapter.',
+});
+
+/* ---------------------------------------------------------------- ch5.3 ---
+   Drawing a chair. The most-needed picture in the chapter, described in
+   words only, and every later section depends on being able to do it. */
+FIGURES.push({
+  id: 'draw-a-chair',
+  section: 'cyclohexanes',
+  anchor: '<p class="step-body">A drawable chair is a skill worth ten minutes of deliberate practice, because a badly drawn chair makes every axial/equatorial judgement afterwards unreliable. The reliable method: draw two parallel lines offset from each other, then connect their ends with two more pairs of parallel lines, so that the finished shape has <b>three sets of two parallel lines</b>. If your drawing does not have that property, it is not a chair, and the substituent directions will not come out right.</p>',
+  alt: 'Four steps building a cyclohexane chair from three pairs of parallel lines, with the finished ring showing its raised and lowered ends',
+  viewBox: '0 0 760 300',
+  build() {
+    let s = '';
+    const bases = [30, 215, 400, 585];
+    const labels = [
+      ['1 — two parallel lines,', 'offset from each other'],
+      ['2 — a second pair,', 'parallel to each other'],
+      ['3 — a third pair closes it', '— three pairs in all'],
+      ['4 — check the two ends', 'point opposite ways'],
+    ];
+    bases.forEach((ox, n) => {
+      const pts = chair(ox + 66, 168, 0.58);
+      const pairs = [[1, 2], [4, 5]];   // drawn first: the shallow pair
+      const drawn = [];
+      if (n >= 0) drawn.push([1, 2], [4, 5]);
+      if (n >= 1) drawn.push([0, 1], [3, 4]);
+      if (n >= 2) drawn.push([2, 3], [5, 0]);
+      for (const [i, j] of drawn) {
+        const hot = (n === 0 && pairs.some(([a, b]) => a === i && b === j)) ||
+                    (n === 1 && (i === 0 || i === 3)) ||
+                    (n === 2 && (i === 2 || i === 5));
+        s += bond(pts[i], pts[j], { rFrom: 0, rTo: 0, cls: hot ? 'fg-bond-hi' : 'fg-bond' });
+      }
+      if (n === 3) {
+        for (const p of pts) s += atom(p.x, p.y, '', { kind: 'point' });
+        // The two ends are the highest and lowest vertices, three bonds apart.
+        s += bond(pts[2], P(pts[2].x, pts[2].y - 20), { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
+        s += text(pts[2].x, pts[2].y - 28, 'up end', { cls: 'fg-tag-good', size: 10 });
+        s += bond(pts[5], P(pts[5].x, pts[5].y + 20), { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
+        s += text(pts[5].x, pts[5].y + 34, 'down end', { cls: 'fg-tag-good', size: 10 });
+        s += text(ox + 66, 96, 'and four carbons between them', { cls: 'fg-sm', size: 9 });
+      }
+      s += text(ox + 66, 246, labels[n][0], { cls: 'fg-tag', size: 10.5 });
+      s += text(ox + 66, 262, labels[n][1], { cls: 'fg-sm', size: 9.5 });
+    });
+    s += tag(380, 36, 'A CHAIR IS THREE PAIRS OF PARALLEL LINES — NOTHING ELSE');
+    for (const x of [200, 385, 570]) s += rule(x, 62, x, 226);
+    return s;
+  },
+  caption: 'Build it in pairs and it comes out right every time. Each step adds <b>two lines that are parallel to each other</b>, and after three steps the ring is closed and has no other property to check. A drawing that does not decompose into three such pairs is not a chair, and every axial/equatorial call made on it afterwards will be unreliable.',
+  note: 'The last panel is the test worth doing on your own drawings: the two ends must point in opposite directions, one up and one down, with the other four carbons level between them. If both ends point the same way you have drawn a boat; if all six are level you have drawn a flat hexagon with a kink in it.',
+});
+
+/* ---------------------------------------------------------------- ch5.4 ---
+   cis/trans on a ring, and the up-is-not-axial confusion, in one picture. */
+FIGURES.push({
+  id: 'cis-trans-on-rings',
+  section: 'axial-equatorial',
+  anchor: '<p class="step-body">That is a statement about the molecule, not about the drawing or the conformation. Getting from one face to the other would mean breaking a bond and remaking it, so cis stays cis for the life of the compound — which is why a cis and a trans ring are two different substances that can be bottled separately, while two chairs of the same compound cannot. (The general machinery for describing arrangements in space, and the rest of the names, belongs to <a class="chapter-ref" href="/ochem/learn.html#m-stereochemistry">Stereochemistry</a>; the up/down reading is all this chapter needs.)</p>',
+  alt: 'Flat hexagons showing cis and trans 1,2-dimethylcyclohexane with wedge and hash bonds, and a chair of the cis isomer in which one up methyl is axial and the other up methyl is equatorial',
+  viewBox: '0 0 760 330',
+  build() {
+    let s = '';
+    const hex = (cx, cy, r) => {
+      const v = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (90 - i * 60) * Math.PI / 180;
+        v.push(P(cx + r * Math.cos(a), cy - r * Math.sin(a)));
+      }
+      return v;
+    };
+    const drawHex = (cx, cy, kind) => {
+      const v = hex(cx, cy, 46);
+      let g = v.map((p, i) => bond(p, v[(i + 1) % 6], { rFrom: 0, rTo: 0 })).join('');
+      for (const p of v) g += atom(p.x, p.y, '', { kind: 'point' });
+      const t1 = P(v[0].x, v[0].y - 32);
+      const t2 = P(v[1].x + 28, v[1].y - 16);
+      g += wedge(v[0], t1, { rFrom: 0, rTo: 16 });
+      g += (kind === 'cis' ? wedge : hash)(v[1], t2, { rFrom: 0, rTo: 16 });
+      g += atom(t1.x, t1.y, 'CH₃', { r: 16, size: 9.5 });
+      g += atom(t2.x, t2.y, 'CH₃', { r: 16, size: 9.5 });
+      g += text(v[0].x - 22, v[0].y + 2, 'C1', { cls: 'fg-sm', size: 9 });
+      g += text(v[1].x + 4, v[1].y + 20, 'C2', { cls: 'fg-sm', size: 9 });
+      return g;
+    };
+    s += tag(240, 32, 'THE FLAT DRAWING SAYS WHICH FACE');
+    s += drawHex(118, 152, 'trans');
+    s += text(118, 238, 'trans — one wedge, one hash', { cls: 'fg-tag-warn', size: 10.5 });
+    s += text(118, 256, 'opposite faces: one up, one down', { cls: 'fg-sm', size: 9.5 });
+    s += drawHex(330, 152, 'cis');
+    s += text(330, 238, 'cis — two wedges', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(330, 256, 'same face: both up', { cls: 'fg-sm', size: 9.5 });
+    s += text(244, 300, 'A face cannot change without breaking a bond, so this label is permanent.', { cls: 'fg-sm', size: 10 });
+    s += rule(472, 54, 472, 300);
+
+    s += tag(618, 32, 'THE CHAIR SAYS AXIAL OR EQUATORIAL');
+    const pts = chair(600, 160, 0.72);
+    s += chairRing(pts);
+    for (const p of pts) s += atom(p.x, p.y, '', { kind: 'point' });
+    // C1 = the carbon whose axial points DOWN, so its up bond is equatorial;
+    // C2 = its neighbour, whose axial points UP. Both groups end up on the
+    // same face, which is what makes the drawing cis.
+    const eqUp = equatorialEnd(pts, 1, 34);
+    s += bond(pts[1], eqUp, { rFrom: 0, rTo: 16 });
+    s += atom(eqUp.x, eqUp.y, 'CH₃', { r: 16, size: 9 });
+    const axUp = axialEnd(pts, 2, 36);
+    s += bond(pts[2], axUp, { rFrom: 0, rTo: 16 });
+    s += atom(axUp.x, axUp.y, 'CH₃', { r: 16, size: 9 });
+    s += text(pts[1].x + 6, pts[1].y + 20, 'C1', { cls: 'fg-sm', size: 9 });
+    s += text(pts[2].x + 20, pts[2].y + 14, 'C2', { cls: 'fg-sm', size: 9 });
+    s += text(618, 250, 'the same cis compound, in one chair', { cls: 'fg-sm', size: 10 });
+    s += text(618, 270, 'C1: up and EQUATORIAL', { cls: 'fg-tag', size: 10.5 });
+    s += text(618, 286, 'C2: up and AXIAL', { cls: 'fg-tag', size: 10.5 });
+    s += text(618, 308, 'both still up, so still cis', { cls: 'fg-tag-good', size: 10.5 });
+    return s;
+  },
+  caption: 'Two different questions about the same two methyl groups. <b>Cis or trans</b> is answered by the flat drawing and is a fact about the compound: same face or opposite faces, fixed for good. <b>Axial or equatorial</b> is answered only by a chair and is a fact about the conformation, which reverses on every flip.',
+  note: 'The chair on the right is the whole of the "up is not axial" trap in one picture. Both methyls are up — that is what makes the compound cis — and one of them is axial while the other is equatorial. Flip that ring and the two labels swap over; both groups are still up, and the compound is still cis.',
+});
+
+/* ---------------------------------------------------------------- ch5.5 ---
+   The mechanism, on a real molecule, with the arrows that carry one
+   electron each. The section drew a generic X–X/R–H scheme and nothing else. */
+FIGURES.push({
+  id: 'radical-mechanism-drawn',
+  section: 'radical-halogenation',
+  anchor: '<p class="step-body"><b>Termination</b> is any step where two radicals find each other and pair up: X&middot; + X&middot;, R&middot; + X&middot;, or R&middot; + R&middot;. These consume two radicals and make none, which is what ends the chain. They are rare while the reaction runs, because the radical concentration is always tiny — two radicals have to collide, and there are very few of them in the flask at any moment.</p>',
+  alt: 'The bromination of 2-methylpropane drawn in full: homolysis of bromine with two fishhook arrows, abstraction of the tertiary hydrogen, attack of the tertiary radical on bromine, and a termination step',
+  viewBox: '0 0 760 620',
+  build() {
+    let s = '';
+    /* tert-butyl group: central carbon, three methyl vertices, and either an
+       H or an unpaired electron on the fourth position. */
+    const tBu = (cx, cy, tip) => {
+      const q = P(cx, cy);
+      const m = [P(cx, cy - 40), P(cx - 36, cy + 22), P(cx + 36, cy + 22)];
+      let g = '';
+      for (const p of m) { g += bond(q, p, { rFrom: 0, rTo: 0 }); g += atom(p.x, p.y, '', { kind: 'point' }); }
+      g += atom(q.x, q.y, '', { kind: 'point' });
+      if (tip) { g += bond(q, tip.at, { rFrom: 0, rTo: tip.r ?? 14 }); }
+      return g;
+    };
+    const HPOS = (cx, cy) => P(cx + 42, cy - 22);
+
+    // ---- INITIATION ----
+    s += tag(70, 34, 'INITIATION', { anchor: 'start' });
+    s += text(70, 52, 'radicals 0 → 2', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    const b1 = P(150, 92), b2 = P(226, 92);
+    s += bond(b1, b2);
+    s += atom(b1.x, b1.y, 'Br', { kind: 'warn' });
+    s += atom(b2.x, b2.y, 'Br', { kind: 'warn' });
+    for (const a of [150, 210, 270]) s += lonePair(b1.x, b1.y, a, { dist: 24 });
+    for (const a of [30, -30, -90]) s += lonePair(b2.x, b2.y, a, { dist: 24 });
+    s += fishhook(P(184, 86), P(160, 66), { bow: 12 });
+    s += fishhook(P(192, 86), P(216, 66), { bow: -12 });
+    s += arrow(P(266, 92), P(340, 92), { muted: true });
+    s += text(303, 76, 'hv', { cls: 'fg-sm', size: 10 });
+    s += atom(376, 92, 'Br', { kind: 'warn' }); s += dot(396, 78);
+    s += text(414, 97, '+', { cls: 'fg-lbl', size: 13 });
+    s += atom(450, 92, 'Br', { kind: 'warn' }); s += dot(470, 78);
+    s += text(650, 86, 'two fishhooks, one per electron:', { cls: 'fg-sm', size: 10 });
+    s += text(650, 102, 'the bond splits down the middle', { cls: 'fg-sm', size: 10 });
+    s += rule(40, 140, 720, 140);
+
+    // ---- PROPAGATION 1 ----
+    s += tag(70, 176, 'PROPAGATION 1', { anchor: 'start' });
+    s += text(70, 194, 'radicals 1 → 1', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    const c1 = P(190, 248);
+    const h1 = HPOS(c1.x, c1.y);
+    s += tBu(c1.x, c1.y, { at: h1, r: 13 });
+    s += atom(h1.x, h1.y, 'H', { r: 13, size: 11 });
+    s += atom(296, 200, 'Br', { kind: 'warn' }); s += dot(316, 186);
+    for (const a of [150, 210, 270]) s += lonePair(296, 200, a, { dist: 24 });
+    // C–H homolysis: one electron to the carbon, one to the bromine
+    s += fishhook(P(212, 236), P(196, 222), { bow: 10 });
+    s += fishhook(P(224, 228), P(276, 206), { bow: -18 });
+    s += arrow(P(346, 238), P(416, 238), { muted: true });
+    const c2 = P(478, 248);
+    s += tBu(c2.x, c2.y, null);
+    s += dot(c2.x + 20, c2.y - 12);
+    s += text(c2.x + 50, c2.y - 6, '3° radical', { cls: 'fg-tag', size: 10, anchor: 'start' });
+    s += text(578, 262, '+', { cls: 'fg-lbl', size: 13 });
+    s += atom(622, 258, 'H'); s += atom(664, 258, 'Br', { kind: 'warn' });
+    s += bond(P(622, 258), P(664, 258));
+    s += text(628, 198, 'the tertiary C–H is taken because it', { cls: 'fg-sm', size: 9.5 });
+    s += text(628, 214, 'leaves the most stable radical', { cls: 'fg-sm', size: 9.5 });
+    s += rule(40, 316, 720, 316);
+
+    // ---- PROPAGATION 2 ----
+    s += tag(70, 352, 'PROPAGATION 2', { anchor: 'start' });
+    s += text(70, 370, 'radicals 1 → 1', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    const c3 = P(190, 424);
+    s += tBu(c3.x, c3.y, null);
+    s += dot(c3.x + 20, c3.y - 12);
+    const d1 = P(288, 388), d2 = P(354, 388);
+    s += bond(d1, d2);
+    s += atom(d1.x, d1.y, 'Br', { kind: 'warn' });
+    s += atom(d2.x, d2.y, 'Br', { kind: 'warn' });
+    for (const a of [-90, 210] ) s += lonePair(d1.x, d1.y, a, { dist: 24 });
+    for (const a of [30, -30, -90]) s += lonePair(d2.x, d2.y, a, { dist: 24 });
+    s += fishhook(P(216, 414), P(270, 392), { bow: -18 });
+    s += fishhook(P(316, 382), P(300, 366), { bow: 12 });
+    s += fishhook(P(326, 382), P(344, 366), { bow: -12 });
+    s += arrow(P(392, 414), P(456, 414), { muted: true });
+    const c4 = P(518, 424);
+    const br4 = P(c4.x + 46, c4.y - 26);
+    s += tBu(c4.x, c4.y, { at: br4, r: 16 });
+    s += atom(br4.x, br4.y, 'Br', { kind: 'warn' });
+    s += text(632, 436, '+', { cls: 'fg-lbl', size: 13 });
+    s += atom(672, 432, 'Br', { kind: 'warn' }); s += dot(692, 418);
+    s += text(744, 350, '2-bromo-2-methylpropane,', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+    s += text(744, 366, 'and a fresh Br• to run it again', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+    s += rule(40, 494, 720, 494);
+
+    // ---- TERMINATION ----
+    s += tag(70, 530, 'TERMINATION', { anchor: 'start' });
+    s += text(70, 548, 'radicals 2 → 0', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    const c5 = P(200, 566);
+    s += tBu(c5.x, c5.y - 4, null);
+    s += dot(c5.x + 20, c5.y - 16);
+    s += atom(300, 560, 'Br', { kind: 'warn' }); s += dot(282, 546);
+    s += fishhook(P(226, 550), P(258, 542), { bow: -14 });
+    s += fishhook(P(282, 556), P(250, 562), { bow: -14 });
+    s += arrow(P(342, 556), P(406, 556), { muted: true });
+    const c6 = P(468, 566);
+    const br6 = P(c6.x + 46, c6.y - 26);
+    s += tBu(c6.x, c6.y - 4, { at: br6, r: 16 });
+    s += atom(br6.x, br6.y, 'Br', { kind: 'warn' });
+    s += text(650, 550, 'same product, but the chain', { cls: 'fg-sm', size: 9.5 });
+    s += text(650, 566, 'stops here — count the radicals', { cls: 'fg-sm', size: 9.5 });
+    return s;
+  },
+  caption: 'Bromination of 2-methylpropane, drawn out. Every arrow here has <b>one barb</b>, because every arrow moves one electron, and two of them are needed wherever a bond breaks or forms. Nothing carries a charge at any point — if a step you have drawn produces a cation or an anion, it was not a radical step.',
+  note: 'The last two rows make the same molecule and are not the same stage. Propagation 2 hands back a bromine radical, so the chain carries on; the termination step below it consumes both radicals and stops. That is why the stage is read off the radical count and never off the product.',
+});
+
+/* ---------------------------------------------------------------- ch5.6 ---
+   Why the sluggish reagent is the selective one. The argument is about
+   where along the coordinate the barrier sits, which is a picture. */
+FIGURES.push({
+  id: 'early-late-transition-state',
+  section: 'radical-halogenation',
+  anchor: '<p class="step-body">Put the two together. Chlorine’s abstraction is exothermic, so its transition state is early and reactant-like: the C–H has barely stretched, the radical has barely formed, and a difference in radical stability of a couple of kcal/mol has almost nothing to act on. Bromine’s abstraction is endothermic, so its transition state is late and product-like: the radical is essentially fully formed by the time the barrier is reached, and every bit of its stability is already showing up in the barrier height. Same 2 kcal/mol gap between a 3° and a 1° radical; bromine collects nearly all of it and chlorine collects almost none.</p>',
+  alt: 'Two reaction-energy diagrams for hydrogen abstraction, one downhill with an early transition state for chlorine and one uphill with a late transition state for bromine',
+  viewBox: '0 0 760 340',
+  build() {
+    let s = '';
+    const panel1 = (ox, title, y0, y1, peakX, peakY, cls, tsLabel, dh) => {
+      let g = '';
+      const x0 = ox + 30, x1 = ox + 280;
+      g += rule(x0, 250, x1, 250);
+      g += rule(x0, 250, x0, 74);
+      g += text(ox + 155, 44, title, { cls, size: 11.5 });
+      const px = x0 + (x1 - x0) * peakX;
+      g += `<path class="fg-bond-hi" d="M${x0} ${y0} C${x0 + (px - x0) * 0.55} ${y0} ${px - 26} ${peakY} ${px} ${peakY} C${px + 26} ${peakY} ${x1 - (x1 - px) * 0.55} ${y1} ${x1} ${y1}"></path>`;
+      g += `<line class="fg-dash" x1="${px}" y1="${peakY}" x2="${px}" y2="250"></line>`;
+      g += text(px, 268, tsLabel, { cls: 'fg-tag', size: 10 });
+      g += text(x0 + 4, y0 - 12, 'R–H + X•', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+      g += text(x1 - 4, y1 + (y1 > y0 ? 18 : -12), 'R• + H–X', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+      g += text(ox + 155, 296, dh, { cls: 'fg-lbl', size: 11 });
+      g += text(ox + 155, 316, 'reaction coordinate →', { cls: 'fg-sm', size: 9 });
+      return g;
+    };
+    s += panel1(40, 'CHLORINE — DOWNHILL, EARLY TS', 170, 212, 0.30, 118, 'fg-tag-warn', 'peak sits early', 'ΔH ≈ −5 · selectivity 3°:1° ≈ 5 : 1');
+    s += rule(390, 60, 390, 300);
+    s += panel1(420, 'BROMINE — UPHILL, LATE TS', 212, 158, 0.72, 92, 'fg-tag-good', 'peak sits late', 'ΔH ≈ +11 · selectivity 3°:1° ≈ 1600 : 1');
+    s += text(380, 336, 'Hammond: a transition state resembles whichever side it is closer to in energy.', { cls: 'fg-sm', size: 10 });
+    return s;
+  },
+  caption: 'The selectivity argument is a claim about <i>where</i> the barrier sits, so it is easier to see than to say. Chlorine\'s abstraction runs downhill, so the peak comes early and the structure at the top still looks like the alkane — the radical has barely begun to form, so how stable it would be barely matters.',
+  note: 'Bromine\'s runs uphill, so the peak comes late and the structure at the top already looks like the radical. Every kcal/mol of radical stability is therefore already priced into the barrier, which is why a 2 kcal/mol gap between a tertiary and a primary radical becomes a factor of over a thousand in rate for bromine and a factor of five for chlorine.',
+});
+
+/* ---------------------------------------------------------------- ch5.7 ---
+   For chapter 2: the worked example that runs R–OH + HBr in prose, drawn. */
+FIGURES.push({
+  id: 'alcohol-to-bromide-steps',
+  section: 'leaving-groups',
+  anchor: '<p><b>Step 3 — bromide attacks.</b> The bromide already in solution bonds to the carbon as water departs, giving 1-bromobutane.</p>',
+  alt: '1-butanol converted to 1-bromobutane by HBr in three drawn steps: an oxygen lone pair takes the proton from HBr, bromide attacks the carbon from the far side, and water leaves, giving 1-bromobutane',
+  viewBox: '0 0 760 480',
+  build() {
+    let s = '';
+    /* 1-butanol and its relatives, drawn skeletally with the heteroatom on
+       the left, so the carbon under attack is the first chain vertex. */
+    const chain = (hx, hy, hLabel, charge) => {
+      const big = hLabel.length > 2;
+      const r = big ? 19 : 15;
+      const o = P(hx, hy), c1 = P(hx + 40, hy + 22), c2 = P(hx + 80, hy),
+            c3 = P(hx + 120, hy + 22), c4 = P(hx + 160, hy);
+      let g = bond(o, c1, { rFrom: r, rTo: 0 });
+      g += bond(c1, c2, { rFrom: 0, rTo: 0 });
+      g += bond(c2, c3, { rFrom: 0, rTo: 0 });
+      g += bond(c3, c4, { rFrom: 0, rTo: 0 });
+      for (const q of [c1, c2, c3, c4]) g += atom(q.x, q.y, '', { kind: 'point' });
+      g += atom(o.x, o.y, hLabel, { r, size: big ? 10 : 12, kind: hLabel === 'Br' ? 'warn' : 'plain' });
+      if (charge) g += text(o.x + r + 5, o.y - r + 4, charge, { cls: 'fg-tag-warn', size: 13 });
+      return { g, o, c1, r };
+    };
+
+    // ---------- STEP 1: protonate ----------
+    s += tag(40, 40, 'STEP 1 \u2014 PROTONATE THE OXYGEN', { anchor: 'start' });
+    const brA = P(56, 150), hA = P(112, 150);
+    s += bond(brA, hA);
+    s += atom(brA.x, brA.y, 'Br', { kind: 'warn' });
+    s += atom(hA.x, hA.y, 'H');
+    for (const ang of [90, 180, 270]) s += lonePair(brA.x, brA.y, ang, { dist: 24 });
+    const A = chain(168, 128, 'HO', null);
+    s += A.g;
+    for (const ang of [135, 225]) s += lonePair(A.o.x, A.o.y, ang, { dist: 24 });
+    s += curve(P(146, 140), P(126, 146), { bow: 16 });      // lone pair \u2192 H
+    s += curve(P(92, 142), P(70, 134), { bow: 14 });        // H\u2013Br bond \u2192 Br
+    s += arrow(P(376, 142), P(438, 142), { muted: true });
+    const B = chain(478, 128, 'H\u2082O', '+');
+    s += B.g;
+    s += text(716, 146, '+  Br\u207b', { cls: 'fg-lbl', size: 12, anchor: 'end' });
+    s += text(380, 206, 'One lone pair takes the proton and the H\u2013Br pair goes to bromide \u2014 two arrows, one step.', { cls: 'fg-sm', size: 10 });
+    s += text(380, 226, 'What has to leave is now neutral water, not hydroxide.', { cls: 'fg-tag-good', size: 10.5 });
+    s += rule(40, 252, 720, 252);
+
+    // ---------- STEPS 2 AND 3: displacement ----------
+    s += tag(40, 288, 'STEPS 2 AND 3 \u2014 WATER LEAVES AS BROMIDE ARRIVES', { anchor: 'start' });
+    const C = chain(150, 344, 'H\u2082O', '+');
+    s += C.g;
+    const nu = P(C.c1.x + 26, C.c1.y + 58);
+    s += atom(nu.x, nu.y, 'Br', { kind: 'warn' });
+    s += text(nu.x + 20, nu.y - 11, '\u2212', { cls: 'fg-tag-warn', size: 14 });
+    for (const ang of [90, 150, 30]) s += lonePair(nu.x, nu.y, ang, { dist: 24 });
+    s += curve(P(nu.x - 4, nu.y - 18), P(C.c1.x + 4, C.c1.y + 12), { bow: 14 });
+    s += curve(P(C.c1.x - 16, C.c1.y - 10), P(C.o.x + 10, C.o.y + 18), { bow: -14 });
+    s += arrow(P(376, 358), P(438, 358), { muted: true });
+    const D = chain(478, 344, 'Br', null);
+    s += D.g;
+    s += text(560, 416, '1-bromobutane  +  H\u2082O', { cls: 'fg-tag-good', size: 11 });
+    s += text(380, 452, 'Bromide arrives on the far side of the carbon at the same moment the C\u2013O bond breaks:', { cls: 'fg-sm', size: 10 });
+    s += text(380, 470, 'one concerted step, because a primary carbon has no cation worth forming.', { cls: 'fg-sm', size: 10 });
+    return s;
+  },
+  caption: 'The same flask twice over. With NaBr there is no step 1, so the only way forward would be to push HO<sup>−</sup> off a carbon, and that step does not happen. HBr supplies a proton first, and once the oxygen is protonated the group that has to leave is <b>neutral water</b> rather than hydroxide — seventeen pK<sub>a</sub> units of difference, from one proton.',
+  note: 'Steps 2 and 3 are drawn together on purpose. On a primary carbon like this one there is no carbocation worth forming, so water does not depart and wait — the bromide arrives on the far side of the carbon at the same moment the C–O bond breaks. Draw it as two separate events and you have quietly invented a primary carbocation, which is the commonest way this mechanism is written wrongly.',
+});
+
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;
 

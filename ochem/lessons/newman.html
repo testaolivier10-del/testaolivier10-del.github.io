@@ -148,7 +148,10 @@ document.addEventListener('DOMContentLoaded', function(){
       return '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="var(--muted)" stroke-width="3"/>';
     }
     var frontAngles = [0, 120, 240];
-    var backAngles = kind === 'staggered' ? [60, 180, 300] : [0, 120, 240];
+    // Eclipsed is conventionally drawn a few degrees off 0 so the back bonds
+    // are visible behind the front ones. Drawn at exactly the front angles the
+    // back bonds vanish underneath them and the button shows a bare Y.
+    var backAngles = kind === 'staggered' ? [60, 180, 300] : [8, 128, 248];
     var svg = '<div class="scene"><svg viewBox="0 0 300 120">';
     backAngles.forEach(function(a){ svg += backLine(a); });
     frontAngles.forEach(function(a){ svg += frontLine(a); });
@@ -193,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
               btn.classList.add(isCorrect ? 'correct' : 'wrong');
               api.record(isCorrect);
-              api.showFeedback(fb, isCorrect, 'A is staggered — the back (gray) lines sit exactly between the front (black) lines, 60° away from each. B is eclipsed, with each back line hidden directly behind a front line.');
+              api.showFeedback(fb, isCorrect, 'A is staggered — each back (gray) line sits squarely in the gap between two front (black) lines, 60° from each. In B the back lines peek out from just behind the front ones: that few degrees is a drawing convention so you can see both, and it means 0°, not “almost staggered”.');
               next.disabled = false;
             });
           });
@@ -206,8 +209,8 @@ document.addEventListener('DOMContentLoaded', function(){
         title: 'Which conformation of ethane is lower in energy?',
         options: ['Staggered — substituents are as far apart as possible', 'Eclipsed — substituents reinforce each other', 'They\'re exactly equal in energy'],
         correctIndex: 0,
-        correctFeedback: 'Correct — staggered minimizes torsional strain from eclipsing bond electron clouds, making it the lower-energy, preferred conformation.',
-        wrongFeedback: 'Eclipsing bonds means their electron clouds repel each other (torsional strain) — that\'s higher energy, not lower.'
+        correctFeedback: 'Correct. Staggering is what avoids <b>torsional strain</b>, and the reason it is worth avoiding is hyperconjugation: only when the bonds are staggered does each filled C–H orbital line up with an empty C–H antibonding (sigma*) orbital on the neighbor, and that stabilizing overlap is lost the moment they eclipse.',
+        wrongFeedback: 'Eclipsing costs energy rather than saving it. Staggering lets each filled C–H orbital overlap an empty antibonding orbital on the next carbon — worth about 1 kcal/mol per pair — and eclipsing throws that away.'
       },
       {
         type: 'mcq',
@@ -216,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function(){
         options: ['The molecule is permanently locked in the staggered form', 'The C–C bond rotates extremely fast — staggered and eclipsed are not isolable, separate molecules', 'Rotation requires breaking the C–C bond'],
         correctIndex: 1,
         correctFeedback: 'Correct. A barrier this small is crossed constantly by ordinary thermal motion — conformations are different snapshots of one continuously rotating molecule, not different compounds.',
-        wrongFeedback: 'A 2.9 kcal/mol barrier is very low — thermal energy at room temperature easily crosses it billions of times per second. No bond breaking is involved in rotation around a single bond.'
+        wrongFeedback: 'A 2.9 kcal/mol barrier is very low — thermal energy at room temperature crosses it some tens of billions of times per second. No bond breaking is involved in rotation around a single bond.'
       },
       {
         type: 'explain',
@@ -233,10 +236,15 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'Of butane\'s four named conformations, which is the global energy minimum?',
-        options: ['Gauche — methyls 60° apart', 'Totally eclipsed — methyls directly overlapping', 'Anti — methyls 180° apart, staggered, no steric clash'],
-        correctIndex: 2,
-        correctFeedback: 'Correct — anti has both the torsional-strain advantage of being staggered and no steric clash between the two bulky methyl groups, making it the single lowest-energy conformation of butane.'
+        title: 'Sight down the C2–C3 bond of 2,3-dimethylbutane. Each carbon carries two methyls and one H. How many gauche CH₃/CH₃ interactions does its best (lowest-energy) conformation have, and what do they cost?',
+        options: [
+          'None — a staggered conformation always escapes gauche strain entirely',
+          'Two, at 0.9 kcal/mol each: about 1.8 kcal/mol above a strain-free reference',
+          'Three, at 0.9 kcal/mol each, because every front methyl has a back methyl 60° away',
+          'One, at 0.9 kcal/mol, the same as butane\'s gauche conformation'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. With two methyls on each carbon there is no way to arrange them so that none is 60° from another: the best staggered conformer still has two gauche CH₃/CH₃ pairs, about 1.8 kcal/mol. That is the point of the per-interaction values — they let you price a conformer you have never seen, instead of remembering four numbers for butane.'
       }
     ]
   });

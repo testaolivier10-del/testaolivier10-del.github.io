@@ -142,22 +142,33 @@
 // scripts execute, in order, just before DOMContentLoaded.
 document.addEventListener('DOMContentLoaded', function(){
 (function(){
-  function chairPair(){
-    return '<div class="scene"><svg viewBox="0 0 320 150">' +
-      '<polyline points="20,90 80,60 150,90 210,60 280,90 220,110 150,90" fill="none" stroke="var(--line)" stroke-width="2.5"/>' +
-      '<line x1="80" y1="60" x2="80" y2="20" stroke="var(--muted)" stroke-width="2.5"/>' +
-      '<g class="atom" data-key="before"><circle cx="80" cy="14" r="10" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="80" y="18" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">CH₃</text></g>' +
-      '<text x="150" y="10" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="12" fill="var(--muted)">axial here</text>' +
+  // Both chairs are real six-membered rings, drawn with the same geometry as
+  // the written section's twelve-position figure. The flipped ring is the
+  // same six vertices reflected about the ring's mid-height, which is what a
+  // flip does: the raised end goes down and the lowered end comes up.
+  var RING      = [[256.2,80.5],[208.1,83.0],[111.9,52.1],[63.8,111.5],[111.9,109.0],[208.1,140.0]];
+  var RING_FLIP = RING.map(function(p){ return [p[0], 192 - p[1]]; });
+  function chairSvg(pts, from, to, key, caption, capY){
+    var ring = pts.map(function(p){ return p.join(','); }).join(' ');
+    return '<div class="scene"><svg viewBox="0 0 320 186">' +
+      '<polygon points="' + ring + '" fill="none" stroke="var(--line)" stroke-width="2.5" stroke-linejoin="round"/>' +
+      '<line x1="' + from[0] + '" y1="' + from[1] + '" x2="' + to[0] + '" y2="' + to[1] + '" stroke="var(--muted)" stroke-width="2.5"/>' +
+      '<g class="atom" data-key="' + key + '"><circle cx="' + to[0] + '" cy="' + to[1] + '" r="12" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/>' +
+      '<text x="' + to[0] + '" y="' + (to[1] + 4) + '" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">CH\u2083</text></g>' +
+      '<text x="160" y="' + capY + '" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="12" fill="var(--muted)">' + caption + '</text>' +
     '</svg></div>';
+  }
+  // The methyl sits on the same carbon throughout. Before the flip its bond is
+  // the vertical one (axial); after the flip the bond from that same carbon
+  // that still points UP is the outward-angled one (equatorial). The group
+  // never changes which face of the ring it is on.
+  function chairPair(){
+    return chairSvg(RING, RING[0], [256.2, 50.5], 'before', 'axial \u2014 and pointing UP', 24);
   }
   function chairFlipped(){
-    return '<div class="scene"><svg viewBox="0 0 320 150">' +
-      '<polyline points="20,60 80,90 150,60 210,90 280,60 220,40 150,60" fill="none" stroke="var(--line)" stroke-width="2.5"/>' +
-      '<line x1="80" y1="90" x2="50" y2="105" stroke="var(--muted)" stroke-width="2.5"/>' +
-      '<g class="atom" data-key="after"><circle cx="38" cy="110" r="10" fill="var(--tint-accent)" stroke="var(--line)" stroke-width="2"/><text x="38" y="114" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">CH₃</text></g>' +
-      '<text x="150" y="130" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="12" fill="var(--muted)">equatorial now</text>' +
-    '</svg></div>';
+    return chairSvg(RING_FLIP, RING_FLIP[0], [284.5, 101.6], 'after', 'equatorial \u2014 and STILL pointing up', 178);
   }
+
 
   window.OchemLessonEngine.start({
     topicId: 'ring-flips',
@@ -189,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function(){
             host.innerHTML = chairFlipped();
             flipBtn.disabled = true;
             api.record(true);
-            api.showFeedback(fb, true, 'The same methyl group, on the same carbon, is now equatorial. Nothing about the molecule\'s connectivity changed — only the three-dimensional shape of the ring did.');
+            api.showFeedback(fb, true, 'The same methyl group, on the same carbon, is now equatorial — and look at where it points: still up, out of the same face of the ring. That is the test for a correct flip. Axial and equatorial swap; up and down never do. If your redrawn chair changes both, you rotated the page instead of flipping the ring.');
             next.disabled = false;
           });
           next.addEventListener('click', api.advance);
@@ -217,13 +228,13 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'The barrier is small enough to cross constantly, but not zero.',
-        bodyHtml: '<p class="step-body">The energy barrier for a full ring flip is about 10-11 kcal/mol for unsubstituted cyclohexane. That\'s noticeably larger than the ~2.9 kcal/mol barrier for simple rotation around a single ethane C–C bond, but still small enough that, at room temperature, a given cyclohexane molecule flips between its two chairs thousands of times per second.</p><p class="step-body" style="margin-bottom:0;">This means you can never isolate "the axial conformer" and "the equatorial conformer" of a monosubstituted cyclohexane as two separate bottles of chemical — they\'re the same molecule, constantly interconverting. What you observe experimentally is always a time-averaged mixture, weighted by A-values, of both chairs.</p>'
+        bodyHtml: '<p class="step-body">The energy barrier for a full ring flip is about 10-11 kcal/mol for unsubstituted cyclohexane. That\'s noticeably larger than the ~2.9 kcal/mol barrier for simple rotation around a single ethane C–C bond, but still small enough that, at room temperature, a given cyclohexane molecule still flips between its two chairs roughly a hundred thousand times per second — about a million times slower than that ethane rotation, and still far too fast to catch.</p><p class="step-body" style="margin-bottom:0;">This means you can never isolate "the axial conformer" and "the equatorial conformer" of a monosubstituted cyclohexane as two separate bottles of chemical — they\'re the same molecule, constantly interconverting. What you observe experimentally is always a time-averaged mixture, weighted by A-values, of both chairs.</p>'
       },
       {
         type: 'explain',
         eyebrow: 'Why it matters',
         title: 'Reactions can only happen in the chair that has the right geometry.',
-        bodyHtml: '<div class="explain-box">Since the molecule constantly ring-flips, it can always sample whichever chair a reaction needs — as long as that chair is accessible (not blocked by an enormous A-value substituent locking the ring one way). This becomes essential in the next lesson and in E2 elimination (<a class=\"chapter-ref\" href=\"/ochem/learn.html#m-substitution-elimination\">Substitution &amp; Elimination</a>, which already depends on this material): E2 requires the leaving group to be axial, so a molecule reacts through whichever of its two interconverting chairs happens to have that leaving group in the axial position.</div>'
+        bodyHtml: '<div class="explain-box">Since the molecule constantly ring-flips, it can always sample whichever chair a reaction needs — and it does so even when that chair is the minority one. A substituent with an enormous A-value does not stop the flip in principle; it makes the other chair so rare that the reaction through it becomes dramatically slower. This becomes essential in the next lesson and in E2 elimination (<a class=\"chapter-ref\" href=\"/ochem/learn.html#m-substitution-elimination\">Substitution &amp; Elimination</a>, which already depends on this material): E2 requires the leaving group to be axial, so a molecule reacts through whichever of its two interconverting chairs happens to have that leaving group in the axial position.</div>'
       },
       {
         type: 'final',

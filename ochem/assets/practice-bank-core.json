@@ -9207,24 +9207,24 @@
    "type": "mcq"
   },
   {
-   "q": "Which conformation about a C–C single bond is generally lowest in energy?",
+   "q": "A Newman projection down the C2–C3 bond of butane shows the front methyl pointing straight up and the back methyl 60° away from it. Which conformation is this, and what does it cost?",
    "options": [
-    "Fully eclipsed",
-    "Anti (staggered, 180°)",
-    "Gauche",
-    "Syn-eclipsed"
+    "Anti, and it is the reference point at 0 kcal/mol",
+    "Gauche, about 0.9 kcal/mol above the best conformer",
+    "Syn-eclipsed, the highest point on the whole rotation",
+    "Methyl-hydrogen eclipsed, about 3.6 kcal/mol up"
    ],
    "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "How many staggered and how many eclipsed conformations exist per full 360° rotation of a simple ethane-like C–C bond?",
+   "q": "Using the per-interaction values (H/H eclipsed ≈ 1.0, H/CH₃ eclipsed ≈ 1.4 kcal/mol), estimate the rotational barrier of propane about its C1–C2 bond.",
    "options": [
-    "2 staggered, 4 eclipsed",
-    "6 staggered, 0 eclipsed",
-    "3 staggered, 3 eclipsed",
-    "1 staggered, 1 eclipsed"
+    "About 1.4 kcal/mol, from the single CH₃/H eclipse and nothing else",
+    "About 2.9 kcal/mol, the same barrier that ethane has",
+    "About 3.4 kcal/mol, from one CH₃/H and two H/H eclipses",
+    "About 4.2 kcal/mol, from three CH₃/H eclipses at once"
    ],
    "correct": 2,
    "difficulty": "hard",
@@ -9333,26 +9333,26 @@
    "type": "mcq"
   },
   {
-   "q": "For n-butane, which staggered conformation about the C2-C3 bond is lowest in energy?",
+   "q": "For 1,2-dibromoethane, which conformation about the C–C bond is lowest in energy?",
    "options": [
-    "Gauche, with the two methyl groups 60 degrees apart",
-    "Anti, with the two methyl groups 180 degrees apart",
-    "Fully eclipsed methyl-methyl",
-    "They are all equal in energy"
+    "The conformer with the two bromines 180° apart and staggered",
+    "The conformer with the two bromines eclipsing each other at 0°",
+    "The conformer with the two bromines 60° apart and staggered",
+    "All three staggered conformers are identical in energy here"
    ],
-   "correct": 1,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "In the gauche conformation of butane, the dihedral angle between the two methyl groups is approximately:",
+   "q": "A molecule has four different substituents spread over the two carbons of a rotating bond. Can its conformations still be called anti and gauche?",
    "options": [
-    "30 degrees",
-    "120 degrees",
-    "60 degrees",
-    "180 degrees"
+    "No — those names were defined for butane and extend to nothing else",
+    "No — they describe the arrangement on the front carbon alone",
+    "Yes — every staggered conformer of any molecule is called anti",
+    "Yes — they describe the angle between a nominated reference pair"
    ],
-   "correct": 2,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -9413,26 +9413,26 @@
    "type": "tf"
   },
   {
-   "q": "Among the eclipsed conformations of butane, the highest-energy one occurs when:",
+   "q": "2-Methylbutane is sighted down its C2–C3 bond. How many staggered conformers are there, and how much gauche CH₃/CH₃ strain does the best one carry?",
    "options": [
-    "A methyl group eclipses a hydrogen",
-    "Two hydrogens eclipse each other",
-    "The two methyl groups eclipse each other directly",
-    "All conformations are equally high"
+    "Three staggered conformers, and the two best each carry one gauche",
+    "Three staggered conformers, one of which escapes gauche strain entirely",
+    "Two staggered conformers, both carrying two gauche interactions each",
+    "Six staggered conformers, and the best of them carries none at all"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Comparing the two distinct eclipsed conformations of butane, which is higher in energy: methyl-eclipsing-methyl, or methyl-eclipsing-hydrogen?",
+   "q": "An eclipsed CH₃/CH₃ pair costs far more than three times an eclipsed H/H pair. What accounts for the excess?",
    "options": [
-    "Methyl-eclipsing-hydrogen",
-    "They are equal",
-    "Neither is eclipsed",
-    "Methyl-eclipsing-methyl"
+    "Steric strain, on top of the torsional cost both pairs share",
+    "Torsional strain, which large groups feel and small ones do not",
+    "Ring strain contributed by the four-carbon chain looping round",
+    "An attraction between the methyls that raises the energy instead"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -9483,14 +9483,16 @@
    "type": "mcq"
   },
   {
-   "q": "Individual gauche and anti conformers of butane can be isolated and stored as separate pure samples at room temperature, the way cis and trans stereoisomers can.",
+   "q": "Butane is anti roughly 70% of the time at room temperature, even though the anti-to-gauche gap is only 0.9 kcal/mol. What does that show?",
    "options": [
-    "True",
-    "False"
+    "That the 70% figure comes from the barrier rather than the gap",
+    "That population is proportional to the gap, giving 0.9 to 1",
+    "That gaps under 2 kcal/mol leave a mixture essentially even",
+    "That population depends exponentially on the energy gap"
    ],
-   "correct": 1,
+   "correct": 3,
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "As the substituents on a rotating C-C bond get larger (ethane to propane to butane), the eclipsed-conformation energy barriers generally:",
@@ -9505,14 +9507,14 @@
    "type": "mcq"
   },
   {
-   "q": "In a Newman projection of butane viewed down C2-C3, with C2 as the front atom, what three groups are attached to the back carbon, C3?",
+   "q": "A Newman projection carries CH₃, H and H on the front dot, and CH₂CH₃, H and H on the back circle. What compound is it, and which bond is being sighted down?",
    "options": [
-    "A methyl group (C4) and two hydrogens",
-    "Three hydrogens only",
-    "Two methyl groups and one hydrogen",
-    "One methyl group and one hydrogen only"
+    "Butane, sighted down C2–C3",
+    "Pentane, sighted down C2–C3",
+    "2-Methylbutane, sighted down C2–C3",
+    "Hexane, sighted down C3–C4"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -9582,21 +9584,23 @@
     "90 degrees",
     "120 degrees",
     "180 degrees",
-    "109.5 degrees"
+    "111 degrees"
    ],
    "correct": 3,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Cyclohexane has a total of six carbon atoms in its ring.",
+   "q": "Ring strain is not guessed from a drawing but measured. Which experiment gives it?",
    "options": [
-    "True",
-    "False"
+    "The heat of combustion, against 157.4 kcal/mol per CH₂",
+    "The boiling point, against a straight chain of the same mass",
+    "The C–H stretching frequency in the infrared spectrum, band by band",
+    "The density of the liquid at room temperature and pressure"
    ],
    "correct": 0,
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "In the boat conformation of cyclohexane, the main source of steric strain comes from:",
@@ -9667,12 +9671,12 @@
    "type": "mcq"
   },
   {
-   "q": "A cyclohexane ring can interconvert between how many distinct chair conformations via ring flipping?",
+   "q": "Cyclopropane and cyclobutane have similar total ring strain (27.5 and 26.3 kcal/mol), but cyclobutane puckers while cyclopropane cannot. What does cyclobutane gain by puckering?",
    "options": [
-    "2",
-    "1",
-    "3",
-    "4"
+    "Relief from eclipsing, bought by worse bond angles",
+    "Relief from angle strain, bought by accepting more eclipsing",
+    "Relief from both kinds of strain at once, at no cost whatever",
+    "A lower molecular weight per carbon atom in the ring"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -9691,26 +9695,28 @@
    "type": "mcq"
   },
   {
-   "q": "Which conformation has eclipsing interactions along its ring C-C bonds: the chair, or the boat?",
+   "q": "Two isomers have the same formula, one noticeably more strained than the other. Which releases more heat on complete combustion?",
    "options": [
-    "The chair",
-    "Both have identical eclipsing",
-    "The boat",
-    "Neither has any eclipsing"
+    "Neither — identical formulas give identical heats of combustion",
+    "The less strained one, which burns more readily",
+    "The more strained one, which starts from a higher energy",
+    "It depends on which isomer has the higher boiling point"
    ],
    "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "On a cyclohexane ring, each carbon offers two distinct types of positions where a substituent can sit: axial and equatorial.",
+   "q": "Rank cyclopropane, cyclobutane, cyclopentane and cyclohexane by total ring strain, highest first.",
    "options": [
-    "True",
-    "False"
+    "cyclobutane > cyclopropane > cyclohexane > cyclopentane",
+    "cyclopropane > cyclobutane > cyclopentane > cyclohexane",
+    "cyclopropane > cyclopentane > cyclobutane > cyclohexane",
+    "cyclohexane > cyclopentane > cyclobutane > cyclopropane"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "The half-chair conformation of cyclohexane is best described as:",
@@ -9737,26 +9743,26 @@
    "type": "mcq"
   },
   {
-   "q": "The activation barrier for a full cyclohexane ring flip, passing through half-chair transition states, is approximately:",
+   "q": "Cycloheptane and cyclooctane carry 6.2 and 9.7 kcal/mol of strain even though their bond angles are close to ideal. Where does it come from?",
    "options": [
-    "0.5 kcal/mol",
-    "11 kcal/mol",
-    "50 kcal/mol",
-    "100 kcal/mol"
+    "Angle strain, from being forced well above 109.5 degrees",
+    "Nothing real — the numbers are rounding error in the measurement",
+    "Transannular strain, from hydrogens across the ring",
+    "Electrostatic repulsion between the ring carbon atoms themselves"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Which type of strain is essentially eliminated in the chair but present along the 'sides' of the boat conformation, where neighboring C-H bonds line up directly?",
+   "q": "A conformation of cyclohexane is described as a genuine but shallow energy minimum that a molecule briefly occupies. Which one is it?",
    "options": [
-    "Electrostatic repulsion between ring carbons",
-    "Strain from sp2 hybridization",
-    "Torsional (eclipsing) strain",
-    "Hydrogen bonding strain"
+    "The half-chair, at 10–11 kcal/mol above the chair",
+    "The planar hexagon, at 120° angles",
+    "The symmetric boat, at 6.5 kcal/mol above the chair",
+    "The twist-boat, at 5.5 kcal/mol above the chair"
    ],
-   "correct": 2,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -9783,14 +9789,16 @@
    "type": "mcq"
   },
   {
-   "q": "Correctly ordering all four named cyclohexane conformations from lowest to highest energy gives: chair, twist-boat, boat, half-chair.",
+   "q": "Cyclopentane's angles in a planar form would be 108°, essentially ideal, yet it still puckers into an envelope. Why?",
    "options": [
-    "True",
-    "False"
+    "To reduce eclipsing, at the cost of a few degrees of angle",
+    "To reduce angle strain, which a planar five-ring has plenty of",
+    "To let one carbon swing clear of the ring plane entirely",
+    "To bring its hydrogens closer together across the middle"
    ],
    "correct": 0,
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "In one complete chair-to-chair ring flip pathway (going through the boat family), how many half-chair transition states are crossed?",
@@ -9827,14 +9835,14 @@
    "type": "mcq"
   },
   {
-   "q": "During chair-to-chair ring flipping at equilibrium, which boat-family conformation is actually transiently populated: the symmetric boat, or the twist-boat?",
+   "q": "A student argues that cyclohexane is strain-free because six-membered rings are simply immune to strain. What is wrong with that?",
    "options": [
-    "The symmetric boat, because it is the most stable boat-family form",
-    "Both are populated equally",
-    "The twist-boat, because it is lower in energy",
-    "Neither; the ring skips the boat family entirely"
+    "Nothing — six-membered rings genuinely cannot experience strain",
+    "Cyclohexane escapes the same demands only by puckering into a chair",
+    "Cyclohexane does carry about 6 kcal/mol of strain, so it is false",
+    "Strain is defined only for rings of five carbons or fewer than that"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -9909,14 +9917,14 @@
    "type": "mcq"
   },
   {
-   "q": "On a given carbon of a cyclohexane chair, how many positions are available: how many axial and how many equatorial?",
+   "q": "A chair carries a methyl that is axial and pointing up on C1. Where must a second substituent sit to be cis to it and equatorial?",
    "options": [
-    "2 axial, 0 equatorial",
-    "0 axial, 2 equatorial",
-    "1 axial, 1 equatorial",
-    "2 axial, 2 equatorial"
+    "On C3, where the equatorial bond points up",
+    "On C2, where the equatorial bond points up",
+    "On C4, where the axial bond points up",
+    "Nowhere — a cis partner to an axial-up group is always axial"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -9933,26 +9941,26 @@
    "type": "mcq"
   },
   {
-   "q": "How many axial positions are available in total around a cyclohexane chair?",
+   "q": "Methylcyclohexane has an A-value of 1.7 kcal/mol. Using RT ≈ 0.59 kcal/mol at 298 K, what equatorial:axial ratio does that predict?",
    "options": [
-    "6",
-    "3",
-    "9",
-    "12"
+    "About 3:1, roughly 75% equatorial",
+    "About 1.7:1, roughly 63% equatorial",
+    "About 18:1, roughly 95% equatorial",
+    "About 200:1, roughly 99.5% equatorial"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "How many equatorial positions are available in total around a cyclohexane chair?",
+   "q": "A substituent with an A-value of 4.9 kcal/mol is better than 99.9% equatorial. What do chemists use that for?",
    "options": [
-    "3",
-    "6",
-    "9",
-    "12"
+    "As a conformational anchor, to study one known chair",
+    "As a way to stop the ring flipping, so no other chair exists",
+    "As a way to raise the flip barrier and slow the interconversion",
+    "As a substitute for measuring A-values, which it makes needless"
    ],
-   "correct": 1,
+   "correct": 0,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -10047,12 +10055,12 @@
    "type": "mcq"
   },
   {
-   "q": "For tert-butylcyclohexane, the equatorial population at equilibrium is approximately:",
+   "q": "Chlorine is a larger and heavier atom than carbon, yet –Cl has an A-value of about 0.5 against –CH₃'s 1.7. What does that tell you A-value is measuring?",
    "options": [
-    "About 60 percent",
-    "About 95 percent",
-    "About 50 percent",
-    "Greater than 99.9 percent"
+    "The mass of the substituent, which chlorine carries in a compact form",
+    "The electronegativity of the substituent, which disfavors equatorial",
+    "The number of atoms in the substituent rather than their size",
+    "The width of the substituent as the ring sees it, not its mass"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -10093,36 +10101,38 @@
    "type": "mcq"
   },
   {
-   "q": "An axial substituent on C1 of a cyclohexane ring has 1,3-diaxial interactions with substituents on C3 and C5.",
+   "q": "Isopropyl scores 2.2 and tert-butyl 4.9 — a jump far bigger than the one from methyl (1.7) to isopropyl. What causes it?",
    "options": [
-    "True",
-    "False"
+    "tert-Butyl is heavier, and A-value rises with mass above a threshold",
+    "Isopropyl can turn a C–H toward the ring; tert-butyl cannot",
+    "tert-Butyl is electron-donating and isopropyl is not, which shifts it",
+    "Isopropyl hydrogen-bonds to the ring in a way tert-butyl cannot"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
-   "type": "tf"
+   "type": "mcq"
   },
   {
-   "q": "For a monosubstituted cyclohexane, an axial substituent experiences how many distinct 1,3-diaxial interactions with the ring?",
+   "q": "Why is a 1,3-diaxial interaction described as the ring's version of gauche butane?",
    "options": [
-    "1",
-    "3",
-    "2",
-    "4"
+    "Because both involve eclipsed bonds held at a dihedral of 0°",
+    "Because both are measured by combustion rather than calculated",
+    "Because both are the same repulsion at about 60°",
+    "Because both disappear when the sample is cooled below −90 °C"
    ],
    "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "The free energy difference (delta G) favoring the equatorial conformer of methylcyclohexane over the axial conformer is approximately:",
+   "q": "An axial substituent on C1 clashes with the axial hydrogens on C3 and C5. How many such interactions does it have, and how does that relate to its A-value?",
    "options": [
-    "0.1 kcal/mol",
-    "10 kcal/mol",
-    "25 kcal/mol",
-    "About 1.7 kcal/mol"
+    "One, and the A-value is that single interaction",
+    "Two, and the A-value is roughly the sum of both",
+    "Four, one to each neighboring carbon in both directions",
+    "Six, one to every other position on the ring"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -10205,12 +10215,12 @@
    "type": "tf"
   },
   {
-   "q": "For a cyclohexane substituent capable of intramolecular hydrogen bonding in certain multiply-substituted systems, which of the following is the best general caution about A-value-based predictions?",
+   "q": "Which of these would you expect to have the largest A-value?",
    "options": [
-    "A-values are purely steric and can be overridden by other effects",
-    "A-values always perfectly predict the conformer ratio with no exceptions",
-    "A-values apply only to aromatic rings",
-    "A-values cannot be measured experimentally"
+    "–C(CH₃)₃, a tert-butyl group",
+    "–CN, a nitrile",
+    "–Br, a bromine",
+    "–OH, a hydroxyl group"
    ],
    "correct": 0,
    "difficulty": "hard",
@@ -10267,14 +10277,14 @@
    "type": "mcq"
   },
   {
-   "q": "During a cyclohexane ring flip, equatorial substituents become:",
+   "q": "A chair has a bromine axial and pointing up on C1 and a methyl equatorial and pointing up on C3. After a correct ring flip, what are they?",
    "options": [
-    "Still equatorial, but on a different carbon",
-    "Neither axial nor equatorial",
-    "Part of the ring itself",
-    "Axial"
+    "Br equatorial and up; CH₃ axial and up",
+    "Br equatorial and down; CH₃ axial and down",
+    "Br axial and up; CH₃ equatorial and up, unchanged",
+    "Br axial and down; CH₃ equatorial and down"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -10289,14 +10299,16 @@
    "type": "tf"
   },
   {
-   "q": "A cyclohexane ring flip requires breaking carbon-carbon sigma bonds in the ring.",
+   "q": "Why can a ring flip happen at all without breaking any bonds?",
    "options": [
-    "True",
-    "False"
+    "Because one C–C bond opens briefly and recloses on the other side",
+    "Because the ring passes through a planar hexagon on the way",
+    "Because rotating about the ring's single bonds reaches the other chair",
+    "Because a hydrogen migrates from one ring carbon to the next one"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "When a ring flip occurs, what happens to whether a given substituent is on the 'up' face or the 'down' face of the ring?",
@@ -10343,14 +10355,14 @@
    "type": "tf"
   },
   {
-   "q": "In total, how many distinct chair conformations can a single cyclohexane ring adopt, related to each other by ring flipping?",
+   "q": "The ring-flip barrier is about 10–11 kcal/mol against 2.9 for rotating ethane. Roughly how do the two rates compare at room temperature?",
    "options": [
-    "1",
-    "3",
-    "2",
-    "6"
+    "Flipping is about ten times slower, at 10⁹ per second",
+    "Flipping is about a thousand times slower, at 10⁷ per second",
+    "They are comparable, both around 10¹⁰ per second",
+    "Flipping is about a million times slower, at 10⁵ per second"
    ],
-   "correct": 2,
+   "correct": 3,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -10379,14 +10391,16 @@
    "type": "mcq"
   },
   {
-   "q": "A ring flip can convert a diequatorial substituent arrangement into a diaxial arrangement for certain disubstitution patterns, such as trans-1,4-dimethylcyclohexane.",
+   "q": "For which disubstitution pattern does a ring flip convert a diequatorial arrangement into a diaxial one?",
    "options": [
-    "True",
-    "False"
+    "cis-1,2 and cis-1,4",
+    "trans-1,2 and trans-1,4",
+    "cis-1,3 and trans-1,2",
+    "Every pattern, since a flip always reverses both labels"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "For trans-1,4-dimethylcyclohexane, which conformer is more stable at equilibrium?",
@@ -10447,14 +10461,14 @@
    "type": "mcq"
   },
   {
-   "q": "Why does a monosubstituted cyclohexane show no energy change upon ring flipping only when the substituent is hydrogen?",
+   "q": "Why are the two chairs of cis-1,2-dimethylcyclohexane equal in energy, while those of the trans isomer are not?",
    "options": [
-    "Because hydrogen is the only substituent that can be axial",
-    "Because flipping just swaps one H for another",
-    "Because hydrogen does not participate in ring flipping",
-    "Because all substituents give the same result as hydrogen"
+    "Because cis rings cannot flip, so there is only one chair to consider",
+    "Because the cis isomer has a smaller total A-value than the trans does",
+    "Because cis on adjacent carbons forces one methyl axial either way",
+    "Because the cis isomer's methyls sit on different carbons from the trans"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -10493,24 +10507,26 @@
    "type": "mcq"
   },
   {
-   "q": "A ring flip of trans-1,2-dimethylcyclohexane converts a diequatorial arrangement of the two methyl groups into a diaxial arrangement.",
+   "q": "trans-1,4-Di-tert-butylcyclohexane sits almost entirely in one conformation. Which, and why?",
    "options": [
-    "True",
-    "False"
+    "The diaxial chair, since two tert-butyls repel less pointing apart",
+    "The diequatorial chair, since diaxial would cost nearly 10 kcal/mol",
+    "The twist-boat, since neither chair takes two tert-butyl groups",
+    "Neither — the two chairs are populated equally at equilibrium here"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
-   "q": "Why can ring-flip conformers of a disubstituted cyclohexane differ in energy, while ring-flip conformers of plain cyclohexane cannot?",
+   "q": "You redraw a chair, and in the new drawing every substituent has kept both its axial/equatorial label and its up/down face. What happened?",
    "options": [
-    "Because substituents break the axial/equatorial symmetry",
-    "Because disubstituted rings cannot adopt a true chair conformation",
-    "Because disubstituted cyclohexanes do not undergo ring flipping",
-    "There is no real difference; both always have equal-energy conformers"
+    "A correct and complete ring flip of the chair",
+    "A rotation of the drawing, which changes nothing",
+    "A conversion to the twist-boat conformation instead",
+    "A change of configuration at one of the ring carbons"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -10561,14 +10577,14 @@
    "type": "mcq"
   },
   {
-   "q": "Which factor tends to slow down the rate of cyclohexane ring flipping?",
+   "q": "Does adding a bulky substituent such as tert-butyl slow the rate at which a cyclohexane ring flips?",
    "options": [
-    "Bulky substituents on the ring, which raise the energy of transition states along the flip pathway",
-    "Lowering the temperature has no effect on flip rate",
-    "Smaller ring size",
-    "Using a nonpolar solvent"
+    "Yes — the barrier roughly doubles, so flipping is far slower",
+    "Yes — the ring can no longer reach the half-chair transition state",
+    "No — the barrier is little changed; the populations shift instead",
+    "No — bulky groups lower the barrier by favoring the twist-boat"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   }
@@ -10587,14 +10603,14 @@
    "type": "mcq"
   },
   {
-   "q": "A tert-butyl group on cyclohexane is almost always found in the equatorial position because:",
+   "q": "trans-1,2-Dimethylcyclohexane: add up both chairs and give the preference.",
    "options": [
-    "It is too small to matter",
-    "1,3-diaxial strain is too large",
-    "Tert-butyl cannot be axial by rule",
-    "It prefers to eclipse other groups"
+    "3.4 kcal/mol, from two axial methyls against none at all",
+    "1.7 kcal/mol, from one axial methyl against none at all",
+    "About 2.5 kcal/mol, after the diequatorial gauche is subtracted",
+    "Zero — the two chairs are mirror situations and so they tie"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -10607,18 +10623,18 @@
     "They cannot coexist"
    ],
    "correct": 2,
-   "difficulty": "hard",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "For a disubstituted cyclohexane, the overall most stable chair conformation is generally the one that minimizes:",
+   "q": "cis-1,3-Dimethylcyclohexane. Which chair dominates, and roughly by how much?",
    "options": [
-    "The number of carbon atoms in the ring",
-    "The total number of hydrogens in the molecule",
-    "The ring's overall size",
-    "Total 1,3-diaxial (steric) strain from substituents in axial positions"
+    "The diequatorial chair, by roughly 5.4 kcal/mol",
+    "The diaxial chair, by roughly 3.4 kcal/mol",
+    "Neither — one methyl is axial in either chair, so they tie",
+    "The diequatorial chair, by exactly 1.7 kcal/mol"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -10635,36 +10651,40 @@
    "type": "mcq"
   },
   {
-   "q": "Can cis-1,4-disubstituted cyclohexane achieve a diequatorial conformation?",
+   "q": "You are given a wedge/dash hexagon with a methyl on a wedge at C1 and an ethyl on a dash at C4. What is the first thing to write down?",
    "options": [
-    "Yes, always",
-    "No, it must always have one substituent axial and one equatorial",
-    "Only if the substituents are identical",
-    "Only at very low temperature"
+    "The A-values of both groups, before anything is drawn",
+    "The faces: methyl up, ethyl down, which makes them trans",
+    "Which group is larger, since the larger one takes equatorial",
+    "The number of axial positions on the ring"
    ],
    "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Cis-1,3-disubstituted cyclohexane can achieve a diequatorial conformation.",
+   "q": "cis-1-tert-Butyl-4-methylcyclohexane. Which chair wins?",
    "options": [
-    "True",
-    "False"
+    "The one with tert-butyl axial and methyl equatorial, by 3.2 kcal/mol",
+    "Neither — cis-1,4 rings have two equivalent chairs",
+    "The one with methyl axial and tert-butyl equatorial, by 3.2 kcal/mol",
+    "The one placing both groups equatorial, by 6.6 kcal/mol"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
-   "q": "Trans-1,3-disubstituted cyclohexane can achieve a diequatorial conformation.",
+   "q": "Why does the pattern reverse between 1,2 and 1,3 rings — trans gives diequatorial on 1,2, but cis gives it on 1,3?",
    "options": [
-    "True",
-    "False"
+    "Because 1,3 substituents are further apart and so interact differently",
+    "Because axial directions alternate, so 1,2 carbons oppose and 1,3 match",
+    "Because 1,3 rings cannot flip, leaving only one chair available",
+    "Because A-values are measured on a different basis for 1,3 patterns"
    ],
    "correct": 1,
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "For trans-1,2-disubstituted cyclohexane, the preferred arrangement, when possible, is:",
@@ -10679,14 +10699,14 @@
    "type": "mcq"
   },
   {
-   "q": "Can cis-1,2-disubstituted cyclohexane achieve a diequatorial conformation?",
+   "q": "A ring carries an OH (A-value 0.9) and a tert-butyl (4.9) trans on carbons 1 and 4. Predict the dominant conformer and the preference.",
    "options": [
-    "Yes, in one of its two chair forms",
-    "Only with identical substituents",
-    "Only in the boat conformation",
-    "No, it must always have one substituent axial and one equatorial"
+    "Both equatorial, favored by about 5.8 kcal/mol over both axial",
+    "Both axial, favored by about 4.0 kcal/mol",
+    "tert-Butyl axial and OH equatorial, favored by about 4.0 kcal/mol",
+    "The two chairs are equal, since the groups are on different carbons"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -10727,14 +10747,14 @@
    "type": "mcq"
   },
   {
-   "q": "To estimate the relative stability of two chair conformers of a disubstituted cyclohexane, chemists typically sum the A-values of whichever groups happen to be axial in each conformer and then:",
+   "q": "On a cyclohexane ring, which pair of substituents on adjacent carbons can be anti-periplanar to each other?",
    "options": [
-    "Ignore the totals entirely",
-    "Always pick the conformer with more substituents",
-    "Average the two totals together",
-    "Pick the conformer with the smaller sum"
+    "Two equatorial groups, which are 180° apart",
+    "An axial and an equatorial group, which are 180° apart",
+    "One axial-up and one axial-down group",
+    "Any adjacent pair, since a ring flip can reach 180° either way"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -10822,11 +10842,11 @@
    "q": "Using approximate A-values (methyl about 1.7 kcal/mol), the energy difference between the diequatorial and diaxial conformers of trans-1,2-dimethylcyclohexane is roughly:",
    "options": [
     "About 0.1 kcal/mol",
-    "Roughly 3 to 4 kcal/mol",
     "About 20 kcal/mol",
+    "Roughly 2.5 kcal/mol",
     "There is no energy difference between them"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -10843,14 +10863,16 @@
    "type": "mcq"
   },
   {
-   "q": "It is always true that a disubstituted cyclohexane can achieve a diequatorial conformation, regardless of whether the substituents are cis or trans and regardless of their ring positions (1,2-, 1,3-, or 1,4-).",
+   "q": "A student concludes that any disubstituted cyclohexane can reach a diequatorial conformation. Where does that go wrong?",
    "options": [
-    "True",
-    "False"
+    "Nowhere — with enough flipping every ring reaches diequatorial",
+    "It is available only when the pattern matches: trans on 1,2 and 1,4, cis on 1,3",
+    "It is available only for rings carrying two identical substituent groups",
+    "It is unavailable as soon as one substituent is larger than a methyl group"
    ],
    "correct": 1,
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Which general rule correctly summarizes when a diequatorial conformation is geometrically available for a disubstituted cyclohexane?",
@@ -10983,14 +11005,14 @@
    "type": "mcq"
   },
   {
-   "q": "Two radicals combine into one neutral molecule. Which stage?",
+   "q": "Chlorination of propane. Six primary hydrogens, two secondary, and chlorine prefers secondary over primary by about 4 to 1 per hydrogen. What is the product ratio?",
    "options": [
-    "Initiation",
-    "Propagation",
-    "Termination",
-    "Substitution"
+    "About 80% of the secondary product, since it is four times more reactive",
+    "About 57% of the secondary product and 43% of the primary",
+    "About 75% of the primary product, since there are three times as many",
+    "Exactly 50:50, since the two effects cancel completely"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -11031,14 +11053,14 @@
    "type": "mcq"
   },
   {
-   "q": "Per hydrogen, chlorination prefers tertiary over primary by roughly what factor?",
+   "q": "2-Methylpropane has nine primary hydrogens and one tertiary. Chlorine prefers tertiary over primary by about 5 to 1 per hydrogen. Which product dominates?",
    "options": [
-    "About 1600",
-    "About 5",
-    "About 100",
-    "About 1, no preference"
+    "The primary chloride, at about 64%",
+    "The tertiary chloride, at about 64%",
+    "The tertiary chloride, at about 99%",
+    "The two are formed in equal amounts"
    ],
-   "correct": 1,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -11051,19 +11073,19 @@
     "It is larger and more hindered"
    ],
    "correct": 0,
-   "difficulty": "easy",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Why is the very reactive chlorine radical unselective?",
+   "q": "Bond dissociation energies: a secondary C–H is about 98 kcal/mol, H–Cl is 103 and H–Br is 87.5. What do those numbers say about the two abstraction steps?",
    "options": [
-    "It is too small to distinguish",
-    "It uses a different mechanism",
-    "It is in fact the more selective of the two",
-    "Its transition state comes early"
+    "Both are exothermic, so both transition states come early",
+    "Both are endothermic, so both transition states come late",
+    "Chlorine's is endothermic by about 5 and bromine's exothermic by about 11",
+    "Chlorine's is exothermic by about 5 and bromine's endothermic by about 11"
    ],
    "correct": 3,
-   "difficulty": "medium",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -11091,14 +11113,14 @@
    "type": "mcq"
   },
   {
-   "q": "The relative rate figures for halogenation are quoted per what?",
+   "q": "How many different monochlorination products can butane, CH₃CH₂CH₂CH₃, give?",
    "options": [
-    "Per carbon atom",
-    "Per gram of substrate",
-    "Per molecule of alkane",
-    "Per hydrogen"
+    "Four, one for each carbon",
+    "Two: substitution at an end carbon or at a middle carbon",
+    "Three, since the two middle carbons differ",
+    "One, because chlorination always goes to the most substituted carbon"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -11175,24 +11197,24 @@
    "type": "mcq"
   },
   {
-   "q": "Which of these is NOT a termination step?",
+   "q": "Which of these steps is NOT a termination step?",
    "options": [
-    "X + X giving X-X, ending the chain",
-    "R + X giving R-X",
-    "R + R giving R-R",
-    "X + R-H giving R + H-X"
+    "CH₃• + •CH₃ → CH₃CH₃",
+    "Br• + •Br → Br₂",
+    "CH₃• + Br₂ → CH₃Br + Br•",
+    "CH₃• + •Br → CH₃Br"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Why does bromine water distinguish an alkene from an alkane?",
+   "q": "Bromine water is decolorized by a compound with a double bond but not by an alkane. What is the difference?",
    "options": [
-    "An alkane needs light to react",
-    "Alkenes are inert to bromine",
-    "Both react identically",
-    "Alkanes decolorize it noticeably faster"
+    "The alkane needs light or heat before it will touch bromine at all",
+    "Alkenes are inert to bromine in every condition",
+    "The two react at the same rate under all conditions",
+    "Alkanes decolorize bromine water noticeably faster"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -11211,26 +11233,26 @@
    "type": "mcq"
   },
   {
-   "q": "Which alkane bond is attacked in radical halogenation?",
+   "q": "Fluorine and iodine are not used for radical halogenation of alkanes. What rules each out?",
    "options": [
-    "A C-C bond",
-    "A C-H bond",
-    "No bond is broken",
-    "Only bonds next to a heteroatom"
+    "Both are too unreactive to abstract a hydrogen at any temperature",
+    "Both react, but the products decompose before they can be isolated",
+    "Fluorine's abstraction is far too exothermic; iodine's is uphill",
+    "Neither forms radicals under UV light, their bonds being too strong"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "You need one clean product from a substrate with one tertiary C-H. Which halogen?",
+   "q": "You need to install a bromine at the single tertiary position of 2-methylpropane, cleanly. Which conditions, and what result do you expect?",
    "options": [
-    "Either works equally well",
-    "Neither; use another route",
-    "Chlorine, being more reactive",
-    "Bromine, being more selective"
+    "Br₂ with UV light, giving about 99% of the tertiary bromide",
+    "Cl₂ with UV light, then swap the chlorine for bromine",
+    "Br₂ in a dark flask, giving the tertiary bromide by polar substitution",
+    "NBS with UV light, which is the only way to reach a tertiary position"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -11271,14 +11293,14 @@
    "type": "mcq"
   },
   {
-   "q": "Why are alkanes called the inert skeleton of organic chemistry?",
+   "q": "Radical bromination of butane at C2 creates a new stereocenter. What is the stereochemical outcome, and why?",
    "options": [
-    "No lone pair or partial charge",
-    "They are thermally unstable",
-    "They react with almost everything",
-    "They contain no carbon at all"
+    "A single enantiomer, set by the face the bromine approaches from",
+    "A single enantiomer, since the chain reaction is stereospecific",
+    "No stereocenter forms at all, since radicals cannot produce one",
+    "A racemic mixture, since the planar radical is open on both faces"
    ],
-   "correct": 0,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   }

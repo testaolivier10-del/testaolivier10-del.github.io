@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function(){
         eyebrow: 'Explain',
         title: 'Alkanes are defined by what they will not do — and then there is one reaction.',
         bodyHtml: '<p class="step-body">Every bond in an alkane is C–C or C–H, both close to nonpolar. There is no lone pair to donate, no empty orbital to accept, no partial charge for a nucleophile or an electrophile to aim at. Nothing in the first eight chapters attacks an alkane, and that is the point of them: they are the inert skeleton everything else hangs off.</p>' +
-          '<p class="step-body">Given a halogen and either <b>heat or ultraviolet light</b>, though, an alkane will swap a hydrogen for a halogen. The condition is not decoration. Br₂ and an alkane in a dark flask at room temperature do nothing at all — which is exactly why bromine water is the classic test that tells an alkene from an alkane. The light is what starts the chain, and without it there is no reaction to have.</p>' +
+          '<p class="step-body">Given a halogen and either <b>heat or ultraviolet light</b>, though, an alkane will swap a hydrogen for a halogen. The condition is not decoration. Br₂ and an alkane in a dark flask at room temperature do nothing at all. The light is what starts the chain, and without it there is no reaction to have. (Looking ahead: a molecule with a double bond decolorizes bromine water in the dark, which is why that is the classic test for one — the reaction behind it is taught in <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-alkenes-alkynes\">Alkenes &amp; Alkynes</a>.)</p>' +
           '<p class="step-body" style="margin-bottom:0;">The mechanism is unlike anything else in this course: no charges, no nucleophiles, no arrows pushing pairs of electrons. Every bond you have broken so far broke <b>heterolytically</b> — both electrons leaving with one atom, giving a cation and an anion. A halogen under UV light breaks <b>homolytically</b>: one electron to each atom, giving two neutral species each with an unpaired electron. Those are <b>radicals</b>. Because the arrow now carries one electron instead of two it is drawn with a single barb, and is called a <b>fishhook arrow</b>. If a step you have drawn produces a charge, it was not a radical step.</p>'
       },
       {
@@ -249,8 +249,8 @@ document.addEventListener('DOMContentLoaded', function(){
           'The one on the most electronegative carbon'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct. Abstraction is easiest where it leaves the most stable radical, and radicals follow the same order as carbocations for the same reason — hyperconjugation from neighboring C–H bonds into the half-filled orbital.',
-        wrongFeedback: 'It is decided by what is left behind, not by what is easiest to reach. Ask which carbon radical would be most stable, and remember radicals rank the way carbocations do.'
+        correctFeedback: 'Correct. Abstraction is easiest where it leaves the most stable radical, and a radical is stabilized by <b>hyperconjugation</b> — the same donation from a filled neighboring C–H orbital that made staggered ethane comfortable, now feeding a half-empty orbital instead. More alkyl groups means more C–H bonds in a position to donate.',
+        wrongFeedback: 'It is decided by what is left behind, not by what is easiest to reach. Ask which carbon radical would be most stable — and the answer is the one with the most alkyl groups around it, because each one brings C–H bonds that can donate into the half-filled orbital.'
       },
       {
         type: 'mcq',
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       {
         type: 'explain',
-        eyebrow: 'Why it works that way',
+        eyebrow: 'Step 6 · Why it works that way',
         title: 'The sluggish reagent is the selective one.',
         bodyHtml: '<p class="step-body">This looks backwards until you think about the transition state. Abstraction by the very reactive chlorine radical is <b>exothermic</b>, so by the Hammond postulate its transition state comes <b>early</b> and looks like the reactants — at which point the radical has barely formed and its stability hardly matters. Abstraction by the much less reactive bromine radical is <b>endothermic</b>, so its transition state comes <b>late</b> and looks like the radical itself, and every bit of that radical\'s stability shows up in the rate.</p>' +
           '<p class="step-body">Two corrections to the arithmetic before you predict any ratio. First, those rates are <b>per hydrogen</b>, so you multiply by how many equivalent hydrogens there are: propane has six primary hydrogens and only two secondary ones, so even with the secondary position about four times more reactive toward chlorine, the two products come out close to even. The statistics nearly cancel the selectivity.</p>' +

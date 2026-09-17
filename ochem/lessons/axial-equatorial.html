@@ -142,22 +142,28 @@
 // scripts execute, in order, just before DOMContentLoaded.
 document.addEventListener('DOMContentLoaded', function(){
 (function(){
+  // A real chair, with the same geometry as the twelve-position figure in the
+  // written section: three pairs of parallel bonds, closed. Axial bonds are
+  // vertical and alternate; equatorial bonds angle outward and tilt the
+  // opposite way from their own carbon's axial. The drawing that used to be
+  // here was a polyline that visited one vertex twice and never closed, so it
+  // was not a six-membered ring at all.
+  var RING = [[256.2,80.5],[208.1,83.0],[111.9,52.1],[63.8,111.5],[111.9,109.0],[208.1,140.0]];
   function chairSvg(){
-    return '<div class="scene"><svg viewBox="0 0 320 150">' +
-      '<polyline points="20,90 80,60 150,90 210,60 280,90 220,110 150,90" fill="none" stroke="var(--line)" stroke-width="2.5"/>' +
-      '<polyline points="20,90 80,60" fill="none" stroke="var(--line)" stroke-width="2.5"/>' +
-      '<line x1="80" y1="60" x2="80" y2="20" stroke="var(--muted)" stroke-width="2.5"/>' +
-      '<g class="atom" data-key="ax1"><circle cx="80" cy="14" r="9" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="80" y="18" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">ax</text></g>' +
-      '<line x1="80" y1="60" x2="50" y2="75" stroke="var(--muted)" stroke-width="2.5" stroke-dasharray="0"/>' +
-      '<g class="atom" data-key="eq1"><circle cx="38" cy="80" r="9" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="38" y="84" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">eq</text></g>' +
-      '<line x1="210" y1="60" x2="210" y2="20" stroke="var(--muted)" stroke-width="2.5"/>' +
-      '<g class="atom" data-key="ax2"><circle cx="210" cy="14" r="9" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="210" y="18" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">ax</text></g>' +
-      '<line x1="150" y1="90" x2="150" y2="130" stroke="var(--muted)" stroke-width="2.5"/>' +
-      '<g class="atom" data-key="ax3"><circle cx="150" cy="136" r="9" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="150" y="140" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">ax</text></g>' +
-      '<line x1="280" y1="90" x2="305" y2="78" stroke="var(--muted)" stroke-width="2.5"/>' +
-      '<g class="atom" data-key="eq2"><circle cx="312" cy="74" r="9" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="312" y="78" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">eq</text></g>' +
+    var ring = RING.map(function(p){ return p.join(','); }).join(' ');
+    var spot = function(key, from, to){
+      return '<line x1="' + from[0] + '" y1="' + from[1] + '" x2="' + to[0] + '" y2="' + to[1] + '" stroke="var(--muted)" stroke-width="2.5"/>' +
+        '<g class="atom" data-key="' + key + '"><circle cx="' + to[0] + '" cy="' + to[1] + '" r="9" fill="var(--white)" stroke="var(--line)" stroke-width="2"/></g>';
+    };
+    return '<div class="scene"><svg viewBox="0 0 320 186">' +
+      '<polygon points="' + ring + '" fill="none" stroke="var(--line)" stroke-width="2.5" stroke-linejoin="round"/>' +
+      spot('ax1', RING[2], [111.9, 22.1]) +
+      spot('ax2', RING[5], [208.1, 170.0]) +
+      spot('eq1', RING[3], [35.5, 101.6]) +
+      spot('eq2', RING[0], [284.5, 90.4]) +
     '</svg></div>';
   }
+
 
   window.OchemLessonEngine.start({
     topicId: 'axial-equatorial',
@@ -175,8 +181,8 @@ document.addEventListener('DOMContentLoaded', function(){
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
-            '<h2 class="step-title">Click both of the equatorial (eq) positions on this chair.</h2>' +
-            '<p class="step-body">The chair below has each position labeled — three axial (ax), two equatorial (eq). Click only the ones marked "eq."</p>' +
+            '<h2 class="step-title">Click the two equatorial positions on this chair.</h2>' +
+            '<p class="step-body">Four of the twelve positions are drawn, and none of them is labeled. Two are axial and two are equatorial — decide which is which from the direction each bond points, then click the two equatorial ones.</p>' +
             chairSvg() +
             '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Equatorial found: 0 / 2</div>' +
             api.feedbackHtml('fb') +
@@ -196,11 +202,11 @@ document.addEventListener('DOMContentLoaded', function(){
                 hint.textContent = 'Equatorial found: ' + found + ' / 2';
               } else {
                 mistake = true;
-                api.showFeedback(fb, false, 'That one\'s labeled "ax" — axial positions point straight up or down. Keep looking for the two "eq" labels.');
+                api.showFeedback(fb, false, 'That bond runs straight up or straight down the page, so it is axial. An equatorial bond angles outward from the ring instead — look for the two that point away from the ring rather than along its axis.');
               }
               if(found === 2 && !mistake){
                 api.record(true);
-                api.showFeedback(fb, true, 'Right — the two equatorial positions point outward from the ring, while the four axial positions point straight up or down.');
+                api.showFeedback(fb, true, 'Right. The two you clicked angle outward from the ring — each one is parallel to the ring bond two carbons away, which is the rule for drawing them. The other two run straight up and down the page, which is what axial looks like. On a full chair there are six of each.');
                 next.disabled = false;
               } else if(found === 2 && mistake){
                 api.record(false);
@@ -223,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'mcq',
         eyebrow: 'Step 3 · Independent Practice',
-        title: 'A large A-value (like tert-butyl\'s ~4.7-5+ kcal/mol) means a substituent...',
+        title: 'A large A-value (like tert-butyl\'s 4.9 kcal/mol) means a substituent...',
         options: ['Strongly prefers the equatorial position, avoiding 1,3-diaxial clashes', 'Strongly prefers the axial position', 'Has no positional preference at all'],
         correctIndex: 0,
         correctFeedback: 'Correct. A-value is defined as the equatorial preference in kcal/mol — a bigger substituent has more to lose from 1,3-diaxial clashes, so it prefers equatorial even more strongly.',
@@ -233,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Real numbers: methyl vs. tert-butyl.',
-        bodyHtml: '<p class="step-body">Methylcyclohexane has an A-value of about 1.7 kcal/mol for the methyl group. An energy preference translates into an actual population split — the bigger the gap, the more lopsided the mixture — and for 1.7 kcal/mol at room temperature the split works out to roughly 95:5, equatorial-methyl to axial-methyl. (The equation behind that conversion is ΔG = −RT ln K; you will not need to run it in this course, only to know that a couple of kcal/mol is already enough to make one conformation dominate.) Methylcyclohexane is mostly, but not exclusively, in the equatorial form.</p><p class="step-body" style="margin-bottom:0;">tert-Butylcyclohexane has an A-value of roughly 4.7–5+ kcal/mol — so much larger that the axial form is present in only a few parts per thousand. In practice, chemists treat a tert-butyl group as permanently locking the ring into whichever chair puts it equatorial, which is a genuinely useful trick for controlling the outcome of reactions elsewhere on the ring.</p>'
+        bodyHtml: '<p class="step-body">Methylcyclohexane has an A-value of about 1.7 kcal/mol for the methyl group. An energy preference translates into an actual population split — the bigger the gap, the more lopsided the mixture — and for 1.7 kcal/mol at room temperature the split works out to roughly 95:5, equatorial-methyl to axial-methyl. (The equation behind that conversion is ΔG = −RT ln K; you will not need to run it in this course, only to know that a couple of kcal/mol is already enough to make one conformation dominate.) Methylcyclohexane is mostly, but not exclusively, in the equatorial form.</p><p class="step-body" style="margin-bottom:0;">tert-Butylcyclohexane has an A-value of 4.9 kcal/mol — so much larger that the axial form is present in only a few parts per thousand. In practice, chemists treat a tert-butyl group as permanently locking the ring into whichever chair puts it equatorial, which is a genuinely useful trick for controlling the outcome of reactions elsewhere on the ring.</p>'
       },
       {
         type: 'explain',

@@ -150,7 +150,6 @@ document.addEventListener('DOMContentLoaded', function(){
     progLabel: document.getElementById('progLabel'),
     steps: [
       {
-        diagramHtml: window.OchemMolecules.svg('chair-bromocyclohexane'),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Three separate kinds of strain add up in a ring.',
@@ -225,9 +224,9 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'final',
         eyebrow: 'Challenge',
         title: 'Why can\'t a flat (planar) cyclohexane avoid strain the way the chair does?',
-        options: ['A flat ring would have 120° bond angles and fully eclipsed C–H bonds — angle strain and torsional strain both', 'A flat ring has no bond angles at all', 'Flat rings are actually lower in energy than chairs'],
-        correctIndex: 0,
-        correctFeedback: 'Correct — a planar hexagon forces 120° angles (some angle strain, since 109.5° is ideal for sp³ carbon) and eclipses every adjacent C–H bond (torsional strain). The chair\'s puckered geometry avoids both problems at once, which is exactly why it\'s so strongly preferred.'
+        options: ['Its 120° angles are closer to tetrahedral than the chair\'s, but it pays for them in steric strain', 'A flat ring would have 120° bond angles and fully eclipsed C–H bonds — angle strain and torsional strain both', 'A flat ring staggers its C–H bonds but cannot reach 109.5° at any vertex'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — a planar hexagon forces 120° angles (some angle strain, since 109.5° is ideal for sp³ carbon) and eclipses every adjacent C–H bond (torsional strain). Note which of the two dominates: the angle problem is worth only about ten degrees, while twelve eclipsed C–H pairs is a great deal of torsional strain. The chair\'s pucker escapes both at once, which is exactly why it is so strongly preferred.'
       }
     ]
   });

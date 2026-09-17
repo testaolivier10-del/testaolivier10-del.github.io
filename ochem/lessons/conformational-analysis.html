@@ -150,21 +150,21 @@ document.addEventListener('DOMContentLoaded', function(){
     progLabel: document.getElementById('progLabel'),
     steps: [
       {
-        diagramHtml: window.OchemMolecules.svg('newman-butane-anti'),
         type: 'explain',
         eyebrow: 'Explain',
         title: 'One substituent: always draw the equatorial chair as dominant.',
-        bodyHtml: '<p class="step-body">Now that you know both A-values (how strongly a group prefers equatorial) and ring flips (how a molecule accesses both chairs), you can predict which conformation actually dominates a real sample.</p><p class="step-body" style="margin-bottom:0;">For a monosubstituted cyclohexane, the rule is simple: the dominant chair is whichever one puts the substituent <b>equatorial</b>. The size of that preference is exactly the substituent\'s A-value — methylcyclohexane (A-value 1.7 kcal/mol) sits at roughly 95:5 equatorial:axial, while tert-butylcyclohexane (A-value ~4.7-5+ kcal/mol) is essentially locked equatorial, over 99.9% of the time.</p>'
+        bodyHtml: '<p class="step-body">Now that you know both A-values (how strongly a group prefers equatorial) and ring flips (how a molecule accesses both chairs), you can predict which conformation actually dominates a real sample.</p><p class="step-body" style="margin-bottom:0;">For a monosubstituted cyclohexane, the rule is simple: the dominant chair is whichever one puts the substituent <b>equatorial</b>. The size of that preference is exactly the substituent\'s A-value — methylcyclohexane (A-value 1.7 kcal/mol) sits at roughly 95:5 equatorial:axial, while tert-butylcyclohexane (A-value 4.9 kcal/mol) is essentially locked equatorial, over 99.9% of the time.</p>'
       },
       {
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
-            '<h2 class="step-title">tert-Butylcyclohexane can ring-flip into two chairs. Which one dominates?</h2>' +
-            '<p class="step-body">tert-Butyl has an A-value of about 4.7-5+ kcal/mol — one of the largest of any common substituent.</p>' +
+            '<h2 class="step-title">cis-1-Isopropyl-3-methylcyclohexane. Which chair wins, and by how much?</h2>' +
+            '<p class="step-body">Cis on carbons 1 and 3 means both groups are on the same face, and on a 1,3 pair that puts them both equatorial in one chair and both axial in the other. A-values: isopropyl 2.2, methyl 1.7. Add the axial penalties in each chair and compare.</p>' +
             '<div class="choice-row">' +
-            '<button class="choice-btn" data-v="eq" style="text-align:center;">Chair with tert-butyl equatorial</button>' +
-            '<button class="choice-btn" data-v="ax" style="text-align:center;">Chair with tert-butyl axial</button>' +
+            '<button class="choice-btn" data-v="ee" style="text-align:center;">Both equatorial, by about 3.9 kcal/mol</button>' +
+            '<button class="choice-btn" data-v="split" style="text-align:center;">Isopropyl equatorial and methyl axial, by 0.5 kcal/mol</button>' +
+            '<button class="choice-btn" data-v="aa" style="text-align:center;">Both axial, by about 3.9 kcal/mol</button>' +
             '</div>' +
             api.feedbackHtml('fb') +
             api.nextButtonHtml('Continue', false);
@@ -175,11 +175,11 @@ document.addEventListener('DOMContentLoaded', function(){
             btn.addEventListener('click', function(){
               if(answered) return;
               answered = true;
-              var isCorrect = btn.getAttribute('data-v') === 'eq';
+              var isCorrect = btn.getAttribute('data-v') === 'ee';
               api.card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
               btn.classList.add(isCorrect ? 'correct' : 'wrong');
               api.record(isCorrect);
-              api.showFeedback(fb, isCorrect, 'Right — with such a large A-value, tert-butylcyclohexane exists in the equatorial chair over 99.9% of the time. The axial chair is so disfavored it\'s essentially never observed.');
+              api.showFeedback(fb, isCorrect, 'Right. The diequatorial chair carries no axial penalty at all; the diaxial chair carries 2.2 + 1.7 = 3.9, and on top of that the two axial groups are 1,3 on the same face and clash with each other directly. The diequatorial chair is the answer and it is not close. Note the trap: on a 1,3 pair it is <b>cis</b> that gets both groups equatorial — the opposite of the 1,2 and 1,4 cases — because the axial directions alternate round the ring.');
               next.disabled = false;
             });
           });
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'E2 elimination needs anti-periplanar geometry — and on a ring, that means axial-axial.',
-        bodyHtml: '<p class="step-body">E2 elimination requires the leaving group and the beta-hydrogen being removed to be <b>anti-periplanar</b>: 180° apart, viewed as a Newman projection down the C–C bond between them. On an open chain this is easy to achieve by simple bond rotation, but on a cyclohexane ring, the geometry is fixed by the chair — and the only pair of substituents on adjacent ring carbons that are ever 180° apart is <b>axial-axial</b>. Equatorial substituents are never anti-periplanar to anything.</p><p class="step-body" style="margin-bottom:0;">This means an E2 reaction on a cyclohexane ring can only proceed through whichever chair conformation happens to have the leaving group axial — even if that\'s the minority conformation the molecule barely visits. If the leaving group can never become axial (for example, if it\'s attached to a ring locked by a huge A-value substituent elsewhere), E2 simply can\'t happen on that ring at all, no matter how good the leaving group or how strong the base.</p>'
+        bodyHtml: '<p class="step-body">E2 elimination requires the leaving group and the beta-hydrogen being removed to be <b>anti-periplanar</b>: 180° apart, viewed as a Newman projection down the C–C bond between them. On an open chain this is easy to achieve by simple bond rotation, but on a cyclohexane ring, the geometry is fixed by the chair — and the only pair of substituents on adjacent ring carbons that are ever 180° apart is <b>axial-axial</b>. Equatorial substituents are never anti-periplanar to anything.</p><p class="step-body" style="margin-bottom:0;">This means an E2 reaction on a cyclohexane ring can only proceed through whichever chair conformation happens to have the leaving group axial — even if that\'s the minority conformation the molecule barely visits. If a huge A-value substituent elsewhere on the ring makes that conformation very rare, the elimination does not stop — it becomes dramatically slower, because the molecule has to pay for the unfavorable chair every time it reacts. <i>trans</i>-4-<i>tert</i>-butylcyclohexyl tosylate does eliminate; it just takes its time.</p>'
       },
       {
         type: 'explain',

@@ -60,6 +60,8 @@ standards and is chemically correct; all checks run; push.
 
 ### Decisions for Olivier
 
+- `ochem/assets/molecules.js`: `chair-bromocyclohexane` draws Br axial on an axial-down carbon and marks a non-adjacent carbon as anti-periplanar; `chair-dimethylcyclohexane` is named trans but drawn cis. Chapter 5's only use was removed; `lessons/diastereomers.html` still uses the second. Either rewrite the coordinates (a small, checkable job) or drop both entries.
+
 Recorded here as they arise, and collected in `docs/proposed-order.md`.
 
 1. **Approve the proposed order** in `docs/proposed-order.md`, or say which
@@ -82,6 +84,9 @@ Recorded here as they arise, and collected in `docs/proposed-order.md`.
 
 ### Waiting on reorder
 
+- Chapter 4: six passages in `notes/bronsted`, `notes/lewis-acids`, `notes/conjugate` and `lessons/lewis-acids` lean on nucleophile/electrophile/leaving-group vocabulary from chapter 2; under the proposed order those topics move after Acids & Bases and the passages become previews. The "Hard and soft, briefly" paragraph in `lewis-acids` loses its reason to exist if chapter 2 moves.
+- Chapter 5: Hammond postulate now stated in full in `radical-halogenation` (proposed home: the new energy-diagrams lesson); stereocenter/racemic used in `radical-halogenation` before Stereochemistry; the E2 half of `conformational-analysis` (anti-periplanar, menthyl) is headed "Looking ahead" pending its move to `e2`; the lesson's Markovnikov/peroxide-HBr challenge and bank Q19–Q20 belong to `anti-markovnikov`.
+
 Findings that are wrong only because of where a chapter sits, left alone so
 the fix is made once against the approved order. Chapter by chapter, as the
 reviews land.
@@ -99,7 +104,7 @@ reviews land.
 | 2 Organic Structure & Electron Movement | yes (38/24/19/33) | yes: 8 figures (the chapter's first skeletal drawings after lesson 1), 37 questions, 4 lessons re-stepped, 7 chemistry errors (polar-protic/aprotic swap, R3N keyed over RNH2, BF3/BH3, nitrate key, the "most electron-poor" final, an incoherent leaving-group worked example) | yes: 4 of 7 met on first verification; 6 errors (protonated-acetone electron count and arithmetic, benzene contributor count, HCl lone-pair count, ring size in the amino-ketone scan, acetate tautomer name) fixed, four hard bank stems given previews, one ambiguous challenge stem reworded. Open: HBr mechanism figure for leaving-groups (queued with chapter 5's pass) | yes |
 | 3 IUPAC Nomenclature | yes (24/9/12/22) | yes: 9 figures, 85 questions rewritten, 3 chemistry errors (3-ethylpentane keyed as 3-methylhexane; ketone carbon called oxidation level 0; an impossible {3,3,5} locant tie) | yes: all four topics meet the standard; five wording errors found and fixed, no wrong key | yes |
 | 4 Acids & Bases | yes (38/17/19/22) | yes: 9 figures, 7 worked examples, 2 lesson steps, 2 click-atom items, 91 questions rewritten, 3 chemistry errors (bronsted lesson conjugate roles reversed; pka lesson pKaH vs N–H; acidity-factors Q6 keyed wrong); tutor-bank budget raised to 264 KB | in progress | yes |
-| 5 Alkanes & Conformations | yes (34/17/16/15) | in progress | | |
+| 5 Alkanes & Conformations | yes (34/17/16/15) | yes: 7 figures (both lesson chairs redrawn as real six-membered rings; ring-flip animation keeps the methyl's face), 48 questions replaced, 10 keys/explanations corrected, worked examples for structure→Newman, flipped chair, 1,2/1,3 chair procedure, halogenation ratios; plus the leaving-groups HBr mechanism figure from chapter 2's verifier. Open: `molecules.js` chair-bromocyclohexane and chair-dimethylcyclohexane drawings are wrong (see Decisions) | in progress | yes |
 | 6 Stereochemistry | yes (31/14/18/27) | queued | | |
 | 7 Substitution & Elimination | yes | queued | | |
 | 8 Alkenes & Alkynes | yes (21/11/14/20) | queued | | |
@@ -116,7 +121,7 @@ reviews land.
 | 20 Organometallics | yes (19/7/9/9, anchored; nitrile "one-carbon extension" error keyed in bank; no curved-arrow figure; no worked examples) | queued | | |
 | 21 Carbonyl & Enolate Breadth | yes (26/7/7/9, anchored; migratory aptitude omits H; enamine single-alkylation reason contradicts chapter 14) | queued | | |
 | 22 Aromatic Follow-Through | yes (34/4/8/9, anchored; no molecule drawn; nitro→amine reduction taught nowhere) | queued | | |
-| 23 Polymers | in progress | | | |
+| 23 Polymers | yes (33/6/8/8, anchored; radical chain mechanism prose-only; termination described wrongly; polycarbonate and nylon 6 missing) | queued | | |
 | 12 Oxidation & Reduction | yes (18/4/8/13, anchored format) | yes: 6 figures (the chapter's first curved arrows), 22 questions, wrong +2 key for an acid carbon, Na/NH3 selectivity attributed to the wrong intermediate | yes: 2 of 5 met on first verification; 5 errors and 2 missing figures (ozonolysis mechanism, Clemmensen/Wolff-Kishner) fixed in a second pass. Open: the five banks are still recall-heavy | yes |
 
 ---
