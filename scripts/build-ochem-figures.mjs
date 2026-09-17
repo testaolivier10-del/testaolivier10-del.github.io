@@ -346,7 +346,7 @@ FIGURES.push({
     const cases = [
       { x: 100, name: 'Alkylamine', sub: 'R–NH₂', pkb: 'conj. acid pKa ≈ 10.6', verdict: 'lone pair stays put', kind: 'good', w: 186 },
       { x: 330, name: 'Arylamine',  sub: 'Ph–NH₂', pkb: 'conj. acid pKa ≈ 4.6', verdict: 'shared with the ring', kind: 'hi', w: 96 },
-      { x: 560, name: 'Amide',      sub: 'R(C=O)–NH₂', pkb: 'conj. acid pKa ≈ 0', verdict: 'pulled onto oxygen', kind: 'warn', w: 20 },
+      { x: 560, name: 'Amide',      sub: 'R(C=O)–NH₂', pkb: 'conj. acid pKa ≈ −1', verdict: 'pulled onto oxygen', kind: 'warn', w: 20 },
     ];
     for (const c of cases) {
       s += tag(c.x, 48, c.name);
@@ -3157,7 +3157,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Zaitsev would pick but-2-ene and this reaction does not, which is the whole point of drawing the ammonium group oversized. Hydroxide takes the hydrogen it can reach rather than the one that gives the better alkene, exactly as tert-butoxide does in the E2 chapter \u2014 only here the bulk is on the leaving group instead of the base.',
-  note: 'Run the picture backwards and it becomes an assay. Counting how many equivalents of CH\u2083I an unknown amine swallowed said whether it was primary, secondary or tertiary, and identifying the alkene said what sat around the nitrogen \u2014 which is how alkaloid skeletons were argued for decades, at the cost of the whole sample and several weeks per compound.',
+  note: 'Read the drawing as a question about reach rather than about stability. Hydroxide has to arrive at a β hydrogen, and the oversized group on C2 is what decides which of them it can get to — which is why the more stable alkene loses here, and would win if a small halide sat in the same position.',
 });
 
 /* ----------------------------------------------------------------- 61 ---
@@ -11506,6 +11506,667 @@ FIGURES.push({
   },
   caption: 'The two enolates, drawn. Deprotonating C6 gives a double bond with two carbon substituents on it; deprotonating C2 gives one with three, because the methyl is already sitting on a carbon that is now part of the C=C. That is the whole stability difference, and it is the same count that ranks Zaitsev products.',
   note: 'Check where the methyl is in each drawing and the alkylation products follow without memorizing anything. The nucleophilic carbon is the one at the far end of the C=C from the oxygen, so the kinetic enolate delivers the electrophile to C6 and the thermodynamic one to C2 — the carbon that already carries a methyl, which is how you end up building a quaternary center.',
+});
+
+
+/* ---------------------------------------------------------------- 191 ---
+   The amines chapter opens by asserting twice that a lone pair is
+   "delocalized" and never draws the delocalization, in a book that has spent
+   fourteen chapters teaching that a resonance claim is a pair of structures
+   and an arrow. */
+FIGURES.push({
+  id: 'lone-pair-delocalization',
+  section: 'amine-structure',
+  anchor: 'the nitrogen is even less basic than that number suggests.</p>',
+  viewBox: '0 0 760 470',
+  alt: 'Two rows of resonance structures: acetamide pushing its nitrogen lone pair into the carbonyl, and aniline pushing its lone pair into the benzene ring',
+  build() {
+    let s = '';
+    const resonanceArrow = (x1, x2, y) => arrow(P(x1, y), P(x2, y), { muted: true }) + arrow(P(x2, y), P(x1, y), { muted: true });
+
+    /* Row A - the amide */
+    s += tag(36, 40, 'AN AMIDE (acetamide)', { anchor: 'start' });
+    let c = P(150, 116), o = P(150, 70), me = P(102, 148), nn = P(198, 148);
+    s += bond(c, o, { order: 2 }); s += bond(c, me); s += bond(c, nn);
+    s += atom(o.x, o.y, 'O'); s += lonePair(o.x, o.y, 200); s += lonePair(o.x, o.y, 340);
+    s += atom(me.x, me.y, 'CH₃');
+    s += atom(nn.x, nn.y, 'NH₂', { kind: 'hi' });
+    s += lonePair(nn.x, nn.y, 55);
+    s += curve(P(214, 168), P(180, 140), { bow: 20 });
+    s += curve(P(134, 96), P(132, 74), { bow: 14 });
+    s += text(150, 202, 'the lone pair pushes in', { cls: 'fg-sm', size: 10 });
+
+    s += resonanceArrow(266, 336, 116);
+
+    c = P(452, 116); o = P(452, 70); me = P(404, 148); nn = P(500, 148);
+    s += bond(c, o); s += bond(c, me); s += bond(c, nn, { order: 2 });
+    s += atom(o.x, o.y, 'O', { kind: 'warn' });
+    s += lonePair(o.x, o.y, 200); s += lonePair(o.x, o.y, 340); s += lonePair(o.x, o.y, 90);
+    s += text(480, 62, '⊖', { cls: 'fg-hi', size: 13 });
+    s += atom(me.x, me.y, 'CH₃');
+    s += atom(nn.x, nn.y, 'NH₂', { kind: 'warn' });
+    s += text(534, 168, '⊕', { cls: 'fg-warn', size: 13 });
+    s += text(452, 202, 'no lone pair left on nitrogen', { cls: 'fg-sm', size: 10 });
+    s += text(596, 110, 'the charge that the', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+    s += text(596, 126, 'push created sits on', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+    s += text(596, 142, 'OXYGEN, not nitrogen', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+
+    s += rule(24, 226, 736, 226);
+
+    /* Row B - aniline */
+    s += tag(36, 254, 'ANILINE', { anchor: 'start' });
+    const hex = (cx, cy, r) => {
+      const pts = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (-90 + i * 60) * Math.PI / 180;
+        pts.push(P(cx + r * Math.cos(a), cy + r * Math.sin(a)));
+      }
+      return pts;   // 0 = top (ipso), 1 = ortho, 2 = meta, 3 = para, 4 = meta, 5 = ortho
+    };
+    const ringBonds = (pts, doubles) => {
+      let g = '';
+      const mid = P((pts[0].x + pts[3].x) / 2, (pts[0].y + pts[3].y) / 2);
+      for (let i = 0; i < 6; i++) {
+        const j = (i + 1) % 6;
+        if (doubles.includes(i)) g += ringDouble(pts[i], pts[j], mid, { inset: 9 });
+        else g += bond(pts[i], pts[j], { rFrom: 0, rTo: 0 });
+      }
+      return g;
+    };
+    let ring = hex(150, 372, 44);
+    s += ringBonds(ring, [0, 2, 4]);
+    s += bond(ring[0], P(150, 300), { rFrom: 0, rTo: 16 });
+    s += atom(150, 300, 'NH₂', { kind: 'hi' });
+    s += lonePair(150, 300, 250);
+    s += curve(P(120, 288), P(140, 322), { bow: 16 });
+    s += curve(P(184, 352), P(196, 396), { bow: -18 });
+    s += text(150, 442, 'push the pair into the ring', { cls: 'fg-sm', size: 10 });
+
+    s += resonanceArrow(266, 336, 372);
+
+    ring = hex(452, 372, 44);
+    s += ringBonds(ring, [2, 4]);
+    s += bond(ring[0], P(452, 300), { rFrom: 0, rTo: 16, order: 2 });
+    s += atom(452, 300, 'NH₂', { kind: 'warn' });
+    s += text(486, 292, '⊕', { cls: 'fg-warn', size: 13 });
+    s += text(516, 356, '⊖', { cls: 'fg-hi', size: 13 });
+    s += text(452, 442, 'the pair is now on a ring carbon', { cls: 'fg-sm', size: 10 });
+    s += text(546, 352, 'three such structures exist', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+    s += text(546, 368, 'at both ortho carbons and', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+    s += text(546, 384, 'at para, and protonating N', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+    s += text(546, 400, 'cancels all three at once', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+    return s;
+  },
+  caption: 'The two &ldquo;resonance kills basicity&rdquo; claims of this section, drawn. In the amide the pair ends up in the C&ndash;N pi bond with the negative charge parked on oxygen; in aniline it ends up on ring carbons. A proton arriving at either nitrogen has to pay for cancelling these structures, and that bill is what six (aniline) and eleven (amide) orders of magnitude of lost basicity buys.',
+  note: 'Read the right-hand structures as where the electrons actually spend part of their time, not as something that happens afterward. The amide&rsquo;s nitrogen is drawn <b>⊕</b> and flat for the same reason its C&ndash;N bond does not rotate: the pair is in a pi bond, not on nitrogen. Count the arrows, too &mdash; each one is two electrons moving from a lone pair into a bond, exactly the notation the resonance chapter set up.',
+});
+
+/* ---------------------------------------------------------------- 192 ---
+   Nitrogen inversion is a 3-D claim made in one sentence of a pitfall box, in
+   a course that taught wedges and dashes eight chapters earlier. */
+FIGURES.push({
+  id: 'nitrogen-inversion',
+  section: 'amine-structure',
+  anchor: 'cannot invert and is a genuine stereocenter.</div>',
+  viewBox: '0 0 760 390',
+  alt: 'A pyramidal amine flipping through a planar transition state to its mirror image, with a quaternary ammonium ion beside it that cannot flip',
+  build() {
+    let s = '';
+    const equilibrium = (x1, x2, y) => arrow(P(x1, y - 7), P(x2, y - 7), { muted: true }) + arrow(P(x2, y + 7), P(x1, y + 7), { muted: true });
+
+    /* left pyramid */
+    let n = P(118, 140);
+    s += bond(n, P(118, 198));
+    s += wedge(n, P(64, 108));
+    s += hash(n, P(172, 108));
+    s += atom(118, 198, 'a'); s += atom(64, 108, 'b'); s += atom(172, 108, 'c');
+    s += atom(n.x, n.y, 'N', { kind: 'hi' });
+    s += lonePair(n.x, n.y, 270, { dist: 26 });
+    s += text(118, 244, 'one pyramidal form', { cls: 'fg-tag-good', size: 11 });
+
+    s += equilibrium(206, 296, 140);
+
+    /* planar transition state, in brackets */
+    s += rule(316, 62, 316, 218); s += rule(316, 62, 330, 62); s += rule(316, 218, 330, 218);
+    s += rule(492, 62, 492, 218); s += rule(478, 62, 492, 62); s += rule(478, 218, 492, 218);
+    s += text(500, 74, '‡', { cls: 'fg-warn', size: 15 });
+    n = P(404, 140);
+    s += bond(n, P(404, 84));
+    s += bond(n, P(350, 178));
+    s += bond(n, P(458, 178));
+    s += atom(404, 84, 'b'); s += atom(350, 178, 'a'); s += atom(458, 178, 'c');
+    s += atom(n.x, n.y, 'N', { kind: 'warn' });
+    s += text(404, 244, 'planar transition state, ≈ 6 kcal/mol', { cls: 'fg-tag-warn', size: 11 });
+    s += text(404, 262, 'the pair is now in a p orbital, perpendicular to the page', { cls: 'fg-sm', size: 10 });
+
+    s += equilibrium(512, 602, 140);
+
+    /* right pyramid - the mirror image */
+    n = P(660, 140);
+    s += bond(n, P(660, 198));
+    s += hash(n, P(606, 108));
+    s += wedge(n, P(714, 108));
+    s += atom(660, 198, 'a'); s += atom(606, 108, 'b'); s += atom(714, 108, 'c');
+    s += atom(n.x, n.y, 'N', { kind: 'hi' });
+    s += lonePair(n.x, n.y, 270, { dist: 26 });
+    s += text(660, 244, 'its mirror image', { cls: 'fg-tag-good', size: 11 });
+
+    s += rule(24, 288, 736, 288);
+    s += text(24, 320, '≈ 10⁹–10¹¹ times a second at room temperature.', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += text(24, 344, 'Far too fast to separate the two forms, so an amine with', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(24, 364, 'three different groups is not a resolvable stereocenter.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+
+    /* the quaternary case, which cannot do any of this */
+    s += panel(430, 296, 306, 84, { kind: 'warn' });
+    n = P(516, 338);
+    s += bond(n, P(516, 300));
+    s += bond(n, P(470, 362));
+    s += wedge(n, P(562, 362));
+    s += hash(n, P(562, 312));
+    s += atom(516, 300, 'a', { r: 12 }); s += atom(470, 362, 'b', { r: 12 });
+    s += atom(562, 362, 'c', { r: 12 }); s += atom(562, 312, 'd', { r: 12 });
+    s += atom(n.x, n.y, 'N', { kind: 'warn' });
+    s += text(492, 322, '⊕', { cls: 'fg-warn', size: 12 });
+    s += text(588, 330, 'quaternary: no lone', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+    s += text(588, 346, 'pair, nothing to invert', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+    s += text(588, 362, 'through — a real center', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+    return s;
+  },
+  caption: 'What &ldquo;nitrogen inversion&rdquo; actually looks like: the pyramid turns inside out through a flat transition state, like an umbrella in the wind, and comes out as its own mirror image. The barrier is about 6 kcal/mol, which at room temperature is no barrier at all.',
+  note: 'The comparison worth holding onto is with carbon. A carbon stereocenter would have to break a bond to invert, which costs about 80 kcal/mol, so it never happens and the two enantiomers can be bottled separately. Nitrogen has a lone pair instead of a fourth bond, and moving a lone pair through a plane costs almost nothing. Take the lone pair away by making a fourth bond — the quaternary salt — and nitrogen behaves exactly like carbon again.',
+});
+
+/* ---------------------------------------------------------------- 193 ---
+   Four reaction types in the amine-reactions section and not one curved arrow
+   anywhere in it. This is the acylation, which is also the section's thesis:
+   the product nitrogen is switched off. */
+FIGURES.push({
+  id: 'amine-acylation-mechanism',
+  section: 'amine-reactions',
+  anchor: 'so it is no longer nucleophilic and no longer basic.</p>',
+  viewBox: '0 0 760 430',
+  alt: 'Ethylamine attacking acetyl chloride, the tetrahedral intermediate collapsing to expel chloride, deprotonation by triethylamine, and the amide product whose nitrogen lone pair is delocalized',
+  build() {
+    let s = '';
+    /* 1 - the nitrogen attacks */
+    let c = P(150, 124), o = P(150, 78), me = P(102, 156), x = P(198, 156);
+    s += bond(c, o, { order: 2 }); s += bond(c, me); s += bond(c, x);
+    s += atom(o.x, o.y, 'O'); s += lonePair(o.x, o.y, 200); s += lonePair(o.x, o.y, 340);
+    s += atom(me.x, me.y, 'CH₃'); s += atom(x.x, x.y, 'Cl', { kind: 'warn' });
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += atom(276, 84, 'EtNH₂', { kind: 'hi', r: 22 });
+    s += lonePair(276, 84, 200, { dist: 28 });
+    s += curve(P(248, 100), P(172, 112), { bow: 22 });
+    s += curve(P(134, 104), P(132, 82), { bow: 14 });
+    s += tag(160, 206, '1 · the lone pair adds');
+
+    s += arrow(P(320, 124), P(372, 124));
+
+    /* 2 - tetrahedral intermediate, chloride leaves */
+    c = P(560, 124);
+    s += bond(c, P(516, 84)); s += bond(c, P(608, 88)); s += bond(c, P(514, 166)); s += bond(c, P(606, 166));
+    s += atom(516, 84, 'O⁻', { kind: 'warn' });
+    s += lonePair(516, 84, 200, { dist: 20 });
+    s += atom(608, 88, 'NH₂Et', { kind: 'hi' });
+    s += text(646, 74, '⊕', { cls: 'fg-warn', size: 12 });
+    s += atom(514, 166, 'CH₃'); s += atom(606, 166, 'Cl', { kind: 'warn' });
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += curve(P(494, 70), P(534, 100), { bow: 18 });
+    s += curve(P(588, 150), P(614, 184), { bow: -16 });
+    s += tag(560, 206, '2 · kick the pair back down, chloride goes');
+
+    s += rule(24, 230, 736, 230);
+
+    /* 3 - deprotonation */
+    c = P(150, 318); o = P(150, 272); me = P(102, 350); x = P(198, 350);
+    s += bond(c, o, { order: 2 }); s += bond(c, me); s += bond(c, x);
+    s += atom(o.x, o.y, 'O'); s += lonePair(o.x, o.y, 200);
+    s += atom(me.x, me.y, 'CH₃');
+    s += atom(x.x, x.y, 'NH₂Et', { kind: 'warn' });
+    s += text(236, 336, '⊕', { cls: 'fg-warn', size: 12 });
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += text(268, 290, 'Et₃N', { cls: 'fg-lbl', size: 12.5 });
+    s += curve(P(252, 302), P(218, 334), { bow: 16 });
+    s += text(60, 274, 'Cl⁻', { cls: 'fg-sm', size: 10.5 });
+    s += tag(160, 400, '3 · a base takes the proton');
+
+    s += arrow(P(320, 318), P(372, 318));
+
+    /* 4 - the amide, switched off */
+    c = P(540, 318); o = P(540, 272); me = P(492, 350); x = P(588, 350);
+    s += bond(c, o, { order: 2 }); s += bond(c, me); s += bond(c, x);
+    s += atom(o.x, o.y, 'O'); s += lonePair(o.x, o.y, 200); s += lonePair(o.x, o.y, 340);
+    s += atom(me.x, me.y, 'CH₃');
+    s += atom(x.x, x.y, 'NHEt', { kind: 'hi' });
+    s += lonePair(x.x, x.y, 55);
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += curve(P(606, 372), P(570, 344), { bow: 20 });
+    s += curve(P(524, 298), P(522, 276), { bow: 14 });
+    s += tag(540, 400, '4 · and the pair goes straight into the carbonyl');
+    s += text(636, 306, 'no lone pair', { cls: 'fg-tag-warn', size: 10.5, anchor: 'start' });
+    s += text(636, 322, 'left to attack', { cls: 'fg-tag-warn', size: 10.5, anchor: 'start' });
+    s += text(636, 338, 'anything: it', { cls: 'fg-tag-warn', size: 10.5, anchor: 'start' });
+    s += text(636, 354, 'cannot go twice', { cls: 'fg-tag-warn', size: 10.5, anchor: 'start' });
+    return s;
+  },
+  caption: 'Addition then elimination &mdash; the acyl substitution pattern from the carboxylic acid derivatives chapter, unchanged &mdash; and then the reason this one self-terminates. The nitrogen that attacked in panel 1 is, by panel 4, delocalized into the very carbonyl it attacked.',
+  note: 'Panel 2 is the step students most often skip. Chloride does not leave <i>as</i> the nitrogen arrives; the carbon goes tetrahedral first and the alkoxide then pushes the pair back down to expel it. That is why acyl substitution is addition&ndash;elimination and not S<sub>N</sub>2, and why an sp² carbon can be substituted at all. Panel 3 is also why a base is in the flask: without it that proton ends up on the next molecule of amine, and half your starting material sits out the reaction as its ammonium salt.',
+});
+
+/* ---------------------------------------------------------------- 194 ---
+   Imine formation is named in three sections and drawn in none, although the
+   hemiaminal is asked about in the practice bank. */
+FIGURES.push({
+  id: 'imine-formation',
+  section: 'amine-reactions',
+  anchor: 'so it loses an α C–H instead and gives an <b>enamine</b>.</p>',
+  viewBox: '0 0 760 570',
+  alt: 'The full imine formation sequence: attack, proton transfer to the hemiaminal, protonation of its OH, loss of water to the iminium ion, and deprotonation to the imine, with the enamine branch drawn below',
+  build() {
+    let s = '';
+    const carbonyl = (cx, cy) => {
+      let g = '';
+      g += bond(P(cx, cy), P(cx, cy - 46), { order: 2 });
+      g += bond(P(cx, cy), P(cx - 48, cy + 32));
+      g += bond(P(cx, cy), P(cx + 48, cy + 32));
+      g += atom(cx, cy - 46, 'O'); g += lonePair(cx, cy - 46, 200); g += lonePair(cx, cy - 46, 340);
+      g += atom(cx - 48, cy + 32, 'R'); g += atom(cx + 48, cy + 32, 'R');
+      g += atom(cx, cy, 'C', { kind: 'hi' });
+      return g;
+    };
+
+    /* 1 - attack */
+    s += carbonyl(120, 120);
+    s += atom(244, 80, 'H₂NR′', { kind: 'hi', r: 22 });
+    s += lonePair(244, 80, 200, { dist: 28 });
+    s += curve(P(218, 96), P(142, 108), { bow: 22 });
+    s += curve(P(104, 100), P(102, 78), { bow: 14 });
+    s += tag(140, 196, '1 · the amine adds');
+
+    /* 2 - zwitterion */
+    s += bond(P(410, 124), P(366, 84)); s += bond(P(410, 124), P(458, 86));
+    s += bond(P(410, 124), P(364, 166)); s += bond(P(410, 124), P(456, 166));
+    s += atom(366, 84, 'O⁻', { kind: 'warn' }); s += lonePair(366, 84, 200, { dist: 20 });
+    s += atom(458, 86, 'NH₂R′', { kind: 'hi' }); s += text(496, 72, '⊕', { cls: 'fg-warn', size: 12 });
+    s += atom(364, 166, 'R'); s += atom(456, 166, 'R');
+    s += atom(410, 124, 'C', { kind: 'hi' });
+    s += curve(P(348, 70), P(444, 66), { bow: -26 });
+    s += tag(410, 196, '2 · a proton moves across');
+
+    /* 3 - the hemiaminal */
+    s += bond(P(646, 124), P(602, 84)); s += bond(P(646, 124), P(694, 86));
+    s += bond(P(646, 124), P(600, 166)); s += bond(P(646, 124), P(692, 166));
+    s += atom(602, 84, 'OH'); s += atom(694, 86, 'NHR′', { kind: 'hi' });
+    s += atom(600, 166, 'R'); s += atom(692, 166, 'R');
+    s += atom(646, 124, 'C', { kind: 'hi' });
+    s += tag(646, 196, '3 · HEMIAMINAL — rarely isolable');
+
+    s += rule(24, 220, 736, 220);
+
+    /* 4 - protonate the OH */
+    s += bond(P(140, 324), P(96, 284)); s += bond(P(140, 324), P(188, 286));
+    s += bond(P(140, 324), P(94, 366)); s += bond(P(140, 324), P(186, 366));
+    s += atom(96, 284, 'OH₂', { kind: 'warn' }); s += text(66, 270, '⊕', { cls: 'fg-warn', size: 12 });
+    s += atom(188, 286, 'NHR′', { kind: 'hi' }); s += lonePair(188, 286, 20, { dist: 20 });
+    s += atom(94, 366, 'R'); s += atom(186, 366, 'R');
+    s += atom(140, 324, 'C', { kind: 'hi' });
+    s += curve(P(206, 306), P(162, 310), { bow: 16 });
+    s += curve(P(122, 306), P(104, 300), { bow: 14 });
+    s += tag(140, 400, '4 · H⁺ turns the OH into water');
+
+    /* 5 - the iminium */
+    s += bond(P(410, 324), P(410, 278), { order: 2 });
+    s += bond(P(410, 324), P(362, 356)); s += bond(P(410, 324), P(458, 356));
+    s += atom(410, 278, 'NHR′', { kind: 'warn' }); s += text(448, 264, '⊕', { cls: 'fg-warn', size: 12 });
+    s += atom(362, 356, 'R'); s += atom(458, 356, 'R');
+    s += atom(410, 324, 'C', { kind: 'hi' });
+    s += text(312, 276, 'base', { cls: 'fg-tag', size: 10.5 });
+    s += curve(P(330, 286), P(380, 272), { bow: 16 });
+    s += tag(410, 400, '5 · IMINIUM ION, water gone');
+
+    /* 6 - the imine */
+    s += bond(P(646, 324), P(646, 278), { order: 2 });
+    s += bond(P(646, 324), P(598, 356)); s += bond(P(646, 324), P(694, 356));
+    s += atom(646, 278, 'NR′', { kind: 'hi' }); s += lonePair(646, 278, 340, { dist: 20 });
+    s += atom(598, 356, 'R'); s += atom(694, 356, 'R');
+    s += atom(646, 324, 'C', { kind: 'hi' });
+    s += tag(646, 400, '6 · the IMINE');
+
+    s += rule(24, 424, 736, 424);
+
+    /* the enamine branch */
+    s += text(24, 452, 'Branch — if the amine is SECONDARY, the iminium has no N–H to lose,', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += text(24, 474, 'so the base takes an α C–H instead and the C=C ends up outside the nitrogen:', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += bond(P(500, 512), P(560, 486), { order: 2 });
+    s += bond(P(560, 486), P(620, 512));
+    s += atom(500, 512, 'C', { kind: 'hi' }); s += atom(560, 486, 'C');
+    s += atom(620, 512, 'NR′₂', { kind: 'hi' }); s += lonePair(620, 512, 20, { dist: 20 });
+    s += text(560, 548, 'an ENAMINE — nucleophilic at the far carbon', { cls: 'fg-tag-good', size: 11 });
+    s += text(210, 512, 'iminium + base', { cls: 'fg-sm', size: 10.5 });
+    s += arrow(P(300, 512), P(460, 512), { muted: true });
+    return s;
+  },
+  caption: 'Every step here is reversible, which is why imine formation is run at pH 4&ndash;5 and not at either extreme. Too basic and there is no acid to protonate the OH in panel 4, so the hemiaminal never dehydrates. Too acidic and the amine in panel 1 is protonated, has no lone pair, and never attacks at all.',
+  note: 'Three later reactions are this sequence stopped at different points. Reductive amination reduces the panel-5 iminium before it can lose its proton. Enamine chemistry stops at the branch. And running the whole thing backwards with water is imine hydrolysis, which is how an imine used as a protecting group comes off. Note also where the new C&ndash;N bond is: on the old carbonyl carbon, every time.',
+});
+
+/* ---------------------------------------------------------------- 195 ---
+   The synthesis section teaches seven routes and draws none of them. Gabriel
+   is the one whose trick is invisible without a picture: what makes it work is
+   a nitrogen that has nothing left to react with. */
+FIGURES.push({
+  id: 'gabriel-synthesis',
+  section: 'amine-synthesis',
+  anchor: 'Where the stereochemistry matters, that difference alone decides the route.</p>',
+  viewBox: '0 0 760 486',
+  alt: 'Phthalimide deprotonated by hydroxide, its anion doing an SN2 on a primary alkyl bromide, and hydrazine releasing the primary amine from the N-alkyl phthalimide',
+  build() {
+    let s = '';
+    /* A phthalimide: benzene fused to the five-membered imide ring on its
+       right-hand vertical edge. */
+    const phthalimide = (cx, cy, nLabel, nKind, extra) => {
+      let g = '';
+      const r = 34;
+      const pts = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (-90 + i * 60) * Math.PI / 180;
+        pts.push(P(cx + r * Math.cos(a), cy + r * Math.sin(a)));
+      }
+      const mid = P(cx, cy);
+      for (let i = 0; i < 6; i++) {
+        const j = (i + 1) % 6;
+        if (i === 0 || i === 2 || i === 4) g += ringDouble(pts[i], pts[j], mid, { inset: 8 });
+        else g += bond(pts[i], pts[j], { rFrom: 0, rTo: 0 });
+      }
+      const A = pts[1], B = pts[2];          // the fused edge, top and bottom
+      const cTop = P(A.x + 40, A.y - 6), cBot = P(B.x + 40, B.y + 6), nn = P(A.x + 74, cy);
+      g += bond(A, cTop, { rFrom: 0, rTo: 15 });
+      g += bond(B, cBot, { rFrom: 0, rTo: 15 });
+      g += bond(cTop, nn, { rFrom: 15, rTo: 16 });
+      g += bond(cBot, nn, { rFrom: 15, rTo: 16 });
+      g += bond(cTop, P(cTop.x + 6, cTop.y - 42), { order: 2, rTo: 15 });
+      g += bond(cBot, P(cBot.x + 6, cBot.y + 42), { order: 2, rTo: 15 });
+      g += atom(cTop.x + 6, cTop.y - 42, 'O');
+      g += atom(cBot.x + 6, cBot.y + 42, 'O');
+      g += atom(cTop.x, cTop.y, 'C', { kind: 'hi' });
+      g += atom(cBot.x, cBot.y, 'C', { kind: 'hi' });
+      g += atom(nn.x, nn.y, nLabel, { kind: nKind });
+      if (extra) g += extra(nn);
+      return g;
+    };
+
+    s += phthalimide(80, 124, 'NH', 'hi');
+    s += text(40, 220, 'phthalimide', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += text(40, 238, 'pKₐ 8.3 — two carbonyls', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(40, 254, 'pulling on one N–H', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(228, 104, 'KOH', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += arrow(P(226, 124), P(292, 124));
+
+    s += phthalimide(384, 124, 'N⁻', 'warn');
+    s += text(500, 106, '⊖', { cls: 'fg-hi', size: 13 });
+    s += lonePair(458, 124, 0, { dist: 22 });
+    s += text(344, 238, 'the anion — flat, delocalized,', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(344, 254, 'and still a good nucleophile', { cls: 'fg-sm', size: 10, anchor: 'start' });
+
+    s += text(600, 92, 'R–CH₂–Br', { cls: 'fg-lbl', size: 13, anchor: 'start' });
+    s += curve(P(506, 124), P(596, 112), { bow: -22 });
+    s += text(520, 148, 'backside attack — inversion', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+    s += text(520, 164, 'if the carbon is a stereocenter', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+
+    s += rule(24, 278, 736, 278);
+
+    s += phthalimide(110, 372, 'N', 'hi', (nn) => bond(nn, P(nn.x + 46, nn.y), { rFrom: 16, rTo: 18 }) + atom(nn.x + 46, nn.y, 'CH₂R', { r: 18 }));
+    s += text(24, 468, 'no N–H left, and the pair is shared with BOTH carbonyls: it cannot alkylate again', { cls: 'fg-sm', size: 10, anchor: 'start' });
+
+    s += text(392, 352, 'H₂NNH₂', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += arrow(P(390, 372), P(466, 372));
+
+    s += atom(536, 372, 'R–CH₂–NH₂', { kind: 'hi', r: 46 });
+    s += text(536, 440, 'a clean PRIMARY amine', { cls: 'fg-tag-good', size: 11 });
+    s += text(644, 366, '+ phthal-', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(644, 382, 'hydrazide', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    return s;
+  },
+  caption: 'Gabriel in one line: build a nitrogen that can react exactly once, use it, then take it apart. The amine that comes out is clean because at no point in the sequence was there a nucleophilic amine sitting in a flask with an alkyl halide.',
+  note: 'Two limits are visible in the drawing itself. The alkylation is an S<sub>N</sub>2 on the halide, so a secondary halide gives elimination instead and a tertiary one gives nothing but alkene &mdash; and whatever the nitrogen picks up, it picks up <b>once</b>, so the product is always a primary amine. If a secondary amine is the target, this route cannot reach it no matter what halide you feed it.',
+});
+
+/* ---------------------------------------------------------------- 196 ---
+   The Hofmann rearrangement is stated as an outcome. The migration is the
+   surprising part and nothing showed it happening. */
+FIGURES.push({
+  id: 'hofmann-rearrangement-mechanism',
+  section: 'amine-synthesis',
+  anchor: 'a stereocenter that migrates arrives with retention.</p>',
+  viewBox: '0 0 760 470',
+  alt: 'Butanamide deprotonated, brominated on nitrogen, deprotonated again, then rearranging as the propyl group migrates to nitrogen while bromide leaves, giving an isocyanate that hydrolyzes to propylamine and carbon dioxide',
+  build() {
+    let s = '';
+    const amide = (cx, cy, nLabel, nKind) => {
+      let g = '';
+      g += bond(P(cx, cy), P(cx, cy - 46), { order: 2 });
+      g += bond(P(cx, cy), P(cx - 50, cy + 32));
+      g += bond(P(cx, cy), P(cx + 50, cy + 32));
+      g += atom(cx, cy - 46, 'O'); g += lonePair(cx, cy - 46, 200);
+      g += atom(cx - 50, cy + 32, 'Pr');
+      g += atom(cx + 50, cy + 32, nLabel, { kind: nKind });
+      g += atom(cx, cy, 'C', { kind: 'hi' });
+      return g;
+    };
+
+    s += amide(120, 118, 'NH₂', 'hi');
+    s += text(228, 92, 'HO⁻', { cls: 'fg-lbl', size: 12.5 });
+    s += curve(P(218, 106), P(188, 138), { bow: 18 });
+    s += tag(130, 196, '1 · take an N–H');
+
+    s += amide(400, 118, 'NH', 'warn');
+    s += text(478, 136, '⊖', { cls: 'fg-hi', size: 13 });
+    s += lonePair(450, 150, 40, { dist: 20 });
+    s += atom(508, 74, 'Br'); s += atom(556, 48, 'Br');
+    s += bond(P(508, 74), P(556, 48));
+    s += curve(P(468, 132), P(500, 90), { bow: 16 });
+    s += curve(P(528, 58), P(566, 34), { bow: -14 });
+    s += tag(410, 196, '2 · the anion takes a bromine');
+
+    s += amide(660, 118, 'NHBr', 'warn');
+    s += text(640, 196, '3 · the N-bromoamide — and HO⁻', { cls: 'fg-tag', size: 10.5 });
+    s += text(640, 212, 'takes the last N–H', { cls: 'fg-tag', size: 10.5 });
+
+    s += rule(24, 222, 736, 222);
+
+    /* 4 - the migration */
+    s += bond(P(150, 330), P(150, 284), { order: 2 });
+    s += bond(P(150, 330), P(100, 362));
+    s += bond(P(150, 330), P(200, 362));
+    s += bond(P(200, 362), P(246, 392), { rFrom: 15, rTo: 15 });
+    s += atom(150, 284, 'O'); s += lonePair(150, 284, 200);
+    s += atom(100, 362, 'Pr', { kind: 'hi' });
+    s += atom(200, 362, 'N', { kind: 'warn' });
+    s += text(178, 392, '⊖', { cls: 'fg-hi', size: 12 });
+    s += atom(246, 392, 'Br', { kind: 'warn' });
+    s += atom(150, 330, 'C', { kind: 'hi' });
+    s += curve(P(118, 344), P(182, 350), { bow: -20 });
+    s += curve(P(224, 378), P(258, 412), { bow: -14 });
+    s += text(158, 428, '4 · propyl moves to N as bromide', { cls: 'fg-tag-warn', size: 10.5 });
+    s += text(158, 444, 'leaves — one step, no free nitrene', { cls: 'fg-tag-warn', size: 10.5 });
+
+    /* 5 - the isocyanate */
+    s += bond(P(356, 330), P(408, 330), { order: 2, rFrom: 15, rTo: 16 });
+    s += bond(P(408, 330), P(460, 330), { order: 2, rFrom: 16, rTo: 15 });
+    s += bond(P(304, 330), P(356, 330), { rFrom: 15, rTo: 15 });
+    s += atom(304, 330, 'Pr'); s += atom(356, 330, 'N'); s += atom(460, 330, 'O');
+    s += atom(408, 330, 'C', { kind: 'hi' });
+    s += text(408, 272, 'H₂O', { cls: 'fg-lbl', size: 12.5 });
+    s += curve(P(408, 286), P(408, 310), { bow: 16 });
+    s += tag(392, 392, '5 · an ISOCYANATE');
+
+    /* 6 - the carbamic acid */
+    s += bond(P(646, 330), P(646, 284), { order: 2 });
+    s += bond(P(646, 330), P(596, 362));
+    s += bond(P(646, 330), P(696, 362));
+    s += atom(646, 284, 'O'); s += atom(596, 362, 'NHPr', { kind: 'hi' }); s += atom(696, 362, 'OH');
+    s += atom(646, 330, 'C', { kind: 'hi' });
+    s += tag(640, 400, '6 · carbamic acid');
+    s += text(640, 428, 'falls apart on its own to CO₂', { cls: 'fg-sm', size: 10.5 });
+    s += text(640, 444, 'and PrNH₂ — propylamine', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'Four carbons in, three out, and the carbon that leaves is the one the nitrogen was attached to. Everything else in the chain is untouched &mdash; including a stereocenter, which migrates with its configuration intact.',
+  note: 'Panel 4 is the step to draw carefully. The alkyl group and its bonding electrons move to nitrogen <i>while</i> bromide is leaving, in one step, which is why no electron-deficient nitrogen (a nitrene) is ever free and why nothing scrambles. The Curtius rearrangement joins this sequence at panel 5: heating an acyl azide expels N₂ and gives the same isocyanate, with the same migration and the same loss of the carbonyl carbon.',
+});
+
+/* ---------------------------------------------------------------- 197 ---
+   "One step, anti-periplanar" was a sentence in a section whose only figure
+   is a flat regiochemistry comparison. Anti-periplanarity is a 3-D claim. */
+FIGURES.push({
+  id: 'hofmann-e2-newman',
+  section: 'hofmann-elimination',
+  anchor: 'exactly as in the substitution and elimination chapter.</p>',
+  viewBox: '0 0 760 410',
+  alt: 'The E2 arrows of a Hofmann elimination on the left and a Newman projection showing the beta hydrogen anti-periplanar to the trimethylammonium group on the right',
+  build() {
+    let s = '';
+    /* LEFT - the arrows */
+    s += tag(40, 40, 'THE ARROWS', { anchor: 'start' });
+    const c1 = P(90, 176), c2 = P(150, 146), c3 = P(210, 176), c4 = P(270, 146);
+    s += bond(c1, c2, { rFrom: 0, rTo: 0 }); s += bond(c2, c3, { rFrom: 0, rTo: 0 }); s += bond(c3, c4, { rFrom: 0, rTo: 0 });
+    s += bond(c2, P(150, 92), { rFrom: 0, rTo: 18 });
+    s += atom(150, 92, 'N⁺(CH₃)₃', { kind: 'warn', r: 18 });
+    s += bond(c1, P(72, 222), { rFrom: 0, rTo: 10 });
+    s += atom(72, 222, 'H', { r: 10 });
+    s += text(42, 276, 'HO⁻', { cls: 'fg-lbl', size: 12.5 });
+    s += lonePair(42, 272, 0, { dist: 22 });
+    s += curve(P(66, 266), P(70, 238), { bow: 14 });
+    s += curve(P(84, 210), P(116, 168), { bow: 16 });
+    s += curve(P(150, 118), P(150, 100), { bow: 12 });
+    s += text(228, 214, 'all at once', { cls: 'fg-tag-warn', size: 11 });
+    s += arrow(P(90, 292), P(150, 292));
+    s += bond(P(196, 306), P(244, 280), { order: 2, rFrom: 0, rTo: 0 });
+    s += bond(P(244, 280), P(292, 306), { rFrom: 0, rTo: 0 });
+    s += bond(P(292, 306), P(340, 280), { rFrom: 0, rTo: 0 });
+    s += text(268, 340, 'but-1-ene', { cls: 'fg-tag-good', size: 11 });
+    s += text(268, 362, '+ H₂O + N(CH₃)₃ — leaves NEUTRAL,', { cls: 'fg-sm', size: 10 });
+    s += text(268, 378, 'which is the whole trick', { cls: 'fg-sm', size: 10 });
+
+    s += rule(392, 30, 392, 390);
+
+    /* RIGHT - the Newman projection */
+    s += tag(436, 40, 'THE GEOMETRY', { anchor: 'start' });
+    const cx = 570, cy = 200, R = 58;
+    s += atom(cx, cy, '', { r: R });
+    // front carbon bonds: up, and two below
+    s += bond(P(cx, cy), P(cx, cy - R), { rFrom: 0, rTo: 0 });
+    s += bond(P(cx, cy), P(cx + R * 0.87, cy + R * 0.5), { rFrom: 0, rTo: 0 });
+    s += bond(P(cx, cy), P(cx - R * 0.87, cy + R * 0.5), { rFrom: 0, rTo: 0 });
+    s += atom(cx, cy - R - 20, 'H', { kind: 'hi', r: 13 });
+    s += atom(cx + R * 0.87 + 26, cy + R * 0.5 + 16, 'H', { r: 12 });
+    s += atom(cx - R * 0.87 - 26, cy + R * 0.5 + 16, 'H', { r: 12 });
+    // back carbon bonds: down, and two above, drawn from the rim outward
+    s += bond(P(cx, cy + R), P(cx, cy + R + 22), { rFrom: 0, rTo: 0 });
+    s += bond(P(cx + R * 0.87, cy - R * 0.5), P(cx + R * 0.87 + 20, cy - R * 0.5 - 12), { rFrom: 0, rTo: 0 });
+    s += bond(P(cx - R * 0.87, cy - R * 0.5), P(cx - R * 0.87 - 20, cy - R * 0.5 - 12), { rFrom: 0, rTo: 0 });
+    s += atom(cx, cy + R + 40, 'N⁺(CH₃)₃', { kind: 'warn', r: 18 });
+    s += atom(cx + R * 0.87 + 34, cy - R * 0.5 - 22, 'Et', { r: 14 });
+    s += atom(cx - R * 0.87 - 34, cy - R * 0.5 - 22, 'H', { r: 12 });
+    s += rule(cx, cy - R - 6, cx, cy + R + 20);
+    s += text(cx + 96, cy - 6, 'anti-', { cls: 'fg-tag-warn', size: 11 });
+    s += text(cx + 96, cy + 10, 'periplanar,', { cls: 'fg-tag-warn', size: 11 });
+    s += text(cx + 96, cy + 26, '180°', { cls: 'fg-tag-warn', size: 11 });
+    s += text(cx, 334, 'The C–H that breaks and the C–N that breaks', { cls: 'fg-sm', size: 10.5 });
+    s += text(cx, 352, 'have to lie in one plane pointing opposite ways,', { cls: 'fg-sm', size: 10.5 });
+    s += text(cx, 370, 'so their orbitals can overlap into the new pi bond.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The mechanism is an ordinary E2 and the geometry is the ordinary E2 geometry &mdash; nothing about a Hofmann elimination changes either. What is unusual is only the leaving group: a positively charged nitrogen that departs neutral, and a bulky one, which is what decides which β hydrogen hydroxide can reach.',
+  note: 'Both bonds break in the same transition state, so both have to be lined up before anything happens. In an open chain that costs nothing &mdash; rotate about the C–C bond until they are anti and eliminate &mdash; but in a ring that cannot rotate, the available anti-periplanar hydrogen decides the product outright, which is the case the substitution and elimination chapter worked through.',
+});
+
+/* ---------------------------------------------------------------- 198 ---
+   The cyclic case is the one that carried the structural information, and it
+   was argued in words only. */
+FIGURES.push({
+  id: 'cyclic-amine-degradation',
+  section: 'hofmann-elimination',
+  anchor: 'a conclusion drawn from bottles and a balance.</p>',
+  viewBox: '0 0 760 370',
+  alt: 'Piperidine methylated twice, opened by a first Hofmann elimination to a dimethylamino pentene, then methylated and eliminated again to give penta-1,4-diene and trimethylamine',
+  build() {
+    let s = '';
+    const ring = (cx, cy, nLabel, nKind) => {
+      let g = '';
+      const r = 40, pts = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (-90 + i * 60) * Math.PI / 180;
+        pts.push(P(cx + r * Math.cos(a), cy + r * Math.sin(a)));
+      }
+      for (let i = 0; i < 6; i++) {
+        const j = (i + 1) % 6;
+        const rf = i === 0 ? 16 : 0, rt = j === 0 ? 16 : 0;
+        g += bond(pts[i], pts[j], { rFrom: rf, rTo: rt });
+      }
+      g += atom(pts[0].x, pts[0].y, nLabel, { kind: nKind });
+      return pts;
+    };
+
+    let pts = null;
+    const draw = (cx, cy, nLabel, nKind) => {
+      const r = 40, p = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (-90 + i * 60) * Math.PI / 180;
+        p.push(P(cx + r * Math.cos(a), cy + r * Math.sin(a)));
+      }
+      let g = '';
+      for (let i = 0; i < 6; i++) {
+        const j = (i + 1) % 6;
+        g += bond(p[i], p[j], { rFrom: i === 0 ? 16 : 0, rTo: j === 0 ? 16 : 0 });
+      }
+      g += atom(p[0].x, p[0].y, nLabel, { kind: nKind });
+      return { g, p };
+    };
+
+    let d = draw(110, 130, 'NH', 'hi');
+    s += d.g;
+    s += text(110, 206, 'piperidine', { cls: 'fg-lbl', size: 12.5 });
+
+    s += text(248, 100, '2 CH₃I, K₂CO₃', { cls: 'fg-tag', size: 11 });
+    s += arrow(P(196, 130), P(300, 130));
+
+    d = draw(400, 130, 'N', 'warn');
+    s += d.g;
+    s += bond(d.p[0], P(360, 62), { rFrom: 16, rTo: 16 });
+    s += bond(d.p[0], P(440, 62), { rFrom: 16, rTo: 16 });
+    s += atom(360, 62, 'CH₃'); s += atom(440, 62, 'CH₃');
+    s += text(434, 108, '⊕', { cls: 'fg-warn', size: 13 });
+    s += text(400, 206, 'the quaternary salt', { cls: 'fg-lbl', size: 12.5 });
+
+    s += text(560, 100, 'Ag₂O, H₂O, Δ', { cls: 'fg-tag', size: 11 });
+    s += arrow(P(500, 130), P(620, 130));
+    s += text(690, 124, 'ring', { cls: 'fg-tag-warn', size: 11 });
+    s += text(690, 140, 'opens', { cls: 'fg-tag-warn', size: 11 });
+
+    s += rule(24, 232, 736, 232);
+
+    /* the ring-opened amine */
+    const a1 = P(50, 300), a2 = P(98, 274), a3 = P(146, 300), a4 = P(194, 274), a5 = P(242, 300);
+    s += bond(a1, a2, { order: 2, rFrom: 0, rTo: 0 });
+    s += bond(a2, a3, { rFrom: 0, rTo: 0 }); s += bond(a3, a4, { rFrom: 0, rTo: 0 });
+    s += bond(a4, a5, { rFrom: 0, rTo: 0 });
+    s += bond(a5, P(292, 274), { rFrom: 0, rTo: 20 });
+    s += atom(292, 274, 'N(CH₃)₂', { kind: 'hi', r: 20 });
+    s += text(170, 342, 'still attached — only ONE of the two C–N bonds broke', { cls: 'fg-sm', size: 10.5 });
+
+    s += text(420, 262, 'CH₃I, then Ag₂O/Δ', { cls: 'fg-tag', size: 11 });
+    s += arrow(P(360, 286), P(474, 286));
+
+    const b1 = P(520, 300), b2 = P(566, 274), b3 = P(612, 300), b4 = P(658, 274), b5 = P(704, 300);
+    s += bond(b1, b2, { order: 2, rFrom: 0, rTo: 0 });
+    s += bond(b2, b3, { rFrom: 0, rTo: 0 }); s += bond(b3, b4, { rFrom: 0, rTo: 0 });
+    s += bond(b4, b5, { order: 2, rFrom: 0, rTo: 0 });
+    s += text(586, 342, 'penta-1,4-diene + N(CH₃)₃ — nitrogen finally free', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'Two rounds, not one &mdash; and that was the evidence. A nitrogen held by two C&ndash;N bonds is still attached to the chain after the first elimination has opened the ring; only a second methylation and elimination cuts it loose.',
+  note: 'This is what made the degradation worth its cost. The number of <i>rounds</i> reports the connectivity while the number of CH₃I equivalents reports the class, and the two are independent measurements on the same unknown. An alkaloid chemist reading &ldquo;two rounds&rdquo; concluded &ldquo;the nitrogen was in a ring&rdquo; without ever seeing the molecule.',
 });
 
 

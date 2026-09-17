@@ -137,9 +137,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
   var CASES = [
     { id:'h1', t:'<b>2-Aminobutane</b>, CH<sub>3</sub>CH(NH<sub>2</sub>)CH<sub>2</sub>CH<sub>3</sub>', right:'three',
-      why:'Three equivalents. Two replace the N&ndash;H hydrogens and a third quaternizes the nitrogen. A primary amine always takes three.' },
+      why:'Three equivalents. Each one is an S<sub>N</sub>2 in which the lone pair attacks the methyl carbon &mdash; CH<sub>3</sub>I never substitutes at a hydrogen. After each alkylation a base (K<sub>2</sub>CO<sub>3</sub>) removes the remaining N&ndash;H proton and hands back a neutral, more substituted amine, which goes again. The count is the number of N&ndash;H hydrogens plus one, so a primary amine takes three.' },
     { id:'h2', t:'<b>Diethylamine</b>, (CH<sub>3</sub>CH<sub>2</sub>)<sub>2</sub>NH', right:'two',
-      why:'Two. One N&ndash;H to replace, then quaternization. Counting the equivalents consumed is how the class of an unknown amine was read off before spectroscopy.' },
+      why:'Two. One N&ndash;H, so one alkylation-then-deprotonation round, then the equivalent that quaternizes. Counting the equivalents consumed is how the class of an unknown amine was read off before spectroscopy.' },
     { id:'h3', t:'<b>Triethylamine</b>, (CH<sub>3</sub>CH<sub>2</sub>)<sub>3</sub>N', right:'one',
       why:'One. Nothing to replace, so the single methylation quaternizes it directly.' },
     { id:'h4', t:'<b>Piperidine</b>, a six-membered ring with NH', right:'two',
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function(){
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
-            '<h2 class="step-title">How many equivalents of CH<sub>3</sub>I?</h2>' +
+            '<h2 class="step-title">How many equivalents of CH<sub>3</sub>I in the FIRST methylation?</h2>' +
             '<p class="step-body">Count the hydrogens on nitrogen, then add one to quaternize. Before spectroscopy this number <i>was</i> the analysis: it reports the class of the amine directly.</p>' +
             '<div class="radical-sort">' +
             CASES.map(function(c){

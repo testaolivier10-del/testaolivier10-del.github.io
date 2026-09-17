@@ -513,6 +513,9 @@
     { id:'amine-basicity', title:'Amine basicity', family:'Amines',
       topics:['amine-structure','amine-reactions','acidity-factors','esters-amides'], dependsOn:['acidity-factors','resonance-delocalization'],
       hint:'A lone pair tied up in resonance is not available to grab a proton.' },
+    { id:'acylation-self-termination', title:'Switching a nucleophile off', family:'Amines',
+      topics:['amine-reactions','amine-synthesis','esters-amides','acyl-substitution'], dependsOn:['amine-basicity','acyl-reactivity-order'],
+      hint:'Acylation stops after one because the product nitrogen is an amide, and an amide nitrogen is not a nucleophile.' },
 
     /* ---- Aromatic chemistry -------------------------------------------- */
     { id:'huckel-aromaticity', title:'Aromaticity & Hückel\'s rule', family:'Aromatic chemistry',
@@ -670,7 +673,7 @@
     'acyl-chlorides-anhydrides':'activation-before-acylation', 'nitriles':'nitrile-as-acyl-level',
     'alpha-halogenation':'alpha-halogenation-control', 'enolate-regiochemistry':'enolate-regiocontrol',
     'alpha-hydrogens':'alpha-acidity', 'aldol':'aldol-connectivity', 'claisen':'claisen-connectivity',
-    'amine-structure':'amine-basicity', 'amine-reactions':'nucleophile-recognition',
+    'amine-structure':'amine-basicity', 'amine-reactions':'acylation-self-termination',
     'amine-synthesis':'amine-synthesis-routes', 'hofmann-elimination':'hofmann-elimination-rule',
     'aromaticity':'huckel-aromaticity', 'eas':'eas-mechanism', 'directing-effects':'directing-effects',
     'ir':'ir-functional-groups', 'h-nmr':'nmr-splitting-integration',

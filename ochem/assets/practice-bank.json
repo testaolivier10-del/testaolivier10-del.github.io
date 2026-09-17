@@ -26931,15 +26931,17 @@
    "type": "mcq"
   },
   {
-   "q": "Pyridine's nitrogen lone pair occupies the same type of orbital as pyrrole's nitrogen lone pair, both being part of the aromatic pi system.",
+   "q": "A flask contains cyclohexanone and cyclohexylamine dissolved in diethyl ether. You shake it with 1 M aqueous HCl and separate the layers. Where is each compound?",
    "options": [
-    "True",
-    "False"
+    "Both stay in the ether layer, since neither one is ionic",
+    "Cyclohexylamine moves into the water as its ammonium chloride; the ketone stays in the ether",
+    "Cyclohexanone moves into the water as an oxonium salt; the amine stays in the ether",
+    "Both move into the water layer, since both have a lone pair to protonate"
    ],
    "correct": 1,
-   "why": "Pyridine's lone pair sits in an sp2 orbital in the ring plane, separate from the aromatic pi system, while pyrrole's lone pair is delocalized into the pi system to satisfy aromaticity.",
-   "difficulty": "easy",
-   "type": "tf"
+   "why": "The amine (pKaH about 10.6) is fully protonated by 1 M HCl, and the ammonium chloride that results is an ionic salt, so it dissolves in the water layer. A ketone is nowhere near basic enough to be protonated by dilute HCl and stays in the ether. Adding NaOH to the aqueous layer regenerates the free amine, which is extracted back into fresh ether - this is how amines are separated and purified in practice.",
+   "difficulty": "medium",
+   "type": "mcq"
   },
   {
    "q": "Which functional group definition correctly describes an amine?",
@@ -26981,15 +26983,15 @@
    "type": "mcq"
   },
   {
-   "q": "Aniline is far less basic than cyclohexylamine primarily because:",
+   "q": "Which nitrogen of the amino acid lysine, H2N-CH2CH2CH2CH2-CH(NH2)-COOH, is the more basic?",
    "options": [
-    "the phenyl ring inductively donates electron density to nitrogen",
-    "aniline's nitrogen has no lone pair at all",
-    "aniline's nitrogen lone pair is delocalized into the aromatic ring, making it less available for protonation",
-    "cyclohexylamine is itself aromatic"
+    "The side-chain NH2 at the far end of the butyl chain",
+    "The alpha-NH2 sitting next to the carboxyl group",
+    "They are equally basic, since both are primary amines",
+    "Neither one is basic, because the COOH protonates both"
    ],
-   "correct": 2,
-   "why": "Resonance donation of the lone pair into the benzene ring spreads out electron density, so nitrogen is less able to bind an incoming proton compared to a simple alkylamine.",
+   "correct": 0,
+   "why": "The side-chain nitrogen is an ordinary alkylamine with nothing nearby, pKaH about 10.5. The alpha nitrogen sits one carbon from an electron-withdrawing carboxyl group, whose inductive pull destabilizes the ammonium ion formed on protonation and drops its pKaH to about 9. Induction falls off steeply with distance, which is why four CH2 groups are enough to remove the effect entirely.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -27107,15 +27109,15 @@
    "type": "mcq"
   },
   {
-   "q": "Although alkyl groups donate electron density and should raise basicity, triethylamine is not dramatically more basic in water than diethylamine. Why?",
+   "q": "Guanidine, (H2N)2C=NH, has a conjugate acid pKa of about 13.6, making it far MORE basic than an ordinary alkylamine - even though its lone pairs are delocalized. Why doesn't delocalization lower its basicity the way it does in an amide?",
    "options": [
-    "triethylamine has resonance stabilization",
-    "alkyl groups provide no electron-donating effect at all",
-    "sterics and poor solvation offset the extra donation",
-    "triethylamine's nitrogen lacks a lone pair"
+    "Its nitrogens are sp3 hybridized, unlike an amide nitrogen",
+    "The resonance stabilizes the protonated cation rather than the neutral base, so it shifts the equilibrium toward protonation",
+    "Guanidine has no lone pair available to delocalize in the first place",
+    "Delocalization raises basicity in every compound that shows it"
    ],
-   "correct": 2,
-   "why": "The benefit of a third alkyl group's inductive donation is counteracted by increased steric bulk around the protonated nitrogen, which hinders stabilizing solvation by water.",
+   "correct": 1,
+   "why": "What matters is which side of the acid-base equilibrium the resonance stabilizes. In an amide, resonance stabilizes the neutral form, so protonation costs that stabilization and basicity collapses. In guanidine, protonating the imine nitrogen gives a cation whose positive charge is shared equally over three nitrogens, so the resonance pays for the protonation instead of opposing it. Same phenomenon, opposite direction.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -27125,10 +27127,10 @@
     "amide > pyridine > pyrrole > cyclohexylamine",
     "pyridine > cyclohexylamine > amide > pyrrole",
     "pyrrole > pyridine > cyclohexylamine > amide",
-    "cyclohexylamine > pyridine > pyrrole > amide"
+    "cyclohexylamine > pyridine > amide > pyrrole"
    ],
    "correct": 3,
-   "why": "A localized sp3 lone pair (alkylamine) is most basic; pyridine's localized sp2 lone pair is next; pyrrole's lone pair, tied up in aromaticity, is weakly basic; an amide's lone pair, delocalized into the carbonyl, is the least basic of the four.",
+   "why": "A localized sp3 lone pair (alkylamine, pKaH about 10.7) is most basic; pyridine's localized sp2 lone pair is next at 5.2; an amide comes next at about -1, its lone pair delocalized into the carbonyl; pyrrole is last at about -4, because its lone pair IS the aromatic sextet and protonating nitrogen would destroy the aromaticity outright.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -27274,15 +27276,17 @@
    "type": "mcq"
   },
   {
-   "q": "Amines can act as bases by accepting a proton and also as nucleophiles by donating their lone pair to an electrophilic carbon.",
+   "q": "Cyclohexylamine is treated with (1) excess CH3I, then (2) acetic anhydride. What is the outcome?",
    "options": [
-    "True",
-    "False"
+    "An amide forms in step 2, as it would with the free amine",
+    "Nothing happens in step 2 - step 1 already destroyed the nucleophile",
+    "A second quaternary salt forms in step 2, using the anhydride",
+    "An imine forms in step 2 from one of the carbonyl groups"
    ],
-   "correct": 0,
-   "why": "The same nitrogen lone pair can be shared with a proton (basicity) or with an electrophilic carbon center (nucleophilicity), depending on the reaction partner.",
-   "difficulty": "easy",
-   "type": "tf"
+   "correct": 1,
+   "why": "Excess CH3I exhaustively methylates the nitrogen to cyclohexyltrimethylammonium iodide. That nitrogen has four bonds, a full positive charge and no lone pair, so it cannot attack the anhydride - and it has no N-H to lose even if it could. Order matters: run the acylation first and the amide forms cleanly.",
+   "difficulty": "hard",
+   "type": "mcq"
   },
   {
    "q": "Treating a primary or secondary amine with an acyl chloride (R-COCl) gives which product?",
@@ -27374,7 +27378,7 @@
    "type": "mcq"
   },
   {
-   "q": "Before any water is lost, an amine first adds to an aldehyde or ketone carbonyl to give an isolable tetrahedral intermediate commonly called a:",
+   "q": "Before any water is lost, an amine first adds to an aldehyde or ketone carbonyl to give a tetrahedral intermediate commonly called a:",
    "options": [
     "an imine",
     "a geminal diol hydrate",
@@ -27382,7 +27386,7 @@
     "hemiaminal (carbinolamine)"
    ],
    "correct": 3,
-   "why": "The initial addition product, bearing both an OH and an NR2 group on the same carbon, is the hemiaminal, which can then dehydrate to the imine or enamine.",
+   "why": "The initial addition product, bearing both an OH and an NR2 group on the same carbon, is the hemiaminal, which can then dehydrate to the imine or enamine - though it is rarely isolable, since it usually dehydrates about as fast as it forms.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -27398,29 +27402,29 @@
    "type": "tf"
   },
   {
-   "q": "Heating a quaternary ammonium hydroxide in a Hofmann elimination typically gives which alkene as the major product?",
+   "q": "You need to convert butan-2-one plus methylamine into N-methylbutan-2-amine, CH3CH2CH(NHCH3)CH3. Which reagent completes the job?",
    "options": [
-    "the less substituted (less stable) alkene",
-    "the more substituted (Zaitsev) alkene",
-    "no alkene forms; an amine and alkyl halide result instead",
-    "no reaction occurs under these conditions"
+    "NaBH3CN at pH 4-5, in the same flask",
+    "LiAlH4 in dry ether, added before the amine",
+    "Br2 and NaOH, followed by aqueous workup",
+    "Excess CH3I, followed by mild warming"
    ],
    "correct": 0,
-   "why": "Hofmann elimination favors removal of the most sterically accessible proton due to the bulky trialkylammonium leaving group, giving the less substituted alkene as the major product.",
+   "why": "This is a reductive amination. The ketone and the amine condense to the iminium ion and NaBH3CN reduces it. The mildly acidic pH is what makes it work: acidic enough to dehydrate the hemiaminal, not so acidic that the amine is all protonated, and NaBH3CN is attenuated enough to survive those conditions and to ignore the ketone. LiAlH4 added first would simply reduce the ketone to the alcohol.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Why does Hofmann elimination give the opposite regiochemical outcome (less substituted alkene) compared to typical acid-catalyzed alcohol dehydration, which favors the Zaitsev product?",
+   "q": "Put the steps of imine formation in order: (i) loss of water, (ii) protonation of the OH, (iii) attack by nitrogen on the carbonyl carbon, (iv) loss of a proton from nitrogen, (v) proton transfer giving the hemiaminal.",
    "options": [
-    "the Hofmann elimination proceeds by an SN1 mechanism rather than E2",
-    "the bulky ammonium leaving group favors the least hindered proton",
-    "amines are incapable of undergoing E1 or E2 elimination",
-    "the trialkylammonium group is actually small, so sterics are irrelevant"
+    "iii, v, ii, i, iv",
+    "iii, ii, i, v, iv",
+    "ii, iii, v, i, iv",
+    "i, iii, v, ii, iv"
    ],
-   "correct": 1,
-   "why": "The large, charged ammonium leaving group sterically disfavors approaching the more hindered, more substituted proton, so base removes the more accessible proton instead, leading to the less stable alkene.",
-   "difficulty": "medium",
+   "correct": 0,
+   "why": "Attack comes first (iii), because the amine is the nucleophile and the carbonyl carbon the electrophile. A proton transfer then converts the zwitterion into the neutral hemiaminal (v). The OH is a terrible leaving group, so it is protonated to water (ii), which leaves with a push from the nitrogen lone pair to give the iminium ion (i). Finally the iminium loses its N-H proton to give the neutral imine (iv).",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -44378,15 +44382,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which reagent is used for exhaustive alkylation?",
+   "q": "You need pentan-1-amine, CH3(CH2)4NH2, and the only carbon source on the shelf is 1-bromobutane. Which sequence works?",
    "options": [
-    "Excess H2NNH2",
-    "Excess CH3I",
-    "Excess NaCN",
-    "Excess LiAlH4"
+    "NaN3, then LiAlH4 and workup",
+    "Potassium phthalimide, then hydrazine",
+    "NaCN, then LiAlH4 and workup",
+    "Excess NH3, then distill the product"
    ],
-   "correct": 1,
-   "why": "Methyl iodide is the typical choice when a quaternary salt is the target.",
+   "correct": 2,
+   "why": "Count first. 1-Bromobutane has four carbons and the target has five, so the route must ADD one. Azide and Gabriel both hand back exactly the skeleton you put in, so both would give butylamine, one carbon short, and excess ammonia has the same problem plus a mixture. Cyanide brings the extra carbon: 1-bromobutane plus NaCN gives pentanenitrile, and LiAlH4 turns the nitrile carbon into the CH2 bearing nitrogen.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -44430,7 +44434,7 @@
    "type": "mcq"
   },
   {
-   "q": "Which substrate works best in a Gabriel alkylation?",
+   "q": "Which of these halides would give the best yield in the alkylation step of a Gabriel synthesis?",
    "options": [
     "Bromobenzene",
     "Methyl iodide",
@@ -44438,7 +44442,7 @@
     "2-Bromobutane"
    ],
    "correct": 1,
-   "why": "The step is an SN2, so tertiary halides give only alkene.",
+   "why": "The step is an SN2, so tertiary halides give only alkene, a secondary one gives poor yields with elimination alongside, and bromobenzene is an aryl halide, which does not do SN2 at all.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -44482,15 +44486,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which route lengthens the carbon chain by one?",
+   "q": "Which single reagent converts butanamide, CH3CH2CH2CONH2, into butylamine?",
    "options": [
-    "Hofmann rearrangement",
-    "Cyanide, then LiAlH4",
-    "Gabriel synthesis",
-    "Azide, then LiAlH4"
+    "Br2 and NaOH, then warming",
+    "LiAlH4, then aqueous workup",
+    "Ag2O in water, with heat",
+    "Hydrazine, then hydrolysis"
    ],
    "correct": 1,
-   "why": "The nitrile carbon becomes the CH2 next to nitrogen.",
+   "why": "LiAlH4 reduces the amide C=O all the way to CH2, so four carbons go in and four come out: butanamide gives butylamine. Br2/NaOH is the Hofmann rearrangement, which takes the same starting material to PROPYLamine by expelling the carbonyl carbon as CO2 - one substrate, one carbon's difference, decided entirely by the reagent.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -44690,15 +44694,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which pair leaves the carbon skeleton unchanged?",
+   "q": "(R)-2-bromobutane is treated with NaN3, then with H2 over Pd. What is the product?",
    "options": [
-    "Azide and Curtius",
-    "Gabriel and azide",
-    "Cyanide and Curtius",
-    "Gabriel and Hofmann"
+    "Butan-2-amine with the configuration inverted at that carbon",
+    "Butan-2-amine with the configuration retained throughout",
+    "A racemic mixture of the two butan-2-amines",
+    "But-1-ene, because azide is too basic to substitute"
    ],
-   "correct": 1,
-   "why": "Both hand back exactly the halide you put in.",
+   "correct": 0,
+   "why": "Azide displacement is an SN2: the nucleophile attacks the backside of the C-Br carbon and the configuration inverts. Reducing the azide to the amine never touches that carbon, so the inversion survives into the product. Note that the R/S letter may or may not flip with it - check the CIP priorities separately from the geometry. This control is a reason to pick azide over reductive amination, which builds the bond on a flat C=N and gives a racemic product.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -44848,15 +44852,15 @@
    "type": "mcq"
   },
   {
-   "q": "In Hofmann elimination, where does the bulk sit?",
+   "q": "2-Amino-2-methylbutane, (CH3)2C(NH2)CH2CH3, is exhaustively methylated and then heated with Ag2O and water. What is the major alkene?",
    "options": [
-    "On the leaving group",
-    "On the base",
-    "On the alkene",
-    "On the beta hydrogen"
+    "2-Methylbut-2-ene",
+    "2-Methylbut-1-ene",
+    "But-2-ene",
+    "2-Methylbutan-2-ol"
    ],
-   "correct": 0,
-   "why": "With tert-butoxide the bulk sits on the base instead.",
+   "correct": 1,
+   "why": "The nitrogen sits on C2, so the beta carbons are the two methyls on C2 and the CH2 of the ethyl group. Taking a hydrogen from a methyl gives 2-methylbut-1-ene, disubstituted; taking one from the CH2 gives 2-methylbut-2-ene, trisubstituted and more stable. Zaitsev would pick the trisubstituted one; Hofmann conditions do not, because the bulky trimethylammonium group shields the more substituted side.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -44921,7 +44925,7 @@
     "Two"
    ],
    "correct": 2,
-   "why": "Two replace the N–H hydrogens and a third quaternizes nitrogen.",
+   "why": "Each equivalent alkylates the lone pair in an SN2; the ammonium salt that results still has an N-H, which a base removes to hand back a neutral, more substituted amine that goes again. The count is the number of N-H hydrogens plus one, so a primary amine takes three.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -44952,16 +44956,16 @@
    "type": "mcq"
   },
   {
-   "q": "In sec-butyltrimethylammonium, which beta carbon reacts?",
+   "q": "A trialkylamine is treated with H2O2 to give the amine oxide, then heated to 150 C. Compared with a Hofmann elimination, what is different?",
    "options": [
-    "C1",
-    "C3",
-    "C2",
-    "C4"
+    "The alkene formed is the more substituted one instead of the less",
+    "The elimination is syn-periplanar rather than anti, and needs no added base",
+    "The mechanism becomes E1, by way of a carbocation intermediate",
+    "Nitrogen leaves as an amide anion rather than as a neutral amine"
    ],
-   "correct": 0,
-   "why": "C1 is an unhindered methyl with three hydrogens.",
-   "difficulty": "medium",
+   "correct": 1,
+   "why": "This is a Cope elimination. The amine oxide's own oxygen removes the beta hydrogen through a flat five-membered transition state, so the C-H and the C-N that break must be on the SAME side - syn-periplanar, the opposite geometric requirement to E2. No hydroxide or other base is needed. The regiochemistry, though, comes out the same as Hofmann: the less substituted alkene, for the same steric reason.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -44978,16 +44982,16 @@
    "type": "mcq"
   },
   {
-   "q": "How many carbons has the Hofmann product from 2-aminobutane?",
+   "q": "Exhaustive methylation then Ag2O and heat converts PhCH2-CH(NH2)-CH3 mainly into PhCH=CH-CH3, not into PhCH2-CH=CH2. Why?",
    "options": [
-    "Five",
-    "Two",
-    "Four",
-    "Three"
+    "PhCH=CH-CH3 is in fact the less substituted of the two alkenes",
+    "The benzylic beta hydrogen is far more acidic, and the E1cb character of the transition state lets acidity outweigh sterics",
+    "Ag2O changes the mechanism to E1, so alkene stability decides the outcome",
+    "A benzene ring blocks elimination toward a methyl group entirely"
    ],
-   "correct": 2,
-   "why": "Elimination rearranges bonds, not the skeleton.",
-   "difficulty": "medium",
+   "correct": 1,
+   "why": "Hofmann regiochemistry usually comes from two effects that agree: the bulky leaving group makes the hindered side hard to reach, and the positive nitrogen acidifies the beta hydrogens so the C-H breaks ahead of the C-N. Here one beta position is benzylic, its hydrogen is much more acidic, and removing it gives a conjugated alkene - so the acidity effect wins and the more substituted product forms. The real rule is the most acidic ACCESSIBLE beta hydrogen.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -45004,16 +45008,16 @@
    "type": "mcq"
   },
   {
-   "q": "Which alkene would Zaitsev predict here?",
+   "q": "Which of these is NOT a reason exhaustive methylation is required before the elimination can happen?",
    "options": [
-    "Buta-1,3-diene",
-    "But-2-ene",
-    "But-1-ene",
-    "2-Methylprop-1-ene"
+    "It turns the leaving group from an amide anion into a neutral amine",
+    "It makes the beta hydrogens more acidic",
+    "It makes the leaving group bulky, which sets the regiochemistry",
+    "It changes the nitrogen from sp3 to sp2 hybridized"
    ],
-   "correct": 1,
-   "why": "Zaitsev picks the more substituted, more stable alkene.",
-   "difficulty": "hard",
+   "correct": 3,
+   "why": "The nitrogen stays sp3 throughout - a quaternary ammonium nitrogen has four sigma bonds and is tetrahedral. The other three are genuine consequences of quaternization: what departs is now a neutral trialkylamine rather than R2N-, the positive charge acidifies the beta hydrogens and gives the transition state E1cb character, and the bulk of the N(CH3)3 group is what shields the more substituted beta carbon.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -45095,16 +45099,16 @@
    "type": "mcq"
   },
   {
-   "q": "Main drawback of the methylation-elimination method?",
+   "q": "An unknown amine consumes one equivalent of CH3I on exhaustive methylation and releases its nitrogen after a single round of Ag2O and heat. What is it?",
    "options": [
-    "It consumed the sample",
-    "It needed silver reagents",
-    "It gave only molecular weight",
-    "It needed pure alkene starting material"
+    "A tertiary amine, with the nitrogen not in a ring",
+    "A secondary amine, with the nitrogen in a ring",
+    "A primary amine, with the nitrogen not in a ring",
+    "A quaternary ammonium salt to begin with"
    ],
    "correct": 0,
-   "why": "It also took weeks, where NMR takes minutes.",
-   "difficulty": "easy",
+   "why": "Two independent readings. One equivalent of CH3I means no N-H hydrogens at all, so the amine is tertiary. One round of elimination freeing the nitrogen means only one C-N bond held it to the fragment being degraded, so the nitrogen was not in a ring - a ring would take two rounds, because the first elimination only opens it.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {

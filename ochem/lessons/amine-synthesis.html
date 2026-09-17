@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function(){
         eyebrow: 'Explain',
         title: 'Three escapes, and what each costs.',
         bodyHtml: '<ul class="step-body">' +
-          '<li><b>Gabriel.</b> Phthalimide’s N&ndash;H is acidic (pK<sub>a</sub> near 9, flanked by two carbonyls). Deprotonate, alkylate once — the product is an imide with no N&ndash;H and its lone pair delocalized, so it cannot go again — then hydrolyze or use hydrazine to release the <b>primary</b> amine.</li>' +
+          '<li><b>Gabriel.</b> Phthalimide’s N&ndash;H is acidic (pK<sub>a</sub> about 8.3, flanked by two carbonyls). Deprotonate, alkylate once — the product is an imide with no N&ndash;H and its lone pair delocalized, so it cannot go again — then hydrolyze or use hydrazine to release the <b>primary</b> amine.</li>' +
           '<li><b>Azide.</b> N<sub>3</sub><sup>&minus;</sup> is small and an excellent nucleophile, and its product is an azide, not an amine. Reduce with LiAlH<sub>4</sub> or H<sub>2</sub>/Pd. Same idea, fewer steps.</li>' +
           '<li><b>Reductive amination.</b> Condense a carbonyl with the amine to an imine or iminium, then reduce it in the same flask.</li>' +
           '</ul>' +
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function(){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Does the carbon count change?</h2>' +
-            '<p class="step-body">This is the first question to ask of any amine synthesis, because it cuts most of the options at once. Count what goes in, then find the carbon that arrives or leaves.</p>' +
+            '<p class="step-body">This is the first question to ask of any amine synthesis, because it cuts most of the options at once. Measure the product against the <b>substrate named first</b> in each row — the halide, the amide or the carbonyl compound — and ask what the reagent adds or takes away.</p>' +
             '<div class="radical-sort">' +
             CASES.map(function(c){
               return '<div class="radical-row" data-case="' + c.id + '">' +
@@ -259,15 +259,15 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'mcq',
         eyebrow: 'Step 7 · Independent Practice',
-        title: 'You need a secondary amine, R–NH–CH<sub>3</sub>, cleanly. Which route?',
+        title: 'You need a secondary amine, R–CH<sub>2</sub>–NH–CH<sub>3</sub>, cleanly. Which route?',
         options: [
           'Reductive amination of R–CHO with CH<sub>3</sub>NH<sub>2</sub>',
           'Gabriel synthesis on R–Br',
           'Azide displacement, then reduction',
-          'R–Br with excess CH<sub>3</sub>NH<sub>2</sub>'
+          'R–CH<sub>2</sub>–Br with excess CH<sub>3</sub>NH<sub>2</sub>'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct, and three of these fail for two different reasons. Gabriel and azide are both structurally incapable of it: each releases a nitrogen carrying nothing but hydrogens, so they give primary amines only. Direct alkylation would in principle give the right connectivity, and it is the route this whole section exists to avoid — excess methylamine biases the mixture but does not produce a single product. Reductive amination builds the C&ndash;N bond by reducing a C=N, so what you put in is what you get. Note the carbon count too: the aldehyde needs to be one carbon shorter than the R group you want.',
+        correctFeedback: 'Correct, and three of these fail for two different reasons. Gabriel and azide are both structurally incapable of it: each releases a nitrogen carrying nothing but hydrogens, so they give primary amines only. Direct alkylation would in principle give the right connectivity, and it is the route this whole section exists to avoid — excess methylamine biases the mixture but does not produce a single product. Reductive amination builds the C&ndash;N bond by reducing a C=N, so what you put in is what you get. Note where the nitrogen lands: on the old carbonyl carbon, so the aldehyde’s C=O carbon becomes the CH<sub>2</sub> next to nitrogen.',
         wrongFeedback: 'Two of these can only ever give a primary amine. Of the remaining two, one is the exact failure this section opened with.'
       },
       {

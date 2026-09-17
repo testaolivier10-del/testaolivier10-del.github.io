@@ -423,10 +423,10 @@
 
     'amine-reactions': { n:8, steps:{
       1:['nucleophile-recognition'],
-      2:['amine-basicity','nucleophile-recognition'],
-      4:['nucleophile-recognition'],
+      2:['amine-basicity','acylation-self-termination'],
+      4:['acylation-self-termination','nucleophile-recognition'],
       6:['nucleophile-recognition'],
-      7:['nucleophile-recognition'] } },
+      7:['acylation-self-termination','nucleophile-recognition'] } },
 
     'amine-structure': { n:8, steps:{
       1:['amine-basicity'],
