@@ -402,17 +402,17 @@
     'alkene-structure': { n:8, steps:{
       1:['alkene-pi-nucleophile'],
       2:['hybridization-assignment','alkene-pi-nucleophile'],
-      3:['hybridization-assignment'],
-      5:['alkene-pi-nucleophile'],
-      7:['alkene-pi-nucleophile'] } },
+      3:['degrees-of-unsaturation'],
+      5:['alkene-stability-ranking'],
+      7:['alkene-stability-ranking'] } },
 
     'alkynes': { n:9, steps:{
       1:['alkyne-acidity'],
       2:['alkyne-acidity','hybridization-assignment'],
       3:['alkyne-acidity','acidity-factors'],
       6:['addition-stereochem'],
-      7:['alkyne-acidity','curved-arrow-direction'],
-      8:['markovnikov-regiochem'] } },
+      7:['alkyne-acidity','curved-arrow-direction','acetylide-alkylation'],
+      8:['markovnikov-regiochem','keto-enol-tautomerism'] } },
 
     'alpha-hydrogens': { n:8, steps:{
       1:['alpha-acidity'],

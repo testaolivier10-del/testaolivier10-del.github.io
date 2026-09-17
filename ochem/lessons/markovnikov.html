@@ -166,10 +166,10 @@ document.addEventListener('DOMContentLoaded', function(){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">2-methylpropene + HBr: click the carbon where the carbocation forms.</h2>' +
-            '<p class="step-body">(CH₃)₂C=CH₂ reacting with H⁺. One double-bond carbon is attached to two methyl groups; the other is attached to two hydrogens.</p>' +
+            '<p class="step-body">(CH₃)₂C=CH₂ reacting with H⁺. Numbering as the name does: C1 is the CH₂ end, C2 is the carbon carrying the two methyl groups.</p>' +
             '<div style="display:flex;justify-content:center;padding:16px 0;gap:40px;">' +
-              '<div class="atom" data-v="c1" style="cursor:pointer;padding:14px 18px;border:2px solid var(--border);border-radius:12px;text-align:center;font:800 14px var(--font-mono);">C1<br><span style="font-size:11px;color:var(--muted);font-weight:600;">attached to 2 CH₃ groups</span></div>' +
-              '<div class="atom" data-v="c2" style="cursor:pointer;padding:14px 18px;border:2px solid var(--border);border-radius:12px;text-align:center;font:800 14px var(--font-mono);">C2<br><span style="font-size:11px;color:var(--muted);font-weight:600;">attached to 2 H atoms</span></div>' +
+              '<div class="atom" data-v="c1" style="cursor:pointer;padding:14px 18px;border:2px solid var(--border);border-radius:12px;text-align:center;font:800 14px var(--font-mono);">C1<br><span style="font-size:11px;color:var(--muted);font-weight:600;">attached to 2 H atoms</span></div>' +
+              '<div class="atom" data-v="c2" style="cursor:pointer;padding:14px 18px;border:2px solid var(--border);border-radius:12px;text-align:center;font:800 14px var(--font-mono);">C2<br><span style="font-size:11px;color:var(--muted);font-weight:600;">attached to 2 CH₃ groups</span></div>' +
             '</div>' +
             api.feedbackHtml('fb') +
             api.nextButtonHtml('Continue', false);
@@ -180,11 +180,13 @@ document.addEventListener('DOMContentLoaded', function(){
             el.addEventListener('click', function(){
               if(answered) return;
               answered = true;
-              var isCorrect = el.getAttribute('data-v') === 'c1';
+              var isCorrect = el.getAttribute('data-v') === 'c2';
               el.classList.add('chosen');
               el.style.borderColor = isCorrect ? '#2e9e5b' : '#c0392b';
               api.record(isCorrect);
-              api.showFeedback(fb, isCorrect, 'C1, attached to two methyl groups, becomes a tertiary carbocation if H⁺ protonates C2 instead — the far more stable outcome. So H⁺ adds to C2 (the carbon with more H\'s already), leaving the cation — and eventually Br — on C1.');
+              api.showFeedback(fb, isCorrect, isCorrect
+                ? 'Exactly — H⁺ goes to C1, the end already carrying two hydrogens, which leaves the positive charge on C2. Two methyl groups are donating into that empty orbital, so it is tertiary: the more stable of the two possible cations, and the one the reaction funnels through.'
+                : 'Not quite. Protonating C2 would leave the charge on C1, a primary carbocation with nothing but one alkyl group beside it. Reverse it: H⁺ adds to C1, and the cation forms on C2, where two methyls can stabilize it.');
               next.disabled = false;
             });
           });
@@ -231,9 +233,9 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'final',
         eyebrow: 'Challenge',
         title: '1-methylcyclohexene is treated with (1) BH₃ then H₂O₂/NaOH, and separately with (2) HBr in the presence of peroxides. Where does the new substituent (OH in case 1, Br in case 2) end up in both cases?',
-        options: ['On the less substituted carbon in both cases — hydroboration by sterics, radical HBr by radical stability, both landing anti-Markovnikov', 'On the more substituted carbon in both cases', 'It depends on temperature, not mechanism'],
+        options: ['On the less substituted carbon, by two unrelated mechanisms', 'On the more substituted carbon, as Markovnikov addition would give', 'On different carbons — one Markovnikov, one anti-Markovnikov'],
         correctIndex: 0,
-        correctFeedback: 'Correct — despite completely different mechanisms (concerted syn addition vs. radical chain), both reagent systems place the new group on the less substituted carbon, giving the anti-Markovnikov product either way.'
+        correctFeedback: 'Correct — hydroboration gets there through a four-center transition state with the partial positive charge on the more substituted carbon, and radical HBr gets there because Br· adds so as to leave the more stable radical behind. Different mechanisms, same anti-Markovnikov answer: OH on C2 of the ring in the first case, Br on C2 in the second.'
       }
     ]
   });

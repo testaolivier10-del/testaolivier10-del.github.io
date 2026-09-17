@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Two pi bonds mean addition can stop halfway, or go all the way.',
-        bodyHtml: '<p class="step-body">An alkyne\'s two pi bonds mean it can accept an electrophilic addition (H₂, X₂, HX) once, landing on an alkene, or twice, landing on a fully saturated alkane. Which one happens depends entirely on the reagent: H₂ with a normal Pd or Pt catalyst reduces all the way to the alkane, but H₂ with a specially poisoned <b>Lindlar catalyst</b> stops cleanly at the alkene and delivers <b>syn</b> (same-face) addition — producing the <b>cis</b> alkene specifically.</p><p class="step-body" style="margin-bottom:0;">Acid-catalyzed hydration (H₃O⁺, Hg²⁺ catalyst) adds water Markovnikov-style across one pi bond, but the immediate product — an <b>enol</b> (a carbon-carbon double bond with an OH on one of the two carbons) — is unstable and rapidly rearranges (tautomerizes) into a ketone (or an aldehyde, for a terminal alkyne). You\'ll see this same enol-to-carbonyl tautomerization become a central mechanism in <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-enolate-chemistry\">Enolate Chemistry</a>.</p>'
+        bodyHtml: '<p class="step-body">An alkyne\'s two pi bonds mean it can accept an electrophilic addition (H₂, X₂, HX) once, landing on an alkene, or twice, landing on a fully saturated alkane. Which one happens depends entirely on the reagent: H₂ with a normal Pd or Pt catalyst reduces all the way to the alkane, but H₂ with a specially poisoned <b>Lindlar catalyst</b> stops cleanly at the alkene and delivers <b>syn</b> (same-face) addition — producing the <b>cis</b> alkene specifically.</p><p class="step-body" style="margin-bottom:0;">Acid-catalyzed hydration (H₃O⁺, Hg²⁺ catalyst) adds water Markovnikov-style across one pi bond, but the immediate product — an <b>enol</b> (a carbon-carbon double bond with an OH on one of the two carbons) — is unstable and rapidly rearranges (tautomerizes) into a <b>ketone</b>. For a terminal alkyne that means a <b>methyl ketone</b>: Markovnikov puts the OH on the internal carbon, so the carbonyl lands there and the end carbon finishes as a CH₃. The aldehyde is what you get from the <i>other</i> hydration — hydroboration–oxidation with a bulky borane, which puts the oxygen on the terminal carbon instead. You\'ll see this same enol-to-carbonyl tautomerization become a central mechanism in <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-enolate-chemistry\">Enolate Chemistry</a>.</p>'
       },
       {
         type: 'mcq',
@@ -275,10 +275,10 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'A terminal alkyne is treated with H₃O⁺/Hg²⁺ (acid-catalyzed hydration). What is the final, isolated product?',
-        options: ['A ketone (the unstable enol intermediate tautomerizes to the more stable carbonyl)', 'The enol itself, isolated as the final stable product', 'A carboxylic acid'],
-        correctIndex: 0,
-        correctFeedback: 'Correct — Markovnikov addition of water gives an enol first, but enols are unstable and rapidly tautomerize to the corresponding ketone, which is what you actually isolate.'
+        title: 'Propyne is treated with H₂O, H₂SO₄ and HgSO₄. What is the final, isolated product?',
+        options: ['Propanal, CH₃CH₂CHO', 'Acetone, CH₃COCH₃', 'Propanoic acid, CH₃CH₂COOH'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — Markovnikov hydration puts the OH on the internal carbon, giving an enol that tautomerizes to the methyl ketone. Propanal would need hydroboration–oxidation with a bulky borane, which delivers the oxygen to the terminal carbon instead.'
       }
     ]
   });

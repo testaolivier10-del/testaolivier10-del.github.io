@@ -8048,6 +8048,552 @@ FIGURES.push({
   note: 'This is the experiment that rules out a stepwise alternative. If the C–H broke first, or the C–Br broke first, the intermediate could rotate and both diastereomers would give the same mixture. They do not, so nothing rotates between the two events — the three arrows really are simultaneous.',
 });
 
+
+/* ================================================================== ch8 ===
+   The alkene/alkyne chapter had 1.25 figures per section and four separate
+   places where the only statement of a geometric fact was a sentence. These
+   nine draw the ones a student cannot check without a picture: which way the
+   p orbitals point, which groups E/Z is actually ranking, where a proton
+   goes and where the charge lands, and what "syn" does to a ring. */
+
+/* A skeletal double bond between two unlabelled vertices: one full line plus
+   one inset line on the side `inward` points to, so nothing overhangs the
+   neighbouring bond the way a plain order-2 bond does at a shared vertex. */
+const skDouble = (a, b, inward) => ringDouble(a, b, inward, { inset: 7, gap: 4.6 });
+const plus = (x, y) => text(x, y, '+', { cls: 'fg-warn', size: 15 });
+const lobeE = (cx, cy, rx, ry, cls = 'fg-orb') =>
+  `<ellipse class="${cls}" cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill-opacity="0.18"></ellipse>`;
+
+/* ---------------------------------------------------------------- 8.1 ---
+   The opening claim of the chapter — three sp2 orbitals in a plane, one p
+   orbital perpendicular, overlap side by side — is carried entirely by
+   prose, and the consequence (no rotation) is argued in prose too. Both are
+   pictures. */
+FIGURES.push({
+  id: 'alkene-pi-overlap',
+  section: 'alkene-structure',
+  anchor: 'forming the <b>pi bond</b>.</p>',
+  alt: 'Left: ethylene drawn flat, with the two leftover p orbitals aligned and overlapping as one pi cloud above the molecule and one below. Right: the same molecule with the right-hand carbon turned ninety degrees, so its p orbitals point toward and away from the reader while the left one still points up and down; the two no longer overlap and the pi bond is gone.',
+  viewBox: '0 0 760 320',
+  build() {
+    let s = '';
+    const armsH = (c, up, dn) => bond(c, up, { rFrom: 15, rTo: 13 }) + bond(c, dn, { rFrom: 15, rTo: 13 });
+
+    // ---- left panel: aligned
+    s += panel(10, 14, 356, 246);
+    s += tag(188, 40, 'aligned — the pi bond exists');
+    const A = P(128, 150), B = P(248, 150);
+    s += lobeE(188, 104, 88, 26);
+    s += lobeE(188, 196, 88, 26);
+    s += bond(A, B);
+    const a1 = P(74, 118), a2 = P(74, 182), b1 = P(302, 118), b2 = P(302, 182);
+    s += armsH(A, a1, a2) + armsH(B, b1, b2);
+    s += atom(a1.x, a1.y, 'H', { r: 13 }) + atom(a2.x, a2.y, 'H', { r: 13 });
+    s += atom(b1.x, b1.y, 'H', { r: 13 }) + atom(b2.x, b2.y, 'H', { r: 13 });
+    s += atom(A.x, A.y, 'C') + atom(B.x, B.y, 'C');
+    s += text(188, 234, 'both p orbitals point the same way, so they overlap', { cls: 'fg-sm', size: 9.5 });
+    s += text(188, 250, '3 sigma bonds each, 120° apart, one plane', { cls: 'fg-sm', size: 9.5 });
+
+    // ---- right panel: twisted 90 degrees
+    s += panel(394, 14, 356, 246);
+    s += tag(572, 40, 'turned 90° — the pi bond is gone');
+    const C = P(512, 150), D = P(632, 150);
+    s += lobeE(512, 108, 26, 22);
+    s += lobeE(512, 192, 26, 22);
+    s += lobeE(608, 122, 24, 20, 'fg-orb-alt');
+    s += lobeE(656, 178, 24, 20, 'fg-orb-alt');
+    s += text(596, 96, 'front', { cls: 'fg-sm', size: 9 });
+    s += text(672, 208, 'behind', { cls: 'fg-sm', size: 9 });
+    s += bond(C, D, { cls: 'fg-bond-soft' });
+    const c1 = P(458, 118), c2 = P(458, 182), d1 = P(696, 130), d2 = P(696, 172);
+    s += armsH(C, c1, c2) + armsH(D, d1, d2);
+    s += atom(c1.x, c1.y, 'H', { r: 13 }) + atom(c2.x, c2.y, 'H', { r: 13 });
+    s += atom(d1.x, d1.y, 'H', { r: 13 }) + atom(d2.x, d2.y, 'H', { r: 13 });
+    s += atom(C.x, C.y, 'C') + atom(D.x, D.y, 'C');
+    s += text(572, 234, 'perpendicular orbitals cannot overlap at all', { cls: 'fg-tag-warn', size: 10 });
+    s += text(572, 250, 'the sigma bond survives; the pi bond does not', { cls: 'fg-sm', size: 9.5 });
+
+    s += arrow(P(370, 150), P(390, 150), { muted: true });
+    s += rule(30, 276, 730, 276);
+    s += text(380, 300, 'Turning one carbon like that costs about 65 kcal/mol — the whole pi bond.', { cls: 'fg-lbl', size: 12 });
+    s += text(380, 318, 'That is why cis and trans alkenes are different compounds rather than two shapes of one.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'What "side-by-side overlap" looks like, and what rotation would do to it. On the left the two leftover p orbitals are parallel, and the shared cloud above and below the molecular plane is the pi bond. On the right one carbon has been turned a quarter turn: its orbitals now point at the reader and away, the other pair still points up and down, and two perpendicular orbitals have no overlap to share.',
+  note: 'The sigma bond does not care. Its overlap is end-on and cylindrically symmetric about the bond axis, so turning one end changes nothing — which is exactly why single bonds rotate freely at room temperature and double bonds do not rotate at all.',
+});
+
+/* ---------------------------------------------------------------- 8.2 ---
+   E/Z was defined and never performed. This is the assignment done on the
+   compound the pitfall is about, with the two rankings kept visibly
+   separate, because comparing across the double bond is the actual error. */
+FIGURES.push({
+  id: 'ez-worked',
+  section: 'alkene-structure',
+  anchor: 'rank them and trust the ranking.</div>',
+  alt: '2-bromo-2-butene drawn skeletally with its two methyl groups on opposite sides of the double bond, which looks trans. The bromine on C2 outranks the methyl on C2, and the methyl on C3 outranks the hydrogen on C3. The two winners, bromine and the C4 methyl, are both above the double bond, so the compound is Z.',
+  viewBox: '0 0 760 330',
+  build() {
+    let s = '';
+    s += tag(196, 38, 'drawn the way anyone would call "trans"');
+    const p0 = P(112, 214), p1 = P(176, 172), p2 = P(240, 214), p3 = P(304, 172);
+    s += sk(p0, p1);
+    s += skDouble(p1, p2, P(208, 240));
+    s += sk(p2, p3);
+    const br = P(176, 104), h = P(240, 278);
+    s += bond(p1, br, { rFrom: 0, rTo: 16 });
+    s += bond(p2, h, { rFrom: 0, rTo: 13 });
+    s += atom(br.x, br.y, 'Br', { kind: 'hi', r: 16 });
+    s += atom(h.x, h.y, 'H', { r: 13 });
+    s += text(96, 236, 'C1', { cls: 'fg-sm', size: 9.5 });
+    s += text(176, 156, 'C2', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+    s += text(248, 232, 'C3', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    s += text(320, 156, 'C4', { cls: 'fg-sm', size: 9.5 });
+    s += text(196, 306, 'the two methyls, C1 and C4, are on opposite sides', { cls: 'fg-sm', size: 9.5 });
+
+    s += rule(370, 60, 370, 290);
+
+    s += tag(566, 38, 'but rank each carbon separately');
+    const row = (y, head, win, lose, verdict) => {
+      let g = text(408, y, head, { cls: 'fg-lbl', size: 11.5, anchor: 'start' });
+      g += text(408, y + 20, win, { cls: 'fg-tag-good', size: 10.5, anchor: 'start' });
+      g += text(408, y + 38, lose, { cls: 'fg-sm', size: 10, anchor: 'start' });
+      g += text(736, y + 20, verdict, { cls: 'fg-sm', size: 10, anchor: 'end' });
+      return g;
+    };
+    s += row(96, 'On C2:  Br  against  CH₃', 'Br wins — atomic number 35 beats 6', 'nothing else is compared', 'points UP');
+    s += row(176, 'On C3:  CH₃  against  H', 'CH₃ wins — carbon beats hydrogen', 'nothing else is compared', 'points UP');
+    s += text(408, 234, 'Both winners on the same side:', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(566, 262, '(Z)-2-bromo-2-butene', { cls: 'fg-tag-good', size: 12.5 });
+
+    s += rule(30, 290, 730, 290);
+    s += text(380, 326, 'Same molecule, two labels: "trans" was reporting the methyls, E/Z reports the priorities.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'One assignment, done in full. Each alkene carbon is ranked on its own two groups and nothing else — the bromine on C2 is never weighed against the methyl on C3. Here both winners finish above the double bond, so the alkene is Z even though the carbon skeleton is drawn trans.',
+  note: 'The error this drawing is built to prevent: comparing a group on one alkene carbon with a group on the other. That question has no meaning. E/Z asks two independent questions and then compares only the two answers.',
+});
+
+/* ---------------------------------------------------------------- 8.3 ---
+   Three mechanistic steps in one paragraph, no arrows, for the reaction the
+   section itself calls the bridge into the next chapter. */
+FIGURES.push({
+  id: 'hydration-three-steps',
+  section: 'addition-reactions',
+  anchor: '<h3>Acid-catalyzed hydration</h3>',
+  alt: 'Acid-catalyzed hydration of propene in three panels. First the pi bond attacks a proton of hydronium, giving a secondary carbocation. Then a water molecule attacks the cation with one of its lone pairs, giving a positively charged oxonium ion. Finally a second water molecule removes a proton from that oxygen, giving propan-2-ol and regenerating hydronium.',
+  viewBox: '0 0 760 300',
+  build() {
+    let s = '';
+    const box = (x, title, sub) => panel(x, 16, 236, 216) + tag(x + 118, 40, title) + text(x + 118, 214, sub, { cls: 'fg-sm', size: 9.5 });
+
+    // ---- step 1: protonation
+    s += box(8, 'Step 1 · protonation', 'Markovnikov: the better cation wins');
+    const a0 = P(64, 150), a1 = P(106, 126), a2 = P(148, 150);
+    s += skDouble(a0, a1, P(106, 176));
+    s += sk(a1, a2);
+    const hp = P(96, 70);
+    s += atom(hp.x, hp.y, 'H', { r: 13, kind: 'hi' });
+    s += text(130, 66, 'from H₃O⁺', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += curve(P(85, 138), P(96, 86), { bow: 22 });
+    s += text(44, 168, 'C1', { cls: 'fg-sm', size: 9 });
+    s += text(168, 168, 'C3', { cls: 'fg-sm', size: 9 });
+    s += text(106, 196, 'the H lands on C1', { cls: 'fg-sm', size: 9 });
+    s += arrow(P(228, 130), P(252, 130), { muted: true });
+
+    // ---- step 2: water attacks
+    s += box(260, 'Step 2 · capture', 'water is the nucleophile');
+    const b0 = P(316, 150), b1 = P(358, 126), b2 = P(400, 150);
+    s += sk(b0, b1) + sk(b1, b2);
+    s += plus(358, 104);
+    s += text(358, 176, 'secondary cation', { cls: 'fg-tag-warn', size: 9.5 });
+    const ow = P(440, 78);
+    s += atom(ow.x, ow.y, 'O', { r: 14, kind: 'hi' });
+    s += text(466, 62, 'H', { cls: 'fg-sm', size: 10 });
+    s += text(466, 96, 'H', { cls: 'fg-sm', size: 10 });
+    s += lonePair(ow.x, ow.y, 200, { dist: 24 });
+    s += curve(P(420, 92), P(368, 116), { bow: 20 });
+    s += arrow(P(480, 130), P(504, 130), { muted: true });
+
+    // ---- step 3: deprotonation
+    s += box(512, 'Step 3 · give the proton back', 'the catalyst comes back out');
+    const c0 = P(568, 150), c1 = P(610, 126), c2 = P(652, 150);
+    s += sk(c0, c1) + sk(c1, c2);
+    const oo = P(610, 78);
+    s += bond(c1, oo, { rFrom: 0, rTo: 14 });
+    s += atom(oo.x, oo.y, 'O', { r: 14, kind: 'hi' });
+    s += plus(610, 44);
+    s += text(584, 60, 'H', { cls: 'fg-sm', size: 10, anchor: 'end' });
+    s += text(638, 88, 'H', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(688, 62, 'H₂O', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += curve(P(684, 74), P(652, 84), { bow: -16 });
+    s += text(610, 176, 'the oxonium ion', { cls: 'fg-tag-warn', size: 10.5 });
+    s += text(610, 192, 'lose that H⁺ and it is propan-2-ol', { cls: 'fg-sm', size: 9 });
+
+    s += rule(30, 248, 730, 248);
+    s += text(380, 274, 'The acid is a catalyst in the strict sense: consumed in step 1, handed back in step 3.', { cls: 'fg-lbl', size: 11.5 });
+    s += text(380, 294, 'Step 1 makes a free carbocation — so this route rearranges when a better cation is near.', { cls: 'fg-sm', size: 10 });
+    return s;
+  },
+  caption: 'Hydration with the arrows drawn. Every one of the three steps is a move you have already met: a pi bond taking a proton, a lone pair attacking a cation, and a base removing a proton from oxygen. The only thing worth memorizing is the order.',
+  note: 'Notice what is NOT here: hydroxide. In acid the nucleophile is neutral water, and the extra proton it brings is removed afterwards. Drawing HO⁻ attacking in acidic solution is the most common way this mechanism is written wrong.',
+});
+
+/* ---------------------------------------------------------------- 8.4 ---
+   "Every time you draw a carbocation, check for the shift" — with no shift
+   drawn anywhere in the section. */
+FIGURES.push({
+  id: 'hydride-shift-worked',
+  section: 'addition-reactions',
+  anchor: 'Every time you draw a carbocation, check for the shift.</div>',
+  alt: '3-methyl-1-butene plus HBr in four stages: protonation of the terminal carbon gives a secondary carbocation; a hydride on the neighboring carbon migrates with its pair of electrons, moving the positive charge to the tertiary carbon; bromide then captures that tertiary cation to give 2-bromo-2-methylbutane as the major product, with the unrearranged secondary bromide as the minor one.',
+  viewBox: '0 0 760 300',
+  build() {
+    let s = '';
+    /* 3-methyl-1-butene, skeletal: C1=C2-C3(-CH3)-C4 */
+    const stage = (x, mode) => {
+      const v1 = P(x, 168), v2 = P(x + 40, 144), v3 = P(x + 80, 168), v4 = P(x + 120, 144);
+      const me = P(x + 80, 214);
+      let g = '';
+      if (mode === 'alkene') g += skDouble(v1, v2, P(x + 20, 194));
+      else g += sk(v1, v2);
+      g += sk(v2, v3) + sk(v3, v4) + sk(v3, me);
+      return { g, v1, v2, v3, v4, me };
+    };
+
+    // 1: the alkene + HBr
+    let t = stage(24, 'alkene'); s += t.g;
+    s += text(64, 122, 'H–Br', { cls: 'fg-lbl', size: 11 });
+    s += curve(P(38, 152), P(58, 124), { bow: 16 });
+    s += text(104, 240, '3-methyl-1-butene', { cls: 'fg-sm', size: 9.5 });
+    s += arrow(P(168, 168), P(198, 168), { muted: true });
+
+    // 2: secondary cation, hydride poised to shift
+    t = stage(212, 'cation'); s += t.g;
+    s += plus(252, 122);
+    s += text(252, 108, '2°', { cls: 'fg-tag-warn', size: 9.5 });
+    s += bond(t.v3, P(330, 192), { rFrom: 0, rTo: 12 });
+    s += atom(330, 192, 'H', { r: 12, kind: 'hi' });
+    s += curve(P(312, 186), P(262, 152), { bow: 22 });
+    s += text(292, 240, 'hydride shifts, with its pair', { cls: 'fg-sm', size: 9.5 });
+    s += arrow(P(360, 168), P(390, 168), { muted: true });
+
+    // 3: tertiary cation
+    t = stage(404, 'cation'); s += t.g;
+    s += bond(t.v2, P(444, 106), { rFrom: 0, rTo: 12 });
+    s += atom(444, 106, 'H', { r: 12, kind: 'hi' });
+    s += plus(496, 152);
+    s += text(484, 240, '3° cation — the more stable one', { cls: 'fg-tag-good', size: 9.5 });
+    s += arrow(P(552, 168), P(582, 168), { muted: true });
+
+    // 4: product
+    t = stage(596, 'cation'); s += t.g;
+    const brv = P(676, 108);
+    s += bond(t.v3, brv, { rFrom: 0, rTo: 16 });
+    s += atom(brv.x, brv.y, 'Br', { kind: 'hi', r: 16 });
+    s += text(676, 240, '2-bromo-2-methylbutane', { cls: 'fg-tag-good', size: 9.5 });
+    s += text(676, 256, 'the MAJOR product', { cls: 'fg-sm', size: 9 });
+
+    s += rule(30, 270, 730, 270);
+    s += text(380, 294, 'The shift is faster than bromide capture, so the rearranged bromide dominates.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The shift, drawn. A hydrogen on the carbon next door leaves with <b>both</b> of its bonding electrons and lands on the cationic carbon — which moves the positive charge the other way, from secondary to tertiary. Nothing else in the molecule changes.',
+  note: 'The arrow starts at the C–H BOND, not at the hydrogen. That is the whole content of the word "hydride": H with its pair, not H⁺. If you draw the arrow from the hydrogen itself you have written a proton transfer, which would leave an alkene behind instead of a rearranged cation.',
+});
+
+/* ---------------------------------------------------------------- 8.5 ---
+   Halohydrin regiochemistry was stated in one clause. It is the clause exams
+   test, and it only makes sense if the bridged ion is drawn UNEVEN. */
+FIGURES.push({
+  id: 'halohydrin-uneven-bridge',
+  section: 'addition-reactions',
+  anchor: 'finish <b>anti</b> however unsymmetrical the ion was.</p>',
+  alt: 'A bromonium ion from 2-methylpropene drawn with its two carbon-bromine bonds unequal: the bond to the more substituted carbon is long and dashed and that carbon carries a partial positive charge, while the bond to the CH2 end is short and full. Water attacks the more substituted carbon from the face opposite the bromine, giving a halohydrin with OH on the more substituted carbon and Br on the other, anti to each other.',
+  viewBox: '0 0 760 300',
+  build() {
+    let s = '';
+    s += panel(10, 14, 420, 244);
+    s += tag(220, 40, 'the bridged ion is not symmetrical');
+    const cl = P(160, 176), cr = P(280, 176), brT = P(220, 104);
+    s += bond(cl, cr, { rFrom: 15, rTo: 15 });
+    s += bond(cl, brT, { rFrom: 15, rTo: 16 });
+    s += `<line class="fg-dash-hi" x1="${268}" y1="${163}" x2="${230}" y2="${118}"></line>`;
+    s += atom(brT.x, brT.y, 'Br', { kind: 'hi', r: 16 });
+    s += plus(244, 92);
+    s += atom(cl.x, cl.y, 'C');
+    s += atom(cr.x, cr.y, 'C', { kind: 'warn' });
+    s += text(302, 158, 'δ+', { cls: 'fg-warn', size: 12, anchor: 'start' });
+    s += text(124, 214, 'CH₂ end', { cls: 'fg-sm', size: 9.5 });
+    s += text(124, 230, 'short, tight C–Br', { cls: 'fg-sm', size: 9 });
+    s += text(316, 214, 'two methyls here', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    s += text(316, 230, 'long, weak C–Br', { cls: 'fg-tag-warn', size: 9, anchor: 'start' });
+    const w = P(312, 252);
+    s += text(w.x + 26, w.y, 'H₂O', { cls: 'fg-lbl', size: 11, anchor: 'start' });
+    s += curve(P(330, 244), P(292, 196), { bow: -18 });
+    s += text(220, 60, 'the carbon that can hold charge takes more of it', { cls: 'fg-sm', size: 9.5 });
+
+    s += arrow(P(440, 150), P(478, 150));
+    s += text(459, 134, 'anti', { cls: 'fg-sm', size: 9.5 });
+
+    s += panel(492, 14, 258, 244);
+    s += tag(621, 40, 'the halohydrin');
+    const q1 = P(578, 132), q2 = P(660, 132);
+    s += bond(q1, q2, { rFrom: 15, rTo: 15 });
+    const ohv = P(660, 76), brv = P(578, 190);
+    s += wedge(q2, ohv, { rFrom: 15, rTo: 16, width: 10 });
+    s += hash(q1, brv, { rFrom: 15, rTo: 16, width: 12, rungs: 4 });
+    s += atom(ohv.x, ohv.y, 'OH', { kind: 'hi', r: 16 });
+    s += atom(brv.x, brv.y, 'Br', { r: 16 });
+    s += atom(q1.x, q1.y, 'C') + atom(q2.x, q2.y, 'C');
+    s += text(694, 126, 'CH₃', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    s += text(694, 146, 'CH₃', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    s += text(621, 226, 'OH on the more substituted carbon', { cls: 'fg-sm', size: 9.5 });
+    s += text(621, 244, 'wedge and hash: opposite faces', { cls: 'fg-sm', size: 9 });
+
+    s += rule(30, 270, 730, 270);
+    s += text(380, 294, 'Charge says WHICH carbon; the blocked face says WHICH SIDE.', { cls: 'fg-lbl', size: 11.5 });
+    return s;
+  },
+  caption: 'Why water goes to the crowded carbon. Because that carbon is better able to carry positive charge, the bridge leans toward it: its bond to bromine stretches, it takes on real cationic character, and the barrier to attacking it drops below the barrier for attacking the tidy CH₂ end.',
+  note: 'This is the one addition where the nucleophile lands on the MORE substituted carbon while the halogen ends up on the less substituted one. It is not an anti-Markovnikov reaction and it is not an SN2 preference — sterics would have sent water the other way, and charge overrules them.',
+});
+
+/* ---------------------------------------------------------------- 8.6 ---
+   The peroxide route is a chain, and chains are examined in the initiation /
+   propagation / termination form the radical chapter already taught. The
+   section had it as two sentences. */
+FIGURES.push({
+  id: 'hbr-radical-chain',
+  section: 'markovnikov',
+  anchor: 'That one difference is the whole regiochemical story.</p>',
+  alt: 'The radical chain for HBr addition to an alkene. Initiation: a peroxide splits into two alkoxy radicals, one of which takes a hydrogen from HBr to make a bromine radical. The two propagation steps are drawn as a cycle: the bromine radical adds to the less substituted carbon of the alkene leaving the more stable radical, and that carbon radical takes a hydrogen from HBr, regenerating the bromine radical.',
+  viewBox: '0 0 760 340',
+  build() {
+    let s = '';
+    s += panel(10, 14, 246, 250);
+    s += tag(133, 40, 'INITIATION — happens once');
+    s += text(133, 76, 'RO–OR', { cls: 'fg-lbl', size: 12 });
+    s += arrow(P(133, 88), P(133, 118), { muted: true });
+    s += text(133, 138, '2 RO·', { cls: 'fg-lbl', size: 12 });
+    s += text(133, 160, 'the weak O–O bond breaks', { cls: 'fg-sm', size: 9 });
+    s += text(133, 194, 'RO· + H–Br', { cls: 'fg-lbl', size: 12 });
+    s += arrow(P(133, 206), P(133, 228), { muted: true });
+    s += text(133, 248, 'RO–H + Br·', { cls: 'fg-tag-good', size: 12 });
+
+    s += panel(272, 14, 478, 250);
+    s += tag(511, 40, 'PROPAGATION — repeats thousands of times');
+
+    // the cycle: two nodes, two curved arrows between them
+    const left = P(378, 150), right = P(644, 150);
+    s += text(left.x, left.y - 44, 'Br·', { cls: 'fg-lbl', size: 13 });
+    s += text(left.x, left.y - 26, 'the chain carrier', { cls: 'fg-sm', size: 9 });
+    s += text(right.x, right.y - 44, '·C–C–Br', { cls: 'fg-lbl', size: 13 });
+    s += text(right.x, right.y - 26, 'the more stable radical', { cls: 'fg-sm', size: 9 });
+
+    s += curve(P(left.x + 44, left.y - 8), P(right.x - 52, right.y - 8), { bow: -30 });
+    s += text(511, 78, '1 · Br· adds to the LESS substituted carbon', { cls: 'fg-sm', size: 10 });
+    s += text(511, 94, 'so the radical is left on the more substituted one', { cls: 'fg-sm', size: 9 });
+
+    s += curve(P(right.x - 52, right.y + 12), P(left.x + 44, left.y + 12), { bow: -30 });
+    s += text(511, 216, '2 · it takes H from H–Br and hands back a Br·', { cls: 'fg-sm', size: 10 });
+    s += text(511, 232, 'which is why one initiation turns over thousands of molecules', { cls: 'fg-sm', size: 9 });
+
+    s += text(378, 190, '+ alkene', { cls: 'fg-sm', size: 9.5 });
+    s += text(644, 190, '+ H–Br', { cls: 'fg-sm', size: 9.5 });
+
+    s += rule(30, 282, 730, 282);
+    s += text(380, 306, 'TERMINATION: two carriers meet — Br· + Br·, or two carbon radicals — and that chain stops.', { cls: 'fg-sm', size: 10.5 });
+    s += text(380, 330, 'Bromine adds FIRST — every difference from the ionic route follows.', { cls: 'fg-lbl', size: 11.5 });
+    return s;
+  },
+  caption: 'The chain written out in the form an exam asks for. The two propagation steps are a closed loop — bromine radical in, bromine radical out — so the alkene and the HBr are consumed while the carrier is not, and a trace of peroxide converts a whole flask.',
+  note: 'Every arrow in a radical mechanism is a fishhook, moving ONE electron, and the reason the regiochemistry flips is at the top of the loop: a bromine ATOM adds before any hydrogen does, so it takes the position a proton would have taken in the ionic route.',
+});
+
+/* ---------------------------------------------------------------- 8.7 ---
+   The transition state that unifies "sterics" and "B-H polarity", and the
+   wedge/dash picture the worked example's answer cannot be checked without. */
+FIGURES.push({
+  id: 'hydroboration-syn-ring',
+  section: 'markovnikov',
+  anchor: 'a geometric consequence of the transition state having a closed ring.</p>',
+  alt: 'Left: the four-center transition state for hydroboration, with dashed partial bonds from boron to the less substituted carbon and from hydrogen to the more substituted one, a partial positive charge on the more substituted carbon and partial negative on boron. Right: 1-methylcyclohexene reacting to give trans-2-methylcyclohexan-1-ol, with the new hydrogen on C1 and the new OH on C2 both drawn on wedges, which puts the OH on the opposite face from the methyl.',
+  viewBox: '0 0 760 330',
+  build() {
+    let s = '';
+    // ---- left: the four-centre TS
+    s += panel(10, 14, 336, 248);
+    s += tag(178, 40, 'one closed ring, four atoms');
+    const cA = P(126, 118), cB = P(230, 118), bB = P(230, 196), hH = P(126, 196);
+    s += bond(cA, cB, { order: 2, gap: 4.6 });
+    s += `<line class="fg-dash-hi" x1="${230}" y1="${133}" x2="${230}" y2="${181}"></line>`;
+    s += `<line class="fg-dash-hi" x1="${141}" y1="${189}" x2="${180}" y2="${170}"></line>`;
+    s += bond(bB, hH, { rFrom: 15, rTo: 13 });
+    s += atom(cA.x, cA.y, 'C', { kind: 'warn' });
+    s += atom(cB.x, cB.y, 'C');
+    s += atom(bB.x, bB.y, 'B', { kind: 'hi' });
+    s += atom(hH.x, hH.y, 'H', { r: 13 });
+    s += text(100, 96, 'δ+', { cls: 'fg-warn', size: 12, anchor: 'end' });
+    s += text(258, 196, 'δ−', { cls: 'fg-sm', size: 11, anchor: 'start' });
+    s += text(96, 140, 'more', { cls: 'fg-sm', size: 9, anchor: 'end' });
+    s += text(96, 154, 'substituted', { cls: 'fg-sm', size: 9, anchor: 'end' });
+    s += text(262, 140, 'less', { cls: 'fg-sm', size: 9, anchor: 'start' });
+    s += text(262, 154, 'hindered', { cls: 'fg-sm', size: 9, anchor: 'start' });
+    s += text(178, 232, 'B takes the roomy carbon; H follows the charge', { cls: 'fg-sm', size: 9.5 });
+    s += text(178, 248, 'the closed ring blocks the other face', { cls: 'fg-tag-warn', size: 9.5 });
+
+    // ---- right: the ring result
+    s += panel(360, 14, 390, 248);
+    s += tag(555, 40, 'so, on a ring: syn ≠ cis product');
+    const ring = (cx, cy, r) => Array.from({ length: 6 }, (_, i) => {
+      const a = (-90 + i * 60) * Math.PI / 180;
+      return P(cx + Math.cos(a) * r, cy + Math.sin(a) * r);
+    });
+    const R1 = ring(462, 150, 50);
+    for (let i = 0; i < 6; i++) s += sk(R1[i], R1[(i + 1) % 6]);
+    s += skDouble(R1[0], R1[1], P(462, 150));
+    s += sk(R1[0], P(462, 62));
+    s += text(462, 56, 'CH₃', { cls: 'fg-sm', size: 9.5 });
+    s += text(452, 226, '1-methylcyclohexene', { cls: 'fg-sm', size: 9.5 });
+    s += arrow(P(534, 150), P(570, 150));
+    s += text(552, 136, 'BH₃', { cls: 'fg-sm', size: 9 });
+    s += text(552, 170, 'H₂O₂', { cls: 'fg-sm', size: 9 });
+
+    const R2 = ring(654, 150, 50);
+    for (let i = 0; i < 6; i++) s += sk(R2[i], R2[(i + 1) % 6]);
+    // C1 = R2[0] (top), C2 = R2[1] (upper right)
+    s += wedge(R2[0], P(R2[0].x - 34, R2[0].y - 20), { rFrom: 0, rTo: 13, width: 9 });
+    s += hash(R2[0], P(R2[0].x + 34, R2[0].y - 20), { rFrom: 0, rTo: 16, width: 11, rungs: 4 });
+    s += atom(R2[0].x - 34, R2[0].y - 20, 'H', { r: 13, kind: 'hi' });
+    s += atom(R2[0].x + 34, R2[0].y - 20, 'CH₃', { r: 16 });
+    s += wedge(R2[1], P(R2[1].x + 38, R2[1].y - 10), { rFrom: 0, rTo: 16, width: 9 });
+    s += atom(R2[1].x + 38, R2[1].y - 10, 'OH', { r: 16, kind: 'hi' });
+    s += text(640, 226, 'trans-2-methylcyclohexan-1-ol', { cls: 'fg-tag-good', size: 9.5 });
+    s += text(640, 242, 'new H and new OH both on wedges', { cls: 'fg-sm', size: 9 });
+
+    s += rule(30, 278, 730, 278);
+    s += text(380, 302, '"Syn" describes the two groups ADDED — not the methyl already there.', { cls: 'fg-lbl', size: 11.5 });
+    s += text(380, 324, 'H lands on the front of C1, pushing its methyl back — so the OH finishes trans.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The transition state, and what it does to a ring. Boron and hydrogen are joined to the two carbons in one four-membered arrangement, so they cannot arrive from opposite faces — and the partial positive charge sitting on the more substituted carbon is what sends boron to the other one.',
+  note: 'Students lose this mark by reading "syn addition" as "cis product". The two new groups are cis to each other; whether the product is called cis or trans depends on what else the ring was already carrying, which here is a methyl group on the same carbon as the new hydrogen.',
+});
+
+/* ---------------------------------------------------------------- 8.8 ---
+   "cis alkene, trans alkene, or alkane, purely by reagent choice" is a claim
+   about geometry, made in a section with no geometry drawn. */
+FIGURES.push({
+  id: 'alkyne-reduction-fork',
+  section: 'alkynes',
+  anchor: 'which is precisely why alkynes are so useful as synthetic intermediates. Alkene geometry is otherwise hard to control.</p>',
+  alt: 'One internal alkyne, 2-butyne, with three arrows leading to three different products: hydrogen over Lindlar catalyst gives the cis alkene with both methyls on the same side; sodium in liquid ammonia gives the trans alkene with the methyls on opposite sides; hydrogen over ordinary palladium gives butane.',
+  viewBox: '0 0 760 360',
+  build() {
+    let s = '';
+    // starting alkyne
+    const t1 = P(70, 180), t2 = P(130, 180);
+    s += bond(t1, t2, { order: 3, rFrom: 0, rTo: 0, gap: 5 });
+    s += sk(P(30, 202), t1) + sk(t2, P(170, 202));
+    s += text(100, 148, '2-butyne', { cls: 'fg-lbl', size: 11.5 });
+    s += text(100, 230, 'one starting material', { cls: 'fg-sm', size: 9.5 });
+
+    const outcome = (y, reagent, sub, kind, mode, name, why) => {
+      let g = bond(P(190, 180), P(238, y), { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
+      g += arrow(P(244, y), P(320, y));
+      g += text(282, y - 16, reagent, { cls: 'fg-lbl', size: 11 });
+      g += text(282, y + 22, sub, { cls: 'fg-sm', size: 9 });
+      const a = P(392, y), b = P(452, y);
+      if (mode === 'alkane') {
+        g += sk(P(352, y + 22), a) + sk(a, b) + sk(b, P(492, y + 22));
+      } else {
+        g += bond(a, b, { order: 2, rFrom: 0, rTo: 0, gap: 4.6 });
+        if (mode === 'cis') { g += sk(P(352, y - 24), a); g += sk(b, P(492, y - 24)); }
+        else { g += sk(P(352, y + 24), a); g += sk(b, P(492, y - 24)); }
+      }
+      g += text(512, y - 4, name, { cls: kind, size: 12, anchor: 'start' });
+      g += text(512, y + 16, why, { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+      return g;
+    };
+    s += outcome(70, 'H₂ , Lindlar', 'Pd poisoned with Pb', 'fg-tag-good', 'cis',
+      'cis (Z) alkene', 'both H from one metal surface');
+    s += outcome(180, 'Na , NH₃ (l)', 'e⁻, H⁺, e⁻, H⁺', 'fg-tag-good', 'trans',
+      'trans (E) alkene', 'the radical picks its shape first');
+    s += outcome(292, 'H₂ , Pd/C', 'no poison', 'fg-tag', 'alkane',
+      'butane', 'both pi bonds gone');
+
+    s += rule(30, 330, 730, 330);
+    s += text(380, 354, 'Three reagents, three answers, one substrate — geometry chosen, not inherited.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The fork that makes alkynes worth building. A triple bond is the one place in this course where you can choose the geometry of a double bond outright: the same 2-butyne becomes the cis alkene, the trans alkene or the alkane depending only on what you put in the flask.',
+  note: 'The two partial reductions differ in where the hydrogens come from. Lindlar hands both over from one metal surface at once, so they land on one face. Sodium in ammonia delivers them one at a time through free intermediates, and the roomier trans arrangement is the one that survives to be protonated the second time.',
+});
+
+/* ---------------------------------------------------------------- 8.9 ---
+   The section goes out of its way to say tautomerization is not resonance,
+   which is exactly the distinction real arrows settle. */
+FIGURES.push({
+  id: 'keto-enol-arrows',
+  section: 'alkynes',
+  anchor: 'giving a ketone.</p>',
+  alt: 'Keto-enol tautomerization under acid in two steps. First the enol pi bond attacks a proton from hydronium, putting the hydrogen on the terminal carbon and giving a cation stabilized by the oxygen lone pair. Then a water molecule removes the proton from that oxygen, leaving a carbon-oxygen double bond: the ketone.',
+  viewBox: '0 0 760 320',
+  build() {
+    let s = '';
+    const box = (x, w, title) => panel(x, 14, w, 218) + tag(x + w / 2, 40, title);
+
+    // --- enol
+    s += box(8, 238, 'the enol');
+    const e1 = P(84, 170), e2 = P(140, 140), e3 = P(196, 170);
+    s += skDouble(e1, e2, P(112, 196));
+    s += sk(e2, e3);
+    const eo = P(140, 88);
+    s += bond(e2, eo, { rFrom: 0, rTo: 14 });
+    s += atom(eo.x, eo.y, 'O', { r: 14, kind: 'hi' });
+    s += text(166, 76, 'H', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += lonePair(eo.x, eo.y, 180, { dist: 24 });
+    s += curve(P(100, 158), P(78, 200), { bow: 18 });
+    s += text(70, 218, 'H₃O⁺', { cls: 'fg-sm', size: 10 });
+    s += text(152, 210, 'the pi bond takes H⁺', { cls: 'fg-sm', size: 9 });
+    s += arrow(P(256, 130), P(282, 130), { muted: true });
+
+    // --- cation
+    s += box(290, 200, 'oxygen holds the charge');
+    const f1 = P(348, 170), f2 = P(404, 140), f3 = P(460, 170);
+    s += sk(f1, f2) + sk(f2, f3);
+    const fo = P(404, 88);
+    s += bond(f2, fo, { order: 2, rFrom: 0, rTo: 14, gap: 4 });
+    s += atom(fo.x, fo.y, 'O', { r: 14, kind: 'hi' });
+    s += plus(428, 74);
+    s += text(430, 100, 'H', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(340, 194, 'H added here', { cls: 'fg-sm', size: 9 });
+    s += text(476, 78, 'H₂O', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += curve(P(474, 90), P(440, 96), { bow: -14 });
+    s += arrow(P(500, 130), P(526, 130), { muted: true });
+
+    // --- ketone
+    s += box(534, 216, 'the ketone');
+    const g1 = P(592, 170), g2 = P(648, 140), g3 = P(704, 170);
+    s += sk(g1, g2) + sk(g2, g3);
+    const go = P(648, 88);
+    s += bond(g2, go, { order: 2, rFrom: 0, rTo: 14, gap: 4 });
+    s += atom(go.x, go.y, 'O', { r: 14, kind: 'hi' });
+    s += lonePair(go.x, go.y, 210, { dist: 24 });
+    s += lonePair(go.x, go.y, 330, { dist: 24 });
+    s += text(642, 206, 'acetone — the keto side', { cls: 'fg-tag-good', size: 9.5 });
+
+    s += rule(30, 250, 730, 250);
+    s += text(380, 274, 'A hydrogen moved from O to C — so these are two COMPOUNDS, not resonance forms.', { cls: 'fg-lbl', size: 11.5 });
+    s += text(380, 296, 'Resonance moves only electrons and is drawn ↔. This is drawn ⇌: both species are real.', { cls: 'fg-sm', size: 10 });
+    s += text(380, 316, 'Keto wins by 10⁵ or more — a C=O is worth more than a C=C plus an O–H.', { cls: 'fg-sm', size: 10 });
+    return s;
+  },
+  caption: 'Tautomerization with the arrows drawn. Under the acidic conditions of an alkyne hydration it is two ordinary steps: the enol pi bond takes a proton onto carbon, and a water molecule then takes the proton off oxygen. The oxygen lone pair is what makes the intermediate cation affordable.',
+  note: 'This is the fastest way to tell a tautomer from a resonance form. Cover the hydrogens and the two structures differ only in where a pi bond sits — that looks like resonance. Uncover them and a hydrogen has physically moved, which no resonance arrow is allowed to do.',
+});
+
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;
 

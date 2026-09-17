@@ -15507,24 +15507,24 @@
  ],
  "alkene-structure": [
   {
-   "q": "The carbons of a simple alkene C=C are hybridized as:",
+   "q": "But-2-ene is drawn with its two methyl groups on the same side of the C=C. That isomer is called:",
    "options": [
-    "sp²",
-    "sp",
-    "sp³",
-    "sp³d"
+    "cis (and, here, Z as well)",
+    "trans (and, here, E as well)",
+    "a conformer of but-1-ene",
+    "a resonance form of but-2-ene"
    ],
    "correct": 0,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Degree of unsaturation counts how many rings and π bonds are in a molecule. One ring plus one double bond equals a degree of unsaturation of:",
+   "q": "2-bromo-2-butene, CH3-C(Br)=CH-CH3, is drawn with its two methyl groups on opposite sides. What is the correct E/Z label?",
    "options": [
-    "1",
-    "2",
-    "3",
-    "0"
+    "E, because the methyls are trans",
+    "Z, because Br and the C4 methyl are on the same side",
+    "Neither label applies to this alkene",
+    "E, because bromine outranks everything"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -15611,14 +15611,16 @@
    "type": "mcq"
   },
   {
-   "q": "Cis and trans isomers of an alkene exist because rotation around the C=C bond is restricted.",
+   "q": "A compound has the molecular formula C4H7Br. How many degrees of unsaturation does it have?",
    "options": [
-    "True",
-    "False"
+    "0",
+    "2",
+    "1",
+    "3"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "A compound with the molecular formula C5H10 and no rings has a degree of unsaturation of:",
@@ -15669,14 +15671,14 @@
    "type": "mcq"
   },
   {
-   "q": "What is the degree of unsaturation of a compound with molecular formula C6H10?",
+   "q": "What is the degree of unsaturation of a compound with molecular formula C5H11N?",
    "options": [
+    "2",
     "1",
-    "3",
-    "4",
-    "2"
+    "0",
+    "3"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -15737,14 +15739,14 @@
    "type": "tf"
   },
   {
-   "q": "For the same number of carbons, how does the molecular formula of an alkyne compare to that of an alkene?",
+   "q": "Why is every ordinary cycloalkene, such as cyclohexene, cis rather than trans?",
    "options": [
-    "same, CnH2n for both",
-    "alkyne has two more hydrogens than the alkene",
-    "alkyne and alkane have the same formula",
-    "alkyne has two fewer hydrogens than the alkene, CnH2n-2"
+    "Trans double bonds are higher in energy in any molecule",
+    "A ring smaller than about eight carbons cannot span the double bond the long way",
+    "Ring carbons are sp3 and cannot be part of a double bond",
+    "Cyclic alkenes have no stereochemistry to report"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -15773,14 +15775,16 @@
    "type": "mcq"
   },
   {
-   "q": "A six-membered ring containing three double bonds (like benzene) has a degree of unsaturation of 4.",
+   "q": "At one alkene carbon the two groups are a vinyl group (-CH=CH2) and an isopropyl group (-CH(CH3)2). Which has the higher CIP priority?",
    "options": [
-    "True",
-    "False"
+    "Isopropyl, because it holds more carbon atoms overall",
+    "They tie, so the alkene cannot be labeled E or Z",
+    "Vinyl, because its CH2 carries a duplicated carbon",
+    "The one drawn nearer the top of the page"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "A double bond positioned at the bridgehead carbon of a small bicyclic ring system is typically extremely unstable or impossible to form because:",
@@ -15807,14 +15811,14 @@
    "type": "mcq"
   },
   {
-   "q": "Free rotation around a C=C double bond does not occur at room temperature because doing so would require:",
+   "q": "Bredt's rule rules out a double bond at the bridgehead of a small bicyclic system. Which of these is the reliable form of the rule?",
    "options": [
-    "breaking the pi bond (about 260 kJ/mol)",
-    "breaking a sigma bond, which needs very little energy",
-    "removing a substituent first",
-    "converting sp2 carbons to sp3"
+    "No bicyclic compound can contain a double bond anywhere",
+    "Bridgehead alkenes become isolable once the bicyclic skeleton has eight or more carbons",
+    "Bridgehead carbons cannot bond to hydrogen at all",
+    "Bridgehead alkenes are fine as long as the ring is aromatic"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -15841,14 +15845,14 @@
    "type": "mcq"
   },
   {
-   "q": "Ranking by stability, which alkene substitution pattern is generally most stable?",
+   "q": "1-pentene releases 30.1 kcal/mol on hydrogenation, cis-2-pentene 28.6 and trans-2-pentene 27.6. All give pentane. What follows?",
    "options": [
-    "monosubstituted alkene",
-    "1,1-disubstituted alkene",
-    "tetrasubstituted alkene",
-    "trisubstituted alkene"
+    "1-pentene is the most stable of the three",
+    "Stability rises 1-pentene < cis-2-pentene < trans-2-pentene",
+    "The three are equally stable because the product is shared",
+    "Only the cis and trans pair can be compared this way"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   }
@@ -15869,7 +15873,7 @@
   {
    "q": "Which step typically starts an electrophilic addition to an alkene?",
    "options": [
-    "The alkene acts as an electrophile",
+    "A halide ion adds to the alkene first",
     "The alkene’s pi electrons attack",
     "A leaving group departs first",
     "A proton is removed from the alkene"
@@ -15913,14 +15917,14 @@
    "type": "tf"
   },
   {
-   "q": "Catalytic hydrogenation of an alkene (addition of H2) typically requires a catalyst such as:",
+   "q": "What is the major product of adding HBr to 2-methyl-2-butene, (CH3)2C=CHCH3?",
    "options": [
-    "Pt, Pd, or Ni",
-    "NaOH",
-    "H2SO4",
-    "Na/NH3"
+    "2-bromo-3-methylbutane",
+    "2-bromo-2-methylbutane",
+    "1-bromo-2-methylbutane",
+    "a 50:50 mixture of two bromides"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -15971,14 +15975,16 @@
    "type": "mcq"
   },
   {
-   "q": "The addition of H2 across a carbon-carbon double bond is called hydrogenation.",
+   "q": "2-methylpropene, (CH3)2C=CH2, is treated with Br2 in water. What is the major product?",
    "options": [
-    "True",
-    "False"
+    "2-bromo-2-methylpropan-1-ol",
+    "1,2-dibromo-2-methylpropane",
+    "1-bromo-2-methylpropan-2-ol",
+    "2-methylpropan-1,2-diol"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Addition of a hydrogen halide (HX) across an alkene's double bond produces:",
@@ -16005,14 +16011,14 @@
    "type": "mcq"
   },
   {
-   "q": "Hydroboration-oxidation (BH3 then H2O2/NaOH) converts an alkene into an alcohol with what regiochemistry?",
+   "q": "cis-2-butene is treated with Br2. What is the product?",
    "options": [
-    "Markovnikov (OH on more substituted carbon)",
-    "random mixture of both regiochemistries",
-    "anti-Markovnikov (OH on less substituted carbon)",
-    "always on a ring carbon only"
+    "meso-2,3-dibromobutane, a single achiral compound",
+    "the racemic (2R,3R) and (2S,3S) pair",
+    "2-bromobutane plus HBr",
+    "a single pure enantiomer, (2R,3R)"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -16051,26 +16057,28 @@
    "type": "mcq"
   },
   {
-   "q": "Why does bromine water (or Br2/CCl4) turn from colored to colorless when shaken with an alkene?",
+   "q": "trans-2-butene is treated with Br2. What is the product?",
    "options": [
-    "the alkene dissolves the bromine without reacting",
-    "Br2 is consumed, forming a colorless dibromide",
-    "bromine evaporates during shaking",
-    "the alkene reduces Br2 to HBr gas"
+    "the racemic (2R,3R) and (2S,3S) pair",
+    "2,3-dibromo-2-butene",
+    "meso-2,3-dibromobutane, a single achiral compound",
+    "an equal mixture of syn and anti adducts"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Hydroboration-oxidation follows Markovnikov's rule, placing OH on the more substituted carbon.",
+   "q": "1-methylcyclohexene is treated with Br2 in water. Where do the OH and the Br end up?",
    "options": [
-    "True",
-    "False"
+    "OH on the carbon bearing the methyl, Br on the other, trans to it",
+    "Br on the carbon bearing the methyl, OH on the other, trans to it",
+    "OH and Br on the same carbon",
+    "OH on the carbon bearing the methyl, Br on the other, cis to it"
    ],
-   "correct": 1,
+   "correct": 0,
    "difficulty": "medium",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "The acid-catalyzed addition of water across an alkene's double bond is called:",
@@ -16097,36 +16105,36 @@
    "type": "mcq"
   },
   {
-   "q": "Why doesn't hydroboration-oxidation give the carbocation-rearrangement products sometimes seen with acid-catalyzed hydration?",
+   "q": "An alkene plus a reagent gives one diastereomer cleanly. What does that rule out?",
    "options": [
-    "concerted syn addition, so no carbocation forms",
-    "Boron is too unreactive to add to alkenes at all",
-    "hydroboration only works on alkynes, not alkenes",
-    "oxidation always occurs before boron can add"
+    "A bridged three-membered intermediate",
+    "Any concerted, single-step addition",
+    "A free, planar carbocation intermediate",
+    "Addition across the pi bond at all"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "What is the overall stereochemical outcome when an alkene undergoes catalytic hydrogenation, and why?",
+   "q": "You need 3,3-dimethylbutan-2-ol from 3,3-dimethyl-1-butene, with no rearranged by-product. Which conditions?",
    "options": [
-    "anti addition, because the two hydrogens approach from opposite faces of the metal surface",
-    "syn addition, because both hydrogens add from the catalyst surface",
-    "no defined stereochemistry, because the mechanism is radical-based",
-    "anti addition, because a bridged intermediate forms like in halogenation"
+    "Dilute H2SO4 in water",
+    "Hg(OAc)2 in water, then NaBH4",
+    "BH3 in THF, then H2O2 and NaOH",
+    "Br2 in water, then NaOH"
    ],
    "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Bromine addition can be used to chemically distinguish alkenes from alkanes because alkanes do not readily react with Br2 in the dark at room temperature, while alkenes do.",
+   "q": "In halohydrin formation from an unsymmetrical alkene, the OH ends up on the less substituted carbon.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "hard",
    "type": "tf"
   },
@@ -16165,14 +16173,14 @@
    "type": "tf"
   },
   {
-   "q": "Oxymercuration-demercuration avoids the rearranged products possible in simple acid-catalyzed hydration because the mechanism proceeds through:",
+   "q": "Why does water open a bromonium ion at the more substituted carbon rather than the less hindered one?",
    "options": [
-    "a bridged mercurinium ion with delocalized positive charge",
-    "a fully localized, long-lived carbocation just like acid hydration",
-    "a radical chain mechanism",
-    "direct nucleophilic substitution with no intermediate at all"
+    "That carbon is closer to the bromine atom",
+    "Water is too small for sterics to matter anywhere",
+    "That carbon carries more of the positive charge, so its transition state is lower",
+    "Bromine blocks the less substituted carbon completely"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -16189,38 +16197,38 @@
    "type": "mcq"
   },
   {
-   "q": "Halogenation of an alkene gives anti addition, while catalytic hydrogenation gives syn addition. What accounts for this mechanistic difference?",
+   "q": "HCl adds to 3-methyl-1-butene and the chlorine ends up on a carbon that was not part of the double bond. Why?",
    "options": [
-    "halogenation and hydrogenation actually proceed through the identical intermediate",
-    "hydrogenation always occurs in two completely separate, unrelated steps years apart",
-    "halogenation goes via a bridged halonium ion, hydrogenation via a metal surface",
-    "anti addition only happens with gases, and syn addition only happens with liquids"
+    "The reaction ran through a free carbocation that rearranged",
+    "Chloride attacked the alkene directly in one step",
+    "The reaction switched to a radical chain partway through",
+    "Markovnikov's rule does not apply to branched alkenes"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   }
  ],
  "markovnikov": [
   {
-   "q": "Markovnikov addition places the new H (or nucleophile, depending on convention) on the carbon that is:",
+   "q": "In the Markovnikov addition of HBr to an alkene, the new hydrogen ends up on the carbon that is:",
    "options": [
     "Less substituted",
-    "Already most substituted",
-    "Always terminal",
-    "Chosen randomly"
+    "Already the most substituted",
+    "Always at the end of the chain",
+    "Chosen at random"
    ],
    "correct": 0,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Anti-Markovnikov addition (e.g., via radical HBr addition) places Br on the:",
+   "q": "1-butene is treated with HBr, once with peroxides and once without. What are the two major products?",
    "options": [
-    "More substituted carbon",
-    "Less substituted (terminal) carbon",
-    "Same carbon as in Markovnikov addition",
-    "Neither carbon — Br leaves"
+    "1-bromobutane without peroxides, 2-bromobutane with them",
+    "2-bromobutane without peroxides, 1-bromobutane with them",
+    "2-bromobutane in both flasks",
+    "1,2-dibromobutane in the flask with peroxides"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -16251,12 +16259,12 @@
    "type": "mcq"
   },
   {
-   "q": "Markovnikov's rule was originally formulated as an empirical observation about reaction outcomes before the carbocation mechanism was understood.",
+   "q": "Hydroboration-oxidation of 1-methylcyclohexene puts the OH on the carbon that already bears the methyl group.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "easy",
    "type": "tf"
   },
@@ -16311,32 +16319,32 @@
    "options": [
     "primary carbocation",
     "methyl cation",
-    "it doesn't matter, they're equally stable",
-    "secondary carbocation (compared to a primary option)"
+    "both are equally stable",
+    "secondary carbocation"
    ],
    "correct": 3,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Anti-Markovnikov selectivity with peroxides works equally well for HCl, HBr, and HI.",
+   "q": "In hydroboration, the boron and the hydrogen add to the same face of the double bond.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 1,
+   "correct": 0,
    "difficulty": "easy",
    "type": "tf"
   },
   {
-   "q": "The term 'Markovnikov addition' is named after:",
+   "q": "Which conditions convert 1-methylcyclohexene into 1-methylcyclohexan-1-ol?",
    "options": [
-    "a Russian chemist, Vladimir Markovnikov",
-    "a German chemist named Markov",
-    "an American company",
-    "a type of reaction apparatus"
+    "BH3 in THF, then H2O2 and NaOH",
+    "dilute aqueous H2SO4",
+    "HBr with added peroxides",
+    "Br2 in water"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -16355,9 +16363,9 @@
   {
    "q": "What is the major product of HI addition to 2-methyl-2-butene, (CH3)2C=CHCH3?",
    "options": [
-    "2-iodo-3-methylbutane (I on the less substituted carbon)",
-    "a 50:50 mixture of both regiochemistries",
-    "2-iodo-2-methylbutane (I on the more substituted, tertiary carbon)",
+    "2-iodo-3-methylbutane",
+    "a 50:50 mixture of both",
+    "2-iodo-2-methylbutane",
     "1-iodo-2-methylbutane"
    ],
    "correct": 2,
@@ -16365,14 +16373,16 @@
    "type": "mcq"
   },
   {
-   "q": "Markovnikov's rule can be restated in mechanistic terms as: the electrophile's positively polarized atom adds to whichever carbon generates the more stable carbocation intermediate.",
+   "q": "Which conditions convert 1-methylcyclohexene into trans-2-methylcyclohexan-1-ol?",
    "options": [
-    "True",
-    "False"
+    "dilute aqueous H2SO4",
+    "Hg(OAc)2 in water, then NaBH4",
+    "BH3 in THF, then H2O2 and NaOH",
+    "HBr, then aqueous NaOH"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "medium",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "For a terminal alkene CH2=CHR reacting with HX under normal ionic conditions, the halogen X ends up mainly on:",
@@ -16389,10 +16399,10 @@
   {
    "q": "How does the regiochemistry of hydroboration-oxidation compare to Markovnikov's rule?",
    "options": [
-    "it is anti-Markovnikov: OH ends up on the less substituted carbon",
+    "anti-Markovnikov: OH on the less substituted carbon",
     "it matches Markovnikov's rule exactly",
     "it gives a random mixture with no preference",
-    "it only works on alkynes, not alkenes"
+    "it works on alkynes only, never on alkenes"
    ],
    "correct": 0,
    "difficulty": "medium",
@@ -16433,14 +16443,14 @@
    "type": "mcq"
   },
   {
-   "q": "Why does ordinary HBr addition (no peroxides present) give the Markovnikov product rather than the anti-Markovnikov one?",
+   "q": "Both propagation steps are downhill for HBr. Which step is uphill for HCl, stalling its chain?",
    "options": [
-    "HBr is simply incapable of anti-Markovnikov addition under any conditions",
-    "anti-Markovnikov addition requires light, which is always present",
-    "HBr only reacts with alkynes, not alkenes, without peroxides",
-    "without a radical initiator, the ionic carbocation path dominates"
+    "The chlorine atom adding to the pi bond",
+    "The carbon radical taking H from H-Cl",
+    "The peroxide splitting into two radicals",
+    "Two chlorine atoms combining"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -16457,24 +16467,24 @@
    "type": "mcq"
   },
   {
-   "q": "Why does a tertiary carbocation intermediate lead to the Markovnikov product being favored over one from a secondary carbocation?",
+   "q": "Which conditions give 3,3-dimethylbutan-1-ol from 3,3-dimethyl-1-butene?",
    "options": [
-    "tertiary carbocations are actually less stable, so they form more slowly but give better yields",
-    "tertiary carbocations are better stabilized by hyperconjugation and induction",
-    "tertiary carbocations are not real intermediates, just a convenient theoretical tool",
-    "secondary and tertiary carbocations are always equally stable"
+    "dilute aqueous H2SO4",
+    "Hg(OAc)2 in water, then NaBH4",
+    "HBr, then aqueous NaOH",
+    "BH3 in THF, then H2O2 and NaOH"
    ],
-   "correct": 1,
+   "correct": 3,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Radical (anti-Markovnikov) addition of HBr proceeds via the more stable free radical intermediate, in direct analogy to how the ionic mechanism proceeds via the more stable carbocation.",
+   "q": "Hydroboration-oxidation can give a rearranged alcohol when a more stable carbocation is one shift away.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "hard",
    "type": "tf"
   },
@@ -16537,14 +16547,14 @@
    "type": "mcq"
   },
   {
-   "q": "Rank the following carbocations from least to most stable, which underlies the reasoning behind Markovnikov's rule:",
+   "q": "Hydroboration-oxidation of 1-methylcyclohexene is a syn addition, yet the product is trans-2-methylcyclohexan-1-ol. Why is that not a contradiction?",
    "options": [
-    "tertiary less than secondary less than primary less than methyl",
-    "secondary less than methyl less than tertiary less than primary",
-    "methyl less than primary less than secondary less than tertiary",
-    "all carbocations are equally stable regardless of substitution"
+    "The word syn describes the two groups added — the H and the OH, which are cis",
+    "Oxidation with H2O2 inverts the carbon that held the boron",
+    "The ring flips after the addition and reverses the relationship",
+    "Syn and trans mean the same thing on a six-membered ring"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   }
@@ -16599,12 +16609,12 @@
    "type": "mcq"
   },
   {
-   "q": "What is the approximate bond angle around each carbon of a terminal or internal alkyne?",
+   "q": "Propyne is treated with NaNH2, then with bromoethane. What is the product?",
    "options": [
-    "180°",
-    "109.5°",
-    "120°",
-    "90°"
+    "pent-2-yne",
+    "pent-1-yne",
+    "but-2-yne",
+    "propene"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -16679,26 +16689,26 @@
    "type": "mcq"
   },
   {
-   "q": "How many sigma bonds exist directly between the two carbon atoms of a carbon-carbon triple bond?",
+   "q": "A vicinal dibromide is heated with sodium amide to make a terminal alkyne. How many equivalents of NaNH2 are needed?",
    "options": [
-    "zero",
     "one",
     "two",
-    "three"
+    "three, plus an aqueous workup",
+    "none — amide is not basic enough"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Why is the C-H bond of a terminal alkyne (pKa ~25) considerably more acidic than a similar C-H bond in an alkene or alkane?",
+   "q": "Which sequence converts acetylene, HC=CH, into cis-hex-3-ene?",
    "options": [
-    "the alkyne C-H bond is longer and weaker",
-    "alkynes have more hydrogens overall, diluting the charge",
-    "the sp carbanion has more s-character, stabilizing the charge",
-    "terminal alkynes contain an oxygen atom that withdraws electron density"
+    "NaNH2 then CH3CH2Br, twice over, then H2 with Lindlar catalyst",
+    "NaNH2 then CH3CH2Br, twice over, then Na in liquid NH3",
+    "NaNH2 then (CH3)3CBr, twice over, then H2 with Lindlar catalyst",
+    "H2 with Lindlar catalyst, then NaNH2 and CH3CH2Br twice"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -16771,26 +16781,26 @@
    "type": "tf"
   },
   {
-   "q": "Partial hydrogenation of an internal alkyne using Lindlar's catalyst (Pd poisoned with lead and quinoline) gives predominantly which product?",
+   "q": "But-1-yne is treated with two equivalents of HBr, no peroxides. What is the product?",
    "options": [
-    "the fully saturated alkane",
-    "the trans (E) alkene",
-    "no reaction occurs at all",
-    "the cis (Z) alkene"
+    "1,2-dibromobutane",
+    "2,2-dibromobutane",
+    "2,3-dibromobutane",
+    "but-2-ene"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Reduction of an internal alkyne with sodium metal in liquid ammonia (Na/NH3, a dissolving-metal reduction) gives predominantly which product?",
+   "q": "An acetylide anion is treated with 2-bromopropane instead of a primary halide. What happens?",
    "options": [
-    "the trans (E) alkene",
-    "the cis (Z) alkene",
-    "the fully saturated alkane",
-    "no reaction; Na/NH3 does not reduce alkynes"
+    "SN2 proceeds normally, just more slowly",
+    "E2 dominates: propene forms and the alkyne is recovered",
+    "The acetylide attacks the bromine atom instead",
+    "Nothing at all — acetylides are not nucleophilic"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -16841,14 +16851,14 @@
    "type": "mcq"
   },
   {
-   "q": "Why does the initial product of acid-catalyzed alkyne hydration (an enol) not survive as the final isolated product?",
+   "q": "You need hexan-2-one from hex-1-yne. Which conditions?",
    "options": [
-    "the enol tautomerizes to the more stable keto form",
-    "the enol is actually more stable than the corresponding ketone and is isolated unchanged",
-    "enols are never formed in alkyne hydration in the first place",
-    "the enol immediately polymerizes into a completely different product class"
+    "disiamylborane, then H2O2 and NaOH",
+    "H2 with Lindlar catalyst",
+    "H2O with H2SO4 and HgSO4",
+    "Na in liquid NH3"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
