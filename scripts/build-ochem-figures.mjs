@@ -11584,7 +11584,7 @@ FIGURES.push({
     s += atom(150, 300, 'NH₂', { kind: 'hi' });
     s += lonePair(150, 300, 250);
     s += curve(P(120, 288), P(140, 322), { bow: 16 });
-    s += curve(P(184, 352), P(196, 396), { bow: -18 });
+    s += curve(P(174, 330), P(200, 342), { bow: -14 });
     s += text(150, 442, 'push the pair into the ring', { cls: 'fg-sm', size: 10 });
 
     s += resonanceArrow(266, 336, 372);
@@ -11603,7 +11603,7 @@ FIGURES.push({
     return s;
   },
   caption: 'The two &ldquo;resonance kills basicity&rdquo; claims of this section, drawn. In the amide the pair ends up in the C&ndash;N pi bond with the negative charge parked on oxygen; in aniline it ends up on ring carbons. A proton arriving at either nitrogen has to pay for cancelling these structures, and that bill is what six (aniline) and eleven (amide) orders of magnitude of lost basicity buys.',
-  note: 'Read the right-hand structures as where the electrons actually spend part of their time, not as something that happens afterward. The amide&rsquo;s nitrogen is drawn <b>⊕</b> and flat for the same reason its C&ndash;N bond does not rotate: the pair is in a pi bond, not on nitrogen. Count the arrows, too &mdash; each one is two electrons moving from a lone pair into a bond, exactly the notation the resonance chapter set up.',
+  note: 'Read the right-hand structures as where the electrons actually spend part of their time, not as something that happens afterward. The amide&rsquo;s nitrogen is drawn <b>⊕</b> and flat for the same reason its C&ndash;N bond does not rotate: the pair is in a pi bond, not on nitrogen. Count the arrows, too, and read each one for what it moves: two start on a nitrogen lone pair and end in a bond, and two start on a pi bond and end on the atom that keeps the pair &mdash; exactly the notation the resonance chapter set up.',
 });
 
 /* ---------------------------------------------------------------- 192 ---
@@ -12462,6 +12462,428 @@ FIGURES.push({
   },
   caption: 'Push the C=C electrons toward the carbonyl and the charge lands on the beta carbon. That single drawing is what turns "the beta carbon is electrophilic" from an assertion into something you can see.',
   note: 'Both contributors describe the same molecule, so both sites are electrophilic at the same time — the question is never which one the molecule offers, only which one a given nucleophile takes. Note also where the negative charge sits in the contributor: on oxygen, which is why the anion produced by conjugate addition is an enolate and can be trapped or alkylated rather than simply quenched.',
+});
+
+
+/* ---------------------------------------------------------------- 200 ---
+   Chapter 16 had 1.3 figures per section and makes four of its central
+   claims in prose alone: where 4n + 2 comes from, which nitrogen lone pair
+   is in the pi system, why the first EAS step is the slow one, and which
+   three carbons the arenium charge actually reaches. Each of those is a
+   picture the student is currently asked to build in their head. */
+
+/* Frost's circle: inscribe the ring in a circle, vertex at the bottom, and
+   every touching point is an orbital at that height. The MO filling pattern
+   the notes assert in words is read straight off the geometry. */
+FIGURES.push({
+  id: 'frost-circles',
+  section: 'aromaticity',
+  anchor: '<b>Third</b>, count. The bottom orbital takes 2 electrons. Each degenerate pair above it takes 4 more. The counts that leave nothing half-filled are 2, then 6, then 10, then 14 — exactly what 4n + 2 generates. Hückel\'s rule is the arithmetic of leaving no half-filled shell.</p>',
+  alt: 'Three Frost circles side by side. Benzene: a hexagon inscribed in a circle with one vertex at the bottom, six energy levels at the vertex heights, the lowest and the two below the center line each holding a pair of electrons and the top three empty. Cyclobutadiene: a square, with the lowest level paired and the two levels on the center line each holding one unpaired electron. Cyclopentadienyl anion: a pentagon, with the lowest level and the two below the center line all paired.',
+  viewBox: '0 0 760 358',
+  build() {
+    let s = '';
+    const CY = 152, R = 58;
+    const panels = [
+      { cx: 136, n: 6, title: 'benzene', pi: '6 π electrons',
+        fill: [2, 2, 2, 0, 0, 0], detail: 'every bonding level full', verdict: 'AROMATIC', kind: 'fg-tag-good' },
+      { cx: 380, n: 4, title: 'cyclobutadiene', pi: '4 π electrons',
+        fill: [2, 1, 1, 0], detail: 'two unpaired electrons', verdict: 'ANTIAROMATIC', kind: 'fg-tag-warn' },
+      { cx: 624, n: 5, title: 'cyclopentadienyl anion', pi: '6 π electrons',
+        fill: [2, 2, 2, 0, 0], detail: 'every bonding level full', verdict: 'AROMATIC', kind: 'fg-tag-good' },
+    ];
+    for (const p of panels) {
+      s += tag(p.cx, 42, p.title);
+      s += `<circle class="fg-orb-node" cx="${p.cx}" cy="${CY}" r="${R}" fill="none"></circle>`;
+      /* Vertex 0 at the bottom, then round the circle. The y of each vertex
+         IS the orbital energy — that is the whole trick. */
+      const v = [];
+      for (let i = 0; i < p.n; i++) {
+        const a = (90 + i * 360 / p.n) * Math.PI / 180;
+        v.push(P(p.cx + Math.cos(a) * R, CY + Math.sin(a) * R));
+      }
+      for (let i = 0; i < p.n; i++) s += bond(v[i], v[(i + 1) % p.n], { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
+      s += `<line class="fg-dash" x1="${p.cx - 78}" y1="${CY}" x2="${p.cx + 78}" y2="${CY}"></line>`;
+      /* Levels lowest-first, so the fill array reads bottom to top. */
+      const order = v.map((pt, i) => ({ pt, i })).sort((a, b) => b.pt.y - a.pt.y);
+      order.forEach((o, rank) => {
+        s += `<line class="fg-bond" x1="${(o.pt.x - 17).toFixed(2)}" y1="${o.pt.y.toFixed(2)}" x2="${(o.pt.x + 17).toFixed(2)}" y2="${o.pt.y.toFixed(2)}"></line>`;
+        const e = p.fill[rank];
+        if (e) s += text(o.pt.x, o.pt.y - 6, e === 2 ? '↑↓' : '↑', { cls: 'fg-hi', size: 12 });
+      });
+      s += label(p.cx, 248, p.pi, { size: 12.5 });
+      s += text(p.cx, 270, p.detail, { cls: 'fg-sm', size: 10.5 });
+      s += text(p.cx, 294, p.verdict, { cls: p.kind, size: 11 });
+    }
+    s += rule(258, 60, 258, 308);
+    s += rule(502, 60, 502, 308);
+    s += text(380, 336, 'Below the dashed line an orbital is bonding; on it, nonbonding; above it, antibonding.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'Frost&rsquo;s circle turns the filling pattern into geometry. Inscribe the ring in a circle with <b>one vertex at the bottom</b>, and every point where the polygon touches the circle is a molecular orbital at that height. The single lowest orbital and the degenerate pairs above it are not asserted here &mdash; they are read off the drawing. Fill from the bottom, and 4n + 2 is exactly the count that leaves no pair half-filled.',
+  note: 'Vertex at the BOTTOM, every time &mdash; that is the only rule, and getting it wrong inverts the whole diagram. Cyclobutadiene is the case worth staring at: its two middle electrons land in separate nonbonding orbitals with parallel spins, which is not a stabilized arrangement at all. That is what <b>antiaromatic</b> means, and it is why the count matters rather than just the delocalization.',
+});
+
+/* The pyrrole/pyridine lone pair, drawn edge-on. The notes call this "that
+   single decision" and then describe a 3-D orbital orientation in a
+   sentence. Seen from the side, the two cases are simply different. */
+FIGURES.push({
+  id: 'pyrrole-pyridine-lone-pairs',
+  section: 'aromaticity',
+  anchor: 'so both are aromatic, and both keep one lone pair available for ordinary chemistry.</p>',
+  alt: 'Pyrrole and pyridine compared. Each is drawn as a skeletal ring and again edge-on, as a row of atoms along the ring plane with a p orbital above and below each one. Pyrrole\'s nitrogen has its lone pair drawn as two dots inside the upper p-orbital lobe; pyridine\'s nitrogen has its lone pair drawn as two dots on the ring-plane line, pointing outward away from the ring.',
+  viewBox: '0 0 760 400',
+  build() {
+    let s = '';
+    const lobe = (cx, cy, op) => `<ellipse class="fg-orb" cx="${cx}" cy="${cy}" rx="11" ry="22" fill-opacity="${op}"></ellipse>`;
+    const cases = [
+      { cx: 190, n: 5, name: 'PYRROLE', nh: true, kind: 'fg-tag-good',
+        l1: 'the lone pair IS the p orbital', l2: '2 C=C + that pair = 6 π · aromatic', l3: 'so the nitrogen is NOT basic' },
+      { cx: 570, n: 6, name: 'PYRIDINE', nh: false, kind: 'fg-tag-good',
+        l1: 'the lone pair is in the ring plane', l2: '3 ring double bonds = 6 π · aromatic', l3: 'so the nitrogen IS basic' },
+    ];
+    for (const c of cases) {
+      s += tag(c.cx, 36, c.name);
+      /* The skeletal ring, nitrogen at the bottom vertex. */
+      const RC = P(c.cx, 106), R = 40, v = [];
+      for (let i = 0; i < c.n; i++) {
+        const a = (90 + i * 360 / c.n) * Math.PI / 180;
+        v.push(P(RC.x + Math.cos(a) * R, RC.y + Math.sin(a) * R));
+      }
+      /* Pyrrole: N1-C2=C3-C4=C5. Pyridine: N1=C2-C3=C4-C5=C6. */
+      const doubles = c.n === 5 ? [1, 3] : [0, 2, 4];
+      for (let i = 0; i < c.n; i++) {
+        const a = v[i], b = v[(i + 1) % c.n];
+        const rFrom = i === 0 ? 15 : 0, rTo = (i + 1) % c.n === 0 ? 15 : 0;
+        /* A double bond that lands on the nitrogen has to stop at its circle,
+           which ringDouble (built for unlabeled ring vertices) does not do. */
+        if (doubles.includes(i) && (rFrom || rTo)) s += bond(a, b, { order: 2, rFrom, rTo, gap: 3.6 });
+        else if (doubles.includes(i)) s += ringDouble(a, b, RC, { inset: 10 });
+        else s += bond(a, b, { rFrom, rTo });
+      }
+      s += atom(v[0].x, v[0].y, 'N', { kind: 'hi' });
+      if (c.nh) {
+        s += bond(v[0], P(c.cx, v[0].y + 32), { rFrom: 16, rTo: 11 });
+        s += atom(c.cx, v[0].y + 32, 'H', { r: 11 });
+      }
+      /* The same ring seen edge-on: the plane is a line, and every p orbital
+         stands up off it. */
+      s += text(c.cx, 214, 'the same ring, seen edge-on', { cls: 'fg-sm', size: 10.5 });
+      const BY = 278, step = c.n === 5 ? 44 : 40;
+      const x0 = c.cx - step * (c.n - 1) / 2;
+      s += `<line class="fg-bond-soft" x1="${x0 - 22}" y1="${BY}" x2="${x0 + step * (c.n - 1) + 22}" y2="${BY}"></line>`;
+      for (let i = 0; i < c.n; i++) {
+        const x = x0 + i * step;
+        const strong = i === 0 && c.nh;
+        s += lobe(x, BY - 26, strong ? 0.4 : 0.16);
+        s += lobe(x, BY + 26, strong ? 0.4 : 0.16);
+      }
+      for (let i = 0; i < c.n; i++) {
+        const x = x0 + i * step;
+        s += atom(x, BY, i === 0 ? 'N' : 'C', { kind: i === 0 ? 'hi' : 'plain', r: 13, size: 11 });
+      }
+      if (c.nh) s += lonePair(x0, BY, -90, { dist: 26 });
+      else s += lonePair(x0, BY, 180, { dist: 26 });
+      s += label(c.cx, 346, c.l1, { size: 12.5 });
+      s += text(c.cx, 366, c.l2, { cls: 'fg-sm', size: 10.5 });
+      s += text(c.cx, 388, c.l3, { cls: c.kind, size: 11 });
+    }
+    s += rule(380, 56, 380, 392);
+    return s;
+  },
+  caption: 'Both rings are aromatic with six pi electrons, and they get there by opposite routes. Pyrrole&rsquo;s nitrogen has no ring double bond, so its lone pair is the one standing up in the p orbital &mdash; spent on the sextet, and therefore not available to a proton. Pyridine&rsquo;s nitrogen already has a C=N supplying its two electrons, so its lone pair lies in an sp² orbital in the plane of the ring, pointing outward, untouched by the pi system and free to act as a base.',
+  note: 'Ask one question of every heteroatom in a ring: <b>does it already have a double bond in the ring?</b> If it does, its lone pair is in the plane and contributes 0. If it does not, its lone pair is in the p orbital and contributes 2. That one question settles pyrrole, pyridine, furan, thiophene and both nitrogens of imidazole.',
+});
+
+
+/* The whole "why substitution" argument is energetic and nothing was drawn.
+   Two barriers, one shallow well, and a grayed branch showing where addition
+   would have gone. */
+FIGURES.push({
+  id: 'eas-energy-profile',
+  section: 'eas',
+  anchor: 'stabilizes the transition state leading to it, and therefore speeds the reaction up.</div>',
+  alt: 'A reaction-energy diagram for electrophilic aromatic substitution. From benzene plus an electrophile the curve rises steeply over a tall first transition state, drops into a shallow well labeled arenium ion that is well above the starting level, rises over a much smaller second transition state, and falls to a product plateau below the start. A gray dashed branch leaves the arenium well, rises over a barrier and ends on a plateau above the starting level, labeled addition product.',
+  viewBox: '0 0 760 400',
+  build() {
+    let s = '';
+    const base = 320;
+    s += rule(56, base, 692, base) + rule(56, base, 56, 60);
+    s += text(62, 44, 'free energy', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(380, 344, 'reaction coordinate →', { cls: 'fg-sm', size: 10.5 });
+
+    const start = P(70, 252), ts1 = P(196, 92), well = P(300, 198), ts2 = P(392, 158), prod = P(580, 288);
+    /* The branch benzene does not take: addition, which never gets the
+       aromaticity back and so ends UPHILL of the starting material. */
+    s += profile([well, P(430, 120), P(664, 226)], 'fg-dash');
+    s += profile([start, ts1, well, ts2, prod]);
+    s += `<line class="fg-dash" x1="${well.x}" y1="${well.y}" x2="${well.x}" y2="${base}"></line>`;
+
+    s += text(72, 272, 'benzene + E⁺', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(196, 76, '‡', { cls: 'fg-tag-warn', size: 15 });
+    s += text(196, 60, 'TS1 · aromaticity being lost', { cls: 'fg-tag-warn', size: 11 });
+    s += text(392, 152, '‡', { cls: 'fg-tag', size: 13 });
+    s += text(362, 136, 'TS2 · H⁺ leaving', { cls: 'fg-tag', size: 11, anchor: 'end' });
+    s += text(308, 230, 'arenium ion', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += text(308, 248, 'the 36 kcal/mol is gone', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(548, 310, 'substituted benzene — aromatic again', { cls: 'fg-sm', size: 10.5 });
+    s += text(668, 250, 'addition product ✗', { cls: 'fg-tag-mut', size: 11, anchor: 'end' });
+
+    s += text(380, 368, 'Two barriers and one intermediate — and the first barrier is the taller one.', { cls: 'fg-lbl', size: 12.5 });
+    s += text(380, 388, 'Anything that lowers the arenium ion lowers TS1 with it, which is the whole of the next section.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The first barrier is tall because aromaticity has to be paid for up front; the second is small because losing a proton hands it straight back. That asymmetry is the reason the <b>first</b> step is rate-determining &mdash; and since the rate-determining step is the one every directing-effect argument is about, everything in the next section is really an argument about the height of TS1.',
+  note: 'Look at where the gray branch ends: <b>above</b> the starting material. Addition to benzene is uphill overall, and that, not anything about the first step, is what makes EAS a substitution. An alkene&rsquo;s version of this diagram has the gray branch running downhill instead, which is why an alkene adds.',
+});
+
+/* Three contributors and a hybrid. The notes assert the three-carbon
+   delocalization in one sentence, and the whole of the next section is read
+   off it. */
+FIGURES.push({
+  id: 'arenium-resonance-three',
+  section: 'eas',
+  anchor: 'since conjugation is still broken.</p>',
+  alt: 'Three resonance structures of the arenium ion in a row, each a benzene ring with an sp3 carbon at the top bearing E on a wedge and H on a hash. The positive charge is on an ortho carbon in the first, on the para carbon in the second and on the other ortho carbon in the third, with curved arrows connecting them. Below, the hybrid is drawn with a dashed arc over the five remaining carbons and a delta-plus on only three of them.',
+  viewBox: '0 0 760 470',
+  build() {
+    let s = '';
+    const R = 46;
+    const verts = (cx, cy) => {
+      const v = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (-90 + i * 60) * Math.PI / 180;
+        v.push(P(cx + Math.cos(a) * R, cy + Math.sin(a) * R));
+      }
+      return v;   // 0 top (sp3), 1 ortho, 2 meta, 3 para, 4 meta, 5 ortho
+    };
+    const ringOf = (cx, cy, doubles) => {
+      const v = verts(cx, cy), mid = P(cx, cy);
+      let g = '';
+      for (let i = 0; i < 6; i++) {
+        const j = (i + 1) % 6;
+        if (doubles.includes(i)) g += ringDouble(v[i], v[j], mid, { inset: 10 });
+        else g += bond(v[i], v[j], { rFrom: 0, rTo: 0 });
+      }
+      /* The sp3 carbon carries both groups: E toward the reader, H away. */
+      g += wedge(v[0], P(cx - 28, cy - R - 38), { rFrom: 0, rTo: 14 });
+      g += atom(cx - 28, cy - R - 38, 'E', { kind: 'hi', r: 14 });
+      g += hash(v[0], P(cx + 28, cy - R - 38), { rFrom: 0, rTo: 12 });
+      g += atom(cx + 28, cy - R - 38, 'H', { r: 12 });
+      return g;
+    };
+    const plus = (cx, cy, i) => {
+      const v = verts(cx, cy)[i];
+      const ux = (v.x - cx) / R, uy = (v.y - cy) / R;
+      return text(v.x + ux * 19, v.y + uy * 19 + 5, '+', { cls: 'fg-warn', size: 17 });
+    };
+
+    const CY = 140;
+    s += tag(380, 28, 'THE THREE ARENIUM CONTRIBUTORS');
+    // 1: charge on an ortho carbon; the meta-side C=C is about to shift.
+    s += ringOf(140, CY, [2, 4]);
+    s += plus(140, CY, 1);
+    s += curve(P(166, 177), P(187, 141), { bow: -13 });
+    // 2: charge on the para carbon.
+    s += ringOf(380, CY, [1, 4]);
+    s += plus(380, CY, 3);
+    s += curve(P(333, 141), P(354, 177), { bow: -13 });
+    // 3: charge on the other ortho carbon.
+    s += ringOf(620, CY, [1, 3]);
+    s += plus(620, CY, 5);
+
+    const dbl = (x1, x2, y) => arrow(P(x1, y), P(x2, y), { muted: true }) + arrow(P(x2, y), P(x1, y), { muted: true });
+    s += dbl(218, 302, CY);
+    s += dbl(458, 542, CY);
+    s += text(140, 232, 'charge on an ortho carbon', { cls: 'fg-tag', size: 11 });
+    s += text(380, 232, 'charge on the para carbon', { cls: 'fg-tag', size: 11 });
+    s += text(620, 232, 'charge on the other ortho', { cls: 'fg-tag', size: 11 });
+    s += rule(24, 258, 736, 258);
+
+    /* The hybrid: one drawing, with the charge marked only where it is. */
+    const HY = 342;
+    const v = verts(380, HY);
+    for (let i = 0; i < 6; i++) s += bond(v[i], v[(i + 1) % 6], { rFrom: 0, rTo: 0 });
+    s += wedge(v[0], P(352, HY - R - 38), { rFrom: 0, rTo: 14 });
+    s += atom(352, HY - R - 38, 'E', { kind: 'hi', r: 14 });
+    s += hash(v[0], P(408, HY - R - 38), { rFrom: 0, rTo: 12 });
+    s += atom(408, HY - R - 38, 'H', { r: 12 });
+    const arcR = 30;
+    const a1 = P(380 + (v[1].x - 380) / R * arcR, HY + (v[1].y - HY) / R * arcR);
+    const a5 = P(380 + (v[5].x - 380) / R * arcR, HY + (v[5].y - HY) / R * arcR);
+    s += `<path class="fg-dash-hi" d="M${a1.x.toFixed(2)} ${a1.y.toFixed(2)} A${arcR} ${arcR} 0 1 1 ${a5.x.toFixed(2)} ${a5.y.toFixed(2)}"></path>`;
+    for (const i of [1, 3, 5]) {
+      const p = v[i];
+      const ux = (p.x - 380) / R, uy = (p.y - HY) / R;
+      s += text(p.x + ux * 22, p.y + uy * 22 + 4, 'δ+', { cls: 'fg-warn', size: 12 });
+    }
+    s += text(452, 366, 'meta · no charge, ever', { cls: 'fg-tag-mut', size: 11, anchor: 'start' });
+    s += text(308, 366, 'meta · no charge, ever', { cls: 'fg-tag-mut', size: 11, anchor: 'end' });
+    s += label(380, 438, 'the hybrid: partial + on THREE carbons, none on the other two', { size: 12.5 });
+    s += text(380, 458, 'and the two bare carbons are exactly the meta positions', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'Three structures, three carbons. The charge lands <b>ortho, para, ortho</b> with respect to the carbon the electrophile attacked, and never on the two carbons meta to it. The hybrid underneath shows where the charge actually is: partial positive on three carbons and none on two.',
+  note: 'Count the marked carbons: THREE, not five. Everything in the next section is read off this one picture &mdash; a substituent sitting on a δ+ carbon can help or hurt, and a substituent sitting on a bare carbon can do neither. The two unmarked carbons are the meta positions, which is the entire reason meta directors exist.',
+});
+
+
+/* One fully drawn example of each of the five reactions. The notes give the
+   other four as table rows only. */
+FIGURES.push({
+  id: 'five-eas-reactions',
+  section: 'eas',
+  anchor: 'because one of them has serious problems and the other does not.</p>',
+  alt: 'Five rows, each showing benzene, an arrow carrying the reagents, and the product ring with its new substituent: bromobenzene from bromine and iron tribromide, nitrobenzene from nitric and sulfuric acid, benzenesulfonic acid from sulfur trioxide with a reverse arrow underneath, ethylbenzene from chloroethane and aluminum trichloride with a faint second ethyl group, and acetophenone from acetyl chloride and aluminum trichloride.',
+  viewBox: '0 0 760 430',
+  build() {
+    let s = '';
+    /* A flat-right hexagon so the substituent can hang off horizontally. */
+    const hex = (cx, cy, r) => {
+      const v = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (i * 60) * Math.PI / 180;
+        v.push(P(cx + Math.cos(a) * r, cy + Math.sin(a) * r));
+      }
+      return v;
+    };
+    const ring = (cx, cy) => {
+      const v = hex(cx, cy, 24), mid = P(cx, cy);
+      let g = '';
+      for (let i = 0; i < 6; i++) {
+        const j = (i + 1) % 6;
+        if ([0, 2, 4].includes(i)) g += ringDouble(v[i], v[j], mid, { inset: 6, gap: 3.4 });
+        else g += bond(v[i], v[j], { rFrom: 0, rTo: 0 });
+      }
+      return g;
+    };
+    const rows = [
+      { y: 72,  rgt: 'Br₂, FeBr₃',      sub: 'Br',     r: 15, name: 'bromobenzene',          note: 'FeBr₃ is catalytic — a trace is enough' },
+      { y: 152, rgt: 'HNO₃, H₂SO₄',     sub: 'NO₂',    r: 18, name: 'nitrobenzene',          note: 'later reduced to NH₂ — the way onto aromatic amines' },
+      { y: 232, rgt: 'SO₃, H₂SO₄',      sub: 'SO₃H',   r: 21, name: 'benzenesulfonic acid',  note: 'the only one of the five that also runs backwards' },
+      { y: 312, rgt: 'CH₃CH₂Cl, AlCl₃', sub: 'CH₂CH₃', r: 25, name: 'ethylbenzene',         note: 'ethyl activates the ring, so it happens again' },
+      { y: 392, rgt: 'CH₃COCl, AlCl₃',  sub: 'COCH₃',  r: 23, name: 'acetophenone',          note: 'the ketone deactivates, so it stops at one' },
+    ];
+    s += tag(380, 28, 'THE FIVE REACTIONS, EACH DRAWN ONCE');
+    rows.forEach((row, i) => {
+      const y = row.y;
+      s += ring(70, y);
+      if (i === 2) {
+        s += arrow(P(106, y - 6), P(196, y - 6));
+        s += arrow(P(196, y + 12), P(106, y + 12), { muted: true });
+        s += text(151, y - 16, row.rgt, { cls: 'fg-sm', size: 10.5 });
+        s += text(151, y + 30, 'H₂O, H⁺, Δ', { cls: 'fg-sm', size: 10.5 });
+      } else {
+        s += arrow(P(106, y), P(196, y));
+        s += text(151, y - 10, row.rgt, { cls: 'fg-sm', size: 10.5 });
+      }
+      s += ring(248, y);
+      const v = hex(248, y, 24);
+      s += bond(v[0], P(248 + 24 + 32, y), { rFrom: 0, rTo: row.r });
+      s += atom(248 + 24 + 32, y, row.sub, { kind: 'hi', r: row.r, size: row.sub.length > 3 ? 8.5 : 10 });
+      if (i === 3) {
+        /* The second alkylation, drawn faint: this is the whole problem. */
+        s += bond(v[2], P(248 - 34, y + 42), { rFrom: 0, rTo: 13, cls: 'fg-bond-soft' });
+        s += text(248 - 34, y + 46, 'Et', { cls: 'fg-mut', size: 11 });
+      }
+      s += label(356, y - 4, row.name, { size: 12.5, anchor: 'start' });
+      s += text(356, y + 16, row.note, { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    });
+    return s;
+  },
+  caption: 'Each of the five, once, with a real product on the end of the arrow. Only rows 4 and 5 make a carbon&ndash;carbon bond; only row 3 runs backwards; only row 4 keeps going after the first substitution. Those three facts are most of what the rest of this section is about.',
+  note: 'Row 3&rsquo;s reverse arrow and row 4&rsquo;s faint second ethyl are the two features worth memorizing. One of them is the blocking-group trick that makes an ortho product reachable; the other is the reason Friedel&ndash;Crafts acylation exists at all.',
+});
+
+/* The octet-complete contributor is the section's central claim and was made
+   in a sentence. Drawn, ortho/para versus meta stops being a rule. */
+FIGURES.push({
+  id: 'donor-octet-structure',
+  section: 'directing-effects',
+  anchor: 'these groups are both <b>ortho/para directors</b> and <b>activators</b>.</p>',
+  alt: 'Aniline arenium ions compared. The top row shows para attack in three structures: the charge on an ortho carbon, then on the carbon bearing the NH2 group with a curved arrow from the nitrogen lone pair, then a highlighted structure with a carbon-nitrogen double bond, the positive charge on nitrogen and every atom holding a complete octet. The bottom row shows meta attack in three structures where the charge never reaches the nitrogen-bearing carbon, followed by an empty crossed-out box.',
+  viewBox: '0 0 760 512',
+  build() {
+    let s = '';
+    const verts = (cx, cy, R) => {
+      const v = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (-90 + i * 60) * Math.PI / 180;
+        v.push(P(cx + Math.cos(a) * R, cy + Math.sin(a) * R));
+      }
+      return v;   // 0 carries NH2, 1 & 5 ortho, 2 & 4 meta, 3 para
+    };
+    /* `hit` is the carbon the electrophile added to; `pos` is where the
+       positive charge sits in this contributor; `nDouble` swaps the C-N bond
+       for the octet-complete structure. */
+    const unit = (cx, cy, R, hit, pos, doubles, nDouble) => {
+      const v = verts(cx, cy, R), mid = P(cx, cy);
+      let g = '';
+      for (let i = 0; i < 6; i++) {
+        const j = (i + 1) % 6;
+        if (doubles.includes(i)) g += ringDouble(v[i], v[j], mid, { inset: 9 });
+        else g += bond(v[i], v[j], { rFrom: 0, rTo: 0 });
+      }
+      const nh = P(cx, cy - R - 32);
+      g += bond(v[0], nh, { rFrom: 0, rTo: 16, order: nDouble ? 2 : 1, gap: 3.6 });
+      g += atom(nh.x, nh.y, 'NH₂', { kind: nDouble ? 'warn' : 'hi', r: 16, size: 10 });
+      if (!nDouble) g += lonePair(nh.x, nh.y, 180, { dist: 24 });
+      else g += text(nh.x + 25, nh.y - 10, '+', { cls: 'fg-warn', size: 16 });
+      /* The attacked carbon goes sp3 and picks up the electrophile. */
+      g += atom(v[hit].x, v[hit].y, 'sp³', { r: 14, size: 9.5 });
+      const ux = (v[hit].x - cx) / R, uy = (v[hit].y - cy) / R;
+      const e = P(v[hit].x + ux * 32, v[hit].y + uy * 32);
+      g += bond(v[hit], e, { rFrom: 14, rTo: 13, cls: 'fg-bond-hi' });
+      g += atom(e.x, e.y, 'E', { kind: 'hi', r: 13, size: 11 });
+      if (pos !== null) {
+        const p = v[pos];
+        /* Straight out from the center, except on the carbon that carries the
+           NH2 — there "out" is under the substituent, so the sign goes beside
+           it instead of vanishing behind it. */
+        if (pos === 0) g += text(cx - 26, cy - R + 6, '+', { cls: 'fg-warn', size: 17 });
+        else {
+          const px = (p.x - cx) / R, py = (p.y - cy) / R;
+          g += text(p.x + px * 19, p.y + py * 19 + 5, '+', { cls: 'fg-warn', size: 17 });
+        }
+      }
+      return g;
+    };
+    const dbl = (x1, x2, y) => arrow(P(x1, y), P(x2, y), { muted: true }) + arrow(P(x2, y), P(x1, y), { muted: true });
+
+    /* ---- row 1: attack PARA, and the charge can reach the nitrogen ---- */
+    s += text(24, 42, 'ATTACK PARA (or ortho) — the charge reaches the nitrogen', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    s += panel(532, 50, 176, 198, { kind: 'hi' });
+    const CY = 146, R1 = 44;
+    s += unit(140, CY, R1, 3, 2, [0, 4], false);
+    s += curve(P(162, 107), P(188, 142), { bow: -13 });
+    s += unit(380, CY, R1, 3, 0, [1, 4], false);
+    s += curve(P(352, 86), P(371, 99), { bow: -11 });
+    s += unit(620, CY, R1, 3, null, [1, 4], true);
+    s += dbl(216, 306, CY);
+    s += dbl(444, 524, CY);
+    s += text(140, 256, 'charge on an ortho carbon', { cls: 'fg-tag', size: 11 });
+    s += text(380, 256, 'charge on the NH₂ carbon', { cls: 'fg-tag', size: 11 });
+    s += text(620, 256, 'every atom octet-complete', { cls: 'fg-tag-good', size: 11 });
+    s += rule(24, 280, 736, 280);
+
+    /* ---- row 2: attack META, and it never does ---- */
+    s += text(24, 304, 'ATTACK META — it never does', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
+    const CY2 = 396, R2 = 38;
+    s += unit(140, CY2, R2, 2, 1, [3, 5], false);
+    s += unit(340, CY2, R2, 2, 3, [0, 4], false);
+    s += unit(540, CY2, R2, 2, 5, [0, 3], false);
+    s += dbl(206, 274, CY2);
+    s += dbl(406, 474, CY2);
+    s += panel(618, 358, 78, 78);
+    s += `<line class="fg-dash" x1="618" y1="358" x2="696" y2="436"></line>`;
+    s += `<line class="fg-dash" x1="696" y1="358" x2="618" y2="436"></line>`;
+    s += text(657, 456, 'no such', { cls: 'fg-tag-mut', size: 11 });
+    s += text(657, 472, 'structure exists', { cls: 'fg-tag-mut', size: 11 });
+    s += text(340, 500, 'three contributors, and the charge never once lands on the NH₂ carbon', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The whole of ortho/para direction is one extra box. Attack para (or ortho) and the positive charge can reach the carbon bearing the nitrogen &mdash; at which point the nitrogen&rsquo;s lone pair swings in, the C&ndash;N bond becomes a double bond, and <b>every atom in the molecule has a complete octet</b>. That structure is far lower in energy than any all-carbon cation, and it is why aniline brominates about 10⁵ times faster than benzene. Attack meta and the charge never reaches that carbon, so the box stays empty.',
+  note: 'Do not count resonance structures &mdash; three against three is a tie, and the tie is exactly why counting fails here. Count the GOOD one. Ortho and para each get a fourth structure with full octets; meta gets none, and that single structure decides the question. The same drawing with NO₂ in place of NH₂ inverts it: there the charge reaching the substituted carbon is the disaster, and meta becomes the only tolerable attack.',
 });
 
 const START = (id) => `<!-- fig:${id}:start -->`;

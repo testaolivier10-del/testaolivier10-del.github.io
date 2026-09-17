@@ -27634,26 +27634,26 @@
    "type": "mcq"
   },
   {
-   "q": "Which of the following is NOT one of the requirements for a ring system to be aromatic?",
+   "q": "Cyclooctatetraene dianion is planar, cyclic and fully conjugated with 10 pi electrons. 1,3,5-Cyclooctatriene is cyclic and planar but has two sp³ CH₂ carbons and 6 pi electrons. Classify each in turn.",
    "options": [
-    "It must be cyclic",
-    "It must be fully conjugated (continuous overlap of p orbitals)",
-    "It must be planar",
-    "It must contain at least one nitrogen atom"
+    "Dianion antiaromatic; triene aromatic",
+    "Dianion aromatic; triene non-aromatic",
+    "Dianion aromatic; triene antiaromatic",
+    "Both aromatic; the counts settle it"
    ],
-   "correct": 3,
-   "why": "Aromaticity requires cyclic, planar, fully conjugated rings with 4n+2 pi electrons. Nitrogen is not required at all — benzene has no heteroatoms and is the classic aromatic compound.",
-   "difficulty": "easy",
+   "correct": 1,
+   "why": "Work the requirements in order rather than counting first. The dianion is cyclic, planar and fully conjugated, so the count is allowed to decide: 10 fits 4n+2 with n = 2, so it is aromatic. The triene fails the conjugation requirement before the count is ever reached — two sp³ carbons break the loop of p orbitals — so it is non-aromatic, and its 6 pi electrons are beside the point. The trap is answering antiaromatic for the triene: antiaromatic means passing all three structural tests and then landing on 4n, which a ring with an sp³ carbon in it never does.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Benzene satisfies Huckel's rule with 6 pi electrons corresponding to n = 1 in the 4n+2 formula.",
+   "q": "Benzene satisfies Hückel's rule with 6 pi electrons corresponding to n = 2 in the 4n+2 formula.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "4(1)+2 = 6, matching benzene's six pi electrons delocalized around the ring from three pi bonds.",
+   "correct": 1,
+   "why": "4n+2 with n = 2 gives 10, not 6. Benzene's six pi electrons correspond to n = 1: 4(1) + 2 = 6. The n = 2 count of 10 belongs to species such as the cyclooctatetraene dianion and the naphthalene ring system.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -27830,13 +27830,13 @@
    "type": "mcq"
   },
   {
-   "q": "Cyclobutadiene is unusually reactive and tends to dimerize quickly, consistent with its classification as antiaromatic rather than merely non-aromatic.",
+   "q": "Cyclobutadiene's high reactivity is explained by calling it non-aromatic: it is simply an ordinary, unstabilized diene.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Antiaromatic systems are destabilized relative to an open-chain reference (not merely neutral like non-aromatic systems), so cyclobutadiene is highly unstable and reacts rapidly, often by dimerizing.",
+   "correct": 1,
+   "why": "Non-aromatic means neither stabilized nor destabilized — an ordinary diene, which cyclobutadiene plainly is not. It is cyclic, planar and fully conjugated with 4 pi electrons, so it is antiaromatic: actively destabilized relative to an open-chain diene, which is why it dimerizes on sight and can be observed at all in a frozen matrix at 4 K.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -27891,13 +27891,13 @@
    "type": "mcq"
   },
   {
-   "q": "Thiophene, with a sulfur atom analogous to furan's oxygen, is generally considered aromatic.",
+   "q": "Thiophene's sulfur contributes both of its lone pairs to the aromatic pi system, giving 8 pi electrons in total.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Like furan, thiophene has two ring double bonds (4 pi electrons) plus one sulfur lone pair donated into the pi system, giving 6 pi electrons in a planar, fully conjugated five-membered ring.",
+   "correct": 1,
+   "why": "One lone pair can occupy the ring p orbital; the other stays in an sp² orbital lying in the ring plane, where it is perpendicular to the pi system and contributes nothing to it. Two ring C=C (4 electrons) plus that one donated pair gives 6, which is why thiophene is aromatic — and the spare in-plane pair is what sulfur still has available for ordinary chemistry.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -27939,16 +27939,16 @@
    "type": "tf"
   },
   {
-   "q": "A ring is cyclic, planar, and has 6 pi electrons, but the conjugation is broken by one sp3 carbon in the ring. What is the best classification?",
+   "q": "Imidazole has a five-membered ring containing two nitrogens: N1 carries an H and has no ring double bond, N3 has no H and is part of a ring C=N. How many pi electrons are in imidazole's aromatic system?",
    "options": [
-    "Aromatic, because the electron count is correct",
-    "Antiaromatic",
-    "Non-aromatic, because full conjugation is not present",
-    "Impossible to classify without more information"
+    "4 — only the two ring double bonds are in the pi system",
+    "6 — the C=C, the C=N, and N1's lone pair in a p orbital",
+    "8 — both nitrogen lone pairs join the two ring double bonds",
+    "10 — every lone pair on both nitrogens is counted in"
    ],
-   "correct": 2,
-   "why": "All four criteria (cyclic, planar, fully conjugated, 4n+2 electrons) must be satisfied simultaneously; a broken conjugation pathway makes the ring non-aromatic even with an otherwise favorable electron count.",
-   "difficulty": "medium",
+   "correct": 1,
+   "why": "Count each nitrogen separately by asking whether it already has a ring double bond. N3 does (the C=N), so its lone pair sits in an sp² orbital in the ring plane and contributes 0 — which is exactly why that nitrogen is the basic one. N1 does not, so its lone pair has to occupy the p orbital and contributes 2. Add the C=C (2), the C=N (2) and N1's pair (2): 6 pi electrons, aromatic. This is the histidine side chain, and the same split explains why histidine has one basic nitrogen and one weakly acidic N–H.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -28019,28 +28019,28 @@
    "type": "mcq"
   },
   {
-   "q": "Why does EAS end by losing a proton to restore aromaticity instead of having a nucleophile add to the carbocation, as happens in a typical alkene addition?",
+   "q": "Benzene is treated with (CH₃)₃CCl and AlCl₃, then with CH₃COCl and AlCl₃. What is the major product of the second step?",
    "options": [
-    "Because restoring aromaticity is strongly favorable",
-    "Because nucleophiles are never available in these reactions",
-    "Because EAS reactions have no second step",
-    "Because the carbocation intermediate is too stable to react further"
+    "1-tert-butyl-3-acetylbenzene (acetyl meta to the tert-butyl group)",
+    "No reaction — the tert-butyl group deactivates the ring toward acylation",
+    "1-tert-butyl-4-acetylbenzene (acetyl para to the tert-butyl group)",
+    "A mixture of ortho and meta products in roughly equal amounts"
    ],
-   "correct": 0,
-   "why": "Re-aromatization releases a large amount of stabilization energy, so deprotonation to regenerate the fully conjugated ring is strongly favored over nucleophilic addition, which would leave the ring non-aromatic and sp3 at that carbon.",
-   "difficulty": "medium",
+   "correct": 2,
+   "why": "Two decisions, in order. First step: tert-butyl chloride ionizes to a tertiary cation, which is already the most stable arrangement of those carbons, so nothing rearranges and tert-butylbenzene forms cleanly. Second step: an alkyl group is a weak activator and an ortho/para director, so the acylium ion goes ortho or para. tert-Butyl is very bulky, so ortho attack is almost entirely suppressed and the product is essentially all para. The trap is answering meta by reflex because the incoming group is an acyl group — the incoming group never directs; the group already on the ring does.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Which step of the general EAS mechanism is typically the rate-determining step?",
+   "q": "Which reagent sequence converts benzene into butylbenzene, with an unbranched four-carbon chain on the ring?",
    "options": [
-    "Deprotonation of the arenium ion",
-    "Attack of the aromatic ring on the electrophile to form the arenium ion (sigma complex)",
-    "Formation of the electrophile",
-    "Diffusion of reactants together"
+    "1-chlorobutane with AlCl₃, in a single step",
+    "butanoic acid with H₂SO₄ and gentle heating",
+    "butanoyl chloride/AlCl₃, then Zn(Hg), HCl",
+    "1-butene with HBr, then AlCl₃ and benzene"
    ],
-   "correct": 1,
-   "why": "This step requires temporarily sacrificing the ring's aromatic stabilization to form a carbocation intermediate, giving it a much higher activation energy than the fast, downhill deprotonation step that follows.",
+   "correct": 2,
+   "why": "Direct alkylation with 1-chlorobutane fails for a predictable reason: the primary cation undergoes a 1,2-hydride shift to the secondary cation before benzene ever attacks, so the product is sec-butylbenzene. Acylation with butanoyl chloride cannot rearrange, because the acylium ion is resonance-stabilized by its oxygen, and it also cannot over-react, because the ketone it installs deactivates the ring. Clemmensen reduction, Zn(Hg) in HCl, then turns the C=O into CH₂ and leaves the straight chain intact. Wolff-Kishner (H₂NNH₂, KOH, heat) does the same job when the molecule cannot survive strong acid.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -28093,13 +28093,13 @@
    "type": "mcq"
   },
   {
-   "q": "Halogenation of benzene (for example, bromination) generally requires a Lewis acid catalyst like FeBr3 because Br2 alone is not electrophilic enough to react with the ring.",
+   "q": "Halogenation of benzene with Br₂ proceeds readily without any catalyst, because benzene's pi system is a stronger nucleophile than an alkene's.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "FeBr3 polarizes the Br-Br bond, making one bromine much more electrophilic so that the aromatic ring can attack it; without the catalyst, benzene does not react readily with Br2.",
+   "correct": 1,
+   "why": "Both halves are wrong. Benzene is a far weaker nucleophile than an alkene precisely because its pi electrons are tied up in the aromatic sextet, and attacking costs about 36 kcal/mol of that stabilization. Br₂ alone adds to an alkene on contact and does nothing at all to benzene; FeBr₃ is needed to polarize the Br–Br bond into an electrophile strong enough to be worth attacking.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -28191,16 +28191,16 @@
    "type": "tf"
   },
   {
-   "q": "What happens mechanistically in the second (final) step of EAS, immediately after the arenium ion intermediate forms?",
+   "q": "Which reagent or condition removes an –SO₃H group from a benzene ring, and why is that worth having?",
    "options": [
-    "A second electrophile attacks the ring",
-    "A base removes a proton to rearomatize",
-    "The electrophile leaves the ring",
-    "The ring undergoes a Diels-Alder reaction"
+    "NaOH, because sulfonic acids are strongly acidic and dissolve",
+    "Hot dilute aqueous H₂SO₄, because sulfonation is reversible",
+    "LiAlH₄, which reduces the sulfonic acid group straight off",
+    "Nothing removes it — sulfonation is permanent once it is done"
    ],
    "correct": 1,
-   "why": "Loss of the proton from the carbon that became sp3 allows that carbon's electrons to re-form a pi bond, restoring full conjugation and aromaticity while leaving the electrophile now covalently attached to the ring.",
-   "difficulty": "easy",
+   "why": "Sulfonation is the one reaction of the five that runs in both directions. Concentrated or fuming acid drives it on; hot dilute aqueous acid drives it back off. That makes –SO₃H a placeholder: install it so that it occupies the para position, run the substitution you actually want at ortho, then boil the sulfonic acid away. Nothing else in the EAS toolkit can be put on and taken off on demand, which is what makes an otherwise unreachable ortho product reachable.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -28230,13 +28230,13 @@
    "type": "mcq"
   },
   {
-   "q": "During the arenium ion (sigma complex) stage of EAS, aromaticity is temporarily lost because one ring carbon becomes sp3 and is no longer part of the continuous pi system.",
+   "q": "During the arenium ion (sigma complex) stage of EAS, the positive charge is delocalized evenly over all six ring carbons, which is why the intermediate is so stable.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Attack of the ring on the electrophile forces one carbon to form a new sigma bond, converting it to sp3 and breaking the continuous conjugation required for aromaticity until the proton is lost in the final step.",
+   "correct": 1,
+   "why": "One carbon is sp³ and out of the pi system entirely, so five carbons are left holding a pentadienyl cation — and resonance puts the charge on just three of those five, the two ortho and the one para to the sp³ center. That partial delocalization is real stabilization and is why the reaction runs at all, but it is nowhere near the six-carbon aromatic delocalization that was given up, which is why the arenium ion sits at an energy maximum for the whole route.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -28249,12 +28249,12 @@
     "All six"
    ],
    "correct": 0,
-   "why": "The positive charge in the cyclohexadienyl cation is distributed via resonance over three carbons: the ortho and para positions relative to the new substituent, plus partially at the ipso carbon's neighbors, which can be drawn in three resonance structures.",
+   "why": "One ring carbon is sp³ and out of the pi system. The other five hold a pentadienyl cation, and its three resonance structures place the positive charge on the two carbons ortho to the sp³ center and the one carbon para to it — three carbons. The two carbons meta to the sp³ center carry no charge in any structure, and that is exactly why some substituents send an incoming electrophile meta: meta is the attack whose arenium ion never puts charge on the substituent's own carbon.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Using excess AlCl3 in Friedel-Crafts acylation is necessary in part because the Lewis acid forms a complex with the ketone product, requiring more than a catalytic (stoichiometric) amount to drive the reaction to completion.",
+   "q": "Using excess AlCl3 in Friedel-Crafts acylation is necessary in part because the Lewis acid forms a complex with the ketone product, requiring a full stoichiometric equivalent or more rather than a catalytic trace.",
    "options": [
     "True",
     "False"
@@ -28328,7 +28328,7 @@
    "type": "mcq"
   },
   {
-   "q": "Which of the following correctly ranks relative rates of attack on the aromatic ring in EAS from fastest to slowest electrophile generation requiring catalyst assistance: chlorination with Cl2/FeCl3, nitration with HNO3/H2SO4, and Friedel-Crafts alkylation with a primary alkyl halide/AlCl3?",
+   "q": "Chlorination (Cl₂/FeCl₃), nitration (HNO₃/H₂SO₄) and Friedel–Crafts alkylation (RCl/AlCl₃) all need help generating their electrophile. Which statement about that help is correct?",
    "options": [
     "All three require the same catalytic assistance and proceed at identical intrinsic rates",
     "Nitration needs no Lewis acid, while halogenation and alkylation do",
@@ -28369,15 +28369,15 @@
    "type": "mcq"
   },
   {
-   "q": "Halogens (like –Cl) on benzene are unusual: they deactivate the ring (slower EAS overall) but still direct ortho/para. Why?",
+   "q": "Aniline treated directly with HNO₃/H₂SO₄ gives mainly 3-nitroaniline, not the 4-nitroaniline the NH₂ group predicts. Why, and what is the standard fix?",
    "options": [
-    "Halogens have no effect on reactivity or orientation",
-    "Halogens always activate rings strongly",
-    "Halogens deactivate but donate by resonance",
-    "Halogens direct exclusively to the meta position"
+    "Nitric acid attacks the nitrogen rather than the ring, so a much milder nitrating agent is needed",
+    "Aniline is too unreactive to nitrate, so the mixture simply has to be heated far more strongly",
+    "Nitrating acid protonates NH₂ to –NH₃⁺, a deactivating meta director; acetylate first, then nitrate and hydrolyze",
+    "The NH₂ group is genuinely a meta director, so 3-nitroaniline is the expected product here"
    ],
    "correct": 2,
-   "why": "Halogens withdraw electron density inductively (slowing the reaction overall) while their lone pair can still resonance-donate into the ring, which stabilizes the arenium ion best when positive charge lands ortho/para — giving the unusual deactivating-but-ortho/para-directing combination.",
+   "why": "Ask what is actually on the ring under the reaction conditions. Nitrating acid is overwhelmingly acidic and aniline is a base, so essentially all of it exists as the anilinium ion. –NH₃⁺ has no lone pair left to donate and carries a full positive charge next to the ring, which makes it a deactivating meta director — the opposite of what –NH₂ does. (Aniline also oxidizes badly in nitric acid, a second reason the direct route is a mess.) The fix is to convert the nitrogen into something that cannot be protonated: acetic anhydride gives acetanilide, whose nitrogen lone pair is shared with a carbonyl. Acetanilide is still an ortho/para director, just a milder one, so nitration goes para; hot aqueous acid or base then hydrolyzes the amide back to the free amine.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -28395,15 +28395,17 @@
    "type": "mcq"
   },
   {
-   "q": "Nitrobenzene undergoes further EAS substitution predominantly at the meta position relative to the existing -NO2 group.",
+   "q": "Which sequence makes 3-nitroacetophenone — an acetyl group and a nitro group meta to each other — starting from benzene?",
    "options": [
-    "True",
-    "False"
+    "HNO₃/H₂SO₄ first, and then CH₃COCl with AlCl₃",
+    "Either order works, since both groups end up meta anyway",
+    "CH₃COCl/AlCl₃, then HNO₃/H₂SO₄, then more CH₃COCl",
+    "CH₃COCl with AlCl₃ first, and then HNO₃/H₂SO₄"
    ],
-   "correct": 0,
-   "why": "The strongly electron-withdrawing nitro group destabilizes positive charge at the ortho and para positions through resonance, so the meta position, where that direct destabilization is avoided, becomes relatively favored.",
-   "difficulty": "easy",
-   "type": "tf"
+   "correct": 3,
+   "why": "Acylate first. Acetophenone's acetyl group is a deactivating meta director, so the nitro group lands meta to it and the product is 3-nitroacetophenone. The other order fails outright: nitrobenzene's ring is far too electron-poor for Friedel–Crafts, which does not run on strongly deactivated rings at all, so the second step would simply not happen. Two independent reasons to acylate first, and either one settles it. Note also what this route cannot reach — the para isomer is not available from these two reactions in either order.",
+   "difficulty": "hard",
+   "type": "mcq"
   },
   {
    "q": "Halogens such as chlorine on a benzene ring are overall rate-decreasing (deactivating) for EAS, yet they still direct new substituents to the ortho and para positions. What explains this combination?",
@@ -28488,7 +28490,7 @@
     "Equal amounts of ortho, meta, and para"
    ],
    "correct": 0,
-   "why": "The methyl group is a weak activator and ortho/para director, so nitration gives predominantly a mixture of ortho- and para-nitrotoluene, typically with para often favored somewhat due to less steric hindrance, and only minor meta product.",
+   "why": "The methyl group is a weak activator and an ortho/para director, so nitration gives mostly ortho- and para-nitrotoluene with only a few percent meta — about 58% ortho, 37% para and 4% meta in practice. Ortho actually leads, because there are two ortho positions to one para and a methyl group is small enough not to get in the way. Bulk changes that: nitrating tert-butylbenzene gives almost entirely para, because ortho attack now runs into the substituent.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -28519,15 +28521,15 @@
    "type": "mcq"
   },
   {
-   "q": "A disubstituted benzene has -OCH3 at position 1 and undergoes further EAS with a new electrophile. If a second director were present at position 3 (meta to -OCH3) that was also ortho/para directing relative to itself, which ring position would both groups agree on directing to?",
+   "q": "m-Xylene (1,3-dimethylbenzene) is nitrated. Both methyl groups direct ortho/para relative to themselves, so positions 2, 4 and 6 are all electronically favored. Where does the nitro group actually go?",
    "options": [
-    "Position 2",
-    "Position 6",
-    "There is no position both groups favor",
-    "Position 4"
+    "Position 4 (or the equivalent position 6) — position 2 is too hindered",
+    "Position 2, the one spot favored by both methyl groups at once",
+    "Position 5, the position meta to both of the methyl groups",
+    "An even statistical spread over positions 2, 4, 5 and 6"
    ],
-   "correct": 3,
-   "why": "When substituent effects reinforce (do not conflict), the position favored by both groups' ortho/para or meta preferences relative to their own positions is where new substitution is strongly favored; working through the ring numbering, position 4 is ortho/para-favorable to both groups in this arrangement, illustrating how multiple directing groups combine.",
+   "correct": 0,
+   "why": "Electronics first, then sterics. Positions 2, 4 and 6 are each ortho or para to at least one methyl, and position 2 is ortho to both — on electronics alone it should win. But position 2 sits directly between the two substituents, and the incoming electrophile has to fit between them while that carbon goes sp³; in practice the position is almost entirely shut down. Positions 4 and 6 are equivalent by symmetry and take essentially all the product. The general rule this illustrates: a position with a substituent on each side is rarely substituted, however good it looks electronically.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -28593,13 +28595,13 @@
    "type": "mcq"
   },
   {
-   "q": "If bromobenzene undergoes further bromination, the second bromine is expected to add predominantly ortho and para to the first, even though the overall reaction proceeds more slowly than with benzene itself.",
+   "q": "If bromobenzene undergoes further bromination, the second bromine enters mainly at the meta position, since bromine deactivates the ring.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Halogens are deactivating (slower overall reaction than unsubstituted benzene) but still ortho/para-directing due to resonance donation of a lone pair, so the major products are ortho- and para-dibromobenzene.",
+   "correct": 1,
+   "why": "Deactivating and meta-directing are two separate claims, and the halogens are the one common case where they come apart. Bromine withdraws inductively, which slows the reaction — that half is right. But its lone pair still donates by resonance, and that donation is available in just the arenium ions that put positive charge on the carbon bearing the bromine, which is what ortho and para attack do. So the major products are o- and p-dibromobenzene, formed more slowly than benzene's own bromination.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -28647,7 +28649,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "Fluorine's very high electronegativity causes strong inductive electron withdrawal that outweighs its resonance donation in terms of overall rate, so fluorobenzene, like other halobenzenes, reacts slower than benzene overall (deactivating) even though resonance donation still makes it ortho/para directing.",
+   "why": "True, though not for the reason the question hints at. Fluorine's resonance donation is genuinely the best of the halogens, because its 2p lone pairs match carbon's 2p in size, not because it is electronegative. Electronegativity works the other way: it drives strong inductive withdrawal through the sigma bond. The two effects nearly cancel, so fluorobenzene is only a little slower than benzene — much less deactivated than chlorobenzene or bromobenzene — while the strong resonance donation makes it the most para-selective of the halobenzenes.",
    "difficulty": "hard",
    "type": "tf"
   },

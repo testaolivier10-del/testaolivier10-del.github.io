@@ -174,7 +174,7 @@
         }
       ],
       "hint": "Push the C1–C2 pi bond onto C1 — that is the carbon that will bond to the incoming electrophile.",
-      "why": "The pi electrons form a bond to the electrophile at C1. The ring is no longer aromatic: one carbon is now sp³, the loop of conjugation is broken, and a positive charge is spread over the remaining five carbons. This is the arenium ion (sigma complex), and it is the high-energy step.",
+      "why": "The pi electrons form a bond to the electrophile at C1. The ring is no longer aromatic: C1 is now sp³, the loop of conjugation is broken, and the five remaining carbons hold a pentadienyl cation. Draw its resonance structures and the positive charge appears on only three of those five — the two carbons ortho to C1 and the one para to it. The two meta carbons never carry charge in any structure. This is the arenium ion (sigma complex), it is the high-energy step, and which three carbons carry that charge is the entire content of the next section.",
       "wrong": {
         "c1>bond:c1-c2": "That arrow runs backwards. The electrons are in the pi system, so the pi bond is the source; the carbon is where they end up.",
         "bond:c2-c3>c3": "Any pi bond could attack in principle, but the question asked for the C1–C2 bond so the numbering stays consistent through the rest of the walkthrough."
@@ -201,11 +201,36 @@
         "1": "That is what an alkene does. For benzene it would mean giving up aromatic stabilization permanently, which the small gain from one new sigma bond cannot pay for.",
         "2": "The arenium ion is a high-energy intermediate, not a product — it is exactly the thing the next step exists to get rid of."
       },
+      "nextLabel": "So what leaves?"
+    },
+    {
+      "type": "draw",
+      "eyebrow": "Step 3 · Deprotonate",
+      "title": "FeBr\u2084\u207b — the anion left over from making the electrophile — comes in as a weak base. Push the C1–H bond at it.",
+      "bodyHtml": "<p class=\"step-body\">One arrow. C1 is the sp³ carbon, the one carrying both the bromine and the hydrogen, and the C1–H bonding pair is the source.</p>",
+      "molecule": "arenium",
+      "concepts": [
+        "eas-mechanism",
+        "curved-arrow-direction",
+        "huckel-aromaticity"
+      ],
+      "arrows": [
+        {
+          "from": "bond:c1-h",
+          "to": "base"
+        }
+      ],
+      "hint": "The electrons in the C–H bond are the source. They do not stay on carbon — they drop into the ring and become the sixth pi bond.",
+      "why": "The C–H electrons do two things in one push: the proton goes to the base, and the pair left behind drops into the ring, restoring the sixth p orbital's share of the pi system and with it the aromatic sextet. Note which hydrogen — the one on the carbon the electrophile attacked, not any other. That is what makes this a substitution: Br has replaced H on the same carbon. Note also which base does it. A weak one is enough, because the driving force is the 36 kcal/mol of aromaticity coming back, not the strength of the base.",
+      "wrong": {
+        "base>bond:c1-h": "Backwards. The base is accepting a proton, so the electrons flow out of the C–H bond toward the base, not from the base into the bond.",
+        "bond:c1-br>base": "That would take the electrophile straight back off and undo step 1. The ring can only become aromatic again by losing the hydrogen, which costs it nothing."
+      },
       "nextLabel": "Where does the next one go?"
     },
     {
       "type": "mcq",
-      "eyebrow": "Step 3 · Direction",
+      "eyebrow": "Step 4 · Direction",
       "title": "The ring now carries an OCH₃ group. A second electrophile arrives. Where does it attack?",
       "bodyHtml": "<p class=\"step-body\">Think about the arenium ion each option would produce, and where the positive charge sits in it.</p>",
       "options": [

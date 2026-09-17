@@ -895,6 +895,31 @@
       caption:'Six pi electrons in a planar ring — 4n+2 with n=1.' };
   })();
 
+  /* The arenium ion, with the base that takes the proton off it. The EAS
+     walkthrough could draw the attack and then had to describe the step that
+     defines the reaction in prose, because no structure existed to draw it
+     on. One resonance contributor is drawn — the positive charge on an ortho
+     carbon — because a student has to point at something; the note on each
+     carbon says where the charge goes in the other two. */
+  M['arenium'] = {
+    name: 'Arenium ion + FeBr\u2084\u207b', formula: 'C\u2086H\u2086Br\u207a \u00b7 FeBr\u2084\u207b', viewBox: '0 0 340 200',
+    partialH: 'only the hydrogen on the sp3 carbon is drawn: it is the one the base removes, and the five aromatic C-H are not at issue',
+    atoms: {
+      c1:   { x:120, y:60,  r:15, label:'C', role:'sp3-carbon', note:'The sp\u00b3 carbon. It carries both the electrophile and the hydrogen, and it is the one carbon no longer in the pi system.' },
+      c2:   { x:163, y:85,  r:15, label:'C', note:'Ortho to the sp\u00b3 carbon \u2014 one of the three carbons that carries the positive charge in some resonance structure.' },
+      c3:   { x:163, y:135, r:15, label:'C', note:'Meta to the sp\u00b3 carbon. No resonance structure ever puts the charge here, which is why meta directors exist.' },
+      c4:   { x:120, y:160, r:15, label:'C', note:'Para to the sp\u00b3 carbon \u2014 it carries the charge in one of the three resonance structures.' },
+      c5:   { x:77,  y:135, r:15, label:'C', note:'The other meta carbon: uncharged in every resonance structure.' },
+      c6:   { x:77,  y:85,  r:15, label:'C', charge:'+', note:'The other ortho carbon. This contributor puts the charge here; the other two put it on C2 and on C4.' },
+      br:   { x:78,  y:28,  r:15, label:'Br', note:'The electrophile that has already been installed. It stays where it is \u2014 this is a substitution, not an addition.' },
+      h:    { x:162, y:28,  r:11, label:'H', role:'acidic-h', note:'The hydrogen on the sp\u00b3 carbon. Its electrons are what restore the aromatic sextet.' },
+      base: { x:270, y:100, r:16, label:'Br', charge:'\u207b', lp:3, role:'base', note:'The bromide of FeBr\u2084\u207b, left over from making the electrophile. It is a weak base, and weak is all this step needs.' }
+    },
+    bonds: [{a:'c1',b:'c2'},{a:'c2',b:'c3',order:2},{a:'c3',b:'c4'},{a:'c4',b:'c5',order:2},
+            {a:'c5',b:'c6'},{a:'c6',b:'c1'},{a:'c1',b:'br'},{a:'c1',b:'h'}],
+    caption: 'One sp\u00b3 carbon, five carbons sharing a pentadienyl cation, and the base that ends the reaction.'
+  };
+
   /* ---- Amines & acids -------------------------------------------------- */
 
   M['acetic-acid'] = {
