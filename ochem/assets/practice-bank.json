@@ -28733,12 +28733,12 @@
    "q": "A broad absorption around 3200–3550 cm⁻¹ is most characteristic of:",
    "options": [
     "A C=O stretch",
-    "An O–H stretch (alcohol or acid)",
+    "An O–H stretch (alcohol)",
     "A C≡C stretch",
     "An aromatic C–H stretch"
    ],
    "correct": 1,
-   "why": "O–H stretches are broad due to hydrogen bonding and appear in the 3200–3550 cm⁻¹ range, distinct from the sharp, strong C=O stretch around 1700 cm⁻¹.",
+   "why": "An alcohol O–H is broadened by hydrogen bonding and falls in the 3200–3550 window, well clear of the sharp, strong C=O near 1700. A carboxylic acid O–H is broader still and sits lower, sprawling over 2500–3300, so it is not what a band confined to 3200–3550 is reporting.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -28806,7 +28806,7 @@
    "type": "mcq"
   },
   {
-   "q": "A sharp, medium-intensity absorption around 2100-2260 cm⁻¹, with no nearby N-H or O-H band, most likely indicates:",
+   "q": "A weak-to-medium absorption around 2100–2260 cm⁻¹, accompanied by a sharp, narrow band at 3300 cm⁻¹, most likely indicates:",
    "options": [
     "An aromatic ring",
     "A ketone carbonyl",
@@ -28814,7 +28814,7 @@
     "An alcohol"
    ],
    "correct": 2,
-   "why": "Both alkynes and nitriles absorb in this triple-bond region; an aromatic ring or ketone would show very different characteristic bands instead.",
+   "why": "The 2100–2260 window holds both C≡C and C≡N, and intensity alone will not separate them: the alkyne band is weak, and vanishes entirely when the alkyne is symmetric, while a nitrile is sharp and medium. The discriminator is the second band — a sharp, narrow 3300 is the ≡C–H of a terminal alkyne, where an O–H at the same wavenumber would be broad and a nitrile has nothing there at all. An aromatic ring or a ketone absorbs nowhere near this region.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -29239,10 +29239,10 @@
     "Methyl 4-methylbenzoate, 4-CH₃-C₆H₄-COOCH₃",
     "4-Methylphenyl acetate, 4-CH₃-C₆H₄-OCOCH₃",
     "2-Phenylpropanoic acid, C₆H₅CH(CH₃)COOH",
-    "3-Phenylpropanal, C₆H₅CH₂CH₂CHO"
+    "Ethyl benzoate, C₆H₅COOCH₂CH₃"
    ],
    "correct": 0,
-   "why": "Two 2H doublets sharing one J is the para-disubstituted pattern, so the ring carries two different groups at the 1 and 4 positions. The flat baseline above 3100 rules out the acid, and 1720 with no aldehyde C-H doublet rules out the aldehyde. The 3H singlets separate the two esters: 3.9 ppm is a methyl on oxygen (the 3.3-4.5 window), 2.4 ppm a methyl on the ring. In 4-methylphenyl acetate nothing would appear near 3.9.",
+   "why": "All four options are C₉H₁₀O₂, so the formula eliminates none of them and the spectrum has to. Two 2H doublets sharing one J is the para-disubstituted pattern, so the ring carries two different groups at the 1 and 4 positions — which rules out ethyl benzoate, whose monosubstituted ring gives a 5H multiplet and whose ethyl group would give a quartet and a triplet, not two 3H singlets. The flat baseline above 3100 rules out the acid O–H. The 3H singlets separate the two esters: 3.9 ppm is a methyl on oxygen (the 3.3–4.5 window), 2.4 ppm a methyl on the ring. In 4-methylphenyl acetate nothing would appear near 3.9.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -29831,15 +29831,15 @@
    "type": "mcq"
   },
   {
-   "q": "Rank the following carbonyl-containing carbons from LOWEST to HIGHEST typical ¹³C chemical shift: amide carbonyl, ester carbonyl, ketone carbonyl.",
+   "q": "A ¹³C spectrum of a compound with one oxygen-bearing functional group has its most downfield signal at 171 ppm and nothing at all between 186 and 220 ppm. What does that pair of observations establish about the carbonyl?",
    "options": [
-    "Ketone, then ester, then amide",
-    "Ester, then amide, then ketone",
-    "Amide, then ketone, then ester",
-    "Amide, then ester, then ketone"
+    "It is a ketone, because ketone carbonyl carbons are the ones that sit lowest, near 165–185",
+    "It is an aldehyde, because the attached hydrogen shields that carbon into the 165–185 window",
+    "Nothing is narrowed: ketone, aldehyde and ester carbonyls all share the 165–185 window",
+    "It is an acid derivative — ester, acid or amide — with heteroatom donation holding it near 165–185"
    ],
    "correct": 3,
-   "why": "The amide nitrogen donates electron density into the carbonyl most effectively by resonance, shielding its carbon the most, followed by the ester oxygen's somewhat weaker donation, while the ketone, lacking this extra heteroatom donation, appears furthest downfield.",
+   "why": "Two windows do the work. A ketone or aldehyde carbonyl carbon comes at 190–220; an ester, acid or amide carbonyl is pulled upfield to roughly 165–185, because the attached O or N donates a lone pair into the C=O and puts electron density back on that carbon. A signal at 171 with a clean 190–220 region therefore says acid derivative and rules out ketone and aldehyde. What it does NOT do is say which acid derivative: those three overlap almost completely — acetamide 172.7, ethyl acetate 171.1, acetic acid 178 — so separating them needs the IR carbonyl position or an O–H / N–H signal, not the ¹³C shift.",
    "difficulty": "hard",
    "type": "mcq"
   },

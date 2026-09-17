@@ -189,7 +189,9 @@ document.addEventListener('DOMContentLoaded', function(){
               var isCorrect = el.getAttribute('data-v') === 'left';
               el.setAttribute('stroke', isCorrect ? '#2e9e5b' : '#c0392b');
               api.record(isCorrect);
-              api.showFeedback(fb, isCorrect, 'Correct — breaking the bond on the methyl side loses a methyl radical (•CH₃, mass 15) and leaves the acylium cation at m/z = 72 − 15 = 57. The other alpha bond gives m/z 43, and that one is actually the base peak: both cations are acylium ions of equal stability, so the contest is decided by which radical leaves, and the larger ethyl radical goes more readily than the methyl.');
+              api.showFeedback(fb, isCorrect, isCorrect
+                ? 'Correct — breaking the bond on the methyl side loses a methyl radical (•CH₃, mass 15) and leaves the acylium cation at m/z = 72 − 15 = 57. The other alpha bond gives m/z 43, and that one is actually the base peak: both cations are acylium ions of equal stability, so the contest is decided by which radical leaves, and the larger ethyl radical goes more readily than the methyl.'
+                : 'Not quite — that is the other alpha bond. Breaking it loses an ethyl radical (•C₂H₅, mass 29) and gives the acylium at m/z = 72 − 29 = 43. Losing the methyl radical asked for here means breaking the bond on the LEFT, which gives m/z 57. Both cations are acylium ions of equal stability, so the contest is decided by which radical leaves — the larger ethyl radical goes more readily, which is why m/z 43 is the base peak and 57 the smaller of the two.');
               next.disabled = false;
             });
           });

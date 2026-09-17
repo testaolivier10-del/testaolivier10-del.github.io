@@ -26482,7 +26482,7 @@
    "q": "A broad absorption around 3200–3550 cm⁻¹ is most characteristic of:",
    "options": [
     "A C=O stretch",
-    "An O–H stretch (alcohol or acid)",
+    "An O–H stretch (alcohol)",
     "A C≡C stretch",
     "An aromatic C–H stretch"
    ],
@@ -26549,7 +26549,7 @@
    "type": "mcq"
   },
   {
-   "q": "A sharp, medium-intensity absorption around 2100-2260 cm⁻¹, with no nearby N-H or O-H band, most likely indicates:",
+   "q": "A weak-to-medium absorption around 2100–2260 cm⁻¹, accompanied by a sharp, narrow band at 3300 cm⁻¹, most likely indicates:",
    "options": [
     "An aromatic ring",
     "A ketone carbonyl",
@@ -26948,7 +26948,7 @@
     "Methyl 4-methylbenzoate, 4-CH₃-C₆H₄-COOCH₃",
     "4-Methylphenyl acetate, 4-CH₃-C₆H₄-OCOCH₃",
     "2-Phenylpropanoic acid, C₆H₅CH(CH₃)COOH",
-    "3-Phenylpropanal, C₆H₅CH₂CH₂CHO"
+    "Ethyl benzoate, C₆H₅COOCH₂CH₃"
    ],
    "correct": 0,
    "difficulty": "hard",
@@ -27493,12 +27493,12 @@
    "type": "mcq"
   },
   {
-   "q": "Rank the following carbonyl-containing carbons from LOWEST to HIGHEST typical ¹³C chemical shift: amide carbonyl, ester carbonyl, ketone carbonyl.",
+   "q": "A ¹³C spectrum of a compound with one oxygen-bearing functional group has its most downfield signal at 171 ppm and nothing at all between 186 and 220 ppm. What does that pair of observations establish about the carbonyl?",
    "options": [
-    "Ketone, then ester, then amide",
-    "Ester, then amide, then ketone",
-    "Amide, then ketone, then ester",
-    "Amide, then ester, then ketone"
+    "It is a ketone, because ketone carbonyl carbons are the ones that sit lowest, near 165–185",
+    "It is an aldehyde, because the attached hydrogen shields that carbon into the 165–185 window",
+    "Nothing is narrowed: ketone, aldehyde and ester carbonyls all share the 165–185 window",
+    "It is an acid derivative — ester, acid or amide — with heteroatom donation holding it near 165–185"
    ],
    "correct": 3,
    "difficulty": "hard",

@@ -13021,9 +13021,9 @@ FIGURES.push({
       heights.forEach((h, i) => { out += stick(x0 + i * gap, base, h); });
       return out;
     };
-    s += mult(4.1, [34, 100, 100, 34], 7);
+    s += mult(4.1, [33.33, 100, 100, 33.33], 7);
     s += mult(2.0, [130], 7);
-    s += mult(1.3, [48, 120, 48], 7);
+    s += mult(1.3, [60, 120, 60], 7);
     s += stick(X(0), base, 34, 'fg-bond-soft', 2.2);
 
     /* integration, drawn the way an instrument draws it: a trace that steps up
@@ -13108,7 +13108,7 @@ FIGURES.push({
     s += rule(60, base1, 332, base1);
     const heights = [1, 5, 10, 10, 5, 1];
     [-2.5, -1.5, -0.5, 0.5, 1.5, 2.5].forEach((k, i) => {
-      s += stick(c1 + k * g, base1, 8 + heights[i] * 6.4, 'fg-bond', 3);
+      s += stick(c1 + k * g, base1, heights[i] * 7.2, 'fg-bond', 3);
     });
     s += text(c1, 392, 'what you see: a sextet', { cls: 'fg-lbl', size: 12 });
     s += text(c1, 408, '1 : 5 : 10 : 10 : 5 : 1 — equal J stacks the lines', { cls: 'fg-sm', size: 10 });
@@ -13141,7 +13141,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Splitting happens one neighbor set at a time, so draw the tree and read the bottom row &mdash; never try to guess the multiplet in a single step. On the left the two coupling constants are equal, the twelve lines land on six positions, and what prints is an ordinary sextet. On the right they are not equal, so nothing merges and you count four lines: a <b>doublet of doublets</b>, the pattern the n + 1 rule cannot produce.',
-  note: 'The n + 1 rule is the special case of this drawing in which every neighbor has the same J. That is why it works so well on freely rotating chains, where all the vicinal couplings really are about 7 Hz, and fails the moment a hydrogen has neighbors of two different kinds &mdash; as any vinyl hydrogen does.',
+  note: 'The n + 1 rule is the special case of this drawing in which every neighbor has the same J. That is why it works so well on freely rotating chains, where all the vicinal couplings really are about 7 Hz, and fails the moment a hydrogen has neighbors of two different kinds &mdash; as any vinyl hydrogen does. One simplification is built into the left panel: C2 of 2-bromobutane is a stereocenter, so its two CH₂ hydrogens are strictly diastereotopic rather than equivalent, and a real spectrum is a little messier than the clean sextet drawn. The tree is drawn with them equivalent because the point being made is what two different J values do.',
 });
 
 /* ------------------------------------------------------------ 13C/DEPT ---
