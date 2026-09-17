@@ -6862,7 +6862,7 @@ FIGURES.push({
   id: 'chirality-without-a-stereocenter',
   section: 'chirality',
   anchor: '<h3>Chirality without a stereocenter</h3>',
-  alt: 'Penta-2,3-diene drawn twice as mirror images: the left end carries methyl and hydrogen in the plane of the page and the right end carries them on a wedge and a hash, perpendicular to the first pair. Beside them a biaryl whose second ring is drawn edge-on, with two hydroxyl groups sitting either side of the bond joining the rings and blocking it from turning.',
+  alt: 'Penta-2,3-diene drawn twice as mirror images: the left end carries methyl and hydrogen in the plane of the page and the right end carries them on a wedge and a hash, perpendicular to the first pair. Beside them a biaryl whose second ring is drawn edge-on, with a carboxylic acid and a nitro group on each ring crowding the bond that joins them and blocking it from turning.',
   viewBox: '0 0 760 350',
   build() {
     let s = '';
@@ -6915,18 +6915,24 @@ FIGURES.push({
     }
     s += bond(A[1], B[5], { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
     for (const anchorPt of [A[2], B[4]]) {
-      const oh = P(anchorPt.x, anchorPt.y + 32);
-      s += bond(anchorPt, oh, { rFrom: 0, rTo: 16 });
-      s += atom(oh.x, oh.y, 'OH', { r: 16, size: 10, kind: 'hi' });
+      const co = P(anchorPt.x, anchorPt.y + 32);
+      s += bond(anchorPt, co, { rFrom: 0, rTo: 17 });
+      s += atom(co.x, co.y, 'CO₂H', { r: 17, size: 9.5, kind: 'hi' });
     }
-    s += text(618, 92, 'the second ring is edge-on to the first', { cls: 'fg-sm', size: 9.5 });
-    s += text(618, 254, 'the two OH groups sit either side of the', { cls: 'fg-sm', size: 9.5 });
-    s += text(618, 272, 'joint and cannot slide past each other', { cls: 'fg-sm', size: 9.5 });
-    s += text(618, 300, 'BINOL — chiral, and stable enough to bottle', { cls: 'fg-tag-good', size: 10 });
+    for (const anchorPt of [A[0], B[0]]) {
+      const no = P(anchorPt.x, anchorPt.y - 32);
+      s += bond(anchorPt, no, { rFrom: 0, rTo: 17 });
+      s += atom(no.x, no.y, 'NO₂', { r: 17, size: 9.5, kind: 'hi' });
+    }
+    s += text(618, 228, 'the right ring is edge-on to the left one,', { cls: 'fg-sm', size: 9.5 });
+    s += text(618, 246, 'and the four groups crowding the joint', { cls: 'fg-sm', size: 9.5 });
+    s += text(618, 264, 'cannot slide past one another', { cls: 'fg-sm', size: 9.5 });
+    s += text(618, 292, '6,6′-dinitro-2,2′-diphenic acid', { cls: 'fg-tag-good', size: 10 });
+    s += text(618, 308, 'resolved into enantiomers in 1922', { cls: 'fg-sm', size: 9.5 });
     return s;
   },
-  caption: 'Two molecules with no stereocenter anywhere and a left- and a right-handed form each. In the allene the two <b>cumulated</b> double bonds force the groups on one end into a plane at right angles to the groups on the other, and that twist is what has the handedness. In the biaryl the twist is the same idea held in place by bulk: the two OH groups sit right beside the joint and cannot slide past each other, so the two rings stay locked at an angle.',
-  note: 'This is why “stereocenter” and “chiral” must not be treated as the same word. The stereocenter is the usual <i>cause</i> of chirality; chirality itself is a statement about the shape of the whole molecule, and a twist does the job just as well as a tetrahedral carbon. BINOL and its relative BINAP are exactly this, and they are among the most used ligands in asymmetric catalysis.',
+  caption: 'Two molecules with no stereocenter anywhere and a left- and a right-handed form each. In the allene the two <b>cumulated</b> double bonds force the groups on one end into a plane at right angles to the groups on the other, and that twist is what has the handedness. In the biaryl the twist is the same idea held in place by bulk: four groups crowd the bond joining the rings, and for the rings to turn they would have to slide past one another, so the twist stays put and the molecule is not superimposable on its mirror image.',
+  note: 'This is why “stereocenter” and “chiral” must not be treated as the same word. The stereocenter is the usual <i>cause</i> of chirality; chirality itself is a statement about the shape of the whole molecule, and a twist does the job just as well as a tetrahedral carbon. The modern workhorses of this type are BINOL and BINAP, two of the most used ligands in asymmetric catalysis. They are built on naphthalenes rather than benzenes, and there no added blocking groups are needed at all: each naphthalene has a hydrogen in the <i>peri</i> position tucked in beside the joint, and those hydrogens alone hold the twist. The OH or PPh<sub>2</sub> groups are what the metal binds, not what does the locking.',
 });
 
 /* ---------------------------------------------------------------- ch6.3 ---
@@ -6997,7 +7003,7 @@ FIGURES.push({
   id: 'walk-both-ways',
   section: 'stereocenters',
   anchor: 'Walking both ways around the ring is the only reliable test.</div>',
-  alt: 'Two cyclohexane rings. In 3-methylcyclohexan-1-ol, walking from C1 one way reaches the methyl-bearing carbon after two carbons and the other way after three, so the two ring paths differ and C1 is a stereocenter. In 4-methylcyclohexan-1-ol both walks reach it after three carbons, so C1 is not.',
+  alt: 'Two cyclohexane rings. In 3-methylcyclohexan-1-ol, walking from C1 down the right-hand side reaches the methyl-bearing carbon after two carbons and walking down the left-hand side reaches it after four, so the two ring paths differ and C1 is a stereocenter. In 4-methylcyclohexan-1-ol both walks reach it after three carbons, so C1 is not.',
   viewBox: '0 0 760 330',
   build() {
     let s = '';
@@ -7023,10 +7029,10 @@ FIGURES.push({
     s += panel(24, 40, 340, 232, { kind: 'hi' });
     s += ring(194, 2);
     s += text(194, 30, '3-methylcyclohexan-1-ol', { cls: 'fg-tag', size: 11 });
-    s += text(118, 122, 'two carbons', { cls: 'fg-tag-good', size: 10, anchor: 'end' });
-    s += text(118, 138, 'this way', { cls: 'fg-tag-good', size: 10, anchor: 'end' });
-    s += text(270, 122, 'three carbons', { cls: 'fg-tag-warn', size: 10, anchor: 'start' });
-    s += text(270, 138, 'that way', { cls: 'fg-tag-warn', size: 10, anchor: 'start' });
+    s += text(118, 122, 'four carbons', { cls: 'fg-tag-warn', size: 10, anchor: 'end' });
+    s += text(118, 138, 'this way', { cls: 'fg-tag-warn', size: 10, anchor: 'end' });
+    s += text(270, 122, 'two carbons', { cls: 'fg-tag-good', size: 10, anchor: 'start' });
+    s += text(270, 138, 'that way', { cls: 'fg-tag-good', size: 10, anchor: 'start' });
     s += text(194, 294, 'the two ring paths differ → C1 IS a stereocenter', { cls: 'fg-tag-good', size: 10.5 });
 
     s += panel(396, 40, 340, 232, { kind: 'warn' });
@@ -7042,7 +7048,7 @@ FIGURES.push({
     s += text(380, 326, 'The question is never “are these two bonds different” but “are these two WALKS different”.', { cls: 'fg-sm', size: 9.5 });
     return s;
   },
-  caption: 'The one test that works on a ring. C1 carries OH, H and two ring bonds, and the two ring bonds look identical — they are both C–C into the same ring. What decides is what you meet walking each way round, and the methyl group is the thing you meet. Two carbons clockwise against three counterclockwise is a genuine difference; three against three is not.',
+  caption: 'The one test that works on a ring. C1 carries OH, H and two ring bonds, and the two ring bonds look identical — they are both C–C into the same ring. What decides is what you meet walking each way round, and the methyl group is the thing you meet. Two carbons one way against four the other is a genuine difference; three against three is not.',
   note: 'Do the walk in both directions and stop at the first point of difference, exactly as CIP rule 2 asks you to. The commonest error is not doing the walk at all — a ring carbon bearing an OH <i>looks</i> like a stereocenter, and in 4-methylcyclohexan-1-ol it is not one, because the ring reads the same from either side.',
 });
 

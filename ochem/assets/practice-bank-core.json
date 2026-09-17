@@ -11421,7 +11421,7 @@
    "type": "tf"
   },
   {
-   "q": "The two enantiomers of limonene smell different (orange versus lemon/pine) mainly because:",
+   "q": "The two enantiomers of limonene smell different (orange versus pine) mainly because:",
    "options": [
     "They have different molecular formulas",
     "One enantiomer is radioactive",
@@ -12481,7 +12481,7 @@
    "type": "mcq"
   },
   {
-   "q": "Diastereomers always have the same number of stereocenters as each other.",
+   "q": "A pair of diastereomers can consist of one chiral molecule and one achiral molecule.",
    "options": [
     "True",
     "False"
@@ -13053,7 +13053,7 @@
    "options": [
     "(2R,3R)-3-bromobutan-2-ol",
     "(2S,3S)-3-bromobutan-2-ol",
-    "(3R,2S)-2-bromobutan-3-ol",
+    "(2S,3R)-3-chlorobutan-2-ol",
     "(2S,3R)-3-bromobutan-2-ol"
    ],
    "correct": 3,
@@ -13431,12 +13431,12 @@
    "type": "mcq"
   },
   {
-   "q": "In a Fischer projection, the vertical lines extending from the central carbon represent bonds that point:",
+   "q": "What does the D in D-glucose tell you about the molecule?",
    "options": [
-    "Into the page, away from the viewer",
-    "Out of the page, toward the viewer",
-    "Directly left and right in the plane of the page",
-    "Represent double bonds only"
+    "The configuration at its bottom stereocenter",
+    "That it rotates plane-polarized light to the right",
+    "That every one of its stereocenters is R",
+    "That it is the more stable of two ring forms"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -13491,14 +13491,16 @@
    "type": "mcq"
   },
   {
-   "q": "Rotating a Fischer projection by only 90 degrees in the plane of the page is a valid operation that leaves the represented molecule unchanged.",
+   "q": "A Fischer projection has COOH at the top, CH₃ at the bottom, Br on the right and H on the left. What is the configuration at that center?",
    "options": [
-    "True",
-    "False"
+    "R",
+    "S",
+    "Neither — that carbon is not a stereocenter",
+    "It cannot be decided from a projection"
    ],
-   "correct": 1,
-   "difficulty": "hard",
-   "type": "tf"
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
   },
   {
    "q": "Holding one group of a Fischer projection fixed and rotating the other three about it gives:",
@@ -13540,7 +13542,7 @@
    "q": "For a chain of several stereocenters, does making every horizontal bond a wedge and every vertical bond a dash give a usable wedge-dash structure?",
    "options": [
     "Yes, it gives the chain's usual zig-zag",
-    "No — it gives the eclipsed form, backbone bowed toward you",
+    "No — it gives the eclipsed form, backbone bowed away from you",
     "Yes, if the chain is laid out left to right",
     "No — horizontals are dashes and verticals wedges"
    ],
@@ -13665,22 +13667,24 @@
    "type": "mcq"
   },
   {
-   "q": "A Fischer projection with a single stereocenter showing -OH on the right and -H on the left at that center represents the enantiomer of the one showing -OH on the left and -H on the right (with all else unchanged).",
+   "q": "D-erythrose and D-threose are aldotetroses whose Fischer projections differ only at C2. How are the two related?",
    "options": [
-    "True",
-    "False"
+    "Diastereomers — specifically C2 epimers",
+    "Enantiomers of each other",
+    "The same sugar drawn two ways",
+    "Constitutional isomers"
    ],
    "correct": 0,
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
-   "q": "Two Fischer projections represent diastereomers of each other (for a molecule with two stereocenters) when:",
+   "q": "An amino acid is drawn Fischer-style with COOH at the top, the side chain at the bottom and NH₂ on the left. What follows?",
    "options": [
-    "They differ by a swap at exactly one of the two stereocenters, not both",
-    "They are identical in every respect",
-    "They differ by a swap at both stereocenters simultaneously",
-    "They have different molecular formulas"
+    "It is the L amino acid, and usually though not always (S)",
+    "It is the L amino acid, and therefore always (S)",
+    "It is the D amino acid, and therefore always (R)",
+    "The drawing fixes the name but not the configuration"
    ],
    "correct": 0,
    "difficulty": "medium",
