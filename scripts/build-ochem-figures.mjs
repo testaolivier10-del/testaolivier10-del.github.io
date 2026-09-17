@@ -7639,7 +7639,7 @@ FIGURES.push({
     };
 
     // ---- frame 1: the secondary cation, and the H that is about to move ----
-    s += tag(148, 44, '2° CATION — THE H THAT CAN MOVE');
+    s += tag(148, 44, '2° CATION — THE H WORTH MOVING');
     const A = skeleton(70, 96);
     s += A.g;
     s += bond(A.c3, A.me, { rFrom: 0, rTo: 15 });
@@ -7689,7 +7689,7 @@ FIGURES.push({
     return s;
   },
   caption: 'A 1,2-shift, drawn slowly. What moves is a <b>hydride</b> — a hydrogen and the two electrons that were holding it on — so the arrow is drawn from the C–H bond, and the positive charge ends up on the carbon the hydrogen left. The whole thing takes one step and is fast, which is why it happens before a nucleophile has any chance to attack the secondary cation.',
-  note: 'Only one hydrogen in the molecule can do this: the one on the carbon directly next to the charge. Hydrogens two carbons away cannot reach, and moving one of the methyls would give a secondary cation again — no gain, so no shift. Work out which single group can move and what it would make, and the product falls out.',
+  note: 'Both carbons flanking the charge carry hydrogens, so what decides the shift is not reach but reward. A hydride from the methyl on the left could migrate — it is bonded straight onto the cation — but it would leave the charge on a primary carbon, so it never does. The hydride on the right leaves a tertiary cation, so it goes. The hydrogens two carbons out are out of range entirely, and moving one of the methyls would give a secondary cation again — no gain, no shift. Ask what each shift would MAKE, and the product falls out.',
 });
 
 /* tert-Butyl and its relatives: a central carbon with three methyls and,

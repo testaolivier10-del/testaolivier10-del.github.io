@@ -239,7 +239,10 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   function updateProgress(){
     progFill.style.width = Math.round((step/TOTAL)*100) + '%';
-    progLabel.textContent = 'Step ' + (step+1) + ' / ' + (TOTAL+1);
+    // Card 0 is the intro; cards 1..TOTAL are the ones the eyebrows number.
+    // Counting the intro as a step put "Step 2 / 8" above a card headed
+    // "Step 1 · ...". sn2.html labels its intro the same way.
+    progLabel.textContent = step <= 0 ? 'Setup' : 'Step ' + step + ' / ' + TOTAL;
     window.OchemCurriculum.saveStep(TOPIC_ID, step);
   }
   function feedbackHtml(id){ return '<div class="feedback" id="' + id + '"></div>'; }
@@ -393,15 +396,19 @@ document.addEventListener('DOMContentLoaded', function(){
   // empty p orbital as two lobes above and below. The previous drawing put
   // the orbital on a dashed line that ran straight along the C–CH3 bond and
   // into the methyl, which is the one place it certainly is not.
+  // The two dashed lobes are drawn by steps 2 AND 3: step 2 introduces them,
+  // and step 3 is where the student clicks one, so they have to still be on
+  // screen there. They are emitted first in both scenes, i.e. behind
+  // everything else.
+  function lobe(cy){
+    return '<ellipse cx="120" cy="' + cy + '" rx="14" ry="24" fill="none" stroke="var(--coral)" ' +
+           'stroke-width="2" stroke-dasharray="4 3"/>';
+  }
   function renderVisualizeCation(){
-    var lobe = function(cy){
-      return '<ellipse cx="120" cy="' + cy + '" rx="14" ry="24" fill="none" stroke="var(--coral)" ' +
-             'stroke-width="2" stroke-dasharray="4 3"/>';
-    };
     card.innerHTML =
       '<div class="step-eyebrow">Visualize</div>' +
       '<h2 class="step-title">What’s left is flat.</h2>' +
-      '<p class="step-body">The cationic carbon is <b>sp²</b> and trigonal planar: the three groups still attached spread out into one plane, 120° apart. The orbital that lost its electrons is an <b>empty p orbital</b>, perpendicular to that plane — so it has a lobe sticking out above the plane and an identical lobe below it, and nothing is sitting in either one.</p>' +
+      '<p class="step-body">The cationic carbon is <b>sp²</b> and trigonal planar: the three groups still attached spread out into one plane, 120° apart. (The drawing below is side-on, so those angles look squashed — that is perspective, not geometry; it is drawn this way to leave room for the p orbital.) The orbital that lost its electrons is an <b>empty p orbital</b>, perpendicular to that plane — so it has a lobe sticking out above the plane and an identical lobe below it, and nothing is sitting in either one.</p>' +
       '<div class="scene"><svg viewBox="0 0 240 200">' +
         lobe(62) + lobe(138) +
         lineTo(120,100,17, 46,100,20) + lineTo(120,100,17, 176,64,17) + lineTo(120,100,17, 176,136,20) +
@@ -423,6 +430,7 @@ document.addEventListener('DOMContentLoaded', function(){
       '<h2 class="step-title">Pick the lobe water attacks through.</h2>' +
       '<p class="step-body">Water donates an oxygen lone pair into the empty p orbital. Click the top lobe or the bottom lobe — there’s no wrong answer here, and that is the entire point.</p>' +
       '<div class="scene"><svg viewBox="0 0 240 200">' +
+        lobe(62) + lobe(138) +
         lineTo(120,100,17, 46,100,20) + lineTo(120,100,17, 176,64,17) + lineTo(120,100,17, 176,136,20) +
         node(46,100,20,'C₂H₅') + node(176,64,17,'CH₃') + node(176,136,20,'C₃H₇') +
         node(120,100,17,'C',{stroke:'var(--coral)',sw:2.5}) +

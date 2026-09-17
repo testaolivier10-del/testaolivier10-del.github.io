@@ -14114,7 +14114,7 @@
     "2-Bromo-3-methylbutane",
     "2-Bromo-2-methylbutane",
     "1-Bromo-3-methylbutane",
-    "3-Bromo-2-methylbutane"
+    "2-Bromopentane"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -14756,7 +14756,7 @@
    "q": "Why might E1 show greater selectivity for the thermodynamically most stable (Zaitsev) alkene than E2 does on the same substrate?",
    "options": [
     "The long-lived carbocation lets the products equilibrate",
-    "E1's transition state is late, so it looks like the alkene",
+    "Both alkenes branch from one cation, and no base has to fit",
     "E2 cannot give a Zaitsev product under any conditions",
     "Carbocations are more stable than the alkenes they give"
    ],
@@ -14789,12 +14789,12 @@
    "type": "mcq"
   },
   {
-   "q": "2-bromo-2-methylbutane undergoes E1 elimination with heat in aqueous ethanol. What is the expected major alkene product?",
+   "q": "Neopentyl alcohol, (CH₃)₃C–CH₂OH, is warmed with concentrated H₂SO₄. What alkene comes out?",
    "options": [
-    "2-methyl-1-butene (the less substituted, terminal alkene)",
-    "3-methyl-1-butene",
-    "No alkene forms, only the substitution alcohol product",
-    "2-methyl-2-butene (the more substituted, trisubstituted alkene)"
+    "2-Methylbut-1-ene",
+    "Pent-2-ene",
+    "No reaction; there is no beta hydrogen",
+    "2-Methylbut-2-ene"
    ],
    "correct": 3,
    "difficulty": "hard",
@@ -15275,12 +15275,12 @@
    "type": "mcq"
   },
   {
-   "q": "A strong, bulky base always favors E2 over SN2, even on an unhindered primary substrate where the reacting carbon itself has little steric hindrance.",
+   "q": "1-Bromobutane is treated with potassium tert-butoxide. Elimination beats substitution here, even though the reacting carbon is primary and wide open.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 1,
+   "correct": 0,
    "difficulty": "easy",
    "type": "tf"
   },

@@ -15315,7 +15315,7 @@
     "2-Bromo-3-methylbutane",
     "2-Bromo-2-methylbutane",
     "1-Bromo-3-methylbutane",
-    "3-Bromo-2-methylbutane"
+    "2-Bromopentane"
    ],
    "correct": 1,
    "why": "Acid protonates the OH so it can leave as water, giving a secondary cation at C2. Before bromide arrives, look next door: C3 carries a hydrogen, and moving that hydride across with its bonding pair leaves the charge on a carbon bearing two methyls and the chain — a tertiary cation. That shift is fast and downhill, so it happens first, and bromide then attacks the rearranged cation. The product's skeleton is not the one you get by swapping OH for Br, which is exactly the trap.",
@@ -16012,12 +16012,12 @@
    "q": "Why might E1 show greater selectivity for the thermodynamically most stable (Zaitsev) alkene than E2 does on the same substrate?",
    "options": [
     "The long-lived carbocation lets the products equilibrate",
-    "E1's transition state is late, so it looks like the alkene",
+    "Both alkenes branch from one cation, and no base has to fit",
     "E2 cannot give a Zaitsev product under any conditions",
     "Carbocations are more stable than the alkenes they give"
    ],
    "correct": 1,
-   "why": "E1 is not under thermodynamic control: deprotonation of the cation is fast and is not reversed under solvolysis conditions, so the alkenes are not equilibrating with each other. The real reason is where the transition state sits. Starting from a cation that is already flat and electron-poor, the barrier to losing the proton is low and the transition state is reached late, when the C=C is largely formed — so the relative stabilities of the possible alkenes are already reflected in the barriers, and the more substituted one wins by a wider margin than in E2, whose transition state is earlier and also has the base's bulk to contend with.",
+   "why": "E1 is not under thermodynamic control: deprotonation of the cation is fast and is not reversed under solvolysis conditions, so the alkenes never equilibrate with each other. What is different is the branch point. Both alkenes come off the SAME flat cation, and the only thing that changes between the two paths is which double bond is forming — so relative alkene stability is the only variable left. An E2 transition state has a second bill to pay: the base has to reach in and hold the beta hydrogen while the bond breaks, so a crowded hydrogen can be skipped for steric reasons even when it would give the better alkene. That is exactly why a bulky base pushes E2 toward the Hofmann product, while the same substrate left to solvolyze leans Zaitsev.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -16048,15 +16048,15 @@
    "type": "mcq"
   },
   {
-   "q": "2-bromo-2-methylbutane undergoes E1 elimination with heat in aqueous ethanol. What is the expected major alkene product?",
+   "q": "Neopentyl alcohol, (CH₃)₃C–CH₂OH, is warmed with concentrated H₂SO₄. What alkene comes out?",
    "options": [
-    "2-methyl-1-butene (the less substituted, terminal alkene)",
-    "3-methyl-1-butene",
-    "No alkene forms, only the substitution alcohol product",
-    "2-methyl-2-butene (the more substituted, trisubstituted alkene)"
+    "2-Methylbut-1-ene",
+    "Pent-2-ene",
+    "No reaction; there is no beta hydrogen",
+    "2-Methylbut-2-ene"
    ],
    "correct": 3,
-   "why": "Following Zaitsev's rule, E1 favors loss of the beta-hydrogen that generates the more stable, more highly substituted double bond.",
+   "why": "Count the beta hydrogens first and the answer looks like \"none\": the only carbon adjacent to the C–OH is quaternary. That is what kills E2 here, but not this. Acid protonates the OH, and as water leaves, a methyl migrates from the quaternary carbon with its bonding pair — the primary cation is far too poor to form on its own, so the shift happens on the way out. What is left is the tertiary 2-methylbutan-2-yl cation, which now has beta hydrogens on both sides, and losing one by Zaitsev gives the trisubstituted 2-methylbut-2-ene. The skeleton in the product is not the skeleton you started with, which is the whole point of watching the cation.",
    "difficulty": "hard",
    "type": "mcq"
   }
@@ -16575,13 +16575,13 @@
    "type": "mcq"
   },
   {
-   "q": "A strong, bulky base always favors E2 over SN2, even on an unhindered primary substrate where the reacting carbon itself has little steric hindrance.",
+   "q": "1-Bromobutane is treated with potassium tert-butoxide. Elimination beats substitution here, even though the reacting carbon is primary and wide open.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 1,
-   "why": "Bulk mainly matters where it blocks backside attack; on a primary carbon, which is already quite open, a bulky base can still give substantial SN2 unless it is extremely hindered or other factors intervene.",
+   "correct": 0,
+   "why": "tert-Butoxide is a strong base carrying three methyl groups around the reacting oxygen. It is too fat to sit on the backside of C1 and push bromide out, but the beta hydrogens stick out on the outside of the chain where it can still reach one, so the E2 path is the cheap one and but-1-ene is the major product. Swap in ethoxide, which is just as basic but small, and the same substrate gives mostly butyl ethyl ether instead. Sterics on the BASE decide this one, not sterics on the carbon.",
    "difficulty": "easy",
    "type": "tf"
   },

@@ -375,10 +375,11 @@ document.addEventListener('DOMContentLoaded', function(){
   // rather than to look.
   //
   // The angle is not decorative either. Both nucleophiles here are linear, so
-  // the attacking pair lies on the group's axis pointing away from the
-  // neighbouring nitrogen — 0 degrees, toward the carbon. It used to be 200,
-  // which put the dots on top of that nitrogen's own circle, where they could
-  // not be seen and, read literally, sat on the wrong atom.
+  // the attacking pair lies on the group's axis pointing away from the atom on
+  // the far side — the nitrogen of cyanide, the hydrogen of hydrosulfide — at
+  // 0 degrees, toward the carbon. It used to be 200, which put the dots on top
+  // of that far atom's own circle, where they could not be seen and, read
+  // literally, sat on the wrong atom.
   function lonePairs(a){
     if(!a.lp) return '';
     return a.lp.map(function(deg){
@@ -541,7 +542,8 @@ document.addEventListener('DOMContentLoaded', function(){
     card.innerHTML =
       '<div class="step-eyebrow">Step 1 · Identify</div>' +
       '<h2 class="step-title">Which species is the nucleophile?</h2>' +
-      '<p class="step-body">Look at the two structures above rather than the labels. One of them is carrying electrons it can donate; the other has a carbon that is short of them.</p>' +
+      '<p class="step-body">Look at the two structures below rather than the labels. One of them is carrying electrons it can donate; the other has a carbon that is short of them.</p>' +
+      sceneSvg() +
       '<div class="choice-row">' +
         options.map(function(o,i){ return '<button class="choice-btn" data-i="' + shuf.toOriginal[i] + '">' + o + '</button>'; }).join('') +
       '</div>' +

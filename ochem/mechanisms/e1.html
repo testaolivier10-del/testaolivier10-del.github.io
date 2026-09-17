@@ -232,7 +232,10 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   function updateProgress(){
     progFill.style.width = Math.round((step/TOTAL)*100) + '%';
-    progLabel.textContent = 'Step ' + (step+1) + ' / ' + (TOTAL+1);
+    // Card 0 is the intro; cards 1..TOTAL are the ones the eyebrows number.
+    // Counting the intro as a step put "Step 2 / 8" above a card headed
+    // "Step 1 · ...". sn2.html labels its intro the same way.
+    progLabel.textContent = step <= 0 ? 'Setup' : 'Step ' + step + ' / ' + TOTAL;
     window.OchemCurriculum.saveStep(TOPIC_ID, step);
   }
   function feedbackHtml(id){ return '<div class="feedback" id="' + id + '"></div>'; }
