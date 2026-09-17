@@ -3025,10 +3025,10 @@ FIGURES.push({
     line(44,  166, 'harder to protonate \u2192 slower', 'fg-tag-good');
     line(44,  186, 'STOPS at one halogen', 'fg-tag-good');
 
-    line(426, 124, 'needs the \u03b1 protons ACIDIC', 'fg-tag');
+    line(426, 124, 'needs the α protons ACIDIC', 'fg-tag');
     line(426, 146, 'the new halogen withdraws \u2192', 'fg-sm');
     line(426, 166, 'more acidic \u2192 faster', 'fg-tag');
-    line(426, 186, 'KEEPS GOING while \u03b1-H remain', 'fg-tag');
+    line(426, 186, 'KEEPS GOING while α-H remain', 'fg-tag');
 
     s += rule(24, 224, 700, 224);
     s += text(24, 250, 'The halogen does the same thing in both columns. Only the requirement differs.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
@@ -3037,7 +3037,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Two mechanisms, one substituent effect, opposite results. It is worth reading the two middle lines together: they are the same sentence, and everything after them diverges only because one route needs the substrate to be a base and the other needs it to be an acid.',
-  note: 'The iodoform test rests on the right-hand column and on a distinction the name hides. It reports a CH\u2083CO or CH\u2083CH(OH) fragment, not a methyl group anywhere in the molecule \u2014 so 2-methylcyclohexanone, which has a methyl and is a ketone, is negative, because neither of its \u03b1 carbons is that methyl. It brominates happily and simply never forms a CX\u2083 to expel.',
+  note: 'The iodoform test rests on the right-hand column and on a distinction the name hides. It reports a CH\u2083CO or CH\u2083CH(OH) fragment, not a methyl group anywhere in the molecule \u2014 so 2-methylcyclohexanone, which has a methyl and is a ketone, is negative, because neither of its α carbons is that methyl. It brominates happily and simply never forms a CX\u2083 to expel.',
 });
 
 /* ----------------------------------------------------------------- 58 ---
@@ -6706,6 +6706,778 @@ FIGURES.push({
   },
   caption: 'The same flask twice over. With NaBr there is no step 1, so the only way forward would be to push HO<sup>−</sup> off a carbon, and that step does not happen. HBr supplies a proton first, and once the oxygen is protonated the group that has to leave is <b>neutral water</b> rather than hydroxide — seventeen pK<sub>a</sub> units of difference, from one proton.',
   note: 'Steps 2 and 3 are drawn together on purpose. On a primary carbon like this one there is no carbocation worth forming, so water does not depart and wait — the bromide arrives on the far side of the carbon at the same moment the C–O bond breaks. Draw it as two separate events and you have quietly invented a primary carbocation, which is the commonest way this mechanism is written wrongly.',
+});
+
+
+/* ================================================================== ch6 ===
+   Stereochemistry. The chapter was carrying its three-dimensional claims in
+   prose — allenes held perpendicular, a nitrogen turning itself inside out,
+   two chair conformers that are each other's mirror image, a plane of
+   polarization being rotated — and a claim about shape that you cannot look
+   at is a claim a student has to take on trust. Every figure below draws one
+   of those, and each one was checked by assigning CIP priorities to the
+   coordinates that are actually emitted rather than to the molecule that was
+   meant. */
+
+/* A tetrahedral centre drawn the way this chapter draws them: bonds at the
+   given screen angles (0 is east, measured counterclockwise), with `kind`
+   choosing plain, wedge or hash. Returns the bond ink; the caller places the
+   labels, because a label's radius depends on how long its text is. */
+function centre(c, arms) {
+  let s = '';
+  for (const a of arms) {
+    const rad = (-a.deg * Math.PI) / 180;
+    const end = P(c.x + Math.cos(rad) * a.len, c.y + Math.sin(rad) * a.len);
+    const opts = { rFrom: a.rFrom ?? 15, rTo: a.rTo ?? 0 };
+    s += a.kind === 'wedge' ? wedge(c, end, { ...opts, width: 9 })
+       : a.kind === 'hash' ? hash(c, end, { ...opts, width: 11, rungs: 4 })
+       : bond(c, end, opts);
+  }
+  return s;
+}
+const armEnd = (c, deg, len) => P(c.x + Math.cos((-deg * Math.PI) / 180) * len,
+                                  c.y + Math.sin((-deg * Math.PI) / 180) * len);
+
+/* ---------------------------------------------------------------- ch6.1 ---
+   The symmetry test, run. The section states the test and then goes to hands
+   and screws without ever performing it on a molecule. */
+FIGURES.push({
+  id: 'symmetry-test-worked',
+  section: 'chirality',
+  anchor: 'This is the most common source of wrong answers in this section.</div>',
+  alt: 'Two wedge-dash structures. 2-chloropropane has a methyl on each side of a vertical mirror line, so the line is a genuine plane of symmetry and the molecule is achiral. 2-chlorobutane has a methyl on one side and an ethyl on the other, so no such plane exists and the molecule is chiral.',
+  viewBox: '0 0 760 330',
+  build() {
+    let s = '';
+    const draw = (cx, left, right, ok) => {
+      const c = P(cx, 154);
+      const lr = left.length > 3 ? 23 : 17, rr = right.length > 3 ? 23 : 17;
+      const lLen = left.length > 3 ? 78 : 66, rLen = right.length > 3 ? 78 : 66;
+      // the candidate plane first, so the atoms sit on top of it
+      let g = `<line class="fg-dash-hi" x1="${cx}" y1="64" x2="${cx}" y2="250"></line>`;
+      g += centre(c, [
+        { deg: 160, len: lLen, rTo: lr },
+        { deg: 20, len: rLen, rTo: rr },
+        { deg: 270, len: 62, kind: 'wedge', rTo: 16 },
+        { deg: 90, len: 62, kind: 'hash', rTo: 12 },
+      ]);
+      const L = armEnd(c, 160, lLen), R = armEnd(c, 20, rLen);
+      const D = armEnd(c, 270, 62), U = armEnd(c, 90, 62);
+      g += atom(c.x, c.y, 'C', { kind: 'hi' });
+      g += atom(L.x, L.y, left, { r: lr, size: left.length > 3 ? 9 : 10 });
+      g += atom(R.x, R.y, right, { r: rr, size: right.length > 3 ? 9 : 10 });
+      g += atom(D.x, D.y, 'Cl', { kind: 'warn' });
+      g += atom(U.x, U.y, 'H', { r: 12 });
+      g += text(D.x + 24, D.y + 4, 'wedge', { cls: 'fg-sm', size: 9, anchor: 'start' });
+      g += text(U.x + 20, U.y + 4, 'hash', { cls: 'fg-sm', size: 9, anchor: 'start' });
+      g += text(cx, 54, ok ? 'a real plane of symmetry' : 'not a plane of symmetry',
+        { cls: ok ? 'fg-tag-good' : 'fg-tag-warn', size: 11 });
+      return g;
+    };
+    s += panel(24, 38, 340, 254, { kind: 'hi' });
+    s += draw(194, 'CH₃', 'CH₃', true);
+    s += text(194, 278, '2-chloropropane — ACHIRAL', { cls: 'fg-tag-good', size: 11 });
+    s += text(194, 310, 'Reflect left into right: methyl onto methyl,', { cls: 'fg-sm', size: 9.5 });
+    s += text(194, 324, 'Cl onto Cl, H onto H. The molecule is unchanged.', { cls: 'fg-sm', size: 9.5 });
+
+    s += panel(396, 38, 340, 254, { kind: 'warn' });
+    s += draw(566, 'CH₃', 'CH₂CH₃', false);
+    s += text(566, 278, '2-chlorobutane — CHIRAL', { cls: 'fg-tag-warn', size: 11 });
+    s += text(566, 310, 'The same reflection sends methyl onto ethyl,', { cls: 'fg-sm', size: 9.5 });
+    s += text(566, 324, 'which is a different molecule, not this one.', { cls: 'fg-sm', size: 9.5 });
+    return s;
+  },
+  caption: 'The test, run twice on almost the same molecule. Both drawings put Cl on a wedge and H on a hash, so both are mirror-symmetric about the vertical line <b>as far as those two go</b>. Everything turns on what sits left and right of the line: two methyls reflect onto each other and the plane is real, while a methyl and an ethyl do not, and no other plane exists in any conformation.',
+  note: 'One carbon’s difference between the two, and it is the difference between a compound that has an enantiomer and one that does not. When you think you have found a plane, name the pair of groups it exchanges and check they are identical all the way out — that is the step that gets skipped.',
+});
+
+/* ---------------------------------------------------------------- ch6.2 ---
+   Chirality with no stereocenter anywhere. The prose asks the reader to
+   picture an allene's two perpendicular ends and a biaryl frozen by its
+   ortho groups, which is precisely what prose cannot do. */
+FIGURES.push({
+  id: 'chirality-without-a-stereocenter',
+  section: 'chirality',
+  anchor: '<h3>Chirality without a stereocenter</h3>',
+  alt: 'Penta-2,3-diene drawn twice as mirror images: the left end carries methyl and hydrogen in the plane of the page and the right end carries them on a wedge and a hash, perpendicular to the first pair. Beside them a biaryl whose second ring is drawn edge-on, with two hydroxyl groups sitting either side of the bond joining the rings and blocking it from turning.',
+  viewBox: '0 0 760 350',
+  build() {
+    let s = '';
+    const allene = (cx, flip) => {
+      const c1 = P(cx - 44, 150), c2 = P(cx, 150), c3 = P(cx + 44, 150);
+      let g = bond(c1, c2, { order: 2, rFrom: 0, rTo: 0, gap: 4 });
+      g += bond(c2, c3, { order: 2, rFrom: 0, rTo: 0, gap: 4 });
+      const lu = P(c1.x - 32, c1.y - 30), ld = P(c1.x - 32, c1.y + 30);
+      g += bond(c1, lu, { rFrom: 0, rTo: 17 });
+      g += bond(c1, ld, { rFrom: 0, rTo: 12 });
+      const ru = P(c3.x + 32, c3.y - 30), rd = P(c3.x + 32, c3.y + 30);
+      g += (flip ? hash : wedge)(c3, ru, { rFrom: 0, rTo: 17, width: 9, rungs: 4 });
+      g += (flip ? wedge : hash)(c3, rd, { rFrom: 0, rTo: 12, width: 9, rungs: 4 });
+      g += atom(lu.x, lu.y, 'CH₃', { r: 17, size: 10 });
+      g += atom(ld.x, ld.y, 'H', { r: 12 });
+      g += atom(ru.x, ru.y, 'CH₃', { r: 17, size: 10 });
+      g += atom(rd.x, rd.y, 'H', { r: 12 });
+      for (const q of [c1, c2, c3]) g += atom(q.x, q.y, '', { kind: 'point' });
+      return g;
+    };
+    s += tag(238, 34, 'AN ALLENE: NO sp³ CARBON, NO STEREOCENTER');
+    s += panel(20, 54, 196, 196, { kind: 'hi' });
+    s += allene(118, false);
+    s += text(118, 272, 'one enantiomer', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(238, 146, '↔', { cls: 'fg-hi', size: 22 });
+    s += text(238, 172, 'mirror', { cls: 'fg-sm', size: 9 });
+    s += panel(260, 54, 196, 196, { kind: 'hi' });
+    s += allene(358, true);
+    s += text(358, 272, 'the other', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(238, 302, 'The cumulated double bonds hold the two ends at 90° to', { cls: 'fg-sm', size: 9.5 });
+    s += text(238, 320, 'each other, so the four groups sit at the corners of a', { cls: 'fg-sm', size: 9.5 });
+    s += text(238, 338, 'twisted shape that no rotation superimposes on its mirror.', { cls: 'fg-sm', size: 9.5 });
+
+    s += rule(478, 54, 478, 300);
+
+    s += tag(618, 34, 'AN ATROPISOMER');
+    const hex = (cx, cy, rx, ry) => {
+      const v = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (90 - i * 60) * Math.PI / 180;
+        v.push(P(cx + rx * Math.cos(a), cy - ry * Math.sin(a)));
+      }
+      return v;
+    };
+    const A = hex(580, 150, 40, 40), B = hex(678, 150, 13, 40);
+    for (const v of [A, B]) {
+      for (let i = 0; i < 6; i++) s += bond(v[i], v[(i + 1) % 6], { rFrom: 0, rTo: 0 });
+      for (let i = 0; i < 6; i += 2) s += bond(v[i], v[(i + 1) % 6], { rFrom: 7, rTo: 7, cls: 'fg-bond-soft' });
+      for (const p of v) s += atom(p.x, p.y, '', { kind: 'point' });
+    }
+    s += bond(A[1], B[5], { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
+    for (const anchorPt of [A[2], B[4]]) {
+      const oh = P(anchorPt.x, anchorPt.y + 32);
+      s += bond(anchorPt, oh, { rFrom: 0, rTo: 16 });
+      s += atom(oh.x, oh.y, 'OH', { r: 16, size: 10, kind: 'hi' });
+    }
+    s += text(618, 92, 'the second ring is edge-on to the first', { cls: 'fg-sm', size: 9.5 });
+    s += text(618, 254, 'the two OH groups sit either side of the', { cls: 'fg-sm', size: 9.5 });
+    s += text(618, 272, 'joint and cannot slide past each other', { cls: 'fg-sm', size: 9.5 });
+    s += text(618, 300, 'BINOL — chiral, and stable enough to bottle', { cls: 'fg-tag-good', size: 10 });
+    return s;
+  },
+  caption: 'Two molecules with no stereocenter anywhere and a left- and a right-handed form each. In the allene the two <b>cumulated</b> double bonds force the groups on one end into a plane at right angles to the groups on the other, and that twist is what has the handedness. In the biaryl the twist is the same idea held in place by bulk: the two OH groups sit right beside the joint and cannot slide past each other, so the two rings stay locked at an angle.',
+  note: 'This is why “stereocenter” and “chiral” must not be treated as the same word. The stereocenter is the usual <i>cause</i> of chirality; chirality itself is a statement about the shape of the whole molecule, and a twist does the job just as well as a tetrahedral carbon. BINOL and its relative BINAP are exactly this, and they are among the most used ligands in asymmetric catalysis.',
+});
+
+/* ---------------------------------------------------------------- ch6.3 ---
+   Nitrogen inversion, which the section describes as an umbrella turning
+   itself inside out and then does not draw. */
+FIGURES.push({
+  id: 'nitrogen-inversion',
+  section: 'stereocenters',
+  anchor: 'Quaternary ammonium salts, which have four groups and no lone pair, cannot invert and <i>are</i> genuine stereocenters.</div>',
+  alt: 'An amine nitrogen shown pyramidal with its lone pair up, flattening through a planar transition state in which the lone pair occupies a p orbital, and arriving at the inverted pyramid with the lone pair down.',
+  viewBox: '0 0 760 320',
+  build() {
+    let s = '';
+    const pyramid = (cx, down) => {
+      const n = P(cx, 150);
+      const sgn = down ? -1 : 1;
+      const a = P(cx - 52, 150 + 26 * sgn), b = P(cx + 52, 150 + 26 * sgn), c = P(cx, 150 + 52 * sgn);
+      let g = bond(n, a, { rTo: 14 });
+      g += bond(n, b, { rTo: 14 });
+      g += (sgn > 0 ? wedge : hash)(n, c, { rTo: 14, width: 9, rungs: 4 });
+      g += atom(a.x, a.y, 'R¹', { r: 14, size: 10 });
+      g += atom(b.x, b.y, 'R²', { r: 14, size: 10 });
+      g += atom(c.x, c.y, 'R³', { r: 14, size: 10 });
+      g += atom(n.x, n.y, 'N', { kind: 'hi' });
+      g += lonePair(n.x, n.y, down ? 90 : -90, { dist: 24 });
+      g += text(cx, down ? 202 : 106, down ? 'lone pair now points down' : 'lone pair points up', { cls: 'fg-sm', size: 9.5 });
+      return g;
+    };
+    s += panel(20, 54, 200, 182, { kind: 'hi' });
+    s += pyramid(120, false);
+    s += text(120, 258, 'pyramidal', { cls: 'fg-tag-good', size: 11 });
+
+    s += panel(280, 54, 200, 182, { kind: 'warn' });
+    const n = P(380, 150);
+    s += bond(n, P(324, 150), { rTo: 14 });
+    s += bond(n, P(436, 150), { rTo: 14 });
+    s += bond(n, P(380, 206), { rTo: 14 });
+    s += atom(324, 150, 'R¹', { r: 14, size: 10 });
+    s += atom(436, 150, 'R²', { r: 14, size: 10 });
+    s += atom(380, 206, 'R³', { r: 14, size: 10 });
+    s += atom(n.x, n.y, 'N', { kind: 'warn' });
+    s += lonePair(n.x, n.y, -90, { dist: 24 });
+    s += text(380, 88, 'all three groups flat,', { cls: 'fg-sm', size: 9.5 });
+    s += text(380, 102, 'lone pair in a p orbital', { cls: 'fg-sm', size: 9.5 });
+    s += text(380, 258, 'planar transition state', { cls: 'fg-tag-warn', size: 11 });
+
+    s += panel(540, 54, 200, 182, { kind: 'hi' });
+    s += pyramid(640, true);
+    s += text(640, 258, 'pyramidal, inverted', { cls: 'fg-tag-good', size: 11 });
+
+    s += arrow(P(232, 140), P(268, 140), { muted: true });
+    s += arrow(P(268, 162), P(232, 162), { muted: true });
+    s += arrow(P(492, 140), P(528, 140), { muted: true });
+    s += arrow(P(528, 162), P(492, 162), { muted: true });
+
+    s += text(380, 32, 'barrier ≈ 6 kcal/mol → about 10¹¹ inversions per second at room temperature', { cls: 'fg-tag', size: 11 });
+    s += text(380, 296, 'Roughly a hundred flips per nanosecond: there is no temperature at which you could bottle one of the two pyramids.', { cls: 'fg-sm', size: 10 });
+    return s;
+  },
+  caption: 'Why an amine nitrogen with three different groups is not a usable stereocenter. It really is pyramidal, and the two pyramids really are mirror images — but the barrier between them is about 6 kcal/mol, so the molecule turns itself inside out like an umbrella in a gale, roughly 10<sup>11</sup> times a second. What you have is not two separable substances; it is one substance spending half its time in each shape.',
+  note: 'Take the lone pair away and the argument collapses with it. A quaternary ammonium ion, N<sup>+</sup> with four groups, has no lone pair to move into a p orbital and no planar transition state to pass through, so it cannot invert at all — and it is a perfectly ordinary stereocenter. The same is true of a sulfoxide, where the barrier is high enough that single enantiomers are sold as drugs.',
+});
+
+/* ---------------------------------------------------------------- ch6.4 ---
+   The walk-both-ways test, which the section calls the reliable test for a
+   ring carbon and then performs entirely in words. */
+FIGURES.push({
+  id: 'walk-both-ways',
+  section: 'stereocenters',
+  anchor: 'Walking both ways around the ring is the only reliable test.</div>',
+  alt: 'Two cyclohexane rings. In 3-methylcyclohexan-1-ol, walking from C1 one way reaches the methyl-bearing carbon after two carbons and the other way after three, so the two ring paths differ and C1 is a stereocenter. In 4-methylcyclohexan-1-ol both walks reach it after three carbons, so C1 is not.',
+  viewBox: '0 0 760 330',
+  build() {
+    let s = '';
+    const ring = (cx, meAt) => {
+      const v = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (90 - i * 60) * Math.PI / 180;
+        v.push(P(cx + 54 * Math.cos(a), 152 - 54 * Math.sin(a)));
+      }
+      let g = '';
+      for (let i = 0; i < 6; i++) g += bond(v[i], v[(i + 1) % 6], { rFrom: 0, rTo: 0 });
+      for (const p of v) g += atom(p.x, p.y, '', { kind: 'point' });
+      g += bond(v[0], P(v[0].x, v[0].y - 32), { rFrom: 0, rTo: 16 });
+      g += atom(v[0].x, v[0].y - 32, 'OH', { r: 16, size: 10, kind: 'hi' });
+      const m = v[meAt];
+      const dx = m.x - cx, dy = m.y - 152, L = Math.hypot(dx, dy);
+      const me = P(m.x + (dx / L) * 32, m.y + (dy / L) * 32);
+      g += bond(m, me, { rFrom: 0, rTo: 17 });
+      g += atom(me.x, me.y, 'CH₃', { r: 17, size: 10, kind: 'hi' });
+      g += text(v[0].x - 20, v[0].y + 2, 'C1', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+      return g;
+    };
+    s += panel(24, 40, 340, 232, { kind: 'hi' });
+    s += ring(194, 2);
+    s += text(194, 30, '3-methylcyclohexan-1-ol', { cls: 'fg-tag', size: 11 });
+    s += text(118, 122, 'two carbons', { cls: 'fg-tag-good', size: 10, anchor: 'end' });
+    s += text(118, 138, 'this way', { cls: 'fg-tag-good', size: 10, anchor: 'end' });
+    s += text(270, 122, 'three carbons', { cls: 'fg-tag-warn', size: 10, anchor: 'start' });
+    s += text(270, 138, 'that way', { cls: 'fg-tag-warn', size: 10, anchor: 'start' });
+    s += text(194, 294, 'the two ring paths differ → C1 IS a stereocenter', { cls: 'fg-tag-good', size: 10.5 });
+
+    s += panel(396, 40, 340, 232, { kind: 'warn' });
+    s += ring(566, 3);
+    s += text(566, 30, '4-methylcyclohexan-1-ol', { cls: 'fg-tag', size: 11 });
+    s += text(490, 122, 'three carbons', { cls: 'fg-sm', size: 10, anchor: 'end' });
+    s += text(490, 138, 'this way', { cls: 'fg-sm', size: 10, anchor: 'end' });
+    s += text(642, 122, 'three carbons', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(642, 138, 'that way', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(566, 294, 'the two ring paths match → C1 is NOT a stereocenter', { cls: 'fg-tag-warn', size: 10.5 });
+
+    s += text(380, 312, 'A ring carbon puts two of its four bonds into the ring itself.', { cls: 'fg-sm', size: 9.5 });
+    s += text(380, 326, 'The question is never “are these two bonds different” but “are these two WALKS different”.', { cls: 'fg-sm', size: 9.5 });
+    return s;
+  },
+  caption: 'The one test that works on a ring. C1 carries OH, H and two ring bonds, and the two ring bonds look identical — they are both C–C into the same ring. What decides is what you meet walking each way round, and the methyl group is the thing you meet. Two carbons clockwise against three counterclockwise is a genuine difference; three against three is not.',
+  note: 'Do the walk in both directions and stop at the first point of difference, exactly as CIP rule 2 asks you to. The commonest error is not doing the walk at all — a ring carbon bearing an OH <i>looks</i> like a stereocenter, and in 4-methylcyclohexan-1-ol it is not one, because the ring reads the same from either side.',
+});
+
+/* ---------------------------------------------------------------- ch6.5 ---
+   The polarimeter. The section gives the formula for [alpha] and uses it in a
+   worked example without ever drawing the measurement the formula describes,
+   which leaves l and c as symbols rather than parts of an instrument. */
+FIGURES.push({
+  id: 'polarimeter',
+  section: 'enantiomers',
+  anchor: '<h3>Specific rotation</h3>',
+  alt: 'A polarimeter drawn left to right: a sodium lamp emitting light vibrating in every plane, a polarizer that passes only the vertical plane, a sample tube of length l holding a solution of concentration c, the emerging plane tilted by an angle alpha, and an analyzer turned by alpha to find the new plane.',
+  viewBox: '0 0 760 316',
+  build() {
+    let s = '';
+    const beam = 150;
+    // a bundle of vibration planes, drawn as short strokes across the beam
+    const ticks = (x0, x1, degs, cls) => {
+      let g = '';
+      for (let x = x0; x <= x1; x += 18) {
+        for (const d of degs) {
+          const r = (d * Math.PI) / 180, L = 15;
+          g += `<line class="${cls}" x1="${(x - Math.cos(r) * L).toFixed(2)}" y1="${(beam - Math.sin(r) * L).toFixed(2)}" x2="${(x + Math.cos(r) * L).toFixed(2)}" y2="${(beam + Math.sin(r) * L).toFixed(2)}"></line>`;
+        }
+      }
+      return g;
+    };
+    s += atom(46, beam, '', { r: 22, kind: 'hi' });
+    s += text(46, beam + 4, 'Na', { cls: 'fg-lbl', size: 12 });
+    s += text(46, 210, 'sodium lamp', { cls: 'fg-sm', size: 9.5 });
+    s += text(46, 226, '589 nm', { cls: 'fg-sm', size: 9.5 });
+
+    s += ticks(84, 148, [0, 45, 90, 135], 'fg-bond-soft');
+    s += text(116, 100, 'every plane', { cls: 'fg-sm', size: 9.5 });
+
+    s += bar(170, beam - 44, 14, 88, { kind: 'mut', r: 4 });
+    s += text(177, 212, 'polarizer', { cls: 'fg-sm', size: 9.5 });
+    s += text(177, 228, 'passes one plane', { cls: 'fg-sm', size: 9.5 });
+
+    s += ticks(206, 250, [90], 'fg-bond-hi');
+    s += text(228, 100, 'plane-polarized', { cls: 'fg-tag-good', size: 10 });
+
+    s += panel(268, beam - 40, 200, 80, { kind: 'hi' });
+    s += text(368, beam - 6, 'sample solution', { cls: 'fg-lbl', size: 11 });
+    s += text(368, beam + 12, 'concentration c, in g/mL', { cls: 'fg-sm', size: 9.5 });
+    s += arrow(P(268, 212), P(468, 212), { muted: true, size: 7 });
+    s += arrow(P(468, 226), P(268, 226), { muted: true, size: 7 });
+    s += text(368, 250, 'path length l, in decimeters', { cls: 'fg-tag', size: 10.5 });
+
+    // the turned plane, with the original plane dashed behind it so the angle
+    // the analyzer has to be turned through is the thing you can see
+    s += `<line class="fg-dash-hi" x1="510" y1="${beam - 46}" x2="510" y2="${beam + 46}"></line>`;
+    s += `<line class="fg-bond-hi" x1="${(510 - Math.cos(Math.PI / 3) * 46).toFixed(2)}" y1="${(beam - Math.sin(Math.PI / 3) * 46).toFixed(2)}" x2="${(510 + Math.cos(Math.PI / 3) * 46).toFixed(2)}" y2="${(beam + Math.sin(Math.PI / 3) * 46).toFixed(2)}"></line>`;
+    s += text(530, beam - 4, 'α', { cls: 'fg-tag-good', size: 14, anchor: 'start' });
+    s += text(508, 92, 'same plane,', { cls: 'fg-tag-good', size: 10 });
+    s += text(508, 106, 'turned by α', { cls: 'fg-tag-good', size: 10 });
+
+    s += bar(556, beam - 44, 14, 88, { kind: 'mut', r: 4 });
+    s += text(563, 212, 'analyzer', { cls: 'fg-sm', size: 9.5 });
+    s += text(563, 228, 'turned until light returns', { cls: 'fg-sm', size: 9.5 });
+
+    s += atom(700, beam, '', { r: 22 });
+    s += text(700, beam + 4, '◉', { cls: 'fg-lbl', size: 14 });
+    s += text(700, 212, 'detector', { cls: 'fg-sm', size: 9.5 });
+
+    s += text(380, 40, 'WHAT THE INSTRUMENT MEASURES IS α. WHAT YOU REPORT IS [α] = α / (l × c).', { cls: 'fg-tag', size: 11 });
+    s += text(380, 282, 'Double the tube length, or double the concentration, and α doubles — the beam simply met twice as many molecules.', { cls: 'fg-sm', size: 10 });
+    s += text(380, 300, 'That is why α on its own is not a property of the compound, and [α] is.', { cls: 'fg-sm', size: 10 });
+    return s;
+  },
+  caption: 'The measurement behind every number in this section. Light from the lamp vibrates in every plane at once; the polarizer throws away all but one. That single plane passes through the solution and comes out <b>turned</b>, and the analyzer is then rotated by hand until the light comes back — the angle it had to be turned through is α.',
+  note: 'The two normalizations in the formula are the two things you could change about the experiment without changing the compound: how long a column of solution the light crossed (l, in decimeters, because a standard tube is 1 dm) and how much compound was in it (c, in g/mL). Divide them out and what is left is a constant of the substance, quoted with the temperature and wavelength because it depends mildly on both.',
+});
+
+/* ---------------------------------------------------------------- ch6.6 ---
+   Resolution as a scheme. Three steps in one paragraph is three steps a
+   student has to hold in their head. */
+FIGURES.push({
+  id: 'resolution-scheme',
+  section: 'enantiomers',
+  anchor: '<h3>Separating enantiomers</h3>',
+  alt: 'A four-stage scheme: a racemic mixture of R and S acid, reacted with a single enantiomer of a chiral base, gives two diastereomeric salts with different solubilities; crystallization separates them; removing the resolving agent returns the two pure enantiomers.',
+  viewBox: '0 0 760 340',
+  build() {
+    let s = '';
+    const box = (x, y, w, h, kind, lines) => {
+      let g = panel(x, y, w, h, { kind });
+      lines.forEach((ln, i) => {
+        g += text(x + w / 2, y + 26 + i * 19, ln[0], { cls: ln[1] || 'fg-lbl', size: ln[2] || 11.5 });
+      });
+      return g;
+    };
+    s += tag(380, 30, 'THE POINT IS TO TURN AN ENANTIOMERIC RELATIONSHIP INTO A DIASTEREOMERIC ONE');
+
+    s += box(24, 60, 168, 96, 'warn', [
+      ['(R)-acid', 'fg-lbl', 12],
+      ['+  (S)-acid', 'fg-lbl', 12],
+      ['inseparable', 'fg-tag-warn', 10.5],
+    ]);
+    s += text(108, 172, 'the racemate', { cls: 'fg-sm', size: 9.5 });
+
+    s += arrow(P(200, 108), P(254, 108));
+    s += text(227, 90, '+ (R)-base', { cls: 'fg-tag-good', size: 10 });
+    s += text(214, 134, 'one enantiomer of', { cls: 'fg-sm', size: 9 });
+    s += text(214, 148, 'a resolving agent', { cls: 'fg-sm', size: 9 });
+
+    s += box(262, 46, 188, 60, 'hi', [
+      ['(R)-acid · (R)-base', 'fg-lbl', 11.5],
+      ['less soluble', 'fg-tag-good', 10],
+    ]);
+    s += box(262, 118, 188, 60, 'hi', [
+      ['(S)-acid · (R)-base', 'fg-lbl', 11.5],
+      ['more soluble', 'fg-tag-good', 10],
+    ]);
+    s += text(356, 196, 'two salts, and they are DIASTEREOMERS', { cls: 'fg-tag', size: 10.5 });
+    s += text(356, 212, 'so their solubilities differ — ordinary crystallization separates them', { cls: 'fg-sm', size: 9.5 });
+
+    s += arrow(P(458, 76), P(512, 76));
+    s += arrow(P(458, 148), P(512, 148));
+    s += text(485, 58, 'crystallize', { cls: 'fg-sm', size: 9 });
+
+    s += box(520, 46, 216, 60, 'good', [
+      ['(R)-acid, pure', 'fg-lbl', 11.5],
+      ['after the base is washed out', 'fg-sm', 9.5],
+    ]);
+    s += box(520, 118, 216, 60, 'good', [
+      ['(S)-acid, pure', 'fg-lbl', 11.5],
+      ['after the base is washed out', 'fg-sm', 9.5],
+    ]);
+
+    s += rule(24, 238, 736, 238);
+    s += text(380, 266, 'Step 2 is the whole trick: only the acid half is inverted between the two salts, not the base half,', { cls: 'fg-sm', size: 10 });
+    s += text(380, 286, 'so they are diastereomers — different lattice energies, different solubilities, different melting points.', { cls: 'fg-sm', size: 10 });
+    s += text(380, 314, 'Chiral chromatography does the same thing without isolating anything: the stationary phase is a single enantiomer.', { cls: 'fg-sm', size: 9.5 });
+    return s;
+  },
+  caption: 'Resolution in four moves. Nothing in the first box can be separated, because every ordinary property of the two acids is identical. Add <b>one enantiomer</b> of a chiral base and the two salts that form are no longer mirror images — one is (R)&middot;(R) and the other (S)&middot;(R) — so they are diastereomers, and diastereomers crystallize apart.',
+  note: 'Notice what the resolving agent has to be: a single enantiomer, not a racemate. Adding racemic base would give four salts in two enantiomeric pairs and leave you exactly where you started. Pasteur’s 1848 separation was the crude version of this — the two crystal forms of a tartrate salt happened to be visibly different, and he picked them apart with tweezers.',
+});
+
+/* ---------------------------------------------------------------- ch6.7 ---
+   cis and trans 2-butene with their dipoles, which is the part of the
+   diastereomers section that joins two previously separate ideas. */
+FIGURES.push({
+  id: 'cis-trans-are-diastereomers',
+  section: 'diastereomers',
+  anchor: '<h3>Cis/trans isomers are diastereomers</h3>',
+  alt: 'cis-2-butene drawn with both methyls below the double bond, its two bond dipoles sharing an upward component and adding to a net dipole of 0.33 debye, and trans-2-butene with one methyl above and one below, its two dipoles pointing exactly opposite ways and cancelling to zero.',
+  viewBox: '0 0 760 330',
+  build() {
+    let s = '';
+    const butene = (cx, trans) => {
+      const c2 = P(cx - 26, 150), c3 = P(cx + 26, 150);
+      const m1 = P(cx - 66, 172), m2 = P(cx + 66, trans ? 128 : 172);
+      const h1 = P(cx - 66, 128), h2 = P(cx + 66, trans ? 172 : 128);
+      let g = bond(c2, c3, { order: 2, rFrom: 0, rTo: 0, cls: 'fg-bond-hi', gap: 4 });
+      g += bond(c2, m1, { rFrom: 0, rTo: 17 });
+      g += bond(c3, m2, { rFrom: 0, rTo: 17 });
+      g += bond(c2, h1, { rFrom: 0, rTo: 12 });
+      g += bond(c3, h2, { rFrom: 0, rTo: 12 });
+      g += atom(m1.x, m1.y, 'CH₃', { r: 17, size: 10 });
+      g += atom(m2.x, m2.y, 'CH₃', { r: 17, size: 10 });
+      g += atom(h1.x, h1.y, 'H', { r: 12 });
+      g += atom(h2.x, h2.y, 'H', { r: 12 });
+      g += atom(c2.x, c2.y, '', { kind: 'point' });
+      g += atom(c3.x, c3.y, '', { kind: 'point' });
+      return g;
+    };
+    /* The two C-CH3 bond dipoles redrawn from one origin, so their sum can be
+       read off. Each points from the methyl toward the sp2 carbon it is on. */
+    const dipoles = (cx, trans) => {
+      const o = P(cx, 250);
+      let g = arrow(o, P(o.x + 30, o.y - 20), { size: 7 });
+      g += arrow(o, P(o.x - 30, trans ? o.y + 20 : o.y - 20), { size: 7 });
+      if (!trans) g += arrow(o, P(o.x, o.y - 28), { muted: true, size: 7 });
+      g += atom(o.x, o.y, '', { kind: 'point' });
+      return g;
+    };
+    s += panel(24, 44, 340, 232, { kind: 'hi' });
+    s += butene(194, false);
+    s += text(194, 34, 'cis-2-butene', { cls: 'fg-tag', size: 11.5 });
+    s += text(194, 96, 'both methyls on the same side', { cls: 'fg-sm', size: 9.5 });
+    s += text(194, 216, 'the two C–CH₃ bond dipoles', { cls: 'fg-sm', size: 9 });
+    s += dipoles(194, false);
+    s += text(194, 296, 'they share an upward component and ADD: μ = 0.33 D', { cls: 'fg-tag-good', size: 10 });
+    s += text(194, 316, 'bp 3.7 °C', { cls: 'fg-sm', size: 10 });
+
+    s += panel(396, 44, 340, 232, { kind: 'hi' });
+    s += butene(566, true);
+    s += text(566, 34, 'trans-2-butene', { cls: 'fg-tag', size: 11.5 });
+    s += text(566, 96, 'one methyl up, one down', { cls: 'fg-sm', size: 9.5 });
+    s += text(566, 216, 'the two C–CH₃ bond dipoles', { cls: 'fg-sm', size: 9 });
+    s += dipoles(566, true);
+    s += text(566, 296, 'they are exactly opposed and CANCEL: μ = 0', { cls: 'fg-tag-good', size: 10 });
+    s += text(566, 316, 'bp 0.9 °C, and ≈ 1 kcal/mol more stable', { cls: 'fg-sm', size: 10 });
+    return s;
+  },
+  caption: 'Two compounds, not two drawings of one — the C=C cannot rotate, so the methyls are stuck where they are. They are stereoisomers and neither is the mirror image of the other, which makes them <b>diastereomers</b> by the definition at the top of this section, and everything the definition predicts is measurable here: different dipole moment, different boiling point, different stability.',
+  note: 'Count the stereocenters in either structure and you get zero. That is the point worth taking away: the diastereomer relationship is defined by “not mirror images”, not by a stereocenter count, and a double bond is a perfectly good source of stereoisomerism on its own. The arrows below each structure are the two C–CH₃ bond dipoles redrawn from one origin: in the cis isomer they share an upward component and add to a small net dipole, and in the trans isomer they are exactly opposed and the molecule has none.',
+});
+
+/* A stereocenter on a vertical chain, drawn the way this chapter's tartaric
+   acid figure draws them: the chain runs up and down in the plane of the
+   page, and the other two groups sit on a wedge and a hash at `deg` and
+   180-deg. `left` is the group on the wedge. */
+function chainCentre(c, deg, wedgeLabel, hashLabel) {
+  const w = armEnd(c, deg, 46), h = armEnd(c, 180 - deg, 46);
+  let g = wedge(c, w, { rFrom: 15, rTo: 15, width: 10 });
+  g += hash(c, h, { rFrom: 15, rTo: 13, width: 13, rungs: 4 });
+  g += atom(w.x, w.y, wedgeLabel, { r: 15, size: 10, kind: 'hi' });
+  g += atom(h.x, h.y, hashLabel, { r: 13, size: 11 });
+  g += atom(c.x, c.y, 'C', { r: 15 });
+  return g;
+}
+
+/* ---------------------------------------------------------------- ch6.8 ---
+   The bromine result, drawn. This is the fix for the one outright chemistry
+   error a review found in the chapter, and the reason it survived is that
+   the two cases were only ever written down in words. */
+FIGURES.push({
+  id: 'bromine-cis-trans-outcomes',
+  section: 'meso',
+  anchor: '<h3>Why meso compounds matter in reactions</h3>',
+  alt: 'Two rows. cis-2-butene plus bromine, adding anti, gives 2,3-dibromobutane with the two bromines on wedges pointing opposite ways - the chiral (2S,3S) form, accompanied by an equal amount of (2R,3R). trans-2-butene plus bromine gives the mirror-symmetric arrangement, the achiral meso form.',
+  viewBox: '0 0 760 560',
+  build() {
+    let s = '';
+    const alkene = (cx, cy, trans) => {
+      const c2 = P(cx - 24, cy), c3 = P(cx + 24, cy);
+      const m1 = P(cx - 62, cy + 22), m2 = P(cx + 62, trans ? cy - 22 : cy + 22);
+      const h1 = P(cx - 62, cy - 22), h2 = P(cx + 62, trans ? cy + 22 : cy - 22);
+      let g = bond(c2, c3, { order: 2, rFrom: 0, rTo: 0, cls: 'fg-bond-hi', gap: 4 });
+      g += bond(c2, m1, { rFrom: 0, rTo: 17 }) + bond(c3, m2, { rFrom: 0, rTo: 17 });
+      g += bond(c2, h1, { rFrom: 0, rTo: 11 }) + bond(c3, h2, { rFrom: 0, rTo: 11 });
+      g += atom(m1.x, m1.y, 'CH₃', { r: 17, size: 10 });
+      g += atom(m2.x, m2.y, 'CH₃', { r: 17, size: 10 });
+      g += atom(h1.x, h1.y, 'H', { r: 11 });
+      g += atom(h2.x, h2.y, 'H', { r: 11 });
+      g += atom(c2.x, c2.y, '', { kind: 'point' });
+      g += atom(c3.x, c3.y, '', { kind: 'point' });
+      return g;
+    };
+    /* The product: CH3 on top, two stereocenters, CH3 underneath. `bottomDeg`
+       is where the lower centre's bromine points, and it is the only thing
+       that differs between the two rows. */
+    const product = (cx, cy, bottomDeg, topTag, botTag) => {
+      const top = P(cx, cy - 38), bot = P(cx, cy + 38);
+      let g = bond(P(cx, cy - 82), top, { rFrom: 17, rTo: 15 });
+      g += bond(top, bot, { rFrom: 15, rTo: 15 });
+      g += bond(bot, P(cx, cy + 82), { rFrom: 15, rTo: 17 });
+      g += atom(cx, cy - 82, 'CH₃', { r: 17, size: 10 });
+      g += atom(cx, cy + 82, 'CH₃', { r: 17, size: 10 });
+      g += chainCentre(top, 155, 'Br', 'H');
+      g += chainCentre(bot, bottomDeg, 'Br', 'H');
+      g += text(cx + 22, cy - 34, topTag, { cls: 'fg-tag-good', size: 12, anchor: 'start' });
+      g += text(cx + 22, cy + 42, botTag, { cls: 'fg-tag-good', size: 12, anchor: 'start' });
+      return g;
+    };
+
+    // ---------------- row 1: cis ----------------
+    s += tag(70, 40, 'CIS', { anchor: 'start' });
+    s += alkene(140, 150, false);
+    s += text(140, 232, 'cis-2-butene', { cls: 'fg-tag', size: 11 });
+    s += arrow(P(236, 150), P(330, 150));
+    s += text(283, 132, 'Br₂', { cls: 'fg-tag-good', size: 11 });
+    s += text(283, 172, 'anti addition', { cls: 'fg-sm', size: 9.5 });
+    s += product(420, 150, 25, 'S', 'S');
+    s += text(420, 262, '(2S,3S) — and (2R,3R) in exactly equal amount', { cls: 'fg-tag-good', size: 10.5 });
+    s += panel(536, 78, 200, 144, { kind: 'warn' });
+    s += text(636, 112, 'RACEMIC', { cls: 'fg-tag-warn', size: 12 });
+    s += text(636, 138, 'two chiral compounds,', { cls: 'fg-sm', size: 10 });
+    s += text(636, 156, '50:50, so α = 0', { cls: 'fg-sm', size: 10 });
+    s += text(636, 184, 'separable in principle', { cls: 'fg-sm', size: 10 });
+    s += text(636, 202, 'by resolution', { cls: 'fg-sm', size: 10 });
+
+    s += rule(24, 292, 736, 292);
+
+    // ---------------- row 2: trans ----------------
+    s += tag(70, 326, 'TRANS', { anchor: 'start' });
+    s += alkene(140, 420, true);
+    s += text(140, 502, 'trans-2-butene', { cls: 'fg-tag', size: 11 });
+    s += arrow(P(236, 420), P(330, 420));
+    s += text(283, 402, 'Br₂', { cls: 'fg-tag-good', size: 11 });
+    s += text(283, 442, 'anti addition', { cls: 'fg-sm', size: 9.5 });
+    s += product(420, 420, 205, 'S', 'R');
+    s += text(420, 532, 'one compound, with a mirror plane across the middle', { cls: 'fg-tag-good', size: 10.5 });
+    s += panel(536, 348, 200, 144, { kind: 'hi' });
+    s += text(636, 382, 'MESO', { cls: 'fg-tag-good', size: 12 });
+    s += text(636, 408, 'one achiral compound,', { cls: 'fg-sm', size: 10 });
+    s += text(636, 426, 'so α = 0', { cls: 'fg-sm', size: 10 });
+    s += text(636, 454, 'nothing to separate —', { cls: 'fg-sm', size: 10 });
+    s += text(636, 472, 'it has no enantiomer', { cls: 'fg-sm', size: 10 });
+    return s;
+  },
+  caption: 'Same reagent, same mechanism, same <b>anti</b> stereochemistry — and opposite answers, because the alkene geometry decides which face each methyl ends up on. The <i>cis</i> alkene gives the chiral pair; the <i>trans</i> alkene gives meso. Both flasks read zero on a polarimeter, and for completely different reasons: one holds two compounds that cancel, the other holds one compound that never rotated anything.',
+  note: 'Check the drawn products rather than trusting the label. In the lower product the two halves reflect through a horizontal plane — Br on a wedge to the left at both centers, H hashed to the right at both — so it is superimposable on its mirror image and has to be meso, and the descriptors come out opposite, S above and R below. In the upper product the lower center is turned over, the descriptors match, and no plane exists.',
+});
+
+/* ---------------------------------------------------------------- ch6.9 ---
+   The two chairs of cis-1,2-dimethylcyclohexane, which the section calls the
+   most subtle idea in the chapter and then asks the reader to imagine. */
+FIGURES.push({
+  id: 'cis-dimethyl-two-chairs',
+  section: 'meso',
+  anchor: '<h3>Meso compounds in rings</h3>',
+  alt: 'Two chair conformations of cis-1,2-dimethylcyclohexane. In the first, C1 carries an axial methyl pointing up and C2 an equatorial methyl; the ring flip gives the second, in which C1 is equatorial and C2 axial. Both methyls stay on the upper face in both chairs, and the two chairs are mirror images of each other.',
+  viewBox: '0 0 760 340',
+  build() {
+    let s = '';
+    const flipPts = (cx, cy, k) => CHAIR_V.map((v) => P(cx + v.x * k, cy - v.y * k));
+    const axUpFlip = (pts, i, L) => P(pts[i].x, pts[i].y - L);
+    const eqFlip = (pts, i, L) => P(pts[i].x + CHAIR_EQ[i].x * L, pts[i].y - CHAIR_EQ[i].y * L);
+
+    const methyl = (from, to) => bond(from, to, { rFrom: 0, rTo: 17 }) + atom(to.x, to.y, 'CH₃', { r: 17, size: 10 });
+
+    // left chair: axial-up methyl on carbon 2, equatorial methyl on carbon 1
+    const A = chair(180, 150, 0.78);
+    s += chairRing(A);
+    for (const p of A) s += atom(p.x, p.y, '', { kind: 'point' });
+    s += methyl(A[2], axialEnd(A, 2, 40));
+    s += methyl(A[1], equatorialEnd(A, 1, 38));
+    s += text(A[2].x - 20, A[2].y + 16, 'C2', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+    s += text(A[1].x + 8, A[1].y + 22, 'C1', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    s += text(180, 244, 'C2 axial · C1 equatorial', { cls: 'fg-tag', size: 11 });
+
+    // right chair: the ring flip. Same two carbons, faces unchanged.
+    const B = flipPts(580, 150, 0.78);
+    s += chairRing(B);
+    for (const p of B) s += atom(p.x, p.y, '', { kind: 'point' });
+    s += methyl(B[1], axUpFlip(B, 1, 40));
+    s += methyl(B[2], eqFlip(B, 2, 38));
+    s += text(B[2].x + 4, B[2].y - 14, 'C2', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    s += text(B[1].x + 10, B[1].y + 6, 'C1', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    s += text(580, 244, 'C1 axial · C2 equatorial', { cls: 'fg-tag', size: 11 });
+
+    s += arrow(P(320, 140), P(440, 140));
+    s += arrow(P(440, 162), P(320, 162));
+    s += text(380, 120, 'ring flip', { cls: 'fg-tag-good', size: 11 });
+    s += text(380, 186, 'about 100,000 times', { cls: 'fg-sm', size: 9.5 });
+    s += text(380, 202, 'a second', { cls: 'fg-sm', size: 9.5 });
+
+    s += tag(380, 36, 'BOTH METHYLS STAY ON THE UPPER FACE — THAT IS WHAT MAKES IT CIS');
+    s += rule(24, 268, 736, 268);
+    s += text(380, 294, 'Each chair on its own is chiral — neither has a mirror plane. But each is the MIRROR IMAGE of the other,', { cls: 'fg-sm', size: 10 });
+    s += text(380, 314, 'and they trade places far faster than anything could tell them apart, so what you can bottle is achiral.', { cls: 'fg-sm', size: 10 });
+    return s;
+  },
+  caption: 'The subtlest claim in the chapter, drawn. A ring flip cannot move a group from one face to the other — it only swaps axial for equatorial — so both methyls are still up after the flip and the compound is still <i>cis</i>. What has changed is that the two chairs are reflections of each other, and a molecule that spends half its life as each is achiral on any timescale you can observe.',
+  note: 'This is why the rule is written as “chirality is assessed over all accessible conformations” rather than “look at the drawing”. Freeze either chair and you have a chiral object; let it flip, roughly 10<sup>5</sup> times a second at room temperature, and the time-averaged molecule has a mirror plane. The flat hexagon drawing, with both methyls on wedges, shows that plane directly.',
+});
+
+/* --------------------------------------------------------------- ch6.10 ---
+   A meso compound as a Fischer projection, which both this section and the
+   Fischer section point at and neither draws. */
+FIGURES.push({
+  id: 'meso-in-a-fischer-projection',
+  section: 'meso',
+  anchor: 'A Fischer projection makes this especially easy, because the plane is usually just a horizontal line across the middle of the drawing.</p>',
+  alt: 'Two Fischer projections of tartaric acid side by side. In the meso form both OH groups are on the right and both H on the left, so a horizontal line through the middle reflects the top half onto the bottom. In the (2R,3R) form one OH is on the right and one on the left, and no such line exists.',
+  viewBox: '0 0 760 330',
+  build() {
+    let s = '';
+    const fischer = (cx, cy, rights) => {
+      let g = '';
+      const top = P(cx, cy - 86), bot = P(cx, cy + 86);
+      g += bond(top, bot, { rFrom: 16, rTo: 16 });
+      g += atom(top.x, top.y, 'COOH', { r: 24, size: 9.5 });
+      g += atom(bot.x, bot.y, 'COOH', { r: 24, size: 9.5 });
+      [-40, 40].forEach((dy, i) => {
+        const c = P(cx, cy + dy);
+        const right = rights[i];
+        const oh = P(cx + (right ? 64 : -64), c.y);
+        const h = P(cx + (right ? -64 : 64), c.y);
+        g += bond(oh, h, { rFrom: 18, rTo: 13 });
+        g += atom(oh.x, oh.y, 'OH', { r: 18, size: 10.5, kind: 'hi' });
+        g += atom(h.x, h.y, 'H', { r: 13, size: 11 });
+        g += atom(c.x, c.y, '', { kind: 'point' });
+      });
+      return g;
+    };
+    s += panel(24, 44, 340, 224, { kind: 'hi' });
+    s += fischer(194, 152, [true, true]);
+    s += `<line class="fg-dash-hi" x1="60" y1="152" x2="328" y2="152"></line>`;
+    s += text(336, 144, 'mirror', { cls: 'fg-tag-good', size: 9.5, anchor: 'end' });
+    s += text(194, 34, 'both OH on the same side', { cls: 'fg-tag', size: 11 });
+    s += text(194, 292, 'MESO — the line reflects the top half onto the bottom', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(194, 312, 'one achiral compound, [α] = 0', { cls: 'fg-sm', size: 10 });
+
+    s += panel(396, 44, 340, 224, { kind: 'warn' });
+    s += fischer(566, 152, [true, false]);
+    s += `<line class="fg-dash-hi" x1="432" y1="152" x2="700" y2="152"></line>`;
+    s += text(708, 144, 'not a mirror', { cls: 'fg-tag-warn', size: 9.5, anchor: 'end' });
+    s += text(566, 34, 'OH on opposite sides', { cls: 'fg-tag', size: 11 });
+    s += text(566, 292, 'CHIRAL — reflecting sends OH onto H', { cls: 'fg-tag-warn', size: 10.5 });
+    s += text(566, 312, '(2R,3R), with (2S,3S) as its enantiomer', { cls: 'fg-sm', size: 10 });
+    return s;
+  },
+  caption: 'The fastest meso test there is, once you can read the notation. In a Fischer projection every horizontal bond points at you and every vertical bond away, so the two halves of a drawing like this really are in the same conformation as each other — which is exactly the condition under which an internal mirror plane shows up as a line on the page.',
+  note: 'The left projection is <i>meso</i>-tartaric acid: reflect it through the dashed line and OH lands on OH, H on H, COOH on COOH. The right one is (2R,3R): the same reflection sends OH onto H, so it is not a symmetry of the molecule, and no other one exists. Fischer projections are covered properly in the last section of this chapter; this is the one use of them worth borrowing early.',
+});
+
+/* --------------------------------------------------------------- ch6.11 ---
+   The two worked examples the R/S section explicitly asks the reader to
+   compare, finally drawn beside each other. */
+FIGURES.push({
+  id: 'same-trace-opposite-answer',
+  section: 'rs-configuration',
+  anchor: 'This is the single most common way to lose marks in stereochemistry: reading the rotation correctly and forgetting to check where priority 4 points.</div>',
+  alt: 'Butan-2-ol and glyceraldehyde drawn in the same orientation, OH at the top and the two carbon groups lower left and lower right. Both trace 1 to 2 to 3 counterclockwise. Butan-2-ol has H on a hash and is S; glyceraldehyde has H on a wedge, so the answer is flipped and it is R.',
+  viewBox: '0 0 760 330',
+  build() {
+    let s = '';
+    const centreDraw = (cx, cy, g2, g3, hKind) => {
+      const c = P(cx, cy);
+      const oh = armEnd(c, 90, 62), a = armEnd(c, 200, 66), b = armEnd(c, 340, 66), h = armEnd(c, 270, 46);
+      let g = bond(c, oh, { rTo: 17 });
+      g += bond(c, a, { rTo: g2.length > 3 ? 22 : 17 });
+      g += bond(c, b, { rTo: g3.length > 3 ? 22 : 17 });
+      g += (hKind === 'wedge' ? wedge : hash)(c, h, { rTo: 12, width: 10, rungs: 4 });
+      g += atom(oh.x, oh.y, 'OH', { r: 17, size: 10.5, kind: 'hi' });
+      g += atom(a.x, a.y, g2, { r: g2.length > 3 ? 22 : 17, size: g2.length > 3 ? 9 : 10 });
+      g += atom(b.x, b.y, g3, { r: g3.length > 3 ? 22 : 17, size: g3.length > 3 ? 9 : 10 });
+      g += atom(h.x, h.y, 'H', { r: 12 });
+      g += atom(c.x, c.y, 'C', { kind: 'hi' });
+      g += text(oh.x + 24, oh.y - 6, '1', { cls: 'fg-tag-good', size: 13 });
+      g += text(a.x - 4, a.y + 34, '2', { cls: 'fg-tag-good', size: 13 });
+      g += text(b.x + 4, b.y + 34, '3', { cls: 'fg-tag-good', size: 13 });
+      g += text(h.x + 22, h.y + 4, '4', { cls: 'fg-tag-warn', size: 13, anchor: 'start' });
+      /* The 1 -> 2 -> 3 sweep as ONE arc, bowed out to the left so it passes
+         the lower-left group on its way to the lower-right one. Drawing it as
+         a short hop from 1 to 2 would leave the student to guess the rest. */
+      g += curve(P(cx - 16, cy - 44), P(cx + 44, cy + 30), { bow: 74, size: 8 });
+      return g;
+    };
+    s += panel(24, 40, 340, 214, { kind: 'hi' });
+    s += centreDraw(194, 132, 'CH₂CH₃', 'CH₃', 'hash');
+    s += text(194, 232, 'butan-2-ol · H on a HASH, pointing away', { cls: 'fg-sm', size: 10 });
+    s += text(194, 278, '1→2→3 counterclockwise, no flip', { cls: 'fg-sm', size: 10 });
+    s += text(194, 302, 'S', { cls: 'fg-tag-good', size: 18 });
+
+    s += panel(396, 40, 340, 214, { kind: 'warn' });
+    s += centreDraw(566, 132, 'CHO', 'CH₂OH', 'wedge');
+    s += text(566, 232, 'glyceraldehyde · H on a WEDGE, pointing at you', { cls: 'fg-sm', size: 10 });
+    s += text(566, 278, '1→2→3 counterclockwise, then FLIP', { cls: 'fg-sm', size: 10 });
+    s += text(566, 302, 'R', { cls: 'fg-tag-warn', size: 18 });
+    return s;
+  },
+  caption: 'Two molecules drawn in the same orientation, traced in the same direction, with <b>opposite</b> answers. Priorities run OH &gt; the more oxidized carbon &gt; the less oxidized carbon &gt; H in both: ethyl beats methyl on the left by (C,H,H) against (H,H,H), and CHO beats CH₂OH on the right by (O,O,H) against (O,H,H). Everything about the two readings is identical except which bond the hydrogen sits on.',
+  note: 'Get into the habit of finding priority 4 <i>before</i> tracing, not after. The flip is not an optional refinement — skipping it does not give you a slightly wrong answer, it gives you the enantiomer, and it gives it to you every single time.',
+});
+
+/* --------------------------------------------------------------- ch6.12 ---
+   The claim the Fischer section is built on: four stereocenters stacked up
+   become a pattern you can match at a glance. Asserted, never shown. */
+FIGURES.push({
+  id: 'sugar-patterns',
+  section: 'fischer',
+  anchor: '<h3>Why Fischer projections are still used</h3>',
+  alt: 'Fischer projections of D-glucose, D-mannose and D-galactose side by side. Each has CHO at the top and CH2OH at the bottom with four stereocenters between. D-glucose reads right, left, right, right; D-mannose differs only at C2 and D-galactose only at C4.',
+  viewBox: '0 0 760 400',
+  build() {
+    let s = '';
+    const sugar = (cx, pattern, diff) => {
+      let g = '';
+      const topY = 76, botY = 316;
+      g += bond(P(cx, topY), P(cx, botY), { rFrom: 17, rTo: 22 });
+      g += atom(cx, topY, 'CHO', { r: 19, size: 9.5 });
+      g += atom(cx, botY, 'CH₂OH', { r: 23, size: 9 });
+      pattern.forEach((right, i) => {
+        const y = 124 + i * 48;
+        const oh = P(cx + (right ? 52 : -52), y), h = P(cx + (right ? -52 : 52), y);
+        const hot = diff === i + 2;
+        g += bond(oh, h, { rFrom: 18, rTo: 12, cls: hot ? 'fg-bond-hi' : 'fg-bond' });
+        g += atom(oh.x, oh.y, 'OH', { r: 18, size: 10.5, kind: hot ? 'warn' : 'hi' });
+        g += atom(h.x, h.y, 'H', { r: 12 });
+        g += atom(cx, y, '', { kind: 'point' });
+        g += text(cx - 78, y + 4, 'C' + (i + 2), { cls: 'fg-sm', size: 9 });
+      });
+      return g;
+    };
+    s += tag(380, 34, 'FOUR STEREOCENTERS, READ AS A PATTERN INSTEAD OF ANALYZED ONE BY ONE');
+    s += sugar(150, [true, false, true, true], 0);
+    s += text(150, 356, 'D-glucose', { cls: 'fg-tag-good', size: 12 });
+    s += text(150, 376, 'right, left, right, right', { cls: 'fg-sm', size: 10 });
+
+    s += sugar(380, [false, false, true, true], 2);
+    s += text(380, 356, 'D-mannose', { cls: 'fg-tag-good', size: 12 });
+    s += text(380, 376, 'differs from glucose at C2 only', { cls: 'fg-sm', size: 10 });
+
+    s += sugar(614, [true, false, false, true], 4);
+    s += text(614, 356, 'D-galactose', { cls: 'fg-tag-good', size: 12 });
+    s += text(614, 376, 'differs from glucose at C4 only', { cls: 'fg-sm', size: 10 });
+
+    s += text(380, 56, 'and in all three the bottom stereocenter, C5, has its OH on the right — which is what the D stands for', { cls: 'fg-sm', size: 9.5 });
+    return s;
+  },
+  caption: 'Why the notation survived. All three are aldohexoses with four stereocenters, 2<sup>4</sup> = 16 of which exist; drawn with wedges and dashes they take real effort to tell apart, and stacked as Fischer projections they are three patterns you can compare in a second. Glucose reads <b>right, left, right, right</b>, and each of the others changes exactly one entry in that list.',
+  note: 'A pair that differs at exactly one stereocenter is an <b>epimer</b> pair, so glucose and mannose are C2 epimers and glucose and galactose are C4 epimers. Note also where D comes from: it is set by the bottom stereocenter, C5, and by nothing else — all three sugars have that OH on the right, and all three are D even though their full descriptors are mixtures of R and S.',
 });
 
 const START = (id) => `<!-- fig:${id}:start -->`;

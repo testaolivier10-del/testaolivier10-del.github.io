@@ -213,9 +213,15 @@
   })();
 
   M['chair-dimethylcyclohexane'] = {
-    name: 'trans-1,2-dimethylcyclohexane (chair)', formula: 'C₈H₁₆', viewBox: '0 0 320 180',
-    // Only the ring hydrogens whose axial/equatorial fate the lesson turns on are
-    // drawn; showing all ten would bury the point this figure exists to make.
+    name: 'cis-1,2-dimethylcyclohexane (chair)', formula: 'C₈H₁₆', viewBox: '0 0 320 180',
+    // Ring vertices as drawn in the conformations chapter. The two tips of the
+    // chair are r5 (highest) and r2 (lowest); axial bonds run straight up and
+    // down and alternate round the ring, so axial points UP at r1, r3 and r5
+    // and DOWN at r2, r4 and r6. The methyls sit on adjacent carbons: axial-up
+    // on r5, and equatorial on r4 (whose axial points down, so its equatorial
+    // group is on the upper face too). Both on the upper face is what makes
+    // this the CIS isomer - the isomer with one methyl axial and one
+    // equatorial. trans-1,2-dimethylcyclohexane is diequatorial or diaxial.
     partialH: 'chair: only the hydrogens under discussion are drawn',
     atoms: {
       r1: { x:60,  y:104,r:13, label:'C' },
@@ -224,14 +230,14 @@
       r4: { x:228, y:80, r:13, label:'C' },
       r5: { x:176, y:54, r:13, label:'C' },
       r6: { x:112, y:66, r:13, label:'C' },
-      me6:{ x:112, y:18, r:17, label:'CH₃', role:'axial-substituent', note:'Axial methyl — pointing straight up into two 1,3-diaxial clashes. This is the costly position.' },
-      me5:{ x:228, y:28, r:17, label:'CH₃', role:'equatorial-substituent', note:'Equatorial methyl — pointing out around the ring’s edge, clear of everything.' },
-      hax1:{x:60,  y:56, r:11, label:'H', role:'syn-axial-h', note:'One of the axial hydrogens the axial methyl is crashing into, three carbons away on the same face.' },
-      hax3:{x:176, y:164,r:11, label:'H', role:'axial-h' }
+      me6:{ x:176, y:20, r:17, label:'CH₃', role:'axial-substituent', note:'Axial methyl — straight up, parallel to the ring axis, into two 1,3-diaxial clashes. This is the costly position.' },
+      me5:{ x:263, y:73, r:17, label:'CH₃', role:'equatorial-substituent', note:'Equatorial methyl — pointing out around the ring’s edge, clear of everything. Its carbon’s axial bond points down, so this group is still on the upper face.' },
+      hax1:{x:60,  y:70, r:11, label:'H', role:'syn-axial-h', note:'An axial hydrogen two carbons round from the axial methyl and on the same face — one of the two it is crashing into.' },
+      hax3:{x:112, y:164,r:11, label:'H', role:'axial-h' }
     },
     bonds: [{a:'r1',b:'r2'},{a:'r2',b:'r3'},{a:'r3',b:'r4'},{a:'r4',b:'r5'},{a:'r5',b:'r6'},{a:'r6',b:'r1'},
-            {a:'r6',b:'me6'},{a:'r5',b:'me5'},{a:'r1',b:'hax1',style:'faint'},{a:'r3',b:'hax3',style:'faint'}],
-    caption: 'One methyl axial, one equatorial. A ring flip swaps both.'
+            {a:'r5',b:'me6'},{a:'r4',b:'me5'},{a:'r1',b:'hax1',style:'faint'},{a:'r2',b:'hax3',style:'faint'}],
+    caption: 'One methyl axial, one equatorial, both on the upper face — the cis isomer. A ring flip swaps which one is axial.'
   };
 
   /* ---- Acids, bases and conjugates ------------------------------------ */
@@ -875,9 +881,13 @@
       h2: { x:260, y:100,r:11, label:'H' },
       a2: { x:276, y:158,r:15, label:'CO₂H' }
     },
-    bonds: [{a:'a1',b:'c1'},{a:'c1',b:'o1'},{a:'c1',b:'h1'},{a:'c1',b:'c2'},
-            {a:'c2',b:'o2'},{a:'c2',b:'h2'},{a:'c2',b:'a2'}],
-    caption: 'Two stereocenters, (R) and (S) — and a mirror plane running between them. Superimposable on its own reflection, so it is achiral, and optically inactive.'
+    // The stereo bonds are the whole point of the drawing, so they are drawn:
+    // without them a plain sketch cannot say which stereoisomer this is. Read
+    // by CIP, the top center comes out S and the bottom one R - opposite
+    // descriptors on two constitutionally identical halves, which is meso.
+    bonds: [{a:'a1',b:'c1'},{a:'c1',b:'o1',style:'wedge'},{a:'c1',b:'h1',style:'dash'},{a:'c1',b:'c2'},
+            {a:'c2',b:'o2',style:'dash'},{a:'c2',b:'h2',style:'wedge'},{a:'c2',b:'a2'}],
+    caption: 'Two stereocenters with opposite descriptors on identical halves — (S) above, (R) below. The molecule is superimposable on its own reflection, so it is achiral and optically inactive.'
   };
 
   /* ---- Renderer -------------------------------------------------------- */

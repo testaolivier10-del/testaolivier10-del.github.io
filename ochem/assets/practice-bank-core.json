@@ -11307,26 +11307,26 @@
  ],
  "chirality": [
   {
-   "q": "A chiral molecule is one that:",
+   "q": "2-Chloropropane is drawn with Cl on a wedge, H on a hash, and a methyl group on each side. Is it chiral?",
    "options": [
-    "Has no internal mirror",
-    "Has a plane of symmetry",
-    "Contains no carbon",
-    "Has no functional groups"
+    "Chiral: a wedge and a hash make any carbon handed",
+    "Chiral: chlorine outranks both of the methyl groups",
+    "Achiral: the two methyls reflect onto each other",
+    "Achiral: the chlorine cancels the two methyl groups"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "A molecule with an internal plane of symmetry is generally:",
+   "q": "A student finds a mirror plane in one drawing and calls the compound achiral. What still has to be checked?",
    "options": [
-    "Chiral",
-    "Achiral",
-    "Always a stereocenter",
-    "Impossible to draw"
+    "That the drawing uses wedges, not hashes",
+    "That the plane hits at least one stereocenter",
+    "That the groups it exchanges are identical throughout",
+    "That the molecule has an even carbon count"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -11339,7 +11339,7 @@
     "A square piece of paper"
    ],
    "correct": 2,
-   "difficulty": "hard",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -11445,12 +11445,12 @@
    "type": "mcq"
   },
   {
-   "q": "Which symmetry feature, if present in a molecule's lowest-energy conformation or by rapid averaging, guarantees the molecule is achiral?",
+   "q": "cis-1,2-Dimethylcyclohexane flips between two chairs, neither with a mirror plane. What follows?",
    "options": [
-    "A carbon-carbon single bond",
-    "An internal mirror plane",
-    "A ring of six carbons",
-    "A double bond"
+    "It is chiral, since no conformation has a plane",
+    "Nothing yet — chirality is judged over all conformations",
+    "It is chiral, and the chairs separate when cold",
+    "It has no stereocenters, so the question lapses"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -11489,7 +11489,7 @@
    "type": "tf"
   },
   {
-   "q": "A biphenyl compound with four large, different substituents ortho to the ring-ring bond can be chiral even though it has no sp3 stereocenter. This type of chirality arises from:",
+   "q": "A biphenyl carrying four bulky ortho substituents can be chiral with no sp³ stereocenter anywhere. That chirality comes from:",
    "options": [
     "A hidden carbocation",
     "Resonance between the two rings",
@@ -11567,14 +11567,14 @@
    "type": "tf"
   },
   {
-   "q": "In 3-bromo-1-butene (CH2=CH-CHBr-CH3), is the molecule chiral?",
+   "q": "Is 3-bromo-1-butene (CH₂=CH–CHBr–CH₃) chiral?",
    "options": [
-    "No, the double bond prevents chirality",
-    "No, C3 has two identical hydrogens",
-    "Yes, but only in its cis form",
-    "Yes, C3 has H, Br, CH3 and vinyl"
+    "No — the double bond rules it out",
+    "No — C3 has two identical hydrogens",
+    "Yes — C3 carries H, Br, CH₃ and vinyl",
+    "Yes, but in its cis form alone"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -11591,7 +11591,7 @@
    "type": "mcq"
   },
   {
-   "q": "A pair of object's left and right hands is commonly used as an analogy for chirality because hands are mirror images of each other that cannot be superimposed.",
+   "q": "The pairing of a left hand with a right hand is the standard everyday analogy for chirality, because the two are mirror images that cannot be superimposed.",
    "options": [
     "True",
     "False"
@@ -11601,26 +11601,28 @@
    "type": "tf"
   },
   {
-   "q": "Which of these is the best reason that natural amino acids (other than glycine) found in proteins are chiral?",
+   "q": "Why are the natural amino acids other than glycine chiral?",
    "options": [
-    "They contain nitrogen",
-    "Their alpha carbon is bonded to four different groups: H, NH2, COOH, and a side chain",
-    "They form peptide bonds",
-    "They dissolve in water"
+    "They all contain a nitrogen atom",
+    "They join up into peptide bonds",
+    "They dissolve readily in water",
+    "Their alpha carbon has four different groups"
    ],
-   "correct": 1,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "An achiral molecule can still contain individual atoms that, viewed in isolation, are bonded to four different groups.",
+   "q": "Penta-2,3-diene, CH₃–CH=C=CH–CH₃, has no sp³ stereocenter. Why is it chiral?",
    "options": [
-    "True",
-    "False"
+    "Its methyl groups repel into a twist",
+    "Its central carbon has four different groups",
+    "Its double bonds cannot rotate",
+    "Its cumulated double bonds hold the ends perpendicular"
    ],
-   "correct": 0,
+   "correct": 3,
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Only molecules containing at least one sp3 carbon can be chiral.",
@@ -11695,14 +11697,16 @@
    "type": "mcq"
   },
   {
-   "q": "A carbon atom bonded to two identical substituents can still be a stereocenter.",
+   "q": "In 3-methylcyclohexan-1-ol, C1 carries OH, H and two ring bonds. Why is it a stereocenter?",
    "options": [
-    "True",
-    "False"
+    "Any ring carbon with an OH is one",
+    "The two ring paths reach the methyl at different counts",
+    "The OH and the methyl are different groups",
+    "A six-ring fixes its substituent positions"
    ],
    "correct": 1,
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "How many stereocenters does 2,3-dibromobutane contain?",
@@ -11761,12 +11765,12 @@
    "type": "tf"
   },
   {
-   "q": "Why do most simple trisubstituted amines (R1R2R3N) fail to show observable optical activity even though nitrogen with three different groups plus a lone pair is technically a stereocenter?",
+   "q": "Why do most trisubstituted amines show no optical activity, although N with three different groups and a lone pair looks like a stereocenter?",
    "options": [
     "Nitrogen cannot form four bonds",
-    "The lone pair blocks any stereochemistry from forming",
-    "Amines are never polar enough to rotate light",
-    "Rapid pyramidal inversion interconverts them"
+    "The lone pair blocks any stereochemistry",
+    "Amines are too weakly polar to rotate light",
+    "Rapid pyramidal inversion interconverts the two"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -11783,14 +11787,14 @@
    "type": "tf"
   },
   {
-   "q": "What is the maximum number of distinct stereoisomers possible for a molecule with exactly 3 independent stereocenters, assuming no internal symmetry?",
+   "q": "A compound contains three stereocenters. Which statement about its stereoisomers is correct?",
    "options": [
-    "8",
-    "3",
-    "6",
-    "9"
+    "Exactly eight exist, in every compound of that kind",
+    "Exactly three exist, one for each stereocenter present",
+    "Sixteen exist, two for every pair of stereocenters",
+    "At most eight exist, and internal symmetry can make it fewer"
    ],
-   "correct": 0,
+   "correct": 3,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -11887,14 +11891,14 @@
    "type": "mcq"
   },
   {
-   "q": "Identify the stereocenter, if any, in 1-bromo-1-chloro-1-fluoroethane (CH3-CBrClF).",
+   "q": "Scanning a skeletal structure for stereocenters, which carbons can be struck out before comparing any branches?",
    "options": [
-    "The CH3 carbon",
-    "There is no stereocenter",
-    "Both carbons are stereocenters",
-    "The carbon bonded to Br, Cl, F, and CH3"
+    "Every carbon that is bonded to an oxygen atom",
+    "Every CH₃, every chain CH₂, and every carbon in a double bond",
+    "Every carbon that sits inside a ring system",
+    "Every carbon at either end of the main chain"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -11955,31 +11959,31 @@
    "type": "mcq"
   },
   {
-   "q": "Can a bridgehead or highly geometrically constrained ring carbon still function as a normal tetrahedral stereocenter as described in intro courses?",
+   "q": "Can a bridgehead or otherwise strained ring carbon still act as an ordinary tetrahedral stereocenter?",
    "options": [
-    "No, ring carbons can never be stereocenters",
-    "Yes, but only in six-membered rings",
-    "No, only carbons outside of rings can be stereocenters",
-    "Yes, if all four substituents differ"
+    "No, a ring carbon is never a stereocenter",
+    "Yes, provided all four of its substituents differ",
+    "Yes, but in six-membered rings alone",
+    "No, only carbons outside rings qualify"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "The minimum number of stereocenters a molecule needs in order to exhibit any enantiomers at all is:",
+   "q": "For a molecule whose only possible source of chirality is a tetrahedral stereocenter, the minimum number of stereocenters needed before it can have an enantiomer is:",
    "options": [
+    "Zero",
     "One",
-    "Zero, since axial or planar chirality requires none",
     "Two",
     "Three"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "If a stereocenter's four substituents include two groups that are constitutional isomers of each other but not identical (for example, an n-propyl group and an isopropyl group), that carbon still counts as a stereocenter.",
+   "q": "A carbon whose four groups include two constitutional isomers of each other, such as n-propyl and isopropyl, still counts as a stereocenter.",
    "options": [
     "True",
     "False"
@@ -11991,14 +11995,14 @@
  ],
  "enantiomers": [
   {
-   "q": "Enantiomers are stereoisomers that are:",
+   "q": "A sample of a chiral compound shows [α] = +21°. The pure (+) enantiomer is +30°. What is the enantiomeric excess?",
    "options": [
-    "Exact mirror images of each other, non-superimposable",
-    "Non-mirror-image stereoisomers",
-    "Identical molecules",
-    "Structural (constitutional) isomers"
+    "30%",
+    "70%",
+    "21%",
+    "51%"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -12023,18 +12027,18 @@
     "90:10"
    ],
    "correct": 2,
-   "difficulty": "hard",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which pair of terms correctly completes the sentence: Enantiomers share the same ___ but differ in ___.",
+   "q": "A sample is 92% (R) and 8% (S). What is its enantiomeric excess?",
    "options": [
-    "molecular formula; molecular formula",
-    "functional groups; connectivity",
-    "boiling point; melting point",
-    "connectivity; three-dimensional spatial arrangement"
+    "92%",
+    "8%",
+    "84%",
+    "46%"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -12049,12 +12053,12 @@
    "type": "tf"
   },
   {
-   "q": "Why do two enantiomers of a chiral drug sometimes have very different biological effects, even though their bulk physical properties are identical?",
+   "q": "Why can two enantiomers of a drug act very differently in the body?",
    "options": [
-    "Because enzymes and receptors in the body are themselves chiral",
-    "Because one enantiomer always has a different molecular formula",
-    "Because enantiomers have different numbers of atoms",
-    "Because the body can convert one enantiomer into a constitutional isomer"
+    "Enzymes and receptors are themselves chiral",
+    "One enantiomer has a different formula",
+    "Enantiomers have different atom counts",
+    "The body converts one into a constitutional isomer"
    ],
    "correct": 0,
    "difficulty": "medium",
@@ -12097,7 +12101,7 @@
    "type": "mcq"
   },
   {
-   "q": "Reacting a single enantiomer of a chiral starting material with an achiral reagent in an otherwise achiral environment, with no chiral catalyst or influence present, will generally produce:",
+   "q": "Reacting a single enantiomer of a chiral starting material with an achiral reagent, at a site well away from the stereocenter and with no chiral influence anywhere in the flask, will generally produce:",
    "options": [
     "Retention of the original handedness",
     "Only the opposite enantiomer of product",
@@ -12177,12 +12181,12 @@
    "type": "tf"
   },
   {
-   "q": "If a reaction is run using an optically pure chiral catalyst starting from an achiral starting material, what outcome is possible that would not happen with an achiral catalyst?",
+   "q": "An optically pure chiral catalyst acts on an achiral starting material. What becomes possible that an achiral catalyst could not do?",
    "options": [
-    "The product will always be racemic",
+    "The product comes out racemic regardless",
     "The product can form as a single enantiomer",
-    "The reaction will not proceed at all",
-    "The starting material will become a diastereomer"
+    "The reaction fails to proceed",
+    "The starting material turns into a diastereomer"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -12211,12 +12215,12 @@
    "type": "tf"
   },
   {
-   "q": "When two enantiomers react with the same single achiral reagent under identical conditions, the rates of reaction are:",
+   "q": "Two enantiomers meet the same achiral reagent under identical conditions. Their reaction rates are:",
    "options": [
-    "Always different because one enantiomer is always more reactive",
+    "Different, one enantiomer being more reactive",
     "Impossible to compare",
-    "Dependent only on temperature, not on structure",
-    "Identical, since the reagent cannot distinguish them"
+    "Set by temperature alone",
+    "Identical, as the reagent cannot tell them apart"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -12235,14 +12239,16 @@
    "type": "mcq"
   },
   {
-   "q": "A molecule that is achiral cannot have an enantiomer distinct from itself.",
+   "q": "A solution at 0.20 g/mL is measured in a 1.0 dm tube and shows an observed rotation of +5.2°. What is the specific rotation?",
    "options": [
-    "True",
-    "False"
+    "+5.2°",
+    "+1.04°",
+    "+13°",
+    "+26°"
    ],
-   "correct": 0,
+   "correct": 3,
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Label the relationship: (2R,3R)-2,3-dichlorobutane and (2S,3S)-2,3-dichlorobutane are:",
@@ -12281,12 +12287,12 @@
    "type": "mcq"
   },
   {
-   "q": "Why can a standard, non-chiral gas chromatography column fail to separate a racemic mixture into its two enantiomers, while a specialized chiral GC column succeeds?",
+   "q": "Why does an ordinary GC column fail to separate a racemate when a chiral GC column succeeds?",
    "options": [
-    "A non-chiral column cannot distinguish the enantiomers, but a chiral phase can",
-    "Non-chiral columns are simply too short",
-    "Enantiomers have different molecular weights that a non-chiral column cannot detect",
-    "Chiral columns work by heating the sample to different temperatures for each enantiomer"
+    "An achiral phase cannot distinguish the two; a chiral one can",
+    "Ordinary columns are simply too short for the job",
+    "The enantiomers differ in molecular weight",
+    "A chiral column heats each enantiomer differently"
    ],
    "correct": 0,
    "difficulty": "hard",
@@ -12373,14 +12379,14 @@
    "type": "mcq"
   },
   {
-   "q": "Which best describes the relationship between diastereomers?",
+   "q": "Which pair below is a pair of diastereomers even though neither molecule contains a stereocenter?",
    "options": [
-    "They are non-superimposable mirror images of each other",
-    "They have different molecular formulas",
-    "They differ only in optical rotation sign",
-    "They are stereoisomers that are not mirror images of each other"
+    "(R)- and (S)-2-chlorobutane",
+    "butan-1-ol and butan-2-ol",
+    "cis- and trans-2-butene",
+    "two chair conformations of cyclohexane"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -12429,14 +12435,14 @@
    "type": "tf"
   },
   {
-   "q": "Why can diastereomers be separated by ordinary techniques like distillation or recrystallization, while enantiomers usually cannot?",
+   "q": "Why can diastereomers be separated by distillation or recrystallization when enantiomers usually cannot?",
    "options": [
-    "Diastereomers have different molecular formulas",
+    "Diastereomers have different formulas",
     "Diastereomers are always solids",
-    "Diastereomers differ in physical properties",
-    "Enantiomers cannot be purified at all"
+    "Enantiomers cannot be purified at all",
+    "Diastereomers differ in physical properties"
    ],
-   "correct": 2,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -12451,14 +12457,14 @@
    "type": "tf"
   },
   {
-   "q": "In a sugar with several stereocenters, epimers are a specific type of diastereomer defined as isomers that differ in configuration at:",
+   "q": "Epimers are a kind of diastereomer, defined as isomers differing in configuration at:",
    "options": [
     "Every stereocenter",
     "No stereocenters",
-    "All stereocenters except one",
-    "Exactly one stereocenter"
+    "Exactly one stereocenter",
+    "All but one stereocenter"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -12509,7 +12515,7 @@
    "type": "mcq"
   },
   {
-   "q": "Diastereomers can sometimes differ enough in reactivity that one diastereomer reacts faster with a given reagent than the other does.",
+   "q": "Two diastereomers can differ enough in reactivity that one reacts faster than the other with the same reagent.",
    "options": [
     "True",
     "False"
@@ -12519,26 +12525,26 @@
    "type": "tf"
   },
   {
-   "q": "Which statement best distinguishes diastereomers from constitutional isomers?",
+   "q": "What separates diastereomers from constitutional isomers?",
    "options": [
-    "Diastereomers have different connectivity; constitutional isomers have the same connectivity",
+    "Diastereomers differ in connectivity; constitutional isomers do not",
+    "Diastereomers share connectivity and differ in space; constitutional isomers differ in connectivity",
     "There is no real difference between the two categories",
-    "Constitutional isomers always have the same molecular formula as diastereomers of a completely different compound",
-    "Diastereomers share connectivity and differ in space; constitutional isomers differ in connectivity"
+    "Constitutional isomers share a formula with unrelated diastereomers"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "For a molecule containing two independent stereocenters with no special internal symmetry, how many total diastereomeric relationships exist among its four stereoisomers?",
+   "q": "For a compound with two independent stereocenters and no internal symmetry, which statement about its four stereoisomers is correct?",
    "options": [
-    "Each has one enantiomer and two diastereomer partners",
-    "Each stereoisomer has three enantiomer partners",
-    "All four stereoisomers are identical",
-    "There are no diastereomers possible with only two stereocenters"
+    "Each one has three enantiomers among the other three",
+    "All four turn out to be the same compound",
+    "Each one has a single enantiomer and two diastereomers",
+    "Two stereocenters cannot give diastereomers"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -12565,24 +12571,24 @@
    "type": "tf"
   },
   {
-   "q": "A compound has stereocenters that are related such that flipping only one of two centers gives a diastereomer, while flipping both gives the enantiomer. If you flip zero centers, what do you get?",
+   "q": "Flipping one of two stereocenters gives a diastereomer and flipping both gives the enantiomer. What does flipping neither give?",
    "options": [
     "A diastereomer",
+    "The original compound, unchanged",
     "An enantiomer",
-    "The original, identical compound",
-    "A meso compound in every case"
+    "A meso compound"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Why is it important in synthesis to control which diastereomer of a product forms, given that diastereomers (unlike enantiomers) are often separable?",
+   "q": "Why control which diastereomer forms in a synthesis, when diastereomers can usually be separated?",
    "options": [
-    "Because diastereomers have identical properties anyway, so it does not matter",
-    "Because diastereomers always have different molecular formulas",
-    "Because only one diastereomer is ever chemically stable",
-    "Because diastereomers can differ in activity and stability"
+    "Their properties are identical anyway",
+    "Their formulas differ from each other",
+    "Only one of them is ever stable",
+    "They can differ in activity and stability"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -12647,14 +12653,16 @@
    "type": "mcq"
   },
   {
-   "q": "Enantiomers always have identical diastereomeric relationships to any third, achiral reference compound.",
+   "q": "Anti addition of Br₂ to trans-2-butene gives meso-2,3-dibromobutane. What does the same reaction give with cis-2-butene?",
    "options": [
-    "True",
-    "False"
+    "The meso compound again, since the mechanism is unchanged",
+    "The (2R,3R) and (2S,3S) pair, in equal amounts",
+    "A single pure enantiomer of 2,3-dibromobutane",
+    "A mixture of 2,3-dibromobutane and 1,2-dibromobutane"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Which of these pairs is a diastereomeric pair rather than an enantiomeric pair?",
@@ -12669,7 +12677,7 @@
    "type": "mcq"
   },
   {
-   "q": "Because diastereomers are different compounds, a chiral catalyst is not required to distinguish between them in a reaction — an ordinary achiral reagent can, in principle, react with them at different rates.",
+   "q": "An ordinary achiral reagent can, in principle, react with two diastereomers at different rates.",
    "options": [
     "True",
     "False"
@@ -12717,14 +12725,14 @@
    "type": "mcq"
   },
   {
-   "q": "Meso compounds contain stereocenters but are overall achiral because of:",
+   "q": "2,3-Dibromobutane is meso as (2R,3S). Is (2R,3S)-2-bromo-3-chlorobutane meso too?",
    "options": [
-    "A total absence of any stereocenters",
-    "Their large molecular weight",
-    "Being part of a racemic mixture",
-    "An internal plane of symmetry"
+    "Yes — opposite descriptors is the meso pattern",
+    "Yes, in the eclipsed conformation",
+    "No — one half ends in Br, the other in Cl",
+    "No — both halogens must share a carbon"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -12763,34 +12771,36 @@
    "type": "mcq"
   },
   {
-   "q": "Meso compounds most commonly arise in molecules that have:",
+   "q": "Anti addition of Br₂ to which alkene gives meso-2,3-dibromobutane as a single achiral product?",
    "options": [
-    "A single stereocenter with no symmetry",
-    "No stereocenters at all",
-    "Two symmetric stereocenters",
-    "Only aromatic rings"
+    "cis-2-butene",
+    "trans-2-butene",
+    "1-butene",
+    "2-methylpropene"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "A meso compound shows zero net optical rotation even though it contains two or more individual stereocenters.",
+   "q": "A flask reads zero on a polarimeter. What decides whether it holds a meso compound or a racemate?",
    "options": [
-    "True",
-    "False"
+    "Whether the compound has an even stereocenter count",
+    "Whether the flask holds one compound or two",
+    "Whether it can be recrystallized",
+    "Whether its melting point is the highest"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "2,3-dibromobutane can exist as which set of stereoisomers?",
    "options": [
-    "Only a single achiral compound",
+    "A single achiral compound only",
     "Four distinct enantiomers",
     "Two meso compounds",
-    "A pair of enantiomers (R,R and S,S) plus one meso diastereomer (R,S)"
+    "An (R,R)/(S,S) enantiomer pair plus one meso (R,S) form"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -12807,26 +12817,26 @@
    "type": "tf"
   },
   {
-   "q": "Why does (2R,3S)-2,3-dibromobutane collapse to the same single meso compound as (2S,3R)-2,3-dibromobutane, rather than being two different molecules?",
+   "q": "Why are (2R,3S)- and (2S,3R)-2,3-dibromobutane one compound rather than two?",
    "options": [
-    "Because a 180-degree turn superimposes them",
-    "Because R and S labels do not actually matter",
-    "Because bromine atoms are achiral",
-    "Because the molecule has no stereocenters"
+    "A 180° turn superimposes one on the other",
+    "R and S labels carry no real meaning",
+    "Bromine atoms are themselves achiral",
+    "The molecule has no stereocenters at all"
    ],
    "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "If a molecule has two stereocenters that are NOT symmetric with each other (bonded to different sets of substituents), can a meso form exist for it?",
+   "q": "Two stereocenters carry entirely different sets of substituents. Can that compound have a meso form?",
    "options": [
-    "Yes, always",
-    "No, meso requires a symmetric substitution pattern",
-    "Yes, but only in six-membered rings",
-    "No, meso compounds require at least three stereocenters"
+    "Yes, in every case where both are stereocenters",
+    "Yes, but in six-membered rings alone",
+    "No — meso needs a symmetric substitution pattern",
+    "No — meso needs at least three stereocenters"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -12855,12 +12865,12 @@
    "type": "mcq"
   },
   {
-   "q": "A meso compound's melting point and other physical properties should generally be compared against which other stereoisomer(s) of the same constitution, since they are not identical compounds?",
+   "q": "A meso compound's melting point should be compared against which other stereoisomers of the same constitution?",
    "options": [
-    "They differ from the chiral (R,R)/(S,S) pair",
-    "They should be identical to the chiral enantiomers' properties",
-    "They cannot be measured at all",
-    "They are always exactly double the melting point of the enantiomers"
+    "The chiral (R,R)/(S,S) pair, which it differs from",
+    "The chiral pair, whose values it matches exactly",
+    "Nothing — its properties cannot be measured",
+    "Its own value doubled, by convention"
    ],
    "correct": 0,
    "difficulty": "medium",
@@ -12911,12 +12921,12 @@
    "type": "tf"
   },
   {
-   "q": "If you draw out all four apparent stereocenter combinations (R,R), (S,S), (R,S), (S,R) for a symmetric two-stereocenter molecule, how many unique compounds do you actually get?",
+   "q": "Which drawn arrangement of 2,3-dibromobutane is the meso form?",
    "options": [
-    "Four unique compounds",
-    "Two unique compounds",
-    "One unique compound",
-    "Three compounds"
+    "Br on a wedge to the left at the top and to the right at the bottom",
+    "Br on a wedge at the top center and in the plane at the bottom",
+    "Br on a hash at both centers, with both methyl groups on wedges",
+    "Br on a wedge to the left at both centers, H hashed to the right at both"
    ],
    "correct": 3,
    "difficulty": "hard",
@@ -12955,46 +12965,48 @@
    "type": "tf"
   },
   {
-   "q": "Which statement best explains why a meso compound is NOT simply a 50:50 mixture of two enantiomers (i.e., not the same thing as a racemic mixture)?",
+   "q": "Why is a meso compound not the same thing as a racemic mixture?",
    "options": [
-    "A meso compound has no stereocenters at all, while a racemic mixture does",
-    "A meso compound is one pure, internally symmetric substance",
-    "A meso compound and a racemic mixture are actually the exact same thing",
-    "A meso compound rotates light strongly, while a racemic mixture does not"
+    "It has no stereocenters, unlike a racemate",
+    "It is one pure, internally symmetric substance",
+    "The two are in fact the same thing",
+    "It rotates light strongly, unlike a racemate"
    ],
    "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "For a molecule with three stereocenters where the first and third are mirror images of each other across a symmetric middle carbon, a meso form is:",
+   "q": "Three stereocenters, with the first and third mirroring each other across a symmetric middle carbon. Is a meso form possible?",
    "options": [
-    "Never possible with an odd number of stereocenters",
-    "Only possible if the middle carbon is not a stereocenter itself",
-    "Possible, if the overall arrangement has an internal mirror plane",
-    "Guaranteed regardless of configuration"
+    "No — an odd number of stereocenters rules it out",
+    "Yes, if the whole arrangement has an internal mirror plane",
+    "Only if the middle carbon is not itself a stereocenter",
+    "Yes, whatever the configurations turn out to be"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Identifying whether a specific stereoisomer is the meso form of a compound requires actually drawing out the 3D structure (or a valid 2D representation like a Fischer projection) and checking for an internal mirror plane — it cannot be determined from the R/S labels alone in every case.",
+   "q": "Can you always tell from the R/S labels alone whether a particular stereoisomer is the meso form?",
    "options": [
-    "True",
-    "False"
+    "No — the two halves have to be checked for being identical",
+    "Yes, opposite descriptors settle it in every case",
+    "Yes, provided the compound has exactly two centers",
+    "No — R/S labels carry no stereochemical information"
    ],
    "correct": 0,
    "difficulty": "hard",
    "type": "tf"
   },
   {
-   "q": "If a meso compound is reacted with a chiral reagent, the two 'halves' of the meso molecule (which are mirror images of each other within the same molecule) can behave:",
+   "q": "A meso compound meets a chiral reagent. How can its two mirror-image halves behave?",
    "options": [
-    "Identically in every possible case, with no exceptions",
-    "Only identically if the reagent is also achiral",
-    "In a way unrelated to the reagent's chirality",
-    "Differently, since the reagent distinguishes them"
+    "Identically, in every case without exception",
+    "Identically unless the reagent is achiral too",
+    "In a way unconnected to the reagent's chirality",
+    "Differently, since the reagent can tell them apart"
    ],
    "correct": 3,
    "difficulty": "hard",
@@ -13011,12 +13023,12 @@
    "type": "tf"
   },
   {
-   "q": "Which of these molecules is most likely to show a meso form: a symmetric diol with two identical stereocenters bearing the same four substituent types, or an unsymmetric diol where the two stereocenters bear entirely different sets of substituents?",
+   "q": "Which is more likely to have a meso form: a diol whose two stereocenters carry the same four kinds of group, or one whose stereocenters carry entirely different sets?",
    "options": [
     "The symmetric diol",
     "The unsymmetric diol",
-    "Both are equally likely to show a meso form",
-    "Neither can ever show a meso form"
+    "Both are equally likely",
+    "Neither can have one"
    ],
    "correct": 0,
    "difficulty": "medium",
@@ -13037,14 +13049,14 @@
    "type": "mcq"
   },
   {
-   "q": "If, with the lowest priority group pointing away from you, 1→2→3 priority traces clockwise, the configuration is:",
+   "q": "A compound is named (2R,3S)-3-bromobutan-2-ol. Which compound is its enantiomer?",
    "options": [
-    "S",
-    "R",
-    "Meso",
-    "Undetermined"
+    "(2R,3R)-3-bromobutan-2-ol",
+    "(2S,3S)-3-bromobutan-2-ol",
+    "(3R,2S)-2-bromobutan-3-ol",
+    "(2S,3R)-3-bromobutan-2-ol"
    ],
-   "correct": 1,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -13061,14 +13073,14 @@
    "type": "mcq"
   },
   {
-   "q": "To assign R or S at a stereocenter, the four substituents are first ranked by:",
+   "q": "Butan-2-ol is drawn with OH at the top, ethyl to the lower left, methyl to the lower right and H on a hash. Tracing OH → ethyl → methyl runs counterclockwise. What is the configuration?",
    "options": [
-    "Their boiling points",
-    "Alphabetical order of their names",
-    "Their molecular weight only",
-    "CIP priority, by atomic number"
+    "R, after flipping the answer",
+    "S, read directly",
+    "R, read directly",
+    "S, after flipping the answer"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -13085,26 +13097,26 @@
    "type": "mcq"
   },
   {
-   "q": "Between chlorine and bromine directly attached to a stereocenter, which one receives the higher CIP priority?",
+   "q": "Glyceraldehyde is drawn with OH at the top, CHO to the lower left, CH₂OH to the lower right and H on a wedge. Tracing OH → CHO → CH₂OH runs counterclockwise. What is the configuration?",
    "options": [
-    "Chlorine, because it is more electronegative",
-    "Bromine, because it has a higher atomic number",
-    "They are given equal priority",
-    "Neither, since halogens are never ranked"
+    "S, read directly from the trace",
+    "R, read directly from the trace",
+    "R, because the answer has to be flipped",
+    "S, after flipping the answer"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "When ranking CIP priorities, if two substituents are tied at the first attached atom (for example, two different carbon chains), the rule is to:",
+   "q": "Two substituents tie at the first attached atom — two different carbon chains, say. The rule is to:",
    "options": [
-    "Assign them equal priority and stop",
-    "Always choose the longer chain as higher priority regardless of atoms",
-    "Move outward to the next set of atoms attached to each of those tied atoms and compare them",
-    "Give up and label the center as undefined"
+    "Give both the same priority and stop there",
+    "Take the longer chain as higher, whatever the atoms",
+    "Treat the center as undefined",
+    "Move outward and compare the next set of atoms"
    ],
-   "correct": 2,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -13179,7 +13191,7 @@
    "type": "mcq"
   },
   {
-   "q": "Changing a single substituent's priority ranking at a stereocenter (without changing the actual 3D arrangement of atoms) can flip the assigned R/S label even though the molecule's physical structure has not changed.",
+   "q": "Changing one substituent for another can flip a stereocenter's R/S label even when the spatial arrangement is untouched.",
    "options": [
     "True",
     "False"
@@ -13201,19 +13213,19 @@
    "type": "mcq"
   },
   {
-   "q": "When assigning CIP priorities to a substituent that is a phenyl (aromatic) ring versus a simple vinyl group (-CH=CH2), both attached directly by a carbon, the comparison must go to:",
+   "q": "Between a phenyl group and a vinyl group (–CH=CH₂), both attached to a stereocenter through carbon, which has the higher CIP priority?",
    "options": [
-    "The overall ring size only",
-    "The atoms attached to that first carbon, using duplicates",
-    "Molecular weight of the whole substituent",
-    "Simply choosing the ring as higher priority in every case without analysis"
+    "Vinyl, on (C,C,C) against phenyl's (C,C,H)",
+    "Phenyl, on (C,C,C) against vinyl's (C,C,H)",
+    "They tie, and the next sphere out decides",
+    "Phenyl, because an aromatic ring holds more carbons"
    ],
    "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "In CIP priority assignment, a lone pair of electrons on a stereocenter (as in a trisubstituted amine treated as a stereocenter) is always treated as the lowest priority, equivalent to having an atomic number of zero.",
+   "q": "A lone pair on a stereocenter, as in a trisubstituted amine, ranks lowest of the four, as though its atomic number were zero.",
    "options": [
     "True",
     "False"
@@ -13235,7 +13247,7 @@
    "type": "mcq"
   },
   {
-   "q": "The same physical molecule drawn in two completely different orientations (for example, rotated or redrawn from a different viewpoint) must always be assigned the same R or S configuration, as long as no bonds are broken.",
+   "q": "The same molecule drawn in two different orientations must be given the same R or S label, as long as no bonds are broken.",
    "options": [
     "True",
     "False"
@@ -13245,26 +13257,26 @@
    "type": "tf"
   },
   {
-   "q": "For a stereocenter bonded to two carbon-based groups that are constitutional isomers of each other, such as -CH2CH2CH3 (n-propyl) and -CH(CH3)2 (isopropyl), which typically ranks higher in CIP priority?",
+   "q": "Which ranks higher in CIP priority, n-propyl or isopropyl?",
    "options": [
-    "n-propyl, because it is a longer chain",
-    "They are always tied in priority",
-    "Neither can ever be compared",
-    "Isopropyl, (C,C,H) beats (C,H,H)"
+    "n-Propyl, because its chain is longer",
+    "Isopropyl, on (C,C,H) against (C,H,H)",
+    "They tie in every case",
+    "Neither can be compared at all"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "If priorities 1, 2, and 3 trace counterclockwise when the lowest-priority group correctly points away from the viewer, the stereocenter is assigned as:",
+   "q": "Priority 4 is drawn in the plane of the page, on neither a wedge nor a hash. What is the general fix?",
    "options": [
-    "S",
-    "R",
-    "Both R and S simultaneously",
-    "Neither, it is undefined"
+    "Assign it as drawn and keep the answer",
+    "Turn the page 90° so it points backward",
+    "Rank the other three and take the middle as lowest",
+    "Swap it with the group on the hash, assign, then reverse"
    ],
-   "correct": 0,
+   "correct": 3,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -13303,14 +13315,14 @@
    "type": "tf"
   },
   {
-   "q": "Two isotopes of hydrogen, deuterium (²H) and protium (¹H), are both attached to the same stereocenter along with two other different groups. Which gets higher CIP priority between the two hydrogen isotopes?",
+   "q": "Deuterium and protium are both attached to one stereocenter. Which outranks the other?",
    "options": [
-    "Protium (lighter)",
-    "They are always tied and cannot be ranked",
-    "Neither isotope can ever be a substituent",
-    "Deuterium (heavier)"
+    "Protium, being lighter",
+    "They tie and cannot be ranked",
+    "Deuterium, being heavier",
+    "Neither can be a substituent"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -13337,7 +13349,7 @@
    "type": "mcq"
   },
   {
-   "q": "A wedge-and-dash 3D drawing of a stereocenter can be directly converted to an R/S assignment without needing to redraw or mentally rotate the molecule, as long as you correctly identify which group points away from you.",
+   "q": "A wedge-and-dash drawing can be read for R/S without redrawing it, as long as you identify which group points away.",
    "options": [
     "True",
     "False"
@@ -13347,19 +13359,19 @@
    "type": "tf"
   },
   {
-   "q": "For a stereocenter bonded to -NH2, -NHCH3, -CH3, and -H, which two groups are hardest to rank relative to each other by CIP priority at first glance, requiring you to look at what's attached beyond the first atom?",
+   "q": "For a center bonded to NH₂, NHCH₃, CH₃ and H, which two groups need a look beyond the first atom to rank?",
    "options": [
-    "-CH3 and -H",
-    "-NH2 and -NHCH3",
-    "-NH2 and -CH3",
-    "-NHCH3 and -H"
+    "CH₃ and H",
+    "NH₂ and CH₃",
+    "NH₂ and NHCH₃",
+    "NHCH₃ and H"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Once you've correctly ranked all four substituents at a stereocenter by CIP priority, the actual R or S label also depends on the real 3D spatial arrangement of the atoms, not just the priority ranking itself.",
+   "q": "Ranking the four substituents correctly is not enough on its own: the label also depends on their actual arrangement in space.",
    "options": [
     "True",
     "False"
@@ -13407,14 +13419,14 @@
    "type": "mcq"
   },
   {
-   "q": "In a Fischer projection, the horizontal lines extending from the central carbon represent bonds that point:",
+   "q": "In a conventionally drawn sugar, where does priority 4 sit, and what follows?",
    "options": [
-    "Directly into the page, away from the viewer",
-    "In the plane of the page",
-    "Not toward any specific direction",
-    "Directly out of the page, toward the viewer"
+    "On a vertical bond — read the trace as it comes",
+    "On a horizontal bond — trace, then reverse",
+    "On a horizontal bond — read it as it comes",
+    "It varies, so redraw the projection first"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -13431,14 +13443,14 @@
    "type": "mcq"
   },
   {
-   "q": "Swapping the positions of any two groups in a Fischer projection a single time produces:",
+   "q": "D-Glucose reads right, left, right, right down its four OH groups. Which sugar has the pattern left, left, right, right?",
    "options": [
-    "The identical molecule, just redrawn",
-    "The enantiomer of the original molecule",
-    "A diastereomer of the original molecule",
-    "An impossible, non-physical structure"
+    "D-galactose, the C4 epimer of glucose",
+    "L-glucose, the mirror image of glucose",
+    "D-mannose, the C2 epimer of glucose",
+    "D-fructose, a ketose of the same formula"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -13455,12 +13467,12 @@
    "type": "mcq"
   },
   {
-   "q": "By long-standing convention, in a Fischer projection of a sugar such as glucose, the carbon chain is drawn:",
+   "q": "Two Fischer projections of tartaric acid are compared. In one, both OH groups are on the right; in the other, one is on the right and one on the left. What are they?",
    "options": [
-    "Horizontally, with C1 on the left",
-    "In a circular arrangement",
-    "Diagonally across the page",
-    "Vertically, with C1 at the top"
+    "Both are meso, since each has two stereocenters",
+    "The first is chiral; the second is the meso compound",
+    "They are the two enantiomers of tartaric acid",
+    "The first is meso and achiral; the second is chiral"
    ],
    "correct": 3,
    "difficulty": "easy",
@@ -13489,12 +13501,12 @@
    "type": "tf"
   },
   {
-   "q": "Holding one group of a Fischer projection fixed in place and rotating the other three groups around it (a three-group rotation) gives:",
+   "q": "Holding one group of a Fischer projection fixed and rotating the other three about it gives:",
    "options": [
-    "The enantiomer of the original molecule",
-    "The same original molecule, just redrawn in a different but equivalent way",
+    "The enantiomer",
+    "The same molecule, redrawn",
     "A diastereomer",
-    "An impossible structure since only full molecule rotations are allowed"
+    "An impossible structure"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -13525,10 +13537,12 @@
    "type": "mcq"
   },
   {
-   "q": "A Fischer projection can directly and unambiguously be converted into a correct three-dimensional wedge-dash structure by simply treating horizontal bonds as wedges and vertical bonds as dashes, without any rotation adjustment.",
+   "q": "For a chain of several stereocenters, does making every horizontal bond a wedge and every vertical bond a dash give a usable wedge-dash structure?",
    "options": [
-    "True",
-    "False"
+    "Yes, it gives the chain's usual zig-zag",
+    "No — it gives the eclipsed form, backbone bowed toward you",
+    "Yes, if the chain is laid out left to right",
+    "No — horizontals are dashes and verticals wedges"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -13571,7 +13585,7 @@
    "type": "mcq"
   },
   {
-   "q": "Fischer projections are most commonly and conveniently used for molecules with only a single stereocenter, and are rarely useful for molecules with multiple stereocenters such as sugars.",
+   "q": "Fischer projections are mainly useful for single stereocenters and rarely worth using for sugars.",
    "options": [
     "True",
     "False"
@@ -13581,19 +13595,19 @@
    "type": "tf"
   },
   {
-   "q": "Which statement correctly describes determining R or S configuration directly from a Fischer projection?",
+   "q": "Which statement about assigning R or S straight from a Fischer projection is correct?",
    "options": [
-    "It cannot be done at all from a Fischer projection",
-    "R and S can never apply to Fischer projections",
-    "Fischer projections automatically show the lowest-priority group pointing away",
-    "It can be done if you track where the lowest-priority group points"
+    "It cannot be done from a Fischer projection",
+    "It works if you track where the lowest priority points",
+    "R and S do not apply to Fischer projections",
+    "A Fischer projection always puts priority 4 at the back"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "A meso compound's Fischer projection typically shows a recognizable internal symmetry, such as a horizontal mirror-like relationship between the top and bottom halves of the structure.",
+   "q": "A meso compound drawn as a Fischer projection shows a mirror relationship between its top and bottom halves.",
    "options": [
     "True",
     "False"
@@ -13603,19 +13617,19 @@
    "type": "tf"
   },
   {
-   "q": "When comparing two Fischer projections to decide if they represent the same compound, which manipulation is NOT allowed without changing the molecule's identity?",
+   "q": "Which manipulation of a Fischer projection is NOT allowed if the molecule is to stay the same?",
    "options": [
-    "Rotating the whole projection 90 degrees in the plane of the page",
-    "Rotating the whole projection 180 degrees in the plane of the page",
-    "Rotating three of the four groups around the fixed fourth group",
-    "Holding the molecule fixed and simply redrawing it identically"
+    "A 90° turn in the plane of the page",
+    "A 180° turn in the plane of the page",
+    "Rotating three groups about a fixed fourth",
+    "Redrawing it exactly as it stands"
    ],
    "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "In a Fischer projection of an aldohexose (six-carbon sugar with an aldehyde), how many stereocenters are typically shown along the vertical chain (excluding the carbonyl and terminal CH2OH carbons)?",
+   "q": "How many stereocenters does an aldohexose show along the vertical chain of its Fischer projection?",
    "options": [
     "One",
     "Four",
@@ -13627,15 +13641,15 @@
    "type": "mcq"
   },
   {
-   "q": "Can a Fischer projection be flipped end-over-end (180° rotation within the plane of the page, carbon chain staying vertical) without changing the molecule it represents?",
+   "q": "Two Fischer projections of a two-stereocenter compound differ by three single swaps in total: one at the upper center and two at the lower one. What is the relationship?",
    "options": [
-    "No, this always inverts the configuration",
-    "Only if the molecule has a single stereocenter",
-    "Yes, it preserves the molecule's identity",
-    "Only for sugars, not other molecules"
+    "Enantiomers",
+    "Diastereomers",
+    "The same compound, redrawn",
+    "Constitutional isomers"
    ],
-   "correct": 2,
-   "difficulty": "medium",
+   "correct": 1,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -13683,34 +13697,36 @@
    "type": "tf"
   },
   {
-   "q": "If you take a Fischer projection and rotate just the bottom three groups (holding the top group fixed) by 120° around the vertical axis, what is the relationship between the result and the original?",
+   "q": "Holding the top group fixed and turning the other three by 120° gives a structure related to the original as:",
    "options": [
-    "They represent the enantiomer",
-    "They represent the same molecule",
-    "They represent a diastereomer",
-    "They represent an entirely different compound"
+    "Its enantiomer",
+    "A diastereomer",
+    "The same molecule",
+    "A different compound"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "When converting a Fischer projection to a Haworth (ring) projection for a sugar, a -OH group drawn on the right in the Fischer projection ends up pointing in a specific, predictable direction in the ring structure.",
+   "q": "Which Fischer projection is L-threose, given that D-threose has OH on the left at C2 and on the right at C3?",
    "options": [
-    "True",
-    "False"
+    "OH on the left at both C2 and C3",
+    "OH on the right at both C2 and C3",
+    "OH on the right at C2 and on the left at C3",
+    "OH on the left at C2 and on the right at C3"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
-   "q": "A Fischer projection of meso-tartaric acid, when you draw a horizontal line through its middle, shows a specific kind of symmetry between its top half and bottom half. What is that symmetry?",
+   "q": "Draw a horizontal line through the middle of a Fischer projection of meso-tartaric acid. What symmetry does it show?",
    "options": [
-    "The top half is identical to the bottom half with no reflection needed",
-    "There is no symmetry at all in a meso compound's Fischer projection",
-    "The top half is the mirror image of the bottom half",
-    "The symmetry only appears if you also rotate the whole projection 90°"
+    "The top half is identical to the bottom, unreflected",
+    "There is no symmetry there at all",
+    "The top half is the mirror image of the bottom",
+    "It shows up only after a 90° turn"
    ],
    "correct": 2,
    "difficulty": "medium",

@@ -60,7 +60,8 @@ standards and is chemically correct; all checks run; push.
 
 ### Decisions for Olivier
 
-- `ochem/assets/molecules.js`: `chair-bromocyclohexane` draws Br axial on an axial-down carbon and marks a non-adjacent carbon as anti-periplanar; `chair-dimethylcyclohexane` is named trans but drawn cis. Chapter 5's only use was removed; `lessons/diastereomers.html` still uses the second. Either rewrite the coordinates (a small, checkable job) or drop both entries.
+- `ochem/assets/molecules.js`: `chair-bromocyclohexane` draws Br axial on an axial-down carbon and marks a non-adjacent carbon as anti-periplanar; chapter 5's only use was removed and no page uses it now. Drop it or rewrite it (the chapter 6 pass rebuilt `chair-dimethylcyclohexane` correctly and can serve as the model).
+- Chapter 6 gaps that need a new section rather than an edit: prochirality/diastereotopic protons (needed by H-NMR), and structure images inside bank questions (needs a runtime change to the practice page).
 
 Recorded here as they arise, and collected in `docs/proposed-order.md`.
 
@@ -84,6 +85,8 @@ Recorded here as they arise, and collected in `docs/proposed-order.md`.
 
 ### Waiting on reorder
 
+- Chapter 6: R/S descriptors used in `enantiomers`, `diastereomers` and `meso` before `rs-configuration` (proposed order moves it third in the chapter); E/Z notation missing (proposed new `cis-trans-ez` section); `meso` previews the Fischer test before `fischer`.
+
 - Chapter 4: six passages in `notes/bronsted`, `notes/lewis-acids`, `notes/conjugate` and `lessons/lewis-acids` lean on nucleophile/electrophile/leaving-group vocabulary from chapter 2; under the proposed order those topics move after Acids & Bases and the passages become previews. The "Hard and soft, briefly" paragraph in `lewis-acids` loses its reason to exist if chapter 2 moves.
 - Chapter 5: Hammond postulate now stated in full in `radical-halogenation` (proposed home: the new energy-diagrams lesson); stereocenter/racemic used in `radical-halogenation` before Stereochemistry; the E2 half of `conformational-analysis` (anti-periplanar, menthyl) is headed "Looking ahead" pending its move to `e2`; the lesson's Markovnikov/peroxide-HBr challenge and bank Q19–Q20 belong to `anti-markovnikov`.
 
@@ -104,8 +107,8 @@ reviews land.
 | 2 Organic Structure & Electron Movement | yes (38/24/19/33) | yes: 8 figures (the chapter's first skeletal drawings after lesson 1), 37 questions, 4 lessons re-stepped, 7 chemistry errors (polar-protic/aprotic swap, R3N keyed over RNH2, BF3/BH3, nitrate key, the "most electron-poor" final, an incoherent leaving-group worked example) | yes: 4 of 7 met on first verification; 6 errors (protonated-acetone electron count and arithmetic, benzene contributor count, HCl lone-pair count, ring size in the amino-ketone scan, acetate tautomer name) fixed, four hard bank stems given previews, one ambiguous challenge stem reworded. Open: HBr mechanism figure for leaving-groups (queued with chapter 5's pass) | yes |
 | 3 IUPAC Nomenclature | yes (24/9/12/22) | yes: 9 figures, 85 questions rewritten, 3 chemistry errors (3-ethylpentane keyed as 3-methylhexane; ketone carbon called oxidation level 0; an impossible {3,3,5} locant tie) | yes: all four topics meet the standard; five wording errors found and fixed, no wrong key | yes |
 | 4 Acids & Bases | yes (38/17/19/22) | yes: 9 figures, 7 worked examples, 2 lesson steps, 2 click-atom items, 91 questions rewritten, 3 chemistry errors (bronsted lesson conjugate roles reversed; pka lesson pKaH vs N–H; acidity-factors Q6 keyed wrong); tutor-bank budget raised to 264 KB | yes: 3 of 5 met on first verification; 6 errors (α C–H pKa of acetic acid, 10^−0.3 rounding, 4-chlorobutanoic baseline, "diagonal" pairing, two broken bank stems) and the teach-string contradiction fixed in a second pass; funnel figure redrawn with ether on top. Open: ~6 near-duplicate bank pairs | yes |
-| 5 Alkanes & Conformations | yes (34/17/16/15) | yes: 7 figures (both lesson chairs redrawn as real six-membered rings; ring-flip animation keeps the methyl's face), 48 questions replaced, 10 keys/explanations corrected, worked examples for structure→Newman, flipped chair, 1,2/1,3 chair procedure, halogenation ratios; plus the leaving-groups HBr mechanism figure from chapter 2's verifier. Open: `molecules.js` chair-bromocyclohexane and chair-dimethylcyclohexane drawings are wrong (see Decisions) | in progress | yes |
-| 6 Stereochemistry | yes (31/14/18/27) | queued | | |
+| 5 Alkanes & Conformations | yes (34/17/16/15) | yes: 7 figures (both lesson chairs redrawn as real six-membered rings; ring-flip animation keeps the methyl's face), 48 questions replaced, 10 keys/explanations corrected, worked examples for structure→Newman, flipped chair, 1,2/1,3 chair procedure, halogenation ratios; plus the leaving-groups HBr mechanism figure from chapter 2's verifier. Open: `molecules.js` chair-bromocyclohexane and chair-dimethylcyclohexane drawings were wrong (chair-bromocyclohexane still is; see Decisions) | yes: 4 of 6 met on first verification; 5 errors (unconstructible cis-1,3 chair example and its bank twin, unflipped "other chair" figure, 2 vs 5 kcal/mol radical gap, a two-answer question) queued for a second pass | yes |
+| 6 Stereochemistry | yes (31/14/18/27) | yes: 12 figures, 41 questions, 21 notes and 6 lesson edits; reversed Br₂ result in meso (trans → meso, cis → racemate), "diastereomers need two stereocenters", inverted fischer-reading teach string, tartaric figure's missing mirror plane, N inversion rate 10⁶ → 10¹¹ s⁻¹, six two-answer questions; molecules.js chair-dimethylcyclohexane rebuilt as cis and meso-tartaric-acid given stereo bonds | in progress | yes |
 | 7 Substitution & Elimination | yes | queued | | |
 | 8 Alkenes & Alkynes | yes (21/11/14/20) | queued | | |
 | 9 Conjugation & Pericyclic | yes (24/12/15/20) | queued | | |
