@@ -10522,8 +10522,8 @@ FIGURES.push({
     s += atom(cR.x, cR.y, 'C', { kind: 'hi' });
     s += atom(o1L.x, o1L.y, 'O'); s += lonePair(o1L.x, o1L.y, 250); s += lonePair(o1L.x, o1L.y, 190);
     s += atom(o1R.x, o1R.y, 'O'); s += lonePair(o1R.x, o1R.y, 110); s += lonePair(o1R.x, o1R.y, 170);
-    s += atom(o2L.x, o2L.y, 'O'); s += lonePair(o2L.x, o2L.y, 110);
-    s += atom(o2R.x, o2R.y, 'O'); s += lonePair(o2R.x, o2R.y, 250);
+    s += atom(o2L.x, o2L.y, 'O'); s += lonePair(o2L.x, o2L.y, 110); s += lonePair(o2L.x, o2L.y, 300);
+    s += atom(o2R.x, o2R.y, 'O'); s += lonePair(o2R.x, o2R.y, 250); s += lonePair(o2R.x, o2R.y, 70);
     s += atom(hL.x, hL.y, 'H', { r: 10 });
     s += atom(hR.x, hR.y, 'H', { r: 10 });
 
@@ -10559,7 +10559,7 @@ FIGURES.push({
     s += bond(o2, h1, { rTo: 10 });
     s += atom(m1.x, m1.y, 'CH₃');
     s += atom(o1.x, o1.y, 'O'); s += lonePair(o1.x, o1.y, 200);
-    s += atom(o2.x, o2.y, 'O'); s += lonePair(o2.x, o2.y, 40);
+    s += atom(o2.x, o2.y, 'O'); s += lonePair(o2.x, o2.y, 40); s += lonePair(o2.x, o2.y, 130);
     s += atom(h1.x, h1.y, 'H', { r: 10 });
     s += atom(c1.x, c1.y, 'C', { kind: 'hi' });
     s += curve(P(222, 190), P(182, 160), { bow: 24 });
@@ -10598,6 +10598,79 @@ FIGURES.push({
 });
 
 /* ---------------------------------------------------------------- 167 ---
+   Beta-keto acid decarboxylation. The section makes the ring size the whole
+   argument -- "one carbon closer or further and the ring the proton would
+   have to close is the wrong size" -- and then draws nothing, so the reader
+   has to build a six-membered transition state in their head from prose. It
+   also names an enol as the immediate product, which is exactly the kind of
+   intermediate a scheme drops if it is not drawn. */
+FIGURES.push({
+  id: 'beta-keto-decarboxylation',
+  section: 'carboxylic-acids',
+  anchor: 'A malonic acid, with two carboxyls on one carbon, does the same thing for the same reason, one of its carboxyls playing the part of the ketone.</p>',
+  viewBox: '0 0 760 356',
+  alt: 'A beta-keto acid drawn inside a six-membered cyclic transition state with three curved arrows, giving an enol plus carbon dioxide, and the enol tautomerizing to the ketone',
+  build() {
+    let s = '';
+    // ---- panel 1: the cyclic transition state -------------------------
+    const cK = P(107, 192), cA = P(152, 218), cC = P(197, 192);
+    const oH = P(197, 140), h = P(152, 114), oK = P(107, 140);
+    const me = P(62, 218), oC = P(242, 218);
+    s += tag(152, 62, 'the six-membered ring, closing');
+    s += bond(cK, oK, { order: 2 });
+    s += bond(cK, cA); s += bond(cA, cC); s += bond(cC, oH);
+    s += bond(oH, h, { rTo: 10 });
+    s += bond(cC, oC, { order: 2 });
+    s += bond(cK, me);
+    s += `<line class="fg-dash-hi" x1="${145.2}" y1="${121.5}" x2="${115.8}" y2="${138.5}"></line>`;
+    s += atom(me.x, me.y, 'CH₃'); s += atom(oC.x, oC.y, 'O');
+    s += atom(oK.x, oK.y, 'O'); s += lonePair(oK.x, oK.y, 200);
+    s += atom(oH.x, oH.y, 'O'); s += lonePair(oH.x, oH.y, 20);
+    s += atom(h.x, h.y, 'H', { r: 10 });
+    s += atom(cK.x, cK.y, 'C', { kind: 'hi' });
+    s += atom(cA.x, cA.y, 'C', { kind: 'warn' });
+    s += atom(cC.x, cC.y, 'C', { kind: 'hi' });
+    // 1: ketone O grabs the proton. 2: the O-H pair becomes CO2's second pi
+    // bond. 3: the C-C bond to the carboxyl becomes the enol's pi bond.
+    s += curve(P(90, 124), P(140, 108), { bow: -14 });
+    s += curve(P(172, 124), P(191, 167), { bow: 20 });
+    s += curve(P(172, 202), P(132, 202), { bow: 22 });
+    s += text(152, 262, '3-oxobutanoic acid', { cls: 'fg-sm', size: 10 });
+
+    s += arrow(P(285, 168), P(335, 168), { muted: true });
+    s += text(310, 152, 'warm', { cls: 'fg-tag', size: 10.5 });
+    s += text(310, 192, '− CO₂', { cls: 'fg-tag-warn', size: 10.5 });
+
+    // ---- panel 2: the enol ---------------------------------------------
+    const c2 = P(410, 168), oh2 = P(410, 122), me2 = P(364, 194), ch2 = P(456, 194);
+    s += bond(c2, oh2); s += bond(c2, me2); s += bond(c2, ch2, { order: 2 });
+    s += atom(oh2.x, oh2.y, 'OH'); s += atom(me2.x, me2.y, 'CH₃');
+    s += atom(ch2.x, ch2.y, 'CH₂'); s += atom(c2.x, c2.y, 'C', { kind: 'hi' });
+    s += tag(410, 62, 'the immediate product is an enol');
+    s += text(410, 262, 'C=C and an O–H, not a ketone yet', { cls: 'fg-sm', size: 10 });
+
+    s += arrow(P(500, 168), P(550, 168), { muted: true });
+    s += text(525, 152, 'tautomerize', { cls: 'fg-tag', size: 10.5 });
+
+    // ---- panel 3: the ketone -------------------------------------------
+    const c3 = P(620, 168), o3 = P(620, 122), me3 = P(574, 194), me4 = P(666, 194);
+    s += bond(c3, o3, { order: 2 }); s += bond(c3, me3); s += bond(c3, me4);
+    s += atom(o3.x, o3.y, 'O'); s += lonePair(o3.x, o3.y, 200);
+    s += atom(me3.x, me3.y, 'CH₃'); s += atom(me4.x, me4.y, 'CH₃');
+    s += atom(c3.x, c3.y, 'C', { kind: 'hi' });
+    s += tag(620, 62, 'what you isolate');
+    s += text(620, 262, 'acetone', { cls: 'fg-sm', size: 10 });
+
+    s += rule(24, 288, 726, 288);
+    s += text(24, 314, 'Count the ring: ketone O, ketone C, alpha C, carboxyl C, carboxyl O, and the moving H.', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += text(24, 338, 'One carbon nearer and that ring is five-membered, one further and it is seven — neither closes.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    return s;
+  },
+  caption: 'Three arrows going round one ring, all at once. The ketone oxygen reaches over and takes the carboxyl proton; the O–H electrons become the second pi bond of the departing CO₂; and the C–C bond that held the carboxyl on becomes the pi bond of an enol. Nothing else in the molecule has to move, which is why gentle warming is enough.',
+  note: 'The enol is a real intermediate and not a bookkeeping device — the ring cannot deliver a ketone directly, because the proton it moved went onto the ketone oxygen. Tautomerization afterwards is fast and one-way, so what you isolate is the ketone, but a mechanism drawn straight from the ring to acetone has skipped a step a grader will look for. This is also the last step of the malonic and acetoacetic ester syntheses, where the same ring closes on a carboxyl or a ketone that was installed for exactly this purpose.',
+});
+
+/* ---------------------------------------------------------------- 168 ---
    Amide resonance in the section that teaches it. The peptide chapter already
    has a version of this picture; the ladder chapter, where the claim about
    restricted rotation is first made, had none. */
@@ -10716,7 +10789,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Acid catalysis doing two different jobs with one proton. Step 1 makes a carbon electrophilic enough for a neutral alcohol to attack at all; step 4 turns an OH, which would never leave, into water, which will. Nothing anionic appears anywhere in the sequence, which is the test of whether a mechanism written under acid is written correctly.',
-  note: 'Count the arrows that are not reversible: none. That is why the reaction settles near 65% conversion and has to be driven — excess alcohol, or water removed as it forms. It is also why the same five panels, read from the right with water in place of methanol, are acid-catalyzed ester hydrolysis rather than a separate mechanism to learn.',
+  note: 'Two proton transfers are carried by the panel labels rather than by arrows: methanol’s oxygen loses its proton between panels 2 and 3, and one OH picks one up between panels 3 and 4. Draw them in when a question asks for every step — they are real, and in acid they are the fastest events in the flask. Count the arrows that are not reversible: none. That is why the reaction settles near 65% conversion and has to be driven — excess alcohol, or water removed as it forms. It is also why the same five panels, read from the right with water in place of methanol, are acid-catalyzed ester hydrolysis rather than a separate mechanism to learn.',
 });
 
 /* ---------------------------------------------------------------- 169 ---
@@ -10768,7 +10841,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Three steps, and the order is the whole answer. Addition first, then collapse, and only then — because only then does an acid exist — the proton transfer. That last step consumes the ethoxide just released and leaves a carboxylate no nucleophile wants to attack.',
-  note: 'This is why saponification is stoichiometric in hydroxide rather than catalytic: one equivalent of base is genuinely consumed, ending up on the product. It is also why the acid has to be recovered at the end with a separate acidification — what comes out of the flask is the salt.',
+  note: 'The proton transfer in panel 3 is stated rather than drawn; put an arrow on it (ethoxide’s lone pair to the acid’s O–H) if a question asks for a full mechanism, because it is the step the whole reaction turns on. This is why saponification is stoichiometric in hydroxide rather than catalytic: one equivalent of base is genuinely consumed, ending up on the product. It is also why the acid has to be recovered at the end with a separate acidification — what comes out of the flask is the salt.',
 });
 
 /* ---------------------------------------------------------------- 170 ---

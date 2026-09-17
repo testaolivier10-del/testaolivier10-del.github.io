@@ -24875,15 +24875,15 @@
    "type": "mcq"
   },
   {
-   "q": "For two compounds of similar molecular weight, one with a -COOH group and one with a simple -OH group, which generally has the higher boiling point?",
+   "q": "Neat acetic acid absorbs near 1710 cm-1; heavily diluted, near 1760. What changed?",
    "options": [
-    "The carboxylic acid, because it forms dimers",
-    "The alcohol, because O-H bonds are always stronger",
-    "They are always identical",
-    "Neither forms hydrogen bonds"
+    "The dimers came apart into free monomers",
+    "The acid was deprotonated by the solvent",
+    "The OH donates more strongly into the C=O",
+    "The carbonyl carbon rehybridized to sp3"
    ],
    "correct": 0,
-   "why": "Carboxylic acids dimerize through two simultaneous hydrogen bonds, giving a stronger net intermolecular attraction than the single hydrogen bond an alcohol typically forms, raising the boiling point.",
+   "why": "Dilution changes nothing inside the molecule; it changes what the molecule is touching. Neat or concentrated, carboxylic acids sit as hydrogen-bonded dimers, and the hydrogen bond to the carbonyl oxygen pulls density out of the C=O, weakening it and dropping the stretch to about 1710. Dilute far enough in a nonpolar solvent and the dimers break up, and the free monomer absorbs near 1760 - above an ester's 1735, not below it. That matters whenever you use IR to rank acyl derivatives: the familiar 1710 is a dimerization artifact, not a measure of how hard the OH donates into the carbonyl.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -24899,15 +24899,15 @@
    "type": "tf"
   },
   {
-   "q": "Why does water solubility of straight-chain carboxylic acids drop off sharply once the chain grows beyond about 4-5 carbons?",
+   "q": "Warmed to 80 °C: CH3COCH2COOH and CH3COCH2CH2COOH. Which one loses CO2?",
    "options": [
-    "Longer acids lose their carboxyl group",
-    "The nonpolar tail outweighs the carboxyl",
-    "Longer chains become more acidic and repel water",
-    "Water cannot hydrogen bond to any carboxylic acid"
+    "Both, since any ketone activates a carboxyl",
+    "Neither, without a metal catalyst present",
+    "Only the first: the ring closed is six-membered",
+    "Only the second: its ring is less strained"
    ],
-   "correct": 1,
-   "why": "Only the carboxyl group is polar and hydrogen-bonds with water; as the hydrocarbon chain lengthens, the hydrophobic surface area grows faster than the one polar group can compensate for, so solubility declines.",
+   "correct": 2,
+   "why": "This is a geometry question wearing a functional-group disguise. Losing CO2 here is not a general property of keto acids: the carboxyl O-H has to reach across to the ketone oxygen through a cyclic transition state, and only as that proton transfers does the C-C bond to the carboxyl break and CO2 leave. Count the ring for the beta-keto acid CH3COCH2COOH - ketone O, ketone C, alpha carbon, carboxyl C, carboxyl O, and the moving H. Six atoms, the size that closes with no strain, which is why gentle warming is enough. Put one more carbon between the two groups, as in the gamma-keto acid, and the same proton transfer would have to close a seven-membered ring; it does not happen at 80 °C. Note also what comes out first: the enol, which then tautomerizes to acetone.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -25092,13 +25092,13 @@
    "type": "mcq"
   },
   {
-   "q": "Mixing a carboxylic acid directly with an amine at room temperature forms an amide immediately.",
+   "q": "A beta-lactam is a better acylating agent than an ordinary amide because its four-membered ring twists the nitrogen lone pair out of alignment with the C=O.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 1,
-   "why": "At room temperature, the amine simply deprotonates the acid to form an ammonium carboxylate salt; converting this salt to the amide typically requires strong heating to drive off water, or using a more reactive acyl derivative.",
+   "correct": 0,
+   "why": "An ordinary amide is unreactive because the nitrogen lone pair lies in the carbonyl's plane and donates into the pi system, feeding electron density to the carbonyl carbon and tying the nitrogen in place. A four-membered ring cannot hold that arrangement: roughly 90 degree bond angles pyramidalize the nitrogen and twist its lone pair out of alignment with the C=O, so most of that donation is switched off. What is left is a carbonyl carrying an amide's leaving group without an amide's protection - electrophilic enough that a serine hydroxyl in a bacterial enzyme attacks it and is acylated, which is how penicillin works. Note what has not changed: nitrogen's electronegativity is the same and the carbonyl carbon is still sp2. What was lost is the orbital overlap.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -25370,15 +25370,17 @@
    "type": "mcq"
   },
   {
-   "q": "In nucleophilic acyl substitution, the leaving group departs before the nucleophile ever attacks the carbonyl carbon.",
+   "q": "Benzoic acid is esterified with ¹⁸O-methanol under acid. Where does the label end up?",
    "options": [
-    "True",
-    "False"
+    "In the water that is formed",
+    "In the ester, on its O-CH3 oxygen",
+    "In the ester, on its carbonyl oxygen",
+    "Split evenly between ester and water"
    ],
    "correct": 1,
-   "why": "The mechanism is addition first, then elimination: the nucleophile adds to the carbonyl carbon to form a tetrahedral intermediate, and only afterward does the leaving group depart to restore the carbonyl.",
-   "difficulty": "easy",
-   "type": "tf"
+   "why": "Trace the oxygen atom by atom. Methanol attacks the protonated acid using its own oxygen, so that oxygen forms the new C–O bond and is never asked to leave again; what departs as water is one of the two OH oxygens that came from the carboxylic acid, after acid protonates it. The label therefore stays in the ester, on the single-bonded oxygen still carrying its methyl group — the C–¹⁸O–CH₃ bond was never broken at any point. That is the experiment that settles where the ester bond is made and broken: at the acyl carbon, not at the alkyl carbon. Had the label come out in the water, esterification would have to be an SN2 at methyl, and it is not. Run the reverse reaction in H₂¹⁸O and the same bookkeeping puts the label in the carboxylic acid.",
+   "difficulty": "hard",
+   "type": "mcq"
   },
   {
    "q": "Which order correctly ranks these four carboxylic acid derivatives from MOST to LEAST reactive toward nucleophilic acyl substitution?",
@@ -27570,13 +27572,13 @@
   {
    "q": "A primary amine is treated with one equivalent of an acid chloride in the presence of excess pyridine as a base. What roles does pyridine play, and why is it chosen over a strong base like NaOH?",
    "options": [
-    "pyridine neutralizes HCl and is too weak a nucleophile",
+    "pyridine mops up the HCl and cannot end up in the product",
     "pyridine acts purely as a reducing agent in this reaction",
     "pyridine itself becomes incorporated into the amide product",
     "pyridine serves only as an inert solvent with no chemical role"
    ],
    "correct": 0,
-   "why": "Pyridine is basic enough to scavenge HCl as it forms, but its own nitrogen is a comparatively poor nucleophile toward the acid chloride, letting the amine react cleanly; NaOH would compete by hydrolyzing the reactive acid chloride before the amine could react.",
+   "why": "Pyridine's job is to take the HCl each acylation releases, so the amine is not consumed as a base — and it can do that job without getting in the way, because it carries no N–H and so cannot be acylated into the product. It is not that pyridine fails to attack the acid chloride: it does, giving an N-acylpyridinium ion, and that ion is a better acylating agent than the acid chloride was, so the acyl group simply passes on to the amine. That relay is why pyridine and DMAP catalyze acylations rather than obstructing them. NaOH is the wrong choice for a different reason: hydroxide would attack the acid chloride and hydrolyze it to the carboxylate before the amine got its turn.",
    "difficulty": "hard",
    "type": "mcq"
   }
@@ -42919,16 +42921,16 @@
    "type": "mcq"
   },
   {
-   "q": "Why does pyridine not compete with the amine?",
+   "q": "Pyridine attacks an acid chloride. Why does that not spoil the acylation?",
    "options": [
-    "Poorly nucleophilic",
-    "Not basic enough",
-    "Acidic, not basic",
-    "It traps chloride ion"
+    "The acylpyridinium passes the acyl on",
+    "HCl protonates it before it attacks",
+    "Its sp2 lone pair sits in the ring plane",
+    "Chloride recaptures the acyl group"
    ],
    "correct": 0,
-   "why": "Basicity and nucleophilicity are separable, and pyridine has only the first.",
-   "difficulty": "easy",
+   "why": "Pyridine is a perfectly competent nucleophile toward an acid chloride: it attacks and gives an N-acylpyridinium ion. That is not a loss, because the acylpyridinium is itself a potent acylating agent — it hands the acyl group on to the amine, often faster than the direct route would. This is the whole basis of DMAP catalysis, where 4-dimethylaminopyridine speeds acylations up thousands of times by exactly this detour. And pyridine has no N–H, so unlike the amine it can never end up in the product. The sp² lone pair does explain pyridine's modest basicity (pKaH 5.2); it does not make pyridine a poor nucleophile.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -43235,13 +43237,13 @@
   {
    "q": "An unknown C4H7N shows a sharp medium IR band at 2247 cm-1 and no absorption between 1650 and 1800 cm-1. Which structure fits?",
    "options": [
-    "CH3CH2CONH2",
-    "CH3CH2CH2CHO",
+    "CH2=CHCH2CH=NH",
+    "CH3CH2CH2CONH2",
     "CH3CH2CCH",
     "CH3CH2CH2CN"
    ],
    "correct": 3,
-   "why": "Start with the formula: C4H7N has two degrees of unsaturation, which one triple bond accounts for exactly. The band at 2247 sits in the 2500-2000 window, which is almost empty in an ordinary spectrum - only C-N and C-C triple bonds absorb there, and a terminal alkyne's stretch is weak while a nitrile's is sharp and medium. The absence of anything from 1650 to 1800 rules out the amide (about 1650) and the aldehyde (about 1725), and the alkyne has no nitrogen and the wrong formula.",
+   "why": "Two of these can be thrown out on the formula alone: butanamide is C4H9NO and but-1-yne is C4H6 with no nitrogen at all. That leaves two genuine C4H7N isomers, and only the spectrum separates them. C4H7N has two degrees of unsaturation, and both a C-N triple bond and a C=C plus a C=N account for exactly two, so counting does not settle it. The 2247 band does. The 2500-2000 window is almost empty in an ordinary spectrum, and a sharp medium band there means a triple bond - a nitrile, since the alkyne is already gone. The imine CH2=CHCH2CH=NH has nothing to put at 2247 and would instead show a C=N stretch near 1670, which the stem explicitly rules out by reporting nothing between 1650 and 1800. So the answer is butanenitrile, and notice that the negative evidence - an empty region - did as much work as the peak that is there.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -43259,15 +43261,15 @@
    "type": "mcq"
   },
   {
-   "q": "A tertiary alkyl halide with NaCN gives mainly:",
+   "q": "2-Bromo-2-methylbutane + NaCN in DMSO, heated. Major product?",
    "options": [
-    "Alkene",
-    "Nitrile",
-    "Amine",
-    "Alcohol"
+    "2-Methylbut-2-ene, by elimination",
+    "2,2-Dimethylbutanenitrile, by SN2",
+    "2-Methylbutan-2-ol, by solvolysis",
+    "2-Methylbutan-2-amine, by reduction"
    ],
    "correct": 0,
-   "why": "Backside attack on a tertiary carbon is blocked, so no nitrile forms - that part is certain. What replaces it is less tidy than it looks: cyanide is a weak base (HCN pKa 9.2), so it is poor at E2, and the realistic outcome is slow solvolysis with some alkene alongside. The alkene is the only one of these products that can form at all.",
+   "why": "Start with what cannot happen: three alkyl groups shield the tertiary carbon, so there is no backside attack and no SN2, which takes the nitrile off the table however good a nucleophile cyanide is. DMSO then removes the other escape route — there is no water to solvolyze the halide, so no tertiary alcohol. That leaves elimination. Cyanide is a weak base (HCN pKa 9.2) and a poor one for E2, but with heat and nothing competing it is enough, and Zaitsev gives the more substituted alkene. Notice how much work the solvent is doing: run the same halide in hot aqueous ethanol and solvolysis takes over and you get mostly the alcohol — and still no nitrile. That is the standing limit on cyanide chain extension: primary substrates work, secondary are poor, tertiary give none of the nitrile at all.",
    "difficulty": "medium",
    "type": "mcq"
   },

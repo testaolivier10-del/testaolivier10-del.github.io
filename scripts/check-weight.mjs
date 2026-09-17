@@ -261,7 +261,13 @@ const DATA_BUDGETS = [
      the chapter that pushed it over plus the ones queued behind it; the
      explanations half keeps its own, separate budget. This one is first-paint
      latency on practice.html, so it stays tracked to the kilobyte. */
-  ['ochem/assets/practice-bank-core.json', 220],
+  /* 220 -> 240 during the self-study pass: chapter 13 landed at 219.9 KB and
+     ten chapters of stem rewrites are still queued behind it. Budgets are for
+     catching accidental bloat (a duplicated bank, an embedded image), not for
+     making an editor shorten an exam-style stem; the actual growth rate is
+     ~1.5 KB per chapter, so 240 KB covers the rest of the pass with room to
+     spare and is still under half of what the explanations half weighs. */
+  ['ochem/assets/practice-bank-core.json', 240],
   /* 156 -> 200 for the explanations, and this one is a decision rather than
      a formality. The self-study pass rewrites recall questions into
      application ones, and an application question's explanation is a

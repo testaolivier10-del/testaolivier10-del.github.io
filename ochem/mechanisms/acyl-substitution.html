@@ -148,15 +148,15 @@
       "type": "explain",
       "eyebrow": "Setup",
       "title": "No backside attack here.",
-      "bodyHtml": "<p class=\"step-body\">An SN2 replaces a leaving group in one concerted motion. A carbonyl cannot do that — there is no room behind an sp² carbon and no need, because the pi bond gives the incoming electrons somewhere to go.</p><p class=\"step-body\">So the sequence is <b>addition first, elimination second</b>. Methyl acetate, with a nucleophile on the way in.</p>",
-      "molecule": "methyl-acetate"
+      "bodyHtml": "<p class=\"step-body\">An SN2 replaces a leaving group in one concerted motion. A carbonyl cannot do that — there is no room behind an sp² carbon and no need, because the pi bond gives the incoming electrons somewhere to go.</p><p class=\"step-body\">So the sequence is <b>addition first, elimination second</b>. Acetyl chloride, with a nucleophile on the way in — an acid chloride plus methoxide, which is the top rung of the ladder handing its acyl group down to the ester rung.</p>",
+      "molecule": "acetyl-chloride"
     },
     {
       "type": "draw",
       "eyebrow": "Step 1 · Add",
       "title": "A methoxide nucleophile attacks. Draw both arrows.",
       "bodyHtml": "<p class=\"step-body\">Two arrows, and they happen together: the nucleophile’s lone pair into the carbonyl carbon, and the pi bond up onto oxygen.</p>",
-      "molecule": "methyl-acetate-nu",
+      "molecule": "acetyl-chloride-nu",
       "concepts": [
         "carbonyl-electrophilicity",
         "tetrahedral-intermediate"
@@ -171,10 +171,10 @@
           "to": "o1"
         }
       ],
-      "why": "The lone pair on methoxide forms the new C–O bond, and because carbon cannot hold five bonds the pi bond goes up onto the carbonyl oxygen and the carbon becomes tetrahedral. So far this is identical to what happens with a ketone.",
+      "why": "The lone pair on methoxide forms the new C–O bond, and because carbon cannot hold five bonds the pi bond goes up onto the carbonyl oxygen and the carbon becomes tetrahedral. So far this is identical to what happens with a ketone. What is different is what the carbon is now holding: a methoxy group and a chlorine, and only one of them is going to leave.",
       "wrong": {
         "bond:c-o1>c": "Backwards — the electronegative oxygen takes the electrons, not the carbon that is already being attacked.",
-        "bond:c-o2>o2": "Too early. The alkoxy group does leave, but not until the intermediate has formed and collapses in the next step; both cannot happen at once at an sp² carbon.",
+        "bond:c-cl>cl": "Too early. Chloride does leave, but not until the intermediate has formed and collapses in the next step; both cannot happen at once at an sp² carbon.",
         "o1>bond:c-o1": "That is the collapse, which comes later. Right now the C=O is being broken open to accept the nucleophile."
       },
       "nextLabel": "Now collapse it"
@@ -184,7 +184,7 @@
       "eyebrow": "Step 2 · Eliminate",
       "title": "Collapse the intermediate and push out the leaving group.",
       "bodyHtml": "<p class=\"step-body\">Two arrows. This is the step a ketone cannot do, and it is what turns addition into substitution.</p>",
-      "molecule": "methyl-acetate-nu",
+      "molecule": "acetyl-chloride-nu",
       "concepts": [
         "tetrahedral-intermediate",
         "leaving-group-ability",
@@ -196,15 +196,16 @@
           "to": "bond:c-o1"
         },
         {
-          "from": "bond:c-o2",
-          "to": "o2"
+          "from": "bond:c-cl",
+          "to": "cl"
         }
       ],
-      "why": "The alkoxide oxygen pushes its lone pair back down to reform the C=O, and that forces the OR group off the carbon. A ketone's substituents are carbons, which will not leave as carbanions — which is exactly why ketones add and esters substitute.",
+      "why": "The alkoxide oxygen pushes its lone pair back down to reform the C=O, and that forces a group off the carbon — and the carbon is holding two candidates. Chloride is the conjugate base of HCl at pKa −7; methoxide is the conjugate base of methanol at pKa 15.5, twenty-two orders of magnitude more basic. The weaker base goes, so chloride leaves and the methoxy group stays, and the product is methyl acetate. A ketone has no such option at all: its substituents are carbons, which will not leave as carbanions — which is exactly why ketones add and acyl derivatives substitute.",
       "wrong": {
         "o1>c": "The lone pair reforms the C=O pi BOND, so aim the arrow at the C–O bond rather than at the carbon — the carbon already has four bonds.",
-        "bond:c-ca>ca": "The methyl group would have to leave as a carbanion, and carbanions are among the worst leaving groups there are. The alkoxy group is the one that goes.",
-        "c>o2": "The tail belongs on the C–O bond that is breaking. Carbon has no lone pair here to donate."
+        "bond:c-ca>ca": "The methyl group would have to leave as a carbanion, and carbanions are among the worst leaving groups there are. Compare the two heteroatom groups instead, and pick the weaker base.",
+        "bond:c-nuO>nuO": "That expels methoxide — the group that just arrived — and hands you back the acid chloride. Methoxide is a far stronger base than chloride, so it is the one that stays.",
+        "c>cl": "The tail belongs on the C–Cl bond that is breaking. Carbon has no lone pair here to donate."
       },
       "nextLabel": "Now do it without an anion"
     },
@@ -212,7 +213,7 @@
       "type": "explain",
       "eyebrow": "Step 3 \u00b7 Under acid",
       "title": "The same two moves, with no anion anywhere.",
-      "bodyHtml": "<p class=\"step-body\">Everything so far was anionic: methoxide in, alkoxide out. Fischer esterification \u2014 a carboxylic acid plus an alcohol plus a trace of H\u2082SO\u2084 \u2014 cannot work that way, because in acid there is no strong base to be had.</p><p class=\"step-body\">It has two problems to solve instead. The acid\u2019s carbonyl is not electrophilic enough for a neutral alcohol to attack, and its leaving group would be hydroxide, which does not leave. One proton, moved twice, fixes both.</p>",
+      "bodyHtml": "<p class=\"step-body\">Everything so far was anionic: methoxide in, chloride out. Fischer esterification \u2014 a carboxylic acid plus an alcohol plus a trace of H\u2082SO\u2084 \u2014 cannot work that way, because in acid there is no strong base to be had.</p><p class=\"step-body\">It has two problems to solve instead. The acid\u2019s carbonyl is not electrophilic enough for a neutral alcohol to attack, and its leaving group would be hydroxide, which does not leave. One proton, moved twice, fixes both.</p>",
       "molecule": "fischer-protonation",
       "nextLabel": "Protonate it"
     },

@@ -589,7 +589,7 @@
 
     'esters-amides': { n:8, steps:{
       1:['acyl-reactivity-order'],
-      2:['acyl-reactivity-order','leaving-group-ability'],
+      2:['acyl-reactivity-order','leaving-group-ability','amide-resonance'],
       4:['acyl-reactivity-order','tetrahedral-intermediate'],
       6:['acyl-reactivity-order','leaving-group-ability'],
       7:['acyl-reactivity-order'] } },

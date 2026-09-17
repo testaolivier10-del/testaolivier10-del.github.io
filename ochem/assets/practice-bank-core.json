@@ -22929,12 +22929,12 @@
    "type": "mcq"
   },
   {
-   "q": "For two compounds of similar molecular weight, one with a -COOH group and one with a simple -OH group, which generally has the higher boiling point?",
+   "q": "Neat acetic acid absorbs near 1710 cm-1; heavily diluted, near 1760. What changed?",
    "options": [
-    "The carboxylic acid, because it forms dimers",
-    "The alcohol, because O-H bonds are always stronger",
-    "They are always identical",
-    "Neither forms hydrogen bonds"
+    "The dimers came apart into free monomers",
+    "The acid was deprotonated by the solvent",
+    "The OH donates more strongly into the C=O",
+    "The carbonyl carbon rehybridized to sp3"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -22951,14 +22951,14 @@
    "type": "tf"
   },
   {
-   "q": "Why does water solubility of straight-chain carboxylic acids drop off sharply once the chain grows beyond about 4-5 carbons?",
+   "q": "Warmed to 80 °C: CH3COCH2COOH and CH3COCH2CH2COOH. Which one loses CO2?",
    "options": [
-    "Longer acids lose their carboxyl group",
-    "The nonpolar tail outweighs the carboxyl",
-    "Longer chains become more acidic and repel water",
-    "Water cannot hydrogen bond to any carboxylic acid"
+    "Both, since any ketone activates a carboxyl",
+    "Neither, without a metal catalyst present",
+    "Only the first: the ring closed is six-membered",
+    "Only the second: its ring is less strained"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -23129,12 +23129,12 @@
    "type": "mcq"
   },
   {
-   "q": "Mixing a carboxylic acid directly with an amine at room temperature forms an amide immediately.",
+   "q": "A beta-lactam is a better acylating agent than an ordinary amide because its four-membered ring twists the nitrogen lone pair out of alignment with the C=O.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 1,
+   "correct": 0,
    "difficulty": "medium",
    "type": "tf"
   },
@@ -23385,14 +23385,16 @@
    "type": "mcq"
   },
   {
-   "q": "In nucleophilic acyl substitution, the leaving group departs before the nucleophile ever attacks the carbonyl carbon.",
+   "q": "Benzoic acid is esterified with ¹⁸O-methanol under acid. Where does the label end up?",
    "options": [
-    "True",
-    "False"
+    "In the water that is formed",
+    "In the ester, on its O-CH3 oxygen",
+    "In the ester, on its carbonyl oxygen",
+    "Split evenly between ester and water"
    ],
    "correct": 1,
-   "difficulty": "easy",
-   "type": "tf"
+   "difficulty": "hard",
+   "type": "mcq"
   },
   {
    "q": "Which order correctly ranks these four carboxylic acid derivatives from MOST to LEAST reactive toward nucleophilic acyl substitution?",
@@ -25411,7 +25413,7 @@
   {
    "q": "A primary amine is treated with one equivalent of an acid chloride in the presence of excess pyridine as a base. What roles does pyridine play, and why is it chosen over a strong base like NaOH?",
    "options": [
-    "pyridine neutralizes HCl and is too weak a nucleophile",
+    "pyridine mops up the HCl and cannot end up in the product",
     "pyridine acts purely as a reducing agent in this reaction",
     "pyridine itself becomes incorporated into the amide product",
     "pyridine serves only as an inert solvent with no chemical role"
@@ -39577,15 +39579,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why does pyridine not compete with the amine?",
+   "q": "Pyridine attacks an acid chloride. Why does that not spoil the acylation?",
    "options": [
-    "Poorly nucleophilic",
-    "Not basic enough",
-    "Acidic, not basic",
-    "It traps chloride ion"
+    "The acylpyridinium passes the acyl on",
+    "HCl protonates it before it attacks",
+    "Its sp2 lone pair sits in the ring plane",
+    "Chloride recaptures the acyl group"
    ],
    "correct": 0,
-   "difficulty": "easy",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -39869,8 +39871,8 @@
   {
    "q": "An unknown C4H7N shows a sharp medium IR band at 2247 cm-1 and no absorption between 1650 and 1800 cm-1. Which structure fits?",
    "options": [
-    "CH3CH2CONH2",
-    "CH3CH2CH2CHO",
+    "CH2=CHCH2CH=NH",
+    "CH3CH2CH2CONH2",
     "CH3CH2CCH",
     "CH3CH2CH2CN"
    ],
@@ -39891,12 +39893,12 @@
    "type": "mcq"
   },
   {
-   "q": "A tertiary alkyl halide with NaCN gives mainly:",
+   "q": "2-Bromo-2-methylbutane + NaCN in DMSO, heated. Major product?",
    "options": [
-    "Alkene",
-    "Nitrile",
-    "Amine",
-    "Alcohol"
+    "2-Methylbut-2-ene, by elimination",
+    "2,2-Dimethylbutanenitrile, by SN2",
+    "2-Methylbutan-2-ol, by solvolysis",
+    "2-Methylbutan-2-amine, by reduction"
    ],
    "correct": 0,
    "difficulty": "medium",

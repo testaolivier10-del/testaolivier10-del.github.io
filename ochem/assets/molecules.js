@@ -666,19 +666,18 @@
     caption: 'An ester — a carbonyl with a leaving group attached.'
   };
 
-  M['methyl-acetate-nu'] = {
-    name: 'Methyl acetate + methoxide', formula: 'CH₃CO₂CH₃ + CH₃O⁻', viewBox: '0 0 320 190',
+  M['acetyl-chloride-nu'] = {
+    name: 'Acetyl chloride + methoxide', formula: 'CH₃COCl + CH₃O⁻', viewBox: '0 0 320 190',
     atoms: {
       nuO: { x:36,  y:104,r:16, label:'O', charge:'⁻', lp:3, role:'nucleophile', note:'Methoxide: a negative charge and three lone pairs. One of those pairs makes the new bond to the acyl carbon.' },
       nuC: { x:36,  y:48, r:15, label:'C' },
       o1:  { x:176, y:40, r:16, label:'O', lp:2, role:'carbonyl-o' },
       c:   { x:176, y:98, r:17, label:'C', role:'electrophile', note:'The acyl carbon — where the nucleophile attacks in acyl substitution.' },
       ca:  { x:120, y:132,r:15, label:'C', role:'alpha-carbon' },
-      o2:  { x:238, y:132,r:16, label:'O', lp:2, role:'leaving-group', note:'The ester oxygen. Methoxide is basic, so this is a mediocre leaving group — esters are less reactive than acid chlorides.' },
-      cm:  { x:292, y:98, r:15, label:'C' }
+      cl:  { x:242, y:132,r:17, label:'Cl', lp:3, role:'leaving-group', note:'Chloride is the conjugate base of HCl, pKa −7 — a very weak base, and the best leaving group on the ladder. It, not methoxide, is what the intermediate expels.' }
     },
-    bonds: [{a:'nuO',b:'nuC'},{a:'c',b:'o1',order:2},{a:'c',b:'ca'},{a:'c',b:'o2'},{a:'o2',b:'cm'}],
-    caption: 'An ester with the nucleophile drawn in, so both arrows of the first step have somewhere to start.'
+    bonds: [{a:'nuO',b:'nuC'},{a:'c',b:'o1',order:2},{a:'c',b:'ca'},{a:'c',b:'cl'}],
+    caption: 'An acid chloride with the nucleophile drawn in, so both arrows of the first step have somewhere to start.'
   };
 
   M['fischer-protonation'] = {
