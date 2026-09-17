@@ -9774,7 +9774,7 @@ FIGURES.push({
   id: 'acid-catalyzed-addition',
   section: 'nucleophilic-addition',
   anchor: 'Count the protons across the whole sequence and the catalyst comes back out, which is what makes it catalytic.</p>',
-  alt: 'Four panels showing acid-catalyzed addition to a ketone. First a lone pair on the carbonyl oxygen takes a proton. Second, the resulting cation is drawn as two resonance contributors, the protonated carbonyl and the oxocarbenium ion with the positive charge on carbon. Third, a neutral alcohol attacks that carbon with a lone pair, giving a positively charged oxygen on the added group. Fourth, a base removes that proton, giving the neutral addition product and handing the catalyst back.',
+  alt: 'Four panels showing acid-catalyzed addition to a ketone. First a lone pair on the carbonyl oxygen takes a proton. Second, the resulting cation — the oxocarbenium ion — is drawn as its two resonance contributors, one with the double bond and the charge on oxygen, one with the charge on carbon and only a sextet there. Third, a neutral alcohol attacks that carbon with a lone pair, giving a positively charged oxygen on the added group. Fourth, a base removes that proton, giving the neutral addition product and handing the catalyst back.',
   viewBox: '0 0 760 528',
   build() {
     let s = '';
@@ -9807,7 +9807,7 @@ FIGURES.push({
     s += text(188, 210, 'the basic site is the oxygen, not the carbon', { cls: 'fg-sm', size: 9.5 });
 
     // ---- 2. the activated cation, two contributors ----
-    s += cell(392, 16, 'STEP 2 · ONE CATION, TWO CONTRIBUTORS');
+    s += cell(392, 16, 'STEP 2 · THE OXOCARBENIUM ION');
     const c2 = P(482, 146);
     const u2 = unit(c2, 2, 'O');
     s += u2.g;
@@ -9821,9 +9821,9 @@ FIGURES.push({
     s += text(u3.o.x + 24, u3.o.y - 12, 'H', { cls: 'fg-lbl', size: 11, anchor: 'start' });
     s += lonePair(u3.o.x, u3.o.y, 232, { dist: 23 });
     s += text(c3.x - 26, c3.y - 14, '+', { cls: 'fg-warn', size: 15 });
-    s += text(482, 210, 'protonated carbonyl', { cls: 'fg-sm', size: 9.5 });
-    s += text(660, 210, 'oxocarbenium — this is', { cls: 'fg-tag-warn', size: 10 });
-    s += text(660, 224, 'what gets attacked', { cls: 'fg-tag-warn', size: 10 });
+    s += text(482, 210, 'charge on O, every octet full', { cls: 'fg-sm', size: 9.5 });
+    s += text(660, 210, 'charge on C, a SEXTET there —', { cls: 'fg-tag-warn', size: 10 });
+    s += text(660, 224, 'this is what gets attacked', { cls: 'fg-tag-warn', size: 10 });
 
     // ---- 3. the neutral nucleophile adds ----
     s += cell(8, 248, 'STEP 3 · A NEUTRAL ALCOHOL ADDS');
@@ -9865,7 +9865,7 @@ FIGURES.push({
     s += text(380, 512, 'ACID activates the electrophile, and deprotonates at the end.', { cls: 'fg-lbl', size: 11 });
     return s;
   },
-  caption: 'The order reversed, with arrows. Under base a charged nucleophile hits a neutral carbonyl and the alkoxide is protonated afterwards; under acid the proton goes on <i>first</i>, and what a weak neutral nucleophile then attacks is the oxocarbenium contributor, where the positive charge is on carbon and the octet is complete on oxygen.',
+  caption: 'The order reversed, with arrows. Under base a charged nucleophile hits a neutral carbonyl and the alkoxide is protonated afterwards; under acid the proton goes on <i>first</i>, and what a weak neutral nucleophile then attacks is the oxocarbenium ion, whose second contributor puts the positive charge on carbon and leaves only six electrons there.',
   note: 'Learn the shape rather than the four pictures: <b>protonate, add, deprotonate</b>. Acetal formation is this run twice, imine formation is this plus a dehydration, and ester hydrolysis is this with a leaving group on the carbon. The proton count is the tell that something has gone wrong in a mechanism — if the catalyst does not come back out, a step is missing.',
 });
 
@@ -9971,7 +9971,7 @@ FIGURES.push({
   id: 'acetal-seven-steps',
   section: 'acetals',
   anchor: '<h3>Step one: hemiacetal formation</h3>',
-  alt: 'Seven panels drawing the acid-catalyzed formation of an acetal from a ketone. Protonation of the carbonyl oxygen; attack by the first alcohol on the carbonyl carbon; loss of a proton to give the hemiacetal; protonation of the hemiacetal hydroxyl; loss of water to give the oxocarbenium ion; attack by the second alcohol; and loss of the final proton to give the acetal. Every step carries curved arrows, and every arrow is reversible.',
+  alt: 'Seven panels drawing the acid-catalyzed formation of an acetal from a ketone. Protonation of the carbonyl oxygen; attack by the first alcohol on the carbonyl carbon, with a second arrow taking the pi bond up onto the positively charged oxygen; loss of a proton to give the hemiacetal; protonation of the hemiacetal hydroxyl; loss of water to give the oxocarbenium ion, drawn with the double bond and the positive charge on oxygen; attack by the second alcohol on that carbon, again with a second arrow moving the pi bond onto oxygen; and loss of the final proton to give the acetal. Every step carries curved arrows, and every arrow is reversible.',
   viewBox: '0 0 760 742',
   build() {
     let s = '';
@@ -10027,7 +10027,9 @@ FIGURES.push({
     s += text(nu.x + 20, nu.y + 20, 'R', { cls: 'fg-sm', size: 10, anchor: 'start' });
     s += lonePair(nu.x, nu.y, 186, { dist: 23 });
     s += curve(P(nu.x - 22, nu.y - 6), P(c.x + 16, c.y + 8), { bow: 18 });
-    s += sub(378, 202, 'the nucleophile is NEUTRAL');
+    s += curve(P(c.x + 5, c.y - 16), P(c.x + 12, c.y - 44), { bow: 12 });
+    s += sub(378, 196, 'TWO arrows: ROH to carbon,');
+    s += sub(378, 210, 'and the pi bond up onto oxygen');
 
     // ---- 3 deprotonate, giving the hemiacetal ----
     s += frame(512, 16, '3', 'LOSE H⁺ → HEMIACETAL');
@@ -10080,7 +10082,9 @@ FIGURES.push({
     s += text(nu.x + 20, nu.y - 12, 'R', { cls: 'fg-sm', size: 10, anchor: 'start' });
     s += lonePair(nu.x, nu.y, 110, { dist: 23 });
     s += curve(P(nu.x + 12, nu.y + 20), P(c.x + 8, c.y - 18), { bow: -14 });
-    s += sub(600, 202 + 224, 'flat, and open from both faces');
+    s += curve(P(c.x + 28.7, c.y - 12.3), P(c.x + 49, c.y - 24), { bow: -14 });
+    s += sub(610, 202 + 224, 'flat carbon, open from both faces');
+    s += sub(610, 216 + 224, 'and the pi bond goes up onto O');
 
     // ---- 7 deprotonate, giving the acetal ----
     s += frame(8, 464, '7', 'LOSE H⁺ → ACETAL');
@@ -10109,8 +10113,8 @@ FIGURES.push({
     s += text(380, 722, 'protonate · add · deprotonate   —   then protonate · lose water · add · deprotonate', { cls: 'fg-lbl', size: 11.5 });
     return s;
   },
-  caption: 'The whole mechanism as elementary steps, which is how an exam asks for it. Two halves of three and four: an ordinary acid-catalyzed addition gives the hemiacetal, then the hemiacetal’s OH is turned into water, ionizes, and is replaced by a second alcohol. The oxocarbenium ion in the middle is what makes the second half possible at all.',
-  note: 'Two steps carry the difficulty. Step 5 is where the arrow starts on the <b>C–O bond</b> and ends on the oxygen — the leaving group departs with the electron pair, exactly as in any SN1 — and step 6 is where a flat, positively charged carbon is attacked from either face. Everything else is a proton moving on or off an oxygen.',
+  caption: 'The whole mechanism as elementary steps, which is how an exam asks for it. Two halves of three and four: an ordinary acid-catalyzed addition gives the hemiacetal, then the hemiacetal’s OH is turned into water, ionizes, and is replaced by a second alcohol. The oxocarbenium ion in the middle — drawn here as its C=O<sup>+</sup> contributor, with the positive charge on oxygen and the electrophilic carbon flat and open — is what makes the second half possible at all.',
+  note: 'Two steps carry the difficulty. Step 5 is where the arrow starts on the <b>C–O bond</b> and ends on the oxygen — the leaving group departs with the electron pair, exactly as in any SN1 — and step 6 is where the flat sp² carbon of the oxocarbenium ion is attacked from either face. Note the arrow count in steps 2 and 6: the species drawn there still has a C=O double bond, so the nucleophile’s arrow must be paired with a second one pushing that pi bond up onto oxygen, or the carbon ends up with five bonds. Everything else is a proton moving on or off an oxygen.',
 });
 
 

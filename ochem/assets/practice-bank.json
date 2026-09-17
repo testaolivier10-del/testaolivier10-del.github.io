@@ -21638,13 +21638,13 @@
    "type": "mcq"
   },
   {
-   "q": "An aldehyde or ketone dissolved in water exists in equilibrium with a small amount of its geminal diol (hydrate) form.",
+   "q": "An aldehyde or ketone dissolved in water exists in equilibrium with its geminal diol (hydrate) form.",
    "options": [
     "True",
     "False"
    ],
    "correct": 0,
-   "why": "Water can add reversibly across the carbonyl to form a geminal diol (two OH groups on one carbon). For most ketones and aldehydes this equilibrium favors the carbonyl form, but for very electrophilic carbonyls like formaldehyde, the hydrate can dominate.",
+   "why": "Water adds reversibly across the carbonyl to give a geminal diol (two OH groups on one carbon). How far the equilibrium goes varies enormously - a trace for acetone, about half for acetaldehyde, essentially complete for formaldehyde and chloral - but the equilibrium itself is always there.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -21714,15 +21714,15 @@
    "type": "mcq"
   },
   {
-   "q": "Rank chloral (Cl3CCHO), acetaldehyde, benzaldehyde and cyclohexanone from MOST to LEAST reactive toward a nucleophile.",
+   "q": "Rank chloral (Cl3CCHO), acetaldehyde, benzaldehyde and acetone from MOST to LEAST reactive toward a nucleophile.",
    "options": [
-    "Cyclohexanone > benzaldehyde > acetaldehyde > chloral",
-    "Acetaldehyde > chloral > cyclohexanone > benzaldehyde",
-    "Benzaldehyde > acetaldehyde > chloral > cyclohexanone",
-    "Chloral > acetaldehyde > benzaldehyde > cyclohexanone"
+    "Acetone > benzaldehyde > acetaldehyde > chloral",
+    "Acetaldehyde > chloral > acetone > benzaldehyde",
+    "Benzaldehyde > acetaldehyde > chloral > acetone",
+    "Chloral > acetaldehyde > benzaldehyde > acetone"
    ],
    "correct": 3,
-   "why": "Sort on the aldehyde/ketone split first: cyclohexanone is the only ketone, with two donating and crowding substituents, so it goes last. Then compare what the single substituent does on the three aldehydes. Chloral’s three chlorines pull density away inductively and leave the carbon hungrier than a methyl does. Benzaldehyde’s ring donates into the carbonyl by resonance, which is a larger stabilization of the starting material than acetaldehyde’s methyl provides, so benzaldehyde sits below acetaldehyde.",
+   "why": "Sort on the aldehyde/ketone split first: acetone is the only ketone, with two donating and crowding methyls, so it goes last. Then compare what the single substituent does on the three aldehydes. Chloral’s three chlorines pull density away inductively and leave the carbon hungrier than a methyl does. Benzaldehyde’s ring donates into the carbonyl by resonance, which is a larger stabilization of the starting material than acetaldehyde’s methyl provides, so benzaldehyde sits below acetaldehyde.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -42213,7 +42213,7 @@
    "type": "mcq"
   },
   {
-   "q": "Why is that pH range chosen?",
+   "q": "Cyanohydrin formation is run near pH 8-10. Why that range?",
    "options": [
     "Only HCN adds to carbonyls",
     "The carbonyl is protonated there",
@@ -42221,7 +42221,7 @@
     "Cyanide is destroyed below pH 8"
    ],
    "correct": 2,
-   "why": "CN- does the attacking and HCN protonates the alkoxide.",
+   "why": "CN- is the nucleophile that attacks the carbonyl, and HCN is the acid that protonates the alkoxide that results. Too acidic and almost everything is HCN, with too little cyanide to start; too basic and there is no HCN left to finish the job, and the alkoxide simply expels cyanide again.",
    "difficulty": "easy",
    "type": "mcq"
   },
