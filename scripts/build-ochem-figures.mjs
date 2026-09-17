@@ -10484,6 +10484,483 @@ FIGURES.push({
   note: 'The middle panel is the argument, and the numbers in it are <b>diameters</b>: a 2.7 Å hole against a 2.66 Å potassium ion and a 1.9 Å sodium one. Potassium fills the cavity and contacts all six oxygens; sodium sits in a hole too big for it and touches fewer of them at a time, which is why the binding is so much weaker. The payoff is the anion left behind: unsolvated, uncoupled from its cation, and far more nucleophilic than the same ion in water.',
 });
 
+/* ---------------------------------------------------------------- 165 ---
+   The dimer. The prose asserts an eight-membered ring held by two hydrogen
+   bonds at once and then explains a boiling point with it; that is a specific
+   2D arrangement and the section had no picture of it. */
+FIGURES.push({
+  id: 'acid-dimer',
+  section: 'carboxylic-acids',
+  anchor: 'which is why the measured molecular weight of acetic acid vapor comes out close to double.</p>',
+  viewBox: '0 0 760 360',
+  alt: 'Two acetic acid molecules facing each other, each O-H hydrogen reaching across to the other molecule’s carbonyl oxygen, closing an eight-membered ring held by two hydrogen bonds',
+  build() {
+    let s = '';
+    const meL = P(180, 180), cL = P(256, 180), o1L = P(330, 130), o2L = P(330, 230);
+    const meR = P(580, 180), cR = P(504, 180), o1R = P(430, 230), o2R = P(430, 130);
+    const hL = P(380, 244), hR = P(380, 116);
+
+    s += bond(cL, o1L, { order: 2 });
+    s += bond(cL, o2L);
+    s += bond(cL, meL);
+    s += bond(cR, o1R, { order: 2 });
+    s += bond(cR, o2R);
+    s += bond(cR, meR);
+    s += bond(o2L, hL, { rTo: 10, cls: 'fg-bond' });
+    s += bond(o2R, hR, { rTo: 10, cls: 'fg-bond' });
+    // the two hydrogen bonds, drawn dashed
+    s += bond(hL, o1R, { rFrom: 10, cls: 'fg-dash-hi' });
+    s += bond(hR, o1L, { rFrom: 10, cls: 'fg-dash-hi' });
+
+    s += atom(meL.x, meL.y, 'CH₃');
+    s += atom(meR.x, meR.y, 'CH₃');
+    s += atom(cL.x, cL.y, 'C', { kind: 'hi' });
+    s += atom(cR.x, cR.y, 'C', { kind: 'hi' });
+    s += atom(o1L.x, o1L.y, 'O'); s += lonePair(o1L.x, o1L.y, 250); s += lonePair(o1L.x, o1L.y, 190);
+    s += atom(o1R.x, o1R.y, 'O'); s += lonePair(o1R.x, o1R.y, 110); s += lonePair(o1R.x, o1R.y, 170);
+    s += atom(o2L.x, o2L.y, 'O'); s += lonePair(o2L.x, o2L.y, 110);
+    s += atom(o2R.x, o2R.y, 'O'); s += lonePair(o2R.x, o2R.y, 250);
+    s += atom(hL.x, hL.y, 'H', { r: 10 });
+    s += atom(hR.x, hR.y, 'H', { r: 10 });
+
+    s += tag(380, 92, 'hydrogen bond');
+    s += tag(380, 276, 'hydrogen bond');
+
+    s += rule(24, 296, 726, 296);
+    s += text(24, 320, 'acetic acid · 60 g/mol · bp 118 °C', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    s += text(24, 342, 'acetone · 58 g/mol · bp 56 °C', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(700, 320, 'costs TWO hydrogen bonds', { cls: 'fg-lbl', size: 13, anchor: 'end' });
+    s += text(700, 342, 'not one — hence the 62 °C', { cls: 'fg-sm', size: 10.5, anchor: 'end' });
+    return s;
+  },
+  caption: 'Two carboxylic acids lock together through two hydrogen bonds at once, closing an eight-membered ring: each molecule donates its O–H to the other’s carbonyl oxygen. Breaking a dimer apart costs two hydrogen bonds rather than one, which is why acetic acid at 60 g/mol boils at 118 °C while acetone at 58 g/mol boils at 56 °C.',
+  note: 'The pairing survives into the vapor, which is why a molecular-weight measurement on acetic acid vapor reads close to 120 rather than 60 — one of the older pieces of evidence that the dimer is a real species and not a way of drawing the liquid.',
+});
+
+/* ---------------------------------------------------------------- 166 ---
+   The section asserts twice that the neutral acid’s OH donates into its own
+   carbonyl, and draws only the anion. The claim that carries the second half
+   of the section is the one with no picture. */
+FIGURES.push({
+  id: 'acid-donation-vs-ketone',
+  section: 'carboxylic-acids',
+  anchor: 'A carboxylic acid is therefore noticeably <i>less</i> reactive toward nucleophilic attack than a ketone.</p>',
+  viewBox: '0 0 760 330',
+  alt: 'Acetic acid with a curved arrow from the hydroxyl oxygen into the carbonyl and the resulting charge-separated contributor, beside acetone which has no lone-pair donor',
+  build() {
+    let s = '';
+    s += tag(150, 44, 'acetic acid');
+    const c1 = P(150, 140), o1 = P(150, 84), o2 = P(206, 174), h1 = P(252, 192), m1 = P(94, 174);
+    s += bond(c1, o1, { order: 2 }); s += bond(c1, o2); s += bond(c1, m1);
+    s += bond(o2, h1, { rTo: 10 });
+    s += atom(m1.x, m1.y, 'CH₃');
+    s += atom(o1.x, o1.y, 'O'); s += lonePair(o1.x, o1.y, 200);
+    s += atom(o2.x, o2.y, 'O'); s += lonePair(o2.x, o2.y, 40);
+    s += atom(h1.x, h1.y, 'H', { r: 10 });
+    s += atom(c1.x, c1.y, 'C', { kind: 'hi' });
+    s += curve(P(222, 190), P(182, 160), { bow: 24 });
+    s += curve(P(168, 116), P(172, 94), { bow: 16 });
+
+    s += arrow(P(266, 140), P(324, 140), { muted: true });
+    s += text(295, 126, 'resonance', { cls: 'fg-tag', size: 10.5 });
+
+    s += tag(404, 44, 'the contributor that matters');
+    const c2 = P(404, 140), o3 = P(404, 84), o4 = P(460, 174), h2 = P(506, 192), m2 = P(348, 174);
+    s += bond(c2, o3); s += bond(c2, o4, { order: 2 }); s += bond(c2, m2);
+    s += bond(o4, h2, { rTo: 10 });
+    s += atom(m2.x, m2.y, 'CH₃');
+    s += atom(o3.x, o3.y, 'O', { kind: 'warn' }); s += text(430, 76, '−', { cls: 'fg-hi', size: 15 });
+    s += atom(o4.x, o4.y, 'O', { kind: 'warn' }); s += text(486, 168, '+', { cls: 'fg-warn', size: 15 });
+    s += atom(h2.x, h2.y, 'H', { r: 10 });
+    s += atom(c2.x, c2.y, 'C', { kind: 'hi' });
+    s += text(404, 214, 'carbon is no longer δ+', { cls: 'fg-sm', size: 10 });
+
+    s += rule(536, 44, 536, 250);
+    s += tag(616, 44, 'acetone');
+    const c3 = P(616, 140), o5 = P(616, 84), m3 = P(560, 174), m4 = P(672, 174);
+    s += bond(c3, o5, { order: 2 }); s += bond(c3, m3); s += bond(c3, m4);
+    s += atom(m3.x, m3.y, 'CH₃'); s += atom(m4.x, m4.y, 'CH₃');
+    s += atom(o5.x, o5.y, 'O'); s += lonePair(o5.x, o5.y, 200); s += lonePair(o5.x, o5.y, 340);
+    s += atom(c3.x, c3.y, 'C', { kind: 'warn' });
+    s += text(616, 214, 'no lone-pair donor', { cls: 'fg-sm', size: 10 });
+
+    s += rule(24, 274, 726, 274);
+    s += text(24, 300, 'The donation is happening in the NEUTRAL acid, before anything is removed.', { cls: 'fg-lbl', size: 13, anchor: 'start' });
+    s += text(24, 322, 'It cancels part of the carbonyl carbon’s δ+, so the acid is the worse electrophile.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    return s;
+  },
+  caption: 'The same lone pair, doing its other job. In the carboxylate this donation spreads a negative charge; here, in the neutral acid, it pushes electron density onto a carbon that was supposed to be electrophilic. Acetone has only alkyl groups attached and no lone pair to give, which is why its carbonyl is the hungrier of the two.',
+  note: 'This is the half of the section students skip, because "the O–H is very acidic" and "the C=O is very electrophilic" sound like the same claim about a very polar molecule. They are opposite claims, and the drawing is why: the donation that makes the anion stable is the donation that makes the carbonyl dull.',
+});
+
+/* ---------------------------------------------------------------- 167 ---
+   Amide resonance in the section that teaches it. The peptide chapter already
+   has a version of this picture; the ladder chapter, where the claim about
+   restricted rotation is first made, had none. */
+FIGURES.push({
+  id: 'amide-rotation-locked',
+  section: 'esters-amides',
+  anchor: "The whole amide unit is planar, and the nitrogen is not pyramidal as an amine's would be.</p>",
+  viewBox: '0 0 760 330',
+  alt: 'Dimethylformamide with a curved arrow from the nitrogen lone pair into the carbonyl, and the resulting contributor with a C=N double bond, positive nitrogen and negative oxygen',
+  build() {
+    let s = '';
+    const draw = (ox, dbl) => {
+      const c = P(ox, 150), o = P(ox, 94), h = P(ox - 56, 184), nA = P(ox + 56, 184);
+      const ma = P(ox + 112, 150), mb = P(ox + 56, 240);
+      let t = '';
+      t += bond(c, o, { order: dbl ? 1 : 2 });
+      t += bond(c, nA, { order: dbl ? 2 : 1 });
+      t += bond(c, h, { rTo: 10 });
+      t += bond(nA, ma); t += bond(nA, mb);
+      t += atom(ma.x, ma.y, 'CH₃'); t += atom(mb.x, mb.y, 'CH₃');
+      t += atom(h.x, h.y, 'H', { r: 10 });
+      t += atom(c.x, c.y, 'C', { kind: 'hi' });
+      if (dbl) {
+        t += atom(o.x, o.y, 'O', { kind: 'warn' });
+        t += text(ox + 26, 86, '−', { cls: 'fg-hi', size: 15 });
+        t += atom(nA.x, nA.y, 'N', { kind: 'warn' });
+        t += text(ox + 82, 200, '+', { cls: 'fg-warn', size: 15 });
+      } else {
+        t += atom(o.x, o.y, 'O'); t += lonePair(o.x, o.y, 200); t += lonePair(o.x, o.y, 340);
+        t += atom(nA.x, nA.y, 'N', { kind: 'hi' });
+        t += lonePair(nA.x, nA.y, 135);
+      }
+      t += text(ma.x, ma.y + 32, 'Me(a)', { cls: 'fg-sm', size: 10 });
+      t += text(mb.x + 46, mb.y + 4, 'Me(b)', { cls: 'fg-sm', size: 10 });
+      return t;
+    };
+    s += draw(140, false);
+    s += draw(500, true);
+    s += curve(P(178, 168), P(166, 132), { bow: -22 });
+    s += curve(P(160, 128), P(164, 108), { bow: 14 });
+    s += arrow(P(320, 150), P(388, 150), { muted: true });
+    s += text(354, 136, 'resonance', { cls: 'fg-tag', size: 10.5 });
+    s += tag(140, 44, 'dimethylformamide');
+    s += tag(520, 44, 'the contributor, at about 40%');
+
+    s += rule(24, 274, 726, 274);
+    s += text(24, 300, 'The C–N bond is partly double, so it does not rotate: the barrier is near 18 kcal/mol.', { cls: 'fg-lbl', size: 13, anchor: 'start' });
+    s += text(24, 322, 'One methyl sits beside the oxygen and one beside the H, and they never swap — two NMR signals.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    return s;
+  },
+  caption: 'The nitrogen lone pair is not sitting on nitrogen; it is in the pi system. That is why the C–N bond has partial double-bond character, why the six atoms of the O=C–N unit lie in one plane, and why the nitrogen is flat rather than pyramidal like an amine’s.',
+  note: 'The NMR consequence is the one that can be checked in an afternoon. DMF’s two methyls look identical on paper, and at room temperature they give two separate ¹H signals, because the bond that would swap them cannot turn. Warm the sample enough and the two signals coalesce into one — which is how the 18 kcal/mol number was measured.',
+});
+
+/* ---------------------------------------------------------------- 168 ---
+   Fischer esterification, which the section describes in five sentences of
+   prose and every exam asks for as arrows. Two rows of panels, because five
+   structures do not fit across one reading column. */
+FIGURES.push({
+  id: 'fischer-five-steps',
+  section: 'acyl-substitution',
+  anchor: 'Same protonation-as-activation strategy you have now seen in alcohol chemistry, ether cleavage, and acetal formation.</p>',
+  viewBox: '0 0 760 430',
+  alt: 'Five panels of Fischer esterification: protonating the carbonyl, methanol attacking, the neutral tetrahedral intermediate, loss of water after protonating an OH, and deprotonation to methyl acetate',
+  build() {
+    let s = '';
+    // 1 - protonate the carbonyl
+    let c = P(120, 116), o = P(120, 70), og = P(164, 144), hg = P(204, 162), me = P(76, 144);
+    s += bond(c, o, { order: 2 }); s += bond(c, og); s += bond(c, me); s += bond(og, hg, { rTo: 10 });
+    s += atom(me.x, me.y, 'Me'); s += atom(og.x, og.y, 'O'); s += atom(hg.x, hg.y, 'H', { r: 10 });
+    s += atom(o.x, o.y, 'O'); s += lonePair(o.x, o.y, 200);
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += text(214, 66, 'H⁺', { cls: 'fg-lbl', size: 13 });
+    s += curve(P(120, 46), P(200, 62), { bow: -18 });
+    s += tag(130, 200, '1 · protonate the C=O');
+
+    // 2 - methanol attacks
+    c = P(380, 116); o = P(380, 70); og = P(424, 144); hg = P(464, 162); me = P(336, 144);
+    s += bond(c, o, { order: 2 }); s += bond(c, og); s += bond(c, me); s += bond(og, hg, { rTo: 10 });
+    s += atom(me.x, me.y, 'Me'); s += atom(og.x, og.y, 'O'); s += atom(hg.x, hg.y, 'H', { r: 10 });
+    s += atom(o.x, o.y, 'O', { kind: 'warn' }); s += text(406, 62, '+', { cls: 'fg-warn', size: 15 });
+    s += bond(o, P(380, 30), { rTo: 10 }); s += atom(380, 30, 'H', { r: 10 });
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += atom(288, 100, 'MeOH', { kind: 'hi' });
+    s += curve(P(306, 112), P(362, 112), { bow: 20 });
+    s += curve(P(400, 112), P(398, 90), { bow: 14 });
+    s += tag(380, 200, '2 · methanol attacks');
+
+    // 3 - the neutral tetrahedral intermediate
+    c = P(630, 116);
+    s += bond(c, P(630, 70)); s += bond(c, P(676, 144)); s += bond(c, P(584, 144)); s += bond(c, P(586, 84));
+    s += atom(630, 70, 'OH'); s += atom(676, 144, 'OMe'); s += atom(584, 144, 'OH'); s += atom(586, 84, 'Me');
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += tag(630, 200, '3 · tetrahedral, neutral');
+
+    s += rule(24, 224, 726, 224);
+
+    // 4 - protonate an OH and lose water
+    c = P(210, 300);
+    s += bond(c, P(210, 254), { order: 2 }); s += bond(c, P(254, 328)); s += bond(c, P(166, 328));
+    s += atom(210, 254, 'O'); s += atom(254, 328, 'OMe'); s += atom(166, 328, 'Me');
+    s += text(236, 246, '+', { cls: 'fg-warn', size: 15 });
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += text(322, 296, '− H₂O', { cls: 'fg-lbl', size: 13 });
+    s += tag(230, 376, '4 · protonate an OH, lose water');
+
+    // 5 - deprotonate
+    c = P(560, 300);
+    s += bond(c, P(560, 254), { order: 2 }); s += bond(c, P(604, 328)); s += bond(c, P(516, 328));
+    s += atom(560, 254, 'O'); s += lonePair(560, 254, 200); s += lonePair(560, 254, 340);
+    s += atom(604, 328, 'OMe'); s += atom(516, 328, 'Me');
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += tag(560, 376, '5 · deprotonate — methyl acetate');
+
+    s += text(380, 410, 'Every step is reversible: run it right to left with water and it is hydrolysis.', { cls: 'fg-tag-good', size: 11 });
+    return s;
+  },
+  caption: 'Acid catalysis doing two different jobs with one proton. Step 1 makes a carbon electrophilic enough for a neutral alcohol to attack at all; step 4 turns an OH, which would never leave, into water, which will. Nothing anionic appears anywhere in the sequence, which is the test of whether a mechanism written under acid is written correctly.',
+  note: 'Count the arrows that are not reversible: none. That is why the reaction settles near 65% conversion and has to be driven — excess alcohol, or water removed as it forms. It is also why the same five panels, read from the right with water in place of methanol, are acid-catalyzed ester hydrolysis rather than a separate mechanism to learn.',
+});
+
+/* ---------------------------------------------------------------- 169 ---
+   Saponification, whose pitfall box turns on the exact order of three steps
+   and which the section never drew. */
+FIGURES.push({
+  id: 'saponification-driving-step',
+  section: 'acyl-substitution',
+  anchor: 'and it is why saponification does not reverse while acid hydrolysis does.</div>',
+  viewBox: '0 0 760 310',
+  alt: 'Three panels of saponification: hydroxide attacking ethyl acetate, the tetrahedral alkoxide expelling ethoxide, and ethoxide deprotonating the acetic acid irreversibly',
+  build() {
+    let s = '';
+    let c = P(150, 120);
+    s += bond(c, P(150, 74), { order: 2 }); s += bond(c, P(196, 148)); s += bond(c, P(104, 148));
+    s += atom(150, 74, 'O'); s += lonePair(150, 74, 200);
+    s += atom(196, 148, 'OEt'); s += atom(104, 148, 'Me');
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += atom(48, 92, 'HO', { kind: 'warn' }); s += text(74, 70, '−', { cls: 'fg-hi', size: 15 });
+    s += curve(P(66, 104), P(132, 114), { bow: 18 });
+    s += curve(P(166, 100), P(160, 84), { bow: 14 });
+    s += tag(140, 196, '1 · hydroxide attacks');
+
+    s += arrow(P(250, 120), P(306, 120), { muted: true });
+
+    c = P(400, 120);
+    s += bond(c, P(400, 74)); s += bond(c, P(446, 148)); s += bond(c, P(354, 148)); s += bond(c, P(356, 88));
+    s += atom(400, 74, 'O', { kind: 'warn' }); s += text(426, 66, '−', { cls: 'fg-hi', size: 15 });
+    s += atom(446, 148, 'OEt'); s += atom(354, 148, 'Me'); s += atom(356, 88, 'OH');
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += curve(P(418, 90), P(408, 106), { bow: -14 });
+    s += curve(P(420, 142), P(452, 168), { bow: 16 });
+    s += tag(400, 196, '2 · ethoxide is expelled');
+
+    s += arrow(P(500, 120), P(556, 120), { muted: true });
+
+    c = P(626, 120);
+    s += bond(c, P(626, 74), { order: 2 }); s += bond(c, P(672, 148)); s += bond(c, P(580, 148));
+    s += atom(626, 74, 'O'); s += lonePair(626, 74, 200);
+    s += atom(672, 148, 'O'); s += text(700, 154, '−', { cls: 'fg-hi', size: 15 });
+    s += atom(580, 148, 'Me');
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += text(626, 44, 'EtO⁻ takes the proton', { cls: 'fg-tag-good', size: 11 });
+    s += tag(626, 196, '3 · irreversible');
+
+    s += rule(24, 226, 726, 226);
+    s += text(24, 254, 'Step 3 is the one that cannot run backwards: a carboxylate is a dead end.', { cls: 'fg-lbl', size: 13, anchor: 'start' });
+    s += text(24, 278, 'Acid hydrolysis has no step like it, which is why it settles at equilibrium.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    return s;
+  },
+  caption: 'Three steps, and the order is the whole answer. Addition first, then collapse, and only then — because only then does an acid exist — the proton transfer. That last step consumes the ethoxide just released and leaves a carboxylate no nucleophile wants to attack.',
+  note: 'This is why saponification is stoichiometric in hydroxide rather than catalytic: one equivalent of base is genuinely consumed, ending up on the product. It is also why the acid has to be recovered at the end with a separate acidification — what comes out of the flask is the salt.',
+});
+
+/* ---------------------------------------------------------------- 170 ---
+   The chlorosulfite. The section hangs the whole activation argument on it and
+   no structure of one appears anywhere in the course. */
+FIGURES.push({
+  id: 'chlorosulfite-self-destructs',
+  section: 'acyl-chlorides-anhydrides',
+  anchor: 'One reagent, one idea, two functional groups.</div>',
+  viewBox: '0 0 760 400',
+  alt: 'Thionyl chloride converting a carboxylic acid OH into a chlorosulfite, then chloride attacking the acyl carbon and the leaving group falling apart into sulfur dioxide and chloride',
+  build() {
+    let s = '';
+    let c = P(150, 110);
+    s += bond(c, P(150, 64), { order: 2 }); s += bond(c, P(194, 138)); s += bond(c, P(106, 138));
+    s += bond(P(194, 138), P(234, 156), { rTo: 10 });
+    s += atom(150, 64, 'O'); s += lonePair(150, 64, 200);
+    s += atom(194, 138, 'O'); s += lonePair(194, 138, 60);
+    s += atom(234, 156, 'H', { r: 10 }); s += atom(106, 138, 'R');
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += bond(P(300, 110), P(300, 64), { order: 2 });
+    s += bond(P(300, 110), P(344, 138), { rTo: 17 });
+    s += bond(P(300, 110), P(256, 64), { rTo: 17 });
+    s += atom(300, 64, 'O'); s += atom(344, 138, 'Cl', { r: 17 }); s += atom(256, 64, 'Cl', { r: 17 });
+    s += atom(300, 110, 'S', { kind: 'warn' });
+    s += curve(P(212, 124), P(282, 118), { bow: -22 });
+    s += tag(230, 192, 'the OH oxygen attacks sulfur');
+
+    s += arrow(P(390, 110), P(438, 110));
+
+    c = P(500, 110);
+    s += bond(c, P(500, 64), { order: 2 }); s += bond(c, P(544, 138)); s += bond(c, P(456, 138));
+    s += bond(P(544, 138), P(588, 110));
+    s += bond(P(588, 110), P(588, 64), { order: 2 });
+    s += bond(P(588, 110), P(632, 138), { rTo: 17 });
+    s += atom(500, 64, 'O'); s += atom(456, 138, 'R');
+    s += atom(544, 138, 'O'); s += atom(588, 64, 'O'); s += atom(632, 138, 'Cl', { r: 17 });
+    s += atom(588, 110, 'S', { kind: 'warn' });
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += tag(560, 192, 'a chlorosulfite: an excellent leaving group');
+
+    s += rule(24, 220, 726, 220);
+
+    s += atom(60, 300, 'Cl', { kind: 'warn', r: 17 }); s += text(86, 280, '−', { cls: 'fg-hi', size: 15 });
+    c = P(180, 300);
+    s += bond(c, P(180, 254), { order: 2 }); s += bond(c, P(224, 328)); s += bond(c, P(136, 328));
+    s += bond(P(224, 328), P(268, 300));
+    s += bond(P(268, 300), P(268, 254), { order: 2 });
+    s += bond(P(268, 300), P(312, 328), { rTo: 17 });
+    s += atom(180, 254, 'O'); s += atom(136, 328, 'R'); s += atom(224, 328, 'O');
+    s += atom(268, 254, 'O'); s += atom(312, 328, 'Cl', { r: 17 });
+    s += atom(268, 300, 'S', { kind: 'warn' });
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += curve(P(80, 292), P(162, 292), { bow: -22 });
+
+    s += arrow(P(360, 300), P(428, 300));
+
+    c = P(500, 300);
+    s += bond(c, P(500, 254), { order: 2 }); s += bond(c, P(544, 328), { rTo: 17 }); s += bond(c, P(456, 328));
+    s += atom(500, 254, 'O'); s += atom(456, 328, 'R'); s += atom(544, 328, 'Cl', { kind: 'hi', r: 17 });
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += text(646, 296, '+ SO₂ + Cl⁻', { cls: 'fg-lbl', size: 13 });
+
+    s += tag(200, 382, 'chloride attacks; the intermediate collapses');
+    s += tag(560, 382, 'acid chloride, and two gases');
+    return s;
+  },
+  caption: 'Thionyl chloride does not replace the OH directly. It converts it into a chlorosulfite — a leaving group that destroys itself. When it departs it immediately falls apart into SO₂ gas and chloride, so there is nothing left in the flask that could put the OH back.',
+  note: 'Compare this with the same reagent on an alcohol in the alcohols chapter and the two are one reaction: an OH that will not leave is converted into a group that will, and the driving force in both cases is a by-product that leaves as a gas. That is also why the workup is an evaporation rather than a separation.',
+});
+
+/* ---------------------------------------------------------------- 171 ---
+   Aspirin. The section names it as the headline application and the exam
+   question turns on WHICH of salicylic acid’s two oxygens is acetylated. */
+FIGURES.push({
+  id: 'aspirin-acetylates-the-phenol',
+  section: 'acyl-chlorides-anhydrides',
+  anchor: 'Two different acyl groups sharing the oxygen give a mixed anhydride, named for both.</p>',
+  viewBox: '0 0 760 330',
+  alt: 'Salicylic acid reacting with acetic anhydride, with the phenol OH highlighted as the group that is acetylated, giving aspirin plus acetic acid',
+  build() {
+    let s = '';
+    const hex = (cx, cy, r) => {
+      const pts = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (-90 + i * 60) * Math.PI / 180;
+        pts.push(P(cx + r * Math.cos(a), cy + r * Math.sin(a)));
+      }
+      return pts;
+    };
+    const drawRing = (pts, ctr) => {
+      let t = '';
+      for (let i = 0; i < 6; i++) {
+        const a = pts[i], b = pts[(i + 1) % 6];
+        t += (i % 2 === 0) ? ringDouble(a, b, ctr) : bond(a, b, { rFrom: 0, rTo: 0 });
+      }
+      return t;
+    };
+
+    // salicylic acid
+    let ctr = P(150, 160);
+    let p = hex(150, 160, 48);
+    s += drawRing(p, ctr);
+    // COOH on p1 (upper right), OH on p2 (lower right)
+    s += bond(p[1], P(240, 108), { rFrom: 0 });
+    s += bond(P(240, 108), P(240, 62), { order: 2 });
+    s += bond(P(240, 108), P(284, 130), { rTo: 16 });
+    s += atom(240, 62, 'O'); s += atom(284, 130, 'OH');
+    s += atom(240, 108, 'C', { kind: 'hi' });
+    s += bond(p[2], P(240, 212), { rFrom: 0, rTo: 16 });
+    s += atom(240, 212, 'OH', { kind: 'warn' });
+    s += text(250, 250, 'the phenol OH', { cls: 'fg-tag-warn', size: 11 });
+    s += tag(130, 44, 'salicylic acid');
+
+    s += arrow(P(330, 160), P(410, 160));
+    s += text(370, 144, '(CH₃CO)₂O', { cls: 'fg-lbl', size: 13 });
+
+    // aspirin
+    ctr = P(490, 160);
+    p = hex(490, 160, 48);
+    s += drawRing(p, ctr);
+    s += bond(p[1], P(580, 108), { rFrom: 0 });
+    s += bond(P(580, 108), P(580, 62), { order: 2 });
+    s += bond(P(580, 108), P(624, 130), { rTo: 16 });
+    s += atom(580, 62, 'O'); s += atom(624, 130, 'OH');
+    s += atom(580, 108, 'C');
+    s += bond(p[2], P(580, 212), { rFrom: 0 });
+    s += bond(P(580, 212), P(624, 236));
+    s += bond(P(624, 236), P(624, 282), { order: 2 });
+    s += bond(P(624, 236), P(668, 212));
+    s += atom(580, 212, 'O', { kind: 'warn' });
+    s += atom(624, 282, 'O'); s += atom(668, 212, 'CH₃');
+    s += atom(624, 236, 'C', { kind: 'hi' });
+    s += tag(486, 44, 'aspirin  ·  + acetic acid');
+
+    s += rule(24, 296, 726, 296);
+    s += text(24, 322, 'The carboxyl OH is untouched — it is the phenol that gets acetylated.', { cls: 'fg-lbl', size: 13, anchor: 'start' });
+    return s;
+  },
+  caption: 'Salicylic acid has two OH groups and only one of them reacts. Acetic anhydride acetylates the <b>phenol</b>, giving an ester there and leaving the carboxylic acid alone — which is why aspirin is still an acid, and still tastes like one.',
+  note: 'Why the phenol and not the carboxyl? Because acylating a carboxylic acid would give a mixed anhydride, which is one rung up the ladder from the anhydride you started with and so goes nowhere. Acylating the phenol gives an ester, which is a rung down. The reaction picks the direction the ladder allows.',
+});
+
+/* ---------------------------------------------------------------- 172 ---
+   The nitrile’s "adds once and stops" argument turns on the intermediate
+   being an anion rather than a carbonyl, and that species was never drawn. */
+FIGURES.push({
+  id: 'nitrile-stops-at-the-anion',
+  section: 'nitriles',
+  anchor: 'a nitrile never generates a carbonyl until the Grignard is gone.</p>',
+  viewBox: '0 0 760 310',
+  alt: 'A methyl Grignard adding once to a nitrile to give a metalated imine anion, which no second equivalent can attack, and the ketone that appears only on aqueous workup',
+  build() {
+    let s = '';
+    const r1 = P(60, 140), c1 = P(124, 140), n1 = P(188, 140);
+    s += bond(r1, c1); s += bond(c1, n1, { order: 3 });
+    s += atom(r1.x, r1.y, 'R'); s += atom(n1.x, n1.y, 'N'); s += lonePair(n1.x, n1.y, 0);
+    s += atom(c1.x, c1.y, 'C', { kind: 'hi' });
+    s += text(124, 62, 'CH₃–MgBr', { cls: 'fg-lbl', size: 13 });
+    s += curve(P(124, 76), P(124, 120), { bow: 22 });
+    s += curve(P(156, 122), P(176, 120), { bow: -16 });
+    s += tag(124, 196, 'the Grignard adds once');
+
+    s += arrow(P(240, 140), P(300, 140));
+
+    const c2 = P(390, 140), n2 = P(450, 140);
+    s += bond(c2, n2, { order: 2 });
+    s += bond(c2, P(334, 166)); s += bond(c2, P(334, 114));
+    s += atom(334, 166, 'R'); s += atom(334, 114, 'CH₃');
+    s += atom(n2.x, n2.y, 'N', { kind: 'warn' }); s += lonePair(n2.x, n2.y, 300);
+    s += text(476, 132, '−', { cls: 'fg-hi', size: 15 });
+    s += atom(c2.x, c2.y, 'C', { kind: 'hi' });
+    s += text(462, 184, 'MgBr⁺', { cls: 'fg-sm', size: 10.5 });
+    s += tag(390, 220, 'an anion — nothing here to attack');
+
+    s += arrow(P(512, 140), P(568, 140));
+    s += text(540, 124, 'H₃O⁺', { cls: 'fg-tag', size: 11 });
+
+    const c3 = P(630, 140);
+    s += bond(c3, P(630, 94), { order: 2 });
+    s += bond(c3, P(586, 168)); s += bond(c3, P(674, 168));
+    s += atom(630, 94, 'O'); s += lonePair(630, 94, 200);
+    s += atom(586, 168, 'R'); s += atom(674, 168, 'CH₃');
+    s += atom(c3.x, c3.y, 'C', { kind: 'hi' });
+    s += tag(630, 220, 'the ketone');
+
+    s += rule(24, 244, 726, 244);
+    s += text(24, 270, 'An ester expels alkoxide and hands the Grignard a ketone, so it adds twice.', { cls: 'fg-lbl', size: 13, anchor: 'start' });
+    s += text(24, 294, 'A nitrile hands it an anion instead, and the reaction simply stops there.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    return s;
+  },
+  caption: 'One addition, and then nothing. The Grignard’s carbon adds to the nitrile carbon and the pi electrons go onto nitrogen, giving a metalated imine — an <b>anion</b>, not a carbonyl. There is no electrophile left in the flask, so a second equivalent has nothing to do, however much of it is present.',
+  note: 'This is the whole reason a nitrile gives a ketone where an ester gives a tertiary alcohol. The ester expels alkoxide half-way through and produces a ketone while the Grignard is still there, so the ketone is attacked in turn. The nitrile produces no carbonyl at all until water is added at the end, by which time the organometallic is gone.',
+});
+
+
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;
 

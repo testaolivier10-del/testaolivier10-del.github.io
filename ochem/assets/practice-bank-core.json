@@ -22665,27 +22665,27 @@
    "type": "mcq"
   },
   {
-   "q": "The -COOH functional group defines which class of compound?",
+   "q": "3-Phenylpropanoic acid is treated with SOCl2, then with excess methanol. What is the final product?",
    "options": [
-    "Ester",
-    "Amide",
-    "Ketone",
-    "Carboxylic acid"
+    "3-Phenylpropan-1-ol",
+    "Methyl 3-phenylpropanoate",
+    "3-Phenylpropanamide",
+    "An equilibrium mixture of the acid and its methyl ester"
    ],
-   "correct": 3,
-   "difficulty": "easy",
+   "correct": 1,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What suffix is used in IUPAC nomenclature for a carboxylic acid?",
+   "q": "You need to convert 1-bromobutane into pentanoic acid. Which sequence works?",
    "options": [
-    "-oic acid",
-    "-ol",
-    "-one",
-    "-al"
+    "1. KMnO4  2. H3O+",
+    "1. NaOH  2. PCC",
+    "1. NaCN  2. H3O+, heat",
+    "1. SOCl2  2. H2O"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 2,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -22811,7 +22811,7 @@
    "type": "tf"
   },
   {
-   "q": "Heating a beta-keto carboxylic acid (one with a ketone two carbons from the COOH) typically causes:",
+   "q": "Heating a beta-keto carboxylic acid (RCOCH2COOH, the ketone on the carbon beta to the carboxyl) typically causes:",
    "options": [
     "Esterification with itself",
     "No reaction under any conditions",
@@ -22881,15 +22881,15 @@
    "type": "tf"
   },
   {
-   "q": "Formic acid (HCOOH) is structurally unusual among carboxylic acids because it:",
+   "q": "Rank by increasing pKa (weakest acid last): (i) 2-chlorobutanoic acid, (ii) 4-chlorobutanoic acid, (iii) butanoic acid.",
    "options": [
-    "Has a C-H bond on the carboxyl carbon",
-    "Has no carbonyl group",
-    "Is the only carboxylic acid that is basic",
-    "Cannot hydrogen bond"
+    "iii < ii < i",
+    "ii < i < iii",
+    "i < iii < ii",
+    "i < ii < iii"
    ],
-   "correct": 0,
-   "difficulty": "hard",
+   "correct": 3,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -23001,7 +23001,7 @@
    "type": "mcq"
   },
   {
-   "q": "Which functional group, ester or amide, tends to have a higher boiling point relative to molecules of similar size, due to stronger intermolecular hydrogen bonding?",
+   "q": "Which has the higher boiling point for a given molecular weight, an ester or a primary amide?",
    "options": [
     "Ester",
     "They are identical",
@@ -23037,14 +23037,16 @@
    "type": "mcq"
   },
   {
-   "q": "Esters generally have pleasant, fruity odors.",
+   "q": "Methyl propanoate is heated with excess ethanol and a drop of H2SO4. What is the major organic product?",
    "options": [
-    "True",
-    "False"
+    "Propanoic acid",
+    "Ethyl propanoate",
+    "Propanal",
+    "Ethyl methyl ether"
    ],
-   "correct": 0,
-   "difficulty": "easy",
-   "type": "tf"
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
   },
   {
    "q": "In the ester name 'ethyl acetate,' which parts come from the alcohol and which from the acid?",
@@ -23219,15 +23221,15 @@
    "type": "mcq"
   },
   {
-   "q": "Natural waxes (such as beeswax) are chemically best classified as:",
+   "q": "Which two-step sequence converts butanoic acid into N,N-dimethylbutanamide?",
    "options": [
-    "Esters of long-chain fatty acids and long-chain alcohols",
-    "Amides of fatty acids and amines",
-    "Simple alkanes",
-    "Carboxylic acid salts"
+    "1. LiAlH4  2. HN(CH3)2",
+    "1. NaOH  2. HN(CH3)2",
+    "1. HN(CH3)2, room temperature",
+    "1. SOCl2  2. excess HN(CH3)2"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 3,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -23301,7 +23303,7 @@
    "type": "mcq"
   },
   {
-   "q": "Resonance delocalization in an amide makes the carbonyl carbon and nitrogen both somewhat positively polarized relative to a simple amine, while giving extra electron density (and partial negative character) to the carbonyl oxygen.",
+   "q": "Resonance delocalization in an amide puts partial positive charge on NITROGEN and extra electron density on the carbonyl oxygen, and it leaves the carbonyl carbon less electron-poor than a ketone's.",
    "options": [
     "True",
     "False"
@@ -23347,15 +23349,15 @@
    "type": "mcq"
   },
   {
-   "q": "Rank these common acyl derivatives from most to least reactive in nucleophilic acyl substitution: acyl chloride, ester, amide.",
+   "q": "Acetic anhydride is treated with one equivalent of ethanol. What comes out?",
    "options": [
-    "Amide > ester > acyl chloride",
-    "Ester > acyl chloride > amide",
-    "Acyl chloride > ester > amide",
-    "All three are equally reactive"
+    "Two equivalents of ethyl acetate",
+    "Ethyl acetate and acetic acid",
+    "Ethyl acetate and water",
+    "Acetic acid only"
    ],
-   "correct": 2,
-   "difficulty": "hard",
+   "correct": 1,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -23415,12 +23417,12 @@
    "type": "tf"
   },
   {
-   "q": "Why is an amide the LEAST reactive of the common acyl derivatives toward nucleophilic acyl substitution?",
+   "q": "Which single reagent converts propanoyl chloride into propanoic anhydride?",
    "options": [
-    "Amides have no carbonyl group to attack",
-    "Nitrogen is more electronegative than oxygen, making amides unreactive",
-    "Nitrogen donates by resonance and is a poor leaving group",
-    "Amides are always sterically blocked from any nucleophile"
+    "Propanoic acid",
+    "Propan-1-ol",
+    "Sodium propanoate",
+    "Water"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -23495,14 +23497,14 @@
    "type": "tf"
   },
   {
-   "q": "Why can a more reactive acyl derivative (like an acyl chloride) be readily converted into a less reactive one (like an amide), but the reverse conversion does not happen easily under normal conditions?",
+   "q": "Put these in the correct order for saponification of ethyl acetate: (i) ethoxide deprotonates acetic acid, (ii) hydroxide attacks the carbonyl carbon, (iii) the tetrahedral intermediate expels ethoxide.",
    "options": [
-    "Less reactive derivatives have no carbonyl carbon to attack",
-    "More reactive derivatives cannot be attacked by any nucleophile",
-    "There is no real difference in reactivity among acyl derivatives",
-    "Reversing it would require displacing a poor leaving group"
+    "i, ii, iii",
+    "ii, i, iii",
+    "ii, iii, i",
+    "iii, ii, i"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -39455,26 +39457,26 @@
    "type": "mcq"
   },
   {
-   "q": "PCl3 converts a carboxylic acid to an acid chloride plus:",
+   "q": "Propanoic acid is treated with SOCl2, then with one equivalent of aniline (PhNH2) and no other base. What is the yield problem?",
    "options": [
-    "PCl5",
-    "H3PO3",
-    "POCl3",
-    "H3PO4"
+    "Aniline is not nucleophilic enough to react at all",
+    "The acyl chloride hydrolyzes before the aniline reaches it",
+    "Half the aniline is protonated by the HCl released, capping the yield near 50%",
+    "Two acyl groups add to the same nitrogen"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "PCl5 gives an acid chloride plus:",
+   "q": "Which target CANNOT be reached from a carboxylic acid by SOCl2 followed by one nucleophile?",
    "options": [
-    "PCl3 and Cl2",
-    "H3PO4 alone",
-    "POCl3 and HCl",
-    "H3PO3 and HCl"
+    "A secondary alcohol",
+    "An ester",
+    "An amide",
+    "An anhydride"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -39817,15 +39819,15 @@
    "type": "mcq"
   },
   {
-   "q": "A nitrile carbon and a carboxylic acid carbon both carry:",
+   "q": "Which sequence converts benzyl bromide, PhCH2Br, into 1-phenylpropan-2-one, PhCH2COCH3?",
    "options": [
-    "1 heteroatom bond",
-    "3 heteroatom bonds",
-    "2 heteroatom bonds",
-    "4 heteroatom bonds"
+    "1. NaCN  2. LiAlH4  3. H2O",
+    "1. NaCN  2. CH3MgBr  3. H3O+",
+    "1. NaCN  2. H3O+, heat",
+    "1. Mg  2. CO2  3. H3O+"
    ],
    "correct": 1,
-   "difficulty": "medium",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -39865,15 +39867,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why is cyanide well suited to this reaction?",
+   "q": "An unknown C4H7N shows a sharp medium IR band at 2247 cm-1 and no absorption between 1650 and 1800 cm-1. Which structure fits?",
    "options": [
-    "Weak nucleophile and base",
-    "Neither basic nor nucleophilic",
-    "Strong nucleophile, weak base",
-    "Strong base, weak nucleophile"
+    "CH3CH2CONH2",
+    "CH3CH2CH2CHO",
+    "CH3CH2CCH",
+    "CH3CH2CH2CN"
    ],
-   "correct": 2,
-   "difficulty": "easy",
+   "correct": 3,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {

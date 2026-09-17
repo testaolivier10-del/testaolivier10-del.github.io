@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'mcq',
         eyebrow: 'Step 2 · Guided Practice',
         title: 'Why does a ketone\'s tetrahedral intermediate not collapse the same way an ester\'s does?',
-        options: ['Ketones don\'t form tetrahedral intermediates at all', 'A ketone\'s two carbon substituents have no way to leave as carbanions, so the intermediate is simply protonated instead, giving permanent addition', 'Ketones react too slowly for any intermediate to form'],
+        options: ['A ketone never forms a tetrahedral intermediate in the first place', 'Its carbon substituents cannot leave, so it is protonated instead', 'A ketone reacts too slowly for any intermediate to build up', 'The ketone oxygen is not basic enough to push back down'],
         correctIndex: 1,
         correctFeedback: 'Correct — the presence (or absence) of a genuine leaving group attached to the carbonyl carbon is exactly what separates substitution (carboxylic acid derivatives) from simple addition (aldehydes/ketones).',
         wrongFeedback: 'Ketones do form the same tetrahedral intermediate — the difference is that neither carbon substituent can leave as a leaving group, so the intermediate just gets protonated instead of collapsing.'
@@ -226,8 +226,8 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'mcq',
         eyebrow: 'Step 4 · Check Understanding',
         title: 'In the tetrahedral intermediate formed when an amine attacks an ester, why does the OR group leave instead of the incoming amine nitrogen?',
-        options: ['The amine nitrogen is physically too big to leave', 'Nitrogen never leaves in any reaction', 'RO⁻ is the weaker base (better leaving group) of the two, since its conjugate acid (an alcohol, pKa ≈16) is a stronger acid than an amine (pKa ≈ 38)'],
-        correctIndex: 2,
+        options: ['RO⁻ is the weaker base of the two, so it is the better leaving group', 'The amine nitrogen is physically too bulky to depart', 'Nitrogen does not leave a carbon in any reaction at all', 'Oxygen is more electronegative, so it always leaves first'],
+        correctIndex: 0,
         correctFeedback: 'Correct — this is a direct application of the leaving-group/pKa comparison rule: the group whose conjugate acid is the stronger acid (lower pKa) is the better leaving group.',
         wrongFeedback: 'Size isn\'t the deciding factor — compare the pKa values of the two groups\' conjugate acids to see which is the better (weaker-base) leaving group.'
       },
@@ -235,14 +235,14 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Fischer esterification: acid catalysis rescues a reaction that starts from a bad leaving group.',
-        bodyHtml: '<p class="step-body">Making an ester directly from a carboxylic acid and an alcohol looks, at first glance, like it should go badly: the tetrahedral intermediate would need to expel OH⁻ (from the original acid), and OH⁻ is a poor leaving group, exactly as established back in <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-alcohols-ethers\">Alcohols, Ethers &amp; Related Chemistry</a>. Acid catalysis solves this the same way it solved alcohol activation and ether cleavage: <b>protonate the leaving oxygen first</b>. Once protonated, the leaving group becomes neutral water — the conjugate base of H₃O⁺ — a vastly better leaving group.</p><p class="step-body" style="margin-bottom:0;">This whole sequence is reversible in both directions under acid catalysis (ester formation and ester hydrolysis are the same equilibrium run forward or backward), which is why Fischer esterification typically needs excess alcohol or continuous water removal to push the equilibrium toward the ester product.</p>'
+        bodyHtml: '<p class="step-body">Making an ester directly from a carboxylic acid and an alcohol looks, at first glance, like it should go badly: the tetrahedral intermediate would need to expel OH⁻ (from the original acid), and OH⁻ is a poor leaving group, exactly as established back in <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-alcohols-ethers\">Alcohols, Ethers &amp; Related Chemistry</a>. Acid catalysis solves this twice over. First it protonates the <b>carbonyl</b> oxygen, which puts positive charge into the pi system and makes the carbon electrophilic enough for a neutral alcohol to attack at all. Then, in the tetrahedral intermediate, it <b>protonates the leaving oxygen</b>, the same move that activated an alcohol and cleaved an ether. Once protonated, the leaving group becomes neutral water — the conjugate base of H₃O⁺ — a vastly better leaving group.</p><p class="step-body" style="margin-bottom:0;">This whole sequence is reversible in both directions under acid catalysis (ester formation and ester hydrolysis are the same equilibrium run forward or backward), which is why Fischer esterification typically needs excess alcohol or continuous water removal to push the equilibrium toward the ester product.</p>'
       },
       {
         type: 'mcq',
         eyebrow: 'Step 6 · Independent Practice',
         title: 'Why is acid catalysis specifically needed for Fischer esterification, when acid chlorides react with alcohols readily without any acid catalyst?',
-        options: ['An acid chloride\'s leaving group (Cl⁻) is already excellent without help; a carboxylic acid\'s leaving group (OH⁻) needs to be protonated first to become a good leaving group (water)', 'Fischer esterification doesn\'t actually require acid catalysis', 'Alcohols are unreactive nucleophiles unless acid-activated'],
-        correctIndex: 0,
+        options: ['Fischer esterification does not in fact need an acid catalyst', 'An alcohol is not nucleophilic at all until it has been activated', 'Chloride already leaves well; hydroxide must become water first', 'The acid protonates the alcohol, which makes it attack faster'],
+        correctIndex: 2,
         correctFeedback: 'Correct — it all comes down to the leaving group\'s baseline quality: Cl⁻ needs no help, while OH⁻ needs to be converted to water by protonation before the reaction can proceed efficiently.',
         wrongFeedback: 'Alcohols are perfectly good nucleophiles on their own — the catalysis requirement is specifically about activating the leaving group of the carboxylic acid, not the incoming nucleophile.'
       },
@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'final',
         eyebrow: 'Challenge',
         title: 'An acid chloride is treated with water (no other catalyst). Predict what happens, and compare it to treating an amide with plain water under the same mild conditions.',
-        options: ['Both hydrolyze at the same rate, since both are carboxylic acid derivatives', 'The acid chloride hydrolyzes rapidly on its own (Cl⁻ is an excellent leaving group with no help needed); the amide does essentially nothing without strong acid/base and heat, since R₂N⁻ is such a poor leaving group', 'Neither reacts with plain water under any conditions'],
+        options: ['Both hydrolyze at about the same rate, being the same family', 'The chloride hydrolyzes fast; the amide needs acid or base and heat', 'Neither one reacts with plain water under any conditions at all', 'The amide goes faster, since nitrogen is the better leaving group'],
         correctIndex: 1,
         correctFeedback: 'Correct — this is the reactivity ladder in direct action: acid chlorides are so reactive they hydrolyze almost immediately in moist air, while amides need genuinely harsh conditions because their leaving group is so poor.'
       }

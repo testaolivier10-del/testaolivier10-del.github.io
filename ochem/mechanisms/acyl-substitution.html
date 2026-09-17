@@ -154,20 +154,24 @@
     {
       "type": "draw",
       "eyebrow": "Step 1 · Add",
-      "title": "A nucleophile attacks the carbonyl carbon. Show what the C=O does.",
-      "bodyHtml": "<p class=\"step-body\">One arrow — the same first move as any carbonyl reaction.</p>",
-      "molecule": "methyl-acetate",
+      "title": "A methoxide nucleophile attacks. Draw both arrows.",
+      "bodyHtml": "<p class=\"step-body\">Two arrows, and they happen together: the nucleophile’s lone pair into the carbonyl carbon, and the pi bond up onto oxygen.</p>",
+      "molecule": "methyl-acetate-nu",
       "concepts": [
         "carbonyl-electrophilicity",
         "tetrahedral-intermediate"
       ],
       "arrows": [
         {
+          "from": "nuO",
+          "to": "c"
+        },
+        {
           "from": "bond:c-o1",
           "to": "o1"
         }
       ],
-      "why": "The pi bond goes up onto the carbonyl oxygen and the carbon becomes tetrahedral. So far this is identical to what happens with a ketone.",
+      "why": "The lone pair on methoxide forms the new C–O bond, and because carbon cannot hold five bonds the pi bond goes up onto the carbonyl oxygen and the carbon becomes tetrahedral. So far this is identical to what happens with a ketone.",
       "wrong": {
         "bond:c-o1>c": "Backwards — the electronegative oxygen takes the electrons, not the carbon that is already being attacked.",
         "bond:c-o2>o2": "Too early. The alkoxy group does leave, but not until the intermediate has formed and collapses in the next step; both cannot happen at once at an sp² carbon.",
@@ -180,7 +184,7 @@
       "eyebrow": "Step 2 · Eliminate",
       "title": "Collapse the intermediate and push out the leaving group.",
       "bodyHtml": "<p class=\"step-body\">Two arrows. This is the step a ketone cannot do, and it is what turns addition into substitution.</p>",
-      "molecule": "methyl-acetate",
+      "molecule": "methyl-acetate-nu",
       "concepts": [
         "tetrahedral-intermediate",
         "leaving-group-ability",
@@ -202,11 +206,92 @@
         "bond:c-ca>ca": "The methyl group would have to leave as a carbanion, and carbanions are among the worst leaving groups there are. The alkoxy group is the one that goes.",
         "c>o2": "The tail belongs on the C–O bond that is breaking. Carbon has no lone pair here to donate."
       },
+      "nextLabel": "Now do it without an anion"
+    },
+    {
+      "type": "explain",
+      "eyebrow": "Step 3 \u00b7 Under acid",
+      "title": "The same two moves, with no anion anywhere.",
+      "bodyHtml": "<p class=\"step-body\">Everything so far was anionic: methoxide in, alkoxide out. Fischer esterification \u2014 a carboxylic acid plus an alcohol plus a trace of H\u2082SO\u2084 \u2014 cannot work that way, because in acid there is no strong base to be had.</p><p class=\"step-body\">It has two problems to solve instead. The acid\u2019s carbonyl is not electrophilic enough for a neutral alcohol to attack, and its leaving group would be hydroxide, which does not leave. One proton, moved twice, fixes both.</p>",
+      "molecule": "fischer-protonation",
+      "nextLabel": "Protonate it"
+    },
+    {
+      "type": "draw",
+      "eyebrow": "Step 4 \u00b7 Activate",
+      "title": "Protonate the carbonyl oxygen.",
+      "bodyHtml": "<p class=\"step-body\">One arrow, from a lone pair on the carbonyl oxygen to the proton it takes. Note which oxygen: the carbonyl one, not the OH.</p>",
+      "molecule": "fischer-protonation",
+      "concepts": [
+        "carbonyl-electrophilicity"
+      ],
+      "arrows": [
+        {
+          "from": "o1",
+          "to": "ha"
+        }
+      ],
+      "why": "Protonating the carbonyl oxygen puts positive charge into the pi system, and resonance shares it onto the carbon. That is the only reason a neutral alcohol can attack at a useful rate. The carbonyl oxygen is also the more basic of the two \u2014 protonating it gives a cation stabilized by both oxygens.",
+      "wrong": {
+        "o2>ha": "That is the hydroxyl oxygen. Protonating it does happen later, to turn the OH into water so it can leave, but it does nothing for the electrophilicity of the carbon.",
+        "ha>o1": "Backwards. The arrow starts at the electrons, and the electrons are the oxygen lone pair \u2014 not the proton, which has none."
+      },
+      "nextLabel": "Now the alcohol"
+    },
+    {
+      "type": "draw",
+      "eyebrow": "Step 5 \u00b7 Add",
+      "title": "Methanol attacks the protonated carbonyl. Draw both arrows.",
+      "bodyHtml": "<p class=\"step-body\">Same first move as before, with a neutral nucleophile instead of an anion.</p>",
+      "molecule": "fischer-attack",
+      "concepts": [
+        "tetrahedral-intermediate",
+        "carbonyl-electrophilicity"
+      ],
+      "arrows": [
+        {
+          "from": "meO",
+          "to": "c"
+        },
+        {
+          "from": "bond:c-o1",
+          "to": "o1"
+        }
+      ],
+      "why": "Methanol\u2019s lone pair makes the new C\u2013O bond and the pi electrons go up onto the oxygen that was carrying the positive charge, which neutralizes it. What is left is a tetrahedral intermediate holding two OH groups and one OMe, with the positive charge now on the methanol-derived oxygen \u2014 and losing that proton gives the neutral intermediate. From here, protonating one OH turns it into water, the good leaving group hydroxide never was.",
+      "wrong": {
+        "meO>o1": "The nucleophile attacks the carbon, not the oxygen. Oxygen is where the electrons are going, not where they are coming from.",
+        "bond:c-o1>c": "Backwards \u2014 the electronegative oxygen takes the pi electrons, not the carbon that is being attacked."
+      },
+      "nextLabel": "Why it stalls"
+    },
+    {
+      "type": "mcq",
+      "eyebrow": "Step 6 \u00b7 Equilibrium",
+      "title": "Left alone, Fischer esterification stops near 65% conversion. Why?",
+      "bodyHtml": "<p class=\"step-body\">Look back at the arrows you just drew and ask which of them could not run the other way.</p>",
+      "options": [
+        "Every step is a reversible proton transfer or addition, so the reaction reaches equilibrium",
+        "The sulfuric acid catalyst is used up as the ester forms",
+        "The ester begins to decompose once it passes about 65%",
+        "Water is a stronger nucleophile than methanol and blocks the carbonyl"
+      ],
+      "correctIndex": 0,
+      "concepts": [
+        "tetrahedral-intermediate",
+        "carbonyl-electrophilicity"
+      ],
+      "why": "Not one step in the sequence is downhill enough to lock the product in: K is near 4 for a simple acid and alcohol. To push further you use Le Ch\u00e2telier \u2014 run the alcohol as the solvent, or distil water out as it forms. Run exactly these steps in reverse, with excess water in place of methanol, and you have acid-catalyzed ester hydrolysis. Contrast saponification, where the final deprotonation of the acid by alkoxide is irreversible and drags the whole thing to completion.",
+      "wrong": {
+        "1": "A catalyst is regenerated by definition, and the last step of this mechanism hands the proton back.",
+        "2": "Esters are perfectly stable under these conditions; nothing decomposes.",
+        "3": "Water is a worse nucleophile than methanol, not a better one \u2014 and if it were blocking the carbonyl it would be doing so by running the mechanism backwards, which is the real answer stated badly."
+      },
       "nextLabel": "Why the ladder exists"
     },
     {
       "type": "mcq",
-      "eyebrow": "Step 3 · The ladder",
+      "eyebrow": "Step 7 · The ladder",
       "title": "Why is an amide the least reactive derivative and an acid chloride the most?",
       "bodyHtml": "<p class=\"step-body\">Both halves of the mechanism you just drew point the same way.</p>",
       "options": [
@@ -244,7 +329,7 @@
       "why": "Acid chloride to amide is downhill and easy; amide to acid chloride is uphill and does not simply happen. To climb the ladder you go via the carboxylic acid and activate it with something like SOCl₂, which drives the reaction by expelling gases rather than by reaching equilibrium.",
       "wrong": {
         "0": "Nucleophile strength is not the obstacle — the problem is that the leaving group would have to be an amide anion, which is an extremely strong base and will not leave.",
-        "2": "Heat does not reverse a thermodynamically unfavorablesubstitution here. The amide is the stable end of the ladder."
+        "2": "Heat does not reverse a thermodynamically unfavorable substitution here. The amide is the stable end of the ladder."
       }
     }
   ]

@@ -666,6 +666,57 @@
     caption: 'An ester — a carbonyl with a leaving group attached.'
   };
 
+  M['methyl-acetate-nu'] = {
+    name: 'Methyl acetate + methoxide', formula: 'CH₃CO₂CH₃ + CH₃O⁻', viewBox: '0 0 320 190',
+    atoms: {
+      nuO: { x:36,  y:104,r:16, label:'O', charge:'⁻', lp:3, role:'nucleophile', note:'Methoxide: a negative charge and three lone pairs. One of those pairs makes the new bond to the acyl carbon.' },
+      nuC: { x:36,  y:48, r:15, label:'C' },
+      o1:  { x:176, y:40, r:16, label:'O', lp:2, role:'carbonyl-o' },
+      c:   { x:176, y:98, r:17, label:'C', role:'electrophile', note:'The acyl carbon — where the nucleophile attacks in acyl substitution.' },
+      ca:  { x:120, y:132,r:15, label:'C', role:'alpha-carbon' },
+      o2:  { x:238, y:132,r:16, label:'O', lp:2, role:'leaving-group', note:'The ester oxygen. Methoxide is basic, so this is a mediocre leaving group — esters are less reactive than acid chlorides.' },
+      cm:  { x:292, y:98, r:15, label:'C' }
+    },
+    bonds: [{a:'nuO',b:'nuC'},{a:'c',b:'o1',order:2},{a:'c',b:'ca'},{a:'c',b:'o2'},{a:'o2',b:'cm'}],
+    caption: 'An ester with the nucleophile drawn in, so both arrows of the first step have somewhere to start.'
+  };
+
+  M['fischer-protonation'] = {
+    name: 'Acetic acid + hydronium', formula: 'CH₃CO₂H + H₃O⁺', viewBox: '0 0 320 200',
+    atoms: {
+      o1: { x:150, y:52, r:16, label:'O', lp:2, role:'carbonyl-o', note:'The carbonyl oxygen: the most basic site in the molecule, and the one acid protonates.' },
+      c:  { x:150, y:110,r:17, label:'C', role:'electrophile', note:'Not electrophilic enough for a neutral alcohol to attack — until the oxygen above it is protonated.' },
+      ca: { x:94,  y:144,r:15, label:'C', role:'alpha-carbon' },
+      o2: { x:206, y:144,r:16, label:'O', lp:2 },
+      h2: { x:256, y:172,r:10, label:'H' },
+      ac: { x:266, y:52, r:16, label:'O', charge:'⁺', lp:1 },
+      ha: { x:214, y:32, r:10, label:'H', role:'electrophile', note:'The proton the carbonyl oxygen takes.' },
+      hb: { x:306, y:30, r:10, label:'H' },
+      hc: { x:296, y:88, r:10, label:'H' }
+    },
+    bonds: [{a:'c',b:'o1',order:2},{a:'c',b:'ca'},{a:'c',b:'o2'},{a:'o2',b:'h2'},
+            {a:'ac',b:'ha'},{a:'ac',b:'hb'},{a:'ac',b:'hc'}],
+    caption: 'A carboxylic acid and the acid catalyst, before anything has moved.'
+  };
+
+  M['fischer-attack'] = {
+    name: 'Protonated acetic acid + methanol', formula: 'CH₃C(OH)₂⁺ + CH₃OH', viewBox: '0 0 320 190',
+    atoms: {
+      meO: { x:44,  y:78, r:16, label:'O', lp:2, role:'nucleophile', note:'Methanol’s oxygen. Neutral and only weakly nucleophilic — which is why the carbonyl had to be protonated first.' },
+      meC: { x:44,  y:24, r:15, label:'C' },
+      meH: { x:14,  y:112,r:10, label:'H' },
+      o1:  { x:176, y:48, r:16, label:'O', charge:'⁺', lp:1, role:'carbonyl-o' },
+      h1:  { x:224, y:24, r:10, label:'H' },
+      c:   { x:176, y:106,r:17, label:'C', role:'electrophile', note:'Now genuinely electrophilic: the positive charge is shared onto this carbon.' },
+      ca:  { x:120, y:140,r:15, label:'C', role:'alpha-carbon' },
+      o2:  { x:234, y:140,r:16, label:'O', lp:2 },
+      h2:  { x:284, y:166,r:10, label:'H' }
+    },
+    bonds: [{a:'meO',b:'meC'},{a:'meO',b:'meH'},{a:'c',b:'o1',order:2},{a:'o1',b:'h1'},
+            {a:'c',b:'ca'},{a:'c',b:'o2'},{a:'o2',b:'h2'}],
+    caption: 'The protonated acid, with methanol alongside it.'
+  };
+
   M['acetyl-chloride'] = {
     name: 'Acetyl chloride', formula: 'CH₃COCl',
     atoms: {

@@ -24588,29 +24588,29 @@
    "type": "mcq"
   },
   {
-   "q": "The -COOH functional group defines which class of compound?",
+   "q": "3-Phenylpropanoic acid is treated with SOCl2, then with excess methanol. What is the final product?",
    "options": [
-    "Ester",
-    "Amide",
-    "Ketone",
-    "Carboxylic acid"
+    "3-Phenylpropan-1-ol",
+    "Methyl 3-phenylpropanoate",
+    "3-Phenylpropanamide",
+    "An equilibrium mixture of the acid and its methyl ester"
    ],
-   "correct": 3,
-   "why": "The carboxyl group (C double bonded to O, single bonded to OH) is the defining group of carboxylic acids.",
-   "difficulty": "easy",
+   "correct": 1,
+   "why": "Step 1: SOCl2 replaces the OH with Cl, giving 3-phenylpropanoyl chloride plus SO2 and HCl, both of which leave as gases. Step 2: methanol attacks that acyl chloride, the tetrahedral intermediate collapses by expelling chloride, and a proton is lost, giving the methyl ester. Because chloride leaves and never comes back, this route is irreversible - unlike Fischer esterification of the acid itself, which would leave the acid and its ester in equilibrium instead.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What suffix is used in IUPAC nomenclature for a carboxylic acid?",
+   "q": "You need to convert 1-bromobutane into pentanoic acid. Which sequence works?",
    "options": [
-    "-oic acid",
-    "-ol",
-    "-one",
-    "-al"
+    "1. KMnO4  2. H3O+",
+    "1. NaOH  2. PCC",
+    "1. NaCN  2. H3O+, heat",
+    "1. SOCl2  2. H2O"
    ],
-   "correct": 0,
-   "why": "Carboxylic acids are named with the suffix -oic acid added to the parent chain name, e.g. ethanoic acid.",
-   "difficulty": "easy",
+   "correct": 2,
+   "why": "Count carbons first: 1-bromobutane has four and pentanoic acid has five, so the route has to ADD one. Cyanide is the one-carbon nucleophile: SN2 on the primary bromide gives pentanenitrile, five carbons. Hot aqueous acid then hydrolyzes that nitrile through the amide to pentanoic acid, with no oxidant needed because a nitrile carbon and an acid carbon sit on the same oxidation rung. The other three routes all keep four carbons.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -24747,7 +24747,7 @@
    "type": "tf"
   },
   {
-   "q": "Heating a beta-keto carboxylic acid (one with a ketone two carbons from the COOH) typically causes:",
+   "q": "Heating a beta-keto carboxylic acid (RCOCH2COOH, the ketone on the carbon beta to the carboxyl) typically causes:",
    "options": [
     "Esterification with itself",
     "No reaction under any conditions",
@@ -24755,7 +24755,7 @@
     "Decarboxylation, releasing CO2"
    ],
    "correct": 3,
-   "why": "Beta-keto acids can lose CO2 readily on mild heating because the reaction proceeds through a favorable six-membered cyclic transition state that directly generates the more stable ketone enol, which then tautomerizes.",
+   "why": "The carboxyl O-H can reach the ketone oxygen through a six-membered cyclic transition state. As that proton transfers, the C-C bond to the carboxyl breaks and CO2 leaves, giving an enol that tautomerizes to the ketone. Nothing else in the molecule has to move, which is why gentle warming is enough - and why the carbonyl has to be exactly at the beta position for the ring to be the right size.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -24823,16 +24823,16 @@
    "type": "tf"
   },
   {
-   "q": "Formic acid (HCOOH) is structurally unusual among carboxylic acids because it:",
+   "q": "Rank by increasing pKa (weakest acid last): (i) 2-chlorobutanoic acid, (ii) 4-chlorobutanoic acid, (iii) butanoic acid.",
    "options": [
-    "Has a C-H bond on the carboxyl carbon",
-    "Has no carbonyl group",
-    "Is the only carboxylic acid that is basic",
-    "Cannot hydrogen bond"
+    "iii < ii < i",
+    "ii < i < iii",
+    "i < iii < ii",
+    "i < ii < iii"
    ],
-   "correct": 0,
-   "why": "Unlike other carboxylic acids, formic acid's carboxyl carbon bears a hydrogen instead of an alkyl or aryl group, giving it mild reducing properties reminiscent of an aldehyde.",
-   "difficulty": "hard",
+   "correct": 3,
+   "why": "Induction travels through sigma bonds and dies off fast with distance. The chlorine on C2 is next door to the carboxyl and stabilizes the carboxylate strongly: 2-chlorobutanoic acid is pKa 2.86. Move the same chlorine to C4 and it is two bonds further away and barely helps: 4-chlorobutanoic acid is 4.52, against butanoic acid's 4.82. So acidity falls, and pKa rises, in the order given.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -24857,7 +24857,7 @@
     "Undefined, since fluorine makes it a base"
    ],
    "correct": 2,
-   "why": "The three highly electronegative fluorines withdraw electron density inductively, strongly stabilizing the conjugate base and dropping the pKa to around 0.3, far more acidic than acetic acid's pKa of about 4.76.",
+   "why": "The three highly electronegative fluorines withdraw electron density inductively, strongly stabilizing the conjugate base and dropping the pKa to 0.23, far more acidic than acetic acid's pKa of about 4.76.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -24953,7 +24953,7 @@
    "type": "mcq"
   },
   {
-   "q": "Which functional group, ester or amide, tends to have a higher boiling point relative to molecules of similar size, due to stronger intermolecular hydrogen bonding?",
+   "q": "Which has the higher boiling point for a given molecular weight, an ester or a primary amide?",
    "options": [
     "Ester",
     "They are identical",
@@ -24992,15 +24992,17 @@
    "type": "mcq"
   },
   {
-   "q": "Esters generally have pleasant, fruity odors.",
+   "q": "Methyl propanoate is heated with excess ethanol and a drop of H2SO4. What is the major organic product?",
    "options": [
-    "True",
-    "False"
+    "Propanoic acid",
+    "Ethyl propanoate",
+    "Propanal",
+    "Ethyl methyl ether"
    ],
-   "correct": 0,
-   "why": "Many small esters (such as those found in bananas, apples, and pineapples) have characteristic fruity smells, which is why they are widely used as flavoring and fragrance agents.",
-   "difficulty": "easy",
-   "type": "tf"
+   "correct": 1,
+   "why": "This is transesterification. Ethanol attacks the ester carbonyl under acid catalysis, giving a tetrahedral intermediate carrying both OMe and OEt. Methoxide and ethoxide are almost equally good leaving groups, so nothing electronic decides the outcome - the large excess of ethanol does, by mass action. Methanol is expelled and ethyl propanoate is left. Note what does not happen: the acyl group never leaves the molecule, so the answer is still a propanoate.",
+   "difficulty": "medium",
+   "type": "mcq"
   },
   {
    "q": "In the ester name 'ethyl acetate,' which parts come from the alcohol and which from the acid?",
@@ -25190,16 +25192,16 @@
    "type": "mcq"
   },
   {
-   "q": "Natural waxes (such as beeswax) are chemically best classified as:",
+   "q": "Which two-step sequence converts butanoic acid into N,N-dimethylbutanamide?",
    "options": [
-    "Esters of long-chain fatty acids and long-chain alcohols",
-    "Amides of fatty acids and amines",
-    "Simple alkanes",
-    "Carboxylic acid salts"
+    "1. LiAlH4  2. HN(CH3)2",
+    "1. NaOH  2. HN(CH3)2",
+    "1. HN(CH3)2, room temperature",
+    "1. SOCl2  2. excess HN(CH3)2"
    ],
-   "correct": 0,
-   "why": "Waxes are esters formed from long-chain carboxylic acids (fatty acids) and long-chain alcohols, giving them a waxy, water-repellent character.",
-   "difficulty": "easy",
+   "correct": 3,
+   "why": "Mixing the acid with the amine directly does only one thing: an acid-base reaction, giving a dimethylammonium butanoate salt with a protonated nucleophile and a negatively charged electrophile. So the acid has to be activated first. SOCl2 replaces the OH with Cl, putting the acyl group at the top of the ladder, and dimethylamine then acylates it easily. Excess amine (or added pyridine) is needed because each acylation releases one HCl, which protonates a second equivalent of amine.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -25279,13 +25281,13 @@
    "type": "mcq"
   },
   {
-   "q": "Resonance delocalization in an amide makes the carbonyl carbon and nitrogen both somewhat positively polarized relative to a simple amine, while giving extra electron density (and partial negative character) to the carbonyl oxygen.",
+   "q": "Resonance delocalization in an amide puts partial positive charge on NITROGEN and extra electron density on the carbonyl oxygen, and it leaves the carbonyl carbon less electron-poor than a ketone's.",
    "options": [
     "True",
     "False"
    ],
    "correct": 0,
-   "why": "The major resonance contributor moves the nitrogen lone pair toward the oxygen, leaving partial positive character on carbon and nitrogen and partial negative character on oxygen -- this is why amide carbonyls are strongly polarized and why their IR stretch shifts to a lower wavenumber.",
+   "why": "The second contributor is O(-)-C=N(+): the nitrogen lone pair has moved toward oxygen, so nitrogen carries partial positive charge and oxygen partial negative. Carbon gains, not loses, electron density relative to a ketone - which is exactly why an amide is the least electrophilic derivative, and why its C=O stretch drops to about 1650 cm-1.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -25329,16 +25331,16 @@
    "type": "mcq"
   },
   {
-   "q": "Rank these common acyl derivatives from most to least reactive in nucleophilic acyl substitution: acyl chloride, ester, amide.",
+   "q": "Acetic anhydride is treated with one equivalent of ethanol. What comes out?",
    "options": [
-    "Amide > ester > acyl chloride",
-    "Ester > acyl chloride > amide",
-    "Acyl chloride > ester > amide",
-    "All three are equally reactive"
+    "Two equivalents of ethyl acetate",
+    "Ethyl acetate and acetic acid",
+    "Ethyl acetate and water",
+    "Acetic acid only"
    ],
-   "correct": 2,
-   "why": "Reactivity tracks how good the leaving group is and how much the heteroatom lone pair is tied up in resonance with the carbonyl: Cl⁻ is an excellent leaving group with little resonance donation (most reactive), while amide nitrogen donates strongly into the carbonyl and is a poor leaving group (least reactive).",
-   "difficulty": "hard",
+   "correct": 1,
+   "why": "Ethanol attacks one of the two carbonyls. The tetrahedral intermediate collapses by expelling the other half of the molecule as acetate, which then picks up a proton. So one acyl group becomes the ester and the other leaves as the acid: ethyl acetate plus acetic acid. Half the anhydride is spent as a leaving group, which is the atom-economy cost of acylating this way.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -25403,15 +25405,15 @@
    "type": "tf"
   },
   {
-   "q": "Why is an amide the LEAST reactive of the common acyl derivatives toward nucleophilic acyl substitution?",
+   "q": "Which single reagent converts propanoyl chloride into propanoic anhydride?",
    "options": [
-    "Amides have no carbonyl group to attack",
-    "Nitrogen is more electronegative than oxygen, making amides unreactive",
-    "Nitrogen donates by resonance and is a poor leaving group",
-    "Amides are always sterically blocked from any nucleophile"
+    "Propanoic acid",
+    "Propan-1-ol",
+    "Sodium propanoate",
+    "Water"
    ],
    "correct": 2,
-   "why": "Nitrogen's lone pair donates into the carbonyl pi system more effectively than oxygen or chlorine can, which both lowers the carbonyl's electrophilicity and means that once a tetrahedral intermediate forms, nitrogen (as a strongly basic amide anion) is reluctant to leave.",
+   "why": "An anhydride needs a carboxylate as the nucleophile, not the neutral acid. Propanoic acid has its lone pairs tied up in the O-H and in resonance and is a poor nucleophile; deprotonating it gives propanoate, which attacks the acyl chloride readily, expels chloride and gives the anhydride. Propan-1-ol would give an ester instead, and water would give the acid.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -25474,7 +25476,7 @@
     "Only an ester forms"
    ],
    "correct": 2,
-   "why": "One amine equivalent attacks the carbonyl to displace a carboxylate leaving group and form the amide; because carboxylic acid is a stronger acid than the amide's conjugate acid, a second amine equivalent is typically consumed neutralizing the liberated carboxylic acid.",
+   "why": "One equivalent of amine attacks a carbonyl and expels carboxylate, giving the amide. That carboxylate picks up a proton, and the carboxylic acid it becomes is a far stronger acid (pKa about 5) than the ammonium ion of the amine (pKa about 10) - so the second equivalent of amine is simply protonated. Net: one amide plus one ammonium carboxylate salt.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -25490,15 +25492,15 @@
    "type": "tf"
   },
   {
-   "q": "Why can a more reactive acyl derivative (like an acyl chloride) be readily converted into a less reactive one (like an amide), but the reverse conversion does not happen easily under normal conditions?",
+   "q": "Put these in the correct order for saponification of ethyl acetate: (i) ethoxide deprotonates acetic acid, (ii) hydroxide attacks the carbonyl carbon, (iii) the tetrahedral intermediate expels ethoxide.",
    "options": [
-    "Less reactive derivatives have no carbonyl carbon to attack",
-    "More reactive derivatives cannot be attacked by any nucleophile",
-    "There is no real difference in reactivity among acyl derivatives",
-    "Reversing it would require displacing a poor leaving group"
+    "i, ii, iii",
+    "ii, i, iii",
+    "ii, iii, i",
+    "iii, ii, i"
    ],
-   "correct": 3,
-   "why": "Going from a reactive derivative to a less reactive one replaces a good leaving group with a worse one in an energetically downhill step; the reverse would require a leaving group (such as an amide nitrogen) that is both basic and a poor leaving group to depart, which is very unfavorable.",
+   "correct": 2,
+   "why": "Addition always comes first: hydroxide attacks and the pi electrons go up onto oxygen (ii). The alkoxide then pushes back down and expels the better leaving group, ethoxide (iii). Only now does a carboxylic acid exist, and the ethoxide just released - a much stronger base than carboxylate - takes its proton (i). That final step is irreversible and is what drives the whole reaction; it cannot come earlier because there is nothing acidic to deprotonate until step iii is done.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -42787,28 +42789,28 @@
    "type": "mcq"
   },
   {
-   "q": "PCl3 converts a carboxylic acid to an acid chloride plus:",
+   "q": "Propanoic acid is treated with SOCl2, then with one equivalent of aniline (PhNH2) and no other base. What is the yield problem?",
    "options": [
-    "PCl5",
-    "H3PO3",
-    "POCl3",
-    "H3PO4"
+    "Aniline is not nucleophilic enough to react at all",
+    "The acyl chloride hydrolyzes before the aniline reaches it",
+    "Half the aniline is protonated by the HCl released, capping the yield near 50%",
+    "Two acyl groups add to the same nitrogen"
    ],
-   "correct": 1,
-   "why": "A phosphorus acid that stays in the flask and must be removed.",
+   "correct": 2,
+   "why": "Each acylation releases one HCl. The most basic species in the flask is the amine, so it takes that proton and becomes an anilinium ion with no lone pair left to attack. One equivalent of amine therefore supplies only half an equivalent of nucleophile. The fix is a second equivalent of aniline, or one equivalent plus pyridine - basic enough to mop up HCl, too weakly nucleophilic to compete for the carbonyl.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "PCl5 gives an acid chloride plus:",
+   "q": "Which target CANNOT be reached from a carboxylic acid by SOCl2 followed by one nucleophile?",
    "options": [
-    "PCl3 and Cl2",
-    "H3PO4 alone",
-    "POCl3 and HCl",
-    "H3PO3 and HCl"
+    "A secondary alcohol",
+    "An ester",
+    "An amide",
+    "An anhydride"
    ],
-   "correct": 2,
-   "why": "An oxychloride residue, less convenient than a gaseous by-product.",
+   "correct": 0,
+   "why": "Acyl substitution swaps the leaving group and keeps the carbonyl: an alcohol gives the ester, an amine the amide, a carboxylate the anhydride. A secondary alcohol would need the carbonyl reduced AND one new carbon substituent added, which is not a substitution at all - it needs a hydride and an organometallic, and it is a different kind of step.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -42886,7 +42888,7 @@
     "2"
    ],
    "correct": 3,
-   "why": "One acylates, the second mops up the HCl released.",
+   "why": "Trace the protons. The first equivalent of amine attacks the acyl chloride, chloride leaves, and the nitrogen still carries a proton it must lose - so one HCl is released per acylation. The most basic thing in the flask is the amine itself, so that HCl protonates a second molecule of amine and switches it off as a nucleophile. Two equivalents therefore give one equivalent of amide; one equivalent gives you half.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -42938,7 +42940,7 @@
     "Carboxylate"
    ],
    "correct": 3,
-   "why": "Resonance-stabilized, so it departs willingly but not as readily as chloride.",
+   "why": "Trace the tetrahedral intermediate: the nucleophile has added, and the oxygen now pushes back down and has to expel one of the two acyl-oxygen groups. What leaves is the other half of the anhydride, as a carboxylate. That anion is resonance-stabilized over two oxygens, so it departs willingly - but its conjugate acid is pKa about 5 against HCl's -7, which is exactly why an anhydride sits one rung below an acid chloride.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -42964,7 +42966,7 @@
     "Acetic acid with base"
    ],
    "correct": 2,
-   "why": "Reactive enough to acylate directly, stable enough to weigh out in air.",
+   "why": "Work down the ladder. Acetic acid needs activation before an amine or alcohol will acylate at all; ethyl acetate and acetonitrile are at or below the ester rung and far too sluggish. Acetic anhydride is the compromise: reactive enough to acylate an alcohol or an amine directly at room temperature, yet stable enough to weigh out in air, which an acetyl chloride is not.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -43042,7 +43044,7 @@
     "An amic acid"
    ],
    "correct": 3,
-   "why": "The displaced carboxylate stays tethered instead of wandering off.",
+   "why": "The amine attacks one of the two carbonyls and the tetrahedral intermediate expels the other as a carboxylate - the ordinary anhydride reaction. The difference is that the carboxylate is tethered to the amide by the carbon chain, so it cannot wander off. What you isolate is an amic acid: an amide at one end, a carboxylic acid at the other, on one molecule. Heat that and it loses water and closes to the imide.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -43120,7 +43122,7 @@
     "Aldehydes"
    ],
    "correct": 1,
-   "why": "One reagent solving the same problem on a different functional group.",
+   "why": "Same reagent, same idea, different substrate. An alcohol's OH is a terrible leaving group; SOCl2 converts it into a chlorosulfite, which is an excellent one, and chloride then displaces it to give the alkyl chloride. On a carboxylic acid the sulfur does exactly the same thing to the carboxyl OH. In both cases the by-products are SO2 and HCl, both gases, so the reaction is pulled to completion.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -43146,7 +43148,7 @@
     "It is irreversible"
    ],
    "correct": 3,
-   "why": "Chloride never comes back, so there is no equilibrium to push.",
+   "why": "Compare the leaving groups. Fischer esterification has to expel water and can re-form the acid just as easily, so it settles at an equilibrium near 65% and must be driven with excess alcohol or by removing water. Acylation of an alcohol by an acid chloride expels chloride, which is far too weak a base to come back and attack the ester, so the reaction runs to completion and needs no acid catalyst.",
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -43179,16 +43181,16 @@
    "type": "mcq"
   },
   {
-   "q": "A nitrile carbon and a carboxylic acid carbon both carry:",
+   "q": "Which sequence converts benzyl bromide, PhCH2Br, into 1-phenylpropan-2-one, PhCH2COCH3?",
    "options": [
-    "1 heteroatom bond",
-    "3 heteroatom bonds",
-    "2 heteroatom bonds",
-    "4 heteroatom bonds"
+    "1. NaCN  2. LiAlH4  3. H2O",
+    "1. NaCN  2. CH3MgBr  3. H3O+",
+    "1. NaCN  2. H3O+, heat",
+    "1. Mg  2. CO2  3. H3O+"
    ],
    "correct": 1,
-   "why": "The triple bond to nitrogen supplies all three at once.",
-   "difficulty": "medium",
+   "why": "Count first: seven carbons in, nine out, so two have to be added and the product is a ketone. Cyanide adds one by SN2 on the primary benzylic bromide, giving PhCH2CN. A methyl Grignard then adds once to the nitrile carbon - it cannot add twice, because the intermediate is an imine anion rather than a carbonyl - and aqueous workup hydrolyzes that imine to the ketone, which is where the second carbon came from. Route 1 gives an amine, route 3 an acid, and route 4 adds only one carbon.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -43200,7 +43202,7 @@
     "Substitution"
    ],
    "correct": 3,
-   "why": "A sideways move along one rung, so no oxidant is required.",
+   "why": "Count the bonds to heteroatoms on the carbon in question. A nitrile carbon has three, all to the same nitrogen; an amide carbon has three too - two to the carbonyl oxygen and one to nitrogen. Same count means same oxidation level, so adding water across the triple bond is a sideways move along the rung and needs no oxidant. Carry on under the same conditions and hydrolysis goes one step further to the acid, still on the same rung.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -43231,16 +43233,16 @@
    "type": "mcq"
   },
   {
-   "q": "Why is cyanide well suited to this reaction?",
+   "q": "An unknown C4H7N shows a sharp medium IR band at 2247 cm-1 and no absorption between 1650 and 1800 cm-1. Which structure fits?",
    "options": [
-    "Weak nucleophile and base",
-    "Neither basic nor nucleophilic",
-    "Strong nucleophile, weak base",
-    "Strong base, weak nucleophile"
+    "CH3CH2CONH2",
+    "CH3CH2CH2CHO",
+    "CH3CH2CCH",
+    "CH3CH2CH2CN"
    ],
-   "correct": 2,
-   "why": "Exactly the combination that favors substitution over elimination.",
-   "difficulty": "easy",
+   "correct": 3,
+   "why": "Start with the formula: C4H7N has two degrees of unsaturation, which one triple bond accounts for exactly. The band at 2247 sits in the 2500-2000 window, which is almost empty in an ordinary spectrum - only C-N and C-C triple bonds absorb there, and a terminal alkyne's stretch is weak while a nitrile's is sharp and medium. The absence of anything from 1650 to 1800 rules out the amide (about 1650) and the aldehyde (about 1725), and the alkyne has no nitrogen and the wrong formula.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -43265,7 +43267,7 @@
     "Alcohol"
    ],
    "correct": 0,
-   "why": "Backside attack is blocked, so elimination takes over entirely.",
+   "why": "Backside attack on a tertiary carbon is blocked, so no nitrile forms - that part is certain. What replaces it is less tidy than it looks: cyanide is a weak base (HCN pKa 9.2), so it is poor at E2, and the realistic outcome is slow solvolysis with some alkene alongside. The alkene is the only one of these products that can form at all.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -43278,7 +43280,7 @@
     "A nitrile"
    ],
    "correct": 3,
-   "why": "Another sideways move along the same oxidation rung.",
+   "why": "Dehydration removes H2O from RCONH2, and the carbon ends up with three bonds to nitrogen instead of two to oxygen and one to nitrogen - the same count either way. So it is a move along the rung, not a reduction, which is why SOCl2 or P2O5 does it and no reducing agent is involved. Run it the other way with water and heat and the nitrile hydrates back to the amide.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -43356,7 +43358,7 @@
     "The ester"
    ],
    "correct": 1,
-   "why": "That intermediate is real enough to isolate under mild conditions.",
+   "why": "Water adds across the C-N triple bond to give first an imidic acid, which tautomerizes to the amide - and the amide is a real, isolable compound: stop at milder conditions and that is what you get. Push with more heat and more acid or base and the amide is hydrolyzed in turn to the carboxylic acid. Two acyl substitutions in series, both sideways moves on the same oxidation rung.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -43434,7 +43436,7 @@
     "The anion is not electrophilic"
    ],
    "correct": 3,
-   "why": "The reagent is crippled by the intermediate, not merely rationed.",
+   "why": "One hydride adds to the nitrile carbon and the product is a metalated imine anion. An anion is not an electrophile, so there is nothing left for a second hydride to attack, however long you wait or how much reagent you add - the aldehyde only appears when water hydrolyzes that anion on workup. Contrast LiAlH4, which is not stopped by anything: rationing it to one equivalent does not give an aldehyde, it gives a mixture. The reagent is crippled, not rationed.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -43512,7 +43514,7 @@
     "Two-carbon extension"
    ],
    "correct": 2,
-   "why": "Cyanide supplies the added carbon, hydrolysis converts it to the acid.",
+   "why": "Follow the carbon. Cyanide does an SN2 on RX and the CN carbon is new, so RCN has one more carbon than RX. Hydrolysis then converts that same carbon into the COOH carbon without adding or losing any, since a nitrile and an acid sit on the same oxidation rung. Net result: one carbon longer, finishing as an acid. The Grignard-plus-CO2 route achieves the identical extension, and you pick between them on what else the substrate carries.",
    "difficulty": "hard",
    "type": "mcq"
   },
