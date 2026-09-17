@@ -7583,9 +7583,9 @@
   {
    "q": "4-Hydroxybutan-2-one is CH₃–CO–CH₂–CH₂–OH. One equivalent of sodium hydride is added. Which proton is removed?",
    "options": [
-    "A C–H next to the carbonyl",
+    "A C–H next to the carbonyl, on either side",
     "A C–H on the carbon bearing the OH",
-    "A methyl C–H at the far end",
+    "None of them — sodium hydride is not a strong enough base",
     "The O–H proton"
    ],
    "correct": 3,
@@ -8745,14 +8745,14 @@
    "type": "tf"
   },
   {
-   "q": "Why is hydroxide (OH-) often called a strong base while water itself is called a weak base, even though both are conjugate bases of something?",
+   "q": "You need to deprotonate a terminal alkyne (pKa 25) essentially completely. Judging each base by its conjugate acid, which one does the job?",
    "options": [
-    "Bicarbonate can only ever act as an acid, never as a base",
-    "Bicarbonate can only ever act as a base, never as an acid",
-    "Bicarbonate is the conjugate base of H₂CO₃ and the conjugate acid of CO₃²⁻",
-    "Bicarbonate is the conjugate base of CO₃²⁻ and the conjugate acid of H₂CO₃"
+    "Sodium hydroxide, whose conjugate acid water is pKa 15.7",
+    "Sodium bicarbonate, whose conjugate acid is pKa 6.4",
+    "Triethylamine, whose conjugate acid is pKa 10.7",
+    "Sodium amide, whose conjugate acid ammonia is pKa 38"
    ],
-   "correct": 2,
+   "correct": 3,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -9169,7 +9169,7 @@
    "type": "tf"
   },
   {
-   "q": "A hydrogen sits on a carbon next to a carbonyl. How does its acidity compare with an ordinary alcohol O–H?",
+   "q": "Resonance and induction both stabilize a conjugate base. Which is generally the larger effect, and how safe is that generalization?",
    "options": [
     "Resonance and induction are always equal in size",
     "Neither has a measurable effect on acidity",
@@ -9181,10 +9181,10 @@
    "type": "mcq"
   },
   {
-   "q": "Which base is stronger: ethylamine (conjugate acid pKa 10.7) or aniline-free ammonia (conjugate acid pKa 9.2)?",
+   "q": "Which base is stronger: ethylamine (conjugate acid pKa 10.7) or ammonia (conjugate acid pKa 9.2)?",
    "options": [
     "Ammonia, because its conjugate acid is the weaker one",
-    "Ethylamine, because it has a larger alkyl group attached",
+    "Ammonia, because it is the smaller and less hindered base",
     "They are equal, because both put the charge on nitrogen",
     "Ethylamine, because its conjugate acid is the weaker one"
    ],

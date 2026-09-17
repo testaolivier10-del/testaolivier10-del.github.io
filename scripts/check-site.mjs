@@ -1921,6 +1921,37 @@ for (const file of walk(join(ROOT, 'ochem', 'mechanisms'), ['.html'])) {
   }
 }
 
+/* 31. An explanation must not point at an option by position. Options are
+   shuffled per sitting (ochem/assets/shuffle-options.js), so "the third
+   option" or "option B" names a different answer for every student — and the
+   authored order was usually not what the writer had in mind either. Name the
+   option by what it says instead. Applies to the practice bank's `why` and to
+   lesson/mechanism feedback strings. */
+{
+  const POS_RE = /\b[Oo]ptions?\s+(one|two|three|four|[1-4]|[A-D])\b|\b(first|second|third|fourth|last)\s+option\b/;
+  const report = (where, text) => {
+    const m = text.match(POS_RE);
+    if (m) fail(`${where}: explanation refers to "${m[0]}" but options are shuffled at render — name the option by its content.`);
+  };
+  if (existsSync(ochemBankPath)) {
+    try {
+      const parsed = JSON.parse(readFileSync(ochemBankPath, 'utf8'));
+      for (const [topic, list] of Object.entries(parsed)) {
+        if (!Array.isArray(list)) continue;
+        list.forEach((q, i) => report(`practice-bank.json ${topic}[${i + 1}]`, String(q.why || '')));
+      }
+    } catch { /* section 2 reports it */ }
+  }
+  const lessonFiles = [...walk(join(ROOT, 'ochem', 'lessons'), ['.html']), ...walk(join(ROOT, 'ochem', 'mechanisms'), ['.html'])];
+  for (const file of lessonFiles) {
+    const src = readFileSync(file, 'utf8');
+    for (const m of src.matchAll(/(correctFeedback|wrongFeedback|feedback)\s*:\s*(['"`])((?:\\.|(?!\2)[^\\])*)\2/g)) {
+      const line = src.slice(0, m.index).split('\n').length;
+      report(`${relative(ROOT, file)}:${line}`, m[3]);
+    }
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);

@@ -3655,7 +3655,7 @@
     "CH3CH2OH"
    ],
    "correct": 1,
-   "why": "CH3CH2COOCH3 has a C=O with O–CH3 on it and nothing else oxygen-containing. The third option has a ketone plus an ether; the first is a plain ether.",
+   "why": "CH3CH2COOCH3 has a C=O with O–CH3 on it and nothing else oxygen-containing. CH3COCH2OCH3 has a ketone plus an ether, and CH3OCH2CH3 is a plain ether.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -6644,7 +6644,7 @@
     "CH₃CH(CH₃)CH(CH₃)CH₂CH₃"
    ],
    "correct": 3,
-   "why": "Pentane is five in a row; put methyls on the second and third. The first option is 2,4-dimethylpentane, the second 2,2-dimethylpentane, and the third has six carbons in the row (2,3-dimethylhexane).",
+   "why": "Pentane is five in a row; put methyls on the second and third. CH₃CH(CH₃)CH₂CH(CH₃)CH₃ is 2,4-dimethylpentane, CH₃C(CH₃)₂CH₂CH₂CH₃ is 2,2-dimethylpentane, and CH₃CH(CH₃)CH(CH₃)CH₂CH₂CH₃ has six carbons in the row (2,3-dimethylhexane).",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -6670,7 +6670,7 @@
     "CH₃CH₂CH₂CH(CH₃)CH₂CH₂CH₃"
    ],
    "correct": 2,
-   "why": "Seven in a row with a two-carbon branch on the fourth. The first option is a hexane (3-ethylhexane), the second has two methyls on one carbon, and the last is 4-methylheptane.",
+   "why": "Seven in a row with a two-carbon branch on the fourth. CH₃CH₂CH(CH₂CH₃)CH₂CH₂CH₃ is a hexane (3-ethylhexane), CH₃CH₂CH₂C(CH₃)₂CH₂CH₂CH₃ has two methyls on one carbon, and CH₃CH₂CH₂CH(CH₃)CH₂CH₂CH₃ is 4-methylheptane.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -6878,7 +6878,7 @@
     "CH₃CH(CH₃)CH(CH₃)CH₂CH₂CH₃"
    ],
    "correct": 1,
-   "why": "Hexane row, methyl on C2, ethyl on C3. Check the parent: from C3 the arms are 2 (left), 2 (ethyl) and 3 (right), so the six-carbon row is the longest and the ethyl is a real branch. The first option is 4-ethyl-2-methylhexane, the last 2,3-dimethylhexane.",
+   "why": "Hexane row, methyl on C2, ethyl on C3. Check the parent: from C3 the arms are 2 (left), 2 (ethyl) and 3 (right), so the six-carbon row is the longest and the ethyl is a real branch. CH₃CH(CH₃)CH₂CH(CH₂CH₃)CH₂CH₃ is 4-ethyl-2-methylhexane, and CH₃CH(CH₃)CH(CH₃)CH₂CH₂CH₃ is 2,3-dimethylhexane.",
    "difficulty": "hard",
    "type": "mcq"
   }
@@ -7010,7 +7010,7 @@
     "4-ethyl-2,2-dimethylhexane"
    ],
    "correct": 3,
-   "why": "Ignore di- when alphabetizing: you are comparing ethyl with methyl, and e comes before m, so ethyl is cited first despite its higher locant. di- needs two locants, which rules out the last option.",
+   "why": "Ignore di- when alphabetizing: you are comparing ethyl with methyl, and e comes before m, so ethyl is cited first despite its higher locant. di- needs two locants, which rules out “4-ethyl-2-dimethylhexane”, and a name cannot run two prefixes together without locants, which rules out “2,2,4-dimethylethylhexane”.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -7192,7 +7192,7 @@
     "CH₃CH₂CH₂CH(CH(CH₃)₂)CH₂CH₂CH₃"
    ],
    "correct": 3,
-   "why": "Heptane row, with a three-carbon group attached through its middle carbon on C4. The first option is 4-propylheptane, the second puts the branch on C3, and the third is 2-methyloctane.",
+   "why": "Heptane row, with a three-carbon group attached through its middle carbon on C4. CH₃CH₂CH₂CH(CH₂CH₂CH₃)CH₂CH₂CH₃ is 4-propylheptane, CH₃CH₂CH(CH(CH₃)₂)CH₂CH₂CH₂CH₃ puts the branch on C3, and (CH₃)₂CHCH₂CH₂CH₂CH₂CH₂CH₃ is 2-methyloctane.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -7989,7 +7989,7 @@
     "CH₃CH=CHCH₂CH₃"
    ],
    "correct": 1,
-   "why": "Four carbons in the parent, double bond starting at C1, methyl on C3. The first option is 2-methylbut-2-ene, the third 2-methylbut-1-ene, the last pent-2-ene.",
+   "why": "Four carbons in the parent, double bond starting at C1, methyl on C3. CH₃CH=C(CH₃)₂ is 2-methylbut-2-ene, CH₂=C(CH₃)CH₂CH₃ is 2-methylbut-1-ene, and CH₃CH=CHCH₂CH₃ is pent-2-ene.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -8226,13 +8226,13 @@
   {
    "q": "4-Hydroxybutan-2-one is CH₃–CO–CH₂–CH₂–OH. One equivalent of sodium hydride is added. Which proton is removed?",
    "options": [
-    "A C–H next to the carbonyl",
+    "A C–H next to the carbonyl, on either side",
     "A C–H on the carbon bearing the OH",
-    "A methyl C–H at the far end",
+    "None of them — sodium hydride is not a strong enough base",
     "The O–H proton"
    ],
    "correct": 3,
-   "why": "Scan the sites and give each one a pKa. The O–H is an ordinary primary alcohol at about 16. The C–H bonds either side of the carbonyl are alpha hydrogens at about 20, acidic for carbon because the anion is an enolate delocalized onto oxygen. The C–H bonds on the carbon carrying the OH have no such help and sit near 50. The methyl hydrogens at the far end are also alpha to the carbonyl, so they too are near 20. Lowest pKa wins, so the O–H comes off, and it beats the alpha positions by roughly four units — ten thousand to one. This is the comparison students most often get backwards, because a hydrogen next to a carbonyl feels activated and is: by thirty orders of magnitude relative to an alkane, and still not enough to beat an alcohol.",
+   "why": "Scan the sites and give each one a pKa. The O–H is an ordinary primary alcohol at about 16. The C–H bonds on either side of the carbonyl — the acetyl methyl and the CH₂ — are alpha hydrogens at about 20, acidic for carbon because the anion is an enolate delocalized onto oxygen. The C–H bonds on the carbon carrying the OH have no such help and sit near 50. Sodium hydride is comfortably strong enough for any of this: its conjugate acid is H₂ at pKa 36. Lowest pKa wins, so the O–H comes off, and it beats the alpha positions by roughly four units — ten thousand to one. This is the comparison students most often get backwards, because a hydrogen next to a carbonyl feels activated and is: by thirty orders of magnitude relative to an alkane, and still not enough to beat an alcohol.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -8419,7 +8419,7 @@
     "A methoxide lone pair to the H, and the O–H bond to acetic acid’s oxygen"
    ],
    "correct": 3,
-   "why": "Two arrows, and each has a job. The first makes the new bond, so it starts on the electrons that will become that bond — a lone pair on methoxide — and ends on the acidic hydrogen. The second breaks the old bond, so it starts on the O–H bonding pair and ends on the oxygen that keeps it, which is what leaves acetate negatively charged. Option two reverses both arrows and has the hydrogen donating electrons it does not possess. Option three breaks the wrong bond: the C=O pi bond has nothing to do with deprotonation. Option four sends methoxide at the carbonyl carbon, which is a real reaction later in the course but is nucleophilic addition, not proton transfer.",
+   "why": "Two arrows, and each has a job. The first makes the new bond, so it starts on the electrons that will become that bond — a lone pair on methoxide — and ends on the acidic hydrogen. The second breaks the old bond, so it starts on the O–H bonding pair and ends on the oxygen that keeps it, which is what leaves acetate negatively charged. The answer that runs the acidic H at methoxide and acetic acid’s oxygen at the O–H bond reverses both arrows, and has the hydrogen donating electrons it does not possess. The answer that pushes the C=O bond up onto the carbonyl oxygen breaks the wrong bond: the pi bond has nothing to do with deprotonation. And the answer that sends methoxide at the carbonyl carbon is a real reaction later in the course, but it is nucleophilic addition, not proton transfer.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -8523,7 +8523,7 @@
     "fluorine donates electron density into boron by resonance"
    ],
    "correct": 1,
-   "why": "Boron brings three valence electrons and uses all three in bonds to fluorine, so it ends with six electrons rather than eight and an empty 2p orbital perpendicular to the trigonal planar molecule. That orbital is a genuine hole, and anything with a spare pair can fill it. The fluorines do help by pulling electron density away inductively, which makes boron hungrier, but that is a secondary effect — the empty orbital is what makes BF₃ an acid at all. The last option is true in part and works against the answer: fluorine lone pairs do donate a little into that p orbital, which is exactly why BF₃ is a weaker Lewis acid than BCl₃.",
+   "why": "Boron brings three valence electrons and uses all three in bonds to fluorine, so it ends with six electrons rather than eight and an empty 2p orbital perpendicular to the trigonal planar molecule. That orbital is a genuine hole, and anything with a spare pair can fill it. The fluorines do help by pulling electron density away inductively, which makes boron hungrier, but that is a secondary effect — the empty orbital is what makes BF₃ an acid at all. The claim that fluorine donates density into boron by resonance is true in part and works against the answer: fluorine lone pairs do donate a little into that p orbital, which is exactly why BF₃ is a weaker Lewis acid than BCl₃.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -8801,7 +8801,7 @@
     "Both atoms stay neutral because nothing was ionized"
    ],
    "correct": 1,
-   "why": "Oxygen donates one of its two lone pairs into boron’s empty p orbital. Count afterwards: oxygen has three bonds and one lone pair, which is 6 − 2 − 3 = +1, and boron has four bonds and three valence electrons, 3 − 0 − 4 = −1. The complex is neutral overall while carrying a charge on each atom, which is exactly what happens with BF₃ and ammonia. Nothing was ionized and no bond broke — that is why the third option is tempting — but formal charge counts the electrons each atom can claim, and the donor always loses a claim. Ether–BF₃ complexes are real, isolable substances; BF₃ is sold as its diethyl etherate for this reason.",
+   "why": "Oxygen donates one of its two lone pairs into boron’s empty p orbital. Count afterwards: oxygen has three bonds and one lone pair, which is 6 − 2 − 3 = +1, and boron has four bonds and three valence electrons, 3 − 0 − 4 = −1. The complex is neutral overall while carrying a charge on each atom, which is exactly what happens with BF₃ and ammonia. Nothing was ionized and no bond broke — that is why “both atoms stay neutral” is tempting — but formal charge counts the electrons each atom can claim, and the donor always loses a claim. Ether–BF₃ complexes are real, isolable substances; BF₃ is sold as its diethyl etherate for this reason.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -9487,15 +9487,15 @@
    "type": "tf"
   },
   {
-   "q": "Why is hydroxide (OH-) often called a strong base while water itself is called a weak base, even though both are conjugate bases of something?",
+   "q": "You need to deprotonate a terminal alkyne (pKa 25) essentially completely. Judging each base by its conjugate acid, which one does the job?",
    "options": [
-    "Bicarbonate can only ever act as an acid, never as a base",
-    "Bicarbonate can only ever act as a base, never as an acid",
-    "Bicarbonate is the conjugate base of H₂CO₃ and the conjugate acid of CO₃²⁻",
-    "Bicarbonate is the conjugate base of CO₃²⁻ and the conjugate acid of H₂CO₃"
+    "Sodium hydroxide, whose conjugate acid water is pKa 15.7",
+    "Sodium bicarbonate, whose conjugate acid is pKa 6.4",
+    "Triethylamine, whose conjugate acid is pKa 10.7",
+    "Sodium amide, whose conjugate acid ammonia is pKa 38"
    ],
-   "correct": 2,
-   "why": "Bicarbonate sits between the two ionization steps of carbonic acid, so it has a partner on each side. Take a proton off H₂CO₃ (pKa 6.4) and you get HCO₃⁻ — so bicarbonate is carbonic acid’s conjugate base. Put a proton onto CO₃²⁻ (whose conjugate acid, bicarbonate, has pKa 10.3) and you get HCO₃⁻ again — so bicarbonate is also carbonate’s conjugate acid. Being able to go either way is what amphoteric means, and each step is its own conjugate pair with its own pKa. Note that H₂CO₃ and CO₃²⁻ are not a conjugate pair with each other: they differ by two protons.",
+   "correct": 3,
+   "why": "Choosing a base is a conjugate-acid comparison. A proton transfer runs downhill when the acid you form is weaker — higher pKa — than the acid you consume, and K ≈ 10^(pKa formed − pKa consumed). Sodium amide forms ammonia at 38 from an alkyne at 25, so K ≈ 10¹³ and the deprotonation is complete. Hydroxide would form water at 15.7, which is 9.3 units below the alkyne — uphill by 10⁻⁹·³, so almost no acetylide. Triethylamine at 10.7 and bicarbonate at 6.4 are further uphill still. The working rule is to pick a base whose conjugate acid sits several pKa units above the proton you want, which is why acetylide chemistry is written with NaNH₂ and never with NaOH.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -9534,7 +9534,7 @@
     "CH₃CO₂H/CH₃NH₂ and CH₃CO₂⁻/CH₃NH₃⁺"
    ],
    "correct": 1,
-   "why": "Pair each species with the one it turns into, which means reading vertically down the equation rather than diagonally across the arrow. Acetic acid loses a proton to become acetate: one pair. Methylamine gains that proton to become the methylammonium ion: the other pair. The diagonal readings are the classic error, and options two and four are exactly those — acetate and methylamine are not conjugates, they are simply the two species that end up on opposite sides. Every proton transfer has all four roles filled at once, and the test for a pair is always the same: do these two differ by exactly one H and one unit of charge, and by nothing else?",
+   "why": "Pair each species with the one it turns into, which means reading vertically down the equation rather than diagonally across the arrow. Acetic acid loses a proton to become acetate: one pair. Methylamine gains that proton to become the methylammonium ion: the other pair. The diagonal readings — pairing acetic acid with methylammonium, or methylamine with acetate — are the classic error, and so is pairing the two species that merely sit on the same side of the arrow. Acetate and methylamine are not conjugates; they are simply the two species that end up on opposite sides. Every proton transfer has all four roles filled at once, and the test for a pair is always the same: do these two differ by exactly one H and one unit of charge, and by nothing else?",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -9947,7 +9947,7 @@
    "type": "tf"
   },
   {
-   "q": "A hydrogen sits on a carbon next to a carbonyl. How does its acidity compare with an ordinary alcohol O–H?",
+   "q": "Resonance and induction both stabilize a conjugate base. Which is generally the larger effect, and how safe is that generalization?",
    "options": [
     "Resonance and induction are always equal in size",
     "Neither has a measurable effect on acidity",
@@ -9960,15 +9960,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which base is stronger: ethylamine (conjugate acid pKa 10.7) or aniline-free ammonia (conjugate acid pKa 9.2)?",
+   "q": "Which base is stronger: ethylamine (conjugate acid pKa 10.7) or ammonia (conjugate acid pKa 9.2)?",
    "options": [
     "Ammonia, because its conjugate acid is the weaker one",
-    "Ethylamine, because it has a larger alkyl group attached",
+    "Ammonia, because it is the smaller and less hindered base",
     "They are equal, because both put the charge on nitrogen",
     "Ethylamine, because its conjugate acid is the weaker one"
    ],
    "correct": 3,
-   "why": "Convert both bases to their conjugate acids and compare pKa: ethylammonium 10.7, ammonium 9.2. The higher pKa belongs to the weaker acid, and the weaker acid leaves the stronger base, so ethylamine is the stronger base — by 1.5 units, about thirty fold. Notice that the reason given in option three is the right structural story but the wrong logic: an alkyl group is weakly electron-donating and does push density onto nitrogen, which is why the amine is more basic, but the argument that settles the question is the pKa comparison. Getting into the habit of converting the base to its conjugate acid first is what stops these from going backwards.",
+   "why": "Convert both bases to their conjugate acids and compare pKa: ethylammonium 10.7, ammonium 9.2. The higher pKa belongs to the weaker acid, and the weaker acid leaves the stronger base, so ethylamine is the stronger base — by 1.5 units, about thirty fold. Two traps sit beside it. Saying “ammonia, because its conjugate acid is the weaker one” uses the right logic on a backwards fact: ammonium at 9.2 is the stronger acid, not the weaker. And size is not what separates these two — the ethyl group is weakly electron-donating and pushes density onto nitrogen, which is the structural reason ethylamine wins, not a steric one. Converting the base to its conjugate acid first is the habit that stops these going backwards.",
    "difficulty": "medium",
    "type": "mcq"
   }

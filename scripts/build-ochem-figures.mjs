@@ -5920,7 +5920,7 @@ FIGURES.push({
   id: 'bicarbonate-extraction',
   section: 'pka',
   anchor: '<p>This is a real laboratory separation, and it rests on nothing but two pKa comparisons.</p>',
-  alt: 'A separatory funnel with an aqueous upper layer holding the carboxylate salt and an organic lower layer holding the neutral phenol, with the two pKa comparisons written beside it',
+  alt: 'A separatory funnel with an upper ether layer holding the neutral phenol and a lower aqueous layer holding the carboxylate salt, with the two pKa comparisons written beside it',
   viewBox: '0 0 760 320',
   build() {
     let s = '';
@@ -5928,21 +5928,21 @@ FIGURES.push({
 
     // ---- the funnel: a body with two layers and a stem ----
     s += panel(56, 64, 272, 176, { r: 14 });
-    s += bar(60, 68, 264, 82, { kind: 'hi', r: 10, opacity: 0.3 });
-    s += bar(60, 152, 264, 84, { kind: 'mut', r: 10, opacity: 0.12 });
+    s += bar(60, 68, 264, 82, { kind: 'mut', r: 10, opacity: 0.12 });
+    s += bar(60, 152, 264, 84, { kind: 'hi', r: 10, opacity: 0.3 });
     s += rule(60, 150, 328, 150);
     s += rule(178, 240, 178, 278);
     s += rule(206, 240, 206, 278);
 
-    s += text(192, 98, 'AQUEOUS LAYER', { cls: 'fg-tag', size: 11 });
-    s += text(192, 122, 'RCO\u2082\u207b Na\u207a', { cls: 'fg-lbl', size: 13 });
-    s += text(192, 140, 'charged \u2014 dissolves in water', { cls: 'fg-sm', size: 10 });
+    s += text(192, 98, 'ORGANIC LAYER \u2014 ether, on top', { cls: 'fg-tag-mut', size: 11 });
+    s += text(192, 122, 'PhOH', { cls: 'fg-lbl', size: 13 });
+    s += text(192, 140, 'still neutral \u2014 stays put', { cls: 'fg-sm', size: 10 });
 
-    s += text(192, 180, 'ORGANIC LAYER', { cls: 'fg-tag-mut', size: 11 });
-    s += text(192, 204, 'PhOH', { cls: 'fg-lbl', size: 13 });
-    s += text(192, 222, 'still neutral \u2014 stays put', { cls: 'fg-sm', size: 10 });
+    s += text(192, 180, 'AQUEOUS LAYER \u2014 denser, below', { cls: 'fg-tag', size: 11 });
+    s += text(192, 204, 'RCO\u2082\u207b Na\u207a', { cls: 'fg-lbl', size: 13 });
+    s += text(192, 222, 'charged \u2014 dissolves in water', { cls: 'fg-sm', size: 10 });
 
-    s += text(192, 300, 'run the bottom layer off', { cls: 'fg-sm', size: 10 });
+    s += text(192, 300, 'run the bottom (aqueous) layer off', { cls: 'fg-sm', size: 10 });
 
     s += rule(376, 48, 376, 300);
 
@@ -5957,7 +5957,7 @@ FIGURES.push({
 
     s += text(404, 240, 'PhOH, pKa 10', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
     s += text(404, 258, '3.6 units above \u2014 not touched, stays neutral,', { cls: 'fg-sm', size: 10, anchor: 'start' });
-    s += text(404, 276, 'and stays in the organic solvent.', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(404, 276, 'and stays up in the ether.', { cls: 'fg-sm', size: 10, anchor: 'start' });
     return s;
   },
   caption: 'Why the reagent is bicarbonate and not hydroxide. Hydroxide (conjugate acid water, pKa 15.7) is strong enough to deprotonate both compounds, so both would end up in the aqueous layer and nothing would be separated. Bicarbonate sits deliberately between the two pKa values.',
