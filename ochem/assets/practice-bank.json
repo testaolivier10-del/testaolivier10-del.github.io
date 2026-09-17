@@ -20156,12 +20156,12 @@
    "q": "What does a UV-Vis spectrum NOT tell you?",
    "options": [
     "Where the double bonds are",
-    "The concentration",
+    "How concentrated it is, given ε",
     "Whether conjugation is present",
     "How extended it roughly is"
    ],
    "correct": 0,
-   "why": "It reports on conjugation and amount, but nothing about position or connectivity. Pair it with NMR for that.",
+   "why": "It reports on conjugation, and on amount once ε is known — but nothing about position or connectivity. Pair it with NMR for that.",
    "difficulty": "easy",
    "type": "mcq"
   },

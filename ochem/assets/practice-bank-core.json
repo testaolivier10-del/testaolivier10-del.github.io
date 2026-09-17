@@ -18578,7 +18578,7 @@
    "q": "What does a UV-Vis spectrum NOT tell you?",
    "options": [
     "Where the double bonds are",
-    "The concentration",
+    "How concentrated it is, given ε",
     "Whether conjugation is present",
     "How extended it roughly is"
    ],

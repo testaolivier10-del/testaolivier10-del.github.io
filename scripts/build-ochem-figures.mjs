@@ -8703,8 +8703,8 @@ FIGURES.push({
   viewBox: '0 0 760 500',
   build() {
     let s = '';
-    s += arrow(P(40, 300), P(40, 88));
-    s += text(50, 84, 'energy', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += arrow(P(40, 300), P(40, 64));
+    s += text(50, 58, 'energy', { cls: 'fg-tag', size: 11, anchor: 'start' });
 
     const col = (cx, name, sub, levels, homoAt) => {
       let t = '';
@@ -8728,13 +8728,21 @@ FIGURES.push({
       return t;
     };
 
+    /* The heights are Huckel's, not free-hand: every level sits at
+       alpha - 2*beta*cos(k*pi/(n+1)), drawn at 55 px per |beta| about a
+       common alpha line at y = 180. That matters because the two claims the
+       figure makes pull in opposite directions and both have to be visible:
+       the ladder gets TALLER as it lengthens (the diene's top orbital is
+       above ethene's pi*) while the frontier GAP still closes, because the
+       extra rungs crowd in faster than the two ends spread out. Drawn level
+       with pi*, as the top rung once was, the first claim silently fails. */
     s += col(170, 'Ethene', '2 p orbitals \u2192 2 orbitals',
-      [{ name: 'π', y: 250 }, { name: 'π*', y: 110 }], 0);
+      [{ name: 'π', y: 235 }, { name: 'π*', y: 125 }], 0);
     s += col(380, 'Buta-1,3-diene', '4 p orbitals \u2192 4 orbitals',
-      [{ name: 'ψ₁', y: 270 }, { name: 'ψ₂', y: 225 }, { name: 'ψ₃', y: 155 }, { name: 'ψ₄', y: 110 }], 1);
+      [{ name: 'ψ₁', y: 269 }, { name: 'ψ₂', y: 214 }, { name: 'ψ₃', y: 146 }, { name: 'ψ₄', y: 91 }], 1);
     s += col(590, 'Hexa-1,3,5-triene', '6 p orbitals \u2192 6 orbitals',
-      [{ name: 'ψ₁', y: 278 }, { name: 'ψ₂', y: 248 }, { name: 'ψ₃', y: 218 },
-       { name: 'ψ₄', y: 162 }, { name: 'ψ₅', y: 132 }, { name: 'ψ₆', y: 102 }], 2);
+      [{ name: 'ψ₁', y: 279 }, { name: 'ψ₂', y: 249 }, { name: 'ψ₃', y: 204 },
+       { name: 'ψ₄', y: 156 }, { name: 'ψ₅', y: 111 }, { name: 'ψ₆', y: 81 }], 2);
 
     s += rule(30, 340, 730, 340);
 
@@ -8763,7 +8771,7 @@ FIGURES.push({
     s += text(380, 472, 'and C4, and never in the middle.', { cls: 'fg-lbl', size: 11.5, anchor: 'start' });
     return s;
   },
-  caption: 'The ladder behind the vocabulary. Overlapping n parallel p orbitals makes n orbitals; the n electrons fill the bottom half; the top filled one is the HOMO and the first empty one is the LUMO. Adding conjugation packs more rungs into a similar height, so the HOMO climbs, the LUMO drops, and the gap between them closes.',
+  caption: 'The ladder behind the vocabulary. Overlapping n parallel p orbitals makes n orbitals; the n electrons fill the bottom half; the top filled one is the HOMO and the first empty one is the LUMO. Adding conjugation stretches the ladder a little at both ends and adds rungs faster than it stretches, so the HOMO climbs, the LUMO drops, and the gap between them closes.',
   note: 'Both of the chapter’s later sections are read off this one picture. The gap narrowing left to right is what a UV-Vis spectrometer measures, and it is why a longer conjugated system absorbs longer-wavelength light. The shape of ψ₂ underneath is why the reaction chemistry happens at the ends: it is the same claim the resonance forms of an allylic cation make, drawn as one orbital instead of two structures.',
 });
 
@@ -8964,7 +8972,7 @@ FIGURES.push({
   id: 'uv-spectrum-trace',
   section: 'uv-vis',
   anchor: 'when you see a strongly colored organic compound, extended conjugation is the first thing to look for.</p>',
-  alt: 'An absorbance-versus-wavelength plot from 180 to 400 nanometres. A tall broad band peaks at 217 nanometres for buta-1,3-diene, a second taller band peaks further right at 258 nanometres for hexa-1,3,5-triene, and a very small bump near 320 nanometres marks the weak n to pi-star transition of a ketone.',
+  alt: 'An absorbance-versus-wavelength plot from 180 to 400 nanometres. A tall broad band peaks at 217 nanometres for buta-1,3-diene, a second taller band peaks further right at 258 nanometres for hexa-1,3,5-triene, and a very small bump near 280 nanometers marks the weak n to pi-star transition of a ketone.',
   viewBox: '0 0 760 364',
   build() {
     let s = '';
@@ -8991,14 +8999,20 @@ FIGURES.push({
     // the two pi -> pi* bands, and the weak n -> pi* one
     s += `<line class="fg-dash" x1="${X(217).toFixed(1)}" y1="100" x2="${X(217).toFixed(1)}" y2="260"></line>`;
     s += `<line class="fg-dash" x1="${X(258).toFixed(1)}" y1="85" x2="${X(258).toFixed(1)}" y2="260"></line>`;
-    s += trace(320, 18, 12, 'fg-bond-soft');
+    s += trace(280, 18, 12, 'fg-bond-soft');
     s += trace(217, 14, 160, 'fg-bond');
     s += trace(258, 16, 175, 'fg-bond-hi');
 
-    s += text(X(217) + 40, 82, 'buta-1,3-diene, 217 nm', { cls: 'fg-lbl', size: 11.5, anchor: 'end' });
+    /* Centred over its own peak: anchored at the left it ran back across the
+       absorbance axis and the arrowhead sat inside the word. */
+    s += text(X(217), 92, 'buta-1,3-diene, 217 nm', { cls: 'fg-lbl', size: 11.5 });
     s += text(X(258) + 10, 72, 'hexa-1,3,5-triene, 258 nm', { cls: 'fg-tag-good', size: 11.5, anchor: 'start' });
-    s += text(X(320), 216, 'n → π* of a ketone', { cls: 'fg-sm', size: 10 });
-    s += text(X(320), 232, 'ε ≈ 20, so barely a ripple', { cls: 'fg-sm', size: 10 });
+    /* The weak band is the ketone n → π* one, so it belongs at 280 nm, where
+       the prose puts acetone. A leader runs from the label down to it, because
+       at ε ≈ 20 the bump itself is a few pixels tall. */
+    s += `<line class="fg-dash" x1="${X(280).toFixed(1)}" y1="216" x2="${X(280).toFixed(1)}" y2="248"></line>`;
+    s += text(X(280) + 16, 192, 'n → π* of a ketone, 280 nm', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(X(280) + 16, 208, 'ε ≈ 20, so barely a ripple', { cls: 'fg-sm', size: 10, anchor: 'start' });
 
     s += text(566, 112, 'height is ε; position is λₘₐₓ', { cls: 'fg-tag', size: 11 });
     s += text(566, 130, 'and the two are independent', { cls: 'fg-sm', size: 10 });
@@ -9009,9 +9023,395 @@ FIGURES.push({
     return s;
   },
   caption: 'What the instrument actually prints. Each band is a single electronic transition, and λ<sub>max</sub> is read off the top of it. Adding one double bond to the conjugation moves the whole band 41 nm to the right — and, here, makes it taller as well.',
-  note: 'The small bump near 320 nm is the part most students never meet, and it is the one that stops UV-Vis being read as "a long λ means a long chain". It is a lone pair on a carbonyl oxygen being promoted into the same π* orbital — an <b>n → π*</b> transition. It lands at a long wavelength but its ε is in the tens rather than the tens of thousands, because the two orbitals barely overlap. A big λ<sub>max</sub> with a tiny ε is a lone pair; a big λ<sub>max</sub> with a huge ε is a long conjugated system.',
+  note: 'The small bump near 280 nm is the part most students never meet, and it is the one that stops UV-Vis being read as "a long λ means a long chain". It is a lone pair on a carbonyl oxygen being promoted into the same π* orbital — an <b>n → π*</b> transition. It lands to the right of both π → π* bands here, and its ε is in the tens rather than the tens of thousands, because the two orbitals barely overlap. A big λ<sub>max</sub> with a tiny ε is a lone pair; a big λ<sub>max</sub> with a huge ε is a long conjugated system.',
 });
 
+
+
+/* ----------------------------------------------------------------- B0c ---
+   The section argues that the ends of a conjugated system are where the
+   chemistry happens, and rests that argument on allyl psi-2 having its node
+   THROUGH C2 rather than between atoms. The MO figure above draws butadiene's
+   psi-2, whose node falls between C2 and C3 — the other kind. The two node
+   types are exactly what students mix up, and the one the prose needs was the
+   one not drawn. This is it: three orbitals, three carbons, and the middle
+   atom dropping out of the middle orbital. */
+FIGURES.push({
+  id: 'allyl-three-orbitals',
+  section: 'conjugated-systems',
+  anchor: 'The resonance drawing and the orbital drawing are the same statement made twice.</p>',
+  alt: 'The three molecular orbitals of the allyl system, drawn as p orbital lobes on three carbons. In the lowest orbital every lobe has the same phase and the middle one is largest. In the middle orbital only C1 and C3 carry lobes, with opposite phases and a node drawn straight through C2. In the highest orbital all three carry lobes with the phase alternating and two nodes between the atoms.',
+  viewBox: '0 0 760 430',
+  build() {
+    let s = '';
+    const y0 = 176;
+
+    /* One panel = one orbital. `coef` gives each carbon's lobe size, and a
+       zero means the atom genuinely contributes nothing — which is the whole
+       point of the middle orbital, so it is drawn as an absence rather than
+       as a small lobe. `phase` alternates the two fill classes. */
+    const orbital = (cx, title, sub, coef, phase, nodesAt, foot) => {
+      let t = '';
+      t += text(cx, 60, title, { cls: 'fg-lbl', size: 14 });
+      t += text(cx, 80, sub, { cls: 'fg-sm', size: 9.5 });
+      const xs = [cx - 58, cx, cx + 58];
+      for (let i = 0; i < 2; i++) {
+        t += bond(P(xs[i], y0), P(xs[i + 1], y0), { cls: 'fg-bond-soft', rFrom: 0, rTo: 0 });
+      }
+      xs.forEach((x, i) => {
+        const rx = coef[i] === 0 ? 0 : coef[i] === 2 ? 16 : 13;
+        const ry = coef[i] === 0 ? 0 : coef[i] === 2 ? 21 : 18;
+        if (rx) {
+          const top = phase[i] > 0 ? 'fg-orb' : 'fg-orb-alt';
+          const bot = phase[i] > 0 ? 'fg-orb-alt' : 'fg-orb';
+          t += lobeE(x, y0 - 18 - ry / 2, rx, ry, top);
+          t += lobeE(x, y0 + 18 + ry / 2, rx, ry, bot);
+        }
+        t += atom(x, y0, '', { kind: 'point' });
+        t += text(x, y0 + 16, `C${i + 1}`, { cls: 'fg-sm', size: 9.5 });
+      });
+      for (const nx of nodesAt) {
+        t += `<line class="fg-orb-node" x1="${nx}" y1="124" x2="${nx}" y2="228"></line>`;
+      }
+      t += text(cx, 248, foot, { cls: 'fg-sm', size: 10 });
+      return t;
+    };
+
+    s += panel(20, 30, 216, 250);
+    s += orbital(128, 'ψ₁', 'lowest, every lobe in phase', [1, 2, 1], [1, 1, 1], [],
+      'no node — fully bonding');
+    s += panel(252, 30, 216, 250);
+    s += orbital(360, 'ψ₂', 'the orbital the chemistry uses', [2, 0, 2], [1, 1, -1], [360],
+      'node through C2 — nonbonding');
+    s += text(360, 158, 'no lobe here', { cls: 'fg-sm', size: 9.5 });
+    s += panel(484, 30, 216, 250);
+    s += orbital(592, 'ψ₃', 'highest, empty in all three', [1, 2, 1], [1, -1, 1], [563, 621],
+      'two nodes — antibonding');
+
+    s += rule(30, 300, 710, 300);
+    s += tag(370, 322, 'which of the three orbitals is occupied');
+    s += text(370, 346, 'allyl cation — 2 electrons, ψ₁ only', { cls: 'fg-sm', size: 10.5 });
+    s += text(370, 364, 'allyl radical — 3 electrons, one of them alone in ψ₂', { cls: 'fg-sm', size: 10.5 });
+    s += text(370, 382, 'allyl anion — 4 electrons, ψ₁ and ψ₂ both full', { cls: 'fg-sm', size: 10.5 });
+    s += rule(30, 396, 710, 396);
+    s += text(370, 418, 'Whatever ψ₂ holds sits on C1 and C3 — which is what the resonance forms say.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'Three p orbitals, three molecular orbitals, and a middle one that skips the middle atom. ψ₂ is the orbital whose occupancy changes between the allyl cation, radical and anion, and C2 contributes nothing to it: its node does not fall between two atoms, it falls on one.',
+  note: 'Two kinds of node, and telling them apart is most of the work. Butadiene’s ψ₂ has its node <i>between</i> C2 and C3, so all four carbons still carry lobes. Allyl’s ψ₂ has its node <i>through</i> C2, so that carbon carries none — and since the cation, the radical and the anion differ only in what ψ₂ holds, all three keep their charge or their odd electron at the two ends. Count the p orbitals first: an odd number puts a node on an atom, an even number puts it in a gap.',
+});
+
+/* ----------------------------------------------------------------- B4b ---
+   Regiochemistry was the section's most figure-hungry idea and had no
+   figure: which substituent lands where on a new ring is a question about
+   two structures, and the prose was asking the reader to build both in their
+   head. Drawn, the rule is one dashed line between the two atoms that want
+   each other, and the wrong answer is visibly the one that pairs like with
+   like. */
+FIGURES.push({
+  id: 'da-regiochemistry',
+  section: 'diels-alder',
+  anchor: 'and it weakens as either partner becomes less polarized.</div>',
+  alt: 'On the left, a 1-methoxy-substituted diene with a delta minus marked on its far terminus, drawn above propenal with a delta plus marked on the carbon that does not carry the aldehyde, and a dashed line pairing those two atoms. On the right, two cyclohexene rings: the ortho product with the methoxy and the aldehyde on adjacent carbons, labeled as the product, and the meta product with them 1,3 apart, labeled as never seen.',
+  viewBox: '0 0 760 430',
+  build() {
+    let s = '';
+
+    // ---- the two partners, each polarized ----
+    s += tag(160, 52, 'polarize each partner');
+    const c1 = P(88, 146), c2 = P(128, 96), c3 = P(198, 96), c4 = P(238, 146);
+    const dmid = P(163, 150);
+    s += ringDouble(c1, c2, dmid);
+    s += bond(c2, c3, { rFrom: 0, rTo: 0 });
+    s += ringDouble(c3, c4, dmid);
+    for (const q of [c1, c2, c3, c4]) s += atom(q.x, q.y, '', { kind: 'point' });
+    s += bond(c1, P(52, 178), { rFrom: 0, rTo: 17 });
+    s += atom(52, 178, 'OMe', { r: 17, size: 10 });
+    s += text(72, 136, 'C1', { cls: 'fg-sm', size: 9.5 });
+    s += text(256, 136, 'C4', { cls: 'fg-sm', size: 9.5 });
+    s += text(250, 170, 'δ−', { cls: 'fg-lbl', size: 13 });
+
+    const d1 = P(118, 250), d2 = P(188, 250);
+    s += bond(d1, d2, { order: 2, rFrom: 0, rTo: 0 });
+    for (const q of [d1, d2]) s += atom(q.x, q.y, '', { kind: 'point' });
+    s += bond(d2, P(228, 282), { rFrom: 0, rTo: 17 });
+    s += atom(228, 282, 'CHO', { r: 17, size: 10 });
+    s += text(104, 238, 'δ+', { cls: 'fg-lbl', size: 13 });
+
+    // The pairing itself: not a bond yet, so it is drawn as one.
+    s += bond(c4, d1, { cls: 'fg-dash-hi', rFrom: 0, rTo: 0 });
+    s += text(160, 330, 'δ− meets δ+, so C4 bonds to the CH₂ end', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(160, 348, 'and C1 is left to take the CHO carbon', { cls: 'fg-sm', size: 10 });
+
+    s += arrow(P(316, 190), P(372, 190));
+    s += text(344, 176, 'two ways to join', { cls: 'fg-tag', size: 10.5 });
+
+    // ---- the two rings that answer the question ----
+    const ring = (cx, cy, r) => {
+      const v = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (-90 + i * 60) * Math.PI / 180;
+        v.push(P(Math.round((cx + Math.cos(a) * r) * 10) / 10, Math.round((cy + Math.sin(a) * r) * 10) / 10));
+      }
+      return v;
+    };
+    /* v5 v0 v1 v2 are the diene's C1..C4 and v3 v4 the dienophile's two
+       carbons, the same mapping the bond-accounting figure uses, so the two
+       drawings can be read against each other. */
+    const drawRing = (cx, choCarbon) => {
+      const v = ring(cx, 150, 52), ctr = P(cx, 150);
+      let t = '';
+      t += bond(v[5], v[0], { rFrom: 0, rTo: 0 });
+      t += ringDouble(v[0], v[1], ctr);
+      t += bond(v[1], v[2], { rFrom: 0, rTo: 0 });
+      t += bond(v[2], v[3], { cls: 'fg-bond-hi', rFrom: 0, rTo: 0 });
+      t += bond(v[3], v[4], { rFrom: 0, rTo: 0 });
+      t += bond(v[4], v[5], { cls: 'fg-bond-hi', rFrom: 0, rTo: 0 });
+      for (const q of v) t += atom(q.x, q.y, '', { kind: 'point' });
+      const out = (p, dx, dy, lbl) => {
+        const at = P(p.x + dx, p.y + dy);
+        return bond(p, at, { rFrom: 0, rTo: 17 }) + atom(at.x, at.y, lbl, { r: 17, size: 10 });
+      };
+      t += out(v[5], -29.4, -17, 'OMe');
+      t += choCarbon === 4 ? out(v[4], -29.4, 17, 'CHO') : out(v[3], 0, 34, 'CHO');
+      return t;
+    };
+    s += drawRing(480, 4);
+    s += text(480, 272, '"ortho" — 1,2', { cls: 'fg-tag-good', size: 11 });
+    s += text(480, 290, 'this is the product', { cls: 'fg-sm', size: 10 });
+    s += drawRing(630, 3);
+    s += text(630, 272, '"meta" — 1,3', { cls: 'fg-tag-warn', size: 11 });
+    s += text(630, 290, 'never seen', { cls: 'fg-sm', size: 10 });
+
+    s += rule(30, 372, 710, 372);
+    s += text(370, 394, 'Join the diene’s δ− end to the dienophile’s δ+ carbon; the ring closes itself.', { cls: 'fg-lbl', size: 12 });
+    s += text(370, 412, 'Move the donor to C2 of the diene and the same rule gives the "para" product.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The rule as a picture rather than as two borrowed words. A donor on the diene’s C1 makes C4 the nucleophilic end; a withdrawing group on the dienophile makes the <i>other</i> carbon the electrophilic one. Pair those two, and the second bond has only one place left to go — which puts the two substituents next door to each other.',
+  note: 'The ring on the right is what the other orientation would give, and it is worth looking at once so you can rule it out on sight: making it would mean bonding δ− to the carbon that is already electron-rich. Note also what the rule does <b>not</b> produce — there is no arrangement of these two partners that separates the substituents by two carbons and then a gap on both sides, so "meta" is always a distractor and never an answer.',
+});
+
+/* ----------------------------------------------------------------- B4c ---
+   Two claims in this section were made in words only, and they are the same
+   drawing seen twice. The canonical worked example asks the reader to see
+   that the anhydride ends up on the side of the two-carbon bridge in a
+   bicyclic cage; the retro recipe asks where to put the scissors. Draw the
+   adduct once, mark the two bonds that made it, and both are answered. */
+FIGURES.push({
+  id: 'norbornene-endo-retro',
+  section: 'diels-alder',
+  /* Hand-placed between the worked example and the retro heading, because it
+     answers the last line of the one and the first line of the other; the
+     anchor below is only the fallback if those markers are ever lost. */
+  anchor: '<h3>Running it backwards</h3>',
+  alt: 'The cyclopentadiene plus maleic anhydride adduct drawn as a six-membered ring with a one-carbon CH2 bridge crossing in front of it. The anhydride is attached by hashed bonds pointing back, away from that bridge, which is the endo arrangement. Two bonds of the ring are highlighted and marked cut, and an arrow labeled heat leads to the two fragments, cyclopentadiene and maleic anhydride.',
+  viewBox: '0 0 760 450',
+  build() {
+    let s = '';
+    /* Norbornene drawn the way a textbook draws it: the six-membered ring
+       flat on the page with the one-carbon bridge crossing its middle, which
+       reads as the bridge coming toward you. A substituent drawn hashed is
+       therefore on the far side from that bridge — and the far side from the
+       CH2 bridge is the side of the two-carbon C=C bridge. That is endo. */
+    const C1 = P(110, 163), C2 = P(150, 221), C3 = P(240, 221),
+          C4 = P(280, 163), C5 = P(240, 105), C6 = P(150, 105);
+    const ctr = P(195, 163);
+
+    s += tag(195, 60, 'the endo adduct');
+    s += text(195, 90, 'the two-carbon C=C bridge', { cls: 'fg-tag', size: 11 });
+    s += bond(C1, C2, { cls: 'fg-bond-hi', rFrom: 0, rTo: 0 });
+    s += bond(C2, C3, { rFrom: 0, rTo: 0 });
+    s += bond(C3, C4, { cls: 'fg-bond-hi', rFrom: 0, rTo: 0 });
+    s += bond(C4, C5, { rFrom: 0, rTo: 0 });
+    s += ringDouble(C5, C6, ctr);
+    s += bond(C6, C1, { rFrom: 0, rTo: 0 });
+    for (const q of [C1, C2, C3, C4, C5, C6]) s += atom(q.x, q.y, '', { kind: 'point' });
+
+    const C7 = P(195, 178);
+    s += bond(C1, C7, { rFrom: 0, rTo: 17 });
+    s += bond(C4, C7, { rFrom: 0, rTo: 17 });
+    s += atom(C7.x, C7.y, 'CH₂', { r: 17, size: 10 });
+    s += text(195, 148, 'the one-carbon bridge', { cls: 'fg-sm', size: 9.5 });
+
+    // the anhydride, hashed so it points away from that bridge
+    const AA = P(130, 290), AB = P(260, 290), AO = P(195, 326);
+    s += hash(C2, AA, { rFrom: 0, rTo: 17 });
+    s += hash(C3, AB, { rFrom: 0, rTo: 17 });
+    s += bond(AA, AO, { rFrom: 17, rTo: 15 });
+    s += bond(AB, AO, { rFrom: 17, rTo: 15 });
+    s += atom(AA.x, AA.y, 'C=O', { r: 17, size: 10 });
+    s += atom(AB.x, AB.y, 'C=O', { r: 17, size: 10 });
+    s += atom(AO.x, AO.y, 'O');
+
+    // where the scissors go
+    s += bond(P(140.7, 184.6), P(119.3, 199.4), { cls: 'fg-dash-hi', rFrom: 0, rTo: 0 });
+    s += bond(P(270.7, 199.4), P(249.3, 184.6), { cls: 'fg-dash-hi', rFrom: 0, rTo: 0 });
+    s += text(95, 186, 'cut', { cls: 'fg-tag-warn', size: 11 });
+    s += text(295, 186, 'cut', { cls: 'fg-tag-warn', size: 11 });
+    s += text(195, 362, 'the anhydride points away from the CH₂ bridge', { cls: 'fg-sm', size: 10 });
+    s += text(195, 380, 'and the two cut bonds are the two it made', { cls: 'fg-sm', size: 10 });
+
+    s += arrow(P(390, 200), P(452, 200));
+    s += text(421, 186, 'heat', { cls: 'fg-tag', size: 10.5 });
+    s += text(421, 218, 'retro-DA', { cls: 'fg-sm', size: 10 });
+
+    // ---- the two pieces that fall out ----
+    const penta = (cx, cy, r, start) => {
+      const v = [];
+      for (let i = 0; i < 5; i++) {
+        const a = (start + i * 72) * Math.PI / 180;
+        v.push(P(Math.round((cx + Math.cos(a) * r) * 100) / 100, Math.round((cy + Math.sin(a) * r) * 100) / 100));
+      }
+      return v;
+    };
+
+    const cp = penta(580, 120, 44, -90), cpc = P(580, 120);
+    s += bond(cp[0], cp[1], { rFrom: 0, rTo: 0 });
+    s += ringDouble(cp[1], cp[2], cpc);
+    s += bond(cp[2], cp[3], { rFrom: 0, rTo: 0 });
+    s += ringDouble(cp[3], cp[4], cpc);
+    s += bond(cp[4], cp[0], { rFrom: 0, rTo: 0 });
+    for (const q of cp) s += atom(q.x, q.y, '', { kind: 'point' });
+    s += text(580, 66, 'CH₂', { cls: 'fg-sm', size: 9.5 });
+    s += text(580, 186, 'cyclopentadiene', { cls: 'fg-lbl', size: 12 });
+    s += text(580, 216, '+', { cls: 'fg-lbl', size: 16 });
+
+    const ma = penta(580, 300, 44, 90), mac = P(580, 300);
+    s += bond(ma[0], ma[1], { rFrom: 15, rTo: 0 });
+    s += bond(ma[1], ma[2], { rFrom: 0, rTo: 0 });
+    s += ringDouble(ma[2], ma[3], mac);
+    s += bond(ma[3], ma[4], { rFrom: 0, rTo: 0 });
+    s += bond(ma[4], ma[0], { rFrom: 0, rTo: 15 });
+    for (const q of [ma[1], ma[2], ma[3], ma[4]]) s += atom(q.x, q.y, '', { kind: 'point' });
+    s += atom(ma[0].x, ma[0].y, 'O');
+    const exo = (v, sx) => {
+      const at = P(v.x + sx * 32.3, v.y + 10.5);
+      return bond(v, at, { order: 2, rFrom: 0, rTo: 15 }) + atom(at.x, at.y, 'O');
+    };
+    s += exo(ma[1], -1);
+    s += exo(ma[4], 1);
+    s += text(580, 392, 'maleic anhydride', { cls: 'fg-lbl', size: 12 });
+
+    s += rule(30, 408, 710, 408);
+    s += text(370, 430, 'Cut the two bonds that built the ring and the pieces fall straight out.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'One drawing doing two jobs. The cage is the adduct of cyclopentadiene and maleic anhydride: six-membered ring on the page, the old CH₂ crossing in front of it as a one-carbon bridge, and the anhydride hashed — pointing back, away from that bridge and toward the side the C=C bridge is on. The two highlighted bonds are the two the cycloaddition made, and heating breaks exactly those.',
+  note: 'Read the hashed bonds as the definition of <b>endo</b> rather than as decoration: endo is the orientation in which the dienophile’s substituent finishes up on the far side from the short bridge. Then read the same picture backwards. The alkene is the marker — step one carbon out from each of its ends and cut, and you are holding the diene and the dienophile you started from. Every retro-Diels–Alder disconnection is this, on a ring that usually has no bridge to help you find the right two bonds.',
+});
+
+/* ----------------------------------------------------------------- B2b ---
+   The section names Br2 as its second electrophile and asserts a bromonium
+   ion that "opens to an allylic cation" — a step with two arrows in it, a
+   choice of which end opens, and two dibromides at the end of it, none of
+   which was drawn. A hard bank item rests on it. */
+FIGURES.push({
+  id: 'bromonium-diene',
+  section: 'diene-addition',
+  anchor: 'Cold conditions favor the 1,2-product and warm conditions the 1,4-product, for exactly the reasons below.</p>',
+  alt: 'Three stages. Buta-1,3-diene attacks bromine with a curved arrow from the C1-C2 pi bond and a second arrow releasing bromide. The bromonium ion that results bridges C1 and C2, and a curved arrow breaks its C2 to bromine bond. The allylic cation left over carries bromine on C1 and partial positive charge on C2 and C4. Below, the two products: 3,4-dibromobut-1-ene from capture at C2 and 1,4-dibromobut-2-ene from capture at C4.',
+  viewBox: '0 0 760 470',
+  build() {
+    let s = '';
+
+    // ---- stage 1: the pi bond reaches for Br2 ----
+    s += tag(118, 56, 'Br₂ meets buta-1,3-diene');
+    const a1 = P(58, 130), a2 = P(100, 104), a3 = P(142, 130), a4 = P(184, 104);
+    s += bond(a1, a2, { order: 2, rFrom: 0, rTo: 0 });
+    s += bond(a2, a3, { rFrom: 0, rTo: 0 });
+    s += bond(a3, a4, { order: 2, rFrom: 0, rTo: 0 });
+    for (const q of [a1, a2, a3, a4]) s += atom(q.x, q.y, '', { kind: 'point' });
+    s += text(48, 148, 'C1', { cls: 'fg-sm', size: 9.5 });
+    s += text(194, 92, 'C4', { cls: 'fg-sm', size: 9.5 });
+    const B1 = P(66, 192), B2 = P(118, 192);
+    s += bond(B1, B2);
+    s += atom(B1.x, B1.y, 'Br');
+    s += atom(B2.x, B2.y, 'Br');
+    for (const ang of [180, 240]) s += lonePair(B1.x, B1.y, ang);
+    for (const ang of [0, 60, 300]) s += lonePair(B2.x, B2.y, ang);
+    s += curve(P(78, 120), P(70, 176), { bow: 18 });
+    s += curve(P(92, 192), P(140, 206), { bow: -16 });
+    s += text(118, 234, 'the π bond attacks Br₂', { cls: 'fg-sm', size: 10 });
+    s += text(118, 250, 'and bromide leaves', { cls: 'fg-sm', size: 10 });
+
+    s += arrow(P(216, 140), P(268, 140));
+
+    // ---- stage 2: the bromonium ion, and which end opens ----
+    s += tag(372, 56, 'a bromonium ion across C1–C2');
+    const b1 = P(314, 140), b2 = P(356, 114), b3 = P(398, 140), b4 = P(440, 114);
+    s += bond(b1, b2, { rFrom: 0, rTo: 0 });
+    s += bond(b2, b3, { rFrom: 0, rTo: 0 });
+    s += bond(b3, b4, { order: 2, rFrom: 0, rTo: 0 });
+    for (const q of [b1, b2, b3, b4]) s += atom(q.x, q.y, '', { kind: 'point' });
+    const Bp = P(335, 76);
+    s += bond(b1, Bp, { rFrom: 0, rTo: 16 });
+    s += bond(b2, Bp, { rFrom: 0, rTo: 16 });
+    s += atom(Bp.x, Bp.y, 'Br', { kind: 'warn' });
+    s += text(358, 68, '+', { cls: 'fg-lbl', size: 15 });
+    s += text(304, 158, 'C1', { cls: 'fg-sm', size: 9.5 });
+    s += text(450, 102, 'C4', { cls: 'fg-sm', size: 9.5 });
+    s += curve(P(350, 104), P(326, 86), { bow: 14 });
+    s += text(372, 200, 'it opens at C2 — the end', { cls: 'fg-sm', size: 10 });
+    s += text(372, 216, 'whose cation is allylic', { cls: 'fg-sm', size: 10 });
+
+    s += arrow(P(478, 140), P(508, 140));
+
+    // ---- stage 3: the allylic cation, with bromine already on C1 ----
+    s += tag(600, 56, 'one cation, two δ+ ends');
+    const g1 = P(530, 130), g2 = P(586, 130), g3 = P(634, 130), g4 = P(682, 130);
+    s += bond(g1, g2, { rFrom: 19, rTo: 15 });
+    s += bond(g2, g3);
+    s += bond(g3, g4);
+    s += bond(P(586, 114), P(634, 114), { cls: 'fg-dash', rFrom: 13, rTo: 13 });
+    s += bond(P(634, 114), P(682, 114), { cls: 'fg-dash', rFrom: 13, rTo: 13 });
+    s += atom(g1.x, g1.y, 'CH₂Br', { r: 19, size: 9.5 });
+    s += atom(g2.x, g2.y, 'CH');
+    s += atom(g3.x, g3.y, 'CH');
+    s += atom(g4.x, g4.y, 'CH₂');
+    s += text(586, 100, 'δ+', { cls: 'fg-lbl', size: 13 });
+    s += text(682, 100, 'δ+', { cls: 'fg-lbl', size: 13 });
+    s += text(530, 160, 'C1', { cls: 'fg-sm', size: 9.5 });
+    s += text(586, 160, 'C2', { cls: 'fg-sm', size: 9.5 });
+    s += text(682, 160, 'C4', { cls: 'fg-sm', size: 9.5 });
+    s += text(600, 200, 'Br is fixed on C1; the charge', { cls: 'fg-sm', size: 10 });
+    s += text(600, 216, 'is shared between C2 and C4', { cls: 'fg-sm', size: 10 });
+
+    // ---- the two products ----
+    s += rule(30, 262, 710, 262);
+    s += tag(370, 288, 'bromide then lands on C2 or on C4');
+
+    const p1 = P(150, 340), p2 = P(190, 316), p3 = P(230, 340), p4 = P(270, 316);
+    s += bond(p1, p2, { rFrom: 0, rTo: 0 });
+    s += bond(p2, p3, { rFrom: 0, rTo: 0 });
+    s += bond(p3, p4, { order: 2, rFrom: 0, rTo: 0 });
+    for (const q of [p1, p2, p3, p4]) s += atom(q.x, q.y, '', { kind: 'point' });
+    s += bond(p1, P(120, 364), { rFrom: 0, rTo: 15 });
+    s += atom(120, 364, 'Br');
+    s += bond(p2, P(190, 282), { rFrom: 0, rTo: 15 });
+    s += atom(190, 282, 'Br');
+    s += text(200, 400, '3,4-dibromobut-1-ene', { cls: 'fg-lbl', size: 12 });
+    s += text(200, 418, 'from 1,2-addition — favored cold', { cls: 'fg-sm', size: 10 });
+
+    const q1 = P(480, 340), q2 = P(520, 316), q3 = P(560, 340), q4 = P(600, 316);
+    s += bond(q1, q2, { rFrom: 0, rTo: 0 });
+    s += bond(q2, q3, { order: 2, rFrom: 0, rTo: 0 });
+    s += bond(q3, q4, { rFrom: 0, rTo: 0 });
+    for (const q of [q1, q2, q3, q4]) s += atom(q.x, q.y, '', { kind: 'point' });
+    s += bond(q1, P(450, 364), { rFrom: 0, rTo: 15 });
+    s += atom(450, 364, 'Br');
+    s += bond(q4, P(630, 292), { rFrom: 0, rTo: 15 });
+    s += atom(630, 292, 'Br');
+    s += text(540, 400, '1,4-dibromobut-2-ene', { cls: 'fg-lbl', size: 12 });
+    s += text(540, 418, 'from 1,4-addition — favored warm', { cls: 'fg-sm', size: 10 });
+
+    s += rule(30, 434, 710, 434);
+    s += text(370, 456, 'Same cation, same two ends — bromine has simply replaced the proton.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'Bromine taking the same route the proton took. The diene’s π bond attacks one bromine and displaces the other as bromide, which leaves a three-membered bromonium ion bridging C1 and C2. That ring then opens — at C2, not C1 — and what is left is an allylic cation with a bromine already parked on C1.',
+  note: 'Why the ring opens at C2 is the whole reason this case behaves like the HBr one. Breaking the C1–Br bond would leave a bare primary cation on C1, insulated from C3=C4 by an sp³ carbon. Breaking the C2–Br bond leaves the charge next door to that double bond, so it delocalizes to C4 — and from there the story is identical: bromide lands at C2 or at C4, and the temperature decides which of the two you isolate.',
+});
 
 /* ------------------------------------------------------------- 10.1 ---
    Alcohol dehydration, with its arrows. The section's centrepiece was

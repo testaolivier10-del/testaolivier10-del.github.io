@@ -1682,7 +1682,7 @@
   "The Beer-Lambert relationship makes it the standard way to follow a concentration while a reaction runs.",
   "Conjugated systems absorb strongly, which is part of why the technique is sensitive.",
   "Conjugation narrows the gap, so the conjugated isomer absorbs at the longer wavelength.",
-  "It reports on conjugation and amount, but nothing about position or connectivity. Pair it with NMR for that.",
+  "It reports on conjugation, and on amount once ε is known — but nothing about position or connectivity. Pair it with NMR for that.",
   "Below about 400 nm is ultraviolet, so a compound absorbing past that point can appear colored.",
   "A single C=C absorbs below about 200 nm, which ordinary instruments do not reach comfortably.",
   "The Woodward-Fieser increments make this arithmetic: each alkyl group or ring residue is worth about +5 nm and each extra conjugated C=C about +30, so 5 + 5 + 30 is roughly +40. Notice the size of the two terms — lengthening the conjugation dominates, and substituents only nudge, which is why UV-Vis counts double bonds well and identifies substituents badly.",
