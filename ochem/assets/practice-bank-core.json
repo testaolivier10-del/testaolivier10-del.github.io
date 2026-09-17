@@ -23801,16 +23801,6 @@
    "type": "mcq"
   },
   {
-   "q": "Adding more carbonyl groups adjacent to a given CH2 group (as in a 1,3-diketone or a malonic ester) generally increases the acidity of that CH2's hydrogens.",
-   "options": [
-    "True",
-    "False"
-   ],
-   "correct": 0,
-   "difficulty": "easy",
-   "type": "tf"
-  },
-  {
    "q": "Rank these from most acidic to least acidic: (A) an alpha C-H of acetone (pKa about 20), (B) an alpha C-H of ethyl acetoacetate (pKa about 11), (C) a vinylic C-H on an unactivated alkene (pKa about 44).",
    "options": [
     "A > B > C",
@@ -23843,30 +23833,6 @@
    "correct": 0,
    "difficulty": "medium",
    "type": "tf"
-  },
-  {
-   "q": "Cyclohexanone has alpha hydrogens on both ring carbons adjacent to the carbonyl. If a strong, bulky base such as LDA is used at low temperature with the ketone added slowly to excess base, which enolate typically forms predominantly?",
-   "options": [
-    "The thermodynamic (more substituted) enolate exclusively, regardless of conditions",
-    "No enolate forms because cyclohexanone has no alpha hydrogens",
-    "A mixture with no kinetic preference under any conditions",
-    "The kinetic (less substituted) enolate, formed by removing the more accessible, less hindered alpha hydrogen"
-   ],
-   "correct": 3,
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "Which factor primarily distinguishes a 'kinetic enolate' from a 'thermodynamic enolate' when an unsymmetrical ketone has two different sets of alpha hydrogens?",
-   "options": [
-    "Kinetic: the more accessible proton; thermodynamic: the more stable, more substituted enolate",
-    "Kinetic enolates only form with weak bases, thermodynamic enolates only form with strong bases",
-    "There is no real difference; the terms are interchangeable",
-    "Kinetic enolates always have the charge on carbon; thermodynamic enolates always have the charge on oxygen"
-   ],
-   "correct": 0,
-   "difficulty": "medium",
-   "type": "mcq"
   },
   {
    "q": "Why does an ester's alpha C-H (pKa about 25) tend to be less acidic than a ketone's alpha C-H (pKa about 20), even though both groups contain a carbonyl?",
@@ -23949,7 +23915,7 @@
    "type": "mcq"
   },
   {
-   "q": "An alpha,beta-unsaturated ketone (an enone) can, under basic conditions, form an extended (cross-conjugated dienolate) by removing a hydrogen from the gamma carbon rather than a true alpha carbon, because that anion is also stabilized through the conjugated pi system.",
+   "q": "An alpha,beta-unsaturated ketone (an enone) can, under basic conditions, form an extended (extended dienolate) by removing a hydrogen from the gamma carbon rather than a true alpha carbon, because that anion is also stabilized through the conjugated pi system.",
    "options": [
     "True",
     "False"
@@ -23957,18 +23923,6 @@
    "correct": 0,
    "difficulty": "hard",
    "type": "tf"
-  },
-  {
-   "q": "A chemist wants to selectively generate the less-substituted (kinetic) enolate of 2-methylcyclohexanone for a subsequent alkylation. Which set of conditions best achieves this?",
-   "options": [
-    "Treat the ketone with excess ketone and a trace of weak acid at room temperature for days",
-    "Use aqueous NaOH at reflux for several hours",
-    "Add the ketone slowly to excess LDA at low temperature (e.g., -78 degrees C) in an aprotic solvent",
-    "Add excess LDA slowly to the ketone at room temperature over several hours"
-   ],
-   "correct": 2,
-   "difficulty": "hard",
-   "type": "mcq"
   },
   {
    "q": "Why is it generally true that an alpha carbon bonded to a quaternary (fully substituted) adjacent carbon can still have acidic alpha hydrogens, but a carbon with zero hydrogens attached (fully substituted alpha carbon itself) cannot serve as a site of enolization?",
@@ -24014,6 +23968,54 @@
    ],
    "correct": 1,
    "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which compound has no alpha hydrogens at all, and so can never form an enolate?",
+   "options": [
+    "Acetaldehyde, CH3CHO",
+    "Cyclohexanone",
+    "2,2-Dimethylpropanal, (CH3)3C-CHO",
+    "Ethyl acetate, CH3CO2Et"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How many hydrogens of 3-methylbutan-2-one, CH3COCH(CH3)2, are exchanged for deuterium when it is stirred in D2O with a trace of NaOD?",
+   "options": [
+    "Ten",
+    "Four",
+    "Six",
+    "Zero"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "(R)-3-Phenylbutan-2-one, PhCH(CH3)COCH3, is stirred with a catalytic amount of NaOH and then recovered. What is observed?",
+   "options": [
+    "It is unchanged and still optically pure",
+    "It is racemic, and the optical activity is gone",
+    "It is converted cleanly to the (S) enantiomer",
+    "It is oxidized to a carboxylic acid"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Ethyl acetoacetate, CH3COCH2CO2Et, is treated with one equivalent of sodium ethoxide. Which proton comes off?",
+   "options": [
+    "A hydrogen of the terminal methyl ketone CH3",
+    "A hydrogen of the OCH2 of the ethyl group",
+    "A hydrogen of the CH3 of the ethyl group",
+    "A hydrogen of the central CH2"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
    "type": "mcq"
   }
  ],
@@ -24217,7 +24219,7 @@
    "type": "mcq"
   },
   {
-   "q": "A beta-hydroxy ketone that has no hydrogen on the alpha carbon adjacent to the hydroxyl group (for example, due to full substitution there) generally cannot undergo the typical E1cb dehydration pathway to give an enone.",
+   "q": "A beta-hydroxy ketone that has no hydrogen on the alpha carbon - the one lying between the carbonyl and the hydroxyl-bearing beta carbon - generally cannot undergo the typical E1cb dehydration pathway to give an enone.",
    "options": [
     "True",
     "False"
@@ -24249,14 +24251,14 @@
    "type": "tf"
   },
   {
-   "q": "Why does a Lewis acid catalyst (such as a metal triflate) used in some modern aldol variants often allow milder conditions than classic strong-base-mediated aldol reactions?",
+   "q": "Cyclohexanone and 4-methylbenzaldehyde are stirred together with NaOH and heated. What is the major product?",
    "options": [
-    "Lewis acids remove alpha hydrogens more effectively than any base ever could",
-    "Lewis acids work only by raising the reaction temperature, not through any electronic effect",
-    "Lewis acids convert the ketone into an ester before the reaction can occur",
-    "The Lewis acid activates the electrophilic carbonyl"
+    "A 1:1 mixture of two different crossed aldol products",
+    "2-(4-Methylbenzylidene)cyclohexanone",
+    "4-Methylbenzoic acid",
+    "The self-aldol of cyclohexanone alone"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -24297,21 +24299,21 @@
    "type": "mcq"
   },
   {
-   "q": "A beta-hydroxy ketone aldol product is treated with base under conditions where the necessary alpha hydrogen for E1cb elimination is present, yet no dehydration is observed even after extended heating. Which explanation is most plausible?",
+   "q": "An aldol product that still has the alpha hydrogen E1cb needs will not dehydrate, even on prolonged heating with base: its carbonyl and beta-hydroxyl sit on a bicyclic framework where the new C=C would have to lie at a bridgehead. What principle is at work?",
    "options": [
-    "Dehydration from beta-hydroxy ketones is never thermodynamically favorable under any circumstances",
-    "Bases are incapable of promoting any elimination reactions",
-    "The beta-hydroxy group must first be converted to a ketone before any reaction can occur",
-    "The resulting alkene would not be conjugated with the carbonyl"
+    "The new alkene would not be conjugated with the carbonyl",
+    "Bredt's rule: a small bicyclic system cannot carry a C=C at its bridgehead",
+    "Base can promote a substitution but not an elimination",
+    "A beta-hydroxy carbonyl needs acid rather than base to lose water"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
    "q": "A crossed aldol reaction between an aromatic aldehyde (no alpha hydrogens, such as benzaldehyde) and acetone under basic conditions, followed by dehydration, typically yields which kind of product?",
    "options": [
-    "An aryl alpha,beta-unsaturated ketone (a chalcone)",
+    "An aryl alpha,beta-unsaturated ketone",
     "A simple reduction product with no new carbon-carbon bond",
     "Benzoic acid as the major product",
     "A product with no conjugation between the new alkene and the ketone"
@@ -24319,16 +24321,6 @@
    "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
-  },
-  {
-   "q": "Under thermodynamic (equilibrating) conditions with excess base and extended reaction time, a reversible aldol addition reaction between two molecules of the same aldehyde will, if dehydration is also possible, typically end up dominated by the aldol condensation (dehydrated, conjugated enone) product rather than the initial beta-hydroxy addition product.",
-   "options": [
-    "True",
-    "False"
-   ],
-   "correct": 0,
-   "difficulty": "hard",
-   "type": "tf"
   },
   {
    "q": "A chemist wants to isolate the aldol addition product (beta-hydroxy ketone) without any dehydration occurring. Which set of conditions is most appropriate?",
@@ -24364,6 +24356,18 @@
    ],
    "correct": 3,
    "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "(E)-2-Methylpent-2-enal, CH3CH2CH=C(CH3)CHO, is an aldol condensation product. Which single aldehyde, condensed with itself, gives it?",
+   "options": [
+    "Butanal",
+    "Propanal",
+    "Acetaldehyde",
+    "Pentanal"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
    "type": "mcq"
   }
  ],
@@ -24405,42 +24409,6 @@
    "type": "mcq"
   },
   {
-   "q": "A Claisen condensation is essentially an aldol-type reaction carried out between two molecules of which class of compound?",
-   "options": [
-    "Aldehydes only",
-    "Alcohols",
-    "Alkenes",
-    "Esters"
-   ],
-   "correct": 3,
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Unlike the aldol reaction, the Claisen condensation product loses a leaving group from the tetrahedral intermediate because:",
-   "options": [
-    "The ester's alkoxy group can leave as an alkoxide",
-    "Claisen condensations never form a tetrahedral intermediate at all",
-    "Esters have no carbonyl oxygen for a nucleophile to attack",
-    "The nucleophile in a Claisen condensation is always a halide ion"
-   ],
-   "correct": 0,
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "What is the key thermodynamic driving force that pulls a Claisen condensation to completion, even though the initial ester enolate formation equilibrium itself is unfavorable?",
-   "options": [
-    "The formation of a precipitate of elemental sodium",
-    "The irreversible deprotonation of the beta-ketoester",
-    "The evaporation of ethanol solvent during the reaction",
-    "The reduction of the ester to an alcohol at the end of the mechanism"
-   ],
-   "correct": 1,
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
    "q": "The classic Claisen condensation of ethyl acetate with sodium ethoxide produces which well-known beta-ketoester product?",
    "options": [
     "Acetic acid",
@@ -24470,7 +24438,7 @@
     "True",
     "False"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "easy",
    "type": "tf"
   },
@@ -24615,16 +24583,6 @@
    "type": "mcq"
   },
   {
-   "q": "If the product of a Claisen condensation were NOT significantly more acidic than the ethanol byproduct (i.e., if the beta-ketoester's alpha CH2 had a pKa similar to ethanol's), the overall reaction would still proceed to good conversion because the addition-elimination step itself is already strongly thermodynamically favorable on its own.",
-   "options": [
-    "True",
-    "False"
-   ],
-   "correct": 1,
-   "difficulty": "hard",
-   "type": "tf"
-  },
-  {
    "q": "Explain why attempting a Claisen condensation on an ester whose alpha carbon is fully substituted (bearing no alpha hydrogens, such as ethyl trimethylacetate, (CH3)3C-CO2Et) with ethoxide as the only base gives no Claisen condensation product.",
    "options": [
     "Ethyl trimethylacetate has no carbonyl group, so it cannot react with any base",
@@ -24715,6 +24673,54 @@
     "The base is too weak to form the ester enolate",
     "Claisen condensations require no base of any kind to proceed",
     "The ester's carbonyl carbon becomes unreactive in the presence of any weak base"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Ethyl propanoate, CH3CH2CO2Et, is treated with NaOEt and then dilute acid. What is the product?",
+   "options": [
+    "Ethyl acetoacetate",
+    "Ethyl 3-oxobutanoate",
+    "Ethyl 2-methyl-3-oxopentanoate",
+    "Propanoic acid"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which pair of reagents installs a -CO2Et group on the alpha carbon of cyclohexanone in one step?",
+   "options": [
+    "Diethyl ether with NaOEt",
+    "Ethanol with catalytic acid",
+    "Ethyl acetate with LDA at -78 C",
+    "Diethyl carbonate, (EtO)2C=O, with NaOEt"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Diethyl pentanedioate (diethyl glutarate) is treated with NaOEt. What happens?",
+   "options": [
+    "It closes a five-membered ring cleanly",
+    "It closes a six-membered ring cleanly",
+    "The ring it would have to close is four-membered, so essentially none forms",
+    "It gives an open-chain beta-ketoester with no ring at all"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A beta-ketoester with the skeleton PhCO-CH2-CO2Et is to be made by a crossed Claisen. Which pair of starting materials, with NaOEt, gives it cleanly?",
+   "options": [
+    "Ethyl acetate and ethyl acetate",
+    "Ethyl benzoate and ethyl acetate",
+    "Acetophenone and ethyl benzoate",
+    "Benzaldehyde and ethyl acetate"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -40219,30 +40225,6 @@
    "type": "mcq"
   },
   {
-   "q": "Under base, the second deprotonation is:",
-   "options": [
-    "As fast as the first",
-    "Impossible",
-    "Faster than the first",
-    "Slower than the first"
-   ],
-   "correct": 2,
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "Under acid, the second enolization is:",
-   "options": [
-    "Impossible",
-    "Slower than the first",
-    "Faster than the first",
-    "As fast as the first"
-   ],
-   "correct": 1,
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
    "q": "Which species attacks Br2 under acidic conditions?",
    "options": [
     "The enolate",
@@ -40387,30 +40369,6 @@
    "type": "mcq"
   },
   {
-   "q": "What is seen in a positive iodoform test?",
-   "options": [
-    "A red precipitate",
-    "A yellow precipitate",
-    "A white precipitate",
-    "Gas evolution"
-   ],
-   "correct": 1,
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "Which aldehyde gives a positive iodoform test?",
-   "options": [
-    "Acetaldehyde",
-    "Benzaldehyde",
-    "Formaldehyde",
-    "Propanal"
-   ],
-   "correct": 0,
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
    "q": "Why will a carboxylic acid not halogenate directly?",
    "options": [
     "It has no alpha hydrogens",
@@ -40513,6 +40471,54 @@
     "A diketone",
     "A carboxylic acid",
     "An enone"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "3,3-Dimethylbutan-2-one, CH3COC(CH3)3, is treated with excess I2 and NaOH, then acidified. What is isolated?",
+   "options": [
+    "3,3-Dimethylbutanoic acid and CHI3",
+    "No reaction, since the substrate has no alpha hydrogen",
+    "2,2-Dimethylpropanoic acid and CHI3",
+    "The triiodo ketone, with no cleavage"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "2-Methylcyclohexanone is treated with one equivalent of Br2 in acetic acid. Where does the bromine end up?",
+   "options": [
+    "On C6, the unsubstituted CH2",
+    "On the methyl group",
+    "On C2, the carbon that already carries the methyl",
+    "On the carbonyl carbon"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "You need to convert butanoic acid into 2-aminobutanoic acid. Which sequence does it?",
+   "options": [
+    "Br2 with a catalytic amount of PBr3, then excess NH3",
+    "Br2 with excess NaOH, then NH3",
+    "NH3 with heat",
+    "Br2 in acetic acid, then NH3"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which of these gives a NEGATIVE iodoform test?",
+   "options": [
+    "2-Pentanol",
+    "Acetophenone",
+    "Ethanol",
+    "3-Pentanol"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -40641,18 +40647,6 @@
    "type": "mcq"
   },
   {
-   "q": "What is inverse addition?",
-   "options": [
-    "Both added to solvent",
-    "Reagents added in portions",
-    "Ketone added to the base",
-    "Base added to the ketone"
-   ],
-   "correct": 2,
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
    "q": "What temperature is standard for the kinetic enolate?",
    "options": [
     "-78 C",
@@ -40665,19 +40659,7 @@
    "type": "mcq"
   },
   {
-   "q": "Which solvent is used with LDA here?",
-   "options": [
-    "Acetic acid",
-    "THF",
-    "Water",
-    "Ethanol"
-   ],
-   "correct": 1,
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Does LDA at room temperature give the thermodynamic enolate?",
+   "q": "LDA at room temperature - does its own deprotonation reverse and hand the proton back to the base?",
    "options": [
     "Yes, warmth is enough",
     "Yes, given several hours",
@@ -40734,18 +40716,6 @@
    ],
    "correct": 0,
    "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "In enolate regiochemistry, the two choices are:",
-   "options": [
-    "Transition states",
-    "Tautomers",
-    "Intermediates",
-    "Products"
-   ],
-   "correct": 2,
-   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -40821,18 +40791,6 @@
    "type": "mcq"
   },
   {
-   "q": "The enamine route avoids the need for:",
-   "options": [
-    "A solvent",
-    "An electrophile",
-    "An amine",
-    "A strong base"
-   ],
-   "correct": 3,
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
    "q": "Enolate alkylation proceeds by which mechanism?",
    "options": [
     "E2",
@@ -40878,6 +40836,54 @@
    ],
    "correct": 3,
    "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "2-Methylcyclohexanone is added to one equivalent of LDA in THF at -78 C, and iodomethane is then added. What is the major product?",
+   "options": [
+    "2,2-Dimethylcyclohexanone",
+    "2,6-Dimethylcyclohexanone",
+    "1,2-Dimethylcyclohexanol",
+    "2-Methylcyclohexanol"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "2-Methylcyclohexanone is treated with NaOEt in ethanol at room temperature, then with iodomethane. What is the major product?",
+   "options": [
+    "2,2-Dimethylcyclohexanone",
+    "2,6-Dimethylcyclohexanone",
+    "3-Methylcyclohexanone",
+    "No reaction, ethoxide being too weak a base"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A chemist forms the kinetic enolate of 2-methylcyclohexanone with LDA at -78 C, then lets the flask warm to room temperature for an hour before adding the electrophile. What has gone wrong?",
+   "options": [
+    "The enolate has been protonated by the THF solvent",
+    "LDA reverses its own deprotonation on warming",
+    "Nothing: temperature stops mattering once the enolate has formed",
+    "The diisopropylamine in the flask shuttles protons, so the mixture drifts thermodynamic"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "You want 2-benzyl-6-methylcyclohexanone from 2-methylcyclohexanone and benzyl bromide. Which conditions?",
+   "options": [
+    "NaOEt in EtOH, warm; then PhCH2Br",
+    "NaH, warm, several hours; then PhCH2Br",
+    "LDA (1 eq), THF, -78 C, ketone added to the base; then PhCH2Br",
+    "Pyrrolidine and catalytic acid; then PhCH2Br"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
    "type": "mcq"
   }
  ],

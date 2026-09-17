@@ -182,10 +182,10 @@
     },
     {
       "type": "draw",
-      "eyebrow": "Step 2 · Attack",
-      "title": "The enolate now attacks a second, unreacted acetone. Show what its C=O does.",
-      "bodyHtml": "<p class=\"step-body\">One arrow, on the molecule being attacked. This is the same first move as any nucleophilic addition.</p>",
-      "molecule": "acetone",
+      "eyebrow": "Step 2 \u00b7 Attack",
+      "title": "The enolate attacks a second, un-ionized acetone. Draw the step.",
+      "bodyHtml": "<p class=\"step-body\">Two arrows: the one that makes the new bond, and the one that gets out of its way. The enolate is drawn in its carbon-centered form, because that is the end that reacts.</p>",
+      "molecule": "enolate-plus-acetone",
       "concepts": [
         "carbonyl-electrophilicity",
         "aldol-connectivity",
@@ -193,14 +193,20 @@
       ],
       "arrows": [
         {
-          "from": "bond:c-o",
-          "to": "o"
+          "from": "ca",
+          "to": "c2"
+        },
+        {
+          "from": "bond:c2-o2",
+          "to": "o2"
         }
       ],
-      "why": "The enolate carbon attacks the second carbonyl, and the pi bond goes up onto that oxygen — giving an alkoxide which picks up a proton on workup. The product is a beta-hydroxy carbonyl: the new OH ends up two carbons from the surviving C=O, every time.",
+      "hint": "Start one arrow at the alpha carbon's pair and end it on the carbonyl carbon opposite. That carbon cannot take five bonds, so the second arrow has to move its pi electrons up onto its own oxygen.",
+      "why": "The enolate carbon attacks the second carbonyl, and the pi bond goes up onto that oxygen \u2014 giving a tetrahedral <b>alkoxide</b>, which is not yet the product. Water protonates it and hands the hydroxide back, and only then do you have a beta-hydroxy carbonyl: the new OH ends up two carbons from the surviving C=O, every time.",
       "wrong": {
-        "bond:c-o>c": "The displaced electrons go to oxygen, not carbon. Carbon is receiving a new bond from the enolate and cannot take both.",
-        "o>bond:c-o": "That forms the pi bond rather than breaking it. This molecule is the electrophile here — its C=O is being opened up."
+        "bond:c2-o2>c2": "The displaced electrons go to oxygen, not carbon. Carbon is receiving a new bond from the enolate and cannot take both.",
+        "o2>bond:c2-o2": "That forms the pi bond rather than breaking it. This molecule is the electrophile here \u2014 its C=O is being opened up.",
+        "ca>o2": "Carbon attacks carbon. Oxygen is where the displaced pi electrons are going, not where the new bond forms."
       },
       "nextLabel": "Why beta?"
     },
@@ -223,6 +229,28 @@
       "wrong": {
         "0": "Nothing rearranges. The pattern comes straight from which two atoms form the bond.",
         "1": "The base affects how much enolate forms and how fast, but not which carbons end up joined."
+      },
+      "nextLabel": "Last one"
+    },
+    {
+      "type": "mcq",
+      "eyebrow": "Step 4 \u00b7 Condensation",
+      "title": "The flask is warmed and the aldol loses water. Which sequence of steps does that?",
+      "bodyHtml": "<p class=\"step-body\">The leaving group would be hydroxide, which normally never leaves. Something about this substrate makes it possible.</p>",
+      "options": [
+        "Base removes the alpha hydrogen first, and the enolate that forms pushes its electrons down and expels the beta hydroxyl \u2014 an E1cb",
+        "The beta hydroxyl leaves on its own to give a carbocation, which then loses the alpha proton \u2014 an E1",
+        "Base removes the alpha hydrogen and the hydroxide leaves at the same moment \u2014 a concerted E2"
+      ],
+      "correctIndex": 0,
+      "concepts": [
+        "aldol-connectivity",
+        "alpha-acidity"
+      ],
+      "why": "Deprotonation first, leaving group second, through a carbanion in the middle \u2014 and the carbanion is an enolate, which is the only reason the sequence is available. Note what the new C=C has to be: the proton came off the alpha carbon and the hydroxide off the beta carbon, so the double bond is C\u03b1=C\u03b2 and is therefore conjugated with the carbonyl by construction. That conjugation is the driving force, and it is why the condensation does not come back.",
+      "wrong": {
+        "1": "A primary or secondary carbocation next to a carbonyl is about the least stable cation you could ask for. Nothing here is going to ionize.",
+        "2": "E2 needs a leaving group willing to go as the proton is removed, and hydroxide is not. The anion has to form first, and it is only tolerable because it is an enolate."
       },
       "nextLabel": "Last one"
     },

@@ -140,12 +140,12 @@ document.addEventListener('DOMContentLoaded', function(){
       why:'Kinetic, and every item is closing a different door. LDA is strong enough that its own deprotonation never reverses; bulky enough to prefer the open proton; inverse addition leaves no free ketone to shuttle protons; and the cold keeps the diisopropylamine it generates from doing the same job. Three routes back, all shut.' },
     { id:'k2', t:'<b>NaOEt</b> in EtOH, room temperature', right:'thd',
       why:'Thermodynamic. The base is not strong enough to deprotonate completely, so every deprotonation can reverse, and the mixture accumulates as the more stable enolate — the more substituted C=C.' },
-    { id:'k3', t:'<b>LDA</b>, 1 equiv, room temperature', right:'kin',
+    { id:'k3', t:'<b>LDA</b>, 1 equiv, room temperature, halide added immediately', right:'kin',
       why:'Largely kinetic, and this is the row that tests whether you have the idea or the recipe. LDA’s own deprotonation does not reverse at any temperature, so warmth alone does not hand the proton back to the base. But it is not the clean answer the recipe implies: a full equivalent of diisopropylamine is sitting in the flask, and at room temperature that amine shuttles protons between the two enolates well enough to erode the regiochemistry. Which is exactly why −78 °C is in every real procedure.' },
     { id:'k4', t:'<b>NaH</b>, warm, long reaction time', right:'thd',
       why:'Thermodynamic — and for a reason that breaks the easy rule. NaH’s deprotonation is as irreversible as LDA’s: its conjugate acid is H<sub>2</sub>, which leaves the flask, so nothing hands the proton back to the base. What equilibrates the mixture is that NaH is slow and heterogeneous, so a large pool of un-ionized ketone sits there throughout, and free ketone passes protons between the two enolates. Strong does not mean kinetic.' },
     { id:'k5', t:'<b>Pyrrolidine</b>, cat. acid, then the halide', right:'enam',
-      why:'Neither — this is the enamine route. A secondary amine gives a neutral nucleophile that forms toward the less substituted side, needs no strong base, and stops cleanly after one alkylation where a lithium enolate can go twice.' },
+      why:'Neither — this is the enamine route. A secondary amine gives a neutral nucleophile that forms toward the less substituted side, needs no strong base, and stops cleanly after one alkylation — alkylating it leaves an iminium salt with no nucleophilic carbon at all.' },
     { id:'k6', t:'<b>LDA</b>, then warm and stir before adding the halide', right:'thd',
       why:'Thermodynamic, and for the reason the row above shows. The deprotonation is irreversible, but the flask still holds a full equivalent of diisopropylamine from the base, and warming lets that amine pass protons between the two enolates until the mixture settles on the more stable one. Nothing about the base changed; a route back was left open.' }
   ];
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function(){
         title: 'The same switch you already met, one step earlier.',
         bodyHtml: '<p class="step-body">This is the control problem from the conjugation chapter. There, an allylic cation could be captured at two carbons, and warming let bromide leave again so the mixture settled into the more substituted product.</p>' +
           '<p class="step-body">Here the branch point is the <b>deprotonation</b>, and reversing it is a proton moving back rather than a C&ndash;Br bond breaking. One difference matters: in the diene case the two options were <b>products</b>. Here they are <b>intermediates</b>, chosen to control where the <i>next</i> reaction happens.</p>' +
-          '<div class="explain-box">There is a third option that is not an enolate at all. A secondary amine gives an <b>enamine</b>, which forms toward the less substituted side, is <b>neutral</b> rather than anionic so no strong base is needed, and is less reactive &mdash; so it stops cleanly after <b>one</b> alkylation where a lithium enolate can go twice. Alkylate, then hydrolyze back to the ketone: the Stork sequence.</div>'
+          '<div class="explain-box">There is a third option that is not an enolate at all. A secondary amine gives an <b>enamine</b>, which forms toward the less substituted side, is <b>neutral</b> rather than anionic so no strong base is needed, and stops cleanly after <b>one</b> alkylation where a lithium enolate can go twice &mdash; because alkylating it gives an iminium salt with no nucleophilic carbon left, not because it is less reactive. Alkylate, then hydrolyze back to the ketone: the Stork sequence.</div>'
       },
       {
         type: 'mcq',

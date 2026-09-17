@@ -11038,6 +11038,477 @@ FIGURES.push({
 });
 
 
+/* ----------------------------------------------------------------- 88 ---
+   Keto and enol are two compounds with the enolate between them, and the
+   section that says so had no picture — so the arrow that matters (⇌, not ↔)
+   was a typographic instruction rather than a thing you could see. */
+FIGURES.push({
+  id: 'keto-enol-bridge',
+  section: 'alpha-hydrogens',
+  anchor: 'draw them with ⇌, never ↔.</p>',
+  viewBox: '0 0 700 404',
+  alt: 'Acetone and its enol in equilibrium, with the enolate drawn below as the intermediate of the base-catalyzed route',
+  build() {
+    let s = '';
+    // Keto form
+    s += tag(140, 34, 'KETO — what you have');
+    const k1 = P(70, 132), k2 = P(130, 104), ko = P(130, 54), k3 = P(190, 132);
+    s += bond(k1, k2); s += bond(k2, ko, { order: 2 }); s += bond(k2, k3);
+    s += atom(k1.x, k1.y, 'CH₃'); s += atom(k2.x, k2.y, 'C'); s += atom(k3.x, k3.y, 'CH₃');
+    s += atom(ko.x, ko.y, 'O');
+    s += lonePair(ko.x, ko.y, 180); s += lonePair(ko.x, ko.y, 0);
+    s += text(130, 176, 'acetone — 99.9999% of it', { cls: 'fg-sm', size: 10.5 });
+
+    // Enol form
+    s += tag(560, 34, 'ENOL — the other tautomer');
+    const e1 = P(490, 132), e2 = P(550, 104), eo = P(550, 54), e3 = P(610, 132);
+    s += bond(e1, e2, { order: 2 }); s += bond(e2, eo); s += bond(e2, e3);
+    s += atom(e1.x, e1.y, 'CH₂', { kind: 'hi' }); s += atom(e2.x, e2.y, 'C'); s += atom(e3.x, e3.y, 'CH₃');
+    s += atom(eo.x, eo.y, 'OH');
+    s += lonePair(eo.x, eo.y, 180); s += lonePair(eo.x, eo.y, 0);
+    s += text(550, 176, 'nucleophilic at the α carbon', { cls: 'fg-sm', size: 10.5 });
+
+    // The equilibrium between them
+    s += arrow(P(266, 96), P(414, 96), { muted: true });
+    s += arrow(P(414, 114), P(266, 114), { muted: true });
+    s += text(340, 76, 'H⁺ cat. or base cat.', { cls: 'fg-tag', size: 11 });
+    s += text(340, 140, 'a proton has MOVED', { cls: 'fg-tag-warn', size: 11 });
+
+    // The enolate underneath, the common intermediate of the base route
+    s += panel(170, 200, 360, 152, {});
+    s += text(350, 226, 'ENOLATE — the bridge, on the base route', { cls: 'fg-lbl', size: 12.5 });
+    const a1 = P(290, 326), a2 = P(350, 300), ao = P(350, 256), a3 = P(410, 326);
+    s += bond(a1, a2, { order: 2 }); s += bond(a2, ao); s += bond(a2, a3);
+    s += atom(a1.x, a1.y, 'CH₂', { kind: 'hi' }); s += atom(a2.x, a2.y, 'C'); s += atom(a3.x, a3.y, 'CH₃');
+    s += atom(ao.x, ao.y, 'O⁻', { kind: 'warn' });
+    s += lonePair(ao.x, ao.y, 180, { dist: 20 }); s += lonePair(ao.x, ao.y, 0, { dist: 20 });
+    s += text(350, 370, 'one anion, two resonance forms — ↔ belongs in here', { cls: 'fg-sm', size: 10.5 });
+
+    // Routes in and out of it
+    s += arrow(P(140, 200), P(190, 246));
+    s += text(92, 234, 'base takes', { cls: 'fg-tag', size: 11 });
+    s += text(92, 250, 'the α hydrogen', { cls: 'fg-tag', size: 11 });
+    s += arrow(P(510, 246), P(560, 200));
+    s += text(612, 234, 'put H⁺ back', { cls: 'fg-tag', size: 11 });
+    s += text(612, 250, 'on OXYGEN', { cls: 'fg-tag', size: 11 });
+
+    s += text(350, 396, 'Protonate that same anion on CARBON instead and you are back at the ketone.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'Keto and enol are two compounds, and the enolate is what sits between them on the base-catalyzed route. Which atom of the enolate picks up the proton decides which tautomer you get: oxygen gives the enol, carbon gives the ketone back.',
+  note: 'Read the arrows as the vocabulary they are. The <b>⇌</b> across the top joins two different compounds that interconvert, because a hydrogen is genuinely in a different place in each. The <b>↔</b> belongs only inside the box, between two ways of drawing one anion. Under acid the order is reversed — protonate the oxygen first, then lose the α hydrogen — and no anion appears at all.',
+});
+
+/* ----------------------------------------------------------------- 89 ---
+   The aldol's tetrahedral alkoxide: named in the prose, drawn nowhere, and it
+   is the intermediate the whole reversibility argument turns on. */
+FIGURES.push({
+  id: 'aldol-tetrahedral-alkoxide',
+  section: 'aldol',
+  anchor: '<b>beta-hydroxy carbonyl</b>, with a new OH exactly two carbons from the retained carbonyl.</p>',
+  viewBox: '0 0 720 330',
+  alt: 'An enolate attacking a second aldehyde to give the tetrahedral alkoxide, which is then protonated',
+  build() {
+    let s = '';
+    s += tag(112, 24, 'enolate — the nucleophile');
+    s += tag(320, 34, 'a second aldehyde');
+
+    const n1 = P(62, 112), n2 = P(126, 90), no = P(126, 46);
+    s += bond(n1, n2, { order: 2 }); s += bond(n2, no);
+    s += atom(n1.x, n1.y, 'CH₂', { kind: 'hi' }); s += atom(n2.x, n2.y, 'CH');
+    s += atom(no.x, no.y, 'O⁻', { kind: 'warn' });
+    s += lonePair(no.x, no.y, 180, { dist: 20 }); s += lonePair(no.x, no.y, 0, { dist: 20 });
+
+    const m1 = P(244, 118), m2 = P(304, 96), mo = P(304, 50);
+    s += bond(m1, m2); s += bond(m2, mo, { order: 2 });
+    s += atom(m1.x, m1.y, 'CH₃'); s += atom(m2.x, m2.y, 'CH', { kind: 'hi' });
+    s += atom(mo.x, mo.y, 'O');
+
+    s += curve(P(76, 128), P(292, 114), { bow: 40 });
+    s += text(184, 186, 'the only new bond in the reaction', { cls: 'fg-tag', size: 11 });
+    s += curve(P(322, 76), P(324, 34), { bow: 16 });
+    s += text(372, 56, 'pi electrons', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(372, 70, 'go to oxygen', { cls: 'fg-sm', size: 10, anchor: 'start' });
+
+    s += arrow(P(410, 116), P(468, 116), { muted: true });
+
+    const c = P(576, 116);
+    const o = P(576, 62), me = P(524, 148), ch = P(640, 148);
+    s += bond(c, o); s += bond(c, me); s += bond(c, ch, { rTo: 16 });
+    s += atom(o.x, o.y, 'O⁻', { kind: 'warn' });
+    s += lonePair(o.x, o.y, 180, { dist: 20 }); s += lonePair(o.x, o.y, 0, { dist: 20 });
+    s += atom(me.x, me.y, 'CH₃'); s += atom(ch.x, ch.y, 'CH₂CHO', { r: 16 });
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += text(576, 190, 'tetrahedral alkoxide', { cls: 'fg-lbl', size: 12.5 });
+    s += text(576, 208, 'sp³, and the charge is on O', { cls: 'fg-sm', size: 10.5 });
+
+    s += rule(20, 236, 700, 236);
+    s += text(24, 264, 'Water protonates it, hydroxide is handed back, and only then is it the product.', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += text(24, 290, '3-hydroxybutanal, CH₃–CH(OH)–CH₂–CHO — a beta-hydroxy aldehyde.', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    s += text(24, 314, 'Every arrow above is reversible, which is what makes the retro-aldol a real reaction.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    return s;
+  },
+  caption: 'The middle structure is the step students skip. The alpha carbon makes the bond, the pi electrons go up onto oxygen, and what you have at that moment is an <b>alkoxide</b> — not the product, and not yet neutral.',
+  note: 'The protonation is the least interesting step and the one that decides whether the base was catalytic. Water hands a proton to the alkoxide and hydroxide comes back out, so the base is regenerated in the addition. Nothing here is irreversible, which is why the same conditions run the reaction backwards on a beta-hydroxy carbonyl.',
+});
+
+/* ----------------------------------------------------------------- 90 ---
+   E1cb, the mechanism the chapter names and never draws. The carbanion in the
+   middle is the whole reason hydroxide gets to leave. */
+FIGURES.push({
+  id: 'e1cb-dehydration',
+  section: 'aldol',
+  anchor: 'it is tolerable here because the enolate is doing the pushing.</p>',
+  viewBox: '0 0 720 330',
+  alt: 'The E1cb dehydration of an aldol product: deprotonation at the alpha carbon, then loss of hydroxide from the beta carbon',
+  build() {
+    let s = '';
+    s += tag(180, 30, 'STEP 1 \u2014 take the \u03b1 hydrogen');
+    s += tag(540, 30, 'STEP 2 \u2014 now hydroxide can go');
+
+    // Panel 1: 3-hydroxybutanal, with hydroxide reaching for the alpha hydrogen
+    const a0 = P(48, 140), a3 = P(106, 116), aoh = P(106, 70), a2 = P(164, 140), a1 = P(222, 116), ao = P(222, 70);
+    s += bond(a0, a3); s += bond(a3, aoh, { rTo: 16 }); s += bond(a3, a2);
+    s += bond(a2, a1); s += bond(a1, ao, { order: 2 });
+    s += bond(a2, P(164, 192));
+    s += atom(a0.x, a0.y, 'CH\u2083'); s += atom(a3.x, a3.y, 'CH'); s += atom(aoh.x, aoh.y, 'OH', { r: 16 });
+    s += atom(a2.x, a2.y, 'CH', { kind: 'hi' }); s += atom(a1.x, a1.y, 'CH'); s += atom(ao.x, ao.y, 'O');
+    s += atom(164, 192, 'H');
+    s += text(196, 160, '\u03b1', { cls: 'fg-tag', size: 11 });
+    s += text(78, 96, '\u03b2', { cls: 'fg-tag', size: 11 });
+    s += text(248, 212, 'HO\u207b', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += curve(P(244, 206), P(182, 196), { bow: 18 });
+    s += curve(P(156, 168), P(190, 132), { bow: -20 });
+    s += curve(P(238, 92), P(244, 56), { bow: 12 });
+    s += text(120, 216, 'three arrows, one step', { cls: 'fg-sm', size: 10 });
+
+    s += arrow(P(292, 130), P(350, 130), { muted: true });
+
+    // Panel 2: the enolate, still carrying the beta hydroxyl
+    const b0 = P(392, 140), b3 = P(450, 116), boh = P(450, 70), b2 = P(508, 140), b1 = P(566, 116), bo = P(566, 70);
+    s += bond(b0, b3); s += bond(b3, boh, { rTo: 16 }); s += bond(b3, b2);
+    s += bond(b2, b1, { order: 2 }); s += bond(b1, bo);
+    s += atom(b0.x, b0.y, 'CH\u2083'); s += atom(b3.x, b3.y, 'CH'); s += atom(boh.x, boh.y, 'OH', { r: 16 });
+    s += atom(b2.x, b2.y, 'CH', { kind: 'hi' }); s += atom(b1.x, b1.y, 'CH'); s += atom(bo.x, bo.y, 'O\u207b', { kind: 'warn' });
+    s += lonePair(bo.x, bo.y, 0, { dist: 20 });
+    s += curve(P(590, 58), P(576, 94), { bow: 14 });
+    s += curve(P(534, 132), P(482, 130), { bow: 16 });
+    s += curve(P(442, 100), P(434, 82), { bow: -10 });
+    s += text(392, 176, 'and OH leaves', { cls: 'fg-sm', size: 10 });
+    s += text(560, 196, 'a stabilized carbanion \u2014 the \u201ccb\u201d in E1cb', { cls: 'fg-tag-warn', size: 11 });
+
+    s += rule(20, 236, 700, 236);
+    s += text(24, 264, 'Deprotonate first, lose the leaving group second.', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += text(24, 290, 'Hydroxide would never leave on its own. The enolate is what pushes it out.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(24, 316, 'Product: (E)-but-2-enal \u2014 the new C=C conjugated with the old C=O.', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    return s;
+  },
+  caption: 'The dehydration drawn out. It is not E1 and not E2: the proton comes off first, and the anion left behind is an enolate, which is the only reason a hydroxide is willing to leave from the carbon next door.',
+  note: 'Check the bookkeeping on the left-hand structure before you start. The hydrogen that comes off is on the <b>alpha</b> carbon — alpha to the carbonyl, not to the hydroxyl — and the group that leaves is on the <b>beta</b> carbon. That is why the new double bond is always Cα=Cβ, and therefore always conjugated with the carbonyl. An aldol condensation that fails is never failing for lack of conjugation.',
+});
+
+/* ----------------------------------------------------------------- 91 ---
+   The tetrahedral intermediate is the entire difference between a Claisen and
+   an aldol, and the section's only figure labelled it in passing. */
+FIGURES.push({
+  id: 'claisen-tetrahedral',
+  section: 'claisen',
+  anchor: 'The intermediate collapses, expelling the alkoxide and reforming the carbonyl. The product is a <b>beta-ketoester</b>.</p>',
+  viewBox: '0 0 720 400',
+  alt: 'An ester enolate attacking a second ester, the tetrahedral intermediate drawn in full, and the beta-ketoester it collapses to',
+  build() {
+    let s = '';
+    s += tag(118, 34, 'ester enolate');
+    s += tag(344, 34, 'a second ester');
+
+    const n1 = P(58, 116), n2 = P(122, 94), no = P(122, 50), noe = P(186, 122);
+    s += bond(n1, n2, { order: 2 }); s += bond(n2, no); s += bond(n2, noe, { rTo: 16 });
+    s += atom(n1.x, n1.y, 'CH₂', { kind: 'hi' }); s += atom(n2.x, n2.y, 'C');
+    s += atom(no.x, no.y, 'O⁻', { kind: 'warn' }); s += atom(noe.x, noe.y, 'OEt', { r: 16 });
+
+    const m1 = P(274, 134), m2 = P(334, 112), mo = P(334, 66), moe = P(396, 134);
+    s += bond(m1, m2); s += bond(m2, mo, { order: 2 }); s += bond(m2, moe, { rTo: 16 });
+    s += atom(m1.x, m1.y, 'CH₃'); s += atom(m2.x, m2.y, 'C', { kind: 'hi' });
+    s += atom(mo.x, mo.y, 'O'); s += atom(moe.x, moe.y, 'OEt', { r: 16 });
+
+    s += curve(P(72, 132), P(330, 134), { bow: 44 });
+    s += text(200, 190, 'the new C–C bond', { cls: 'fg-tag', size: 11 });
+    s += curve(P(352, 92), P(354, 50), { bow: 16 });
+
+    s += arrow(P(438, 112), P(492, 112), { muted: true });
+
+    const c = P(596, 112);
+    s += bond(c, P(596, 58)); s += bond(c, P(542, 144), { rTo: 16 }); s += bond(c, P(652, 144), { rTo: 16 });
+    s += bond(c, P(540, 78), { rTo: 16 });
+    s += atom(596, 58, 'O⁻', { kind: 'warn' });
+    s += atom(542, 144, 'CH₃'); s += atom(652, 144, 'OEt', { r: 16 });
+    s += atom(540, 78, 'CH₂CO₂Et', { r: 16 });
+    s += atom(c.x, c.y, 'C', { kind: 'hi' });
+    s += text(600, 186, 'tetrahedral intermediate', { cls: 'fg-lbl', size: 12.5 });
+    s += text(600, 204, 'this one has an OEt to expel', { cls: 'fg-tag-warn', size: 11 });
+
+    s += rule(20, 224, 700, 224);
+    s += text(24, 252, 'An aldol’s alkoxide has nothing to lose, so it gets protonated. This one collapses.', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+
+    const p1 = P(58, 334), p2 = P(116, 312), po = P(116, 274), p3 = P(174, 334), p4 = P(232, 312), po2 = P(232, 274), p5 = P(294, 334);
+    s += bond(p1, p2); s += bond(p2, po, { order: 2 }); s += bond(p2, p3);
+    s += bond(p3, p4); s += bond(p4, po2, { order: 2 }); s += bond(p4, p5, { rTo: 16 });
+    s += atom(p1.x, p1.y, 'CH₃'); s += atom(p2.x, p2.y, 'C'); s += atom(po.x, po.y, 'O');
+    s += atom(p3.x, p3.y, 'CH₂', { kind: 'hi' }); s += atom(p4.x, p4.y, 'C'); s += atom(po2.x, po2.y, 'O');
+    s += atom(p5.x, p5.y, 'OEt', { r: 16 });
+    s += text(174, 372, 'pKₐ 11 — the most acidic thing in the flask', { cls: 'fg-tag-good', size: 11 });
+
+    s += text(346, 374, 'EtO⁻', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += curve(P(344, 368), P(186, 348), { bow: 22 });
+    s += text(400, 350, 'takes it, and does not give it back —', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(400, 368, 'which is why you need a full equivalent.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    return s;
+  },
+  caption: 'Follow the middle structure and the aldol comparison makes itself. Both reactions build the same bond with the same nucleophile and arrive at a tetrahedral carbon; only this one is carrying a group worth expelling, so only this one restores a carbonyl.',
+  note: 'The last line of the drawing is the step that makes the reaction go. Everything before it is reversible and roughly thermoneutral; the product, once formed, is deprotonated between its two carbonyls and cannot go back until the acidic workup. That is also the arithmetic behind the stoichiometry — one equivalent of alkoxide is locked up per equivalent of product.',
+});
+
+/* ----------------------------------------------------------------- 92 ---
+   Alpha halogenation, drawn. The section argued the acid/base contrast well
+   and drew no structure at all, so "through the enol" and "through the
+   enolate" were words rather than pictures. */
+FIGURES.push({
+  id: 'halogenation-acid-vs-base',
+  section: 'alpha-halogenation',
+  anchor: 'so <b>monohalogenation is controllable</b>.</p>',
+  viewBox: '0 0 720 392',
+  alt: 'Acetophenone brominating through its enol under acid on the left and through its enolate under base on the right',
+  build() {
+    let s = '';
+    s += text(180, 36, 'ACID — protonate first', { cls: 'fg-lbl', size: 12.5 });
+    s += text(540, 36, 'BASE — deprotonate first', { cls: 'fg-lbl', size: 12.5 });
+    s += rule(360, 52, 360, 360);
+
+    const ketone = (x, hiMe) => {
+      let g = '';
+      const ph = P(x - 60, 116), c = P(x, 96), o = P(x, 56), me = P(x + 60, 116);
+      g += bond(ph, c); g += bond(c, o, { order: 2 }); g += bond(c, me, { rTo: 16 });
+      g += atom(ph.x, ph.y, 'Ph'); g += atom(c.x, c.y, 'C'); g += atom(o.x, o.y, 'O');
+      g += atom(me.x, me.y, 'CH₃', { kind: hiMe ? 'hi' : 'plain' });
+      return g;
+    };
+    s += ketone(170, false);
+    s += ketone(550, true);
+
+    // Acid: protonate the carbonyl oxygen
+    s += text(250, 58, 'H–A', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += curve(P(246, 54), P(188, 48), { bow: 16 });
+    s += arrow(P(170, 142), P(170, 172));
+    s += text(186, 164, 'then solvent takes the α H', { cls: 'fg-sm', size: 10, anchor: 'start' });
+
+    // Base: remove the alpha hydrogen
+    s += text(626, 96, 'HO⁻', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += curve(P(624, 104), P(596, 116), { bow: 14 });
+    s += arrow(P(550, 142), P(550, 172));
+    s += text(544, 164, 'straight to the anion', { cls: 'fg-sm', size: 10, anchor: 'end' });
+
+    // The two nucleophiles
+    const enol = P(170, 206), enolO = P(170, 246);
+    s += bond(P(110, 226), enol); s += bond(enol, enolO); s += bond(enol, P(230, 226), { order: 2 });
+    s += atom(110, 226, 'Ph'); s += atom(enol.x, enol.y, 'C'); s += atom(enolO.x, enolO.y, 'OH', { r: 16 });
+    s += atom(230, 226, 'CH₂', { kind: 'hi' });
+    s += text(170, 278, 'the ENOL — neutral', { cls: 'fg-tag', size: 11 });
+
+    const eno = P(550, 206), enoO = P(550, 246);
+    s += bond(P(490, 226), eno); s += bond(eno, enoO); s += bond(eno, P(610, 226), { order: 2 });
+    s += atom(490, 226, 'Ph'); s += atom(eno.x, eno.y, 'C'); s += atom(enoO.x, enoO.y, 'O⁻', { kind: 'warn' });
+    s += atom(610, 226, 'CH₂', { kind: 'hi' });
+    s += text(550, 278, 'the ENOLATE — anionic', { cls: 'fg-tag-warn', size: 11 });
+
+    s += text(282, 206, 'Br–Br', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += curve(P(244, 216), P(288, 214), { bow: -18 });
+    s += text(648, 206, 'Br–Br', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += curve(P(626, 216), P(644, 212), { bow: -14 });
+
+    s += arrow(P(170, 292), P(170, 316), { muted: true });
+    s += arrow(P(550, 292), P(550, 316), { muted: true });
+    s += text(170, 338, 'PhCOCH₂Br — and it stops', { cls: 'fg-tag-good', size: 11 });
+    s += text(550, 338, 'PhCOCH₂Br — then again, faster', { cls: 'fg-tag-warn', size: 11 });
+    s += text(360, 382, 'Same product from one equivalent. Opposite behavior from two.', { cls: 'fg-lbl', size: 12.5 });
+    return s;
+  },
+  caption: 'Same substrate, same halogen, opposite order of operations. Under acid you protonate first and never make an anion; under base you deprotonate first and never make a cation. Both routes put the bromine on the same carbon — the difference only shows up when you ask what happens next.',
+  note: 'The nucleophile is the one thing to keep straight. On the left it is a neutral enol, whose C=C attacks Br₂ and whose OH proton is lost afterwards; on the right it is an anion that attacks directly. The enol is the slower of the two to form, which is why under acid the halogen concentration does not appear in the rate law at all.',
+});
+
+/* ----------------------------------------------------------------- 93 ---
+   The haloform cleavage. The section says "CX3 is a workable leaving group"
+   and the only way to believe that is to see the tetrahedral intermediate it
+   leaves from. */
+FIGURES.push({
+  id: 'haloform-cleavage',
+  section: 'alpha-halogenation',
+  anchor: 'Products: the <b>carboxylate</b> (the acid after acidic workup) and <b>CHX<sub>3</sub></b>, the haloform.</p>',
+  viewBox: '0 0 720 318',
+  alt: 'A methyl ketone brominated three times, then cleaved by hydroxide through a tetrahedral intermediate that expels the tribromomethyl carbanion',
+  build() {
+    let s = '';
+    const ket = (x, meLabel, hi) => {
+      let g = '';
+      g += bond(P(x - 58, 112), P(x, 92)); g += bond(P(x, 92), P(x, 54), { order: 2 });
+      g += bond(P(x, 92), P(x + 58, 112), { rTo: 16 });
+      g += atom(x - 58, 112, 'Ph'); g += atom(x, 92, 'C'); g += atom(x, 54, 'O');
+      g += atom(x + 58, 112, meLabel, { kind: hi ? 'hi' : 'plain', r: 16 });
+      return g;
+    };
+    s += ket(120, 'CH₃', false);
+    s += arrow(P(216, 92), P(292, 92), { muted: true });
+    s += text(254, 76, 'Br₂ × 3, ⁻OH', { cls: 'fg-tag', size: 11 });
+    s += text(254, 132, 'each one faster', { cls: 'fg-sm', size: 10 });
+    s += ket(390, 'CBr₃', true);
+
+    s += text(524, 92, 'HO⁻', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += curve(P(520, 96), P(404, 84), { bow: 26 });
+    s += text(586, 92, 'adds to the', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(586, 106, 'carbonyl', { cls: 'fg-sm', size: 10, anchor: 'start' });
+
+    s += rule(20, 156, 700, 156);
+
+    // The tetrahedral intermediate, drawn in full
+    const c = P(150, 234);
+    s += bond(c, P(150, 186)); s += bond(c, P(100, 206), { rTo: 15 });
+    s += bond(c, P(100, 266), { rTo: 16 }); s += bond(c, P(206, 266), { rTo: 16 });
+    s += atom(150, 186, 'O⁻', { kind: 'warn' });
+    s += lonePair(150, 186, 250, { dist: 20 });
+    s += atom(100, 206, 'Ph'); s += atom(100, 266, 'OH', { r: 16 });
+    s += atom(206, 266, 'CBr₃', { kind: 'hi', r: 16 });
+    s += atom(c.x, c.y, 'C');
+    s += curve(P(166, 196), P(162, 216), { bow: 12 });
+    s += curve(P(166, 248), P(188, 260), { bow: -12 });
+    s += text(150, 300, 'the C=O comes back, and CBr₃ leaves', { cls: 'fg-tag', size: 11 });
+
+    s += arrow(P(266, 234), P(322, 234), { muted: true });
+
+    const q = P(430, 228);
+    s += bond(P(372, 248), q); s += bond(q, P(430, 190), { order: 2 }); s += bond(q, P(488, 248), { rTo: 16 });
+    s += atom(372, 248, 'Ph'); s += atom(q.x, q.y, 'C'); s += atom(430, 190, 'O');
+    s += atom(488, 248, 'O⁻', { kind: 'warn', r: 16 });
+    s += text(556, 228, '+ CHBr₃', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += text(430, 294, 'benzoate — acidify to get the acid', { cls: 'fg-tag-good', size: 11 });
+    s += text(556, 252, 'the haloform', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    return s;
+  },
+  caption: 'Ordinary nucleophilic acyl substitution with an unusual leaving group. Hydroxide adds, the tetrahedral intermediate collapses, and what walks away is a carbanion — which is only possible because three bromines are holding its charge.',
+  note: 'The last step is a proton transfer and it is not optional: <sup>−</sup>CBr₃ is still a strong enough base to take the acid’s proton, so what you isolate before workup is the <b>carboxylate</b> and CHBr₃. Count the carbons on the way through — the methyl carbon leaves the molecule, so the product is one carbon shorter than the ketone you started with.',
+});
+
+/* ----------------------------------------------------------------- 94 ---
+   HVZ as a cycle, because the phosphorus being catalytic is the part students
+   cannot reconstruct from a linear scheme. */
+FIGURES.push({
+  id: 'hvz-cycle',
+  section: 'alpha-halogenation',
+  anchor: 'releasing the <b>&alpha;-bromo acid</b> and regenerating an acyl bromide to carry the cycle on.</p>',
+  viewBox: '0 0 720 300',
+  alt: 'The Hell-Volhard-Zelinsky cycle: acid to acyl bromide, bromination at the alpha carbon, then exchange back with more acid',
+  build() {
+    let s = '';
+    s += text(150, 84, 'RCH₂CO₂H', { cls: 'fg-lbl', size: 12.5 });
+    s += text(150, 104, 'no usable enol', { cls: 'fg-sm', size: 10 });
+    s += text(560, 84, 'RCH₂COBr', { cls: 'fg-lbl', size: 12.5 });
+    s += text(560, 104, 'this one enolizes', { cls: 'fg-tag-good', size: 11 });
+    s += text(560, 228, 'RCHBrCOBr', { cls: 'fg-lbl', size: 12.5 });
+    s += text(150, 228, 'RCHBrCO₂H', { cls: 'fg-lbl', size: 12.5 });
+    s += text(150, 250, 'the product', { cls: 'fg-tag-good', size: 11 });
+
+    s += arrow(P(230, 80), P(480, 80));
+    s += text(355, 62, 'PBr₃ — catalytic', { cls: 'fg-tag', size: 11 });
+    s += arrow(P(600, 124), P(600, 200));
+    s += text(624, 156, 'Br₂, through', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(624, 172, 'the enol', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += arrow(P(480, 224), P(232, 224));
+    s += text(356, 252, 'swap with a fresh RCH₂CO₂H', { cls: 'fg-tag', size: 11 });
+    s += curve(P(470, 208), P(540, 124), { bow: 40 });
+    s += text(420, 160, 'and hands back', { cls: 'fg-sm', size: 10 });
+    s += text(420, 176, 'RCH₂COBr', { cls: 'fg-sm', size: 10 });
+
+    s += rule(20, 276, 700, 276);
+    s += text(360, 296, 'An acid has no enol worth having. Make the acyl bromide, and it does.', { cls: 'fg-lbl', size: 12.5 });
+    return s;
+  },
+  caption: 'Hell–Volhard–Zelinsky drawn as the cycle it is. The phosphorus appears once, at the top, and never has to appear again: the last step exchanges bromide for the starting acid and hands a fresh acyl bromide back into the loop.',
+  note: 'The reason the detour is necessary is the first line of the drawing. A carboxylic acid’s own hydroxyl already donates into the carbonyl, so there is essentially no enol to brominate. An acyl bromide has a far poorer donor attached and enolizes readily — and its alpha carbon is the one that ends up carrying the bromine.',
+});
+
+/* ----------------------------------------------------------------- 95 ---
+   The section spends its whole length on which side of a molecule gets
+   deprotonated, and never drew the molecule or either enolate. */
+FIGURES.push({
+  id: 'two-enolates-drawn',
+  section: 'enolate-regiochemistry',
+  anchor: 'That conflict is settled by conditions, not by the ketone.</p>',
+  viewBox: '0 0 720 412',
+  alt: '2-methylcyclohexanone in the center with the kinetic enolate at C6 on the left and the thermodynamic enolate at C2 on the right',
+  build() {
+    let s = '';
+    const hex = (cx, cy, r) => {
+      const pts = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (-90 + i * 60) * Math.PI / 180;
+        pts.push(P(cx + r * Math.cos(a), cy + r * Math.sin(a)));
+      }
+      return pts;   // 0 = C1 (top), 1 = C2, 2 = C3, 3 = C4, 4 = C5, 5 = C6
+    };
+    const ring = (pts, skip) => {
+      let g = '';
+      for (let i = 0; i < 6; i++) {
+        if (i === skip) continue;
+        g += bond(pts[i], pts[(i + 1) % 6], { rFrom: 0, rTo: 0 });
+      }
+      return g;
+    };
+
+    // Centre: the ketone itself
+    const c = hex(360, 112, 42), cc = P(360, 112);
+    s += ring(c, -1);
+    s += bond(c[0], P(360, 40), { rFrom: 0, rTo: 15, order: 2 });
+    s += atom(360, 40, 'O');
+    s += bond(c[1], P(446, 70), { rFrom: 0, rTo: 16 });
+    s += atom(446, 70, 'CH₃', { r: 16 });
+    s += text(300, 70, 'C6', { cls: 'fg-tag', size: 11 });
+    s += text(420, 118, 'C2', { cls: 'fg-tag', size: 11 });
+    s += text(360, 186, '2-methylcyclohexanone', { cls: 'fg-lbl', size: 12.5 });
+    s += text(250, 152, 'two H, open', { cls: 'fg-sm', size: 10 });
+    s += text(478, 140, 'one H, crowded', { cls: 'fg-sm', size: 10 });
+
+    s += arrow(P(296, 204), P(212, 250));
+    s += text(206, 202, 'LDA, 1 eq, −78 °C', { cls: 'fg-tag', size: 11 });
+    s += arrow(P(424, 204), P(508, 250));
+    s += text(516, 202, 'NaOEt, EtOH, rt', { cls: 'fg-tag-warn', size: 11 });
+
+    // Left: kinetic enolate, C1=C6
+    const k = hex(160, 312, 42), kc = P(160, 312);
+    s += ring(k, 5);
+    s += ringDouble(k[5], k[0], kc);
+    s += bond(k[0], P(160, 240), { rFrom: 0, rTo: 16 });
+    s += atom(160, 240, 'O⁻', { kind: 'warn' });
+    s += bond(k[1], P(246, 270), { rFrom: 0, rTo: 16 });
+    s += atom(246, 270, 'CH₃', { r: 16 });
+    s += text(160, 382, 'KINETIC — C1=C6', { cls: 'fg-tag-good', size: 11 });
+    s += text(160, 402, 'CH₃I gives 2,6-dimethylcyclohexanone', { cls: 'fg-sm', size: 10 });
+
+    // Right: thermodynamic enolate, C1=C2
+    const t = hex(560, 312, 42), tc = P(560, 312);
+    s += ring(t, 0);
+    s += ringDouble(t[0], t[1], tc);
+    s += bond(t[0], P(560, 240), { rFrom: 0, rTo: 16 });
+    s += atom(560, 240, 'O⁻', { kind: 'warn' });
+    s += bond(t[1], P(650, 276), { rFrom: 0, rTo: 16 });
+    s += atom(650, 276, 'CH₃', { r: 16 });
+    s += text(560, 382, 'THERMODYNAMIC — C1=C2', { cls: 'fg-tag-warn', size: 11 });
+    s += text(560, 402, 'CH₃I gives 2,2-dimethylcyclohexanone', { cls: 'fg-sm', size: 10 });
+    return s;
+  },
+  caption: 'The two enolates, drawn. Deprotonating C6 gives a double bond with two carbon substituents on it; deprotonating C2 gives one with three, because the methyl is already sitting on a carbon that is now part of the C=C. That is the whole stability difference, and it is the same count that ranks Zaitsev products.',
+  note: 'Check where the methyl is in each drawing and the alkylation products follow without memorizing anything. The nucleophilic carbon is the one at the far end of the C=C from the oxygen, so the kinetic enolate delivers the electrophile to C6 and the thermodynamic one to C2 — the carbon that already carries a methyl, which is how you end up building a quaternary center.',
+});
+
+
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;
 

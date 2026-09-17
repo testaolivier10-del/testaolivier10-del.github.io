@@ -336,6 +336,31 @@
     caption: 'Deprotonated acetone. The charge is split between carbon and oxygen, unevenly.'
   };
 
+  /* Both halves of the aldol's bond-forming step, in one drawing. The
+     mechanism page used to show a lone acetone here and draw the nucleophile's
+     arrow for the student, which left the one arrow the chapter is about as
+     the one arrow they never had to think about. The enolate is drawn in its
+     carbon-centered form on purpose: that is the end that reacts, and it makes
+     the attacking pair something you can point at. */
+  M['enolate-plus-acetone'] = {
+    name: 'Acetone enolate + acetone', formula: '⁻CH₂COCH₃ + CH₃COCH₃', viewBox: '0 0 320 200',
+    atoms: {
+      o:   { x:86,  y:32, r:16, label:'O', lp:2, role:'carbonyl-o' },
+      c:   { x:86,  y:86, r:17, label:'C' },
+      ca:  { x:36,  y:118,r:17, label:'C', charge:'⁻', lp:1, role:'nucleophile', note:'The alpha carbon of the enolate. Most of the charge really sits on oxygen, but this is the atom that forms the new bond — so this is where the arrow starts.' },
+      me:  { x:136, y:118,r:15, label:'C' },
+      h1:  { x:12,  y:94, r:10, label:'H' },
+      h2:  { x:18,  y:158,r:10, label:'H' },
+      cb1: { x:186, y:118,r:15, label:'C', role:'alpha-carbon' },
+      c2:  { x:236, y:86, r:17, label:'C', role:'electrophile', note:'The carbonyl carbon of a second, un-ionized acetone. This is the atom being attacked.' },
+      o2:  { x:236, y:32, r:16, label:'O', lp:2, role:'carbonyl-o', note:'Where the pi electrons go when the new bond forms — giving the tetrahedral alkoxide.' },
+      cb2: { x:286, y:118,r:15, label:'C', role:'alpha-carbon' }
+    },
+    bonds: [{a:'c',b:'o',order:2},{a:'c',b:'ca'},{a:'c',b:'me'},{a:'ca',b:'h1'},{a:'ca',b:'h2'},
+            {a:'c2',b:'o2',order:2},{a:'c2',b:'cb1'},{a:'c2',b:'cb2'}],
+    caption: 'Nucleophile on the left, electrophile on the right. Two arrows: one makes the C–C bond, one gets the pi electrons out of the way.'
+  };
+
   M['nitromethane'] = {
     name: 'Nitromethane', formula: 'CH₃NO₂',
     atoms: {
