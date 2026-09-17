@@ -691,6 +691,54 @@
     caption: 'An ester — a carbonyl with a leaving group attached.'
   };
 
+  /* The Claisen runs on ethyl esters and ethoxide everywhere else in the
+     course — the notes, the worked examples, the bank — so the walkthrough
+     that teaches it uses the same ester rather than switching alkyl groups
+     between the reading and the drawing. */
+  M['ethyl-acetate'] = {
+    name: 'Ethyl acetate', formula: 'CH₃CO₂CH₂CH₃', viewBox: '0 0 330 180',
+    atoms: {
+      o1: { x:120, y:30, r:16, label:'O', lp:2, role:'carbonyl-o' },
+      c:  { x:120, y:88, r:17, label:'C', role:'electrophile', note:'The acyl carbon — where a nucleophile attacks in acyl substitution.' },
+      ca: { x:62,  y:120,r:15, label:'C', role:'alpha-carbon', note:'The alpha carbon. Its hydrogens sit near pKa 25 — less acidic than a ketone\u2019s, which is why a Claisen needs an alkoxide rather than hydroxide.' },
+      o2: { x:186, y:120,r:16, label:'O', lp:2, role:'leaving-group', note:'The ester oxygen. Ethoxide is basic and so a mediocre leaving group, but it is good enough to be expelled once the tetrahedral intermediate has formed.' },
+      cm: { x:244, y:88, r:15, label:'C' },
+      cm2:{ x:302, y:120,r:15, label:'C' },
+      h1: { x:26,  y:88, r:10, label:'H', role:'alpha-h' },
+      h2: { x:44,  y:158,r:10, label:'H', role:'alpha-h' },
+      h3: { x:108, y:156,r:10, label:'H', role:'alpha-h' }
+    },
+    bonds: [{a:'c',b:'o1',order:2},{a:'c',b:'ca'},{a:'c',b:'o2'},{a:'o2',b:'cm'},{a:'cm',b:'cm2'},
+            {a:'ca',b:'h1'},{a:'ca',b:'h2'},{a:'ca',b:'h3'}],
+    caption: 'An ester — a carbonyl with an alkoxy group that can leave. Matching the base to that group (NaOEt here) keeps transesterification out of the flask.'
+  };
+
+  /* The Claisen's second step had the student drawing three arrows on the
+     ESTER BEING ATTACKED and never the one that makes the carbon–carbon bond,
+     which is the whole reaction. Same fix as `enolate-plus-acetone`: draw the
+     nucleophile in, in its carbon-centered form, so the attacking pair has
+     somewhere to start. */
+  M['enolate-plus-ester'] = {
+    name: 'Ester enolate + ethyl acetate', formula: '⁻CH₂CO₂Et + CH₃CO₂Et', viewBox: '0 0 380 210',
+    atoms: {
+      ca:  { x:42,  y:122,r:16, label:'C', charge:'⁻', lp:1, role:'nucleophile', note:'The alpha carbon of the ester enolate. Most of the charge really sits on oxygen, but this is the atom that forms the new bond — so this is where the arrow starts.' },
+      h1:  { x:10,  y:94, r:10, label:'H' },
+      h2:  { x:18,  y:152,r:10, label:'H' },
+      c:   { x:86,  y:94, r:16, label:'C' },
+      o:   { x:86,  y:48, r:15, label:'O', lp:2, role:'carbonyl-o' },
+      oL:  { x:130, y:122,r:15, label:'O', lp:2, note:'The nucleophile keeps its own OEt all the way through. It is a spectator here.' },
+      etL: { x:168, y:154,r:14, label:'Et' },
+      cb:  { x:218, y:154,r:15, label:'CH₃', role:'alpha-carbon' },
+      c2:  { x:262, y:122,r:17, label:'C', role:'electrophile', note:'The carbonyl carbon of a second, un-ionized ester. This is the atom being attacked.' },
+      o2:  { x:262, y:76, r:15, label:'O', lp:2, role:'carbonyl-o', note:'Where the pi electrons go when the new bond forms — and where they come back from when the intermediate collapses.' },
+      o3:  { x:306, y:154,r:15, label:'O', lp:2, role:'leaving-group', note:'The alkoxy group. Ethoxide is what gets expelled when the carbonyl reforms, and that is what makes a Claisen a substitution rather than an addition.' },
+      etR: { x:344, y:122,r:14, label:'Et' }
+    },
+    bonds: [{a:'c',b:'o',order:2},{a:'c',b:'ca'},{a:'c',b:'oL'},{a:'oL',b:'etL'},{a:'ca',b:'h1'},{a:'ca',b:'h2'},
+            {a:'c2',b:'o2',order:2},{a:'c2',b:'cb'},{a:'c2',b:'o3'},{a:'o3',b:'etR'}],
+    caption: 'Nucleophile on the left, electrophile on the right. Four arrows: one makes the C–C bond, one gets the pi electrons out of its way, and two bring the carbonyl back by pushing the alkoxide out.'
+  };
+
   M['acetyl-chloride-nu'] = {
     name: 'Acetyl chloride + methoxide', formula: 'CH₃COCl + CH₃O⁻', viewBox: '0 0 320 190',
     atoms: {

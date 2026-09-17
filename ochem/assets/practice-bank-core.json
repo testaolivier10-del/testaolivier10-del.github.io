@@ -23915,7 +23915,7 @@
    "type": "mcq"
   },
   {
-   "q": "An alpha,beta-unsaturated ketone (an enone) can, under basic conditions, form an extended (extended dienolate) by removing a hydrogen from the gamma carbon rather than a true alpha carbon, because that anion is also stabilized through the conjugated pi system.",
+   "q": "An alpha,beta-unsaturated ketone (an enone) can, under basic conditions, form an extended dienolate by losing a hydrogen from the gamma carbon rather than from a true alpha carbon, because that anion is also stabilized through the conjugated pi system.",
    "options": [
     "True",
     "False"
@@ -24033,12 +24033,12 @@
    "type": "mcq"
   },
   {
-   "q": "Heating an aldol product (a beta-hydroxy carbonyl) typically leads to:",
+   "q": "An aldol condensation gives (E)-2-methylpent-2-enal as the only product. Which single aldehyde, warmed with dilute NaOH, produces it?",
    "options": [
-    "No further reaction",
-    "Dehydration to an enone",
-    "Reduction to an alcohol",
-    "Formation of a new ring every time"
+    "Butanal",
+    "Propanal",
+    "Acetaldehyde",
+    "Pentanal"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -24125,15 +24125,15 @@
    "type": "mcq"
   },
   {
-   "q": "In a crossed (mixed) aldol reaction between two different carbonyl compounds that both have alpha hydrogens, the main practical problem is usually:",
+   "q": "Heptanedial, OHC-(CH2)5-CHO, is warmed with dilute NaOH. What is the intramolecular aldol condensation product?",
    "options": [
-    "The reaction simply does not occur between two different carbonyl compounds",
-    "Only the aldehyde can ever act as the nucleophile",
-    "Crossed aldol reactions never require any catalyst at all",
-    "Both compounds can enolize, giving up to four products"
+    "Cyclopent-1-ene-1-carbaldehyde",
+    "Cyclohept-1-ene-1-carbaldehyde",
+    "An open-chain dienal, because a seven-carbon chain cannot reach round on itself",
+    "Cyclohex-1-ene-1-carbaldehyde"
    ],
    "correct": 3,
-   "difficulty": "easy",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -24229,12 +24229,12 @@
    "type": "tf"
   },
   {
-   "q": "In the acid-catalyzed mechanism for aldol dehydration, the hydroxyl group leaves as water after protonation, and the resulting cation is particularly stabilized because it is adjacent to which group?",
+   "q": "Acid-catalyzed dehydration of an aldol product does not pass through a free carbocation. What pushes the protonated beta hydroxyl out as water?",
    "options": [
-    "A distant, unrelated alkyl substituent with no electronic connection",
-    "Nothing; the cation is not stabilized at all in this mechanism",
-    "The carbonyl group, through conjugation",
-    "An adjacent halogen atom always present in aldol substrates"
+    "An empty p orbital on the carbonyl carbon, overlapping with the beta carbon",
+    "Conjugation from the carbonyl, which stabilizes a cation left behind on the beta carbon",
+    "The pi electrons of the enol tautomer's C=C, which become the new alpha-beta double bond",
+    "A lone pair on the carbonyl oxygen, reaching across the alpha carbon to displace the water"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -24681,7 +24681,7 @@
   {
    "q": "Ethyl propanoate, CH3CH2CO2Et, is treated with NaOEt and then dilute acid. What is the product?",
    "options": [
-    "Ethyl acetoacetate",
+    "Ethyl 3-oxopentanoate",
     "Ethyl 3-oxobutanoate",
     "Ethyl 2-methyl-3-oxopentanoate",
     "Propanoic acid"
@@ -40884,7 +40884,7 @@
     "NaOEt in EtOH, warm; then PhCH2Br",
     "NaH, warm, several hours; then PhCH2Br",
     "LDA (1 eq), THF, -78 C, ketone added to the base; then PhCH2Br",
-    "Pyrrolidine and catalytic acid; then PhCH2Br"
+    "LDA (1 eq), THF, 0 C, base added dropwise to the ketone; then PhCH2Br"
    ],
    "correct": 2,
    "difficulty": "hard",

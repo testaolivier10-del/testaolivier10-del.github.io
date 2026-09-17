@@ -147,15 +147,15 @@
       "type": "explain",
       "eyebrow": "Setup",
       "title": "One difference from the aldol.",
-      "bodyHtml": "<p class=\"step-body\">An aldol attacks a ketone or aldehyde, where the tetrahedral intermediate has nothing to expel and simply gets protonated. An ester carries an <b>OR group</b>, so the intermediate can collapse — and addition becomes substitution.</p><p class=\"step-body\">Methyl acetate, with <b>methoxide</b> about to remove an alpha hydrogen — matched to the ester's own OMe, so nothing is scrambled by transesterification.</p>",
-      "molecule": "methyl-acetate"
+      "bodyHtml": "<p class=\"step-body\">An aldol attacks a ketone or aldehyde, where the tetrahedral intermediate has nothing to expel and simply gets protonated. An ester carries an <b>OR group</b>, so the intermediate can collapse — and addition becomes substitution.</p><p class=\"step-body\">Ethyl acetate, with <b>ethoxide</b> about to remove an alpha hydrogen — matched to the ester's own OEt, so nothing is scrambled by transesterification.</p>",
+      "molecule": "ethyl-acetate"
     },
     {
       "type": "draw",
       "eyebrow": "Step 1 · Enolate",
       "title": "Base removes an alpha hydrogen. Show where the electrons go.",
       "bodyHtml": "<p class=\"step-body\">Two arrows — exactly the enolate formation you drew in the aldol.</p>",
-      "molecule": "methyl-acetate",
+      "molecule": "ethyl-acetate",
       "concepts": [
         "alpha-acidity",
         "enolate-formation"
@@ -182,8 +182,8 @@
       "type": "draw",
       "eyebrow": "Step 2 · Add, then eliminate",
       "title": "The enolate attacks a second ester. Draw the addition and the collapse.",
-      "bodyHtml": "<p class=\"step-body\">Three arrows on the molecule being attacked: the C=O opens, then reforms and pushes out the leaving group.</p>",
-      "molecule": "methyl-acetate",
+      "bodyHtml": "<p class=\"step-body\">Four arrows, and the first one is the reaction: the enolate's alpha carbon reaches the carbonyl carbon of the second ester. The other three open that C=O, bring it back down, and send the alkoxide away.</p>",
+      "molecule": "enolate-plus-ester",
       "concepts": [
         "tetrahedral-intermediate",
         "claisen-connectivity",
@@ -191,24 +191,29 @@
       ],
       "arrows": [
         {
-          "from": "bond:c-o1",
-          "to": "o1"
+          "from": "ca",
+          "to": "c2"
         },
         {
-          "from": "o1",
-          "to": "bond:c-o1"
-        },
-        {
-          "from": "bond:c-o2",
+          "from": "bond:c2-o2",
           "to": "o2"
+        },
+        {
+          "from": "o2",
+          "to": "bond:c2-o2"
+        },
+        {
+          "from": "bond:c2-o3",
+          "to": "o3"
         }
       ],
-      "hint": "Open the C=O, bring it back down, and send the alkoxy group away with its electrons.",
-      "why": "Addition then elimination — the same two-part move as any acyl substitution. The alkoxide leaves, and what you have made is a beta-ketoester: a ketone and an ester two carbons apart.",
+      "hint": "Start at the alpha carbon's pair and end on the carbonyl carbon opposite it. Then open that C=O onto its own oxygen, bring the pair back down to remake it, and push the OEt off with its electrons.",
+      "why": "Addition then elimination — the same two-part move as any acyl substitution, except that the nucleophile arriving is a carbon. The first arrow is the one that matters: alpha carbon to acyl carbon is the only new bond in a Claisen, and it is what puts the ketone and the ester two carbons apart in the product. The last two arrows are what make this a substitution rather than an aldol: the tetrahedral intermediate has an alkoxide to expel, so the carbonyl comes back instead of being protonated.",
       "wrong": {
-        "bond:c-ca>ca": "The alkyl group would have to leave as a carbanion. The alkoxy group is the leaving group here.",
-        "o1>c": "Reforming the C=O means aiming at the C–O bond. Pointing at the carbon would give it five bonds.",
-        "c>o2": "The tail belongs on the C–O bond that breaks — carbon has no lone pair to donate."
+        "bond:c2-cb>cb": "That sends the methyl off as a carbanion. The alkoxy group is the leaving group here, because ethoxide is the far weaker base of the two.",
+        "o2>c2": "Reforming the C=O means aiming at the C–O bond. Pointing at the carbon would give it five bonds.",
+        "c2>o3": "The tail belongs on the C–O bond that breaks — carbon has no lone pair to donate.",
+        "ca>o2": "Carbon attacks carbon. The oxygen is where the displaced pi electrons go, not where the new bond forms."
       },
       "nextLabel": "What drives it?"
     },

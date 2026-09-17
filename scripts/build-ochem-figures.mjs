@@ -11082,6 +11082,7 @@ FIGURES.push({
     s += atom(a1.x, a1.y, 'CH₂', { kind: 'hi' }); s += atom(a2.x, a2.y, 'C'); s += atom(a3.x, a3.y, 'CH₃');
     s += atom(ao.x, ao.y, 'O⁻', { kind: 'warn' });
     s += lonePair(ao.x, ao.y, 180, { dist: 20 }); s += lonePair(ao.x, ao.y, 0, { dist: 20 });
+    s += lonePair(ao.x, ao.y, 270, { dist: 20 });
     s += text(350, 370, 'one anion, two resonance forms — ↔ belongs in here', { cls: 'fg-sm', size: 10.5 });
 
     // Routes in and out of it
@@ -11110,7 +11111,7 @@ FIGURES.push({
   alt: 'An enolate attacking a second aldehyde to give the tetrahedral alkoxide, which is then protonated',
   build() {
     let s = '';
-    s += tag(112, 24, 'enolate — the nucleophile');
+    s += tag(112, 16, 'enolate — the nucleophile');
     s += tag(320, 34, 'a second aldehyde');
 
     const n1 = P(62, 112), n2 = P(126, 90), no = P(126, 46);
@@ -11118,6 +11119,7 @@ FIGURES.push({
     s += atom(n1.x, n1.y, 'CH₂', { kind: 'hi' }); s += atom(n2.x, n2.y, 'CH');
     s += atom(no.x, no.y, 'O⁻', { kind: 'warn' });
     s += lonePair(no.x, no.y, 180, { dist: 20 }); s += lonePair(no.x, no.y, 0, { dist: 20 });
+    s += lonePair(no.x, no.y, 270, { dist: 20 });
 
     const m1 = P(244, 118), m2 = P(304, 96), mo = P(304, 50);
     s += bond(m1, m2); s += bond(m2, mo, { order: 2 });
@@ -11137,6 +11139,7 @@ FIGURES.push({
     s += bond(c, o); s += bond(c, me); s += bond(c, ch, { rTo: 16 });
     s += atom(o.x, o.y, 'O⁻', { kind: 'warn' });
     s += lonePair(o.x, o.y, 180, { dist: 20 }); s += lonePair(o.x, o.y, 0, { dist: 20 });
+    s += lonePair(o.x, o.y, 270, { dist: 20 });
     s += atom(me.x, me.y, 'CH₃'); s += atom(ch.x, ch.y, 'CH₂CHO', { r: 16 });
     s += atom(c.x, c.y, 'C', { kind: 'hi' });
     s += text(576, 190, 'tetrahedral alkoxide', { cls: 'fg-lbl', size: 12.5 });
@@ -11190,7 +11193,8 @@ FIGURES.push({
     s += bond(b2, b1, { order: 2 }); s += bond(b1, bo);
     s += atom(b0.x, b0.y, 'CH\u2083'); s += atom(b3.x, b3.y, 'CH'); s += atom(boh.x, boh.y, 'OH', { r: 16 });
     s += atom(b2.x, b2.y, 'CH', { kind: 'hi' }); s += atom(b1.x, b1.y, 'CH'); s += atom(bo.x, bo.y, 'O\u207b', { kind: 'warn' });
-    s += lonePair(bo.x, bo.y, 0, { dist: 20 });
+    s += lonePair(bo.x, bo.y, 0, { dist: 20 }); s += lonePair(bo.x, bo.y, 180, { dist: 20 });
+    s += lonePair(bo.x, bo.y, 270, { dist: 20 });
     s += curve(P(590, 58), P(576, 94), { bow: 14 });
     s += curve(P(534, 132), P(482, 130), { bow: 16 });
     s += curve(P(442, 100), P(434, 82), { bow: -10 });
@@ -11374,7 +11378,8 @@ FIGURES.push({
     s += bond(c, P(150, 186)); s += bond(c, P(100, 206), { rTo: 15 });
     s += bond(c, P(100, 266), { rTo: 16 }); s += bond(c, P(206, 266), { rTo: 16 });
     s += atom(150, 186, 'O⁻', { kind: 'warn' });
-    s += lonePair(150, 186, 250, { dist: 20 });
+    s += lonePair(150, 186, 180, { dist: 20 }); s += lonePair(150, 186, 240, { dist: 20 });
+    s += lonePair(150, 186, 300, { dist: 20 });
     s += atom(100, 206, 'Ph'); s += atom(100, 266, 'OH', { r: 16 });
     s += atom(206, 266, 'CBr₃', { kind: 'hi', r: 16 });
     s += atom(c.x, c.y, 'C');
@@ -12169,6 +12174,295 @@ FIGURES.push({
   note: 'This is what made the degradation worth its cost. The number of <i>rounds</i> reports the connectivity while the number of CH₃I equivalents reports the class, and the two are independent measurements on the same unknown. An alkaloid chemist reading &ldquo;two rounds&rdquo; concluded &ldquo;the nitrogen was in a ring&rdquo; without ever seeing the molecule.',
 });
 
+
+
+/* ---------------------------------------------------------------- 192 ---
+   The aldol section describes the acid route in a full paragraph — neutral
+   enol in, protonated carbonyl out, and a dehydration with no cation in it —
+   and drew none of it. A bank item had drifted into keying a beta carbocation
+   "stabilized by conjugation with the carbonyl", which is the opposite of the
+   truth, so the drawing has to say where the electrons actually go. */
+FIGURES.push({
+  id: 'acid-catalyzed-aldol',
+  section: 'aldol',
+  anchor: "The enol attacks the protonated carbonyl, and losing the enol's OH proton leaves the neutral beta-hydroxy carbonyl.</p>",
+  viewBox: '0 0 760 500',
+  alt: 'The acid-catalyzed aldol: a neutral enol attacking a protonated ketone, then the dehydration in which the enol pi bond pushes water off the beta carbon',
+  build() {
+    let s = '';
+    s += tag(132, 42, 'ENOL — neutral, and the nucleophile');
+    s += tag(430, 42, 'PROTONATED CARBONYL — the electrophile');
+
+    // The enol
+    const e1 = P(70, 150), e2 = P(130, 122), eo = P(130, 74), e3 = P(190, 150);
+    s += bond(e1, e2, { order: 2 }); s += bond(e2, eo, { rTo: 16 }); s += bond(e2, e3, { rTo: 16 });
+    s += atom(e1.x, e1.y, 'CH₂', { kind: 'hi' }); s += atom(e2.x, e2.y, 'C');
+    s += atom(eo.x, eo.y, 'OH', { r: 16 });
+    s += lonePair(eo.x, eo.y, 180, { dist: 21 }); s += lonePair(eo.x, eo.y, 0, { dist: 21 });
+    s += atom(e3.x, e3.y, 'CH₃', { r: 16 });
+
+    // Acetone with its oxygen protonated
+    const m1 = P(360, 150), m2 = P(420, 122), mo = P(420, 74), m3 = P(480, 150);
+    s += bond(m2, m1, { rTo: 16 }); s += bond(m2, mo, { order: 2, rTo: 18 }); s += bond(m2, m3, { rTo: 16 });
+    s += atom(m1.x, m1.y, 'CH₃', { r: 16 }); s += atom(m2.x, m2.y, 'C', { kind: 'hi' });
+    s += atom(mo.x, mo.y, 'OH⁺', { kind: 'warn', r: 18 });
+    s += lonePair(mo.x, mo.y, 340, { dist: 23 });
+    s += atom(m3.x, m3.y, 'CH₃', { r: 16 });
+
+    s += curve(P(92, 142), P(418, 146), { bow: 44 });
+    s += text(248, 212, 'the enol C=C makes the new C–C bond', { cls: 'fg-tag', size: 11 });
+    s += curve(P(440, 104), P(442, 66), { bow: 14 });
+    s += text(512, 96, 'the pi pair goes up,', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(512, 110, 'leaving a neutral OH', { cls: 'fg-sm', size: 10, anchor: 'start' });
+
+    s += text(380, 244, 'The attacking carbon has spent its pi pair, so its OWN oxygen is left as C=OH⁺ —', { cls: 'fg-lbl', size: 12.5 });
+    s += text(380, 266, 'and handing that proton to the solvent gives the neutral beta-hydroxy ketone. The acid is back.', { cls: 'fg-sm', size: 10.5 });
+
+    s += rule(24, 292, 736, 292);
+    s += tag(392, 310, 'AND THE DEHYDRATION — still no cation');
+
+    // The enol of the aldol product, with the beta hydroxyl protonated
+    const d0 = P(66, 394), d3 = P(124, 366), dw = P(124, 314), d2 = P(182, 394), d1 = P(240, 366), dOH = P(240, 314);
+    s += bond(d0, d3, { rTo: 16 }); s += bond(d3, dw, { rTo: 20 }); s += bond(d3, d2, { rTo: 16 });
+    s += bond(d2, d1, { order: 2, rFrom: 16, rTo: 16 }); s += bond(d1, dOH, { rTo: 16 });
+    s += atom(d0.x, d0.y, 'CH₃', { r: 16 }); s += atom(d3.x, d3.y, 'CH', { r: 16 });
+    s += atom(dw.x, dw.y, 'OH₂⁺', { kind: 'warn', r: 20 });
+    s += atom(d2.x, d2.y, 'CH', { kind: 'hi', r: 16 }); s += atom(d1.x, d1.y, 'CH', { r: 16 });
+    s += atom(dOH.x, dOH.y, 'OH', { r: 16 });
+    s += lonePair(dOH.x, dOH.y, 20, { dist: 21 });
+    s += text(96, 340, 'β', { cls: 'fg-tag', size: 11 });
+    s += text(216, 406, 'α', { cls: 'fg-tag', size: 11 });
+
+    s += curve(P(262, 328), P(248, 346), { bow: 12 });
+    s += curve(P(212, 368), P(156, 372), { bow: -30 });
+    s += curve(P(130, 342), P(146, 320), { bow: -12 });
+    s += text(150, 436, 'three arrows, one push —', { cls: 'fg-sm', size: 10 });
+    s += text(150, 452, 'the water never leaves alone', { cls: 'fg-sm', size: 10 });
+
+    s += arrow(P(310, 366), P(370, 366), { muted: true });
+    s += text(340, 350, '−H⁺', { cls: 'fg-tag', size: 11 });
+
+    const q0 = P(432, 394), q1 = P(490, 366), q2 = P(548, 394), q3 = P(606, 366), qo = P(606, 318);
+    s += bond(q0, q1, { rTo: 16 }); s += bond(q1, q2, { order: 2, rFrom: 16, rTo: 16 });
+    s += bond(q2, q3, { rTo: 16 }); s += bond(q3, qo, { order: 2, rFrom: 16 });
+    s += atom(q0.x, q0.y, 'CH₃', { r: 16 }); s += atom(q1.x, q1.y, 'CH', { r: 16 });
+    s += atom(q2.x, q2.y, 'CH', { r: 16 }); s += atom(q3.x, q3.y, 'CH', { r: 16 });
+    s += atom(qo.x, qo.y, 'O');
+    s += text(520, 444, '(E)-but-2-enal — conjugated, and it does not come back', { cls: 'fg-tag-good', size: 11 });
+
+    s += text(380, 484, 'A cation on the beta carbon is not an option: it would sit two atoms from an electron-poor carbonyl.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The acid route with every charge accounted for. No enolate appears, because acid never makes a strong base, and no carbocation appears either — the neutral enol attacks a carbonyl that acid has made hungrier, and in the dehydration the enol pi bond shoves the water out as it goes.',
+  note: 'Set this against the base-catalyzed drawings above and the symmetry is the point. Base improves the <b>nucleophile</b> by taking a proton off; acid improves the <b>electrophile</b> by putting one on. Neither route ever puts a positive charge on the beta carbon, and a mechanism that asks you to believe in one is asking for the least stable cation in the molecule.',
+});
+
+/* ---------------------------------------------------------------- 193 ---
+   The hexanedial worked example asks the student to count a ring and then
+   shows nothing, which is exactly the case where a picture does the work. */
+FIGURES.push({
+  id: 'intramolecular-aldol-ring',
+  section: 'aldol',
+  anchor: 'So work out every enolate the substrate can form, count the ring each one would close, and keep the five or the six.</p>',
+  viewBox: '0 0 760 470',
+  alt: 'Hexanedial numbered C1 to C6 with the C2 enolate reaching C6, and the five-membered ring product it gives',
+  build() {
+    let s = '';
+    s += tag(240, 44, 'HEXANEDIAL — number it before you do anything else');
+
+    const c1 = P(96, 152), o1 = P(96, 104), c2 = P(152, 180), c3 = P(208, 152),
+          c4 = P(264, 180), c5 = P(320, 152), c6 = P(376, 180), o6 = P(376, 132);
+    s += bond(c1, o1, { order: 2, rTo: 15 }); s += bond(c1, c2, { rFrom: 16, rTo: 17 });
+    s += bond(c2, c3, { rFrom: 17, rTo: 17 }); s += bond(c3, c4, { rFrom: 17, rTo: 17 });
+    s += bond(c4, c5, { rFrom: 17, rTo: 17 }); s += bond(c5, c6, { rFrom: 17, rTo: 16 });
+    s += bond(c6, o6, { order: 2, rFrom: 16, rTo: 15 });
+    s += atom(c1.x, c1.y, 'CH', { r: 16 }); s += atom(o1.x, o1.y, 'O');
+    s += atom(c2.x, c2.y, 'CH₂', { kind: 'hi', r: 17 });
+    s += atom(c3.x, c3.y, 'CH₂', { r: 17 }); s += atom(c4.x, c4.y, 'CH₂', { r: 17 });
+    s += atom(c5.x, c5.y, 'CH₂', { r: 17 });
+    s += atom(c6.x, c6.y, 'CH', { kind: 'hi', r: 16 }); s += atom(o6.x, o6.y, 'O');
+
+    s += text(96, 74, 'C1', { cls: 'fg-tag', size: 11 });
+    s += text(118, 202, 'C2', { cls: 'fg-tag', size: 11 });
+    s += text(208, 120, 'C3', { cls: 'fg-tag', size: 11 });
+    s += text(230, 202, 'C4', { cls: 'fg-tag', size: 11 });
+    s += text(320, 120, 'C5', { cls: 'fg-tag', size: 11 });
+    s += text(376, 102, 'C6', { cls: 'fg-tag', size: 11 });
+    s += text(152, 226, 'the enolate', { cls: 'fg-sm', size: 10 });
+    s += text(414, 208, 'the carbonyl it can reach', { cls: 'fg-sm', size: 10, anchor: 'start' });
+
+    s += curve(P(166, 200), P(362, 200), { bow: 46 });
+    s += text(264, 276, 'C2 attacks C6, and the ring that closes is C2·C3·C4·C5·C6 — five atoms', { cls: 'fg-tag-good', size: 11 });
+    s += text(560, 250, 'C2 attacking C1 makes no ring —', { cls: 'fg-sm', size: 10 });
+    s += text(560, 266, 'those two are already bonded.', { cls: 'fg-sm', size: 10 });
+
+    s += rule(24, 302, 736, 302);
+
+    // The five-membered ring, then the condensation product
+    const pent = (cx, cy, r) => {
+      const pts = [];
+      for (let i = 0; i < 5; i++) {
+        const a = (-90 + i * 72) * Math.PI / 180;
+        pts.push(P(cx + r * Math.cos(a), cy + r * Math.sin(a)));
+      }
+      return pts;
+    };
+    const ringOf = (pts, skip) => {
+      let g = '';
+      for (let i = 0; i < 5; i++) {
+        if (i === skip) continue;
+        g += bond(pts[i], pts[(i + 1) % 5], { rFrom: 0, rTo: 0 });
+      }
+      return g;
+    };
+
+    const a = pent(150, 384, 46), ac = P(150, 384);
+    s += ringOf(a, -1);
+    s += bond(a[0], P(150, 306), { rFrom: 0, rTo: 16 });
+    s += atom(150, 306, 'CHO', { r: 18 });
+    s += bond(a[1], P(250, 344), { rFrom: 0, rTo: 16 });
+    s += atom(250, 344, 'OH', { r: 16 });
+    s += text(150, 452, '2-hydroxycyclopentane-1-carbaldehyde', { cls: 'fg-sm', size: 10 });
+
+    s += arrow(P(300, 396), P(370, 396));
+    s += text(336, 380, 'heat, −H₂O', { cls: 'fg-tag', size: 11 });
+
+    const b = pent(470, 384, 46), bc = P(470, 384);
+    s += ringOf(b, 0);
+    s += ringDouble(b[0], b[1], bc);
+    s += bond(b[0], P(470, 306), { rFrom: 0, rTo: 16 });
+    s += atom(470, 306, 'CHO', { r: 18 });
+    s += text(470, 452, 'cyclopent-1-ene-1-carbaldehyde', { cls: 'fg-sm', size: 10 });
+
+    s += text(596, 372, 'A ring with an enone', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    s += text(596, 390, 'in it is the signature', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    s += text(596, 408, 'of this reaction.', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    return s;
+  },
+  caption: 'Count the ring before you draw it. The C2 enolate can only reach C6, and the atoms it encloses on the way round — C2 through C6 — come to five, which is exactly the size that closes.',
+  note: 'The habit worth building is to number the chain first and pick an enolate second. Most dicarbonyl substrates offer more than one, and it is the arithmetic rather than the mechanism that rules the others out: three and four are too strained, and seven and up ask two chain ends to find each other against entropy.',
+});
+
+/* ---------------------------------------------------------------- 194 ---
+   The Dieckmann worked example counts a ring in prose, in a chapter whose
+   whole argument is that a reaction is a claim about which bond forms. */
+FIGURES.push({
+  id: 'dieckmann-ring',
+  section: 'claisen',
+  anchor: 'five- and six-membered rings form readily and larger or smaller ones do not, because the transition state has to bring the two ends together without strain.</p>',
+  viewBox: '0 0 760 470',
+  alt: 'Diethyl adipate numbered C1 to C6 with the C2 enolate reaching C6, and the five-membered beta-ketoester it closes to',
+  build() {
+    let s = '';
+    s += tag(240, 44, 'DIETHYL ADIPATE — six carbons, two of them ester carbonyls');
+
+    const oe1 = P(40, 122), c1 = P(96, 152), o1 = P(96, 104), c2 = P(152, 180),
+          c3 = P(208, 152), c4 = P(264, 180), c5 = P(320, 152), c6 = P(376, 180),
+          o6 = P(376, 132), oe6 = P(432, 152);
+    s += bond(oe1, c1, { rFrom: 16, rTo: 15 });
+    s += bond(c1, o1, { order: 2, rTo: 15 }); s += bond(c1, c2, { rTo: 17 });
+    s += bond(c2, c3, { rFrom: 17, rTo: 17 }); s += bond(c3, c4, { rFrom: 17, rTo: 17 });
+    s += bond(c4, c5, { rFrom: 17, rTo: 17 }); s += bond(c5, c6, { rFrom: 17 });
+    s += bond(c6, o6, { order: 2, rTo: 15 }); s += bond(c6, oe6, { rTo: 16 });
+    s += atom(oe1.x, oe1.y, 'EtO', { r: 16 }); s += atom(c1.x, c1.y, 'C');
+    s += atom(o1.x, o1.y, 'O'); s += atom(c2.x, c2.y, 'CH₂', { kind: 'hi', r: 17 });
+    s += atom(c3.x, c3.y, 'CH₂', { r: 17 }); s += atom(c4.x, c4.y, 'CH₂', { r: 17 });
+    s += atom(c5.x, c5.y, 'CH₂', { r: 17 }); s += atom(c6.x, c6.y, 'C', { kind: 'hi' });
+    s += atom(o6.x, o6.y, 'O'); s += atom(oe6.x, oe6.y, 'OEt', { r: 16 });
+
+    s += text(96, 74, 'C1', { cls: 'fg-tag', size: 11 });
+    s += text(118, 202, 'C2', { cls: 'fg-tag', size: 11 });
+    s += text(208, 120, 'C3', { cls: 'fg-tag', size: 11 });
+    s += text(230, 202, 'C4', { cls: 'fg-tag', size: 11 });
+    s += text(320, 120, 'C5', { cls: 'fg-tag', size: 11 });
+    s += text(376, 102, 'C6', { cls: 'fg-tag', size: 11 });
+    s += text(508, 180, 'this OEt is the', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(508, 196, 'one that leaves', { cls: 'fg-sm', size: 10, anchor: 'start' });
+
+    s += curve(P(166, 200), P(362, 200), { bow: 46 });
+    s += text(264, 276, 'C2 attacks C6 — the ring is C2·C3·C4·C5·C6, five atoms, so it goes', { cls: 'fg-tag-good', size: 11 });
+
+    s += rule(24, 300, 736, 300);
+
+    const pent = (cx, cy, r) => {
+      const pts = [];
+      for (let i = 0; i < 5; i++) {
+        const ang = (-90 + i * 72) * Math.PI / 180;
+        pts.push(P(cx + r * Math.cos(ang), cy + r * Math.sin(ang)));
+      }
+      return pts;
+    };
+    const p = pent(150, 378, 46);
+    for (let i = 0; i < 5; i++) s += bond(p[i], p[(i + 1) % 5], { rFrom: 0, rTo: 0 });
+    s += bond(p[0], P(150, 300), { rFrom: 0, rTo: 15, order: 2 });
+    s += atom(150, 300, 'O');
+    s += bond(p[4], P(56, 342), { rFrom: 0, rTo: 20 });
+    s += atom(56, 342, 'CO₂Et', { r: 20 });
+    s += bond(p[4], P(92, 418), { rFrom: 0, rTo: 11 });
+    s += atom(92, 418, 'H', { kind: 'hi', r: 11 });
+    s += text(150, 458, 'ethyl 2-oxocyclopentane-1-carboxylate', { cls: 'fg-sm', size: 10 });
+
+    s += text(272, 332, 'That hydrogen sits between a ring ketone and', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += text(272, 354, 'an ester — pKa about 11 — and the ethoxide takes it', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(272, 374, 'and keeps it. The closure is driven by the same last', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(272, 394, 'step as any other Claisen.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(272, 426, 'Diethyl glutarate, one carbon shorter, would have to', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
+    s += text(272, 444, 'close a four-membered ring, and does not react at all.', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
+    return s;
+  },
+  caption: 'A Dieckmann is a Claisen with both partners tied into one molecule, so the only new question is the ring. Number the chain, pick the enolate, and count what the new bond encloses.',
+  note: 'Check that the driving step survives the closure, because that is what a Dieckmann question is really testing. The carbon that attacked ends up between the new ring ketone and the ester it kept, so it still carries an acidic hydrogen for the ethoxide to remove. A substrate whose product has no hydrogen in that position has the same trouble as an ester with only one alpha hydrogen: nothing pulls the equilibrium across.',
+});
+
+
+/* ---------------------------------------------------------------- 195 ---
+   "Draw that contributor once and both electrophilic sites are obvious" —
+   and then the section did not draw it. */
+FIGURES.push({
+  id: 'enone-two-electrophiles',
+  section: 'aldol',
+  anchor: 'Draw that contributor once and both electrophilic sites are obvious.</p>',
+  viewBox: '0 0 760 318',
+  alt: 'An enone and its resonance contributor with positive charge on the beta carbon, marking the 1,2 and 1,4 sites',
+  build() {
+    let s = '';
+    s += tag(160, 44, 'the enone as you normally draw it');
+    s += tag(552, 44, 'the contributor worth drawing once');
+
+    const b1 = P(70, 152), b2 = P(130, 122), b3 = P(190, 152), bo = P(190, 104), b4 = P(250, 182);
+    s += bond(b1, b2, { order: 2 }); s += bond(b2, b3); s += bond(b3, bo, { order: 2 });
+    s += bond(b3, b4, { rTo: 16 });
+    s += atom(b1.x, b1.y, 'CH₂'); s += atom(b2.x, b2.y, 'CH'); s += atom(b3.x, b3.y, 'C');
+    s += atom(bo.x, bo.y, 'O'); s += atom(b4.x, b4.y, 'CH₃', { r: 16 });
+    s += curve(P(104, 126), P(156, 124), { bow: -22 });
+    s += curve(P(208, 132), P(208, 92), { bow: 14 });
+
+    s += arrow(P(320, 144), P(384, 144), { muted: true });
+    s += arrow(P(384, 160), P(320, 160), { muted: true });
+
+    const r1 = P(452, 152), r2 = P(512, 122), r3 = P(572, 152), ro = P(572, 104), r4 = P(632, 182);
+    s += bond(r1, r2); s += bond(r2, r3, { order: 2 }); s += bond(r3, ro);
+    s += bond(r3, r4, { rTo: 16 });
+    s += atom(r1.x, r1.y, 'CH₂', { kind: 'warn' }); s += atom(r2.x, r2.y, 'CH');
+    s += atom(r3.x, r3.y, 'C'); s += atom(ro.x, ro.y, 'O⁻', { kind: 'warn' });
+    s += lonePair(ro.x, ro.y, 180, { dist: 21 }); s += lonePair(ro.x, ro.y, 0, { dist: 21 });
+    s += lonePair(ro.x, ro.y, 270, { dist: 21 });
+    s += atom(r4.x, r4.y, 'CH₃', { r: 16 });
+    s += text(430, 137, '⊕', { cls: 'fg-warn', size: 14 });
+    s += text(452, 194, 'the beta carbon is', { cls: 'fg-tag-warn', size: 11 });
+    s += text(452, 210, 'the electron-poor one', { cls: 'fg-tag-warn', size: 11 });
+
+    s += text(176, 220, 'carbonyl carbon — 1,2', { cls: 'fg-tag', size: 11 });
+    s += text(66, 196, 'beta carbon — 1,4', { cls: 'fg-tag', size: 11 });
+
+    s += rule(24, 240, 736, 240);
+    s += text(24, 268, 'One molecule, two electrophilic carbons — and the right-hand drawing is why.', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += text(24, 294, 'Hard nucleophiles take the carbonyl carbon; soft, stabilized ones take the beta carbon.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    return s;
+  },
+  caption: 'Push the C=C electrons toward the carbonyl and the charge lands on the beta carbon. That single drawing is what turns "the beta carbon is electrophilic" from an assertion into something you can see.',
+  note: 'Both contributors describe the same molecule, so both sites are electrophilic at the same time — the question is never which one the molecule offers, only which one a given nucleophile takes. Note also where the negative charge sits in the contributor: on oxygen, which is why the anion produced by conjugate addition is an enolate and can be trapped or alkylated rather than simply quenched.',
+});
 
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;

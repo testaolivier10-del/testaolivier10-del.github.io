@@ -25704,7 +25704,7 @@
     "Nitrogen and oxygen"
    ],
    "correct": 1,
-   "why": "The enolate resonance structures place negative charge either on the alpha carbon (carbanion form) or the oxygen (enolate form, more stable).",
+   "why": "The enolate is the whole anion, not one of its drawings. Its two resonance contributors put the negative charge either on the alpha carbon, the carbanion form, or on the carbonyl oxygen, which is the major contributor because oxygen holds a charge far better. So the charge is shared between the alpha carbon and the carbonyl oxygen - and it is the alpha carbon, the minor contributor, that does the attacking.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -25891,7 +25891,7 @@
     "None, because substitution at C2 blocks enolization entirely"
    ],
    "correct": 2,
-   "why": "The carbonyl in cyclohexanone is flanked by two different alpha carbons, C2 and C6; adding a methyl at C2 still leaves one alpha hydrogen there (C2 becomes a stereocenter upon enolate formation consideration) while C6 still has two, so enolization can occur on either side.",
+   "why": "The carbonyl of cyclohexanone is flanked by two different alpha carbons, C2 and C6. Putting a methyl on C2 still leaves one alpha hydrogen there, and C6 still has two, so enolization can happen on either side. Watch what that does to C2: it is a stereocenter in the ketone, and forming the enolate on that side flattens the carbon and destroys the stereocenter, which is why alpha stereocenters racemize under base.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -25946,13 +25946,13 @@
    "type": "mcq"
   },
   {
-   "q": "An alpha,beta-unsaturated ketone (an enone) can, under basic conditions, form an extended (extended dienolate) by removing a hydrogen from the gamma carbon rather than a true alpha carbon, because that anion is also stabilized through the conjugated pi system.",
+   "q": "An alpha,beta-unsaturated ketone (an enone) can, under basic conditions, form an extended dienolate by losing a hydrogen from the gamma carbon rather than from a true alpha carbon, because that anion is also stabilized through the conjugated pi system.",
    "options": [
     "True",
     "False"
    ],
    "correct": 0,
-   "why": "Removing the gamma hydrogen gives the extended dienolate, whose charge runs from the oxygen along C1-C2-C3 across the whole conjugated system. Deprotonating the alpha' carbon on the other side of the carbonyl gives the cross-conjugated dienolate instead, and the two names are not interchangeable.",
+   "why": "Number the enone out from the carbonyl: C1 is the carbonyl carbon, C2 is alpha, C3 is beta and C4 is gamma. Taking the gamma hydrogen gives the extended dienolate, an anion delocalized along O-C1-C2-C3-C4 with its charge density on the oxygen, on C2 and on C4 - including the carbon that was just deprotonated. Deprotonating the alpha-prime carbon on the other side of the carbonyl gives the cross-conjugated dienolate instead, and the two names are not interchangeable.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -26074,15 +26074,15 @@
    "type": "mcq"
   },
   {
-   "q": "Heating an aldol product (a beta-hydroxy carbonyl) typically leads to:",
+   "q": "An aldol condensation gives (E)-2-methylpent-2-enal as the only product. Which single aldehyde, warmed with dilute NaOH, produces it?",
    "options": [
-    "No further reaction",
-    "Dehydration to an enone",
-    "Reduction to an alcohol",
-    "Formation of a new ring every time"
+    "Butanal",
+    "Propanal",
+    "Acetaldehyde",
+    "Pentanal"
    ],
    "correct": 1,
-   "why": "Base- or acid-promoted loss of water from the beta-hydroxy group, conjugated with the carbonyl, gives the thermodynamically favorable α,β-unsaturated (enone) product.",
+   "why": "Work the condensation backwards. Put water back across the C2=C3 double bond, OH onto C3 and H onto C2, which gives 3-hydroxy-2-methylpentanal. Now cut the C2-C3 bond, the only bond an aldol makes: the alpha fragment keeps the CHO and its methyl and takes a hydrogen back, giving CH3CH2CHO, and on the beta fragment the OH becomes a C=O, giving CH3CH2CHO again. Two propanals, three carbons each, account for the five-carbon chain and its methyl branch.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -26145,7 +26145,7 @@
     "Formation of a new ring with no change in oxidation state"
    ],
    "correct": 1,
-   "why": "The beta-hydroxy group is positioned so that E1cb (base) or E1 (acid)-type elimination across the alpha-beta bond is favorable, expelling water and forming a conjugated, thermodynamically stabilized alpha,beta-unsaturated carbonyl, commonly called an aldol condensation product.",
+   "why": "The beta hydroxyl sits one carbon away from an acidic alpha C-H, so water is lost across the alpha-beta bond. Under base that is an E1cb: the alpha proton comes off first and the enolate left behind expels hydroxide. Under acid it runs through the enol instead, whose C=C pushes the protonated hydroxyl out as water. Either route ends at a conjugated alpha,beta-unsaturated carbonyl, and that conjugation is the payoff that makes an otherwise unpromising elimination worth doing.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -26174,16 +26174,16 @@
    "type": "mcq"
   },
   {
-   "q": "In a crossed (mixed) aldol reaction between two different carbonyl compounds that both have alpha hydrogens, the main practical problem is usually:",
+   "q": "Heptanedial, OHC-(CH2)5-CHO, is warmed with dilute NaOH. What is the intramolecular aldol condensation product?",
    "options": [
-    "The reaction simply does not occur between two different carbonyl compounds",
-    "Only the aldehyde can ever act as the nucleophile",
-    "Crossed aldol reactions never require any catalyst at all",
-    "Both compounds can enolize, giving up to four products"
+    "Cyclopent-1-ene-1-carbaldehyde",
+    "Cyclohept-1-ene-1-carbaldehyde",
+    "An open-chain dienal, because a seven-carbon chain cannot reach round on itself",
+    "Cyclohex-1-ene-1-carbaldehyde"
    ],
    "correct": 3,
-   "why": "When both partners possess alpha hydrogens and comparable reactivity, enolates of either compound can form and attack either carbonyl, giving a mixture of self-addition and cross-addition products that is difficult to control and separate without deliberate strategy.",
-   "difficulty": "easy",
+   "why": "Number the chain C1 to C7 with the two CHO carbons as C1 and C7. The alpha carbons are C2 and C6, equivalent by symmetry, so take the C2 enolate. C2 attacks C7 and the ring that closes is C2-C3-C4-C5-C6-C7, six atoms, which is one of the two sizes that close readily. Protonation gives 2-hydroxycyclohexane-1-carbaldehyde, and warming eliminates water across the alpha-beta bond, putting the new C=C inside the ring and in conjugation with the CHO.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -26287,15 +26287,15 @@
    "type": "tf"
   },
   {
-   "q": "In the acid-catalyzed mechanism for aldol dehydration, the hydroxyl group leaves as water after protonation, and the resulting cation is particularly stabilized because it is adjacent to which group?",
+   "q": "Acid-catalyzed dehydration of an aldol product does not pass through a free carbocation. What pushes the protonated beta hydroxyl out as water?",
    "options": [
-    "A distant, unrelated alkyl substituent with no electronic connection",
-    "Nothing; the cation is not stabilized at all in this mechanism",
-    "The carbonyl group, through conjugation",
-    "An adjacent halogen atom always present in aldol substrates"
+    "An empty p orbital on the carbonyl carbon, overlapping with the beta carbon",
+    "Conjugation from the carbonyl, which stabilizes a cation left behind on the beta carbon",
+    "The pi electrons of the enol tautomer's C=C, which become the new alpha-beta double bond",
+    "A lone pair on the carbonyl oxygen, reaching across the alpha carbon to displace the water"
    ],
    "correct": 2,
-   "why": "Protonated water leaves to generate a carbocation at the former beta carbon; as the adjacent alpha C-H is lost to re-form the pi system, the resulting alkene becomes conjugated with the carbonyl, which is the real thermodynamic payoff that makes this elimination pathway favorable overall.",
+   "why": "Under acid there is no strong base in the flask, so the molecule tautomerizes to its enol first. Protonating the beta hydroxyl turns it into water, a real leaving group, and the enol C=C pushes in as the water departs, so the departure is assisted and no cation is ever free. Losing the enol OH proton at the end restores the C=O and leaves the conjugated enone. A cation on the beta carbon would in fact be destabilized, not stabilized: it sits two atoms from a strongly electron-withdrawing carbonyl that has no pi density to lend it.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -26705,7 +26705,7 @@
     "No ring at all; only an open-chain product forms"
    ],
    "correct": 0,
-   "why": "Diethyl adipate's six carbons between the two ester groups allow the enolate at one end to reach the carbonyl at the other end in a way that closes a five-membered ring (counting the new bond and the carbons in between), consistent with the strong general preference for five- and six-membered ring formation in Dieckmann condensations.",
+   "why": "Diethyl adipate is EtO2C-(CH2)4-CO2Et. Number the chain C1 to C6 taking the two ester carbonyl carbons as C1 and C6, so there are four methylenes between the ester groups. Ethoxide makes the enolate at C2, C2 attacks C6, and the ring that closes contains C2, C3, C4, C5 and C6: five atoms. Five- and six-membered rings are the ones a Dieckmann closure reaches, so this one goes; a diester one carbon shorter would have to close a four-membered ring and does not react this way.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -26777,13 +26777,13 @@
   {
    "q": "Ethyl propanoate, CH3CH2CO2Et, is treated with NaOEt and then dilute acid. What is the product?",
    "options": [
-    "Ethyl acetoacetate",
+    "Ethyl 3-oxopentanoate",
     "Ethyl 3-oxobutanoate",
     "Ethyl 2-methyl-3-oxopentanoate",
     "Propanoic acid"
    ],
    "correct": 2,
-   "why": "The enolate forms at the CH2 alpha carbon and attacks a second molecule's carbonyl carbon, and EtO- leaves. The new bond joins that alpha carbon to the other molecule's acyl carbon, so the skeleton is CH3CH2-CO-CH(CH3)-CO2Et: a five-carbon chain with the ketone at C3 and a methyl at C2. The leftover methyl on the alpha carbon is the giveaway that the nucleophile was propanoate rather than acetate.",
+   "why": "The enolate forms at the CH2 alpha carbon and attacks a second molecule's carbonyl carbon, and EtO- leaves. The new bond joins that alpha carbon to the other molecule's acyl carbon, so the skeleton is CH3CH2-CO-CH(CH3)-CO2Et: a five-carbon chain with the ketone at C3 and a methyl at C2. That leftover methyl on the alpha carbon is the giveaway that the nucleophile was propanoate rather than acetate. Ethyl 3-oxopentanoate is the answer you get if you forget it, and ethyl 3-oxobutanoate is what ethyl acetate would have given.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -44333,10 +44333,10 @@
     "NaOEt in EtOH, warm; then PhCH2Br",
     "NaH, warm, several hours; then PhCH2Br",
     "LDA (1 eq), THF, -78 C, ketone added to the base; then PhCH2Br",
-    "Pyrrolidine and catalytic acid; then PhCH2Br"
+    "LDA (1 eq), THF, 0 C, base added dropwise to the ketone; then PhCH2Br"
    ],
    "correct": 2,
-   "why": "The benzyl group has to end up on C6, the unsubstituted carbon, which means the kinetic enolate: LDA, one equivalent, -78 C, with the ketone added to the base so no free ketone is left to shuttle protons. NaOEt and NaH both leave a route open for the two enolates to equilibrate and would alkylate at C2. The halide itself is fine either way, since benzylic halides are excellent SN2 partners for an enolate.",
+   "why": "The benzyl group has to land on C6, the unsubstituted carbon, which means the kinetic enolate: LDA, one equivalent, -78 C, with the ketone added to the base. NaOEt and NaH are both equilibrating conditions that leave a route open between the two enolates, so they alkylate at C2. Adding LDA dropwise to the ketone instead gets the base right and the technique wrong: dripping LDA into a flask of ketone leaves un-deprotonated ketone in solution, and free ketone shuttles protons between the two enolates until the more substituted one wins. The halide is fine either way, since benzylic halides are excellent SN2 partners for an enolate.",
    "difficulty": "hard",
    "type": "mcq"
   }
