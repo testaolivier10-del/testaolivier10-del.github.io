@@ -172,10 +172,10 @@ document.addEventListener('DOMContentLoaded', function(){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">2,2-dimethyloxirane + NaOCH₃ (base-catalyzed): click the carbon the methoxide attacks.</h2>' +
-            '<p class="step-body">The epoxide ring has one carbon attached to two methyl groups (more substituted) and one CH₂ carbon (less substituted). Base-catalyzed opening is a direct SN2 attack.</p>' +
+            '<p class="step-body">In an oxirane the oxygen is atom 1, so the two carbons are C2 and C3. Here C2 carries the two methyl groups and C3 is the CH₂. Base-catalyzed opening is a direct SN2 attack.</p>' +
             '<div style="display:flex;justify-content:center;padding:16px 0;gap:40px;">' +
-              '<div class="atom" data-v="c1" style="cursor:pointer;padding:14px 18px;border:2px solid var(--border);border-radius:12px;text-align:center;font:800 14px var(--font-mono);">C1 (CH₂)<br><span style="font-size:11px;color:var(--muted);font-weight:600;">less hindered</span></div>' +
-              '<div class="atom" data-v="c2" style="cursor:pointer;padding:14px 18px;border:2px solid var(--border);border-radius:12px;text-align:center;font:800 14px var(--font-mono);">C2 (C(CH₃)₂)<br><span style="font-size:11px;color:var(--muted);font-weight:600;">more hindered</span></div>' +
+              '<div class="atom" data-v="c1" style="cursor:pointer;padding:14px 18px;border:2px solid var(--border);border-radius:12px;text-align:center;font:800 14px var(--font-mono);">C3, the CH₂<br><span style="font-size:11px;color:var(--muted);font-weight:600;">less hindered</span></div>' +
+              '<div class="atom" data-v="c2" style="cursor:pointer;padding:14px 18px;border:2px solid var(--border);border-radius:12px;text-align:center;font:800 14px var(--font-mono);">C2, the C(CH₃)₂<br><span style="font-size:11px;color:var(--muted);font-weight:600;">more hindered</span></div>' +
             '</div>' +
             api.feedbackHtml('fb') +
             api.nextButtonHtml('Continue', false);
@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function(){
               el.classList.add('chosen');
               el.style.borderColor = isCorrect ? '#2e9e5b' : '#c0392b';
               api.record(isCorrect);
-              api.showFeedback(fb, isCorrect, 'Base-catalyzed opening is pure SN2 — methoxide performs a backside attack on the less hindered carbon (C1, the CH₂), exactly like any other SN2 nucleophile avoiding a crowded, more substituted carbon.');
+              api.showFeedback(fb, isCorrect, 'Base-catalyzed opening is pure SN2 — methoxide performs a backside attack on the less hindered carbon, C3, the CH₂, exactly like any other SN2 nucleophile avoiding a crowded, more substituted carbon.');
               next.disabled = false;
             });
           });
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'mcq',
         eyebrow: 'Step 5 · Independent Practice',
         title: 'The same 2,2-dimethyloxirane is instead treated with dilute H₂SO₄/H₂O. Which carbon does water attack?',
-        options: ['C1, the less hindered CH₂ carbon', 'Both carbons equally, since water is a weak nucleophile', 'C2, the more substituted C(CH₃)₂ carbon'],
+        options: ['C3, the less hindered CH₂ carbon', 'Both carbons equally, since water is a weak nucleophile', 'C2, the more substituted C(CH₃)₂ carbon'],
         correctIndex: 2,
         correctFeedback: 'Correct — under acidic conditions, attack shifts to the more substituted carbon, the opposite of what you saw with methoxide under basic conditions on the exact same starting epoxide.',
         wrongFeedback: 'Acid-catalyzed opening reverses the regiochemistry compared to base — attack now favors the carbon that better stabilizes positive charge, which is the more substituted one.'
@@ -260,10 +260,10 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: '2-methyl-2,3-epoxybutane (an epoxide with one carbon bearing two methyls, the other bearing one methyl) is opened with (1) NaSCH₃ (strong nucleophile, basic conditions) and separately with (2) dilute HCl/H₂O. At which carbon does the nucleophile attack in each case?',
-        options: ['(1) the less substituted carbon (SN2 sterics); (2) the more substituted carbon (cation-stabilized transition state)', '(1) and (2) both attack the more substituted carbon', '(1) and (2) both attack the less substituted carbon'],
-        correctIndex: 0,
-        correctFeedback: 'Correct — this is the acid/base regiochemistry switch in action: the strong nucleophile under basic conditions goes SN2 (less hindered carbon), while acid-catalyzed opening shifts attack to the more substituted, more cation-stabilized carbon.'
+        title: 'Cyclohexene oxide is stirred with dilute aqueous H\u2082SO\u2084. Both ring carbons are identical, so regiochemistry cannot decide this one. What is the product?',
+        options: ['cis-1,2-Cyclohexanediol, since both oxygens trace back to the same epoxide face', 'trans-1,2-Cyclohexanediol, since water attacks the face opposite the C\u2013O bond that breaks', 'An equal mixture of the cis and trans diols, since acid scrambles the stereochemistry'],
+        correctIndex: 1,
+        correctFeedback: 'Correct \u2014 protonation activates the ring, but the attack is still backside: the three-membered ring occupies one face completely, so water can only arrive from the other. The new OH and the original oxygen therefore end up anti, which on a ring means the trans diol. Acid changes which carbon is attacked, never which face.'
       }
     ]
   });

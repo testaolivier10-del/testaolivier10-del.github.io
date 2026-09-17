@@ -20369,7 +20369,7 @@
     "False"
    ],
    "correct": 1,
-   "why": "Primary carbocations are highly unstable, so primary alcohols instead react with HX through SN2, with the protonated alcohol acting as the leaving group while bromide attacks from the backside.",
+   "why": "Primary carbocations are far too unstable to form, so a primary alcohol reacts with HX by SN2 instead: the acid protonates the oxygen, and bromide attacks the carbon from the back while neutral water - the actual leaving group - departs.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -20387,54 +20387,54 @@
    "type": "mcq"
   },
   {
-   "q": "Treating a primary alcohol with PCC (pyridinium chlorochromate) in dichloromethane gives:",
+   "q": "Which reagent converts butan-2-ol into 2-bromobutane with no risk of a skeletal rearrangement?",
    "options": [
-    "A carboxylic acid",
-    "An aldehyde",
-    "A ketone",
-    "No reaction"
+    "Concentrated HBr with prolonged heating",
+    "PBr3 in ether at room temperature",
+    "Concentrated H2SO4, then solid NaBr",
+    "NaBr in acetone, heated to reflux"
    ],
    "correct": 1,
-   "why": "PCC is an anhydrous, mild oxidant that stops at the aldehyde stage because there is no water present to hydrate the aldehyde into the gem-diol needed for further oxidation.",
+   "why": "PBr3 converts the OH into an ester of phosphorus that bromide then displaces in one backside step, so no carbocation is ever formed and nothing can shift. The HBr and H2SO4/NaBr routes both work by protonating the OH, which at a secondary carbon means ionization to a cation - and a cation is free to rearrange. NaBr alone does nothing at all, because hydroxide cannot leave.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "To oxidize a primary alcohol all the way to a carboxylic acid, the best choice is:",
+   "q": "3,3-Dimethylbutan-2-ol is treated with concentrated HBr. What is the major product?",
    "options": [
-    "PCC in dichloromethane",
-    "Swern oxidation",
-    "Chromic acid (H2CrO4)",
-    "Dess-Martin periodinane"
+    "2-Bromo-2,3-dimethylbutane",
+    "2-Bromo-3,3-dimethylbutane",
+    "1-Bromo-3,3-dimethylbutane",
+    "2,3-Dimethylbut-2-ene"
    ],
-   "correct": 2,
-   "why": "Strong aqueous Cr(VI) oxidants hydrate the intermediate aldehyde into a gem-diol, which is then readily oxidized further to the carboxylic acid; PCC and Swern conditions are anhydrous and stop at the aldehyde.",
+   "correct": 0,
+   "why": "Protonation and loss of water give a secondary cation at C2. Its neighbor C3 is quaternary, so it has no hydrogen to send across - but it can send a whole methyl group with its bonding pair, and that 1,2-methyl shift converts the secondary cation into a tertiary one. Bromide captures that rearranged cation, so the bromine sits on a carbon that never carried the hydroxyl.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Oxidizing a secondary alcohol with any chromium(VI) reagent (PCC, Jones, etc.) produces:",
+   "q": "A molecule contains an acid-sensitive group elsewhere, and you need to dehydrate its secondary alcohol without rearrangement. The best choice is:",
    "options": [
-    "An aldehyde",
-    "A carboxylic acid",
-    "No reaction; secondary alcohols resist oxidation",
-    "A ketone"
+    "Concentrated H2SO4 at 180 degrees C",
+    "Dilute aqueous HCl at room temperature",
+    "POCl3 in pyridine",
+    "Solid KOH, heated with the alcohol"
    ],
-   "correct": 3,
-   "why": "Secondary alcohols have only one hydrogen on the carbinol carbon; removing it gives a ketone, which has no further C-H bond to remove, so oxidation stops there regardless of the specific Cr(VI) reagent.",
+   "correct": 2,
+   "why": "POCl3 converts the OH into a dichlorophosphate ester under basic conditions, and pyridine then removes an anti-periplanar beta hydrogen in a single concerted E2 step. No acid is used and no carbocation is formed, so nothing else in the molecule is exposed and the skeleton cannot shift. Hot H2SO4 does the same dehydration but through a cation, and hydroxide is far too poor a leaving group for base alone to eliminate it.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Tertiary alcohols can be oxidized to ketones using PCC.",
+   "q": "Converting a chiral secondary alcohol to its tosylate leaves the configuration at that carbon unchanged.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 1,
-   "why": "Oxidation by these reagents requires removing a C-H bond from the carbinol carbon; a tertiary carbinol carbon has no such hydrogen, so tertiary alcohols resist this kind of oxidation entirely.",
+   "correct": 0,
+   "why": "Tosylation happens at sulfur: the alcohol oxygen attacks the S of TsCl and chloride leaves, so the C-O bond is never broken. Nothing at carbon moves, and the stereocenter is handed on intact. Any inversion you see later belongs to the substitution step that displaces the tosylate, not to the tosylation.",
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Acid-catalyzed dehydration of 2-butanol gives mainly:",
@@ -20513,52 +20513,52 @@
    "type": "mcq"
   },
   {
-   "q": "Fischer esterification combines an alcohol with a carboxylic acid under acid catalysis to form:",
+   "q": "(S)-Butan-2-ol is treated with TsCl/pyridine and the product is then treated with NaCN. The configuration at C2 in the nitrile is:",
    "options": [
-    "An ether and water",
-    "An ester and water",
-    "An acid chloride and water",
-    "A hemiacetal"
+    "Retained, since tosylation does not touch the C-O bond",
+    "Inverted, from the single SN2 step that displaces the tosylate",
+    "Racemic, because the tosylate ionizes before cyanide arrives",
+    "Undefined, since C2 is no longer a stereocenter"
    ],
    "correct": 1,
-   "why": "Acid catalyzes nucleophilic attack of the alcohol on the protonated carbonyl; after loss of water from the resulting tetrahedral intermediate, the ester is formed. The overall process is reversible.",
+   "why": "Count the steps that break the C-O bond at C2: exactly one. Tosylation happens at sulfur and leaves the stereocenter alone, then cyanide displaces the tosylate by backside attack. One inversion means the product is inverted, not racemic - a tosylate is a good enough leaving group that a secondary carbon has no reason to ionize with a strong nucleophile present.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A vicinal diol treated with acid can undergo a pinacol rearrangement, which proceeds by:",
+   "q": "3,3-Dimethylbutan-2-ol is heated with concentrated H2SO4. The major alkene is:",
    "options": [
-    "A simple SN2 substitution of one OH by the other",
-    "Direct elimination with no carbocation intermediate at all",
-    "Loss of water, a 1,2-shift, then loss of a proton",
-    "Radical coupling of the two oxygens"
+    "3,3-Dimethylbut-1-ene",
+    "2,3-Dimethylbut-1-ene",
+    "2,3-Dimethylbut-2-ene",
+    "3,3-Dimethylbut-2-ene"
    ],
    "correct": 2,
-   "why": "One OH is protonated and leaves as water to form a carbocation; a neighboring alkyl or hydride group migrates to stabilize the positive charge, and loss of a proton from the resulting species gives the ketone product.",
+   "why": "Work in the order the mechanism runs: protonate, lose water to a secondary cation, then check for a shift before applying Zaitsev. A methyl migrates from the quaternary neighbor to give a tertiary cation, and losing a beta hydrogen from that rearranged skeleton gives the tetrasubstituted alkene. Applying Zaitsev to the original skeleton instead gives a confident wrong answer.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Treating a vicinal (1,2-) diol with periodic acid (HIO4) results in:",
+   "q": "A secondary alcohol is converted to its tosylate and the tosylate is then heated with sodium ethoxide, a strong base. The main product is:",
    "options": [
-    "Dehydration to form a diene",
-    "Reduction to a single alcohol",
-    "No reaction; HIO4 only cleaves alkenes",
-    "Oxidative cleavage to two carbonyls"
+    "An alkene, from E2 elimination of the tosylate",
+    "An ether, from SN2 attack by ethoxide",
+    "The starting alcohol, regenerated by hydrolysis",
+    "No reaction, since tosylates are unreactive toward bases"
    ],
-   "correct": 3,
-   "why": "Periodic acid selectively cleaves the carbon-carbon bond between two adjacent hydroxyl groups, converting each carbinol carbon into a carbonyl (an aldehyde or ketone depending on substitution).",
+   "correct": 0,
+   "why": "Once the OH is a tosylate, that carbon behaves like a secondary alkyl halide, so the SN2-versus-E2 competition from Substitution and Elimination applies unchanged. Ethoxide is a strong base as well as a nucleophile, and at a secondary carbon a strong base takes a beta hydrogen faster than it attacks the crowded carbon, so elimination dominates.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Alcohols are generally slightly weaker acids than water.",
+   "q": "Apart from methanol, simple alcohols are slightly weaker acids than water.",
    "options": [
     "True",
     "False"
    ],
    "correct": 0,
-   "why": "The alkyl group attached to the oxygen is electron-donating relative to hydrogen, which destabilizes the alkoxide conjugate base somewhat compared to hydroxide, making most simple alcohols a bit less acidic than water.",
+   "why": "Alkyl groups donate electron density to the alkoxide oxygen and crowd it out of good solvation, so ethanol (pKa 16) and tert-butanol (pKa 18) are both weaker acids than water (15.7). Methanol is the exception that makes the wording matter: at pKa 15.5 it is slightly more acidic than water, because it carries the least alkyl bulk of all.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -20589,52 +20589,52 @@
    "type": "mcq"
   },
   {
-   "q": "Swern oxidation (DMSO and oxalyl chloride, then base) converts a primary alcohol to an aldehyde while avoiding:",
+   "q": "The role of the chlorosulfite intermediate R-O-SOCl formed from an alcohol and SOCl2 is to:",
    "options": [
-    "Any stereochemical change at the carbinol carbon",
-    "Formation of a sulfonium intermediate",
-    "Over-oxidation to the carboxylic acid",
-    "The need for a final aqueous work-up"
+    "Oxidize the carbinol carbon before substitution occurs",
+    "Protonate the hydroxyl so that water can leave",
+    "Convert the OH into a group that leaves as SO2 and chloride",
+    "Trap any carbocation formed during the reaction"
    ],
    "correct": 2,
-   "why": "Like PCC, Swern conditions contain no water, so the aldehyde product cannot be hydrated into the gem-diol that aqueous Cr(VI) systems go on to oxidize; it also avoids toxic chromium reagents.",
+   "why": "The alcohol oxygen attacks sulfur, which parks a leaving group on the oxygen rather than on carbon. That group departs as sulfur dioxide and chloride, two stable and weakly basic pieces, so chloride can finish the job with an ordinary backside displacement. Nothing is oxidized and no positive charge is ever built on carbon, which is why the product is cleanly inverted and never rearranged.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "The Lucas test (HCl/ZnCl2) distinguishes primary, secondary, and tertiary alcohols based on how quickly a cloudy alkyl chloride layer forms.",
+   "q": "Heating an alcohol with sodium cyanide displaces the hydroxide and gives a nitrile directly.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Tertiary alcohols react almost instantly because their carbocation is highly stabilized, secondary alcohols take several minutes, and primary alcohols show little change at room temperature, so the reaction rate reveals the alcohol's class.",
+   "correct": 1,
+   "why": "Hydroxide is the conjugate base of water, pKa 15.7, which makes it a strong base and one of the worst leaving groups in the course. Cyanide cannot displace it however hot the flask gets. The OH has to be activated first - as a tosylate, or by protonation - and then cyanide will do the SN2.",
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
-   "q": "In the Lucas test, a tertiary alcohol shows:",
+   "q": "Which of these is the strongest acid?",
    "options": [
-    "No visible change even after heating",
-    "Cloudiness only after five to ten minutes",
-    "A color change from orange to green",
-    "Immediate cloudiness or a separate layer"
+    "Ethanol",
+    "tert-Butanol",
+    "Methanol",
+    "Propan-2-ol"
    ],
-   "correct": 3,
-   "why": "Tertiary alcohols ionize very quickly under these acidic conditions because the resulting carbocation is highly stabilized, so the insoluble alkyl chloride forms almost immediately.",
+   "correct": 2,
+   "why": "Acidity falls as alkyl groups are added around the oxygen: methanol 15.5, water 15.7, ethanol 16, tert-butanol 18. Those alkyl groups donate electron density into an already negative alkoxide and, more importantly in solution, wrap it in bulk that keeps solvent molecules from stabilizing the charge. Methanol carries the least bulk, so its alkoxide is the best solvated and methanol is the strongest acid of the four.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Converting an alcohol to a TMS (trimethylsilyl) ether before carrying out a reaction elsewhere in the molecule is done primarily to:",
+   "q": "Primary alcohols dehydrate only under forcing conditions, and when they do the mechanism is described as E2-like rather than E1. The reason is that:",
    "options": [
-    "Temporarily mask the OH from other reagents",
-    "Permanently destroy the alcohol functionality",
-    "Make the molecule more acidic overall",
-    "Oxidize the alcohol in a controlled, reversible way"
+    "Primary C-O bonds are much stronger than secondary ones",
+    "A primary carbocation is too unstable to form",
+    "Primary alcohols cannot be protonated by sulfuric acid",
+    "Primary alcohols have no beta hydrogen to lose"
    ],
-   "correct": 0,
-   "why": "Protecting groups like TMS ethers are easily installed and later removed (for example with mild acid or fluoride), letting chemists carry out reactions elsewhere in a molecule without interference from a free -OH.",
+   "correct": 1,
+   "why": "E1 requires the leaving group to depart before anything else happens, which means paying the full price of the carbocation. A primary cation is stabilized by almost nothing, so that route is closed. The elimination instead happens in one concerted step, with the base removing the beta hydrogen as water leaves, which never puts a full positive charge on carbon - and it is why primary alcohols need higher temperatures than secondary or tertiary ones.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -20702,7 +20702,7 @@
    "type": "mcq"
   },
   {
-   "q": "Strong acid cleavage of an ether (e.g., with HI) proceeds through what kind of mechanism for a secondary/tertiary carbon?",
+   "q": "Strong acid cleavage of an ether with HI runs by which mechanism at a tertiary carbon?",
    "options": [
     "SN2 only",
     "SN1, via a carbocation",
@@ -20710,7 +20710,7 @@
     "No mechanism is possible"
    ],
    "correct": 1,
-   "why": "Protonated ethers at secondary/tertiary centers tend to cleave via SN1 (carbocation pathway), while primary centers favor SN2.",
+   "why": "A tertiary carbon ionizes readily once the oxygen is protonated, so the alcohol leaves on its own and iodide captures the resulting carbocation - SN1. A primary or methyl carbon cannot support a cation, so there iodide attacks directly, SN2. A secondary carbon sits between the two and does some of each.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -20752,20 +20752,20 @@
    "type": "tf"
   },
   {
-   "q": "Heating methyl propyl ether with excess concentrated HI cleaves the ether to give propanol plus which alkyl halide?",
+   "q": "Methyl propyl ether is heated with one equivalent of concentrated HI. The products are:",
    "options": [
-    "Methyl iodide",
-    "Propyl iodide",
-    "A mixture of both in equal amounts",
-    "No cleavage occurs; ethers are inert to HI"
+    "Methyl iodide and propan-1-ol",
+    "Propyl iodide and methanol",
+    "Equal amounts of both alkyl iodides",
+    "No reaction; ethers are inert to HI"
    ],
    "correct": 0,
-   "why": "Once the ether oxygen is protonated, iodide attacks via SN2 at the less hindered, less sterically crowded methyl carbon rather than the propyl carbon, giving methyl iodide and propanol (which can react further with excess acid).",
+   "why": "Protonation makes the oxygen a viable leaving group, but neither carbon here can carry a positive charge, so the cleavage has to be an SN2 - and an SN2 goes where the approach is clearest, the methyl. That gives methyl iodide and propan-1-ol. Only with excess HI and more heating does the propanol go on to become propyl iodide.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Treating tert-butyl methyl ether with excess HI gives:",
+   "q": "Treating tert-butyl methyl ether with one equivalent of HI gives:",
    "options": [
     "Methyl iodide and tert-butanol",
     "tert-Butyl iodide and methanol",
@@ -20773,7 +20773,7 @@
     "No reaction, since tertiary ethers resist acidic cleavage"
    ],
    "correct": 1,
-   "why": "The tertiary carbon can ionize readily to form a stable carbocation (SN1-like pathway), so iodide captures that carbocation, leaving methanol as the other fragment rather than forming a methyl cation.",
+   "why": "The tertiary carbon ionizes to a stable carbocation once the oxygen is protonated, so cleavage happens there and iodide captures the cation: tert-butyl iodide and methanol. Note that the most hindered carbon is attacked precisely because no backside attack is involved. With excess HI the methanol would go on to give methyl iodide as well.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -20791,15 +20791,17 @@
    "type": "mcq"
   },
   {
-   "q": "Treating anisole (methyl phenyl ether) with HI cleaves it to give phenol and methyl iodide, with the aryl-oxygen bond remaining completely intact.",
+   "q": "Ethyl isopropyl ether is heated with one equivalent of HI, giving ethyl iodide and propan-2-ol. The reason the iodide ends up on the ethyl group is that:",
    "options": [
-    "True",
-    "False"
+    "The secondary carbon forms a cation too readily for iodide to reach it",
+    "Neither carbon supports a cation well, so the SN2 goes to the less hindered one",
+    "Secondary C-O bonds are stronger than primary C-O bonds",
+    "Iodide is too large to approach a secondary carbon at all"
    ],
-   "correct": 0,
-   "why": "Breaking the aryl-oxygen bond would require either an unstable aryl cation (no SN1 pathway) or backside attack on a planar, sp2 aromatic carbon (no SN2 pathway), so cleavage instead occurs exclusively at the methyl carbon.",
+   "correct": 1,
+   "why": "Ask which mechanism is running before asking which carbon reacts. A secondary cation is not stable enough to form readily under these conditions, so the cleavage is an SN2, and an SN2 is decided by sterics: iodide attacks the primary ethyl carbon. Had one carbon been tertiary, the answer would have flipped, because that carbon would ionize without help.",
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Why is the Williamson ether synthesis generally a poor method for making an ether from a tertiary alkyl halide?",
@@ -20865,15 +20867,17 @@
    "type": "mcq"
   },
   {
-   "q": "Diethyl ether was historically used as a general anesthetic in surgery.",
+   "q": "You need tert-butyl methyl ether by a Williamson synthesis. Which pairing works?",
    "options": [
-    "True",
-    "False"
+    "Methoxide plus 2-bromo-2-methylpropane",
+    "tert-Butoxide plus iodomethane",
+    "Methanol plus tert-butanol with acid",
+    "Either pairing works equally well"
    ],
-   "correct": 0,
-   "why": "Diethyl ether was one of the earliest general anesthetics used in medicine, though it was eventually replaced by safer, less flammable agents.",
+   "correct": 1,
+   "why": "The halide is the electrophile in an SN2, so it has to be the unhindered partner - here, iodomethane. Pairing methoxide with a tertiary halide instead gives elimination: the alkoxide is a strong base, and at a tertiary carbon it removes a beta hydrogen rather than attacking. Put the bulk on the alkoxide and the simplicity on the halide.",
    "difficulty": "easy",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Tetrahydrofuran (THF) is a commonly used ether solvent mainly because it:",
@@ -20913,15 +20917,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which characteristic infrared absorption is commonly used to help identify an ether functional group?",
+   "q": "Which method installs an ether group at a tertiary carbon?",
    "options": [
-    "A broad O-H stretch around 3300 cm-1",
-    "A strong C-O stretch around 1050-1150 cm-1",
-    "A sharp C=O stretch around 1715 cm-1",
-    "An N-H stretch around 3400 cm-1"
+    "A Williamson synthesis using a tertiary alkyl halide",
+    "Alkoxymercuration-demercuration of the corresponding alkene",
+    "Heating a tertiary alcohol with a primary alcohol",
+    "Treating a tertiary alkyl halide with an alcohol and base"
    ],
    "correct": 1,
-   "why": "Ethers lack the O-H and C=O groups that dominate alcohol and carbonyl spectra, so their most diagnostic IR feature is the strong C-O single bond stretch in the 1050-1150 cm-1 region.",
+   "why": "Every route through an SN2 fails at a tertiary carbon, because the alkoxide is a strong base and eliminates instead. Alkoxymercuration avoids SN2 entirely: mercury bridges the alkene, the alcohol opens that bridge at the carbon better able to carry positive charge (Markovnikov), and NaBH4 then replaces the mercury with hydrogen. No free cation is involved, so nothing rearranges either.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -20952,13 +20956,13 @@
    "type": "mcq"
   },
   {
-   "q": "Unlike alcohols, simple ethers have no O-H bond and therefore cannot be oxidized to aldehydes, ketones, or carboxylic acids under standard laboratory oxidation conditions.",
+   "q": "Simple ethers have no O-H bond, so they cannot be oxidized at carbon by PCC- or Jones-type reagents the way alcohols are.",
    "options": [
     "True",
     "False"
    ],
    "correct": 0,
-   "why": "Reagents like PCC or Jones reagent oxidize by removing the O-H hydrogen along with a C-H hydrogen from the carbinol carbon; since ethers have no O-H to begin with, this pathway simply is not available to them.",
+   "why": "Chromium oxidation of an alcohol works by forming a chromate ester at the O-H and then removing a hydrogen from the carbinol carbon; with no O-H, an ether offers no way in, so these reagents leave it alone. That is a statement about deliberate oxidation at carbon, not about the slow radical autoxidation at the alpha C-H that forms peroxides in a bottle left open to air.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -20976,15 +20980,15 @@
    "type": "mcq"
   },
   {
-   "q": "Vinyl (enol) ethers are hydrolyzed much more readily under mild aqueous acid than ordinary dialkyl ethers because:",
+   "q": "Methoxide is treated with 2-bromo-2-methylpropane in the hope of making tert-butyl methyl ether. The main organic product is:",
    "options": [
-    "Vinyl ethers contain an extra oxygen atom that dialkyl ethers lack",
-    "Protonation gives a resonance-stabilized oxocarbenium ion",
-    "The C-O bond in a vinyl ether is a double bond, which is intrinsically weaker",
-    "Vinyl ethers are actually esters in disguise"
+    "tert-Butyl methyl ether, in good yield",
+    "2-Methylpropene, from E2 elimination",
+    "Methanol and 2-methylpropan-2-ol",
+    "Dimethyl ether and an alkane"
    ],
    "correct": 1,
-   "why": "Protonating the alkene carbon of a vinyl ether produces a cation stabilized by resonance donation from the adjacent oxygen (an oxocarbenium ion); water then adds and loss of the alcohol gives a carbonyl compound, a much faster pathway than the harsh conditions needed to cleave a saturated dialkyl ether.",
+   "why": "An alkoxide is a strong base as well as a good nucleophile, and a tertiary carbon offers it no backside to attack. So it takes a beta hydrogen instead and eliminates, giving 2-methylpropene plus methanol. This is the standard exam trap in Williamson planning: the two disconnections of an unsymmetrical ether are not interchangeable.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -21050,15 +21054,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why do simple dialkyl ethers typically require a strong acid and prolonged heating to be cleaved, while esters hydrolyze readily with just dilute aqueous base at room temperature?",
+   "q": "Which sequence converts cyclohexene into cyclohexyl methyl ether?",
    "options": [
-    "Esters contain more carbon atoms, making them inherently more reactive",
-    "An ester has an electrophilic carbonyl; an ether has none",
-    "Ethers are aromatic and therefore unreactive",
-    "Esters are ionic compounds, unlike ethers"
+    "NaOCH3, then heat",
+    "Hg(OAc)2 in methanol, then NaBH4",
+    "mCPBA, then methanol with acid",
+    "HBr, then sodium methoxide"
    ],
    "correct": 1,
-   "why": "A base can attack an ester's carbonyl carbon directly because the resulting tetrahedral intermediate is stabilized by the carbonyl oxygen and can expel a leaving group; an ether has no such electrophilic carbon, so it must first be protonated by strong acid before any C-O bond becomes breakable.",
+   "why": "Alkoxymercuration-demercuration adds methanol across the double bond with Markovnikov selectivity and no rearrangement, giving the ether directly. Alkoxide does not add to an isolated alkene; mCPBA then methanol gives a methoxy alcohol rather than a simple ether, because the epoxide leaves an OH behind; and HBr then methoxide is a Williamson on a secondary halide, which loses mostly to E2.",
    "difficulty": "hard",
    "type": "mcq"
   }
@@ -21254,15 +21258,15 @@
    "type": "tf"
   },
   {
-   "q": "Compared to a typical acyclic dialkyl ether, an epoxide reacts with nucleophiles much faster mainly because of:",
+   "q": "An unsymmetrical epoxide is opened with sodium ethoxide. The OH in the product ends up on:",
    "options": [
-    "Relief of significant ring strain upon opening the three-membered ring",
-    "Epoxides having a much more electronegative oxygen atom",
-    "Epoxides containing an extra oxygen atom",
-    "Epoxides being aromatic"
+    "The more substituted carbon, since the nucleophile took the other one",
+    "The less substituted carbon, alongside the new bond",
+    "Whichever carbon the ethoxide attacked",
+    "Neither carbon; the oxygen is lost as water"
    ],
    "correct": 0,
-   "why": "The epoxide's three-membered ring has bond angles far smaller than the ideal tetrahedral angle, storing substantial strain energy; breaking a C-O bond releases that strain, which strongly drives the ring-opening reaction forward.",
+   "why": "Only one C-O bond breaks, and it is the one at the carbon under attack. Under basic conditions ethoxide attacks the less hindered carbon, so that carbon gets the new OEt group and the oxygen stays where it already was - on the more substituted carbon, picking up a proton at workup. Tracking which carbon keeps the oxygen is half of getting these products right.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -21380,15 +21384,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which property makes epoxides so much more reactive toward ring-opening than larger cyclic ethers such as tetrahydropyran?",
+   "q": "Which sequence converts cyclohexene into trans-1,2-cyclohexanediol?",
    "options": [
-    "Severe angle strain from ~60 degree angles",
-    "A higher molecular weight",
-    "The presence of an extra oxygen atom",
-    "Aromatic character in the three-membered ring"
+    "mCPBA, then dilute aqueous acid",
+    "Cold dilute KMnO4",
+    "H2 over palladium, then water",
+    "HBr, then aqueous NaOH"
    ],
    "correct": 0,
-   "why": "The three-membered epoxide ring forces C-O-C and C-C-O bond angles down to roughly 60 degrees, well below the ideal ~109.5 degrees for sp3 atoms, storing substantial strain energy that is released upon ring-opening; six-membered cyclic ethers have nearly ideal bond angles and little such strain.",
+   "why": "mCPBA delivers an oxygen to one face to give cyclohexene oxide, and hydrolysis then opens that ring by backside attack, so water arrives on the face opposite the oxygen and the two OH groups end up anti - the trans diol. Anything that delivers both oxygens to the same face, as cold dilute permanganate does, gives the cis diol instead.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -21430,15 +21434,15 @@
    "type": "tf"
   },
   {
-   "q": "Compared to the C-O bonds of a non-strained ether, the C-O bonds of an epoxide are:",
+   "q": "Ethylene oxide is treated with the acetylide of propyne, then worked up with dilute acid. The product is:",
    "options": [
-    "Essentially identical in reactivity",
-    "Stronger and less reactive because of the smaller ring size",
-    "Ionic rather than covalent",
-    "Weaker and far more easily broken by nucleophiles"
+    "Propyne and ethylene glycol",
+    "But-3-yn-1-ol",
+    "Pent-3-yn-1-ol",
+    "Pent-4-yn-2-ol"
    ],
-   "correct": 3,
-   "why": "The severe angle strain in the three-membered ring distorts the hybridization and bonding at the ring carbons, making the C-O bonds considerably easier to cleave by nucleophilic attack than the analogous bonds in an unstrained, open-chain ether.",
+   "correct": 2,
+   "why": "The acetylide is a strong carbon nucleophile, so it opens the ring by SN2 at one of the two equivalent CH2 carbons; the alkoxide left behind picks up a proton at workup. The chain therefore grows by exactly two carbons and the OH lands two carbons from the new C-C bond: CH3-C(triple bond)C-CH2CH2-OH, pent-3-yn-1-ol. This two-carbon extension is the main synthetic reason to reach for an epoxide.",
    "difficulty": "medium",
    "type": "mcq"
   }

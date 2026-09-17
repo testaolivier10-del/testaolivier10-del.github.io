@@ -508,6 +508,25 @@
     caption: 'Three hydrogen environments: CH₃, CH₂ and OH.'
   };
 
+  /* The step every alcohol reaction under acid begins with, frozen one move
+     in: the oxygen has taken a proton, so what is attached to carbon is no
+     longer hydroxide but water. Drawn so the C–O bond is the obvious thing
+     to break. */
+  M['protonated-propan-2-ol'] = {
+    name: 'Protonated propan-2-ol', formula: '(CH\u2083)\u2082CHOH\u2082\u207A', viewBox: '0 0 320 190',
+    atoms: {
+      o:  { x:222, y:62, r:17, label:'O', charge:'\u207A', lp:1, role:'leaving-group', note:'The oxygen has been protonated, so it carries a positive charge. What leaves here is neutral water, not hydroxide \u2014 that is the whole point of the acid.' },
+      ho1:{ x:266, y:34, r:12, label:'H' },
+      ho2:{ x:272, y:86, r:12, label:'H' },
+      c2: { x:158, y:98, r:17, label:'C', role:'electrophile', note:'The carbinol carbon. Once water leaves, this is where the positive charge ends up \u2014 a secondary carbocation.' },
+      h2: { x:158, y:150,r:11, label:'H' },
+      c1: { x:92,  y:64, r:17, label:'C', note:'A methyl group.' },
+      c3: { x:104, y:152,r:17, label:'C', note:'A methyl group.' }
+    },
+    bonds: [{a:'o',b:'ho1'},{a:'o',b:'ho2'},{a:'o',b:'c2'},{a:'c2',b:'h2'},{a:'c2',b:'c1'},{a:'c2',b:'c3'}],
+    caption: 'Propan-2-ol after protonation. The group on carbon is now water, and water is a fine leaving group.'
+  };
+
   /* ---- Substitution / elimination substrates ------------------------- */
 
   M['sn2-bromoethane'] = {

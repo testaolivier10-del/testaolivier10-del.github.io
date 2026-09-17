@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Only strong acid can pry an ether apart.',
-        bodyHtml: '<p class="step-body">Concentrated HI or HBr, especially with heat, is one of the very few things that will cleave an ordinary ether. The mechanism starts exactly like acid-catalyzed alcohol chemistry: the ether oxygen is protonated first, which converts the terrible leaving group RO⁻ into a much better one: a neutral alcohol, ROH. Apply the leaving-group rule from <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-electron-movement\">Organic Structure &amp; Electron Movement</a> and you can see why that helps — ROH is the conjugate base of ROH₂⁺ (pKa ≈ −2, a strong acid), while RO⁻ is the conjugate base of ROH itself (pKa ≈ 16, a weak acid). Protonation turned a strong base into a weak one.</p><p class="step-body" style="margin-bottom:0;">Once protonated, a halide ion (I⁻ or Br⁻ — an excellent, weakly basic, highly nucleophilic species) attacks one of the two carbons attached to oxygen. At a primary carbon this runs by SN2 (backside attack); at a secondary or tertiary carbon, it runs by SN1 through a carbocation. The C–O bond breaks, giving an alcohol (or, with excess HX, a second equivalent of alkyl halide) plus the first alkyl halide.</p>'
+        bodyHtml: '<p class="step-body">Concentrated HI or HBr, especially with heat, is one of the very few things that will cleave an ordinary ether. The mechanism starts exactly like acid-catalyzed alcohol chemistry: the ether oxygen is protonated first, which converts the terrible leaving group RO⁻ into a much better one: a neutral alcohol, ROH. Apply the leaving-group rule from <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-electron-movement\">Organic Structure &amp; Electron Movement</a> and you can see why that helps — ROH is the conjugate base of ROH₂⁺ (pKa ≈ −2, a strong acid), while RO⁻ is the conjugate base of ROH itself (pKa ≈ 16, a weak acid). Protonation turned a strong base into a weak one.</p><p class="step-body" style="margin-bottom:0;">Once protonated, a halide ion (I⁻ or Br⁻ — an excellent, weakly basic, highly nucleophilic species) attacks one of the two carbons attached to oxygen. At a primary or methyl carbon this runs by SN2 (backside attack, inversion at that carbon); at a tertiary or benzylic carbon it runs by SN1 instead, since that carbon ionizes to a stable cation that the halide then captures. A secondary carbon sits between the two and does some of each. The C–O bond breaks, giving an alcohol (or, with excess HX, a second equivalent of alkyl halide) plus the first alkyl halide.</p>'
       },
       {
         type: 'explain',
@@ -239,10 +239,10 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'An unsymmetrical ether, CH₃–O–CH₂CH₂CH₃ (methyl propyl ether), is refluxed with excess concentrated HI. Which bond breaks, and by what mechanism?',
+        title: 'An unsymmetrical ether, CH₃–O–CH₂CH₂CH₃ (methyl propyl ether), is refluxed with concentrated HI. Which bond breaks first, and by what mechanism?',
         options: ['The C–O bond to the propyl group breaks by SN1', 'The C–O bond to the methyl group breaks by SN2 (methyl is the least hindered, most accessible carbon for backside attack)', 'Neither bond breaks — ethers never react with acid'],
         correctIndex: 1,
-        correctFeedback: 'Correct — with a primary/methyl carbon available, iodide performs a clean SN2 backside attack on the least hindered carbon (methyl), which is faster than going through the propyl group.'
+        correctFeedback: 'Correct — neither carbon can support a cation, so this has to be an SN2, and an SN2 goes for the least hindered carbon: iodide attacks the methyl. That gives methyl iodide and propan-1-ol; with excess HI and more heat the propanol is converted to propyl iodide in a second, slower step.'
       }
     ]
   });

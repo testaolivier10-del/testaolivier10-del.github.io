@@ -7934,7 +7934,7 @@ FIGURES.push({
       bond(a, b, { rFrom: 0, rTo: o.r ?? 15, cls: o.cls }) +
       atom(b.x, b.y, lab, { r: o.r ?? 15, size: o.size ?? 11, kind: o.kind });
 
-    // ---- 1. neomenthyl: Cl axial, an axial H on each neighbour ----
+    // ---- 1. neomenthyl: Cl axial, an axial H on each neighbor ----
     const A = chair(128, CY, K);
     s += chairRing(A) + dot(A);
     s += put(A[C1], axialEnd(A, C1, 34), 'Cl', { r: 14, kind: 'warn', cls: 'fg-bond-hi' });
@@ -8058,7 +8058,7 @@ FIGURES.push({
 
 /* A skeletal double bond between two unlabelled vertices: one full line plus
    one inset line on the side `inward` points to, so nothing overhangs the
-   neighbouring bond the way a plain order-2 bond does at a shared vertex. */
+   neighboring bond the way a plain order-2 bond does at a shared vertex. */
 const skDouble = (a, b, inward) => ringDouble(a, b, inward, { inset: 7, gap: 4.6 });
 const plus = (x, y) => text(x, y, '+', { cls: 'fg-warn', size: 15 });
 const lobeE = (cx, cy, rx, ry, cls = 'fg-orb') =>
@@ -9010,6 +9010,359 @@ FIGURES.push({
   },
   caption: 'What the instrument actually prints. Each band is a single electronic transition, and λ<sub>max</sub> is read off the top of it. Adding one double bond to the conjugation moves the whole band 41 nm to the right — and, here, makes it taller as well.',
   note: 'The small bump near 320 nm is the part most students never meet, and it is the one that stops UV-Vis being read as "a long λ means a long chain". It is a lone pair on a carbonyl oxygen being promoted into the same π* orbital — an <b>n → π*</b> transition. It lands at a long wavelength but its ε is in the tens rather than the tens of thousands, because the two orbitals barely overlap. A big λ<sub>max</sub> with a tiny ε is a lone pair; a big λ<sub>max</sub> with a huge ε is a long conjugated system.',
+});
+
+
+/* ------------------------------------------------------------- 10.1 ---
+   Alcohol dehydration, with its arrows. The section's centrepiece was
+   described in words only: "ionizes to a carbocation and then loses a beta
+   hydrogen" is the whole of E1 and none of the drawing. */
+FIGURES.push({
+  id: 'alcohol-e1-arrows',
+  section: 'alcohol-reactions',
+  anchor: '<p class="step-body">Reactivity follows 3° &gt; 2° &gt; 1°, matching carbocation stability. Primary alcohols are reluctant and, when forced, proceed by a concerted E2-like pathway rather than through a primary cation.</p>',
+  alt: 'Two drawn steps of the acid-catalyzed dehydration of butan-2-ol. In the first, one curved arrow runs from the carbon-oxygen bond of the protonated alcohol onto oxygen, releasing water and leaving a secondary carbocation. In the second, two curved arrows show a water molecule taking a beta hydrogen from C3 while that carbon-hydrogen bond becomes the pi bond of but-2-ene.',
+  viewBox: '0 0 760 462',
+  build() {
+    let s = '';
+    /* The butan-2-ol skeleton as a zigzag: C1 and C4 are labelled methyls,
+       C2 carries the oxygen and C3 is a plain vertex. */
+    const chain = (ox, oy) => {
+      const c1 = P(ox, oy + 30), c2 = P(ox + 58, oy), c3 = P(ox + 116, oy + 30), c4 = P(ox + 174, oy);
+      let g = bond(c1, c2, { rFrom: 17, rTo: 15 }) + bond(c2, c3, { rFrom: 15, rTo: 0 }) + bond(c3, c4, { rFrom: 0, rTo: 17 });
+      g += atom(c3.x, c3.y, '', { kind: 'point' });
+      g += atom(c1.x, c1.y, 'CH₃', { r: 17, size: 10 });
+      g += atom(c4.x, c4.y, 'CH₃', { r: 17, size: 10 });
+      return { g, c1, c2, c3, c4 };
+    };
+
+    // ---- STEP 1: water leaves ----
+    s += tag(36, 40, 'STEP 1 — THE ACID HAS ALREADY PROTONATED THE OH. NOW WATER GOES.', { anchor: 'start' });
+    const A = chain(70, 120);
+    s += A.g;
+    const o = P(A.c2.x, A.c2.y - 58);
+    s += bond(A.c2, o, { rFrom: 15, rTo: 17 });
+    s += atom(o.x, o.y, 'OH₂', { r: 17, size: 10, kind: 'hi' });
+    s += text(o.x + 26, o.y - 14, '+', { cls: 'fg-tag-warn', size: 16 });
+    s += atom(A.c2.x, A.c2.y, 'C');
+    s += curve(P(A.c2.x + 14, A.c2.y - 14), P(o.x + 13, o.y + 14), { bow: -20 });
+    s += text(A.c2.x, A.c2.y + 84, 'the leaving group is WATER, not hydroxide', { cls: 'fg-sm', size: 9.5 });
+
+    s += arrow(P(320, 122), P(382, 122), { muted: true });
+    s += text(351, 106, '– H₂O', { cls: 'fg-sm', size: 9.5 });
+
+    const B = chain(440, 120);
+    s += B.g;
+    s += atom(B.c2.x, B.c2.y, 'C');
+    s += text(B.c2.x + 4, B.c2.y - 24, '+', { cls: 'fg-tag-warn', size: 17 });
+    s += text(556, B.c2.y + 84, 'a 2° carbocation — every carbocation rule now applies', { cls: 'fg-sm', size: 9.5 });
+    s += rule(36, 240, 724, 240);
+
+    // ---- STEP 2: lose a beta hydrogen ----
+    s += tag(36, 274, 'STEP 2 — A WEAK BASE TAKES A β-HYDROGEN. TWO ARROWS.', { anchor: 'start' });
+    const C = chain(70, 330);
+    s += C.g;
+    s += atom(C.c2.x, C.c2.y, 'C');
+    s += text(C.c2.x + 4, C.c2.y - 24, '+', { cls: 'fg-tag-warn', size: 17 });
+    const hb = P(C.c3.x, C.c3.y + 46);
+    s += bond(C.c3, hb, { rFrom: 0, rTo: 13, cls: 'fg-bond-hi' });
+    s += atom(hb.x, hb.y, 'H', { kind: 'hi', r: 13 });
+    s += text(C.c3.x + 22, C.c3.y + 20, 'β', { cls: 'fg-tag', size: 11 });
+    const base = P(hb.x + 88, hb.y + 4);
+    s += atom(base.x, base.y, 'H₂O', { r: 21, size: 9.5 });
+    s += lonePair(base.x, base.y, 180, { dist: 27 });
+    s += curve(P(base.x - 32, base.y - 2), P(hb.x + 16, hb.y + 2), { bow: 14 });
+    const mid = P((C.c2.x + C.c3.x) / 2, (C.c2.y + C.c3.y) / 2);
+    s += curve(P(hb.x - 12, hb.y - 24), P(mid.x + 4, mid.y + 10), { bow: -24 });
+    s += text(190, 440, 'taking the H from C3 gives the more substituted alkene', { cls: 'fg-sm', size: 9.5 });
+
+    s += arrow(P(386, 344), P(448, 344), { muted: true });
+    const d2 = P(560, 330), d3 = P(618, 360);
+    s += bond(P(502, 360), d2, { rFrom: 17, rTo: 0 });
+    s += bond(d2, d3, { rFrom: 0, rTo: 0, order: 2, gap: 4.4 });
+    s += bond(d3, P(676, 330), { rFrom: 0, rTo: 17 });
+    s += atom(502, 360, 'CH₃', { r: 17, size: 10 });
+    s += atom(676, 330, 'CH₃', { r: 17, size: 10 });
+    s += atom(d2.x, d2.y, '', { kind: 'point' });
+    s += atom(d3.x, d3.y, '', { kind: 'point' });
+    s += text(590, 440, 'but-2-ene — the Zaitsev product', { cls: 'fg-tag-good', size: 10.5 });
+    return s;
+  },
+  caption: 'The same two-step shape as any E1, with the alcohol supplying the leaving group once acid has protonated it. Step 1 is slow and sets the rate; step 2 is fast and decides the product. Note what the base is — a water molecule, the solvent — because E1 needs nothing stronger: the hydrogen it removes sits next to a full positive charge.',
+  note: 'The arrow in step 1 is the one worth rehearsing, because the common error is to draw hydroxide leaving. It cannot: HO⁻ is a strong base. Protonation is what converts that leaving group into water, and the arrow starts on the C–O <b>bond</b> and ends on <b>oxygen</b> — the electronegative atom keeps the pair, which is why the carbon is left positive.',
+});
+
+/* ------------------------------------------------------------- 10.2 ---
+   The rearrangement trap, drawn. The notes named it and then dropped it,
+   which leaves a student unable to reproduce the single most-tested result
+   in the section. */
+FIGURES.push({
+  id: 'hbr-shift-vs-pbr3',
+  section: 'alcohol-reactions',
+  anchor: '<p><b>The habit to build:</b> whenever an acid route leaves a 1° or 2° cation next to a more substituted carbon, check for a shift <i>before</i> you write the product. If the question hands you PBr₃ or SOCl₂ instead, that check is exactly what it is telling you to skip.</p>\n</div>',
+  alt: 'Three frames. A secondary carbocation from 3,3-dimethylbutan-2-ol, with a curved arrow carrying a methyl group and its bonding pair from the neighboring quaternary carbon across to the positive carbon; the resulting tertiary carbocation, with a curved arrow from bromide; and the product 2-bromo-2,3-dimethylbutane, with the bromine on the carbon that never held the hydroxyl.',
+  viewBox: '0 0 700 336',
+  build() {
+    let s = '';
+    const pair = (ox, oy) => {
+      const q = P(ox, oy), c = P(ox + 52, oy + 30);
+      return { q, c, g: bond(q, c, { rFrom: 15, rTo: 15 }) };
+    };
+    const arms = (c, degs, cls) => degs.map((d) => {
+      const e = armEnd(c, d, 44);
+      return bond(c, e, { rFrom: 15, rTo: 17, cls }) + atom(e.x, e.y, 'CH₃', { r: 17, size: 10 });
+    }).join('');
+    const hArm = (c, deg) => {
+      const e = armEnd(c, deg, 40);
+      return bond(c, e, { rFrom: 15, rTo: 12 }) + atom(e.x, e.y, 'H', { r: 12, size: 11 });
+    };
+
+    // frame 1 — the 2° cation, with the methyl that moves
+    s += tag(20, 40, '2° CATION, QUATERNARY NEIGHBOR', { anchor: 'start' });
+    const A = pair(78, 104);
+    s += A.g + arms(A.q, [90, 180]);
+    const mig = armEnd(A.q, 270, 46);
+    s += bond(A.q, mig, { rFrom: 15, rTo: 17, cls: 'fg-bond-hi' });
+    s += atom(mig.x, mig.y, 'CH₃', { r: 17, size: 10, kind: 'hi' });
+    s += arms(A.c, [0]);
+    s += hArm(A.c, 300);
+    s += atom(A.q.x, A.q.y, 'C');
+    s += atom(A.c.x, A.c.y, 'C');
+    s += text(A.c.x + 4, A.c.y - 26, '+', { cls: 'fg-tag-warn', size: 17 });
+    s += curve(P(mig.x + 16, mig.y - 8), P(A.c.x - 14, A.c.y + 12), { bow: -22 });
+    s += text(104, 226, 'the neighbor has no H to give,', { cls: 'fg-sm', size: 9.5 });
+    s += text(104, 242, 'so a whole METHYL migrates instead', { cls: 'fg-tag-warn', size: 10.5 });
+
+    s += arrow(P(216, 140), P(264, 140), { muted: true });
+
+    // frame 2 — the 3° cation, captured by bromide
+    s += tag(360, 40, '3° NOW, AND BROMIDE ARRIVES');
+    const B = pair(330, 104);
+    s += B.g + arms(B.q, [90, 180]);
+    s += arms(B.c, [0, 300]);
+    s += hArm(B.c, 240);
+    s += atom(B.q.x, B.q.y, 'C');
+    s += atom(B.c.x, B.c.y, 'C');
+    s += text(B.q.x - 2, B.q.y - 24, '+', { cls: 'fg-tag-warn', size: 17 });
+    const br = armEnd(B.q, 250, 64);
+    s += atom(br.x, br.y, 'Br', { kind: 'warn' });
+    s += text(br.x - 22, br.y + 6, '−', { cls: 'fg-tag-warn', size: 15 });
+    s += curve(P(br.x + 6, br.y - 15), P(B.q.x - 6, B.q.y + 16), { bow: -12 });
+    s += text(356, 226, 'the charge has moved to the carbon', { cls: 'fg-sm', size: 9.5 });
+    s += text(356, 242, 'that never carried the OH', { cls: 'fg-sm', size: 9.5 });
+
+    s += arrow(P(466, 140), P(514, 140), { muted: true });
+
+    // frame 3 — the product
+    s += tag(604, 40, 'PRODUCT');
+    const C = pair(566, 104);
+    s += C.g + arms(C.q, [90, 180]);
+    s += arms(C.c, [0, 300]);
+    s += hArm(C.c, 240);
+    const br2 = armEnd(C.q, 270, 46);
+    s += bond(C.q, br2, { rFrom: 15, rTo: 16, cls: 'fg-bond-hi' });
+    s += atom(br2.x, br2.y, 'Br', { kind: 'hi' });
+    s += atom(C.q.x, C.q.y, 'C');
+    s += atom(C.c.x, C.c.y, 'C');
+    s += text(600, 226, '2-bromo-2,3-dimethylbutane', { cls: 'fg-tag-good', size: 10.5 });
+
+    s += rule(40, 268, 660, 268);
+    s += text(350, 294, 'PBr₃ on the same alcohol never makes a cation, so nothing shifts:', { cls: 'fg-lbl', size: 11.5 });
+    s += text(350, 316, 'bromide attacks the carbon that held the OH, from the back, and inverts it.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'Why the reagent, not the substrate, decides this answer. Under HBr the alcohol becomes a secondary cation, and a methyl group crosses from the quaternary carbon <b>with its bonding pair</b> — which moves the positive charge to where the methyl came from. Bromide then captures a carbon that never carried the hydroxyl.',
+  note: 'Check the two products against each other. The HBr route puts bromine on C2 of a rearranged skeleton; PBr₃ puts it on the original carbinol carbon with inversion. Both are "the bromide from that alcohol", and they are different compounds — which is exactly why an exam specifies the reagent rather than saying "convert the alcohol to the bromide".',
+});
+
+/* ------------------------------------------------------------- 10.3 ---
+   Ether cleavage. The section's second half had no figure at all, and its
+   whole content is a fork: which carbon, by which mechanism. */
+FIGURES.push({
+  id: 'ether-cleavage-two-branches',
+  section: 'ether-chemistry',
+  anchor: '<p class="step-body">With excess HI the initially formed alcohol is itself converted to a second alkyl halide, so an ether ends up as two alkyl halides. HCl does not work well — chloride is too poor a nucleophile for the SN2 case.</p>',
+  alt: 'Two panels, each starting from a protonated ether. On the left, methyl propyl ether: iodide attacks the methyl carbon from the back in an SN2, giving methyl iodide and propan-1-ol. On the right, tert-butyl methyl ether: a curved arrow from the carbon-oxygen bond to oxygen ionizes the tertiary carbon to a carbocation, which iodide then captures, giving tert-butyl iodide and methanol.',
+  viewBox: '0 0 700 340',
+  build() {
+    let s = '';
+    // ---------- left: both carbons primary, so SN2 ----------
+    s += tag(196, 38, 'NEITHER CARBON CAN HOLD A CHARGE → SN2');
+    const oL = P(196, 150);
+    const meL = P(112, 150);
+    s += bond(meL, oL, { rFrom: 17, rTo: 15 });
+    s += atom(meL.x, meL.y, 'CH₃', { r: 17, size: 10 });
+    const hL = P(196, 96);
+    s += bond(oL, hL, { rFrom: 15, rTo: 12 });
+    s += atom(hL.x, hL.y, 'H', { r: 12, size: 11, kind: 'warn' });
+    const p1 = P(254, 180), p2 = P(312, 150);
+    s += bond(oL, p1, { rFrom: 15, rTo: 0 }) + bond(p1, p2, { rFrom: 0, rTo: 17 });
+    s += atom(p1.x, p1.y, '', { kind: 'point' });
+    s += atom(p2.x, p2.y, 'CH₃', { r: 17, size: 10 });
+    s += atom(oL.x, oL.y, 'O', { kind: 'hi' });
+    s += text(oL.x + 26, oL.y - 18, '+', { cls: 'fg-tag-warn', size: 16 });
+    const iL = P(64, 232);
+    s += atom(iL.x, iL.y, 'I', { kind: 'hi' });
+    s += text(iL.x + 20, iL.y - 14, '−', { cls: 'fg-hi', size: 15 });
+    s += curve(P(iL.x + 6, iL.y - 16), P(meL.x - 10, meL.y + 14), { bow: -14 });
+    s += curve(P(meL.x + 22, meL.y - 12), P(oL.x - 14, oL.y - 12), { bow: -20 });
+    s += text(196, 272, 'iodide attacks the carbon it can reach —', { cls: 'fg-sm', size: 9.5 });
+    s += text(196, 288, 'the methyl — and the oxygen leaves as an alcohol', { cls: 'fg-sm', size: 9.5 });
+    s += text(196, 312, 'CH₃I  +  propan-1-ol', { cls: 'fg-tag-good', size: 11 });
+
+    s += rule(356, 60, 356, 300);
+
+    // ---------- right: one tertiary carbon, so SN1 ----------
+    s += tag(528, 38, 'ONE CARBON IS TERTIARY → SN1');
+    const oR = P(546, 150);
+    const meR = P(622, 150);
+    s += bond(oR, meR, { rFrom: 15, rTo: 17 });
+    s += atom(meR.x, meR.y, 'CH₃', { r: 17, size: 10 });
+    const hR = P(546, 96);
+    s += bond(oR, hR, { rFrom: 15, rTo: 12 });
+    s += atom(hR.x, hR.y, 'H', { r: 12, size: 11, kind: 'warn' });
+    const tC = P(462, 150);
+    s += bond(tC, oR, { rFrom: 15, rTo: 15 });
+    for (const deg of [120, 180, 240]) {
+      const e = armEnd(tC, deg, 44);
+      s += bond(tC, e, { rFrom: 15, rTo: 17 }) + atom(e.x, e.y, 'CH₃', { r: 17, size: 10 });
+    }
+    s += atom(tC.x, tC.y, 'C');
+    s += atom(oR.x, oR.y, 'O', { kind: 'hi' });
+    s += text(oR.x + 26, oR.y - 18, '+', { cls: 'fg-tag-warn', size: 16 });
+    s += curve(P(tC.x + 20, tC.y - 12), P(oR.x - 14, oR.y - 12), { bow: -20 });
+    s += text(528, 272, 'the C–O bond breaks on its own: a 3° cation,', { cls: 'fg-sm', size: 9.5 });
+    s += text(528, 288, 'plus methanol — and iodide captures the cation', { cls: 'fg-sm', size: 9.5 });
+    s += text(528, 312, '(CH₃)₃CI  +  methanol', { cls: 'fg-tag-good', size: 11 });
+    return s;
+  },
+  caption: 'One protonation, two different second steps, and the substrate decides which. On the left nothing can carry a positive charge, so iodide has to do the work itself and does it where the approach is clear — the methyl. On the right the tertiary carbon ionizes without help, and the iodide simply waits for the cation. The <b>most hindered</b> carbon is attacked in the second case precisely because no backside attack is involved.',
+  note: 'Both panels start the same way, and that first step is the whole reason ethers can be cleaved at all: protonation converts RO⁻, a strong base that would never leave, into a neutral alcohol that will. Ask which mechanism is running before asking which carbon reacts — answering in the other order is what makes this question feel like two unrelated rules.',
+});
+
+/* ------------------------------------------------------------- 10.4 ---
+   Anti opening. "Both products are anti" is the section's stereochemical
+   punchline, and nothing was drawn for it. */
+FIGURES.push({
+  id: 'epoxide-anti-opening',
+  section: 'epoxides',
+  anchor: 'that is the same geometric argument as the anti addition of bromine to an alkene, and for the same reason — a three-membered ring blocks one face completely.</div>',
+  alt: 'On the left, an epoxide with the oxygen bridging two carbons from above and a hydroxide ion approaching the right-hand carbon from below, opposite the ring, with curved arrows for the attack and for the carbon-oxygen bond breaking. On the right, the product trans-1,2-cyclohexanediol drawn on a hexagon with one hydroxyl on a wedge and the other on a hash.',
+  viewBox: '0 0 700 348',
+  build() {
+    let s = '';
+    // ---------- left: why the two groups end up anti ----------
+    s += tag(196, 40, 'ONE FACE IS BLOCKED BY THE RING');
+    const ca = P(150, 170), cb = P(242, 170), ox = P(196, 112);
+    s += bond(ca, cb, { rFrom: 15, rTo: 15 });
+    s += bond(ca, ox, { rFrom: 15, rTo: 15 });
+    s += bond(cb, ox, { rFrom: 15, rTo: 15 });
+    const ra = armEnd(ca, 150, 44), rb = armEnd(cb, 30, 44);
+    s += bond(ca, ra, { rFrom: 15, rTo: 13 }) + atom(ra.x, ra.y, 'R', { r: 13, size: 11 });
+    s += bond(cb, rb, { rFrom: 15, rTo: 13 }) + atom(rb.x, rb.y, 'R', { r: 13, size: 11 });
+    s += atom(ca.x, ca.y, 'C');
+    s += atom(cb.x, cb.y, 'C');
+    s += atom(ox.x, ox.y, 'O', { kind: 'hi' });
+    s += lonePair(ox.x, ox.y, 270, { dist: 24 });
+    const nu = P(316, 254);
+    s += atom(nu.x, nu.y, 'HO', { r: 19, size: 10, kind: 'hi' });
+    s += text(nu.x + 24, nu.y - 14, '−', { cls: 'fg-hi', size: 15 });
+    s += curve(P(nu.x - 12, nu.y - 16), P(cb.x + 14, cb.y + 14), { bow: 16 });
+    s += curve(P(cb.x - 2, cb.y - 18), P(ox.x + 16, ox.y + 12), { bow: -16 });
+    s += text(196, 296, 'the nucleophile arrives opposite the C–O bond it breaks,', { cls: 'fg-sm', size: 9.5 });
+    s += text(196, 312, 'so the new bond and the oxygen end up on opposite faces', { cls: 'fg-tag', size: 10.5 });
+
+    s += rule(360, 62, 360, 306);
+
+    // ---------- right: the cyclohexene oxide case ----------
+    s += tag(534, 40, 'CYCLOHEXENE OXIDE + H₂O, ACID OR BASE');
+    const cx = 536, cy = 168, r = 60;
+    const v = [];
+    for (let i = 0; i < 6; i++) {
+      const a = ((60 * i - 30) * Math.PI) / 180;
+      v.push(P(cx + Math.cos(a) * r, cy + Math.sin(a) * r));
+    }
+    for (let i = 0; i < 6; i++) s += bond(v[i], v[(i + 1) % 6], { rFrom: 0, rTo: 0 });
+    for (const pt of v) s += atom(pt.x, pt.y, '', { kind: 'point' });
+    const w = P(v[2].x - 8, v[2].y + 58), h = P(v[1].x + 44, v[1].y + 48);
+    s += wedge(v[2], w, { rFrom: 0, rTo: 17, width: 9 });
+    s += hash(v[1], h, { rFrom: 0, rTo: 17, width: 9 });
+    s += atom(w.x, w.y, 'OH', { r: 17, size: 10 });
+    s += atom(h.x, h.y, 'OH', { r: 17, size: 10 });
+    s += text(534, 306, 'trans-1,2-cyclohexanediol: one wedge, one hash,', { cls: 'fg-sm', size: 9.5 });
+    s += text(534, 324, 'and the cis isomer is not formed at all', { cls: 'fg-tag', size: 10.5 });
+    return s;
+  },
+  caption: 'What "anti" looks like when you draw it. The oxygen bridges one face of the two carbons, so a nucleophile physically cannot arrive on that side: the only approach is from underneath, along the axis of the bond that is breaking. The new group and the oxygen therefore end on opposite faces, and on a ring that is the difference between a <i>trans</i> diol and a <i>cis</i> one.',
+  note: 'This is the same geometry as the bromonium ion in <i>Alkenes &amp; Alkynes</i>, and it is worth seeing them as one idea rather than two rules: a three-membered ring on one face is a blocked face, and a blocked face forces anti. Note also that this argument never mentioned acid or base — which is why the stereochemistry is anti under both, even though the regiochemistry flips.',
+});
+
+
+/* ------------------------------------------------------------- 10.5 ---
+   The acid/base switch. The figure this replaces drew H and H on the
+   right-hand carbon — isobutylene oxide — directly under a worked example
+   about 2-methyl-2,3-epoxybutane, so the substrate changed silently between
+   two adjacent things on the page. Same figure, same claim, matching
+   substrate, and the attacked carbon marked in each panel. */
+FIGURES.push({
+  id: 'epoxide-acid-base-switch',
+  section: 'epoxides',
+  anchor: '<h3>Same substrate, opposite regiochemistry</h3>',
+  alt: 'Two panels showing 2-methyl-2,3-epoxybutane. Under basic conditions an anionic nucleophile attacks the less substituted carbon, the one bearing a methyl and a hydrogen, from the face opposite the oxygen. Under acidic conditions the oxygen is protonated and a neutral nucleophile attacks the more substituted carbon, the one bearing two methyls, again from the opposite face.',
+  viewBox: '0 0 700 344',
+  build() {
+    let s = '';
+    /* One drawing routine, used twice, so the two panels cannot drift apart:
+       the more substituted carbon is always on the left with two methyls,
+       the less substituted one on the right with a methyl and a hydrogen. */
+    const epoxide = (cmx, hit) => {
+      const cm = P(cmx, 170), cl = P(cmx + 76, 170), o = P(cmx + 38, 114);
+      let g = bond(cm, cl, { rFrom: 15, rTo: 15 }) +
+              bond(cm, o, { rFrom: 15, rTo: 15 }) +
+              bond(cl, o, { rFrom: 15, rTo: 15 });
+      const me = (from, to) => bond(from, to, { rFrom: 15, rTo: 17 }) + atom(to.x, to.y, 'CH₃', { r: 17, size: 10 });
+      g += me(cm, P(cmx - 56, 158));
+      g += me(cm, P(cmx, 226));
+      g += me(cl, P(cmx + 132, 158));
+      g += bond(cl, P(cmx + 76, 226), { rFrom: 15, rTo: 12 }) + atom(cmx + 76, 226, 'H', { r: 12, size: 11 });
+      g += atom(cm.x, cm.y, 'C', { kind: hit === 'cm' ? 'warn' : 'plain' });
+      g += atom(cl.x, cl.y, 'C', { kind: hit === 'cl' ? 'warn' : 'plain' });
+      return { g, cm, cl, o };
+    };
+
+    // ---------- basic ----------
+    s += text(196, 38, 'BASIC — a strong, anionic nucleophile', { cls: 'fg-tag', size: 11.5 });
+    const A = epoxide(152, 'cl');
+    s += A.g;
+    s += atom(A.o.x, A.o.y, 'O', { kind: 'hi' });
+    const nuA = P(316, 272);
+    s += atom(nuA.x, nuA.y, 'Nu', { r: 16, size: 10.5, kind: 'hi' });
+    s += text(nuA.x + 22, nuA.y - 12, '−', { cls: 'fg-hi', size: 15 });
+    s += arrow(P(302, 250), P(246, 192));
+    s += text(196, 302, 'no activation, so this is a plain SN2 —', { cls: 'fg-sm', size: 9.5 });
+    s += text(196, 318, 'attack goes to the LESS hindered carbon', { cls: 'fg-tag', size: 10.5 });
+
+    s += rule(356, 60, 356, 306);
+
+    // ---------- acidic ----------
+    s += text(524, 38, 'ACIDIC — a weak one, often the solvent', { cls: 'fg-tag-warn', size: 11.5 });
+    const B = epoxide(486, 'cm');
+    s += B.g;
+    s += atom(B.o.x, B.o.y, 'O', { kind: 'hi' });
+    s += bond(B.o, P(B.o.x, 62), { rFrom: 15, rTo: 13 });
+    s += atom(B.o.x, 62, 'H', { r: 13, size: 11, kind: 'warn' });
+    s += text(B.o.x + 26, 96, '+', { cls: 'fg-tag-warn', size: 15 });
+    const nuB = P(398, 272);
+    s += atom(nuB.x, nuB.y, 'Nu', { r: 16, size: 10.5, kind: 'hi' });
+    s += bond(nuB, P(nuB.x - 34, nuB.y), { rFrom: 16, rTo: 11 });
+    s += atom(nuB.x - 34, nuB.y, 'H', { r: 11, size: 10 });
+    s += arrow(P(418, 250), P(470, 194));
+    s += text(524, 302, 'protonation puts positive charge on the carbon', { cls: 'fg-sm', size: 9.5 });
+    s += text(524, 318, 'that holds it best — the MORE substituted one', { cls: 'fg-tag-warn', size: 10.5 });
+    return s;
+  },
+  caption: 'The reason epoxides get a section of their own, on the substrate from the worked example above. Under <b>base</b>, nothing has activated the ring, so a strong nucleophile does what SN2 always does and attacks the carbon it can reach — the less hindered one. Under <b>acid</b>, protonating the oxygen stretches the C–O bond on whichever side can better support a partial positive charge, which is the <i>more</i> substituted carbon, and the nucleophile follows the charge. Same epoxide, opposite product.',
+  note: 'One substrate, two conditions, OPPOSITE ends. Nothing else in the course lets you choose the regiochemistry this cleanly, and it is worth understanding rather than memorizing: under base you are doing sterics, and under acid you are doing carbocation stability with the ring still half attached. Note what does <i>not</i> change — the nucleophile arrives from the face the ring does not block in both panels, so both products are anti.',
 });
 
 const START = (id) => `<!-- fig:${id}:start -->`;
