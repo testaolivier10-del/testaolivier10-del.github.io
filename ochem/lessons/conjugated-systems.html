@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function(){
         eyebrow: 'Explain',
         title: 'Two double bonds, three possible arrangements.',
         bodyHtml: '<ul class="step-body">' +
-          '<li><b>Isolated</b> — separated by two or more sp³ carbons, so the p orbitals never meet. Each double bond behaves as though the other were not there.</li>' +
+          '<li><b>Isolated</b> — separated by <b>at least one</b> sp³ carbon, so the run of p orbitals is broken and they never meet. One is enough: penta-1,4-diene is isolated. Each double bond behaves as though the other were not there.</li>' +
           '<li><b>Conjugated</b> — alternating with single bonds, so every carbon in the run is sp² and the p orbitals form one continuous overlapping system.</li>' +
           '<li><b>Cumulated</b> — sharing a carbon, as in propa-1,2-diene. That central carbon is sp, the two π systems are perpendicular, and they cannot conjugate at all.</li>' +
           '</ul>' +
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function(){
               var cfg = CASES.filter(function(c){ return c.id === id; })[0];
               if(btn.getAttribute('data-kind') !== cfg.right){
                 missed = true; btn.classList.add('wrong'); btn.disabled = true;
-                api.showFeedback(fb, false, 'Not that one. Count what lies between the two double bonds: a shared carbon means cumulated, one single bond means conjugated, and two or more sp³ carbons means isolated.');
+                api.showFeedback(fb, false, 'Not that one. Count what lies between the two double bonds: a shared carbon means cumulated, one single bond means conjugated, and one or more sp³ carbons means isolated.');
                 return;
               }
               done[id] = true; btn.classList.add('correct');
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Why it matters',
         title: 'The s-cis conformation is the one the next reactions need.',
-        bodyHtml: '<p class="step-body">Because the central bond of a conjugated diene is a single bond, the two ends rotate about it. <b>s-trans</b>, with the double bonds pointing in opposite directions, is the more stable conformation and where most dienes sit most of the time. <b>s-cis</b>, with both pointing the same way, is slightly higher in energy because the terminal hydrogens crowd each other.</p>' +
+        bodyHtml: '<p class="step-body">Because the central bond of a conjugated diene is a single bond, the two ends rotate about it. <b>s-trans</b>, with the double bonds pointing in opposite directions, is the more stable conformation and where most dienes sit most of the time. <b>s-cis</b>, with both pointing the same way, costs about <b>12 kJ/mol</b> — not a rounding error, but nearly as much as the whole delocalization energy. The cost is one specific clash: the hydrogen on C1 and the hydrogen on C4 that point inward at each other.</p>' +
           '<p class="step-body" style="margin-bottom:0;">The s-cis conformation matters out of all proportion to its population, because <b>the Diels–Alder reaction requires it</b> — the two ends of the diene have to reach the two ends of the dienophile at once. A diene locked s-cis inside a ring, like cyclopentadiene, is unusually reactive. A diene locked s-trans cannot do the reaction at all, however electron-rich it is. This is the commonest reason a Diels–Alder does not happen, and it is geometric rather than electronic.</p>'
       },
       {
@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'On whichever carbon bears more hydrogens'
         ],
         correctIndex: 2,
-        correctFeedback: 'Correct. Draw the two resonance forms and the charge appears at the termini, never at the center carbon. This is general for conjugated systems — the reactivity is at the ends — and it is exactly why a conjugated diene gives two addition products rather than one.',
+        correctFeedback: 'Correct. Draw the two resonance forms and the charge appears at the termini, never at the center carbon. This is general for conjugated systems, and the orbital picture says the same thing: the orbital whose occupancy changes across cation, radical and anion has its node running through the central carbon, so that atom contributes nothing to it. Reactivity sits at the ends, which is exactly why a conjugated diene gives two addition products rather than one.',
         wrongFeedback: 'Draw both resonance forms and mark where the charge appears in each. One carbon never carries it in either form.'
       },
       {

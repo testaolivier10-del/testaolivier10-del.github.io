@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function(){
         eyebrow: 'Explain',
         title: 'The one thing UV-Vis measures well.',
         bodyHtml: '<p class="step-body">Every other spectroscopy in this course reports on individual bonds or individual nuclei. UV-Vis reports on something narrower and, in this chapter, more useful: <b>how far a conjugated π system extends</b>.</p>' +
-          '<p class="step-body">Ultraviolet and visible light carry enough energy to promote an electron from an occupied molecular orbital to an empty one. In a π system the transition that matters is from the <b>HOMO</b> to the <b>LUMO</b> — a <b>π &rarr; π*</b> transition. A molecule absorbs the wavelength whose photon energy matches that gap.</p>' +
+          '<p class="step-body">Ultraviolet and visible light carry enough energy to promote an electron from an occupied molecular orbital to an empty one. In a π system the cheapest jump is from the <b>HOMO</b>, the top filled orbital, to the <b>LUMO</b>, the lowest empty one. For a polyene the LUMO is an <b>antibonding</b> π orbital, written <b>π*</b>, so the transition is written <b>π &rarr; π*</b>. A molecule absorbs the wavelength whose photon energy matches that gap.</p>' +
           '<div class="explain-box"><b>Bigger HOMO–LUMO gap &rarr; higher energy photon needed &rarr; shorter wavelength absorbed.</b><br>Smaller gap &rarr; lower energy &rarr; <b>longer</b> wavelength absorbed.<br><br>Learn it in that direction. Almost every UV-Vis question is asking you to run it one way or the other.</div>'
       },
       {
@@ -244,10 +244,11 @@ document.addEventListener('DOMContentLoaded', function(){
         bodyHtml: '<p class="step-body" style="text-align:center;font-family:var(--font-mono);font-weight:900;font-size:18px;">A = εcl</p>' +
           '<ul class="step-body">' +
           '<li><b>A</b> — absorbance, a unitless number read off the instrument.</li>' +
-          '<li><b>ε</b> — molar absorptivity, a constant for that compound at that wavelength, measuring how strongly it absorbs. Conjugated systems have large ε, often 10,000 or more.</li>' +
+          '<li><b>ε</b> — molar absorptivity, a constant for that compound at that wavelength, measuring how strongly it absorbs. Conjugated systems have large ε, often 10,000 or more. Since A is unitless and c and l are not, ε must carry <b>L·mol⁻¹·cm⁻¹</b>.</li>' +
           '<li><b>c</b> — concentration; <b>l</b> — path length through the sample, conventionally 1 cm.</li>' +
           '</ul>' +
-          '<p class="step-body" style="margin-bottom:0;">Because absorbance is directly proportional to concentration, UV-Vis is genuinely quantitative in a way NMR and IR usually are not in a teaching lab. It is the standard way to follow the concentration of a conjugated or colored species while a reaction runs.</p>'
+          '<p class="step-body">Because absorbance is directly proportional to concentration, UV-Vis is genuinely quantitative in a way NMR and IR usually are not in a teaching lab. Rearrange before you substitute: c = A / εl. An absorbance of 0.63 with ε = 21,000 in a 1.00 cm cell gives c = 0.63 / 21,000 = 3.0 × 10⁻⁵ M — a few milligrams in a litre, which is why the technique can follow a reaction at concentrations NMR cannot see.</p>' +
+          '<div class="explain-box">Watch for the exception to "long wavelength means long conjugation". A carbonyl\'s lone pair sits in a non-bonding orbital above the π one, so promoting it into the same π* costs less: acetone absorbs near <b>280 nm</b> from one C=O. The giveaway is ε, which for such an <b>n → π*</b> band is only 10–100 because the lone pair barely overlaps the π*. Long λ with a huge ε is a long chromophore; long λ with a tiny ε is a lone pair.</div>'
       },
       {
         type: 'mcq',

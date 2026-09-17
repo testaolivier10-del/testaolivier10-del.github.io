@@ -55,7 +55,9 @@
 
 <h3>What it is</h3>
 
-<p class="step-body">A <b>conjugated diene</b> (four π electrons) reacts with an alkene or alkyne called the <b>dienophile</b> — literally "diene-loving" — (two π electrons) to give a <b>cyclohexene</b>. Because it joins a four-π-electron component to a two-π-electron one, it is classified as a <b>[4+2] cycloaddition</b>.</p>
+<p class="step-body">A <b>conjugated diene</b> (four π electrons) reacts with a two-π-electron partner called the <b>dienophile</b> — literally "diene-loving". With an <b>alkene</b> dienophile the product is a <b>cyclohexene</b>; with an <b>alkyne</b> it is a <b>cyclohexa-1,4-diene</b>, because the alkyne's second π bond survives untouched into the ring. Because it joins a four-π-electron component to a two-π-electron one, it is classified as a <b>[4+2] cycloaddition</b>.</p>
+
+<p class="step-body">That word <b>cycloaddition</b> puts it in a family. A <b>pericyclic</b> reaction is one whose bonds break and form together in a single step, with the electrons travelling round a closed loop and no intermediate anywhere — which is what the chapter title is naming. Cycloadditions are one class; <b>electrocyclic</b> ring closures and <b>sigmatropic</b> shifts such as the Cope and Claisen rearrangements are the other two you will meet. The Diels–Alder is by some distance the most useful of them, and everything below is a consequence of that single-step requirement.</p>
 
 <p class="step-body">The arithmetic of the bonds explains why it is so favorable. Three π bonds go in; out come <b>two new σ bonds and one π bond</b>. σ bonds are stronger than π bonds, so trading two of the latter for two of the former releases energy, and the reaction is downhill without anything having to drive it.</p>
 
@@ -76,19 +78,56 @@
 
 <h3>Electronics: electron-rich diene, electron-poor dienophile</h3>
 
-<p class="step-body">The reaction is fastest when the two partners are electronically mismatched in the right direction. Electron-<b>donating</b> groups on the diene raise its HOMO; electron-<b>withdrawing</b> groups on the dienophile lower its LUMO. Bringing those two orbitals closer in energy makes the interaction between them stronger and the reaction faster.</p>
+<p class="step-body">The reaction is fastest when the two partners are electronically mismatched in the right direction. The argument runs through the frontier orbitals introduced in <a class="chapter-ref" href="/ochem/notes/conjugated-systems.html">Conjugated systems</a>: the diene brings the electrons, so what matters is its <b>HOMO</b>, the highest orbital that has any; the dienophile receives them, so what matters is its <b>LUMO</b>, the lowest orbital that has room. Electron-<b>donating</b> groups on the diene push its HOMO up; electron-<b>withdrawing</b> groups on the dienophile pull its LUMO down. The closer those two orbitals come in energy, the more strongly they interact and the faster the reaction goes.</p>
 
 <p class="step-body">In practice this means a good dienophile carries a carbonyl, a nitrile, a nitro group or an ester next to its double bond. Maleic anhydride, with two carbonyls flanking the alkene, is the classic fast dienophile; ethene itself reacts only under forcing conditions because it has nothing pulling its LUMO down.</p>
+
+<div class="notes-fact">This is also where a <b>Lewis acid catalyst</b> gets its effect. AlCl₃, ZnCl₂ or a similar acid binds the lone pair on the dienophile's carbonyl oxygen, which drains electron density out of the C=C and drops the LUMO further still. Rates commonly rise by orders of magnitude, the reaction can be run cold instead of hot, and the endo preference usually sharpens with it. No Diels–Alder <i>needs</i> a catalyst — the bond arithmetic already pays for the reaction — but a sluggish one is often rescued this way.</div>
+
+<h3>Regiochemistry: which way round the two partners join</h3>
+
+<p class="step-body">As soon as <i>both</i> partners carry a substituent there is a second question the bond arithmetic cannot answer. The diene can approach the dienophile either way round, and the two approaches put the substituents in different places on the ring. One of them wins, heavily, and the reason is the same electronics as above seen one atom at a time.</p>
+
+<p class="step-body">You can settle it with resonance alone. Draw the structure that shows where each partner is most polarized, and then join the negative end of one to the positive end of the other — the two atoms with the biggest appetite for each other make one of the new bonds, and the second bond has nowhere else to go.</p>
+
+<ul class="step-body">
+<li><b>Donor on the diene's C1.</b> Push the donor's electrons in and the negative charge comes out at <b>C4</b>, the far terminus.</li>
+<li><b>Donor on the diene's C2.</b> Do the same and the negative charge comes out at <b>C1</b>.</li>
+<li><b>Withdrawing group on the dienophile.</b> Push toward the withdrawing group and the positive charge appears on the <b>far</b> carbon of the double bond, the one the group is <i>not</i> attached to.</li>
+</ul>
+
+<p class="step-body">Joining those two atoms gives, every time, one of two outcomes, and organic chemists borrow benzene's vocabulary to name them:</p>
+
+<ul class="step-body">
+<li>A <b>1-substituted diene</b> plus a monosubstituted dienophile gives the <b>"ortho"</b> product — the two substituents on <b>adjacent</b> ring carbons.</li>
+<li>A <b>2-substituted diene</b> plus a monosubstituted dienophile gives the <b>"para"</b> product — the two substituents <b>1,4</b> across the ring.</li>
+</ul>
+
+<div class="notes-pitfall"><b>Three things to keep straight about these names.</b> The product is a cyclohexene, not a benzene ring, so <i>ortho</i> and <i>para</i> here are only borrowed words for the 1,2 and 1,4 relationships — nothing is aromatic. There is no "meta" outcome: the rule produces one or the other and never the 1,3 arrangement, which is the fastest way to eliminate a wrong answer. And the preference is a preference, not a law: it is strong when the diene is well donor-substituted and the dienophile well acceptor-substituted, and it weakens as either partner becomes less polarized.</div>
+
+<div class="notes-example">
+<span class="k">Worked example — placing the substituents</span>
+<p>Take <b>(E)-penta-1,3-diene</b> (a 1-substituted diene, methyl on the terminus) with <b>propenal</b>, CH₂=CH–CHO.</p>
+<p><b>Polarize the diene.</b> The methyl is the donor end, so treat the far terminus — the CH₂ — as the nucleophilic carbon.</p>
+<p><b>Polarize the dienophile.</b> Push the alkene toward the aldehyde and the positive charge lands on the terminal CH₂, the carbon <i>not</i> carrying the CHO.</p>
+<p><b>Join those two.</b> The diene's CH₂ terminus bonds to the dienophile's CH₂, which forces the diene's methyl-bearing terminus to bond to the carbon carrying the CHO. Those two substituents are now on neighboring ring atoms: <b>2-methylcyclohex-3-ene-1-carbaldehyde</b>, the "ortho" product.</p>
+<p><b>Now move the methyl to C2 of the diene</b> — that is isoprene. Polarizing it makes C1 the nucleophilic terminus instead, so C1 takes the dienophile's CH₂ and C4 takes the CHO-bearing carbon. Count round the ring and the methyl and the aldehyde are now <b>1,4</b>: <b>4-methylcyclohex-3-ene-1-carbaldehyde</b>, the "para" product.</p>
+</div>
 
 <h3>Stereochemistry, and why it is completely predictable</h3>
 
 <p class="step-body">Because the reaction is concerted, the geometry of the starting materials is carried straight into the product. Three separate statements follow, and they are the reason the reaction is so heavily used in synthesis.</p>
 
-<p class="step-body"><b>It is stereospecific with respect to the dienophile.</b> Both new bonds form on the <b>same face</b> of the dienophile, so substituents that were <i>cis</i> across its double bond come out <i>cis</i> on the ring, and <i>trans</i> comes out <i>trans</i>. There is no step at which anything can rotate.</p>
+<p class="step-body"><b>It is stereospecific with respect to the dienophile.</b> Both new bonds form on the <b>same face</b> of the dienophile — the word for that is <b>suprafacial</b>, and it simply means "both bonds to one face" — so substituents that were <i>cis</i> across its double bond come out <i>cis</i> on the ring, and <i>trans</i> comes out <i>trans</i>. There is no step at which anything can rotate.</p>
 
-<p class="step-body"><b>The diene's geometry is carried through too.</b> Groups at the diene's outer positions that pointed "outward" in the s-cis conformation end up on one face of the new ring, and those that pointed "inward" end up on the other.</p>
+<p class="step-body"><b>The diene's geometry is carried through too,</b> and the addition is suprafacial on the diene as well. Draw the diene s-cis and look at its two terminal carbons: each carries one substituent pointing <b>outward</b>, away from the other end of the diene, and one pointing <b>inward</b>. Two substituents that both point outward end up <b>cis</b> to each other on the ring; one outward and one inward end up <b>trans</b>.</p>
+
+<p class="step-body">In practice that reduces to a rule you can apply from the name. An <b>(E,E)-diene</b> — (2E,4E)-hexa-2,4-diene, say — has both of its methyls outward in the s-cis conformation, so they come out <b>cis</b> on the ring. An <b>(E,Z)-diene</b> has one of each, so they come out <b>trans</b>. And because the dienophile's geometry is carried through at the same time, a single diene and a single dienophile give a single diastereomer of the product.</p>
 
 <p class="step-body"><b>The endo product is favored.</b> When the dienophile carries a substituent, the two partners can stack in two orientations: <b>endo</b>, with the dienophile's substituent tucked under the diene, or <b>exo</b>, with it pointing away. The endo arrangement is more crowded and is nevertheless the faster one, because the substituent's π system interacts favorably with the developing π system of the diene in the transition state — a <b>secondary orbital interaction</b>. Endo is therefore the <b>kinetic</b> product, which is worth noticing: it is a case where the kinetic product is the <i>more</i> hindered one, and the general rule from the last section still holds because nothing here is reversing at ordinary temperatures.</p>
+<!-- fig:endo-exo-stacked:start -->
+<figure class="notes-figure notes-figure--wide" style="--vb:760"><svg viewBox="0 0 760 360" role="img" aria-label="Two side-on views of a diene stacked above a dienophile. On the left, endo: the dienophile carbonyl points inward, underneath the diene, with a dotted secondary orbital contact to the diene above it. On the right, exo: the same carbonyl points outward and downward, away from the diene, with no such contact."><rect class="fg-panel" x="20" y="30" width="330" height="262" rx="10"></rect><text class="fg-tag" x="185" y="56" text-anchor="middle" font-size="11">endo</text><text class="fg-sm" x="185" y="76" text-anchor="middle" font-size="10">substituent tucked under the diene</text><text class="fg-sm" x="185" y="98" text-anchor="middle" font-size="9.5">diene, seen edge-on</text><line class="fg-bond" x1="95" y1="140" x2="315" y2="140"></line><path class="fg-bond" fill="none" d="M95 140 Q205 104 315 140"></path><line class="fg-bond" x1="125" y1="214" x2="285" y2="214"></line><line class="fg-dash-hi" x1="95" y1="140" x2="125" y2="214"></line><line class="fg-dash-hi" x1="315" y1="140" x2="285" y2="214"></line><line class="fg-bond" x1="125" y1="214" x2="169.31" y2="194.14"></line><circle class="fg-atom" cx="183" cy="188" r="15"></circle><text class="fg-lbl" x="183" y="191.52" text-anchor="middle" font-size="9.5">C=O</text><line class="fg-dash" x1="186.19" y1="173.34" x2="193" y2="142"></line><text class="fg-sm" x="185" y="250" text-anchor="middle" font-size="9.5">the dotted line is the secondary contact</text><text class="fg-tag-good" x="185" y="276" text-anchor="middle" font-size="11">more crowded, and faster</text><rect class="fg-panel" x="386" y="30" width="330" height="262" rx="10"></rect><text class="fg-tag" x="551" y="56" text-anchor="middle" font-size="11">exo</text><text class="fg-sm" x="551" y="76" text-anchor="middle" font-size="10">substituent pointing away</text><text class="fg-sm" x="551" y="98" text-anchor="middle" font-size="9.5">same two bonds forming</text><line class="fg-bond" x1="461" y1="140" x2="681" y2="140"></line><path class="fg-bond" fill="none" d="M461 140 Q571 104 681 140"></path><line class="fg-bond" x1="491" y1="214" x2="651" y2="214"></line><line class="fg-dash-hi" x1="461" y1="140" x2="491" y2="214"></line><line class="fg-dash-hi" x1="681" y1="140" x2="651" y2="214"></line><line class="fg-bond" x1="491" y1="214" x2="514.7" y2="239.09"></line><circle class="fg-atom" cx="525" cy="250" r="15"></circle><text class="fg-lbl" x="525" y="253.52" text-anchor="middle" font-size="9.5">C=O</text><text class="fg-tag-warn" x="551" y="276" text-anchor="middle" font-size="11">less crowded, and slower</text><line class="fg-rule" x1="30" y1="308" x2="706" y2="308"></line><text class="fg-lbl" x="368" y="330" text-anchor="middle" font-size="12">Cyclopentadiene and maleic anhydride give the endo adduct, and give it faster.</text><text class="fg-sm" x="368" y="348" text-anchor="middle" font-size="10.5">The two new sigma bonds are identical in both stacks. Only the substituent has moved.</text></svg><figcaption>The two ways the same two molecules can stack, seen from the side. The dienophile lies under the diene either way and the two forming bonds — the dashed ones — are the same in both. What differs is where the dienophile’s carbonyl points: inward, underneath the diene, or outward and away from it.<span class="notes-figure-note">The endo stack is plainly the more crowded of the two, and it is still the faster one, which is the point. Tucked underneath, the carbonyl’s π system sits directly below the π system the diene is using, and the two touch in the transition state without ever becoming a bond — a <b>secondary orbital interaction</b>. It lowers the barrier by more than the crowding raises it. Nothing about the product’s own stability is involved: endo is the kinetic answer, not the thermodynamic one.</span></figcaption></figure>
+<!-- fig:endo-exo-stacked:end -->
 
 <div class="notes-example">
 <span class="k">Worked example — predicting a product completely</span>
@@ -98,9 +137,30 @@
 <p><b>Check by switching.</b> Run the same reaction with <b>dimethyl fumarate</b>, the <i>trans</i> isomer, and the two esters come out <b>trans</b> on the ring. One change in the starting material, one predictable change in the product, and no mixture in either case.</p>
 </div>
 
+<div class="notes-example">
+<span class="k">Worked example — the canonical one: cyclopentadiene + maleic anhydride</span>
+<p>This is the reaction endo/exo was invented to describe, because it is the one where the two orientations give genuinely different compounds.</p>
+<p><b>Skeleton first.</b> Cyclopentadiene is a diene locked s-cis, with a CH₂ bridging the two termini. Its C1 and C4 reach the two carbons of the anhydride's C=C, which closes a new six-membered ring — and because those two carbons were already tied together by the five-membered ring, the product is <b>bicyclic</b>: a norbornene, with the old CH₂ now a one-carbon bridge and the new C=C in a two-carbon bridge.</p>
+<p><b>Dienophile stereochemistry.</b> The anhydride holds its two carbonyls <i>cis</i> across the double bond and the addition is suprafacial, so they stay cis: both on the same face of the new ring, on adjacent carbons.</p>
+<p><b>Now the endo/exo question.</b> The two partners can stack with the anhydride ring pointing <i>under</i> the diene or pointing <i>away</i> from it. Endo — pointing under, so that in the product the anhydride ends up on the same side as the two-carbon C=C bridge and away from the CH₂ bridge — is the more crowded arrangement and the faster one.</p>
+<p><b>Answer.</b> The <b>endo</b> adduct, <i>cis</i>-bicyclo[2.2.1]hept-5-ene-2,3-dicarboxylic anhydride, formed essentially exclusively at room temperature.</p>
+<p><b>The trap:</b> reading "endo is favored" as "endo is more stable". It is not — exo is usually the more stable adduct. Endo wins on rate, and it keeps winning only because nothing here reverses at ordinary temperatures. Heat the same reaction hard enough and long enough and the exo adduct can take over.</p>
+</div>
+
 <h3>Running it backwards</h3>
 
 <p class="step-body">The reaction is reversible, and heating a cyclohexene of the right kind drives the <b>retro-Diels–Alder</b>, splitting it back into a diene and a dienophile. Cracking cyclopentadiene dimer before use is exactly this. It also matters in synthesis planning: seeing a cyclohexene ring and mentally cutting it apart at the retro-Diels–Alder disconnection is one of the most productive moves available when you are working a synthesis backwards.</p>
+
+<p class="step-body">Making that cut is mechanical once you know where to put the scissors. Find the ring's double bond. The two carbons next to it — one on each side — were the diene's C1 and C4, so the bonds you break are the two that run from <i>those</i> carbons to the next atoms round the ring. What falls out is a diene on one side and a two-carbon dienophile on the other.</p>
+
+<div class="notes-example">
+<span class="k">Worked example — planning a ring backwards</span>
+<p>Your target is <b>4-methylcyclohex-3-ene-1-carbaldehyde</b>. What two pieces make it?</p>
+<p><b>Find the alkene.</b> It sits between C3 and C4, and C4 carries the methyl.</p>
+<p><b>Place the cut.</b> Step one carbon out from each end of the double bond — to C2 and to C5 — and break the two bonds that lead <i>away</i> from them round the ring, C2–C1 and C5–C6. The four atoms C2–C3=C4–C5 become the diene, and C6–C1 becomes the dienophile.</p>
+<p><b>Restore the bonds.</b> The diene fragment regains a double bond where each σ bond was broken, giving CH₂=C(CH₃)–CH=CH₂ — <b>isoprene</b>. The dienophile fragment regains its π bond, giving CH₂=CH–CHO — <b>propenal</b>.</p>
+<p><b>Check the regiochemistry forwards.</b> A 2-substituted diene plus a monosubstituted dienophile gives the "para" product, and the methyl and the aldehyde in the target are indeed 1,4. The disconnection is sound, and it builds the ring and places both substituents in one step.</p>
+</div>
 
 <h3>What carries forward</h3>
 

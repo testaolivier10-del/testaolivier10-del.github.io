@@ -16992,15 +16992,15 @@
    "type": "mcq"
   },
   {
-   "q": "E/Z nomenclature (rather than simple cis/trans) is needed when:",
+   "q": "Cis/trans labels break down for 2-bromobut-2-ene, CH3-C(Br)=CH-CH3, and E/Z is required instead. What is it about this alkene that forces the switch?",
    "options": [
-    "the alkene is terminal",
-    "the alkene has a plane of symmetry",
-    "both carbons have unlike groups",
-    "the alkene is part of a ring"
+    "One double-bond carbon carries two different non-hydrogen groups",
+    "The alkene sits at the middle of the chain rather than the end",
+    "Bromine is heavier than any of the carbons in the molecule",
+    "The molecule has no plane of symmetry through the double bond"
    ],
-   "correct": 2,
-   "why": "Cis/trans only works cleanly when it's obvious which groups are 'similar'; when each carbon carries two different substituents, CIP priority rules assign E (opposite, higher priorities) or Z (same side, higher priorities) unambiguously.",
+   "correct": 0,
+   "why": "Cis/trans works while each alkene carbon carries one hydrogen and one other group: 'same side' then has an obvious referent. C2 here carries a bromine AND a methyl, so 'the methyls are opposite' and 'the bromine and the C4 methyl are on the same side' describe the same molecule and disagree. CIP priority settles it: Br beats CH3 on C2, CH3 beats H on C3, and the two winners are on the same side, so it is Z.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -17801,7 +17801,7 @@
     "it works on alkynes only, never on alkenes"
    ],
    "correct": 0,
-   "why": "Because hydroboration proceeds through steric control (boron adding to the less hindered carbon) rather than carbocation stability, the resulting alcohol has OH on the less substituted carbon — the opposite of the typical Markovnikov outcome.",
+   "why": "Hydroboration adds B and H across the alkene in one four-center transition state, so no free cation forms. The transition state is still polarized: the partial positive charge develops on the more substituted carbon, which is where it is best supported, and that puts boron on the less substituted one. Sterics push the bulky boron the same way, so both arguments point at the same carbon. Oxidation then replaces C-B with C-OH in place, leaving OH on the less substituted carbon.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -18249,15 +18249,15 @@
    "type": "mcq"
   },
   {
-   "q": "Mechanistically, why does dissolving-metal (Na/NH3) reduction of an internal alkyne favor the trans alkene rather than the cis?",
+   "q": "Mechanistically, at which point in the Na/NH3 reduction of an internal alkyne is the trans geometry of the product decided?",
    "options": [
-    "the mechanism is identical to catalytic hydrogenation, which also favors trans products",
-    "trans alkenes are formed because Na/NH3 is a poor reducing agent that barely reacts",
-    "the vinyl radical anion adopts the more stable trans-like geometry",
-    "the alkyne first converts to a cis alkene, which then isomerizes under basic conditions"
+    "At the vinyl radical, which inverts fast and sits mostly trans, and is then locked by the vinyl anion",
+    "At the first electron transfer, since the radical anion is already locked trans",
+    "At the final protonation by ammonia, which always delivers H to the far face",
+    "After the alkene forms, by base-catalyzed isomerization of an initial cis product"
    ],
-   "correct": 2,
-   "why": "Unlike the concerted syn delivery on a catalyst surface, the dissolving-metal mechanism proceeds stepwise through a radical anion intermediate that has time to adopt the thermodynamically preferred, less strained trans-like arrangement before being fully reduced, giving the trans alkene as the major product.",
+   "correct": 0,
+   "why": "The sequence is electron, proton, electron, proton. The first electron and proton give a vinyl RADICAL, which inverts rapidly at the carbon bearing the odd electron and therefore equilibrates to the less crowded trans-like geometry. The second electron makes that a vinyl ANION, which is configurationally stable on the timescale of the reaction, so the geometry it inherits survives the final protonation. Catalytic hydrogenation has no such step: both hydrogens arrive on one face from the metal surface, which is why Lindlar gives cis.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -18351,93 +18351,93 @@
  ],
  "conjugated-systems": [
   {
-   "q": "Two double bonds separated by two sp3 carbons are described as what?",
+   "q": "Which of these C₆H₁₀ chains has its two double bonds conjugated?",
    "options": [
-    "Conjugated",
-    "Isolated",
-    "Cumulated",
-    "Aromatic"
+    "CH₂=C=CH–CH₂–CH₂–CH₃",
+    "CH₃–CH=CH–CH₂–CH=CH₂",
+    "CH₂=CH–CH₂–CH₂–CH=CH₂",
+    "CH₂=CH–CH=CH–CH₂–CH₃"
    ],
-   "correct": 1,
-   "why": "Their p orbitals never meet, so each double bond behaves as though the other were not there.",
+   "correct": 3,
+   "why": "Read the chain for a run of sp2 carbons with the bonds alternating. Hexa-1,3-diene has double, single, double across C1 to C4, so its p orbitals overlap continuously. The 1,5- and 1,4-dienes each have sp3 carbons breaking the run, and the 1,2-diene is cumulated: its central sp carbon holds the two pi systems at right angles.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Two double bonds alternating with a single bond are described as what?",
+   "q": "How many pi electrons are in conjugation in hepta-1,3,6-triene, CH₂=CH–CH=CH–CH₂–CH=CH₂?",
    "options": [
-    "Conjugated",
-    "Cumulated",
-    "Allylically linked",
-    "Isolated"
+    "Four, from C1 to C4",
+    "Six, from all three double bonds",
+    "Two, from one double bond",
+    "None, because C5 is sp3"
    ],
    "correct": 0,
-   "why": "Every carbon in the run is sp2 and the p orbitals overlap continuously.",
+   "why": "C1=C2 and C3=C4 form one unbroken run of sp2 carbons, so those two pi bonds — four electrons — are conjugated with each other. C5 is sp3 and stops the chain there, leaving C6=C7 on its own as an ordinary terminal alkene. The molecule contains a conjugated diene and an isolated alkene, and only the first four electrons count.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Two double bonds sharing a carbon are described as what?",
+   "q": "Which of these dienes can never react from an s-cis conformation?",
    "options": [
-    "Isolated",
-    "Aromatic",
-    "Conjugated",
-    "Cumulated"
+    "A diene held across a ring fusion",
+    "Buta-1,3-diene",
+    "2-methylbuta-1,3-diene",
+    "Cyclopentadiene"
    ],
-   "correct": 3,
-   "why": "The shared carbon is sp, and the two pi systems are perpendicular, so they cannot interact.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "Which arrangement is the most stable?",
-   "options": [
-    "All are equal",
-    "Isolated",
-    "Conjugated",
-    "Cumulated"
-   ],
-   "correct": 2,
-   "why": "Conjugated > isolated > cumulated. Only the conjugated arrangement earns delocalization energy.",
+   "correct": 0,
+   "why": "s-cis and s-trans interconvert by rotation about the central single bond, which is free in any open chain — so both butadiene and isoprene reach s-cis whenever they need to. Cyclopentadiene is already locked there by its ring. A diene whose two double bonds are in different rings of a fused system has its ends held on opposite sides of that bond, and no rotation is available to bring them round.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Which arrangement is the least stable?",
+   "q": "Rank buta-1,3-diene, penta-1,4-diene and propa-1,2-diene from most to least stable.",
    "options": [
-    "Conjugated",
-    "Cumulated",
-    "Isolated",
-    "They are equal"
+    "penta-1,4-diene > buta-1,3-diene > propa-1,2-diene",
+    "buta-1,3-diene > penta-1,4-diene > propa-1,2-diene",
+    "propa-1,2-diene > buta-1,3-diene > penta-1,4-diene",
+    "buta-1,3-diene > propa-1,2-diene > penta-1,4-diene"
    ],
    "correct": 1,
-   "why": "A cumulated diene has an sp carbon holding two perpendicular pi systems, and is strained relative to the alternatives.",
-   "difficulty": "easy",
+   "why": "Conjugated beats isolated beats cumulated. Buta-1,3-diene collects about 15 kJ/mol of delocalization energy for having its p orbitals in one continuous run. Penta-1,4-diene collects none, because an sp3 carbon separates its double bonds. Propa-1,2-diene collects none either and pays besides, since its sp center holds the two pi systems perpendicular to each other.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Hydrogenating but-1-ene releases about how much energy?",
+   "q": "A cumulated diene is the least stable of the three arrangements. Why?",
    "options": [
-    "about 239 kJ/mol",
-    "about 350 kJ/mol",
-    "about 60 kJ/mol",
-    "about 127 kJ/mol"
+    "All three arrangements sit at essentially one energy",
+    "Its two pi systems are perpendicular and cannot share",
+    "Its bond angles are badly distorted from what they want",
+    "Its p orbitals repel each other along the chain"
    ],
-   "correct": 3,
-   "why": "Two isolated double bonds should therefore release about twice that, roughly 254 kJ/mol.",
+   "correct": 1,
+   "why": "An allene is not strained: its sp central carbon wants 180 degrees and gets it, and the two sp2 ends want 120 degrees and get that. What it cannot do is delocalize. The two pi systems meet at the same carbon but lie at right angles, so neither one stabilizes the other, and the molecule pays for two pi bonds while collecting nothing back.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Buta-1,3-diene releases about 239 kJ/mol on hydrogenation. What does that show?",
+   "q": "Hydrogenating cyclohexene releases 120 kJ/mol; cyclohexa-1,3-diene releases 232 kJ/mol. What is the diene's delocalization energy?",
    "options": [
-    "It is about 15 kJ/mol more stable",
-    "It has three double bonds",
-    "It is not conjugated",
-    "It is much less stable than expected"
+    "232 kJ/mol",
+    "352 kJ/mol",
+    "8 kJ/mol",
+    "112 kJ/mol"
    ],
-   "correct": 0,
-   "why": "It gives out less energy reaching the same kind of product, so it started lower down. That difference is the delocalization energy.",
+   "correct": 2,
+   "why": "Build a reference with the same number of pi bonds as the compound you are testing: two independent C=C should release 2 × 120 = 240 kJ/mol. The diene releases only 232 reaching the same saturated ring, so it began 240 − 232 = 8 kJ/mol lower down. Subtracting one cyclohexene instead measures the second double bond rather than the conjugation.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a conjugated diene release LESS heat on hydrogenation than two isolated double bonds?",
+   "options": [
+    "Part of the heat is absorbed by the catalyst",
+    "It began lower in energy than they did",
+    "It has one fewer pi bond to hydrogenate",
+    "Its saturated product sits higher in energy"
+   ],
+   "correct": 1,
+   "why": "Both runs finish at the same kind of product, a saturated alkane, and both break the same number of pi bonds. If one gives out less energy on the way to an equally stable destination, the only place that difference can have come from is a lower starting point. That is exactly what delocalization energy means.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -18451,7 +18451,7 @@
    ],
    "correct": 2,
    "why": "Shorter than an ordinary C-C single bond at 1.54 A, because the pi system is delocalized and the bond has partial double-bond character.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -18464,7 +18464,7 @@
    ],
    "correct": 3,
    "why": "It describes the conformation about the SINGLE bond joining the two double bonds, not a double-bond geometry.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -18477,19 +18477,19 @@
    ],
    "correct": 1,
    "why": "They are conformations about a single bond, so rotation is free. cis and trans across a double bond cannot interconvert without breaking the pi bond.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Which conformation of a conjugated diene is more stable?",
+   "q": "Which conformation of an open-chain conjugated diene is more stable, and by roughly how much?",
    "options": [
-    "s-trans",
-    "They are equal",
-    "It depends on solvent",
-    "s-cis"
+    "s-trans, by about 12 kJ/mol",
+    "s-cis, by about 12 kJ/mol",
+    "s-trans, by about 120 kJ/mol",
+    "They sit at the same energy"
    ],
    "correct": 0,
-   "why": "In s-cis the terminal hydrogens crowd each other, so it sits slightly higher in energy.",
+   "why": "s-trans wins because s-cis brings the inward-pointing hydrogen on C1 and the one on C4 close enough to crowd each other. The penalty is around 12 kJ/mol — nearly the size of the whole delocalization energy, so it is not a rounding error. It is still small enough that rotation keeps refilling the s-cis population at room temperature.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -18509,13 +18509,13 @@
   {
    "q": "Why is a diene locked s-trans unreactive in a Diels-Alder?",
    "options": [
-    "It is far too electron-poor to react",
-    "Its ends cannot reach the dienophile",
-    "It is not conjugated",
-    "It is too stable"
+    "It is not a conjugated system at all",
+    "It is stabilized too much to react",
+    "Its two ends cannot reach the dienophile at the same time",
+    "It is far too electron-poor to react with anything"
    ],
-   "correct": 1,
-   "why": "The requirement is geometric, not electronic. No amount of electron-donating substitution fixes it.",
+   "correct": 2,
+   "why": "The requirement is geometric. Both new bonds form at once, so C1 and C4 of the diene have to point the same way to meet the two ends of the dienophile together. A ring that holds them on opposite sides of the central bond makes that impossible, and no amount of electron-donating substitution changes it.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -18555,33 +18555,33 @@
    ],
    "correct": 2,
    "why": "Conjugation needs a p orbital that can align, and all of these provide one.",
-   "difficulty": "hard",
-   "type": "mcq"
-  },
-  {
-   "q": "Roughly how much stabilization does conjugation provide in buta-1,3-diene?",
-   "options": [
-    "about 2 kJ/mol",
-    "about 15 kJ/mol",
-    "about 80 kJ/mol",
-    "about 240 kJ/mol"
-   ],
-   "correct": 1,
-   "why": "Measured as the gap between its heat of hydrogenation and that of two isolated double bonds.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "What is propa-1,2-diene commonly called?",
-   "options": [
-    "Allene",
-    "Propyne",
-    "Allyl",
-    "Propylene"
-   ],
-   "correct": 0,
-   "why": "It is the simplest cumulated diene, with an sp central carbon.",
    "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Methyl vinyl ether, CH₂=CH–OCH₃, is conjugated with only one double bond. What conjugates with the pi bond?",
+   "options": [
+    "The C–O sigma bond framework",
+    "The methyl group's three C–H bonds",
+    "Nothing — one double bond cannot conjugate",
+    "An oxygen lone pair sitting in a p orbital"
+   ],
+   "correct": 3,
+   "why": "Conjugation needs a row of parallel p orbitals, not a row of double bonds. One of oxygen's two lone pairs occupies a p orbital lined up with the alkene's, so it overlaps and the electron density spreads onto the alkene carbons. The same picture explains enamines and amides, and it is why an enol ether's terminal carbon is unusually nucleophilic.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which cation does the neighboring pi bond stabilize: CH₂=CH–CH₂⁺ or CH₂=CH⁺?",
+   "options": [
+    "Both equally, since each carries a double bond",
+    "Neither — a pi bond cannot stabilize a positive charge",
+    "The allylic one, whose empty orbital lies parallel to the pi bond",
+    "The vinylic one, whose charge sits closer to the pi bond"
+   ],
+   "correct": 2,
+   "why": "Alignment decides it, not proximity. In CH₂=CH–CH₂⁺ the empty p orbital on the CH₂ is parallel to the pi system next to it, so the two overlap and the charge spreads over both end carbons. In CH₂=CH⁺ the empty orbital is an sp2 orbital lying in the molecular plane, perpendicular to the pi bond, so there is no overlap to be had — which is why vinylic cations are among the worst intermediates in organic chemistry.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -18598,15 +18598,15 @@
    "type": "mcq"
   },
   {
-   "q": "Penta-1,4-diene is an example of which arrangement?",
+   "q": "Penta-1,4-diene is isolated rather than conjugated. How many sp3 carbons does it take to break a conjugated run?",
    "options": [
-    "Aromatic",
-    "Conjugated",
-    "Isolated",
-    "Cumulated"
+    "It depends on the chain length",
+    "One is enough",
+    "Two are needed",
+    "Three are needed"
    ],
-   "correct": 2,
-   "why": "One sp3 carbon sits between the two double bonds, breaking the conjugation.",
+   "correct": 1,
+   "why": "An sp3 carbon has no p orbital to contribute, so the row of parallel p orbitals simply stops there. Penta-1,4-diene has exactly one such carbon, C3, and that is already fatal: each alkene behaves as though the other were not in the molecule. Reading the rule as 'two or more' is the commonest way to mis-classify this compound.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -18624,29 +18624,29 @@
    "type": "mcq"
   },
   {
-   "q": "What is the central carbon of an allene hybridized as?",
+   "q": "How many pi molecular orbitals does buta-1,3-diene have, and which one is its HOMO?",
    "options": [
-    "sp",
-    "sp2",
-    "It is not hybridized",
-    "sp3"
+    "Four orbitals, with ψ₃ the HOMO",
+    "Eight orbitals, with ψ₄ the HOMO",
+    "Four orbitals, with ψ₂ the HOMO",
+    "Two orbitals, with ψ₁ the HOMO"
    ],
-   "correct": 0,
-   "why": "Two double bonds to one carbon means two sigma bonds and two pi systems, which is sp.",
+   "correct": 2,
+   "why": "Overlapping n parallel p orbitals produces n molecular orbitals, so four p orbitals give ψ₁ to ψ₄. Each carbon contributes one electron, so the four pi electrons fill the lowest two. ψ₂ is therefore the highest occupied orbital and ψ₃ the lowest empty one — the pair that decides how the molecule reacts and what wavelength it absorbs.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "What does the shortened C2-C3 bond of butadiene tell you?",
+   "q": "Which carbons of buta-1,3-diene carry the largest share of its HOMO?",
    "options": [
-    "It is a triple bond",
-    "The carbons are sp",
-    "The whole molecule is compressed",
-    "The pi system is delocalized over it"
+    "The two in the middle of the chain",
+    "All four carbons share it evenly",
+    "Whichever pair carries more hydrogens",
+    "The two at the ends of the system"
    ],
    "correct": 3,
-   "why": "A formally single bond with partial double-bond character is direct evidence for delocalization.",
-   "difficulty": "easy",
+   "why": "In ψ₂ the coefficients are biggest at C1 and C4 and smallest at C2 and C3, with the phase flipping once in the middle. That is the orbital statement of the same thing the resonance forms say, and it is why a conjugated system reacts at its termini — bromide capture in the next section, and both new bonds of a Diels-Alder.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -18698,7 +18698,7 @@
    ],
    "correct": 2,
    "why": "The formula is the same as for an isolated diene. The other three all report on the electrons.",
-   "difficulty": "medium",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -18711,7 +18711,7 @@
    ],
    "correct": 3,
    "why": "The termini carry the charge, the odd electron, or the largest orbital coefficients.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -18728,15 +18728,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which sequence gives the correct stability order?",
+   "q": "Buta-1,3-diene sits mostly s-trans, and reaching s-cis costs about 12 kJ/mol. Why does the Diels-Alder still work on it?",
    "options": [
-    "isolated > conjugated > cumulated",
-    "conjugated > cumulated > isolated",
-    "cumulated > isolated > conjugated",
-    "conjugated > isolated > cumulated"
+    "Rotation is fast, so the s-cis pool is refilled as it reacts",
+    "The dienophile forces the diene into s-trans instead",
+    "A 12 kJ/mol penalty is too small to shift an equilibrium",
+    "Butadiene is locked s-cis in the first place"
    ],
-   "correct": 3,
-   "why": "Conjugation stabilizes; cumulation destabilizes relative to having the double bonds apart.",
+   "correct": 0,
+   "why": "s-cis is a minor conformer, not an absent one. Rotation about the central single bond happens far faster than the cycloaddition, so every molecule consumed from the s-cis pool is replaced at once and the reaction drains the whole sample through that conformation. A diene held s-trans by a ring has no rotation available, which is why that case is fatal and this one is only slow.",
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -18778,19 +18778,19 @@
    ],
    "correct": 0,
    "why": "3-bromobut-1-ene keeps a terminal CH2= group.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "In the 1,4-addition product from buta-1,3-diene, where is the double bond?",
+   "q": "Buta-1,3-diene plus one equivalent of Br₂, run warm. What is the major product?",
    "options": [
-    "In a ring",
-    "Terminal",
-    "Internal",
-    "There is none"
+    "3,4-dibromobut-1-ene",
+    "1,4-dibromobut-2-ene",
+    "1,2-dibromobutane",
+    "2,3-dibromobut-1-ene"
    ],
-   "correct": 2,
-   "why": "1-bromobut-2-ene has the double bond in the middle of the chain, disubstituted.",
+   "correct": 1,
+   "why": "Br₂ opens on the diene the same way HBr does: a bromonium ion forms at one end and collapses to an allylic cation, leaving bromide with two carbons to choose between. Warm conditions let the first-formed product ionize again, so the mixture drains into the one with the more substituted alkene — 1,4-dibromobut-2-ene. Cold, you would isolate 3,4-dibromobut-1-ene instead.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -18834,16 +18834,16 @@
    "type": "mcq"
   },
   {
-   "q": "At about 40 C, which product dominates?",
+   "q": "HBr adds to 2-methylpenta-1,3-diene, CH₂=C(CH₃)–CH=CH–CH₃, at −80 °C. Major product?",
    "options": [
-    "The 1,2-product",
-    "The 1,4-product",
-    "An even mixture",
-    "Neither forms"
+    "4-bromo-2-methylpent-2-ene",
+    "1-bromo-2-methylpentane",
+    "3-bromo-2-methylpent-1-ene",
+    "4-bromo-4-methylpent-2-ene"
    ],
-   "correct": 1,
-   "why": "Roughly 15:85 in favor of 1,4. Warm and reversible means the stabilities decide.",
-   "difficulty": "medium",
+   "correct": 3,
+   "why": "Choose the end to protonate first. Adding H to C1 puts the charge on C2, which is tertiary; adding it to C5's end puts the charge on C3, which is only secondary. So protonate C1. Cold means kinetic control, so bromide takes the carbon carrying most of the charge — the tertiary C2 — and the alkene stays between C3 and C4. Warm the same flask and you get 4-bromo-2-methylpent-2-ene, whose alkene is trisubstituted.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -18869,7 +18869,7 @@
    ],
    "correct": 0,
    "why": "Alkene stability rises with substitution, and the 1,4-product's double bond is internal and disubstituted.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -18912,15 +18912,15 @@
    "type": "mcq"
   },
   {
-   "q": "How many resonance forms describe the allylic cation from buta-1,3-diene?",
+   "q": "Which sequence describes HBr adding to buta-1,3-diene?",
    "options": [
-    "One",
-    "Two",
-    "Three",
-    "Four"
+    "HBr splits into radicals, which add to the diene in turn",
+    "Protonate a terminus, then bromide captures an end of the cation",
+    "Bromide attacks a terminus, then the proton adds at the far end",
+    "Both the proton and the bromide arrive in one concerted step"
    ],
    "correct": 1,
-   "why": "Charge on C2 in one and on C4 in the other, with C3 never carrying it.",
+   "why": "The π system is the nucleophile in the room, so it reaches for the proton first; that is what generates the allylic cation. Only then does bromide, which has been a spectator, arrive at one of the two charged ends. Nothing about this is concerted, and the radical route needs peroxides deliberately added.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -18960,7 +18960,7 @@
    ],
    "correct": 2,
    "why": "Bromide captures the tertiary carbon, leaving the terminal alkene intact.",
-   "difficulty": "easy",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -18986,7 +18986,7 @@
    ],
    "correct": 0,
    "why": "With a methyl at each end of the allylic cation, capturing at either end gives the same compound.",
-   "difficulty": "easy",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -19025,7 +19025,7 @@
    ],
    "correct": 0,
    "why": "The pi system is nucleophilic and takes the proton, which generates the allylic cation.",
-   "difficulty": "hard",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -19038,7 +19038,7 @@
    ],
    "correct": 3,
    "why": "Protonating an inner carbon would give a cation that cannot delocalize into the remaining double bond.",
-   "difficulty": "easy",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -19051,33 +19051,33 @@
    ],
    "correct": 2,
    "why": "Cold conditions prevent the products from reverting, so the first-formed ratio is frozen in.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "What would you change to favor the thermodynamic product?",
-   "options": [
-    "Lower the temperature",
-    "Raise the temperature",
-    "Use less HBr",
-    "Remove the solvent"
-   ],
-   "correct": 1,
-   "why": "Warming allows bromide to leave again, so the mixture can re-equilibrate into the deeper well.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "How does 1,2-addition to a diene compare to ordinary alkene addition?",
+   "q": "A diene plus an electrophile gives two products, but the capture step cannot reverse at any temperature. What does heating change?",
    "options": [
-    "It is the same mechanism with a delocalized cation",
-    "It has no intermediate",
-    "It is radical",
-    "It is an entirely different mechanism"
+    "Nothing about the ratio — the faster product, faster",
+    "It shifts the mixture toward the more stable product",
+    "It stops the reaction from happening at all",
+    "It switches the reaction to a radical mechanism"
    ],
    "correct": 0,
-   "why": "Protonation then capture, exactly as for a simple alkene. The only difference is that the cation is allylic.",
-   "difficulty": "medium",
+   "why": "Thermodynamic control is bought with reversibility, not with temperature. Heat is only useful because it lets a product ionize back to the intermediate and try again; if that path is closed, nothing that has formed can be unformed and the ratio stays wherever the two rates put it.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "3-bromobut-1-ene is solvolyzed in warm ethanol. Besides the expected ether, what else forms?",
+   "options": [
+    "Only the alkene, from elimination of HBr",
+    "Nothing else; an allylic halide gives a single product",
+    "The ether with the OEt and the double bond both moved along",
+    "A rearranged carbon skeleton, from a methyl shift"
+   ],
+   "correct": 2,
+   "why": "Ionizing that C–Br bond regenerates exactly the allylic cation the HBr addition went through, and ethanol can return to either end of it. Capture at the far end gives 1-ethoxybut-2-ene alongside 3-ethoxybut-1-ene. Chemists call it allylic rearrangement; it is the substitution-side view of the same delocalized intermediate.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -19103,7 +19103,7 @@
    ],
    "correct": 2,
    "why": "They are constitutional isomers, differing in where the Br and the double bond sit.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -19157,7 +19157,7 @@
    ],
    "correct": 0,
    "why": "Lower in energy once formed. It need not be the one that forms fastest.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -19170,7 +19170,7 @@
    ],
    "correct": 3,
    "why": "The system can only settle into the most stable product if it is able to leave the others.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -19183,20 +19183,20 @@
    ],
    "correct": 3,
    "why": "Low temperature stops anything climbing back out, so the first-formed ratio is frozen in.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What conditions favor thermodynamic control?",
+   "q": "Two products, one intermediate. A's barrier is 10 kJ/mol lower than B's and neither can revert. What ratio at room temperature?",
    "options": [
-    "Any conditions",
-    "Cold and irreversible",
-    "Warm and reversible",
-    "Cold and reversible"
+    "About 50:1 in favor of B",
+    "About 50:1 in favor of A",
+    "About 2:1 in favor of A",
+    "About 1:1, since 10 kJ/mol is small"
    ],
-   "correct": 2,
-   "why": "Warming supplies the energy to reverse the step, so the system can explore and settle in the deepest well.",
-   "difficulty": "easy",
+   "correct": 1,
+   "why": "Rate depends exponentially on the barrier, so small-looking gaps are not small. At room temperature about 6 kJ/mol is already a factor of ten, and 10 kJ/mol is around fifty. Because nothing can revert, that rate ratio is frozen in as the product ratio — which is what kinetic control means.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -19213,28 +19213,28 @@
    "type": "mcq"
   },
   {
-   "q": "Thermodynamics is about which of these?",
+   "q": "You are handed a reaction-coordinate diagram with one intermediate and two routes down. How do you find the thermodynamic product?",
    "options": [
-    "The depth of the well",
-    "The rate constant",
-    "The catalyst used",
-    "The height of the barrier"
+    "Take whichever route is drawn on the left",
+    "Take whichever route is drawn shorter",
+    "Look for the deeper of the two wells",
+    "Look for the lower of the two hilltops"
    ],
-   "correct": 0,
-   "why": "Stability of the product, which is a separate question from how fast it forms.",
-   "difficulty": "easy",
+   "correct": 2,
+   "why": "Thermodynamics is about where you land, not how hard the climb was. The depth of a well is the stability of the product that sits in it, so the deeper well holds the thermodynamic product. The lower hilltop answers a different question — which product forms faster — and on an interesting diagram the two answers point at different routes.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Does the lower barrier always lead to the more stable product?",
+   "q": "Does the route with the lower barrier always lead to the more stable product?",
    "options": [
-    "Only when the reaction is reversible throughout",
-    "Yes, always",
-    "No, and the interesting cases are when it does not",
-    "Only for additions"
+    "Yes, in every reaction without exception",
+    "Only when the reaction is fully reversible",
+    "Only for reactions that add across a pi bond",
+    "No; the interesting cases are the disagreements"
    ],
-   "correct": 2,
-   "why": "When they coincide there is nothing to discuss. The distinction matters precisely when they do not.",
+   "correct": 3,
+   "why": "They coincide often enough, and when they do there is nothing to discuss. The vocabulary exists for the cases where the lower hill and the deeper valley point in opposite directions — HBr plus a diene being the standard example — because then the conditions, not the substrate, choose the product.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -19261,71 +19261,71 @@
    ],
    "correct": 0,
    "why": "An unusually low temperature is there to stop the reaction reversing, which freezes in the faster-formed product.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A bulky base at −78 °C pulls a proton from a ketone that has two different carbons next to its C=O. Which product?",
+   "options": [
+    "The one from the more accessible proton, frozen in by the cold",
+    "The more substituted one, the more stable of the two",
+    "Both in roughly equal amounts, since the base is blunt",
+    "Neither one, because the cold shuts the reaction down"
+   ],
+   "correct": 0,
+   "why": "A bulky base reaches the least hindered proton fastest, so that product forms first; at −78 °C nothing has the energy to shuffle the proton around afterwards, so the first-formed ratio is the final one. In Enolate Chemistry this product has a name — the kinetic enolate — but the reasoning is the one from this section.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "The same ketone is treated with a small base under warm, equilibrating conditions. Which product now dominates?",
+   "options": [
+    "An even mixture of the two",
+    "Neither, because warmth destroys both",
+    "The more substituted, more stable one",
+    "The one from the more accessible proton"
+   ],
+   "correct": 2,
+   "why": "Equilibrating conditions mean the proton can come off and go back on repeatedly, so the mixture is free to re-sort itself and drains into whichever product is lower in energy — here the more substituted one. Nothing about which formed faster survives that process.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An –SO₃H group can be put on a benzene ring to block a position and taken off later. What makes that possible?",
+   "options": [
+    "The sulfonation step is reversible",
+    "The reaction runs through a radical chain",
+    "The bond from sulfur to the ring is very weak",
+    "The group never fully attaches to the ring"
+   ],
+   "correct": 0,
+   "why": "Hot dilute acid drives the sulfonation backwards and the group leaves, which is a rare privilege among substitutions on a ring. That reversibility is exactly the condition for thermodynamic control, and it is what makes –SO₃H usable as a temporary blocking group in synthesis.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Under ordinary E2 conditions the Zaitsev alkene is the major product. Is that thermodynamic control?",
+   "options": [
+    "No; the Zaitsev alkene is the less stable of the two",
+    "No; an E2 cannot reverse, so the alkenes never re-sort",
+    "Yes; the more substituted alkene is also the more stable",
+    "Yes; an E2 equilibrates its products at any temperature"
+   ],
+   "correct": 1,
+   "why": "Thermodynamic control requires a way back, and an E2 has none: once an alkene has formed it stays. Under ordinary conditions the Zaitsev alkene happens to be both the faster-formed and the more stable one, so there is no contest to referee. Calling it the thermodynamic product invites the idea that it needs equilibration, and it does not.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Which enolate does LDA at -78 C give?",
+   "q": "A bulky base gives the less substituted Hofmann alkene. Why?",
    "options": [
-    "Neither",
-    "Both equally",
-    "Thermodynamic",
-    "Kinetic"
+    "The Hofmann alkene is the more stable of the two",
+    "The mixture equilibrates toward the smaller alkene",
+    "A bulky base reverses the alkene stability order",
+    "Sterics raise the barrier to the Zaitsev transition state"
    ],
    "correct": 3,
-   "why": "A bulky base removes the most accessible proton fastest, and the cold prevents equilibration.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Which enolate do warm equilibrating conditions give?",
-   "options": [
-    "Both equally",
-    "Kinetic control",
-    "Thermodynamic",
-    "Neither of them"
-   ],
-   "correct": 2,
-   "why": "The more substituted, more stable enolate, because the system can now re-equilibrate into it.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "Why can a sulfonic acid group be installed on a ring and later removed?",
-   "options": [
-    "It is very weakly bound",
-    "Aromatic sulfonation is reversible",
-    "It is a radical process",
-    "It never really attaches to the ring at all"
-   ],
-   "correct": 1,
-   "why": "Most electrophilic aromatic substitutions cannot be undone; sulfonation can, which makes it useful as a blocking group.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Zaitsev's more substituted alkene is which kind of product?",
-   "options": [
-    "Thermodynamic",
-    "Neither",
-    "Both",
-    "Kinetic, from the faster route"
-   ],
-   "correct": 0,
-   "why": "It is the more stable alkene. The Hofmann product from a bulky base is the kinetic outcome instead.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "A bulky base giving the less substituted alkene is which kind of outcome?",
-   "options": [
-    "Neither",
-    "Radical",
-    "Thermodynamic",
-    "Kinetic"
-   ],
-   "correct": 3,
-   "why": "Sterics make the less hindered proton faster to remove, so the faster route wins.",
+   "why": "The bulky base cannot reach the interior proton comfortably, so the transition state leading to the more substituted alkene is pushed up and the other route becomes the faster one. Nothing about the alkenes themselves has changed — the Zaitsev product is still the more stable, it is simply no longer the quicker.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -19339,32 +19339,32 @@
    ],
    "correct": 2,
    "why": "Rates decide, and B's extra stability is irrelevant because nothing will ever visit it.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A reaction gives 80:20 of P to Q at −40 °C and 10:90 at 60 °C. What does that tell you?",
+   "options": [
+    "P decomposes somewhere above 0 °C",
+    "A different mechanism takes over at 60 °C",
+    "Q forms faster while P is the more stable",
+    "The products can interconvert, and Q is the more stable"
+   ],
+   "correct": 3,
+   "why": "A ratio that changes with temperature from the same starting materials means the mixture is being re-sorted, which needs a route back to the common intermediate. Cold, the rates decided and P won, so P is the kinetic product. Warm, the stabilities decided and Q won, so Q sits in the deeper well.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Product A forms faster; product B is more stable. Warm and reversible, what do you get?",
+   "q": "B is more stable than A, but the step forming it cannot reverse. Does heating the reaction help?",
    "options": [
-    "Mostly A",
-    "Mostly B",
-    "An even mix",
-    "Neither"
-   ],
-   "correct": 1,
-   "why": "Both keep forming and reverting, so the mixture drains into the deeper well.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "B is more stable but its formation is irreversible. Does heating help?",
-   "options": [
-    "No, thermodynamic control needs reversibility",
-    "Yes, but slowly",
-    "Only in the presence of a catalyst",
-    "Yes, prolonged heating steadily gives more B"
+    "No; thermodynamic control needs reversibility",
+    "Yes, though it takes prolonged heating",
+    "Yes, and more B appears the longer you heat",
+    "Only if a catalyst is added as well"
    ],
    "correct": 0,
-   "why": "Without a way back, you simply get more of the faster product, faster.",
+   "why": "Heat is useful only because it lets a product climb back out and try again. Close that route and B's extra stability never gets a chance to matter, because nothing that has formed can be unformed. All the extra heat buys you is more of the faster product, sooner.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -19382,16 +19382,16 @@
    "type": "mcq"
   },
   {
-   "q": "In the diene case, which product sits in the deeper well?",
+   "q": "At room temperature, one product is favored about 100 to 1 at equilibrium. Roughly how much more stable is it?",
    "options": [
-    "Neither",
-    "The 1,2-product",
-    "The 1,4-product",
-    "They are equal"
+    "About 100 kJ/mol",
+    "About 250 kJ/mol",
+    "About 12 kJ/mol",
+    "About 1 kJ/mol"
    ],
    "correct": 2,
-   "why": "Its alkene is internal and more substituted, so it is the more stable of the two.",
-   "difficulty": "medium",
+   "why": "Equilibrium ratios depend exponentially on the free-energy difference, so a factor of a hundred needs surprisingly little: around 12 kJ/mol at room temperature, which is about the size of one weak hydrogen bond. It is the same steepness that makes a 10 kJ/mol barrier difference worth a factor of fifty in rate.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -19408,29 +19408,29 @@
    "type": "mcq"
   },
   {
-   "q": "What is the Diels-Alder endo product an example of?",
+   "q": "The more crowded endo Diels-Alder adduct forms faster than the less crowded exo one. What does that show about the word 'kinetic'?",
    "options": [
-    "Kinetic control",
-    "No control",
-    "Radical control",
-    "Thermodynamic control"
+    "It means the more stable of the available options",
+    "It means the step in question is reversible",
+    "It means faster, and says nothing about crowding",
+    "It means the less hindered of the available options"
    ],
-   "correct": 0,
-   "why": "It is the faster route despite being the more crowded arrangement, thanks to a secondary orbital interaction.",
+   "correct": 2,
+   "why": "Kinetic is a statement about a barrier and only about a barrier. Sterics are usually what makes one barrier lower, which is why 'kinetic' and 'less hindered' so often travel together — but here a favorable orbital interaction outweighs the crowding, and the more congested arrangement is still the quicker one.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "What does the endo rule show about the word kinetic?",
+   "q": "A product mixture does not change however long you heat it. What can you conclude?",
    "options": [
-    "It means more stable",
-    "It means reversible",
-    "It always means less hindered",
-    "It only means faster"
+    "Either it is already at equilibrium, or nothing can reverse",
+    "The reaction must be under thermodynamic control",
+    "The reaction must be under kinetic control",
+    "The two products are really one compound"
    ],
-   "correct": 3,
-   "why": "The endo transition state is more crowded and still faster, so kinetic cannot be read as less hindered.",
-   "difficulty": "easy",
+   "correct": 0,
+   "why": "An unchanging mixture is consistent with two opposite situations, and the observation alone cannot separate them: the system may have finished equilibrating and be sitting in the deepest well, or it may be frozen because no product can get back to the intermediate. To tell them apart, start from pure one product and see whether the mixture reappears.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -19460,15 +19460,15 @@
    "type": "mcq"
   },
   {
-   "q": "What is the activation energy usually written as?",
+   "q": "What does the double dagger in ΔG‡ mark?",
    "options": [
-    "Delta G double dagger",
-    "Delta H",
-    "Delta S",
-    "Delta G for the overall step"
+    "That the step in question is reversible",
+    "That the reaction gives off heat overall",
+    "That the quantity belongs to a transition state",
+    "That the value is measured in kilojoules"
    ],
-   "correct": 0,
-   "why": "The double dagger marks the transition state. Delta G without it refers to the overall change.",
+   "correct": 2,
+   "why": "ΔG is the free-energy change between two real species, and it tells you where an equilibrium sits. ΔG‡ is the climb from the starting point to the transition state at the top of the hill, and it tells you how fast. The dagger is the notation's way of saying that the thing at the other end is not something you could isolate.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -19482,7 +19482,7 @@
    ],
    "correct": 3,
    "why": "A branch point is what lets conditions select between outcomes.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -19491,11 +19491,11 @@
     "1,2 versus 1,4 addition",
     "Kinetic versus thermodynamic enolates",
     "SN2 inversion of configuration",
-    "Zaitsev versus Hofmann"
+    "Endo versus exo Diels-Alder adducts"
    ],
    "correct": 2,
-   "why": "SN2 stereochemistry is fixed by the geometry of backside attack, not by a competition between two product wells.",
-   "difficulty": "hard",
+   "why": "Each of the others is a genuine branch point where one route is faster and another gives the more stable product, and where conditions pick between them. SN2 stereochemistry is not a competition at all: backside attack is the only geometry the reaction has, so inversion is forced by the mechanism rather than selected by the conditions.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -19521,7 +19521,7 @@
    ],
    "correct": 0,
    "why": "Once formed it stays, so the product ratio simply records which route was faster.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   }
  ],
@@ -19540,16 +19540,16 @@
    "type": "mcq"
   },
   {
-   "q": "What is the product of a Diels-Alder reaction?",
+   "q": "Buta-1,3-diene reacts with dimethyl fumarate, whose esters are trans across the C=C. What comes out?",
    "options": [
-    "A cyclohexene",
-    "A benzene ring",
-    "An epoxide",
-    "A cyclopentane"
+    "A cyclohexane with the esters trans to each other",
+    "A cyclohexene with the esters trans on adjacent carbons",
+    "A cyclohexene with the esters cis on adjacent carbons",
+    "Equal amounts of the cis and trans ring products"
    ],
-   "correct": 0,
-   "why": "Two new sigma bonds close a six-membered ring, and one pi bond survives in the middle.",
-   "difficulty": "medium",
+   "correct": 1,
+   "why": "Both new bonds form on one face of the dienophile in a single step, so nothing is ever free to rotate and the starting geometry survives intact. Trans across the alkene becomes trans on the ring — on neighboring carbons, one up and one down. Run it with dimethyl maleate, the cis isomer, and you get the cis product just as cleanly.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -19575,7 +19575,7 @@
    ],
    "correct": 2,
    "why": "Every bond breaks and forms in one step through a single cyclic transition state.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -19601,7 +19601,7 @@
    ],
    "correct": 0,
    "why": "Both ends of the diene must reach both ends of the dienophile at once.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -19653,7 +19653,7 @@
    ],
    "correct": 0,
    "why": "They lower its LUMO, bringing it closer to the diene's HOMO.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -19670,29 +19670,29 @@
    "type": "mcq"
   },
   {
-   "q": "Which pairing is fastest?",
+   "q": "Rank these dienophiles with cyclopentadiene, fastest first.",
    "options": [
-    "Electronics do not matter",
-    "Rich diene with rich dienophile",
-    "Rich diene with poor dienophile",
-    "Poor with poor"
+    "All three react at about the same rate",
+    "maleic anhydride > methyl acrylate > ethene",
+    "ethene > methyl acrylate > maleic anhydride",
+    "methyl acrylate > maleic anhydride > ethene"
    ],
-   "correct": 2,
-   "why": "Mismatching them in this direction brings the interacting orbitals closest in energy.",
-   "difficulty": "medium",
+   "correct": 1,
+   "why": "Count the groups pulling the LUMO down. Maleic anhydride has two carbonyls flanking its C=C; methyl acrylate has one ester; ethene has nothing at all and needs forcing conditions. The narrower the gap to the diene's HOMO, the faster the pair reacts, so the order follows the electron-withdrawing power directly.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Maleic anhydride is a classic what?",
+   "q": "Isoprene reacts with methyl acrylate. Which regioisomer dominates?",
    "options": [
-    "Diene component",
-    "Dienophile",
-    "Catalyst",
-    "Solvent"
+    "The 'para' one, the two substituents 1,4 across the ring",
+    "The 'ortho' one, the two substituents on adjacent carbons",
+    "The 'meta' one, the two substituents 1,3 across the ring",
+    "An even mixture, since the orientation is uncontrolled"
    ],
-   "correct": 1,
-   "why": "Two carbonyls flank its double bond, which pulls the LUMO down sharply.",
-   "difficulty": "easy",
+   "correct": 0,
+   "why": "Polarize each partner. Isoprene's methyl sits on C2, which puts the nucleophilic end of the diene at C1; the ester on the dienophile puts the electrophilic end on the CH₂ that does not carry it. Bond those two, and the methyl and the ester finish 1,4 apart. A 2-substituted diene always gives this 'para' relationship; the 1,3 arrangement is not on the menu at all.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -19718,19 +19718,19 @@
    ],
    "correct": 3,
    "why": "Both bonds form on the same face in one step, so nothing can rotate and the relationship is preserved.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Two substituents trans on the dienophile end up how in the product?",
+   "q": "You want dimethyl cyclohex-4-ene-1,2-dicarboxylate with its esters cis. Which pair makes it?",
    "options": [
-    "Unpredictable",
-    "Cis",
-    "Trans",
-    "Randomly mixed"
+    "Buta-1,3-diene and dimethyl maleate",
+    "Buta-1,3-diene and dimethyl fumarate",
+    "Cyclopentadiene and dimethyl maleate",
+    "Hexa-1,3,5-triene and methyl acrylate"
    ],
-   "correct": 2,
-   "why": "The same suprafacial addition preserves trans just as it preserves cis.",
+   "correct": 0,
+   "why": "Cut the target at its retro-Diels-Alder disconnection: step one carbon out from each end of the ring double bond and break the two bonds leading away, which leaves buta-1,3-diene and a two-carbon piece carrying both esters. Since the reaction preserves the dienophile's geometry, cis esters in the product demand cis esters in the dienophile — dimethyl maleate. Fumarate would give the trans ring product, and cyclopentadiene would give a bicyclic one.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -19743,8 +19743,8 @@
     "No stereocenters form"
    ],
    "correct": 1,
-   "why": "Change the stereochemistry of the starting material and you get a predictably different stereochemistry in the product.",
-   "difficulty": "easy",
+   "why": "Stereospecific means the answer is read off the starting material rather than guessed: change the geometry going in and you get a predictably different geometry coming out. Both new bonds form on one face of each partner — suprafacial, in the formal vocabulary — so nothing gets a chance to scramble.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -19761,16 +19761,16 @@
    "type": "mcq"
   },
   {
-   "q": "Why is the endo product favored despite being more crowded?",
+   "q": "Cyclopentadiene and maleic anhydride give a bicyclic adduct. Where does the anhydride sit in the major product?",
    "options": [
-    "It is in fact the less crowded arrangement",
-    "Sterics do not matter",
-    "It is more stable",
-    "A secondary orbital interaction lowers its barrier"
+    "Split evenly between the two possible sides",
+    "Outside the bicyclic framework altogether",
+    "On the same side as the two-carbon C=C bridge",
+    "On the same side as the one-carbon CH₂ bridge"
    ],
-   "correct": 3,
-   "why": "The substituent's pi system interacts favorably with the developing pi system of the diene.",
-   "difficulty": "easy",
+   "correct": 2,
+   "why": "That arrangement is the endo one, and it comes from the stack in which the anhydride is tucked under the diene as the bond forms. It is the more crowded of the two approaches and still the faster, because the anhydride's pi system touches the diene's in the transition state. Note that endo is the kinetic answer here: the exo adduct is usually the more stable of the two.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -19796,7 +19796,7 @@
    ],
    "correct": 1,
    "why": "Heating a suitable cyclohexene sends it back to a diene and a dienophile.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -19809,33 +19809,33 @@
    ],
    "correct": 0,
    "why": "Mentally cutting a six-membered ring at that disconnection is one of the most productive moves in retrosynthesis.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "How many pi electrons does the diene contribute?",
+   "q": "What makes a reaction pericyclic?",
    "options": [
-    "Six",
-    "None",
-    "Two",
-    "Four"
+    "Two separate molecules combine to make a ring",
+    "It is driven by light rather than by heat",
+    "It runs through a cyclic carbocation intermediate",
+    "Every bond breaks and forms together, round a closed loop"
    ],
    "correct": 3,
-   "why": "Two double bonds, two pi electrons each. The dienophile brings two more.",
-   "difficulty": "easy",
+   "why": "The defining feature is the single step with no intermediate and the electrons travelling in a closed circuit, not the shape of the product. Cycloadditions such as the Diels-Alder are one family; electrocyclic ring closures and sigmatropic shifts like the Cope and Claisen rearrangements are the others. Plenty of ring-forming reactions are not pericyclic at all.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "How many pi electrons does the dienophile contribute?",
+   "q": "(E)-Penta-1,3-diene reacts with propenal. Where do the methyl and the aldehyde end up?",
    "options": [
-    "None",
-    "Four",
-    "Two",
-    "Six"
+    "1,4 across the ring — the 'para' product",
+    "1,3 across the ring — the 'meta' product",
+    "In whichever positions chance puts them",
+    "On adjacent ring carbons — the 'ortho' product"
    ],
-   "correct": 2,
-   "why": "One double or triple bond. Four plus two is the [4+2] in the name.",
-   "difficulty": "medium",
+   "correct": 3,
+   "why": "The methyl sits on a terminal carbon of the diene, which makes this a 1-substituted diene, and those give the 'ortho' relationship. Check it by polarizing: the donor end puts the diene's nucleophilic carbon at the far terminus, that carbon bonds to the dienophile's CH₂, and the methyl-bearing end is therefore left bonded to the carbon carrying the CHO — next-door neighbors on the new ring.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -19847,8 +19847,8 @@
     "Only with a catalyst"
    ],
    "correct": 1,
-   "why": "It contributes two pi electrons just as an alkene does, and the extra pi bond survives into the product.",
-   "difficulty": "easy",
+   "why": "An alkyne brings two pi electrons to the ring just as an alkene does, and its second pi bond is untouched by the reaction. So the product keeps that bond alongside the new one between the diene's old C2 and C3, and what you isolate is a cyclohexa-1,4-diene rather than a cyclohexene.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -19887,20 +19887,20 @@
    ],
    "correct": 2,
    "why": "One transition state, no intermediate, and every consequence of that follows.",
-   "difficulty": "hard",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Does the Diels-Alder need a catalyst?",
+   "q": "A Lewis acid such as AlCl₃ speeds up a Diels-Alder. How?",
    "options": [
-    "Yes, it always needs a strong acid",
-    "No, though Lewis acids can accelerate it",
-    "Yes, a metal",
-    "Yes, UV light"
+    "It generates a carbocation the diene can attack",
+    "It raises the effective temperature of the mixture",
+    "It binds the dienophile's carbonyl and lowers its LUMO",
+    "It helps the diene rotate into its s-cis conformation"
    ],
-   "correct": 1,
-   "why": "The bond arithmetic already favors it; a Lewis acid can lower the dienophile's LUMO further and speed it up.",
-   "difficulty": "easy",
+   "correct": 2,
+   "why": "Coordinating to the carbonyl oxygen drains electron density out of the C=C next to it, dropping the dienophile's LUMO closer to the diene's HOMO. Rates can rise by orders of magnitude and the endo preference usually sharpens. It is a genuine catalyst and not a requirement — the reaction is downhill on bond energies alone.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -19913,7 +19913,7 @@
    ],
    "correct": 0,
    "why": "It can never reach the conformation where both ends point the same way.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   }
  ],
@@ -19941,7 +19941,7 @@
    ],
    "correct": 0,
    "why": "A bigger gap needs a higher energy photon, and higher energy means shorter wavelength.",
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -19954,7 +19954,7 @@
    ],
    "correct": 3,
    "why": "Less energy is needed, and lower energy light has a longer wavelength.",
-   "difficulty": "medium",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -19967,85 +19967,85 @@
    ],
    "correct": 2,
    "why": "More p orbitals give more molecular orbitals over a similar range, so the highest occupied rises and the lowest empty falls.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which absorbs at the longer wavelength: hexa-1,3,5-triene or hexa-1,4-diene?",
+   "options": [
+    "The triene, with three C=C in one conjugated run",
+    "The 1,4-diene, which has more sp3 carbons",
+    "Both the same, since they are isomers",
+    "Neither, within reach of a routine instrument"
+   ],
+   "correct": 0,
+   "why": "Count what is actually conjugated, not what is present. Hexa-1,3,5-triene has three double bonds in one unbroken run, so it has the most molecular orbitals packed into the same energy range and the narrowest HOMO-LUMO gap — 258 nm. Hexa-1,4-diene has an sp3 carbon between its two double bonds, so it behaves as two lone alkenes and absorbs below 200 nm, out of reach.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "One band sits at 217 nm with ε ≈ 21,000; another at 280 nm with ε ≈ 20. What are you looking at?",
+   "options": [
+    "An impurity rather than a real second band",
+    "A conjugated diene, and a carbonyl's lone pair",
+    "Two conjugated systems of different lengths",
+    "Two lone pairs on different heteroatoms"
+   ],
+   "correct": 1,
+   "why": "The wavelength tells you the gap; the ε tells you how allowed the jump is. A π to π* transition in a conjugated system runs to ε in the tens of thousands. A lone pair on a carbonyl oxygen points sideways relative to the π* it has to reach, so the n to π* band is nearly forbidden — ε of ten to a hundred — even though it sits at a long wavelength. A long λ with a tiny ε is the signature of a lone pair.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Approximately where does ethene absorb?",
+   "q": "In A = εcl, what units must ε carry?",
    "options": [
-    "120 nm",
-    "171 nm",
-    "217 nm",
-    "258 nm"
-   ],
-   "correct": 1,
-   "why": "A single isolated double bond absorbs well below 200 nm, which is inconvenient for ordinary instruments.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Approximately where does buta-1,3-diene absorb?",
-   "options": [
-    "258 nm",
-    "450 nm",
-    "171 nm",
-    "217 nm"
+    "mol·L⁻¹·cm⁻¹",
+    "cm·mol·L⁻¹",
+    "It has no units, like A",
+    "L·mol⁻¹·cm⁻¹"
    ],
    "correct": 3,
-   "why": "Conjugating two double bonds moves the absorption into the accessible range.",
+   "why": "Derive it rather than memorizing it. A is a bare number, c is in mol per litre and l is in centimetres, so ε has to supply exactly what cancels those two: litres per mole per centimetre. Writing 'ε = 21,000' without units is shorthand for 21,000 L·mol⁻¹·cm⁻¹.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Approximately where does hexa-1,3,5-triene absorb?",
+   "q": "A 1.00 cm cell gives A = 0.63 for a diene with ε = 21,000. What is the concentration?",
    "options": [
-    "400 nm",
-    "217 nm",
-    "258 nm",
-    "171 nm"
+    "3.0 × 10⁻⁵ M",
+    "1.3 × 10⁴ M",
+    "3.3 × 10⁴ M",
+    "0.63 M"
+   ],
+   "correct": 0,
+   "why": "Rearrange first: c = A / εl = 0.63 / (21,000 × 1.00) = 3.0 × 10⁻⁵ mol L⁻¹. Check the units as you go — L·mol⁻¹·cm⁻¹ times cm leaves L·mol⁻¹, and dividing a unitless absorbance by that gives mol·L⁻¹. Thirty micromolar is a few milligrams in a litre, which is what a large ε buys you.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A formula fits either a conjugated triene or a compound with three isolated C=C. The sample absorbs at 258 nm. Which is it?",
+   "options": [
+    "Either — wavelength cannot separate them",
+    "Neither structure fits a band there",
+    "The conjugated triene",
+    "The one with isolated double bonds"
    ],
    "correct": 2,
-   "why": "Three conjugated double bonds, and the trend continues upward.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Approximately where does beta-carotene absorb?",
-   "options": [
-    "258 nm",
-    "450 nm",
-    "171 nm",
-    "217 nm"
-   ],
-   "correct": 1,
-   "why": "Eleven conjugated double bonds put it past 400 nm and into the visible region.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "How many conjugated double bonds does beta-carotene have?",
-   "options": [
-    "Six",
-    "Twenty",
-    "Three",
-    "Eleven"
-   ],
-   "correct": 3,
-   "why": "Enough to bring its absorption into the visible, which is why it is colored at all.",
-   "difficulty": "medium",
+   "why": "Isolated double bonds do not pool their orbitals, so each behaves as a lone alkene absorbing below 200 nm where a routine instrument cannot look. A band at 258 nm needs a single run of three conjugated C=C. This is the one structural question UV-Vis answers sharply: how long the conjugation is, though not where in the molecule it sits.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
    "q": "What is a chromophore?",
    "options": [
-    "The group responsible for the absorption",
-    "A type of solvent",
-    "A detector component",
-    "Any compound that appears colored"
+    "Any compound that looks colored to the eye",
+    "A component inside the spectrometer",
+    "A solvent chosen to be transparent",
+    "The group of atoms responsible for the absorption"
    ],
-   "correct": 0,
-   "why": "In organic UV-Vis it is usually the conjugated pi system.",
-   "difficulty": "hard",
+   "correct": 3,
+   "why": "In organic UV-Vis it is nearly always the conjugated π system, and sometimes a lone pair beside one. A group that is not itself a chromophore but shifts the band of a neighboring one — an OR or an NR₂ — is called an auxochrome, and that is how a dye's color is tuned without lengthening the chain.",
+   "difficulty": "easy",
    "type": "mcq"
   },
   {
@@ -20123,7 +20123,7 @@
    ],
    "correct": 2,
    "why": "The Beer-Lambert relationship makes it the standard way to follow a concentration while a reaction runs.",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -20192,15 +20192,15 @@
    "type": "mcq"
   },
   {
-   "q": "Do alkyl substituents on a pi system shift lambda-max?",
+   "q": "A diene picks up two alkyl substituents and one extra conjugated double bond. Roughly how far does λₘₐₓ move?",
    "options": [
-    "Yes, to longer wavelength",
-    "Yes, to shorter wavelength",
-    "Only in rings",
-    "No, never"
+    "It does not move at all",
+    "About 40 nm to longer wavelength",
+    "About 40 nm to shorter wavelength",
+    "About 5 nm to longer wavelength"
    ],
-   "correct": 0,
-   "why": "The effect is smaller than adding a double bond, but systematic enough that empirical rules exist.",
+   "correct": 1,
+   "why": "The Woodward-Fieser increments make this arithmetic: each alkyl group or ring residue is worth about +5 nm and each extra conjugated C=C about +30, so 5 + 5 + 30 is roughly +40. Notice the size of the two terms — lengthening the conjugation dominates, and substituents only nudge, which is why UV-Vis counts double bonds well and identifies substituents badly.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -20270,15 +20270,15 @@
    "type": "mcq"
   },
   {
-   "q": "What kind of orbital is the LUMO in a conjugated alkene?",
+   "q": "What kind of orbital is the LUMO of a conjugated alkene?",
    "options": [
-    "An s orbital",
-    "A sigma antibonding orbital",
-    "A pi-star antibonding orbital",
-    "A lone pair"
+    "A sigma antibonding orbital, far higher in energy",
+    "A non-bonding orbital holding a lone pair",
+    "A vacant 3s orbital on one of the carbons",
+    "A π* antibonding orbital — the far end of the π to π* jump"
    ],
-   "correct": 2,
-   "why": "The transition is pi to pi-star, so the empty orbital involved is the pi antibonding one.",
+   "correct": 3,
+   "why": "Combining the p orbitals of a conjugated system gives a set of π orbitals; the bottom half are bonding and filled, the top half antibonding and empty. The lowest empty one is the π* that an absorbed photon promotes an electron into. Naming it matters because the other common band in organic UV-Vis ends in the same π* but starts from a lone pair instead, and that one is weak.",
    "difficulty": "hard",
    "type": "mcq"
   },

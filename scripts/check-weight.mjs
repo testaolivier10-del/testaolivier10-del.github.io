@@ -251,7 +251,17 @@ const DATA_BUDGETS = [
      the phase. The core half is first-paint latency on practice.html and
      review.html, which is why it is tracked to the kilobyte rather than
      rounded up generously. */
-  ['ochem/assets/practice-bank-core.json', 216],
+  /* 216 -> 220. The 216 figure was set for Phase 4 at "about 4 KB of core per
+     pair of sections", and the self-study rewrite has overrun it: replacing a
+     recall stem ("What is the 1,4-addition product?") with an application one
+     ("HBr adds to 2-methylpenta-1,3-diene at -80 C. Major product?") costs
+     roughly 60 characters of stem and options per item, and it is the stem and
+     the options that live in this half. The file was already 0.3 KB over at the
+     start of the conjugation pass, before a line of it was edited. 4 KB covers
+     the chapter that pushed it over plus the ones queued behind it; the
+     explanations half keeps its own, separate budget. This one is first-paint
+     latency on practice.html, so it stays tracked to the kilobyte. */
+  ['ochem/assets/practice-bank-core.json', 220],
   /* 156 -> 200 for the explanations, and this one is a decision rather than
      a formality. The self-study pass rewrites recall questions into
      application ones, and an application question's explanation is a

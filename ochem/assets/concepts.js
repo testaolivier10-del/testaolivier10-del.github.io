@@ -185,7 +185,7 @@
       dependsOn:['polarity-reversal'],
       hint:'Name the electrophile first; the alcohol class follows from it, and only esters take two equivalents.' },
     { id:'hard-soft-addition', title:'1,2 against 1,4', family:'Organometallics',
-      topics:['gilman-reagents','grignard-reagents','nucleophilic-addition','conjugated-systems','aldol'],
+      topics:['gilman-reagents','grignard-reagents','nucleophilic-addition','michael-robinson','aldol'],
       dependsOn:['grignard-scope'],
       hint:'An enone has two electrophilic carbons. The metal on the nucleophile decides which one it picks.' },
     { id:'catalytic-cycle', title:'The cross-coupling cycle', family:'Organometallics',

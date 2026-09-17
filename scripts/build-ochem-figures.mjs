@@ -3171,7 +3171,7 @@ FIGURES.push({
   id: 'carbonyl-family-gallery',
   section: 'functional-groups',
   anchor: '<h3>The carbonyl family: what is attached to the C=O</h3>',
-  viewBox: '0 0 760 470',
+  viewBox: '0 0 760 500',
   alt: 'Seven small panels, each showing a carbon double-bonded to an oxygen with the carbon marked delta plus and the oxygen delta minus. The carbon carries an R group on the left and, highlighted on the right, the atom that names the group: H for aldehyde, a second R for ketone, OH for carboxylic acid, OR for ester, NH2 for amide, Cl for acid chloride, and an oxygen bridging to a second C=O for anhydride.',
   build() {
     let s = '';
@@ -4686,7 +4686,7 @@ FIGURES.push({
   section: 'hydrogenation',
   anchor: 'Hydrogenation is therefore a <b>syn addition</b>: the two new C–H bonds form on the same face.</p>',
   alt: 'Three frames showing an alkene adsorbed face down on a palladium surface, both hydrogens delivered from that surface, and the syn product; below, 1,2-dimethylcyclohexene hydrogenated to cis-1,2-dimethylcyclohexane',
-  viewBox: '0 0 760 470',
+  viewBox: '0 0 760 500',
   build() {
     let s = '';
     s += text(60, 28, 'WHY SYN', { cls: 'fg-tag', size: 11 });
@@ -8592,6 +8592,424 @@ FIGURES.push({
   },
   caption: 'Tautomerization with the arrows drawn. Under the acidic conditions of an alkyne hydration it is two ordinary steps: the enol pi bond takes a proton onto carbon, and a water molecule then takes the proton off oxygen. The oxygen lone pair is what makes the intermediate cation affordable.',
   note: 'This is the fastest way to tell a tautomer from a resonance form. Cover the hydrogens and the two structures differ only in where a pi bond sits — that looks like resonance. Uncover them and a hydrogen has physically moved, which no resonance arrow is allowed to do.',
+});
+
+
+/* ----------------------------------------------------------------- B0a ---
+   s-cis and s-trans are named, contrasted with cis/trans, declared the
+   commonest reason a Diels-Alder fails and then carried through two more
+   sections - without a picture anywhere. It is a three-dimensional idea about
+   one rotation, which is the definition of something prose is bad at. */
+FIGURES.push({
+  id: 's-cis-s-trans',
+  section: 'conjugated-systems',
+  anchor: 'The prefix <i>s</i> is the only thing marking the difference in writing.</p>',
+  alt: 'Buta-1,3-diene drawn s-trans with its two double bonds pointing opposite ways, a rotation arrow about the central single bond, and the same molecule s-cis with both double bonds pointing the same way and the two inner hydrogens crowding. Below, cyclopentadiene locked s-cis by its ring and a fused bicyclic diene locked s-trans.',
+  viewBox: '0 0 760 420',
+  build() {
+    let s = '';
+    const chain = (pts, hi) => {
+      let t = '';
+      t += bond(pts[0], pts[1], { order: 2, rFrom: 0, rTo: 0 });
+      t += bond(pts[1], pts[2], { cls: hi ? 'fg-bond-hi' : 'fg-bond', rFrom: 0, rTo: 0 });
+      t += bond(pts[2], pts[3], { order: 2, rFrom: 0, rTo: 0 });
+      for (const q of pts) t += atom(q.x, q.y, '', { kind: 'point' });
+      return t;
+    };
+
+    // ---- s-trans, the extended zig-zag most dienes sit in ----
+    s += tag(155, 74, 's-trans');
+    s += chain([P(80, 160), P(130, 126), P(180, 160), P(230, 126)], true);
+    s += text(155, 196, 'the two C=C point opposite ways', { cls: 'fg-sm', size: 10 });
+    s += text(155, 212, 'the usual conformer', { cls: 'fg-sm', size: 10 });
+
+    // ---- the rotation between them ----
+    s += curve(P(272, 132), P(438, 132), { bow: -30 });
+    s += curve(P(438, 172), P(272, 172), { bow: -30 });
+    s += text(355, 92, 'rotate about the highlighted', { cls: 'fg-tag', size: 10.5 });
+    s += text(355, 108, 'C2–C3 single bond', { cls: 'fg-tag', size: 10.5 });
+    s += text(355, 156, 'about 12 kJ/mol uphill', { cls: 'fg-sm', size: 10 });
+    s += text(355, 200, 'no bond is broken,', { cls: 'fg-sm', size: 10 });
+    s += text(355, 214, 'and no new compound made', { cls: 'fg-sm', size: 10 });
+
+    // ---- s-cis, the one that reacts ----
+    s += tag(554, 62, 's-cis');
+    s += chain([P(486, 116), P(524, 166), P(584, 166), P(622, 116)], true);
+    // The two inner hydrogens are the whole cost of this conformation, so they
+    // are the only hydrogens drawn anywhere in the figure.
+    s += bond(P(486, 116), P(534, 92), { rFrom: 0, rTo: 16 });
+    s += bond(P(622, 116), P(574, 92), { rFrom: 0, rTo: 16 });
+    s += atom(534, 92, 'H', { kind: 'warn' });
+    s += atom(574, 92, 'H', { kind: 'warn' });
+    s += text(554, 128, 'these two crowd', { cls: 'fg-tag-warn', size: 10.5 });
+    s += text(554, 196, 'both C=C point the same way', { cls: 'fg-sm', size: 10 });
+    s += text(554, 212, 'the only one that can cyclize', { cls: 'fg-sm', size: 10 });
+
+    s += rule(30, 234, 730, 234);
+
+    // ---- locked s-cis: cyclopentadiene ----
+    s += tag(170, 254, 'cyclopentadiene — locked s-cis');
+    const pc = P(170, 314), r5 = 46, v = [];
+    for (let i = 0; i < 5; i++) {
+      const a = (-90 + i * 72) * Math.PI / 180;
+      v.push(P(pc.x + Math.cos(a) * r5, pc.y + Math.sin(a) * r5));
+    }
+    // v2 is the sp3 CH2; the diene runs v3=v4 - v4-v0 - v0=v1.
+    s += bond(v[1], v[2], { rFrom: 0, rTo: 0 });
+    s += bond(v[2], v[3], { rFrom: 0, rTo: 0 });
+    s += bond(v[4], v[0], { cls: 'fg-bond-hi', rFrom: 0, rTo: 0 });
+    s += ringDouble(v[0], v[1], pc);
+    s += ringDouble(v[3], v[4], pc);
+    for (const q of v) s += atom(q.x, q.y, '', { kind: 'point' });
+    s += text(v[2].x + 30, v[2].y + 14, 'sp³ CH₂', { cls: 'fg-sm', size: 9.5 });
+    s += text(170, 388, 'the ring holds both ends forward', { cls: 'fg-sm', size: 10 });
+    s += text(170, 404, 'so reactive it dimerizes on standing', { cls: 'fg-sm', size: 10 });
+
+    // ---- locked s-trans: a diene across a ring fusion ----
+    s += tag(508, 254, 'fused ring — locked s-trans');
+    const r6 = 44, k = r6 * Math.sqrt(3) / 2, cyA = 314;
+    const cxA = 470, cxB = cxA + 2 * k;
+    const hex = (cx) => ({
+      e30: P(cx + k, cyA + r6 / 2), e90: P(cx, cyA + r6), e150: P(cx - k, cyA + r6 / 2),
+      e210: P(cx - k, cyA - r6 / 2), e270: P(cx, cyA - r6), e330: P(cx + k, cyA - r6 / 2),
+    });
+    const A = hex(cxA), B = hex(cxB);
+    // Ring A, then ring B, sharing the vertical edge A.e330-A.e30.
+    for (const [a, b] of [[A.e30, A.e90], [A.e90, A.e150], [A.e150, A.e210], [A.e210, A.e270]]) s += bond(a, b, { rFrom: 0, rTo: 0 });
+    for (const [a, b] of [[B.e90, B.e30], [B.e30, B.e330], [B.e330, B.e270], [B.e270, A.e330]]) s += bond(a, b, { rFrom: 0, rTo: 0 });
+    s += bond(A.e330, A.e30, { cls: 'fg-bond-hi', rFrom: 0, rTo: 0 });   // the central single bond
+    s += ringDouble(A.e270, A.e330, P(cxA, cyA));
+    s += ringDouble(B.e90, A.e30, P(cxB, cyA));
+    for (const q of [A.e30, A.e90, A.e150, A.e210, A.e270, A.e330, B.e30, B.e90, B.e270, B.e330]) s += atom(q.x, q.y, '', { kind: 'point' });
+    s += text(508, 388, 'the two C=C are held on opposite sides', { cls: 'fg-sm', size: 10 });
+    s += text(508, 404, 'of that same bond, and cannot swing round', { cls: 'fg-sm', size: 10 });
+    return s;
+  },
+  caption: 'One bond, two conformations, and two rings that take the choice away. Rotating about the highlighted central single bond swings the two double bonds from opposite sides to the same side; nothing is broken and no new compound is made. The two structures underneath are dienes whose rings have already decided the question for them.',
+  note: 'This is why the distinction from <i>cis</i> and <i>trans</i> matters in practice rather than as a naming point. A cis alkene and a trans alkene are two bottles on a shelf; s-cis and s-trans are the same bottle, and every open-chain diene spends a little of its time in each. Which is also why the locked cases are the interesting ones: a ring can take a diene permanently out of the reaction, and no amount of electronic tuning brings it back.',
+});
+
+/* ----------------------------------------------------------------- B0b ---
+   HOMO, LUMO and pi* are used in three later sections and taught in none.
+   This is the missing ladder: n p orbitals make n orbitals, the bottom half
+   fill, and the two at the frontier are the two that do chemistry. The gap
+   shrinking left to right is the UV-Vis section's whole argument, drawn once
+   here so that section can measure it rather than assert it. */
+FIGURES.push({
+  id: 'butadiene-mo-ladder',
+  section: 'conjugated-systems',
+  anchor: 'the LUMO is the cheapest place to put electrons that arrive.</p>',
+  alt: 'Molecular orbital energy ladders for ethene, buta-1,3-diene and hexa-1,3,5-triene side by side. Each has as many orbitals as p orbitals, the lower half filled with electron pairs, and the HOMO-LUMO gap marked; the gap shrinks from ethene to the triene. Below, the butadiene HOMO is drawn as four p orbitals whose lobes are largest at the two ends and change phase at a node between the middle carbons.',
+  viewBox: '0 0 760 500',
+  build() {
+    let s = '';
+    s += arrow(P(40, 300), P(40, 88));
+    s += text(50, 84, 'energy', { cls: 'fg-tag', size: 11, anchor: 'start' });
+
+    const col = (cx, name, sub, levels, homoAt) => {
+      let t = '';
+      levels.forEach((lv, i) => {
+        t += rule(cx - 60, lv.y, cx + 60, lv.y);
+        t += text(cx - 66, lv.y + 4, lv.name, { cls: 'fg-sm', size: 10, anchor: 'end' });
+        if (i <= homoAt) {
+          // two electrons, drawn as the pair of dots used for a lone pair
+          t += `<circle class="fg-lp" cx="${cx - 13}" cy="${lv.y}" r="3.4"></circle>`;
+          t += `<circle class="fg-lp" cx="${cx + 13}" cy="${lv.y}" r="3.4"></circle>`;
+        }
+      });
+      const hi = levels[homoAt].y, lo = levels[homoAt + 1].y;
+      t += text(cx + 66, hi + 4, 'HOMO', { cls: 'fg-tag-good', size: 10.5, anchor: 'start' });
+      t += text(cx + 66, lo + 4, 'LUMO', { cls: 'fg-tag-warn', size: 10.5, anchor: 'start' });
+      t += arrow(P(cx, hi - 7), P(cx, lo + 7), { size: 7 });
+      t += arrow(P(cx, lo + 7), P(cx, hi - 7), { size: 7 });
+      t += text(cx + 8, (hi + lo) / 2 + 4, 'gap', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+      t += text(cx, 306, name, { cls: 'fg-lbl', size: 12 });
+      t += text(cx, 322, sub, { cls: 'fg-sm', size: 9.5 });
+      return t;
+    };
+
+    s += col(170, 'Ethene', '2 p orbitals \u2192 2 orbitals',
+      [{ name: 'π', y: 250 }, { name: 'π*', y: 110 }], 0);
+    s += col(380, 'Buta-1,3-diene', '4 p orbitals \u2192 4 orbitals',
+      [{ name: 'ψ₁', y: 270 }, { name: 'ψ₂', y: 225 }, { name: 'ψ₃', y: 155 }, { name: 'ψ₄', y: 110 }], 1);
+    s += col(590, 'Hexa-1,3,5-triene', '6 p orbitals \u2192 6 orbitals',
+      [{ name: 'ψ₁', y: 278 }, { name: 'ψ₂', y: 248 }, { name: 'ψ₃', y: 218 },
+       { name: 'ψ₄', y: 162 }, { name: 'ψ₅', y: 132 }, { name: 'ψ₆', y: 102 }], 2);
+
+    s += rule(30, 340, 730, 340);
+
+    // ---- the butadiene HOMO drawn out ----
+    s += text(240, 352, 'the HOMO of buta-1,3-diene, ψ₂', { cls: 'fg-tag', size: 11 });
+    const y0 = 432, xs = [150, 210, 270, 330];
+    const sizes = [[17, 23], [11, 16], [11, 16], [17, 23]];
+    const tops = ['fg-orb', 'fg-orb', 'fg-orb-alt', 'fg-orb-alt'];
+    xs.forEach((x, i) => {
+      const [rx, ry] = sizes[i];
+      s += lobeE(x, y0 - 18 - ry / 2, rx, ry, tops[i]);
+      s += lobeE(x, y0 + 18 + ry / 2, rx, ry, tops[i] === 'fg-orb' ? 'fg-orb-alt' : 'fg-orb');
+    });
+    for (let i = 0; i < 3; i++) s += bond(P(xs[i], y0), P(xs[i + 1], y0), { cls: 'fg-bond-soft', rFrom: 0, rTo: 0 });
+    xs.forEach((x, i) => {
+      s += atom(x, y0, '', { kind: 'point' });
+      s += text(x, y0 + 16, `C${i + 1}`, { cls: 'fg-sm', size: 9.5 });
+    });
+    s += `<line class="fg-orb-node" x1="240" y1="378" x2="240" y2="486"></line>`;
+    s += text(240, 498, 'node', { cls: 'fg-sm', size: 9.5 });
+
+    s += text(380, 382, 'Biggest at C1 and C4, least in the middle.', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(380, 402, 'The phase flips once, between C2 and C3.', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(380, 432, 'A partner meets this orbital where it', { cls: 'fg-lbl', size: 11.5, anchor: 'start' });
+    s += text(380, 452, 'is largest — so a diene reacts at C1', { cls: 'fg-lbl', size: 11.5, anchor: 'start' });
+    s += text(380, 472, 'and C4, and never in the middle.', { cls: 'fg-lbl', size: 11.5, anchor: 'start' });
+    return s;
+  },
+  caption: 'The ladder behind the vocabulary. Overlapping n parallel p orbitals makes n orbitals; the n electrons fill the bottom half; the top filled one is the HOMO and the first empty one is the LUMO. Adding conjugation packs more rungs into a similar height, so the HOMO climbs, the LUMO drops, and the gap between them closes.',
+  note: 'Both of the chapter’s later sections are read off this one picture. The gap narrowing left to right is what a UV-Vis spectrometer measures, and it is why a longer conjugated system absorbs longer-wavelength light. The shape of ψ₂ underneath is why the reaction chemistry happens at the ends: it is the same claim the resonance forms of an allylic cation make, drawn as one orbital instead of two structures.',
+});
+
+
+/* ----------------------------------------------------------------- B2a ---
+   The section's existing figure starts at the allylic cation and ends at the
+   two products, which leaves the mechanism itself undrawn: the proton is
+   never seen arriving, the two resonance forms are described in words and
+   never drawn beside each other, and bromide's attack is a straight reaction
+   arrow rather than a pair of electrons leaving a lone pair. This is the
+   arrows. */
+FIGURES.push({
+  id: 'diene-protonation-arrows',
+  section: 'diene-addition',
+  anchor: 'pick the end whose cation has the better <i>major</i> resonance form.</p>',
+  alt: 'Buta-1,3-diene attacking H-Br with a curved arrow from the C1-C2 pi bond to the hydrogen and a second arrow from the H-Br bond onto bromine. The resulting allylic cation is drawn as two resonance structures, positive on C2 in one and on C4 in the other, with a bromide ion below sending a curved arrow from a lone pair to each of those two carbons.',
+  viewBox: '0 0 760 300',
+  build() {
+    let s = '';
+
+    // ---- step 1: the pi bond takes the proton ----
+    s += tag(175, 56, 'step 1 — the π bond takes the proton');
+    const c1 = P(115, 120), c2 = P(165, 90), c3 = P(215, 120), c4 = P(265, 90);
+    s += bond(c1, c2, { order: 2, rFrom: 0, rTo: 0 });
+    s += bond(c2, c3, { rFrom: 0, rTo: 0 });
+    s += bond(c3, c4, { order: 2, rFrom: 0, rTo: 0 });
+    for (const q of [c1, c2, c3, c4]) s += atom(q.x, q.y, '', { kind: 'point' });
+    s += text(108, 140, 'C1', { cls: 'fg-sm', size: 9.5 });
+    s += text(165, 76, 'C2', { cls: 'fg-sm', size: 9.5 });
+    s += text(215, 140, 'C3', { cls: 'fg-sm', size: 9.5 });
+    s += text(274, 76, 'C4', { cls: 'fg-sm', size: 9.5 });
+
+    const H = P(90, 176), Br = P(38, 176);
+    s += bond(H, Br);
+    s += atom(H.x, H.y, 'H');
+    s += atom(Br.x, Br.y, 'Br');
+    for (const a of [120, 180, 240]) s += lonePair(Br.x, Br.y, a);
+    s += curve(P(138, 106), P(93, 160), { bow: 22 });
+    s += curve(P(64, 176), P(46, 157), { bow: 14 });
+    s += text(175, 212, 'the charge lands on C2, next to C3=C4', { cls: 'fg-sm', size: 10 });
+
+    s += arrow(P(310, 120), P(368, 120));
+
+    // ---- step 2: the same cation, drawn both ways ----
+    s += tag(528, 56, 'step 2 — one cation, two forms');
+    const A = [P(385, 120), P(423, 94), P(461, 120), P(499, 94)];
+    s += bond(A[0], A[1], { rFrom: 0, rTo: 0 });
+    s += bond(A[1], A[2], { rFrom: 0, rTo: 0 });
+    s += bond(A[2], A[3], { order: 2, rFrom: 0, rTo: 0 });
+    for (const q of A) s += atom(q.x, q.y, '', { kind: 'point' });
+    s += text(423, 74, 'C2', { cls: 'fg-sm', size: 9.5 });
+    s += text(423, 88, '+', { cls: 'fg-lbl', size: 15 });
+
+    s += text(528, 116, '↔', { cls: 'fg-lbl', size: 18 });
+
+    const B = [P(557, 120), P(595, 94), P(633, 120), P(671, 94)];
+    s += bond(B[0], B[1], { rFrom: 0, rTo: 0 });
+    s += bond(B[1], B[2], { order: 2, rFrom: 0, rTo: 0 });
+    s += bond(B[2], B[3], { rFrom: 0, rTo: 0 });
+    for (const q of B) s += atom(q.x, q.y, '', { kind: 'point' });
+    s += text(671, 74, 'C4', { cls: 'fg-sm', size: 9.5 });
+    s += text(671, 88, '+', { cls: 'fg-lbl', size: 15 });
+
+    // ---- step 3: bromide arrives, from a lone pair, at either end ----
+    s += atom(528, 196, 'Br⁻');
+    for (const a of [0, 90, 180, 270]) s += lonePair(528, 196, a);
+    s += curve(P(506, 190), P(437, 104), { bow: 24 });
+    s += curve(P(550, 190), P(657, 104), { bow: -24 });
+    s += text(528, 232, 'one bromide, two carbons to land on', { cls: 'fg-sm', size: 10 });
+
+    s += rule(30, 248, 706, 248);
+    s += text(375, 272, 'Both arrows leave one bromide and land on one cation — only the carbon differs.', { cls: 'fg-lbl', size: 12 });
+    s += text(375, 290, 'C2 gives 3-bromobut-1-ene; C4 gives 1-bromobut-2-ene.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The mechanism with its arrows drawn. The diene’s terminal π bond reaches for the proton and the H–Br bond collapses onto bromine, which leaves a cation whose charge is genuinely shared between C2 and C4 — the two structures on the right are one species, not two. Bromide then arrives from a lone pair at whichever of those carbons it lands on.',
+  note: 'Two habits this figure is trying to build. An arrow starts where the electrons <b>are</b>: on the π bond, on the H–Br bond, on a bromide lone pair — never on a positive charge and never on the hydrogen itself. And the double-headed arrow between the two cation structures means they are one thing drawn twice; a student who treats them as two intermediates in equilibrium will look for a step that converts one into the other, and there is none.',
+});
+
+
+/* ----------------------------------------------------------------- B3a ---
+   The section's existing figure is the diene case with real compounds in the
+   wells, which is right for that argument and wrong for carrying the idea to
+   enolates and sulfonation. This is the stripped version - two hills, two
+   valleys, no chemistry - and it adds the thing no diagram in the chapter
+   showed: the barriers back OUT, which are what temperature is actually
+   deciding about. */
+FIGURES.push({
+  id: 'kinetic-thermodynamic-generic',
+  section: 'kinetic-thermodynamic',
+  anchor: 'It is changing <b>whether the system is allowed to find out</b>.</p>',
+  alt: 'A generic energy profile: one intermediate in the middle, a low barrier on the left leading to a shallow well and a higher barrier on the right leading to a deeper well. Double-headed arrows mark the barrier back out of each well, small on the left and large on the right.',
+  viewBox: '0 0 760 430',
+  build() {
+    let s = '';
+    s += arrow(P(44, 330), P(44, 60));
+    s += text(54, 54, 'free energy', { cls: 'fg-tag', size: 11, anchor: 'start' });
+
+    s += rule(300, 150, 460, 150);
+    s += tag(380, 140, 'the intermediate');
+    s += `<path class="fg-bond" fill="none" d="M300 150 C270 150 252 116 222 116 C190 116 172 240 120 240 L80 240"></path>`;
+    s += `<path class="fg-bond" fill="none" d="M460 150 C486 150 506 86 534 86 C566 86 584 310 624 310 L662 310"></path>`;
+    s += text(222, 104, 'lower ΔG‡', { cls: 'fg-tag-good', size: 11 });
+    s += text(534, 74, 'higher ΔG‡', { cls: 'fg-tag-warn', size: 11 });
+
+    // the depth comparison
+    s += rule(120, 240, 624, 240);
+    s += rule(624, 240, 624, 310);
+    s += text(548, 262, 'deeper well', { cls: 'fg-tag-good', size: 10.5 });
+
+    // the barriers back OUT - the measure temperature is deciding about
+    s += rule(100, 116, 222, 116);
+    s += arrow(P(100, 232), P(100, 122), { size: 7 });
+    s += arrow(P(100, 122), P(100, 232), { size: 7 });
+    s += text(118, 108, 'small barrier out', { cls: 'fg-tag-good', size: 10.5 });
+    s += rule(534, 86, 644, 86);
+    s += arrow(P(644, 302), P(644, 92), { size: 7 });
+    s += arrow(P(644, 92), P(644, 302), { size: 7 });
+    s += text(606, 332, 'large barrier out', { cls: 'fg-tag-warn', size: 10.5 });
+
+    s += text(160, 268, 'shallow well — forms faster', { cls: 'fg-lbl', size: 11.5 });
+    s += text(606, 352, 'deep well — more stable', { cls: 'fg-lbl', size: 11.5 });
+    s += tag(380, 350, 'reaction coordinate');
+
+    s += rule(30, 378, 730, 378);
+    s += text(375, 400, 'Kinetics compares the two hills. Thermodynamics compares the two valleys.', { cls: 'fg-lbl', size: 12 });
+    s += text(375, 418, 'Warming empties the shallow well first, because that is the one with a small barrier out.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The same picture with the chemistry taken out, so it can be carried anywhere. One branch point, two routes, and the two comparisons that disagree: the left hill is lower, the right valley is deeper. Nothing about either fact predicts the other.',
+  note: 'The two vertical double arrows are the part usually left out, and they are what temperature acts on. Getting <i>into</i> a well is the forward barrier; getting back <i>out</i> of it is the forward barrier plus the well depth. The shallow well on the left has a small barrier out, so it is the first to start emptying as the flask warms — and everything that leaves it is re-sorted through the branch point until it finds the deep well on the right and stays there.',
+});
+
+
+/* ----------------------------------------------------------------- B4a ---
+   endo/exo is the chapter's purest three-dimensional idea and it was carried
+   by two sentences of prose. Seen from the side, the whole argument is one
+   picture: the dienophile lies under the diene either way, and the only
+   question is whether its substituent points in under the diene or out away
+   from it. */
+FIGURES.push({
+  id: 'endo-exo-stacked',
+  section: 'diels-alder',
+  anchor: 'nothing here is reversing at ordinary temperatures.</p>',
+  alt: 'Two side-on views of a diene stacked above a dienophile. On the left, endo: the dienophile carbonyl points inward, underneath the diene, with a dotted secondary orbital contact to the diene above it. On the right, exo: the same carbonyl points outward and downward, away from the diene, with no such contact.',
+  viewBox: '0 0 760 360',
+  build() {
+    let s = '';
+    const stack = (x0, endo) => {
+      let t = '';
+      const dL = P(x0 + 60, 140), dR = P(x0 + 280, 140);
+      const pL = P(x0 + 90, 214), pR = P(x0 + 250, 214);
+      t += bond(dL, dR, { rFrom: 0, rTo: 0 });
+      t += `<path class="fg-bond" fill="none" d="M${dL.x} 140 Q${x0 + 170} 104 ${dR.x} 140"></path>`;
+      t += bond(pL, pR, { rFrom: 0, rTo: 0 });
+      for (const q of [dL, dR, pL, pR]) t += atom(q.x, q.y, '', { kind: 'point' });
+      t += bond(dL, pL, { cls: 'fg-dash-hi', rFrom: 0, rTo: 0 });
+      t += bond(dR, pR, { cls: 'fg-dash-hi', rFrom: 0, rTo: 0 });
+      const sub = endo ? P(x0 + 148, 188) : P(x0 + 124, 250);
+      t += bond(pL, sub, { rFrom: 0, rTo: 15 });
+      t += atom(sub.x, sub.y, 'C=O');
+      if (endo) t += bond(sub, P(x0 + 158, 142), { cls: 'fg-dash', rFrom: 15, rTo: 0 });
+      return t;
+    };
+
+    s += panel(20, 30, 330, 262);
+    s += tag(185, 56, 'endo');
+    s += text(185, 76, 'substituent tucked under the diene', { cls: 'fg-sm', size: 10 });
+    s += text(185, 98, 'diene, seen edge-on', { cls: 'fg-sm', size: 9.5 });
+    s += stack(35, true);
+    s += text(185, 250, 'the dotted line is the secondary contact', { cls: 'fg-sm', size: 9.5 });
+    s += text(185, 276, 'more crowded, and faster', { cls: 'fg-tag-good', size: 11 });
+
+    s += panel(386, 30, 330, 262);
+    s += tag(551, 56, 'exo');
+    s += text(551, 76, 'substituent pointing away', { cls: 'fg-sm', size: 10 });
+    s += text(551, 98, 'same two bonds forming', { cls: 'fg-sm', size: 9.5 });
+    s += stack(401, false);
+    s += text(551, 276, 'less crowded, and slower', { cls: 'fg-tag-warn', size: 11 });
+
+    s += rule(30, 308, 706, 308);
+    s += text(368, 330, 'Cyclopentadiene and maleic anhydride give the endo adduct, and give it faster.', { cls: 'fg-lbl', size: 12 });
+    s += text(368, 348, 'The two new sigma bonds are identical in both stacks. Only the substituent has moved.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The two ways the same two molecules can stack, seen from the side. The dienophile lies under the diene either way and the two forming bonds — the dashed ones — are the same in both. What differs is where the dienophile’s carbonyl points: inward, underneath the diene, or outward and away from it.',
+  note: 'The endo stack is plainly the more crowded of the two, and it is still the faster one, which is the point. Tucked underneath, the carbonyl’s π system sits directly below the π system the diene is using, and the two touch in the transition state without ever becoming a bond — a <b>secondary orbital interaction</b>. It lowers the barrier by more than the crowding raises it. Nothing about the product’s own stability is involved: endo is the kinetic answer, not the thermodynamic one.',
+});
+
+
+/* ----------------------------------------------------------------- B5a ---
+   A UV-Vis section with no spectrum in it. The lambda-ladder figure puts
+   compounds on a wavelength axis, which shows the RESULT of the argument;
+   what the reader has never seen is the thing an instrument actually prints:
+   an absorbance axis, a broad band, a peak you read lambda-max off, and a
+   weak n->pi* transition sitting almost on the baseline beside it. */
+FIGURES.push({
+  id: 'uv-spectrum-trace',
+  section: 'uv-vis',
+  anchor: 'when you see a strongly colored organic compound, extended conjugation is the first thing to look for.</p>',
+  alt: 'An absorbance-versus-wavelength plot from 180 to 400 nanometres. A tall broad band peaks at 217 nanometres for buta-1,3-diene, a second taller band peaks further right at 258 nanometres for hexa-1,3,5-triene, and a very small bump near 320 nanometres marks the weak n to pi-star transition of a ketone.',
+  viewBox: '0 0 760 364',
+  build() {
+    let s = '';
+    const X = (nm) => 90 + ((nm - 180) / 220) * 590;
+    const trace = (mu, sig, amp, cls) => {
+      let d = '';
+      for (let nm = 180; nm <= 400; nm += 2) {
+        const y = Math.max(72, 260 - amp * Math.exp(-((nm - mu) ** 2) / (2 * sig * sig)));
+        d += (nm === 180 ? 'M' : 'L') + X(nm).toFixed(1) + ' ' + y.toFixed(1);
+      }
+      return `<path class="${cls}" fill="none" d="${d}"></path>`;
+    };
+
+    // axes
+    s += arrow(P(90, 262), P(90, 68));
+    s += text(96, 62, 'absorbance', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += rule(90, 260, 690, 260);
+    for (let nm = 200; nm <= 400; nm += 50) {
+      s += rule(X(nm), 260, X(nm), 267);
+      s += text(X(nm), 280, String(nm), { cls: 'fg-sm', size: 10 });
+    }
+    s += tag(390, 302, 'wavelength (nm)');
+
+    // the two pi -> pi* bands, and the weak n -> pi* one
+    s += `<line class="fg-dash" x1="${X(217).toFixed(1)}" y1="100" x2="${X(217).toFixed(1)}" y2="260"></line>`;
+    s += `<line class="fg-dash" x1="${X(258).toFixed(1)}" y1="85" x2="${X(258).toFixed(1)}" y2="260"></line>`;
+    s += trace(320, 18, 12, 'fg-bond-soft');
+    s += trace(217, 14, 160, 'fg-bond');
+    s += trace(258, 16, 175, 'fg-bond-hi');
+
+    s += text(X(217) + 40, 82, 'buta-1,3-diene, 217 nm', { cls: 'fg-lbl', size: 11.5, anchor: 'end' });
+    s += text(X(258) + 10, 72, 'hexa-1,3,5-triene, 258 nm', { cls: 'fg-tag-good', size: 11.5, anchor: 'start' });
+    s += text(X(320), 216, 'n → π* of a ketone', { cls: 'fg-sm', size: 10 });
+    s += text(X(320), 232, 'ε ≈ 20, so barely a ripple', { cls: 'fg-sm', size: 10 });
+
+    s += text(566, 112, 'height is ε; position is λₘₐₓ', { cls: 'fg-tag', size: 11 });
+    s += text(566, 130, 'and the two are independent', { cls: 'fg-sm', size: 10 });
+
+    s += rule(30, 316, 706, 316);
+    s += text(368, 338, 'Position says how long the conjugation is; height says how strongly it absorbs.', { cls: 'fg-lbl', size: 11.5 });
+    s += text(368, 356, 'A UV band is broad because many vibrational levels take part in one transition.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'What the instrument actually prints. Each band is a single electronic transition, and λ<sub>max</sub> is read off the top of it. Adding one double bond to the conjugation moves the whole band 41 nm to the right — and, here, makes it taller as well.',
+  note: 'The small bump near 320 nm is the part most students never meet, and it is the one that stops UV-Vis being read as "a long λ means a long chain". It is a lone pair on a carbonyl oxygen being promoted into the same π* orbital — an <b>n → π*</b> transition. It lands at a long wavelength but its ε is in the tens rather than the tens of thousands, because the two orbitals barely overlap. A big λ<sub>max</sub> with a tiny ε is a lone pair; a big λ<sub>max</sub> with a huge ε is a long conjugated system.',
 });
 
 const START = (id) => `<!-- fig:${id}:start -->`;
