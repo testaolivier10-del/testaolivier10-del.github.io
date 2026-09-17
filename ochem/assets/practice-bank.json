@@ -10083,7 +10083,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "Eclipsing bonds forces electron pairs in the C-H sigma bonds closer together, raising energy through torsional strain, so every eclipsed form of ethane is less stable than every staggered form.",
+   "why": "Staggering lets each C-H bond on one carbon donate into the antibonding orbital of a C-H bond on the other, and eclipsing switches that hyperconjugative stabilization off. That torsional cost applies to every eclipsed arrangement of ethane, so no eclipsed form is lower in energy than any staggered one.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -10418,7 +10418,7 @@
    "type": "mcq"
   },
   {
-   "q": "In the boat conformation of cyclohexane, the main source of steric strain comes from:",
+   "q": "In the boat conformation of cyclohexane, the main sources of strain are:",
    "options": [
     "Eclipsed bonds and flagpole hydrogens",
     "Bond angle distortion away from 109.5 degrees",
@@ -10426,7 +10426,7 @@
     "Aromatic ring current"
    ],
    "correct": 0,
-   "why": "The boat has several eclipsed C-H bonds along its sides (torsional strain) plus two hydrogens at the flagpole positions that point toward each other and clash sterically.",
+   "why": "The boat has several eclipsed C-H bonds along its sides, which is torsional strain, plus two flagpole hydrogens on the raised ends that point toward each other, which is steric strain. Bond angles stay near tetrahedral, so angle strain is not the problem here.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -11150,7 +11150,7 @@
    "type": "mcq"
   },
   {
-   "q": "A chair has a bromine axial and pointing up on C1 and a methyl equatorial and pointing up on C3. After a correct ring flip, what are they?",
+   "q": "A chair has a bromine axial and pointing up on C1 and a methyl equatorial and pointing up on C2. After a correct ring flip, what are they?",
    "options": [
     "Br equatorial and up; CH₃ axial and up",
     "Br equatorial and down; CH₃ axial and down",
@@ -11158,7 +11158,7 @@
     "Br axial and down; CH₃ equatorial and down"
    ],
    "correct": 0,
-   "why": "A flip swaps axial for equatorial on every carbon and leaves every group on the face it was already on. Both groups started up, so both finish up; both labels reverse. If your redrawn chair changes both the label and the face, you have drawn a different compound; if it changes neither, you rotated the page instead of flipping the ring.",
+   "why": "A flip swaps axial for equatorial on every carbon and leaves every group on the face it was already on. Both groups started up, so both finish up; both labels reverse. Note why the methyl sits on C2 for this to be drawable: axial directions alternate round the ring, so C1 axial-up forces C2 axial-down and therefore C2 equatorial-up. On C3, which shares C1's axial direction, the equatorial bond points down instead.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -11243,7 +11243,7 @@
     "Flipping is about a million times slower, at 10⁵ per second"
    ],
    "correct": 3,
-   "why": "Rate falls off exponentially with barrier height, so the extra 8 kcal/mol costs roughly five orders of magnitude: ethane spins at 10¹⁰–10¹¹ per second and a ring flips at about 10⁵. A million times slower, and still far too fast to catch — which is why cyclohexane has to be cooled to about −90 °C before NMR sees the two kinds of hydrogen separately.",
+   "why": "Rate falls off exponentially with barrier height, so the extra 8 kcal/mol costs nearly six orders of magnitude: ethane spins at 10¹⁰–10¹¹ per second and a ring flips at about 10⁵. A million times slower, and still far too fast to catch — which is why cyclohexane has to be cooled to about −90 °C before NMR sees the two kinds of hydrogen separately.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -11316,10 +11316,10 @@
     "Trans-1,4-disubstituted",
     "Trans-1,2-disubstituted",
     "Cis-1,4-disubstituted",
-    "Trans-1,3-disubstituted"
+    "Cis-1,3-disubstituted"
    ],
    "correct": 2,
-   "why": "Cis-1,4-disubstitution always places one substituent axial and one equatorial; flipping just swaps which carbon carries which role, leaving the overall energy unchanged when the two groups are identical.",
+   "why": "Cis-1,4-disubstitution always places one substituent axial and one equatorial; flipping just swaps which carbon carries which role, leaving the overall energy unchanged when the two groups are identical. Each of the others is lopsided: trans-1,2, trans-1,4 and cis-1,3 all offer a diequatorial chair and a diaxial one, and the diequatorial chair wins.",
    "difficulty": "medium",
    "type": "mcq"
   },
