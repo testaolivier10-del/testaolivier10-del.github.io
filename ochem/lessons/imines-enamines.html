@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function(){
     { id:'a3', t:'<b>pyrrolidine</b> &nbsp;<span style="color:var(--muted);">(a cyclic secondary amine)</span>', right:'enamine',
       why:'Enamine, and the one most used in practice. Being in a ring changes nothing about the count: two carbons on nitrogen, one hydrogen, none left after addition.' },
     { id:'a4', t:'<b>(CH₃)₃N</b> &nbsp;<span style="color:var(--muted);">(tertiary)</span>', right:'neither',
-      why:'Neither. It adds, but with no N-H at all the intermediate cannot lose water to anything stable, so it just falls back apart. Which is why tertiary amines appear in these reactions as bases rather than as reagents.' }
+      why:'Neither. It can add, but the cation it would need, R₂C=N⁺R₃, would put five bonds on nitrogen — so there is no way out and the addition just reverses. Which is why tertiary amines appear in these reactions as bases rather than as reagents.' }
   ];
   var OPTS = [ { k:'imine', l:'Imine' }, { k:'enamine', l:'Enamine' }, { k:'neither', l:'Neither' } ];
 
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function(){
         title: 'One hydrogen left, or none.',
         bodyHtml: '<p class="step-body">A <b>primary</b> amine RNH₂ brings two hydrogens and spends one getting to the cation, so the C=N⁺ still has one on nitrogen. Lose that one and you have a neutral <b>imine</b>, C=N&ndash;R. Done.</p>' +
           '<p class="step-body">A <b>secondary</b> amine R₂NH brings only one, and it spends that one the same way, so the cation has <b>no</b> hydrogen on nitrogen at all. The only proton available is on the <b>&alpha; carbon</b> &mdash; the carbon on the other side of the C=N⁺. Take that one and the double bond ends up between the two carbons: an <b>enamine</b>, C=C&ndash;NR₂.</p>' +
-          '<p class="step-body" style="margin-bottom:0;">A <b>tertiary</b> amine has no N&ndash;H at all. It can still add, but there is no way forward from the intermediate, so nothing stable forms. That is why tertiary amines show up in these reactions as bases and never as the condensing partner.</p>'
+          '<p class="step-body" style="margin-bottom:0;">A <b>tertiary</b> amine has no N&ndash;H at all. It can still add, and losing water would then demand a nitrogen with five bonds, so the addition just reverses and nothing stable forms. That is why tertiary amines show up in these reactions as bases and never as the condensing partner.</p>'
       },
       {
         render: function(api){
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function(){
           '<p class="step-body">Set it beside an enolate, which does the same job:</p>' +
           '<ul class="step-body">' +
           '<li><b>Enolate</b> &mdash; made with LDA, anionic, highly reactive, and prone to alkylating twice.</li>' +
-          '<li><b>Enamine</b> &mdash; made with a secondary amine and mild acid, neutral, less reactive, and usually stops after one.</li>' +
+          '<li><b>Enamine</b> &mdash; made with a secondary amine and mild acid, neutral, and stopped after one alkylation by the iminium salt it becomes.</li>' +
           '</ul>' +
           '<div class="explain-box">The <b>Stork enamine synthesis</b> is the sequence built on this: form the enamine, alkylate or acylate the &alpha; carbon, hydrolyze back to the ketone. Net result is an &alpha;-substituted ketone, and the reason to prefer it over an enolate is the same reason a cuprate beats a Grignard &mdash; the milder nucleophile is the controllable one.</div>'
       },
@@ -273,12 +273,12 @@ document.addEventListener('DOMContentLoaded', function(){
         title: 'You want 2-benzylcyclohexanone. Why is the Stork enamine route often preferred over making the lithium enolate with LDA and adding benzyl bromide?',
         options: [
           'LDA cannot deprotonate a cyclohexanone',
-          'The enamine is neutral and less reactive, so it alkylates once instead of twice',
+          'Alkylating it gives an iminium salt that cannot be turned back into a nucleophile',
           'Benzyl bromide does not react with enolates',
           'The enamine route needs no alkyl halide at all'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct. The trouble with the enolate route is what happens <i>after</i> the first alkylation: the product ketone still has α hydrogens, the enolate present is basic enough to deprotonate it, and a second alkylation follows — so you get a mixture of mono- and dialkylated material plus unreacted starting ketone. A neutral enamine is a mild enough nucleophile that this does not run away, and the acidic workup that releases the ketone also destroys any enamine left. LDA does deprotonate cyclohexanone perfectly well, and benzyl bromide is an excellent electrophile; neither of those is the problem. The problem is that the enolate route is too reactive to stop, which is the recurring lesson of this half of the course.'
+        correctFeedback: 'Correct, and notice that the reason is structural rather than a matter of reactivity. Alkylating the enamine’s α carbon turns it into an <b>iminium salt</b>, which has no nucleophilic carbon at all, and there is no base in the flask that could pull it back to an enamine — so a second alkylation is not slow, it is impossible. The enolate route has no such stop: the product ketone still has α hydrogens, unreacted enolate is basic enough to take one, and a second alkylation follows, leaving a mixture of mono- and dialkylated material plus starting ketone. LDA does deprotonate cyclohexanone perfectly well, and benzyl bromide is an excellent electrophile; neither of those is the problem. The problem is that the enolate route is too reactive to stop, which is the recurring lesson of this half of the course.'
       }
     ]
   });

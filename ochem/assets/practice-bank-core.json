@@ -33323,14 +33323,14 @@
    "type": "mcq"
   },
   {
-   "q": "What is an ylide?",
+   "q": "Butanal, CH3CH2CH2CHO, is treated with Ph3P=CHCH2CH3. What is the major product?",
    "options": [
-    "A carbocation",
-    "A cyclic ester",
-    "Adjacent opposite charges in a neutral molecule",
-    "A radical pair"
+    "Heptan-4-ol",
+    "(Z)-hept-3-ene",
+    "(E)-hept-3-ene",
+    "Hept-3-yne"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -33362,7 +33362,7 @@
    "q": "Why will a tertiary halide not give an ylide?",
    "options": [
     "PPh3 is not nucleophilic enough",
-    "It has no acidic hydrogen",
+    "PPh3 is too basic to act as a nucleophile",
     "It eliminates on contact with PPh3",
     "Its backside is blocked to SN2"
    ],
@@ -33419,15 +33419,15 @@
    "type": "mcq"
   },
   {
-   "q": "What drives the Wittig forward?",
+   "q": "Which pair gives 2-methylhept-2-ene, (CH3)2C=CH-CH2CH2CH2CH3?",
    "options": [
-    "Loss of halide",
-    "Aromatization",
-    "The P=O bond",
-    "Release of ring strain"
+    "Acetone and Ph3P=CH-C4H9, from 1-bromopentane",
+    "Pentanal and Ph3P=C(CH3)2, from 2-bromopropane",
+    "2-Bromopropane and PPh3, with no base added",
+    "Hexanal and Ph3P=CH2, from iodomethane"
    ],
-   "correct": 2,
-   "difficulty": "easy",
+   "correct": 0,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -33527,14 +33527,14 @@
    "type": "mcq"
   },
   {
-   "q": "Which gives the less stable alkene geometry?",
+   "q": "You need (E)-methyl cinnamate, PhCH=CH-CO2Me, with high E selectivity. What do you use with benzaldehyde?",
    "options": [
-    "Both give the same mixture",
-    "The more reactive ylide",
-    "The less reactive ylide",
-    "Neither; both give trans"
+    "Ph3P=CH2, then esterify afterwards",
+    "Ph3P=CH-CH3, an unstabilized ylide",
+    "(MeO)2P(=O)CH2CO2Me with NaH",
+    "Ph3P+-CH2CO2Me Br-, with no base"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -33599,14 +33599,14 @@
    "type": "mcq"
   },
   {
-   "q": "Which carbon of the ylide ends up in the alkene?",
+   "q": "A route proposes making Ph3P=C(CH3)2 from 2-bromo-2-methylpropane. What is wrong with it?",
    "options": [
-    "The phosphorus",
-    "One of the phenyls",
-    "None of them",
-    "The carbanion carbon"
+    "Nothing; it is the standard preparation",
+    "The halide is tertiary, and it is the wrong one",
+    "PPh3 would attack the bromine instead",
+    "The ylide would be too stabilized to react"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -33628,7 +33628,7 @@
     "A trisubstituted one",
     "A terminal one",
     "The most substituted one",
-    "A conjugated one"
+    "A trans-disubstituted one"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -33709,24 +33709,24 @@
    "type": "mcq"
   },
   {
-   "q": "What decides imine against enamine?",
+   "q": "Cyclohexanone is treated with pyrrolidine and a trace of acid, then benzyl bromide, then aqueous acid. What is the product?",
    "options": [
-    "How many H remain on nitrogen",
-    "The temperature",
-    "The solvent",
-    "The carbonyl's substituents"
+    "1-Benzylcyclohexan-1-ol",
+    "2-Benzylcyclohexanone",
+    "2,6-Dibenzylcyclohexanone",
+    "N-Benzylpyrrolidine"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 1,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Where is the double bond in an imine?",
+   "q": "Which ketone will not give an enamine with pyrrolidine?",
    "options": [
-    "Between two carbons",
-    "Between carbon and oxygen",
-    "There is none",
-    "Carbon to nitrogen"
+    "Cyclohexanone",
+    "Acetone",
+    "Acetophenone",
+    "Benzophenone, Ph2C=O"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -33869,7 +33869,7 @@
    "options": [
     "A carbocation",
     "A radical",
-    "An ylide",
+    "A carboxylate",
     "An enolate"
    ],
    "correct": 3,
@@ -33917,10 +33917,10 @@
    "options": [
     "It is consumed by the halide",
     "It is not basic enough to form again",
-    "The amine blocks the site",
+    "Alkylation turns it into an iminium salt",
     "It is a milder nucleophile"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -33949,15 +33949,15 @@
    "type": "mcq"
   },
   {
-   "q": "What class of amine is pyrrolidine?",
+   "q": "A Stork alkylation with 1-bromobutane gives almost nothing, while the same sequence with allyl bromide works well. Why?",
    "options": [
-    "Secondary",
-    "Primary",
-    "Tertiary",
-    "Quaternary"
+    "An enamine is mild and needs a reactive halide",
+    "1-Bromobutane is too hindered for an SN2",
+    "Allyl bromide is the stronger base",
+    "The enamine reacts with bromide instead"
    ],
    "correct": 0,
-   "difficulty": "easy",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -33997,14 +33997,14 @@
    "type": "mcq"
   },
   {
-   "q": "Why is a tertiary amine used as a base in these reactions?",
+   "q": "Cyclohexanone is treated with H2NNH2, then with KOH and heat. What is the product?",
    "options": [
-    "It cannot condense",
-    "It is a stronger base than others",
-    "It is cheaper",
-    "It dissolves better"
+    "Cyclohexanol",
+    "Cyclohexylamine",
+    "Cyclohexane",
+    "The hydrazone, unchanged"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -34095,15 +34095,15 @@
    "type": "mcq"
   },
   {
-   "q": "What is the Michael retron?",
+   "q": "Cyclohexanone is treated with NaOEt, then with methyl vinyl ketone, then warmed. What is the major product?",
    "options": [
-    "A cyclohexane ring",
-    "An epoxide",
-    "A 1,5-dicarbonyl",
-    "A 1,3-dicarbonyl"
+    "2-Methylcyclohexanone",
+    "A 1,3-diketone",
+    "A bicyclic enone",
+    "Cyclohexanol"
    ],
    "correct": 2,
-   "difficulty": "easy",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -34131,14 +34131,14 @@
    "type": "mcq"
   },
   {
-   "q": "What would a simple ketone enolate do to an enone?",
+   "q": "An unstabilized lithium enolate, made with LDA at -78 C, is added to an enone. What does it do?",
    "options": [
-    "Add 1,4 as well",
-    "Nothing",
-    "Reduce it",
-    "Add 1,2"
+    "Adds 1,2, giving an alkoxide",
+    "Adds 1,4",
+    "Nothing at all",
+    "Reduces the enone"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -34275,15 +34275,15 @@
    "type": "mcq"
   },
   {
-   "q": "What is an alpha,beta-unsaturated carbonyl also called?",
+   "q": "Ethyl acetoacetate is treated with NaOEt and then acrylonitrile, CH2=CH-CN. What forms?",
    "options": [
-    "An enol",
-    "An enamine",
-    "An acetal",
-    "An enone"
+    "An amide",
+    "A Michael adduct with the nitrile three atoms away",
+    "Another 1,3-dicarbonyl",
+    "No reaction at all"
    ],
-   "correct": 3,
-   "difficulty": "hard",
+   "correct": 1,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -34359,26 +34359,26 @@
    "type": "mcq"
   },
   {
-   "q": "Which product spacing tells you a Claisen happened?",
+   "q": "Which of these is not a Michael acceptor?",
    "options": [
-    "1,3",
-    "1,5",
-    "Beta-hydroxy",
-    "1,2"
+    "Methyl vinyl ketone",
+    "Methyl acrylate",
+    "But-1-ene, CH3CH2CH=CH2",
+    "Nitroethene"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Why is reading product spacing useful?",
+   "q": "In the Michael addition of diethyl malonate to methyl vinyl ketone, what exists right after the new C-C bond forms?",
    "options": [
-    "It gives the yield",
-    "It predicts stereochemistry",
-    "It gives the mechanism's rate",
-    "It names the reaction"
+    "An enolate, which is then protonated",
+    "An alcohol",
+    "A carbocation",
+    "An epoxide"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -34409,15 +34409,15 @@
    "type": "mcq"
   },
   {
-   "q": "What are the three steps of both syntheses?",
+   "q": "Which sequence makes cyclobutanecarboxylic acid?",
    "options": [
-    "Alkylate, oxidize, decarboxylate",
-    "Protect, alkylate, deprotect",
-    "Deprotonate, alkylate, heat",
-    "Oxidize, reduce, hydrolyze"
+    "Diethyl malonate, 2 NaOEt, 1,3-dibromopropane, then H3O+ and heat",
+    "Diethyl malonate, NaOEt, cyclobutyl bromide, then H3O+ and heat",
+    "Ethyl acetoacetate, 2 NaOEt, 1,3-dibromopropane, then H3O+ and heat",
+    "Diethyl malonate, NaOEt, 1,3-dibromopropane, then H3O+ and heat"
    ],
-   "correct": 2,
-   "difficulty": "medium",
+   "correct": 0,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -34457,15 +34457,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why is the second carbonyl there?",
+   "q": "Which target is beyond the reach of a malonic ester synthesis?",
    "options": [
-    "To act as a leaving group",
-    "To dissolve the substrate",
-    "To acidify one hydrogen",
-    "To be the product's carbonyl"
+    "2-Methylbutanoic acid",
+    "Pentanoic acid",
+    "2,2-Dimethylbutanoic acid",
+    "3-Phenylpropanoic acid"
    ],
    "correct": 2,
-   "difficulty": "easy",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -34642,22 +34642,22 @@
     "Pentan-2-one",
     "Hexan-2-one",
     "4-Phenylbutan-2-one",
-    "A tertiary one"
+    "3,3-Dimethylbutan-2-one"
    ],
    "correct": 3,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "What should an alpha-substituted carboxylic acid make you look for?",
+   "q": "Why must the free carboxylic acid be present before the decarboxylation can happen?",
    "options": [
-    "A reduction step",
-    "A protecting group",
-    "The halide used",
-    "An oxidation step"
+    "Esters are too volatile to heat",
+    "The cyclic transition state uses the carboxyl O-H",
+    "CO2 can leave from an anion alone",
+    "Heat affects acids and not esters"
    ],
-   "correct": 2,
-   "difficulty": "easy",
+   "correct": 1,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -34697,14 +34697,14 @@
    "type": "mcq"
   },
   {
-   "q": "Which carbon of malonate is alkylated?",
+   "q": "Ethyl acetoacetate, NaOEt, then 1-bromo-2-methylpropane, then H3O+ and heat. What is the product?",
    "options": [
-    "A terminal methyl",
-    "The ethyl group",
-    "The middle one",
-    "An ester carbon"
+    "4-Methylpentan-2-one",
+    "5-Methylhexan-2-one",
+    "Hexan-2-one",
+    "5-Methylhexanoic acid"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -34773,7 +34773,7 @@
   {
    "q": "What is the tetrahedral intermediate called?",
    "options": [
-    "The Meisenheimer complex",
+    "The enolate",
     "The oxaphosphetane",
     "The betaine",
     "The Criegee intermediate"
@@ -34824,7 +34824,7 @@
     "Methyl > primary > secondary > tertiary",
     "Aryl > methyl > tertiary",
     "All groups migrate equally",
-    "Tertiary > secondary > primary > methyl"
+    "H > tertiary > secondary and aryl > primary > methyl"
    ],
    "correct": 3,
    "difficulty": "easy",
@@ -34843,12 +34843,12 @@
    "type": "mcq"
   },
   {
-   "q": "What migrates in a methyl ketone?",
+   "q": "Butanal, CH3CH2CH2CHO, is treated with mCPBA. What is the product?",
    "options": [
-    "Neither",
-    "The other group",
-    "The methyl",
-    "Both equally"
+    "Propyl formate",
+    "Butanoic acid",
+    "Butan-1-ol",
+    "No reaction"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -34939,15 +34939,15 @@
    "type": "mcq"
   },
   {
-   "q": "What does phenyl acetate tell you about aryl migration?",
+   "q": "2-Methylcyclohexanone is treated with mCPBA. Where does the inserted oxygen go?",
    "options": [
-    "Methyl outranks aryl",
-    "Neither migrates",
-    "Both migrate",
-    "Aryl outranks methyl"
+    "Between the carbonyl carbon and the methyl-bearing carbon",
+    "Between the carbonyl carbon and the plain CH2",
+    "Onto the methyl group itself",
+    "Into one of the ring C-H bonds"
    ],
-   "correct": 3,
-   "difficulty": "easy",
+   "correct": 0,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -35035,15 +35035,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which is the worst migrator?",
+   "q": "In which ketone is the migration genuinely ambiguous?",
    "options": [
-    "Methyl",
-    "Tertiary alkyl",
-    "Benzyl",
-    "Secondary alkyl"
+    "Acetophenone",
+    "3,3-Dimethylbutan-2-one",
+    "Cyclohexyl methyl ketone",
+    "Pentan-3-one, CH3CH2-CO-CH2CH3"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 3,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -35095,15 +35095,15 @@
    "type": "mcq"
   },
   {
-   "q": "How many groups on the carbonyl carbon migrate?",
+   "q": "Why does aryl migrate well when a phenyl cation is so unstable?",
    "options": [
-    "Both",
-    "Neither",
-    "It varies with temperature",
-    "One"
+    "Phenyl cations are in fact stable",
+    "The transition state is bridged, so no free cation forms",
+    "The ring is oxidized first",
+    "Aryl groups are small"
    ],
-   "correct": 3,
-   "difficulty": "medium",
+   "correct": 1,
+   "difficulty": "hard",
    "type": "mcq"
   }
  ],

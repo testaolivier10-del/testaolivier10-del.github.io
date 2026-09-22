@@ -135,19 +135,18 @@
 document.addEventListener('DOMContentLoaded', function(){
 (function(){
   /* Migratory aptitude is the only thing this reaction asks, so the
-     interactive step is four ketones and the question "which group moves". */
-  /* Migratory aptitude is the only thing this reaction asks, so the
      interactive step is four ketones and the question "which group moves".
      The two options name a SIDE rather than a group, and the answer
      alternates, because with methyl on the right every time a student could
-     click the same button four times and never rank anything. */
+     click the same button four times and never rank anything. One case has
+     no methyl in it at all, so the shortcut cannot answer every row. */
   var CASES = [
     { id:'m1', t:'CH\u2083\u2013CO\u2013CH(CH\u2083)\u2082 &nbsp;<span style="color:var(--muted);">(methyl \u00b7 isopropyl)</span>', right:'right',
       why:'The isopropyl, on the right. Secondary beats methyl comfortably, so the oxygen ends up between the carbonyl and the isopropyl and the product is isopropyl acetate.' },
     { id:'m2', t:'(CH\u2083)\u2083C\u2013CO\u2013CH\u2083 &nbsp;<span style="color:var(--muted);">(tert-butyl \u00b7 methyl)</span>', right:'left',
       why:'The tert-butyl, on the left. This is the widest gap in the series \u2014 tertiary is the best migrator and methyl the worst \u2014 so the product is tert-butyl acetate.' },
-    { id:'m3', t:'C\u2086H\u2085CH\u2082\u2013CO\u2013CH\u2083 &nbsp;<span style="color:var(--muted);">(benzyl \u00b7 methyl)</span>', right:'left',
-      why:'The benzyl, on the left. A benzylic carbon supports positive charge well, which is exactly what the migrating carbon has to do in the transition state.' },
+    { id:'m3', t:'C\u2086H\u2085\u2013CO\u2013CH\u2082CH\u2083 &nbsp;<span style="color:var(--muted);">(phenyl \u00b7 ethyl)</span>', right:'left',
+      why:'The phenyl, on the left. Neither group is methyl, so the shortcut does not help and you have to rank: aryl sits roughly with secondary alkyl and comfortably above a primary ethyl, so the phenyl moves and the product is phenyl propanoate.' },
     { id:'m4', t:'CH\u2083\u2013CO\u2013CH\u2082CH\u2083 &nbsp;<span style="color:var(--muted);">(methyl \u00b7 ethyl)</span>', right:'right',
       why:'The ethyl, on the right. Primary beats methyl, and the margin here is the narrowest of the four \u2014 but methyl is last in the series and stays last, which is why methyl ketones are the predictable substrates.' }
   ];
@@ -180,8 +179,8 @@ document.addEventListener('DOMContentLoaded', function(){
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
-            '<h2 class="step-title">In each methyl ketone, which group migrates?</h2>' +
-            '<p class="step-body">The migrating carbon carries partial positive charge in the transition state, so rank these the way you rank carbocations. The order is tertiary &gt; secondary and benzyl &gt; primary &gt; methyl.</p>' +
+            '<h2 class="step-title">In each of these ketones, which group migrates?</h2>' +
+            '<p class="step-body">The migrating carbon carries partial positive charge in the transition state, so rank these the way you rank carbocations. The order is H &gt; tertiary &gt; cyclohexyl &asymp; secondary &asymp; benzyl &asymp; aryl &gt; primary &gt; methyl.</p>' +
             '<div class="radical-sort">' +
             CASES.map(function(c){
               return '<div class="radical-row" data-case="' + c.id + '">' +
@@ -209,8 +208,8 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
               if(Object.keys(done).length === CASES.length){
                 api.showFeedback(fb, true, missed
-                  ? 'All four. Methyl never wins, which is exactly what makes a methyl ketone the substrate you can predict \u2014 but note that it was on a different side each time.'
-                  : 'All four, first time. The methyl was on the left twice and the right twice, so the side never told you the answer; the ranking did.');
+                  ? 'All four. Three were methyl ketones, where the shortcut settles it \u2014 and one was not, which is the row where you had to use the ranking itself.'
+                  : 'All four, first time. The methyl was on the left twice and the right once, and in the remaining row there was no methyl at all, so the side never told you the answer; the ranking did.');
                 api.record(!missed); next.disabled = false;
               }
             });
@@ -252,6 +251,7 @@ document.addEventListener('DOMContentLoaded', function(){
         title: 'Two things worth checking before you run one.',
         bodyHtml: '<p class="step-body"><b>Is there an alkene?</b> mCPBA epoxidizes alkenes, and it does so <i>faster</i> than it oxidizes a ketone. So a substrate carrying both will give the epoxide, and a Baeyer&ndash;Villiger on such a molecule needs the alkene dealt with first or the sequence reordered.</p>' +
           '<p class="step-body"><b>Is it a methyl ketone?</b> If so the answer is settled: methyl is the worst migrator in the series, so the other group moves and the product is the <b>acetate ester</b> of that group. You do not need to recall the rest of the ranking.</p>' +
+          '<p class="step-body"><b>Is it an aldehyde?</b> Then the group at the top of the series is already present: <b>H</b> migrates in preference to any carbon, so the product is a <b>carboxylic acid</b> rather than a formate ester. Butanal and mCPBA give butanoic acid.</p>' +
           '<div class="explain-box">Retrosynthetically this gives you something to look for. An ester whose two halves would make an awkward direct esterification &mdash; a hindered secondary or tertiary alkyl group on the oxygen, say &mdash; is worth testing against the ketone it would come from. Esterifying a tertiary alcohol is difficult; migrating a tertiary group is the easiest case there is.</div>'
       },
       {

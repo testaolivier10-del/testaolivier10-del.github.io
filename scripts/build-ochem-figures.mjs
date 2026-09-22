@@ -2359,7 +2359,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Both amines give the same iminium cation, and everything up to that point is identical. What separates the two products is where the last proton can come from — the nitrogen, if it still has one, and otherwise the α carbon.',
-  note: 'This is why the answer is a count rather than a mechanism. You do not need to run the steps: look at how many hydrogens the nitrogen brought and subtract the one it spends reaching the cation. Two becomes one, so a primary amine gives an imine; one becomes none, so a secondary amine has to take the alpha proton instead. A tertiary amine brings none, which is why it can add and still give nothing, and why tertiary amines appear in these reactions as bases.',
+  note: 'This is why the answer is a count rather than a mechanism, once the arrows above have been run once. A tertiary amine brings no N-H at all, which is why it can add and still give nothing, and why tertiary amines appear in these reactions as bases.',
 });
 
 /* ----------------------------------------------------------------- 40 ---
@@ -14871,6 +14871,600 @@ FIGURES.push({
   caption: 'The Suzuki as a real equation. The aryl <b>bromide</b> is what palladium inserts into; the carbonate makes the four-coordinate borate that hands its phenyl over; the two rings then join and the metal is released as Pd(0).',
   note: 'Look at what is shaded. A phenyl Grignard put into this flask would add to that ketone and give you a tertiary alcohol, and you would have to protect it first. The boronic acid does not, because its aryl group is bound to boron and then to palladium for its whole life and is never a free carbanion — which is the tolerance argument stated as a picture rather than a claim.',
 });
+
+/* ---------------------------------------------------------------- B1 ---
+   Five mechanisms in this chapter and, until now, not one curved arrow in
+   it. Each of the five figures below draws the electrons: a reaction is a
+   claim about which pair moved where, and prose can only assert that. */
+FIGURES.push({
+  id: 'wittig-mechanism',
+  section: 'wittig-reaction',
+  anchor: '<b>R<sub>2</sub>C=O + Ph<sub>3</sub>P=CR&prime;<sub>2</sub> &rarr; R<sub>2</sub>C=CR&prime;<sub>2</sub> + Ph<sub>3</sub>P=O</b></p>',
+  viewBox: '0 0 760 574',
+  alt: 'The four stages of the Wittig reaction drawn with curved arrows: triphenylphosphine displacing iodide and the phosphonium salt being deprotonated, the two resonance forms of the ylide, the [2+2] that closes the oxaphosphetane, and the retro-[2+2] that releases the alkene and triphenylphosphine oxide',
+  build() {
+    let s = '';
+
+    /* 1 — the ylide is built by two reactions the student already has. */
+    s += tag(192, 36, '1 · making the ylide');
+    s += panel(14, 44, 356, 216);
+    {
+      const P3 = P(74, 92), C = P(186, 92), I = P(252, 92);
+      s += bond(C, I, { rFrom: 18, rTo: 14 });
+      s += atom(P3.x, P3.y, 'Ph₃P', { r: 24, size: 10 });
+      s += atom(C.x, C.y, 'CH₃', { r: 18, size: 10 });
+      s += atom(I.x, I.y, 'I', { kind: 'warn', r: 14 });
+      s += lonePair(P3.x, P3.y, 0);
+      s += curve(P(106, 86), P(166, 86), { bow: -14 });
+      s += curve(P(220, 92), P(246, 72), { bow: 14 });
+      s += text(192, 132, 'Ph₃P⁺–CH₃   I⁻', { cls: 'fg-tag', size: 11 });
+    }
+    {
+      const Pp = P(72, 186), C = P(158, 186), H = P(206, 212), B = P(272, 194);
+      s += bond(Pp, C, { rFrom: 22, rTo: 17 });
+      s += bond(C, H, { rFrom: 17, rTo: 12, cls: 'fg-bond-hi' });
+      s += atom(Pp.x, Pp.y, 'Ph₃P⁺', { r: 22, size: 10 });
+      s += atom(C.x, C.y, 'CH₂', { kind: 'hi', r: 17 });
+      s += atom(H.x, H.y, 'H', { kind: 'warn', r: 12 });
+      s += atom(B.x, B.y, 'n-Bu⁻', { r: 22, size: 9.5 });
+      s += curve(P(250, 204), P(220, 210), { bow: 12 });
+      s += curve(P(186, 202), P(166, 198), { bow: -12 });
+      s += text(192, 248, 'Ph₃P⁺–CH₂⁻   the ylide', { cls: 'fg-tag-good', size: 11 });
+    }
+
+    /* 2 — the two drawings of one molecule. */
+    s += tag(568, 36, '2 · one molecule, two drawings');
+    s += panel(390, 44, 356, 216);
+    {
+      s += bond(P(452, 120), P(528, 120), { rFrom: 22, rTo: 20 });
+      s += atom(452, 120, 'Ph₃P⁺', { r: 22, size: 10 });
+      s += atom(528, 120, 'CH₂⁻', { kind: 'hi', r: 20, size: 10 });
+      s += arrow(P(572, 120), P(616, 120));
+      s += arrow(P(616, 120), P(572, 120));
+      s += bond(P(656, 120), P(720, 120), { order: 2, rFrom: 20, rTo: 17 });
+      s += atom(656, 120, 'Ph₃P', { r: 20, size: 10 });
+      s += atom(720, 120, 'CH₂', { kind: 'hi', r: 17 });
+      s += text(568, 174, 'The carbon is the nucleophile.', { cls: 'fg-sm', size: 10.5 });
+      s += text(568, 196, 'Both charges are real and next to each other,', { cls: 'fg-sm', size: 10.5 });
+      s += text(568, 216, 'and P=CH₂ is shorthand for the same thing.', { cls: 'fg-sm', size: 10.5 });
+    }
+
+    /* 3 — the cycloaddition. */
+    s += tag(192, 292, '3 · [2+2] — the ring closes');
+    s += panel(14, 300, 356, 216);
+    {
+      const Pp = P(74, 356), Cy = P(146, 356), Cc = P(146, 424), O = P(74, 424);
+      s += bond(Pp, Cy, { order: 2, rFrom: 20, rTo: 14 });
+      s += bond(O, Cc, { order: 2, rFrom: 14, rTo: 14 });
+      s += atom(Pp.x, Pp.y, 'Ph₃P', { r: 20, size: 10 });
+      s += atom(Cy.x, Cy.y, 'C', { kind: 'hi' });
+      s += atom(Cc.x, Cc.y, 'C', { kind: 'hi' });
+      s += atom(O.x, O.y, 'O');
+      s += lonePair(O.x, O.y, 180);
+      s += curve(P(160, 372), P(160, 408), { bow: 16 });
+      s += curve(P(56, 408), P(56, 372), { bow: 16 });
+      s += arrow(P(210, 390), P(252, 390));
+      const a = P(292, 356), bq = P(348, 356), c = P(348, 424), d = P(292, 424);
+      s += bond(a, bq, { rFrom: 14, rTo: 14 });
+      s += bond(bq, c, { rFrom: 14, rTo: 14 });
+      s += bond(c, d, { rFrom: 14, rTo: 14 });
+      s += bond(d, a, { rFrom: 14, rTo: 14 });
+      s += atom(a.x, a.y, 'P', { kind: 'warn' });
+      s += atom(bq.x, bq.y, 'C', { kind: 'hi' });
+      s += atom(c.x, c.y, 'C', { kind: 'hi' });
+      s += atom(d.x, d.y, 'O');
+      s += text(192, 472, 'the oxaphosphetane — strained, and neutral', { cls: 'fg-sm', size: 10.5 });
+      s += text(192, 494, 'nothing is charged; nothing has rearranged', { cls: 'fg-sm', size: 10.5 });
+    }
+
+    /* 4 — and the same loop run backwards. */
+    s += tag(568, 292, '4 · retro-[2+2] — the ring breaks');
+    s += panel(390, 300, 356, 216);
+    {
+      const a = P(452, 356), bq = P(508, 356), c = P(508, 424), d = P(452, 424);
+      s += bond(a, bq, { rFrom: 14, rTo: 14 });
+      s += bond(bq, c, { rFrom: 14, rTo: 14 });
+      s += bond(c, d, { rFrom: 14, rTo: 14 });
+      s += bond(d, a, { rFrom: 14, rTo: 14 });
+      s += atom(a.x, a.y, 'P', { kind: 'warn' });
+      s += atom(bq.x, bq.y, 'C', { kind: 'hi' });
+      s += atom(c.x, c.y, 'C', { kind: 'hi' });
+      s += atom(d.x, d.y, 'O');
+      s += curve(P(480, 410), P(508, 384), { bow: 14 });
+      s += curve(P(480, 370), P(452, 396), { bow: 14 });
+      s += arrow(P(552, 390), P(592, 390));
+      s += text(668, 366, 'R₂C=CH₂', { cls: 'fg-lbl', size: 13 });
+      s += text(668, 394, '+   Ph₃P=O', { cls: 'fg-lbl', size: 13 });
+      s += text(668, 420, '≈130–140 kcal/mol', { cls: 'fg-tag-good', size: 11 });
+      s += text(568, 472, 'the strong P=O is the driving force', { cls: 'fg-sm', size: 10.5 });
+      s += text(568, 494, 'and the reason phosphorus is worth throwing away', { cls: 'fg-sm', size: 10.5 });
+    }
+
+    s += rule(24, 528, 736, 528);
+    s += label(380, 552, 'Going in, the loop of arrows makes the two new σ bonds of the ring.');
+    s += label(380, 572, 'Coming out, the same loop reversed makes the C=C and the P=O.');
+    return s;
+  },
+  caption: 'The whole reaction is one loop of arrows run forwards and then backwards. The first pair of arrows makes the two new &sigma; bonds of the four-membered ring; the second pair, running the other way round the same loop, breaks the other two and hands back the alkene and Ph<sub>3</sub>P=O.',
+  note: 'Notice which two atoms become the alkene: the carbonyl carbon and the ylide carbon, and nothing else in either molecule moves at all. That is why a Wittig cannot rearrange and cannot put the double bond anywhere but where the C=O was &mdash; there is no carbocation, and no stage at which any other carbon is involved. The older stepwise picture inserts a betaine, Ph<sub>3</sub>P⁺&ndash;C&ndash;C&ndash;O⁻, between panels 2 and 3; it reaches the same ring, so it changes nothing about the product.',
+});
+
+/* ---------------------------------------------------------------- B2 ---
+   The section's only picture was four boxes of prose. This one runs the
+   mechanism: the shared half, the branch, and the resonance structure the
+   prose asks the student to draw. */
+FIGURES.push({
+  id: 'imine-enamine-mechanism',
+  section: 'imines-enamines',
+  anchor: 'so a secondary amine takes it as far as the cation and no further.</p>',
+  viewBox: '0 0 760 628',
+  alt: 'Imine and enamine formation drawn step by step with curved arrows: the amine adding to the carbonyl, the carbinolamine, acid expelling water to give the iminium, and the two branches in which the last proton comes either from nitrogen or from the alpha carbon',
+  build() {
+    let s = '';
+
+    /* 1 — addition. */
+    s += tag(132, 36, '1 · the amine adds');
+    s += panel(14, 44, 236, 216);
+    {
+      const O = P(96, 96), C = P(96, 152), R1 = P(52, 190), R2 = P(140, 190), N = P(196, 152);
+      s += bond(C, O, { order: 2, rFrom: 14, rTo: 14 });
+      s += bond(C, R1, { rFrom: 14, rTo: 13 });
+      s += bond(C, R2, { rFrom: 14, rTo: 13 });
+      s += atom(O.x, O.y, 'O');
+      s += atom(C.x, C.y, 'C', { kind: 'hi' });
+      s += atom(R1.x, R1.y, 'R', { r: 13 });
+      s += atom(R2.x, R2.y, 'R', { r: 13 });
+      s += atom(N.x, N.y, 'R₂NH', { r: 24, size: 9.5 });
+      s += lonePair(O.x, O.y, 160); s += lonePair(O.x, O.y, 20);
+      s += lonePair(N.x, N.y, 180);
+      s += curve(P(168, 146), P(116, 148), { bow: -12 });
+      s += curve(P(118, 132), P(112, 110), { bow: 14 });
+      s += text(132, 234, 'a tetrahedral zwitterion:', { cls: 'fg-sm', size: 10.5 });
+      s += text(132, 254, 'O⁻ on top, N⁺H on the right', { cls: 'fg-sm', size: 10.5 });
+    }
+
+    /* 2 — the carbinolamine. */
+    s += tag(380, 36, '2 · the carbinolamine');
+    s += panel(262, 44, 236, 216);
+    {
+      const C = P(380, 144), OH = P(380, 96), N = P(444, 178), R = P(316, 178);
+      s += bond(C, OH, { rFrom: 14, rTo: 16 });
+      s += bond(C, N, { rFrom: 14, rTo: 18 });
+      s += bond(C, R, { rFrom: 14, rTo: 13 });
+      s += atom(OH.x, OH.y, 'OH', { r: 16, size: 10.5 });
+      s += atom(C.x, C.y, 'C', { kind: 'hi' });
+      s += atom(N.x, N.y, 'NR₂', { r: 18, size: 10 });
+      s += atom(R.x, R.y, 'R', { r: 13 });
+      s += text(380, 234, 'one proton has moved,', { cls: 'fg-sm', size: 10.5 });
+      s += text(380, 254, 'N⁺H to O⁻, and it is neutral', { cls: 'fg-sm', size: 10.5 });
+    }
+
+    /* 3 — acid expels water. */
+    s += tag(620, 36, '3 · acid expels water');
+    s += panel(510, 44, 236, 216);
+    {
+      const C = P(608, 152), OH = P(608, 100), N = P(672, 186), R = P(544, 186);
+      s += bond(C, OH, { rFrom: 14, rTo: 22, cls: 'fg-bond-hi' });
+      s += bond(C, N, { rFrom: 14, rTo: 18 });
+      s += bond(C, R, { rFrom: 14, rTo: 13 });
+      s += atom(OH.x, OH.y, 'OH₂⁺', { kind: 'warn', r: 22, size: 9.5 });
+      s += atom(C.x, C.y, 'C', { kind: 'hi' });
+      s += atom(N.x, N.y, 'NR₂', { r: 18, size: 10 });
+      s += atom(R.x, R.y, 'R', { r: 13 });
+      s += curve(P(656, 178), P(626, 166), { bow: -12 });
+      s += curve(P(596, 134), P(596, 116), { bow: 10 });
+      s += text(616, 234, 'gives C=N⁺R₂, the iminium —', { cls: 'fg-tag-good', size: 11 });
+      s += text(616, 254, 'the same for both amines', { cls: 'fg-sm', size: 10.5 });
+    }
+
+    /* 4a — primary amine. */
+    s += tag(192, 292, '4a · primary amine — one H left on N');
+    s += panel(14, 300, 356, 200);
+    {
+      const C = P(140, 372), N = P(204, 372), H = P(204, 324), R = P(252, 404), Rc = P(92, 404);
+      s += bond(C, N, { order: 2, rFrom: 14, rTo: 14 });
+      s += bond(N, H, { rFrom: 14, rTo: 12, cls: 'fg-bond-hi' });
+      s += bond(N, R, { rFrom: 14, rTo: 13 });
+      s += bond(C, Rc, { rFrom: 14, rTo: 13 });
+      s += atom(C.x, C.y, 'C');
+      s += atom(N.x, N.y, 'N⁺', { kind: 'hi' });
+      s += atom(H.x, H.y, 'H', { kind: 'warn', r: 12 });
+      s += atom(R.x, R.y, 'R', { r: 13 });
+      s += atom(Rc.x, Rc.y, 'R', { r: 13 });
+      s += atom(280, 312, 'H₂O', { r: 20, size: 10 });
+      s += curve(P(258, 316), P(222, 318), { bow: -12 });
+      s += curve(P(218, 334), P(216, 356), { bow: 12 });
+      s += text(192, 442, 'C=N–R    the imine', { cls: 'fg-tag-good', size: 11 });
+      s += text(192, 464, 'nitrogen still had a proton to give', { cls: 'fg-sm', size: 10.5 });
+    }
+
+    /* 4b — secondary amine. */
+    s += tag(568, 292, '4b · secondary amine — none left on N');
+    s += panel(390, 300, 356, 200);
+    {
+      const Ca = P(536, 396), C = P(600, 372), N = P(664, 372), R1 = P(712, 340), R2 = P(712, 404), H = P(492, 368);
+      s += bond(C, N, { order: 2, rFrom: 14, rTo: 14 });
+      s += bond(C, Ca, { rFrom: 14, rTo: 14 });
+      s += bond(Ca, H, { rFrom: 14, rTo: 12, cls: 'fg-bond-hi' });
+      s += bond(N, R1, { rFrom: 14, rTo: 13 });
+      s += bond(N, R2, { rFrom: 14, rTo: 13 });
+      s += atom(Ca.x, Ca.y, 'C', { kind: 'hi' });
+      s += atom(C.x, C.y, 'C');
+      s += atom(N.x, N.y, 'N⁺');
+      s += atom(R1.x, R1.y, 'R', { r: 13 });
+      s += atom(R2.x, R2.y, 'R', { r: 13 });
+      s += atom(H.x, H.y, 'H', { kind: 'warn', r: 12 });
+      s += atom(452, 322, 'H₂O', { r: 20, size: 10 });
+      s += curve(P(466, 338), P(484, 354), { bow: 10 });
+      s += curve(P(516, 380), P(568, 378), { bow: 16 });
+      s += text(568, 442, 'C=C–NR₂    the enamine', { cls: 'fg-tag-good', size: 11 });
+      s += text(568, 464, 'the α carbon gave the proton instead', { cls: 'fg-sm', size: 10.5 });
+    }
+
+    /* the resonance structure the prose asks for. */
+    s += tag(380, 518, 'and the second resonance structure of that enamine');
+    s += panel(14, 526, 732, 90);
+    {
+      s += bond(P(206, 566), P(270, 566), { order: 2, rFrom: 14, rTo: 14 });
+      s += bond(P(270, 566), P(338, 566), { rFrom: 14, rTo: 20 });
+      s += atom(206, 566, 'C');
+      s += atom(270, 566, 'C');
+      s += atom(338, 566, 'NR₂', { r: 20, size: 10 });
+      s += arrow(P(382, 566), P(430, 566));
+      s += arrow(P(430, 566), P(382, 566));
+      s += bond(P(474, 566), P(538, 566), { rFrom: 14, rTo: 14 });
+      s += bond(P(538, 566), P(606, 566), { order: 2, rFrom: 14, rTo: 20 });
+      s += atom(474, 566, 'C⁻', { kind: 'hi' });
+      s += atom(538, 566, 'C');
+      s += atom(606, 566, 'N⁺R₂', { r: 20, size: 9.5 });
+      s += text(474, 602, 'alkylate here', { cls: 'fg-tag-good', size: 11 });
+    }
+    return s;
+  },
+  caption: 'Everything is shared until the iminium. The only difference between an imine and an enamine is which proton is available to lose at the very last step &mdash; one on nitrogen if the amine brought two, and otherwise one on the &alpha; carbon.',
+  note: 'The two arrows in panel 3 are the same pair you drew for an acetal: protonate the OH, then push a lone pair in as water leaves. An acetal pushes an <i>oxygen</i> lone pair in; here a <i>nitrogen</i> lone pair goes in instead, and nitrogen is much better at it, which is why imines form under far milder acid than acetals do. It is also why a tertiary amine gets nowhere: it can reach the tetrahedral intermediate of panel 1, but the cation of panel 3 would need five bonds on that nitrogen.',
+});
+
+/* ---------------------------------------------------------------- B3 ---
+   Two reactions in a row, with the ring appearing in the middle of them.
+   The spacing figure already in the section draws the product; this draws
+   the electrons that put it there. */
+FIGURES.push({
+  id: 'robinson-mechanism',
+  section: 'michael-robinson',
+  anchor: 'or you have left a carbon with five bonds.</p>',
+  viewBox: '0 0 760 612',
+  alt: 'A Robinson annulation drawn step by step with curved arrows: ethoxide making the malonate enolate, that enolate adding to the beta carbon of methyl vinyl ketone, protonation to the 1,5-dicarbonyl, an intramolecular aldol closing a six-membered ring, and dehydration to the conjugated cyclohexenone',
+  build() {
+    let s = '';
+
+    /* 1 — the enolate. */
+    s += tag(132, 36, '1 · the enolate forms');
+    s += panel(14, 44, 236, 216);
+    {
+      const L = P(76, 150), C = P(146, 150), R = P(216, 150), H = P(146, 104), B = P(84, 96);
+      s += bond(L, C, { rFrom: 26, rTo: 14 });
+      s += bond(C, R, { rFrom: 14, rTo: 26 });
+      s += bond(C, H, { rFrom: 14, rTo: 12, cls: 'fg-bond-hi' });
+      s += atom(L.x, L.y, 'EtO₂C', { r: 26, size: 9 });
+      s += atom(R.x, R.y, 'CO₂Et', { r: 26, size: 9 });
+      s += atom(C.x, C.y, 'C', { kind: 'hi' });
+      s += atom(H.x, H.y, 'H', { kind: 'warn', r: 12 });
+      s += atom(B.x, B.y, 'EtO⁻', { r: 20, size: 10 });
+      s += curve(P(102, 94), P(130, 98), { bow: -10 });
+      s += curve(P(160, 116), P(178, 136), { bow: 12 });
+      s += text(132, 212, 'pKa ≈ 13 — NaOEt is enough', { cls: 'fg-tag', size: 11 });
+      s += text(132, 234, 'the charge is shared by both', { cls: 'fg-sm', size: 10.5 });
+      s += text(132, 254, 'ester oxygens, so it is soft', { cls: 'fg-sm', size: 10.5 });
+    }
+
+    /* 2 — the 1,4-addition. */
+    s += tag(380, 36, '2 · the enolate takes the β carbon');
+    s += panel(262, 44, 236, 216);
+    {
+      const Me = P(298, 178), Cc = P(348, 152), O = P(348, 104), Ca = P(400, 178), Cb = P(452, 152);
+      s += bond(Me, Cc, { rFrom: 17, rTo: 14 });
+      s += bond(Cc, O, { order: 2, rFrom: 14, rTo: 14 });
+      s += bond(Cc, Ca, { rFrom: 14, rTo: 14 });
+      s += bond(Ca, Cb, { order: 2, rFrom: 14, rTo: 14 });
+      s += atom(Me.x, Me.y, 'CH₃', { r: 17 });
+      s += atom(Cc.x, Cc.y, 'C');
+      s += atom(O.x, O.y, 'O');
+      s += atom(Ca.x, Ca.y, 'C');
+      s += atom(Cb.x, Cb.y, 'C', { kind: 'warn' });
+      s += text(452, 122, 'β · δ+', { cls: 'fg-tag-warn', size: 11 });
+      s += atom(452, 212, 'C⁻', { kind: 'hi' });
+      s += curve(P(452, 194), P(452, 172), { bow: 14 });
+      s += curve(P(418, 160), P(366, 134), { bow: 16 });
+      s += curve(P(358, 130), P(360, 112), { bow: -10 });
+      s += text(380, 244, 'the malonate enolate, adding 1,4', { cls: 'fg-tag-good', size: 11 });
+    }
+
+    /* 3 — protonate, and read the spacing. */
+    s += tag(620, 36, '3 · protonate: a 1,5-diketone');
+    s += panel(510, 44, 236, 216);
+    {
+      const c1 = P(534, 128), c2 = P(578, 152), c3 = P(622, 128), c4 = P(666, 152), c5 = P(666, 200);
+      s += bond(c1, c2, { rFrom: 14, rTo: 0 });
+      s += bond(c2, c3, { rFrom: 0, rTo: 0 });
+      s += bond(c3, c4, { rFrom: 0, rTo: 14 });
+      s += bond(c4, c5, { rFrom: 14, rTo: 14 });
+      s += bond(c1, P(534, 86), { order: 2, rFrom: 14, rTo: 14 });
+      s += bond(c4, P(702, 128), { order: 2, rFrom: 14, rTo: 14 });
+      s += atom(534, 86, 'O');
+      s += atom(702, 128, 'O');
+      s += atom(c1.x, c1.y, 'C', { kind: 'hi' });
+      s += atom(c4.x, c4.y, 'C', { kind: 'hi' });
+      s += atom(c5.x, c5.y, 'C');
+      s += text(534, 174, '1', { cls: 'fg-tag-good', size: 11 });
+      s += text(666, 178, '5', { cls: 'fg-tag-good', size: 11 });
+      s += text(616, 226, 'the Michael fingerprint', { cls: 'fg-tag-good', size: 11 });
+      s += text(616, 248, 'two carbonyls, five apart', { cls: 'fg-sm', size: 10.5 });
+    }
+
+    /* 4 — the intramolecular aldol. */
+    s += tag(192, 292, '4 · the aldol closes the ring');
+    s += panel(14, 300, 356, 200);
+    {
+      const ring = [P(126, 348), P(174, 348), P(198, 390), P(174, 432), P(126, 432), P(102, 390)];
+      for (let i = 0; i < 6; i++) {
+        s += `<line class="fg-dash-hi" x1="${ring[i].x}" y1="${ring[i].y}" x2="${ring[(i + 1) % 6].x}" y2="${ring[(i + 1) % 6].y}"></line>`;
+      }
+      ring.forEach((p, i) => { s += atom(p.x, p.y, String(i + 1), { r: 12, size: 10 }); });
+      s += atom(258, 348, 'α′ C⁻', { kind: 'hi', r: 22, size: 9.5 });
+      s += curve(P(240, 356), P(190, 356), { bow: -14 });
+      s += text(192, 462, 'six atoms, and no choice about it', { cls: 'fg-sm', size: 10.5 });
+      s += text(192, 482, 'the only other loop would be a four-ring', { cls: 'fg-sm', size: 10.5 });
+    }
+
+    /* 5 — dehydration. */
+    s += tag(568, 292, '5 · dehydration conjugates it');
+    s += panel(390, 300, 356, 200);
+    {
+      const C1 = P(478, 352), C2 = P(478, 404), C3 = P(544, 404), O = P(544, 356), OH = P(430, 330);
+      s += bond(C1, C2, { rFrom: 14, rTo: 14 });
+      s += bond(C2, C3, { rFrom: 14, rTo: 14 });
+      s += bond(C3, O, { order: 2, rFrom: 14, rTo: 14 });
+      s += bond(C1, OH, { rFrom: 14, rTo: 16, cls: 'fg-bond-hi' });
+      s += atom(C1.x, C1.y, 'C');
+      s += atom(C2.x, C2.y, 'C', { kind: 'hi' });
+      s += atom(C3.x, C3.y, 'C');
+      s += atom(O.x, O.y, 'O');
+      s += atom(OH.x, OH.y, 'OH', { kind: 'warn', r: 16, size: 10.5 });
+      s += atom(430, 430, 'B:', { r: 14, size: 10.5 });
+      s += curve(P(444, 420), P(464, 414), { bow: -10 });
+      s += curve(P(478, 388), P(464, 346), { bow: 14 });
+      s += arrow(P(586, 378), P(626, 378));
+      s += text(668, 368, 'the enone', { cls: 'fg-tag-good', size: 11 });
+      s += text(668, 390, 'C=C–C=O', { cls: 'fg-lbl', size: 13 });
+      s += text(568, 462, 'E1cb: the base takes the α hydrogen,', { cls: 'fg-sm', size: 10.5 });
+      s += text(568, 482, 'and hydroxide leaves from the β carbon', { cls: 'fg-sm', size: 10.5 });
+    }
+
+    s += rule(24, 530, 736, 530);
+    s += label(380, 554, 'One Michael, one aldol, one dehydration, and the ring appears');
+    s += label(380, 574, 'without anyone having chosen its size.');
+    s += text(380, 598, 'The dehydration is the step that cannot run backwards.', { cls: 'fg-tag-good', size: 11 });
+    return s;
+  },
+  caption: 'A Robinson annulation with the electrons drawn. Panel 2 is the one worth copying out by hand: the arrow starts at the donor&rsquo;s &alpha; carbon and ends at the acceptor&rsquo;s &beta; carbon, and a second arrow has to carry the &pi; electrons up onto the oxygen, or the &beta; carbon is left with five bonds.',
+  note: 'The only step that looks like a choice is panel 4, and even it is forced. An aldol joins an &alpha; carbon to a carbonyl carbon and never two carbonyl carbons, so from a 1,5-diketone the one &alpha; carbon that can reach a carbonyl without closing a four-membered ring is the &alpha;&prime; carbon just beyond the other one &mdash; and the loop it closes has six atoms in it. Count the dashed ring before you accept a Robinson product: if your ring is not six, you have joined the wrong two carbons.',
+});
+
+/* ---------------------------------------------------------------- B4 ---
+   The section describes a cyclic transition state three times and draws it
+   nowhere, which is the one thing here a picture can settle: whether the
+   hydrogen can actually reach. */
+FIGURES.push({
+  id: 'decarboxylation-ts',
+  section: 'ester-syntheses',
+  anchor: 'An &alpha;- or &gamma;-keto acid reaches neither, and neither does a plain carboxylic acid.</p>',
+  viewBox: '0 0 760 482',
+  alt: 'The six-membered cyclic transition state of a beta-keto acid decarboxylation drawn with three curved arrows, the enol it gives with carbon dioxide leaving, the tautomerization to the ketone, and two failing cases where the ring would be five- or seven-membered',
+  build() {
+    let s = '';
+
+    /* 1 — the hexagon. */
+    s += tag(132, 36, '1 · the six-membered loop');
+    s += panel(14, 44, 236, 244);
+    {
+      const Ok = P(96, 100), Ck = P(96, 154), Ca = P(150, 186), Cx = P(200, 154), Ox = P(200, 100), H = P(148, 76);
+      const ring = [Ok, Ck, Ca, Cx, Ox, H];
+      for (let i = 0; i < 6; i++) {
+        const a = ring[i], b = ring[(i + 1) % 6];
+        s += `<line class="fg-dash" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"></line>`;
+      }
+      s += bond(Ok, Ck, { order: 2, rFrom: 14, rTo: 14 });
+      s += bond(Ck, Ca, { rFrom: 14, rTo: 14 });
+      s += bond(Ca, Cx, { rFrom: 14, rTo: 14, cls: 'fg-bond-hi' });
+      s += bond(Cx, Ox, { rFrom: 14, rTo: 14 });
+      s += bond(Ox, H, { rFrom: 14, rTo: 12, cls: 'fg-bond-hi' });
+      s += bond(Ck, P(48, 186), { rFrom: 14, rTo: 17 });
+      s += bond(Cx, P(240, 186), { order: 2, rFrom: 14, rTo: 14 });
+      s += atom(48, 186, 'CH₃', { r: 17 });
+      s += atom(240, 186, 'O');
+      s += atom(Ok.x, Ok.y, 'O');
+      s += atom(Ck.x, Ck.y, 'C');
+      s += atom(Ca.x, Ca.y, 'C', { kind: 'hi' });
+      s += atom(Cx.x, Cx.y, 'C');
+      s += atom(Ox.x, Ox.y, 'O');
+      s += atom(H.x, H.y, 'H', { kind: 'warn', r: 12 });
+      s += curve(P(134, 84), P(110, 90), { bow: -10 });
+      s += curve(P(166, 172), P(190, 134), { bow: 14 });
+      s += curve(P(214, 118), P(232, 168), { bow: -16 });
+      s += text(132, 240, 'three arrows chasing each other', { cls: 'fg-sm', size: 10.5 });
+      s += text(132, 260, 'round one dashed hexagon', { cls: 'fg-sm', size: 10.5 });
+      s += text(132, 282, 'the O–H is what reaches', { cls: 'fg-tag', size: 11 });
+    }
+
+    /* 2 — CO2 leaves, an enol is left. */
+    s += tag(380, 36, '2 · CO₂ leaves; an enol is left');
+    s += panel(262, 44, 236, 244);
+    {
+      s += atom(380, 96, 'O=C=O', { kind: 'warn', r: 30, size: 10 });
+      s += text(380, 134, 'gone, as a gas', { cls: 'fg-sm', size: 10.5 });
+      const Ck = P(330, 196), Ca = P(392, 224), OH = P(330, 244);
+      s += bond(Ck, Ca, { order: 2, rFrom: 14, rTo: 14 });
+      s += bond(Ck, OH, { rFrom: 14, rTo: 16 });
+      s += bond(Ck, P(288, 168), { rFrom: 14, rTo: 17 });
+      s += bond(Ca, P(446, 224), { rFrom: 14, rTo: 13 });
+      s += atom(288, 168, 'CH₃', { r: 17 });
+      s += atom(446, 224, 'R', { r: 13 });
+      s += atom(Ck.x, Ck.y, 'C');
+      s += atom(Ca.x, Ca.y, 'C', { kind: 'hi' });
+      s += atom(OH.x, OH.y, 'OH', { r: 16, size: 10.5 });
+      s += text(380, 282, 'CH₃–C(OH)=CR₂, an enol', { cls: 'fg-tag', size: 11 });
+    }
+
+    /* 3 — tautomerize. */
+    s += tag(620, 36, '3 · tautomerize to the ketone');
+    s += panel(510, 44, 236, 244);
+    {
+      const Ck = P(578, 168), O = P(578, 116), Ca = P(640, 196);
+      s += bond(Ck, O, { order: 2, rFrom: 14, rTo: 14 });
+      s += bond(Ck, Ca, { rFrom: 14, rTo: 14 });
+      s += bond(Ck, P(534, 200), { rFrom: 14, rTo: 17 });
+      s += bond(Ca, P(694, 196), { rFrom: 14, rTo: 13 });
+      s += bond(Ca, P(640, 244), { rFrom: 14, rTo: 12 });
+      s += atom(534, 200, 'CH₃', { r: 17 });
+      s += atom(694, 196, 'R', { r: 13 });
+      s += atom(640, 244, 'H', { r: 12 });
+      s += atom(O.x, O.y, 'O');
+      s += atom(Ck.x, Ck.y, 'C');
+      s += atom(Ca.x, Ca.y, 'C', { kind: 'hi' });
+      s += text(614, 282, 'the α carbon takes the H', { cls: 'fg-sm', size: 10.5 });
+    }
+
+    /* the two failures. */
+    s += rule(24, 312, 736, 312);
+    s += tag(196, 340, 'an α-keto acid');
+    s += tag(568, 340, 'a γ-keto acid');
+    s += panel(14, 352, 356, 80, { kind: 'warn' });
+    s += panel(390, 352, 356, 80, { kind: 'warn' });
+    s += text(192, 384, 'the loop would have five atoms in it', { cls: 'fg-sm', size: 10.5 });
+    s += text(192, 408, 'the O–H cannot reach — no reaction', { cls: 'fg-tag-warn', size: 11 });
+    s += text(568, 384, 'the loop would have seven atoms in it', { cls: 'fg-sm', size: 10.5 });
+    s += text(568, 408, 'too floppy to close — no reaction', { cls: 'fg-tag-warn', size: 11 });
+    s += label(380, 462, 'Only a carbonyl exactly β to the carboxyl puts the H and the O six atoms apart.');
+    return s;
+  },
+  caption: 'Decarboxylation here is not thermal decomposition, it is a cyclic proton transfer. Three pairs of electrons move round one six-membered loop: the O&ndash;H goes to the second carbonyl&rsquo;s oxygen, the C&ndash;C bond becomes the departing CO<sub>2</sub>, and what is left behind is an enol.',
+  note: 'The second carbonyl can be a ketone &mdash; the acetoacetic route, where the intermediate really is a &beta;-keto acid &mdash; or it can be the other carboxyl, which is the malonic route and a substituted malonic acid. The hexagon does not care which, which is why one mechanism covers both syntheses. It is also why the ester has to be hydrolyzed first: the loop is closed by the carboxyl O&ndash;H, and an ester has no O&ndash;H to close it with.',
+});
+
+/* ---------------------------------------------------------------- B5 ---
+   The Criegee intermediate is named four times in the section and drawn
+   nowhere, and the whole reaction is in its collapse: three arrows at once,
+   and a group that changes which atom it is bonded to without being free. */
+FIGURES.push({
+  id: 'criegee-collapse',
+  section: 'baeyer-villiger',
+  anchor: 'running here on a neutral intermediate.</p>',
+  viewBox: '0 0 760 498',
+  alt: 'The Baeyer-Villiger mechanism with curved arrows: the peroxyacid adding to the protonated ketone, the Criegee intermediate with its weak oxygen-oxygen bond and the migrating group drawn anti-periplanar to it, and the concerted collapse that inserts the oxygen and releases the carboxylic acid',
+  build() {
+    let s = '';
+
+    /* 1 — addition. */
+    s += tag(132, 36, '1 · the peroxyacid adds');
+    s += panel(14, 44, 236, 248);
+    {
+      const C = P(96, 160), O = P(96, 108), R = P(48, 194), R2 = P(146, 194);
+      s += bond(C, O, { order: 2, rFrom: 14, rTo: 18 });
+      s += bond(C, R, { rFrom: 14, rTo: 13 });
+      s += bond(C, R2, { rFrom: 14, rTo: 16 });
+      s += atom(O.x, O.y, 'OH⁺', { kind: 'warn', r: 18, size: 10 });
+      s += atom(C.x, C.y, 'C', { kind: 'hi' });
+      s += atom(R.x, R.y, 'R', { r: 13 });
+      s += atom(R2.x, R2.y, 'R′', { r: 16, size: 10.5 });
+      s += atom(200, 128, 'O–H', { kind: 'hi', r: 20, size: 10 });
+      s += atom(200, 184, 'O', { r: 14 });
+      s += bond(P(200, 128), P(200, 184), { rFrom: 20, rTo: 14 });
+      s += text(200, 216, '– C(=O)Ar', { cls: 'fg-sm', size: 10.5 });
+      s += lonePair(200, 128, 200);
+      s += curve(P(174, 138), P(120, 150), { bow: -14 });
+      s += curve(P(108, 140), P(106, 122), { bow: -10 });
+      s += text(132, 244, 'the terminal O attacks —', { cls: 'fg-sm', size: 10.5 });
+      s += text(132, 264, 'the OH end, not the acyl end', { cls: 'fg-sm', size: 10.5 });
+      s += text(132, 286, 'the ketone is protonated first', { cls: 'fg-tag', size: 11 });
+    }
+
+    /* 2 — the Criegee intermediate. */
+    s += tag(380, 36, '2 · the Criegee intermediate');
+    s += panel(262, 44, 236, 248);
+    {
+      const C = P(366, 160), OH = P(366, 108), R = P(312, 200), Rp = P(420, 200), O1 = P(432, 128), O2 = P(432, 76);
+      s += bond(C, OH, { rFrom: 14, rTo: 16 });
+      s += bond(C, R, { rFrom: 14, rTo: 13 });
+      s += bond(C, Rp, { rFrom: 14, rTo: 16, cls: 'fg-bond-hi' });
+      s += bond(C, O1, { rFrom: 14, rTo: 14 });
+      s += bond(O1, O2, { rFrom: 14, rTo: 14, cls: 'fg-bond-hi' });
+      s += atom(OH.x, OH.y, 'OH', { r: 16, size: 10.5 });
+      s += atom(C.x, C.y, 'C', { kind: 'hi' });
+      s += atom(R.x, R.y, 'R', { r: 13 });
+      s += atom(Rp.x, Rp.y, 'R′', { kind: 'hi', r: 16, size: 10.5 });
+      s += atom(O1.x, O1.y, 'O');
+      s += atom(O2.x, O2.y, 'O', { kind: 'warn' });
+      s += text(462, 102, 'weak', { cls: 'fg-tag-warn', size: 11 });
+      s += `<line class="fg-dash-hi" x1="412" y1="188" x2="424" y2="140"></line>`;
+      s += text(380, 240, 'R′ sits anti to the O–O bond,', { cls: 'fg-sm', size: 10.5 });
+      s += text(380, 260, 'so R′ is the one that can move', { cls: 'fg-sm', size: 10.5 });
+      s += text(380, 282, 'ArCO₂ is the leaving group', { cls: 'fg-tag', size: 11 });
+    }
+
+    /* 3 — the concerted collapse. */
+    s += tag(620, 36, '3 · three arrows at once');
+    s += panel(510, 44, 236, 248);
+    {
+      const C = P(596, 160), OH = P(596, 108), R = P(548, 200), Rp = P(650, 196), O1 = P(660, 132), O2 = P(660, 80);
+      s += bond(C, OH, { rFrom: 14, rTo: 16 });
+      s += bond(C, R, { rFrom: 14, rTo: 13 });
+      s += bond(C, Rp, { rFrom: 14, rTo: 16, cls: 'fg-bond-hi' });
+      s += bond(C, O1, { rFrom: 14, rTo: 14 });
+      s += bond(O1, O2, { rFrom: 14, rTo: 14, cls: 'fg-bond-hi' });
+      s += atom(OH.x, OH.y, 'OH', { r: 16, size: 10.5 });
+      s += atom(C.x, C.y, 'C', { kind: 'hi' });
+      s += atom(R.x, R.y, 'R', { r: 13 });
+      s += atom(Rp.x, Rp.y, 'R′', { kind: 'hi', r: 16, size: 10.5 });
+      s += atom(O1.x, O1.y, 'O');
+      s += atom(O2.x, O2.y, 'O', { kind: 'warn' });
+      s += curve(P(582, 122), P(582, 144), { bow: -10 });
+      s += curve(P(626, 180), P(646, 148), { bow: 14 });
+      s += curve(P(674, 106), P(692, 84), { bow: -12 });
+      s += text(614, 240, 'the OH makes the new C=O,', { cls: 'fg-sm', size: 10.5 });
+      s += text(614, 260, 'R′ swings onto the near O,', { cls: 'fg-sm', size: 10.5 });
+      s += text(614, 280, 'and the O–O breaks as it goes', { cls: 'fg-sm', size: 10.5 });
+    }
+
+    /* the products, and retention. */
+    s += rule(24, 316, 736, 316);
+    s += tag(196, 344, 'the products');
+    s += panel(14, 356, 356, 96);
+    s += text(192, 390, 'R–C(=O)–O–R′   the ester', { cls: 'fg-lbl', size: 13 });
+    s += text(192, 414, 'the inserted oxygen sits between them', { cls: 'fg-sm', size: 10.5 });
+    s += text(192, 438, '+  Ar–CO₂H, the acid left over', { cls: 'fg-tag', size: 11 });
+    s += tag(568, 344, 'and at the migrating carbon');
+    s += panel(390, 356, 356, 96);
+    {
+      const A = P(470, 402), B = P(640, 402);
+      s += atom(A.x, A.y, 'C');
+      s += wedge(A, P(446, 374), { rFrom: 14, rTo: 0 });
+      s += hash(A, P(494, 374), { rFrom: 14, rTo: 0 });
+      s += bond(A, P(470, 436), { rFrom: 14, rTo: 0 });
+      s += arrow(P(520, 402), P(570, 402));
+      s += atom(B.x, B.y, 'C');
+      s += wedge(B, P(616, 374), { rFrom: 14, rTo: 0 });
+      s += hash(B, P(664, 374), { rFrom: 14, rTo: 0 });
+      s += bond(B, P(640, 436), { rFrom: 14, rTo: 0 });
+      s += text(545, 380, 'retention', { cls: 'fg-tag-good', size: 11 });
+    }
+    s += label(380, 482, 'Nothing at the migrating carbon ever breaks, so nothing about it can change.');
+    return s;
+  },
+  caption: 'One addition and one concerted collapse. Everything interesting is in the third panel, where three pairs of electrons move at once: the OH oxygen pushes down to make the new C=O, the C&ndash;R&prime; bond swings over onto the near oxygen of the O&ndash;O, and the O&ndash;O breaks onto the departing carboxylate.',
+  note: 'Compare the third panel with a 1,2-shift in a carbocation rearrangement. There the electron sink is an empty p orbital on the neighboring carbon; here it is the &sigma;* orbital of the O&ndash;O bond. Same motion, same retention at the migrating carbon, a different hole for it to fall into &mdash; and one extra condition, because &sigma; overlap needs the migrating group lined up <i>anti</i> to the O&ndash;O bond, which is what a rigid ring can occasionally prevent.',
+});
+
 
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;
