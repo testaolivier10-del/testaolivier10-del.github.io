@@ -1,5 +1,72 @@
 # Review tracker
 
+## Morning summary (chapter reorder applied, 2026-09-22)
+
+Everything below is on `main`; every push passed the full CI script. Six
+pushes since the previous summary (a78c0b1 → a0dd198), all on Opus 5 except
+the merges and the mechanical reorder, which I did directly.
+
+**What was done.**
+- **The proposed order is applied** (`docs/proposed-order.md` records what
+  landed and what did not). Twenty-three chapters, now: a new chapter 7 *How
+  Reactions Happen* (nucleophiles, electrophiles, electron-rich/poor, leaving
+  groups, **energy diagrams & the Hammond postulate ★**, **carbocations ★**,
+  radical halogenation) after Stereochemistry; *Carbonyl & Enolate Breadth*
+  dissolved (imines/enamines and the Wittig into Carbonyl Chemistry, the two
+  enolate reactions to the end of Enolate Chemistry, Baeyer–Villiger to the
+  end of Carboxylic Acids & Derivatives — not Redox, since it needs esters);
+  Organometallics 20 → 15, Amines 15 → 18, alkene oxidation and hydrogenation
+  into Alkenes & Alkynes; curved arrows before resonance, conjugate before
+  pKa, Lewis acids last, R/S third, E2 before E1. Chapter 2 is *Drawing
+  Molecules & Moving Electrons*. Spectroscopy stays at 20.
+- **Four new sections** (121 topics, 3,630 questions): energy-diagrams,
+  carbocations (carved out of SN1), cis-trans-ez (carved out of alkene
+  structure) and **prochirality ★** (homotopic / enantiotopic /
+  diastereotopic, pro-R/pro-S, Re/Si — the section H-NMR needed). Each has
+  a notes page, a 9–10 step lesson, 4–8 generated figures, concepts and 30
+  exam-style questions; each was independently verified and fixed once.
+- **Every "Waiting on reorder" passage rewritten** against the new order
+  (three editors by chapter block, three independent verifiers, one combined
+  second pass). Material moved to its new neighbour: alcohol activation
+  (TsCl, MsCl, SOCl₂, PBr₃ and the stereochemical consequence) from leaving
+  groups into alcohol reactions; mCPBA epoxidation from epoxides into alkene
+  oxidation; the E2 half of conformational analysis dropped (E2 already
+  taught it); diazotization owned by amine reactions; the Stork enamine
+  taught once, in imines/enamines. Hydrogenation and alkene oxidation were
+  rewritten for the alkene chapter; the Organometallics sections and the two
+  moved carbonyl sections gained labelled previews for what now follows
+  them. About 20 bank questions replaced so every topic is answerable from
+  the chapters before it; 26 "Builds on / Leads to" rows rebuilt.
+- **Guards.** `check-curriculum` now fails if any `dependsOn` points at a
+  later topic; a new `scripts/build-ochem-home.mjs` generates the homepage
+  chapter path and JSON-LD syllabus from the curriculum (both had been stuck
+  at 14 chapters) and CI checks it.
+- `chair-bromocyclohexane` in `molecules.js` redrawn correctly (it was in
+  use by two interactive items after all); the E2 click item's diagnostics
+  follow it.
+
+**Decisions taken on your behalf** (each reversible; see "Decisions for
+Olivier" below): Baeyer–Villiger's home; prochirality added as a section;
+the proposal's *section splits* (addition reactions three ways, EAS, H-NMR,
+nucleophilic addition, hybridization) **not done** — every prerequisite
+problem they were meant to fix was fixed inside the existing sections, and
+each split is a new-topic job you may not want.
+
+**Still open.** The deferred splits above; the site-wide "Leads to" rows
+(hand-written, and in older chapters they list prerequisites rather than
+dependents — the reorder pass fixed the ones it touched); the small items
+already listed per chapter in the status table (recall-heavy banks in the
+old chapters 12/14/17, three deferred figures). The status table's chapter
+numbers are the **pre-reorder** numbers; `current-order.txt` and
+`curriculum.js` are the truth now.
+
+**Could not verify from here** (hedged in the text): the 10 °C ≈ 2× rate
+rule of thumb in energy-diagrams; nothing else new — every product ratio,
+CIP call and topicity call in the new and rewritten passages was re-derived
+by a verifier.
+
+---
+
 ## Morning summary (self-study pass, 2026-09-16 → 2026-09-22)
 
 Everything below is on `main` (45 commits since the pass began); every push
@@ -71,7 +138,7 @@ when the change is in the repo and the checks pass.
 
 ---
 
-## Self-study pass (Step 3 complete; reorder pending)
+## Self-study pass (complete; order applied 2026-09-22)
 
 The pass that makes the course learnable on its own: an approved order, no
 idea used before it is taught, every concept explained with its why and how,
@@ -84,67 +151,42 @@ standards and is chemically correct; all checks run; push.
 
 ### Decisions for Olivier
 
-- `ochem/assets/molecules.js`: `chair-bromocyclohexane` draws Br axial on an axial-down carbon and marks a non-adjacent carbon as anti-periplanar; chapter 5's only use was removed and no page uses it now. Drop it or rewrite it (the chapter 6 pass rebuilt `chair-dimethylcyclohexane` correctly and can serve as the model).
-- Chapter 6 gaps that need a new section rather than an edit: prochirality/diastereotopic protons (needed by H-NMR), and structure images inside bank questions (needs a runtime change to the practice page).
+Taken on 2026-09-22 (say so if you want any reversed):
 
-Recorded here as they arise, and collected in `docs/proposed-order.md`.
+1. ~~Approve the proposed order~~ — **applied**, with two deviations:
+   Baeyer–Villiger closes Carboxylic Acids & Derivatives instead of Redox
+   (it needs esters and lactones); the proposal's section splits were not
+   done (below).
+2. ~~Energy diagrams, carbocations, cis/trans & E/Z~~ — **added**, plus
+   **prochirality** at the end of Stereochemistry.
+3. ~~Spectroscopy placement~~ — kept after the aromatic chapters.
+4. ~~HOMO/LUMO~~, 5. ~~Oxymercuration~~ — done earlier.
+6. ~~Chapter 2's title~~ — *Drawing Molecules & Moving Electrons*.
+7. ~~chair-bromocyclohexane~~ — redrawn (it was used by two click items).
 
-1. **Approve the proposed order** in `docs/proposed-order.md`, or say which
-   moves to drop. Nothing has been moved. The two largest moves: a new
-   chapter 7 "How Reactions Happen" (nucleophiles, electrophiles, leaving
-   groups, energy diagrams and the Hammond postulate, carbocations, radical
-   halogenation), and dissolving Carbonyl & Enolate Breadth into the carbonyl,
-   redox and enolate chapters.
-2. **Two new lessons and one split-out** the order needs: energy-diagrams,
-   carbocations (carved out of sn1), cis-trans-ez (carved out of
-   alkene-structure).
-3. **Spectroscopy placement**: keep after aromatics (recommended) or move to
-   the textbook position after Alcohols & Ethers.
-4. ~~HOMO/LUMO~~ — done in chapter 9's pass (a minimal MO section in
-   `conjugated-systems`).
-5. ~~Oxymercuration–demercuration~~ — done in chapter 8's pass (taught in
-   `addition-reactions`).
-6. **Chapter 2's title** once nucleophiles and leaving groups move out of it.
+Still yours:
 
-### Waiting on reorder
+- **Section splits from the proposal, not done:** addition-reactions →
+  electrophilic-addition / bridged-additions / anti-markovnikov; eas →
+  mechanism / reactions; h-nmr → shift / splitting; nucleophilic-addition →
+  + organometallic-addition; hybridization (optional). Each is a new topic
+  (page, lesson, 30 questions, counts); the prerequisite problems they were
+  meant to fix are fixed in place. Say which, if any, you want.
+- **"Leads to" rows** in lessons are hand-written; in chapters the reorder
+  pass did not touch they list prerequisites as often as dependents. A small
+  script could generate them from `dependsOn` — worth doing if you agree.
+- Recall-heavy banks (old chapters 12, 14, 17) and three deferred figures
+  (succinic anhydride/imide, β-lactam, polymer-design disconnection).
 
-- Chapter 21: five [waiting-on-reorder] prerequisite items in the review; note that moving `baeyer-villiger` into chapter 13 would put it before `esters-amides`, so it should land at the end of that chapter.
+### Resolved by the reorder (2026-09-22)
 
-- Chapter 20: LDA/enolate, protecting-group, aryl-halide and retrosynthesis references become forward references when Organometallics moves to position 15.
-
-- Chapter 18: Grignard, Michael and Wittig are used as known material throughout; the proposed order puts Organometallics at 15 and dissolves Carbonyl & Enolate Breadth into 11/14, ahead of this chapter.
-
-- Chapter 17: `h-nmr` should split into shift and splitting lessons (proposed order item); diastereotopic protons need the prochirality material chapter 6 lacks.
-
-- Chapter 16: `eas` should split into mechanism and reactions (proposed order item); diazonium and aniline cross-references point at Amines, which the proposed order moves after this chapter.
-
-- Chapter 15: aniline/pyridine/pyrrole basicity and the aromatic half of amine-reactions assume Aromatic Chemistry; the proposed order moves Amines to 18, after Aromatic.
-
-- Chapter 14: references to Grignard/cuprate (Organometallics), Michael and enamine (Carbonyl & Enolate Breadth) and malonic-ester chemistry sit ahead of where those are taught; the proposed order moves Organometallics to 15 and dissolves the breadth chapter into 14.
-
-- Chapter 13: Grignard reagents used as a preparative route (Grignard + CO₂, RMgX on nitriles) before Organometallics; the proposed order moves Organometallics to 15, directly after this chapter.
-
-- Chapter 11: splitting `nucleophilic-addition` and cutting the imine/enamine material (proposed order dissolves Carbonyl & Enolate Breadth into these chapters); mechanism-page draw steps for the acetal sequence need new molecule records.
-
-- Chapter 10: mCPBA epoxidation is taught in `epoxides` and labelled as previewing Oxidation & Reduction; `alcohol-reactions` points forward to that chapter for reagent detail; the tosylate/SOCl₂/PBr₃ activation material is duplicated between chapter 2's `leaving-groups` and this chapter (the proposed split of `leaving-groups` resolves it).
-
-- Chapter 8: catalytic hydrogenation used in three places (heats of hydrogenation, the addition summary table, Lindlar/Na–NH₃) before `hydrogenation` in chapter 12 — labelled as previews for now; splitting `addition-reactions` into carbocation vs bridged-ion additions needs a new curriculum entry.
-
-- Chapter 7: `e1` calls itself the fourth corner of the square and contrasts with E2 six times before E2 is taught (the four-way summary table also lands a section early); the proposed order swaps E1 and E2.
-
-- Chapter 6: R/S descriptors used in `enantiomers`, `diastereomers` and `meso` before `rs-configuration` (proposed order moves it third in the chapter); E/Z notation missing (proposed new `cis-trans-ez` section); `meso` previews the Fischer test before `fischer`.
-
-- Chapter 4: six passages in `notes/bronsted`, `notes/lewis-acids`, `notes/conjugate` and `lessons/lewis-acids` lean on nucleophile/electrophile/leaving-group vocabulary from chapter 2; under the proposed order those topics move after Acids & Bases and the passages become previews. The "Hard and soft, briefly" paragraph in `lewis-acids` loses its reason to exist if chapter 2 moves.
-- Chapter 5: Hammond postulate now stated in full in `radical-halogenation` (proposed home: the new energy-diagrams lesson); stereocenter/racemic used in `radical-halogenation` before Stereochemistry; the E2 half of `conformational-analysis` (anti-periplanar, menthyl) is headed "Looking ahead" pending its move to `e2`; the lesson's Markovnikov/peroxide-HBr challenge and bank Q19–Q20 belong to `anti-markovnikov`.
-
-Findings that are wrong only because of where a chapter sits, left alone so
-the fix is made once against the approved order. Chapter by chapter, as the
-reviews land.
-
-- **Ch 1 Foundations.** `bonding` points at Alkenes & Alkynes for cis/trans;
-  the proposed order moves cis/trans and E/Z into Stereochemistry.
-- **Ch 3 Nomenclature.** `naming-rings-unsaturation` points at Stereochemistry
-  for E/Z; true only under the proposed order (E/Z moves into that chapter).
+Every item that was logged under "Waiting on reorder" is resolved or
+explicitly rejected in `scratchpad/reviews/reorder-{A,B,C}-report.md`,
+verified in `reorder-{A,B,C}-verify.md` and closed in
+`reorder-fix2-report.md` (the scratchpad is session-local; the commits
+a78c0b1, 2165607, 90ec4aa, e65c184 and a0dd198 carry the changes). The
+only items rejected were the ones the applied order made moot (skeletal
+structures stay in chapter 2) or that are section splits (above).
 
 ### Chapter status
 

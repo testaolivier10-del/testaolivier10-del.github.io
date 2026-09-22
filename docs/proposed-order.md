@@ -205,19 +205,6 @@ left alone, so that the fixes are made once, against the approved order.
 
 ## Decisions for Olivier
 
-1. **Approve the order above**, or say which moves to drop. The two that are
-   most disruptive and most valuable are chapter 7 and dissolving Carbonyl &
-   Enolate Breadth.
-2. **Two new lessons** (energy-diagrams, carbocations) and one split-out
-   (cis-trans-ez). Each is 600–900 words plus an 8-step lesson and 30
-   questions; the carbocations material mostly exists inside sn1.
-3. **Spectroscopy placement**: keep at 20 (recommended above) or move to
-   textbook position after chapter 11.
-4. **HOMO/LUMO**: add a short frontier-orbital lesson to Conjugation
-   (recommended — Diels–Alder and UV-Vis both lean on it), or rewrite both to
-   avoid it.
-5. **Oxymercuration–demercuration**: teach it in electrophilic-addition as the
-   rearrangement-free Markovnikov hydration (recommended, one paragraph and
-   one question), or delete the two mentions.
-6. **Chapter 2's title**: "Drawing Organic Molecules" once nucleophiles and
-   leaving groups leave it, or keep the current title.
+All six were taken on 2026-09-22 and are recorded, with the two deviations
+above, in TRACKER.md under "Decisions for Olivier". The open ones are the
+section splits.
