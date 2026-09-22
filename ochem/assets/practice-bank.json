@@ -29135,15 +29135,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which sequence correctly describes converting an aryl diazonium salt into an aryl fluoride without relying on nucleophilic aromatic substitution?",
+   "q": "Diazotization needs acid, and it needs a primary amine. What does each requirement do?",
    "options": [
-    "direct reaction of the original amine with F2 gas",
-    "simple reduction of the diazonium salt using H2 gas",
-    "treatment of the amine directly with HF, with no diazonium intermediate involved",
-    "a Balz-Schiemann reaction via the fluoroborate salt, losing N2"
+    "The acid dehydrates nitrous acid to the nitrosonium ion, and only a primary amine has the second N-H needed to reach Ar-N2+",
+    "The acid keeps the amine protonated so it cannot attack, and any amine class reaches the diazonium salt equally well",
+    "The acid reduces the nitrogen to its -3 oxidation level, and a primary amine is simply the cheapest starting material",
+    "The acid supplies the nitrogen that ends up in the N2 group, and a primary amine is the least hindered of the three"
    ],
-   "correct": 3,
-   "why": "The Balz-Schiemann reaction converts an aryl diazonium salt (commonly as its tetrafluoroborate) into the corresponding aryl fluoride upon heating, with loss of nitrogen gas.",
+   "correct": 0,
+   "why": "HCl protonates and dehydrates HNO2 to N(triple bond)O+, the small linear electrophile the amine attacks. After that attack the nitrogen loses one proton to give an N-nitrosoamine, and it is the second N-H that tautomerizes away with water to leave Ar-N2+. A secondary amine has no second N-H and stops at the nitrosoamine.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -29337,13 +29337,13 @@
    "type": "mcq"
   },
   {
-   "q": "Because pyrrole's nitrogen lone pair is delocalized into the aromatic pi system, pyrrole is far less basic than a typical secondary amine.",
+   "q": "Pyrrole resists being protonated on its nitrogen, because that nitrogen's lone pair is one of the six pi electrons that make the ring aromatic.",
    "options": [
     "True",
     "False"
    ],
    "correct": 0,
-   "why": "Protonating pyrrole's nitrogen would remove that lone pair from the aromatic system and destroy aromaticity, so the lone pair is much less available to accept a proton than in ordinary amines.",
+   "why": "Pyrrole's nitrogen has no ring double bond of its own, so its lone pair sits in the p orbital and supplies two of the six pi electrons. Putting a proton on that nitrogen would pull those electrons out of the pi system and destroy the aromatic sextet, which costs far more than the new N-H bond returns.",
    "difficulty": "hard",
    "type": "tf"
   },

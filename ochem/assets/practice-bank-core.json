@@ -26857,14 +26857,14 @@
    "type": "mcq"
   },
   {
-   "q": "Which sequence correctly describes converting an aryl diazonium salt into an aryl fluoride without relying on nucleophilic aromatic substitution?",
+   "q": "Diazotization needs acid, and it needs a primary amine. What does each requirement do?",
    "options": [
-    "direct reaction of the original amine with F2 gas",
-    "simple reduction of the diazonium salt using H2 gas",
-    "treatment of the amine directly with HF, with no diazonium intermediate involved",
-    "a Balz-Schiemann reaction via the fluoroborate salt, losing N2"
+    "The acid dehydrates nitrous acid to the nitrosonium ion, and only a primary amine has the second N-H needed to reach Ar-N2+",
+    "The acid keeps the amine protonated so it cannot attack, and any amine class reaches the diazonium salt equally well",
+    "The acid reduces the nitrogen to its -3 oxidation level, and a primary amine is simply the cheapest starting material",
+    "The acid supplies the nitrogen that ends up in the N2 group, and a primary amine is the least hindered of the three"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -27043,7 +27043,7 @@
    "type": "mcq"
   },
   {
-   "q": "Because pyrrole's nitrogen lone pair is delocalized into the aromatic pi system, pyrrole is far less basic than a typical secondary amine.",
+   "q": "Pyrrole resists being protonated on its nitrogen, because that nitrogen's lone pair is one of the six pi electrons that make the ring aromatic.",
    "options": [
     "True",
     "False"
