@@ -49,6 +49,14 @@ test('the card asks until someone joins, then becomes a receipt', () => {
   assert.ok(after.includes('on the Premium list'));
 });
 
+test('a course with a price shows it on the card', () => {
+  const { premium } = fresh();
+  for (const [key, c] of Object.entries(premium.COURSES)) {
+    if (!c.price) continue;
+    assert.ok(premium.card(key, 'x').includes(c.price), `${key} card hides its price`);
+  }
+});
+
 test('joining one course does not join the other', () => {
   const { premium } = fresh();
   premium._markJoined('nremt');

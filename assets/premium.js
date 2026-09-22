@@ -43,12 +43,13 @@
   /* The split, per course. Same rule everywhere: teaching and reference stay
      free, the first part of every course stays fully open, and Premium is
      serious practice — volume, exam simulation and the analytics on top.
-     `price` stays null until one is decided; the card shows it when it is
-     set, which is a stronger test of intent than a card without one. */
+     `price` is shown on the card and in the dialog: an address left beside
+     a price is a much stronger signal than one left beside "coming soon".
+     One-time passes, never auto-renewing; docs/premium.md has the reasoning. */
   var COURSES = {
     nremt: {
       name: 'NREMT-EMT Prep',
-      price: null,
+      price: '$29 for 90 days',
       free: [
         'Study notes, glossary, flowcharts, mnemonics and the body map',
         'Daily practice questions',
@@ -65,7 +66,7 @@
     },
     ochem: {
       name: 'Organic Chemistry',
-      price: null,
+      price: '$39 a semester',
       free: [
         'The textbook section for every topic',
         'Foundations chapters, fully interactive',
@@ -125,7 +126,8 @@
     }
     return '<div class="premium-card">' +
       '<span class="premium-card__tag">Coming soon</span>' +
-      '<b>Premium for ' + esc(c.name) + (c.price ? ' · ' + esc(c.price) : '') + '</b>' +
+      '<b>Premium for ' + esc(c.name) + '</b>' +
+      (c.price ? '<span class="premium-card__price">' + esc(c.price) + ', one-time</span>' : '') +
       '<p>' + esc(c.premium.slice(0, 3).join(' · ')) + '.</p>' +
       '<button type="button" class="btn-press sm" data-premium-waitlist="' + esc(course) + '"' +
         ' data-premium-source="' + esc(source || '') + '">Get notified</button>' +
@@ -198,7 +200,8 @@
     lastFocused = button || document.activeElement;
 
     document.getElementById('premiumSub').textContent =
-      'Premium for ' + c.name + ' isn’t available yet. Leave your email and we’ll tell you when it is.';
+      'Premium for ' + c.name + (c.price ? ' (' + c.price + ', one-time, no subscription)' : '') +
+      ' isn’t available yet. Leave your email and we’ll tell you when it is.';
     document.getElementById('premiumLists').innerHTML =
       listHtml('Premium', c.premium) + listHtml('Always free', c.free);
     var input = document.getElementById('premiumEmail');
