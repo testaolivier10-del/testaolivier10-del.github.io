@@ -95,7 +95,8 @@
       { id: 'diastereomers', title: 'Diastereomers', href: 'lessons/diastereomers.html', dependsOn: ['enantiomers'] },
       { id: 'meso', title: 'Meso compounds', href: 'lessons/meso.html', dependsOn: ['diastereomers'] },
       { id: 'fischer', title: 'Fischer projections', href: 'lessons/fischer.html', dependsOn: ['rs-configuration', 'meso'] },
-      { id: 'cis-trans-ez', title: 'Cis/trans and E/Z', href: 'lessons/cis-trans-ez.html', dependsOn: ['bonding', 'rs-configuration', 'naming-rings-unsaturation'] }
+      { id: 'cis-trans-ez', title: 'Cis/trans and E/Z', href: 'lessons/cis-trans-ez.html', dependsOn: ['bonding', 'rs-configuration', 'naming-rings-unsaturation'] },
+      { id: 'prochirality', title: 'Prochirality: which hydrogens are the same?', href: 'lessons/prochirality.html', dependsOn: ['stereocenters', 'enantiomers', 'diastereomers', 'rs-configuration'] }
     ]},
     /* The chapter that used to be missing: the ideas every reaction chapter
        leans on, taught once, after acids and bases (so nucleophilicity and

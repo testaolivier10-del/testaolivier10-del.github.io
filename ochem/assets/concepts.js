@@ -572,7 +572,14 @@
     { id:'hammond-postulate', title:'The Hammond postulate', family:'Electron flow',
       topics:['energy-diagrams','radical-halogenation','kinetic-thermodynamic','markovnikov','sn1'],
       dependsOn:['energy-diagram-reading'],
-      hint:'Ask which way the step runs: downhill gives an early, reactant-like transition state; uphill gives a late, product-like one.' }
+      hint:'Ask which way the step runs: downhill gives an early, reactant-like transition state; uphill gives a late, product-like one.' },
+    /* ---- Topicity (added with the Prochirality section) ----------------- */
+    { id:'topicity-test', title:'The substitution test', family:'Stereochemistry',
+      topics:['prochirality','h-nmr','c-nmr'], dependsOn:['enantiomer-vs-diastereomer','rs-assignment'],
+      hint:'Replace one group with D, then the other, and compare: same compound = homotopic, enantiomers = enantiotopic, diastereomers = diastereotopic.' },
+    { id:'prochiral-faces', title:'Prochiral faces (Re and Si)', family:'Stereochemistry',
+      topics:['prochirality','nucleophilic-addition','sn1'], dependsOn:['topicity-test'],
+      hint:'Rank the three groups on the flat carbon and trace them: clockwise is Re, counterclockwise is Si. Equivalent faces give a racemate.' }
   ];
 
   var BY_ID = {};
@@ -712,7 +719,8 @@
     'ir':'ir-functional-groups', 'h-nmr':'nmr-splitting-integration',
     'c-nmr':'carbon-count-symmetry', 'mass-spec':'ms-fragmentation',
     'energy-diagrams':'energy-diagram-reading',
-    'carbocations':'carbocation-stability'
+    'carbocations':'carbocation-stability',
+    'prochirality':'topicity-test'
   };
   function defaultConceptFor(topicId){
     if(TOPIC_PRIMARY[topicId]) return TOPIC_PRIMARY[topicId];

@@ -646,6 +646,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/prochirality.html</loc>
+    <lastmod>2026-09-22</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/protecting-groups.html</loc>
     <lastmod>2026-09-22</lastmod>
     <priority>0.8</priority>
@@ -872,7 +877,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/bonding.html</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -1257,6 +1262,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/polymer-properties.html</loc>
+    <lastmod>2026-09-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/prochirality.html</loc>
     <lastmod>2026-09-22</lastmod>
     <priority>0.7</priority>
   </url>

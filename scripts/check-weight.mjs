@@ -169,7 +169,9 @@ const BUDGETS = [
   // sections, so the budget follows the book: this is the contents list doing
   // its job, not the page getting heavier per section. If it needs moving
   // again for any reason OTHER than new sections, find out why first.
-  ['ochem/learn.html', 4],
+  // Raised to 5 KB when the self-study pass added four sections (energy
+  // diagrams, carbocations, cis/trans & E/Z, prochirality): 121 lines now.
+  ['ochem/learn.html', 5],
 
   // One textbook section, standing in for the other 67. They became real
   // pages when the ochem prose was made readable without JavaScript
