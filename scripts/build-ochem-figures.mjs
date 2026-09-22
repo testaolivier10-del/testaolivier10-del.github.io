@@ -1924,23 +1924,23 @@ FIGURES.push({
     s += label(30, 158, 'TBAF', { anchor: 'start', size: 12.5 });
     s += text(30, 174, 'fluoride', { cls: 'fg-sm', anchor: 'start', size: 9.5 });
     s += label(30, 226, 'H\u2083O\u207A', { anchor: 'start', size: 12.5 });
-    s += text(30, 242, 'dilute, warm', { cls: 'fg-sm', anchor: 'start', size: 9.5 });
+    s += text(30, 242, 'dilute, mild', { cls: 'fg-sm', anchor: 'start', size: 9.5 });
 
     s += text(212, 154, 'comes off \u2014 the O\u2013H is back', { cls: 'fg-tag-good', size: 11 });
     s += text(212, 174, 'Si\u2013F is exceptionally strong', { cls: 'fg-sm', size: 9.5 });
     s += text(548, 154, 'untouched', { cls: 'fg-tag-mut', size: 11 });
     s += text(548, 174, 'fluoride has nothing to do here', { cls: 'fg-sm', size: 9.5 });
 
-    s += text(212, 222, 'untouched', { cls: 'fg-tag-mut', size: 11 });
-    s += text(212, 242, 'wants fluoride, not acid', { cls: 'fg-sm', size: 9.5 });
+    s += text(212, 222, 'survives if the acid is mild', { cls: 'fg-tag-mut', size: 11 });
+    s += text(212, 242, 'harsher acid takes it off', { cls: 'fg-sm', size: 9.5 });
     s += text(548, 222, 'comes off \u2014 the C=O is back', { cls: 'fg-tag-good', size: 11 });
     s += text(548, 242, 'an equilibrium; water reverses it', { cls: 'fg-sm', size: 9.5 });
 
-    s += text(380, 292, 'Each key ignores the other mask \u2014 so they come off in whichever order you need.', { cls: 'fg-lbl', size: 12 });
+    s += text(380, 292, 'Each key spares the other mask (keep the acid mild), so they come off in either order.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
-  caption: 'Orthogonality is this grid having two blanks in it. Neither deprotection is selective by being gentle; they are selective because fluoride and aqueous acid have nothing in common, so a molecule can carry both masks at once and be unmasked in whichever order the route needs.',
-  note: 'The diagonal is what makes protecting groups plannable rather than a gamble. It also sets the trap the section warns about: because the acetal answers to aqueous acid, it cannot be carried through any later step that needs aqueous acid for its own reasons. And note that the silyl ether in the bottom-left cell is the bulky TBS one \u2014 a trimethylsilyl ether is small enough that mild aqueous acid takes it off too, and the grid would lose its blank.',
+  caption: 'Orthogonality is this grid having two blanks in it. The fluoride row is selective outright: fluoride has nothing to do with an acetal. The acid row is selective by degree: an acetal hydrolyzes under milder acid than a TBS ether needs, so with the acid kept mild and brief the silyl ether survives, and the molecule can carry both masks at once and be unmasked in whichever order the route needs.',
+  note: 'The diagonal is what makes protecting groups plannable rather than a gamble. It also sets the trap the section warns about: because the acetal answers to aqueous acid, it cannot be carried through any later step that needs aqueous acid for its own reasons. And note that the silyl ether in the bottom-left cell is the bulky TBS one \u2014 a trimethylsilyl ether is small enough that mild aqueous acid takes it off too, and the grid would lose its blank. Even TBS only tolerates mild acid: acetic acid in aqueous THF, or HCl in methanol, is a standard way of removing it. Even TBS only tolerates mild acid: acetic acid in aqueous THF, or HCl in methanol, is a standard way of removing it.',
 });
 
 /* ------------------------------------------------------------------ D5 ---
@@ -7061,11 +7061,11 @@ FIGURES.push({
     s += arrow(P(492, 140), P(528, 140), { muted: true });
     s += arrow(P(528, 162), P(492, 162), { muted: true });
 
-    s += text(380, 32, 'barrier ≈ 6 kcal/mol → about 10¹¹ inversions per second at room temperature', { cls: 'fg-tag', size: 11 });
-    s += text(380, 296, 'Roughly a hundred flips per nanosecond: there is no temperature at which you could bottle one of the two pyramids.', { cls: 'fg-sm', size: 10 });
+    s += text(380, 32, 'barrier ≈ 6 kcal/mol → about 10⁸–10⁹ inversions per second at room temperature', { cls: 'fg-tag', size: 11 });
+    s += text(380, 296, 'One flip every few nanoseconds: cooling slows it, but never enough to bottle either pyramid.', { cls: 'fg-sm', size: 10 });
     return s;
   },
-  caption: 'Why an amine nitrogen with three different groups is not a usable stereocenter. It really is pyramidal, and the two pyramids really are mirror images — but the barrier between them is about 6 kcal/mol, so the molecule turns itself inside out like an umbrella in a gale, roughly 10<sup>11</sup> times a second. What you have is not two separable substances; it is one substance spending half its time in each shape.',
+  caption: 'Why an amine nitrogen with three different groups is not a usable stereocenter. It really is pyramidal, and the two pyramids really are mirror images — but the barrier between them is about 6 kcal/mol, so the molecule turns itself inside out like an umbrella in a gale, roughly 10<sup>8</sup>–10<sup>9</sup> times a second. What you have is not two separable substances; it is one substance spending half its time in each shape.',
   note: 'Take the lone pair away and the argument collapses with it. A quaternary ammonium ion, N<sup>+</sup> with four groups, has no lone pair to move into a p orbital and no planar transition state to pass through, so it cannot invert at all — and it is a perfectly ordinary stereocenter. The same is true of a sulfoxide, where the barrier is high enough that single enantiomers are sold as drugs.',
 });
 
@@ -11730,7 +11730,7 @@ FIGURES.push({
     s += text(660, 244, 'its mirror image', { cls: 'fg-tag-good', size: 11 });
 
     s += rule(24, 288, 736, 288);
-    s += text(24, 320, '≈ 10⁹–10¹¹ times a second at room temperature.', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += text(24, 320, '≈ 10⁸–10⁹ times a second at room temperature.', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
     s += text(24, 344, 'Far too fast to separate the two forms, so an amine with', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     s += text(24, 364, 'three different groups is not a resolvable stereocenter.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
 
@@ -17566,7 +17566,7 @@ FIGURES.push({
   id: 'ez-diene-locants',
   section: 'cis-trans-ez',
   anchor: 'one label per stereogenic unit, each carrying its locant.</p>\n</div>',
-  alt: 'Hexa-2,4-diene drawn as a skeleton with its six carbons numbered. The C2 to C3 double bond has the C1 methyl below it and the C4 chain above it, on opposite sides, which makes it E. The C4 to C5 double bond has the C3 chain and the C6 methyl both below it, on the same side, which makes it Z. The full name is 2E,4Z-hexa-2,4-diene.',
+  alt: 'Hexa-2,4-diene drawn as a skeleton with its six carbons numbered. The C2 to C3 double bond has the C1 methyl below it and the C4 chain above it, on opposite sides, which makes it E. The C4 to C5 double bond has the C3 chain and the C6 methyl both below it, on the same side, which makes it Z. As numbered here the name is 2E,4Z-hexa-2,4-diene; because the chain reads the same from either end, IUPAC numbers it from the other end so that Z gets the lower locant, and the preferred name is 2Z,4E-hexa-2,4-diene.',
   viewBox: '0 0 760 300',
   build() {
     const c1 = P(96, 208), c2 = P(142, 182), c3 = P(188, 182),
@@ -17594,8 +17594,8 @@ FIGURES.push({
     s += text(396, 160, 'C4=C5:  the C3 chain and CH₃', { cls: 'fg-lbl', size: 12, anchor: 'start' });
     s += text(396, 182, 'sit on the same side', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     s += text(688, 172, 'Z', { cls: 'fg-tag-good', size: 16 });
-    s += text(548, 226, '(2E,4Z)-hexa-2,4-diene', { cls: 'fg-tag-good', size: 13 });
-    s += text(548, 250, 'each letter takes its bond’s lower locant', { cls: 'fg-sm', size: 10.5 });
+    s += text(548, 226, '(2E,4Z) as numbered here', { cls: 'fg-tag-good', size: 13 });
+    s += text(548, 250, 'preferred: (2Z,4E), since Z takes the lower locant', { cls: 'fg-sm', size: 10.5 });
     s += text(380, 292, 'Two stereogenic double bonds, two letters, and both of them go in the name.', { cls: 'fg-sm', size: 10.5 });
     return s;
   },

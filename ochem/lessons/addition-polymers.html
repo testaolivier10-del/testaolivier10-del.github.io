@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function(){
     { id:'a3', t:'<b>Tetrafluoroethylene</b>, CF₂=CF₂', right:'ptfe',
       why:'PTFE, or Teflon. Both carbons are substituted identically, so there is no head-to-tail question to answer here.' },
     { id:'a4', t:'<b>Propylene</b>, CH₂=CHCH₃', right:'pp',
-      why:'Polypropylene — and the one where tacticity decides everything. Radical polymerization gives an atactic goo; a Ziegler–Natta catalyst gives the isotactic material that rope and car bumpers are made of.' }
+      why:'Polypropylene — and the one where tacticity decides everything. A radical chain end would place its methyls at random (atactic), though in practice radicals get propylene only to short oligomers because they strip its allylic hydrogens. A Ziegler–Natta catalyst gives the isotactic material that rope and car bumpers are made of.' }
   ];
   var OPTS = [ { k:'pvc', l:'PVC' }, { k:'ps', l:'Polystyrene' }, { k:'pp', l:'Polypropylene' }, { k:'ptfe', l:'PTFE' } ];
 
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'mcq',
         eyebrow: 'Step 5 · Independent Practice',
-        title: 'What does radical polymerization of propylene give, and why?',
+        title: 'If a radical chain end kept adding propylene, what tacticity would the chain have, and why?',
         options: [
           'Atactic polypropylene, because a planar radical has no facial preference',
           'Isotactic polypropylene, because the chain templates itself',
@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'A cross-linked network'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct. The radical at the chain end is planar, so the next monomer can arrive on either face with equal ease and the orientation of each new substituted carbon is random. The result is atactic — chains that cannot pack, and a material that is a sticky goo rather than a useful plastic. Getting isotactic polypropylene needs a Ziegler–Natta catalyst holding the chain on a metal center so every addition happens the same way.',
+        correctFeedback: 'Correct. The radical at the chain end is planar, so the next monomer can arrive on either face with equal ease and the orientation of each new substituted carbon is random. The result is atactic — chains that cannot pack, and a material that is a sticky goo rather than a useful plastic. (In practice radicals take propylene only as far as short oligomers, because the chain end abstracts an allylic hydrogen and leaves an allyl radical too stable to carry on; real polypropylene, atactic or not, is made on metal catalysts. The facial argument is the same either way.) Getting isotactic polypropylene needs a Ziegler–Natta catalyst holding the chain on a metal center so every addition happens the same way.',
         wrongFeedback: 'Think about the geometry of the radical at the growing chain end. Does it have a preferred face for the next monomer to approach?'
       },
       {
