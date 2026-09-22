@@ -143,11 +143,13 @@ document.addEventListener('DOMContentLoaded', function(){
     { id:'x2', t:'Partner is an <b>organostannane</b>, R–SnBu₃', right:'sti',
       why:'Stille. Chemically at least as good as the Suzuki and it needs no base, but organotin reagents are seriously toxic, so it lost on practicality rather than on chemistry.' },
     { id:'x3', t:'Partner is a <b>terminal alkyne</b>, with a copper cocatalyst', right:'son',
-      why:'Sonogashira. The copper forms the acetylide that transmetalates, which is why there are two metals in the flask.' },
+      why:'Sonogashira. An amine base — usually triethylamine, often as the solvent — lets copper(I) make the copper acetylide from that terminal C–H, pKa 25, and the copper acetylide is what transmetalates to palladium. Two metals and a base, all doing different jobs.' },
     { id:'x4', t:'Partner is an <b>alkene</b> — no organometallic at all', right:'hec',
-      why:'Heck. With no organometallic there is no transmetalation: the alkene inserts into the Ar–Pd bond instead, and a beta-hydride elimination releases the product, usually as the trans alkene.' }
+      why:'Heck. With no organometallic there is no transmetalation: the alkene coordinates, migratory insertion puts Ar and Pd across the double bond on the same face, and a beta-hydride elimination releases the product, usually as the trans alkene. A base then strips HX from the H–Pd(II)–X left behind, which is what returns Pd(0).' },
+    { id:'x5', t:'Partner is an <b>organozinc</b>, R–ZnX', right:'neg',
+      why:'Negishi. Zinc is mild enough that the reagent survives with an ester in the same molecule, which is why it is the choice when the partner is functionalized.' }
   ];
-  var OPTS = [ { k:'sti', l:'Stille' }, { k:'suz', l:'Suzuki' }, { k:'hec', l:'Heck' }, { k:'son', l:'Sonogashira' } ];
+  var OPTS = [ { k:'sti', l:'Stille' }, { k:'suz', l:'Suzuki' }, { k:'hec', l:'Heck' }, { k:'neg', l:'Negishi' }, { k:'son', l:'Sonogashira' } ];
 
   window.OchemLessonEngine.start({
     topicId: 'cross-coupling',
@@ -159,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'The bond nobody could make.',
-        bodyHtml: '<p class="step-body">Every carbon nucleophile so far has needed a partner it could attack. That rules out the pair chemists most often want to join: an <b>aryl halide</b> and another aryl group. An aryl halide will not do S<sub>N</sub>2 &mdash; the carbon is sp² and its backside is behind the ring &mdash; and it will not do S<sub>N</sub>1 either, because an aryl cation is badly unstable.</p>' +
+        bodyHtml: '<p class="step-body">Every carbon nucleophile so far has needed a partner it could attack. That rules out the pair chemists most often want to join: an <b>aryl halide</b> and another aryl group. An aryl halide will not do S<sub>N</sub>2 &mdash; the carbon is sp² and its backside is behind the ring &mdash; and it will not do S<sub>N</sub>1 either, because an aryl cation is badly unstable. (There is one addition&ndash;elimination route that does substitute an aryl halide, but it needs strong electron-withdrawing groups on the ring and the aromatic follow-through chapter covers it; it is not something the halide does on its own.)</p>' +
           '<p class="step-body">Cross-coupling solves it by changing who does the work. A <b>palladium</b> catalyst takes the two pieces in one at a time, holds both, and then pushes them together. The metal makes the aryl halide reactive by bonding to it directly, rather than waiting to be attacked.</p>' +
           '<div class="explain-box">The 2010 Nobel Prize in Chemistry went to Heck, Negishi and Suzuki for this, and it is now the most-used carbon&ndash;carbon bond-forming reaction in the pharmaceutical industry. If you have taken a drug approved in the last twenty years, a palladium catalyst probably made one of its bonds.</div>'
       },
@@ -180,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function(){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Name the coupling from its partner.</h2>' +
-            '<p class="step-body">The aryl halide and the palladium are the same in all four. Only the nucleophilic partner changes &mdash; and in one of them there is no organometallic partner at all, which is the one that breaks the pattern.</p>' +
+            '<p class="step-body">The aryl halide and the palladium are the same in all five. Only the nucleophilic partner changes &mdash; and in one of them there is no organometallic partner at all, which is the one that breaks the pattern.</p>' +
             '<div class="radical-sort">' +
             CASES.map(function(c){
               return '<div class="radical-row" data-case="' + c.id + '">' +
@@ -208,8 +210,8 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
               if(Object.keys(done).length === CASES.length){
                 api.showFeedback(fb, true, missed
-                  ? 'All four. Three share a cycle and differ only in the partner; the Heck has no transmetalation step because it has nothing to transmetalate.'
-                  : 'All four, first time, including the Heck &mdash; the one with no organometallic and a beta-hydride elimination at the end.');
+                  ? 'All five. Four of them share a cycle and differ only in the partner; the Heck has no transmetalation step because it has nothing to transmetalate.'
+                  : 'All five, first time, including the Heck &mdash; the one with no organometallic and a beta-hydride elimination at the end.');
                 api.record(!missed); next.disabled = false;
               }
             });
@@ -250,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function(){
         eyebrow: 'Explain',
         title: 'Why this changed how molecules get made.',
         bodyHtml: '<p class="step-body">Two reasons, and the first is arithmetic. Cross-coupling is <b>convergent</b>: two halves are built separately and joined near the end, instead of one chain being extended step by step.</p>' +
-          '<p class="step-body">Yields multiply, so this matters more than it sounds. Ten linear steps at 85% each returns about <b>20%</b>. Two five-step branches at 85% each reach 44% apiece, and one more step to join them still leaves about <b>37%</b> of the limiting half &mdash; nearly double, for the same number of reactions.</p>' +
+          '<p class="step-body">Yields multiply, so this matters more than it sounds. Ten linear steps at 85% each returns about <b>20%</b>. Two five-step branches at 85% each reach 44% apiece, and one more step to join them still leaves about <b>37%</b> of the limiting half &mdash; nearly double, for one extra reaction.</p>' +
           '<p class="step-body">The second reason is <b>tolerance</b>. A Suzuki coupling runs in the presence of ketones, esters, free alcohols and amines &mdash; none of which a Grignard would survive &mdash; because the reactive carbon is bound to a metal for its entire lifetime and never exists as a free carbanion.</p>' +
           '<div class="explain-box">Together those two properties are what medicinal chemistry needs. Both halves can be varied independently, so fifty analogs of one scaffold cost fifty final steps rather than fifty syntheses, and none of them has to be protected first.</div>'
       },

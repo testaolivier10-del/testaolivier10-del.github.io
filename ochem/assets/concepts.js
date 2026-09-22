@@ -184,7 +184,7 @@
     { id:'organometallic-quench', title:'What destroys an organometallic', family:'Organometallics',
       topics:['grignard-reagents','organolithium-reagents','organometallic-bonding','protecting-groups','pka'],
       dependsOn:['polarity-reversal'],
-      hint:'Scan the substrate for O-H, N-H, S-H and terminal alkyne C-H before writing any organometallic step.' },
+      hint:'Scan both molecules — the substrate AND the halide the reagent is made from — for O-H, N-H, S-H and terminal alkyne C-H before writing any organometallic step.' },
     { id:'grignard-scope', title:'What a Grignard gives you', family:'Organometallics',
       topics:['grignard-reagents','organolithium-reagents','nucleophilic-addition','acyl-substitution','epoxides'],
       dependsOn:['polarity-reversal'],

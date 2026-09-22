@@ -34185,15 +34185,15 @@
    "type": "mcq"
   },
   {
-   "q": "Where is carbon's Pauling electronegativity?",
+   "q": "1.0 equivalent of CH3MgBr is added to 4-hydroxybutan-2-one. What is isolated after aqueous workup?",
    "options": [
-    "3.44",
-    "0.98",
-    "2.55",
-    "1.31"
+    "The tertiary alcohol",
+    "A methyl ether of the alcohol",
+    "The starting ketone, unchanged",
+    "Butane-1,3-diol"
    ],
    "correct": 2,
-   "why": "Magnesium is 1.31, lithium 0.98 and oxygen 3.44, which is why the first two invert the polarity and the third does not.",
+   "why": "The O-H at pKa 16 is deprotonated long before anything adds, so the reagent leaves as methane and the magnesium alkoxide that remains is inert to its own ketone. Workup just protonates it back. Two equivalents fix it.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -34544,7 +34544,7 @@
     "Magnesium is left over"
    ],
    "correct": 3,
-   "why": "Wet glassware quenches the reagent as fast as it forms, so the metal never gets used up.",
+   "why": "Wet or undried glassware leaves an oxide-coated magnesium surface, so the insertion never initiates, the turnings sit there and the solution never goes cloudy gray. Any reagent that does form is protonated to R-H rather than going on to product.",
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -34720,15 +34720,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which three electrophiles extend a chain by exactly one carbon?",
+   "q": "Which pair of electrophiles extends a chain by exactly one carbon?",
    "options": [
-    "Formaldehyde, CO2 and a nitrile",
-    "Formaldehyde, an ester and CO2",
-    "CO2, an epoxide and a ketone",
-    "An epoxide, a nitrile and an aldehyde"
+    "Formaldehyde and CO2",
+    "A nitrile and an epoxide",
+    "A ketone and an ester",
+    "An aldehyde and an acyl chloride"
    ],
    "correct": 0,
-   "why": "Each lands somewhere different: an alcohol, an acid and a ketone.",
+   "why": "Formaldehyde adds one carbon and stops at a primary alcohol; CO2 adds one carbon already at the acid level. A nitrile R′CN brings R′ along with its carbon, and an epoxide brings two.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -34850,15 +34850,15 @@
    "type": "mcq"
   },
   {
-   "q": "What functional group does a Grignard plus an aldehyde always produce?",
+   "q": "You need butan-1-ol from bromoethane. Which sequence works?",
    "options": [
-    "An ester",
-    "An alcohol",
-    "An ether",
-    "A ketone"
+    "Mg, then formaldehyde, then H3O+",
+    "Mg, then ethylene oxide, then H3O+",
+    "Mg, then CO2, then H3O+",
+    "Mg, then acetone, then H3O+"
    ],
    "correct": 1,
-   "why": "The alkoxide formed is protonated on workup, whatever the substituents are.",
+   "why": "Two carbons in and four out, so the electrophile has to bring two and leave the OH on the end carbon: that is ethylene oxide, attacked at the less hindered carbon. Formaldehyde adds only one, and CO2 would give an acid.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -35203,15 +35203,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which is the odd one out among n-BuLi, t-BuLi and LDA?",
+   "q": "Why does Ar-Br plus n-BuLi give Ar-Li rather than leaving the lithium on butyl?",
    "options": [
-    "LDA, which is an amide base",
-    "t-BuLi, which is not basic",
-    "n-BuLi, which is not nucleophilic",
-    "None; all three are identical"
+    "The exchange goes toward the more stable carbanion",
+    "Aryl bromides are stronger electrophiles than alkyl ones",
+    "Butyllithium is the weaker base of the two",
+    "Bromine prefers sp3 carbon over sp2 carbon"
    ],
    "correct": 0,
-   "why": "The other two are carbanions; LDA is a nitrogen base made from one.",
+   "why": "Lithium-halogen exchange is an equilibrium, and it settles where the carbanion is better stabilized. An sp2 aryl carbanion has more s character than an sp3 butyl one, so it holds its lone pair closer and is the weaker base.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -35268,15 +35268,15 @@
    "type": "mcq"
   },
   {
-   "q": "What is a propargylic position?",
+   "q": "Which sequence converts benzoic acid into acetophenone?",
    "options": [
-    "Next to a double bond",
-    "Next to a carbonyl",
-    "Next to a ring",
-    "Next to a triple bond"
+    "2 equiv CH3MgBr, then H3O+",
+    "1 equiv CH3Li, then H3O+",
+    "SOCl2, then CH3MgBr",
+    "2 equiv CH3Li, then H3O+"
    ],
    "correct": 3,
-   "why": "By analogy with allylic, which is next to a double bond.",
+   "why": "The first equivalent is spent on the O-H and the second adds to the carboxylate. The dianion cannot collapse, so it survives until workup and only then loses water to the ketone. A Grignard is not reactive enough to attack a carboxylate, and the acid chloride route adds twice.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -35478,15 +35478,15 @@
    "type": "mcq"
   },
   {
-   "q": "What happens to double-bond geometry in a cuprate coupling?",
+   "q": "What does (CH3)2CuLi give with (E)-1-bromo-1-hexene?",
    "options": [
-    "The alkene is reduced",
-    "It is preserved",
-    "It is scrambled",
-    "It becomes trans"
+    "(Z)-2-heptene",
+    "(E)-2-heptene, geometry preserved",
+    "A mixture of E and Z",
+    "No reaction, since vinyl halides are inert"
    ],
    "correct": 1,
-   "why": "Which is a large part of why the reaction is worth running.",
+   "why": "Cuprates couple with vinyl halides, which do no SN2 at all, and the alkene geometry survives the coupling. That retention is most of the reason the reaction is worth running.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -35569,15 +35569,15 @@
    "type": "mcq"
   },
   {
-   "q": "What is 1,4 addition also called?",
+   "q": "Which of these will a Gilman reagent NOT do?",
    "options": [
-    "Alpha addition",
-    "Michael elimination",
-    "Conjugate addition",
-    "Direct addition"
+    "Couple with a vinyl halide",
+    "Add at the beta carbon of an enone",
+    "Add twice to an ester",
+    "Stop at the ketone from an acyl chloride"
    ],
    "correct": 2,
-   "why": "And 1,2 addition is the direct one.",
+   "why": "A cuprate is too mild to be a general carbonyl nucleophile: it leaves esters, amides and nitriles alone, which is exactly why it tolerates them elsewhere in a molecule. What it does instead is conjugate (1,4) addition, coupling with halides — the Corey-House synthesis — and one clean addition to an acyl chloride.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -35766,15 +35766,15 @@
    "type": "mcq"
   },
   {
-   "q": "What happens to palladium during oxidative addition?",
+   "q": "Why is 1-bromobutane a poor partner for a Suzuki coupling?",
    "options": [
-    "Pd(II) becomes Pd(0)",
-    "It stays Pd(0)",
-    "It becomes Pd(IV)",
-    "Pd(0) becomes Pd(II)"
+    "Alkyl bromides do not undergo oxidative addition",
+    "Butane has no pi system for palladium to bind",
+    "A boronic acid cannot transmetalate to alkyl palladium",
+    "Beta-hydride elimination destroys the alkyl-Pd intermediate"
    ],
    "correct": 3,
-   "why": "Oxidized by two, which is where the step name comes from.",
+   "why": "An sp3 group on palladium with a hydrogen on the neighboring carbon loses that hydrogen and leaves as an alkene, faster than the two organic groups can join. Aryl and vinyl groups have no such beta hydrogen, which is why they are the partners that work.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -36013,15 +36013,15 @@
    "type": "mcq"
   },
   {
-   "q": "What prize recognized cross-coupling?",
+   "q": "Bromobenzene, phenylboronic acid, Pd(PPh3)4 and Na2CO3 are heated together. What forms?",
    "options": [
-    "The 2001 Nobel Prize in Chemistry",
-    "No prize was awarded",
-    "The 2010 Nobel Prize in Chemistry",
-    "The 1912 Nobel Prize in Chemistry"
+    "Phenol",
+    "Benzene",
+    "Biphenyl",
+    "Bromobenzene, unchanged"
    ],
    "correct": 2,
-   "why": "Shared by Heck, Negishi and Suzuki.",
+   "why": "Pd(0) inserts into the C-Br bond, the borate hands its phenyl across, and reductive elimination joins the two rings. Two aryl pieces, one new aryl-aryl bond.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -36065,15 +36065,15 @@
    "type": "mcq"
   },
   {
-   "q": "What is a mole percent loading typical of a palladium catalyst?",
+   "q": "In a Suzuki coupling, which partner does palladium add to, and what is the base for?",
    "options": [
-    "Ten equivalents",
-    "None is needed",
-    "A few percent",
-    "Stoichiometric"
+    "The boronic acid; the base neutralises HBr",
+    "The bromide; the base reduces Pd(II) to Pd(0)",
+    "The bromide; the base makes the borate that transmetalates",
+    "The boronic acid; the base makes a free aryl anion"
    ],
    "correct": 2,
-   "why": "Because the cycle regenerates the active species every turn.",
+   "why": "Oxidative addition breaks the Ar-Br bond, which is why the halide sets the scope. Carbonate then adds to boron to give the four-coordinate borate, and only that anionic boron delivers its aryl group to palladium.",
    "difficulty": "medium",
    "type": "mcq"
   },

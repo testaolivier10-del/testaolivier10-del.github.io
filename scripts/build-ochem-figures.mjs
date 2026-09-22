@@ -665,25 +665,36 @@ FIGURES.push({
   alt: 'Three panels of C18 fatty acid chains: straight saturated chains packed close together, cis chains bent into a V at the double bond so they cannot touch, and trans chains that carry a double bond and stay straight',
   build() {
     let s = '';
-    /* A zigzag walked along an axis. Everything in this figure is one call
-       to this with a different axis, which is the point: the three panels
-       differ in the DIRECTION the chain leaves its double bond and in
-       nothing else. (The version this replaces emitted identical
-       coordinates in all three panels, so the figure that exists to
-       contrast three shapes drew one shape three times.) */
-    const zig = (x, y, ux, uy, n, L, amp) => {
-      const px = -uy, py = ux;
-      // Anchored so that vertex 0 is exactly the point passed in: the first
-      // version offset it by half the amplitude, which left a visible jog
-      // where a chain resumed on the far side of its double bond.
-      const bx = x + px * (amp / 2), by = y + py * (amp / 2);
-      const pt = (i) => P(bx + ux * i * L + px * (amp / 2) * (i % 2 ? 1 : -1),
-                          by + uy * i * L + py * (amp / 2) * (i % 2 ? 1 : -1));
-      let t = '';
-      for (let i = 0; i < n; i++) t += bond(pt(i), pt(i + 1), { rFrom: 0, rTo: 0 });
-      return { svg: t, end: pt(n) };
+    /* A chain as a list of BOND ANGLES, in degrees, y down. Two consecutive
+       bonds differ by exactly 60 degrees, which is what makes every vertex a
+       120 degree carbon — including the two sp2 carbons of a double bond.
+       (The version this replaces walked an axis and then dropped the double
+       bond in vertically, which left the alkene carbons with 180 degree
+       bonds: the cis/trans geometry the whole figure exists to contrast was
+       not actually drawn, and a viewer could not read it off the picture.) */
+    const L = 25.5;
+    const walk = (x, y, angles, dbl) => {
+      let t = '', cx = x, cy = y;
+      angles.forEach((deg, i) => {
+        const a = (deg * Math.PI) / 180;
+        const nx = cx + Math.cos(a) * L, ny = cy + Math.sin(a) * L;
+        t += bond(P(cx, cy), P(nx, ny), i === dbl
+          ? { rFrom: 0, rTo: 0, order: 2, gap: 3.4 }
+          : { rFrom: 0, rTo: 0 });
+        cx = nx; cy = ny;
+      });
+      return t;
     };
-    const DX = 0.5, DY = 0.866, L = 25.5, AMP = 16;
+    /* Straight chain: 60 and 120 alternating, so the chain axis is vertical.
+       Put the double bond on bond 3 and the pattern carries straight on —
+       the two chain halves end up on OPPOSITE sides of the C=C, which is
+       what trans means. */
+    const SAT  = [60, 120, 60, 120, 60, 120, 60];
+    const TRANS = SAT;
+    /* Cis: same first four bonds, then 180 instead of 60, which puts the two
+       halves on the SAME side of the C=C. Everything after it is the same
+       zigzag, tilted 60 degrees off the axis it started on — the kink. */
+    const CIS  = [60, 120, 60, 120, 180, 120, 180];
 
     const col = (ox, title, sub, mp, kind, draw) => {
       s += panel(ox, 44, 214, 242, { kind });
@@ -693,38 +704,22 @@ FIGURES.push({
       s += text(ox + 107, 326, mp, { cls: kind === 'warn' ? 'fg-tag-warn' : 'fg-tag-good', size: 11 });
     };
 
-    // Saturated: one unbroken zigzag, and the chains sit 30 units apart,
-    // which is as close as the drawing can put them.
+    // Saturated: four chains, as close together as the drawing can put them.
     col(8, 'saturated (stearic, 18:0)', 'they lie flat against each other', 'mp 69 °C', null, (ox) => {
-      for (let j = 0; j < 4; j++) s += zig(ox + 26 + j * 30, 70, DX, DY, 7, L, AMP).svg;
+      for (let j = 0; j < 4; j++) s += walk(ox + 34 + j * 30, 70, SAT, -1);
     });
 
-    // Cis: the chain leaves the double bond on the SAME side it arrived on,
-    // so the lower half runs back the other way and the chain is a V. The
-    // chains have to be set twice as far apart to keep them from crossing,
-    // which is the whole physical argument drawn.
+    // Cis: the chain leaves the double bond on the side it arrived on, so it
+    // runs off at 60 degrees to the half above it. Three chains, set further
+    // apart, because a bent chain cannot lie against its neighbour.
     col(238, 'one cis double bond (oleic)', 'the kink breaks the contact', 'mp 13 °C', 'warn', (ox) => {
-      for (let j = 0; j < 3; j++) {
-        const x = ox + 30 + j * 57;
-        const up = zig(x, 70, DX, DY, 3, L, AMP);
-        s += up.svg;
-        const cb = P(up.end.x, up.end.y + 30);
-        s += bond(up.end, cb, { rFrom: 0, rTo: 0, order: 2, gap: 3.4 });
-        s += zig(cb.x, cb.y, -DX, DY, 3, L, AMP).svg;
-      }
+      for (let j = 0; j < 3; j++) s += walk(ox + 82 + j * 52, 70, CIS, 3);
     });
 
-    // Trans: the chain leaves on the opposite side, so it carries straight
-    // on. Same C18, same one double bond, and the stack survives.
+    // Trans: it leaves on the opposite side, so the zigzag carries on. Same
+    // C18, same one double bond, and the stack survives.
     col(468, 'one trans double bond (elaidic)', 'still essentially straight', 'mp 44 °C', null, (ox) => {
-      for (let j = 0; j < 4; j++) {
-        const x = ox + 26 + j * 30;
-        const up = zig(x, 70, DX, DY, 3, L, AMP);
-        s += up.svg;
-        const cb = P(up.end.x, up.end.y + 30);
-        s += bond(up.end, cb, { rFrom: 0, rTo: 0, order: 2, gap: 3.4 });
-        s += zig(cb.x, cb.y, DX, DY, 3, L, AMP).svg;
-      }
+      for (let j = 0; j < 4; j++) s += walk(ox + 34 + j * 30, 70, TRANS, 3);
     });
 
     s += rule(20, 342, 680, 342);
@@ -2114,7 +2109,7 @@ FIGURES.push({
   section: 'organolithium-reagents',
   anchor: '<h3>Deprotonation as the goal</h3>',
   viewBox: '0 0 760 320',
-  alt: 'The tetrahedral intermediate from an ester collapsing to a ketone in the flask, against the dianion from a carboxylate which cannot collapse until workup',
+  alt: 'The tetrahedral intermediate from an ester, with curved arrows showing the alkoxide pushing back down and the OR group leaving, beside the dianion from a carboxylate where the same two arrows are drawn struck through because they would expel an oxide dianion',
   build() {
     let s = '';
     const col = (ox, title, charges, verdict, kind, out) => {
@@ -2140,6 +2135,18 @@ FIGURES.push({
         'the ketone forms, and is attacked again');
     col(406, 'from a carboxylate', ['−', '−'], 'cannot collapse — two charges', null,
         'the ketone appears only on workup');
+
+    /* The arrows are the argument. Drawn once on the left, where they are
+       what happens, and again on the right struck through, where they are
+       what would have to happen and cannot. A static pair of structures left
+       the reader to supply the collapse from memory. */
+    s += curve(P(165, 72), P(180, 96), { bow: 16 });
+    s += curve(P(166, 134), P(108, 166), { bow: -16 });
+
+    s += curve(P(547, 72), P(562, 96), { bow: 16, muted: true });
+    s += curve(P(548, 134), P(490, 166), { bow: -16, muted: true });
+    s += bond(P(542, 96), P(570, 68), { rFrom: 0, rTo: 0 });
+    s += bond(P(506, 134), P(542, 162), { rFrom: 0, rTo: 0 });
 
     s += rule(34, 248, 726, 248);
     s += text(380, 274, 'Nothing protects the ketone in the second case. There is no ketone to protect', { cls: 'fg-lbl', size: 12 });
@@ -13993,7 +14000,7 @@ FIGURES.push({
   section: 'peptides-proteins',
   anchor: '<b>Quaternary</b> — how two or more separate folded chains assemble. Hemoglobin\'s four subunits are the standard example; not every protein has this level.</li>',
   viewBox: '0 0 680 350',
-  alt: 'An alpha helix drawn as a coil with dashed hydrogen bonds running parallel to its axis and side chains projecting outward, beside two antiparallel beta strands with five dashed hydrogen bonds running between them',
+  alt: 'An alpha helix drawn as a coil with dashed hydrogen bonds running parallel to its axis and side chains projecting outward, beside two antiparallel beta strands with four dashed hydrogen bonds running between them',
   build() {
     let s = '';
     s += panel(24, 52, 308, 220);
@@ -14080,15 +14087,23 @@ FIGURES.push({
     s += text(70, 310, 'glycerol', { cls: 'fg-tag' });
     s += tag(176, 310, 'three ester groups');
 
-    // A zigzag walked along an axis, anchored at vertex 0.
-    const zig = (x, y, ux, uy, n, L, amp) => {
-      const px = -uy, py = ux;
-      const bx = x + px * (amp / 2), by = y + py * (amp / 2);
-      const pt = (i) => P(bx + ux * i * L + px * (amp / 2) * (i % 2 ? 1 : -1),
-                          by + uy * i * L + py * (amp / 2) * (i % 2 ? 1 : -1));
-      let t = '';
-      for (let i = 0; i < n; i++) t += bond(pt(i), pt(i + 1), { rFrom: 0, rTo: 0 });
-      return { svg: t, end: pt(n) };
+    /* A chain as a list of BOND ANGLES in degrees, y down. Consecutive bonds
+       differ by 60 degrees, so every vertex — the two sp2 carbons included —
+       is drawn at 120 degrees. That matters here because the middle chain's
+       geometry is the claim the caption makes, and the version this replaces
+       drew its alkene with a 180 degree bond, which reads as trans. */
+    const CL = 27;
+    const walk = (x, y, angles, dbl) => {
+      let t = '', cx = x, cy = y;
+      angles.forEach((deg, i) => {
+        const a = (deg * Math.PI) / 180;
+        const nx = cx + Math.cos(a) * CL, ny = cy + Math.sin(a) * CL;
+        t += bond(P(cx, cy), P(nx, ny), i === dbl
+          ? { rFrom: 0, rTo: 0, order: 2, gap: 3.4 }
+          : { rFrom: 0, rTo: 0 });
+        cx = nx; cy = ny;
+      });
+      return t;
     };
 
     for (const y of rows) {
@@ -14099,17 +14114,15 @@ FIGURES.push({
       s += atom(202, y, 'C', { kind: 'hi' });
       s += atom(202, y - 34, 'O');
     }
-    // top and bottom chains straight; the middle one kinked, so the figure
-    // says what the section says.
-    s += zig(218, rows[0], 1, 0, 6, 27, 16).svg;
-    s += zig(218, rows[2], 1, 0, 6, 27, 16).svg;
-    const up = zig(218, rows[1], 0.866, 0.5, 3, 27, 16);
-    s += up.svg;
-    const cb = P(up.end.x + 27, up.end.y);
-    s += bond(up.end, cb, { rFrom: 0, rTo: 0, order: 2, gap: 3.4 });
-    s += zig(cb.x, cb.y, 0.866, -0.5, 3, 27, 16).svg;
+    // Top and bottom chains: a plain zigzag, bonds at ±30° about a
+    // horizontal axis. The middle one carries a cis double bond on bond 3:
+    // the bond after it leaves on the SAME side the chain arrived on, which
+    // is what cis means and what tilts the rest of the chain by 60°.
+    s += walk(218, rows[0], [-30, 30, -30, 30, -30, 30], -1);
+    s += walk(218, rows[2], [-30, 30, -30, 30, -30, 30], -1);
+    s += walk(218, rows[1], [30, -30, 30, -30, -90, -30], 3);
     s += text(300, 64, 'saturated', { cls: 'fg-sm' });
-    s += text(300, 150, 'one cis double bond', { cls: 'fg-sm' });
+    s += text(302, 222, 'one cis double bond', { cls: 'fg-sm' });
     s += text(300, 300, 'saturated', { cls: 'fg-sm' });
 
     /* one swap, and it is a membrane lipid instead of a fat */
@@ -14371,6 +14384,492 @@ FIGURES.push({
   },
   caption: 'One nucleotide, drawn out. Two of its three links are reactions already in hand — an <b>N-glycoside</b> at C1′, which is the anomeric carbon of the sugar, and a <b>phosphate ester</b> at C5′ — and the free OH at C3′ is where the next unit is joined, which is what makes the chain run 5′ to 3′.',
   note: 'The primes are the whole reason for the numbering: the base has numbered atoms of its own, so the sugar\'s carbons are primed to keep the two sets apart. C2′ is where the two polymers differ, and it is drawn here as the H of deoxyribose with ribose\'s OH ghosted beside it.',
+});
+
+/* ---------------------------------------------------------------- C1 ---
+   The chapter's most-tested failure, drawn. The section calls the acid–base
+   quench "the single most common way a synthesis on paper fails" and then
+   never shows it: both fates start at the SAME bond, which is the whole
+   reason one crowds the other out. */
+FIGURES.push({
+  id: 'quench-or-add',
+  section: 'organometallic-bonding',
+  anchor: '&ldquo;Make the Grignard from this&rdquo; is only a legal instruction when the halide is otherwise inert.</p>',
+  viewBox: '0 0 700 372',
+  alt: 'One Grignard reagent with curved arrows leaving the same carbon-magnesium bond in two directions: left to the hydrogen of an alcohol, giving R-H and a magnesium alkoxide, and right to the carbonyl carbon of a ketone, giving the magnesium alkoxide of the addition product',
+  build() {
+    let s = '';
+    /* The reagent, once, in the middle. Everything below branches off the
+       one bond, which is the claim. */
+    s += bond(P(318, 84), P(380, 84), { rFrom: 16, rTo: 22 });
+    s += atom(318, 84, 'R', { kind: 'hi' });
+    s += atom(380, 84, 'MgBr', { r: 22 });
+    s += tag(349, 50, 'one C–Mg bond, two fates');
+
+    /* Left: the proton transfer. */
+    s += bond(P(84, 214), P(140, 214), { rFrom: 15, rTo: 15 });
+    s += bond(P(140, 214), P(192, 214), { rFrom: 15, rTo: 15 });
+    s += atom(84, 214, 'R′');
+    s += atom(140, 214, 'O');
+    s += atom(192, 214, 'H', { kind: 'warn' });
+    s += lonePair(140, 214, 228);
+    s += lonePair(140, 214, 312);
+    s += curve(P(342, 94), P(206, 200), { bow: 44 });
+    s += curve(P(166, 228), P(146, 234), { bow: 16 });
+    s += label(140, 278, 'R–H  +  R′O⁻ ⁺MgBr');
+    s += text(140, 302, 'one equivalent, spent', { cls: 'fg-tag-warn', size: 11 });
+    s += text(236, 132, 'faster', { cls: 'fg-tag-warn', size: 11 });
+
+    /* Right: the addition you actually wanted. */
+    s += bond(P(556, 214), P(556, 170), { order: 2, rFrom: 16, rTo: 15 });
+    s += bond(P(556, 214), P(520, 250), { rFrom: 16, rTo: 15 });
+    s += bond(P(556, 214), P(592, 250), { rFrom: 16, rTo: 15 });
+    s += atom(556, 170, 'O');
+    s += atom(520, 250, 'R′');
+    s += atom(592, 250, 'R′');
+    s += atom(556, 214, 'C', { kind: 'hi' });
+    s += lonePair(556, 170, 200);
+    s += lonePair(556, 170, 340);
+    s += curve(P(354, 94), P(534, 202), { bow: -44 });
+    s += curve(P(572, 196), P(574, 176), { bow: 16 });
+    s += label(556, 278, 'the magnesium alkoxide');
+    s += text(556, 302, 'what you wanted', { cls: 'fg-tag-good', size: 11 });
+    s += text(452, 132, 'only if no acidic H is there', { cls: 'fg-tag', size: 11 });
+
+    s += rule(20, 322, 680, 322);
+    s += label(350, 346, 'Both arrows start in the same place: the C–Mg bond.');
+    s += label(350, 366, 'The left one is faster, which is why it happens first.');
+    return s;
+  },
+  caption: 'The same reagent, the same bond, two things it can do. On the left the carbanion takes a proton and leaves as R&ndash;H; on the right it adds to a carbonyl. Nothing about the right-hand reaction is difficult &mdash; it simply never gets a turn while an acidic hydrogen is in the flask.',
+  note: 'This is why &ldquo;how many equivalents?&rdquo; is a real question rather than bookkeeping. Every acidic proton in the substrate consumes one equivalent before any addition happens, so a molecule with one O&ndash;H needs two equivalents to give a product at all &mdash; and a student who writes one gets their starting material back, which is a legitimate exam answer.',
+});
+
+/* ---------------------------------------------------------------- C2 ---
+   The chapter's central mechanism, which the prose asserts three times and
+   nothing draws: the first addition makes a BETTER electrophile than the one
+   it consumed, so rationing the reagent cannot help. */
+FIGURES.push({
+  id: 'ester-adds-twice',
+  section: 'grignard-reagents',
+  anchor: 'It is still reactive enough to be attacked as fast as it forms, which is enough to spoil the selectivity.</p>',
+  viewBox: '0 0 700 520',
+  alt: 'Three panels: methylmagnesium bromide adding to ethyl propanoate, the tetrahedral alkoxide expelling ethoxide to give a ketone, and a second equivalent adding to that ketone to give 2-methylbutan-2-ol with its two identical methyl groups highlighted',
+  build() {
+    let s = '';
+
+    /* 1 — the addition. */
+    s += panel(24, 44, 320, 200);
+    s += bond(P(196, 120), P(196, 80), { order: 2, rFrom: 16, rTo: 15 });
+    s += bond(P(196, 120), P(248, 152), { rFrom: 16, rTo: 15 });
+    s += bond(P(196, 120), P(144, 152), { rFrom: 16, rTo: 15 });
+    s += atom(196, 80, 'O');
+    s += atom(248, 152, 'OEt', { kind: 'warn' });
+    s += atom(144, 152, 'Et');
+    s += atom(196, 120, 'C', { kind: 'hi' });
+    s += lonePair(196, 80, 210);
+    s += atom(82, 96, 'CH₃MgBr', { kind: 'hi', r: 34 });
+    s += curve(P(120, 112), P(180, 116), { bow: 22 });
+    s += curve(P(208, 102), P(210, 84), { bow: 14 });
+    s += tag(184, 220, '1 · the Grignard adds');
+
+    /* 2 — collapse. */
+    s += panel(364, 44, 312, 200);
+    s += bond(P(520, 120), P(520, 76), { rFrom: 16, rTo: 16 });
+    s += bond(P(520, 120), P(572, 150), { rFrom: 16, rTo: 15 });
+    s += bond(P(520, 120), P(468, 150), { rFrom: 16, rTo: 15 });
+    s += bond(P(520, 120), P(576, 92), { rFrom: 16, rTo: 15 });
+    s += atom(520, 76, 'O⁻', { kind: 'warn' });
+    s += atom(572, 150, 'OEt', { kind: 'warn' });
+    s += atom(468, 150, 'Et');
+    s += atom(576, 92, 'CH₃', { kind: 'hi' });
+    s += atom(520, 120, 'C', { kind: 'hi' });
+    s += lonePair(520, 76, 200);
+    s += curve(P(494, 86), P(512, 102), { bow: 18 });
+    s += curve(P(548, 138), P(594, 170), { bow: -20 });
+    s += text(620, 190, 'EtO⁻ goes', { cls: 'fg-tag-warn', size: 11 });
+    s += tag(500, 220, '2 · the alkoxide is expelled');
+
+    /* 3 — and the ketone is a hungrier electrophile than the ester was. */
+    s += panel(24, 268, 652, 200);
+    s += bond(P(240, 340), P(240, 300), { order: 2, rFrom: 16, rTo: 15 });
+    s += bond(P(240, 340), P(188, 372), { rFrom: 16, rTo: 15 });
+    s += bond(P(240, 340), P(292, 372), { rFrom: 16, rTo: 15 });
+    s += atom(240, 300, 'O');
+    s += atom(188, 372, 'Et');
+    s += atom(292, 372, 'CH₃', { kind: 'hi' });
+    s += atom(240, 340, 'C', { kind: 'warn' });
+    s += lonePair(240, 300, 210);
+    s += atom(120, 316, 'CH₃MgBr', { kind: 'hi', r: 34 });
+    s += curve(P(158, 332), P(224, 336), { bow: 22 });
+    s += curve(P(252, 322), P(254, 304), { bow: 14 });
+    s += arrow(P(360, 340), P(430, 340));
+    s += tag(395, 324, 'then H₃O⁺');
+    s += bond(P(540, 340), P(540, 300), { rFrom: 16, rTo: 15 });
+    s += bond(P(540, 340), P(488, 372), { rFrom: 16, rTo: 15 });
+    s += bond(P(540, 340), P(592, 372), { rFrom: 16, rTo: 15 });
+    s += bond(P(540, 340), P(596, 316), { rFrom: 16, rTo: 15 });
+    s += atom(540, 300, 'OH');
+    s += atom(488, 372, 'Et');
+    s += atom(592, 372, 'CH₃', { kind: 'hi' });
+    s += atom(596, 316, 'CH₃', { kind: 'hi' });
+    s += atom(540, 340, 'C');
+    s += tag(300, 440, '3 · the second equivalent adds, giving the tertiary alcohol');
+
+    s += rule(20, 484, 680, 484);
+    s += label(350, 508, 'Rationing the reagent cannot help: the intermediate wants it more than the ester did.');
+    return s;
+  },
+  caption: 'Why an ester cannot be stopped at the ketone. The first addition expels ethoxide and leaves a <b>ketone</b> &mdash; and a ketone has no electron-donating OR group, so it is a better electrophile than the ester ever was. The second equivalent is consumed faster than the first.',
+  note: 'Compare panel 2 with the carboxylate dianion in the next section. There, nothing can be expelled at all, so no ketone ever forms in the flask &mdash; and that single difference is the whole reason one reaction stops at the ketone and this one does not. The two highlighted methyls in the product are identical because both came from the same reagent, which is how you spot this case in a question.',
+});
+
+/* ---------------------------------------------------------------- C3 ---
+   The two-carbon extension, drawn once. Three separate places test the
+   regiochemistry of the opening and none of them shows it. */
+FIGURES.push({
+  id: 'epoxide-two-carbons',
+  section: 'grignard-reagents',
+  anchor: 'Add water at any point before the epoxide and there is no reagent left to do anything with.</p>\n</div>',
+  viewBox: '0 0 700 266',
+  alt: 'A Grignard reagent attacking ethylene oxide at a ring carbon from the side opposite the oxygen, the carbon-oxygen bond breaking, and after acidic workup a primary alcohol two carbons longer',
+  build() {
+    let s = '';
+    s += bond(P(56, 150), P(116, 150), { rFrom: 16, rTo: 22 });
+    s += atom(56, 150, 'R', { kind: 'hi' });
+    s += atom(116, 150, 'MgBr', { r: 22 });
+
+    s += bond(P(250, 108), P(224, 156), { rFrom: 15, rTo: 15 });
+    s += bond(P(250, 108), P(276, 156), { rFrom: 15, rTo: 15 });
+    s += bond(P(224, 156), P(276, 156), { rFrom: 15, rTo: 15 });
+    s += atom(250, 108, 'O');
+    s += atom(224, 156, 'CH₂', { kind: 'hi' });
+    s += atom(276, 156, 'CH₂');
+    s += lonePair(250, 108, 300);
+
+    s += curve(P(146, 162), P(206, 166), { bow: 26 });
+    s += curve(P(230, 136), P(238, 112), { bow: -16 });
+    s += tag(170, 212, 'backside attack, at the less hindered carbon');
+
+    s += arrow(P(330, 150), P(390, 150));
+    s += tag(360, 132, 'then H₃O⁺');
+
+    s += bond(P(430, 150), P(486, 150), { rFrom: 16, rTo: 17 });
+    s += bond(P(486, 150), P(542, 150), { rFrom: 17, rTo: 17 });
+    s += bond(P(542, 150), P(598, 150), { rFrom: 17, rTo: 16 });
+    s += atom(430, 150, 'R', { kind: 'hi' });
+    s += atom(486, 150, 'CH₂', { kind: 'hi', r: 17 });
+    s += atom(542, 150, 'CH₂', { kind: 'hi', r: 17 });
+    s += atom(598, 150, 'OH', { r: 16 });
+    s += tag(514, 196, 'two new carbons');
+
+    s += rule(20, 222, 680, 222);
+    s += label(350, 244, 'The OH ends up two carbons away from the new C–C bond.');
+    return s;
+  },
+  caption: 'An epoxide opening under a Grignard. There is no acid present, so nothing protonates the ring oxygen and no carbocation character develops: the attack is a plain S<sub>N</sub>2 at the <i>less hindered</i> carbon, from the side opposite the C&ndash;O bond that breaks.',
+  note: 'Ethylene oxide is symmetrical, so the regiochemistry does not change the answer here &mdash; which is exactly why it is worth drawing before a substituted epoxide turns up, where it decides the answer completely. Under acid the rule inverts, because the protonated epoxide opens with the positive charge developing at the carbon best able to carry it.',
+});
+
+/* ---------------------------------------------------------------- C4 ---
+   The acetylide does an S_N2, and three bank items test it, and nothing in
+   the chapter draws a backside attack. The second panel is the limit: the
+   same reagent on a secondary halide is a base. */
+FIGURES.push({
+  id: 'acetylide-substitutes-or-eliminates',
+  section: 'organolithium-reagents',
+  anchor: 'With a secondary or tertiary halide the acetylide is basic enough that E2 wins and you get an alkene instead of the coupled product. Primary or methyl only.</div>',
+  viewBox: '0 0 700 466',
+  alt: 'An acetylide attacking bromoethane from the side opposite bromine to give pent-2-yne, and the same acetylide instead removing a beta hydrogen from 2-bromopropane to give propene by E2',
+  build() {
+    let s = '';
+    const acetylide = (x, y) => {
+      let t = '';
+      t += bond(P(x, y), P(x + 48, y), { rFrom: 17, rTo: 15 });
+      t += bond(P(x + 48, y), P(x + 96, y), { order: 3, gap: 3.6, rFrom: 15, rTo: 15 });
+      t += atom(x, y, 'CH₃', { r: 17 });
+      t += atom(x + 48, y, 'C');
+      t += atom(x + 96, y, 'C', { kind: 'hi' });
+      t += text(x + 116, y - 12, '⊖', { cls: 'fg-lbl', size: 13 });
+      t += lonePair(x + 96, y, 60);
+      return t;
+    };
+
+    /* Substitution. */
+    s += panel(24, 44, 652, 170);
+    s += acetylide(80, 110);
+    s += bond(P(300, 110), P(300, 158), { rFrom: 16, rTo: 17 });
+    s += bond(P(300, 110), P(356, 110), { rFrom: 16, rTo: 15 });
+    s += atom(300, 158, 'CH₃', { r: 17 });
+    s += atom(356, 110, 'Br', { kind: 'warn' });
+    s += atom(300, 110, 'CH₂', { kind: 'warn', r: 17 });
+    s += curve(P(192, 124), P(278, 116), { bow: 22 });
+    s += curve(P(334, 118), P(374, 140), { bow: -18 });
+    s += arrow(P(420, 110), P(470, 110));
+    s += label(566, 106, 'CH₃C≡C–CH₂CH₃');
+    s += tag(566, 140, 'pent-2-yne, the product you wanted');
+    s += text(130, 190, 'primary halide: substitution', { cls: 'fg-tag-good', size: 11 });
+
+    /* Elimination. */
+    s += panel(24, 232, 652, 170);
+    s += acetylide(80, 298);
+    s += bond(P(300, 300), P(352, 274), { rFrom: 16, rTo: 15 });
+    s += bond(P(300, 300), P(300, 352), { rFrom: 16, rTo: 17 });
+    s += bond(P(300, 300), P(248, 274), { rFrom: 16, rTo: 17 });
+    s += bond(P(248, 274), P(206, 252), { rFrom: 17, rTo: 15 });
+    s += atom(352, 274, 'Br', { kind: 'warn' });
+    s += atom(300, 352, 'CH₃', { r: 17 });
+    s += atom(248, 274, 'CH₂', { r: 17 });
+    s += atom(206, 252, 'H', { kind: 'warn' });
+    s += atom(300, 300, 'C', { kind: 'warn' });
+    s += curve(P(192, 292), P(194, 266), { bow: -20 });
+    s += curve(P(222, 258), P(268, 280), { bow: -20 });
+    s += curve(P(322, 286), P(376, 250), { bow: 20 });
+    s += arrow(P(420, 300), P(470, 300));
+    s += label(552, 296, 'CH₃CH=CH₂  +  CH₃C≡CH');
+    s += tag(552, 330, 'propene, and your alkyne back');
+    s += text(130, 378, 'secondary halide: elimination', { cls: 'fg-tag-warn', size: 11 });
+
+    s += rule(20, 420, 680, 420);
+    s += label(350, 444, 'What the halide is decides which of the two roles the acetylide plays.');
+    return s;
+  },
+  caption: 'An acetylide is a nucleophile and a strong base in the same molecule, and the halide decides which one it gets to be. On a primary carbon the backside is open and substitution wins; on a secondary carbon it is crowded, so the reagent takes a &beta; hydrogen instead and you isolate an alkene.',
+  note: 'Notice where the arrow starts in each panel. In the top one it leaves the carbanion and arrives at <i>carbon</i>, opposite the leaving group; in the bottom one it leaves the same carbanion and arrives at a <b>hydrogen</b> two bonds away from the halide. Same reagent, same lone pair, different target &mdash; which is the whole of the substitution-versus-elimination question, met again with a carbon base.',
+});
+
+/* ---------------------------------------------------------------- C5 ---
+   1,4-addition is stated everywhere in the section and the enolate it goes
+   through is drawn nowhere, although three bank items hinge on it. Drawn
+   skeletal, which this far past chapter 2 is how a ring should look. */
+FIGURES.push({
+  id: 'conjugate-addition-enolate',
+  section: 'gilman-reagents',
+  anchor: '<p><b>What the question is really testing</b> is whether you notice that the carbonyl reappears without the nucleophile ever having touched it.</p>\n</div>',
+  viewBox: '0 0 700 372',
+  alt: 'Cyclohexenone drawn as a ring in three frames: a cuprate delivering a methyl group to the beta carbon with arrows pushing the charge onto oxygen, the enolate that results with its negative oxygen and a carbon-carbon double bond next to the former carbonyl, and the saturated ketone after protonation at the alpha carbon',
+  build() {
+    let s = '';
+    /* A hexagon of unlabelled vertices: v0 is the carbonyl carbon at the top
+       and the numbering runs anticlockwise, so v5 is alpha and v4 is beta. */
+    const ring = (cx, cy) => [
+      P(cx, cy - 42), P(cx + 36.4, cy - 21), P(cx + 36.4, cy + 21),
+      P(cx, cy + 42), P(cx - 36.4, cy + 21), P(cx - 36.4, cy - 21),
+    ];
+    const skeleton = (v, opts) => {
+      let t = '';
+      for (let i = 0; i < 6; i++) {
+        const j = (i + 1) % 6;
+        const order = (i === 4 && opts.ene === 'ab') || (i === 5 && opts.ene === 'enol') ? 2 : 1;
+        t += bond(v[i], v[j], { rFrom: 0, rTo: 0, order, gap: 4 });
+      }
+      return t;
+    };
+
+    const frame = (cx, opts) => {
+      const v = ring(cx, 150);
+      s += panel(cx - 98, 44, 196, 230, opts.kind);
+      s += skeleton(v, opts);
+      // the carbonyl or the enolate oxygen, above the top vertex
+      s += bond(v[0], P(cx, 66), { rFrom: 0, rTo: 15, order: opts.co, gap: 4 });
+      s += atom(cx, 66, opts.o, opts.o === 'O⁻' ? { kind: 'warn' } : {});
+      if (opts.r) {
+        s += bond(v[4], P(cx - 80, 196), { rFrom: 0, rTo: 17 });
+        s += atom(cx - 80, 196, 'CH₃', { kind: 'hi', r: 17 });
+      }
+      return v;
+    };
+
+    /* 1 — the cuprate delivers a methyl to beta. */
+    let v = frame(122, { o: 'O', co: 2, ene: 'ab' });
+    s += atom(152, 238, 'R₂CuLi', { kind: 'hi', r: 30 });
+    s += curve(P(130, 218), P(94, 182), { bow: -18 });
+    s += curve(P(72, 150), P(96, 118), { bow: -20 });
+    s += curve(P(138, 92), P(140, 74), { bow: 14 });
+    s += text(64, 190, 'β', { cls: 'fg-tag', size: 11 });
+    s += text(64, 118, 'α', { cls: 'fg-tag', size: 11 });
+    s += tag(122, 292, '1 · the cuprate adds at β');
+
+    s += arrow(P(228, 150), P(256, 150));
+
+    /* 2 — the enolate, drawn explicitly. */
+    frame(360, { o: 'O⁻', co: 1, ene: 'enol', r: true, kind: { kind: 'warn' } });
+    s += text(384, 56, '⊖', { cls: 'fg-lbl', size: 13 });
+    s += tag(360, 292, '2 · what forms is the enolate');
+
+    s += arrow(P(466, 150), P(494, 150));
+    s += tag(480, 132, 'H₃O⁺');
+
+    /* 3 — protonation at alpha gives the ketone back. */
+    frame(598, { o: 'O', co: 2, ene: null, r: true });
+    s += bond(P(561.6, 129), P(524, 110), { rFrom: 0, rTo: 15 });
+    s += atom(524, 110, 'H', { kind: 'hi' });
+    s += tag(598, 292, '3 · workup protonates at α');
+
+    s += rule(20, 312, 680, 312);
+    s += label(350, 336, 'The nucleophile never touches the carbonyl carbon.');
+    s += label(350, 358, 'The carbonyl still comes back, because what forms first is an enolate.');
+    return s;
+  },
+  caption: 'Conjugate addition in three frames. The cuprate arrives at the &beta; carbon, the &pi; electrons move up onto oxygen, and what sits in the flask is an <b>enolate</b> &mdash; not a ketone. The ketone appears only when workup puts a proton on the &alpha; carbon.',
+  note: 'This is why the reaction reads as though nothing happened to the carbonyl. It did change: the C=O became C&ndash;O⁻ and a new C=C appeared next to it, and both changes are undone on workup. A Grignard, being hard, attacks the top vertex instead and the C=O never comes back at all &mdash; it ends as the alcohol.',
+});
+
+/* ---------------------------------------------------------------- C6 ---
+   The one mechanism in the section that differs from the shared cycle, and
+   the only one whose steps are geometric. Migratory insertion and syn
+   beta-hydride elimination are both claims about WHICH FACE, which a
+   sentence cannot make and a drawing can. */
+FIGURES.push({
+  id: 'heck-in-four',
+  section: 'cross-coupling',
+  anchor: 'So the Heck needs a full stoichiometric equivalent of base even though nothing in the substrate is ever deprotonated, and the by-product is the ammonium or carbonate salt. Track the oxidation states and the cycle only closes because of that last step.</p>',
+  viewBox: '0 0 700 486',
+  alt: 'Four frames of the Heck reaction: the alkene coordinating to an aryl palladium halide, migratory insertion putting the aryl group and the palladium on adjacent carbons, beta-hydride elimination giving the trans alkene and a palladium hydride, and the base removing HX to return palladium zero',
+  build() {
+    let s = '';
+
+    /* 1 — coordination. */
+    s += bond(P(80, 110), P(140, 110), { rFrom: 16, rTo: 16 });
+    s += bond(P(140, 110), P(200, 110), { rFrom: 16, rTo: 15 });
+    s += atom(80, 110, 'Ar', { kind: 'hi' });
+    s += atom(140, 110, 'Pd', { kind: 'warn', r: 16 });
+    s += atom(200, 110, 'X');
+    s += text(140, 82, 'II', { cls: 'fg-sm', size: 10 });
+    s += bond(P(262, 148), P(314, 148), { order: 2, rFrom: 17, rTo: 16 });
+    s += bond(P(314, 148), P(352, 124), { rFrom: 16, rTo: 15 });
+    s += atom(262, 148, 'CH₂', { r: 17 });
+    s += atom(314, 148, 'CH', { r: 16 });
+    s += atom(352, 124, 'R');
+    s += `<line class="fg-dash-hi" x1="152" y1="124" x2="250" y2="146"></line>`;
+    s += tag(196, 190, '1 · the alkene coordinates');
+
+    /* 2 — migratory insertion. */
+    s += bond(P(398, 104), P(450, 104), { rFrom: 16, rTo: 17 });
+    s += bond(P(450, 104), P(502, 104), { rFrom: 17, rTo: 16 });
+    s += bond(P(502, 104), P(554, 104), { rFrom: 16, rTo: 15 });
+    s += bond(P(502, 104), P(502, 152), { rFrom: 16, rTo: 16 });
+    s += bond(P(502, 152), P(554, 178), { rFrom: 16, rTo: 15 });
+    s += atom(398, 104, 'Ar', { kind: 'hi' });
+    s += atom(450, 104, 'CH₂', { r: 17 });
+    s += atom(502, 104, 'CH', { r: 16 });
+    s += atom(554, 104, 'R');
+    s += atom(502, 152, 'Pd', { kind: 'warn', r: 16 });
+    s += text(528, 144, 'II', { cls: 'fg-sm', size: 10 });
+    s += atom(554, 178, 'X');
+    s += tag(480, 214, '2 · migratory insertion, same face');
+
+    s += rule(20, 240, 680, 240);
+
+    /* 3 — syn beta-hydride elimination. */
+    s += bond(P(70, 300), P(122, 300), { rFrom: 16, rTo: 15 });
+    s += bond(P(122, 300), P(122, 254), { rFrom: 15, rTo: 15 });
+    s += bond(P(122, 300), P(174, 300), { rFrom: 15, rTo: 15 });
+    s += bond(P(174, 300), P(226, 300), { rFrom: 15, rTo: 15 });
+    s += bond(P(174, 300), P(174, 348), { rFrom: 15, rTo: 16 });
+    s += bond(P(174, 348), P(226, 374), { rFrom: 16, rTo: 15 });
+    s += atom(70, 300, 'Ar', { kind: 'hi' });
+    s += atom(122, 254, 'H', { kind: 'warn' });
+    s += atom(122, 300, 'C');
+    s += atom(174, 300, 'C');
+    s += atom(226, 300, 'R');
+    s += atom(174, 348, 'Pd', { kind: 'warn', r: 16 });
+    s += text(150, 366, 'II', { cls: 'fg-sm', size: 10 });
+    s += atom(226, 374, 'X');
+    s += curve(P(134, 272), P(164, 332), { bow: -32 });
+    s += curve(P(196, 336), P(150, 308), { bow: -22 });
+    s += tag(150, 412, '3 · β-hydride elimination');
+
+    /* 4 — and the base closes the cycle. */
+    s += bond(P(400, 320), P(446, 296), { rFrom: 15, rTo: 0 });
+    s += bond(P(446, 296), P(492, 320), { order: 2, rFrom: 0, rTo: 0, gap: 4 });
+    s += bond(P(492, 320), P(538, 296), { rFrom: 0, rTo: 15 });
+    s += atom(400, 320, 'Ar', { kind: 'hi' });
+    s += atom(538, 296, 'R');
+    s += tag(470, 264, 'trans, as drawn');
+    s += bond(P(432, 374), P(478, 374), { rFrom: 15, rTo: 16 });
+    s += bond(P(478, 374), P(524, 374), { rFrom: 16, rTo: 15 });
+    s += atom(432, 374, 'H');
+    s += atom(478, 374, 'Pd', { kind: 'warn', r: 16 });
+    s += text(478, 346, 'II', { cls: 'fg-sm', size: 10 });
+    s += atom(524, 374, 'X');
+    s += arrow(P(556, 374), P(598, 374));
+    s += tag(577, 356, '+ base');
+    s += atom(640, 374, 'Pd(0)', { kind: 'hi', r: 22 });
+    s += tag(480, 412, '4 · the base takes HX, and Pd(0) is back');
+
+    s += rule(20, 440, 680, 440);
+    s += label(350, 462, 'No transmetalation: the Heck inserts, then eliminates.');
+    s += label(350, 482, 'The base is what closes the cycle, so it is needed in full.');
+    return s;
+  },
+  caption: 'The Heck, step by step. There is no organometallic partner, so there is nothing to transmetalate: the alkene binds to the metal, <b>migratory insertion</b> puts Ar and Pd on adjacent carbons and on the same face, and <b>&beta;-hydride elimination</b> then hands the product back as an alkene.',
+  note: 'Frame 4 is the one most summaries leave out, and without it the cycle does not balance. What comes off the elimination is H&ndash;Pd(II)&ndash;X, not Pd(0), so the catalyst is not yet regenerated &mdash; a stoichiometric base has to strip HX from it first. That is why a Heck needs a full equivalent of triethylamine or carbonate although nothing in the substrate is ever deprotonated.',
+});
+
+/* ---------------------------------------------------------------- C7 ---
+   The Suzuki is called "the one to know properly" and then never appears as
+   a structure. This is the worked example in the prose, drawn. */
+FIGURES.push({
+  id: 'suzuki-drawn',
+  section: 'cross-coupling',
+  anchor: 'The base is not optional: it converts the boronic acid to a borate, which is what transfers the R group in the transmetalation step.</p>',
+  viewBox: '0 0 700 426',
+  alt: 'Four-prime-bromoacetophenone and phenylboronic acid reacting under palladium tetrakis and aqueous sodium carbonate to give 4-acetylbiphenyl, with the ketone shaded to show it is untouched',
+  build() {
+    let s = '';
+    const hex = (cx, cy) => [
+      P(cx + 30, cy), P(cx + 15, cy + 26), P(cx - 15, cy + 26),
+      P(cx - 30, cy), P(cx - 15, cy - 26), P(cx + 15, cy - 26),
+    ];
+    const ringAt = (cx, cy) => {
+      const v = hex(cx, cy);
+      let t = '';
+      for (let i = 0; i < 6; i++) t += bond(v[i], v[(i + 1) % 6], { rFrom: 0, rTo: 0, order: i % 2 ? 2 : 1, gap: 4 });
+      return { svg: t, v };
+    };
+
+    /* reactants */
+    const a = ringAt(170, 110); s += a.svg;
+    s += bond(a.v[3], P(110, 110), { rFrom: 0, rTo: 15 });
+    s += atom(110, 110, 'Br', { kind: 'warn' });
+    s += bar(198, 66, 92, 92, { kind: 'hi', opacity: 0.18 });
+    s += bond(a.v[0], P(230, 110), { rFrom: 0, rTo: 16 });
+    s += bond(P(230, 110), P(230, 70), { order: 2, rFrom: 16, rTo: 15 });
+    s += bond(P(230, 110), P(266, 134), { rFrom: 16, rTo: 17 });
+    s += atom(230, 70, 'O');
+    s += atom(266, 134, 'CH₃', { r: 17 });
+    s += atom(230, 110, 'C');
+    s += label(330, 114, '+');
+    const b = ringAt(420, 110); s += b.svg;
+    s += bond(b.v[0], P(500, 110), { rFrom: 0, rTo: 30 });
+    s += atom(500, 110, 'B(OH)₂', { kind: 'hi', r: 30 });
+    s += tag(170, 184, '4′-bromoacetophenone');
+    s += tag(450, 184, 'phenylboronic acid');
+
+    s += arrow(P(300, 208), P(300, 240));
+    s += tag(390, 216, 'Pd(PPh₃)₄, Na₂CO₃ (aq), heat');
+
+    /* product */
+    s += bar(96, 244, 96, 80, { kind: 'hi', opacity: 0.18 });
+    const c = ringAt(216, 290); s += c.svg;
+    const d = ringAt(306, 290); s += d.svg;
+    s += bond(c.v[0], d.v[3], { rFrom: 0, rTo: 0 });
+    s += bond(c.v[3], P(146, 290), { rFrom: 0, rTo: 16 });
+    s += bond(P(146, 290), P(146, 250), { order: 2, rFrom: 16, rTo: 15 });
+    s += bond(P(146, 290), P(110, 314), { rFrom: 16, rTo: 17 });
+    s += atom(146, 250, 'O');
+    s += atom(110, 314, 'CH₃', { r: 17 });
+    s += atom(146, 290, 'C');
+    s += text(275, 250, 'the bond palladium made', { cls: 'fg-tag-good', size: 11 });
+    s += tag(216, 360, '4-acetylbiphenyl — the ketone never reacted');
+
+    s += rule(20, 382, 680, 382);
+    s += label(350, 406, 'A ketone sits in the flask throughout, and nothing happens to it.');
+    return s;
+  },
+  caption: 'The Suzuki as a real equation. The aryl <b>bromide</b> is what palladium inserts into; the carbonate makes the four-coordinate borate that hands its phenyl over; the two rings then join and the metal is released as Pd(0).',
+  note: 'Look at what is shaded. A phenyl Grignard put into this flask would add to that ketone and give you a tertiary alcohol, and you would have to protect it first. The boronic acid does not, because its aryl group is bound to boron and then to palladium for its whole life and is never a free carbanion — which is the tolerance argument stated as a picture rather than a claim.',
 });
 
 const START = (id) => `<!-- fig:${id}:start -->`;

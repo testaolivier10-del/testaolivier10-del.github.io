@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function(){
         title: 'Magnesium, dry ether, and nothing else.',
         bodyHtml: '<p class="step-body">Stir an alkyl, vinyl or aryl halide with magnesium turnings in dry ether and the metal inserts into the carbon&ndash;halogen bond: <b>R&ndash;Br + Mg &rarr; R&ndash;MgBr</b>. Nothing is added and nothing leaves, and the carbon that was &delta;+ comes out &delta;&minus;.</p>' +
           '<p class="step-body">The solvent is not incidental. The magnesium is electron-poor, and the two lone pairs on an ether oxygen coordinate to it, which is what holds the reagent in solution. In a hydrocarbon the reaction does not go; in anything with an O&ndash;H the reagent destroys the solvent.</p>' +
-          '<div class="explain-box">Dry means dry. A trace of water quenches the reagent as fast as it forms, and the symptom is not a mess &mdash; it is the magnesium never being consumed and the halide still sitting there at the end.</div>'
+          '<div class="explain-box">Dry means dry, and two separate things go wrong when it is not. With wet glassware the magnesium surface stays coated and the insertion never starts, so the turnings sit there unreacted and the gray cloudiness never appears. And any reagent that <i>does</i> form is protonated to R&ndash;H before it meets anything. Either way the symptom is not a mess &mdash; it is nothing happening.</div>'
       },
       {
         type: 'explain',
@@ -172,9 +172,9 @@ document.addEventListener('DOMContentLoaded', function(){
           '<li><b>Formaldehyde</b> &rarr; primary alcohol. <b>Other aldehydes</b> &rarr; secondary. <b>Ketones</b> &rarr; tertiary.</li>' +
           '<li><b>CO₂</b> &rarr; carboxylic acid, one carbon longer.</li>' +
           '<li><b>An epoxide</b>, attacked at the less hindered carbon &rarr; an alcohol two carbons further along.</li>' +
-          '<li><b>A nitrile</b>, then hydrolysis &rarr; a ketone.</li>' +
+          '<li><b>A nitrile</b> R&prime;CN, then hydrolysis &rarr; the ketone R&ndash;CO&ndash;R&prime;, which is <b>one carbon plus the whole of R&prime;</b>.</li>' +
           '</ul>' +
-          '<div class="explain-box">The <b>one-carbon extensions</b> are worth learning as a set, because each lands somewhere different: formaldehyde gives a primary alcohol, CO₂ gives a carboxylic acid, a nitrile gives a ketone. Asked to lengthen a chain by exactly one carbon, you choose from those three by what functional group you want at the end.</div>'
+          '<div class="explain-box">The <b>one-carbon extensions</b> are a pair, not a trio: formaldehyde gives a primary alcohol and CO₂ gives a carboxylic acid, and asked to lengthen a chain by exactly one carbon you choose between those two by what functional group you want at the end. A nitrile is the one people miscount &mdash; CH₃C≡N hands over its carbon <i>and</i> its methyl, so it is a two-carbon step, not a one-carbon step.</div>'
       },
       {
         render: function(api){
@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'Propose a route from bromobenzene to 1-phenylethan-1-ol. What is the trap if you plan it as benzene → phenylmagnesium bromide → acetaldehyde in one flask?',
+        title: 'Propose a route from bromobenzene to 1-phenylethan-1-ol. What is the trap if you plan it as bromobenzene → phenylmagnesium bromide → acetaldehyde in one flask?',
         options: [
           'Nothing — the route works exactly as written',
           'The Grignard cannot be made from an aryl halide',
@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'Nothing is wrong with the reagents; the trap is adding them together, since acetaldehyde enolizes'
         ],
         correctIndex: 3,
-        correctFeedback: 'Correct on both halves. Bromobenzene does form a Grignard — aryl halides work fine with magnesium even though they refuse SN2 entirely, which is worth noticing on its own. And the reagents are right: phenylmagnesium bromide plus acetaldehyde, then acidic workup, gives 1-phenylethan-1-ol, a secondary alcohol. The trap is the order of operations. The Grignard is a very strong base and acetaldehyde has α hydrogens, so if the aldehyde is present while the Grignard is still forming, some of it is deprotonated to the enolate rather than attacked. The reagent is made first and the aldehyde added to it afterwards, slowly and cold — a procedural detail that is invisible on paper and decides the yield in practice.'
+        correctFeedback: 'Correct on both halves. Bromobenzene does form a Grignard — aryl halides work fine with magnesium even though they refuse SN2 entirely, which is worth noticing on its own. And the reagents are right: phenylmagnesium bromide plus acetaldehyde, then acidic workup, gives 1-phenylethan-1-ol, a secondary alcohol. The trap is the order of operations. Any electrophile present while the reagent is still forming meets a locally huge excess of it on the metal surface, under conditions nobody is controlling, so addition, enolization and aldol-type self-condensation all compete. Acetaldehyde is especially exposed to this, because a Grignard is a very strong base and acetaldehyde has α hydrogens, so some of it is deprotonated to the enolate rather than attacked. The reagent is made first and the aldehyde added to it afterwards, slowly and cold — a procedural detail that is invisible on paper and decides the yield in practice.'
       }
     ]
   });

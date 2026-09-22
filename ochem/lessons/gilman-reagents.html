@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function(){
     { id:'c3', t:'Cyclohex-2-enone + <b>CH₃Li</b>', right:'alc',
       why:'1,2 again. An organolithium is harder still than a Grignard, so if anything it prefers the carbonyl carbon more strongly.' },
     { id:'c4', t:'Cyclohex-2-enone + <b>CH₃– from a cuprate, at &minus;78 °C</b>', right:'ket',
-      why:'Still 1,4. The selectivity is set by the metal on the nucleophile, not by temperature &mdash; which is exactly why choosing the reagent is how you choose the product here.' }
+      why:'Still 1,4. Dropping the temperature does not move this one: the selectivity is set by the metal on the nucleophile, which is exactly why choosing the reagent is how you choose the product here.' }
   ];
   var OPTS = [ { k:'alc', l:'Allylic alcohol (1,2)' }, { k:'ket', l:'β-substituted ketone (1,4)' } ];
 
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function(){
               var cfg = CASES.filter(function(c){ return c.id === id; })[0];
               if(btn.getAttribute('data-o') !== cfg.right){
                 missed = true; btn.classList.add('wrong'); btn.disabled = true;
-                api.showFeedback(fb, false, 'Copper means soft means 1,4. Magnesium and lithium mean hard means 1,2. Nothing else in the line changes the answer.');
+                api.showFeedback(fb, false, 'Copper means soft means 1,4. Magnesium and lithium mean hard means 1,2. Cooling the flask does not move it.');
                 return;
               }
               done[id] = true; btn.classList.add('correct');

@@ -161,6 +161,7 @@ document.addEventListener('DOMContentLoaded', function(){
         title: 'A Grignard with the volume turned up.',
         bodyHtml: '<p class="step-body">An organolithium is made the same way: halide plus metal, in a dry solvent. It takes <b>two</b> equivalents of lithium rather than one of magnesium, because each lithium brings one electron and one of them departs as the salt: <b>R&ndash;Br + 2 Li &rarr; R&ndash;Li + LiBr</b>.</p>' +
           '<p class="step-body">Everything a Grignard does, RLi also does. The reason to reach for one is the electronegativity gap: lithium at 0.98 sits further below carbon than magnesium at 1.31, so the carbon carries more negative charge, and the reagent is both a stronger nucleophile and a stronger base.</p>' +
+          '<div class="explain-box">The price shows up at the bench too: alkyllithiums are pyrophoric, are titrated before use because they lose strength on standing, and are normally run at &minus;78 &deg;C &mdash; partly for selectivity and partly because given warmth they deprotonate the ether they are dissolved in. A Grignard tolerates a room-temperature flask; an organolithium often does not.</div>' +
           '<div class="explain-box">Which means less selectivity, not more capability. Most of the time the extra reactivity is something to manage rather than something to use &mdash; the next section turns reactivity <i>down</i> and gets more out of it. There are two places where turning it up is exactly right, and they are worth knowing precisely.</div>'
       },
       {
@@ -250,6 +251,7 @@ document.addEventListener('DOMContentLoaded', function(){
           '<ul class="step-body">' +
           '<li><b>S<sub>N</sub>2 on a methyl or primary halide</b>, joining two chains. This is the one that matters, because Grignards do not do it reliably.</li>' +
           '<li><b>Addition to an aldehyde or ketone</b>, giving a propargylic alcohol.</li>' +
+          '<li><b>Opening an epoxide</b> at the less hindered carbon, which adds two carbons and leaves the OH two carbons from the triple bond &mdash; the homopropargylic alcohol.</li>' +
           '</ul>' +
           '<div class="explain-box">The alkyne you build is also a handle for later. Lindlar hydrogenation gives the <i>cis</i> alkene and Na/NH₃ gives the <i>trans</i> &mdash; so an acetylide alkylation followed by a choice of reduction is the standard way to make an alkene of a specified geometry from two smaller pieces.</div>'
       },
@@ -261,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'The triple bond withdraws electron density inductively',
           'The carbanion sits in an sp orbital, close to the nucleus',
           'The alkyne is aromatic',
-          'Alkyne hydrogens are attached to a more electronegative carbon isotope'
+          'The triple bond is shorter, so the C–H bond is weaker'
         ],
         correctIndex: 1,
         correctFeedback: 'Correct. Acidity is about the stability of the conjugate base, and an sp orbital is half s character against a quarter for sp³, so the lone pair is held much closer to the positively charged nucleus. This is the same hybridization argument that makes an sp carbon the most electronegative of the three: it holds its bonding electrons most tightly, which is why the hydrogen attached to it is the most acidic.',
