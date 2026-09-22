@@ -11,3 +11,4 @@ node_modules/
 drive*.mjs
 splittest.mjs
 renum.mjs
+node_modules
