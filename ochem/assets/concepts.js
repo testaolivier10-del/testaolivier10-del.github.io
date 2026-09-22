@@ -58,7 +58,7 @@
       topics:['radical-halogenation','markovnikov','mass-spec'],
       hint:'Count the radicals before and after the step: up from zero, unchanged, or down to zero.' },
     { id:'radical-stability', title:'Radical stability and selectivity', family:'Electron flow',
-      topics:['radical-halogenation','markovnikov','mass-spec'], dependsOn:['radical-chain'],
+      topics:['radical-halogenation','markovnikov','mass-spec'], dependsOn:['radical-chain','carbocation-stability'],
       hint:'Radicals rank like carbocations: 3° > 2° > 1° > methyl. Then ask how selective the attacking radical is.' },
     /* ---- Nomenclature ------------------------------------------------
        Four concepts, split the way students actually fail. Picking the parent
