@@ -551,7 +551,25 @@
       hint:'Molecules fragment to give the most stable cation available.' },
     { id:'structure-elucidation', title:'Structure from spectra', family:'Spectroscopy',
       topics:['ir','h-nmr','c-nmr','mass-spec'], dependsOn:['ir-functional-groups','nmr-splitting-integration','ms-fragmentation'],
-      hint:'Formula first, then groups, then symmetry, then connectivity — and every piece of data has to be used.' }
+      hint:'Formula first, then groups, then symmetry, then connectivity — and every piece of data has to be used.' },
+
+    /* ---- Energy diagrams ------------------------------------------------
+       Two concepts rather than one, because they fail apart. Reading a
+       profile is a diagram skill — which height is measured from where, peak
+       versus well, which climb is the slow one — and a student can be fluent
+       at it and still have no idea why bromine is selective. Hammond is the
+       separate, harder move: using the shape of a step to predict what its
+       unobservable transition state looks like, and therefore how much of a
+       product's stability reaches the barrier. Tagged into the topics that
+       lean on them later, which is most of the mechanism course. */
+    { id:'energy-diagram-reading', title:'Reading a reaction-energy diagram', family:'Electron flow',
+      topics:['energy-diagrams','sn1','sn2','e1','substrate-effects','kinetic-thermodynamic','radical-halogenation'],
+      dependsOn:['sigma-pi-bonding'],
+      hint:'ΔG‡ is a climb measured from the valley in front of it; ΔG° is the gap between the two plateaus. A peak is a transition state, a well is an intermediate.' },
+    { id:'hammond-postulate', title:'The Hammond postulate', family:'Electron flow',
+      topics:['energy-diagrams','radical-halogenation','kinetic-thermodynamic','markovnikov','sn1'],
+      dependsOn:['energy-diagram-reading'],
+      hint:'Ask which way the step runs: downhill gives an early, reactant-like transition state; uphill gives a late, product-like one.' }
   ];
 
   var BY_ID = {};
@@ -688,7 +706,8 @@
     'amine-synthesis':'amine-synthesis-routes', 'hofmann-elimination':'hofmann-elimination-rule',
     'aromaticity':'huckel-aromaticity', 'eas':'eas-mechanism', 'directing-effects':'directing-effects',
     'ir':'ir-functional-groups', 'h-nmr':'nmr-splitting-integration',
-    'c-nmr':'carbon-count-symmetry', 'mass-spec':'ms-fragmentation'
+    'c-nmr':'carbon-count-symmetry', 'mass-spec':'ms-fragmentation',
+    'energy-diagrams':'energy-diagram-reading'
   };
   function defaultConceptFor(topicId){
     if(TOPIC_PRIMARY[topicId]) return TOPIC_PRIMARY[topicId];

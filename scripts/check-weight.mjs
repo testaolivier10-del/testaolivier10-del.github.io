@@ -135,7 +135,14 @@ const BUDGETS = [
   // site is fast is formed on one of these three.
   ['index.html', 6],
   ['nremt/index.html', 9],
-  ['ochem/index.html', 10],
+  /* 10 -> 11. The home page lists every chapter's topics, so it grows by a
+     line of markup each time the course gains a section; the generated list
+     crossed 10 KB gzipped when the reactivity chapter gained its energy-
+     diagrams section. Nothing on the page got heavier per topic — there are
+     simply more topics — and the saving noted above (splitting the one
+     lesson-concepts.js call out of ochem-home.js, worth about 4.4 KB) is
+     still available if this ever needs to come back down. */
+  ['ochem/index.html', 11],
 
   // The busiest page on the site, and the one the bank split was for.
   ['nremt/practice.html', 38],

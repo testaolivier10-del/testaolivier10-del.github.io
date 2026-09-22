@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energy Diagrams &amp; the Hammond Postulate — How Reactions Happen | Organic Chemistry</title>
+<meta name="description" content="Read a reaction-coordinate diagram: activation energy versus overall energy change, transition states versus intermediates, the rate-determining step, catalysts, and the Hammond postulate.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/energy-diagrams.html">
+<meta property="og:title" content="Energy Diagrams &amp; the Hammond Postulate — How Reactions Happen | Organic Chemistry">
+<meta property="og:description" content="Read a reaction-coordinate diagram: activation energy versus overall energy change, transition states versus intermediates, the rate-determining step, catalysts, and the Hammond postulate.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/energy-diagrams.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/energy-diagrams.html#lesson",
+      "name": "Energy diagrams & the Hammond postulate",
+      "url": "https://levlprep.com/ochem/lessons/energy-diagrams.html",
+      "description": "Read a reaction-coordinate diagram: activation energy versus overall energy change, transition states versus intermediates, the rate-determining step, catalysts, and the Hammond postulate.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Energy diagrams & the Hammond postulate"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      },
+      "competencyRequired": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Leaving groups",
+          "url": "https://levlprep.com/ochem/lessons/leaving-groups.html"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How Reactions Happen",
+          "item": "https://levlprep.com/ochem/learn.html#m-reactivity"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Energy diagrams & the Hammond postulate",
+          "item": "https://levlprep.com/ochem/lessons/energy-diagrams.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow" data-chapter="reactivity">How Reactions Happen</div>
+    <h1 style="margin-bottom:4px;">Energy diagrams &amp; the Hammond postulate.</h1>
+    <p class="lede" style="margin-top:0;">How fast and how far are two questions, and one picture keeps them apart.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 10</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/energy-diagrams.html">Energy diagrams &amp; the Hammond postulate &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/leaving-groups.html">Leaving groups</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/radical-halogenation.html">Radical halogenation</a><a href="../mechanisms/sn1.html">SN1</a><a href="../lessons/kinetic-thermodynamic.html">Kinetic vs thermodynamic control</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/molecules.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'energy-diagrams',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'One picture, two axes, two heights.',
+        bodyHtml: '<div class="explain-box"><b>The reaction-coordinate diagram.</b> Free energy runs up the page &mdash; higher means less stable. The horizontal axis is the <b>reaction coordinate</b>: not time, not concentration, just how far along the structural change has got. A one-step reaction is one hill.</div>' +
+          '<p class="step-body">Two heights get names, and they are measured from different places, which is the whole reason this lesson exists.</p>' +
+          '<p class="step-body"><b>&Delta;G&deg;</b> is the gap between the two flat stretches &mdash; products relative to reactants. Negative means the products are more stable (<b>exergonic</b>); positive means they are less stable (<b>endergonic</b>).</p>' +
+          '<p class="step-body"><b>&Delta;G&Dagger;</b>, "delta G double dagger", is the <b>activation energy</b>: the height of the peak above the <i>reactants</i>. The double dagger marks a quantity as belonging to a transition state &mdash; something you could never put in a bottle &mdash; rather than to a compound.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">If a course draws enthalpy on the axis instead, the words become <b>exothermic</b> and <b>endothermic</b> and the label is &Delta;H. The shape of the picture and every conclusion below are the same.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'How fast and how far do not answer each other.',
+        bodyHtml: '<p class="step-body">This is the single most examined idea in the section. <b>&Delta;G&Dagger; sets the rate. &Delta;G&deg; sets the equilibrium.</b> Neither predicts the other, because they are measured from different points on the same picture.</p>' +
+          '<div class="explain-box">One equation, and no more than one: <b>&Delta;G&deg; = &minus;RT ln K</b>. Stability and equilibrium position are the same fact in two notations. At 25&nbsp;&deg;C, about <b>1.4 kcal/mol</b> of &Delta;G&deg; is a factor of ten in K &mdash; and the same 1.4 kcal/mol off a barrier is a factor of ten in <i>rate</i>. Small energy differences are never small.</div>' +
+          '<p class="step-body" style="margin-bottom:0;">The classic demonstration is not organic at all. Diamond is less stable than graphite at room temperature, so &Delta;G&deg; for diamond turning into pencil lead is negative &mdash; and it has never been observed to happen, because the barrier is enormous. Downhill is not a synonym for fast.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Reaction A has &Delta;G&deg; = &minus;30 kcal/mol and &Delta;G&Dagger; = 40 kcal/mol. Reaction B has &Delta;G&deg; = &minus;2 kcal/mol and &Delta;G&Dagger; = 12 kcal/mol. Which runs faster at room temperature?',
+        options: [
+          'Reaction B, because rate depends on the barrier and B\'s barrier is far lower',
+          'Reaction A, because it releases much more energy overall',
+          'Reaction A, because a larger negative &Delta;G&deg; means a larger driving force and therefore a larger rate',
+          'Neither can be compared without the equilibrium constants'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. Rate is governed by &Delta;G&Dagger; alone, so the 12 kcal/mol barrier beats the 40 kcal/mol barrier by an astronomical margin. The fact that A is fifteen times more downhill tells you only that A goes essentially to completion &mdash; eventually.',
+        wrongFeedback: '&Delta;G&deg; and &Delta;G&Dagger; are measured from different places on the diagram. The barrier is the height of the peak above the reactants and it is the only one of the two that appears in a rate. A big drop after the peak does nothing to help a molecule reach the peak.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A transition state is a peak. An intermediate is a valley.',
+        bodyHtml: '<p class="step-body">The diagram sorts these two for you without any chemistry at all, which is worth leaning on because students mix them up constantly.</p>' +
+          '<p class="step-body">A <b>transition state</b> is a maximum. Its bonds are partly broken and partly formed, so it is drawn with dotted lines and partial charges, boxed in square brackets with a double dagger at the corner. It is not a compound: no bottle, no spectrum, no lifetime worth quoting &mdash; it lasts about as long as one vibration of a bond.</p>' +
+          '<p class="step-body">An <b>intermediate</b> is a minimum between two maxima. Every bond in it is fully made. A carbocation, a radical, a protonated alcohol: real species, often wildly reactive and gone in nanoseconds, but real, sometimes detectable, and &mdash; the useful part &mdash; sitting in a well, so they have their own barrier to climb before they can go anywhere.</p>' +
+          '<div class="explain-box">Count humps to count steps. Count valleys to count intermediates. A two-step mechanism is two hills with one valley between them, and its transition states are called TS1 and TS2.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Guided Practice',
+        title: 'A mechanism drawing shows a carbon with a full positive charge and three ordinary bonds, sitting in a well on the energy diagram. What is it?',
+        options: [
+          'A transition state, since it is charged and unstable',
+          'An intermediate &mdash; a real species with all its bonds made, sitting at a minimum',
+          'A transition state, because it appears in the middle of the mechanism',
+          'Neither &mdash; it is the product'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Full bonds and a position in a well both say intermediate. Its reactivity is beside the point: unstable and non-existent are different claims, and a carbocation is unstable but perfectly real.',
+        wrongFeedback: 'Ask where it sits, not how reactive it looks. A transition state is a maximum drawn with dotted partial bonds inside brackets with a double dagger. Anything drawn with ordinary complete bonds in a well is an intermediate.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Independent Practice',
+        title: 'On a two-step diagram, TS1 is 18 kcal/mol above the reactants; the intermediate sits 14 above them; TS2 is 22 above the reactants. Which step is rate-determining?',
+        options: [
+          'Step 1, whose climb is 18 kcal/mol against step 2\'s climb of 8',
+          'Step 2, since TS2 is the highest point drawn on the page',
+          'Step 2, because it is the step that actually forms the product',
+          'They contribute equally, so the rate is the sum of the two barriers'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. A barrier is a climb, measured from the valley immediately in front of it. Step 1 climbs 18 from the reactants; step 2 climbs only 22 &minus; 14 = 8 from the intermediate. The higher peak belongs to the easier step, which is exactly the trap.',
+        wrongFeedback: 'Do not read altitudes, read climbs. Step 2 starts at the intermediate, which is already 14 kcal/mol up, so its barrier is 22 &minus; 14 = 8. Step 1 starts on the floor and has to climb the full 18.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Two ways to go faster: lower the hill, or energize the molecules.',
+        bodyHtml: '<p class="step-body"><b>A catalyst lowers the hill.</b> It offers a different route with a lower peak, usually by stabilizing the transition state, and it comes out again unchanged at the end. What it never touches is the two flat stretches: reactants and products are the same compounds at the same energies either way, so <b>&Delta;G&deg; is unchanged and K is unchanged</b>. A catalyst changes how long you wait for equilibrium, never where equilibrium lies. It also lowers the reverse barrier by exactly the same amount, which is why a catalyst for a reaction is automatically a catalyst for its reverse.</p>' +
+          '<p class="step-body"><b>Temperature energizes the molecules.</b> It moves nothing on the diagram. Energy is spread over a population and only the high tail can clear the barrier; warming the flask fattens that tail. This is the <b>Arrhenius</b> picture, and the qualitative form is all you need &mdash; the fraction that can cross depends exponentially on the barrier height and on temperature.</p>' +
+          '<div class="explain-box">The familiar rule of thumb is that near room temperature, a rise of about <b>10&nbsp;&deg;C roughly doubles</b> the rate of a typical organic reaction. Treat it as an order-of-magnitude guide rather than a law: the real factor depends on how big the barrier is.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'An endergonic reaction reaches equilibrium with 5% product. A catalyst is added. What changes?',
+        options: [
+          'Equilibrium is reached sooner, with the same 5% product',
+          'More product forms, because the catalyst lowers the energy of the products',
+          'Less product forms, because the reverse reaction is also faster',
+          'The reaction becomes exergonic once the catalyst is present'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. The catalyst lowered the peak, not the plateaus, so &Delta;G&deg; and K are untouched and 5% is still 5%. Both directions speed up by the same factor, which is what leaves the ratio exactly where it was.',
+        wrongFeedback: 'Look at what a catalyst physically does on the diagram: it changes the height of the hill and leaves both flat stretches alone. Equilibrium position is set by those flat stretches, so it cannot move.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The Hammond postulate: the peak looks like whichever side it is nearer.',
+        bodyHtml: '<p class="step-body">A transition state is the one species in the story that cannot be observed, and it is the one whose energy sets the rate. The <b>Hammond postulate</b> is how chemists reason about it anyway: <b>a transition state resembles, in structure and in energy, whichever species it lies closer to in energy.</b></p>' +
+          '<p class="step-body">A <b>downhill (exothermic) step</b> has its peak <b>early</b>, close to the reactants, so the transition state is <b>reactant-like</b> and the bonds have barely begun to change. An <b>uphill (endothermic) step</b> has its peak <b>late</b>, close to the products, so the transition state is <b>product-like</b> and the new species is nearly fully formed at the top of the hill.</p>' +
+          '<div class="explain-box"><b>Why anyone cares: selectivity.</b> Suppose a step could give either of two products, one more stable than the other. In an <b>endothermic</b> step the peak already looks like the product, so whatever stabilizes the product stabilizes the transition state by nearly as much &mdash; the barrier falls almost the full amount and the two rates separate sharply. In an <b>exothermic</b> step the peak looks like the reactants, which are the same in both cases, so the extra stability arrives too late to lower the barrier and the two rates stay close.</div>' +
+          '<p class="step-body" style="margin-bottom:0;">In one line: <b>a reactive reagent is unselective, a sluggish one is selective.</b> The fast reagent commits before it can tell what it is making; the slow one has to climb far enough to find out.</p>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A bromine radical abstracts a hydrogen from an alkane: this step is endothermic by about +11 kcal/mol, while the same step with chlorine is exothermic by about &minus;5. Bromination prefers a 3&deg; hydrogen over a 1&deg; one by roughly 1600:1, chlorination by only about 5:1. Why?',
+        options: [
+          'Bromine\'s step is uphill, so its transition state is late and product-like &mdash; the radical is nearly formed at the peak, so its stability is already in the barrier',
+          'Bromine is a bigger atom, so it is too hindered to reach a primary hydrogen',
+          'Chlorine forms a weaker H&ndash;X bond, so it gains less energy and must be less selective',
+          'The two halogens make radicals of different stabilities, and the bromine-derived radical is the more stable one'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct, and this is Hammond doing real work. The radical stability gap is the same for both halogens &mdash; a primary C&ndash;H is about 101 kcal/mol, a tertiary about 96, so the 3&deg; radical lies roughly 5 kcal/mol lower. Bromine\'s abstraction is uphill, so its peak sits late, the radical is essentially formed there, and almost all 5 kcal/mol shows up as a lower barrier: at 1.4 kcal/mol per factor of ten, that is a rate ratio in the thousands. Chlorine\'s abstraction is downhill, its peak sits early, and at that point the radical barely exists, so almost none of its stability is available to lower the barrier. Same molecule, same 5 kcal/mol, opposite outcomes &mdash; decided entirely by which way the step runs.'
+      }
+    ]
+  });
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

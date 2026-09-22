@@ -631,6 +631,13 @@
       6:['ir-functional-groups'],
       7:['ir-functional-groups'] } },
 
+    'energy-diagrams': { n:10, steps:{
+      2:['energy-diagram-reading'],
+      4:['energy-diagram-reading'],
+      5:['energy-diagram-reading'],
+      7:['energy-diagram-reading'],
+      9:['hammond-postulate','energy-diagram-reading'] } },
+
     'leaving-groups': { n:9, steps:{
       3:['leaving-group-ability'],
       4:['leaving-group-ability','pka-scale'],

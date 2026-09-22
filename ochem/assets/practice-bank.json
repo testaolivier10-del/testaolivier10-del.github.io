@@ -6117,6 +6117,398 @@
    "type": "mcq"
   }
  ],
+ "energy-diagrams": [
+  {
+   "q": "On a reaction-coordinate diagram, what is plotted on the vertical axis?",
+   "options": [
+    "Time elapsed since mixing",
+    "Concentration of the product",
+    "Free energy of the system",
+    "Number of collisions per second"
+   ],
+   "correct": 2,
+   "why": "The vertical axis is free energy: higher on the page means less stable. Time and concentration do not appear on this diagram at all, which is why it can describe a reaction without saying how long anything takes.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "The activation energy of a step is measured from which two points?",
+   "options": [
+    "From the species in front of the hill up to the peak",
+    "From the lowest point on the whole diagram up to the peak",
+    "From the peak down to the products",
+    "From the reactants across to the products"
+   ],
+   "correct": 0,
+   "why": "A barrier is a climb. It starts at whatever the step begins from and ends at that step's maximum. For the first step of a mechanism that starting point is the reactants; for a later step it is the intermediate in front of it.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A reaction is described as exergonic. What does that tell you about the diagram?",
+   "options": [
+    "The peak is unusually low",
+    "The product plateau lies below the reactant plateau",
+    "The product plateau lies above the reactant plateau",
+    "There is more than one hump"
+   ],
+   "correct": 1,
+   "why": "Exergonic means a negative overall free-energy change, so the products sit lower than the reactants. It is a statement about the two flat stretches and says nothing about the height of the hill between them.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A maximum on a reaction-coordinate diagram corresponds to what?",
+   "options": [
+    "A reactive intermediate",
+    "The product of the reaction",
+    "A catalyst-bound species",
+    "A transition state"
+   ],
+   "correct": 3,
+   "why": "Maxima are transition states and minima are ordinary species. This is the fastest way to tell the two apart, and it needs no chemical knowledge about what the species actually is.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A shallow well sitting between two humps on an energy diagram represents what?",
+   "options": [
+    "An intermediate",
+    "A transition state",
+    "The activated complex at the top of the barrier",
+    "The activation energy of the second step"
+   ],
+   "correct": 0,
+   "why": "A minimum is a real species with all its bonds made, which is what an intermediate is. Transition states sit at maxima, and an activation energy is a height rather than a point on the curve.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A mechanism's energy diagram shows three humps. How many steps and intermediates does the mechanism have?",
+   "options": [
+    "One step and three intermediates",
+    "Three steps and three intermediates",
+    "Three steps and two intermediates",
+    "Two steps and three intermediates"
+   ],
+   "correct": 2,
+   "why": "Each hump is one step, so three humps means three steps. The wells between consecutive humps are the intermediates, and three humps have two wells between them, giving two intermediates.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which quantity determines how fast a reaction proceeds?",
+   "options": [
+    "The overall free-energy change of the reaction",
+    "The activation energy of the rate-determining step",
+    "The equilibrium constant for the reaction",
+    "The energy of the product relative to the intermediate"
+   ],
+   "correct": 1,
+   "why": "Rate depends on the barrier that has to be crossed, so the activation energy of the slow step is the number that governs it. The overall energy change and the equilibrium constant describe where the reaction ends up, not how quickly it gets there.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a transition state impossible to isolate and put in a bottle?",
+   "options": [
+    "It is too reactive toward oxygen to survive handling",
+    "It carries a charge that neutralizes on contact with glass",
+    "It exists in too low a concentration to weigh out",
+    "It is an energy maximum with partly formed bonds, not a species sitting in a well"
+   ],
+   "correct": 3,
+   "why": "Anything at a maximum rolls off it immediately, so there is no well to hold it and no lifetime to speak of. An intermediate, by contrast, sits in a minimum and can sometimes be trapped or observed even when it is wildly reactive.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does adding a catalyst do to a reaction-coordinate diagram?",
+   "options": [
+    "Lowers the peak while leaving both plateaus where they were",
+    "Lowers the product plateau so the reaction becomes more downhill",
+    "Raises the reactant plateau so less climbing is needed",
+    "Removes the transition state from the pathway"
+   ],
+   "correct": 0,
+   "why": "A catalyst offers a route over a lower hill and is regenerated afterwards, so the compounds at either end are unchanged and so are their energies. Every crossing still passes through some transition state; it is simply a cheaper one.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "The horizontal axis of a reaction-coordinate diagram measures what?",
+   "options": [
+    "The time elapsed during the reaction",
+    "The temperature of the reaction mixture",
+    "How far the structural change from reactants to products has progressed",
+    "The molar amount of reactant consumed"
+   ],
+   "correct": 2,
+   "why": "The reaction coordinate tracks the extent of bond making and bond breaking, which is why a molecule does not move along it at any particular speed. Reading it as a time axis is what produces the mistaken idea that a wider hill means a slower reaction.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Reaction A: activation energy 35 kcal/mol, overall change −40 kcal/mol. Reaction B: activation energy 14 kcal/mol, overall change −1 kcal/mol. Which is faster at room temperature?",
+   "options": [
+    "Reaction A, from its much larger release of energy",
+    "Reaction B, from its much smaller barrier",
+    "Both proceed at the same rate",
+    "The comparison needs the equilibrium constants"
+   ],
+   "correct": 1,
+   "why": "Only the barrier enters a rate. B's 14 kcal/mol hill is crossed enormously more often than A's 35 kcal/mol hill, so B is faster by many orders of magnitude. A's large negative overall change means only that A ends up essentially complete, whenever it finally gets there.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A two-step mechanism has TS1 at +20 kcal/mol above the reactants, an intermediate at +12, and TS2 at +24. Which step is rate-determining?",
+   "options": [
+    "Step 2, whose transition state is the highest point drawn",
+    "Step 2, being the step that delivers the product",
+    "Step 1, whose climb of 20 exceeds step 2's climb of 12",
+    "Neither, the barriers add together"
+   ],
+   "correct": 2,
+   "why": "Compare climbs, not altitudes. Step 1 climbs 20 from the reactants; step 2 starts at the intermediate already 12 up, so it climbs only 24 − 12 = 12. The taller peak belongs to the easier step, which is exactly the trap this arrangement is built to set.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An equilibrium lies 90:10 in favor of product. A catalyst is added and the mixture is left to equilibrate again. What is the new ratio?",
+   "options": [
+    "Closer to 50:50, from the faster reverse reaction",
+    "Still 90:10, reached sooner",
+    "Better than 90:10, from the lower barrier",
+    "Impossible to say without the activation energy"
+   ],
+   "correct": 1,
+   "why": "The catalyst changes the height of the hill and leaves the two plateaus untouched, so the overall free-energy change and therefore the equilibrium constant are the same. Forward and reverse barriers both drop by the same amount, so the ratio holds and only the waiting time falls.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Warming a reaction from 25 °C to 35 °C roughly doubles its rate. What is the best explanation?",
+   "options": [
+    "The activation energy falls as temperature rises",
+    "The products become more stable at the higher temperature",
+    "A larger fraction of molecules now carries enough energy to clear the barrier",
+    "The reaction coordinate becomes shorter"
+   ],
+   "correct": 2,
+   "why": "Temperature moves nothing on the diagram. Energy is distributed over a population, and heating fattens the high-energy tail of that distribution, so more collisions arrive with enough to cross an unchanged barrier. Treat the doubling as a rule of thumb, since the real factor depends on how large the barrier is.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Reaction X has an overall free-energy change of −1.4 kcal/mol and reaction Y one of −4.2 kcal/mol at 25 °C. Roughly how do their equilibrium constants compare?",
+   "options": [
+    "Y's K is about three times X's",
+    "Y's K is about one hundred times X's",
+    "The two constants are about equal",
+    "X's K is the larger of the two"
+   ],
+   "correct": 1,
+   "why": "About 1.4 kcal/mol corresponds to a factor of ten in K at 25 °C, so a gap of 2.8 kcal/mol between the two is two factors of ten. The relationship is logarithmic, which is why a difference that looks small in kcal/mol is large in K.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "According to the Hammond postulate, what does the transition state of a strongly exothermic step resemble?",
+   "options": [
+    "The reactants, with bonds barely changed",
+    "The products, with the new bonds essentially complete",
+    "A structure exactly midway between the two",
+    "The most stable intermediate available on the pathway"
+   ],
+   "correct": 0,
+   "why": "A transition state resembles whatever it is closest to in energy. For a downhill step the peak sits just above the starting materials and far above nothing else, so the structure there still looks like the reactants.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Two competing pathways lead to products of different stability. In which case will the product ratio most strongly favor the more stable product?",
+   "options": [
+    "When the product-forming step is endothermic",
+    "When the product-forming step is strongly exothermic",
+    "When both pathways share the same intermediate",
+    "When the reaction is run at higher temperature"
+   ],
+   "correct": 0,
+   "why": "An endothermic step has a late, product-like transition state, so whatever stabilizes the product stabilizes the transition state by nearly as much and the barrier falls almost the full amount. In an exothermic step the peak resembles the reactants, which are identical for both routes, so the stability difference barely reaches the barrier.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A first step has a 22 kcal/mol barrier and the second step a 4 kcal/mol barrier. A change to the substrate cuts the second barrier to 2 kcal/mol. What happens to the overall rate?",
+   "options": [
+    "It roughly doubles",
+    "It rises by about a factor of ten",
+    "It is essentially unchanged",
+    "It falls, from the deeper well before the second step"
+   ],
+   "correct": 2,
+   "why": "Molecules queue at the 22 kcal/mol hill and fall over the small one the moment they arrive, so nothing was waiting at the second step for the improvement to help. A chain is as slow as its slowest link, and this change speeds up a link that was never the bottleneck.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Lowering a reaction's activation energy by about 2.8 kcal/mol at 25 °C multiplies the rate by roughly what factor?",
+   "options": [
+    "Two",
+    "Ten",
+    "One hundred",
+    "Two thousand"
+   ],
+   "correct": 2,
+   "why": "About 1.4 kcal/mol buys a factor of ten, so 2.8 kcal/mol buys two such factors. This is why differences of two or three kcal/mol between competing transition states routinely show up as one product and no detectable trace of the other.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A one-step reaction has a forward activation energy of 20 kcal/mol and an overall change of −8 kcal/mol. What is the activation energy of the reverse reaction?",
+   "options": [
+    "12 kcal/mol",
+    "8 kcal/mol",
+    "20 kcal/mol",
+    "28 kcal/mol"
+   ],
+   "correct": 3,
+   "why": "The reverse reaction starts at the product plateau, 8 kcal/mol below the reactants, and climbs to the same peak. So it must climb 20 + 8 = 28. The general rule is that the reverse barrier equals the forward barrier minus the overall change.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which species would correctly be drawn inside square brackets with a double dagger?",
+   "options": [
+    "A carbocation with a full positive charge and three complete bonds",
+    "A carbon with a partly broken bond to the leaving group drawn dotted",
+    "A radical with an unpaired electron shown as a dot",
+    "A protonated alcohol carrying a positive oxygen"
+   ],
+   "correct": 1,
+   "why": "Brackets and a double dagger label a transition state, and what identifies one on paper is partial bonding: dotted lines and partial charges. The other three are ordinary species with every bond fully made, so they belong in wells and are drawn without the brackets.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A student argues that a reaction releasing 50 kcal/mol must be fast. What is wrong with the reasoning?",
+   "options": [
+    "The energy released is measured in the wrong units for a rate",
+    "A large release of energy raises the barrier in proportion",
+    "The released energy describes the plateau gap, and the rate depends on the barrier",
+    "Energy released is unrelated to the position of the equilibrium"
+   ],
+   "correct": 2,
+   "why": "The two numbers are measured from different places on the same picture and are independent. Diamond converting to graphite is downhill and has never been observed, because nothing gets over the hill. A large release of energy predicts a favorable equilibrium and predicts nothing about the waiting time.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An endothermic step is said to have a late transition state. What does 'late' mean here?",
+   "options": [
+    "It happens later in time than the other steps",
+    "The peak occurs far along the reaction coordinate, close to the products",
+    "The peak is higher than any other on the diagram",
+    "The step is preceded by a deep well"
+   ],
+   "correct": 1,
+   "why": "'Early' and 'late' describe position along the reaction coordinate, not clock time or altitude. An uphill step reaches its maximum close to its finish, which is why that structure resembles the product being formed.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Hydrogen abstraction by chlorine is exothermic while the same abstraction by bromine is endothermic. Which reagent distinguishes a tertiary hydrogen from a primary one more sharply?",
+   "options": [
+    "Bromine, whose late transition state already contains the radical",
+    "Chlorine, whose greater reactivity lets it choose the weakest bond",
+    "Both distinguish them equally, since the radical stabilities are the same",
+    "Neither shows measurable selectivity between the two"
+   ],
+   "correct": 0,
+   "why": "The radical stability gap is about 5 kcal/mol for both halogens. Bromine's step is uphill, so its peak comes late and the radical is nearly formed there, putting almost all of that 5 kcal/mol into the barrier. Chlorine's step is downhill, its peak comes early, and at that point the radical barely exists.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which statement about a catalyst and the reverse reaction is correct?",
+   "options": [
+    "It speeds the forward direction and slows the reverse",
+    "It affects the reverse direction not at all",
+    "It lowers the reverse barrier by the same amount as the forward barrier",
+    "It converts an endergonic reaction into an exergonic one"
+   ],
+   "correct": 2,
+   "why": "Both directions cross the same peak, so lowering that peak subtracts the same amount from each climb. That symmetry is precisely why the equilibrium constant cannot move, and it is why a good catalyst for a hydrogenation is also a good catalyst for the corresponding dehydrogenation.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Relative to the reactants: TS1 sits at +14, the intermediate at +2, TS2 at +18 kcal/mol. Which step is rate-determining, and what is its barrier?",
+   "options": [
+    "Step 1, barrier 14 kcal/mol",
+    "Step 2, barrier 18 kcal/mol",
+    "Step 2, barrier 16 kcal/mol",
+    "Step 1, barrier 12 kcal/mol"
+   ],
+   "correct": 2,
+   "why": "Step 1 climbs from 0 to 14, a barrier of 14. Step 2 climbs from the shallow well at +2 up to 18, a barrier of 16. The second climb is the larger one, so step 2 is rate-determining. Note that reading TS2's altitude of 18 as the barrier would give the right step for the wrong reason and the wrong number.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Ionization of an alkyl halide to a carbocation and a halide ion is endothermic. Using the Hammond postulate, what follows about the rate of that step?",
+   "options": [
+    "The rate is governed by the strength of the carbon–halogen bond alone",
+    "All alkyl halides ionize at comparable rates, the transition state being reactant-like",
+    "The rate tracks the stability of the carbocation closely, the transition state being cation-like",
+    "The rate depends on the stability of the starting halide rather than the cation"
+   ],
+   "correct": 2,
+   "why": "An uphill step has a late transition state, so at the peak the cation is largely formed and carries most of its eventual charge. Anything that stabilizes that cation therefore lowers the barrier by nearly as much, which is why a tertiary substrate ionizes so much faster than a primary one.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A one-step reaction has a forward barrier of 15 kcal/mol and an overall change of +6 kcal/mol. Which statement about it is correct?",
+   "options": [
+    "The reverse barrier is 9 kcal/mol, so the reverse direction is faster",
+    "The reverse barrier is 21 kcal/mol, so the forward direction is faster",
+    "Both barriers are 15 kcal/mol, so the two rates match",
+    "The reverse barrier is 6 kcal/mol, so equilibrium favors the reactants"
+   ],
+   "correct": 0,
+   "why": "The products sit 6 kcal/mol above the reactants and share the same peak, so the reverse climb is 15 − 6 = 9. A smaller barrier means a faster crossing, and the reverse being faster is exactly what an unfavorable equilibrium looks like from the kinetic side.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Two products can form from one intermediate. The route to P1 has the lower barrier; P2 sits in the deeper well. The reaction is run cold under conditions where neither product can revert. What is obtained?",
+   "options": [
+    "Mainly P2, the more stable of the two",
+    "Mainly P1, whose barrier is lower",
+    "A 50:50 mixture, the intermediate being common to both",
+    "No reaction at all under cold conditions"
+   ],
+   "correct": 1,
+   "why": "With no way back, whatever forms first is trapped, so the product ratio simply mirrors the relative rates and the lower barrier wins. P2's greater stability would decide the outcome only if the system were free to revisit the intermediate and re-sort itself, which heat and reversibility allow.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "An uncatalyzed reaction has a forward barrier of 25 kcal/mol and an overall change of −10 kcal/mol. A catalyst cuts the forward barrier to 18 kcal/mol. What is the reverse barrier with the catalyst present?",
+   "options": [
+    "35 kcal/mol",
+    "10 kcal/mol",
+    "28 kcal/mol",
+    "18 kcal/mol"
+   ],
+   "correct": 2,
+   "why": "The plateaus do not move, so the products remain 10 kcal/mol below the reactants and the reverse climb is the forward barrier plus 10. Uncatalyzed that is 25 + 10 = 35; catalyzed it is 18 + 10 = 28. Both directions gained the same 7 kcal/mol, which is why the equilibrium constant is untouched.",
+   "difficulty": "hard",
+   "type": "mcq"
+  }
+ ],
  "electron-rich-poor": [
   {
    "q": "An electron-rich atom in a mechanism tends to act as a(n):",
