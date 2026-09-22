@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flashcards — Organic Chemistry</title>
+<meta name="description" content="Spaced-repetition flashcards for Organic Chemistry, built from the course: every concept, pKa, IR and NMR values, reagents and named reactions.">
+<link rel="canonical" href="https://levlprep.com/ochem/flashcards.html">
+<meta property="og:title" content="Flashcards — Organic Chemistry">
+<meta property="og:description" content="Spaced-repetition flashcards for Organic Chemistry, built from the course: every concept, pKa, IR and NMR values, reagents and named reactions.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levlprep.com/ochem/flashcards.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../assets/errors.js" defer></script>
+<script src="../assets/account.js" defer></script>
+<script src="../assets/hub-progress.js" defer></script>
+<script src="../assets/chime.js" defer></script>
+<script src="../assets/site-chrome.js" defer></script>
+<script src="assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="assets/ochem.css">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+/* The deck's own styles. Inline rather than in ochem.css because no other
+   page draws a flashcard, and ochem.css is on the critical path of all of
+   them. Colours are the theme's tokens only, so both themes come for free. */
+.stub-shell{margin:0 auto;}
+.fc-label{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;}
+.fc-filters{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-card);padding:16px 18px;margin-top:18px;display:grid;gap:14px;}
+.fc-filters label.fc-field{display:grid;gap:6px;font:800 13px var(--font-ui);color:var(--ink);}
+.fc-filters select{font:700 14.5px var(--font-ui);color:var(--ink);background:var(--surface2);border:0;box-shadow:inset 0 0 0 1.5px var(--line);border-radius:12px;padding:10px 12px;min-height:44px;width:100%;}
+.fc-filters fieldset{border:0;margin:0;padding:0;min-width:0;}
+.fc-filters legend{font:800 13px var(--font-ui);color:var(--ink);padding:0;margin-bottom:6px;}
+.fc-seg{display:flex;flex-wrap:wrap;gap:8px;}
+.fc-seg label{position:relative;display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:8px 14px;border-radius:var(--radius-pill);background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);font:800 13px var(--font-ui);color:var(--ink);cursor:pointer;}
+.fc-seg input{position:absolute;opacity:0;width:1px;height:1px;}
+.fc-seg input:checked + span{color:var(--accent-text);}
+.fc-seg label:has(input:checked){background:var(--tint-accent);box-shadow:inset 0 0 0 1.5px var(--accent);}
+.fc-seg label:has(input:focus-visible){outline:3px solid var(--accent);outline-offset:2px;}
+.fc-seg input[type=checkbox] + span::before{content:'';display:inline-block;width:14px;height:14px;margin-right:7px;vertical-align:-2px;border-radius:4px;box-shadow:inset 0 0 0 2px var(--muted);}
+.fc-seg input[type=checkbox]:checked + span::before{background:var(--accent);box-shadow:none;}
+.fc-seg small{font-weight:700;color:var(--muted);}
+.fc-note{margin:0;font:600 13px var(--font-ui);color:var(--muted);}
+.fc-chapters .fc-ch{display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 12px;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line-soft);padding:11px 4px;font:inherit;color:var(--ink);cursor:pointer;}
+.fc-chapters .fc-ch:first-child{border-top:0;}
+.fc-chapters .fc-ch:hover{background:var(--hover-tint);}
+.fc-chapters .fc-ch[aria-pressed=true]{background:var(--tint-accent);}
+.fc-ch .n{font:800 14px var(--font-ui);}
+.fc-ch .n b{color:var(--muted);font-weight:900;margin-right:6px;}
+.fc-ch .c{font:700 12px var(--font-ui);color:var(--muted);white-space:nowrap;}
+.fc-ch .c .due{color:var(--amber-text);}
+.fc-ch .bar{grid-column:1 / -1;height:5px;border-radius:99px;background:var(--track);overflow:hidden;}
+.fc-ch .bar span{display:block;height:100%;background:var(--accent-bright);}
+
+.fc-stage{margin-top:4px;}
+.fc-card{perspective:1400px;cursor:pointer;touch-action:pan-y;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;}
+.fc-face{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:22px 22px 18px;min-height:260px;display:flex;flex-direction:column;}
+.fc-card.is-turning .fc-face{animation:fc-turn .32s ease-in-out;}
+@keyframes fc-turn{0%{transform:rotateY(0)}50%{transform:rotateY(90deg)}100%{transform:rotateY(0)}}
+.fc-card.is-dragging .fc-face{transition:none;}
+.fc-face.fc-back{cursor:auto;user-select:text;-webkit-user-select:text;}
+.fc-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font:800 11.5px var(--font-ui);color:var(--muted);}
+.fc-meta .tag{padding:4px 10px;}
+.fc-ask{margin:16px 0 0;font:800 14px var(--font-ui);color:var(--muted);}
+.fc-q{margin:8px 0 0;font:900 clamp(22px,5.6vw,30px)/1.2 var(--font-ui);color:var(--ink);overflow-wrap:anywhere;}
+.fc-front .fc-q{flex:1;display:flex;align-items:center;}
+.fc-back .fc-q{font-size:18px;}
+.fc-tap{margin:14px 0 0;font:700 12.5px var(--font-ui);color:var(--muted);text-align:center;}
+.fc-ans{margin:14px 0 0;display:grid;gap:8px;}
+.fc-ans div{background:var(--surface2);border-radius:12px;padding:10px 12px;}
+.fc-ans dt{font:900 11px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);}
+.fc-ans dd{margin:3px 0 0;font:700 16px/1.45 var(--font-ui);color:var(--ink);overflow-wrap:anywhere;}
+.fc-hint{margin:14px 0 0;font:800 16px/1.45 var(--font-ui);color:var(--ink);}
+.fc-teach{margin:10px 0 0;font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+.fc-teach.long{font-size:13.5px;}
+.fc-from{margin:16px 0 0;padding-top:12px;border-top:1px solid var(--line-soft);font:700 13px/1.5 var(--font-ui);color:var(--muted);}
+.fc-from a{color:var(--accent-text);font-weight:800;}
+.fc-grades{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px;}
+.fc-grades button{display:grid;gap:2px;justify-items:center;min-height:56px;padding:8px 4px;border:0;border-radius:14px;font:900 14px var(--font-ui);cursor:pointer;color:var(--ink);background:var(--white);box-shadow:var(--shadow-card);}
+.fc-grades button small{font:700 11.5px var(--font-ui);color:var(--muted);}
+.fc-grades button:active{transform:translateY(1px);}
+.fc-grades .g1{box-shadow:inset 0 0 0 2px var(--bad),var(--shadow-card);color:var(--bad-text);}
+.fc-grades .g2{box-shadow:inset 0 0 0 2px var(--amber),var(--shadow-card);color:var(--amber-text);}
+.fc-grades .g3{box-shadow:inset 0 0 0 2px var(--accent-bright),var(--shadow-card);color:var(--accent-text);}
+.fc-grades .g4{box-shadow:inset 0 0 0 2px var(--good),var(--shadow-card);color:var(--good-text);}
+.fc-flip{margin-top:16px;}
+.fc-keys{margin:14px 0 0;font:700 12px var(--font-ui);color:var(--muted);text-align:center;}
+.fc-keys kbd{font:800 11px var(--font-mono);background:var(--surface2);box-shadow:inset 0 0 0 1px var(--line);border-radius:5px;padding:1px 5px;}
+.fc-swipe-hint{display:none;}
+@media (hover:none) and (pointer:coarse){.fc-keys{display:none;}.fc-swipe-hint{display:block;}}
+@media (max-width:420px){
+  .fc-face{padding:18px 16px 16px;min-height:230px;}
+  .fc-grades{gap:6px;}
+  .fc-grades button{font-size:13px;min-height:54px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .fc-card.is-turning .fc-face{animation:none;}
+}
+</style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Flashcards",
+          "item": "https://levlprep.com/ochem/flashcards.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="course-nav"></div>
+
+<div class="xshell narrow stub-shell">
+  <div class="hero" id="fcHero" style="padding-bottom:0;">
+    <div class="eyebrow">Organic Chemistry</div>
+    <h1 style="margin-bottom:4px;">Flashcards.</h1>
+    <p class="lede" style="margin-top:0;">Every concept, value and reagent in the course, one card at a time. Grade yourself honestly and each card comes back just before you would forget it.</p>
+  </div>
+  <div class="xsection" style="padding-top:0;">
+    <!-- The deck: what's due, the filters, the chapters. -->
+    <div id="fcHome">
+      <noscript>
+        <div class="empty-panel">
+          <h2>The deck needs JavaScript</h2>
+          <p>Cards are dealt and scheduled in your browser. Everything on them comes from the <a href="learn.html">textbook</a>, which reads fine without it.</p>
+        </div>
+      </noscript>
+    </div>
+
+    <!-- A running session. -->
+    <div id="fcSession" hidden>
+      <div class="session-head">
+        <span class="mode" id="fcMode"></span>
+        <button type="button" class="quit" id="fcQuit">End session</button>
+      </div>
+      <div class="progress-bar">
+        <div class="track"><div class="fill" id="fcProgFill" style="width:0%"></div></div>
+        <div class="label" id="fcProgLabel"></div>
+      </div>
+      <div class="fc-stage" id="fcStage"></div>
+      <p class="sr-only" id="fcLive" aria-live="polite"></p>
+    </div>
+
+    <!-- Session over. -->
+    <div id="fcDone" hidden></div>
+  </div>
+</div>
+
+<script src="assets/curriculum.js" defer></script>
+<script src="assets/concepts.js" defer></script>
+<script src="assets/mastery-engine.js" defer></script>
+<script src="assets/flashcard-scheduler.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'flashcards';
+  window.OCHEM_BASE = '';
+</script>
+<script src="assets/ochem-nav.js" defer></script>
+<script src="assets/flashcards-page.js" defer></script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

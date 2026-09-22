@@ -691,11 +691,29 @@ that should be faked in SVG, and it stays in **Needs a person**.
 | Aldol "two carbons apart" wording | done |
 | "Leads to" chip overflow; floating buttons covering content | **not a defect** — see below |
 | Missing mechanisms (check Grignard in carbonyl addition first) | **mostly not missing** — see below. Radical halogenation was, and is now written |
-| Synthesis / reagent-roadmap tool and flashcard deck | open |
+| Synthesis / reagent-roadmap tool | open |
+| Flashcard deck | done — see below |
 | Figures in the reaction-heavy sections | in progress — 6 added, and there is now a generator |
 | Skeletal structures after the foundations module | done — and it was the largest hole in the book |
 | Skeletal structures and radical halogenation written but unreachable | done — Phase 1 below |
 | Cut repeated caption/callout/body explanations | done — 2 real repeats, and the finding was much smaller than it looked |
+
+**The flashcard deck** (`ochem/flashcards.html`) is built out of what the
+course already had rather than typed out a second time. 663 cards: 137 concept
+cards assembled in the browser from `concepts.js` and `concept-teach.json`;
+494 read out of 86 tables in the notes (pKa, IR, NMR, mass-spec losses,
+reagent menus, the comparison tables) by `scripts/build-flashcards.mjs`, whose
+rules say which tables become cards and fail the build if a table they read
+changes shape; and 32 authored named reactions and rules
+(`scripts/lib/flashcard-sources.mjs`), each written against the section that
+teaches it. Two notes tables are deliberately not read (a duplicate of the
+heats-of-hydrogenation table, and the Michael donor/acceptor list, which is
+two independent columns rather than rows). Scheduling is SM-2 with four
+self-grades, tested in `scripts/test/flashcard-scheduler.test.mjs` (every one
+of ten deliberate mutations fails it); studying ahead never pushes a card out;
+the schedule syncs under the `ochem` namespace with a card-by-card merge. Cards
+never move a mastery number — a self-grade is weaker evidence than a checked
+answer.
 
 **The no-JavaScript problem was bigger than the item as written.** The ochem
 course's entire written half — 62 sections, about 1.2 MB of prose — lived as

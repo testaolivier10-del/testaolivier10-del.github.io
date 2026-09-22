@@ -81,6 +81,12 @@ jobs:
       # longer says.
       - name: the generated notes figures are up to date
         run: node scripts/build-notes-figures.mjs --check
+      # The flashcard deck is read out of the tables in the ochem notes. A
+      # value corrected in a table and not rebuilt would leave the card
+      # teaching the old number, which is the drift the deck was generated
+      # to avoid; a table restructured under a rule fails the build outright.
+      - name: the ochem flashcard deck matches the notes it is read from
+        run: node scripts/build-flashcards.mjs --check
       # The two files practice.html actually fetches are generated from
       # questions.json. Editing a question without rebuilding them would ship
       # the edit to nobody, silently.
