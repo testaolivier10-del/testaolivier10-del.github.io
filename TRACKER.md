@@ -63,8 +63,9 @@ each split is a new-topic job you may not want.
 **Still open.** The deferred splits above; the site-wide "Leads to" rows
 (hand-written, and in older chapters they list prerequisites rather than
 dependents — the reorder pass fixed the ones it touched); the small items
-already listed per chapter in the status table (recall-heavy banks in the
-old chapters 12/14/17, three deferred figures). The status table's chapter
+already listed per chapter in the status table (three deferred figures;
+the recall-heavy banks in the old chapters 12/14/17 were done on
+2026-09-22 — see "Bank follow-up" under the status table). The status table's chapter
 numbers are the **pre-reorder** numbers; `current-order.txt` and
 `curriculum.js` are the truth now.
 
@@ -124,7 +125,8 @@ Opus 5; chapter 18's fixer finished on Fable 5.1 while Opus was overloaded.
 
 **Still open (small, listed per chapter in the status table).** Some banks
 remain recall-heavy (chapter 12's five, chapter 14's short `why` fields,
-chapter 17 thin on data-to-structure items); a handful of figures were
+chapter 17 thin on data-to-structure items — all three done 2026-09-22,
+see "Bank follow-up" under the status table); a handful of figures were
 deferred (succinic anhydride/imide, β-lactam, polymer-design disconnection);
 `chair-bromocyclohexane` in `molecules.js` is still wrong and unused.
 "Waiting on reorder" lists everything that is only wrong because of where a
@@ -183,8 +185,9 @@ Still yours:
 - **"Leads to" rows** in lessons are hand-written; in chapters the reorder
   pass did not touch they list prerequisites as often as dependents. A small
   script could generate them from `dependsOn` — worth doing if you agree.
-- Recall-heavy banks (old chapters 12, 14, 17) and three deferred figures
-  (succinic anhydride/imide, β-lactam, polymer-design disconnection).
+- Three deferred figures (succinic anhydride/imide, β-lactam,
+  polymer-design disconnection). The recall-heavy banks of old chapters 12,
+  14 and 17 are done (2026-09-22, "Bank follow-up" below the status table).
 
 ### Resolved by the reorder (2026-09-22)
 
@@ -211,18 +214,63 @@ structures stay in chapter 2) or that are section splits (above).
 | 9 Conjugation & Pericyclic | yes (24/12/15/20) | yes: 6 figures, 7 worked examples, 49 questions; minimal MO section (HOMO/LUMO) so Diels–Alder and UV-Vis no longer use them cold; Diels–Alder regiochemistry and Lewis-acid catalysis added; Zaitsev/Hofmann misstatement and alkyne-dienophile product fixed; Woodward–Fieser table; practice-bank-core budget 216→220 KB | yes: 4 of 5 met on first verification; every product, ratio and quoted number confirmed; 3 figure/number errors (Woodward–Fieser +30 vs the measured +41, n→π* at 320 vs 280 nm, ψ₄ level with π*) fixed and 4 figures added (allyl orbitals, DA regiochemistry, norbornene endo/retro cut, bromonium on butadiene) in a second pass | yes |
 | 10 Alcohols, Ethers & Related | yes (21/12/13/12) | yes: 5 figures (E1 dehydration, HBr methyl shift vs PBr₃, ether cleavage SN2/SN1, epoxide anti opening, acid/base switch), 19 questions replaced and 6 corrected; the OH₂⁺ "conjugate base of H₃O⁺" lesson error fixed; SOCl₂/PBr₃/POCl₃ mechanisms, crown ethers, peroxide radical, mCPBA taught; graded arrow-drawing step added | yes: 2 of 3 met on first verification; every product, stereochemical outcome, bank key and figure confirmed; 1 error (rearranged-dehydration sentence) fixed; mCPBA, SOCl₂/PBr₃ and crown-ether figures and the crown-cavity wording added with chapter 11's pass | yes |
 | 11 Carbonyl Chemistry | yes (24/21/17/20) | yes: 4 figures (acid-catalysed addition, hydride vs Grignard, seven-step acetal mechanism, cyanohydrin fan-out), 3 worked examples, 28 questions; acetone hydrate 0.1 %, formaldehyde K ≈ 2000 unified, three miskeyed/wrong-why items; Bürgi–Dunitz, workup steps, ester adds twice, HCN + catalytic cyanide, KMnO₄/Jones/Ag₂O, autoxidation now taught | yes: 3 of 5 met on first verification; all 150 keys, the hydrate K values and every acetal step's protonation site confirmed; 4 errors (autoxidation of α-H-free aldehydes, missing π→O arrows in two acetal panels, caption/panel charge mismatch, swapped oxocarbenium labels) all fixed in a second pass | yes |
-| 14 Enolate Chemistry | yes (26/9/11/17, anchored) | yes: 8 figures, 7 worked examples, 19 questions replaced and 5 corrected; butan-2-one drawn as acetone in a lesson SVG, methyl acetate/ethoxide mismatch in the Claisen walkthrough, enamine contradiction, NaH teach string fixed; aldol walkthrough finished with a bond-forming arrow and a dehydration step; E1cb, acid-catalysed aldol, racemization, deuterium exchange, O- vs C-alkylation taught | yes: 2 of 5 met on first verification; all pKa values, products, ring sizes and halogenation regiochemistry confirmed; 5 errors (aldol Q19 β-carbocation, regiochemistry Q30 two answers, claisen Q27 same compound twice, dienolate numbering, O⁻ lone pairs in four SVGs) all fixed in a second pass; Claisen walkthrough draws the C–C bond; acid-catalysed aldol, ring-size, Dieckmann and 1,2-vs-1,4 figures added. Open: 52 one-line `why` fields in this chapter's banks | yes |
+| 14 Enolate Chemistry | yes (26/9/11/17, anchored) | yes: 8 figures, 7 worked examples, 19 questions replaced and 5 corrected; butan-2-one drawn as acetone in a lesson SVG, methyl acetate/ethoxide mismatch in the Claisen walkthrough, enamine contradiction, NaH teach string fixed; aldol walkthrough finished with a bond-forming arrow and a dehydration step; E1cb, acid-catalysed aldol, racemization, deuterium exchange, O- vs C-alkylation taught | yes: 2 of 5 met on first verification; all pKa values, products, ring sizes and halogenation regiochemistry confirmed; 5 errors (aldol Q19 β-carbocation, regiochemistry Q30 two answers, claisen Q27 same compound twice, dienolate numbering, O⁻ lone pairs in four SVGs) all fixed in a second pass; Claisen walkthrough draws the C–C bond; acid-catalysed aldol, ring-size, Dieckmann and 1,2-vs-1,4 figures added. ~~Open: 52 one-line `why` fields~~ done 2026-09-22 (bank follow-up below) | yes |
 | 15 Amines | yes (26/8/7/14, anchored) | yes: 8 figures (delocalization, N inversion, acylation, imine formation, Gabriel, Hofmann rearrangement, E2 + Newman, cyclic degradation), 4 worked examples, 17 questions; pyridine nucleophilicity, "a secondary amine cannot condense again", CH₃I replacing N–H (four places), amide pKaH, an R₃N label and a pyrrole-above-amide ranking fixed | yes: 4 of 4 met on first verification; every pKaH, product, carbon count and all 120 keys confirmed; 3 minor figure-text items (alkylation figure's "more nucleophilic", resonance caption, an arrow head on C3) fixed with chapter 16's pass | yes |
 | 16 Aromatic Chemistry | yes (18/7/8/14, anchored) | yes: 6 figures (Frost circles, pyrrole/pyridine lone pairs, EAS energy profile, three arenium contributors, five EAS reactions, donor octet), 17 questions; arenium "five carbons" and the meta "on or adjacent" argument fixed; drawn deprotonation step added to the EAS walkthrough (new arenium molecule); reviewer's 3-nitroacetophenone key corrected to acylate-first | yes: 1 of 3 met on first verification; every Hückel count and lone-pair call confirmed; 4 errors (EAS lead figure's ring-attack arrow drawn backwards and a C–H/C–Nu slip, nitrobenzene relative rate, aniline nitration "mainly meta") and two walkthrough defects (bromination steps then "OCH₃", step-1 arrow target) all fixed in a second pass; counter-ion base and oxidative iodination now taught | yes |
 | 18 Synthesis & Retrosynthesis | yes (anchored) | yes: 5 figures (the ten disconnections drawn once, two masks, four-step route, move-the-group-along), 14 questions replaced; reviewer's hexan-3-one carbon count and a meso/racemic key corrected; Grignard panel had OH and CH₃ on adjacent carbons; nitro-reduction reagents added; `protection` concept added | yes: 4 of 5 met on first verification; every route, carbon count, disconnection and all 150 keys confirmed; 4 errors ("no direct anti-Markovnikov halide" ignores HBr/ROOR, Friedel–Crafts acylation listed as carbonyl-free, δ+ on the wrong carbon in a figure, alkyne → methyl ketone unqualified) all fixed in a second pass; five definition items in the retrosynthesis bank replaced with reasoning items | yes |
-| 17 Spectroscopy | yes (17/4/7/12, anchored; no labeled example spectrum existed) | yes: 5 generated spectra with real values (butanoic acid IR, ethyl acetate ¹H with integration and J, splitting trees, butan-2-one ¹³C + DEPT, 2-butanone and bromoethane MS); aldehyde doublet 2820, 2-butanone base peak 43, bromine M/M+2 at 94/96, self-contradicting nitrile key fixed; anisotropy, n+1 precondition, diastereotopic protons, McLafferty, isotope arithmetic added; 8 questions, 11 lesson answer tells removed | yes: 2 of 4 met on first verification; every drawn spectral value back-solved from the SVGs and confirmed; 6 errors (Bent's rule inverted, acid O–H range in a lesson caption, ¹³C amide/ester order key, alkyne band descriptor, acid-chloride window claim, a wrong-formula distractor) all fixed in a second pass; multiplet heights made Pascal ratios. Open: the banks are still thin on data-to-structure items | yes |
+| 17 Spectroscopy | yes (17/4/7/12, anchored; no labeled example spectrum existed) | yes: 5 generated spectra with real values (butanoic acid IR, ethyl acetate ¹H with integration and J, splitting trees, butan-2-one ¹³C + DEPT, 2-butanone and bromoethane MS); aldehyde doublet 2820, 2-butanone base peak 43, bromine M/M+2 at 94/96, self-contradicting nitrile key fixed; anisotropy, n+1 precondition, diastereotopic protons, McLafferty, isotope arithmetic added; 8 questions, 11 lesson answer tells removed | yes: 2 of 4 met on first verification; every drawn spectral value back-solved from the SVGs and confirmed; 6 errors (Bent's rule inverted, acid O–H range in a lesson caption, ¹³C amide/ester order key, alkyne band descriptor, acid-chloride window claim, a wrong-formula distractor) all fixed in a second pass; multiplet heights made Pascal ratios. ~~Open: the banks are still thin on data-to-structure items~~ done 2026-09-22 (bank follow-up below) | yes |
 | 13 Carboxylic Acids & Derivatives | yes (26/8/11/13, anchored) | yes: 8 figures (acid dimer, DMF resonance/rotation, five-panel Fischer esterification, saponification, chlorosulfite, aspirin acetylation, nitrile imine anion), 12 questions replaced and 17 edited, 12 lesson MCQs rebalanced; diacid pKa, β-keto decarboxylation, lactones/lactams, transesterification, amide O-protonation, ¹⁸O labeling now taught; mechanism walkthrough gains acid-catalysed steps. Open: succinic anhydride/imide figure, cyanide SN2 panel | yes: 2 of 5 met on first verification; every number, mechanism arrow, ¹⁸O outcome and 149/150 keys confirmed; 5 errors (IR ladder attributes the acid's 1710 to resonance rather than dimerisation, methoxide-on-methyl-acetate walkthrough has no net change, nitriles Q8 two answers, pyridine "poorly nucleophilic", 179-vs-85 kcal/mol double count) all fixed in a second pass; walkthrough now runs methoxide on acetyl chloride; β-keto decarboxylation figure and ¹⁸O item added. Open: succinic anhydride/imide and β-lactam figures | yes |
 | 19 Biomolecules | yes (20/3/10/12, anchored; no molecule was drawn anywhere in the chapter) | yes: 9 figures added and the lipid packing figure redrawn (Fischer↔Haworth glucose, alanine charge states, L vs D, dipeptide formation, α-helix vs β-sheet, phospholipid, micelle vs bilayer, A–T and G–C atom by atom, a full nucleotide); Haworth defined; monosaccharide reactions, pI worked examples, Boc/Fmoc/DCC/Merrifield, Edman, steroid numbering, ATP, Chargaff added; ketose/Tollens' contradiction resolved; 20 questions | yes: 2 of 5 met on first verification; every drawn structure, pI, D/L call and all 150 keys confirmed; 4 errors (CORN mnemonic inverted, "other three" stereocenters, straight alkenes in the two lipid figures) fixed with chapter 20's pass | yes |
 | 20 Organometallics | yes (19/7/9/9, anchored) | yes: 7 curved-arrow/structure figures, 5 worked examples, 10 questions; nitrile "one-carbon extension" fixed in four places incl. the keyed bank item; β-hydride elimination, migratory insertion, Heck base, Sonogashira amine base, Li–halogen exchange, Corey–House, Weinreb amide, Negishi now taught; amine pKa unified at 38 | yes: 5 of 5 met on first verification; zero chemistry errors; every product, carbon count, Pd oxidation state and all 150 keys confirmed. Minor: "two things" over three bullets, "three abilities" then four, bonding bank recall-heavy — all fixed with chapter 22's pass | yes |
 | 21 Carbonyl & Enolate Breadth | yes (26/7/7/9, anchored) | yes: 5 curved-arrow mechanism figures (Wittig, imine/enamine, Robinson, decarboxylation TS, Criegee), 5 worked examples, 28 questions; H added to migratory aptitude (aldehyde → acid) and reconciled across four files; enamine "alkylates once" corrected to the iminium reason; "three- and four-membered" closure error fixed in three files; two broken bank items repaired; HWE, semi-stabilised ylides, Stork scope, Michael donor/acceptor table, malonate ring formation added | yes: 2 of 5 met on first verification; every product, E/Z call and the aptitude series confirmed; 4 errors (Wittig example aldehyde one carbon too long, oxaphosphetane "opposite corners", Robinson panel draws 1,4 but labels 1,5, decarboxylation arrows run the wrong way) and one two-answer item all fixed in a second pass | yes |
 | 22 Aromatic Follow-Through | yes (34/4/8/9, anchored; no molecule was drawn) | yes: 6 figures (Meisenheimer, benzyne orbitals, benzylic delocalization, phenoxide resonance, Birch products, diazotize-and-couple), a worked example and pitfall in every section, 25 questions; nitro→amine reduction taught; Birch enol-ether key corrected to cyclohex-3-en-1-one; sulfonic-acid blocking, quinone colour, allyl count, "next section" fixed; Kolbe–Schmitt, Reimer–Tiemann, diazotization mechanism, azo pH, Sandmeyer radical, benzyne regiochemistry added | yes: 3 of 5 met on first verification; every product, pKa and key confirmed; 4 errors (Meisenheimer frame with a net 2−, "four π electrons" for the cyclohexadienyl anion, Birch "anion" for the radical, benzyne lesson claiming two products from chlorobenzene) fixed with chapter 23's pass | yes |
 | 23 Polymers | yes (33/6/8/8, anchored) | yes: 6 figures (six-panel fishhook radical chain, monomer→repeat unit, drawn chain, three polypropylenes, four backbones, cross-link dial, Tg/Tm as modulus vs temperature), 4 worked examples, 15 questions; termination corrected (combination vs disproportionation); nylon 6, polycarbonate, "which loses what" table, plasticizers, Ziegler–Natta insertion, living polymerization, PET methanolysis, PLA added; both "every condensation loses water" claims fixed. Open: polymer-design disconnection figure | yes: 1 of 5 met on first verification; every repeat unit, the "which loses what" table, tacticity, Tg/Tm values and all 150 keys confirmed; 7 errors (isoprene C4 delocalisation, a missing H in the disproportionation product, atactic-PS reason, butyl rubber, nylon 6,T melt claim, glyptal, copolymer Tg) all fixed in a second pass, plus ionic chain-end, urethane and polycarbonate figures | yes |
-| 12 Oxidation & Reduction | yes (18/4/8/13, anchored format) | yes: 6 figures (the chapter's first curved arrows), 22 questions, wrong +2 key for an acid carbon, Na/NH3 selectivity attributed to the wrong intermediate | yes: 2 of 5 met on first verification; 5 errors and 2 missing figures (ozonolysis mechanism, Clemmensen/Wolff-Kishner) fixed in a second pass. Open: the five banks are still recall-heavy | yes |
+| 12 Oxidation & Reduction | yes (18/4/8/13, anchored format) | yes: 6 figures (the chapter's first curved arrows), 22 questions, wrong +2 key for an acid carbon, Na/NH3 selectivity attributed to the wrong intermediate | yes: 2 of 5 met on first verification; 5 errors and 2 missing figures (ozonolysis mechanism, Clemmensen/Wolff-Kishner) fixed in a second pass. ~~Open: the five banks are still recall-heavy~~ done 2026-09-22 (bank follow-up below) | yes |
+
+### Bank follow-up (2026-09-22)
+
+The three bank items the status table left open. Replacements keep their
+slot (ochem question ids are `lb:<topic>:<index>`), so every topic still
+holds 30 and nothing is renumbered; a learner's record for a replaced slot
+now points at the new question, as with every earlier replacement pass.
+
+- **Oxidation & Reduction (old ch. 12): 50 recall items replaced** with
+  application items — oxidation-states 9, alcohol-oxidation 11,
+  carbonyl-reduction 11, hydrogenation 9, alkene-oxidation 10. Predict the
+  product (NaBH₄/LiAlH₄ on keto-esters, DIBAL-H at −78 °C, amide and
+  nitrile reductions, ozonolysis of rings, dienes and exocyclic alkenes),
+  pick the reagent (PCC vs Jones, MnO₂, Wolff–Kishner beside an acetal,
+  Lindlar vs Na/NH₃), oxidation-state bookkeeping on real molecules, and
+  three-step "what is Z" items.
+- **Enolate Chemistry (old ch. 14): all 100 short `why` fields rewritten**
+  (α-halogenation 26, enolate-regiochemistry 25, ester-syntheses 24,
+  michael-robinson 25 — the 52 counted in the table plus the two sections
+  that joined in the reorder) to say why the key is right and why each
+  tempting distractor is wrong. Three items fixed on the way: regiochemistry
+  Q13's key said "deprotonation must reverse", the rule this chapter retired
+  (now "the enolates must interconvert"); ester-syntheses Q11 keyed "mostly
+  elimination" for malonate on a secondary halide (now slow substitution with
+  competing elimination); α-halogenation Q26 used hydroxide on an α-bromo
+  ketone, where the Favorskii acid distractor was defensible (now pyridine
+  with heat).
+- **Spectroscopy (old ch. 17): 40 data-to-structure items** replace recall
+  items — IR 9, ¹H NMR 9, ¹³C NMR 9, mass spec 9, UV-Vis 4 (five were
+  true/false). Every value is from the notes' own tables (ester 1735, ketone
+  1715, aldehyde 2720/2820, DEPT-135 phases, M+1 at 1.1% per carbon, 3:1 and
+  1:1 halogen pairs, Woodward–Fieser 217 + 5 per alkyl).
+- Each item was re-derived with every distractor checked, then re-read as
+  a skeptical TA; that pass corrected three distractors or reagents (Jones
+  on an allylic alcohol can stop at the enal; 1,4-hydrogenation could make a
+  conjugated-diene distractor right; PCC's acidity invites dehydration of a
+  tertiary β-hydroxy aldehyde, so that item uses DMP), a ¹³C stem that said
+  "ketone" beside an aldehyde option, and two explanations. Eleven keys were
+  then shortened or distractors lengthened: new keys are the longest option
+  in 19% of the 90 items, and the bank went 27.4% → 27.2% against its 28%
+  ceiling.
+- Budgets raised in `check-weight.mjs`, with the reason recorded there:
+  `practice-bank-why.json` 230 → 239 KB (measured 237.6) and
+  `tutor-bank.json` 300 → 314 KB (312.9). One-line explanations were under
+  the tutor index's 80-character floor, so the rewrite grows it by design.
 
 ---
 

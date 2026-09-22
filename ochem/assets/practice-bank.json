@@ -21685,42 +21685,42 @@
    "type": "mcq"
   },
   {
-   "q": "What is the Beer-Lambert law?",
+   "q": "Which of these dienes should absorb at the longest wavelength?",
    "options": [
-    "A = e c l",
-    "A = e / c l",
-    "A = c l / e",
-    "A = e + c + l"
-   ],
-   "correct": 0,
-   "why": "Absorbance equals molar absorptivity times concentration times path length.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "In A = ecl, what does e represent?",
-   "options": [
-    "Absorbance itself",
-    "Molar absorptivity",
-    "Concentration",
-    "Path length"
-   ],
-   "correct": 1,
-   "why": "A constant for that compound at that wavelength, measuring how strongly it absorbs.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "In A = ecl, what does l represent?",
-   "options": [
-    "Light intensity",
-    "A rate constant",
-    "Wavelength",
-    "Path length"
+    "Buta-1,3-diene",
+    "(E)-Penta-1,3-diene",
+    "Penta-1,4-diene",
+    "2,3-Dimethylbuta-1,3-diene"
    ],
    "correct": 3,
-   "why": "Conventionally 1 cm for a standard cuvette.",
+   "why": "Three are conjugated, so start each at 217 nm and add 5 nm per alkyl group on the diene carbons: buta-1,3-diene stays at 217, penta-1,3-diene has one (about 222), and 2,3-dimethylbuta-1,3-diene has two (about 227). Penta-1,4-diene has an sp³ carbon between its double bonds, so it behaves as two isolated alkenes absorbing below 200 nm.",
    "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Two C₅H₈ isomers are measured. One absorbs at 223 nm (ε ≈ 23,000); the other shows nothing above 200 nm. Which assignment fits?",
+   "options": [
+    "223 nm: penta-1,4-diene. Nothing above 200: penta-1,3-diene",
+    "223 nm: penta-1,3-diene. Nothing above 200: penta-1,4-diene",
+    "223 nm: cyclopentene. Nothing above 200: pent-1-yne",
+    "Both are the same compound at different concentrations"
+   ],
+   "correct": 1,
+   "why": "A band at 223 with an ε in the tens of thousands is a π → π* transition in a conjugated diene: 217 plus 5 for the methyl on the diene predicts about 222. Penta-1,4-diene has the same formula with a CH₂ between its double bonds, so each behaves as an isolated alkene and absorbs below 200. Cyclopentene has one isolated C=C and would be silent above 200 too. Concentration changes absorbance, never the wavelength.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An unknown diene shows λmax at 232 nm. Using the Woodward–Fieser increments for an open-chain diene, which structure fits best?",
+   "options": [
+    "Buta-1,3-diene",
+    "2,4-Dimethylpenta-1,3-diene",
+    "2-Methylbuta-1,3-diene (isoprene)",
+    "(E)-Hexa-1,3,5-triene"
+   ],
+   "correct": 1,
+   "why": "Start at 217 and count the alkyl groups on the four diene carbons. 2,4-Dimethylpenta-1,3-diene has three - one on C2 and two on C4 - so 217 + 15 = 232. Buta-1,3-diene stays at 217, and 2-methylbuta-1,3-diene, with one methyl, predicts 222. The triene adds a whole conjugated C=C and absorbs near 258: lengthening the conjugation moves the band much further than a substituent does.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -21841,16 +21841,16 @@
    "type": "mcq"
   },
   {
-   "q": "Why does UV-Vis sit in the conjugation chapter?",
+   "q": "A compound C₅H₈O shows a strong UV band at 224 nm (ε ≈ 10,000) and a weak one (ε ≈ 40) at longer wavelength. Which structure fits?",
    "options": [
-    "It is the oldest of the techniques",
-    "It measures conjugation specifically",
-    "It needs no instrument",
-    "It is not spectroscopy"
+    "Pent-4-en-2-one, CH₂=CHCH₂COCH₃",
+    "Cyclopentanone",
+    "Pent-4-enal, CH₂=CHCH₂CH₂CHO",
+    "(E)-Pent-3-en-2-one, CH₃CH=CHCOCH₃"
    ],
-   "correct": 1,
-   "why": "It turns the chapter's central claim into a number you can read off an instrument.",
-   "difficulty": "easy",
+   "correct": 3,
+   "why": "The strong band is a π → π* transition, and it reaches 224 nm only when a C=C is conjugated with the C=O, as in the enone. The weak band is the carbonyl lone pair's n → π*, which every one of these compounds has. In pent-4-en-2-one and pent-4-enal a CH₂ separates the alkene from the carbonyl, so each π system absorbs on its own below 200 nm; cyclopentanone has no C=C at all.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -24222,15 +24222,15 @@
    "type": "mcq"
   },
   {
-   "q": "What is the working test for reduction?",
+   "q": "Which of these transformations is a reduction at carbon?",
    "options": [
-    "Gaining bonds to H or losing bonds to O",
-    "Losing mass",
-    "Breaking a ring",
-    "Gaining further bonds to oxygen atoms"
+    "Cyclohexene to trans-2-bromocyclohexanol (Br2, H2O)",
+    "Cyclohexanol to bromocyclohexane (PBr3)",
+    "Cyclohexanone to cyclohexanol (NaBH4)",
+    "Cyclohexene to cyclohexanol (H3O+)"
    ],
-   "correct": 0,
-   "why": "The reverse of oxidation, on the same two counts.",
+   "correct": 2,
+   "why": "Run the two counts on each carbon that changes. Cyclohexanone to cyclohexanol trades one of the two C-O bonds of the C=O for a C-H: fewer bonds to oxygen, more to hydrogen, so a reduction. The bromohydrin puts O on one carbon and Br on the other with no new C-H, which is an oxidation; PBr3 swaps O for Br on the same rung; and acid-catalyzed hydration adds one H and one OH, which cancel.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -24261,28 +24261,28 @@
    "type": "mcq"
   },
   {
-   "q": "How much does a bond to hydrogen contribute to a carbon's oxidation state?",
+   "q": "Which of these compounds contains a carbon at oxidation state +3?",
    "options": [
-    "+1",
-    "-1",
-    "0",
-    "+2"
+    "Acetonitrile, CH3CN",
+    "Acetone, CH3COCH3",
+    "Acetaldehyde, CH3CHO",
+    "Ethanol, CH3CH2OH"
    ],
-   "correct": 1,
-   "why": "Bonds to more electronegative atoms count +1, bonds to hydrogen -1, and bonds to carbon 0.",
+   "correct": 0,
+   "why": "The nitrile carbon has three bonds to nitrogen (+3) and one to carbon (0), so +3 - the same rung as a carboxylic acid, which is why a nitrile hydrolyzes to an acid with no oxidant. Acetone's carbonyl carbon is +2 (two bonds to O, two to C), acetaldehyde's is +1 (two to O, one to H) and ethanol's CH2OH carbon is -1; every methyl carbon in the four is -3.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "How much does a bond to another carbon contribute?",
+   "q": "Acetaldehyde, CH3CHO, is oxidized to acetic acid, CH3CO2H. What happens to the oxidation state of the carbonyl carbon?",
    "options": [
-    "+1",
-    "-1",
-    "0",
-    "It varies"
+    "It rises from 0 to +2",
+    "It rises from +1 to +2",
+    "It stays at +3; only the O-H changes",
+    "It rises from +1 to +3"
    ],
-   "correct": 2,
-   "why": "Which is why you can usually ignore the rest of the molecule when working out one carbon's oxidation state.",
+   "correct": 3,
+   "why": "In acetaldehyde that carbon has a C=O worth +2, a C-H worth -1 and a C-C worth 0: +1. In acetic acid the C-H has become a C-O, so three bonds to oxygen and one to carbon: +3. A rise of two is one full rung. The 0 and +2 figures belong to formaldehyde and formic acid, where the fourth bond is to hydrogen rather than to carbon.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -24352,15 +24352,15 @@
    "type": "mcq"
   },
   {
-   "q": "How many electrons are involved in one step up the ladder?",
+   "q": "In methyl acetate, CH3-CO-O-CH3, what are the oxidation states of the carbonyl carbon and of the O-CH3 carbon?",
    "options": [
-    "Two",
-    "Three",
-    "Four",
-    "One"
+    "+3 and -3",
+    "+3 and -2",
+    "+2 and -2",
+    "+3 and +1"
    ],
-   "correct": 0,
-   "why": "Each rung is a two-electron oxidation.",
+   "correct": 1,
+   "why": "The carbonyl carbon has three bonds to oxygen (the C=O counts twice, plus the single bond to the ester oxygen) and one to carbon: +3. The O-CH3 carbon has one bond to oxygen and three to hydrogen: +1 - 3 = -2. The -3 figure is the acetyl CH3, which has no bond to oxygen at all; +1 forgets the three C-H bonds.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -24430,29 +24430,29 @@
    "type": "mcq"
   },
   {
-   "q": "What does the notation [O] mean in a reaction scheme?",
+   "q": "Ozonolysis of 2-methylbut-2-ene, (CH3)2C=CHCH3, with Me2S workup gives acetone and acetaldehyde. What happens to the oxidation states of the two former alkene carbons?",
    "options": [
-    "An unspecified oxidizing agent",
-    "Ozone",
-    "An oxygen atom",
-    "Molecular oxygen, O2 specifically"
+    "Each rises by one: 0 to +1, and -1 to 0",
+    "Each rises by two: 0 to +2, and -1 to +1",
+    "One rises by two and the other falls by two",
+    "Neither changes, because a C=C simply becomes a C=O"
    ],
-   "correct": 0,
-   "why": "Useful when the point is the transformation rather than the reagent, though most questions are about which reagent.",
+   "correct": 1,
+   "why": "The carbon carrying two methyls has four bonds to carbon, so 0; as acetone's carbonyl carbon it has two bonds to O and two to C, +2. The CH carbon starts at -1 (one C-H, and the double bond counts as two bonds to carbon) and ends as acetaldehyde's carbonyl carbon at +1. Both climb a full rung. Trading C=C for C=O is not neutral: bonds to carbon score 0 and bonds to oxygen +1.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What does [H] mean in a scheme?",
+   "q": "Hydroboration-oxidation turns propene, CH3CH=CH2, into propan-1-ol, CH3CH2CH2OH. What happens to the oxidation states of C1 and C2?",
    "options": [
-    "A proton",
-    "A hydride ion and nothing else",
-    "Hydrogen gas",
-    "An unspecified reducing agent"
+    "Both rise by one: oxygen was added, so it is an oxidation",
+    "Both fall by one: it is a reduction",
+    "C1 rises by two and C2 is unchanged",
+    "C1 rises by one and C2 falls by one, so overall it is neither"
    ],
    "correct": 3,
-   "why": "The reducing counterpart of [O].",
-   "difficulty": "easy",
+   "why": "C1 goes from =CH2 (two C-H, two bonds to carbon: -2) to CH2OH (two C-H, one C-O: -1), up one. C2 goes from =CH- (one C-H: -1) to CH2 (two C-H: -2), down one. The new O on one carbon and the new H on the other cancel, which puts hydroboration-oxidation with hydration and HBr addition: redox-neutral. Seeing an oxygen arrive is not the whole count.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -24495,28 +24495,28 @@
    "type": "mcq"
   },
   {
-   "q": "An aldehyde is how many rungs above an alcohol?",
+   "q": "Ethyl acetate, CH3CO2CH2CH3, is reduced with LiAlH4. How far does the former carbonyl carbon move, and where does it end up?",
    "options": [
-    "Two",
-    "Three",
-    "None",
-    "One"
+    "Down two rungs, +3 to -1, as the CH2OH carbon of ethanol",
+    "Down one rung, +3 to +1, as the carbonyl carbon of acetaldehyde",
+    "Down three rungs, +3 to -3, as a CH3 carbon",
+    "Nowhere: swapping the ester oxygen is substitution"
    ],
-   "correct": 3,
-   "why": "One two-electron step, which is why a single oxidation gets you there.",
-   "difficulty": "easy",
+   "correct": 0,
+   "why": "The acyl carbon has three bonds to oxygen and one to carbon, +3. LiAlH4 delivers two hydrides, and afterwards that carbon carries two C-H, one C-O and one C-C: -1. Four units is two two-electron rungs, and acetaldehyde at +1 is only the halfway point it passes through. Both halves of the ester end up as ethanol, but only the acyl half was reduced; the ethoxy carbon started at -1 and stays there.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A carboxylic acid is how many rungs above a primary alcohol?",
+   "q": "Which conversion needs neither an oxidant nor a reductant?",
    "options": [
-    "None",
-    "One",
-    "Two",
-    "Three"
+    "CH3CH2CHO to CH3CH2CO2H",
+    "CH3CH2CO2H to CH3CH2CH2OH",
+    "CH3CH2CN to CH3CH2CO2H",
+    "CH3COCH3 to CH3CH(OH)CH3"
    ],
    "correct": 2,
-   "why": "Alcohol to aldehyde is one, aldehyde to acid is the second.",
+   "why": "A nitrile carbon and a carboxyl carbon both carry three bonds to heteroatoms, +3, so hydrolysis moves sideways along one rung and water is enough. The aldehyde-to-acid step climbs a rung and needs an oxidant; the acid-to-alcohol step falls two rungs and needs LiAlH4; the ketone-to-alcohol step falls one and needs a hydride.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -24573,16 +24573,16 @@
    "type": "mcq"
   },
   {
-   "q": "Which carbon is fully reduced?",
+   "q": "Propene, CH3CH=CH2, is epoxidized with mCPBA. What happens to the oxidation states of the two former alkene carbons?",
    "options": [
-    "The carbon of CO2",
-    "The carbon of methane",
-    "The carbon of methanol",
-    "The carbon of formaldehyde"
+    "C1 rises by one and C2 falls by one, so it is neither",
+    "Each rises by two",
+    "Neither changes, because the two carbons stay bonded",
+    "Each rises by one, a two-electron oxidation overall"
    ],
-   "correct": 1,
-   "why": "Four bonds to hydrogen puts it at -4, the bottom of the ladder.",
-   "difficulty": "easy",
+   "correct": 3,
+   "why": "C1 goes from =CH2 (-2) to a ring CH2 bonded to O (-1); C2 goes from =CH- (-1) to a ring CH bonded to O (0). Both gain a bond to oxygen and neither gains a hydrogen, so the tallies do not cancel the way they do in hydroboration-oxidation, where one carbon gains the O and the other the H. One oxygen across two carbons is one rung in total.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -24601,41 +24601,41 @@
  ],
  "alcohol-oxidation": [
   {
-   "q": "What does PCC give from a primary alcohol?",
+   "q": "Hexan-1-ol is divided between two flasks. One gets PCC in CH2Cl2; the other gets Jones reagent. What does each flask contain afterwards?",
    "options": [
-    "A carboxylic acid",
-    "An aldehyde",
-    "A ketone",
-    "No reaction"
+    "PCC: hexanoic acid. Jones: hexanal",
+    "Both flasks: hexanal",
+    "PCC: hexanal. Jones: hexanoic acid",
+    "PCC: hexanal. Jones: hexan-2-one"
    ],
-   "correct": 1,
-   "why": "Cr(VI) with no water present, so the aldehyde cannot hydrate and the oxidation stops.",
+   "correct": 2,
+   "why": "Both are Cr(VI); the difference is water. PCC works in dry CH2Cl2, so the aldehyde has nothing to hydrate with and the oxidation stops after one rung. Jones reagent is aqueous acid, so hexanal hydrates to a gem-diol - an alcohol again - and is oxidized a second time. Neither reagent can move the oxygen to C2; oxidation happens only at the carbon that already carries the OH.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "What does Jones reagent give from a primary alcohol?",
+   "q": "An alcohol C4H10O turns Jones reagent from orange to green. The organic product is not acidic: it does not dissolve in aqueous NaHCO3. Which alcohol was it?",
    "options": [
-    "A carboxylic acid",
-    "A ketone",
-    "No reaction",
-    "An aldehyde only"
+    "Butan-1-ol",
+    "Butan-2-ol",
+    "2-Methylpropan-1-ol",
+    "2-Methylpropan-2-ol"
    ],
-   "correct": 0,
-   "why": "Aqueous Cr(VI): the aldehyde hydrates to a gem-diol, which is oxidized a second time.",
+   "correct": 1,
+   "why": "The color change says the alcohol was oxidized, which rules out tertiary 2-methylpropan-2-ol: with no carbinol C-H it leaves the reagent orange. Both primary alcohols would be taken past the aldehyde to a carboxylic acid by aqueous Cr(VI), and bicarbonate would deprotonate and dissolve an acid. Only a secondary alcohol stops at a neutral ketone: butan-2-ol gives butan-2-one.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What does PCC give from a secondary alcohol?",
+   "q": "Cyclohexanol is treated with Jones reagent in acetone at 0 C. What is the product?",
    "options": [
-    "A carboxylic acid",
-    "No reaction",
-    "An aldehyde",
-    "A ketone"
+    "Cyclohexanone",
+    "Hexanedioic acid",
+    "Cyclohexanecarboxylic acid",
+    "Cyclohexene"
    ],
-   "correct": 3,
-   "why": "A ketone has no hydrogen left on the carbonyl carbon, so every oxidant stops there.",
+   "correct": 0,
+   "why": "Cyclohexanol is secondary: one hydrogen on the carbinol carbon, one rung, and then a ketone with no hydrogen left on the carbonyl carbon. Water cannot push it further, because the hydrate route that carries aldehydes on to acids needs that hydrogen. Opening the ring to the diacid would mean breaking a C-C bond, the carboxylic acid would need an extra carbon, and cyclohexene is what acid dehydration gives, not an oxidation.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -24679,54 +24679,54 @@
    "type": "mcq"
   },
   {
-   "q": "What solvent is PCC used in?",
+   "q": "Which reagent converts (E)-but-2-en-1-ol, CH3CH=CHCH2OH, into (E)-but-2-enal and leaves the C=C alone?",
    "options": [
-    "Aqueous acetone with acid",
-    "Methanol",
-    "Water",
-    "Anhydrous dichloromethane"
+    "Hot aqueous KMnO4",
+    "H2 over Pd/C",
+    "PCC in CH2Cl2",
+    "OsO4 with NMO"
    ],
-   "correct": 3,
-   "why": "Keeping water out is the entire point of the reagent.",
+   "correct": 2,
+   "why": "The target is one rung up with the alkene intact. PCC is anhydrous, so it stops at the aldehyde, and it has no way to react with a C=C. Hot aqueous KMnO4 attacks the C=C itself and cleaves it, and takes the alcohol carbon on to a carboxylic acid; H2 over Pd/C is a reduction and would saturate the alkene; OsO4 dihydroxylates the C=C and leaves the alcohol where it was.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "What are the Swern reagents?",
+   "q": "A molecule carries an allylic secondary alcohol and a saturated primary alcohol. Which reagent oxidizes only the allylic one?",
    "options": [
-    "Oxalyl chloride, DMSO, then Et3N",
-    "KMnO4 with heat and acid",
-    "H2 and Pd",
-    "CrO3 and H2SO4"
+    "MnO2",
+    "PCC in CH2Cl2",
+    "Dess-Martin periodinane",
+    "Jones reagent"
    ],
    "correct": 0,
-   "why": "Run at -78 C. No metal at all, and it stops at the aldehyde.",
+   "why": "MnO2 is the one oxidant in this section that discriminates, and it does so by position: allylic and benzylic alcohols are oxidized, ordinary saturated ones are left alone. PCC and DMP oxidize any primary or secondary alcohol, so both carbinol carbons would react; Jones would do the same and take the primary one on to the acid.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What does the Swern oxidation give from a primary alcohol?",
+   "q": "3-Methylbutane-1,3-diol, HOCH2CH2C(CH3)2OH, is treated with excess Dess-Martin periodinane. What is the product?",
    "options": [
-    "No reaction",
-    "A carboxylic acid",
-    "An aldehyde",
-    "An ester"
+    "3-Hydroxy-3-methylbutanoic acid",
+    "No reaction: the tertiary OH blocks it",
+    "A keto-aldehyde, with both alcohols oxidized",
+    "3-Hydroxy-3-methylbutanal"
    ],
-   "correct": 2,
-   "why": "Mild and metal-free, and it stops cleanly at the aldehyde.",
+   "correct": 3,
+   "why": "Look at each carbinol carbon separately. C1 is a CH2OH, primary, so DMP - which works without water - takes it one rung to the aldehyde and stops. C3 carries two methyls and a CH2 as well as its OH, so it has no C-H to lose and cannot be oxidized - which is why a keto-aldehyde is impossible. Excess reagent changes neither answer: the acid needs water, and the tertiary carbon needs a hydrogen it does not have.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What is Dess-Martin periodinane based on?",
+   "q": "PhCH2OH is treated with PCC to give X. X reacts with CH3MgBr and then aqueous acid to give Y, and Y is treated with Jones reagent to give Z. What is Z?",
    "options": [
-    "Chromium(VI) oxide",
-    "Hypervalent iodine",
-    "Manganese",
-    "Osmium"
+    "Benzoic acid, PhCO2H",
+    "Acetophenone, PhCOCH3",
+    "1-Phenylethanol, PhCH(OH)CH3",
+    "Phenylacetic acid, PhCH2CO2H"
    ],
    "correct": 1,
-   "why": "Metal-free, room temperature, and it stops at the aldehyde.",
+   "why": "PCC stops at benzaldehyde (X). The Grignard adds its methyl to the carbonyl carbon, and workup gives 1-phenylethanol (Y), now a secondary alcohol. Jones reagent oxidizes Y one rung to acetophenone and can go no further, because the carbonyl carbon has no hydrogen left. Benzoic acid is what Jones would make from the starting alcohol directly; phenylacetic acid would need the new carbon between the ring and the carboxyl.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -24809,15 +24809,15 @@
    "type": "mcq"
   },
   {
-   "q": "What is a gem-diol?",
+   "q": "Which alcohol gives 2-methylpropanal, (CH3)2CHCHO, when treated with Dess-Martin periodinane?",
    "options": [
-    "Two OH on adjacent carbons",
-    "Two OH on the same carbon",
-    "A cyclic ether",
-    "A diketone"
+    "Butan-1-ol",
+    "2-Methylpropan-1-ol",
+    "2-Methylpropan-2-ol",
+    "Butan-2-ol"
    ],
    "correct": 1,
-   "why": "It is what an aldehyde becomes in water, and it is structurally an alcohol again.",
+   "why": "Oxidation changes the carbinol carbon and nothing else, so the product keeps the alcohol's skeleton: the aldehyde carbon was a CH2OH on a carbon carrying two methyls. Butan-1-ol has an unbranched chain and gives butanal; butan-2-ol gives butan-2-one; 2-methylpropan-2-ol is tertiary and does not react.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -24861,28 +24861,28 @@
    "type": "mcq"
   },
   {
-   "q": "What does oxidation remove from the carbinol carbon?",
+   "q": "(R)-Butan-2-ol is oxidized with PCC, and the product is reduced with NaBH4 in methanol. What is isolated?",
    "options": [
-    "An oxygen",
-    "A hydrogen",
-    "A carbon",
-    "An electron pair only"
+    "(R)-Butan-2-ol",
+    "(S)-Butan-2-ol",
+    "Butan-1-ol",
+    "Racemic butan-2-ol"
    ],
-   "correct": 1,
-   "why": "And puts a second bond to oxygen in its place, which is why the hydrogen has to be there.",
+   "correct": 3,
+   "why": "Oxidation turns the stereocenter into the flat carbonyl carbon of butan-2-one, and the configuration is gone with it. NaBH4 then delivers hydride to either face equally, so the alcohol comes back as a 50:50 mixture of R and S. Nothing in the sequence remembers the original configuration, nothing inverts it, and the oxygen stays on C2 throughout.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "How many rungs can a primary alcohol climb?",
+   "q": "cis- and trans-4-tert-Butylcyclohexanol are each oxidized with PCC. What do the two flasks contain?",
    "options": [
-    "Two",
-    "Three",
-    "None",
-    "One"
+    "The same compound, 4-tert-butylcyclohexanone",
+    "Two diastereomeric ketones",
+    "Two enantiomeric ketones",
+    "Ketone from the trans isomer; the cis isomer does not react"
    ],
    "correct": 0,
-   "why": "Aldehyde, then carboxylic acid, matching its two carbinol hydrogens.",
+   "why": "The two alcohols differ only in whether the OH is on the same face as the tert-butyl group. Oxidation turns that carbon into a flat C=O, which has no face to be on, and C4 is not a stereocenter in the ketone, so both give one achiral compound. The axial OH of the cis isomer is in fact oxidized faster, but faster is not unreactive: both are secondary alcohols with a carbinol C-H.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -24965,16 +24965,16 @@
    "type": "mcq"
   },
   {
-   "q": "Which class of alcohol is unreactive to all these oxidants?",
+   "q": "Propan-1-ol (bp 97 C) is oxidized with aqueous Na2Cr2O7/H2SO4 while propanal (bp 49 C) is distilled out of the flask as it forms. Why does this give propanal when simply using less oxidant does not?",
    "options": [
-    "Primary",
-    "Secondary",
-    "Tertiary",
-    "Benzylic"
+    "Distillation removes the chromium from the flask",
+    "Heating turns Cr(VI) into an anhydrous reagent",
+    "The aldehyde leaves the water before it can hydrate",
+    "Aqueous Cr(VI) cannot oxidize propanal"
    ],
    "correct": 2,
-   "why": "No carbinol C-H means nothing for the oxidation to take.",
-   "difficulty": "easy",
+   "why": "The second oxidation runs through the hydrate, and the hydrate forms only while the aldehyde sits in water. Propanal boils far below the alcohol, so distilling it off as it forms removes it from the aqueous oxidant before that can happen. Using less oxidant does not help, because whatever aldehyde stays in the flask competes for the oxidant and is oxidized as readily as the alcohol.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -24993,28 +24993,28 @@
  ],
  "carbonyl-reduction": [
   {
-   "q": "What does a hydride reagent attack?",
+   "q": "Ethyl 3-oxobutanoate, CH3COCH2CO2CH2CH3, is treated with NaBH4 in ethanol, then worked up. What is the product?",
    "options": [
-    "The carbonyl oxygen",
-    "The carbonyl carbon",
-    "An alpha hydrogen",
-    "A leaving group"
+    "Butane-1,3-diol",
+    "4-Hydroxybutan-2-one",
+    "Ethyl butanoate",
+    "Ethyl 3-hydroxybutanoate"
    ],
-   "correct": 1,
-   "why": "It is a nucleophile attacking the electrophilic carbon, which is the same general carbonyl addition you already know.",
+   "correct": 3,
+   "why": "Two carbonyls, and NaBH4 is strong enough for only one: the ketone takes a hydride and becomes a secondary alcohol, and the ester is left alone. Butane-1,3-diol is the LiAlH4 answer, with the ester reduced too. Reducing only the ester is backwards - it is the less electrophilic of the two - and removing the oxygen to leave a CH2 is Clemmensen or Wolff-Kishner work, not a hydride's.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "What does NaBH4 give from a ketone?",
+   "q": "Ethyl 5-oxohexanoate, CH3CO(CH2)3CO2CH2CH3, is treated with excess LiAlH4 in dry THF, then aqueous workup. What organic products are isolated?",
    "options": [
-    "A secondary alcohol",
-    "An alkane",
-    "No reaction",
-    "A primary alcohol instead"
+    "Ethyl 5-hydroxyhexanoate",
+    "5-Hydroxyhexanal and ethanol",
+    "Hexane-1,5-diol and ethanol",
+    "Hexan-2-ol and ethanol"
    ],
-   "correct": 0,
-   "why": "Hydride adds to the carbonyl carbon and the alkoxide is protonated on workup.",
+   "correct": 2,
+   "why": "LiAlH4 reduces both carbonyls. The ketone takes one hydride and becomes a secondary alcohol at C5; the ester takes two, expelling ethoxide on the way (ethanol after workup) and passing through an aldehyde that is reduced at once to the primary alcohol at C1. Reducing the ketone alone is what NaBH4 would do, stopping at the aldehyde needs DIBAL-H cold, and no hydride turns the ester carbon into a CH3.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -25058,28 +25058,28 @@
    "type": "mcq"
   },
   {
-   "q": "What does LiAlH4 give from a nitrile?",
+   "q": "Ethyl benzoate, PhCO2CH2CH3, is treated with one equivalent of DIBAL-H at -78 C, then aqueous workup. Besides ethanol, what is the main organic product?",
    "options": [
-    "A primary amine",
-    "An alcohol",
-    "No reaction",
-    "An aldehyde and nothing more"
+    "Benzyl alcohol",
+    "Benzaldehyde",
+    "Benzoic acid",
+    "Unreacted ethyl benzoate"
    ],
-   "correct": 0,
-   "why": "Reduction of the C-N triple bond leaves a primary amine.",
+   "correct": 1,
+   "why": "DIBAL-H delivers one hydride to the ester carbonyl, and at -78 C the tetrahedral aluminum intermediate holds together instead of collapsing, so there is never any free aldehyde in the flask for a second hydride to find. Workup breaks it open to benzaldehyde. Benzyl alcohol is the LiAlH4 result, or what DIBAL gives warm and in excess; benzoic acid would need hydrolysis, not reduction.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What do NaBH4 and LiAlH4 both give from an aldehyde?",
+   "q": "N,N-Dimethylbenzamide, PhCON(CH3)2, is treated with LiAlH4, then aqueous workup. What is the product?",
    "options": [
-    "An alkane",
-    "An acid",
-    "A ketone, one rung up",
-    "A primary alcohol"
+    "PhCH2N(CH3)2",
+    "PhCH2OH and HN(CH3)2",
+    "PhCHO",
+    "PhCH(OH)N(CH3)2"
    ],
-   "correct": 3,
-   "why": "Both reduce aldehydes and ketones, which is the row where the choice does not matter.",
+   "correct": 0,
+   "why": "An amide does not lose its nitrogen to hydride: R2N- is far too strong a base to leave, so the tetrahedral intermediate expels its oxygen (bound to aluminum) instead, and the iminium ion that forms takes a second hydride. The C=O becomes CH2 and the nitrogen stays: benzyldimethylamine. Splitting off dimethylamine to leave benzyl alcohol is the ester pattern, and the aldehyde and the hemiaminal are not where LiAlH4 stops.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -25110,29 +25110,29 @@
    "type": "mcq"
   },
   {
-   "q": "In what solvent can NaBH4 be used?",
+   "q": "Butanenitrile, CH3CH2CH2CN, is reduced with LiAlH4 and worked up. What is the product?",
    "options": [
-    "Methanol or ethanol",
-    "Only benzene",
-    "Only water-free THF",
-    "Only rigorously dry ether"
+    "Propan-1-amine, CH3CH2CH2NH2",
+    "Butanal",
+    "Butan-1-amine, CH3CH2CH2CH2NH2",
+    "Butanamide"
    ],
-   "correct": 0,
-   "why": "It reacts with protic solvents only slowly, which is a real convenience.",
-   "difficulty": "hard",
+   "correct": 2,
+   "why": "Count carbons first: the nitrile carbon is the fourth carbon of the chain, and reduction keeps it. Two hydrides add across the C-N triple bond, turning the C-N carbon into a CH2 bonded to NH2, so the amine has all four carbons. Propan-1-amine has lost the carbon that carried the nitrogen, which reduction never does; butanal needs a partial reduction plus hydrolysis; butanamide is a hydration product.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What solvent does LiAlH4 require?",
+   "q": "Benzoyl chloride, PhCOCl, is treated with excess NaBH4, then worked up. What is the product?",
    "options": [
-    "Water",
-    "Acetone",
-    "Methanol",
-    "Dry ether or THF"
+    "Benzyl alcohol",
+    "No reaction",
+    "Benzaldehyde",
+    "Benzoic acid"
    ],
-   "correct": 3,
-   "why": "It reacts violently with water, including atmospheric moisture, and needs a separate aqueous workup afterwards.",
-   "difficulty": "easy",
+   "correct": 0,
+   "why": "NaBH4 normally touches only aldehydes and ketones, but an acid chloride is far more electrophilic than an ester and is reduced even by the mild reagent. The first hydride gives a tetrahedral intermediate with chloride to expel; the aldehyde that forms is more electrophilic still, and a second hydride takes it to the primary alcohol. Benzoic acid would come from water, not from hydride.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -25175,15 +25175,15 @@
    "type": "mcq"
   },
   {
-   "q": "What happens to the alkoxide formed during a hydride reduction?",
+   "q": "4-Acetylbenzoic acid, CH3CO-C6H4-CO2H, is treated with NaBH4 and worked up. What is the product?",
    "options": [
-    "It eliminates",
-    "It attacks another carbonyl",
-    "It is the final product",
-    "It is protonated on workup"
+    "4-Acetylbenzyl alcohol",
+    "4-(1-Hydroxyethyl)benzyl alcohol",
+    "4-Ethylbenzoic acid",
+    "4-(1-Hydroxyethyl)benzoic acid"
    ],
    "correct": 3,
-   "why": "Which is why an aqueous workup is part of the procedure.",
+   "why": "NaBH4 reduces the ketone to a secondary alcohol and leaves the carboxylic acid alone - it only deprotonates the acid to a carboxylate, which is a very poor electrophile. Reducing the acid needs LiAlH4, which would reduce both groups and give the diol. Taking the ketone all the way to an ethyl group is a Clemmensen or Wolff-Kishner result.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -25214,15 +25214,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why do Clemmensen and Wolff-Kishner exist as a pair?",
+   "q": "A ketone must be converted to a CH2 group in a molecule that also carries an acetal, which has to survive. Which conditions?",
    "options": [
-    "They tolerate opposite conditions",
-    "One is faster",
-    "One is cheaper",
-    "They give quite different products"
+    "Zn(Hg) with hot concentrated HCl (Clemmensen)",
+    "H2N-NH2, then KOH and heat (Wolff-Kishner)",
+    "NaBH4 in methanol",
+    "H2 over Pd/C at 1 atm"
    ],
-   "correct": 0,
-   "why": "Whichever your substrate tolerates, the other is available.",
+   "correct": 1,
+   "why": "Acetals are stable to base and fall apart in aqueous acid, so the choice between the pair is made for you: Wolff-Kishner is strongly basic and leaves the acetal alone, while the Clemmensen's concentrated HCl would hydrolyze it. NaBH4 stops one rung short, at the alcohol, and hydrogenation at one atmosphere does not touch a ketone.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -25266,15 +25266,15 @@
    "type": "mcq"
   },
   {
-   "q": "How many hydrides does reducing a ketone require?",
+   "q": "A ketone C5H10O is reduced with NaBH4, and the alcohol it gives has no stereocenter. Which ketone was it?",
    "options": [
-    "One",
-    "Two",
-    "Three",
-    "Four"
+    "Pentan-2-one",
+    "Pentan-3-one",
+    "3-Methylbutan-2-one",
+    "Any of them: a ketone reduction never makes a stereocenter"
    ],
-   "correct": 0,
-   "why": "The alkoxide formed has nothing to expel, so the reaction stops after one delivery.",
+   "correct": 1,
+   "why": "Hydride turns the carbonyl carbon into a CH(OH), and that carbon is a stereocenter only if its two carbon groups differ. Pentan-3-one has an ethyl on each side, so pentan-3-ol is achiral. Pentan-2-one (methyl and propyl) and 3-methylbutan-2-one (methyl and isopropyl) each give a new stereocenter, formed as a racemate. A symmetric ketone is the only case where none appears.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -25305,29 +25305,29 @@
    "type": "mcq"
   },
   {
-   "q": "What is the product of reducing a ketone?",
+   "q": "Cyclohexane-1,4-dione is treated with excess NaBH4. What is the product?",
    "options": [
-    "A primary alcohol always",
-    "A secondary alcohol",
-    "A tertiary alcohol",
-    "An aldehyde"
+    "One enantiomer of trans-cyclohexane-1,4-diol",
+    "4-Hydroxycyclohexanone only",
+    "Cyclohexane",
+    "A cis/trans mixture of cyclohexane-1,4-diol"
    ],
-   "correct": 1,
-   "why": "The carbonyl carbon already bore two carbon substituents, and gains an H and an OH.",
-   "difficulty": "easy",
+   "correct": 3,
+   "why": "With excess reagent both ketones are reduced. Each hydride can arrive on either face, and the second one's face is not tied to the first, so the two OH groups end up on the same side in some molecules and on opposite sides in others. Both diastereomers have a mirror plane and are achiral, so an enantiomer is not on offer. Removing the oxygens altogether would need Clemmensen or Wolff-Kishner.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What is the product of reducing an aldehyde?",
+   "q": "(R)-3-Methylcyclohexanone is reduced with NaBH4. What is the stereochemical outcome?",
    "options": [
-    "A primary alcohol",
-    "A ketone",
-    "An acid",
-    "A secondary alcohol"
+    "cis and trans alcohols, both R at C3",
+    "A racemic mixture of 3-methylcyclohexanol",
+    "A single stereoisomer",
+    "Four stereoisomers in equal amounts"
    ],
    "correct": 0,
-   "why": "The carbonyl carbon bore one carbon substituent and one hydrogen.",
-   "difficulty": "medium",
+   "why": "C3 is not touched by the reduction, so its configuration survives in every product molecule. The new stereocenter at C1 forms by hydride attack on either face of the carbonyl, giving the cis and trans alcohols - diastereomers, not enantiomers, because C3 is fixed - and there is no reason for them to form 50:50. A racemate would need both configurations at C3, which the starting material did not have.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -25385,28 +25385,28 @@
  ],
  "hydrogenation": [
   {
-   "q": "What is required for H2 to reduce an alkene?",
+   "q": "Hex-3-yne is treated with H2 over Lindlar catalyst. What is the product?",
    "options": [
-    "Heat on its own",
-    "A metal catalyst",
-    "Acid",
-    "UV light"
+    "(E)-Hex-3-ene",
+    "Hexane",
+    "(Z)-Hex-3-ene",
+    "A 1:1 mixture of (E)- and (Z)-hex-3-ene"
    ],
-   "correct": 1,
-   "why": "Hydrogen gas and an alkene together do nothing at room temperature; breaking the H-H bond needs a surface.",
+   "correct": 2,
+   "why": "Lindlar catalyst is poisoned palladium: it stops after one equivalent of H2, and because it is still a surface reaction both hydrogens arrive from the same face, putting the two ethyl groups on the same side - Z. The E alkene is the Na/NH3 product, hexane is what ordinary Pd/C gives, and a 1:1 mixture would need a mechanism with no geometric preference, which a surface does not have.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which catalysts are used for hydrogenation?",
+   "q": "Which starting material and conditions give (E)-oct-4-ene?",
    "options": [
-    "Pd/C, Pt or Raney nickel",
-    "OsO4",
-    "mCPBA",
-    "CrO3 or KMnO4 in acid"
+    "Oct-4-yne with H2 over Lindlar catalyst",
+    "Oct-4-yne with H2 over Pd/C",
+    "Oct-1-yne with Na in liquid NH3",
+    "Oct-4-yne with Na in liquid NH3"
    ],
-   "correct": 0,
-   "why": "All work by adsorbing both hydrogen and the alkene onto a metal surface.",
+   "correct": 3,
+   "why": "The double bond has to end up between C4 and C5, so the triple bond must start there; oct-1-yne would put it at the end of the chain. Of the three ways to reduce oct-4-yne, only the dissolving-metal reduction stops at the trans alkene, because its geometry is set at a vinyl anion that sits with the two propyl groups apart. Lindlar gives the Z isomer and plain Pd/C runs on to octane.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -25437,16 +25437,16 @@
    "type": "mcq"
   },
   {
-   "q": "Which group is readily reduced by H2/Pd at 1 atm?",
+   "q": "1-Nitro-4-vinylbenzene, O2N-C6H4-CH=CH2, is stirred under H2 (1 atm) over Pd/C until no more gas is taken up. What is the product?",
    "options": [
-    "An ester",
-    "An alkene",
-    "A carboxylic acid",
-    "An amide"
+    "1-Ethyl-4-nitrobenzene",
+    "4-Vinylaniline",
+    "4-Ethylaniline",
+    "4-Ethylcyclohexan-1-amine"
    ],
-   "correct": 1,
-   "why": "Alkenes, alkynes, imines, nitro groups and azides are on the readily-reduced list.",
-   "difficulty": "easy",
+   "correct": 2,
+   "why": "Both groups are on the readily-reduced list: the vinyl group becomes an ethyl group and the nitro group becomes NH2. Stopping after either one would need a more selective method than an open-ended hydrogenation. The benzene ring survives, because reducing an aromatic ring needs high pressure and temperature.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -25489,15 +25489,15 @@
    "type": "mcq"
   },
   {
-   "q": "What does an alkyne give over ordinary Pd/C?",
+   "q": "Methyl (E)-3-phenylprop-2-enoate, PhCH=CHCO2CH3, is hydrogenated over Pd/C at 1 atm. What is the product?",
    "options": [
-    "A cis alkene",
-    "An alkane",
-    "A trans alkene",
-    "No reaction"
+    "3-Phenylpropan-1-ol, PhCH2CH2CH2OH",
+    "Methyl 3-phenylpropanoate, PhCH2CH2CO2CH3",
+    "Methyl 3-cyclohexylpropanoate, C6H11CH2CH2CO2CH3",
+    "(E)-3-Phenylprop-2-en-1-ol, PhCH=CHCH2OH"
    ],
    "correct": 1,
-   "why": "It is reduced past the alkene straight through to the alkane.",
+   "why": "At one atmosphere over Pd/C the C=C is reduced and the rest is not: esters are essentially untouched by catalytic hydrogenation, and a benzene ring needs severe conditions. The two alcohols are what a hydride reagent does to the ester, and the cyclohexyl ester would need the ring reduced as well.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -25515,16 +25515,16 @@
    "type": "mcq"
   },
   {
-   "q": "What is the Lindlar catalyst?",
+   "q": "A hydrocarbon C6H10 takes up two equivalents of H2 over Pd/C to give hexane. With one equivalent of H2 over Lindlar catalyst it gives (Z)-hex-2-ene. What is it?",
    "options": [
-    "Raney nickel",
-    "Osmium tetroxide with NMO added",
-    "Pt on carbon",
-    "Pd/CaCO3 poisoned with lead"
+    "Hex-2-yne",
+    "Hex-1-yne",
+    "Cyclohexene",
+    "Hexa-1,5-diene"
    ],
-   "correct": 3,
-   "why": "The poisoning is what makes it stop at the alkene rather than continuing.",
-   "difficulty": "easy",
+   "correct": 0,
+   "why": "Two equivalents of H2 to reach hexane means two pi bonds and no ring, which rules out cyclohexene (one equivalent, and it gives cyclohexane). Lindlar stops an alkyne at the cis alkene in the same position, so a Z double bond at C2 means a triple bond at C2. Hex-1-yne would give hex-1-ene, and hexa-1,5-diene has its double bonds at the two ends of the chain, so no partial reduction of it can leave a C=C at C2.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -25606,28 +25606,28 @@
    "type": "mcq"
   },
   {
-   "q": "Why does the catalyst matter so much?",
+   "q": "(Z)-But-2-ene is treated with D2 over Pd/C. What is the stereochemistry of the product, 2,3-dideuteriobutane?",
    "options": [
-    "It lowers the barrier to splitting H-H",
-    "It supplies the hydrogen",
-    "It changes the product",
-    "It shifts the position of the equilibrium"
+    "A racemic mixture",
+    "A 1:1 mixture of meso and racemic",
+    "The meso compound only",
+    "No stereocenters, since D and H count as the same"
    ],
-   "correct": 0,
-   "why": "The reaction is thermodynamically downhill already; the barrier is what stops it.",
-   "difficulty": "medium",
+   "correct": 2,
+   "why": "C2 and C3 each end up carrying CH3, H, D and the other carbon, so both are stereocenters - to the priority rules D and H are different atoms. Syn delivery onto a cis alkene puts the two D atoms on the same face and gives the isomer with an internal mirror plane: meso. It is the same bookkeeping as OsO4 on cis-but-2-ene, and the trans alkene would give the racemate.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Is catalytic hydrogenation thermodynamically favorable?",
+   "q": "2-Methylbut-1-ene, 2-methylbut-2-ene and 3-methylbut-1-ene all hydrogenate to 2-methylbutane. Which releases the most heat?",
    "options": [
-    "Only at high pressure and temperature",
-    "Only for alkynes",
-    "No, it is uphill",
-    "Yes, but slow without a catalyst"
+    "3-Methylbut-1-ene",
+    "2-Methylbut-2-ene",
+    "2-Methylbut-1-ene",
+    "All three release the same amount"
    ],
-   "correct": 3,
-   "why": "Which is why a catalyst is enough to make it go.",
+   "correct": 0,
+   "why": "Same product, so the heat released measures how high each alkene started. 3-Methylbut-1-ene is monosubstituted, the least stable, and has the farthest to fall (about 127 kJ/mol). 2-Methylbut-1-ene is disubstituted (about 119) and 2-methylbut-2-ene trisubstituted (about 113), the most stable and the least heat. Equal heats would mean equal stabilities, which the substitution pattern rules out.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -25684,29 +25684,29 @@
    "type": "mcq"
   },
   {
-   "q": "What does poisoned mean for the Lindlar catalyst?",
+   "q": "Hex-3-yne is reduced with Na in liquid NH3, and the product is treated with Br2 in CH2Cl2. What is the final product?",
    "options": [
-    "Slow to filter",
-    "Contaminated by accident in storage",
-    "Deliberately deactivated",
-    "Toxic to handle"
+    "Racemic 3,4-dibromohexane",
+    "(E)-3,4-Dibromohex-3-ene",
+    "Hexane",
+    "meso-3,4-Dibromohexane"
    ],
-   "correct": 2,
-   "why": "Quinoline and lead reduce its activity on purpose.",
-   "difficulty": "medium",
+   "correct": 3,
+   "why": "Na/NH3 gives (E)-hex-3-ene. Bromine then adds anti through a bromonium ion, and anti addition to a trans alkene with identical ends puts the two bromines where the molecule has an internal mirror plane: meso. The racemate is what the Z alkene (from Lindlar) would give; the dibromoalkene is Br2 on the alkyne itself, which the first step already used up.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Where do the two hydrogens come from in catalytic hydrogenation?",
+   "q": "1,4-Dimethylcyclohex-1-ene is hydrogenated over Pt. What is the product?",
    "options": [
-    "The solvent",
-    "The metal surface",
-    "Acid in the mixture",
-    "The alkene itself"
+    "Only cis-1,4-dimethylcyclohexane",
+    "A mixture of cis- and trans-1,4-dimethylcyclohexane",
+    "Only trans-1,4-dimethylcyclohexane",
+    "A single enantiomer of 1,4-dimethylcyclohexane"
    ],
    "correct": 1,
-   "why": "Which is why they can only arrive on one face.",
-   "difficulty": "easy",
+   "why": "Syn addition fixes how the two new hydrogens relate to each other, at C1 and C2. It says nothing about how they relate to C4, whose methyl was in place before the alkene touched the catalyst. The ring can lie on the surface with that methyl facing up or down, so the new C1-H ends up on either side of it and both diastereomers form. Neither is chiral, so an enantiomer is not a possible answer.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -25777,16 +25777,16 @@
  ],
  "alkene-oxidation": [
   {
-   "q": "What does mCPBA give from an alkene?",
+   "q": "1-Methylcyclohexene is treated with O3, then Me2S. What is the product?",
    "options": [
-    "A diol",
-    "An epoxide",
-    "Two carbonyls",
-    "An alkane"
+    "Cyclohexanone and formaldehyde",
+    "6-Oxoheptanal, CH3CO(CH2)4CHO",
+    "6-Oxoheptanoic acid",
+    "Hexanedial"
    ],
    "correct": 1,
-   "why": "A single oxygen delivered across the double bond in one concerted step.",
-   "difficulty": "easy",
+   "why": "The ring C=C is cut, but the rest of the ring keeps the two ends joined, so one molecule comes out with two carbonyls. The methyl-bearing carbon has no H and becomes a ketone; the other alkene carbon had one H and becomes an aldehyde: seven carbons in all. The acid is the H2O2 answer, cyclohexanone plus formaldehyde needs a C=CH2 outside the ring, and hexanedial has lost the methyl carbon.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -25803,28 +25803,28 @@
    "type": "mcq"
   },
   {
-   "q": "What does OsO4 give from an alkene?",
+   "q": "An unknown C6H10 gives OHC-CH2CH2CH2CH2-CHO as its only product with O3, then Me2S. What was it?",
    "options": [
-    "A syn diol",
-    "An epoxide",
-    "Two aldehydes",
-    "An anti diol instead"
+    "Hexa-1,5-diene",
+    "1-Methylcyclopentene",
+    "Hex-3-yne",
+    "Cyclohexene"
    ],
-   "correct": 0,
-   "why": "Both oxygens are delivered to the same face through a cyclic osmate ester.",
+   "correct": 3,
+   "why": "One product holding all six carbons means the C=C was in a ring, and two aldehydes mean each alkene carbon carried a hydrogen: cyclohexene, cut open between C1 and C2. Hexa-1,5-diene would give butanedial plus two formaldehydes; 1-methylcyclopentene gives a keto-aldehyde, because its methyl-bearing carbon has no H; hex-3-yne is cleaved to two molecules of propanoic acid.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What is NMO used for alongside OsO4?",
+   "q": "(E)-But-2-ene is treated with mCPBA. What is the product?",
    "options": [
-    "As a poison",
-    "As the solvent for the reaction",
-    "As a co-oxidant to make OsO4 catalytic",
-    "As an acid"
+    "trans-2,3-Dimethyloxirane, as a racemic mixture",
+    "cis-2,3-Dimethyloxirane, a meso compound",
+    "A single enantiomer of trans-2,3-dimethyloxirane",
+    "Butane-2,3-diol"
    ],
-   "correct": 2,
-   "why": "OsO4 is expensive and toxic, so it is regenerated in situ.",
+   "correct": 0,
+   "why": "Epoxidation is concerted, so the alkene geometry is carried straight into the ring: trans alkene, trans epoxide. That epoxide has no mirror plane and is chiral, and mCPBA attacks either face of the flat alkene equally, so the two enantiomers form 50:50. The cis, meso epoxide comes from (Z)-but-2-ene, and a diol needs a second step (aqueous acid) or a different reagent (OsO4).",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -25868,15 +25868,15 @@
    "type": "mcq"
   },
   {
-   "q": "What does O3 followed by Me2S do?",
+   "q": "(E)-But-2-ene is treated with mCPBA, then aqueous acid. What is the product?",
    "options": [
-    "Nothing",
-    "Makes an epoxide and stops",
-    "Cleaves the C=C to carbonyls",
-    "Makes a diol"
+    "Racemic butane-2,3-diol",
+    "trans-2,3-Dimethyloxirane",
+    "meso-Butane-2,3-diol",
+    "Butan-2-one"
    ],
    "correct": 2,
-   "why": "The reductive workup stops at the aldehydes and ketones.",
+   "why": "Two stereospecific steps, so track both. The trans alkene gives the trans epoxide; water then opens it from the back side, inverting the carbon it attacks. Anti addition across a trans alkene lands the two OH groups where the molecule has a mirror plane: meso. OsO4 on the same alkene gives the racemic diol, which is the point of the pair - changing either the reagent or the alkene geometry flips the answer.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -25907,41 +25907,41 @@
    "type": "mcq"
   },
   {
-   "q": "A carbon of the alkene bearing two substituents becomes what on ozonolysis?",
+   "q": "Methylenecyclohexane (a cyclohexane ring carrying a =CH2) is treated with O3, then Me2S. What are the products?",
    "options": [
-    "An acid",
-    "An alcohol",
-    "An aldehyde",
-    "A ketone"
+    "Cyclohexanecarbaldehyde",
+    "Cyclohexanone and carbon dioxide",
+    "Heptanedial",
+    "Cyclohexanone and formaldehyde"
    ],
    "correct": 3,
-   "why": "Two substituents means no hydrogen on that carbon, so it can only be a ketone.",
+   "why": "The C=C sits outside the ring, so cutting it separates the ring from its CH2. The ring carbon bore two carbon substituents and becomes a ketone; the CH2 becomes formaldehyde. CO2 is what that CH2 becomes with H2O2 workup, not Me2S. Cyclohexanecarbaldehyde keeps all seven carbons in one piece, and a dialdehyde would need the double bond inside the ring.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "A carbon of the alkene bearing one hydrogen becomes what with reductive workup?",
+   "q": "2-Methylpent-2-ene, (CH3)2C=CHCH2CH3, is treated with O3, then H2O2. What are the products?",
    "options": [
-    "An alkane",
-    "A ketone instead",
-    "An aldehyde",
-    "An acid"
+    "Acetone and propanal",
+    "Acetic acid and propanoic acid",
+    "Acetone and propanoic acid",
+    "Propanoic acid only"
    ],
    "correct": 2,
-   "why": "With oxidative workup that aldehyde would go on to a carboxylic acid.",
+   "why": "Cut the C=C and put an oxygen on each end. The carbon carrying two methyls becomes acetone, and with no hydrogen on that carbonyl carbon the oxidative workup cannot touch it. The other carbon carried one H, so it would be propanal after Me2S but goes on to propanoic acid with H2O2. Acetic acid would need a carbon to be removed from the ketone fragment, which no workup does.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What does cold dilute basic KMnO4 give from an alkene?",
+   "q": "Cyclohexene is treated with mCPBA, then aqueous acid. What is the product?",
    "options": [
-    "Cleavage to two fragments",
-    "A syn diol",
-    "An epoxide",
-    "An anti diol"
+    "cis-Cyclohexane-1,2-diol, a meso compound",
+    "trans-Cyclohexane-1,2-diol, racemic",
+    "Cyclohexanone",
+    "Hexanedial"
    ],
    "correct": 1,
-   "why": "The same outcome as OsO4, more cheaply and less cleanly.",
+   "why": "The epoxide forms on one face; water then attacks the protonated epoxide from the opposite face, so the two OH groups end up trans. The trans diol has no mirror plane and forms as both enantiomers equally. The cis (meso) diol is what OsO4 or cold KMnO4 gives, and hexanedial is ozonolysis, which cuts the ring instead of adding across it.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -26065,41 +26065,41 @@
    "type": "mcq"
   },
   {
-   "q": "What is the full name of mCPBA?",
+   "q": "An alkene gives cyclopentanone and acetaldehyde on ozonolysis with Me2S workup. What was the alkene?",
    "options": [
-    "meta-chloroperoxybenzoic acid",
-    "methyl chloroperbenzoate",
-    "monochloroperbenzene",
-    "meta-chlorobenzoic acid anhydride"
+    "Ethylidenecyclopentane",
+    "1-Ethylcyclopentene",
+    "Vinylcyclopentane (cyclopentylethene)",
+    "1-Methylcyclohexene"
    ],
    "correct": 0,
-   "why": "A peroxyacid, which is what delivers the single oxygen atom.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Why are epoxides reactive?",
-   "options": [
-    "They are persistent radicals",
-    "They are aromatic",
-    "They are strained rings",
-    "They are ionic"
-   ],
-   "correct": 2,
-   "why": "Which is what makes the ring-opening step of the anti-diol route possible.",
+   "why": "Work backwards by joining the two carbonyl carbons with a double bond: the cyclopentanone carbon is a ring carbon, and the acetaldehyde carbon is a =CHCH3 on it. Two separate products mean the C=C was outside the ring. 1-Ethylcyclopentene has its C=C in the ring and gives a single keto-aldehyde; vinylcyclopentane gives cyclopentanecarbaldehyde and formaldehyde; 1-methylcyclohexene gives 6-oxoheptanal.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What does a peroxyacid transfer to an alkene?",
+   "q": "2-Methylbuta-1,3-diene (isoprene), CH2=C(CH3)-CH=CH2, is treated with excess O3, then Me2S. What are the products?",
    "options": [
-    "A hydroxyl",
-    "One oxygen",
-    "Two oxygens",
-    "A proton"
+    "Two formaldehydes and butane-2,3-dione",
+    "Formaldehyde and methacrolein, CH2=C(CH3)CHO",
+    "Two formaldehydes and 2-oxopropanal, CH3COCHO",
+    "Acetone and ethanedial"
    ],
-   "correct": 1,
-   "why": "In one concerted step through a cyclic transition state.",
+   "correct": 2,
+   "why": "Excess ozone cuts both C=C bonds. Each terminal CH2 leaves as formaldehyde. The two middle carbons stay bonded to each other: C2 carried the methyl and no H, so it becomes a ketone, and C3 carried one H, so it becomes an aldehyde - CH3CO-CHO. Methacrolein is what one cleavage would leave; butane-2,3-dione needs a methyl on C3 that isoprene does not have; acetone would need two methyls on one alkene carbon.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which conditions turn cyclopentene into cis-cyclopentane-1,2-diol?",
+   "options": [
+    "OsO4 with NMO, then NaHSO3",
+    "mCPBA, then aqueous acid",
+    "O3, then Me2S",
+    "Hot concentrated KMnO4"
+   ],
+   "correct": 0,
+   "why": "A cis diol means both oxygens on the same face, and only a reagent that delivers them together does that: OsO4, through its cyclic osmate ester (NMO regenerates the osmium, and the bisulfite frees the diol). The epoxide route opens from the back and gives the trans diol; ozone cuts the ring to pentanedial; hot concentrated KMnO4 also cleaves the ring.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -30354,15 +30354,15 @@
  ],
  "ir": [
   {
-   "q": "Infrared (IR) spectroscopy primarily tells you about a molecule’s:",
+   "q": "A compound C₄H₁₀O shows a broad, strong IR band at 3350 cm⁻¹, C–H stretches at 2960–2870 cm⁻¹, and nothing between 1650 and 1850 cm⁻¹. Which structure fits?",
    "options": [
-    "Functional groups",
-    "Exact molecular weight",
-    "Stereochemistry at each center",
-    "The number of carbons"
+    "Diethyl ether, CH₃CH₂OCH₂CH₃",
+    "1-Methoxypropane, CH₃OCH₂CH₂CH₃",
+    "2-Methoxypropane, (CH₃)₂CHOCH₃",
+    "Butan-1-ol, CH₃CH₂CH₂CH₂OH"
    ],
-   "correct": 0,
-   "why": "Different bonds (O–H, C=O, C≡N, etc.) vibrate at characteristic frequencies, so IR is mainly used to identify functional groups.",
+   "correct": 3,
+   "why": "All four are C₄H₁₀O, so the formula decides nothing and the 3350 band decides everything: broad and strong at that position is a hydrogen-bonded alcohol O–H. The three ethers have their oxygen bonded to two carbons and no O–H at all, so they would be empty above 3000 cm⁻¹; their C–O stretch sits in the fingerprint region, where it identifies nothing on its own.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -30380,16 +30380,16 @@
    "type": "mcq"
   },
   {
-   "q": "A strong, sharp absorption around 1700-1750 cm⁻¹ most strongly suggests the presence of a:",
+   "q": "A compound C₄H₈O shows a strong, sharp band at 1715 cm⁻¹, no bands near 2720 or 2820 cm⁻¹, and nothing above 3000 cm⁻¹. Which structure fits?",
    "options": [
-    "O–H group",
-    "C≡C triple bond",
-    "C=O (carbonyl) group",
-    "Aromatic ring only"
+    "Butanal, CH₃CH₂CH₂CHO",
+    "Butan-2-one, CH₃COCH₂CH₃",
+    "But-3-en-2-ol, CH₂=CHCH(OH)CH₃",
+    "Tetrahydrofuran, a five-membered cyclic ether"
    ],
-   "correct": 2,
-   "why": "The C=O stretch is a strong, sharp, and very diagnostic IR absorption typically found around 1700-1750 cm⁻¹ (exact position shifts slightly by functional group: ester, ketone, acid, amide, etc.).",
-   "difficulty": "hard",
+   "correct": 1,
+   "why": "C₄H₈O has one degree of unsaturation, and a strong band at 1715 says it is a C=O - a ketone. Butanal would put its carbonyl near 1725 and show the weak aldehyde C–H pair at 2720 and 2820, which are missing. The unsaturated alcohol would show a broad O–H and an =C–H above 3000; tetrahydrofuran spends its degree of unsaturation on a ring and has no carbonyl.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -30406,16 +30406,16 @@
    "type": "mcq"
   },
   {
-   "q": "A typical dialkyl ketone C=O stretch appears in IR around:",
+   "q": "A compound C₄H₆O₂ shows a very broad IR band from 2500 to 3300 cm⁻¹, a strong band at 1695 cm⁻¹ and a medium one at 1650 cm⁻¹. Which structure fits?",
    "options": [
-    "1715 cm⁻¹",
-    "1000-1100 cm⁻¹",
-    "3300 cm⁻¹",
-    "500-600 cm⁻¹"
+    "Methyl acrylate, CH₂=CHCO₂CH₃",
+    "(E)-But-2-enoic acid, CH₃CH=CHCO₂H",
+    "Butane-2,3-dione, CH₃COCOCH₃",
+    "γ-Butyrolactone, a five-membered cyclic ester"
    ],
-   "correct": 0,
-   "why": "Simple ketones show a strong, sharp carbonyl stretch near 1715 cm⁻¹; other carbonyl types shift higher or lower depending on the neighboring atoms.",
-   "difficulty": "easy",
+   "correct": 1,
+   "why": "The sprawling 2500–3300 band is a carboxylic acid O–H and nothing else, which removes the ester, the diketone and the lactone - none of them has an O–H. The rest agrees: an acid C=O at 1710 lowered by conjugation lands near 1690, and 1650 is the C=C that conjugation needs. C₄H₆O₂ has two degrees of unsaturation, one for the C=O and one for the C=C.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -30430,15 +30430,15 @@
    "type": "tf"
   },
   {
-   "q": "A C-H stretching absorption appearing above 3000 cm⁻¹ most strongly suggests the carbon involved is:",
+   "q": "A compound C₆H₁₂ shows IR bands at 3080, 2960–2860 and 1640 cm⁻¹, and nothing else of note above 1500 cm⁻¹. Which structure fits?",
    "options": [
-    "sp3 hybridized, as in an alkane",
-    "sp2 or sp hybridized, as in an alkene, aromatic ring, or alkyne",
-    "part of a carbonyl group",
-    "bonded directly to oxygen"
+    "Cyclohexane",
+    "Methylcyclopentane",
+    "2,3-Dimethylbut-2-ene",
+    "Hex-1-ene"
    ],
-   "correct": 1,
-   "why": "C-H bonds on sp2 or sp carbons are stronger and stretch above 3000 cm⁻¹, while ordinary sp3 alkane C-H stretches fall just below 3000 cm⁻¹.",
+   "correct": 3,
+   "why": "C₆H₁₂ has one degree of unsaturation, a ring or a C=C. The 3080 band is an sp² C–H, above the 3000 line, and 1640 is a C=C stretch, so this is an alkene carrying vinyl hydrogens. The two cycloalkanes have only sp³ C–H below 3000 and no C=C band. 2,3-Dimethylbut-2-ene has no hydrogen on either alkene carbon, and its symmetric C=C barely changes the dipole, so it shows neither band.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -30456,15 +30456,17 @@
    "type": "mcq"
   },
   {
-   "q": "IR spectroscopy alone can usually determine the complete three-dimensional structure of an unknown molecule.",
+   "q": "A compound C₅H₈O shows a strong IR band at 1745 cm⁻¹, C–H stretches only below 3000 cm⁻¹, no bands near 2720 or 2820 cm⁻¹, and no O–H. Which structure fits?",
    "options": [
-    "True",
-    "False"
+    "Cyclopentanone",
+    "Pent-4-en-2-one, CH₂=CHCH₂COCH₃",
+    "3-Methylbut-3-en-2-one, CH₂=C(CH₃)COCH₃",
+    "Cyclopent-2-en-1-ol"
    ],
-   "correct": 1,
-   "why": "IR reveals which functional groups are present from characteristic bond vibrations, but not the full connectivity or 3D arrangement of atoms; other tools like NMR and mass spec are needed for that.",
-   "difficulty": "easy",
-   "type": "tf"
+   "correct": 0,
+   "why": "C₅H₈O has two degrees of unsaturation. The strong 1745 is a carbonyl, and with no C–H above 3000 there is no =C–H, so the second degree is a ring. Five-membered ring strain stiffens a ketone C=O from 1715 to about 1745, which is what is seen. Both enones would show =C–H above 3000 and a C=C stretch, the conjugated one with its C=O down near 1685; the cyclic alcohol has an O–H and no carbonyl.",
+   "difficulty": "medium",
+   "type": "mcq"
   },
   {
    "q": "A sharp absorption near 2250 cm⁻¹ that is NOT accompanied by a sharp C-H stretch near 3300 cm⁻¹ most likely belongs to a:",
@@ -30480,28 +30482,30 @@
    "type": "mcq"
   },
   {
-   "q": "The 'fingerprint region' of an IR spectrum, used to distinguish very similar molecules from each other, spans roughly:",
+   "q": "A compound C₃H₇NO shows two N–H bands at 3350 and 3180 cm⁻¹ and a strong band at 1660 cm⁻¹, with no bands near 2720 or 2820 cm⁻¹. Which structure fits?",
    "options": [
-    "1500-600 cm⁻¹",
-    "4000-3000 cm⁻¹",
-    "2500-2000 cm⁻¹",
-    "400-200 cm⁻¹"
+    "N-Methylacetamide, CH₃CONHCH₃",
+    "N,N-Dimethylformamide, HCON(CH₃)₂",
+    "Propanamide, CH₃CH₂CONH₂",
+    "3-Aminopropanal, H₂NCH₂CH₂CHO"
    ],
-   "correct": 0,
-   "why": "Below about 1500 cm⁻¹, absorptions arise from complex combinations of bending and skeletal vibrations unique to each molecule, making this region a usable fingerprint even when individual bands are hard to assign.",
-   "difficulty": "easy",
+   "correct": 2,
+   "why": "A strong C=O as low as 1660 is an amide, where the nitrogen lone pair donates into the carbonyl and weakens it. Two N–H bands mean an NH₂, which only the primary amide has: N-methylacetamide has one N–H and DMF none. 3-Aminopropanal has an NH₂ too, but its aldehyde C=O would sit near 1725, with the weak C–H pair at 2720 and 2820.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A bond between two lighter atoms, such as C-H, generally stretches at a higher wavenumber than a bond between a carbon and a heavier atom, such as C-Cl, all else being roughly equal.",
+   "q": "An unknown shows IR bands at 3060, 2820 and 2720 (both weak), 1700 (strong) and 1600/1580 cm⁻¹, and no broad band above 3200 cm⁻¹. Which structure fits?",
    "options": [
-    "True",
-    "False"
+    "Acetophenone, C₆H₅COCH₃",
+    "Benzyl alcohol, C₆H₅CH₂OH",
+    "Cyclohexanecarbaldehyde, C₆H₁₁CHO",
+    "Benzaldehyde, C₆H₅CHO"
    ],
-   "correct": 0,
-   "why": "Vibrational frequency increases as reduced mass decreases, so light-atom bonds like C-H vibrate much faster, and thus at higher wavenumber, than heavier-atom bonds like C-Cl.",
-   "difficulty": "easy",
-   "type": "tf"
+   "correct": 3,
+   "why": "The weak pair at 2820 and 2720 is the aldehyde C–H and appears nowhere else, which rules out the ketone. 3060 and the 1600/1580 cluster are an aromatic ring, which rules out cyclohexanecarbaldehyde, whose C–H stretches all sit below 3000. A carbonyl at 1700 rather than 1725 is conjugation with the ring pulling it down. Benzyl alcohol has no C=O and would show a broad O–H.",
+   "difficulty": "hard",
+   "type": "mcq"
   },
   {
    "q": "An ester C=O stretch typically appears at a slightly higher wavenumber (about 1735-1750 cm⁻¹) than a ketone C=O (about 1715 cm⁻¹) mainly because:",
@@ -30554,15 +30558,15 @@
    "type": "tf"
   },
   {
-   "q": "Compared to a simple alcohol's O-H stretch, a carboxylic acid's O-H stretch in IR is typically:",
+   "q": "An unknown with no O–H or N–H absorption shows two strong carbonyl bands, at 1820 and 1760 cm⁻¹. Which structure fits?",
    "options": [
-    "Much broader and lower",
-    "Sharper and narrower",
-    "Completely absent",
-    "Found only above 4000 cm⁻¹"
+    "Ethyl acetate, CH₃CO₂CH₂CH₃",
+    "Acetyl chloride, CH₃COCl",
+    "Acetic anhydride, (CH₃CO)₂O",
+    "Butane-2,3-dione, CH₃COCOCH₃"
    ],
-   "correct": 0,
-   "why": "Carboxylic acids hydrogen-bond strongly to form dimers even in dilute solution, producing a very broad O-H absorption from roughly 2500-3300 cm⁻¹, broader than a typical alcohol O-H band.",
+   "correct": 2,
+   "why": "Two carbonyl bands that high are the signature of an anhydride: its two C=O groups share an oxygen and stretch together, in step and out of step, so one absorption splits into two. Ethyl acetate has a single band at 1735 and acetyl chloride a single band near 1800. The diketone's carbonyls are ketones, down near 1715, nowhere near 1820.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -30593,15 +30597,17 @@
    "type": "mcq"
   },
   {
-   "q": "A higher carbonyl stretching wavenumber generally corresponds to a carbonyl bond with a higher force constant, meaning a stiffer, more double-bond-like C=O.",
+   "q": "Cyclohexanol is oxidized with Jones reagent. Which change in the IR spectrum shows the reaction has gone to completion?",
    "options": [
-    "True",
-    "False"
+    "The strong 1715 band is gone and a broad 3350 band has now appeared",
+    "The broad 3350 band is gone and a strong 1715 band has appeared",
+    "A sharp new band has appeared at 2250",
+    "Two weak new bands have appeared at 2720 and 2820"
    ],
-   "correct": 0,
-   "why": "Stretching frequency scales with the square root of the force constant divided by reduced mass, so for similar atoms a stiffer, more double-bond-like bond vibrates at a higher wavenumber.",
+   "correct": 1,
+   "why": "Cyclohexanol is oxidized to cyclohexanone, so the spectrum should lose the alcohol and gain a ketone: the broad O–H at 3350 disappears and the C=O appears at 1715. The reverse change is what a reduction would show. The 2720/2820 pair belongs to an aldehyde C–H, which a secondary alcohol cannot give, and a band at 2250 would mean a nitrile.",
    "difficulty": "medium",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Cyclopentanone's carbonyl stretch appears at a noticeably higher wavenumber than cyclohexanone's. This ring-size effect is best explained by:",
@@ -30732,15 +30738,15 @@
  ],
  "h-nmr": [
   {
-   "q": "¹H NMR chemical shift (in ppm) tells you mainly about a hydrogen’s:",
+   "q": "A compound C₄H₁₀O shows two ¹H NMR signals: 3.4 ppm (4H, quartet) and 1.2 ppm (6H, triplet). Which structure fits?",
    "options": [
-    "Electronic environment (shielding/deshielding by nearby groups)",
-    "Mass",
-    "Exact bond angle",
-    "Isotope"
+    "Diethyl ether, CH₃CH₂OCH₂CH₃",
+    "Butan-1-ol, CH₃CH₂CH₂CH₂OH",
+    "1-Methoxypropane, CH₃OCH₂CH₂CH₃",
+    "2-Methylpropan-2-ol, (CH₃)₃COH"
    ],
    "correct": 0,
-   "why": "Electron-withdrawing groups nearby deshield a proton, shifting its signal downfield (higher ppm); shielded protons appear upfield.",
+   "why": "Two signals for ten hydrogens means a lot of symmetry. A quartet and a triplet in a 2:3 ratio is an ethyl group, and the 4H and 6H integrals say there are two identical ethyls; the CH₂ at 3.4 sits on oxygen. Butan-1-ol and 1-methoxypropane each have four environments, and 2-methylpropan-2-ol gives a 9H singlet and a 1H O–H singlet with no splitting at all.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -30771,52 +30777,54 @@
    "type": "mcq"
   },
   {
-   "q": "In ¹H NMR, the integrated area under a peak tells you mainly about:",
+   "q": "A compound C₄H₈O₂ shows ¹H NMR signals at 3.7 ppm (3H, singlet), 2.3 ppm (2H, quartet) and 1.1 ppm (3H, triplet); its IR has a strong band at 1740 cm⁻¹. Which structure fits?",
    "options": [
-    "The exact chemical shift of the peak",
-    "The identity of neighboring atoms",
-    "The temperature of the sample",
-    "The relative number of protons giving rise to that peak"
+    "Ethyl acetate, CH₃CO₂CH₂CH₃",
+    "Butanoic acid, CH₃CH₂CH₂CO₂H",
+    "Methyl propanoate, CH₃CH₂CO₂CH₃",
+    "1-Methoxypropan-2-one, CH₃OCH₂COCH₃"
+   ],
+   "correct": 2,
+   "why": "Both esters have an ethyl group and a methyl singlet, so the shifts have to say which end is on oxygen. Here the singlet is at 3.7, a CH₃ on O, and the quartet at 2.3, a CH₂ next to the C=O: CH₃CH₂–CO–OCH₃. In ethyl acetate it is the other way round - the CH₂ quartet on O at 4.1 and the methyl singlet at 2.0. Butanoic acid would show an O–H at 10–13 ppm, and the methoxy ketone gives three singlets.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A compound C₈H₁₀ shows ¹H NMR signals at 7.1–7.3 ppm (5H, multiplet), 2.6 ppm (2H, quartet) and 1.2 ppm (3H, triplet). Which structure fits?",
+   "options": [
+    "Ethylbenzene",
+    "1,4-Dimethylbenzene (p-xylene)",
+    "1,2-Dimethylbenzene (o-xylene)",
+    "1,3-Dimethylbenzene (m-xylene)"
+   ],
+   "correct": 0,
+   "why": "Five aromatic hydrogens means a monosubstituted ring, and a quartet/triplet pair in a 2:3 ratio is an ethyl group, its CH₂ at 2.6 because it sits next to the ring. Every xylene has only four ring hydrogens, and its two equivalent methyls give a 6H singlet near 2.3 with no splitting at all.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A compound C₉H₁₂ shows ¹H NMR signals at 7.2 ppm (5H, multiplet), 2.9 ppm (1H, septet) and 1.25 ppm (6H, doublet). Which structure fits?",
+   "options": [
+    "Propylbenzene, C₆H₅CH₂CH₂CH₃",
+    "1,3,5-Trimethylbenzene",
+    "1-Ethyl-4-methylbenzene",
+    "Isopropylbenzene, C₆H₅CH(CH₃)₂"
    ],
    "correct": 3,
-   "why": "Integration is proportional to the number of protons contributing to a signal, so comparing integrated areas gives the ratio of protons in each chemically distinct environment.",
-   "difficulty": "easy",
+   "why": "A 6H doublet with a 1H septet is an isopropyl group: six equivalent methyl hydrogens split by one neighbor, and one hydrogen split by six. Five aromatic hydrogens put it on a monosubstituted ring. Propylbenzene would give a triplet, a sextet and a triplet; 1,3,5-trimethylbenzene gives two singlets (3H aromatic, 9H methyl); the ethyl-methyl ring has only four aromatic hydrogens.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Tetramethylsilane (TMS) is used as the standard reference in ¹H NMR mainly because its protons are:",
+   "q": "A compound C₅H₁₂ shows a single ¹H NMR signal, a singlet at 0.9 ppm. Which structure fits?",
    "options": [
-    "Very shielded, appear far upfield, and TMS is chemically inert and volatile for easy removal",
-    "Highly deshielded and appear far downfield, away from most signals",
-    "Identical in shift to water protons",
-    "Split into many peaks for easy calibration"
-   ],
-   "correct": 0,
-   "why": "TMS's methyl protons are more shielded than almost any organic proton, so they appear as a single peak at the upfield end of the spectrum (defined as 0 ppm), and TMS is unreactive and easily evaporated from the sample afterward.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "A proton's chemical shift in ppm is essentially independent of the specific magnetic field strength of the NMR spectrometer used to record it.",
-   "options": [
-    "True",
-    "False"
-   ],
-   "correct": 0,
-   "why": "Reporting shift as a ratio (ppm) relative to the operating frequency cancels out the field-strength dependence, which is exactly why ppm, rather than raw Hz, is used for comparing spectra from different instruments.",
-   "difficulty": "easy",
-   "type": "tf"
-  },
-  {
-   "q": "Deuterated chloroform (CDCl3) is a commonly used NMR solvent mainly because:",
-   "options": [
-    "It is the cheapest solvent available",
-    "Its deuterium atoms produce no interfering ¹H signal in the spectrum",
-    "It reacts with the sample to improve resolution",
-    "It has the same chemical shift as TMS"
+    "Pentane, CH₃(CH₂)₃CH₃",
+    "2,2-Dimethylpropane, C(CH₃)₄",
+    "2-Methylbutane, (CH₃)₂CHCH₂CH₃",
+    "Cyclopentane, (CH₂)₅"
    ],
    "correct": 1,
-   "why": "Replacing ordinary hydrogens with deuterium removes the solvent's own strong ¹H signal, leaving a largely clean baseline so the sample's proton signals can be seen clearly.",
+   "why": "One signal means every hydrogen is equivalent, and a singlet means none has a non-equivalent neighbor: four methyls on a central carbon that carries no hydrogen. Pentane gives three signals and 2-methylbutane four. Cyclopentane also gives a single peak, but it is C₅H₁₀ and its signal sits near 1.5 - check the formula before trusting the peak count.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -30847,27 +30855,29 @@
    "type": "mcq"
   },
   {
-   "q": "Spin-spin coupling between protons in ¹H NMR occurs primarily through space rather than through the chemical bonds connecting them.",
+   "q": "A compound C₄H₈O shows ¹H NMR signals at 9.8 ppm (1H, triplet), 2.4 ppm (2H, multiplet), 1.7 ppm (2H, sextet) and 0.95 ppm (3H, triplet). Which structure fits?",
    "options": [
-    "True",
-    "False"
+    "Butan-2-one, CH₃COCH₂CH₃",
+    "Butanal, CH₃CH₂CH₂CHO",
+    "2-Methylpropanal, (CH₃)₂CHCHO",
+    "Cyclobutanol"
    ],
    "correct": 1,
-   "why": "Coupling is transmitted through the bonding electrons connecting the nuclei, which is why it typically falls off sharply beyond three bonds, not through direct spatial proximity.",
-   "difficulty": "easy",
-   "type": "tf"
+   "why": "9.8 ppm is an aldehyde C–H, and it is a triplet, so the carbon next to the CHO is a CH₂. The rest is an unbranched propyl chain: the CH₂ alpha to the carbonyl at 2.4, a CH₂ with five neighbors as a sextet, and a terminal CH₃ triplet. 2-Methylpropanal would show a doublet near 9.6 and a 6H doublet; butan-2-one has nothing past 2.5; cyclobutanol has no aldehyde hydrogen.",
+   "difficulty": "medium",
+   "type": "mcq"
   },
   {
-   "q": "Vicinal coupling, the most common type discussed in an introductory course, refers to coupling between protons that are separated by how many bonds?",
+   "q": "Methyl but-2-enoate, CH₃CH=CHCO₂CH₃, shows its two vinyl hydrogens at 6.95 and 5.85 ppm, coupled to each other with J = 15.6 Hz. Which isomer is it?",
    "options": [
-    "Three bonds (protons on adjacent carbons)",
-    "One bond (on the same carbon)",
-    "Two bonds (geminal protons)",
-    "Five or more bonds"
+    "The Z isomer: 15.6 Hz is a cis coupling",
+    "Either: J does not depend on geometry",
+    "A 1:1 mixture of E and Z",
+    "The E isomer: 15.6 Hz is a trans coupling"
    ],
-   "correct": 0,
-   "why": "Vicinal coupling is coupling between protons on adjacent (neighboring) carbons, which are three bonds apart (H-C-C-H), and is the basis of the simple n+1 splitting rule.",
-   "difficulty": "easy",
+   "correct": 3,
+   "why": "The coupling between two alkene hydrogens depends on their geometry: trans partners couple at 12–18 Hz, cis partners at 6–12. 15.6 Hz is squarely trans, so the two hydrogens sit on opposite sides of the C=C, which for this compound is the E isomer. A mixture would show two sets of vinyl signals, one with each J, not one clean pair.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -30897,16 +30907,16 @@
    "type": "mcq"
   },
   {
-   "q": "Geminal coupling and vicinal coupling differ in that:",
+   "q": "A compound C₃H₆O₂ shows ¹H NMR signals at 11.8 ppm (1H, broad singlet, gone after a D₂O shake), 2.4 ppm (2H, quartet) and 1.2 ppm (3H, triplet). Which structure fits?",
    "options": [
-    "Geminal coupling only occurs in aromatic rings",
-    "Vicinal coupling is always stronger than geminal coupling",
-    "Geminal is same-carbon, vicinal adjacent-carbon",
-    "There is no real difference between the two terms"
+    "Propanoic acid, CH₃CH₂CO₂H",
+    "Ethyl formate, HCO₂CH₂CH₃",
+    "Methyl acetate, CH₃CO₂CH₃",
+    "1-Hydroxypropan-2-one, CH₃COCH₂OH"
    ],
-   "correct": 2,
-   "why": "Geminal protons share one carbon (two bonds apart), while vicinal protons sit on neighboring carbons (three bonds apart); both can show coupling, but the structural relationship and typical coupling constants differ.",
-   "difficulty": "medium",
+   "correct": 0,
+   "why": "A broad singlet at 11.8 that vanishes with D₂O is an exchangeable carboxylic acid O–H (10–13 ppm), and the ethyl CH₂ at 2.4 is next to a C=O, not on oxygen. Ethyl formate also has one lone hydrogen and an ethyl group, but its formyl C–H sits near 8.0 and does not exchange, and its CH₂ quartet would be on oxygen near 4.2. Methyl acetate gives two singlets; hydroxyacetone gives two singlets plus an O–H.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -30973,15 +30983,15 @@
    "type": "mcq"
   },
   {
-   "q": "A typical vicinal coupling constant (3J) between protons on adjacent sp3 carbons usually falls in roughly what range?",
+   "q": "An alkyl bromide shows two ¹H NMR signals: 4.2 ppm (1H, septet) and 1.7 ppm (6H, doublet). Which structure fits?",
    "options": [
-    "0.1-0.5 Hz",
-    "50-100 Hz",
-    "500-1000 Hz",
-    "6-8 Hz"
+    "1-Bromopropane, CH₃CH₂CH₂Br",
+    "Bromoethane, CH₃CH₂Br",
+    "2-Bromopropane, (CH₃)₂CHBr",
+    "2-Bromo-2-methylpropane, (CH₃)₃CBr"
    ],
-   "correct": 3,
-   "why": "Vicinal (three-bond) proton-proton coupling constants in freely rotating alkyl chains commonly fall around 6-8 Hz, a useful benchmark when analyzing splitting patterns.",
+   "correct": 2,
+   "why": "A 1H septet and a 6H doublet is an isopropyl group, and the CH at 4.2 carries the bromine, which is what pulls it downfield. 1-Bromopropane would give three signals (a CH₂Br triplet near 3.4, a sextet and a triplet); bromoethane gives a 2H quartet and a 3H triplet; tert-butyl bromide gives one 9H singlet, with no hydrogen on the carbon bearing Br.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -31112,15 +31122,15 @@
  ],
  "c-nmr": [
   {
-   "q": "¹³C NMR typically shows each chemically distinct carbon as:",
+   "q": "A compound C₆H₁₂ shows a single ¹³C NMR signal, at 27 ppm. Which structure fits?",
    "options": [
-    "A single peak (carbons are rarely coupled to each other at natural abundance)",
-    "A large multiplet split by neighboring carbons",
-    "No signal at all",
-    "The same peak as all other carbons"
+    "Hex-1-ene",
+    "Methylcyclopentane",
+    "2,3-Dimethylbut-2-ene",
+    "Cyclohexane"
    ],
-   "correct": 0,
-   "why": "¹³C is only ~1.1% natural abundance, so two ¹³C atoms are rarely adjacent — carbon-carbon coupling is negligible, giving simple, usually unsplit peaks (with standard decoupling).",
+   "correct": 3,
+   "why": "One signal means all six carbons are equivalent, and 27 ppm is an ordinary sp³ carbon, so C₆H₁₂'s one degree of unsaturation has to be a ring. Hex-1-ene has six different carbons, two of them alkene carbons above 100; methylcyclopentane has four environments; 2,3-dimethylbut-2-ene has two - the four methyls, and the two alkene carbons near 123.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -31138,42 +31148,42 @@
    "type": "mcq"
   },
   {
-   "q": "Why is ¹³C NMR generally less sensitive (requiring more sample/scans) than ¹H NMR?",
+   "q": "A compound C₄H₁₀O shows two ¹³C signals, at 69 and 31 ppm. In DEPT-135 the 69 ppm peak is absent and the 31 ppm peak points up. Which structure fits?",
    "options": [
-    "Carbon atoms do not exist in organic molecules",
-    "NMR spectrometers cannot detect carbon at all",
-    "Low abundance and a smaller magnetic moment",
-    "¹³C NMR is actually more sensitive than ¹H NMR"
+    "Diethyl ether, CH₃CH₂OCH₂CH₃",
+    "Butan-1-ol",
+    "2-Methylpropan-2-ol, (CH₃)₃COH",
+    "2-Methylpropan-1-ol"
    ],
    "correct": 2,
-   "why": "Both the rarity of the ¹³C isotope and its inherently weaker NMR signal (lower gyromagnetic ratio) compared to ¹H make ¹³C NMR much less sensitive, requiring longer acquisition times.",
-   "difficulty": "hard",
+   "why": "Two signals rule out butan-1-ol (four) and 2-methylpropan-1-ol (three). Diethyl ether also gives two, so DEPT decides: its O–CH₂ carbon near 66 would point down. Here the carbon on oxygen is missing from DEPT, so it carries no hydrogen - a quaternary C–O - and the 31 ppm carbons point up as CH₃ groups. Three equivalent methyls on one C–OH is tert-butanol.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "In a standard proton-decoupled ¹³C NMR spectrum, each peak generally corresponds to:",
+   "q": "A compound C₄H₈O shows four ¹³C signals: 202, 46, 16 and 14 ppm. In DEPT-135 the 202 peak points up, 46 and 16 point down, and 14 points up. Which structure fits?",
    "options": [
-    "One hydrogen atom in the molecule",
-    "The total number of atoms in the molecule",
-    "A specific bond angle",
-    "One chemically distinct carbon environment in the molecule"
+    "Butan-2-one",
+    "Butanal",
+    "2-Methylpropanal",
+    "But-3-en-1-ol"
    ],
-   "correct": 3,
-   "why": "Each unique carbon environment gives rise to its own peak, regardless of how many hydrogens are attached to that carbon, which is different from how ¹H NMR integration works.",
-   "difficulty": "easy",
+   "correct": 1,
+   "why": "202 ppm is in the aldehyde/ketone window, and it shows up in DEPT, so that carbon carries a hydrogen: an aldehyde. Butan-2-one's C=O near 209 has no H and would vanish from DEPT. Two CH₂ groups and a CH₃ make an unbranched propyl chain; 2-methylpropanal would give only three signals (its two methyls are equivalent) with a CH instead. The alkenol has no carbonyl carbon at all.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A ketone or aldehyde carbonyl carbon in ¹³C NMR typically appears in roughly what chemical shift range, making it the most downfield common signal?",
+   "q": "A compound C₄H₈O₂ shows ¹³C signals at 171, 60, 21 and 14 ppm. In DEPT-135, 171 is absent, 60 points down, and 21 and 14 point up. Which structure fits?",
    "options": [
-    "190-220 ppm",
-    "0-40 ppm",
-    "50-90 ppm",
-    "100-150 ppm"
+    "Ethyl acetate, CH₃CO₂CH₂CH₃",
+    "Methyl propanoate, CH₃CH₂CO₂CH₃",
+    "Butanoic acid",
+    "1,4-Dioxane"
    ],
    "correct": 0,
-   "why": "Carbonyl carbons are strongly deshielded by the attached oxygen and the carbon's bonding, placing their signals well downfield of essentially all other common carbon environments.",
-   "difficulty": "easy",
+   "why": "171 is an acid-derivative carbonyl (165–185) with no hydrogen. The carbon on oxygen, at 60, is a CH₂, so the alkoxy group is an ethyl. In methyl propanoate the carbon on oxygen is a CH₃ near 51 that would point up, and its CH₂ (near 27) sits next to the C=O instead. Butanoic acid has two CH₂ carbons and none on oxygen; 1,4-dioxane gives a single signal.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -31190,16 +31200,16 @@
    "type": "mcq"
   },
   {
-   "q": "The typical chemical shift range for ¹³C NMR signals (roughly 0-220 ppm) is much wider than for ¹H NMR (roughly 0-12 ppm). This is best explained by:",
+   "q": "A compound C₅H₁₀ shows five ¹³C signals: 139, 115, 36, 22 and 14 ppm. In DEPT-135 the 115 peak points down and the 139 peak points up. Which structure fits?",
    "options": [
-    "Carbon nuclei are simply heavier than hydrogen nuclei, which alone explains the wider range",
-    "Carbon shifts respond more strongly to hybridization and substituent effects",
-    "¹³C NMR instruments always use a larger magnet",
-    "There is no real difference in range between the two techniques"
+    "(E)-Pent-2-ene",
+    "2-Methylbut-2-ene",
+    "Pent-1-ene",
+    "Cyclopentane"
    ],
-   "correct": 1,
-   "why": "Because carbon sits at the center of bonding with more direct exposure to hybridization and substituent effects, its chemical shift is more sensitive to structural differences, spreading ¹³C signals over a much wider ppm range than ¹H signals.",
-   "difficulty": "easy",
+   "correct": 2,
+   "why": "Two signals in the 100–150 window are a C=C, and five signals for five carbons means no symmetry. DEPT places the double bond: the carbon at 115 points down, so it is a CH₂ - a terminal =CH₂ - and its partner at 139 is a CH. Pent-2-ene has two CH alkene carbons, both pointing up; 2-methylbut-2-ene has one alkene carbon with no H, which DEPT would not show; cyclopentane gives one signal.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -31214,42 +31224,42 @@
    "type": "tf"
   },
   {
-   "q": "Aromatic ring carbons typically appear in ¹³C NMR in roughly what chemical shift region?",
+   "q": "An aromatic compound C₈H₁₀ shows six ¹³C signals, and one of them points down in DEPT-135. Which structure fits?",
    "options": [
-    "0-40 ppm",
-    "50-90 ppm",
-    "100-150 ppm",
-    "190-220 ppm"
-   ],
-   "correct": 2,
-   "why": "The delocalized pi system and partial double-bond character of aromatic carbons deshield them into the roughly 100-150 ppm region, distinct from both simple alkyl carbons and carbonyl carbons.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "In a standard proton-decoupled ¹³C NMR spectrum, why do we typically NOT observe splitting of one carbon's signal due to coupling with a neighboring carbon (carbon-carbon coupling)?",
-   "options": [
-    "Carbon atoms are never bonded to each other",
-    "Carbon nuclei are incapable of any spin-spin coupling under any circumstances",
-    "All carbon-carbon coupling constants happen to be exactly zero",
-    "At 1.1% abundance, a carbon's neighbor is almost never ¹³C"
-   ],
-   "correct": 3,
-   "why": "Because ¹³C is rare (about 1.1 percent natural abundance), the odds that two bonded carbons are both the ¹³C isotope in the same molecule are very low, so carbon-carbon coupling is statistically almost never observed in a routine spectrum.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "In a standard proton-decoupled ¹³C NMR spectrum, each carbon peak typically appears as a single, unsplit line even though most carbons have one or more attached hydrogens. This is because:",
-   "options": [
-    "Broadband proton decoupling removes C-H coupling",
-    "Carbons never actually couple to their attached hydrogens",
-    "Hydrogen atoms are invisible to the NMR magnet",
-    "The spectrometer only detects carbons with no attached hydrogens"
+    "Ethylbenzene",
+    "1,4-Dimethylbenzene (p-xylene)",
+    "1,2-Dimethylbenzene (o-xylene)",
+    "1,3-Dimethylbenzene (m-xylene)"
    ],
    "correct": 0,
-   "why": "A decoupling pulse sequence continuously flips the attached protons' spins during the ¹³C experiment, averaging out C-H coupling so each unique carbon gives one clean singlet instead of a complex multiplet.",
+   "why": "Count the environments. Ethylbenzene has a CH₃, a CH₂ and four ring environments (ipso, the ortho pair, the meta pair, para): six, and the CH₂ is the down peak. p-Xylene gives three signals, o-xylene four and m-xylene five - and none of them has a CH₂ at all, so none could show a downward DEPT peak.",
    "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A compound C₅H₁₀O shows five ¹³C signals, including one at 209 ppm that is absent from DEPT-135. Which structure fits?",
+   "options": [
+    "Pentan-3-one",
+    "3-Methylbutan-2-one",
+    "Pentanal",
+    "Pentan-2-one"
+   ],
+   "correct": 3,
+   "why": "A peak at 209 missing from DEPT is a carbonyl with no hydrogen, which rules out pentanal: its C=O near 202 carries an H and would appear. Five signals for five carbons means every carbon is different. Pentan-3-one's two ethyl groups are equivalent, giving three signals, and 3-methylbutan-2-one's two isopropyl methyls are equivalent, giving four.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A compound C₈H₈O₂ shows six ¹³C signals: 191, 164, 132, 130, 114 and 55 ppm. In DEPT-135, 191, 132, 114 and 55 point up; 164 and 130 are absent. Which structure fits?",
+   "options": [
+    "Methyl benzoate",
+    "4-Methoxybenzaldehyde",
+    "Phenyl acetate",
+    "2-Methoxybenzaldehyde"
+   ],
+   "correct": 1,
+   "why": "Methyl benzoate and phenyl acetate also give six signals, so the count cannot decide - the carbonyl does. 191 is in the aldehyde/ketone window and appears in DEPT, so it carries a hydrogen: an aldehyde. The two esters' carbonyls sit near 167–169 with no H. Four ring environments means a para-disubstituted ring; 2-methoxybenzaldehyde, with its groups side by side, has six different ring carbons and would give eight signals.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -31329,15 +31339,15 @@
    "type": "mcq"
   },
   {
-   "q": "An sp3 carbon directly attached to a hydroxyl oxygen (as in an alcohol) typically appears around 50-90 ppm in ¹³C NMR, well downfield of a typical alkane carbon (0-40 ppm). This shift is mainly due to:",
+   "q": "A hydrocarbon C₄H₆ shows two ¹³C signals: about 75 ppm (absent from DEPT-135) and 3 ppm (pointing up). Which structure fits?",
    "options": [
-    "Alcohols having no carbon atoms bonded to oxygen",
-    "Oxygen always shielding nearby carbons rather than deshielding them",
-    "The electronegative oxygen withdrawing electron density from the attached carbon, deshielding it",
-    "This shift only happens in aromatic alcohols"
+    "But-1-yne, HC≡CCH₂CH₃",
+    "But-2-yne, CH₃C≡CCH₃",
+    "Buta-1,3-diene",
+    "Cyclobutene"
    ],
-   "correct": 2,
-   "why": "Oxygen's electronegativity pulls electron density away from the carbon it is bonded to, deshielding that carbon and shifting its signal downfield relative to an ordinary alkane carbon.",
+   "correct": 1,
+   "why": "75 ppm is in the sp window (65–90), and those carbons carry no hydrogen, so the triple bond is internal. Two signals for four carbons needs symmetry: two equivalent sp carbons and two equivalent methyls. But-1-yne has four different carbons, including an sp CH that DEPT would show; buta-1,3-diene and cyclobutene put their unsaturated carbons between about 115 and 140, and all of those carry hydrogens.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -31494,15 +31504,15 @@
  ],
  "mass-spec": [
   {
-   "q": "In mass spectrometry, the molecular ion peak (M+) corresponds to:",
+   "q": "A mass spectrum shows molecular-ion peaks at m/z 78 and 80 in a 3:1 ratio, and a base peak at m/z 43. Which structure fits?",
    "options": [
-    "The intact radical cation",
-    "A random fragment",
-    "Only the smallest fragment",
-    "The solvent peak"
+    "2-Bromopropane, (CH₃)₂CHBr",
+    "Chloroethane, CH₃CH₂Cl",
+    "2-Chlorobutane, CH₃CHClCH₂CH₃",
+    "2-Chloropropane, (CH₃)₂CHCl"
    ],
-   "correct": 0,
-   "why": "The molecular ion forms when the neutral molecule loses an electron in the ionization source, giving a radical cation at the molecule’s full mass.",
+   "correct": 3,
+   "why": "A 3:1 pair two units apart is one chlorine, and M = 78 leaves 78 − 35 = 43 for the rest: C₃H₇. Losing the chlorine atom gives the C₃H₇⁺ cation at 43, the base peak. 2-Bromopropane would show a 1:1 pair at 122/124; chloroethane sits at 64/66 and 2-chlorobutane at 92/94.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -31520,42 +31530,42 @@
    "type": "mcq"
   },
   {
-   "q": "In mass spectrometry, the \"base peak\" refers to:",
+   "q": "A mass spectrum shows M⁺ at m/z 156 and 158 of almost equal height, with a strong fragment at m/z 77. Which structure fits?",
    "options": [
-    "The peak at the lowest mass",
-    "The molecular ion peak, always",
-    "The most intense peak",
-    "The solvent peak"
-   ],
-   "correct": 2,
-   "why": "The base peak is defined as the most intense peak in the spectrum (100% relative abundance) — it is often, but not always, the same as the molecular ion peak.",
-   "difficulty": "hard",
-   "type": "mcq"
-  },
-  {
-   "q": "In mass spectrometry, the term m/z refers to:",
-   "options": [
-    "The total mass of the neutral, un-ionized sample",
-    "The melting point of the sample",
-    "The number of fragments produced per second",
-    "The mass-to-charge ratio of an ion detected by the instrument"
-   ],
-   "correct": 3,
-   "why": "Mass spectrometers separate and detect ions based on their mass-to-charge ratio, m/z, which for most singly charged ions in an intro course is essentially equal to the ion's mass.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "In electron ionization (EI) mass spectrometry, the molecular ion is typically formed by:",
-   "options": [
-    "Removing one electron from the molecule",
-    "Adding a proton to the neutral molecule",
-    "Removing an entire atom from the molecule",
-    "Adding an electron to the neutral molecule"
+    "Bromobenzene, C₆H₅Br",
+    "Chlorobenzene, C₆H₅Cl",
+    "Benzyl bromide, C₆H₅CH₂Br",
+    "4-Bromotoluene, CH₃C₆H₄Br"
    ],
    "correct": 0,
-   "why": "A high-energy electron beam knocks one electron out of the neutral molecule, leaving behind an odd-electron, positively charged species called the molecular ion or radical cation.",
-   "difficulty": "easy",
+   "why": "Two molecular-ion peaks of equal height two units apart is one bromine (⁷⁹Br and ⁸¹Br), and 156 − 79 = 77, which is C₆H₅. The fragment at 77 is that phenyl cation, left when the bromine atom goes. Chlorobenzene would show 112/114 in a 3:1 ratio; benzyl bromide and 4-bromotoluene both weigh 170/172, and benzyl bromide's base peak would be the tropylium ion at 91.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An unknown gives M⁺ at m/z 73. Its IR shows two N–H bands near 3380 and 3300 cm⁻¹ and nothing between 1600 and 1850 cm⁻¹. Which structure fits?",
+   "options": [
+    "Diethylamine, (CH₃CH₂)₂NH",
+    "Propanamide, CH₃CH₂CONH₂",
+    "Butan-1-amine, CH₃CH₂CH₂CH₂NH₂",
+    "Butan-2-one, CH₃COCH₂CH₃"
+   ],
+   "correct": 2,
+   "why": "An odd molecular ion means an odd number of nitrogens, which removes butan-2-one (72). Propanamide is also 73 but would show a strong amide C=O near 1660. Both amines are C₄H₁₁N at 73, so the N–H bands decide: two bands means an NH₂, a primary amine, while diethylamine has one N–H and shows one band.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A ketone C₆H₁₂O (M⁺ = 100) shows a base peak at m/z 43 and a strong even-mass peak at m/z 58. Which structure fits?",
+   "options": [
+    "Hexan-3-one, CH₃CH₂CO(CH₂)₂CH₃",
+    "3,3-Dimethylbutan-2-one, CH₃COC(CH₃)₃",
+    "3-Methylpentan-2-one, CH₃COCH(CH₃)CH₂CH₃",
+    "Hexan-2-one, CH₃CO(CH₂)₃CH₃"
+   ],
+   "correct": 3,
+   "why": "43 is CH₃CO⁺, so there is a methyl on the carbonyl. The even-mass 58 is a McLafferty fragment: a gamma hydrogen moves to the oxygen and a neutral alkene leaves, here propene (100 − 42). That needs a chain of at least three carbons on the other side of the C=O. Hexan-3-one and 3-methylpentan-2-one lose ethene instead, giving 72, and 3,3-dimethylbutan-2-one has no gamma hydrogen at all.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -31620,16 +31630,16 @@
    "type": "tf"
   },
   {
-   "q": "A mass spectral fragment showing a loss of 18 mass units from the molecular ion most commonly indicates loss of:",
+   "q": "An aromatic hydrocarbon C₉H₁₂ (M⁺ = 120) shows its base peak at m/z 91. Which structure fits?",
    "options": [
-    "A water molecule",
-    "A nitrogen molecule",
-    "A chlorine atom",
-    "A methyl group"
+    "Isopropylbenzene, C₆H₅CH(CH₃)₂",
+    "1,3,5-Trimethylbenzene",
+    "Propylbenzene, C₆H₅CH₂CH₂CH₃",
+    "1-Ethyl-4-methylbenzene"
    ],
-   "correct": 0,
-   "why": "Loss of 18 mass units corresponds to H2O, a very common fragmentation pathway for alcohols (and some other oxygen-containing compounds) under electron ionization conditions.",
-   "difficulty": "easy",
+   "correct": 2,
+   "why": "91 is the tropylium ion, C₇H₇⁺, formed when the bond one carbon out from the ring breaks and leaves a benzylic CH₂ on the ring. Propylbenzene does exactly that, losing an ethyl radical (120 − 29). Isopropylbenzene's benzylic carbon carries two methyls, so it loses CH₃ and gives 105; the ethyl-methyl ring and the trimethyl ring also lose CH₃ to give 105.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -31759,15 +31769,15 @@
    "type": "mcq"
   },
   {
-   "q": "When an alkane's molecular ion fragments by breaking a carbon-carbon bond, the fragmentation pathway that generates the most stable resulting carbocation (tertiary over secondary over primary) is generally favored. This principle is analogous to:",
+   "q": "An alcohol C₄H₁₀O gives a weak M⁺ at m/z 74 and its base peak at m/z 31. Which structure fits?",
    "options": [
-    "The general stability order of carbocations",
-    "A rule that applies only in mass spectrometry and nowhere else in organic chemistry",
-    "The idea that all carbocations are equally stable regardless of substitution",
-    "A rule that favors primary carbocations above all others"
+    "Butan-2-ol",
+    "Butan-1-ol",
+    "2-Methylpropan-2-ol",
+    "Butanal"
    ],
-   "correct": 0,
-   "why": "Fragmentation in the gas phase favors pathways that produce the most stable cation, following the same substitution-based stability trend (tertiary greater than secondary greater than primary) used to rationalize carbocation stability throughout organic chemistry.",
+   "correct": 1,
+   "why": "Alcohols break at the bond next to the carbon bearing the OH, because the cation left behind is stabilized by the oxygen's lone pair. m/z 31 is CH₂=OH⁺, which needs a CH₂OH at the end of a chain: butan-1-ol, losing a propyl radical. Butan-2-ol loses ethyl to give CH₃CH=OH⁺ at 45, and 2-methylpropan-2-ol loses methyl to give (CH₃)₂C=OH⁺ at 59. Butanal weighs 72, not 74.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -31785,15 +31795,15 @@
    "type": "mcq"
   },
   {
-   "q": "Loss of a single hydrogen atom, a mass loss of just 1 unit, from the molecular ion is relatively uncommon as a dominant fragmentation pathway compared to loss of larger groups. Why?",
+   "q": "An unknown gives M⁺ at m/z 88, with an M+1 peak about 4.5% as tall. Its IR shows a very broad band from 2500 to 3300 cm⁻¹ and a strong band at 1710 cm⁻¹. Which structure fits?",
    "options": [
-    "Hydrogen atoms cannot be removed from a molecule under any circumstances",
-    "Molecular ions never lose hydrogen atoms in any real spectrum",
-    "Losing a lone hydrogen radical is less favorable than losing a larger one",
-    "Losing a hydrogen atom always produces the most intense peak in every spectrum"
+    "Butanoic acid, C₄H₈O₂",
+    "Ethyl acetate, C₄H₈O₂",
+    "Pentan-1-ol, C₅H₁₂O",
+    "3-Hydroxybutan-2-one, C₄H₈O₂"
    ],
-   "correct": 2,
-   "why": "Because forming larger, more stable radicals (or undergoing favorable rearrangements like McLafferty) is usually more thermodynamically favorable than simply ejecting a lone hydrogen atom, simple H-loss is typically a minor pathway rather than the dominant one.",
+   "correct": 0,
+   "why": "M+1 at 4.5% of M means about 4.5/1.1 ≈ 4 carbons, which removes pentan-1-ol (five carbons, and no C=O anyway). The IR separates the three C₄H₈O₂ isomers: the sprawling 2500–3300 band is a carboxylic acid O–H, with its C=O at 1710. Ethyl acetate has no O–H and a C=O at 1735; the hydroxy ketone's alcohol O–H is confined to 3200–3550 and its C=O is at 1715.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -31811,15 +31821,17 @@
    "type": "mcq"
   },
   {
-   "q": "The relative intensity of a peak in a mass spectrum reflects the relative abundance of that particular gas-phase ion reaching the detector, which is governed by the kinetics and thermodynamics of fragmentation in the gas phase, not by the compound's stability or solubility in a liquid solution.",
+   "q": "A mass spectrum shows molecular-ion peaks at m/z 112, 114 and 116 in a 9:6:1 ratio. Which structure fits?",
    "options": [
-    "True",
-    "False"
+    "Chlorobenzene, C₆H₅Cl",
+    "1,2-Dichlorobenzene, C₆H₄Cl₂",
+    "1,2-Dichloropropane, C₃H₆Cl₂",
+    "3-Bromopropene, C₃H₅Br"
    ],
-   "correct": 0,
-   "why": "Mass spectral peak intensities depend on how readily a given ion forms and survives under gas-phase ionization and fragmentation conditions, a distinct context from solution-phase stability, solubility, or reactivity, which are not what mass spectrometry intensities measure.",
+   "correct": 2,
+   "why": "Three peaks two units apart in 9:6:1 is two chlorines: each is independently 3:1 ³⁵Cl:³⁷Cl, so the combinations run 9 (both light), 6 (one of each) and 1 (both heavy). With two ³⁵Cl the rest weighs 112 − 70 = 42, C₃H₆. Chlorobenzene also has a peak at 112, but with one chlorine it gives a 3:1 pair at 112/114; dichlorobenzene weighs 146; a bromide shows a 1:1 pair.",
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "A cyclic secondary alcohol's mass spectrum can show both a loss of 18 (water) and a loss of 28 (often consistent with ethylene or CO) from the molecular ion. A reasonable explanation for seeing multiple distinct losses like this is:",
@@ -31848,15 +31860,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why does electron ionization (EI) typically produce a radical cation (an odd-electron species) as the molecular ion, rather than an even-electron cation?",
+   "q": "Four amines C₅H₁₃N (M⁺ = 87) are candidates for an unknown whose base peak is at m/z 30. Which one is it?",
    "options": [
-    "EI always adds an extra electron to the molecule instead of removing one",
-    "Even-electron cations are impossible to form under any ionization method",
-    "EI removes one electron, leaving one unpaired electron",
-    "EI removes two electrons at once from every molecule"
+    "Pentan-1-amine, CH₃(CH₂)₄NH₂",
+    "Pentan-2-amine, CH₃CH(NH₂)CH₂CH₂CH₃",
+    "2-Methylbutan-2-amine, (CH₃)₂C(NH₂)CH₂CH₃",
+    "N,N-Dimethylpropan-1-amine, CH₃CH₂CH₂N(CH₃)₂"
    ],
-   "correct": 2,
-   "why": "Since a neutral organic molecule normally has all its electrons paired, knocking out just one electron during EI necessarily leaves an odd, unpaired electron along with the resulting positive charge, producing a radical cation.",
+   "correct": 0,
+   "why": "Amines cleave at the bond next to the carbon bearing nitrogen, keeping the charge on an iminium ion. m/z 30 is CH₂=NH₂⁺, which only an NH₂ on a CH₂ at the end of a chain can give. Pentan-2-amine loses propyl to give CH₃CH=NH₂⁺ at 44; 2-methylbutan-2-amine loses ethyl to give (CH₃)₂C=NH₂⁺ at 58; the tertiary amine gives CH₂=N(CH₃)₂⁺, also at 58.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -38551,7 +38563,7 @@
     "A rearrangement"
    ],
    "correct": 0,
-   "why": "1,4 rather than 1,2, with an enolate as the nucleophile.",
+   "why": "The enolate adds to the beta carbon of an alpha,beta-unsaturated carbonyl, and the electrons flow through the C=C onto oxygen: a 1,4 (conjugate) addition. Direct attack on the carbonyl carbon is 1,2 addition, a different outcome. Nothing leaves, so it is not an elimination, and no skeleton rearranges.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -38564,7 +38576,7 @@
     "The nucleophile that gets deprotonated"
    ],
    "correct": 3,
-   "why": "Almost always a compound with an alpha hydrogen between two carbonyls.",
+   "why": "The donor is the compound deprotonated to supply the nucleophile - usually a CH between two carbonyls (malonate, acetoacetate, a 1,3-diketone), whose enolate is stabilized and soft. The enone is the acceptor, the base only makes the donor's enolate, and the solvent is not a reactant.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -38577,7 +38589,7 @@
     "The enolate"
    ],
    "correct": 2,
-   "why": "An alpha,beta-unsaturated carbonyl, with the beta carbon as the electrophilic site.",
+   "why": "The acceptor is the alpha,beta-unsaturated carbonyl: conjugation with the C=O makes its beta carbon electrophilic, and that is where the donor attacks. The enolate is the donor's nucleophile, the alkoxide is the base, and the alcohol is a product only after protonation.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -38590,7 +38602,7 @@
     "Beta-hydroxy carbonyl"
    ],
    "correct": 1,
-   "why": "Joining the donor alpha carbon to the acceptor beta carbon puts them five apart.",
+   "why": "The donor's alpha carbon bonds to the acceptor's beta carbon. Count from the donor's carbonyl: its C=O (1), its alpha carbon (2), then the acceptor's beta carbon (3), alpha carbon (4) and carbonyl carbon (5). The carbonyls end up 1,5. A 1,3-dicarbonyl is the Claisen spacing, a beta-hydroxy carbonyl the aldol's, and no diol forms.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -38603,7 +38615,7 @@
     "1,4-diketone"
    ],
    "correct": 0,
-   "why": "The nucleophile hit a carbonyl carbon and the oxygen stayed as an alcohol.",
+   "why": "In an aldol the enolate's alpha carbon attacks another carbonyl carbon, and that carbonyl oxygen becomes an OH on the carbon beta to the surviving C=O: a beta-hydroxy carbonyl. A 1,3-dicarbonyl comes from a Claisen, where an ester is attacked and loses alkoxide; 1,5 comes from a Michael; and a 1,4-diketone needs other chemistry entirely.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -38616,7 +38628,7 @@
     "1,3-dicarbonyl"
    ],
    "correct": 3,
-   "why": "The nucleophile hit an ester and the alkoxide left.",
+   "why": "In a Claisen the enolate attacks an ester carbonyl and the alkoxide leaves, so the attacked carbon keeps its C=O: two carbonyls separated by one carbon, a 1,3-dicarbonyl. A beta-hydroxy ester is what attack without a leaving group gives (aldol-type), 1,5 is the Michael spacing, and 1,2-diketones are not made this way.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -38642,7 +38654,7 @@
     "25"
    ],
    "correct": 1,
-   "why": "Low enough that a catalytic alkoxide deprotonates it completely.",
+   "why": "Typical donors - a 1,3-diketone (about 9), acetoacetate (about 11), malonate (about 13) - sit around pKa 9 to 13, low enough that an alkoxide deprotonates them effectively. A simple ketone (20) or ester (25) needs a stronger base and gives a harder, less selective enolate; 35 is an amine.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -38655,7 +38667,7 @@
     "To dissolve in the solvent"
    ],
    "correct": 0,
-   "why": "Spreading the charge over two carbonyls is what makes the enolate soft rather than hard.",
+   "why": "Spreading the charge over two carbonyls leaves it less concentrated on any one atom, so the enolate is softer and more stable. A soft, stabilized nucleophile adds reversibly at the carbonyl carbon but effectively irreversibly at the beta carbon, so it ends up 1,4. Doubly stabilized enolates are less reactive, not more, and neither hydrolysis nor solubility is the issue.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -38681,7 +38693,7 @@
     "The reaction is catalytic in donor"
    ],
    "correct": 2,
-   "why": "So no strong base ever sits in the flask next to the acceptor.",
+   "why": "The donor (pKa 9 to 13) is far more acidic than the alcohol the alkoxide came from, so a little alkoxide deprotonates it; after the addition, the product enolate takes a proton from the alcohol or from another donor molecule, and the base is regenerated for the next cycle. That is why a catalytic amount is enough. The enone is not a base, and the donor is consumed, not catalytic.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -38694,7 +38706,7 @@
     "Benzene"
    ],
    "correct": 1,
-   "why": "An alpha hydrogen between two ester carbonyls, pKa near 13.",
+   "why": "Diethyl malonate has a CH2 between two ester carbonyls (pKa about 13), so an alkoxide turns it into a stabilized, soft enolate that adds 1,4. Cyclohexane, diethyl ether and benzene have no C-H anywhere near acidic enough for an alkoxide.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -38707,7 +38719,7 @@
     "A solvent"
    ],
    "correct": 0,
-   "why": "Cheap, and the ring its Robinson product gives is the one steroid chemistry needed.",
+   "why": "Methyl vinyl ketone, CH2=CHCOCH3, is an alpha,beta-unsaturated ketone with an electrophilic beta carbon - the classic acceptor, and in a Robinson annulation all four of its carbons end up in the new ring. It is not deprotonated to serve as a donor, and it is neither a base nor a solvent.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -38720,7 +38732,7 @@
     "A Michael then an intramolecular aldol"
    ],
    "correct": 3,
-   "why": "And it builds a ring in the process.",
+   "why": "A Robinson annulation is a Michael addition that makes a 1,5-diketone, then an intramolecular aldol that closes a six-membered ring, then dehydration to the enone. A Claisen would need an ester, a Wittig is a separate C=C-forming reaction, and two ordinary aldols do not close a ring from two pieces.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -38733,7 +38745,7 @@
     "Five"
    ],
    "correct": 2,
-   "why": "A 1,5-dicarbonyl has its ends exactly far enough apart to meet without strain.",
+   "why": "The Michael product is a 1,5-diketone. An enolate at the end of one carbonyl attacks the other carbonyl carbon, and the ring that closes contains six atoms: the enolate carbon, its carbonyl carbon, the two CH2 groups, the donor's alpha carbon and the attacked carbonyl carbon. Four-, five- and seven-membered rings are not what this spacing makes.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -38746,7 +38758,7 @@
     "A lactone"
    ],
    "correct": 1,
-   "why": "The final dehydration conjugates the new C=C with the carbonyl.",
+   "why": "After the aldol closes the ring, the beta-hydroxy ketone dehydrates, and the new C=C forms in conjugation with the remaining C=O: a cyclohexenone. The alcohol is only an intermediate under these conditions, and no epoxide or lactone forms at any stage.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -38759,7 +38771,7 @@
     "The deprotonation"
    ],
    "correct": 0,
-   "why": "Conjugating the alkene with the carbonyl is the stabilization it cannot climb back out of.",
+   "why": "Every step before the dehydration - deprotonation, Michael addition, aldol addition - is reversible under the basic conditions. Dehydration removes water and forms a conjugated enone, a drop in energy that pulls the whole sequence forward and does not reverse.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -38772,7 +38784,7 @@
     "The spacing decides it"
    ],
    "correct": 3,
-   "why": "The reaction is not choosing a ring size; the chain length already chose it.",
+   "why": "A 1,5-diketone places its ends so that the only ring the aldol can close is six-membered: the enolate carbon and the carbonyl carbon it attacks are five bonds apart. The spacing was fixed by the Michael addition. There is no catalyst template, MVK supplies four carbons rather than six, and six-membered rings are not preferred in every reaction - this chain simply gives one.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -38785,7 +38797,7 @@
     "Disconnect the Michael first"
    ],
    "correct": 2,
-   "why": "Reverse order: put the water back, break the aldol bond, then cut beta to a carbonyl.",
+   "why": "Work backwards one step at a time: put the water back to reach the beta-hydroxy ketone, undo the aldol to reach the 1,5-diketone, then undo the Michael by cutting the bond between one carbonyl's alpha carbon and the other's beta carbon. That gives the ketone donor and MVK. Starting with the Michael cut skips the ring that has to be opened first.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -38798,7 +38810,7 @@
     "Donor carbonyl to acceptor beta"
    ],
    "correct": 1,
-   "why": "Which is exactly what puts the two carbonyls five apart.",
+   "why": "The donor's alpha carbon, which carries the negative charge, attacks the acceptor's beta carbon, the electrophilic end of its conjugated system. Attack at the acceptor's carbonyl carbon would be 1,2 addition, and the donor's own carbonyl carbon is an electrophile, not a nucleophile.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -38811,7 +38823,7 @@
     "An epoxide"
    ],
    "correct": 0,
-   "why": "A soft enolate adding 1,4, with the Michael fingerprint in the product.",
+   "why": "The malonate enolate adds to MVK's beta carbon, giving (EtO2C)2CH-CH2CH2-COCH3: the ketone is 1,5 to each ester carbonyl, the Michael fingerprint. A beta-hydroxy product would mean attack at the ketone carbon (1,2), a 1,3-dicarbonyl needs a Claisen, and no epoxide can form.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -38837,7 +38849,7 @@
     "It follows the largest charge"
    ],
    "correct": 2,
-   "why": "Orbital control rather than charge control, and the beta carbon has the larger coefficient.",
+   "why": "Soft nucleophiles react under orbital control: the LUMO of an enone has its largest coefficient at the beta carbon, so a diffuse, stabilized nucleophile bonds there. The carbonyl carbon carries the larger positive charge, which is what a hard, charge-dense nucleophile follows. Size and basicity do not decide it, and a more basic enolate is harder and more likely to add 1,2.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -38850,7 +38862,7 @@
     "The alpha carbon"
    ],
    "correct": 1,
-   "why": "Which is why a hard nucleophile picks it, and a soft one does not.",
+   "why": "The carbonyl carbon is bonded directly to oxygen and carries the larger partial positive charge; the beta carbon is positive only through resonance. That is why hard nucleophiles such as Grignard reagents and LiAlH4 add 1,2. The alpha carbon is not electrophilic, and the two electrophilic carbons are far from equal.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -38863,7 +38875,7 @@
     "A leaving group"
    ],
    "correct": 0,
-   "why": "Five- and six-membered closures happen far faster than anything larger.",
+   "why": "An intramolecular aldol needs an enolate and a carbonyl carbon in the same molecule, close enough to reach each other: five- and six-membered rings form fastest. It is an addition, so no leaving group is needed; a catalytic amount of base does the work; and high dilution is only a way to suppress competing intermolecular reactions.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -38876,7 +38888,7 @@
     "Robinson"
    ],
    "correct": 3,
-   "why": "A Diels-Alder builds a ring too, but it gives a cyclohexene rather than a cyclohexenone.",
+   "why": "A Robinson annulation joins a ketone donor and an enone acceptor by Michael addition and closes the ring by aldol and dehydration, turning two separate pieces into a cyclohexenone. A Diels-Alder also builds a six-membered ring but gives a cyclohexene. An aldol alone or a Claisen does not build the enone ring from two acyclic pieces.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -38889,7 +38901,7 @@
     "Whether it is aromatic"
    ],
    "correct": 2,
-   "why": "If it does, a Robinson annulation made it and the two pieces fall out.",
+   "why": "A cyclohexenone, especially one fused to another ring, is the fingerprint of a Robinson annulation. Mentally add water across the C=C and undo the aldol: if that gives a 1,5-diketone, the Michael disconnection splits it into a ketone and MVK. Ring strain, boiling point and aromaticity say nothing about how the ring was made.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -38902,7 +38914,7 @@
     "25"
    ],
    "correct": 1,
-   "why": "Two carbonyls flanking one carbon, so the carbanion is delocalized onto both.",
+   "why": "Two carbonyls flank the alpha carbon, so its anion is delocalized onto both oxygens: pKa about 9 for pentane-2,4-dione, below acetoacetate (about 11) and malonate (about 13). A single ketone is about 20 and a simple ester about 25; 35 is amine territory.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -38943,7 +38955,7 @@
     "An aldehyde"
    ],
    "correct": 0,
-   "why": "Malonate has two esters: one carboxyl is lost as CO2 and the other stays as the acid.",
+   "why": "Hydrolysis turns both esters of the alkylated malonate into CO2H groups on one carbon, and heating removes one of them as CO2 through a six-membered transition state. The other stays: R-CH2-CO2H, a carboxylic acid. A methyl ketone is the acetoacetic ester product, where a ketone replaces one ester. Hydrolysis leaves no ester behind, and nothing in the sequence reduces a carboxyl to an aldehyde.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -38956,7 +38968,7 @@
     "A methyl ketone"
    ],
    "correct": 3,
-   "why": "One ester and one ketone: the ester's carboxyl goes, the ketone survives.",
+   "why": "Ethyl acetoacetate carries a ketone and an ester. After alkylation, hydrolysis turns the ester into a beta-keto acid; heating removes that carboxyl as CO2 while the ketone survives: CH3CO-CH2R, a methyl ketone. A carboxylic acid is the malonic ester outcome, where both carbonyls are esters. No diester survives hydrolysis, and no aldehyde forms because the ketone carbon keeps its methyl.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -38982,7 +38994,7 @@
     "20"
    ],
    "correct": 1,
-   "why": "Delocalizing the carbanion onto two ester oxygens is worth twelve orders of magnitude.",
+   "why": "Two ester carbonyls share the negative charge of the alpha carbanion, and delocalizing it onto both drops the pKa from about 25 for a simple ester to about 13. That is acidic enough for ethoxide (ethanol, about 16) to deprotonate it completely. 20 is a simple ketone, and 35 is where an amine N-H sits - diisopropylamine, LDA's conjugate acid, is about 36.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -38995,7 +39007,7 @@
     "25"
    ],
    "correct": 3,
-   "why": "Too high for a convenient base, and a strong base would attack the ester instead.",
+   "why": "An ordinary ester's alpha C-H has a pKa near 25, less acidic than a ketone's 20, because the alkoxy oxygen donates into the C=O and competes with the carbanion for it. 13 and 11 belong to the doubly activated compounds, malonate and acetoacetate, which is exactly why those are used instead.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -39008,7 +39020,7 @@
     "Pyridine"
    ],
    "correct": 0,
-   "why": "At pKa 13 the alkoxide that matches your solvent is enough.",
+   "why": "Malonate's pKa is about 13 and ethanol's about 16, so ethoxide deprotonates it essentially completely, and ethoxide matched to the ethyl esters cannot scramble them. LDA would also work but is unnecessary. Hydroxide would saponify the esters, and pyridine (conjugate acid pKa about 5) is far too weak.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -39034,7 +39046,7 @@
     "One that blocks a site"
    ],
    "correct": 1,
-   "why": "This is the clearest example of one in the course.",
+   "why": "An activating group is installed to make a step possible and removed once it has done its job. Malonate's second ester lowers the alpha pKa from 25 to 13 so a mild base can form the enolate, and it then leaves as CO2. A group that blocks a site is a protecting or blocking group, and stabilizing a product or speeding a catalyst describes something else.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -39047,7 +39059,7 @@
     "Addition"
    ],
    "correct": 0,
-   "why": "Which is why the halide must be methyl, primary, allylic or benzylic.",
+   "why": "The malonate or acetoacetate enolate attacks the alkyl halide's carbon from the back side while the halide leaves: SN2. That fixes which halides work - methyl, primary, allylic or benzylic. SN1 needs a carbocation, E2 is the competing side reaction with hindered halides, and there is no multiple bond for an addition.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -39060,7 +39072,7 @@
     "A tertiary one"
    ],
    "correct": 3,
-   "why": "The enolate is a base as well as a nucleophile, so E2 takes over.",
+   "why": "A tertiary halide cannot be attacked from the back side, and the enolate is basic enough to remove a beta hydrogen instead, so E2 gives an alkene and no alkylation. Methyl, primary and benzylic halides are the SN2 substrates both syntheses rely on; benzylic ones are especially reactive.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -39069,11 +39081,11 @@
    "options": [
     "No reaction at all",
     "Rearrangement",
-    "Mostly elimination",
+    "Slow substitution, with competing elimination",
     "Clean substitution"
    ],
    "correct": 2,
-   "why": "The backside is crowded, so the enolate reaches for a beta hydrogen instead.",
+   "why": "At a secondary carbon the back side is partly crowded, so the stabilized enolate substitutes more slowly and E2 competes for the halide; yields drop and some alkene forms. The halide still reacts, so \"no reaction\" is wrong, and clean substitution is what primary and methyl halides give. No carbocation forms, so there is nothing to rearrange.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -39099,7 +39111,7 @@
     "An alkoxide"
    ],
    "correct": 0,
-   "why": "And an enol forms, which tautomerizes to the product.",
+   "why": "The beta-dicarbonyl acid loses CO2 through a cyclic six-membered transition state, giving an enol that tautomerizes to the ketone or acid product. Water and ethanol are released in the hydrolysis step, not the decarboxylation, and heating a free acid releases no alkoxide.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -39112,7 +39124,7 @@
     "No, the ring cannot close"
    ],
    "correct": 3,
-   "why": "The geometry needs the second carbonyl exactly beta, whether that carbonyl is a ketone or another carboxyl.",
+   "why": "Decarboxylation on warming needs the carboxyl O-H to reach the second carbonyl oxygen through a six-membered ring, which works only when that carbonyl is beta. In an alpha-keto acid the two carbonyls are adjacent and the ring would be too small, so it does not decarboxylate this way at all - not faster, not at the same rate, and base does not supply the missing geometry.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -39125,7 +39137,7 @@
     "Once"
    ],
    "correct": 2,
-   "why": "Its CH2 has two acidic hydrogens, so both can be replaced in turn.",
+   "why": "The CH2 between the two esters carries two acidic hydrogens. After the first alkylation one is left, and it can be removed and replaced in a second round with the same or a different halide. A third alkylation is impossible because no hydrogen remains on that carbon, and \"not at all\" misses the whole point of the reagent.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -39138,7 +39150,7 @@
     "CH3CO2Et"
    ],
    "correct": 1,
-   "why": "One CH2 between two ester carbonyls.",
+   "why": "Diethyl malonate is CH2(CO2Et)2: one CH2 between two ethyl esters. CH3COCH2CO2Et is ethyl acetoacetate (a ketone and an ester), CH2(CN)2 is malononitrile, and CH3CO2Et is ethyl acetate, whose alpha pKa of 25 is exactly what malonate is designed to avoid.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -39151,7 +39163,7 @@
     "CH3COCH3"
    ],
    "correct": 0,
-   "why": "One ketone and one ester flanking the acidic CH2.",
+   "why": "Ethyl acetoacetate is CH3COCH2CO2Et: a methyl ketone and an ethyl ester on either side of one CH2 (pKa about 11). CH2(CO2Et)2 is diethyl malonate, ethyl propanoate has only one carbonyl, and acetone is a simple ketone.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -39164,7 +39176,7 @@
     "It has no carboxyl to lose"
    ],
    "correct": 3,
-   "why": "Only a carboxyl can decarboxylate, and the ketone is not one.",
+   "why": "Decarboxylation removes a CO2H, and after hydrolysis only the former ester is one; the ketone has no carboxyl of its own to lose. So heating costs the molecule the acid and leaves the ketone. Nothing protects the ketone, it is not regenerated from anything, and its reactivity is not what saves it.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -39177,7 +39189,7 @@
     "Phenylacetic acid"
    ],
    "correct": 2,
-   "why": "A methyl ketone carrying the benzyl group, after hydrolysis and decarboxylation.",
+   "why": "The acetoacetate enolate takes the benzyl group by SN2, giving CH3COCH(CH2Ph)CO2Et. Hydrolysis and decarboxylation remove the ester carbon, leaving CH3COCH2CH2Ph, 4-phenylbutan-2-one. Acetophenone would need the ring on the carbonyl carbon, phenylacetic acid is a malonic-ester-type product, and benzyl acetate is an ester the sequence never makes.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -39190,7 +39202,7 @@
     "Butan-1-ol"
    ],
    "correct": 1,
-   "why": "The ethyl group ends up on the carbon alpha to the surviving carboxyl.",
+   "why": "Ethylation gives EtCH(CO2Et)2; hydrolysis and loss of one CO2 leave EtCH2CO2H. The acid carbon, the former malonate CH2 and the ethyl group make four carbons: butanoic acid. Propanoic acid forgets the malonate carbon, pentanoic acid adds one carbon too many, and nothing in the sequence reduces the acid to an alcohol.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -39203,7 +39215,7 @@
     "It cannot be made"
    ],
    "correct": 0,
-   "why": "The alpha carbon of the target carries a methyl and a propyl, installed in two rounds.",
+   "why": "Write the target as R-CH(R')-CO2H: 2-methylpentanoic acid has a methyl and a propyl on its alpha carbon, so malonate is alkylated twice, once with a methyl halide and once with a propyl halide, in either order. Butyl bromide alone gives hexanoic acid, and isopropyl bromide gives 3-methylbutanoic acid, from a secondary halide at that.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -39242,7 +39254,7 @@
     "LiAlH4"
    ],
    "correct": 1,
-   "why": "One step does both, because the beta-keto acid does not survive the temperature.",
+   "why": "Heating the alkylated diester in aqueous acid hydrolyzes both esters and then decarboxylates the beta-dicarbonyl acid in the same pot. Sodium ethoxide is the base for the alkylation step, LiAlH4 would reduce the esters to alcohols, and mCPBA epoxidizes alkenes.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -39255,7 +39267,7 @@
     "Alkoxides attack esters only"
    ],
    "correct": 0,
-   "why": "pKa 25 against 13 is the whole reason the second carbonyl is installed.",
+   "why": "An ordinary ester's alpha C-H has a pKa near 25, so ethoxide (ethanol about 16) forms only a trace of enolate, and a base strong enough to do better would attack the ester carbonyl. A second carbonyl brings the pKa down to 13. The ester does have alpha hydrogens and is not unusually hindered, and alkoxides do more than attack esters - they deprotonate the doubly activated ones.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -39268,7 +39280,7 @@
     "The ester's alkyl group"
    ],
    "correct": 3,
-   "why": "Using ethoxide with an ethyl ester avoids scrambling the ester by transesterification.",
+   "why": "Ethoxide with an ethyl ester, methoxide with a methyl ester: if the alkoxide attacks the ester carbonyl, it expels an identical alkoxide and nothing changes. A mismatched base swaps ester groups by transesterification and gives a mixture. The halide, the product and the temperature carry no such constraint.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -39294,7 +39306,7 @@
     "Three"
    ],
    "correct": 1,
-   "why": "One of them is beta to the other, which is why exactly one is lost on heating.",
+   "why": "Both ethyl esters hydrolyze, giving a malonic acid with two carboxyls on one carbon. Each is beta to the other, so heating removes one of them - never both, because after the first loss the remaining acid has no second carbonyl beta to it.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -39307,7 +39319,7 @@
     "Neither carbonyl"
    ],
    "correct": 0,
-   "why": "Which is what makes every product of that route a methyl ketone.",
+   "why": "The ester becomes a carboxyl and leaves as CO2, while the ketone and its methyl stay: every product is CH3CO-CH2R. Keeping both carbonyls would mean no decarboxylation, keeping the ester would mean no hydrolysis, and losing both would destroy the ketone the route is built around.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -39320,7 +39332,7 @@
     "Whether the halide survives an SN2"
    ],
    "correct": 3,
-   "why": "The target never tells you whether the route works; the halide does.",
+   "why": "Both routes alkylate by SN2, so the halide decides feasibility: methyl, primary, allylic and benzylic work, secondary is poor, and tertiary, vinyl and aryl halides fail. The order of the two carbonyls is fixed by the choice of malonate (acid product) or acetoacetate (ketone product), and melting point and solvent polarity say nothing about whether the route works.",
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -45218,7 +45230,7 @@
     "On the beta carbon"
    ],
    "correct": 0,
-   "why": "Both the enol and the enolate are nucleophilic at that carbon.",
+   "why": "Both nucleophiles put their electron density on the alpha carbon: the enol through its C=C, the enolate through its carbanion resonance form. That carbon attacks X2, so the new C-X bond forms there. The carbonyl carbon is the electrophilic end of the molecule, not the nucleophilic one; attack through the oxygen would give up the C=O for a weak O-X bond; and the beta carbon is not part of the enol at all.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -45231,7 +45243,7 @@
     "Enol formation"
    ],
    "correct": 3,
-   "why": "Halogen is consumed only as fast as enol is made.",
+   "why": "Under acid the sequence is: protonate the carbonyl oxygen, remove an alpha proton to form the enol, let the enol attack X2, lose the O-H proton. The enol forms slowly and is consumed the moment it appears, so enol formation sets the rate - which is why the rate does not depend on how much halogen is present, or on which halogen it is. Attack on the halogen, loss of the O-H proton and loss of halide are all fast steps after it.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45244,7 +45256,7 @@
     "Hydroxide with excess halogen"
    ],
    "correct": 0,
-   "why": "The halogen makes the carbonyl harder to protonate, so the second enol forms more slowly.",
+   "why": "In acid every halogenation needs a fresh enol, and making the enol starts with protonating the carbonyl oxygen. The first halogen withdraws electron density and makes that oxygen less basic, so the monohalo ketone enolizes more slowly than the starting ketone and the reaction stops after one. All three basic conditions run the other way: the halogen makes the remaining alpha hydrogens more acidic, so each substitution speeds up the next one.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45257,7 +45269,7 @@
     "The halogen makes the alpha H less acidic"
    ],
    "correct": 1,
-   "why": "Enolization needs the oxygen protonated, and withdrawal makes that harder.",
+   "why": "Enolization in acid begins with protonation of the carbonyl oxygen, and the new halogen's inductive pull makes that oxygen a poorer base, so the second enol forms more slowly than the first. The halogen actually makes the remaining alpha H more acidic, not less - that is why base runs away. The acid is a catalyst that is not used up, and a single halogen does not shield the alpha carbon sterically.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -45270,7 +45282,7 @@
     "The carbonyl becomes more electrophilic"
    ],
    "correct": 0,
-   "why": "Halogen stabilizes the next enolate's charge, so each step speeds up the one after.",
+   "why": "Each halogen withdraws electron density from the alpha carbon, stabilizing the enolate that would form there, so the remaining alpha hydrogens become more acidic. The monohalo ketone is deprotonated faster than the starting ketone, and the second and third halogenations outrun the first. The halogenated enolate is less nucleophilic, not more; hydroxide is consumed by each substitution rather than regenerated; and a slightly more electrophilic carbonyl is not what decides the rate.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -45283,7 +45295,7 @@
     "The enol"
    ],
    "correct": 3,
-   "why": "Acid generates the neutral tautomer, not the anion.",
+   "why": "Acid never makes an anion: it protonates the carbonyl, and loss of an alpha proton from that cation gives the neutral enol, whose C=C attacks Br2. The enolate is the base-side nucleophile. The protonated ketone is an electrophile rather than a nucleophile, and an acyl bromide belongs to the HVZ reaction of carboxylic acids, not to a ketone halogenation.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45296,7 +45308,7 @@
     "The hydrate"
    ],
    "correct": 0,
-   "why": "Base removes an alpha proton outright.",
+   "why": "Hydroxide removes an alpha proton directly, and the enolate formed is what attacks Br2; nothing has to protonate the oxygen first. The enol is the acid-side nucleophile, and although a trace of it exists in base, the far more reactive enolate carries the reaction. There is no carbocation in a basic solution, and the hydrate is an addition product at the carbonyl carbon with no nucleophilic carbon.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45309,7 +45321,7 @@
     "A methyl ketone"
    ],
    "correct": 3,
-   "why": "Three identical hydrogens on one carbon are required.",
+   "why": "Haloform needs a CH3 on the carbonyl: base halogenates it three times to a CX3, and only a trihalomethyl group is stabilized enough to leave as a carbanion when hydroxide adds to the C=O. A ketone with no methyl on its carbonyl halogenates but has no CX3 to expel; a carboxylic acid is deprotonated to an unreactive carboxylate; and an aldehyde with no alpha hydrogen cannot be halogenated at all.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -45322,7 +45334,7 @@
     "Catalytic halogen in aqueous acid"
    ],
    "correct": 2,
-   "why": "Every methyl hydrogen must be replaced before cleavage happens.",
+   "why": "Haloform needs every hydrogen of the methyl replaced and then hydroxide to add to the carbonyl for the cleavage. Excess X2 in excess NaOH supplies both, and base is the condition under which halogenation runs past the first substitution. Catalytic halogen in acid stops at one halogen; iodine with no base forms neither the enolate nor the hydroxide the cleavage needs; Br2 with PBr3 is the HVZ reagent for carboxylic acids.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -45335,7 +45347,7 @@
     "A halide ion"
    ],
    "correct": 1,
-   "why": "Three halogens stabilize the departing carbanion.",
+   "why": "Once hydroxide adds to the carbonyl of the trihalo ketone, the tetrahedral intermediate re-forms the C=O by expelling -CX3. A carbanion is normally a hopeless leaving group, but three electron-withdrawing halogens stabilize this one enough to go. Hydroxide leaving would just reverse the addition; the carboxylate is the fragment that stays; and no halide leaves from carbon in this step.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45348,7 +45360,7 @@
     "A radical chain step"
    ],
    "correct": 0,
-   "why": "Hydroxide adds and the tetrahedral intermediate collapses.",
+   "why": "Hydroxide adds to the carbonyl carbon, and the tetrahedral intermediate collapses by expelling the CX3 group - addition then elimination at an acyl carbon, the same pattern as ester hydrolysis. An SN2 would need a leaving group on the attacked carbon and backside approach, and the alpha carbon is never attacked. No beta elimination and no radicals are involved.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -45361,7 +45373,7 @@
     "A carboxylate and CHX3"
    ],
    "correct": 3,
-   "why": "Acidic workup then delivers the free acid.",
+   "why": "Cleavage gives a carboxylic acid and -CX3; the carbanion immediately takes the acid's proton, leaving the carboxylate salt and the haloform, CHX3. Acidic workup then gives the free acid. The acyl carbon keeps its oxygen and gains another from hydroxide, so it cannot end up as an aldehyde, and the CX3 carbon gains a hydrogen rather than a fourth halogen, so no CX4 forms.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45374,7 +45386,7 @@
     "Propanoic acid"
    ],
    "correct": 2,
-   "why": "Three carbons become two; the methyl leaves as CHI3.",
+   "why": "Acetone, CH3COCH3, is triiodinated at one methyl, and hydroxide then cleaves off the CI3 group as iodoform. What remains is acetate, CH3CO2-, and acid workup gives acetic acid: three carbons in, two in the acid and one in CHI3. The acetate methyl is not iodinated further, because a carboxylate barely enolizes. Propanoic acid would keep all three carbons; formic and oxalic acid would need that last methyl oxidized too.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45387,7 +45399,7 @@
     "Keeps it unchanged"
    ],
    "correct": 1,
-   "why": "The methyl group departs as the haloform itself.",
+   "why": "The methyl on the carbonyl leaves as CHX3, and everything else becomes the carboxylic acid, so the acid always has one carbon fewer than the methyl ketone: acetone gives acetic acid, acetophenone gives benzoic acid. Hydroxide adds an oxygen, not a carbon, so nothing is gained, and exactly one carbon leaves - never two, and never none.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -45400,7 +45412,7 @@
     "Benzaldehyde"
    ],
    "correct": 0,
-   "why": "Alkaline hypoiodite oxidizes it to a methyl ketone first.",
+   "why": "Alkaline hypoiodite is an oxidant as well as a halogenating agent, so an alcohol with a CH3CH(OH)- unit is first oxidized to the methyl ketone and then gives iodoform. 2-Butanol becomes butan-2-one, CH3COCH2CH3, with its methyl on the carbonyl. 1-Butanol gives butanal, which has no methyl on the carbonyl; 3-pentanone has an ethyl on each side; benzaldehyde has no alpha hydrogens at all.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -45413,7 +45425,7 @@
     "Ethanol"
    ],
    "correct": 3,
-   "why": "It is the primary alcohol that oxidizes to acetaldehyde.",
+   "why": "Ethanol, CH3CH2OH, is oxidized to acetaldehyde, CH3CHO, which carries a methyl on its carbonyl and so gives iodoform - the only primary alcohol that does. 1-Propanol gives propanal, whose carbonyl carries an ethyl; methanol gives formaldehyde, which has no methyl at all; and tert-butanol has no carbinol hydrogen to oxidize.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45426,7 +45438,7 @@
     "Any carbonyl group"
    ],
    "correct": 2,
-   "why": "It is not a test for ketones as such.",
+   "why": "The test needs CH3-C=O, or a CH3-CH(OH) that the reagent oxidizes into it, because only that methyl can be trihalogenated and cleaved. A carbonyl without the methyl gives no iodoform - 3-pentanone is negative - which is why \"any carbonyl group\" is wrong. Alkynes and aromatic rings play no part in the reaction.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -45439,7 +45451,7 @@
     "It has essentially no enol"
    ],
    "correct": 3,
-   "why": "The hydroxyl oxygen already donates into the carbonyl.",
+   "why": "A carboxylic acid does have alpha hydrogens, but its OH oxygen already donates a lone pair into the C=O, so the carbonyl has little pull on the alpha carbon and the enol content is vanishingly small. Under base the acid is simply deprotonated to a carboxylate, which enolizes even less. It is less electrophilic than a ketone, not more, and HVZ exists precisely to swap the OH for a Br that donates far less.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -45452,7 +45464,7 @@
     "Br2 with excess aqueous NaOH"
    ],
    "correct": 2,
-   "why": "Red phosphorus serves as well, making PBr3 in situ.",
+   "why": "HVZ is Br2 with a catalytic amount of PBr3 (or red phosphorus, which makes PBr3 in situ): the PBr3 turns some of the acid into the acyl bromide, which enolizes and brominates. LDA would deprotonate the acid O-H before anything else, AlCl3 is an aromatic-bromination catalyst, and excess NaOH turns the acid into a carboxylate that will not halogenate.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -45465,7 +45477,7 @@
     "The carboxylate salt"
    ],
    "correct": 1,
-   "why": "That derivative enolizes where the acid will not.",
+   "why": "The free acid and its carboxylate barely enolize, so the species that actually brominates is the acyl bromide, through its enol. Bromine on the acyl carbon withdraws inductively but donates far less than OH, so the acyl bromide enolizes readily. No anhydride forms under these conditions, and the carboxylate salt is the least enolizable of all.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45478,7 +45490,7 @@
     "A beta-bromo acid"
    ],
    "correct": 0,
-   "why": "Exchange with more starting acid releases it and carries the cycle on.",
+   "why": "The alpha-bromo acyl bromide exchanges with unreacted acid: it hands over its acyl Br, becoming the alpha-bromo acid, and makes a fresh acyl bromide that carries the cycle on (water in the workup converts whatever is left). So the acyl bromide is an intermediate, not the product. The bromine is on the alpha carbon, not beta, and the product is still an acid - no ketone can form from it.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -45491,7 +45503,7 @@
     "An alpha-amino acid"
    ],
    "correct": 3,
-   "why": "Ammonia displaces the alpha bromide by SN2.",
+   "why": "The alpha-bromo acid is an excellent SN2 substrate, the neighboring carbonyl activating the C-Br. Ammonia displaces the bromide to give the alpha-amino acid, and it is used in excess because the product amine is itself a nucleophile and would otherwise compete. Water would give the alpha-hydroxy acid. The acid is present as its ammonium carboxylate, which does not become an amide under these conditions, and nothing here makes a nitrile.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45504,7 +45516,7 @@
     "An alpha-bromo ketone"
    ],
    "correct": 1,
-   "why": "Same SN2 displacement, different nucleophile.",
+   "why": "Water displaces the alpha bromide by SN2, putting an OH where the Br was: an alpha-hydroxy acid. Ammonia would give the amino acid instead; a second carboxyl would need a new carbon; and an alpha-bromo ketone comes from halogenating a ketone, not an acid.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45517,7 +45529,7 @@
     "Enantiopure L"
    ],
    "correct": 2,
-   "why": "Nothing in the sequence selects one face over the other.",
+   "why": "HVZ brominates through a flat enol, so the Br arrives on either face equally and the alpha-bromo acid is racemic. The SN2 with ammonia inverts every molecule, which turns a racemate into another racemate. Nothing in the sequence is chiral, so neither pure D nor pure L can come out, and meso is impossible for a compound with one stereocenter.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -45530,12 +45542,12 @@
     "The carbonyl blocks the backside"
    ],
    "correct": 0,
-   "why": "Sitting next to the carbonyl lowers the barrier to displacement.",
+   "why": "An alpha-halo ketone undergoes SN2 much faster than a comparable alkyl halide, because the C=O pi system next door overlaps with the transition state and stabilizes it. The halide is a normal, good leaving group, the molecule is neutral, and the carbonyl sits beside the carbon rather than behind it, so the back side is open.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Treating an alpha-bromo ketone with base gives:",
+   "q": "Heating an alpha-bromo ketone with pyridine gives:",
    "options": [
     "An epoxide",
     "A diketone",
@@ -45543,7 +45555,7 @@
     "An enone"
    ],
    "correct": 3,
-   "why": "Loss of HX reaches the same enone the aldol condensation does.",
+   "why": "The base removes a hydrogen from the carbon on the far side of the C-Br and bromide leaves in an E2, leaving a C=C next to the carbonyl: an alpha,beta-unsaturated ketone, the same enone an aldol condensation gives. A diketone or a carboxylic acid would need an oxidation, and an epoxide needs an oxygen nucleophile on the neighboring carbon, as in a halohydrin.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45611,7 +45623,7 @@
     "A methyl group"
    ],
    "correct": 0,
-   "why": "C2 is the crowded side; C6 has nothing on it.",
+   "why": "Number from the carbonyl: C1 is the C=O, C2 is the ring carbon carrying the methyl, and C6 is the other alpha carbon, a CH2 with nothing else on it. The methyl group is a substituent on C2, not a ring carbon. Keeping the two alpha carbons straight matters because the kinetic enolate forms at C6 and the thermodynamic one at C2.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -45624,7 +45636,7 @@
     "One"
    ],
    "correct": 3,
-   "why": "The methyl group occupies what would be the second one.",
+   "why": "C2 is bonded to C1, C3 and the methyl, which leaves room for one hydrogen. That single hydrogen is also the more hindered of the two alpha positions, which is half of why LDA prefers C6. Two hydrogens describes C6; three would be the methyl group itself, whose hydrogens are not on the ring; and none would need a second substituent on C2.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45637,7 +45649,7 @@
     "The trisubstituted enolate"
    ],
    "correct": 2,
-   "why": "The less substituted C=C, which is the kinetic choice.",
+   "why": "Removing a C6 hydrogen puts the enolate C=C between C1 and C6. Counting the carbon groups on that double bond, C1 carries C2 and C6 carries C5: two, so a disubstituted enolate - the less substituted of the two, and the kinetic one. The trisubstituted enolate comes from C2, where the methyl adds a third carbon; mono- and tetrasubstituted enolates are not possible from this ring.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45650,7 +45662,7 @@
     "Monosubstituted"
    ],
    "correct": 1,
-   "why": "The methyl already sits on a carbon of the new double bond.",
+   "why": "Removing the C2 hydrogen makes the C1=C2 enolate. C1 carries C6, and C2 carries both C3 and the methyl, so three carbon groups sit on the double bond: trisubstituted. That extra substituent is what makes it the more stable, thermodynamic enolate. Disubstituted is the C6 enolate, and a tetrasubstituted one would need another carbon group on C1 or C2 that the ring does not have.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -45663,7 +45675,7 @@
     "Potassium carbonate"
    ],
    "correct": 0,
-   "why": "Bulky, and strong enough to make deprotonation irreversible.",
+   "why": "LDA is strong - its conjugate acid, diisopropylamine, has a pKa near 36, against a ketone's 20, so deprotonation is complete and irreversible - and bulky, so it takes the more accessible proton fastest. Ethoxide deprotonates reversibly and equilibrates to the thermodynamic enolate. NaH is irreversible but slow and heterogeneous, so leftover ketone shuttles protons and it gives the thermodynamic enolate too. Carbonate is far too weak to make much enolate.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -45676,7 +45688,7 @@
     "NaOEt in ethanol, warm"
    ],
    "correct": 3,
-   "why": "Reversible deprotonation lets the mixture settle on the stable enolate.",
+   "why": "Thermodynamic control needs the two enolates to interconvert, and ethoxide provides that directly: ethanol (pKa about 16) is acidic enough to reprotonate an enolate (ketone about 20), so the mixture keeps equilibrating toward the more substituted enolate, and warmth makes that fast. LDA at -78 C is the kinetic recipe; warm LDA drifts only slowly and incompletely; NaH gives the thermodynamic enolate, but at -78 C it barely reacts at all.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45689,7 +45701,7 @@
     "Its poor solubility in cold THF"
    ],
    "correct": 2,
-   "why": "Against a ketone's 20, deprotonation goes to completion.",
+   "why": "Diisopropylamine has a pKa near 36 and a ketone's alpha C-H is about 20. Sixteen pKa units put the equilibrium about 10^16 toward the enolate, so the proton never goes back to the amide. The lithium counterion and the cold matter for other parts of the recipe - a tight enolate, and a stalled amine shuttle - but neither is what makes the deprotonation one-way, and solubility has nothing to do with it.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -45702,7 +45714,7 @@
     "It is a poor nucleophile"
    ],
    "correct": 1,
-   "why": "Two isopropyl groups do the discriminating; strength alone would not.",
+   "why": "Two isopropyl groups flank LDA's nitrogen, so it reaches the open C6 hydrogens much faster than the single hydrogen beside C2's methyl. Strength alone would not choose a side - a strong but small base could take either - and LDA is not weak. It is a poor nucleophile, which is why it does not add to the C=O, but that says nothing about which proton it removes; lithium coordinates the oxygen whichever side reacts.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45715,7 +45727,7 @@
     "C6 is closer to the carbonyl"
    ],
    "correct": 0,
-   "why": "Statistics and access both point the same way.",
+   "why": "C6 carries two hydrogens and C2 only one, and C6's are not screened by a methyl: statistics and access both favor it, which is exactly what fast, irreversible deprotonation rewards. The anion formed at C6 is the less stable one, with the less substituted C=C, so stability is not why it forms faster. C2 and C6 are equally close to the carbonyl.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45728,7 +45740,7 @@
     "To avoid free ketone"
    ],
    "correct": 3,
-   "why": "Leftover ketone shuttles protons and equilibrates the two enolates.",
+   "why": "Adding the ketone to excess LDA means each ketone molecule meets base and is deprotonated at once, so no free ketone ever sits beside an enolate. Reverse the order and the flask holds ketone and enolate together: the ketone hands a proton to the kinetic enolate and gives up one from its other alpha carbon, equilibrating the two toward the thermodynamic enolate. The order is about free ketone, not temperature, solubility or addition rate.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -45741,7 +45753,7 @@
     "100 C"
    ],
    "correct": 0,
-   "why": "Cold enough that nothing equilibrates once it has formed.",
+   "why": "At -78 C (dry ice and acetone) the proton transfers between enolates - through the amine or any stray ketone - are frozen out, so the enolate that forms first is the one that reacts. At 0 C or room temperature those shuttles run and the regiochemistry erodes; 100 C is above the boiling point of THF.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45763,11 +45775,11 @@
    "options": [
     "The ketone must be symmetric",
     "The solvent must be aprotic",
-    "Deprotonation must reverse",
+    "The enolates must interconvert",
     "The base must be bulky"
    ],
    "correct": 2,
-   "why": "Only a reversible first step lets the stable enolate accumulate.",
+   "why": "Thermodynamic control means the enolate ratio reflects stability, and that is only possible if the two enolates can turn into each other - through the deprotonation reversing (ethoxide) or through a proton donor such as free ketone shuttling protons (NaH, which is irreversible yet still thermodynamic). A symmetric ketone has no regiochemistry problem to control; an aprotic solvent and a bulky base belong to the kinetic recipe.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45780,7 +45792,7 @@
     "The less hindered"
    ],
    "correct": 1,
-   "why": "It is the more stable one, and everything can revert to reach it.",
+   "why": "When the enolates can interconvert, the population settles where free energy is lowest, and the more substituted enolate C=C is the more stable one, just as a more substituted alkene is. The less substituted, less hindered enolate is the kinetic product. Equal amounts of both would mean equal stabilities, which they do not have.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -45793,7 +45805,7 @@
     "The Hammond postulate"
    ],
    "correct": 0,
-   "why": "The same ranking that makes Zaitsev products favored.",
+   "why": "An enolate C=C is ranked like any alkene: more alkyl groups on it means more hyperconjugation and more stability, the same ranking that makes Zaitsev products favored. Markovnikov's rule is about where H adds across an alkene, Huckel's rule about aromaticity, and the Hammond postulate about what a transition state resembles; none of them ranks two alkenes against each other.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -45806,7 +45818,7 @@
     "A stronger base"
    ],
    "correct": 0,
-   "why": "Leftover ketone or the amine the base generated will do it; NaH is irreversible and still thermodynamic.",
+   "why": "Interconversion needs a proton to travel from one alpha carbon to the other, so something in the flask must be able to hand one back: unreacted ketone, the alcohol from an alkoxide base, or the amine an amide base produced. NaH proves the point - its deprotonation is irreversible, yet leftover ketone shuttles protons and it still gives the thermodynamic enolate. A bulkier or stronger base, or a colder flask, works against interconversion.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45819,7 +45831,7 @@
     "The workup"
    ],
    "correct": 1,
-   "why": "Reversing it just moves a proton back onto the ketone.",
+   "why": "The only step with a choice in it is which alpha carbon loses its proton; once an enolate exists, it reacts at the carbon carrying the charge. So kinetic versus thermodynamic is decided at deprotonation. The halide, the C-C bond formation and the workup all follow whichever enolate was made, and reversing the deprotonation simply returns the proton to the ketone.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45832,7 +45844,7 @@
     "An amide"
    ],
    "correct": 0,
-   "why": "A primary amine would stop at the imine instead.",
+   "why": "A secondary amine condenses with the ketone to an iminium ion, but with no N-H left it cannot lose a proton from nitrogen to become a neutral imine, so it loses an alpha C-H instead: an enamine. A primary amine has the N-H and stops at the imine. An enolate needs a base, not an amine, and an amide would need an acyl group.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45845,7 +45857,7 @@
     "Toward the more substituted side"
    ],
    "correct": 2,
-   "why": "The substituted alternative twists the nitrogen lone pair out of alignment.",
+   "why": "The enamine puts its C=C toward the less substituted alpha carbon, because a double bond toward the substituted side forces the ring substituent against the groups on nitrogen, twisting the nitrogen lone pair out of line with the pi bond. That is the opposite regiochemistry from a thermodynamic enolate. The C=C always runs from the former carbonyl carbon, now bearing the nitrogen, to an alpha carbon.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -45858,7 +45870,7 @@
     "The alpha carbon"
    ],
    "correct": 3,
-   "why": "The nitrogen lone pair pushes electron density out to that carbon.",
+   "why": "The nitrogen lone pair pushes into the C=C and puts partial negative charge on the far carbon - the alpha carbon of the original ketone - just as an enolate's oxygen does. Alkylation happens there. Nitrogen's own lone pair is tied up in that delocalization, the carbonyl oxygen is gone, and the beta carbon is not part of the pi system.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -45871,7 +45883,7 @@
     "The product precipitates out of solution"
    ],
    "correct": 0,
-   "why": "No nucleophilic carbon is left and no base is present to restore one, so a second alkylation is impossible.",
+   "why": "Once the alpha carbon has been alkylated the product is an iminium ion: the nitrogen lone pair is now in a C=N+ bond and no carbon carries nucleophilic electron density. Getting an enamine back would need a base to remove an alpha proton, and none is present. So a second alkylation is impossible rather than slow, which is why \"less reactive\" is the wrong reason. The amine is released again on hydrolysis, and nothing precipitates.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45884,7 +45896,7 @@
     "Elimination of the amine"
    ],
    "correct": 0,
-   "why": "Alkylate the enamine first, then unmask the carbonyl.",
+   "why": "Stork sequence: form the enamine, alkylate at carbon to give an iminium ion, then add aqueous acid to hydrolyze the iminium back to a ketone, releasing the secondary amine. The alpha carbon keeps its new alkyl group and the carbonyl returns. Reduction would give an amine, and neither an oxidation nor an elimination unmasks the C=O.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -45897,7 +45909,7 @@
     "SN1"
    ],
    "correct": 2,
-   "why": "That is exactly what limits which halides are usable.",
+   "why": "The enolate carbon attacks the alkyl halide from the back side as the halide leaves, in one step: SN2. That is why the usable halides are methyl, primary, allylic and benzylic. E2 is what happens instead with hindered halides, SN1 needs a carbocation these conditions do not form, and electrophilic addition is an alkene reaction.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45910,7 +45922,7 @@
     "tert-Butyl bromide"
    ],
    "correct": 1,
-   "why": "Methyl and primary halides are the reliable ones.",
+   "why": "SN2 needs an unhindered carbon, and iodomethane is the least hindered of all, with iodide the best leaving group. 2-Bromopropane and 2-bromobutane are secondary, where the strongly basic lithium enolate takes a beta hydrogen instead and E2 competes heavily; tert-butyl bromide gives elimination only.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -45923,7 +45935,7 @@
     "No reaction at all"
    ],
    "correct": 0,
-   "why": "The enolate acts as a base rather than as a nucleophile.",
+   "why": "The back side of a tertiary carbon is blocked, so SN2 cannot happen, and the enolate - a strong base - removes a beta hydrogen instead, giving an alkene and handing back the ketone. The enolate does not ionize the halide to a carbocation, so no substitution product forms at all; but it does react, as a base.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -45936,7 +45948,7 @@
     "Substantial elimination"
    ],
    "correct": 3,
-   "why": "Enough SN2 to tempt you, enough E2 to hurt the yield.",
+   "why": "A secondary carbon allows some SN2, but the enolate is basic enough that E2 takes a large share, so yields are poor. Clean substitution is methyl and primary territory; the halide does react, by elimination if not substitution; and nothing in the mechanism rearranges.",
    "difficulty": "medium",
    "type": "mcq"
   },
