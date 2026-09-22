@@ -746,7 +746,34 @@
     },
     bonds: [{a:'c',b:'o',order:2},{a:'c',b:'ca'},{a:'c',b:'oL'},{a:'oL',b:'etL'},{a:'ca',b:'h1'},{a:'ca',b:'h2'},
             {a:'c2',b:'o2',order:2},{a:'c2',b:'cb'},{a:'c2',b:'o3'},{a:'o3',b:'etR'}],
-    caption: 'Nucleophile on the left, electrophile on the right. Four arrows: one makes the C–C bond, one gets the pi electrons out of its way, and two bring the carbonyl back by pushing the alkoxide out.'
+    caption: 'Nucleophile on the left, electrophile on the right. Two arrows: one makes the C–C bond, and one moves the pi electrons out of its way onto oxygen.'
+  };
+
+  /* The Claisen's addition and collapse used to be one four-arrow step on the
+     enolate + ester, which cancelled itself (C=O opened and remade on the same
+     drawing) and never showed the intermediate the text talks about. This is
+     that intermediate, with the atom keys of `enolate-plus-ester` so the
+     collapse arrows (o2 -> C–O bond, C–O3 bond -> o3) and the old wrong-arrow
+     keys still address the same atoms. The new C–C bond is ca–c2. */
+  M['claisen-tetrahedral'] = {
+    name: 'Claisen tetrahedral intermediate', formula: 'EtO₂C–CH₂–C(O⁻)(CH₃)OEt', viewBox: '0 0 380 210',
+    atoms: {
+      o:   { x:80,  y:24, r:15, label:'O', lp:2, role:'carbonyl-o' },
+      c:   { x:80,  y:70, r:16, label:'C' },
+      oL:  { x:40,  y:108,r:15, label:'O', lp:2, note:'The attacking ester’s own OEt, still a spectator.' },
+      etL: { x:40,  y:162,r:14, label:'Et' },
+      ca:  { x:138, y:96, r:15, label:'C', note:'The former enolate carbon, now bonded to the acyl carbon — the one new C–C bond of the Claisen.' },
+      h1:  { x:150, y:48, r:10, label:'H' },
+      h2:  { x:118, y:140,r:10, label:'H' },
+      c2:  { x:200, y:110,r:17, label:'C', role:'electrophile', note:'sp³ now: bonded to O⁻, OEt, CH₃ and the new CH₂. Remaking the C=O means one of them leaves.' },
+      o2:  { x:254, y:62, r:15, label:'O', charge:'⁻', lp:3, role:'alkoxide', note:'The old carbonyl oxygen, carrying the charge. Its lone pair comes back down to reform the C=O.' },
+      cb:  { x:164, y:164,r:15, label:'CH₃', note:'A methyl group would have to leave as a carbanion. It stays.' },
+      o3:  { x:262, y:146,r:15, label:'O', lp:2, role:'leaving-group', note:'The alkoxy group. Ethoxide is the weakest base on this carbon, so it is what the collapse expels.' },
+      etR: { x:320, y:176,r:14, label:'Et' }
+    },
+    bonds: [{a:'c',b:'o',order:2},{a:'c',b:'oL'},{a:'oL',b:'etL'},{a:'c',b:'ca'},{a:'ca',b:'h1'},{a:'ca',b:'h2'},
+            {a:'ca',b:'c2'},{a:'c2',b:'o2'},{a:'c2',b:'cb'},{a:'c2',b:'o3'},{a:'o3',b:'etR'}],
+    caption: 'After the attack: the new C–C bond is made and the attacked carbon is tetrahedral, holding O⁻, OEt, CH₃ and the CH₂ from the enolate. Collapse it and one group has to go.'
   };
 
   M['acetyl-chloride-nu'] = {
@@ -761,6 +788,28 @@
     },
     bonds: [{a:'nuO',b:'nuC'},{a:'c',b:'o1',order:2},{a:'c',b:'ca'},{a:'c',b:'cl'}],
     caption: 'An acid chloride with the nucleophile drawn in, so both arrows of the first step have somewhere to start.'
+  };
+
+  /* The collapse step used to be drawn on `acetyl-chloride-nu` — the acid
+     chloride BEFORE attack — so its arrows reformed a C=O that was never
+     broken and pushed chloride off a carbon the methoxide had not reached.
+     This is the intermediate itself. Atom keys match that record, so the
+     step's arrows (o1 -> C–O bond, C–Cl bond -> Cl) and its wrong-arrow keys
+     ('bond:c-nuO>nuO', 'bond:c-ca>ca') address real atoms and bonds. The
+     charged oxygen sits upper right, so its lone-pair dots (drawn up, right
+     and down) stay off the C–O bond. */
+  M['acetyl-chloride-tetrahedral'] = {
+    name: 'Tetrahedral intermediate', formula: 'CH₃C(O⁻)(OCH₃)Cl', viewBox: '0 0 320 190',
+    atoms: {
+      o1:  { x:226, y:58, r:16, label:'O', charge:'⁻', lp:3, role:'alkoxide', note:'The old carbonyl oxygen, now single-bonded and carrying the charge. One of its lone pairs is what comes back down to remake the C=O.' },
+      c:   { x:160, y:104,r:17, label:'C', role:'electrophile', note:'sp³ now: four single bonds — O⁻, OCH₃, Cl and CH₃. Reforming the C=O means one of those has to go.' },
+      nuO: { x:100, y:62, r:16, label:'O', lp:2, note:'The methoxy group that just arrived. Methoxide is a far stronger base than chloride, so it stays.' },
+      nuC: { x:40,  y:86, r:15, label:'C' },
+      ca:  { x:104, y:152,r:15, label:'C', role:'alpha-carbon', note:'The methyl group. It would have to leave as a carbanion, which it will not.' },
+      cl:  { x:228, y:152,r:17, label:'Cl', lp:3, role:'leaving-group', note:'Chloride, the conjugate base of HCl (pKa −7): the weakest base on this carbon, and so the group that leaves.' }
+    },
+    bonds: [{a:'c',b:'o1'},{a:'c',b:'nuO'},{a:'nuO',b:'nuC'},{a:'c',b:'ca'},{a:'c',b:'cl'}],
+    caption: 'The tetrahedral intermediate. The carbon now holds O⁻, OCH₃, Cl and CH₃, and collapsing it will push one of the two heteroatom groups off.'
   };
 
   M['fischer-protonation'] = {

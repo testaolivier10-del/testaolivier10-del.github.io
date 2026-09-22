@@ -182,14 +182,13 @@
     },
     {
       "type": "draw",
-      "eyebrow": "Step 2 · Add, then eliminate",
-      "title": "The enolate attacks a second ester. Draw the addition and the collapse.",
-      "bodyHtml": "<p class=\"step-body\">Four arrows, and the first one is the reaction: the enolate's alpha carbon reaches the carbonyl carbon of the second ester. The other three open that C=O, bring it back down, and send the alkoxide away.</p>",
+      "eyebrow": "Step 2 · Add",
+      "title": "The enolate attacks a second ester. Draw both arrows.",
+      "bodyHtml": "<p class=\"step-body\">Two arrows, and the first one is the reaction: the enolate's alpha carbon reaches the carbonyl carbon of the second ester. The second opens that C=O onto its oxygen to make room.</p>",
       "molecule": "enolate-plus-ester",
       "concepts": [
         "tetrahedral-intermediate",
-        "claisen-connectivity",
-        "leaving-group-ability"
+        "claisen-connectivity"
       ],
       "arrows": [
         {
@@ -199,7 +198,29 @@
         {
           "from": "bond:c2-o2",
           "to": "o2"
-        },
+        }
+      ],
+      "hint": "Start at the alpha carbon's pair and end on the carbonyl carbon opposite it. Then open that C=O onto its own oxygen.",
+      "why": "Alpha carbon to acyl carbon is the only new bond in a Claisen, and it is what puts the ketone and the ester two carbons apart in the product. The pi electrons go up onto oxygen, and what you have now is a tetrahedral alkoxide — the same intermediate as any acyl substitution, except that the nucleophile that arrived is a carbon.",
+      "wrong": {
+        "ca>o2": "Carbon attacks carbon. The oxygen is where the displaced pi electrons go, not where the new bond forms.",
+        "bond:c2-o2>c2": "Backwards — the pi electrons go to the electronegative oxygen, not onto the carbon being attacked.",
+        "bond:c2-o3>o3": "Too early. The ethoxide does leave, but only once the tetrahedral intermediate has formed and collapses — that is the next step.",
+        "o2>bond:c2-o2": "That is the collapse, which comes next. Right now the C=O is being opened to accept the nucleophile."
+      },
+      "nextLabel": "Now collapse it"
+    },
+    {
+      "type": "draw",
+      "eyebrow": "Step 3 · Eliminate",
+      "title": "Collapse the tetrahedral intermediate and push out the leaving group.",
+      "bodyHtml": "<p class=\"step-body\">Two arrows. This is the step an aldol cannot do: the carbon the enolate attacked is holding an alkoxy group, so the C=O can come back.</p>",
+      "molecule": "claisen-tetrahedral",
+      "concepts": [
+        "tetrahedral-intermediate",
+        "leaving-group-ability"
+      ],
+      "arrows": [
         {
           "from": "o2",
           "to": "bond:c2-o2"
@@ -209,19 +230,19 @@
           "to": "o3"
         }
       ],
-      "hint": "Start at the alpha carbon's pair and end on the carbonyl carbon opposite it. Then open that C=O onto its own oxygen, bring the pair back down to remake it, and push the OEt off with its electrons.",
-      "why": "Addition then elimination — the same two-part move as any acyl substitution, except that the nucleophile arriving is a carbon. The first arrow is the one that matters: alpha carbon to acyl carbon is the only new bond in a Claisen, and it is what puts the ketone and the ester two carbons apart in the product. The last two arrows are what make this a substitution rather than an aldol: the tetrahedral intermediate has an alkoxide to expel, so the carbonyl comes back instead of being protonated.",
+      "hint": "Bring a lone pair on the charged oxygen back down to remake the C=O, and push the OEt off with its bonding electrons.",
+      "why": "The alkoxide oxygen pushes a lone pair back down to reform the C=O, and one group has to leave the carbon. Of the three groups that could leave, ethoxide is the weakest base (ethanol, pKa about 16, against about 25 for the ester enolate and about 50 for a methyl), so the OEt goes. These two arrows are what make this a substitution rather than an aldol: the tetrahedral intermediate has an alkoxide to expel, so the carbonyl comes back instead of being protonated.",
       "wrong": {
         "bond:c2-cb>cb": "That sends the methyl off as a carbanion. The alkoxy group is the leaving group here, because ethoxide is the far weaker base of the two.",
+        "bond:ca-c2>ca": "That undoes the attack and hands back the enolate. It can happen, since every step so far is reversible, but the ester enolate is a much stronger base than ethoxide, so the OEt is what leaves.",
         "o2>c2": "Reforming the C=O means aiming at the C–O bond. Pointing at the carbon would give it five bonds.",
-        "c2>o3": "The tail belongs on the C–O bond that breaks — carbon has no lone pair to donate.",
-        "ca>o2": "Carbon attacks carbon. The oxygen is where the displaced pi electrons go, not where the new bond forms."
+        "c2>o3": "The tail belongs on the C–O bond that breaks — carbon has no lone pair to donate."
       },
       "nextLabel": "What drives it?"
     },
     {
       "type": "mcq",
-      "eyebrow": "Step 3 · The driving force",
+      "eyebrow": "Step 4 · The driving force",
       "title": "Each step so far is reversible. What makes the Claisen go to completion?",
       "bodyHtml": "<p class=\"step-body\">Look at the product you just made and ask what the base does to it.</p>",
       "options": [

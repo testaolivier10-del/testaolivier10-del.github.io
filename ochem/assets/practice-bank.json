@@ -27608,13 +27608,13 @@
   {
    "q": "Consider 1,3-cyclohexanedione. Explain why its pKa (around 5-6) is even lower than that of an acyclic 1,3-diketone like 2,4-pentanedione (pKa around 9).",
    "options": [
-    "Its ring holds a geometry that favors the enolate over the neutral diketone",
+    "Its enolate and enol tautomer are unusually well stabilized in the ring",
     "Ring compounds are always less acidic than chain compounds with the same functional groups",
     "1,3-Cyclohexanedione has no alpha hydrogens",
     "The ring prevents any resonance stabilization of the enolate"
    ],
    "correct": 0,
-   "why": "1,3-Cyclohexanedione (pKa about 5.3) is about four pKa units more acidic than 2,4-pentanedione (pKa about 9), and the usual explanation is geometry. An acid gets stronger when its conjugate base is stabilized, or when the acid form loses a stabilization, not when the acid form gains one. The open-chain diketone can curl into a U-shaped enol held together by an internal O-H...O hydrogen bond, which stabilizes the acid side of the equilibrium. The ring points its two carbonyls away from each other, so it cannot form that chelate, and it holds the flat, delocalized enolate rigidly in a shape that suits it. Ring compounds are not generally less acidic than chains, the compound does have alpha hydrogens (the CH2 between the two carbonyls), and the ring does not block resonance: its enolate is delocalized over both C=O groups.",
+   "why": "Cyclic 1,3-diketones such as 1,3-cyclohexanedione are known to be notably more acidic than their open-chain counterparts, partly because the enol tautomer is particularly stable and well-conjugated in the ring, pulling the equilibrium and making the corresponding proton unusually easy to remove.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -28365,15 +28365,15 @@
    "type": "mcq"
   },
   {
-   "q": "Potassium tert-butoxide is sometimes used as the base for a Claisen or Dieckmann condensation of an ethyl ester, even though its alkoxide does not match the ester. Why is transesterification much less of a concern with this base than with a small mismatched alkoxide such as methoxide?",
+   "q": "A Claisen condensation performed using potassium tert-butoxide as the base with an ethyl ester substrate risks a side reaction because:",
    "options": [
-    "tert-Butoxide cannot remove alpha hydrogens from an ester",
-    "Ethyl esters have no leaving group under basic conditions",
-    "Its bulk makes attack on the ester carbonyl slow",
-    "tert-Butoxide is a much weaker base than methoxide"
+    "Potassium tert-butoxide cannot remove any alpha hydrogens from an ester",
+    "Ethyl esters have no leaving group available under any conditions",
+    "tert-Butoxide instantly destroys all carbonyl groups present",
+    "tert-Butoxide can attack the carbonyl or transesterify the ester"
    ],
-   "correct": 2,
-   "why": "Matching the alkoxide to the ester matters because a small mismatched alkoxide such as methoxide adds readily to the ester carbonyl and swaps the OR group, giving a mixture of esters. tert-Butoxide is a strong base but a poor nucleophile: its three methyl groups crowd the oxygen, so addition to the carbonyl, and with it transesterification, is slow. That is why KOtBu is a common base for Claisen and especially Dieckmann reactions. It is not a weaker base than methoxide: tert-butanol is the weaker acid, so tert-butoxide is the stronger base. It removes an ester's alpha hydrogen just as ethoxide does, and ethyl esters do have a leaving group, since ethoxide leaves in every Claisen.",
+   "correct": 3,
+   "why": "Using a base whose alkoxide does not match the ester's own -OR group introduces the possibility of that alkoxide itself attacking the ester carbonyl (a transesterification-like pathway) or becoming incorporated into the leaving group step, which is why chemists typically match the base's alkoxide to the ester being used.",
    "difficulty": "medium",
    "type": "mcq"
   },

@@ -143,7 +143,13 @@ const SHELL_BUDGETS = [
      the account by the next sync from any lesson. Measured 103.2 KB after the
      comments were cut down; the deck itself (page script, scheduler, cards)
      is on flashcards.html's own lines below, not here. */
-  ['ochem', 104],
+  /* 104 -> 105 for two tetrahedral intermediates in molecules.js. The
+     acyl-substitution and Claisen mechanism pages drew their collapse step
+     on the starting materials, because no intermediate existed to draw it
+     on; a student was asked to eject a leaving group from a molecule that
+     had no bond to it. The records live in the shared library because the
+     mechanism pages look molecules up there. Measured 104.5 KB. */
+  ['ochem', 105],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as

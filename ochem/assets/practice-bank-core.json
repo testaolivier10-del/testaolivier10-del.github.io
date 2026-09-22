@@ -25454,7 +25454,7 @@
   {
    "q": "Consider 1,3-cyclohexanedione. Explain why its pKa (around 5-6) is even lower than that of an acyclic 1,3-diketone like 2,4-pentanedione (pKa around 9).",
    "options": [
-    "Its ring holds a geometry that favors the enolate over the neutral diketone",
+    "Its enolate and enol tautomer are unusually well stabilized in the ring",
     "Ring compounds are always less acidic than chain compounds with the same functional groups",
     "1,3-Cyclohexanedione has no alpha hydrogens",
     "The ring prevents any resonance stabilization of the enolate"
@@ -26152,14 +26152,14 @@
    "type": "mcq"
   },
   {
-   "q": "Potassium tert-butoxide is sometimes used as the base for a Claisen or Dieckmann condensation of an ethyl ester, even though its alkoxide does not match the ester. Why is transesterification much less of a concern with this base than with a small mismatched alkoxide such as methoxide?",
+   "q": "A Claisen condensation performed using potassium tert-butoxide as the base with an ethyl ester substrate risks a side reaction because:",
    "options": [
-    "tert-Butoxide cannot remove alpha hydrogens from an ester",
-    "Ethyl esters have no leaving group under basic conditions",
-    "Its bulk makes attack on the ester carbonyl slow",
-    "tert-Butoxide is a much weaker base than methoxide"
+    "Potassium tert-butoxide cannot remove any alpha hydrogens from an ester",
+    "Ethyl esters have no leaving group available under any conditions",
+    "tert-Butoxide instantly destroys all carbonyl groups present",
+    "tert-Butoxide can attack the carbonyl or transesterify the ester"
    ],
-   "correct": 2,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },

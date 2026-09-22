@@ -277,6 +277,12 @@ document.addEventListener('DOMContentLoaded', function(){
       '<line x1="200" y1="110" x2="250" y2="66" stroke="var(--line)" stroke-width="2.5"/>' +
       '<line x1="200" y1="110" x2="258" y2="152" stroke="var(--line)" stroke-width="2.5"/>' +
       '<line x1="120" y1="110" x2="90" y2="150" stroke="var(--line)" stroke-width="2.5"/>' +
+      // Clickable bonds: half of arrow-pushing starts or ends on a bond, so the
+      // three that change in E2 are targets too. Drawn before the atoms, so an
+      // atom still wins a click where the two overlap.
+      '<line class="obond" data-key="bch" x1="80" y1="80" x2="120" y2="110"/>' +
+      '<line class="obond" data-key="bcc" x1="120" y1="110" x2="200" y2="110"/>' +
+      '<line class="obond" data-key="bcbr" x1="200" y1="110" x2="258" y2="152"/>' +
       // Hb (beta hydrogen)
       '<g class="atom" data-key="hb"><circle cx="80" cy="80" r="14" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text x="80" y="85" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="12">H</text></g>' +
       // Cb (beta carbon)
@@ -411,7 +417,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var fb = card.querySelector('#fb');
     var next = card.querySelector('#nextBtn');
     var baseClicked = false, done = false;
-    card.querySelectorAll('.atom').forEach(function(g){
+    card.querySelectorAll('.atom, .obond').forEach(function(g){
       g.addEventListener('click', function(){
         if(done) return;
         var key = g.getAttribute('data-key');
@@ -445,8 +451,8 @@ document.addEventListener('DOMContentLoaded', function(){
       '<defs><marker id="ahdone" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--line)"/></marker></defs>';
     card.innerHTML =
       '<div class="step-eyebrow">Step 3 · Draw the arrow</div>' +
-      '<h2 class="step-title">Click the beta carbon, then the alpha carbon.</h2>' +
-      '<p class="step-body">As the C–H bond breaks, those electrons become the new π bond between the two carbons.</p>' +
+      '<h2 class="step-title">Click the C–H bond, then the C–C bond.</h2>' +
+      '<p class="step-body">As the C–H bond breaks, its two electrons become the new π bond between the beta and alpha carbons — so this arrow starts on the C–H bond and ends on the C–C bond, not on either carbon.</p>' +
       sceneSvg(doneArrow) +
       feedbackHtml('fb') +
       nextButton('Continue', false);
@@ -454,26 +460,33 @@ document.addEventListener('DOMContentLoaded', function(){
     var fb = card.querySelector('#fb');
     var next = card.querySelector('#nextBtn');
     var from = null, done = false;
-    card.querySelectorAll('.atom').forEach(function(g){
+    card.querySelectorAll('.atom, .obond').forEach(function(g){
       g.addEventListener('click', function(){
         if(done) return;
         var key = g.getAttribute('data-key');
         if(from === null){
-          if(key !== 'cb'){ showFeedback(fb, false, 'Start this arrow at the beta carbon — that’s where the C–H bond is breaking.'); return; }
+          if(key !== 'bch'){
+            showFeedback(fb, false, key === 'cb'
+              ? 'The electrons that move are the C–H bonding pair, not a pair on the beta carbon itself — start on the C–H bond.'
+              : 'Start this arrow on the C–H bond — that is the pair of electrons being handed over.');
+            return;
+          }
           from = key;
-          showFeedback(fb, true, 'Good. Now click the alpha carbon to form the π bond.');
+          showFeedback(fb, true, 'Good. Now click where that pair ends up.');
         } else {
-          var isCorrect = key === 'ca';
+          var isCorrect = key === 'bcc';
           record(isCorrect);
           if(isCorrect){
             done = true;
-            var arrowSvg = '<path d="M 128 100 Q 160 85 192 100" stroke="var(--accent)" stroke-width="2.5" fill="none" marker-end="url(#ahE2)"/>' +
+            var arrowSvg = '<path d="M 104 90 Q 136 70 158 104" stroke="var(--accent)" stroke-width="2.5" fill="none" marker-end="url(#ahE2)"/>' +
               '<defs><marker id="ahE2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--accent)"/></marker></defs>';
             card.querySelector('.scene svg').insertAdjacentHTML('beforeend', arrowSvg);
             showFeedback(fb, true, 'Correct — that’s the new C=C π bond forming.');
             next.disabled = false;
           } else {
-            showFeedback(fb, false, 'The arrowhead needs to land on the alpha carbon, where the double bond forms.');
+            showFeedback(fb, false, key === 'ca'
+              ? 'Close, but ending on the alpha carbon would park the pair on that atom as a lone pair. The pair becomes the π bond, so the arrowhead goes on the C–C bond between the two carbons.'
+              : 'Those electrons become the new π bond, so the arrowhead goes on the C–C bond between the beta and alpha carbons.');
           }
         }
       });
@@ -484,12 +497,12 @@ document.addEventListener('DOMContentLoaded', function(){
   // ---- Step 4: Arrow 3 — C-LG bond breaks, LG leaves ----
   function renderArrow3(){
     var doneArrows = '<path d="M 55 42 Q 65 55 72 70" stroke="var(--line)" stroke-width="2" fill="none" marker-end="url(#ahd1)"/>' +
-      '<path d="M 128 100 Q 160 85 192 100" stroke="var(--line)" stroke-width="2" fill="none" marker-end="url(#ahd2)"/>' +
+      '<path d="M 104 90 Q 136 70 158 104" stroke="var(--line)" stroke-width="2" fill="none" marker-end="url(#ahd2)"/>' +
       '<defs><marker id="ahd1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--line)"/></marker>' +
       '<marker id="ahd2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--line)"/></marker></defs>';
     card.innerHTML =
       '<div class="step-eyebrow">Step 4 · Draw the arrow</div>' +
-      '<h2 class="step-title">Click the alpha carbon, then bromine.</h2>' +
+      '<h2 class="step-title">Click the C–Br bond, then bromine.</h2>' +
       '<p class="step-body">At the same instant, the C–Br bond breaks and bromide leaves with both electrons.</p>' +
       sceneSvg(doneArrows) +
       feedbackHtml('fb') +
@@ -498,12 +511,12 @@ document.addEventListener('DOMContentLoaded', function(){
     var fb = card.querySelector('#fb');
     var next = card.querySelector('#nextBtn');
     var from = null, done = false;
-    card.querySelectorAll('.atom').forEach(function(g){
+    card.querySelectorAll('.atom, .obond').forEach(function(g){
       g.addEventListener('click', function(){
         if(done) return;
         var key = g.getAttribute('data-key');
         if(from === null){
-          if(key !== 'ca'){ showFeedback(fb, false, 'Start at the alpha carbon — that’s the C–Br bond breaking.'); return; }
+          if(key !== 'bcbr'){ showFeedback(fb, false, 'Start on the C–Br bond — the pair that leaves with bromide is that bonding pair, not a lone pair on the alpha carbon.'); return; }
           from = key;
           showFeedback(fb, true, 'Good. Now click bromine.');
         } else {
@@ -511,7 +524,7 @@ document.addEventListener('DOMContentLoaded', function(){
           record(isCorrect);
           if(isCorrect){
             done = true;
-            var arrowSvg = '<path d="M 212 122 Q 240 128 250 141" stroke="var(--coral)" stroke-width="2.5" fill="none" marker-end="url(#ahE3)"/>' +
+            var arrowSvg = '<path d="M 226 125 Q 250 114 257 133" stroke="var(--coral)" stroke-width="2.5" fill="none" marker-end="url(#ahE3)"/>' +
               '<defs><marker id="ahE3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--coral)"/></marker></defs>';
             card.querySelector('.scene svg').insertAdjacentHTML('beforeend', arrowSvg);
             showFeedback(fb, true, 'Correct — all three arrows fire together. That’s the whole E2 step.');

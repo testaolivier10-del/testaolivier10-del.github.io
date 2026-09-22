@@ -193,11 +193,16 @@
     }
   ];
 
-  var ATOM_RANK = { C:0, N:1, O:2, F:3, S:4, Cl:5, Br:6, I:7 };
+  /* Ordered by the acidity of the parent hydrides — CH₄ < NH₃ < H₂O < H₂S <
+     HF < HCl < HBr < HI — so the rank is the measurement, and the text below
+     only claims a rule where one applies: across a row, or down a column. */
+  var ATOM_RANK = { C:0, N:1, O:2, S:3, F:4, Cl:5, Br:6, I:7 };
   var ATOM_WHY = {
     C:'carbon', N:'nitrogen', O:'oxygen', F:'fluorine', S:'sulfur', Cl:'chlorine', Br:'bromine', I:'iodine'
   };
   var SAME_ROW = { C:2, N:2, O:2, F:2, S:3, Cl:3, Br:4, I:5 };
+  var GROUP = { C:14, N:15, O:16, F:17, S:16, Cl:17, Br:17, I:17 };
+  var PAULING = { C:2.55, N:3.04, O:3.44, F:3.98, S:2.58, Cl:3.16, Br:2.96, I:2.66 };
 
   /* The atom that matters is the one the charge ENDS UP on, which is not
      always the one the proton left. Acetone's proton comes off a carbon and
@@ -212,6 +217,11 @@
     var ra = ATOM_RANK[ca], rb = ATOM_RANK[cb];
     var winner = ra > rb ? a : b;
     var sameRow = SAME_ROW[ca] === SAME_ROW[cb];
+    var sameGroup = GROUP[ca] === GROUP[cb];
+    var loserAtom = winner === a ? cb : ca, winAtom = winner === a ? ca : cb;
+    var bigger = SAME_ROW[winAtom] > SAME_ROW[loserAtom];
+    var moreEN = PAULING[winAtom] > PAULING[loserAtom];
+    var Win = ATOM_WHY[winAtom].charAt(0).toUpperCase() + ATOM_WHY[winAtom].slice(1);
     var moved = (a.carrier && a.carrier !== a.atom) || (b.carrier && b.carrier !== b.atom);
     return {
       factor:'Atom',
@@ -221,9 +231,19 @@
         (sameRow
         ? 'The charge ends up on ' + ATOM_WHY[ca] + ' in one and ' + ATOM_WHY[cb] + ' in the other, and they are in the same row of the periodic table. ' +
           'Across a row, electronegativity decides: the more electronegative atom is happier holding the negative charge, so ' + winner.name + ' is the stronger acid.'
-        : 'The charge lands on ' + ATOM_WHY[ca] + ' in one and ' + ATOM_WHY[cb] + ' in the other, and these are in different rows. ' +
+        : sameGroup
+        ? 'The charge lands on ' + ATOM_WHY[ca] + ' in one and ' + ATOM_WHY[cb] + ' in the other, and these are in the same column. ' +
           'Going DOWN a column, size beats electronegativity — the bigger atom spreads the same charge over a much larger volume. ' +
-          'That is why ' + winner.name + ' wins even though it may be the less electronegative one.')
+          'That is why ' + winner.name + ' wins even though it is the less electronegative one.'
+        : 'The charge lands on ' + ATOM_WHY[ca] + ' in one and ' + ATOM_WHY[cb] + ' in the other, and these are in different rows AND different columns, ' +
+          'so neither the across-a-row rule nor the down-a-column rule settles it on its own. ' +
+          (bigger && moreEN
+            ? Win + ' is both the bigger atom and the more electronegative one, so the two effects point the same way. '
+            : bigger
+            ? Win + ' is the bigger atom but the less electronegative one, and here size wins. '
+            : Win + ' is the smaller atom but far more electronegative, and here electronegativity wins. ') +
+          'For diagonal pairs like this, the parent hydrides are the reliable guide: CH₄ < NH₃ < H₂O < H₂S < HF < HCl < HBr < HI, weakest acid to strongest, ' +
+          'which puts ' + winner.name + ' ahead.')
     };
   }
 

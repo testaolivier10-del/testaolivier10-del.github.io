@@ -278,15 +278,16 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'Propose a route from bromobenzene to 1-phenylethan-1-ol. What is the trap if you plan it as bromobenzene → phenylmagnesium bromide → acetaldehyde in one flask?',
+        title: 'Propose a route from bromobenzene to 1-phenylethan-1-ol. A classmate writes it on one line — PhBr, then Mg, CH₃CHO and H₃O⁺ over a single arrow — and adds every one of those reagents to the flask at the start. What goes wrong?',
         options: [
-          'Nothing — the route works exactly as written',
-          'The Grignard cannot be made from an aryl halide',
-          'Acetaldehyde is too hindered for a Grignard to attack',
-          'Nothing is wrong with the reagents; the trap is adding them together, since acetaldehyde enolizes'
+          'Nothing — every reagent is right, so the route works as written',
+          'The Grignard cannot be made from an aryl halide like bromobenzene',
+          'Acetaldehyde is too hindered for the Grignard to attack',
+          'The acid is there too early: H₃O⁺ turns the Grignard into benzene'
         ],
         correctIndex: 3,
-        correctFeedback: 'Correct on both halves. Bromobenzene does form a Grignard — aryl halides work fine with magnesium even though they refuse SN2 entirely, which is worth noticing on its own. And the reagents are right: phenylmagnesium bromide plus acetaldehyde, then acidic workup, gives 1-phenylethan-1-ol, a secondary alcohol. The trap is the order of operations. Any electrophile present while the reagent is still forming meets a locally huge excess of it on the metal surface, under conditions nobody is controlling, so addition, enolization and aldol-type self-condensation all compete. Acetaldehyde is especially exposed to this, because a Grignard is a very strong base and acetaldehyde has α hydrogens, so some of it is deprotonated to the enolate rather than attacked. The reagent is made first and the aldehyde added to it afterwards, slowly and cold — a procedural detail that is invisible on paper and decides the yield in practice.'
+        correctFeedback: 'Correct. The reagents themselves are right. Bromobenzene does form a Grignard — aryl halides work fine with magnesium even though they refuse SN2 entirely — and phenylmagnesium bromide plus acetaldehyde, then acidic workup, gives 1-phenylethan-1-ol, a secondary alcohol. Nor is hindrance an issue: acetaldehyde carries only a methyl and a hydrogen on its carbonyl carbon, about as open as a carbonyl gets. The trap is the H₃O⁺. A Grignard is an extremely strong base, and proton transfer from acid is far faster than addition to a carbonyl, so any acid in the flask protonates the reagent on the spot and all you get back is benzene. That is why the acid is a workup: it goes in only after the addition is finished, and it is what the numbering in a written route (1. CH₃CHO, 2. H₃O⁺) is telling you. Combining the halide, the magnesium and the aldehyde without the acid is a real method, the Barbier reaction; the usual lab order is still to make the reagent first and add the aldehyde to it, slowly and cold.',
+        wrongFeedback: 'Look at the last reagent on that arrow. What does a carbon base as strong as a Grignard do the moment it meets acid?'
       }
     ]
   });
