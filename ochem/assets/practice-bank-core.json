@@ -27905,12 +27905,12 @@
    "type": "mcq"
   },
   {
-   "q": "What is a synthon?",
+   "q": "Target: 1-phenylpentan-1-one, PhCO(CH2)3CH3, starting from benzene. Which disconnection leads to the cleanest route?",
    "options": [
-    "A catalyst",
-    "A real reagent you can buy off the shelf",
-    "An idealized, usually charged fragment",
-    "A protecting group"
+    "Alpha to the carbonyl, as an aldol between two enolizable partners",
+    "Ring from chain, by Friedel-Crafts alkylation with 1-bromopentane",
+    "Ring from chain at the carbonyl, by Friedel-Crafts acylation",
+    "Across the C=O, rebuilding the ketone with a phosphorus ylide"
    ],
    "correct": 2,
    "difficulty": "hard",
@@ -27929,24 +27929,24 @@
    "type": "mcq"
   },
   {
-   "q": "What is the synthetic equivalent of the synthon R+?",
+   "q": "You disconnect the C-C bond of PhCH(OH)CH3 at the carbinol carbon. Which polarity assignment can you actually run?",
    "options": [
-    "An alkyl halide",
-    "An enolate",
-    "A hydride",
-    "A Grignard reagent"
+    "Ph- as the nucleophile, acetaldehyde as the electrophile",
+    "Ph+ as the electrophile, acetaldehyde as the nucleophile",
+    "Both fragments nucleophilic, joined by an oxidant",
+    "Both fragments electrophilic, joined by a base"
    ],
    "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What is the synthetic equivalent of an acylium synthon RCO+?",
+   "q": "Your analysis ends at bromobenzene, magnesium and propanal. In what order do you run them forwards?",
    "options": [
-    "A carboxylate",
-    "An ester",
-    "An aldehyde with a Lewis acid",
-    "An acyl chloride with AlCl3"
+    "Propanal with Mg first, then bromobenzene",
+    "Bromobenzene with propanal, then add Mg",
+    "All three together in one flask",
+    "Bromobenzene with Mg, then add propanal"
    ],
    "correct": 3,
    "difficulty": "easy",
@@ -28109,12 +28109,12 @@
    "type": "mcq"
   },
   {
-   "q": "What is the synthetic equivalent of the -CN synthon?",
+   "q": "Target: butanoic acid from propan-1-ol and any one-carbon reagent. What does the carbon count force?",
    "options": [
-    "HCN gas only",
-    "NaCN",
-    "An amide",
-    "A nitro compound"
+    "Nothing - the two have the same number of carbons",
+    "One C-C bond, formed at the carboxyl carbon",
+    "Two C-C bonds, so a disconnection at C2-C3",
+    "No C-C bond, just an oxidation of the alcohol"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -28169,12 +28169,12 @@
    "type": "mcq"
   },
   {
-   "q": "The synthon RC-C- corresponds to which reagent?",
+   "q": "Target: hexan-3-one, permitted pieces acetylene and bromoethane. Which backward move comes first?",
    "options": [
-    "A terminal alkyne with NaNH2",
-    "An alkene",
-    "A nitrile",
-    "A primary alkyl halide"
+    "FGI first: the ketone could come from hydrating hex-3-yne",
+    "Disconnect the bond alpha to the carbonyl, as an aldol",
+    "Disconnect the C=O, as a retro-Wittig back to an alkene",
+    "Disconnect at the carbonyl carbon, as a Grignard on CO2"
    ],
    "correct": 0,
    "difficulty": "medium",
@@ -28797,14 +28797,14 @@
    "type": "mcq"
   },
   {
-   "q": "How do you get an anti-Markovnikov alkyl halide from an alkene?",
+   "q": "You need the anti-Markovnikov chloride from 2-methylpropene. Which route delivers it?",
    "options": [
-    "BH3/H2O2 then PBr3",
-    "Br2 in water",
-    "NBS",
-    "Adding HBr directly"
+    "HCl with peroxides added",
+    "BH3, then H2O2/HO-, then SOCl2",
+    "HCl alone, no peroxides",
+    "Cl2 in water, then heat"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -29005,7 +29005,7 @@
   {
    "q": "How is a silyl ether removed?",
    "options": [
-    "Aqueous acid on warming",
+    "Mild aqueous acid",
     "Fluoride, as TBAF",
     "Hydrogenation",
     "Strong base"

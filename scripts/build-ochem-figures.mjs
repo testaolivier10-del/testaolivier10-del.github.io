@@ -1762,7 +1762,7 @@ FIGURES.push({
     /* One skeleton per panel: beta, alpha, carbonyl carbon, R. Panels 1 and 2
        are the same saturated ketone on purpose -- the difference between them
        is entirely the reagent, which is the point. */
-    const skeleton = (cx, enone) => {
+    const skeleton = (cx, enone, hi) => {
       const b = P(cx - 66, 150), a = P(cx - 16, 178), k = P(cx + 34, 150);
       let g = '';
       g += bond(b, a, { order: enone ? 2 : 1 });
@@ -1771,9 +1771,12 @@ FIGURES.push({
       g += bond(k, P(cx + 82, 178));
       g += atom(cx + 34, 100, 'O');
       g += atom(cx + 82, 178, 'R');
-      g += atom(b.x, b.y, 'C');
-      g += atom(a.x, a.y, 'C');
-      g += atom(k.x, k.y, 'C', { kind: 'hi' });
+      /* The highlighted atom is the one the panel is about, not always the
+         carbonyl carbon: a panel titled "at the alpha carbon" that rings the
+         carbonyl carbon fights its own title. */
+      g += atom(b.x, b.y, 'C', hi === 'b' ? { kind: 'hi' } : {});
+      g += atom(a.x, a.y, 'C', hi === 'a' ? { kind: 'hi' } : {});
+      g += atom(k.x, k.y, 'C', hi === 'k' ? { kind: 'hi' } : {});
       g += text(cx - 66, 124, '\u03B2', { cls: 'fg-lbl', size: 12 });
       g += text(cx - 44, 196, '\u03B1', { cls: 'fg-lbl', size: 12 });
       return g;
@@ -1782,29 +1785,29 @@ FIGURES.push({
     /* The three panels are pulled inside the left 90% of the canvas: at 512
        the third one's border, its R and the reagent line under it were all
        behind the reading column's horizontal scroll. */
-    const col = (x, title, enone, reagents, product) => {
+    const col = (x, title, enone, reagents, product, hi) => {
       const cx = x + 108;
       s += panel(x, 52, 216, 244);
       s += tag(cx, 40, title);
-      s += skeleton(cx, enone);
+      s += skeleton(cx, enone, hi);
       s += text(cx, 268, reagents, { cls: 'fg-sm', size: 10 });
       s += text(cx, 288, product, { cls: 'fg-tag-good', size: 10.5 });
       return cx;
     };
 
     // At the carbonyl carbon: the nucleophile comes in from outside.
-    let cx = col(16, 'at the carbonyl carbon', false, 'RMgBr, RLi, \u207BCN, acetylide', 'an alcohol');
+    let cx = col(16, 'at the carbonyl carbon', false, 'RMgBr, RLi, \u207BCN, acetylide', 'an alcohol', 'k');
     s += curve(P(cx + 34, 232), P(cx + 34, 172), { bow: 14 });
     s += label(cx + 34, 248, 'Nu\u207B', { size: 12 });
 
     // At the alpha carbon: the molecule itself is the nucleophile.
-    cx = col(240, 'at the \u03B1 carbon', false, 'base first, then RX or a carbonyl', 'alkylation, aldol, Claisen');
+    cx = col(240, 'at the \u03B1 carbon', false, 'base first, then RX or a carbonyl', 'alkylation, aldol, Claisen', 'a');
     s += curve(P(cx - 16, 196), P(cx - 16, 230), { bow: 12 });
     s += label(cx - 16, 250, 'E\u207A', { size: 12 });
     s += text(cx, 74, 'base takes an \u03B1 H first', { cls: 'fg-sm', size: 9 });
 
     // At the beta carbon: only an enone offers this one.
-    cx = col(464, 'at the \u03B2 carbon', true, 'enolate + an enone (Michael)', '1,5-dicarbonyl');
+    cx = col(464, 'at the \u03B2 carbon', true, 'enolate + an enone (Michael)', '1,5-dicarbonyl', 'b');
     s += curve(P(cx - 66, 232), P(cx - 66, 172), { bow: 14 });
     s += label(cx - 66, 248, 'Nu\u207B', { size: 12 });
 
@@ -1879,7 +1882,9 @@ FIGURES.push({
     s += arrow(P(408, 252), P(470, 252));
     s += text(439, 240, 'bulky base (E2)', { cls: 'fg-sm', size: 9 });
     s += label(480, 256, 'alkene', { anchor: 'start', size: 12 });
-    s += text(480, 278, 'and back with H\u2083O\u207A or BH\u2083', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    /* Started at x=480 while it read "H3O+ or BH3"; naming hydroboration's
+       second step makes it long enough to run off the canvas from there. */
+    s += text(396, 278, 'and back: H\u2083O\u207A, or BH\u2083 then H\u2082O\u2082/HO\u207B', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
 
     s += label(252, 334, 'R\u2013H', { anchor: 'start', size: 12 });
     s += text(500, 334, 'nothing sideways from here \u2014 the only way out is up', { cls: 'fg-sm', size: 9.5 });
@@ -13376,7 +13381,12 @@ FIGURES.push({
     s += panel(508, 76, 180, 150);
     s += tag(598, 98, 'synthon: electrophile');
     s += acetone(560, 170);
-    s += text(636, 186, 'δ+', { cls: 'fg-lbl' });
+    /* The delta+ marks the CARBONYL carbon at (590,170), not the methyl it
+       used to sit beside: a leader line takes it there, because there is no
+       clear space adjacent to that carbon between the C=O and the two
+       methyls. */
+    s += text(640, 148, 'δ+', { cls: 'fg-lbl' });
+    s += rule(630, 152, 604, 166);
     s += text(598, 214, 'electrophilic C=O carbon', { cls: 'fg-sm' });
 
     s += text(350, 262, 'synthetic equivalents: acetone + NaOH   ·   acetone', { cls: 'fg-tag-good' });
@@ -13505,7 +13515,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Each of the ten, once, with the bond it makes picked out. The table says what joins to what; this says what it looks like when it has.',
-  note: 'Reading down the colored marks is the fastest way to internalize the list. Four of them land <b>on</b> a carbonyl carbon, three land <b>next to</b> one, and the three that do neither &mdash; Diels&ndash;Alder, Friedel&ndash;Crafts and acetylide alkylation &mdash; are the ones that build a skeleton with no carbonyl in sight. The Diels&ndash;Alder panel is the only one with two colored bonds, which is the whole reason it is the highest-value move in the list.',
+  note: 'Reading down the colored marks is the fastest way to internalize the list. Four attach the new carbon straight <b>onto</b> a carbonyl carbon, or onto the carbon that was one &mdash; the Grignard onto a ketone, the Grignard onto CO&#8322;, Friedel&ndash;Crafts acylation and the Wittig. Two run from an &alpha; carbon onto a carbonyl carbon at the other end, the aldol and the Claisen, and the Michael is the enolate that does not: it lands on the &beta; carbon, two carbons out from the enone&rsquo;s C=O. The remaining three &mdash; Diels&ndash;Alder, acetylide alkylation and cyanide alkylation &mdash; build a skeleton with no carbonyl in sight, the nitrile only becoming one if you hydrolyse it afterwards. The Diels&ndash;Alder panel is the only one with two colored bonds, which is the whole reason it is the highest-value move in the list.',
 });
 
 /* ------------------------------------------------------------------ D8 ---

@@ -30278,15 +30278,15 @@
    "type": "mcq"
   },
   {
-   "q": "What is a synthon?",
+   "q": "Target: 1-phenylpentan-1-one, PhCO(CH2)3CH3, starting from benzene. Which disconnection leads to the cleanest route?",
    "options": [
-    "A catalyst",
-    "A real reagent you can buy off the shelf",
-    "An idealized, usually charged fragment",
-    "A protecting group"
+    "Alpha to the carbonyl, as an aldol between two enolizable partners",
+    "Ring from chain, by Friedel-Crafts alkylation with 1-bromopentane",
+    "Ring from chain at the carbonyl, by Friedel-Crafts acylation",
+    "Across the C=O, rebuilding the ketone with a phosphorus ylide"
    ],
    "correct": 2,
-   "why": "The synthon is the idea; the synthetic equivalent is what you actually order.",
+   "why": "A C-C bond joining a ring to a carbonyl carbon is the acylation retron, and the forward step is benzene plus CH3(CH2)3COCl with AlCl3. Naming that forward reaction is what makes the cut legal. The alkylation cut builds the wrong skeleton - an alkylbenzene with no carbonyl at all - and its cation would rearrange on the way. An aldol needs two carbonyl partners and there is one here, and a Wittig makes an alkene rather than a ketone.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -30304,28 +30304,28 @@
    "type": "mcq"
   },
   {
-   "q": "What is the synthetic equivalent of the synthon R+?",
+   "q": "You disconnect the C-C bond of PhCH(OH)CH3 at the carbinol carbon. Which polarity assignment can you actually run?",
    "options": [
-    "An alkyl halide",
-    "An enolate",
-    "A hydride",
-    "A Grignard reagent"
+    "Ph- as the nucleophile, acetaldehyde as the electrophile",
+    "Ph+ as the electrophile, acetaldehyde as the nucleophile",
+    "Both fragments nucleophilic, joined by an oxidant",
+    "Both fragments electrophilic, joined by a base"
    ],
    "correct": 0,
-   "why": "Or an alcohol with acid, which generates the cation in situ.",
+   "why": "Every polar disconnection hands you one nucleophile and one electrophile, because that is what a polar bond-forming reaction is. Ph- has an equivalent you can buy into - PhMgBr - and the carbonyl carbon of acetaldehyde is already the electrophile. The reversed assignment would need an anion at acetaldehyde's carbonyl carbon, which is not a reagent at this level, and two nucleophiles or two electrophiles cannot bond to each other at all.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What is the synthetic equivalent of an acylium synthon RCO+?",
+   "q": "Your analysis ends at bromobenzene, magnesium and propanal. In what order do you run them forwards?",
    "options": [
-    "A carboxylate",
-    "An ester",
-    "An aldehyde with a Lewis acid",
-    "An acyl chloride with AlCl3"
+    "Propanal with Mg first, then bromobenzene",
+    "Bromobenzene with propanal, then add Mg",
+    "All three together in one flask",
+    "Bromobenzene with Mg, then add propanal"
    ],
    "correct": 3,
-   "why": "Which is what makes Friedel-Crafts acylation the forward reaction for that disconnection.",
+   "why": "A tree is read back from its leaves, so the last disconnection you drew is the first reaction you run. The Grignard has to exist before it has anything to attack, so bromobenzene meets magnesium in dry ether first and the aldehyde goes in second. Putting the aldehyde in early, or everything in at once, leaves magnesium and a carbonyl in one flask with no control over what forms.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -30499,15 +30499,15 @@
    "type": "mcq"
   },
   {
-   "q": "What is the synthetic equivalent of the -CN synthon?",
+   "q": "Target: butanoic acid from propan-1-ol and any one-carbon reagent. What does the carbon count force?",
    "options": [
-    "HCN gas only",
-    "NaCN",
-    "An amide",
-    "A nitro compound"
+    "Nothing - the two have the same number of carbons",
+    "One C-C bond, formed at the carboxyl carbon",
+    "Two C-C bonds, so a disconnection at C2-C3",
+    "No C-C bond, just an oxidation of the alcohol"
    ],
    "correct": 1,
-   "why": "Sodium cyanide performs an SN2 on an alkyl halide.",
+   "why": "Count first: propan-1-ol has three carbons and butanoic acid four, so exactly one C-C bond is formed and the new carbon is the carboxyl carbon itself. That is a one-carbon extension, and two of them land at acid level: PBr3, NaCN, then H3O+ with heat; or PBr3, Mg, then CO2 and workup. Oxidizing propan-1-ol gives propanoic acid, because no oxidation has ever added a carbon.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -30564,15 +30564,15 @@
    "type": "mcq"
   },
   {
-   "q": "The synthon RC-C- corresponds to which reagent?",
+   "q": "Target: hexan-3-one, permitted pieces acetylene and bromoethane. Which backward move comes first?",
    "options": [
-    "A terminal alkyne with NaNH2",
-    "An alkene",
-    "A nitrile",
-    "A primary alkyl halide"
+    "FGI first: the ketone could come from hydrating hex-3-yne",
+    "Disconnect the bond alpha to the carbonyl, as an aldol",
+    "Disconnect the C=O, as a retro-Wittig back to an alkene",
+    "Disconnect at the carbonyl carbon, as a Grignard on CO2"
    ],
    "correct": 0,
-   "why": "Deprotonating a terminal alkyne gives the acetylide, which does SN2 on an alkyl halide.",
+   "why": "The permitted pieces are two carbons each, so the six-carbon skeleton has to be assembled by acetylide alkylations - and those build alkynes, not ketones. Rewriting the ketone as hex-3-yne cuts nothing, but it turns the target into one whose C-C bonds you have a reaction for, which is what an FGI is for. Cutting next to the carbonyl first gives aldol fragments with alpha hydrogens on both sides, so the forward reaction would be a mixture, and a Grignard on CO2 makes carboxylic acids.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -31244,15 +31244,15 @@
    "type": "mcq"
   },
   {
-   "q": "How do you get an anti-Markovnikov alkyl halide from an alkene?",
+   "q": "You need the anti-Markovnikov chloride from 2-methylpropene. Which route delivers it?",
    "options": [
-    "BH3/H2O2 then PBr3",
-    "Br2 in water",
-    "NBS",
-    "Adding HBr directly"
+    "HCl with peroxides added",
+    "BH3, then H2O2/HO-, then SOCl2",
+    "HCl alone, no peroxides",
+    "Cl2 in water, then heat"
    ],
-   "correct": 0,
-   "why": "No direct acid does it, so you go via the anti-Markovnikov alcohol.",
+   "correct": 1,
+   "why": "The peroxide effect belongs to HBr alone: the radical chain works because H-Br has the right bond strengths, and HCl and HI add Markovnikov whatever is in the flask. So there is no one-step anti-Markovnikov chloride. Hydroboration-oxidation puts the OH on the less substituted carbon, giving 2-methylpropan-1-ol, and SOCl2 then swaps OH for Cl without touching the skeleton. Had the target been the bromide, HBr with peroxides would have done it in one step.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -31469,13 +31469,13 @@
   {
    "q": "How is a silyl ether removed?",
    "options": [
-    "Aqueous acid on warming",
+    "Mild aqueous acid",
     "Fluoride, as TBAF",
     "Hydrogenation",
     "Strong base"
    ],
    "correct": 1,
-   "why": "The Si-F bond is exceptionally strong, so the deprotection needs nothing harsh.",
+   "why": "The Si-F bond is exceptionally strong, so fluoride pulls the silicon off under conditions that disturb nothing else. Mild aqueous acid is exactly what a silyl ether is chosen to survive, which is what makes it orthogonal to an acetal.",
    "difficulty": "easy",
    "type": "mcq"
   },

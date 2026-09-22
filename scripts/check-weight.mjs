@@ -230,8 +230,18 @@ const DATA_BUDGETS = [
      opens the assistant — so its cost is bytes on an idle connection. 264
      covers the chapters still to be rewritten at the measured ~13 KB each
      for the four largest, and it is still a ceiling: lower it when the
-     rewrite finishes and the real number is known. */
-  ['ochem/assets/tutor-bank.json', 264],
+     rewrite finishes and the real number is known.
+
+     264 -> 268 for the chapter 18 (Synthesis & Retrosynthesis) review pass.
+     The ceiling had been sitting at exactly 264.0 measured, so the five
+     definition-recall retrosynthesis items rewritten into disconnection,
+     polarity and step-order reasoning items — plus the corrected
+     anti-Markovnikov-halide rationale, which has to say why the peroxide
+     effect is bromide-only — pushed it 1.1 KB over. That is the growth this
+     budget's own note says it exists to allow rather than to shorten away.
+     Set to 300 rather than 268 so the last four chapters of the pass do not
+     each need their own bump; lower it once the pass is over. */
+  ['ochem/assets/tutor-bank.json', 300],
   /* Ochem's question bank, now split in two (scripts/build-ochem-bank.mjs).
 
      The core is what practice.html and review.html WAIT on before their first
