@@ -148,3 +148,28 @@ order by hits desc;
 -- section 5 keep ranking it.
 -- ---------------------------------------------------------------------------
 -- delete from public.client_errors where created_at < now() - interval '90 days';
+
+-- ===========================================================================
+-- PREMIUM WAITLIST
+-- ===========================================================================
+
+-- ---------------------------------------------------------------------------
+-- The signal: sign-ups per course, per week, and which card they came from.
+-- Read against Umami's premium-interest (clicks) and exam-finish /
+-- ochem-session-finish (how many people saw the card). docs/premium.md says
+-- what counts as enough.
+-- ---------------------------------------------------------------------------
+select
+  course,
+  date_trunc('week', created_at)::date as week,
+  count(*)                             as signups,
+  count(*) filter (where source = 'results')  as from_nremt_results,
+  count(*) filter (where source = 'summary')  as from_ochem_summary
+from public.premium_waitlist
+group by 1, 2
+order by 2 desc, 1;
+
+-- The launch list for one course. Emailed once, with an unsubscribe link, and
+-- never used for anything else — see the note on the table in schema.sql.
+-- select email from public.premium_waitlist where course = 'nremt' order by created_at;
+

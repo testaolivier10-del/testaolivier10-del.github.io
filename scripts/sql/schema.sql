@@ -177,9 +177,10 @@ grant execute on function public.report_client_error(text, text, text, int, int,
 --
 -- The delete cascades to user_progress via its foreign key to auth.users; the
 -- explicit delete below is belt and braces for a database where that key was
--- never added. Nothing else in this file is tied to a user at all, so there is
--- nothing else to clean up — which is itself the answer to "what do you keep
--- about me": the page counter and these two tables have no user column.
+-- never added. The reminder tables (sections 4 and 5) cascade the same way.
+-- The Premium waitlist (section 6) holds an address rather than a user id, so
+-- it is cleared explicitly, by the account's address. The page counter and
+-- the report and error tables have no user column at all.
 -- ---------------------------------------------------------------------------
 create or replace function public.delete_own_account()
 returns void
@@ -195,6 +196,11 @@ begin
   end if;
 
   delete from public.user_progress where id = uid;
+  -- The Premium waitlist (section 6) is keyed on an address, not an account,
+  -- so it is matched on the account's address. Somebody deleting their
+  -- account has asked not to be kept, and a waitlist row is being kept.
+  delete from public.premium_waitlist
+   where lower(email) = lower((select email from auth.users where id = uid));
   delete from auth.users where id = uid;
 end;
 $$;
@@ -479,3 +485,62 @@ $$;
 revoke all on function public.unsubscribe_email_reminder(text) from public;
 -- Called by the Worker with the service role, and by nobody else: a token is a
 -- secret, and an endpoint anon can call is an endpoint somebody can walk.
+
+-- ---------------------------------------------------------------------------
+-- 6. The Premium waitlist
+--
+-- Every course is free. Before anything is built to charge for, the site asks
+-- whether anyone would pay: a card at the end of a real session, and an email
+-- box behind it. docs/premium.md has the plan and assets/premium.js the card.
+--
+-- Same shape as everything above: RLS on, no policies, one function in. An
+-- address is personal data, so it is the one thing here that privacy.html
+-- has to name, and delete_own_account() above removes it.
+--
+-- Anyone can reach this function, so anyone can put any address in it. That
+-- is acceptable for a list that is emailed exactly once, at launch, with an
+-- unsubscribe link — and it is why it must never be used for anything else.
+-- ---------------------------------------------------------------------------
+create table if not exists public.premium_waitlist (
+  id         bigint generated always as identity primary key,
+  created_at timestamptz not null default now(),
+  course     text not null,
+  email      text not null,
+  -- Which card they came from ('results', 'summary'). Tells us which moment
+  -- asks well, which is the whole point of asking in more than one place.
+  source     text
+);
+
+-- One row per address per course. Joining twice is a no-op rather than an
+-- error, so the dialog can say "you're on the list" either way.
+create unique index if not exists premium_waitlist_course_email_idx
+  on public.premium_waitlist (course, lower(email));
+
+alter table public.premium_waitlist enable row level security;
+
+create or replace function public.join_waitlist(
+  p_course text,
+  p_email text,
+  p_source text default null
+) returns void
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  if p_course not in ('nremt', 'ochem') then
+    raise exception 'unknown course';
+  end if;
+  if p_email is null or length(p_email) > 254
+     or p_email !~ '^[^[:space:]@]+@[^[:space:]@]+\.[^[:space:]@]+$' then
+    raise exception 'bad email';
+  end if;
+
+  insert into public.premium_waitlist (course, email, source)
+  values (p_course, btrim(p_email), nullif(left(coalesce(p_source, ''), 40), ''))
+  on conflict (course, lower(email)) do nothing;
+end;
+$$;
+
+revoke all on function public.join_waitlist(text, text, text) from public;
+grant execute on function public.join_waitlist(text, text, text) to anon, authenticated;
