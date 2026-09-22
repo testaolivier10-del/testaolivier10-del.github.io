@@ -13737,6 +13737,368 @@
    "type": "mcq"
   }
  ],
+ "cis-trans-ez": [
+  {
+   "q": "Cis- and trans-but-2-ene sit in separate bottles at room temperature and do not interconvert. What stops them?",
+   "options": [
+    "Turning one end of the C=C would destroy the side-by-side pi overlap",
+    "Their dipole moments repel one another",
+    "The two isomers have different molecular formulas",
+    "Hydrogen bonding between the two methyl groups pins them where they are"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A cyclohexane ring is drawn flat with one substituent on a bold wedge and the other on a hashed bond. What does that say about the compound?",
+   "options": [
+    "The two groups are on opposite faces, so it is trans",
+    "The two groups are on the same face, so it is cis",
+    "Both substituents occupy axial positions",
+    "The ring has been drawn in a chair rather than a flat hexagon"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "The Z in a stereodescriptor comes from the German zusammen. What does it report about the structure?",
+   "options": [
+    "The double bond lies inside a ring",
+    "The two higher-priority groups are on the same side of the C=C",
+    "The two lowest-priority groups are the ones that face each other",
+    "The compound is optically inactive"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "For which alkene do the words cis and trans apply without ambiguity?",
+   "options": [
+    "2-Methylbut-2-ene",
+    "2-Methylprop-1-ene",
+    "But-2-ene",
+    "2,3-Dimethylbut-2-ene"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "cis-1,2-Dimethylcyclohexane undergoes a chair flip. What does the flip produce?",
+   "options": [
+    "Its enantiomer",
+    "trans-1,2-Dimethylcyclohexane, its geometric partner",
+    "A ring-opened isomer",
+    "The same cis compound, axial and equatorial swapped"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the stereochemical relationship between cis-but-2-ene and trans-but-2-ene?",
+   "options": [
+    "Constitutional isomers",
+    "Enantiomers",
+    "Two conformers of one compound",
+    "Diastereomers"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which double bond takes no E or Z descriptor at all?",
+   "options": [
+    "CH3CH2CH=CH2",
+    "CH3CH=CHBr",
+    "CH3CH=CHCH3",
+    "CH3CH=C(CH3)CH2CH3"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "When assigning E or Z, which two groups are ultimately compared with each other?",
+   "options": [
+    "All four groups, ranked one through four",
+    "The two lowest-priority groups, one from each carbon",
+    "The higher-priority group on each of the two alkene carbons",
+    "The two groups on whichever alkene carbon holds the heavier atom"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How does rotation about a C-C single bond compare with rotation about a C=C double bond?",
+   "options": [
+    "Both of them rotate freely at room temperature, though the double bond turns more slowly",
+    "Neither rotates at ordinary temperatures",
+    "The double bond rotates freely because it holds more electrons",
+    "The single bond spins freely; turning the double bond costs about 65 kcal/mol"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which pair of properties would you expect to differ between cis- and trans-1,2-dichloroethene?",
+   "options": [
+    "Molecular formula and molar mass",
+    "Boiling point and dipole moment",
+    "Number of sigma bonds and number of pi bonds",
+    "Neither property differs, as the connectivity matches"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "CH3-C(Br)=CH-CH3 is drawn with its two methyl groups on opposite sides of the double bond. What is its descriptor?",
+   "options": [
+    "E, as the two methyls are opposite",
+    "Neither, as one of the two alkene carbons lacks a hydrogen",
+    "E, as bromine is the heaviest atom present",
+    "Z, as Br wins on C2 and the two winners end up together"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An alkene carbon carries a -CH2Cl group and an isopropyl group. Which is the higher CIP priority?",
+   "options": [
+    "Isopropyl, as it contains more carbon atoms",
+    "-CH2Cl, whose carbon holds (Cl, H, H) against (C, C, H)",
+    "Isopropyl, as branching raises priority",
+    "They tie exactly, so the double bond takes no descriptor at all"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An alkene carbon carries a vinyl group (-CH=CH2) and an isopropyl group. Which outranks the other?",
+   "options": [
+    "Isopropyl, as a fully saturated chain reaches further out",
+    "They tie permanently at (C, C, H)",
+    "Vinyl, as the tie at (C, C, H) breaks one sphere out",
+    "Isopropyl, as it carries more hydrogens"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "In the name (2E,4Z)-hexa-2,4-diene, which two carbons does the 4Z descriptor describe?",
+   "options": [
+    "C3 and C4",
+    "C2 and C4, the two locants cited in the name",
+    "C4 on its own",
+    "C4 and C5"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A compound has two stereocenters and one stereogenic double bond. How many stereoisomers can it have?",
+   "options": [
+    "At most eight",
+    "Six: four from the centers plus two from the bond",
+    "Exactly eight",
+    "Four, as a double bond is not counted"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "trans-But-2-ene lies about 1 kcal/mol below cis-but-2-ene in energy. What accounts for the gap?",
+   "options": [
+    "The trans isomer has a stronger pi bond",
+    "The cis isomer is aromatic",
+    "The two methyls crowd each other on one side in the cis isomer",
+    "The cis isomer has one more degree of unsaturation than the trans"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A student assigning E/Z compares the bromine on C2 with the methyl on C3 and concludes the alkene is E. What is wrong with that reasoning?",
+   "options": [
+    "Each alkene carbon is ranked on its own two groups",
+    "Bromine should have been compared with the hydrogen on C3",
+    "Atomic number is the wrong criterion for halogens",
+    "The comparison is sound but the two letters are swapped"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A 1,3-disubstituted cyclohexane is drawn flat with both substituents on hashed bonds. How is it described?",
+   "options": [
+    "Trans, as the substituents are three carbons apart",
+    "Cis, as both groups are on the same face",
+    "Neither, as 1,3-rings take no geometric label",
+    "Trans, as hashed bonds point away from the viewer"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which compound exists as a pair of geometric isomers although it contains no double bond?",
+   "options": [
+    "Cyclohexane",
+    "Butane",
+    "2-Methylpropane",
+    "1,2-Dimethylcyclopentane"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Ranking CIP branches, how does a carbon holding (O, H, H) compare with one holding (C, C, C)?",
+   "options": [
+    "(C, C, C) wins, as three carbons outweigh one oxygen",
+    "(C, C, C) wins on the larger sum of atomic numbers",
+    "(O, H, H) wins, as oxygen beats carbon at the first term",
+    "They tie, and the decision moves one sphere out"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An alkene carbon carries a tert-butyl group and a -CH2CH2Br group. Which is the higher priority?",
+   "options": [
+    "-CH2CH2Br, as bromine is the heaviest atom in the molecule",
+    "-CH2CH2Br, as an unbranched chain outranks a branched one",
+    "They tie, as both branches begin with carbon",
+    "tert-Butyl, whose carbon holds (C, C, C) against (C, H, H)"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why can trans fats be solid at a temperature where the cis fats they were made from are liquid?",
+   "options": [
+    "The trans chains are straighter and pack into a lattice efficiently",
+    "The trans chains are longer than the cis chains",
+    "Trans double bonds are stronger than cis double bonds",
+    "Trans isomers are more polar and attract one another"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which statement correctly relates the cis/trans and E/Z systems?",
+   "options": [
+    "Every trans alkene is E and every cis alkene is Z",
+    "E and Z apply to rings while cis and trans apply to alkenes",
+    "Cis and trans are obsolete and no longer appear in names",
+    "They agree when the priorities fall where the named substituents do"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which of these double bonds is stereogenic?",
+   "options": [
+    "(CH3)2C=CH2",
+    "CH2=CH2",
+    "CH3CH=C(CH3)CH2CH3",
+    "(CH3)2C=CHCH3"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An exam asks for the full name of CH3CH=CHCH2CH3 drawn with the methyl and the ethyl on the same side. What should the answer carry?",
+   "options": [
+    "Pent-2-ene with no descriptor, as the chain is unbranched",
+    "A cis or Z descriptor in front of pent-2-ene",
+    "A descriptor citing locant 3, the higher-numbered alkene carbon",
+    "Both an R/S and an E/Z descriptor"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "The bound 2^(n+m) predicts four stereoisomers for hexa-2,4-diene. The real number is three. Why?",
+   "options": [
+    "One of the two double bonds is not in fact stereogenic",
+    "One arrangement is too strained to exist",
+    "The molecule is symmetric, so 2E,4Z and 2Z,4E are one compound",
+    "The formula counts stereocenters, so it never applies to dienes"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "An alkene carbon carries a -CHO group and a -CH2OH group. Which ranks higher, and on what basis?",
+   "options": [
+    "-CH2OH, as it carries an extra hydrogen",
+    "-CHO, whose carbon counts as (O, O, H) against (O, H, H)",
+    "They tie, as both branches start with carbon bonded to oxygen",
+    "-CH2OH, as its oxygen bears the hydrogen"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "trans-1,4-Dimethylcyclohexane is drawn as a chair. What arrangement of the two methyls does that correspond to?",
+   "options": [
+    "One axial and one equatorial, in either chair",
+    "Both axial, with no diequatorial chair available",
+    "Both equatorial in both chairs",
+    "Diequatorial in one chair and diaxial in the other"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A molecule contains one stereocenter and one stereogenic double bond. A student reports five distinct stereoisomers. What should you conclude?",
+   "options": [
+    "The count is impossible: the ceiling for those two units is four",
+    "The count is fine, as symmetry can add isomers",
+    "The count is fine, as a double bond contributes three arrangements",
+    "The count is impossible: a stereocenter and a double bond cannot coexist"
+   ],
+   "correct": 0,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "3-Methylpent-2-ene is drawn with the C1 methyl and the C3 ethyl on the same side. What is its descriptor, and why will cis/trans not serve?",
+   "options": [
+    "E; cis/trans fails because C2 still carries a hydrogen",
+    "Z; cis/trans fails because the parent chain is branched",
+    "E; cis/trans fails because C3 carries two groups that are not hydrogen",
+    "Z; cis/trans fails because C3 carries two groups that are not hydrogen"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  }
+ ],
  "sn2": [
   {
    "q": "SN2 reactions proceed through what kind of mechanism?",

@@ -4460,7 +4460,7 @@ FIGURES.push({
     return s;
   },
   caption: 'What a locked double bond buys. Because the pi bond stops the two carbons twisting past each other, the methyl groups cannot swap sides, and the two arrangements are separate compounds that can be bottled apart. Put the same four carbons on a single bond, as in butane, and the two ends spin freely millions of times a second — there is nothing to separate.',
-  note: 'This is the first place in the course where a drawing carries information that a formula does not: both structures here are C₄H₈, and both are “CH₃CH=CHCH₃” written out. <a class="chapter-ref" href="/ochem/learn.html#m-alkenes-alkynes">Alkenes &amp; Alkynes</a> gives the pair their systematic names and the rule for when cis/trans applies at all.',
+  note: 'This is the first place in the course where a drawing carries information that a formula does not: both structures here are C₄H₈, and both are “CH₃CH=CHCH₃” written out. The Cis/trans and E/Z section of <a class="chapter-ref" href="/ochem/learn.html#m-stereochemistry">Stereochemistry</a> gives the pair their systematic names and the rule for when cis/trans applies at all.',
 });
 
 
@@ -8195,8 +8195,8 @@ FIGURES.push({
    separate, because comparing across the double bond is the actual error. */
 FIGURES.push({
   id: 'ez-worked',
-  section: 'alkene-structure',
-  anchor: 'rank them and trust the ranking.</div>',
+  section: 'cis-trans-ez',
+  anchor: 'outranks its methyl.</p>\n</div>',
   alt: '2-bromo-2-butene drawn skeletally with its two methyl groups on opposite sides of the double bond, which looks trans. The bromine on C2 outranks the methyl on C2, and the methyl on C3 outranks the hydrogen on C3. The two winners, bromine and the C4 methyl, are both above the double bond, so the compound is Z.',
   viewBox: '0 0 760 330',
   build() {
@@ -16713,6 +16713,241 @@ FIGURES.push({
   },
   caption: 'Cross-linking as a dial rather than a switch. The chains are the same in all three panels and so is the chemistry; only the number of bridges between them changes, and that alone takes the material from a gum that flows to a tire and then to something you could make a bowling ball from.',
   note: 'The middle panel is where the entropy argument lives. Pull on it and the coiled chains straighten, which costs a great deal of conformational freedom; let go and that freedom is what pulls them back. Without the bridges the chains would simply slide past one another and stay where you left them, which is the left-hand panel; with too many of them nothing can straighten in the first place, which is the right.',
+});
+
+
+/* ---------------------------------------------------------------- 30 ---
+   Cis/trans and E/Z. Five drawings for a section whose whole subject is a
+   spatial relationship: which face of a ring a group sits on, which side of
+   a double bond, and which of two branches outranks the other. Prose can
+   assert all three and a reader still has to picture them. */
+
+/* ------------------------------------------------------------- 30.1 ---
+   Cis and trans on a ring, read straight off wedges and hashes. */
+FIGURES.push({
+  id: 'ring-cis-trans-faces',
+  section: 'cis-trans-ez',
+  anchor: 'and the locants say the rest.</p>',
+  alt: 'Two flat hexagon drawings of 1,2-dimethylcyclohexane. On the left both methyl groups sit on bold wedges, so both are above the ring, which is the cis isomer. On the right one methyl is on a wedge and the other on a hashed bond, so one is above the ring and one below, which is the trans isomer.',
+  viewBox: '0 0 760 330',
+  build() {
+    const verts = (cx, cy, r) => {
+      const v = [];
+      for (let i = 0; i < 6; i++) {
+        const a = ((-90 + i * 60) * Math.PI) / 180;
+        v.push(P(cx + r * Math.cos(a), cy + r * Math.sin(a)));
+      }
+      return v;
+    };
+    const draw = (cx, cis) => {
+      const v = verts(cx, 140, 58);
+      let out = '';
+      for (let i = 0; i < 6; i++) out += sk(v[i], v[(i + 1) % 6]);
+      const c1 = v[2], c2 = v[3];
+      const m1 = P(c1.x + 52, c1.y + 30), m2 = P(c2.x, c2.y + 58);
+      out += wedge(c1, m1, { rFrom: 0, rTo: 18 });
+      out += (cis ? wedge : hash)(c2, m2, { rFrom: 0, rTo: 18 });
+      out += atom(m1.x, m1.y, 'CH₃', { r: 18 });
+      out += atom(m2.x, m2.y, 'CH₃', { r: 18 });
+      out += text(c1.x + 16, c1.y - 8, 'C1', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+      out += text(c2.x - 18, c2.y + 2, 'C2', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+      return out;
+    };
+    let s = '';
+    s += panel(20, 36, 340, 242, { kind: 'hi' });
+    s += tag(190, 26, 'both on a wedge — same face');
+    s += draw(190, true);
+    s += text(190, 300, 'cis-1,2-dimethylcyclohexane', { cls: 'fg-tag-good', size: 12 });
+    s += panel(400, 36, 340, 242, { kind: 'warn' });
+    s += tag(570, 26, 'one wedge, one hash — opposite faces');
+    s += draw(570, false);
+    s += text(570, 300, 'trans-1,2-dimethylcyclohexane', { cls: 'fg-tag-warn', size: 12 });
+    s += text(380, 324, 'Wedge is above the ring, hash is below. Same face is cis, opposite faces trans.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'Cis and trans on a ring, with nothing to compute. A wedge puts the group above the plane of the ring and a hash puts it below, so the question is only whether the two substituents are drawn on the same kind of bond. That reading is identical for a 1,2-, a 1,3- or a 1,4-disubstituted ring — the locants say how far apart the groups are, and the wedges say which face each one is on.',
+  note: 'A chair flip does not touch this. Flipping exchanges axial for equatorial at every carbon, which changes the energy of the conformer; the group that was above the ring is still above the ring when the flip is finished. Configuration survives a ring flip, position does not.',
+});
+
+/* ------------------------------------------------------------- 30.2 ---
+   Where the two words stop working, in one row of three. */
+FIGURES.push({
+  id: 'cis-trans-runs-out',
+  section: 'cis-trans-ez',
+  anchor: 'it has run out of definition, and the compound still has two distinct geometric isomers that need naming.</p>',
+  alt: 'Three alkenes side by side. Cis-but-2-ene has its two methyl groups on the same side of the double bond and one hydrogen on each alkene carbon. Trans-but-2-ene has them on opposite sides. 3-methylpent-2-ene has a methyl and an ethyl group on the right-hand alkene carbon and no hydrogen there, so neither cis nor trans can be assigned to it.',
+  viewBox: '0 0 760 316',
+  build() {
+    let s = '';
+    const me = (x, y) => atom(x, y, 'CH₃', { r: 17 });
+
+    s += panel(14, 36, 236, 200, { kind: 'hi' });
+    s += bond(P(72, 182), P(114, 150), { rFrom: 17, rTo: 0 });
+    s += skDouble(P(114, 150), P(158, 150), P(136, 192));
+    s += bond(P(158, 150), P(200, 182), { rFrom: 0, rTo: 17 });
+    s += bond(P(114, 150), P(114, 104), { rFrom: 0, rTo: 12 });
+    s += bond(P(158, 150), P(158, 104), { rFrom: 0, rTo: 12 });
+    s += me(72, 182); s += me(200, 182);
+    s += atom(114, 104, 'H', { r: 12 }); s += atom(158, 104, 'H', { r: 12 });
+
+    s += panel(262, 36, 236, 200, { kind: 'hi' });
+    s += bond(P(320, 182), P(362, 150), { rFrom: 17, rTo: 0 });
+    s += skDouble(P(362, 150), P(406, 150), P(384, 192));
+    s += bond(P(406, 150), P(448, 118), { rFrom: 0, rTo: 17 });
+    s += bond(P(362, 150), P(362, 104), { rFrom: 0, rTo: 12 });
+    s += bond(P(406, 150), P(406, 196), { rFrom: 0, rTo: 12 });
+    s += me(320, 182); s += me(448, 118);
+    s += atom(362, 104, 'H', { r: 12 }); s += atom(406, 196, 'H', { r: 12 });
+
+    s += panel(494, 36, 236, 200, { kind: 'warn' });
+    s += bond(P(538, 182), P(580, 150), { rFrom: 17, rTo: 0 });
+    s += skDouble(P(580, 150), P(620, 150), P(600, 192));
+    s += bond(P(580, 150), P(580, 104), { rFrom: 0, rTo: 12 });
+    s += bond(P(620, 150), P(662, 104), { rFrom: 0, rTo: 17 });
+    s += bond(P(620, 150), P(678, 186), { rFrom: 0, rTo: 27 });
+    s += me(538, 182); s += me(662, 104);
+    s += atom(580, 104, 'H', { r: 12 });
+    s += atom(678, 186, 'CH₂CH₃', { r: 27 });
+
+    s += text(132, 256, 'cis-but-2-ene', { cls: 'fg-tag-good', size: 11.5 });
+    s += text(380, 256, 'trans-but-2-ene', { cls: 'fg-tag-good', size: 11.5 });
+    s += text(612, 256, '3-methylpent-2-ene', { cls: 'fg-tag-warn', size: 11.5 });
+    s += text(132, 278, 'one H, one CH₃ per carbon', { cls: 'fg-sm', size: 10 });
+    s += text(380, 278, 'same test, other answer', { cls: 'fg-sm', size: 10 });
+    s += text(612, 278, 'no H on the right carbon', { cls: 'fg-sm', size: 10 });
+    s += rule(24, 292, 720, 292);
+    s += text(380, 312, 'Cis/trans needs one hydrogen and one other group on EACH carbon of the C=C.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The condition on cis and trans, and the case that violates it. In the first two panels each alkene carbon carries one hydrogen and one methyl, so “the substituent” means something and the two words divide the cases cleanly. In the third the right-hand carbon carries a methyl <i>and</i> an ethyl: one of them is cis to the left-hand methyl and the other is trans, so the question has no answer.',
+  note: 'The third compound is not an edge case without isomers — it has two, and they are different substances. What it lacks is a name for them in this vocabulary, which is exactly the gap E/Z was invented to fill.',
+});
+
+/* ------------------------------------------------------------- 30.3 ---
+   A tie broken one sphere out, and the size instinct that gets it wrong. */
+FIGURES.push({
+  id: 'ez-tie-one-sphere',
+  section: 'cis-trans-ez',
+  anchor: 'never a head count and never a size estimate.</p>\n</div>',
+  alt: 'An alkene whose right-hand carbon carries a chloromethyl group and an isopropyl group. Both branches begin with carbon, so the comparison moves one sphere out: the chloromethyl carbon holds chlorine, hydrogen and hydrogen, while the isopropyl carbon holds carbon, carbon and hydrogen. Chlorine beats carbon at the first term, so the smaller chloromethyl group is the higher priority.',
+  viewBox: '0 0 760 300',
+  build() {
+    let s = '';
+    s += tag(190, 30, 'both branches start with carbon');
+    s += bond(P(104, 116), P(150, 150), { rFrom: 17, rTo: 0 });
+    s += skDouble(P(150, 150), P(200, 150), P(175, 190));
+    s += bond(P(150, 150), P(150, 204), { rFrom: 0, rTo: 12 });
+    s += bond(P(200, 150), P(250, 110), { rFrom: 0, rTo: 22 });
+    s += bond(P(200, 150), P(252, 202), { rFrom: 0, rTo: 35 });
+    s += atom(104, 116, 'CH₃', { r: 17 });
+    s += atom(150, 204, 'H', { r: 12 });
+    s += atom(250, 110, 'CH₂Cl', { kind: 'hi', r: 22 });
+    s += atom(252, 202, 'CH(CH₃)₂', { r: 35 });
+    s += text(138, 132, 'C2', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+    s += text(212, 132, 'C3', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    s += text(190, 266, '3-(chloromethyl)-4-methylpent-2-ene', { cls: 'fg-sm', size: 10.5 });
+
+    s += rule(350, 40, 350, 262);
+
+    s += tag(556, 34, 'so move one sphere out and compare');
+    s += text(390, 92, '–CH₂Cl  →  (Cl, H, H)', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(390, 120, '–CH(CH₃)₂  →  (C, C, H)', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(390, 154, 'Highest against highest: Cl (17) beats C (6).', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(390, 176, 'First point of difference — stop there.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(556, 212, '–CH₂Cl is the higher priority', { cls: 'fg-tag-good', size: 12 });
+    s += text(556, 238, 'although isopropyl is the bigger group', { cls: 'fg-sm', size: 10.5 });
+    s += text(380, 290, 'Size does not decide a CIP comparison. The first point of difference does.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'A tie at the first atom, broken one sphere out. Both groups on C3 attach through carbon, so the first sphere says nothing and you list what each of those carbons holds. Chlorine appears at the head of one set and carbon at the head of the other, so the comparison is over at the first term — and the branch with three carbons in it loses to the branch with one.',
+  note: 'This is the comparison students most often decide by eye. Bulk, mass and the number of atoms in a branch are all irrelevant to CIP; the sets are ordered high to low and read position by position, and the moment they differ the ranking is fixed.',
+});
+
+/* ------------------------------------------------------------- 30.4 ---
+   Duplicated atoms: the device that makes a double bond comparable with a
+   branch, and the sphere where it actually settles something. */
+FIGURES.push({
+  id: 'ez-duplicate-vinyl',
+  section: 'cis-trans-ez',
+  anchor: 'Their whole job is to be counted once in the sphere where they appear.</p>\n</div>',
+  alt: 'A vinyl group beside an isopropyl group. The vinyl group’s double bond is redrawn with a phantom duplicate carbon on each end, so its attachment carbon counts as carbon, carbon, hydrogen — exactly what the isopropyl attachment carbon holds. One sphere further out the tie breaks: the vinyl terminal carbon counts as carbon, hydrogen, hydrogen while each isopropyl methyl is only hydrogen, hydrogen, hydrogen.',
+  viewBox: '0 0 760 300',
+  build() {
+    let s = '';
+    s += panel(24, 40, 340, 200, { kind: 'hi' });
+    s += tag(194, 30, 'vinyl  –CH=CH₂');
+    s += bond(P(150, 110), P(214, 110), { order: 2, rFrom: 15, rTo: 18 });
+    s += bond(P(150, 110), P(150, 64), { rFrom: 15, rTo: 17 });
+    s += bond(P(214, 110), P(214, 64), { rFrom: 18, rTo: 17 });
+    s += atom(150, 110, 'C');
+    s += atom(214, 110, 'CH₂', { r: 18 });
+    s += atom(150, 64, '(C)', { kind: 'warn', r: 17 });
+    s += atom(214, 64, '(C)', { kind: 'warn', r: 17 });
+    s += text(194, 168, 'first sphere:  (C, C, H)', { cls: 'fg-lbl', size: 12 });
+    s += text(194, 192, 'that CH₂ then holds (C, H, H)', { cls: 'fg-sm', size: 10.5 });
+    s += text(194, 218, 'so vinyl wins one sphere later', { cls: 'fg-tag-good', size: 11 });
+
+    s += panel(396, 40, 340, 200);
+    s += tag(566, 30, 'isopropyl  –CH(CH₃)₂');
+    s += bond(P(540, 110), P(600, 74), { rFrom: 15, rTo: 17 });
+    s += bond(P(540, 110), P(600, 146), { rFrom: 15, rTo: 17 });
+    s += bond(P(540, 110), P(494, 110), { rFrom: 15, rTo: 12 });
+    s += atom(540, 110, 'C');
+    s += atom(600, 74, 'CH₃', { r: 17 });
+    s += atom(600, 146, 'CH₃', { r: 17 });
+    s += atom(494, 110, 'H', { r: 12 });
+    s += text(566, 192, 'first sphere:  (C, C, H)', { cls: 'fg-lbl', size: 12 });
+    s += text(566, 218, 'each CH₃ holds only (H, H, H)', { cls: 'fg-sm', size: 10.5 });
+
+    s += rule(24, 254, 736, 254);
+    s += text(380, 278, 'Duplication creates the tie; the next sphere out breaks it. Vinyl beats isopropyl.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'What a duplicated atom is for. The vinyl carbon really carries one carbon and one hydrogen, but its partner is doubly bonded, so CIP writes that partner in twice — once real, once as the parenthesized phantom — and the set becomes (C, C, H). That is the same set the isopropyl carbon genuinely holds, so the first sphere is an exact tie and the comparison has to go out one more.',
+  note: 'A phantom has no substituents of its own, so when the search reaches one it is a dead end and loses. Duplication is a bookkeeping device that makes a multiple bond comparable with a branch; it is not a way of scoring extra points.',
+});
+
+/* ------------------------------------------------------------- 30.5 ---
+   Two double bonds, two descriptors, and where the locants go. */
+FIGURES.push({
+  id: 'ez-diene-locants',
+  section: 'cis-trans-ez',
+  anchor: 'one label per stereogenic unit, each carrying its locant.</p>\n</div>',
+  alt: 'Hexa-2,4-diene drawn as a skeleton with its six carbons numbered. The C2 to C3 double bond has the C1 methyl below it and the C4 chain above it, on opposite sides, which makes it E. The C4 to C5 double bond has the C3 chain and the C6 methyl both below it, on the same side, which makes it Z. The full name is 2E,4Z-hexa-2,4-diene.',
+  viewBox: '0 0 760 300',
+  build() {
+    const c1 = P(96, 208), c2 = P(142, 182), c3 = P(188, 182),
+          c4 = P(234, 156), c5 = P(280, 156), c6 = P(326, 182);
+    let s = '';
+    s += sk(c1, c2);
+    s += skDouble(c2, c3, P(165, 220));
+    s += sk(c3, c4);
+    s += skDouble(c4, c5, P(257, 118));
+    s += sk(c5, c6);
+    s += text(96, 230, '1', { cls: 'fg-sm', size: 10 });
+    s += text(134, 172, '2', { cls: 'fg-sm', size: 10, anchor: 'end' });
+    s += text(196, 172, '3', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(226, 142, '4', { cls: 'fg-sm', size: 10, anchor: 'end' });
+    s += text(288, 142, '5', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(326, 204, '6', { cls: 'fg-sm', size: 10 });
+    s += text(211, 262, 'CH₃–CH=CH–CH=CH–CH₃', { cls: 'fg-sm', size: 10.5 });
+
+    s += rule(360, 40, 360, 268);
+
+    s += tag(548, 34, 'one descriptor per double bond');
+    s += text(396, 92, 'C2=C3:  CH₃ and the C4 chain', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(396, 114, 'sit on opposite sides', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(688, 104, 'E', { cls: 'fg-tag-good', size: 16 });
+    s += text(396, 160, 'C4=C5:  the C3 chain and CH₃', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(396, 182, 'sit on the same side', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(688, 172, 'Z', { cls: 'fg-tag-good', size: 16 });
+    s += text(548, 226, '(2E,4Z)-hexa-2,4-diene', { cls: 'fg-tag-good', size: 13 });
+    s += text(548, 250, 'each letter takes its bond’s lower locant', { cls: 'fg-sm', size: 10.5 });
+    s += text(380, 292, 'Two stereogenic double bonds, two letters, and both of them go in the name.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'A diene needs a descriptor for every stereogenic double bond it has, and each one carries the locant of the lower-numbered carbon it spans. Both bonds here have one hydrogen and one carbon chain on each of their carbons, so the chain is the higher priority every time and E/Z agrees with trans/cis — which is the ordinary case, not a rule.',
+  note: 'The descriptors go inside one set of parentheses at the front of the name, in locant order, exactly as (2R,3S) does for two stereocenters. A name that omits one of them is incomplete, not merely informal.',
 });
 
 const START = (id) => `<!-- fig:${id}:start -->`;
