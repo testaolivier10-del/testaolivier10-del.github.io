@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cis/trans and E/Z — Stereochemistry | Organic Chemistry</title>
+<meta name="description" content="Why restricted rotation and rings create geometric isomers, when cis and trans are enough, and how to assign E and Z with the CIP priority rules.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/cis-trans-ez.html">
+<meta property="og:title" content="Cis/trans and E/Z — Stereochemistry | Organic Chemistry">
+<meta property="og:description" content="Why restricted rotation and rings create geometric isomers, when cis and trans are enough, and how to assign E and Z with the CIP priority rules.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/cis-trans-ez.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/cis-trans-ez.html#lesson",
+      "name": "Cis/trans and E/Z",
+      "url": "https://levlprep.com/ochem/lessons/cis-trans-ez.html",
+      "description": "Why restricted rotation and rings create geometric isomers, when cis and trans are enough, and how to assign E and Z with the CIP priority rules.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Cis/trans and E/Z"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      },
+      "competencyRequired": [
+        {
+          "@type": "DefinedTerm",
+          "name": "R/S configuration",
+          "url": "https://levlprep.com/ochem/lessons/rs-configuration.html"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Stereochemistry",
+          "item": "https://levlprep.com/ochem/learn.html#m-stereochemistry"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Cis/trans and E/Z",
+          "item": "https://levlprep.com/ochem/lessons/cis-trans-ez.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow" data-chapter="stereochemistry">Stereochemistry</div>
+    <h1 style="margin-bottom:4px;">Cis/trans and E/Z.</h1>
+    <p class="lede" style="margin-top:0;">Same formula, same connectivity, different sides of something that will not turn.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/cis-trans-ez.html">Cis/trans and E/Z &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/bonding.html">Bonding</a><a href="../lessons/rs-configuration.html">R/S configuration</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/alkene-structure.html">Alkene structure</a><a href="../mechanisms/e2.html">E2</a><a href="../lessons/naming-rings-unsaturation.html">Rings &amp; unsaturation</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/molecules.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'cis-trans-ez',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Something has to stop turning before geometry can be an identity.',
+        bodyHtml: '<div class="explain-box"><b>The one idea under the whole lesson.</b> If two groups can swap places by a rotation that costs nothing, they are not isomers &mdash; they are the same compound, photographed at two moments. Isomerism needs something that refuses to rotate.</div>' +
+          '<p class="step-body">You already have the mechanism from the Bonding section of <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-foundations\">Foundations</a>. A sigma bond\'s overlap is symmetric all the way around the bond axis, so turning one end changes nothing and the ends spin millions of times a second. A pi bond\'s overlap is side-by-side, and twisting one end swings its p orbital out of alignment with the other, so rotating about a C=C costs the entire pi bond &mdash; roughly 65 kcal/mol. Nothing at room temperature pays that.</p>' +
+          '<p class="step-body">A <b>ring</b> does the same job by a different route. Every bond in cyclohexane rotates a little, and the ring flips constantly, but the ring as a whole has a top face and a bottom face, and a substituent bonded to the top face cannot reach the bottom face without a bond being broken.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">So there are two sources of geometric isomerism in this course, and they are the same idea wearing different clothes: a pi bond that cannot rotate, and a ring that cannot turn itself inside out. Everything that follows is notation for reading them off a drawing.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'On a ring: same face, or opposite faces.',
+        bodyHtml: '<p class="step-body">Draw the ring flat and use the wedge-and-dash convention you already use for stereocenters: a <b>bold wedge</b> puts the group above the plane of the ring, a <b>hash</b> puts it below. Two groups on the same kind of bond are on the same face, and that is <b>cis</b>. One wedge and one hash means opposite faces, and that is <b>trans</b>.</p>' +
+          '<div class="explain-box">Notice what the test does <b>not</b> ask: how far apart the two groups are. It reads identically for 1,2-, 1,3- and 1,4-disubstituted rings. The locants tell you where the groups are; the wedges tell you which face each one is on, and only the second question decides cis or trans.</div>' +
+          '<p class="step-body" style="margin-bottom:0;">One consequence worth fixing now, because it is a standard exam trap. <b>A chair flip does not change cis to trans.</b> Flipping a chair exchanges axial for equatorial at every carbon &mdash; that is the conformational bookkeeping from <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-alkanes-conformations\">Alkanes &amp; Conformations</a>, and it changes which conformer is cheaper. But a group that was above the ring before the flip is still above the ring after it. Configuration survives a ring flip; position does not.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 1 · Guided Practice',
+        title: 'cis-1,4-dimethylcyclohexane is drawn in a chair with one methyl axial and one equatorial. The ring flips. What is the compound now?',
+        options: ['trans-1,4-dimethylcyclohexane, because the substituents swapped positions', 'Still cis-1,4-dimethylcyclohexane, now with the axial and equatorial roles exchanged', 'An enantiomer of the starting structure', 'Neither cis nor trans, because a flipped chair has no defined faces'],
+        correctIndex: 1,
+        correctFeedback: 'Right. A flip exchanges axial and equatorial at every carbon, so the methyl that was axial becomes equatorial and vice versa. Neither one crosses to the other face of the ring, and cis/trans reads faces. Turning cis into trans would mean breaking a C&ndash;C bond and remaking it on the other side.',
+        wrongFeedback: 'Ask what a flip physically does: it swaps axial for equatorial, which changes energy. Cis and trans read which face of the ring each group is on, and a flip moves no group across the ring plane.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'On a double bond, cis and trans come with a condition attached.',
+        bodyHtml: '<p class="step-body">Cis and trans work on an alkene when <b>each alkene carbon carries one hydrogen and one other group</b>. Then the phrase "the substituent" means something: there is exactly one per carbon, and you ask whether the two of them are on the same side of the C=C. But-2-ene is the standard pair &mdash; cis has both methyls below the double bond, trans has one above and one below.</p>' +
+          '<p class="step-body">Put a second non-hydrogen group on one of those carbons and the phrase stops meaning anything. In 3-methylpent-2-ene, CH₃&ndash;CH=C(CH₃)&ndash;CH₂CH₃, the right-hand alkene carbon carries a methyl <i>and</i> an ethyl. One of them is on the same side as the left-hand methyl, and the other is not, so "is it cis or trans?" has no answer.</p>' +
+          '<div class="explain-box">Read that carefully: cis/trans did not give a <b>wrong</b> answer for the trisubstituted alkene. It gave <b>no</b> answer. The compound still has two distinct geometric isomers that are different substances; what is missing is a vocabulary that can name them. That is the gap E/Z fills.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'Which of these double bonds is NOT stereogenic — that is, gets no E or Z descriptor at all?',
+        options: ['CH₃CH=CHCH₃, but-2-ene', 'CH₃CH=CHCl, 1-chloropropene', 'CH₃CH₂CH=CH₂, but-1-ene', 'CH₃CH=C(Cl)CH₃, 2-chlorobut-2-ene'],
+        correctIndex: 2,
+        correctFeedback: 'Correct. The terminal carbon of but-1-ene is a =CH₂: it carries two hydrogens, so its two groups are identical and there is no way to tell one arrangement from the other. Swapping them gives you the same molecule back. A double bond earns a descriptor only when <i>both</i> of its carbons carry two different groups.',
+        wrongFeedback: 'Check each alkene carbon for two identical groups. The one with a =CH₂ terminus has a carbon holding two hydrogens, so swapping them returns the same molecule and there is nothing to name.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'E/Z: rank each carbon on its own, then compare the two winners.',
+        bodyHtml: '<p class="step-body">The general system replaces "the substituent" with "the higher-priority group," which every alkene carbon has no matter what it is carrying. Three lines:</p>' +
+          '<p class="step-body"><b>1.</b> Rank the two groups on one alkene carbon by CIP priority. <b>2.</b> Rank the two groups on the other alkene carbon, separately. <b>3.</b> Compare the two winners: same side is <b>Z</b> (<i>zusammen</i>, together), opposite sides is <b>E</b> (<i>entgegen</i>, opposite).</p>' +
+          '<div class="explain-box">The ranking is the CIP system from the R/S section of this chapter, unchanged. What is gone is the orientation step: there is no "point the lowest priority away," because there is no tetrahedral center to look through. Two parts of CIP do most of the damage here.<br><br><b>Ties break at the first point of difference.</b> List what each branch\'s first atom holds, highest to lowest, and compare term by term. A carbon holding (Cl, H, H) beats one holding (C, C, H) on the first term &mdash; so &ndash;CH₂Cl outranks isopropyl, even though isopropyl has three carbons to its one. Size is not a tiebreak.<br><br><b>A multiple bond is counted as bonds to duplicate atoms.</b> A vinyl group\'s attachment carbon is doubly bonded to a CH₂, so that partner is written in twice &mdash; once real, once as a phantom &mdash; and the set is (C, C, H), the same set an isopropyl carbon genuinely holds. That tie then breaks one sphere further out.</div>' +
+          '<p class="step-body" style="margin-bottom:0;">Everything hard about E/Z is inside those two rules, and both of them are rules you already met assigning R and S.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'CH₃&ndash;C(Br)=CH&ndash;CH₃ is drawn with its two methyl groups on opposite sides of the double bond. What is its descriptor?',
+        options: ['E, because the two methyl groups are on opposite sides', 'Z, because Br outranks CH₃ on C2 and those two winners are on the same side', 'Neither, because C2 carries no hydrogen', 'E, because bromine outranks everything else in the molecule'],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and this is the example worth memorizing. On C2 the contest is Br against CH₃, and bromine wins on atomic number. On C3 it is CH₃ against H, and the methyl wins. Those two winners &mdash; the bromine and the far methyl &mdash; sit on the same side, so the compound is (Z)-2-bromo-2-butene although its carbon skeleton is drawn trans.',
+        wrongFeedback: 'Rank each carbon separately and then compare only the two winners. "Trans" here is reporting where the methyls are; E/Z reports where the priorities are, and bromine beats methyl on C2.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Cis/trans isomers are diastereomers, and they get counted.',
+        bodyHtml: '<p class="step-body">Place these isomers in the vocabulary this chapter built. They are stereoisomers, because they differ only in arrangement in space. They are <b>not</b> enantiomers: hold <i>cis</i>-2-butene up to a mirror and you get <i>cis</i>-2-butene back, never the trans isomer. Stereoisomers that are not mirror images are <b>diastereomers</b>, so that is what they are &mdash; which is exactly why they have different melting points, boiling points and dipole moments, while enantiomers match on all three.</p>' +
+          '<div class="explain-box">A double bond can therefore be a <b>stereogenic unit</b> without being a stereocenter. Counting rule: a molecule with <i>n</i> stereocenters and <i>m</i> stereogenic double bonds has <b>at most</b> 2<sup>n+m</sup> stereoisomers. "At most" is load-bearing &mdash; it is an upper bound, and internal symmetry cuts it down, which is what meso compounds are. A double bond joins <i>m</i> only if both of its carbons carry two different groups.</div>' +
+          '<p class="step-body" style="margin-bottom:0;">Physically, the E isomer is usually the more stable of a pair, because the two higher-priority groups are held apart rather than crowded together, and it usually melts higher, because a straighter molecule packs better &mdash; which is why trans fats are solid where the cis fats they came from are liquid. Dipoles run the other way: <i>cis</i>-1,2-dichloroethene is polar and the trans isomer is not, because there its two C&ndash;Cl dipoles cancel. <b>A preview:</b> the evidence for the stability ordering, heats of hydrogenation, is measured in <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-alkenes-alkynes\">Alkenes &amp; Alkynes</a>.</p>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'One alkene carbon carries a vinyl group (&ndash;CH=CH₂) and an isopropyl group (&ndash;CH(CH₃)₂). Which group is the higher CIP priority, and why?',
+        options: ['Vinyl, because the tie at (C, C, H) breaks one sphere out, where its CH₂ shows (C, H, H) against a methyl’s (H, H, H)', 'Isopropyl, because three carbons outweigh two', 'Isopropyl, because a saturated branch reaches further from the alkene', 'Vinyl, because a double bond carries more electron density'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. Duplicating the double bond gives the vinyl carbon the set (C, C, H) &mdash; its real CH₂, a phantom duplicate of that CH₂, and a hydrogen &mdash; and the isopropyl carbon genuinely holds (C, C, H). An exact tie, so you explore one sphere further: the vinyl’s real CH₂ is doubly bonded back, so it counts as (C, H, H), while each isopropyl methyl is (H, H, H). Carbon beats hydrogen and vinyl wins. Note what did not settle it: the phantom duplicate itself carries nothing and loses every comparison it enters, and the number of carbons in a branch is not a CIP criterion at all.'
+      }
+    ]
+  });
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

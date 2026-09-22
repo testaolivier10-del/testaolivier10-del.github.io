@@ -291,6 +291,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/ochem/notes/cis-trans-ez.html</loc>
+    <lastmod>2026-09-22</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/ochem/notes/claisen.html</loc>
     <lastmod>2026-09-22</lastmod>
     <priority>0.8</priority>
@@ -908,6 +913,11 @@
   <url>
     <loc>https://levlprep.com/ochem/lessons/chirality.html</loc>
     <lastmod>2026-09-17</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/lessons/cis-trans-ez.html</loc>
+    <lastmod>2026-09-22</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
