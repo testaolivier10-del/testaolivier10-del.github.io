@@ -123,6 +123,35 @@ function describe(prose, fallback) {
   return cut.slice(0, cut.lastIndexOf(' ')) + '…';
 }
 
+/* WHY THE NOTES PAGES PRELOAD TWO FONT FILES
+   ------------------------------------------
+   fonts.css declares eight faces with font-display:swap. Nothing in the head
+   tells the browser which of them the page will need, so it parsed theme.css
+   and fonts.css, laid the page out, found the text, and only then fetched the
+   two files it turned out to want — around 420ms in, well after first paint.
+   swap then re-flowed every block on the page as they landed, and that was the
+   whole of these pages' layout shift: a measured CLS of 0.10 to 0.18, stable
+   across runs, entirely font swap. Preloading takes it to 0.000 and moves the
+   fetch to ~40ms.
+
+   Exactly these two files and no others. A crawl of all 121 pages requested
+   nunito-variable-latin.woff2 and ibm-plex-mono-700-latin.woff2 on every
+   single one and nothing else — not the latin-ext subsets, not the 500 or 600
+   weights of the mono. That list is measured rather than reasoned about,
+   because a preload for a file the page does not use costs the reader the
+   download and earns a console warning. Prose needing a glyph outside the
+   latin subset still gets that face fetched the ordinary way; it is only not
+   preloaded.
+
+   crossorigin is not optional here even though the files are same-origin:
+   fonts are fetched in CORS mode, and a preload without it is a second,
+   separate request rather than a warm cache entry for the one the CSS makes.
+
+   This is the notes pages only. The rest of the site has the same eight-face
+   stylesheet and the same swap, but its pages shift for a larger reason first
+   (content injected by script into an empty div), so a preload there would be
+   measuring noise until that is fixed. */
+
 /* Titles are picked from a list of candidates rather than built from one
    template, for two reasons that pull in opposite directions.
 
@@ -247,6 +276,8 @@ function page({ topic, module: mod, prose, prev, next, index, total }) {
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../assets/fonts/nunito-variable-latin.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../assets/fonts/ibm-plex-mono-700-latin.woff2">
 <link rel="stylesheet" href="../../assets/theme.css">
 <script src="../../assets/errors.js" defer></script>
 <script src="../../assets/account.js" defer></script>
