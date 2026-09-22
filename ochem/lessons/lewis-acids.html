@@ -62,13 +62,13 @@
       "competencyRequired": [
         {
           "@type": "DefinedTerm",
-          "name": "Nucleophiles",
-          "url": "https://levlprep.com/ochem/lessons/nucleophiles.html"
+          "name": "Brønsted acids/bases",
+          "url": "https://levlprep.com/ochem/lessons/bronsted.html"
         },
         {
           "@type": "DefinedTerm",
-          "name": "Electrophiles",
-          "url": "https://levlprep.com/ochem/lessons/electrophiles.html"
+          "name": "Curved arrows",
+          "url": "https://levlprep.com/ochem/lessons/curved-arrows.html"
         }
       ]
     },
@@ -123,8 +123,8 @@
 
 <nav class="lesson-links xshell" aria-label="Related lessons">
   <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/lewis-acids.html">Lewis acids/bases &mdash; the written section</a></span></div>
-  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/nucleophiles.html">Nucleophiles</a><a href="../lessons/electrophiles.html">Electrophiles</a></span></div>
-  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/amine-structure.html">Structure &amp; basicity</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/bronsted.html">Brønsted acids/bases</a><a href="../lessons/curved-arrows.html">Curved arrows</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/nucleophiles.html">Nucleophiles</a><a href="../lessons/electrophiles.html">Electrophiles</a><a href="../lessons/amine-structure.html">Structure &amp; basicity</a></span></div>
 </nav>
 <script src="../assets/shuffle-options.js" defer></script>
 <script src="../assets/step-back.js" defer></script>
@@ -233,17 +233,17 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'mcq',
         eyebrow: 'Step 3 · Independent Practice',
-        title: 'In <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-reactivity\">How Reactions Happen</a> terms, a Lewis base is the same thing as a...',
-        options: ['electrophile', 'leaving group', 'nucleophile'],
-        correctIndex: 2,
-        correctFeedback: 'Correct. Both are electron pair donors — "Lewis base" and "nucleophile" describe the same electron-rich role, just in different vocabularies.',
-        wrongFeedback: 'An electrophile accepts electrons (that\'s the Lewis acid role) — a Lewis base donates them, which is the nucleophile role.'
+        title: 'Ethene, CH₂=CH₂, has no lone pair anywhere. Can it act as a Lewis base?',
+        options: ['No — a Lewis base has to donate a lone pair, and ethene has none', 'Yes — its pi bond is a loosely held pair of electrons it can donate', 'No — it has a full octet on both carbons, so it cannot react at all'],
+        correctIndex: 1,
+        correctFeedback: 'Correct. A Lewis base donates <i>a pair of electrons</i>, and the definition never said which kind. The pi pair sits above and below the C=C axis, held loosely, and an alkene hands it to an electron-pair acceptor exactly as ammonia hands over its lone pair.',
+        wrongFeedback: 'Go back to the definition: electron-pair donor. A pi bond is a pair of electrons, held more loosely than a sigma pair because the overlap is sideways. Ethene donates that pair — which is the whole of alkene reactivity later in the course.'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Lewis acid-base language covers almost every mechanism arrow you\'ll draw.',
-        bodyHtml: '<p class="step-body">Once you accept that a Lewis base = nucleophile and a Lewis acid = electrophile, an enormous amount of organic chemistry collapses into one idea: <b>a filled orbital (lone pair or pi bond) attacks an empty or accessible orbital.</b> SN2 substitution, carbonyl addition, enolate alkylation, and Friedel-Crafts acylation are all, underneath the specific mechanism name, Lewis acid-base reactions.</p><p class="step-body" style="margin-bottom:0;">This is also why some Lewis acids (AlCl₃, BF₃, ZnCl₂) show up as <b>catalysts</b> rather than reactants: they accept electron density from an electrophile that\'s too weak to react on its own, making it a stronger, more reactive electrophile. You\'ll see AlCl₃ do exactly this in Friedel-Crafts reactions (<a class=\"chapter-ref\" href=\"/ochem/learn.html#m-aromatic-chemistry\">Aromatic Chemistry</a>).</p>'
+        bodyHtml: '<p class="step-body">The Lewis definition collapses an enormous amount of organic chemistry into one idea: <b>a filled orbital (lone pair or pi bond) attacks an empty or accessible orbital.</b> <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-reactivity\">How Reactions Happen</a> renames the two partners — donor becomes <b>nucleophile</b>, acceptor becomes <b>electrophile</b> — but the physics is what you have just learned. SN2 substitution, carbonyl addition, enolate alkylation, and Friedel-Crafts acylation are all, underneath the specific mechanism name, Lewis acid-base reactions.</p><p class="step-body" style="margin-bottom:0;">This is also why some Lewis acids (AlCl₃, BF₃, ZnCl₂) show up as <b>catalysts</b> rather than reactants: they accept electron density from an electrophile that\'s too weak to react on its own, making it a stronger, more reactive electrophile. You\'ll see AlCl₃ do exactly this in Friedel-Crafts reactions (<a class=\"chapter-ref\" href=\"/ochem/learn.html#m-aromatic-chemistry\">Aromatic Chemistry</a>).</p>'
       },
       {
         type: 'explain',

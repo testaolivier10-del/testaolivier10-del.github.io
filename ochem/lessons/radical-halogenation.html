@@ -291,15 +291,15 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'HBr adds to propene the Markovnikov way, but adding peroxides flips it to anti-Markovnikov. What does that tell you about the mechanism?',
+        title: '2-Methylbutane, (CH₃)₂CHCH₂CH₃, is treated with Br₂ and light. Which monobromide dominates, and why?',
         options: [
-          'The peroxide makes HBr a stronger acid, so the proton adds to the other carbon',
-          'The peroxide initiates a radical chain: a bromine radical adds first, not a proton, and it adds where it leaves the more stable carbon radical',
-          'The peroxide oxidizes the alkene before HBr can reach it',
-          'Nothing about the mechanism changes — only the product ratio shifts'
+          '1-Bromo-2-methylbutane, because nine of the twelve hydrogens are primary and statistics decides it',
+          '2-Bromo-2-methylbutane, because bromine\'s late transition state makes it selective enough that one tertiary hydrogen beats nine primary ones',
+          '2-Bromo-3-methylbutane, because a secondary radical is the most stable one this skeleton can form',
+          'A roughly even mixture of all four monobromides, because radical abstraction is unselective'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct, and it is the same chain logic you just sorted: initiation, two propagation steps, termination. The regiochemistry flips because the first thing to add is no longer H⁺ seeking the more stable carbocation, but Br• seeking the more stable carbon radical — which puts the bromine on the other carbon. Radical chemistry returns once more in this course, in mass spectrometry, where the molecular ion is itself a radical cation breaking apart to leave the most stable radical it can.'
+        correctFeedback: 'Correct. Run the arithmetic rather than trusting the instinct: with bromine\'s 1600 : 80 : 1 per-hydrogen rates, the single tertiary H scores 1 × 1600, the two secondary hydrogens score 2 × 80 = 160, and the nine primary ones score 9 × 1 = 9. The tertiary bromide is about 90% of the product. Had the reagent been Cl₂, whose ratios are roughly 5 : 4 : 1, the same count would have given 5 : 8 : 9 — and the primary product would have led.'
       }
     ]
   });

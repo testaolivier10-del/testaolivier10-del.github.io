@@ -5335,14 +5335,14 @@
    "type": "mcq"
   },
   {
-   "q": "Which reagent turns R–OH into a substrate with an excellent leaving group without strong acid?",
+   "q": "Methylamine derivatives will not do substitution at the C–N bond, but a quaternary ammonium salt R–N(CH₃)₃⁺ will. What has changed?",
    "options": [
-    "Sodium bromide dissolved in water",
-    "Tosyl chloride with pyridine",
-    "Concentrated sulfuric acid, warmed",
-    "Sodium hydroxide in ethanol"
+    "The three methyl groups make the neighboring carbon markedly more electron-poor",
+    "A positively charged nitrogen is more electronegative and holds the pair better",
+    "The group now departs as a neutral trialkylamine instead of as an amide anion",
+    "The C–N bond is longer in the salt and therefore easier to break homolytically"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -5579,12 +5579,12 @@
    "type": "mcq"
   },
   {
-   "q": "Which reagent would you supply to convert an alcohol directly into an alkyl bromide in one step?",
+   "q": "A substitution refuses to run, even with a large excess of an excellent nucleophile and a long reaction time. Which change is most likely to make it go?",
    "options": [
-    "Sodium bromide, which supplies bromide ion",
-    "Phosphorus tribromide, which activates and substitutes",
-    "Bromine, which adds across a double bond",
-    "Sodium hydroxide, which deprotonates the alcohol"
+    "Add more of the same nucleophile, since rate rises with its concentration",
+    "Convert the leaving group into one whose anion is a much weaker base",
+    "Lower the temperature so the starting material is not destroyed",
+    "Switch to a less polar solvent so the reagents are more concentrated"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -11897,27 +11897,27 @@
    "type": "mcq"
   },
   {
-   "q": "HBr plus peroxides adds to an alkene with which regiochemistry?",
+   "q": "Chlorination of 2-methylbutane, (CH₃)₂CHCH₂CH₃, with per-hydrogen relative rates of 5 (3°) : 4 (2°) : 1 (1°). Which monochloride is the major product?",
    "options": [
-    "An even mixture",
-    "Markovnikov",
-    "Anti-Markovnikov",
-    "No reaction occurs"
+    "2-Chloro-2-methylbutane, because the tertiary hydrogen is abstracted fastest of the four",
+    "1-Chloro-2-methylbutane, because six of the twelve hydrogens sit on that pair of methyl groups",
+    "2-Chloro-3-methylbutane, because two secondary hydrogens at rate 4 outscore every other set",
+    "All four monochlorides in equal amounts, because chlorine shows no selectivity at all"
    ],
    "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Why do peroxides flip HBr addition to anti-Markovnikov?",
+   "q": "A trace of O₂ stops the photochlorination of methane completely; once the oxygen is consumed the reaction resumes at full rate. What does that establish?",
    "options": [
-    "They make HBr more acidic",
-    "Br adds first, not H",
-    "The alkene is oxidized",
-    "They change solvent polarity"
+    "That O₂ oxidizes Cl₂, and the delay is the time taken to regenerate it",
+    "That the reaction is a chain, since removing a few radicals costs thousands of product molecules",
+    "That O₂ raises the activation energy of the initiation step until light overcomes it",
+    "Nothing mechanistic — O₂ simply dilutes the reagents and slows the collisions"
    ],
    "correct": 1,
-   "difficulty": "medium",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -17695,18 +17695,6 @@
    "type": "mcq"
   },
   {
-   "q": "Markovnikov's rule states that when HX adds to an unsymmetrical alkene, the hydrogen atom adds preferentially to the carbon that:",
-   "options": [
-    "already has the fewest hydrogens attached",
-    "bears a halogen substituent",
-    "is part of a ring",
-    "already has the most hydrogens attached"
-   ],
-   "correct": 3,
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
    "q": "Hydroboration-oxidation of 1-methylcyclohexene puts the OH on the carbon that already bears the methyl group.",
    "options": [
     "True",
@@ -17725,18 +17713,6 @@
     "propyl alcohol"
    ],
    "correct": 0,
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Anti-Markovnikov addition of HBr to an alkene is observed specifically under which condition?",
-   "options": [
-    "in concentrated sulfuric acid",
-    "in the presence of peroxides",
-    "at very low temperature only",
-    "with excess HBr and no catalyst"
-   ],
-   "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -17897,6 +17873,30 @@
     "The carbon radical taking H from H-Cl",
     "The peroxide splitting into two radicals",
     "Two chlorine atoms combining"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "HBr plus peroxides adds to an alkene with which regiochemistry?",
+   "options": [
+    "An even mixture",
+    "Markovnikov",
+    "Anti-Markovnikov",
+    "No reaction occurs"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why do peroxides flip HBr addition to anti-Markovnikov?",
+   "options": [
+    "They make HBr more acidic",
+    "Br adds first, not H",
+    "The alkene is oxidized",
+    "They change solvent polarity"
    ],
    "correct": 1,
    "difficulty": "medium",

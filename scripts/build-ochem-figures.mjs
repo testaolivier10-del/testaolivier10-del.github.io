@@ -5623,8 +5623,8 @@ FIGURES.push({
    oxygens of a group they had not seen. */
 FIGURES.push({
   id: 'alcohol-activation',
-  section: 'leaving-groups',
-  anchor: '<h3>Activating an alcohol</h3>',
+  section: 'alcohol-reactions',
+  anchor: '<h3>Converting alcohols to halides</h3>',
   alt: 'Three routes that turn an alcohol into a substrate with a good leaving group: protonation to an oxonium, tosylation with the tosylate structure drawn out, and conversion to a halide with thionyl chloride or phosphorus tribromide',
   viewBox: '0 0 760 350',
   build() {
@@ -5672,7 +5672,7 @@ FIGURES.push({
     return s;
   },
   caption: 'The same problem solved three ways. In every one of them the carbon is barely changed &mdash; what changed is the identity of the group that has to walk away.',
-  note: 'The reagents on the arrows belong to <a class="chapter-ref" href="/ochem/learn.html#m-alcohols-ethers">Alcohols, Ethers &amp; Related Chemistry</a> and are worth recognizing rather than memorizing at this stage. What is worth taking now is the shape of the move: when a substitution refuses to go, the fix is almost never a better nucleophile. It is an activation step that replaces a strong-base leaving group with a weak-base one.',
+  note: 'Read the three rows by what they cost rather than by what they give. All three end with a good leaving group on the same carbon; they differ in what else the molecule has to survive, and in what happens to a stereocenter at that carbon &mdash; retention for the middle row, inversion for the bottom one, and racemization for the top one whenever the cation is good enough to form.',
 });
 
 
@@ -7513,7 +7513,7 @@ FIGURES.push({
     return s;
   },
   caption: 'The fastest meso test there is, once you can read the notation. In a Fischer projection every horizontal bond points at you and every vertical bond away, so the two halves of a drawing like this really are in the same conformation as each other — which is exactly the condition under which an internal mirror plane shows up as a line on the page.',
-  note: 'The left projection is <i>meso</i>-tartaric acid: reflect it through the dashed line and OH lands on OH, H on H, COOH on COOH. The right one is (2R,3R): the same reflection sends OH onto H, so it is not a symmetry of the molecule, and no other one exists. Fischer projections are covered properly in the last section of this chapter; this is the one use of them worth borrowing early.',
+  note: 'The left projection is <i>meso</i>-tartaric acid: reflect it through the dashed line and OH lands on OH, H on H, COOH on COOH. The right one is (2R,3R): the same reflection sends OH onto H, so it is not a symmetry of the molecule, and no other one exists. Fischer projections are covered properly in the next section; this is the one use of them worth borrowing early.',
 });
 
 /* --------------------------------------------------------------- ch6.11 ---
