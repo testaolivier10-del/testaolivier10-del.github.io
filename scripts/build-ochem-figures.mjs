@@ -18065,6 +18065,433 @@ FIGURES.push({
   note: 'The right-hand panel is a <b>preview of <a class="chapter-ref" href="/ochem/learn.html#m-spectroscopy">Spectroscopy</a></b> and is drawn only to the level this section needs: diastereotopic hydrogens may give two signals rather than one, and because they are inequivalent they also couple to each other. How much they are separated is not predictable from topicity &mdash; sometimes the two shifts happen to coincide and the pair looks equivalent. Topicity tells you they are <i>allowed</i> to differ, never by how much.',
 });
 
+/* --------------------------------------------------------------- 230 ---
+   The three figures the self-study pass deferred. Each is a structure the
+   prose names and the reader has never been shown: a five-membered ring with
+   one heteroatom between two carbonyls, a four-membered amide, and a polymer
+   taken apart at its linkages. */
+
+/* An open retrosynthetic arrow between two points: a double shaft and a
+   filled head, the way the retrosynthesis figure draws it by hand. */
+function openArrow(a, b, opts = {}) {
+  const dx = b.x - a.x, dy = b.y - a.y;
+  const len = Math.hypot(dx, dy) || 1;
+  const ux = dx / len, uy = dy / len, px = -uy, py = ux;
+  const g = opts.gap ?? 4, hl = opts.head ?? 16, hw = opts.width ?? 9;
+  const r = (v) => Math.round(v * 100) / 100;
+  const ex = b.x - ux * (hl - 2), ey = b.y - uy * (hl - 2);
+  let o = '';
+  for (const k of [-g, g]) {
+    o += `<line class="fg-arrow" x1="${r(a.x + px * k)}" y1="${r(a.y + py * k)}" x2="${r(ex + px * k)}" y2="${r(ey + py * k)}"></line>`;
+  }
+  const bx = b.x - ux * hl, by = b.y - uy * hl;
+  o += `<path class="fg-head" d="M${r(b.x)} ${r(b.y)} L${r(bx + px * hw)} ${r(by + py * hw)} L${r(bx - px * hw)} ${r(by - py * hw)} Z"></path>`;
+  return o;
+}
+
+/* The squiggle that marks a disconnection, drawn across a bond at its
+   midpoint so it reads as a cut through that bond and not as a bond. */
+function squiggle(a, b, opts = {}) {
+  const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+  const L = Math.hypot(b.x - a.x, b.y - a.y) || 1;
+  const ux = (b.x - a.x) / L, uy = (b.y - a.y) / L, px = -uy, py = ux;
+  const half = opts.half ?? 20;
+  let d = '';
+  for (let i = 0; i <= 8; i++) {
+    const t = -half + (i * half) / 4;
+    const off = i % 2 === 0 ? 0 : (i % 4 === 1 ? 5 : -5);
+    const x = mx + px * t + ux * off, y = my + py * t + uy * off;
+    d += (i === 0 ? 'M' : 'L') + `${Math.round(x * 100) / 100} ${Math.round(y * 100) / 100} `;
+  }
+  return `<path class="${opts.cls || 'fg-dash-hi'}" fill="none" d="${d.trim()}"></path>`;
+}
+
+/* ------------------------------------------------------------- 230.1 ---
+   Succinic anhydride and succinimide. The Cyclic anhydrides paragraph walks a
+   diacid through two ring closures and a ring opening in three sentences and
+   draws none of the four structures. */
+FIGURES.push({
+  id: 'succinic-anhydride-imide',
+  section: 'acyl-chlorides-anhydrides',
+  anchor: 'Heating that loses water again and closes the ring to the <b>imide</b>, as in succinimide and phthalimide.</p>',
+  viewBox: '0 0 760 420',
+  alt: 'Succinic acid drawn with its two carboxyl groups turned toward each other; heating removes water and closes a five-membered ring, succinic anhydride, with one oxygen between two carbonyls. Ammonia opens the ring at one carbonyl to give an open chain with an amide at one end and a carboxylic acid at the other. Heating again removes water and closes the five-membered ring on nitrogen, giving succinimide, with an N-H between two carbonyls.',
+  build() {
+    let s = '';
+    /* Five ring positions, vertex 0 at the top and the rest clockwise. The
+       open-chain compounds use vertices 1 to 4 only, so the four carbons sit
+       exactly where they will sit in the ring they are about to close. */
+    const five = (cx, cy, r) => Array.from({ length: 5 }, (_, i) => {
+      const a = ((-90 + i * 72) * Math.PI) / 180;
+      return P(cx + r * Math.cos(a), cy + r * Math.sin(a));
+    });
+    const out = (c, v, d) => {                      // a point d beyond v, away from the ring centre c
+      const L = Math.hypot(v.x - c.x, v.y - c.y);
+      return P(v.x + ((v.x - c.x) / L) * d, v.y + ((v.y - c.y) / L) * d);
+    };
+    const carbonylO = (c, v) => {
+      const o = out(c, v, 34);
+      return bond(v, o, { order: 2, rFrom: 0, rTo: 15 }) + atom(o.x, o.y, 'O');
+    };
+
+    /* A closed ring: heteroatom at the top, carbonyls either side of it. */
+    const ring = (cx, cy, het, hetR) => {
+      const c = P(cx, cy), v = five(cx, cy, 40);
+      let g = '';
+      g += bond(v[0], v[1], { rFrom: hetR, rTo: 0 });
+      g += bond(v[1], v[2], { rFrom: 0, rTo: 0 });
+      g += bond(v[2], v[3], { rFrom: 0, rTo: 0 });
+      g += bond(v[3], v[4], { rFrom: 0, rTo: 0 });
+      g += bond(v[4], v[0], { rFrom: 0, rTo: hetR });
+      g += carbonylO(c, v[1]) + carbonylO(c, v[4]);
+      for (const q of v.slice(1)) g += atom(q.x, q.y, '', { kind: 'point' });
+      g += atom(v[0].x, v[0].y, het, { kind: 'hi', r: hetR });
+      return g;
+    };
+
+    /* An open chain, C(=O)X–CH2–CH2–C(=O)Y, with X and Y turned inward. */
+    const chain = (cx, cy, left, right) => {
+      const c = P(cx, cy), v = five(cx, cy, 46);
+      let g = '';
+      g += bond(v[1], v[2], { rFrom: 0, rTo: 0 });
+      g += bond(v[2], v[3], { rFrom: 0, rTo: 0 });
+      g += bond(v[3], v[4], { rFrom: 0, rTo: 0 });
+      g += carbonylO(c, v[1]) + carbonylO(c, v[4]);
+      const a = (-62 * Math.PI) / 180;
+      const xl = P(v[4].x + Math.cos(a) * 36, v[4].y + Math.sin(a) * 36);
+      const xr = P(v[1].x - Math.cos(a) * 36, v[1].y + Math.sin(a) * 36);
+      g += bond(v[4], xl, { rFrom: 0, rTo: left.r });
+      g += bond(v[1], xr, { rFrom: 0, rTo: right.r });
+      for (const q of v.slice(1)) g += atom(q.x, q.y, '', { kind: 'point' });
+      g += atom(xl.x, xl.y, left.l, { r: left.r, kind: left.kind });
+      g += atom(xr.x, xr.y, right.l, { r: right.r, kind: right.kind });
+      return g;
+    };
+
+    const Y1 = 128;
+    /* 1. succinic acid */
+    s += tag(100, 36, 'SUCCINIC ACID');
+    s += chain(100, Y1, { l: 'OH', r: 15 }, { l: 'OH', r: 15 });
+    s += text(100, 198, 'a four-carbon diacid', { cls: 'fg-sm', size: 10 });
+
+    s += arrow(P(200, Y1), P(256, Y1));
+    s += text(228, Y1 - 12, 'heat', { cls: 'fg-tag', size: 10.5 });
+    s += text(228, Y1 + 22, '− H₂O', { cls: 'fg-sm', size: 10 });
+
+    /* 2. succinic anhydride */
+    s += tag(346, 36, 'SUCCINIC ANHYDRIDE');
+    s += ring(346, Y1 + 4, 'O', 15);
+    s += text(346, 198, 'O between two C=O, in a ring', { cls: 'fg-sm', size: 10 });
+
+    s += arrow(P(438, Y1), P(502, Y1));
+    s += text(470, Y1 - 12, 'NH₃', { cls: 'fg-tag', size: 10.5 });
+    s += text(470, Y1 + 22, 'opens one C=O', { cls: 'fg-sm', size: 10 });
+
+    /* 3. the amic acid */
+    s += tag(600, 36, 'THE AMIC ACID');
+    s += chain(600, Y1, { l: 'H₂N', r: 17, kind: 'hi' }, { l: 'OH', r: 15 });
+    s += text(600, 198, 'an amide and an acid, still tethered', { cls: 'fg-sm', size: 10 });
+
+    /* 4. down to succinimide */
+    s += arrow(P(600, 210), P(600, 258));
+    s += text(614, 236, 'heat', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+    s += text(614, 252, '− H₂O', { cls: 'fg-sm', size: 10, anchor: 'start' });
+
+    s += ring(600, 318, 'NH', 17);
+    s += tag(600, 386, 'SUCCINIMIDE');
+    s += text(600, 404, 'N–H between two C=O, in a ring', { cls: 'fg-sm', size: 10 });
+
+    /* The comparison, in the space the L-shaped path leaves. */
+    s += panel(40, 238, 440, 124);
+    s += text(60, 266, 'Anhydride and imide are the same five-membered ring.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(60, 290, 'Only the atom between the two carbonyls changes: O in the', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(60, 308, 'anhydride, N in the imide. The ring opening in between is an', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(60, 326, 'ordinary acyl substitution whose leaving group, a carboxylate,', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(60, 344, 'stays attached to the product.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    return s;
+  },
+  caption: 'The four structures of the paragraph above, in order. The two ring closures are both condensations, each losing one water, and each closes a five-membered ring: the four carbons of the chain plus one heteroatom. Unlabeled corners are CH₂ groups or carbonyl carbons.',
+  note: 'Draw the open chains curled, as here, and the ring closure stops being a surprise: the two ends of a four-carbon chain already sit within reach of each other, and joining them through one more atom gives a five-membered ring with almost no strain. A primary amine R–NH₂ in place of ammonia runs the same sequence and gives the N-substituted imide, with R where the H is drawn.',
+});
+
+/* ------------------------------------------------------------- 230.2 ---
+   The beta-lactam paragraph makes a structural argument (ring size, amide
+   planarity, a serine acylated) about three molecules it never draws. */
+FIGURES.push({
+  id: 'beta-lactam-acylates',
+  section: 'esters-amides',
+  anchor: 'Penicillin is a β-lactam, and it kills bacteria by acylating a serine in the enzyme that cross-links their cell wall. A normal amide could not do that.</p>',
+  viewBox: '0 0 760 566',
+  alt: 'Top row: an ordinary amide with a curved arrow from the nitrogen lone pair into the carbonyl, drawn flat; the parent beta-lactam, a four-membered ring of three carbons and an N-H with a carbonyl in the ring, its ring angle marked near 90 degrees; and the penicillin core, the same four-membered ring fused at its nitrogen to a five-membered sulfur-containing ring carrying two methyl groups and a carboxylic acid, with an acylamino side chain on the four-membered ring. Bottom row: the oxygen of a serine side chain attacking the beta-lactam carbonyl with the carbon-nitrogen ring bond breaking, giving the ring-opened drug attached to the serine as an ester, the old ring nitrogen now an N-H in the five-membered ring.',
+  build() {
+    let s = '';
+
+    /* The penicillin core, placed by its four-membered ring's top-left corner
+       C6. The beta-lactam is a 44px square (C6, C5, N4, C7); the thiazolidine
+       is a regular pentagon sharing the C5–N4 edge. Stereochemistry is left
+       out on purpose — the note says so. */
+    const penam = (x0, y0, open) => {
+      let g = '';
+      const C6 = P(x0, y0), C5 = P(x0 + 44, y0), N4 = P(x0 + 44, y0 + 44), C7 = P(x0, y0 + 44);
+      const pc = P(x0 + 44 + 30.28, y0 + 22), R = 37.43;
+      const at = (deg) => P(pc.x + R * Math.cos((deg * Math.PI) / 180), pc.y + R * Math.sin((deg * Math.PI) / 180));
+      const S1 = at(288), C2 = at(0), C3 = at(72);
+      const nR = open ? 17 : 15;
+      // thiazolidine
+      g += bond(C5, S1, { rFrom: 0, rTo: 15 });
+      g += bond(S1, C2, { rFrom: 15, rTo: 0 });
+      g += bond(C2, C3, { rFrom: 0, rTo: 0 });
+      g += bond(C3, N4, { rFrom: 0, rTo: nR });
+      g += bond(N4, C5, { rFrom: nR, rTo: 0 });
+      // gem-dimethyl and the acid
+      const m1 = P(C2.x + 34, C2.y - 26), m2 = P(C2.x + 34, C2.y + 26);
+      g += bond(C2, m1, { rFrom: 0, rTo: 17 }) + atom(m1.x, m1.y, 'CH₃', { r: 17 });
+      g += bond(C2, m2, { rFrom: 0, rTo: 17 }) + atom(m2.x, m2.y, 'CH₃', { r: 17 });
+      const ac = P(C3.x + 12, C3.y + 40);
+      g += bond(C3, ac, { rFrom: 0, rTo: 20 }) + atom(ac.x, ac.y, 'CO₂H', { r: 20 });
+      // side chain on C6
+      const sc = P(C6.x, C6.y - 42);
+      g += bond(C6, sc, { rFrom: 0, rTo: 24 }) + atom(sc.x, sc.y, 'RCONH', { r: 24, size: 9 });
+      if (!open) {
+        g += bond(C6, C7, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
+        g += bond(C7, N4, { rFrom: 0, rTo: nR, cls: 'fg-bond-hi' });
+        g += bond(C5, N4, { rFrom: 0, rTo: nR, cls: 'fg-bond-hi' });
+        g += bond(C6, C5, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
+        const o = P(C7.x - 24, C7.y + 26);
+        g += bond(C7, o, { order: 2, rFrom: 0, rTo: 15 }) + atom(o.x, o.y, 'O');
+        for (const q of [C6, C5, C7, C2, C3]) g += atom(q.x, q.y, '', { kind: 'point' });
+        g += atom(N4.x, N4.y, 'N', { kind: 'warn' });
+      } else {
+        g += bond(C6, C5, { rFrom: 0, rTo: 0 });
+        for (const q of [C6, C5, C2, C3]) g += atom(q.x, q.y, '', { kind: 'point' });
+        g += atom(N4.x, N4.y, 'NH', { r: 17, kind: 'hi' });
+      }
+      g += atom(S1.x, S1.y, 'S');
+      return { html: g, C6, C5, N4, C7 };
+    };
+
+    /* ---- top row ---- */
+    s += panel(16, 48, 216, 216);
+    s += panel(244, 48, 216, 216, { kind: 'hi' });
+    s += panel(472, 48, 264, 216, { kind: 'hi' });
+    s += tag(124, 36, 'AN ORDINARY AMIDE');
+    s += tag(352, 36, 'THE β-LACTAM RING');
+    s += tag(604, 36, 'PENICILLIN');
+
+    /* (a) An ordinary amide, drawn the way the resonance figure above draws
+       DMF: flat, with the lone pair pushing into the carbonyl. */
+    {
+      const c = P(92, 128), o = P(92, 72), r = P(36, 162), nA = P(148, 162);
+      const h = P(204, 128), rr = P(148, 218);
+      s += bond(c, o, { order: 2 });
+      s += bond(c, r); s += bond(c, nA);
+      s += bond(nA, h, { rTo: 10 }); s += bond(nA, rr);
+      s += atom(o.x, o.y, 'O'); s += lonePair(o.x, o.y, 200); s += lonePair(o.x, o.y, 340);
+      s += atom(r.x, r.y, 'R');
+      s += atom(h.x, h.y, 'H', { r: 10 });
+      s += atom(rr.x, rr.y, 'R′', { r: 15 });
+      s += atom(nA.x, nA.y, 'N', { kind: 'hi' });
+      s += lonePair(nA.x, nA.y, 140);
+      s += atom(c.x, c.y, 'C', { kind: 'hi' });
+      s += curve(P(126, 182), P(118, 148), { bow: 14 });
+      s += curve(P(102, 108), P(108, 86), { bow: -10 });
+      s += text(124, 254, 'flat: the N lone pair is shared', { cls: 'fg-sm', size: 10 });
+    }
+
+    /* (b) Azetidin-2-one, the parent ring: C2 carbonyl bottom-left, N1–H
+       bottom-right, the same corners the penicillin core uses. */
+    {
+      const C3 = P(330, 108), C4 = P(380, 108), N1 = P(380, 158), C2 = P(330, 158);
+      s += bond(C3, C4, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
+      s += bond(C4, N1, { rFrom: 0, rTo: 17, cls: 'fg-bond-hi' });
+      s += bond(N1, C2, { rFrom: 17, rTo: 0, cls: 'fg-bond-hi' });
+      s += bond(C2, C3, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
+      const o = P(C2.x - 26, C2.y + 26);
+      s += bond(C2, o, { order: 2, rFrom: 0, rTo: 15 }) + atom(o.x, o.y, 'O');
+      for (const q of [C3, C4, C2]) s += atom(q.x, q.y, '', { kind: 'point' });
+      s += atom(N1.x, N1.y, 'NH', { r: 17 });
+      // the ring angle at the carbonyl carbon
+      s += `<path class="fg-dash-hi" fill="none" d="M${C2.x} ${C2.y - 14} A14 14 0 0 1 ${C2.x + 14} ${C2.y}"></path>`;
+      s += text(356, 138, '≈90°', { cls: 'fg-tag-warn', size: 10.5 });
+      s += text(352, 212, 'a four-membered cyclic amide', { cls: 'fg-sm', size: 10 });
+      s += text(352, 230, 'the C=O carbon wants 120°', { cls: 'fg-sm', size: 10 });
+      s += text(352, 244, 'and is held near 90°', { cls: 'fg-sm', size: 10 });
+    }
+
+    /* (c) The penicillin core. */
+    {
+      const p = penam(542, 120, false);
+      s += p.html;
+      s += text(604, 254, 'N is shared by both rings: pyramidal', { cls: 'fg-tag-warn', size: 10 });
+    }
+
+    s += rule(24, 282, 736, 282);
+
+    /* ---- bottom row: the serine opens the ring ---- */
+    s += tag(380, 306, 'THE ENZYME’S SERINE OPENS THE RING');
+    {
+      const p = penam(176, 386, false);
+      s += p.html;
+      // the serine: Enz–CH2–O–H, oxygen aimed at C7
+      const oS = P(112, 420), hS = P(112, 378);
+      s += text(86, 425, 'Enz–CH₂', { cls: 'fg-lbl', size: 12, anchor: 'end' });
+      s += bond(P(88, 420), oS, { rFrom: 0, rTo: 15 });
+      s += bond(oS, hS, { rFrom: 15, rTo: 10 });
+      s += atom(hS.x, hS.y, 'H', { r: 10 });
+      s += atom(oS.x, oS.y, 'O', { kind: 'hi' });
+      s += lonePair(oS.x, oS.y, -10, { dist: 21 });
+      s += curve(P(134, 414), P(170, 426), { bow: -12 });
+      s += curve(P(190, 434), P(206, 440), { bow: 12 });
+      s += text(176, 530, 'attack at the C=O; the ring C–N bond breaks', { cls: 'fg-sm', size: 10 });
+      s += text(176, 546, '(through the tetrahedral intermediate, not drawn)', { cls: 'fg-sm', size: 9.5 });
+    }
+    s += arrow(P(350, 430), P(402, 430), { muted: true });
+
+    {
+      /* The acyl-enzyme: C7 now hangs off C6 as an ester carbonyl, and the
+         old ring nitrogen has taken a proton. */
+      const x1 = 566, y1 = 398;
+      const p = penam(x1, y1, true);
+      s += p.html;
+      const C7 = P(x1 - 42, y1 + 24);
+      s += bond(p.C6, C7, { rFrom: 0, rTo: 0 });
+      const o = P(C7.x, C7.y + 44);
+      s += bond(C7, o, { order: 2, rFrom: 0, rTo: 15 }) + atom(o.x, o.y, 'O');
+      const oE = P(C7.x - 42, C7.y - 22);
+      s += bond(C7, oE, { rFrom: 0, rTo: 15, cls: 'fg-bond-hi' }) + atom(oE.x, oE.y, 'O', { kind: 'hi' });
+      s += atom(C7.x, C7.y, '', { kind: 'point' });
+      s += text(oE.x - 18, oE.y + 5, 'Enz–CH₂', { cls: 'fg-lbl', size: 12, anchor: 'end' });
+      s += text(566, 530, 'an ester on the serine: the enzyme is acylated,', { cls: 'fg-sm', size: 10 });
+      s += text(566, 546, 'and this ester hydrolyzes only very slowly', { cls: 'fg-sm', size: 9.5 });
+    }
+    return s;
+  },
+  caption: 'Three amides, and why the last two are not like the first. An ordinary amide is flat so that the nitrogen lone pair can overlap the C=O &pi; system. The four-membered ring holds the carbonyl carbon near 90&deg; instead of its preferred 120&deg;, and in penicillin the nitrogen is also part of a second ring, which forces it pyramidal and turns its lone pair away from the carbonyl. The highlighted bonds are the four-membered ring.',
+  note: 'Read the bottom row as ordinary acyl substitution with an unusual leaving group. The serine oxygen adds to the carbonyl, and the group expelled is the ring nitrogen, which stays attached because it is still part of the five-membered ring. Opening the ring releases its strain, which is what pays for expelling an amide nitrogen. Proton transfers are left out, and so is penicillin’s stereochemistry: it has three stereocenters, none of which changes here.',
+});
+
+/* ------------------------------------------------------------- 230.3 ---
+   Reading a polymer backwards. The section gives three rules and a worked
+   example in prose; this draws the rules, on polymers other than the one the
+   worked example solves. */
+FIGURES.push({
+  id: 'polymer-disconnection',
+  section: 'polymer-design',
+  anchor: 'If the difference is not a whole number of waters, the disconnection is wrong.</div>',
+  viewBox: '0 0 760 556',
+  alt: 'Three polymers taken back to their monomers. Polypropylene: the repeat unit CH2–CH(CH3) in brackets, the two bonds that cross the brackets highlighted, and an open arrow to propene. PET: a stretch of chain with squiggles through the three carbonyl-to-oxygen bonds and a dashed mark labeled not here on an oxygen-to-CH2 bond; open arrows lead to ethylene glycol and terephthalic acid. Nylon 6,6: a stretch of chain with squiggles through the three carbonyl-to-nitrogen bonds; open arrows lead to hexamethylenediamine and adipic acid.',
+  build() {
+    let s = '';
+    const brack = (x, y, h, dir) => {
+      const t = y - h / 2, b = y + h / 2;
+      return `<path class="fg-bond" d="M${x + 10 * dir} ${t} L${x} ${t} L${x} ${b} L${x + 10 * dir} ${b}"></path>`;
+    };
+    /* Labelled groups left to right; `gap` is the visible bond length. */
+    const place = (x0, items, gap = 30) => {
+      const out = [];
+      let x = x0;
+      for (const it of items) {
+        x = out.length ? x + out[out.length - 1].r + gap + it.r : x + it.r;
+        out.push({ x, ...it });
+      }
+      return out;
+    };
+    const run = (y, ps, cuts, ends) => {
+      let o = '';
+      o += text(ps[0].x - ps[0].r - 12, y + 5, '~', { cls: 'fg-lbl', size: 14, anchor: 'end' });
+      o += text(ps[ps.length - 1].x + ps[ps.length - 1].r + 12, y + 5, '~', { cls: 'fg-lbl', size: 14, anchor: 'start' });
+      for (let i = 0; i < ps.length - 1; i++) o += bond(P(ps[i].x, y), P(ps[i + 1].x, y), { rFrom: ps[i].r, rTo: ps[i + 1].r });
+      for (const p of ps) o += atom(p.x, y, p.l, { r: p.r, size: p.size ?? (p.l.length > 3 ? 9 : p.l.length > 2 ? 9.5 : 12), kind: p.kind });
+      for (const i of cuts) {
+        const a = P(ps[i].x + ps[i].r, y), b = P(ps[i + 1].x - ps[i + 1].r, y);
+        o += squiggle(a, b, { half: 18 });
+      }
+      return o;
+    };
+
+    /* ---- 1. addition: polypropylene back to propene ---- */
+    s += tag(40, 36, 'ONLY CARBON IN THE BACKBONE', { anchor: 'start' });
+    {
+      const y = 80;
+      s += brack(70, y, 56, 1);
+      s += bond(P(56, y), P(112, y), { rFrom: 0, rTo: 18, cls: 'fg-bond-hi' });
+      s += bond(P(112, y), P(176, y), { rFrom: 18, rTo: 15 });
+      s += bond(P(176, y), P(232, y), { rFrom: 15, rTo: 0, cls: 'fg-bond-hi' });
+      s += brack(218, y, 56, -1);
+      s += text(228, y + 26, 'n', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+      s += bond(P(176, y), P(176, y + 44), { rFrom: 15, rTo: 17 });
+      s += atom(112, y, 'CH₂', { r: 18 });
+      s += atom(176, y, 'CH', { r: 15 });
+      s += atom(176, y + 44, 'CH₃', { r: 17 });
+      s += openArrow(P(270, y), P(334, y));
+      s += bond(P(380, y), P(444, y), { order: 2, rFrom: 18, rTo: 15 });
+      s += bond(P(444, y), P(444, y + 44), { rFrom: 15, rTo: 17 });
+      s += atom(380, y, 'CH₂', { r: 18 });
+      s += atom(444, y, 'CH', { r: 15 });
+      s += atom(444, y + 44, 'CH₃', { r: 17 });
+      s += text(412, y + 76, 'propene', { cls: 'fg-tag-good', size: 11 });
+      s += text(500, y - 16, 'highlighted: the bonds that', { cls: 'fg-sm', size: 10, anchor: 'start' });
+      s += text(500, y, 'cross the brackets, which', { cls: 'fg-sm', size: 10, anchor: 'start' });
+      s += text(500, y + 16, 'the polymerization made.', { cls: 'fg-sm', size: 10, anchor: 'start' });
+      s += text(500, y + 32, 'The bond between them was', { cls: 'fg-sm', size: 10, anchor: 'start' });
+      s += text(500, y + 48, 'the C=C. Put it back.', { cls: 'fg-sm', size: 10, anchor: 'start' });
+      s += text(144, y + 76, 'polypropylene', { cls: 'fg-sm', size: 10 });
+    }
+    s += rule(24, 176, 736, 176);
+
+    /* ---- 2. a polyester: PET ---- */
+    s += tag(40, 204, 'AN ESTER IN THE BACKBONE', { anchor: 'start' });
+    {
+      const y = 246;
+      const ps = place(70, [
+        { l: 'CO', r: 17 }, { l: 'O', r: 15 }, { l: 'CH₂CH₂', r: 29 }, { l: 'O', r: 15 },
+        { l: 'CO', r: 17 }, { l: 'C₆H₄', r: 25 }, { l: 'CO', r: 17 }, { l: 'O', r: 15 },
+      ]);
+      s += run(y, ps, [0, 3, 6]);
+      // the wrong cut: oxygen to CH2
+      const wa = ps[1].x + ps[1].r, wb = ps[2].x - ps[2].r, wm = (wa + wb) / 2;
+      s += `<line class="fg-dash" x1="${wm}" y1="${y - 18}" x2="${wm}" y2="${y + 18}"></line>`;
+      s += text(wm, y - 26, 'not here', { cls: 'fg-tag-warn', size: 10 });
+      s += text((ps[0].x + ps[1].x) / 2, y + 36, 'cut', { cls: 'fg-tag', size: 10 });
+      s += text((ps[3].x + ps[4].x) / 2, y + 36, 'cut', { cls: 'fg-tag', size: 10 });
+      s += text((ps[6].x + ps[7].x) / 2, y + 36, 'cut', { cls: 'fg-tag', size: 10 });
+      s += text(ps[5].x, y + 36, 'para', { cls: 'fg-sm', size: 9.5 });
+      const diolX = ps[2].x, acidX = ps[5].x;
+      s += openArrow(P(diolX, y + 44), P(diolX, y + 80));
+      s += openArrow(P(acidX, y + 44), P(acidX, y + 80));
+      s += text(diolX, y + 102, 'HO–CH₂CH₂–OH', { cls: 'fg-lbl', size: 12 });
+      s += text(diolX, y + 118, 'ethylene glycol, a diol', { cls: 'fg-tag-good', size: 10 });
+      s += text(acidX, y + 102, 'HO₂C–C₆H₄–CO₂H', { cls: 'fg-lbl', size: 12 });
+      s += text(acidX, y + 118, 'terephthalic acid, a diacid', { cls: 'fg-tag-good', size: 10 });
+      s += text(736, 204, 'cut C(=O)–O: OH to the carbonyl, H to the O', { cls: 'fg-sm', size: 10, anchor: 'end' });
+    }
+    s += rule(24, 380, 736, 380);
+
+    /* ---- 3. a polyamide: nylon 6,6 ---- */
+    s += tag(40, 408, 'AN AMIDE IN THE BACKBONE', { anchor: 'start' });
+    {
+      const y = 444;
+      const ps = place(70, [
+        { l: 'CO', r: 17 }, { l: 'NH', r: 18 }, { l: '(CH₂)₆', r: 28 }, { l: 'NH', r: 18 },
+        { l: 'CO', r: 17 }, { l: '(CH₂)₄', r: 28 }, { l: 'CO', r: 17 }, { l: 'NH', r: 18 },
+      ], 26);
+      s += run(y, ps, [0, 3, 6]);
+      const amX = ps[2].x, acX = ps[5].x;
+      s += openArrow(P(amX, y + 26), P(amX, y + 52));
+      s += openArrow(P(acX, y + 26), P(acX, y + 52));
+      s += text(amX, y + 74, 'H₂N–(CH₂)₆–NH₂', { cls: 'fg-lbl', size: 12 });
+      s += text(amX, y + 90, 'hexamethylenediamine, a diamine', { cls: 'fg-tag-good', size: 10 });
+      s += text(acX, y + 74, 'HO₂C–(CH₂)₄–CO₂H', { cls: 'fg-lbl', size: 12 });
+      s += text(acX, y + 90, 'adipic acid, a diacid', { cls: 'fg-tag-good', size: 10 });
+      s += text(736, 408, 'cut C(=O)–N: OH to the carbonyl, H to the N', { cls: 'fg-sm', size: 10, anchor: 'end' });
+    }
+    return s;
+  },
+  caption: 'Three polymers read backwards. For a carbon-only backbone, the bonds that cross the repeat-unit brackets are the ones the polymerization made, and the bond between them goes back to a C=C. For a polyester or polyamide, draw enough chain to show two full linkages, cut at every carbonyl-to-heteroatom bond, and check that each piece has two reactive ends.',
+  note: 'The PET row repeats the arithmetic from the box above: the cut stretch contains two ester linkages per repeat unit, so the diol and the diacid together weigh two waters more than the repeat unit. The dashed mark shows the cut to avoid: cut every O–CH₂ bond instead and both oxygens stay with the acid piece, leaving a CH₂CH₂ piece with no oxygen on either end and so no reactive site at all. The nylon row is nylon 6,6, and its pieces are hexamethylenediamine and adipic acid.',
+});
+
+
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;
 
