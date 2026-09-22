@@ -3008,7 +3008,7 @@
   "The aryl halide is activated by the metal, not by attacking the ring."
  ],
  "wittig-reaction": [
-  "The new double bond lands exactly where the carbonyl oxygen was.",
+  "The new double bond lands exactly at the old carbonyl carbon, in place of its C=O.",
   "A negative carbon bonded directly to a positive phosphorus, neutral overall.",
   "Join the aldehyde carbon to the ylide carbon: CH3CH2CH2-CH=CH-CH2CH3, which is hept-3-ene. The ylide carries alkyl groups alone, so it is unstabilized, and an unstabilized ylide gives mainly the Z isomer.",
   "Triphenylphosphine is a large, polarizable, soft nucleophile.",
@@ -3093,7 +3093,7 @@
   "Reverse order: put the water back, break the aldol bond, then cut beta to a carbonyl.",
   "Which is exactly what puts the two carbonyls five apart.",
   "A soft enolate adding 1,4, with the Michael fingerprint in the product.",
-  "An alpha,beta-unsaturated nitrile is a good acceptor: the CN withdraws, the beta carbon is electrophilic, and the donor's alpha carbon lands on it.",
+  "An alpha,beta-unsaturated nitrile is a good acceptor: the CN withdraws, the beta carbon is electrophilic, and the donor's alpha carbon lands on it, leaving the ketone and the nitrile carbon 1,5 to each other in ethyl 2-acetyl-4-cyanobutanoate.",
   "Orbital control rather than charge control, and the beta carbon has the larger coefficient.",
   "Which is why a hard nucleophile picks it, and a soft one does not.",
   "Five- and six-membered closures happen far faster than anything larger.",

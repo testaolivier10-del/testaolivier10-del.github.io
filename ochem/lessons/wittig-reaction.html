@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function(){
         title: 'Every elimination lets Zaitsev choose where the bond goes.',
         bodyHtml: '<p class="step-body">You can also reach an alkene by reducing an alkyne, and that route controls geometry well &mdash; Lindlar for <i>cis</i>, Na/NH<sub>3</sub> for <i>trans</i>. But it needs the alkyne skeleton already built. The general route from a saturated substrate is elimination: E1, E2, dehydration, dehydrohalogenation &mdash; and all of them make the double bond between two carbons that were <i>already bonded to each other</i>. The consequence is that you do not choose where it goes. <b>Zaitsev</b> does, and Zaitsev always votes for the most substituted alkene.</p>' +
           '<p class="step-body">That is fine when the most substituted alkene is the one you want, and a problem otherwise. Ask for a terminal alkene from a secondary substrate and elimination will give you mostly the internal one, with the terminal alkene as a minor product you then have to separate.</p>' +
-          '<div class="explain-box">The <b>Wittig reaction</b> escapes this by not being an elimination. It joins two separate pieces, and the new C=C forms <b>exactly where the carbonyl oxygen was</b>. There is no competition to lose, because there is only one position the bond can occupy.</div>'
+          '<div class="explain-box">The <b>Wittig reaction</b> escapes this by not being an elimination. It joins two separate pieces, and the new C=C forms <b>exactly at the old carbonyl carbon</b>, in place of its C=O. There is no competition to lose, because there is only one position the bond can occupy.</div>'
       },
       {
         type: 'explain',
@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function(){
         ],
         correctIndex: 0,
         correctFeedback: 'Correct. The C=C forms exactly where the C=O was, so the new double bond is <i>exocyclic</i> — between the ring carbon and the incoming CH₂. Note what that buys you: 1-methylcyclohexene is the more stable, more substituted alkene, and an elimination route would give you that one instead. The Wittig reaches the less stable isomer precisely because it is not an elimination.',
-        wrongFeedback: 'Put the double bond where the carbonyl oxygen was, and attach the ylide carbon to it. Is the resulting C=C inside the ring or outside it?'
+        wrongFeedback: 'Put the double bond at the old carbonyl carbon, in place of its C=O, and attach the ylide carbon to it. Is the resulting C=C inside the ring or outside it?'
       },
       {
         type: 'explain',
