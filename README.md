@@ -85,7 +85,9 @@ nremt/                 The NREMT-EMT Prep course
                            from inline data — see "The NREMT textbook" below
   glossary.html, mnemonics.html, flowcharts.html,
   skillsheets.html       Reference content
-  body-map.html          Interactive 3D anatomy (three.js + a compressed .glb model)
+  body-map.html          Interactive 3D anatomy (three.js + a compressed .glb model, both
+                         fetched only when the viewer nears the screen, or on a tap
+                         on a Save-Data / 2G / 3G connection)
   sound-trainer.html      Lung/heart sound identification
   scenario-sim.html       Branching clinical scenarios
   search.html             Client-side search across notes + the question bank
@@ -683,7 +685,10 @@ A third job re-derives everything that is generated from the pages and fails if 
 | `build-og-tags.mjs --check` | every page has a link-preview card |
 | `build-sitemap.mjs --check` | every page is in `sitemap.xml` |
 | `build-question-bank.mjs --check` | the two files `practice.html` fetches match `questions.json` |
+| `build-leads-to.mjs --check` | the "Builds on" / "Leads to" rows under each ochem lesson and mechanism match `dependsOn` in `curriculum.js` |
 | `build-tutor-bank.mjs` + `git diff --exit-code` | the assistant's teaching index matches both banks |
+
+`build-leads-to.mjs` writes the related-topic rows from the curriculum graph: "Builds on" is a topic's `dependsOn`, "Leads to" is every topic whose `dependsOn` names it, in curriculum order. Hand-typed, most of the "Leads to" rows had fallen behind the graph and a good number listed the topic's own prerequisites, sending a student backwards. A topic nothing depends on gets a "Next" row pointing at the following topic instead — labelled "Next" rather than "Leads to", because claiming it leads there would be the same error. To change what a page says leads where, change `dependsOn` and rerun `node scripts/build-leads-to.mjs`.
 
 `build-sitemap.mjs` reads each page's last commit date out of git, so that job checks out with `fetch-depth: 0`. Its `--check` compares the **URL set** rather than the bytes — `<lastmod>` is derived from history, and a byte comparison would fail over something nobody got wrong.
 
