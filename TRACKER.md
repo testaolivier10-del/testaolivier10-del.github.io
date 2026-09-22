@@ -41,6 +41,14 @@ the merges and the mechanical reorder, which I did directly.
   later topic; a new `scripts/build-ochem-home.mjs` generates the homepage
   chapter path and JSON-LD syllabus from the curriculum (both had been stuck
   at 14 chapters) and CI checks it.
+- **Practice questions can show a drawn structure.** A bank question may
+  carry `molecule: '<record id>'`; practice and review render the record
+  (static, no caption, neutral aria-label) between the stem and the options.
+  58 records in the new `question-molecules.js`; 78 questions across 28
+  reaction and stereochemistry topics now show the compound instead of
+  naming it. check-site rule 32 validates every id, bond, valence and canvas.
+  Independently verified (0 chemistry errors; six answer giveaways through
+  captions and labels found and closed at the renderer).
 - `chair-bromocyclohexane` in `molecules.js` redrawn correctly (it was in
   use by two interactive items after all); the E2 click item's diagnostics
   follow it.

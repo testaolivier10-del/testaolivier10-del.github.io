@@ -1311,10 +1311,16 @@
        it hides exactly the controls a keyboard user has just tabbed onto. So
        the role depends on whether anything in here is interactive. */
     var interactive = !!(opts.clickable || opts.clickableBonds);
+    /* The label a screen reader hears. It is normally the record's name, but a
+       caller that shows the same structure in a context where the name would
+       answer the question — a practice question drawing its compound above the
+       stem — passes its own neutral `label` instead. Never empty: an unlabelled
+       role="img" is an unreadable picture. */
+    var label = opts.label || mol.name;
     return '<div class="scene omol">' +
       '<svg viewBox="' + (mol.viewBox || '0 0 320 170') + '"' +
         (interactive ? ' role="group"' : ' role="img"') +
-        ' aria-label="' + esc(mol.name) + (interactive ? ', interactive structure' : '') + '">' + body + '</svg>' +
+        ' aria-label="' + esc(label) + (interactive ? ', interactive structure' : '') + '">' + body + '</svg>' +
       (caption ? '<div class="omol-caption">' + esc(caption) + '</div>' : '') +
     '</div>';
   }

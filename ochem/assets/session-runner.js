@@ -424,14 +424,25 @@
        the card renders without the drawing and says so once in the console. */
     function moleculeHtml(q){
       if(!q.molecule || MOLECULE_KINDS[q.kind]) return '';
-      if(!Mo || !Mo.get(q.molecule)){
+      var rec = Mo && Mo.get(q.molecule);
+      if(!rec){
         if(!warnedMolecules[q.molecule]){
           warnedMolecules[q.molecule] = true;
           if(window.console) console.warn('Question ' + q.id + ' names molecule "' + q.molecule + '", which no loaded record matches.');
         }
         return '';
       }
-      return '<div class="q-molecule">' + Mo.svg(q.molecule, {}) + '</div>';
+      /* Two overrides, both for the same reason: a record written for a lesson
+         page says more about itself than a question may. `caption:''` drops the
+         sentence svg() would otherwise print under the structure — on a lesson
+         page it teaches, under a stem it can be the answer ("two different beta
+         hydrogens are available"). `label` replaces the record name in the
+         aria-label, because a name like "(S)-Butan-2-ol" hands the answer to
+         exactly the reader who cannot see the picture. The formula is safe: it
+         is what the drawing already shows, counted rather than read. */
+      var label = 'Structure for this question' +
+        (rec.formula ? ', molecular formula ' + rec.formula : '');
+      return '<div class="q-molecule">' + Mo.svg(q.molecule, { caption:'', label:label }) + '</div>';
     }
 
     function headHtml(q, isCheck, conceptId){

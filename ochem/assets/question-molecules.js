@@ -26,6 +26,20 @@
    2. NO `caption`. svg() DOES render a caption, and a sentence under the
       structure is exactly where an answer leaks out ("two different beta
       hydrogens are available"). The stem says what the question is.
+      session-runner.js also passes `caption:''` when it draws a question's
+      structure, which covers the records borrowed from molecules.js, where
+      captions are a teaching device and perfectly correct; this rule is what
+      keeps a caption from being written here in the first place.
+
+   4. THE `name` MUST NOT BE THE ANSWER. It is the record's human title, and
+      svg() puts it in the SVG's aria-label — so "(S)-Butan-2-ol" above a stem
+      asking for the configuration hands the answer to the one reader who
+      cannot see the drawing. session-runner.js therefore overrides the label
+      with a neutral one ("Structure for this question" plus the formula), and
+      these names are kept answer-free as well, so the record is safe wherever
+      it is used. Where the full name is worth recording — the configuration
+      the drawing encodes, say — it goes in an `iupac` field, which nothing
+      renders.
 
    3. Hydrogens are drawn only where the question turns on them — a
       stereocenter's H so the wedge/hash can be read, the single tertiary
@@ -85,7 +99,8 @@
   // up, CH2OCH3 to the lower LEFT and CH3 to the lower right, 1->2->3 runs
   // counterclockwise: S.
   Q['q-sn2-methoxy-bromide'] = {
-    name: '(S)-2-bromo-1-methoxypropane', formula: 'CH₃CHBrCH₂OCH₃',
+    name: '2-Bromo-1-methoxypropane', iupac: '(S)-2-bromo-1-methoxypropane',
+    formula: 'CH₃CHBrCH₂OCH₃',
     atoms: {
       c2:  { x:200, y:92, r:16, label:'C' },
       br:  { x:200, y:34, r:17, label:'Br', lp:3 },
@@ -190,27 +205,40 @@
   };
 
   /* Bromocyclohexane drawn as a real chair with the bromine EQUATORIAL —
-     the conformation the question starts from. Same ring vertices as
-     chair-bromocyclohexane in molecules.js, where the axial direction is UP
-     at r1, r3, r5 and DOWN at r2, r4, r6. Bromine sits on r4, whose axial
-     points down, so its equatorial partner runs out and slightly up; r4's
-     axial hydrogen is drawn pointing straight down beside it so the two
-     directions can be told apart. */
+     the conformation the question starts from. Same construction as
+     chair-bromocyclohexane and chair-dimethylcyclohexane in molecules.js:
+     three pairs of parallel edges, the two tips at r5 (highest) and r2
+     (lowest), and the axial direction alternating round the ring — UP at r1,
+     r3, r5 and DOWN at r2, r4, r6.
+
+     The vertices are stretched vertically against those two records (tips 40px
+     clear of their neighbours instead of 26) because this drawing is the whole
+     question: at the width a phone gives a question card, the shallower chair
+     read as a flat hexagon and axial could not be told from equatorial at all.
+     For the same reason the bromine now leaves r4 on a full-length bond out
+     and slightly UP (equatorial, roughly parallel to the r5–r6 edge) while
+     r4's axial hydrogen drops straight DOWN on a normal-weight bond — the
+     faint style it used before was invisible at that size — and r1's axial
+     hydrogen is drawn pointing straight UP, so the alternation that makes a
+     ring flip necessary is visible rather than asserted. (r3's axial hydrogen
+     would be the tidier partner, but r5 sits directly above r3 and the two
+     circles would overlap.) */
   Q['q-chair-bromocyclohexane-eq'] = {
-    name: 'Bromocyclohexane (chair, bromine equatorial)', formula: 'C₆H₁₁Br', viewBox: '0 0 320 180',
-    partialH: 'chair: only the axial hydrogen on the carbon bearing bromine is drawn, so equatorial can be told from axial',
+    name: 'Bromocyclohexane (chair conformation)', formula: 'C₆H₁₁Br', viewBox: '0 0 320 190',
+    partialH: 'chair: only the axial hydrogens that show which direction is axial are drawn',
     atoms: {
-      r1: { x:60,  y:104,r:13, label:'C' },
-      r2: { x:112, y:130,r:13, label:'C' },
-      r3: { x:176, y:118,r:13, label:'C' },
-      r4: { x:228, y:80, r:13, label:'C' },
-      r5: { x:176, y:54, r:13, label:'C' },
-      r6: { x:112, y:66, r:13, label:'C' },
-      br: { x:263, y:73, r:16, label:'Br', lp:3 },
-      hax:{ x:228, y:118,r:11, label:'H' }
+      r1: { x:56,  y:116,r:13, label:'C' },
+      r2: { x:112, y:156,r:13, label:'C' },
+      r3: { x:184, y:132,r:13, label:'C' },
+      r4: { x:240, y:96, r:13, label:'C' },
+      r5: { x:184, y:56, r:13, label:'C' },
+      r6: { x:112, y:80, r:13, label:'C' },
+      br: { x:289, y:80, r:16, label:'Br', lp:3 },
+      hax4:{ x:240, y:150,r:11, label:'H' },
+      hax1:{ x:56,  y:72, r:11, label:'H' }
     },
     bonds: [{a:'r1',b:'r2'},{a:'r2',b:'r3'},{a:'r3',b:'r4'},{a:'r4',b:'r5'},{a:'r5',b:'r6'},{a:'r6',b:'r1'},
-            {a:'r4',b:'br'},{a:'r4',b:'hax',style:'faint'}]
+            {a:'r4',b:'br'},{a:'r4',b:'hax4'},{a:'r1',b:'hax1'}]
   };
 
   Q['q-cyclohexyl-bromide'] = {
@@ -245,7 +273,7 @@
   // C1 bears the methyl, C2 is the other end of the double bond.
   Q['q-1-methylcyclohexene'] = {
     name: '1-Methylcyclohexene', formula: 'C₇H₁₂', viewBox: '0 0 320 190',
-    decor: tags([[186,52,'1'],[222,90,'2']]),
+    decor: tags([[127,48,'1'],[220,72,'2']]),
     atoms: {
       p1: { x:150, y:58, r:14, label:'C' },
       p2: { x:190, y:81, r:14, label:'C' },
@@ -341,7 +369,7 @@
      to the lower left, methyl to the lower right, H on a hash. With the
      hydrogen pointing away, OH -> ethyl -> methyl runs counterclockwise. */
   Q['q-S-butan-2-ol'] = {
-    name: '(S)-Butan-2-ol', formula: 'CH₃CH(OH)CH₂CH₃',
+    name: 'Butan-2-ol', iupac: '(S)-butan-2-ol', formula: 'CH₃CH(OH)CH₂CH₃',
     atoms: {
       c2:  { x:160, y:92, r:17, label:'C' },
       o:   { x:160, y:34, r:16, label:'O', lp:2 },
@@ -357,7 +385,7 @@
 
   // The four groups named by the question, drawn as groups rather than atoms.
   Q['q-stereocenter-oh-nh2-ch3'] = {
-    name: 'A stereocenter bearing OH, NH₂, CH₃ and H', formula: 'CH₃CH(OH)NH₂',
+    name: 'A tetrahedral stereocenter', formula: 'CH₃CH(OH)NH₂',
     atoms: {
       c:  { x:160, y:92, r:17, label:'C' },
       o:  { x:160, y:34, r:16, label:'O', lp:2 },
@@ -422,11 +450,19 @@
 
   /* 2-Bromobutane again, this time with the two hydrogens on C3 drawn on a
      wedge and a hash — they are the pair the substitution test is run on, so
-     they have to be distinguishable and they have to be visible. */
+     they have to be distinguishable and they have to be visible.
+
+     C2's bromine is on a wedge too. The question's options name the two
+     products as (2R,3R) and (2R,3S), which is only true of a drawing that
+     fixes C2; with a plain C2–Br bond the picture left that centre open and
+     the options asserted something it did not show. As drawn — Br toward the
+     viewer at the top, C3 to the lower right, C1 to the lower left, the
+     implicit H pointing back — Br > C3 > C1 runs clockwise: 2R. The locant
+     "3" sits directly above C3 (it used to sit beside C4). */
   Q['q-2-bromobutane-c3-h'] = {
     name: '2-Bromobutane', formula: 'CH₃CHBrCH₂CH₃',
     partialH: 'only the two hydrogens on C3 are drawn: they are the pair the question compares',
-    decor: tags([[86,64,'2'],[190,84,'3']]),
+    decor: tags([[86,64,'2'],[160,72,'3']]),
     atoms: {
       c1: { x:56,  y:112,r:15, label:'C' },
       c2: { x:108, y:80, r:16, label:'C' },
@@ -436,13 +472,13 @@
       ha: { x:136, y:152,r:11, label:'H' },
       hb: { x:196, y:150,r:11, label:'H' }
     },
-    bonds: [{a:'c1',b:'c2'},{a:'c2',b:'br'},{a:'c2',b:'c3'},{a:'c3',b:'c4'},
+    bonds: [{a:'c1',b:'c2'},{a:'c2',b:'br',style:'wedge'},{a:'c2',b:'c3'},{a:'c3',b:'c4'},
             {a:'c3',b:'ha',style:'wedge'},{a:'c3',b:'hb',style:'dash'}]
   };
 
   Q['q-12-dimethylcyclohexane'] = {
     name: '1,2-Dimethylcyclohexane', formula: 'C₈H₁₆', viewBox: '0 0 320 190',
-    decor: tags([[122,44,'1'],[214,96,'2'],[214,152,'3'],[150,182,'4'],[86,152,'5'],[86,96,'6']]),
+    decor: tags([[124,52,'1'],[214,96,'2'],[214,152,'3'],[150,182,'4'],[86,152,'5'],[86,96,'6']]),
     atoms: {
       p1: { x:150, y:66, r:14, label:'C' },
       p2: { x:188, y:88, r:14, label:'C' },
@@ -463,7 +499,7 @@
   // asserted: the methyls sit above-left and below-right of the C=C.
   Q['q-2-bromobut-2-ene'] = {
     name: '2-Bromobut-2-ene', formula: 'CH₃C(Br)=CHCH₃',
-    decor: tags([[120,166,'2'],[200,166,'3']]),
+    decor: tags([[120,66,'2'],[200,66,'3']]),
     atoms: {
       c2:  { x:120, y:96, r:16, label:'C' },
       c3:  { x:200, y:96, r:16, label:'C' },
@@ -492,7 +528,7 @@
   // 3-Methylpent-2-ene with the C1 methyl and the C3 ethyl on the SAME side.
   Q['q-3-methylpent-2-ene'] = {
     name: '3-Methylpent-2-ene', formula: 'CH₃CH=C(CH₃)CH₂CH₃',
-    decor: tags([[62,40,'1'],[120,166,'2'],[200,166,'3']]),
+    decor: tags([[62,40,'1'],[120,66,'2'],[200,66,'3']]),
     atoms: {
       c2:  { x:120, y:96, r:16, label:'C' },
       c3:  { x:200, y:96, r:16, label:'C' },
@@ -610,7 +646,7 @@
   };
 
   Q['q-2-methylpent-2-enal'] = {
-    name: '(E)-2-Methylpent-2-enal', formula: 'CH₃CH₂CH=C(CH₃)CHO',
+    name: '2-Methylpent-2-enal', formula: 'CH₃CH₂CH=C(CH₃)CHO',
     atoms: {
       c5: { x:40,  y:110,r:15, label:'C' },
       c4: { x:90,  y:78, r:15, label:'C' },
