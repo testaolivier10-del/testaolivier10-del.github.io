@@ -135,7 +135,15 @@ const SHELL_BUDGETS = [
      practice.html and review.html load and which has its own line in the
      data budgets below. So this raise buys the hook, not the content, and
      the content cannot come back to this number later. */
-  ['ochem', 103],
+  /* 103 -> 104 for the flashcard deck, and only for the part of it that has
+     to be on every ochem page: the sync merge for its schedule and the XP rule
+     in ochem-xp.js. The merge cannot live on the deck page alone — an account
+     push replaces the whole 'ochem' bucket with what the current page
+     registered, so a key only the deck page knew about would be deleted from
+     the account by the next sync from any lesson. Measured 103.2 KB after the
+     comments were cut down; the deck itself (page script, scheduler, cards)
+     is on flashcards.html's own lines below, not here. */
+  ['ochem', 104],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -218,6 +226,13 @@ const BUDGETS = [
   // bytes for that is the right trade. Raised to 11 to leave the page the
   // headroom it had before, not to let it grow.
   ['ochem/mechanisms/e2.html', 11],
+
+  // The flashcard deck. Its styles are inline, since no other page draws a
+  // card; its scripts (flashcards-page.js, flashcard-scheduler.js) sit in
+  // ochem/assets/ and so are measured in the ochem shell when reached from
+  // here, which is why the shell's largest measurement still comes from a
+  // lesson rather than from this page.
+  ['ochem/flashcards.html', 5],
 
   // The privacy policy: the page that has to load well for somebody who has
   // not decided yet whether to trust the site.
@@ -365,6 +380,13 @@ const DATA_BUDGETS = [
      downloaded before the first question on two pages that already wait on
      240 KB of bank. */
   ['ochem/assets/question-molecules.js', 10],
+  /* The flashcard deck, generated from the notes' tables by
+     scripts/build-flashcards.mjs. Fetched by flashcards.html after it paints,
+     alongside concept-teach.json. Measured at 25.3 KB for 526 cards — about
+     50 bytes a card, most of it the repeated question and table heading. If a
+     chapter's worth of tables pushes it over, factoring those per-table
+     strings out of each card is the saving, not a bigger number. */
+  ['ochem/assets/flashcards.json', 28],
 ];
 
 const REF_RE = /(?:href|src)="([^"]+)"/g;

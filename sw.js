@@ -24,7 +24,7 @@
 // model, the 670 KB three.js bundle and the fonts. Those never change with
 // the shell (they are content-addressed by path, and a new model would be a
 // new file), so they live in STATIC_CACHE, which activate leaves alone.
-const CACHE_NAME = 'levlprep-v34';
+const CACHE_NAME = 'levlprep-v35';
 const STATIC_CACHE = 'levlprep-static';
 const PRECACHE_URLS = [
   'index.html',
@@ -90,6 +90,18 @@ const PRECACHE_URLS = [
   'ochem/assets/ochem-nav.js',
   'ochem/assets/curriculum.js',
   'ochem/assets/tools-registry.js',
+  // The flashcard deck, whole: the page, its scripts, the generated deck and
+  // the concept teach strings its concept cards are built from. A deck is the
+  // thing most likely to be opened on a train, and a deck that loads only
+  // when the tunnel ends is not one. About 105 KB gzipped for all of it.
+  'ochem/flashcards.html',
+  'ochem/assets/flashcards-page.js',
+  'ochem/assets/flashcard-scheduler.js',
+  'ochem/assets/flashcards.json',
+  'ochem/assets/concepts.js',
+  'ochem/assets/concept-teach.json',
+  'ochem/assets/mastery-engine.js',
+  'ochem/assets/ochem-xp.js',
 ];
 
 // The question bank is 2.3 MB across its two files — an order of magnitude

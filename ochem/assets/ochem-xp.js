@@ -35,7 +35,8 @@
             lessons: { <topicId>: 1 }, mechanisms: { <topicId>: 1 },
             quest: { day: 'YYYY-MM-DD', target: n, done: n, claimed: bool },
             achievements: { <id>: ts },
-            totals: { sessions, correct, asked } }
+            totals: { sessions, correct, asked },
+            cards: { day: 'YYYY-MM-DD', xp: n } }   (flashcard XP paid today)
 
    XP itself is not stored here — it goes straight to HubProgress under the
    'ochem' subject, so it counts toward the same site-wide level.
@@ -51,6 +52,10 @@
   var MECHANISM_XP = 60;          // first completion of a mechanism walkthrough
   var ROUNDS_BONUS = 50;          // completing the day's due queue
   var PERFECT_BONUS = 30;         // a flawless session of 5+ questions
+  // Per card reviewed on schedule, whatever the self-grade (paying more for
+  // "Good" would pay for pressing it), capped per day. See onCards.
+  var CARD_XP = 2;
+  var CARD_XP_DAILY_CAP = 60;
 
   // Concept badge tiers. Each needs real strength AND enough attempts, so a
   // lucky first answer can't mint one.
@@ -329,6 +334,33 @@
     return { xp: xp, awards: takeAwards(), level: HP() ? HP().levelInfo('ochem') : null };
   }
 
+  /* ---- flashcards -------------------------------------------------------
+     `reviewed` = distinct cards graded on schedule (due, or new), so a card
+     sent round again by Again is not paid twice and studying ahead pays
+     nothing. No badges or Rounds (those come from the concept model), but it
+     does keep the streak. */
+  function onCards(reviewed){
+    reviewed = Math.max(0, Math.round(reviewed || 0));
+    if(!reviewed) return null;
+    var d = load();
+    var t = today();
+    if(!d.cards || d.cards.day !== t) d.cards = { day: t, xp: 0 };
+    var xp = Math.min(reviewed * CARD_XP, Math.max(0, CARD_XP_DAILY_CAP - d.cards.xp));
+    d.cards.xp += xp;
+    save(d);
+    if(xp) award(xp, reviewed + ' flashcard' + (reviewed === 1 ? '' : 's'));
+    if(HP()) HP().recordActivity('ochem', reviewed);
+    lastResult = {
+      awards: takeAwards(),
+      conceptBadges: [],
+      quest: null,
+      questCompleted: false,
+      level: HP() ? HP().levelInfo('ochem') : null,
+      debt: reviewDebt(),
+    };
+    return lastResult;
+  }
+
   /* ---- the reward strip shown at the end of a session ------------------
      Lives here rather than in each page so Practice and Review report the
      same thing the same way. Returns '' when there is nothing to report, so
@@ -363,10 +395,36 @@
     '</div>';
   }
 
+  /* Two devices' flashcard schedules, merged card by card: the copy graded
+     more recently wins. Taking the cloud's whole would un-review every card
+     graded here since the last push. */
+  function mergeFlashcards(localRaw, cloudRaw){
+    var mine = null, theirs = null;
+    try{ mine = JSON.parse(localRaw); }catch(e){}
+    try{ theirs = JSON.parse(cloudRaw); }catch(e){ return localRaw; }
+    function ok(x){ return x && typeof x === 'object' && x.v === 1 && x.cards && typeof x.cards === 'object'; }
+    if(!ok(theirs)) return localRaw;
+    if(!ok(mine)) return cloudRaw;
+    var out = { v: 1, cards: {}, fresh: theirs.fresh || { day: '', n: 0 } };
+    Object.keys(theirs.cards).forEach(function(id){ out.cards[id] = theirs.cards[id]; });
+    Object.keys(mine.cards).forEach(function(id){
+      var a = mine.cards[id], b = out.cards[id];
+      if(!b || ((a && a.t) || 0) > ((b && b.t) || 0)) out.cards[id] = a;
+    });
+    var fm = mine.fresh || { day: '', n: 0 }, ft = out.fresh;
+    if(String(fm.day) > String(ft.day)) out.fresh = fm;
+    else if(fm.day === ft.day) out.fresh = { day: ft.day, n: Math.max(fm.n || 0, ft.n || 0) };
+    return JSON.stringify(out);
+  }
+
   window.OchemXP = {
     onAnswer: onAnswer,
     onSession: onSession,
     onTopicComplete: onTopicComplete,
+    onCards: onCards,
+    CARD_XP: CARD_XP,
+    CARD_XP_DAILY_CAP: CARD_XP_DAILY_CAP,
+    mergeFlashcards: mergeFlashcards,
     lastSession: lastSession,
     summaryHtml: summaryHtml,
     quest: quest,
@@ -391,7 +449,12 @@
       // never feeds mastery — but it's the kind of thing that's maddening to
       // lose when you pick the course up on another device.
       'ochem_textbook_read',
+      // The flashcard schedule. Here, not on the deck page: a push replaces
+      // the whole 'ochem' bucket, so a key only one page registered would be
+      // wiped by the next sync from any other ochem page.
+      'ochem_flashcards_v1',
     ], {
+      'ochem_flashcards_v1': mergeFlashcards,
       /* A read map is a set of sections with the date each was first read,
          so the two copies of it merge rather than compete: reading chapter 3
          on a phone and chapter 4 on a laptop should leave you having read

@@ -8,10 +8,10 @@
    now carries an empty <div id="site-header"></div> and this file fills it.
 
    Each page sets window.OCHEM_SECTION ('home'|'learn'|'practice'|'review'|
-   'tools'|'mastery'|'search') and window.OCHEM_BASE (the relative path back to the
-   ochem/ root, e.g. '' at ochem/, '../' from ochem/lessons/) before this
-   script runs, since link targets and the active-state check both depend on
-   where the current page lives. */
+   'flashcards'|'tools'|'mastery'|'search') and window.OCHEM_BASE (the
+   relative path back to the ochem/ root, e.g. '' at ochem/, '../' from
+   ochem/lessons/) before this script runs, since link targets and the
+   active-state check both depend on where the current page lives. */
 (function(){
   var base = window.OCHEM_BASE || '';
   var section = window.OCHEM_SECTION || '';
@@ -20,10 +20,12 @@
     { key: 'learn', label: 'Learn', href: base + 'learn.html' },
     { key: 'practice', label: 'Practice', href: base + 'practice.html' },
     { key: 'review', label: 'Review', href: base + 'review.html' },
+    // Beside Review: the same habit, for the facts problems lean on.
+    { key: 'flashcards', label: 'Flashcards', href: base + 'flashcards.html' },
     { key: 'tools', label: 'Tools', href: base + 'tools.html' },
     { key: 'mastery', label: 'Mastery', href: base + 'mastery.html' },
     // Last, because it is a way of getting somewhere rather than a place. The
-    // tab row scrolls horizontally (see .course-nav__inner), so a seventh item
+    // tab row scrolls horizontally (see .course-nav__inner), so an eighth item
     // costs nothing on a phone — NREMT's row has carried eight for a while.
     { key: 'search', label: 'Search', href: base + 'search.html' }
   ];
