@@ -94,6 +94,12 @@
       prompt: raw.q,
       options: raw.options,
       answer: raw.correct,
+      /* Optional: the id of a molecules.js / question-molecules.js record to
+         draw above the stem. An exam draws the structure and asks about it;
+         a bank question that says "the compound shown" needs the compound to
+         actually be shown, and this is the only thing carrying it from the
+         bank file through to session-runner.js. Absent on most questions. */
+      molecule: raw.molecule,
       source: 'legacy',
       legacy: true,
       /* Vocabulary and trivia. Still worth asking — knowing that saponification

@@ -124,7 +124,18 @@ const SHELL_BUDGETS = [
      ochem/index.html loads lesson-concepts.js for one call in ochem-home.js;
      splitting that call out would take 4.4 KB off the home page, though not
      off this number, since the lessons still load the file. */
-  ['ochem', 102],
+  /* 102 -> 103, and this one is small enough to be worth stating plainly
+     rather than absorbing. Practice questions can now carry a structure
+     drawn above the stem, and the machinery for that lands in two shared
+     files: a `register` hook in molecules.js so a second record file can
+     join the same lookup table, and the .q-molecule sizing rules in
+     ochem.css. Together they measured 0.5 KB gzipped, which put the shell
+     0.1 KB over a budget that had 0.4 KB of headroom. The records
+     themselves are NOT here — they are in question-molecules.js, which only
+     practice.html and review.html load and which has its own line in the
+     data budgets below. So this raise buys the hook, not the content, and
+     the content cannot come back to this number later. */
+  ['ochem', 103],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -304,6 +315,21 @@ const DATA_BUDGETS = [
      paint, so the cost of the extra 30 KB is a later tooltip, not a slower
      page. */
   ['ochem/assets/practice-bank-why.json', 230],
+  /* The structures drawn above practice-bank stems. This one is here for an
+     unusual reason: it is a <script src>, not a fetched file, so the
+     reference walk above WOULD see it — except that the only two pages
+     loading it, ochem/practice.html and ochem/review.html, are not in the
+     page list, so nothing was measuring it at all. Without this line a file
+     that grows by one record per question could grow without limit.
+
+     Measured at 8.4 KB gzipped for 47 records — about 180 bytes each, most
+     of it coordinates — so 10 covers roughly another nine before anyone has
+     to think about it. The right thing to do
+     when it gets there is to split the records by chapter and fetch them,
+     not to raise this: unlike the banks above, every byte of this file is
+     downloaded before the first question on two pages that already wait on
+     240 KB of bank. */
+  ['ochem/assets/question-molecules.js', 10],
 ];
 
 const REF_RE = /(?:href|src)="([^"]+)"/g;

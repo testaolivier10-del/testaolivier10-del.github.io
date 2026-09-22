@@ -6693,7 +6693,8 @@
    "type": "mcq"
   },
   {
-   "q": "(CH₃)₃C–CH₂⁺ has no hydrogen on the carbon adjacent to the charge. What is its fate?",
+   "q": "The cation shown has no hydrogen on the carbon adjacent to the charge. What is its fate?",
+   "molecule": "q-neopentyl-cation",
    "options": [
     "A hydrogen migrates from two carbons away, giving a secondary cation",
     "It loses a proton to give an alkene without rearranging",
@@ -6836,7 +6837,8 @@
    "type": "mcq"
   },
   {
-   "q": "(Chloromethyl)cyclobutane solvolyzes in water to give mainly cyclopentanol rather than cyclobutylmethanol. What accounts for the five-membered ring?",
+   "q": "The compound shown solvolyzes in water to give mainly cyclopentanol rather than cyclobutylmethanol. What accounts for the five-membered ring?",
+   "molecule": "q-chloromethylcyclobutane",
    "options": [
     "Chloride leaves from a ring carbon rather than from the exocyclic carbon",
     "A ring C–C bond migrates to the exocyclic carbon, expanding the ring and leaving a secondary cation",
@@ -6849,7 +6851,8 @@
    "type": "mcq"
   },
   {
-   "q": "3,3-dimethylbutan-2-ol is treated with HBr. What is the major product?",
+   "q": "The alcohol shown is treated with HBr. What is the major product?",
+   "molecule": "q-33-dimethylbutan-2-ol",
    "options": [
     "2-bromo-2,3-dimethylbutane",
     "2-bromo-3,3-dimethylbutane",
@@ -6875,7 +6878,8 @@
    "type": "mcq"
   },
   {
-   "q": "Ionizing 3-chlorobut-1-ene gives a single cation, yet two different alcohols come out of the flask. What explains this without invoking any 1,2-shift?",
+   "q": "Ionizing the compound shown gives a single cation, yet two different alcohols come out of the flask. What explains this without invoking any 1,2-shift?",
+   "molecule": "q-3-chlorobut-1-ene",
    "options": [
     "The double bond migrates by a separate acid-catalyzed step after the product forms",
     "The cation is an allylic hybrid, so the nucleophile can attack at either end of the delocalized system",
@@ -12776,7 +12780,8 @@
    "type": "mcq"
   },
   {
-   "q": "2-Methylpropane has nine primary hydrogens and one tertiary. Chlorine prefers tertiary over primary by about 5 to 1 per hydrogen. Which product dominates?",
+   "q": "The alkane shown has nine primary hydrogens and one tertiary. Chlorine prefers tertiary over primary by about 5 to 1 per hydrogen. Which product dominates?",
+   "molecule": "q-2-methylpropane",
    "options": [
     "The primary chloride, at about 64%",
     "The tertiary chloride, at about 64%",
@@ -12841,7 +12846,8 @@
    "type": "mcq"
   },
   {
-   "q": "How many different monochlorination products can butane, CH₃CH₂CH₂CH₃, give?",
+   "q": "How many different monochlorination products can the alkane shown give?",
+   "molecule": "q-butane",
    "options": [
     "Four, one for each carbon",
     "Two: substitution at an end carbon or at a middle carbon",
@@ -12906,7 +12912,8 @@
    "type": "mcq"
   },
   {
-   "q": "Chlorination of 2-methylbutane, (CH₃)₂CHCH₂CH₃, with per-hydrogen relative rates of 5 (3°) : 4 (2°) : 1 (1°). Which monochloride is the major product?",
+   "q": "Chlorination of the alkane shown, with per-hydrogen relative rates of 5 (3°) : 4 (2°) : 1 (1°). Which monochloride is the major product?",
+   "molecule": "q-2-methylbutane",
    "options": [
     "2-Chloro-2-methylbutane, because the tertiary hydrogen is abstracted fastest of the four",
     "1-Chloro-2-methylbutane, because six of the twelve hydrogens sit on that pair of methyl groups",
@@ -13051,7 +13058,8 @@
  ],
  "chirality": [
   {
-   "q": "2-Chloropropane is drawn with Cl on a wedge, H on a hash, and a methyl group on each side. Is it chiral?",
+   "q": "2-Chloropropane is drawn as shown. Is it chiral?",
+   "molecule": "q-2-chloropropane-wedge",
    "options": [
     "Chiral: a wedge and a hash make any carbon handed",
     "Chiral: chlorine outranks both of the methyl groups",
@@ -13225,7 +13233,8 @@
    "type": "tf"
   },
   {
-   "q": "Is 3-methylhexane a chiral molecule?",
+   "q": "Is the compound shown a chiral molecule?",
+   "molecule": "q-3-methylhexane",
    "options": [
     "Yes, C3 has four different groups",
     "Yes, because it contains a methyl branch",
@@ -13334,7 +13343,8 @@
    "type": "tf"
   },
   {
-   "q": "Is 3-bromo-1-butene (CH₂=CH–CHBr–CH₃) chiral?",
+   "q": "Is the compound shown chiral?",
+   "molecule": "q-3-bromobut-1-ene",
    "options": [
     "No — the double bond rules it out",
     "No — C3 has two identical hydrogens",
@@ -13462,7 +13472,8 @@
    "type": "mcq"
   },
   {
-   "q": "In 2-bromobutane, which carbon is the stereocenter?",
+   "q": "In the compound shown, which carbon is the stereocenter?",
+   "molecule": "q-2-bromobutane-numbered",
    "options": [
     "C1",
     "C3",
@@ -13525,7 +13536,8 @@
    "type": "mcq"
   },
   {
-   "q": "In 3-methylpentane, is C3 a stereocenter?",
+   "q": "In the compound shown, is C3 a stereocenter?",
+   "molecule": "q-3-methylpentane",
    "options": [
     "Yes, because it has a methyl branch",
     "Yes, because it is in the middle of the chain",
@@ -13623,7 +13635,8 @@
    "type": "tf"
   },
   {
-   "q": "In 1,2-dimethylcyclohexane, which carbons are the stereocenters?",
+   "q": "In the compound shown, which carbons are the stereocenters?",
+   "molecule": "q-12-dimethylcyclohexane",
    "options": [
     "C1 and C4",
     "All six ring carbons",
@@ -14970,7 +14983,8 @@
    "type": "mcq"
   },
   {
-   "q": "Butan-2-ol is drawn with OH at the top, ethyl to the lower left, methyl to the lower right and H on a hash. Tracing OH → ethyl → methyl runs counterclockwise. What is the configuration?",
+   "q": "For the compound as drawn, tracing OH → ethyl → methyl runs counterclockwise. What is the configuration?",
+   "molecule": "q-S-butan-2-ol",
    "options": [
     "R, after flipping the answer",
     "S, read directly",
@@ -14996,7 +15010,8 @@
    "type": "mcq"
   },
   {
-   "q": "Glyceraldehyde is drawn with OH at the top, CHO to the lower left, CH₂OH to the lower right and H on a wedge. Tracing OH → CHO → CH₂OH runs counterclockwise. What is the configuration?",
+   "q": "For the compound as drawn, tracing OH → CHO → CH₂OH runs counterclockwise. What is the configuration?",
+   "molecule": "q-glyceraldehyde-wedge",
    "options": [
     "S, read directly from the trace",
     "R, read directly from the trace",
@@ -15048,7 +15063,8 @@
    "type": "mcq"
   },
   {
-   "q": "For a stereocenter bonded to -OH, -NH2, -CH3, and -H, rank these four groups from highest to lowest CIP priority.",
+   "q": "Rank the four groups on the stereocenter shown from highest to lowest CIP priority.",
+   "molecule": "q-stereocenter-oh-nh2-ch3",
    "options": [
     "NH2 ≻ OH ≻ CH3 ≻ H",
     "OH ≻ NH2 ≻ CH3 ≻ H",
@@ -15797,7 +15813,8 @@
    "type": "mcq"
   },
   {
-   "q": "CH3-C(Br)=CH-CH3 is drawn with its two methyl groups on opposite sides of the double bond. What is its descriptor?",
+   "q": "The alkene shown is drawn with its two methyl groups on opposite sides of the double bond. What is its descriptor?",
+   "molecule": "q-2-bromobut-2-ene",
    "options": [
     "E, as the two methyls are opposite",
     "Neither, as one of the two alkene carbons lacks a hydrogen",
@@ -16005,7 +16022,8 @@
    "type": "mcq"
   },
   {
-   "q": "3-Methylpent-2-ene is drawn with the C1 methyl and the C3 ethyl on the same side. What is its descriptor, and why will cis/trans not serve?",
+   "q": "The alkene shown is drawn with the C1 methyl and the C3 ethyl on the same side. What is its descriptor, and why will cis/trans not serve?",
+   "molecule": "q-3-methylpent-2-ene",
    "options": [
     "E; cis/trans fails because C2 still carries a hydrogen",
     "Z; cis/trans fails because the parent chain is branched",
@@ -16031,7 +16049,8 @@
    "type": "mcq"
   },
   {
-   "q": "CH₃–CH=CBrCl is drawn with the chlorine on the same side of the double bond as the methyl group. What is its descriptor?",
+   "q": "The alkene shown is drawn with the chlorine on the same side of the double bond as the methyl group. What is its descriptor?",
+   "molecule": "q-1-bromo-1-chloropropene",
    "options": [
     "E, because bromine outranks chlorine and so lies opposite the methyl",
     "Z, because the chlorine and the methyl are drawn on the same side",
@@ -16189,7 +16208,8 @@
    "type": "mcq"
   },
   {
-   "q": "Run the substitution test on the two hydrogens of C3 in 2-bromobutane, CH₃CHBrCH₂CH₃. What comes out?",
+   "q": "Run the substitution test on the two hydrogens drawn on C3 of the compound shown. What comes out?",
+   "molecule": "q-2-bromobutane-c3-h",
    "options": [
     "Two identical molecules, so the hydrogens are homotopic",
     "A pair of enantiomers, so the hydrogens are enantiotopic",
@@ -16423,7 +16443,8 @@
    "type": "mcq"
   },
   {
-   "q": "You look at the carbonyl carbon of butan-2-one, CH₃COCH₂CH₃, from the side on which O → CH₂CH₃ → CH₃ runs counterclockwise. Which face are you looking at, and what does hydride delivered from that side give?",
+   "q": "You look at the carbonyl carbon of the ketone shown from the side on which O → CH₂CH₃ → CH₃ runs counterclockwise. Which face are you looking at, and what does hydride delivered from that side give?",
+   "molecule": "q-butan-2-one",
    "options": [
     "The Re face, because the lowest-priority group has to point away first",
     "The Si face, giving one enantiomer of butan-2-ol; the other face gives its mirror image",
@@ -16503,7 +16524,8 @@
    "type": "mcq"
   },
   {
-   "q": "(S)-CH₃–CHBr–CH₂OCH₃ is treated with NaCN in acetone. What happens at C2?",
+   "q": "The compound shown is treated with NaCN in acetone. What happens at the carbon bearing the bromine?",
+   "molecule": "q-sn2-methoxy-bromide",
    "options": [
     "It inverts, and the descriptor changes to (R)",
     "It inverts, but the descriptor is still (S)",
@@ -16657,7 +16679,8 @@
    "type": "mcq"
   },
   {
-   "q": "Neopentyl bromide, (CH3)3CCH2Br, is technically a primary halide but reacts very slowly via SN2. Why?",
+   "q": "The alkyl bromide shown is technically a primary halide but reacts very slowly via SN2. Why?",
+   "molecule": "q-neopentyl-bromide",
    "options": [
     "It is secretly a tertiary halide",
     "Bromide is a poor leaving group in this molecule",
@@ -16772,7 +16795,8 @@
    "type": "mcq"
   },
   {
-   "q": "Compared to a simple secondary alkyl bromide, an allylic secondary bromide typically reacts faster in SN2. Why?",
+   "q": "The secondary alkyl bromide shown reacts faster in SN2 than an ordinary secondary bromide does. Why?",
+   "molecule": "q-3-bromobut-1-ene",
    "options": [
     "Allylic carbons are less hindered than ordinary secondary carbons",
     "Allylic systems always form carbocations first",
@@ -16878,7 +16902,8 @@
    "type": "mcq"
   },
   {
-   "q": "3-Methylbutan-2-ol, CH₃–CH(OH)–CH(CH₃)₂, is treated with concentrated HBr. What is the major product?",
+   "q": "The alcohol shown is treated with concentrated HBr. What is the major product?",
+   "molecule": "q-3-methylbutan-2-ol",
    "options": [
     "2-Bromo-3-methylbutane",
     "2-Bromo-2-methylbutane",
@@ -16954,7 +16979,8 @@
    "type": "mcq"
   },
   {
-   "q": "You need tert-butyl ethyl ether from 2-bromo-2-methylpropane. Which conditions work?",
+   "q": "You need tert-butyl ethyl ether from the bromide shown. Which conditions work?",
+   "molecule": "q-tert-butyl-bromide",
    "options": [
     "NaOEt in DMSO, cold",
     "Warm ethanol, nothing added",
@@ -17041,7 +17067,8 @@
    "type": "mcq"
   },
   {
-   "q": "3-Chlorobut-1-ene solvolyzes in water. Why are two alcohols isolated?",
+   "q": "The compound shown solvolyzes in water. Why are two alcohols isolated?",
+   "molecule": "q-3-chlorobut-1-ene",
    "options": [
     "Water attacks both faces of one flat carbon",
     "The allylic cation is spread over two carbons",
@@ -17425,7 +17452,8 @@
    "type": "mcq"
   },
   {
-   "q": "3-Bromo-2,2-dimethylbutane, (CH₃)₃C–CHBr–CH₃, is warmed in aqueous ethanol. Which alkene is major?",
+   "q": "The compound shown is warmed in aqueous ethanol. Which alkene is major?",
+   "molecule": "q-3-bromo-2,2-dimethylbutane",
    "options": [
     "3,3-Dimethylbut-1-ene",
     "2,3-Dimethylbut-2-ene",
@@ -17438,7 +17466,8 @@
    "type": "mcq"
   },
   {
-   "q": "3-chloro-3-methylpentane undergoes E1 solvolysis with heat. Which alkene is the expected major product?",
+   "q": "The compound shown undergoes E1 solvolysis with heat. Which alkene is the expected major product?",
+   "molecule": "q-3-chloro-3-methylpentane",
    "options": [
     "2-ethyl-1-butene (the least substituted alkene)",
     "A terminal alkene exclusively",
@@ -17501,7 +17530,8 @@
    "type": "mcq"
   },
   {
-   "q": "2-Bromo-2-methylbutane is warmed in aqueous ethanol. Name the major and minor alkene.",
+   "q": "The compound shown is warmed in aqueous ethanol. Name the major and minor alkene.",
+   "molecule": "q-2-bromo-2-methylbutane",
    "options": [
     "Major 2-methylbut-1-ene; minor 2-methylbut-2-ene",
     "Major 2-methylbut-2-ene; minor 2-methylbut-1-ene",
@@ -17835,7 +17865,8 @@
    "type": "mcq"
   },
   {
-   "q": "2-Bromobutane meets NaOEt. Which product is major?",
+   "q": "The compound shown meets NaOEt. Which product is major?",
+   "molecule": "e2-butane",
    "options": [
     "But-1-ene, from the terminal methyl",
     "(E)-but-2-ene, from the internal CH₂",
@@ -17948,7 +17979,8 @@
    "type": "mcq"
   },
   {
-   "q": "You need 2-methylbut-1-ene, not 2-methylbut-2-ene, from 2-bromo-2-methylbutane in one step. Which base?",
+   "q": "You need 2-methylbut-1-ene, not 2-methylbut-2-ene, from the bromide shown in one step. Which base?",
+   "molecule": "q-2-bromo-2-methylbutane",
    "options": [
     "Sodium ethoxide in ethanol",
     "Potassium tert-butoxide in tert-butanol",
@@ -17974,7 +18006,8 @@
    "type": "mcq"
   },
   {
-   "q": "A cyclohexyl bromide's most stable chair has the bromine equatorial. What must happen before E2?",
+   "q": "The chair drawn is this cyclohexyl bromide’s most stable conformation. What must happen before E2?",
+   "molecule": "q-chair-bromocyclohexane-eq",
    "options": [
     "The base has to be made bulkier",
     "The ring must flip so the bromine becomes axial",
@@ -18193,7 +18226,8 @@
    "type": "mcq"
   },
   {
-   "q": "Cyclohexyl bromide (secondary) is treated with NaOEt (a moderately bulky, strong base) in ethanol. Which mechanism is the expected major pathway?",
+   "q": "The secondary bromide shown is treated with NaOEt (a moderately bulky, strong base) in ethanol. Which mechanism is the expected major pathway?",
+   "molecule": "q-cyclohexyl-bromide",
    "options": [
     "SN1 exclusively",
     "E1 exclusively",
@@ -18206,7 +18240,8 @@
    "type": "mcq"
   },
   {
-   "q": "Cyclohexyl bromide (secondary) is treated with NaI (a strong nucleophile that is a comparatively weak base) in acetone. Which mechanism dominates?",
+   "q": "The secondary bromide shown is treated with NaI (a strong nucleophile that is a comparatively weak base) in acetone. Which mechanism dominates?",
+   "molecule": "q-cyclohexyl-bromide",
    "options": [
     "SN2",
     "E2",
@@ -18280,7 +18315,8 @@
    "type": "tf"
   },
   {
-   "q": "Neopentyl bromide, (CH₃)₃C–CH₂Br, meets NaOEt in warm ethanol. What happens?",
+   "q": "The alkyl bromide shown meets NaOEt in warm ethanol. What happens?",
+   "molecule": "q-neopentyl-bromide",
    "options": [
     "E2 at the neighboring carbon, giving an alkene",
     "Rapid SN1, since the neighbor is quaternary",
@@ -18840,7 +18876,8 @@
    "type": "tf"
   },
   {
-   "q": "What is the major product of adding HBr to 2-methyl-2-butene, (CH3)2C=CHCH3?",
+   "q": "What is the major product of adding HBr to the alkene shown?",
+   "molecule": "q-2-methylbut-2-ene",
    "options": [
     "2-bromo-3-methylbutane",
     "2-bromo-2-methylbutane",
@@ -19005,7 +19042,8 @@
    "type": "mcq"
   },
   {
-   "q": "1-methylcyclohexene is treated with Br2 in water. Where do the OH and the Br end up?",
+   "q": "The alkene shown is treated with Br2 in water. Where do the OH and the Br end up?",
+   "molecule": "q-1-methylcyclohexene",
    "options": [
     "OH on the carbon bearing the methyl, Br on the other, trans to it",
     "Br on the carbon bearing the methyl, OH on the other, trans to it",
@@ -19057,7 +19095,8 @@
    "type": "mcq"
   },
   {
-   "q": "You need 3,3-dimethylbutan-2-ol from 3,3-dimethyl-1-butene, with no rearranged by-product. Which conditions?",
+   "q": "You need 3,3-dimethylbutan-2-ol from the alkene shown, with no rearranged by-product. Which conditions?",
+   "molecule": "q-33-dimethylbut-1-ene",
    "options": [
     "Dilute H2SO4 in water",
     "Hg(OAc)2 in water, then NaBH4",
@@ -19283,7 +19322,8 @@
    "type": "mcq"
   },
   {
-   "q": "What is the major product of HBr addition (no peroxides) to 1-methylcyclohexene?",
+   "q": "What is the major product of HBr addition (no peroxides) to the alkene shown?",
+   "molecule": "q-1-methylcyclohexene",
    "options": [
     "Br ends up on C2, away from the methyl group",
     "Br ends up on C1, bearing the methyl group",
@@ -19296,7 +19336,8 @@
    "type": "mcq"
   },
   {
-   "q": "What is the major product of HI addition to 2-methyl-2-butene, (CH3)2C=CHCH3?",
+   "q": "What is the major product of HI addition to the alkene shown?",
+   "molecule": "q-2-methylbut-2-ene",
    "options": [
     "2-iodo-3-methylbutane",
     "a 50:50 mixture of both",
@@ -19424,7 +19465,8 @@
    "type": "mcq"
   },
   {
-   "q": "Addition of HCl to 3,3-dimethyl-1-butene, (CH3)3C-CH=CH2, can give a rearranged product in addition to the expected one because:",
+   "q": "Addition of HCl to the alkene shown can give a rearranged product in addition to the expected one because:",
+   "molecule": "q-33-dimethylbut-1-ene",
    "options": [
     "the secondary carbocation shifts a methyl to become tertiary",
     "HCl never reacts with this alkene",
@@ -21968,7 +22010,8 @@
    "type": "mcq"
   },
   {
-   "q": "3,3-Dimethylbutan-2-ol is treated with concentrated HBr. What is the major product?",
+   "q": "The alcohol shown is treated with concentrated HBr. What is the major product?",
+   "molecule": "q-33-dimethylbutan-2-ol",
    "options": [
     "2-Bromo-2,3-dimethylbutane",
     "2-Bromo-3,3-dimethylbutane",
@@ -22081,7 +22124,8 @@
    "type": "mcq"
   },
   {
-   "q": "(S)-Butan-2-ol is treated with TsCl/pyridine and the product is then treated with NaCN. The configuration at C2 in the nitrile is:",
+   "q": "The alcohol shown is treated with TsCl/pyridine and the product is then treated with NaCN. The configuration at the carbon that carried the OH is:",
+   "molecule": "q-S-butan-2-ol",
    "options": [
     "Retained, since tosylation does not touch the C-O bond",
     "Inverted, from the single SN2 step that displaces the tosylate",
@@ -22094,7 +22138,8 @@
    "type": "mcq"
   },
   {
-   "q": "3,3-Dimethylbutan-2-ol is heated with concentrated H2SO4. The major alkene is:",
+   "q": "The alcohol shown is heated with concentrated H2SO4. The major alkene is:",
+   "molecule": "q-33-dimethylbutan-2-ol",
    "options": [
     "3,3-Dimethylbut-1-ene",
     "2,3-Dimethylbut-1-ene",
@@ -22789,7 +22834,8 @@
    "type": "mcq"
   },
   {
-   "q": "In the acid-catalyzed ring-opening of 2-methyl-2,3-epoxybutane with methanol, the methanol oxygen attacks mainly at:",
+   "q": "In the acid-catalyzed ring-opening of the epoxide shown with methanol, the methanol oxygen attacks mainly at:",
+   "molecule": "q-2-methyl-23-epoxybutane",
    "options": [
     "The less substituted carbon, exactly as it would under basic conditions",
     "Either carbon with equal probability",
@@ -22802,7 +22848,8 @@
    "type": "mcq"
   },
   {
-   "q": "In the basic ring-opening of 2-methyl-2,3-epoxybutane with sodium methoxide, methoxide attacks mainly at:",
+   "q": "In the basic ring-opening of the epoxide shown with sodium methoxide, methoxide attacks mainly at:",
+   "molecule": "q-2-methyl-23-epoxybutane",
    "options": [
     "The more substituted carbon, exactly as under acidic conditions",
     "Whichever carbon bears the oxygen lone pairs",
@@ -22889,7 +22936,8 @@
    "type": "mcq"
   },
   {
-   "q": "Acid-catalyzed hydrolysis of 2,2-dimethyloxirane (isobutylene oxide) directs the incoming water molecule mainly to:",
+   "q": "Acid-catalyzed hydrolysis of the epoxide shown directs the incoming water molecule mainly to:",
+   "molecule": "q-22-dimethyloxirane",
    "options": [
     "The more substituted carbon (bearing the two methyls)",
     "The unsubstituted CH2 carbon, exactly as it would under basic conditions",
@@ -23575,7 +23623,8 @@
    "type": "mcq"
   },
   {
-   "q": "Trichloroacetaldehyde (chloral) is significantly MORE reactive toward nucleophilic addition than acetaldehyde. The best explanation is:",
+   "q": "The aldehyde shown is significantly MORE reactive toward nucleophilic addition than acetaldehyde. The best explanation is:",
+   "molecule": "q-chloral",
    "options": [
     "The three chlorine atoms sterically shield the carbonyl, slowing addition",
     "Chlorine atoms donate electrons into the carbonyl through resonance",
@@ -23714,7 +23763,8 @@
    "type": "mcq"
   },
   {
-   "q": "You need 2-phenylbutan-2-ol. Which carbonyl and organometallic pair would you use?",
+   "q": "You need the alcohol shown. Which carbonyl and organometallic pair would you use?",
+   "molecule": "q-2-phenylbutan-2-ol",
    "options": [
     "Benzaldehyde with propylmagnesium bromide",
     "Butanal with phenylmagnesium bromide",
@@ -23981,7 +24031,8 @@
    "type": "mcq"
   },
   {
-   "q": "A molecule holds both an aldehyde and a ketone. One equivalent of ethylene glycol with catalytic acid is added. Which carbonyl is protected?",
+   "q": "The compound shown holds both an aldehyde and a ketone. One equivalent of ethylene glycol with catalytic acid is added. Which carbonyl is protected?",
+   "molecule": "q-oxopentanal",
    "options": [
     "The aldehyde, because it is the more reactive carbonyl",
     "The ketone, because it is the more reactive carbonyl",
@@ -24031,7 +24082,8 @@
    "type": "tf"
   },
   {
-   "q": "If a 1,3-dioxane or 1,3-dioxolane ring (cyclic acetal) is treated with aqueous hydrochloric acid and heated, the expected outcome is:",
+   "q": "The cyclic acetal shown is treated with aqueous hydrochloric acid and heated. The expected outcome is:",
+   "molecule": "q-cyclic-acetal",
    "options": [
     "The ring stays completely intact with no change",
     "A new carbon-carbon bond forms across the ring",
@@ -25920,7 +25972,8 @@
    "type": "mcq"
   },
   {
-   "q": "cis-But-2-ene is treated with OsO4 then NaHSO3. What is the product?",
+   "q": "The alkene shown is treated with OsO4 then NaHSO3. What is the product?",
+   "molecule": "q-cis-but-2-ene",
    "options": [
     "racemic butane-2,3-diol",
     "a 50:50 mixture of the meso and racemic diols",
@@ -25985,7 +26038,8 @@
    "type": "mcq"
   },
   {
-   "q": "You need the anti diol from a cis alkene. What do you do?",
+   "q": "You need the anti diol from the cis alkene shown. What do you do?",
+   "molecule": "q-cis-but-2-ene",
    "options": [
     "Cold KMnO4",
     "Ozonolysis, then reduce",
@@ -26102,7 +26156,8 @@
    "type": "mcq"
   },
   {
-   "q": "Oct-1-ene is treated with O3, then H2O2. What products are isolated?",
+   "q": "The alkene shown is treated with O3, then H2O2. What products are isolated?",
+   "molecule": "q-oct-1-ene",
    "options": [
     "Heptanoic acid alone - the terminal CH2 ends up as CO2 and is lost",
     "Heptanoic acid and formaldehyde",
@@ -26899,7 +26954,8 @@
    "type": "mcq"
   },
   {
-   "q": "Acetic anhydride is treated with one equivalent of ethanol. What comes out?",
+   "q": "The anhydride shown is treated with one equivalent of ethanol. What comes out?",
+   "molecule": "q-acetic-anhydride",
    "options": [
     "Two equivalents of ethyl acetate",
     "Ethyl acetate and acetic acid",
@@ -26975,7 +27031,8 @@
    "type": "tf"
   },
   {
-   "q": "Which single reagent converts propanoyl chloride into propanoic anhydride?",
+   "q": "Which single reagent converts the acyl chloride shown into propanoic anhydride?",
+   "molecule": "q-propanoyl-chloride",
    "options": [
     "Propanoic acid",
     "Propan-1-ol",
@@ -27742,7 +27799,8 @@
    "type": "mcq"
   },
   {
-   "q": "Heptanedial, OHC-(CH2)5-CHO, is warmed with dilute NaOH. What is the intramolecular aldol condensation product?",
+   "q": "The dialdehyde shown is warmed with dilute NaOH. What is the intramolecular aldol condensation product?",
+   "molecule": "q-heptanedial",
    "options": [
     "Cyclopent-1-ene-1-carbaldehyde",
     "Cyclohept-1-ene-1-carbaldehyde",
@@ -27779,7 +27837,8 @@
    "type": "mcq"
   },
   {
-   "q": "A chemist treats excess acetone with a catalytic amount of base. What is the immediate aldol addition product before any dehydration?",
+   "q": "A chemist treats an excess of the ketone shown with a catalytic amount of base. What is the immediate aldol addition product before any dehydration?",
+   "molecule": "acetone",
    "options": [
     "2,4-pentanedione",
     "4-hydroxy-4-methyl-2-pentanone (diacetone alcohol)",
@@ -27996,7 +28055,8 @@
    "type": "mcq"
   },
   {
-   "q": "(E)-2-Methylpent-2-enal, CH3CH2CH=C(CH3)CHO, is an aldol condensation product. Which single aldehyde, condensed with itself, gives it?",
+   "q": "The enal shown is an aldol condensation product. Which single aldehyde, condensed with itself, gives it?",
+   "molecule": "q-2-methylpent-2-enal",
    "options": [
     "Butanal",
     "Propanal",
@@ -28050,7 +28110,8 @@
    "type": "mcq"
   },
   {
-   "q": "The classic Claisen condensation of ethyl acetate with sodium ethoxide produces which well-known beta-ketoester product?",
+   "q": "The classic Claisen condensation of the ester shown with sodium ethoxide produces which well-known beta-ketoester product?",
+   "molecule": "ethyl-acetate",
    "options": [
     "Acetic acid",
     "Diethyl malonate",
@@ -28343,7 +28404,8 @@
    "type": "mcq"
   },
   {
-   "q": "Ethyl propanoate, CH3CH2CO2Et, is treated with NaOEt and then dilute acid. What is the product?",
+   "q": "The ester shown is treated with NaOEt and then dilute acid. What is the product?",
+   "molecule": "q-ethyl-propanoate",
    "options": [
     "Ethyl 3-oxopentanoate",
     "Ethyl 3-oxobutanoate",
@@ -28844,7 +28906,8 @@
    "type": "mcq"
   },
   {
-   "q": "Cyclohexylamine is treated with (1) excess CH3I, then (2) acetic anhydride. What is the outcome?",
+   "q": "The amine shown is treated with (1) excess CH3I, then (2) acetic anhydride. What is the outcome?",
+   "molecule": "q-cyclohexylamine",
    "options": [
     "An amide forms in step 2, as it would with the free amine",
     "Nothing happens in step 2 - step 1 already destroyed the nucleophile",
@@ -28970,7 +29033,8 @@
    "type": "tf"
   },
   {
-   "q": "You need to convert butan-2-one plus methylamine into N-methylbutan-2-amine, CH3CH2CH(NHCH3)CH3. Which reagent completes the job?",
+   "q": "You need to convert the ketone shown plus methylamine into N-methylbutan-2-amine, CH3CH2CH(NHCH3)CH3. Which reagent completes the job?",
+   "molecule": "q-butan-2-one",
    "options": [
     "NaBH3CN at pH 4-5, in the same flask",
     "LiAlH4 in dry ether, added before the amine",
@@ -29587,7 +29651,8 @@
    "type": "mcq"
   },
   {
-   "q": "Benzene is treated with (CH₃)₃CCl and AlCl₃, then with CH₃COCl and AlCl₃. What is the major product of the second step?",
+   "q": "Benzene was treated with (CH₃)₃CCl and AlCl₃ to give the compound shown, which is then treated with CH₃COCl and AlCl₃. What is the major product of that second step?",
+   "molecule": "q-tert-butylbenzene",
    "options": [
     "1-tert-butyl-3-acetylbenzene (acetyl meta to the tert-butyl group)",
     "No reaction — the tert-butyl group deactivates the ring toward acylation",
@@ -29859,7 +29924,8 @@
    "type": "mcq"
   },
   {
-   "q": "A chemist attempts Friedel-Crafts alkylation on nitrobenzene using methyl chloride and AlCl3, but no reaction occurs. What is the most likely explanation?",
+   "q": "A chemist attempts Friedel-Crafts alkylation on the compound shown using methyl chloride and AlCl3, but no reaction occurs. What is the most likely explanation?",
+   "molecule": "q-nitrobenzene",
    "options": [
     "Nitrobenzene is too aromatic to react",
     "AlCl3 does not work with nitro-substituted rings for unrelated solubility reasons",
@@ -30063,7 +30129,8 @@
    "type": "mcq"
   },
   {
-   "q": "If benzoic acid (C6H5COOH) undergoes bromination, where would the new bromine substituent be expected to go predominantly?",
+   "q": "If the compound shown undergoes bromination, where would the new bromine substituent be expected to go predominantly?",
+   "molecule": "q-benzoic-acid",
    "options": [
     "Ortho to the -COOH group",
     "Meta to the -COOH group",
@@ -30089,7 +30156,8 @@
    "type": "mcq"
   },
   {
-   "q": "m-Xylene (1,3-dimethylbenzene) is nitrated. Both methyl groups direct ortho/para relative to themselves, so positions 2, 4 and 6 are all electronically favored. Where does the nitro group actually go?",
+   "q": "The compound shown is nitrated. Both methyl groups direct ortho/para relative to themselves, so positions 2, 4 and 6 are all electronically favored. Where does the nitro group actually go?",
+   "molecule": "q-m-xylene",
    "options": [
     "Position 4 (or the equivalent position 6) — position 2 is too hindered",
     "Position 2, the one spot favored by both methyl groups at once",
@@ -30248,7 +30316,8 @@
    "type": "mcq"
   },
   {
-   "q": "If a ketone group, -C(=O)CH3, is present on a benzene ring, subsequent nitration would be expected to occur predominantly at which position?",
+   "q": "The compound shown is nitrated. The new nitro group would be expected to arrive predominantly at which position?",
+   "molecule": "q-acetophenone",
    "options": [
     "Ortho to the ketone",
     "Para to the ketone",
@@ -31846,7 +31915,8 @@
    "type": "mcq"
   },
   {
-   "q": "Target: 1-phenylpentan-1-one, PhCO(CH2)3CH3, starting from benzene. Which disconnection leads to the cleanest route?",
+   "q": "Target: the ketone shown, starting from benzene. Which disconnection leads to the cleanest route?",
+   "molecule": "q-1-phenylpentan-1-one",
    "options": [
     "Alpha to the carbonyl, as an aldol between two enolizable partners",
     "Ring from chain, by Friedel-Crafts alkylation with 1-bromopentane",
@@ -32015,7 +32085,8 @@
    "type": "mcq"
   },
   {
-   "q": "Disconnecting 2-phenylbutan-2-ol at the ethyl group gives which pair?",
+   "q": "Disconnecting the alcohol shown at its ethyl group gives which pair?",
+   "molecule": "q-2-phenylbutan-2-ol",
    "options": [
     "EtBr and phenol",
     "EtMgBr and acetophenone",
@@ -32171,7 +32242,8 @@
    "type": "mcq"
   },
   {
-   "q": "Which starting-material pair is the aldol disconnection of PhCH(OH)CH2COCH3?",
+   "q": "Which starting-material pair is the aldol disconnection of the compound shown?",
+   "molecule": "q-4-hydroxy-4-phenylbutan-2-one",
    "options": [
     "Acetophenone and acetaldehyde",
     "Benzaldehyde and acetone",
@@ -39751,7 +39823,8 @@
    "type": "mcq"
   },
   {
-   "q": "1-fluoro-4-nitrobenzene is warmed with sodium ethoxide. What is the product?",
+   "q": "The compound shown is warmed with sodium ethoxide. What is the product?",
+   "molecule": "q-1-fluoro-4-nitrobenzene",
    "options": [
     "A mixture of the ethyl ethers at C1 and C2",
     "4-Nitrophenol, from traces of hydroxide",
@@ -39868,7 +39941,8 @@
    "type": "mcq"
   },
   {
-   "q": "What does 1-chloro-2,4-dinitrobenzene plus methoxide give?",
+   "q": "What does the compound shown plus methoxide give?",
+   "molecule": "q-1-chloro-24-dinitrobenzene",
    "options": [
     "Two isomeric products",
     "No reaction",
@@ -39959,7 +40033,8 @@
    "type": "mcq"
   },
   {
-   "q": "2-bromo-1,3-dimethylbenzene is treated with NaNH2 in liquid ammonia. What happens?",
+   "q": "The compound shown is treated with NaNH2 in liquid ammonia. What happens?",
+   "molecule": "q-2-bromo-13-dimethylbenzene",
    "options": [
     "A benzyne forms and gives two isomeric anilines here",
     "Nothing: there is no hydrogen ortho to the bromine",
@@ -45527,7 +45602,8 @@
  ],
  "enolate-regiochemistry": [
   {
-   "q": "In 2-methylcyclohexanone, what is C6?",
+   "q": "In the ketone shown, what is C6?",
+   "molecule": "q-2-methylcyclohexanone",
    "options": [
     "An unsubstituted CH2",
     "The carbon bearing methyl",
@@ -45865,7 +45941,8 @@
    "type": "mcq"
   },
   {
-   "q": "2-Methylcyclohexanone is added to one equivalent of LDA in THF at -78 C, and iodomethane is then added. What is the major product?",
+   "q": "The ketone shown is added to one equivalent of LDA in THF at -78 C, and iodomethane is then added. What is the major product?",
+   "molecule": "q-2-methylcyclohexanone",
    "options": [
     "2,2-Dimethylcyclohexanone",
     "2,6-Dimethylcyclohexanone",
@@ -45878,7 +45955,8 @@
    "type": "mcq"
   },
   {
-   "q": "2-Methylcyclohexanone is treated with NaOEt in ethanol at room temperature, then with iodomethane. What is the major product?",
+   "q": "The ketone shown is treated with NaOEt in ethanol at room temperature, then with iodomethane. What is the major product?",
+   "molecule": "q-2-methylcyclohexanone",
    "options": [
     "2,2-Dimethylcyclohexanone",
     "2,6-Dimethylcyclohexanone",

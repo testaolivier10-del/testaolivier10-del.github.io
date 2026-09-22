@@ -75,6 +75,12 @@ for (const [topicId, questions] of Object.entries(bank)) {
     const why = String(item?.why || '').replace(/\s+/g, ' ').trim();
     if (why.length < 80 || ochemSeen.has(why)) continue;
     ochemSeen.add(why);
+    /* Named fields only, deliberately. A bank question can carry a `molecule`
+       id for the structure practice.html draws above its stem, and that id
+       means nothing to the assistant — it is a pointer into a renderer's
+       lookup table, not teaching text. Listing the four fields rather than
+       spreading the item is what keeps it, and anything else added to the
+       bank later, out of this index. */
     ochemEntries.push({
       t: titles[topicId] || topicId,
       d: topicId,
