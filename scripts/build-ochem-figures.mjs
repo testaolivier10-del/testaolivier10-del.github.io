@@ -2855,7 +2855,7 @@ FIGURES.push({
     s += text(360, 354, 'How much each transition matters depends on how crystalline the sample is.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
-  caption: 'The two transitions seen as what they actually do: change the stiffness. For a fully amorphous polymer the glass transition <i>is</i> the softening point &mdash; the modulus falls by a factor of a thousand there and the material is finished. For a semicrystalline one the same transition barely registers, because only the tangled fraction has softened.',
+  caption: 'The two transitions seen as what they actually do: change the stiffness. For a fully amorphous polymer the glass transition <i>is</i> the softening point &mdash; the modulus falls by a factor of a thousand there and the material is finished. For a semicrystalline one the same transition barely registers, because only the tangled fraction has softened. The axis is schematic and the two curves are stacked to compare their <i>shapes</i>: the shared T<sub>g</sub> line is not a claim that polystyrene and HDPE soften at the same temperature, since their real glass transitions are about 220&nbsp;&deg;C apart.',
   note: 'That second curve is the answer to a question the bare temperature axis cannot settle: why HDPE, PET and nylon are rigid at room temperature although they are far above their T<sub>g</sub>. Their crystalline regions act as physical cross-links, tying the mobile chains together, and they hold the sample in one piece all the way to T<sub>m</sub> &mdash; where they finally come apart, and the stiffness falls off a cliff instead of a step. A fully amorphous polymer has no such cliff, because it has no T<sub>m</sub> to reach.',
 });
 
@@ -16293,18 +16293,19 @@ FIGURES.push({
     s += atom(412, 696, '~', { r: 12, size: 12 });
     s += bond(P(282, 696), P(350, 696), { rFrom: 20, rTo: 18 });
     s += bond(P(350, 696), P(412, 696), { rFrom: 18, rTo: 12 });
-    s += dot(267, 683);
+    s += dot(268, 708);
     s += fishhook(P(210, 690), P(336, 682), { bow: -22 });
-    s += fishhook(P(340, 710), P(302, 710), { bow: 14 });
-    s += text(352, 736, 'the β-H, on the carbon next to the other radical', { cls: 'fg-sm', size: 9.5 });
+    s += fishhook(P(350, 720), P(332, 726), { bow: 10 });
+    s += fishhook(P(274, 720), P(300, 726), { bow: -10 });
+    s += text(352, 744, 'the β-H, and both single electrons, into the new C=C', { cls: 'fg-sm', size: 9.5 });
     s += arrow(P(446, 696), P(500, 696), { muted: true });
     s += atom(544, 696, '~CH₂', { r: 23, size: 9 });
     s += atom(614, 696, 'CH₂X', { r: 25, size: 9 });
     s += bond(P(544, 696), P(614, 696), { rFrom: 23, rTo: 25 });
     s += text(656, 701, '+', { cls: 'fg-lbl', size: 13 });
-    s += atom(690, 696, 'XC', { r: 16 });
+    s += atom(688, 696, 'XHC', { r: 20, size: 9.5 });
     s += atom(740, 696, 'CH~', { r: 19, size: 9.5 });
-    s += bond(P(690, 696), P(740, 696), { order: 2, gap: 3.4, rFrom: 16, rTo: 19 });
+    s += bond(P(688, 696), P(740, 696), { order: 2, gap: 3.4, rFrom: 20, rTo: 19 });
     s += text(590, 736, 'saturated', { cls: 'fg-tag-good', size: 9.5 });
     s += text(690, 736, 'a C=C at the end', { cls: 'fg-tag-good', size: 9.5 });
     return s;
@@ -16443,6 +16444,224 @@ FIGURES.push({
   },
   caption: 'Four backbones, each inside the brackets that mark one repeat unit. Three of the four were made by expelling a small molecule and one was not — and you cannot tell which from the drawn chain, because what names the class is the <b>linkage</b>, not the by-product. To answer that you have to go back to the monomers.',
   note: 'Stare at the second and third rows together. They carry the same amide linkage and the same hydrogen bond, and the only difference is what sits between: a floppy run of CH₂ in nylon, a flat para-substituted ring in Kevlar. The ring cannot rotate the chain out of line, so every amide in a Kevlar chain sits where its neighbor’s can reach it, and the hydrogen bonds add up along the whole length instead of only where the chain happens to be straight.',
+});
+
+/* --------------------------------------------------------------- 76b ---
+   The section describes three ways to start a chain and draws only the
+   radical one, so the two ionic chain ends — the ones whose stability
+   decides which monomers each method can touch — were prose. */
+FIGURES.push({
+  id: 'ionic-chain-ends',
+  section: 'polymer-basics',
+  anchor: 'and adding a second monomer afterwards extends every chain into a block copolymer.</li>\n</ul>',
+  viewBox: '0 0 760 400',
+  alt: 'Two propagation steps drawn with curved arrows: a carbocation chain end of polyisobutylene attacked by the double bond of another isobutylene to give a new tertiary cation, and a carbanion chain end stabilized by a nitrile adding to acrylonitrile to give a new stabilized carbanion',
+  build() {
+    let s = '';
+    const head2 = (y, a, b) => {
+      s += tag(48, y - 48, a, { anchor: 'start' });
+      s += text(48, y - 30, b, { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    };
+
+    /* 1. Cationic: the chain end is a tertiary carbocation. */
+    head2(110, 'CATIONIC — THE END IS A CARBOCATION', 'isobutylene');
+    s += atom(88, 110, '~CH₂', { r: 23, size: 9 });
+    s += atom(160, 110, 'C(CH₃)₂', { r: 32, size: 9, kind: 'warn' });
+    s += bond(P(88, 110), P(160, 110), { rFrom: 23, rTo: 32 });
+    s += text(186, 78, '+', { cls: 'fg-tag-warn', size: 14 });
+    s += text(218, 115, '+', { cls: 'fg-lbl', size: 13 });
+    s += atom(256, 110, 'CH₂', { r: 18 });
+    s += atom(330, 110, 'C(CH₃)₂', { r: 32, size: 9 });
+    s += bond(P(256, 110), P(330, 110), { order: 2, rFrom: 18, rTo: 32 });
+    s += curve(P(293, 90), P(192, 92), { bow: -16 });
+    s += arrow(P(388, 110), P(448, 110), { muted: true });
+    s += atom(492, 110, '~CH₂', { r: 23, size: 9 });
+    s += atom(564, 110, 'C(CH₃)₂', { r: 32, size: 9 });
+    s += atom(632, 110, 'CH₂', { r: 18 });
+    s += atom(704, 110, 'C(CH₃)₂', { r: 32, size: 9, kind: 'warn' });
+    s += bond(P(492, 110), P(564, 110), { rFrom: 23, rTo: 32 });
+    s += bond(P(564, 110), P(632, 110), { rFrom: 32, rTo: 18 });
+    s += bond(P(632, 110), P(704, 110), { rFrom: 18, rTo: 32 });
+    s += text(730, 78, '+', { cls: 'fg-tag-warn', size: 14 });
+    s += text(380, 162, 'the π bond attacks the cation, and the cation that results is tertiary again — two methyls donating into it', { cls: 'fg-sm', size: 9.5 });
+    s += rule(40, 186, 720, 186);
+
+    /* 2. Anionic: the chain end is a carbanion the nitrile can hold. */
+    head2(300, 'ANIONIC — THE END IS A CARBANION', 'acrylonitrile');
+    s += atom(88, 300, '~CH₂', { r: 23, size: 9 });
+    s += atom(154, 300, 'CHCN', { r: 25, size: 9, kind: 'warn' });
+    s += bond(P(88, 300), P(154, 300), { rFrom: 23, rTo: 25 });
+    s += text(180, 332, '−', { cls: 'fg-tag-warn', size: 15 });
+    s += lonePair(154, 300, 300, { dist: 30 });
+    s += text(206, 305, '+', { cls: 'fg-lbl', size: 13 });
+    s += atom(244, 300, 'CH₂', { r: 18 });
+    s += atom(312, 300, 'CHCN', { r: 25, size: 9 });
+    s += bond(P(244, 300), P(312, 300), { order: 2, rFrom: 18, rTo: 25 });
+    s += curve(P(172, 284), P(238, 280), { bow: -14 });
+    s += curve(P(278, 282), P(306, 272), { bow: -10 });
+    s += arrow(P(378, 300), P(438, 300), { muted: true });
+    s += atom(482, 300, '~CH₂', { r: 23, size: 9 });
+    s += atom(548, 300, 'CHCN', { r: 25, size: 9 });
+    s += atom(614, 300, 'CH₂', { r: 18 });
+    s += atom(680, 300, 'CHCN', { r: 25, size: 9, kind: 'warn' });
+    s += bond(P(482, 300), P(548, 300), { rFrom: 23, rTo: 25 });
+    s += bond(P(548, 300), P(614, 300), { rFrom: 25, rTo: 18 });
+    s += bond(P(614, 300), P(680, 300), { rFrom: 18, rTo: 25 });
+    s += text(704, 270, '−', { cls: 'fg-tag-warn', size: 15 });
+    s += text(380, 352, 'the carbanion adds to the CH₂ end, so the new negative charge lands next to the nitrile that can delocalize it', { cls: 'fg-sm', size: 9.5 });
+    s += rule(40, 372, 720, 372);
+    s += text(380, 394, 'Same anatomy as the radical chain — only the charge on the end differs.', { cls: 'fg-lbl', size: 11.5 });
+    return s;
+  },
+  caption: 'The two ionic propagation steps, drawn with the full-headed arrows that move a <b>pair</b> of electrons — the difference from the radical figure is not cosmetic. Each new chain end is the same kind of ion the old one was, which is the whole requirement: the monomer has to be able to stabilize that charge, or the chain stops.',
+  note: 'Read each row backwards to see why the monomer lists differ. A cation needs electron density pushed toward it, so isobutylene (two methyls) and vinyl ethers (an oxygen lone pair) work and acrylonitrile does not; an anion needs electron density pulled away, so acrylonitrile, methyl methacrylate and styrene work and isobutylene does not. Nothing terminates the second row on its own — two carbanions repel rather than pair — which is why the anionic chain end stays alive after the monomer is gone.',
+});
+
+/* --------------------------------------------------------------- 76c ---
+   The one step-growth in the chapter that behaves differently is walked
+   through in prose, arrow by arrow, and then drawn only as a finished
+   carbamate in the backbones figure. */
+FIGURES.push({
+  id: 'urethane-addition',
+  section: 'condensation-polymers',
+  anchor: 'which is why the broader name for this class is <i>step-growth</i> rather than condensation.</p>',
+  viewBox: '0 0 760 440',
+  alt: 'Two steps of the urethane-forming addition: an alcohol oxygen adding to the carbon of an isocyanate while the carbon-nitrogen pi bond moves onto nitrogen, giving a zwitterion, and then the nitrogen taking the proton from the positively charged oxygen to give a neutral carbamate',
+  build() {
+    let s = '';
+    const head2 = (y, a, b) => {
+      s += tag(48, y - 48, a, { anchor: 'start' });
+      s += text(48, y - 30, b, { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    };
+    /* The zwitterion is drawn twice — as the product of step 1 and the
+       starting material of step 2 — so it is built once here. Spacing is
+       56, which leaves every bond about 25px of visible length. */
+    const zwitter = (x0, y) => {
+      let o = '';
+      const xs = [0, 1, 2, 3, 4].map((i) => x0 + i * 56);
+      o += atom(xs[0], y, 'R', { r: 15 });
+      o += atom(xs[1], y, 'N', { r: 15, kind: 'warn' });
+      o += atom(xs[2], y, 'C', { r: 15 });
+      o += atom(xs[3], y, 'O', { r: 15, kind: 'warn' });
+      o += atom(xs[4], y, 'R′', { r: 17 });
+      for (let i = 0; i < 4; i++) o += bond(P(xs[i], y), P(xs[i + 1], y), { rFrom: 15, rTo: i === 3 ? 17 : 15 });
+      o += atom(xs[2], y - 44, 'O', { r: 15 });
+      o += bond(P(xs[2], y), P(xs[2], y - 44), { order: 2, rFrom: 15, rTo: 15 });
+      o += atom(xs[3], y - 44, 'H', { r: 12, size: 10 });
+      o += bond(P(xs[3], y), P(xs[3], y - 44), { rFrom: 15, rTo: 12 });
+      o += text(xs[1] - 22, y - 12, '−', { cls: 'fg-tag-warn', size: 15 });
+      o += text(xs[3] + 22, y - 12, '+', { cls: 'fg-tag-warn', size: 14 });
+      return o;
+    };
+
+    /* 1. The addition itself. */
+    head2(120, 'STEP 1 — THE ALCOHOL ADDS', 'nothing leaves, because nothing can');
+    s += atom(96, 120, 'R', { r: 15 });
+    s += atom(156, 120, 'N', { r: 15 });
+    s += atom(216, 120, 'C', { r: 15, kind: 'hi' });
+    s += atom(276, 120, 'O', { r: 15 });
+    s += bond(P(96, 120), P(156, 120), { rFrom: 15, rTo: 15 });
+    s += bond(P(156, 120), P(216, 120), { order: 2, rFrom: 15, rTo: 15 });
+    s += bond(P(216, 120), P(276, 120), { order: 2, rFrom: 15, rTo: 15 });
+    s += text(190, 162, 'an isocyanate: C between two electronegative atoms', { cls: 'fg-sm', size: 9.5 });
+    s += text(316, 125, '+', { cls: 'fg-lbl', size: 13 });
+    s += atom(366, 120, 'R′O', { r: 22, size: 10 });
+    s += atom(424, 120, 'H', { r: 12, size: 10 });
+    s += bond(P(366, 120), P(424, 120), { rFrom: 22, rTo: 12 });
+    s += lonePair(366, 120, 250, { dist: 30 });
+    s += curve(P(352, 94), P(230, 100), { bow: -20 });
+    s += curve(P(186, 104), P(160, 92), { bow: -12 });
+    s += arrow(P(440, 120), P(478, 120), { muted: true });
+    s += zwitter(500, 120);
+    s += text(600, 180, 'every atom of both monomers, and both charges', { cls: 'fg-sm', size: 9.5 });
+    s += rule(40, 200, 720, 200);
+
+    /* 2. The proton transfer that neutralises it. */
+    head2(320, 'STEP 2 — THE PROTON MOVES', 'nitrogen takes the proton');
+    s += zwitter(170, 320);
+    s += lonePair(226, 320, 250, { dist: 28 });
+    s += curve(P(218, 298), P(330, 270), { bow: -56 });
+    s += curve(P(350, 290), P(356, 310), { bow: 14 });
+    s += arrow(P(440, 320), P(478, 320), { muted: true });
+    s += atom(496, 320, 'R', { r: 15 });
+    s += atom(556, 320, 'NH', { r: 18 });
+    s += atom(618, 320, 'C', { r: 15 });
+    s += atom(676, 320, 'O', { r: 15 });
+    s += atom(730, 320, 'R′', { r: 17 });
+    s += bond(P(496, 320), P(556, 320), { rFrom: 15, rTo: 18 });
+    s += bond(P(556, 320), P(618, 320), { rFrom: 18, rTo: 15 });
+    s += bond(P(618, 320), P(676, 320), { rFrom: 15, rTo: 15 });
+    s += bond(P(676, 320), P(730, 320), { rFrom: 15, rTo: 17 });
+    s += atom(618, 276, 'O', { r: 15 });
+    s += bond(P(618, 320), P(618, 276), { order: 2, rFrom: 15, rTo: 15 });
+    s += text(614, 376, 'a carbamate — the linkage O–CO–N', { cls: 'fg-sm', size: 9.5 });
+    s += rule(40, 396, 720, 396);
+    s += text(380, 418, 'Nothing is expelled anywhere in this figure: step-growth, but not a condensation.', { cls: 'fg-lbl', size: 11.5 });
+    return s;
+  },
+  caption: 'The addition that builds a polyurethane, drawn arrow by arrow. The isocyanate carbon already carries both of its electronegative partners, so the alcohol can add to it without anything having to leave &mdash; the C=N &pi; bond simply becomes a lone pair on nitrogen, and the proton walks across afterwards.',
+  note: 'This is the reason the class had to be renamed. Every other backbone in this section is built by expelling something &mdash; water, HCl &mdash; and the arithmetic of the repeat unit shows it. Here the repeat unit weighs exactly what the diol and the diisocyanate weighed together, and the only honest name for what happened is a step-growth <i>addition</i>.',
+});
+
+/* --------------------------------------------------------------- 76d ---
+   Polycarbonate carries three questions in the bank and appears in the
+   design section, and the whole of it — linkage, monomers, bent joint —
+   was carried in prose. */
+FIGURES.push({
+  id: 'polycarbonate-drawn',
+  section: 'condensation-polymers',
+  anchor: 'Rigid but amorphous is exactly the combination safety glazing needs, which is why it makes safety glasses and bulletproof windows.</p>',
+  viewBox: '0 0 760 360',
+  alt: 'Bisphenol A drawn as two para-phenylene rings joined through a dimethyl carbon and capped with OH groups, beside phosgene, with an arrow losing two HCl to the bracketed polycarbonate repeat unit containing the O-CO-O carbonate linkage',
+  build() {
+    let s = '';
+    s += tag(380, 30, 'ONE CARBONYL, TWO OXYGENS — THAT IS A CARBONATE');
+
+    /* The two monomers. */
+    s += atom(70, 110, 'HO', { r: 18, size: 10.5 });
+    s += atom(135, 110, 'C₆H₄', { r: 25, size: 9 });
+    s += atom(214, 110, 'C(CH₃)₂', { r: 32, size: 9, kind: 'warn' });
+    s += atom(293, 110, 'C₆H₄', { r: 25, size: 9 });
+    s += atom(358, 110, 'OH', { r: 18, size: 10.5 });
+    const chainA = [[70, 18, 135, 25], [135, 25, 214, 32], [214, 32, 293, 25], [293, 25, 358, 18]];
+    for (const [x1, r1, x2, r2] of chainA) s += bond(P(x1, 110), P(x2, 110), { rFrom: r1, rTo: r2 });
+    s += text(214, 158, 'bisphenol A — a diol, both OH on rings', { cls: 'fg-sm', size: 9.5 });
+    s += text(400, 115, '+', { cls: 'fg-lbl', size: 13 });
+    s += atom(440, 110, 'Cl', { r: 15, size: 10.5 });
+    s += atom(494, 110, 'CO', { r: 17, kind: 'hi' });
+    s += atom(548, 110, 'Cl', { r: 15, size: 10.5 });
+    s += bond(P(440, 110), P(494, 110), { rFrom: 15, rTo: 17 });
+    s += bond(P(494, 110), P(548, 110), { rFrom: 17, rTo: 15 });
+    s += text(494, 176, 'phosgene — the diacid chloride of carbonic acid', { cls: 'fg-sm', size: 9.5 });
+    s += rule(40, 196, 720, 196);
+
+    /* The repeat unit. */
+    s += arrow(P(96, 266), P(166, 266), { muted: true });
+    s += text(131, 252, '− 2 HCl', { cls: 'fg-sm', size: 10 });
+    const brack = (x, y, h, dir) => {
+      const t = y - h / 2, b = y + h / 2;
+      return `<path class="fg-bond" d="M${x + 10 * dir} ${t} L${x} ${t} L${x} ${b} L${x + 10 * dir} ${b}"></path>`;
+    };
+    s += brack(200, 266, 58, 1);
+    s += atom(236, 266, 'O', { r: 15 });
+    s += atom(294, 266, 'CO', { r: 17, kind: 'hi' });
+    s += atom(352, 266, 'O', { r: 15 });
+    s += atom(418, 266, 'C₆H₄', { r: 25, size: 9 });
+    s += atom(501, 266, 'C(CH₃)₂', { r: 32, size: 9, kind: 'warn' });
+    s += atom(584, 266, 'C₆H₄', { r: 25, size: 9 });
+    s += bond(P(200, 266), P(236, 266), { rFrom: 0, rTo: 15 });
+    const chainB = [[236, 15, 294, 17], [294, 17, 352, 15], [352, 15, 418, 25], [418, 25, 501, 32], [501, 32, 584, 25]];
+    for (const [x1, r1, x2, r2] of chainB) s += bond(P(x1, 266), P(x2, 266), { rFrom: r1, rTo: r2 });
+    s += bond(P(584, 266), P(635, 266), { rFrom: 25, rTo: 0 });
+    s += brack(635, 266, 58, -1);
+    s += text(647, 288, 'n', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(294, 316, 'the carbonate: O–CO–O', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(520, 316, 'the bent joint that stops it crystallizing', { cls: 'fg-tag-warn', size: 10.5 });
+    s += text(380, 344, 'Rigid rings give the stiffness; the kink at the quaternary carbon gives the transparency.', { cls: 'fg-lbl', size: 11.5 });
+    return s;
+  },
+  caption: 'Bisphenol A and phosgene, and the repeat unit they give. The linkage to look for is the middle three groups: one carbonyl carbon with an oxygen on <i>each</i> side, which is an ester of carbonic acid twice over and is what the name carbonate means.',
+  note: 'The two highlighted features answer two different questions. The carbonate group is what a hydroxide or an amine attacks, so it is why polycarbonate can be depolymerized and why it slowly fails in hot alkali. The bent C(CH₃)₂ joint is why the chains cannot register with each other, so the material is amorphous — and an amorphous polymer well below its T<sub>g</sub> is both stiff and glass-clear, which is exactly what safety glazing needs.',
 });
 
 /* ----------------------------------------------------------------- 77 ---

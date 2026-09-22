@@ -37478,7 +37478,7 @@
     "Atactic",
     "Isotactic",
     "Syndiotactic",
-    "Isotactic, because the chain end templates the next monomer"
+    "Syndiotactic at low temperature"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -37631,10 +37631,10 @@
   {
    "q": "What does a Ziegler-Natta catalyst control?",
    "options": [
-    "Only the rate",
-    "Only the molecular weight",
-    "Only the color",
-    "Stereochemistry"
+    "Only the rate of propagation",
+    "Only the average molecular weight",
+    "Only the color of the polymer",
+    "Stereochemistry and chain branching"
    ],
    "correct": 3,
    "difficulty": "medium",

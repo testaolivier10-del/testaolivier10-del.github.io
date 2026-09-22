@@ -40644,7 +40644,7 @@
     "Atactic",
     "Isotactic",
     "Syndiotactic",
-    "Isotactic, because the chain end templates the next monomer"
+    "Syndiotactic at low temperature"
    ],
    "correct": 0,
    "why": "A planar radical has no strong preference about which face the next monomer arrives on.",
@@ -40810,13 +40810,13 @@
   {
    "q": "What does a Ziegler-Natta catalyst control?",
    "options": [
-    "Only the rate",
-    "Only the molecular weight",
-    "Only the color",
-    "Stereochemistry"
+    "Only the rate of propagation",
+    "Only the average molecular weight",
+    "Only the color of the polymer",
+    "Stereochemistry and chain branching"
    ],
    "correct": 3,
-   "why": "Holding the chain at a defined metal site does both at once.",
+   "why": "Holding the growing chain at one defined, crowded metal site fixes how every monomer arrives, so the same feature sets the tacticity and suppresses branching. Rate and molecular weight depend on conditions as well.",
    "difficulty": "medium",
    "type": "mcq"
   }
