@@ -1,40 +1,64 @@
 # Review tracker
 
-## Morning summary (self-study pass, night of 2026-09-16)
+## Morning summary (self-study pass, 2026-09-16 → 2026-09-22)
 
-Interim; rewritten at the end of the run. Everything below is on `main`.
+Everything below is on `main` (45 commits since the pass began); every push
+passed the full CI script (check-site, curriculum, figures, banks, worker,
+unit tests, weight, a11y, console).
 
-**Done.**
+**What was done.**
 - Step 0: `check-console` runs in 56 s instead of 84 and no longer flakes
-  (cross-origin requests are blocked at the route; the one CI failure was a
-  third-party script holding a page past the 30 s navigation timeout). The
-  118 concept teach strings moved to `concept-teach.json`; the ochem shell
-  went from 108 to 92.8 KB gzipped and the budget followed it down to 102.
-  The amine-synthesis carbon-count sort is two rows per answer.
-- Step 1: `docs/concept-map.json` (every section: teaches / relies on /
-  forward references, ~130 found) and `docs/proposed-order.md` (the order,
-  the reasoning, every lesson that moves, every split). **Not applied.**
+  (cross-origin requests are aborted at the route; meta-refresh stubs are
+  skipped). The 118 concept teach strings moved to `concept-teach.json`; the
+  ochem shell went from 108 to 92.8 KB gzipped. The amine-synthesis
+  carbon-count sort is two rows per answer.
+- Step 1: `docs/concept-map.json` and `docs/proposed-order.md` (a 23-chapter
+  Klein/Wade-style order with the reasoning, every lesson that moves, every
+  split). **Not applied — needs your approval.**
 - Step 2: all 412 hard-coded "Module N" references replaced with chapter
-  names linked from `curriculum.js`; the lesson eyebrows carry a chapter id
-  and get their number at runtime; check-site rule 30 and a rewritten
-  check-curriculum eyebrow check stop the numbers coming back. Fifteen
-  missing `dependsOn` filled from the concept map. New **Functional groups**
-  section closes Foundations (117 topics, 113 lessons, 3,510 questions).
-- Step 3: in progress. Chapters 1, 2, 3 and 12 are reviewed, fixed and
-  verified (12 twice); chapters 4-11 and 13-18 are reviewed and queued for
-  fixing; the fix step is serial because every fixer edits the same bank,
-  concept and figure files. Process change mid-run: reviews are now written
-  with file:line anchors and full replacement text so the fixer reads only
-  the topics it edits (about 20% fewer tokens per chapter, same verifier
-  finding rate), and every chapter still gets a full independent
-  verification. Reviews and fixes from chapter 6 on ran on Opus 5 to spare
-  the Fable budget. The explanations file's byte budget was raised from 156
-  to 200 KB with a reason in check-weight.mjs: worked-solution explanations
-  are longer than recall ones and the file never blocks a page.
+  names linked from `curriculum.js`; lesson eyebrows get their number at
+  runtime; check-site rule 30 stops the numbers coming back. Fifteen missing
+  `dependsOn` filled. New **Functional groups** section closes Foundations
+  (117 topics, 113 lessons, 3,510 questions).
+- Step 3: **all 23 chapters reviewed, fixed, independently verified, and
+  re-fixed where the verifier found problems.** Every chapter's status,
+  counts and open items are in the "Chapter status" table below. In round
+  numbers across the course: about 180 generated figures added (curved-arrow
+  mechanisms, 3D drawings, the course's first labeled example spectra, the
+  first drawn molecules in Biomolecules and Aromatic Follow-Through), about
+  60 worked examples, roughly 900 of the 3,510 bank questions replaced or
+  repaired, all four substitution/elimination and the acyl-substitution,
+  aldol, Claisen and EAS mechanism walkthroughs rebuilt, and about 110
+  confirmed chemistry errors fixed (wrong keys, backwards stereochemical
+  outcomes, wrong electron counts, mislabeled figures). A new check-site rule
+  (31) fails any explanation that names an option by position, since options
+  are shuffled per sitting; 19 such references were rewritten. Byte budgets
+  for the bank halves and the tutor bank were raised with reasons recorded
+  in `check-weight.mjs`, because application stems and worked solutions are
+  longer than recall ones.
 
-**Decisions you need to make** are listed under "Decisions for Olivier"
-below, and in `docs/proposed-order.md`. The order is the big one.
+**Process.** Per chapter: fresh reviewer (anchored findings) → editor →
+fresh verifier (full read, every product and key re-derived) → second-pass
+editor for the verifier's findings. Verifiers found between 0 and 7
+confirmed errors per chapter after the first fix, which is why the second
+pass was kept for every chapter. From chapter 6 on, review and fix ran on
+Opus 5; chapter 18's fixer finished on Fable 5.1 while Opus was overloaded.
 
+**Decisions you need to make** — see "Decisions for Olivier" below and
+`docs/proposed-order.md`. The order is the big one; nothing has been moved.
+
+**Still open (small, listed per chapter in the status table).** Some banks
+remain recall-heavy (chapter 12's five, chapter 14's short `why` fields,
+chapter 17 thin on data-to-structure items); a handful of figures were
+deferred (succinic anhydride/imide, β-lactam, polymer-design disconnection);
+`chair-bromocyclohexane` in `molecules.js` is still wrong and unused.
+"Waiting on reorder" lists everything that is only wrong because of where a
+chapter currently sits.
+
+**Could not verify from here** (kept hedged in the text): the exact E1
+product ratio for 2-bromo-2-methylbutane, the Heck regiochemistry beyond
+"usually", nylon 6 vs 6,6 melting points, and the Tg table's values (all
+labeled as typical, not measured).
 
 Every item raised across four outside reviews, with its real status verified
 against this repo rather than against what a review claimed.
@@ -47,7 +71,7 @@ when the change is in the repo and the checks pass.
 
 ---
 
-## Self-study pass (in progress)
+## Self-study pass (Step 3 complete; reorder pending)
 
 The pass that makes the course learnable on its own: an approved order, no
 idea used before it is taught, every concept explained with its why and how,
@@ -76,11 +100,10 @@ Recorded here as they arise, and collected in `docs/proposed-order.md`.
    alkene-structure).
 3. **Spectroscopy placement**: keep after aromatics (recommended) or move to
    the textbook position after Alcohols & Ethers.
-4. **HOMO/LUMO**: add a short frontier-orbital lesson to Conjugation
-   (recommended) or rewrite Diels–Alder and UV-Vis to avoid it.
-5. **Oxymercuration–demercuration**: teach it in one paragraph as the
-   rearrangement-free Markovnikov hydration (recommended) or delete the two
-   mentions.
+4. ~~HOMO/LUMO~~ — done in chapter 9's pass (a minimal MO section in
+   `conjugated-systems`).
+5. ~~Oxymercuration–demercuration~~ — done in chapter 8's pass (taught in
+   `addition-reactions`).
 6. **Chapter 2's title** once nucleophiles and leaving groups move out of it.
 
 ### Waiting on reorder
