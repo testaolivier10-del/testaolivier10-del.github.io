@@ -52,6 +52,24 @@ jobs:
       # would show a reader, and a search engine, the wrong course.
       - name: the ochem homepage's chapter list matches the curriculum
         run: node scripts/build-ochem-home.mjs --check
+      # A lesson's title is its topic's name and its chapter's name, both of
+      # which live in curriculum.js — so it is generated, not retyped. Retyped,
+      # it drifted twice: 121 lessons shipped the same title as their notes
+      # page, and the two disagreed with the rail about how a topic is
+      # capitalised.
+      - name: the ochem lesson titles match the curriculum
+        run: node scripts/build-lesson-meta.mjs --check
+      # The seven tool pages are three empty divs until their scripts run. The
+      # first screen is written into them from tools-registry.js so the page
+      # has a heading and a body before that happens; stale, it would show a
+      # renamed tool under its old name until the script landed.
+      - name: the static shell on each ochem tool page matches the registry
+        run: node scripts/build-tool-pages.mjs --check
+      # Same fix, same reason, for the NREMT notes: 40 chapters that arrive
+      # over the network, and a table of contents in the page so the URL is
+      # not empty before they do.
+      - name: the static contents in the NREMT notes match their data file
+        run: node scripts/build-nremt-notes-toc.mjs --check
       # The generated textbook figures. These are drawn from coordinates, so a
       # stale one is not a broken build — it is a diagram that quietly says
       # something the prose next to it no longer says.

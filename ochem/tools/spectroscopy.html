@@ -10,10 +10,10 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Spectroscopy Lab — Organic Chemistry Tools</title>
-<meta name="description" content="Interactive IR and proton NMR: every peak explained, spectra drawn from the real wavenumbers and couplings, plus a puzzle mode that hands you the data and asks for the structure.">
+<meta name="description" content="Interactive IR and proton NMR: every peak explained, spectra drawn from the real wavenumbers and couplings, plus a puzzle mode that hands you the data…">
 <link rel="canonical" href="https://levlprep.com/ochem/tools/spectroscopy.html">
 <meta property="og:title" content="Spectroscopy Lab — Organic Chemistry Tools">
-<meta property="og:description" content="Interactive IR and proton NMR: every peak explained, spectra drawn from the real wavenumbers and couplings, plus a puzzle mode that hands you the data and asks for the structure.">
+<meta property="og:description" content="Interactive IR and proton NMR: every peak explained, spectra drawn from the real wavenumbers and couplings, plus a puzzle mode that hands you the data…">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://levlprep.com/ochem/tools/spectroscopy.html">
 <meta property="og:site_name" content="LevlPrep">
@@ -35,6 +35,92 @@
 <link rel="stylesheet" href="../assets/tools.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- tool-ld:start -->
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "WebApplication",
+        "LearningResource"
+      ],
+      "@id": "https://levlprep.com/ochem/tools/spectroscopy.html#tool",
+      "name": "Spectroscopy Lab",
+      "url": "https://levlprep.com/ochem/tools/spectroscopy.html",
+      "description": "An IR spectrum that explains its regions, a ¹H NMR predictor for any structure, and a puzzle mode.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "learningResourceType": "Interactive Tool",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "IR"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "¹H NMR"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "degrees of unsaturation"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      },
+      "relatedLink": [
+        "https://levlprep.com/ochem/notes/ir.html",
+        "https://levlprep.com/ochem/notes/h-nmr.html",
+        "https://levlprep.com/ochem/notes/mass-spec.html"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Tools",
+          "item": "https://levlprep.com/ochem/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Spectroscopy Lab",
+          "item": "https://levlprep.com/ochem/tools/spectroscopy.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- tool-ld:end -->
 <style>
 .sp-chart{
     background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
@@ -79,9 +165,13 @@
 </head>
 <body>
 <div id="site-header"></div>
+<div class="course-nav"></div>
 
 <div class="xshell">
-  <div class="tool-top" id="tool-top"></div>
+  <div class="tool-top" id="tool-top">
+<!-- tool-top:start -->
+<a class="tool-back" href="../tools.html">&larr; All tools</a><div class="tool-title"><span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 16c2 0 2-8 4-8s2 5 4 5 2-9 4-9 2 12 4 12 2-4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h1>Spectroscopy Lab</h1></div><p class="tool-lede">An IR spectrum that explains its regions, a ¹H NMR predictor for any structure, and a puzzle mode.</p><div class="tool-share" id="tool-share"></div><nav class="tool-switch" aria-label="Other tools"><a href="arrow-pusher.html">Arrow Pusher</a><a href="resonance.html">Resonance Explorer</a><a href="viewer-3d.html">3D Molecule Viewer</a><a href="conformations.html">Conformation Lab</a><a href="reaction-predictor.html">Reaction Predictor</a><a href="acid-base.html">Acid/Base Comparator</a><a href="spectroscopy.html" class="on" aria-current="page">Spectroscopy Lab</a></nav>
+<!-- tool-top:end --></div>
   <div id="spRoot"></div>
 
   <div id="tool-quiz"></div>

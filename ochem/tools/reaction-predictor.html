@@ -10,10 +10,10 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reaction Predictor — Organic Chemistry Tools</title>
-<meta name="description" content="Pick a substrate, reagent, solvent and temperature, commit to SN1, SN2, E1 or E2, then see the decision broken into the four factors that actually decide it — including Zaitsev versus Hofmann.">
+<meta name="description" content="Pick a substrate, reagent, solvent and temperature, commit to SN1, SN2, E1 or E2, then see the decision broken into the four factors that actually decide it…">
 <link rel="canonical" href="https://levlprep.com/ochem/tools/reaction-predictor.html">
 <meta property="og:title" content="Reaction Predictor — Organic Chemistry Tools">
-<meta property="og:description" content="Pick a substrate, reagent, solvent and temperature, commit to SN1, SN2, E1 or E2, then see the decision broken into the four factors that actually decide it — including Zaitsev versus Hofmann.">
+<meta property="og:description" content="Pick a substrate, reagent, solvent and temperature, commit to SN1, SN2, E1 or E2, then see the decision broken into the four factors that actually decide it…">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://levlprep.com/ochem/tools/reaction-predictor.html">
 <meta property="og:site_name" content="LevlPrep">
@@ -35,6 +35,85 @@
 <link rel="stylesheet" href="../assets/tools.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- tool-ld:start -->
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "WebApplication",
+        "LearningResource"
+      ],
+      "@id": "https://levlprep.com/ochem/tools/reaction-predictor.html#tool",
+      "name": "Reaction Predictor",
+      "url": "https://levlprep.com/ochem/tools/reaction-predictor.html",
+      "description": "Substrate, reagent, solvent. Commit to a prediction, then see the four factors that decide it.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "learningResourceType": "Interactive Tool",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Substitution vs. elimination"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      },
+      "relatedLink": [
+        "https://levlprep.com/ochem/notes/sn1.html",
+        "https://levlprep.com/ochem/notes/sn2.html",
+        "https://levlprep.com/ochem/notes/e1.html",
+        "https://levlprep.com/ochem/notes/e2.html"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Tools",
+          "item": "https://levlprep.com/ochem/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Reaction Predictor",
+          "item": "https://levlprep.com/ochem/tools/reaction-predictor.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- tool-ld:end -->
 <style>
 .rp-setup{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
   .rp-setup .tfield{margin-bottom:0;}
@@ -53,9 +132,13 @@
 </head>
 <body>
 <div id="site-header"></div>
+<div class="course-nav"></div>
 
 <div class="xshell">
-  <div class="tool-top" id="tool-top"></div>
+  <div class="tool-top" id="tool-top">
+<!-- tool-top:start -->
+<a class="tool-back" href="../tools.html">&larr; All tools</a><div class="tool-title"><span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3v6L4 19a1.6 1.6 0 0 0 1.4 2h13.2A1.6 1.6 0 0 0 20 19l-5-10V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M7.5 3h9M6.7 14h10.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><h1>Reaction Predictor</h1></div><p class="tool-lede">Substrate, reagent, solvent. Commit to a prediction, then see the four factors that decide it.</p><div class="tool-share" id="tool-share"></div><nav class="tool-switch" aria-label="Other tools"><a href="arrow-pusher.html">Arrow Pusher</a><a href="resonance.html">Resonance Explorer</a><a href="viewer-3d.html">3D Molecule Viewer</a><a href="conformations.html">Conformation Lab</a><a href="reaction-predictor.html" class="on" aria-current="page">Reaction Predictor</a><a href="acid-base.html">Acid/Base Comparator</a><a href="spectroscopy.html">Spectroscopy Lab</a></nav>
+<!-- tool-top:end --></div>
   <div id="rpRoot"></div>
 
   <div id="tool-quiz"></div>

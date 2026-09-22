@@ -123,8 +123,39 @@ function describe(prose, fallback) {
   return cut.slice(0, cut.lastIndexOf(' ')) + '…';
 }
 
+/* Titles are picked from a list of candidates rather than built from one
+   template, for two reasons that pull in opposite directions.
+
+   The first is that a notes page and its lesson used to ship the SAME title,
+   character for character — "pKa — Acids & Bases | Organic Chemistry" was both
+   ochem/lessons/pka.html and ochem/notes/pka.html. Two pages on the same site,
+   about the same topic, with one title between them is the state a search
+   engine resolves by picking one and discounting the other. Which one it drops
+   is not ours to choose, so the two are told apart here instead: every notes
+   title ends in a word the lesson's never does.
+
+   The second is length. A title over about 60 characters is cut off in the
+   result list, and the chapter name in the middle is what pushed 59 of these
+   over — "Kinetic vs thermodynamic control — Conjugation & Pericyclic
+   Reactions | Organic Chemistry" is 89 characters, of which the reader sees
+   roughly the first two thirds. The chapter is the most droppable part: it is
+   in the breadcrumb, the eyebrow and the h1 of the page itself, whereas
+   "Organic Chemistry" is the phrase someone actually searches for.
+
+   So: keep the chapter when it fits, drop it when it doesn't, and never let
+   the subject fall off the end. */
+const TITLE_MAX = 60;
+
+function fit(candidates) {
+  return candidates.find((c) => decodeEntities(c).length <= TITLE_MAX) ?? candidates[candidates.length - 1];
+}
+
 function page({ topic, module: mod, prose, prev, next, index, total }) {
-  const title = `${topic.title} — ${mod.title} | Organic Chemistry`;
+  const title = fit([
+    `${topic.title} — ${mod.title} Notes | Organic Chemistry`,
+    `${topic.title} — Organic Chemistry Notes`,
+    `${topic.title} — Study Notes`,
+  ]);
   const desc = describe(prose, `${topic.title}, from the ${mod.title} chapter of the organic chemistry textbook.`);
   const url = `${ORIGIN}/ochem/notes/${topic.id}.html`;
   /* A notes-only topic's href is this very page, so it gets the shared label
@@ -137,6 +168,61 @@ function page({ topic, module: mod, prose, prev, next, index, total }) {
     prev ? `<a class="notes-prevnext notes-prev" href="${prev.id}.html"><span>Previous</span>${esc(prev.title)}</a>` : '<span></span>',
     next ? `<a class="notes-prevnext notes-next" href="${next.id}.html"><span>Next</span>${esc(next.title)}</a>` : '<span></span>',
   ].join('');
+
+  /* Every other page on the site carries structured data; these 121 did not,
+     which made the written half of the course the one part a search engine had
+     to infer from the markup alone. The shape is the lesson pages' — the same
+     @ids for the course and the organisation, so the graph joins up across the
+     two rather than describing two unrelated sites — with two differences that
+     are true of a notes page and not of a lesson.
+
+     learningResourceType is "Reading" rather than "Lesson": there is nothing
+     to do here, it is the prose. And where a lesson declares what it teaches,
+     a notes page also declares which lesson it belongs beside, via
+     isBasedOn/relatedLink, so the pair reads as one topic in two forms instead
+     of two competing answers to the same query. That is the same duplicate
+     problem the titles above solve, stated where a machine will read it. */
+  const ld = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'LearningResource',
+        '@id': `${url}#notes`,
+        name: topic.title,
+        url,
+        description: desc,
+        learningResourceType: 'Reading',
+        educationalLevel: 'Undergraduate',
+        inLanguage: 'en',
+        isAccessibleForFree: true,
+        teaches: { '@type': 'DefinedTerm', name: topic.title },
+        isPartOf: { '@id': `${ORIGIN}/ochem/#course` },
+        provider: { '@id': `${ORIGIN}/#org` },
+        position: index,
+        ...(hasLesson(topic)
+          ? { relatedLink: `${ORIGIN}/ochem/${topic.href}` }
+          : {}),
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'LevlPrep', item: `${ORIGIN}/` },
+          { '@type': 'ListItem', position: 2, name: 'Organic Chemistry', item: `${ORIGIN}/ochem/` },
+          { '@type': 'ListItem', position: 3, name: mod.title, item: `${ORIGIN}/ochem/learn.html#m-${mod.id}` },
+          { '@type': 'ListItem', position: 4, name: topic.title, item: url },
+        ],
+      },
+    ],
+  };
+  /* Emitted compact rather than indented. Nobody reads this block — it is for
+     machines — and the indentation is not free: hybridization.html is the
+     largest notes page and pretty-printing its graph pushed it over the weight
+     budget check-weight.mjs holds these pages to.
+
+     JSON.stringify escapes nothing that matters inside a <script> block except
+     a literal "</script>" in the prose-derived description, which would end the
+     block early. */
+  const ldJson = JSON.stringify(ld).replace(/<\//g, '<\\/');
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -170,6 +256,10 @@ function page({ topic, module: mod, prose, prev, next, index, total }) {
 <script src="../assets/ochem-xp.js" defer></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+${ldJson}
+</script>
 </head>
 <body>
 <div class="wrap notes-page">

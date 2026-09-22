@@ -605,6 +605,23 @@ strong,b{font-weight:900;}
   background:var(--header-bg);
   border-bottom:0;
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  /* The row is empty in the file and filled by site-chrome.js, so until that
+     script runs it is nothing — and when it runs, everything below it moves
+     down by its height. That is a layout shift on every page of the site, and
+     on a page whose own content renders fast it was the WHOLE of the page's
+     CLS: ochem/lessons/pka.html measured 0.547, all of it this one row.
+
+     Holding the height the row is about to take costs nothing and removes the
+     shift. 56px is what it measures at every viewport from 390 to 1280 — the
+     row is one line of brand and links at a fixed size, so it does not reflow.
+     It is a minimum rather than a height, so if it ever does need two lines it
+     grows instead of clipping.
+
+     This does not cover the second chrome row (.course-nav, 47px, hidden below
+     640px). That one is injected as a SIBLING of this element and does not
+     exist in the file at all, so there is nothing for CSS to hold space on —
+     it would need a placeholder in each page's markup. */
+  min-height:56px;
 }
 .site-header__inner{
   max-width:1180px;margin:0 auto;
@@ -699,6 +716,22 @@ strong,b{font-weight:900;}
   position:sticky;top:var(--chrome-row1-h,60px);z-index:20;
   background:var(--header-bg);border-bottom:0;
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  /* The second half of the reservation #site-header makes above. This row used
+     to be created by site-chrome.js and inserted after the header, so it did
+     not exist in the file and there was nothing for CSS to hold space on — it
+     simply appeared and pushed the whole page down 47px.
+
+     Every course page now ships the element empty, which site-chrome.js fills
+     in place rather than inserting (it has always looked for an existing
+     .course-nav first), and this holds the height it is about to take. 47px is
+     what one row of pills measures; the row is hidden below 640px, where the
+     tabs become the bottom bar instead, so nothing is reserved there.
+
+     The seven site-level pages — the hub, privacy, terms, sources, changelog,
+     404, offline — take a different chrome path with no course row at all, and
+     deliberately do NOT carry this element: reserving a row they never fill
+     would be a permanent empty strip. */
+  min-height:47px;
 }
 .course-nav__inner{
   max-width:1180px;margin:0 auto;padding:2px clamp(12px,3vw,42px) 10px;

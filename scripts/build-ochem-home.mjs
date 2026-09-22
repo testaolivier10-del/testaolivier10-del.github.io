@@ -72,7 +72,24 @@ course.syllabusSections = MODULES.map((m, i) => ({
   name: m.title,
   position: i + 1,
   url: `${ORIGIN}/ochem/learn.html#m-${m.id}`,
-  hasPart: m.topics.map((t) => ({ '@type': 'LearningResource', name: t.title, url: `${ORIGIN}/ochem/${t.href}` })),
+  /* Each topic exists in two forms: the interactive lesson, which is what the
+     course "has", and the written section, which is the same topic as prose.
+     The syllabus names the lesson and points at the notes alongside it — the
+     mirror image of what each notes page's own structured data says about its
+     lesson. Listing only one of the pair described half a course.
+
+     A notes-only topic's href IS its notes page, so it would otherwise appear
+     twice under two keys; relatedLink is dropped in that case. */
+  hasPart: m.topics.map((t) => {
+    const url = `${ORIGIN}/ochem/${t.href}`;
+    const notes = `${ORIGIN}/ochem/notes/${t.id}.html`;
+    return {
+      '@type': 'LearningResource',
+      name: t.title,
+      url,
+      ...(url === notes ? {} : { relatedLink: notes }),
+    };
+  }),
 }));
 html = html.slice(0, sBody) + '\n' + JSON.stringify(ld, null, 2) + '\n' + html.slice(sClose);
 

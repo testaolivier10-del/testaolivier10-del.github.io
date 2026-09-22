@@ -5,7 +5,7 @@
 //   2. Every JSON file (questions.json, manifest.json, etc.) actually parses.
 //   3. Every URL listed in sitemap.xml maps to a file that exists on disk.
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
-import { join, dirname, extname, relative, sep } from 'node:path';
+import { join, dirname, extname, relative, sep, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 
@@ -818,6 +818,12 @@ if (existsSync(curriculumPath)) {
   for (const file of countFiles) {
     const rel = relative(ROOT, file).split(sep).join('/');
     if (rel.startsWith('ochem/notes/')) continue;
+    // These counts are the ochem curriculum's. nremt/ has its own chapters and
+    // sections, counted from nremt/assets/study-notes.json by
+    // build-nremt-notes-toc.mjs, and they are not the same numbers — reading
+    // "40 chapters and 80 sections" on the NREMT notes as a claim about the
+    // chemistry course is a false failure, not a caught drift.
+    if (rel.startsWith('nremt/')) continue;
     // The changelog is a dated record, not a claim about now. "audited across
     // all 62 sections" under a September date was true in September, and
     // rewriting it to today's number would make the entry a lie about what
@@ -2099,6 +2105,81 @@ for (const file of walk(join(ROOT, 'ochem', 'mechanisms'), ['.html'])) {
         fail(`${w}: the bond ${b.a}-${b.b} has ${drawn.toFixed(1)}px of visible length, so it renders as ` +
              `${drawn <= 0 ? 'nothing at all' : 'a smudge'}.`);
       }
+    }
+  }
+}
+
+// ---- 33. Every indexed page's title and description fit, and no two pages share a title ----
+// Three failures that look like nothing in the markup and like everything in a
+// result list.
+//
+// A title over ~60 characters is cut off mid-word where it is read, so the
+// chapter name the title ended with is spent on nobody. A description over
+// ~160 is cut the same way; the sentence that survives is whatever happened to
+// be first. Neither is a penalty and neither breaks a page, which is exactly
+// why both drifted — 124 titles and 83 descriptions were over before anyone
+// measured them.
+//
+// The third is worse than either. Two pages that ship the SAME title are two
+// URLs a search engine has to choose between, and it resolves that by keeping
+// one and discounting the other. Every ochem lesson and its notes page used to
+// do this — 121 pairs, one title each — because both were built from the same
+// topic name. build-lesson-meta.mjs and build-notes-pages.mjs now agree on how
+// to tell them apart; this is what makes the agreement binding.
+//
+// The ceilings are measured on the DECODED title, because "Acids &amp; Bases"
+// is fifteen characters to a reader and nineteen in the file.
+{
+  const TITLE_MAX = 60;
+  const DESC_MAX = 160;
+  const DESC_MIN = 50;
+
+  // Pages that stand in for an unbounded set of URLs, or that are not pages:
+  // the same exclusions build-sitemap.mjs and build-og-tags.mjs use, plus the
+  // redirect stubs, whose title is "Redirecting…" by design and whose canonical
+  // points at the real page.
+  const SKIP = /^(404|offline|googleb[0-9a-f]+)\.html$/;
+  const isStub = (html) => /<meta http-equiv="refresh"/i.test(html);
+
+  const decode = (s) => s
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
+    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
+    .replace(/&amp;/g, '&');
+
+  const titles = new Map();
+
+  for (const file of htmlFiles) {
+    const rel = relative(ROOT, file);
+    if (SKIP.test(basename(file))) continue;
+    const html = readFileSync(file, 'utf8');
+    if (isStub(html)) continue;
+
+    const t = html.match(/<title>([\s\S]*?)<\/title>/);
+    if (!t) { fail(`${rel}: no <title>.`); continue; }
+    const title = decode(t[1]).trim();
+    if (!title) { fail(`${rel}: empty <title>.`); continue; }
+    if (title.length > TITLE_MAX) {
+      fail(`${rel}: the title is ${title.length} characters, over ${TITLE_MAX}, so it is cut off in ` +
+           `the result list — "${title}".`);
+    }
+    const seen = titles.get(title);
+    if (seen) {
+      fail(`${rel}: ships the same title as ${seen} — "${title}". Two URLs with one title between ` +
+           'them means a search engine keeps one and discounts the other.');
+    } else {
+      titles.set(title, rel);
+    }
+
+    const d = html.match(/name="description" content="([^"]*)"/);
+    if (!d) { fail(`${rel}: no meta description.`); continue; }
+    const desc = decode(d[1]).trim();
+    if (desc.length > DESC_MAX) {
+      fail(`${rel}: the meta description is ${desc.length} characters, over ${DESC_MAX}, so the ` +
+           'snippet is cut mid-sentence.');
+    }
+    if (desc.length < DESC_MIN) {
+      fail(`${rel}: the meta description is only ${desc.length} characters — too little for a ` +
+           'search engine to prefer it over text it picks off the page itself.');
     }
   }
 }

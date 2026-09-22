@@ -184,12 +184,22 @@ const BUDGETS = [
   // diagrams, carbocations, cis/trans & E/Z, prochirality): 121 lines now.
   ['ochem/learn.html', 5],
 
-  // One textbook section, standing in for the other 67. They became real
+  // One textbook section, standing in for the other 120. They became real
   // pages when the ochem prose was made readable without JavaScript
   // (scripts/build-notes-pages.mjs); hybridization.html is the largest of
-  // them at 17.0 KB, so a budget here defends the worst case rather than a
-  // typical one. The median section is 5.9 KB.
-  ['ochem/notes/hybridization.html', 18],
+  // them, so a budget here defends the worst case rather than a typical one.
+  // The median section is 5.9 KB.
+  //
+  // Raised from 18 to 19. Two things, of which only one is a decision. The
+  // page had already drifted from the 17.0 KB this budget was set against to
+  // 17.9 as its prose grew, which nothing flagged because it was still under.
+  // The decision is the remaining 0.36 KB: every notes page now carries a
+  // LearningResource and a BreadcrumbList, which is what the lesson pages have
+  // always had and what made the written half of the course legible to a
+  // search engine as something other than undifferentiated HTML. That is worth
+  // a third of a kilobyte on the largest of them. If this needs moving again,
+  // check whether the prose grew before assuming the structured data did.
+  ['ochem/notes/hybridization.html', 19],
 
   // Search. Both build a large index at runtime; this is the shell, not the
   // corpus, for the same reason as practice.html above.
@@ -199,7 +209,15 @@ const BUDGETS = [
   // One lesson and one mechanism, standing in for the 68 pages built on the
   // same engine. If these grow, they all did.
   ['ochem/lessons/pka.html', 6],
-  ['ochem/mechanisms/e2.html', 10],
+  // e2.html sat at 10232 bytes and the ceiling is 10240, so the empty
+  // <div class="course-nav"></div> every course page now ships — 30 bytes
+  // raw, 8 gzipped — landed exactly on it. That div is the second chrome row
+  // reserving its own height instead of being inserted by script and pushing
+  // the page down 47px; on this page's own measurements it takes the layout
+  // shift from 0.44 to 0.37, and on the tool pages from 0.85 to 0.10. Eight
+  // bytes for that is the right trade. Raised to 11 to leave the page the
+  // headroom it had before, not to let it grow.
+  ['ochem/mechanisms/e2.html', 11],
 
   // The privacy policy: the page that has to load well for somebody who has
   // not decided yet whether to trust the site.

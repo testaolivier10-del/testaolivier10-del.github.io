@@ -10,10 +10,10 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arrow Pusher — Organic Chemistry Tools</title>
-<meta name="description" content="Draw curved arrows on a molecule and watch the product form: bonds break, formal charges recalculate, fragments separate. Octet and valence violations are caught as you draw.">
+<meta name="description" content="Draw curved arrows on a molecule and watch the product form: bonds break, formal charges recalculate, fragments separate.">
 <link rel="canonical" href="https://levlprep.com/ochem/tools/arrow-pusher.html">
 <meta property="og:title" content="Arrow Pusher — Organic Chemistry Tools">
-<meta property="og:description" content="Draw curved arrows on a molecule and watch the product form: bonds break, formal charges recalculate, fragments separate. Octet and valence violations are caught as you draw.">
+<meta property="og:description" content="Draw curved arrows on a molecule and watch the product form: bonds break, formal charges recalculate, fragments separate.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://levlprep.com/ochem/tools/arrow-pusher.html">
 <meta property="og:site_name" content="LevlPrep">
@@ -35,6 +35,92 @@
 <link rel="stylesheet" href="../assets/tools.css">
 <link rel="stylesheet" href="../assets/periodic-table.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- tool-ld:start -->
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "WebApplication",
+        "LearningResource"
+      ],
+      "@id": "https://levlprep.com/ochem/tools/arrow-pusher.html#tool",
+      "name": "Arrow Pusher",
+      "url": "https://levlprep.com/ochem/tools/arrow-pusher.html",
+      "description": "Push electrons on any molecule, or one you drew, and the structure changes to match.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "learningResourceType": "Interactive Tool",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Curved arrows"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "formal charge"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "octets"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      },
+      "relatedLink": [
+        "https://levlprep.com/ochem/notes/curved-arrows.html",
+        "https://levlprep.com/ochem/notes/sn2.html",
+        "https://levlprep.com/ochem/notes/formal-charge.html"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Tools",
+          "item": "https://levlprep.com/ochem/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Arrow Pusher",
+          "item": "https://levlprep.com/ochem/tools/arrow-pusher.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- tool-ld:end -->
 <style>
 .ap-group{margin-bottom:14px;}
   .ap-group:last-child{margin-bottom:0;}
@@ -55,9 +141,13 @@
 </head>
 <body>
 <div id="site-header"></div>
+<div class="course-nav"></div>
 
 <div class="xshell">
-  <div class="tool-top" id="tool-top"></div>
+  <div class="tool-top" id="tool-top">
+<!-- tool-top:start -->
+<a class="tool-back" href="../tools.html">&larr; All tools</a><div class="tool-title"><span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17c0-6 4-10 10-10h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M15 3.5 20 7l-5 3.5z" fill="currentColor"/><circle cx="4" cy="17" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span><h1>Arrow Pusher</h1></div><p class="tool-lede">Push electrons on any molecule, or one you drew, and the structure changes to match.</p><div class="tool-share" id="tool-share"></div><nav class="tool-switch" aria-label="Other tools"><a href="arrow-pusher.html" class="on" aria-current="page">Arrow Pusher</a><a href="resonance.html">Resonance Explorer</a><a href="viewer-3d.html">3D Molecule Viewer</a><a href="conformations.html">Conformation Lab</a><a href="reaction-predictor.html">Reaction Predictor</a><a href="acid-base.html">Acid/Base Comparator</a><a href="spectroscopy.html">Spectroscopy Lab</a></nav>
+<!-- tool-top:end --></div>
   <div id="apRoot"></div>
 
   <div id="tool-quiz"></div>
