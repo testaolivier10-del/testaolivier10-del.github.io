@@ -274,10 +274,10 @@
       7:['reductant-scope'] } },
 
     'alkene-oxidation': { n:8, steps:{
-      2:['redox-stereochemistry','oxidant-choice'],
-      3:['oxidant-choice'],
-      4:['oxidant-choice'],
-      6:['oxidant-choice'],
+      2:['redox-stereochemistry','alkene-cleavage-scope'],
+      3:['alkene-cleavage-scope'],
+      4:['alkene-cleavage-scope'],
+      6:['alkene-cleavage-scope'],
       7:['redox-stereochemistry'] } },
 
     /* The conjugation chapter. Graded steps are 2, 3, 4, 6, 7 in each. */
@@ -512,7 +512,7 @@
       1:['chair-axial-equatorial'],
       2:['chair-axial-equatorial'],
       3:['chair-axial-equatorial','ring-flip-mechanics'],
-      6:['anti-periplanar-geometry','ring-flip-mechanics'] } },
+      6:['chair-axial-equatorial','ring-flip-mechanics'] } },
 
     'conjugate': { n:7, steps:{
       1:['conjugate-pairs'],

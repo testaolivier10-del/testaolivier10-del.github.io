@@ -207,22 +207,26 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'E2 elimination needs anti-periplanar geometry — and on a ring, that means axial-axial.',
-        bodyHtml: '<p class="step-body">E2 elimination requires the leaving group and the beta-hydrogen being removed to be <b>anti-periplanar</b>: 180° apart, viewed as a Newman projection down the C–C bond between them. On an open chain this is easy to achieve by simple bond rotation, but on a cyclohexane ring, the geometry is fixed by the chair — and the only pair of substituents on adjacent ring carbons that are ever 180° apart is <b>axial-axial</b>. Equatorial substituents are never anti-periplanar to anything.</p><p class="step-body" style="margin-bottom:0;">This means an E2 reaction on a cyclohexane ring can only proceed through whichever chair conformation happens to have the leaving group axial — even if that\'s the minority conformation the molecule barely visits. If a huge A-value substituent elsewhere on the ring makes that conformation very rare, the elimination does not stop — it becomes dramatically slower, because the molecule has to pay for the unfavorable chair every time it reacts. <i>trans</i>-4-<i>tert</i>-butylcyclohexyl tosylate does eliminate; it just takes its time.</p>'
+        title: 'Cis or trans decides whether both groups can be equatorial \u2014 and the pattern reverses on a 1,3 ring.',
+        bodyHtml: '<p class="step-body">Before any arithmetic, settle the geometry: whether two substituents <i>can</i> both be equatorial is fixed by their cis/trans relationship and by how far apart they sit. On <b>1,2 and 1,4</b> rings it is <b>trans</b> that allows both equatorial; on <b>1,3</b> rings it is <b>cis</b>. The reversal is not a rule to memorize \u2014 it falls out of the drawing, because the axial direction alternates from carbon to carbon, so 1 and 3 point the same way while 1 and 2 point opposite ways.</p><p class="step-body" style="margin-bottom:0;">Two corrections sit on top of plain A-value addition, because an A-value only measures a group against hydrogens. Two equatorial methyls on <b>adjacent</b> carbons are gauche to each other and cost about <b>0.9 kcal/mol</b>; two axial methyls on the same face of a <b>1,3</b> pair stare straight at each other and cost about <b>3.7</b>, well above the 1.7 each would be charged alone. So for <i>trans</i>-1,2-dimethylcyclohexane the diequatorial chair is not free \u2014 it wins by 3.4 \u2212 0.9 = 2.5 kcal/mol, against a measured 2.7.</p>'
       },
       {
         type: 'explain',
         eyebrow: 'Why it matters',
-        title: 'This is the exact dependency the course structure already assumes.',
-        bodyHtml: '<div class="explain-box">The E2 mechanism lesson (<a class=\"chapter-ref\" href=\"/ochem/learn.html#m-substitution-elimination\">Substitution &amp; Elimination</a>) builds directly on everything in this module: chair conformations, axial/equatorial positions, ring flips, and now the anti-periplanar requirement. Predicting the product of an E2 reaction on a cyclohexane substrate is a direct application of conformational analysis, not a separate topic — you\'re finding which ring-flipped conformation makes the reaction geometrically possible, then reading off which hydrogen gets removed.</div>'
+        title: 'Which chair a molecule sits in decides what it can do.',
+        bodyHtml: '<div class="explain-box">This is not bookkeeping about shape. &beta;-Glucose adopts the one chair that places every bulky hydroxyl and its hydroxymethyl group equatorial \u2014 the only common hexose that can manage it, and a large part of why life settled on that sugar. The same chair-and-A-value analysis is what chemists run on a steroid nucleus. And because a reaction can only happen if the molecule can physically adopt the geometry the mechanism needs, the chair you have just learned to pick also decides reactivity: <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-substitution-elimination\">Substitution &amp; Elimination</a> will show that elimination on a ring demands an axial leaving group, and it puts this whole procedure to work on that problem.</div>'
       },
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'A cyclohexane has a leaving group that is equatorial in its dominant chair conformation. Can E2 elimination proceed directly from that dominant conformation?',
-        options: ['No — the leaving group must be axial for anti-periplanar geometry, so the molecule must first ring-flip to its minority conformation', 'Yes — equatorial leaving groups are always anti-periplanar to an adjacent hydrogen', 'No — E2 is impossible on any cyclohexane ring'],
-        correctIndex: 0,
-        correctFeedback: 'Correct — since only axial-axial pairs are anti-periplanar on a chair, the molecule has to ring-flip into the conformation where the leaving group is axial before E2 can occur, even though that may be the higher-energy, minority chair.'
+        title: 'cis-1-tert-Butyl-2-methylcyclohexane. Which chair does it prefer, and why? (A-values: tert-butyl 4.9, methyl 1.7)',
+        options: [
+          'Neither \u2014 cis groups on adjacent carbons lock the ring, so it cannot flip between chairs at all',
+          'The chair with tert-butyl equatorial and methyl axial, because cis on adjacent carbons forces one group axial and the cheaper one to axialise is the methyl',
+          'The chair with both groups equatorial, because a cis relationship on adjacent carbons always allows a diequatorial chair'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Cis on adjacent carbons means one group up and one down, and since the axial direction alternates, that pair is always one axial and one equatorial \u2014 no chair gets both equatorial. So the only question is which group pays. Axialising tert-butyl costs 4.9; axialising the methyl costs 1.7, so the chair that keeps tert-butyl equatorial wins by about 3.2 kcal/mol. The general rule falls straight out of the arithmetic: when not everything can be equatorial, the bulkier group takes equatorial.'
       }
     ]
   });

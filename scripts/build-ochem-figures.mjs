@@ -5624,7 +5624,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'alcohol-activation',
   section: 'alcohol-reactions',
-  anchor: '<h3>Converting alcohols to halides</h3>',
+  anchor: 'the figure below sets all three side by side.</p>',
   alt: 'Three routes that turn an alcohol into a substrate with a good leaving group: protonation to an oxonium, tosylation with the tosylate structure drawn out, and conversion to a halide with thionyl chloride or phosphorus tribromide',
   viewBox: '0 0 760 350',
   build() {

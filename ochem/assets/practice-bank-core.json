@@ -11471,12 +11471,12 @@
    "type": "mcq"
   },
   {
-   "q": "On a cyclohexane ring, which pair of substituents on adjacent carbons can be anti-periplanar to each other?",
+   "q": "Plain addition of A-values underestimates the strain of the diaxial chair of cis-1,3-dimethylcyclohexane. Which interaction does the simple sum leave out?",
    "options": [
-    "Two equatorial groups, which are 180° apart",
-    "An axial and an equatorial group, which are 180° apart",
-    "One axial-up and one axial-down group",
-    "Any adjacent pair, since a ring flip can reach 180° either way"
+    "The difference in C–C bond strength between the axial and the equatorial positions",
+    "The gauche interaction between two equatorial methyls sitting on adjacent ring carbons",
+    "The direct 1,3-diaxial clash between the two axial methyl groups pointing at each other",
+    "The strain of the half-chair the ring must pass through on its way to the other chair"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -17493,7 +17493,7 @@
    "type": "tf"
   },
   {
-   "q": "Catalytic hydrogenation of an alkene over a metal surface delivers the two hydrogen atoms with what stereochemistry?",
+   "q": "Catalytic hydrogenation — listed in this section's summary table and taught in full later in this chapter — delivers the two hydrogen atoms of H₂ to an alkene with what stereochemistry?",
    "options": [
     "syn (same face)",
     "anti (opposite faces)",
@@ -17879,27 +17879,27 @@
    "type": "mcq"
   },
   {
-   "q": "HBr plus peroxides adds to an alkene with which regiochemistry?",
+   "q": "3-Methylbut-1-ene, CH₂=CH–CH(CH₃)₂, is treated with HBr and no peroxides. What is the major product?",
    "options": [
-    "An even mixture",
-    "Markovnikov",
-    "Anti-Markovnikov",
-    "No reaction occurs"
+    "1-Bromo-3-methylbutane, from bromide attacking the terminal carbon",
+    "2-Bromo-3-methylbutane, from bromide trapping the first cation formed",
+    "2-Bromo-2-methylbutane, from a hydride shift to a tertiary cation",
+    "1-Bromo-2-methylbutane, from addition across the branched end"
    ],
    "correct": 2,
-   "difficulty": "medium",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Why do peroxides flip HBr addition to anti-Markovnikov?",
+   "q": "The same alkene, 3-methylbut-1-ene, treated with HBr and peroxides gives 1-bromo-3-methylbutane with no rearranged product at all. What does that tell you?",
    "options": [
-    "They make HBr more acidic",
-    "Br adds first, not H",
-    "The alkene is oxidized",
-    "They change solvent polarity"
+    "Peroxides trap any carbocation as soon as it forms, before it can shift",
+    "The chain runs through a carbon radical rather than a carbocation, so the cation chemistry that drives 1,2-shifts is never entered",
+    "The bromine radical adds to the more substituted carbon of the double bond",
+    "The rearranged bromide does form, but radical conditions convert it back"
    ],
    "correct": 1,
-   "difficulty": "medium",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -27043,7 +27043,7 @@
    "type": "mcq"
   },
   {
-   "q": "Pyrrole resists being protonated on its nitrogen, because that nitrogen's lone pair is one of the six pi electrons that make the ring aromatic.",
+   "q": "Pyrrole resists being protonated on its nitrogen, because that nitrogen's lone pair supplies two of the six pi electrons that make the ring aromatic.",
    "options": [
     "True",
     "False"
@@ -40453,27 +40453,27 @@
    "type": "mcq"
   },
   {
-   "q": "Carbon dioxide plus a Grignard reagent gives:",
+   "q": "Cyanide adds to butan-2-one, CH₃COCH₂CH₃, and the cyanohydrin carbon ends up bearing four different groups. What is the stereochemical outcome?",
    "options": [
-    "An aldehyde",
-    "A carboxylic acid",
-    "A primary alcohol",
-    "A ketone"
+    "No stereocenter is created, because that carbon keeps its trigonal geometry",
+    "A racemic mixture, because the carbonyl is planar and cyanide attacks either face equally",
+    "A single enantiomer, because cyanide always approaches from the less hindered face",
+    "A single diastereomer, fixed by the geometry of the starting C=O"
    ],
    "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A nitrile plus a Grignard reagent gives:",
+   "q": "Why does an aldehyde form a cyanohydrin more completely than a ketone of similar size?",
    "options": [
-    "A ketone",
-    "A carboxylic acid",
-    "A primary alcohol",
-    "An amine"
+    "The aldehyde C=O is less polarized, so cyanide binds it more tightly",
+    "Cyanide is a stronger base toward aldehydes than toward ketones",
+    "Aldehydes are more acidic, so they are deprotonated before cyanide arrives",
+    "The aldehyde carbonyl carbon is less crowded and less electron-rich, so the tetrahedral adduct is easier to reach and more stable"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 3,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
