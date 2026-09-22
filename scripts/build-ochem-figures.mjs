@@ -2630,7 +2630,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Why the two substituent rules for a Birch reduction are one rule. The reaction alternates electrons and protons, and the carbon that gets the second proton is the one that ends up sp³ — so everything depends on where the carbanion is most stable.',
-  note: 'The product is the <b>unconjugated</b> diene in both cases, which is the less stable of the two and the sign that this is kinetic control: protonation happens fastest where the charge density is highest, and stability never gets a vote. The same alternation of electron and proton runs the Na/NH₃ reduction of an alkyne to a <i>trans</i> alkene, back in the alkynes and hydrogenation chapters.',
+  note: 'The product is the <b>unconjugated</b> diene in both cases, which is the less stable of the two and the sign that this is kinetic control: protonation happens fastest at the central carbon of the delocalized anion, and stability never gets a vote. The same alternation of electron and proton runs the Na/NH₃ reduction of an alkyne to a <i>trans</i> alkene, back in the alkynes and hydrogenation chapters.',
 });
 
 /* ----------------------------------------------------------------- 47 ---
@@ -2718,7 +2718,7 @@ FIGURES.push({
     s += text(360, 280, 'before any mechanism has been written down.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
-  caption: 'The count that runs the whole chapter. One reactive site makes a single bond and stops; two extends a line; three or more ties the lines to each other in every direction, which is what a network is. Count one functional group per site for a step-growth monomer and one C=C for a chain-growth one — counted that way, a vinyl monomer has two sites and divinylbenzene, with two C=C, is the cross-linker.',
+  caption: 'The count that runs the whole chapter. One reactive site makes a single bond and stops; two extends a line; three or more ties the lines to each other in every direction, which is what a network is. Count one functional group per site for a step-growth monomer, and count one C=C as <b>two</b> sites for a chain-growth one — one of its carbons carries the chain arriving and the other becomes the new active center. Counted that way a vinyl monomer has two sites, and divinylbenzene, with two C=C, is the cross-linker.',
   note: 'The consequence reaches all the way to the end of the material’s life. Separate chains are held to each other by intermolecular forces, so heat lets them slide and a thermoplastic can be melted and remolded. A network is one covalent molecule, so heating it breaks bonds rather than loosening them — and a thermoset cannot be recycled by melting at all.',
 });
 
@@ -2814,35 +2814,49 @@ FIGURES.push({
   id: 'tg-and-tm',
   section: 'polymer-properties',
   anchor: '<h3>Thermoplastic against thermoset</h3>',
-  viewBox: '0 0 760 300',
-  alt: 'A temperature axis with the glass transition below the melting temperature, marking the glassy, rubbery and molten regions',
+  viewBox: '0 0 760 370',
+  alt: 'Stiffness plotted on a log scale against temperature for two polymers: an amorphous one whose modulus falls three decades at the glass transition and then flows, and a semicrystalline one that steps down only slightly at the glass transition, holds a long plateau, and collapses at the melting temperature',
   build() {
     let s = '';
-    const zones = [
-      { x: 40,  w: 210, lab: 'glassy',  sub: 'amorphous regions frozen',   kind: 'warn' },
-      { x: 250, w: 230, lab: 'rubbery or tough', sub: 'amorphous regions mobile', kind: 'hi' },
-      { x: 480, w: 220, lab: 'molten',  sub: 'crystalline regions melted', kind: 'hi'   },
-    ];
-    for (const z of zones) {
-      s += bar(z.x, 96, z.w, 56, { kind: z.kind, opacity: 0.3 });
-      s += text(z.x + z.w / 2, 122, z.lab, { cls: 'fg-lbl', size: 13 });
-      s += text(z.x + z.w / 2, 142, z.sub, { cls: 'fg-sm', size: 10 });
-    }
-    s += arrow(P(40, 180), P(700, 180));
-    s += text(370, 204, 'temperature', { cls: 'fg-tag', size: 11 });
+    /* SVG has no subscript, so the symbol is a tspan dropped below the
+       baseline. The prose writes T<sub>g</sub>; the figure has to match it
+       or the reader is looking at a different symbol. */
+    const T = (x, y, sub, cls, size) =>
+      `<text class="${cls}" x="${x}" y="${y}" text-anchor="middle" font-size="${size}">T<tspan dy="3.5" font-size="${size * 0.75}">${sub}</tspan></text>`;
 
-    s += rule(250, 66, 250, 180);
-    s += text(250, 58, 'Tₑ — the glass transition', { cls: 'fg-tag-good', size: 11 });
-    s += rule(480, 66, 480, 180);
-    s += text(480, 58, 'Tₘ — melting', { cls: 'fg-tag-good', size: 11 });
+    s += tag(380, 26, 'WHAT THE TWO TRANSITIONS DO TO STIFFNESS');
+    const X0 = 96, X1 = 700, Y0 = 62, Y1 = 296;
+    s += rule(X0, Y1, X1, Y1);
+    s += rule(X0, Y1, X0, Y0);
+    s += text(X0 + 6, Y0 - 10, 'stiffness (modulus), log scale', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    s += text(694, Y1 - 8, 'temperature →', { cls: 'fg-tag', size: 11, anchor: 'end' });
 
-    s += rule(24, 230, 700, 230);
-    s += text(360, 254, 'Essentially every polymer has a Tₑ: some of the sample is always amorphous.', { cls: 'fg-lbl', size: 12 });
-    s += text(360, 276, 'Only a semicrystalline one also has a Tₘ.', { cls: 'fg-lbl', size: 12 });
+    const TG = 286, TM = 580;
+    s += `<line class="fg-dash" x1="${TG}" y1="${Y0 + 6}" x2="${TG}" y2="${Y1}"></line>`;
+    s += `<line class="fg-dash" x1="${TM}" y1="${Y0 + 6}" x2="${TM}" y2="${Y1}"></line>`;
+    s += T(TG, Y0, 'g', 'fg-tag-good', 13);
+    s += T(TM, Y0, 'm', 'fg-tag-good', 13);
+
+    /* Amorphous: one cliff, at Tg, and then it flows. */
+    s += `<path class="fg-bond-hi" fill="none" d="M110 96 L256 100 C276 102 272 212 300 216 L392 232 C424 238 432 290 460 294"></path>`;
+    s += text(118, 84, 'amorphous — polystyrene', { cls: 'fg-tag-warn', size: 10, anchor: 'start' });
+    s += text(196, 236, 'three decades, all at once', { cls: 'fg-sm', size: 9.5 });
+
+    /* Semicrystalline: a step at Tg, a long plateau, a cliff at Tm. */
+    s += `<path class="fg-bond" fill="none" d="M110 130 L258 134 C278 136 276 168 300 172 L556 184 C580 188 584 290 606 294"></path>`;
+    s += text(336, 164, 'semicrystalline — HDPE', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(462, 212, 'the crystallites are still holding it together', { cls: 'fg-sm', size: 9.5 });
+
+    s += text(180, Y1 + 24, 'glassy', { cls: 'fg-tag', size: 10.5 });
+    s += text(430, Y1 + 24, 'rubbery, or tough and useful', { cls: 'fg-tag', size: 10.5 });
+    s += text(648, Y1 + 24, 'flows or melts', { cls: 'fg-tag', size: 10.5 });
+
+    s += rule(24, 328, 700, 328);
+    s += text(360, 354, 'How much each transition matters depends on how crystalline the sample is.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
-  caption: 'Two transitions, describing two different parts of the same sample. The glass transition is where the tangled amorphous regions stop being frozen; the melting temperature is where the packed crystalline regions come apart. A fully amorphous polymer simply has no Tₘ.',
-  note: 'How soft it gets above Tₑ depends on how much crystallinity is left holding the sample: with little of it you get rubber, while HDPE, PET and nylon are all far above their Tₑ at room temperature and stay rigid, because the crystallites act as physical cross-links up to Tₘ. Natural rubber is the clean case — cool it in liquid nitrogen, take it below Tₑ, and the same material shatters like glass because its chains can no longer move.',
+  caption: 'The two transitions seen as what they actually do: change the stiffness. For a fully amorphous polymer the glass transition <i>is</i> the softening point &mdash; the modulus falls by a factor of a thousand there and the material is finished. For a semicrystalline one the same transition barely registers, because only the tangled fraction has softened.',
+  note: 'That second curve is the answer to a question the bare temperature axis cannot settle: why HDPE, PET and nylon are rigid at room temperature although they are far above their T<sub>g</sub>. Their crystalline regions act as physical cross-links, tying the mobile chains together, and they hold the sample in one piece all the way to T<sub>m</sub> &mdash; where they finally come apart, and the stiffness falls off a cliff instead of a step. A fully amorphous polymer has no such cliff, because it has no T<sub>m</sub> to reach.',
 });
 
 /* ----------------------------------------------------------------- 52 ---
@@ -15604,10 +15618,11 @@ FIGURES.push({
       s += atom(OL.x, OL.y, 'O');
       s += text(128, 502, '−', { cls: 'fg-warn', size: 14 });
       s += atom(OR.x, OR.y, 'O', { kind: 'hi' });
-      s += text(274, 508, '−', { cls: 'fg-warn', size: 15 });
       s += text(170, 444, '−', { cls: 'fg-warn', size: 17 });
       s += curve(P(180, 448), P(198, 464), { bow: -10, size: 7 });
-      s += curve(P(218, 492), P(252, 499), { bow: -13, size: 7 });
+      s += curve(P(218, 492), P(257, 505), { bow: -13, size: 7 });
+      s += text(292, 492, 'neutral until', { cls: 'fg-sm', size: 9.5 });
+      s += text(292, 506, 'the arrow lands', { cls: 'fg-sm', size: 9.5 });
     }
     s += text(200, 538, 'and this is what pays for it —', { cls: 'fg-tag', size: 11 });
     s += text(200, 556, 'only ortho and para reach an oxygen', { cls: 'fg-tag', size: 11 });
@@ -15887,7 +15902,7 @@ FIGURES.push({
     s += K.mark(484, CY, 1, 'δ−', { d: 20, size: 11, dy: 4 });
     s += K.mark(484, CY, 5, 'δ−', { d: 20, size: 11, dy: 4 });
     s += text(484, 190, 'charge on three carbons,', { cls: 'fg-tag', size: 10.5 });
-    s += text(484, 206, 'highest across the ring', { cls: 'fg-tag', size: 10.5 });
+    s += text(484, 206, 'protonated across the ring', { cls: 'fg-tag', size: 10.5 });
     s += arrow(P(338, CY), P(438, CY));
     s += text(388, CY - 12, 'ROH, e⁻', { cls: 'fg-sm', size: 10.5 });
 
@@ -15932,7 +15947,7 @@ FIGURES.push({
     return s;
   },
   caption: 'The same reduction on three substrates. Track the sp&sup3; carbons &mdash; they are the ones that took protons, they always come out para to each other, and which ones they are is decided entirely by whether the substituent wanted the carbanion nearby.',
-  note: 'The third frame of the top row is the one to stare at. Three of the five delocalized carbons carry charge, the middle one most of all, and protonating that middle carbon is what makes the product 1,4 rather than 1,3. Every regiochemical statement in this section is that one picture.',
+  note: 'The third frame of the top row is the one to stare at. Three of the five delocalized carbons carry charge, in roughly equal shares, and protonating the middle one of the three is what makes the product 1,4 rather than 1,3. Every regiochemical statement in this section is that one picture.',
 });
 
 /* A section whose one figure was a text hub map, in a chapter where the
@@ -16035,6 +16050,450 @@ FIGURES.push({
   },
   caption: 'The two things a diazonium salt does, drawn. On the way in it is made from an amine and nitrosonium at 0&ndash;5 &deg;C; on the way out, if the other partner is activated enough, it is itself the electrophile of an ordinary electrophilic aromatic substitution &mdash; arenium ion and all.',
   note: 'What makes the bottom row possible is that the ring being attacked is a <b>phenoxide</b>: the δ&minus; marked on its para carbon is exactly the delocalization the phenols section drew. Run the same coupling below pH 8 and there is no phenoxide; run it above pH 10 and the diazonium ion is converted to an unreactive diazotate. Both ends of that window are examined.',
+});
+
+/* ----------------------------------------------------------------- 73 ---
+   The chapter's central drawing operation — open the pi bond and bracket
+   what is left, or join two groups and take the water out — was never once
+   drawn. Three rows, monomer on the left and repeat unit on the right. */
+FIGURES.push({
+  id: 'monomer-to-repeat-unit',
+  section: 'polymer-basics',
+  anchor: '<p class="step-body">Regiochemistry follows the same rule it always has: whichever end of the alkene gives the more stable intermediate is where the chain attaches. For a monosubstituted alkene that gives <b>head-to-tail</b> linking, with all the substituents on alternating carbons.</p>',
+  viewBox: '0 0 760 510',
+  alt: 'Ethylene and propylene each drawn with their double bond beside the bracketed repeat unit they give, and adipic acid with ethylene glycol drawn beside the bracketed polyester repeat unit with two waters leaving',
+  build() {
+    let s = '';
+    /* A polymer bracket: the upright with two short arms turned toward the
+       repeat unit, which is how a repeat unit is written by hand. */
+    const brack = (x, y, h, dir) => {
+      const t = y - h / 2, b = y + h / 2;
+      return `<path class="fg-bond" d="M${x + 10 * dir} ${t} L${x} ${t} L${x} ${b} L${x + 10 * dir} ${b}"></path>`;
+    };
+    s += tag(380, 26, 'MONOMER IN, REPEAT UNIT OUT');
+
+    /* Row 1 — ethylene. */
+    const y1 = 86;
+    s += atom(110, y1, 'CH₂', { r: 18 });
+    s += atom(186, y1, 'CH₂', { r: 18 });
+    s += bond(P(110, y1), P(186, y1), { order: 2, rFrom: 18, rTo: 18 });
+    s += arrow(P(232, y1), P(308, y1), { muted: true });
+    s += brack(346, y1, 54, 1);
+    s += atom(398, y1, 'CH₂', { r: 18 });
+    s += atom(474, y1, 'CH₂', { r: 18 });
+    s += bond(P(346, y1), P(398, y1), { rFrom: 0, rTo: 18 });
+    s += bond(P(398, y1), P(474, y1), { rFrom: 18, rTo: 18 });
+    s += bond(P(474, y1), P(526, y1), { rFrom: 18, rTo: 0 });
+    s += brack(526, y1, 54, -1);
+    s += text(538, y1 + 22, 'n', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(648, y1 - 4, 'polyethylene', { cls: 'fg-tag-good', size: 11 });
+    s += text(648, y1 + 14, 'same atoms, nothing lost', { cls: 'fg-sm', size: 9.5 });
+    s += text(270, y1 + 40, 'the π bond opens', { cls: 'fg-sm', size: 9.5 });
+    s += rule(40, 148, 720, 148);
+
+    /* Row 2 — propylene, and the carbon tacticity is about. */
+    const y2 = 252;
+    s += atom(110, y2, 'CH₂', { r: 18 });
+    s += atom(186, y2, 'CH', { r: 16 });
+    s += bond(P(110, y2), P(186, y2), { order: 2, rFrom: 18, rTo: 16 });
+    s += atom(244, 196, 'CH₃', { r: 18 });
+    s += bond(P(186, y2), P(244, 196), { rFrom: 16, rTo: 18 });
+    s += arrow(P(300, y2), P(372, y2), { muted: true });
+    s += brack(406, y2, 54, 1);
+    s += atom(458, y2, 'CH₂', { r: 18 });
+    s += atom(534, y2, 'CH', { kind: 'hi', r: 16 });
+    s += atom(534, 196, 'CH₃', { r: 18 });
+    s += bond(P(406, y2), P(458, y2), { rFrom: 0, rTo: 18 });
+    s += bond(P(458, y2), P(534, y2), { rFrom: 18, rTo: 16 });
+    s += bond(P(534, y2), P(534, 196), { rFrom: 16, rTo: 18 });
+    s += bond(P(534, y2), P(586, y2), { rFrom: 16, rTo: 0 });
+    s += brack(586, y2, 54, -1);
+    s += text(598, y2 + 22, 'n', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(672, y2 - 4, 'polypropylene', { cls: 'fg-tag-good', size: 11 });
+    s += text(380, y2 + 44, 'the highlighted carbon is the one whose orientation along the chain tacticity describes', { cls: 'fg-sm', size: 9.5 });
+    s += rule(40, 314, 720, 314);
+
+    /* Row 3 — a step-growth pair, and the water that leaves. */
+    const y3 = 362;
+    s += atom(96, y3, 'HO₂C', { kind: 'hi', r: 23, size: 9 });
+    s += atom(180, y3, '(CH₂)₄', { r: 26, size: 9 });
+    s += atom(266, y3, 'CO₂H', { kind: 'hi', r: 23, size: 9 });
+    s += bond(P(96, y3), P(180, y3), { rFrom: 23, rTo: 26 });
+    s += bond(P(180, y3), P(266, y3), { rFrom: 26, rTo: 23 });
+    s += text(318, y3 + 5, '+', { cls: 'fg-lbl', size: 14 });
+    s += atom(374, y3, 'HO', { kind: 'hi', r: 18 });
+    s += atom(452, y3, 'CH₂CH₂', { r: 29, size: 9 });
+    s += atom(528, y3, 'OH', { kind: 'hi', r: 18 });
+    s += bond(P(374, y3), P(452, y3), { rFrom: 18, rTo: 29 });
+    s += bond(P(452, y3), P(528, y3), { rFrom: 29, rTo: 18 });
+    s += text(648, y3 - 4, 'adipic acid, ethylene glycol', { cls: 'fg-tag', size: 10.5 });
+    s += text(648, y3 + 14, 'two sites on each monomer', { cls: 'fg-sm', size: 9.5 });
+
+    const y4 = 434;
+    s += arrow(P(56, y4), P(126, y4), { muted: true });
+    s += text(91, y4 - 12, '− 2 H₂O', { cls: 'fg-sm', size: 10 });
+    s += brack(160, y4, 54, 1);
+    s += atom(200, y4, 'O', { r: 15 });
+    s += atom(268, y4, 'CH₂CH₂', { r: 29, size: 9 });
+    s += atom(338, y4, 'O', { r: 15 });
+    s += atom(396, y4, 'CO', { kind: 'hi', r: 17 });
+    s += atom(466, y4, '(CH₂)₄', { r: 26, size: 9 });
+    s += atom(536, y4, 'CO', { kind: 'hi', r: 17 });
+    s += bond(P(160, y4), P(200, y4), { rFrom: 0, rTo: 15 });
+    s += bond(P(200, y4), P(268, y4), { rFrom: 15, rTo: 29 });
+    s += bond(P(268, y4), P(338, y4), { rFrom: 29, rTo: 15 });
+    s += bond(P(338, y4), P(396, y4), { rFrom: 15, rTo: 17 });
+    s += bond(P(396, y4), P(466, y4), { rFrom: 17, rTo: 26 });
+    s += bond(P(466, y4), P(536, y4), { rFrom: 26, rTo: 17 });
+    s += bond(P(536, y4), P(580, y4), { rFrom: 17, rTo: 0 });
+    s += brack(580, y4, 54, -1);
+    s += text(592, y4 + 22, 'n', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(668, y4 - 4, 'a polyester', { cls: 'fg-tag-good', size: 11 });
+    s += text(668, y4 + 14, 'lighter than its monomers', { cls: 'fg-sm', size: 9.5 });
+    s += text(380, 496, 'One water leaves per ester made, so the repeat unit no longer weighs what the monomers did.', { cls: 'fg-lbl', size: 11.5 });
+    return s;
+  },
+  caption: 'The whole chapter’s drawing skill in three rows. For an alkene, open the π bond and bracket what is left; for a step-growth pair, join the two groups and take the water out. The bracket with a bond leaving each side is the notation: it means this piece continues in both directions.',
+  note: 'Count the atoms across each arrow and the diagnostic falls out on its own. Rows one and two lose nothing, so the repeat unit weighs exactly what its monomer did. Row three is lighter than its two monomers by one water for every ester bond it contains — two of them, for this repeat unit — and that difference is the only evidence you need that a small molecule was expelled.',
+});
+
+/* ----------------------------------------------------------------- 74 ---
+   The chapter's core mechanism was prose only, while the halogenation
+   section three chapters back draws the identical anatomy. Same fishhooks,
+   with a C=C in place of a C-H, and the two terminations drawn apart. */
+FIGURES.push({
+  id: 'polymer-chain-drawn',
+  section: 'addition-polymers',
+  anchor: 'Only the last of the three lowers the radical concentration, which is why adding a transfer agent shortens the chains without slowing the reaction down.</div>',
+  viewBox: '0 0 760 752',
+  alt: 'Six drawn steps of a radical polymerization with single-barbed fishhook arrows: homolysis of a peroxide, the first radical adding to a monomer, propagation, chain transfer to a thiol, termination by combination, and termination by disproportionation giving one saturated chain and one with a terminal double bond',
+  build() {
+    let s = '';
+    const head2 = (y, a, b) => {
+      s += tag(48, y - 48, a, { anchor: 'start' });
+      s += text(48, y - 30, b, { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    };
+
+    /* 1. Initiation: the peroxide splits. */
+    head2(96, 'INITIATION', 'radicals 0 → 2');
+    s += atom(160, 96, 'RO', { r: 18 });
+    s += atom(236, 96, 'OR', { r: 18 });
+    s += bond(P(160, 96), P(236, 96), { rFrom: 18, rTo: 18 });
+    s += fishhook(P(190, 90), P(168, 70), { bow: 12 });
+    s += fishhook(P(206, 90), P(228, 70), { bow: -12 });
+    s += arrow(P(282, 96), P(350, 96), { muted: true });
+    s += text(316, 84, 'Δ', { cls: 'fg-sm', size: 10 });
+    s += atom(394, 96, 'RO', { r: 18 });
+    s += dot(414, 82);
+    s += text(440, 101, '+', { cls: 'fg-lbl', size: 13 });
+    s += atom(486, 96, 'RO', { r: 18 });
+    s += dot(506, 82);
+    s += text(380, 142, 'two fishhooks, one per electron: the weak O–O bond splits down the middle', { cls: 'fg-sm', size: 9.5 });
+    s += rule(40, 166, 720, 166);
+
+    /* 2. Initiation, second half: that radical adds to a monomer. */
+    head2(216, 'FIRST ADDITION', 'radicals 1 → 1');
+    s += atom(150, 216, 'RO', { r: 18 });
+    s += dot(168, 203);
+    s += text(200, 221, '+', { cls: 'fg-lbl', size: 13 });
+    s += atom(252, 216, 'CH₂', { r: 18 });
+    s += atom(330, 216, 'CHX', { r: 20, size: 9.5 });
+    s += bond(P(252, 216), P(330, 216), { order: 2, rFrom: 18, rTo: 20 });
+    s += fishhook(P(176, 209), P(230, 206), { bow: -16 });
+    s += fishhook(P(294, 202), P(316, 192), { bow: -12 });
+    s += arrow(P(378, 216), P(446, 216), { muted: true });
+    s += atom(492, 216, 'RO', { r: 18 });
+    s += atom(556, 216, 'CH₂', { r: 18 });
+    s += atom(620, 216, 'CHX', { r: 20, size: 9.5 });
+    s += bond(P(492, 216), P(556, 216), { rFrom: 18, rTo: 18 });
+    s += bond(P(556, 216), P(620, 216), { rFrom: 18, rTo: 20 });
+    s += dot(634, 202);
+    s += text(560, 262, 'the radical lands on the substituted carbon — head-to-tail', { cls: 'fg-sm', size: 9.5 });
+    s += rule(40, 278, 720, 278);
+
+    /* 3. Propagation. */
+    head2(336, 'PROPAGATION', 'radicals 1 → 1');
+    s += atom(140, 336, '~CH₂', { r: 23, size: 9 });
+    s += atom(204, 336, 'CHX', { r: 20, size: 9.5 });
+    s += bond(P(140, 336), P(204, 336), { rFrom: 23, rTo: 20 });
+    s += dot(218, 322);
+    s += text(250, 341, '+', { cls: 'fg-lbl', size: 13 });
+    s += atom(300, 336, 'CH₂', { r: 18 });
+    s += atom(366, 336, 'CHX', { r: 20, size: 9.5 });
+    s += bond(P(300, 336), P(366, 336), { order: 2, rFrom: 18, rTo: 20 });
+    s += fishhook(P(226, 330), P(280, 330), { bow: -18 });
+    s += fishhook(P(332, 322), P(352, 312), { bow: -12 });
+    s += arrow(P(410, 336), P(470, 336), { muted: true });
+    s += atom(518, 336, '~CH₂', { r: 23, size: 9 });
+    s += atom(582, 336, 'CHX', { r: 20, size: 9.5 });
+    s += atom(644, 336, 'CH₂', { r: 18 });
+    s += atom(706, 336, 'CHX', { r: 20, size: 9.5 });
+    s += bond(P(518, 336), P(582, 336), { rFrom: 23, rTo: 20 });
+    s += bond(P(582, 336), P(644, 336), { rFrom: 20, rTo: 18 });
+    s += bond(P(644, 336), P(706, 336), { rFrom: 18, rTo: 20 });
+    s += dot(720, 322);
+    s += text(360, 384, 'one unit longer, one radical still at the end — repeat this a few thousand times', { cls: 'fg-sm', size: 9.5 });
+    s += rule(40, 398, 720, 398);
+
+    /* 4. Chain transfer. */
+    head2(456, 'CHAIN TRANSFER', 'radicals 1 → 1');
+    s += atom(140, 456, '~CH₂', { r: 23, size: 9 });
+    s += atom(204, 456, 'CHX', { r: 20, size: 9.5 });
+    s += bond(P(140, 456), P(204, 456), { rFrom: 23, rTo: 20 });
+    s += dot(218, 442);
+    s += text(250, 461, '+', { cls: 'fg-lbl', size: 13 });
+    s += atom(302, 456, 'RS', { r: 18 });
+    s += atom(368, 456, 'H', { r: 14 });
+    s += bond(P(302, 456), P(368, 456), { rFrom: 18, rTo: 14 });
+    s += fishhook(P(226, 448), P(352, 444), { bow: -24 });
+    s += fishhook(P(346, 462), P(322, 462), { bow: 12 });
+    s += arrow(P(410, 456), P(470, 456), { muted: true });
+    s += atom(520, 456, '~CH₂', { r: 23, size: 9 });
+    s += atom(592, 456, 'CH₂X', { r: 25, size: 9 });
+    s += bond(P(520, 456), P(592, 456), { rFrom: 23, rTo: 25 });
+    s += text(638, 461, '+', { cls: 'fg-lbl', size: 13 });
+    s += atom(684, 456, 'RS', { r: 18 });
+    s += dot(702, 443);
+    s += text(380, 504, 'that chain is dead, but a new radical carries on — the count never changed', { cls: 'fg-sm', size: 9.5 });
+    s += rule(40, 518, 720, 518);
+
+    /* 5. Termination by combination. */
+    head2(576, 'TERMINATION — COMBINATION', 'radicals 2 → 0');
+    s += atom(140, 576, '~CH₂', { r: 23, size: 9 });
+    s += atom(204, 576, 'CHX', { r: 20, size: 9.5 });
+    s += bond(P(140, 576), P(204, 576), { rFrom: 23, rTo: 20 });
+    s += dot(219, 563);
+    s += text(250, 581, '+', { cls: 'fg-lbl', size: 13 });
+    s += atom(300, 576, 'XHC', { r: 20, size: 9.5 });
+    s += atom(366, 576, 'CH₂~', { r: 23, size: 9 });
+    s += bond(P(300, 576), P(366, 576), { rFrom: 20, rTo: 23 });
+    s += dot(285, 563);
+    s += fishhook(P(224, 568), P(248, 592), { bow: -14 });
+    s += fishhook(P(280, 568), P(258, 592), { bow: 14 });
+    s += arrow(P(414, 576), P(474, 576), { muted: true });
+    s += atom(524, 576, '~CH₂', { r: 23, size: 9 });
+    s += atom(588, 576, 'CHX', { r: 20, size: 9.5 });
+    s += atom(652, 576, 'XHC', { r: 20, size: 9.5 });
+    s += atom(716, 576, 'CH₂~', { r: 23, size: 9 });
+    s += bond(P(524, 576), P(588, 576), { rFrom: 23, rTo: 20 });
+    s += bond(P(588, 576), P(652, 576), { rFrom: 20, rTo: 20 });
+    s += bond(P(652, 576), P(716, 576), { rFrom: 20, rTo: 23 });
+    s += text(620, 622, 'one chain, of the two lengths added together', { cls: 'fg-sm', size: 9.5 });
+    s += rule(40, 636, 720, 636);
+
+    /* 6. Termination by disproportionation. */
+    head2(696, 'TERMINATION — DISPROPORTIONATION', 'radicals 2 → 0');
+    s += atom(124, 696, '~CH₂', { r: 23, size: 9 });
+    s += atom(188, 696, 'CHX', { r: 20, size: 9.5 });
+    s += bond(P(124, 696), P(188, 696), { rFrom: 23, rTo: 20 });
+    s += dot(203, 683);
+    s += text(232, 701, '+', { cls: 'fg-lbl', size: 13 });
+    s += atom(282, 696, 'XHC', { r: 20, size: 9.5 });
+    s += atom(350, 696, 'CH₂', { r: 18 });
+    s += atom(412, 696, '~', { r: 12, size: 12 });
+    s += bond(P(282, 696), P(350, 696), { rFrom: 20, rTo: 18 });
+    s += bond(P(350, 696), P(412, 696), { rFrom: 18, rTo: 12 });
+    s += dot(267, 683);
+    s += fishhook(P(210, 690), P(336, 682), { bow: -22 });
+    s += fishhook(P(340, 710), P(302, 710), { bow: 14 });
+    s += text(352, 736, 'the β-H, on the carbon next to the other radical', { cls: 'fg-sm', size: 9.5 });
+    s += arrow(P(446, 696), P(500, 696), { muted: true });
+    s += atom(544, 696, '~CH₂', { r: 23, size: 9 });
+    s += atom(614, 696, 'CH₂X', { r: 25, size: 9 });
+    s += bond(P(544, 696), P(614, 696), { rFrom: 23, rTo: 25 });
+    s += text(656, 701, '+', { cls: 'fg-lbl', size: 13 });
+    s += atom(690, 696, 'XC', { r: 16 });
+    s += atom(740, 696, 'CH~', { r: 19, size: 9.5 });
+    s += bond(P(690, 696), P(740, 696), { order: 2, gap: 3.4, rFrom: 16, rTo: 19 });
+    s += text(590, 736, 'saturated', { cls: 'fg-tag-good', size: 9.5 });
+    s += text(690, 736, 'a C=C at the end', { cls: 'fg-tag-good', size: 9.5 });
+    return s;
+  },
+  caption: 'The same four-part anatomy as radical halogenation, with a C=C in place of a C–H. Every arrow here has <b>one barb</b>, because every arrow moves one electron, and nothing carries a charge at any point — if a step you have drawn produces a cation or an anion, it was not a radical step.',
+  note: 'Read the left-hand column and the mechanism sorts itself. Initiation makes radicals, propagation and chain transfer conserve them, and only termination destroys them — which is why a chain adds thousands of units before two ends happen to meet. The two terminations are worth separating: combination fuses the two chains into one, while disproportionation hands back two dead chains, one of them carrying a double bond that was not in any monomer.',
+});
+
+/* ----------------------------------------------------------------- 75 ---
+   Tacticity is a three-dimensional idea taught in words. Wedges and dashes
+   are the only way to show that the three polymers differ in nothing else. */
+FIGURES.push({
+  id: 'three-polypropylenes',
+  section: 'addition-polymers',
+  anchor: 'Stereocontrol and the absence of branching both come out of that single fact: the chain end is held, so it can neither flip nor curl back onto itself.</p>',
+  viewBox: '0 0 760 430',
+  alt: 'Three identical eight-carbon zig-zag backbones with their methyl groups drawn on wedges and dashes: all wedges for isotactic, alternating for syndiotactic, and an irregular mixture for atactic',
+  build() {
+    let s = '';
+    s += tag(380, 26, 'SAME CONNECTIVITY, SAME FORMULA, THREE MATERIALS');
+    const chain = (y, pattern, name, note, kind) => {
+      const xs = [], n = 8;
+      for (let i = 0; i < n; i++) xs.push({ x: 146 + i * 44, y: i % 2 === 0 ? y : y - 28 });
+      for (let i = 0; i < n - 1; i++) s += bond(P(xs[i].x, xs[i].y), P(xs[i + 1].x, xs[i + 1].y), { rFrom: 0, rTo: 0 });
+      for (const p of xs) s += atom(p.x, p.y, '', { kind: 'point' });
+      pattern.forEach((w, k) => {
+        const p = xs[k * 2];
+        const tip = P(p.x, p.y + 40);
+        s += (w ? wedge : hash)(P(p.x, p.y), tip, { rFrom: 0, rTo: 17 });
+        s += atom(tip.x, tip.y, 'CH₃', { r: 17, size: 9 });
+      });
+      s += text(62, y - 20, name, { cls: kind, size: 12, anchor: 'start' });
+      s += text(466, y - 8, note[0], { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+      s += text(466, y + 8, note[1], { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    };
+    chain(104, [true, true, true, true], 'isotactic',
+      ['every methyl on the same face:', 'chains register — crystalline, Tm ≈ 165 °C'], 'fg-tag-good');
+    s += rule(40, 174, 720, 174);
+    chain(240, [true, false, true, false], 'syndiotactic',
+      ['a regular alternation is a pattern too,', 'so these chains pack as well'], 'fg-tag-good');
+    s += rule(40, 310, 720, 310);
+    chain(376, [true, true, false, true], 'atactic',
+      ['no pattern: no two stretches of chain', 'match, so nothing packs — a goo'], 'fg-tag-warn');
+    return s;
+  },
+  caption: 'Three polypropylenes, drawn with the wedge-and-dash convention from the stereochemistry chapter. Nothing differs but which face each methyl points to, and that is enough to separate a car bumper from a sticky goo.',
+  note: 'The practical lesson is a drawing habit: put the backbone down flat as a zig-zag first, and only then decide, carbon by carbon, whether each methyl comes forward or goes back. Drawn any other way the three rows look identical \u2014 and that is exactly the trap, because no formula, no molecular weight and no spectrum of the monomer separates them, while the first is rope, the second a usable plastic and the third a goo.',
+});
+
+/* ----------------------------------------------------------------- 76 ---
+   Seven polymers are named in the condensation section and none is drawn.
+   Four backbones, one bracket each, with the by-product question kept
+   deliberately unanswerable from the drawing. */
+FIGURES.push({
+  id: 'four-backbones',
+  section: 'condensation-polymers',
+  anchor: 'Nothing exotic is happening &mdash; it is amide hydrogen bonding, the same interaction that holds a beta sheet together, multiplied by perfect alignment.</p>',
+  viewBox: '0 0 760 580',
+  alt: 'Four polymer backbones drawn inside repeat-unit brackets: PET with its two esters, nylon 6,6 with dotted hydrogen bonds to a second chain above it, Kevlar drawn dead straight from two para-phenylene rings, and a polyurethane with its carbamate linkage boxed',
+  build() {
+    let s = '';
+    const brack = (x, y, h, dir) => {
+      const t = y - h / 2, b = y + h / 2;
+      return `<path class="fg-bond" d="M${x + 10 * dir} ${t} L${x} ${t} L${x} ${b} L${x + 10 * dir} ${b}"></path>`;
+    };
+    /* A run of labelled groups joined left to right and bracketed at both
+       ends. `gap` is the VISIBLE length of each bond, so the radii of the two
+       groups it joins have to be added on top of it — get that wrong and a
+       bond between two wide labels renders as a dot. */
+    const GAP = 34;
+    const place = (x0, items) => {
+      const out = [];
+      let x = x0;
+      for (const it of items) {
+        x = out.length ? x + out[out.length - 1].r + (it.gap ?? GAP) + it.r : x + it.r;
+        out.push({ x, ...it });
+      }
+      return out;
+    };
+    const draw = (y, x0, items) => {
+      const ps = place(x0, items);
+      let out = brack(x0 - 30, y, 58, 1);
+      out += bond(P(x0 - 30, y), P(ps[0].x, y), { rFrom: 0, rTo: ps[0].r });
+      for (let i = 0; i < ps.length - 1; i++) out += bond(P(ps[i].x, y), P(ps[i + 1].x, y), { rFrom: ps[i].r, rTo: ps[i + 1].r });
+      const last = ps[ps.length - 1];
+      out += bond(P(last.x, y), P(last.x + last.r + 30, y), { rFrom: last.r, rTo: 0 });
+      out += brack(last.x + last.r + 30, y, 58, -1);
+      out += text(last.x + last.r + 42, y + 22, 'n', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+      for (const p of ps) out += atom(p.x, y, p.l, { r: p.r, size: p.size ?? (p.l.length > 3 ? 9 : p.l.length > 2 ? 9.5 : 12), kind: p.kind });
+      return { html: out, ps };
+    };
+
+    /* (a) PET. */
+    s += text(46, 62, 'PET, a polyester', { cls: 'fg-tag-good', size: 11.5, anchor: 'start' });
+    s += draw(96, 120, [
+      { l: 'O', r: 15 }, { l: 'CH₂CH₂', r: 29 }, { l: 'O', r: 15 },
+      { l: 'CO', r: 17, kind: 'hi' }, { l: 'C₆H₄', r: 25 }, { l: 'CO', r: 17, kind: 'hi' },
+    ]).html;
+    s += text(380, 146, 'two esters in every repeat unit, and water can find both of them', { cls: 'fg-sm', size: 9.5 });
+    s += rule(40, 166, 720, 166);
+
+    /* (b) Nylon 6,6, with a neighbouring chain and the hydrogen bonds. */
+    s += text(46, 200, 'nylon 6,6, a polyamide', { cls: 'fg-tag-good', size: 11.5, anchor: 'start' });
+    s += bond(P(110, 224), P(600, 224), { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
+    s += text(138, 219, 'O=C', { cls: 'fg-sm', size: 9.5 });
+    s += text(298, 219, 'O=C', { cls: 'fg-sm', size: 9.5 });
+    s += text(525, 219, 'H–N', { cls: 'fg-sm', size: 9.5 });
+    s += text(676, 224, 'a neighboring chain', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+    s += draw(286, 120, [
+      { l: 'NH', r: 18 }, { l: '(CH₂)₆', r: 28 }, { l: 'NH', r: 18 },
+      { l: 'CO', r: 17, kind: 'hi' }, { l: '(CH₂)₄', r: 28 }, { l: 'CO', r: 17, kind: 'hi' },
+    ]).html;
+    for (const x of [138, 298, 525]) s += `<line class="fg-dash" x1="${x}" y1="232" x2="${x}" y2="264"></line>`;
+    s += text(380, 334, 'N–H···O=C from every amide to the chain alongside — one residue of a β sheet, repeated', { cls: 'fg-sm', size: 9.5 });
+    s += rule(40, 352, 720, 352);
+
+    /* (c) Kevlar. */
+    s += text(46, 388, 'Kevlar, also a polyamide', { cls: 'fg-tag-good', size: 11.5, anchor: 'start' });
+    s += draw(430, 120, [
+      { l: 'NH', r: 18 }, { l: 'C₆H₄', r: 25 }, { l: 'NH', r: 18 },
+      { l: 'CO', r: 17, kind: 'hi' }, { l: 'C₆H₄', r: 25 }, { l: 'CO', r: 17, kind: 'hi' },
+    ]).html;
+    s += text(380, 478, 'both partners aromatic and para, so the chain can neither coil nor bend', { cls: 'fg-sm', size: 9.5 });
+    s += rule(40, 496, 720, 496);
+
+    /* (d) Polyurethane, with the carbamate boxed. */
+    s += text(46, 508, 'a polyurethane', { cls: 'fg-tag-good', size: 11.5, anchor: 'start' });
+    s += panel(112, 516, 170, 62, { kind: 'warn' });
+    s += draw(547, 120, [
+      { l: 'O', r: 15, gap: 26 }, { l: 'CO', r: 17, gap: 26 }, { l: 'NH', r: 18, gap: 26 },
+      { l: 'R', r: 15, gap: 26 }, { l: 'NH', r: 18, gap: 26 }, { l: 'CO', r: 17, gap: 26 },
+      { l: 'O', r: 15, gap: 26 }, { l: 'R′', r: 17, gap: 26 },
+    ]).html;
+    s += text(700, 508, 'the boxed carbamate: every atom of both monomers is still in it', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+    return s;
+  },
+  caption: 'Four backbones, each inside the brackets that mark one repeat unit. Three of the four were made by expelling a small molecule and one was not — and you cannot tell which from the drawn chain, because what names the class is the <b>linkage</b>, not the by-product. To answer that you have to go back to the monomers.',
+  note: 'Stare at the second and third rows together. They carry the same amide linkage and the same hydrogen bond, and the only difference is what sits between: a floppy run of CH₂ in nylon, a flat para-substituted ring in Kevlar. The ring cannot rotate the chain out of line, so every amide in a Kevlar chain sits where its neighbor’s can reach it, and the hydrogen bonds add up along the whole length instead of only where the chain happens to be straight.',
+});
+
+/* ----------------------------------------------------------------- 77 ---
+   Cross-link density is the section's second big idea and was undrawn. The
+   same four chains three times, with only the number of sulfur bridges
+   changing, is the honest way to say "dial". */
+FIGURES.push({
+  id: 'crosslink-dial',
+  section: 'polymer-properties',
+  anchor: '<p class="step-body">Everything a rubber band does is set by where on that dial it sits, and the dial is turned by one number: how much sulfur went in.</p>',
+  viewBox: '0 0 760 340',
+  alt: 'The same four wavy polymer chains drawn three times: loose and staggered with no bridges, tied by three short sulfur bridges, and tied by a dense mesh of them',
+  build() {
+    let s = '';
+    const wavy = (x0, y, len, amp) => {
+      let d = `M${x0} ${y}`;
+      for (let i = 1; i <= 8; i++) {
+        const x = x0 + (len * i) / 8;
+        d += ` Q${x0 + (len * (i - 0.5)) / 8} ${y + (i % 2 ? amp : -amp)} ${x} ${y}`;
+      }
+      return `<path class="fg-bond" fill="none" d="${d}"></path>`;
+    };
+    const YS = [76, 112, 148, 184];
+    const panelAt = (ox, kind, title, stagger, bridges, out1, out2) => {
+      let g = panel(ox, 56, 220, 152, { kind });
+      g += tag(ox + 110, 44, title);
+      YS.forEach((y, i) => { g += wavy(ox + 14 + (stagger ? i * 5 : 0), y, 178, 7); });
+      for (const [bx, a, b] of bridges) {
+        g += `<line class="fg-bond-hi" x1="${ox + bx}" y1="${YS[a] + 8}" x2="${ox + bx}" y2="${YS[b] - 8}"></line>`;
+      }
+      g += text(ox + 110, 232, out1, { cls: kind === 'warn' ? 'fg-tag-warn' : 'fg-tag-good', size: 11.5 });
+      g += text(ox + 110, 250, out2, { cls: 'fg-sm', size: 9.5 });
+      return g;
+    };
+    s += panelAt(24, 'warn', 'no cross-links', true, [],
+      'it flows', 'chains slide past each other for good');
+    s += panelAt(270, null, 'a few percent', false,
+      [[56, 0, 1], [132, 1, 2], [92, 2, 3]],
+      'elastic', 'it deforms, then comes back');
+    s += panelAt(516, null, 'heavily cross-linked', false,
+      [[40, 0, 1], [86, 0, 1], [132, 0, 1], [178, 0, 1],
+       [52, 1, 2], [98, 1, 2], [144, 1, 2],
+       [40, 2, 3], [86, 2, 3], [132, 2, 3], [178, 2, 3]],
+      'hard and brittle', 'nothing can move at all: ebonite');
+    s += text(380, 284, 'Each highlighted bridge is a short run of sulfur atoms, –S–S–, tying one chain to the next.', { cls: 'fg-lbl', size: 11.5 });
+    s += rule(24, 302, 700, 302);
+    s += text(380, 326, 'One variable — how much sulfur — and three materials come out of it.', { cls: 'fg-lbl', size: 12 });
+    return s;
+  },
+  caption: 'Cross-linking as a dial rather than a switch. The chains are the same in all three panels and so is the chemistry; only the number of bridges between them changes, and that alone takes the material from a gum that flows to a tire and then to something you could make a bowling ball from.',
+  note: 'The middle panel is where the entropy argument lives. Pull on it and the coiled chains straighten, which costs a great deal of conformational freedom; let go and that freedom is what pulls them back. Without the bridges the chains would simply slide past one another and stay where you left them, which is the left-hand panel; with too many of them nothing can straighten in the first place, which is the right.',
 });
 
 const START = (id) => `<!-- fig:${id}:start -->`;

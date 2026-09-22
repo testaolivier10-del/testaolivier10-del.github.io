@@ -67,6 +67,17 @@
 
 <div class="notes-fact">Check the atom count as well. Cut a polyester and you get a diacid and a diol; add their formulas and subtract the repeat unit, and the difference should be water &mdash; <b>one molecule per linkage in the repeat unit</b>. For a diacid-plus-diol polyester that is two. PET: C<sub>8</sub>H<sub>6</sub>O<sub>4</sub> (166) plus C<sub>2</sub>H<sub>6</sub>O<sub>2</sub> (62) minus the C<sub>10</sub>H<sub>8</sub>O<sub>4</sub> repeat unit (192) leaves 36, which is 2 H<sub>2</sub>O. If the difference is not a whole number of waters, the disconnection is wrong.</div>
 
+<div class="notes-example">
+<span class="k">Worked example &mdash; identify an unknown polymer from its drawn backbone</span>
+<p><b>Given.</b> A repeat unit &ndash;[NH&ndash;CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>&ndash;NH&ndash;CO&ndash;C<sub>6</sub>H<sub>4</sub>(para)&ndash;CO]&ndash;.</p>
+<p><b>Step 1 &mdash; what is in the backbone?</b> Walk it and name every group you pass. There are two N&ndash;CO units, so they are amides: this is a polyamide, and it came from a diacid and a diamine.</p>
+<p><b>Step 2 &mdash; cut every amide C&ndash;N bond.</b> Put OH on the carbonyl side and H on the nitrogen side. Out come H<sub>2</sub>N(CH<sub>2</sub>)<sub>6</sub>NH<sub>2</sub> and HO<sub>2</sub>C&ndash;C<sub>6</sub>H<sub>4</sub>&ndash;CO<sub>2</sub>H.</p>
+<p><b>Step 3 &mdash; check each fragment has two sites.</b> The diamine has two NH<sub>2</sub>; the diacid has two CO<sub>2</sub>H. Both pass, so the cut was in the right place.</p>
+<p><b>Step 4 &mdash; name it.</b> Hexamethylenediamine plus terephthalic acid, an aromatic nylon with <i>one</i> aromatic partner rather than two. This is nylon 6,T, and it is not Kevlar: Kevlar needs <b>both</b> monomers aromatic and para.</p>
+<p><b>Step 5 &mdash; predict the material.</b> One rigid aromatic ring per repeat unit plus amide hydrogen bonds between chains gives something higher-melting and stiffer than nylon 6,6 &mdash; but the flexible (CH<sub>2</sub>)<sub>6</sub> run that Kevlar has no equivalent of means it can still be melt-processed, where Kevlar has to be spun from solution.</p>
+<p><b>The trap in step 2.</b> Cutting the <i>other</i> C&ndash;N bond, the one to the CH<sub>2</sub>, hands you a fragment with an NH<sub>2</sub> at one end and nothing at the other. Whenever a fragment comes back with a single site, you cut the wrong bond.</p>
+</div>
+
 <h3>Choosing monomers for a property</h3>
 
 <div class="notes-table-wrap">
@@ -76,7 +87,7 @@
 <tr><td>High strength</td><td>Aromatic rings, para-substituted</td><td>Rigid, straight chains that align</td></tr>
 <tr><td>Hydrolytic resistance</td><td>Amides rather than esters</td><td>Amides are the least reactive acyl derivative</td></tr>
 <tr><td>Flexibility</td><td>Long flexible spacers, or branching</td><td>Lowers T<sub>g</sub>, prevents packing</td></tr>
-<tr><td>Transparency</td><td>Amorphous structure: atactic or bulky</td><td>No crystalline regions to scatter light</td></tr>
+<tr><td>Transparency</td><td>Amorphous structure: atactic, bulky side groups, or an irregularly shaped rigid backbone</td><td>No crystalline regions to scatter light</td></tr>
 <tr><td>A shape that will not melt</td><td>A trifunctional monomer</td><td>Three sites gives a network</td></tr>
 <tr><td>Degradability</td><td>Ester bonds in the backbone</td><td>They hydrolyze, and enzymes can reach them</td></tr>
 </tbody>
@@ -91,9 +102,19 @@
 
 <ul class="step-body">
 <li><b>Mechanical recycling.</b> Melt and remold. Only works for thermoplastics, and each cycle shortens the chains a little, so the material degrades with reuse.</li>
-<li><b>Chemical recycling.</b> Depolymerize back to monomers and rebuild. Doing it by <i>hydrolysis</i> needs a backbone that can be cleaved, so it works for <b>PET</b> and for nylon and not for polyethylene &mdash; a C&ndash;C backbone has no bond that hydrolysis can select. Polyethylene can be cracked thermally back to a mixture of olefins and naphtha, but that is pyrolysis: it destroys the chain indiscriminately and returns feedstock, not monomer.</li>
+<li><b>Chemical recycling.</b> Depolymerize back to monomers and rebuild. Doing it by <i>hydrolysis</i> needs a backbone that can be cleaved, so it works for <b>PET</b> and for nylon and not for polyethylene &mdash; a C&ndash;C backbone has no bond that hydrolysis can select. Polyethylene can be cracked thermally &mdash; heated hard enough to break C&ndash;C bonds at random &mdash; back to a mixture of small alkenes and hydrocarbon oil. That is <i>pyrolysis</i>, and the distinction matters: it destroys the chain indiscriminately and returns a feedstock that has to be refined all over again, not the monomer you started from.</li>
 <li><b>Degradation.</b> Polyesters such as PLA hydrolyze, and given the right conditions organisms can finish the job. Polyolefins essentially do not, because there is nothing in a saturated hydrocarbon chain for water or an enzyme to attack.</li>
 </ul>
+
+<p class="step-body">"Depolymerize" is not a new reaction. It is acyl substitution run backwards, with the by-product now supplied in excess instead of being stripped out. For PET there are three ways to do it, and they differ only in the nucleophile:</p>
+
+<ul class="step-body">
+<li><b>Hydrolysis</b> &mdash; water, acid- or base-catalyzed. Gives terephthalic acid and ethylene glycol, the original monomers.</li>
+<li><b>Methanolysis</b> &mdash; methanol, so a transesterification. Gives dimethyl terephthalate and ethylene glycol, which is the other pair PET is made from industrially.</li>
+<li><b>Glycolysis</b> &mdash; excess ethylene glycol, also a transesterification. Cuts the chains back to the monomeric diester BHET, which can be polymerized straight back up.</li>
+</ul>
+
+<div class="notes-fact">Notice what makes all three work: Le Ch&acirc;telier, not new chemistry. Polymerization drives the ester equilibrium one way by removing the small molecule; depolymerization drives it the other way by flooding the system with it. The same reversibility that forced the plant to strip water out continuously is what lets the bottle be unmade twenty years later.</div>
 
 <div class="notes-fact">This is why PET can be hydrolyzed back to its monomers and polyethylene cannot, and the reason is a single functional group. An ester in the backbone is a handle; a C&ndash;C backbone is not. The properties that make polyethylene cheap, inert and durable are exactly the ones that make it permanent.</div>
 
@@ -103,6 +124,8 @@
 <!-- fig:backbone-decides:end -->
 
 <p class="step-body"><b>PLA</b> &mdash; polylactic acid &mdash; is the clearest example of designing for the end. Lactic acid carries both an OH and a COOH, so it is its own diol-and-diacid and polymerizes with itself. The resulting polyester hydrolyzes back to lactic acid, which is a normal metabolite.</p>
+
+<p class="step-body">In practice it is made in two stages, and the reason is the arithmetic from the previous section. Condensing lactic acid directly stalls at an oligomer, because water cannot be pulled out of a melt that viscous and the equilibrium stops well short of the conversion a material needs. So the oligomer is cracked to <b>lactide</b>, the cyclic diester of two lactic acids, and that is polymerized by ring-opening instead &mdash; a chain-growth process that loses nothing and does reach fiber-grade molecular weight. The backbone is identical either way: a polyester of lactic acid.</p>
 
 <p class="step-body">The qualifier matters, though: PLA composts efficiently in an industrial facility, which runs hot and wet with the right microbes, and negligibly in a garden heap or in seawater &mdash; in seawater it shows essentially no measurable breakdown over years. "Biodegradable" is a claim about conditions as much as about structure.</p>
 

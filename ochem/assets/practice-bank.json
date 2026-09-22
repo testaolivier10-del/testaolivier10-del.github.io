@@ -39341,7 +39341,7 @@
     "The 1,4 is more stable"
    ],
    "correct": 2,
-   "why": "Protonation happens where charge density is highest, not where stability is greatest.",
+   "why": "Protonation happens at the central carbon of the delocalized anion, which is not where the more stable product would come from.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -39597,11 +39597,11 @@
    "options": [
     "The least hindered",
     "Randomly",
-    "Where the carbanion's charge is highest",
+    "At the anion's central carbon",
     "The most substituted"
    ],
    "correct": 2,
-   "why": "Which is what sets the 1,4 relationship in the product.",
+   "why": "The pentadienyl anion is protonated at its middle carbon, and that is what puts the two remaining double bonds 1,4 rather than 1,3.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -40273,16 +40273,16 @@
    "type": "mcq"
   },
   {
-   "q": "Which grows faster in an addition polymerization?",
+   "q": "Halfway through a polymerization you stop it and analyze the mixture. You find long polymer chains plus a great deal of unreacted monomer and almost nothing in between. Which kind was it?",
    "options": [
-    "Only the shortest chains",
-    "Nothing until the end",
-    "Individual chains",
-    "All chains together, slowly"
+    "Step-growth, because any two pieces can join",
+    "Chain-growth, because a chain reaches full length as soon as it starts",
+    "Either kind; the mixture looks the same for both",
+    "Neither kind; that mixture cannot occur"
    ],
-   "correct": 2,
-   "why": "One active end adds monomer very fast, so long chains exist from the start.",
-   "difficulty": "easy",
+   "correct": 1,
+   "why": "In a chain-growth polymerization a chain is either active or dead, and an active chain swallows thousands of monomers in seconds, so the flask holds long polymer beside untouched monomer with little between them. A step-growth mixture is the opposite picture: at 50% conversion the average piece is a dimer, so you would find a broad soup of oligomers and hardly any monomer left.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -40312,15 +40312,15 @@
    "type": "mcq"
   },
   {
-   "q": "What is the degree of polymerization at 90% conversion?",
+   "q": "A step-growth polymerization has to reach a degree of polymerization of 200. What conversion does that take?",
    "options": [
-    "About 90",
-    "About 100",
-    "About 900",
-    "About 10"
+    "99.5%",
+    "95%",
+    "99.9%",
+    "90%"
    ],
-   "correct": 3,
-   "why": "An oil rather than a plastic.",
+   "correct": 0,
+   "why": "Rearrange DP = 1/(1-p) to p = 1 - 1/DP. With DP = 200 that is 1 - 0.005 = 0.995, so 99.5% of all the functional groups have to have reacted. Read the other way round, the figure that sounds impressive - 99% - buys you only DP = 100, half of what was asked for.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -40364,7 +40364,7 @@
    "type": "mcq"
   },
   {
-   "q": "Which polymer class is nylon?",
+   "q": "Which polymer class is nylon 6,6?",
    "options": [
     "Addition",
     "Chain-growth",
@@ -40390,41 +40390,41 @@
    "type": "mcq"
   },
   {
-   "q": "Why is no new reaction needed for this chapter?",
+   "q": "Styrene, CH2=CHPh, and terephthalic acid plus ethylene glycol are each polymerized. Which statement is true of BOTH products?",
    "options": [
-    "They need only heat",
-    "The reactions are old",
-    "Polymerization is physical",
-    "Polymers form spontaneously"
+    "Each monomer contributed two reactive sites",
+    "Each repeat unit has the same formula as its monomer",
+    "Each join expelled one molecule of water",
+    "Each grew by a radical chain reaction"
    ],
-   "correct": 1,
-   "why": "Alkene addition and acyl substitution, run on a monomer with two ends.",
+   "correct": 0,
+   "why": "The one thing every chain polymer shares is two sites per monomer. Styrene's come from its C=C, terephthalic acid's from its two CO2H groups and the glycol's from its two OH groups. The other three statements are each true of one product and false of the other: only polystyrene keeps its monomer's formula, only the polyester loses water, and only polystyrene grows by a radical chain.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "What does glycerol's three OH groups predict?",
+   "q": "Terephthalic acid is heated with glycerol, HOCH2CH(OH)CH2OH. What comes out?",
    "options": [
-    "A cross-linked network",
-    "A linear chain",
-    "No polymer",
-    "A branched chain only"
+    "A linear polyester, since each join consumes one OH",
+    "No polymer at all, since the two cannot esterify",
+    "An addition polymer, since the aromatic ring supplies the C=C",
+    "A cross-linked polyester, since glycerol carries three OH groups"
    ],
-   "correct": 0,
-   "why": "Three sites lets each monomer join three others.",
-   "difficulty": "easy",
+   "correct": 3,
+   "why": "Count the reactive sites on one monomer and the answer is settled before any mechanism. The diacid has two, so on its own it would extend a line; glycerol has three, so every glycerol can tie itself to three different chains, and repeating that in all directions makes the whole sample one covalent molecule. The chemistry of each join is ordinary esterification, which is why it is still called a polyester - it is the count, not the reaction, that makes it a network.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Which question predicts the material before any mechanism?",
+   "q": "A polymer's repeat unit is C6H10O5 and its monomer is C6H12O6. What happened at each join?",
    "options": [
-    "What the melting point is",
-    "Which catalyst is used",
-    "What the solvent is",
-    "How many sites"
+    "Nothing was expelled; a pi bond opened",
+    "One molecule of water was expelled",
+    "One molecule of methanol was expelled",
+    "A ring opened with no change of formula"
    ],
-   "correct": 3,
-   "why": "One, two or three or more gives three different outcomes.",
+   "correct": 1,
+   "why": "Subtract the formulas: C6H12O6 minus C6H10O5 is H2O. The repeat unit is lighter than the monomer by exactly one water, so a small molecule was condensed out at every join and this was a step-growth. (These are glucose and cellulose.) Counting atoms answered the question without any knowledge of the compound.",
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -40470,15 +40470,15 @@
    "type": "mcq"
   },
   {
-   "q": "What happens in termination?",
+   "q": "Two growing polystyrene radicals meet, and the products are one chain ending in a C=C and one chain ending in a saturated CH. What happened?",
    "options": [
-    "The initiator re-forms",
-    "Two radicals meet",
-    "A monomer is consumed",
-    "The chain branches"
+    "Combination: the two radicals coupled",
+    "Chain transfer to monomer",
+    "Disproportionation: one radical took a beta-hydrogen from the other",
+    "Backbiting inside one of the two chains"
    ],
-   "correct": 1,
-   "why": "Either combining or disproportionating.",
+   "correct": 2,
+   "why": "Two dead chains rather than one is the giveaway. Combination couples the two radicals into a single chain of the combined length; disproportionation has one radical take the hydrogen from the carbon next to the other radical center, which leaves that chain with a double bond and makes the abstracting chain saturated. Chain transfer and backbiting both keep the radical count the same, so neither of them can stop two chains at once.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -40587,16 +40587,16 @@
    "type": "mcq"
   },
   {
-   "q": "What does tacticity describe?",
+   "q": "You need polypropylene stiff enough for a car bumper, and your reactor currently uses a peroxide initiator. What do you change?",
    "options": [
-    "How substituents are arranged along the chain",
-    "The chain length",
-    "The branching",
-    "The cross-link density"
+    "Raise the pressure, to make the chains longer",
+    "Add a chain-transfer agent, to narrow the weight distribution",
+    "Add a trifunctional comonomer, to cross-link the chains",
+    "Switch to a Ziegler-Natta catalyst, to get isotactic chains"
    ],
-   "correct": 0,
-   "why": "Each substituted backbone carbon has a fixed orientation, and tacticity names the pattern they make.",
-   "difficulty": "easy",
+   "correct": 3,
+   "why": "A peroxide gives a free radical chain end, which is planar and has no facial preference, so the methyls land at random and the product is atactic - a goo, whatever its molecular weight. Only a catalyst that holds the chain at a defined metal site forces every monomer to arrive the same way round, and only the isotactic chains that result can pack into crystalline regions. Pressure and transfer agent change the chain length, which is not what is wrong here, and cross-linking would give a thermoset that cannot be molded at all.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -40644,7 +40644,7 @@
     "Atactic",
     "Isotactic",
     "Syndiotactic",
-    "It alternates strictly along the chain"
+    "Isotactic, because the chain end templates the next monomer"
    ],
    "correct": 0,
    "why": "A planar radical has no strong preference about which face the next monomer arrives on.",
@@ -40772,9 +40772,9 @@
    "q": "Why is ordinary polystyrene amorphous?",
    "options": [
     "Radical polymerization places the phenyls at random",
-    "Phenyl groups are too bulky to pack",
-    "It is lightly cross-linked",
-    "Its chains are too short to form crystals"
+    "Phenyl groups are too bulky for chains ever to pack",
+    "Light cross-linking between the rings stops chains registering",
+    "The chains are too short to form any crystalline region"
    ],
    "correct": 0,
    "why": "Syndiotactic polystyrene has the same phenyl group and is crystalline, melting near 270 C, so bulk is not the cause. Atacticity is.",
@@ -40883,7 +40883,7 @@
     "Melting point"
    ],
    "correct": 0,
-   "why": "Six in the diacid and six in the diamine, readable straight from the name.",
+   "why": "Six in the diamine and six in the diacid, in that order, readable straight from the name.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -41044,15 +41044,15 @@
    "type": "mcq"
   },
   {
-   "q": "At 99.9% conversion, what is the degree of polymerization?",
+   "q": "Nylon 6,10 is made from which pair of monomers?",
    "options": [
-    "About 100",
-    "About 10",
-    "About 999",
-    "About 1000"
+    "Decanediamine and adipic acid",
+    "Caprolactam and sebacic acid",
+    "Hexamethylenediamine and sebacic acid",
+    "Hexamethylenediamine and adipic acid"
    ],
-   "correct": 3,
-   "why": "And 99% gives only 100, which is barely a plastic.",
+   "correct": 2,
+   "why": "The first number counts the carbons of the diamine, so 6 means hexamethylenediamine; the second counts the diacid's, so 10 means sebacic acid, HO2C(CH2)8CO2H - ten carbons including the two carboxyl carbons. Swapping the two slots gives decanediamine with adipic acid, which is a different polymer built from the same two numbers, and 6,6 would need adipic acid in the second slot.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -41135,16 +41135,16 @@
    "type": "mcq"
   },
   {
-   "q": "How many reactive groups does each condensation monomer need?",
+   "q": "Which of these step-growth polymerizations expels NO small molecule?",
    "options": [
-    "Two",
-    "One",
-    "Three",
-    "Four"
+    "A diacid plus a diol, giving a polyester",
+    "A diol plus a diisocyanate, giving a polyurethane",
+    "A diacid plus a diamine, giving a polyamide",
+    "Bisphenol A plus phosgene, giving a polycarbonate"
    ],
-   "correct": 0,
-   "why": "The same rule as every chain polymer.",
-   "difficulty": "easy",
+   "correct": 1,
+   "why": "The alcohol adds across the N=C=O group rather than substituting at it, so every atom of both monomers ends up inside the carbamate link and nothing leaves. The polyester and the polyamide each lose water, and the polycarbonate loses HCl because phosgene is an acid chloride. Polyurethane is the reason the class is properly called step-growth rather than condensation.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -41174,15 +41174,15 @@
    "type": "mcq"
   },
   {
-   "q": "What does 90% conversion give in a step-growth?",
+   "q": "Caprolactam is heated with a trace of water and gives nylon 6. What is expelled at each join?",
    "options": [
-    "A thermoset",
-    "An oil, DP about 10",
-    "A useful plastic",
-    "A fiber"
+    "Nothing, although the product is a polyamide",
+    "One water, as in every other polyamide",
+    "HCl, as in the industrial route to Kevlar",
+    "Ammonia, from the ring nitrogen"
    ],
-   "correct": 1,
-   "why": "Which is why these reactions are run to a completeness that looks excessive.",
+   "correct": 0,
+   "why": "Caprolactam is already an amide, closed into a seven-membered ring. The ring opens onto the growing chain end and adds there, so the atoms are rearranged rather than removed and the repeat unit has exactly the monomer's formula. That makes nylon 6 a polyamide reached by a chain-growth ring-opening, which is why the two axes - addition against condensation, and chain-growth against step-growth - have to be asked separately.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -41410,15 +41410,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why does a rubber band warm when stretched?",
+   "q": "Which of these is above its glass transition, and therefore rubbery, at room temperature?",
    "options": [
-    "Crystallization",
-    "Entropy falls",
-    "Friction between chains",
-    "Bonds break"
+    "Atactic polystyrene, Tg about 100 C",
+    "Unplasticized PVC, Tg about 80 C",
+    "Natural rubber, Tg about -70 C",
+    "PET, Tg about 70 C"
    ],
-   "correct": 1,
-   "why": "The standard demonstration that the elasticity is entropic.",
+   "correct": 2,
+   "why": "Room temperature is roughly 20 C, so compare each Tg with that number. Rubber alone is above its transition, and with no crystallinity and only light cross-linking it is free to deform and spring back. The other three are all below their Tg, which is why they are rigid - and it is also why cooling rubber in liquid nitrogen turns it into a glass that shatters.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -41449,16 +41449,16 @@
    "type": "mcq"
   },
   {
-   "q": "Which is recyclable by melting?",
+   "q": "Rigid drainpipe and flexible flooring can both be made from PVC. What differs between them?",
    "options": [
-    "Both",
-    "Neither",
-    "A thermoplastic",
-    "A thermoset"
+    "A plasticizer is mixed into the flexible one, dropping its Tg",
+    "The flexible one has a much lower molecular weight",
+    "The flexible one is atactic and the rigid one isotactic",
+    "The flexible one is lightly cross-linked with sulfur"
    ],
-   "correct": 2,
-   "why": "A network has nothing to loosen.",
-   "difficulty": "easy",
+   "correct": 0,
+   "why": "The polymer is the same on both sides, which is what makes the case worth remembering. Unplasticized PVC has a Tg near 80 C, well above room temperature, so it is a glass. Mixing in 30 to 40% of a phthalate diester spaces the chains apart and weakens the forces between them, dropping Tg below room temperature - so the same polymer is now above its transition in ordinary use. Nothing chemical has happened, which is why the plasticizer can leach out again and leave old PVC brittle.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -41514,16 +41514,16 @@
    "type": "mcq"
   },
   {
-   "q": "What does more crystallinity do to transparency?",
+   "q": "HDPE sits about 140 degrees above its Tg at room temperature, yet it is rigid rather than rubbery. Why?",
    "options": [
-    "Only at high Tm",
-    "Reduces it",
-    "Increases it",
-    "No effect"
+    "Its cross-links have not yet broken",
+    "Its Tm is below room temperature",
+    "It has no amorphous regions at all",
+    "Its crystalline regions act as physical cross-links"
    ],
-   "correct": 1,
-   "why": "Scattering at the boundaries between regions is what causes the cloudiness.",
-   "difficulty": "medium",
+   "correct": 3,
+   "why": "Passing Tg only frees the amorphous fraction; whether the sample then feels rubbery depends on what else is holding it together. In HDPE the crystallites tie the mobile chains to each other exactly as covalent cross-links would, and they keep doing so all the way to Tm at 135 C. The same is true of PET and nylon, which is the reason a polymer needs two transition temperatures rather than one.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -41579,16 +41579,16 @@
    "type": "mcq"
   },
   {
-   "q": "Which property does crystallinity NOT increase?",
+   "q": "Polyisoprene can be vulcanized with sulfur and polyethylene cannot. What is the structural reason?",
    "options": [
-    "Transparency",
-    "Density",
-    "Strength",
-    "Melting point"
+    "Polyethylene chains are too long to reach each other",
+    "Polyethylene has no double bonds, so no allylic C-H bonds",
+    "Polyethylene is already cross-linked by its branches",
+    "Polyethylene melts before the sulfur can open"
    ],
-   "correct": 0,
-   "why": "It reduces transparency, because ordered regions scatter light.",
-   "difficulty": "easy",
+   "correct": 1,
+   "why": "Vulcanization needs somewhere for the sulfur to attack. Polymerizing a diene 1,4 leaves a double bond in every repeat unit of polyisoprene, and the C-H bonds next to it are allylic and therefore weak - the same weakness that made allylic radicals easy to form in earlier chapters. A saturated hydrocarbon chain offers nothing comparable, so the double bond left over from the polymerization is not a leftover at all; it is the handle the whole process depends on.",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -41984,16 +41984,16 @@
    "type": "mcq"
   },
   {
-   "q": "What is the honest summary of the plastics problem?",
+   "q": "You need a clear, rigid sheet that can be sterilized in an autoclave at 121 C. Which polymer, and why?",
    "options": [
-    "Recycling is only economic",
-    "Polymers are inherently toxic",
-    "Better catalysts would fix it",
-    "They are the same thing"
+    "Polystyrene: amorphous and clear, with a Tg of about 100 C",
+    "HDPE: it melts at 135 C, so it survives the autoclave",
+    "Polycarbonate: amorphous so it is clear, and its Tg is near 150 C",
+    "Plasticized PVC: clear, cheap and easily molded"
    ],
-   "correct": 3,
-   "why": "You cannot have an inert, durable material that also disappears.",
-   "difficulty": "medium",
+   "correct": 2,
+   "why": "Two requirements have to be met at once. Clear means amorphous, which rules out HDPE whatever its melting point, because crystalline regions scatter light at every boundary. Rigid at 121 C means a Tg above 121 C, which rules out polystyrene - it would soften and distort at 100 C - and rules out plasticized PVC, whose plasticizer has already dropped its Tg below room temperature. Polycarbonate is amorphous because its bisphenol A backbone is too awkwardly shaped to crystallize, and that same rigid backbone puts its Tg near 150 C.",
+   "difficulty": "hard",
    "type": "mcq"
   }
  ],

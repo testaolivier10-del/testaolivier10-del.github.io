@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function(){
     { id:'p4', t:'Chains with <b>interchain hydrogen bonds</b>', right:'cryst',
       why:'Crystalline, and strongly so. Nylon and Kevlar both work this way: each amide contributes a hydrogen bond to the neighboring chain, and straight chains line those bonds up into sheets.' },
     { id:'p5', t:'<b>Atactic chains with bulky side groups</b>, as in ordinary polystyrene', right:'rigid',
-      why:'Amorphous, but rigid \u2014 the case that shows amorphous does not mean soft. Radical polymerization places the phenyl groups at random, so the chains cannot register with each other and the material is glass-clear. What makes it stiff is a glass transition well above room temperature, not crystallinity, and being amorphous is also why it is brittle rather than tough. The cause is the randomness, not the bulk: syndiotactic polystyrene, made with a metallocene catalyst, has the same phenyl group and is crystalline, melting near 270 \u00b0C.' }
+      why:'Amorphous, but rigid \u2014 the case that shows amorphous does not mean soft. Radical polymerization places the phenyl groups at random, so the chains cannot register with each other and the material is glass-clear. What makes it stiff is a glass transition well above room temperature, not crystallinity, and being amorphous is also why it is brittle rather than tough. The cause is the randomness, not the bulk: syndiotactic polystyrene, made with a metallocene catalyst \u2014 a single-site cousin of Ziegler\u2013Natta \u2014 has the same phenyl group and is crystalline, melting near 270 \u00b0C.' }
   ];
   var OPTS = [ { k:'cryst', l:'Crystalline, strong' }, { k:'soft', l:'Poorly packed, flexible' }, { k:'rigid', l:'Amorphous, but rigid' } ];
 
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'Where cross-links break'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct, and it is why a polymer needs two numbers where a small molecule needs one. Below T<sub>g</sub> the tangled regions are frozen and the material is hard and brittle; above it they can move and it is rubbery. Every polymer has a T<sub>g</sub>; only ones with crystalline regions also have a T<sub>m</sub>.',
+        correctFeedback: 'Correct, and it is why a polymer needs two numbers where a small molecule needs one. Below T<sub>g</sub> the tangled regions are frozen and the material is hard and brittle; above it they can move. Whether the sample then feels rubbery depends on what else is holding it &mdash; with no crystallinity and no cross-links it is rubbery, but HDPE, PET and nylon are all far above their T<sub>g</sub> at room temperature and stay rigid, because their crystallites act as physical cross-links. Essentially every polymer has a T<sub>g</sub>; only ones with crystalline regions also have a T<sub>m</sub>.',
         wrongFeedback: 'There are two transitions and they describe different regions of the sample. Which region does the glass transition belong to?'
       },
       {
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'A stretched rubber band warms slightly, and a stretched one contracts when heated rather than expanding. What explains both?',
+        title: 'Stretching a rubber band warms it, and a rubber band held under tension contracts when you heat it instead of expanding. What explains both?',
         options: [
           'Friction between the chains',
           'Elasticity is entropic: stretching lowers entropy, and heating strengthens the entropic pull back',
