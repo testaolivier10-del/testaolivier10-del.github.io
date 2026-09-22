@@ -6327,7 +6327,7 @@
    "type": "mcq"
   },
   {
-   "q": "Two competing pathways lead to products of different stability. In which case will the product ratio most strongly favor the more stable product?",
+   "q": "Two competing pathways, each a single irreversible step, lead to products of different stability. In which case will the product ratio most strongly favor the more stable product?",
    "options": [
     "When the product-forming step is endothermic",
     "When the product-forming step is strongly exothermic",
@@ -6335,7 +6335,7 @@
     "When the reaction is run at higher temperature"
    ],
    "correct": 0,
-   "why": "An endothermic step has a late, product-like transition state, so whatever stabilizes the product stabilizes the transition state by nearly as much and the barrier falls almost the full amount. In an exothermic step the peak resembles the reactants, which are identical for both routes, so the stability difference barely reaches the barrier.",
+   "why": "An endothermic step has a late, product-like transition state, so whatever stabilizes the product stabilizes the transition state by nearly as much and the barrier falls almost the full amount. In an exothermic step the peak resembles the reactants, which are identical for both routes, so the stability difference barely reaches the barrier. Temperature is not the lever here: with both steps irreversible the ratio is fixed by the two barriers, and raising the temperature shrinks the rate ratio rather than enlarging it. Heat favors the more stable product only when the steps are reversible and the mixture can equilibrate.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -6805,7 +6805,7 @@
     "Its size lets it disperse the charge over a large volume"
    ],
    "correct": 1,
-   "why": "CH₃CH=CH⁺ is a vinyl cation, with the charge on a doubly bonded carbon whose empty orbital cannot reach the π bond beside it — it does not form at all. The allylic cation CH₂=CH–CH₂⁺ is the most stable of the group, the secondary cation next, and even the primary alkyl cation is far better than a vinyl one.",
+   "why": "Oxygen does withdraw inductively, and on its own that would destabilize a neighboring positive charge. Resonance more than pays it back: a lone pair on the oxygen swings into the empty p orbital and gives a second structure, CH₃–O⁺=CH₂, an oxocarbenium ion in which the carbon has a full octet and so does the oxygen. Six electrons on carbon has become eight on every atom, and a complete octet everywhere is worth more than an electronegative atom minds carrying a formal charge. That is also why the effect needs a lone pair — a merely electronegative neighbor with nothing to donate, such as a CF₃ group, destabilizes the cation instead.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -15719,19 +15719,6 @@
    "type": "mcq"
   },
   {
-   "q": "The Z in a stereodescriptor comes from the German zusammen. What does it report about the structure?",
-   "options": [
-    "The double bond lies inside a ring",
-    "The two higher-priority groups are on the same side of the C=C",
-    "The two lowest-priority groups are the ones that face each other",
-    "The compound is optically inactive"
-   ],
-   "correct": 1,
-   "why": "Zusammen means together: Z is assigned when the higher-priority group on one alkene carbon and the higher-priority group on the other lie on the same side of the double bond. E, from entgegen, is the opposite arrangement. Nothing about optical activity or ring membership is carried by the letter.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
    "q": "For which alkene do the words cis and trans apply without ambiguity?",
    "options": [
     "2-Methylbut-2-ene",
@@ -15780,19 +15767,6 @@
    ],
    "correct": 0,
    "why": "A double bond is stereogenic only when each of its carbons carries two different groups. The terminal carbon of but-1-ene is a =CH2 holding two hydrogens, so swapping them returns the identical molecule and there is nothing for a descriptor to distinguish. Every other choice has two different groups at both ends of the bond.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "When assigning E or Z, which two groups are ultimately compared with each other?",
-   "options": [
-    "All four groups, ranked one through four",
-    "The two lowest-priority groups, one from each carbon",
-    "The higher-priority group on each of the two alkene carbons",
-    "The two groups on whichever alkene carbon holds the heavier atom"
-   ],
-   "correct": 2,
-   "why": "The procedure is two independent rankings followed by a single comparison: rank the pair on one alkene carbon, rank the pair on the other, then ask whether those two winners lie on the same side. Ranking all four against each other imports the R/S procedure, which needs a tetrahedral center and has nothing to work on here.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -15858,19 +15832,6 @@
    ],
    "correct": 2,
    "why": "Duplicating the double bond gives the vinyl carbon (C, C, H): its real CH2, a phantom duplicate of that CH2, and a hydrogen. The isopropyl carbon genuinely holds (C, C, H), so the first sphere is an exact tie. Go one sphere further and the vinyl's real CH2 counts as (C, H, H) while each isopropyl methyl is (H, H, H), so vinyl takes it.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "In the name (2E,4Z)-hexa-2,4-diene, which two carbons does the 4Z descriptor describe?",
-   "options": [
-    "C3 and C4",
-    "C2 and C4, the two locants cited in the name",
-    "C4 on its own",
-    "C4 and C5"
-   ],
-   "correct": 3,
-   "why": "A descriptor for a double bond is cited with the locant of the lower-numbered carbon the bond spans. Hexa-2,4-diene has double bonds between C2 and C3 and between C4 and C5, so 4Z reports the geometry of the C4-C5 bond and 2E reports the C2-C3 bond in the same way.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -15979,32 +15940,6 @@
    "type": "mcq"
   },
   {
-   "q": "Which statement correctly relates the cis/trans and E/Z systems?",
-   "options": [
-    "Every trans alkene is E and every cis alkene is Z",
-    "E and Z apply to rings while cis and trans apply to alkenes",
-    "Cis and trans are obsolete and no longer appear in names",
-    "They agree when the priorities fall where the named substituents do"
-   ],
-   "correct": 3,
-   "why": "The two systems answer different questions. Cis and trans report where two named substituents sit; E and Z report where the two CIP winners sit. They coincide in the common case where each alkene carbon carries one hydrogen and one other group, and they can part company as soon as a carbon carries two non-hydrogen groups, as in (Z)-2-bromo-2-butene.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "Which of these double bonds is stereogenic?",
-   "options": [
-    "(CH3)2C=CH2",
-    "CH2=CH2",
-    "CH3CH=C(CH3)CH2CH3",
-    "(CH3)2C=CHCH3"
-   ],
-   "correct": 2,
-   "why": "A double bond is stereogenic when both of its carbons carry two different groups. In the winning structure one carbon holds a methyl and an H while the other holds a methyl and an ethyl, so swapping either pair gives a different compound. Each of the other three has at least one carbon bearing two identical groups, which makes the two arrangements the same molecule.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
    "q": "An exam asks for the full name of CH3CH=CHCH2CH3 drawn with the methyl and the ethyl on the same side. What should the answer carry?",
    "options": [
     "Pent-2-ene with no descriptor, as the chain is unbranched",
@@ -16081,6 +16016,71 @@
    "why": "On C2 the contest is the C1 methyl against a hydrogen, so the methyl wins. On C3 it is a methyl against an ethyl: both attach through carbon, so move one sphere out, where the ethyl's CH2 holds (C, H, H) and the methyl holds (H, H, H). The ethyl wins, and it was drawn on the same side as the C1 methyl, so the bond is Z. Cis and trans cannot be used at all, because C3 has no hydrogen and so 'the substituent' on that carbon picks out nothing.",
    "difficulty": "hard",
    "type": "mcq"
+  },
+  {
+   "q": "An alkene carbon carries a tert-butyl group, –C(CH₃)₃, and a vinyl group, –CH=CH₂. Which has the higher CIP priority?",
+   "options": [
+    "tert-Butyl, because its set is (C, C, C) against vinyl's (C, C, H)",
+    "Vinyl, because its double bond is duplicated and counts twice",
+    "Vinyl, because a π bond carries more electron density than a σ bond",
+    "They tie, and the ranking has to be taken one more sphere out"
+   ],
+   "correct": 0,
+   "why": "Duplication puts the vinyl carbon at (C, C, H): one real CH₂, one phantom duplicate of it, and one hydrogen. The tert-butyl carbon genuinely holds three carbons, (C, C, C). Compare the sets term by term — C against C, C against C, then C against H — and tert-butyl wins at the third term. Duplication makes a multiple bond comparable with a branch; it does not win comparisons on its own, and the phantom is a dead end with nothing attached to it.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "CH₃–CH=CBrCl is drawn with the chlorine on the same side of the double bond as the methyl group. What is its descriptor?",
+   "options": [
+    "E, because bromine outranks chlorine and so lies opposite the methyl",
+    "Z, because the chlorine and the methyl are drawn on the same side",
+    "Z, because the two halogens together outweigh the methyl group",
+    "Neither, because one alkene carbon carries no hydrogen"
+   ],
+   "correct": 0,
+   "why": "Rank each carbon on its own. On the halogenated carbon the contest is Br (35) against Cl (17), so bromine wins; on the other carbon it is CH₃ against H, so the methyl wins. Bromine and chlorine are on opposite sides of the double bond, so if the chlorine is with the methyl then the bromine is across from it — the two winners are opposite, which is E. Reading the halogen you happen to see beside the methyl is the trap; only the higher-priority group on each carbon is ever compared.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Hepta-2,5-diene, CH₃CH=CHCH₂CH=CHCH₃, has two stereogenic double bonds. How many stereoisomers does it actually have?",
+   "options": [
+    "Three, because the 2E,5Z and 2Z,5E forms are the same compound",
+    "Four, one for each combination of the two descriptors",
+    "Two, because both double bonds must take the same descriptor",
+    "Eight, since 2ⁿ counts the double bonds and the central carbon"
+   ],
+   "correct": 0,
+   "why": "The upper bound 2ⁿ⁺ᵐ gives four, and the word in it is 'at most'. The molecule is symmetric about the central CH₂: the two halves are identical, so labeling one double bond E and the other Z gives the same substance whichever way round you do it. That leaves 2E,5E; 2Z,5Z; and the single mixed isomer — three. It is the same internal symmetry that cuts hexa-2,4-diene from four to three, and the same reason meso compounds cut the count for stereocenters.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "trans-1,3-Dimethylcyclohexane is drawn as a chair and then flipped. What positions can its two methyl groups occupy?",
+   "options": [
+    "One axial and one equatorial, in both chairs",
+    "Both equatorial in one chair and both axial in the other",
+    "Both equatorial in either chair, which is why it is the stable isomer",
+    "It cannot be drawn as a chair without breaking a ring bond"
+   ],
+   "correct": 0,
+   "why": "Axial directions alternate around the ring, so on carbons an even number apart — 1 and 3 — the two axial positions point the same way. Groups on opposite faces therefore cannot both be axial or both equatorial: one has to be axial and the other equatorial, and a flip only exchanges which is which. The cis isomer is the one that can go diequatorial on a 1,3-ring, which reverses the pattern most students carry over from the 1,2-case.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "An alkene carbon carries an isopropyl group and a –CH₂CH₂OH group. Which is the higher CIP priority?",
+   "options": [
+    "Isopropyl, because (C, C, H) beats (C, H, H) at the second term",
+    "–CH₂CH₂OH, because oxygen is the highest-numbered atom in either branch",
+    "–CH₂CH₂OH, because it is the longer chain",
+    "They tie until the oxygen is reached, and then the hydroxyl branch wins"
+   ],
+   "correct": 0,
+   "why": "Both branches begin with carbon, so list what each of those first carbons holds. The isopropyl carbon holds (C, C, H); the first carbon of –CH₂CH₂OH holds (C, H, H). Compare term by term: carbon ties carbon, then carbon beats hydrogen, and the comparison ends there. The oxygen is one sphere further out and is never reached — CIP explores outward only until the first point of difference, so an atom can be the heaviest thing in a branch and still never be weighed.",
+   "difficulty": "hard",
+   "type": "mcq"
   }
  ],
  "prochirality": [
@@ -16106,20 +16106,7 @@
     "Exchange with the solvent erases the differences"
    ],
    "correct": 0,
-   "why": "Rotation about the C–C bond is a genuine symmetry operation that carries each methyl hydrogen onto the position of the next, so replacing any one of them gives the identical product. Homotopic hydrogens share one chemical environment and therefore one signal. Rotation rate is not the argument — even a frozen methyl would be homotopic by symmetry.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Two groups are homotopic when the substitution test gives:",
-   "options": [
-    "Two diastereomers, separable by distillation",
-    "Two enantiomers, of opposite configuration",
-    "Two constitutional isomers, differently connected",
-    "The same compound twice over"
-   ],
-   "correct": 3,
-   "why": "Homotopic is the case where nothing distinguishes the two groups at all: the molecule has a rotation that exchanges them, so swapping either one for a test group lands you on the same structure. If the products differed even in configuration, the groups would be enantiotopic or diastereotopic instead.",
+   "why": "Rotation about the C–C bond is a genuine symmetry operation that carries each methyl hydrogen onto the position of the next, so replacing any one of them gives the identical product. Homotopic hydrogens share one chemical environment and therefore one signal. Rotation is exactly the argument, not a side issue: freeze a single conformation of a methyl attached to a stereocenter and its three hydrogens sit in three different environments, which is why the word “freely rotating” is in the statement.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -16150,7 +16137,7 @@
    "type": "mcq"
   },
   {
-   "q": "Which relationship guarantees that two hydrogens are entitled to different chemical shifts in an ordinary ¹H NMR spectrum?",
+   "q": "A preview of Spectroscopy — all you need is that a ¹H NMR spectrum shows one signal per chemical environment. Which relationship between two hydrogens guarantees they are entitled to separate signals in an ordinary (achiral) solvent?",
    "options": [
     "Diastereotopic",
     "Enantiotopic",
@@ -16158,7 +16145,7 @@
     "Any two hydrogens on different carbons"
    ],
    "correct": 0,
-   "why": "Diastereotopic hydrogens sit in genuinely different environments, because no symmetry operation exchanges them, so nothing forces their shifts to coincide. Homotopic and enantiotopic hydrogens are equivalent to an achiral spectrometer and share a signal. Hydrogens on different carbons can still be equivalent by symmetry, as the four aromatic hydrogens of p-xylene are.",
+   "why": "Diastereotopic hydrogens sit in genuinely different environments, because no symmetry operation exchanges them, so nothing forces their shifts to coincide. Homotopic and enantiotopic hydrogens are equivalent to any achiral surroundings and share one signal. Hydrogens on different carbons can still be equivalent by symmetry — the six hydrogens of the two methyl groups of propane are one signal, not two.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -16202,19 +16189,6 @@
    "type": "mcq"
   },
   {
-   "q": "What is the relationship between the two products when the substitution test is run on diastereotopic groups?",
-   "options": [
-    "They are diastereomers",
-    "They are enantiomers",
-    "They are identical",
-    "They are structural isomers"
-   ],
-   "correct": 0,
-   "why": "That is the definition the name is built from. Diastereomers differ at some stereocenters but not all, so they are different compounds with different physical properties — which is precisely why diastereotopic hydrogens can show different shifts, different reaction rates and separate NMR signals.",
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
    "q": "Run the substitution test on the two hydrogens of C3 in 2-bromobutane, CH₃CHBrCH₂CH₃. What comes out?",
    "options": [
     "Two identical molecules, so the hydrogens are homotopic",
@@ -16224,19 +16198,6 @@
    ],
    "correct": 3,
    "why": "C2 is already a stereocenter and neither substitution touches it, so its descriptor is the same in both products. C3 becomes a new stereocenter with opposite configurations in the two. One center matching and one inverted is a diastereomer pair, so the C3 hydrogens are diastereotopic — which is why that CH₂ makes a mess of an otherwise simple spectrum.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "A student predicts a clean triplet for a CH₂ of 3-methylhexane. What is wrong with that prediction?",
-   "options": [
-    "Free rotation makes all CH₂ hydrogens equivalent instead",
-    "C3 is a stereocenter, so that CH₂ is diastereotopic",
-    "The methyl branch removes the neighboring hydrogens",
-    "Nothing is wrong: a CH₂ gives one multiplet regardless"
-   ],
-   "correct": 1,
-   "why": "C3 of 3-methylhexane carries four different groups, so it is a stereocenter, and running the substitution test on a nearby CH₂ yields a pair of diastereomers. Diastereotopic hydrogens can differ in shift and also couple to each other, so the observed pattern is richer than an n + 1 count on paper. Rotation exchanges conformations, not configurations, and cannot rescue the prediction.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -16306,35 +16267,22 @@
    "type": "mcq"
   },
   {
-   "q": "The two methyl groups of valine's isopropyl side chain appear as two separate doublets in ¹H NMR. Why?",
+   "q": "A preview of Spectroscopy — all you need is that inequivalent hydrogens may give separate signals. In 2-bromo-3-methylbutane, CH₃CHBrCH(CH₃)₂, the two methyl groups of the isopropyl unit give two separate signals rather than one. Why?",
    "options": [
-    "The alpha carbon is a stereocenter, so the methyls differ",
-    "One methyl hydrogen-bonds to the neighboring carboxyl group",
+    "C2 is a stereocenter, so the two methyls are diastereotopic",
+    "One methyl is held closer to the bromine by hydrogen bonding",
     "The two methyl groups rotate at measurably different rates",
-    "Coupling to nitrogen splits one methyl but not the other"
+    "Coupling to the bromine splits one methyl but not the other"
    ],
    "correct": 0,
-   "why": "Substituting one methyl makes the isopropyl carbon a stereocenter while the alpha carbon remains a stereocenter throughout, so the two products are diastereomers. Diastereotopic groups are inequivalent in every environment, so the two methyls are entitled to different shifts — and in valine they take that entitlement, which is a standard way of spotting an isopropyl group beside a stereocenter.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
-   "q": "To name one hydrogen of a prochiral CH₂ as pro-R or pro-S, what do you do first?",
-   "options": [
-    "Assign R or S to the nearest stereocenter already present",
-    "Replace it with deuterium and then name the whole compound",
-    "Rank both hydrogens last and trace the other three groups",
-    "Promote that hydrogen to a priority just above its twin"
-   ],
-   "correct": 3,
-   "why": "The promotion is the whole trick: raise the hydrogen you are naming one notch above the other, change nothing else, and assign the center by the usual CIP procedure. The descriptor that comes out names the hydrogen. Substituting deuterium would work too but changes the priorities being compared, which is why the promotion convention exists.",
+   "why": "Replace one of the two methyls and C3 becomes a stereocenter while C2 stays one, so the two products are diastereomers and the methyls are diastereotopic. Diastereotopic groups are inequivalent in every environment, achiral or not, so they are entitled to different shifts — and an isopropyl group next to a stereocenter usually takes that entitlement. Rotation rates are irrelevant: both methyls spin freely, and that is what makes each one internally equivalent while leaving the two of them different from each other.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
    "q": "Two hydrogens are enantiotopic. Which experiment could distinguish them?",
    "options": [
-    "A routine ¹H NMR spectrum recorded in ordinary CDCl₃",
+    "A routine ¹H NMR spectrum recorded in an ordinary achiral solvent",
     "A reaction run with a chiral catalyst or an enzyme",
     "A measurement of their C–H bond dissociation energies",
     "An integration of the signal the two of them produce"
@@ -16348,12 +16296,12 @@
    "q": "Which CH₂ group has enantiotopic hydrogens?",
    "options": [
     "The C3 hydrogens of 2-chlorobutane",
-    "The C2 hydrogens of 1,2-dimethylcyclohexane",
+    "The C4 hydrogens of methylcyclohexane",
     "The middle CH₂ of 1-bromopropane",
     "The CH₂ beside the stereocenter of 2-butanol"
    ],
    "correct": 2,
-   "why": "In CH₃CH₂CH₂Br the middle carbon holds H, H, CH₃ and CH₂Br, so substitution makes it a stereocenter in a molecule that had no stereogenic feature at all — the products are mirror images. Each of the other three sits beside an existing stereocenter or inside a substituted ring, so substitution there produces diastereomers instead.",
+   "why": "In CH₃CH₂CH₂Br the middle carbon holds H, H, CH₃ and CH₂Br, so substitution makes it a stereocenter in a molecule that had no stereogenic feature at all — the products are mirror images, so those hydrogens are enantiotopic. The C3 hydrogens of 2-chlorobutane and the CH₂ of 2-butanol each sit in a molecule that already has a stereocenter, which is retained, so substitution there gives diastereomers. On methylcyclohexane the ring does the same job without any stereocenter: replacing one C4 hydrogen puts the label cis to the methyl and replacing the other puts it trans.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -16384,19 +16332,6 @@
    "type": "mcq"
   },
   {
-   "q": "Which statement about homotopic and enantiotopic groups is correct?",
-   "options": [
-    "Homotopic groups give one signal while enantiotopic groups give two in any solvent",
-    "Both give one signal in an achiral solvent; a chiral agent separates the enantiotopic pair",
-    "Both can be told apart by any spectrometer of sufficiently high field strength",
-    "Enantiotopic groups give one signal while homotopic groups may give two of them"
-   ],
-   "correct": 1,
-   "why": "Homotopic groups are interchanged by a genuine rotation of the molecule, so nothing whatsoever tells them apart. Enantiotopic groups are interchanged by a reflection, so achiral surroundings cannot distinguish them but chiral surroundings can — which is what enzyme selectivity and chiral shift reagents exploit. Both give one signal in an ordinary spectrum.",
-   "difficulty": "medium",
-   "type": "mcq"
-  },
-  {
    "q": "The two hydrogens of the terminal =CH₂ in propene, CH₃CH=CH₂, are:",
    "options": [
     "Homotopic, because the double bond is symmetric",
@@ -16405,7 +16340,7 @@
     "Equivalent, because they share one sp² carbon atom"
    ],
    "correct": 2,
-   "why": "Substitution on an sp² CH₂ does not create a stereocenter, but it does create a geometry: one product has the label cis to the methyl group, the other trans, and those are diastereomers. So the two alkene hydrogens are diastereotopic and show different shifts — which is why a monosubstituted alkene gives two distinct terminal signals with different coupling constants.",
+   "why": "Substitution on an sp² CH₂ does not create a stereocenter, but it does create a geometry: one product has the label cis to the methyl group, the other trans, and those are diastereomers. So the two alkene hydrogens are diastereotopic. A preview of Spectroscopy: this is why a terminal alkene gives two distinct =CH₂ signals rather than one — but the topicity call above is made entirely from the substitution test.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -16423,7 +16358,7 @@
    "type": "mcq"
   },
   {
-   "q": "A CH₂ that should be a clean quartet appears instead as a dense multiplet spanning a wide range. Which structural feature best explains it?",
+   "q": "A preview of Spectroscopy — all you need is that equivalent hydrogens give one signal and inequivalent ones may give two that also split each other. A CH₂ group that a student expected to give a single signal instead gives two, each split further. Which structural feature best explains it?",
    "options": [
     "Coupling through space to a distant aromatic ring current",
     "Restricted rotation has frozen out one single conformation",
@@ -16431,7 +16366,7 @@
     "A stereocenter elsewhere makes that CH₂ diastereotopic"
    ],
    "correct": 3,
-   "why": "Diastereotopic hydrogens are inequivalent in every environment, so they have their own shifts and, being non-equivalent neighbors, also couple to each other through the geminal pathway that stays invisible when a CH₂ is equivalent. The two effects together turn an expected simple pattern into an AB system split further by everything else. Exchange broadens and simplifies a spectrum rather than multiplying lines.",
+   "why": "Diastereotopic hydrogens are inequivalent in every environment, so they have their own shifts and, being inequivalent neighbors, they also split each other — a coupling that is invisible whenever a CH₂ is equivalent. The two effects together turn an expected simple pattern into a crowded one. A frozen conformation is not the cause: the hydrogens are diastereotopic whatever the rotation does, and exchange with water broadens and simplifies a spectrum rather than multiplying lines.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -16471,6 +16406,71 @@
    ],
    "correct": 0,
    "why": "The labels describe positions within a structure, and they are assigned by a bookkeeping promotion rather than by anything the molecule does. Ethanol is achiral and optically inactive and still has a pro-R and a pro-S hydrogen on C1. A molecule that is already chiral can carry them too. Reading pro-R as evidence of chirality is the commonest confusion in this topic.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "2-Methylbutane, (CH₃)₂CHCH₂CH₃, contains no stereocenter. What is the relationship between the two methyl groups on C2?",
+   "options": [
+    "Enantiotopic, and C2 is a prochiral center",
+    "Homotopic, because both are methyl groups on the same carbon",
+    "Diastereotopic, because the ethyl group makes the two sides unlike",
+    "Constitutionally different, because they sit in unlike positions"
+   ],
+   "correct": 0,
+   "why": "Run the test on groups rather than on hydrogens. Replace one methyl with a test group and C2 is left holding H, CH₃, the test group and CH₂CH₃ — four different things, so it is now a stereocenter in a molecule that had none. Replace the other methyl instead and you get the mirror image. Enantiomers out means enantiotopic in, and a carbon that becomes a stereocenter on one such swap is by definition a prochiral center. Contrast an isopropyl group attached to an existing stereocenter, where the same swap gives diastereomers.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "You look at the carbonyl carbon of butan-2-one, CH₃COCH₂CH₃, from the side on which O → CH₂CH₃ → CH₃ runs counterclockwise. Which face are you looking at, and what does hydride delivered from that side give?",
+   "options": [
+    "The Re face, because the lowest-priority group has to point away first",
+    "The Si face, giving one enantiomer of butan-2-ol; the other face gives its mirror image",
+    "The Re face, giving butan-2-ol as a racemic mixture whichever side is attacked",
+    "Neither face gets a label, because the carbonyl carbon is not a stereocenter"
+   ],
+   "correct": 1,
+   "why": "Rank the three groups on the trigonal carbon: the oxygen first, then the ethyl carbon (C, H, H), then the methyl (H, H, H). Traced from the side described, 1 → 2 → 3 runs counterclockwise, and counterclockwise is the Si face by definition; the opposite side is automatically Re. Adding hydride to one face converts the flat carbon into a tetrahedral one and fixes its configuration, so the two faces lead to the two enantiomers of butan-2-ol. An achiral reagent picks neither face and gives the racemate, but that is the sum of the two outcomes, not what a single face delivers. There is no 'point the lowest priority away' step here — that belongs to R/S at a tetrahedral center; a face label is read straight from the side you are on.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A molecule is already chiral. What can be said about the two hydrogens of any CH₂ group it contains?",
+   "options": [
+    "They are diastereotopic, however far they sit from the stereocenter",
+    "They are enantiotopic, since substituting either one builds a stereocenter",
+    "They are homotopic if free rotation can exchange them",
+    "It depends on distance: beyond three bonds they become equivalent"
+   ],
+   "correct": 0,
+   "why": "Substituting either hydrogen creates a new stereogenic feature while the original stereocenter is kept unchanged, so the two products differ at one center and agree at the other — the definition of diastereomers. Distance changes how large the difference is, never what it is; a CH₂ far down a chain is still diastereotopic, just with shifts too close to resolve. This is also why a chiral molecule has no enantiotopic groups anywhere: producing enantiomers would require the molecule itself to be achiral.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "In cyclohexanone the two hydrogens on C2 are enantiotopic, but in methylcyclohexane the two hydrogens on C2 are diastereotopic. What accounts for the difference?",
+   "options": [
+    "Substituting in methylcyclohexane makes C1 a stereocenter as well, so the products are cis/trans isomers",
+    "The carbonyl group is planar, so cyclohexanone has no faces to be on",
+    "Cyclohexanone's ring flips faster, which averages its two hydrogens",
+    "The carbonyl oxygen withdraws electron density and removes the distinction"
+   ],
+   "correct": 0,
+   "why": "In both compounds substitution at C2 makes C2 stereogenic. The difference is what C1 does. In methylcyclohexane C1 carries a methyl, a hydrogen and two ring paths that stop being identical once C2 is labeled, so C1 becomes a stereocenter too — two centers, and the two products are the cis and trans diastereomers. In cyclohexanone C1 is a trigonal carbonyl carbon and can never be a stereocenter, so only C2 changes and the two products are mirror images. A ring is enough to make hydrogens diastereotopic, but only if the ring carries something that can tell its two faces apart.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A student runs the substitution test on the two C3 hydrogens of (R)-2-bromobutane, notes that C2 is still labeled R in both products, and concludes that the two hydrogens are homotopic. What is the error?",
+   "options": [
+    "The test compares whole products, and the two differ in configuration at the new C3 center",
+    "Deuterium outranks hydrogen, so C2's descriptor should have changed",
+    "The test is invalid on a molecule that is already chiral",
+    "Nothing — the conclusion follows, since an unchanged descriptor means an unchanged molecule"
+   ],
+   "correct": 0,
+   "why": "The test asks what relationship the two products have to each other, not whether one label survived. C2 keeps its arrangement and its descriptor in both products, but C3 is now a stereocenter and comes out R in one product and S in the other, so the pair is (2R,3R) and (2R,3S) — diastereomers, and the hydrogens are diastereotopic. Deuterium does outrank hydrogen, but only where they are actually being compared with each other; against the ordinary hydrogen on the same carbon it ranks above it, and it never displaces carbon or bromine.",
    "difficulty": "hard",
    "type": "mcq"
   }
