@@ -59,6 +59,12 @@ jobs:
       # capitalised.
       - name: the ochem lesson titles match the curriculum
         run: node scripts/build-lesson-meta.mjs --check
+      # The "Builds on" / "Leads to" rows under each lesson and mechanism are
+      # the curriculum's dependsOn graph, read forwards and backwards. Typed
+      # by hand they drifted into listing prerequisites as things a topic
+      # leads to, which sends a student backwards through the course.
+      - name: the ochem lessons' related-topic rows match the curriculum
+        run: node scripts/build-leads-to.mjs --check
       # The seven tool pages are three empty divs until their scripts run. The
       # first screen is written into them from tools-registry.js so the page
       # has a heading and a body before that happens; stale, it would show a
