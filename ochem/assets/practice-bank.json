@@ -32212,15 +32212,15 @@
    "type": "mcq"
   },
   {
-   "q": "A sugar whose carbonyl is at the end of the chain is called what?",
+   "q": "D-glucose is stirred with NaBH4 in water. What is the product?",
    "options": [
-    "A ketose",
-    "A furanose",
-    "An anomer",
-    "An aldose"
+    "D-gluconic acid, oxidized at C1",
+    "D-glucitol, with an OH on every carbon",
+    "Methyl D-glucopyranoside",
+    "No reaction, since the ring form holds no carbonyl"
    ],
-   "correct": 3,
-   "why": "Aldehyde at C1. A carbonyl inside the chain, usually C2, makes it a ketose instead.",
+   "correct": 1,
+   "why": "The ring is a hemiacetal in equilibrium with a trace of open-chain aldehyde, and hydride reduces that aldehyde to a primary alcohol. Consuming the open chain pulls the equilibrium across, so the whole sample converts to the alditol.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -32316,15 +32316,15 @@
    "type": "mcq"
   },
   {
-   "q": "A six-membered sugar ring is called what?",
+   "q": "Methyl alpha-D-glucopyranoside is warmed in dilute aqueous HCl, then tested with Tollens' reagent. What is seen?",
    "options": [
-    "A furanose",
-    "An anomer",
-    "A glycoside",
-    "A pyranose"
+    "No test, because an acetal is inert to the reagent",
+    "A positive test, once the acid frees glucose",
+    "A positive test even without the acid treatment",
+    "Oxidation of the sugar straight to D-gluconic acid"
    ],
-   "correct": 3,
-   "why": "Named after pyran. The five-membered ring is a furanose, after furan.",
+   "correct": 1,
+   "why": "A glycoside is a full acetal, so on its own it gives nothing: the ring cannot open. Aqueous acid reverses acetal formation, releasing methanol and free glucose, and the restored hemiacetal then opens to the aldehyde Tollens' oxidizes.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -32381,15 +32381,15 @@
    "type": "mcq"
   },
   {
-   "q": "What is the name for that change in rotation?",
+   "q": "Which reagent converts D-glucose to D-gluconic acid and leaves the secondary alcohols untouched?",
    "options": [
-    "Epimerization",
-    "Tautomerization",
-    "Mutarotation",
-    "Racemization"
+    "CrO3 in aqueous sulfuric acid",
+    "Sodium borohydride in water",
+    "Bromine water",
+    "Methanol with a trace of HCl"
    ],
    "correct": 2,
-   "why": "A specific term for the anomeric equilibration of a sugar in solution.",
+   "why": "Bromine water takes the open-chain aldehyde to a carboxylic acid and stops. Chromium(VI) would oxidize the secondary alcohols too, borohydride reduces, and methanol with acid caps the anomeric carbon as a glycoside.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -32472,15 +32472,15 @@
    "type": "mcq"
   },
   {
-   "q": "What kind of bond joins two sugar units in a disaccharide?",
+   "q": "Which reagent takes D-glucose to D-glucaric acid, the diacid oxidized at both C1 and C6?",
    "options": [
-    "An ester bond",
-    "An amide bond",
-    "A phosphodiester bond",
-    "A glycosidic bond"
+    "Warm dilute nitric acid",
+    "Bromine water buffered with sodium bicarbonate",
+    "Sodium borohydride",
+    "Methanol and dry HCl"
    ],
-   "correct": 3,
-   "why": "One anomeric carbon, two OR groups, made by an alcohol displacing the anomeric OH under acid.",
+   "correct": 0,
+   "why": "Bromine water stops at the aldehyde and gives the aldonic acid. Reaching the terminal CH2OH as well needs a stronger oxidant, and warm dilute nitric acid takes both ends at once to give the aldaric acid.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -32576,30 +32576,30 @@
    "type": "mcq"
   },
   {
-   "q": "Epimers are stereoisomers differing at how many stereocenters?",
+   "q": "In the Fischer projection of a D-aldohexose the C3 OH is drawn on the left. Where does it point in the Haworth ring?",
    "options": [
-    "Two",
-    "All of them",
-    "None",
-    "One"
+    "Down",
+    "It depends on whether the anomer is alpha or beta",
+    "Up",
+    "Into the ring, in place of the ring oxygen"
    ],
-   "correct": 3,
-   "why": "A single center. Differing at the anomeric one specifically makes them anomers.",
+   "correct": 2,
+   "why": "Left in Fischer becomes up in Haworth and right becomes down. The rule holds at every carbon but C5, whose OH has become the ring oxygen, and the anomeric configuration is set separately at C1.",
    "difficulty": "medium",
    "type": "mcq"
   }
  ],
  "amino-acids": [
   {
-   "q": "Which four groups sit on the alpha carbon of an amino acid?",
+   "q": "Which structure is the right way to draw alanine in water at pH 7?",
    "options": [
-    "NH2, COOH, H, and a side chain",
-    "Two NH2 groups and two COOH groups",
-    "OH, COOH, H, and a side chain",
-    "NH2, CHO, H, and a side chain"
+    "H2N-CH(CH3)-COOH, with both groups neutral",
+    "-OOC-CH(CH3)-NH3+, the zwitterion",
+    "-OOC-CH(CH3)-NH2, carrying a net -1",
+    "HOOC-CH(CH3)-NH3+, carrying a net +1"
    ],
-   "correct": 0,
-   "why": "The alpha carbon is defined as the one next to the carboxyl, and it carries the amine.",
+   "correct": 1,
+   "why": "The carboxyl (pKa near 2) is a far stronger acid than the ammonium (pKa near 9), so at any pH between them the proton has already moved across. Both ends are charged and the molecule is overall neutral, which is why amino acids behave like salts.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -32656,15 +32656,15 @@
    "type": "mcq"
   },
   {
-   "q": "Roughly what is the pKa of an amino acid's carboxyl group?",
+   "q": "Which sequence turns a carboxylic acid into the alpha-amino acid with the same carbon skeleton?",
    "options": [
-    "5",
-    "9",
-    "12",
-    "2"
+    "Br2 with PBr3, then excess NH3",
+    "NaBH4, then aqueous acid",
+    "An aldehyde with NH3 and HCN, then hydrolysis",
+    "PCC, then a Grignard reagent"
    ],
-   "correct": 3,
-   "why": "Lower than acetic acid's 4.8, because the nearby ammonium withdraws inductively.",
+   "correct": 0,
+   "why": "Hell-Volhard-Zelinsky puts a bromine on the alpha carbon, and excess ammonia displaces it by SN2. The aldehyde route is Strecker, reaching the same product class from a different start. Both form the stereocenter at a planar intermediate, so both give a racemate.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -32708,15 +32708,15 @@
    "type": "mcq"
   },
   {
-   "q": "For a side chain that does not ionize, how is pI calculated?",
+   "q": "Lysine has pKa values 2.18, 8.95 and 10.53. What is its pI?",
    "options": [
-    "Add the two pKa values",
-    "Subtract the smaller from the larger",
-    "Take the lower pKa",
-    "Average the two pKa values"
+    "5.57",
+    "9.74",
+    "7.22",
+    "6.36"
    ],
-   "correct": 3,
-   "why": "The two values bracketing the neutral form, which for a simple side chain are the only two.",
+   "correct": 1,
+   "why": "Build the charge ladder: +2 below 2.18, +1 from 2.18 to 8.95, zero from 8.95 to 10.53, -1 above. The uncharged form is bracketed by 8.95 and 10.53, so the pI is their average. Averaging the lowest two gives 5.57.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -32734,15 +32734,15 @@
    "type": "mcq"
   },
   {
-   "q": "Alanine has pKa values 2.34 and 9.69. What is its pI?",
+   "q": "Glutamic acid has pKa values 2.19 (alpha-COOH), 4.25 (side-chain COOH) and 9.67 (alpha-NH3+). Which form is present at pH 7?",
    "options": [
-    "12.03",
-    "6.02",
-    "7.00",
-    "3.85"
+    "Both carboxyls protonated, ammonium on: net +1",
+    "Both carboxyls deprotonated, amine neutral: net -2",
+    "Both carboxyls deprotonated, ammonium on: net -1",
+    "Alpha-carboxyl deprotonated, side chain on: net 0"
    ],
-   "correct": 1,
-   "why": "The same average, and the result is close to glycine's because the side chain is inert in both.",
+   "correct": 2,
+   "why": "Take the groups one at a time against pH 7. Both carboxyl pKa values are well below 7, so both are deprotonated. The ammonium pKa is 9.67, so it keeps its proton. Two minuses against one plus is a net -1.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -33048,28 +33048,28 @@
    "type": "mcq"
   },
   {
-   "q": "What does amide resonance do to the C-N bond?",
+   "q": "Why can a dipeptide not be made simply by heating glycine and alanine together?",
    "options": [
-    "Breaks it",
-    "Makes it ionic",
-    "It shortens it",
-    "Lengthens it"
+    "Amino acids do not react with each other at all",
+    "Each molecule has both groups, so four dipeptides form",
+    "The amide formed would hydrolyze as fast as it formed",
+    "Only one enantiomer couples, so the product is racemic"
    ],
-   "correct": 2,
-   "why": "The nitrogen lone pair pushes into the carbonyl, so the real bond is between single and double.",
+   "correct": 1,
+   "why": "Nothing tells either molecule which of its two groups to use, so every ordered pairing forms: Gly-Gly, Ala-Ala, Gly-Ala and Ala-Gly. Controlling it means protecting one amine and one carboxyl, activating what is left, coupling, then deprotecting.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Roughly how long is the peptide C-N bond?",
+   "q": "An amine will not attack a carboxylic acid directly. Which reagent makes the coupling go?",
    "options": [
-    "1.33 angstroms",
-    "1.54 angstroms",
-    "1.47 angstroms, a normal single bond",
-    "1.20 angstroms, a full triple bond"
+    "DCC, which activates the acid",
+    "Sodium hydroxide",
+    "Boc2O, with a base",
+    "Phenyl isothiocyanate, the Edman reagent"
    ],
    "correct": 0,
-   "why": "Between a single bond at 1.47 and a double bond, exactly as the resonance picture predicts.",
+   "why": "An amine meeting a carboxylic acid takes its proton instead of attacking it, and the carboxylate left behind is a poor electrophile. DCC turns the acid's OH into a group that leaves readily, and the amine then does ordinary acyl substitution.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -33204,15 +33204,15 @@
    "type": "mcq"
   },
   {
-   "q": "What is quaternary structure?",
+   "q": "Edman degradation is run on the peptide Ala-Gly-Phe-Lys. Which residue is identified, and what is left?",
    "options": [
-    "The sequence of one chain",
-    "The shape of one chain",
-    "The pattern of hydrogen bonds",
-    "How chains assemble"
+    "Lysine, leaving Ala-Gly-Phe intact",
+    "All four at once, as free amino acids",
+    "Phenylalanine, since the reagent seeks aromatic rings",
+    "Alanine, leaving Gly-Phe-Lys intact"
    ],
    "correct": 3,
-   "why": "Hemoglobin's four subunits are the standard example, and a single-chain protein has none.",
+   "why": "Phenyl isothiocyanate is attacked by the free N-terminal amino group, so the reagent reads from the N-terminus and removes one residue per cycle. The shortened peptide survives and goes round again; complete hydrolysis would destroy the order.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -33334,15 +33334,15 @@
    "type": "mcq"
   },
   {
-   "q": "What does hydrolyzing a protein completely give?",
+   "q": "Trypsin cleaves on the carboxyl side of lysine and arginine. A 300-residue protein holds 12 lysines and 7 arginines, none at the C-terminus. How many fragments?",
    "options": [
-    "Ammonia and carbon dioxide",
-    "Free amino acids",
-    "A single long chain",
-    "Peptide fragments only"
+    "19",
+    "20",
+    "12",
+    "300"
    ],
    "correct": 1,
-   "why": "Every amide is cut, and each residue is released with its own carboxyl and amine restored.",
+   "why": "Nineteen cleavage sites cut one chain into twenty pieces, because n cuts give n+1 fragments. A lysine already at the end of the chain would add no cut, which is why the question rules that out.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -33440,15 +33440,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which fatty acid has the higher melting point at equal chain length?",
+   "q": "Glyceryl trioleate is stirred with excess H2 over palladium until no alkene remains. What has changed?",
    "options": [
-    "The cis-unsaturated one",
-    "The one with two cis double bonds",
-    "They are equal",
-    "The saturated one"
+    "The three ester groups are reduced to alcohols",
+    "The glycerol backbone is cleaved from the chains",
+    "The kinks are gone and the melting point rises",
+    "Nothing, since hydrogenation leaves fatty chains alone"
    ],
-   "correct": 3,
-   "why": "A straight chain stacks against its neighbors along its full length.",
+   "correct": 2,
+   "why": "Catalytic hydrogenation reduces C=C and leaves esters alone, so the product is glyceryl tristearate. Taking the kinks out lets the chains pack, which is why an oil hardens into a fat.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -33492,15 +33492,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which has the lowest melting point?",
+   "q": "A triglyceride carrying one stearic, one oleic and one palmitic acid is refluxed with excess aqueous NaOH. What is in the flask?",
    "options": [
-    "A C18 acid with one cis double bond",
-    "A saturated C18 acid",
-    "A C18 acid with one trans double bond",
-    "A C18 acid with two cis double bonds"
+    "One glycerol and three different carboxylate salts",
+    "One glycerol and three identical carboxylate salts",
+    "Three fatty acids and one glycerol, in equilibrium",
+    "One long-chain alcohol and three fatty acids"
    ],
-   "correct": 3,
-   "why": "More kinks means worse packing, and the melting point falls with each one.",
+   "correct": 0,
+   "why": "Three ester groups means three hydrolyses, and the acyl groups on a natural fat differ, so the products are sodium stearate, oleate and palmitate plus glycerol. Excess hydroxide deprotonates each acid as it forms, so nothing runs back.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -33600,7 +33600,7 @@
    "options": [
     "A fatty acid salt",
     "A steroid with a phosphate",
-    "A triester of glycerol",
+    "A triester of glycerol with three fatty acids",
     "A diester with a phosphate"
    ],
    "correct": 3,
@@ -33713,15 +33713,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why does a trans fat behave like a saturated fat physically?",
+   "q": "Hydrolyzing a lipid gives exactly two products in equal amounts: one long-chain acid and one long-chain primary alcohol. What was it?",
    "options": [
-    "It is fully saturated",
-    "It is much heavier",
-    "Its chain stays straight",
-    "It contains no double bond"
+    "A triglyceride",
+    "A wax",
+    "A phospholipid",
+    "A steroid"
    ],
-   "correct": 2,
-   "why": "The property that sets the melting point is shape, and trans barely bends the chain.",
+   "correct": 1,
+   "why": "One acid and one alcohol in a one-to-one ratio means a single ester joining two long chains, which is a wax. A triglyceride gives three acids and one glycerol, a phospholipid releases phosphate too, and a steroid has no ester.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -33806,15 +33806,15 @@
    "type": "mcq"
   },
   {
-   "q": "What is the only structural difference between ribose and 2-deoxyribose?",
+   "q": "A DNA strand reads 5'-GGATC-3'. Written in the conventional direction, what is its complement?",
    "options": [
-    "The number of carbons",
-    "An OH at C2 prime",
-    "The ring size",
-    "The anomeric configuration"
+    "5'-CCTAG-3'",
+    "5'-GATCC-3'",
+    "5'-GGATC-3'",
+    "5'-CTAGG-3'"
    ],
    "correct": 1,
-   "why": "One hydroxyl group, and it decides which molecule lasts and which does not.",
+   "why": "Pair each base first: G-C, G-C, A-T, T-A, C-G, reading CCTAG alongside the original. That runs 3' to 5', because the strands are antiparallel, so writing it conventionally reverses it to GATCC. The trap is right bases, wrong direction.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -34014,15 +34014,15 @@
    "type": "mcq"
   },
   {
-   "q": "If a DNA sample is 30% adenine, how much thymine does it contain?",
+   "q": "A sample of double-stranded DNA is 30% adenine. What is its guanine content?",
    "options": [
-    "It cannot be determined",
-    "30%",
     "20%",
-    "70%"
+    "30%",
+    "40%",
+    "It cannot be determined"
    ],
-   "correct": 1,
-   "why": "A pairs only with T, so their amounts are equal in double-stranded DNA.",
+   "correct": 0,
+   "why": "Pairing forces A to equal T, so 30% adenine means 30% thymine and the two account for 60%. The other 40% is split evenly between G and C because they pair with each other, giving 20% guanine.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -34118,15 +34118,15 @@
    "type": "mcq"
   },
   {
-   "q": "What does a nucleoside triphosphate such as ATP provide?",
+   "q": "Why does an incoming nucleoside triphosphate react at all when a polymerase extends a chain?",
    "options": [
-    "Extra hydrogen bonds",
-    "A second base",
-    "Ring stability",
-    "A good leaving group"
+    "The base pairs, and pairing supplies the energy",
+    "The 3' OH is a uniquely strong nucleophile",
+    "The two outer phosphates are anhydrides, so diphosphate leaves well",
+    "The sugar ring opens to an aldehyde first"
    ],
-   "correct": 3,
-   "why": "Diphosphate leaves well because the charge is spread over many oxygens.",
+   "correct": 2,
+   "why": "The 3' OH of the growing chain attacks the 5' phosphorus of the incoming triphosphate, and the leaving group is what makes that productive: the outer phosphates are anhydrides, and the departing diphosphate spreads its charge widely.",
    "difficulty": "hard",
    "type": "mcq"
   },

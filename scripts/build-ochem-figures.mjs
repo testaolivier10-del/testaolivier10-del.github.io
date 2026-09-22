@@ -661,34 +661,74 @@ FIGURES.push({
   id: 'chain-packing',
   section: 'lipids',
   anchor: '<h3>Triglycerides are triesters</h3>',
-  viewBox: '0 0 760 320',
-  alt: 'Three C18 fatty acid chains drawn as they pack: straight saturated chains, kinked cis chains that cannot stack, and near-straight trans chains',
+  viewBox: '0 0 700 380',
+  alt: 'Three panels of C18 fatty acid chains: straight saturated chains packed close together, cis chains bent into a V at the double bond so they cannot touch, and trans chains that carry a double bond and stay straight',
   build() {
     let s = '';
-    // A zigzag chain from (x, y) running down, optionally kinked at the middle.
-    const chain = (x, y, kink) => {
-      let t = '', px = x, py = y, dir = 1;
-      for (let i = 0; i < 12; i++) {
-        let nx = px + dir * 9, ny = py + 13;
-        if (kink && i === 6) { x += 26; nx = px + dir * 9 + 26; }
-        t += `<line class="fg-bond" x1="${px}" y1="${py}" x2="${nx}" y2="${ny}"></line>`;
-        px = nx; py = ny; dir = -dir;
-      }
-      return t;
+    /* A zigzag walked along an axis. Everything in this figure is one call
+       to this with a different axis, which is the point: the three panels
+       differ in the DIRECTION the chain leaves its double bond and in
+       nothing else. (The version this replaces emitted identical
+       coordinates in all three panels, so the figure that exists to
+       contrast three shapes drew one shape three times.) */
+    const zig = (x, y, ux, uy, n, L, amp) => {
+      const px = -uy, py = ux;
+      // Anchored so that vertex 0 is exactly the point passed in: the first
+      // version offset it by half the amplitude, which left a visible jog
+      // where a chain resumed on the far side of its double bond.
+      const bx = x + px * (amp / 2), by = y + py * (amp / 2);
+      const pt = (i) => P(bx + ux * i * L + px * (amp / 2) * (i % 2 ? 1 : -1),
+                          by + uy * i * L + py * (amp / 2) * (i % 2 ? 1 : -1));
+      let t = '';
+      for (let i = 0; i < n; i++) t += bond(pt(i), pt(i + 1), { rFrom: 0, rTo: 0 });
+      return { svg: t, end: pt(n) };
     };
-    const col = (ox, title, sub, kink, mp, kind) => {
-      s += panel(ox, 40, 216, 184, { kind });
-      s += tag(ox + 108, 30, title);
-      for (let j = 0; j < 4; j++) s += chain(ox + 40 + j * 34, 58, kink);
-      s += text(ox + 108, 242, sub, { cls: 'fg-sm', size: 10 });
-      s += text(ox + 108, 264, mp, { cls: kind === 'warn' ? 'fg-tag' : 'fg-tag-good', size: 11 });
-    };
-    col(24,  'saturated', 'chains lie flat against each other', 'melts near 69 °C', false, null);
-    col(272, 'one cis double bond', 'the kink breaks the contact', 'melts near 13 °C', true, 'warn');
-    col(520, 'one trans double bond', 'still essentially straight', 'melts near 44 °C', false, null);
+    const DX = 0.5, DY = 0.866, L = 25.5, AMP = 16;
 
-    s += rule(34, 282, 726, 282);
-    s += text(380, 306, 'All three are C18. Only the shape differs — and the shape is what the melting point reads.', { cls: 'fg-lbl', size: 12 });
+    const col = (ox, title, sub, mp, kind, draw) => {
+      s += panel(ox, 44, 214, 242, { kind });
+      s += tag(ox + 107, 32, title);
+      draw(ox);
+      s += text(ox + 107, 304, sub, { cls: 'fg-sm' });
+      s += text(ox + 107, 326, mp, { cls: kind === 'warn' ? 'fg-tag-warn' : 'fg-tag-good', size: 11 });
+    };
+
+    // Saturated: one unbroken zigzag, and the chains sit 30 units apart,
+    // which is as close as the drawing can put them.
+    col(8, 'saturated (stearic, 18:0)', 'they lie flat against each other', 'mp 69 °C', null, (ox) => {
+      for (let j = 0; j < 4; j++) s += zig(ox + 26 + j * 30, 70, DX, DY, 7, L, AMP).svg;
+    });
+
+    // Cis: the chain leaves the double bond on the SAME side it arrived on,
+    // so the lower half runs back the other way and the chain is a V. The
+    // chains have to be set twice as far apart to keep them from crossing,
+    // which is the whole physical argument drawn.
+    col(238, 'one cis double bond (oleic)', 'the kink breaks the contact', 'mp 13 °C', 'warn', (ox) => {
+      for (let j = 0; j < 3; j++) {
+        const x = ox + 30 + j * 57;
+        const up = zig(x, 70, DX, DY, 3, L, AMP);
+        s += up.svg;
+        const cb = P(up.end.x, up.end.y + 30);
+        s += bond(up.end, cb, { rFrom: 0, rTo: 0, order: 2, gap: 3.4 });
+        s += zig(cb.x, cb.y, -DX, DY, 3, L, AMP).svg;
+      }
+    });
+
+    // Trans: the chain leaves on the opposite side, so it carries straight
+    // on. Same C18, same one double bond, and the stack survives.
+    col(468, 'one trans double bond (elaidic)', 'still essentially straight', 'mp 44 °C', null, (ox) => {
+      for (let j = 0; j < 4; j++) {
+        const x = ox + 26 + j * 30;
+        const up = zig(x, 70, DX, DY, 3, L, AMP);
+        s += up.svg;
+        const cb = P(up.end.x, up.end.y + 30);
+        s += bond(up.end, cb, { rFrom: 0, rTo: 0, order: 2, gap: 3.4 });
+        s += zig(cb.x, cb.y, DX, DY, 3, L, AMP).svg;
+      }
+    });
+
+    s += rule(20, 342, 680, 342);
+    s += label(345, 364, 'All three are C18 — only the shape differs, and shape is what a melting point reads.');
     return s;
   },
   caption: 'Three eighteen-carbon fatty acids, drawn as they pack. Chain length is held constant, so the fifty-six degrees between stearic and oleic acid is entirely the bend that one cis double bond puts in the middle of the chain.',
@@ -11213,7 +11253,7 @@ FIGURES.push({
 
 /* ----------------------------------------------------------------- 91 ---
    The tetrahedral intermediate is the entire difference between a Claisen and
-   an aldol, and the section's only figure labelled it in passing. */
+   an aldol, and the section's only figure labeled it in passing. */
 FIGURES.push({
   id: 'claisen-tetrahedral',
   section: 'claisen',
@@ -13279,7 +13319,7 @@ FIGURES.push({
     let s = '';
     s += tag(350, 26, 'one disconnection, written the way it is written');
 
-    /* 4-hydroxy-4-methylpentan-2-one, skeletal. Unlabelled vertices are
+    /* 4-hydroxy-4-methylpentan-2-one, skeletal. Unlabeled vertices are
        carbons; only the two heteroatom labels are drawn. */
     const v1 = P(60, 175), v2 = P(95, 152), v3 = P(130, 175), v4 = P(165, 152);
     s += bond(v1, v2, { rFrom: 0, rTo: 0 });
@@ -13667,6 +13707,660 @@ FIGURES.push({
   },
   caption: 'A four-step route with every step tagged by what kind of move it is. Two of the four make carbon–carbon bonds; the other two only shift functional groups around, which is the usual ratio.',
   note: 'Follow the carbon count along the top: 4, 4, 5, 5, 7. Every change in that number is a C&ndash;C step and there are only two of them &mdash; the rest of the route is bookkeeping, exactly as the chapter has claimed throughout. The last step is also the answer to "where is the protecting group?": there is none, because the only O&ndash;H in the route is created <i>by</i> the Grignard, after it has finished its job.',
+});
+
+
+/* ================================================================ B1 ===
+   The chapter fix pass: Biomolecules had five figures and not one drawn
+   molecule in any of them. Everything below draws a real structure.
+
+   Fischer to Haworth. The notes used the words "Haworth", "up" and "down"
+   without a drawing anywhere in the course that shows what a sugar ring
+   looks like, so the conversion rule was three words a reader could only
+   take on trust. Two panels of one molecule is the only honest way to make
+   the claim, because the claim IS that the two drawings are the same
+   compound. */
+FIGURES.push({
+  id: 'fischer-haworth',
+  section: 'carbohydrates',
+  anchor: 'wedges and dashes back in <a class="chapter-ref" href="/ochem/learn.html#m-stereochemistry">Stereochemistry</a>.</p>',
+  viewBox: '0 0 700 412',
+  alt: 'D-glucose drawn twice: the open-chain Fischer projection with OH right at C2, left at C3, right at C4 and right at C5, and beta-D-glucopyranose as a Haworth ring with the C1 OH up, C2 OH down, C3 OH up, C4 OH down and the C5 CH2OH up',
+  build() {
+    let s = '';
+
+    /* ---- left: the Fischer projection ---- */
+    s += panel(16, 44, 280, 300);
+    s += tag(156, 32, 'open-chain D-glucose (Fischer)');
+
+    const X = 116, XR = 166, XL = 66;
+    const ys = [72, 120, 168, 216, 264, 312];
+    // The chain, top to bottom. C1 is the aldehyde, C6 the primary alcohol,
+    // and C2-C5 are bare crossings, which is what a Fischer projection is:
+    // a vertex whose two horizontal bonds come out of the page at you.
+    s += atom(X, ys[0], 'CHO');
+    s += atom(X, ys[5], 'CH\u2082OH', { r: 20 });
+    s += bond(P(X, ys[0]), P(X, ys[1]), { rTo: 0 });
+    for (let i = 1; i < 4; i++) s += bond(P(X, ys[i]), P(X, ys[i + 1]), { rFrom: 0, rTo: 0 });
+    s += bond(P(X, ys[4]), P(X, ys[5]), { rFrom: 0, rTo: 20 });
+
+    // Right or left at each stereocenter is the entire content of the
+    // drawing: OH right at C2, left at C3, right at C4, right at C5 is
+    // D-glucose and no other sugar.
+    const sub = (i, ohRight) => {
+      const y = ys[i];
+      const xo = ohRight ? XR : XL, xh = ohRight ? XL : XR;
+      return bond(P(X, y), P(xo, y), { rFrom: 0 }) + bond(P(X, y), P(xh, y), { rFrom: 0 }) +
+             atom(xo, y, 'OH') + atom(xh, y, 'H');
+    };
+    s += sub(1, true) + sub(2, false) + sub(3, true) + sub(4, true);
+    for (let i = 0; i < 6; i++) s += text(40, ys[i] + 4, String(i + 1), { cls: 'fg-sm' });
+
+    // Ring closure as one arrow: C5's oxygen reaching the C1 carbonyl.
+    s += curve(P(184, 258), P(132, 84), { bow: 80 });
+    s += tag(240, 168, 'C5 OH \u2192 C1');
+    s += tag(240, 268, 'D is read here');
+
+    /* ---- right: the same molecule as a Haworth ring ---- */
+    s += panel(306, 44, 378, 300);
+    s += tag(495, 32, '\u03b2-D-glucopyranose (Haworth)');
+
+    const C1 = P(656, 200), C2 = P(606, 258), C3 = P(446, 258),
+          C4 = P(396, 200), C5 = P(481, 145), O = P(571, 145);
+    // The front edge is drawn heavy, because that is the whole of the
+    // perspective: those are the bonds nearest the reader.
+    s += bond(C4, C3, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
+    s += bond(C3, C2, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
+    s += bond(C2, C1, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
+    s += bond(C5, C4, { rFrom: 0, rTo: 0 });
+    s += bond(C5, O, { rFrom: 0, rTo: 15 });
+    s += bond(C1, O, { rFrom: 0, rTo: 15 });
+    s += atom(O.x, O.y, 'O');
+
+    // Every substituent is a vertical stick. Up: C1 (which is what beta
+    // means), C3, and the C5 CH2OH. Down: C2 and C4.
+    const stick = (c, up, lab, opts = {}) => {
+      const to = P(c.x, c.y + (up ? -48 : 48));
+      return bond(c, to, { rFrom: 0, rTo: opts.r ?? 15 }) + atom(to.x, to.y, lab, opts);
+    };
+    s += stick(C1, true, 'OH');
+    s += stick(C2, false, 'OH');
+    s += stick(C3, true, 'OH');
+    s += stick(C4, false, 'OH');
+    s += stick(C5, true, 'CH\u2082OH', { r: 20 });
+    // and the anomer nobody asked for, drawn faintly underneath C1.
+    s += bond(C1, P(656, 248), { rFrom: 0, rTo: 15, cls: 'fg-bond-soft' });
+    s += text(656, 252, 'OH', { cls: 'fg-sm' });
+    s += tag(656, 128, '\u03b2');
+    s += tag(656, 286, '\u03b1 anomer', { cls: 'fg-tag-mut' });
+
+    // Locants sit inside the ring, the only empty space in the drawing:
+    // outside, each one lands beside a substituent and reads as labelling it.
+    for (const [x, y, n] of [[631, 205, '1'], [589, 240, '2'], [463, 240, '3'],
+      [413, 178, '4'], [501, 168, '5'], [515, 93, '6']]) s += text(x, y, n, { cls: 'fg-sm' });
+
+    /* ---- the rule, underneath, where it can be read as a rule ---- */
+    s += rule(26, 356, 674, 356);
+    s += tag(160, 378, 'right \u2192 down');
+    s += tag(350, 378, 'left \u2192 up');
+    s += tag(540, 378, 'D \u2192 CH\u2082OH up');
+    s += label(350, 400, 'Same molecule, two drawings \u2014 the ring is C5\u2019s OH bonded to C1, nothing more.');
+    return s;
+  },
+  caption: 'D-glucose twice. A Haworth projection is the ring seen edge-on with the ring oxygen at the back right, the anomeric carbon at the right, and every substituent drawn as a stick pointing straight up or straight down. Reading across, an OH on the <b>right</b> in the Fischer projection ends up pointing <b>down</b> in the ring, and one on the <b>left</b> points <b>up</b>.',
+  note: 'Check the conversion on C3. It is the one OH that D-glucose draws on the left, so it is the one that points up in the ring — the fastest way to tell a correctly drawn glucose from a plausible-looking wrong one. Hydrogens on the ring carbons are left off, as they always are in a Haworth drawing.',
+});
+
+
+/* ---------------------------------------------------------------- B2 ---
+   An amino acid, drawn. The section spent its length on zwitterions, pI
+   and electrophoresis without a single structure on the page, so the one
+   thing a reader could not do was picture the molecule the argument is
+   about. Three structures and two protons is the whole of it. */
+FIGURES.push({
+  id: 'amino-acid-charge-states',
+  section: 'amino-acids',
+  anchor: 'Sketching that three-species ladder is how nearly every amino acid question is solved.</div>',
+  viewBox: '0 0 700 300',
+  alt: 'Alanine at three pH values: the cation with COOH and NH3+, the zwitterion with carboxylate and ammonium, and the anion with carboxylate and a neutral amine',
+  build() {
+    let s = '';
+    // One alanine, three times. Only the two ends change; the alpha carbon
+    // and its methyl are the same atoms throughout, which is the point.
+    const form = (cx, left, right, leftKind, rightKind) => {
+      const c = P(cx, 120);
+      let t = bond(P(cx - 58, 120), c, { rFrom: 20, rTo: 15 });
+      t += bond(c, P(cx + 58, 120), { rFrom: 15, rTo: 20 });
+      t += bond(c, P(cx, 172), { rFrom: 15, rTo: 17 });
+      t += atom(cx - 58, 120, left, { r: 20, kind: leftKind });
+      t += atom(cx, 120, 'CH');
+      t += atom(cx + 58, 120, right, { r: 20, kind: rightKind });
+      t += atom(cx, 172, 'CH₃', { r: 17 });
+      return t;
+    };
+    s += panel(262, 48, 176, 164, { kind: 'hi' });
+    s += form(128, 'HOOC', 'NH₃⁺', null, 'warn');
+    s += form(350, '⁻OOC', 'NH₃⁺', 'hi', 'warn');
+    s += form(572, '⁻OOC', 'NH₂', 'hi', null);
+    s += tag(128, 32, 'pH 1 · net +1');
+    s += tag(350, 32, 'pH 6 · net 0 · zwitterion');
+    s += tag(572, 32, 'pH 11 · net −1');
+
+    // Each arrow moves exactly one proton, which is why there are three
+    // species and not four.
+    s += arrow(P(212, 112), P(262, 112));
+    s += arrow(P(262, 130), P(212, 130), { muted: true });
+    s += tag(237, 98, 'pKa 2.34');
+    s += arrow(P(434, 112), P(488, 112));
+    s += arrow(P(488, 130), P(434, 130), { muted: true });
+    s += tag(461, 98, 'pKa 9.69');
+
+    s += rule(26, 232, 674, 232);
+    s += label(350, 256, 'The carboxyl gives up its proton first; the ammonium keeps its own the longest.');
+    s += text(350, 280, 'Two protons, three species — and the middle one is the neutral form.', { cls: 'fg-tag-good', size: 11 });
+    return s;
+  },
+  caption: 'Alanine at three pH values, with the charged groups on tinted discs. The middle structure is the one to internalize: the neutral form of an amino acid is not the form with two neutral groups, it is the form carrying two opposite charges at once.',
+  note: 'Each arrow moves one proton and changes the net charge by exactly one, which is why an amino acid with a side chain that cannot ionize has three states and no more. Counting the states before reaching for a formula is what keeps a pI question from going wrong.',
+});
+
+/* ---------------------------------------------------------------- B3 ---
+   L against D, drawn, because the rule the section now states is a rule
+   about a picture and cannot be checked without one. */
+FIGURES.push({
+  id: 'l-and-d-alanine',
+  section: 'amino-acids',
+  anchor: 'reading CO–R–N clockwise gives L.</p>',
+  viewBox: '0 0 700 310',
+  alt: 'Two Fischer projections of alanine side by side, carboxyl at the top and methyl at the bottom, with the amino group on the left in L-alanine and on the right in D-alanine',
+  build() {
+    let s = '';
+    const fischer = (cx, aminoLeft) => {
+      const c = P(cx, 140);
+      let t = bond(P(cx, 80), c, { rFrom: 20, rTo: 0 });
+      t += bond(c, P(cx, 200), { rFrom: 0, rTo: 17 });
+      t += bond(c, P(cx - 60, 140), { rFrom: 0, rTo: aminoLeft ? 17 : 15 });
+      t += bond(c, P(cx + 60, 140), { rFrom: 0, rTo: aminoLeft ? 15 : 17 });
+      t += atom(cx, 80, 'COOH', { r: 20 });
+      t += atom(cx, 200, 'CH₃', { r: 17 });
+      t += atom(cx - 60, 140, aminoLeft ? 'H₂N' : 'H', { r: aminoLeft ? 17 : 15, kind: aminoLeft ? 'hi' : null });
+      t += atom(cx + 60, 140, aminoLeft ? 'H' : 'NH₂', { r: aminoLeft ? 15 : 17, kind: aminoLeft ? null : 'hi' });
+      return t;
+    };
+    s += panel(40, 44, 300, 200, { kind: 'hi' });
+    s += panel(360, 44, 300, 200);
+    s += fischer(190, true);
+    s += fischer(510, false);
+    s += tag(190, 32, 'L-alanine — what biology uses');
+    s += tag(510, 32, 'D-alanine — the mirror image');
+
+    s += rule(50, 252, 650, 252);
+    s += tag(190, 274, 'amino group on the left');
+    s += tag(510, 274, 'amino group on the right');
+    s += label(350, 298, 'Carboxyl up, side chain down, amino group left — that is all of the L assignment.');
+    return s;
+  },
+  caption: 'The whole of the D/L assignment for an amino acid. Put the carboxyl at the top of a Fischer projection and the side chain at the bottom, then look at one bond: the amino group on the left is <b>L</b>, on the right is <b>D</b>. Nothing else in the drawing is consulted.',
+  note: 'D/L is not R/S, and nothing here computes a CIP priority. That is why cysteine can be L like every other protein amino acid and still be assigned R — sulfur outranks the carboxyl carbon, so the priority order changes while the drawing does not.',
+});
+
+
+/* ---------------------------------------------------------------- B4 ---
+   One amide, actually made. The section's only figure drew a generic amide
+   with no side chains and no N–H; a reader was told that Gly-Ala and
+   Ala-Gly are different compounds without ever seeing why the order is a
+   structural statement. */
+FIGURES.push({
+  id: 'peptide-bond-formed',
+  section: 'peptides-proteins',
+  anchor: 'it is the same linkage as any amide, with the same consequences.</p>',
+  viewBox: '0 0 700 430',
+  alt: 'Alanine and serine condensing to the dipeptide Ala-Ser, with the serine nitrogen attacking the alanine carboxyl, loss of water, and the resulting amide shaded and labeled the peptide bond',
+  build() {
+    let s = '';
+    // An amino acid, condensed: amine, alpha carbon, carboxyl, side chain
+    // hanging below the alpha carbon where it belongs.
+    const aa = (x, y, side, sideR) => {
+      let t = bond(P(x, y), P(x + 60, y), { rFrom: 17, rTo: 15 });
+      t += bond(P(x + 60, y), P(x + 126, y), { rFrom: 15, rTo: 20 });
+      t += bond(P(x + 60, y), P(x + 60, y + 52), { rFrom: 15, rTo: sideR });
+      t += atom(x, y, 'H₂N', { r: 17 });
+      t += atom(x + 60, y, 'CH');
+      t += atom(x + 126, y, 'COOH', { r: 20 });
+      t += atom(x + 60, y + 52, side, { r: sideR });
+      return t;
+    };
+    s += aa(70, 100, 'CH₃', 17);
+    s += aa(300, 100, 'CH₂OH', 20);
+    s += text(130, 190, 'alanine', { cls: 'fg-tag' });
+    s += text(360, 190, 'serine', { cls: 'fg-tag' });
+    // The bond that is about to be made, as the one arrow that makes it.
+    s += curve(P(286, 86), P(216, 86), { bow: 18 });
+    s += tag(251, 56, 'N attacks C');
+
+    s += arrow(P(530, 200), P(530, 244));
+    s += tag(572, 226, '− H₂O');
+
+    /* the dipeptide, with the new amide shaded */
+    s += bar(234, 214, 102, 96, { kind: 'hi', opacity: 0.22 });
+    const y2 = 286;
+    s += bond(P(142, y2), P(202, y2), { rFrom: 17, rTo: 15 });
+    s += bond(P(202, y2), P(258, y2), { rFrom: 15, rTo: 15 });
+    s += bond(P(258, y2), P(258, 238), { rFrom: 15, rTo: 15, order: 2 });
+    s += bond(P(258, y2), P(314, y2), { rFrom: 15, rTo: 17 });
+    s += bond(P(314, y2), P(374, y2), { rFrom: 17, rTo: 15 });
+    s += bond(P(374, y2), P(440, y2), { rFrom: 15, rTo: 20 });
+    s += bond(P(202, y2), P(202, 334), { rFrom: 15, rTo: 17 });
+    s += bond(P(374, y2), P(374, 334), { rFrom: 15, rTo: 20 });
+    s += atom(142, y2, 'H₂N', { r: 17 });
+    s += atom(202, y2, 'CH');
+    s += atom(258, y2, 'C', { kind: 'hi' });
+    s += atom(258, 238, 'O');
+    s += atom(314, y2, 'NH', { r: 17, kind: 'hi' });
+    s += atom(374, y2, 'CH');
+    s += atom(440, y2, 'COOH', { r: 20 });
+    s += atom(202, 334, 'CH₃', { r: 17 });
+    s += atom(374, 334, 'CH₂OH', { r: 20 });
+    s += tag(142, 246, 'N-terminus');
+    s += tag(440, 246, 'C-terminus');
+    s += tag(285, 330, 'peptide bond');
+    s += text(350, 380, 'Ala-Ser, written N to C', { cls: 'fg-tag-good', size: 11 });
+
+    s += rule(26, 398, 674, 398);
+    s += label(350, 420, 'Alanine gave the carboxyl, so alanine is the N-terminal residue.');
+    return s;
+  },
+  caption: 'One amide, made the ordinary way. Alanine supplies the carboxyl and serine supplies the amine, so alanine ends up at the N-terminus and the name reads <b>Ala-Ser</b>. Swapping which molecule supplies which group gives Ser-Ala — a different compound, not a different name for this one.',
+  note: 'Count the groups left over. The dipeptide still has a free amine at one end and a free carboxyl at the other, which is exactly why the uncontrolled reaction does not stop at a dipeptide, and why a deliberate synthesis has to cap one end of each partner before it starts.',
+});
+
+/* ---------------------------------------------------------------- B5 ---
+   The two secondary structures, which are three-dimensional objects the
+   section names twice and never draws. Both are one interaction arranged
+   two ways, and that is only visible side by side. */
+FIGURES.push({
+  id: 'helix-and-sheet',
+  section: 'peptides-proteins',
+  anchor: '<b>Quaternary</b> — how two or more separate folded chains assemble. Hemoglobin\'s four subunits are the standard example; not every protein has this level.</li>',
+  viewBox: '0 0 680 350',
+  alt: 'An alpha helix drawn as a coil with dashed hydrogen bonds running parallel to its axis and side chains projecting outward, beside two antiparallel beta strands with five dashed hydrogen bonds running between them',
+  build() {
+    let s = '';
+    s += panel(24, 52, 308, 220);
+    s += panel(348, 52, 308, 220);
+    s += tag(178, 38, 'α-helix');
+    s += tag(502, 38, 'β-pleated sheet');
+
+    /* The helix as its projection. The cosine term is what makes it read as
+       a coil rather than a sine wave: it lifts the near half of each turn
+       and drops the far half, which is what a spring looks like on paper. */
+    const cx = 150, y0 = 74, span = 176, amp = 46, lift = 14;
+    let d = '';
+    for (let i = 0; i <= 180; i++) {
+      const t = (i / 180) * 6 * Math.PI;
+      const x = cx + amp * Math.sin(t), y = y0 + (i / 180) * span - lift * Math.cos(t);
+      d += (i ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
+    }
+    s += `<path class="fg-bond" d="${d.trim()}"></path>`;
+    // Hydrogen bonds run PARALLEL to the axis, which is the whole geometric
+    // claim: the two partners are one turn - four residues - apart.
+    for (const [a, b] of [[118, 177], [177, 236]]) {
+      s += `<line class="fg-dash-hi" x1="${cx - amp}" y1="${a}" x2="${cx - amp}" y2="${b}"></line>`;
+    }
+    for (const [a, b] of [[89, 148], [148, 207]]) {
+      s += `<line class="fg-dash-hi" x1="${cx + amp}" y1="${a}" x2="${cx + amp}" y2="${b}"></line>`;
+    }
+    // Side chains, as sticks leaving the coil: they take no part in either
+    // pattern, which is why any sequence can form either.
+    for (const y of [104, 163, 222]) s += bond(P(cx + amp, y), P(cx + amp + 28, y), { rFrom: 0, rTo: 0 });
+    s += tag(108, 292, 'H-bonds run i to i+4');
+    s += tag(252, 292, 'side chains point out');
+
+    /* Two antiparallel strands, drawn as the pleats they are named for. */
+    const strand = (x1, x2, yMid, down) => {
+      let t = '', up = down;
+      for (let x = x1; x < x2; x += 30) {
+        t += `<line class="fg-bond" x1="${x}" y1="${yMid + (up ? 10 : -10)}" x2="${x + 30}" y2="${yMid + (up ? -10 : 10)}"></line>`;
+        up = !up;
+      }
+      return t;
+    };
+    s += strand(372, 612, 110, true);
+    s += strand(372, 612, 200, false);
+    s += arrow(P(612, 100), P(640, 100));
+    s += arrow(P(372, 210), P(344, 210));
+    for (const x of [402, 462, 522, 582]) {
+      s += `<line class="fg-dash-hi" x1="${x}" y1="128" x2="${x}" y2="182"></line>`;
+    }
+    s += tag(502, 292, 'H-bonds run between strands');
+
+    s += rule(26, 312, 654, 312);
+    s += label(340, 336, 'Both are one interaction: a backbone N–H to a backbone C=O.');
+    return s;
+  },
+  caption: 'The two standard secondary structures, side by side. Each dashed line is a hydrogen bond from a backbone N–H to a backbone C=O. In a helix the two partners are four residues apart on the same chain, so the bonds run along the axis; in a sheet they are on neighboring strands, so the bonds run across.',
+  note: 'Notice what is dashed and what is solid. Nothing holding either shape together is a covalent bond, which is why heat unfolds a protein without breaking a single bond in the chain — and why the side chains, which take no part in either pattern, are free to decide the fold at the next level up.',
+});
+
+
+/* ---------------------------------------------------------------- B6 ---
+   The molecule the lipids section is about, drawn once. The prose
+   introduced the triglyceride in a single sentence and the phospholipid in
+   another, and a reader who had never seen either could not tell from the
+   words that they are the same molecule with one group swapped. */
+FIGURES.push({
+  id: 'triglyceride-and-phospholipid',
+  section: 'lipids',
+  anchor: 'it is three Fischer esterifications, and everything an ester does, a triglyceride does.</p>',
+  viewBox: '0 0 680 380',
+  alt: 'A triglyceride: glycerol carrying three ester groups, the top and bottom chains straight and the middle one kinked by a cis double bond, with an arrow replacing the bottom chain by a phosphate and choline head to give a phospholipid',
+  build() {
+    let s = '';
+    const rows = [90, 176, 262];
+    // the three ester groups, shaded, because they are where every reaction
+    // in the section happens.
+    for (const y of rows) s += bar(128, y - 50, 96, 72, { kind: 'hi', opacity: 0.18 });
+
+    // glycerol: three carbons, one oxygen each.
+    s += bond(P(90, rows[0]), P(90, rows[1]), { rFrom: 17, rTo: 15 });
+    s += bond(P(90, rows[1]), P(90, rows[2]), { rFrom: 15, rTo: 17 });
+    s += atom(90, rows[0], 'CH₂', { r: 17 });
+    s += atom(90, rows[1], 'CH');
+    s += atom(90, rows[2], 'CH₂', { r: 17 });
+    s += text(70, 310, 'glycerol', { cls: 'fg-tag' });
+    s += tag(176, 310, 'three ester groups');
+
+    // A zigzag walked along an axis, anchored at vertex 0.
+    const zig = (x, y, ux, uy, n, L, amp) => {
+      const px = -uy, py = ux;
+      const bx = x + px * (amp / 2), by = y + py * (amp / 2);
+      const pt = (i) => P(bx + ux * i * L + px * (amp / 2) * (i % 2 ? 1 : -1),
+                          by + uy * i * L + py * (amp / 2) * (i % 2 ? 1 : -1));
+      let t = '';
+      for (let i = 0; i < n; i++) t += bond(pt(i), pt(i + 1), { rFrom: 0, rTo: 0 });
+      return { svg: t, end: pt(n) };
+    };
+
+    for (const y of rows) {
+      s += bond(P(90, y), P(146, y), { rFrom: 17, rTo: 15 });
+      s += bond(P(146, y), P(202, y), { rFrom: 15, rTo: 15 });
+      s += bond(P(202, y), P(202, y - 34), { rFrom: 15, rTo: 15, order: 2 });
+      s += atom(146, y, 'O');
+      s += atom(202, y, 'C', { kind: 'hi' });
+      s += atom(202, y - 34, 'O');
+    }
+    // top and bottom chains straight; the middle one kinked, so the figure
+    // says what the section says.
+    s += zig(218, rows[0], 1, 0, 6, 27, 16).svg;
+    s += zig(218, rows[2], 1, 0, 6, 27, 16).svg;
+    const up = zig(218, rows[1], 0.866, 0.5, 3, 27, 16);
+    s += up.svg;
+    const cb = P(up.end.x + 27, up.end.y);
+    s += bond(up.end, cb, { rFrom: 0, rTo: 0, order: 2, gap: 3.4 });
+    s += zig(cb.x, cb.y, 0.866, -0.5, 3, 27, 16).svg;
+    s += text(300, 64, 'saturated', { cls: 'fg-sm' });
+    s += text(300, 150, 'one cis double bond', { cls: 'fg-sm' });
+    s += text(300, 300, 'saturated', { cls: 'fg-sm' });
+
+    /* one swap, and it is a membrane lipid instead of a fat */
+    s += arrow(P(400, rows[2]), P(446, rows[2]));
+    s += tag(430, 296, 'replace this chain');
+    s += bond(P(470, 262), P(516, 262), { rFrom: 15, rTo: 15 });
+    s += bond(P(516, 262), P(562, 262), { rFrom: 15, rTo: 15 });
+    s += bond(P(516, 262), P(516, 222), { rFrom: 15, rTo: 15, order: 2 });
+    s += bond(P(516, 262), P(516, 302), { rFrom: 15, rTo: 16 });
+    s += bond(P(562, 262), P(618, 262), { rFrom: 15, rTo: 26 });
+    s += atom(470, 262, 'O');
+    s += atom(516, 262, 'P', { kind: 'warn' });
+    s += atom(516, 222, 'O');
+    s += atom(516, 302, 'O⁻', { r: 16, kind: 'warn' });
+    s += atom(562, 262, 'O');
+    s += atom(618, 262, 'choline', { r: 26 });
+    s += tag(540, 196, 'phosphate + choline head');
+
+    s += rule(20, 336, 660, 336);
+    s += label(340, 360, 'One swap out of three, and a storage fat becomes a membrane lipid.');
+    return s;
+  },
+  caption: 'A triglyceride is glycerol wearing three esters, and a phospholipid is the same molecule with one of them exchanged for a charged phosphate. Every <i>reaction</i> in this section happens at the shaded ester groups; everything <i>physical</i> happens out in the chains.',
+  note: 'The middle chain is drawn kinked on purpose. A natural fat carries different acids on one backbone, which is why saponifying one gives a mixture of soaps rather than three copies of anything, and why a single fat can be part solid and part oil in its behavior.',
+});
+
+/* ---------------------------------------------------------------- B7 ---
+   Micelle against bilayer: two spatial objects the section describes in
+   words. One tail or two is the entire difference, and it decides the
+   shape. */
+FIGURES.push({
+  id: 'micelle-and-bilayer',
+  section: 'lipids',
+  anchor: 'That bilayer is the cell membrane, and its existence is a direct consequence of one molecule having a polar end and a nonpolar end.</p>',
+  viewBox: '0 0 680 330',
+  alt: 'A micelle drawn as single-tailed molecules arranged in a circle with their tails pointing inward around a gray droplet, beside a bilayer drawn as two rows of double-tailed molecules with tails facing each other and heads facing the water',
+  build() {
+    let s = '';
+    s += panel(16, 44, 300, 200);
+    s += panel(348, 44, 300, 200);
+    s += tag(166, 32, 'one tail → sphere');
+    s += tag(498, 32, 'two tails → sheet');
+
+    /* the micelle: heads out, tails in, grease in the middle */
+    const cx = 166, cy = 144, R = 78;
+    s += `<circle class="fg-fill-mut" cx="${cx}" cy="${cy}" r="30" opacity="0.5"></circle>`;
+    s += text(cx, cy + 4, 'oil', { cls: 'fg-sm' });
+    for (let i = 0; i < 16; i++) {
+      const a = (i / 16) * 2 * Math.PI;
+      const ux = Math.cos(a), uy = Math.sin(a);
+      s += bond(P(cx + ux * (R - 10), cy + uy * (R - 10)), P(cx + ux * 34, cy + uy * 34), { rFrom: 0, rTo: 0 });
+      s += atom(cx + ux * R, cy + uy * R, '', { kind: 'hi', r: 9 });
+    }
+
+    /* the bilayer: the same molecules, two tails each, in two rows */
+    for (let i = 0; i < 10; i++) {
+      const x = 376 + i * 27;
+      for (const [hy, dir] of [[98, 1], [190, -1]]) {
+        s += atom(x, hy, '', { kind: 'hi', r: 9 });
+        s += bond(P(x - 4, hy + dir * 9), P(x - 4, hy + dir * 48), { rFrom: 0, rTo: 0 });
+        s += bond(P(x + 4, hy + dir * 9), P(x + 4, hy + dir * 48), { rFrom: 0, rTo: 0 });
+      }
+    }
+    s += text(498, 74, 'water', { cls: 'fg-sm' });
+    s += text(498, 222, 'water', { cls: 'fg-sm' });
+
+    s += tag(166, 272, 'micelle — what soap makes');
+    s += tag(498, 272, 'bilayer — what a membrane is');
+    s += rule(20, 290, 660, 290);
+    s += label(340, 314, 'Both structures hide the same thing from the same solvent.');
+    return s;
+  },
+  caption: 'Two ways of hiding a hydrocarbon from water, and the number of tails decides which one forms. One tail tapers to a wedge, and wedges tile a sphere; two tails make a molecule closer to a cylinder, and cylinders tile a flat sheet.',
+  note: 'Neither structure involves a new kind of bond. It is the same hydrophobic effect that buries the nonpolar side chains inside a folded protein: the ordering forced on water around a hydrocarbon surface is what is being avoided, so the surfaces are put where the water cannot reach them.',
+});
+
+
+/* ---------------------------------------------------------------- B8 ---
+   The base pairs. The section's central claim — that the pairing rules are
+   geometry rather than convention — was made in prose beside a table of
+   COUNTS, with no geometry anywhere on the page. Everything here is drawn
+   atom by atom: the lactam forms of the bases, a Kekule structure that
+   satisfies every valence, and hydrogen bonds that run between real donors
+   and real acceptors. */
+FIGURES.push({
+  id: 'base-pairs-drawn',
+  section: 'nucleic-acids',
+  anchor: 'And because <b>G–C has three hydrogen bonds to A–T\'s two</b>, a GC-rich stretch of DNA takes more energy to separate, which is why GC content predicts melting temperature.</p>',
+  viewBox: '0 0 680 392',
+  alt: 'Adenine paired with thymine by two hydrogen bonds and guanine paired with cytosine by three, each pair drawn as a purine and a pyrimidine with their glycosidic bonds pointing outward and the two pairs spanning the same width',
+  build() {
+    let s = '';
+    const hex = (cx, cy, r, k) => P(cx + r * Math.cos(k * Math.PI / 3), cy + r * Math.sin(k * Math.PI / 3));
+
+    /* One pair. `g` true draws guanine-cytosine, false adenine-thymine;
+       both use the same skeleton, so the two pairs come out the same width
+       by construction, which is the claim the figure is making. */
+    const pairAt = (dx, g) => {
+      const P2 = (p) => P(p.x + dx, p.y);
+      let t = '';
+      /* ---- pyrimidine on the left: N1 C2 N3 C4 C5 C6 ---- */
+      const py = (k) => P2(hex(110, 196, 34, k));
+      const N1 = py(2), C2 = py(1), N3 = py(0), C4 = py(5), C5 = py(4), C6 = py(3);
+      const O2 = P2(P(141, 249)), X4 = P2(P(141, 143)), Me = P2(P(79, 143));
+      const pyc = P2(P(110, 196));
+      t += bond(N1, C2, { rFrom: 15, rTo: 0 });
+      t += bond(C2, N3, { rFrom: 0, rTo: g ? 15 : 17 });
+      t += bond(C2, O2, { rFrom: 0, rTo: 15, order: 2 });
+      t += g ? ringDouble(N3, C4, pyc) : bond(N3, C4, { rFrom: 17, rTo: 0 });
+      t += bond(C4, X4, { rFrom: 0, rTo: g ? 18 : 15, order: g ? 1 : 2 });
+      t += bond(C4, C5, { rFrom: 0, rTo: 0 });
+      t += ringDouble(C5, C6, pyc);
+      t += bond(C6, N1, { rFrom: 0, rTo: 15 });
+      if (!g) t += bond(C5, Me, { rFrom: 0, rTo: 17 });
+      t += atom(N1.x, N1.y, 'N');
+      t += atom(N3.x, N3.y, g ? 'N' : 'NH', { r: g ? 15 : 17 });
+      t += atom(O2.x, O2.y, 'O');
+      t += atom(X4.x, X4.y, g ? 'NH₂' : 'O', { r: g ? 18 : 15 });
+      if (!g) t += atom(Me.x, Me.y, 'CH₃', { r: 17 });
+      // the bond to the sugar, which is what makes this a nucleoside
+      const sug1 = P2(P(73, 260));
+      t += bond(N1, sug1, { rFrom: 15, rTo: 0 });
+      t += text(sug1.x - 10, sug1.y + 16, 'to sugar', { cls: 'fg-sm' });
+
+      /* ---- purine on the right: six-ring N1 C2 N3 C4 C5 C6 ---- */
+      const pu = (k) => P2(hex(250, 196, 34, k));
+      const n1 = pu(3), c6 = pu(4), c5 = pu(5), c4 = pu(0), n3 = pu(1), c2 = pu(2);
+      const X6 = P2(P(219, 143)), X2 = P2(P(219, 249));
+      // the fused five-ring, placed on the C4-C5 edge
+      const puc = P2(P(250, 196));
+      const mid = P((c4.x + c5.x) / 2, (c4.y + c5.y) / 2);
+      const ex = c4.x - c5.x, ey = c4.y - c5.y, el = Math.hypot(ex, ey);
+      // outward normal: the perpendicular that points AWAY from the
+      // six-ring, which is the half of this the first draft got wrong -
+      // the pentagon fused inward and N7 landed on top of C4.
+      let nx = -ey / el, ny = ex / el;
+      if ((mid.x - puc.x) * nx + (mid.y - puc.y) * ny < 0) { nx = -nx; ny = -ny; }
+      const pc = P(mid.x + nx * (el / (2 * Math.tan(Math.PI / 5))),
+                   mid.y + ny * (el / (2 * Math.tan(Math.PI / 5))));
+      const R5 = el / (2 * Math.sin(Math.PI / 5));
+      const a5 = Math.atan2(c5.y - pc.y, c5.x - pc.x);
+      const p5 = (j) => P(pc.x + R5 * Math.cos(a5 + j * 2 * Math.PI / 5),
+                          pc.y + R5 * Math.sin(a5 + j * 2 * Math.PI / 5));
+      const n7 = p5(1), c8 = p5(2), n9 = p5(3);
+
+      t += g ? bond(n1, c6, { rFrom: 17, rTo: 0 }) : ringDouble(n1, c6, puc);
+      t += bond(c6, c5, { rFrom: 0, rTo: 0 });
+      t += ringDouble(c5, c4, puc);
+      t += bond(c4, n3, { rFrom: 0, rTo: 15 });
+      t += ringDouble(n3, c2, puc);
+      t += bond(c2, n1, { rFrom: 0, rTo: g ? 17 : 15 });
+      t += bond(c6, X6, { rFrom: 0, rTo: g ? 15 : 18, order: g ? 2 : 1 });
+      if (g) t += bond(c2, X2, { rFrom: 0, rTo: 18 });
+      t += bond(c5, n7, { rFrom: 0, rTo: 15 });
+      t += ringDouble(n7, c8, pc);
+      t += bond(c8, n9, { rFrom: 0, rTo: 15 });
+      t += bond(n9, c4, { rFrom: 15, rTo: 0 });
+      t += atom(n1.x, n1.y, g ? 'NH' : 'N', { r: g ? 17 : 15 });
+      t += atom(n3.x, n3.y, 'N');
+      t += atom(n7.x, n7.y, 'N');
+      t += atom(n9.x, n9.y, 'N');
+      t += atom(X6.x, X6.y, g ? 'O' : 'NH₂', { r: g ? 15 : 18 });
+      if (g) t += atom(X2.x, X2.y, 'NH₂', { r: 18 });
+      const sug2 = P(n9.x + 18, n9.y + 26);
+      t += bond(n9, sug2, { rFrom: 15, rTo: 0 });
+      t += text(n9.x - 4, n9.y + 48, 'to sugar', { cls: 'fg-sm' });
+
+      /* ---- and the hydrogen bonds, donor to acceptor ---- */
+      const hb = (a, b, ra, rb) => `<line class="fg-dash-hi" x1="${(a.x + ra).toFixed(1)}" y1="${a.y}" x2="${(b.x - rb).toFixed(1)}" y2="${b.y}"></line>`;
+      t += hb(X4, X6, g ? 18 : 15, g ? 15 : 18);
+      t += hb(N3, n1, g ? 15 : 17, g ? 17 : 15);
+      if (g) t += hb(O2, X2, 15, 18);
+      return t;
+    };
+
+    s += panel(8, 44, 332, 256);
+    s += panel(348, 44, 324, 256);
+    s += tag(174, 32, 'A–T · two hydrogen bonds');
+    s += tag(510, 32, 'G–C · three hydrogen bonds');
+    s += pairAt(0, false);
+    s += pairAt(318, true);
+
+    // the width both pairs share, measured between the two sugar bonds
+    for (const [x1, x2] of [[73, 340], [391, 658]]) {
+      s += rule(x1, 316, x2, 316);
+      s += rule(x1, 310, x1, 322);
+      s += rule(x2, 310, x2, 322);
+    }
+    s += tag(206, 338, 'same width');
+    s += tag(524, 338, 'same width');
+    s += rule(20, 354, 660, 354);
+    s += label(340, 378, 'Every rung is one purine plus one pyrimidine, so every rung is the same width.');
+    return s;
+  },
+  caption: 'The two pairs drawn out. Each dashed line joins a hydrogen-bond <b>donor</b> on one base to an <b>acceptor</b> on the other: A and T can line up two such partners, G and C three. The glycosidic bonds point outward to the backbones, and the two pairs span the same distance between them.',
+  note: 'Try pairing A with G on paper. Two fused ring systems are far too wide to span the gap, and their donors end up facing donors — the rule fails twice over at once, which is why it never has to be memorized. The bases are drawn in their lactam (C=O, N–H) forms, which is the form that makes these donors and acceptors the ones they are.',
+});
+
+
+/* ---------------------------------------------------------------- B9 ---
+   One nucleotide, with its sugar actually drawn. The section asserts 3'
+   and 5' numbering, an N-glycoside at C1' and a phosphate ester at C5'
+   without ever showing the ring those primes are counted round. */
+FIGURES.push({
+  id: 'nucleotide-drawn',
+  section: 'nucleic-acids',
+  anchor: 'The sugar is the difference between the two polymers. <b>RNA</b> uses <b>ribose</b>; <b>DNA</b> uses <b>2-deoxyribose</b>, which is ribose missing the OH at C2 — which is exactly what "deoxy" is saying.</p>',
+  viewBox: '0 0 700 380',
+  alt: 'A deoxyribose furanose ring drawn edge-on with the ring oxygen at the back, an N-glycosidic bond from C1 prime to the base, H at C2 prime with a ghosted OH marked RNA only, a free OH at C3 prime and a 5 prime CH2 joined through an oxygen to a phosphate',
+  build() {
+    let s = '';
+    const O4 = P(300, 150), C1 = P(366, 180), C2 = P(340, 236), C3 = P(262, 236), C4 = P(236, 180);
+    // front edge heavy: the furanose is drawn edge-on, same convention as
+    // the pyranose in the carbohydrates section.
+    s += bond(C3, C2, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
+    s += bond(C4, C3, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
+    s += bond(C2, C1, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
+    s += bond(C4, O4, { rFrom: 0, rTo: 15 });
+    s += bond(C1, O4, { rFrom: 0, rTo: 15 });
+    s += atom(O4.x, O4.y, 'O');
+
+    // C1' to the base: an N-glycoside at the anomeric carbon
+    s += bond(C1, P(424, 150), { rFrom: 0, rTo: 15 });
+    s += atom(424, 150, 'N', { kind: 'hi' });
+    s += bond(P(424, 150), P(462, 150), { rFrom: 15, rTo: 0 });
+    s += panel(462, 124, 116, 52, { kind: 'hi' });
+    s += text(520, 155, 'adenine', { cls: 'fg-lbl' });
+    s += tag(520, 110, 'N-glycoside at N9');
+
+    // C2': H in DNA, and the OH that RNA keeps
+    s += bond(C2, P(340, 290), { rFrom: 0, rTo: 15 });
+    s += atom(340, 290, 'H');
+    s += bond(C2, P(398, 268), { rFrom: 0, rTo: 15, cls: 'fg-bond-soft' });
+    s += text(398, 272, 'OH', { cls: 'fg-sm' });
+    s += tag(408, 298, 'RNA only', { cls: 'fg-tag-mut' });
+
+    // C3': the free hydroxyl the next nucleotide is joined to
+    s += bond(C3, P(262, 290), { rFrom: 0, rTo: 16 });
+    s += atom(262, 290, 'OH', { r: 16, kind: 'warn' });
+    s += tag(148, 250, 'next unit joins here');
+
+    // C5': CH2 out to the phosphate ester
+    s += bond(C4, P(196, 140), { rFrom: 0, rTo: 17 });
+    s += atom(196, 140, 'CH₂', { r: 17 });
+    s += bond(P(196, 140), P(150, 116), { rFrom: 17, rTo: 15 });
+    s += atom(150, 116, 'O');
+    s += bond(P(150, 116), P(90, 92), { rFrom: 15, rTo: 24 });
+    s += atom(90, 92, 'PO₃²⁻', { r: 24, kind: 'warn' });
+    s += tag(120, 56, 'phosphate ester');
+
+    for (const [x, y, n] of [[390, 196, '1′'], [364, 262, '2′'], [238, 262, '3′'],
+      [212, 196, '4′'], [172, 168, '5′']]) s += text(x, y, n, { cls: 'fg-sm' });
+
+    s += rule(220, 320, 580, 320);
+    s += label(400, 340, 'nucleoside = sugar + base');
+    s += rule(64, 352, 580, 352);
+    s += label(322, 372, 'nucleotide = nucleoside + the 5′ phosphate');
+    return s;
+  },
+  caption: 'One nucleotide, drawn out. Two of its three links are reactions already in hand — an <b>N-glycoside</b> at C1′, which is the anomeric carbon of the sugar, and a <b>phosphate ester</b> at C5′ — and the free OH at C3′ is where the next unit is joined, which is what makes the chain run 5′ to 3′.',
+  note: 'The primes are the whole reason for the numbering: the base has numbered atoms of its own, so the sugar\'s carbons are primed to keep the two sets apart. C2′ is where the two polymers differ, and it is drawn here as the H of deoxyribose with ribose\'s OH ghosted beside it.',
 });
 
 const START = (id) => `<!-- fig:${id}:start -->`;

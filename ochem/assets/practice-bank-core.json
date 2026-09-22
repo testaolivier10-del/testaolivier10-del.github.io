@@ -29691,14 +29691,14 @@
    "type": "mcq"
   },
   {
-   "q": "A sugar whose carbonyl is at the end of the chain is called what?",
+   "q": "D-glucose is stirred with NaBH4 in water. What is the product?",
    "options": [
-    "A ketose",
-    "A furanose",
-    "An anomer",
-    "An aldose"
+    "D-gluconic acid, oxidized at C1",
+    "D-glucitol, with an OH on every carbon",
+    "Methyl D-glucopyranoside",
+    "No reaction, since the ring form holds no carbonyl"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -29787,14 +29787,14 @@
    "type": "mcq"
   },
   {
-   "q": "A six-membered sugar ring is called what?",
+   "q": "Methyl alpha-D-glucopyranoside is warmed in dilute aqueous HCl, then tested with Tollens' reagent. What is seen?",
    "options": [
-    "A furanose",
-    "An anomer",
-    "A glycoside",
-    "A pyranose"
+    "No test, because an acetal is inert to the reagent",
+    "A positive test, once the acid frees glucose",
+    "A positive test even without the acid treatment",
+    "Oxidation of the sugar straight to D-gluconic acid"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -29847,12 +29847,12 @@
    "type": "mcq"
   },
   {
-   "q": "What is the name for that change in rotation?",
+   "q": "Which reagent converts D-glucose to D-gluconic acid and leaves the secondary alcohols untouched?",
    "options": [
-    "Epimerization",
-    "Tautomerization",
-    "Mutarotation",
-    "Racemization"
+    "CrO3 in aqueous sulfuric acid",
+    "Sodium borohydride in water",
+    "Bromine water",
+    "Methanol with a trace of HCl"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -29931,14 +29931,14 @@
    "type": "mcq"
   },
   {
-   "q": "What kind of bond joins two sugar units in a disaccharide?",
+   "q": "Which reagent takes D-glucose to D-glucaric acid, the diacid oxidized at both C1 and C6?",
    "options": [
-    "An ester bond",
-    "An amide bond",
-    "A phosphodiester bond",
-    "A glycosidic bond"
+    "Warm dilute nitric acid",
+    "Bromine water buffered with sodium bicarbonate",
+    "Sodium borohydride",
+    "Methanol and dry HCl"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -30027,28 +30027,28 @@
    "type": "mcq"
   },
   {
-   "q": "Epimers are stereoisomers differing at how many stereocenters?",
+   "q": "In the Fischer projection of a D-aldohexose the C3 OH is drawn on the left. Where does it point in the Haworth ring?",
    "options": [
-    "Two",
-    "All of them",
-    "None",
-    "One"
+    "Down",
+    "It depends on whether the anomer is alpha or beta",
+    "Up",
+    "Into the ring, in place of the ring oxygen"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   }
  ],
  "amino-acids": [
   {
-   "q": "Which four groups sit on the alpha carbon of an amino acid?",
+   "q": "Which structure is the right way to draw alanine in water at pH 7?",
    "options": [
-    "NH2, COOH, H, and a side chain",
-    "Two NH2 groups and two COOH groups",
-    "OH, COOH, H, and a side chain",
-    "NH2, CHO, H, and a side chain"
+    "H2N-CH(CH3)-COOH, with both groups neutral",
+    "-OOC-CH(CH3)-NH3+, the zwitterion",
+    "-OOC-CH(CH3)-NH2, carrying a net -1",
+    "HOOC-CH(CH3)-NH3+, carrying a net +1"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -30101,14 +30101,14 @@
    "type": "mcq"
   },
   {
-   "q": "Roughly what is the pKa of an amino acid's carboxyl group?",
+   "q": "Which sequence turns a carboxylic acid into the alpha-amino acid with the same carbon skeleton?",
    "options": [
-    "5",
-    "9",
-    "12",
-    "2"
+    "Br2 with PBr3, then excess NH3",
+    "NaBH4, then aqueous acid",
+    "An aldehyde with NH3 and HCN, then hydrolysis",
+    "PCC, then a Grignard reagent"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -30149,14 +30149,14 @@
    "type": "mcq"
   },
   {
-   "q": "For a side chain that does not ionize, how is pI calculated?",
+   "q": "Lysine has pKa values 2.18, 8.95 and 10.53. What is its pI?",
    "options": [
-    "Add the two pKa values",
-    "Subtract the smaller from the larger",
-    "Take the lower pKa",
-    "Average the two pKa values"
+    "5.57",
+    "9.74",
+    "7.22",
+    "6.36"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -30173,14 +30173,14 @@
    "type": "mcq"
   },
   {
-   "q": "Alanine has pKa values 2.34 and 9.69. What is its pI?",
+   "q": "Glutamic acid has pKa values 2.19 (alpha-COOH), 4.25 (side-chain COOH) and 9.67 (alpha-NH3+). Which form is present at pH 7?",
    "options": [
-    "12.03",
-    "6.02",
-    "7.00",
-    "3.85"
+    "Both carboxyls protonated, ammonium on: net +1",
+    "Both carboxyls deprotonated, amine neutral: net -2",
+    "Both carboxyls deprotonated, ammonium on: net -1",
+    "Alpha-carboxyl deprotonated, side chain on: net 0"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -30463,24 +30463,24 @@
    "type": "mcq"
   },
   {
-   "q": "What does amide resonance do to the C-N bond?",
+   "q": "Why can a dipeptide not be made simply by heating glycine and alanine together?",
    "options": [
-    "Breaks it",
-    "Makes it ionic",
-    "It shortens it",
-    "Lengthens it"
+    "Amino acids do not react with each other at all",
+    "Each molecule has both groups, so four dipeptides form",
+    "The amide formed would hydrolyze as fast as it formed",
+    "Only one enantiomer couples, so the product is racemic"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Roughly how long is the peptide C-N bond?",
+   "q": "An amine will not attack a carboxylic acid directly. Which reagent makes the coupling go?",
    "options": [
-    "1.33 angstroms",
-    "1.54 angstroms",
-    "1.47 angstroms, a normal single bond",
-    "1.20 angstroms, a full triple bond"
+    "DCC, which activates the acid",
+    "Sodium hydroxide",
+    "Boc2O, with a base",
+    "Phenyl isothiocyanate, the Edman reagent"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -30607,12 +30607,12 @@
    "type": "mcq"
   },
   {
-   "q": "What is quaternary structure?",
+   "q": "Edman degradation is run on the peptide Ala-Gly-Phe-Lys. Which residue is identified, and what is left?",
    "options": [
-    "The sequence of one chain",
-    "The shape of one chain",
-    "The pattern of hydrogen bonds",
-    "How chains assemble"
+    "Lysine, leaving Ala-Gly-Phe intact",
+    "All four at once, as free amino acids",
+    "Phenylalanine, since the reagent seeks aromatic rings",
+    "Alanine, leaving Gly-Phe-Lys intact"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -30727,12 +30727,12 @@
    "type": "mcq"
   },
   {
-   "q": "What does hydrolyzing a protein completely give?",
+   "q": "Trypsin cleaves on the carboxyl side of lysine and arginine. A 300-residue protein holds 12 lysines and 7 arginines, none at the C-terminus. How many fragments?",
    "options": [
-    "Ammonia and carbon dioxide",
-    "Free amino acids",
-    "A single long chain",
-    "Peptide fragments only"
+    "19",
+    "20",
+    "12",
+    "300"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -30825,14 +30825,14 @@
    "type": "mcq"
   },
   {
-   "q": "Which fatty acid has the higher melting point at equal chain length?",
+   "q": "Glyceryl trioleate is stirred with excess H2 over palladium until no alkene remains. What has changed?",
    "options": [
-    "The cis-unsaturated one",
-    "The one with two cis double bonds",
-    "They are equal",
-    "The saturated one"
+    "The three ester groups are reduced to alcohols",
+    "The glycerol backbone is cleaved from the chains",
+    "The kinks are gone and the melting point rises",
+    "Nothing, since hydrogenation leaves fatty chains alone"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -30873,14 +30873,14 @@
    "type": "mcq"
   },
   {
-   "q": "Which has the lowest melting point?",
+   "q": "A triglyceride carrying one stearic, one oleic and one palmitic acid is refluxed with excess aqueous NaOH. What is in the flask?",
    "options": [
-    "A C18 acid with one cis double bond",
-    "A saturated C18 acid",
-    "A C18 acid with one trans double bond",
-    "A C18 acid with two cis double bonds"
+    "One glycerol and three different carboxylate salts",
+    "One glycerol and three identical carboxylate salts",
+    "Three fatty acids and one glycerol, in equilibrium",
+    "One long-chain alcohol and three fatty acids"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -30973,7 +30973,7 @@
    "options": [
     "A fatty acid salt",
     "A steroid with a phosphate",
-    "A triester of glycerol",
+    "A triester of glycerol with three fatty acids",
     "A diester with a phosphate"
    ],
    "correct": 3,
@@ -31077,14 +31077,14 @@
    "type": "mcq"
   },
   {
-   "q": "Why does a trans fat behave like a saturated fat physically?",
+   "q": "Hydrolyzing a lipid gives exactly two products in equal amounts: one long-chain acid and one long-chain primary alcohol. What was it?",
    "options": [
-    "It is fully saturated",
-    "It is much heavier",
-    "Its chain stays straight",
-    "It contains no double bond"
+    "A triglyceride",
+    "A wax",
+    "A phospholipid",
+    "A steroid"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -31163,12 +31163,12 @@
    "type": "mcq"
   },
   {
-   "q": "What is the only structural difference between ribose and 2-deoxyribose?",
+   "q": "A DNA strand reads 5'-GGATC-3'. Written in the conventional direction, what is its complement?",
    "options": [
-    "The number of carbons",
-    "An OH at C2 prime",
-    "The ring size",
-    "The anomeric configuration"
+    "5'-CCTAG-3'",
+    "5'-GATCC-3'",
+    "5'-GGATC-3'",
+    "5'-CTAGG-3'"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -31355,14 +31355,14 @@
    "type": "mcq"
   },
   {
-   "q": "If a DNA sample is 30% adenine, how much thymine does it contain?",
+   "q": "A sample of double-stranded DNA is 30% adenine. What is its guanine content?",
    "options": [
-    "It cannot be determined",
-    "30%",
     "20%",
-    "70%"
+    "30%",
+    "40%",
+    "It cannot be determined"
    ],
-   "correct": 1,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -31451,14 +31451,14 @@
    "type": "mcq"
   },
   {
-   "q": "What does a nucleoside triphosphate such as ATP provide?",
+   "q": "Why does an incoming nucleoside triphosphate react at all when a polymerase extends a chain?",
    "options": [
-    "Extra hydrogen bonds",
-    "A second base",
-    "Ring stability",
-    "A good leaving group"
+    "The base pairs, and pairing supplies the energy",
+    "The 3' OH is a uniquely strong nucleophile",
+    "The two outer phosphates are anhydrides, so diphosphate leaves well",
+    "The sugar ring opens to an aldehyde first"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
