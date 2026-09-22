@@ -110,6 +110,7 @@
       { id: 'electron-rich-poor', title: 'Electron-rich vs. electron-poor atoms', href: 'lessons/electron-rich-poor.html', dependsOn: ['nucleophiles', 'electrophiles'] },
       { id: 'leaving-groups', title: 'Leaving groups', href: 'lessons/leaving-groups.html', dependsOn: ['electrophiles', 'pka', 'conjugate'] },
       { id: 'energy-diagrams', title: 'Energy diagrams & the Hammond postulate', href: 'lessons/energy-diagrams.html', dependsOn: ['bonding', 'pka', 'leaving-groups'] },
+      { id: 'carbocations', title: 'Carbocations', href: 'lessons/carbocations.html', dependsOn: ['hybridization', 'resonance', 'leaving-groups'] },
       { id: 'radical-halogenation', title: 'Radical halogenation', href: 'lessons/radical-halogenation.html', dependsOn: ['conformational-analysis', 'resonance', 'stereocenters'] }
     ]},
     /* E2 before E1: E2 is the one that needs the conformational material,
