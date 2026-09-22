@@ -344,7 +344,13 @@ test('the comparator answers from the measured pKa, never from the rules', () =>
    right answers marks a student wrong for being right, which is worse than
    no quiz at all. */
 const QUIZ_TOOLS = ['acid-base', 'viewer-3d', 'conformations', 'resonance',
-                    'reaction-predictor', 'spectroscopy', 'arrow-pusher'];
+                    'reaction-predictor', 'spectroscopy', 'arrow-pusher', 'reagent-roadmap'];
+
+/* A tool whose data lives in a file of its own loads it first, as its page
+   does. */
+const TOOL_DEPS = {
+  'reagent-roadmap': ['ochem/assets/curriculum.js', 'ochem/assets/tools/reagent-roadmap-data.js'],
+};
 
 function quizConfigs(){
   const captured = [];
@@ -354,14 +360,19 @@ function quizConfigs(){
                        shuffle: a => a, esc: x => String(x) },
       OchemTools: null,
     });
-    b.load(...CORE, `ochem/assets/tools/${slug}.js`);
+    b.load(...CORE, ...(TOOL_DEPS[slug] || []), `ochem/assets/tools/${slug}.js`);
   }
   return captured;
 }
 
-test('all seven tools register a quiz', () => {
+test('every tool registers a quiz', () => {
   const got = quizConfigs().map(c => c.slug);
   for(const slug of QUIZ_TOOLS) assert.ok(got.includes(slug), `${slug} registered no quiz`);
+  // And the list above is every tool, so a new one cannot skip this file.
+  const s = browser().load('ochem/assets/tools-registry.js');
+  for(const t of s.OchemTools.ALL){
+    assert.ok(QUIZ_TOOLS.includes(t.slug), `${t.slug} is in the registry but not in QUIZ_TOOLS here`);
+  }
 });
 
 test('every question a generator can produce has exactly one right answer', () => {
@@ -834,4 +845,164 @@ test('every generated ochem figure draws inside its own canvas', () => {
     }
   }
   assert.ok(seen >= 6, `expected at least 6 generated figures, found ${seen}`);
+});
+
+/* ====================================================================== */
+/* The Reagent Roadmap                                                     */
+/* ====================================================================== */
+
+/* The roadmap routes over a hand-written graph of every interconversion the
+   course teaches, so the graph is the thing that can be wrong. These hold it
+   to things that are not written in it: the curriculum, the oxidation ladder
+   the course draws, and routes whose answer the notes work out by hand. */
+function roadmap(){
+  const s = browser().load('ochem/assets/curriculum.js', 'ochem/assets/tools/reagent-roadmap-data.js',
+                           'ochem/assets/tools/reagent-roadmap.js');
+  return { D: s.OchemRoadmap, E: s.OchemRoadmapEngine, C: s.OchemCurriculum };
+}
+
+test('roadmap: every reaction joins real groups, names real reagents and links a real section', () => {
+  const { D, C } = roadmap();
+  const topics = new Set();
+  for(const m of C.MODULES) for(const t of m.topics) topics.add(t.id);
+  const ids = new Set(), used = new Set(), touched = new Set();
+
+  for(const n of D.NODES){
+    assert.ok(topics.has(n.topic), `group ${n.id} links topic "${n.topic}", which the curriculum does not have`);
+    assert.ok(existsSync(`ochem/notes/${n.topic}.html`), `group ${n.id}: no notes page for ${n.topic}`);
+  }
+  for(const e of D.EDGES){
+    assert.ok(!ids.has(e.id), `duplicate reaction id ${e.id}`); ids.add(e.id);
+    assert.ok(D.node(e.from), `${e.id}: no group "${e.from}"`);
+    assert.ok(D.node(e.to), `${e.id}: no group "${e.to}"`);
+    assert.ok(topics.has(e.topic), `${e.id} links topic "${e.topic}", which the curriculum does not have`);
+    assert.ok(existsSync(`ochem/notes/${e.topic}.html`), `${e.id}: no notes page for ${e.topic}`);
+    assert.ok(e.keys.length, `${e.id} names no reagent`);
+    for(const k of e.keys){ assert.ok(D.reagent(k), `${e.id} uses reagent "${k}", which is not defined`); used.add(k); }
+    assert.ok(Array.isArray(e.rx) && e.rx.length && e.rx.every(x => typeof x === 'string' && x.trim()), `${e.id}: no reagent line`);
+    assert.ok(Array.isArray(e.ex) && e.ex.length === 2 && e.ex.every(Boolean), `${e.id}: no worked example`);
+    assert.ok(['up', 'down', 'across', 'cc', 'join', 'ring'].includes(e.kind), `${e.id}: kind "${e.kind}"`);
+    if(e.kind === 'cc') assert.ok(e.cc, `${e.id} is a C–C step but does not say what happens to the carbons`);
+    touched.add(e.from); touched.add(e.to);
+  }
+  for(const r of D.REAGENTS) assert.ok(used.has(r.id), `reagent ${r.id} is listed but no reaction uses it`);
+  for(const n of D.NODES) assert.ok(touched.has(n.id), `group ${n.id} has no reactions at all`);
+});
+
+test('roadmap: every redox claim agrees with the oxidation ladder', () => {
+  /* The notes' ladder: a step that climbs needs an oxidant, one that falls a
+     reductant, and one that stays level needs neither. A reaction filed as
+     "across" between two levels — or "up" to a lower one — would teach the
+     wrong shelf to reach for. C–C steps are exempt: the ladder counts bonds
+     to heteroatoms on a fixed skeleton. */
+  const { D } = roadmap();
+  let checked = 0;
+  for(const e of D.EDGES){
+    if(e.cc || !['up', 'down', 'across'].includes(e.kind)) continue;
+    const a = D.node(e.from).band, b = D.node(e.to).band;
+    if(typeof a !== 'number' || typeof b !== 'number') continue;
+    const want = b > a ? 'up' : b < a ? 'down' : 'across';
+    assert.equal(e.kind, want, `${e.id}: filed as "${e.kind}" but goes from level ${a} to ${b}`);
+    checked++;
+  }
+  assert.ok(checked > 60, `only ${checked} reactions checked against the ladder`);
+});
+
+test('roadmap: substitution patterns only name patterns that exist', () => {
+  const { D } = roadmap();
+  const pats = (id) => { const n = D.node(id); return n.patterns ? Object.keys(D.PATTERNS[n.patterns].set) : null; };
+  for(const e of D.EDGES){
+    const pf = pats(e.from), pt = pats(e.to);
+    if(e.needs){ assert.ok(pf, `${e.id} needs a pattern of an untracked group`);
+      for(const p of e.needs) assert.ok(pf.includes(p), `${e.id} needs "${p}", which ${e.from} does not have`); }
+    if(e.gives){ assert.ok(pt, `${e.id} gives a pattern to an untracked group`);
+      for(const p of e.gives) assert.ok(pt.includes(p), `${e.id} gives "${p}", which ${e.to} does not have`); }
+    if(e.map){ assert.ok(pf && pt, `${e.id} maps patterns between untracked groups`);
+      for(const [k, v] of Object.entries(e.map)){
+        assert.ok(pf.includes(k), `${e.id} maps from "${k}", which ${e.from} does not have`);
+        for(const p of v) assert.ok(pt.includes(p), `${e.id} maps to "${p}", which ${e.to} does not have`);
+      } }
+    if(e.keep) assert.ok(pf && pt && pf.some(p => pt.includes(p)), `${e.id} keeps a pattern the two groups do not share`);
+  }
+});
+
+test('roadmap: two reactions with the same start and end either agree or say how they differ', () => {
+  /* Lindlar and Na/NH₃ both turn an alkyne into an alkene, and the difference
+     is the whole point. The quiz asks about such pairs, so each side must name
+     its outcome — or it would mark one of two right answers wrong. */
+  const { D } = roadmap();
+  for(const a of D.EDGES) for(const b of D.EDGES){
+    if(a === b || a.from !== b.from || a.to !== b.to) continue;
+    if(a.spec || b.spec) assert.ok(a.spec && b.spec && a.spec !== b.spec,
+      `${a.id} and ${b.id} share a start and an end, but only one says which product it means`);
+  }
+});
+
+test('roadmap: routes the notes work out by hand come out the same', () => {
+  const { E } = roadmap();
+  const keep = { skeleton: true }, any = { skeleton: false };
+  const ids = (r) => r.hops.map(h => h.map(e => e.id));
+
+  // Functional group interconversion, worked example: propan-2-ol to
+  // propan-1-ol is eliminate, then hydroborate — two steps, via propene.
+  let r = E.routes('alcohol-2', 'alcohol-1', keep);
+  assert.equal(r.length, 2);
+  assert.equal(r.shortest[0].nodes.join(' > '), 'alcohol-2 > alkene > alcohol-1');
+  assert.ok(ids(r.shortest[0])[1].includes('ene-hydroboration'), 'the re-addition must be the anti-Markovnikov one');
+  assert.ok(!ids(r.shortest[0])[1].includes('ene-h3o-2'), 'acid hydration would put the OH straight back');
+
+  // One-step oxidations stop where the water says.
+  r = E.routes('alcohol-1', 'aldehyde', keep);
+  assert.equal(r.length, 1);
+  assert.ok(r.shortest[0].hops[0].every(e => e.keys.includes('PCC')), 'the aldehyde needs an anhydrous oxidant');
+  r = E.routes('alcohol-1', 'acid', keep);
+  assert.equal(r.length, 1);
+  assert.ok(r.shortest[0].hops[0].some(e => e.keys.includes('Jones')));
+
+  // Syn diol in one step; the anti diol is the epoxide route, one longer.
+  r = E.routes('alkene', 'diol', keep);
+  assert.equal(r.length, 1);
+  assert.ok(r.longer.some(x => x.nodes.join() === 'alkene,epoxide,diol'), 'no anti-diol route through the epoxide');
+
+  // A 3° alcohol's alkene has no H on one carbon, so no alkyne can be made
+  // from it without changing the skeleton — the trap a naive map falls into.
+  r = E.routes('alcohol-3', 'alkyne', keep);
+  assert.equal(r.shortest.length, 0, `3° alcohol → alkyne should be impossible on the same skeleton: ${r.shortest.map(x => x.nodes.join(' > ')).join(' | ')}`);
+
+  // Benzylic alcohols have no β-H: an acid off a ring cannot come back down
+  // as an alcohol and then eliminate.
+  r = E.routes('acid', 'alkene', keep);
+  for(const x of r.shortest.concat(r.longer)) assert.ok(!x.states[0].includes('ar'), 'ArCOOH was routed to an alkene through benzyl alcohol');
+
+  // Skeleton mode never makes or breaks a C–C bond; nothing that fastens on a
+  // second molecule is ever followed by another step.
+  for(const [a, b] of [['halide-1', 'acid'], ['ketone', 'aldehyde'], ['alkene', 'ester'], ['arene', 'acid']]){
+    for(const opts of [keep, any]){
+      const res = E.routes(a, b, opts);
+      for(const x of res.shortest.concat(res.longer)){
+        x.hops.forEach((h, i) => {
+          for(const e of h){
+            if(opts.skeleton) assert.ok(!e.cc, `${a} → ${b}: ${e.id} changes the skeleton in keep-the-skeleton mode`);
+            if(e.final) assert.equal(i, x.hops.length - 1, `${a} → ${b}: ${e.id} is followed by another step`);
+          }
+        });
+      }
+    }
+  }
+
+  // And the one-carbon extensions exist only when asked for.
+  assert.equal(E.routes('halide-1', 'acid', keep).length, 2, 'halide → 1° alcohol → acid, keeping the skeleton');
+  assert.ok(E.routes('halide-1', 'acid', any).shortest.some(x => x.hops[0].some(e => e.cc === '+1 C')));
+});
+
+test('roadmap: the reagent search finds what students type', () => {
+  const { E } = roadmap();
+  const first = (q) => E.searchReagents(q).map(r => r.id);
+  for(const [q, id] of [['nabh4', 'NaBH4'], ['LiAlH4', 'LiAlH4'], ['h2cro4', 'Jones'], ['PCC', 'PCC'], ['mcpba', 'mCPBA'],
+                        ['OsO4', 'OsO4'], ['ozone', 'O3'], ['DMS', 'O3'], ['BH3', 'BH3'], ['HBr/ROOR', 'HBrROOR'],
+                        ['socl2', 'SOCl2'], ['PBr3', 'PBr3'], ['grignard', 'RMgX'], ['gilman', 'R2CuLi'],
+                        ['NaNH2', 'NaNH2'], ['lindlar', 'Lindlar'], ['Na/NH3', 'NaNH3'], ['dibal', 'DIBAL']]){
+    assert.ok(first(q).includes(id), `searching "${q}" does not find ${id}`);
+  }
+  assert.equal(E.searchReagents('zzzz').length, 0);
 });

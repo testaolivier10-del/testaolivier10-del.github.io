@@ -42,7 +42,7 @@ const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const check = process.argv.includes('--check');
 const require = createRequire(import.meta.url);
 
-/* One page per SHAPE of page, not one per page. These twelve cover every
+/* One page per SHAPE of page, not one per page. These thirteen cover every
    template on the site: if a lesson is accessible, all 58 built on the same
    engine are, and a violation in one of them is a violation in the engine. */
 const PAGES = [
@@ -57,6 +57,10 @@ const PAGES = [
   ['/ochem/search.html', 'the other search page'],
   ['/ochem/lessons/pka.html', 'a lesson'],
   ['/ochem/mechanisms/e2.html', 'a mechanism walkthrough'],
+  // The tools are a template of their own — shared chrome from tool-shell.js,
+  // a quiz from tool-quiz.js — and none was on this list. The roadmap stands
+  // in for all eight: it renders the shell, the quiz and a page of controls.
+  ['/ochem/tools/reagent-roadmap.html', 'an interactive tool'],
   ['/privacy.html', 'a prose page with controls'],
 ];
 

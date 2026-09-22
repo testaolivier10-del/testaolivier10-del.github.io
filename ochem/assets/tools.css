@@ -118,7 +118,9 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 }
 .tnote--good .tnote__k{color:var(--good-text);}
 .tnote--bad .tnote__k{color:var(--bad-text);}
-.tnote--warn .tnote__k{color:var(--warn);}
+/* --warn is a fill color: as 10px text on its own tint it measured 2.3:1.
+   The text-safe amber is the one the tags already use. */
+.tnote--warn .tnote__k{color:var(--amber-text);}
 .tnote--info .tnote__k{color:var(--accent);}
 
 .tstat{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}

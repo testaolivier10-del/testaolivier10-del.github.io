@@ -1,7 +1,7 @@
 {
   "name": "LevlPrep — Organic Chemistry I",
   "short_name": "Ochem",
-  "description": "A full 14-module Organic Chemistry I curriculum with mechanism walkthroughs, spaced review and seven interactive tools. Free, offline, no account needed.",
+  "description": "A full 14-module Organic Chemistry I curriculum with mechanism walkthroughs, spaced review and eight interactive tools. Free, offline, no account needed.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

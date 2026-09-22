@@ -43,7 +43,11 @@
       '<path d="M5 8 2.5 14h5zM19 8l-2.5 6h5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>' +
       '<path d="M8.5 20h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
     wave:
-      '<path d="M2 16c2 0 2-8 4-8s2 5 4 5 2-9 4-9 2 12 4 12 2-4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+      '<path d="M2 16c2 0 2-8 4-8s2 5 4 5 2-9 4-9 2 12 4 12 2-4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+    route:
+      '<circle cx="5" cy="19" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/>' +
+      '<circle cx="19" cy="5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/>' +
+      '<path d="M7.5 19H14a3.5 3.5 0 0 0 0-7h-4a3.5 3.5 0 0 1 0-7h6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
   };
 
   var TOOLS = [
@@ -109,6 +113,15 @@
       blurb: 'An IR spectrum that explains its regions, a ¹H NMR predictor for any structure, and a puzzle mode.',
       teaches: 'IR, ¹H NMR, degrees of unsaturation',
       topic: ['ir', 'h-nmr', 'mass-spec']
+    },
+    {
+      slug: 'reagent-roadmap',
+      name: 'Reagent Roadmap',
+      icon: ICONS.route,
+      tagline: 'From any functional group to any other, with the reagents.',
+      blurb: 'Pick a start and a target for the shortest routes, step by step, or look up what any reagent does.',
+      teaches: 'Functional group interconversion, reagents, synthesis',
+      topic: ['functional-group-interconversion', 'multistep-synthesis', 'retrosynthesis']
     }
   ];
 

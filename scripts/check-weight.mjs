@@ -350,6 +350,16 @@ const DATA_BUDGETS = [
      downloaded before the first question on two pages that already wait on
      240 KB of bank. */
   ['ochem/assets/question-molecules.js', 10],
+  /* The Reagent Roadmap's graph: every group, reagent and reaction the tool
+     routes over. Same situation as question-molecules.js — a <script src>
+     on a page with no line of its own above, so nothing was measuring it —
+     and the same shape of growth: it gets one entry longer every time the
+     course teaches another interconversion. Measured at 19.3 KB gzipped for
+     28 groups, 66 reagents and 137 reactions; 22 is that plus the usual
+     tenth. If a new chapter pushes it over, that is a chapter's worth of
+     reactions and worth a sentence in the commit, not a reason to trim the
+     notes on the ones already here. */
+  ['ochem/assets/tools/reagent-roadmap-data.js', 22],
 ];
 
 const REF_RE = /(?:href|src)="([^"]+)"/g;
