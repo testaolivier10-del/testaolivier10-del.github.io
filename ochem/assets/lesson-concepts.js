@@ -631,6 +631,12 @@
       6:['ir-functional-groups'],
       7:['ir-functional-groups'] } },
 
+    'carbocations': { n:9, steps:{
+      2:['carbocation-stability','formal-charge-calc'],
+      4:['carbocation-stability'],
+      6:['carbocation-stability','resonance-delocalization'],
+      8:['carbocation-rearrangement','carbocation-stability'] } },
+
     'leaving-groups': { n:9, steps:{
       3:['leaving-group-ability'],
       4:['leaving-group-ability','pka-scale'],

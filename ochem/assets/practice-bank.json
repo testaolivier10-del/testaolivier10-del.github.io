@@ -6117,6 +6117,398 @@
    "type": "mcq"
   }
  ],
+ "carbocations": [
+  {
+   "q": "A carbocation carbon is best described as:",
+   "options": [
+    "sp³, tetrahedral, with a lone pair in the fourth orbital",
+    "sp², trigonal planar, with an empty p orbital perpendicular to the plane",
+    "sp, linear, with two empty p orbitals",
+    "sp², trigonal planar, with a lone pair above the plane"
+   ],
+   "correct": 1,
+   "why": "Three bonds and no lone pair means three electron domains, which spread to 120° and make the carbon sp². That uses three of its four valence orbitals; the leftover unhybridized p orbital is empty and stands perpendicular to the plane of the bonds. A lone pair anywhere on that carbon would make it a carbanion instead.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "How many valence electrons surround the positively charged carbon of a carbocation?",
+   "options": [
+    "Seven",
+    "Four",
+    "Six",
+    "Eight"
+   ],
+   "correct": 2,
+   "why": "The carbon has three bonds and nothing else, and three bonds hold six electrons between them. That is two short of an octet, and the shortfall is exactly why a carbocation is so reactive: it is looking for an electron pair.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A carbon is drawn with three bonds and no lone pair. Its formal charge is:",
+   "options": [
+    "−1",
+    "0",
+    "+2",
+    "+1"
+   ],
+   "correct": 3,
+   "why": "Formal charge is valence electrons minus what the atom owns. Neutral carbon has four; here it owns no lone-pair electrons and one electron from each of three bonds, so 4 − (0 + 3) = +1. Running the same arithmetic on three bonds plus a lone pair gives 4 − 5 = −1, which is a carbanion.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Rank these cations from most to least stable: (CH₃)₃C⁺, CH₃CH₂⁺, (CH₃)₂CH⁺, CH₃⁺.",
+   "options": [
+    "They are all about equally stable",
+    "(CH₃)₃C⁺ > (CH₃)₂CH⁺ > CH₃CH₂⁺ > CH₃⁺",
+    "CH₃⁺ > CH₃CH₂⁺ > (CH₃)₂CH⁺ > (CH₃)₃C⁺",
+    "(CH₃)₂CH⁺ > (CH₃)₃C⁺ > CH₃⁺ > CH₃CH₂⁺"
+   ],
+   "correct": 1,
+   "why": "Each alkyl group attached to the charged carbon brings C–H bonds that can align with the empty p orbital and donate into it. The tertiary cation has nine such bonds, the secondary six, the primary three and the methyl cation none, so the ordering is 3° > 2° > 1° > methyl.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the name for a sigma bond donating its electron pair into an adjacent empty p orbital?",
+   "options": [
+    "Resonance",
+    "Tautomerization",
+    "Hyperconjugation",
+    "Induction"
+   ],
+   "correct": 2,
+   "why": "Hyperconjugation is the partial sharing of a sigma bonding pair with a neighboring empty (or partly empty) orbital. It is distinct from resonance, which moves charge fully onto another atom through a π system, and from induction, which is electron density sliding along a sigma bond without any orbital overlap being the point.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which is the direct precursor event for most carbocations you will draw?",
+   "options": [
+    "A leaving group departs, taking the bonding pair with it",
+    "A nucleophile attacks the carbon",
+    "A radical abstracts a hydrogen atom",
+    "Two carbons share an electron pair equally"
+   ],
+   "correct": 0,
+   "why": "Heterolytic loss of a leaving group is the standard route: the C–X bond breaks unevenly, the leaving group keeps both electrons, and the carbon is left with three bonds and the positive charge. The other common route is protonation of a π bond, which also leaves one carbon short of a bonding pair.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which pair of cations is closest in stability?",
+   "options": [
+    "A primary alkyl cation and a benzylic cation",
+    "A primary benzylic cation and a tertiary alkyl cation",
+    "A methyl cation and a tertiary alkyl cation",
+    "A vinyl cation and a secondary alkyl cation"
+   ],
+   "correct": 1,
+   "why": "A benzylic cation spreads its charge over four carbons by resonance, which is worth roughly as much as the nine hyperconjugating bonds of a tertiary alkyl cation. That is the standard pairing to remember, and it is why a formally primary benzylic substrate behaves like a tertiary one.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What migrates during a 1,2-hydride shift?",
+   "options": [
+    "A bare proton, leaving the electrons behind",
+    "A hydrogen atom with one electron",
+    "A hydride ion arriving from the solvent",
+    "A hydrogen together with the two electrons of its bond"
+   ],
+   "correct": 3,
+   "why": "The whole C–H bond moves: the hydrogen travels with both of its bonding electrons, which is why the arrow is drawn starting on the bond. Because the electrons go with it, the carbon it left behind is the one that ends up positive.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "In a carbocation, the empty p orbital is exposed:",
+   "options": [
+    "Only on the face the leaving group came from",
+    "Only on the face opposite the leaving group",
+    "Along the plane of the three bonds",
+    "Equally on both faces of the trigonal plane"
+   ],
+   "correct": 3,
+   "why": "The unhybridized p orbital has one lobe above the plane and one below, and nothing occupies either. That symmetry is why a nucleophile arriving later has no reason to prefer a side, and it is the structural origin of racemization in mechanisms that pass through a free cation.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which statement about induction as a stabilizing effect is correct?",
+   "options": [
+    "Induction moves the charge fully onto the neighboring carbon",
+    "An alkyl group donates electron density along the sigma bond because it is more polarizable than a hydrogen",
+    "An alkyl group withdraws electron density, which spreads the charge",
+    "Induction requires the neighboring bond to align with the empty p orbital"
+   ],
+   "correct": 1,
+   "why": "A carbon chain has a larger, looser electron cloud than a hydrogen atom, so it shifts electron density toward an adjacent positive charge more readily. It is a smaller effect than hyperconjugation and needs no particular alignment, and it never relocates the charge — it only smears it.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "2-chloro-2-methylpropane and 1-chlorobutane are each warmed in aqueous ethanol. Which ionizes faster, and why?",
+   "options": [
+    "2-chloro-2-methylpropane, because it gives a tertiary cation",
+    "1-chlorobutane, because its carbon is less crowded so the bond breaks more easily",
+    "1-chlorobutane, because a primary C–Cl bond is weaker",
+    "Neither — ionization rate does not depend on substitution"
+   ],
+   "correct": 0,
+   "why": "Solvolysis rate is the rate of forming the cation, so it tracks cation stability, not steric access. The tertiary substrate gives a cation with nine hyperconjugating C–H bonds; the primary one would give a cation with three and in practice does not ionize at all. Crowding matters for concerted backside attack, which is the opposite preference.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which cation in this list is the most stable?",
+   "options": [
+    "CH₃CH₂CH₂⁺",
+    "C₆H₅⁺",
+    "CH₃O–CH₂⁺",
+    "(CH₃)₃C⁺"
+   ],
+   "correct": 2,
+   "why": "An oxygen lone pair on the charged carbon closes the gap completely, giving a second resonance structure with a C=O π bond and a complete octet on every atom. Positive oxygen is expensive, but a full octet everywhere beats six electrons on carbon. The tertiary cation is next, the primary one far behind, and the phenyl cation cannot form at all.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does the π system of a benzene ring fail to stabilize a positive charge on one of its own ring carbons?",
+   "options": [
+    "A benzene ring is electron-poor and has no density to donate",
+    "The empty orbital is an sp² hybrid lying in the ring plane, at 90° to the π cloud",
+    "The ring's π electrons are already committed to aromaticity and cannot be shared",
+    "The ring carbon rehybridizes to sp³, which destroys the conjugation"
+   ],
+   "correct": 1,
+   "why": "The ring holds that carbon at sp² and will not let it relax, so its vacancy is an in-plane sp² hybrid pointing outward while the six π electrons sit in p orbitals standing perpendicular to the plane. Orbitals at right angles cannot overlap. Contrast a benzylic cation, whose empty orbital is on a carbon outside the ring and lies parallel to the π system.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A student draws the tert-butyl cation with a lone pair on the central carbon. What has gone wrong?",
+   "options": [
+    "Nothing — the lone pair is how the positive charge is shown",
+    "The lone pair belongs on one of the methyl carbons instead",
+    "The central carbon should be drawn sp³",
+    "That structure is a carbanion with a formal charge of −1, not a cation"
+   ],
+   "correct": 3,
+   "why": "Counting what the carbon owns: two lone-pair electrons plus one from each of three bonds is five, against four valence electrons for neutral carbon, giving 4 − 5 = −1. A carbocation carbon owns nothing beyond its share of three bonds. The orbital that would hold a lone pair is precisely the one that must stay empty.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "(CH₃)₃C–CH₂⁺ has no hydrogen on the carbon adjacent to the charge. What is its fate?",
+   "options": [
+    "A hydrogen migrates from two carbons away, giving a secondary cation",
+    "It loses a proton to give an alkene without rearranging",
+    "A methyl migrates from the quaternary carbon, giving a tertiary cation",
+    "It cannot rearrange, so it is captured as the primary cation"
+   ],
+   "correct": 2,
+   "why": "A 1,2-shift is not restricted to hydrogen. The neighboring quaternary carbon carries three methyls, and moving one across with its bonding pair leaves the charge on that carbon, which still holds two methyls and the new ethyl group — a tertiary cation from a primary one. A hydrogen two carbons out is unreachable, because only the immediate neighbor can migrate.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Where does the tail of the curved arrow go when drawing a 1,2-methyl shift?",
+   "options": [
+    "On the bond between the migrating methyl and the carbon it is leaving",
+    "On the positively charged carbon, pointing at the methyl",
+    "On one of the methyl's C–H bonds",
+    "On the lone pair of the cationic carbon"
+   ],
+   "correct": 0,
+   "why": "Curved arrows always start where the electrons currently are, and here the electrons in question are the pair inside the C–CH₃ bond that is about to move. Starting the arrow on the cation would mean electrons flowing out of an empty orbital, and a cationic carbon has no lone pair to start from.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An alkene is protonated. Which carbon ends up bearing the positive charge?",
+   "options": [
+    "The one that gives the more stable cation, which is usually the more substituted carbon",
+    "The one that already carries more hydrogens",
+    "Whichever carbon the proton adds to",
+    "The less substituted carbon, because it is less crowded"
+   ],
+   "correct": 0,
+   "why": "The proton bonds to one alkene carbon using the π pair; the other carbon gets no share of that pair and becomes the cation. Since the barrier is lower for the route to the more stable cation, the proton adds so as to leave the charge on the more substituted carbon. The carbon that takes the proton is therefore the one that stays neutral.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is a vinyl cation, with the positive charge on a doubly bonded carbon, so unstable?",
+   "options": [
+    "The double bond withdraws electron density inductively from every nearby atom",
+    "It has eight electrons and so cannot accept any more",
+    "It is linear and sp-hybridized, and its empty p orbital is perpendicular to the adjacent π bond",
+    "Its empty orbital is fully conjugated with the π bond, which destabilizes both"
+   ],
+   "correct": 2,
+   "why": "Two problems stack. The cationic carbon relaxes to linear sp hybridization, and an sp orbital has fifty percent s character, which is the worst place to put a positive charge. And the empty p orbital ends up at right angles to the π bond beside it, so no overlap and no delocalization is possible. Vinyl halides are consequently inert to any mechanism that needs a cation.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Cations A and B differ only in that a shift converting A to B would leave the charge on a carbon with the same substitution. What happens?",
+   "options": [
+    "The shift happens anyway, because cations always rearrange",
+    "Both shift back and forth until one is consumed, giving equal products",
+    "A rearranges twice to reach a tertiary cation",
+    "No shift is favored, because there is no gain in stability"
+   ],
+   "correct": 3,
+   "why": "The rule is comparative: a 1,2-shift happens when it would give a more stable cation. A shift to an equally stable cation has nothing driving it, so there is no reason to write it into a mechanism, and there is no basis for inventing a second shift to somewhere the substrate cannot reach.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which observation is the clearest evidence that a reaction passes through a free carbocation?",
+   "options": [
+    "The reaction is faster in a polar aprotic solvent",
+    "The product's carbon skeleton differs from the starting material's",
+    "The rate doubles when the nucleophile concentration doubles",
+    "The product is a single inverted enantiomer"
+   ],
+   "correct": 1,
+   "why": "A rearranged skeleton requires a species with a lifetime long enough for a 1,2-shift, which is exactly what an intermediate is. Clean inversion and a rate that depends on the nucleophile both point to a concerted step with no intermediate at all, and so does the polar aprotic preference.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a more stable carbocation also form faster?",
+   "options": [
+    "The more stable cation has a lower activation energy for the second step",
+    "Stability and rate are unrelated; the correlation is coincidental",
+    "The step is endothermic, so its transition state comes late and resembles the cation",
+    "Stable species always form faster than unstable ones, as a general law"
+   ],
+   "correct": 2,
+   "why": "This is the Hammond postulate applied to ionization. Breaking a bond into two charged fragments is strongly uphill, so the transition state lies late along the coordinate and looks like the cation it is becoming. Anything that lowers the cation's energy therefore lowers the barrier by nearly as much. Nothing about the second step is involved, because the first one is rate-determining.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which cation is the least stable of these four?",
+   "options": [
+    "CH₃CH=CH⁺",
+    "CH₃CH₂CH₂⁺",
+    "CH₃CH⁺CH₃",
+    "CH₂=CH–CH₂⁺"
+   ],
+   "correct": 0,
+   "why": "The first is a vinyl cation, with the charge on a doubly bonded carbon whose empty orbital cannot reach the π bond beside it — it does not form at all. The allylic cation is the most stable of the group, the secondary cation next, and even the primary alkyl cation is far better than a vinyl one.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An oxygen directly attached to a cationic carbon stabilizes it strongly, even though oxygen is highly electronegative. Why?",
+   "options": [
+    "It hydrogen-bonds to the solvent, stabilizing the ion",
+    "Its lone pair forms a π bond to the carbon, giving a structure with an octet on every atom",
+    "It withdraws electron density inductively, which spreads the positive charge",
+    "Its size lets it disperse the charge over a large volume"
+   ],
+   "correct": 1,
+   "why": "CH₃CH=CH⁺ is a vinyl cation, with the charge on a doubly bonded carbon whose empty orbital cannot reach the π bond beside it — it does not form at all. The allylic cation CH₂=CH–CH₂⁺ is the most stable of the group, the secondary cation next, and even the primary alkyl cation is far better than a vinyl one.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which substrate would you expect NOT to ionize to a carbocation under solvolysis conditions?",
+   "options": [
+    "Benzyl bromide",
+    "2-bromo-2-methylbutane",
+    "3-bromocyclohexene",
+    "Bromobenzene"
+   ],
+   "correct": 3,
+   "why": "Bromobenzene would have to give an aryl cation, whose empty sp² orbital lies in the ring plane and cannot overlap the perpendicular π cloud — so it does not form. Benzyl bromide gives a benzylic cation, the tertiary bromide gives a tertiary cation, and the allylic bromide gives an allylic cation; all three ionize readily.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which factor decides whether a hydrogen on a neighboring carbon will migrate to a cation?",
+   "options": [
+    "How many hydrogens that neighboring carbon carries",
+    "How close the hydrogen is to the leaving group that departed",
+    "Whether the hydrogen is on a primary or secondary carbon originally",
+    "What cation the migration would leave behind"
+   ],
+   "correct": 3,
+   "why": "The screening question is always what the shift makes, not what it starts from. A hydride on a carbon that would be left tertiary migrates; one on a carbon that would be left primary does not, no matter how many hydrogens are available there. Distance only sets what is reachable, and only the immediate neighbor ever is.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "(Chloromethyl)cyclobutane solvolyzes in water to give mainly cyclopentanol rather than cyclobutylmethanol. What accounts for the five-membered ring?",
+   "options": [
+    "Chloride leaves from a ring carbon rather than from the exocyclic carbon",
+    "A ring C–C bond migrates to the exocyclic carbon, expanding the ring and leaving a secondary cation",
+    "A hydride shifts from the ring, giving a secondary cyclobutyl cation that then opens",
+    "Water attacks the ring directly, breaking one of its C–C bonds"
+   ],
+   "correct": 1,
+   "why": "The carbon next to the would-be primary cation is a ring carbon, and one of its ring C–C bonds can migrate. When the far end of that bond lands on the exocyclic carbon, that carbon joins the ring, the ring grows from four members to five, and the charge is left behind on a ring carbon as a secondary cation. Two things improve at once: 1° becomes 2°, and a badly strained ring becomes an almost strain-free one. The competing hydride shift gives only a strained secondary cyclobutyl cation.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "3,3-dimethylbutan-2-ol is treated with HBr. What is the major product?",
+   "options": [
+    "2-bromo-2,3-dimethylbutane",
+    "2-bromo-3,3-dimethylbutane",
+    "1-bromo-3,3-dimethylbutane",
+    "2,3-dimethylbut-2-ene"
+   ],
+   "correct": 0,
+   "why": "After protonation, water leaves from C2 to give a secondary cation. The neighboring C3 is quaternary, so it offers no hydrogen — but it carries three methyls, and moving one across leaves the charge on C3 as a tertiary cation. Bromide then captures C3. Looking only for hydride shifts finds none and gives the unrearranged bromide, which is the trap this substrate is built around.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A textbook draws a primary substrate ionizing to a free primary cation, which then rearranges. What is the honest correction to that picture?",
+   "options": [
+    "The rearrangement happens after the nucleophile attacks, not before",
+    "The primary cation forms but is captured before it can shift",
+    "The migration begins as the leaving group departs, so the two events are really one step",
+    "Primary substrates never react at all, so the mechanism is entirely wrong"
+   ],
+   "correct": 2,
+   "why": "A free primary cation is too high in energy to have a meaningful lifetime, so drawing it as a discrete intermediate is bookkeeping rather than physics. The neighboring bond starts migrating while the C–X bond is still breaking, which is precisely why such a substrate reacts at all instead of not reacting. Drawing it in two steps is acceptable for predicting the product as long as you know the caveat.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Ionizing 3-chlorobut-1-ene gives a single cation, yet two different alcohols come out of the flask. What explains this without invoking any 1,2-shift?",
+   "options": [
+    "The double bond migrates by a separate acid-catalyzed step after the product forms",
+    "The cation is an allylic hybrid, so the nucleophile can attack at either end of the delocalized system",
+    "A hydride shifts along the chain before water attacks",
+    "Two different cations form at comparable rates from the same substrate"
+   ],
+   "correct": 1,
+   "why": "The charge in an allylic cation is genuinely in two places at once, so both carbons at the ends of the delocalized system are electrophilic. Attack at the carbon that held the chlorine gives one alcohol; attack at the far end gives the other, with the double bond apparently moved. Nothing migrated here — the structure was delocalized from the start, which is what separates this from a 1,2-shift.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Compare a tertiary alkyl cation with a secondary cation that has an adjacent oxygen bearing a lone pair. Which is more stable, and what does that imply for a substrate carrying both features elsewhere in the molecule?",
+   "options": [
+    "The tertiary one, because alkyl substitution always outranks a heteroatom",
+    "They are equal, so a mixture of both cations forms",
+    "Neither forms, because the oxygen deactivates the whole molecule",
+    "The oxygen-stabilized one, so ionization occurs next to the oxygen even if a more substituted carbon is available"
+   ],
+   "correct": 3,
+   "why": "A lone pair adjacent to the charge produces a structure with a full π bond and an octet on every atom, which is worth far more than the nine hyperconjugating bonds of a tertiary cation. So when a molecule offers both options, the bond that breaks is the one giving the oxocarbenium, not the one giving the more substituted alkyl cation. This is why acetals hydrolyze where they do rather than at whatever carbon looks most substituted.",
+   "difficulty": "hard",
+   "type": "mcq"
+  }
+ ],
  "electron-rich-poor": [
   {
    "q": "An electron-rich atom in a mechanism tends to act as a(n):",

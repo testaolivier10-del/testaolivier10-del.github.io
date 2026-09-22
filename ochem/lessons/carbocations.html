@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carbocations — How Reactions Happen | Organic Chemistry</title>
+<meta name="description" content="What a carbocation is, why 3° beats 2° beats 1°, why resonance outranks all of it, why vinyl and aryl cations never form, and when a 1,2-shift happens.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/carbocations.html">
+<meta property="og:title" content="Carbocations — How Reactions Happen | Organic Chemistry">
+<meta property="og:description" content="What a carbocation is, why 3° beats 2° beats 1°, why resonance outranks all of it, why vinyl and aryl cations never form, and when a 1,2-shift happens.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/carbocations.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/carbocations.html#lesson",
+      "name": "Carbocations",
+      "url": "https://levlprep.com/ochem/lessons/carbocations.html",
+      "description": "What a carbocation is, why 3° beats 2° beats 1°, why resonance outranks all of it, why vinyl and aryl cations never form, and when a 1,2-shift happens.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Carbocations"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      },
+      "competencyRequired": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Leaving groups",
+          "url": "https://levlprep.com/ochem/lessons/leaving-groups.html"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How Reactions Happen",
+          "item": "https://levlprep.com/ochem/learn.html#m-reactivity"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Carbocations",
+          "item": "https://levlprep.com/ochem/lessons/carbocations.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow" data-chapter="reactivity">How Reactions Happen</div>
+    <h1 style="margin-bottom:4px;">Carbocations.</h1>
+    <p class="lede" style="margin-top:0;">A carbon two electrons short of an octet, and the two questions every exam asks about it.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/carbocations.html">Carbocations &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/leaving-groups.html">Leaving groups</a><a href="../lessons/resonance.html">Resonance</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/radical-halogenation.html">Radical halogenation</a><a href="../mechanisms/sn1.html">SN1</a><a href="../lessons/markovnikov.html">Markovnikov / anti-Markovnikov</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/molecules.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'carbocations',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Three bonds, no lone pair, six electrons.',
+        bodyHtml: '<div class="explain-box"><b>A carbocation is a carbon with three bonds and nothing else.</b> Carbon brings four valence electrons; in a cation it owns no lone pairs and half of each of three bonding pairs, so the formal charge is 4 − (0 + 3) = <b>+1</b>. Those three bonds hold six electrons, two short of an octet, and that shortfall is the entire reactivity.</div>' +
+          '<p class="step-body">Three bonds and no lone pair also fixes the shape. Three electron domains push as far apart as they can, so the carbon is <b>trigonal planar</b> with angles near 120° and is <b>sp²-hybridized</b>. That uses three of its four valence orbitals. The fourth — an unhybridized <b>p orbital</b> — is left empty and standing perpendicular to the plane of the three bonds, with one lobe above it and one below.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">The carbon it came from was tetrahedral and sp³, so making a cation <b>flattens</b> that carbon. Hold on to the flatness: nothing sits above the plane and nothing below it, so the two faces of a carbocation are indistinguishable. Any handedness that carbon had — the <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-stereochemistry\">Stereochemistry</a> kind, with a name and a letter — is destroyed at the moment the cation forms.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Two ways one appears.',
+        bodyHtml: '<p class="step-body"><b>1. A leaving group departs with its bonding pair.</b> That is exactly the event the last lesson was about. The C–X bond breaks unevenly, the leaving group takes both electrons and becomes an anion (or a neutral molecule, if it was positive to begin with), and the carbon it abandoned is left with three bonds and the charge. Whether that step is worth writing depends on two things at once: how content the leaving group is once gone, and how tolerable the cation is once made.</p>' +
+          '<p class="step-body"><b>2. A π bond is protonated.</b> The two electrons of a C=C are loosely held and reach out into space, so they can attack a proton. One alkene carbon ends up bonded to the new hydrogen; the other gets no share of that pair and is left as the cation. That is a preview — the chemistry itself belongs to <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-alkenes-alkynes\">Alkenes &amp; Alkynes</a> — but it is worth holding now, because the rule deciding <i>which</i> carbon takes the proton is nothing but the stability ordering in the next step.</p>' +
+          '<div class="explain-box"><b>The drawing error to never make.</b> A carbocation has <b>no lone pair</b>. Put two dots on that carbon and you have drawn three bonds plus a pair — five electrons of its own, formal charge −1 — which is a <i>carbanion</i>, the opposite species. Empty orbital, no dots.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 2 · Guided Practice',
+        title: 'A carbon drawn with three bonds and one lone pair carries what formal charge?',
+        options: ['+1, because it has only three bonds', '−1, because the lone pair gives it five electrons of its own', '0, because the lone pair replaces the missing bond'],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Count what the atom owns: two lone-pair electrons plus one from each of three bonds is five, against four valence electrons for neutral carbon, so 4 − 5 = −1. That is a carbanion, not a carbocation — and drawing the dots on a cation by mistake is the commonest way this species is written wrongly.',
+        wrongFeedback: 'Do the arithmetic rather than the impression. The atom owns both lone-pair electrons and half of each bonding pair: 2 + 3 = 5. Carbon has four valence electrons, so 4 − 5 = −1. A carbocation is three bonds and <b>no</b> lone pair.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Alkyl groups help: 3° > 2° > 1° > methyl.',
+        bodyHtml: '<p class="step-body">The "degree" counts how many <b>carbons are attached to the charged carbon itself</b>, not how many carbons are in the molecule. Two effects produce the ordering, and they push the same way.</p>' +
+          '<p class="step-body"><b>Hyperconjugation</b> is the larger one. An alkyl group next door brings its own C–H sigma bonds, and when one of those bonds happens to lie parallel to the empty p orbital, the pair inside it can spill partway into that orbital. Nothing breaks and no new full bond forms — the pair simply has two places to be, which drains some positive charge off the cationic carbon. Every extra alkyl group brings more bonds in a position to do it: methyl has <b>0</b>, ethyl <b>3</b>, isopropyl <b>6</b>, <i>tert</i>-butyl <b>9</b>. C–C bonds donate the same way, so a neighbor with no hydrogens still helps.</p>' +
+          '<p class="step-body"><b>Induction</b> is the smaller one. A carbon chain has a bigger, looser electron cloud than a hydrogen atom, so it slides electron density along the sigma bond toward an adjacent positive charge more readily. Neither effect moves the charge onto another atom outright; both of them smear it.</p>' +
+          '<div class="explain-box">The sizes are enormous. In the standard solvolysis comparison — an alkyl bromide warmed in aqueous ethanol — a tertiary substrate reacts on the order of <b>10⁶</b> times faster than methyl. Read that honestly: methyl and primary substrates do not really ionize at all, so the million-fold figure means "tertiary goes and methyl does not," with a scale bar attached.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Independent Practice',
+        title: 'Which cation is the most stable?',
+        options: ['(CH₃)₃C⁺ — three alkyl groups on the charged carbon', 'CH₃CH₂CH₂CH₂CH₂⁺ — the largest molecule of the three', 'CH₃CH₂CH(⁺)CH₃ — two alkyl groups on the charged carbon'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. Three alkyl groups on the charged carbon means nine C–H bonds positioned to donate into the empty orbital, against six for the secondary cation and three for the primary one. Size of the molecule is irrelevant — what counts is what is attached to the carbon carrying the charge.',
+        wrongFeedback: 'Count at the charged carbon, not across the molecule. The pentyl cation is the biggest structure on the list and still primary: the carbon bearing the charge has exactly one carbon attached to it, so only three C–H bonds are in a position to help.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Resonance beats substitution — and two cations never form at all.',
+        bodyHtml: '<p class="step-body">Hyperconjugation only lends the charge out. <b>Resonance</b> hands it over. If the cationic carbon sits next to a C=C or an aromatic ring, its empty p orbital joins a continuous conjugated system and the charge is genuinely delocalized onto other atoms. An <b>allylic</b> cation spreads it over two carbons; a <b>benzylic</b> cation spreads it over four. Learn the consequence as a ranking: <b>a primary benzylic cation is about as stable as a tertiary alkyl one</b>, and a primary allylic cation is comparable to a secondary alkyl one.</p>' +
+          '<p class="step-body">A lone pair does better still. Put an oxygen or a nitrogen directly on the charged carbon and its lone pair closes the gap completely, giving a second structure with a real C=O or C=N π bond and — the point — <b>an octet on every atom</b>. The oxygen version is the <b>oxocarbenium</b> ion, and it is what makes acetal chemistry work in <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-carbonyl-chemistry\">Carbonyl Chemistry</a>; the nitrogen version is an iminium ion.</p>' +
+          '<div class="explain-box"><b>Two that never appear.</b> A <b>vinyl</b> cation (the charge on a carbon of a C=C) relaxes to linear and sp-hybridized, and its empty p orbital ends up <i>perpendicular</i> to the π bond beside it, so the two can never overlap. An <b>aryl</b> cation (the charge on a ring carbon) is held at sp² by the ring, so its empty orbital is an sp² hybrid lying <i>in</i> the ring plane while the π cloud stands at right angles to it. Both failures are about direction, not about how much delocalization happens to be nearby — which is why vinyl and aryl halides are inert to every mechanism that needs a cation.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 4 · Independent Practice',
+        title: 'Chlorobenzene will not ionize to a phenyl cation, even though benzene is the most delocalized system in the course. Why not?',
+        options: ['The ring\'s π electrons are used up holding the ring together and cannot be shared', 'The empty orbital would be an sp² hybrid lying in the ring plane, at right angles to the π cloud, so the two never overlap', 'A benzene ring pulls electron density away from every carbon attached to it'],
+        correctIndex: 1,
+        correctFeedback: 'Correct — the argument is geometric. The ring will not let that carbon rehybridize, so its vacancy is one of the in-plane sp² hybrids pointing outward, while the six π electrons sit in p orbitals standing perpendicular to that plane. Overlap needs orbitals aimed the same way, and these are 90° apart. Compare a benzylic cation, where the empty orbital is on a carbon <i>outside</i> the ring and is parallel to the π system — that one works beautifully.',
+        wrongFeedback: 'Delocalization is never "used up" — a benzylic cation borrows the same ring π electrons happily. What differs here is direction: the vacancy on a ring carbon is an in-plane sp² hybrid, and the ring\'s π cloud is perpendicular to that plane, so no overlap is possible.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'If a better cation is one move away, it goes there.',
+        bodyHtml: '<p class="step-body">A carbocation is a real intermediate with a real, if short, lifetime, and if a more stable cation is one small motion away it will usually get there before a nucleophile arrives. The motion is a <b>1,2-shift</b>: a group on the carbon <i>adjacent</i> to the charge moves across to it, bringing its bonding pair, and the charge ends up on the carbon the group just left.</p>' +
+          '<p class="step-body">Two groups do this routinely. A <b>1,2-hydride shift</b> moves an H with its pair; a <b>1,2-methyl shift</b> (an alkyl shift, generally) moves a CH₃ the same way. The arrow is what gets drawn wrongly: its tail goes on the <b>bond that is migrating</b> — not on the atom, and never on the positive carbon — because what moves is a bond and the two electrons in it.</p>' +
+          '<div class="explain-box"><b>The rule, in one line.</b> A cation rearranges if one shift would give a <i>more stable</i> cation, and not otherwise. It does not shift to an equally good one for no reason, it never shifts to a worse one, and it does not keep going once it has reached the best available — there is no "past" the most stable. The test is never how far a hydrogen would have to travel; it is what cation the shift leaves behind.</div>' +
+          '<p class="step-body" style="margin-bottom:0;">A more stable cation also <b>forms faster</b>, by the Hammond postulate from the previous section: making a cation is strongly endothermic, so the transition state comes late and resembles the cation, and whatever lowers the cation\'s energy lowers the barrier leading to it.</p>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'The neopentyl cation, (CH₃)₃C–CH₂⁺, has no hydrogen at all on the carbon next to the charge. What happens to it?',
+        options: ['A methyl group migrates from the quaternary carbon, giving the tertiary cation (CH₃)₂C⁺–CH₂CH₃', 'Nothing — with no neighboring hydrogen there is no shift available, so the primary cation is captured as it stands', 'A hydrogen migrates from two carbons away, giving a secondary cation'],
+        correctIndex: 0,
+        correctFeedback: 'Correct, and this is exactly why neopentyl substrates are an exam favorite. A student hunting only for hydride shifts finds none and reports the unrearranged product. But the rule is about groups, not hydrogens: the quaternary neighbor carries three methyls, and moving one of them across with its bonding pair leaves the charge on that carbon, which still holds two methyls and the new ethyl — a <b>tertiary</b> cation from a primary one. Draw the arrow from the C–CH₃ bond to the cationic carbon.',
+        wrongFeedback: 'Two things to fix. A shift is not restricted to hydrogen — an alkyl group migrates the same way, and here the neighboring quaternary carbon has three methyls to offer. And only the <i>immediate</i> neighbor can reach: a hydrogen two carbons out is out of range, because a 1,3-shift is not on the menu.'
+      }
+    ]
+  });
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

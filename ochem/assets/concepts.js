@@ -404,10 +404,10 @@
       topics:['sn2','substrate-effects','epoxides','ether-chemistry'], dependsOn:['steric-hindrance','nucleophile-recognition'],
       hint:'The nucleophile must approach 180° from the leaving group.' },
     { id:'carbocation-stability', title:'Carbocation stability', family:'Substitution & elimination',
-      topics:['sn1','e1','markovnikov','alcohol-reactions','eas','mass-spec'], dependsOn:['resonance-delocalization'],
+      topics:['carbocations','sn1','e1','markovnikov','alcohol-reactions','eas','mass-spec'], dependsOn:['resonance-delocalization'],
       hint:'More substituted is more stable; resonance beats everything.' },
     { id:'carbocation-rearrangement', title:'Carbocation rearrangements', family:'Substitution & elimination',
-      topics:['sn1','e1','markovnikov','alcohol-reactions'], dependsOn:['carbocation-stability'],
+      topics:['carbocations','sn1','e1','markovnikov','alcohol-reactions'], dependsOn:['carbocation-stability'],
       hint:'If a 1,2-shift would make a more stable cation, it happens.' },
     { id:'anti-periplanar-geometry', title:'Anti-periplanar geometry', family:'Substitution & elimination',
       topics:['e2','conformational-analysis','ring-flips','substrate-effects','axial-equatorial'], dependsOn:['chair-axial-equatorial','newman-reading'],
@@ -688,7 +688,8 @@
     'amine-synthesis':'amine-synthesis-routes', 'hofmann-elimination':'hofmann-elimination-rule',
     'aromaticity':'huckel-aromaticity', 'eas':'eas-mechanism', 'directing-effects':'directing-effects',
     'ir':'ir-functional-groups', 'h-nmr':'nmr-splitting-integration',
-    'c-nmr':'carbon-count-symmetry', 'mass-spec':'ms-fragmentation'
+    'c-nmr':'carbon-count-symmetry', 'mass-spec':'ms-fragmentation',
+    'carbocations':'carbocation-stability'
   };
   function defaultConceptFor(topicId){
     if(TOPIC_PRIMARY[topicId]) return TOPIC_PRIMARY[topicId];

@@ -135,7 +135,12 @@ const BUDGETS = [
   // site is fast is formed on one of these three.
   ['index.html', 6],
   ['nremt/index.html', 9],
-  ['ochem/index.html', 10],
+  /* 10 was the measured 10.0 KB with no headroom at all, so the first new
+     course section to land pushed it over. The page grows by one JSON-LD
+     entry and one topic count per section added, which is about 40 bytes
+     gzipped; 11 restores the usual tenth of headroom and buys room for the
+     next few sections without hiding a real regression. */
+  ['ochem/index.html', 11],
 
   // The busiest page on the site, and the one the bank split was for.
   ['nremt/practice.html', 38],
