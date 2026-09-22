@@ -135,7 +135,14 @@ const BUDGETS = [
   // site is fast is formed on one of these three.
   ['index.html', 6],
   ['nremt/index.html', 9],
-  ['ochem/index.html', 10],
+  // 10 -> 11. The ochem home page prints one row per chapter with every
+  // topic title in it, so it grows by a line whenever the book does, the
+  // same way ochem/learn.html's contents list does below. It measured
+  // 10.05 KB gzipped the first time a new Stereochemistry section pushed
+  // it over, which is the list doing its job rather than the page getting
+  // heavier per topic. If this needs moving again for any reason OTHER
+  // than new sections, find out why first.
+  ['ochem/index.html', 11],
 
   // The busiest page on the site, and the one the bank split was for.
   ['nremt/practice.html', 38],

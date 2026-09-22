@@ -14907,6 +14907,398 @@
    "type": "mcq"
   }
  ],
+ "prochirality": [
+  {
+   "q": "A chemist replaces one hydrogen of a CH₂ group with deuterium, then repeats with the other hydrogen, and the two products turn out to be enantiomers. What are the two hydrogens?",
+   "options": [
+    "Homotopic, exchanged by a rotation of the molecule",
+    "Diastereotopic, inequivalent in every environment",
+    "Enantiotopic, distinguishable in a chiral environment",
+    "Constitutionally different, sitting in unlike positions"
+   ],
+   "correct": 2,
+   "why": "The substitution test reads straight off the relationship between the products. Identical products mean homotopic, mirror-image products mean enantiotopic, diastereomeric products mean diastereotopic. Enantiomers came out, so the hydrogens are enantiotopic — indistinguishable to anything achiral, but distinguishable to a chiral environment such as an enzyme active site.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Why do the three hydrogens of a freely rotating methyl group give a single NMR signal?",
+   "options": [
+    "Rotation exchanges them, so they are homotopic",
+    "They are diastereotopic, and the shifts average out",
+    "Methyl couplings are too small to be resolved",
+    "Exchange with the solvent erases the differences"
+   ],
+   "correct": 0,
+   "why": "Rotation about the C–C bond is a genuine symmetry operation that carries each methyl hydrogen onto the position of the next, so replacing any one of them gives the identical product. Homotopic hydrogens share one chemical environment and therefore one signal. Rotation rate is not the argument — even a frozen methyl would be homotopic by symmetry.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Two groups are homotopic when the substitution test gives:",
+   "options": [
+    "Two diastereomers, separable by distillation",
+    "Two enantiomers, of opposite configuration",
+    "Two constitutional isomers, differently connected",
+    "The same compound twice over"
+   ],
+   "correct": 3,
+   "why": "Homotopic is the case where nothing distinguishes the two groups at all: the molecule has a rotation that exchanges them, so swapping either one for a test group lands you on the same structure. If the products differed even in configuration, the groups would be enantiotopic or diastereotopic instead.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What does the prefix in \"prochiral\" claim about a molecule?",
+   "options": [
+    "It is chiral although it has no stereocenter",
+    "It stands one substitution away from being chiral",
+    "It is a racemic mixture of two chiral forms",
+    "It rotates plane-polarized light very weakly"
+   ],
+   "correct": 1,
+   "why": "A prochiral center is achiral as it stands but becomes a stereocenter when one of two identical groups is exchanged for something new. C1 of ethanol is the standard case. The molecule has not arrived at chirality, it is standing next to it — which is exactly what its two hydrogens being enantiotopic means.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "The two hydrogens of dichloromethane, CH₂Cl₂, are:",
+   "options": [
+    "Enantiotopic, since substitution makes a stereocenter",
+    "Diastereotopic, since the chlorines are bulky",
+    "Homotopic, since both substitutions give one compound",
+    "Uncomparable, since carbon is not a stereocenter here"
+   ],
+   "correct": 2,
+   "why": "Replace either hydrogen with deuterium and you get CHDCl₂. That carbon carries two chlorines, one H and one D — two identical groups among the four, so no stereocenter forms and only one such compound exists. Both routes reach it, so the hydrogens are homotopic.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which relationship guarantees that two hydrogens are entitled to different chemical shifts in an ordinary ¹H NMR spectrum?",
+   "options": [
+    "Diastereotopic",
+    "Enantiotopic",
+    "Homotopic",
+    "Any two hydrogens on different carbons"
+   ],
+   "correct": 0,
+   "why": "Diastereotopic hydrogens sit in genuinely different environments, because no symmetry operation exchanges them, so nothing forces their shifts to coincide. Homotopic and enantiotopic hydrogens are equivalent to an achiral spectrometer and share a signal. Hydrogens on different carbons can still be equivalent by symmetry, as the four aromatic hydrogens of p-xylene are.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "In the substitution test, what role does the deuterium play?",
+   "options": [
+    "A real reagent that has to be added before analysis",
+    "A marker for which hydrogen is the more acidic",
+    "A permanent change to the molecule's symmetry",
+    "A bookkeeping label that breaks the tie on paper"
+   ],
+   "correct": 3,
+   "why": "The test is a thought experiment. Nobody deuterates anything; the label exists so that two groups which currently look alike become distinguishable long enough to ask what relationship the resulting structures have. Any test group works, and the answer does not depend on which one you pick.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Ethanol contains no stereocenter. What does that tell you about the two hydrogens on C1?",
+   "options": [
+    "They have to be homotopic, by elimination",
+    "Nothing — they can be enantiotopic regardless",
+    "They have to be diastereotopic, by elimination",
+    "They cannot be classified without one present"
+   ],
+   "correct": 1,
+   "why": "Enantiotopic groups do not require a stereocenter anywhere in the molecule; substitution is what creates one. Ethanol is the textbook example — replacing either C1 hydrogen makes that carbon a stereocenter, and the two products are mirror images. A pre-existing stereogenic feature is needed for the diastereotopic case, not this one.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Looking at a trigonal carbon from one side, you rank its three groups and find 1 → 2 → 3 runs clockwise. Which face are you looking at?",
+   "options": [
+    "The Si face, by the counterclockwise convention",
+    "Neither — faces are defined for alkenes alone",
+    "The Re face, by the clockwise convention",
+    "It depends on whether the carbon bears an oxygen"
+   ],
+   "correct": 2,
+   "why": "Face descriptors use the same CIP trace as R and S. Clockwise from your side is the Re face, counterclockwise is Si. The far side automatically takes the other name, so labeling one labels both. The rule applies to any trigonal carbon — a carbonyl, an alkene carbon, a carbocation.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the relationship between the two products when the substitution test is run on diastereotopic groups?",
+   "options": [
+    "They are diastereomers",
+    "They are enantiomers",
+    "They are identical",
+    "They are structural isomers"
+   ],
+   "correct": 0,
+   "why": "That is the definition the name is built from. Diastereomers differ at some stereocenters but not all, so they are different compounds with different physical properties — which is precisely why diastereotopic hydrogens can show different shifts, different reaction rates and separate NMR signals.",
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Run the substitution test on the two hydrogens of C3 in 2-bromobutane, CH₃CHBrCH₂CH₃. What comes out?",
+   "options": [
+    "Two identical molecules, so the hydrogens are homotopic",
+    "A pair of enantiomers, so the hydrogens are enantiotopic",
+    "Two constitutional isomers, so the test does not apply here",
+    "A (2R,3R) and a (2R,3S) product, so they are diastereotopic"
+   ],
+   "correct": 3,
+   "why": "C2 is already a stereocenter and neither substitution touches it, so its descriptor is the same in both products. C3 becomes a new stereocenter with opposite configurations in the two. One center matching and one inverted is a diastereomer pair, so the C3 hydrogens are diastereotopic — which is why that CH₂ makes a mess of an otherwise simple spectrum.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A student predicts a clean triplet for a CH₂ of 3-methylhexane. What is wrong with that prediction?",
+   "options": [
+    "Free rotation makes all CH₂ hydrogens equivalent instead",
+    "C3 is a stereocenter, so that CH₂ is diastereotopic",
+    "The methyl branch removes the neighboring hydrogens",
+    "Nothing is wrong: a CH₂ gives one multiplet regardless"
+   ],
+   "correct": 1,
+   "why": "C3 of 3-methylhexane carries four different groups, so it is a stereocenter, and running the substitution test on a nearby CH₂ yields a pair of diastereomers. Diastereotopic hydrogens can differ in shift and also couple to each other, so the observed pattern is richer than an n + 1 count on paper. Rotation exchanges conformations, not configurations, and cannot rescue the prediction.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Alcohol dehydrogenase removes the pro-R hydrogen of ethanol and leaves the pro-S one alone. What makes that selectivity possible?",
+   "options": [
+    "The pro-R C–H bond is intrinsically the weaker of the two",
+    "Ethanol is chiral, so its two hydrogens already differ",
+    "The active site is chiral, so it distinguishes enantiotopic groups",
+    "The hydroxyl oxygen shields the pro-S hydrogen sterically"
+   ],
+   "correct": 2,
+   "why": "The two hydrogens are enantiotopic, which means they are identical toward anything achiral — same bond strength, same shift, same rate with an ordinary oxidant. An enzyme is assembled from single enantiomers of amino acids, so its binding site is chiral and presents the two hydrogens with two different fits. Same logic as a right hand distinguishing two otherwise identical gloves.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which pair of groups in citric acid, HOOC–CH₂–C(OH)(COOH)–CH₂–COOH, are enantiotopic?",
+   "options": [
+    "The two CH₂COOH arms on the central carbon",
+    "The two hydrogens inside one CH₂ group",
+    "The three acidic OH groups around the molecule",
+    "The central OH and the central COOH group"
+   ],
+   "correct": 0,
+   "why": "Replace one CH₂COOH arm with a test group and the central carbon holds four different groups, so it becomes a stereocenter; replace the other arm instead and you get the mirror image. The molecule itself is achiral, so an ordinary reagent cannot tell the arms apart — which is why an enzyme that does tell them apart was such a famous surprise.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "In methylcyclohexane the two hydrogens on C2 are diastereotopic, yet the molecule contains no stereocenter. How is that possible?",
+   "options": [
+    "The ring makes the molecule chiral without a stereocenter",
+    "Rings are exempt from the substitution test altogether",
+    "Ring strain freezes the two hydrogens into unlike positions",
+    "The ring gives a top and a bottom, so cis and trans differ"
+   ],
+   "correct": 3,
+   "why": "Label one C2 hydrogen and it ends up cis to the methyl group; label the other and it ends up trans. Cis and trans ring isomers are diastereomers, so the hydrogens are diastereotopic. A stereocenter is the commonest source of that distinction but not the required one — a ring or a C=C creates the same top-and-bottom asymmetry.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An achiral nucleophile adds to acetaldehyde. What is the stereochemical outcome, and why?",
+   "options": [
+    "A single enantiomer, because the Re face is more accessible",
+    "A racemate, because the two faces are enantiotopic",
+    "Unequal diastereomers, because the faces differ in energy",
+    "No new stereocenter, so the question does not arise at all"
+   ],
+   "correct": 1,
+   "why": "Acetaldehyde is achiral, so its two carbonyl faces are enantiotopic — attack on one gives one enantiomer of the alcohol, attack on the other gives the mirror image. The two transition states are themselves enantiomeric and equal in energy, so with an achiral reagent in an achiral solvent the rates match and the product is 50:50.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does a nucleophile capturing a simple carbocation give a racemic product?",
+   "options": [
+    "The cation racemizes faster than it can be captured",
+    "The nucleophile attacks the leaving group in parallel",
+    "The flat cation is captured equally on both faces",
+    "Carbocations are chiral and invert extremely rapidly"
+   ],
+   "correct": 2,
+   "why": "A carbocation is sp² and planar, so the nucleophile can arrive from either side. When the rest of the ion is achiral those faces are enantiotopic and there is nothing to bias the approach, so the two enantiomeric products form at the same rate. The flatness is not incidental to racemization — it is the whole cause of it.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "The two methyl groups of valine's isopropyl side chain appear as two separate doublets in ¹H NMR. Why?",
+   "options": [
+    "The alpha carbon is a stereocenter, so the methyls differ",
+    "One methyl hydrogen-bonds to the neighboring carboxyl group",
+    "The two methyl groups rotate at measurably different rates",
+    "Coupling to nitrogen splits one methyl but not the other"
+   ],
+   "correct": 0,
+   "why": "Substituting one methyl makes the isopropyl carbon a stereocenter while the alpha carbon remains a stereocenter throughout, so the two products are diastereomers. Diastereotopic groups are inequivalent in every environment, so the two methyls are entitled to different shifts — and in valine they take that entitlement, which is a standard way of spotting an isopropyl group beside a stereocenter.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "To name one hydrogen of a prochiral CH₂ as pro-R or pro-S, what do you do first?",
+   "options": [
+    "Assign R or S to the nearest stereocenter already present",
+    "Replace it with deuterium and then name the whole compound",
+    "Rank both hydrogens last and trace the other three groups",
+    "Promote that hydrogen to a priority just above its twin"
+   ],
+   "correct": 3,
+   "why": "The promotion is the whole trick: raise the hydrogen you are naming one notch above the other, change nothing else, and assign the center by the usual CIP procedure. The descriptor that comes out names the hydrogen. Substituting deuterium would work too but changes the priorities being compared, which is why the promotion convention exists.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Two hydrogens are enantiotopic. Which experiment could distinguish them?",
+   "options": [
+    "A routine ¹H NMR spectrum recorded in ordinary CDCl₃",
+    "A reaction run with a chiral catalyst or an enzyme",
+    "A measurement of their C–H bond dissociation energies",
+    "An integration of the signal the two of them produce"
+   ],
+   "correct": 1,
+   "why": "Enantiotopic groups behave identically toward everything achiral — same shift, same bond strength, same rate — so an ordinary spectrum or a bond-energy measurement sees one environment. Introduce chirality into the surroundings, whether an enzyme, a chiral catalyst or a chiral solvating agent, and the two become distinguishable because the interactions are now diastereomeric.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which CH₂ group has enantiotopic hydrogens?",
+   "options": [
+    "The C3 hydrogens of 2-chlorobutane",
+    "The C2 hydrogens of 1,2-dimethylcyclohexane",
+    "The middle CH₂ of 1-bromopropane",
+    "The CH₂ beside the stereocenter of 2-butanol"
+   ],
+   "correct": 2,
+   "why": "In CH₃CH₂CH₂Br the middle carbon holds H, H, CH₃ and CH₂Br, so substitution makes it a stereocenter in a molecule that had no stereogenic feature at all — the products are mirror images. Each of the other three sits beside an existing stereocenter or inside a substituted ring, so substitution there produces diastereomers instead.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is C2 of propane not a prochiral center, while C1 of ethanol is?",
+   "options": [
+    "Substitution there leaves two methyls, so no stereocenter",
+    "Prochirality requires a heteroatom, and propane has none",
+    "Propane's C2 has no lone pairs to break its own symmetry",
+    "Ethanol's oxygen already makes its C1 a stereocenter"
+   ],
+   "correct": 0,
+   "why": "A prochiral center becomes a stereocenter on one substitution. At ethanol's C1 the result is OH, CH₃, H and D — four different groups. At propane's C2 the result is CH₃, CH₃, H and D, and two of those match, so nothing stereogenic appears. Being a hydrocarbon has nothing to do with it; the count of distinct groups does.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A chiral aldehyde is treated with an achiral reducing agent. What product distribution is expected?",
+   "options": [
+    "One diastereomer, since the existing center fixes everything",
+    "No reaction, since the existing stereocenter blocks both faces",
+    "A 50:50 racemate, since the reducing agent itself is achiral",
+    "Two diastereomers unequally, since the faces are unlike"
+   ],
+   "correct": 3,
+   "why": "The pre-existing stereocenter makes the two carbonyl faces diastereotopic, so the two transition states are diastereomeric and differ in energy. Different energies mean different rates, so the two diastereomeric products form in unequal amounts. An achiral reagent can give unequal diastereomers; what it cannot do is give unequal enantiomers.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which statement about homotopic and enantiotopic groups is correct?",
+   "options": [
+    "Homotopic groups give one signal while enantiotopic groups give two in any solvent",
+    "Both give one signal in an achiral solvent; a chiral agent separates the enantiotopic pair",
+    "Both can be told apart by any spectrometer of sufficiently high field strength",
+    "Enantiotopic groups give one signal while homotopic groups may give two of them"
+   ],
+   "correct": 1,
+   "why": "Homotopic groups are interchanged by a genuine rotation of the molecule, so nothing whatsoever tells them apart. Enantiotopic groups are interchanged by a reflection, so achiral surroundings cannot distinguish them but chiral surroundings can — which is what enzyme selectivity and chiral shift reagents exploit. Both give one signal in an ordinary spectrum.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "The two hydrogens of the terminal =CH₂ in propene, CH₃CH=CH₂, are:",
+   "options": [
+    "Homotopic, because the double bond is symmetric",
+    "Enantiotopic, because substitution builds a stereocenter",
+    "Diastereotopic, because one ends up cis to the methyl",
+    "Equivalent, because they share one sp² carbon atom"
+   ],
+   "correct": 2,
+   "why": "Substitution on an sp² CH₂ does not create a stereocenter, but it does create a geometry: one product has the label cis to the methyl group, the other trans, and those are diastereomers. So the two alkene hydrogens are diastereotopic and show different shifts — which is why a monosubstituted alkene gives two distinct terminal signals with different coupling constants.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Cyclohexane's C1 carries one axial and one equatorial hydrogen at any instant. Run the substitution test on them. What is the verdict?",
+   "options": [
+    "Homotopic, since both routes give one 1-deuteriocyclohexane",
+    "Enantiotopic, since the unsubstituted ring is itself achiral",
+    "Diastereotopic, since axial and equatorial environments differ",
+    "Undefined, since the ring flips too fast to classify them"
+   ],
+   "correct": 0,
+   "why": "The test compares products, not instantaneous environments. Both substitutions give one and the same compound — the two ring branches leaving C1 are identical, so the labeled carbon never becomes a stereocenter, and axial and equatorial are two conformations of a single substance rather than two substances. Put a substituent elsewhere on the ring and the answer changes, because then the products are cis and trans isomers.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A CH₂ that should be a clean quartet appears instead as a dense multiplet spanning a wide range. Which structural feature best explains it?",
+   "options": [
+    "Coupling through space to a distant aromatic ring current",
+    "Restricted rotation has frozen out one single conformation",
+    "Rapid proton exchange with traces of water in the sample",
+    "A stereocenter elsewhere makes that CH₂ diastereotopic"
+   ],
+   "correct": 3,
+   "why": "Diastereotopic hydrogens are inequivalent in every environment, so they have their own shifts and, being non-equivalent neighbors, also couple to each other through the geminal pathway that stays invisible when a CH₂ is equivalent. The two effects together turn an expected simple pattern into an AB system split further by everything else. Exchange broadens and simplifies a spectrum rather than multiplying lines.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Deuterium outranks hydrogen in CIP priority. Where does that rule actually do work in this topic?",
+   "options": [
+    "It settles whether a given CH₂ is prochiral in the first place",
+    "It lets the two products be assigned R and S and then compared",
+    "It fixes which face of a carbonyl group is named Re",
+    "It makes deuterated compounds react faster than ordinary ones"
+   ],
+   "correct": 1,
+   "why": "The test creates structures whose relationship you then have to classify, and classifying requires descriptors. With D ranked above H by mass number, each product's new center can be assigned and the two compared — mirror images or not. Whether the center is prochiral was already settled by counting distinct groups, and face descriptors never involve the test label at all.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "An achiral reagent reacts with what a student calls enantiotopic hydrogens and gives a 60:40 mixture of two products. What is the most likely explanation?",
+   "options": [
+    "The reagent was partially racemized during the reaction",
+    "Enantiotopic hydrogens can react at slightly different rates",
+    "The hydrogens were diastereotopic, so the premise is wrong",
+    "The products are enantiomers, and 60:40 is within error"
+   ],
+   "correct": 2,
+   "why": "Enantiotopic groups react at exactly equal rates with an achiral reagent, because the two transition states are enantiomeric and therefore equal in energy — a 60:40 result is not a small deviation from that, it is incompatible with it. Something in the molecule must already have been stereogenic, making the pair diastereotopic. Unequal amounts of two products is the diagnostic signature of diastereotopicity.",
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Two hydrogens on one carbon are labeled pro-R and pro-S. What can you conclude about the molecule they sit in?",
+   "options": [
+    "Nothing about chirality: the labels name hydrogens",
+    "It contains at least one stereocenter somewhere else",
+    "It is chiral, since R and S descriptors are involved in it",
+    "It is optically active whenever it is put into solution"
+   ],
+   "correct": 0,
+   "why": "The labels describe positions within a structure, and they are assigned by a bookkeeping promotion rather than by anything the molecule does. Ethanol is achiral and optically inactive and still has a pro-R and a pro-S hydrogen on C1. A molecule that is already chiral can carry them too. Reading pro-R as evidence of chirality is the commonest confusion in this topic.",
+   "difficulty": "hard",
+   "type": "mcq"
+  }
+ ],
  "sn2": [
   {
    "q": "SN2 reactions proceed through what kind of mechanism?",

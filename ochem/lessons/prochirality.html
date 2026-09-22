@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prochirality — Stereochemistry | Organic Chemistry</title>
+<meta name="description" content="Learn the substitution test that decides whether two hydrogens on the same carbon are homotopic, enantiotopic or diastereotopic, the pro-R and pro-S labels, and the Re and Si faces of a carbonyl.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/prochirality.html">
+<meta property="og:title" content="Prochirality — Stereochemistry | Organic Chemistry">
+<meta property="og:description" content="Learn the substitution test that decides whether two hydrogens on the same carbon are homotopic, enantiotopic or diastereotopic, the pro-R and pro-S labels, and the Re and Si faces of a carbonyl.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/prochirality.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/prochirality.html#lesson",
+      "name": "Prochirality: which hydrogens are the same?",
+      "url": "https://levlprep.com/ochem/lessons/prochirality.html",
+      "description": "Learn the substitution test that decides whether two hydrogens on the same carbon are homotopic, enantiotopic or diastereotopic, the pro-R and pro-S labels, and the Re and Si faces of a carbonyl.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Prochirality: which hydrogens are the same?"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      },
+      "competencyRequired": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Diastereomers",
+          "url": "https://levlprep.com/ochem/lessons/diastereomers.html"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Stereochemistry",
+          "item": "https://levlprep.com/ochem/learn.html#m-stereochemistry"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Prochirality: which hydrogens are the same?",
+          "item": "https://levlprep.com/ochem/lessons/prochirality.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow" data-chapter="stereochemistry">Stereochemistry</div>
+    <h1 style="margin-bottom:4px;">Prochirality.</h1>
+    <p class="lede" style="margin-top:0;">Two hydrogens on one carbon are not automatically the same hydrogen.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/prochirality.html">Prochirality &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/rs-configuration.html">R/S configuration</a><a href="../lessons/enantiomers.html">Enantiomers</a><a href="../lessons/diastereomers.html">Diastereomers</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/h-nmr.html">¹H NMR</a><a href="../lessons/nucleophilic-addition.html">Nucleophilic addition</a><a href="../mechanisms/sn1.html">SN1</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/molecules.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  window.OchemLessonEngine.start({
+    topicId: 'prochirality',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'One test, three possible answers.',
+        bodyHtml: '<div class="explain-box"><b>The substitution test.</b> Take the two groups you are asking about. Replace the first with a test group — deuterium, or an imaginary group you call Q — and write the product. Undo that, replace the <i>second</i> one instead, and write that product. Then ask what the two products are to each other.</div>' +
+          '<p class="step-body">There are only three things two structures with the same connectivity can be, and each answer has its own name:</p>' +
+          '<p class="step-body"><b>The same compound</b> → the groups are <b>homotopic</b>. <b>Enantiomers</b> → the groups are <b>enantiotopic</b>. <b>Diastereomers</b> → the groups are <b>diastereotopic</b>.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">Notice that you already know how to do every part of this. Deciding same-versus-enantiomer-versus-diastereomer is the work of the previous two lessons, and assigning R and S is the lesson before those. Nothing new is being asked of you except the habit of asking the question at all.</p>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Ethanol, worked all the way through.',
+        bodyHtml: '<p class="step-body">Ethanol is CH₃–CH₂–OH. Look at C1, the carbon carrying the OH: its four attachments are OH, CH₃, and two hydrogens that look interchangeable.</p>' +
+          '<p class="step-body"><b>Replace one hydrogen with D.</b> C1 now holds OH, CH₃, H and D — four different groups, so it has become a stereocenter, and the product is one enantiomer of 1-deuterioethanol.</p>' +
+          '<p class="step-body"><b>Put it back and replace the other hydrogen instead.</b> Same four groups, opposite arrangement in space. Assign both with the CIP rules — OH beats CH₃ beats D beats H, deuterium outranking hydrogen on mass number — and one product reads R while the other reads S.</p>' +
+          '<div class="explain-box">Mirror images, so the two hydrogens are <b>enantiotopic</b>. Two things are worth noticing. Ethanol has no stereocenter anywhere, and that did not stop its CH₂ hydrogens from being distinguishable in principle. And the test group never has to be real: nobody runs this reaction, and the answer does not depend on which group you chose.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 3 · Guided Practice',
+        title: 'Run the same test on C2 of propane, CH₃–CH₂–CH₃. What are those two hydrogens?',
+        options: [
+          'Homotopic — replacing either one gives the very same compound',
+          'Enantiotopic — the two products are mirror images',
+          'Diastereotopic — the two products have different physical properties',
+          'Impossible to say without knowing the conformation'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. Replacing either hydrogen gives CH₃–CHD–CH₃, and that carbon carries two identical methyl groups, so it is not a stereocenter and there is only one such compound. Homotopic. The symmetry argument agrees: a 180° rotation of propane about the axis through C2 swaps the two methyls and the two hydrogens at once.',
+        wrongFeedback: 'Write out both products and look hard at the labeled carbon. Its groups are CH₃, CH₃, H and D — are all four different? If not, there is no stereocenter and no way for the two products to differ. Conformation never affects this; free rotation averages it away.'
+      },
+      {
+        render: function(api){
+          var OPTS = [
+            { k: 'homo', l: 'Homotopic' },
+            { k: 'enantio', l: 'Enantiotopic' },
+            { k: 'dia', l: 'Diastereotopic' }
+          ];
+          var CASES = [
+            { id: 'ethanol', r: 'The CH₂ of <b>ethanol</b>, CH₃CH₂OH', right: 'enantio',
+              why: 'Substitution makes C1 a stereocenter in an otherwise achiral molecule, so the two products are mirror images.' },
+            { id: 'mecyhex', r: 'The two C2 hydrogens of <b>methylcyclohexane</b>', right: 'dia',
+              why: 'One product has the label cis to the methyl, the other trans — and cis/trans ring isomers are diastereomers. No stereocenter needed; the ring supplies the top-and-bottom distinction.' },
+            { id: 'propane', r: 'The CH₂ of <b>propane</b>, CH₃CH₂CH₃', right: 'homo',
+              why: 'The substituted carbon ends up with two identical methyls, so no stereocenter forms and both products are one and the same compound.' },
+            { id: 'dcm', r: 'The two hydrogens of <b>dichloromethane</b>, CH₂Cl₂', right: 'homo',
+              why: 'Both products are CHDCl₂. Two chlorines and now an H and a D — still only two kinds of group on each side, so nothing distinguishes them.' },
+            { id: 'brbutane', r: 'The C3 hydrogens of <b>2-bromobutane</b>', right: 'dia',
+              why: 'C2 is already a stereocenter and stays put; C3 becomes a second one. The products are (2R,3R) and (2R,3S) — one center matched, one inverted, so diastereomers.' },
+            { id: 'glycine', r: 'The CH₂ of <b>glycine</b>, H₂N–CH₂–COOH', right: 'enantio',
+              why: 'That carbon becomes a stereocenter carrying NH₂, COOH, H and D, and glycine has nothing else stereogenic in it, so the products are enantiomers.' }
+          ];
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize & Interact</div>' +
+            '<h2 class="step-title">Classify each pair. Run the test in your head before you click.</h2>' +
+            '<p class="step-body">Replace one, replace the other, compare the products. Same compound, mirror images, or diastereomers?</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq">' + c.r + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Classification for ' + c.r.replace(/<[^>]+>/g,'') + '">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Not that one. Ask the two questions in order: does the substituted carbon become a stereocenter at all, and is there anything else stereogenic already in the molecule?');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All six. The shortcut hiding in them: no new stereocenter means homotopic; a new stereocenter and nothing else stereogenic means enantiotopic; a new stereocenter plus something stereogenic already present means diastereotopic.'
+                  : 'All six, first time. No new stereocenter gives homotopic; a new stereocenter alone gives enantiotopic; a new stereocenter alongside an existing stereogenic feature gives diastereotopic.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 5 · Independent Practice',
+        title: 'The C3 hydrogens of 2-bromobutane are diastereotopic. What does an ordinary ¹H NMR spectrum do about that?',
+        options: [
+          'Nothing — they are on one carbon, so they share one signal',
+          'It shows two separate signals, and the two hydrogens also split each other',
+          'It shows one signal, but twice as tall as expected',
+          'It shows no signal for them until a chiral solvent is added'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Diastereotopic hydrogens sit in genuinely different chemical environments, because no symmetry operation exchanges them — so nothing forces their shifts to match, and they are also non-equivalent neighbors of each other, which means geminal coupling becomes visible. That is exactly why a CH₂ beside a stereocenter so often appears as two messy multiplets instead of one clean peak.',
+        wrongFeedback: 'NMR reports environments, not atoms. Two hydrogens share a signal only when something makes them equivalent. Here the substitution test says the two are distinguishable in an ordinary achiral flask, so an ordinary spectrometer can tell them apart too. The chiral-solvent trick is what you would need for the enantiotopic case, not this one.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Naming them: pro-R and pro-S.',
+        bodyHtml: '<p class="step-body">A carbon that turns into a stereocenter when you swap one of two identical groups is a <b>prochiral center</b>. C1 of ethanol is one; C2 of propane is not, because the swap leaves two methyls behind and no stereocenter appears.</p>' +
+          '<p class="step-body">Since the two hydrogens of a prochiral CH₂ really are distinguishable, they can be named. The rule is a one-line extension of CIP: <b>give the hydrogen you are naming a priority just above its twin</b>, leave every other priority where it was, and assign the center as usual. If it reads R, that hydrogen is <b>pro-R</b>; if S, <b>pro-S</b>. They are written H<sub>R</sub> and H<sub>S</sub>.</p>' +
+          '<div class="explain-box">You only ever run the assignment once. Naming one hydrogen names the other by elimination, because promoting the twin instead reverses exactly one priority relationship and therefore reverses the descriptor. Most exam questions stop at “diastereotopic or not” and never ask for these labels — but enzymology is written in them, so they are worth an hour.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Step 7 · Independent Practice',
+        title: 'Alcohol dehydrogenase removes the pro-R hydrogen of ethanol and never the pro-S one. Why can it tell them apart when a bottle of oxidant cannot?',
+        options: [
+          'The pro-R hydrogen is bonded more weakly, so it is easier to break off',
+          'The active site is chiral, and a chiral environment distinguishes enantiotopic groups',
+          'The two hydrogens are diastereotopic, so they differ in every environment',
+          'The enzyme first converts ethanol into a single enantiomer'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. The two hydrogens are enantiotopic, which means they are identical toward anything achiral — same bond strength, same shift, same rate. An enzyme is built from single enantiomers of amino acids, so its active site is chiral, and the two hydrogens present it with two different fits. Same relationship as a right hand telling two otherwise identical gloves apart.',
+        wrongFeedback: 'Nothing about the molecule itself changes. The two C–H bonds are the same strength and the hydrogens are not diastereotopic — ethanol contains no other stereogenic feature. So the answer has to be a property of what is doing the choosing, not of the ethanol.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Why it matters',
+        title: 'Faces, and why flat carbons give mixtures.',
+        bodyHtml: '<p class="step-body">The same logic applies to a flat trigonal carbon, except that there the two things being compared are the two <b>faces</b> a reagent could arrive from. Rank the three attached groups by CIP and look at the carbon from one side: clockwise for 1 → 2 → 3 means you are facing the <b>Re</b> face, counterclockwise the <b>Si</b> face.</p>' +
+          '<p class="step-body">In an achiral molecule such as acetaldehyde those faces are <b>enantiotopic</b>. An achiral nucleophile has no way to prefer either, both are attacked at the same rate, and the product is a 50:50 racemate. Put a stereocenter elsewhere in the molecule and the faces turn <b>diastereotopic</b>: the two transition states are now diastereomeric, they differ in energy, and the products come out unequal — which is where stereoselective addition to a chiral aldehyde comes from, a preview of <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-carbonyl-chemistry\">Carbonyl Chemistry</a>.</p>' +
+          '<div class="explain-box">The nearer payoff is a carbocation. It is trigonal and flat, its two faces are enantiotopic whenever the rest of the ion is achiral, and a nucleophile captures it equally often from each — which is the whole mechanism behind racemization in <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-substitution-elimination\">Substitution & Elimination</a> (a preview). The flatness is not incidental to that result; it <i>is</i> the result.</div>'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'A student predicts that 3-methylhexane will show one clean multiplet for each CH₂ in its ¹H NMR spectrum. Where does that prediction go wrong?',
+        options: [
+          'The C3 stereocenter makes each CH₂ diastereotopic, so it can give two signals',
+          'The methyl groups are diastereotopic, so they give separate signals instead',
+          'Nowhere — hydrogens on one carbon always share a signal',
+          'Free rotation about the C–C bonds averages the hydrogens, so the prediction is safe'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. 3-Methylhexane has a stereocenter at C3, so running the substitution test on any of its CH₂ groups gives a pair of diastereomers — the two hydrogens are diastereotopic, inequivalent in every environment, and free to have different shifts and to split each other. That is why the real spectrum is far messier than the carbon skeleton suggests. Free rotation does not rescue it: rotation exchanges conformations, not configurations, and diastereotopicity is a configurational fact that no amount of spinning averages away. A CH₃ is the case that is safe, because its three hydrogens are exchanged by rotation and so are genuinely homotopic.'
+      }
+    ]
+  });
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

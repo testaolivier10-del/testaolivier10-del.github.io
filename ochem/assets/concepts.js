@@ -551,7 +551,15 @@
       hint:'Molecules fragment to give the most stable cation available.' },
     { id:'structure-elucidation', title:'Structure from spectra', family:'Spectroscopy',
       topics:['ir','h-nmr','c-nmr','mass-spec'], dependsOn:['ir-functional-groups','nmr-splitting-integration','ms-fragmentation'],
-      hint:'Formula first, then groups, then symmetry, then connectivity — and every piece of data has to be used.' }
+      hint:'Formula first, then groups, then symmetry, then connectivity — and every piece of data has to be used.' },
+
+    /* ---- Topicity (added with the Prochirality section) ----------------- */
+    { id:'topicity-test', title:'The substitution test', family:'Stereochemistry',
+      topics:['prochirality','h-nmr','c-nmr'], dependsOn:['enantiomer-vs-diastereomer','rs-assignment'],
+      hint:'Replace one group with D, then the other, and compare: same compound = homotopic, enantiomers = enantiotopic, diastereomers = diastereotopic.' },
+    { id:'prochiral-faces', title:'Prochiral faces (Re and Si)', family:'Stereochemistry',
+      topics:['prochirality','nucleophilic-addition','sn1'], dependsOn:['topicity-test'],
+      hint:'Rank the three groups on the flat carbon and trace them: clockwise is Re, counterclockwise is Si. Equivalent faces give a racemate.' }
   ];
 
   var BY_ID = {};
@@ -688,7 +696,8 @@
     'amine-synthesis':'amine-synthesis-routes', 'hofmann-elimination':'hofmann-elimination-rule',
     'aromaticity':'huckel-aromaticity', 'eas':'eas-mechanism', 'directing-effects':'directing-effects',
     'ir':'ir-functional-groups', 'h-nmr':'nmr-splitting-integration',
-    'c-nmr':'carbon-count-symmetry', 'mass-spec':'ms-fragmentation'
+    'c-nmr':'carbon-count-symmetry', 'mass-spec':'ms-fragmentation',
+    'prochirality':'topicity-test'
   };
   function defaultConceptFor(topicId){
     if(TOPIC_PRIMARY[topicId]) return TOPIC_PRIMARY[topicId];
