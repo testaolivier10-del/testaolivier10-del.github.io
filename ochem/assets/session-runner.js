@@ -407,6 +407,33 @@
       '</div>';
     }
 
+    /* The kinds whose own renderer already draws q.molecule. Drawing it in the
+       head as well would put the same structure on the card twice — once
+       static, once clickable — and the clickable one is the question. */
+    var MOLECULE_KINDS = { 'click-atom':1, 'multi-click':1, 'arrow':1, 'draw':1 };
+    var warnedMolecules = {};
+
+    /* A multiple-choice question that asks about a structure needs the
+       structure. The bank names its compounds in words; an exam draws them,
+       and the information a drawing carries — which carbon is the stereocenter,
+       which face of the ring, how the branches sit — is exactly what the words
+       hide. Static and role="img": nothing here is clickable, and notes are
+       never rendered in static mode, so the picture cannot leak the answer.
+
+       A missing record is a content bug, not a reason to lose the question:
+       the card renders without the drawing and says so once in the console. */
+    function moleculeHtml(q){
+      if(!q.molecule || MOLECULE_KINDS[q.kind]) return '';
+      if(!Mo || !Mo.get(q.molecule)){
+        if(!warnedMolecules[q.molecule]){
+          warnedMolecules[q.molecule] = true;
+          if(window.console) console.warn('Question ' + q.id + ' names molecule "' + q.molecule + '", which no loaded record matches.');
+        }
+        return '';
+      }
+      return '<div class="q-molecule">' + Mo.svg(q.molecule, {}) + '</div>';
+    }
+
     function headHtml(q, isCheck, conceptId){
       var concept = CO.get(conceptId);
       var kindLabel = KIND_LABEL[q.kind] || '';
@@ -421,7 +448,8 @@
         '</div>' +
         '<h2 class="step-title">' + esc(q.prompt || q.q) + '</h2>' +
         (q.sub ? '<p class="q-sub">' + esc(q.sub) + '</p>' : '') +
-        (q.reaction ? '<div class="formula">' + esc(q.reaction) + '</div>' : '');
+        (q.reaction ? '<div class="formula">' + esc(q.reaction) + '</div>' : '') +
+        moleculeHtml(q);
     }
 
     function wireChrome(qid){

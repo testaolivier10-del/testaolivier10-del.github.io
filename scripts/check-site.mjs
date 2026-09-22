@@ -7,6 +7,7 @@
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join, dirname, extname, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import vm from 'node:vm';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 let failures = 0;
@@ -1948,6 +1949,156 @@ for (const file of walk(join(ROOT, 'ochem', 'mechanisms'), ['.html'])) {
     for (const m of src.matchAll(/(correctFeedback|wrongFeedback|feedback)\s*:\s*(['"`])((?:\\.|(?!\2)[^\\])*)\2/g)) {
       const line = src.slice(0, m.index).split('\n').length;
       report(`${relative(ROOT, file)}:${line}`, m[3]);
+    }
+  }
+}
+
+/* 32. A question that draws a structure must draw the right one ----------
+
+   A practice-bank question may carry `"molecule": "<record-id>"`, which
+   session-runner.js renders above its stem. That is a second way for a
+   question to be wrong, and a silent one: a stem rewritten to say "the
+   compound shown" with a typo'd or deleted record id renders as a stem with
+   nothing above it, asking about a structure that is not there. Nothing else
+   here would notice — the bank still parses, the page still loads, and the
+   student is the one who finds out.
+
+   So, for every id the bank names:
+
+     (a) some loaded record answers to it (molecules.js or the newer
+         question-molecules.js — they share one table);
+     (b) its bonds only name atoms it actually has, because a bond to a
+         missing atom is silently dropped by the renderer and the structure
+         loses a group without looking broken;
+     (c) no carbon carries more than four bonds, counting explicit hydrogens
+         and bond orders — a five-bonded carbon is the one error a chemistry
+         course cannot ship, and it is easy to make by adding a substituent to
+         a chain atom that already has two neighbours and an H;
+     (d) the partialH rule of check 12 above, restated here because these
+         records live in a second file with a different shape and that check's
+         regex only reads the first one: a carbon that draws SOME of its
+         hydrogens and still falls short of four bonds has to say so with
+         `partialH`, or it reads as CH2 where the molecule needs CH3. A carbon
+         drawing NONE of its hydrogens is ordinary skeletal shorthand and is
+         not an omission to declare;
+     (e) the geometry check 26 runs over the hand-placed mechanism-page
+         molecules — inside the canvas, circles not touching, bonds long
+         enough to see. Same failure mode, same numbers, different file. */
+{
+  const molFiles = [
+    join(ROOT, 'ochem', 'assets', 'molecules.js'),
+    join(ROOT, 'ochem', 'assets', 'question-molecules.js'),
+  ].filter(existsSync);
+
+  let table = null;
+  if (molFiles.length) {
+    /* Browser scripts, so they run in a sandbox rather than being imported —
+       the same approach check-curriculum.mjs takes with curriculum.js. Both
+       files register into one window.OchemMolecules, so loading them in load
+       order reproduces exactly what practice.html has. */
+    const sandbox = { window: {}, document: {}, console };
+    vm.createContext(sandbox);
+    try {
+      for (const f of molFiles) vm.runInContext(readFileSync(f, 'utf8'), sandbox, { filename: f });
+      table = sandbox.window.OchemMolecules && sandbox.window.OchemMolecules.ALL;
+    } catch (err) {
+      fail(`ochem molecule records would not load: ${err.message}`);
+    }
+    if (!table) fail('ochem/assets/molecules.js did not yield window.OchemMolecules.ALL.');
+  }
+
+  const used = new Map();                 // record id -> where the bank uses it
+  if (table && existsSync(ochemBankPath)) {
+    try {
+      const parsed = JSON.parse(readFileSync(ochemBankPath, 'utf8'));
+      for (const [topic, list] of Object.entries(parsed)) {
+        if (!Array.isArray(list)) continue;
+        list.forEach((q, i) => {
+          if (!q || !q.molecule) return;
+          const where = `practice-bank.json ${topic}[${i + 1}]`;
+          if (!table[q.molecule]) {
+            fail(`${where}: names molecule "${q.molecule}", which no record in molecules.js or ` +
+                 'question-molecules.js defines. The card would render the stem with no structure above it.');
+            return;
+          }
+          if (!used.has(q.molecule)) used.set(q.molecule, where);
+        });
+      }
+    } catch { /* section 2 reports it */ }
+  }
+
+  const MOL_VALENCE = { C: 4, N: 3, O: 2, S: 2 };
+  for (const [id, where] of used) {
+    const mol = table[id];
+    const atoms = mol.atoms || {};
+    const bonds = mol.bonds || [];
+    const w = `molecule "${id}" (used by ${where})`;
+
+    // (b) bonds to atoms that exist
+    let broken = false;
+    for (const b of bonds) {
+      if (!atoms[b.a] || !atoms[b.b]) {
+        fail(`${w}: bond ${b.a}-${b.b} names an atom the record does not have, so that bond is dropped silently.`);
+        broken = true;
+      }
+    }
+    if (broken) continue;
+
+    // (c) and (d) valence
+    const degree = new Map(Object.keys(atoms).map((k) => [k, 0]));
+    const drawnH = new Map(Object.keys(atoms).map((k) => [k, 0]));
+    for (const b of bonds) {
+      const order = Number(b.order || 1);
+      degree.set(b.a, degree.get(b.a) + order);
+      degree.set(b.b, degree.get(b.b) + order);
+      if (atoms[b.b].label === 'H') drawnH.set(b.a, drawnH.get(b.a) + 1);
+      if (atoms[b.a].label === 'H') drawnH.set(b.b, drawnH.get(b.b) + 1);
+    }
+    for (const [k, a] of Object.entries(atoms)) {
+      const want = MOL_VALENCE[a.label];
+      if (!want) continue;
+      if (degree.get(k) > want && !a.charge) {
+        fail(`${w}: atom "${k}" (${a.label}) has ${degree.get(k)} bonds drawn, more than the ${want} ` +
+             `${a.label} can have. Something is bonded to it twice, or a substituent belongs on its neighbour.`);
+      }
+      if (a.charge) continue;
+      if (drawnH.get(k) > 0 && degree.get(k) < want && !mol.partialH) {
+        fail(`${w}: atom "${k}" (${a.label}) draws ${drawnH.get(k)} hydrogen(s) but has only ` +
+             `${degree.get(k)} of ${want} bonds, so it reads as ${a.label}H${drawnH.get(k)}. Draw the rest, ` +
+             'or declare partialH with the reason the omission is deliberate.');
+      }
+    }
+
+    // (e) geometry — same rules and numbers as check 26
+    const vb = (mol.viewBox || '0 0 320 170').split(/\s+/).map(Number);
+    const W = vb[2], H = vb[3];
+    const keys = Object.keys(atoms);
+    for (const k of keys) {
+      const a = atoms[k];
+      const over = [];
+      if (a.x - a.r < 0) over.push('the left');
+      if (a.x + a.r > W) over.push('the right');
+      if (a.y - a.r < 0) over.push('the top');
+      if (a.y + a.r > H) over.push('the bottom');
+      if (over.length) fail(`${w}: atom "${k}" hangs off ${over.join(' and ')} of the ${W}x${H} canvas, so it renders clipped.`);
+    }
+    for (let i = 0; i < keys.length; i++) {
+      for (let j = i + 1; j < keys.length; j++) {
+        const a = atoms[keys[i]], b = atoms[keys[j]];
+        const gap = Math.hypot(a.x - b.x, a.y - b.y) - a.r - b.r;
+        if (gap < MOL_MIN_GAP) {
+          fail(`${w}: atoms "${keys[i]}" and "${keys[j]}" are ${gap.toFixed(1)}px apart, so their circles touch ` +
+               `or overlap and the drawing reads as one blob. Keep at least ${MOL_MIN_GAP}px between them.`);
+        }
+      }
+    }
+    for (const b of bonds) {
+      const a = atoms[b.a], c = atoms[b.b];
+      const drawn = Math.hypot(a.x - c.x, a.y - c.y) - a.r - c.r;
+      if (drawn < MOL_MIN_BOND) {
+        fail(`${w}: the bond ${b.a}-${b.b} has ${drawn.toFixed(1)}px of visible length, so it renders as ` +
+             `${drawn <= 0 ? 'nothing at all' : 'a smudge'}.`);
+      }
     }
   }
 }

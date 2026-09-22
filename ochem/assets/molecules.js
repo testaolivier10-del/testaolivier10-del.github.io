@@ -609,7 +609,10 @@
       c2: { x:110, y:70, r:16, label:'C', role:'beta-carbon', note:'A beta carbon: its hydrogen can be removed to form the more substituted alkene.' },
       c3: { x:174, y:108,r:17, label:'C', role:'alpha-carbon', note:'The alpha carbon — it carries the leaving group.' },
       c4: { x:238, y:70, r:15, label:'C', role:'beta-carbon' },
-      br: { x:174, y:154,r:17, label:'Br', lp:3, role:'leaving-group' },
+      // y was 154, which put the bottom of this circle 1px below the 170-high
+      // viewBox and shipped the bromine clipped; check 32 in check-site.mjs
+      // caught it once a bank question started drawing this record.
+      br: { x:174, y:151,r:17, label:'Br', lp:3, role:'leaving-group' },
       hb: { x:88,  y:26, r:11, label:'H', role:'beta-h', note:'A beta hydrogen — removing this one gives the more substituted (Zaitsev) alkene.' },
       hc: { x:222, y:26, r:11, label:'H', role:'beta-h' },
       ha: { x:230, y:140,r:11, label:'H', role:'alpha-h', note:'This hydrogen is on the same carbon as the leaving group — removing it eliminates nothing.' }
@@ -1328,8 +1331,24 @@
     return a ? a.label + (a.charge || '') : key;
   }
 
+  /* assets/question-molecules.js holds the drawing-only records that practice
+     questions put above their stem. It loads separately (only two pages need
+     it; every ochem page pays for this file) and registers into this same
+     table, so svg() and get() resolve them as if written here. A duplicate id
+     is refused: it would change a molecule an interactive question targets. */
+  function register(records){
+    Object.keys(records || {}).forEach(function(id){
+      if(M[id]){
+        if(window.console) console.warn('OchemMolecules: ignoring duplicate record "' + id + '"');
+        return;
+      }
+      M[id] = records[id];
+    });
+  }
+
   window.OchemMolecules = {
     ALL: M,
+    register: register,
     get: function(id){ return M[id] || null; },
     svg: svg,
     anchor: anchor,
