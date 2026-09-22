@@ -9,10 +9,10 @@
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catalytic hydrogenation — Oxidation &amp; Reduction | Organic Chemistry</title>
+<title>Catalytic hydrogenation — Alkenes &amp; Alkynes | Organic Chemistry</title>
 <meta name="description" content="H2 with a metal catalyst: syn addition, what is reduced and what survives, and the Lindlar/dissolving-metal pair that sets alkene geometry.">
 <link rel="canonical" href="https://levlprep.com/ochem/lessons/hydrogenation.html">
-<meta property="og:title" content="Catalytic hydrogenation — Oxidation &amp; Reduction | Organic Chemistry">
+<meta property="og:title" content="Catalytic hydrogenation — Alkenes &amp; Alkynes | Organic Chemistry">
 <meta property="og:description" content="H2 with a metal catalyst: syn addition, what is reduced and what survives, and the Lindlar/dissolving-metal pair that sets alkene geometry.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/lessons/hydrogenation.html">
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function(){
     { id:'g1', sub:'A disubstituted <b>alkene</b>', right:'yes',
       why:'Readily reduced, and syn: both hydrogens are delivered from the metal surface the alkene is lying against, so they arrive on the same face.' },
     { id:'g2', sub:'A <b>ketone</b>', right:'no',
-      why:'Survives ordinary conditions. It needs higher pressure and a more active catalyst such as PtO₂ — which is exactly why H₂/Pd/C is the complement of the hydride reagents, which reduce the ketone and leave the alkene.' },
+      why:'Survives ordinary conditions. It needs higher pressure and a more active catalyst such as PtO₂ — which is exactly why H₂/Pd/C is the complement of the hydride reagents (NaBH₄, LiAlH₄) taught later in the course, which reduce the ketone and leave the alkene.' },
     { id:'g3', sub:'An <b>ester</b>', right:'no',
       why:'Essentially untouched by catalytic hydrogenation. Reducing an ester needs LiAlH₄.' },
     { id:'g4', sub:'A <b>benzene ring</b>', right:'no',
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'A surface reaction, and the stereochemistry that follows from it.',
-        bodyHtml: '<p class="step-body">Hydride reagents cannot reduce an isolated C=C, because a hydride is a nucleophile and an alkene has no electrophilic end. Reducing a carbon–carbon multiple bond needs a different mechanism: adsorb both the alkene and hydrogen gas onto a <b>metal surface</b> — Pd/C, Pt, or Raney nickel — and let them combine there.</p>' +
+        bodyHtml: '<p class="step-body">An alkene\'s pi bond is nucleophilic, so the hydride reagents that reduce carbonyls (taught later, in <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-redox\">Oxidation &amp; Reduction</a>) are no use on it: a hydride is itself a nucleophile, and an isolated C=C has no electrophilic end for it to attack. Reducing a carbon–carbon multiple bond needs a different mechanism: adsorb both the alkene and hydrogen gas onto a <b>metal surface</b> — Pd/C, Pt, or Raney nickel — and let them combine there.</p>' +
           '<p class="step-body">The catalyst is essential rather than convenient. Hydrogen gas and an alkene in a flask together do nothing at room temperature, because breaking the H–H bond costs too much without a surface to do it on.</p>' +
           '<div class="explain-box">Both hydrogens are delivered from the surface the alkene is lying against, so they can only arrive on the face that is touching it. Hydrogenation is therefore a <b>syn addition</b>. On a ring this is directly visible: hydrogenating a 1,2-disubstituted cyclohexene gives the <b><i>cis</i></b> product, because both hydrogens land on the same face.</div>'
       },
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function(){
           '<li><b>Needs forcing conditions:</b> ketones and aldehydes, which require higher pressure and a more active catalyst such as PtO₂.</li>' +
           '<li><b>Essentially untouched:</b> esters, carboxylic acids, amides. Benzene rings need high pressure and temperature.</li>' +
           '</ul>' +
-          '<p class="step-body" style="margin-bottom:0;">That ordering is what makes the reaction useful rather than merely strong. A molecule containing an alkene, a ketone and a benzene ring is reduced <b>at the alkene alone</b> over Pd/C at one atmosphere — the exact complement of the hydride reagents from the last lesson, which reduce the ketone and leave the alkene. Between the two you can choose either one.</p>'
+          '<p class="step-body" style="margin-bottom:0;">That ordering is what makes the reaction useful rather than merely strong. A molecule containing an alkene, a ketone and a benzene ring is reduced <b>at the alkene alone</b> over Pd/C at one atmosphere — the exact complement of the hydride reagents NaBH₄ and LiAlH₄, which reduce the ketone and leave the alkene and which you meet in <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-redox\">Oxidation &amp; Reduction</a>. Between the two you can choose either one.</p>'
       },
       {
         render: function(api){

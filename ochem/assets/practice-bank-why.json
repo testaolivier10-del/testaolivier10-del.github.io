@@ -2152,7 +2152,7 @@
   "Backside attack puts the second oxygen on the opposite face from the first.",
   "One delivers both oxygens to one face, the other goes via an epoxide and opens it from the other side.",
   "The reductive workup stops at the aldehydes and ketones.",
-  "The oxidative workup takes the aldehyde fragment one rung further.",
+  "The oxidative workup takes the aldehyde fragment one step further, to a carboxylic acid.",
   "A ketone has no hydrogen on the carbonyl carbon to lose.",
   "Two substituents means no hydrogen on that carbon, so it can only be a ketone.",
   "With oxidative workup that aldehyde would go on to a carboxylic acid.",
@@ -3127,13 +3127,13 @@
   "The reactive carbon is bound to a metal throughout and never exists as a free carbanion.",
   "Neither ring is nucleophilic or electrophilic enough for anything from earlier chapters.",
   "Pd(0) inserts into the C-Br bond, the borate hands its phenyl across, and reductive elimination joins the two rings. Two aryl pieces, one new aryl-aryl bond.",
-  "A phenol pKa near 10 is easily acidic enough to consume the reagent.",
+  "An O-H near pKa 16 is acidic enough to protonate a carbanion at an effective pKa of 50, so the Grignard is spent before it can couple. A boronic acid is barely nucleophilic and not basic at all, which is exactly why it tolerates the group.",
   "Bromides and iodides go readily. Aryl chlorides are sluggish and need heat or activation, and aryl fluorides do not go at all. The trouble with the reagent is what it does afterward, not whether it forms.",
   "Only the two elimination and addition steps move it.",
   "Oxidative addition breaks the Ar-Br bond, which is why the halide sets the scope. Carbonate then adds to boron to give the four-coordinate borate, and only that anionic boron delivers its aryl group to palladium.",
   "The organometallic partner arrives later, at transmetalation.",
   "Fifty analogs cost fifty final steps rather than fifty syntheses.",
-  "The aryl halide is activated by the metal, not by attacking the ring."
+  "No carbonyl is involved anywhere in the cycle. The aryl group is activated by bonding to palladium and then delivered from it, which is a different way of making a bond altogether."
  ],
  "wittig-reaction": [
   "The new double bond lands exactly at the old carbonyl carbon, in place of its C=O.",

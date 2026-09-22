@@ -25837,7 +25837,7 @@
     "An alcohol"
    ],
    "correct": 1,
-   "why": "The oxidative workup takes the aldehyde fragment one rung further.",
+   "why": "The oxidative workup takes the aldehyde fragment one step further, to a carboxylic acid.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -37594,15 +37594,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why would a Grignard fail on a substrate carrying a free phenol?",
+   "q": "A molecule to be coupled carries a free O-H group. Why does an aryl Grignard route fail on it where a Suzuki coupling does not?",
    "options": [
-    "Magnesium binds the phenol",
-    "The phenol O-H quenches it",
-    "Phenols are not nucleophilic",
-    "The ring deactivates it"
+    "Magnesium oxide forms from the O-H and stops the insertion",
+    "The O-H quenches the Grignard, and the boron partner is too weak a base to touch it",
+    "Aryl halides cannot be turned into Grignard reagents in the first place",
+    "Palladium is poisoned by any hydroxyl group in the substrate"
    ],
    "correct": 1,
-   "why": "A phenol pKa near 10 is easily acidic enough to consume the reagent.",
+   "why": "An O-H near pKa 16 is acidic enough to protonate a carbanion at an effective pKa of 50, so the Grignard is spent before it can couple. A boronic acid is barely nucleophilic and not basic at all, which is exactly why it tolerates the group.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -37672,16 +37672,16 @@
    "type": "mcq"
   },
   {
-   "q": "Which is not a step in the standard catalytic cycle?",
+   "q": "Which is not a step in the standard cross-coupling catalytic cycle?",
    "options": [
     "Oxidative addition",
     "Transmetalation",
     "Reductive elimination",
-    "Electrophilic aromatic substitution"
+    "Nucleophilic acyl substitution"
    ],
    "correct": 3,
-   "why": "The aryl halide is activated by the metal, not by attacking the ring.",
-   "difficulty": "medium",
+   "why": "No carbonyl is involved anywhere in the cycle. The aryl group is activated by bonding to palladium and then delivered from it, which is a different way of making a bond altogether.",
+   "difficulty": "easy",
    "type": "mcq"
   }
  ],
