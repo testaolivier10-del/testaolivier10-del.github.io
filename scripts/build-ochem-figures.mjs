@@ -16787,11 +16787,11 @@ FIGURES.push({
     s += panelSide(60, 118, 208, 300, 150, 86, 248, 'EXERGONIC', 'ΔG° < 0', 'fg-tag-good',
       'Products more stable, so K is greater than 1.', 'The barrier still decides how long you wait.');
     s += rule(380, 60, 380, 300);
-    s += panelSide(440, 498, 588, 680, 248, 86, 160, 'ENDERGONIC', 'ΔG° > 0', 'fg-tag-warn',
+    s += panelSide(440, 498, 588, 680, 150, 78, 100, 'ENDERGONIC', 'ΔG° > 0', 'fg-tag-warn',
       'Products less stable, so K is less than 1.', 'Uphill, yet a small barrier can make it quick.');
     return s;
   },
-  caption: 'The same one-step reaction drawn the two ways it can come out. Only the right-hand plateau has moved: reactants, peak shape and the reaction coordinate itself are identical, and the two measuring arrows on each panel start from different places on purpose.',
+  caption: 'The same one-step reaction drawn the two ways it can come out. <b>Only the product plateau has moved.</b> Both panels start from the same reactant level and climb barriers of much the same height &mdash; the drop or the rise at the far end is the only difference, and the two measuring arrows on each panel start from different places on purpose.',
   note: 'The arrow on the inside measures the barrier, from the reactant plateau up to the peak; the arrow on the outside measures the gap between the two plateaus. Those are the answers to two different questions — how fast and how far — and nothing about either arrow constrains the other. A panel could be drawn with a huge downhill drop and a huge hill, or a tiny uphill step and a tiny hill, and both would be perfectly ordinary reactions.',
 });
 
@@ -16868,15 +16868,15 @@ FIGURES.push({
       g += text((xA + xB) / 2, 382, note2, { cls: 'fg-sm', size: 10.5 });
       return g;
     };
-    s += side(66, 126, 178, 312, 176, 130, 250, 124, 268, 'EXOTHERMIC — EARLY TS', 'peak sits early', 'barely lower',
+    s += side(66, 126, 178, 312, 176, 124, 250, 130, 268, 'EXOTHERMIC — EARLY TS', 'peak sits early', 'barely lower',
       'The two barriers are almost the same height,', 'so the two radicals form at almost the same rate.');
     s += rule(384, 60, 384, 300);
-    s += side(446, 506, 634, 690, 250, 108, 178, 84, 154, 'ENDOTHERMIC — LATE TS', 'peak sits late', 'much lower',
+    s += side(446, 506, 634, 690, 250, 106, 154, 130, 180, 'ENDOTHERMIC — LATE TS', 'peak sits late', 'much lower',
       'Stabilizing the product drops the barrier too,', 'so the more stable radical wins by a wide margin.');
     return s;
   },
-  caption: 'Hammond drawn rather than asserted. In each panel the faint curve is the same step run toward a more stable radical, and the only question is how much of that extra stability reaches the peak.',
-  note: 'On the left the peak sits close to the reactants, which are the same on both curves, so moving the far end of the curve barely lifts or drops the top: the two barriers stay nearly equal and the reaction cannot tell the two hydrogens apart. On the right the peak sits close to the products, so it follows them down almost step for step, and a few kcal/mol of radical stability becomes a rate ratio in the thousands. This is why chlorine, whose abstraction is exothermic, is indiscriminate, and bromine, whose abstraction is endothermic, is fussy.',
+  caption: 'Hammond drawn rather than asserted. In each panel the bold curve goes to the 1&deg; radical and the faint curve is the same step run toward the more stable 3&deg; radical, which therefore ends <i>lower</i> in both panels. The 3&deg; peak is the lower one in both panels too &mdash; the only question is by how much.',
+  note: 'On the left the peak sits close to the reactants, which are the same on both curves, so dropping the far end of the faint curve barely drops the top: the 3&deg; barrier is lower, but only just, and the reaction can hardly tell the two hydrogens apart. On the right the peak sits close to the products, so it follows them down almost step for step &mdash; the 3&deg; barrier is lower by nearly the whole gap &mdash; and a few kcal/mol of radical stability becomes a rate ratio in the thousands. This is why chlorine, whose abstraction is exothermic, is indiscriminate, and bromine, whose abstraction is endothermic, is fussy.',
 });
 
 FIGURES.push({
@@ -17038,7 +17038,8 @@ FIGURES.push({
     ROWS.forEach(([name, n], i) => {
       const y = 92 + i * 52;
       s += text(428, y + 4, name, { cls: 'fg-lbl', size: 11.5, anchor: 'start' });
-      s += bar(570, y - 9, Math.max(n * 13, 3), 16, { kind: n === 0 ? 'mut' : 'hi' });
+      if (n === 0) s += text(576, y + 4, 'none', { cls: 'fg-sm', size: 10, anchor: 'start' });
+      else s += bar(570, y - 9, n * 13, 16, { kind: 'hi' });
       s += text(706, y + 4, String(n), { cls: n === 0 ? 'fg-tag-warn' : 'fg-tag-good', size: 12, anchor: 'end' });
     });
     s += text(578, 298, 'each bar is one aligned C–H bond', { cls: 'fg-sm', size: 10 });
@@ -17124,7 +17125,10 @@ FIGURES.push({
     const R = polyPts(378, 168, 6, 42, 90);   // vertices at 90,150,210,270,330,30
     const ctr = P(378, 168);
     s += polyRing(R, 'fg-bond');
-    for (const [i, j] of [[0, 1], [2, 3], [4, 5]]) s += ringDouble(R[i], R[j], ctr, { inset: 8, gap: 4.6 });
+    /* The hybrid, not a Kekule structure: the ring pi system is drawn as one
+       dashed circle, so no ring bond is asserted to be double or single and
+       the ipso carbon is not given a fourth sigma bond. */
+    s += `<circle class="fg-dash-hi" cx="${ctr.x}" cy="${ctr.y}" r="24"></circle>`;
     const exo = P(R[5].x + 40, R[5].y - 24);
     s += bond(R[5], exo, { rFrom: 0, rTo: 0 });
     s += par(R[5], exo, -9);
@@ -17184,8 +17188,8 @@ FIGURES.push({
     s += lobeE((v1.x + v2.x) / 2, 142, 46, 17);
     s += lobeE((v1.x + v2.x) / 2, 210, 46, 17);
     s += bond(v1, v2, { order: 2, gap: 5 });
-    s += bond(v2, vr, { rTo: 0 });
-    s += atom(vr.x, vr.y, '', { kind: 'point' });
+    s += bond(v2, vr, { rTo: 18 });
+    s += atom(vr.x, vr.y, 'CH₃', { r: 18, size: 10 });
     s += bond(v1, P(v1.x - 44, v1.y - 26), { rTo: 13 });
     s += bond(v1, P(v1.x - 44, v1.y + 26), { rTo: 13 });
     s += atom(v1.x - 44, v1.y - 26, 'H', { r: 13, size: 11 });
@@ -17493,12 +17497,13 @@ FIGURES.push({
     s += text(390, 120, '–CH(CH₃)₂  →  (C, C, H)', { cls: 'fg-lbl', size: 12, anchor: 'start' });
     s += text(390, 154, 'Highest against highest: Cl (17) beats C (6).', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     s += text(390, 176, 'First point of difference — stop there.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(556, 212, '–CH₂Cl is the higher priority', { cls: 'fg-tag-good', size: 12 });
-    s += text(556, 238, 'although isopropyl is the bigger group', { cls: 'fg-sm', size: 10.5 });
+    s += text(556, 208, '–CH₂Cl is the higher priority', { cls: 'fg-tag-good', size: 12 });
+    s += text(556, 228, 'although isopropyl is the bigger group', { cls: 'fg-sm', size: 10.5 });
+    s += text(556, 252, 'drawn as here, both winners are up: (Z)', { cls: 'fg-tag-good', size: 11.5 });
     s += text(380, 290, 'Size does not decide a CIP comparison. The first point of difference does.', { cls: 'fg-sm', size: 10.5 });
     return s;
   },
-  caption: 'A tie at the first atom, broken one sphere out. Both groups on C3 attach through carbon, so the first sphere says nothing and you list what each of those carbons holds. Chlorine appears at the head of one set and carbon at the head of the other, so the comparison is over at the first term — and the branch with three carbons in it loses to the branch with one.',
+  caption: 'A tie at the first atom, broken one sphere out. Both groups on C3 attach through carbon, so the first sphere says nothing and you list what each of those carbons holds. Chlorine appears at the head of one set and carbon at the head of the other, so the comparison is over at the first term &mdash; and the branch with three carbons in it loses to the branch with one. As drawn, the C2 methyl and the C3 chloromethyl are both up, so this particular isomer is <b>(Z)-3-(chloromethyl)-4-methylpent-2-ene</b>.',
   note: 'This is the comparison students most often decide by eye. Bulk, mass and the number of atoms in a branch are all irrelevant to CIP; the sets are ordered high to low and read position by position, and the moment they differ the ranking is fixed.',
 });
 
@@ -17518,6 +17523,8 @@ FIGURES.push({
     s += bond(P(150, 110), P(214, 110), { order: 2, rFrom: 15, rTo: 18 });
     s += bond(P(150, 110), P(150, 64), { rFrom: 15, rTo: 17 });
     s += bond(P(214, 110), P(214, 64), { rFrom: 18, rTo: 17 });
+    s += bond(P(150, 110), P(104, 140), { rFrom: 15, rTo: 12 });
+    s += atom(104, 140, 'H', { r: 12 });
     s += atom(150, 110, 'C');
     s += atom(214, 110, 'CH₂', { r: 18 });
     s += atom(150, 64, '(C)', { kind: 'warn', r: 17 });
@@ -17756,49 +17763,49 @@ FIGURES.push({
   id: 'bromobutane-c3-test',
   section: 'prochirality',
   anchor: 'that difference is the whole reason this classification earns a section.</p>',
-  viewBox: '0 0 760 396',
+  viewBox: '0 0 760 420',
   alt: 'The substitution test on C3 of 2-bromobutane: the two deuterated products are the 2R,3R and 2R,3S diastereomers, so the C3 hydrogens are diastereotopic',
   build() {
     let s = '';
     // Parent: zig-zag C1..C4 with Br on a wedge at C2 and both C3 hydrogens shown.
     const v1 = P(300, 104), v2 = P(340, 78), v3 = P(380, 104), v4 = P(420, 78);
-    const br = P(340, 38), ha = P(352, 146), hb = P(412, 146);
+    const br = P(340, 30), ha = P(352, 150), hb = P(412, 150);
     s += bond(v1, v2, { rFrom: 0, rTo: 0 });
     s += bond(v2, v3, { rFrom: 0, rTo: 0 });
     s += bond(v3, v4, { rFrom: 0, rTo: 0 });
-    s += wedge(v2, br, { rFrom: 0, rTo: 15 });
-    s += wedge(v3, ha, { rFrom: 0, rTo: 12 });
-    s += hash(v3, hb, { rFrom: 0, rTo: 12 });
+    s += wedge(v2, br, { rFrom: 0, rTo: 15, width: 11 });
+    s += wedge(v3, ha, { rFrom: 0, rTo: 12, width: 11 });
+    s += hash(v3, hb, { rFrom: 0, rTo: 12, width: 11 });
     s += atom(br.x, br.y, 'Br', { kind: 'hi', size: 10.5 });
     s += atom(ha.x, ha.y, 'Ha', { r: 12, size: 10.5 });
     s += atom(hb.x, hb.y, 'Hb', { r: 12, size: 10.5 });
     s += text(322, 72, 'C2', { cls: 'fg-tag', size: 9.5, anchor: 'end' });
     s += text(398, 100, 'C3', { cls: 'fg-tag', size: 9.5, anchor: 'start' });
-    s += text(380, 178, '(R)-2-bromobutane — C2 is already a stereocenter', { cls: 'fg-sm', size: 10 });
+    s += text(380, 182, '(R)-2-bromobutane — C2 is already a stereocenter', { cls: 'fg-sm', size: 10 });
 
-    s += arrow(P(320, 190), P(232, 218));
-    s += text(216, 212, 'replace Ha', { cls: 'fg-tag', size: 10, anchor: 'end' });
-    s += arrow(P(440, 190), P(528, 218));
-    s += text(544, 212, 'replace Hb', { cls: 'fg-tag', size: 10, anchor: 'start' });
+    s += arrow(P(320, 192), P(240, 208));
+    s += text(224, 204, 'replace Ha', { cls: 'fg-tag', size: 10, anchor: 'end' });
+    s += arrow(P(440, 192), P(520, 208));
+    s += text(536, 204, 'replace Hb', { cls: 'fg-tag', size: 10, anchor: 'start' });
 
     const product = (cx, front, name, kind) => {
-      let g = panel(cx - 150, 232, 300, 108, { kind });
-      const w1 = P(cx - 60, 296), w2 = P(cx - 20, 270), w3 = P(cx + 20, 296), w4 = P(cx + 60, 270);
-      const b = P(cx - 20, 250), d = P(cx + 32, 326);
+      let g = panel(cx - 150, 218, 300, 142, { kind });
+      const w1 = P(cx - 60, 302), w2 = P(cx - 20, 278), w3 = P(cx + 20, 302), w4 = P(cx + 60, 278);
+      const b = P(cx - 20, 240), d = P(cx + 46, 340);
       g += bond(w1, w2, { rFrom: 0, rTo: 0 });
       g += bond(w2, w3, { rFrom: 0, rTo: 0 });
       g += bond(w3, w4, { rFrom: 0, rTo: 0 });
-      g += wedge(w2, b, { rFrom: 0, rTo: 14 });
-      g += (front ? wedge : hash)(w3, d, { rFrom: 0, rTo: 12 });
+      g += wedge(w2, b, { rFrom: 0, rTo: 14, width: 11 });
+      g += (front ? wedge : hash)(w3, d, { rFrom: 0, rTo: 12, width: 11 });
       g += atom(b.x, b.y, 'Br', { kind: 'hi', r: 14, size: 10.5 });
       g += atom(d.x, d.y, 'D', { r: 12, kind: 'warn' });
-      g += text(cx, 356, name, { cls: kind === 'warn' ? 'fg-tag-warn' : 'fg-tag-good', size: 13 });
+      g += text(cx, 380, name, { cls: kind === 'warn' ? 'fg-tag-warn' : 'fg-tag-good', size: 13 });
       return g;
     };
     s += product(190, true, '(2R,3R)', 'hi');
     s += product(570, false, '(2R,3S)', 'warn');
-    s += text(380, 356, 'C2 the same in both, C3 opposite', { cls: 'fg-tag-good', size: 11 });
-    s += text(380, 382, '⇒ the two products are diastereomers', { cls: 'fg-lbl', size: 12 });
+    s += text(380, 380, 'C2 the same in both, C3 opposite', { cls: 'fg-tag-good', size: 11 });
+    s += text(380, 408, '⇒ the two products are diastereomers', { cls: 'fg-lbl', size: 12 });
     return s;
   },
   caption: 'The stereocenter that was already there is what changes the answer. C2 is untouched by either substitution and stays R; C3 becomes a new stereocenter with opposite configurations in the two products. One center matching and one inverted is the definition of <b>diastereomers</b>, so the C3 hydrogens are <b>diastereotopic</b>.',
@@ -17909,6 +17916,153 @@ FIGURES.push({
   },
   caption: 'Left: the face label is just a CIP trace done from one side — clockwise for 1 → 2 → 3 is <b>Re</b>, counterclockwise is <b>Si</b>, and the opposite side automatically gets the other name. Right: what the labels are for.',
   note: 'The right-hand panel is also the picture behind racemization at a carbocation. A trigonal carbon is flat, a nucleophile reaches it from either side with equal ease when nothing biases the approach, and a 50:50 mixture is the unavoidable result — not an experimental accident but a consequence of the geometry.',
+});
+
+
+/* ------------------------------------------------------------- 30.6 ---
+   The reading is the same for 1,3 and 1,4 as it is for 1,2 — which is easy
+   to assert and easy to doubt, so it gets drawn — and the translation into
+   axial/equatorial, which flips over on an odd spacing. */
+FIGURES.push({
+  id: 'ring-cis-trans-locants',
+  section: 'cis-trans-ez',
+  anchor: 'For naming, the only question asked here is same face or opposite face.</p>',
+  alt: 'Two more flat ring drawings. On the left, 1,3-dimethylcyclohexane with both methyl groups on bold wedges, which is the cis isomer. On the right, 1,4-dimethylcyclohexane with one methyl on a wedge and one on a hashed bond, which is the trans isomer. Below them a three-row table giving, for 1,2-, 1,3- and 1,4-disubstituted rings, which of cis and trans puts the two groups one axial and one equatorial and which allows both axial or both equatorial.',
+  viewBox: '0 0 760 470',
+  build() {
+    const verts = (cx, cy, r) => {
+      const v = [];
+      for (let i = 0; i < 6; i++) {
+        const a = ((-90 + i * 60) * Math.PI) / 180;
+        v.push(P(cx + r * Math.cos(a), cy + r * Math.sin(a)));
+      }
+      return v;
+    };
+    let s = '';
+
+    /* ---- left: cis-1,3, two wedges on carbons one apart ---- */
+    s += panel(20, 36, 340, 250, { kind: 'hi' });
+    s += tag(190, 26, 'both on a wedge — same face');
+    {
+      const v = verts(190, 158, 52);
+      for (let i = 0; i < 6; i++) s += sk(v[i], v[(i + 1) % 6]);
+      const c1 = v[0], c3 = v[2];
+      const m1 = P(c1.x, c1.y - 46), m3 = P(c3.x + 40, c3.y + 24);
+      s += wedge(c1, m1, { rFrom: 0, rTo: 18 });
+      s += wedge(c3, m3, { rFrom: 0, rTo: 18 });
+      s += atom(m1.x, m1.y, 'CH₃', { r: 18 });
+      s += atom(m3.x, m3.y, 'CH₃', { r: 18 });
+      s += text(c1.x - 26, c1.y - 2, 'C1', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+      s += text(c3.x + 8, c3.y + 34, 'C3', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+    }
+    s += text(190, 306, 'cis-1,3-dimethylcyclohexane', { cls: 'fg-tag-good', size: 12 });
+
+    /* ---- right: trans-1,4, a wedge and a hash across the ring ---- */
+    s += panel(400, 36, 340, 250, { kind: 'warn' });
+    s += tag(570, 26, 'one wedge, one hash — opposite faces');
+    {
+      const v = verts(570, 158, 52);
+      for (let i = 0; i < 6; i++) s += sk(v[i], v[(i + 1) % 6]);
+      const c1 = v[0], c4 = v[3];
+      const m1 = P(c1.x, c1.y - 46), m4 = P(c4.x, c4.y + 46);
+      s += wedge(c1, m1, { rFrom: 0, rTo: 18 });
+      s += hash(c4, m4, { rFrom: 0, rTo: 18 });
+      s += atom(m1.x, m1.y, 'CH₃', { r: 18 });
+      s += atom(m4.x, m4.y, 'CH₃', { r: 18 });
+      s += text(c1.x - 26, c1.y - 2, 'C1', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+      s += text(c4.x - 26, c4.y + 6, 'C4', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+    }
+    s += text(570, 306, 'trans-1,4-dimethylcyclohexane', { cls: 'fg-tag-warn', size: 12 });
+
+    /* ---- the chair translation, which is the part that flips over ---- */
+    s += rule(40, 330, 720, 330);
+    s += text(40, 354, 'in a chair', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
+    s += text(250, 354, 'cis', { cls: 'fg-tag-good', size: 10.5, anchor: 'start' });
+    s += text(500, 354, 'trans', { cls: 'fg-tag-warn', size: 10.5, anchor: 'start' });
+    const ROWS = [
+      ['1,2-', 'one axial, one equatorial', 'both equatorial (or both axial)'],
+      ['1,3-', 'both equatorial (or both axial)', 'one axial, one equatorial'],
+      ['1,4-', 'one axial, one equatorial', 'both equatorial (or both axial)'],
+    ];
+    ROWS.forEach(([lab, a, b], i) => {
+      const y = 382 + i * 26;
+      s += text(40, y, lab, { cls: 'fg-lbl', size: 11.5, anchor: 'start' });
+      s += text(250, y, a, { cls: 'fg-sm', size: 11, anchor: 'start' });
+      s += text(500, y, b, { cls: 'fg-sm', size: 11, anchor: 'start' });
+    });
+    s += text(380, 462, 'The 1,3- row is the one that trades places. Naming never uses this table — conformational analysis does.', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The same wedge-and-hash reading on the two spacings the 1,2- figure did not draw. Two wedges are two groups on the same face, so the 1,3 compound on the left is <b>cis</b> however far apart its methyls are; a wedge and a hash are opposite faces, so the 1,4 compound on the right is <b>trans</b>. The locants change nothing about the test.',
+  note: 'The table underneath is a different question, and the row that catches people is the middle one. Axial directions alternate around the ring, so on carbons an <i>even</i> number apart (1,3-) the two axial positions point the same way and cis can be diequatorial, while on carbons an <i>odd</i> number apart (1,2- and 1,4-) they point opposite ways and cis is forced into axial/equatorial. None of that changes cis or trans &mdash; it only decides which conformer is cheap.',
+});
+
+/* ------------------------------------------------------------- 31.7 ---
+   The two claims the prochirality section leans on hardest and never drew:
+   that a ring alone makes a CH2 diastereotopic, and what that does to a
+   spectrum. */
+FIGURES.push({
+  id: 'ring-diastereotopic-nmr',
+  section: 'prochirality',
+  anchor: 'Note that methylcyclohexane contains no stereocenter at all, which is worth holding on to — the ring alone was enough.</p>',
+  alt: 'On the left, methylcyclohexane drawn as a flat ring with a methyl group on C1 and the two hydrogens of C2 drawn separately, one on a bold wedge and one on a hashed bond; replacing the wedged hydrogen with deuterium gives the cis product and replacing the hashed one gives the trans product, and those are diastereomers. On the right, two sketched NMR traces: one peak if the two hydrogens were equivalent, and two separate peaks that also split each other if they are diastereotopic.',
+  viewBox: '0 0 760 400',
+  build() {
+    let s = '';
+    const verts = (cx, cy, r) => {
+      const v = [];
+      for (let i = 0; i < 6; i++) {
+        const a = ((-90 + i * 60) * Math.PI) / 180;
+        v.push(P(cx + r * Math.cos(a), cy + r * Math.sin(a)));
+      }
+      return v;
+    };
+
+    /* ---- left: the ring, and the two products of the substitution test ---- */
+    s += tag(196, 32, 'METHYLCYCLOHEXANE — NO STEREOCENTER');
+    const v = verts(160, 140, 52);
+    for (let i = 0; i < 6; i++) s += sk(v[i], v[(i + 1) % 6]);
+    const c1 = v[3], c2 = v[2];
+    s += bond(c1, P(c1.x, c1.y + 44), { rFrom: 0, rTo: 17 });
+    s += atom(c1.x, c1.y + 44, 'CH₃', { r: 17 });
+    s += wedge(c2, P(c2.x + 46, c2.y + 22), { rFrom: 0, rTo: 14 });
+    s += hash(c2, P(c2.x + 46, c2.y - 22), { rFrom: 0, rTo: 14 });
+    s += atom(c2.x + 46, c2.y + 22, 'Ha', { r: 14, size: 10.5 });
+    s += atom(c2.x + 46, c2.y - 22, 'Hb', { r: 14, size: 10.5 });
+    s += text(c1.x - 24, c1.y + 12, 'C1', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+    s += text(c2.x + 8, c2.y - 14, 'C2', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
+
+    s += text(40, 276, 'Ha → D  gives the D cis to the methyl', { cls: 'fg-lbl', size: 11, anchor: 'start' });
+    s += text(40, 298, 'Hb → D  gives the D trans to it', { cls: 'fg-lbl', size: 11, anchor: 'start' });
+    s += text(40, 322, 'cis and trans are diastereomers,', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(40, 342, 'so Ha and Hb are DIASTEREOTOPIC', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
+
+    s += rule(376, 40, 376, 360);
+
+    /* ---- right: what that does to a spectrum ---- */
+    s += tag(566, 32, 'A PREVIEW: WHAT A SPECTRUM SHOWS');
+    const peak = (x, h, base, cls) =>
+      `<path class="${cls}" fill="none" d="M${x - 18} ${base} Q${x - 7} ${base} ${x} ${base - h} Q${x + 7} ${base} ${x + 18} ${base}"></path>`;
+
+    s += rule(410, 150, 730, 150);
+    s += peak(566, 78, 150, 'fg-bond-soft');
+    s += text(508, 96, 'one signal', { cls: 'fg-sm', size: 10.5, anchor: 'end' });
+    s += text(410, 172, 'if the two were equivalent', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+
+    s += rule(410, 300, 730, 300);
+    s += peak(510, 62, 300, 'fg-bond-hi');
+    s += peak(618, 62, 300, 'fg-bond-hi');
+    s += text(510, 226, 'Ha', { cls: 'fg-tag-warn', size: 11 });
+    s += text(618, 226, 'Hb', { cls: 'fg-tag-warn', size: 11 });
+    s += text(410, 322, 'diastereotopic: two shifts, splitting each other', { cls: 'fg-tag-warn', size: 10.5, anchor: 'start' });
+    s += text(566, 348, 'Two different environments need not match.', { cls: 'fg-sm', size: 10.5 });
+
+    s += rule(40, 372, 720, 372);
+    s += text(380, 392, 'A ring gives a molecule a top and a bottom — that is all the test ever needs.', { cls: 'fg-lbl', size: 11.5 });
+    return s;
+  },
+  caption: 'The two claims this section makes that a drawing settles faster than a sentence. <b>Left:</b> methylcyclohexane has no stereocenter, yet the two hydrogens on C2 are diastereotopic, because the ring gives the molecule a face to be on &mdash; one substitution puts the label cis to the methyl and the other puts it trans, and those are diastereomers. <b>Right:</b> the consequence, sketched.',
+  note: 'The right-hand panel is a <b>preview of <a class="chapter-ref" href="/ochem/learn.html#m-spectroscopy">Spectroscopy</a></b> and is drawn only to the level this section needs: diastereotopic hydrogens may give two signals rather than one, and because they are inequivalent they also couple to each other. How much they are separated is not predictable from topicity &mdash; sometimes the two shifts happen to coincide and the pair looks equivalent. Topicity tells you they are <i>allowed</i> to differ, never by how much.',
 });
 
 const START = (id) => `<!-- fig:${id}:start -->`;
