@@ -2630,7 +2630,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Why the two substituent rules for a Birch reduction are one rule. The reaction alternates electrons and protons, and the carbon that gets the second proton is the one that ends up sp³ — so everything depends on where the carbanion is most stable.',
-  note: 'The product is the <b>unconjugated</b> diene in both cases, which is the less stable of the two and the sign that this is kinetic control: protonation happens fastest where the charge density is highest, and stability never gets a vote. The same alternation of electron and proton runs the Na/NH₃ reduction of an alkyne to a <i>trans</i> alkene, one chapter earlier.',
+  note: 'The product is the <b>unconjugated</b> diene in both cases, which is the less stable of the two and the sign that this is kinetic control: protonation happens fastest where the charge density is highest, and stability never gets a vote. The same alternation of electron and proton runs the Na/NH₃ reduction of an alkyne to a <i>trans</i> alkene, back in the alkynes and hydrogenation chapters.',
 });
 
 /* ----------------------------------------------------------------- 47 ---
@@ -15465,6 +15465,551 @@ FIGURES.push({
   note: 'Compare the third panel with a 1,2-shift in a carbocation rearrangement. There the electron sink is an empty p orbital on the neighboring carbon; here it is the &sigma;* orbital of the O&ndash;O bond. Same motion, same retention at the migrating carbon, a different hole for it to fall into &mdash; and one extra condition, because &sigma; overlap needs the migrating group lined up <i>anti</i> to the O&ndash;O bond, which is what a rigid ring can occasionally prevent.',
 });
 
+
+/* ---------------------------------------------------------------- 22 ---
+   Chapter 22 drew no molecules at all: five sections of reagent-and-product
+   material whose central claims — a Meisenheimer complex, a benzyne, a
+   benzylic resonance set, a phenoxide, a Birch intermediate, a diazotization
+   — were made in prose and never shown. These six draw them. */
+
+/* A hexagon kit the six figures below share. Vertex 0 is the top and the
+   numbering runs clockwise, so 1 and 5 are ortho, 2 and 4 meta, 3 para. */
+function hexKit(R) {
+  const V = (cx, cy) => {
+    const v = [];
+    for (let i = 0; i < 6; i++) {
+      const a = (-90 + i * 60) * Math.PI / 180;
+      v.push(P(cx + Math.cos(a) * R, cy + Math.sin(a) * R));
+    }
+    return v;
+  };
+  /* A point `d` further out along the line from the ring centre through
+     vertex i — where a substituent hangs. */
+  const out = (cx, cy, i, d) => {
+    const v = V(cx, cy)[i];
+    return P(v.x + ((v.x - cx) / R) * d, v.y + ((v.y - cy) / R) * d);
+  };
+  const ring = (cx, cy, doubles, opts = {}) => {
+    const v = V(cx, cy), mid = P(cx, cy);
+    let g = '';
+    for (let i = 0; i < 6; i++) {
+      const j = (i + 1) % 6;
+      if (doubles.includes(i)) g += ringDouble(v[i], v[j], mid, { inset: opts.inset ?? 9, gap: opts.gap ?? 4 });
+      else g += bond(v[i], v[j], { rFrom: 0, rTo: 0 });
+    }
+    return g;
+  };
+  /* A substituent on vertex i: a bond out to a labelled disc. */
+  const sub = (cx, cy, i, txt, o = {}) => {
+    const p = out(cx, cy, i, o.d ?? 34);
+    const r = o.r ?? 16;
+    return bond(V(cx, cy)[i], p, { rFrom: 0, rTo: r, cls: o.bondCls }) +
+           atom(p.x, p.y, txt, { kind: o.kind || 'plain', r, size: o.size });
+  };
+  /* A charge or dot sitting just outside vertex i. */
+  const mark = (cx, cy, i, txt, o = {}) => {
+    const p = out(cx, cy, i, o.d ?? 19);
+    return text(p.x, p.y + (o.dy ?? 5), txt, { cls: o.cls || 'fg-warn', size: o.size ?? 15 });
+  };
+  return { V, out, ring, sub, mark };
+}
+
+/* The single most important missing picture in the chapter: the notes assert
+   three times that the charge lands ortho and para and runs onto the nitro
+   oxygens, and never show it. */
+FIGURES.push({
+  id: 'meisenheimer',
+  section: 'nucleophilic-aromatic',
+  anchor: 'the nitro groups pay for it by delocalizing the negative charge onto their own oxygens.</div>',
+  alt: 'Four drawn frames. First, 1-chloro-2,4-dinitrobenzene with methoxide and a curved arrow from the methoxide oxygen to the carbon bearing the chlorine. Second, the Meisenheimer complex: the top carbon now sp3 carrying both OCH3 and Cl, only two carbon-carbon double bonds left in the ring, and a minus sign on the para carbon. Third, the same complex with two curved arrows moving that charge out onto an oxygen of the para nitro group. Fourth, the aromatic product with OCH3 where the chlorine was, both nitro groups still in place, plus chloride.',
+  viewBox: '0 0 760 580',
+  build() {
+    const R = 40, K = hexKit(R);
+    let s = '';
+    s += tag(380, 26, 'ADDITION FIRST, ELIMINATION SECOND — DRAWN');
+
+    /* Frame 1: the substrate and the attack. */
+    const c1 = P(200, 150);
+    s += K.ring(c1.x, c1.y, [0, 2, 4]);
+    s += K.sub(c1.x, c1.y, 0, 'Cl', { r: 15 });
+    s += K.sub(c1.x, c1.y, 1, 'NO₂', { kind: 'warn', r: 17, size: 9.5 });
+    s += K.sub(c1.x, c1.y, 3, 'NO₂', { kind: 'warn', r: 17, size: 9.5 });
+    s += atom(62, 96, 'CH₃O', { kind: 'hi', r: 21, size: 9.5 });
+    s += text(86, 80, '−', { cls: 'fg-warn', size: 15 });
+    s += lonePair(62, 96, 20, { dist: 27 });
+    s += lonePair(62, 96, 340, { dist: 27 });
+    s += curve(P(86, 104), P(176, 104), { bow: 26 });
+    s += text(200, 262, 'attack at the carbon carrying the halide', { cls: 'fg-tag', size: 11 });
+
+    s += arrow(P(306, 150), P(392, 150));
+    s += text(349, 138, 'slow', { cls: 'fg-sm', size: 10.5 });
+
+    /* Frame 2: the Meisenheimer complex. */
+    const c2 = P(520, 150);
+    s += K.ring(c2.x, c2.y, [1, 4]);
+    s += wedge(K.V(c2.x, c2.y)[0], P(490, 80), { rFrom: 0, rTo: 19 });
+    s += atom(490, 80, 'OCH₃', { kind: 'hi', r: 19, size: 9 });
+    s += hash(K.V(c2.x, c2.y)[0], P(554, 84), { rFrom: 0, rTo: 14 });
+    s += atom(554, 84, 'Cl', { r: 14, size: 11 });
+    s += K.sub(c2.x, c2.y, 1, 'NO₂', { kind: 'warn', r: 17, size: 9.5 });
+    s += K.sub(c2.x, c2.y, 3, 'NO₂', { kind: 'warn', r: 17, size: 9.5 });
+    s += K.mark(c2.x, c2.y, 5, '−', { d: 20, size: 17 });
+    s += text(520, 262, 'aromaticity gone — the anion is the price', { cls: 'fg-tag', size: 11 });
+    s += text(596, 176, 'meta: no charge', { cls: 'fg-tag-mut', size: 10, anchor: 'start' });
+
+    s += rule(24, 286, 736, 286);
+
+    /* Frame 3: the charge moves onto a nitro oxygen. */
+    const c3 = P(200, 392);
+    s += K.ring(c3.x, c3.y, [1, 4]);
+    s += wedge(K.V(c3.x, c3.y)[0], P(170, 322), { rFrom: 0, rTo: 19 });
+    s += atom(170, 322, 'OCH₃', { kind: 'hi', r: 19, size: 9 });
+    s += hash(K.V(c3.x, c3.y)[0], P(234, 326), { rFrom: 0, rTo: 14 });
+    s += atom(234, 326, 'Cl', { r: 14, size: 11 });
+    s += K.sub(c3.x, c3.y, 1, 'NO₂', { kind: 'warn', r: 17, size: 9.5 });
+    {
+      const v3 = K.V(c3.x, c3.y)[3];
+      const N = P(200, 486), OL = P(154, 516), OR = P(246, 516);
+      s += bond(v3, N, { rFrom: 0, rTo: 15 });
+      s += bond(N, OR, { rFrom: 15, rTo: 15, order: 2, gap: 3.4 });
+      s += bond(N, OL, { rFrom: 15, rTo: 15 });
+      s += atom(N.x, N.y, 'N', { kind: 'warn' });
+      s += text(220, 474, '+', { cls: 'fg-warn', size: 13 });
+      s += atom(OL.x, OL.y, 'O');
+      s += text(128, 502, '−', { cls: 'fg-warn', size: 14 });
+      s += atom(OR.x, OR.y, 'O', { kind: 'hi' });
+      s += text(274, 508, '−', { cls: 'fg-warn', size: 15 });
+      s += text(170, 444, '−', { cls: 'fg-warn', size: 17 });
+      s += curve(P(180, 448), P(198, 464), { bow: -10, size: 7 });
+      s += curve(P(218, 492), P(252, 499), { bow: -13, size: 7 });
+    }
+    s += text(200, 538, 'and this is what pays for it —', { cls: 'fg-tag', size: 11 });
+    s += text(200, 556, 'only ortho and para reach an oxygen', { cls: 'fg-tag', size: 11 });
+
+    /* Frame 4: back to aromatic. */
+    s += arrow(P(310, 392), P(396, 392));
+    s += text(353, 380, '– Cl⁻', { cls: 'fg-sm', size: 10.5 });
+    const c4 = P(560, 392);
+    s += K.ring(c4.x, c4.y, [0, 2, 4]);
+    s += K.sub(c4.x, c4.y, 0, 'OCH₃', { kind: 'hi', r: 19, size: 9, d: 36 });
+    s += K.sub(c4.x, c4.y, 1, 'NO₂', { kind: 'warn', r: 17, size: 9.5 });
+    s += K.sub(c4.x, c4.y, 3, 'NO₂', { kind: 'warn', r: 17, size: 9.5 });
+    s += text(690, 398, '+ Cl⁻', { cls: 'fg-lbl', size: 12.5 });
+    s += text(560, 552, 'aromatic again, one product, same position', { cls: 'fg-tag', size: 11 });
+    return s;
+  },
+  caption: 'Addition then elimination, drawn out. The nucleophile adds first, the ring pays with its aromaticity, and the nitro groups hand that cost back by taking the charge onto their own oxygens. Follow the minus sign through frames 2 and 3: it never visits a meta carbon, which is the whole reason a meta nitro group is no help.',
+  note: 'Count the electrons in frame 2. The ring has one sp&sup3; carbon, so the six-electron cycle is broken &mdash; the same structural situation as the arenium ion of electrophilic substitution, with the sign of the charge reversed. That symmetry is worth holding on to: EAS runs through a <b>cation</b> stabilized by donors, S<sub>N</sub>Ar through an <b>anion</b> stabilized by acceptors.',
+});
+
+/* The other pure-prose claim in the same section: two sp2 orbitals in the
+   plane of the ring. The orbital vocabulary was already in the kit. */
+FIGURES.push({
+  id: 'benzyne-orbitals',
+  section: 'nucleophilic-aromatic',
+  anchor: 'so benzyne is strained, extremely reactive, and lasts only long enough to be attacked.</p>',
+  alt: 'Three panels. Left, chlorobenzene with the ortho hydrogen drawn and curved arrows showing amide removing it and chloride leaving. Center, benzyne with two lobes drawn in the plane of the ring on adjacent carbons, pointing past each other, with the aromatic pi system drawn as separate lobes above and below for contrast. Right, two product rings, one with the nucleophile where the chlorine was and one with it on the neighboring carbon, marked roughly fifty-fifty.',
+  viewBox: '0 0 760 420',
+  build() {
+    const R = 36, K = hexKit(R);
+    let s = '';
+    const lobe = (cx, cy, rx, ry, rot, cls) =>
+      `<ellipse class="${cls}" cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill-opacity="0.18" transform="rotate(${rot} ${cx} ${cy})"></ellipse>`;
+    s += tag(380, 26, 'ELIMINATION FIRST, ADDITION SECOND');
+
+    /* Left: making it. */
+    const a = P(130, 178);
+    s += K.ring(a.x, a.y, [0, 2, 4]);
+    s += K.sub(a.x, a.y, 0, 'Cl', { r: 15, d: 32 });
+    s += K.sub(a.x, a.y, 1, 'H', { r: 12, d: 30 });
+    s += atom(48, 92, 'H₂N', { kind: 'hi', r: 19, size: 9.5 });
+    s += text(70, 76, '−', { cls: 'fg-warn', size: 14 });
+    s += lonePair(48, 92, 30, { dist: 26 });
+    s += curve(P(66, 102), P(172, 137), { bow: 24 });
+    s += curve(P(176, 152), P(146, 166), { bow: 16 });
+    s += curve(P(130, 130), P(130, 116), { bow: 12 });
+    s += text(130, 248, 'the base takes the ortho H,', { cls: 'fg-tag', size: 11 });
+    s += text(130, 266, 'and chloride leaves', { cls: 'fg-tag', size: 11 });
+
+    /* Centre: the thing itself. */
+    const b = P(392, 178);
+    s += K.ring(b.x, b.y, [2, 4]);
+    {
+      const v = K.V(b.x, b.y);
+      s += bond(v[0], v[1], { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
+      s += lobe(412, 136, 17, 9, 30, 'fg-orb');
+      s += lobe(434, 149, 17, 9, 30, 'fg-orb-alt');
+      s += text(506, 126, 'two sp² lobes,', { cls: 'fg-tag-warn', size: 10.5 });
+      s += text(506, 142, 'in the ring plane', { cls: 'fg-tag-warn', size: 10.5 });
+      s += lobe(392, 108, 26, 11, 0, 'fg-orb');
+      s += lobe(392, 248, 26, 11, 0, 'fg-orb');
+      s += text(392, 86, 'the aromatic π system, above and below', { cls: 'fg-tag-mut', size: 10 });
+      s += text(392, 274, 'and untouched by any of this', { cls: 'fg-tag-mut', size: 10 });
+    }
+    s += text(392, 298, 'the extra bond is IN the ring plane —', { cls: 'fg-tag', size: 11 });
+    s += text(392, 316, 'two sp² lobes that point past each other', { cls: 'fg-tag', size: 11 });
+
+    /* Right: what attacks it, and where. */
+    const R2 = 28, K2 = hexKit(R2);
+    const c = P(618, 104), d = P(618, 262);
+    s += K2.ring(c.x, c.y, [0, 2, 4]);
+    s += K2.sub(c.x, c.y, 0, 'Nu', { kind: 'hi', r: 15, d: 28 });
+    s += text(618, 152, 'where the Cl was', { cls: 'fg-tag', size: 10.5 });
+    s += K2.ring(d.x, d.y, [0, 2, 4]);
+    s += K2.sub(d.x, d.y, 1, 'Nu', { kind: 'hi', r: 15, d: 28 });
+    s += text(618, 310, 'and one carbon along', { cls: 'fg-tag', size: 10.5 });
+    s += text(618, 192, '≈ 50 : 50', { cls: 'fg-lbl', size: 12.5 });
+    s += arrow(P(470, 178), P(536, 150), { muted: true });
+    s += arrow(P(470, 178), P(536, 232), { muted: true });
+
+    s += rule(24, 352, 736, 352);
+    s += label(380, 382, 'The in-plane bond is not part of the aromatic sextet, so benzyne is still aromatic —');
+    s += label(380, 406, 'just strained. That is why it survives long enough to be attacked at all.');
+    return s;
+  },
+  caption: 'Benzyne drawn three ways: made, pictured, and used. The extra bond comes from two sp&sup2; orbitals lying <i>in</i> the ring plane, which is why it overlaps so badly, and the six π electrons above and below the ring are untouched throughout.',
+  note: 'The right-hand panel is the whole experimental argument. The nucleophile has two carbons to choose between and no reason to prefer either, so the label splits &mdash; and a product with the nucleophile on a carbon that never carried the halide is something no direct displacement can produce. On a substituted ring the split stops being even, because the substituent votes on where the leftover carbanion may sit.',
+});
+
+/* Three species, one set of four positions. The section rests on this and
+   its only figure was a table of permanganate outcomes. */
+FIGURES.push({
+  id: 'benzylic-delocalization',
+  section: 'benzylic-reactivity',
+  anchor: 'an allyl system has two, its two end carbons, while a benzylic system has four: the benzylic carbon plus both ortho positions and the para one.</div>',
+  alt: 'Top row: four resonance structures of the benzyl cation, with the positive charge first on the exocyclic CH2 carbon and then on an ortho, the para and the other ortho ring carbon, connected by double-headed arrows. Bottom row: the same skeleton drawn with a single dot for the radical and with a minus sign and lone pair for the anion, and beside them an allyl cation drawn as its two resonance structures for comparison.',
+  viewBox: '0 0 760 450',
+  build() {
+    const R = 32, K = hexKit(R);
+    let s = '';
+    s += tag(380, 26, 'THE SAME FOUR CARBONS, WHATEVER SITS ON THEM');
+
+    const frames = [
+      { cx: 100, doubles: [0, 2, 4], exo: 1, charge: null, lab: 'on the benzylic carbon' },
+      { cx: 280, doubles: [2, 4], exo: 2, charge: 1, lab: 'on an ortho carbon' },
+      { cx: 460, doubles: [1, 4], exo: 2, charge: 3, lab: 'on the para carbon' },
+      { cx: 640, doubles: [1, 3], exo: 2, charge: 5, lab: 'on the other ortho' },
+    ];
+    const CY = 126;
+    frames.forEach((f, i) => {
+      s += K.ring(f.cx, CY, f.doubles);
+      const v = K.V(f.cx, CY)[0];
+      const p = K.out(f.cx, CY, 0, 32);
+      s += bond(v, p, { rFrom: 0, rTo: 18, order: f.exo, gap: 3.4 });
+      s += atom(p.x, p.y, 'CH₂', { kind: f.charge === null ? 'hi' : 'plain', r: 18, size: 9.5 });
+      if (f.charge === null) s += text(p.x + 26, p.y - 8, '+', { cls: 'fg-warn', size: 16 });
+      else s += K.mark(f.cx, CY, f.charge, '+', { d: 18 });
+      s += text(f.cx, 196, f.lab, { cls: 'fg-tag', size: 10.5 });
+      if (i < 3) {
+        const x1 = f.cx + 44, x2 = frames[i + 1].cx - 44;
+        s += arrow(P(x1, CY), P(x2, CY), { muted: true });
+        s += arrow(P(x2, CY), P(x1, CY), { muted: true });
+      }
+    });
+    s += text(190, 222, 'meta · never', { cls: 'fg-tag-mut', size: 10 });
+    s += text(550, 222, 'meta · never', { cls: 'fg-tag-mut', size: 10 });
+    s += rule(24, 244, 736, 244);
+
+    /* The radical and the anion use the same skeleton. */
+    const CY2 = 324;
+    const two = [
+      { cx: 110, kind: 'radical', lab: 'radical · one electron' },
+      { cx: 300, kind: 'anion', lab: 'anion · a lone pair' },
+    ];
+    two.forEach((f) => {
+      s += K.ring(f.cx, CY2, [0, 2, 4]);
+      const v = K.V(f.cx, CY2)[0];
+      const p = K.out(f.cx, CY2, 0, 32);
+      s += bond(v, p, { rFrom: 0, rTo: 18 });
+      s += atom(p.x, p.y, 'CH₂', { kind: 'hi', r: 18, size: 9.5 });
+      if (f.kind === 'radical') s += `<circle class="fg-lp" cx="${p.x + 24}" cy="${p.y - 10}" r="3"></circle>`;
+      else {
+        s += lonePair(p.x, p.y, -90, { dist: 26 });
+        s += text(p.x + 26, p.y - 8, '−', { cls: 'fg-warn', size: 15 });
+      }
+      s += text(f.cx, CY2 + 62, f.lab, { cls: 'fg-tag', size: 10.5 });
+    });
+    s += text(205, 288, 'same four', { cls: 'fg-tag-mut', size: 10 });
+
+    /* The allyl comparison the text makes in words. */
+    s += panel(420, 262, 282, 124);
+    s += text(561, 284, 'an allyl cation, for comparison', { cls: 'fg-tag', size: 11 });
+    {
+      const A = P(452, 342), B = P(482, 322), C = P(512, 342);
+      s += bond(A, B, { rFrom: 0, rTo: 0, order: 2, gap: 3.6 });
+      s += bond(B, C, { rFrom: 0, rTo: 0 });
+      s += text(522, 336, '+', { cls: 'fg-warn', size: 15 });
+      const D = P(606, 342), E = P(636, 322), F = P(666, 342);
+      s += bond(D, E, { rFrom: 0, rTo: 0 });
+      s += bond(E, F, { rFrom: 0, rTo: 0, order: 2, gap: 3.6 });
+      s += text(596, 336, '+', { cls: 'fg-warn', size: 15 });
+      s += arrow(P(544, 312), P(576, 312), { muted: true, size: 7 });
+      s += arrow(P(576, 312), P(544, 312), { muted: true, size: 7 });
+      s += text(561, 372, 'two positions, not four', { cls: 'fg-tag-mut', size: 10.5 });
+    }
+
+    s += rule(24, 402, 736, 402);
+    s += label(380, 430, 'An empty orbital, one electron or a lone pair — the ring does not care which.');
+    return s;
+  },
+  caption: 'One set of resonance structures, three different species. Whatever sits on the benzylic carbon reaches the same four carbons: the benzylic one, both ortho positions and the para. The meta carbons never appear, which is the pattern the phenoxide and the Meisenheimer anion follow too.',
+  note: 'Notice the cost in structures 2&ndash;4: the ring is drawn with the charge <i>inside</i> it, which breaks the six-electron cycle. That is why a benzylic cation is <i>about</i> as good as a tertiary one rather than dramatically better &mdash; the delocalization is real, and it is paid for.',
+});
+
+/* Six pKa units, drawn. */
+FIGURES.push({
+  id: 'phenoxide-resonance',
+  section: 'phenols',
+  anchor: 'Spreading charge stabilizes it, the conjugate base is more stable, and the acid is stronger.</p>',
+  alt: 'Top row: four resonance structures of phenoxide, with the negative charge first on oxygen and then on an ortho, the para and the other ortho ring carbon, each connected by double-headed arrows. Bottom left: the hybrid drawn once, with partial negative marks on the oxygen and on three ring carbons and the two meta carbons marked never. Bottom right: ethoxide drawn as a two-carbon chain with the charge locked on its single oxygen.',
+  viewBox: '0 0 760 460',
+  build() {
+    const R = 32, K = hexKit(R);
+    let s = '';
+    s += tag(380, 26, 'WHERE A PHENOXIDE PUTS ITS CHARGE');
+    const CY = 122;
+    const frames = [
+      { cx: 100, doubles: [0, 2, 4], exo: 1, charge: null, lab: 'charge on oxygen' },
+      { cx: 280, doubles: [2, 4], exo: 2, charge: 1, lab: 'on an ortho carbon' },
+      { cx: 460, doubles: [1, 4], exo: 2, charge: 3, lab: 'on the para carbon' },
+      { cx: 640, doubles: [1, 3], exo: 2, charge: 5, lab: 'on the other ortho' },
+    ];
+    frames.forEach((f, i) => {
+      s += K.ring(f.cx, CY, f.doubles);
+      const v = K.V(f.cx, CY)[0];
+      const p = K.out(f.cx, CY, 0, 30);
+      s += bond(v, p, { rFrom: 0, rTo: 15, order: f.exo, gap: 3.4 });
+      s += atom(p.x, p.y, 'O', { kind: f.charge === null ? 'hi' : 'plain' });
+      if (f.charge === null) {
+        s += text(p.x + 22, p.y - 8, '−', { cls: 'fg-warn', size: 15 });
+        s += lonePair(p.x, p.y, 180, { dist: 22 });
+        s += lonePair(p.x, p.y, 0, { dist: 22 });
+      } else {
+        s += K.mark(f.cx, CY, f.charge, '−', { d: 18 });
+      }
+      s += text(f.cx, 192, f.lab, { cls: 'fg-tag', size: 10.5 });
+      if (i < 3) {
+        const x1 = f.cx + 44, x2 = frames[i + 1].cx - 44;
+        s += arrow(P(x1, CY), P(x2, CY), { muted: true });
+        s += arrow(P(x2, CY), P(x1, CY), { muted: true });
+      }
+    });
+    s += rule(24, 214, 736, 214);
+
+    /* The hybrid, and the alkoxide that has none of this. */
+    const R3 = 40, K3 = hexKit(R3);
+    const h = P(180, 312);
+    s += K3.ring(h.x, h.y, [0, 2, 4]);
+    s += K3.sub(h.x, h.y, 0, 'O', { kind: 'hi', r: 15, d: 32 });
+    s += text(212, 258, 'δ−', { cls: 'fg-warn', size: 12 });
+    for (const i of [1, 3, 5]) s += K3.mark(h.x, h.y, i, 'δ−', { d: 22, cls: 'fg-warn', size: 12, dy: 4 });
+    s += text(268, 312, 'meta · never', { cls: 'fg-tag-mut', size: 10, anchor: 'start' });
+    s += text(92, 312, 'never · meta', { cls: 'fg-tag-mut', size: 10, anchor: 'end' });
+    s += text(180, 394, 'four atoms share it — pKa 10', { cls: 'fg-tag', size: 11 });
+
+    s += panel(420, 246, 282, 132);
+    {
+      const A = P(478, 330), B = P(514, 310), O = P(558, 330);
+      s += bond(A, B, { rFrom: 0, rTo: 0 });
+      s += bond(B, O, { rFrom: 0, rTo: 15 });
+      s += atom(O.x, O.y, 'O', { kind: 'warn' });
+      s += text(582, 322, '−', { cls: 'fg-warn', size: 15 });
+      s += lonePair(O.x, O.y, 90, { dist: 22 });
+      s += lonePair(O.x, O.y, 30, { dist: 22 });
+      s += text(460, 306, 'CH₃', { cls: 'fg-sm', size: 10.5 });
+      s += text(612, 330, 'nowhere', { cls: 'fg-tag-mut', size: 10.5, anchor: 'start' });
+      s += text(612, 348, 'to go', { cls: 'fg-tag-mut', size: 10.5, anchor: 'start' });
+      s += text(561, 274, 'ethoxide: one atom holds all of it — pKa 16', { cls: 'fg-tag', size: 11 });
+    }
+    s += rule(24, 414, 736, 414);
+    s += label(380, 442, 'Four atoms sharing a charge, against one atom keeping all of it — six pKa units.');
+    return s;
+  },
+  caption: 'Six pKa units, drawn. The phenoxide charge reaches four atoms; the ethoxide charge reaches one. The two meta carbons are left out of every structure, which is why a meta substituent can only ever help inductively.',
+  note: 'These are the same four positions as the benzyl cation in the last section and the same four as the Meisenheimer anion two sections back. Once you have drawn them once, ortho/para stops being a rule to memorize and becomes something you can read off the page. It also explains Kolbe&ndash;Schmitt: if the charge is genuinely on those ring carbons, those ring carbons are nucleophilic.',
+});
+
+/* Where the sp3 carbons end up is the entire examinable content, and the
+   section's only figure was two labelled rectangles. */
+FIGURES.push({
+  id: 'birch-products',
+  section: 'birch-reduction',
+  anchor: '<td>1-substituted cyclohexa-2,5-diene</td></tr>\n</tbody>\n</table>\n</div>',
+  alt: 'Top row: benzene, then the radical anion, then the cyclohexadienyl anion with one sp3 CH2 and partial negative marks on three carbons, then 1,4-cyclohexadiene with both CH2 groups drawn and labeled C1 and C4. Bottom row: anisole giving 1-methoxycyclohexa-1,4-diene with the methoxy-bearing carbon still on a double bond, and benzoic acid giving cyclohexa-2,5-diene-1-carboxylic acid with the carboxyl-bearing carbon drawn sp3 with its hydrogen.',
+  viewBox: '0 0 760 490',
+  build() {
+    const R = 34, K = hexKit(R);
+    let s = '';
+    s += tag(380, 26, 'TWO ELECTRONS, TWO PROTONS, AND WHERE THEY LAND');
+    const CY = 122;
+
+    /* 1: benzene. */
+    s += K.ring(100, CY, [0, 2, 4]);
+    s += text(100, 190, 'benzene', { cls: 'fg-tag', size: 10.5 });
+
+    /* 2: the radical anion. */
+    s += K.ring(292, CY, [0, 2, 4]);
+    s += text(292 + 48, CY - 30, '•−', { cls: 'fg-warn', size: 15 });
+    s += text(292, 190, 'radical anion', { cls: 'fg-tag', size: 10.5 });
+    s += arrow(P(146, CY), P(246, CY));
+    s += text(196, CY - 12, 'e⁻', { cls: 'fg-sm', size: 10.5 });
+
+    /* 3: the cyclohexadienyl anion. */
+    s += K.ring(484, CY, [1, 4]);
+    s += atom(K.V(484, CY)[0].x, K.V(484, CY)[0].y, 'CH₂', { kind: 'hi', r: 18, size: 9.5 });
+    s += K.mark(484, CY, 3, '−', { d: 18 });
+    s += K.mark(484, CY, 1, 'δ−', { d: 20, size: 11, dy: 4 });
+    s += K.mark(484, CY, 5, 'δ−', { d: 20, size: 11, dy: 4 });
+    s += text(484, 190, 'charge on three carbons,', { cls: 'fg-tag', size: 10.5 });
+    s += text(484, 206, 'highest across the ring', { cls: 'fg-tag', size: 10.5 });
+    s += arrow(P(338, CY), P(438, CY));
+    s += text(388, CY - 12, 'ROH, e⁻', { cls: 'fg-sm', size: 10.5 });
+
+    /* 4: the 1,4-diene. */
+    s += K.ring(668, CY, [1, 4]);
+    s += atom(K.V(668, CY)[0].x, K.V(668, CY)[0].y, 'CH₂', { kind: 'hi', r: 18, size: 9.5 });
+    s += atom(K.V(668, CY)[3].x, K.V(668, CY)[3].y, 'CH₂', { kind: 'hi', r: 18, size: 9.5 });
+    s += text(706, CY - 36, 'C1', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(706, CY + 44, 'C4', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(636, 190, '1,4, and para to each other', { cls: 'fg-tag', size: 10.5 });
+    s += arrow(P(530, CY), P(614, CY));
+    s += text(572, CY - 12, 'ROH', { cls: 'fg-sm', size: 10.5 });
+
+    s += rule(24, 228, 736, 228);
+
+    /* Bottom: the two substituent cases, drawn. */
+    const CY2 = 330;
+    s += K.ring(96, CY2, [0, 2, 4]);
+    s += K.sub(96, CY2, 0, 'OCH₃', { kind: 'hi', r: 19, size: 9, d: 32 });
+    s += arrow(P(146, CY2), P(216, CY2));
+    s += text(181, CY2 - 12, 'Na/NH₃', { cls: 'fg-sm', size: 10 });
+    s += K.ring(286, CY2, [0, 3]);
+    s += K.sub(286, CY2, 0, 'OCH₃', { kind: 'hi', r: 19, size: 9, d: 32 });
+    s += atom(K.V(286, CY2)[2].x, K.V(286, CY2)[2].y, 'CH₂', { r: 18, size: 9.5 });
+    s += atom(K.V(286, CY2)[5].x, K.V(286, CY2)[5].y, 'CH₂', { r: 18, size: 9.5 });
+    s += text(190, 408, 'donor: its carbon stayed on a double bond', { cls: 'fg-tag', size: 10.5 });
+    s += text(190, 426, '1-methoxycyclohexa-1,4-diene', { cls: 'fg-tag-good', size: 10.5 });
+
+    s += K.ring(486, CY2, [0, 2, 4]);
+    s += K.sub(486, CY2, 0, 'COOH', { kind: 'warn', r: 20, size: 8.5, d: 34 });
+    s += arrow(P(536, CY2), P(606, CY2));
+    s += text(571, CY2 - 12, 'Na/NH₃', { cls: 'fg-sm', size: 10 });
+    s += K.ring(668, CY2, [1, 4]);
+    s += K.sub(668, CY2, 0, 'COOH', { kind: 'warn', r: 20, size: 8.5, d: 34 });
+    s += text(632, CY2 - 26, 'H', { cls: 'fg-tag-good', size: 11 });
+    s += atom(K.V(668, CY2)[3].x, K.V(668, CY2)[3].y, 'CH₂', { r: 18, size: 9.5 });
+    s += text(580, 408, 'acceptor: its carbon came out sp³', { cls: 'fg-tag', size: 10.5 });
+    s += text(580, 426, 'cyclohexa-2,5-diene-1-carboxylic acid', { cls: 'fg-tag-good', size: 10.5 });
+
+    s += rule(24, 444, 736, 444);
+    s += label(380, 472, 'Track the sp³ carbons: they took the protons, and they come out para.');
+    return s;
+  },
+  caption: 'The same reduction on three substrates. Track the sp&sup3; carbons &mdash; they are the ones that took protons, they always come out para to each other, and which ones they are is decided entirely by whether the substituent wanted the carbanion nearby.',
+  note: 'The third frame of the top row is the one to stare at. Three of the five delocalized carbons carry charge, the middle one most of all, and protonating that middle carbon is what makes the product 1,4 rather than 1,3. Every regiochemical statement in this section is that one picture.',
+});
+
+/* A section whose one figure was a text hub map, in a chapter where the
+   diazonium is both made and used and neither was drawn. */
+FIGURES.push({
+  id: 'diazotize-and-couple',
+  section: 'diazonium-chemistry',
+  anchor: 'giving an <b>azo compound</b>, Ar&ndash;N=N&ndash;Ar&prime;.</p>',
+  alt: 'Top row: aniline with its nitrogen lone pair and a curved arrow to the nitrosonium ion, then the N-nitrosoamine, then the aryl diazonium ion drawn with the triple bond to nitrogen and the positive charge, all at zero to five degrees. Bottom row: a phenoxide attacking the terminal nitrogen of the diazonium salt through its para carbon, the neutral arenium-type intermediate with the sp3 para carbon and its hydrogen, and the azo product drawn as two rings joined by a nitrogen-nitrogen double bond with a hydroxyl on the far ring.',
+  viewBox: '0 0 760 650',
+  build() {
+    const R = 32, K = hexKit(R);
+    let s = '';
+    s += tag(380, 26, 'MADE FROM AN AMINE — AND THEN USED AS AN ELECTROPHILE');
+
+    /* Row 1: diazotization. */
+    const a = P(104, 150);
+    s += K.ring(a.x, a.y, [0, 2, 4]);
+    s += K.sub(a.x, a.y, 0, 'NH₂', { kind: 'hi', r: 17, size: 9.5, d: 32 });
+    s += lonePair(104, 86, 270, { dist: 24 });
+    s += text(236, 74, 'N≡O', { cls: 'fg-lbl', size: 13 });
+    s += text(268, 64, '+', { cls: 'fg-warn', size: 13 });
+    s += curve(P(118, 66), P(210, 70), { bow: -18 });
+    s += text(104, 214, 'aniline + nitrosonium', { cls: 'fg-tag', size: 10.5 });
+
+    s += arrow(P(258, 150), P(334, 150));
+    s += text(296, 138, '0–5 °C', { cls: 'fg-sm', size: 10.5 });
+
+    const b = P(410, 150);
+    s += K.ring(b.x, b.y, [0, 2, 4]);
+    s += bond(K.V(b.x, b.y)[0], P(410, 104), { rFrom: 0, rTo: 6 });
+    s += text(410, 92, 'N(H)–N=O', { cls: 'fg-lbl', size: 12 });
+    s += text(410, 214, 'the N-nitrosoamine', { cls: 'fg-tag', size: 10.5 });
+
+    s += arrow(P(492, 150), P(560, 150));
+    s += text(526, 138, 'H⁺, –H₂O', { cls: 'fg-sm', size: 10.5 });
+
+    const c = P(644, 150);
+    s += K.ring(c.x, c.y, [0, 2, 4]);
+    s += bond(K.V(c.x, c.y)[0], P(644, 104), { rFrom: 0, rTo: 6 });
+    s += text(644, 92, 'N≡N', { cls: 'fg-lbl', size: 13 });
+    s += text(676, 82, '+', { cls: 'fg-warn', size: 13 });
+    s += text(644, 214, 'the diazonium ion', { cls: 'fg-tag-good', size: 10.5 });
+
+    s += rule(24, 238, 736, 238);
+
+    /* Row 2: azo coupling as an ordinary EAS. */
+    const CY = 336;
+    const d = P(78, CY);
+    s += K.ring(d.x, d.y, [0, 2, 4]);
+    s += bond(K.V(d.x, d.y)[0], P(78, CY - 46), { rFrom: 0, rTo: 6 });
+    s += text(78, CY - 58, 'N≡N', { cls: 'fg-lbl', size: 12.5 });
+    s += text(108, CY - 68, '+', { cls: 'fg-warn', size: 12 });
+
+    const e = P(246, CY);
+    s += K.ring(e.x, e.y, [0, 2, 4]);
+    s += K.sub(e.x, e.y, 0, 'O', { kind: 'hi', r: 15, d: 30 });
+    s += text(270, CY - 54, '−', { cls: 'fg-warn', size: 14 });
+    s += K.mark(e.x, e.y, 3, 'δ−', { d: 21, size: 11, dy: 4 });
+    s += curve(P(238, CY + 44), P(100, CY - 40), { bow: 44 });
+    s += text(162, CY + 92, 'pH 8–10: the phenoxide is the nucleophile', { cls: 'fg-tag', size: 10.5 });
+    s += text(162, CY + 108, 'and its para carbon is where the charge is', { cls: 'fg-tag', size: 10.5 });
+
+    s += arrow(P(324, CY), P(398, CY));
+
+    const f = P(480, CY);
+    s += K.ring(f.x, f.y, [1, 4]);
+    {
+      const v = K.V(f.x, f.y);
+      const O = K.out(f.x, f.y, 0, 30);
+      s += bond(v[0], O, { rFrom: 0, rTo: 15, order: 2, gap: 3.4 });
+      s += atom(O.x, O.y, 'O', { kind: 'hi' });
+      s += atom(v[3].x, v[3].y, 'C', { kind: 'warn', r: 15 });
+      s += text(444, CY + 48, 'H', { cls: 'fg-tag-good', size: 11 });
+      s += bond(v[3], P(524, CY + 56), { rFrom: 15, rTo: 8 });
+      s += text(534, CY + 62, 'N=N–Ar', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    }
+    s += text(480, CY + 92, 'the same arenium ion as any other EAS — drawn', { cls: 'fg-tag', size: 10.5 });
+    s += text(480, CY + 108, 'from the phenoxide, so it comes out neutral', { cls: 'fg-tag', size: 10.5 });
+
+    s += rule(24, 476, 736, 476);
+
+    /* Row 3: the dye. */
+    const R2 = 26, K2 = hexKit(R2);
+    const PY = 548;
+    s += text(150, PY - 14, 'lose the para H,', { cls: 'fg-sm', size: 10.5 });
+    s += arrow(P(118, PY + 4), P(186, PY + 4));
+    s += text(150, PY + 26, 'rearomatize', { cls: 'fg-sm', size: 10.5 });
+    s += K2.ring(268, PY, [0, 2, 4]);
+    s += text(330, PY + 4, 'N=N', { cls: 'fg-lbl', size: 12 });
+    s += bond(K2.V(268, PY)[1], P(306, PY + 4), { rFrom: 0, rTo: 12 });
+    s += K2.ring(414, PY, [0, 2, 4]);
+    s += bond(K2.V(414, PY)[4], P(354, PY + 4), { rFrom: 0, rTo: 12 });
+    s += K2.sub(414, PY, 1, 'OH', { kind: 'hi', r: 15, size: 10.5, d: 26 });
+    s += text(520, PY + 4, '4-(phenylazo)phenol — orange', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+
+    s += rule(24, 600, 736, 600);
+    s += label(380, 626, 'The bottom half is not a new mechanism: it is EAS with Ar–N₂⁺ as the electrophile.');
+    return s;
+  },
+  caption: 'The two things a diazonium salt does, drawn. On the way in it is made from an amine and nitrosonium at 0&ndash;5 &deg;C; on the way out, if the other partner is activated enough, it is itself the electrophile of an ordinary electrophilic aromatic substitution &mdash; arenium ion and all.',
+  note: 'What makes the bottom row possible is that the ring being attacked is a <b>phenoxide</b>: the δ&minus; marked on its para carbon is exactly the delocalization the phenols section drew. Run the same coupling below pH 8 and there is no phenoxide; run it above pH 10 and the diazonium ion is converted to an unreactive diazotate. Both ends of that window are examined.',
+});
 
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;

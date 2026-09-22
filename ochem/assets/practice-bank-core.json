@@ -31525,14 +31525,14 @@
    "type": "mcq"
   },
   {
-   "q": "In C-Cl, which atom carries the partial negative charge?",
+   "q": "CH3MgBr is added to a compound carrying both a ketone and a secondary amine. What is isolated after workup?",
    "options": [
-    "Both equally",
-    "Chlorine",
-    "Carbon",
-    "Neither"
+    "The starting material, after workup",
+    "The tertiary alcohol from the ketone",
+    "The amine methylated at nitrogen",
+    "A mixture of both possible products"
    ],
-   "correct": 1,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -31575,10 +31575,10 @@
   {
    "q": "Which organometallic is the most selective?",
    "options": [
-    "An acetylide",
+    "R-MgX in ether",
     "R2CuLi",
     "R-Li",
-    "R-MgX"
+    "R-K"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -31597,12 +31597,12 @@
    "type": "mcq"
   },
   {
-   "q": "Approximately what is the pKa of an alkane C-H?",
+   "q": "Rank C-K, C-Mg, C-Cu and C-B by how nucleophilic the carbon is, most first.",
    "options": [
-    "25",
-    "16",
-    "35",
-    "50"
+    "C-B > C-Cu > C-Mg > C-K",
+    "C-Cu > C-B > C-K > C-Mg",
+    "C-Mg > C-K > C-B > C-Cu",
+    "C-K > C-Mg > C-Cu > C-B"
    ],
    "correct": 3,
    "difficulty": "hard",
@@ -31633,15 +31633,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why must Grignard reactions be run in dry glassware?",
+   "q": "A Grignard reagent is wanted from 1-bromo-4-hydroxybutane. What happens, and what fixes it?",
    "options": [
-    "Water quenches it",
-    "Water dissolves the magnesium",
-    "Water oxidizes the halide",
-    "Water catalyzes elimination"
+    "Nothing goes wrong; it forms perfectly well",
+    "It destroys itself; protect the OH first",
+    "The bromide is too hindered; heat it",
+    "It cyclizes to an ether; dilute it"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 1,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -31669,15 +31669,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which nucleophiles has this course mostly used before organometallics?",
+   "q": "Which single flask charge will NOT give a new carbon-carbon bond?",
    "options": [
-    "Metals",
-    "Heteroatom nucleophiles",
-    "Carbon nucleophiles",
-    "Radicals"
+    "CH3MgBr, then propanone",
+    "NaC=CH, then 1-bromobutane",
+    "CH3MgBr, then ethanol",
+    "NaCN, then 1-bromobutane"
    ],
-   "correct": 1,
-   "difficulty": "hard",
+   "correct": 2,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -31717,14 +31717,14 @@
    "type": "mcq"
   },
   {
-   "q": "How many equivalents of lithium does R-Br need?",
+   "q": "Bromoethane is stirred with magnesium in dry ether, and D2O is then added. What is the product?",
    "options": [
-    "Half",
-    "Two",
-    "One",
-    "Three"
+    "CH3CH2D, with deuterium on C1",
+    "CH3CH2OD, the labeled alcohol",
+    "CH3CH2Br, recovered unchanged",
+    "CH3CH2MgOD, the magnesium salt"
    ],
-   "correct": 1,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -35133,14 +35133,14 @@
    "type": "mcq"
   },
   {
-   "q": "What order of steps does SNAr follow?",
+   "q": "Put the SNAr steps in order: (i) the halide leaves, (ii) the nucleophile attacks the ipso carbon, (iii) charge spreads onto the nitro oxygens, (iv) aromaticity returns.",
    "options": [
-    "Elimination, then addition",
-    "Concerted substitution",
-    "Radical abstraction",
-    "Addition, then elimination"
+    "i, ii, iii, iv",
+    "ii, iii, i, iv",
+    "ii, i, iii, iv",
+    "iii, ii, i, iv"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -35193,26 +35193,26 @@
    "type": "mcq"
   },
   {
-   "q": "Why is fluorine best in SNAr?",
+   "q": "Why is fluorine the best leaving group in SNAr?",
    "options": [
-    "It is smallest",
+    "It is the smallest of the four halogens",
     "It makes that carbon most electrophilic",
-    "The C-F bond is weakest",
-    "Fluoride is most stable"
+    "The carbon-fluorine bond is the weakest",
+    "Fluoride is the most stable of the ions"
    ],
    "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What is lost in the SNAr intermediate?",
+   "q": "1-fluoro-4-nitrobenzene is warmed with sodium ethoxide. What is the product?",
    "options": [
-    "Aromaticity",
-    "A proton",
-    "The nitro group",
-    "A halide, first"
+    "A mixture of the ethyl ethers at C1 and C2",
+    "4-Nitrophenol, from traces of hydroxide",
+    "4-Nitrophenetole, the ethyl ether at C1",
+    "No reaction, since aryl fluorides are inert"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -35397,15 +35397,15 @@
    "type": "mcq"
   },
   {
-   "q": "Does SNAr rearrange?",
+   "q": "2-bromo-1,3-dimethylbenzene is treated with NaNH2 in liquid ammonia. What happens?",
    "options": [
-    "No",
-    "Yes, always",
-    "Only with fluorine",
-    "Only at high temperature"
+    "A benzyne forms and gives two isomeric anilines here",
+    "Nothing: there is no hydrogen ortho to the bromine",
+    "SNAr gives 2-amino-1,3-dimethylbenzene directly",
+    "The two methyl groups are deprotonated instead"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 1,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -35445,15 +35445,15 @@
    "type": "mcq"
   },
   {
-   "q": "What happens to the ring after the halide leaves in SNAr?",
+   "q": "3-bromoanisole is treated with NaNH2 in liquid ammonia. Which aniline predominates?",
    "options": [
-    "Aromaticity is restored",
-    "It stays non-aromatic",
-    "It ring-opens",
-    "It is reduced"
+    "o-Anisidine, from attack next to the oxygen",
+    "p-Anisidine, by the usual para preference",
+    "An even mixture of the meta and para isomers",
+    "m-Anisidine, by a wide margin"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 3,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -35675,15 +35675,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which alkylbenzene will not oxidize?",
+   "q": "1-phenylbut-2-ene, PhCH2-CH=CH-CH3, is treated with NBS and light. Where does bromination occur?",
    "options": [
-    "One with no benzylic H",
-    "One with a long chain",
-    "One with a branched chain",
-    "One with two rings"
+    "At C4, the allylic methyl on the far end",
+    "Across the double bond, giving a dibromide",
+    "At C1, benzylic and allylic at once",
+    "On the ring itself, at the para position"
    ],
-   "correct": 0,
-   "difficulty": "medium",
+   "correct": 2,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -35735,15 +35735,15 @@
    "type": "mcq"
   },
   {
-   "q": "What conditions does benzylic bromination need?",
+   "q": "Which sequence converts benzene into 4-nitrobenzoic acid?",
    "options": [
-    "Aqueous acid",
-    "A palladium catalyst",
-    "Light or a radical initiator",
-    "A Lewis acid"
+    "HNO3/H2SO4, then CH3Cl/AlCl3, then hot KMnO4",
+    "Hot KMnO4, then HNO3/H2SO4, then CH3Cl/AlCl3",
+    "CH3Cl/AlCl3, then hot KMnO4, then HNO3/H2SO4",
+    "CH3Cl/AlCl3, then HNO3/H2SO4, then hot KMnO4"
    ],
-   "correct": 2,
-   "difficulty": "easy",
+   "correct": 3,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -35759,15 +35759,15 @@
    "type": "mcq"
   },
   {
-   "q": "What happens to the carbons beyond the benzylic one in KMnO4 oxidation?",
+   "q": "Hot KMnO4 with an acidic workup is used on 1,4-diethylbenzene. What is the product?",
    "options": [
-    "They are lost",
-    "They become a second acid",
-    "They are reduced",
-    "They stay attached"
+    "Terephthalic acid, the 1,4-dicarboxylic acid",
+    "4-Ethylbenzoic acid, one chain untouched",
+    "Benzoic acid, with both chains removed",
+    "No reaction under these conditions"
    ],
    "correct": 0,
-   "difficulty": "easy",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -35783,14 +35783,14 @@
    "type": "mcq"
   },
   {
-   "q": "Does Friedel-Crafts alkylation give a benzylic carbon?",
+   "q": "Friedel-Crafts acylation puts an acyl group on benzene. Is the carbonyl carbon benzylic?",
    "options": [
-    "Only with primary halides",
-    "Only with acylation",
-    "Yes, always",
-    "No"
+    "Yes, and it brominates with NBS and light",
+    "No; an acyl carbon is not attached to the ring",
+    "Only after the ketone is reduced to CH2",
+    "Yes by name; but sp2, so none of this applies"
    ],
-   "correct": 2,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -35819,14 +35819,14 @@
    "type": "mcq"
   },
   {
-   "q": "Which position does an aromatic ring make reactive without being reactive itself?",
+   "q": "How is a benzyl ether removed from an alcohol?",
    "options": [
-    "The ortho carbon",
-    "The para carbon",
-    "The ipso carbon",
-    "The benzylic carbon"
+    "Warm aqueous acid, as for an acetal",
+    "H2 over Pd/C, by hydrogenolysis",
+    "Hot aqueous NaOH, then acidify",
+    "Hot KMnO4, then an acidic workup"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -35857,12 +35857,12 @@
    "type": "mcq"
   },
   {
-   "q": "What is ethanol's approximate pKa?",
+   "q": "Rank these for acidity: phenol, 4-nitrophenol, 4-methoxyphenol, 2,4-dinitrophenol.",
    "options": [
-    "4.8",
-    "20",
-    "16",
-    "10"
+    "4-Methoxyphenol > phenol > 4-nitrophenol > 2,4-dinitrophenol",
+    "Phenol > 4-methoxyphenol > 4-nitrophenol > 2,4-dinitrophenol",
+    "2,4-Dinitrophenol > 4-nitrophenol > phenol > 4-methoxyphenol",
+    "4-Nitrophenol > 2,4-dinitrophenol > phenol > 4-methoxyphenol"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -35929,15 +35929,15 @@
    "type": "mcq"
   },
   {
-   "q": "What is carbonic acid's pKa?",
+   "q": "Benzoic acid, phenol and cyclohexanol are dissolved in ether. The solution is shaken with aqueous NaHCO3, then with aqueous NaOH. What is left in the ether?",
    "options": [
-    "10",
-    "4.8",
-    "16",
-    "6.4"
+    "Cyclohexanol alone",
+    "Phenol and cyclohexanol",
+    "Benzoic acid alone",
+    "Nothing is left in it"
    ],
-   "correct": 3,
-   "difficulty": "medium",
+   "correct": 0,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -35953,15 +35953,15 @@
    "type": "mcq"
   },
   {
-   "q": "What is picric acid's approximate pKa?",
+   "q": "Phenoxide is heated with CO2 at 125 degrees under pressure, then acidified. What is the product?",
    "options": [
-    "4.1",
-    "7.2",
-    "10",
-    "0.4"
+    "4-Hydroxybenzoic acid",
+    "Salicylic acid",
+    "Phenyl carbonate",
+    "Benzoic acid"
    ],
-   "correct": 3,
-   "difficulty": "easy",
+   "correct": 1,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -36087,12 +36087,12 @@
   {
    "q": "Why are quinones colored?",
    "options": [
-    "They contain metals",
-    "They are radicals",
-    "They are ionic",
-    "They are conjugated and not aromatic"
+    "They contain a coordinated transition metal",
+    "They are persistent free radicals",
+    "A conjugated enedione absorbs visible light",
+    "They are ionic, like a carboxylate salt"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -36133,19 +36133,19 @@
    "type": "mcq"
   },
   {
-   "q": "What is 2,4-dinitrophenol's approximate pKa?",
+   "q": "Phenol is treated with bromine water. Why is the monobromide not obtained?",
    "options": [
-    "7.2",
-    "10",
-    "0.4",
-    "4.1"
+    "Bromine water is too concentrated to control",
+    "The first bromine is itself a strong activator",
+    "The product precipitates and then re-dissolves",
+    "The OH still activates after the first bromine"
    ],
    "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Why is a methyl group on a phenol slightly deactivating toward acidity?",
+   "q": "Why does a 4-methyl group make a phenol slightly less acidic?",
    "options": [
     "It withdraws inductively",
     "It blocks solvation",
@@ -36183,12 +36183,12 @@
   {
    "q": "Why does a carboxylate beat a phenoxide at stabilizing charge?",
    "options": [
-    "It is aromatic",
-    "It is smaller",
-    "It is planar",
-    "Charge sits on two electronegative oxygens"
+    "It is aromatic in a way a phenoxide is not",
+    "It is a smaller anion, so better solvated",
+    "Oxygen holds charge better than carbon does",
+    "It is planar, which a phenoxide is not"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -36387,15 +36387,15 @@
    "type": "mcq"
   },
   {
-   "q": "What does a Birch-derived enol ether give on mild acid hydrolysis?",
+   "q": "1-methoxycyclohexa-1,4-diene is stirred with dilute aqueous acid. What forms?",
    "options": [
-    "An epoxide",
-    "A cyclohexenone",
-    "A diol",
-    "A phenol"
+    "Cyclohex-2-en-1-one, the conjugated enone",
+    "Cyclohex-3-en-1-one, not yet conjugated",
+    "Cyclohexanone, with both alkenes reduced",
+    "A diol, from addition across both alkenes"
    ],
    "correct": 1,
-   "difficulty": "easy",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -36435,39 +36435,39 @@
    "type": "mcq"
   },
   {
-   "q": "Which metal is used besides sodium?",
+   "q": "Methyl benzoate is subjected to Birch conditions, Li in NH3 with t-BuOH. What is the product?",
    "options": [
-    "Lithium",
-    "Magnesium",
-    "Zinc",
-    "Copper"
+    "Methyl cyclohexa-1,4-diene-1-carboxylate",
+    "Methyl cyclohexanecarboxylate",
+    "Methyl cyclohexa-2,5-diene-1-carboxylate",
+    "Methyl benzoate, recovered unchanged"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "How many electrons are added in total?",
+   "q": "Which single sequence converts anisole into cyclohex-2-en-1-one?",
    "options": [
-    "One",
-    "Three",
-    "Four",
-    "Two"
+    "Na/NH3, EtOH; dilute H3O+; then isomerize",
+    "Na/NH3 with EtOH, then dilute aqueous acid",
+    "H2 over Pd, then dilute aqueous acid",
+    "Na/NH3 with EtOH, then hot KMnO4"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "What is the solvent?",
+   "q": "A compound has one benzene ring and one isolated C=C. It is treated with Li/NH3/t-BuOH, and separately with H2 over Pd. What differs?",
    "options": [
-    "THF",
-    "Water",
-    "Liquid ammonia",
-    "Ether"
+    "Both reduce the isolated alkene only",
+    "Both reduce the aromatic ring only",
+    "Li/NH3 reduces both of them; H2/Pd neither",
+    "Li/NH3 takes the ring, H2/Pd the alkene"
    ],
-   "correct": 2,
-   "difficulty": "easy",
+   "correct": 3,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -36497,12 +36497,12 @@
   {
    "q": "What is a radical anion?",
    "options": [
-    "A radical pair",
-    "A dianion",
-    "A cation radical",
-    "A species with an unpaired electron and a charge"
+    "A pair of radicals held in a solvent cage",
+    "A molecule that has lost an electron",
+    "One unpaired electron plus a charge",
+    "A dianion, with two charges and no radical"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -36581,12 +36581,12 @@
    "type": "mcq"
   },
   {
-   "q": "At what temperature is diazotization run?",
+   "q": "Which reagent converts 4-methylbenzenediazonium chloride into 4-iodotoluene?",
    "options": [
-    "Reflux",
-    "Minus 78 degrees",
-    "Near 0 degrees",
-    "Room temperature"
+    "CuI with gentle heating",
+    "HI in aqueous solution",
+    "KI, no copper needed",
+    "I2 with an FeI3 catalyst"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -36715,12 +36715,12 @@
   {
    "q": "What is the point of replacing N2+ with H?",
    "options": [
-    "To shorten the synthesis",
-    "To reduce the ring",
-    "To make the ring aromatic",
-    "The amine directed a previous step and is no longer needed"
+    "To shorten the synthesis by one step",
+    "The amine directed, and is now done",
+    "To make the deactivated ring aromatic again",
+    "To reduce the ring to a cyclohexane"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -36809,12 +36809,12 @@
    "type": "mcq"
   },
   {
-   "q": "What industry did azo chemistry create?",
+   "q": "Plan a route from benzene to 3-bromophenol, the meta isomer.",
    "options": [
-    "Synthetic dyes",
-    "Plastics",
-    "Pharmaceuticals",
-    "Fertilizers"
+    "Nitrate; brominate; reduce; diazotize; warm in acid",
+    "Brominate; nitrate; reduce; diazotize; warm in acid",
+    "Nitrate; reduce; brominate; diazotize; warm in acid",
+    "Brominate, then NaOH at high temperature and acidify"
    ],
    "correct": 0,
    "difficulty": "hard",
@@ -36881,12 +36881,12 @@
    "type": "mcq"
   },
   {
-   "q": "Which reaction sequence lets you place a group meta when it would go ortho/para?",
+   "q": "You need a substitution pattern that the groups already on the ring forbid. What is the move?",
    "options": [
-    "Use excess reagent",
-    "Direct, then delete",
-    "Use a stronger Lewis acid",
-    "Run it colder"
+    "Use a large excess of the reagent",
+    "Install a director, then delete it",
+    "Use a stronger Lewis acid catalyst",
+    "Run the substitution at a lower temperature"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -36905,15 +36905,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why is diazonium chemistry described as a hub?",
+   "q": "Why must an aniline be coupled with a diazonium salt at pH 4-7 rather than in strong acid?",
    "options": [
-    "It is used in every synthesis",
-    "It links two rings",
-    "It is reversible",
-    "One route, many products"
+    "The diazonium salt is destroyed by strong acid",
+    "Anilinium has no lone pair to donate",
+    "The azo product hydrolyzes in strong acid",
+    "Strong acid brominates the ring instead"
    ],
-   "correct": 3,
-   "difficulty": "medium",
+   "correct": 1,
+   "difficulty": "hard",
    "type": "mcq"
   }
  ],
