@@ -19993,39 +19993,39 @@
    "type": "mcq"
   },
   {
-   "q": "What is the Beer-Lambert law?",
+   "q": "Which of these dienes should absorb at the longest wavelength?",
    "options": [
-    "A = e c l",
-    "A = e / c l",
-    "A = c l / e",
-    "A = e + c + l"
+    "Buta-1,3-diene",
+    "(E)-Penta-1,3-diene",
+    "Penta-1,4-diene",
+    "2,3-Dimethylbuta-1,3-diene"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 3,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "In A = ecl, what does e represent?",
+   "q": "Two C₅H₈ isomers are measured. One absorbs at 223 nm (ε ≈ 23,000); the other shows nothing above 200 nm. Which assignment fits?",
    "options": [
-    "Absorbance itself",
-    "Molar absorptivity",
-    "Concentration",
-    "Path length"
+    "223 nm: penta-1,4-diene. Nothing above 200: penta-1,3-diene",
+    "223 nm: penta-1,3-diene. Nothing above 200: penta-1,4-diene",
+    "223 nm: cyclopentene. Nothing above 200: pent-1-yne",
+    "Both are the same compound at different concentrations"
    ],
    "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "In A = ecl, what does l represent?",
+   "q": "An unknown diene shows λmax at 232 nm. Using the Woodward–Fieser increments for an open-chain diene, which structure fits best?",
    "options": [
-    "Light intensity",
-    "A rate constant",
-    "Wavelength",
-    "Path length"
+    "Buta-1,3-diene",
+    "2,4-Dimethylpenta-1,3-diene",
+    "2-Methylbuta-1,3-diene (isoprene)",
+    "(E)-Hexa-1,3,5-triene"
    ],
-   "correct": 3,
-   "difficulty": "medium",
+   "correct": 1,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -20137,15 +20137,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why does UV-Vis sit in the conjugation chapter?",
+   "q": "A compound C₅H₈O shows a strong UV band at 224 nm (ε ≈ 10,000) and a weak one (ε ≈ 40) at longer wavelength. Which structure fits?",
    "options": [
-    "It is the oldest of the techniques",
-    "It measures conjugation specifically",
-    "It needs no instrument",
-    "It is not spectroscopy"
+    "Pent-4-en-2-one, CH₂=CHCH₂COCH₃",
+    "Cyclopentanone",
+    "Pent-4-enal, CH₂=CHCH₂CH₂CHO",
+    "(E)-Pent-3-en-2-one, CH₃CH=CHCOCH₃"
    ],
-   "correct": 1,
-   "difficulty": "easy",
+   "correct": 3,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -22331,14 +22331,14 @@
    "type": "mcq"
   },
   {
-   "q": "What is the working test for reduction?",
+   "q": "Which of these transformations is a reduction at carbon?",
    "options": [
-    "Gaining bonds to H or losing bonds to O",
-    "Losing mass",
-    "Breaking a ring",
-    "Gaining further bonds to oxygen atoms"
+    "Cyclohexene to trans-2-bromocyclohexanol (Br2, H2O)",
+    "Cyclohexanol to bromocyclohexane (PBr3)",
+    "Cyclohexanone to cyclohexanol (NaBH4)",
+    "Cyclohexene to cyclohexanol (H3O+)"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -22367,26 +22367,26 @@
    "type": "mcq"
   },
   {
-   "q": "How much does a bond to hydrogen contribute to a carbon's oxidation state?",
+   "q": "Which of these compounds contains a carbon at oxidation state +3?",
    "options": [
-    "+1",
-    "-1",
-    "0",
-    "+2"
+    "Acetonitrile, CH3CN",
+    "Acetone, CH3COCH3",
+    "Acetaldehyde, CH3CHO",
+    "Ethanol, CH3CH2OH"
    ],
-   "correct": 1,
+   "correct": 0,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "How much does a bond to another carbon contribute?",
+   "q": "Acetaldehyde, CH3CHO, is oxidized to acetic acid, CH3CO2H. What happens to the oxidation state of the carbonyl carbon?",
    "options": [
-    "+1",
-    "-1",
-    "0",
-    "It varies"
+    "It rises from 0 to +2",
+    "It rises from +1 to +2",
+    "It stays at +3; only the O-H changes",
+    "It rises from +1 to +3"
    ],
-   "correct": 2,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -22451,14 +22451,14 @@
    "type": "mcq"
   },
   {
-   "q": "How many electrons are involved in one step up the ladder?",
+   "q": "In methyl acetate, CH3-CO-O-CH3, what are the oxidation states of the carbonyl carbon and of the O-CH3 carbon?",
    "options": [
-    "Two",
-    "Three",
-    "Four",
-    "One"
+    "+3 and -3",
+    "+3 and -2",
+    "+2 and -2",
+    "+3 and +1"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -22523,27 +22523,27 @@
    "type": "mcq"
   },
   {
-   "q": "What does the notation [O] mean in a reaction scheme?",
+   "q": "Ozonolysis of 2-methylbut-2-ene, (CH3)2C=CHCH3, with Me2S workup gives acetone and acetaldehyde. What happens to the oxidation states of the two former alkene carbons?",
    "options": [
-    "An unspecified oxidizing agent",
-    "Ozone",
-    "An oxygen atom",
-    "Molecular oxygen, O2 specifically"
+    "Each rises by one: 0 to +1, and -1 to 0",
+    "Each rises by two: 0 to +2, and -1 to +1",
+    "One rises by two and the other falls by two",
+    "Neither changes, because a C=C simply becomes a C=O"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What does [H] mean in a scheme?",
+   "q": "Hydroboration-oxidation turns propene, CH3CH=CH2, into propan-1-ol, CH3CH2CH2OH. What happens to the oxidation states of C1 and C2?",
    "options": [
-    "A proton",
-    "A hydride ion and nothing else",
-    "Hydrogen gas",
-    "An unspecified reducing agent"
+    "Both rise by one: oxygen was added, so it is an oxidation",
+    "Both fall by one: it is a reduction",
+    "C1 rises by two and C2 is unchanged",
+    "C1 rises by one and C2 falls by one, so overall it is neither"
    ],
    "correct": 3,
-   "difficulty": "easy",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -22583,24 +22583,24 @@
    "type": "mcq"
   },
   {
-   "q": "An aldehyde is how many rungs above an alcohol?",
+   "q": "Ethyl acetate, CH3CO2CH2CH3, is reduced with LiAlH4. How far does the former carbonyl carbon move, and where does it end up?",
    "options": [
-    "Two",
-    "Three",
-    "None",
-    "One"
+    "Down two rungs, +3 to -1, as the CH2OH carbon of ethanol",
+    "Down one rung, +3 to +1, as the carbonyl carbon of acetaldehyde",
+    "Down three rungs, +3 to -3, as a CH3 carbon",
+    "Nowhere: swapping the ester oxygen is substitution"
    ],
-   "correct": 3,
-   "difficulty": "easy",
+   "correct": 0,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A carboxylic acid is how many rungs above a primary alcohol?",
+   "q": "Which conversion needs neither an oxidant nor a reductant?",
    "options": [
-    "None",
-    "One",
-    "Two",
-    "Three"
+    "CH3CH2CHO to CH3CH2CO2H",
+    "CH3CH2CO2H to CH3CH2CH2OH",
+    "CH3CH2CN to CH3CH2CO2H",
+    "CH3COCH3 to CH3CH(OH)CH3"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -22655,15 +22655,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which carbon is fully reduced?",
+   "q": "Propene, CH3CH=CH2, is epoxidized with mCPBA. What happens to the oxidation states of the two former alkene carbons?",
    "options": [
-    "The carbon of CO2",
-    "The carbon of methane",
-    "The carbon of methanol",
-    "The carbon of formaldehyde"
+    "C1 rises by one and C2 falls by one, so it is neither",
+    "Each rises by two",
+    "Neither changes, because the two carbons stay bonded",
+    "Each rises by one, a two-electron oxidation overall"
    ],
-   "correct": 1,
-   "difficulty": "easy",
+   "correct": 3,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -22681,38 +22681,38 @@
  ],
  "alcohol-oxidation": [
   {
-   "q": "What does PCC give from a primary alcohol?",
+   "q": "Hexan-1-ol is divided between two flasks. One gets PCC in CH2Cl2; the other gets Jones reagent. What does each flask contain afterwards?",
    "options": [
-    "A carboxylic acid",
-    "An aldehyde",
-    "A ketone",
-    "No reaction"
+    "PCC: hexanoic acid. Jones: hexanal",
+    "Both flasks: hexanal",
+    "PCC: hexanal. Jones: hexanoic acid",
+    "PCC: hexanal. Jones: hexan-2-one"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "What does Jones reagent give from a primary alcohol?",
+   "q": "An alcohol C4H10O turns Jones reagent from orange to green. The organic product is not acidic: it does not dissolve in aqueous NaHCO3. Which alcohol was it?",
    "options": [
-    "A carboxylic acid",
-    "A ketone",
-    "No reaction",
-    "An aldehyde only"
+    "Butan-1-ol",
+    "Butan-2-ol",
+    "2-Methylpropan-1-ol",
+    "2-Methylpropan-2-ol"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What does PCC give from a secondary alcohol?",
+   "q": "Cyclohexanol is treated with Jones reagent in acetone at 0 C. What is the product?",
    "options": [
-    "A carboxylic acid",
-    "No reaction",
-    "An aldehyde",
-    "A ketone"
+    "Cyclohexanone",
+    "Hexanedioic acid",
+    "Cyclohexanecarboxylic acid",
+    "Cyclohexene"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -22753,48 +22753,48 @@
    "type": "mcq"
   },
   {
-   "q": "What solvent is PCC used in?",
+   "q": "Which reagent converts (E)-but-2-en-1-ol, CH3CH=CHCH2OH, into (E)-but-2-enal and leaves the C=C alone?",
    "options": [
-    "Aqueous acetone with acid",
-    "Methanol",
-    "Water",
-    "Anhydrous dichloromethane"
+    "Hot aqueous KMnO4",
+    "H2 over Pd/C",
+    "PCC in CH2Cl2",
+    "OsO4 with NMO"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "What are the Swern reagents?",
+   "q": "A molecule carries an allylic secondary alcohol and a saturated primary alcohol. Which reagent oxidizes only the allylic one?",
    "options": [
-    "Oxalyl chloride, DMSO, then Et3N",
-    "KMnO4 with heat and acid",
-    "H2 and Pd",
-    "CrO3 and H2SO4"
+    "MnO2",
+    "PCC in CH2Cl2",
+    "Dess-Martin periodinane",
+    "Jones reagent"
    ],
    "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What does the Swern oxidation give from a primary alcohol?",
+   "q": "3-Methylbutane-1,3-diol, HOCH2CH2C(CH3)2OH, is treated with excess Dess-Martin periodinane. What is the product?",
    "options": [
-    "No reaction",
-    "A carboxylic acid",
-    "An aldehyde",
-    "An ester"
+    "3-Hydroxy-3-methylbutanoic acid",
+    "No reaction: the tertiary OH blocks it",
+    "A keto-aldehyde, with both alcohols oxidized",
+    "3-Hydroxy-3-methylbutanal"
    ],
-   "correct": 2,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What is Dess-Martin periodinane based on?",
+   "q": "PhCH2OH is treated with PCC to give X. X reacts with CH3MgBr and then aqueous acid to give Y, and Y is treated with Jones reagent to give Z. What is Z?",
    "options": [
-    "Chromium(VI) oxide",
-    "Hypervalent iodine",
-    "Manganese",
-    "Osmium"
+    "Benzoic acid, PhCO2H",
+    "Acetophenone, PhCOCH3",
+    "1-Phenylethanol, PhCH(OH)CH3",
+    "Phenylacetic acid, PhCH2CO2H"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -22873,12 +22873,12 @@
    "type": "mcq"
   },
   {
-   "q": "What is a gem-diol?",
+   "q": "Which alcohol gives 2-methylpropanal, (CH3)2CHCHO, when treated with Dess-Martin periodinane?",
    "options": [
-    "Two OH on adjacent carbons",
-    "Two OH on the same carbon",
-    "A cyclic ether",
-    "A diketone"
+    "Butan-1-ol",
+    "2-Methylpropan-1-ol",
+    "2-Methylpropan-2-ol",
+    "Butan-2-ol"
    ],
    "correct": 1,
    "difficulty": "easy",
@@ -22921,24 +22921,24 @@
    "type": "mcq"
   },
   {
-   "q": "What does oxidation remove from the carbinol carbon?",
+   "q": "(R)-Butan-2-ol is oxidized with PCC, and the product is reduced with NaBH4 in methanol. What is isolated?",
    "options": [
-    "An oxygen",
-    "A hydrogen",
-    "A carbon",
-    "An electron pair only"
+    "(R)-Butan-2-ol",
+    "(S)-Butan-2-ol",
+    "Butan-1-ol",
+    "Racemic butan-2-ol"
    ],
-   "correct": 1,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "How many rungs can a primary alcohol climb?",
+   "q": "cis- and trans-4-tert-Butylcyclohexanol are each oxidized with PCC. What do the two flasks contain?",
    "options": [
-    "Two",
-    "Three",
-    "None",
-    "One"
+    "The same compound, 4-tert-butylcyclohexanone",
+    "Two diastereomeric ketones",
+    "Two enantiomeric ketones",
+    "Ketone from the trans isomer; the cis isomer does not react"
    ],
    "correct": 0,
    "difficulty": "hard",
@@ -23017,15 +23017,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which class of alcohol is unreactive to all these oxidants?",
+   "q": "Propan-1-ol (bp 97 C) is oxidized with aqueous Na2Cr2O7/H2SO4 while propanal (bp 49 C) is distilled out of the flask as it forms. Why does this give propanal when simply using less oxidant does not?",
    "options": [
-    "Primary",
-    "Secondary",
-    "Tertiary",
-    "Benzylic"
+    "Distillation removes the chromium from the flask",
+    "Heating turns Cr(VI) into an anhydrous reagent",
+    "The aldehyde leaves the water before it can hydrate",
+    "Aqueous Cr(VI) cannot oxidize propanal"
    ],
    "correct": 2,
-   "difficulty": "easy",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -23043,26 +23043,26 @@
  ],
  "carbonyl-reduction": [
   {
-   "q": "What does a hydride reagent attack?",
+   "q": "Ethyl 3-oxobutanoate, CH3COCH2CO2CH2CH3, is treated with NaBH4 in ethanol, then worked up. What is the product?",
    "options": [
-    "The carbonyl oxygen",
-    "The carbonyl carbon",
-    "An alpha hydrogen",
-    "A leaving group"
+    "Butane-1,3-diol",
+    "4-Hydroxybutan-2-one",
+    "Ethyl butanoate",
+    "Ethyl 3-hydroxybutanoate"
    ],
-   "correct": 1,
+   "correct": 3,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "What does NaBH4 give from a ketone?",
+   "q": "Ethyl 5-oxohexanoate, CH3CO(CH2)3CO2CH2CH3, is treated with excess LiAlH4 in dry THF, then aqueous workup. What organic products are isolated?",
    "options": [
-    "A secondary alcohol",
-    "An alkane",
-    "No reaction",
-    "A primary alcohol instead"
+    "Ethyl 5-hydroxyhexanoate",
+    "5-Hydroxyhexanal and ethanol",
+    "Hexane-1,5-diol and ethanol",
+    "Hexan-2-ol and ethanol"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -23103,26 +23103,26 @@
    "type": "mcq"
   },
   {
-   "q": "What does LiAlH4 give from a nitrile?",
+   "q": "Ethyl benzoate, PhCO2CH2CH3, is treated with one equivalent of DIBAL-H at -78 C, then aqueous workup. Besides ethanol, what is the main organic product?",
    "options": [
-    "A primary amine",
-    "An alcohol",
-    "No reaction",
-    "An aldehyde and nothing more"
+    "Benzyl alcohol",
+    "Benzaldehyde",
+    "Benzoic acid",
+    "Unreacted ethyl benzoate"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What do NaBH4 and LiAlH4 both give from an aldehyde?",
+   "q": "N,N-Dimethylbenzamide, PhCON(CH3)2, is treated with LiAlH4, then aqueous workup. What is the product?",
    "options": [
-    "An alkane",
-    "An acid",
-    "A ketone, one rung up",
-    "A primary alcohol"
+    "PhCH2N(CH3)2",
+    "PhCH2OH and HN(CH3)2",
+    "PhCHO",
+    "PhCH(OH)N(CH3)2"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -23151,27 +23151,27 @@
    "type": "mcq"
   },
   {
-   "q": "In what solvent can NaBH4 be used?",
+   "q": "Butanenitrile, CH3CH2CH2CN, is reduced with LiAlH4 and worked up. What is the product?",
    "options": [
-    "Methanol or ethanol",
-    "Only benzene",
-    "Only water-free THF",
-    "Only rigorously dry ether"
+    "Propan-1-amine, CH3CH2CH2NH2",
+    "Butanal",
+    "Butan-1-amine, CH3CH2CH2CH2NH2",
+    "Butanamide"
    ],
-   "correct": 0,
-   "difficulty": "hard",
+   "correct": 2,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What solvent does LiAlH4 require?",
+   "q": "Benzoyl chloride, PhCOCl, is treated with excess NaBH4, then worked up. What is the product?",
    "options": [
-    "Water",
-    "Acetone",
-    "Methanol",
-    "Dry ether or THF"
+    "Benzyl alcohol",
+    "No reaction",
+    "Benzaldehyde",
+    "Benzoic acid"
    ],
-   "correct": 3,
-   "difficulty": "easy",
+   "correct": 0,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -23211,12 +23211,12 @@
    "type": "mcq"
   },
   {
-   "q": "What happens to the alkoxide formed during a hydride reduction?",
+   "q": "4-Acetylbenzoic acid, CH3CO-C6H4-CO2H, is treated with NaBH4 and worked up. What is the product?",
    "options": [
-    "It eliminates",
-    "It attacks another carbonyl",
-    "It is the final product",
-    "It is protonated on workup"
+    "4-Acetylbenzyl alcohol",
+    "4-(1-Hydroxyethyl)benzyl alcohol",
+    "4-Ethylbenzoic acid",
+    "4-(1-Hydroxyethyl)benzoic acid"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -23247,14 +23247,14 @@
    "type": "mcq"
   },
   {
-   "q": "Why do Clemmensen and Wolff-Kishner exist as a pair?",
+   "q": "A ketone must be converted to a CH2 group in a molecule that also carries an acetal, which has to survive. Which conditions?",
    "options": [
-    "They tolerate opposite conditions",
-    "One is faster",
-    "One is cheaper",
-    "They give quite different products"
+    "Zn(Hg) with hot concentrated HCl (Clemmensen)",
+    "H2N-NH2, then KOH and heat (Wolff-Kishner)",
+    "NaBH4 in methanol",
+    "H2 over Pd/C at 1 atm"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -23295,14 +23295,14 @@
    "type": "mcq"
   },
   {
-   "q": "How many hydrides does reducing a ketone require?",
+   "q": "A ketone C5H10O is reduced with NaBH4, and the alcohol it gives has no stereocenter. Which ketone was it?",
    "options": [
-    "One",
-    "Two",
-    "Three",
-    "Four"
+    "Pentan-2-one",
+    "Pentan-3-one",
+    "3-Methylbutan-2-one",
+    "Any of them: a ketone reduction never makes a stereocenter"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -23331,27 +23331,27 @@
    "type": "mcq"
   },
   {
-   "q": "What is the product of reducing a ketone?",
+   "q": "Cyclohexane-1,4-dione is treated with excess NaBH4. What is the product?",
    "options": [
-    "A primary alcohol always",
-    "A secondary alcohol",
-    "A tertiary alcohol",
-    "An aldehyde"
+    "One enantiomer of trans-cyclohexane-1,4-diol",
+    "4-Hydroxycyclohexanone only",
+    "Cyclohexane",
+    "A cis/trans mixture of cyclohexane-1,4-diol"
    ],
-   "correct": 1,
-   "difficulty": "easy",
+   "correct": 3,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What is the product of reducing an aldehyde?",
+   "q": "(R)-3-Methylcyclohexanone is reduced with NaBH4. What is the stereochemical outcome?",
    "options": [
-    "A primary alcohol",
-    "A ketone",
-    "An acid",
-    "A secondary alcohol"
+    "cis and trans alcohols, both R at C3",
+    "A racemic mixture of 3-methylcyclohexanol",
+    "A single stereoisomer",
+    "Four stereoisomers in equal amounts"
    ],
    "correct": 0,
-   "difficulty": "medium",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -23405,26 +23405,26 @@
  ],
  "hydrogenation": [
   {
-   "q": "What is required for H2 to reduce an alkene?",
+   "q": "Hex-3-yne is treated with H2 over Lindlar catalyst. What is the product?",
    "options": [
-    "Heat on its own",
-    "A metal catalyst",
-    "Acid",
-    "UV light"
+    "(E)-Hex-3-ene",
+    "Hexane",
+    "(Z)-Hex-3-ene",
+    "A 1:1 mixture of (E)- and (Z)-hex-3-ene"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which catalysts are used for hydrogenation?",
+   "q": "Which starting material and conditions give (E)-oct-4-ene?",
    "options": [
-    "Pd/C, Pt or Raney nickel",
-    "OsO4",
-    "mCPBA",
-    "CrO3 or KMnO4 in acid"
+    "Oct-4-yne with H2 over Lindlar catalyst",
+    "Oct-4-yne with H2 over Pd/C",
+    "Oct-1-yne with Na in liquid NH3",
+    "Oct-4-yne with Na in liquid NH3"
    ],
-   "correct": 0,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -23453,15 +23453,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which group is readily reduced by H2/Pd at 1 atm?",
+   "q": "1-Nitro-4-vinylbenzene, O2N-C6H4-CH=CH2, is stirred under H2 (1 atm) over Pd/C until no more gas is taken up. What is the product?",
    "options": [
-    "An ester",
-    "An alkene",
-    "A carboxylic acid",
-    "An amide"
+    "1-Ethyl-4-nitrobenzene",
+    "4-Vinylaniline",
+    "4-Ethylaniline",
+    "4-Ethylcyclohexan-1-amine"
    ],
-   "correct": 1,
-   "difficulty": "easy",
+   "correct": 2,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -23501,12 +23501,12 @@
    "type": "mcq"
   },
   {
-   "q": "What does an alkyne give over ordinary Pd/C?",
+   "q": "Methyl (E)-3-phenylprop-2-enoate, PhCH=CHCO2CH3, is hydrogenated over Pd/C at 1 atm. What is the product?",
    "options": [
-    "A cis alkene",
-    "An alkane",
-    "A trans alkene",
-    "No reaction"
+    "3-Phenylpropan-1-ol, PhCH2CH2CH2OH",
+    "Methyl 3-phenylpropanoate, PhCH2CH2CO2CH3",
+    "Methyl 3-cyclohexylpropanoate, C6H11CH2CH2CO2CH3",
+    "(E)-3-Phenylprop-2-en-1-ol, PhCH=CHCH2OH"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -23525,15 +23525,15 @@
    "type": "mcq"
   },
   {
-   "q": "What is the Lindlar catalyst?",
+   "q": "A hydrocarbon C6H10 takes up two equivalents of H2 over Pd/C to give hexane. With one equivalent of H2 over Lindlar catalyst it gives (Z)-hex-2-ene. What is it?",
    "options": [
-    "Raney nickel",
-    "Osmium tetroxide with NMO added",
-    "Pt on carbon",
-    "Pd/CaCO3 poisoned with lead"
+    "Hex-2-yne",
+    "Hex-1-yne",
+    "Cyclohexene",
+    "Hexa-1,5-diene"
    ],
-   "correct": 3,
-   "difficulty": "easy",
+   "correct": 0,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -23609,26 +23609,26 @@
    "type": "mcq"
   },
   {
-   "q": "Why does the catalyst matter so much?",
+   "q": "(Z)-But-2-ene is treated with D2 over Pd/C. What is the stereochemistry of the product, 2,3-dideuteriobutane?",
    "options": [
-    "It lowers the barrier to splitting H-H",
-    "It supplies the hydrogen",
-    "It changes the product",
-    "It shifts the position of the equilibrium"
+    "A racemic mixture",
+    "A 1:1 mixture of meso and racemic",
+    "The meso compound only",
+    "No stereocenters, since D and H count as the same"
    ],
-   "correct": 0,
-   "difficulty": "medium",
+   "correct": 2,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Is catalytic hydrogenation thermodynamically favorable?",
+   "q": "2-Methylbut-1-ene, 2-methylbut-2-ene and 3-methylbut-1-ene all hydrogenate to 2-methylbutane. Which releases the most heat?",
    "options": [
-    "Only at high pressure and temperature",
-    "Only for alkynes",
-    "No, it is uphill",
-    "Yes, but slow without a catalyst"
+    "3-Methylbut-1-ene",
+    "2-Methylbut-2-ene",
+    "2-Methylbut-1-ene",
+    "All three release the same amount"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -23681,27 +23681,27 @@
    "type": "mcq"
   },
   {
-   "q": "What does poisoned mean for the Lindlar catalyst?",
+   "q": "Hex-3-yne is reduced with Na in liquid NH3, and the product is treated with Br2 in CH2Cl2. What is the final product?",
    "options": [
-    "Slow to filter",
-    "Contaminated by accident in storage",
-    "Deliberately deactivated",
-    "Toxic to handle"
+    "Racemic 3,4-dibromohexane",
+    "(E)-3,4-Dibromohex-3-ene",
+    "Hexane",
+    "meso-3,4-Dibromohexane"
    ],
-   "correct": 2,
-   "difficulty": "medium",
+   "correct": 3,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Where do the two hydrogens come from in catalytic hydrogenation?",
+   "q": "1,4-Dimethylcyclohex-1-ene is hydrogenated over Pt. What is the product?",
    "options": [
-    "The solvent",
-    "The metal surface",
-    "Acid in the mixture",
-    "The alkene itself"
+    "Only cis-1,4-dimethylcyclohexane",
+    "A mixture of cis- and trans-1,4-dimethylcyclohexane",
+    "Only trans-1,4-dimethylcyclohexane",
+    "A single enantiomer of 1,4-dimethylcyclohexane"
    ],
    "correct": 1,
-   "difficulty": "easy",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -23767,15 +23767,15 @@
  ],
  "alkene-oxidation": [
   {
-   "q": "What does mCPBA give from an alkene?",
+   "q": "1-Methylcyclohexene is treated with O3, then Me2S. What is the product?",
    "options": [
-    "A diol",
-    "An epoxide",
-    "Two carbonyls",
-    "An alkane"
+    "Cyclohexanone and formaldehyde",
+    "6-Oxoheptanal, CH3CO(CH2)4CHO",
+    "6-Oxoheptanoic acid",
+    "Hexanedial"
    ],
    "correct": 1,
-   "difficulty": "easy",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -23791,26 +23791,26 @@
    "type": "mcq"
   },
   {
-   "q": "What does OsO4 give from an alkene?",
+   "q": "An unknown C6H10 gives OHC-CH2CH2CH2CH2-CHO as its only product with O3, then Me2S. What was it?",
    "options": [
-    "A syn diol",
-    "An epoxide",
-    "Two aldehydes",
-    "An anti diol instead"
+    "Hexa-1,5-diene",
+    "1-Methylcyclopentene",
+    "Hex-3-yne",
+    "Cyclohexene"
    ],
-   "correct": 0,
+   "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What is NMO used for alongside OsO4?",
+   "q": "(E)-But-2-ene is treated with mCPBA. What is the product?",
    "options": [
-    "As a poison",
-    "As the solvent for the reaction",
-    "As a co-oxidant to make OsO4 catalytic",
-    "As an acid"
+    "trans-2,3-Dimethyloxirane, as a racemic mixture",
+    "cis-2,3-Dimethyloxirane, a meso compound",
+    "A single enantiomer of trans-2,3-dimethyloxirane",
+    "Butane-2,3-diol"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -23851,12 +23851,12 @@
    "type": "mcq"
   },
   {
-   "q": "What does O3 followed by Me2S do?",
+   "q": "(E)-But-2-ene is treated with mCPBA, then aqueous acid. What is the product?",
    "options": [
-    "Nothing",
-    "Makes an epoxide and stops",
-    "Cleaves the C=C to carbonyls",
-    "Makes a diol"
+    "Racemic butane-2,3-diol",
+    "trans-2,3-Dimethyloxirane",
+    "meso-Butane-2,3-diol",
+    "Butan-2-one"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -23887,36 +23887,36 @@
    "type": "mcq"
   },
   {
-   "q": "A carbon of the alkene bearing two substituents becomes what on ozonolysis?",
+   "q": "Methylenecyclohexane (a cyclohexane ring carrying a =CH2) is treated with O3, then Me2S. What are the products?",
    "options": [
-    "An acid",
-    "An alcohol",
-    "An aldehyde",
-    "A ketone"
+    "Cyclohexanecarbaldehyde",
+    "Cyclohexanone and carbon dioxide",
+    "Heptanedial",
+    "Cyclohexanone and formaldehyde"
    ],
    "correct": 3,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "A carbon of the alkene bearing one hydrogen becomes what with reductive workup?",
+   "q": "2-Methylpent-2-ene, (CH3)2C=CHCH2CH3, is treated with O3, then H2O2. What are the products?",
    "options": [
-    "An alkane",
-    "A ketone instead",
-    "An aldehyde",
-    "An acid"
+    "Acetone and propanal",
+    "Acetic acid and propanoic acid",
+    "Acetone and propanoic acid",
+    "Propanoic acid only"
    ],
    "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What does cold dilute basic KMnO4 give from an alkene?",
+   "q": "Cyclohexene is treated with mCPBA, then aqueous acid. What is the product?",
    "options": [
-    "Cleavage to two fragments",
-    "A syn diol",
-    "An epoxide",
-    "An anti diol"
+    "cis-Cyclohexane-1,2-diol, a meso compound",
+    "trans-Cyclohexane-1,2-diol, racemic",
+    "Cyclohexanone",
+    "Hexanedial"
    ],
    "correct": 1,
    "difficulty": "easy",
@@ -24033,38 +24033,38 @@
    "type": "mcq"
   },
   {
-   "q": "What is the full name of mCPBA?",
+   "q": "An alkene gives cyclopentanone and acetaldehyde on ozonolysis with Me2S workup. What was the alkene?",
    "options": [
-    "meta-chloroperoxybenzoic acid",
-    "methyl chloroperbenzoate",
-    "monochloroperbenzene",
-    "meta-chlorobenzoic acid anhydride"
+    "Ethylidenecyclopentane",
+    "1-Ethylcyclopentene",
+    "Vinylcyclopentane (cyclopentylethene)",
+    "1-Methylcyclohexene"
    ],
    "correct": 0,
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "Why are epoxides reactive?",
-   "options": [
-    "They are persistent radicals",
-    "They are aromatic",
-    "They are strained rings",
-    "They are ionic"
-   ],
-   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "What does a peroxyacid transfer to an alkene?",
+   "q": "2-Methylbuta-1,3-diene (isoprene), CH2=C(CH3)-CH=CH2, is treated with excess O3, then Me2S. What are the products?",
    "options": [
-    "A hydroxyl",
-    "One oxygen",
-    "Two oxygens",
-    "A proton"
+    "Two formaldehydes and butane-2,3-dione",
+    "Formaldehyde and methacrolein, CH2=C(CH3)CHO",
+    "Two formaldehydes and 2-oxopropanal, CH3COCHO",
+    "Acetone and ethanedial"
    ],
-   "correct": 1,
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which conditions turn cyclopentene into cis-cyclopentane-1,2-diol?",
+   "options": [
+    "OsO4 with NMO, then NaHSO3",
+    "mCPBA, then aqueous acid",
+    "O3, then Me2S",
+    "Hot concentrated KMnO4"
+   ],
+   "correct": 0,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -24632,7 +24632,7 @@
    "type": "mcq"
   },
   {
-   "q": "A beta-lactam is a better acylating agent than an ordinary amide because its four-membered ring twists the nitrogen lone pair out of alignment with the C=O.",
+   "q": "Penicillin's beta-lactam is a better acylating agent than an ordinary amide partly because the ring fused at nitrogen forces that nitrogen pyramidal, twisting its lone pair out of alignment with the C=O.",
    "options": [
     "True",
     "False"
@@ -27984,14 +27984,14 @@
  ],
  "ir": [
   {
-   "q": "Infrared (IR) spectroscopy primarily tells you about a molecule’s:",
+   "q": "A compound C₄H₁₀O shows a broad, strong IR band at 3350 cm⁻¹, C–H stretches at 2960–2870 cm⁻¹, and nothing between 1650 and 1850 cm⁻¹. Which structure fits?",
    "options": [
-    "Functional groups",
-    "Exact molecular weight",
-    "Stereochemistry at each center",
-    "The number of carbons"
+    "Diethyl ether, CH₃CH₂OCH₂CH₃",
+    "1-Methoxypropane, CH₃OCH₂CH₂CH₃",
+    "2-Methoxypropane, (CH₃)₂CHOCH₃",
+    "Butan-1-ol, CH₃CH₂CH₂CH₂OH"
    ],
-   "correct": 0,
+   "correct": 3,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -28008,15 +28008,15 @@
    "type": "mcq"
   },
   {
-   "q": "A strong, sharp absorption around 1700-1750 cm⁻¹ most strongly suggests the presence of a:",
+   "q": "A compound C₄H₈O shows a strong, sharp band at 1715 cm⁻¹, no bands near 2720 or 2820 cm⁻¹, and nothing above 3000 cm⁻¹. Which structure fits?",
    "options": [
-    "O–H group",
-    "C≡C triple bond",
-    "C=O (carbonyl) group",
-    "Aromatic ring only"
+    "Butanal, CH₃CH₂CH₂CHO",
+    "Butan-2-one, CH₃COCH₂CH₃",
+    "But-3-en-2-ol, CH₂=CHCH(OH)CH₃",
+    "Tetrahydrofuran, a five-membered cyclic ether"
    ],
-   "correct": 2,
-   "difficulty": "hard",
+   "correct": 1,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -28032,15 +28032,15 @@
    "type": "mcq"
   },
   {
-   "q": "A typical dialkyl ketone C=O stretch appears in IR around:",
+   "q": "A compound C₄H₆O₂ shows a very broad IR band from 2500 to 3300 cm⁻¹, a strong band at 1695 cm⁻¹ and a medium one at 1650 cm⁻¹. Which structure fits?",
    "options": [
-    "1715 cm⁻¹",
-    "1000-1100 cm⁻¹",
-    "3300 cm⁻¹",
-    "500-600 cm⁻¹"
+    "Methyl acrylate, CH₂=CHCO₂CH₃",
+    "(E)-But-2-enoic acid, CH₃CH=CHCO₂H",
+    "Butane-2,3-dione, CH₃COCOCH₃",
+    "γ-Butyrolactone, a five-membered cyclic ester"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 1,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -28054,14 +28054,14 @@
    "type": "tf"
   },
   {
-   "q": "A C-H stretching absorption appearing above 3000 cm⁻¹ most strongly suggests the carbon involved is:",
+   "q": "A compound C₆H₁₂ shows IR bands at 3080, 2960–2860 and 1640 cm⁻¹, and nothing else of note above 1500 cm⁻¹. Which structure fits?",
    "options": [
-    "sp3 hybridized, as in an alkane",
-    "sp2 or sp hybridized, as in an alkene, aromatic ring, or alkyne",
-    "part of a carbonyl group",
-    "bonded directly to oxygen"
+    "Cyclohexane",
+    "Methylcyclopentane",
+    "2,3-Dimethylbut-2-ene",
+    "Hex-1-ene"
    ],
-   "correct": 1,
+   "correct": 3,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -28078,14 +28078,16 @@
    "type": "mcq"
   },
   {
-   "q": "IR spectroscopy alone can usually determine the complete three-dimensional structure of an unknown molecule.",
+   "q": "A compound C₅H₈O shows a strong IR band at 1745 cm⁻¹, C–H stretches only below 3000 cm⁻¹, no bands near 2720 or 2820 cm⁻¹, and no O–H. Which structure fits?",
    "options": [
-    "True",
-    "False"
+    "Cyclopentanone",
+    "Pent-4-en-2-one, CH₂=CHCH₂COCH₃",
+    "3-Methylbut-3-en-2-one, CH₂=C(CH₃)COCH₃",
+    "Cyclopent-2-en-1-ol"
    ],
-   "correct": 1,
-   "difficulty": "easy",
-   "type": "tf"
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
   },
   {
    "q": "A sharp absorption near 2250 cm⁻¹ that is NOT accompanied by a sharp C-H stretch near 3300 cm⁻¹ most likely belongs to a:",
@@ -28100,26 +28102,28 @@
    "type": "mcq"
   },
   {
-   "q": "The 'fingerprint region' of an IR spectrum, used to distinguish very similar molecules from each other, spans roughly:",
+   "q": "A compound C₃H₇NO shows two N–H bands at 3350 and 3180 cm⁻¹ and a strong band at 1660 cm⁻¹, with no bands near 2720 or 2820 cm⁻¹. Which structure fits?",
    "options": [
-    "1500-600 cm⁻¹",
-    "4000-3000 cm⁻¹",
-    "2500-2000 cm⁻¹",
-    "400-200 cm⁻¹"
+    "N-Methylacetamide, CH₃CONHCH₃",
+    "N,N-Dimethylformamide, HCON(CH₃)₂",
+    "Propanamide, CH₃CH₂CONH₂",
+    "3-Aminopropanal, H₂NCH₂CH₂CHO"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 2,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A bond between two lighter atoms, such as C-H, generally stretches at a higher wavenumber than a bond between a carbon and a heavier atom, such as C-Cl, all else being roughly equal.",
+   "q": "An unknown shows IR bands at 3060, 2820 and 2720 (both weak), 1700 (strong) and 1600/1580 cm⁻¹, and no broad band above 3200 cm⁻¹. Which structure fits?",
    "options": [
-    "True",
-    "False"
+    "Acetophenone, C₆H₅COCH₃",
+    "Benzyl alcohol, C₆H₅CH₂OH",
+    "Cyclohexanecarbaldehyde, C₆H₁₁CHO",
+    "Benzaldehyde, C₆H₅CHO"
    ],
-   "correct": 0,
-   "difficulty": "easy",
-   "type": "tf"
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
   },
   {
    "q": "An ester C=O stretch typically appears at a slightly higher wavenumber (about 1735-1750 cm⁻¹) than a ketone C=O (about 1715 cm⁻¹) mainly because:",
@@ -28168,14 +28172,14 @@
    "type": "tf"
   },
   {
-   "q": "Compared to a simple alcohol's O-H stretch, a carboxylic acid's O-H stretch in IR is typically:",
+   "q": "An unknown with no O–H or N–H absorption shows two strong carbonyl bands, at 1820 and 1760 cm⁻¹. Which structure fits?",
    "options": [
-    "Much broader and lower",
-    "Sharper and narrower",
-    "Completely absent",
-    "Found only above 4000 cm⁻¹"
+    "Ethyl acetate, CH₃CO₂CH₂CH₃",
+    "Acetyl chloride, CH₃COCl",
+    "Acetic anhydride, (CH₃CO)₂O",
+    "Butane-2,3-dione, CH₃COCOCH₃"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -28204,14 +28208,16 @@
    "type": "mcq"
   },
   {
-   "q": "A higher carbonyl stretching wavenumber generally corresponds to a carbonyl bond with a higher force constant, meaning a stiffer, more double-bond-like C=O.",
+   "q": "Cyclohexanol is oxidized with Jones reagent. Which change in the IR spectrum shows the reaction has gone to completion?",
    "options": [
-    "True",
-    "False"
+    "The strong 1715 band is gone and a broad 3350 band has now appeared",
+    "The broad 3350 band is gone and a strong 1715 band has appeared",
+    "A sharp new band has appeared at 2250",
+    "Two weak new bands have appeared at 2720 and 2820"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Cyclopentanone's carbonyl stretch appears at a noticeably higher wavenumber than cyclohexanone's. This ring-size effect is best explained by:",
@@ -28332,12 +28338,12 @@
  ],
  "h-nmr": [
   {
-   "q": "¹H NMR chemical shift (in ppm) tells you mainly about a hydrogen’s:",
+   "q": "A compound C₄H₁₀O shows two ¹H NMR signals: 3.4 ppm (4H, quartet) and 1.2 ppm (6H, triplet). Which structure fits?",
    "options": [
-    "Electronic environment (shielding/deshielding by nearby groups)",
-    "Mass",
-    "Exact bond angle",
-    "Isotope"
+    "Diethyl ether, CH₃CH₂OCH₂CH₃",
+    "Butan-1-ol, CH₃CH₂CH₂CH₂OH",
+    "1-Methoxypropane, CH₃OCH₂CH₂CH₃",
+    "2-Methylpropan-2-ol, (CH₃)₃COH"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -28368,46 +28374,48 @@
    "type": "mcq"
   },
   {
-   "q": "In ¹H NMR, the integrated area under a peak tells you mainly about:",
+   "q": "A compound C₄H₈O₂ shows ¹H NMR signals at 3.7 ppm (3H, singlet), 2.3 ppm (2H, quartet) and 1.1 ppm (3H, triplet); its IR has a strong band at 1740 cm⁻¹. Which structure fits?",
    "options": [
-    "The exact chemical shift of the peak",
-    "The identity of neighboring atoms",
-    "The temperature of the sample",
-    "The relative number of protons giving rise to that peak"
+    "Ethyl acetate, CH₃CO₂CH₂CH₃",
+    "Butanoic acid, CH₃CH₂CH₂CO₂H",
+    "Methyl propanoate, CH₃CH₂CO₂CH₃",
+    "1-Methoxypropan-2-one, CH₃OCH₂COCH₃"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A compound C₈H₁₀ shows ¹H NMR signals at 7.1–7.3 ppm (5H, multiplet), 2.6 ppm (2H, quartet) and 1.2 ppm (3H, triplet). Which structure fits?",
+   "options": [
+    "Ethylbenzene",
+    "1,4-Dimethylbenzene (p-xylene)",
+    "1,2-Dimethylbenzene (o-xylene)",
+    "1,3-Dimethylbenzene (m-xylene)"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A compound C₉H₁₂ shows ¹H NMR signals at 7.2 ppm (5H, multiplet), 2.9 ppm (1H, septet) and 1.25 ppm (6H, doublet). Which structure fits?",
+   "options": [
+    "Propylbenzene, C₆H₅CH₂CH₂CH₃",
+    "1,3,5-Trimethylbenzene",
+    "1-Ethyl-4-methylbenzene",
+    "Isopropylbenzene, C₆H₅CH(CH₃)₂"
    ],
    "correct": 3,
-   "difficulty": "easy",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Tetramethylsilane (TMS) is used as the standard reference in ¹H NMR mainly because its protons are:",
+   "q": "A compound C₅H₁₂ shows a single ¹H NMR signal, a singlet at 0.9 ppm. Which structure fits?",
    "options": [
-    "Very shielded, appear far upfield, and TMS is chemically inert and volatile for easy removal",
-    "Highly deshielded and appear far downfield, away from most signals",
-    "Identical in shift to water protons",
-    "Split into many peaks for easy calibration"
-   ],
-   "correct": 0,
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "A proton's chemical shift in ppm is essentially independent of the specific magnetic field strength of the NMR spectrometer used to record it.",
-   "options": [
-    "True",
-    "False"
-   ],
-   "correct": 0,
-   "difficulty": "easy",
-   "type": "tf"
-  },
-  {
-   "q": "Deuterated chloroform (CDCl3) is a commonly used NMR solvent mainly because:",
-   "options": [
-    "It is the cheapest solvent available",
-    "Its deuterium atoms produce no interfering ¹H signal in the spectrum",
-    "It reacts with the sample to improve resolution",
-    "It has the same chemical shift as TMS"
+    "Pentane, CH₃(CH₂)₃CH₃",
+    "2,2-Dimethylpropane, C(CH₃)₄",
+    "2-Methylbutane, (CH₃)₂CHCH₂CH₃",
+    "Cyclopentane, (CH₂)₅"
    ],
    "correct": 1,
    "difficulty": "easy",
@@ -28438,25 +28446,27 @@
    "type": "mcq"
   },
   {
-   "q": "Spin-spin coupling between protons in ¹H NMR occurs primarily through space rather than through the chemical bonds connecting them.",
+   "q": "A compound C₄H₈O shows ¹H NMR signals at 9.8 ppm (1H, triplet), 2.4 ppm (2H, multiplet), 1.7 ppm (2H, sextet) and 0.95 ppm (3H, triplet). Which structure fits?",
    "options": [
-    "True",
-    "False"
+    "Butan-2-one, CH₃COCH₂CH₃",
+    "Butanal, CH₃CH₂CH₂CHO",
+    "2-Methylpropanal, (CH₃)₂CHCHO",
+    "Cyclobutanol"
    ],
    "correct": 1,
-   "difficulty": "easy",
-   "type": "tf"
+   "difficulty": "medium",
+   "type": "mcq"
   },
   {
-   "q": "Vicinal coupling, the most common type discussed in an introductory course, refers to coupling between protons that are separated by how many bonds?",
+   "q": "Methyl but-2-enoate, CH₃CH=CHCO₂CH₃, shows its two vinyl hydrogens at 6.95 and 5.85 ppm, coupled to each other with J = 15.6 Hz. Which isomer is it?",
    "options": [
-    "Three bonds (protons on adjacent carbons)",
-    "One bond (on the same carbon)",
-    "Two bonds (geminal protons)",
-    "Five or more bonds"
+    "The Z isomer: 15.6 Hz is a cis coupling",
+    "Either: J does not depend on geometry",
+    "A 1:1 mixture of E and Z",
+    "The E isomer: 15.6 Hz is a trans coupling"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 3,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -28484,15 +28494,15 @@
    "type": "mcq"
   },
   {
-   "q": "Geminal coupling and vicinal coupling differ in that:",
+   "q": "A compound C₃H₆O₂ shows ¹H NMR signals at 11.8 ppm (1H, broad singlet, gone after a D₂O shake), 2.4 ppm (2H, quartet) and 1.2 ppm (3H, triplet). Which structure fits?",
    "options": [
-    "Geminal coupling only occurs in aromatic rings",
-    "Vicinal coupling is always stronger than geminal coupling",
-    "Geminal is same-carbon, vicinal adjacent-carbon",
-    "There is no real difference between the two terms"
+    "Propanoic acid, CH₃CH₂CO₂H",
+    "Ethyl formate, HCO₂CH₂CH₃",
+    "Methyl acetate, CH₃CO₂CH₃",
+    "1-Hydroxypropan-2-one, CH₃COCH₂OH"
    ],
-   "correct": 2,
-   "difficulty": "medium",
+   "correct": 0,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -28554,14 +28564,14 @@
    "type": "mcq"
   },
   {
-   "q": "A typical vicinal coupling constant (3J) between protons on adjacent sp3 carbons usually falls in roughly what range?",
+   "q": "An alkyl bromide shows two ¹H NMR signals: 4.2 ppm (1H, septet) and 1.7 ppm (6H, doublet). Which structure fits?",
    "options": [
-    "0.1-0.5 Hz",
-    "50-100 Hz",
-    "500-1000 Hz",
-    "6-8 Hz"
+    "1-Bromopropane, CH₃CH₂CH₂Br",
+    "Bromoethane, CH₃CH₂Br",
+    "2-Bromopropane, (CH₃)₂CHBr",
+    "2-Bromo-2-methylpropane, (CH₃)₃CBr"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -28682,14 +28692,14 @@
  ],
  "c-nmr": [
   {
-   "q": "¹³C NMR typically shows each chemically distinct carbon as:",
+   "q": "A compound C₆H₁₂ shows a single ¹³C NMR signal, at 27 ppm. Which structure fits?",
    "options": [
-    "A single peak (carbons are rarely coupled to each other at natural abundance)",
-    "A large multiplet split by neighboring carbons",
-    "No signal at all",
-    "The same peak as all other carbons"
+    "Hex-1-ene",
+    "Methylcyclopentane",
+    "2,3-Dimethylbut-2-ene",
+    "Cyclohexane"
    ],
-   "correct": 0,
+   "correct": 3,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -28706,39 +28716,39 @@
    "type": "mcq"
   },
   {
-   "q": "Why is ¹³C NMR generally less sensitive (requiring more sample/scans) than ¹H NMR?",
+   "q": "A compound C₄H₁₀O shows two ¹³C signals, at 69 and 31 ppm. In DEPT-135 the 69 ppm peak is absent and the 31 ppm peak points up. Which structure fits?",
    "options": [
-    "Carbon atoms do not exist in organic molecules",
-    "NMR spectrometers cannot detect carbon at all",
-    "Low abundance and a smaller magnetic moment",
-    "¹³C NMR is actually more sensitive than ¹H NMR"
+    "Diethyl ether, CH₃CH₂OCH₂CH₃",
+    "Butan-1-ol",
+    "2-Methylpropan-2-ol, (CH₃)₃COH",
+    "2-Methylpropan-1-ol"
    ],
    "correct": 2,
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "In a standard proton-decoupled ¹³C NMR spectrum, each peak generally corresponds to:",
+   "q": "A compound C₄H₈O shows four ¹³C signals: 202, 46, 16 and 14 ppm. In DEPT-135 the 202 peak points up, 46 and 16 point down, and 14 points up. Which structure fits?",
    "options": [
-    "One hydrogen atom in the molecule",
-    "The total number of atoms in the molecule",
-    "A specific bond angle",
-    "One chemically distinct carbon environment in the molecule"
+    "Butan-2-one",
+    "Butanal",
+    "2-Methylpropanal",
+    "But-3-en-1-ol"
    ],
-   "correct": 3,
-   "difficulty": "easy",
+   "correct": 1,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A ketone or aldehyde carbonyl carbon in ¹³C NMR typically appears in roughly what chemical shift range, making it the most downfield common signal?",
+   "q": "A compound C₄H₈O₂ shows ¹³C signals at 171, 60, 21 and 14 ppm. In DEPT-135, 171 is absent, 60 points down, and 21 and 14 point up. Which structure fits?",
    "options": [
-    "190-220 ppm",
-    "0-40 ppm",
-    "50-90 ppm",
-    "100-150 ppm"
+    "Ethyl acetate, CH₃CO₂CH₂CH₃",
+    "Methyl propanoate, CH₃CH₂CO₂CH₃",
+    "Butanoic acid",
+    "1,4-Dioxane"
    ],
    "correct": 0,
-   "difficulty": "easy",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -28754,15 +28764,15 @@
    "type": "mcq"
   },
   {
-   "q": "The typical chemical shift range for ¹³C NMR signals (roughly 0-220 ppm) is much wider than for ¹H NMR (roughly 0-12 ppm). This is best explained by:",
+   "q": "A compound C₅H₁₀ shows five ¹³C signals: 139, 115, 36, 22 and 14 ppm. In DEPT-135 the 115 peak points down and the 139 peak points up. Which structure fits?",
    "options": [
-    "Carbon nuclei are simply heavier than hydrogen nuclei, which alone explains the wider range",
-    "Carbon shifts respond more strongly to hybridization and substituent effects",
-    "¹³C NMR instruments always use a larger magnet",
-    "There is no real difference in range between the two techniques"
+    "(E)-Pent-2-ene",
+    "2-Methylbut-2-ene",
+    "Pent-1-ene",
+    "Cyclopentane"
    ],
-   "correct": 1,
-   "difficulty": "easy",
+   "correct": 2,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -28776,39 +28786,39 @@
    "type": "tf"
   },
   {
-   "q": "Aromatic ring carbons typically appear in ¹³C NMR in roughly what chemical shift region?",
+   "q": "An aromatic compound C₈H₁₀ shows six ¹³C signals, and one of them points down in DEPT-135. Which structure fits?",
    "options": [
-    "0-40 ppm",
-    "50-90 ppm",
-    "100-150 ppm",
-    "190-220 ppm"
+    "Ethylbenzene",
+    "1,4-Dimethylbenzene (p-xylene)",
+    "1,2-Dimethylbenzene (o-xylene)",
+    "1,3-Dimethylbenzene (m-xylene)"
    ],
-   "correct": 2,
-   "difficulty": "easy",
+   "correct": 0,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "In a standard proton-decoupled ¹³C NMR spectrum, why do we typically NOT observe splitting of one carbon's signal due to coupling with a neighboring carbon (carbon-carbon coupling)?",
+   "q": "A compound C₅H₁₀O shows five ¹³C signals, including one at 209 ppm that is absent from DEPT-135. Which structure fits?",
    "options": [
-    "Carbon atoms are never bonded to each other",
-    "Carbon nuclei are incapable of any spin-spin coupling under any circumstances",
-    "All carbon-carbon coupling constants happen to be exactly zero",
-    "At 1.1% abundance, a carbon's neighbor is almost never ¹³C"
+    "Pentan-3-one",
+    "3-Methylbutan-2-one",
+    "Pentanal",
+    "Pentan-2-one"
    ],
    "correct": 3,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "In a standard proton-decoupled ¹³C NMR spectrum, each carbon peak typically appears as a single, unsplit line even though most carbons have one or more attached hydrogens. This is because:",
+   "q": "A compound C₈H₈O₂ shows six ¹³C signals: 191, 164, 132, 130, 114 and 55 ppm. In DEPT-135, 191, 132, 114 and 55 point up; 164 and 130 are absent. Which structure fits?",
    "options": [
-    "Broadband proton decoupling removes C-H coupling",
-    "Carbons never actually couple to their attached hydrogens",
-    "Hydrogen atoms are invisible to the NMR magnet",
-    "The spectrometer only detects carbons with no attached hydrogens"
+    "Methyl benzoate",
+    "4-Methoxybenzaldehyde",
+    "Phenyl acetate",
+    "2-Methoxybenzaldehyde"
    ],
-   "correct": 0,
-   "difficulty": "medium",
+   "correct": 1,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -28882,14 +28892,14 @@
    "type": "mcq"
   },
   {
-   "q": "An sp3 carbon directly attached to a hydroxyl oxygen (as in an alcohol) typically appears around 50-90 ppm in ¹³C NMR, well downfield of a typical alkane carbon (0-40 ppm). This shift is mainly due to:",
+   "q": "A hydrocarbon C₄H₆ shows two ¹³C signals: about 75 ppm (absent from DEPT-135) and 3 ppm (pointing up). Which structure fits?",
    "options": [
-    "Alcohols having no carbon atoms bonded to oxygen",
-    "Oxygen always shielding nearby carbons rather than deshielding them",
-    "The electronegative oxygen withdrawing electron density from the attached carbon, deshielding it",
-    "This shift only happens in aromatic alcohols"
+    "But-1-yne, HC≡CCH₂CH₃",
+    "But-2-yne, CH₃C≡CCH₃",
+    "Buta-1,3-diene",
+    "Cyclobutene"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -29034,14 +29044,14 @@
  ],
  "mass-spec": [
   {
-   "q": "In mass spectrometry, the molecular ion peak (M+) corresponds to:",
+   "q": "A mass spectrum shows molecular-ion peaks at m/z 78 and 80 in a 3:1 ratio, and a base peak at m/z 43. Which structure fits?",
    "options": [
-    "The intact radical cation",
-    "A random fragment",
-    "Only the smallest fragment",
-    "The solvent peak"
+    "2-Bromopropane, (CH₃)₂CHBr",
+    "Chloroethane, CH₃CH₂Cl",
+    "2-Chlorobutane, CH₃CHClCH₂CH₃",
+    "2-Chloropropane, (CH₃)₂CHCl"
    ],
-   "correct": 0,
+   "correct": 3,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -29058,39 +29068,39 @@
    "type": "mcq"
   },
   {
-   "q": "In mass spectrometry, the \"base peak\" refers to:",
+   "q": "A mass spectrum shows M⁺ at m/z 156 and 158 of almost equal height, with a strong fragment at m/z 77. Which structure fits?",
    "options": [
-    "The peak at the lowest mass",
-    "The molecular ion peak, always",
-    "The most intense peak",
-    "The solvent peak"
-   ],
-   "correct": 2,
-   "difficulty": "hard",
-   "type": "mcq"
-  },
-  {
-   "q": "In mass spectrometry, the term m/z refers to:",
-   "options": [
-    "The total mass of the neutral, un-ionized sample",
-    "The melting point of the sample",
-    "The number of fragments produced per second",
-    "The mass-to-charge ratio of an ion detected by the instrument"
-   ],
-   "correct": 3,
-   "difficulty": "easy",
-   "type": "mcq"
-  },
-  {
-   "q": "In electron ionization (EI) mass spectrometry, the molecular ion is typically formed by:",
-   "options": [
-    "Removing one electron from the molecule",
-    "Adding a proton to the neutral molecule",
-    "Removing an entire atom from the molecule",
-    "Adding an electron to the neutral molecule"
+    "Bromobenzene, C₆H₅Br",
+    "Chlorobenzene, C₆H₅Cl",
+    "Benzyl bromide, C₆H₅CH₂Br",
+    "4-Bromotoluene, CH₃C₆H₄Br"
    ],
    "correct": 0,
-   "difficulty": "easy",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An unknown gives M⁺ at m/z 73. Its IR shows two N–H bands near 3380 and 3300 cm⁻¹ and nothing between 1600 and 1850 cm⁻¹. Which structure fits?",
+   "options": [
+    "Diethylamine, (CH₃CH₂)₂NH",
+    "Propanamide, CH₃CH₂CONH₂",
+    "Butan-1-amine, CH₃CH₂CH₂CH₂NH₂",
+    "Butan-2-one, CH₃COCH₂CH₃"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A ketone C₆H₁₂O (M⁺ = 100) shows a base peak at m/z 43 and a strong even-mass peak at m/z 58. Which structure fits?",
+   "options": [
+    "Hexan-3-one, CH₃CH₂CO(CH₂)₂CH₃",
+    "3,3-Dimethylbutan-2-one, CH₃COC(CH₃)₃",
+    "3-Methylpentan-2-one, CH₃COCH(CH₃)CH₂CH₃",
+    "Hexan-2-one, CH₃CO(CH₂)₃CH₃"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -29150,15 +29160,15 @@
    "type": "tf"
   },
   {
-   "q": "A mass spectral fragment showing a loss of 18 mass units from the molecular ion most commonly indicates loss of:",
+   "q": "An aromatic hydrocarbon C₉H₁₂ (M⁺ = 120) shows its base peak at m/z 91. Which structure fits?",
    "options": [
-    "A water molecule",
-    "A nitrogen molecule",
-    "A chlorine atom",
-    "A methyl group"
+    "Isopropylbenzene, C₆H₅CH(CH₃)₂",
+    "1,3,5-Trimethylbenzene",
+    "Propylbenzene, C₆H₅CH₂CH₂CH₃",
+    "1-Ethyl-4-methylbenzene"
    ],
-   "correct": 0,
-   "difficulty": "easy",
+   "correct": 2,
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -29278,14 +29288,14 @@
    "type": "mcq"
   },
   {
-   "q": "When an alkane's molecular ion fragments by breaking a carbon-carbon bond, the fragmentation pathway that generates the most stable resulting carbocation (tertiary over secondary over primary) is generally favored. This principle is analogous to:",
+   "q": "An alcohol C₄H₁₀O gives a weak M⁺ at m/z 74 and its base peak at m/z 31. Which structure fits?",
    "options": [
-    "The general stability order of carbocations",
-    "A rule that applies only in mass spectrometry and nowhere else in organic chemistry",
-    "The idea that all carbocations are equally stable regardless of substitution",
-    "A rule that favors primary carbocations above all others"
+    "Butan-2-ol",
+    "Butan-1-ol",
+    "2-Methylpropan-2-ol",
+    "Butanal"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -29302,14 +29312,14 @@
    "type": "mcq"
   },
   {
-   "q": "Loss of a single hydrogen atom, a mass loss of just 1 unit, from the molecular ion is relatively uncommon as a dominant fragmentation pathway compared to loss of larger groups. Why?",
+   "q": "An unknown gives M⁺ at m/z 88, with an M+1 peak about 4.5% as tall. Its IR shows a very broad band from 2500 to 3300 cm⁻¹ and a strong band at 1710 cm⁻¹. Which structure fits?",
    "options": [
-    "Hydrogen atoms cannot be removed from a molecule under any circumstances",
-    "Molecular ions never lose hydrogen atoms in any real spectrum",
-    "Losing a lone hydrogen radical is less favorable than losing a larger one",
-    "Losing a hydrogen atom always produces the most intense peak in every spectrum"
+    "Butanoic acid, C₄H₈O₂",
+    "Ethyl acetate, C₄H₈O₂",
+    "Pentan-1-ol, C₅H₁₂O",
+    "3-Hydroxybutan-2-one, C₄H₈O₂"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -29326,14 +29336,16 @@
    "type": "mcq"
   },
   {
-   "q": "The relative intensity of a peak in a mass spectrum reflects the relative abundance of that particular gas-phase ion reaching the detector, which is governed by the kinetics and thermodynamics of fragmentation in the gas phase, not by the compound's stability or solubility in a liquid solution.",
+   "q": "A mass spectrum shows molecular-ion peaks at m/z 112, 114 and 116 in a 9:6:1 ratio. Which structure fits?",
    "options": [
-    "True",
-    "False"
+    "Chlorobenzene, C₆H₅Cl",
+    "1,2-Dichlorobenzene, C₆H₄Cl₂",
+    "1,2-Dichloropropane, C₃H₆Cl₂",
+    "3-Bromopropene, C₃H₅Br"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "A cyclic secondary alcohol's mass spectrum can show both a loss of 18 (water) and a loss of 28 (often consistent with ethylene or CO) from the molecular ion. A reasonable explanation for seeing multiple distinct losses like this is:",
@@ -29360,14 +29372,14 @@
    "type": "mcq"
   },
   {
-   "q": "Why does electron ionization (EI) typically produce a radical cation (an odd-electron species) as the molecular ion, rather than an even-electron cation?",
+   "q": "Four amines C₅H₁₃N (M⁺ = 87) are candidates for an unknown whose base peak is at m/z 30. Which one is it?",
    "options": [
-    "EI always adds an extra electron to the molecule instead of removing one",
-    "Even-electron cations are impossible to form under any ionization method",
-    "EI removes one electron, leaving one unpaired electron",
-    "EI removes two electrons at once from every molecule"
+    "Pentan-1-amine, CH₃(CH₂)₄NH₂",
+    "Pentan-2-amine, CH₃CH(NH₂)CH₂CH₂CH₃",
+    "2-Methylbutan-2-amine, (CH₃)₂C(NH₂)CH₂CH₃",
+    "N,N-Dimethylpropan-1-amine, CH₃CH₂CH₂N(CH₃)₂"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -36029,7 +36041,7 @@
    "options": [
     "No reaction at all",
     "Rearrangement",
-    "Mostly elimination",
+    "Slow substitution, with competing elimination",
     "Clean substitution"
    ],
    "correct": 2,
@@ -42000,7 +42012,7 @@
    "type": "mcq"
   },
   {
-   "q": "Treating an alpha-bromo ketone with base gives:",
+   "q": "Heating an alpha-bromo ketone with pyridine gives:",
    "options": [
     "An epoxide",
     "A diketone",
@@ -42211,7 +42223,7 @@
    "options": [
     "The ketone must be symmetric",
     "The solvent must be aprotic",
-    "Deprotonation must reverse",
+    "The enolates must interconvert",
     "The base must be bulky"
    ],
    "correct": 2,

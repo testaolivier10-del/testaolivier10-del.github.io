@@ -278,8 +278,18 @@ const DATA_BUDGETS = [
      effect is bromide-only — pushed it 1.1 KB over. That is the growth this
      budget's own note says it exists to allow rather than to shorten away.
      Set to 300 rather than 268 so the last four chapters of the pass do not
-     each need their own bump; lower it once the pass is over. */
-  ['ochem/assets/tutor-bank.json', 300],
+     each need their own bump; lower it once the pass is over.
+
+     300 -> 314 for the three banks the self-study pass left open: 90 recall
+     items in Oxidation & Reduction and Spectroscopy replaced by worked
+     application and data-to-structure items, and the 100 one-line
+     explanations in the enolate sections rewritten to say why the key is
+     right and why each tempting distractor is wrong. A one-line explanation
+     was under this index's 80-character floor and never reached it; the
+     rewritten ones do, which is the point. Measured 312.9 KB; about 1 KB of
+     headroom, not a round number, so the next pass still has to argue for
+     its own bytes. */
+  ['ochem/assets/tutor-bank.json', 314],
   /* Ochem's question bank, now split in two (scripts/build-ochem-bank.mjs).
 
      The core is what practice.html and review.html WAIT on before their first
@@ -334,7 +344,12 @@ const DATA_BUDGETS = [
      worked-solution explanations still queued. This file loads after first
      paint, so the cost of the extra 30 KB is a later tooltip, not a slower
      page. */
-  ['ochem/assets/practice-bank-why.json', 230],
+  /* 230 -> 239 for the same three banks as the tutor index above: 100
+     one-line enolate explanations rewritten into full ones, and 90 recall
+     items replaced by application items whose explanations are worked
+     solutions. Measured 237.6 KB. Still fetched after paint and blocking
+     nothing, so the cost is a later explanation, not a slower page. */
+  ['ochem/assets/practice-bank-why.json', 239],
   /* The structures drawn above practice-bank stems. This one is here for an
      unusual reason: it is a <script src>, not a fetched file, so the
      reference walk above WOULD see it — except that the only two pages
