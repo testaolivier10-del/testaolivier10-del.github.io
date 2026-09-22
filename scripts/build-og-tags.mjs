@@ -22,7 +22,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { readdirSync, statSync } from 'node:fs';
 import { join, posix } from 'node:path';
 
-const ORIGIN = 'https://testaolivier10-del.github.io';
+const ORIGIN = 'https://levlprep.com';
 const check = process.argv.includes('--check');
 
 // Pages that deliberately have no card, and why:

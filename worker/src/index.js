@@ -34,7 +34,6 @@ const MODELS = [
 const ALLOWED_ORIGINS = [
   'https://levlprep.com',
   'https://www.levlprep.com',
-  'https://testaolivier10-del.github.io',
   'http://localhost:8000',
   'http://127.0.0.1:8000',
 ];
