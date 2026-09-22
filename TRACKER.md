@@ -740,7 +740,7 @@ that should be faked in SVG, and it stays in **Needs a person**.
 | Aldol "two carbons apart" wording | done |
 | "Leads to" chip overflow; floating buttons covering content | **not a defect** — see below |
 | Missing mechanisms (check Grignard in carbonyl addition first) | **mostly not missing** — see below. Radical halogenation was, and is now written |
-| Synthesis / reagent-roadmap tool | open |
+| Synthesis / reagent-roadmap tool | **done** (`ochem/tools/reagent-roadmap.html`) |
 | Flashcard deck | done — see below |
 | Figures in the reaction-heavy sections | in progress — 6 added, and there is now a generator |
 | Skeletal structures after the foundations module | done — and it was the largest hole in the book |

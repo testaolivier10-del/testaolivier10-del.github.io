@@ -4,7 +4,7 @@ Source for [LevlPrep](https://levlprep.com/), home to two courses:
 
 **[NREMT-EMT Prep](https://levlprep.com/nremt/)** — a free NREMT-EMT exam prep app: a 2,106-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
 
-**[Organic Chemistry](https://levlprep.com/ochem/)** (beta) — a mastery/learning product, not exam prep: a full 14-module Organic Chemistry I curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. **58 lessons and 10 mechanism walkthroughs are built**, covering Foundations through carbonyl and aromatic chemistry; `curriculum.js` is the single source of truth for what exists, and anything it doesn't link yet shows as "coming soon". A Mastery dashboard scores performance per module from real question attempts, not just completion, and flags concept dependencies: struggling on E2 surfaces a "possible gap detected" callout pointing at its declared prerequisites, whether or not those prerequisite lessons exist yet. Alongside the course there are **seven interactive tools** (`ochem/tools.html`) — an arrow pusher that shows you the product your mechanism makes, a resonance explorer, a 3D viewer, a conformation lab, a reaction predictor, an acid/base comparator and a spectroscopy lab — see [Tools](#tools).
+**[Organic Chemistry](https://levlprep.com/ochem/)** — a mastery/learning product, not exam prep: a full 23-chapter, 121-topic organic chemistry curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. **All 121 topics are built: 117 interactive lessons, 10 mechanism walkthroughs (SN1, SN2, E1 and E2 are taught through theirs), a textbook section per topic and a 3,630-question practice bank**, from Foundations through spectroscopy, synthesis and polymers; `curriculum.js` is the single source of truth for what exists. A Mastery dashboard scores performance per module from real question attempts, not just completion, and flags concept dependencies: struggling on E2 surfaces a "possible gap detected" callout pointing at its declared prerequisites, whether or not those prerequisite lessons exist yet. Alongside the course there are **eight interactive tools** (`ochem/tools.html`) — an arrow pusher that shows you the product your mechanism makes, a resonance explorer, a 3D viewer, a conformation lab, a reaction predictor, an acid/base comparator, a spectroscopy lab and a reagent roadmap — see [Tools](#tools). A spaced-repetition flashcard deck (`ochem/flashcards.html`) draws its cards from the course's own notes and concepts.
 
 ## Stack
 
@@ -105,7 +105,7 @@ nremt/                 The NREMT-EMT Prep course
                              /assets/hub-progress.js
     vendor/three/          Vendored three.js (module build + loaders/controls actually used)
     body3d.glb              Compressed 3D anatomy model (meshopt)
-ochem/                 The Organic Chemistry course (beta)
+ochem/                 The Organic Chemistry course
   index.html             Product home
   learn.html             The textbook: a contents rail beside one chapter at a time,
                             rendered from assets/curriculum.js + notes/ (see Textbook)
@@ -115,11 +115,11 @@ ochem/                 The Organic Chemistry course (beta)
                             driven by assets/session-runner.js
   flashcards.html        The flashcard deck: spaced repetition over cards read
                             out of the course itself (see Flashcards below)
-  tools.html             Hub for the seven interactive tools, rendered from
+  tools.html             Hub for the eight interactive tools, rendered from
                             assets/tools-registry.js
   tools/                 One page per tool: arrow-pusher, resonance, viewer-3d,
                             conformations, reaction-predictor, acid-base,
-                            spectroscopy — see "Tools" below
+                            spectroscopy, reagent-roadmap — see "Tools" below
   mastery.html           Mastery dashboard (overall %, per-module bars, weakest/next-up,
                          and a concept-dependency callout — see curriculum.js below)
   mechanisms/            10 interactive mechanism walkthroughs — sn1, sn2, e1, e2,
@@ -325,6 +325,7 @@ answer makes the rules look tidy.
 | **Reaction Predictor** | Commit to SN1/SN2/E1/E2 before the answer appears, then see the four factors and which one overruled which. Includes Zaitsev vs. Hofmann. |
 | **Acid/Base Comparator** | Two acids by atom, resonance, induction and orbital, with measured pKa as the ground truth and an explicit note when the structural rules cannot separate them. |
 | **Spectroscopy Lab** | IR and ¹H NMR drawn from real wavenumbers and couplings (so picture and peak table cannot drift apart), plus a reference chart and a work-backwards puzzle mode. |
+| **Reagent Roadmap** | Every functional-group interconversion the course teaches, as a graph laid out on the oxidation ladder. Pick a start and a target for the shortest routes, step by step, with reagents, regio- and stereochemistry and a link to the section that teaches each step; look up everything a reagent does; or browse a group's reactions in and out, and what does not work on it. Routes are searched, not stored, and they cannot cheat: the groups where it matters track their substitution pattern, so tert-butyl alcohol is never routed to an alkyne through an alkene it cannot give. "Keep the skeleton" (the default) refuses C–C steps; the other setting allows them and labels every carbon added or cut. The graph lives in one commented file, `ochem/assets/tools/reagent-roadmap-data.js`, and `scripts/test/tool-content.test.mjs` holds it to the curriculum, the oxidation ladder and routes the notes work out by hand. |
 
 ## Data & accounts
 

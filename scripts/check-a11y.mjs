@@ -58,6 +58,10 @@ const PAGES = [
   ['/ochem/lessons/pka.html', 'a lesson'],
   ['/ochem/mechanisms/e2.html', 'a mechanism walkthrough'],
   ['/ochem/flashcards.html', 'a flashcard deck with filters'],
+  // The tools are a template of their own — shared chrome from tool-shell.js,
+  // a quiz from tool-quiz.js — and none was on this list. The roadmap stands
+  // in for all eight: it renders the shell, the quiz and a page of controls.
+  ['/ochem/tools/reagent-roadmap.html', 'an interactive tool'],
   ['/privacy.html', 'a prose page with controls'],
 ];
 
