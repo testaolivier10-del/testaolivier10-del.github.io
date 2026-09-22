@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function(){
           '<li><b>Install sensitive groups late.</b> A group that cannot survive later conditions goes on after them. Always cheaper than protecting it.</li>' +
           '<li><b>Grignards never share a molecule with an O–H, N–H or S–H.</b> Either that group goes on later, or it is protected.</li>' +
           '<li><b>On a ring, the group you attach first decides where the second lands.</b> Nitration-then-bromination and bromination-then-nitration give different products, and choosing between them is often the whole question.</li>' +
-          '<li><b>Reduce a nitro group late.</b> An amine is a strong activator and a Lewis base — it wrecks Friedel–Crafts entirely. Carry the NO₂ through the ring chemistry and reduce at the end.</li>' +
+          '<li><b>Reduce a nitro group late.</b> An amine is a strong activator and a Lewis base — it wrecks Friedel–Crafts entirely. Carry the NO₂ through the ring chemistry and reduce at the end — with H₂ over a catalyst, or a metal in acid (Fe/HCl, Sn/HCl).</li>' +
           '<li><b>Acylate rather than alkylate.</b> Friedel–Crafts alkylation goes through a carbocation and rearranges; acylation does not. Acylate, then Clemmensen or Wolff–Kishner, and the chain is unrearranged.</li>' +
           '</ul>' +
           '<p class="step-body" style="margin-bottom:0;">Two of those are the same idea: a reaction proceeding through a carbocation will rearrange if a better cation is available, so when the skeleton matters, prefer a route with no cation in it. That is also why hydroboration is used for a rearrangement-free alcohol, and why the Diels–Alder is so trusted.</p>'
@@ -252,16 +252,17 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'explain',
         eyebrow: 'Worked example',
-        title: 'A full route, with the order doing the work.',
-        bodyHtml: '<p class="step-body"><b>Target:</b> 1-bromo-4-propylbenzene. <b>From:</b> benzene and anything with three carbons or fewer.</p>' +
-          '<p class="step-body"><b>Count.</b> Nine carbons — the ring plus a three-carbon chain, with bromine <i>para</i> to it. Two bonds to make: ring-to-chain and ring-to-Br.</p>' +
-          '<p class="step-body"><b>Ordering.</b> Both an alkyl group and a bromine are <i>ortho, para</i> directors, so either order gives the <i>para</i> relationship. The decision is made elsewhere: alkylating with 1-bromopropane would rearrange and give isopropyl.</p>' +
+        title: 'A full route, with the stereochemistry set by step three.',
+        bodyHtml: '<p class="step-body"><b>Target:</b> <i>meso</i>-3,4-dibromohexane. <b>From:</b> acetylene and bromoethane.</p>' +
+          '<p class="step-body"><b>Count.</b> Six carbons from two-carbon pieces, so at least two C–C bonds. <b>Retro.</b> Vicinal dibromides come from adding Br₂ to an alkene, and that alkene comes from an alkyne — so hex-3-yne, which disconnects at either alkyne carbon into but-1-yne + bromoethane, and but-1-yne disconnects again into acetylene + bromoethane.</p>' +
           '<ul class="step-body">' +
-          '<li><b>1.</b> Propanoyl chloride, AlCl₃ &rarr; propiophenone. No rearrangement.</li>' +
-          '<li><b>2.</b> Zn(Hg), HCl &rarr; propylbenzene. The carbonyl is removed and the straight chain survives.</li>' +
-          '<li><b>3.</b> Br₂, FeBr₃ &rarr; 1-bromo-4-propylbenzene. Propyl directs <i>ortho, para</i>, and <i>para</i> dominates because the <i>ortho</i> positions are crowded by the chain.</li>' +
+          '<li><b>1.</b> NaNH₂, then CH₃CH₂Br &rarr; but-1-yne. The halide is primary, which the S<sub>N</sub>2 requires.</li>' +
+          '<li><b>2.</b> NaNH₂, then CH₃CH₂Br &rarr; hex-3-yne.</li>' +
+          '<li><b>3.</b> Na in liquid NH₃ &rarr; (<i>E</i>)-hex-3-ene, the <i>trans</i> alkene.</li>' +
+          '<li><b>4.</b> Br₂ &rarr; <i>meso</i>-3,4-dibromohexane.</li>' +
           '</ul>' +
-          '<p class="step-body" style="margin-bottom:0;"><b>Why not brominate first?</b> It would work, but bromine deactivates the ring and makes the acylation slower. Acylating the more reactive ring first is the better order — and the reasoning, not the answer, is what a question like this is testing.</p>'
+          '<p class="step-body"><b>Which step sets the stereochemistry?</b> Step 3, not step 4. Bromine always adds <i>anti</i>, through a bromonium ion opened from the back — that never varies, so it cannot be the thing you choose. What you choose is the geometry of the alkene it adds to: <i>anti</i> addition to the <i>trans</i> alkene gives the <i>meso</i> diastereomer, and <i>anti</i> addition to the <i>cis</i> alkene would have given the (3<i>R</i>,4<i>R</i>)/(3<i>S</i>,4<i>S</i>) pair instead.</p>' +
+          '<p class="step-body" style="margin-bottom:0;"><b>Check the order.</b> Steps 1 and 2 cannot come after step 3, because the acetylide chemistry needs the triple bond. And swapping step 3 for H₂ over Pd/C would reduce the alkyne all the way to hexane, leaving nothing for the bromine to add across — Lindlar or sodium in ammonia stop at the alkene, ordinary hydrogenation does not.</p>'
       },
       {
         type: 'mcq',

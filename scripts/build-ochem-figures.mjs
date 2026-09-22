@@ -1100,7 +1100,7 @@ FIGURES.push({
       /* A label wider than the segment it belongs to is drawn just above the
          bar instead of inside it. Centred on its own segment either way, so
          which share it names stays unambiguous — written inside, the two
-         minority figures spilled onto the neighboring colour and read as
+         minority figures spilled onto the neighboring color and read as
          labels for it. */
       const put = (cxSeg, segW, txt) => {
         const wide = txt.length * 10.5 * 0.62;
@@ -6271,7 +6271,7 @@ function newman(cx, cy, r, front, back, opts = {}) {
 
 /* The chair, taken from the one already drawn in axial-equatorial (the
    twelve-position figure), so a new drawing cannot disagree with the book's
-   own reference. Offsets are relative to the ring centre; axial is vertical
+   own reference. Offsets are relative to the ring center; axial is vertical
    and alternates, and each equatorial unit vector is the one that figure
    uses, which is parallel to the ring bond two carbons round and tilted
    OPPOSITE to that carbon's axial. Getting that tilt backwards is the
@@ -6782,11 +6782,11 @@ FIGURES.push({
    coordinates that are actually emitted rather than to the molecule that was
    meant. */
 
-/* A tetrahedral centre drawn the way this chapter draws them: bonds at the
+/* A tetrahedral center drawn the way this chapter draws them: bonds at the
    given screen angles (0 is east, measured counterclockwise), with `kind`
    choosing plain, wedge or hash. Returns the bond ink; the caller places the
    labels, because a label's radius depends on how long its text is. */
-function centre(c, arms) {
+function center(c, arms) {
   let s = '';
   for (const a of arms) {
     const rad = (-a.deg * Math.PI) / 180;
@@ -6818,7 +6818,7 @@ FIGURES.push({
       const lLen = left.length > 3 ? 78 : 66, rLen = right.length > 3 ? 78 : 66;
       // the candidate plane first, so the atoms sit on top of it
       let g = `<line class="fg-dash-hi" x1="${cx}" y1="64" x2="${cx}" y2="250"></line>`;
-      g += centre(c, [
+      g += center(c, [
         { deg: 160, len: lLen, rTo: lr },
         { deg: 20, len: rLen, rTo: rr },
         { deg: 270, len: 62, kind: 'wedge', rTo: 16 },
@@ -7292,7 +7292,7 @@ FIGURES.push({
       return g;
     };
     /* The product: CH3 on top, two stereocenters, CH3 underneath. `bottomDeg`
-       is where the lower centre's bromine points, and it is the only thing
+       is where the lower center's bromine points, and it is the only thing
        that differs between the two rows. */
     const product = (cx, cy, bottomDeg, topTag, botTag) => {
       const top = P(cx, cy - 38), bot = P(cx, cy + 38);
@@ -7461,7 +7461,7 @@ FIGURES.push({
   viewBox: '0 0 760 330',
   build() {
     let s = '';
-    const centreDraw = (cx, cy, g2, g3, hKind) => {
+    const centerDraw = (cx, cy, g2, g3, hKind) => {
       const c = P(cx, cy);
       const oh = armEnd(c, 90, 62), a = armEnd(c, 200, 66), b = armEnd(c, 340, 66), h = armEnd(c, 270, 46);
       let g = bond(c, oh, { rTo: 17 });
@@ -7484,13 +7484,13 @@ FIGURES.push({
       return g;
     };
     s += panel(24, 40, 340, 214, { kind: 'hi' });
-    s += centreDraw(194, 132, 'CH₂CH₃', 'CH₃', 'hash');
+    s += centerDraw(194, 132, 'CH₂CH₃', 'CH₃', 'hash');
     s += text(194, 232, 'butan-2-ol · H on a HASH, pointing away', { cls: 'fg-sm', size: 10 });
     s += text(194, 278, '1→2→3 counterclockwise, no flip', { cls: 'fg-sm', size: 10 });
     s += text(194, 302, 'S', { cls: 'fg-tag-good', size: 18 });
 
     s += panel(396, 40, 340, 214, { kind: 'warn' });
-    s += centreDraw(566, 132, 'CHO', 'CH₂OH', 'wedge');
+    s += centerDraw(566, 132, 'CHO', 'CH₂OH', 'wedge');
     s += text(566, 232, 'glyceraldehyde · H on a WEDGE, pointing at you', { cls: 'fg-sm', size: 10 });
     s += text(566, 278, '1→2→3 counterclockwise, then FLIP', { cls: 'fg-sm', size: 10 });
     s += text(566, 302, 'R', { cls: 'fg-tag-warn', size: 18 });
@@ -8422,7 +8422,7 @@ FIGURES.push({
   viewBox: '0 0 760 330',
   build() {
     let s = '';
-    // ---- left: the four-centre TS
+    // ---- left: the four-center TS
     s += panel(10, 14, 336, 248);
     s += tag(178, 40, 'one closed ring, four atoms');
     const cA = P(126, 118), cB = P(230, 118), bB = P(230, 196), hH = P(126, 196);
@@ -9414,7 +9414,7 @@ FIGURES.push({
 });
 
 /* ------------------------------------------------------------- 10.1 ---
-   Alcohol dehydration, with its arrows. The section's centrepiece was
+   Alcohol dehydration, with its arrows. The section's centerpiece was
    described in words only: "ionizes to a carbocation and then loses a beta
    hydrogen" is the whole of E1 and none of the drawing. */
 FIGURES.push({
@@ -10327,10 +10327,10 @@ FIGURES.push({
   build() {
     let s = '';
 
-    /* One stereocentre, drawn twice per row: before attack with the oxygen on
+    /* One stereocenter, drawn twice per row: before attack with the oxygen on
        the right, and after attack with the halide on the left, so the
        umbrella has visibly turned inside out. */
-    const centre = (c, x, opts = {}) => {
+    const center = (c, x, opts = {}) => {
       const flip = !!opts.flip;
       const et = armEnd(c, flip ? 0 : 180, 48);
       const me = armEnd(c, flip ? 290 : 250, 44);
@@ -10350,12 +10350,12 @@ FIGURES.push({
       // ---- panel 1: the oxygen attacks sulfur (or phosphorus) ----
       g += panel(8, Y, 368, 216) + tag(192, Y + 26, cfg.t1);
       const c1 = P(96, Y + 124);
-      const A = centre(c1, 'O', { xkind: 'hi' });
+      const A = center(c1, 'O', { xkind: 'hi' });
       g += A.g;
       g += lonePair(A.xp.x, A.xp.y, 300, { dist: 22 });
       g += text(A.xp.x - 4, A.xp.y - 26, 'H', { cls: 'fg-sm', size: 10 });
       const z = P(A.xp.x + 78, A.xp.y - 8);
-      g += atom(z.x, z.y, cfg.centreAtom, { kind: 'warn' });
+      g += atom(z.x, z.y, cfg.centerAtom, { kind: 'warn' });
       const zo = armEnd(z, 44, 46);
       g += bond(z, zo, { order: 2, rTo: 14 }) + atom(zo.x, zo.y, cfg.topGroup, { r: 14, size: 11 });
       const lg = armEnd(z, 304, 52);
@@ -10368,7 +10368,7 @@ FIGURES.push({
       // ---- panel 2: the halide comes in from the back ----
       g += panel(392, Y, 360, 216) + tag(572, Y + 26, cfg.t2);
       const c2 = P(576, Y + 128);
-      const B = centre(c2, 'O', { flip: true, xkind: 'hi' });
+      const B = center(c2, 'O', { flip: true, xkind: 'hi' });
       g += B.g;
       const z2 = P(B.xp.x - 26, B.xp.y - 34);
       g += bond(B.xp, z2, { rFrom: 15, rTo: 15 });
@@ -10385,7 +10385,7 @@ FIGURES.push({
 
     s += row(16, {
       t1: 'SOCl₂ · STEP 1 — THE OXYGEN ATTACKS SULFUR',
-      centreAtom: 'S', topGroup: 'O', x: 'Cl', leaving: 'S(=O)Cl',
+      centerAtom: 'S', topGroup: 'O', x: 'Cl', leaving: 'S(=O)Cl',
       n1: 'chloride leaves sulfur, and the oxygen is left',
       n1b: 'carrying –SOCl: an alkyl chlorosulfite',
       t2: 'SOCl₂ · STEP 2 — BACKSIDE ATTACK BY Cl⁻',
@@ -10394,7 +10394,7 @@ FIGURES.push({
     });
     s += row(276, {
       t1: 'PBr₃ · STEP 1 — THE OXYGEN ATTACKS PHOSPHORUS',
-      centreAtom: 'P', topGroup: 'Br', x: 'Br', leaving: 'PBr₂',
+      centerAtom: 'P', topGroup: 'Br', x: 'Br', leaving: 'PBr₂',
       n1: 'bromide leaves phosphorus, and the oxygen is left',
       n1b: 'carrying –PBr₂',
       t2: 'PBr₃ · STEP 2 — BACKSIDE ATTACK BY Br⁻',
@@ -13261,6 +13261,412 @@ FIGURES.push({
   },
   caption: 'One spectrum each, and in both of them the two peaks that matter are not the same peak. The <b>molecular ion</b> at the right-hand end of each trace gives the molecular weight &mdash; 72 and 108. The <b>base peak</b> is the tallest, and in both cases it is a fragment: the acylium ion left when 2-butanone loses its ethyl radical, and the ethyl cation left when bromoethane loses its bromine. Reading from high mass down is reading the molecule coming apart.',
   note: 'The bromoethane trace is what &ldquo;M and M+2, roughly 1:1&rdquo; looks like when it is not a cartoon: two bars of nearly equal height, two units apart, at the top of the spectrum. A single chlorine would give the same pair at 3:1 instead, and no halogen at all leaves M standing alone.',
+});
+
+
+/* ------------------------------------------------------------------ D6 ---
+   The notational act itself. The section's other figure shows the OUTCOME of
+   three cuts as text panels; a reader who has never drawn a disconnection has
+   still never seen the squiggle, the open arrow and the charges that say
+   which synthon attacks. Every textbook draws this before anything else. */
+FIGURES.push({
+  id: 'disconnection-notation',
+  section: 'retrosynthesis',
+  anchor: 'A disconnection that looks fine on paper and gives a mixture in the flask is still a wrong answer.</div>',
+  alt: 'A beta-hydroxy ketone with a squiggly line through one carbon-carbon bond, an open retrosynthetic arrow, and the two synthons it gives',
+  viewBox: '0 0 700 300',
+  build() {
+    let s = '';
+    s += tag(350, 26, 'one disconnection, written the way it is written');
+
+    /* 4-hydroxy-4-methylpentan-2-one, skeletal. Unlabelled vertices are
+       carbons; only the two heteroatom labels are drawn. */
+    const v1 = P(60, 175), v2 = P(95, 152), v3 = P(130, 175), v4 = P(165, 152);
+    s += bond(v1, v2, { rFrom: 0, rTo: 0 });
+    s += bond(v2, P(95, 108), { rFrom: 0, rTo: 15, order: 2 });
+    s += bond(v2, v3, { rFrom: 0, rTo: 0 });
+    s += bond(v3, v4, { rFrom: 0, rTo: 0 });
+    s += bond(v4, P(165, 108), { rFrom: 0, rTo: 15 });
+    s += bond(v4, P(202, 130), { rFrom: 0, rTo: 0 });
+    s += bond(v4, P(202, 174), { rFrom: 0, rTo: 0 });
+    s += atom(95, 108, 'O');
+    s += atom(165, 108, 'OH');
+
+    /* The squiggle, across the bond between the alpha carbon and the carbinol
+       carbon. Drawn as a wave along the perpendicular so it reads as a cut
+       through that one bond rather than as a bond of its own. */
+    const mx = (v3.x + v4.x) / 2, my = (v3.y + v4.y) / 2;
+    const L = Math.hypot(v4.x - v3.x, v4.y - v3.y);
+    const ux = (v4.x - v3.x) / L, uy = (v4.y - v3.y) / L;   // along the bond
+    const px = -uy, py = ux;                                // across it
+    let d = '';
+    for (let i = 0; i <= 8; i++) {
+      const t = -20 + i * 5;
+      const off = i % 2 === 0 ? 0 : (i % 4 === 1 ? 5 : -5);
+      const x = mx + px * t + ux * off, y = my + py * t + uy * off;
+      d += (i === 0 ? 'M' : 'L') + `${Math.round(x * 100) / 100} ${Math.round(y * 100) / 100} `;
+    }
+    s += `<path class="fg-dash-hi" fill="none" d="${d.trim()}"></path>`;
+    s += tag(147, 216, 'disconnect here');
+
+    /* The open arrow, drawn rather than typed. A text arrow renders at the
+       stylesheet's 13px whatever font-size the drawing asks for, which is too
+       small to read as the notation it is. */
+    s += `<line class="fg-arrow" x1="236" y1="148" x2="278" y2="148"></line>`;
+    s += `<line class="fg-arrow" x1="236" y1="156" x2="278" y2="156"></line>`;
+    s += `<path class="fg-head" d="M294 152 L276 143 L276 161 Z"></path>`;
+    s += tag(262, 130, 'aldol');
+
+    /* The two synthons. Both are acetone; only the charge drawn on them
+       differs, which is the whole reason this example is worth drawing. */
+    const acetone = (ax, cy) => {
+      const a1 = P(ax, cy + 22), a2 = P(ax + 30, cy), a3 = P(ax + 60, cy + 22);
+      let g = bond(a1, a2, { rFrom: 0, rTo: 0 });
+      g += bond(a2, P(ax + 30, cy - 40), { rFrom: 0, rTo: 15, order: 2 });
+      g += bond(a2, a3, { rFrom: 0, rTo: 0 });
+      g += atom(ax + 30, cy - 40, 'O');
+      return g;
+    };
+    s += panel(318, 76, 180, 150);
+    s += tag(408, 98, 'synthon: enolate');
+    s += acetone(370, 170);
+    s += text(446, 186, '⁻', { cls: 'fg-lbl' });
+    s += text(408, 214, 'nucleophilic α carbon', { cls: 'fg-sm' });
+
+    s += panel(508, 76, 180, 150);
+    s += tag(598, 98, 'synthon: electrophile');
+    s += acetone(560, 170);
+    s += text(636, 186, 'δ+', { cls: 'fg-lbl' });
+    s += text(598, 214, 'electrophilic C=O carbon', { cls: 'fg-sm' });
+
+    s += text(350, 262, 'synthetic equivalents: acetone + NaOH   ·   acetone', { cls: 'fg-tag-good' });
+    return s;
+  },
+  caption: 'One disconnection, drawn the way it is written: a squiggle through the bond, an open arrow, and two synthons carrying the charges that say which one attacks. Both equivalents are the same compound here, which is why the forward reaction is simply acetone with base.',
+  note: 'The squiggle is worth drawing every time. It records <i>which</i> bond you cut, and a large share of wrong retrosynthetic answers are wrong because the bond that was cut is not the bond the named reaction makes. Note also what is <i>not</i> cut: the C&ndash;OH bond. Plenty of reactions make a C&ndash;O bond, but they are interconversions rather than ways of joining two pieces, and a disconnection is for bonds that assemble the skeleton.',
+});
+
+/* ------------------------------------------------------------------ D7 ---
+   The ten, as structures. The section's claim is that the list is short
+   enough to learn as a list, and then it never draws a single member of it.
+   A table of "joins" and "gives" says what a reaction does; it does not say
+   what an acetylide alkylation LOOKS like, which is what a reader has to
+   recognize in a target. */
+FIGURES.push({
+  id: 'the-ten-drawn-once',
+  section: 'carbon-carbon-bonds',
+  anchor: 'acylation does neither, which is why it is almost always the one to plan with.</div>',
+  alt: 'Ten panels, one for each carbon-carbon bond-forming reaction, each showing the product with the newly formed bond picked out',
+  viewBox: '0 0 700 760',
+  build() {
+    let s = '';
+    s += tag(350, 26, 'each reaction once, with the bond it just made drawn in color');
+
+    const PW = 334, PH = 140;
+    const cols = [10, 356];
+    const rows = [44, 186, 328, 470, 612];
+
+    /* Half-width of a condensed formula. Every atom label renders at the
+       stylesheet's 13px monospace regardless of what the drawing kit is
+       asked for, so the disc has to be sized from the character count or the
+       label hangs out of it -- which is exactly what the first draft did. */
+    const hw = (t) => t.length * 4 + 6;
+    const frag = (x, cy, t) => (t.length <= 5
+      ? atom(x, cy, t, { r: Math.max(15, hw(t)) })
+      : label(x, cy + 4.5, t));
+
+    /* Two fragments and the bond that has just joined them: the shape of six
+       of the ten. Centred on cx so the panel does not look lopsided. */
+    const joinRow = (cx, cy, left, right) => {
+      const lw = Math.max(15, hw(left)), rw = Math.max(15, hw(right));
+      const total = lw * 2 + 44 + rw * 2;
+      const lx = cx - total / 2 + lw, rx = cx + total / 2 - rw;
+      return bond(P(lx, cy), P(rx, cy), { rFrom: lw + 3, rTo: rw + 3, cls: 'fg-bond-hi' })
+        + frag(lx, cy, left) + frag(rx, cy, right);
+    };
+
+    const ring = (cx, cy, r, opts = {}) => {
+      const v = [];
+      for (let i = 0; i < 6; i++) {
+        const a = ((opts.start ?? -90) + i * 60) * Math.PI / 180;
+        v.push(P(cx + Math.cos(a) * r, cy + Math.sin(a) * r));
+      }
+      let g = '';
+      for (let i = 0; i < 6; i++) {
+        const cls = (opts.hiEdges || []).includes(i) ? 'fg-bond-hi' : 'fg-bond';
+        const order = (opts.dblEdges || []).includes(i) ? 2 : 1;
+        g += bond(v[i], v[(i + 1) % 6], { rFrom: 0, rTo: 0, cls, order, gap: 3.5 });
+      }
+      if (opts.aromatic) g += `<circle class="fg-bond" cx="${cx}" cy="${cy}" r="${Math.round(r * 0.58)}" fill="none"></circle>`;
+      return { g, v };
+    };
+
+    const panels = [
+      { t: 'Grignard or RLi + carbonyl', r: 'cyclohexanone + CH₃MgBr', n: '1-methylcyclohexan-1-ol',
+        draw(cx, cy) {
+          /* Both new groups hang off ONE ring carbon (v[0], placed at the
+             east point of the ring), because the product is a tertiary
+             alcohol: the carbon that was the C=O now carries the OH and the
+             methyl. The first draft put them on adjacent carbons, which is
+             2-methylcyclohexan-1-ol and a different reaction entirely. */
+          const { g, v } = ring(cx - 38, cy, 19, { start: 0 });
+          return g
+            + bond(v[0], P(cx + 8, cy - 24), { rFrom: 0, rTo: 15 })
+            + bond(v[0], P(cx + 8, cy + 24), { rFrom: 0, rTo: 17, cls: 'fg-bond-hi' })
+            + atom(cx + 8, cy - 24, 'OH')
+            + atom(cx + 8, cy + 24, 'CH₃', { kind: 'hi', r: 17 });
+        } },
+      { t: 'Grignard + CO₂', r: 'CH₃CH₂MgBr + CO₂, then H₃O⁺', n: 'propanoic acid',
+        draw: (cx, cy) => joinRow(cx, cy, 'CH₃CH₂', 'CO₂H') },
+      { t: 'acetylide + alkyl halide', r: 'HC≡C⁻ Na⁺ + CH₃CH₂Br', n: 'but-1-yne',
+        draw: (cx, cy) => joinRow(cx, cy, 'HC≡C', 'CH₂CH₃') },
+      { t: 'cyanide + alkyl halide', r: 'CH₃CH₂Br + NaCN', n: 'propanenitrile',
+        draw: (cx, cy) => joinRow(cx, cy, 'CH₃CH₂', 'C≡N') },
+      { t: 'aldol', r: '2 × acetaldehyde, NaOH', n: '3-hydroxybutanal',
+        draw: (cx, cy) => joinRow(cx, cy, 'CH₃CH(OH)', 'CH₂CHO') },
+      { t: 'Claisen', r: '2 × ethyl acetate, NaOEt', n: 'ethyl acetoacetate',
+        draw: (cx, cy) => joinRow(cx, cy, 'CH₃CO', 'CH₂CO₂Et') },
+      { t: 'Michael (conjugate) addition', r: 'malonate enolate + but-3-en-2-one', n: 'a 1,5-keto-ester',
+        draw: (cx, cy) => joinRow(cx, cy, '(EtO₂C)₂CH', 'CH₂CH₂COCH₃') },
+      { t: 'Diels–Alder', r: 'butadiene + ethene, the simplest case', n: 'cyclohexene, two bonds at once',
+        draw(cx, cy) {
+          /* Ring carbons, clockwise from the top: the diene supplied the four
+             at the top and left, the dienophile the two on the lower right,
+             so the new sigma bonds are the two edges where they meet and the
+             new pi bond is the middle of what was the diene. */
+          const { g } = ring(cx, cy, 25, { dblEdges: [5], hiEdges: [1, 3] });
+          return g;
+        } },
+      { t: 'Friedel–Crafts acylation', r: 'benzene + CH₃COCl / AlCl₃', n: 'acetophenone',
+        draw(cx, cy) {
+          const { g, v } = ring(cx - 45, cy, 20, { aromatic: true });
+          return g
+            + bond(v[1], P(cx + 8, cy - 16), { rFrom: 0, rTo: 26, cls: 'fg-bond-hi' })
+            + atom(cx + 8, cy - 16, 'COCH₃', { kind: 'hi', r: 26 });
+        } },
+      { t: 'Wittig', r: 'cyclohexanone + Ph₃P=CH₂', n: 'methylenecyclohexane',
+        draw(cx, cy) {
+          const { g, v } = ring(cx - 40, cy, 20);
+          return g
+            + bond(v[1], P(cx + 8, cy - 16), { rFrom: 0, rTo: 17, cls: 'fg-bond-hi', order: 2, gap: 3.5 })
+            + atom(cx + 8, cy - 16, 'CH₂', { kind: 'hi', r: 17 });
+        } },
+    ];
+
+    panels.forEach((pn, i) => {
+      const x = cols[i % 2], y = rows[Math.floor(i / 2)];
+      const cx = x + PW / 2;
+      s += panel(x, y, PW, PH);
+      s += tag(cx, y + 20, pn.t);
+      s += text(cx, y + 38, pn.r, { cls: 'fg-sm' });
+      s += pn.draw(cx, y + 84);
+      s += text(cx, y + 130, pn.n, { cls: 'fg-tag-good' });
+    });
+    return s;
+  },
+  caption: 'Each of the ten, once, with the bond it makes picked out. The table says what joins to what; this says what it looks like when it has.',
+  note: 'Reading down the colored marks is the fastest way to internalize the list. Four of them land <b>on</b> a carbonyl carbon, three land <b>next to</b> one, and the three that do neither &mdash; Diels&ndash;Alder, Friedel&ndash;Crafts and acetylide alkylation &mdash; are the ones that build a skeleton with no carbonyl in sight. The Diels&ndash;Alder panel is the only one with two colored bonds, which is the whole reason it is the highest-value move in the list.',
+});
+
+/* ------------------------------------------------------------------ D8 ---
+   The section's signature trick, which is a three-structure transformation
+   described in one sentence. "Eliminate, then add back with the opposite
+   regiochemistry" is the kind of claim a reader agrees with and then cannot
+   reproduce, because what decides the answer is which of two reagents comes
+   second. */
+FIGURES.push({
+  id: 'move-the-group-along',
+  section: 'functional-group-interconversion',
+  anchor: 'Using acid-catalyzed hydration in step 2 would put the OH straight back where it started. The whole synthesis turns on choosing the anti-Markovnikov reagent, which is exactly the kind of pair the note above is about.</p>',
+  alt: 'Propan-2-ol dehydrated to propene, then hydrated two ways: hydroboration gives propan-1-ol and acid gives propan-2-ol back',
+  /* 660 wide: it sits inside a worked example, whose column is narrower. */
+  viewBox: '0 0 660 330',
+  build() {
+    let s = '';
+    s += tag(330, 26, 'the same alkene, two ways down');
+
+    s += bond(P(44, 190), P(79, 168), { rFrom: 0, rTo: 0 });
+    s += bond(P(79, 168), P(114, 190), { rFrom: 0, rTo: 0 });
+    s += bond(P(79, 168), P(79, 124), { rFrom: 0, rTo: 15 });
+    s += atom(79, 124, 'OH', { kind: 'hi' });
+    s += text(79, 214, 'propan-2-ol', { cls: 'fg-sm' });
+
+    s += arrow(P(146, 168), P(250, 168));
+    s += text(198, 150, 'conc. H₂SO₄, heat (E1)', { cls: 'fg-sm' });
+
+    s += bond(P(274, 190), P(309, 168), { rFrom: 0, rTo: 0, order: 2, gap: 3.5 });
+    s += bond(P(309, 168), P(344, 190), { rFrom: 0, rTo: 0 });
+    s += text(309, 214, 'propene', { cls: 'fg-sm' });
+
+    // Upper branch: hydroboration moves the oxygen to the far carbon.
+    s += arrow(P(376, 152), P(474, 110));
+    s += text(436, 80, '1. BH₃   2. H₂O₂, HO⁻', { cls: 'fg-sm' });
+    s += bond(P(500, 124), P(535, 102), { rFrom: 0, rTo: 0 });
+    s += bond(P(535, 102), P(570, 124), { rFrom: 0, rTo: 0 });
+    s += bond(P(570, 124), P(605, 102), { rFrom: 0, rTo: 15 });
+    s += atom(605, 102, 'OH', { kind: 'hi' });
+    s += text(528, 150, 'propan-1-ol', { cls: 'fg-sm' });
+    s += text(556, 172, 'anti-Markovnikov — the OH moved', { cls: 'fg-tag-good' });
+
+    // Lower branch: acid puts it straight back.
+    s += arrow(P(376, 186), P(474, 230), { muted: true });
+    s += text(424, 262, 'H₃O⁺', { cls: 'fg-sm' });
+    s += bond(P(505, 244), P(540, 222), { rFrom: 0, rTo: 0 });
+    s += bond(P(540, 222), P(575, 244), { rFrom: 0, rTo: 0 });
+    s += bond(P(540, 222), P(540, 278), { rFrom: 0, rTo: 15 });
+    s += atom(540, 278, 'OH', { kind: 'warn' });
+    s += text(612, 222, 'propan-2-ol', { cls: 'fg-sm' });
+    s += text(550, 314, 'Markovnikov — straight back to C2', { cls: 'fg-tag-warn' });
+    return s;
+  },
+  caption: 'The same alkene, two ways down. Eliminating is the easy half; the synthesis is decided entirely by which hydration reagent you pick afterwards.',
+  note: 'Nothing is oxidized or reduced anywhere in this picture &mdash; alcohol and alkene sit on the same rung of the ladder &mdash; which is the tell that a "move the group along the chain" problem never needs a redox reagent. If you find yourself reaching for an oxidant, you have misread the question.',
+});
+
+/* ------------------------------------------------------------------ D9 ---
+   What the two masks actually are. The section describes both in words and
+   the page contains no structure at all, so a reader finishes it able to
+   recite "silyl ether" and "acetal" without being able to draw either. */
+FIGURES.push({
+  id: 'two-masks-drawn',
+  section: 'protecting-groups',
+  anchor: '<td>NaOH, H₂O, then H₃O⁺</td></tr>\n</tbody>\n</table>\n</div>',
+  alt: 'An alcohol converted to a silyl ether and back with fluoride, and a ketone converted to a cyclic acetal and back with aqueous acid',
+  viewBox: '0 0 700 350',
+  build() {
+    let s = '';
+    s += tag(350, 26, 'what the two masks actually are');
+
+    // Top row: the alcohol, and the proton that is the whole problem.
+    s += bond(P(56, 106), P(104, 106), { rFrom: 14, rTo: 13 });
+    s += bond(P(104, 106), P(150, 106), { rFrom: 13, rTo: 13 });
+    s += atom(56, 106, 'R', { r: 14 });
+    s += atom(104, 106, 'O', { r: 13 });
+    s += atom(150, 106, 'H', { kind: 'warn', r: 13 });
+    s += text(26, 150, 'pKₐ ≈ 16 — the proton that destroys a Grignard', { cls: 'fg-sm', anchor: 'start' });
+
+    s += arrow(P(200, 96), P(370, 96));
+    s += text(285, 80, 'TBSCl, imidazole', { cls: 'fg-sm' });
+    s += arrow(P(370, 118), P(200, 118), { muted: true });
+    s += text(285, 136, 'TBAF (F⁻)', { cls: 'fg-sm' });
+
+    s += bond(P(410, 106), P(456, 106), { rFrom: 14, rTo: 13 });
+    s += bond(P(456, 106), P(502, 106), { rFrom: 13, rTo: 16 });
+    s += bond(P(502, 106), P(502, 66), { rFrom: 16, rTo: 17 });
+    s += bond(P(502, 106), P(502, 146), { rFrom: 16, rTo: 17 });
+    s += bond(P(502, 106), P(570, 106), { rFrom: 16, rTo: 32 });
+    s += atom(410, 106, 'R', { r: 14 });
+    s += atom(456, 106, 'O', { r: 13 });
+    s += atom(502, 106, 'Si', { kind: 'hi' });
+    s += atom(502, 66, 'CH₃', { r: 17 });
+    s += atom(502, 146, 'CH₃', { r: 17 });
+    s += atom(570, 106, 'C(CH₃)₃', { r: 32 });
+    s += text(556, 180, 'no acidic proton left', { cls: 'fg-tag-good' });
+
+    s += rule(26, 200, 674, 200);
+
+    // Bottom row: the ketone, and the acetal that hides its electrophilic carbon.
+    s += bond(P(52, 286), P(92, 264), { rFrom: 0, rTo: 0 });
+    s += bond(P(92, 264), P(132, 286), { rFrom: 0, rTo: 0 });
+    s += bond(P(92, 264), P(92, 222), { rFrom: 0, rTo: 15, order: 2 });
+    s += atom(92, 222, 'O');
+    s += text(122, 250, 'δ+', { cls: 'fg-lbl' });
+    s += text(92, 314, 'electrophilic carbon', { cls: 'fg-sm' });
+
+    s += arrow(P(190, 254), P(360, 254));
+    s += text(275, 238, 'HOCH₂CH₂OH, H⁺, −H₂O', { cls: 'fg-sm' });
+    s += arrow(P(360, 276), P(190, 276), { muted: true });
+    s += text(275, 294, 'H₃O⁺', { cls: 'fg-sm' });
+
+    // The 1,3-dioxolane, drawn as a real five-membered ring.
+    const cxr = 462, cyr = 272, rr = 28;
+    const pv = [];
+    for (let i = 0; i < 5; i++) {
+      const a = (-90 + i * 72) * Math.PI / 180;
+      pv.push(P(cxr + Math.cos(a) * rr, cyr + Math.sin(a) * rr));
+    }
+    // pv[0] is the acetal carbon at the top; pv[1] and pv[4] are the oxygens.
+    s += bond(pv[0], pv[1], { rFrom: 0, rTo: 13 });
+    s += bond(pv[1], pv[2], { rFrom: 13, rTo: 0 });
+    s += bond(pv[2], pv[3], { rFrom: 0, rTo: 0 });
+    s += bond(pv[3], pv[4], { rFrom: 0, rTo: 13 });
+    s += bond(pv[4], pv[0], { rFrom: 13, rTo: 0 });
+    s += atom(pv[1].x, pv[1].y, 'O', { r: 13 });
+    s += atom(pv[4].x, pv[4].y, 'O', { r: 13 });
+    s += bond(pv[0], P(cxr - 42, cyr - 50), { rFrom: 0, rTo: 14 });
+    s += bond(pv[0], P(cxr + 42, cyr - 50), { rFrom: 0, rTo: 14 });
+    s += atom(cxr - 42, cyr - 50, 'R', { r: 14 });
+    s += atom(cxr + 42, cyr - 50, 'R', { r: 14 });
+    s += text(600, 266, 'two single bonds to O,', { cls: 'fg-tag-good' });
+    s += text(600, 284, 'no π system to attack', { cls: 'fg-tag-good' });
+    return s;
+  },
+  caption: 'What the two masks actually are. Both replace a reactive feature with two ordinary single bonds, and both put it back unchanged when the key arrives.',
+  note: 'Count the bonds at the protected atom in each case: nothing has been oxidized or reduced, which is why a protection&ndash;deprotection pair costs you steps but never costs you an oxidation level. Note too that the bulk drawn on the silicon is doing work &mdash; the <i>tert</i>-butyl group is what makes a TBS ether survive mild aqueous acid, where a plain trimethylsilyl ether would not.',
+});
+
+/* ----------------------------------------------------------------- D10 ---
+   The section's worked routes are prose, and its only figure draws an
+   ordering CONTRAST rather than a route. A four-step route with the carbon
+   count written along the top is the picture the chapter's "count carbons,
+   find the C-C steps" advice has been asking for throughout. */
+FIGURES.push({
+  id: 'four-step-route',
+  section: 'multistep-synthesis',
+  anchor: 'Every change in that number is a C–C step, and there are only two of them — the cyanide in step 2 and the double methylation in step 4. The other two steps are bookkeeping.</p>',
+  alt: 'A four-step route from butan-1-ol to 2-methylhexan-2-ol with the carbon count written above each intermediate',
+  /* 660 wide rather than the usual 700: this figure sits inside a worked
+     example, whose column is narrower than the page's, and at 700 the
+     product's OH was the part that scrolled off the right edge. */
+  viewBox: '0 0 660 270',
+  build() {
+    let s = '';
+    s += tag(330, 30, 'butan-1-ol to 2-methylhexan-2-ol, each step tagged by the kind of move it is');
+
+    const Y = 150;
+    const step = (x1, x2, reagent, kind, good) => {
+      s += arrow(P(x1, Y), P(x2, Y));
+      s += text((x1 + x2) / 2, 128, reagent, { cls: 'fg-sm' });
+      s += text((x1 + x2) / 2, 180, kind, { cls: good ? 'fg-tag-good' : 'fg-tag-mut' });
+    };
+
+    s += atom(44, Y, 'C₄H₉OH', { r: 34 });
+    step(82, 126, 'PBr₃', 'sideways', false);
+    s += atom(158, Y, 'C₄H₉Br', { r: 30 });
+    step(192, 236, 'NaCN', 'C–C bond', true);
+
+    // Pentanenitrile, with the bond cyanide has just made picked out.
+    s += bond(P(262, Y), P(308, Y), { rFrom: 22, rTo: 18, cls: 'fg-bond-hi' });
+    s += atom(262, Y, 'C₄H₉', { r: 22 });
+    s += atom(308, Y, 'C≡N', { r: 18 });
+    step(330, 374, 'H₃O⁺; SOCl₂', 'sideways', false);
+
+    s += bond(P(398, Y), P(444, Y), { rFrom: 22, rTo: 22 });
+    s += atom(398, Y, 'C₄H₉', { r: 22 });
+    s += atom(444, Y, 'COCl', { r: 22 });
+    step(470, 514, '2 CH₃MgBr', 'C–C bond × 2', true);
+
+    // The product: both new methyls colored, because the double addition is
+    // the reaction being used rather than the accident being avoided.
+    s += bond(P(540, Y), P(584, Y), { rFrom: 22, rTo: 14 });
+    s += bond(P(584, Y), P(584, 110), { rFrom: 14, rTo: 17, cls: 'fg-bond-hi' });
+    s += bond(P(584, Y), P(584, 190), { rFrom: 14, rTo: 17, cls: 'fg-bond-hi' });
+    s += bond(P(584, Y), P(626, Y), { rFrom: 14, rTo: 15 });
+    s += atom(540, Y, 'C₄H₉', { r: 22 });
+    s += atom(584, Y, 'C', { r: 14 });
+    s += atom(584, 110, 'CH₃', { kind: 'hi', r: 17 });
+    s += atom(584, 190, 'CH₃', { kind: 'hi', r: 17 });
+    s += atom(626, Y, 'OH', { r: 15 });
+
+    for (const [x, c] of [[44, '4 C'], [158, '4 C'], [284, '5 C'], [420, '5 C'], [584, '7 C']]) s += tag(x, 74, c);
+    for (const [x, nm] of [[44, 'butan-1-ol'], [158, '1-bromobutane'], [284, 'pentanenitrile'],
+      [420, 'pentanoyl chloride'], [580, '2-methylhexan-2-ol']]) s += text(x, 224, nm, { cls: 'fg-sm' });
+
+    s += text(330, 254, 'Two of the four steps make a C–C bond. The other two only move groups.', { cls: 'fg-lbl' });
+    return s;
+  },
+  caption: 'A four-step route with every step tagged by what kind of move it is. Two of the four make carbon–carbon bonds; the other two only shift functional groups around, which is the usual ratio.',
+  note: 'Follow the carbon count along the top: 4, 4, 5, 5, 7. Every change in that number is a C&ndash;C step and there are only two of them &mdash; the rest of the route is bookkeeping, exactly as the chapter has claimed throughout. The last step is also the answer to "where is the protecting group?": there is none, because the only O&ndash;H in the route is created <i>by</i> the Grignard, after it has finished its job.',
 });
 
 const START = (id) => `<!-- fig:${id}:start -->`;

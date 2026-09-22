@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function(){
       why:'A short list of candidates: RX + NaCN (giving a nitrile, then an acid or a primary amine), RMgBr + CO₂ (giving the acid directly), or RMgBr + formaldehyde (giving a primary alcohol). Each ends somewhere different, which is how you choose.' },
     { id:'c3', t:'Target has <b>six more</b> carbons, and contains a benzene ring', right:'aromatic',
       why:'The six carbons arrived as a ring, so the bond to make is ring-to-chain: Friedel–Crafts, or a Grignard made from an aryl halide. Counting told you the ring came in whole rather than being built.' },
-    { id:'c4', t:'Target is a <b>cyclohexene</b> with four more carbons than either piece', right:'ring',
+    { id:'c4', t:'Target is a <b>cyclohexene</b>, and the two permitted pieces have four carbons and two carbons', right:'ring',
       why:'Two new C–C bonds in one step — the Diels–Alder. Whenever a target contains a cyclohexene, try this disconnection before anything else.' }
   ];
   var OPTS = [ { k:'one', l:'One-carbon extension' }, { k:'none', l:'No C–C bond' }, { k:'ring', l:'Cycloaddition' }, { k:'aromatic', l:'Ring-to-chain bond' } ];
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'A Wittig ylide'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct. Deprotonate the α carbon and the resulting enolate attacks an electrophile from there, which is exactly what the aldol, the Claisen and the malonic ester syntheses all are. A Grignard, cyanide and a Wittig ylide all attack the carbonyl carbon itself.',
+        correctFeedback: 'Correct. Deprotonate the α carbon and the resulting enolate attacks an electrophile from there, which is exactly what the aldol and the Claisen are. A Grignard, cyanide and a Wittig ylide all attack the carbonyl carbon itself.',
         wrongFeedback: 'Three of these are nucleophiles that attack the electrophilic carbonyl carbon. You want a bond one position over — so you need the molecule itself to become the nucleophile, at that position.'
       },
       {

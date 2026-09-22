@@ -137,11 +137,11 @@
       6:['fgi-map'], 7:['fgi-map'] } },
 
     'protecting-groups': { n:8, steps:{
-      2:['route-order'], 3:['route-order'], 4:['route-order'],
-      6:['route-order'], 7:['route-order','fgi-map'] } },
+      2:['protection'], 3:['protection'], 4:['protection'],
+      6:['protection','route-order'], 7:['protection','fgi-map'] } },
 
     'multistep-synthesis': { n:8, steps:{
-      2:['route-order'], 3:['route-order'], 4:['route-order'],
+      2:['route-order','protection'], 3:['route-order'], 4:['route-order'],
       6:['route-order'], 7:['route-order','cc-bond-toolkit'] } },
 
     'carbohydrates': { n:8, steps:{

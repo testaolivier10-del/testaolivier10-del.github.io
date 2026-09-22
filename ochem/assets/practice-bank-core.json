@@ -28205,26 +28205,26 @@
    "type": "mcq"
   },
   {
-   "q": "Which statement about synthons is correct?",
+   "q": "Which starting-material pair is the aldol disconnection of PhCH(OH)CH2COCH3?",
    "options": [
-    "They are isolable, bottled compounds",
-    "They are idealized fragments",
-    "They are catalysts",
-    "They are always neutral"
+    "Acetophenone and acetaldehyde",
+    "Benzaldehyde and acetone",
+    "Styrene and acetic acid",
+    "Benzaldehyde and ethanol"
    ],
    "correct": 1,
-   "difficulty": "easy",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "What is the relationship between a retron and a disconnection?",
+   "q": "You disconnect a beta-hydroxy ketone into two fragments that both have alpha hydrogens. What is wrong?",
    "options": [
-    "The retron cues the disconnection",
-    "Retrons block certain disconnections",
-    "Retrons are reagents",
-    "They are the same thing"
+    "Nothing is wrong; every aldol disconnection works",
+    "The forward reaction would give four products",
+    "Beta-hydroxy ketones need a Claisen instead",
+    "Neither fragment could act as a nucleophile"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -28339,12 +28339,12 @@
    "type": "mcq"
   },
   {
-   "q": "What does a Claisen condensation produce?",
+   "q": "1-bromopropane is treated with NaCN, then with H3O+ and heat. What is the product?",
    "options": [
-    "A beta-keto ester",
-    "An alkene",
-    "An amide",
-    "A beta-hydroxy ketone"
+    "Butanoic acid",
+    "Propanoic acid",
+    "Butan-1-amine",
+    "Butanenitrile"
    ],
    "correct": 0,
    "difficulty": "hard",
@@ -28375,12 +28375,12 @@
    "type": "mcq"
   },
   {
-   "q": "How many C-C bonds does a Diels-Alder form?",
+   "q": "Which reagent is missing? Cyclohexanone + ?, then H3O+ workup, gives 1-ethylcyclohexan-1-ol.",
    "options": [
-    "One",
-    "Two",
-    "Three",
-    "None"
+    "CH3CH2OH",
+    "CH3CH2MgBr",
+    "NaCN in DMSO",
+    "CH3CH2Br"
    ],
    "correct": 1,
    "difficulty": "easy",
@@ -28893,15 +28893,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which is the commonest planning error this map prevents?",
+   "q": "Which sequence converts propan-1-ol into propan-2-ol?",
    "options": [
-    "Using substitution for redox",
-    "Forgetting a catalyst",
-    "Using too much reagent",
-    "Choosing an unsuitable solvent"
+    "Dehydrate with acid, then hydrate with acid",
+    "Treat with PBr3, then aqueous NaOH",
+    "Oxidize with PCC, then reduce with NaBH4",
+    "Oxidize with Jones, then reduce with LiAlH4"
    ],
    "correct": 0,
-   "difficulty": "medium",
+   "difficulty": "hard",
    "type": "mcq"
   },
   {
@@ -28917,15 +28917,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why are reagent PAIRS the important thing in this table?",
+   "q": "Hex-1-yne is treated with H2O, H2SO4 and HgSO4. What is the product?",
    "options": [
-    "They avoid catalysts",
-    "They are cheaper when bought together",
-    "They give opposite outcomes",
-    "They react faster"
+    "Hexanal",
+    "Hexan-1-ol",
+    "Hexan-2-one",
+    "Hex-1-ene"
    ],
    "correct": 2,
-   "difficulty": "hard",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -28994,7 +28994,7 @@
    "q": "What protects an alcohol from a Grignard?",
    "options": [
     "An amide",
-    "An acetal on the alcohol",
+    "An alkoxide salt",
     "A silyl ether",
     "An ester"
    ],
@@ -29147,12 +29147,12 @@
    "type": "mcq"
   },
   {
-   "q": "Adding two equivalents of Grignard to a molecule with a free OH does what?",
+   "q": "Why is adding an extra equivalent of Grignard, rather than protecting, a poor plan when the substrate has a free OH?",
    "options": [
-    "It works; one equivalent is left over",
-    "It fails; the alkoxide remains",
-    "Doubles the yield",
-    "Causes elimination"
+    "A Grignard is not basic enough to touch an alcohol",
+    "An equivalent is lost and yields become erratic",
+    "The extra equivalent would reduce the carbonyl instead",
+    "The alcohol would be oxidized before the addition"
    ],
    "correct": 1,
    "difficulty": "easy",
@@ -29171,12 +29171,12 @@
    "type": "mcq"
   },
   {
-   "q": "Why is the silyl deprotection unusually gentle?",
+   "q": "Why can a silyl ether be removed without disturbing the rest of a molecule?",
    "options": [
-    "It happens simply on standing",
-    "It needs only heat",
-    "It needs no reagent",
-    "Fluoride is pH-neutral"
+    "Silyl ethers fall off on standing",
+    "Heating alone removes them",
+    "The Si-O bond is the weakest bond in the molecule",
+    "Fluoride forms an exceptionally strong Si-F bond"
    ],
    "correct": 3,
    "difficulty": "easy",
@@ -29207,12 +29207,12 @@
    "type": "mcq"
   },
   {
-   "q": "Why is protection a last resort rather than a first move?",
+   "q": "You need a Grignard reagent from 5-bromopentan-2-one. What is step one?",
    "options": [
-    "It adds two steps",
-    "It never works",
-    "It needs specialized glassware",
-    "It is expensive"
+    "Protect the ketone as an acetal",
+    "Add Mg to the bromide, then protect",
+    "Add the benzaldehyde first",
+    "Reduce the ketone with NaBH4"
    ],
    "correct": 0,
    "difficulty": "hard",
@@ -29267,14 +29267,14 @@
    "type": "mcq"
   },
   {
-   "q": "Which is NOT a reason to skip protection?",
+   "q": "Methyl 4-oxopentanoate is treated with (1) ethylene glycol and H+, (2) LiAlH4, (3) H3O+. What does the sequence accomplish?",
    "options": [
-    "A selective reagent exists",
-    "The steps can be reordered",
-    "The group is not reactive here",
-    "The molecule is large"
+    "It reduces both the ketone and the ester",
+    "It reduces the ester and spares the ketone",
+    "It reduces only the ketone, not the ester",
+    "It does nothing, because LiAlH4 destroys acetals"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -29557,24 +29557,24 @@
    "type": "mcq"
   },
   {
-   "q": "Why write the four questions out for every step?",
+   "q": "Benzene is treated with (1) CH3CH2COCl/AlCl3, (2) Zn(Hg)/HCl, (3) HNO3/H2SO4. What is the major product?",
    "options": [
-    "Purely for presentation",
-    "That is where routes fail",
-    "It is required",
-    "To count atoms"
+    "1-nitro-3-propylbenzene",
+    "1-nitro-4-propylbenzene",
+    "1-nitro-4-(propan-2-yl)benzene",
+    "propiophenone"
    ],
    "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Retrosynthesis is best described as what?",
+   "q": "Which order makes 3-nitroacetophenone from benzene?",
    "options": [
-    "An exploratory search",
-    "A required format for an exam",
-    "A mechanism",
-    "A proof"
+    "Acylate first, then nitrate",
+    "Nitrate first, then acylate",
+    "Either order gives it",
+    "Nitrate, reduce, then acylate"
    ],
    "correct": 0,
    "difficulty": "hard",
@@ -29593,12 +29593,12 @@
    "type": "mcq"
   },
   {
-   "q": "Which two ordering rules are really the same idea?",
+   "q": "A route ends: ... gives an aldehyde, then NaOH in water, warm, gives the target. What is the objection?",
    "options": [
-    "Plan and write",
-    "Protecting and reordering",
-    "Avoiding carbocations",
-    "Count and check"
+    "The aldehyde is not soluble enough in water",
+    "NaOH would oxidize the aldehyde",
+    "The aldehyde will self-condense in base",
+    "Nothing is wrong with that step"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -29665,15 +29665,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which is the best summary of synthesis planning?",
+   "q": "Which sequence turns hex-3-yne into (3R,4R)- and (3S,4S)-3,4-dibromohexane and nothing else?",
    "options": [
-    "Count, disconnect, then order",
-    "Always reach for a protecting group",
-    "Draw every mechanism",
-    "Memorize more reagents"
+    "H2 with Lindlar catalyst, then Br2",
+    "Na in liquid NH3, then Br2",
+    "Br2 alone, in one step",
+    "H2 over Pd/C, then Br2"
    ],
    "correct": 0,
-   "difficulty": "medium",
+   "difficulty": "hard",
    "type": "mcq"
   }
  ],

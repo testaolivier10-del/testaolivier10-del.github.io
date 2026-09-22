@@ -123,9 +123,10 @@
       dependsOn:['reductant-scope','stereochemical-outcome'],
       hint:'Ask whether both new bonds arrive on the same face.' },
     /* ---- Synthesis ------------------------------------------------------
-       Four concepts, split by what actually goes wrong. Choosing a
+       Five concepts, split by what actually goes wrong. Choosing a
        disconnection, knowing the short list of C-C reactions, navigating the
-       functional group map, and getting the ORDER right are separate
+       functional group map, deciding what to mask while you do it, and
+       getting the ORDER right are separate
        failures — a student can have all the reactions and still write a route
        that destroys its own reagent in step two. */
     { id:'disconnection', title:'Choosing a disconnection', family:'Synthesis',
@@ -139,9 +140,13 @@
       topics:['functional-group-interconversion','multistep-synthesis','oxidation-states','alcohol-reactions'],
       dependsOn:['oxidation-level'],
       hint:'Ask whether the move is UP or DOWN the oxidation ladder, or SIDEWAYS within one level.' },
+    { id:'protection', title:'Protecting groups and orthogonality', family:'Synthesis',
+      topics:['protecting-groups','multistep-synthesis','acetals','alcohol-reactions','nucleophilic-addition'],
+      dependsOn:['fgi-map'],
+      hint:'Protect only when no selective reagent and no reordering will do — then check the deprotection against every remaining step.' },
     { id:'route-order', title:'Ordering a synthesis', family:'Synthesis',
       topics:['multistep-synthesis','protecting-groups','directing-effects','eas','amine-reactions'],
-      dependsOn:['cc-bond-toolkit','fgi-map'],
+      dependsOn:['cc-bond-toolkit','fgi-map','protection'],
       hint:'For every step ask what ELSE the reagent could attack, and whether the product survives the next step.' },
     /* ---- Biomolecules ---------------------------------------------------
        Five concepts, one per section, because the failures really are
