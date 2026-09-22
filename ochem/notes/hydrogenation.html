@@ -10,10 +10,10 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catalytic hydrogenation — Alkenes &amp; Alkynes | Organic Chemistry</title>
-<meta name="description" content="Hydride reagents cannot reduce an isolated C=C, because a hydride is a nucleophile and an alkene has no electrophilic end to attack. Reducing a…">
+<meta name="description" content="An alkene's pi bond is nucleophilic, and that one fact rules out the obvious way of reducing it. Reduction usually means handing a carbon a hydride, H⁻ —…">
 <link rel="canonical" href="https://levlprep.com/ochem/notes/hydrogenation.html">
 <meta property="og:title" content="Catalytic hydrogenation — Alkenes &amp; Alkynes | Organic Chemistry">
-<meta property="og:description" content="Hydride reagents cannot reduce an isolated C=C, because a hydride is a nucleophile and an alkene has no electrophilic end to attack. Reducing a…">
+<meta property="og:description" content="An alkene's pi bond is nucleophilic, and that one fact rules out the obvious way of reducing it. Reduction usually means handing a carbon a hydride, H⁻ —…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/notes/hydrogenation.html">
 <meta property="og:site_name" content="LevlPrep">
@@ -51,7 +51,7 @@
        identical whether it is read here or inside learn.html. -->
   <article class="notes-body notes-view">
 <!-- notes:start -->
-<p class="step-body">Hydride reagents cannot reduce an isolated C=C, because a hydride is a nucleophile and an alkene has no electrophilic end to attack. Reducing a carbon–carbon multiple bond needs a different mechanism entirely: adsorb both the alkene and hydrogen gas onto a metal surface and let them combine there.</p>
+<p class="step-body">An alkene's pi bond is nucleophilic, and that one fact rules out the obvious way of reducing it. Reduction usually means handing a carbon a hydride, H⁻ — but a hydride is itself a nucleophile, and an isolated C=C offers it nothing electrophilic to attack. (The hydride reagents that do this job on carbonyls are taught in <a class="chapter-ref" href="/ochem/learn.html#m-redox">Oxidation &amp; Reduction</a>, later.) Reducing a carbon–carbon multiple bond therefore needs a different mechanism entirely: adsorb both the alkene and hydrogen gas onto a metal surface and let them combine there.</p>
 
 <h3>The basic reaction</h3>
 
@@ -78,9 +78,11 @@
 <li><b>Essentially untouched:</b> esters, carboxylic acids and amides. Benzene rings need severe conditions — high pressure and temperature — which is why an aromatic ring survives an ordinary hydrogenation intact.</li>
 </ul>
 
-<p class="step-body">That ordering is what makes the reaction useful rather than merely strong. A molecule containing an alkene, a ketone and a benzene ring is hydrogenated at the alkene alone over Pd/C at one atmosphere — the exact complement of the hydride reagents from the last section, which reduce the ketone and leave the alkene.</p>
+<p class="step-body">That ordering is what makes the reaction useful rather than merely strong. A molecule containing an alkene, a ketone and a benzene ring is hydrogenated at the alkene alone over Pd/C at one atmosphere — the exact complement of the hydride reagents — NaBH₄ and LiAlH₄, taught in <a class="chapter-ref" href="/ochem/learn.html#m-redox">Oxidation &amp; Reduction</a> — which reduce the ketone and leave the alkene. That complement is worth filing away now and will be worked properly there.</p>
 
 <h3>Stopping an alkyne halfway, in either geometry</h3>
+
+<p class="step-body">One term is needed before the next section formally introduces it. An <b>alkyne</b> is a carbon–carbon <i>triple</i> bond: one sigma bond with two pi bonds stacked across it. Two pi bonds means hydrogenation can happen twice, and the useful chemistry here is about stopping after the first.</p>
 
 <p class="step-body">An alkyne over ordinary Pd/C is reduced past the alkene straight to the alkane. Two modified conditions stop it at the alkene, and they give <b>opposite geometries</b> — which makes the pair one of the most useful stereochemical tools in the course.</p>
 
@@ -97,9 +99,9 @@
 <p><b>Step 1 — sort the groups by the ordering.</b> Alkene: readily reduced. Ketone: forcing conditions only. Benzene ring: severe conditions only. That ordering is the whole answer generator; everything below is reading it off.</p>
 <p><b>Step 2 — H₂, Pd/C, 1 atm.</b> Only the alkene is in range. Product: <b>PhCH₂CH₂–CO–CH₃</b>, 4-phenylbutan-2-one. Ring and ketone come through untouched.</p>
 <p><b>Step 3 — H₂, PtO₂, high pressure.</b> Now the ketone is in range as well, and the alkene certainly is. Product: <b>PhCH₂CH₂–CH(OH)–CH₃</b>, the secondary alcohol. The ring still needs more than this.</p>
-<p><b>Step 4 — NaBH₄ in methanol, then workup.</b> The complement. A hydride has no reaction with an isolated C=C and none with a benzene ring, so it takes the ketone and only the ketone: <b>PhCH=CH–CH(OH)–CH₃</b>, with the alkene intact.</p>
+<p><b>Step 4 — NaBH₄ in methanol, then workup.</b> The complement, and a look ahead: sodium borohydride delivers a hydride ion to a carbonyl carbon, and it gets its full treatment in <a class="chapter-ref" href="/ochem/learn.html#m-redox">Oxidation &amp; Reduction</a>. A hydride has no reaction with an isolated C=C and none with a benzene ring, so it takes the ketone and only the ketone: <b>PhCH=CH–CH(OH)–CH₃</b>, with the alkene intact.</p>
 <p><b>Step 5 — read steps 2 and 4 side by side.</b> Same molecule; one reagent removes the alkene and keeps the C=O, the other removes the C=O and keeps the alkene. That is what "complementary" means here, and it is why synthesis questions so often hand you a molecule with both.</p>
-<p><b>A caution on step 4:</b> this particular substrate is a conjugated enone, and hydride reagents can also add at the far end of a conjugated system. That is a later topic; for now treat conjugated carbonyls as a flagged exception rather than a case you are expected to predict.</p>
+<p><b>A caution on step 4:</b> this particular substrate is a conjugated enone, and hydride reagents can also add at the far end of a conjugated system. That belongs with conjugate addition later in the course; for now treat conjugated carbonyls as a flagged exception rather than a case you are expected to predict.</p>
 </div>
 
 <h3>Heats of hydrogenation, as a measuring tool</h3>
@@ -120,13 +122,13 @@
 </table>
 </div>
 
-<p class="step-body">Read the column, not the individual numbers. All three end at the same molecule, butane, so the one that gives out <i>least</i> heat must have started <i>lowest</i>. <i>trans</i>-But-2-ene releases 11 kJ/mol less than but-1-ene, which means it was 11 kJ/mol more stable to begin with — and the ordering that falls out, <b>trans-disubstituted &gt; cis-disubstituted &gt; monosubstituted</b>, is exactly the alkene stability order you were given in <a class="chapter-ref" href="/ochem/learn.html#m-alkenes-alkynes">Alkenes &amp; Alkynes</a>. It was not asserted there; it was measured, this way. The 4 kJ/mol gap between cis and trans is the steric cost of two methyls on the same side, weighed directly. Comparing across different skeletons needs care — 2-methylpropene gives isobutane rather than butane, so its 119 kJ/mol is not strictly on this scale — but within one product the comparison is clean.</p>
+<p class="step-body">Read the column, not the individual numbers. All three end at the same molecule, butane, so the one that gives out <i>least</i> heat must have started <i>lowest</i>. <i>trans</i>-But-2-ene releases 11 kJ/mol less than but-1-ene, which means it was 11 kJ/mol more stable to begin with — and the ordering that falls out, <b>trans-disubstituted &gt; cis-disubstituted &gt; monosubstituted</b>, is exactly the alkene stability order set out in the first section of this chapter. It was not asserted there; it was measured, this way. The 4 kJ/mol gap between cis and trans is the steric cost of two methyls on the same side, weighed directly. Comparing across different skeletons needs care — 2-methylpropene gives isobutane rather than butane, so its 119 kJ/mol is not strictly on this scale — but within one product the comparison is clean.</p>
 
-<p class="step-body">This is the measurement behind two claims made earlier in the course. It is how alkene stability was shown to rise with substitution, and it is how the conjugation chapter put a number — about 15 kJ/mol — on the extra stability of buta-1,3-diene against two isolated double bonds. The reaction is useful as a ruler as well as a transformation.</p>
+<p class="step-body">This is the measurement behind two claims about stability, one already made and one still to come. It is how alkene stability was shown to rise with substitution at the start of this chapter, and it is how <a class="chapter-ref" href="/ochem/learn.html#m-conjugation">Conjugation &amp; Pericyclic Reactions</a> will put a number — about 15 kJ/mol — on the extra stability of buta-1,3-diene against two isolated double bonds. The reaction is useful as a ruler as well as a transformation.</p>
 
 <h3>What carries forward</h3>
 
-<p class="step-body">Two things. The syn stereochemistry is a genuine stereochemical handle, and the Lindlar/dissolving-metal pair is the standard way to build a defined alkene geometry from an alkyne — which is why alkynes are so useful as synthetic intermediates. And the chemoselectivity ordering, held next to the hydride table from the last section, is most of what you need to answer "which reagent, and what survives".</p>
+<p class="step-body">Two things. The syn stereochemistry is a genuine stereochemical handle, and the Lindlar/dissolving-metal pair is the standard way to build a defined alkene geometry from an alkyne — which is why alkynes are so useful as synthetic intermediates. And the chemoselectivity ordering, held next to the hydride table you will meet in <a class="chapter-ref" href="/ochem/learn.html#m-redox">Oxidation &amp; Reduction</a>, is most of what you need to answer "which reagent, and what survives".</p>
 <!-- notes:end -->
   </article>
 

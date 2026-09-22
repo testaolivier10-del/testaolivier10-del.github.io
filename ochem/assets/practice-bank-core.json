@@ -34661,12 +34661,12 @@
    "type": "mcq"
   },
   {
-   "q": "Why would a Grignard fail on a substrate carrying a free phenol?",
+   "q": "A molecule to be coupled carries a free O-H group. Why does an aryl Grignard route fail on it where a Suzuki coupling does not?",
    "options": [
-    "Magnesium binds the phenol",
-    "The phenol O-H quenches it",
-    "Phenols are not nucleophilic",
-    "The ring deactivates it"
+    "Magnesium oxide forms from the O-H and stops the insertion",
+    "The O-H quenches the Grignard, and the boron partner is too weak a base to touch it",
+    "Aryl halides cannot be turned into Grignard reagents in the first place",
+    "Palladium is poisoned by any hydroxyl group in the substrate"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -34733,15 +34733,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which is not a step in the standard catalytic cycle?",
+   "q": "Which is not a step in the standard cross-coupling catalytic cycle?",
    "options": [
     "Oxidative addition",
     "Transmetalation",
     "Reductive elimination",
-    "Electrophilic aromatic substitution"
+    "Nucleophilic acyl substitution"
    ],
    "correct": 3,
-   "difficulty": "medium",
+   "difficulty": "easy",
    "type": "mcq"
   }
  ],

@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function(){
     { id:'r2', t:'A <b>carboxylic acid</b> straight to a ketone', right:'rli',
       why:'RLi, two equivalents. The first deprotonates the acid; the second adds to the carboxylate, which a Grignard is not reactive enough to do.' },
     { id:'r3', t:'Deprotonate a ketone <b>without</b> adding to it', right:'lda',
-      why:'LDA. Made from n-BuLi and diisopropylamine, it is strong enough to deprotonate completely and far too bulky to attack the carbonyl &mdash; the pairing no simple RLi can give you.' },
+      why:'LDA. Made from n-BuLi and diisopropylamine, it is strong enough to take the proton off the carbon next to the C=O completely &mdash; giving the anion called an enolate &mdash; and far too bulky to attack the carbonyl itself. That pairing is what no simple RLi can give you.' },
     { id:'r4', t:'Join a <b>terminal alkyne</b> to a primary alkyl halide', right:'acet',
       why:'An acetylide, from NaNH₂ or n-BuLi. It is a genuine carbon nucleophile that will do SN2 on a primary halide &mdash; which a Grignard does not reliably do.' }
   ];
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'It contains no lithium, so it cannot attack'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct, and that pairing is the whole reason it exists. n-BuLi would deprotonate a ketone and then add to it; two isopropyl groups on the nitrogen block the approach to a carbonyl while leaving the basicity intact. Note also that LDA is <i>made</i> from n-BuLi, so it is weaker as a base — that is the price of the selectivity, and it is still far more than enough.',
+        correctFeedback: 'Correct, and that pairing is the whole reason it exists. n-BuLi would deprotonate a ketone and then add to it; two isopropyl groups on the nitrogen block the approach to a carbonyl while leaving the basicity intact. Note that the anion it leaves behind, shared between the &alpha; carbon and the oxygen, is an <b>enolate</b>, and that <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-enolate-chemistry\">Enolate Chemistry</a> is built on it. Note also that LDA is <i>made</i> from n-BuLi, so it is weaker as a base — that is the price of the selectivity, and it is still far more than enough.',
         wrongFeedback: 'A reagent can be a strong base and a poor nucleophile at the same time. What structural feature of LDA stops it reaching a carbonyl carbon?'
       },
       {

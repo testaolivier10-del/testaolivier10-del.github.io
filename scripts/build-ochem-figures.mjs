@@ -10278,7 +10278,7 @@ FIGURES.push({
    once — was prose only, and it is examined three times in the bank. */
 FIGURES.push({
   id: 'mcpba-butterfly-syn',
-  section: 'epoxides',
+  section: 'alkene-oxidation',
   anchor: 'Reactions that convert stereochemistry into stereochemistry this predictably are called <b>stereospecific</b>.',
   alt: 'Top: the butterfly transition state, with mCPBA above an alkene, two dashed partial bonds running from the same peroxyacid oxygen down to both alkene carbons and the oxygen-oxygen bond drawn as breaking. Bottom left: cis-2-butene giving the cis epoxide, with both methyl groups on wedges and a mirror plane through the ring, labeled meso and achiral. Bottom right: trans-2-butene giving the trans epoxide, drawn as the two enantiomers 2R,3R and 2S,3S in equal amounts.',
   viewBox: '0 0 760 500',
