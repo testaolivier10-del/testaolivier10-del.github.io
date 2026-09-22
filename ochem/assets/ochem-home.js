@@ -23,22 +23,30 @@
   var base = window.OCHEM_BASE || '';
 
   /* Hero bars need a label that fits in a 13px row; the curriculum's own
-     module titles ("Organic Structure & Electron Movement") do not. */
+     module titles ("Drawing Molecules & Moving Electrons") do not. */
   var SHORT = {
     'foundations':'Foundations',
-    'electron-movement':'Electron movement',
+    'electron-movement':'Drawing & arrows',
     'acids-bases':'Acids & bases',
     'alkanes-conformations':'Conformations',
     'stereochemistry':'Stereochem',
+    'reactivity':'Reactions',
     'substitution-elimination':'Sub / elim',
     'alkenes-alkynes':'Alkenes',
     'alcohols-ethers':'Alcohols',
+    'conjugation':'Conjugation',
     'carbonyl-chemistry':'Carbonyls',
+    'redox':'Redox',
     'carboxylic-acids':'Acids & esters',
+    'organometallics':'Organometallics',
     'enolate-chemistry':'Enolates',
-    'amines':'Amines',
     'aromatic-chemistry':'Aromatics',
-    'spectroscopy':'Spectroscopy'
+    'amines':'Amines',
+    'aromatic-breadth':'Aromatics II',
+    'spectroscopy':'Spectroscopy',
+    'synthesis':'Synthesis',
+    'biomolecules':'Biomolecules',
+    'polymers':'Polymers'
   };
   var BAR_COLORS = ['#2C9C8B','#E8776A','#C9973A'];
 
@@ -235,7 +243,7 @@
   }
 
   /* ---- the path -------------------------------------------------------
-     Fourteen nodes on a grid, ordered boustrophedon so the eye follows one
+     One node per chapter on a grid, ordered boustrophedon so the eye follows one
      line down the page, with the connector drawn through their centres and
      filled up to the module you're in. */
   var pathEl = document.getElementById('modulePath');

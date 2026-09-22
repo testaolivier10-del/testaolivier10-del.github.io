@@ -619,25 +619,32 @@
   };
 
   // A chair drawn as a real chair so axial/equatorial is visually true, not
-  // just asserted. Axial bonds are vertical; equatorial ones splay outward.
+  // just asserted. Same ring vertices as chair-dimethylcyclohexane: the tips
+  // are r5 (highest) and r2 (lowest); axial bonds run straight up and down
+  // and alternate round the ring - UP at r1, r3, r5 and DOWN at r2, r4, r6.
+  // Bromine sits axial-up on r5, so the only hydrogens anti-periplanar to it
+  // are the axial-DOWN ones on the two adjacent carbons, r4 and r6. The
+  // axial-up hydrogen on r1 is 1,3-diaxial to the bromine (the syn clash),
+  // not a beta hydrogen; the equatorial hydrogen on r4 is beta but gauche.
   M['chair-bromocyclohexane'] = {
     name: 'Bromocyclohexane (chair)', formula: 'C₆H₁₁Br', viewBox: '0 0 320 180',
     partialH: 'chair: only the hydrogens under discussion are drawn',
     atoms: {
       r1: { x:60,  y:104,r:13, label:'C' },
-      r2: { x:112, y:130,r:13, label:'C', role:'beta-carbon' },
+      r2: { x:112, y:130,r:13, label:'C' },
       r3: { x:176, y:118,r:13, label:'C' },
-      r4: { x:228, y:80, r:13, label:'C' },
-      r5: { x:176, y:54, r:13, label:'C', role:'beta-carbon' },
-      r6: { x:112, y:66, r:14, label:'C', role:'alpha-carbon', note:'The carbon bearing the leaving group.' },
-      br: { x:112, y:18, r:16, label:'Br', lp:3, role:'leaving-group', note:'Axial bromine — pointing straight up, exactly what E2 needs.' },
-      hax2:{ x:112, y:170,r:11, label:'H', role:'axial-h', note:'Axial hydrogen on a beta carbon — anti-periplanar to the axial C–Br bond. This is the one E2 takes.' },
-      hax5:{ x:176, y:16, r:11, label:'H', role:'syn-axial-h', note:'Axial, but on the same side as the bromine — syn-periplanar, not anti. E2 cannot use it.' },
-      heq3:{ x:222, y:146,r:11, label:'H', role:'equatorial-h', note:'Equatorial hydrogen — roughly 60° from the C–Br bond, not the 180° E2 requires.' }
+      r4: { x:228, y:80, r:13, label:'C', role:'beta-carbon' },
+      r5: { x:176, y:54, r:14, label:'C', role:'alpha-carbon', note:'The carbon bearing the leaving group.' },
+      r6: { x:112, y:66, r:13, label:'C', role:'beta-carbon' },
+      br: { x:176, y:16, r:16, label:'Br', lp:3, role:'leaving-group', note:'Axial bromine — pointing straight up, parallel to the ring axis. E2 needs a C–H on a neighboring carbon pointing straight down.' },
+      hax6:{ x:112, y:100,r:11, label:'H', role:'axial-h', note:'Axial hydrogen pointing down on a carbon next to the C–Br. That C–H and the C–Br are in one plane, 180° apart — anti-periplanar. This is the one E2 takes.' },
+      hax4:{ x:228, y:118,r:11, label:'H', role:'axial-h', note:'The other beta carbon\'s axial hydrogen, also pointing down and also anti-periplanar to the bromine. E2 can take either; Zaitsev decides between them when the two alkenes differ.' },
+      hax1:{ x:60,  y:70, r:11, label:'H', role:'syn-axial-h', note:'Axial and pointing up, on the same face as the bromine — but two carbons away. This is the 1,3-diaxial clash, not a beta hydrogen at all.' },
+      heq4:{ x:263, y:73, r:11, label:'H', role:'equatorial-h', note:'Equatorial hydrogen on a beta carbon — roughly 60° from the C–Br bond, not the 180° E2 requires.' }
     },
     bonds: [{a:'r1',b:'r2'},{a:'r2',b:'r3'},{a:'r3',b:'r4'},{a:'r4',b:'r5'},{a:'r5',b:'r6'},{a:'r6',b:'r1'},
-            {a:'r6',b:'br'},{a:'r2',b:'hax2'},{a:'r5',b:'hax5'},{a:'r3',b:'heq3',style:'faint'}],
-    caption: 'Bromine sits axial. Only an axial hydrogen on a neighboring carbon is 180° from it.'
+            {a:'r5',b:'br'},{a:'r6',b:'hax6'},{a:'r4',b:'hax4'},{a:'r1',b:'hax1',style:'faint'},{a:'r4',b:'heq4',style:'faint'}],
+    caption: 'Bromine sits axial. Only an axial hydrogen on a neighboring carbon, pointing the opposite way, is 180° from it.'
   };
 
   /* ---- Carbonyls ------------------------------------------------------ */

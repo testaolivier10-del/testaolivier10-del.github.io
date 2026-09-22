@@ -47,6 +47,11 @@ jobs:
       # would catch either one — they just mislead a student.
       - name: no dead topics, and mastery cannot overstate coverage
         run: node scripts/check-curriculum.mjs --check
+      # The ochem homepage lists the chapters twice (the path of nodes and the
+      # JSON-LD syllabus). Both are generated from curriculum.js; a stale copy
+      # would show a reader, and a search engine, the wrong course.
+      - name: the ochem homepage's chapter list matches the curriculum
+        run: node scripts/build-ochem-home.mjs --check
       # The generated textbook figures. These are drawn from coordinates, so a
       # stale one is not a broken build — it is a diagram that quietly says
       # something the prose next to it no longer says.

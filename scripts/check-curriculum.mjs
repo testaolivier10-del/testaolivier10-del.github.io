@@ -165,6 +165,28 @@ for (const { mod, t } of topics) {
   }
 }
 
+/* ---- 2b. every prerequisite is taught before the topic that needs it ---- */
+
+/* dependsOn is what the "review this first" recommendation and the concept
+   map are built from, so a prerequisite that sits LATER in the course is a
+   recommendation to read ahead — and a sign that the chapter order and the
+   dependency graph disagree. The proposed-order pass moved eleven lessons
+   precisely to make this true everywhere; this keeps it true. */
+{
+  const seen = new Set();
+  for (const { mod, t } of topics) {
+    for (const dep of t.dependsOn || []) {
+      if (!seen.has(dep)) {
+        const known = topics.some(({ t: o }) => o.id === dep);
+        fail(known
+          ? `${mod.id}/${t.id} depends on ${dep}, which is taught AFTER it. Move one of them, or drop the dependency.`
+          : `${mod.id}/${t.id} depends on ${dep}, which is not a topic in the curriculum.`);
+      }
+    }
+    seen.add(t.id);
+  }
+}
+
 /* ---- 3. mastery cannot reach 100% while a topic is untracked ----------- */
 
 const coverage = C.masteryCoverage();

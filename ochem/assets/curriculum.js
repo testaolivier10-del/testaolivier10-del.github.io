@@ -46,17 +46,16 @@
       // condensed or Lewis form.
       { id: 'functional-groups', title: 'Functional groups', href: 'lessons/functional-groups.html', dependsOn: ['lewis-structures', 'bond-polarity'] }
     ]},
-    { id: 'electron-movement', title: 'Organic Structure & Electron Movement', topics: [
-      // The notation every drawing after Foundations is written in, so it
-      // comes before everything that uses it and depends on nothing but
-      // Lewis structures.
+    /* The two notations the rest of the course is written in: skeletal
+       structures for molecules, curved arrows for electrons. Arrows come
+       before resonance because resonance is the first thing drawn with
+       them. Nucleophiles, electrophiles and leaving groups used to live here
+       too; they moved to How Reactions Happen, after Acids & Bases, so that
+       they can be taught with pKa in hand instead of an inline primer. */
+    { id: 'electron-movement', title: 'Drawing Molecules & Moving Electrons', topics: [
       { id: 'skeletal-structures', title: 'Skeletal structures', href: 'lessons/skeletal-structures.html', dependsOn: ['lewis-structures'] },
-      { id: 'resonance', title: 'Resonance', href: 'lessons/resonance.html', dependsOn: ['lewis-structures', 'formal-charge', 'skeletal-structures'] },
-      { id: 'curved-arrows', title: 'Curved arrows', href: 'lessons/curved-arrows.html', dependsOn: ['resonance'] },
-      { id: 'nucleophiles', title: 'Nucleophiles', href: 'lessons/nucleophiles.html', dependsOn: ['electronegativity'] },
-      { id: 'electrophiles', title: 'Electrophiles', href: 'lessons/electrophiles.html', dependsOn: ['electronegativity'] },
-      { id: 'leaving-groups', title: 'Leaving groups', href: 'lessons/leaving-groups.html', dependsOn: ['electrophiles'] },
-      { id: 'electron-rich-poor', title: 'Electron-rich vs. electron-poor atoms', href: 'lessons/electron-rich-poor.html', dependsOn: ['nucleophiles', 'electrophiles'] }
+      { id: 'curved-arrows', title: 'Curved arrows', href: 'lessons/curved-arrows.html', dependsOn: ['lewis-structures', 'formal-charge', 'skeletal-structures'] },
+      { id: 'resonance', title: 'Resonance', href: 'lessons/resonance.html', dependsOn: ['curved-arrows', 'formal-charge', 'skeletal-structures'] }
     ]},
     /* Nomenclature sits here, third, for one reason: you have to be able to
        READ a structure before you can name one (module 2), and everything
@@ -69,45 +68,69 @@
       { id: 'naming-functional-groups', title: 'Functional group priority', href: 'lessons/naming-functional-groups.html', dependsOn: ['naming-substituents'] },
       { id: 'naming-rings-unsaturation', title: 'Rings & unsaturation', href: 'lessons/naming-rings-unsaturation.html', dependsOn: ['naming-functional-groups'] }
     ]},
+    /* Conjugate pairs come before pKa because pKa is defined on a conjugate
+       pair; Lewis acids close the chapter because their payoff is the
+       nucleophile/electrophile vocabulary that opens the next one. */
     { id: 'acids-bases', title: 'Acids & Bases', topics: [
       { id: 'bronsted', title: 'Brønsted acids/bases', href: 'lessons/bronsted.html', dependsOn: ['lewis-structures', 'curved-arrows'] },
-      { id: 'lewis-acids', title: 'Lewis acids/bases', href: 'lessons/lewis-acids.html', dependsOn: ['nucleophiles', 'electrophiles'] },
-      { id: 'pka', title: 'pKa', href: 'lessons/pka.html', dependsOn: ['bronsted'] },
-      { id: 'conjugate', title: 'Conjugate acids/bases', href: 'lessons/conjugate.html', dependsOn: ['pka'] },
-      { id: 'acidity-factors', title: 'Factors affecting acidity', href: 'lessons/acidity-factors.html', dependsOn: ['pka', 'resonance', 'electronegativity', 'hybridization'] }
+      { id: 'conjugate', title: 'Conjugate acids/bases', href: 'lessons/conjugate.html', dependsOn: ['bronsted'] },
+      { id: 'pka', title: 'pKa', href: 'lessons/pka.html', dependsOn: ['bronsted', 'conjugate'] },
+      { id: 'acidity-factors', title: 'Factors affecting acidity', href: 'lessons/acidity-factors.html', dependsOn: ['pka', 'resonance', 'electronegativity', 'hybridization'] },
+      { id: 'lewis-acids', title: 'Lewis acids/bases', href: 'lessons/lewis-acids.html', dependsOn: ['bronsted', 'curved-arrows'] }
     ]},
     { id: 'alkanes-conformations', title: 'Alkanes & Conformations', topics: [
       { id: 'newman', title: 'Newman projections', href: 'lessons/newman.html', dependsOn: ['molecular-geometry', 'bonding'] },
       { id: 'cyclohexanes', title: 'Cyclohexanes', href: 'lessons/cyclohexanes.html', dependsOn: ['newman'] },
       { id: 'axial-equatorial', title: 'Axial/equatorial', href: 'lessons/axial-equatorial.html', dependsOn: ['cyclohexanes'] },
       { id: 'ring-flips', title: 'Ring flips', href: 'lessons/ring-flips.html', dependsOn: ['axial-equatorial'] },
-      { id: 'conformational-analysis', title: 'Conformational analysis', href: 'lessons/conformational-analysis.html', dependsOn: ['ring-flips'] },
-      // The one reaction alkanes have. Needs conformational analysis only for
-      // the substitution vocabulary (3 degrees vs 2 degrees vs 1 degree), and
-      // resonance for the allylic radical at the end.
-      { id: 'radical-halogenation', title: 'Radical halogenation', href: 'lessons/radical-halogenation.html', dependsOn: ['conformational-analysis', 'resonance'] }
+      { id: 'conformational-analysis', title: 'Conformational analysis', href: 'lessons/conformational-analysis.html', dependsOn: ['ring-flips'] }
     ]},
+    /* R/S comes third because every relationship test in enantiomers,
+       diastereomers and meso is "compare the descriptors". */
     { id: 'stereochemistry', title: 'Stereochemistry', topics: [
       { id: 'chirality', title: 'Chirality', href: 'lessons/chirality.html', dependsOn: ['molecular-geometry'] },
       { id: 'stereocenters', title: 'Stereocenters', href: 'lessons/stereocenters.html', dependsOn: ['chirality'] },
-      { id: 'enantiomers', title: 'Enantiomers', href: 'lessons/enantiomers.html', dependsOn: ['stereocenters'] },
+      { id: 'rs-configuration', title: 'R/S configuration', href: 'lessons/rs-configuration.html', dependsOn: ['stereocenters', 'electronegativity'] },
+      { id: 'enantiomers', title: 'Enantiomers', href: 'lessons/enantiomers.html', dependsOn: ['stereocenters', 'rs-configuration'] },
       { id: 'diastereomers', title: 'Diastereomers', href: 'lessons/diastereomers.html', dependsOn: ['enantiomers'] },
       { id: 'meso', title: 'Meso compounds', href: 'lessons/meso.html', dependsOn: ['diastereomers'] },
-      { id: 'rs-configuration', title: 'R/S configuration', href: 'lessons/rs-configuration.html', dependsOn: ['stereocenters', 'electronegativity'] },
-      { id: 'fischer', title: 'Fischer projections', href: 'lessons/fischer.html', dependsOn: ['rs-configuration'] }
+      { id: 'fischer', title: 'Fischer projections', href: 'lessons/fischer.html', dependsOn: ['rs-configuration', 'meso'] }
     ]},
+    /* The chapter that used to be missing: the ideas every reaction chapter
+       leans on, taught once, after acids and bases (so nucleophilicity and
+       leaving-group ability can be argued from pKa) and after
+       stereochemistry (so racemization can be named). Radical halogenation
+       closes it because it is the cleanest place to USE a reaction-energy
+       argument: radical stability by the same reasoning as carbocations,
+       the Hammond postulate for Br2 against Cl2, racemization at a new
+       stereocenter. */
+    { id: 'reactivity', title: 'How Reactions Happen', topics: [
+      { id: 'nucleophiles', title: 'Nucleophiles', href: 'lessons/nucleophiles.html', dependsOn: ['electronegativity', 'pka', 'lewis-acids'] },
+      { id: 'electrophiles', title: 'Electrophiles', href: 'lessons/electrophiles.html', dependsOn: ['electronegativity', 'lewis-acids'] },
+      { id: 'electron-rich-poor', title: 'Electron-rich vs. electron-poor atoms', href: 'lessons/electron-rich-poor.html', dependsOn: ['nucleophiles', 'electrophiles'] },
+      { id: 'leaving-groups', title: 'Leaving groups', href: 'lessons/leaving-groups.html', dependsOn: ['electrophiles', 'pka', 'conjugate'] },
+      { id: 'radical-halogenation', title: 'Radical halogenation', href: 'lessons/radical-halogenation.html', dependsOn: ['conformational-analysis', 'resonance', 'stereocenters'] }
+    ]},
+    /* E2 before E1: E2 is the one that needs the conformational material,
+       and E1 then reads as SN1's other branch. */
     { id: 'substitution-elimination', title: 'Substitution & Elimination', topics: [
       { id: 'sn2', title: 'SN2', href: 'mechanisms/sn2.html', dependsOn: ['nucleophiles', 'leaving-groups', 'curved-arrows', 'molecular-geometry'] },
       { id: 'sn1', title: 'SN1', href: 'mechanisms/sn1.html', dependsOn: ['sn2', 'leaving-groups', 'resonance', 'enantiomers'] },
-      { id: 'e1', title: 'E1', href: 'mechanisms/e1.html', dependsOn: ['sn1'] },
-      { id: 'e2', title: 'E2', href: 'mechanisms/e2.html', dependsOn: ['conformational-analysis', 'leaving-groups', 'bronsted'] },
+      { id: 'e2', title: 'E2', href: 'mechanisms/e2.html', dependsOn: ['conformational-analysis', 'leaving-groups', 'bronsted', 'sn2'] },
+      { id: 'e1', title: 'E1', href: 'mechanisms/e1.html', dependsOn: ['sn1', 'e2'] },
       { id: 'substrate-effects', title: 'Substrate & solvent effects', href: 'lessons/substrate-effects.html', dependsOn: ['sn2', 'sn1', 'e1', 'e2'] }
     ]},
+    /* Oxidative cleavage, dihydroxylation and hydrogenation live with the
+       alkenes, where the substrate is, so that heats of hydrogenation,
+       epoxidation (needed by Epoxides) and ozonolysis are available as soon
+       as alkenes are. */
     { id: 'alkenes-alkynes', title: 'Alkenes & Alkynes', topics: [
       { id: 'alkene-structure', title: 'Alkene structure', href: 'lessons/alkene-structure.html', dependsOn: ['hybridization'] },
       { id: 'addition-reactions', title: 'Addition reactions', href: 'lessons/addition-reactions.html', mechanism: 'mechanisms/addition.html', dependsOn: ['alkene-structure', 'nucleophiles', 'electrophiles'] },
       { id: 'markovnikov', title: 'Markovnikov / anti-Markovnikov', href: 'lessons/markovnikov.html', dependsOn: ['addition-reactions', 'sn1'] },
-      { id: 'alkynes', title: 'Alkynes', href: 'lessons/alkynes.html', dependsOn: ['alkene-structure', 'acidity-factors', 'sn2'] }
+      { id: 'alkene-oxidation', title: 'Oxidative cleavage & dihydroxylation', href: 'lessons/alkene-oxidation.html', dependsOn: ['addition-reactions', 'diastereomers'] },
+      { id: 'hydrogenation', title: 'Catalytic hydrogenation', href: 'lessons/hydrogenation.html', dependsOn: ['alkene-structure', 'addition-reactions'] },
+      { id: 'alkynes', title: 'Alkynes', href: 'lessons/alkynes.html', dependsOn: ['alkene-structure', 'acidity-factors', 'sn2', 'hydrogenation'] }
     ]},
     /* Conjugation goes directly after Alkenes & Alkynes: it is alkene
        chemistry with the p orbitals joined up, and it needs resonance from
@@ -128,111 +151,79 @@
     { id: 'alcohols-ethers', title: 'Alcohols, Ethers & Related Chemistry', topics: [
       { id: 'alcohol-reactions', title: 'Alcohol reactions', href: 'lessons/alcohol-reactions.html', dependsOn: ['leaving-groups', 'e1'] },
       { id: 'ether-chemistry', title: 'Ether chemistry', href: 'lessons/ether-chemistry.html', dependsOn: ['sn2', 'alcohol-reactions'] },
-      { id: 'epoxides', title: 'Epoxides', href: 'lessons/epoxides.html', dependsOn: ['ether-chemistry', 'cyclohexanes', 'substrate-effects'] }
+      { id: 'epoxides', title: 'Epoxides', href: 'lessons/epoxides.html', dependsOn: ['ether-chemistry', 'cyclohexanes', 'substrate-effects', 'alkene-oxidation'] }
     ]},
+    /* Imines, enamines and the Wittig are nucleophilic additions to a C=O,
+       so they belong here, where the mechanism is taught, rather than in a
+       breadth chapter at the end that Enolates, Amines and Synthesis all
+       had to point forward to. */
     { id: 'carbonyl-chemistry', title: 'Carbonyl Chemistry', topics: [
       { id: 'aldehydes-ketones', title: 'Aldehydes & ketones', href: 'lessons/aldehydes-ketones.html', dependsOn: ['hybridization', 'electrophiles'] },
       { id: 'nucleophilic-addition', title: 'Nucleophilic addition', href: 'lessons/nucleophilic-addition.html', mechanism: 'mechanisms/carbonyl-addition.html', dependsOn: ['aldehydes-ketones', 'nucleophiles'] },
-      { id: 'acetals', title: 'Acetals & hemiacetals', href: 'lessons/acetals.html', dependsOn: ['nucleophilic-addition', 'alcohol-reactions', 'resonance'] },
       { id: 'hydrates-cyanohydrins', title: 'Hydrates & cyanohydrins', href: 'lessons/hydrates-cyanohydrins.html', dependsOn: ['nucleophilic-addition', 'electronegativity'] },
+      { id: 'acetals', title: 'Acetals & hemiacetals', href: 'lessons/acetals.html', dependsOn: ['nucleophilic-addition', 'hydrates-cyanohydrins', 'alcohol-reactions', 'resonance'] },
+      { id: 'imines-enamines', title: 'Imines and enamines', href: 'lessons/imines-enamines.html', dependsOn: ['nucleophilic-addition', 'acetals', 'bronsted'] },
+      { id: 'wittig-reaction', title: 'The Wittig reaction', href: 'lessons/wittig-reaction.html', dependsOn: ['nucleophilic-addition', 'sn2', 'alkene-structure'] },
       { id: 'aldehyde-oxidation', title: 'Oxidizing an aldehyde', href: 'lessons/aldehyde-oxidation.html', dependsOn: ['hydrates-cyanohydrins', 'aldehydes-ketones'] }
     ]},
     /* Oxidation & Reduction sits after Carbonyl Chemistry because it needs
-       both ends of the ladder available: alcohols (chapter 10) to oxidize and
-       aldehydes and ketones (chapter 11) to reduce. Alkene oxidation is a
-       backward reference to chapter 8, which is fine — the alkene is the
-       substrate there, not a prerequisite idea being introduced.
-
-       Keeping oxidation and reduction in one chapter rather than scattering
-       them is deliberate: nearly every question on this material is "which
-       reagent, and what survives", and that comparison only works if the
-       reagents are in the same place. */
+       both ends of the ladder available: alcohols to oxidize and aldehydes
+       and ketones to reduce. Keeping oxidation and reduction in one chapter
+       rather than scattering them is deliberate: nearly every question on
+       this material is "which reagent, and what survives", and that
+       comparison only works if the reagents are in the same place. */
     { id: 'redox', title: 'Oxidation & Reduction', topics: [
       { id: 'oxidation-states', title: 'Oxidation levels in organic chemistry', href: 'lessons/oxidation-states.html', dependsOn: ['electronegativity', 'alcohol-reactions'] },
       { id: 'alcohol-oxidation', title: 'Oxidizing alcohols', href: 'lessons/alcohol-oxidation.html', dependsOn: ['oxidation-states', 'aldehydes-ketones'] },
-      { id: 'carbonyl-reduction', title: 'Reducing carbonyls', href: 'lessons/carbonyl-reduction.html', dependsOn: ['oxidation-states', 'nucleophilic-addition'] },
-      { id: 'hydrogenation', title: 'Catalytic hydrogenation', href: 'lessons/hydrogenation.html', dependsOn: ['oxidation-states', 'alkene-structure', 'alkynes'] },
-      { id: 'alkene-oxidation', title: 'Oxidative cleavage & dihydroxylation', href: 'lessons/alkene-oxidation.html', dependsOn: ['oxidation-states', 'epoxides', 'diastereomers'] }
+      { id: 'carbonyl-reduction', title: 'Reducing carbonyls', href: 'lessons/carbonyl-reduction.html', dependsOn: ['oxidation-states', 'nucleophilic-addition'] }
     ]},
+    /* Baeyer–Villiger closes this chapter rather than Redox: it is an
+       oxidation, but its product is an ester, so it has to come after esters
+       and amides are known. */
     { id: 'carboxylic-acids', title: 'Carboxylic Acids & Derivatives', topics: [
       { id: 'carboxylic-acids', title: 'Carboxylic acids', href: 'lessons/carboxylic-acids.html', dependsOn: ['resonance', 'pka', 'acidity-factors'] },
       { id: 'esters-amides', title: 'Esters & amides', href: 'lessons/esters-amides.html', dependsOn: ['carboxylic-acids', 'leaving-groups'] },
       { id: 'acyl-substitution', title: 'Nucleophilic acyl substitution', href: 'lessons/acyl-substitution.html', mechanism: 'mechanisms/acyl-substitution.html', dependsOn: ['esters-amides', 'nucleophilic-addition'] },
       { id: 'acyl-chlorides-anhydrides', title: 'Acid chlorides & anhydrides', href: 'lessons/acyl-chlorides-anhydrides.html', dependsOn: ['acyl-substitution', 'alcohol-reactions'] },
-      { id: 'nitriles', title: 'Nitriles', href: 'lessons/nitriles.html', dependsOn: ['acyl-chlorides-anhydrides', 'sn2'] }
+      { id: 'nitriles', title: 'Nitriles', href: 'lessons/nitriles.html', dependsOn: ['acyl-chlorides-anhydrides', 'sn2'] },
+      { id: 'baeyer-villiger', title: 'Baeyer–Villiger oxidation', href: 'lessons/baeyer-villiger.html', dependsOn: ['epoxides', 'esters-amides', 'sn1', 'alcohol-oxidation'] }
     ]},
+    /* Organometallics come right after the acid derivatives because the
+       chapter's core argument — an acid chloride or ester adds two
+       equivalents — needs the derivatives, and because everything after it
+       (Michael with cuprates, Synthesis) wants a Grignard already known. */
+    { id: 'organometallics', title: 'Organometallics', topics: [
+      { id: 'organometallic-bonding', title: 'Why C–metal means nucleophilic carbon', href: 'lessons/organometallic-bonding.html', dependsOn: ['electronegativity', 'bond-polarity', 'nucleophiles'] },
+      { id: 'grignard-reagents', title: 'Grignard reagents', href: 'lessons/grignard-reagents.html', dependsOn: ['organometallic-bonding', 'nucleophilic-addition', 'acyl-substitution'] },
+      { id: 'organolithium-reagents', title: 'Organolithiums and acetylides', href: 'lessons/organolithium-reagents.html', dependsOn: ['grignard-reagents', 'alkynes', 'acidity-factors'] },
+      { id: 'gilman-reagents', title: 'Cuprates and conjugate addition', href: 'lessons/gilman-reagents.html', dependsOn: ['grignard-reagents', 'nucleophilic-addition', 'resonance'] },
+      { id: 'cross-coupling', title: 'Palladium cross-coupling', href: 'lessons/cross-coupling.html', dependsOn: ['gilman-reagents', 'sn2', 'alkene-structure'] }
+    ]},
+    /* The malonic/acetoacetic ester syntheses and the Michael/Robinson pair
+       are enolate reactions, so they close the enolate chapter instead of
+       waiting for a breadth chapter after Organometallics. */
     { id: 'enolate-chemistry', title: 'Enolate Chemistry', topics: [
       { id: 'alpha-hydrogens', title: 'Alpha hydrogens & enolates', href: 'lessons/alpha-hydrogens.html', dependsOn: ['aldehydes-ketones', 'acidity-factors', 'alkynes'] },
       { id: 'aldol', title: 'Aldol reactions', href: 'lessons/aldol.html', mechanism: 'mechanisms/aldol.html', dependsOn: ['alpha-hydrogens', 'nucleophilic-addition'] },
       { id: 'claisen', title: 'Claisen reactions', href: 'lessons/claisen.html', mechanism: 'mechanisms/claisen.html', dependsOn: ['aldol', 'acyl-substitution'] },
       { id: 'alpha-halogenation', title: 'Alpha halogenation & the haloform reaction', href: 'lessons/alpha-halogenation.html', dependsOn: ['alpha-hydrogens', 'acyl-substitution'] },
-      { id: 'enolate-regiochemistry', title: 'Kinetic & thermodynamic enolates', href: 'lessons/enolate-regiochemistry.html', dependsOn: ['alpha-hydrogens', 'aldol'] }
-    ]},
-    { id: 'amines', title: 'Amines', topics: [
-      { id: 'amine-structure', title: 'Structure & basicity', href: 'lessons/amine-structure.html', dependsOn: ['bronsted', 'lewis-acids', 'esters-amides'] },
-      { id: 'amine-reactions', title: 'Amine reactions', href: 'lessons/amine-reactions.html', dependsOn: ['amine-structure', 'sn2', 'nucleophilic-addition', 'acyl-substitution'] },
-      { id: 'amine-synthesis', title: 'Making amines', href: 'lessons/amine-synthesis.html', dependsOn: ['amine-reactions', 'sn2', 'carbonyl-reduction'] },
-      { id: 'hofmann-elimination', title: 'Hofmann elimination', href: 'lessons/hofmann-elimination.html', dependsOn: ['amine-synthesis', 'e2'] }
+      { id: 'enolate-regiochemistry', title: 'Kinetic & thermodynamic enolates', href: 'lessons/enolate-regiochemistry.html', dependsOn: ['alpha-hydrogens', 'aldol'] },
+      { id: 'ester-syntheses', title: 'Malonic and acetoacetic ester', href: 'lessons/ester-syntheses.html', dependsOn: ['claisen', 'alpha-hydrogens', 'sn2'] },
+      { id: 'michael-robinson', title: 'Michael and Robinson', href: 'lessons/michael-robinson.html', dependsOn: ['aldol', 'alpha-hydrogens', 'gilman-reagents'] }
     ]},
     { id: 'aromatic-chemistry', title: 'Aromatic Chemistry', topics: [
       { id: 'aromaticity', title: 'Aromaticity', href: 'lessons/aromaticity.html', dependsOn: ['resonance', 'hybridization'] },
       { id: 'eas', title: 'Electrophilic aromatic substitution', href: 'lessons/eas.html', mechanism: 'mechanisms/eas.html', dependsOn: ['aromaticity', 'addition-reactions', 'markovnikov'] },
       { id: 'directing-effects', title: 'Ortho/meta/para directing effects', href: 'lessons/directing-effects.html', dependsOn: ['eas', 'esters-amides'] }
     ]},
-    { id: 'spectroscopy', title: 'Spectroscopy', topics: [
-      { id: 'ir', title: 'IR', href: 'lessons/ir.html', dependsOn: ['bonding', 'hybridization'] },
-      { id: 'h-nmr', title: '¹H NMR', href: 'lessons/h-nmr.html', dependsOn: ['electronegativity', 'aromaticity'] },
-      { id: 'c-nmr', title: '¹³C NMR', href: 'lessons/c-nmr.html', dependsOn: ['h-nmr'] },
-      { id: 'mass-spec', title: 'Mass spectrometry', href: 'lessons/mass-spec.html', dependsOn: ['sn1', 'markovnikov', 'eas'] }
-    ]},
-    /* Synthesis is the capstone, so it goes last and draws on everything
-       before it — including Spectroscopy, since confirming a product is part
-       of making one. Appending rather than inserting also means no chapter
-       below it needs renumbering, which is the first time that has been true
-       in this phase. */
-    { id: 'synthesis', title: 'Synthesis & Retrosynthesis', topics: [
-      { id: 'retrosynthesis', title: 'Thinking backwards', href: 'lessons/retrosynthesis.html', dependsOn: ['nucleophilic-addition', 'aldol'] },
-      { id: 'carbon-carbon-bonds', title: 'Making carbon–carbon bonds', href: 'lessons/carbon-carbon-bonds.html', dependsOn: ['retrosynthesis', 'alkynes', 'diels-alder', 'claisen'] },
-      { id: 'functional-group-interconversion', title: 'Functional group interconversion', href: 'lessons/functional-group-interconversion.html', dependsOn: ['retrosynthesis', 'alcohol-oxidation', 'carbonyl-reduction', 'hydrogenation'] },
-      { id: 'protecting-groups', title: 'Protecting groups', href: 'lessons/protecting-groups.html', dependsOn: ['acetals', 'nucleophilic-addition', 'alcohol-reactions'] },
-      { id: 'multistep-synthesis', title: 'Planning a multistep route', href: 'lessons/multistep-synthesis.html', dependsOn: ['carbon-carbon-bonds', 'functional-group-interconversion', 'protecting-groups', 'directing-effects'] }
-    ]},
-    /* Biomolecules sits after Synthesis for the same appending reason, and
-       because it earns its place by being downstream of almost everything:
-       a sugar is an intramolecular hemiacetal, a peptide bond is an amide,
-       a fat is a triester, and DNA's backbone is a diester. Nothing here is
-       a new reaction — it is the reactions already taught, shown doing the
-       work they do in a cell. */
-    { id: 'biomolecules', title: 'Biomolecules', topics: [
-      { id: 'carbohydrates', title: 'Carbohydrates', href: 'lessons/carbohydrates.html', dependsOn: ['acetals', 'nucleophilic-addition', 'fischer'] },
-      { id: 'amino-acids', title: 'Amino acids', href: 'lessons/amino-acids.html', dependsOn: ['pka', 'bronsted', 'rs-configuration'] },
-      { id: 'peptides-proteins', title: 'Peptides and proteins', href: 'lessons/peptides-proteins.html', dependsOn: ['amino-acids', 'esters-amides', 'resonance'] },
-      { id: 'lipids', title: 'Lipids', href: 'lessons/lipids.html', dependsOn: ['esters-amides', 'acyl-substitution', 'hydrogenation'] },
-      { id: 'nucleic-acids', title: 'Nucleic acids', href: 'lessons/nucleic-acids.html', dependsOn: ['carbohydrates', 'acetals', 'amine-structure'] }
-    ]},
-    /* Organometallics could have gone next to the carbonyl chapters, since
-       that is where a Grignard is first used. It goes here instead because
-       the chapter's real subject is the trade between reactivity and
-       selectivity, and that argument only lands once you have seen enough
-       reactions to know what "too reactive" costs a route. */
-    { id: 'organometallics', title: 'Organometallics', topics: [
-      { id: 'organometallic-bonding', title: 'Why C–metal means nucleophilic carbon', href: 'lessons/organometallic-bonding.html', dependsOn: ['electronegativity', 'bond-polarity', 'nucleophiles'] },
-      { id: 'grignard-reagents', title: 'Grignard reagents', href: 'lessons/grignard-reagents.html', dependsOn: ['organometallic-bonding', 'nucleophilic-addition', 'acyl-substitution'] },
-      { id: 'organolithium-reagents', title: 'Organolithiums and acetylides', href: 'lessons/organolithium-reagents.html', dependsOn: ['grignard-reagents', 'alkynes', 'alpha-hydrogens'] },
-      { id: 'gilman-reagents', title: 'Cuprates and conjugate addition', href: 'lessons/gilman-reagents.html', dependsOn: ['grignard-reagents', 'nucleophilic-addition', 'resonance'] },
-      { id: 'cross-coupling', title: 'Palladium cross-coupling', href: 'lessons/cross-coupling.html', dependsOn: ['gilman-reagents', 'eas', 'carbon-carbon-bonds'] }
-    ]},
-    /* The carbonyl chapters teach one reaction each and stop. This chapter is
-       the breadth pass over them: five named reactions that a second-semester
-       course expects and that the course had only mentioned in passing. It
-       goes after Organometallics because the Wittig needs a phosphorus ylide
-       and the Michael reads most clearly against the cuprate case. */
-    { id: 'carbonyl-breadth', title: 'Carbonyl & Enolate Breadth', topics: [
-      { id: 'wittig-reaction', title: 'The Wittig reaction', href: 'lessons/wittig-reaction.html', dependsOn: ['nucleophilic-addition', 'sn2', 'alkene-structure'] },
-      { id: 'imines-enamines', title: 'Imines and enamines', href: 'lessons/imines-enamines.html', dependsOn: ['nucleophilic-addition', 'amine-structure', 'acetals'] },
-      { id: 'michael-robinson', title: 'Michael and Robinson', href: 'lessons/michael-robinson.html', dependsOn: ['aldol', 'alpha-hydrogens', 'gilman-reagents'] },
-      { id: 'ester-syntheses', title: 'Malonic and acetoacetic ester', href: 'lessons/ester-syntheses.html', dependsOn: ['claisen', 'alpha-hydrogens', 'sn2'] },
-      { id: 'baeyer-villiger', title: 'Baeyer–Villiger oxidation', href: 'lessons/baeyer-villiger.html', dependsOn: ['epoxides', 'esters-amides', 'sn1'] }
+    /* Amines come after Aromatic Chemistry because the aniline / pyridine /
+       pyrrole basicity argument is an aromaticity argument, and half of
+       amine reactions are run on an aromatic amine. */
+    { id: 'amines', title: 'Amines', topics: [
+      { id: 'amine-structure', title: 'Structure & basicity', href: 'lessons/amine-structure.html', dependsOn: ['bronsted', 'lewis-acids', 'esters-amides', 'aromaticity'] },
+      { id: 'amine-reactions', title: 'Amine reactions', href: 'lessons/amine-reactions.html', dependsOn: ['amine-structure', 'sn2', 'nucleophilic-addition', 'acyl-substitution', 'imines-enamines'] },
+      { id: 'amine-synthesis', title: 'Making amines', href: 'lessons/amine-synthesis.html', dependsOn: ['amine-reactions', 'sn2', 'carbonyl-reduction'] },
+      { id: 'hofmann-elimination', title: 'Hofmann elimination', href: 'lessons/hofmann-elimination.html', dependsOn: ['amine-synthesis', 'e2'] }
     ]},
     /* The aromatic chapter taught one reaction — electrophilic substitution —
        and stopped. This is everything that follows from it: the two ways to
@@ -245,6 +236,37 @@
       { id: 'phenols', title: 'Phenols', href: 'lessons/phenols.html', dependsOn: ['acidity-factors', 'pka', 'directing-effects'] },
       { id: 'birch-reduction', title: 'Birch reduction', href: 'lessons/birch-reduction.html', dependsOn: ['aromaticity', 'hydrogenation', 'conjugated-systems'] },
       { id: 'diazonium-chemistry', title: 'Diazonium salts and Sandmeyer', href: 'lessons/diazonium-chemistry.html', dependsOn: ['amine-reactions', 'eas', 'directing-effects'] }
+    ]},
+    /* Spectroscopy stays after the aromatic chapters, so that every
+       functional group is known when spectra are read, and Synthesis
+       follows immediately, which is where "confirm the product" is used. */
+    { id: 'spectroscopy', title: 'Spectroscopy', topics: [
+      { id: 'ir', title: 'IR', href: 'lessons/ir.html', dependsOn: ['bonding', 'hybridization'] },
+      { id: 'h-nmr', title: '¹H NMR', href: 'lessons/h-nmr.html', dependsOn: ['electronegativity', 'aromaticity'] },
+      { id: 'c-nmr', title: '¹³C NMR', href: 'lessons/c-nmr.html', dependsOn: ['h-nmr'] },
+      { id: 'mass-spec', title: 'Mass spectrometry', href: 'lessons/mass-spec.html', dependsOn: ['sn1', 'markovnikov', 'eas'] }
+    ]},
+    /* Synthesis is the capstone: it plans with reactions from every chapter
+       before it, including Spectroscopy, since confirming a product is part
+       of making one. */
+    { id: 'synthesis', title: 'Synthesis & Retrosynthesis', topics: [
+      { id: 'retrosynthesis', title: 'Thinking backwards', href: 'lessons/retrosynthesis.html', dependsOn: ['nucleophilic-addition', 'aldol', 'grignard-reagents'] },
+      { id: 'carbon-carbon-bonds', title: 'Making carbon–carbon bonds', href: 'lessons/carbon-carbon-bonds.html', dependsOn: ['retrosynthesis', 'alkynes', 'diels-alder', 'claisen', 'wittig-reaction', 'michael-robinson', 'cross-coupling'] },
+      { id: 'functional-group-interconversion', title: 'Functional group interconversion', href: 'lessons/functional-group-interconversion.html', dependsOn: ['retrosynthesis', 'alcohol-oxidation', 'carbonyl-reduction', 'hydrogenation'] },
+      { id: 'protecting-groups', title: 'Protecting groups', href: 'lessons/protecting-groups.html', dependsOn: ['acetals', 'nucleophilic-addition', 'alcohol-reactions'] },
+      { id: 'multistep-synthesis', title: 'Planning a multistep route', href: 'lessons/multistep-synthesis.html', dependsOn: ['carbon-carbon-bonds', 'functional-group-interconversion', 'protecting-groups', 'directing-effects'] }
+    ]},
+    /* Biomolecules sits after Synthesis because it earns its place by being
+       downstream of almost everything: a sugar is an intramolecular
+       hemiacetal, a peptide bond is an amide, a fat is a triester, and DNA's
+       backbone is a diester. Nothing here is a new reaction — it is the
+       reactions already taught, shown doing the work they do in a cell. */
+    { id: 'biomolecules', title: 'Biomolecules', topics: [
+      { id: 'carbohydrates', title: 'Carbohydrates', href: 'lessons/carbohydrates.html', dependsOn: ['acetals', 'nucleophilic-addition', 'fischer'] },
+      { id: 'amino-acids', title: 'Amino acids', href: 'lessons/amino-acids.html', dependsOn: ['pka', 'bronsted', 'rs-configuration'] },
+      { id: 'peptides-proteins', title: 'Peptides and proteins', href: 'lessons/peptides-proteins.html', dependsOn: ['amino-acids', 'esters-amides', 'resonance'] },
+      { id: 'lipids', title: 'Lipids', href: 'lessons/lipids.html', dependsOn: ['esters-amides', 'acyl-substitution', 'hydrogenation'] },
+      { id: 'nucleic-acids', title: 'Nucleic acids', href: 'lessons/nucleic-acids.html', dependsOn: ['carbohydrates', 'acetals', 'amine-structure'] }
     ]},
     /* Polymers last, and genuinely last rather than as an afterthought: not
        one reaction in the chapter is new. It is addition and acyl

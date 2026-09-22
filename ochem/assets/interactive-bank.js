@@ -186,11 +186,11 @@
     prompt:'Click the hydrogen E2 can actually remove.', molecule:'chair-bromocyclohexane',
     sub:'The bromine is axial, pointing up.',
     answer:{ role:'axial-h' },
-    why:'E2 needs the C–H and C–Br bonds 180° apart in one plane. On a chair, that means both must be axial and on adjacent carbons pointing opposite ways — only the axial hydrogen down on the neighboring carbon qualifies.',
+    why:'E2 needs the C–H and C–Br bonds 180° apart in one plane. On a chair, that means both must be axial and on adjacent carbons pointing opposite ways — only an axial hydrogen pointing down on a neighboring carbon qualifies, and this ring has one on each side of the bromine.',
     highlight:['br'],
     diag:{
-      hax5:{ concept:'anti-periplanar-geometry', msg:'Right idea — that one IS axial. But it points up, the same direction as the bromine: that is syn-periplanar (0°), not anti (180°). The two bonds have to point opposite ways.' },
-      heq3:{ concept:'chair-axial-equatorial', msg:'That hydrogen is equatorial — it splays out sideways at roughly 60° from the C–Br bond. Equatorial hydrogens can never be anti-periplanar to an axial leaving group.' },
+      hax1:{ concept:'anti-periplanar-geometry', msg:'Right idea — that one IS axial. But it points up, the same direction as the bromine, and it sits two carbons away: that is the 1,3-diaxial clash, not a beta hydrogen. E2 needs a hydrogen on the carbon NEXT to the C–Br, pointing the opposite way.' },
+      heq4:{ concept:'chair-axial-equatorial', msg:'That hydrogen is on a beta carbon, but it is equatorial — it splays out sideways at roughly 60° from the C–Br bond. Equatorial hydrogens can never be anti-periplanar to an axial leaving group.' },
       br:{ concept:'anti-periplanar-geometry', msg:'That is the leaving group. E2 removes a hydrogen from the carbon NEXT to it, not from the carbon bearing it.' }
     } },
 
