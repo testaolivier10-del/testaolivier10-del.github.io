@@ -1,8 +1,27 @@
 # Proposed chapter and lesson order
 
-Status: **proposal, not applied.** Nothing in `curriculum.js` has moved. This
-document is the output of Step 1 of the self-study pass; the reorder waits on
-Olivier's approval. The evidence behind it is `docs/concept-map.json`: for
+Status: **applied on 2026-09-22** (commits a78c0b1 → a0dd198 on `main`).
+`curriculum.js` is the truth; this document is the proposal it was applied
+from, kept for the reasoning. What landed and what did not:
+
+- Every **move** in the table below landed as written, except that
+  Baeyer–Villiger closes *Carboxylic Acids & Derivatives* rather than
+  *Oxidation & Reduction* (it needs esters and lactones, which come after
+  Redox).
+- The **new lessons** landed: energy-diagrams, carbocations, cis-trans-ez —
+  plus prochirality (not in this proposal) at the end of Stereochemistry.
+- Chapter 2 is titled *Drawing Molecules & Moving Electrons*; Spectroscopy
+  stays at 20; the Functional groups section stays last in Foundations.
+- The **section splits** (addition-reactions three ways, eas, h-nmr,
+  nucleophilic-addition, hybridization) were **not** done; the prerequisite
+  problems they were meant to solve were fixed inside the existing sections.
+  Two partial splits did happen as prose moves: alcohol activation left
+  leaving-groups for alcohol-reactions, and conformational-analysis lost its
+  E2 half to e2. The remaining splits are listed under "Decisions for
+  Olivier" in TRACKER.md.
+
+This document was written before the reorder; below, "current order" means
+the order as it stood on 2026-09-16. The evidence behind it is `docs/concept-map.json`: for
 every one of the 116 sections, what it teaches, what it relies on and where
 that is taught, and every forward reference a fresh reader would hit.
 
