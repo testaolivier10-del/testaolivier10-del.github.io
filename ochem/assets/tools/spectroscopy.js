@@ -199,9 +199,9 @@
       ],
       nmr:[
         { ppm:2.30, h:6, mult:'s', label:'2 × CH₃', note:'Both methyls equivalent by symmetry.' },
-        { ppm:7.05, h:4, mult:'s', label:'4 × Ar–H', note:'All four aromatic hydrogens equivalent, so they appear as a singlet. A mono- or ortho-substituted ring could never give this.' }
+        { ppm:7.05, h:4, mult:'s', label:'4 × Ar–H', note:'All four aromatic hydrogens equivalent, so they appear as a singlet. A mono-substituted ring would integrate to five, and ortho or meta rings normally show a multiplet instead.' }
       ],
-      tell:'Two singlets, 6:4, and a single out-of-plane band near 800. The aromatic singlet is only possible for para.'
+      tell:'Two singlets, 6:4, and a single out-of-plane band near 800. A 4H aromatic singlet is the classic para signature.'
     },
     {
       id:'benzoic', name:'Benzoic acid', formula:'C₇H₆O₂', structure:'C₆H₅COOH', build:'C6H5COOH',
@@ -245,7 +245,7 @@
     {
       id:'cyclohexanone', name:'Cyclohexanone', formula:'C₆H₁₀O', structure:'(CH₂)₅C=O', build:'O=C1CCCCC1',
       ir:[
-        { cm:2940, w:44, d:40, label:'sp³ C–H', note:'All below 3000 — every carbon is saturated, so there is no ring here in the aromatic sense.' },
+        { cm:2940, w:44, d:40, label:'sp³ C–H', note:'All below 3000 — every carbon that carries a hydrogen is sp³, so there is no ring here in the aromatic sense.' },
         { cm:1715, w:24, d:74, label:'C=O stretch', note:'Textbook ketone position. Unconjugated and in a six-membered ring, which is the reference case every other carbonyl is compared against.' }
       ],
       nmr:[

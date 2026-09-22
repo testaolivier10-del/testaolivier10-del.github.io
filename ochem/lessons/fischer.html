@@ -267,10 +267,10 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'You need to compare two Fischer projections and determine if they represent the same molecule or enantiomers. You find it takes exactly 3 single-group swaps, all of them at the same stereocenter, to convert one into the other. What\'s the relationship?',
+        title: 'You need to compare two Fischer projections and determine if they represent the same molecule or enantiomers. You find it takes exactly 3 single-group swaps, all of them at the same stereocenter (the molecule has only this one stereocenter), to convert one into the other. What\'s the relationship?',
         options: ['The same molecule — any number of swaps eventually returns the original', 'Enantiomers — an odd number of swaps inverts the stereochemistry', 'Diastereomers — 3 swaps always means partial inversion'],
         correctIndex: 1,
-        correctFeedback: 'Correct — 3 is odd, and each swap at that center inverts it, so the center ends up inverted and the molecule is the enantiomer. Note how much the phrase "at the same stereocenter" is doing: one swap at C2 and two at C3 is also three swaps, and it inverts only C2, which gives a diastereomer.'
+        correctFeedback: 'Correct — 3 is odd, and each swap at that center inverts it, so the center ends up inverted, and since it is the only stereocenter, the molecule is the enantiomer. Note how much the stem is doing: in a molecule with two stereocenters, one swap at C2 and two at C3 is also three swaps, and it inverts only C2, which gives a diastereomer.'
       }
     ]
   });

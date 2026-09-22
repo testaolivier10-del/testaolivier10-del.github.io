@@ -219,8 +219,9 @@
         out.verdict = 'Nothing much. A weak nucleophile cannot force an SN2, and a primary carbocation will not form to let anything else happen.';
       }
     } else if(sub.cls === 'benzylic'){
-      out.major = r.nu >= 2 ? 'SN2' : 'SN1';
-      out.verdict = r.nu >= 2
+      var bnNu = (r.bulky && r.nu >= 1) ? 3 : r.nu;
+      out.major = bnNu >= 2 ? 'SN2' : 'SN1';
+      out.verdict = bnNu >= 2
         ? 'SN2. Benzylic carbons are open to attack and a strong nucleophile takes that route directly rather than waiting for an ionization.'
         : 'SN1. With nothing strong enough to attack, the substrate ionizes on its own — which it is unusually willing to do, because the ring delocalizes the resulting cation.';
     } else if(sub.cls === '2'){
@@ -232,7 +233,7 @@
         out.verdict = 'E2 major, SN2 minor. This is the case that trips people up: the reagent is a good nucleophile as well, so SN2 really does compete — but on a secondary carbon a strong base takes the beta proton more often than it attacks the crowded carbon.' +
           (heat ? ' Heating widens that gap further.' : '') +
           (solv.id === 'aprotic' ? ' The aprotic solvent pushes the SN2 share up, without changing which one is major.' : '');
-      } else if(goodNu){
+      } else if(r.nu >= 2){
         out.major = 'SN2'; out.minor = null;
         out.verdict = 'SN2. A strong nucleophile that is a weak base is the cleanest way to get substitution on a secondary carbon — there is nothing basic enough to pull a beta proton, so the competition never starts.' +
           (solv.id === 'aprotic' ? ' The aprotic solvent makes it faster still.' : ' A polar aprotic solvent would speed this up considerably.');
@@ -284,7 +285,7 @@
       out.product = useHofmann ? sub.hofmann : sub.zaitsev;
       out.alkene = useHofmann ? 'Hofmann' : 'Zaitsev';
       out.productNote = useHofmann
-        ? 'The Hofmann product — the LESS substituted alkene. A bulky base cannot get at the crowded, more substituted beta position, so it takes a proton from the accessible end instead. This is the only situation where Zaitsev loses.'
+        ? 'The Hofmann product — the LESS substituted alkene. A bulky base cannot get at the crowded, more substituted beta position, so it takes a proton from the accessible end instead. With an alkyl halide, this is the usual situation where Zaitsev loses.'
         : 'The Zaitsev product — the more substituted alkene, which is the more stable one, and the one you get whenever the base is small enough to choose.';
     }
 

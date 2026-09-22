@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function(){
             { id: 'ethanol', r: 'The CH₂ of <b>ethanol</b>, CH₃CH₂OH', right: 'enantio',
               why: 'Substitution makes C1 a stereocenter in an otherwise achiral molecule, so the two products are mirror images.' },
             { id: 'mecyhex', r: 'The two C2 hydrogens of <b>methylcyclohexane</b>', right: 'dia',
-              why: 'One product has the label cis to the methyl, the other trans — and cis/trans ring isomers are diastereomers. No stereocenter needed; the ring supplies the top-and-bottom distinction.' },
+              why: 'One product has the label cis to the methyl, the other trans — and cis/trans ring isomers are diastereomers. Substitution creates two stereocenters at once, C2 and C1, and the ring supplies the top-and-bottom distinction.' },
             { id: 'propane', r: 'The CH₂ of <b>propane</b>, CH₃CH₂CH₃', right: 'homo',
               why: 'The substituted carbon ends up with two identical methyls, so no stereocenter forms and both products are one and the same compound.' },
             { id: 'dcm', r: 'The two hydrogens of <b>dichloromethane</b>, CH₂Cl₂', right: 'homo',
@@ -234,8 +234,8 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
               if(Object.keys(done).length === CASES.length){
                 api.showFeedback(fb, true, missed
-                  ? 'All six. The shortcut hiding in them: no new stereocenter means homotopic; a new stereocenter and nothing else stereogenic means enantiotopic; a new stereocenter plus something stereogenic already present means diastereotopic.'
-                  : 'All six, first time. No new stereocenter gives homotopic; a new stereocenter alone gives enantiotopic; a new stereocenter alongside an existing stereogenic feature gives diastereotopic.');
+                  ? 'All six. The shortcut hiding in them: no new stereocenter means homotopic; a new stereocenter and nothing else stereogenic means enantiotopic; a new stereocenter plus something stereogenic already present, or two new stereocenters at once as in the ring, means diastereotopic. (Alkenes are the one trap: the =CH₂ hydrogens of propene are diastereotopic with no stereocenter at all, because the two products are E and Z.)'
+                  : 'All six, first time. No new stereocenter gives homotopic; a new stereocenter alone gives enantiotopic; a new stereocenter alongside an existing stereogenic feature, or two new stereocenters at once as in the ring, gives diastereotopic. (Alkenes are the trap: propene’s =CH₂ hydrogens are diastereotopic with no stereocenter at all, because the two products are E and Z.)');
                 api.record(!missed); next.disabled = false;
               }
             });

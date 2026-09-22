@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function(){
     { id:'w2', t:'CH₃CH₂CH₂–Br', right:'yes',
       why:'Works. Primary, unhindered, and the backside of that carbon is open.' },
     { id:'w3', t:'(CH₃)₃C–Br', right:'no',
-      why:'Fails. A tertiary halide has no accessible backside at all, so no phosphonium salt forms. This is the case a route proposes when it wants a tetrasubstituted alkene, and it is the case that does not work.' },
+      why:'Fails. A tertiary halide has no accessible backside at all, so no phosphonium salt forms. And even if the salt could form, its phosphonium carbon would carry no hydrogen to remove, so there could be no ylide.' },
     { id:'w4', t:'C₆H₅–Br <span style="color:var(--muted);">(bromobenzene)</span>', right:'no',
       why:'Fails. An aryl halide is sp² with its backside behind the ring, so it refuses SN2 entirely. Aryl groups get into a Wittig from the carbonyl side instead — benzaldehyde, not bromobenzene.' }
   ];
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Every elimination lets Zaitsev choose where the bond goes.',
-        bodyHtml: '<p class="step-body">You can also reach an alkene by reducing an alkyne, and that route controls geometry well &mdash; Lindlar for <i>cis</i>, Na/NH<sub>3</sub> for <i>trans</i>. But it needs the alkyne skeleton already built. The general route from a saturated substrate is elimination: E1, E2, dehydration, dehydrohalogenation &mdash; and all of them make the double bond between two carbons that were <i>already bonded to each other</i>. The consequence is that you do not choose where it goes. <b>Zaitsev</b> does, and Zaitsev always votes for the most substituted alkene.</p>' +
+        bodyHtml: '<p class="step-body">You can also reach an alkene by reducing an alkyne, and that route controls geometry well &mdash; Lindlar for <i>cis</i>, Na/NH<sub>3</sub> for <i>trans</i>. But it needs the alkyne skeleton already built. The general route from a saturated substrate is elimination: E1, E2, dehydration, dehydrohalogenation &mdash; and all of them make the double bond between two carbons that were <i>already bonded to each other</i>. The consequence is that you do not choose where it goes. <b>Zaitsev</b> does, and Zaitsev usually votes for the most substituted alkene (a bulky base can tilt it toward the less substituted one, but rarely cleanly).</p>' +
           '<p class="step-body">That is fine when the most substituted alkene is the one you want, and a problem otherwise. Ask for a terminal alkene from a secondary substrate and elimination will give you mostly the internal one, with the terminal alkene as a minor product you then have to separate.</p>' +
           '<div class="explain-box">The <b>Wittig reaction</b> escapes this by not being an elimination. It joins two separate pieces, and the new C=C forms <b>exactly at the old carbonyl carbon</b>, in place of its C=O. There is no competition to lose, because there is only one position the bond can occupy.</div>'
       },

@@ -303,8 +303,13 @@ const DATA_BUDGETS = [
      was under this index's 80-character floor and never reached it; the
      rewritten ones do, which is the point. Measured 312.9 KB; about 1 KB of
      headroom, not a round number, so the next pass still has to argue for
-     its own bytes. */
-  ['ochem/assets/tutor-bank.json', 314],
+     its own bytes.
+
+     314 -> 315 for the accuracy review: about 90 bank items corrected
+     where they taught something wrong (a reversed mechanism, a misnamed
+     structure, a pKa off by ten units). A correction usually says why the
+     old claim fails, so it runs a sentence longer. Measured 314.1 KB. */
+  ['ochem/assets/tutor-bank.json', 315],
   /* Ochem's question bank, now split in two (scripts/build-ochem-bank.mjs).
 
      The core is what practice.html and review.html WAIT on before their first

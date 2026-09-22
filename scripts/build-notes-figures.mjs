@@ -205,7 +205,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Why the three depths are not three rules. <b>2 inches, 2 inches and 1.5 inches</b> are all roughly one third of the chest they are measured in.',
-  note: 'This is also why depth has an upper limit for the same reason it has a lower one. Too shallow and the heart is not squeezed; deeper than about a third and you are past the point where more depth adds flow, and into the range that breaks things. The adult figure is the only one given as a range — 2 to 2.4 inches — because the adult chest is the one whose size varies least.',
+  note: 'This is also why depth has an upper limit for the same reason it has a lower one. Too shallow and the heart is not squeezed; deeper than about a third and you are past the point where more depth adds flow, and into the range that breaks things. The adult figure is the only one given as a range — 2 to 2.4 inches — because for adults the guidelines set an explicit upper limit as well as a minimum.',
 });
 
 /* ---------------------------------------------------------------------- */

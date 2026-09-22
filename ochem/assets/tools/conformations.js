@@ -85,13 +85,13 @@
       id:'ethylene-glycol', name:'Ethylene glycol', formula:'HOCH₂CH₂OH',
       front:['OH','H','H'], back:['OH','H','H'],
       energies:[4.4, 0, 3.2, 0.7, 3.2, 0],
-      note:'Gauche again, and for a completely different reason: at 60° the two hydroxyls are close enough to hydrogen bond to each other, and that bond is worth more than the crowding costs. In water the effect largely vanishes, because the solvent will hydrogen bond to both of them instead.'
+      note:'Gauche again, and for a completely different reason: at 60° the two hydroxyls are close enough to hydrogen bond to each other, and that bond is worth more than the crowding costs. In water the intramolecular hydrogen bond largely gives way to hydrogen bonds with the solvent — yet gauche still predominates, because the same orbital effect that favors gauche in difluoroethane operates here too.'
     },
     {
       id:'methylbutane', name:'2-methylbutane', formula:'(CH₃)₂CHCH₂CH₃',
       front:['CH₃','CH₃','H'], back:['CH₃','H','H'],
-      energies:[4.9, 0.9, 4.2, 0, 3.7, 0.9],
-      note:'Butane with one extra methyl, and the curve stops being symmetric — the two gauche wells are no longer equivalent, and neither are the three eclipsed peaks. Most real molecules look like this rather than like butane.'
+      energies:[4.1, 0.9, 4.1, 0, 3.3, 0],
+      note:'Butane with one extra methyl, and the curve stops being symmetric — the three staggered wells are no longer all alike: two (one CH₃/CH₃ gauche each) tie for lowest, and the one with the C3 methyl between both C2 methyls pays a second gauche. The eclipsed peaks split the same way. Most real molecules look like this rather than like butane.'
     }
   ];
 
@@ -540,7 +540,7 @@
 
     if(eHere.terms.length === 0 && eOther.terms.length === 0){
       html += '<div class="tnote"><span class="tnote__k">Nothing to strain</span>' +
-        'Unsubstituted cyclohexane. Both chairs are identical and it flips between them billions of times a second. ' +
+        'Unsubstituted cyclohexane. Both chairs are identical and it flips between them roughly a hundred thousand times a second. ' +
         'Add a substituent below and they stop being equivalent.</div>';
     } else if(gap < 0.005){
       html += '<div class="tnote tnote--info"><span class="tnote__k">Evenly matched</span>' +

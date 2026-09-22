@@ -2434,7 +2434,7 @@ FIGURES.push({
     s += text(380, 274, 'Twelve orders of magnitude, bought with one extra carbonyl — which is then thrown away.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
-  caption: 'What the second carbonyl is for. An ester’s α hydrogen sits at pKa 25, where the only bases strong enough will also attack the ester; flanking that carbon with a second carbonyl delocalizes the carbanion onto a second oxygen and drops it to 11 to 13, where the alkoxide matching your solvent does the job.',
+  caption: 'What the second carbonyl is for. An ester’s α hydrogen sits at pKa 25, where an alkoxide is far too weak and you need LDA at low temperature; flanking that carbon with a second carbonyl delocalizes the carbanion onto a second oxygen and drops it to 11 to 13, where the alkoxide matching your solvent does the job.',
   note: 'The carbonyl that made this possible is gone from the product. It was installed to acidify one hydrogen and is removed by hydrolysis and decarboxylation once the alkylation is done — which is what an activating group is, and the clearest example of one in the course. Note also that the decarboxylation works only because a second carbonyl sits β to the carboxyl — a ketone in the acetoacetic route, the other carboxyl in the malonic one — which is what lets the O–H reach it through a six-membered cyclic transition state.',
 });
 
@@ -2856,7 +2856,7 @@ FIGURES.push({
     return s;
   },
   caption: 'The two transitions seen as what they actually do: change the stiffness. For a fully amorphous polymer the glass transition <i>is</i> the softening point &mdash; the modulus falls by a factor of a thousand there and the material is finished. For a semicrystalline one the same transition barely registers, because only the tangled fraction has softened. The axis is schematic and the two curves are stacked to compare their <i>shapes</i>: the shared T<sub>g</sub> line is not a claim that polystyrene and HDPE soften at the same temperature, since their real glass transitions are about 220&nbsp;&deg;C apart.',
-  note: 'That second curve is the answer to a question the bare temperature axis cannot settle: why HDPE, PET and nylon are rigid at room temperature although they are far above their T<sub>g</sub>. Their crystalline regions act as physical cross-links, tying the mobile chains together, and they hold the sample in one piece all the way to T<sub>m</sub> &mdash; where they finally come apart, and the stiffness falls off a cliff instead of a step. A fully amorphous polymer has no such cliff, because it has no T<sub>m</sub> to reach.',
+  note: 'That second curve is the answer to a question the bare temperature axis cannot settle: why HDPE is rigid at room temperature although it is far above its T<sub>g</sub>. Its crystalline regions act as physical cross-links, tying the mobile chains together, and they hold the sample in one piece all the way to T<sub>m</sub> &mdash; where they finally come apart, and the stiffness falls off a cliff instead of a step. A fully amorphous polymer has no such cliff, because it has no T<sub>m</sub> to reach.',
 });
 
 /* ----------------------------------------------------------------- 52 ---
@@ -4107,7 +4107,7 @@ FIGURES.push({
     return s;
   },
   caption: 'The three molecules the worked examples run through, with the groups marked. Aspirin carries a carboxylic acid and an ester on the same ring; acetaminophen carries a phenol and an amide, and no acid at all despite the name most people expect; ibuprofen carries one carboxylic acid; of its other twelve carbons, six are the aromatic ring and six are genuinely spectator.',
-  note: 'Compare the two O–CO patterns. In aspirin the ring oxygen leads to a carbonyl, which makes it an <b>ester</b>; in acetaminophen a ring nitrogen leads to a carbonyl, which makes it an <b>amide</b>. One atom apart, and the difference decides how each one is broken down in the body — which is why aspirin hydrolyzes in the stomach and acetaminophen does not.',
+  note: 'Compare the two O–CO patterns. In aspirin the ring oxygen leads to a carbonyl, which makes it an <b>ester</b>; in acetaminophen a ring nitrogen leads to a carbonyl, which makes it an <b>amide</b>. One atom apart, and the difference decides how each one is broken down in the body — which is why aspirin is hydrolyzed within minutes in the body and acetaminophen is not.',
 });
 
 /* ---------------------------------------------------------------- F5 ---
@@ -4388,7 +4388,7 @@ FIGURES.push({
       s += lonePair(O.x, O.y, 250); s += lonePair(O.x, O.y, 300);
       s += note(84, 138, '4 groups', 'tetrahedral');
       s += note(172, 138, '4 groups', 'tetrahedral');
-      s += note(262, 138, '4 groups', 'bent, 104.5°');
+      s += note(262, 138, '4 groups', 'bent, ~108°');
     }
     // Acetic acid
     {
@@ -4612,9 +4612,16 @@ FIGURES.push({
       const c1 = P(x + 36, y - 20), c2 = P(x + 72, y + 2), me = P(x + 72, y + 44),
             c3 = P(x + 108, y - 20), c4 = P(x + 144, y + 2);
       g += bond(c1, c2, { rFrom: 0, rTo: 0 });
-      g += bond(c2, me, { rFrom: 0, rTo: 0 });
-      g += bond(c2, c3, { rFrom: 0, rTo: 0 });
-      g += bond(c3, c4, { rFrom: 0, rTo: 0 });
+      if (head === 'OH') {
+        g += bond(c2, me, { rFrom: 0, rTo: 0 });
+        g += bond(c2, c3, { rFrom: 0, rTo: 0 });
+        g += bond(c3, c4, { rFrom: 0, rTo: 0 });
+      } else {
+        /* The drawn head carbon is C1 here, so the branch sits on the next
+           vertex and the chain is one vertex shorter: still five carbons. */
+        g += bond(c1, P(x + 36, y - 52), { rFrom: 0, rTo: 0 });
+        g += bond(c2, c3, { rFrom: 0, rTo: 0 });
+      }
       if (head === 'OH') {
         g += bond(P(x, y + 2), c1, { rFrom: 18, rTo: 0 });
         g += atom(x, y + 2, 'HO', { r: 18, size: 10.5 });
@@ -5197,8 +5204,8 @@ FIGURES.push({
       s += text(536, 298, 'the hydrazone', { cls: 'fg-tag' });
     }
     s += text(566, 322, 'hydrazine condenses on first, exactly as an imine does;', { cls: 'fg-sm' });
-    s += text(566, 338, 'hot hydroxide then takes the C–H off, and the carbanion', { cls: 'fg-sm' });
-    s += text(566, 354, 'pushes out N₂ — a gas, so it never comes back', { cls: 'fg-sm' });
+    s += text(566, 338, 'hot hydroxide then takes the N–H protons off, and N₂ leaves', { cls: 'fg-sm' });
+    s += text(566, 354, 'as a gas, giving the carbanion — it never comes back', { cls: 'fg-sm' });
     s += text(566, 380, 'USE IT WHEN', { cls: 'fg-tag', size: 10 });
     s += text(566, 400, 'the rest of the molecule survives strong base', { cls: 'fg-sm', size: 9.5 });
 
@@ -5207,7 +5214,7 @@ FIGURES.push({
     return s;
   },
   caption: 'The reduction that goes two rungs instead of one. A hydride reagent takes a ketone to an alcohol and stops; these two take the oxygen off altogether and leave a CH<sub>2</sub> &mdash; and they are learned as a pair because one needs strong acid and the other needs strong base.',
-  note: 'The only thing you have to decide in an exam question is which half of the molecule you are protecting: acid-sensitive substrate &rarr; Wolff&ndash;Kishner, base-sensitive substrate &rarr; Clemmensen. The mechanisms are not symmetric even though the outcomes are &mdash; the Clemmensen happens on the zinc surface and is not well described by arrows on paper, while the Wolff&ndash;Kishner is drawable all the way through and is therefore the one asked about: hydrazone, deprotonation, carbanion, loss of N<sub>2</sub>. That last step is the engine. A gas escaping the flask cannot react backwards, so the equilibrium in front of it is dragged forward however unfavorable it looked.',
+  note: 'The only thing you have to decide in an exam question is which half of the molecule you are protecting: acid-sensitive substrate &rarr; Wolff&ndash;Kishner, base-sensitive substrate &rarr; Clemmensen. The mechanisms are not symmetric even though the outcomes are &mdash; the Clemmensen happens on the zinc surface and is not well described by arrows on paper, while the Wolff&ndash;Kishner is drawable all the way through and is therefore the one asked about: hydrazone, deprotonation, loss of N<sub>2</sub>, carbanion. The N<sub>2</sub> loss is the engine. A gas escaping the flask cannot react backwards, so the equilibrium in front of it is dragged forward however unfavorable it looked.',
 });
 
 
@@ -6998,7 +7005,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Two molecules with no stereocenter anywhere and a left- and a right-handed form each. In the allene the two <b>cumulated</b> double bonds force the groups on one end into a plane at right angles to the groups on the other, and that twist is what has the handedness. In the biaryl the twist is the same idea held in place by bulk: four groups crowd the bond joining the rings, and for the rings to turn they would have to slide past one another, so the twist stays put and the molecule is not superimposable on its mirror image.',
-  note: 'This is why “stereocenter” and “chiral” must not be treated as the same word. The stereocenter is the usual <i>cause</i> of chirality; chirality itself is a statement about the shape of the whole molecule, and a twist does the job just as well as a tetrahedral carbon. The modern workhorses of this type are BINOL and BINAP, two of the most used ligands in asymmetric catalysis. They are built on naphthalenes rather than benzenes, and there no added blocking groups are needed at all: each naphthalene has a hydrogen in the <i>peri</i> position tucked in beside the joint, and those hydrogens alone hold the twist. The OH or PPh<sub>2</sub> groups are what the metal binds, not what does the locking.',
+  note: 'This is why “stereocenter” and “chiral” must not be treated as the same word. The stereocenter is the usual <i>cause</i> of chirality; chirality itself is a statement about the shape of the whole molecule, and a twist does the job just as well as a tetrahedral carbon. The modern workhorses of this type are BINOL and BINAP, two of the most used ligands in asymmetric catalysis. They are built on naphthalenes rather than benzenes, and the extra ring helps: each naphthalene has a hydrogen in the <i>peri</i> position tucked in beside the joint. Those hydrogens alone are not quite enough &mdash; plain binaphthyl slowly racemizes at room temperature &mdash; but with the OH or PPh<sub>2</sub> groups beside the joint as well, the twist is locked, and the same groups are what the metal binds.',
 });
 
 /* ---------------------------------------------------------------- ch6.3 ---
@@ -7978,7 +7985,7 @@ FIGURES.push({
     return s;
   },
   caption: 'A <b>methyl shift</b>, which is the same move as a hydride shift with a bigger passenger: the group leaves with its bonding pair, so the positive charge ends up where the group came from. It happens for the same reason — the cation it produces is tertiary rather than secondary — and it happens faster than the weak base can reach a hydrogen.',
-  note: 'Now count what would have happened without the shift. Eliminating straight from the original secondary cation gives a disubstituted alkene on the original skeleton; after the shift the best available alkene is tetrasubstituted and sits between two different carbons. Same starting material, different answer — which is why "check for a rearrangement" comes before "apply Zaitsev".',
+  note: 'Now count what would have happened without the shift. Eliminating straight from the original secondary cation gives a monosubstituted alkene on the original skeleton; after the shift the best available alkene is tetrasubstituted and sits between two different carbons. Same starting material, different answer — which is why "check for a rearrangement" comes before "apply Zaitsev".',
 });
 
 FIGURES.push({
@@ -8585,7 +8592,7 @@ FIGURES.push({
     s += outcome(70, 'H₂ , Lindlar', 'Pd poisoned with Pb', 'fg-tag-good', 'cis',
       'cis (Z) alkene', 'both H from one metal surface');
     s += outcome(180, 'Na , NH₃ (l)', 'e⁻, H⁺, e⁻, H⁺', 'fg-tag-good', 'trans',
-      'trans (E) alkene', 'the radical picks its shape first');
+      'trans (E) alkene', 'the vinyl anion sets the shape');
     s += outcome(292, 'H₂ , Pd/C', 'no poison', 'fg-tag', 'alkane',
       'butane', 'both pi bonds gone');
 
@@ -9255,7 +9262,7 @@ FIGURES.push({
     return s;
   },
   caption: 'The rule as a picture rather than as two borrowed words. A donor on the diene’s C1 makes C4 the nucleophilic end; a withdrawing group on the dienophile makes the <i>other</i> carbon the electrophilic one. Pair those two, and the second bond has only one place left to go — which puts the two substituents next door to each other.',
-  note: 'The ring on the right is what the other orientation would give, and it is worth looking at once so you can rule it out on sight: making it would mean bonding δ− to the carbon that is already electron-rich. Note also what the rule does <b>not</b> produce — there is no arrangement of these two partners that separates the substituents by two carbons and then a gap on both sides, so "meta" is always a distractor and never an answer.',
+  note: 'The ring on the right is what the other orientation would give, and it is worth looking at once so you can rule it out on sight: making it would mean bonding δ− to the carbon that is already electron-rich. Note also what the rule does <b>not</b> produce — the 1,3 arrangement is never the favored orientation, so "meta" is a distractor rather than the major product.',
 });
 
 /* ----------------------------------------------------------------- B4c ---
@@ -10783,12 +10790,12 @@ FIGURES.push({
     s += tag(520, 44, 'the contributor, at about 40%');
 
     s += rule(24, 274, 726, 274);
-    s += text(24, 300, 'The C–N bond is partly double, so it does not rotate: the barrier is near 18 kcal/mol.', { cls: 'fg-lbl', size: 13, anchor: 'start' });
+    s += text(24, 300, 'The C–N bond is partly double, so it does not rotate: the barrier is near 20 kcal/mol.', { cls: 'fg-lbl', size: 13, anchor: 'start' });
     s += text(24, 322, 'One methyl sits beside the oxygen and one beside the H, and they never swap — two NMR signals.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     return s;
   },
   caption: 'The nitrogen lone pair is not sitting on nitrogen; it is in the pi system. That is why the C–N bond has partial double-bond character, why the six atoms of the O=C–N unit lie in one plane, and why the nitrogen is flat rather than pyramidal like an amine’s.',
-  note: 'The NMR consequence is the one that can be checked in an afternoon. DMF’s two methyls look identical on paper, and at room temperature they give two separate ¹H signals, because the bond that would swap them cannot turn. Warm the sample enough and the two signals coalesce into one — which is how the 18 kcal/mol number was measured.',
+  note: 'The NMR consequence is the one that can be checked in an afternoon. DMF’s two methyls look identical on paper, and at room temperature they give two separate ¹H signals, because the bond that would swap them cannot turn. Warm the sample enough and the two signals coalesce into one — which is how the 20 kcal/mol number was measured.',
 });
 
 /* ---------------------------------------------------------------- 168 ---
@@ -11048,7 +11055,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Salicylic acid has two OH groups and only one of them reacts. Acetic anhydride acetylates the <b>phenol</b>, giving an ester there and leaving the carboxylic acid alone — which is why aspirin is still an acid, and still tastes like one.',
-  note: 'Why the phenol and not the carboxyl? Because acylating a carboxylic acid would give a mixed anhydride, which is one rung up the ladder from the anhydride you started with and so goes nowhere. Acylating the phenol gives an ester, which is a rung down. The reaction picks the direction the ladder allows.',
+  note: 'Why the phenol and not the carboxyl? Because acylating a carboxylic acid would give a mixed anhydride, which is on the same rung of the ladder as the anhydride you started with and so gains nothing. Acylating the phenol gives an ester, which is a rung down. The reaction picks the direction the ladder allows.',
 });
 
 /* ---------------------------------------------------------------- 172 ---
@@ -17637,7 +17644,7 @@ FIGURES.push({
     return s;
   },
   caption: 'The whole section as one procedure. Everything else here — the pro-R and pro-S labels, the Re and Si faces, the NMR consequences — is vocabulary hung on these three branches.',
-  note: 'The bottom row is what the classification buys you. Homotopic and enantiotopic groups are indistinguishable to an ordinary spectrometer; only diastereotopic ones are guaranteed to show up separately, which is why that branch is the one an NMR problem cares about.',
+  note: 'The bottom row is what the classification buys you. Homotopic and enantiotopic groups are indistinguishable to an ordinary spectrometer; only diastereotopic ones can show up separately, which is why that branch is the one an NMR problem cares about.',
 });
 
 /* ----------------------------------------------------------------- 79 ---

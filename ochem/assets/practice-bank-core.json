@@ -2128,7 +2128,7 @@
     "The oxygen",
     "The carbon",
     "Whichever is least electronegative",
-    "Neither — organic molecules have no central atom"
+    "Neither — methanol has no single central atom"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -3632,7 +3632,7 @@
     "Only O and N",
     "Only atoms carrying a formal charge",
     "Only ring atoms",
-    "Every atom except carbon"
+    "Every atom except carbon and the hydrogens on carbon"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -5511,7 +5511,7 @@
    "type": "mcq"
   },
   {
-   "q": "An amine (R–NH₂) is a poor leaving group, but it can depart once its nitrogen carries a positive charge, as in R–NH₃⁺ or R–NR₃⁺, because what leaves is then a neutral amine.",
+   "q": "An amine (R–NH₂) is a poor leaving group, but it can depart once its nitrogen carries a positive charge, as in a quaternary ammonium salt R–NR₃⁺, because what leaves is then a neutral amine.",
    "options": [
     "True",
     "False"
@@ -5628,7 +5628,7 @@
    "q": "If a leaving group is a poor one (a strong base) in a proposed SN1 mechanism, what is the most likely consequence for the reaction?",
    "options": [
     "The reaction proceeds at the same rate regardless of leaving group quality",
-    "Ionization becomes rate-limiting and the reaction is very slow",
+    "The rate-limiting ionization step becomes very slow",
     "The nucleophile becomes unreactive instead",
     "The reaction mechanism switches automatically to E2"
    ],
@@ -8061,7 +8061,7 @@
    "type": "mcq"
   },
   {
-   "q": "A double bond in a ring is numbered so that its two carbons are which?",
+   "q": "In a cycloalkene with no higher-priority group, a double bond in the ring is numbered so that its two carbons are which?",
    "options": [
     "Any two adjacent carbons",
     "C1 and C6",
@@ -8741,7 +8741,7 @@
    "type": "mcq"
   },
   {
-   "q": "A Lewis acid must have a formally empty orbital.",
+   "q": "A Lewis acid must have an incomplete octet with an empty p orbital, as BF₃ does.",
    "options": [
     "True",
     "False"
@@ -9887,7 +9887,7 @@
    "type": "mcq"
   },
   {
-   "q": "Placing an electron-withdrawing group two carbons further from the acidic proton usually leaves the acidity almost unchanged.",
+   "q": "Placing an electron-withdrawing group two carbons further from the acidic proton usually removes most of its effect on the acidity.",
    "options": [
     "True",
     "False"
@@ -11883,7 +11883,7 @@
    "options": [
     "The radical is resonance-stabilized",
     "It is sterically exposed",
-    "Allylic bonds are simply weaker than most",
+    "The double bond polarizes the C–H bond",
     "It is more acidic than most"
    ],
    "correct": 0,
@@ -12374,7 +12374,7 @@
     "Are identical and can be superimposed",
     "Are diastereomers",
     "Are enantiomers that cannot be superimposed",
-    "Are the same constitutional isomer"
+    "Are constitutional isomers of each other"
    ],
    "correct": 2,
    "difficulty": "easy",
@@ -13735,7 +13735,7 @@
    ],
    "correct": 0,
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "A meso compound meets a chiral reagent. How can its two mirror-image halves behave?",
@@ -16802,7 +16802,7 @@
    "type": "mcq"
   },
   {
-   "q": "The secondary bromide shown is treated with NaOEt (a moderately bulky, strong base) in ethanol. Which mechanism is the expected major pathway?",
+   "q": "The secondary bromide shown is treated with NaOEt (a strong, unhindered base) in ethanol. Which mechanism is the expected major pathway?",
    "molecule": "q-cyclohexyl-bromide",
    "options": [
     "SN1 exclusively",
@@ -17298,7 +17298,7 @@
    "q": "Bredt's rule rules out a double bond at the bridgehead of a small bicyclic system. Which of these is the reliable form of the rule?",
    "options": [
     "No bicyclic compound can contain a double bond anywhere",
-    "Bridgehead alkenes become isolable once the bicyclic skeleton has eight or more carbons",
+    "Bridgehead alkenes become isolable once the double bond sits trans in a ring of eight or more atoms",
     "Bridgehead carbons cannot bond to hydrogen at all",
     "Bridgehead alkenes are fine as long as the ring is aromatic"
    ],
@@ -18005,7 +18005,7 @@
   {
    "q": "Why is anti-Markovnikov addition essentially unique to HBr among the hydrogen halides (HF, HCl, HBr, HI), rather than occurring readily with HCl or HI too?",
    "options": [
-    "the radical chain steps are selective for Br but not Cl or I",
+    "only for HBr are both radical chain steps energetically downhill",
     "HCl and HI simply don't exist as reagents",
     "HCl and HI are too unreactive to add to alkenes by any mechanism",
     "anti-Markovnikov addition actually works equally well for all four halides"
@@ -23379,7 +23379,7 @@
    "type": "mcq"
   },
   {
-   "q": "Which two reagents reduce a carboxylic acid?",
+   "q": "Which of these reagents reduces a carboxylic acid?",
    "options": [
     "Both NaBH4 and LiAlH4",
     "LiAlH4 only, among these",
@@ -23972,7 +23972,7 @@
    "type": "mcq"
   },
   {
-   "q": "One fragment is an aldehyde and one a ketone. What does that say about the alkene?",
+   "q": "After ozonolysis, one fragment is an aldehyde (not formaldehyde) and one a ketone. What does that say about the alkene?",
    "options": [
     "It was trisubstituted",
     "It was terminal",
@@ -25374,7 +25374,7 @@
    "type": "mcq"
   },
   {
-   "q": "Why is a nitro group (-NO2) an especially strong activator of an adjacent alpha C-H's acidity, often outperforming even two ketone carbonyls?",
+   "q": "Why is a nitro group (-NO2) an especially strong activator of an adjacent alpha C-H's acidity, making a C-H nearly as acidic as one flanked by two ketone carbonyls?",
    "options": [
     "Nitro groups have no effect on adjacent C-H acidity",
     "Nitro groups only work through induction, never through resonance",
@@ -26048,7 +26048,7 @@
    "options": [
     "Esters can never act as electrophiles under any circumstances",
     "Ketone enolates are incapable of attacking any carbonyl electrophile",
-    "Ketone alpha hydrogens are more acidic and esters are better electrophiles",
+    "Ketone alpha hydrogens are more acidic and the ester has a leaving group",
     "There is no preferred direction; both directions always occur to an identical extent"
    ],
    "correct": 2,
@@ -26839,7 +26839,7 @@
    "type": "tf"
   },
   {
-   "q": "Which reagent reduces an amide all the way to the corresponding primary amine, removing the carbonyl oxygen entirely?",
+   "q": "Which reagent reduces an amide all the way to the corresponding amine, removing the carbonyl oxygen entirely?",
    "options": [
     "aqueous NaOH with heat alone",
     "lithium aluminum hydride (LiAlH4)",
@@ -27859,7 +27859,7 @@
    "type": "mcq"
   },
   {
-   "q": "Why is meta attack on anisole (methoxybenzene) less favorable than ortho or para attack, even though meta attack is not directly destabilized by the methoxy group's electron-withdrawing induction?",
+   "q": "Why is meta attack on anisole (methoxybenzene) less favorable than ortho or para attack, given that the methoxy oxygen's inductive withdrawal reaches every ring position?",
    "options": [
     "Because meta attack is sterically blocked",
     "Because meta attack does not generate a carbocation at all",
@@ -28324,7 +28324,7 @@
    "type": "mcq"
   },
   {
-   "q": "An unknown of formula C₄H₈O₂ shows IR bands at 2960 (medium), 1735 (very strong, sharp) and 1240 (strong), with a completely flat baseline from 2400 to 3600 cm⁻¹. Which structure is consistent with all four observations?",
+   "q": "An unknown of formula C₄H₈O₂ shows IR bands at 2960 (medium), 1735 (very strong, sharp) and 1240 (strong), with no broad absorption anywhere from 2400 to 3600 cm⁻¹. Which structure is consistent with all four observations?",
    "options": [
     "CH₃CH₂CH₂COOH, butanoic acid",
     "CH₃COOCH₂CH₃, ethyl acetate",
@@ -28518,7 +28518,7 @@
    "type": "mcq"
   },
   {
-   "q": "Two protons on the same carbon can be diastereotopic and show different chemical shifts if replacing each one individually (in turn) with a test group would create distinguishable stereochemical outcomes.",
+   "q": "Two protons on the same carbon can be diastereotopic and show different chemical shifts if replacing each one individually (in turn) with a test group would give a pair of diastereomers.",
    "options": [
     "True",
     "False"
@@ -28838,7 +28838,7 @@
    "options": [
     "Alkyne carbons have no electronic effects on their chemical shift",
     "Alkynes never appear in ¹³C NMR spectra",
-    "Triple-bond anisotropy and greater s-character",
+    "Triple-bond anisotropy shields them, despite greater s-character",
     "Alkyne carbons are always attached to oxygen"
    ],
    "correct": 2,
@@ -29557,7 +29557,7 @@
   {
    "q": "Why is a branch point a good disconnection site?",
    "options": [
-    "It is where the molecule was assembled",
+    "It splits the target into comparably simple pieces",
     "Branches are the most reactive positions",
     "It avoids stereochemistry",
     "Branches are weakest"
@@ -30003,7 +30003,7 @@
    "type": "mcq"
   },
   {
-   "q": "What is the retron for an intramolecular aldol?",
+   "q": "What kind of precursor does an intramolecular aldol need?",
    "options": [
     "A 1,2-diol arrangement",
     "A 1,4- or 1,5-dicarbonyl",
@@ -33374,7 +33374,7 @@
     "The mixture turns black",
     "The solvent boils away",
     "A precipitate forms",
-    "Magnesium is left over"
+    "The magnesium never starts to react"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -36798,7 +36798,7 @@
    "type": "mcq"
   },
   {
-   "q": "How many products does the benzyne route give?",
+   "q": "How many products can the benzyne route give from a substituted aryl halide such as 4-chlorotoluene?",
    "options": [
     "Two",
     "One",
@@ -36909,7 +36909,7 @@
   {
    "q": "Which ring is unreactive to both routes?",
    "options": [
-    "A plain benzene ring with NaNH2",
+    "Plain chlorobenzene with NaNH2",
     "One with two ortho nitro groups",
     "Unactivated, no ortho H",
     "One with a para nitro group"
@@ -38428,7 +38428,7 @@
    "type": "mcq"
   },
   {
-   "q": "Can an aryl halide be converted to a phenol directly?",
+   "q": "Under ordinary conditions, can an aryl halide be converted to a phenol directly?",
    "options": [
     "Only if activated",
     "Yes, with NaOH",
@@ -38892,7 +38892,7 @@
    "options": [
     "Random placement",
     "Substituents at chain ends",
-    "Substituents alternate",
+    "Substituents on every other carbon",
     "Substituents on adjacent carbons"
    ],
    "correct": 2,
@@ -39977,7 +39977,7 @@
    "q": "Which feature gives hydrolytic resistance?",
    "options": [
     "Carbonate linkages",
-    "Ether linkages",
+    "Anhydride linkages",
     "Amide linkages",
     "Ester linkages"
    ],
@@ -40662,7 +40662,7 @@
    "type": "mcq"
   },
   {
-   "q": "Which species is actually oxidized when an aldehyde becomes an acid?",
+   "q": "With Jones reagent, which species is actually oxidized when an aldehyde becomes an acid?",
    "options": [
     "The carbonyl itself",
     "The hydrate",
@@ -41391,7 +41391,7 @@
     "Oxidation",
     "Reduction",
     "Rearrangement",
-    "Substitution"
+    "No change in oxidation level"
    ],
    "correct": 3,
    "difficulty": "hard",
@@ -41607,7 +41607,7 @@
     "Aluminum blocks the second hydride",
     "Only one equivalent is added",
     "Low temperature stops it",
-    "The anion is not electrophilic"
+    "The imine anion is too weak an electrophile for it"
    ],
    "correct": 3,
    "difficulty": "hard",
@@ -42413,12 +42413,12 @@
    "type": "mcq"
   },
   {
-   "q": "A chemist forms the kinetic enolate of 2-methylcyclohexanone with LDA at -78 C, then lets the flask warm to room temperature for an hour before adding the electrophile. What has gone wrong?",
+   "q": "A chemist forms the enolate of 2-methylcyclohexanone with only 0.9 equivalent of LDA at -78 C, then lets the flask warm to room temperature for an hour before adding the electrophile. What has gone wrong?",
    "options": [
     "The enolate has been protonated by the THF solvent",
     "LDA reverses its own deprotonation on warming",
     "Nothing: temperature stops mattering once the enolate has formed",
-    "The diisopropylamine in the flask shuttles protons, so the mixture drifts thermodynamic"
+    "The leftover ketone shuttles protons, so the mixture drifts thermodynamic"
    ],
    "correct": 3,
    "difficulty": "hard",

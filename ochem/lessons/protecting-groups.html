@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function(){
           '<li><b>An alcohol becomes a silyl ether.</b> TBSCl with a base such as imidazole replaces the O–H with an O–Si bond, leaving no acidic proton for a Grignard to find. Removed with <b>fluoride</b> (TBAF) — the Si–F bond is exceptionally strong, so the deprotection needs nothing acidic, basic or oxidizing.</li>' +
           '<li><b>A ketone or aldehyde becomes an acetal.</b> A diol such as ethylene glycol with acid catalysis, removing water, converts C=O into a cyclic acetal with no electrophilic carbon at all. Removed with <b>aqueous acid</b> — the same equilibrium run backwards, which is why it is so reliable.</li>' +
           '</ul>' +
-          '<div class="explain-box">Those two come off under <b>unrelated</b> conditions — one needs fluoride, the other aqueous acid, and neither touches the other. Protecting groups removable independently are called <b>orthogonal</b>, and that is what lets a molecule carry two and have them unmasked in a chosen order.<br><br>It also sets a trap: an acetal cannot survive a later step that needs aqueous acid for some other reason. Choosing a protecting group means checking it against <i>every</i> remaining step.</div>'
+          '<div class="explain-box">Those two come off under <b>different</b> conditions — fluoride removes the silyl ether and leaves an acetal alone. The reverse is less clean: silyl ethers are somewhat acid-sensitive too, so the aqueous acid that removes the acetal has to be kept mild. Protecting groups removable independently are called <b>orthogonal</b>, and that is what lets a molecule carry two and have them unmasked in a chosen order.<br><br>It also sets a trap: an acetal cannot survive a later step that needs aqueous acid for some other reason. Choosing a protecting group means checking it against <i>every</i> remaining step.</div>'
       },
       {
         render: function(api){
@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'They are the same size'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct. A silyl ether comes off with fluoride and an acetal with aqueous acid, and neither condition touches the other — so a molecule can carry both and have them unmasked in whichever order the route needs. Protecting two different kinds of group is necessary but not sufficient; the removals have to be independent.',
+        correctFeedback: 'Correct. A silyl ether comes off with fluoride, which leaves an acetal alone, and an acetal comes off with mild aqueous acid chosen to spare the silyl ether — so a molecule can carry both and have them unmasked in whichever order the route needs. Protecting two different kinds of group is necessary but not sufficient; the removals have to be independent.',
         wrongFeedback: 'The word is about removal rather than installation. What would you need to be true to unmask one of two protected groups while leaving the other protected?'
       },
       {

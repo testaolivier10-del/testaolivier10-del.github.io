@@ -110,7 +110,7 @@ ochem/                 The Organic Chemistry course
   learn.html             The textbook: a contents rail beside one chapter at a time,
                             rendered from assets/curriculum.js + notes/ (see Textbook)
   notes/                 One HTML fragment per curriculum topic — the written course,
-                            64 sections, fetched on demand by the textbook
+                            121 sections, fetched on demand by the textbook
   practice.html, review.html   Question practice and the review queue, both
                             driven by assets/session-runner.js
   flashcards.html        The flashcard deck: spaced repetition over cards read
@@ -127,7 +127,7 @@ ochem/                 The Organic Chemistry course
                          aldol, claisen. Each is click-through: identify the
                          nucleophile and electrophile, push the arrows yourself,
                          predict the product
-  lessons/               58 lesson pages, from Module 1 (Foundations —
+  lessons/               117 lesson pages, from Module 1 (Foundations —
                          atomic-structure, orbitals, hybridization, bonding,
                          electronegativity, formal-charge, lewis-structures,
                          molecular-geometry, bond-polarity) through
@@ -157,7 +157,7 @@ ochem/                 The Organic Chemistry course
                             second attempt, so walking back and forth can't move a score
                             (retries within a step are unaffected)
     practice-bank.json     3,630 multiple-choice/true-false questions, 30 per topic
-                            across the 78 shipped topics, keyed by topic id. This is
+                            across all 121 topics, keyed by topic id. This is
                             the file you EDIT; nothing fetches it at runtime any more
     practice-bank-core.json  Generated. Stems, options and answer keys — what the two
                             pages actually wait on before their first screen (168 KB gz)
@@ -253,15 +253,15 @@ speaker button in the header mutes it, remembered in `localStorage` under
 
 ### Textbook (`ochem/learn.html`)
 
-Learn is the course's written half. Every topic's prose is one HTML fragment under `ochem/notes/<topic>.html` — one per curriculum topic, 62 in all, ~63,000 words — and `ochem/assets/textbook.js` renders a contents rail (14 chapters, searchable, with per-chapter read counts) beside one chapter at a time, fetching that chapter's notes on open so the book costs a chapter rather than all 62 topics.
+Learn is the course's written half. Every topic's prose is one HTML fragment under `ochem/notes/<topic>.html` — one per curriculum topic, 121 in all — and `ochem/assets/textbook.js` renders a contents rail (23 chapters, searchable, with per-chapter read counts) beside one chapter at a time, fetching that chapter's notes on open so the book costs a chapter rather than all 121 topics.
 
-The rail's box searches the prose, not just the 64 section names. `ochem/assets/textbook-search.js` indexes each note fragment as it is fetched — the index is built from the same cache the chapters read from, so there is no separate corpus to keep in sync, and the first query fetches whatever has not been read yet. A query lists the matching passages with the words highlighted; picking one opens that chapter and scrolls to the exact paragraph, still highlighted. Every query term has to appear in a section for it to match, and ordinary question words ("what is a nucleophile") are dropped so a typed question searches for the idea.
+The rail's box searches the prose, not just the 121 section names. `ochem/assets/textbook-search.js` indexes each note fragment as it is fetched — the index is built from the same cache the chapters read from, so there is no separate corpus to keep in sync, and the first query fetches whatever has not been read yet. A query lists the matching passages with the words highlighted; picking one opens that chapter and scrolls to the exact paragraph, still highlighted. Every query term has to appear in a section for it to match, and ordinary question words ("what is a nucleophile") are dropped so a typed question searches for the idea.
 
 The interactive lessons are unchanged and each section links out to its own. Reading is tracked separately from mastery in `ochem_textbook_read`, set by reaching the end of a section or by hand, worth 5 XP the first time, and never mixed into the mastery number — which still comes only from answering questions. Old per-lesson `?notes=1` URLs redirect to the matching section.
 
 ### The NREMT textbook (`nremt/study-notes.html`)
 
-The NREMT notes use the same shell as the ochem book — the shared rail and chapter frame in `theme.css` — with the forty chapters held as inline data (`CHAPTERS`) in the page itself, the way the glossary and mnemonics are, so search and the tutor index them without a fetch. Everything on the page is generated from that data, and a chapter is extended by appending to it.
+The NREMT notes use the same shell as the ochem book — the shared rail and chapter frame in `theme.css` — with the forty chapters held as data in `nremt/assets/study-notes.json`, which the page fetches on load (as does the tutor, to index them). Everything on the page is generated from that data, and a chapter is extended by appending to it.
 
 What makes it read as a textbook rather than a page of notes, and where each piece comes from:
 
@@ -556,7 +556,7 @@ It works in two layers, and the first one is always on:
 
    When the reference pages answer weakly, a second tier loads: each course's
    practice explanations, built by `scripts/build-tutor-bank.mjs` into
-   `<course>/assets/tutor-bank.json` (NREMT 2,106 entries, ochem 1,844). That
+   `<course>/assets/tutor-bank.json` (NREMT 2,106 entries, ochem 2,917). That
    is the largest body of teaching prose either course has — written to explain
    why an answer is right — and it was invisible to the assistant because it
    sits inside megabyte question banks alongside answer keys. It is fetched

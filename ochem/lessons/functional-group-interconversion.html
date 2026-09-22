@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function(){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Which kind of move is each conversion?</h2>' +
-            '<p class="step-body">Count bonds to oxygen and bonds to hydrogen. If both change in the same direction, it is a ladder move; if one is traded for another, it is sideways.</p>' +
+            '<p class="step-body">Count bonds to oxygen and bonds to hydrogen. If a bond to hydrogen is traded for a bond to oxygen (or the reverse), it is a ladder move; if one electronegative partner is traded for another, it is sideways.</p>' +
             '<div class="radical-sort">' +
             CASES.map(function(c){
               return '<div class="radical-row" data-case="' + c.id + '">' +

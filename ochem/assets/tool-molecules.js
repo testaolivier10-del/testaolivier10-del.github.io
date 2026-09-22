@@ -121,7 +121,7 @@
         {a:'c1',b:'c2',order:2},{a:'c2',b:'c3'},{a:'c3',b:'c4',order:2},
         {a:'c4',b:'c5'},{a:'c5',b:'c6',order:2},{a:'c6',b:'c1'},{a:'c1',b:'c7'}
       ],
-      caption:'A primary carbocation that behaves like a tertiary one. Resonance is why.'
+      caption:'A primary carbocation that behaves like a secondary one. Resonance is why.'
     };
   })();
 

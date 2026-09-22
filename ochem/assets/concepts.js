@@ -191,7 +191,7 @@
     { id:'grignard-scope', title:'What a Grignard gives you', family:'Organometallics',
       topics:['grignard-reagents','organolithium-reagents','nucleophilic-addition','acyl-substitution','epoxides'],
       dependsOn:['polarity-reversal'],
-      hint:'Name the electrophile first; the alcohol class follows from it, and only esters take two equivalents.' },
+      hint:'Name the electrophile first; the alcohol class follows from it, and only esters and acyl chlorides take two equivalents.' },
     { id:'hard-soft-addition', title:'1,2 against 1,4', family:'Organometallics',
       topics:['gilman-reagents','grignard-reagents','nucleophilic-addition','michael-robinson','aldol'],
       dependsOn:['grignard-scope'],

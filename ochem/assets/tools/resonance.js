@@ -693,7 +693,7 @@
                       has its own two Kekulé forms, which a book showing "the three
                       delocalized forms" is quietly holding fixed. Saying so is better than
                       hiding a form to match the expected number. */
-                   (/benzene|phenoxide|benzyl/.test(pick.id)
+                   (/phenoxide|benzyl/.test(pick.id)
                      ? 'That includes the ring’s own two Kekulé forms — a textbook picture usually holds those fixed and shows you one fewer. '
                      : '') +
                    'Draw them in the tool above and it will tell you which ones you have left to find.'

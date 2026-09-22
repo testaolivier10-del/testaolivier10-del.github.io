@@ -225,7 +225,7 @@ const SCENARIOS = [
         vitals: "HR 118 · BP 108/70 · RR 22",
         text: "You arrive to find a 28-year-old man lying next to a motorcycle, alert and shouting in pain. His right thigh has an open wound with blood visibly spurting in time with his pulse. Bystanders are standing around, unsure what to do.",
         choices: [
-          { text: "Apply a tourniquet high and tight above the wound straight away, then reassess", next: "s1_tourniquet_first" },
+          { text: "Apply a tourniquet 2–3 inches above the wound straight away, then reassess", next: "s1_tourniquet_first" },
           { text: "Apply firm direct pressure to the wound immediately", next: "s1_pressure_good", consequence: "Direct pressure is never a wrong instinct and it is the right first move for most bleeding — but blood spurting in time with the pulse from a thigh is arterial and can empty a patient in minutes. Current guidance is to go straight to a tourniquet for life-threatening extremity bleeding rather than working up a ladder toward one. You have not lost him, but you have spent time you did not need to spend." },
           { text: "Ask him what happened and check for other injuries first", next: "s1_delayed", consequence: "You spend a moment gathering the story while the bleeding continues unchecked. By the time you look back down, a visibly larger pool of blood has formed and he looks paler." },
           { text: "Get a blood pressure reading before touching the wound", next: "s1_delayed", consequence: "The cuff takes almost a minute to cycle. The bleeding never stopped while you waited — his pressure comes back low, and you've lost time you didn't have." }
@@ -347,7 +347,7 @@ const SCENARIOS = [
         text: "She's alert and oriented, describes the pain as crushing and radiating to her left arm. No allergies. She has her own prescribed nitroglycerin with her, and takes nothing in the sildenafil family — worth asking every patient before nitro, not only the men, since the same drugs are prescribed for pulmonary hypertension. Taken within 24 to 48 hours they turn a normal nitro dose into profound, refractory hypotension.",
         choices: [
           { text: "Give aspirin (chewed) per protocol, and check her blood pressure before assisting with her nitro", next: "s2_meds_good" },
-          { text: "Give nitro first — several doses, before considering aspirin at all", next: "s2_meds_outoforder", consequence: "Order isn't strictly fixed, but you also didn't check her blood pressure before that first dose — her pressure was borderline, and it drops further with nitro. She now feels lightheaded and worse." }
+          { text: "Give nitro first — several doses, before considering aspirin at all", next: "s2_meds_outoforder", consequence: "Order isn't strictly fixed, but you also didn't check her blood pressure before that first dose — stacking several doses back to back with no blood pressure check between them drops her pressure sharply. She now feels lightheaded and worse." }
         ]
       },
       s2_history_worse: {
@@ -564,7 +564,7 @@ const SCENARIOS = [
     id: "s5",
     title: "Anaphylaxis at a Backyard Barbecue",
     domain: "Allergic & Immunologic",
-    blurb: "A bee sting, a peanut allergy nobody double-checked, and a throat that's starting to feel tight.",
+    blurb: "A party snack, a peanut allergy nobody double-checked, and a throat that's starting to feel tight.",
     startNode: "s5_start",
     nodes: {
       s5_start: {
@@ -717,7 +717,7 @@ const SCENARIOS = [
         ]
       },
       s6_shock_late: {
-        text: "Compressions resume, but with the earlier delays factored in, it takes several more cycles before the AED shows a perfusing rhythm and he starts to breathe on his own.",
+        text: "Compressions resume, but with the earlier delays factored in, it takes several more cycles before the AED advises no shock, you find a pulse, and he starts to breathe on his own.",
         choices: [
           { text: "Reassess breathing and pulse, and prepare for transport with continued monitoring", next: "s6_end_ok" }
         ]
@@ -1145,7 +1145,7 @@ const SCENARIOS = [
         choices: [
           { text: "Treat the injuries, keep your manner neutral, and continue a careful assessment", next: "s13_neutral" },
           { text: "Tell the caregiver the injuries do not match the story and ask him directly what really happened", next: "s13_confronted", consequence: "Confronting a caregiver on scene changes the call from a medical one into a confrontation, and the most common outcome is that the family refuses transport and disappears — taking the child with them. Your suspicion is reported, not argued." },
-          { text: "Say nothing, treat the arm, and leave the rest alone since it is not your business", next: "s13_ignored", consequence: "It is precisely your business. EMTs are mandatory reporters in every state, and a report is a report of what you observed, not an accusation you have to be able to prove." }
+          { text: "Say nothing, treat the arm, and leave the rest alone since it is not your business", next: "s13_ignored", consequence: "It is precisely your business. EMTs are mandatory reporters in nearly every state, and a report is a report of what you observed, not an accusation you have to be able to prove." }
         ]
       },
       s13_confronted: {
@@ -1192,7 +1192,7 @@ const SCENARIOS = [
           { text: "Hand off in person to the receiving nurse and physician as well as in writing", next: "s13_end_good" }
         ]
       },
-      s13_end_good: { ending: "good", text: "Treated the child, stayed neutral on scene, documented observations rather than conclusions, and reported. The finding that carried the most weight was not a bruise: a 7-month-old who is not yet crawling has very few ways to bruise his own back, and bruises of several different colors happened on several different days. None of that had to be said out loud to the caregiver, and all of it had to be written down." },
+      s13_end_good: { ending: "good", text: "Treated the child, stayed neutral on scene, documented observations rather than conclusions, and reported. The finding that carried the most weight was not a bruise: a 7-month-old who is not yet crawling has very few ways to bruise his own back, and bruises of several different colors suggest injuries at more than one time. None of that had to be said out loud to the caregiver, and all of it had to be written down." },
       s13_end_bad: { ending: "bad", text: "No report is made, on the assumption that someone else will make it. The arm is treated and the family goes home. Mandatory reporting is mandatory precisely because it does not depend on anyone else noticing, on proof, or on being right — the standard is reasonable suspicion, and the report is the entire obligation." }
     }
   },
@@ -1869,7 +1869,7 @@ const SCENARIOS = [
         vitals: "HR 122 · BP 104/64 · RR 22 · Temp 102.4 °F",
         text: "Cooling continues en route, his temperature is falling, and he is beginning to answer questions. You notify the hospital of a heat stroke with the temperature on arrival at the scene and the cooling already delivered.",
         choices: [
-          { text: "Keep cooling, keep reassessing mental status, and hand off the numbers with times", next: "s23_end_good" }
+          { text: "Keep cooling until he nears 102 °F (39 °C), then stop to avoid overshooting; keep reassessing mental status, and hand off the numbers with times", next: "s23_end_good" }
         ]
       },
       s23_end_good: { ending: "good", text: "Cooled first and assessed alongside, which is the order that changes outcomes — in heat stroke the time to cooling predicts survival and neurological recovery more than anything else an EMT does. The finding that separated this from heat exhaustion was the mental status, not the temperature and not the skin: hot and dry is classic, but a heat stroke patient who is still sweating is still a heat stroke patient if they are confused." }

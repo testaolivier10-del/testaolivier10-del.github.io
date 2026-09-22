@@ -313,7 +313,7 @@
 
   add('Ring strain', {
     id:'cyclohexane-boat-3d', name:'Cyclohexane (boat)', formula:'C₆H₁₂',
-    note:'The conformation the chair is better than. Put it next to the chair and look along the ring: two carbons point the same way at the "prow" and "stern", their hydrogens crowd into each other, and four C–C bonds are eclipsed. About 7 kcal/mol worse, and the ring flip never stops here.',
+    note:'The conformation the chair is better than. Put it next to the chair and look along the ring: two carbons point the same way at the "prow" and "stern", their hydrogens crowd into each other, and two C–C bonds are fully eclipsed. About 7 kcal/mol worse, and the ring flip never stops here.',
     atoms: [
       { el:'C', pos:v( 1.25, 0.75, 0.00) }, { el:'C', pos:v( 0.00, 1.45, 0.65) },
       { el:'C', pos:v(-1.25, 0.75, 0.00) }, { el:'C', pos:v(-1.25,-0.75, 0.00) },

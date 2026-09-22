@@ -139,17 +139,17 @@ document.addEventListener('DOMContentLoaded', function(){
 
   var CASES = [
     { id:'k1', t:'<b>LDA</b>, 1 equiv, &minus;78 &deg;C, ketone added to base', right:'kin',
-      why:'Kinetic, and every item is closing a different door. LDA is strong enough that its own deprotonation never reverses; bulky enough to prefer the open proton; inverse addition leaves no free ketone to shuttle protons; and the cold keeps the diisopropylamine it generates from doing the same job. Three routes back, all shut.' },
+      why:'Kinetic, and every item is closing a different door. LDA is strong enough that its own deprotonation never reverses; bulky enough to prefer the open proton; inverse addition leaves no free ketone to shuttle protons; and the cold slows any proton transfer that a stray proton donor could still manage. Three routes back, all shut.' },
     { id:'k2', t:'<b>NaOEt</b> in EtOH, room temperature', right:'thd',
       why:'Thermodynamic. The base is not strong enough to deprotonate completely, so every deprotonation can reverse, and the mixture accumulates as the more stable enolate — the more substituted C=C.' },
     { id:'k3', t:'<b>LDA</b>, 1 equiv, room temperature, halide added at once — nothing is left to stand', right:'kin',
-      why:'Kinetic, and this is the row that tests whether you have the idea or the recipe. What makes an enolate kinetic is a closed route back, not a low temperature: LDA’s own deprotonation does not reverse at any temperature, and with the halide added at once nothing else has time to happen either. Wait, though, and the row below shows what goes wrong — a full equivalent of diisopropylamine is sitting in the flask, and at room temperature it will shuttle protons between the two enolates. The cold does not create the selectivity; it buys the time, which is why −78 °C is in every real procedure.' },
+      why:'Kinetic, and this is the row that tests whether you have the idea or the recipe. What makes an enolate kinetic is a closed route back, not a low temperature: LDA’s own deprotonation does not reverse at any temperature, and with the halide added at once nothing else has time to happen either. Wait, though, and the row below shows what goes wrong — any trace of unreacted ketone in the flask is a proton donor, and at room temperature it will shuttle protons between the two enolates. The cold does not create the selectivity; it buys the time, which is why −78 °C is in every real procedure.' },
     { id:'k4', t:'<b>NaH</b>, warm, long reaction time', right:'thd',
       why:'Thermodynamic — and for a reason that breaks the easy rule. NaH’s deprotonation is as irreversible as LDA’s: its conjugate acid is H<sub>2</sub>, which leaves the flask, so nothing hands the proton back to the base. What equilibrates the mixture is that NaH is slow and heterogeneous, so a large pool of un-ionized ketone sits there throughout, and free ketone passes protons between the two enolates. Strong does not mean kinetic.' },
     { id:'k5', t:'<b>Pyrrolidine</b>, cat. acid, then the halide', right:'enam',
       why:'Neither — this is the enamine route. A secondary amine gives a neutral nucleophile that forms toward the less substituted side, needs no strong base, and stops cleanly after one alkylation — alkylating it leaves an iminium salt with no nucleophilic carbon at all.' },
     { id:'k6', t:'<b>LDA</b>, then warm and stir before adding the halide', right:'thd',
-      why:'Thermodynamic, and for the reason the row above shows. The deprotonation is irreversible, but the flask still holds a full equivalent of diisopropylamine from the base, and warming lets that amine pass protons between the two enolates until the mixture settles on the more stable one. Nothing about the base changed; a route back was left open.' }
+      why:'Thermodynamic, and for the reason the row above shows. The deprotonation is irreversible, but any trace of unreacted ketone left in the flask is a proton donor, and warming lets it pass protons between the two enolates until the mixture settles on the more stable one. Nothing about the base changed; a route back was left open.' }
   ];
   var OPTS = [ { k:'thd', l:'Thermodynamic enolate' }, { k:'enam', l:'Neither — an enamine' },
                { k:'kin', l:'Kinetic enolate' } ];
@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function(){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Which enolate do these conditions give?</h2>' +
-            '<p class="step-body">One question decides every row, and it is not about the base: <b>can the two enolates trade a proton?</b> Anything that can carry one between them — a deprotonation that reverses, leftover ketone, or the amine the base generated — lets the mixture find the more stable enolate.</p>' +
+            '<p class="step-body">One question decides every row, and it is not about the base: <b>can the two enolates trade a proton?</b> Anything that can carry one between them — a deprotonation that reverses, leftover ketone, or a protic solvent — lets the mixture find the more stable enolate.</p>' +
             '<div class="radical-sort">' +
             CASES.map(function(c){
               return '<div class="radical-row" data-case="' + c.id + '">' +
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function(){
               var cfg = CASES.filter(function(c){ return c.id === id; })[0];
               if(btn.getAttribute('data-o') !== cfg.right){
                 missed = true; btn.classList.add('wrong'); btn.disabled = true;
-                api.showFeedback(fb, false, 'Do not read the temperature first, and do not read the strength of the base. Ask what could carry a proton from one α carbon to the other: a deprotonation that reverses, leftover ketone, or the amine the base left behind.');
+                api.showFeedback(fb, false, 'Do not read the temperature first, and do not read the strength of the base. Ask what could carry a proton from one α carbon to the other: a deprotonation that reverses, leftover ketone, or a protic solvent.');
                 return;
               }
               done[id] = true; btn.classList.add('correct');
@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'Both &alpha; carbons are deprotonated'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct, and this is why the direction of addition is written into the recipe rather than left to taste. Adding base to ketone means that until the very end there is always <b>excess unreacted ketone</b> in the flask, and free ketone is an acid that any enolate already formed can take a proton from. The two enolates can therefore trade, and the mixture drifts to the more stable one while the thermometer says nothing is happening. The deeper point is that LDA’s irreversibility closes exactly one route of three. Leftover ketone is the second, and the diisopropylamine LDA itself generates is the third — which is why NaH, whose deprotonation is every bit as irreversible as LDA’s, is a thermodynamic base: it is slow enough that free ketone is always present. Strong does not mean kinetic.'
+        correctFeedback: 'Correct, and this is why the direction of addition is written into the recipe rather than left to taste. Adding base to ketone means that until the very end there is always <b>excess unreacted ketone</b> in the flask, and free ketone is an acid that any enolate already formed can take a proton from. The two enolates can therefore trade, and the mixture drifts to the more stable one while the thermometer says nothing is happening. The deeper point is that LDA’s irreversibility closes only one route. Leftover ketone is another — which is why NaH, whose deprotonation is every bit as irreversible as LDA’s, is a thermodynamic base: it is slow enough that free ketone is always present. Strong does not mean kinetic.'
       }
     ]
   });

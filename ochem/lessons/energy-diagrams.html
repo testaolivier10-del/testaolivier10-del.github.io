@@ -209,9 +209,9 @@ document.addEventListener('DOMContentLoaded', function(){
           'Step 2, because it is the step that actually forms the product',
           'They contribute equally, so the rate is the sum of the two barriers'
         ],
-        correctIndex: 0,
-        correctFeedback: 'Correct. A barrier is a climb, measured from the valley immediately in front of it. Step 1 climbs 18 from the reactants; step 2 climbs only 22 &minus; 14 = 8 from the intermediate. The higher peak belongs to the easier step, which is exactly the trap.',
-        wrongFeedback: 'Do not read altitudes, read climbs. Step 2 starts at the intermediate, which is already 14 kcal/mol up, so its barrier is 22 &minus; 14 = 8. Step 1 starts on the floor and has to climb the full 18.'
+        correctIndex: 1,
+        correctFeedback: 'Correct. Look at what the intermediate does once it forms, 14 kcal/mol up: the climb back over TS1 is only 18 &minus; 14 = 4, while the climb forward over TS2 is 22 &minus; 14 = 8. It falls back to reactants faster than it goes on, so step 1 is a fast, reversible pre-equilibrium and the reactants effectively have to reach the highest point on the whole path, TS2, 22 above them. The step with the highest transition state is rate-determining, even though its own local climb looks smaller.',
+        wrongFeedback: 'Compare the two ways out of the intermediate, 14 kcal/mol up: back over TS1 is a climb of only 4, forward over TS2 is a climb of 8. It returns to reactants faster than it goes on, so the overall rate is set by the highest peak on the whole path, TS2 at 22. The rate-determining step is the one whose transition state is highest.'
       },
       {
         type: 'explain',

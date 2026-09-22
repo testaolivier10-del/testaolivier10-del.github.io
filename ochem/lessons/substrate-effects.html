@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Substrate class rules mechanisms in or out before anything else matters.',
-        bodyHtml: '<p class="step-body"><b>Methyl and primary</b> substrates can only do SN2 (or, rarely, E2 with a very bulky base): there\'s too little steric bulk for backside attack to matter, and a primary carbocation is too unstable to form, ruling out SN1/E1 almost completely.</p><p class="step-body"><b>Tertiary</b> substrates are the opposite: SN2 is blocked outright (too crowded for backside attack). What remains is SN1/E1 with a weak reagent, since a tertiary carbocation forms readily — or E2 with a strong base, which is in fact the <i>only</i> bimolecular pathway open to a tertiary substrate.</p><p class="step-body" style="margin-bottom:0;"><b>Secondary</b> substrates are genuinely ambiguous by substrate class alone — sterically possible for SN2, but also able to form a moderate secondary carbocation. This is where the nucleophile/base and solvent actually decide the outcome.</p>'
+        bodyHtml: '<p class="step-body"><b>Methyl and primary</b> substrates essentially only do SN2 (a primary substrate switches to E2 with a strong bulky base such as KOtBu; methyl has no beta-hydrogen, so it cannot eliminate at all): there\'s too little steric bulk for backside attack to matter, and a primary carbocation is too unstable to form, ruling out SN1/E1 almost completely.</p><p class="step-body"><b>Tertiary</b> substrates are the opposite: SN2 is blocked outright (too crowded for backside attack). What remains is SN1/E1 with a weak reagent, since a tertiary carbocation forms readily — or E2 with a strong base, which is in fact the <i>only</i> bimolecular pathway open to a tertiary substrate.</p><p class="step-body" style="margin-bottom:0;"><b>Secondary</b> substrates are genuinely ambiguous by substrate class alone — sterically possible for SN2, but also able to form a moderate secondary carbocation. This is where the nucleophile/base and solvent actually decide the outcome.</p>'
       },
       {
         render: function(api){
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: '(CH₃)₃C–Br is treated with NaOEt (a strong, moderately bulky base) in ethanol, with heat. What do you expect?',
+        title: '(CH₃)₃C–Br is treated with NaOEt (a strong, unhindered base) in ethanol, with heat. What do you expect?',
         options: ['E2, because a strong base does not wait for ionization', 'SN2, because ethoxide is a good nucleophile', 'SN1/E1 only, because the substrate is tertiary', 'No reaction, because tertiary halides are unreactive'],
         correctIndex: 0,
         correctFeedback: 'Correct — SN2 is ruled out immediately by the tertiary substrate. Between the remaining options, the strong base (NaOEt) forces the bimolecular E2 pathway rather than waiting for ionization, and the added heat reinforces elimination over substitution even further. Some SN1/E1 background reaction is possible since ethanol is protic, but E2 dominates given the strong base.'

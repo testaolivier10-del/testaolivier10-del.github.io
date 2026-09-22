@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function(){
     { id:'a4', t:'<b>Benzaldehyde</b> + Tollens&rsquo; reagent', right:'yes',
       why:'Positive. It is an aldehyde, it has the hydrogen, and Tollens&rsquo; does not care that the ring is there. Hold this row against the next one.' },
     { id:'a5', t:'<b>Benzaldehyde</b> + Fehling&rsquo;s solution', right:'no',
-      why:'Negative, or at best unreliable &mdash; the one aldehyde result that is not about having a hydrogen. Fehling&rsquo;s is dependable with aliphatic aldehydes and not with aromatic ones, which is part of why Benedict&rsquo;s is the version used clinically.' },
+      why:'Negative, or at best unreliable &mdash; the one aldehyde result that is not about having a hydrogen. Fehling&rsquo;s is dependable with aliphatic aldehydes and not with aromatic ones, and Benedict&rsquo;s, the other copper(II) test, shares the same blind spot.' },
     { id:'a6', t:'<b>Glucose</b> + Benedict&rsquo;s solution', right:'yes',
       why:'Positive. The ring is a hemiacetal, hemiacetals open, and the trace of open-chain aldehyde is delivered continuously &mdash; so the oxidant consumes it as fast as the equilibrium supplies it.' },
     { id:'a7', t:'<b>Sucrose</b> + Benedict&rsquo;s solution', right:'no',
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'The oxidant never touches the carbonyl.',
-        bodyHtml: '<p class="step-body">There is a gap in the story as told so far. An oxidant needs an <b>O&ndash;H and a C&ndash;H on the same carbon</b> to work with &mdash; that is what an alcohol offers it. A C=O offers neither.</p>' +
+        bodyHtml: '<p class="step-body">There is a gap in the story as told so far. A chromium or manganese oxidant needs an <b>O&ndash;H and a C&ndash;H on the same carbon</b> to work with &mdash; that is what an alcohol offers it. A C=O offers neither.</p>' +
           '<p class="step-body">What it actually attacks is the <b>hydrate</b>. The hydrates section earlier in this chapter showed water adding across the C=O to give a gem-diol, and a gem-diol has exactly that arrangement. It is an alcohol, and it is oxidized as one.</p>' +
           '<div class="explain-box">Which turns a reagent rule into a mechanism before you even meet it. <b>Jones</b> reagent is aqueous, so the hydrate keeps re-forming and a primary alcohol runs all the way to the acid. <b>PCC</b> is anhydrous, so no hydrate forms and the sequence stops at the aldehyde. Same oxidation state of chromium in both; the difference is the water.</div>'
       },

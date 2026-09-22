@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function(){
         title: 'The priority order, in three blocks.',
         bodyHtml: '<div class="explain-box"><b>carboxylic acid &gt; ester &gt; amide &gt; nitrile &gt; aldehyde &gt; ketone &gt; alcohol &gt; amine &gt; alkene / alkyne &gt; alkane</b><br><br>Below the line, and never a suffix under any circumstances: <b>ethers, halides, nitro groups.</b></div>' +
           '<p class="step-body">Ten items is hard; three blocks is not. The <b>acid derivatives</b> come first — acid, ester, amide, nitrile. Then the <b>carbonyls that are not derivatives</b>, aldehyde before ketone. Then <b>the ones that are just a heteroatom carrying a hydrogen</b>: alcohol, then amine. Multiple bonds rank below all of them.</p>' +
-          '<p class="step-body" style="margin-bottom:0;">Be clear about what this order is not: it is not an oxidation ranking. Count the bonds from the functional carbon to oxygen or nitrogen. Acid, ester, amide and nitrile carbons each have three, so the four sit at the same oxidation level and the sequence within that block is a convention. Aldehyde and ketone carbons each have two, so that pair is a convention as well. What makes the convention useful is that within the derivative block it runs in the same direction as reactivity: an acid converts to an ester, an ester to an amide, and neither step runs backwards directly — the way back is hydrolysis to the acid.</p>'
+          '<p class="step-body" style="margin-bottom:0;">Be clear about what this order is not: it is not an oxidation ranking. Count the bonds from the functional carbon to oxygen or nitrogen. Acid, ester, amide and nitrile carbons each have three, so the four sit at the same oxidation level and the sequence within that block is a convention. Aldehyde and ketone carbons each have two, so that pair is a convention as well. What makes the convention useful is that within the derivative block it runs in the same direction as reactivity: an ester converts to an amide, but an amide does not go back to an ester directly — the way back is hydrolysis to the acid.</p>'
       },
       {
         render: function(api){
@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'That the suffix is implied by the "-one" ending of acetone'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct. Its systematic name is propan-2-one, and that one can be read backwards into a structure. "Acetone" cannot — the resemblance between its ending and the ketone suffix is a coincidence of history, not a derivation. This is the real distinction between the two kinds of name: a systematic name is a set of instructions, and a retained name is a label you either know or look up.'
+        correctFeedback: 'Correct. Its systematic name is propan-2-one, and that one can be read backwards into a structure. "Acetone" cannot — the resemblance between its ending and the ketone suffix is history running the other way — the suffix was borrowed from acetone — not a derivation you can parse. This is the real distinction between the two kinds of name: a systematic name is a set of instructions, and a retained name is a label you either know or look up.'
       }
     ]
   });

@@ -249,7 +249,7 @@
       c:  { x:160, y:86, r:17, label:'C', role:'carboxyl-c' },
       o2: { x:214, y:136,r:17, label:'O', charge:'⁻', lp:3, role:'resonance-o', note:'The other equivalent oxygen. Draw the second resonance form and this one carries the double bond instead.' },
       ca: { x:92,  y:86, r:16, label:'C', role:'alpha-carbon' },
-      h1: { x:52,  y:44, r:11, label:'H', role:'alpha-h', note:'An alpha C–H, pKa around 20 here — far less acidic than the O–H was.' },
+      h1: { x:52,  y:44, r:11, label:'H', role:'alpha-h', note:'An alpha C–H, pKa well above 25 here (the anion would be a dianion) — far less acidic than the O–H was.' },
       h2: { x:52,  y:128,r:11, label:'H', role:'alpha-h' },
       h3: { x:92,  y:24, r:11, label:'H', role:'alpha-h' }
     },
@@ -710,7 +710,7 @@
     atoms: {
       o1: { x:120, y:30, r:16, label:'O', lp:2, role:'carbonyl-o' },
       c:  { x:120, y:88, r:17, label:'C', role:'electrophile', note:'The acyl carbon — where a nucleophile attacks in acyl substitution.' },
-      ca: { x:62,  y:120,r:15, label:'C', role:'alpha-carbon', note:'The alpha carbon. Its hydrogens sit near pKa 25 — less acidic than a ketone\u2019s, which is why a Claisen needs an alkoxide rather than hydroxide.' },
+      ca: { x:62,  y:120,r:15, label:'C', role:'alpha-carbon', note:'The alpha carbon. Its hydrogens sit near pKa 25 — less acidic than a ketone\u2019s, and a Claisen uses an alkoxide rather than hydroxide because hydroxide would saponify the ester.' },
       o2: { x:186, y:120,r:16, label:'O', lp:2, role:'leaving-group', note:'The ester oxygen. Ethoxide is basic and so a mediocre leaving group, but it is good enough to be expelled once the tetrahedral intermediate has formed.' },
       cm: { x:244, y:88, r:15, label:'C' },
       cm2:{ x:302, y:120,r:15, label:'C' },
