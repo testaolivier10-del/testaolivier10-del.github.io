@@ -459,6 +459,9 @@
       '<a href="mastery.html" class="btn-press alt">View mastery</a>' +
     '</div>';
 
+    // The Premium waitlist; see assets/premium.js. Asks, locks nothing.
+    if(window.LevlPremium && asked >= 8) html += window.LevlPremium.card('ochem', 'summary');
+
     summaryEl.innerHTML = html;
     show('summary');
 

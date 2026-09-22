@@ -60,6 +60,9 @@ assets/                Shared across every course
   report-question.js   "This looks wrong" — the one-tap report under every
                          explanation in both courses. See Reporting a bad
                          question
+  premium.js           The Premium waitlist: a "coming soon" card at the end of a
+                         session, and the per-course free/premium split. Locks
+                         nothing; see docs/premium.md
   account.js           One login for the whole site: Supabase auth + namespaced
                          cross-device sync (see Data & accounts)
   hub-progress.js      One shared level and one shared streak; per-subject XP.
@@ -792,7 +795,7 @@ Setup: put the website id from the Umami dashboard into `WEBSITE_ID` at the top 
 
 There is also a per-browser opt-out, on `privacy.html` under **Site analytics**. It writes `levlprep_analytics_opt_out` to `localStorage`, and `assets/analytics.js` checks it *before* creating the script tag, so opting out means no request to Umami rather than one discarded at the far end. Two people want this for different reasons: a visitor who would rather not be counted, and whoever runs the site, whose own testing is otherwise indistinguishable from real traffic. **Turn it on in your own browser** or every number on the dashboard includes you.
 
-Events are **milestones, not actions**, and should stay that way. Umami's free tier counts every event against a monthly total, so tracking each answered question would cost 100 events for one exam instead of 2. The eleven that exist:
+Events are **milestones, not actions**, and should stay that way. Umami's free tier counts every event against a monthly total, so tracking each answered question would cost 100 events for one exam instead of 2. The thirteen that exist:
 
 | Event | Where | Carries |
 |---|---|---|
@@ -807,6 +810,7 @@ Events are **milestones, not actions**, and should stay that way. Umami's free t
 | `save-prompt-shown` / `save-prompt-accepted` | `assets/account.js` | — |
 | `install-prompt-shown` | `assets/site-chrome.js` | platform (`ios` / `other`) |
 | `install-prompt-choice`, `installed` | same | outcome |
+| `premium-interest` / `premium-waitlist-joined` | `assets/premium.js` | course, which card. Read against `exam-finish` / `ochem-session-finish`; see `docs/premium.md` |
 
 No answer a student gives and no question they see is ever sent.
 
