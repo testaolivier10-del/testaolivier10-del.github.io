@@ -1,0 +1,573 @@
+[
+  {
+    "id": "anp-ans-anatomy-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-15-2",
+    "pin": "celiac-ganglion",
+    "q": "Name the pinned ganglion.",
+    "options": [
+      "Celiac ganglion",
+      "Superior cervical ganglion",
+      "Inferior mesenteric ganglion",
+      "Superior mesenteric ganglion"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The celiac ganglion is the highest of the three collateral ganglia in front of the vertebral column. It receives the greater splanchnic nerve and supplies the stomach, liver, pancreas and spleen.",
+      "options": [
+        "Correct. This is the celiac ganglion, the collateral ganglion that the greater splanchnic nerve runs to.",
+        "The superior cervical ganglion is the top ganglion of the sympathetic chain, in the neck beside the vertebral column. It supplies the head, not the stomach.",
+        "The inferior mesenteric ganglion is the lowest collateral ganglion, fed by lumbar fibers. It supplies the end of the colon, the rectum, the bladder and the genitals.",
+        "The superior mesenteric ganglion sits below the celiac ganglion and receives the lesser splanchnic nerve. It supplies most of the intestines."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-15-3",
+    "pin": "white-ramus-communicans",
+    "q": "Name the pinned connecting branch between the spinal nerve and the chain ganglion.",
+    "options": [
+      "Gray ramus communicans",
+      "White ramus communicans",
+      "Splanchnic nerve",
+      "Ventral ramus of the spinal nerve"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The white ramus communicans carries myelinated preganglionic fibers from the spinal nerve into the sympathetic chain. The myelin makes it look white. White rami exist only at T1–L2.",
+      "options": [
+        "The gray ramus carries unmyelinated postganglionic fibers the other way, from the chain back into the spinal nerve. The pinned branch carries the fiber into the chain.",
+        "Correct. This is the white ramus, the route by which the preganglionic fiber enters the chain.",
+        "A splanchnic nerve leaves the chain toward a collateral ganglion in the abdomen. It does not connect the spinal nerve to the chain.",
+        "The ventral ramus is the main branch of the spinal nerve that goes to the front of the trunk and the limbs, not the short link to the chain."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-15-3",
+    "pin": "gray-ramus-communicans",
+    "q": "Name the pinned branches.",
+    "options": [
+      "White rami communicantes",
+      "Dorsal roots",
+      "Gray rami communicantes",
+      "Preganglionic fibers"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Gray rami communicantes carry unmyelinated postganglionic fibers from the chain ganglia back into the spinal nerves. Every spinal nerve has one, so sympathetic fibers reach the skin at every level.",
+      "options": [
+        "White rami carry myelinated preganglionic fibers into the chain, and only at T1–L2. The pinned branches return fibers to spinal nerves.",
+        "Dorsal roots carry sensory fibers into the back of the spinal cord. They do not connect to the chain ganglia.",
+        "Correct. These are gray rami, carrying postganglionic fibers back out to the spinal nerves.",
+        "Preganglionic fibers enter the chain through white rami. The fibers in these branches are postganglionic."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-15-4",
+    "pin": "ciliary-ganglion",
+    "q": "Name the pinned ganglion, where fibers of cranial nerve III synapse.",
+    "options": [
+      "Otic ganglion",
+      "Superior cervical ganglion",
+      "Pterygopalatine ganglion",
+      "Ciliary ganglion"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The ciliary ganglion, behind the eye, is the terminal ganglion for the parasympathetic fibers of the oculomotor nerve. Its short postganglionic fibers narrow the pupil and adjust the lens for near vision.",
+      "options": [
+        "The otic ganglion receives parasympathetic fibers from nerve IX and supplies the largest saliva gland, not the eye.",
+        "The superior cervical ganglion is a sympathetic chain ganglion in the neck. Nerve III carries parasympathetic fibers, which never synapse in the chain.",
+        "The pterygopalatine ganglion receives fibers from nerve VII and supplies the tear gland and nasal glands.",
+        "Correct. This is the ciliary ganglion, the terminal ganglion for nerve III."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-5",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Where are the cell bodies of sympathetic preganglionic neurons?",
+    "options": [
+      "In the brainstem and in sacral segments S2–S4",
+      "In the lateral horn of spinal segments T1–L2",
+      "In the chain ganglia beside the vertebral column",
+      "In the ventral horn at every spinal segment"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Sympathetic preganglionic cell bodies sit in the lateral horn of the thoracic and upper lumbar cord, T1–L2. That is why the division is called thoracolumbar.",
+      "options": [
+        "The brainstem and S2–S4 are the parasympathetic (craniosacral) origins.",
+        "Correct. The lateral horn of T1–L2 holds every sympathetic preganglionic cell body.",
+        "The chain ganglia hold the cell bodies of postganglionic neurons. Preganglionic cell bodies are inside the CNS.",
+        "The ventral horn holds somatic motor neurons that supply skeletal muscle, and it runs the whole cord. Sympathetic output starts only at T1–L2."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-6",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which cranial nerves carry parasympathetic preganglionic fibers?",
+    "options": [
+      "III, VII, IX and X",
+      "V, VII, IX and X",
+      "III, IV, VI, VII and X",
+      "I, II, VIII and X"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The oculomotor (III), facial (VII), glossopharyngeal (IX) and vagus (X) nerves carry the cranial parasympathetic outflow. The rest of the parasympathetic outflow leaves from S2–S4.",
+      "options": [
+        "Correct. Remember them as 3, 7, 9 and 10.",
+        "The trigeminal nerve (V) is sensory to the face and motor to the chewing muscles. It carries no parasympathetic preganglionic fibers of its own.",
+        "Nerves IV and VI are purely somatic motor nerves to eye muscles. Of the eye-movement nerves, only nerve III carries parasympathetic fibers.",
+        "Nerves I, II and VIII are sensory nerves for smell, vision, and hearing and balance. They carry no motor output at all."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-7",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "Put the steps in order to trace a sympathetic signal from the spinal cord to a sweat gland in the skin of your forearm.",
+    "options": [
+      "A preganglionic neuron fires in the lateral horn of an upper thoracic segment",
+      "Its axon leaves in the ventral root and enters the spinal nerve",
+      "The axon passes through a white ramus communicans into the sympathetic chain",
+      "It synapses on a postganglionic neuron in a chain ganglion",
+      "The postganglionic axon returns to a spinal nerve through a gray ramus communicans",
+      "The postganglionic axon reaches the sweat gland in the forearm skin"
+    ],
+    "why": {
+      "correct": "The preganglionic axon leaves the lateral horn by the ventral root, turns into the chain through a white ramus (often climbing a few levels), and synapses in a chain ganglion. The unmyelinated postganglionic axon rejoins a spinal nerve through a gray ramus and rides that nerve to the skin."
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-8",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "Put the steps in order to trace the sympathetic pathway through the adrenal medulla.",
+    "options": [
+      "A preganglionic neuron fires in the lateral horn of a thoracic segment",
+      "Its axon passes through a white ramus and through the chain without synapsing",
+      "The axon runs in a splanchnic nerve and passes through the celiac ganglion without synapsing",
+      "The axon synapses on chromaffin cells in the adrenal medulla",
+      "Chromaffin cells release epinephrine and some norepinephrine into the blood",
+      "The blood carries epinephrine to cells throughout the body"
+    ],
+    "why": {
+      "correct": "Fibers to the adrenal medulla are preganglionic all the way: they pass through both the chain and the celiac ganglion without synapsing. Chromaffin cells take the place of postganglionic neurons, but they release their product into the blood, so it acts as a hormone."
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-9",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every feature of the parasympathetic division.",
+    "options": [
+      "Preganglionic fibers leave in cranial nerves and from S2–S4",
+      "Ganglia sit near or inside the target organ",
+      "Postganglionic fibers reach the skin through gray rami communicantes",
+      "Preganglionic fibers are long and postganglionic fibers are short",
+      "A preganglionic neuron branches to many chain ganglia",
+      "The vagus nerve carries most of its preganglionic fibers"
+    ],
+    "correct": [
+      0,
+      1,
+      3,
+      5
+    ],
+    "why": {
+      "correct": "The parasympathetic division is craniosacral, uses terminal or intramural ganglia in or beside its targets, so its preganglionic fibers are long and postganglionic fibers short, and about three quarters of its fibers travel in the vagus nerve. It has no chain and no gray rami.",
+      "options": [
+        "Correct. Nerves III, VII, IX and X, plus S2–S4.",
+        "Correct. These are the terminal and intramural ganglia.",
+        "Gray rami carry sympathetic postganglionic fibers. Parasympathetic fibers do not reach the skin.",
+        "Correct. The ganglion sits at the target, so the first neuron covers almost the whole distance.",
+        "Branching through the chain is the sympathetic pattern. Parasympathetic preganglionic neurons contact only a few postganglionic neurons, and there is no parasympathetic chain.",
+        "Correct. The vagus carries about three quarters of all parasympathetic preganglionic fibers."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A fiber is traced in the gray ramus that joins spinal nerve C6. What kind of fiber is it most likely to be?",
+    "options": [
+      "A sympathetic preganglionic fiber entering the chain",
+      "A parasympathetic postganglionic fiber heading to the arm",
+      "A somatic motor fiber heading to an arm muscle",
+      "An unmyelinated sympathetic postganglionic fiber"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Gray rami carry unmyelinated sympathetic postganglionic fibers from the chain back into spinal nerves. Their preganglionic neurons sit in the upper thoracic cord; the fibers climbed the chain to a cervical ganglion before synapsing.",
+      "options": [
+        "Preganglionic fibers enter the chain through white rami, and there are no white rami at C6 because no sympathetic fibers leave the cord there.",
+        "The parasympathetic division does not supply the limbs and has no fibers in the gray rami.",
+        "Somatic motor fibers leave in the ventral root and stay in the spinal nerve. They do not pass through the rami communicantes.",
+        "Correct. A gray ramus at any level carries postganglionic sympathetic fibers back into the spinal nerve."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-11",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Mr. Okafor, 61, has a tumor at the very top of his right lung, beside the upper thoracic vertebrae. His right pupil is smaller than his left, his right upper eyelid droops slightly, and the right side of his face does not sweat. Which structure has the tumor most likely damaged?",
+    "options": [
+      "The right oculomotor nerve",
+      "The right sympathetic chain",
+      "The right vagus nerve",
+      "The right facial nerve"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The sympathetic supply to the whole head leaves the cord at T1–T2 and climbs the chain to the superior cervical ganglion. A tumor at the lung apex can compress the chain there. The eye muscle that widens the pupil, a small smooth muscle in the eyelid and the facial sweat glands all lose their sympathetic input, so the pupil is small, the lid droops and the skin stays dry.",
+      "options": [
+        "Oculomotor damage would remove the parasympathetic fibers that narrow the pupil, so the pupil would be large, not small. It would also paralyze several eye movements.",
+        "Correct. Losing sympathetic input to the head produces a small pupil, a slightly drooping lid and loss of facial sweating on that side.",
+        "The vagus nerve supplies the organs of the chest and abdomen. It does not supply the pupil, the eyelid or the sweat glands of the face.",
+        "The facial nerve's parasympathetic fibers go to the tear and saliva glands, and its motor fibers to the muscles of facial expression. Facial sweat glands get only sympathetic fibers."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-12",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student traced a sympathetic signal to the stomach. One step is wrong. Which one?",
+    "options": [
+      "A preganglionic neuron fires in the lateral horn at T7",
+      "Its axon enters the chain through a white ramus communicans",
+      "It synapses in the chain ganglion at T7",
+      "It runs in the greater splanchnic nerve to the celiac ganglion",
+      "A postganglionic fiber from the celiac ganglion reaches the stomach"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Fibers bound for the abdominal organs pass through the chain without synapsing. They synapse in a collateral ganglion, here the celiac ganglion, after traveling in a splanchnic nerve.",
+      "options": [
+        "This step is right. T7 lies within the T1–L2 outflow and feeds the greater splanchnic nerve.",
+        "This step is right. Every preganglionic fiber enters the chain through a white ramus.",
+        "This is the error. Splanchnic fibers pass through the chain ganglia without synapsing.",
+        "This step is right. The greater splanchnic nerve (about T5–T9) runs to the celiac ganglion.",
+        "This step is right. The synapse happens in the celiac ganglion, and the postganglionic fiber runs to the stomach."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-13",
+    "type": "missing",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Complete the pathway: lateral horn → white ramus → through the chain → splanchnic nerve → ____ → epinephrine released into the blood.",
+    "options": [
+      "Chromaffin cells of the adrenal medulla",
+      "Postganglionic neurons in the celiac ganglion",
+      "A gray ramus communicans",
+      "Cells of the outer layer of the adrenal gland"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Preganglionic fibers synapse directly on chromaffin cells in the adrenal medulla, which release epinephrine and some norepinephrine into the blood.",
+      "options": [
+        "Correct. Chromaffin cells stand in for postganglionic neurons.",
+        "Fibers to the adrenal medulla pass through the celiac ganglion without synapsing. If they synapsed there, the second neuron would release its transmitter onto an organ, not into the blood.",
+        "Gray rami carry postganglionic fibers back to spinal nerves, toward the skin and limbs. They are not on the route to the adrenal gland.",
+        "The outer layer of the adrenal gland is controlled by hormones, not by sympathetic fibers. Epinephrine comes from the medulla."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Why does a burst of sympathetic activity reach many organs at once, while parasympathetic activity can affect one organ at a time?",
+    "options": [
+      "Sympathetic fibers are myelinated all the way to the target, so their signal spreads farther",
+      "The sympathetic division has more preganglionic neurons than there are organs to supply",
+      "Sympathetic preganglionic neurons branch widely through the chain",
+      "Parasympathetic postganglionic fibers are too long to reach more than one organ"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A sympathetic preganglionic neuron diverges: it branches up and down the chain and synapses on many postganglionic neurons, often ten or more. The chain links all levels, and the adrenal medulla adds a hormone that reaches every tissue. Parasympathetic preganglionic fibers run to terminal ganglia at single organs and contact only a few postganglionic neurons.",
+      "options": [
+        "Sympathetic postganglionic fibers are unmyelinated. Myelin changes conduction speed, not how many targets a neuron reaches.",
+        "The number of neurons alone does not explain the spread. What matters is how widely each preganglionic neuron branches.",
+        "Correct. Divergence through the chain spreads one burst across many organs.",
+        "Parasympathetic postganglionic fibers are short, because their ganglia sit at the target. That is what keeps their effects local."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "autonomic effectors stop working without their nerves",
+    "q": "After a transplant, a heart has no nerve connections at all. Unlike a skeletal muscle that loses its nerve, it keeps contracting. Which feature of autonomic motor pathways does this illustrate?",
+    "options": [
+      "Autonomic effectors have their own activity, which the nerves speed up or slow down",
+      "Autonomic signals travel through two neurons, so one cut neuron is replaced by the other",
+      "Autonomic nerves regrow within hours after being cut",
+      "Heart muscle is controlled by somatic motor neurons that are not cut in surgery"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Skeletal muscle contracts only when a somatic motor neuron excites it, so cutting the nerve paralyzes it. Cardiac muscle, smooth muscle and many glands have their own built-in activity. Autonomic nerves adjust that activity up or down rather than starting it.",
+      "options": [
+        "Correct. The heart beats without nerves; its autonomic supply only changes the rate and strength.",
+        "The two neurons are in series, not in parallel. Cutting either one breaks the pathway.",
+        "Cut peripheral axons regrow slowly, over weeks to months, and after a transplant the heart stays largely without nerves for a long time.",
+        "Cardiac muscle is an autonomic effector. No somatic motor neurons supply it."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-16",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "A diver breaks his neck and completely cuts his spinal cord at C6. Which autonomic pathway from his brain to his heart is still intact?",
+    "options": [
+      "Sympathetic fibers leaving the cord at T1–T4",
+      "Sympathetic fibers that pass through the superior cervical ganglion",
+      "Parasympathetic fibers in the vagus nerve",
+      "Parasympathetic fibers leaving the cord at S2–S4"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The vagus nerve leaves the brainstem through the skull and runs to the heart outside the spinal cord, so a cord injury does not touch it. The brain's control of all sympathetic output runs down the cord to the lateral horn at T1–L2, below the cut.",
+      "options": [
+        "The T1–T4 neurons are still alive, but they sit below the cut, so signals from the brain can no longer reach them.",
+        "Superior cervical ganglion fibers are sympathetic and start from preganglionic neurons at T1–T2, below the cut. Their control from the brain is lost too.",
+        "Correct. The vagus nerve bypasses the spinal cord entirely.",
+        "The sacral outflow is below the cut, and it supplies the pelvic organs, not the heart."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Where are the parasympathetic ganglia that supply the wall of the stomach?",
+    "options": [
+      "In the celiac ganglion in front of the vertebral column",
+      "In the sympathetic chain beside the vertebrae",
+      "In the dorsal root ganglia",
+      "In the stomach wall itself"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Vagal preganglionic fibers run all the way to intramural ganglia in the stomach wall, where they synapse on short postganglionic neurons.",
+      "options": [
+        "The celiac ganglion is a sympathetic collateral ganglion. Vagal fibers pass through the nerve network around it without synapsing there.",
+        "The chain belongs to the sympathetic division. The parasympathetic division has no chain.",
+        "Dorsal root ganglia hold the cell bodies of sensory neurons, not autonomic motor neurons.",
+        "Correct. These are intramural ganglia, a type of terminal ganglion."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Chromaffin cells of the adrenal medulla are best compared with which cells?",
+    "options": [
+      "Preganglionic neurons in the lateral horn",
+      "Sympathetic postganglionic neurons without axons",
+      "Parasympathetic terminal ganglion cells",
+      "Somatic motor neurons"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Chromaffin cells develop from the same embryonic tissue as sympathetic postganglionic neurons and are stimulated directly by preganglionic fibers. Having no axons, they release their product into the blood instead of onto a target.",
+      "options": [
+        "Preganglionic neurons are the cells that stimulate chromaffin cells, one step earlier in the pathway.",
+        "Correct. They take the place of the second neuron in the sympathetic chain of two.",
+        "The adrenal medulla gets no parasympathetic supply, so there is no parasympathetic cell to compare with.",
+        "Somatic motor neurons run straight from the CNS to skeletal muscle and are not part of any autonomic pathway."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A frightening near-miss in traffic triggers a sympathetic burst. Your heart is still pounding minutes after the nerve activity has died down. Which feature of the sympathetic division best explains this?",
+    "options": [
+      "Postganglionic fibers are unmyelinated and conduct slowly",
+      "Gray rami carry signals only to the skin",
+      "Epinephrine released into the blood keeps acting after the nerve signal stops",
+      "Preganglionic fibers are short"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Chromaffin cells release epinephrine into the blood. It keeps circulating and acting for a few minutes after the nerve activity stops, so its effects outlast the burst.",
+      "options": [
+        "Slow conduction delays a signal by a fraction of a second. It cannot make an effect last minutes.",
+        "Gray rami do carry fibers to the skin, but that says nothing about how long the effect on the heart lasts.",
+        "Correct. The hormone outlasts the nerve signal.",
+        "The length of the preganglionic fiber sets where the ganglion is, not how long an effect lasts."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "During pelvic surgery, the pelvic splanchnic nerves on both sides are injured. Which organ loses parasympathetic supply?",
+    "options": [
+      "The stomach",
+      "The heart",
+      "The saliva gland in front of the ear",
+      "The urinary bladder"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The pelvic splanchnic nerves carry the sacral parasympathetic outflow from S2–S4 to the bladder, rectum, last part of the colon and reproductive organs.",
+      "options": [
+        "The stomach gets its parasympathetic supply from the vagus nerve.",
+        "The heart gets its parasympathetic supply from the vagus nerve.",
+        "The largest saliva gland, in front of the ear, gets its parasympathetic supply from the glossopharyngeal nerve through the otic ganglion.",
+        "Correct. The bladder depends on the sacral outflow."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-anatomy-21",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every target that receives sympathetic fibers but no parasympathetic fibers.",
+    "options": [
+      "Sweat glands in the skin",
+      "Arrector pili muscles",
+      "The adrenal medulla",
+      "The heart",
+      "Smooth muscle in most blood vessel walls",
+      "The iris"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "Parasympathetic fibers do not travel in the gray rami or spinal nerves, so they never reach the skin or most blood vessels, and they do not supply the adrenal medulla. The heart and the iris get fibers from both divisions.",
+      "options": [
+        "Correct. Sweat glands get sympathetic fibers through the gray rami.",
+        "Correct. The arrector pili muscles are supplied only by sympathetic fibers.",
+        "Correct. Only sympathetic preganglionic fibers reach the adrenal medulla.",
+        "The heart gets sympathetic fibers from the upper thoracic chain and parasympathetic fibers from the vagus.",
+        "Correct. Most blood vessels receive only sympathetic fibers.",
+        "The iris gets parasympathetic fibers from nerve III, which narrow the pupil, and sympathetic fibers, which widen it."
+      ]
+    }
+  }
+]

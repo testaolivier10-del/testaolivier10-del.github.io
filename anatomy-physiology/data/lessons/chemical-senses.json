@@ -1,0 +1,47 @@
+{
+  "topic": "chemical-senses",
+  "hook": "<p>Mr. Okafor, 58, tells his doctor that since a bad bout of flu two months ago, food \"has no taste\" and coffee is just hot and bitter. On testing, he names sugar, salt, lemon juice and quinine solutions on his tongue without a mistake. He cannot name a single scent from a set of sniff sticks. His taste buds are fine. What he has lost is smell, and most of what he called taste was smell all along.</p>",
+  "prereq": [
+    {
+      "q": "What kind of sensory receptor responds to particular chemicals?",
+      "options": ["Mechanoreceptor", "Chemoreceptor", "Thermoreceptor"],
+      "correct": 1,
+      "why": "Chemoreceptors respond to particular chemicals. Mechanoreceptors respond to physical force such as touch and stretch, and thermoreceptors to temperature.",
+      "review": "sensory-pathways"
+    },
+    {
+      "q": "Which cranial nerve carries sensation from the olfactory epithelium to the brain?",
+      "options": ["Olfactory nerve (I)", "Trigeminal nerve (V)", "Facial nerve (VII)"],
+      "correct": 0,
+      "why": "Cranial nerve I, the olfactory nerve, carries smell. The trigeminal nerve carries touch, pain and temperature from the face, and the facial nerve carries taste from the front of the tongue and moves the face.",
+      "review": "cranial-nerves"
+    },
+    {
+      "q": "A messenger binds a G protein–coupled receptor protein on the outside of a cell. What usually happens next?",
+      "options": ["The messenger enters the nucleus and switches on a gene", "The receptor protein opens as a channel and lets the messenger through", "A G protein switches on an enzyme that makes a second messenger inside the cell"],
+      "correct": 2,
+      "why": "A G protein–coupled receptor protein passes the signal to a G protein, which switches on an enzyme that makes a second messenger such as cAMP. The second messenger then acts inside the cell.",
+      "review": "chemical-signaling"
+    }
+  ],
+  "anatomy": {
+    "figure": "taste-smell-structures",
+    "caption": "A taste bud and the olfactory epithelium. Hide the labels and name the cell that detects tastants, the cell that replaces it, and the path an olfactory axon takes to the brain."
+  },
+  "chain": [
+    { "cause": "Odorant molecules from food rise up the back of your throat into your nose.", "effect": "They dissolve in the mucus over the olfactory epithelium and bind odorant receptor proteins on the cilia of olfactory sensory neurons." },
+    { "cause": "An activated odorant receptor protein switches on a G protein.", "effect": "The G protein switches on an enzyme that makes cAMP, and cAMP opens cation channels in the cilia." },
+    { "cause": "Na+ and Ca2+ flow in, and the Ca2+ opens chloride channels so that Cl− flows out.", "effect": "The neuron depolarizes. Receptor potentials like this spread to the axon and fire action potentials." },
+    { "cause": "Action potentials travel along the axons through the cribriform plate.", "effect": "The axons synapse in the olfactory bulb, where all neurons with the same receptor protein converge on one cluster of synapses." },
+    { "cause": "The olfactory tract carries the sorted signals to the olfactory cortex and the limbic system, with no first stop in the thalamus.", "effect": "Your brain combines the smell with the taste signals arriving through cranial nerves VII, IX and X, and you perceive one flavor." }
+  ],
+  "misconception": {
+    "wrong": "Different parts of the tongue sense different tastes: sweet at the tip, salty and sour on the sides, bitter at the back (the \"tongue map\").",
+    "right": "Every part of the tongue that has taste buds senses all five qualities, and one taste bud usually holds cells for several of them. The map came from a misread 1901 study that found only small differences in sensitivity. Put salt on the tip of your tongue and you taste salt at once."
+  },
+  "check": ["anp-chemical-senses-2", "anp-chemical-senses-3", "anp-chemical-senses-4", "anp-chemical-senses-8", "anp-chemical-senses-11", "anp-chemical-senses-15", "anp-chemical-senses-17"],
+  "summary": "<p>Gustation (taste) and olfaction (smell) are chemical senses: a molecule dissolves, binds, and changes the voltage of a sensory cell. Taste buds hold gustatory receptor cells, epithelial cells with no axon whose microvilli reach into the taste pore; basal cells replace them. Salty and sour work through ion channels (Na+ and H+ flow in); sweet, umami and bitter work through G protein–coupled receptor proteins. All five qualities are sensed wherever there are taste buds, so the tongue map is a myth. Taste travels in the facial, glossopharyngeal and vagus nerves to the medulla, then through the thalamus to the insula. Olfactory sensory neurons are bipolar neurons in the olfactory epithelium that are replaced throughout life. Each makes one of about 400 odorant receptor proteins; binding raises cAMP, cation channels open and chloride leaving adds to the depolarization. Axons cross the cribriform plate to the olfactory bulb, and signals reach the olfactory cortex and limbic system without a first stop in the thalamus. Flavor is mostly smell, so anosmia is usually felt as a loss of taste.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-33", "label": "NREMT: Trauma to the head, neck and spine" }
+  ]
+}

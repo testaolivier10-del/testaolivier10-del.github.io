@@ -965,7 +965,7 @@
         "q": "A diving accident injures the spinal cord at the level of the second cervical vertebra, cutting the pathway from the brainstem to the motor neurons of the phrenic nerves. The chemoreceptors and respiratory centers still work. What happens to arterial PCO2 without a ventilator?",
         "options": [
           {
-            "text": "It climbs, because the command to breathe cannot reach the diaphragm",
+            "text": "It climbs, because the command cannot reach the diaphragm",
             "why": "Right. The chemoreceptors fire hard and the respiratory centers send their command, but the injury lies above the C3 to C5 segments that give rise to the phrenic nerves, so the diaphragm never gets it. With no ventilation, carbon dioxide builds up."
           },
           {
@@ -999,7 +999,7 @@
         "stimulus": {
           "text": "Arterial PO2 falls, strongly below about 60 mm Hg",
           "short": "Arterial PO2 falls",
-          "why": "The variable is the partial pressure of oxygen in arterial blood. Above about 60 mm Hg hemoglobin stays nearly full and the sensors respond little; below it, they respond steeply."
+          "why": "The variable is the partial pressure of oxygen in arterial blood. The carotid bodies’ firing rises only a little as PO2 falls from 100 to about 60 mm Hg, then steeply below that, so this loop matters most below 60."
         },
         "sensor": {
           "text": "Peripheral chemoreceptors, mainly the carotid bodies",

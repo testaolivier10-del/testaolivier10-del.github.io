@@ -1,0 +1,47 @@
+{
+  "eye-accessory": {
+    "def": "The parts around the eyeball that protect and move it: the eyelids, the conjunctiva lining the lids and covering the white of the eye, the lacrimal gland and the ducts that drain tears into the nose, and the six extraocular (extrinsic eye) muscles. The lateral rectus is supplied by the abducens nerve, the superior oblique by the trochlear nerve, and the other four and the levator palpebrae superioris by the oculomotor nerve.",
+    "roots": [["palpebr-", "eyelid"], ["lacrim-", "tear"], ["extra-", "outside"], ["ocul-", "eye"], ["rectus", "straight"]],
+    "say": "LEE-vay-tor PAL-peh-bree soo-peer-ee-OR-iss"
+  },
+  "eye-tunics": {
+    "def": "The three layers of the eyeball's wall: the fibrous tunic (the white sclera and the clear cornea), the vascular tunic (the choroid, the ciliary body and the iris around the pupil) and the neural tunic (the retina).",
+    "roots": [["tunica", "coat"], ["scler-", "hard"], ["corne-", "horn"], ["chori-", "membrane"], ["rete", "net"]],
+    "say": "SKLAIR-uh, KOR-nee-uh, KOR-oyd"
+  },
+  "lens-humors": {
+    "def": "The lens is the clear, flexible disc behind the iris, held by zonule fibers. Aqueous humor, made by the ciliary processes, fills the space in front of it and drains into the scleral venous sinus; vitreous humor is the gel behind it. In glaucoma, poor drainage of aqueous humor raises the pressure in the eye and damages the optic nerve.",
+    "roots": [["aqua", "water"], ["vitr-", "glass"], ["humor", "fluid"], ["glauc-", "gray-blue"]],
+    "say": "AY-kwee-us, VIT-ree-us"
+  },
+  "refraction-accommodation": {
+    "def": "Refraction is the bending of light as it passes between clear materials; the cornea does most of it and the lens the rest. Accommodation rounds the lens for near vision: the ciliary muscle contracts, the zonule fibers go slack and the lens bulges. Myopia focuses distant light in front of the retina, hyperopia behind it, and presbyopia is the age-related stiffening of the lens. Visual acuity is measured with a Snellen chart.",
+    "roots": [["fract-", "break"], ["my-", "to close"], ["hyper-", "beyond"], ["presby-", "old"], ["-opia", "vision"], ["acu-", "sharp"]],
+    "say": "my-OH-pee-uh, hy-per-OH-pee-uh, prez-bee-OH-pee-uh"
+  },
+  "photoreceptors": {
+    "def": "The light-sensitive cells of the retina. Rods work in dim light, have one pigment and give no color; cones work in bright light, come in three kinds and give color and fine detail, and are packed into the fovea. Photoreceptors signal to bipolar cells, which signal to retinal ganglion cells, whose axons leave at the optic disc, the blind spot.",
+    "roots": [["photo-", "light"], ["fovea", "small pit"], ["bi-", "two"]],
+    "say": "FOH-vee-uh"
+  },
+  "phototransduction": {
+    "def": "The conversion of light into a change in a photoreceptor's membrane potential. Light changes retinal from 11-cis to all-trans (photoisomerization), activating the pigment (rhodopsin in rods: opsin plus retinal). A G protein lowers cGMP, cation channels close, and the cell hyperpolarizes and releases less glutamate.",
+    "roots": [["photo-", "light"], ["trans-", "across"], ["duc-", "lead"], ["rhod-", "rose"], ["iso-", "same"], ["mer-", "part"]],
+    "say": "roh-DOP-sin"
+  },
+  "visual-pathway": {
+    "def": "The route from the retina to the cortex: optic nerve, optic chiasm (where fibers from the nasal half of each retina cross), optic tract, lateral geniculate nucleus of the thalamus, and primary visual cortex. Each optic tract and hemisphere handles the opposite half of the visual field.",
+    "roots": [["chiasm", "crossing, from the letter X"], ["genicul-", "little knee"]],
+    "say": "KY-az-um, jeh-NIK-yoo-lit"
+  },
+  "pupillary-reflex": {
+    "def": "The narrowing of both pupils when light enters either eye: optic nerve in, a midbrain relay, and parasympathetic fibers of both oculomotor nerves out to the iris sphincter. Miosis is a narrowed pupil; mydriasis is a widened one.",
+    "roots": [["mei-", "less"]],
+    "say": "my-OH-sis, mih-DRY-uh-sis"
+  },
+  "visual-streams": {
+    "def": "The two routes visual information takes beyond the primary visual cortex: the dorsal stream into the parietal lobe works out where things are and guides movement toward them, and the ventral stream into the temporal lobe recognizes what they are.",
+    "roots": [["dors-", "back"], ["ventr-", "belly"]],
+    "say": ""
+  }
+}

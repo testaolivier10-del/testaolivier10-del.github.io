@@ -1,0 +1,22 @@
+{
+  "neuro-exam-parts": {
+    "def": "The neurological exam is a structured set of bedside tests used to localize a problem in the nervous system. Its parts are the mental status exam (cerebrum), cranial nerve exam (brainstem and its nerves, including the corneal reflex), sensory exam (ascending pathways, including stereognosis and graphesthesia), motor exam (strength, tone, pronator drift and reflexes) and coordination and gait exam (cerebellum, including the Romberg test).",
+    "roots": [["neur-", "nerve"], ["-logy", "study of"], ["stereo-", "solid"], ["gnosis", "knowledge"], ["graph-", "write"], ["esthesia", "sensation"]],
+    "say": "STAIR-ee-og-NOH-sis; graf-es-THEE-zhuh"
+  },
+  "gcs": {
+    "def": "The Glasgow Coma Scale scores consciousness by adding the best eye-opening (1 to 4), verbal (1 to 5) and motor (1 to 6) responses, for a total from 3 to 15. A total of 8 or less is severe impairment, the usual working definition of coma.",
+    "roots": [["coma", "deep sleep"]],
+    "say": ""
+  },
+  "stroke-signs": {
+    "def": "A stroke (cerebrovascular accident) is the sudden loss of function in part of the brain when its blood supply is interrupted: ischemic when an artery is blocked, hemorrhagic when one bursts. Its warning signs are taught as BE FAST (balance, eyes, face, arm, speech, time). A transient ischemic attack is a brief episode of the same signs with no dead brain tissue on a scan.",
+    "roots": [["cerebr-", "brain"], ["vas-", "vessel"], ["isch-", "hold back"], ["-emia", "blood"], ["hemo-", "blood"], ["-rrhage", "burst forth"]],
+    "say": "ih-SKEE-mik"
+  },
+  "spinal-cord-injury": {
+    "def": "Damage to the spinal cord that cuts tracts at one level and destroys the gray matter there. A cervical injury causes tetraplegia (quadriplegia), weakness of all four limbs; a thoracic or lower injury causes paraplegia, weakness of the legs. A hemisection, damage to one half of the cord, causes same-side weakness and position-sense loss with opposite-side loss of pain and temperature.",
+    "roots": [["tetra-", "four (Greek)"], ["quadri-", "four (Latin)"], ["para-", "beside"], ["-plegia", "paralysis, a blow"], ["hemi-", "half"]],
+    "say": "tet-ruh-PLEE-juh"
+  }
+}

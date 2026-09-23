@@ -1,0 +1,12 @@
+{
+  "gustation": {
+    "def": "The sense of taste. Taste buds hold gustatory receptor cells, epithelial cells with no axon that detect five taste qualities (salty, sour, sweet, umami and bitter) and pass the signal to sensory neurons in the facial, glossopharyngeal and vagus nerves. Umami is the savory taste of glutamate.",
+    "roots": [["gust-", "taste"], ["-ation", "process"], ["umami", "savory, delicious (Japanese)"]],
+    "say": "gus-TAY-shun, oo-MAH-mee"
+  },
+  "olfaction": {
+    "def": "The sense of smell. An odorant dissolves in the mucus of the olfactory epithelium and binds an odorant receptor protein on an olfactory sensory neuron, whose axon passes through the cribriform plate to the olfactory bulb. Anosmia is the loss of smell.",
+    "roots": [["olfact-", "smell"], ["an-", "without"], ["osm-", "smell"]],
+    "say": "ol-FAK-shun, an-OZ-mee-uh"
+  }
+}

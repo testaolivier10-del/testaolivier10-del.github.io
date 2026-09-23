@@ -1,0 +1,629 @@
+[
+  {
+    "id": "anp-ans-control-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Which of these effectors does not have dual innervation?",
+    "options": [
+      "The heart",
+      "The iris",
+      "The smooth muscle of skin blood vessels",
+      "The muscle in the wall of the stomach"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Most blood vessels, including those of the skin, receive only sympathetic fibers. Their diameter is controlled by raising or lowering sympathetic tone.",
+      "options": [
+        "The heart has dual innervation: sympathetic cardiac accelerator nerves and the parasympathetic vagus nerve.",
+        "The iris has dual innervation: sympathetic fibers to the dilator muscle and parasympathetic fibers to the circular muscle.",
+        "Correct. Skin vessels get sympathetic fibers only.",
+        "The stomach wall has dual innervation: vagal fibers speed it, sympathetic fibers slow it."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-control-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "In a resting adult, atropine raises the heart rate by about 30 beats a minute, but a beta blocker lowers it by only a few beats. What does this show?",
+    "options": [
+      "At rest, vagal tone on the heart is much stronger than sympathetic tone",
+      "The heart carries no beta-1 receptor proteins while the body is at rest",
+      "Atropine directly stimulates beta-1 receptor proteins",
+      "The sympathetic division is silent at rest"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Removing a tone reveals how much it was doing. Blocking the vagus nerve's effect frees the heart from a large brake, so the rate jumps. Blocking beta-1 removes only a small sympathetic push, so the rate falls a little.",
+      "options": [
+        "Correct. Vagal tone dominates the resting heart.",
+        "The heart carries beta-1 receptor proteins all the time; exercise and fright act through them. At rest they are simply receiving little norepinephrine.",
+        "Atropine blocks muscarinic receptor proteins. It has no action on beta-1 receptor proteins.",
+        "The sympathetic division keeps a low resting tone, which is why a beta blocker lowers the rate at all."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-control-3",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 4,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "A patient is given an injection of phenylephrine, an alpha-1 agonist, into a vein. Predict each variable, first in the first few seconds and then about a minute later, once autonomic reflexes have acted. Compare each with the value before the injection.",
+    "variables": [
+      {
+        "name": "Diameter of skin blood vessels, first few seconds",
+        "answer": "down",
+        "why": "Phenylephrine activates alpha-1 receptor proteins on vessel smooth muscle, which contracts and narrows the vessels."
+      },
+      {
+        "name": "Blood pressure, first few seconds",
+        "answer": "up",
+        "why": "Narrower vessels throughout the body raise the pressure the heart must push against, so arterial pressure rises."
+      },
+      {
+        "name": "Heart rate, first few seconds",
+        "answer": "none",
+        "why": "Phenylephrine does not act on beta-1 receptor proteins, so it does not directly change the heart rate."
+      },
+      {
+        "name": "Vagal output to the heart, a minute later",
+        "answer": "up",
+        "why": "Stretch-sensitive sensory receptors in the walls of the large arteries fire more as pressure rises. The medulla oblongata responds by increasing vagal output and reducing sympathetic output."
+      },
+      {
+        "name": "Heart rate, a minute later",
+        "answer": "down",
+        "why": "More vagal tone, acting through muscarinic receptor proteins on the heart, slows the heart below its starting rate."
+      },
+      {
+        "name": "Blood pressure, a minute later",
+        "answer": "up",
+        "why": "The reflex slows the heart and trims sympathetic tone, but the drug is still holding alpha-1 receptor proteins active, so pressure is pulled back only part of the way and stays above its starting value."
+      }
+    ],
+    "why": {
+      "correct": "Immediately, phenylephrine narrows vessels through alpha-1 receptor proteins and blood pressure rises, with no direct effect on the heart. The blood pressure reflex then increases vagal tone and lowers sympathetic tone, so the heart rate falls. Negative feedback corrects only part of the rise, so pressure stays somewhat high while the drug acts."
+    }
+  },
+  {
+    "id": "anp-ans-control-4",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "A dog suddenly lunges at a jogger from behind a fence. Predict the change in each variable across her body over the next minute.",
+    "variables": [
+      {
+        "name": "Heart rate",
+        "answer": "up",
+        "why": "The amygdala and hypothalamus drive the brainstem to cut vagal output and raise sympathetic output, and norepinephrine and epinephrine act on beta-1 receptor proteins."
+      },
+      {
+        "name": "Pupil diameter",
+        "answer": "up",
+        "why": "Sympathetic fibers from the superior cervical ganglion release norepinephrine onto alpha-1 receptor proteins of the dilator muscle."
+      },
+      {
+        "name": "Blood flow to the skin",
+        "answer": "down",
+        "why": "Vasomotor nerves constrict skin vessels through alpha-1 receptor proteins, so she goes pale."
+      },
+      {
+        "name": "Glucose released into the blood by the liver",
+        "answer": "up",
+        "why": "Epinephrine from the adrenal medulla acts on beta-2 receptor proteins in the liver, which breaks glycogen down to glucose."
+      },
+      {
+        "name": "Movement of the stomach and intestine wall",
+        "answer": "down",
+        "why": "Sympathetic activity slows gut smooth muscle while parasympathetic stimulation of the gut falls."
+      },
+      {
+        "name": "Diameter of the small airways",
+        "answer": "up",
+        "why": "Circulating epinephrine relaxes airway smooth muscle through beta-2 receptor proteins."
+      }
+    ],
+    "why": {
+      "correct": "Fear reaches the hypothalamus from the limbic system and triggers a mass sympathetic discharge with adrenal epinephrine. The nervous system raises heart rate and widens the pupils; the cardiovascular system shifts blood away from the skin and gut; the liver adds glucose to the blood; the airways widen; and gut activity slows."
+    }
+  },
+  {
+    "id": "anp-ans-control-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "misconception": "an organ needs two opposing nerves to be turned both up and down",
+    "q": "The small vessels in the skin of your fingers have no parasympathetic supply. How does your nervous system widen them when you warm up?",
+    "options": [
+      "It sends acetylcholine to them through the vagus nerve",
+      "It lowers sympathetic tone, so the vessels constrict less",
+      "It raises sympathetic tone, which widens them through alpha-1 receptor proteins",
+      "It cannot widen them; only local heat can"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Vasomotor nerves keep finger skin vessels partly constricted at rest. Firing less lets the smooth muscle relax, and the vessels widen. One division with a resting tone gives two-way control.",
+      "options": [
+        "The vagus nerve does not supply skin vessels, and most blood vessels have no parasympathetic fibers at all.",
+        "Correct. Withdrawing sympathetic tone widens the vessels.",
+        "Alpha-1 receptor proteins make vessel smooth muscle contract. More sympathetic tone narrows skin vessels.",
+        "The hypothalamus widens these vessels through the nervous system, by withdrawing sympathetic tone. Local warmth helps, but it is not the only route."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-control-6",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "Six months after a heart transplant, Mr. Novak's resting heart rate is 100 beats a minute, though he is calm and well. Before surgery, his resting rate was 68. What best explains the change?",
+    "options": [
+      "His new heart has an unusually high number of beta-1 receptor proteins",
+      "Cutting the nerves raised his sympathetic tone",
+      "His new heart receives no vagal tone, so it beats at its own rate",
+      "His adrenal medulla now releases epinephrine continuously"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Transplant surgery cuts every autonomic nerve to the heart. Without vagal tone to hold it back, the heart runs at its own built-in rate of about 100 beats a minute. At rest, vagal tone is what normally holds the rate near 60 to 80.",
+      "options": [
+        "A donor heart has a normal set of receptor proteins. The change is explained by the missing nerves.",
+        "Cutting the nerves removes sympathetic tone to the heart as well; it cannot raise it.",
+        "Correct. The missing vagal brake leaves the heart at its own rate.",
+        "Nothing about the transplant makes the adrenal medulla secrete continuously, and he is calm."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-control-7",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Put the steps of the pupillary light reflex in order, starting with light shone into one eye.",
+    "options": [
+      "Light strikes the retina and retinal ganglion cells fire",
+      "Signals travel along the optic nerve to the pretectal nuclei in the midbrain",
+      "The pretectal nuclei stimulate the Edinger–Westphal nuclei on both sides",
+      "Preganglionic fibers travel in both oculomotor nerves to the ciliary ganglia",
+      "Postganglionic fibers release acetylcholine onto the circular iris muscle",
+      "Both pupils narrow"
+    ],
+    "why": {
+      "correct": "The afferent limb is the optic nerve; the integration center is in the midbrain, which sends the signal to both sides; the efferent limb is the parasympathetic chain of two neurons in the oculomotor nerve, synapsing in the ciliary ganglion. Acetylcholine on muscarinic receptor proteins contracts the circular muscle."
+    }
+  },
+  {
+    "id": "anp-ans-control-8",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "Ms. Tran's right oculomotor nerve is compressed after a head injury. A penlight is shone into her right eye. What happens to her pupils?",
+    "options": [
+      "Both pupils narrow normally",
+      "Neither pupil narrows",
+      "The right pupil narrows, but the left pupil stays wide",
+      "The left pupil narrows but the right does not"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Her right retina and optic nerve still send the light signal to the midbrain, which drives both Edinger–Westphal nuclei. The left oculomotor nerve is intact, so the left pupil narrows. The right oculomotor nerve cannot carry the parasympathetic output, so the right pupil stays wide.",
+      "options": [
+        "The right pupil needs the right oculomotor nerve to narrow, and that nerve is compressed.",
+        "The sensory side works and the midbrain sends the signal to both sides, so the left pupil still responds.",
+        "The right pupil's efferent pathway is the damaged one, so the right pupil is the one that fails.",
+        "Correct. The input is intact and the midbrain crosses the signal, but only the left efferent pathway works."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-control-9",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A student described the reflex that follows standing up quickly. One step is wrong. Which one?",
+    "options": [
+      "Blood pools in the legs and pressure in the large arteries dips",
+      "Stretch-sensitive sensory receptors in the artery walls fire less",
+      "Fewer signals reach the medulla oblongata through nerves IX and X",
+      "The medulla oblongata increases vagal output and decreases sympathetic output",
+      "Heart rate rises and the vessels in the skin and gut constrict"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "When pressure falls, the medulla oblongata does the opposite: it reduces vagal output and increases sympathetic output. That is what speeds the heart and constricts the vessels in the last step.",
+      "options": [
+        "This step is right. Gravity pools blood in the leg veins, so less returns to the heart and arterial pressure dips.",
+        "This step is right. Lower pressure stretches the artery walls less, so their sensory receptors fire less.",
+        "This step is right. These sensory receptors send their signals through the glossopharyngeal and vagus nerves.",
+        "This is the error. A fall in pressure lowers vagal tone and raises sympathetic tone.",
+        "This step is right. More sympathetic output acts on beta-1 receptor proteins in the heart and alpha-1 receptor proteins in the vessels."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-control-10",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Complete the visceral reflex arc: sensory receptor → visceral sensory neuron → integration center in the CNS → preganglionic neuron → ____ → postganglionic neuron → effector.",
+    "options": [
+      "Autonomic ganglion",
+      "Dorsal root ganglion",
+      "Neuromuscular junction",
+      "Ventral horn"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The efferent half of a visceral reflex is the two-neuron chain: the preganglionic neuron synapses in an autonomic ganglion on the postganglionic neuron.",
+      "options": [
+        "Correct. The two efferent neurons meet in an autonomic ganglion.",
+        "The dorsal root ganglion holds sensory cell bodies on the afferent side, not the efferent relay.",
+        "A neuromuscular junction is where a somatic motor neuron meets skeletal muscle, the effector of a somatic reflex.",
+        "The ventral horn holds somatic motor neurons inside the CNS. The step needed is outside the CNS, between the two efferent neurons."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-control-11",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Select every effect of strong sympathetic activation.",
+    "options": [
+      "Blood vessels in skeletal muscle widen",
+      "The liver releases glucose into the blood",
+      "The pupils narrow",
+      "Sweating increases",
+      "Gut movement speeds up",
+      "The small airways widen"
+    ],
+    "correct": [
+      0,
+      1,
+      3,
+      5
+    ],
+    "why": {
+      "correct": "Sympathetic activation widens skeletal muscle vessels and airways (beta-2, mostly epinephrine), releases glucose from the liver (beta-2), and drives sweating (muscarinic, through cholinergic sympathetic fibers). It widens the pupils and slows the gut.",
+      "options": [
+        "Correct. Beta-2 receptor proteins and chemicals from working muscle widen these vessels.",
+        "Correct. Epinephrine on beta-2 receptor proteins makes the liver break down glycogen.",
+        "Narrowing the pupils is a parasympathetic effect. Sympathetic activity widens them through alpha-1 receptor proteins.",
+        "Correct. Sympathetic cholinergic fibers drive the eccrine sweat glands.",
+        "Speeding the gut is a parasympathetic effect. Sympathetic activity slows it.",
+        "Correct. Epinephrine relaxes airway smooth muscle through beta-2 receptor proteins."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-control-12",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "An hour after a large meal, parasympathetic activity dominates. Select every effect you would expect.",
+    "options": [
+      "Slower heart rate",
+      "More movement and secretion in the stomach and intestines",
+      "Widened pupils",
+      "Relaxed sphincters along the gut",
+      "Glucose released from liver glycogen",
+      "Increased sweating"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "why": {
+      "correct": "Parasympathetic activation slows the heart, speeds gut movement and secretion, and relaxes the gut sphincters, all through muscarinic receptor proteins. Widened pupils, glucose release and sweating are sympathetic effects.",
+      "options": [
+        "Correct. More vagal tone slows the heart.",
+        "Correct. This is the rest-and-digest pattern.",
+        "Widened pupils are a sympathetic effect. Parasympathetic activity narrows the pupils.",
+        "Correct. Sphincters relax, letting contents move on.",
+        "Releasing glucose from glycogen is a sympathetic effect, driven by epinephrine on beta-2 receptor proteins.",
+        "Sweat glands have no parasympathetic supply; sweating is driven by sympathetic fibers."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-control-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Before giving a speech, a student's mouth feels dry and sticky. Which statement explains this?",
+    "options": [
+      "Sympathetic activity stops all saliva secretion",
+      "Parasympathetic activity is increased by feeling nervous before speaking",
+      "Sympathetic activity adds thick saliva as watery secretion falls",
+      "The glands that make saliva have no autonomic supply"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The glands that make saliva have dual innervation, and here both divisions stimulate secretion. Nervousness lowers parasympathetic drive, which normally brings large volumes of watery saliva, and raises sympathetic drive, which brings a small volume of thick, protein-rich saliva.",
+      "options": [
+        "Sympathetic activity does stimulate these glands, only to produce a small volume of thick saliva rather than none.",
+        "Nervousness shifts the balance toward sympathetic activity, not parasympathetic.",
+        "Correct. The change in the kind of saliva, not a total stop, makes the mouth feel sticky.",
+        "Both divisions supply these glands; they are a classic example of dual innervation."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-control-14",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Which brain region is the main integrator of autonomic function, linking emotions, body temperature and water balance to autonomic output?",
+    "options": [
+      "Cerebellum",
+      "Hypothalamus",
+      "Primary motor cortex",
+      "Thalamus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The hypothalamus compares temperature, water balance and energy stores with their set points, receives emotional input from the limbic system, and sends commands to the brainstem and spinal cord autonomic centers.",
+      "options": [
+        "The cerebellum coordinates movement. It is not the integrator of autonomic output.",
+        "Correct. The hypothalamus sits at the top of the autonomic control hierarchy below the cerebrum.",
+        "The primary motor cortex controls voluntary movement through somatic motor pathways.",
+        "The thalamus relays sensory signals to the cortex. It does not integrate autonomic output."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-control-15",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "A healthy medical student faints the first time she watches blood being drawn. Just before she faints, her heart rate falls and her face turns pale. Which pathway best explains this?",
+    "options": [
+      "The limbic system triggers a vagal burst and a fall in sympathetic tone",
+      "A spinal visceral reflex is triggered by stretch in the arm used for the blood draw",
+      "Her adrenal medulla releases a surge of epinephrine",
+      "Her cerebellum loses control of posture"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Emotional input reaches the hypothalamus from the limbic system. It can trigger a sudden rise in vagal output, which slows the heart, together with a drop in sympathetic tone, which widens the vessels. Blood pressure falls, less blood reaches the brain, and she faints.",
+      "options": [
+        "Correct. This emotional pathway acts through both divisions at once.",
+        "Watching a procedure is an emotional, not a stretch, stimulus, and her own arm is not being stretched.",
+        "An epinephrine surge would speed the heart, not slow it.",
+        "The cerebellum coordinates movement. Fainting here comes from a fall in blood pressure."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-control-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "An emergency physician checks a patient's pupillary light reflex after a head injury. Which part of the brainstem does a normal response show is working?",
+    "options": [
+      "The medulla oblongata",
+      "The pons",
+      "The midbrain",
+      "The cerebellum"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The pupillary light reflex is integrated in the midbrain: the pretectal nuclei and the Edinger–Westphal nuclei. A normal response shows the optic nerve, the midbrain and the oculomotor nerve are working.",
+      "options": [
+        "The medulla oblongata integrates the reflexes of the heart, vessels and breathing, not the pupil.",
+        "The pons is not part of the pupillary light reflex pathway.",
+        "Correct. The integration center and the parasympathetic nucleus for the pupil are in the midbrain.",
+        "The cerebellum is not part of the brainstem and plays no part in this reflex."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-control-17",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "structure-function"
+    ],
+    "q": "Mr. Sato's spinal cord was completely cut at C5 an hour ago. His blood pressure is low, his heart rate is 48, and his feet are warm and pink. Which explanation fits all three findings?",
+    "options": [
+      "His vagus nerve was cut, so vagal tone is lost",
+      "His adrenal medulla is releasing too much epinephrine",
+      "He has lost sympathetic tone while vagal output continues",
+      "His skeletal muscles are paralyzed, so they need less of the blood flow"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Brain control of all sympathetic output runs down the cord to T1–L2, below the cut. Without sympathetic tone, vessels widen (low pressure, warm pink skin) and the heart loses its sympathetic push. The vagus nerve leaves the brainstem above the cut, so vagal tone continues unopposed and slows the heart.",
+      "options": [
+        "The vagus nerve leaves the brainstem and never enters the spinal cord, so a cord injury does not cut it. Losing vagal tone would speed the heart.",
+        "Epinephrine would speed the heart and constrict skin vessels, the opposite of these findings. The adrenal medulla also depends on T-segment preganglionic neurons cut off from the brain.",
+        "Correct. Lost sympathetic tone plus intact vagal tone explains all three findings.",
+        "Paralysis does not explain a slow heart or warm feet. The findings come from lost sympathetic tone."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-control-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Five minutes after a near-accident, a driver's sympathetic nerves have returned to resting activity, but her heart is still pounding and her hands shake. Why?",
+    "options": [
+      "Epinephrine from the adrenal medulla is still circulating",
+      "Her vagal tone is still switched off",
+      "Norepinephrine lasts for hours in the gap at each varicosity",
+      "Her heart has lost its muscarinic receptor proteins"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The adrenal medulla released epinephrine into the blood during the fright. It keeps acting on beta receptor proteins for a few minutes until it is cleared, so its effects outlast the nerve signal.",
+      "options": [
+        "Correct. The hormone outlasts the burst of nerve activity.",
+        "Once the danger passes, vagal tone returns within seconds along with the fall in sympathetic firing.",
+        "Norepinephrine at a varicosity is cleared by reuptake within about a second.",
+        "Receptor proteins are not lost in a few minutes of fright."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-control-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "On a hot afternoon, a resting hiker's skin flushes and she sweats, yet her heart rate is unchanged. What does this show about the sympathetic division?",
+    "options": [
+      "It acts only as an all-or-none mass discharge",
+      "Its output can be targeted at some effectors without the others",
+      "Sweating and skin blood flow are controlled by the parasympathetic division",
+      "Heat blocks beta-1 receptor proteins in the heart"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The hypothalamus can raise sympathetic output to the sweat glands and change its output to the skin vessels so they widen, without changing its output to the heart. Mass discharge is one mode, not the only one.",
+      "options": [
+        "Mass discharge happens in emergencies, but the sympathetic division also adjusts single targets.",
+        "Correct. Temperature control uses selective sympathetic output.",
+        "Sweat glands and skin vessels have no parasympathetic supply.",
+        "Heat does not block beta-1 receptor proteins. The heart rate is unchanged because the heart is not being targeted."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-control-20",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "A resting patient is given a drug that blocks the nicotinic receptor proteins in every autonomic ganglion. What happens to his heart rate?",
+    "options": [
+      "It falls, because sympathetic input to the heart is removed",
+      "It stays the same, because the two effects cancel exactly",
+      "It rises, because the larger vagal brake is removed",
+      "It stops, because the heart needs autonomic input to beat"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Blocking every ganglion silences both divisions. On the resting heart, vagal tone is the larger influence, so removing both leaves a net loss of braking: the heart rises toward its own rate of about 100 beats a minute.",
+      "options": [
+        "Sympathetic input is removed, but the larger vagal tone is removed too, so the net effect is a rise.",
+        "The two tones are not equal at rest; vagal tone dominates.",
+        "Correct. The net loss is of the vagal brake.",
+        "The heart beats on its own; autonomic nerves only adjust its rate."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-control-21",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A person lying down stands up quickly, and for a moment the pressure in her large arteries dips. Predict the change in each variable a few seconds later, as the reflex responds.",
+    "variables": [
+      {
+        "name": "Firing of stretch-sensitive sensory receptors in the artery walls",
+        "answer": "down",
+        "why": "Lower pressure stretches the artery walls less, so these sensory receptors fire less."
+      },
+      {
+        "name": "Vagal output to the heart",
+        "answer": "down",
+        "why": "With fewer stretch signals arriving, the medulla oblongata reduces vagal tone."
+      },
+      {
+        "name": "Sympathetic output to the vessels",
+        "answer": "up",
+        "why": "The medulla oblongata increases sympathetic tone through the vasomotor nerves."
+      },
+      {
+        "name": "Heart rate",
+        "answer": "up",
+        "why": "Less vagal braking and more sympathetic drive on beta-1 receptor proteins speed the heart."
+      },
+      {
+        "name": "Diameter of vessels in the skin and gut",
+        "answer": "down",
+        "why": "More vasomotor firing acts on alpha-1 receptor proteins, and the vessels narrow."
+      }
+    ],
+    "why": {
+      "correct": "A fall in pressure reduces the firing of the stretch-sensitive sensory receptors. The medulla oblongata responds by shifting autonomic tone: less vagal, more sympathetic. The heart speeds up and vessels narrow, bringing pressure back toward normal by negative feedback."
+    }
+  }
+]

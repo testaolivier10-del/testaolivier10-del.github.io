@@ -1,0 +1,30 @@
+{
+  "os-15-13": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "15.13",
+      "section": "15.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/de1f5a410a2c9f83248e52dd53e1bffe769c4178",
+      "page": "15-4-drugs-that-affect-the-autonomic-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/de1f5a410a2c9f83248e52dd53e1bffe769c4178",
+    "alt": "The brainstem and upper spinal cord drawn from the front, with the pons, medulla and segments T1 to T6 labeled and a sympathetic chain of ganglia beside the cord on each side, topped by the superior cervical ganglion. A blue parasympathetic fiber runs from a nucleus in the medulla, labeled as the dorsal nucleus of the vagus and nucleus ambiguus, along cranial nerve X to a small drawing of the heart on the right. Four red sympathetic fibers leave the cord at T1 to T4, pass through the chain ganglia and converge on the same heart.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 15.13",
+    "labels": []
+  },
+  "os-15-10": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "15.10",
+      "section": "15.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/20f219ed4df23d645c36b888f960a502fc8a8fe4",
+      "page": "15-3-central-control"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/20f219ed4df23d645c36b888f960a502fc8a8fe4",
+    "alt": "A view from above of both eyes, the optic nerves and the midbrain, with a gloved hand shining a penlight into the right eye. Numbered callouts trace the reflex: light enters the right eye only; signals from that eye reach the pretectal nuclei on both sides of the midbrain; the pretectal nuclei stimulate the Edinger–Westphal nuclei on both sides; and both oculomotor nerves carry signals to the ciliary ganglia behind the eyes, so both pupils constrict.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 15.10",
+    "labels": []
+  }
+}

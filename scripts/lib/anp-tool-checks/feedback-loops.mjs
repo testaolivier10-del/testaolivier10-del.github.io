@@ -38,7 +38,6 @@ export function check(data, map) {
     for (const f of ['title', 'topic', 'scenario', 'classify']) if (!str(l[f])) err(`${where}: missing ${f}`);
     const topic = topics.get(l.topic);
     if (!topic) err(`${where}: unknown topic "${l.topic}"`);
-    else if (!PILOT_CHAPTERS.includes(topic.chapter)) err(`${where}: topic "${l.topic}" is outside the pilot chapters`);
     if (!Array.isArray(l.core) || !l.core.length) err(`${where}: core must list at least one core concept`);
     else for (const c of l.core) if (!core.has(c)) err(`${where}: unknown core concept "${c}"`);
     if (!KINDS.includes(l.kind)) err(`${where}: kind must be negative or positive`);
@@ -100,6 +99,7 @@ export function check(data, map) {
       if (!built.has(t.title)) err(`map loop "${t.title}" (${ch.id}) has no loop`);
     }
   }
-  for (const l of data.loops) if (l && l.map && !planned.has(l.map)) err(`loop ${l.id}: map "${l.map}" is not a pilot feedback loop in the map`);
+  const allLoops = new Set(map.chapters.flatMap(ch => ((ch.tools && ch.tools.feedbackLoops) || []).map(t => t.title)));
+  for (const l of data.loops) if (l && l.map && !allLoops.has(l.map)) err(`loop ${l.id}: map "${l.map}" is not a feedback loop in the map`);
   return errors;
 }

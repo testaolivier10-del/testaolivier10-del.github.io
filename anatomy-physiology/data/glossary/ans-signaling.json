@@ -1,0 +1,112 @@
+{
+  "cholinergic-adrenergic": {
+    "def": "Autonomic neurons named for their transmitter. Cholinergic neurons release acetylcholine: every preganglionic neuron, every parasympathetic postganglionic neuron, and the sympathetic postganglionic neurons to eccrine sweat glands. Adrenergic neurons release norepinephrine: most sympathetic postganglionic neurons.",
+    "roots": [
+      [
+        "chol-",
+        "bile"
+      ],
+      [
+        "erg-",
+        "work"
+      ],
+      [
+        "adren-",
+        "adrenal gland"
+      ]
+    ],
+    "say": "koh-lin-ER-jik; ad-ren-ER-jik"
+  },
+  "norepinephrine": {
+    "def": "The transmitter (NE, also called noradrenaline) released by most sympathetic postganglionic neurons from their varicosities. It binds alpha and beta-1 receptor proteins strongly and beta-2 weakly, and its signal ends mainly by reuptake into the varicosity.",
+    "roots": [
+      [
+        "nor-",
+        "parent compound (one methyl group fewer)"
+      ],
+      [
+        "epi-",
+        "upon"
+      ],
+      [
+        "nephr-",
+        "kidney"
+      ]
+    ],
+    "say": "nor-ep-ih-NEF-rin"
+  },
+  "nicotinic-receptor": {
+    "def": "The acetylcholine receptor protein on every autonomic postganglionic neuron and on adrenal chromaffin cells. It is a ligand-gated ion channel, so it is fast and always excitatory; it differs in subunits from the nicotinic type at the neuromuscular junction.",
+    "roots": [
+      [
+        "nicotin-",
+        "nicotine, which activates it"
+      ]
+    ],
+    "say": "nik-oh-TIN-ik"
+  },
+  "muscarinic-receptor": {
+    "def": "The G protein–coupled acetylcholine receptor protein on every parasympathetic target and on eccrine sweat glands. Depending on subtype it inhibits (slowing the heart by opening potassium channels) or excites (contracting gut smooth muscle, stimulating glands). Atropine blocks it.",
+    "roots": [
+      [
+        "muscar-",
+        "fly (the fly agaric mushroom, source of muscarine)"
+      ]
+    ],
+    "say": "mus-kuh-RIN-ik"
+  },
+  "alpha-receptor": {
+    "def": "Adrenergic receptor proteins of the alpha family. Alpha-1 raises calcium in smooth muscle, so vessels in skin and gut constrict, the pupil's dilator muscle contracts and sphincters tighten. Alpha-2, often on the varicosity itself, lowers cyclic AMP and turns down norepinephrine release.",
+    "roots": [
+      [
+        "adren-",
+        "adrenal gland"
+      ],
+      [
+        "erg-",
+        "work"
+      ]
+    ],
+    "say": ""
+  },
+  "beta-receptor": {
+    "def": "Adrenergic receptor proteins of the beta family, which raise cyclic AMP. Beta-1 speeds the heart and strengthens its contraction. Beta-2, reached mainly by circulating epinephrine, relaxes smooth muscle (widening the small airways and dilating vessels in skeletal muscle) and makes the liver release glucose.",
+    "roots": [
+      [
+        "adren-",
+        "adrenal gland"
+      ],
+      [
+        "erg-",
+        "work"
+      ]
+    ],
+    "say": ""
+  },
+  "autonomic-drugs": {
+    "def": "Drugs that bind autonomic receptor proteins. An agonist activates a receptor protein and an antagonist blocks it. Sympathomimetic drugs (albuterol, phenylephrine) mimic sympathetic effects; sympatholytic drugs (beta blockers) block them; parasympathomimetic drugs (pilocarpine) mimic acetylcholine; anticholinergic drugs (atropine) block it; nicotine activates the nicotinic receptor proteins of every ganglion.",
+    "roots": [
+      [
+        "agon-",
+        "contest"
+      ],
+      [
+        "ant-",
+        "against"
+      ],
+      [
+        "mimet-",
+        "imitate"
+      ],
+      [
+        "lyt-",
+        "loosen, undo"
+      ],
+      [
+        "anti-",
+        "against"
+      ]
+    ],
+    "say": "AG-oh-nist; an-TAG-oh-nist"
+  }
+}

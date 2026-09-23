@@ -682,6 +682,38 @@
       "summary": "Sense the irritant, breathe in deep, seal the vocal folds, squeeze, then open: the sudden release of high-pressure air carries the irritant out. A sneeze uses the same sequence, started from the nose through the trigeminal nerve and aimed out through the nose."
     },
     {
+      "id": "airway-seal",
+      "title": "Sealing the airway when you swallow",
+      "topic": "upper-airway",
+      "core": ["structure-function"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Put your fingers on your Adam’s apple and swallow a mouthful of water. Trace how your airway is sealed so the water goes into your esophagus, not your larynx.",
+      "steps": [
+        { "id": "lift", "label": "Larynx pulled up", "text": "Muscles attached to the hyoid bone pull the larynx up and forward, tucking it under the base of the tongue.", "why": "This is the jump you feel first. Moving the larynx up and forward sets up everything after it: it brings the opening of the larynx under the epiglottis." },
+        { "id": "vocal", "label": "Vocal folds close", "text": "The vocal folds close, shutting the glottis.", "why": "The seal is built from the inside out, and the vocal folds are the innermost and lowest seal, guarding the narrowest part of the airway." },
+        { "id": "vestibular", "label": "Vestibular folds close", "text": "The vestibular folds, just above the vocal folds, close too.", "why": "The upper pair of folds closes after the lower pair, adding a second seal from the inside." },
+        { "id": "epiglottis", "label": "Epiglottis tips over", "text": "The upward movement and the pressure of the water tip the epiglottis down and back over the opening of the larynx.", "why": "The epiglottis is the last, outer cover. It folds only once the larynx has risen under it and the swallowed water presses on it." },
+        { "id": "pass", "label": "Water into esophagus", "text": "The water slides over the covered opening and into the esophagus, while breathing stops for a moment.", "why": "With the larynx sealed, the only open path from the laryngopharynx leads back into the esophagus." },
+        { "id": "reopen", "label": "Airway reopens", "text": "The larynx drops, the epiglottis rises, the folds open and breathing resumes.", "why": "The seal is released only after the water has passed, so the next breath draws in air, not water." }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          { "text": "The pressure of the water folds the cricoid cartilage down and back over the opening of the larynx.", "why": "The cricoid cartilage is a complete ring below the thyroid cartilage; it cannot fold. The flap that covers the larynx is the epiglottis, made of elastic cartilage." },
+          { "text": "The vocal folds snap open, and a burst of air from the lungs blows the water up and out of the pharynx.", "why": "That is a cough. It fires only if water gets past the seal and touches the lining below the folds." },
+          { "text": "Cilia lining the laryngopharynx sweep the water quickly down into the esophagus.", "why": "Cilia move mucus slowly toward the pharynx, a few millimeters a minute. Swallowing is done by the skeletal muscle of the pharynx walls." }
+        ]
+      },
+      "error": {
+        "at": 1,
+        "text": "The vocal folds open wide, so the water can pass through the larynx.",
+        "why": "Water must never enter the larynx. The vocal folds close, shutting the glottis, as the inner seal; if water touches the lining below them, you cough."
+      },
+      "summary": "Lift, then seal from the inside out: vocal folds, vestibular folds, and last the epiglottis as an outer cover. Only then does the water pass, and the airway opens again once it is gone. Laughing while you drink can break the sequence, and the cough reflex is the backup."
+    },
+    {
       "id": "air-route",
       "title": "Air to the alveoli and back",
       "topic": "lower-airway-lungs",

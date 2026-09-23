@@ -8035,7 +8035,7 @@
      "answer": 60,
      "tol": 5,
      "unit": "mm Hg",
-     "why": "100 − 40 = 60 mm Hg. The carbon dioxide gradient the other way is only 46 − 40 = 6 mm Hg, but carbon dioxide is about 20 times more soluble, so it crosses just as readily."
+     "why": "100 − 40 = 60 mm Hg. The carbon dioxide gradient the other way is only 46 − 40 = 6 mm Hg, but carbon dioxide is about 20 times more soluble, so it crosses at least as readily: 6 × 20 = 120 against 60 × 1."
     },
     {
      "id": "biggest-drop",
@@ -9172,7 +9172,7 @@
       "x": 40,
       "y": 14.5
      },
-     "why": "About 14.5 L/min, well over twice the resting value. On the steep part of the dissociation curve, oxygen content falls fast, and the carotid bodies fire strongly."
+     "why": "About 14.5 L/min, well over twice the resting value. Below about 60 mm Hg the carotid bodies’ firing rises steeply, and the respiratory centers drive deeper, faster breathing. At this PO2 hemoglobin is on the steep part of its curve, so the blood is losing oxygen content fast."
     },
     {
      "id": "threshold",
@@ -9191,7 +9191,7 @@
       "region": "steep"
      },
      "why": {
-      "correct": "Between 100 and 60 mm Hg hemoglobin stays about 90% saturated or more, and the carotid bodies respond little. Below about 60 their firing rises steeply. Minute to minute, carbon dioxide, not oxygen, sets your breathing.",
+      "correct": "The carotid bodies’ own response is shaped this way: their firing rises only a little as PO2 falls from 100 to about 60 mm Hg, then steeply below that. Over the flat range hemoglobin stays about 90% saturated or more, so little oxygen is lost. Minute to minute, carbon dioxide, not oxygen, sets your breathing.",
       "options": [
        "Right: about 60 mm Hg.",
        "At 90 mm Hg the curve is still flat.",

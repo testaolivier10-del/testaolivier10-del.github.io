@@ -37,7 +37,7 @@ import { scanPage, indexMap } from '../anp-map.mjs';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
 const COURSE = join(ROOT, 'anatomy-physiology');
 const LEVELS = ['recall', 'apply', 'analyze'];
-const LICENSES = ['CC BY 4.0', 'public domain', 'CC0'];
+const LICENSES = ['CC BY 4.0', 'public domain', 'CC0', 'LevlPrep original'];
 const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const LABEL_ID = /^[a-z0-9]+([-_][a-z0-9]+)*$/;
 

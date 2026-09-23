@@ -1,0 +1,72 @@
+{
+  "dual-innervation": {
+    "def": "Supply of one organ by both autonomic divisions. The divisions usually have opposite effects (sympathetic speeds the heart, parasympathetic slows it) and sometimes cooperate (both stimulate the glands that make saliva). Most blood vessels, sweat glands, arrector pili muscles and the adrenal medulla lack it and get sympathetic fibers only.",
+    "roots": [
+      [
+        "du-",
+        "two"
+      ],
+      [
+        "in-",
+        "into"
+      ],
+      [
+        "nerv-",
+        "nerve"
+      ]
+    ],
+    "say": ""
+  },
+  "autonomic-tone": {
+    "def": "The steady background firing of autonomic neurons at rest, which lets one division change an effector in both directions. Vagal tone holds the resting heart well below its own rate of about 100 beats a minute; sympathetic tone keeps most blood vessels partly constricted.",
+    "roots": [
+      [
+        "tonus",
+        "tension"
+      ],
+      [
+        "vag-",
+        "wandering (vagus)"
+      ]
+    ],
+    "say": "VAY-gul"
+  },
+  "sympathetic-effects": {
+    "def": "The fight-or-flight pattern: faster, stronger heartbeat (through the cardiac accelerator nerves), constricted skin and gut vessels and dilated skeletal muscle vessels (through the vasomotor nerves and epinephrine), wider airways and pupils, glucose release from the liver, sweating, and slowed gut and bladder emptying. It can be widespread and is prolonged by adrenal epinephrine.",
+    "roots": [
+      [
+        "vas-",
+        "vessel"
+      ],
+      [
+        "motor",
+        "mover"
+      ]
+    ],
+    "say": "vay-zoh-MOH-ter"
+  },
+  "parasympathetic-effects": {
+    "def": "The rest-and-digest pattern: slower heart rate, narrowed pupils and near focusing, tears and watery saliva, more movement and secretion in the stomach and intestines, relaxed sphincters, emptying of the bladder and rectum, and narrowed airways. Effects are local and brief.",
+    "roots": [
+      [
+        "para-",
+        "beside"
+      ]
+    ],
+    "say": ""
+  },
+  "ans-central-control": {
+    "def": "The hierarchy that runs the ANS: the spinal cord holds preganglionic neurons and simple visceral reflexes; brainstem centers integrate reflexes for the heart, vessels, breathing and pupils; the hypothalamus integrates body temperature, water balance and energy stores; and the limbic system and cortex feed emotions and thoughts into the hypothalamus.",
+    "roots": [
+      [
+        "hypo-",
+        "below"
+      ],
+      [
+        "thalam-",
+        "inner chamber"
+      ]
+    ],
+    "say": ""
+  }
+}

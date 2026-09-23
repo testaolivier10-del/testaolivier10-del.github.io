@@ -5269,7 +5269,7 @@
         "q": "What is the corpus callosum made of, and what does it do?",
         "options": [
          "Gray matter that controls both sides of the body",
-         "Cerebrospinal fluid that cushions the hemispheres",
+         "A fluid-filled space that cushions the hemispheres",
          "White matter that links the two hemispheres",
          "Blood vessels that feed the cortex"
         ],
@@ -5508,13 +5508,13 @@
        "follow": {
         "q": "Why is an injury to the medulla oblongata so often fatal?",
         "options": [
-         "It makes all of the brain's cerebrospinal fluid",
+         "It processes what the eyes see",
          "It holds the centers that control heartbeat, blood pressure and breathing",
          "It is the only link between the two hemispheres",
-         "It stores long-term memories"
+         "It plans the words you speak"
         ],
         "correct": 1,
-        "why": "The medulla holds the vital centers for heart rate, blood pressure and breathing, so damage there can stop them. Fluid production, the link between the hemispheres and memory storage belong to other structures.",
+        "why": "The medulla holds the vital centers for heart rate, blood pressure and breathing, so damage there can stop them. Vision, the link between the hemispheres and speech planning belong to other structures.",
         "level": "apply"
        }
       }
@@ -5622,17 +5622,17 @@
        ],
        "concept": "limbic-system",
        "taught": "brain-regions",
-       "fn": "A curved ridge of cortex along the inner edge of the temporal lobe, part of the limbic system. It turns new experiences and facts into long-term memories.",
+       "fn": "A curved ridge of cortex along the inner edge of the temporal lobe, part of the limbic system. It is needed to store new facts and experiences so they can be recalled later.",
        "follow": {
         "q": "After damage to both hippocampi, a patient remembers his childhood but cannot remember people he met this week. What is he unable to do?",
         "options": [
-         "Retrieve old memories",
-         "Form new long-term memories",
+         "Recall events from long ago",
+         "Store new facts and events for later recall",
          "Feel fear",
          "Coordinate his movements"
         ],
         "correct": 1,
-        "why": "The hippocampus turns new experiences into long-term memories, so without it new events are lost while older, already stored memories remain. Fear depends on the amygdala and coordination on the cerebellum.",
+        "why": "The hippocampus is needed to store new experiences so they can be recalled later, so without it new events are lost while events stored long ago remain. Fear depends on the amygdala and coordination on the cerebellum.",
         "level": "analyze"
        }
       }
@@ -5659,7 +5659,7 @@
        "taught": "brain-regions",
        "fn": "The \"little brain\" behind the brainstem, below the occipital lobes. It compares the movement you intend with the movement that happens and corrects it, which keeps movement smooth and balanced.",
        "follow": {
-        "q": "A person walks with a wide, staggering gait and overshoots when reaching for a cup, but has normal strength. Which region is most likely damaged?",
+        "q": "A person walks with wide, staggering steps and overshoots when reaching for a cup, but has normal strength. Which region is most likely damaged?",
         "options": [
          "Cerebellum",
          "Occipital lobe",
@@ -6201,6 +6201,625 @@
         122,
         19
        ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "brachial-plexus",
+   "title": "Brachial plexus",
+   "chapter": "pns",
+   "topic": "spinal-nerves",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-13-24",
+     "topic": "spinal-nerves",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "cervical-plexus",
+       "name": "Cervical plexus",
+       "accept": [],
+       "box": [
+        906,
+        166,
+        196,
+        31
+       ],
+       "concept": "nerve-plexuses",
+       "taught": "spinal-nerves",
+       "fn": "The network formed by the ventral rami of C1 to C4 in the neck. Its branches supply skin and some muscles of the neck, and it gives rise to the phrenic nerve."
+      },
+      {
+       "id": "brachial-plexus",
+       "name": "Brachial plexus",
+       "accept": [],
+       "box": [
+        907,
+        329,
+        195,
+        31
+       ],
+       "concept": "nerve-plexuses",
+       "taught": "spinal-nerves",
+       "fn": "The network formed by the ventral rami of C5 to T1. Its fibers mix and regroup on the way to the armpit and leave as the nerves of the shoulder and upper limb, including the axillary, radial, median and ulnar nerves.",
+       "follow": {
+        "q": "Which spinal nerves form the brachial plexus?",
+        "options": [
+         "C1 to C4",
+         "C5 to T1",
+         "L1 to L4",
+         "L4 to S4"
+        ],
+        "correct": 1,
+        "why": "The brachial plexus comes from the ventral rami of C5 to T1 and supplies the upper limb. C1 to C4 form the cervical plexus, L1 to L4 the lumbar plexus and L4 to S4 the sacral plexus.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "phrenic-nerve",
+       "name": "Phrenic nerve",
+       "accept": [
+        "phrenic"
+       ],
+       "box": [
+        4,
+        312,
+        178,
+        26
+       ],
+       "concept": "named-nerves",
+       "taught": "spinal-nerves",
+       "fn": "A nerve from the cervical plexus, mainly C3 to C5, that runs down through the chest to the diaphragm. It is the only motor nerve to the diaphragm, so every breath depends on it.",
+       "follow": {
+        "q": "Cutting the spinal cord at C2 stops a patient's breathing, but cutting it at C7 does not. Why?",
+        "options": [
+         "The phrenic nerve leaves the cord at C3 to C5",
+         "The brachial plexus drives the diaphragm",
+         "The ulnar nerve moves the diaphragm",
+         "The diaphragm needs no nerve signals"
+        ],
+        "correct": 0,
+        "why": "The phrenic nerve, the diaphragm's only motor supply, leaves the cord at C3 to C5. An injury at C2 cuts the brain off from those segments, while one at C7 leaves them connected. The brachial plexus supplies the upper limb, the ulnar nerve supplies the hand, and the diaphragm is skeletal muscle that contracts only when its nerve fires.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "axillary-nerve",
+       "name": "Axillary nerve",
+       "accept": [
+        "axillary"
+       ],
+       "box": [
+        2,
+        381,
+        176,
+        31
+       ],
+       "concept": "named-nerves",
+       "taught": "spinal-nerves",
+       "fn": "A brachial plexus branch that wraps behind the upper end of the humerus. It moves the deltoid, which lifts the arm out to the side, and carries feeling from the skin over the shoulder."
+      },
+      {
+       "id": "median-nerve",
+       "name": "Median nerve",
+       "accept": [
+        "median"
+       ],
+       "box": [
+        4,
+        431,
+        175,
+        26
+       ],
+       "concept": "named-nerves",
+       "taught": "spinal-nerves",
+       "fn": "A brachial plexus nerve that runs down the middle of the arm and forearm and through the wrist into the palm. It moves most of the muscles that bend the wrist and fingers and the muscles of the thumb, and carries feeling from the thumb side of the palm."
+      },
+      {
+       "id": "radial-nerve",
+       "name": "Radial nerve",
+       "accept": [
+        "radial"
+       ],
+       "box": [
+        4,
+        476,
+        163,
+        26
+       ],
+       "concept": "named-nerves",
+       "taught": "spinal-nerves",
+       "fn": "The largest branch of the brachial plexus. It winds around the back of the humerus and supplies the muscles that straighten the elbow, wrist and fingers, plus skin on the back of the arm and hand.",
+       "follow": {
+        "q": "A break through the middle of the humerus leaves a patient unable to lift the wrist and fingers (wrist drop). Which nerve was most likely injured?",
+        "options": [
+         "Median nerve",
+         "Ulnar nerve",
+         "Axillary nerve",
+         "Radial nerve"
+        ],
+        "correct": 3,
+        "why": "The radial nerve winds around the back of the middle of the humerus and supplies the muscles that straighten the wrist and fingers, so a break there can stretch or cut it. The median and ulnar nerves mostly bend the wrist and fingers, and the axillary nerve supplies the shoulder.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "ulnar-nerve",
+       "name": "Ulnar nerve",
+       "accept": [
+        "ulnar"
+       ],
+       "box": [
+        4,
+        520,
+        151,
+        26
+       ],
+       "concept": "named-nerves",
+       "taught": "spinal-nerves",
+       "fn": "A brachial plexus nerve that passes behind the inner bump of the elbow (the \"funny bone\") into the hand. It supplies most of the small muscles of the hand and the skin on the little finger side."
+      },
+      {
+       "id": "lumbar-plexus",
+       "name": "Lumbar plexus",
+       "accept": [],
+       "box": [
+        907,
+        1249,
+        189,
+        31
+       ],
+       "concept": "nerve-plexuses",
+       "taught": "spinal-nerves",
+       "fn": "The network formed by the ventral rami of L1 to L4. Its main branches, the femoral and obturator nerves, supply the front and inner thigh."
+      },
+      {
+       "id": "femoral-nerve",
+       "name": "Femoral nerve",
+       "accept": [
+        "femoral"
+       ],
+       "box": [
+        4,
+        1442,
+        186,
+        26
+       ],
+       "concept": "named-nerves",
+       "taught": "spinal-nerves",
+       "fn": "The largest branch of the lumbar plexus. It enters the front of the thigh, moves the quadriceps, which straighten the knee, and carries feeling from the front of the thigh."
+      },
+      {
+       "id": "obturator-nerve",
+       "name": "Obturator nerve",
+       "accept": [
+        "obturator"
+       ],
+       "box": [
+        3,
+        1486,
+        202,
+        26
+       ],
+       "concept": "named-nerves",
+       "taught": "spinal-nerves",
+       "fn": "A lumbar plexus nerve that leaves the pelvis through the obturator foramen. It moves the muscles that pull the thigh inward and carries feeling from the skin of the inner thigh."
+      },
+      {
+       "id": "sacral-plexus",
+       "name": "Sacral plexus",
+       "accept": [],
+       "box": [
+        906,
+        1534,
+        175,
+        31
+       ],
+       "concept": "nerve-plexuses",
+       "taught": "spinal-nerves",
+       "fn": "The network formed by the ventral rami of L4 to S4. It supplies the buttock, the back of the thigh and the whole leg and foot below the knee, mainly through the sciatic nerve."
+      },
+      {
+       "id": "common-fibular-nerve",
+       "name": "Common fibular nerve",
+       "accept": [
+        "common peroneal nerve",
+        "fibular nerve",
+        "peroneal nerve",
+        "common fibular"
+       ],
+       "box": [
+        2,
+        1684,
+        162,
+        59
+       ],
+       "concept": "named-nerves",
+       "taught": "spinal-nerves",
+       "fn": "The branch of the sciatic nerve that wraps around the top of the fibula just below the knee, where it lies close to the skin. It moves the muscles that lift the foot and toes, so damage there causes foot drop."
+      },
+      {
+       "id": "sciatic-nerve",
+       "name": "Sciatic nerve",
+       "accept": [
+        "sciatic"
+       ],
+       "box": [
+        3,
+        1797,
+        167,
+        27
+       ],
+       "concept": "named-nerves",
+       "taught": "spinal-nerves",
+       "fn": "The largest nerve in the body, from the sacral plexus (L4 to S3). It runs down the back of the thigh, moves the hamstrings, and above the knee splits into the tibial and common fibular nerves.",
+       "follow": {
+        "q": "An injection placed too low and too close to the middle of the buttock can injure which nerve, weakening the back of the thigh and everything below the knee?",
+        "options": [
+         "Femoral nerve",
+         "Sciatic nerve",
+         "Obturator nerve",
+         "Phrenic nerve"
+        ],
+        "correct": 1,
+        "why": "The sciatic nerve passes through the lower inner part of the buttock and supplies the back of the thigh and all of the leg below the knee, so injections go in the upper outer part. The femoral and obturator nerves supply the front and inner thigh, and the phrenic nerve supplies the diaphragm.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "tibial-nerve",
+       "name": "Tibial nerve",
+       "accept": [
+        "tibial"
+       ],
+       "box": [
+        390,
+        1786,
+        142,
+        28
+       ],
+       "concept": "named-nerves",
+       "taught": "spinal-nerves",
+       "fn": "The branch of the sciatic nerve that continues down the back of the leg. It moves the calf muscles that point the foot and the muscles of the sole, and carries feeling from the sole."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cranial-nerves",
+   "title": "Cranial nerves on the inferior brain",
+   "chapter": "pns",
+   "topic": "cranial-nerves",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-13-23",
+     "topic": "cranial-nerves",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "olfactory-nerve",
+       "name": "Olfactory nerve I",
+       "accept": [
+        "olfactory nerve",
+        "olfactory",
+        "cn i",
+        "cni",
+        "cn 1",
+        "cranial nerve i",
+        "cranial nerve 1"
+       ],
+       "box": [
+        0,
+        35,
+        92,
+        44
+       ],
+       "concept": "cranial-nerve-list",
+       "taught": "cranial-nerves",
+       "fn": "Cranial nerve I, purely sensory. Its fibers run from the lining high in the roof of the nose up into the skull to the underside of the frontal lobe and carry the sense of smell."
+      },
+      {
+       "id": "oculomotor-nerve",
+       "name": "Oculomotor nerve III",
+       "accept": [
+        "oculomotor nerve",
+        "oculomotor",
+        "cn iii",
+        "cniii",
+        "cn 3",
+        "cranial nerve iii",
+        "cranial nerve 3"
+       ],
+       "box": [
+        0,
+        103,
+        117,
+        45
+       ],
+       "concept": "cranial-nerve-list",
+       "taught": "cranial-nerves",
+       "fn": "Cranial nerve III, a motor nerve from the midbrain. It moves most of the muscles that turn the eye, raises the upper eyelid, and through parasympathetic fibers makes the pupil smaller.",
+       "follow": {
+        "q": "A patient's right eye rests turned down and out, the right upper eyelid droops and the right pupil is wide. Which nerve is most likely damaged?",
+        "options": [
+         "Right trochlear nerve (IV)",
+         "Right abducens nerve (VI)",
+         "Right oculomotor nerve (III)",
+         "Right facial nerve (VII)"
+        ],
+        "correct": 2,
+        "why": "The oculomotor nerve moves most eye muscles, lifts the eyelid and narrows the pupil, so losing it leaves the eye pulled down and out by the two muscles it does not supply, a drooping lid and a wide pupil. The trochlear and abducens nerves each move one eye muscle and do not touch the lid or pupil, and the facial nerve closes the eye rather than opening it.",
+        "level": "analyze"
+       }
+      },
+      {
+       "id": "optic-nerve",
+       "name": "Optic nerve II",
+       "accept": [
+        "optic nerve",
+        "optic",
+        "cn ii",
+        "cnii",
+        "cn 2",
+        "cranial nerve ii",
+        "cranial nerve 2"
+       ],
+       "box": [
+        606,
+        127,
+        135,
+        25
+       ],
+       "concept": "cranial-nerve-list",
+       "taught": "cranial-nerves",
+       "fn": "Cranial nerve II, purely sensory. It carries vision from each eye back into the brain; the two optic nerves meet beneath the brain, where some of their fibers cross to the other side."
+      },
+      {
+       "id": "trochlear-nerve",
+       "name": "Trochlear nerve IV",
+       "accept": [
+        "trochlear nerve",
+        "trochlear",
+        "cn iv",
+        "cniv",
+        "cn 4",
+        "cranial nerve iv",
+        "cranial nerve 4"
+       ],
+       "box": [
+        0,
+        180,
+        94,
+        44
+       ],
+       "concept": "cranial-nerve-list",
+       "taught": "cranial-nerves",
+       "fn": "Cranial nerve IV, the smallest cranial nerve and the only one leaving the back of the brainstem (the midbrain). It moves the one eye muscle that turns the eye down and in."
+      },
+      {
+       "id": "trigeminal-nerve",
+       "name": "Trigeminal nerve V",
+       "accept": [
+        "trigeminal nerve",
+        "trigeminal",
+        "cn v",
+        "cnv",
+        "cn 5",
+        "cranial nerve v",
+        "cranial nerve 5"
+       ],
+       "box": [
+        605,
+        217,
+        181,
+        26
+       ],
+       "concept": "cranial-nerve-list",
+       "taught": "cranial-nerves",
+       "fn": "Cranial nerve V, a mixed nerve from the pons. Its three branches carry touch, pain and temperature from the face, the front of the scalp, the mouth and the inside of the nose, and its motor fibers work the chewing muscles.",
+       "follow": {
+        "q": "Which cranial nerve carries touch and pain from the skin of the face?",
+        "options": [
+         "Facial nerve (VII)",
+         "Trigeminal nerve (V)",
+         "Hypoglossal nerve (XII)",
+         "Vagus nerve (X)"
+        ],
+        "correct": 1,
+        "why": "The trigeminal nerve is the main sensory nerve of the face. The facial nerve, despite its name, mainly moves the face, the hypoglossal nerve moves the tongue, and the vagus nerve serves the throat and the organs of the chest and abdomen.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "abducens-nerve",
+       "name": "Abducens nerve VI",
+       "accept": [
+        "abducens nerve",
+        "abducens",
+        "cn vi",
+        "cnvi",
+        "cn 6",
+        "cranial nerve vi",
+        "cranial nerve 6"
+       ],
+       "box": [
+        0,
+        247,
+        101,
+        44
+       ],
+       "concept": "cranial-nerve-list",
+       "taught": "cranial-nerves",
+       "fn": "Cranial nerve VI, a motor nerve that leaves where the pons meets the medulla. It moves the one eye muscle that turns the eye outward."
+      },
+      {
+       "id": "facial-nerve",
+       "name": "Facial nerve VII",
+       "accept": [
+        "facial nerve",
+        "facial",
+        "cn vii",
+        "cnvii",
+        "cn 7",
+        "cranial nerve vii",
+        "cranial nerve 7"
+       ],
+       "box": [
+        607,
+        292,
+        153,
+        21
+       ],
+       "concept": "cranial-nerve-list",
+       "taught": "cranial-nerves",
+       "fn": "Cranial nerve VII, a mixed nerve from the lower pons. It moves the muscles of facial expression, carries taste from the front two-thirds of the tongue, and drives tear and saliva secretion.",
+       "follow": {
+        "q": "A patient cannot close her left eye or smile on the left, and food tastes dull on the front of the left side of her tongue. Which nerve is affected?",
+        "options": [
+         "Left trigeminal nerve (V)",
+         "Left glossopharyngeal nerve (IX)",
+         "Left hypoglossal nerve (XII)",
+         "Left facial nerve (VII)"
+        ],
+        "correct": 3,
+        "why": "The facial nerve moves the muscles of facial expression, including the one that closes the eye, and carries taste from the front two-thirds of the tongue, so one lesion explains both. The trigeminal nerve carries touch from the face and works the chewing muscles, the glossopharyngeal nerve carries taste from the back of the tongue, and the hypoglossal nerve moves the tongue.",
+        "level": "analyze"
+       }
+      },
+      {
+       "id": "vestibulocochlear-nerve",
+       "name": "Vestibulocochlear nerve VIII",
+       "accept": [
+        "vestibulocochlear nerve",
+        "vestibulocochlear",
+        "cn viii",
+        "cnviii",
+        "cn 8",
+        "cranial nerve viii",
+        "cranial nerve 8",
+        "auditory nerve",
+        "acoustic nerve"
+       ],
+       "box": [
+        0,
+        309,
+        171,
+        43
+       ],
+       "concept": "cranial-nerve-list",
+       "taught": "cranial-nerves",
+       "fn": "Cranial nerve VIII, a sensory nerve from the ear that enters where the pons meets the medulla. One part carries hearing and the other carries balance: the position and movement of the head."
+      },
+      {
+       "id": "glossopharyngeal-nerve",
+       "name": "Glossopharyngeal nerve IX",
+       "accept": [
+        "glossopharyngeal nerve",
+        "glossopharyngeal",
+        "cn ix",
+        "cnix",
+        "cn 9",
+        "cranial nerve ix",
+        "cranial nerve 9"
+       ],
+       "box": [
+        606,
+        348,
+        180,
+        45
+       ],
+       "concept": "cranial-nerve-list",
+       "taught": "cranial-nerves",
+       "fn": "Cranial nerve IX, a mixed nerve from the medulla. It carries taste and touch from the back third of the tongue and the throat, helps you swallow, and drives saliva secretion from the gland in front of the ear."
+      },
+      {
+       "id": "hypoglossal-nerve",
+       "name": "Hypoglossal nerve XII",
+       "accept": [
+        "hypoglossal nerve",
+        "hypoglossal",
+        "cn xii",
+        "cnxii",
+        "cn 12",
+        "cranial nerve xii",
+        "cranial nerve 12"
+       ],
+       "box": [
+        0,
+        379,
+        121,
+        44
+       ],
+       "concept": "cranial-nerve-list",
+       "taught": "cranial-nerves",
+       "fn": "Cranial nerve XII, a motor nerve from the medulla that moves the tongue. When one side is damaged, the stuck-out tongue points toward the injured side."
+      },
+      {
+       "id": "vagus-nerve",
+       "name": "Vagus nerve X",
+       "accept": [
+        "vagus nerve",
+        "vagus",
+        "cn x",
+        "cnx",
+        "cn 10",
+        "cranial nerve x",
+        "cranial nerve 10"
+       ],
+       "box": [
+        606,
+        417,
+        147,
+        25
+       ],
+       "concept": "vagus-nerve",
+       "taught": "cranial-nerves",
+       "fn": "Cranial nerve X, the \"wandering\" nerve from the medulla. It is the main parasympathetic nerve to the heart, the lungs and most of the gut, and it moves the muscles of the throat and voice box.",
+       "follow": {
+        "q": "Which cranial nerve carries most of the parasympathetic signals that slow the heart and speed digestion?",
+        "options": [
+         "Glossopharyngeal nerve (IX)",
+         "Vagus nerve (X)",
+         "Accessory nerve (XI)",
+         "Oculomotor nerve (III)"
+        ],
+        "correct": 1,
+        "why": "The vagus nerve wanders from the medulla through the neck into the chest and abdomen and carries most of the body's parasympathetic output to the heart, lungs and gut. The glossopharyngeal and oculomotor nerves carry parasympathetic fibers only to glands and eye structures in the head, and the accessory nerve is purely motor to two neck muscles.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "accessory-nerve",
+       "name": "Accessory nerve XI",
+       "accept": [
+        "accessory nerve",
+        "accessory",
+        "cn xi",
+        "cnxi",
+        "cn 11",
+        "cranial nerve xi",
+        "cranial nerve 11",
+        "spinal accessory nerve",
+        "spinal accessory"
+       ],
+       "box": [
+        0,
+        439,
+        105,
+        44
+       ],
+       "concept": "cranial-nerve-list",
+       "taught": "cranial-nerves",
+       "fn": "Cranial nerve XI, a motor nerve whose roots come mostly from the upper spinal cord and rise into the skull before leaving it. It moves the sternocleidomastoid and trapezius, which turn the head and shrug the shoulders."
       }
      ]
     }
@@ -17049,7 +17668,7 @@
    "src": "figures/os-12-11.jpg",
    "w": 825,
    "h": 637,
-   "alt": "A drawing of four kinds of support cells among two large branching neurons. A star-shaped cell with many processes touches the neurons and a blood-vessel-like surface. Two small cells with fine, bristly processes sit nearby. A row of cube-shaped cells lines a surface at the lower left, sending long thin processes up into the tissue. Pale cells at the lower right send out arms that wrap segments of several different axons in layered sleeves.",
+   "alt": "A drawing of four kinds of support cells among two large branching neurons. Star-shaped cells with many branching processes sit among the neurons and touch them. Two small cells with fine, bristly processes sit nearby. A row of cube-shaped cells lines a surface at the lower left, sending long thin processes up into the tissue. Pale cells at the lower right send out arms that wrap segments of several different axons in layered sleeves.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.11",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/12-2-nervous-tissue",
    "license": "CC BY 4.0"
@@ -17133,6 +17752,24 @@
    "alt": "The brain and upper spinal cord cut down the midline, with the fluid spaces shaded blue. A C-shaped chamber in the hemisphere connects through a small opening to a narrow midline chamber, then a thin canal through the midbrain leads to a chamber between the brainstem and the cerebellum. Tufts of tissue lie in the chambers. Arrows show fluid leaving the lower chamber through openings, flowing around the brain and down around the spinal cord, and entering a large venous channel at the top of the head through knobs of the arachnoid. The spinal cord has a thin central canal.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 13.18",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-3-circulation-and-the-central-nervous-system",
+   "license": "CC BY 4.0"
+  },
+  "os-13-23": {
+   "src": "figures/os-13-23.jpg",
+   "w": 784,
+   "h": 491,
+   "alt": "The underside of the brain, with the frontal lobes at the top and the brainstem and cerebellum at the bottom. Twelve pairs of nerve roots are highlighted. Two slender bulb-tipped nerves lie under the frontal lobes, an X-shaped crossing of two thick nerves sits behind them, and the remaining roots emerge in order down the midbrain, pons and medulla, the last ones as rows of small rootlets along the medulla and a long root running up beside it.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 13.23",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-4-the-peripheral-nervous-system",
+   "license": "CC BY 4.0"
+  },
+  "os-13-24": {
+   "src": "figures/os-13-24.jpg",
+   "w": 1100,
+   "h": 1827,
+   "alt": "An outline of the trunk and pelvis showing the spinal cord and the numbered spinal nerves on both sides, from C1 at the neck to S5 at the sacrum. Brackets group the nerves into four networks: C1 to C4 in the neck, C5 to T1 at the shoulder, L1 to L4 in the lower back and L5 to S5 in the pelvis. On one side, nerves leave the neck network toward the diaphragm, five nerves leave the shoulder network toward the arm, and nerves leave the lower networks for the front of the thigh and, as one thick nerve that splits in two, the back of the thigh.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 13.24",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-4-the-peripheral-nervous-system",
    "license": "CC BY 4.0"
   }
  }

@@ -1,0 +1,48 @@
+{
+  "topic": "neuro-exam",
+  "hook": "<p>Mr. Adeyemi, 68, wakes up and cannot button his shirt. His wife notices the left corner of his mouth sagging and his words slurring. In the emergency department, a nurse checks his face, arm drift, speech and reflexes in under five minutes and says: \"right hemisphere, probably a stroke, last known well at 6 a.m.\" Every item she checked is a test of one part of the pathways you have just learned, and the pattern told her where to look.</p>",
+  "prereq": [
+    {
+      "q": "Where does the lateral corticospinal tract cross the midline?",
+      "options": ["At the pyramidal decussation in the lower medulla", "In the spinal cord at each segment", "In the internal capsule"],
+      "correct": 0,
+      "why": "About 85–90% of corticospinal axons cross at the pyramidal decussation, where the medulla meets the spinal cord, and descend as the lateral corticospinal tract.",
+      "review": "motor-pathways"
+    },
+    {
+      "q": "Which set of findings points to lower motor neuron damage?",
+      "options": ["Spasticity, brisk tendon jerks and a Babinski sign", "Flaccid weakness, wasting, fasciculations and lost tendon jerks", "Normal strength with an intention tremor"],
+      "correct": 1,
+      "why": "Losing the lower motor neuron cuts the final common path to the muscle: tone falls, reflexes are lost, the muscle wastes and sick neurons twitch. Spasticity, brisk jerks and a Babinski sign are upper motor neuron signs; an intention tremor with normal strength is cerebellar.",
+      "review": "motor-pathways"
+    },
+    {
+      "q": "Which pathway carries vibration and joint position sense up the spinal cord?",
+      "options": ["The spinothalamic tract", "The lateral corticospinal tract", "The dorsal column pathway"],
+      "correct": 2,
+      "why": "Vibration, fine touch and position sense climb the dorsal columns on the same side and cross in the medulla. The spinothalamic tract carries pain and temperature, and the corticospinal tract is motor.",
+      "review": "sensory-pathways"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-16-2",
+    "caption": "The parts of the neurological exam mapped onto the nervous system. Hide the labels and name the part of the exam that tests each region."
+  },
+  "chain": [
+    { "cause": "An artery supplying the right motor cortex and internal capsule is blocked by a clot.", "effect": "Upper motor neurons for the left face, arm and leg, and their axons, lose their blood supply and stop firing within minutes." },
+    { "cause": "Commands no longer reach the crossed corticospinal and corticobulbar pathways to the left side.", "effect": "The left arm drifts down and the lower left face droops, while the forehead, which also gets input from the left hemisphere, still wrinkles." },
+    { "cause": "The examiner finds upper motor neuron weakness of the face and body on the same side, with no cranial nerve problem on the other side.", "effect": "The damage is placed above the brainstem, in the right cerebral hemisphere or internal capsule." },
+    { "cause": "The onset was sudden and the patient was last known to be well two hours ago.", "effect": "A stroke is suspected, and a brain scan is done at once to tell an ischemic stroke from a hemorrhagic one before treatment." }
+  ],
+  "misconception": {
+    "wrong": "Weakness on one side of the body means damage on that same side of the brain.",
+    "right": "Above the pyramidal decussation, motor pathways serve the opposite side, so a weak left arm and leg with a brisk left knee jerk points to the right hemisphere, internal capsule or brainstem. Only below the decussation, in the spinal cord, does damage weaken the same side. The face helps: in the brainstem, the damaged cranial nerve is on the same side as the lesion while the body weakness is on the opposite side."
+  },
+  "check": ["anp-neuro-exam-2", "anp-neuro-exam-4", "anp-neuro-exam-6", "anp-neuro-exam-9", "anp-neuro-exam-11", "anp-neuro-exam-13", "anp-neuro-exam-16", "anp-neuro-exam-19"],
+  "summary": "<p>The neurological exam localizes a problem by testing each part of the nervous system in turn. The mental status exam tests the cerebrum: consciousness, orientation, attention, memory, language and judgment. The Glasgow Coma Scale scores eye (1–4), verbal (1–5) and motor (1–6) responses from 3 to 15, with 8 or less severe. The cranial nerve exam tests the brainstem and its nerves, including the corneal reflex (V in, VII out). The sensory exam tests the spinothalamic tract (pinprick, temperature) and dorsal columns (vibration, position sense), finds a dermatome or sensory level, and tests the parietal cortex with stereognosis and graphesthesia. The motor exam checks bulk, tone, strength (0–5), pronator drift and reflexes, sorting upper from lower motor neuron damage. The coordination and gait exam tests the cerebellum; a positive Romberg test (steady with eyes open, falling with eyes closed) points to lost position sense. A stroke is a sudden loss of function from interrupted blood supply, ischemic or hemorrhagic, recognized by BE FAST; a TIA leaves no dead tissue. Spinal cord injury causes tetraplegia (cervical) or paraplegia (lower), and a hemisection splits motor and sensory losses between the two sides.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-22", "label": "NREMT: Altered mental status, seizures and stroke" },
+    { "href": "/nremt/study-notes.html#chapter-33", "label": "NREMT: Trauma to the head, neck and spine" },
+    { "href": "/nremt/study-notes.html#chapter-15", "label": "NREMT: Secondary assessment" }
+  ]
+}

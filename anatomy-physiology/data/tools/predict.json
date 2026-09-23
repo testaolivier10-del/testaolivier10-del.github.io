@@ -3279,6 +3279,83 @@
       ]
     },
     {
+      "id": "mouth-breathing",
+      "title": "Breathing through your mouth on a cold, dusty day",
+      "topic": "upper-airway",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "air breathed through the mouth reaches the alveoli cold and dry",
+      "setup": "Your nose is blocked by a cold, so you spend a winter afternoon clearing a dusty garage while breathing through your mouth. Compare with breathing the same air through your nose.",
+      "start": "Air enters through the mouth instead of the nose",
+      "steps": {
+        "skip": "Air bypasses the nasal cavity and joins the route at the oropharynx",
+        "heat": "No warming from the blood vessels under the nasal mucosa",
+        "water": "No humidifying from the mucus of the nasal cavity",
+        "filter": "No nasal hairs, and no swirling past the conchae to throw particles onto mucus",
+        "lower": "The pharynx, trachea and the air tubes of the lungs must do more of the warming and humidifying",
+        "dry": "Water evaporates faster from their lining, drying it",
+        "deep": "The air is still at body temperature before it reaches the alveoli"
+      },
+      "variables": [
+        {
+          "id": "pharynx-temp",
+          "name": "Temperature of the air reaching the pharynx",
+          "answer": "down",
+          "chain": [
+            "skip",
+            "heat"
+          ],
+          "why": "Through the nose, heat passes from warm blood in the thin-walled vessels under the mucosa into the air. Through the mouth that step is skipped, so colder air reaches the pharynx."
+        },
+        {
+          "id": "pharynx-moisture",
+          "name": "Water vapor in the air reaching the pharynx",
+          "answer": "down",
+          "chain": [
+            "skip",
+            "water"
+          ],
+          "why": "Water evaporating from the mucus of the nasal cavity normally moistens the air before it reaches the pharynx. The mouth route skips that surface."
+        },
+        {
+          "id": "particles",
+          "name": "Dust trapped before the air reaches the pharynx",
+          "answer": "down",
+          "chain": [
+            "skip",
+            "filter"
+          ],
+          "why": "In the nose, hairs catch large particles and the conchae break the airstream into narrow, turbulent channels, so heavier particles hit the sticky mucus. The mouth has neither, so more dust travels deeper, where the mucociliary escalator must carry it back up."
+        },
+        {
+          "id": "lining-dryness",
+          "name": "Dryness of the throat and airway lining",
+          "answer": "up",
+          "chain": [
+            "skip",
+            "water",
+            "lower",
+            "dry"
+          ],
+          "why": "The air still has to be humidified, so the lining further down gives up more water to it. Hours of mouth breathing dry the throat, and drier mucus is harder for the cilia to move."
+        },
+        {
+          "id": "alveolar-temp",
+          "name": "Temperature of the air when it reaches the alveoli",
+          "answer": "none",
+          "chain": [
+            "skip",
+            "heat",
+            "lower",
+            "deep"
+          ],
+          "why": "The rest of the conducting zone is also lined by warm, moist mucosa, so it finishes the job the nose skipped. The cost is paid by the airway lining, not by the alveoli."
+        }
+      ]
+    },
+    {
       "id": "airway-narrows",
       "title": "An airway narrows to half its radius",
       "topic": "ventilation-mechanics",
@@ -3903,7 +3980,7 @@
       "level": 3,
       "misconception": "a normal pulse oximeter reading rules out an oxygen problem",
       "setup": "A family sleeps in a house with a cracked furnace flue. By morning about 30% of their hemoglobin carries carbon monoxide. Their lungs are healthy. Compare with their normal state.",
-      "start": "Carbon monoxide binds heme iron about 200 times more tightly than oxygen",
+      "start": "Carbon monoxide binds heme iron about 200 to 250 times more tightly than oxygen",
       "steps": {
         "sites": "Sites holding carbon monoxide cannot carry oxygen",
         "content": "Oxygen content of arterial blood falls",

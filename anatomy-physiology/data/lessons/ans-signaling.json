@@ -1,0 +1,90 @@
+{
+  "topic": "ans-signaling",
+  "hook": "<p>Mr. Diallo, 70, is found at home with a pulse of 38 and is faint. The paramedic gives him atropine, and within a minute his heart rate climbs to 75. Twenty minutes later, his mouth is dry, his pupils are wide and his skin is hot. One drug, one kind of receptor protein, and effects in four organs. To predict all of them, you need to know which autonomic transmitter acts on which receptor protein, organ by organ.</p>",
+  "prereq": [
+    {
+      "q": "Which receptor protein does acetylcholine bind at the neuromuscular junction?",
+      "options": [
+        "Muscarinic receptor protein",
+        "Nicotinic receptor protein",
+        "Beta receptor protein"
+      ],
+      "correct": 1,
+      "why": "At the motor end plate, acetylcholine binds nicotinic receptor proteins, which are ligand-gated channels that let sodium in.",
+      "review": "neuromuscular-junction"
+    },
+    {
+      "q": "What is the difference between an ionotropic and a metabotropic receptor protein?",
+      "options": [
+        "An ionotropic one is itself an ion channel; a metabotropic one acts through a G protein and second messengers",
+        "An ionotropic one binds hormones; a metabotropic one binds neurotransmitters",
+        "An ionotropic one is always inhibitory; a metabotropic one is always excitatory"
+      ],
+      "correct": 0,
+      "why": "Ionotropic receptor proteins open a channel within themselves as soon as the transmitter binds, so they act fast. Metabotropic receptor proteins activate a G protein, which changes channels or second messengers more slowly.",
+      "review": "synapses"
+    },
+    {
+      "q": "Where do sympathetic postganglionic neurons have their cell bodies?",
+      "options": [
+        "In the lateral horn of T1–L2",
+        "In chain and collateral ganglia",
+        "In terminal ganglia inside the organ wall"
+      ],
+      "correct": 1,
+      "why": "Sympathetic postganglionic cell bodies sit in the chain ganglia beside the spine or the collateral ganglia in front of it. The lateral horn holds the preganglionic neurons.",
+      "review": "ans-anatomy"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-15-5",
+    "caption": "A postganglionic axon releasing transmitter from its varicosities onto smooth muscle. Hide the labels and name the swellings, the vesicles and the receptor proteins on the muscle cell membrane."
+  },
+  "chain": [
+    {
+      "cause": "A sympathetic postganglionic neuron fires, and action potentials reach its varicosities.",
+      "effect": "Calcium enters the varicosities and norepinephrine is released onto nearby smooth muscle and heart cells."
+    },
+    {
+      "cause": "Norepinephrine binds whatever adrenergic receptor protein each target cell carries.",
+      "effect": "Alpha-1 receptor proteins raise calcium in vessel smooth muscle; beta-1 receptor proteins raise cyclic AMP in the heart."
+    },
+    {
+      "cause": "Raised calcium in vessel smooth muscle and raised cyclic AMP in heart cells change how those cells work.",
+      "effect": "Skin vessels constrict, while the heart beats faster and more forcefully."
+    },
+    {
+      "cause": "Norepinephrine also binds alpha-2 receptor proteins on the varicosity itself, and is taken back up.",
+      "effect": "Further release is turned down and the signal ends within about a second, unless circulating epinephrine keeps the receptor proteins active."
+    }
+  ],
+  "misconception": {
+    "wrong": "The sympathetic division always stimulates organs and the parasympathetic division always inhibits them.",
+    "right": "Each division excites some organs and inhibits others, because the response is set by the receptor protein on the target, not by the division. Parasympathetic acetylcholine on muscarinic receptor proteins speeds up the gut and narrows the airways. Sympathetic epinephrine on beta-2 receptor proteins relaxes airway smooth muscle, and norepinephrine on alpha-1 receptor proteins contracts vessel smooth muscle."
+  },
+  "check": [
+    "anp-ans-signaling-1",
+    "anp-ans-signaling-2",
+    "anp-ans-signaling-3",
+    "anp-ans-signaling-6",
+    "anp-ans-signaling-9",
+    "anp-ans-signaling-13",
+    "anp-ans-signaling-20",
+    "anp-ans-signaling-23"
+  ],
+  "summary": "<p>All preganglionic neurons and all parasympathetic postganglionic neurons are cholinergic, releasing acetylcholine; most sympathetic postganglionic neurons are adrenergic, releasing norepinephrine, except those to eccrine sweat glands; the adrenal medulla adds epinephrine to the blood. Acetylcholine acts on nicotinic receptor proteins (ligand-gated channels, fast and excitatory) in every ganglion and the adrenal medulla, and on muscarinic receptor proteins (G protein–coupled, excitatory or inhibitory) on parasympathetic targets and sweat glands. Norepinephrine and epinephrine act on G protein–coupled adrenergic receptor proteins: alpha-1 contracts smooth muscle, alpha-2 turns down norepinephrine release, beta-1 speeds and strengthens the heart, and beta-2, reached mainly by epinephrine, relaxes smooth muscle and releases glucose from the liver. Agonists mimic and antagonists block these receptor proteins, which is how beta blockers, albuterol, phenylephrine, atropine and nicotine produce their effects.</p>",
+  "connections": [
+    {
+      "href": "/nremt/study-notes.html#chapter-18",
+      "label": "NREMT: General pharmacology"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-23",
+      "label": "NREMT: Allergic reactions"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-25",
+      "label": "NREMT: Poisoning and overdose emergencies"
+    }
+  ]
+}

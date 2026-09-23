@@ -1,0 +1,599 @@
+[
+  {
+    "id": "anp-neuro-exam-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "interdependence"
+    ],
+    "q": "Which part of the neurological exam mainly tests the cerebellum?",
+    "options": [
+      "The mental status exam",
+      "The sensory exam",
+      "The cranial nerve exam",
+      "The coordination exam"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Finger-to-nose, heel-to-shin, rapid alternating movements and walking test how accurately movements are coordinated, which is the cerebellum's job.",
+      "options": [
+        "The mental status exam tests the cerebrum: consciousness, orientation, memory, language and judgment.",
+        "The sensory exam tests the ascending pathways and the sensory cortex.",
+        "The cranial nerve exam tests the brainstem and the nerves leaving it.",
+        "Correct. The coordination exam, with the gait exam, tests the cerebellum."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "A patient opens his eyes only when you press on his fingernail, makes moaning sounds with no words, and bends his arm away from the pressure. What is his Glasgow Coma Scale score?",
+    "options": [
+      "6",
+      "8",
+      "10",
+      "7"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Eyes open to pressure: E2. Sounds without words: V2. Bending away from pressure (normal flexion): M4. Total 2 + 2 + 4 = 8, in the severe range.",
+      "options": [
+        "6 would need a motor score of 2 (extension). Bending the arm away from pressure scores 4.",
+        "Correct. E2 + V2 + M4 = 8.",
+        "10 would need higher scores, for example eyes opening to voice and inappropriate words.",
+        "7 would need abnormal flexion (M3) rather than bending away from the pressure."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-3",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "interdependence"
+    ],
+    "q": "What range of totals does the Glasgow Coma Scale produce?",
+    "options": [
+      "0 to 15",
+      "3 to 15",
+      "1 to 10",
+      "0 to 12"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Each category has a lowest score of 1, so a person with no responses at all scores 1 + 1 + 1 = 3. Full scores are 4 + 5 + 6 = 15.",
+      "options": [
+        "No category scores 0; the lowest in each is 1.",
+        "Correct. From 3 (no response) to 15 (fully awake).",
+        "The maximum is 15, not 10, and the minimum is 3.",
+        "The minimum is 3 and the maximum is 15."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-4",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "interdependence"
+    ],
+    "q": "A woman stands steadily with her feet together and eyes open, but sways and nearly falls as soon as she closes her eyes. She cannot tell whether her big toe is moved up or down, and she cannot feel a tuning fork on her ankles. Where is the problem?",
+    "options": [
+      "The cerebellar vermis",
+      "The dorsal columns or the large sensory axons from the legs",
+      "The lateral corticospinal tracts",
+      "The spinothalamic tracts"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "This is a positive Romberg test. Loss of position and vibration sense means the dorsal column pathway, or the sensory axons feeding it, is damaged. With eyes open, vision makes up for the missing position sense; with eyes closed it cannot.",
+      "options": [
+        "Cerebellar damage makes a person unsteady with the eyes open as well, and it does not remove vibration or position sense.",
+        "Correct. Lost position sense, compensated by vision, is the Romberg pattern.",
+        "Damage to the corticospinal tracts causes weakness with brisk reflexes, not loss of vibration and position sense.",
+        "The spinothalamic tracts carry pain and temperature, not vibration or position sense."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "With his eyes closed, a man cannot name a key placed in his right hand, although he feels its touch, its coolness and a pin on that hand normally. Where is the damage most likely to be?",
+    "options": [
+      "The right dorsal column",
+      "The sensory association cortex of the left parietal lobe",
+      "The right median nerve",
+      "The left cerebellar hemisphere"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Loss of stereognosis with normal basic sensation points to the sensory association cortex of the parietal lobe, which turns raw touch into recognition. The right hand is represented in the left hemisphere.",
+      "options": [
+        "Dorsal column damage would remove fine touch and position sense in the hand, and his basic sensation is normal.",
+        "Correct. Stereognosis depends on the opposite parietal cortex.",
+        "A nerve injury would reduce touch and pinprick in the area the nerve supplies.",
+        "The cerebellum coordinates movement. It does not identify objects by touch."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-6",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "interdependence"
+    ],
+    "q": "A man has weakness of the whole left side of his face, forehead included, and weakness of his right arm and leg with brisk right reflexes and a right Babinski sign. Where is the single lesion?",
+    "options": [
+      "The left cerebral hemisphere",
+      "The right cerebral hemisphere",
+      "The left side of the pons",
+      "The cervical spinal cord on the right"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Whole-face weakness including the forehead is a lower motor neuron sign of the left facial nerve or its nucleus, which lies in the pons. The corticospinal axons for the right body run past it and have not yet crossed. One lesion on the left side of the pons hits both. Face on one side, body on the other is the mark of a brainstem lesion.",
+      "options": [
+        "A left hemisphere lesion would weaken the right body and the lower right face, sparing the forehead. It would not weaken the left face.",
+        "A right hemisphere lesion would weaken the left body, not the right.",
+        "Correct. The left facial nucleus and the uncrossed corticospinal axons sit side by side here.",
+        "A cervical cord lesion would not affect the face, and a right-sided cord lesion would weaken the right body but not the left face."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-7",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "Put the steps of the corneal reflex in order, starting with the stimulus.",
+    "options": [
+      "A wisp of cotton touches the clear front surface of the eye",
+      "Sensory endings of the ophthalmic branch of the trigeminal nerve fire",
+      "The signal reaches the trigeminal sensory nucleus in the brainstem",
+      "Interneurons excite the facial nerve nuclei in the pons on both sides",
+      "Both facial nerves carry the signal to the orbicularis oculi muscles",
+      "Both eyes blink"
+    ],
+    "why": {
+      "correct": "The corneal reflex is an arc through the brainstem: the touch goes in on the trigeminal nerve (V), interneurons pass it to both facial nuclei, and both facial nerves (VII) close the eyes.",
+      "options": [
+        "The stimulus: a light touch on the clear front surface of the eye.",
+        "The sensory receptor and sensory neuron: endings of the ophthalmic branch of V.",
+        "The sensory neuron enters the brainstem and ends in the trigeminal nucleus.",
+        "The integration center: interneurons connect to the facial nuclei of both sides, which is why both eyes blink.",
+        "The motor neurons: the facial nerves drive the orbicularis oculi, the muscle that closes the eye.",
+        "The effector responds: both eyes close."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "A touch of cotton on the clear front surface of a patient's left eye makes neither eye blink. Touching the right eye makes both eyes blink. Which nerve is most likely damaged?",
+    "options": [
+      "The left facial nerve",
+      "The right facial nerve",
+      "The optic nerve of the left eye",
+      "The left trigeminal nerve"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In the corneal reflex, the touch travels in on the trigeminal nerve (V) and the blink goes out on both facial nerves (VII). Touching the right eye makes both eyes blink, so both facial nerves work. Touching the left eye gives no blink at all, so the signal is not getting in: the left trigeminal nerve.",
+      "options": [
+        "If the left facial nerve were damaged, the left eye would fail to blink from either side, but the right eye would still blink when the left eye is touched.",
+        "Both eyes blink when the right eye is touched, so the right facial nerve works.",
+        "The optic nerve carries vision. It is not part of the corneal reflex arc.",
+        "Correct. The sensory side of the arc from the left eye has failed."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "A man can lift his arm off the bed against gravity but cannot hold it up against any push from the examiner. What strength grade is this?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Grade 3 is movement against gravity but not against resistance.",
+      "options": [
+        "Grade 1 is a flicker of contraction with no movement.",
+        "Grade 2 is movement only with gravity taken away, such as sliding the arm along the bed.",
+        "Correct. Against gravity, not against resistance.",
+        "Grade 4 is movement against some resistance, which he cannot manage."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "With both arms held straight out, palms up and eyes closed, a patient's right forearm slowly turns palm-down and the arm drifts downward. What does this suggest?",
+    "options": [
+      "Mild upper motor neuron weakness of the right arm",
+      "Damage to the right cerebellar hemisphere",
+      "Loss of pain and temperature sensation in the right arm",
+      "A normal finding when the eyes are closed"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "This is pronator drift. Upper motor neuron damage weakens the arm's supinators and extensors more than its pronators and flexors, so the forearm turns palm-down and the arm sinks once vision stops correcting it.",
+      "options": [
+        "Correct. Pronator drift is a sensitive sign of mild upper motor neuron weakness.",
+        "Cerebellar damage can make an arm wander or bounce, but turning palm-down and sinking is the classic sign of mild upper motor neuron weakness.",
+        "Holding a posture depends on strength and position sense, not on pain sensation.",
+        "A healthy person holds the position with the eyes closed."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-11",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "At lunch, a 70-year-old woman's right arm suddenly goes weak, the right corner of her mouth droops and her speech comes out jumbled. Her husband calls emergency services. What must happen before she can be given a clot-dissolving drug?",
+    "options": [
+      "A brain scan to rule out a hemorrhagic stroke",
+      "A 24-hour wait to see whether the signs clear",
+      "A full mental status exam to grade her aphasia",
+      "A lumbar puncture to test her cerebrospinal fluid"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Ischemic and hemorrhagic strokes can look the same at the bedside, and a clot-dissolving drug would worsen bleeding. A scan must tell them apart first, as fast as possible.",
+      "options": [
+        "Correct. Only a scan can tell a blocked artery from a burst one.",
+        "Waiting wastes the hours in which clot-dissolving treatment works. Nearly two million neurons can die each minute in a large stroke.",
+        "Her language problem is already clear from the history. A detailed exam would delay treatment and would not tell bleeding from blockage.",
+        "A lumbar puncture does not tell an ischemic stroke from a bleed into the brain, and it would delay treatment."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-12",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "interdependence"
+    ],
+    "q": "Which of these are warning signs in the BE FAST stroke check? Select all that apply.",
+    "options": [
+      "Sudden loss of balance",
+      "One side of the face drooping",
+      "One arm drifting down when both are raised",
+      "Slow, gradual memory loss over months",
+      "Slurred or strange speech"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "BE FAST stands for balance, eyes, face, arm, speech and time. The signs of a stroke start suddenly.",
+      "options": [
+        "Yes. Sudden loss of balance or coordination is the B.",
+        "Yes. Face droop is the F.",
+        "Yes. Arm weakness is the A.",
+        "No. A stroke starts suddenly. Memory loss that creeps in over months points to a slowly progressing disease.",
+        "Yes. Speech trouble is the S."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-13",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "A man has 20 minutes of weakness and numbness in his left hand, then recovers completely. A scan shows no dead brain tissue. What is the best description, and why does it matter?",
+    "options": [
+      "A migraine that needs no further tests",
+      "A completed ischemic stroke that has now recovered",
+      "A transient ischemic attack, with a high risk of stroke in the coming days",
+      "A hemorrhagic stroke that has already healed"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Brief stroke-like signs that clear, with no dead tissue on the scan, define a transient ischemic attack. It is a warning: the risk of a full stroke is highest in the following days, so it is investigated and treated urgently.",
+      "options": [
+        "Treating it as harmless misses the warning. Sudden one-sided weakness is assumed to be vascular until proven otherwise.",
+        "A stroke leaves dead brain tissue on the scan. His scan shows none.",
+        "Correct. A TIA, which needs urgent treatment.",
+        "Bleeding into the brain leaves blood and damaged tissue on the scan, and it does not clear in 20 minutes."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "A diver breaks his neck and injures his spinal cord at C4. Which function is most immediately threatened?",
+    "options": [
+      "Swallowing",
+      "Breathing",
+      "Movement of the eyes",
+      "Hearing"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The phrenic nerves to the diaphragm come from C3, C4 and C5. An injury at C4 can cut the descending drive to the phrenic motor neurons and destroy some of them, so the diaphragm may fail.",
+      "options": [
+        "Swallowing is driven by cranial nerves from the brainstem, above the injury.",
+        "Correct. \"C3, 4 and 5 keep the diaphragm alive.\"",
+        "Eye movements are driven by cranial nerves III, IV and VI from the brainstem, above the injury.",
+        "Hearing travels in cranial nerve VIII to the brainstem, above the injury."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-15",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "interdependence"
+    ],
+    "q": "What is the difference between paraplegia and tetraplegia?",
+    "options": [
+      "Paraplegia affects one side of the body; tetraplegia affects both sides",
+      "Paraplegia affects the legs; tetraplegia affects all four limbs",
+      "Paraplegia is temporary; tetraplegia is permanent",
+      "Paraplegia follows brain damage; tetraplegia follows spinal cord damage"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Paraplegia is paralysis of the legs, from an injury in the thoracic cord or below. Tetraplegia (quadriplegia) is paralysis of all four limbs, from a cervical injury.",
+      "options": [
+        "Weakness of one side of the body is called hemiplegia. Both paraplegia and tetraplegia affect both sides.",
+        "Correct. Legs only versus all four limbs.",
+        "The words describe which limbs are affected, not how long it lasts. Both can be complete or incomplete.",
+        "Both usually follow spinal cord damage. The level decides which one results."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-16",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "interdependence",
+      "structure-function"
+    ],
+    "q": "A stab wound cuts the left half of the spinal cord at T8. Weeks later, predict each finding compared with before the injury.",
+    "variables": [
+      {
+        "name": "Strength of the left leg",
+        "answer": "down",
+        "why": "The left lateral corticospinal tract, already crossed in the medulla, carries commands for the left leg."
+      },
+      {
+        "name": "Knee jerk on the left",
+        "answer": "up",
+        "why": "The left leg's reflex arcs survive below the cut but lose descending control, so after an early absent phase they become brisk."
+      },
+      {
+        "name": "Position sense in the left foot",
+        "answer": "down",
+        "why": "The left dorsal column carries position sense from the left side and does not cross until the medulla."
+      },
+      {
+        "name": "Pain sensation in the right foot",
+        "answer": "down",
+        "why": "Pain from the right foot crosses within a segment or two of entry and climbs in the left spinothalamic tract, which is cut."
+      },
+      {
+        "name": "Pain sensation in the left foot",
+        "answer": "none",
+        "why": "Pain from the left foot crosses to the right spinothalamic tract, which is intact."
+      },
+      {
+        "name": "Strength of the arms",
+        "answer": "none",
+        "why": "The motor neurons and tracts for the arms are in the cervical cord, above T8."
+      }
+    ],
+    "why": {
+      "correct": "A hemisection (Brown-Séquard syndrome) removes the tracts that have already crossed (corticospinal) or have not yet crossed (dorsal columns) on the same side, and the spinothalamic tract carrying pain from the opposite side."
+    }
+  },
+  {
+    "id": "anp-neuro-exam-17",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "interdependence",
+      "structure-function"
+    ],
+    "q": "A car crash crushes the spinal cord completely at C6. On the day of the injury, predict each finding compared with before.",
+    "variables": [
+      {
+        "name": "Voluntary movement of the legs",
+        "answer": "down",
+        "why": "Every descending motor tract passes through C6 on its way to the lumbar cord, and all are cut."
+      },
+      {
+        "name": "Knee jerks",
+        "answer": "down",
+        "why": "Right after a sudden cord injury, the cord below goes quiet for days to weeks, and the reflexes are absent. They return and become brisk later."
+      },
+      {
+        "name": "Movement of the diaphragm",
+        "answer": "none",
+        "why": "The phrenic motor neurons at C3 to C5 lie above the injury and keep their descending drive."
+      },
+      {
+        "name": "Strength of the hand muscles",
+        "answer": "down",
+        "why": "The hand muscles are driven from C8 and T1, below the injury."
+      },
+      {
+        "name": "Ability to shrug the shoulders",
+        "answer": "none",
+        "why": "Shrugging uses the accessory nerve (XI), whose motor neurons lie in the upper cervical cord, above the injury."
+      }
+    ],
+    "why": {
+      "correct": "A complete C6 injury causes tetraplegia: the hands, trunk and legs lose their descending control, while the diaphragm (C3 to C5) and shoulder shrug (XI) are spared. In the first days, reflexes below the injury are absent; they return and become brisk over the following weeks."
+    }
+  },
+  {
+    "id": "anp-neuro-exam-18",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "interdependence"
+    ],
+    "figure": "os-16-2",
+    "pin": "coordination",
+    "q": "Name the part of the neurological exam that tests the pinned region.",
+    "options": [
+      "Coordination exam",
+      "Mental status exam",
+      "Sensory exam",
+      "Cranial nerve exam"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The pinned region is the cerebellum, and the coordination exam, with the gait exam, tests it.",
+      "options": [
+        "Correct. The coordination exam tests the cerebellum.",
+        "The mental status exam tests the cerebral cortex, not the cerebellum.",
+        "The sensory exam tests the ascending pathways in the spinal cord and brain.",
+        "The cranial nerve exam tests the nerves leaving the brain and brainstem."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-19",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "interdependence"
+    ],
+    "q": "A 45-year-old has pain down the back of his left leg, a weak push-off with his left foot, an absent left ankle jerk and numbness along the outer edge of his left foot. His knee jerks and plantar reflexes are normal. Where is the lesion?",
+    "options": [
+      "The left S1 nerve root",
+      "The right motor cortex",
+      "The spinal cord at T12",
+      "The left cerebellar hemisphere"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Weakness of the calf, a lost ankle jerk and numbness in the S1 dermatome all belong to one root on one side: lower motor neuron and sensory findings in the territory of left S1, often from a herniated disc.",
+      "options": [
+        "Correct. Motor, reflex and sensory findings all fit one root.",
+        "Cortex damage would cause upper motor neuron signs: brisk reflexes and a Babinski sign, not a lost ankle jerk.",
+        "A cord lesion at T12 would affect both legs or produce upper motor neuron signs below it, not a single lost reflex with a dermatome of numbness.",
+        "Cerebellar damage causes clumsiness with normal strength and does not remove reflexes or sensation."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-20",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "This list pairs each part of the neurological exam with the region it mainly tests. One pairing is wrong. Find it.",
+    "options": [
+      "Mental status exam: cerebrum",
+      "Cranial nerve exam: brainstem and its nerves",
+      "Romberg test: cerebellum",
+      "Stereognosis: parietal lobe",
+      "Deep tendon reflexes: reflex arcs and their descending control"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A positive Romberg test, steady with eyes open and falling with eyes closed, tests position sense carried by the dorsal columns. A person with cerebellar damage is unsteady even with the eyes open.",
+      "options": [
+        "Right pairing. Orientation, memory, language and judgment are cerebral functions.",
+        "Right pairing. The cranial nerves join the brain and brainstem at known levels.",
+        "This is the error. The Romberg test checks position sense, not the cerebellum.",
+        "Right pairing. Naming an object by touch needs the parietal cortex.",
+        "Right pairing. Reflexes test each arc and, through their briskness, the upper motor neuron control above it."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuro-exam-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "A patient speaks slowly and with great effort in short phrases, but follows spoken commands well. Which part of the mental status exam picks this up, and where is the damage likely to be?",
+    "options": [
+      "The memory exam; the hippocampus",
+      "The language exam; Wernicke's area in the left temporal lobe",
+      "The orientation exam; the prefrontal cortex",
+      "The language exam; Broca's area in the left frontal lobe"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Effortful, halting speech with good comprehension is expressive aphasia, found on the language part of the mental status exam. It points to Broca's area, in the left frontal lobe in most people.",
+      "options": [
+        "Memory testing checks recall of new information, not the fluency of speech.",
+        "Damage to Wernicke's area causes fluent speech with poor comprehension, the opposite pattern.",
+        "Orientation tests whether a person knows who and where they are and the date, not how fluently they speak.",
+        "Correct. Expressive aphasia from Broca's area."
+      ]
+    }
+  }
+]

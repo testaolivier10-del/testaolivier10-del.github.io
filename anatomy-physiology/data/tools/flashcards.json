@@ -2287,8 +2287,8 @@
    ],
    "level": "analyze",
    "front": "Why does breathing barely change when arterial PO2 falls from 95 to 60 mm Hg?",
-   "back": "Hemoglobin stays about 90% saturated or more over that range, and the carotid bodies respond strongly only below about 60 mm Hg.",
-   "why": "Carbon dioxide, which changes pH directly, is the minute-to-minute drive. A rise from 40 to 45 mm Hg roughly doubles ventilation."
+   "back": "The carotid bodies fire only weakly until arterial PO2 drops below about 60 mm Hg, then steeply.",
+   "why": "That is the shape of the carotid bodies’ own response curve. Meanwhile hemoglobin stays about 90% saturated or more over that range, so little oxygen is lost. Carbon dioxide is the minute-to-minute drive: a rise from 40 to 45 mm Hg roughly doubles ventilation."
   },
   {
    "id": "hyper-hypo",

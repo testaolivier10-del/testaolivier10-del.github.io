@@ -1,0 +1,158 @@
+{
+  "pre-postganglionic": {
+    "def": "The two neurons in series in every autonomic motor pathway. The preganglionic neuron has its cell body in the brainstem or spinal cord and a thinly myelinated axon that ends in an autonomic ganglion; the postganglionic neuron has its cell body in that ganglion and an unmyelinated axon that releases transmitter from swellings (varicosities) onto cardiac muscle, smooth muscle or glands.",
+    "roots": [
+      [
+        "pre-",
+        "before"
+      ],
+      [
+        "post-",
+        "after"
+      ],
+      [
+        "gangli-",
+        "knot, swelling"
+      ],
+      [
+        "varix",
+        "swollen vein"
+      ]
+    ],
+    "say": "pree-gang-glee-ON-ik"
+  },
+  "sympathetic-anatomy": {
+    "def": "The thoracolumbar division: preganglionic neurons in the lateral horn of T1–L2 send short axons through white rami communicantes to the sympathetic chain (chain or paravertebral ganglia) or through splanchnic nerves to the collateral (prevertebral) ganglia: celiac, superior mesenteric and inferior mesenteric. Long postganglionic axons return to every spinal nerve through gray rami communicantes or run to the organs.",
+    "roots": [
+      [
+        "thorac-",
+        "chest"
+      ],
+      [
+        "lumb-",
+        "loin"
+      ],
+      [
+        "ramus",
+        "branch"
+      ],
+      [
+        "communicans",
+        "connecting"
+      ],
+      [
+        "splanchn-",
+        "internal organs"
+      ],
+      [
+        "celi-",
+        "belly"
+      ],
+      [
+        "mes-",
+        "middle"
+      ],
+      [
+        "enter-",
+        "intestine"
+      ],
+      [
+        "para-",
+        "beside"
+      ],
+      [
+        "pre-",
+        "in front of"
+      ]
+    ],
+    "say": "RAY-my koh-myoo-nih-KAN-teez; SPLANK-nik; SEE-lee-ak"
+  },
+  "adrenal-medulla": {
+    "def": "The inner part of each adrenal gland. Its chromaffin cells are modified sympathetic postganglionic neurons without axons: stimulated directly by preganglionic fibers, they release epinephrine (about 80 percent) and norepinephrine into the blood.",
+    "roots": [
+      [
+        "ad-",
+        "near"
+      ],
+      [
+        "ren-",
+        "kidney"
+      ],
+      [
+        "medulla",
+        "inner part, marrow"
+      ],
+      [
+        "chrom-",
+        "color"
+      ],
+      [
+        "affin-",
+        "attracted to"
+      ]
+    ],
+    "say": "uh-DREE-nul meh-DUL-uh; kroh-MAF-in"
+  },
+  "epinephrine": {
+    "def": "The main hormone of the adrenal medulla (also called adrenaline). Released into the blood during sympathetic activation, it reaches cells throughout the body, including cells no sympathetic fiber touches, and keeps acting for a few minutes after the nerve signal stops.",
+    "roots": [
+      [
+        "epi-",
+        "upon"
+      ],
+      [
+        "nephr-",
+        "kidney"
+      ],
+      [
+        "-ine",
+        "chemical substance"
+      ]
+    ],
+    "say": "ep-ih-NEF-rin"
+  },
+  "parasympathetic-anatomy": {
+    "def": "The craniosacral division: preganglionic neurons in brainstem nuclei (leaving in cranial nerves III, VII, IX and X) and in sacral segments S2–S4 send long axons to terminal ganglia beside or inside the target organ (intramural ganglia), where short postganglionic axons reach the effector. It does not supply the skin, limbs or most blood vessels.",
+    "roots": [
+      [
+        "para-",
+        "beside"
+      ],
+      [
+        "crani-",
+        "skull"
+      ],
+      [
+        "sacr-",
+        "sacrum"
+      ],
+      [
+        "intra-",
+        "within"
+      ],
+      [
+        "mur-",
+        "wall"
+      ]
+    ],
+    "say": "kray-nee-oh-SAY-krul; in-truh-MYOOR-ul"
+  },
+  "somatic-vs-autonomic": {
+    "def": "Somatic motor pathways use one heavily myelinated neuron that always excites skeletal muscle at a neuromuscular junction. Autonomic motor pathways use two neurons meeting in a ganglion, end in varicosities, can excite or inhibit, and act on cardiac muscle, smooth muscle and glands, which keep working if the nerves are cut.",
+    "roots": [
+      [
+        "somat-",
+        "body"
+      ],
+      [
+        "auto-",
+        "self"
+      ],
+      [
+        "nom-",
+        "law"
+      ]
+    ],
+    "say": ""
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "os-15-5": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "15.5",
+      "section": "15.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/6bd0cba034d971830b9e1aaae47de3daa832a889",
+      "page": "15-1-divisions-of-the-autonomic-nervous-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/6bd0cba034d971830b9e1aaae47de3daa832a889",
+    "alt": "Left, a curved strip of smooth muscle with yellow postganglionic axons branching over its surface; the axons bulge at intervals into beaded swellings. A box around one swelling is enlarged on the right: the swelling holds round vesicles filled with green transmitter dots, two vesicles are fusing with the membrane and releasing the dots, and the dots drift across a wide gap to channel-shaped receptor proteins scattered on the muscle cell membrane below.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 15.5",
+    "labels": []
+  },
+  "os-15-15": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "15.15",
+      "section": "15.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/b500c22741040c47d246cbd3c46b3a071b839c6d",
+      "page": "15-4-drugs-that-affect-the-autonomic-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/b500c22741040c47d246cbd3c46b3a071b839c6d",
+    "alt": "A photograph of a leafy green shrub in sunlight. Shiny round black berries, each about the size of a cherry, sit singly in star-shaped purple-green cups along the stems between broad oval leaves.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 15.15",
+    "labels": []
+  }
+}

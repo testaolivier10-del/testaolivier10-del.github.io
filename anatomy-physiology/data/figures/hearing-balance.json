@@ -1,0 +1,98 @@
+{
+  "os-14-5": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "14.5",
+      "section": "14.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/dd97d7920818a0a5b338a427a1d846043b156238",
+      "page": "14-1-sensory-perception"
+    },
+    "alt": "A cut through the side of the head showing the ear. On the outside, the flap of the ear leads into a canal through the skull bone that ends at a thin membrane. Behind the membrane is a small air-filled space colored red, holding a chain of three tiny bones; the last one sits in an opening in the bony wall of the inner ear. A tube runs down and forward from this space toward the throat. Deeper in the bone lie a snail-shaped coil, three looped canals above it and the chamber between them, with two nerve branches leaving toward the brain. Brackets under the drawing divide it into outer, middle and inner parts.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.5",
+    "labels": [],
+    "w": 1100,
+    "h": 702,
+    "ext": "jpg"
+  },
+  "os-14-7": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "14.7",
+      "section": "14.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/bb7443bd9951edae4b054389c0e6aaaa3d6579ff",
+      "page": "14-1-sensory-perception"
+    },
+    "alt": "A small drawing of the snail-shaped coil with a box around one turn, and an enlarged cross section of that turn. Inside the bony wall are three fluid-filled channels: an upper one, a small triangular middle one, and a lower one. On the floor of the middle channel sits a row of sensory cells covered by a flap of membrane. Nerve fibers run from these cells to a cluster of nerve cell bodies in the bony core and join a nerve bundle leaving the coil.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.7",
+    "labels": [],
+    "w": 1100,
+    "h": 531,
+    "ext": "jpg"
+  },
+  "os-14-8": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "14.8",
+      "section": "14.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/2df3a7dac1385297125009f49540f3c5eff70fe2",
+      "page": "14-1-sensory-perception"
+    },
+    "alt": "Left, a cross section of one turn of the snail-shaped coil with a box around the row of sensory cells. Right, an enlarged view of that row: tall yellow cells stand among pink supporting cells, each with a bundle of rod-like projections of increasing height on its top. The tips of the projections are joined by fine links and touch a membrane that lies over them. Nerve endings wrap the base of each cell.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.8",
+    "labels": [],
+    "w": 1100,
+    "h": 488,
+    "ext": "jpg"
+  },
+  "os-14-10": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "14.10",
+      "section": "14.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/9038b7376cd5719f27ca24c7b49639800a6270a0",
+      "page": "14-1-sensory-perception"
+    },
+    "alt": "The ear drawn from the side with its snail-shaped coil shown uncoiled as a long, straight tube running away from the middle ear. The membrane along the tube is labeled at three places: at the end nearest the middle ear it vibrates most for a 20,000 hertz tone, in the middle for 1,500 hertz, and at the far tip for 20 hertz. A tapered bar below shows that the fibers across the membrane are short near the middle ear and long at the far tip.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.10",
+    "labels": [],
+    "w": 1100,
+    "h": 746,
+    "ext": "jpg"
+  },
+  "os-14-11": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "14.11",
+      "section": "14.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ae28a960538f2b5325f20850dcd271edf65b19ef",
+      "page": "14-1-sensory-perception"
+    },
+    "alt": "Top left, the inner ear with two small sacs in the chamber between the coil and the looped canals highlighted in blue. Bottom left, a cross section of one sac: a patch of sensory cells in its wall is covered by a gel layer topped with tiny crystals, with nerve fibers leaving below. Right, two enlarged views of that patch for a head held upright and a head tilted forward: when the head tilts, the crystal-weighted gel slides downhill and bends the projections on the sensory cells.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.11",
+    "labels": [],
+    "w": 1100,
+    "h": 580,
+    "ext": "jpg"
+  },
+  "os-14-12": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "14.12",
+      "section": "14.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/8789403445e449c0c44cfe76c1bdd4391b5f1acf",
+      "page": "14-1-sensory-perception"
+    },
+    "alt": "Top left, the inner ear with the swelling at the base of one looped canal boxed. Below it, an enlarged cut through that swelling: a ridge of sensory cells whose projections stick up into a tall gel cap that spans the canal, with nerve fibers leaving from the base. Top right, a head turning. Bottom right, the same swelling while the head turns: the fluid in the canal lags behind, and red arrows show it bending the gel cap the opposite way to the turn.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.12",
+    "labels": [],
+    "w": 1100,
+    "h": 542,
+    "ext": "jpg"
+  }
+}

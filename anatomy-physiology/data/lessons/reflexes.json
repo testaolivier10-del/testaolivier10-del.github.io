@@ -1,0 +1,47 @@
+{
+  "topic": "reflexes",
+  "hook": "<p>Jada, 19, steps barefoot on broken glass at the beach. Her left foot jerks up before she feels a thing, and she does not fall, because her right leg stiffens to take her weight. A second later the pain arrives. Neither movement was decided in her brain: both were wired into her spinal cord, and the same wiring is what a clinician tests with a reflex hammer.</p>",
+  "prereq": [
+    {
+      "q": "Which root carries sensory signals into the spinal cord?",
+      "options": ["The ventral root", "The dorsal root", "The lateral horn"],
+      "correct": 1,
+      "why": "Sensory axons enter through the dorsal root, and their cell bodies sit in the dorsal root ganglion. Motor axons leave through the ventral root.",
+      "review": "spinal-cord"
+    },
+    {
+      "q": "What do proprioceptors report?",
+      "options": ["Muscle length, muscle tension and joint angle", "Tissue damage in the skin", "The chemistry of the blood"],
+      "correct": 0,
+      "why": "Proprioceptors sit in muscles, tendons and joint capsules and report the body's own position and movement. Nociceptors report tissue damage, and chemoreceptors report blood chemistry.",
+      "review": "sensory-pathways"
+    },
+    {
+      "q": "Which effectors does the autonomic nervous system control?",
+      "options": ["Skeletal muscles only", "Sensory receptors in the skin", "Smooth muscle, cardiac muscle and glands"],
+      "correct": 2,
+      "why": "The autonomic nervous system drives smooth muscle, cardiac muscle and glands. Skeletal muscle is driven by the somatic nervous system.",
+      "review": "nervous-system-organization"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-15-6",
+    "caption": "The motor half of a visceral reflex (top) and a somatic reflex (bottom). Hide the labels and say how many motor neurons each uses between the spinal cord and its effector."
+  },
+  "chain": [
+    { "cause": "A tap on the patellar ligament pulls on the quadriceps femoris and stretches it for a split second.", "effect": "Muscle spindles inside the quadriceps are stretched, and mechanically gated channels in their sensory endings open." },
+    { "cause": "The spindle endings depolarize to threshold.", "effect": "Their sensory neurons fire a burst of action potentials that enters the cord through the dorsal roots of about L2 to L4." },
+    { "cause": "In the ventral horn, the sensory axons release glutamate directly onto lower motor neurons of the quadriceps.", "effect": "Those motor neurons fire, while branches of the same sensory axons excite inhibitory interneurons that silence the hamstring motor neurons." },
+    { "cause": "Acetylcholine is released at the quadriceps' neuromuscular junctions while the hamstrings stay relaxed.", "effect": "The quadriceps contracts unopposed, and the knee straightens about 20 milliseconds after the tap." }
+  ],
+  "misconception": {
+    "wrong": "You pull your hand off a hot pan because you feel the pain.",
+    "right": "The withdrawal starts before you feel anything. Nociceptor signals reach interneurons in the spinal cord, which drive the flexor motor neurons directly, so the hand is already moving. The same signals also climb the spinothalamic tract to the thalamus and cortex, and only when they arrive do you perceive pain. The pain is a parallel result, not the cause of the movement."
+  },
+  "check": ["anp-reflexes-1", "anp-reflexes-3", "anp-reflexes-5", "anp-reflexes-8", "anp-reflexes-10", "anp-reflexes-12", "anp-reflexes-15", "anp-reflexes-18"],
+  "summary": "<p>A reflex is a rapid, involuntary, predictable response to a stimulus. Every reflex runs on a reflex arc: sensory receptor, sensory neuron, integration center, motor neuron and effector, and damage to any part abolishes it. Somatic reflexes act on skeletal muscle through one motor neuron; visceral (autonomic) reflexes act on smooth muscle, cardiac muscle and glands through two. The stretch reflex is monosynaptic: stretch fires muscle spindles, which excite the motor neurons of the same muscle, while interneurons inhibit the antagonist (reciprocal inhibition). The knee jerk and every other deep tendon reflex are stretch reflexes, graded 0 to 4+ with 2+ normal; reduced reflexes point to a broken arc, and brisk reflexes with clonus or a Babinski sign point to upper motor neuron damage. Golgi tendon organs sense tension and start the polysynaptic tendon reflex, which damps the muscle's force. The polysynaptic withdrawal reflex bends a limb away from harm, and the crossed-extensor reflex straightens the other limb to bear weight.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-15", "label": "NREMT: Secondary assessment" },
+    { "href": "/nremt/study-notes.html#chapter-33", "label": "NREMT: Trauma to the head, neck and spine" }
+  ]
+}

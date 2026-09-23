@@ -1,0 +1,32 @@
+{
+  "reflex": {
+    "def": "A rapid, involuntary, predictable response to a particular stimulus, produced by a fixed circuit of neurons. The same stimulus gives the same response each time, and a spinal reflex runs without the brain.",
+    "roots": [["re-", "back"], ["flex-", "bend"]],
+    "say": ""
+  },
+  "reflex-arc": {
+    "def": "The five-part circuit every reflex runs on, in order: sensory receptor, sensory neuron, integration center (one or more synapses in the spinal cord or brainstem), motor neuron and effector. Damage to any part can abolish the reflex.",
+    "roots": [["integr-", "whole, make whole"]],
+    "say": ""
+  },
+  "somatic-visceral-reflex": {
+    "def": "A somatic reflex acts on skeletal muscle through one motor neuron from the CNS. A visceral (autonomic) reflex acts on smooth muscle, cardiac muscle or glands through a chain of two motor neurons that synapse in a ganglion outside the CNS, and it can excite or inhibit its target.",
+    "roots": [["somat-", "body"], ["viscer-", "internal organs"]],
+    "say": "VIS-er-ul"
+  },
+  "stretch-reflex": {
+    "def": "The contraction of a muscle in response to its own stretch. Stretch fires muscle spindles, whose sensory neurons synapse directly on the motor neurons of the same muscle (a monosynaptic reflex), while interneurons inhibit its antagonist. The patellar reflex (knee jerk) and every other deep tendon reflex are stretch reflexes.",
+    "roots": [["mono-", "one"], ["syn-", "together"], ["hapt-", "fasten"], ["patell-", "small dish, the kneecap"]],
+    "say": ""
+  },
+  "tendon-reflex": {
+    "def": "A polysynaptic reflex started by Golgi tendon organs, which sit where muscle joins tendon and sense muscle tension. Rising tension inhibits the motor neurons of the same muscle through interneurons and excites its antagonist, damping the muscle's force.",
+    "roots": [["tendo", "to stretch"]],
+    "say": "GOL-jee"
+  },
+  "withdrawal-reflex": {
+    "def": "The withdrawal (flexor) reflex is a polysynaptic reflex in which nociceptor signals excite the flexors and inhibit the extensors of the stimulated limb, pulling it away. In the crossed-extensor reflex, interneurons crossing the cord do the opposite in the other limb, which straightens and bears the weight.",
+    "roots": [["poly-", "many"], ["flex-", "bend"], ["ex-", "out"], ["tend-", "stretch"]],
+    "say": ""
+  }
+}

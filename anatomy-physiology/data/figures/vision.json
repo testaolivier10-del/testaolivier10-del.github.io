@@ -1,0 +1,98 @@
+{
+  "os-14-13": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "14.13",
+      "section": "14.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/9552c42b8b688325e78b3e769b6cc4eab3e38795",
+      "page": "14-1-sensory-perception"
+    },
+    "alt": "A side view of the eye in its bony socket, cut through the middle. Fat fills the socket around the eyeball, and straight muscles run from the back of the socket to the eyeball, with the optic nerve between them. Above the eye, a long muscle runs forward into the upper eyelid. A thin ring of muscle lies in both eyelids under the skin, a thin membrane lines the inside of the lids and folds back over the white of the eye, and the clear dome at the front bulges out between the lids. The eyebrow and eyelashes are also shown.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.13",
+    "labels": [],
+    "w": 1100,
+    "h": 720,
+    "ext": "jpg"
+  },
+  "os-14-14": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "14.14",
+      "section": "14.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/8cc1f266634d96e3be3c11b06910bec18e3d54dd",
+      "page": "14-1-sensory-perception"
+    },
+    "alt": "Two drawings of the six muscles that move the right eye. Left, a side view: four straight muscles run from a ring of tendon at the back of the socket to the top, bottom and sides of the eyeball, and a slanting muscle runs along the upper inner wall to a small pulley at the front of the socket, then turns back to the top of the eyeball. A second slanting muscle curves under the eyeball from the front of the socket. Right, a front view of the eyeball with the six muscles attached around it and red arrows showing the direction each one pulls.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.14",
+    "labels": [],
+    "w": 1100,
+    "h": 423,
+    "ext": "jpg"
+  },
+  "os-14-15": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "14.15",
+      "section": "14.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/53d521afbb00a18877d8ff7c2d82a4dc48f0654d",
+      "page": "14-1-sensory-perception"
+    },
+    "alt": "A side view of the eyeball cut open. The wall has three layers: a tough white outer coat that becomes the clear dome at the front, a dark middle layer rich in blood vessels, and a thin yellow inner layer at the back with a small pit near its center and a pale spot where the optic nerve leaves. Behind the colored ring and its central opening sits the lens, held by fine threads to a ring of muscle and folded tissue. A small chamber lies in front of the lens and a large gel-filled chamber behind it. Muscles are attached above and below the eyeball.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.15",
+    "labels": [],
+    "w": 1100,
+    "h": 685,
+    "ext": "jpg"
+  },
+  "os-14-18": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "14.18",
+      "section": "14.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/a94a4dbb3284c3c73281705ebb015ce709e87c3e",
+      "page": "14-1-sensory-perception"
+    },
+    "alt": "A graph of normalized absorbance, from 0 to 100, against wavelength of light from about 360 to 700 nanometers, with a color spectrum from violet to red under the axis. Four curves each rise to a peak and fall: a blue curve peaking at 420 nm, a dotted black curve peaking at 498 nm, a green curve peaking at 534 nm and a pink curve peaking at 564 nm. The curves overlap widely, especially the last two.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.18",
+    "labels": [],
+    "w": 1100,
+    "h": 718,
+    "ext": "jpg"
+  },
+  "os-14-22": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "14.22",
+      "section": "14.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/489a6a98232a9886e821830dc9c49fd3697500d0",
+      "page": "14-2-central-processing"
+    },
+    "alt": "A view of the brain from below with both eyes at the front. Colored wedges show what each eye sees: the left half of the scene in purple and the right half in green, overlapping in the middle. Fibers from each eye run back in two nerves that meet in an X-shaped crossing in front of the pituitary gland; fibers from the half of each retina nearer the nose cross to the other side, while those from the outer half stay on the same side. Behind the crossing, the green fibers all run on the left and the purple fibers on the right, to a relay in the thalamus on each side and then fan out to the visual cortex at the back of the brain.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.22",
+    "labels": [],
+    "w": 1100,
+    "h": 1154,
+    "ext": "jpg"
+  },
+  "os-14-26": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "14.26",
+      "section": "14.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/1efa39b69bc239edcab4bd1525633fd5854180c3",
+      "page": "14-2-central-processing"
+    },
+    "alt": "A side view of the left side of the brain with four lobes shaded. From the back of the brain, one arrow curves upward into the lobe on the top of the brain, labeled as the route that works out where something is, and another arrow runs forward and downward along the lower side lobe, labeled as the route that works out what something is.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.26",
+    "labels": [],
+    "w": 1100,
+    "h": 529,
+    "ext": "jpg"
+  }
+}

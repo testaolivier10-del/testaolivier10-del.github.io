@@ -1,0 +1,86 @@
+{
+  "topic": "ans-anatomy",
+  "hook": "<p>Mr. Okafor, 61, a long-time smoker, notices in the mirror that his right pupil is smaller than his left and his right eyelid droops a little. On a hot day, only the left side of his face sweats. A scan finds a tumor at the very top of his right lung, pressing on a chain of nerve ganglia beside his upper thoracic spine. To see why a lung tumor changes his eye and his sweating, you need the wiring of the two autonomic divisions.</p>",
+  "prereq": [
+    {
+      "q": "Which horn of the spinal cord's gray matter holds the cell bodies of autonomic motor neurons in the thoracic cord?",
+      "options": [
+        "Dorsal horn",
+        "Ventral horn",
+        "Lateral horn"
+      ],
+      "correct": 2,
+      "why": "The small lateral horn, present from T1 to L2, holds autonomic motor cell bodies. The dorsal horn is sensory and the ventral horn holds somatic motor neurons.",
+      "review": "spinal-cord"
+    },
+    {
+      "q": "In the peripheral nervous system, what is a ganglion?",
+      "options": [
+        "A cluster of neuron cell bodies outside the CNS",
+        "A bundle of axons inside the CNS",
+        "A cluster of neuron cell bodies inside the CNS"
+      ],
+      "correct": 0,
+      "why": "A ganglion is a cluster of neuron cell bodies in the PNS. Inside the CNS the same kind of cluster is called a nucleus, and a bundle of axons is a tract.",
+      "review": "nervous-system-organization"
+    },
+    {
+      "q": "Which cranial nerve is the only one that reaches the organs of the chest and abdomen?",
+      "options": [
+        "Glossopharyngeal nerve (IX)",
+        "Vagus nerve (X)",
+        "Accessory nerve (XI)"
+      ],
+      "correct": 1,
+      "why": "The vagus nerve (wandering nerve) leaves the brainstem and runs down to the heart, lungs and digestive organs.",
+      "review": "cranial-nerves"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-15-2",
+    "caption": "The sympathetic division. Hide the labels and find where fibers leave the cord, the chain ganglia, and the three collateral ganglia in front of the spine."
+  },
+  "chain": [
+    {
+      "cause": "A sympathetic preganglionic neuron in the lateral horn of T1–L2 fires.",
+      "effect": "Its myelinated axon leaves in the ventral root and turns into the sympathetic chain through a white ramus communicans."
+    },
+    {
+      "cause": "Inside the chain, the preganglionic axon branches up and down and synapses on many postganglionic neurons.",
+      "effect": "Postganglionic neurons at many levels fire at once."
+    },
+    {
+      "cause": "Their unmyelinated axons leave through gray rami into every spinal nerve, or through sympathetic nerves to the head and chest.",
+      "effect": "Sweat glands, skin blood vessels, the heart and the eye all receive the signal together."
+    },
+    {
+      "cause": "Other preganglionic axons pass through the chain in splanchnic nerves, some reaching the adrenal medulla directly.",
+      "effect": "Chromaffin cells release epinephrine into the blood, which carries the signal to every tissue and prolongs it for minutes."
+    }
+  ],
+  "misconception": {
+    "wrong": "The sympathetic division is the part of the ANS that comes from the spinal cord, and the parasympathetic division is the part that comes from the brain.",
+    "right": "Both divisions start in the CNS and use two neurons. The sympathetic division leaves only from the thoracic and upper lumbar cord (T1–L2). The parasympathetic division leaves from the brainstem, in cranial nerves III, VII, IX and X, and also from the sacral cord (S2–S4), which supplies the bladder, rectum and reproductive organs."
+  },
+  "check": [
+    "anp-ans-anatomy-5",
+    "anp-ans-anatomy-6",
+    "anp-ans-anatomy-9",
+    "anp-ans-anatomy-10",
+    "anp-ans-anatomy-11",
+    "anp-ans-anatomy-13",
+    "anp-ans-anatomy-15",
+    "anp-ans-anatomy-21"
+  ],
+  "summary": "<p>Autonomic motor pathways use two neurons: a preganglionic neuron in the CNS and a postganglionic neuron in an autonomic ganglion, whose unmyelinated axon releases transmitter from varicosities onto cardiac muscle, smooth muscle or glands. The sympathetic (thoracolumbar) division leaves the lateral horn at T1–L2 through white rami, synapses in the chain ganglia beside the spine or passes through splanchnic nerves to the celiac, superior mesenteric and inferior mesenteric ganglia, and returns fibers to every spinal nerve through gray rami. Its short preganglionic fibers branch widely, and some end on chromaffin cells of the adrenal medulla, which release epinephrine into the blood. The parasympathetic (craniosacral) division leaves in cranial nerves III, VII, IX and X and from S2–S4, with long preganglionic fibers running to terminal or intramural ganglia at the organ, so its effects stay local.</p>",
+  "connections": [
+    {
+      "href": "/nremt/study-notes.html#chapter-6",
+      "label": "NREMT: Anatomy and physiology"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-33",
+      "label": "NREMT: Trauma to the head, neck and spine"
+    }
+  ]
+}

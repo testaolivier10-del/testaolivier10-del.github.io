@@ -1,0 +1,579 @@
+[
+  {
+    "id": "anp-reflexes-1",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Put the parts of a reflex arc in the order a signal passes through them.",
+    "options": [
+      "Sensory receptor",
+      "Sensory neuron",
+      "Integration center",
+      "Motor neuron",
+      "Effector"
+    ],
+    "why": {
+      "correct": "The sensory receptor detects the stimulus, the sensory neuron carries the signal into the CNS, the integration center passes it on through one or more synapses, the motor neuron carries it out, and the effector responds.",
+      "options": [
+        "The sensory receptor comes first: it turns the stimulus into a graded receptor potential.",
+        "The sensory neuron carries action potentials from the sensory receptor into the CNS.",
+        "The integration center, in the gray matter of the cord or brainstem, links the sensory neuron to the motor neuron.",
+        "The motor neuron carries the output from the CNS to the effector.",
+        "The effector, a muscle or gland, produces the response last."
+      ]
+    }
+  },
+  {
+    "id": "anp-reflexes-2",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Fill the gap in the reflex arc: sensory receptor → sensory neuron → ____ → motor neuron → effector.",
+    "options": [
+      "Dorsal root ganglion",
+      "Integration center",
+      "Neuromuscular junction",
+      "Primary motor cortex"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Between the sensory and motor neurons lies the integration center: one or more synapses in the gray matter of the spinal cord or brainstem.",
+      "options": [
+        "The dorsal root ganglion holds the cell bodies of the sensory neurons. It is part of the sensory neuron, not the link to the motor neuron.",
+        "Correct. The integration center passes the signal from sensory to motor neurons.",
+        "The neuromuscular junction is where the motor neuron meets the effector, after the motor neuron in the sequence.",
+        "The primary motor cortex starts voluntary movements. A spinal reflex does not need to pass through it."
+      ]
+    }
+  },
+  {
+    "id": "anp-reflexes-3",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "A man's left knee jerk is absent, even with reinforcement. His left thigh muscles are strong when he kicks on purpose, but he has lost feeling on the front of his left knee. Which part of the reflex arc is most likely damaged?",
+    "options": [
+      "The ventral root of the lumbar segments",
+      "The quadriceps femoris itself",
+      "The dorsal root of the lumbar segments",
+      "The motor neurons in the ventral horn"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Normal voluntary strength means the motor neurons, ventral roots and muscle all work. Lost feeling plus a lost reflex points to the sensory side of the arc: the dorsal root that carries both skin sensation and spindle signals from that region.",
+      "options": [
+        "If the ventral root were cut, the quadriceps would be weak on voluntary effort too, and sensation would be normal.",
+        "A diseased quadriceps would be weak when he kicks on purpose, and it would not remove feeling from the skin.",
+        "Correct. The sensory side has failed while the motor side still works.",
+        "Damage to the ventral horn motor neurons would weaken voluntary kicking as well and would leave sensation intact."
+      ]
+    }
+  },
+  {
+    "id": "anp-reflexes-4",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "This sequence describes the patellar reflex. One step is wrong. Find it.",
+    "options": [
+      "A tap on the patellar ligament stretches the quadriceps femoris",
+      "Muscle spindles in the quadriceps fire",
+      "Sensory axons enter the cord through the dorsal roots",
+      "The sensory axons excite interneurons, which then excite the quadriceps motor neurons",
+      "Quadriceps motor neurons fire and the muscle contracts",
+      "The knee straightens"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The stretch reflex is monosynaptic: the spindle sensory axons synapse directly on the quadriceps motor neurons. Interneurons are used only for the polysynaptic branch that inhibits the hamstrings.",
+      "options": [
+        "Right step. The tap pushes in the ligament, which pulls on and stretches the quadriceps.",
+        "Right step. Muscle spindles are the stretch sensors.",
+        "Right step. Sensory axons enter through the dorsal roots of about L2 to L4.",
+        "This is the error. There is no interneuron between the spindle sensory axon and the motor neurons of the same muscle.",
+        "Right step. The motor neurons release acetylcholine at the neuromuscular junctions.",
+        "Right step. Quadriceps contraction straightens the knee."
+      ]
+    }
+  },
+  {
+    "id": "anp-reflexes-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "the tendon is the sensor in a deep tendon reflex",
+    "q": "When a clinician taps the calcaneal tendon and the foot points down, which sensory receptor detects the tap?",
+    "options": [
+      "Golgi tendon organs in the calcaneal tendon",
+      "Nociceptors in the skin over the tendon",
+      "Muscle spindles in the calf muscles",
+      "Tactile corpuscles in the skin of the heel"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The tap stretches the calf muscles through their tendon, and the muscle spindles in those muscles detect the stretch. Despite its name, every deep tendon reflex is a stretch reflex.",
+      "options": [
+        "Golgi tendon organs sense tension from contraction, not a brief stretch, and they start a reflex that relaxes the muscle rather than contracting it.",
+        "Nociceptors respond to harmful stimuli. A reflex hammer tap is not painful, and nociceptors start the withdrawal reflex, which bends a limb.",
+        "Correct. Spindles sense the stretch and excite the calf motor neurons directly.",
+        "Touch sensors in the skin report contact, but they are not the sensory receptor for this reflex. It still works when the skin is numb."
+      ]
+    }
+  },
+  {
+    "id": "anp-reflexes-6",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Which of these depend on at least one interneuron between the sensory and motor neurons? Select all that apply.",
+    "options": [
+      "Contraction of the quadriceps in the knee jerk",
+      "Relaxation of the hamstrings during the knee jerk",
+      "The withdrawal reflex",
+      "The crossed-extensor reflex",
+      "The tendon reflex from Golgi tendon organs"
+    ],
+    "correct": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "why": {
+      "correct": "Only the stretch reflex's path to the stretched muscle itself is monosynaptic. Inhibiting an antagonist, withdrawal, crossing the midline and the tendon reflex all need interneurons.",
+      "options": [
+        "No. The spindle sensory axons synapse directly on the quadriceps motor neurons: one synapse.",
+        "Yes. A sensory neuron can only excite, so inhibiting the hamstring motor neurons needs an inhibitory interneuron (reciprocal inhibition).",
+        "Yes. Nociceptor signals pass through interneurons that spread across several segments.",
+        "Yes. Interneurons carry the signal across the midline to the opposite limb.",
+        "Yes. The tendon organ's sensory neuron acts on the motor neurons through inhibitory interneurons."
+      ]
+    }
+  },
+  {
+    "id": "anp-reflexes-7",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "You step on a tack with your right foot. Predict the change in activity of each group of motor neurons in the next fraction of a second.",
+    "variables": [
+      {
+        "name": "Motor neurons to the right leg's flexors",
+        "answer": "up",
+        "why": "Nociceptor signals excite interneurons that excite the flexor motor neurons of the stimulated limb: the withdrawal reflex."
+      },
+      {
+        "name": "Motor neurons to the right leg's extensors",
+        "answer": "down",
+        "why": "Inhibitory interneurons silence the extensors of the same limb, so they do not resist the withdrawal."
+      },
+      {
+        "name": "Motor neurons to the left leg's extensors",
+        "answer": "up",
+        "why": "Interneurons that cross the midline excite the extensors of the opposite limb: the crossed-extensor reflex."
+      },
+      {
+        "name": "Motor neurons to the left leg's flexors",
+        "answer": "down",
+        "why": "Crossed inhibitory connections silence the opposite limb's flexors, so the left leg straightens and bears weight."
+      }
+    ],
+    "why": {
+      "correct": "One painful stimulus drives opposite patterns in the two legs. The right leg bends and lifts (withdrawal reflex), and the left leg straightens to support the body (crossed-extensor reflex), all through interneurons in the cord."
+    }
+  },
+  {
+    "id": "anp-reflexes-8",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "misconception": "you withdraw because you feel pain",
+    "q": "A cook touches a hot pan and her hand jerks away. A moment later she feels the burn. Which statement best explains the order of events?",
+    "options": [
+      "The cortex decided to move the hand, and the feeling of pain came after the decision",
+      "Spinal interneurons drove the flexors while the pain signal was still climbing to the cortex",
+      "The heat stimulated the muscles of her hand directly, with no nerve signal",
+      "The cerebellum detected the heat and started the movement"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The withdrawal reflex is integrated in the spinal cord, so the flexors contract without waiting for the brain. The same nociceptor signals climb the spinothalamic tract, and pain is felt only when they reach the cortex.",
+      "options": [
+        "No decision is needed. A voluntary movement would take longer than the reflex, and the pain would have to arrive first.",
+        "Correct. The reflex and the perception run in parallel, and the reflex finishes first.",
+        "Heat does not make skeletal muscle contract. The movement needs nociceptors, sensory neurons, interneurons and motor neurons.",
+        "The cerebellum coordinates movement but does not detect heat or start reflexes. The withdrawal reflex runs in the cord."
+      ]
+    }
+  },
+  {
+    "id": "anp-reflexes-9",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Which of these is a visceral (autonomic) reflex?",
+    "options": [
+      "The knee jerk",
+      "Pulling your foot off a tack",
+      "Saliva flowing when food touches your tongue",
+      "The other leg straightening as you lift one foot"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A visceral reflex acts on smooth muscle, cardiac muscle or glands. Saliva comes from glands, driven by autonomic neurons.",
+      "options": [
+        "The knee jerk acts on skeletal muscle (the quadriceps), so it is a somatic reflex.",
+        "The withdrawal reflex acts on skeletal muscles of the leg, so it is somatic.",
+        "Correct. Its effectors are glands, so it is visceral.",
+        "The crossed-extensor reflex acts on skeletal muscles, so it is somatic."
+      ]
+    }
+  },
+  {
+    "id": "anp-reflexes-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "How does the motor side of a visceral reflex differ from that of a somatic reflex?",
+    "options": [
+      "It uses two neurons in series, synapsing in a ganglion outside the CNS",
+      "It uses one motor neuron that runs all the way from the CNS to a skeletal muscle",
+      "It has no sensory neuron, so the effector responds directly",
+      "Its motor axons are all heavily myelinated, so it is faster"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A visceral reflex sends its output through a chain of two motor neurons, which synapse in a ganglion outside the CNS, to smooth muscle, cardiac muscle or glands. A somatic reflex uses one motor neuron straight to skeletal muscle.",
+      "options": [
+        "Correct. Two neurons and a ganglion on the way.",
+        "That describes the somatic reflex.",
+        "Both kinds have a sensory receptor and sensory neuron. They differ on the motor side.",
+        "The second axon of a visceral chain is unmyelinated, so visceral reflexes are slower than somatic ones."
+      ]
+    }
+  },
+  {
+    "id": "anp-reflexes-11",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "On the 0 to 4+ scale, what grade is a knee jerk that is very brisk and followed by a run of rhythmic jerks (clonus)?",
+    "options": [
+      "1+",
+      "2+",
+      "3+",
+      "4+"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "4+ means very brisk with clonus. It points to upper motor neuron damage.",
+      "options": [
+        "1+ is a weak, diminished reflex.",
+        "2+ is normal.",
+        "3+ is brisker than average without clonus, and it may or may not be abnormal.",
+        "Correct. Clonus makes it 4+."
+      ]
+    }
+  },
+  {
+    "id": "anp-reflexes-12",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Six weeks after an injury, a woman's knee and ankle jerks are 4+ on the right and 2+ on the left. Her right big toe goes up when the sole is stroked, and her right leg is weak and stiff. Where is the damage?",
+    "options": [
+      "In the dorsal roots of the right lumbar segments",
+      "In the right sciatic nerve",
+      "In the ventral horn of the right lumbar cord",
+      "In the upper motor neuron pathway to the right leg"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Hyperreflexia with clonus, a Babinski sign and a stiff, weak leg are upper motor neuron signs. The reflex arcs are intact but have lost the descending control that normally damps them.",
+      "options": [
+        "A broken sensory side of the arc would weaken or abolish the reflexes, not exaggerate them.",
+        "A damaged peripheral nerve breaks the arc and makes the reflexes weaker, with a floppy leg.",
+        "Losing ventral horn motor neurons removes the output of the arc, so reflexes fall and the muscle wastes.",
+        "Correct. The arcs are released from descending control."
+      ]
+    }
+  },
+  {
+    "id": "anp-reflexes-13",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "The dorsal roots of L2, L3 and L4 on the left are cut. Predict each finding in the left leg, compared with before.",
+    "variables": [
+      {
+        "name": "Left knee jerk",
+        "answer": "down",
+        "why": "The spindle sensory axons from the quadriceps enter through these dorsal roots, so the arc's sensory side is broken."
+      },
+      {
+        "name": "Voluntary strength of the left quadriceps",
+        "answer": "none",
+        "why": "Motor axons leave through the ventral roots, which are intact, and the corticospinal pathway is untouched."
+      },
+      {
+        "name": "Skin sensation on the front of the left thigh and knee",
+        "answer": "down",
+        "why": "Those dermatomes send their sensory axons through the L2 to L4 dorsal roots."
+      },
+      {
+        "name": "Left ankle jerk",
+        "answer": "none",
+        "why": "The ankle jerk runs through S1, whose roots are intact."
+      }
+    ],
+    "why": {
+      "correct": "Cutting dorsal roots removes the sensory side of every arc that enters through them. Reflexes and skin sensation of those segments are lost, but voluntary strength remains because the motor side and the descending tracts are intact."
+    }
+  },
+  {
+    "id": "anp-reflexes-14",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "A man's spinal cord is completely cut at T6. Six weeks later, predict each finding in his legs, compared with before the injury.",
+    "variables": [
+      {
+        "name": "Knee jerks",
+        "answer": "up",
+        "why": "On the day of the injury the reflexes below the cut are absent, but the arcs in the lumbar cord survive. Released from descending control, they return over days to weeks and become brisker than before."
+      },
+      {
+        "name": "Voluntary movement of the legs",
+        "answer": "down",
+        "why": "Every descending motor tract is cut at T6, so no command from the brain reaches the lumbar motor neurons."
+      },
+      {
+        "name": "Withdrawal of a foot from a pinprick",
+        "answer": "up",
+        "why": "The withdrawal reflex runs in the lumbar and sacral cord. After the early absent phase it returns, often exaggerated and spreading."
+      },
+      {
+        "name": "Feeling a pinprick on the foot",
+        "answer": "down",
+        "why": "Every ascending tract is cut at T6, so signals from the foot cannot reach the cortex, even though they still drive the reflex."
+      }
+    ],
+    "why": {
+      "correct": "Right after the cut, reflexes below it are absent. Over the next weeks they return and become exaggerated, because the reflex arcs are intact but freed from the brain's control. Voluntary movement and sensation stay lost, because both depend on tracts that pass through T6."
+    }
+  },
+  {
+    "id": "anp-reflexes-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A person holds a very heavy box, and the tension in his biceps brachii rises steeply. Golgi tendon organs in the biceps fire. What is the effect on the biceps motor neurons?",
+    "options": [
+      "They are excited directly, so the biceps pulls harder",
+      "They are inhibited through interneurons, so the biceps' force drops",
+      "They are unaffected by tendon organ signals",
+      "They are excited through interneurons in the opposite arm"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Golgi tendon organs sense tension. Their sensory neurons excite inhibitory interneurons that inhibit the motor neurons of the same muscle: the tendon reflex. The biceps' force drops, and the triceps is excited.",
+      "options": [
+        "Direct excitation of the same muscle is what muscle spindles do in the stretch reflex. Tendon organs have the opposite effect.",
+        "Correct. The tendon reflex damps the tension in the muscle.",
+        "Tendon organ signals do reach the brain, but they also drive the spinal tendon reflex.",
+        "Crossing to the opposite limb is a feature of the crossed-extensor reflex, not of the tendon reflex."
+      ]
+    }
+  },
+  {
+    "id": "anp-reflexes-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A patient's triceps jerk is absent on one side, while the biceps, knee and ankle jerks are all normal. Which spinal cord segment is most likely affected?",
+    "options": [
+      "C5",
+      "C7",
+      "L4",
+      "S1"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The triceps jerk runs mainly through C7. Because the other reflexes are normal, the problem is limited to that one segment or its root.",
+      "options": [
+        "C5 carries the biceps jerk with C6, and the biceps jerk is normal.",
+        "Correct. C7 is the main segment for the triceps jerk.",
+        "L4 carries the knee jerk, which is normal.",
+        "S1 carries the ankle jerk, which is normal."
+      ]
+    }
+  },
+  {
+    "id": "anp-reflexes-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "In a knee jerk, the sensory path is 0.6 m at 70 m/s and the motor path is 0.6 m at 60 m/s, with about 1 ms at the central synapse and 3 ms at the muscle. A disease strips myelin from the motor axons and slows them to 30 m/s. About how long does the reflex now take?",
+    "options": [
+      "About 23 ms",
+      "About 13 ms",
+      "About 33 ms",
+      "About 43 ms"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Sensory: 0.6 ÷ 70 = 8.6 ms. Motor: 0.6 ÷ 30 = 20 ms. Add 1 ms for the synapse and 3 ms for the muscle: 8.6 + 20 + 1 + 3 = 32.6 ms, about 33 ms.",
+      "options": [
+        "About 23 ms is the normal time, with the motor axons at 60 m/s. Halving their speed doubles the motor time.",
+        "About 13 ms would need faster, not slower, conduction.",
+        "Correct. The motor time doubles from 10 ms to 20 ms.",
+        "About 43 ms would need the sensory axons to slow down as well."
+      ]
+    }
+  },
+  {
+    "id": "anp-reflexes-18",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "During the knee jerk, what stops the hamstrings from contracting against the kick?",
+    "options": [
+      "Spindle sensory axons excite inhibitory interneurons that silence the hamstring motor neurons",
+      "The hamstrings are stretched too, so their own spindles relax them",
+      "Golgi tendon organs in the quadriceps fire first and switch off the hamstring motor neurons",
+      "The cortex sends a signal to relax the hamstrings before the tap"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Branches of the quadriceps spindle axons excite inhibitory interneurons, which release glycine onto the hamstring motor neurons and stop them firing. This is reciprocal inhibition.",
+      "options": [
+        "Correct. Reciprocal inhibition through an inhibitory interneuron.",
+        "Straightening the knee does stretch the hamstrings, but stretching a muscle excites its own motor neurons. It does not relax it.",
+        "Tendon organs respond to tension, which rises only after the quadriceps contracts, and their main effect is on the quadriceps itself.",
+        "The reflex needs no signal from the brain, and it works when the tap comes as a surprise."
+      ]
+    }
+  },
+  {
+    "id": "anp-reflexes-19",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-15-6",
+    "pin": "somatic-motor-neuron",
+    "q": "Name the pinned neuron.",
+    "options": [
+      "Somatic motor neuron",
+      "Sensory neuron",
+      "Interneuron of the spinal cord",
+      "Ganglionic neuron"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "This is the somatic motor neuron: a lower motor neuron whose myelinated axon runs from the ventral horn straight to skeletal muscle, the motor side of a somatic reflex.",
+      "options": [
+        "Correct. One myelinated motor neuron from the cord to skeletal muscle.",
+        "A sensory neuron carries signals into the cord through the dorsal root. This axon leaves the cord toward a muscle.",
+        "An interneuron stays inside the CNS. This axon leaves the cord.",
+        "A ganglionic neuron sits in a ganglion outside the CNS and belongs to the two-neuron chain of a visceral reflex."
+      ]
+    }
+  },
+  {
+    "id": "anp-reflexes-20",
+    "type": "multi",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Compared with a stretch reflex, which statements are true of the withdrawal reflex? Select all that apply.",
+    "options": [
+      "Its sensory receptors are nociceptors",
+      "It spreads across several spinal cord segments",
+      "It is monosynaptic",
+      "It takes longer from stimulus to response",
+      "It can include the opposite limb"
+    ],
+    "correct": [
+      0,
+      1,
+      3,
+      4
+    ],
+    "why": {
+      "correct": "The withdrawal reflex starts in nociceptors, runs through chains of interneurons that spread across several segments and across the midline, and so takes longer than the monosynaptic stretch reflex.",
+      "options": [
+        "True. Harmful stimuli fire nociceptors; the stretch reflex starts in muscle spindles.",
+        "True. Lifting a limb needs flexors whose motor neurons lie in several segments.",
+        "False. It is polysynaptic. The stretch reflex is the monosynaptic one.",
+        "True. Extra synapses and slower pain axons lengthen the delay.",
+        "True. The crossed-extensor reflex straightens the other limb."
+      ]
+    }
+  }
+]

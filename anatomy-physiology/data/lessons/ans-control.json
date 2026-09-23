@@ -1,0 +1,90 @@
+{
+  "topic": "ans-control",
+  "hook": "<p>Ms. Farah, 24, gets up quickly from a hospital bed after a long night of vomiting. Her vision grays out, and she grabs the rail. A nurse notes her heart rate jump from 80 to 115 within a few seconds, and the dizziness passes. Nothing she chose to do raised that heart rate. A reflex in her brainstem shifted the balance between her two autonomic divisions, and this page shows how.</p>",
+  "prereq": [
+    {
+      "q": "Which part of the brain links the nervous and endocrine systems and helps regulate body temperature, hunger and thirst?",
+      "options": [
+        "Cerebellum",
+        "Hypothalamus",
+        "Thalamus"
+      ],
+      "correct": 1,
+      "why": "The hypothalamus, below the thalamus, sets body temperature, hunger, thirst and water balance, and controls the autonomic nervous system.",
+      "review": "brain-regions"
+    },
+    {
+      "q": "What is the difference between a somatic reflex and a visceral (autonomic) reflex?",
+      "options": [
+        "A somatic reflex acts on skeletal muscle; a visceral reflex acts on cardiac muscle, smooth muscle or glands",
+        "A somatic reflex has no integration center; a visceral reflex has one",
+        "A somatic reflex is always conscious; a visceral reflex is always spinal"
+      ],
+      "correct": 0,
+      "why": "Both kinds of reflex have a sensory receptor, an afferent path, an integration center, an efferent path and an effector. They differ in the effector: skeletal muscle for somatic, cardiac or smooth muscle and glands for visceral.",
+      "review": "reflexes"
+    },
+    {
+      "q": "Which receptor protein does acetylcholine from the vagus nerve bind on the heart?",
+      "options": [
+        "Beta-1",
+        "Nicotinic",
+        "Muscarinic"
+      ],
+      "correct": 2,
+      "why": "Parasympathetic postganglionic neurons release acetylcholine onto muscarinic receptor proteins, which slow the heart by opening potassium channels.",
+      "review": "ans-signaling"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-15-13",
+    "caption": "Autonomic connections to the heart. Hide the labels and name the nerve that carries parasympathetic fibers and the spinal segments the sympathetic fibers leave from."
+  },
+  "chain": [
+    {
+      "cause": "Standing up quickly pools blood in the legs, and pressure in the large arteries dips.",
+      "effect": "Stretch-sensitive sensory receptors in the artery walls fire less, and fewer signals reach the medulla oblongata."
+    },
+    {
+      "cause": "The medulla oblongata receives less stretch input.",
+      "effect": "It lowers vagal tone to the heart and raises sympathetic tone to the heart and vessels."
+    },
+    {
+      "cause": "Less acetylcholine on muscarinic receptor proteins and more norepinephrine on beta-1 and alpha-1 receptor proteins act on the heart and vessels.",
+      "effect": "The heart beats faster and harder, and vessels in the skin and gut narrow."
+    },
+    {
+      "cause": "The heart pumps more and the vessels resist flow more.",
+      "effect": "Arterial pressure rises back toward normal, the stretch-sensitive sensory receptors fire at their usual rate again, and autonomic tone returns to its resting balance."
+    }
+  ],
+  "misconception": {
+    "wrong": "The autonomic nervous system works on its own, independently of the brain.",
+    "right": "Autonomic means self-governing, but the ANS is run by the CNS. Its preganglionic neurons sit in the brainstem and spinal cord; brainstem centers integrate autonomic reflexes; and the hypothalamus, fed by the limbic system and cortex, sets the overall balance. That is why fear speeds your heart and embarrassment makes you blush."
+  },
+  "check": [
+    "anp-ans-control-2",
+    "anp-ans-control-3",
+    "anp-ans-control-5",
+    "anp-ans-control-8",
+    "anp-ans-control-11",
+    "anp-ans-control-14",
+    "anp-ans-control-17",
+    "anp-ans-control-20"
+  ],
+  "summary": "<p>Most organs of the chest and abdomen have dual innervation: both divisions reach them, usually with opposite effects (heart rate, pupil, gut, bladder) and sometimes cooperatively (saliva). Both divisions fire at a resting autonomic tone, so one division can turn an effector up or down. Vagal tone dominates the resting heart, holding it well below its own rate of about 100; sympathetic tone in the vasomotor nerves keeps most blood vessels, which have no parasympathetic fibers, partly constricted. Sympathetic activation raises heart rate and force, shifts blood from skin and gut to muscle, widens airways and pupils, releases glucose and drives sweating, often as a mass discharge prolonged by adrenal epinephrine. Parasympathetic activation slows the heart, narrows the pupils and speeds the gut, locally and briefly. Visceral reflexes such as the pupillary light reflex and the blood pressure reflex use a two-neuron efferent limb, and control runs from the spinal cord up through brainstem centers to the hypothalamus, which receives emotional input from the limbic system.</p>",
+  "connections": [
+    {
+      "href": "/nremt/study-notes.html#chapter-13",
+      "label": "NREMT: Vital signs and monitoring devices"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-33",
+      "label": "NREMT: Trauma to the head, neck and spine"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-27",
+      "label": "NREMT: Behavioral and psychiatric emergencies"
+    }
+  ]
+}

@@ -14,7 +14,12 @@ import { scanPage } from '../anp-map.mjs';
 const ID_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const ANSWERS = ['up', 'down', 'none'];
 const LEVELS = [1, 2, 3, 4];
-export const PILOT_CHAPTERS = ['orientation', 'chem-physics', 'cells', 'tissues', 'cell-communication', 'cardiovascular'];
+// Chapters that are live (anatomy-physiology/data/published.json, decision 53).
+// Items may belong to any chapter; every planned item must exist only once its
+// chapter is published.
+import { readFileSync as _rf, existsSync as _ex } from 'node:fs';
+const _pub = new URL('../../../anatomy-physiology/data/published.json', import.meta.url);
+export const PILOT_CHAPTERS = _ex(_pub) ? JSON.parse(_rf(_pub, 'utf8')).chapters : ['orientation', 'chem-physics', 'cells', 'tissues', 'cell-communication', 'cardiovascular'];
 // Same rule as scripts/check-anp-content.mjs: an explanation never points at an option by letter or position.
 export const POS_RE = /\b[Oo]ptions?\s+(one|two|three|four|five|[1-6]|[A-F])\b|\b(first|second|third|fourth|fifth|last)\s+(option|choice|answer)\b|\b(choice|answer)\s+[A-F]\b/;
 // Spec section 5: "receptor" is never bare. Allowed: "sensory receptor", "receptor protein",
@@ -51,7 +56,6 @@ export function check(data, map) {
     for (const f of ['title', 'topic', 'setup']) if (!str(s[f])) err(`${where}: missing ${f}`);
     const topic = topics.get(s.topic);
     if (!topic) err(`${where}: unknown topic "${s.topic}"`);
-    else if (!PILOT_CHAPTERS.includes(topic.chapter)) err(`${where}: topic "${s.topic}" is outside the pilot chapters`);
     if (!Array.isArray(s.core) || !s.core.length) err(`${where}: core must list at least one core concept`);
     else for (const c of s.core) if (!core.has(c)) err(`${where}: unknown core concept "${c}"`);
     if (!LEVELS.includes(s.level)) err(`${where}: level must be 1, 2, 3 or 4`);
@@ -120,6 +124,7 @@ export function check(data, map) {
       if (!themes.has(t.title)) err(`map theme "${t.title}" (${ch.id}) has no scenario`);
     }
   }
-  for (const s of data.scenarios) if (s && s.theme && !planned.has(s.theme)) err(`scenario ${s.id}: theme "${s.theme}" is not a pilot prediction theme in the map`);
+  const allThemes = new Set(map.chapters.flatMap(ch => ((ch.tools && ch.tools.predictionThemes) || []).map(t => t.title)));
+  for (const s of data.scenarios) if (s && s.theme && !allThemes.has(s.theme)) err(`scenario ${s.id}: theme "${s.theme}" is not a prediction theme in the map`);
   return errors;
 }

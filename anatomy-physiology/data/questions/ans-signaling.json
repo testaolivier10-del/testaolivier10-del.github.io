@@ -1,0 +1,669 @@
+[
+  {
+    "id": "anp-ans-signaling-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Which autonomic neurons release acetylcholine?",
+    "options": [
+      "Only parasympathetic preganglionic neurons",
+      "All preganglionic neurons, all parasympathetic postganglionic neurons, and sympathetic postganglionic neurons to sweat glands",
+      "All postganglionic neurons of both divisions",
+      "Only neurons that end on the adrenal medulla"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Every preganglionic neuron in both divisions is cholinergic, as is every parasympathetic postganglionic neuron. The one group of cholinergic sympathetic postganglionic neurons supplies the eccrine sweat glands.",
+      "options": [
+        "Sympathetic preganglionic neurons also release acetylcholine, onto nicotinic receptor proteins in the chain and collateral ganglia.",
+        "Correct. These are the cholinergic neurons of the ANS.",
+        "Most sympathetic postganglionic neurons are adrenergic and release norepinephrine.",
+        "Preganglionic neurons to the adrenal medulla are cholinergic, but so are all other preganglionic neurons and all parasympathetic postganglionic neurons."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "misconception": "all sympathetic neurons release norepinephrine",
+    "q": "On a hot day, sympathetic activity makes you sweat. Which transmitter and receptor protein act on the eccrine sweat glands?",
+    "options": [
+      "Norepinephrine on alpha-1 adrenergic receptor proteins",
+      "Epinephrine on beta-2 receptor proteins",
+      "Acetylcholine on muscarinic receptor proteins",
+      "Acetylcholine on nicotinic receptor proteins"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The sympathetic postganglionic neurons to eccrine sweat glands are an exception: they are cholinergic. Their acetylcholine binds muscarinic receptor proteins on the gland cells.",
+      "options": [
+        "Most sympathetic targets do receive norepinephrine, but the eccrine sweat glands are the classic exception.",
+        "Circulating epinephrine has only a small effect on eccrine sweating. The nerve supply, using acetylcholine, drives it.",
+        "Correct. A sympathetic response carried by acetylcholine on muscarinic receptor proteins.",
+        "Nicotinic receptor proteins are in the ganglia and adrenal medulla, not on the sweat gland cells. That is why atropine, a muscarinic blocker, stops sweating."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-3",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A patient starts taking metoprolol, a beta blocker that acts mainly on beta-1 receptor proteins. Predict the change in each variable at rest, compared with before the drug.",
+    "variables": [
+      {
+        "name": "Heart rate",
+        "answer": "down",
+        "why": "Norepinephrine and epinephrine can no longer bind the beta-1 receptor proteins in the heart's pacemaker tissue, so the cells reach threshold more slowly."
+      },
+      {
+        "name": "Force of each heart contraction",
+        "answer": "down",
+        "why": "Blocked beta-1 receptor proteins on heart muscle cells mean less cyclic AMP and less calcium entry, so each contraction is weaker."
+      },
+      {
+        "name": "Blood pressure",
+        "answer": "down",
+        "why": "A slower, weaker heart pumps less blood into the arteries each minute, so arterial pressure falls."
+      },
+      {
+        "name": "Diameter of small arteries in the skin",
+        "answer": "none",
+        "why": "Skin vessels constrict through alpha-1 receptor proteins, which a beta-1 blocker does not touch."
+      },
+      {
+        "name": "Pupil diameter",
+        "answer": "none",
+        "why": "The pupil is set by alpha-1 receptor proteins on the dilator muscle and muscarinic receptor proteins on the circular muscle, neither of which is blocked."
+      }
+    ],
+    "why": {
+      "correct": "A beta-1 blocker removes the sympathetic push on the heart only. Heart rate and force fall, so blood pressure falls. Targets that respond through alpha or muscarinic receptor proteins, such as skin vessels and the pupil, are unchanged."
+    }
+  },
+  {
+    "id": "anp-ans-signaling-4",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A patient is given atropine, a muscarinic antagonist. Predict the change in each variable, compared with before the drug.",
+    "variables": [
+      {
+        "name": "Heart rate",
+        "answer": "up",
+        "why": "Acetylcholine from the vagus nerve can no longer bind muscarinic receptor proteins on the heart's pacemaker tissue, so its slowing effect is removed and the rate climbs."
+      },
+      {
+        "name": "Pupil diameter",
+        "answer": "up",
+        "why": "The circular iris muscle that narrows the pupil works through muscarinic receptor proteins. With it blocked, the alpha-1 dilator muscle wins and the pupil widens."
+      },
+      {
+        "name": "Volume of saliva",
+        "answer": "down",
+        "why": "Watery saliva is secreted in response to acetylcholine on muscarinic receptor proteins, so the mouth goes dry."
+      },
+      {
+        "name": "Sweating",
+        "answer": "down",
+        "why": "Eccrine sweat glands respond to acetylcholine on muscarinic receptor proteins, even though their nerves are sympathetic, so atropine blocks sweating."
+      },
+      {
+        "name": "Movement of the stomach and intestine wall",
+        "answer": "down",
+        "why": "Parasympathetic acetylcholine speeds gut smooth muscle through muscarinic receptor proteins, so blocking them slows the gut."
+      }
+    ],
+    "why": {
+      "correct": "Atropine blocks every muscarinic receptor protein, so it removes all parasympathetic effects and also sympathetic sweating. The heart speeds up, the pupils widen, and the mouth, skin and gut slow down or dry out."
+    }
+  },
+  {
+    "id": "anp-ans-signaling-5",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A student with narrowed airways inhales albuterol, a beta-2 agonist. Predict the change in each variable over the next 15 minutes.",
+    "variables": [
+      {
+        "name": "Tension in the smooth muscle of the small airway walls",
+        "answer": "down",
+        "why": "Albuterol activates beta-2 receptor proteins on the airway smooth muscle, which raises cyclic AMP and makes the muscle relax."
+      },
+      {
+        "name": "Diameter of the small airways",
+        "answer": "up",
+        "why": "As the smooth muscle in their walls relaxes, the airways widen."
+      },
+      {
+        "name": "Hand tremor",
+        "answer": "up",
+        "why": "Some drug is absorbed into the blood and reaches beta-2 receptor proteins on skeletal muscle, which makes the hands shaky."
+      },
+      {
+        "name": "Heart rate",
+        "answer": "up",
+        "why": "Absorbed drug acts on beta receptor proteins in the heart, and dilated vessels in muscle lower pressure a little, so the heart rate rises modestly."
+      },
+      {
+        "name": "Pupil diameter",
+        "answer": "none",
+        "why": "The pupil muscles respond through alpha-1 and muscarinic receptor proteins, not beta-2, so the pupil does not change."
+      }
+    ],
+    "why": {
+      "correct": "Albuterol relaxes airway smooth muscle through beta-2 receptor proteins, so the airways widen. The small amount absorbed into the blood causes the typical side effects, shakiness and a faster heart rate. It does not act on the pupil."
+    }
+  },
+  {
+    "id": "anp-ans-signaling-6",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "A farmworker is poisoned by an organophosphate insecticide, which blocks acetylcholinesterase. He is drooling and sweating, his pupils are pinpoint, his heart rate is slow, and his muscles twitch and grow weak. He is given atropine. Which problem will atropine not fix?",
+    "options": [
+      "The heart rate of 42 beats per minute",
+      "The drooling",
+      "The pinpoint pupils",
+      "The muscle twitching and weakness"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Acetylcholine builds up at all cholinergic synapses. Atropine blocks only muscarinic receptor proteins, so it reverses the parasympathetic-type effects and the sweating. The twitching and weakness come from acetylcholine acting on nicotinic receptor proteins at the neuromuscular junction, which atropine does not block.",
+      "options": [
+        "Atropine blocks the muscarinic receptor proteins through which acetylcholine slows the heart, so the rate rises.",
+        "Saliva secretion is driven by acetylcholine on muscarinic receptor proteins, which atropine blocks.",
+        "The circular muscle of the iris narrows the pupil through muscarinic receptor proteins, which atropine blocks.",
+        "Correct. Skeletal muscle responds through nicotinic receptor proteins, which atropine leaves untouched."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-7",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A child eats berries of deadly nightshade, which contain a muscarinic antagonist. Select every sign you would expect.",
+    "options": [
+      "Hot, dry skin",
+      "Widened pupils",
+      "A fast heart rate",
+      "Heavy drooling",
+      "Dry mouth",
+      "Pinpoint pupils"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "Blocking muscarinic receptor proteins removes all parasympathetic effects and also sympathetic sweating. The pupils widen, the heart speeds up, the mouth goes dry, and without sweating the skin becomes hot, dry and flushed.",
+      "options": [
+        "Correct. Eccrine sweat glands need acetylcholine on muscarinic receptor proteins, so sweating stops and heat builds up.",
+        "Correct. The circular iris muscle is blocked, so the alpha-1 dilator muscle wins.",
+        "Correct. The vagus nerve's slowing effect on the heart is blocked.",
+        "Drooling means extra saliva, a muscarinic effect. A muscarinic antagonist does the opposite.",
+        "Correct. Watery saliva depends on muscarinic receptor proteins.",
+        "Pinpoint pupils come from too much muscarinic activity, as in organophosphate poisoning, the opposite of this child's situation."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-8",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Ms. Reyes has a lung condition in which her small airways narrow easily. Days after starting propranolol for her blood pressure, she becomes short of breath and wheezy. What is the most likely cause?",
+    "options": [
+      "Propranolol activated her alpha-1 receptor proteins",
+      "Propranolol blocked beta-2 receptor proteins on her airway smooth muscle",
+      "Propranolol blocked muscarinic receptor proteins in her airways",
+      "Propranolol slowed her heart so much that fluid backed up into her lungs"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Propranolol blocks beta-1 and beta-2 receptor proteins. Epinephrine acting on beta-2 receptor proteins keeps airway smooth muscle relaxed; with them blocked, the muscle contracts more easily and her narrow-prone airways close down. A mainly beta-1 blocker such as metoprolol carries less of this risk.",
+      "options": [
+        "Propranolol is an antagonist at beta receptor proteins. It does not activate alpha-1 receptor proteins.",
+        "Correct. Losing beta-2 relaxation lets her airway smooth muscle tighten.",
+        "Blocking muscarinic receptor proteins would widen the airways, not narrow them.",
+        "Slowing the heart at ordinary doses does not flood the lungs. The wheeze points to the airways themselves."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "During a sprint, why do the small airways widen more once the adrenal medulla is releasing its hormone than with sympathetic nerve activity alone?",
+    "options": [
+      "Epinephrine binds beta-2 receptor proteins far better than norepinephrine",
+      "Epinephrine blocks muscarinic receptor proteins in the airways",
+      "The adrenal medulla releases acetylcholine onto the airways",
+      "Norepinephrine from nerves activates alpha-1 receptor proteins, which widen the airways"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Airway smooth muscle relaxes through beta-2 receptor proteins. Norepinephrine binds beta-2 weakly, and few varicosities reach these muscle cells. Epinephrine arriving in the blood binds beta-2 strongly, so the airways widen more.",
+      "options": [
+        "Correct. Beta-2 responses depend mainly on circulating epinephrine.",
+        "Epinephrine does not bind muscarinic receptor proteins. It acts on alpha and beta adrenergic receptor proteins.",
+        "The adrenal medulla releases epinephrine and some norepinephrine, not acetylcholine.",
+        "Alpha-1 receptor proteins make smooth muscle contract, which would narrow airways, not widen them."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "Clonidine activates alpha-2 receptor proteins, including those on adrenergic varicosities. What happens to norepinephrine release from those varicosities?",
+    "options": [
+      "It rises, because alpha-2 receptor proteins open calcium channels in the varicosity membrane",
+      "It is unchanged, because alpha-2 receptor proteins sit only on smooth muscle",
+      "It falls, because alpha-2 receptor proteins on the varicosity inhibit further release",
+      "It rises briefly and then stops for good"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Alpha-2 receptor proteins on the varicosity form a local negative feedback loop: norepinephrine that binds them lowers cyclic AMP and cuts further release. A drug that activates them mimics a strong feedback signal, so release falls. Clonidine also acts on alpha-2 receptor proteins in the brainstem to cut sympathetic output.",
+      "options": [
+        "Alpha-2 receptor proteins inhibit the varicosity. It is the incoming action potential that opens calcium channels and triggers release.",
+        "Many alpha-2 receptor proteins sit on the varicosities themselves, which is how they regulate release.",
+        "Correct. Activating alpha-2 receptor proteins turns release down.",
+        "Negative feedback turns release down in proportion to the signal. It does not switch release off for good."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-11",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "Nicotine activates nicotinic receptor proteins in every autonomic ganglion, so it stimulates both divisions. Yet in a smoker, the small arteries of the skin clearly constrict. Why does the sympathetic effect win in these vessels?",
+    "options": [
+      "Nicotine blocks the parasympathetic ganglia at the same time as it stimulates the sympathetic ganglia",
+      "Skin vessels receive only sympathetic fibers, so there is no parasympathetic effect to oppose it",
+      "Parasympathetic fibers release norepinephrine onto skin vessels",
+      "Nicotine binds alpha-1 receptor proteins directly"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Most blood vessels, including those of the skin, get no parasympathetic fibers. Stimulating the sympathetic ganglia and the adrenal medulla releases norepinephrine and epinephrine onto their alpha-1 receptor proteins, and nothing pulls the other way.",
+      "options": [
+        "Nicotine stimulates nicotinic receptor proteins in both kinds of ganglia at ordinary doses.",
+        "Correct. With no opposing fibers, only the sympathetic effect shows.",
+        "Parasympathetic postganglionic neurons release acetylcholine, and they do not supply skin vessels anyway.",
+        "Nicotine acts on nicotinic receptor proteins. The alpha-1 activation comes from the norepinephrine and epinephrine that the stimulated neurons and adrenal medulla release."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-12",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Put the steps in order to show how a sympathetic signal constricts a small artery in the skin.",
+    "options": [
+      "A preganglionic neuron releases acetylcholine in a chain ganglion",
+      "Acetylcholine binds nicotinic receptor proteins and depolarizes the postganglionic neuron",
+      "Action potentials reach the varicosities and calcium enters",
+      "Norepinephrine is released and binds alpha-1 receptor proteins on the smooth muscle",
+      "Calcium rises inside the smooth muscle cells and they contract",
+      "The vessel narrows"
+    ],
+    "why": {
+      "correct": "Acetylcholine crosses the ganglionic synapse onto nicotinic receptor proteins. The postganglionic neuron fires, calcium entry at its varicosities releases norepinephrine, and norepinephrine on alpha-1 receptor proteins raises calcium in the smooth muscle, which contracts and narrows the vessel."
+    }
+  },
+  {
+    "id": "anp-ans-signaling-13",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A student described how the vagus nerve slows the heart. One step is wrong. Which one?",
+    "options": [
+      "A vagal preganglionic neuron releases acetylcholine in a terminal ganglion in the heart wall",
+      "Acetylcholine binds nicotinic receptor proteins on the postganglionic neuron",
+      "The postganglionic neuron releases norepinephrine onto the heart's pacemaker tissue",
+      "The transmitter binds muscarinic receptor proteins, and potassium channels open",
+      "The cells hyperpolarize and take longer to reach threshold"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Parasympathetic postganglionic neurons are cholinergic: they release acetylcholine, which binds muscarinic receptor proteins. Norepinephrine is the sympathetic transmitter, and it would speed the heart.",
+      "options": [
+        "This step is right. Vagal preganglionic fibers end in terminal ganglia in or on the heart.",
+        "This step is right. Ganglionic transmission in both divisions uses nicotinic receptor proteins.",
+        "This is the error. The transmitter here is acetylcholine.",
+        "This step is right. Muscarinic receptor proteins on the pacemaker tissue open potassium channels.",
+        "This step is right. Starting further from threshold, the cells fire later, so the rate falls."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-14",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Complete the sequence: epinephrine binds beta-1 receptor proteins on heart muscle → a G protein is activated → ____ → more calcium enters the cell → each contraction is stronger.",
+    "options": [
+      "Cyclic AMP rises inside the cell",
+      "Potassium channels open",
+      "Acetylcholine is released",
+      "The cell hyperpolarizes"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Beta-1 receptor proteins couple to a G protein that raises cyclic AMP. The second messenger lets more calcium in through the membrane channels, and more calcium means a stronger contraction.",
+      "options": [
+        "Correct. Cyclic AMP is the beta receptor protein's second messenger.",
+        "Opening potassium channels is what muscarinic receptor proteins do on the heart, and it slows the heart rather than strengthening it.",
+        "Acetylcholine release belongs to cholinergic neurons, not to a step inside a heart muscle cell.",
+        "Hyperpolarization would move the cell away from threshold, the opposite of a sympathetic effect."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "An eye doctor puts phenylephrine drops, an alpha-1 agonist, into your eyes before an exam. What happens to your pupils, and why?",
+    "options": [
+      "They narrow, because the circular iris muscle contracts",
+      "They do not change, because the iris has no adrenergic receptor proteins",
+      "They narrow, because the dilator muscle relaxes",
+      "They widen, because the radial dilator muscle contracts"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The radial dilator muscle of the iris carries alpha-1 receptor proteins. An alpha-1 agonist makes it contract and pull the pupil open (mydriasis), which lets the doctor see the retina.",
+      "options": [
+        "The circular muscle responds to acetylcholine on muscarinic receptor proteins. Phenylephrine does not act there.",
+        "The dilator muscle carries alpha-1 receptor proteins; that is how sympathetic activity widens the pupil.",
+        "An agonist activates the dilator muscle's receptor proteins; it makes the muscle contract, not relax.",
+        "Correct. Alpha-1 activation contracts the dilator muscle."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-16",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "What kind of receptor protein is the nicotinic receptor protein on a postganglionic neuron?",
+    "options": [
+      "A G protein–coupled receptor",
+      "A ligand-gated ion channel",
+      "A voltage-gated calcium channel",
+      "An enzyme that splits acetylcholine"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Nicotinic receptor proteins are ionotropic: acetylcholine binding opens a channel in the protein itself, sodium enters, and the neuron depolarizes within about a millisecond.",
+      "options": [
+        "G protein–coupled receptors are the metabotropic kind, like muscarinic and adrenergic receptor proteins.",
+        "Correct. Binding opens the channel directly.",
+        "Voltage-gated channels open in response to a change in membrane potential, not to a transmitter binding.",
+        "That enzyme is acetylcholinesterase, which ends the signal. It is not a receptor protein."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-17",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "In an old treatment for dangerously raised blood pressure, a drug blocked nicotinic receptor proteins in every autonomic ganglion. Why did blood pressure fall so sharply?",
+    "options": [
+      "The drug blocked the heart's muscarinic receptor proteins",
+      "The drug paralyzed skeletal muscle, which stopped pumping blood through the veins",
+      "The drug made the adrenal medulla release more epinephrine",
+      "Vessels lost their ongoing sympathetic constriction"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Blocking all ganglia silences every postganglionic neuron. Most blood vessels are held partly constricted by ongoing sympathetic activity through alpha-1 receptor proteins, and they have no parasympathetic supply. When that sympathetic signal disappears, they dilate and pressure falls, especially on standing.",
+      "options": [
+        "The drug acts on nicotinic receptor proteins in the ganglia, not on muscarinic receptor proteins on the heart.",
+        "The ganglionic nicotinic type differs from the muscle type, which is why such drugs leave skeletal muscle working.",
+        "The adrenal medulla is stimulated through the same kind of nicotinic receptor protein, so the drug blocks its release instead.",
+        "Correct. Removing sympathetic constriction of the vessels is the main effect."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Two patients need a beta blocker. One has a lung condition in which the small airways narrow easily. Which choice fits that patient better, and why?",
+    "options": [
+      "Metoprolol, because it acts mainly on beta-1 receptor proteins",
+      "Propranolol, because blocking beta-2 relaxes airway smooth muscle",
+      "Propranolol, because it acts only on the heart",
+      "Metoprolol, because it activates beta-2 receptor proteins"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Metoprolol acts mainly on beta-1 receptor proteins in the heart, so the beta-2 receptor proteins that keep airway smooth muscle relaxed stay available to epinephrine. Propranolol blocks both.",
+      "options": [
+        "Correct. A mainly beta-1 blocker leaves beta-2 relaxation of the airways largely intact.",
+        "Beta-2 activation relaxes airway smooth muscle. Blocking beta-2 lets the muscle tighten, which is the danger.",
+        "Propranolol blocks beta-1 and beta-2 receptor proteins, so it acts on the airways too.",
+        "Metoprolol is an antagonist, not an agonist. It spares beta-2 rather than activating it."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-19",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Select every location of nicotinic receptor proteins.",
+    "options": [
+      "Cell bodies of sympathetic postganglionic neurons",
+      "Cell bodies of parasympathetic postganglionic neurons",
+      "Chromaffin cells of the adrenal medulla",
+      "Smooth muscle of the stomach wall",
+      "The motor end plate of skeletal muscle",
+      "Cells of the heart's pacemaker tissue"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "Nicotinic receptor proteins sit wherever a preganglionic neuron or a somatic motor neuron releases acetylcholine: on all postganglionic neurons, on chromaffin cells, and (as a different type) on skeletal muscle.",
+      "options": [
+        "Correct. Every chain and collateral ganglion uses nicotinic transmission.",
+        "Correct. Terminal and intramural ganglia use nicotinic transmission too.",
+        "Correct. Chromaffin cells are stimulated like postganglionic neurons.",
+        "Gut smooth muscle responds to parasympathetic acetylcholine through muscarinic receptor proteins.",
+        "Correct. The muscle type of nicotinic receptor protein sits at the end plate.",
+        "The vagus slows the heart through muscarinic receptor proteins."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-20",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "Mr. Adeyemi has a severe allergic reaction: his blood pressure is falling and his airways are closing. The paramedic injects epinephrine. Which receptor protein is responsible for reopening his airways?",
+    "options": [
+      "Alpha-1",
+      "Beta-2",
+      "Beta-1",
+      "Muscarinic"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Epinephrine binds beta-2 receptor proteins on airway smooth muscle, raising cyclic AMP and relaxing the muscle, so the airways reopen. At the same time, alpha-1 constricts leaky vessels and raises blood pressure, and beta-1 strengthens the heart.",
+      "options": [
+        "Alpha-1 activation constricts blood vessels and helps restore pressure. It does not relax airway smooth muscle.",
+        "Correct. Beta-2 relaxes airway smooth muscle.",
+        "Beta-1 speeds and strengthens the heart. It does not act on the airways.",
+        "Epinephrine does not bind muscarinic receptor proteins, and activating them would narrow the airways."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-21",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "A patient with glaucoma is prescribed pilocarpine eye drops, a muscarinic agonist. What will the drops do to her pupil?",
+    "options": [
+      "Widen it, by relaxing the dilator muscle",
+      "Widen it, by relaxing the circular muscle",
+      "Narrow it, by contracting the circular muscle",
+      "Leave it unchanged, because pilocarpine acts only on the lens"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The circular muscle of the iris contracts in response to acetylcholine on muscarinic receptor proteins. Pilocarpine mimics that, so the pupil narrows (miosis). Contraction of the ciliary muscle at the same time helps fluid drain from the eye.",
+      "options": [
+        "The dilator muscle responds through alpha-1 receptor proteins, not muscarinic ones.",
+        "A muscarinic agonist makes the circular muscle contract, not relax.",
+        "Correct. This is the parasympathetic effect on the pupil.",
+        "The ciliary body muscle does respond, but so does the circular muscle of the iris, since both carry muscarinic receptor proteins."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-22",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "Mr. Chen takes his first dose of prazosin, an alpha-1 antagonist, and feels faint when he stands up quickly. What best explains this?",
+    "options": [
+      "His heart cannot speed up, because beta-1 receptor proteins are blocked",
+      "Alpha-1 blockade stops his vessels from constricting when he stands",
+      "His vagus nerve is overactive, because muscarinic receptor proteins are stimulated",
+      "His airways narrow, lowering the oxygen reaching his brain"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "On standing, blood pools in the legs. Normally sympathetic norepinephrine on alpha-1 receptor proteins narrows the vessels and holds pressure up. With alpha-1 blocked, the vessels stay wide, pressure to the brain drops, and he feels faint.",
+      "options": [
+        "Prazosin blocks alpha-1 receptor proteins, not beta-1, so his heart can still speed up.",
+        "Correct. Alpha-1 constriction is what fails.",
+        "Prazosin has no action on muscarinic receptor proteins.",
+        "Alpha-1 blockade does not narrow the airways. The problem is in the vessels."
+      ]
+    }
+  },
+  {
+    "id": "anp-ans-signaling-23",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "misconception": "the transmitter decides the response",
+    "q": "Norepinephrine makes the smooth muscle of skin vessels contract, but epinephrine makes the smooth muscle of skeletal muscle vessels relax. What is the best explanation?",
+    "options": [
+      "Epinephrine and norepinephrine carry opposite instructions",
+      "Skeletal muscle vessels receive parasympathetic fibers that override the signal",
+      "The vessels carry different receptor proteins: alpha-1 or beta-2",
+      "Skin vessels lack receptor proteins altogether"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The response belongs to the receptor protein, not the transmitter. Skin vessels are dominated by alpha-1 receptor proteins, which raise calcium and contract smooth muscle. Skeletal muscle vessels carry many beta-2 receptor proteins, which raise cyclic AMP and relax it, and epinephrine binds beta-2 far better than norepinephrine does.",
+      "options": [
+        "Both hormones bind the same receptor proteins, alpha and beta. Neither carries an instruction of its own.",
+        "Most blood vessels, including those in skeletal muscle, receive no parasympathetic fibers.",
+        "Correct. Alpha-1 means contract; beta-2 means relax.",
+        "Skin vessels carry plenty of alpha-1 receptor proteins; that is how they constrict."
+      ]
+    }
+  }
+]

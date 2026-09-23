@@ -1,0 +1,764 @@
+[
+  {
+    "id": "anp-vision-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-14-15",
+    "pin": "optic-disc-blind-spot",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Fovea centralis",
+      "Ciliary body",
+      "Optic disc",
+      "Choroid"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The optic disc is where the ganglion cell axons leave the eye as the optic nerve and the central retinal vessels enter. It has no photoreceptors, so it makes the blind spot.",
+      "options": [
+        "The fovea is the small cone-only pit of sharpest vision, beside the optic disc rather than where the nerve leaves.",
+        "The ciliary body is the ring of muscle and folds around the lens at the front of the eye.",
+        "Correct. The spot where the optic nerve leaves the eye is the optic disc, the blind spot.",
+        "The choroid is the dark, vessel-rich middle layer of the wall, not a spot on the retina."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-14-15",
+    "pin": "ciliary-muscle",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Ciliary muscle",
+      "Iris",
+      "Zonule fibers",
+      "Scleral venous sinus"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The ciliary muscle is the ring of smooth muscle in the ciliary body. Contracting it slackens the zonule fibers so the lens can round up for near vision.",
+      "options": [
+        "Correct. The muscle in the ciliary body is the ciliary muscle.",
+        "The iris is the colored ring in front of the lens, around the pupil.",
+        "Zonule fibers are the fine threads running from the ciliary body to the rim of the lens, not the muscle itself.",
+        "The scleral venous sinus is the drainage channel for aqueous humor at the angle between the iris and cornea."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-14-22",
+    "pin": "optic-chiasm",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Optic tract",
+      "Lateral geniculate nucleus",
+      "Optic nerve",
+      "Optic chiasm"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The optic chiasm is the X-shaped crossing just in front of the pituitary gland, where axons from the nasal half of each retina cross to the other side.",
+      "options": [
+        "The optic tracts run back from the chiasm toward the thalamus; the pinned structure is where the two nerves meet.",
+        "The lateral geniculate nucleus is the relay in the thalamus, farther back along the pathway.",
+        "The optic nerves run from each eye to the chiasm; the pinned structure is where they meet and cross.",
+        "Correct. This is the optic chiasm."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-14-13",
+    "pin": "conjunctiva",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Cornea",
+      "Conjunctiva",
+      "Sclera",
+      "Orbicularis oculi"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The conjunctiva is the thin mucous membrane that covers the white of the eye and lines the inside of the eyelids. It stops at the edge of the cornea.",
+      "options": [
+        "The cornea is the clear dome at the very front. The conjunctiva covers the white of the eye around it, not the cornea itself.",
+        "Correct. This thin membrane over the white of the eye is the conjunctiva.",
+        "The sclera is the tough white coat itself; the conjunctiva is the thin clear membrane lying on it.",
+        "The orbicularis oculi is the ring of muscle inside the eyelids that closes them."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-5",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the steps of tear flow in order, from where tears are made to where they drain.",
+    "options": [
+      "The lacrimal gland releases tears through the lacrimal ducts",
+      "Blinking sweeps tears across the eye toward the inner corner",
+      "Tears enter the lacrimal puncta on the edges of the lids",
+      "The lacrimal canaliculi carry tears to the lacrimal sac",
+      "The nasolacrimal duct carries tears into the nose"
+    ],
+    "why": {
+      "correct": "Tears are made by the lacrimal gland in the upper outer orbit, swept toward the inner corner by blinking, and drained through the puncta and canaliculi into the lacrimal sac, then down the nasolacrimal duct into the nose."
+    }
+  },
+  {
+    "id": "anp-vision-6",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "After a blow to the head, Mr. Ruiz, 44, sees double when he walks down stairs or reads a book in his lap. When he looks toward his nose, his right eye cannot turn downward. Which muscle is weak?",
+    "options": [
+      "Right inferior rectus",
+      "Right lateral rectus",
+      "Right superior oblique",
+      "Right superior rectus"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The superior oblique turns the eye down, most strongly when the eye is turned in toward the nose, which is the position used for reading and going downstairs. Its nerve, the trochlear nerve, has a long course inside the skull and is easily injured by a blow to the head.",
+      "options": [
+        "The inferior rectus also turns the eye down, but most strongly when the eye is turned out, not in.",
+        "The lateral rectus turns the eye out; his problem is looking down while turned in.",
+        "Correct. Looking down and in depends on the superior oblique, supplied by the trochlear nerve.",
+        "The superior rectus turns the eye up, the opposite of the movement he has lost."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-7",
+    "type": "predict",
+    "level": "apply",
+    "diff": 1,
+    "predictLevel": 1,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "presbyopia is the same as nearsightedness",
+    "q": "Between age 30 and age 55, a woman's lenses gradually lose their flexibility. Predict the change in each variable when she tries to read a menu held close.",
+    "variables": [
+      {
+        "name": "How much the lens rounds up when the ciliary muscle contracts",
+        "answer": "down",
+        "why": "A stiffer lens does not bulge into a rounder shape when the zonule fibers go slack."
+      },
+      {
+        "name": "Bending of light from the menu",
+        "answer": "down",
+        "why": "A flatter lens refracts light less, so near rays are not bent enough to meet on the retina."
+      },
+      {
+        "name": "Distance to the nearest point she can see sharply",
+        "answer": "up",
+        "why": "With less accommodation available, only objects farther away need little enough bending to focus, so she holds the menu at arm's length."
+      },
+      {
+        "name": "Sharpness of distant objects",
+        "answer": "none",
+        "why": "Distant objects are focused with the lens flat and the ciliary muscle relaxed, which a stiff lens still manages."
+      }
+    ],
+    "why": {
+      "correct": "This is presbyopia. The lens stiffens with age and can no longer round up for near objects, so near vision blurs and the near point moves outward. Distant vision, which needs no accommodation, is unchanged. Convex reading glasses add the missing bending."
+    }
+  },
+  {
+    "id": "anp-vision-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "the ciliary muscle squeezes the lens round",
+    "q": "You look up from a distant road sign to read a text message. What happens in your eye?",
+    "options": [
+      "The ciliary muscle relaxes, the zonule fibers tighten and the lens flattens",
+      "The ciliary muscle contracts, the zonule fibers tighten and pull the lens rounder",
+      "The cornea bulges forward and bends light more strongly",
+      "The ciliary muscle contracts, the zonule fibers go slack and the lens rounds up"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Near vision needs more bending. Parasympathetic fibers in the oculomotor nerve contract the ring-shaped ciliary muscle, which shrinks toward the lens. The zonule fibers go slack, and the elastic lens rounds up and refracts more.",
+      "options": [
+        "That is what happens when you look from near to far, not far to near.",
+        "Taut zonule fibers pull the lens flat, not round. When the ciliary muscle contracts, the fibers slacken.",
+        "The cornea does most of the bending, but its shape is fixed. Only the lens changes for near vision.",
+        "Correct. Slack zonules let the elastic lens round up."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-9",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student wrote this sequence for focusing on a near object. Which step is wrong?",
+    "options": [
+      "The oculomotor nerve carries parasympathetic signals to the eye",
+      "The ciliary muscle contracts and its ring becomes smaller",
+      "The zonule fibers are pulled tighter",
+      "The lens bulges into a rounder shape",
+      "Light from the near object is bent more and focuses on the retina"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "When the ring of ciliary muscle contracts and shrinks, it moves closer to the lens, so the zonule fibers go slack. Slack fibers release the lens, which rounds up.",
+      "options": [
+        "This step is right. Parasympathetic fibers of cranial nerve III drive accommodation.",
+        "This step is right. The ciliary muscle is a ring, so contracting makes it smaller.",
+        "This is the error. The zonule fibers slacken; taut fibers would flatten the lens.",
+        "This step is right. The released lens rounds up because it is elastic.",
+        "This step is right. A rounder lens refracts more."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Standing 20 feet from a Snellen chart, a patient can read nothing smaller than the row labeled 60. What does her result mean?",
+    "options": [
+      "She reads at 20 feet what a normal eye reads at 60 feet",
+      "She reads at 60 feet what a normal eye reads at 20 feet",
+      "Her vision is three times sharper than normal",
+      "She sees 60% of what a normal eye sees"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Her acuity is 20/60. The top number is her distance from the chart; the bottom number is the distance at which a normal eye can read the smallest row she read. Her letters must be three times larger than a normal eye needs, so her acuity is worse than normal.",
+      "options": [
+        "Correct. 20/60: she must be at 20 feet for letters a normal eye reads from 60 feet.",
+        "This reverses the fraction. She stood at 20 feet; 60 is the distance for a normal eye.",
+        "A larger bottom number means worse acuity, not better.",
+        "A Snellen fraction is not a percentage of vision; it compares viewing distances."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An eyeball is slightly too long from front to back. Where does light from a distant object focus, and what lens corrects it?",
+    "options": [
+      "Behind the retina; a convex lens",
+      "In front of the retina; a convex (converging) lens",
+      "Behind the retina; a concave lens",
+      "In front of the retina; a concave lens"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In a long eye (myopia), the cornea and lens bring distant light to a focus before it reaches the retina. A concave lens spreads the rays slightly first, which moves the focus back onto the retina.",
+      "options": [
+        "A focus behind the retina is hyperopia, caused by an eye that is too short.",
+        "The focus is in front of the retina, but a convex lens would add bending and move it even farther forward.",
+        "A long eye puts the focus in front of the retina, not behind it.",
+        "Correct. Myopia: focus in front of the retina, corrected with a diverging (concave) lens."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 10-year-old reads chapter books easily but squints to read the board from the back of the classroom. Her teacher notices she does better at the front. Which condition best fits?",
+    "options": [
+      "Presbyopia",
+      "Hyperopia",
+      "Cataract",
+      "Myopia"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Clear near vision with blurred distant vision is myopia, or nearsightedness. It usually appears in childhood as the eyeball grows too long.",
+      "options": [
+        "Presbyopia blurs near vision and appears in middle age, when the lens stiffens.",
+        "Hyperopia blurs near objects first; she reads near print easily.",
+        "A cataract clouds the lens and blurs everything, near and far, and is rare in children.",
+        "Correct. Near is clear, far is blurred: myopia."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-13",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "glaucoma damages the lens",
+    "q": "Mrs. Adeyemi, 66, has had no eye pain, but her optometrist finds raised pressure in both eyes and loss of vision at the edges of both visual fields. The drainage of aqueous humor is slow. Which cells are being lost to cause her vision loss?",
+    "options": [
+      "Rods in the periphery of the retina",
+      "Retinal ganglion cells, whose axons pass through the optic disc",
+      "Cells of the lens",
+      "Cells of the ciliary processes"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "This is glaucoma. When aqueous humor drains too slowly, the pressure inside the eye rises and damages the axons of retinal ganglion cells where they leave through the optic disc. Those cells die and are not replaced, and the loss usually starts at the edges of the field.",
+      "options": [
+        "The edge of the field is lost because of damage to the axons carrying it, not because rods themselves die.",
+        "Correct. Glaucoma is damage to the optic nerve, the axons of retinal ganglion cells.",
+        "Clouding of the lens is a cataract, which blurs the whole field rather than stealing its edges.",
+        "The ciliary processes make aqueous humor. They are working; the problem is the drainage."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-14",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which structures belong to the vascular tunic of the eye? Select all that apply.",
+    "options": [
+      "Choroid",
+      "Sclera",
+      "Ciliary body",
+      "Retina",
+      "Iris",
+      "Cornea"
+    ],
+    "correct": [
+      0,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "The vascular tunic is the middle layer: the choroid at the back, the ciliary body around the lens, and the iris at the front. The sclera and cornea form the fibrous tunic, and the retina is the neural tunic.",
+      "options": [
+        "Yes. The choroid is the vessel-rich, pigmented layer at the back of the eye.",
+        "No. The sclera is part of the outer fibrous tunic.",
+        "Yes. The ciliary body joins the choroid to the iris.",
+        "No. The retina is the inner, neural tunic.",
+        "Yes. The iris is the front part of the vascular tunic.",
+        "No. The cornea is the clear front of the fibrous tunic."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-15",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why is vision sharpest at the fovea?",
+    "options": [
+      "Rods there feed many ganglion cells each, which multiplies their signal",
+      "It lies closest to the lens, so the image there is least blurred",
+      "Each cone has its own ganglion cell, and the layers above are pushed aside",
+      "It has the most blood vessels, so its photoreceptors receive the best oxygen supply"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The fovea holds only tightly packed cones. Each foveal cone connects through its own bipolar cell to its own ganglion cell, so its signal reports one tiny spot, and light reaches the cones without passing through the other layers.",
+      "options": [
+        "The fovea has no rods, and rods converge many-to-one onto ganglion cells, which lowers acuity rather than raising it.",
+        "The fovea is at the back of the eye, not especially close to the lens; its sharpness comes from its wiring.",
+        "Correct. Low convergence and an unobstructed path give the fovea its acuity.",
+        "Blood vessels are kept away from the fovea; vessels in front of it would block light."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "At night, a faint star seems to disappear when you look straight at it but reappears when you look slightly to one side. Why?",
+    "options": [
+      "Its image moves off the cone-only fovea onto rods, which work in dim light",
+      "Looking straight at it bleaches the cones in the fovea",
+      "The optic disc lies at the center of the retina, directly behind the pupil and lens",
+      "Rods in the fovea adapt too quickly to a steady light"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The fovea holds only cones, which need bright light. Rods are absent from the fovea and plentiful around it, and many rods converge onto each ganglion cell, so their weak signals add up. Looking slightly away puts the star's image on rods.",
+      "options": [
+        "Correct. Rods, outside the fovea, detect dim light.",
+        "Bright light bleaches pigment, and a faint star is far too dim to do that.",
+        "The optic disc lies about 15 degrees toward the nose from the fovea, not at its center.",
+        "The fovea contains no rods."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-17",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Put the steps of phototransduction in a rod in order, from a photon arriving to the signal reaching the bipolar cell.",
+    "options": [
+      "Retinal changes from 11-cis to all-trans",
+      "Rhodopsin switches on the G protein transducin",
+      "An enzyme breaks down cGMP",
+      "cGMP-gated cation channels close",
+      "The rod hyperpolarizes",
+      "The rod releases less glutamate onto the bipolar cell"
+    ],
+    "why": {
+      "correct": "Light straightens retinal (photoisomerization), which activates rhodopsin. Rhodopsin switches on transducin, which switches on an enzyme that breaks down cGMP. With less cGMP, the cation channels close, the dark current stops, the rod hyperpolarizes, and its glutamate release falls."
+    }
+  },
+  {
+    "id": "anp-vision-18",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "communication"
+    ],
+    "misconception": "light depolarizes photoreceptors",
+    "q": "A rod has been in darkness. A flash of light now falls on it. Predict the change in each variable in the rod, compared with darkness.",
+    "variables": [
+      {
+        "name": "cGMP in the outer segment",
+        "answer": "down",
+        "why": "Active rhodopsin switches on transducin, which switches on the enzyme that breaks down cGMP."
+      },
+      {
+        "name": "Number of open cation channels",
+        "answer": "down",
+        "why": "These channels are held open by cGMP, so they close as cGMP falls."
+      },
+      {
+        "name": "Membrane potential (how positive the inside is)",
+        "answer": "down",
+        "why": "With the Na+ inflow cut off while K+ still leaks out, the rod hyperpolarizes from about −40 toward −70 mV."
+      },
+      {
+        "name": "Glutamate release onto bipolar cells",
+        "answer": "down",
+        "why": "A hyperpolarized rod releases less neurotransmitter; the fall in glutamate is the light signal."
+      }
+    ],
+    "why": {
+      "correct": "In photoreceptors, light turns a signal off. It lowers cGMP, closes the cation channels that carried the dark current, hyperpolarizes the rod and reduces its glutamate release."
+    }
+  },
+  {
+    "id": "anp-vision-19",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Complete the sequence for a rod in the dark: cGMP is high → cation channels stay open → ______ → the rod releases glutamate steadily.",
+    "options": [
+      "The rod fires a steady stream of action potentials along its axon to the brain",
+      "Rhodopsin switches on transducin",
+      "Na+ flows in and keeps the rod depolarized at about −40 mV",
+      "K+ flows in and hyperpolarizes the rod"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The open channels let Na+ (and some Ca2+) flow in continuously. This dark current holds the rod at about −40 mV, depolarized enough to release glutamate all the time.",
+      "options": [
+        "Rods produce graded potentials, not action potentials. Retinal ganglion cells are the first cells in the pathway to fire them.",
+        "Rhodopsin switches on transducin only after absorbing light.",
+        "Correct. The dark current keeps the rod depolarized.",
+        "K+ leaks out of cells, not in, and hyperpolarization is what light causes."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-20",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-14-18",
+    "q": "Using the absorbance curves, which cell type responds most strongly to light of 420 nm?",
+    "options": [
+      "Rods",
+      "Short-wavelength (\"blue\") cones",
+      "Medium-wavelength (\"green\") cones",
+      "Long-wavelength (\"red\") cones"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The short-wavelength cone curve peaks at 420 nm. At that wavelength the rod and other cone curves are far below their peaks.",
+      "options": [
+        "The rod curve peaks near 498 nm and is low at 420 nm.",
+        "Correct. Short-wavelength cones peak at 420 nm.",
+        "Medium-wavelength cones peak near 534 nm and absorb little at 420 nm.",
+        "Long-wavelength cones peak near 564 nm, far from 420 nm."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-21",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-14-18",
+    "q": "In very dim light only rods work. Using the curves, why can you see objects but not their colors?",
+    "options": [
+      "All rods share one pigment, so their response cannot distinguish wavelength from brightness",
+      "Rods absorb no light below 500 nm",
+      "Rods absorb every wavelength equally",
+      "Rods peak at a wavelength no object reflects"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Color is worked out by comparing the responses of cone types with different curves. Rods all have the same pigment, so a dim light of one wavelength and a brighter light of another can produce the same rod response. With nothing to compare, color cannot be told apart.",
+      "options": [
+        "Correct. One pigment gives one curve, and one curve cannot code color.",
+        "The rod curve extends well below 500 nm; it simply peaks near 498 nm.",
+        "The rod curve rises and falls; it clearly absorbs some wavelengths more than others.",
+        "The rod peak, near 498 nm, is blue-green light that many objects reflect."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-22",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Mr. Chen, 52, keeps clipping doorframes and is startled by cars that seem to appear from nowhere on both sides. Testing shows he has lost the outer (temporal) half of the visual field of each eye. A scan shows a mass. Where is it most likely pressing?",
+    "options": [
+      "The middle of the optic chiasm",
+      "The left optic tract",
+      "The right optic nerve",
+      "The occipital lobe on both sides"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The outer half of each eye's field is seen by the nasal half of each retina. Those are exactly the axons that cross in the middle of the optic chiasm. A pituitary tumor growing up from below typically presses there, causing bitemporal hemianopia.",
+      "options": [
+        "Correct. Crossing fibers from both nasal retinas run through the middle of the chiasm.",
+        "A left optic tract lesion removes the right half of the field in both eyes, not the outer half of each.",
+        "A right optic nerve lesion blinds the right eye only.",
+        "Damage to both occipital lobes would cause far wider loss; a single mass pressing on one structure fits the chiasm."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-23",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "each eye sends its signals only to the opposite hemisphere",
+    "q": "A stroke damages the right optic tract. What visual field loss results?",
+    "options": [
+      "Blindness in the right eye",
+      "Loss of the outer half of both fields",
+      "Loss of the right half of the field in both eyes",
+      "Loss of the left half of the field in both eyes"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Behind the chiasm, the right optic tract carries the temporal fibers of the right eye and the crossed nasal fibers of the left eye. Both see the left side of the world, so the left half of the field is lost in both eyes: a left homonymous hemianopia.",
+      "options": [
+        "Blindness in one eye comes from damage to that eye's optic nerve, before the chiasm.",
+        "Loss of both outer halves comes from damage to the crossing fibers in the middle of the chiasm.",
+        "The right half of the field is carried by the left optic tract.",
+        "Correct. Each optic tract carries the opposite half of the visual field from both eyes."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-24",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "Light shone into Ms. Park's left eye makes neither pupil narrow. Light shone into her right eye makes both pupils narrow. Where is the damage?",
+    "options": [
+      "Left oculomotor nerve",
+      "Right oculomotor nerve",
+      "Left optic nerve",
+      "Right optic chiasm"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "When the right eye is lit, both pupils narrow, so both efferent paths (both oculomotor nerves and both iris sphincters) work. When the left eye is lit, nothing happens, so the signal never gets in: the afferent path from the left eye, the left optic nerve, is damaged.",
+      "options": [
+        "A left oculomotor lesion would leave the left pupil wide whichever eye is lit, but here it narrows when the right eye is lit.",
+        "A right oculomotor lesion would stop the right pupil narrowing, but it narrows when the right eye is lit.",
+        "Correct. Light in the damaged eye cannot start the reflex; light in the healthy eye drives both pupils.",
+        "The chiasm has no separate \"right\" half for one eye's pupil fibers, and damage there would not silence one eye's input completely."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-25",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "A patient's pupils are very narrow, like pinpoints, in a normally lit room. What is this called, and which division of the autonomic nervous system narrows the pupil?",
+    "options": [
+      "Mydriasis; sympathetic",
+      "Mydriasis; parasympathetic",
+      "Miosis; parasympathetic",
+      "Miosis; sympathetic"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Narrowing of the pupil is miosis. It is caused by contraction of the circular sphincter muscle of the iris, which is supplied by parasympathetic fibers of the oculomotor nerve.",
+      "options": [
+        "Mydriasis is widening of the pupil, and sympathetic fibers widen it.",
+        "Mydriasis means a wide pupil, not a narrow one.",
+        "Correct. Miosis is a narrow pupil, driven by parasympathetic fibers.",
+        "The pupil is narrowed by parasympathetic fibers; sympathetic fibers act on the dilator fibers and widen it."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-26",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "After a stroke, Mr. Olsen cannot say what a cup on the table is, or recognize his daughter's face, yet he reaches out and grasps the cup smoothly. Which part of visual processing is damaged?",
+    "options": [
+      "The dorsal stream in the parietal lobe",
+      "The lateral geniculate nucleus",
+      "The optic chiasm",
+      "The ventral stream in the temporal lobe"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The ventral stream, running from the occipital lobe forward into the temporal lobe, identifies what things are, including faces. His ability to locate and grasp the cup shows that the dorsal stream still works.",
+      "options": [
+        "The dorsal stream guides reaching and locating, which he does well.",
+        "Damage to the lateral geniculate nucleus would cause loss of part of the visual field, not a loss of recognition with normal reaching.",
+        "Chiasm damage causes field loss, typically the outer halves, not a loss of object recognition.",
+        "Correct. Recognizing objects and faces is the job of the ventral \"what\" stream."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-27",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why is red–green color blindness far more common in males than in females?",
+    "options": [
+      "Males have fewer cones in the fovea",
+      "Its pigment genes lie on the X chromosome, and males have only one X",
+      "Hormones made at puberty gradually damage the cone pigments in teenage boys",
+      "Males have more rods, which crowd out the cones"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The genes for the medium- and long-wavelength pigments sit on the X chromosome. A male has one X, so one faulty copy changes his color vision. A female usually has a working copy on her second X.",
+      "options": [
+        "Males and females have similar numbers of cones.",
+        "Correct. One X chromosome means one copy of the pigment genes.",
+        "The condition is present from birth and does not come from hormones damaging pigments.",
+        "Rod and cone numbers do not differ this way between the sexes, and rods do not cause color blindness."
+      ]
+    }
+  },
+  {
+    "id": "anp-vision-28",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "What happens at the moment a photon is absorbed by rhodopsin?",
+    "options": [
+      "Retinal changes shape from its bent 11-cis form to the straight all-trans form",
+      "Opsin breaks down cGMP directly",
+      "The rod opens its cation channels",
+      "Retinal is carried away to the pigmented epithelium, where enzymes rebuild it"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The only step in vision that needs light is photoisomerization: the bent 11-cis-retinal straightens into all-trans-retinal. The change of shape activates the opsin around it.",
+      "options": [
+        "Correct. Photoisomerization is the light-driven step.",
+        "Opsin does not break down cGMP; it switches on transducin, which switches on the enzyme that does.",
+        "Light closes the cation channels; cGMP holds them open in the dark.",
+        "Retinal goes to the pigmented epithelium later, after it has come away from the opsin, not at the moment of absorption."
+      ]
+    }
+  }
+]
