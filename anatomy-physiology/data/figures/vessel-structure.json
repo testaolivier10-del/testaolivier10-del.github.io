@@ -1,0 +1,72 @@
+{
+  "os-20-4": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "20.4",
+      "section": "20.1",
+      "page": "20-1-structure-and-function-of-blood-vessels",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/f0a964f91ecd3ef9cf0f0323f66d5d266f9d71b9"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/f0a964f91ecd3ef9cf0f0323f66d5d266f9d71b9",
+    "alt": "Three curved wedges of vessel wall side by side, each with its inner, middle and outer layers bracketed. The elastic artery has a thick middle layer packed with wavy dark elastic fibers. The muscular artery has a thick middle layer of smooth muscle, a wavy inner elastic line, and small vessels in its outer layer. The arteriole has a thin wall with only a few large smooth muscle cells in its middle layer.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.4",
+    "labels": []
+  },
+  "os-20-5": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "20.5",
+      "section": "20.1",
+      "page": "20-1-structure-and-function-of-blood-vessels",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e88ebb430077bb75e4c26eec40e05afd2ab928fd"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/e88ebb430077bb75e4c26eec40e05afd2ab928fd",
+    "alt": "Three short capillary tubes cut open at one end. The first has an unbroken wall of endothelial cells wrapped in a complete basement membrane, with narrow clefts between cells. The second has a similar wall dotted with small pores through the cells. The third has large gaps between cells and a basement membrane with holes in it.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.5",
+    "labels": []
+  },
+  "os-20-6": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "20.6",
+      "section": "20.1",
+      "page": "20-1-structure-and-function-of-blood-vessels",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/27a3072eb0ed965ca4f77d079e7084e7cfaa8a4c"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/27a3072eb0ed965ca4f77d079e7084e7cfaa8a4c",
+    "alt": "A red arteriole on the left and a blue venule on the right joined by a pale network of capillaries. A straight channel crosses the network from arteriole to venule, with rings of muscle drawn where capillaries branch from it. Below the network, a wide vessel connects the arteriole directly to the venule.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.6",
+    "labels": []
+  },
+  "os-20-7": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "20.7",
+      "section": "20.1",
+      "page": "20-1-structure-and-function-of-blood-vessels",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/28fdb799ddce54b0d796cd60508c3daf4ad930f4"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/28fdb799ddce54b0d796cd60508c3daf4ad930f4",
+    "alt": "Wedges of wall from three veins with their layers bracketed. The large vein has a thick outer layer containing small vessels, nerves and some smooth muscle, over a thin middle layer. The medium vein has a thin middle layer and paired flaps projecting into the lumen, shown closed, with a side view of the flaps. The venule has a very thin wall of lining cells and a trace of muscle.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.7",
+    "labels": []
+  },
+  "os-20-15": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "20.15",
+      "section": "20.2",
+      "page": "20-2-blood-flow-blood-pressure-and-resistance",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/bb4f1be2e1e74ba296dbd0935cdabf78195a3d3c"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/bb4f1be2e1e74ba296dbd0935cdabf78195a3d3c",
+    "alt": "Two drawings of a vein running between two skeletal muscles. Left, muscles relaxed: the vein is full of blood and the valves above and below the segment are closed. Right, muscles contracted and bulging: the vein is squeezed, the valve above has opened, and an arrow shows blood moving upward, while the valve below stays closed.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.15",
+    "labels": []
+  }
+}

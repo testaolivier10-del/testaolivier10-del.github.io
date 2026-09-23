@@ -1,0 +1,3160 @@
+{
+ "about": "Content for the virtual lab practical (anatomy-physiology/assets/tools/lab-practical.js; docs/anp-spec.md section 8.1). Sets are the map's lab image sets; each station is a registered OpenStax figure with the printed labels it asks (boxes copied from data/labels/<figure>.json) and the labels it covers because they name something taught after the set's topic. Validated by scripts/lib/anp-tool-checks/lab-practical.mjs against the figure and label files.",
+ "version": 1,
+ "sets": [
+  {
+   "id": "planes",
+   "title": "Planes and sections",
+   "chapter": "orientation",
+   "topic": "body-planes",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-1-14",
+     "topic": "body-planes",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "sagittal-plane",
+       "name": "Sagittal plane",
+       "accept": [
+        "midsagittal plane",
+        "parasagittal plane",
+        "sagittal"
+       ],
+       "box": [
+        16,
+        16,
+        132,
+        88
+       ],
+       "concept": "sagittal-plane",
+       "taught": "body-planes",
+       "fn": ""
+      },
+      {
+       "id": "frontal-plane",
+       "name": "Frontal (coronal) plane",
+       "accept": [
+        "coronal",
+        "coronal plane",
+        "frontal"
+       ],
+       "box": [
+        912,
+        76,
+        154,
+        132
+       ],
+       "concept": "frontal-plane",
+       "taught": "body-planes",
+       "fn": ""
+      },
+      {
+       "id": "transverse-plane",
+       "name": "Transverse plane",
+       "accept": [
+        "cross section",
+        "horizontal plane",
+        "transverse"
+       ],
+       "box": [
+        914,
+        326,
+        186,
+        84
+       ],
+       "concept": "transverse-plane",
+       "taught": "body-planes",
+       "fn": ""
+      },
+      {
+       "id": "oblique-plane",
+       "name": "Oblique plane",
+       "accept": [
+        "oblique"
+       ],
+       "box": [
+        778,
+        808,
+        242,
+        44
+       ],
+       "concept": "anatomical-plane-section",
+       "taught": "body-planes",
+       "fn": ""
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "heart-position",
+   "title": "The heart in the chest and its wall",
+   "chapter": "cardiovascular",
+   "topic": "heart-anatomy",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-19-5",
+     "topic": "heart-anatomy",
+     "core": [
+      "structure-function",
+      "compartments"
+     ],
+     "labels": [
+      {
+       "id": "pericardial-cavity",
+       "name": "Pericardial cavity",
+       "accept": [],
+       "box": [
+        743,
+        282,
+        168,
+        25
+       ],
+       "concept": "pericardial-cavity",
+       "taught": "body-cavities",
+       "fn": ""
+      },
+      {
+       "id": "endocardium",
+       "name": "Endocardium",
+       "accept": [],
+       "box": [
+        88,
+        387,
+        133,
+        22
+       ],
+       "concept": "heart-wall",
+       "taught": "heart-anatomy",
+       "fn": ""
+      },
+      {
+       "id": "fibrous-pericardium",
+       "name": "Fibrous pericardium",
+       "accept": [],
+       "box": [
+        858,
+        425,
+        194,
+        25
+       ],
+       "concept": "pericardium",
+       "taught": "heart-anatomy",
+       "fn": ""
+      },
+      {
+       "id": "myocardium",
+       "name": "Myocardium",
+       "accept": [
+        "heart muscle",
+        "cardiac muscle layer"
+       ],
+       "box": [
+        89,
+        446,
+        124,
+        25
+       ],
+       "concept": "heart-wall",
+       "taught": "heart-anatomy",
+       "fn": ""
+      },
+      {
+       "id": "parietal-pericardium",
+       "name": "Parietal layer of serous pericardium",
+       "accept": [
+        "parietal pericardium",
+        "parietal layer",
+        "parietal serous pericardium"
+       ],
+       "box": [
+        857,
+        523,
+        224,
+        48
+       ],
+       "concept": "pericardium",
+       "taught": "heart-anatomy",
+       "fn": ""
+      },
+      {
+       "id": "epicardium",
+       "name": "Epicardium (visceral layer of serous pericardium)",
+       "accept": [
+        "visceral pericardium",
+        "visceral layer of serous pericardium",
+        "visceral layer"
+       ],
+       "box": [
+        857,
+        641,
+        243,
+        48
+       ],
+       "concept": "heart-wall",
+       "taught": "heart-anatomy",
+       "fn": ""
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "heart-external",
+   "title": "Heart external: anterior and posterior",
+   "chapter": "cardiovascular",
+   "topic": "heart-chambers-valves",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-19-6",
+     "topic": "heart-chambers-valves",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "superior-vena-cava",
+       "name": "Superior vena cava",
+       "accept": [
+        "svc"
+       ],
+       "box": [
+        202,
+        60,
+        171,
+        24
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-pulmonary-artery",
+       "name": "Right pulmonary artery",
+       "accept": [],
+       "box": [
+        202,
+        98,
+        148,
+        44
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "left-pulmonary-artery",
+       "name": "Left pulmonary artery",
+       "accept": [],
+       "box": [
+        826,
+        134,
+        189,
+        24
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "left-pulmonary-veins",
+       "name": "Left pulmonary veins",
+       "accept": [
+        "left pulmonary vein"
+       ],
+       "box": [
+        826,
+        166,
+        183,
+        24
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "pulmonary-trunk",
+       "name": "Pulmonary trunk",
+       "accept": [],
+       "box": [
+        203,
+        177,
+        147,
+        23
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-pulmonary-veins",
+       "name": "Right pulmonary veins",
+       "accept": [
+        "right pulmonary vein"
+       ],
+       "box": [
+        202,
+        209,
+        148,
+        40
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "auricle-of-left-atrium",
+       "name": "Auricle of left atrium",
+       "accept": [
+        "left auricle",
+        "left atrial appendage"
+       ],
+       "box": [
+        826,
+        216,
+        175,
+        20
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-atrium",
+       "name": "Right atrium",
+       "accept": [
+        "ra"
+       ],
+       "box": [
+        203,
+        262,
+        111,
+        24
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "left-ventricle",
+       "name": "Left ventricle",
+       "accept": [
+        "lv"
+       ],
+       "box": [
+        826,
+        347,
+        117,
+        20
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-ventricle",
+       "name": "Right ventricle",
+       "accept": [
+        "rv"
+       ],
+       "box": [
+        203,
+        362,
+        129,
+        24
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "inferior-vena-cava",
+       "name": "Inferior vena cava",
+       "accept": [
+        "ivc"
+       ],
+       "box": [
+        203,
+        455,
+        157,
+        20
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "apex",
+       "name": "Apex",
+       "accept": [
+        "apex of heart",
+        "apex of the heart"
+       ],
+       "box": [
+        826,
+        481,
+        54,
+        23
+       ],
+       "concept": "heart-location",
+       "taught": "heart-anatomy",
+       "fn": ""
+      },
+      {
+       "id": "aorta-posterior",
+       "name": "Aorta",
+       "accept": [],
+       "box": [
+        389,
+        574,
+        57,
+        19
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "superior-vena-cava-posterior",
+       "name": "Superior vena cava",
+       "accept": [
+        "svc"
+       ],
+       "box": [
+        826,
+        580,
+        171,
+        24
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-pulmonary-artery-posterior",
+       "name": "Right pulmonary artery",
+       "accept": [],
+       "box": [
+        827,
+        613,
+        200,
+        24
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "left-pulmonary-artery-posterior",
+       "name": "Left pulmonary artery",
+       "accept": [],
+       "box": [
+        203,
+        626,
+        188,
+        24
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-pulmonary-veins-posterior",
+       "name": "Right pulmonary veins",
+       "accept": [
+        "right pulmonary vein"
+       ],
+       "box": [
+        827,
+        646,
+        194,
+        24
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "left-pulmonary-veins-posterior",
+       "name": "Left pulmonary veins",
+       "accept": [
+        "left pulmonary vein"
+       ],
+       "box": [
+        203,
+        661,
+        182,
+        24
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-atrium-posterior",
+       "name": "Right atrium",
+       "accept": [
+        "ra"
+       ],
+       "box": [
+        827,
+        694,
+        111,
+        24
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "auricle-of-left-atrium-posterior",
+       "name": "Auricle of left atrium",
+       "accept": [
+        "left auricle",
+        "left atrial appendage"
+       ],
+       "box": [
+        202,
+        704,
+        175,
+        20
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "left-atrium-posterior",
+       "name": "Left atrium",
+       "accept": [
+        "la"
+       ],
+       "box": [
+        203,
+        734,
+        99,
+        19
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "inferior-vena-cava-posterior",
+       "name": "Inferior vena cava",
+       "accept": [
+        "ivc"
+       ],
+       "box": [
+        827,
+        735,
+        157,
+        20
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "left-ventricle-posterior",
+       "name": "Left ventricle",
+       "accept": [
+        "lv"
+       ],
+       "box": [
+        203,
+        927,
+        116,
+        20
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-ventricle-posterior",
+       "name": "Right ventricle",
+       "accept": [
+        "rv"
+       ],
+       "box": [
+        827,
+        954,
+        128,
+        24
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "apex-posterior",
+       "name": "Apex",
+       "accept": [
+        "apex of heart",
+        "apex of the heart"
+       ],
+       "box": [
+        349,
+        997,
+        55,
+        24
+       ],
+       "concept": "heart-location",
+       "taught": "heart-anatomy",
+       "fn": ""
+      }
+     ],
+     "covered": [
+      {
+       "id": "left-common-carotid-artery",
+       "box": [
+        826,
+        22,
+        233,
+        24
+       ]
+      },
+      {
+       "id": "brachiocephalic-trunk",
+       "box": [
+        203,
+        26,
+        189,
+        23
+       ]
+      },
+      {
+       "id": "left-subclavian-artery",
+       "box": [
+        826,
+        54,
+        189,
+        24
+       ]
+      },
+      {
+       "id": "aortic-arch",
+       "box": [
+        826,
+        83,
+        101,
+        19
+       ]
+      },
+      {
+       "id": "ligamentum-arteriosum",
+       "box": [
+        826,
+        105,
+        207,
+        24
+       ]
+      },
+      {
+       "id": "ascending-aorta",
+       "box": [
+        202,
+        155,
+        147,
+        23
+       ]
+      },
+      {
+       "id": "circumflex-artery",
+       "box": [
+        826,
+        258,
+        153,
+        24
+       ]
+      },
+      {
+       "id": "right-coronary-artery",
+       "box": [
+        203,
+        298,
+        186,
+        24
+       ]
+      },
+      {
+       "id": "left-coronary-artery",
+       "box": [
+        826,
+        299,
+        174,
+        24
+       ]
+      },
+      {
+       "id": "anterior-cardiac-vein",
+       "box": [
+        202,
+        330,
+        181,
+        20
+       ]
+      },
+      {
+       "id": "great-cardiac-vein",
+       "box": [
+        826,
+        396,
+        161,
+        20
+       ]
+      },
+      {
+       "id": "right-marginal-artery",
+       "box": [
+        203,
+        398,
+        185,
+        24
+       ]
+      },
+      {
+       "id": "anterior-interventricular-artery",
+       "box": [
+        826,
+        423,
+        258,
+        24
+       ]
+      },
+      {
+       "id": "small-cardiac-vein",
+       "box": [
+        202,
+        425,
+        162,
+        20
+       ]
+      },
+      {
+       "id": "coronary-sinus",
+       "box": [
+        826,
+        767,
+        137,
+        24
+       ]
+      },
+      {
+       "id": "circumflex-branch-posterior",
+       "box": [
+        202,
+        769,
+        189,
+        44
+       ]
+      },
+      {
+       "id": "small-cardiac-vein-posterior",
+       "box": [
+        826,
+        801,
+        161,
+        20
+       ]
+      },
+      {
+       "id": "great-cardiac-vein-posterior",
+       "box": [
+        202,
+        825,
+        162,
+        20
+       ]
+      },
+      {
+       "id": "right-coronary-artery-posterior",
+       "box": [
+        827,
+        833,
+        186,
+        24
+       ]
+      },
+      {
+       "id": "posterior-vein-of-left-ventricle",
+       "box": [
+        203,
+        863,
+        145,
+        41
+       ]
+      },
+      {
+       "id": "posterior-interventricular-artery",
+       "box": [
+        827,
+        874,
+        273,
+        24
+       ]
+      },
+      {
+       "id": "middle-cardiac-vein",
+       "box": [
+        826,
+        911,
+        169,
+        20
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "heart-internal",
+   "title": "Heart internal: frontal section",
+   "chapter": "cardiovascular",
+   "topic": "heart-chambers-valves",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-19-9",
+     "topic": "heart-chambers-valves",
+     "core": [
+      "structure-function",
+      "gradients"
+     ],
+     "labels": [
+      {
+       "id": "aorta",
+       "name": "Aorta",
+       "accept": [],
+       "box": [
+        280,
+        32,
+        72,
+        24
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "superior-vena-cava",
+       "name": "Superior vena cava",
+       "accept": [
+        "svc"
+       ],
+       "box": [
+        0,
+        88,
+        227,
+        29
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "left-pulmonary-artery",
+       "name": "Left pulmonary artery",
+       "accept": [],
+       "box": [
+        837,
+        88,
+        247,
+        29
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-pulmonary-artery",
+       "name": "Right pulmonary artery",
+       "accept": [],
+       "box": [
+        0,
+        133,
+        264,
+        30
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "left-atrium",
+       "name": "Left atrium",
+       "accept": [
+        "la"
+       ],
+       "box": [
+        837,
+        148,
+        128,
+        25
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "pulmonary-trunk",
+       "name": "Pulmonary trunk",
+       "accept": [],
+       "box": [
+        0,
+        188,
+        193,
+        29
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "left-pulmonary-veins",
+       "name": "Left pulmonary veins",
+       "accept": [
+        "left pulmonary vein"
+       ],
+       "box": [
+        837,
+        200,
+        241,
+        30
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-pulmonary-veins",
+       "name": "Right pulmonary veins",
+       "accept": [
+        "right pulmonary vein"
+       ],
+       "box": [
+        0,
+        232,
+        193,
+        53
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "mitral-bicuspid-valve",
+       "name": "Mitral (bicuspid) valve",
+       "accept": [
+        "bicuspid valve",
+        "left atrioventricular valve",
+        "left av valve",
+        "mitral",
+        "bicuspid"
+       ],
+       "box": [
+        837,
+        270,
+        252,
+        29
+       ],
+       "concept": "av-valves",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-atrium",
+       "name": "Right atrium",
+       "accept": [
+        "ra"
+       ],
+       "box": [
+        0,
+        309,
+        145,
+        29
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "aortic-valve",
+       "name": "Aortic valve",
+       "accept": [
+        "aortic semilunar valve"
+       ],
+       "box": [
+        836,
+        332,
+        141,
+        24
+       ],
+       "concept": "semilunar-valves",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "fossa-ovalis",
+       "name": "Fossa ovalis",
+       "accept": [],
+       "box": [
+        0,
+        354,
+        150,
+        25
+       ],
+       "concept": "fossa-ovalis",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "pulmonary-valve",
+       "name": "Pulmonary valve",
+       "accept": [
+        "pulmonary semilunar valve",
+        "pulmonic valve"
+       ],
+       "box": [
+        837,
+        375,
+        195,
+        29
+       ],
+       "concept": "semilunar-valves",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "tricuspid-valve",
+       "name": "Tricuspid valve",
+       "accept": [
+        "right atrioventricular valve",
+        "right av valve",
+        "tricuspid"
+       ],
+       "box": [
+        0,
+        386,
+        177,
+        30
+       ],
+       "concept": "av-valves",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "left-ventricle",
+       "name": "Left ventricle",
+       "accept": [
+        "lv"
+       ],
+       "box": [
+        837,
+        421,
+        152,
+        25
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-ventricle",
+       "name": "Right ventricle",
+       "accept": [
+        "rv"
+       ],
+       "box": [
+        0,
+        432,
+        169,
+        29
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "papillary-muscle",
+       "name": "Papillary muscle",
+       "accept": [
+        "papillary muscles"
+       ],
+       "box": [
+        837,
+        465,
+        193,
+        30
+       ],
+       "concept": "av-valves",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "chordae-tendineae",
+       "name": "Chordae tendineae",
+       "accept": [
+        "chorda tendinea",
+        "heart strings",
+        "tendinous cords"
+       ],
+       "box": [
+        0,
+        475,
+        224,
+        24
+       ],
+       "concept": "av-valves",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "interventricular-septum",
+       "name": "Interventricular septum",
+       "accept": [
+        "ivs",
+        "ventricular septum"
+       ],
+       "box": [
+        838,
+        506,
+        262,
+        29
+       ],
+       "concept": "septa",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "trabeculae-carneae",
+       "name": "Trabeculae carneae",
+       "accept": [
+        "trabecula carnea"
+       ],
+       "box": [
+        0,
+        520,
+        233,
+        25
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "epicardium",
+       "name": "Epicardium",
+       "accept": [
+        "visceral pericardium"
+       ],
+       "box": [
+        837,
+        545,
+        135,
+        29
+       ],
+       "concept": "heart-wall",
+       "taught": "heart-anatomy",
+       "fn": ""
+      },
+      {
+       "id": "myocardium",
+       "name": "Myocardium",
+       "accept": [],
+       "box": [
+        837,
+        584,
+        146,
+        29
+       ],
+       "concept": "heart-wall",
+       "taught": "heart-anatomy",
+       "fn": ""
+      },
+      {
+       "id": "inferior-vena-cava",
+       "name": "Inferior vena cava",
+       "accept": [
+        "ivc"
+       ],
+       "box": [
+        0,
+        620,
+        208,
+        25
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "endocardium",
+       "name": "Endocardium",
+       "accept": [],
+       "box": [
+        837,
+        622,
+        157,
+        25
+       ],
+       "concept": "heart-wall",
+       "taught": "heart-anatomy",
+       "fn": ""
+      }
+     ],
+     "covered": [
+      {
+       "id": "moderator-band",
+       "box": [
+        0,
+        572,
+        186,
+        25
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "heart-valves",
+   "title": "Heart valves from above",
+   "chapter": "cardiovascular",
+   "topic": "heart-chambers-valves",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-19-12",
+     "topic": "heart-chambers-valves",
+     "core": [
+      "structure-function",
+      "gradients"
+     ],
+     "labels": [
+      {
+       "id": "tricuspid-valve",
+       "name": "Tricuspid valve",
+       "accept": [
+        "right atrioventricular valve",
+        "right av valve",
+        "tricuspid"
+       ],
+       "box": [
+        111,
+        56,
+        189,
+        32
+       ],
+       "concept": "av-valves",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "bicuspid-mitral-valve",
+       "name": "Bicuspid (mitral) valve",
+       "accept": [
+        "mitral valve",
+        "left atrioventricular valve",
+        "left av valve",
+        "mitral",
+        "bicuspid"
+       ],
+       "box": [
+        849,
+        56,
+        197,
+        57
+       ],
+       "concept": "av-valves",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "aortic-valve",
+       "name": "Aortic valve",
+       "accept": [
+        "aortic semilunar valve"
+       ],
+       "box": [
+        112,
+        716,
+        151,
+        26
+       ],
+       "concept": "semilunar-valves",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "pulmonary-valve",
+       "name": "Pulmonary valve",
+       "accept": [
+        "pulmonary semilunar valve",
+        "pulmonic valve"
+       ],
+       "box": [
+        851,
+        724,
+        210,
+        32
+       ],
+       "concept": "semilunar-valves",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "circuits",
+   "title": "Pulmonary and systemic circuits",
+   "chapter": "cardiovascular",
+   "topic": "blood-flow-heart",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-19-4",
+     "topic": "blood-flow-heart",
+     "core": [
+      "structure-function",
+      "gradients"
+     ],
+     "labels": [
+      {
+       "id": "aorta",
+       "name": "Aorta",
+       "accept": [],
+       "box": [
+        951,
+        30,
+        56,
+        20
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "superior-vena-cava",
+       "name": "Superior vena cava",
+       "accept": [
+        "svc"
+       ],
+       "box": [
+        443,
+        51,
+        167,
+        24
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "left-pulmonary-arteries",
+       "name": "Left pulmonary arteries",
+       "accept": [
+        "left pulmonary artery"
+       ],
+       "box": [
+        951,
+        82,
+        132,
+        40
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-pulmonary-arteries",
+       "name": "Right pulmonary arteries",
+       "accept": [
+        "right pulmonary artery"
+       ],
+       "box": [
+        386,
+        102,
+        144,
+        40
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "pulmonary-trunk",
+       "name": "Pulmonary trunk",
+       "accept": [],
+       "box": [
+        951,
+        136,
+        144,
+        23
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "left-atrium",
+       "name": "Left atrium",
+       "accept": [
+        "la"
+       ],
+       "box": [
+        951,
+        170,
+        97,
+        19
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-pulmonary-veins",
+       "name": "Right pulmonary veins",
+       "accept": [
+        "right pulmonary vein"
+       ],
+       "box": [
+        385,
+        186,
+        145,
+        40
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "pulmonary-veins",
+       "name": "Left pulmonary veins",
+       "accept": [
+        "left pulmonary vein"
+       ],
+       "box": [
+        950,
+        204,
+        133,
+        39
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "pulmonary-semilunar-valve",
+       "name": "Pulmonary semilunar valve",
+       "accept": [
+        "pulmonary valve",
+        "pulmonic valve"
+       ],
+       "box": [
+        438,
+        247,
+        100,
+        60
+       ],
+       "concept": "semilunar-valves",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "aortic-semilunar-valve",
+       "name": "Aortic semilunar valve",
+       "accept": [
+        "aortic valve"
+       ],
+       "box": [
+        950,
+        258,
+        143,
+        39
+       ],
+       "concept": "semilunar-valves",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "mitral-valve",
+       "name": "Mitral valve",
+       "accept": [
+        "bicuspid valve",
+        "left atrioventricular valve",
+        "left av valve",
+        "mitral"
+       ],
+       "box": [
+        951,
+        311,
+        102,
+        20
+       ],
+       "concept": "av-valves",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-atrium",
+       "name": "Right atrium",
+       "accept": [
+        "ra"
+       ],
+       "box": [
+        443,
+        329,
+        109,
+        24
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "left-ventricle",
+       "name": "Left ventricle",
+       "accept": [
+        "lv"
+       ],
+       "box": [
+        951,
+        365,
+        114,
+        20
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "tricuspid-valve",
+       "name": "Tricuspid valve",
+       "accept": [
+        "right atrioventricular valve",
+        "right av valve",
+        "tricuspid"
+       ],
+       "box": [
+        469,
+        370,
+        131,
+        23
+       ],
+       "concept": "av-valves",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-ventricle",
+       "name": "Right ventricle",
+       "accept": [
+        "rv"
+       ],
+       "box": [
+        471,
+        403,
+        125,
+        23
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "inferior-vena-cava",
+       "name": "Inferior vena cava",
+       "accept": [
+        "ivc"
+       ],
+       "box": [
+        471,
+        435,
+        154,
+        19
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "systemic-veins-upper-body",
+       "name": "Systemic veins from upper body",
+       "accept": [],
+       "box": [
+        9,
+        623,
+        104,
+        63
+       ],
+       "concept": "systemic-circuit",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "systemic-capillaries-upper-body",
+       "name": "Systemic capillaries of upper body",
+       "accept": [],
+       "box": [
+        638,
+        624,
+        93,
+        84
+       ],
+       "concept": "systemic-circuit",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "systemic-arteries-upper-body",
+       "name": "Systemic arteries to upper body",
+       "accept": [],
+       "box": [
+        638,
+        724,
+        103,
+        64
+       ],
+       "concept": "systemic-circuit",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "pulmonary-capillaries",
+       "name": "Pulmonary capillaries in lungs",
+       "accept": [
+        "pulmonary capillaries",
+        "pulmonary capillary"
+       ],
+       "box": [
+        9,
+        748,
+        100,
+        63
+       ],
+       "concept": "pulmonary-circuit",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "pulmonary-trunk-loop",
+       "name": "Pulmonary trunk",
+       "accept": [],
+       "box": [
+        637,
+        815,
+        100,
+        39
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-atrium-loop",
+       "name": "Right atrium",
+       "accept": [
+        "ra"
+       ],
+       "box": [
+        10,
+        842,
+        110,
+        24
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "left-atrium-loop",
+       "name": "Left atrium",
+       "accept": [
+        "la"
+       ],
+       "box": [
+        638,
+        879,
+        98,
+        20
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-ventricle-loop",
+       "name": "Right ventricle",
+       "accept": [
+        "rv"
+       ],
+       "box": [
+        9,
+        899,
+        80,
+        40
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "left-ventricle-loop",
+       "name": "Left ventricle",
+       "accept": [
+        "lv"
+       ],
+       "box": [
+        637,
+        929,
+        80,
+        40
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "systemic-veins-lower-body",
+       "name": "Systemic veins from lower body",
+       "accept": [],
+       "box": [
+        9,
+        971,
+        100,
+        63
+       ],
+       "concept": "systemic-circuit",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "systemic-arteries-lower-body",
+       "name": "Systemic arteries to lower body",
+       "accept": [],
+       "box": [
+        638,
+        1000,
+        99,
+        64
+       ],
+       "concept": "systemic-circuit",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "systemic-capillaries-lower-body",
+       "name": "Systemic capillaries of lower body",
+       "accept": [],
+       "box": [
+        9,
+        1096,
+        120,
+        63
+       ],
+       "concept": "systemic-circuit",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "coronary-vessels",
+   "title": "Coronary vessels",
+   "chapter": "cardiovascular",
+   "topic": "blood-flow-heart",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-19-15",
+     "topic": "blood-flow-heart",
+     "core": [
+      "structure-function",
+      "mass-balance"
+     ],
+     "labels": [
+      {
+       "id": "left-coronary-artery",
+       "name": "Left coronary artery",
+       "accept": [
+        "lca",
+        "left main coronary artery"
+       ],
+       "box": [
+        503,
+        89,
+        119,
+        44
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "pulmonary-trunk",
+       "name": "Pulmonary trunk",
+       "accept": [],
+       "box": [
+        504,
+        141,
+        144,
+        23
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-coronary-artery",
+       "name": "Right coronary artery",
+       "accept": [
+        "rca"
+       ],
+       "box": [
+        10,
+        169,
+        131,
+        43
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "circumflex-artery",
+       "name": "Circumflex artery",
+       "accept": [
+        "circumflex",
+        "circumflex branch",
+        "left circumflex artery"
+       ],
+       "box": [
+        503,
+        173,
+        150,
+        23
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "right-atrium",
+       "name": "Right atrium",
+       "accept": [
+        "ra"
+       ],
+       "box": [
+        11,
+        235,
+        109,
+        23
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "anterior-interventricular-artery",
+       "name": "Anterior interventricular artery",
+       "accept": [
+        "left anterior descending artery",
+        "left anterior descending",
+        "lad"
+       ],
+       "box": [
+        537,
+        264,
+        132,
+        64
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "atrial-arteries",
+       "name": "Atrial arteries",
+       "accept": [
+        "atrial artery"
+       ],
+       "box": [
+        10,
+        282,
+        120,
+        19
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "anterior-cardiac-veins",
+       "name": "Anterior cardiac veins",
+       "accept": [
+        "anterior cardiac vein"
+       ],
+       "box": [
+        10,
+        329,
+        118,
+        39
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "great-cardiac-vein",
+       "name": "Great cardiac vein",
+       "accept": [],
+       "box": [
+        536,
+        363,
+        122,
+        40
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "small-cardiac-vein",
+       "name": "Small cardiac vein",
+       "accept": [],
+       "box": [
+        10,
+        395,
+        121,
+        40
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "marginal-artery",
+       "name": "Marginal artery",
+       "accept": [
+        "right marginal artery",
+        "marginal branch"
+       ],
+       "box": [
+        11,
+        462,
+        133,
+        23
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "coronary-sinus",
+       "name": "Coronary sinus",
+       "accept": [],
+       "box": [
+        841,
+        475,
+        134,
+        24
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "small-cardiac-vein-posterior",
+       "name": "Small cardiac vein",
+       "accept": [],
+       "box": [
+        975,
+        475,
+        121,
+        40
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "circumflex-artery-posterior",
+       "name": "Circumflex artery",
+       "accept": [
+        "circumflex",
+        "circumflex branch",
+        "left circumflex artery"
+       ],
+       "box": [
+        590,
+        532,
+        150,
+        23
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "great-cardiac-vein-posterior",
+       "name": "Great cardiac vein",
+       "accept": [],
+       "box": [
+        589,
+        563,
+        122,
+        39
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "marginal-artery-posterior",
+       "name": "Marginal artery",
+       "accept": [
+        "marginal branch"
+       ],
+       "box": [
+        590,
+        613,
+        81,
+        44
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "posterior-interventricular-artery",
+       "name": "Posterior interventricular artery",
+       "accept": [
+        "posterior descending artery",
+        "pda"
+       ],
+       "box": [
+        529,
+        684,
+        132,
+        64
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "posterior-cardiac-vein",
+       "name": "Posterior cardiac vein",
+       "accept": [
+        "posterior vein of left ventricle"
+       ],
+       "box": [
+        529,
+        766,
+        85,
+        60
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "left-ventricle",
+       "name": "Left ventricle",
+       "accept": [
+        "lv"
+       ],
+       "box": [
+        678,
+        809,
+        72,
+        41
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "right-coronary-artery-posterior",
+       "name": "Right coronary artery",
+       "accept": [
+        "rca"
+       ],
+       "box": [
+        1007,
+        865,
+        83,
+        63
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "middle-cardiac-vein",
+       "name": "Middle cardiac vein",
+       "accept": [],
+       "box": [
+        773,
+        929,
+        128,
+        39
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "marginal-artery-posterior-2",
+       "name": "Marginal artery",
+       "accept": [
+        "marginal branch"
+       ],
+       "box": [
+        909,
+        929,
+        80,
+        43
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      }
+     ],
+     "covered": [
+      {
+       "id": "aortic-arch",
+       "box": [
+        10,
+        75,
+        99,
+        19
+       ]
+      },
+      {
+       "id": "ascending-aorta",
+       "box": [
+        10,
+        122,
+        144,
+        23
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "major-arteries",
+   "title": "Major arteries",
+   "chapter": "cardiovascular",
+   "topic": "systemic-arteries",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-20-24",
+     "topic": "systemic-arteries",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "vertebral-artery",
+       "name": "Vertebral",
+       "accept": [
+        "vertebral artery"
+       ],
+       "box": [
+        8,
+        173,
+        131,
+        28
+       ],
+       "concept": "head-neck-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "right-common-carotid-artery",
+       "name": "Right common carotid",
+       "accept": [
+        "right common carotid artery"
+       ],
+       "box": [
+        764,
+        194,
+        296,
+        34
+       ],
+       "concept": "head-neck-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "right-subclavian-artery",
+       "name": "Right subclavian",
+       "accept": [
+        "right subclavian artery"
+       ],
+       "box": [
+        10,
+        242,
+        225,
+        34
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "left-common-carotid-artery",
+       "name": "Left common carotid",
+       "accept": [
+        "left common carotid artery"
+       ],
+       "box": [
+        764,
+        237,
+        276,
+        28
+       ],
+       "concept": "head-neck-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "left-subclavian-artery",
+       "name": "Left subclavian",
+       "accept": [
+        "left subclavian artery"
+       ],
+       "box": [
+        764,
+        283,
+        206,
+        28
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "brachiocephalic-trunk",
+       "name": "Brachiocephalic trunk",
+       "accept": [
+        "brachiocephalic artery",
+        "innominate artery"
+       ],
+       "box": [
+        9,
+        310,
+        293,
+        34
+       ],
+       "concept": "head-neck-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "axillary-artery",
+       "name": "Axillary",
+       "accept": [
+        "axillary artery"
+       ],
+       "box": [
+        766,
+        336,
+        98,
+        33
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "aortic-arch",
+       "name": "Aortic arch",
+       "accept": [
+        "arch of aorta",
+        "arch of the aorta"
+       ],
+       "box": [
+        8,
+        362,
+        152,
+        28
+       ],
+       "concept": "aorta-parts",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "pulmonary-trunk",
+       "name": "Pulmonary trunk",
+       "accept": [],
+       "box": [
+        764,
+        387,
+        225,
+        34
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": ""
+      },
+      {
+       "id": "ascending-aorta",
+       "name": "Ascending aorta",
+       "accept": [],
+       "box": [
+        8,
+        430,
+        225,
+        34
+       ],
+       "concept": "aorta-parts",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "descending-aorta",
+       "name": "Descending aorta",
+       "accept": [
+        "descending thoracic aorta"
+       ],
+       "box": [
+        764,
+        431,
+        241,
+        34
+       ],
+       "concept": "aorta-parts",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "diaphragm",
+       "name": "Diaphragm",
+       "accept": [],
+       "box": [
+        764,
+        479,
+        153,
+        34
+       ],
+       "concept": "diaphragm",
+       "taught": "body-cavities",
+       "fn": ""
+      },
+      {
+       "id": "celiac-trunk",
+       "name": "Celiac trunk",
+       "accept": [
+        "celiac artery",
+        "coeliac trunk"
+       ],
+       "box": [
+        9,
+        515,
+        168,
+        28
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "renal-artery",
+       "name": "Renal",
+       "accept": [
+        "renal artery"
+       ],
+       "box": [
+        785,
+        541,
+        86,
+        28
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "brachial-artery",
+       "name": "Brachial",
+       "accept": [
+        "brachial artery"
+       ],
+       "box": [
+        9,
+        606,
+        116,
+        28
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "superior-mesenteric-artery",
+       "name": "Superior mesenteric",
+       "accept": [
+        "superior mesenteric artery",
+        "sma"
+       ],
+       "box": [
+        817,
+        615,
+        283,
+        34
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "gonadal-artery",
+       "name": "Gonadal",
+       "accept": [
+        "gonadal artery",
+        "ovarian artery",
+        "testicular artery"
+       ],
+       "box": [
+        817,
+        656,
+        122,
+        28
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "inferior-mesenteric-artery",
+       "name": "Inferior mesenteric",
+       "accept": [
+        "inferior mesenteric artery",
+        "ima"
+       ],
+       "box": [
+        818,
+        695,
+        254,
+        28
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "radial-artery",
+       "name": "Radial",
+       "accept": [
+        "radial artery"
+       ],
+       "box": [
+        10,
+        696,
+        93,
+        28
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "common-iliac-artery",
+       "name": "Common iliac",
+       "accept": [
+        "common iliac artery"
+       ],
+       "box": [
+        817,
+        733,
+        190,
+        28
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "ulnar-artery",
+       "name": "Ulnar",
+       "accept": [
+        "ulnar artery"
+       ],
+       "box": [
+        9,
+        743,
+        82,
+        28
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "internal-iliac-artery",
+       "name": "Internal iliac",
+       "accept": [
+        "internal iliac artery"
+       ],
+       "box": [
+        818,
+        782,
+        168,
+        28
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "external-iliac-artery",
+       "name": "External iliac",
+       "accept": [
+        "external iliac artery"
+       ],
+       "box": [
+        10,
+        823,
+        177,
+        28
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "palmar-arches",
+       "name": "Palmar arches",
+       "accept": [
+        "palmar arch",
+        "superficial palmar arch",
+        "deep palmar arch"
+       ],
+       "box": [
+        9,
+        907,
+        106,
+        61
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "deep-femoral-artery",
+       "name": "Deep femoral",
+       "accept": [
+        "deep femoral artery",
+        "deep artery of the thigh"
+       ],
+       "box": [
+        865,
+        936,
+        110,
+        61
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "femoral-artery",
+       "name": "Femoral",
+       "accept": [
+        "femoral artery"
+       ],
+       "box": [
+        704,
+        1094,
+        118,
+        28
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "descending-genicular-artery",
+       "name": "Descending genicular",
+       "accept": [
+        "descending genicular artery"
+       ],
+       "box": [
+        707,
+        1187,
+        162,
+        68
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "popliteal-artery",
+       "name": "Popliteal",
+       "accept": [
+        "popliteal artery"
+       ],
+       "box": [
+        137,
+        1245,
+        122,
+        34
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "posterior-tibial-artery",
+       "name": "Posterior tibial",
+       "accept": [
+        "posterior tibial artery"
+       ],
+       "box": [
+        137,
+        1323,
+        195,
+        28
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "anterior-tibial-artery",
+       "name": "Anterior tibial",
+       "accept": [
+        "anterior tibial artery"
+       ],
+       "box": [
+        135,
+        1416,
+        182,
+        27
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "fibular-artery",
+       "name": "Fibular",
+       "accept": [
+        "fibular artery",
+        "peroneal artery"
+       ],
+       "box": [
+        137,
+        1482,
+        101,
+        28
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "dorsalis-pedis-artery",
+       "name": "Dorsalis pedis",
+       "accept": [
+        "dorsalis pedis artery",
+        "dorsal artery of the foot"
+       ],
+       "box": [
+        704,
+        1618,
+        195,
+        34
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "plantar-arch",
+       "name": "Plantar arch",
+       "accept": [
+        "plantar arterial arch"
+       ],
+       "box": [
+        136,
+        1709,
+        169,
+        29
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      }
+     ]
+    },
+    {
+     "figure": "os-20-25",
+     "topic": "systemic-arteries",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "right-common-carotid-artery",
+       "name": "Right common carotid artery",
+       "accept": [
+        "right common carotid"
+       ],
+       "box": [
+        112,
+        8,
+        217,
+        72
+       ],
+       "concept": "head-neck-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "left-common-carotid-artery",
+       "name": "Left common carotid artery",
+       "accept": [
+        "left common carotid"
+       ],
+       "box": [
+        836,
+        9,
+        195,
+        71
+       ],
+       "concept": "head-neck-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "right-subclavian-artery",
+       "name": "Right subclavian artery",
+       "accept": [
+        "right subclavian"
+       ],
+       "box": [
+        7,
+        198,
+        240,
+        72
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "left-subclavian-artery",
+       "name": "Left subclavian artery",
+       "accept": [
+        "left subclavian"
+       ],
+       "box": [
+        837,
+        198,
+        217,
+        72
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "brachiocephalic-artery",
+       "name": "Brachiocephalic artery",
+       "accept": [
+        "brachiocephalic trunk",
+        "innominate artery",
+        "brachiocephalic"
+       ],
+       "box": [
+        7,
+        402,
+        232,
+        70
+       ],
+       "concept": "head-neck-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "aortic-arch",
+       "name": "Aortic arch",
+       "accept": [
+        "arch of aorta",
+        "arch of the aorta"
+       ],
+       "box": [
+        836,
+        423,
+        158,
+        28
+       ],
+       "concept": "aorta-parts",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "ascending-aorta",
+       "name": "Ascending aorta",
+       "accept": [],
+       "box": [
+        7,
+        567,
+        240,
+        35
+       ],
+       "concept": "aorta-parts",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "descending-aorta",
+       "name": "Descending aorta",
+       "accept": [
+        "descending thoracic aorta"
+       ],
+       "box": [
+        838,
+        557,
+        258,
+        35
+       ],
+       "concept": "aorta-parts",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "left-coronary-artery",
+       "name": "Left coronary artery",
+       "accept": [
+        "lca",
+        "left coronary"
+       ],
+       "box": [
+        837,
+        666,
+        192,
+        72
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "right-coronary-artery",
+       "name": "Right coronary artery",
+       "accept": [
+        "rca",
+        "right coronary"
+       ],
+       "box": [
+        7,
+        707,
+        215,
+        70
+       ],
+       "concept": "coronary-circulation",
+       "taught": "blood-flow-heart",
+       "fn": ""
+      },
+      {
+       "id": "thoracic-aorta",
+       "name": "Thoracic aorta",
+       "accept": [
+        "descending thoracic aorta"
+       ],
+       "box": [
+        835,
+        850,
+        213,
+        28
+       ],
+       "concept": "aorta-parts",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "abdominal-aorta",
+       "name": "Abdominal aorta",
+       "accept": [],
+       "box": [
+        768,
+        976,
+        241,
+        28
+       ],
+       "concept": "aorta-parts",
+       "taught": "systemic-arteries",
+       "fn": ""
+      }
+     ]
+    },
+    {
+     "figure": "os-20-27",
+     "topic": "systemic-arteries",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "anterior-communicating",
+       "name": "Anterior communicating",
+       "accept": [
+        "anterior communicating artery"
+       ],
+       "box": [
+        792,
+        75,
+        292,
+        32
+       ],
+       "concept": "cerebral-arterial-circle",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "middle-cerebral",
+       "name": "Middle cerebral",
+       "accept": [
+        "middle cerebral artery"
+       ],
+       "box": [
+        11,
+        130,
+        193,
+        26
+       ],
+       "concept": "cerebral-arterial-circle",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "anterior-cerebral",
+       "name": "Anterior cerebral",
+       "accept": [
+        "anterior cerebral artery"
+       ],
+       "box": [
+        792,
+        131,
+        208,
+        26
+       ],
+       "concept": "cerebral-arterial-circle",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "ophthalmic",
+       "name": "Ophthalmic",
+       "accept": [
+        "ophthalmic artery"
+       ],
+       "box": [
+        10,
+        231,
+        147,
+        31
+       ],
+       "concept": "head-neck-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "posterior-communicating",
+       "name": "Posterior communicating",
+       "accept": [
+        "posterior communicating artery"
+       ],
+       "box": [
+        793,
+        238,
+        302,
+        31
+       ],
+       "concept": "cerebral-arterial-circle",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "posterior-cerebral",
+       "name": "Posterior cerebral",
+       "accept": [
+        "posterior cerebral artery"
+       ],
+       "box": [
+        793,
+        297,
+        219,
+        26
+       ],
+       "concept": "cerebral-arterial-circle",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "internal-carotid",
+       "name": "Internal carotid",
+       "accept": [
+        "internal carotid artery"
+       ],
+       "box": [
+        12,
+        323,
+        187,
+        26
+       ],
+       "concept": "head-neck-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "basilar",
+       "name": "Basilar",
+       "accept": [
+        "basilar artery"
+       ],
+       "box": [
+        11,
+        377,
+        94,
+        26
+       ],
+       "concept": "cerebral-arterial-circle",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "vertebral",
+       "name": "Vertebral",
+       "accept": [
+        "vertebral artery",
+        "vertebral arteries"
+       ],
+       "box": [
+        10,
+        422,
+        118,
+        26
+       ],
+       "concept": "head-neck-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "figures": {
+  "os-1-14": {
+   "src": "figures/os-1-14.jpg",
+   "w": 1100,
+   "h": 1128,
+   "alt": "A woman standing in anatomical position, seen from the front and her right side, crossed by three flat panels. A vertical panel running front to back divides her into right and left parts (the sagittal plane). A vertical panel running side to side divides her into front and back parts (the frontal, or coronal, plane). A horizontal panel at waist height divides her into upper and lower parts (the transverse plane).",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 1.14",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-6-anatomical-terminology",
+   "license": "CC BY 4.0"
+  },
+  "os-19-5": {
+   "src": "figures/os-19-5.jpg",
+   "w": 1100,
+   "h": 753,
+   "alt": "A small drawing of the heart with a box on its outer wall, enlarged into a slice showing the layers from inside to outside: a thin inner lining, a thick band of muscle, a thin outer covering, a narrow fluid-filled space, a thin membrane, and a tough outer fibrous layer.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.5",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy",
+   "license": "CC BY 4.0"
+  },
+  "os-19-6": {
+   "src": "figures/os-19-6.jpg",
+   "w": 1100,
+   "h": 1034,
+   "alt": "Two drawings of the outside of the heart. The front view shows the four chambers from the surface, the ear-shaped flaps of the upper chambers, the large vessels leaving the top, and surface vessels running in fat-filled grooves toward the tip. The back view shows the veins entering the upper chambers and the surface vessels on the back of the heart.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.6",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy",
+   "license": "CC BY 4.0"
+  },
+  "os-19-9": {
+   "src": "figures/os-19-9.jpg",
+   "w": 1100,
+   "h": 770,
+   "alt": "A front view of the heart cut open in a frontal plane. It shows the two upper and two lower chambers, the wall between the lower chambers, the valves between upper and lower chambers held by thin cords to small muscles on the lower chamber walls, the valves at the exits to the two large arteries, the large veins entering, and the thick muscular wall of the lower left chamber.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.9",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy",
+   "license": "CC BY 4.0"
+  },
+  "os-19-12": {
+   "src": "figures/os-19-12.jpg",
+   "w": 1100,
+   "h": 878,
+   "alt": "The heart seen from above with the upper chambers and large vessels removed, so all four valves are visible in one plane. Two large valves sit at the back, one with three flaps on the right side and one with two flaps on the left. Two smaller round valves with three half-moon flaps each sit in front of them.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.12",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy",
+   "license": "CC BY 4.0"
+  },
+  "os-19-4": {
+   "src": "figures/os-19-4.jpg",
+   "w": 1100,
+   "h": 1214,
+   "alt": "Two drawings of the circulation. Above, the heart with its large vessels: vessels carrying oxygen-poor blood shown in blue and vessels carrying oxygen-rich blood shown in red. Below, a loop diagram: the right side of the heart sends blood through a small loop to the capillaries of the lungs and back to the left side, which sends it through a larger loop to the capillaries of the body and back to the right side.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.4",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy",
+   "license": "CC BY 4.0"
+  },
+  "os-19-15": {
+   "src": "figures/os-19-15.jpg",
+   "w": 1100,
+   "h": 1010,
+   "alt": "Front and back views of the heart showing its own blood vessels. Red arteries branch from the base of the aorta: one runs down the front groove toward the tip, one curves around the left side in the groove between upper and lower chambers, and one runs around the right side and down the back. Blue veins run beside them and gather into a wide vein in the groove on the back of the heart that empties into the right upper chamber.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.15",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy",
+   "license": "CC BY 4.0"
+  },
+  "os-20-24": {
+   "src": "figures/os-20-24.jpg",
+   "w": 1100,
+   "h": 1782,
+   "alt": "A front view of a standing woman with her main arteries drawn in red. The aorta rises from the heart, arches, and runs down the back of the trunk, giving branches to the head, both arms, the abdominal organs and the kidneys, then splits in the pelvis into two branches that run down each leg to the foot. The arm arteries divide at the elbow into two forearm branches that meet in arches in the palm.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.24",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-5-circulatory-pathways",
+   "license": "CC BY 4.0"
+  },
+  "os-20-25": {
+   "src": "figures/os-20-25.jpg",
+   "w": 1100,
+   "h": 1172,
+   "alt": "The aorta on its own. It rises from the aortic valve, where two small arteries leave for the heart muscle, curves up and over to the left, and runs straight down. Three branches leave the top of the curve: one short trunk on the right that splits in two, then separate branches to the left side of the neck and the left arm.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.25",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-5-circulatory-pathways",
+   "license": "CC BY 4.0"
+  },
+  "os-20-27": {
+   "src": "figures/os-20-27.jpg",
+   "w": 1100,
+   "h": 648,
+   "alt": "The underside of the brain with its arteries in red. Two arteries rise along the front of the spinal column and join into one midline artery on the brainstem. That artery splits at its top end, and short connecting arteries link it to the two arteries arriving at the front, closing a ring of arteries around the base of the brain.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.27",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-5-circulatory-pathways",
+   "license": "CC BY 4.0"
+  }
+ }
+}

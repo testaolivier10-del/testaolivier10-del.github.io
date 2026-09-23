@@ -1,0 +1,199 @@
+{
+  "figure": "os-19-18",
+  "labels": [
+    {
+      "id": "arch-of-aorta",
+      "name": "Arch of aorta",
+      "accept": [
+        "arch of aorta",
+        "aortic arch",
+        "arch of the aorta"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "aorta-parts"
+    },
+    {
+      "id": "bachmanns-bundle",
+      "name": "Bachman’s bundle",
+      "accept": [
+        "bachman’s bundle",
+        "bachmann's bundle",
+        "bachman's bundle",
+        "bachmann bundle",
+        "bachman bundle",
+        "interatrial band"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "sa-node"
+    },
+    {
+      "id": "sinoatrial-node",
+      "name": "Sinoatrial (SA) node",
+      "accept": [
+        "sinoatrial (sa) node",
+        "sinoatrial node",
+        "sa node",
+        "sinus node",
+        "sinoatrial"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "sa-node"
+    },
+    {
+      "id": "left-atrium",
+      "name": "Left atrium",
+      "accept": [
+        "left atrium",
+        "la"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "anterior-internodal",
+      "name": "Anterior internodal",
+      "accept": [
+        "anterior internodal",
+        "anterior internodal pathway",
+        "anterior internodal tract"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "sa-node"
+    },
+    {
+      "id": "atrioventricular-node",
+      "name": "Atrioventricular (AV) node",
+      "accept": [
+        "atrioventricular (av) node",
+        "atrioventricular node",
+        "av node"
+      ],
+      "lines": [
+        9,
+        10
+      ],
+      "concept": "av-node"
+    },
+    {
+      "id": "av-bundle",
+      "name": "Atrioventricular (AV) bundle (bundle of His)",
+      "accept": [
+        "atrioventricular (av) bundle (bundle of his)",
+        "atrioventricular bundle",
+        "av bundle",
+        "bundle of his",
+        "his bundle"
+      ],
+      "box": [
+        886,
+        398,
+        212,
+        48
+      ],
+      "concept": "ventricular-conduction"
+    },
+    {
+      "id": "middle-internodal",
+      "name": "Middle internodal",
+      "accept": [
+        "middle internodal",
+        "middle internodal pathway",
+        "middle internodal tract"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "sa-node"
+    },
+    {
+      "id": "posterior-internodal",
+      "name": "Posterior internodal",
+      "accept": [
+        "posterior internodal",
+        "posterior internodal pathway",
+        "posterior internodal tract"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "sa-node"
+    },
+    {
+      "id": "left-ventricle",
+      "name": "Left ventricle",
+      "accept": [
+        "left ventricle",
+        "lv"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "right-atrium",
+      "name": "Right atrium",
+      "accept": [
+        "right atrium",
+        "ra"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "right-ventricle",
+      "name": "Right ventricle",
+      "accept": [
+        "right ventricle",
+        "rv"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "bundle-branches",
+      "name": "Right and left bundle branches",
+      "accept": [
+        "right and left bundle branches",
+        "bundle branches",
+        "bundle branch",
+        "right bundle branch",
+        "left bundle branch"
+      ],
+      "lines": [
+        18,
+        19
+      ],
+      "concept": "ventricular-conduction"
+    },
+    {
+      "id": "purkinje-fibers",
+      "name": "Purkinje fibers",
+      "accept": [
+        "purkinje fibers",
+        "purkinje fibres",
+        "purkinje fiber",
+        "subendocardial conducting network"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "ventricular-conduction"
+    }
+  ]
+}
