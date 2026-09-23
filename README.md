@@ -487,8 +487,12 @@ sitting there for the rest of the 12 hours.
 
 `account.js` raises a small, milestone-level funnel through `LevlAnalytics`:
 `auth-opened`, `auth-provider-chosen`, `auth-link-sent`, `auth-succeeded`,
-`auth-reset-requested`, and `auth-wrong-password` (carrying only *which*
-method this browser remembered, if any). No email address or account
+`auth-confirmed`, `auth-reset-requested`, and `auth-wrong-password` (carrying
+only *which* method this browser remembered, if any). `auth-confirmed` fires
+when a student comes back from a confirmation or sign-in link, which is the
+last step of an email signup and was otherwise invisible. Both it and a signup's
+`auth-succeeded` carry `variant`: which save-prompt wording started the signup,
+or `none`. No email address or account
 identifier is ever in a payload, and a whole session costs a handful of events
 rather than one per keystroke — `analytics.js` is explicit that events count
 against a monthly total. `auth-wrong-password` is the one to watch: it is the
@@ -526,7 +530,7 @@ Both needed a bound the walk never had: `firstActiveKey`, the first day this bro
 
 `.levl-prompt` in `theme.css` is shared by the only two things on the site that ask the student for anything, and **only one is ever in the DOM at once**:
 
-- **"Save your progress"** (`assets/account.js`, `promptToSave`). Progress that lives only in a browser dies with it, and nobody is warned. So it is offered — but at a high point, straight after a level-up or a finished exam, never at the door. Signed-out only, once a week, three times ever, silent for good after two refusals, and it withdraws itself after 15 seconds without counting that as a no. The level-up path waits out the confetti `motion.js` runs for the same event.
+- **"Save your progress"** (`assets/account.js`, `promptToSave`). Progress that lives only in a browser dies with it, and nobody is warned. So it is offered — but at a high point, straight after a level-up or a finished exam, never at the door. It names what this browser would lose, from the strongest thing the student has: a streak of three days or more (with its own lines for a held freeze and a goal met today), an exam score and the review queue it built, or their level and XP, falling back to the plain wording when there is nothing to name (`saveCopy`, pinned by `scripts/test/save-prompt.test.mjs`). Signed-out only, at least two days apart, three answered asks ever, silent for good after two refusals. After one "Not now" it asks again only once the streak or level has grown since. It withdraws itself after 15 seconds, and that counts as neither a no nor one of the three asks. The level-up path waits out the confetti `motion.js` runs for the same event.
 - **"Add to home screen"** (`assets/site-chrome.js`, `showInstallPrompt`). Never on a first visit — it reads `levlprep_visits` and holds back until the student has been back at least once. Chrome's `beforeinstallprompt` is deferred so the timing is ours; Safari has no such event, so iOS gets the "Share, then Add to Home Screen" instruction instead, and its button is an acknowledgement rather than a refusal.
 
 ### Icons
@@ -807,7 +811,7 @@ Events are **milestones, not actions**, and should stay that way. Umami's free t
 | `visit` | `assets/analytics.js`, from `mount()` | cohort band, days since first visit, distinct days studied, course. **Once per browser per day**, not per page load |
 | `returned-second-day` | same | days since first visit |
 | `first-questions` | both courses, on the first session ever started | seconds from page load, mode. Fires once per browser, ever |
-| `save-prompt-shown` / `save-prompt-accepted` | `assets/account.js` | — |
+| `save-prompt-shown` / `save-prompt-accepted` / `save-prompt-dismissed` | `assets/account.js` | `variant`: which wording was shown (`streak`, `goal`, `freeze`, `exam`, `level`, `generic`) |
 | `install-prompt-shown` | `assets/site-chrome.js` | platform (`ios` / `other`) |
 | `install-prompt-choice`, `installed` | same | outcome |
 | `premium-interest` / `premium-waitlist-joined` | `assets/premium.js` | course, which card. Read against `exam-finish` / `ochem-session-finish`; see `docs/premium.md` |

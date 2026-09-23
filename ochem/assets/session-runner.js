@@ -730,7 +730,8 @@
          not a moment worth interrupting. */
       if(window.StudyHubAccount && S && S.index >= 8){
         setTimeout(function(){
-          window.StudyHubAccount.promptToSave('Session finished \u2014 ' + S.index + ' questions');
+          window.StudyHubAccount.promptToSave('Session finished \u2014 ' + S.index + ' questions',
+            { kind: 'session', answered: S.index });
         }, 2600);
       }
 
