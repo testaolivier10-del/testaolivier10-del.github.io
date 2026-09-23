@@ -1,0 +1,47 @@
+{
+  "topic": "hearing-balance",
+  "hook": "<p>Aiden, 6, has had a cold for a week, and now his left ear feels \"full\" and his teacher says he ignores her when she speaks from his left. His doctor presses a humming tuning fork to the middle of his forehead, and Aiden says the sound is louder in his bad ear. That surprises his parents, but it tells the doctor exactly where the problem is: not in the cochlea or the nerve, but in the small air space behind the eardrum.</p>",
+  "prereq": [
+    {
+      "q": "What opens a mechanically gated ion channel?",
+      "options": ["A change in membrane voltage", "A physical force that stretches or deforms the membrane", "A chemical messenger binding to it"],
+      "correct": 1,
+      "why": "Mechanically gated channels open when the membrane or a structure attached to the channel is stretched or pushed. Voltage-gated channels respond to voltage, and ligand-gated channels to a bound chemical.",
+      "review": "passive-transport"
+    },
+    {
+      "q": "In which skull bone do the middle and inner ear lie?",
+      "options": ["Temporal bone", "Occipital bone", "Sphenoid bone"],
+      "correct": 0,
+      "why": "The middle and inner ear are hollowed out of the temporal bone, whose external acoustic meatus is the bony part of the ear canal.",
+      "review": "skull"
+    },
+    {
+      "q": "Which of these describes receptor potentials?",
+      "options": ["An action potential in a sensory neuron's axon", "The resting potential of a sensory cell", "A graded change in a sensory cell's membrane potential caused by a stimulus"],
+      "correct": 2,
+      "why": "A stimulus opens or closes ion channels in a sensory receptor cell, producing a graded change in its membrane potential. Its size depends on the strength of the stimulus.",
+      "review": "sensory-pathways"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-14-5",
+    "caption": "The ear cut open from the front. Hide the labels and name the parts of the external, middle and inner ear, then trace the route sound takes to the cochlea."
+  },
+  "chain": [
+    { "cause": "Sound waves travel down the ear canal and vibrate the tympanic membrane.", "effect": "The malleus, incus and stapes carry the vibration across the middle ear, and the stapes pushes in and out of the oval window with about 20 times the pressure." },
+    { "cause": "The stapes sets up pressure waves in the perilymph of the scala vestibuli.", "effect": "The basilar membrane vibrates most at the place tuned to the sound's frequency: near the base for high pitches, near the apex for low." },
+    { "cause": "The basilar membrane moves up and down under the tectorial membrane.", "effect": "The stereocilia of the hair cells bend, and tip links pull mechanically gated channels open." },
+    { "cause": "K+ from the endolymph flows into the hair cell.", "effect": "The hair cell depolarizes, Ca2+ enters, and the cell releases more glutamate onto its sensory neuron." },
+    { "cause": "The sensory neurons of the cochlear nerve fire faster.", "effect": "Signals pass through the cochlear nuclei, superior olivary nuclei, inferior colliculus and medial geniculate nucleus to the primary auditory cortex, where you perceive the sound." }
+  ],
+  "misconception": {
+    "wrong": "Each ear sends its signals only to the opposite side of the brain, so damage to one auditory cortex makes the opposite ear deaf.",
+    "right": "Auditory fibers cross at several levels, starting in the brainstem, so each ear reaches the auditory cortex on both sides. Damage to one auditory cortex does not deafen either ear. Deafness in one ear points to that ear, its cochlear nerve or its cochlear nuclei."
+  },
+  "check": ["anp-hearing-balance-1", "anp-hearing-balance-5", "anp-hearing-balance-8", "anp-hearing-balance-10", "anp-hearing-balance-14", "anp-hearing-balance-19", "anp-hearing-balance-21", "anp-hearing-balance-23"],
+  "summary": "<p>The external ear (auricle, ear canal, tympanic membrane) collects sound. The middle ear's ossicles (malleus, incus, stapes) carry it to the oval window and raise its pressure about 20-fold; the auditory tube equalizes air pressure. The inner ear holds the cochlea, the vestibule and the semicircular canals. In the cochlea, the scala vestibuli and scala tympani hold perilymph and the cochlear duct holds K+-rich endolymph; the spiral organ (organ of Corti) sits on the basilar membrane under the tectorial membrane. Bending stereocilia toward the tallest opens mechanically gated channels, K+ flows in and the hair cell releases more glutamate; bending away does the opposite. Pitch is coded by place (high frequencies at the base, low at the apex), loudness by firing rate and recruitment. The auditory pathway runs through the cochlear nuclei, superior olivary nuclei, inferior colliculus and medial geniculate nucleus to the auditory cortex, reaching both hemispheres. Conductive loss (outer or middle ear) sends the Weber sound to the bad ear and makes bone beat air in the Rinne test; sensorineural loss (cochlea or nerve) sends the Weber sound to the good ear with air still better than bone. The utricle and saccule use otoliths on a gel membrane to sense tilt and straight-line movement; the semicircular canals use a cupula moved by lagging endolymph to sense turning, and drive the vestibulo-ocular reflex.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-33", "label": "NREMT: Trauma to the head, neck and spine" }
+  ]
+}

@@ -760,5 +760,27 @@
         "Retinal goes to the pigmented epithelium later, after it has come away from the opsin, not at the moment of absorption."
       ]
     }
+  },
+  {
+    "id": "anp-vision-29",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Put these in the order that light, and then the signal it starts, reaches them on the way from a scene to the cortex.",
+    "options": [
+      "Cornea",
+      "Lens",
+      "Photoreceptors of the retina",
+      "Optic chiasm",
+      "Lateral geniculate nucleus of the thalamus",
+      "Primary visual cortex"
+    ],
+    "why": {
+      "correct": "Light is refracted first by the cornea and then by the lens, and is absorbed by the photoreceptors at the back of the retina. The signal passes through bipolar and ganglion cells, whose axons form the optic nerve, cross (the nasal ones) at the optic chiasm, run in the optic tract to the lateral geniculate nucleus and reach the primary visual cortex in the occipital lobe."
+    }
   }
 ]

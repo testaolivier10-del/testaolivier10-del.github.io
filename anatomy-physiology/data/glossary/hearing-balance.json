@@ -1,0 +1,32 @@
+{
+  "ear-regions": {
+    "def": "The external ear (auricle, ear canal and tympanic membrane) collects sound; the air-filled middle ear holds the auditory ossicles (malleus, incus and stapes) and opens into the throat through the auditory (eustachian) tube; the fluid-filled inner ear holds the cochlea, the vestibule and the semicircular canals.",
+    "roots": [["tympan-", "drum"], ["ossicle", "little bone"], ["malleus", "hammer"], ["incus", "anvil"], ["stapes", "stirrup"]],
+    "say": "MAL-ee-us, ING-kus, STAY-peez, yoo-STAY-shun"
+  },
+  "cochlea": {
+    "def": "The snail-shaped hearing organ of the inner ear. Its three channels are the scala vestibuli (from the oval window), the cochlear duct and the scala tympani (to the round window). The spiral organ (organ of Corti), with its hair cells, sits on the basilar membrane under the tectorial membrane.",
+    "roots": [["cochlea", "snail shell"], ["scala", "staircase"], ["tect-", "roof"], ["basilar", "at the base"]],
+    "say": "KOK-lee-uh, KOR-tee"
+  },
+  "hair-cell-transduction": {
+    "def": "Hair cells are epithelial sensory receptor cells topped with a staircase of stereocilia joined by tip links. Bending toward the tallest stereocilium opens mechanically gated channels, K+ flows in and the cell releases more glutamate; bending away closes them and the cell releases less.",
+    "roots": [["stereo-", "solid"], ["cilia", "eyelashes"]],
+    "say": "STAIR-ee-oh-SIL-ee-uh"
+  },
+  "sound-transduction": {
+    "def": "Audition, the sense of hearing, turns sound into nerve signals. Frequency is heard as pitch and coded by the place of greatest vibration on the basilar membrane; amplitude is heard as loudness and coded by firing rate. Conductive hearing loss blocks sound in the external or middle ear; sensorineural loss damages the cochlea or cochlear nerve. The Weber and Rinne tuning fork tests tell them apart.",
+    "roots": [["audit-", "hearing"]],
+    "say": "RIN-uh, VAY-ber"
+  },
+  "auditory-pathway": {
+    "def": "The route from the cochlea to the cortex: cochlear nerve, cochlear nuclei, superior olivary nuclei (where the two ears are first compared), inferior colliculus, medial geniculate nucleus of the thalamus, and primary auditory cortex in the temporal lobe. Each ear reaches both hemispheres.",
+    "roots": [["genicul-", "little knee"]],
+    "say": ""
+  },
+  "vestibular-apparatus": {
+    "def": "The balance organs of the inner ear. In the vestibule, the utricle and saccule each have a macula whose hair cells are covered by an otolithic membrane topped with otoliths; they sense head tilt and straight-line movement. The three semicircular canals have a cupula that lagging endolymph bends when the head turns. Their signals drive equilibrium and the vestibulo-ocular reflex (VOR), which turns the eyes opposite to a head turn.",
+    "roots": [["vestibulum", "entrance hall"], ["oto-", "ear"], ["lith-", "stone"], ["cupula", "little cup"], ["utricle", "little bag"], ["saccule", "little sac"]],
+    "say": "YOO-trih-kul, SAK-yool, KYOO-pyoo-luh"
+  }
+}
