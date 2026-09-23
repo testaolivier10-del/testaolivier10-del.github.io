@@ -38,9 +38,9 @@
     var actions = wrap.querySelector('.anp-q-actions');
     host.appendChild(wrap);
 
-    function finish(correct, score, detailHtml){
+    function finish(correct, score, detailHtml, pick){
       done = true;
-      var result = { correct: correct, score: score, q: q };
+      var result = { correct: correct, score: score, q: q, pick: pick };
       if(opts.record !== false && window.AnpCore) window.AnpCore.record(q.id, correct, { topic: q.topic, core: q.core, level: q.level, diff: q.diff, src: 'q' });
       if(!opts.exam){
         fb.innerHTML = '<p><span class="anp-verdict ' + (correct ? 'ok' : 'no') + '">' +
@@ -75,7 +75,7 @@
             else if(i === pick) x.classList.add('is-wrong');
             if(reveal && q.why && q.why.options && q.why.options[i]) x.insertAdjacentHTML('beforeend', '<span class="anp-opt-why">' + html(q.why.options[i]) + '</span>');
           });
-          finish(ok, ok ? 1 : 0);
+          finish(ok, ok ? 1 : 0, '', pick);
         });
       });
     }
@@ -92,16 +92,17 @@
       });
       actions.innerHTML = '<button type="button" class="btn-press sm anp-check">Check</button>';
       actions.querySelector('.anp-check').addEventListener('click', function(){
-        var key = [].concat(q.correct), right = 0, total = q.options.length;
+        var key = [].concat(q.correct), right = 0, total = q.options.length, chosen = [];
         body.querySelectorAll('.anp-opt').forEach(function(x){
           var i = +x.getAttribute('data-i'), picked = x.getAttribute('aria-pressed') === 'true', should = key.indexOf(i) > -1;
           x.disabled = true;
+          if(picked) chosen.push(i);
           if(picked === should) right++;
           if(opts.exam) return;
           if(should) x.classList.add('is-right'); else if(picked) x.classList.add('is-wrong');
           if(reveal && q.why && q.why.options && q.why.options[i]) x.insertAdjacentHTML('beforeend', '<span class="anp-opt-why">' + html(q.why.options[i]) + '</span>');
         });
-        finish(right === total, right / total);
+        finish(right === total, right / total, '', chosen);
       });
     }
 
@@ -113,7 +114,7 @@
       if(cur.every(function(v, k){ return v === k; }) && n > 1) cur.reverse();
       function paint(result){
         body.innerHTML = '<p class="anp-small">Put the steps in order.</p><ol class="anp-order">' + cur.map(function(i, k){
-          var cls = result ? (i === k ? 'pos-ok' : 'pos-no') : '';
+          var cls = result && !opts.exam ? (i === k ? 'pos-ok' : 'pos-no') : '';
           return '<li class="' + cls + '"><span class="anp-order-text">' + html(q.options[i]) + '</span>' +
             (result ? '' : '<button type="button" data-k="' + k + '" data-d="-1" aria-label="Move up"' + (k === 0 ? ' disabled' : '') + '>↑</button><button type="button" data-k="' + k + '" data-d="1" aria-label="Move down"' + (k === n - 1 ? ' disabled' : '') + '>↓</button>') + '</li>';
         }).join('') + '</ol>';
@@ -132,9 +133,10 @@
       actions.innerHTML = '<button type="button" class="btn-press sm anp-check">Check order</button>';
       actions.querySelector('.anp-check').addEventListener('click', function(){
         var right = cur.filter(function(v, k){ return v === k; }).length;
-        paint(!opts.exam);
+        // Exam mode redraws without feedback and without the move buttons.
+        paint(true);
         var detail = opts.exam ? '' : '<p><b>Correct order:</b></p><ol>' + q.options.map(function(o){ return '<li>' + html(o) + '</li>'; }).join('') + '</ol>';
-        finish(right === n, right / n, detail);
+        finish(right === n, right / n, detail, cur.slice());
       });
     }
 
@@ -169,7 +171,7 @@
           var dirLabel = v.answer === 'up' ? 'increases' : v.answer === 'down' ? 'decreases' : 'no change';
           row.querySelector('.anp-var-why').innerHTML = (ok ? '✓ ' : '✗ ') + '<b>' + dirLabel + '.</b> ' + html(v.why || '');
         });
-        finish(right === q.variables.length, right / q.variables.length);
+        finish(right === q.variables.length, right / q.variables.length, '', Object.assign({}, picks));
       });
     }
 

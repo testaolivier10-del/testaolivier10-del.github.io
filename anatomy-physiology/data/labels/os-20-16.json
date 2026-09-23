@@ -1,0 +1,101 @@
+{
+  "figure": "os-20-16",
+  "labels": [
+    {
+      "id": "filtration",
+      "name": "Filtration",
+      "accept": [
+        "filtration",
+        "capillary filtration",
+        "fluid filtration"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "net-filtration-capillary"
+    },
+    {
+      "id": "no-net-movement",
+      "name": "No net movement",
+      "accept": [
+        "no net movement",
+        "no net movement of fluid",
+        "no net filtration",
+        "equilibrium"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "net-filtration-capillary"
+    },
+    {
+      "id": "reabsorption",
+      "name": "Reabsorption",
+      "accept": [
+        "reabsorption",
+        "capillary reabsorption",
+        "fluid reabsorption",
+        "absorption"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "net-filtration-capillary"
+    },
+    {
+      "id": "arterial-end-nfp",
+      "name": "Arterial end net filtration pressure = +10 mm Hg",
+      "accept": [
+        "arterial end net filtration pressure = +10 mm hg",
+        "+10 mm hg",
+        "10 mm hg",
+        "+10",
+        "10",
+        "nfp +10 mm hg"
+      ],
+      "box": [
+        61,
+        235,
+        197,
+        71
+      ],
+      "concept": "net-filtration-capillary"
+    },
+    {
+      "id": "mid-capillary-nfp",
+      "name": "Mid capillary net filtration pressure = 0 mm Hg",
+      "accept": [
+        "mid capillary net filtration pressure = 0 mm hg",
+        "0 mm hg",
+        "0",
+        "zero",
+        "nfp 0 mm hg"
+      ],
+      "box": [
+        431,
+        235,
+        198,
+        71
+      ],
+      "concept": "net-filtration-capillary"
+    },
+    {
+      "id": "venous-end-nfp",
+      "name": "Venous end net filtration pressure = -7 mm Hg",
+      "accept": [
+        "venous end net filtration pressure = -7 mm hg",
+        "-7 mm hg",
+        "-7",
+        "−7 mm hg",
+        "nfp -7 mm hg"
+      ],
+      "box": [
+        808,
+        235,
+        197,
+        71
+      ],
+      "concept": "net-filtration-capillary"
+    }
+  ]
+}

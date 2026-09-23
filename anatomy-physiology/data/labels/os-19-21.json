@@ -1,0 +1,192 @@
+{
+  "figure": "os-19-21",
+  "labels": [
+    {
+      "id": "na-channels-close",
+      "name": "Na+ channels close",
+      "accept": [
+        "na+ channels close",
+        "sodium channels close",
+        "na channels close",
+        "voltage-gated sodium channels close"
+      ],
+      "lines": [
+        0,
+        1,
+        3
+      ],
+      "concept": "voltage-gated-na-k"
+    },
+    {
+      "id": "slow-ca-channels-open",
+      "name": "Slow Ca2+ channels open",
+      "accept": [
+        "slow ca2+ channels open",
+        "slow calcium channels open",
+        "calcium channels open",
+        "l-type calcium channels open",
+        "ca channels open"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "l-type-calcium"
+    },
+    {
+      "id": "ca-close-k-open",
+      "name": "Slow Ca2+ channels close and voltage-gated K+ channels open",
+      "accept": [
+        "slow ca2+ channels close and voltage-gated k+ channels open",
+        "calcium channels close and potassium channels open",
+        "slow calcium channels close",
+        "potassium channels open",
+        "k channels open"
+      ],
+      "lines": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "concept": "l-type-calcium"
+    },
+    {
+      "id": "plateau",
+      "name": "The plateau",
+      "accept": [
+        "the plateau",
+        "plateau",
+        "plateau phase"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "cardiac-ap"
+    },
+    {
+      "id": "repolarization",
+      "name": "Repolarization",
+      "accept": [
+        "repolarization",
+        "repolarisation"
+      ],
+      "box": [
+        765,
+        140,
+        151,
+        27
+      ],
+      "concept": "polarization-terms"
+    },
+    {
+      "id": "rapid-depolarization",
+      "name": "Rapid depolarization",
+      "accept": [
+        "rapid depolarization",
+        "depolarization",
+        "rapid depolarisation"
+      ],
+      "box": [
+        383,
+        228,
+        212,
+        27
+      ],
+      "concept": "polarization-terms"
+    },
+    {
+      "id": "k-channels-close",
+      "name": "K+ channels close",
+      "accept": [
+        "k+ channels close",
+        "potassium channels close",
+        "k channels close"
+      ],
+      "lines": [
+        11,
+        12
+      ],
+      "concept": "voltage-gated-na-k"
+    },
+    {
+      "id": "voltage-gated-na-channels-open",
+      "name": "Voltage-gated Na+ channels open",
+      "accept": [
+        "voltage-gated na+ channels open",
+        "voltage-gated sodium channels open",
+        "sodium channels open",
+        "na channels open",
+        "fast sodium channels open"
+      ],
+      "lines": [
+        14,
+        15,
+        16,
+        18
+      ],
+      "concept": "voltage-gated-na-k"
+    },
+    {
+      "id": "influx-of-na",
+      "name": "Influx of Na+",
+      "accept": [
+        "influx of na+",
+        "sodium influx",
+        "influx of sodium",
+        "na influx"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "voltage-gated-na-k"
+    },
+    {
+      "id": "refractory-period",
+      "name": "Refractory period",
+      "accept": [
+        "refractory period",
+        "refractory period of cardiac muscle",
+        "long refractory period"
+      ],
+      "box": [
+        536,
+        335,
+        179,
+        27
+      ],
+      "concept": "cardiac-refractory"
+    },
+    {
+      "id": "absolute-refractory-period",
+      "name": "Absolute",
+      "accept": [
+        "absolute",
+        "absolute refractory period",
+        "absolute refractory"
+      ],
+      "box": [
+        530,
+        385,
+        95,
+        27
+      ],
+      "concept": "refractory-periods"
+    },
+    {
+      "id": "relative-refractory-period",
+      "name": "Relative",
+      "accept": [
+        "relative",
+        "relative refractory period",
+        "relative refractory"
+      ],
+      "box": [
+        809,
+        386,
+        84,
+        26
+      ],
+      "concept": "refractory-periods"
+    }
+  ]
+}

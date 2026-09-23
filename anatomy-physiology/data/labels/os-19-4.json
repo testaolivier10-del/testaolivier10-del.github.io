@@ -1,0 +1,378 @@
+{
+  "figure": "os-19-4",
+  "labels": [
+    {
+      "id": "aorta",
+      "name": "Aorta",
+      "accept": [
+        "aorta"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "superior-vena-cava",
+      "name": "Superior vena cava",
+      "accept": [
+        "superior vena cava",
+        "svc"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "left-pulmonary-arteries",
+      "name": "Left pulmonary arteries",
+      "accept": [
+        "left pulmonary arteries",
+        "left pulmonary artery",
+        "pulmonary arteries",
+        "pulmonary artery"
+      ],
+      "lines": [
+        2,
+        4
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "right-pulmonary-arteries",
+      "name": "Right pulmonary arteries",
+      "accept": [
+        "right pulmonary arteries",
+        "right pulmonary artery",
+        "pulmonary arteries",
+        "pulmonary artery"
+      ],
+      "lines": [
+        3,
+        5
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "pulmonary-trunk",
+      "name": "Pulmonary trunk",
+      "accept": [
+        "pulmonary trunk"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "left-atrium",
+      "name": "Left atrium",
+      "accept": [
+        "left atrium",
+        "la"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "right-pulmonary-veins",
+      "name": "Right pulmonary veins",
+      "accept": [
+        "right pulmonary veins",
+        "right pulmonary vein",
+        "pulmonary veins",
+        "pulmonary vein"
+      ],
+      "lines": [
+        8,
+        10
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "pulmonary-veins",
+      "name": "Left pulmonary veins",
+      "accept": [
+        "left pulmonary veins",
+        "left pulmonary vein",
+        "pulmonary veins",
+        "pulmonary vein"
+      ],
+      "lines": [
+        9,
+        11
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "pulmonary-semilunar-valve",
+      "name": "Pulmonary semilunar valve",
+      "accept": [
+        "pulmonary semilunar valve",
+        "pulmonary valve",
+        "pulmonic valve"
+      ],
+      "lines": [
+        12,
+        14,
+        16
+      ],
+      "concept": "semilunar-valves"
+    },
+    {
+      "id": "aortic-semilunar-valve",
+      "name": "Aortic semilunar valve",
+      "accept": [
+        "aortic semilunar valve",
+        "aortic valve"
+      ],
+      "lines": [
+        13,
+        15
+      ],
+      "concept": "semilunar-valves"
+    },
+    {
+      "id": "mitral-valve",
+      "name": "Mitral valve",
+      "accept": [
+        "mitral valve",
+        "bicuspid valve",
+        "left atrioventricular valve",
+        "left av valve",
+        "mitral"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "av-valves"
+    },
+    {
+      "id": "right-atrium",
+      "name": "Right atrium",
+      "accept": [
+        "right atrium",
+        "ra"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "left-ventricle",
+      "name": "Left ventricle",
+      "accept": [
+        "left ventricle",
+        "lv"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "tricuspid-valve",
+      "name": "Tricuspid valve",
+      "accept": [
+        "tricuspid valve",
+        "right atrioventricular valve",
+        "right av valve",
+        "tricuspid"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "av-valves"
+    },
+    {
+      "id": "right-ventricle",
+      "name": "Right ventricle",
+      "accept": [
+        "right ventricle",
+        "rv"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "inferior-vena-cava",
+      "name": "Inferior vena cava",
+      "accept": [
+        "inferior vena cava",
+        "ivc"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "systemic-veins-upper-body",
+      "name": "Systemic veins from upper body",
+      "accept": [
+        "systemic veins from upper body",
+        "systemic veins"
+      ],
+      "lines": [
+        25,
+        27,
+        29
+      ],
+      "concept": "systemic-circuit"
+    },
+    {
+      "id": "systemic-capillaries-upper-body",
+      "name": "Systemic capillaries of upper body",
+      "accept": [
+        "systemic capillaries of upper body",
+        "systemic capillaries"
+      ],
+      "lines": [
+        26,
+        28,
+        30,
+        31
+      ],
+      "concept": "systemic-circuit"
+    },
+    {
+      "id": "systemic-arteries-upper-body",
+      "name": "Systemic arteries to upper body",
+      "accept": [
+        "systemic arteries to upper body",
+        "systemic arteries"
+      ],
+      "lines": [
+        32,
+        33,
+        36
+      ],
+      "concept": "systemic-circuit"
+    },
+    {
+      "id": "pulmonary-capillaries",
+      "name": "Pulmonary capillaries in lungs",
+      "accept": [
+        "pulmonary capillaries in lungs",
+        "pulmonary capillaries",
+        "pulmonary capillary"
+      ],
+      "lines": [
+        34,
+        37,
+        38
+      ],
+      "concept": "pulmonary-circuit"
+    },
+    {
+      "id": "pulmonary-trunk-loop",
+      "name": "Pulmonary trunk",
+      "accept": [
+        "pulmonary trunk"
+      ],
+      "lines": [
+        39,
+        40
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "right-atrium-loop",
+      "name": "Right atrium",
+      "accept": [
+        "right atrium",
+        "ra"
+      ],
+      "lines": [
+        41
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "left-atrium-loop",
+      "name": "Left atrium",
+      "accept": [
+        "left atrium",
+        "la"
+      ],
+      "lines": [
+        43
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "right-ventricle-loop",
+      "name": "Right ventricle",
+      "accept": [
+        "right ventricle",
+        "rv"
+      ],
+      "lines": [
+        44,
+        45
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "left-ventricle-loop",
+      "name": "Left ventricle",
+      "accept": [
+        "left ventricle",
+        "lv"
+      ],
+      "lines": [
+        46,
+        47
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "systemic-veins-lower-body",
+      "name": "Systemic veins from lower body",
+      "accept": [
+        "systemic veins from lower body",
+        "systemic veins"
+      ],
+      "lines": [
+        48,
+        49,
+        51
+      ],
+      "concept": "systemic-circuit"
+    },
+    {
+      "id": "systemic-arteries-lower-body",
+      "name": "Systemic arteries to lower body",
+      "accept": [
+        "systemic arteries to lower body",
+        "systemic arteries"
+      ],
+      "lines": [
+        50,
+        52,
+        53
+      ],
+      "concept": "systemic-circuit"
+    },
+    {
+      "id": "systemic-capillaries-lower-body",
+      "name": "Systemic capillaries of lower body",
+      "accept": [
+        "systemic capillaries of lower body",
+        "systemic capillaries"
+      ],
+      "lines": [
+        54,
+        55,
+        56
+      ],
+      "concept": "systemic-circuit"
+    }
+  ]
+}

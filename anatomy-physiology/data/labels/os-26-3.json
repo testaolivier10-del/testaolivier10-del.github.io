@@ -1,0 +1,46 @@
+{
+  "figure": "os-26-3",
+  "labels": [
+    {
+      "id": "intracellular-fluid",
+      "name": "Intracellular fluid (ICF)",
+      "accept": [
+        "intracellular fluid (icf)",
+        "intracellular fluid",
+        "icf",
+        "cytosol"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "plasma",
+      "name": "Plasma",
+      "accept": [
+        "plasma",
+        "blood plasma"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "plasma"
+    },
+    {
+      "id": "interstitial-fluid",
+      "name": "Interstitial fluid (IF)",
+      "accept": [
+        "interstitial fluid (if)",
+        "interstitial fluid",
+        "if",
+        "isf",
+        "tissue fluid"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "icf-ecf"
+    }
+  ]
+}
