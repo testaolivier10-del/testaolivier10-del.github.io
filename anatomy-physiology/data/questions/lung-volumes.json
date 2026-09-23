@@ -4,13 +4,25 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "What is tidal volume?",
-    "options": ["The most air you can breathe out after the deepest breath in", "The air left in the lungs after the hardest breath out", "The air moved in or out in one quiet breath", "The extra air you can breathe in after a normal breath in"],
+    "options": [
+      "The most air you can breathe out after the deepest breath in",
+      "The air left in the lungs after the hardest breath out",
+      "The air moved in or out in one quiet breath",
+      "The extra air you can breathe in after a normal breath in"
+    ],
     "correct": 2,
     "why": {
       "correct": "Tidal volume is the volume of one quiet, resting breath, about 500 mL in an adult.",
-      "options": ["That is vital capacity, TV + IRV + ERV, about 4,700 mL.", "That is residual volume, about 1,200 mL, which never leaves the lungs.", "Correct. One quiet breath in or out is the tidal volume.", "That is inspiratory reserve volume, about 3,000 mL."]
+      "options": [
+        "That is vital capacity, TV + IRV + ERV, about 4,700 mL.",
+        "That is residual volume, about 1,200 mL, which never leaves the lungs.",
+        "Correct. One quiet breath in or out is the tidal volume.",
+        "That is inspiratory reserve volume, about 3,000 mL."
+      ]
     }
   },
   {
@@ -18,13 +30,25 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "A patient's tidal volume is 500 mL, inspiratory reserve volume 3,000 mL, expiratory reserve volume 1,100 mL and residual volume 1,200 mL. What is her vital capacity?",
-    "options": ["4,600 mL", "5,800 mL", "3,500 mL", "2,300 mL"],
-    "correct": 0,
+    "options": [
+      "3,500 mL",
+      "5,800 mL",
+      "4,600 mL",
+      "2,300 mL"
+    ],
+    "correct": 2,
     "why": {
       "correct": "Vital capacity = TV + IRV + ERV = 500 + 3,000 + 1,100 = 4,600 mL. Residual volume is not part of it, because it can never be breathed out.",
-      "options": ["Correct. 500 + 3,000 + 1,100 = 4,600 mL.", "5,800 mL adds the residual volume too. That sum is total lung capacity.", "3,500 mL is TV + IRV, the inspiratory capacity.", "2,300 mL is ERV + RV, the functional residual capacity."]
+      "options": [
+        "3,500 mL is TV + IRV, the inspiratory capacity.",
+        "5,800 mL adds the residual volume too. That sum is total lung capacity.",
+        "Correct. 500 + 3,000 + 1,100 = 4,600 mL.",
+        "2,300 mL is ERV + RV, the functional residual capacity."
+      ]
     }
   },
   {
@@ -32,13 +56,25 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "At the end of a quiet breath out, a man's lungs hold his expiratory reserve volume of 1,000 mL plus his residual volume of 1,300 mL. What is this capacity called, and how large is it?",
-    "options": ["Inspiratory capacity, 2,300 mL", "Vital capacity, 2,300 mL", "Total lung capacity, 1,300 mL", "Functional residual capacity, 2,300 mL"],
+    "options": [
+      "Inspiratory capacity, 2,300 mL",
+      "Vital capacity, 2,300 mL",
+      "Total lung capacity, 1,300 mL",
+      "Functional residual capacity, 2,300 mL"
+    ],
     "correct": 3,
     "why": {
       "correct": "Functional residual capacity is the air left in the lungs at the end of a quiet breath out: ERV + RV = 1,000 + 1,300 = 2,300 mL.",
-      "options": ["Inspiratory capacity is TV + IRV, the most you can breathe in from the end of a quiet breath out, not the air already there.", "Vital capacity is TV + IRV + ERV, and it never includes residual volume.", "Total lung capacity includes all four volumes and is far larger than the residual volume alone.", "Correct. ERV + RV is the functional residual capacity."]
+      "options": [
+        "Inspiratory capacity is TV + IRV, the most you can breathe in from the end of a quiet breath out, not the air already there.",
+        "Vital capacity is TV + IRV + ERV, and it never includes residual volume.",
+        "Total lung capacity includes all four volumes and is far larger than the residual volume alone.",
+        "Correct. ERV + RV is the functional residual capacity."
+      ]
     }
   },
   {
@@ -46,15 +82,27 @@
     "type": "image",
     "level": "recall",
     "diff": 1,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "figure": "os-22-18",
     "pin": "residual-volume",
     "q": "Name the pinned volume.",
-    "options": ["Expiratory reserve volume", "Residual volume", "Tidal volume", "Functional residual capacity"],
+    "options": [
+      "Expiratory reserve volume",
+      "Residual volume",
+      "Tidal volume",
+      "Functional residual capacity"
+    ],
     "correct": 1,
     "why": {
       "correct": "The bottom band, from 0 to about 1,200 mL, is the residual volume: the air that stays in the lungs even after the hardest breath out. The spirogram trace never dips into it.",
-      "options": ["Expiratory reserve volume is the band above it, which the trace does reach during the fullest breath out.", "Correct. This is the residual volume.", "Tidal volume is the narrow band where the small, quiet breaths ride, near the middle of the scale.", "Functional residual capacity is a capacity, ERV + RV together, not a single band."]
+      "options": [
+        "Expiratory reserve volume is the band above it, which the trace does reach during the fullest breath out.",
+        "Correct. This is the residual volume.",
+        "Tidal volume is the narrow band where the small, quiet breaths ride, near the middle of the scale.",
+        "Functional residual capacity is a capacity, ERV + RV together, not a single band."
+      ]
     }
   },
   {
@@ -62,15 +110,27 @@
     "type": "image",
     "level": "recall",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "figure": "os-22-18",
     "pin": "functional-residual-capacity",
     "q": "Name the pinned capacity.",
-    "options": ["Inspiratory capacity", "Vital capacity", "Functional residual capacity", "Total lung capacity"],
+    "options": [
+      "Inspiratory capacity",
+      "Vital capacity",
+      "Functional residual capacity",
+      "Total lung capacity"
+    ],
     "correct": 2,
     "why": {
       "correct": "The lower part of the first capacity bar is the functional residual capacity: expiratory reserve volume plus residual volume, the air in the lungs at the end of a quiet breath out.",
-      "options": ["Inspiratory capacity sits above it in the same bar: TV + IRV.", "Vital capacity is the tall bar that stops at the residual volume.", "Correct. ERV + RV is the functional residual capacity.", "Total lung capacity is the bar that spans the whole scale."]
+      "options": [
+        "Inspiratory capacity sits above it in the same bar: TV + IRV.",
+        "Vital capacity is the tall bar that stops at the residual volume.",
+        "Correct. ERV + RV is the functional residual capacity.",
+        "Total lung capacity is the bar that spans the whole scale."
+      ]
     }
   },
   {
@@ -78,14 +138,26 @@
     "type": "graph",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "figure": "os-22-18",
     "q": "Using the spirogram, estimate this person's inspiratory capacity: the most air he could breathe in starting from the end of a quiet breath out.",
-    "options": ["About 500 mL", "About 6,000 mL", "About 4,800 mL", "About 3,500 mL"],
+    "options": [
+      "About 500 mL",
+      "About 6,000 mL",
+      "About 4,800 mL",
+      "About 3,500 mL"
+    ],
     "correct": 3,
     "why": {
       "correct": "A quiet breath out ends at about 2,500 mL, the bottom of the tidal band. The deepest breath in reaches 6,000 mL. The difference, 6,000 − 2,500 = 3,500 mL, is the inspiratory capacity (TV + IRV).",
-      "options": ["About 500 mL is the tidal volume alone, a quiet breath, not the deepest possible one.", "6,000 mL is the total lung capacity, which counts air already in the lungs at the start.", "About 4,800 mL is the vital capacity, measured from the fullest breath out, not from a quiet one.", "Correct. From about 2,500 up to 6,000 mL is about 3,500 mL."]
+      "options": [
+        "About 500 mL is the tidal volume alone, a quiet breath, not the deepest possible one.",
+        "6,000 mL is the total lung capacity, which counts air already in the lungs at the start.",
+        "About 4,800 mL is the vital capacity, measured from the fullest breath out, not from a quiet one.",
+        "Correct. From about 2,500 up to 6,000 mL is about 3,500 mL."
+      ]
     }
   },
   {
@@ -93,13 +165,33 @@
     "type": "multi",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "Select every value that simple spirometry alone cannot measure.",
-    "options": ["Residual volume", "Tidal volume", "Functional residual capacity", "Vital capacity", "Total lung capacity", "Expiratory reserve volume"],
-    "correct": [0, 2, 4],
+    "options": [
+      "Residual volume",
+      "Tidal volume",
+      "Functional residual capacity",
+      "Vital capacity",
+      "Total lung capacity",
+      "Expiratory reserve volume"
+    ],
+    "correct": [
+      0,
+      2,
+      4
+    ],
     "why": {
       "correct": "A spirometer records only air that passes the mouthpiece. Residual volume never leaves the lungs, so it and every capacity that includes it (FRC and TLC) need another method, such as gas dilution or body plethysmography.",
-      "options": ["Correct. Residual volume never passes the mouthpiece.", "Tidal volume is breathed in and out through the mouthpiece, so spirometry measures it directly.", "Correct. FRC includes residual volume.", "Vital capacity is all breathed out through the mouthpiece, so spirometry measures it.", "Correct. TLC includes residual volume.", "Expiratory reserve volume is breathed out through the mouthpiece, so spirometry measures it."]
+      "options": [
+        "Correct. Residual volume never passes the mouthpiece.",
+        "Tidal volume is breathed in and out through the mouthpiece, so spirometry measures it directly.",
+        "Correct. FRC includes residual volume.",
+        "Vital capacity is all breathed out through the mouthpiece, so spirometry measures it.",
+        "Correct. TLC includes residual volume.",
+        "Expiratory reserve volume is breathed out through the mouthpiece, so spirometry measures it."
+      ]
     }
   },
   {
@@ -107,13 +199,25 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "A resting woman breathes 14 times a minute with a tidal volume of 450 mL. What is her minute ventilation?",
-    "options": ["464 mL/min", "3.2 L/min", "6.3 L/min", "63 L/min"],
+    "options": [
+      "464 mL/min",
+      "3.2 L/min",
+      "6.3 L/min",
+      "63 L/min"
+    ],
     "correct": 2,
     "why": {
       "correct": "Minute ventilation = tidal volume × respiratory rate = 450 mL × 14 = 6,300 mL/min = 6.3 L/min.",
-      "options": ["464 comes from adding the tidal volume and the rate. Multiply them.", "3.2 L/min is about half the product. 450 × 14 is 6,300, not 3,150.", "Correct. 450 × 14 = 6,300 mL/min.", "63 L/min is ten times too large: 6,300 mL is 6.3 L."]
+      "options": [
+        "464 comes from adding the tidal volume and the rate. Multiply them.",
+        "3.2 L/min is about half the product. 450 × 14 is 6,300, not 3,150.",
+        "Correct. 450 × 14 = 6,300 mL/min.",
+        "63 L/min is ten times too large: 6,300 mL is 6.3 L."
+      ]
     }
   },
   {
@@ -121,13 +225,25 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "A resting man breathes 12 times a minute with a tidal volume of 500 mL. His dead space is 150 mL. What is his alveolar ventilation?",
-    "options": ["6.0 L/min", "4.2 L/min", "1.8 L/min", "7.8 L/min"],
+    "options": [
+      "6.0 L/min",
+      "4.2 L/min",
+      "1.8 L/min",
+      "7.8 L/min"
+    ],
     "correct": 1,
     "why": {
       "correct": "Alveolar ventilation = (tidal volume − dead space) × rate = (500 − 150) × 12 = 350 × 12 = 4,200 mL/min = 4.2 L/min.",
-      "options": ["6.0 L/min is the minute ventilation, 500 × 12, which still includes the dead space.", "Correct. 350 mL of fresh air reaches the alveoli on each of 12 breaths.", "1.8 L/min is the dead space ventilation, 150 × 12: the air wasted each minute.", "7.8 L/min adds the dead space instead of subtracting it: (500 + 150) × 12."]
+      "options": [
+        "6.0 L/min is the minute ventilation, 500 × 12, which still includes the dead space.",
+        "Correct. 350 mL of fresh air reaches the alveoli on each of 12 breaths.",
+        "1.8 L/min is the dead space ventilation, 150 × 12: the air wasted each minute.",
+        "7.8 L/min adds the dead space instead of subtracting it: (500 + 150) × 12."
+      ]
     }
   },
   {
@@ -135,14 +251,27 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["gradients", "homeostasis"],
+    "core": [
+      "gradients",
+      "homeostasis"
+    ],
     "misconception": "minute ventilation equals fresh air reaching the alveoli",
     "q": "Mr. Adebayo has four broken ribs. He breathes 32 times a minute with a tidal volume of 200 mL, and his dead space is 150 mL. His minute ventilation is 6.4 L/min, which looks normal. How much fresh air reaches his alveoli each minute?",
-    "options": ["6.4 L/min, the same as his minute ventilation", "4.8 L/min", "1.6 L/min", "11.2 L/min"],
+    "options": [
+      "6.4 L/min, the same as his minute ventilation",
+      "4.8 L/min",
+      "1.6 L/min",
+      "11.2 L/min"
+    ],
     "correct": 2,
     "why": {
       "correct": "Alveolar ventilation = (200 − 150) × 32 = 50 × 32 = 1,600 mL/min = 1.6 L/min. Three-quarters of each tiny breath only fills the conducting airways, so his alveoli get well under half of the normal 4.2 L/min, and carbon dioxide builds up.",
-      "options": ["Minute ventilation counts the dead space too. Each 200 mL breath spends 150 mL filling airways where no gas exchange happens.", "4.8 L/min is the dead space ventilation, 150 × 32: the wasted air, not the useful air.", "Correct. Only 50 mL of each breath reaches the alveoli.", "11.2 L/min adds the dead space to each breath instead of subtracting it."]
+      "options": [
+        "Minute ventilation counts the dead space too. Each 200 mL breath spends 150 mL filling airways where no gas exchange happens.",
+        "4.8 L/min is the dead space ventilation, 150 × 32: the wasted air, not the useful air.",
+        "Correct. Only 50 mL of each breath reaches the alveoli.",
+        "11.2 L/min adds the dead space to each breath instead of subtracting it."
+      ]
     }
   },
   {
@@ -151,29 +280,62 @@
     "level": "analyze",
     "diff": 2,
     "predictLevel": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "misconception": "minute ventilation equals fresh air reaching the alveoli",
     "q": "A resting person switches from 12 breaths of 500 mL per minute to 24 breaths of 250 mL per minute. Her anatomical dead space is 150 mL. Predict the change in each variable.",
     "variables": [
-      { "name": "Minute ventilation", "answer": "none", "why": "12 × 500 and 24 × 250 both equal 6,000 mL/min, so the total air moved each minute is unchanged." },
-      { "name": "Anatomical dead space", "answer": "none", "why": "Anatomical dead space is the volume of the conducting airways, set by their size, not by how she breathes." },
-      { "name": "Share of each breath that is dead space", "answer": "up", "why": "150 mL is now 60% of a 250 mL breath, instead of 30% of a 500 mL breath." },
-      { "name": "Alveolar ventilation", "answer": "down", "why": "(250 − 150) × 24 = 2,400 mL/min, down from (500 − 150) × 12 = 4,200 mL/min, because the fixed dead space is paid on twice as many smaller breaths." }
+      {
+        "name": "Minute ventilation",
+        "answer": "none",
+        "why": "12 × 500 and 24 × 250 both equal 6,000 mL/min, so the total air moved each minute is unchanged."
+      },
+      {
+        "name": "Anatomical dead space",
+        "answer": "none",
+        "why": "Anatomical dead space is the volume of the conducting airways, set by their size, not by how she breathes."
+      },
+      {
+        "name": "Share of each breath that is dead space",
+        "answer": "up",
+        "why": "150 mL is now 60% of a 250 mL breath, instead of 30% of a 500 mL breath."
+      },
+      {
+        "name": "Alveolar ventilation",
+        "answer": "down",
+        "why": "(250 − 150) × 24 = 2,400 mL/min, down from (500 − 150) × 12 = 4,200 mL/min, because the fixed dead space is paid on twice as many smaller breaths."
+      }
     ],
-    "why": { "correct": "Doubling the rate and halving the depth keeps minute ventilation the same, but the dead space is a fixed cost on every breath. With smaller breaths, a larger share of each one is wasted, and alveolar ventilation falls by almost half." }
+    "why": {
+      "correct": "Doubling the rate and halving the depth keeps minute ventilation the same, but the dead space is a fixed cost on every breath. With smaller breaths, a larger share of each one is wasted, and alveolar ventilation falls by almost half."
+    }
   },
   {
     "id": "anp-lung-volumes-12",
     "type": "vignette",
     "level": "analyze",
     "diff": 2,
-    "core": ["gradients", "structure-function"],
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
     "q": "Ms. Park, 34, has episodes of wheezing. On spirometry her FEV1 is 1.6 L and her FVC is 3.9 L. Which pattern does this show?",
-    "options": ["Obstructive: air leaves the lungs too slowly through narrowed airways", "Restrictive: her lungs cannot expand fully", "Normal: her FVC is close to the typical value", "Neither pattern can be judged without her residual volume"],
+    "options": [
+      "Obstructive: narrowed airways slow the breath out",
+      "Restrictive: her lungs and chest wall cannot expand fully",
+      "Normal: her FVC is close to the typical value",
+      "Neither pattern can be judged without her residual volume"
+    ],
     "correct": 0,
     "why": {
       "correct": "FEV1/FVC = 1.6 ÷ 3.9 = 0.41, far below about 0.70. She can blow out a nearly normal total volume, but slowly, because narrowed airways raise resistance. That is obstruction, typical of asthma.",
-      "options": ["Correct. A low FEV1/FVC ratio is the mark of obstruction.", "Restriction shrinks the FVC but leaves the FEV1/FVC ratio normal or high. Her ratio is very low.", "A near-normal FVC does not make the test normal; the speed of emptying, FEV1/FVC, is badly reduced.", "Residual volume is needed to confirm restriction, but a low FEV1/FVC ratio shows obstruction from spirometry alone."]
+      "options": [
+        "Correct. A low FEV1/FVC ratio is the mark of obstruction.",
+        "Restriction shrinks the FVC but leaves the FEV1/FVC ratio normal or high. Her ratio is very low.",
+        "A near-normal FVC does not make the test normal; the speed of emptying, FEV1/FVC, is badly reduced.",
+        "Residual volume is needed to confirm restriction, but a low FEV1/FVC ratio shows obstruction from spirometry alone."
+      ]
     }
   },
   {
@@ -181,13 +343,26 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["gradients", "structure-function"],
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
     "q": "Mr. Osei, 66, has fibrosis of both lungs. His FEV1 is 2.2 L, his FVC is 2.5 L, and his total lung capacity is 60% of the predicted value. Which set of findings fits his disease?",
-    "options": ["Low FEV1/FVC ratio, raised residual volume, stiff airways", "Normal or high FEV1/FVC ratio, small lungs, low compliance", "Normal FEV1/FVC ratio, large lungs, raised compliance", "Low FEV1/FVC ratio, small lungs, raised airway resistance"],
+    "options": [
+      "Low FEV1/FVC ratio, raised residual volume, stiff airways",
+      "Normal or high FEV1/FVC ratio, small, stiff lungs",
+      "Normal FEV1/FVC ratio, large lungs, raised compliance",
+      "Low FEV1/FVC ratio, small lungs, raised airway resistance"
+    ],
     "correct": 1,
     "why": {
       "correct": "His ratio is 2.2 ÷ 2.5 = 0.88: what air he has comes out fast. His total lung capacity is low, which defines restriction. Scar tissue makes the lungs stiff (low compliance), so they cannot expand fully.",
-      "options": ["A low ratio and air trapping describe obstruction. His ratio is high.", "Correct. Restriction: small, stiff lungs whose airways empty quickly.", "Fibrosis lowers compliance and makes the lungs smaller, not larger.", "His ratio is high, not low, and fibrosis stiffens the lung tissue rather than narrowing the airways."]
+      "options": [
+        "A low ratio and air trapping describe obstruction. His ratio is high.",
+        "Correct. Restriction: small, stiff lungs whose airways empty quickly.",
+        "Fibrosis lowers compliance and makes the lungs smaller, not larger.",
+        "His ratio is high, not low, and fibrosis stiffens the lung tissue rather than narrowing the airways."
+      ]
     }
   },
   {
@@ -195,13 +370,25 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "A swimmer breathes through a snorkel that holds 150 mL. His dead space without it is 150 mL. If he keeps breathing 12 times a minute with 500 mL breaths, what happens to his alveolar ventilation, and what is the best way for him to restore it?",
-    "options": ["It falls from 4.2 to 2.4 L/min; breathe more deeply", "It is unchanged, because the snorkel is outside his body", "It falls from 4.2 to 2.4 L/min; breathe faster with the same small breaths", "It rises, because the snorkel adds extra air to each breath"],
+    "options": [
+      "It falls from 4.2 to 2.4 L/min; breathe more deeply",
+      "It is unchanged, because the snorkel is outside his body",
+      "It falls from 4.2 to 2.4 L/min; breathe faster with the same small breaths",
+      "It rises, because the snorkel adds extra air to each breath"
+    ],
     "correct": 0,
     "why": {
       "correct": "The snorkel adds its volume to the dead space: 150 + 150 = 300 mL. Alveolar ventilation falls from (500 − 150) × 12 = 4.2 L/min to (500 − 300) × 12 = 2.4 L/min. Deeper breaths help most, because each extra milliliter of tidal volume goes straight to the alveoli once the dead space is filled.",
-      "options": ["Correct. Deeper breathing restores alveolar ventilation most efficiently.", "Any tube the breath must pass through adds dead space, wherever it is. The stale air left in the snorkel is breathed back in first.", "The fall is right, but faster breathing with the same small breaths pays the larger dead space on every extra breath, so it restores alveolar ventilation poorly.", "The snorkel holds air that is breathed back and forth unused; it adds dead space, not fresh air."]
+      "options": [
+        "Correct. Deeper breathing restores alveolar ventilation most efficiently.",
+        "Any tube the breath must pass through adds dead space, wherever it is. The stale air left in the snorkel is breathed back in first.",
+        "The fall is right, but faster breathing with the same small breaths pays the larger dead space on every extra breath, so it restores alveolar ventilation poorly.",
+        "The snorkel holds air that is breathed back and forth unused; it adds dead space, not fresh air."
+      ]
     }
   },
   {
@@ -209,13 +396,28 @@
     "type": "error",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients", "structure-function"],
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
     "q": "A student explained how narrowed airways change a forced spirometry test. One step is wrong. Which one?",
-    "options": ["Narrowed airways raise airway resistance", "During a forced breath out, air leaves the lungs more slowly", "FEV1 falls more than FVC does", "The FEV1/FVC ratio rises above normal", "Air trapped behind closing airways raises residual volume"],
+    "options": [
+      "Narrowed airways raise airway resistance",
+      "During a forced breath out, air leaves the lungs more slowly",
+      "FEV1 falls more than FVC does",
+      "The FEV1/FVC ratio rises above normal",
+      "Air trapped behind closing airways raises residual volume"
+    ],
     "correct": 3,
     "why": {
       "correct": "When FEV1 falls much more than FVC, the ratio FEV1/FVC falls, typically below about 0.70. A normal or high ratio is the pattern of restriction, not obstruction.",
-      "options": ["This step is right. Resistance rises steeply as the radius of an airway falls.", "This step is right. Higher resistance slows airflow for the same pressure gradient.", "This step is right. The volume blown out in the first second falls most, because the breath out is slow.", "This is the error. A smaller FEV1 over a similar FVC makes the ratio fall, not rise.", "This step is right. Narrowed airways close early during a forced breath out and trap air behind them."]
+      "options": [
+        "This step is right. Resistance rises steeply as the radius of an airway falls.",
+        "This step is right. Higher resistance slows airflow for the same pressure gradient.",
+        "This step is right. The volume blown out in the first second falls most, because the breath out is slow.",
+        "This is the error. A smaller FEV1 over a similar FVC makes the ratio fall, not rise.",
+        "This step is right. Narrowed airways close early during a forced breath out and trap air behind them."
+      ]
     }
   },
   {
@@ -223,13 +425,25 @@
     "type": "missing",
     "level": "recall",
     "diff": 1,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "Complete the sum: vital capacity = tidal volume + inspiratory reserve volume + ____.",
-    "options": ["Residual volume", "Expiratory reserve volume", "Functional residual capacity", "Dead space"],
+    "options": [
+      "Residual volume",
+      "Expiratory reserve volume",
+      "Functional residual capacity",
+      "Dead space"
+    ],
     "correct": 1,
     "why": {
       "correct": "Vital capacity is all the air you can move in one maximal breath: tidal volume plus both reserve volumes, TV + IRV + ERV.",
-      "options": ["Residual volume can never be breathed out, so it is not part of vital capacity. Adding it gives total lung capacity.", "Correct. TV + IRV + ERV.", "Functional residual capacity already includes residual volume, which cannot be breathed out.", "Dead space is part of each breath, not a separate volume added to the lungs' contents."]
+      "options": [
+        "Residual volume can never be breathed out, so it is not part of vital capacity. Adding it gives total lung capacity.",
+        "Correct. TV + IRV + ERV.",
+        "Functional residual capacity already includes residual volume, which cannot be breathed out.",
+        "Dead space is part of each breath, not a separate volume added to the lungs' contents."
+      ]
     }
   },
   {
@@ -237,13 +451,25 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "What is anatomical dead space?",
-    "options": ["Alveoli that receive air but no blood flow", "The air left in the lungs after the hardest breath out", "The air in the pleural cavity", "The volume of the conducting airways, about 150 mL"],
+    "options": [
+      "Alveoli that receive air but no blood flow",
+      "The air left in the lungs after the hardest breath out",
+      "The air in the pleural cavity",
+      "The volume of the conducting airways, about 150 mL"
+    ],
     "correct": 3,
     "why": {
       "correct": "Anatomical dead space is the volume of the conducting zone, from the nose to the terminal bronchioles, about 150 mL in an adult. Air there moves in and out but takes no part in gas exchange.",
-      "options": ["That is alveolar dead space. Anatomical plus alveolar dead space make up total dead space.", "That is residual volume, which sits mostly in the alveoli and keeps them open.", "The pleural cavity holds a thin film of fluid, not air, in a healthy person.", "Correct. The conducting airways make up the anatomical dead space."]
+      "options": [
+        "That is alveolar dead space. Anatomical plus alveolar dead space make up total dead space.",
+        "That is residual volume, which sits mostly in the alveoli and keeps them open.",
+        "The pleural cavity holds a thin film of fluid, not air, in a healthy person.",
+        "Correct. The conducting airways make up the anatomical dead space."
+      ]
     }
   },
   {
@@ -251,13 +477,26 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["gradients", "interdependence"],
+    "core": [
+      "gradients",
+      "interdependence"
+    ],
     "q": "A blood clot lodges in a branch of Ms. Reyes's pulmonary artery. The alveoli supplied by that branch still fill with air on every breath. What happens to her dead space?",
-    "options": ["Anatomical dead space rises, because the airways widen", "Alveolar dead space rises, so total dead space rises", "Dead space is unchanged, because her airways are normal", "Total dead space falls, because less blood reaches the lungs"],
+    "options": [
+      "Anatomical dead space rises, because the airways widen",
+      "Alveolar dead space rises, so total dead space rises",
+      "Dead space is unchanged, because her airways are normal",
+      "Total dead space falls, because less blood reaches the lungs"
+    ],
     "correct": 1,
     "why": {
       "correct": "Air reaching alveoli with no blood flow cannot exchange gas, so those alveoli become alveolar dead space. Total dead space, anatomical plus alveolar, rises, and she must breathe more to deliver the same useful ventilation.",
-      "options": ["Anatomical dead space is the volume of the conducting airways, which a clot in an artery does not change.", "Correct. Ventilated alveoli with no blood flow are alveolar dead space.", "Normal airways keep anatomical dead space normal, but dead space also includes alveoli that get air and no blood.", "Losing blood flow to ventilated alveoli wastes their air, which raises dead space rather than lowering it."]
+      "options": [
+        "Anatomical dead space is the volume of the conducting airways, which a clot in an artery does not change.",
+        "Correct. Ventilated alveoli with no blood flow are alveolar dead space.",
+        "Normal airways keep anatomical dead space normal, but dead space also includes alveoli that get air and no blood.",
+        "Losing blood flow to ventilated alveoli wastes their air, which raises dead space rather than lowering it."
+      ]
     }
   },
   {
@@ -265,23 +504,46 @@
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "Order these values for a typical healthy young man, from smallest to largest.",
-    "options": ["Tidal volume (about 500 mL)", "Residual volume (about 1,200 mL)", "Functional residual capacity (about 2,400 mL)", "Inspiratory capacity (about 3,500 mL)", "Vital capacity (about 4,700 mL)", "Total lung capacity (about 5,900 mL)"],
-    "why": { "correct": "Tidal volume is the smallest. Residual volume is about 1,200 mL. FRC adds the expiratory reserve volume to it. Inspiratory capacity is tidal volume plus the large inspiratory reserve. Vital capacity adds the expiratory reserve to that. Total lung capacity, all four volumes, is the largest." }
+    "options": [
+      "Tidal volume (about 500 mL)",
+      "Residual volume (about 1,200 mL)",
+      "Functional residual capacity (about 2,400 mL)",
+      "Inspiratory capacity (about 3,500 mL)",
+      "Vital capacity (about 4,700 mL)",
+      "Total lung capacity (about 5,900 mL)"
+    ],
+    "why": {
+      "correct": "Tidal volume is the smallest. Residual volume is about 1,200 mL. FRC adds the expiratory reserve volume to it. Inspiratory capacity is tidal volume plus the large inspiratory reserve. Vital capacity adds the expiratory reserve to that. Total lung capacity, all four volumes, is the largest."
+    }
   },
   {
     "id": "anp-lung-volumes-20",
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Why can't you breathe out your residual volume, however hard you try?",
-    "options": ["Surfactant glues the alveolar walls open", "The diaphragm cannot relax fully during a breath out", "Small airways close and the chest wall reaches its limit", "Alveolar air is chemically bound to the alveolar walls"],
+    "options": [
+      "Surfactant glues the alveolar walls open",
+      "The diaphragm cannot relax fully during a breath out",
+      "Small airways close and the chest wall reaches its limit",
+      "Alveolar air is chemically bound to the alveolar walls"
+    ],
     "correct": 2,
     "why": {
       "correct": "As lung volume falls, the pressure around the smallest airways, which have no cartilage, squeezes them shut and traps air beyond them. The pleural fluid holds the lungs to the chest wall, and the chest wall stops getting smaller at its limit, so the lungs cannot empty.",
-      "options": ["Surfactant lowers surface tension, which makes the alveoli easier to inflate; it does not hold air in.", "During a forced breath out, the diaphragm is fully relaxed and the abdominal muscles push it up. Residual volume remains anyway.", "Correct. Airway closure and the chest wall's limit leave the residual volume behind.", "Air is not bound to the alveolar walls. It is trapped by closed airways and a chest that cannot shrink further."]
+      "options": [
+        "Surfactant lowers surface tension, which makes the alveoli easier to inflate; it does not hold air in.",
+        "During a forced breath out, the diaphragm is fully relaxed and the abdominal muscles push it up. Residual volume remains anyway.",
+        "Correct. Airway closure and the chest wall's limit leave the residual volume behind.",
+        "Air is not bound to the alveolar walls. It is trapped by closed airways and a chest that cannot shrink further."
+      ]
     }
   }
 ]

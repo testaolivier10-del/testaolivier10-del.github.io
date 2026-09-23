@@ -1,0 +1,215 @@
+<p>Almost all the oxygen in your blood rides on hemoglobin, and the oxygen–hemoglobin dissociation curve explains how hemoglobin loads oxygen in the lungs and gives it up in the tissues. This page builds that curve from the ground up: how much oxygen blood carries and how saturation is measured, why the curve is S-shaped, what shifts it right or left (carbon dioxide, acid, temperature and 2,3-BPG), why fetal hemoglobin grabs oxygen more tightly, how carbon monoxide poisons oxygen transport, and the four ways tissues can end up short of oxygen.</p>
+
+<h2>How blood carries oxygen</h2>
+<p>In the last topic you saw that plasma dissolves only 0.3 mL of oxygen per 100 mL of blood at a PO<sub>2</sub> of 100 mm Hg. Yet arterial blood actually holds about 20 mL per 100 mL. The other 19.7 mL is bound to hemoglobin.</p>
+<p>Blood carries oxygen in two forms:</p>
+<ul>
+<li><strong>Bound to hemoglobin: about 98.5%.</strong> Each hemoglobin molecule has four globin chains, each holding one heme group with an iron ion at its center. Each iron binds one O<sub>2</sub>, so one hemoglobin molecule can carry four oxygen molecules. Hemoglobin with oxygen bound is <em>oxyhemoglobin</em> (HbO<sub>2</sub>); hemoglobin with none is <em>deoxyhemoglobin</em> (HHb).</li>
+<li><strong>Dissolved in plasma: about 1.5%.</strong> Small as it is, the dissolved oxygen sets the blood's PO<sub>2</sub>. Oxygen must dissolve in plasma first to reach hemoglobin in the lungs, and it must dissolve again to leave for the tissues.</li>
+</ul>
+<p>Binding is reversible: Hb + O<sub>2</sub> ⇌ HbO<sub>2</sub>. Where PO<sub>2</sub> is high, as in the lungs, the reaction runs to the right and hemoglobin loads. Where PO<sub>2</sub> is low, as in the tissues, it runs to the left and hemoglobin unloads. Oxygen binds to the iron without oxidizing it: the iron stays in its ferrous (Fe<sup>2+</sup>) form.</p>
+<div class="worked">
+<h3>Worked example 1: the oxygen content of blood</h3>
+<p><strong>Problem.</strong> A healthy man has 15 g of hemoglobin per 100 mL of blood. Each gram of fully loaded hemoglobin carries 1.34 mL of oxygen, and dissolved oxygen is 0.003 mL per 100 mL for each mm Hg. His arterial blood has a PO<sub>2</sub> of 95 mm Hg with 97% of its hemoglobin loaded; his venous blood has a PO<sub>2</sub> of 40 mm Hg with 75% loaded. Find the oxygen content of each, and how much oxygen his tissues take from every 100 mL.</p>
+<ol>
+<li><strong>Bound oxygen, arterial.</strong> 15 × 1.34 × 0.97 = 19.5 mL per 100 mL.</li>
+<li><strong>Dissolved oxygen, arterial.</strong> 95 × 0.003 = 0.3 mL per 100 mL.</li>
+<li><strong>Arterial content.</strong> 19.5 + 0.3 = 19.8, about 20 mL per 100 mL.</li>
+<li><strong>Venous content.</strong> Bound: 15 × 1.34 × 0.75 = 15.1. Dissolved: 40 × 0.003 = 0.1. Total 15.2 mL per 100 mL.</li>
+<li><strong>Oxygen delivered to the tissues.</strong> 19.8 − 15.2 = 4.6, about 5 mL from every 100 mL of blood.</li>
+</ol>
+<p><strong>Answer.</strong> About 20 mL per 100 mL in arteries and 15 in veins. At rest, tissues take only about a quarter of the oxygen in arterial blood; the rest is a reserve they can draw on.</p>
+</div>
+
+<h2>Hemoglobin saturation and pulse oximetry</h2>
+<p><em>Hemoglobin saturation</em> (also called oxygen saturation) is the percentage of hemoglobin's oxygen-binding sites that are occupied. If every hemoglobin carries four oxygen molecules, saturation is 100%; if, on average, they carry three, it is 75%.</p>
+<ul>
+<li><strong>SaO<sub>2</sub></strong> is arterial saturation measured in a blood sample drawn from an artery. Normal is about 95 to 100%.</li>
+<li><strong>SpO<sub>2</sub></strong> is saturation estimated by <em>pulse oximetry</em> (oxi- = oxygen, -metry = measuring): a clip on a finger or ear shines red and infrared light through the tissue. Oxyhemoglobin absorbs more infrared light and deoxyhemoglobin more red light, so the ratio of the two tells the device what fraction of hemoglobin is loaded. It reads only the part of the signal that pulses with each heartbeat, which is arterial blood.</li>
+</ul>
+<p>Saturation is a percentage, not an amount. It says what fraction of hemoglobin is loaded, not how much hemoglobin there is. A person with severe anemia can have an SpO<sub>2</sub> of 99% and still carry far less oxygen than normal.</p>
+<p>Pulse oximeters have known limits. They read poorly when blood flow to the finger is weak, as with cold hands or shock. Standard two-light devices cannot tell hemoglobin carrying carbon monoxide from oxyhemoglobin, so they read falsely normal in carbon monoxide poisoning. And large studies have found that they overestimate saturation more often in people with darker skin, which can hide a low arterial oxygen level. When the reading does not fit the patient, an arterial blood sample settles it.</p>
+
+<h2>The oxygen–hemoglobin dissociation curve</h2>
+<p>Put samples of blood in equilibrium with gas at different PO<sub>2</sub> values and measure the saturation of each. Plot saturation against PO<sub>2</sub>, and you get the <em>oxygen–hemoglobin dissociation curve</em> (dis- = apart, soci- = join: how readily oxygen comes apart from hemoglobin). It is not a straight line but an S-shape (<a class="figref" href="#fig-o2-curve">Figure 1</a>).</p>
+<figure id="fig-o2-curve" class="anp-fig">
+<svg viewBox="0 0 640 360" role="img" aria-label="The oxygen–hemoglobin dissociation curve: hemoglobin saturation in percent against PO2 in mm Hg from 0 to 100. The S-shaped curve rises steeply between about 10 and 50 mm Hg and flattens above 60. Marked points: lungs at 100 mm Hg and 98 percent; resting tissue at 40 mm Hg and 75 percent; exercising muscle at 20 mm Hg and 35 percent; and P50 at 27 mm Hg and 50 percent. The flat top is labeled loading zone and the steep middle unloading zone.">
+<line class="shape line" x1="80" y1="300" x2="600" y2="300"/>
+<line class="shape line" x1="80" y1="300" x2="80" y2="40"/>
+<text class="lbl-sm" x="76" y="318">0</text>
+<text class="lbl-sm" x="172" y="318">20</text>
+<text class="lbl-sm" x="272" y="318">40</text>
+<text class="lbl-sm" x="372" y="318">60</text>
+<text class="lbl-sm" x="472" y="318">80</text>
+<text class="lbl-sm" x="566" y="318">100</text>
+<text class="lbl-sm" x="64" y="304">0</text>
+<text class="lbl-sm" x="56" y="244">25</text>
+<text class="lbl-sm" x="56" y="184">50</text>
+<text class="lbl-sm" x="56" y="124">75</text>
+<text class="lbl-sm" x="48" y="64">100</text>
+<text class="lbl" x="250" y="344">PO2 (mm Hg)</text>
+<text class="lbl" x="6" y="24">Hemoglobin saturation (%)</text>
+<polyline class="accent line" points="80,300 130,269 180,216 215,180 230,163 280,120 330,96 380,84 430,74 480,71 530,67 580,65"/>
+<line class="shape line" x1="80" y1="180" x2="215" y2="180" stroke-dasharray="5 5"/>
+<line class="shape line" x1="215" y1="180" x2="215" y2="300" stroke-dasharray="5 5"/>
+<circle class="o2" cx="580" cy="65" r="6"/>
+<circle class="deo2" cx="280" cy="120" r="6"/>
+<circle class="deo2" cx="180" cy="216" r="6"/>
+<circle class="accent" cx="215" cy="180" r="5"/>
+<text class="lbl-sm" x="500" y="90">lungs: 100, 98%</text>
+<text class="lbl-sm" x="290" y="140">resting tissue: 40, 75%</text>
+<text class="lbl-sm" x="190" y="240">exercising muscle: 20, 35%</text>
+<text class="lbl-sm" x="222" y="196">P50: 27</text>
+<text class="lbl-sm" x="390" y="54">loading zone (flat)</text>
+<text class="lbl-sm" x="100" y="120">unloading</text>
+<text class="lbl-sm" x="100" y="134">zone (steep)</text>
+</svg>
+<figcaption>The oxygen–hemoglobin dissociation curve for adult blood at normal pH, PCO<sub>2</sub> and temperature. Saturation barely changes on the flat top but drops fast on the steep middle.</figcaption>
+</figure>
+<h3>Why the curve is S-shaped: cooperative binding</h3>
+<p>The four oxygen-binding sites of hemoglobin do not act independently. Deoxyhemoglobin sits in a tense shape that holds oxygen weakly, so the first oxygen binds with difficulty. That binding shifts the whole molecule toward a relaxed shape, and each remaining site then binds oxygen more readily. Unloading works the same way in reverse: once one oxygen leaves, the others leave more easily. This is <em>cooperative binding</em>: binding at one site changes how strongly the other sites bind.</p>
+<p>Cooperative binding makes the middle of the curve steep. The result is a molecule that is hard to half-fill and easy to fill or empty.</p>
+<h3>The flat top: loading in the lungs</h3>
+<p>Above a PO<sub>2</sub> of about 60 mm Hg, the curve is almost flat. At 100 mm Hg hemoglobin is about 98% saturated; at 60 mm Hg it is still about 90%. So your blood still loads nearly fully when alveolar PO<sub>2</sub> falls quite a lot, for example at moderate altitude or with mild lung disease. The flip side is that breathing extra oxygen when your PO<sub>2</sub> is already 100 mm Hg adds almost nothing to hemoglobin, which is nearly full.</p>
+<p>Below 60 mm Hg you fall off the edge. That is why clinicians treat an SpO<sub>2</sub> of about 90%, a PO<sub>2</sub> of about 60, as a warning line: below it, small further drops in PO<sub>2</sub> cause large drops in saturation.</p>
+<h3>The steep middle: unloading in the tissues</h3>
+<p>Between about 10 and 50 mm Hg, the curve is steep. Small falls in tissue PO<sub>2</sub> release large amounts of oxygen, with no signal needed.</p>
+<div class="worked">
+<h3>Worked example 2: reading the curve at rest and in exercise</h3>
+<p><strong>Problem.</strong> Use <a class="figref" href="#fig-o2-curve">Figure 1</a>. Arterial blood arrives at the tissues about 98% saturated. What percentage of its hemoglobin-bound oxygen does it give up in resting tissue, where PO<sub>2</sub> is 40 mm Hg, and in exercising muscle, where PO<sub>2</sub> is 20 mm Hg?</p>
+<ol>
+<li><strong>Read the saturation at each PO<sub>2</sub>.</strong> At 40 mm Hg, about 75%. At 20 mm Hg, about 35%.</li>
+<li><strong>Find the saturation given up.</strong> Rest: 98 − 75 = 23 percentage points. Exercise: 98 − 35 = 63 percentage points.</li>
+<li><strong>Express as a share of what arrived.</strong> Rest: 23 ÷ 98 = 0.23, about a quarter. Exercise: 63 ÷ 98 = 0.64, nearly two-thirds.</li>
+</ol>
+<p><strong>Answer.</strong> About 23% at rest and 64% in exercising muscle. A 20 mm Hg fall in tissue PO<sub>2</sub> nearly triples the oxygen released, before the curve has shifted at all.</p>
+</div>
+<p>A single number describes where the curve sits: <strong>P50</strong>, the PO<sub>2</sub> at which hemoglobin is 50% saturated. For normal adult blood it is about <strong>27 mm Hg</strong>.</p>
+
+<h2>Shifts of the dissociation curve</h2>
+<p>The curve in Figure 1 is drawn for blood at pH 7.4, a PCO<sub>2</sub> of 40 mm Hg and 37 °C. Change those conditions, and the whole curve slides sideways (<a class="figref" href="#fig-shifts">Figure 2</a>).</p>
+<ul>
+<li>A <em>right shift</em> means hemoglobin holds oxygen less tightly (lower affinity). At any given PO<sub>2</sub>, saturation is lower, so more oxygen is released. P50 rises.</li>
+<li>A <em>left shift</em> means hemoglobin holds oxygen more tightly (higher affinity). At any given PO<sub>2</sub>, saturation is higher, so less oxygen is released. P50 falls.</li>
+</ul>
+<figure id="fig-shifts" class="anp-fig">
+<svg viewBox="0 0 640 360" role="img" aria-label="Three dissociation curves: saturation in percent against PO2 in mm Hg. The middle curve is normal, with P50 at 27 mm Hg. The right-shifted curve lies below and to the right, with P50 near 38 mm Hg, labeled more CO2, more H+ (lower pH), higher temperature, more 2,3-BPG. The left-shifted curve lies above and to the left, with P50 near 19 mm Hg, labeled less CO2, fewer H+, lower temperature, less 2,3-BPG, fetal hemoglobin, carbon monoxide. At PO2 40 the right-shifted curve is at 53 percent, the normal at 75 and the left-shifted at 84. At 100 all three are close to the top.">
+<line class="shape line" x1="80" y1="300" x2="600" y2="300"/>
+<line class="shape line" x1="80" y1="300" x2="80" y2="40"/>
+<text class="lbl-sm" x="76" y="318">0</text>
+<text class="lbl-sm" x="172" y="318">20</text>
+<text class="lbl-sm" x="272" y="318">40</text>
+<text class="lbl-sm" x="372" y="318">60</text>
+<text class="lbl-sm" x="472" y="318">80</text>
+<text class="lbl-sm" x="566" y="318">100</text>
+<text class="lbl-sm" x="64" y="304">0</text>
+<text class="lbl-sm" x="56" y="184">50</text>
+<text class="lbl-sm" x="48" y="64">100</text>
+<text class="lbl" x="250" y="344">PO2 (mm Hg)</text>
+<text class="lbl" x="6" y="24">Hemoglobin saturation (%)</text>
+<line class="shape line" x1="80" y1="180" x2="600" y2="180" stroke-dasharray="5 5"/>
+<line class="shape line" x1="280" y1="60" x2="280" y2="300" stroke-dasharray="5 5"/>
+<polyline class="lo line" points="80,300 130,240 175,180 180,175 230,127 280,98 330,82 380,74 430,70 480,67 580,62"/>
+<polyline class="accent line" points="80,300 130,269 180,216 215,180 230,163 280,120 330,96 380,84 430,74 480,71 530,67 580,65"/>
+<polyline class="hi line" points="80,300 130,286 180,252 230,211 270,180 280,173 330,142 380,115 430,98 480,86 530,79 580,74"/>
+<text class="lbl-sm" x="92" y="100">left shift (P50 about 19)</text>
+<text class="lbl-sm" x="92" y="114">less CO2, fewer H+, cooler,</text>
+<text class="lbl-sm" x="92" y="128">less 2,3-BPG, fetal Hb, CO</text>
+<text class="lbl-sm" x="330" y="200">normal (P50 about 27)</text>
+<text class="lbl-sm" x="380" y="232">right shift (P50 about 38)</text>
+<text class="lbl-sm" x="380" y="246">more CO2, more H+ (lower pH),</text>
+<text class="lbl-sm" x="380" y="260">warmer, more 2,3-BPG</text>
+<text class="lbl-sm" x="286" y="290">tissue PO2 40</text>
+</svg>
+<figcaption>Shifts of the dissociation curve. A right shift lowers saturation at the same tissue PO<sub>2</sub>, so more oxygen is released; a left shift does the opposite. On the flat top, all three curves load nearly fully.</figcaption>
+</figure>
+<p>Four factors shift the curve to the right. Each is higher in active tissue:</p>
+<ol>
+<li><strong>More carbon dioxide.</strong> Carbon dioxide binds directly to the amino ends of the globin chains, and this holds hemoglobin in its tense, low-affinity shape. Carbon dioxide also reacts with water to form carbonic acid, which releases H<sup>+</sup> (the next factor). An enzyme in red blood cells speeds that reaction; you will meet it in the next topic.</li>
+<li><strong>More H<sup>+</sup>, a lower pH.</strong> H<sup>+</sup> ions bind to parts of the globin chains and stabilize the tense shape. The effect of H<sup>+</sup> and carbon dioxide on hemoglobin's affinity is the <em>Bohr effect</em>, named for the Danish physiologist Christian Bohr, who described it in 1904.</li>
+<li><strong>Higher temperature.</strong> Heat weakens the bond between oxygen and heme.</li>
+<li><strong>More 2,3-BPG.</strong> <em>2,3-bisphosphoglycerate</em> (2,3-BPG, older name 2,3-DPG) is made inside red blood cells from a side branch of glycolysis. It binds in a pocket in the center of deoxyhemoglobin and holds the tense shape.</li>
+</ol>
+<p>The opposite of each factor shifts the curve left.</p>
+<div class="worked">
+<h3>Worked example 3: how much a right shift adds</h3>
+<p><strong>Problem.</strong> Blood arrives at working muscle 98% saturated. Tissue PO<sub>2</sub> is 40 mm Hg. On the normal curve, saturation at 40 mm Hg is 75%. In the warm, acidic muscle, where carbon dioxide is high, the curve is shifted right and saturation at 40 mm Hg is 53%. How much more of the arriving oxygen is released? Assume 15 g of hemoglobin per 100 mL.</p>
+<ol>
+<li><strong>Saturation given up, normal curve.</strong> 98 − 75 = 23 percentage points.</li>
+<li><strong>Saturation given up, shifted curve.</strong> 98 − 53 = 45 percentage points.</li>
+<li><strong>Convert to oxygen.</strong> One percentage point of 15 g hemoglobin is 15 × 1.34 × 0.01 = 0.2 mL per 100 mL. Normal: 23 × 0.2 = 4.6 mL. Shifted: 45 × 0.2 = 9.0 mL.</li>
+</ol>
+<p><strong>Answer.</strong> The right shift nearly doubles the oxygen released, from 4.6 to 9.0 mL per 100 mL, at the same tissue PO<sub>2</sub>. In the lungs, where PO<sub>2</sub> is 100 mm Hg on the flat top, the shifted curve still loads to about 94%, so little is lost at the loading end.</p>
+</div>
+<table class="compare">
+<thead><tr><th></th><th>Right shift</th><th>Left shift</th></tr></thead>
+<tbody>
+<tr><th>Hemoglobin's affinity for oxygen</th><td>Lower</td><td>Higher</td></tr>
+<tr><th>P50</th><td>Higher (above 27 mm Hg)</td><td>Lower (below 27 mm Hg)</td></tr>
+<tr><th>Saturation at a given PO<sub>2</sub></th><td>Lower</td><td>Higher</td></tr>
+<tr><th>Oxygen released to tissues</th><td>More</td><td>Less</td></tr>
+<tr><th>Carbon dioxide and H<sup>+</sup></th><td>Higher PCO<sub>2</sub>, lower pH</td><td>Lower PCO<sub>2</sub>, higher pH</td></tr>
+<tr><th>Temperature</th><td>Higher (exercise, fever)</td><td>Lower (cold)</td></tr>
+<tr><th>2,3-BPG</th><td>More (anemia, living high up, chronic lung disease)</td><td>Less (stored blood for transfusion)</td></tr>
+<tr><th>Other causes</th><td>None of note</td><td>Fetal hemoglobin, carbon monoxide</td></tr>
+<tr><th>Where it happens naturally</th><td>Active tissues</td><td>The lungs, as carbon dioxide leaves the blood</td></tr>
+</tbody>
+</table>
+<p>A memory aid for the right-shift factors: "CADET, face right": CO<sub>2</sub>, Acid, 2,3-DPG (the old name for 2,3-BPG), Exercise, Temperature. Exercise belongs on the list because it raises the other four in working muscle.</p>
+<p>The Bohr effect works in both directions as blood circulates. In the tissues, blood picks up carbon dioxide and H<sup>+</sup>, the curve shifts right and hemoglobin unloads more. In the lungs, carbon dioxide diffuses out into the alveoli, H<sup>+</sup> falls, the curve shifts back left, and hemoglobin loads more.</p>
+<p>2,3-BPG acts over hours to days rather than seconds. It rises when the oxygen supply to red blood cells stays low: in anemia, in people who live at high altitude, and in chronic lung disease. Blood stored for transfusion loses its 2,3-BPG over a couple of weeks, so for the first day or so after a large transfusion the transfused cells hold on to oxygen more tightly and release less, until they rebuild it.</p>
+
+<h2>Fetal hemoglobin</h2>
+<p>Before birth, a fetus gets all its oxygen from its mother's blood, which flows past fetal blood across a thin barrier without mixing. Fetal blood has to pull oxygen from maternal blood whose own PO<sub>2</sub> is already low.</p>
+<p><em>Fetal hemoglobin</em> (HbF) has two alpha chains and two gamma chains, where adult hemoglobin (HbA) has two alpha and two beta chains. The gamma chains bind 2,3-BPG weakly, so fetal hemoglobin stays in the high-affinity shape more easily. Its curve lies to the left of the adult curve (<a class="figref" href="#fig-os-22-27">Figure 3</a>): its P50 is about 19 mm Hg, against about 27 for adult hemoglobin.</p>
+<figure id="fig-os-22-27" data-fig="os-22-27"><figcaption>Dissociation curves for fetal and adult hemoglobin. Fetal hemoglobin is half saturated at 19 mm Hg, adult hemoglobin at 26.8 mm Hg.</figcaption></figure>
+<p>At any low PO<sub>2</sub>, fetal hemoglobin is more saturated than adult hemoglobin. So when the two bloods meet, oxygen moves from maternal hemoglobin, which is unloading on its steep part, to fetal hemoglobin, which loads at the same PO<sub>2</sub>. The Bohr effect adds to this: maternal blood picks up carbon dioxide from the fetus and shifts right, releasing more, while fetal blood loses carbon dioxide and shifts left, taking up more.</p>
+<p>After birth, the gene for gamma chains is switched off and the gene for beta chains is switched on. Fetal hemoglobin is almost entirely replaced by adult hemoglobin by about six months of age.</p>
+<aside class="going-further"><p>Going further: people with sickle cell disease have an abnormal beta chain. Fetal hemoglobin has no beta chains, so red blood cells rich in it resist sickling. That is why symptoms usually begin only after the first few months of life, and why the drug hydroxyurea, which raises fetal hemoglobin production, reduces painful crises.</p></aside>
+
+<h2>Carbon monoxide poisoning</h2>
+<p>A family is found drowsy with headaches on a cold morning. The furnace has a cracked flue. Their pulse oximeter readings are 99%.</p>
+<p><em>Carbon monoxide</em> (CO) is a colorless, odorless gas made when fuel burns without enough oxygen: faulty furnaces and heaters, car exhaust in a closed garage, generators or charcoal grills used indoors, and house fires. <em>Carbon monoxide poisoning</em> harms oxygen transport in three ways:</p>
+<ol>
+<li><strong>It takes oxygen's place.</strong> Carbon monoxide binds the same iron in heme as oxygen, but about 200 to 250 times more tightly. Hemoglobin carrying carbon monoxide is called carboxyhemoglobin. Every site it occupies cannot carry oxygen, so the oxygen content of blood falls.</li>
+<li><strong>It shifts the curve left.</strong> Carbon monoxide on one site holds the molecule in its relaxed shape, so the remaining oxygen on that hemoglobin is held more tightly and is released less in the tissues.</li>
+<li><strong>It poisons the cells directly.</strong> Carbon monoxide also binds myoglobin in muscle and the last enzyme of the electron transport chain in mitochondria, which impairs aerobic respiration.</li>
+</ol>
+<p>The numbers you would normally check look fine. Arterial PO<sub>2</sub> is normal, because carbon monoxide does not change how much oxygen dissolves in plasma, and PO<sub>2</sub> measures only the dissolved oxygen. A standard pulse oximeter reads carboxyhemoglobin as if it were oxyhemoglobin, so SpO<sub>2</sub> is falsely normal. The diagnosis needs a blood sample measured with a CO-oximeter, which uses several wavelengths of light and reports the carboxyhemoglobin percentage directly. Nonsmokers normally have under about 3%; heavy smokers may have up to 10%.</p>
+<div class="worked">
+<h3>Worked example 4: carbon monoxide compared with anemia</h3>
+<p><strong>Problem.</strong> Patient A has 15 g/100 mL of hemoglobin, with 40% of it carrying carbon monoxide. Patient B has anemia, with 9 g/100 mL of hemoglobin and no carbon monoxide. Both have a normal arterial PO<sub>2</sub>, and the hemoglobin free to carry oxygen is 98% saturated. Compare their oxygen carried by hemoglobin, and say which patient's tissues are worse off.</p>
+<ol>
+<li><strong>Hemoglobin able to carry oxygen, patient A.</strong> 60% of 15 g = 9 g/100 mL.</li>
+<li><strong>Bound oxygen, patient A.</strong> 9 × 1.34 × 0.98 = 11.8 mL/100 mL.</li>
+<li><strong>Bound oxygen, patient B.</strong> 9 × 1.34 × 0.98 = 11.8 mL/100 mL.</li>
+<li><strong>Compare unloading.</strong> The contents are equal, but patient A's remaining oxygen sits on a left-shifted curve, so less of it is released at tissue PO<sub>2</sub>. Patient B's curve is normal, or even shifted right by extra 2,3-BPG.</li>
+</ol>
+<p><strong>Answer.</strong> Both carry about 11.8 mL per 100 mL on hemoglobin, but patient A's tissues get less, because carbon monoxide also stops hemoglobin from letting go. A 40% carboxyhemoglobin level can be life-threatening, while a hemoglobin of 9 is often tolerated at rest.</p>
+</div>
+<p>Treatment starts with removing the person from the source and giving 100% oxygen. Carbon monoxide and oxygen compete for the same sites, so a much higher PO<sub>2</sub> displaces carbon monoxide faster. Breathing room air, carboxyhemoglobin falls by half in about 4 to 6 hours; on 100% oxygen, in about 1 to 1.5 hours; in a hyperbaric chamber, in well under an hour. Pure oxygen also raises the dissolved oxygen, by Henry's law, which does not depend on hemoglobin.</p>
+<aside class="for-your-exam"><p>For your exam: many textbooks and EMS courses list "cherry-red skin" as the sign of carbon monoxide poisoning. It is real, because carboxyhemoglobin is bright red, but it is rarely seen in living patients and is mostly a late or postmortem finding. Know the classic answer, but suspect carbon monoxide from the story: headache, dizziness, nausea or confusion in several people or pets sharing a space with a fuel-burning source, with a normal-looking SpO<sub>2</sub>.</p></aside>
+
+<h2>Hypoxia and its four types</h2>
+<p><em>Hypoxia</em> (hypo- = under, ox- = oxygen, -ia = condition) is too little oxygen reaching the tissues, or reaching them but not being used. It is different from <em>hypoxemia</em> (-emia = blood condition), a low oxygen level in arterial blood. Hypoxemia is one cause of hypoxia, but tissues can be hypoxic with a normal arterial PO<sub>2</sub>. Following oxygen from air to mitochondria gives four types, one for each place the chain can break:</p>
+<table class="compare">
+<thead><tr><th>Type</th><th>Where the chain breaks</th><th>Examples</th><th>Arterial PO<sub>2</sub></th><th>Arterial O<sub>2</sub> content</th></tr></thead>
+<tbody>
+<tr><th>Hypoxemic (hypoxic) hypoxia</th><td>Too little oxygen gets into the blood</td><td>High altitude; slow or shallow breathing; V/Q mismatch; a thickened respiratory membrane</td><td>Low</td><td>Low</td></tr>
+<tr><th>Anemic hypoxia</th><td>The blood cannot carry enough oxygen</td><td>Anemia; carbon monoxide poisoning</td><td>Normal</td><td>Low</td></tr>
+<tr><th>Stagnant (circulatory) hypoxia</th><td>Too little blood flow delivers the oxygen</td><td>Shock; heart failure; a blocked artery; a limb in the cold</td><td>Normal</td><td>Normal</td></tr>
+<tr><th>Histotoxic hypoxia</th><td>The cells cannot use the oxygen that arrives</td><td>Cyanide, which blocks the electron transport chain</td><td>Normal</td><td>Normal (venous oxygen stays high)</td></tr>
+</tbody>
+</table>
+<p>In histotoxic hypoxia, oxygen is delivered but not taken up, so venous blood returns to the heart with an unusually high PO<sub>2</sub>. That is the opposite of stagnant hypoxia, where slow flow lets tissues strip the blood of more oxygen than usual, and venous PO<sub>2</sub> falls.</p>
+<p>A bluish color of the skin and lips, cyanosis, appears when a lot of deoxyhemoglobin is in the skin's capillaries. It is a late and unreliable sign: it is hard to see in severe anemia, where there is too little hemoglobin of any kind, and it is absent in carbon monoxide poisoning.</p>
+
+<h2>The whole trip: oxygen from air to a tissue cell</h2>
+<ol>
+<li>Air is breathed in, warmed and moistened, and reaches the alveoli, where its PO<sub>2</sub> is about 100 mm Hg.</li>
+<li>Oxygen diffuses across the respiratory membrane and dissolves in plasma.</li>
+<li>Oxygen diffuses into red blood cells and binds heme iron, forming oxyhemoglobin; the blood leaves the lungs about 97 to 98% saturated.</li>
+<li>The heart pumps the blood through the systemic arteries to a capillary bed.</li>
+<li>Low PO<sub>2</sub>, high PCO<sub>2</sub>, acid and warmth in the tissue make hemoglobin release oxygen, which dissolves in plasma.</li>
+<li>Oxygen diffuses from plasma through the interstitial fluid into the cell, and on to its mitochondria, where the electron transport chain uses it.</li>
+</ol>

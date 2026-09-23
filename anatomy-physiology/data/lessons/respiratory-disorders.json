@@ -1,0 +1,97 @@
+{
+  "topic": "respiratory-disorders",
+  "hook": "<p>Mr. Novak, 66, smoked for 45 years. He gets breathless on the stairs, coughs up mucus every morning, and breathes out through pursed lips. His spirometry shows he can force out only half his vital capacity in the first second, and a drug that opens the airways barely changes that. His alveolar walls are being digested, and his small airways are collapsing every time he breathes out.</p>",
+  "prereq": [
+    {
+      "q": "In obstructive lung disease, what happens to FEV1 ÷ FVC?",
+      "options": [
+        "It falls",
+        "It rises",
+        "It stays the same"
+      ],
+      "correct": 0,
+      "why": "Obstruction slows the flow of air out, so FEV1, the volume forced out in the first second, falls much more than the total forced vital capacity. The ratio falls, typically below 0.70.",
+      "review": "lung-volumes"
+    },
+    {
+      "q": "Which change makes fluid leave capillaries faster and collect as edema?",
+      "options": [
+        "A fall in capillary hydrostatic pressure",
+        "A rise in blood colloid osmotic pressure",
+        "A rise in capillary hydrostatic pressure"
+      ],
+      "correct": 2,
+      "why": "Higher hydrostatic pressure inside the capillary pushes more fluid out. When filtration outpaces lymph drainage, fluid collects in the tissue: edema.",
+      "review": "capillary-exchange"
+    },
+    {
+      "q": "In left-sided heart failure, where does blood back up first?",
+      "options": [
+        "The systemic veins and the legs",
+        "The pulmonary veins and the lungs",
+        "The coronary arteries"
+      ],
+      "correct": 1,
+      "why": "The left ventricle receives blood from the lungs through the left atrium. When it fails to pump it out, pressure rises in the left atrium, the pulmonary veins and the pulmonary capillaries.",
+      "review": "circulatory-disorders"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-22-10",
+    "caption": "The respiratory zone of a healthy lung. Hide the labels and name the structures that emphysema destroys and that pneumonia and pulmonary edema fill with fluid."
+  },
+  "chain": [
+    {
+      "cause": "Years of cigarette smoke keep neutrophils and macrophages active in the lungs.",
+      "effect": "They release protein-digesting enzymes, and smoke inactivates alpha-1 antitrypsin, which normally blocks them."
+    },
+    {
+      "cause": "The enzymes break down elastic fibers faster than they are repaired.",
+      "effect": "Alveolar walls and their capillaries are destroyed, and small alveoli merge into large air spaces (emphysema)."
+    },
+    {
+      "cause": "The lost walls no longer pull the small airways open or recoil during expiration.",
+      "effect": "The small airways collapse when the person breathes out, air is trapped, and residual volume rises while FEV1 falls."
+    },
+    {
+      "cause": "Some alveoli are poorly ventilated but still perfused, and the diffusion surface has shrunk.",
+      "effect": "Arterial PO2 falls, and in severe disease PCO2 rises; widespread hypoxic pulmonary vasoconstriction raises pulmonary artery pressure."
+    },
+    {
+      "cause": "The right ventricle pumps against a high pulmonary pressure for years.",
+      "effect": "It thickens and eventually fails (cor pulmonale), and long-term hypoxemia raises erythropoietin and the red blood cell count."
+    }
+  ],
+  "misconception": {
+    "wrong": "People with COPD should not be given oxygen, because it removes their hypoxic drive and they stop breathing.",
+    "right": "A hypoxic person with COPD needs oxygen. Given in large amounts, oxygen can raise PCO2 in some people with severe COPD, but mainly because it releases hypoxic pulmonary vasoconstriction, worsening ventilation–perfusion mismatch, and because of the Haldane effect, not because their breathing stops. The answer is controlled oxygen to a target saturation, often 88–92%, with close monitoring. Oxygen is never withheld from a hypoxic patient."
+  },
+  "check": [
+    "anp-respiratory-disorders-2",
+    "anp-respiratory-disorders-3",
+    "anp-respiratory-disorders-8",
+    "anp-respiratory-disorders-9",
+    "anp-respiratory-disorders-12",
+    "anp-respiratory-disorders-16",
+    "anp-respiratory-disorders-17"
+  ],
+  "summary": "<p>Lung disorders break ventilation, diffusion, the matching of air to blood, or control. COPD is persistent airflow obstruction (FEV1 ÷ FVC below 0.70 after a drug that opens the airways), mainly from smoking. In emphysema, protein-digesting enzymes destroy alveolar walls: surface area and elastic recoil are lost, small airways collapse on expiration, air is trapped and compliance rises. In chronic bronchitis, inflamed airways make excess mucus and clear it poorly. Asthma, by contrast, is episodic and largely reversible. COPD causes ventilation–perfusion mismatch, hypoxemia, later carbon dioxide retention, pulmonary hypertension with cor pulmonale, and polycythemia. Oxygen is given to a target saturation and never withheld. Pulmonary edema is fluid in the lung tissue and alveoli, from high pulmonary capillary pressure (left-sided heart failure) or a leaky membrane (sepsis, pneumonia, toxins); it thickens the membrane, stiffens the lungs and floods alveoli. Pneumonia fills alveoli with inflammatory fluid, so blood passes them without meeting air. Tuberculosis is an airborne bacterium that survives in alveolar macrophages and is walled off in granulomas; latent infection can reactivate when immunity weakens.</p>",
+  "connections": [
+    {
+      "href": "/nremt/study-notes.html#chapter-19",
+      "label": "NREMT: Respiratory emergencies"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-10",
+      "label": "NREMT: Ventilation and oxygen equipment"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-24",
+      "label": "NREMT: Infectious diseases and sepsis"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-20",
+      "label": "NREMT: Cardiac emergencies"
+    }
+  ]
+}

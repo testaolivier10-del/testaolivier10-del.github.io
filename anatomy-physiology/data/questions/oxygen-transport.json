@@ -1,0 +1,652 @@
+[
+  {
+    "id": "anp-oxygen-transport-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "About what share of the oxygen in arterial blood is bound to hemoglobin?",
+    "options": [
+      "About 50 to 60%",
+      "About 98.5%",
+      "About 1.5%",
+      "About 75%"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "About 98.5% of blood oxygen is bound to hemoglobin as oxyhemoglobin. Only about 1.5% is dissolved in plasma, although that dissolved oxygen sets the PO2.",
+      "options": [
+        "Hemoglobin carries far more than half; plasma dissolves very little oxygen.",
+        "Correct. Almost all of it rides on hemoglobin.",
+        "About 1.5% is the dissolved share, not the bound share.",
+        "75% is the saturation of venous blood at rest, not the share of oxygen bound to hemoglobin."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A woman has 14 g of hemoglobin per 100 mL of blood, 98% saturated, and an arterial PO2 of 100 mm Hg. Each gram of hemoglobin carries 1.34 mL of oxygen when full, and dissolved oxygen is 0.003 mL per 100 mL per mm Hg. What is her arterial oxygen content?",
+    "options": [
+      "About 13.7 mL per 100 mL",
+      "About 18.7 mL per 100 mL",
+      "About 0.3 mL per 100 mL",
+      "About 30 mL per 100 mL"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Bound: 14 × 1.34 × 0.98 = 18.4 mL. Dissolved: 100 × 0.003 = 0.3 mL. Total: 18.7 mL per 100 mL.",
+      "options": [
+        "13.7 multiplies hemoglobin by saturation and forgets the 1.34 mL each gram carries.",
+        "Correct. 18.4 bound + 0.3 dissolved = 18.7 mL per 100 mL.",
+        "0.3 mL is only the dissolved oxygen.",
+        "30 mL would need far more hemoglobin; 14 g can carry at most about 18.8 mL."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-3",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A finger clip shines red and infrared light through a patient's fingertip and displays 96%. What is this reading called?",
+    "options": [
+      "SaO2",
+      "PO2",
+      "P50",
+      "SpO2"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "SpO2 is hemoglobin saturation estimated by pulse oximetry. SaO2 is the same quantity measured in an arterial blood sample.",
+      "options": [
+        "SaO2 is saturation measured directly in arterial blood drawn with a needle.",
+        "PO2 is the partial pressure of dissolved oxygen, measured in mm Hg, not a percentage.",
+        "P50 is the PO2 at which hemoglobin is half saturated, about 27 mm Hg.",
+        "Correct. The p stands for pulse oximetry."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-4",
+    "type": "graph",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-22-27",
+    "q": "Read the graph. At what PO2 is adult hemoglobin 50% saturated?",
+    "options": [
+      "19 mm Hg",
+      "26.8 mm Hg",
+      "About 40 mm Hg",
+      "80 mm Hg"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The dashed line from 50% meets the adult curve above 26.8 mm Hg. This PO2 is the P50 of adult hemoglobin, usually rounded to 27 mm Hg.",
+      "options": [
+        "19 mm Hg is the P50 of fetal hemoglobin, whose curve lies to the left.",
+        "Correct. Adult hemoglobin's P50 is about 26.8 mm Hg.",
+        "At 40 mm Hg, adult hemoglobin is about 75% saturated, not 50%.",
+        "At 80 mm Hg both curves are near 96% saturated."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-5",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "gradients"
+    ],
+    "figure": "os-22-27",
+    "q": "Where fetal and maternal blood pass close together, the PO2 is low, around 25 mm Hg. Use the graph: why does oxygen move from the mother's hemoglobin to the fetus's?",
+    "options": [
+      "Fetal hemoglobin is more saturated at the same low PO2",
+      "Adult hemoglobin is more saturated at every PO2, so it pushes oxygen out",
+      "The two curves are identical, so oxygen moves by chance",
+      "Fetal blood has a higher PO2 than maternal blood"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The fetal curve lies to the left: at a low PO2 like 25 mm Hg, fetal hemoglobin is well above 50% saturated while adult hemoglobin is just under 50%. Maternal hemoglobin unloads on its steep part, and fetal hemoglobin picks up that oxygen at the same PO2.",
+      "options": [
+        "Correct. Higher affinity lets fetal hemoglobin load where adult hemoglobin unloads.",
+        "The adult curve lies below the fetal curve at low PO2, not above it.",
+        "The curves clearly differ at low PO2, where the fetal curve is to the left.",
+        "Oxygen moves from maternal to fetal blood, so fetal PO2 is lower, not higher."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-6",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Mild lung disease lowers a man's arterial PO2 from 100 to 70 mm Hg, yet his saturation only falls from about 98% to about 94%. Which feature of hemoglobin explains this?",
+    "options": [
+      "The steep middle of the dissociation curve",
+      "The flat top of the dissociation curve",
+      "The Bohr effect in the lungs",
+      "The extra oxygen dissolved in plasma"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Above about 60 mm Hg, the curve is nearly flat. Large changes in PO2 there change saturation very little, so blood still loads nearly fully when alveolar PO2 falls moderately.",
+      "options": [
+        "The steep middle lies between about 10 and 50 mm Hg, where small changes in PO2 cause large changes in saturation; that is the opposite of what happened here.",
+        "Correct. The plateau protects loading.",
+        "The Bohr effect depends on carbon dioxide and H+, which the question does not change.",
+        "Dissolved oxygen falls with PO2 and is tiny either way; it does not keep saturation up."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "Blood reaches a muscle 98% saturated. During a sprint, the muscle's PO2 falls to 20 mm Hg, where the normal curve gives about 35% saturation. What share of the arriving hemoglobin-bound oxygen does the blood release?",
+    "options": [
+      "About 35%",
+      "About 23%",
+      "About 98%",
+      "About 64%"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Saturation falls from 98% to 35%, a drop of 63 percentage points. As a share of what arrived: 63 ÷ 98 ≈ 0.64, about 64%, nearly three times the 23% released at rest.",
+      "options": [
+        "35% is the saturation left in the blood, not the share released.",
+        "About 23% is the share released at rest, when tissue PO2 is 40 mm Hg.",
+        "Hemoglobin does not release all its oxygen; at 20 mm Hg it is still about a third saturated.",
+        "Correct. (98 − 35) ÷ 98 ≈ 64%."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What is cooperative binding, which makes the dissociation curve S-shaped?",
+    "options": [
+      "Oxygen and carbon dioxide taking turns to bind the same site on each heme group",
+      "Hemoglobin and plasma sharing the oxygen equally",
+      "Oxygen binding at one site makes the other sites bind more readily",
+      "Several red blood cells joining to carry one oxygen molecule"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Deoxyhemoglobin's tense shape holds oxygen weakly. Once one oxygen binds, the molecule shifts toward its relaxed shape, and the remaining sites bind more readily. Release works the same way in reverse, making the middle of the curve steep.",
+      "options": [
+        "Carbon dioxide binds globin at the amino ends of the chains, not at the heme sites where oxygen binds.",
+        "Plasma carries only about 1.5% of the oxygen; the sharing is far from equal and is not what shapes the curve.",
+        "Correct. Each binding event changes the affinity of the other sites.",
+        "Each hemoglobin molecule carries up to four oxygen molecules by itself; cells do not join to carry them."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-9",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "homeostasis"
+    ],
+    "q": "Select every change that shifts the oxygen–hemoglobin dissociation curve to the right.",
+    "options": [
+      "A rise in PCO2",
+      "A fall in blood pH",
+      "Fetal hemoglobin in place of adult hemoglobin",
+      "A rise in temperature",
+      "Carbon monoxide bound to some heme sites",
+      "More 2,3-BPG in red blood cells"
+    ],
+    "correct": [
+      0,
+      1,
+      3,
+      5
+    ],
+    "why": {
+      "correct": "Carbon dioxide, H+ (a lower pH), heat and 2,3-BPG all lower hemoglobin's affinity for oxygen and shift the curve right. Fetal hemoglobin and carbon monoxide shift it left.",
+      "options": [
+        "Correct. Carbon dioxide binds globin and also raises H+.",
+        "Correct. More H+ stabilizes the low-affinity shape: the Bohr effect.",
+        "Fetal hemoglobin binds 2,3-BPG weakly and has a higher affinity, so its curve lies to the left.",
+        "Correct. Heat weakens the oxygen–heme bond.",
+        "Carbon monoxide holds hemoglobin in its high-affinity shape, shifting the curve left.",
+        "Correct. 2,3-BPG binds deoxyhemoglobin and holds its tense shape."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-10",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "structure-function",
+      "homeostasis"
+    ],
+    "q": "A cyclist's thigh muscles are working hard. Predict the change in each variable in the blood flowing through them, compared with rest.",
+    "variables": [
+      {
+        "name": "PCO2 of the blood in the muscle capillaries",
+        "answer": "up",
+        "why": "Faster aerobic respiration makes more carbon dioxide, which diffuses into the blood."
+      },
+      {
+        "name": "Blood pH in the muscle capillaries",
+        "answer": "down",
+        "why": "Carbon dioxide forms carbonic acid, which releases H+, and working muscle adds acid of its own, so H+ rises and pH falls."
+      },
+      {
+        "name": "Hemoglobin's affinity for oxygen",
+        "answer": "down",
+        "why": "More carbon dioxide, more H+ and higher temperature all stabilize hemoglobin's tense shape: the curve shifts right."
+      },
+      {
+        "name": "P50",
+        "answer": "up",
+        "why": "A lower affinity means a higher PO2 is needed to half-saturate hemoglobin."
+      },
+      {
+        "name": "Oxygen released per 100 mL of blood",
+        "answer": "up",
+        "why": "A lower tissue PO2 on the steep part of the curve, plus a right shift, lowers the saturation of blood leaving the muscle."
+      }
+    ],
+    "why": {
+      "correct": "Working muscle raises carbon dioxide, H+ and temperature. Through the Bohr effect and heat, hemoglobin's affinity falls and the curve shifts right, so hemoglobin gives up more oxygen exactly where it is being used."
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-11",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "After bleeding heavily during surgery, Mr. Novak receives eight units of blood that had been stored for three weeks. His saturation is 99%, yet for the next day his tissues extract oxygen poorly. What best explains this?",
+    "options": [
+      "Stored red blood cells have no hemoglobin",
+      "The stored cells are low in 2,3-BPG, which shifts their curve left",
+      "Stored blood is too warm, which shifts the curve right",
+      "Transfused blood has a lower PO2 than his own blood once it enters his circulation"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Red blood cells lose 2,3-BPG during storage. Without it, hemoglobin stays in its high-affinity shape, so the curve shifts left: the cells load fully in the lungs but release less at tissue PO2 until they rebuild their 2,3-BPG over about a day.",
+      "options": [
+        "Stored cells keep their hemoglobin; his 99% saturation shows it is carrying oxygen.",
+        "Correct. Low 2,3-BPG raises affinity and impairs unloading.",
+        "Stored blood is refrigerated, and a right shift would increase unloading, not reduce it.",
+        "Once in his circulation, the transfused blood equilibrates with his alveolar air like the rest of his blood."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-12",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "a normal SpO2 means enough oxygen",
+    "q": "A family is found drowsy with headaches in a house with a faulty furnace. Their pulse oximeters read 98 to 99%, and an arterial blood sample shows a normal PO2. Why are both readings misleading?",
+    "options": [
+      "Carbon monoxide raises both PO2 and saturation",
+      "The finger probes were placed on cold fingers",
+      "The furnace fumes contain extra oxygen",
+      "The oximeter counts carboxyhemoglobin as oxyhemoglobin, and PO2 reflects only dissolved oxygen"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A standard two-light oximeter cannot distinguish carboxyhemoglobin from oxyhemoglobin, so it reads near normal. PO2 measures only dissolved oxygen, which carbon monoxide does not change. Meanwhile, much of the hemoglobin is carrying carbon monoxide. A CO-oximeter measures carboxyhemoglobin directly.",
+      "options": [
+        "Carbon monoxide does not raise PO2; it leaves it normal while cutting the oxygen carried on hemoglobin.",
+        "Cold fingers give weak or failed readings, but they do not explain a normal PO2 as well.",
+        "Faulty burning makes carbon monoxide because there is too little oxygen, not extra oxygen.",
+        "Correct. Neither measurement sees the hemoglobin occupied by carbon monoxide."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-13",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "interdependence",
+      "structure-function"
+    ],
+    "q": "Ms. Ruiz breathes carbon monoxide from a generator running in her garage, and 30% of her hemoglobin becomes carboxyhemoglobin. Predict each variable compared with before the exposure.",
+    "variables": [
+      {
+        "name": "Arterial PO2",
+        "answer": "none",
+        "why": "Her lungs and breathing are normal, so the oxygen dissolved in her plasma is unchanged; carbon monoxide acts on hemoglobin."
+      },
+      {
+        "name": "SpO2 on a standard pulse oximeter",
+        "answer": "none",
+        "why": "The device reads carboxyhemoglobin as if it were oxyhemoglobin, so the display stays near normal."
+      },
+      {
+        "name": "Arterial oxygen content",
+        "answer": "down",
+        "why": "Carbon monoxide occupies 30% of the heme sites, which then cannot carry oxygen."
+      },
+      {
+        "name": "Oxygen released to the tissues at a given tissue PO2",
+        "answer": "down",
+        "why": "Carbon monoxide shifts the curve left, so the remaining oxygen is held more tightly."
+      },
+      {
+        "name": "Heart rate",
+        "answer": "up",
+        "why": "Tissues short of oxygen, and the sympathetic response to her symptoms, drive the heart faster, raising cardiac output."
+      },
+      {
+        "name": "Blood lactate",
+        "answer": "up",
+        "why": "Cells short of oxygen, and cells whose mitochondria are directly blocked by carbon monoxide, turn to anaerobic metabolism."
+      }
+    ],
+    "why": {
+      "correct": "Carbon monoxide leaves the lungs and dissolved oxygen alone, so PO2 and the pulse oximeter look normal. It cuts oxygen content, shifts the curve left and blocks mitochondria, so tissues go short of oxygen. The cardiovascular system responds with a faster heart rate, and the cells produce more lactate."
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-14",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Patient A has 15 g/100 mL of hemoglobin, with 40% carrying carbon monoxide. Patient B has anemia with 9 g/100 mL of hemoglobin and no carbon monoxide. Both carry about 11.8 mL of oxygen per 100 mL on hemoglobin. Whose tissues receive less oxygen, and why?",
+    "options": [
+      "Patient B, because anemia lowers PO2",
+      "Neither, because their oxygen contents are equal",
+      "Patient B, because fewer red blood cells mean slower delivery",
+      "Patient A, because carbon monoxide also shifts the curve left"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Equal content does not mean equal delivery. Carbon monoxide on some heme sites holds the rest of each hemoglobin in its high-affinity shape, so patient A releases less of the oxygen she carries. Patient B's curve is normal, or shifted right by extra 2,3-BPG.",
+      "options": [
+        "Anemia lowers oxygen content, not arterial PO2, which depends on the lungs.",
+        "Content is equal, but unloading is not; the shape of the curve decides how much is released.",
+        "Delivery depends on the oxygen content and how readily hemoglobin releases it; patient B's hemoglobin releases normally.",
+        "Correct. The left shift impairs unloading in patient A."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Why does breathing 100% oxygen shorten the time carbon monoxide stays on hemoglobin?",
+    "options": [
+      "Oxygen breaks carbon monoxide down into carbon dioxide inside the blood",
+      "A high PO2 lets oxygen compete more strongly for the same heme sites",
+      "Oxygen shifts the curve right, which pushes carbon monoxide off",
+      "Pure oxygen speeds the heart, which filters carbon monoxide out"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Carbon monoxide and oxygen compete for the same iron in heme. Raising PO2 about fivefold drives more oxygen onto the sites as carbon monoxide comes off, so carboxyhemoglobin falls by half in about 1 to 1.5 hours instead of 4 to 6 hours on room air.",
+      "options": [
+        "Carbon monoxide leaves the body unchanged through the lungs; the blood does not convert it.",
+        "Correct. Competition at the heme sites speeds its removal.",
+        "Oxygen does not shift the curve right; the treatment works by competition for binding sites.",
+        "Nothing in the heart filters gases; carbon monoxide leaves by diffusing out in the lungs."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-16",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "energy",
+      "interdependence"
+    ],
+    "q": "Mr. Okoye is pulled from a burning building with cyanide poisoning. His arterial PO2 and oxygen content are normal, but his venous blood is bright red with an unusually high PO2. Which type of hypoxia does he have?",
+    "options": [
+      "Hypoxemic hypoxia",
+      "Anemic hypoxia",
+      "Stagnant hypoxia",
+      "Histotoxic hypoxia"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Cyanide blocks the electron transport chain, so cells cannot use the oxygen delivered to them. Oxygen stays in the blood, and venous PO2 stays high. That is histotoxic hypoxia.",
+      "options": [
+        "Hypoxemic hypoxia means a low arterial PO2, and his is normal.",
+        "Anemic hypoxia means low oxygen content, and his is normal.",
+        "Stagnant hypoxia comes from slow flow, which lets tissues take more oxygen and lowers venous PO2; his venous PO2 is high.",
+        "Correct. Cells that cannot use oxygen leave it in the venous blood."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "Mrs. Tan has severe heart failure. Her hemoglobin is 14 g/100 mL and her arterial PO2 is 92 mm Hg, but her cardiac output is very low and her feet are cold and mottled. Which type of hypoxia is affecting her feet?",
+    "options": [
+      "Stagnant (circulatory) hypoxia",
+      "Hypoxemic hypoxia",
+      "Histotoxic hypoxia",
+      "Anemic hypoxia"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Her arterial blood carries a normal amount of oxygen, but too little of it flows to her feet each minute. That is stagnant, or circulatory, hypoxia. The slow-moving blood gives up more of its oxygen, so her venous PO2 is low.",
+      "options": [
+        "Correct. Low flow delivers too little oxygen.",
+        "Her arterial PO2 is normal, so too little oxygen is not getting into her blood.",
+        "Nothing is stopping her cells from using oxygen; they are not receiving enough.",
+        "Her hemoglobin is normal, so her blood's oxygen content is normal."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "q": "A trekker at 5,000 m has an arterial PO2 of 45 mm Hg and an SpO2 of 80%, with normal hemoglobin and circulation. Which type of hypoxia is this?",
+    "options": [
+      "Anemic hypoxia",
+      "Histotoxic hypoxia",
+      "Hypoxemic hypoxia",
+      "Stagnant hypoxia"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The low total pressure lowers the PO2 of the air he breathes, so too little oxygen gets into his blood: a low arterial PO2 is hypoxemia, and the resulting tissue hypoxia is hypoxemic (hypoxic) hypoxia.",
+      "options": [
+        "His hemoglobin is normal; the problem is too little oxygen for it to pick up.",
+        "His cells can use oxygen normally; they are not receiving enough.",
+        "Correct. The low arterial PO2 marks hypoxemic hypoxia.",
+        "His circulation is normal, so slow flow is not the problem."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-19",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "interdependence"
+    ],
+    "q": "Put the steps in order to trace one oxygen molecule from the air to a working muscle cell.",
+    "options": [
+      "Air is breathed in and reaches the alveoli",
+      "Oxygen diffuses across the respiratory membrane and dissolves in plasma",
+      "Oxygen enters a red blood cell and binds heme iron, forming oxyhemoglobin",
+      "The heart pumps the blood through systemic arteries to the muscle's capillaries",
+      "Low PO2, high PCO2, acid and heat make hemoglobin release the oxygen into plasma",
+      "Oxygen diffuses through the interstitial fluid into the muscle cell and its mitochondria"
+    ],
+    "why": {
+      "correct": "Ventilation brings oxygen to the alveoli; it diffuses into plasma and then onto hemoglobin; the circulation carries it to the tissue; conditions there shift and lower saturation so hemoglobin releases it; and it diffuses down its gradient into the cell, where the electron transport chain uses it."
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-20",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student explained how active tissue gets extra oxygen from hemoglobin. One step is wrong. Which one?",
+    "options": [
+      "Working cells make more carbon dioxide and acid",
+      "Carbon dioxide and H+ bind the globin chains of hemoglobin",
+      "Hemoglobin shifts toward its relaxed, high-affinity shape",
+      "The dissociation curve shifts to the right",
+      "Hemoglobin releases more oxygen at the same tissue PO2"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Carbon dioxide and H+ stabilize hemoglobin's tense, low-affinity shape. That is what shifts the curve right and makes hemoglobin release more oxygen. A shift toward the relaxed, high-affinity shape would do the opposite.",
+      "options": [
+        "This step is right. Aerobic respiration makes carbon dioxide, and working muscle makes acid.",
+        "This step is right. This is the basis of the Bohr effect.",
+        "This is the error. The shift is toward the tense, low-affinity shape.",
+        "This step is right. Lower affinity is a right shift.",
+        "This step is right. A right-shifted curve gives a lower saturation at any PO2."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-21",
+    "type": "missing",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Complete the definition: P50 is the PO2 at which hemoglobin is ____ saturated. A higher P50 means a ____ shift.",
+    "options": [
+      "50%; right",
+      "50%; left",
+      "100%; right",
+      "27%; left"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "P50 is the PO2 at 50% saturation, normally about 27 mm Hg. If more PO2 is needed to half-fill hemoglobin, its affinity is lower: a right shift.",
+      "options": [
+        "Correct. A higher P50 is a right shift.",
+        "A left shift means higher affinity, so hemoglobin is half full at a lower PO2: the P50 falls.",
+        "P50 refers to half saturation, not full saturation.",
+        "27 mm Hg is the normal P50 value itself, not the saturation level that defines it."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-22",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "a normal SpO2 means enough oxygen",
+    "q": "Ms. Bello has severe iron-deficiency anemia, with 7 g/100 mL of hemoglobin. Her SpO2 is 99% and she is breathless on stairs. What does her SpO2 tell you?",
+    "options": [
+      "Her blood is carrying a normal amount of oxygen to her tissues",
+      "Her pulse oximeter must be faulty",
+      "Her lungs are failing to load oxygen",
+      "Her hemoglobin is nearly full, but there is too little of it"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Saturation is a percentage of the hemoglobin present. Her 7 g is 99% loaded, but her oxygen content is only about 7 × 1.34 × 0.99 + 0.3 ≈ 9.6 mL per 100 mL, half of normal. That is anemic hypoxia.",
+      "options": [
+        "A full load on half the normal hemoglobin carries about half the normal oxygen.",
+        "A 99% reading is accurate here: nearly every hemoglobin molecule she has is loaded.",
+        "Her lungs load her hemoglobin almost completely, as the 99% shows. The problem is the amount of hemoglobin.",
+        "Correct. Saturation is not content."
+      ]
+    }
+  },
+  {
+    "id": "anp-oxygen-transport-23",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "How does fetal hemoglobin differ from adult hemoglobin?",
+    "options": [
+      "It has gamma chains in place of beta chains and binds 2,3-BPG weakly",
+      "It has no heme groups and carries oxygen dissolved",
+      "It has beta chains in place of its alpha chains and binds more 2,3-BPG",
+      "It binds carbon monoxide instead of oxygen"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Fetal hemoglobin has two alpha and two gamma chains. The gamma chains bind 2,3-BPG weakly, so its affinity for oxygen is higher and its curve lies to the left, with a P50 of about 19 mm Hg.",
+      "options": [
+        "Correct. Gamma chains and weak 2,3-BPG binding give it a higher affinity.",
+        "Fetal hemoglobin has four heme groups, just like adult hemoglobin.",
+        "Both kinds keep the alpha chains; fetal hemoglobin swaps beta for gamma, and binding more 2,3-BPG would lower its affinity.",
+        "Fetal hemoglobin carries oxygen normally; carbon monoxide binds both kinds."
+      ]
+    }
+  }
+]

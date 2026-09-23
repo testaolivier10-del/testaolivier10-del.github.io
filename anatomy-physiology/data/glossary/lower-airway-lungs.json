@@ -1,0 +1,104 @@
+{
+  "trachea": {
+    "def": "The windpipe, from the larynx to its division in the chest. It is held open by 16 to 20 C-shaped rings of hyaline cartilage (tracheal cartilages), open at the back, where the smooth trachealis muscle closes the gap against the esophagus. The last cartilage forms the carina, a sensitive ridge where the trachea splits into the primary bronchi.",
+    "roots": [
+      [
+        "trache-",
+        "rough (windpipe)"
+      ],
+      [
+        "carina",
+        "keel"
+      ]
+    ],
+    "say": "TRAY-kee-uh; kuh-RYE-nuh; tray-kee-AL-iss"
+  },
+  "bronchial-tree": {
+    "def": "The branching airways of the lungs: primary (main) bronchi, secondary (lobar) and tertiary (segmental) bronchi, smaller bronchi, then bronchioles without cartilage, terminal bronchioles (the end of the conducting zone), respiratory bronchioles (the first with alveoli) and alveolar ducts. Down the tree, cartilage disappears, smooth muscle becomes relatively thicker and the epithelium thins.",
+    "roots": [
+      [
+        "bronch-",
+        "windpipe"
+      ],
+      [
+        "-ole",
+        "small"
+      ]
+    ],
+    "say": "BRONG-kus; BRONG-kye; BRONG-kee-ohl"
+  },
+  "alveoli": {
+    "def": "The tiny air sacs, about 0.2 mm across and numbering hundreds of millions, where gases cross between air and blood. They cluster in alveolar sacs. Thin type I alveolar cells form the wall; cuboidal type II cells secrete a surface-tension-lowering film and replace type I cells; alveolar macrophages engulf particles; alveolar pores link neighbors.",
+    "roots": [
+      [
+        "alveol-",
+        "small cavity"
+      ]
+    ],
+    "say": "al-VEE-oh-lye"
+  },
+  "respiratory-membrane": {
+    "def": "The barrier between alveolar air and capillary blood: a type I alveolar cell, the fused basement membranes and a capillary endothelial cell, about 0.5 µm thick in all. Its thinness and huge area let oxygen and carbon dioxide diffuse across quickly.",
+    "roots": [
+      [
+        "re-",
+        "again"
+      ],
+      [
+        "spir-",
+        "to breathe"
+      ]
+    ],
+    "say": ""
+  },
+  "lungs": {
+    "def": "The paired, spongy organs of gas exchange on either side of the mediastinum. Each has an apex, a base on the diaphragm and a hilum where the bronchus, vessels and nerves enter. Fissures divide the right lung into three lobes and the left into two; the left has a cardiac notch for the heart.",
+    "roots": [
+      [
+        "hilum",
+        "small mark"
+      ],
+      [
+        "fissura",
+        "cleft"
+      ],
+      [
+        "lobus",
+        "rounded part"
+      ]
+    ],
+    "say": "HY-lum"
+  },
+  "pleura": {
+    "def": "The serous membrane around each lung: the visceral pleura covers the lung surface, the parietal pleura lines the chest wall, diaphragm and mediastinum, and they meet at the hilum. Between them, a film of pleural fluid lubricates the layers and holds the lung against the chest wall.",
+    "roots": [
+      [
+        "pleura",
+        "rib, side"
+      ],
+      [
+        "viscer-",
+        "internal organ"
+      ],
+      [
+        "pariet-",
+        "wall"
+      ]
+    ],
+    "say": "PLOOR-uh"
+  },
+  "lung-blood-supply": {
+    "def": "The lungs' two blood supplies. The pulmonary arteries bring deoxygenated blood from the right ventricle to the alveolar capillaries for gas exchange. The bronchial arteries, systemic branches mostly of the thoracic aorta, bring oxygenated blood to the airway walls, connective tissue and visceral pleura; bronchial veins drain partly to the azygos system and partly into pulmonary veins.",
+    "roots": [
+      [
+        "bronch-",
+        "windpipe"
+      ],
+      [
+        "pulmon-",
+        "lung"
+      ]
+    ],
+    "say": ""
+  }
+}

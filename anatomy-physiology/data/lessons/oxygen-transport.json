@@ -1,0 +1,48 @@
+{
+  "topic": "oxygen-transport",
+  "hook": "<p>On a January morning, paramedics find a family of four drowsy, nauseated and complaining of headaches. The dog is lethargic too. Each person's pulse oximeter reads 98 or 99%, and their lungs sound clear. The furnace has a cracked flue. Their blood is carrying plenty of red pigment, but much of it is carrying carbon monoxide instead of oxygen, and the finger clip cannot tell the difference.</p>",
+  "prereq": [
+    {
+      "q": "What does one hemoglobin molecule consist of?",
+      "options": ["One globin chain wrapped around four iron ions", "Four globin chains, each holding one heme group with an iron ion", "Two heme groups joined by a single protein chain"],
+      "correct": 1,
+      "why": "Adult hemoglobin has four globin chains, two alpha and two beta, and each carries one heme group with an iron ion at its center. Each iron can bind one oxygen molecule.",
+      "review": "erythrocytes"
+    },
+    {
+      "q": "A blood sample has a PO2 of 100 mm Hg. By Henry's law, how much oxygen is dissolved in its plasma, per 100 mL of blood?",
+      "options": ["About 20 mL", "About 3 mL", "About 0.3 mL"],
+      "correct": 2,
+      "why": "Dissolved oxygen = PO2 × solubility = 100 × 0.003 = 0.3 mL per 100 mL. That is far too little to supply the tissues, which is why hemoglobin carries almost all the oxygen.",
+      "review": "gas-exchange"
+    },
+    {
+      "q": "The pH of a solution falls from 7.4 to 7.2. What happened to its H+ concentration?",
+      "options": ["It rose", "It fell", "It stayed the same"],
+      "correct": 0,
+      "why": "pH is a logarithmic measure of H+ concentration, and a lower pH means more H+. A fall of 0.2 pH units means the H+ concentration rose about 1.6-fold.",
+      "review": "acids-bases-ph"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-22-27",
+    "caption": "Dissociation curves for fetal and adult hemoglobin. Hide the labels and name each curve, then read off each P50."
+  },
+  "chain": [
+    { "cause": "A muscle starts working hard, using more oxygen and making more carbon dioxide, acid and heat.", "effect": "Tissue PO2 falls, and the PCO2, H+ and temperature of the blood passing through rise." },
+    { "cause": "Carbon dioxide and H+ bind the globin chains, and heat weakens the oxygen–heme bond (the Bohr effect plus temperature).", "effect": "Hemoglobin shifts toward its tense, low-affinity shape: the dissociation curve shifts to the right." },
+    { "cause": "The right-shifted curve gives a lower saturation at any PO2, and the tissue PO2 has also fallen onto the steep part of the curve.", "effect": "Hemoglobin releases much more of its oxygen, up to about two-thirds of what it carried in." },
+    { "cause": "The released oxygen dissolves in plasma and diffuses down a steep gradient into the muscle cells.", "effect": "Oxygen delivery rises to meet the muscle's use, with no hormone or nerve signal needed." }
+  ],
+  "misconception": {
+    "wrong": "An SpO2 of 98% means the blood is carrying plenty of oxygen.",
+    "right": "Saturation is the percentage of hemoglobin that is loaded, not the amount of oxygen. In severe anemia, the little hemoglobin there is may be 98% loaded while the blood carries half the normal oxygen. In carbon monoxide poisoning, a standard pulse oximeter counts carboxyhemoglobin as oxyhemoglobin, so it reads near normal while oxygen content falls and the left-shifted curve also stops hemoglobin letting go of what it has."
+  },
+  "check": ["anp-oxygen-transport-2", "anp-oxygen-transport-5", "anp-oxygen-transport-7", "anp-oxygen-transport-10", "anp-oxygen-transport-12", "anp-oxygen-transport-14", "anp-oxygen-transport-16", "anp-oxygen-transport-22"],
+  "summary": "<p>About 98.5% of the oxygen in blood is bound to hemoglobin as oxyhemoglobin, four oxygen molecules per hemoglobin; the 1.5% dissolved in plasma sets the PO2. Arterial blood carries about 20 mL of oxygen per 100 mL. Saturation is the percentage of binding sites filled: SaO2 from an arterial sample, SpO2 from a pulse oximeter. Cooperative binding makes the oxygen–hemoglobin dissociation curve S-shaped: flat above about 60 mm Hg, so blood still loads well if PO2 falls, and steep below 50, so small drops in tissue PO2 release a lot of oxygen. P50 is normally about 27 mm Hg. More carbon dioxide and H+ (the Bohr effect), higher temperature and more 2,3-BPG shift the curve right and release more oxygen; their opposites, fetal hemoglobin and carbon monoxide shift it left. Carbon monoxide takes oxygen's place on heme, shifts the curve left and gives a falsely normal SpO2. Hypoxia can be hypoxemic, anemic, stagnant or histotoxic.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-13", "label": "NREMT: Vital signs and monitoring devices (pulse oximetry)" },
+    { "href": "/nremt/study-notes.html#chapter-25", "label": "NREMT: Poisoning and overdose emergencies (carbon monoxide)" },
+    { "href": "/nremt/study-notes.html#chapter-10", "label": "NREMT: Ventilation and oxygen equipment" }
+  ]
+}

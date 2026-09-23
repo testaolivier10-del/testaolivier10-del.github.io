@@ -1,0 +1,37 @@
+{
+  "o2-carriage": {
+    "def": "Blood carries about 98.5% of its oxygen bound to hemoglobin, four molecules per hemoglobin, and about 1.5% dissolved in plasma. Hemoglobin with oxygen bound is oxyhemoglobin; hemoglobin without it is deoxyhemoglobin.",
+    "roots": [["oxy-", "oxygen"], ["de-", "removing"], ["hemo-", "blood"], ["-globin", "protein"]],
+    "say": "OK-see-HEE-moh-gloh-bin"
+  },
+  "saturation": {
+    "def": "The percentage of hemoglobin's oxygen-binding sites that are occupied, normally 95 to 100% in arterial blood. SaO2 is measured in an arterial blood sample; SpO2 is estimated by pulse oximetry, which shines red and infrared light through a finger.",
+    "roots": [["satur-", "full"], ["oxi-", "oxygen"], ["-metry", "measuring"]],
+    "say": "ok-SIM-eh-tree"
+  },
+  "o2-hb-curve": {
+    "def": "The S-shaped graph of hemoglobin saturation against PO2. Cooperative binding, where each oxygen that binds makes the other sites bind more readily, makes it flat above about 60 mm Hg and steep below about 50. Hemoglobin is 50% saturated at about 27 mm Hg (the P50).",
+    "roots": [["dis-", "apart"], ["soci-", "join"], ["co-", "together"], ["oper-", "work"]],
+    "say": ""
+  },
+  "curve-shifts": {
+    "def": "Sideways moves of the dissociation curve. More carbon dioxide and H+ (the Bohr effect), higher temperature and more 2,3-BPG lower hemoglobin's affinity and shift it right, releasing more oxygen at a given PO2; the opposite changes, fetal hemoglobin and carbon monoxide shift it left.",
+    "roots": [["bis-", "twice"], ["phosph-", "phosphate"]],
+    "say": ""
+  },
+  "fetal-hemoglobin": {
+    "def": "The hemoglobin of a fetus (HbF), with two alpha and two gamma chains. It binds 2,3-BPG weakly, so it holds oxygen more tightly than adult hemoglobin (P50 about 19 mm Hg) and can take oxygen from maternal blood. It is mostly replaced by adult hemoglobin by about six months after birth.",
+    "roots": [["fet-", "offspring"]],
+    "say": "FEE-tal"
+  },
+  "co-poisoning": {
+    "def": "Harm from carbon monoxide (CO), a colorless, odorless gas from incomplete burning. It binds heme about 200 to 250 times more tightly than oxygen (forming carboxyhemoglobin), lowers oxygen content, shifts the curve left and blocks mitochondria, while PO2 and a standard pulse oximeter reading stay normal. It is treated with 100% oxygen.",
+    "roots": [["mon-", "one"], ["-oxide", "compound with oxygen"]],
+    "say": ""
+  },
+  "hypoxia": {
+    "def": "Too little oxygen reaching the tissues, or reaching them and not being used. Its four types are hypoxemic (low arterial PO2), anemic (low oxygen content), stagnant or circulatory (too little blood flow) and histotoxic (cells unable to use oxygen, as with cyanide).",
+    "roots": [["hypo-", "under"], ["ox-", "oxygen"], ["-ia", "condition"], ["histo-", "tissue"], ["toxic", "poison"]],
+    "say": "hy-POK-see-uh"
+  }
+}

@@ -16,7 +16,7 @@
    option by letter or position; and the ordering rule: a term's text uses
    only terms taught by its topic, and a part's text only terms taught by the
    first topic that uses it. */
-import { scanTerms, termRegex, indexMap } from '../anp-map.mjs';
+import { scanUseTerms, everydaySet, termRegex, indexMap } from '../anp-map.mjs';
 
 const TYPES = ['prefix', 'root', 'suffix'];
 const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
@@ -36,7 +36,9 @@ function laterTerms(map, topicIndex, topicId, text, self) {
     if (c.id === self) continue;
     const there = topicIndex.get(c.taughtIn);
     if (there === undefined || there <= here) continue;
-    for (const term of scanTerms(c)) {
+    // Same terms as the page check: plurals count, everyday words (decision 51) do not.
+    for (const term of scanUseTerms(c)) {
+      if (everydaySet(map).has(term.toLowerCase())) continue;
       const m = t.match(termRegex(term));
       if (m) { out.push(`"${m[0]}" (${c.id}, taught in ${c.taughtIn})`); break; }
     }

@@ -12,7 +12,7 @@
    planted error explains itself; no explanation points at an option by letter
    or position; and the ordering rule: nothing in a pathway uses a term the map
    teaches after the pathway's topic. */
-import { scanTerms, termRegex, indexMap } from '../anp-map.mjs';
+import { scanUseTerms, everydaySet, termRegex, indexMap } from '../anp-map.mjs';
 
 const LEVELS = ['recall', 'apply', 'analyze'];
 const KINDS = ['flow', 'causal'];
@@ -51,7 +51,9 @@ export function laterTerms(map, topicId, text) {
   for (const c of map.concepts) {
     const there = topicIndex.get(c.taughtIn);
     if (there === undefined || there <= here) continue;
-    for (const term of scanTerms(c)) {
+    // Same terms as the page check: plurals count, everyday words (decision 51) do not.
+    for (const term of scanUseTerms(c)) {
+      if (everydaySet(map).has(term.toLowerCase())) continue;
       const m = t.match(termRegex(term));
       if (m) { out.push(`"${m[0]}" (${c.id}, taught in ${c.taughtIn})`); break; }
     }

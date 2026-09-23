@@ -1,0 +1,647 @@
+[
+  {
+    "id": "anp-breathing-control-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Where is the respiratory rhythm most likely generated?",
+    "options": [
+      "The pre-Bötzinger complex in the medulla oblongata",
+      "The pneumotaxic center in the upper part of the pons",
+      "The carotid bodies at the fork of each carotid artery",
+      "The primary motor cortex of the frontal lobe"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Neurons of the pre-Bötzinger complex, near the top of the ventral respiratory group in the medulla oblongata, fire in rhythmic bursts on their own, even when isolated from the rest of the brain. Many textbooks give the dorsal respiratory group this role; current evidence points to the pre-Bötzinger complex.",
+      "options": [
+        "Correct. This cluster in the medulla generates the rhythm.",
+        "The pneumotaxic center fine-tunes the rhythm by switching off inspiration earlier. Breathing continues when the pons is cut away.",
+        "The carotid bodies are peripheral chemoreceptors. They change breathing but do not generate its rhythm.",
+        "The motor cortex can override breathing voluntarily, but you keep breathing in your sleep and in coma, when it is not driving the muscles."
+      ]
+    }
+  },
+  {
+    "id": "anp-breathing-control-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-22-20",
+    "pin": "pneumotaxic-center",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Pneumotaxic center",
+      "Apneustic center",
+      "Dorsal respiratory group",
+      "Ventral respiratory group"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The pneumotaxic center, the pontine respiratory group, is the upper of the two areas in the pons. It sends inhibiting signals that switch off inspiration.",
+      "options": [
+        "Correct. This is the pneumotaxic center in the upper pons.",
+        "The apneustic center lies below the pneumotaxic center, lower in the pons.",
+        "The dorsal respiratory group is in the medulla oblongata, not the pons.",
+        "The ventral respiratory group is in the medulla oblongata, not the pons."
+      ]
+    }
+  },
+  {
+    "id": "anp-breathing-control-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-22-20",
+    "pin": "dorsal-respiratory-group-drg",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Apneustic center",
+      "Ventral respiratory group",
+      "Dorsal respiratory group",
+      "Pneumotaxic center"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The dorsal respiratory group lies toward the back of the medulla oblongata. It receives sensory input through the glossopharyngeal and vagus nerves and drives inspiration.",
+      "options": [
+        "The apneustic center is in the pons, above the medulla.",
+        "The ventral respiratory group lies toward the front of the medulla, in front of the dorsal group.",
+        "Correct. This is the dorsal respiratory group.",
+        "The pneumotaxic center is in the upper pons."
+      ]
+    }
+  },
+  {
+    "id": "anp-breathing-control-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-22-20",
+    "pin": "ventral-respiratory-group-vrg",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Dorsal respiratory group",
+      "Ventral respiratory group",
+      "Pneumotaxic center",
+      "Apneustic center"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The ventral respiratory group lies toward the front of the medulla oblongata. It contains the pre-Bötzinger complex and the neurons that drive forced expiration and the accessory muscles.",
+      "options": [
+        "The dorsal respiratory group sits behind the ventral group, toward the back of the medulla.",
+        "Correct. This is the ventral respiratory group.",
+        "The pneumotaxic center is in the upper pons.",
+        "The apneustic center is in the lower pons, above the medulla."
+      ]
+    }
+  },
+  {
+    "id": "anp-breathing-control-5",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "Acid produced by metabolism builds up in a patient's blood, and her arterial pH falls quickly. Her arterial PCO2 is normal at first. Which sensors are first to speed her breathing?",
+    "options": [
+      "Lung stretch receptors",
+      "Central chemoreceptors in the medulla oblongata",
+      "Irritant receptors in the airways",
+      "The carotid bodies"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The carotid bodies sample arterial blood directly and respond within seconds to a fall in pH from any cause. Hydrogen ions cross the blood–brain barrier poorly, so the central chemoreceptors are slow to sense acid that is not carried in as carbon dioxide.",
+      "options": [
+        "Lung stretch receptors respond to inflation of the lungs, not to blood chemistry.",
+        "Central chemoreceptors respond to hydrogen ions in the brain's fluid, which come mainly from carbon dioxide crossing the barrier. Hydrogen ions from the blood cross only slowly.",
+        "Irritant receptors respond to dust, smoke and fumes in the airways, not to blood pH.",
+        "Correct. The peripheral chemoreceptors sense the low arterial pH first."
+      ]
+    }
+  },
+  {
+    "id": "anp-breathing-control-6",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Mr. Hale has severe anemia: his blood carries 40% less oxygen than normal. His arterial PO2 is 95 mmHg. Why is his breathing rate close to normal at rest?",
+    "options": [
+      "Anemia damages the carotid bodies so they can no longer fire",
+      "The carotid bodies sense arterial PO2, which is normal",
+      "His central chemoreceptors block the oxygen signal",
+      "Low oxygen content slows the respiratory centers"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Peripheral chemoreceptors respond to the partial pressure of oxygen, which depends on the oxygen dissolved in plasma, not on how much hemoglobin carries. In anemia, arterial PO2 is normal, so the carotid bodies are not strongly stimulated.",
+      "options": [
+        "Anemia does not damage the carotid bodies. They are working normally; they simply sense PO2, which is normal.",
+        "Correct. The sensors read PO2, not oxygen content.",
+        "Central chemoreceptors do not sense oxygen at all, and they do not block signals from the carotid bodies.",
+        "Low oxygen content does not act on the respiratory centers directly at this level; there is no signal telling them oxygen content is low."
+      ]
+    }
+  },
+  {
+    "id": "anp-breathing-control-7",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "During a panic attack, a woman breathes fast and deep for several minutes. Predict the change in each variable, compared with before the attack.",
+    "variables": [
+      {
+        "name": "Arterial PCO2",
+        "answer": "down",
+        "why": "She is breathing out carbon dioxide faster than her cells make it."
+      },
+      {
+        "name": "Arterial pH",
+        "answer": "up",
+        "why": "Less carbon dioxide means less carbonic acid and fewer hydrogen ions."
+      },
+      {
+        "name": "Blood flow to the brain",
+        "answer": "down",
+        "why": "Low carbon dioxide constricts the arterioles in the brain, which is why she feels lightheaded."
+      },
+      {
+        "name": "Free calcium in the plasma",
+        "answer": "down",
+        "why": "In alkalosis, more calcium binds to albumin and other plasma proteins, leaving less free, which causes tingling and hand spasms."
+      },
+      {
+        "name": "Drive from her central chemoreceptors",
+        "answer": "down",
+        "why": "With less carbon dioxide crossing into the brain's fluid, its hydrogen ions fall and the central chemoreceptors fire less."
+      }
+    ],
+    "why": {
+      "correct": "Hyperventilation lowers arterial PCO2, which raises pH. Low PCO2 constricts brain arterioles, the alkalosis lowers free calcium, and the central chemoreceptors reduce their drive, which pushes breathing back toward normal once the emotional drive fades."
+    }
+  },
+  {
+    "id": "anp-breathing-control-8",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 4,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "A lowland hiker is driven to a research station at 4,300 m and stays for three weeks. Predict each variable, first in the first hours (compared with sea level) and then after acclimatization (compared with the first hours).",
+    "variables": [
+      {
+        "name": "Ventilation in the first hours",
+        "answer": "up",
+        "why": "Low arterial PO2 stimulates the carotid bodies, which drive the respiratory centers."
+      },
+      {
+        "name": "Arterial PCO2 in the first hours",
+        "answer": "down",
+        "why": "The extra ventilation blows off carbon dioxide faster than it is made."
+      },
+      {
+        "name": "Blood pH in the first hours",
+        "answer": "up",
+        "why": "Less carbon dioxide means fewer hydrogen ions, and the central chemoreceptors act as a brake on further breathing."
+      },
+      {
+        "name": "Ventilation after one week, compared with the first hours",
+        "answer": "up",
+        "why": "The kidneys excrete bicarbonate and the cerebrospinal fluid's bicarbonate falls, so pH returns toward normal, the central brake is released, and the carotid bodies become more sensitive."
+      },
+      {
+        "name": "Blood pH after one week, compared with the first hours",
+        "answer": "down",
+        "why": "Losing bicarbonate in the urine brings the raised pH back toward normal."
+      },
+      {
+        "name": "Hematocrit after three weeks, compared with the first hours",
+        "answer": "up",
+        "why": "Low oxygen makes the kidneys release more erythropoietin, which speeds erythropoiesis."
+      }
+    ],
+    "why": {
+      "correct": "In the first hours, low oxygen raises ventilation through the carotid bodies, and the fall in PCO2 raises pH, which restrains breathing. Over days, the kidneys correct the pH, the brake comes off and ventilation rises further. Over weeks, more red blood cells raise the blood's oxygen-carrying capacity."
+    }
+  },
+  {
+    "id": "anp-breathing-control-9",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "A healthy student cycles at a moderate, steady pace for 20 minutes. Predict each variable during the steady part of the ride, compared with rest.",
+    "variables": [
+      {
+        "name": "Carbon dioxide production by muscle",
+        "answer": "up",
+        "why": "Working muscle runs more cellular respiration, which makes more carbon dioxide."
+      },
+      {
+        "name": "Ventilation",
+        "answer": "up",
+        "why": "Signals from the motor cortex and proprioceptors, fine-tuned by the chemoreceptors, raise ventilation to match carbon dioxide production (hyperpnea)."
+      },
+      {
+        "name": "Arterial PCO2",
+        "answer": "none",
+        "why": "Ventilation rises in step with carbon dioxide production, so arterial PCO2 stays near 40 mmHg in moderate exercise."
+      },
+      {
+        "name": "PCO2 of venous blood leaving the working muscles",
+        "answer": "up",
+        "why": "The muscles add more carbon dioxide to each liter of blood passing through them."
+      },
+      {
+        "name": "Cardiac output",
+        "answer": "up",
+        "why": "Sympathetic drive raises heart rate and contractility, and the muscle pump raises venous return."
+      }
+    ],
+    "why": {
+      "correct": "Exercise raises carbon dioxide production, and the nervous system raises ventilation and cardiac output to match. Because ventilation keeps pace, arterial PCO2 stays about normal even though venous blood from the muscles carries more carbon dioxide. The drive comes largely from the motor cortex and proprioceptors, not from a change in arterial PCO2 or PO2."
+    }
+  },
+  {
+    "id": "anp-breathing-control-10",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Select every change that directly stimulates the carotid bodies.",
+    "options": [
+      "Arterial PO2 falling to 50 mmHg",
+      "Arterial PCO2 rising to 50 mmHg",
+      "Arterial pH falling to 7.25",
+      "Anemia with a normal arterial PO2",
+      "A rise in hydrogen ions in the cerebrospinal fluid only",
+      "Inflation of the lungs to a large volume"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "The carotid bodies respond to low arterial PO2, high arterial PCO2 and low arterial pH. They sense PO2, not oxygen content, so anemia with a normal PO2 does little. Cerebrospinal fluid is sensed by the central chemoreceptors, and lung inflation by lung stretch receptors.",
+      "options": [
+        "Correct. A PO2 below about 60 mmHg stimulates them strongly.",
+        "Correct. They respond quickly to a rise in PCO2.",
+        "Correct. They respond to acid in arterial blood from any cause.",
+        "In anemia, arterial PO2 is normal, so the carotid bodies are not strongly stimulated.",
+        "Cerebrospinal fluid bathes the central chemoreceptors, not the carotid bodies, which sit in the neck.",
+        "Lung inflation is sensed by lung stretch receptors, which inhibit inspiration through the vagus nerves."
+      ]
+    }
+  },
+  {
+    "id": "anp-breathing-control-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A patient's alveolar ventilation falls to half its normal value, and his carbon dioxide production does not change. His arterial PCO2 was 40 mmHg. What will it settle at?",
+    "options": [
+      "20 mmHg",
+      "40 mmHg (unchanged)",
+      "60 mmHg",
+      "80 mmHg"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "At constant carbon dioxide production, arterial PCO2 is inversely proportional to alveolar ventilation. Half the ventilation doubles the PCO2: 40 × 2 = 80 mmHg.",
+      "options": [
+        "20 mmHg is what happens if alveolar ventilation doubles. Less ventilation raises PCO2.",
+        "PCO2 cannot stay the same: the same carbon dioxide production is being cleared by half as much air.",
+        "60 mmHg adds half of 40 instead of doubling it. The relationship is inverse proportion, not a 50% rise.",
+        "Correct. Halving alveolar ventilation doubles arterial PCO2."
+      ]
+    }
+  },
+  {
+    "id": "anp-breathing-control-12",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "misconception": "fast breathing always means hyperventilation",
+    "q": "A patient is breathing 32 times a minute with very shallow breaths. Her arterial PCO2 is 58 mmHg. How is her breathing best described?",
+    "options": [
+      "Hyperventilation, because her breathing rate is high",
+      "Normal ventilation, because the fast rate makes up for the small breaths",
+      "Hypoventilation, because her PCO2 is above 45 mmHg",
+      "Hyperpnea, because her ventilation matches her metabolism"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Hypoventilation and hyperventilation are defined by arterial PCO2, not by rate. Her PCO2 is above 45 mmHg, so she is hypoventilating. With very shallow breaths, much of each breath only fills the dead space and never reaches the alveoli, so alveolar ventilation is low despite the fast rate.",
+      "options": [
+        "A fast rate is not the same as hyperventilation. Hyperventilation lowers PCO2 below 35 mmHg; hers is high.",
+        "If the fast rate made up for the small breaths, her PCO2 would be normal. At 58 mmHg it is not.",
+        "Correct. A high PCO2 defines hypoventilation.",
+        "In hyperpnea, ventilation matches carbon dioxide production and PCO2 stays normal. Hers is high."
+      ]
+    }
+  },
+  {
+    "id": "anp-breathing-control-13",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "misconception": "you breathe mainly in response to low oxygen",
+    "q": "A swimmer breathes hard and fast for a minute, then swims underwater. He blacks out without feeling any urge to breathe. What explains this?",
+    "options": [
+      "Hyperventilating filled his blood with extra oxygen, which suppressed his breathing",
+      "Hyperventilating lowered his PCO2, so it rose to the level that forces a breath only after his oxygen had fallen too low",
+      "The cold water switched off his carotid bodies",
+      "Holding his breath damaged his respiratory centers"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Hyperventilation lowers PCO2 a lot but barely raises blood oxygen, because hemoglobin is already nearly saturated. Underwater, PCO2 climbs from a lower starting point and takes longer to reach the level that forces a breath. Meanwhile oxygen keeps falling, and he loses consciousness from low oxygen first.",
+      "options": [
+        "Hemoglobin is already about 97% saturated at rest, so hyperventilating adds very little oxygen. Oxygen does not suppress breathing in a healthy person.",
+        "Correct. The carbon dioxide alarm was delayed while oxygen ran out.",
+        "Cold water stimulates breathing, often causing a gasp; it does not switch off the carotid bodies. His problem began before the dive.",
+        "A breath-hold of this length does not damage the brainstem. The blackout comes from low oxygen, not from injury to the centers."
+      ]
+    }
+  },
+  {
+    "id": "anp-breathing-control-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "A man who took an opioid overdose is breathing 5 times a minute. Opioids depress the respiratory centers. What do you expect in his arterial blood?",
+    "options": [
+      "PCO2 low and pH high",
+      "PCO2 high and pH low",
+      "PCO2 normal and pH normal",
+      "PCO2 high and pH high"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "With the respiratory centers depressed, alveolar ventilation falls well below what his carbon dioxide production requires. PCO2 rises (hypercapnia), more carbonic acid forms, and pH falls. His arterial PO2 also falls.",
+      "options": [
+        "Low PCO2 and high pH are the pattern of hyperventilation, the opposite of what slow breathing causes.",
+        "Correct. Hypoventilation causes hypercapnia and a fall in pH.",
+        "Breathing 5 times a minute cannot clear his carbon dioxide production, so the gases cannot stay normal.",
+        "A high PCO2 forms more carbonic acid, which lowers pH rather than raising it."
+      ]
+    }
+  },
+  {
+    "id": "anp-breathing-control-15",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "misconception": "oxygen removes the hypoxic drive in carbon dioxide retainers",
+    "q": "Mrs. Ruiz has long-term lung disease and a chronically high PCO2. Her SpO2 is 82%. She is given high-flow oxygen, her SpO2 reaches 99%, and her PCO2 rises further. Which explanation is best supported by current evidence?",
+    "options": [
+      "Oxygen removed her hypoxic drive, so she stopped breathing",
+      "Oxygen damaged her central chemoreceptors",
+      "Oxygen reversed hypoxic pulmonary vasoconstriction, worsening V/Q mismatch, and the Haldane effect reduced carbon dioxide carriage",
+      "Oxygen blocked carbonic anhydrase in her red blood cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Studies show ventilation falls only a little when such patients receive oxygen. Most of the rise in PCO2 comes from worsening ventilation–perfusion mismatch, as oxygen reopens constricted arterioles in poorly ventilated lung, and from the Haldane effect, as oxygenated hemoglobin holds less carbon dioxide. The response is to aim for a target saturation, often 88–92%, never to withhold oxygen from a hypoxic patient.",
+      "options": [
+        "This is the older hypoxic-drive explanation that many exams still expect. The evidence shows her ventilation would fall only slightly; it is not the main cause.",
+        "Oxygen does not damage the central chemoreceptors. They are less responsive because they have adapted to her long-term high PCO2.",
+        "Correct. V/Q worsening and the Haldane effect explain most of the rise.",
+        "Oxygen does not block carbonic anhydrase. The enzyme works regardless of oxygen level."
+      ]
+    }
+  },
+  {
+    "id": "anp-breathing-control-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "During hard exercise, a runner's tidal volume rises to about 3 L. Lung stretch receptors fire strongly. What is the effect?",
+    "options": [
+      "Inspiration is cut short, limiting inflation",
+      "The smooth muscle of the airways contracts",
+      "Expiration is prolonged by the medulla",
+      "The carotid bodies are inhibited by the vagus"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "This is the Hering–Breuer (inflation) reflex. Stretch receptors in the airway smooth muscle send signals through the vagus nerves that inhibit inspiration, limiting tidal volume. In adults it acts mainly when tidal volume is large, as here.",
+      "options": [
+        "Correct. The reflex cuts inspiration short when the lungs are well inflated.",
+        "Contraction of airway smooth muscle is a response to irritant receptors, triggered by dust, smoke or fumes, not by stretch.",
+        "The reflex acts on inspiration. It shortens inspiration; it does not lengthen expiration.",
+        "The stretch reflex acts on the respiratory centers, not on the carotid bodies."
+      ]
+    }
+  },
+  {
+    "id": "anp-breathing-control-17",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "Put the steps of the carbon dioxide feedback loop in order, starting from a rise in arterial PCO2.",
+    "options": [
+      "Carbon dioxide crosses the blood–brain barrier",
+      "Hydrogen ions rise in the brain's fluid near the medulla",
+      "Central chemoreceptors stimulate the respiratory centers",
+      "The phrenic nerves carry more signals to the diaphragm",
+      "Alveolar ventilation rises",
+      "Arterial PCO2 falls back toward 40 mmHg"
+    ],
+    "why": {
+      "correct": "Carbon dioxide crosses into the brain's fluid and forms hydrogen ions, which the central chemoreceptors sense. They drive the respiratory centers, which send more signals down the phrenic nerves. Deeper, faster breathing raises alveolar ventilation, and PCO2 falls: negative feedback."
+    }
+  },
+  {
+    "id": "anp-breathing-control-18",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A student traced the low-oxygen feedback loop. One step is wrong. Which one?",
+    "options": [
+      "Arterial PO2 falls to 50 mmHg",
+      "The carotid bodies fire faster",
+      "Signals travel through the glossopharyngeal nerves to the medulla",
+      "The central chemoreceptors also sense the low oxygen",
+      "The respiratory centers drive the breathing muscles harder",
+      "Ventilation rises and arterial PO2 improves"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The central chemoreceptors do not sense oxygen. They respond to hydrogen ions in the brain's fluid. Low oxygen is sensed only by the peripheral chemoreceptors, mainly the carotid bodies.",
+      "options": [
+        "This step is right. A PO2 below about 60 mmHg is a strong stimulus.",
+        "This step is right. The carotid bodies are the main oxygen sensors.",
+        "This step is right. The carotid bodies signal through the glossopharyngeal nerves.",
+        "This is the error. Central chemoreceptors do not respond to low oxygen.",
+        "This step is right. The respiratory centers increase their output.",
+        "This step is right. More ventilation raises alveolar and arterial PO2, reducing the stimulus."
+      ]
+    }
+  },
+  {
+    "id": "anp-breathing-control-19",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Complete the pathway: respiratory centers in the medulla oblongata → spinal cord → ____ nerves → diaphragm.",
+    "options": [
+      "Phrenic",
+      "Vagus",
+      "Glossopharyngeal",
+      "Intercostal"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Motor neurons from spinal segments C3–C5 leave through the phrenic nerves to the diaphragm.",
+      "options": [
+        "Correct. The phrenic nerves supply the diaphragm.",
+        "The vagus nerves carry sensory signals from the lungs and aortic bodies to the brainstem; they do not drive the diaphragm.",
+        "The glossopharyngeal nerves carry sensory signals from the carotid bodies to the medulla.",
+        "The intercostal nerves drive the intercostal muscles, not the diaphragm."
+      ]
+    }
+  },
+  {
+    "id": "anp-breathing-control-20",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "At high altitude, a climber's ventilation keeps rising over the first week even though the air's PO2 has not changed. What mainly explains the continued rise?",
+    "options": [
+      "Rising hematocrit makes the blood thicker and harder to oxygenate",
+      "The kidneys excrete bicarbonate, pH returns toward normal, and the central chemoreceptors stop braking breathing",
+      "The lungs grow new alveoli",
+      "The cortex learns to breathe voluntarily"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In the first hours, low PCO2 raises the pH of the blood and brain fluid, and the central chemoreceptors restrain breathing. Over days, the kidneys excrete bicarbonate and the cerebrospinal fluid's bicarbonate falls, so pH moves back toward normal and the brake comes off. The carotid bodies also become more sensitive to low oxygen.",
+      "options": [
+        "Hematocrit rises over weeks, and more red blood cells raise oxygen content; they are not a drive to breathe more.",
+        "Correct. Correcting the pH removes the central brake on ventilation.",
+        "Adults do not grow new alveoli in response to a week at altitude.",
+        "Breathing at altitude stays automatic, driven by the brainstem; it does not depend on conscious control."
+      ]
+    }
+  },
+  {
+    "id": "anp-breathing-control-21",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "In moderate steady exercise, ventilation may triple while arterial PCO2 and PO2 barely change. What does this tell you about the drive to breathe during exercise?",
+    "options": [
+      "It comes from the carotid bodies sensing a fall in arterial PO2",
+      "Carbon dioxide production must not rise during exercise",
+      "Most of the drive does not come from blood-gas changes",
+      "The Hering–Breuer reflex is the main drive"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "If arterial PCO2, PO2 and pH are nearly unchanged, the chemoreceptors are not seeing a large error signal. The rise comes mainly from signals from the motor cortex to the respiratory centers and from proprioceptors in moving limbs, with the chemoreceptors fine-tuning ventilation to hold PCO2 steady.",
+      "options": [
+        "Arterial PO2 does not fall in moderate exercise, so the carotid bodies are not strongly stimulated by oxygen.",
+        "Carbon dioxide production rises several-fold. PCO2 stays steady because ventilation rises to match it.",
+        "Correct. The drive comes largely from central command and proprioceptors.",
+        "The Hering–Breuer reflex limits inspiration; it does not drive breathing up."
+      ]
+    }
+  },
+  {
+    "id": "anp-breathing-control-22",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Someone walks into a smoky room and starts coughing, with a tight feeling in the chest. Which sensory receptors triggered this?",
+    "options": [
+      "Lung stretch receptors in airway smooth muscle",
+      "Central chemoreceptors in the medulla oblongata",
+      "Irritant receptors in the airway lining",
+      "Aortic bodies"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Irritant receptors among the cells lining the airways respond to smoke, dust and fumes. Through the vagus nerves they trigger coughing, narrowing of the airways and rapid, shallow breathing.",
+      "options": [
+        "Lung stretch receptors respond to inflation, not to smoke.",
+        "Central chemoreceptors respond to hydrogen ions in the brain's fluid, not to particles in the airways.",
+        "Correct. Irritant receptors cause coughing and bronchoconstriction.",
+        "The aortic bodies sense arterial blood chemistry, not smoke in the airways."
+      ]
+    }
+  }
+]

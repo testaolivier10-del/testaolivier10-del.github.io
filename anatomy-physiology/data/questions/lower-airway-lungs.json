@@ -1,0 +1,596 @@
+[
+  {
+    "id": "anp-lower-airway-lungs-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-22-13",
+    "pin": "cardiac-notch",
+    "q": "Name the pinned feature.",
+    "options": [
+      "Cardiac notch",
+      "Hilum",
+      "Oblique fissure",
+      "Apex of the lung"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The hollow in the front edge of the left lung, where the heart lies, is the cardiac notch.",
+      "options": [
+        "Correct. Only the left lung has a cardiac notch, because the heart lies mostly left of the midline.",
+        "The hilum is on the mediastinal (inner) surface, where the bronchus and vessels enter, not a notch in the front edge.",
+        "The oblique fissure is a deep groove that separates the lobes; it runs diagonally across the lung.",
+        "The apex is the narrow top of the lung, which rises above the clavicle."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-22-13",
+    "pin": "middle-lobe",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Superior lobe of the right lung",
+      "Middle lobe of the right lung",
+      "Inferior lobe of the left lung",
+      "Superior lobe of the left lung"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The right lung has three lobes. The one between the horizontal and oblique fissures is the middle lobe.",
+      "options": [
+        "The right superior lobe lies above the horizontal fissure.",
+        "Correct. The middle lobe lies between the two fissures of the right lung.",
+        "The left lung is on the other side of the figure, and it has no middle lobe.",
+        "The left superior lobe is on the other side of the figure, above the left oblique fissure."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-22-10",
+    "pin": "respiratory-bronchiole",
+    "q": "Name the pinned airway.",
+    "options": [
+      "Terminal bronchiole",
+      "Alveolar duct",
+      "Respiratory bronchiole",
+      "Tertiary bronchus"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A respiratory bronchiole is a small airway with a few alveoli budding from its wall. It is the first airway of the respiratory zone.",
+      "options": [
+        "The terminal bronchiole is the airway just before it, higher up, wrapped in smooth muscle and without alveoli.",
+        "An alveolar duct comes after it; its walls are almost entirely alveolar openings.",
+        "Correct. This branch carries scattered alveoli, so it is a respiratory bronchiole.",
+        "A tertiary bronchus is a much larger airway with cartilage plates, many branchings earlier."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-22-10",
+    "pin": "alveolar-duct",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Alveolar pore",
+      "Alveolar sac",
+      "Terminal bronchiole",
+      "Alveolar duct"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The alveolar duct is the short passage at the end of a respiratory bronchiole whose walls are made of alveolar openings. It leads into the alveolar sacs.",
+      "options": [
+        "Alveolar pores are small holes in the walls between neighboring alveoli, not passages leading to them.",
+        "An alveolar sac is the grape-like cluster of alveoli at the end of the duct.",
+        "The terminal bronchiole is higher up, before any alveoli appear.",
+        "Correct. This passage between the respiratory bronchiole and the alveolar sacs is an alveolar duct."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-22-14",
+    "pin": "pleural-cavity",
+    "q": "Name the pinned space.",
+    "options": [
+      "Mediastinum",
+      "Pleural cavity",
+      "Pericardial cavity",
+      "Lumen of a bronchus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The narrow gap between the visceral pleura on the lung and the parietal pleura on the chest wall is the pleural cavity. It holds only a thin film of pleural fluid.",
+      "options": [
+        "The mediastinum is the central compartment between the two lungs, holding the heart and great vessels.",
+        "Correct. This thin space between the two pleural layers is the pleural cavity.",
+        "The pericardial cavity surrounds the heart, not the lung.",
+        "A bronchus is an airway inside the lung; this space lies outside the lung, next to the chest wall."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-6",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Order the airways a breath of air passes through, from the trachea to the alveoli.",
+    "options": [
+      "Primary bronchus",
+      "Secondary (lobar) bronchus",
+      "Tertiary (segmental) bronchus",
+      "Terminal bronchiole",
+      "Respiratory bronchiole",
+      "Alveolar duct"
+    ],
+    "why": {
+      "correct": "The trachea divides into primary bronchi, then secondary bronchi (one per lobe), tertiary bronchi (one per segment), smaller bronchi and bronchioles, terminal bronchioles (the last conducting airways), respiratory bronchioles, alveolar ducts, alveolar sacs and alveoli.",
+      "options": [
+        "The primary bronchi are the first branches, one to each lung.",
+        "Each lobe has its own secondary bronchus.",
+        "Each bronchopulmonary segment has its own tertiary bronchus.",
+        "The terminal bronchiole is the last airway of the conducting zone.",
+        "The respiratory bronchiole is the first airway with alveoli in its wall.",
+        "The alveolar duct leads into the alveolar sacs."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-7",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 3-year-old breathes in a small plastic bead while playing. Where is it most likely to lodge?",
+    "options": [
+      "The left primary bronchus",
+      "The right primary bronchus",
+      "The nasopharynx",
+      "The carina"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The right primary bronchus is wider, shorter and more nearly vertical than the left, so an object falling down the trachea tends to continue straight into it.",
+      "options": [
+        "The left primary bronchus leaves the trachea at a sharper angle to pass under the aortic arch, so objects enter it less often.",
+        "Correct. The straighter, wider right primary bronchus is the usual site.",
+        "The nasopharynx lies above the larynx; an object that has been breathed in has already passed below it.",
+        "The carina is the ridge between the two primary bronchi. An object touching it triggers a cough but does not usually stay there."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-8",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What is the carina?",
+    "options": [
+      "The ridge where the trachea splits",
+      "The first tracheal cartilage below the larynx",
+      "The smooth muscle at the back of the trachea",
+      "The notch in the left lung that holds the heart"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The carina is a keel-shaped ridge formed by the last tracheal cartilage, pointing up between the openings of the two primary bronchi. Its lining is very sensitive and triggers a strong cough.",
+      "options": [
+        "Correct. The carina sits at the split of the trachea.",
+        "The trachea begins just below the cricoid cartilage of the larynx; the carina is at the other end.",
+        "The smooth muscle at the back of the trachea is the trachealis muscle.",
+        "The notch in the left lung is the cardiac notch."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What does the C shape of the tracheal cartilages allow?",
+    "options": [
+      "The trachea to stretch longer during swallowing",
+      "Air to leak into the esophagus when pressure is high",
+      "The esophagus to bulge forward when you swallow a large mouthful",
+      "The cartilage to divide into bronchi"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The open back of each ring is closed only by the trachealis muscle and connective tissue, a soft wall that gives way when the esophagus behind it swells with food. The rigid front and sides still keep the airway open.",
+      "options": [
+        "The C shape concerns the back wall, not the length. Elastic tissue between the rings lets the trachea lengthen as you move your neck.",
+        "The trachea and esophagus are separate tubes; air does not pass between them through the back wall.",
+        "Correct. The soft back wall lets the esophagus expand into it.",
+        "The bronchi form where the trachea divides at the carina; the C shape of the rings has nothing to do with branching."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-10",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which alveolar cells secrete a lipid-rich film that lowers surface tension and divide to replace damaged wall cells?",
+    "options": [
+      "Type I alveolar cells",
+      "Alveolar macrophages",
+      "Capillary endothelial cells",
+      "Type II alveolar cells"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Type II alveolar cells are cuboidal cells that secrete the surface-tension-lowering film and act as the repair cells of the alveolar wall, turning into new type I cells.",
+      "options": [
+        "Type I cells form the thin gas-crossing wall. They rarely, if ever, divide and do not secrete the film.",
+        "Alveolar macrophages engulf particles and microorganisms; they do not build the wall.",
+        "Capillary endothelial cells line the blood side of the respiratory membrane, not the air side.",
+        "Correct. Type II cells secrete the film and replace lost type I cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-11",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every layer that oxygen crosses in the respiratory membrane on its way from alveolar air into the blood plasma.",
+    "options": [
+      "Type I alveolar cell",
+      "Fused basement membrane",
+      "Capillary endothelial cell",
+      "Type II alveolar cell",
+      "Visceral pleura"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "The respiratory membrane is a type I alveolar cell, the fused basement membranes of that cell and the capillary, and a capillary endothelial cell: about 0.5 µm in total.",
+      "options": [
+        "Correct. The flattened type I cell is the air side of the barrier.",
+        "Correct. The two basement membranes are fused into one layer.",
+        "Correct. The endothelial cell of a continuous capillary is the blood side.",
+        "Type II cells are scattered and cover only about 5% of the surface; the barrier where gases cross is formed by type I cells.",
+        "The visceral pleura covers the outside of the lung. Oxygen in the alveoli never crosses it."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-12",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "gradients"
+    ],
+    "q": "In Mr. Ruiz's lungs, fluid has collected in the walls between his alveoli, making the barrier between air and blood several times thicker. His breathing is otherwise unchanged. What happens to the movement of oxygen from his alveoli into his blood?",
+    "options": [
+      "It slows down",
+      "It speeds up",
+      "It is unchanged",
+      "Oxygen moves from blood to air instead"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Diffusion rate falls as diffusion distance rises. A thicker respiratory membrane makes oxygen take longer to cross, so less crosses during the brief time each red blood cell spends in an alveolar capillary.",
+      "options": [
+        "Correct. A longer diffusion distance slows diffusion.",
+        "Oxygen still has to cross the whole thickened barrier; extra fluid lengthens the path rather than helping.",
+        "Surface area is only one factor. Distance also sets diffusion rate, and it has increased.",
+        "Oxygen still moves from alveolar air, where there is more of it, into the blood; only its rate changes."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-13",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which is the last airway of the conducting zone?",
+    "options": [
+      "Tertiary bronchus",
+      "Respiratory bronchiole",
+      "Terminal bronchiole",
+      "Alveolar duct"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Terminal bronchioles are the last purely conducting airways. The respiratory bronchioles beyond them carry the first alveoli.",
+      "options": [
+        "Tertiary bronchi are conducting airways, but many branchings come after them.",
+        "Respiratory bronchioles have alveoli in their walls, so they begin the respiratory zone.",
+        "Correct. The terminal bronchiole ends the conducting zone.",
+        "Alveolar ducts are lined with alveolar openings, so they are respiratory zone."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-14",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "This description of the airway to the left lung has one wrong step. Find it.",
+    "options": [
+      "The trachea divides at the carina",
+      "The left primary bronchus enters the left lung at its hilum",
+      "It divides into three secondary bronchi, one per lobe",
+      "Each secondary bronchus divides into tertiary bronchi, one per segment",
+      "These branch down to terminal bronchioles"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The left lung has two lobes, superior and inferior, so the left primary bronchus gives off two secondary bronchi. Three is the right lung's number.",
+      "options": [
+        "Correct step. The carina marks the division of the trachea.",
+        "Correct step. Each primary bronchus enters its lung at the hilum.",
+        "This is the wrong step. The left lung has two lobes and so two secondary bronchi.",
+        "Correct step. Tertiary (segmental) bronchi each supply one bronchopulmonary segment.",
+        "Correct step. Branching continues down to the terminal bronchioles, the end of the conducting zone."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-15",
+    "type": "missing",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap: terminal bronchiole → ____ → alveolar duct → alveolar sac → alveolus.",
+    "options": [
+      "Tertiary bronchus",
+      "Alveolar pore",
+      "Primary bronchus",
+      "Respiratory bronchiole"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "After the terminal bronchiole comes the respiratory bronchiole, the first airway with alveoli in its wall, which leads into alveolar ducts.",
+      "options": [
+        "Tertiary bronchi come well before the terminal bronchioles.",
+        "Alveolar pores are holes between neighboring alveoli, not a step along the airway.",
+        "The primary bronchus is near the start of the tree, just below the trachea.",
+        "Correct. The respiratory bronchiole links the terminal bronchiole to the alveolar ducts."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-16",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Ms. Adeyemi has a sharp, stabbing pain in her right side that gets much worse each time she takes a deep breath. Her doctor hears a rubbing sound over the area with each breath. Which structure's pain fibers best explain her pain?",
+    "options": [
+      "The visceral pleura",
+      "The alveolar walls",
+      "The parietal pleura",
+      "The bronchial arteries"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "This is pleurisy: the pleural layers are inflamed and rub together. The parietal pleura, supplied by the intercostal and phrenic nerves, is very sensitive to pain; the lung and visceral pleura are not.",
+      "options": [
+        "The visceral pleura is inflamed too, but it has no pain fibers of that kind, so it does not produce sharp pain.",
+        "Lung tissue, including the alveolar walls, is not sensitive to sharp pain.",
+        "Correct. The parietal pleura's pain fibers fire as the inflamed layers rub with each breath.",
+        "The bronchial arteries supply the airway walls; they are not the source of pleuritic pain."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which vessels carry oxygenated blood to the walls of the bronchi?",
+    "options": [
+      "Pulmonary arteries",
+      "Bronchial arteries",
+      "Pulmonary veins",
+      "Bronchial veins"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The bronchial arteries are small systemic branches, mostly from the thoracic aorta, that supply the airway walls, connective tissue and visceral pleura.",
+      "options": [
+        "Pulmonary arteries carry deoxygenated blood from the right ventricle to the alveolar capillaries for gas exchange.",
+        "Correct. The bronchial arteries feed the lung's own tissue.",
+        "Pulmonary veins carry oxygenated blood away from the lungs to the left atrium; they do not feed the airway walls.",
+        "Bronchial veins drain blood away from the larger airways."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-18",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A clot blocks a small branch of Mr. Bell's right pulmonary artery. The alveoli beyond it can no longer take part in gas exchange, yet the lung tissue there usually does not die. Why?",
+    "options": [
+      "The pulmonary veins reverse direction and supply it",
+      "Alveolar pores carry blood from neighboring alveoli",
+      "The tissue needs no oxygen at all",
+      "Its bronchial arteries still supply it"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The lungs have a second, systemic blood supply. The bronchial arteries, branches of the aorta, keep feeding the airway walls and connective tissue even when a pulmonary artery branch is blocked.",
+      "options": [
+        "Veins do not reverse to supply tissue; pulmonary veins carry blood toward the left atrium.",
+        "Alveolar pores pass air between alveoli, not blood.",
+        "Lung tissue is living tissue and needs oxygen like any other.",
+        "Correct. The double blood supply is what protects the tissue."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-19",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What do alveolar macrophages do?",
+    "options": [
+      "Engulf dust and microbes",
+      "Secrete mucus onto the alveolar surface",
+      "Form the thin wall that gases cross",
+      "Beat cilia to move particles out"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Alveolar macrophages move over the alveolar surface and through its walls, engulfing particles and microorganisms beyond the reach of cilia and mucus.",
+      "options": [
+        "Correct. They are the alveoli's cleaners, sometimes called dust cells.",
+        "Alveoli have no goblet cells or mucus; mucus stops higher up the tree.",
+        "Type I alveolar cells form the gas-crossing wall.",
+        "There are no cilia in the alveoli."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A drug makes the smooth muscle in airway walls contract strongly. Which airways narrow the most, relative to their size?",
+    "options": [
+      "The trachea",
+      "The primary bronchi",
+      "The bronchioles",
+      "The alveolar sacs"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Bronchioles have no cartilage and a thick layer of smooth muscle for their size, so nothing holds them open when that muscle contracts.",
+      "options": [
+        "The trachea is held open by its cartilage rings; only its back wall has smooth muscle.",
+        "Primary bronchi are held open by cartilage, which resists narrowing.",
+        "Correct. Without cartilage, bronchiole diameter is set by smooth muscle alone.",
+        "Alveolar sacs have only scattered strands of smooth muscle near their entrances."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Mucus plugs the small airway leading to one group of alveoli, yet some air still reaches them. Which structures allow this?",
+    "options": [
+      "Alveolar pores",
+      "Pleural cavities",
+      "Bronchial veins",
+      "Tracheal cartilages"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Alveolar pores are small openings in the walls between neighboring alveoli. Air can pass sideways through them from alveoli whose own airways are open.",
+      "options": [
+        "Correct. Alveolar pores let air move sideways between neighbors.",
+        "The pleural cavities lie outside the lungs and hold only a film of fluid, no air.",
+        "Bronchial veins carry blood, not air.",
+        "Tracheal cartilages hold the trachea open; they are nowhere near the alveoli."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-airway-lungs-22",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "How do the two lungs differ?",
+    "options": [
+      "The left lung has three lobes and the right lung has two",
+      "The right has three lobes; the left, a cardiac notch",
+      "Only the right lung has a hilum",
+      "Only the left lung is covered by visceral pleura"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The right lung has three lobes (superior, middle, inferior) and two fissures. The left lung has two lobes, one fissure and a cardiac notch for the heart.",
+      "options": [
+        "This reverses the lobe counts: the right lung has three lobes, the left two.",
+        "Correct. Three lobes on the right; two lobes and a cardiac notch on the left.",
+        "Both lungs have a hilum, where the bronchus, vessels and nerves enter.",
+        "Visceral pleura covers both lungs."
+      ]
+    }
+  }
+]

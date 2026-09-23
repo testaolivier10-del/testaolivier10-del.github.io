@@ -1,0 +1,60 @@
+{
+  "copd": {
+    "def": "Chronic obstructive pulmonary disease: long-lasting lung disease with airflow obstruction that does not fully reverse (FEV1 ÷ FVC below 0.70 after a drug that opens the airways), mainly from smoking. Its two main forms are emphysema, the destruction of alveolar walls, and chronic bronchitis, a daily cough with excess mucus for at least three months in two years in a row.",
+    "roots": [
+      [
+        "em-",
+        "in"
+      ],
+      [
+        "physa-",
+        "to blow"
+      ],
+      [
+        "bronch-",
+        "windpipe branch"
+      ],
+      [
+        "-itis",
+        "inflammation"
+      ]
+    ],
+    "say": "em-fih-SEE-muh"
+  },
+  "pulmonary-edema": {
+    "def": "Fluid buildup in the lung tissue and then the alveoli, caused by high pressure in the pulmonary capillaries (as in left-sided heart failure) or by a leaky respiratory membrane (as in sepsis or pneumonia). It slows diffusion, stiffens the lungs and floods alveoli.",
+    "roots": [
+      [
+        "pulmon-",
+        "lung"
+      ],
+      [
+        "oidema",
+        "swelling"
+      ]
+    ],
+    "say": "eh-DEE-muh"
+  },
+  "respiratory-infection": {
+    "def": "Infection of the respiratory tract. Pneumonia is infection of the alveoli, which fill with inflammatory fluid; tuberculosis is airborne infection by Mycobacterium tuberculosis, which survives in alveolar macrophages, is walled off in granulomas, and can stay latent for years.",
+    "roots": [
+      [
+        "pneumon-",
+        "lung"
+      ],
+      [
+        "-ia",
+        "condition"
+      ],
+      [
+        "tubercul-",
+        "small swelling"
+      ],
+      [
+        "-osis",
+        "condition"
+      ]
+    ],
+    "say": "noo-MOH-nyuh; too-ber-kyoo-LOH-sis"
+  }
+}
