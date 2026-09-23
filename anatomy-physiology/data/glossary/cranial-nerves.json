@@ -1,0 +1,12 @@
+{
+  "cranial-nerve-list": {
+    "def": "The 12 pairs of nerves that attach to the brain rather than the spinal cord, numbered I to XII from front to back: olfactory, optic, oculomotor, trochlear, trigeminal, abducens, facial, vestibulocochlear, glossopharyngeal, vagus, accessory (spinal accessory) and hypoglossal. I, II and VIII are sensory; III, IV, VI, XI and XII are motor; V, VII, IX and X are both.",
+    "roots": [["crani-", "skull"], ["olfact-", "smell"], ["ocul-", "eye"], ["trochle-", "pulley"], ["tri-", "three"], ["gemin-", "twin"], ["ab-", "away"], ["duc-", "lead"], ["gloss-", "tongue"], ["pharyng-", "throat"], ["hypo-", "below"]],
+    "say": "try-JEM-ih-nul, ab-DOO-senz, glos-oh-fuh-RIN-jee-ul, hy-poh-GLOS-ul"
+  },
+  "vagus-nerve": {
+    "def": "Cranial nerve X, the only cranial nerve that reaches the chest and abdomen. It supplies the muscles of the throat and voice box, carries about three quarters of all parasympathetic axons (slowing the heart and stimulating the digestive organs), and brings sensory signals back from the heart, lungs and gut.",
+    "roots": [["vagus", "wandering"]],
+    "say": "VAY-gus"
+  }
+}

@@ -9,7 +9,7 @@
     ],
     "figure": "os-12-2",
     "pin": "ganglion",
-    "q": "Name the pinned structure, a small swelling on a nerve beside the spinal cord.",
+    "q": "Name the pinned structure.",
     "options": [
       "Nucleus",
       "Tract",
@@ -421,7 +421,7 @@
   {
     "id": "anp-nervous-system-organization-16",
     "type": "single",
-    "level": "apply",
+    "level": "recall",
     "diff": 2,
     "core": [
       "structure-function"

@@ -18,7 +18,7 @@
     ],
     "correct": 2,
     "why": {
-      "correct": "The star-shaped cell with many branching processes reaching to neurons and blood vessels is an astrocyte.",
+      "correct": "The star-shaped cell with many branching processes reaching out to the neurons is an astrocyte.",
       "options": [
         "Oligodendrocytes have a few arms that end in myelin wraps around axons, not many fine star-like processes.",
         "Microglial cells are small, with short, fine, bristly processes. This cell is large and star-shaped.",
@@ -342,7 +342,7 @@
     "options": [
       "A Schwann cell",
       "An astrocyte",
-      "A satellite glial cell",
+      "A satellite cell",
       "An oligodendrocyte"
     ],
     "correct": 3,
@@ -445,7 +445,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "Marco's cut nerve is repaired 15 cm from the tip of his thumb. Assuming the axons regrow at about 1 mm per day once they cross the repair, about how long until feeling can start to return to the tip of the thumb?",
+    "q": "A carpenter's cut nerve is repaired in his forearm, 15 cm from the tip of his thumb. Assuming the axons regrow at about 1 mm per day once they cross the repair, about how long until feeling can start to return to the tip of the thumb?",
     "options": [
       "About 15 days",
       "About 5 months",
@@ -548,7 +548,7 @@
         "Correct. About 70 to 80% of myelin's dry weight is lipid.",
         "Correct. The gaps between myelin segments are nodes of Ranvier.",
         "Incorrect. Myelin is made by glial cells, not by the neuron.",
-        "Incorrect. Only axons are myelinated. Dendrites are never wrapped."
+        "Incorrect. Myelin wraps axons, not the short dendrites of a neuron."
       ]
     }
   },
@@ -615,7 +615,7 @@
     "q": "Compared with an oligodendrocyte, why is a Schwann cell better able to support regrowth of a cut axon?",
     "options": [
       "It serves one axon segment and can multiply to guide regrowth",
-      "It makes thicker myelin that shields the axon from further injury",
+      "It makes thicker myelin that shields the axon",
       "It releases neurotransmitter that attracts the growing axon",
       "It can turn into a new neuron to replace the damaged one"
     ],
@@ -624,7 +624,7 @@
       "correct": "A Schwann cell serves a single segment of a single axon and keeps its nucleus and cytoplasm in a living outer layer, the neurilemma. After injury it can clear debris, multiply and form the regeneration tube. An oligodendrocyte serves many axons and forms no such tube.",
       "options": [
         "Correct. One axon per cell and a living outer layer let Schwann cells rebuild the path.",
-        "Myelin thickness does not decide whether an axon regrows, and myelin does not prevent the cut.",
+        "Myelin thickness does not decide whether an axon regrows.",
         "Glial cells do not guide regrowth with neurotransmitter. Schwann cells release growth-promoting proteins and provide an adhesive tube.",
         "Schwann cells do not become neurons. The neuron survives and regrows its own axon."
       ]
@@ -633,7 +633,7 @@
   {
     "id": "anp-neurons-glia-24",
     "type": "single",
-    "level": "apply",
+    "level": "recall",
     "diff": 2,
     "core": [
       "structure-function"

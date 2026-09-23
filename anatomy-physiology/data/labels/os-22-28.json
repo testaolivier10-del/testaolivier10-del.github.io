@@ -45,7 +45,9 @@
         262,
         254,
         82
-      ]
+      ],
+      "cover": true,
+      "note": "OpenStax prints 'HCO3- dissolved in plasma as carbonic acid'; bicarbonate is not carbonic acid. Covered for good and never asked (docs/anp-needs-author.md)."
     },
     {
       "id": "co2-dissolved-in-plasma",

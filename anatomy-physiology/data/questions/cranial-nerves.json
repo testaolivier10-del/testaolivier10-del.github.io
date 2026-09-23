@@ -248,7 +248,7 @@
     "why": {
       "correct": "The facial nerve (VII) supplies all the muscles of facial expression, including the forehead, the orbicularis oculi and the muscles around the mouth. Normal touch on the cheek shows the trigeminal nerve is working. This picture is typical of Bell’s palsy.",
       "options": [
-        "The trigeminal nerve carries feeling from the face and moves the chewing muscles. Her feeling is normal, and the trigeminal nerve does not move the brow, eyelid muscle or mouth.",
+        "The trigeminal nerve carries feeling from the face and moves the chewing muscles. Her feeling is normal, and the trigeminal nerve does not move the brow, the muscle that closes the eye, or the mouth.",
         "Correct. Paralysis of the whole half face with normal feeling points to the facial nerve.",
         "The oculomotor nerve raises the upper lid and moves the eye, but it does not close the eye or move the forehead or mouth.",
         "The hypoglossal nerve moves the tongue, not the face."
@@ -588,7 +588,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "An older woman reports double vision when she reads or walks down stairs, and she tilts her head to reduce it. Her eyelids and the centers of her eyes look normal. Which nerve is most likely affected?",
+    "q": "An older woman reports double vision when she reads or walks down stairs, and she tilts her head to reduce it. Her upper lids and the centers of her eyes look normal. Which nerve is most likely affected?",
     "options": [
       "Abducens nerve",
       "Oculomotor nerve",
